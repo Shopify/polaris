@@ -310,49 +310,57 @@ $stacking-order: (
 // The way the designs work, we need to do lots of reaching down to
 // target the content in pseudo-selectors, so we need higher specificity
 // in this case.
-// stylelint-disable selector-max-specificity
-
+// stylelint-disable selector-max-specificity, selector-max-class
 .plain {
-  @include recolor-icon(color('blue'));
+  @include recolor-icon(var(--p-interactive));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: color('blue');
+  color: var(--p-interactive);
 
-  &.pressed,
+  > .Content {
+    font-weight: 400;
+    @include focus-ring;
+  }
+
   &:hover,
-  &:focus,
-  &:active {
-    @include recolor-icon(color('blue', 'dark'));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: color('blue', 'dark');
+  &:focus {
+    @include recolor-icon(var(--p-interactive-hovered));
+    color: var(--p-interactive-hovered);
     text-decoration: underline;
   }
 
   &.pressed,
-  &:focus {
+  &:active {
+    @include recolor-icon(var(--p-interactive-pressed));
+    color: var(--p-interactive-pressed);
     @include high-contrast-button-outline(none);
   }
 
-  &:focus > .Content {
-    @include high-contrast-button-outline;
+  &:focus {
+    @include no-focus-ring;
+    @include high-contrast-button-outline(none);
+
+    > .Content {
+      @include high-contrast-button-outline;
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class
-  &.pressed > .Content {
-    @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
+  &:focus:not(:active) {
+    > .Content {
+      @include focus-ring($style: 'focused');
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class
-  &.pressed:hover:not(.iconOnly) > .Content,
-  &.pressed:active:not(.iconOnly) > .Content,
-  &:focus:not(.iconOnly) > .Content {
-    @include plain-button-backdrop;
+  &:active:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(var(--p-action-secondary));
+  }
+
+  &.pressed:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(var(--p-action-secondary));
   }
 
   &.fullWidth {
@@ -360,17 +368,30 @@ $stacking-order: (
     margin-right: 0;
   }
 
-  &.destructive {
-    @include recolor-icon(color('red', 'dark'));
-    color: var(--p-action-critical, color('red', 'dark'));
-    &:focus,
-    &:active {
-      color: var(--p-action-critical-pressed, color('red', 'darker'));
+  &.disabled {
+    color: var(--p-text-disabled);
+
+    &.loading {
+      color: transparent;
     }
   }
 
-  &.disabled {
-    background: none;
+  &.destructive {
+    @include recolor-icon(var(--p-interactive-critical));
+    color: var(--p-interactive-critical);
+
+    &:hover {
+      color: var(--p-interactive-critical-hovered);
+    }
+
+    &:active,
+    &.pressed {
+      color: var(--p-interactive-critical-pressed);
+    }
+
+    &.disabled {
+      color: var(--p-interactive-critical-disabled);
+    }
   }
 
   &.sizeSlim {
@@ -381,29 +402,38 @@ $stacking-order: (
   &.sizeLarge {
     margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
   }
+
   &.iconOnly {
-    @include recolor-icon(color('ink', 'lighter'));
-    margin: -0.5 * ($min-height - icon-size());
+    @include recolor-icon(var(--p-icon));
 
-    &:focus,
-    &:active {
-      @include recolor-icon(color('ink', 'lighter'));
-      background: plain-button-background();
+    &:hover {
+      @include recolor-icon(var(--p-icon-hovered));
     }
 
-    &:hover,
-    &:active {
-      @include recolor-icon(color('ink'));
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-icon-pressed));
     }
 
-    // stylelint-disable-next-line selector-max-class
-    > .Content::after {
-      display: none;
-    }
-
-    // stylelint-disable-next-line selector-max-class
     &.disabled {
-      @include recolor-icon(color('sky', 'dark'));
+      @include recolor-icon(var(--p-icon-disabled));
+    }
+  }
+
+  &.destructive.iconOnly {
+    @include recolor-icon(var(--p-action-critical));
+
+    &:hover {
+      @include recolor-icon(var(--p-action-critical-hovered));
+    }
+
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-action-critical-pressed));
+    }
+
+    &.disabled {
+      @include recolor-icon(var(--p-action-critical-disabled));
     }
   }
 
@@ -411,148 +441,8 @@ $stacking-order: (
     margin-left: 0;
     margin-right: 0;
   }
-
-  // stylelint-disable selector-max-class
-  &.newDesignLanguage {
-    // redeclaring these styles here for specificity
-    @include recolor-icon(var(--p-interactive));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: var(--p-interactive);
-
-    &::after {
-      content: none;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-    }
-
-    > .Content {
-      font-weight: 400;
-      @include focus-ring;
-    }
-
-    &:hover {
-      @include recolor-icon(var(--p-interactive-hovered));
-      color: var(--p-interactive-hovered);
-    }
-
-    &:focus {
-      @include recolor-icon(var(--p-interactive));
-      color: var(--p-interactive);
-      @include no-focus-ring;
-    }
-
-    &:active {
-      @include recolor-icon(var(--p-interactive-pressed));
-      color: var(--p-interactive-pressed);
-    }
-
-    &:focus:not(:active) {
-      > .Content {
-        @include focus-ring($style: 'focused');
-      }
-    }
-
-    &.pressed {
-      background: none;
-      @include recolor-icon(var(--p-interactive-pressed));
-      color: var(--p-interactive-pressed);
-    }
-
-    &:focus:not(.iconOnly) > .Content {
-      background: none;
-    }
-
-    &:active:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
-    }
-
-    &.pressed:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
-    }
-
-    &.destructive {
-      @include recolor-icon(var(--p-interactive-critical));
-      color: var(--p-interactive-critical);
-
-      &:hover {
-        color: var(--p-interactive-critical-hovered);
-      }
-
-      &:active {
-        color: var(--p-interactive-critical-pressed);
-      }
-
-      &.pressed {
-        color: var(--p-interactive-critical-pressed);
-        background: transparent;
-      }
-
-      &.disabled {
-        color: var(--p-interactive-critical-disabled);
-      }
-    }
-
-    &.disabled {
-      color: var(--p-text-disabled);
-      background: none;
-
-      &.loading {
-        color: transparent;
-      }
-    }
-
-    &.iconOnly {
-      @include recolor-icon(var(--p-icon));
-
-      &:hover {
-        @include recolor-icon(var(--p-icon-hovered));
-      }
-
-      &:focus {
-        @include recolor-icon(var(--p-icon));
-      }
-
-      &:active {
-        @include recolor-icon(var(--p-icon-pressed));
-      }
-
-      &.disabled {
-        @include recolor-icon(var(--p-icon-disabled));
-      }
-    }
-
-    &.destructive.iconOnly {
-      @include recolor-icon(var(--p-action-critical));
-
-      &:hover {
-        @include recolor-icon(var(--p-action-critical-hovered));
-      }
-
-      &:focus {
-        @include recolor-icon(var(--p-action-critical));
-      }
-
-      &:active {
-        @include recolor-icon(var(--p-action-critical-pressed));
-      }
-
-      &.disabled {
-        @include recolor-icon(var(--p-action-critical-disabled));
-      }
-    }
-  }
-  // stylelint-enable selector-max-class
 }
-
-// stylelint-enable selector-max-specificity
+// stylelint-enable selector-max-specificity, selector-max-class
 
 .sizeSlim {
   min-height: $slim-min-height;
