@@ -4,13 +4,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
 
   > * {
     flex: 0 0 auto;
-  }
-
-  &.newDesignLanguage {
-    justify-content: flex-end;
-    flex: 1 1 auto;
   }
 }
