@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mount} from 'test-utilities';
 
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext} from '../../../utilities/theme';
@@ -7,7 +7,7 @@ import {colorToHsla} from '../../../utilities/color-transformers';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithApp(
+    const themeProvider = mount(
       <ThemeProvider>
         <p>Hello</p>
       </ThemeProvider>,
@@ -22,7 +22,7 @@ describe('<ThemeProvider />', () => {
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const themeProvider = mountWithApp(
+    const themeProvider = mount(
       <ThemeProvider
         theme={{
           logo: {
@@ -42,7 +42,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('has a default theme', () => {
-    const themeProvider = mountWithApp(
+    const themeProvider = mount(
       <ThemeProvider>
         <p>Hello</p>
       </ThemeProvider>,
@@ -67,7 +67,7 @@ describe('<ThemeProvider />', () => {
 
   describe('when nested', () => {
     it('does not render custom properties if themes are identical', () => {
-      const themeProvider = mountWithApp(
+      const themeProvider = mount(
         <ThemeProvider>
           <ThemeProvider>
             <p>Hello</p>
@@ -92,7 +92,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('renders custom properties if themes are identical but alwaysRenderCustomProperties is true', () => {
-      const themeProvider = mountWithApp(
+      const themeProvider = mount(
         <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{colorScheme: 'dark'}}
@@ -120,7 +120,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const themeProvider = mountWithApp(
+      const themeProvider = mount(
         <ThemeProvider
           theme={{
             colors: {surface: '#FFFFFF'},
@@ -225,7 +225,7 @@ describe('<ThemeProvider />', () => {
     ])(
       'Inherits color scheme from parent where: %s',
       (_: any, topLevelTheme: any, childTheme: any, expectedIsDark: any) => {
-        const themeProvider = mountWithApp(
+        const themeProvider = mount(
           <ThemeProvider theme={topLevelTheme}>
             <ThemeProvider theme={childTheme}>
               <p>Hello</p>

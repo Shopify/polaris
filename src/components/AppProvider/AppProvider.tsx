@@ -91,7 +91,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={this.props.features}>
+      <FeaturesContext.Provider value={this.props.features || {}}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
