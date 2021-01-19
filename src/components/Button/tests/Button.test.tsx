@@ -440,13 +440,4 @@ describe('<Button />', () => {
       });
     });
   });
-
-  describe('stretchContent', () => {
-    it('sets variant class', () => {
-      const button = mountWithApp(<Button stretchContent />);
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button stretchContent',
-      });
-    });
-  });
 });
