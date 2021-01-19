@@ -80,26 +80,6 @@ describe('<Item />', () => {
       mockAccessibilityLabel,
     );
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(item).toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(item).not.toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
-  });
 });
 
 function noop() {}
