@@ -8,13 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
-## 5.13.1 - 2020-01-13
+## 5.13.1 - 2021-01-13
 
 ### Bug fixes
 
 - Fix the `Button` focus state offset ([#3832](https://github.com/Shopify/polaris-react/pull/3832))
 
-## 5.13.0 - 2020-01-11
+## 5.13.0 - 2021-01-11
 
 ### Enhancements
 
