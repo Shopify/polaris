@@ -1,7 +1,6 @@
 import React, {useState, useCallback} from 'react';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {classNames} from '../../utilities/css';
 import type {IconProps} from '../Icon';
 import type {AvatarProps} from '../Avatar';
 import type {ThumbnailProps} from '../Thumbnail';
