@@ -424,47 +424,6 @@ function AppProviderWithAllThemeKeysExample() {
 }
 ```
 
-### With the new design language enabled
-
-The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance usage only. The new design language is not yet meant for production experiences.
-
-```jsx
-function NewDesignLanguageExample() {
-  const [isDirty, setIsDirty] = useState(false);
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider features={{newDesignLanguage: true}} i18n={{}}>
-        <Page title="Account">
-          <Layout>
-            <Layout.Section>
-              <SettingToggle
-                action={{
-                  content: contentStatus,
-                  onAction: toggleIsDirty,
-                }}
-                enabled={isDirty}
-              >
-                This setting is{' '}
-                <TextStyle variation="strong">{textStatus}</TextStyle>.
-              </SettingToggle>
-            </Layout.Section>
-          </Layout>
-        </Page>
-      </AppProvider>
-    </div>
-  );
-}
-```
-
 ---
 
 ## Using translations
