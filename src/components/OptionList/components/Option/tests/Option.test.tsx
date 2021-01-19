@@ -4,6 +4,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Checkbox} from '../../Checkbox';
+import {Scrollable} from '../../../../Scrollable';
 import {Option, OptionProps} from '../Option';
 
 describe('<Option />', () => {
@@ -99,50 +100,24 @@ describe('<Option />', () => {
     expect(option).toContainReactComponent('div', {id});
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a `newDesignLanguage` class to the `Option` when `newDesignLanguage` is enabled', () => {
-      const option = mountWithApp(<Option {...defaultProps} />, {
-        features: {newDesignLanguage: true},
-      });
+  it('adds a `select` class to the label when `allowMultiple` is true', () => {
+    const option = mountWithApp(
+      <Option {...defaultProps} select allowMultiple />,
+    );
 
-      expect(option).toContainReactComponent('li', {
-        className: 'Option newDesignLanguage',
-      });
+    expect(option).toContainReactComponent('label', {
+      className: 'Label select',
     });
+  });
 
-    it('does not add a `newDesignLanguage` class to the `Option` when `newDesignLanguage` is disabled', () => {
-      const option = mountWithApp(<Option {...defaultProps} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(option).not.toContainReactComponent('li', {
-        className: 'Option newDesignLanguage',
-      });
-    });
+  it('active option has scrollable markup and active label', () => {
+    const option = mountWithApp(
+      <Option {...defaultProps} allowMultiple active />,
+    );
 
-    it('adds a `select` class to the label when `allowMultiple` is true and `newDesignLanguage` is enabled', () => {
-      const option = mountWithApp(
-        <Option {...defaultProps} select allowMultiple />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-
-      expect(option).toContainReactComponent('label', {
-        className: 'Label select',
-      });
-    });
-
-    it('does not add a `select` class to the label when `allowMultiple` is true and `newDesignLanguage` is not enabled', () => {
-      const option = mountWithApp(
-        <Option {...defaultProps} select allowMultiple />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-
-      expect(option).toContainReactComponent('label', {
-        className: 'Label',
-      });
+    expect(option).toContainReactComponent(Scrollable.ScrollTo);
+    expect(option).toContainReactComponent('label', {
+      className: 'Label active',
     });
   });
 });

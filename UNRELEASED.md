@@ -7,6 +7,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Remove `light` property from `Tooltip` as it now defaults to a light background ([#3846](https://github.com/Shopify/polaris-react/pull/3846))
 - Made `title` property required in `Modal` for accessibility label, added `hideTitle` property ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 - Added required `ariaLabel` property in `Sheet` ([#3852](https://github.com/Shopify/polaris-react/pull/3852))
+- Removed `NewDesignLanguage`, `Color`, `AnimationProps` exported types ([#3868](https://github.com/Shopify/polaris-react/pull/3868))
+- Replaced `BaseAction` with `Action` type ([#3868](https://github.com/Shopify/polaris-react/pull/3868))
 
 ### Enhancements
 

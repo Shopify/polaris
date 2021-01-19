@@ -1,27 +1,7 @@
-export type Color =
-  | 'base'
-  | 'subdued'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success'
-  | 'primary';
-
 export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>
   | 'placeholder'
   | string;
-
-export interface IconProps {
-  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
-  source: IconSource;
-  /** Set the color for the SVG fill */
-  color?: Color;
-  /** Show a backdrop behind the icon */
-  backdrop?: boolean;
-  /** Descriptive text to be read to screenreaders */
-  accessibilityLabel?: string;
-}
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
@@ -80,7 +60,7 @@ export interface BaseButton {
   onTouchStart?(): void;
 }
 
-export interface BaseAction {
+export interface Action {
   /** A unique identifier for the action */
   id?: string;
   /** Content the action displays */
@@ -97,12 +77,6 @@ export interface BaseAction {
   onMouseEnter?(): void;
   /** Callback when element is touched */
   onTouchStart?(): void;
-}
-
-export interface Action extends BaseAction {}
-
-export interface AnimationProps {
-  in?: boolean;
 }
 
 export interface LinkAction {
@@ -148,7 +122,7 @@ export interface DestructableAction extends Action {
 
 export interface IconableAction extends Action {
   /** Source of the icon */
-  icon?: IconProps['source'];
+  icon?: IconSource;
 }
 
 export interface LoadableAction extends Action {

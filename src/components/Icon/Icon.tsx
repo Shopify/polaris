@@ -1,15 +1,31 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import type {IconProps} from '../../types';
+import type {IconSource} from '../../types';
 
 import styles from './Icon.scss';
 
-// This is needed for the polaris
-// styleguide to generate the props explorer
-interface Props extends IconProps {}
+type Color =
+  | 'base'
+  | 'subdued'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success'
+  | 'primary';
 
-export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
+export interface IconProps {
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
+  source: IconSource;
+  /** Set the color for the SVG fill */
+  color?: Color;
+  /** Show a backdrop behind the icon */
+  backdrop?: boolean;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
+}
+
+export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
