@@ -1,0 +1,25 @@
+@import '../../../../styles/common';
+
+$image-size: rem(20px);
+
+.Prefix {
+  @include recolor-icon(var(--p-icon));
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: $image-size;
+  width: $image-size;
+  border-radius: border-radius();
+
+  // We need the negative margin to ensure that the image does not set
+  // the minimum height of the action item.
+  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.Suffix {
+  @include recolor-icon(var(--p-icon));
+  margin-left: spacing();
+}

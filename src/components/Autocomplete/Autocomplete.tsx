@@ -4,7 +4,7 @@ import type {ActionListItemDescriptor} from '../../types';
 import type {PopoverProps} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
 
-import {ComboBox, ListBox, MappedOption} from './components';
+import {ComboBox, ListBox, MappedOption, MappedAction} from './components';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import type {ComboBoxProps as ComboBoxOldProps} from './components/ComboBoxOld';
 
@@ -119,6 +119,8 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     [allowMultiple, onSelect, selected],
   );
 
+  const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;
+
   return (
     <ComboBox
       activator={textField}
@@ -127,6 +129,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       preferredPosition={preferredPosition}
     >
       <ListBox onSelect={updateSelection}>
+        {actionMarkup}
         {optionsMarkup && (!loading || willLoadMoreResults)
           ? optionsMarkup
           : null}

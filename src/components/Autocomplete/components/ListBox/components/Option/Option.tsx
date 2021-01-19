@@ -1,10 +1,12 @@
-import React, {useRef, useCallback, memo} from 'react';
+import React, {useRef, useCallback, memo, useContext} from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 import {useUniqueId} from '../../../../../../utilities/unique-id';
 import {useListBox} from '../../utilities/hooks/useListBox';
 import {useSection, listBoxWithinSectionDataSelector} from '../Section';
 import {TextOption} from '../TextOption';
+import {UnstyledLink} from '../../../../../UnstyledLink';
+import {MappedActionContext} from '../../../MappedAction';
 
 import styles from './Option.scss';
 
@@ -32,6 +34,9 @@ export const Option = memo(function Option({
   divider,
 }: OptionProps) {
   const {onOptionSelect} = useListBox();
+  const {role, url, external, onAction, destructive, isAction} = useContext(
+    MappedActionContext,
+  );
   const listItemRef = useRef<HTMLLIElement>(null);
   const domId = useUniqueId('ListBoxOption');
   const sectionId = useSection();
@@ -40,7 +45,8 @@ export const Option = memo(function Option({
   const handleOptionClick = useCallback(
     (evt: React.MouseEvent) => {
       evt.preventDefault();
-      if (onOptionSelect && listItemRef.current) {
+      onAction && onAction();
+      if (onOptionSelect && listItemRef.current && !isAction) {
         onOptionSelect({
           domId,
           value,
@@ -49,7 +55,7 @@ export const Option = memo(function Option({
         });
       }
     },
-    [domId, onOptionSelect, value, disabled],
+    [domId, onOptionSelect, value, disabled, onAction, isAction],
   );
 
   // prevents lost of focus on Textfield
@@ -70,11 +76,22 @@ export const Option = memo(function Option({
     [listBoxWithinSectionDataSelector.attribute]: isWithinSection,
   };
 
+  const legacyRoleSupport = role || 'option';
+
+  const contentMarkup = url ? (
+    <UnstyledLink url={url} external={external}>
+      {content}
+    </UnstyledLink>
+  ) : (
+    content
+  );
+
   return (
     <li
       {...sectionAttributes}
       data-within-section={isWithinSection}
       data-listbox-option-value={value}
+      data-listbox-option-destructive={destructive}
       className={classNames(styles.Option, divider && styles.divider)}
       id={domId}
       ref={listItemRef}
@@ -82,12 +99,12 @@ export const Option = memo(function Option({
       onMouseDown={handleMouseDown}
       aria-disabled={disabled}
       onClick={disabled ? undefined : handleOptionClick}
-      role="option"
+      role={legacyRoleSupport}
       aria-label={accessibilityLabel}
       aria-selected={selected}
       data-listbox-option
     >
-      {content}
+      {contentMarkup}
     </li>
   );
 });
