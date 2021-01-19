@@ -9,9 +9,9 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import type {ColorScheme, RoleColors} from '../types';
+import type {ProcessedThemeConfig, RoleColors} from '../types';
 
-const DefaultColorScheme: ColorScheme = 'light';
+const DefaultColorScheme: ProcessedThemeConfig['colorScheme'] = 'light';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -77,41 +77,7 @@ describe('needsVariant', () => {
 });
 
 describe('buildCustomProperties', () => {
-  const legacyCustomProperties = {
-    '--p-frame-offset': '0px',
-    '--top-bar-background': '#eeeeee',
-    '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
-    '--top-bar-border': 'rgb(99, 115, 129)',
-    '--top-bar-color': 'rgb(33, 43, 54)',
-  };
-
-  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toStrictEqual(legacyCustomProperties);
-    expect(colors).not.toStrictEqual(
-      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
-    );
-  });
-
-  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled without defaults', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toStrictEqual(legacyCustomProperties);
-    expect(colors).not.toStrictEqual(
-      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
-    );
-  });
-
-  it('creates new custom properties when newDesignLanguage is enabled but ignores legacy colors', () => {
+  it('creates new custom properties', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -122,17 +88,7 @@ describe('buildCustomProperties', () => {
     expect(colors).not.toContain('--top-bar-background');
   });
 
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is false', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toMatchObject({'--p-frame-offset': '0px'});
-  });
-
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is true', () => {
+  it('creates default custom property of 0px for frameOffset when frameOffset is undefined', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -142,18 +98,7 @@ describe('buildCustomProperties', () => {
     expect(colors).toMatchObject({'--p-frame-offset': '0px'});
   });
 
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is false', () => {
-    const theme = {
-      frameOffset: 60,
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toMatchObject({'--p-frame-offset': '60px'});
-  });
-
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is true', () => {
+  it('creates custom property with value for frameOffset when frameOffset is provided', () => {
     const theme = {
       frameOffset: 80,
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
@@ -209,12 +154,15 @@ describe('buildCustomProperties', () => {
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {
     expect(
-      buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
+      buildThemeContext(
+        {colors: {}, logo: {}, colorScheme: 'light'},
+        {foo: 'bar'},
+      ),
     ).toStrictEqual({
       logo: {},
       cssCustomProperties: 'foo:bar',
       colors: {},
-      colorScheme: undefined,
+      colorScheme: 'light',
     });
   });
 });

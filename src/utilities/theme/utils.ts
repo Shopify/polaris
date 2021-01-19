@@ -4,64 +4,49 @@ import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
 
 import type {HSLColor, HSLAColor} from '../color-types';
-import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
-import {isLight} from '../color-validation';
+import {hslToString} from '../color-transformers';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 
 import {needsVariantList} from './config';
-import type {
-  ThemeConfig,
-  Theme,
-  CustomPropertiesLike,
-  ColorScheme,
-} from './types';
+import type {Theme, ProcessedThemeConfig} from './types';
 
-interface CustomPropertiesConfig extends ThemeConfig {
-  colorScheme: ColorScheme;
-}
+type CustomPropertiesObject = Record<string, string>;
 
 export function buildCustomPropertiesNoMemo(
-  themeConfig: CustomPropertiesConfig,
-  newDesignLanguage: boolean,
+  themeConfig: ProcessedThemeConfig,
   tokens?: Record<string, string>,
-): CustomPropertiesLike {
+): CustomPropertiesObject {
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
-  return newDesignLanguage
-    ? customPropertyTransformer({
-        ...colorFactory(colors, colorScheme, mergedConfig),
-        ...tokens,
-        frameOffset: `${frameOffset}px`,
-      })
-    : {
-        ...buildLegacyColors(themeConfig),
-        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
-      };
+  return customPropertyTransformer({
+    ...colorFactory(colors, colorScheme, mergedConfig),
+    ...tokens,
+    frameOffset: `${frameOffset}px`,
+  });
 }
 
 export function buildThemeContext(
-  themeConfig: ThemeConfig,
-  cssCustomProperties?: CustomPropertiesLike,
+  themeConfig: ProcessedThemeConfig,
+  cssCustomProperties?: CustomPropertiesObject,
 ): Theme {
   const {logo, colors = {}, colorScheme} = themeConfig;
-  const {topBar, ...newDesignLanguageColors} = colors;
   return {
     logo,
     cssCustomProperties: toString(cssCustomProperties),
-    colors: newDesignLanguageColors,
+    colors,
     colorScheme,
   };
 }
 
-export function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesObject) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
       .join(';');
   } else {
-    return undefined;
+    return '';
   }
 }
 
@@ -79,30 +64,6 @@ function customPropertyTransformer(
 
 export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
-}
-
-function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
-  let colorPairs;
-  const colors =
-    theme && theme.colors && theme.colors.topBar
-      ? theme.colors.topBar
-      : {background: '#00848e', backgroundLighter: '#1d9ba4', color: '#f9fafb'};
-
-  const colorKey = 'topBar';
-  const colorKeys = Object.keys(colors);
-
-  if (colorKeys.length > 1) {
-    colorPairs = colorKeys.map((key) => {
-      return [constructColorName(colorKey, key), colors[key]];
-    });
-  } else {
-    colorPairs = parseColors([colorKey, colors]);
-  }
-
-  return colorPairs.reduce(
-    (state, [key, value]) => ({...state, [key]: value}),
-    {},
-  );
 }
 
 export function needsVariant(name: string) {
@@ -177,35 +138,6 @@ export function setTheme(
 
       break;
     default:
-  }
-
-  return colorPairs;
-}
-
-function parseColors([baseName, colors]: [
-  string,
-  {[key: string]: string},
-]): string[][] {
-  const keys = Object.keys(colors);
-  const colorPairs = [];
-  for (const key of keys) {
-    colorPairs.push([constructColorName(baseName, key), colors[key]]);
-
-    if (needsVariant(baseName)) {
-      const hslColor = colorToHsla(colors[key]);
-
-      if (typeof hslColor === 'string') {
-        return colorPairs;
-      }
-
-      const rgbColor = hslToRgb(hslColor);
-
-      if (isLight(rgbColor)) {
-        colorPairs.push(...setTheme(hslColor, baseName, key, 'light'));
-      } else {
-        colorPairs.push(...setTheme(hslColor, baseName, key, 'dark'));
-      }
-    }
   }
 
   return colorPairs;

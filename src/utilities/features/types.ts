@@ -3,6 +3,5 @@ export interface FeaturesConfig {
 }
 
 export interface Features {
-  newDesignLanguage: boolean;
   [key: string]: boolean;
 }
