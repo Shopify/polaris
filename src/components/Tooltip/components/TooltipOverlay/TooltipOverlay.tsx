@@ -12,7 +12,6 @@ import styles from '../../Tooltip.scss';
 export interface TooltipOverlayProps {
   id: string;
   active: boolean;
-  light?: boolean;
   preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
