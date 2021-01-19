@@ -122,7 +122,7 @@ describe('buildCustomProperties', () => {
     expect(colors).not.toContain('--top-bar-background');
   });
 
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is false', () => {
+  it('creates default custom property of 0px for frameOffset when frameOffset is undefined', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -132,19 +132,9 @@ describe('buildCustomProperties', () => {
     expect(colors).toMatchObject({'--p-frame-offset': '0px'});
   });
 
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is true', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, true);
-    expect(colors).toMatchObject({'--p-frame-offset': '0px'});
-  });
-
   it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is false', () => {
     const theme = {
-      frameOffset: 60,
+      frameOffset: '60px',
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
@@ -155,7 +145,7 @@ describe('buildCustomProperties', () => {
 
   it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is true', () => {
     const theme = {
-      frameOffset: 80,
+      frameOffset: '80px',
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };

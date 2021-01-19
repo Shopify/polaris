@@ -648,7 +648,7 @@ function FrameExample() {
         background: '#225062',
       },
     },
-    frameOffset: 60,
+    frameOffset: '60px',
     logo: {
       width: 124,
       topBarSource:

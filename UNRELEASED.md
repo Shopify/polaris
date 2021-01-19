@@ -9,6 +9,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added required `ariaLabel` property in `Sheet` ([#3852](https://github.com/Shopify/polaris-react/pull/3852))
 - Removed `NewDesignLanguage`, `Color`, `AnimationProps` exported types ([#3868](https://github.com/Shopify/polaris-react/pull/3868))
 - Replaced `BaseAction` with `Action` type ([#3868](https://github.com/Shopify/polaris-react/pull/3868))
+- Changed the `frameOffset` prop to accept a string in `ThemeProvider` ([#3883](https://github.com/Shopify/polaris-react/pull/3883))
 
 ### Enhancements
 
