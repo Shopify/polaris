@@ -1,7 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components';
 
 import {UnstyledButton} from '../UnstyledButton';
@@ -295,13 +294,13 @@ describe('<Button />', () => {
     });
   });
 
-  describe('ariaPressed', () => {
+  describe('pressed', () => {
     it('sets an aria-pressed on the button', () => {
       const warningSpy = jest
         .spyOn(console, 'warn')
         .mockImplementation(() => {});
 
-      const button = mountWithAppProvider(<UnstyledButton ariaPressed />);
+      const button = mountWithAppProvider(<UnstyledButton pressed />);
       expect(button.find('button').prop('aria-pressed')).toBeTruthy();
 
       warningSpy.mockRestore();
@@ -445,20 +444,6 @@ describe('<Button />', () => {
       ).find('button');
       trigger(button, 'onKeyDown');
       expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  describe('deprecations', () => {
-    it('warns the ariaPressed prop has been replaced', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-      mountWithApp(<UnstyledButton ariaPressed />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The ariaPressed prop has been replaced with pressed',
-      );
-      warningSpy.mockRestore();
     });
   });
 });

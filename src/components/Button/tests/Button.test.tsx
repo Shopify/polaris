@@ -176,13 +176,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('ariaPressed', () => {
-    it('passes prop', () => {
-      const button = mountWithAppProvider(<Button ariaPressed />);
-      expect(button.find(UnstyledButton).prop('ariaPressed')).toBeTruthy();
-    });
-  });
-
   describe('connectedDisclosure', () => {
     it('connects a disclosure icon button to the button', () => {
       const disclosure = {
@@ -444,15 +437,6 @@ describe('<Button />', () => {
       });
       expect(button).not.toContainReactComponent(UnstyledButton, {
         className: 'Button newDesignLanguage',
-      });
-    });
-  });
-
-  describe('stretchContent', () => {
-    it('sets variant class', () => {
-      const button = mountWithApp(<Button stretchContent />);
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button stretchContent',
       });
     });
   });
