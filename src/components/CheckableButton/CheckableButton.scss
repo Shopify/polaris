@@ -9,6 +9,7 @@ $chekbox-label-margin: rem(20px);
 
 .CheckableButton {
   @include text-style-button;
+  @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
   min-height: $button-min-height;
@@ -20,11 +21,13 @@ $chekbox-label-margin: rem(20px);
   user-select: none;
   text-decoration: none;
   text-align: left;
-  background: transparent;
-  border: var(--p-override-none, border(dark));
   border-radius: var(--p-border-radius-base, border-radius());
   width: 100%;
-  box-shadow: var(--p-override-none, shadow(faint));
+  background: var(--p-surface);
+  box-shadow: var(--p-button-drop-shadow);
+  border: 1px solid var(--p-border-neutral-subdued);
+  border-top-color: var(--p-border-subdued);
+  border-bottom-color: var(--p-border-shadow-subdued);
 
   [data-buttongroup-segmented='true'] & {
     border-top-right-radius: 0;
@@ -32,29 +35,16 @@ $chekbox-label-margin: rem(20px);
     border-right: none;
   }
 
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-interactive));
-    background: var(--p-surface);
-    box-shadow: var(--p-button-drop-shadow);
-    border: 1px solid var(--p-border-neutral-subdued);
-    border-top-color: var(--p-border-subdued);
-    border-bottom-color: var(--p-border-shadow-subdued);
+  &:hover {
+    background: var(--p-action-secondary-hovered);
+  }
 
-    &:hover {
-      background: var(--p-action-secondary-hovered);
-    }
+  &:active {
+    background: var(--p-action-secondary-pressed);
+  }
 
-    &:active {
-      background: var(--p-action-secondary-pressed);
-    }
-    // stylelint-disable-next-line selector-max-class
-    &.CheckableButton-selectMode {
-      font-weight: 500;
-    }
-
-    @media (-ms-high-contrast: active) {
-      border: border-width(base) solid;
-    }
+  @media (-ms-high-contrast: active) {
+    border: border-width(base) solid;
   }
 
   &.CheckableButton-measuring {
@@ -78,14 +68,9 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-plain {
-    border: border(transparent);
     border-radius: border-radius();
     box-shadow: none;
     background: transparent;
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      border: none;
-    }
 
     &:hover {
       background: transparent;
@@ -94,37 +79,24 @@ $chekbox-label-margin: rem(20px);
 
   &.CheckableButton-selectMode {
     @include text-emphasis-subdued;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &.CheckableButton-selected {
     color: var(--p-text, color('indigo'));
-
-    @include page-after-resource-list-small {
-      &:not(.newDesignLanguage) {
-        border-color: color('sky', 'dark');
-      }
-    }
   }
 }
 
 .Checkbox {
   pointer-events: none;
-  height: $control-size;
-  width: $control-size;
-  margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
-
-  .newDesignLanguage & {
-    height: var(--p-choice-size);
-    width: var(--p-choice-size);
-    margin-left: calc(
-      -1 * #{spacing(tight) + rem(1px)} - var(--p-control-border-width)
-    ); // 1px accounts for border
-  }
+  height: var(--p-choice-size);
+  width: var(--p-choice-size);
+  margin-left: calc(
+    -1 * #{spacing(tight) + rem(1px)} - var(--p-control-border-width)
+  ); // 1px accounts for border
 }
 
 .Label {
-  margin-left: $chekbox-label-margin;
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -132,7 +104,5 @@ $chekbox-label-margin: rem(20px);
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: rem(1px) 0;
-  .newDesignLanguage & {
-    margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
-  }
+  margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
 }
