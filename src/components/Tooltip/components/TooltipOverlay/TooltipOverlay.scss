@@ -3,7 +3,7 @@
 $offset-from-activator: rem(4px);
 $content-max-width: rem(200px);
 
-.Tooltip {
+.TooltipOverlay {
   margin: $offset-from-activator spacing() spacing();
   opacity: 1;
   box-shadow: var(--p-popover-shadow);
