@@ -1,6 +1,29 @@
 import './configure';
 
-export * from './types';
+export type {
+  IconSource,
+  HeadingTagName,
+  Error,
+  BaseButton,
+  Action,
+  LinkAction,
+  BadgeAction,
+  BaseCallbackAction,
+  CallbackAction,
+  DisableableAction,
+  DestructableAction,
+  IconableAction,
+  LoadableAction,
+  OutlineableAction,
+  ActionListItemDescriptor,
+  ActionListSection,
+  ComplexAction,
+  MenuActionDescriptor,
+  MenuGroupDescriptor,
+  ConnectedDisclosure,
+  Key,
+  CheckboxHandles,
+} from './types';
 
 export * from './components';
 
