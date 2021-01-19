@@ -19,10 +19,7 @@ function StrictModeToggle({isStrict = false, children}) {
   return <Wrapper>{children}</Wrapper>;
 }
 
-function AppProviderWithKnobs(
-  {newDesignLanguage, colorScheme, children},
-  context,
-) {
+function AppProviderWithKnobs({colorScheme, children}, context) {
   const omitAppProvider = (() => {
     try {
       return children.props['data-omit-app-provider'];
@@ -44,7 +41,6 @@ function AppProviderWithKnobs(
   return (
     <AppProvider
       i18n={enTranslations}
-      features={{newDesignLanguage}}
       theme={{
         colors,
         colorScheme,
@@ -71,11 +67,11 @@ const withContextsDecorator = withContexts([
       {
         default: true,
         name: 'Light Mode',
-        props: {newDesignLanguage: true, colorScheme: 'light'},
+        props: {colorScheme: 'light'},
       },
       {
         name: 'Dark Mode',
-        props: {newDesignLanguage: true, colorScheme: 'dark'},
+        props: {colorScheme: 'dark'},
       },
     ],
   },
