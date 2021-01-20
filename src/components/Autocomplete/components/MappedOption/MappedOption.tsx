@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
 import {ListBox} from '../ListBox';
-import type {ComboBoxProps as ComboBoxOldProps} from '../ComboBoxOld';
+import type {ComboBoxOldProps} from '../../Autocomplete';
 import type {ArrayElement} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 

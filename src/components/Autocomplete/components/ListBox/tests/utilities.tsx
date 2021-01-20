@@ -5,6 +5,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {ComboBoxListBoxContext, ComboBoxListBoxType} from '../../ComboBox';
 import {ListBoxContext} from '../utilities/context/list-box';
+import translations from '../../../../../../locales/en.json';
 
 const defaultContext: React.ContextType<typeof ListBoxContext> = {
   onOptionSelect: noop,
@@ -19,9 +20,12 @@ export function mountWithListBoxProvider(
     context: () => {
       return {context};
     },
-    render: (element: React.ReactElement) => {
+    render(element: React.ReactElement) {
       return (
-        <PolarisTestProvider features={{newDesignLanguage: true}}>
+        <PolarisTestProvider
+          i18n={translations}
+          features={{newDesignLanguage: true}}
+        >
           <ListBoxContext.Provider value={context}>
             {element}
           </ListBoxContext.Provider>

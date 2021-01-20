@@ -1,10 +1,12 @@
 import React from 'react';
 import {mount} from 'test-utilities';
+import {UnstyledLink} from 'components';
 
 import {mountWithListBoxProvider} from '../../../tests/utilities';
 import type {ListBoxContext} from '../../../utilities/context/list-box';
 import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
+import {MappedActionContext} from '../../../../MappedAction';
 
 jest.mock('components', () => ({
   ...jest.requireActual('components'),
@@ -233,6 +235,103 @@ describe('Option', () => {
         role: 'option',
         'aria-label': defaultProps.accessibilityLabel,
       });
+    });
+  });
+
+  describe('role', () => {
+    it('defaults to option', () => {
+      const option = mountWithListBoxProvider(<Option {...defaultProps} />, {
+        ...defaultContext,
+      });
+
+      expect(option).toContainReactComponent('li', {
+        role: 'option',
+      });
+    });
+  });
+
+  describe('MappedAction', () => {
+    it('uses the role provided from MappedAction', () => {
+      const role = 'button';
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            role,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent('li', {
+        role,
+      });
+    });
+
+    it('renders an UnstyledLink when url is supplied', () => {
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            url: 'google.com',
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent(UnstyledLink);
+    });
+
+    it('passes external to UnstyledLink', () => {
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            url: 'google.com',
+            external: true,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent(UnstyledLink, {external: true});
+    });
+
+    it('does not invoke onOptionSelect during click events', () => {
+      const onOptionSelectSpy = jest.fn();
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+          onOptionSelect: onOptionSelectSpy,
+        },
+      );
+
+      option
+        .find('li', {
+          role: 'option',
+        })!
+        .trigger('onClick', {preventDefault: () => {}});
+
+      expect(onOptionSelectSpy).not.toHaveBeenCalled();
     });
   });
 

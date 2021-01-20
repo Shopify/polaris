@@ -32,10 +32,10 @@ describe('Action', () => {
     });
   });
 
-  it('renders a default Icon', () => {
+  it('does not renders a default Icon', () => {
     const action = mountWithListBoxProvider(<Action {...defaultProps} />);
 
-    expect(action).toContainReactComponent(Icon, {
+    expect(action).not.toContainReactComponent(Icon, {
       source: CirclePlusMinor,
     });
   });

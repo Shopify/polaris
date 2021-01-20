@@ -9,6 +9,7 @@ import {
   ComboBoxTextFieldContext,
   ComboBoxProps,
   MappedOption,
+  MappedAction,
 } from '../components';
 import {Autocomplete} from '../Autocomplete';
 
@@ -178,8 +179,32 @@ describe('<Autocomplete/>', () => {
       });
 
       describe('actionBefore', () => {
-        // TODO add after implementation
-        it.todo('impl');
+        it('renders MappedAction', () => {
+          const actionBefore = {
+            accessibilityLabel: 'label',
+            helpText: 'help text',
+            image: '',
+            prefix: null,
+            suffix: null,
+            ellipsis: false,
+            active: false,
+            role: 'option',
+            icon: 'icon',
+            disabled: false,
+            destructive: true,
+            badge: {
+              status: 'new' as const,
+              content: 'new',
+            },
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionBefore={actionBefore} />,
+          );
+
+          triggerFocus(autocomplete.find(ComboBox));
+
+          expect(autocomplete).toContainReactComponent(MappedAction);
+        });
       });
 
       describe('loading', () => {

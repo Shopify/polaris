@@ -41,7 +41,7 @@ interface MappedActionContextType {
 }
 
 export const MappedActionContext = createContext<MappedActionContextType>({
-  isAction: true,
+  isAction: false,
 });
 
 interface MappedAction extends ActionListItemDescriptor {}
