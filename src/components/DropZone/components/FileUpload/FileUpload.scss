@@ -55,7 +55,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
     // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
-      color: color('blue', 'dark');
+      color: var(--p-interactive);
       text-decoration: underline;
     }
   }

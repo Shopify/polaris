@@ -78,7 +78,7 @@ $progress-bar-height: rem(6px);
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: color('white');
+  background-color: var(--p-surface);
   height: $progress-bar-height;
   overflow: hidden;
 }

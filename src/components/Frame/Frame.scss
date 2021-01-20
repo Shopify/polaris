@@ -75,7 +75,7 @@ $skip-vertical-offset: rem(10px);
 
 .NavigationDismiss {
   @include hidden-when-printing;
-  @include recolor-icon(color('white'));
+  @include recolor-icon(var(--p-surface));
   position: absolute;
   top: 0;
   left: 100%;
