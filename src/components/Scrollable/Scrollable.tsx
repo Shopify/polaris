@@ -29,6 +29,8 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   shadow?: boolean;
   /** Slightly hints content upon mounting when scrollable */
   hint?: boolean;
+  /** Adds a tabIndex to scrollable when children are not focusable */
+  focusable?: boolean;
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -108,6 +110,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
       vertical = true,
       shadow,
       hint,
+      focusable,
       onScrolledToBottom,
       ...rest
     } = this.props;
@@ -131,7 +134,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
             {...rest}
             ref={this.setScrollArea}
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={0}
+            tabIndex={focusable ? 0 : undefined}
           >
             {children}
           </div>

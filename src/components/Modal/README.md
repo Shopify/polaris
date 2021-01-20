@@ -631,7 +631,9 @@ function ModalWithScrollListenerExample() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <p>Item #{index}</p>
+              <p>
+                Item <a href="#">#{index}</a>
+              </p>
             </TextContainer>
           </Modal.Section>
         ))}

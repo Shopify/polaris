@@ -12,7 +12,8 @@ $shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size)
   position: relative;
 
   &:focus {
-    outline: none;
+    outline: 2px solid var(--p-focused);
+    outline-offset: 2px;
   }
 }
 
