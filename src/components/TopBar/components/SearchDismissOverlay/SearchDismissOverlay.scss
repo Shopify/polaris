@@ -1,9 +1,6 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$entry-iterations: 1;
-$backdrop-color: rgba(color('ink'), 0.4);
-
 .SearchDismissOverlay {
   position: fixed;
   top: 0;

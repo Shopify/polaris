@@ -141,10 +141,6 @@ $typography-condensed: em(640px);
   }
 }
 
-@mixin text-emphasis-placeholder() {
-  color: color('ink', 'lightest');
-}
-
 @mixin text-emphasis-subdued($for-background: null) {
   color: var(--p-text-subdued);
 }

@@ -36,7 +36,7 @@ $thumbnail-sizes: (
     bottom: 0;
     left: 0;
     display: block;
-    background-color: color('sky');
+    background-color: var(--p-surface-neutral);
     border-radius: border-radius();
 
     @media screen and (-ms-high-contrast: active) {
