@@ -55,17 +55,16 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
     // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
-      color: var(--p-interactive);
+      color: var(--p-interactive-pressed);
       text-decoration: underline;
     }
   }
 }
 
 .ActionTitle-focused {
-  color: var(--p-interactive);
   text-decoration: underline;
 }
 
 .ActionTitle-disabled {
-  color: --p-interactive;
+  color: var(--p-interactive-disabled);
 }
