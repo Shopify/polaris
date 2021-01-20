@@ -25,7 +25,7 @@ describe('buildCustomProperties', () => {
     expect(colors).toMatchObject({'--p-frame-offset': '0px'});
   });
 
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is false', () => {
+  it('creates custom property with value for frameOffset when frameOffset is provided', () => {
     const theme = {
       frameOffset: '60px',
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
@@ -34,17 +34,6 @@ describe('buildCustomProperties', () => {
 
     const colors = buildCustomProperties(theme, false);
     expect(colors).toMatchObject({'--p-frame-offset': '60px'});
-  });
-
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is true', () => {
-    const theme = {
-      frameOffset: '80px',
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, true);
-    expect(colors).toMatchObject({'--p-frame-offset': '80px'});
   });
 
   it('uses light adjustments by default', () => {
