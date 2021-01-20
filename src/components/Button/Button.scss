@@ -431,21 +431,6 @@ $stacking-order: (
 }
 // stylelint-enable selector-max-specificity, selector-max-class
 
-.sizeSlim {
-  min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
-}
-
-.sizeLarge {
-  min-height: $large-min-height;
-  min-width: $large-min-height;
-  padding: $large-vertical-padding rem(24px);
-
-  .Content {
-    @include text-style-button-large;
-  }
-}
-
 .fullWidth {
   @include button-full-width;
 }
@@ -469,6 +454,21 @@ $stacking-order: (
 
   .Icon:only-child {
     margin-right: 0;
+  }
+}
+
+.sizeSlim {
+  min-height: $slim-min-height;
+  padding: $slim-vertical-padding spacing(base-tight);
+}
+
+.sizeLarge {
+  min-height: $large-min-height;
+  min-width: $large-min-height;
+  padding: $large-vertical-padding rem(24px);
+
+  .Content {
+    @include text-style-button-large;
   }
 }
 
@@ -601,7 +601,7 @@ $stacking-order: (
   &.destructive {
     margin-left: rem(1px);
 
-    // stylelint-disable selector-max-class
+    // stylelint-disable-next-line selector-max-class
     &.outline {
       margin-left: 0;
       border-left: 0;
