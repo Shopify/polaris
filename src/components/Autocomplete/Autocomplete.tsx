@@ -53,8 +53,9 @@ export interface AutocompleteProps {
   listTitle?: string;
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
+  // TODO handle
   /** An action to render above the list of options */
-  actionBefore?: ActionListItemDescriptor; // TODO handle
+  actionBefore?: ActionListItemDescriptor;
   /** Display loading state */
   loading?: boolean;
   /** Indicates if more results will load dynamically */
@@ -74,7 +75,8 @@ export interface AutocompleteProps {
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   ComboBox: typeof ComboBox;
-  TextField: typeof ComboBox.TextField; // TODO is this correct?
+  // TODO is this correct?
+  TextField: typeof ComboBox.TextField;
 } = function Autocomplete({
   options,
   selected,

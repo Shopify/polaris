@@ -1,6 +1,6 @@
 import React, {createContext, useMemo} from 'react';
 
-import {Action} from '../ListBox/components/Action';
+import {ListBox} from '../ListBox';
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Icon} from '../../../Icon';
 import {TextStyle} from '../../../TextStyle';
@@ -121,12 +121,16 @@ export function MappedAction({
 
   return (
     <MappedActionContext.Provider value={context}>
-      <Action selected={active} disabled={disabled} value={content || ''}>
+      <ListBox.Action
+        selected={active}
+        disabled={disabled}
+        value={content || ''}
+      >
         {prefixMarkup}
         {contentMarkup}
         {badgeMarkup}
         {suffixMarkup}
-      </Action>
+      </ListBox.Action>
     </MappedActionContext.Provider>
   );
 }

@@ -1,10 +1,9 @@
 import React from 'react';
 
-import {mountWithListBoxProvider} from '../../ListBox/tests/utilities';
+import {ListBox, mountWithListBoxProvider} from '../../ListBox';
 import {MappedAction, MappedActionContext} from '../MappedAction';
 import {Badge} from '../../../../Badge';
 import {Icon} from '../../../../Icon';
-import {ListBox} from '../../ListBox';
 
 describe('MappedAction', () => {
   it('renders badge when provided', () => {
