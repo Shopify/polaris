@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
-import {ListBoxContext} from '../../../utilities/context/list-box';
+import {ListBoxContext} from '../../../../../../../utilities/list-box';
 import {Loading} from '../Loading';
 
 const listBoxContext = {

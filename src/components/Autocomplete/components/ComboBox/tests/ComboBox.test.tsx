@@ -7,7 +7,7 @@ import {ListBox} from '../../ListBox';
 import {
   ComboBoxTextFieldContext,
   ComboBoxListBoxContext,
-} from '../utilities/combo-box';
+} from '../../../../../utilities/combo-box';
 
 describe('<ComboBox />', () => {
   const activator = <TextField onChange={noop} label="" value="" />;

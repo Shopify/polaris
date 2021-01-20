@@ -1,5 +1,6 @@
-import React, {createContext, useMemo} from 'react';
+import React, {useMemo} from 'react';
 
+import {MappedActionContext} from '../../context';
 import {ListBox} from '../ListBox';
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Icon} from '../../../Icon';
@@ -30,19 +31,6 @@ import styles from './MappedAction.scss';
  *                  destructive
  *                  badge {status, content}
  */
-
-interface MappedActionContextType {
-  role?: string;
-  url?: string;
-  external?: boolean;
-  onAction?(): void;
-  destructive?: boolean;
-  isAction: boolean;
-}
-
-export const MappedActionContext = createContext<MappedActionContextType>({
-  isAction: false,
-});
 
 interface MappedAction extends ActionListItemDescriptor {}
 

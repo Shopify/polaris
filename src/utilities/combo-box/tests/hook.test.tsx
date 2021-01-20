@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
-import {useComboBoxTextField, ComboBoxTextFieldContext} from '../combo-box';
+import {useComboBoxTextField} from '../hooks';
+import {ComboBoxTextFieldContext} from '../context';
 
 function TextFieldComponent() {
   const textFieldContext = useComboBoxTextField();

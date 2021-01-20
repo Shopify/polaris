@@ -1,7 +1,7 @@
 import React, {memo, useEffect} from 'react';
 
 import {Spinner} from '../../../../../Spinner';
-import {useListBox} from '../../utilities/hooks/useListBox';
+import {useListBox} from '../../../../../../utilities/list-box';
 
 import styles from './Loading.scss';
 

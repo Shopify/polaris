@@ -1,12 +1,12 @@
 import React from 'react';
 import {mount} from 'test-utilities';
 import {UnstyledLink} from 'components';
+import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
-import {mountWithListBoxProvider} from '../../../tests/utilities';
-import type {ListBoxContext} from '../../../utilities/context/list-box';
+import type {ListBoxContext} from '../../../../../../../utilities/list-box';
 import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
-import {MappedActionContext} from '../../../../MappedAction';
+import {MappedActionContext} from '../../../../../context';
 
 jest.mock('components', () => ({
   ...jest.requireActual('components'),

@@ -1,7 +1,9 @@
 import React from 'react';
+import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
-import {ListBox, mountWithListBoxProvider} from '../../ListBox';
-import {MappedAction, MappedActionContext} from '../MappedAction';
+import {ListBox} from '../../ListBox';
+import {MappedAction} from '../MappedAction';
+import {MappedActionContext} from '../../../context';
 import {Badge} from '../../../../Badge';
 import {Icon} from '../../../../Icon';
 

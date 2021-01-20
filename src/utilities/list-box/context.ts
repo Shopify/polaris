@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 
-import type {NavigableOption} from '../../types';
+import type {NavigableOption} from './types';
 
 export interface ListBoxContextType {
   onOptionSelect(option: NavigableOption): void;

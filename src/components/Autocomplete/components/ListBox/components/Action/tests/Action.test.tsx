@@ -1,11 +1,11 @@
 import React from 'react';
 import {Icon} from 'components';
 import {CirclePlusMinor, AddMajor} from '@shopify/polaris-icons';
+import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
 import {Action} from '../Action';
 import {Option} from '../../Option';
 import {TextOption} from '../../TextOption';
-import {mountWithListBoxProvider} from '../../../tests/utilities';
 
 describe('Action', () => {
   const defaultProps = {

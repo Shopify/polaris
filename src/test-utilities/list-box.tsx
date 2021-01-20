@@ -1,11 +1,15 @@
 import React, {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
-import {PolarisTestProvider} from 'components';
-import {mountWithApp} from 'test-utilities';
 
-import {ComboBoxListBoxContext, ComboBoxListBoxType} from '../../ComboBox';
-import {ListBoxContext} from '../utilities/context/list-box';
-import translations from '../../../../../../locales/en.json';
+import {PolarisTestProvider} from '../components';
+import {ListBoxContext} from '../utilities/list-box';
+import {
+  ComboBoxListBoxContext,
+  ComboBoxListBoxType,
+} from '../utilities/combo-box';
+import translations from '../../locales/en.json';
+
+import {mountWithApp} from './react-testing';
 
 const defaultContext: React.ContextType<typeof ListBoxContext> = {
   onOptionSelect: noop,

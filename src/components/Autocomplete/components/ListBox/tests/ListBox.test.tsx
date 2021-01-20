@@ -3,14 +3,13 @@ import {mountWithApp} from 'test-utilities';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {KeypressListener, Button, Scrollable, VisuallyHidden} from 'components';
 import {Key} from 'types';
-
-import {ListBox} from '../ListBox';
-import {ListBoxContext} from '../utilities/context/list-box';
-
 import {
   mountWithComboBoxListContext,
   mountWithListBoxProvider,
-} from './utilities';
+} from 'test-utilities/list-box';
+
+import {ListBox} from '../ListBox';
+import {ListBoxContext} from '../../../../../utilities/list-box';
 
 const MockComponent = ({enableKeyboardControl = true, ...props}: any) => {
   const [optionState, setOptionState] = useState(false);

@@ -10,7 +10,7 @@ import {TextField} from '../TextField';
 import {
   ComboBoxTextFieldContext,
   ComboBoxTextFieldType,
-} from '../../../utilities/combo-box';
+} from '../../../../../../../utilities/combo-box';
 
 const textFieldContextDefaultValue = {
   activeOptionId: undefined,

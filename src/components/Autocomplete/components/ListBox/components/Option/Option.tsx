@@ -2,11 +2,11 @@ import React, {useRef, useCallback, memo, useContext} from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 import {useUniqueId} from '../../../../../../utilities/unique-id';
-import {useListBox} from '../../utilities/hooks/useListBox';
+import {useListBox} from '../../../../../../utilities/list-box';
 import {useSection, listBoxWithinSectionDataSelector} from '../Section';
 import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../../../UnstyledLink';
-import {MappedActionContext} from '../../../MappedAction';
+import {MappedActionContext} from '../../../../context';
 
 import styles from './Option.scss';
 

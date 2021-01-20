@@ -6,11 +6,11 @@ import {Key} from '../../../types';
 import {
   ComboBox,
   ListBox,
-  ComboBoxTextFieldContext,
   ComboBoxProps,
   MappedOption,
   MappedAction,
 } from '../components';
+import {ComboBoxTextFieldContext} from '../../../utilities/combo-box';
 import {Autocomplete} from '../Autocomplete';
 
 describe('<Autocomplete/>', () => {

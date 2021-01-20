@@ -4,7 +4,7 @@ import {labelID} from '../../../../../Label';
 import {useUniqueId} from '../../../../../../utilities/unique-id';
 import {TextField as PolarisTextField} from '../../../../../TextField';
 import type {TextFieldProps} from '../../../../../TextField';
-import {useComboBoxTextField} from '../../utilities/combo-box';
+import {useComboBoxTextField} from '../../../../../../utilities/combo-box';
 
 export function TextField({
   value,

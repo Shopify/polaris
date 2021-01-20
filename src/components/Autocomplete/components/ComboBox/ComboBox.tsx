@@ -4,14 +4,14 @@ import {Popover} from '../../../Popover';
 import type {PopoverProps} from '../../../Popover';
 import type {TextFieldProps} from '../../../TextField';
 import type {ListBoxProps} from '../ListBox';
-
-import styles from './ComboBox.scss';
 import {
   ComboBoxTextFieldContext,
   ComboBoxTextFieldType,
   ComboBoxListBoxContext,
   ComboBoxListBoxType,
-} from './utilities/combo-box';
+} from '../../../../utilities/combo-box';
+
+import styles from './ComboBox.scss';
 import {TextField} from './components';
 
 export interface ComboBoxProps {
