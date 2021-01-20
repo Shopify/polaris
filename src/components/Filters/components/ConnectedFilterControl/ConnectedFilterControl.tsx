@@ -108,9 +108,7 @@ export class ConnectedFilterControl extends Component<
 
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
-      actionsToRender.length === 0 &&
-        queryFieldHidden &&
-        styles.onlyButtonVisible,
+      actionsToRender.length === 0 && styles.onlyButtonVisible,
     );
 
     const rightActionMarkup = rightAction ? (
