@@ -279,7 +279,11 @@ Use to help merchants find relevant, finer grained data sets.
 function DataTableLinkExample() {
   const rows = [
     [
-      <Link url="https://www.example.com" key="emerald-silk-gown">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -288,7 +292,11 @@ function DataTableLinkExample() {
       '$122,500.00',
     ],
     [
-      <Link url="https://www.example.com" key="mauve-cashmere-scarf">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -297,7 +305,11 @@ function DataTableLinkExample() {
       '$19,090.00',
     ],
     [
-      <Link url="https://www.example.com" key="navy-merino-wool">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -338,7 +350,11 @@ function FullDataTableExample() {
 
   const initiallySortedRows = [
     [
-      <Link url="https://www.example.com" key="emerald-silk-gown">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -347,7 +363,11 @@ function FullDataTableExample() {
       '$121,500.00',
     ],
     [
-      <Link url="https://www.example.com" key="mauve-cashmere-scarf">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -356,7 +376,11 @@ function FullDataTableExample() {
       '$19,090.00',
     ],
     [
-      <Link url="https://www.example.com" key="navy-merino-wool">
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
