@@ -2,7 +2,7 @@
 
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
-$slim-min-height: rem(30px);
+$slim-min-height: rem(28px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
@@ -169,21 +169,14 @@ $stacking-order: (
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
-  @include recolor-icon(color('white'));
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-primary));
-  }
+  @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
-    @include button-filled-disabled(color('indigo'));
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      @include recolor-icon(var(--p-icon-disabled));
-      background: var(--p-action-primary-disabled);
-      color: var(--p-text-disabled);
-      border-color: transparent;
-    }
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-primary-disabled);
+    color: var(--p-text-disabled);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   &.pressed {
@@ -203,17 +196,14 @@ $stacking-order: (
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
   @include button-filled(color('red'), color('red', 'dark'));
-  @include recolor-icon(color('white'));
+  @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
-    @include button-filled-disabled(color('red'));
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      @include recolor-icon(var(--p-icon-disabled));
-      background: var(--p-action-critical-disabled);
-      color: var(--p-text-disabled);
-      border-color: transparent;
-    }
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-critical-disabled);
+    color: var(--p-text-disabled);
+    box-shadow: none;
+    border-color: transparent;
   }
 
   &.pressed {
@@ -223,10 +213,6 @@ $stacking-order: (
       $destructive-pressed-dark,
       $destructive-pressed-darkest
     );
-  }
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-critical));
   }
 }
 
@@ -262,11 +248,9 @@ $stacking-order: (
   }
 }
 
-.loading,
-.newDesignLanguage.loading {
+.loading {
   position: relative;
 
-  // stylelint-disable-next-line selector-max-class
   &,
   &:hover,
   &.disabled {
@@ -274,8 +258,7 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable-next-line selector-max-class, selector-max-specificity
-.newDesignLanguage.loading.disabled svg {
+.loading.disabled svg {
   fill: var(--p-icon-subdued);
 }
 
@@ -447,15 +430,6 @@ $stacking-order: (
 .sizeSlim {
   min-height: $slim-min-height;
   padding: $slim-vertical-padding spacing(base-tight);
-
-  &.newDesignLanguage {
-    // Local override for slim button height and padding
-    $slim-min-height: rem(28px);
-    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
-      2;
-    min-height: $slim-min-height;
-    padding: $slim-vertical-padding spacing(base-tight);
-  }
 }
 
 .sizeLarge {
@@ -531,11 +505,6 @@ $stacking-order: (
   }
 
   &.plain {
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      color: currentColor;
-    }
-
     // stylelint-disable selector-max-class, max-nesting-depth
     .Text {
       text-decoration: underline;
@@ -547,6 +516,8 @@ $stacking-order: (
     position: relative;
     border-color: currentColor;
     // stylelint-disable selector-max-class
+    box-shadow: 0 0 0 border-width('base') currentColor;
+    @include focus-ring($border-width: rem(2px));
 
     &::before {
       content: '';
@@ -563,9 +534,10 @@ $stacking-order: (
     &.pressed {
       background: transparent;
       box-shadow: none;
+      color: currentColor;
 
       &::before {
-        opacity: 0.05;
+        opacity: 0.2;
       }
     }
 
@@ -581,36 +553,18 @@ $stacking-order: (
 
     &:focus {
       box-shadow: 0 0 0 1px currentColor;
+      @include focus-ring($style: 'focused');
     }
 
-    &.newDesignLanguage {
-      border-color: currentColor;
-      box-shadow: 0 0 0 border-width('base') currentColor;
-      @include focus-ring($border-width: rem(2px));
+    &:active::after {
+      box-shadow: none;
+    }
 
-      &:focus {
-        @include focus-ring($style: 'focused');
-      }
-
-      &:active::after {
-        box-shadow: none;
-      }
-
-      &:hover,
-      &:active {
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          opacity: 0.05;
-        }
-      }
-
-      &.pressed {
-        color: currentColor;
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          opacity: 0.2;
-        }
+    &:hover,
+    &:active {
+      // stylelint-disable-next-line max-nesting-depth
+      &::before {
+        opacity: 0.05;
       }
     }
     // stylelint-enable selector-max-class
@@ -639,26 +593,19 @@ $stacking-order: (
     z-index: z-index(focused, $stacking-order);
   }
 
-  &.newDesignLanguage {
+  &.primary,
+  &.destructive {
+    margin-left: rem(1px);
+
+    &.outline {
+      margin-left: 0;
+      border-left: 0;
+    }
+  }
+
+  &::after {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-
-    // stylelint-disable selector-max-class, selector-max-specificity
-    &.primary,
-    &.destructive {
-      margin-left: rem(1px);
-
-      &.outline {
-        margin-left: 0;
-        border-left: 0;
-      }
-    }
-    // stylelint-enable selector-max-class, selector-max-specificity
-
-    &::after {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
   }
 }
 // stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

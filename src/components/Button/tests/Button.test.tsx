@@ -420,24 +420,4 @@ describe('<Button />', () => {
       expect(disclosureIcon.props().source).toBe(SelectMinor);
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(button).not.toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
-    });
-  });
 });
