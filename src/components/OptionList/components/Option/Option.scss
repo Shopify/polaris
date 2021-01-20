@@ -77,7 +77,7 @@ $control-vertical-adjustment: rem(2px);
   width: $control-size;
   height: $control-size;
   margin-right: spacing(tight);
-  margin-left: calc(-1 * var(--p-choice-margin));
+  margin-left: calc(-1 * rem(1px));
 }
 
 .disabled {
