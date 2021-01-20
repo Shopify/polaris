@@ -598,7 +598,7 @@ $stacking-order: (
   &.destructive {
     margin-left: rem(1px);
 
-    // stylelint-disable selector-max-class
+    // stylelint-disable-next-line selector-max-class
     &.outline {
       margin-left: 0;
       border-left: 0;
