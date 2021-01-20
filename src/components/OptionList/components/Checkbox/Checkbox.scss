@@ -3,7 +3,7 @@
 .Checkbox {
   position: relative;
   width: 100%;
-  margin: var(--p-choice-margin);
+  margin: rem(1px);
 
   // stylelint-disable-next-line selector-max-class
   &.active .Backdrop {

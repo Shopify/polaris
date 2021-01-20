@@ -2,7 +2,7 @@
 
 .Checkbox {
   position: relative;
-  margin: var(--p-choice-margin, 0);
+  margin: rem(1px);
 }
 
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
