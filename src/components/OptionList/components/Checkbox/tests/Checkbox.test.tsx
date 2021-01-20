@@ -41,9 +41,7 @@ describe('<Checkbox />', () => {
 
   describe('Focus className', () => {
     it('on keyUp adds a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox onChange={noop} />, {
-        features: {newDesignLanguage: true},
-      });
+      const checkbox = mountWithApp(<Checkbox onChange={noop} />);
 
       const event: KeyboardEventInit & {keyCode: Key} = {
         keyCode: Key.Space,
