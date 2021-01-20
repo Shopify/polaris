@@ -8,14 +8,20 @@ $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body))
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 @mixin banner-variants() {
-  @include focus-ring('wide');
   --p-banner-background: var(--p-background);
   --p-banner-border: var(--p-banner-border-default);
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  border-radius: var(--p-border-radius-wide);
   box-shadow: var(--p-banner-border);
-  background-color: var(--p-banner-background);
+
+  @if $in-page {
+    @include focus-ring('wide');
+    border-radius: var(--p-border-radius-wide);
+    background-color: var(--p-banner-background);
+  } @else {
+    @include focus-ring('base');
+    border-radius: var(--p-border-radius-base);
+  }
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
