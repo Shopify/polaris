@@ -314,6 +314,8 @@ $stacking-order: (
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     text-decoration: underline;
+    background: transparent;
+    box-shadow: none;
   }
 
   &.pressed,
@@ -353,6 +355,7 @@ $stacking-order: (
 
   &.disabled {
     color: var(--p-text-disabled);
+    background: transparent;
 
     &.loading {
       color: transparent;
@@ -387,8 +390,8 @@ $stacking-order: (
   }
 
   &.iconOnly {
-    margin: -0.5 * ($min-height - icon-size());
     @include recolor-icon(var(--p-icon));
+    margin: -0.5 * ($min-height - icon-size());
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));
