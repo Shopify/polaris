@@ -239,25 +239,6 @@ function getColorType(color: string): ColorType {
   }
 }
 
-export function hslToString(hslColor: HSLColor | HSLAColor | string) {
-  if (typeof hslColor === 'string') {
-    return hslColor;
-  }
-
-  const alpha = 'alpha' in hslColor ? hslColor.alpha : 1;
-  const {hue, lightness, saturation} = hslColor;
-  return `hsla(${roundNumberToDecimalPlaces(
-    hue,
-    2,
-  )}, ${roundNumberToDecimalPlaces(
-    saturation,
-    2,
-  )}%, ${roundNumberToDecimalPlaces(
-    lightness,
-    2,
-  )}%, ${roundNumberToDecimalPlaces(alpha, 2)})`;
-}
-
 function rgbToObject(color: string): RGBAColor {
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
