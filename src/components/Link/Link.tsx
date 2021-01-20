@@ -20,6 +20,8 @@ export interface LinkProps {
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
+  /** Removes text decoration underline to the link*/
+  removeUnderline?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
@@ -33,6 +35,7 @@ export function Link({
   external,
   id,
   monochrome,
+  removeUnderline,
   accessibilityLabel,
 }: LinkProps) {
   const i18n = useI18n();
@@ -63,6 +66,7 @@ export function Link({
         const className = classNames(
           styles.Link,
           shouldBeMonochrome && styles.monochrome,
+          removeUnderline && styles.removeUnderline,
         );
 
         return url ? (

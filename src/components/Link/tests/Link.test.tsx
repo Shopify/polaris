@@ -140,4 +140,12 @@ describe('<Link />', () => {
       });
     });
   });
+
+  describe('removesUnderline', () => {
+    it('adds removeUnderline class to the link', () => {
+      const link = mountWithAppProvider(<Link removeUnderline>Test</Link>);
+
+      expect(link.find('button').hasClass('removeUnderline')).toBe(true);
+    });
+  });
 });
