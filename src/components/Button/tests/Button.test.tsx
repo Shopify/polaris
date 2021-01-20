@@ -371,7 +371,7 @@ describe('<Button />', () => {
   });
 
   describe('pressed', () => {
-    const buttonPressedClasses = 'Button newDesignLanguage pressed';
+    const buttonPressedClasses = 'Button pressed';
 
     it('outputs a pressed button', () => {
       const button = mountWithApp(<Button pressed />);

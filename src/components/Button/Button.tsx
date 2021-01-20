@@ -119,14 +119,12 @@ export function Button({
   fullWidth,
   connectedDisclosure,
 }: ButtonProps) {
-  const newDesignLanguage = true;
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
-    newDesignLanguage && styles.newDesignLanguage,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -199,7 +197,6 @@ export function Button({
       styles.iconOnly,
       styles.ConnectedDisclosure,
       monochrome && styles.monochrome,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const defaultLabel = i18n.translate(
