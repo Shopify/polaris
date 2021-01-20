@@ -89,10 +89,9 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {theme = {}, children} = this.props;
 
     const {intl, link} = this.state;
-    const features = {newDesignLanguage: true, ...this.props.features};
 
     return (
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={this.props.features || {}}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>

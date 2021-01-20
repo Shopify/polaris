@@ -11,7 +11,6 @@ import {
   handleMouseUpByBlurring,
   MouseUpBlurHandler,
 } from '../../utilities/focus';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
@@ -120,7 +119,7 @@ export function Button({
   fullWidth,
   connectedDisclosure,
 }: ButtonProps) {
-  const {newDesignLanguage} = useFeatures();
+  const newDesignLanguage = true;
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;

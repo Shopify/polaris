@@ -2,7 +2,7 @@ import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
 import {findFirstFocusableNode} from '../../../../utilities/focus';
-import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
+import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -50,7 +50,7 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
-  colorScheme?: InversableColorScheme;
+  colorScheme?: NonNullable<ThemeProviderProps['theme']>['colorScheme'];
   autofocusTarget?: PopoverAutofocusTarget;
 }
 

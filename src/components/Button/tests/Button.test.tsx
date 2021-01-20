@@ -371,7 +371,7 @@ describe('<Button />', () => {
   });
 
   describe('pressed', () => {
-    const buttonPressedClasses = 'Button pressed';
+    const buttonPressedClasses = 'Button newDesignLanguage pressed';
 
     it('outputs a pressed button', () => {
       const button = mountWithApp(<Button pressed />);
@@ -418,26 +418,6 @@ describe('<Button />', () => {
       const button = mountWithAppProvider(<Button disclosure="select" />);
       const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
       expect(disclosureIcon.props().source).toBe(SelectMinor);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(button).not.toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
     });
   });
 });
