@@ -142,7 +142,7 @@ describe('<Link />', () => {
   });
 
   describe('removesUnderline', () => {
-    it('passes prop to the button url is not provided', () => {
+    it('adds removeUnderline class to the link', () => {
       const link = mountWithAppProvider(<Link removeUnderline>Test</Link>);
 
       expect(link.find('button').hasClass('removeUnderline')).toBe(true);
