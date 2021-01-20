@@ -7,7 +7,7 @@ $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
-@mixin banner-variants() {
+@mixin banner-variants($in-page) {
   --p-banner-background: var(--p-background);
   --p-banner-border: var(--p-banner-border-default);
   transition: box-shadow duration() easing();
@@ -166,7 +166,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     padding-right: spacing();
   }
 
-  @include banner-variants;
+  @include banner-variants(false);
 
   + .Banner {
     margin-top: spacing(tight);
@@ -188,7 +188,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     margin-top: $bannerOffset;
   }
 
-  @include banner-variants;
+  @include banner-variants(true);
 
   + .Banner {
     margin-top: spacing(loose);
