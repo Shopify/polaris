@@ -84,7 +84,7 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-selected {
-    color: var(--p-text, color('indigo'));
+    color: var(--p-text);
   }
 }
 

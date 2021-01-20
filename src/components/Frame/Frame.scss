@@ -7,7 +7,7 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: var(--p-background, color('sky', 'light'));
+  background-color: var(--p-background);
 
   @include when-printing {
     background-color: transparent;
