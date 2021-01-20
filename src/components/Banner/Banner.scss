@@ -182,7 +182,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     margin-top: $bannerOffset;
   }
 
-  @include banner-variants(true);
+  @include banner-variants;
 
   + .Banner {
     margin-top: spacing(loose);
