@@ -1030,7 +1030,8 @@ function findTrack(containerComponent: ReactWrapper) {
 function mockGetBoundingClientRect(): ReturnType<
   Element['getBoundingClientRect']
 > {
-  const thumbSize = 16; // Match thumbSize set in DualThumb.tsx
+  // Match thumbSize set in DualThumb.tsx
+  const thumbSize = 16;
 
   return {
     width: 100 + thumbSize,
