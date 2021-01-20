@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$control-size: rem(16px);
+$control-size: rem(20px);
 
 .ChoiceList {
   margin: 0;
@@ -20,9 +20,7 @@ $control-size: rem(16px);
 
 .ChoiceChildren {
   margin-bottom: spacing(tight);
-  padding-left: calc(
-    #{spacing(tight)} + var(--p-choice-size, #{$control-size})
-  );
+  padding-left: calc(#{spacing(tight)} + $control-size);
 }
 
 .ChoiceError {

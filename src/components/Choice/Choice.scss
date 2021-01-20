@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$control-size: rem(16px);
+$control-size: rem(20px);
 
 // Need to push the control down just a little to have it appear
 // vertically centered with the label.
@@ -46,9 +46,8 @@ $control-vertical-adjustment: rem(2px);
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  width: var(--p-choice-size, $control-size);
-  height: var(--p-choice-size, $control-size);
-  margin-top: var(--p-override-none, $control-vertical-adjustment);
+  width: $control-size;
+  height: $control-size;
   margin-right: spacing(tight);
 
   > * {
@@ -66,9 +65,7 @@ $control-vertical-adjustment: rem(2px);
 }
 
 .Descriptions {
-  padding-left: calc(
-    #{spacing(tight)} + var(--p-choice-size, #{$control-size})
-  );
+  padding-left: calc(#{spacing(tight)} + $control-size);
 }
 
 .HelpText {

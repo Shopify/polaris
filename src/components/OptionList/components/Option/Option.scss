@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 $min-height: control-height();
+$control-size: rem(20px);
 $control-vertical-adjustment: rem(2px);
 
 .Option {
@@ -73,8 +74,8 @@ $control-vertical-adjustment: rem(2px);
   box-sizing: border-box;
   display: flex;
   flex-shrink: 0;
-  width: var(--p-choice-size);
-  height: var(--p-choice-size);
+  width: $control-size;
+  height: $control-size;
   margin-right: spacing(tight);
   margin-left: calc(-1 * var(--p-choice-margin));
 }

@@ -4,8 +4,8 @@ $button-min-height: control-height();
 
 $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) /
   2;
-$control-size: rem(16px);
-$chekbox-label-margin: rem(20px);
+$control-size: rem(20px);
+$control-border-width: rem(2px);
 
 .CheckableButton {
   @include text-style-button;
@@ -90,10 +90,10 @@ $chekbox-label-margin: rem(20px);
 
 .Checkbox {
   pointer-events: none;
-  height: var(--p-choice-size);
-  width: var(--p-choice-size);
+  height: $control-size;
+  width: $control-size;
   margin-left: calc(
-    -1 * #{spacing(tight) + rem(1px)} - var(--p-control-border-width)
+    -1 * #{spacing(tight) + rem(1px)} - #{$control-border-width}
   ); // 1px accounts for border
 }
 
@@ -105,5 +105,5 @@ $chekbox-label-margin: rem(20px);
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: rem(1px) 0;
-  margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
+  margin-left: calc(#{$control-size} - #{$control-border-width});
 }
