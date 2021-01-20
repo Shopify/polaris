@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 export interface ComboBoxTextFieldType {
   // Value for the TextField aria-activedescendant. (also on list context when not in combobox)
@@ -36,10 +36,8 @@ export interface ComboBoxListBoxType {
   onKeyToBottom?(): void;
 }
 
-export const ComboBoxTextFieldContext = React.createContext<
+export const ComboBoxTextFieldContext = createContext<
   ComboBoxTextFieldType | undefined
 >(undefined);
 
-export const ComboBoxListBoxContext = React.createContext<ComboBoxListBoxType>(
-  {},
-);
+export const ComboBoxListBoxContext = createContext<ComboBoxListBoxType>({});

@@ -1,11 +1,11 @@
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useState, useCallback, useMemo, Children} from 'react';
 
 import {Popover} from '../../../Popover';
 import type {PopoverProps} from '../../../Popover';
 import type {TextFieldProps} from '../../../TextField';
 import type {ListBoxProps} from '../ListBox';
 
-import * as styles from './ComboBox.scss';
+import styles from './ComboBox.scss';
 import {
   ComboBoxTextFieldContext,
   ComboBoxTextFieldType,
@@ -34,9 +34,7 @@ export function ComboBox({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listBoxId, setListBoxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
-  const shouldOpen = Boolean(
-    !popoverActive && React.Children.count(children) > 0,
-  );
+  const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
 
   const onOptionSelected = useCallback(() => {
     if (!allowMultiple) {
@@ -129,7 +127,7 @@ export function ComboBox({
       preferredPosition={preferredPosition}
     >
       <Popover.Pane onScrolledToBottom={onScrolledToBottom}>
-        {React.Children.count(children) > 0 ? (
+        {Children.count(children) > 0 ? (
           <ComboBoxListBoxContext.Provider value={listBoxContextValue}>
             <div className={styles.ListBox}>{children}</div>
           </ComboBoxListBoxContext.Provider>

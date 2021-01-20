@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {NavigableOption} from '../../types';
 
@@ -7,6 +7,6 @@ export interface ListBoxContextType {
   setLoading(label?: string): void;
 }
 
-export const ListBoxContext = React.createContext<
-  ListBoxContextType | undefined
->(undefined);
+export const ListBoxContext = createContext<ListBoxContextType | undefined>(
+  undefined,
+);
