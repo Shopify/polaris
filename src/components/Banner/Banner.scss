@@ -210,7 +210,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .hasDismiss {
-  padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  padding-right: calc(#{2 * spacing()} + rem('10px'));
 }
 
 .Heading {
