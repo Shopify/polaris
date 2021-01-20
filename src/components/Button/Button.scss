@@ -7,60 +7,9 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
-// darken(color(sky, dark), 4%)
-$pressed-border-color: rgb(184, 195, 205);
-// darken(color(sky), 2%)
-$pressed-hover-background: rgb(217, 222, 228);
-// darken(color(sky), 4%)
-$pressed-active-background: rgb(211, 217, 223);
-// darken(color('indigo'), 10%)
-$primary-pressed-lightest: rgb(63, 78, 174);
-// darken(color('indigo'), 12%)
-$primary-pressed-light: rgb(60, 75, 167);
-// darken(color('indigo', 'dark'), 15%)
-$primary-pressed-dark: rgb(16, 23, 60);
-// darken(color('indigo', 'dark'), 20%)
-$primary-pressed-darkest: rgb(11, 15, 39);
-// darken(color('red'), 10%)
-$destructive-pressed-lightest: rgb(176, 43, 19);
-// darken(color('red'), 12%)
-$destructive-pressed-light: rgb(167, 41, 18);
-// darken(color('red', 'dark'), 15%)
-$destructive-pressed-dark: rgb(117, 4, 10);
-// darken(color('red', 'dark'), 20%)
-$destructive-pressed-darkest: rgb(93, 3, 8);
+
 $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
-
-@mixin pressed-box-shadow($color: transparent) {
-  box-shadow: 0 0 0 1px $color,
-    inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-    inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.1);
-}
-
-@mixin button-filled-pressed(
-  $color-lightest,
-  $color-light,
-  $color-dark,
-  $color-darkest
-) {
-  background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-  border-color: $color-dark;
-  box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-
-  &:focus,
-  &:hover {
-    background: linear-gradient(to bottom, $color-light, $color-light);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-  }
-
-  &:active {
-    background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-darkest;
-  }
-}
 
 $stacking-order: (
   segment: 10,
@@ -178,15 +127,6 @@ $stacking-order: (
     border-color: transparent;
     box-shadow: none;
   }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $primary-pressed-lightest,
-      $primary-pressed-light,
-      $primary-pressed-dark,
-      $primary-pressed-darkest
-    );
-  }
 }
 
 .destructive {
@@ -205,15 +145,6 @@ $stacking-order: (
     box-shadow: none;
     border-color: transparent;
   }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $destructive-pressed-lightest,
-      $destructive-pressed-light,
-      $destructive-pressed-dark,
-      $destructive-pressed-darkest
-    );
-  }
 }
 
 .outline {
@@ -226,15 +157,6 @@ $stacking-order: (
 
 .destructive.outline {
   @include button-outline(color('red'));
-
-  // stylelint-disable-next-line selector-max-class
-  &.pressed {
-    @include button-outline(
-      color('red', 'dark'),
-      rgba(color('red', 'dark'), 0.03)
-    );
-    @include recolor-icon(color('red', 'darker'));
-  }
 }
 
 .disabled {
@@ -260,34 +182,6 @@ $stacking-order: (
 
 .loading.disabled svg {
   fill: var(--p-icon-subdued);
-}
-
-.pressed {
-  background: color(sky);
-  border-color: $pressed-border-color;
-  @include pressed-box-shadow;
-
-  &:hover {
-    background: $pressed-hover-background;
-    border-color: $pressed-border-color;
-    @include pressed-box-shadow;
-  }
-
-  &:focus {
-    border-color: color('indigo');
-    @include pressed-box-shadow(color('indigo'));
-  }
-
-  &:active {
-    background: $pressed-active-background;
-    border-color: $pressed-border-color;
-    @include pressed-box-shadow;
-  }
-
-  @media (-ms-high-contrast: active) {
-    color: ms-high-contrast-color('button-text');
-    background: ms-high-contrast-color('button-text-background');
-  }
 }
 
 // The way the designs work, we need to do lots of reaching down to
