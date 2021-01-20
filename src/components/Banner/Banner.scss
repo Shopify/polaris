@@ -166,7 +166,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     padding-right: spacing();
   }
 
-  @include banner-variants;
+  @include banner-variants(false);
 
   + .Banner {
     margin-top: spacing(tight);
