@@ -217,6 +217,8 @@ $stacking-order: (
     @include recolor-icon(var(--p-interactive-pressed));
     color: var(--p-interactive-pressed);
     @include high-contrast-button-outline(none);
+    background: transparent;
+    box-shadow: none;
   }
 
   &:focus {
@@ -249,7 +251,6 @@ $stacking-order: (
 
   &.disabled {
     color: var(--p-text-disabled);
-    background: transparent;
 
     &.loading {
       color: transparent;
