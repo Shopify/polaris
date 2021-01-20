@@ -405,9 +405,7 @@ describe('<PopoverOverlay />', () => {
         </PopoverOverlay>,
       );
 
-      expect(document.activeElement?.className).toBe(
-        'Pane Scrollable vertical',
-      );
+      expect(document.activeElement?.className).toBe('Content');
     });
 
     it('does not focus when autofocusTarget is set to None', () => {
