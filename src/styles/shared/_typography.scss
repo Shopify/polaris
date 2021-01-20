@@ -146,10 +146,7 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-subdued($for-background: null) {
-  color: var(
-    --p-text-subdued,
-    color('ink', 'lighter', $for-background: $for-background)
-  );
+  color: var(--p-text-subdued);
 }
 
 @mixin text-emphasis-strong {
@@ -158,7 +155,7 @@ $typography-condensed: em(640px);
 
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: 400;
-  color: var(--p-text, color(ink, $for-background: $for-background));
+  color: var(--p-text);
 }
 
 @mixin text-breakword {

@@ -31,39 +31,39 @@ $stacking-order: (
 .focused .Input,
 .Input:focus {
   border: none;
-  color: var(--p-text, color('ink'));
+  color: var(--p-text);
 
   &::placeholder {
-    color: var(--p-text-subdued, color('ink', 'lightest'));
+    color: var(--p-text-subdued);
   }
 }
 
 .Input:focus {
   ~ .Backdrop {
     @include focus-ring($style: 'focused');
-    background-color: var(--p-on-surface-background, color('white'));
+    background-color: var(--p-on-surface-background);
   }
 
   ~ .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border, transparent);
+    border: 1px solid var(--top-bar-border);
   }
 
   ~ .Icon {
-    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon));
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: var(--p-on-surface-background, color('white'));
+    background-color: var(--p-on-surface-background);
   }
 
   .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border, transparent);
+    border: 1px solid var(--top-bar-border);
   }
 
   .Icon {
-    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon));
   }
 }
 
@@ -76,13 +76,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--p-text, var(--top-bar-color));
+  color: var(--p-text);
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--p-text, var(--top-bar-color));
+    color: var(--p-text);
     transition: (duration() - 33ms) color easing() 33ms;
   }
 
@@ -93,7 +93,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon, var(--top-bar-color)));
+  @include recolor-icon(var(--p-icon));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -109,7 +109,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+  @include recolor-icon(var(--p-icon));
   @include focus-ring($size: 'wide');
   position: relative;
   z-index: z-index(action, $stacking-order);
@@ -120,7 +120,7 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+    @include recolor-icon(var(--p-icon-hovered));
     outline: none;
   }
 
