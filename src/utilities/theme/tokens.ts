@@ -15,41 +15,9 @@ export const Tokens = {
   buttonDropShadow: '0 1px 0 rgba(0, 0, 0, 0.05)',
   buttonInnerShadow: 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
   buttonPressedInnerShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
-
-  // Overrides
-  buttonFontWeight: '500',
-  choiceSize: rem('20px'),
-  iconSize: rem('10px'),
-  choiceMargin: rem('1px'),
-  controlBorderWidth: rem('2px'),
-  bannerBorderDefault: buildBannerBorder('--p-border-neutral-subdued'),
-  bannerBorderSuccess: buildBannerBorder('--p-border-success-subdued'),
-  bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
-  bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
-  bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
-  badgeMixBlendMode: 'luminosity',
-  thinBorderSubdued: `${rem('1px')} solid var(--p-border-subdued)`,
-  textFieldSpinnerOffset: rem('2px'),
-  textFieldFocusRingOffset: rem('-4px'),
-  textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('-1px'),
-  duration100: '100ms',
-  duration150: '150ms',
-  easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
-  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  rangeSliderThumbSizeBase: rem('16px'),
-  rangeSliderThumbSizeActive: rem('24px'),
-  rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '400',
 };
 
 function rem(px: string) {
   const baseFontSize = 10;
   return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
-function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('1px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '1px',
-  )} var(${cssVar})`;
 }
