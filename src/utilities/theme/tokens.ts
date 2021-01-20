@@ -17,14 +17,7 @@ export const Tokens = {
   buttonPressedInnerShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
 
   // Overrides
-  overrideNone: 'none',
-  overrideTransparent: 'transparent',
-  overrideOne: '1',
-  overrideVisible: 'visible',
-  overrideZero: '0',
-  overrideLoadingZIndex: '514',
   buttonFontWeight: '500',
-  nonNullContent: "''",
   choiceSize: rem('20px'),
   iconSize: rem('10px'),
   choiceMargin: rem('1px'),
