@@ -10,7 +10,6 @@ import {classNames} from '../../utilities/css';
 import {ResourceListContext} from '../../utilities/resource-list';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
-import {useFeatures} from '../../utilities/features';
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
@@ -99,7 +98,6 @@ export interface FiltersProps {
 type CombinedProps = FiltersProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -608,14 +606,6 @@ function getShortcutFilters(filters: FilterInterface[]) {
 export function Filters(props: FiltersProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
-  const features = useFeatures();
 
-  return (
-    <FiltersInner
-      {...props}
-      i18n={i18n}
-      mediaQuery={mediaQuery}
-      features={features}
-    />
-  );
+  return <FiltersInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }
