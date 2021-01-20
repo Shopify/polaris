@@ -387,6 +387,7 @@ $stacking-order: (
   }
 
   &.iconOnly {
+    margin: -0.5 * ($min-height - icon-size());
     @include recolor-icon(var(--p-icon));
 
     &:hover {
