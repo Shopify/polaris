@@ -123,7 +123,6 @@
   box-shadow: none;
   color: var(--p-text);
   @include focus-ring($border-width: border-width('base'));
-  @include recolor-icon(darken($outline-color, 20%));
 
   &:hover {
     border: border-width() solid var(--p-border);
