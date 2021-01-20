@@ -7,36 +7,24 @@ $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
-@mixin banner-attributes($highlight, $background, $in-page, $tint) {
+@mixin banner-variants($in-page) {
+  --p-banner-background: var(--p-background);
+  --p-banner-border: var(--p-banner-border-default);
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
+  box-shadow: var(--p-banner-border);
+
+  @if $in-page {
+    @include focus-ring('wide');
+    border-radius: var(--p-border-radius-wide);
+    background-color: var(--p-banner-background);
+  } @else {
+    @include focus-ring('base');
+    border-radius: var(--p-border-radius-base);
+  }
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
-  }
-
-  @if $in-page {
-    border-radius: var(
-      --p-border-radius-wide,
-      0 0 border-radius() border-radius()
-    );
-    box-shadow: var(
-      --p-banner-border,
-      inset 0 $accent-height 0 0 $highlight,
-      inset shadow(transparent),
-      shadow()
-    );
-    @include focus-ring('wide');
-  } @else {
-    box-shadow: var(--p-banner-border, none);
-    border-radius: var(--p-border-radius-base, border-radius());
-    @include focus-ring('base');
-  }
-
-  @if $tint {
-    background-color: var(--p-banner-background, mix(white, $background, 44%));
-  } @else {
-    background-color: var(--p-banner-background, $background);
   }
 
   &:focus {
@@ -44,71 +32,28 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   &.keyFocused {
-    box-shadow: var(
-      --p-banner-border,
-      (
-        inset 0 $accent-height 0 0 $highlight,
-        inset 0 0 0 $accent-height $highlight,
-        shadow()
-      )
-    );
-
+    box-shadow: var(--p-banner-border);
     @include focus-ring('wide', $style: 'focused');
   }
-}
-
-@mixin banner-variants($in-page: false) {
-  --p-banner-background: var(--p-background);
-  --p-banner-border: var(--p-banner-border-default);
-  @include banner-attributes(
-    var(--p-border, color('ink', 'lighter')),
-    color('sky', 'light'),
-    $in-page,
-    false
-  );
 
   &.statusSuccess {
     --p-banner-background: var(--p-surface-success-subdued);
     --p-banner-border: var(--p-banner-border-success);
-    @include banner-attributes(
-      var(--p-override-none, color('green')),
-      color('green', 'lighter'),
-      $in-page,
-      true
-    );
   }
 
   &.statusInfo {
     --p-banner-background: var(--p-surface-highlight-subdued);
     --p-banner-border: var(--p-banner-border-highlight);
-    @include banner-attributes(
-      var(--p-override-none, color('teal')),
-      color('teal', 'lighter'),
-      $in-page,
-      true
-    );
   }
 
   &.statusWarning {
     --p-banner-background: var(--p-surface-warning-subdued);
     --p-banner-border: var(--p-banner-border-warning);
-    @include banner-attributes(
-      var(--p-override-none, color('yellow')),
-      color('yellow', 'lighter'),
-      $in-page,
-      true
-    );
   }
 
   &.statusCritical {
     --p-banner-background: var(--p-surface-critical-subdued);
     --p-banner-border: var(--p-banner-border-critical);
-    @include banner-attributes(
-      var(--p-override-none, color('red')),
-      color('red', 'lighter'),
-      $in-page,
-      true
-    );
   }
 }
 
@@ -221,7 +166,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     padding-right: spacing();
   }
 
-  @include banner-variants;
+  @include banner-variants($in-page: false);
 
   + .Banner {
     margin-top: spacing(tight);
@@ -300,7 +245,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
-  color: var(--p-text, color('ink'));
+  color: var(--p-text);
   padding-left: rem(6px);
 
   &:hover > .Text {
