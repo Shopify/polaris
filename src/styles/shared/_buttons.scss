@@ -212,10 +212,10 @@
   width: 100%;
 }
 
-@mixin plain-button-backdrop($background-color: plain-button-background()) {
+@mixin plain-button-backdrop {
   padding: 2px 5px;
   margin: -2px -5px;
-  background: $background-color;
+  background: var(--p-action-secondary-hovered);
   border-radius: border-radius();
 }
 

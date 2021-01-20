@@ -236,12 +236,9 @@ $stacking-order: (
     }
   }
 
-  &:active:not(.iconOnly) > .Content {
-    @include plain-button-backdrop(var(--p-action-secondary));
-  }
-
+  &:active:not(.iconOnly) > .Content,
   &.pressed:not(.iconOnly) > .Content {
-    @include plain-button-backdrop(var(--p-action-secondary));
+    @include plain-button-backdrop;
   }
 
   &.fullWidth {
