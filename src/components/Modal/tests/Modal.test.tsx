@@ -1,15 +1,11 @@
 import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
-import {Footer, Dialog} from '../components';
+import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import * as focusUtils from '../../../utilities/focus';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -244,23 +240,23 @@ describe('<Modal>', () => {
 
   describe('header', () => {
     it('renders a header when title is present', () => {
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'Header',
+      });
     });
 
-    it('does not render a header when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+    it('only renders a close button when titleHidden is present', () => {
+      const modal = mountWithApp(
+        <Modal titleHidden onClose={jest.fn()} open />,
+      );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(false);
-    });
-
-    it('renders a close button when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-
-      expect(findByTestID(modal, 'ModalCloseButton').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'titleHidden',
+      });
     });
   });
 
