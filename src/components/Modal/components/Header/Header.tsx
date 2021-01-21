@@ -14,7 +14,9 @@ export interface HeaderProps {
 
 export function Header({id, titleHidden, children, onClose}: HeaderProps) {
   return (
-    <div className={titleHidden ? styles.titleHidden : styles.Header}>
+    <div
+      className={titleHidden || !children ? styles.titleHidden : styles.Header}
+    >
       <div id={id} className={styles.Title}>
         <DisplayText element="h2" size="small">
           {children}
