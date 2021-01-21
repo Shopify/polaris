@@ -325,7 +325,7 @@ function generateExamples(matter) {
 
   if (allExamples.length === 0) {
     console.log(
-      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting`,
+      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/main/documentation/Component%20READMEs.md#troubleshooting`,
     );
   }
 
