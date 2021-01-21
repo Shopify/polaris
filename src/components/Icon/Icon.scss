@@ -373,7 +373,7 @@
 }
 
 .colorSubdued {
-  @include color-icon('skyDark');
+  @include color-icon('sky', 'dark');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-subdued));
   }
