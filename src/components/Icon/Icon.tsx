@@ -17,6 +17,14 @@ const COLORS_WITH_BACKDROPS = [
   'yellowDark',
   'ink',
   'inkLighter',
+  // new DL colors
+  'base',
+  'subdued',
+  'critical',
+  'warning',
+  'highlight',
+  'success',
+  'primary',
 ];
 
 // This is needed for the polaris
