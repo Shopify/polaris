@@ -255,7 +255,7 @@ describe('<Modal>', () => {
       );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'withoutTitle',
+        className: 'titleHidden',
       });
     });
   });
