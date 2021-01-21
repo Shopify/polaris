@@ -366,31 +366,52 @@
 // New design language color styles
 
 .colorBase {
-  @include recolor-icon(var(--p-icon, color('ink')));
+  @include recolor-icon(color('ink'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .colorSubdued {
-  @include recolor-icon(var(--p-icon-subdued, color('skyDark')));
+  @include recolor-icon(color('skyDark'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon-subdued));
+  }
 }
 
 .colorCritical {
-  @include recolor-icon(var(--p-icon-critical, color('red')));
+  @include recolor-icon(color('red'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon-critical));
+  }
 }
 
 .colorWarning {
-  @include recolor-icon(var(--p-icon-warning, color('yellow')));
+  @include recolor-icon(color('yellow'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon-warning));
+  }
 }
 
 .colorHighlight {
-  @include recolor-icon(var(--p-icon-highlight, color('teal')));
+  @include recolor-icon(color('teal'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon-highlight));
+  }
 }
 
 .colorSuccess {
-  @include recolor-icon(var(--p-icon-success, color('green')));
+  @include recolor-icon(color('green'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon-success));
+  }
 }
 
 .colorPrimary {
-  @include recolor-icon(var(--p-action-primary, color('indigo')));
+  @include recolor-icon(color('indigo'));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-action-primary));
+  }
 }
 
 .Svg,
