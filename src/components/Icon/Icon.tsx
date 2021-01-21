@@ -17,6 +17,14 @@ const COLORS_WITH_BACKDROPS = [
   'yellowDark',
   'ink',
   'inkLighter',
+  // new DL colors
+  'base',
+  'subdued',
+  'critical',
+  'warning',
+  'highlight',
+  'success',
+  'primary',
 ];
 
 // This is needed for the polaris
@@ -43,13 +51,6 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
         color,
         colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
       }),
-    );
-  }
-
-  if (color && !newDesignLanguage && isNewDesignLanguageColor(color)) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'You have selected a color meant to be used in the new design language but new design language is not enabled.',
     );
   }
 
