@@ -366,31 +366,31 @@
 // New design language color styles
 
 .colorBase {
-  @include recolor-icon(var(--p-icon));
+  @include recolor-icon(var(--p-icon, color('ink')));
 }
 
 .colorSubdued {
-  @include recolor-icon(var(--p-icon-subdued));
+  @include recolor-icon(var(--p-icon-subdued, color('skyDark')));
 }
 
 .colorCritical {
-  @include recolor-icon(var(--p-icon-critical));
+  @include recolor-icon(var(--p-icon-critical, color('red')));
 }
 
 .colorWarning {
-  @include recolor-icon(var(--p-icon-warning));
+  @include recolor-icon(var(--p-icon-warning, color('yellow')));
 }
 
 .colorHighlight {
-  @include recolor-icon(var(--p-icon-highlight));
+  @include recolor-icon(var(--p-icon-highlight, color('teal')));
 }
 
 .colorSuccess {
-  @include recolor-icon(var(--p-icon-success));
+  @include recolor-icon(var(--p-icon-success, color('green')));
 }
 
 .colorPrimary {
-  @include recolor-icon(var(--p-action-primary));
+  @include recolor-icon(var(--p-action-primary, color('indigo')));
 }
 
 .Svg,
