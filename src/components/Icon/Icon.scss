@@ -366,49 +366,49 @@
 // New design language color styles
 
 .colorBase {
-  @include recolor-icon(color('ink'));
+  @include color-icon('ink');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
   }
 }
 
 .colorSubdued {
-  @include recolor-icon(color('skyDark'));
+  @include color-icon('skyDark');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
 .colorCritical {
-  @include recolor-icon(color('red'));
+  @include color-icon('red');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-critical));
   }
 }
 
 .colorWarning {
-  @include recolor-icon(color('yellow'));
+  @include color-icon('yellow');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-warning));
   }
 }
 
 .colorHighlight {
-  @include recolor-icon(color('teal'));
+  @include color-icon('teal');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-highlight));
   }
 }
 
 .colorSuccess {
-  @include recolor-icon(color('green'));
+  @include color-icon('green');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-success));
   }
 }
 
 .colorPrimary {
-  @include recolor-icon(color('indigo'));
+  @include color-icon('indigo');
   &.newDesignLanguage {
     @include recolor-icon(var(--p-action-primary));
   }
