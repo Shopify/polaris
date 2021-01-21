@@ -1,10 +1,7 @@
 import React from 'react';
-import {mountWithAppContext} from 'tests/modern';
-import {mockI18n} from '@shopify/react-i18n-next';
-import {noop} from '@web-utilities/other';
+import {mountWithApp} from 'test-utilities';
 
-import {ListBoxContext} from '../../../utilities/context/list-box';
-import translations from '../../../translations/en.json';
+import {ListBoxContext} from '../../../../../../../utilities/list-box';
 import {Loading} from '../Loading';
 
 const listBoxContext = {
@@ -16,71 +13,62 @@ const listBoxContext = {
 };
 
 describe('Loading', () => {
-  const i18n = mockI18n([translations]);
+  const defaultProps = {accessibilityLabel: 'accessibility label'};
 
-  it('throws if not inside a listBox Context', async () => {
+  it('throws if not inside a listBox Context', () => {
     const consoleErrorSpy = jest
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    expect(() => mountWithAppContext(<Loading />)).toThrow(
+    expect(() => mountWithApp(<Loading {...defaultProps} />)).toThrow(
       'No ListBox was provided. ListBox components must be wrapped in a Listbox',
     );
 
     consoleErrorSpy.mockRestore();
   });
 
-  it('calls setLoading on context with the default loading text if there is no accessibilityLabel', async () => {
+  it('calls setLoading on context with the default loading text if there is no accessibilityLabel', () => {
+    const accessibilityLabel = 'label';
     const setLoadingSpy = jest.fn();
     const contextValue = {
       ...listBoxContext,
       setLoading: setLoadingSpy,
     };
-    await mountWithAppContext(
+    mountWithApp(
       <ListBoxContext.Provider value={contextValue}>
-        <Loading />
+        <Loading accessibilityLabel={accessibilityLabel} />
       </ListBoxContext.Provider>,
-      {
-        translations: [translations],
-      },
     );
 
-    expect(setLoadingSpy).toHaveBeenCalledWith(
-      i18n.translate('ListBox.Loading.label'),
-    );
+    expect(setLoadingSpy).toHaveBeenCalledWith(accessibilityLabel);
   });
 
-  it('calls setLoading on context with the accessibilityLabel', async () => {
+  it('calls setLoading on context with the accessibilityLabel', () => {
+    const accessibilityLabel = 'label';
     const setLoadingSpy = jest.fn();
     const contextValue = {
       ...listBoxContext,
       setLoading: setLoadingSpy,
     };
-    await mountWithAppContext(
+    mountWithApp(
       <ListBoxContext.Provider value={contextValue}>
-        <Loading accessibilityLabel="Loading..." />
+        <Loading accessibilityLabel={accessibilityLabel} />
       </ListBoxContext.Provider>,
-      {
-        translations: [translations],
-      },
     );
 
-    expect(setLoadingSpy).toHaveBeenCalledWith('Loading...');
+    expect(setLoadingSpy).toHaveBeenCalledWith(accessibilityLabel);
   });
 
-  it('calls setLoading with undefined when it unmounts', async () => {
+  it('calls setLoading with undefined when it unmounts', () => {
     const setLoadingSpy = jest.fn();
     const contextValue = {
       ...listBoxContext,
       setLoading: setLoadingSpy,
     };
-    const listbox = await mountWithAppContext(
+    const listbox = mountWithApp(
       <ListBoxContext.Provider value={contextValue}>
-        <Loading accessibilityLabel="Loading..." />
+        <Loading {...defaultProps} />
       </ListBoxContext.Provider>,
-      {
-        translations: [translations],
-      },
     );
 
     listbox.find(Loading)!.root.unmount();
@@ -88,3 +76,5 @@ describe('Loading', () => {
     expect(setLoadingSpy).toHaveBeenCalledWith(undefined);
   });
 });
+
+function noop() {}

@@ -1,7 +1,6 @@
 @import '../../../../../../styles/common';
 
 .Header {
-  border-bottom: border('divider');
   @include text-style-subheading;
   padding: spacing(tight);
   color: var(--p-text-subdued);

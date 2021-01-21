@@ -1,22 +1,15 @@
 import React from 'react';
-import {noop} from '@web-utilities/other';
-import {mount} from 'tests/modern';
+import {mount} from 'test-utilities';
+import {UnstyledLink} from 'components';
+import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
-import {mountWithListBoxProvider} from '../../../tests/utilities';
-import {ListBoxContext} from '../../../utilities/context/list-box';
+import type {ListBoxContext} from '../../../../../../../utilities/list-box';
 import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
+import {MappedActionContext} from '../../../../../context';
 
-const expectedId = 'optionDomId';
-
-jest.mock('@shopify/javascript-utilities/other', () => ({
-  createUniqueIDFactory() {
-    return () => 'optionDomId';
-  },
-}));
-
-jest.mock('@shopify/polaris', () => ({
-  ...jest.requireActual('@shopify/polaris'),
+jest.mock('components', () => ({
+  ...jest.requireActual('components'),
   Icon() {
     return null;
   },
@@ -50,7 +43,7 @@ describe('Option', () => {
 
   it('renders a li with a the necessary attributes', () => {
     const expectedProps = {
-      id: expectedId,
+      id: expect.any(String),
       role: 'option',
       'data-listbox-option-value': defaultProps.value,
       onMouseDown: expect.any(Function),
@@ -77,15 +70,16 @@ describe('Option', () => {
       ...context,
     });
 
-    option
-      .find('li', {
-        role: 'option',
-      })!
-      .trigger('onClick', {preventDefault: () => {}});
+    const optionElement = option.find('li', {
+      role: 'option',
+    });
+    const domId = optionElement?.prop('id');
+
+    optionElement!.trigger('onClick', {preventDefault: () => {}});
 
     expect(onOptionSelectSpy).toHaveBeenCalledTimes(1);
     expect(onOptionSelectSpy).toHaveBeenCalledWith({
-      domId: expectedId,
+      domId,
       value: defaultProps.value,
       element: expect.any(Object),
       disabled: false,
@@ -140,6 +134,22 @@ describe('Option', () => {
     expect(option).toContainReactComponent(TextOption, {
       children,
     });
+  });
+
+  it('prevents default on mouse down', () => {
+    const preventDefaultSpy = jest.fn();
+    const option = mountWithListBoxProvider(
+      <Option {...defaultProps}>{defaultProps.accessibilityLabel}</Option>,
+      {
+        ...defaultContext,
+      },
+    );
+
+    option
+      .find('li', {role: 'option'})!
+      .trigger('onMouseDown', {preventDefault: preventDefaultSpy});
+
+    expect(preventDefaultSpy).toHaveBeenCalledTimes(1);
   });
 
   describe('selected', () => {
@@ -228,6 +238,103 @@ describe('Option', () => {
     });
   });
 
+  describe('role', () => {
+    it('defaults to option', () => {
+      const option = mountWithListBoxProvider(<Option {...defaultProps} />, {
+        ...defaultContext,
+      });
+
+      expect(option).toContainReactComponent('li', {
+        role: 'option',
+      });
+    });
+  });
+
+  describe('MappedAction', () => {
+    it('uses the role provided from MappedAction', () => {
+      const role = 'button';
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            role,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent('li', {
+        role,
+      });
+    });
+
+    it('renders an UnstyledLink when url is supplied', () => {
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            url: 'google.com',
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent(UnstyledLink);
+    });
+
+    it('passes external to UnstyledLink', () => {
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            url: 'google.com',
+            external: true,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      expect(option).toContainReactComponent(UnstyledLink, {external: true});
+    });
+
+    it('does not invoke onOptionSelect during click events', () => {
+      const onOptionSelectSpy = jest.fn();
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+          onOptionSelect: onOptionSelectSpy,
+        },
+      );
+
+      option
+        .find('li', {
+          role: 'option',
+        })!
+        .trigger('onClick', {preventDefault: () => {}});
+
+      expect(onOptionSelectSpy).not.toHaveBeenCalled();
+    });
+  });
+
   describe('divider', () => {
     it('renders an underline on the Option', () => {
       const option = mountWithListBoxProvider(
@@ -244,3 +351,5 @@ describe('Option', () => {
     });
   });
 });
+
+function noop() {}

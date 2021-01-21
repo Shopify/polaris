@@ -1,5 +1,4 @@
 import React from 'react';
-import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../../../Icon';
 import type {IconProps} from '../../../../../../types';
@@ -15,13 +14,17 @@ interface ActionProps extends OptionProps {
 export function Action(props: ActionProps) {
   const {selected, disabled, children, icon} = props;
 
+  const iconMarkup = icon && (
+    <div className={styles.Icon}>
+      <Icon color="subdued" source={icon} />
+    </div>
+  );
+
   return (
     <Option {...props}>
       <TextOption selected={selected} disabled={disabled}>
         <div className={styles.Action}>
-          <div className={styles.Icon}>
-            <Icon color="subdued" source={icon ? icon : CirclePlusMinor} />
-          </div>
+          {iconMarkup}
           {children}
         </div>
       </TextOption>

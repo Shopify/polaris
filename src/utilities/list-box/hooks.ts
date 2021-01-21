@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 
-import {ListBoxContext} from '../context/list-box';
+import {ListBoxContext} from './context';
 
 export function useListBox() {
   const listBox = useContext(ListBoxContext);

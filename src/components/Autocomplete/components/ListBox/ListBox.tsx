@@ -13,11 +13,12 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {VisuallyHidden} from '../../../VisuallyHidden';
-import {useComboBoxListBox} from '../ComboBox/utilities';
+import {useComboBoxListBox} from '../../../../utilities/combo-box';
+import {closestParentMatch} from '../../../../utilities/closest-parent-match';
+import {scrollIntoView} from '../../../../utilities/scroll-into-view';
+import {ListBoxContext} from '../../../../utilities/list-box';
+import type {NavigableOption} from '../../../../utilities/list-box';
 
-import {closestParentMatch} from './utilities/closest-parent-match';
-import {scrollIntoView} from './utilities/scroll-into-view';
-import {ListBoxContext} from './utilities/context/list-box';
 import {
   Option,
   Section,
@@ -27,7 +28,6 @@ import {
   TextOption,
   listBoxSectionDataSelector,
 } from './components';
-import type {NavigableOption} from './types';
 import styles from './ListBox.scss';
 
 export interface ListBoxProps {
@@ -93,9 +93,11 @@ export function ListBox({
     if (scrollableRef.current) {
       const {element} = option;
       const focusTarget = first
-        ? closestParentMatch(element, listBoxSectionDataSelector.selector)
+        ? closestParentMatch(element, listBoxSectionDataSelector.selector) ||
+          element
         : element;
-      scrollIntoView(focusTarget || element, scrollableRef.current);
+
+      scrollIntoView(focusTarget);
     }
   };
 
@@ -119,7 +121,12 @@ export function ListBox({
           }
           return nextOption;
         } else {
-          if (setActiveOptionId) setActiveOptionId('');
+          // This function is called 3 times
+          // onBlur - cannot exists without combobox which invoke this function without a nextOption
+          // handleArrow - returns early if a valid option is not found
+          // onOptionSelect - is passed to option so the option always exists
+          // TODO confirm before delete
+          // if (setActiveOptionId) setActiveOptionId('');
           return undefined;
         }
       });
@@ -156,7 +163,7 @@ export function ListBox({
       onOptionSelect,
       setLoading,
     }),
-    [onOptionSelect, setLoading],
+    [onOptionSelect],
   );
 
   function findNextValidOption(type: ArrowKeys) {
@@ -196,7 +203,8 @@ export function ListBox({
       return nextElement;
     }
 
-    return nextElement;
+    // TODO - Confirm optional UX
+    return null;
   }
 
   function handleArrow(type: ArrowKeys, evt: KeyboardEvent) {
@@ -299,15 +307,13 @@ export function ListBox({
   );
 
   function getNavigableOptions() {
-    return (
-      [
-        ...new Set(
-          listBoxRef.current?.querySelectorAll<HTMLElement>(
-            LISTBOX_OPTION_SELECTOR,
-          ),
+    return [
+      ...new Set(
+        listBoxRef.current?.querySelectorAll<HTMLElement>(
+          LISTBOX_OPTION_SELECTOR,
         ),
-      ] || []
-    );
+      ),
+    ];
   }
 }
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 import {ListBox} from '../ListBox';
-import type {ComboBoxProps as ComboBoxOldProps} from '../ComboBoxOld';
-import {ArrayElement} from '../../../../types';
+import type {ComboBoxOldProps} from '../../Autocomplete';
+import type {ArrayElement} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './MappedOption.scss';
@@ -14,7 +14,7 @@ type MappedOption = ArrayElement<ComboBoxOldProps['options']> & {
 
 // id was previous used for label/checked or button & react key
 // they don't extend the API so we can omit them
-export function MappedOption({
+export const MappedOption = memo(function MappedOption({
   label,
   value,
   disabled,
@@ -48,4 +48,4 @@ export function MappedOption({
       </ListBox.TextOption>
     </ListBox.Option>
   );
-}
+});

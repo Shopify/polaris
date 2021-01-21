@@ -1,17 +1,16 @@
 import React from 'react';
-import {mountWithAppContext} from 'tests/modern';
-import {noop} from '@web-utilities/other';
+import {mountWithApp} from 'test-utilities';
 import {
   TextFieldProps,
   TextField as PolarisTextField,
   labelID,
-} from '@shopify/polaris';
+} from 'components';
 
 import {TextField} from '../TextField';
 import {
   ComboBoxTextFieldContext,
   ComboBoxTextFieldType,
-} from '../../../utilities/combo-box';
+} from '../../../../../../../utilities/combo-box';
 
 const textFieldContextDefaultValue = {
   activeOptionId: undefined,
@@ -24,7 +23,7 @@ const textFieldContextDefaultValue = {
   onTextFieldChange: noop,
 };
 
-async function mountWithProvider(
+function mountWithProvider(
   props: {
     textFieldProps?: Partial<TextFieldProps>;
     textFieldProviderValue?: Partial<ComboBoxTextFieldType>;
@@ -35,7 +34,7 @@ async function mountWithProvider(
     ...props.textFieldProviderValue,
   };
 
-  const textField = await mountWithAppContext(
+  const textField = mountWithApp(
     <ComboBoxTextFieldContext.Provider value={providerValue}>
       <TextField label="label" onChange={noop} {...props.textFieldProps} />
     </ComboBoxTextFieldContext.Provider>,
@@ -45,20 +44,20 @@ async function mountWithProvider(
 }
 
 describe('ComboBox.TextField', () => {
-  it('throws if not wrapped in ComboBoxTextFieldContext', async () => {
+  it('throws if not wrapped in ComboBoxTextFieldContext', () => {
     const consoleErrorSpy = jest
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
     expect(() =>
-      mountWithAppContext(<TextField label="label" onChange={noop} />),
+      mountWithApp(<TextField label="label" onChange={noop} />),
     ).toThrow('No ComboBox was provided.');
 
     consoleErrorSpy.mockRestore();
   });
 
-  it('renders a PolarisTextField', async () => {
-    const combobox = await mountWithProvider({
+  it('renders a PolarisTextField', () => {
+    const combobox = mountWithProvider({
       textFieldProps: {
         value: 'value',
         id: 'textFieldId',
@@ -80,9 +79,9 @@ describe('ComboBox.TextField', () => {
     });
   });
 
-  it('passes the activeOptionId to the aria-activedescendant of the PolarisTextField', async () => {
+  it('passes the activeOptionId to the aria-activedescendant of the PolarisTextField', () => {
     const activeOptionId = 'activeOptionId';
-    const combobox = await mountWithProvider({
+    const combobox = mountWithProvider({
       textFieldProviderValue: {
         activeOptionId,
       },
@@ -93,9 +92,9 @@ describe('ComboBox.TextField', () => {
     });
   });
 
-  it('passes the listBoxId to the aria-controls of the PolarisTextField', async () => {
+  it('passes the listBoxId to the aria-controls of the PolarisTextField', () => {
     const listBoxId = 'listBoxId';
-    const combobox = await mountWithProvider({
+    const combobox = mountWithProvider({
       textFieldProviderValue: {
         listBoxId,
       },
@@ -106,8 +105,8 @@ describe('ComboBox.TextField', () => {
     });
   });
 
-  it('passes the expanded to the aria-expanded of the PolarisTextField', async () => {
-    const combobox = await mountWithProvider({
+  it('passes the expanded to the aria-expanded of the PolarisTextField', () => {
+    const combobox = mountWithProvider({
       textFieldProviderValue: {
         expanded: true,
       },
@@ -118,11 +117,11 @@ describe('ComboBox.TextField', () => {
     });
   });
 
-  it('calls setTextFieldLabelId with the expected ID', async () => {
+  it('calls setTextFieldLabelId with the expected ID', () => {
     const textFieldId = 'textFieldId';
     const setTextFieldLabelIdSpy = jest.fn();
     const expectedId = labelID(textFieldId);
-    await mountWithProvider({
+    mountWithProvider({
       textFieldProps: {
         id: textFieldId,
       },
@@ -135,9 +134,9 @@ describe('ComboBox.TextField', () => {
   });
 
   describe('onFocus', () => {
-    it('calls the onFocus prop on focus', async () => {
+    it('calls the onFocus prop on focus', () => {
       const onFocusSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -149,9 +148,9 @@ describe('ComboBox.TextField', () => {
       expect(onFocusSpy).toHaveBeenCalled();
     });
 
-    it('calls the onTextFieldFocus on Context', async () => {
+    it('calls the onTextFieldFocus on Context', () => {
       const onTextFieldFocusSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -165,9 +164,9 @@ describe('ComboBox.TextField', () => {
       expect(onTextFieldFocusSpy).toHaveBeenCalled();
     });
 
-    it('calls the setTextFieldFocused on Context', async () => {
+    it('calls the setTextFieldFocused on Context', () => {
       const setTextFieldFocusSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -183,9 +182,9 @@ describe('ComboBox.TextField', () => {
   });
 
   describe('onBlur', () => {
-    it('calls the onBlur prop', async () => {
+    it('calls the onBlur prop', () => {
       const onBlurSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -197,9 +196,9 @@ describe('ComboBox.TextField', () => {
       expect(onBlurSpy).toHaveBeenCalled();
     });
 
-    it('calls the onTextFieldBlur on Context', async () => {
+    it('calls the onTextFieldBlur on Context', () => {
       const onTextFieldBlurSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -215,9 +214,9 @@ describe('ComboBox.TextField', () => {
   });
 
   describe('onChange', () => {
-    it('calls the onChange prop', async () => {
+    it('calls the onChange prop', () => {
       const onChangeSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -229,9 +228,9 @@ describe('ComboBox.TextField', () => {
       expect(onChangeSpy).toHaveBeenCalled();
     });
 
-    it('calls the onTextFieldChange on Context', async () => {
+    it('calls the onTextFieldChange on Context', () => {
       const onTextFieldChangeSpy = jest.fn();
-      const combobox = await mountWithProvider({
+      const combobox = mountWithProvider({
         textFieldProps: {
           value: 'value',
           id: 'textFieldId',
@@ -246,3 +245,5 @@ describe('ComboBox.TextField', () => {
     });
   });
 });
+
+function noop() {}

@@ -1,10 +1,15 @@
 import React, {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
-import {PolarisTestProvider} from '@shopify/polaris';
-import {mountWithAppContext} from 'tests/modern';
 
-import {ComboBoxListBoxContext, ComboBoxListBoxType} from '../../ComboBox';
-import {ListBoxContext} from '../utilities/context/list-box';
+import {PolarisTestProvider} from '../components';
+import {ListBoxContext} from '../utilities/list-box';
+import {
+  ComboBoxListBoxContext,
+  ComboBoxListBoxType,
+} from '../utilities/combo-box';
+import translations from '../../locales/en.json';
+
+import {mountWithApp} from './react-testing';
 
 const defaultContext: React.ContextType<typeof ListBoxContext> = {
   onOptionSelect: noop,
@@ -19,9 +24,12 @@ export function mountWithListBoxProvider(
     context: () => {
       return {context};
     },
-    render: (element: React.ReactElement) => {
+    render(element: React.ReactElement) {
       return (
-        <PolarisTestProvider features={{newDesignLanguage: true}}>
+        <PolarisTestProvider
+          i18n={translations}
+          features={{newDesignLanguage: true}}
+        >
           <ListBoxContext.Provider value={context}>
             {element}
           </ListBoxContext.Provider>
@@ -35,7 +43,7 @@ export function mountWithComboBoxListContext(
   listbox: ReactElement,
   context: ComboBoxListBoxType = {},
 ) {
-  const comboxBox = mountWithAppContext(
+  const comboxBox = mountWithApp(
     <ComboBoxListBoxContext.Provider
       value={{
         setActiveOptionId: () => null,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'tests/modern';
+import {mountWithApp} from 'test-utilities';
 
 import {Section} from '../Section';
 import {SectionContext} from '../context';
@@ -8,7 +8,7 @@ import {listBoxSectionDataSelector} from '../selectors';
 describe('Section', () => {
   describe('context', () => {
     it('renders SectionContextProvider with an id', () => {
-      const section = mount(<Section title="title" />);
+      const section = mountWithApp(<Section title="title" />);
 
       expect(section).toContainReactComponent(SectionContext.Provider, {
         value: expect.any(String),
@@ -18,7 +18,7 @@ describe('Section', () => {
 
   describe('list item', () => {
     it('renders a list item with role=presentation', () => {
-      const section = mount(<Section title="title" />);
+      const section = mountWithApp(<Section title="title" />);
 
       expect(section).toContainReactComponent('li', {
         role: 'presentation',
@@ -26,7 +26,7 @@ describe('Section', () => {
     });
 
     it('renders a list item with list box section data selector', () => {
-      const section = mount(<Section title="title" />);
+      const section = mountWithApp(<Section title="title" />);
 
       expect(section).toContainReactComponent(
         'li' as any,
@@ -37,7 +37,7 @@ describe('Section', () => {
 
   describe('list', () => {
     it('renders an unordered list with role="group', () => {
-      const section = mount(<Section title="title" />);
+      const section = mountWithApp(<Section title="title" />);
 
       expect(section).toContainReactComponent('ul', {
         role: 'group',
@@ -45,7 +45,7 @@ describe('Section', () => {
     });
 
     it('renders an unordered list with aria labelledby matching the context value', () => {
-      const section = mount(<Section title="title" />);
+      const section = mountWithApp(<Section title="title" />);
 
       const contextValue = section.find(SectionContext.Provider)!.prop('value');
       const ariaLabelledByValue = section.find('ul')!.prop('aria-labelledby');
@@ -56,7 +56,7 @@ describe('Section', () => {
 
   it('renders children', () => {
     const Child = () => <li>Child</li>;
-    const section = mount(
+    const section = mountWithApp(
       <Section title="title">
         <Child />
       </Section>,

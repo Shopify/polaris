@@ -1,11 +1,11 @@
 import React from 'react';
-import {Icon} from '@shopify/polaris';
+import {Icon} from 'components';
 import {CirclePlusMinor, AddMajor} from '@shopify/polaris-icons';
+import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
 import {Action} from '../Action';
 import {Option} from '../../Option';
 import {TextOption} from '../../TextOption';
-import {mountWithListBoxProvider} from '../../../tests/utilities';
 
 describe('Action', () => {
   const defaultProps = {
@@ -32,10 +32,10 @@ describe('Action', () => {
     });
   });
 
-  it('renders a default Icon', () => {
+  it('does not renders a default Icon', () => {
     const action = mountWithListBoxProvider(<Action {...defaultProps} />);
 
-    expect(action).toContainReactComponent(Icon, {
+    expect(action).not.toContainReactComponent(Icon, {
       source: CirclePlusMinor,
     });
   });
