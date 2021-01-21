@@ -249,8 +249,10 @@ describe('<Modal>', () => {
       });
     });
 
-    it('only renders a close button when hideTitle is present', () => {
-      const modal = mountWithApp(<Modal hideTitle onClose={jest.fn()} open />);
+    it('only renders a close button when titleHidden is present', () => {
+      const modal = mountWithApp(
+        <Modal titleHidden onClose={jest.fn()} open />,
+      );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
         className: 'withoutTitle',

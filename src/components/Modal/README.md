@@ -575,7 +575,7 @@ function ModalWithoutTitleExample() {
     <div style={{height: '500px'}}>
       <Modal
         title="Reach more shoppers with Instagram product tags"
-        hideTitle
+        titleHidden
         activator={activator}
         open={active}
         onClose={handleChange}

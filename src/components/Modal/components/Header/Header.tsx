@@ -7,14 +7,14 @@ import styles from './Header.scss';
 
 export interface HeaderProps {
   id: string;
-  hideTitle: boolean;
+  titleHidden: boolean;
   children?: React.ReactNode;
   onClose(): void;
 }
 
-export function Header({id, hideTitle, children, onClose}: HeaderProps) {
+export function Header({id, titleHidden, children, onClose}: HeaderProps) {
   return (
-    <div className={hideTitle ? styles.withoutTitle : styles.Header}>
+    <div className={titleHidden ? styles.titleHidden : styles.Header}>
       <div id={id} className={styles.Title}>
         <DisplayText element="h2" size="small">
           {children}
