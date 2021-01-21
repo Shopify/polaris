@@ -25,7 +25,7 @@ App provider is a required component that enables sharing global settings throug
 
 ## Best practices
 
-The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/master/examples/README.md).
+The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/main/examples/README.md).
 
 ---
 
@@ -564,4 +564,4 @@ You must include Polaris context in your tests when you use Polaris components.
 To make this easier for you, we’ve provided:
 
 - a PolarisTestProvider component to provide the Polaris contexts for you
-- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app) you can reference
+- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app) you can reference
