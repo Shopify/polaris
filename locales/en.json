@@ -1,7 +1,8 @@
 {
   "Polaris": {
     "Actions": {
-      "moreActions": "More actions"
+      "moreActions": "More actions",
+      "lessActions": "Less actions"
     },
     "Avatar": {
       "label": "Avatar",
