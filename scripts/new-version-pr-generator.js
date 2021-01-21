@@ -33,7 +33,7 @@ function isMajorPrerelease(version) {
 
 const baseBranch = isMajorPrerelease(PACKAGE_VERSION)
   ? `v${semver.major(PACKAGE_VERSION)}`
-  : 'master';
+  : 'main';
 
 const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
@@ -102,7 +102,7 @@ function failedUpdateMessage(repository, version) {
 The automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps:
 
   1. Checkout "${repository}"
-  2. Get the latest version of master "git checkout master && git pull"
+  2. Get the latest version of main "git checkout main && git pull"
   3. Create a new branch based on the version that failed "git checkout -b update-polaris-v${version}"
   4. Update "@shopify/polaris" by running "npx yarn upgrade @shopify/polaris@${version}"
   5. Add the changed files to git by running "git add package.json yarn.lock"

@@ -14,4 +14,4 @@ include:
   - /^tsconfig.json$/
 inProgressMessage: missing an entry in UNRELEASED.md
 skipLabel: 🤖Skip Changelog
-detailsUrl: https://github.com/Shopify/polaris-react/blob/master/UNRELEASED.md
+detailsUrl: https://github.com/Shopify/polaris-react/blob/main/UNRELEASED.md

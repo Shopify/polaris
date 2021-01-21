@@ -41,7 +41,7 @@ Use React components in most cases, especially if you’re building a highly int
 
 - [Implementation instructions](https://github.com/Shopify/polaris-react#using-the-react-components) (requires HTML, React, a JS build tool)
 
-- Have a look at the [React component examples](https://github.com/Shopify/polaris-react/tree/master/examples) to see how it’s done
+- Have a look at the [React component examples](https://github.com/Shopify/polaris-react/tree/main/examples) to see how it’s done
 
 ### CSS components
 
@@ -49,13 +49,13 @@ Use CSS components if you don’t have or want a build system for your project.
 
 - [Implementation instructions](https://github.com/Shopify/polaris-react#using-the-css-components)
 
-- Have a look at the [CSS examples](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles) to see how it’s done
+- Have a look at the [CSS examples](https://github.com/Shopify/polaris-react/tree/main/examples/cdn-styles) to see how it’s done
 
 ---
 
 ## Using components
 
-You can find comprehensive [instructions](https://github.com/Shopify/polaris-react) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris-react/tree/master/examples) to explore.
+You can find comprehensive [instructions](https://github.com/Shopify/polaris-react) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris-react/tree/main/examples) to explore.
 
 Here are some basic instructions to help you get started for both React and CSS-only:
 
