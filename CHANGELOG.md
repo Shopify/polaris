@@ -10,6 +10,10 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ## 5.14.1 - 2021-01-21
 
+### Enhancements
+
+- Added missing fallbacks to icons and removed warning ([#3897](https://github.com/Shopify/polaris-react/pull/3897)
+
 ### Development workflow
 
 - Changed `master` branch name to `main` ([#3899](https://github.com/Shopify/polaris-react/pull/3899))
