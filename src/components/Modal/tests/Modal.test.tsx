@@ -253,7 +253,7 @@ describe('<Modal>', () => {
   describe('header', () => {
     it('renders a header when title is present', () => {
       const modal = mountWithApp(
-        <Modal title="foo" onClose={jest.fn()} open />,
+        <Modal onClose={jest.fn()} open title="foo" />,
       );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
@@ -263,11 +263,11 @@ describe('<Modal>', () => {
 
     it('only renders a close button when titleHidden is present', () => {
       const modal = mountWithApp(
-        <Modal title="foo" titleHidden onClose={jest.fn()} open />,
+        <Modal titleHidden onClose={jest.fn()} open title="foo" />,
       );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'withoutTitle',
+        className: 'titleHidden',
       });
     });
   });
