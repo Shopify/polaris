@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Meer acties"
+      "moreActions": "Meer acties",
+      "lessActions": "Minder acties"
     },
     "Loading": {
       "label": "Pagina laadbalk"
