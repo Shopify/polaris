@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.15.0 - 2021-01-21
+
+### Enhancements
+
+- Added `titleHidden` property for Modal ([#3905](https://github.com/Shopify/polaris-react/pull/3905))
+- Added `accessibilityLabel` property for Sheet ([#3906](https://github.com/Shopify/polaris-react/pull/3906))
+
 ## 5.14.1 - 2021-01-21
 
 ### Enhancements

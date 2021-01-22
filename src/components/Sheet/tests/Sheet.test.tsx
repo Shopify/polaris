@@ -63,6 +63,18 @@ describe('<Sheet />', () => {
       exitActive: 'Right exitRightActive',
     });
   });
+
+  it('renders an aria label', () => {
+    const label = 'abc';
+
+    const sheet = mountWithAppProvider(
+      <Sheet {...mockProps} accessibilityLabel={label}>
+        <div>Content</div>
+      </Sheet>,
+    );
+
+    expect(sheet.find('div[role="dialog"]').prop('aria-label')).toBe(label);
+  });
 });
 
 function noop() {}

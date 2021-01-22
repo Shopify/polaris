@@ -4,8 +4,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
-- Added `titleHidden` property for Modal ([#](https://github.com/Shopify/polaris-react/pull/))
-
 ### Enhancements
 
 ### Bug fixes
