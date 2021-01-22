@@ -148,7 +148,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -186,7 +185,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   },
 );
