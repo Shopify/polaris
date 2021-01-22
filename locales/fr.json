@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Autres opérations"
+      "moreActions": "Autres opérations",
+      "lessActions": "Moins d'opérations"
     },
     "Loading": {
       "label": "Barre de chargement de la page"
