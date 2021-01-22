@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Fler åtgärder"
+      "moreActions": "Fler åtgärder",
+      "lessActions": "Färre åtgärder"
     },
     "Loading": {
       "label": "Fält för att ladda sida"
