@@ -10,3 +10,5 @@ export interface ListBoxContextType {
 export const ListBoxContext = createContext<ListBoxContextType | undefined>(
   undefined,
 );
+
+export const WithinListBoxContext = createContext(false);

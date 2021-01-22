@@ -1,5 +1,10 @@
 @import '../../../../styles/common';
 
+.Content {
+  display: flex;
+  flex: 1;
+}
+
 .Media {
   @include recolor-icon(var(--p-icon, color('ink', 'light')), color('white'));
   padding: 0 spacing(tight);

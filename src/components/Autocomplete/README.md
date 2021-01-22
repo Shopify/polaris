@@ -170,6 +170,7 @@ function MultiAutocompleteExample() {
       label="Tags"
       value={inputValue}
       placeholder="Vintage, cotton, summer"
+      clearButton
     />
   );
 
@@ -229,11 +230,11 @@ function AutocompleteExample() {
       setTimeout(() => {
         if (value === '') {
           setOptions(deselectedOptions);
-          setLoading(true);
+          setLoading(false);
           return;
         }
         const filterRegex = new RegExp(value, 'i');
-        const resultOptions = options.filter((option) =>
+        const resultOptions = deselectedOptions.filter((option) =>
           option.label.match(filterRegex),
         );
         setOptions(resultOptions);
@@ -294,14 +295,19 @@ function AutoCompleteLazyLoadExample() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
+  const [isLoading, setIsLoading] = useState(false);
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(
     paginationInterval,
   );
 
   const handleLoadMoreResults = useCallback(() => {
+    setIsLoading(true);
     const nextVisibleOptionIndex = visibleOptionIndex + paginationInterval;
     if (nextVisibleOptionIndex <= options.length - 1) {
-      setVisibleOptionIndex(nextVisibleOptionIndex);
+      setTimeout(() => {
+        setIsLoading(false);
+        setVisibleOptionIndex(nextVisibleOptionIndex);
+      }, 1000);
     }
   }, [visibleOptionIndex, options.length]);
 
@@ -324,7 +330,7 @@ function AutoCompleteLazyLoadExample() {
       }
 
       const filterRegex = new RegExp(value, 'i');
-      const resultOptions = options.filter((option) =>
+      const resultOptions = deselectedOptions.filter((option) =>
         option.label.match(filterRegex),
       );
 
@@ -375,6 +381,7 @@ function AutoCompleteLazyLoadExample() {
         textField={textField}
         onSelect={setSelectedOptions}
         listTitle="Suggested Tags"
+        loading={isLoading}
         onLoadMoreResults={handleLoadMoreResults}
       />
     </Stack>
@@ -425,7 +432,7 @@ function AutocompleteExample() {
           return;
         }
         const filterRegex = new RegExp(value, 'i');
-        const resultOptions = options.filter((option) =>
+        const resultOptions = deselectedOptions.filter((option) =>
           option.label.match(filterRegex),
         );
         setOptions(resultOptions);

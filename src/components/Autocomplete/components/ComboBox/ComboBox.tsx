@@ -9,6 +9,8 @@ import {
   ComboBoxTextFieldType,
   ComboBoxListBoxContext,
   ComboBoxListBoxType,
+  ComboBoxListBoxOptionType,
+  ComboBoxListBoxOptionContext,
 } from '../../../../utilities/combo-box';
 
 import styles from './ComboBox.scss';
@@ -90,6 +92,13 @@ export function ComboBox({
     ],
   );
 
+  const listBoxOptionContextValue: ComboBoxListBoxOptionType = useMemo(
+    () => ({
+      allowMultiple,
+    }),
+    [allowMultiple],
+  );
+
   const listBoxContextValue: ComboBoxListBoxType = useMemo(
     () => ({
       setActiveOptionId,
@@ -129,7 +138,11 @@ export function ComboBox({
       <Popover.Pane onScrolledToBottom={onScrolledToBottom}>
         {Children.count(children) > 0 ? (
           <ComboBoxListBoxContext.Provider value={listBoxContextValue}>
-            <div className={styles.ListBox}>{children}</div>
+            <ComboBoxListBoxOptionContext.Provider
+              value={listBoxOptionContextValue}
+            >
+              <div className={styles.ListBox}>{children}</div>
+            </ComboBoxListBoxOptionContext.Provider>
           </ComboBoxListBoxContext.Provider>
         ) : null}
       </Popover.Pane>

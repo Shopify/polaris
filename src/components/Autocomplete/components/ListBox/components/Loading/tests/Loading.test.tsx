@@ -3,6 +3,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {ListBoxContext} from '../../../../../../../utilities/list-box';
 import {Loading} from '../Loading';
+import {Spinner} from '../../../../../../Spinner';
 
 const listBoxContext = {
   addNavigableOption: noop,
@@ -25,6 +26,23 @@ describe('Loading', () => {
     );
 
     consoleErrorSpy.mockRestore();
+  });
+
+  it('renders children instead of default spinner when passed', () => {
+    const accessibilityLabel = 'label';
+    const customLoadingState = 'customLoadingState';
+    const loading = mountWithApp(
+      <ListBoxContext.Provider value={listBoxContext}>
+        <Loading accessibilityLabel={accessibilityLabel}>
+          <div>{customLoadingState}</div>
+        </Loading>
+      </ListBoxContext.Provider>,
+    );
+
+    expect(loading).toContainReactComponent('div', {
+      children: customLoadingState,
+    });
+    expect(loading).not.toContainReactComponent(Spinner);
   });
 
   it('calls setLoading on context with the default loading text if there is no accessibilityLabel', () => {

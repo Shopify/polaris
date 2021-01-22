@@ -1,7 +1,9 @@
 import React from 'react';
-import {mount} from 'test-utilities';
+import {mount, mountWithApp} from 'test-utilities';
 
 import {TextOption} from '../TextOption';
+import {Checkbox} from '../../../../../../Checkbox';
+import {ComboBoxListBoxOptionContext} from '../../../../../../../utilities/combo-box/context';
 
 jest.mock('components', () => ({
   ...jest.requireActual('components'),
@@ -32,5 +34,18 @@ describe('TextOption', () => {
     expect(textOption).toContainReactComponent('div', {
       className: 'TextOption selected',
     });
+  });
+
+  it('renders visual checkbox when allowMultiple is provided', () => {
+    const textOption = mountWithApp(
+      <ComboBoxListBoxOptionContext.Provider value={{allowMultiple: true}}>
+        <TextOption>child</TextOption>
+      </ComboBoxListBoxOptionContext.Provider>,
+      {
+        features: {newDesignLanguage: true},
+      },
+    );
+
+    expect(textOption).toContainReactComponent(Checkbox);
   });
 });

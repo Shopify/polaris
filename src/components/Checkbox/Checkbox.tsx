@@ -1,4 +1,10 @@
-import React, {forwardRef, useRef, useImperativeHandle, useState} from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useState,
+  useContext,
+} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -9,6 +15,7 @@ import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, Key, CheckboxHandles} from '../../types';
+import {WithinListBoxContext} from '../../utilities/list-box/context';
 
 import styles from './Checkbox.scss';
 
@@ -69,6 +76,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setFalse: handleMouseOut,
     } = useToggle(false);
     const [keyFocused, setKeyFocused] = useState(false);
+    const isWithinListBox = useContext(WithinListBoxContext);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -169,7 +177,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onChange={noop}
             aria-invalid={error != null}
             aria-describedby={ariaDescribedBy}
-            role="checkbox"
+            role={isWithinListBox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}
           />
           <span className={backdropClassName} />

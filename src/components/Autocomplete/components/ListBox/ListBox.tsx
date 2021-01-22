@@ -16,7 +16,10 @@ import {VisuallyHidden} from '../../../VisuallyHidden';
 import {useComboBoxListBox} from '../../../../utilities/combo-box';
 import {closestParentMatch} from '../../../../utilities/closest-parent-match';
 import {scrollIntoView} from '../../../../utilities/scroll-into-view';
-import {ListBoxContext} from '../../../../utilities/list-box';
+import {
+  ListBoxContext,
+  WithinListBoxContext,
+} from '../../../../utilities/list-box';
 import type {NavigableOption} from '../../../../utilities/list-box';
 
 import {
@@ -283,25 +286,27 @@ export function ListBox({
         <div aria-live="polite">{loading ? loading : null}</div>
       </VisuallyHidden>
       <ListBoxContext.Provider value={listBoxContext}>
-        {children ? (
-          <ul
-            tabIndex={0}
-            role="listbox"
-            className={listBoxClassName}
-            aria-label={inComboBox ? undefined : accessibilityLabel}
-            aria-labelledby={textFieldLabelId}
-            aria-busy={Boolean(loading)}
-            aria-activedescendant={
-              currentActiveOption && currentActiveOption.domId
-            }
-            id={listId}
-            onFocus={inComboBox ? undefined : handleFocus}
-            onBlur={inComboBox ? undefined : handleBlur}
-            ref={listBoxRef}
-          >
-            {children}
-          </ul>
-        ) : null}
+        <WithinListBoxContext.Provider value>
+          {children ? (
+            <ul
+              tabIndex={0}
+              role="listbox"
+              className={listBoxClassName}
+              aria-label={inComboBox ? undefined : accessibilityLabel}
+              aria-labelledby={textFieldLabelId}
+              aria-busy={Boolean(loading)}
+              aria-activedescendant={
+                currentActiveOption && currentActiveOption.domId
+              }
+              id={listId}
+              onFocus={inComboBox ? undefined : handleFocus}
+              onBlur={inComboBox ? undefined : handleBlur}
+              ref={listBoxRef}
+            >
+              {children}
+            </ul>
+          ) : null}
+        </WithinListBoxContext.Provider>
       </ListBoxContext.Provider>
     </>
   );

@@ -36,8 +36,17 @@ export interface ComboBoxListBoxType {
   onKeyToBottom?(): void;
 }
 
+export interface ComboBoxListBoxOptionType {
+  // Whether the option should visually support multiple selection
+  allowMultiple?: boolean;
+}
+
 export const ComboBoxTextFieldContext = createContext<
   ComboBoxTextFieldType | undefined
 >(undefined);
 
 export const ComboBoxListBoxContext = createContext<ComboBoxListBoxType>({});
+
+export const ComboBoxListBoxOptionContext = createContext<
+  ComboBoxListBoxOptionType
+>({});

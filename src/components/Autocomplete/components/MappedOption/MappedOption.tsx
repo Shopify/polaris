@@ -43,8 +43,10 @@ export const MappedOption = memo(function MappedOption({
       disabled={disabled}
     >
       <ListBox.TextOption selected={selected} disabled={disabled}>
-        {mediaMarkup}
-        {label}
+        <div className={styles.Content}>
+          {mediaMarkup}
+          {label}
+        </div>
       </ListBox.TextOption>
     </ListBox.Option>
   );

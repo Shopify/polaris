@@ -1,13 +1,18 @@
 @import '../../../../../../styles/common';
 
 .TextOption {
-  margin: spacing(extra-tight) spacing(tight);
+  margin: spacing(extra-tight) spacing(tight) 0;
   flex: 1;
   border-radius: var(--p-border-radius-base);
-  padding: spacing(tight) spacing();
+  padding: spacing(tight) spacing(tight);
   cursor: pointer;
   display: flex;
   @include focus-ring;
+
+  &.allowMultiple {
+    margin: spacing(extra-tight) spacing(tight) 0;
+    padding: spacing(extra-tight) spacing(tight);
+  }
 
   &:hover {
     background-color: var(--p-surface-hovered);

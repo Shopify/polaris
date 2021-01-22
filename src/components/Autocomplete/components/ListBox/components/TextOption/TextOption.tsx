@@ -1,6 +1,8 @@
-import React, {memo} from 'react';
+import React, {memo, useContext} from 'react';
 
+import {Checkbox} from '../../../../../Checkbox';
 import {classNames} from '../../../../../../utilities/css';
+import {ComboBoxListBoxOptionContext} from '../../../../../../utilities/combo-box/context';
 
 import styles from './TextOption.scss';
 
@@ -17,14 +19,22 @@ export const TextOption = memo(function TextOption({
   selected,
   disabled,
 }: TextOptionProps) {
+  const {allowMultiple} = useContext(ComboBoxListBoxOptionContext);
   const textOptionClassName = classNames(
     styles.TextOption,
-    selected && styles.selected,
+    selected && !allowMultiple && styles.selected,
     disabled && styles.disabled,
+    allowMultiple && styles.allowMultiple,
   );
   return (
     <div className={textOptionClassName}>
-      <div className={styles.Content}>{children}</div>
+      <div className={styles.Content}>
+        {allowMultiple ? (
+          <Checkbox checked={selected} label={children} />
+        ) : (
+          children
+        )}
+      </div>
     </div>
   );
 });

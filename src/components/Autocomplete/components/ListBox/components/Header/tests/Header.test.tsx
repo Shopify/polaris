@@ -20,6 +20,23 @@ describe('Header', () => {
     expect(header).toContainReactComponent('div', {'aria-hidden': true});
   });
 
+  it('renders string headers with standard styling', () => {
+    const header = mountWithApp(<Header>Header</Header>);
+
+    expect(header).toContainReactComponent('div', {className: 'Header'});
+  });
+
+  it('renders headers without default wrapper when not type string', () => {
+    const header = mountWithApp(
+      <Header>
+        <button>header</button>
+      </Header>,
+    );
+
+    expect(header).toContainReactComponent('button');
+    expect(header).not.toContainReactComponent('div', {className: 'Header'});
+  });
+
   it('renders an element with id from Section', () => {
     const id = 'mock-id';
     mockUseSection(id);

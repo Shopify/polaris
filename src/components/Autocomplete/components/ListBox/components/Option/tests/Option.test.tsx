@@ -309,6 +309,31 @@ describe('Option', () => {
       expect(option).toContainReactComponent(UnstyledLink, {external: true});
     });
 
+    it('calls onAction when option clicked', () => {
+      const onActionSpy = jest.fn();
+      const option = mountWithListBoxProvider(
+        <MappedActionContext.Provider
+          value={{
+            isAction: true,
+            onAction: onActionSpy,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+        },
+      );
+
+      option
+        .find('li', {
+          role: 'option',
+        })!
+        .trigger('onClick', {preventDefault: () => {}});
+
+      expect(onActionSpy).toHaveBeenCalled();
+    });
+
     it('does not invoke onOptionSelect during click events', () => {
       const onOptionSelectSpy = jest.fn();
       const option = mountWithListBoxProvider(
