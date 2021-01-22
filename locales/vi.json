@@ -1,7 +1,8 @@
 {
   "Polaris": {
     "Actions": {
-      "moreActions": "Thao tác khác"
+      "moreActions": "Thao tác khác",
+      "lessActions": "Ẩn bớt thao tác"
     },
     "Avatar": {
       "label": "Hình đại diện",
