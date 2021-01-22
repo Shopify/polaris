@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "更多動作"
+      "moreActions": "更多動作",
+      "lessActions": "較少動作"
     },
     "Loading": {
       "label": "頁面載入進度條"
