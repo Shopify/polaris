@@ -30,7 +30,7 @@ export interface ModalProps extends FooterProps {
    * Hide the title in the modal
    * @default false
    */
-  hideTitle?: boolean;
+  titleHidden?: boolean;
   /** The content to display inside modal */
   children?: React.ReactNode;
   /** Inner content of the footer */
@@ -62,7 +62,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 } = function Modal({
   children,
   title,
-  hideTitle = false,
+  titleHidden = false,
   src,
   iFrameName,
   open,
@@ -179,7 +179,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         large={large}
         limitHeight={limitHeight}
       >
-        <Header hideTitle={hideTitle} id={headerId} onClose={onClose}>
+        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
           {title}
         </Header>
         <div className={styles.BodyWrapper}>{bodyMarkup}</div>
