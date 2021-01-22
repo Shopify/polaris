@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "기타 작업"
+      "moreActions": "기타 작업",
+      "lessActions": "더 적은 작업"
     },
     "Loading": {
       "label": "페이지 로딩 표시줄"
