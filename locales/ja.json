@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "その他の操作"
+      "moreActions": "その他の操作",
+      "lessActions": "アクションが少ない"
     },
     "Loading": {
       "label": "ページの読み込み表示バー"
