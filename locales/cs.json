@@ -297,7 +297,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Další akce"
+      "moreActions": "Další akce",
+      "lessActions": "Méně akcí"
     },
     "Loading": {
       "label": "Panel načítání stránky"
