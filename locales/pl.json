@@ -297,7 +297,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Więcej czynności"
+      "moreActions": "Więcej czynności",
+      "lessActions": "Mniej czynności"
     },
     "Loading": {
       "label": "Pasek ładowania strony"
