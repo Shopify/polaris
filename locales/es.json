@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Más acciones"
+      "moreActions": "Más acciones",
+      "lessActions": "Menos acciones"
     },
     "Loading": {
       "label": "Barra de \"cargando página\""
