@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Diğer işlemler"
+      "moreActions": "Diğer işlemler",
+      "lessActions": "Daha az işlem"
     },
     "Loading": {
       "label": "Sayfa yüklenme çubuğu"
