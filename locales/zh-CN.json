@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "其他操作"
+      "moreActions": "其他操作",
+      "lessActions": "减少操作次数"
     },
     "Loading": {
       "label": "页面加载条"
