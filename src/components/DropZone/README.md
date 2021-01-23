@@ -102,7 +102,7 @@ function DropZoneExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > -1
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
@@ -220,7 +220,7 @@ function DropZoneExample() {
         size="small"
         alt={file.name}
         source={
-          validImageTypes.indexOf(file.type) > -1
+          validImageTypes.includes(file.type)
             ? window.URL.createObjectURL(file)
             : NoteMinor
         }
@@ -264,7 +264,7 @@ function DropZoneWithDropOnPageExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > -1
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
@@ -390,7 +390,7 @@ function NestedDropZoneExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > -1
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
