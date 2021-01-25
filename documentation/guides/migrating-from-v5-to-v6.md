@@ -24,7 +24,7 @@ When other factors help a user determine interactivity the underline can be remo
 + <Link url="https://help.shopify.com/" removeUnderline>Orders</Link>
 ```
 
-## Remove the light prop from Tooltip
+## Removed the light prop from Tooltip
 
 With the new changes `Tooltip` it now defaults to a light background. The property can safely be removed.
 
@@ -71,7 +71,7 @@ Modal titles are required for screenreaders. There is a new option to hide the t
 
 ## Sheet requires an accessibility label
 
-Screen reader accessibility labels are required for screen readers. This new label does not render anything to the page.
+Accessibility labels are required for screen readers. This new label does not render anything to the page.
 
 ```diff
 <Sheet
@@ -146,8 +146,8 @@ This allows relative units for the frame offset. Allowing users to take into acc
 ## Replace `ariaPressed` prop with `pressed` in `Button` and `UnstyledButton`
 
 ```diff
-- <Button ariaPressed={true}>Lets go</Button>
-+ <Button pressed={true}>Lets go</Button>
+- <Button ariaPressed={true}>Let’s go</Button>
++ <Button pressed={true}>Let’s go</Button>
 ```
 
 ## Removed `Button`'s `stretchContent` prop
