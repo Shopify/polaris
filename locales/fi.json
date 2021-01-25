@@ -295,7 +295,8 @@
       }
     },
     "Actions": {
-      "moreActions": "Lisää toimintoja"
+      "moreActions": "Lisää toimintoja",
+      "lessActions": "Vähemmän toimintoja"
     },
     "Loading": {
       "label": "Sivun latautumisen palkki"
