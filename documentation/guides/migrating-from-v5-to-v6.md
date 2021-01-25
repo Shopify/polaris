@@ -17,7 +17,7 @@ In v6 you no longer need to enable the newDesignLanguage through the features fl
 
 When using the `Link` component it is now underlined by default to make sure that color is not the only way for users to percieve interactivity.
 
-When other factors help a user determine interactivity the underline can be removed with `removeUnderline` prop.
+When other factors help a user determine interactivity the underline can be removed with the `removeUnderline` prop.
 
 ```diff
 - <Link url="https://help.shopify.com/">Orders</Link>
