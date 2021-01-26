@@ -364,9 +364,13 @@
 }
 
 // New design language color styles
-
 .colorBase {
   @include color-icon('ink');
+
+  &::before {
+    background-color: var(--p-surface-neutral);
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
   }
@@ -381,6 +385,11 @@
 
 .colorCritical {
   @include color-icon('red');
+
+  &::before {
+    background-color: var(--p-surface-critical, color('red', 'light'));
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-critical));
   }
@@ -388,6 +397,11 @@
 
 .colorWarning {
   @include color-icon('yellow');
+
+  &::before {
+    background-color: var(--p-surface-warning, color('yellow', 'light'));
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-warning));
   }
@@ -395,6 +409,11 @@
 
 .colorHighlight {
   @include color-icon('teal');
+
+  &::before {
+    background-color: var(--p-surface-highlight, color('teal', 'light'));
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-highlight));
   }
@@ -402,6 +421,11 @@
 
 .colorSuccess {
   @include color-icon('green');
+
+  &::before {
+    background-color: var(--p-surface-success, color('green', 'light'));
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-success));
   }
@@ -409,6 +433,7 @@
 
 .colorPrimary {
   @include color-icon('indigo');
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-action-primary));
   }
