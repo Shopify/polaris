@@ -55,6 +55,30 @@ This allows relative units for the frame offset. Allowing users to take into acc
 
 ## Component API changes
 
+### Icon color prop uses semantic colors
+
+`subdued` has replaced `white`, `skyLighter`, `skyLight`, `sky` and `skyDark`.
+`base` has replaced `black`, `inkLightest`, `inkLighter`, `inkLight`, `ink`, `blueLighter`, `blueLight`, `blue`, `blueDark` and `blueDarker`.
+`primary` has replaced `indigoLighter`, `indigoLight`, `indigo`, `indigoDark` and `indigoDarker`.
+`highlight` has replaced `tealLighter`, `tealLight`, `teal`, `tealDark` `tealDarker` and `purple`.
+`success` has replaced `greenLighter`, `green` and `greenDark`.
+`warning` has replaced `yellowLighter`, `yellow`, `yellowDark` and `orange` `orangeDark`.
+`critical` has replaced `redLighter`, `red` and `redDark`.
+
+```diff
+- <Icon color="indigo" source={CirclePlusMinor} />
++ <Icon color="primary" source={CirclePlusMinor} />
+```
+
+### Spinner color prop is now removed
+
+In the new design language `Spinner`s are always green. Thus the `color` prop no longer has any effect and has been removed. Remove any usage of this prop.
+
+```diff
+- <Spinner color="teal" />
++ <Spinner />
+```
+
 ### Link is underlined by default
 
 The `Link` component is now underlined by default to make sure that color is not the only way for users to perceive interactivity.
