@@ -55,7 +55,7 @@ function AppProviderWithKnobs(
   );
 }
 
-const preferredTheme = process.env.STORYBOOK_NEWDESIGNLANGUAGE || 'purpler';
+const preferredTheme = process.env.STORYBOOK_NEWDESIGNLANGUAGE || 'light';
 
 const withContextsDecorator = withContexts([
   {
