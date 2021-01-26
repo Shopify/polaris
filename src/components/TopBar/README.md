@@ -441,26 +441,12 @@ function TopBarExample() {
     console.log('toggle navigation visibility');
   }, []);
 
-  const darkTopBarColors = {
-    background: '#000000',
-    backgroundLighter: '#262626',
-    backgroundDarker: '#444444',
-    border: '#000000',
-    color: '#ffffff',
-  };
-
-  const lightTopBarColors = {
-    background: '#FFFFFF',
-    backgroundLighter: '#F4F6F8',
-    backgroundDarker: '#DFE3E8',
-    border: '#C4CDD5',
-    color: '#212B36',
-  };
-
   const theme = {
     colors: {
-      topBar: isDarkTheme ? darkTopBarColors : lightTopBarColors,
+      surface: '#FFFFFF',
+      onsurface: '#212B36',
     },
+    colorScheme: isDarkTheme ? 'dark' : 'light',
     logo: {
       width: 124,
       topBarSource: `data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 446 92.6' fill='%23${
