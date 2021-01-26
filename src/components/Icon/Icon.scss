@@ -387,7 +387,7 @@
   @include color-icon('red');
 
   &::before {
-    background-color: var(--p-surface-critical);
+    background-color: var(--p-surface-critical, color('red', 'light'));
   }
 
   &.newDesignLanguage {
@@ -411,7 +411,7 @@
   @include color-icon('teal');
 
   &::before {
-    background-color: var(--p-surface-highlight);
+    background-color: var(--p-surface-highlight, color('teal', 'light'));
   }
 
   &.newDesignLanguage {
@@ -423,7 +423,7 @@
   @include color-icon('green');
 
   &::before {
-    background-color: var(--p-surface-success);
+    background-color: var(--p-surface-success, color('green', 'light'));
   }
 
   &.newDesignLanguage {
