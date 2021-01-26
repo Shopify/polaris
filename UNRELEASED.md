@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `Popover`/`PopoverOverlay`'s `preventAutoFocus` prop. Consumers should use `autofocusTarget="none"` instead ([#3884](https://github.com/Shopify/polaris-react/pull/3884))
 - Removed `button-filled-disabled` and `plain-button-background` SASS mixins ([#3817](https://github.com/Shopify/polaris-react/pull/3817))
 - Removed `text-emphasis-placeholder` SASS mixin ([#3889](https://github.com/Shopify/polaris-react/pull/3889))
+- Remove `skeleton-page-header-has-secondary-actions` Sass mixin ([#3919](https://github.com/Shopify/polaris-react/pull/3919))
 - Removed `plain` property in `Pagination` as it no longer has any effect. ([#3833](https://github.com/Shopify/polaris-react/pull/3833))
 - Removed `separator` property in `Page` as it no longer has any effect. ([#3918](https://github.com/Shopify/polaris-react/pull/3918))
 

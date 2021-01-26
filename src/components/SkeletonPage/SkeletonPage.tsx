@@ -41,12 +41,6 @@ export function SkeletonPage({
     narrowWidth && styles.narrowWidth,
   );
 
-  const headerClassName = classNames(
-    styles.Header,
-    breadcrumbs && styles['Header-hasBreadcrumbs'],
-    secondaryActions && styles['Header-hasSecondaryActions'],
-  );
-
   const titleContent = title ? (
     <h1 className={styles.Title}>{title}</h1>
   ) : (
@@ -77,7 +71,7 @@ export function SkeletonPage({
       role="status"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
     >
-      <div className={headerClassName}>
+      <div className={styles.Header}>
         {breadcrumbMarkup}
         <div className={styles.TitleAndPrimaryAction}>
           {titleMarkup}
