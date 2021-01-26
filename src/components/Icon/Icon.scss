@@ -28,6 +28,10 @@
 
 .colorBase {
   @include recolor-icon(var(--p-icon));
+
+  &::before {
+    background-color: var(--p-surface-neutral);
+  }
 }
 
 .colorSubdued {
@@ -36,18 +40,34 @@
 
 .colorCritical {
   @include recolor-icon(var(--p-icon-critical));
+
+  &::before {
+    background-color: var(--p-surface-critical);
+  }
 }
 
 .colorWarning {
   @include recolor-icon(var(--p-icon-warning));
+
+  &::before {
+    background-color: var(--p-surface-warning);
+  }
 }
 
 .colorHighlight {
   @include recolor-icon(var(--p-icon-highlight));
+
+  &::before {
+    background-color: var(--p-surface-highlight);
+  }
 }
 
 .colorSuccess {
   @include recolor-icon(var(--p-icon-success));
+
+  &::before {
+    background-color: var(--p-surface-success);
+  }
 }
 
 .colorPrimary {
