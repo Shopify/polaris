@@ -399,7 +399,7 @@
   @include color-icon('yellow');
 
   &::before {
-    background-color: var(--p-surface-warning);
+    background-color: var(--p-surface-warning, color('yellow', 'light'));
   }
 
   &.newDesignLanguage {
