@@ -4,7 +4,9 @@ Polaris v6.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## AppProvider theming changes
 
-### newDesignLanguage feature has been removed and is now the default
+### New Design Language
+
+In v5 we exposed a feature flag toggle to change between our old and new design languages. In v6 the new design is always enabled by default and our old design language has been removed.
 
 In v6 you no longer need to enable the newDesignLanguage through the features flag in the `AppProvider`.
 
@@ -51,53 +53,11 @@ This allows relative units for the frame offset. Allowing users to take into acc
 >
 ```
 
-## Exported type changes
-
-### Removed exported type`AnimationProps`
-
-`AnimationProps` is a simple type that was used once in `@shopify/polaris` and we have decided to remove it.
-
-```diff
-- import {AnimationProps} from '@shopify/polaris';
-
-+ interface AnimationProps {
-+   in?: boolean;
-+ }
-```
-
-### Removed export for `NewDesignLanguageColor` and `Color`
-
-We no longer support `NewDesignLanguageColor` and `Color` types. They were used to type our icon colors and have been replaced with ` IconProps['color']`.
-
-```diff
-- import {Color, NewDesignLanguageColor, Icon} from '@shopify/polaris';
-+ import {Icon, IconProps} from '@shopify/polaris';
-
-interface PartyIconProps {
-- color: Color | NewDesignLanguageColor;
-+ color: IconProps['color'];
-}
-```
-
-### Replaced `BaseAction` type with `Action`
-
-`BaseAction` has been replaced with the `Action` type.
-
-```diff
-- import {BaseAction} from '@shopify/polaris';
-+ import {Action} from '@shopify/polaris';
-
-export interface Props {
-- headerAction?: BaseAction;
-+ headerAction?: Action;
-}
-```
-
 ## Component API changes
 
 ### Link is underlined by default
 
-When using the `Link` component it is now underlined by default to make sure that color is not the only way for users to percieve interactivity.
+The `Link` component it is now underlined by default to make sure that color is not the only way for users to percieve interactivity.
 
 When other factors help a user determine interactivity the underline can be removed with the `removeUnderline` prop.
 
@@ -106,9 +66,9 @@ When other factors help a user determine interactivity the underline can be remo
 + <Link url="https://help.shopify.com/" removeUnderline>Orders</Link>
 ```
 
-### Modals require a title property that can be hidden
+### Modal title prop is now required
 
-Modal titles are required for screenreaders. There is a new option to hide the title.
+To help enforce accessibility for screenreaders, `Modal`'s title prop is now required. You must add a title to all your modals. In the event that you do not want to display this title visually you can add the `titleHidden` prop to hide the title.
 
 ```diff
 <Modal
@@ -194,7 +154,7 @@ There was duplicated functionality and we have decided to replace `preventAutofo
 
 ### Removed the light prop from Tooltip
 
-With the new changes `Tooltip` it now defaults to a light background. The property can safely be removed.
+In the new design language `Tooltip`s are always light. Thus the `light` prop no longer has any effect and has been be removed. Remove any usage of this prop.
 
 ```diff
 <Tooltip
@@ -217,9 +177,11 @@ With the new visual styles we have decided to remove the plain property from `Pa
 />
 ```
 
-### Removed `button-filled-disabled` SASS mixin
+## Sass API Changes
 
-This mixin has been removed as `Button` `disabled` property implements this background.
+### Removed `button-filled-disabled` SASS function
+
+This function has been removed as `Button` `disabled` property implements this background.
 
 ```diff
 .IconButton {
@@ -228,9 +190,9 @@ This mixin has been removed as `Button` `disabled` property implements this back
 }
 ```
 
-### Removed `plain-button-background` SASS mixin
+### Removed `plain-button-background` SASS function
 
-This mixin has been removed as `Button` `plain` property implements this background.
+This function has been removed.
 
 ```diff
 .IconButton {
@@ -245,7 +207,49 @@ With the new visual styles the placeholder and subdued mixins have the same func
 
 ```diff
 .SearchInput {
-- color: text-emphasis-placeholder();
-+ color: text-emphasis-subdued();
+- color: @include button-filled-disabled();;
++ color: @include text-emphasis-subdued();
+}
+```
+
+## Exported type changes
+
+### Removed `AnimationProps`
+
+`AnimationProps` is a simple type that was used once in `@shopify/polaris` and we have decided to remove it.
+
+```diff
+- import {AnimationProps} from '@shopify/polaris';
+
++ interface AnimationProps {
++   in?: boolean;
++ }
+```
+
+### Removed `NewDesignLanguageColor` and `Color`
+
+The `NewDesignLanguageColor` and `Color` that describes the argument you pass into Icon's color prop. You should use `IconProps['color']` instead of referencing these low level types.
+
+```diff
+- import {Color, NewDesignLanguageColor, Icon} from '@shopify/polaris';
++ import {Icon, IconProps} from '@shopify/polaris';
+
+interface PartyIconProps {
+- color: Color | NewDesignLanguageColor;
++ color: IconProps['color'];
+}
+```
+
+### Replaced `BaseAction` type with `Action`
+
+`BaseAction` has been replaced with the `Action` type.
+
+```diff
+- import {BaseAction} from '@shopify/polaris';
++ import {Action} from '@shopify/polaris';
+
+export interface Props {
+- headerAction?: BaseAction;
++ headerAction?: Action;
 }
 ```
