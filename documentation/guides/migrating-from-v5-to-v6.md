@@ -160,6 +160,24 @@ Consumers should combine the `fullWidth` and `textAlign="left"` props instead.
 + <Button fullWidth textAlign="left">Lets go</Button>
 ```
 
+### Removed `Page`'s `seperator` prop
+
+Consumers should remove the seperator property as it no longer renders a border or spacing on the `Page`.
+
+```diff
+- <Page title="Settings" separator>
++ <Page title="Settings">
+  <Layout>
+    <Layout.AnnotatedSection title="Store details">
+      <p>Annotated section content</p>
+    </Layout.AnnotatedSection>
+  </Layout>
+</Page>
+```
+
+````
+
+
 ### Removed `Popover`/`PopoverOverlay`'s `preventAutoFocus` prop
 
 There was duplicated functionality and we have decided to replace `preventAutofocus` with `autofocusTarget="none"`.
@@ -174,7 +192,7 @@ There was duplicated functionality and we have decided to replace `preventAutofo
 >
   <p>Hello world</p>
 </Popover>
-```
+````
 
 ### Removed the light prop from Tooltip
 
