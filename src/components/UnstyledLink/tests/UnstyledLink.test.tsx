@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components/UnstyledLink';
 import {VisuallyHidden} from 'components/VisuallyHidden';
 
@@ -37,12 +38,11 @@ describe('<UnstyledLink />', () => {
     });
 
     it('adds a visually hidden new window warning', () => {
-      const anchorElement = mountWithAppProvider(
+      const hiddenText = mountWithApp(
         <UnstyledLink external url="https://shopify.com" />,
-      ).find('a');
+      ).find(VisuallyHidden);
 
-      const hiddenText = anchorElement.find(VisuallyHidden).first();
-      expect(hiddenText).toHaveLength(1);
+      expect(hiddenText).toContainReactText(' (opens a new window)');
     });
   });
 

@@ -31,6 +31,7 @@ export const UnstyledLink = memo(
         {children}
         {external && (
           <VisuallyHidden>
+            {' '}
             {i18n.translate('Polaris.Common.newWindowAccessibilityHint')}
           </VisuallyHidden>
         )}
