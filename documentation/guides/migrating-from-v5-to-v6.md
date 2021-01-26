@@ -19,7 +19,7 @@ In v6 you no longer need to enable the newDesignLanguage through the features fl
 
 ### Removed legacy topbar theming
 
-With the new visual styles the TopBar theming has been replaced with the `ThemeProvider`. If you want to change the `TopBar` appearance you can ovveride the theme or the CSS variables.
+With the new visual styles the TopBar theming has been replaced with the `ThemeProvider`. If you want to change the `TopBar` appearance you can override the theme or the CSS variables.
 
 ```diff
 <AppProvider
@@ -57,7 +57,7 @@ This allows relative units for the frame offset. Allowing users to take into acc
 
 ### Link is underlined by default
 
-The `Link` component it is now underlined by default to make sure that color is not the only way for users to percieve interactivity.
+The `Link` component is now underlined by default to make sure that color is not the only way for users to perceive interactivity.
 
 When other factors help a user determine interactivity the underline can be removed with the `removeUnderline` prop.
 
@@ -68,7 +68,7 @@ When other factors help a user determine interactivity the underline can be remo
 
 ### Modal title prop is now required
 
-To help enforce accessibility for screenreaders, `Modal`'s title prop is now required. You must add a title to all your modals. In the event that you do not want to display this title visually you can add the `titleHidden` prop to hide the title.
+To help enforce accessibility for screen readers, `Modal`'s title prop is now required. You must add a title to all your modals. In the event that you do not want to display this title visually you can add the `titleHidden` prop to hide the title.
 
 ```diff
 <Modal
@@ -154,7 +154,7 @@ There was duplicated functionality and we have decided to replace `preventAutofo
 
 ### Removed the light prop from Tooltip
 
-In the new design language `Tooltip`s are always light. Thus the `light` prop no longer has any effect and has been be removed. Remove any usage of this prop.
+In the new design language `Tooltip`s are always light. Thus the `light` prop no longer has any effect and has been removed. Remove any usage of this prop.
 
 ```diff
 <Tooltip
