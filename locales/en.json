@@ -117,6 +117,9 @@
         "closeMobileNavigationLabel": "Close navigation"
       }
     },
+    "Icon": {
+      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
+    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"
