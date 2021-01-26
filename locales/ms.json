@@ -101,9 +101,6 @@
         "closeMobileNavigationLabel": "Tutup navigasi"
       }
     },
-    "Icon": {
-      "backdropWarning": "Ikon {color} tidak menerima latar belakang. Warna ikon yang mempunyai latar belakang adalah: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Tindakan"

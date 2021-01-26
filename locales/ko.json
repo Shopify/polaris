@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "탐색 닫기"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} 아이콘에는 투명 무늬를 사용할 수 없습니다. 투명 무늬가 있는 아이콘 색상: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "작업"
