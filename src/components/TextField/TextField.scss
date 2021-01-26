@@ -99,6 +99,7 @@ $stacking-order: (
   margin: 0;
   padding: control-vertical-padding() $backdrop-horizontal-spacing;
   background: none;
+  border: border(transparent);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
