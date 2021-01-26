@@ -37,8 +37,6 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
-  /** Adds a border to the bottom of the page header */
-  separator?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
@@ -72,7 +70,6 @@ export function Header({
   additionalMetaData,
   thumbnail,
   titleHidden = false,
-  separator,
   primaryAction,
   pagination,
   additionalNavigation,
@@ -148,7 +145,6 @@ export function Header({
 
   const headerClassNames = classNames(
     styles.Header,
-    separator && styles.separator,
     isSingleRow && styles.isSingleRow,
     titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
