@@ -14,6 +14,14 @@ type Color =
   | 'success'
   | 'primary';
 
+const COLORS_WITH_BACKDROPS = [
+  'base',
+  'critical',
+  'warning',
+  'highlight',
+  'success',
+];
+
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
@@ -33,6 +41,16 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
     sourceType = 'placeholder';
   } else {
     sourceType = 'external';
+  }
+
+  if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      i18n.translate('Polaris.Icon.backdropWarning', {
+        color,
+        colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
+      }),
+    );
   }
 
   if (color && sourceType === 'external') {

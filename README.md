@@ -74,10 +74,9 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 1.  Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.0.0-alpha.4/dist/styles.css"
-/>
+<link rel="stylesheet" <<<<<<< HEAD
+href="https://unpkg.com/@shopify/polaris@6.0.0-alpha.4/dist/styles.css" =======
+href="https://unpkg.com/@shopify/polaris@5.15.1/dist/styles.css" >>>>>>> main />
 ```
 
 2.  Include the markup and associated classes in your HTML document:

@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.15.1 - 2021-01-25
+
+### Bug fixes
+
+- Add support for backdrop to newDesignLanguage colors in icon ([#3911](https://github.com/Shopify/polaris-react/pull/3911))
+
 ## 5.15.0 - 2021-01-21
 
 ### Enhancements
