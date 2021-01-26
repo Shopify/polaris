@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Lukk navigering"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet godtar ikke bakgrunnsstiler. Ikonfargene som har bakgrunnsstiler, er: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Handlinger"

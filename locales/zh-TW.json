@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "關閉導覽"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} 圖示不適用背景。有背景的圖示顏色為：{colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "動作"

@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "ปิดการนำทาง"
       }
     },
-    "Icon": {
-      "backdropWarning": "ไม่สามารถใช้ฉากหลังกับไอคอน {color} ได้ สีไอคอนที่มีฉากหลังคือ: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "การดำเนินการ"
