@@ -4,6 +4,7 @@ import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
+import {useSetActionRefs} from 'utilities/action-refs-tracker';
 
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
@@ -503,6 +504,35 @@ describe('<Modal>', () => {
           (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
         )!.domNode,
       );
+    });
+
+    it('focuses the activator on close when actionId is passed', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef(null);
+
+        useSetActionRefs({
+          id: 'actionId1',
+          actionRef: buttonRef,
+        });
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
+
+        return (
+          <div>
+            {button}
+            <Modal title="foo" onClose={noop} open actionId="actionId1" />
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(testHarness.find('button')!.domNode);
     });
   });
 });
