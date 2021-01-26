@@ -175,9 +175,6 @@ Consumers should remove the seperator property as it no longer renders a border 
 </Page>
 ```
 
-````
-
-
 ### Removed `Popover`/`PopoverOverlay`'s `preventAutoFocus` prop
 
 There was duplicated functionality and we have decided to replace `preventAutofocus` with `autofocusTarget="none"`.
@@ -192,7 +189,7 @@ There was duplicated functionality and we have decided to replace `preventAutofo
 >
   <p>Hello world</p>
 </Popover>
-````
+```
 
 ### Removed the light prop from Tooltip
 
