@@ -74,18 +74,6 @@ Use only when necessary to provide an explanation for an interface element.
 </div>
 ```
 
-### Light tooltip
-
-A light tooltip draws less attention than the default tooltip. Use only when necessary to provide an explanation for an interface element with less emphasis.
-
-```jsx
-<div style={{padding: '75px 0'}}>
-  <Tooltip light active content="This order has shipping labels.">
-    <Link>Order #1001</Link>
-  </Tooltip>
-</div>
-```
-
 ### Tooltip visible only with child interaction
 
 Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.

@@ -1,9 +1,7 @@
 import React, {useState, useCallback} from 'react';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {useFeatures} from '../../utilities/features';
-import {classNames} from '../../utilities/css';
-import type {IconProps} from '../../types';
+import type {IconProps} from '../Icon';
 import type {AvatarProps} from '../Avatar';
 import type {ThumbnailProps} from '../Thumbnail';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -72,7 +70,6 @@ export function OptionList({
     createNormalizedOptions(options, sections, title),
   );
   const id = useUniqueId('OptionList', idProp);
-  const {newDesignLanguage} = useFeatures();
 
   useDeepEffect(
     () => {
@@ -149,13 +146,8 @@ export function OptionList({
       })
     : null;
 
-  const optionListClassName = classNames(
-    styles.OptionList,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   return (
-    <ul className={optionListClassName} role={role}>
+    <ul className={styles.OptionList} role={role}>
       {optionsMarkup}
     </ul>
   );

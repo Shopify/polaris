@@ -9,7 +9,7 @@
   }
 
   &.subdued {
-    background: var(--p-surface-subdued, color('sky', 'light'));
+    background: var(--p-surface-subdued);
   }
 
   &.flush {

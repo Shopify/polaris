@@ -274,23 +274,10 @@ describe('<ContextualSaveBar />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('renders a ThemeProvider with inverted theme', () => {
-      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
-        theme: {colorScheme: 'inverse'},
-      });
-    });
-
-    it('renders a container with a newDesignLanguage className', () => {
-      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(contextualSaveBar).toContainReactComponent('div', {
-        className: 'ContextualSaveBar newDesignLanguage',
-      });
+  it('renders a ThemeProvider with inverted theme', () => {
+    const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
+    expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
+      theme: {colorScheme: 'inverse'},
     });
   });
 });

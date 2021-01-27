@@ -39,7 +39,7 @@ export interface SheetProps {
   /** Callback when the sheet has started to exit */
   onExit?(): void;
   /** ARIA label for sheet */
-  accessibilityLabel?: string;
+  accessibilityLabel: string;
 }
 
 export function Sheet({

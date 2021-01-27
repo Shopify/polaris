@@ -176,13 +176,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('ariaPressed', () => {
-    it('passes prop', () => {
-      const button = mountWithAppProvider(<Button ariaPressed />);
-      expect(button.find(UnstyledButton).prop('ariaPressed')).toBeTruthy();
-    });
-  });
-
   describe('connectedDisclosure', () => {
     it('connects a disclosure icon button to the button', () => {
       const disclosure = {
@@ -425,35 +418,6 @@ describe('<Button />', () => {
       const button = mountWithAppProvider(<Button disclosure="select" />);
       const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
       expect(disclosureIcon.props().source).toBe(SelectMinor);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const button = mountWithApp(<Button />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(button).not.toContainReactComponent(UnstyledButton, {
-        className: 'Button newDesignLanguage',
-      });
-    });
-  });
-
-  describe('stretchContent', () => {
-    it('sets variant class', () => {
-      const button = mountWithApp(<Button stretchContent />);
-      expect(button).toContainReactComponent(UnstyledButton, {
-        className: 'Button stretchContent',
-      });
     });
   });
 });

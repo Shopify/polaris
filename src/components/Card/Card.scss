@@ -1,19 +1,12 @@
 @import '../../styles/common';
 
 .Card {
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   box-shadow: var(--p-card-shadow, shadow());
   outline: border-width(base) solid transparent;
 
   + .Card {
-    margin-top: spacing(loose);
-  }
-
-  &.newDesignLanguage {
-    // stylelint-disable-next-line selector-max-class
-    + .Card {
-      margin-top: spacing();
-    }
+    margin-top: spacing();
   }
 
   @include page-content-when-not-fully-condensed {
@@ -22,7 +15,7 @@
 }
 
 .subdued {
-  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
+  background-color: var(--p-surface-subdued);
 }
 
 .Header {
@@ -72,7 +65,7 @@
 }
 
 .Section-subdued {
-  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
+  background-color: var(--p-surface-subdued);
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;

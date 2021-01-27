@@ -26,10 +26,6 @@ $skeleton-display-text-max-width: rem(120px);
   @include skeleton-page-header-layout;
 }
 
-.Header-hasSecondaryActions {
-  @include skeleton-page-header-has-secondary-actions;
-}
-
 .BreadcrumbAction {
   padding-top: spacing(base);
   padding-bottom: spacing(base);
@@ -45,11 +41,11 @@ $skeleton-display-text-max-width: rem(120px);
   }
 }
 
-.Title {
+.TitleWrapper {
   flex: 1 1 0%;
 }
 
-.newDesignLanguageTitle {
+.Title {
   @include text-emphasis-strong;
   font-size: rem(24px);
   line-height: rem(28px);
@@ -59,7 +55,7 @@ $skeleton-display-text-max-width: rem(120px);
   }
 }
 
-.newDesignLanguageSkeletonTitle {
+.SkeletonTitle {
   @include skeleton-shimmer;
   @include skeleton-content;
   max-width: $skeleton-display-text-max-width;

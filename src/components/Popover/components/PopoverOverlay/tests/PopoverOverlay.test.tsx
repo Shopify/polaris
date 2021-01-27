@@ -170,7 +170,7 @@ describe('<PopoverOverlay />', () => {
     ).toBe(false);
   });
 
-  it("doesn't include a tabindex prop when preventAutofocus is true", () => {
+  it("doesn't include a tabindex prop when autofocusTarget is 'none'", () => {
     const popoverOverlay = mountWithAppProvider(
       <PopoverOverlay
         active
@@ -178,7 +178,7 @@ describe('<PopoverOverlay />', () => {
         activator={activator}
         onClose={noop}
         fixed
-        preventAutofocus
+        autofocusTarget="none"
         preferInputActivator={false}
       >
         {children}

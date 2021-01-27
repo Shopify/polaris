@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Chiudi la navigazione"
       }
     },
-    "Icon": {
-      "backdropWarning": "L'icona {color} non accetta gli sfondi. I colori dell'icona con sfondi sono i seguenti: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Azioni"

@@ -1,7 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {Badge, DisplayText, Avatar} from 'components';
 
 import {Title} from '../Title';
@@ -12,9 +11,9 @@ describe('<Title />', () => {
   };
 
   describe('title', () => {
-    it('renders a DisplayText with the title', () => {
+    it('renders an h1 with the title', () => {
       const pageTitle = mountWithAppProvider(<Title {...mockProps} />);
-      expect(pageTitle.find(DisplayText).text()).toBe(mockProps.title);
+      expect(pageTitle.find('h1').text()).toBe(mockProps.title);
     });
 
     it('does not render a title when not defined', () => {
@@ -60,31 +59,6 @@ describe('<Title />', () => {
     it('renders the thumbnail when defined', () => {
       const pageTitle = mountWithAppProvider(<Title {...propsWithThumbail} />);
       expect(pageTitle.find(Avatar).exists()).toBe(true);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    const propsWithMetadata = {
-      ...mockProps,
-      titleMetadata: <Badge>Sold</Badge>,
-    };
-
-    it('adds a newDesignLanguage class when enabled', () => {
-      const title = mountWithApp(<Title {...propsWithMetadata} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(title).toContainReactComponent('div', {
-        className: 'TitleWithMetadataWrapper newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when disabled', () => {
-      const title = mountWithApp(<Title {...propsWithMetadata} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(title).toContainReactComponent('div', {
-        className: 'TitleWithMetadataWrapper',
-      });
     });
   });
 });

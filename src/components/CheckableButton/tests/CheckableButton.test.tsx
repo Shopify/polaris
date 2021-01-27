@@ -1,7 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
 
 import {CheckableButton} from '../CheckableButton';
@@ -79,32 +78,6 @@ describe('<CheckableButton />', () => {
         keyCode: Key.Space,
       });
       expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is selected', () => {
-      const checkableButton = mountWithApp(
-        <CheckableButton {...CheckableButtonProps} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(checkableButton).toContainReactComponent('div', {
-        className: 'CheckableButton newDesignLanguage CheckableButton-selected',
-      });
-    });
-
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is not selected', () => {
-      const checkableButton = mountWithApp(
-        <CheckableButton {...CheckableButtonProps} plain selected={false} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(checkableButton).toContainReactComponent('div', {
-        className: 'CheckableButton CheckableButton-plain newDesignLanguage',
-      });
     });
   });
 });

@@ -14,6 +14,7 @@ $stacking-order: (
 );
 
 .SearchField {
+  z-index: z-index(modal, $fixed-element-stacking-order);
   position: relative;
   display: flex;
   flex: 1 1 auto;
@@ -21,23 +22,6 @@ $stacking-order: (
   border: 1px solid transparent;
   width: 100%;
   max-width: $search-max-width;
-}
-
-.SearchField-newDesignLanguage {
-  z-index: z-index(modal, $fixed-element-stacking-order);
-  max-width: $new-search-max-width;
-
-  .Backdrop {
-    @include focus-ring;
-    position: absolute;
-  }
-
-  .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
-    ~ .Backdrop {
-      @include focus-ring($style: 'focused');
-    }
-  }
 }
 // We have both a focused class and a focus pseudo selector here
 // because we allow "faked" focus for when the search is still
@@ -47,57 +31,58 @@ $stacking-order: (
 .focused .Input,
 .Input:focus {
   border: none;
-  color: var(--p-text, color('ink'));
+  color: var(--p-text);
 
   &::placeholder {
-    color: var(--p-text-subdued, color('ink', 'lightest'));
+    color: var(--p-text-subdued);
   }
 }
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: var(--p-on-surface-background, color('white'));
+    @include focus-ring($style: 'focused');
+    background-color: var(--p-on-surface-background);
   }
 
   ~ .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border, transparent);
+    border: 1px solid var(--top-bar-border);
   }
 
   ~ .Icon {
-    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon));
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: var(--p-on-surface-background, color('white'));
+    background-color: var(--p-on-surface-background);
   }
 
   .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border, transparent);
+    border: 1px solid var(--top-bar-border);
   }
 
   .Icon {
-    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon));
   }
 }
 
 .Input {
   @include text-style-input;
   z-index: z-index(input, $stacking-order);
-  width: calc(100% - #{$search-icon-width});
-  height: $input-height;
+  height: $new-input-height;
+  width: 100%;
   padding: 0 0 0 $search-icon-width;
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--p-text, var(--top-bar-color));
+  color: var(--p-text);
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--p-text, var(--top-bar-color));
+    color: var(--p-text);
     transition: (duration() - 33ms) color easing() 33ms;
   }
 
@@ -105,15 +90,10 @@ $stacking-order: (
   &::-webkit-search-cancel-button {
     appearance: none;
   }
-
-  .SearchField-newDesignLanguage & {
-    height: $new-input-height;
-    width: 100%;
-  }
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon, var(--top-bar-color)));
+  @include recolor-icon(var(--p-icon));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -129,7 +109,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+  @include recolor-icon(var(--p-icon));
   @include focus-ring($size: 'wide');
   position: relative;
   z-index: z-index(action, $stacking-order);
@@ -140,7 +120,7 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+    @include recolor-icon(var(--p-icon-hovered));
     outline: none;
   }
 
@@ -158,6 +138,7 @@ $stacking-order: (
 }
 
 .Backdrop {
+  @include focus-ring;
   position: absolute;
   z-index: z-index(backdrop, $stacking-order);
   top: 0;
