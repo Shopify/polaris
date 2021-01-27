@@ -22,7 +22,8 @@ describe('<Tooltip />', () => {
   });
 
   it('does not render initially', () => {
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('renders initially when active is true', () => {
@@ -31,9 +32,8 @@ describe('<Tooltip />', () => {
         <Link>link content</Link>
       </Tooltip>,
     );
-    expect(findByTestID(tooltipActive, 'TooltipOverlayLabel').exists()).toBe(
-      true,
-    );
+    const overlayContent = tooltipActive.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
@@ -49,22 +49,26 @@ describe('<Tooltip />', () => {
 
   it('renders on mouseOver', () => {
     wrapperComponent.simulate('mouseOver');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('renders on focus', () => {
     wrapperComponent.simulate('focus');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('unrenders its children on blur', () => {
     wrapperComponent.simulate('blur');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('unrenders its children on mouseLeave', () => {
     wrapperComponent.simulate('mouseLeave');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('closes itself when escape is pressed on keyup', () => {

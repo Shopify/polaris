@@ -2,7 +2,6 @@ import React from 'react';
 import {Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
@@ -133,57 +132,5 @@ describe('<FileUpload />', () => {
 
     fileUpload.setProps({children: <FileUpload />});
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{
-            size: 'extraLarge',
-            type: 'file',
-            ...defaultStates,
-            measuring: true,
-          }}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-
-      expect(fileUpload).toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
-      });
-      expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{
-            size: 'extraLarge',
-            type: 'file',
-            ...defaultStates,
-            measuring: true,
-          }}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-
-      expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
-      });
-      expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
-      });
-    });
   });
 });

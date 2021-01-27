@@ -626,31 +626,6 @@ describe('<Filters />', () => {
       expect(helpTextMarkup).toHaveLength(0);
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />, {
-        features: {newDesignLanguage: true},
-      });
-
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      expect(
-        findById(resourceFilters, 'filterOneToggleButton').exists(),
-      ).toBeTruthy();
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
-        features: {newDesignLanguage: false},
-      });
-
-      filters.find('button', {disabled: true})!.trigger('onClick');
-
-      expect(filters).not.toContainReactComponent('button', {
-        className: 'FilterTrigger newDesignLanguage',
-      });
-    });
-  });
 });
 
 function noop() {}

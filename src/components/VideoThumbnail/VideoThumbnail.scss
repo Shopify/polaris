@@ -63,9 +63,9 @@ $progress-bar-height: rem(6px);
   padding: 0 spacing(extra-tight);
   margin-bottom: spacing(tight);
   margin-left: spacing(tight);
-  border-radius: var(--p-border-radius-base, border-radius());
-  color: var(--p-text, color('sky', 'lighter'));
-  background-color: var(--p-surface, color('ink'));
+  border-radius: var(--p-border-radius-base);
+  color: var(--p-text);
+  background-color: var(--p-surface);
   opacity: 0.8;
   text-align: center;
 }
@@ -78,7 +78,7 @@ $progress-bar-height: rem(6px);
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: color('white');
+  background-color: var(--p-surface);
   height: $progress-bar-height;
   overflow: hidden;
 }
@@ -88,7 +88,7 @@ $progress-bar-height: rem(6px);
   width: 100%;
   transform-origin: left;
   transform: scaleX(0);
-  background-color: var(--p-border-highlight, color('indigo'));
+  background-color: var(--p-border-highlight);
   transition: transform duration(slowest) easing();
 }
 

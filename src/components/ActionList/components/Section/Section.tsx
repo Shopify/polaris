@@ -6,8 +6,6 @@ import type {
   ActionListSection,
 } from '../../../../types';
 import styles from '../../ActionList.scss';
-import {useFeatures} from '../../../../utilities/features';
-import {classNames} from '../../../../utilities/css';
 
 export interface SectionProps {
   /** Section of action items */
@@ -53,12 +51,6 @@ export function Section({
 
   const className = section.title ? undefined : styles['Section-withoutTitle'];
 
-  const {newDesignLanguage} = useFeatures();
-  const actionsClassName = classNames(
-    styles.Actions,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   const titleMarkup = section.title ? (
     <p className={styles.Title}>{section.title}</p>
   ) : null;
@@ -68,7 +60,7 @@ export function Section({
   const sectionMarkup = (
     <div className={className}>
       {titleMarkup}
-      <ul className={actionsClassName} role={sectionRole}>
+      <ul className={styles.Actions} role={sectionRole}>
         {actionMarkup}
       </ul>
     </div>

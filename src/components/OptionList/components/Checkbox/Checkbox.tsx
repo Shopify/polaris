@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
 
@@ -30,14 +29,9 @@ export function Checkbox({
   role,
 }: CheckboxProps) {
   const id = useUniqueId('Checkbox', idProp);
-  const {newDesignLanguage} = useFeatures();
   const [keyFocused, setKeyFocused] = useState(false);
 
-  const className = classNames(
-    styles.Checkbox,
-    active && styles.active,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const className = classNames(styles.Checkbox, active && styles.active);
 
   const handleBlur = () => {
     setKeyFocused(false);
@@ -49,7 +43,7 @@ export function Checkbox({
 
   const inputClassName = classNames(
     styles.Input,
-    newDesignLanguage && keyFocused && styles.keyFocused,
+    keyFocused && styles.keyFocused,
   );
 
   return (

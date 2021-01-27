@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
 import {
-  FlagMajor,
   CirclePlusMinor,
   CircleTickMajor,
   CircleInformationMajor,
@@ -32,38 +31,38 @@ describe('<Banner />', () => {
     expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
   });
 
-  it('uses a greenDark circleCheckMark if status is success and sets a status aria role', () => {
+  it('uses a success circleCheckMark if status is success and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
     expect(banner.find(Icon).prop('source')).toBe(CircleTickMajor);
-    expect(banner.find(Icon).prop('color')).toBe('greenDark');
+    expect(banner.find(Icon).prop('color')).toBe('success');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
-  it('uses a tealDark circleInformation if status is info and sets a status aria role', () => {
+  it('uses a highlight circleInformation if status is info and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
     expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
-    expect(banner.find(Icon).prop('color')).toBe('tealDark');
+    expect(banner.find(Icon).prop('color')).toBe('highlight');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
-  it('uses a yellowDark circleAlert if status is warning and sets an alert aria role', () => {
+  it('uses a warning circleAlert if status is warning and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
     expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajor);
-    expect(banner.find(Icon).prop('color')).toBe('yellowDark');
+    expect(banner.find(Icon).prop('color')).toBe('warning');
     expect(banner.find('div').first().prop('role')).toBe('alert');
   });
 
-  it('uses a redDark circleBarred if status is critical and sets an alert aria role', () => {
+  it('uses a critical circleBarred if status is critical and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
     expect(banner.find(Icon).prop('source')).toBe(DiamondAlertMajor);
-    expect(banner.find(Icon).prop('color')).toBe('redDark');
+    expect(banner.find(Icon).prop('color')).toBe('critical');
     expect(banner.find('div').first().prop('role')).toBe('alert');
   });
 
   it('uses a default icon and aria role', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(FlagMajor);
-    expect(banner.find(Icon).prop('color')).toBe('inkLighter');
+    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
+    expect(banner.find(Icon).prop('color')).toBe('base');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
@@ -80,7 +79,7 @@ describe('<Banner />', () => {
   });
 
   describe('action', () => {
-    it('renders an outline button', () => {
+    it('renders an unstyled button', () => {
       const bannerWithAction = mountWithAppProvider(
         <Banner
           title="Test"
@@ -90,27 +89,6 @@ describe('<Banner />', () => {
         >
           Hello World
         </Banner>,
-      );
-
-      const bannerAction = bannerWithAction.find(Button);
-
-      expect(bannerAction.exists()).toBeTruthy();
-      expect(bannerAction.text()).toBe('Primary action');
-    });
-
-    it('renders an unstyled button when newDesignLanguage is true', () => {
-      const bannerWithAction = mountWithAppProvider(
-        <Banner
-          title="Test"
-          action={{
-            content: 'Primary action',
-          }}
-        >
-          Hello World
-        </Banner>,
-        {
-          features: {newDesignLanguage: true},
-        },
       );
 
       const bannerAction = bannerWithAction.find(UnstyledButton);
@@ -212,9 +190,9 @@ describe('<Banner />', () => {
     </WithinContentContext.Provider>,
   );
 
-  it('renders a slim button with contentContext', () => {
-    const button = bannerWithContentContext.find(Button);
-    expect(button.prop('size')).toBe('slim');
+  it('renders an unstyled button with contentContext', () => {
+    const button = bannerWithContentContext.find(UnstyledButton);
+    expect(button.exists()).toBeTruthy();
   });
 
   describe('focus', () => {
@@ -238,12 +216,10 @@ describe('<Banner />', () => {
 
     describe('Focus className', () => {
       it('adds a keyFocused class to the banner on keyUp', () => {
-        const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner />);
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
 
         bannerDiv!.trigger('onKeyUp', {
@@ -251,17 +227,15 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner keyFocused withinPage newDesignLanguage',
+          className: 'Banner keyFocused withinPage',
         });
       });
 
       it('does not add a keyFocused class onMouseUp', () => {
-        const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner />);
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
 
         bannerDiv!.trigger('onMouseUp', {
@@ -269,7 +243,7 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
       });
     });
@@ -319,12 +293,9 @@ describe('<Banner />', () => {
     ])(
       'Sets Icon props when: %s',
       (_: any, status: any, color: any, iconSource: any) => {
-        const banner = mountWithApp(<Banner status={status} />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner status={status} />);
 
         expect(banner.find(Icon)!.props).toStrictEqual({
-          backdrop: false,
           color,
           source: iconSource,
         });

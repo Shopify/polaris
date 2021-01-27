@@ -4,7 +4,6 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {TextStyle} from '../../../TextStyle';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {useFeatures} from '../../../../utilities/features';
 import {
   ConditionalRender,
   ConditionalWrapper,
@@ -18,9 +17,8 @@ import type {
   IconableAction,
 } from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationDescriptor} from '../../../Pagination';
+import {Pagination, PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
-import {ButtonGroup} from '../../../ButtonGroup';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
@@ -39,12 +37,10 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
-  /** Adds a border to the bottom of the page header */
-  separator?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
-  pagination?: PaginationDescriptor;
+  pagination?: PaginationProps;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
@@ -74,7 +70,6 @@ export function Header({
   additionalMetadata,
   thumbnail,
   titleHidden = false,
-  separator,
   primaryAction,
   pagination,
   additionalNavigation,
@@ -83,7 +78,6 @@ export function Header({
   actionGroups = [],
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
-  const {newDesignLanguage} = useFeatures();
   const isSingleRow =
     !primaryAction &&
     !pagination &&
@@ -92,12 +86,7 @@ export function Header({
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
-      <div
-        className={classNames(
-          styles.BreadcrumbWrapper,
-          newDesignLanguage && styles.newDesignLanguage,
-        )}
-      >
+      <div className={styles.BreadcrumbWrapper}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
     ) : null;
@@ -105,7 +94,7 @@ export function Header({
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
-        <Pagination {...pagination} plain />
+        <Pagination {...pagination} />
       </div>
     ) : null;
 
@@ -141,18 +130,11 @@ export function Header({
 
   const actionMenuMarkup =
     secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
-      <ConditionalWrapper
-        condition={newDesignLanguage === false}
-        wrapper={(children) => (
-          <div className={styles.ActionMenuWrapper}>{children}</div>
-        )}
-      >
-        <ActionMenu
-          actions={secondaryActions}
-          groups={actionGroups}
-          rollup={isNavigationCollapsed}
-        />
-      </ConditionalWrapper>
+      <ActionMenu
+        actions={secondaryActions}
+        groups={actionGroups}
+        rollup={isNavigationCollapsed}
+      />
     ) : null;
 
   const additionalMetadataMarkup = additionalMetadata ? (
@@ -163,87 +145,57 @@ export function Header({
 
   const headerClassNames = classNames(
     styles.Header,
-    separator && styles.separator,
     isSingleRow && styles.isSingleRow,
     titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
     !breadcrumbs.length && styles.noBreadcrumbs,
-    newDesignLanguage && styles.newDesignLanguage,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );
 
-  if (newDesignLanguage) {
-    const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
-      actionMenuMarkup,
-      additionalMetadataMarkup,
-      additionalNavigationMarkup,
-      breadcrumbMarkup,
-      isNavigationCollapsed,
-      pageTitleMarkup,
-      paginationMarkup,
-      primaryActionMarkup,
-      title,
-    });
-
-    const className = classNames(
-      styles.Row,
-      newDesignLanguage && styles.RowCondensed,
-    );
-
-    return (
-      <div className={headerClassNames}>
-        <ConditionalRender
-          condition={[slot1, slot2, slot3, slot4].some(notNull)}
-        >
-          <div className={className}>
-            {slot1}
-            {slot2}
-            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
-              <div className={styles.RightAlign}>
-                <ConditionalWrapper
-                  condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) =>
-                    newDesignLanguage ? (
-                      <div className={styles.Actions}>{children}</div>
-                    ) : (
-                      <ButtonGroup>{children}</ButtonGroup>
-                    )
-                  }
-                >
-                  {slot3}
-                  {slot4}
-                </ConditionalWrapper>
-              </div>
-            </ConditionalRender>
-          </div>
-        </ConditionalRender>
-        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
-          <div className={styles.Row}>
-            <div className={styles.LeftAlign}>{slot5}</div>
-            <ConditionalRender condition={slot6 != null}>
-              <div className={styles.RightAlign}>{slot6}</div>
-            </ConditionalRender>
-          </div>
-        </ConditionalRender>
-      </div>
-    );
-  }
+  const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+    actionMenuMarkup,
+    additionalMetadataMarkup,
+    additionalNavigationMarkup,
+    breadcrumbMarkup,
+    isNavigationCollapsed,
+    pageTitleMarkup,
+    paginationMarkup,
+    primaryActionMarkup,
+    title,
+  });
 
   return (
     <div className={headerClassNames}>
-      {navigationMarkup}
-
-      <div className={styles.MainContent}>
-        <div className={styles.TitleActionMenuWrapper}>
-          {pageTitleMarkup}
-          {actionMenuMarkup}
+      <ConditionalRender condition={[slot1, slot2, slot3, slot4].some(notNull)}>
+        <div className={styles.Row}>
+          {slot1}
+          {slot2}
+          <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+            <div className={styles.RightAlign}>
+              <ConditionalWrapper
+                condition={[slot3, slot4].every(notNull)}
+                wrapper={(children) => (
+                  <div className={styles.Actions}>{children}</div>
+                )}
+              >
+                {slot3}
+                {slot4}
+              </ConditionalWrapper>
+            </div>
+          </ConditionalRender>
         </div>
-
-        {primaryActionMarkup}
-      </div>
+      </ConditionalRender>
+      <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+        <div className={styles.Row}>
+          <div className={styles.LeftAlign}>{slot5}</div>
+          <ConditionalRender condition={slot6 != null}>
+            <div className={styles.RightAlign}>{slot6}</div>
+          </ConditionalRender>
+        </div>
+      </ConditionalRender>
     </div>
   );
 }
@@ -254,18 +206,13 @@ function PrimaryActionMarkup({
   primaryAction: PrimaryAction | React.ReactNode;
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
-  const {newDesignLanguage} = useFeatures();
   let content = primaryAction;
   if (isPrimaryAction(primaryAction)) {
     const primary =
       primaryAction.primary === undefined ? true : primaryAction.primary;
 
     content = buttonsFrom(
-      shouldShowIconOnly(
-        newDesignLanguage,
-        isNavigationCollapsed,
-        primaryAction,
-      ),
+      shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         primary,
       },
@@ -276,12 +223,11 @@ function PrimaryActionMarkup({
 }
 
 function shouldShowIconOnly(
-  newDesignLanguage: boolean,
   isMobile: boolean,
   action: PrimaryAction,
 ): PrimaryAction {
   let {content, accessibilityLabel, icon} = action;
-  if (!newDesignLanguage || icon == null) return {...action, icon: undefined};
+  if (icon == null) return {...action, icon: undefined};
 
   if (isMobile) {
     accessibilityLabel = accessibilityLabel || content;

@@ -25,10 +25,6 @@ $list-filters-footer-height: rem(70px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &.newDesignLanguage {
-    padding: spacing(base) rem(26px);
-  }
 }
 
 .FiltersDesktopContainerContent {
@@ -36,36 +32,26 @@ $list-filters-footer-height: rem(70px);
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
-
-  &.newDesignLanguage {
-    padding: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{$list-filters-header-height});
-
-  &.newDesignLanguage {
-    padding: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .FiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) spacing(base);
+  padding: rem(14px) spacing(loose);
   border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &.newDesignLanguage {
-    padding: rem(14px) spacing(loose);
-  }
 }
 
 .FiltersMobileContainerFooter {
@@ -94,49 +80,25 @@ $list-filters-footer-height: rem(70px);
   width: 100%;
   margin: 0;
   padding: rem(14px) spacing(loose);
-  border: none;
+  color: var(--p-text);
+  border-radius: var(--p-border-radius-base);
   background: none;
-  color: var(--p-text, color(ink));
-  border-radius: var(--p-border-radius-base, none);
+  border: none;
+  outline: none;
+  @include focus-ring;
+
+  &:focus {
+    box-shadow: none;
+  }
 
   &:hover {
     cursor: pointer;
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
     background-color: var(--p-surface-hovered);
+    @include high-contrast-outline;
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: inset 0.2rem 0 0 var(--p-override-none, color('indigo'));
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-  }
-
-  &.newDesignLanguage {
-    @include focus-ring;
-
-    &:focus,
-    &:hover {
-      background-image: none;
-    }
-
-    &:active {
-      background-color: var(--p-surface-pressed);
-    }
-
-    // stylelint-disable-next-line selector-max-specificity
-    &:focus:not(:active) {
-      @include focus-ring($style: 'focused');
-    }
-
-    &:hover {
-      @include high-contrast-outline;
-    }
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 

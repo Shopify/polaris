@@ -25,7 +25,7 @@ export interface ModalProps extends FooterProps {
   /** The name of the modal content iframe */
   iFrameName?: string;
   /** The content for the title of the modal */
-  title?: string | React.ReactNode;
+  title: string | React.ReactNode;
   /**
    * Hide the title in the modal
    * @default false
