@@ -302,6 +302,7 @@
           }
         }
       }
-    }
+    },
+    "testPlatform": "hope async works"
   }
 }
