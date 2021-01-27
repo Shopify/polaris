@@ -54,7 +54,7 @@ export interface HeaderProps extends TitleProps {
   /** Additional navigation markup */
   additionalNavigation?: React.ReactNode;
   // Additional meta data
-  additionalMetaData?: React.ReactNode | string;
+  additionalMetadata?: React.ReactNode | string;
 }
 
 export function isPrimaryAction(
@@ -71,7 +71,7 @@ export function Header({
   title,
   subtitle,
   titleMetadata,
-  additionalMetaData,
+  additionalMetadata,
   thumbnail,
   titleHidden = false,
   separator,
@@ -155,9 +155,9 @@ export function Header({
       </ConditionalWrapper>
     ) : null;
 
-  const additionalMetaDataMarkup = additionalMetaData ? (
+  const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+      <TextStyle variation="subdued">{additionalMetadata}</TextStyle>
     </div>
   ) : null;
 
@@ -178,7 +178,7 @@ export function Header({
   if (newDesignLanguage) {
     const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
       actionMenuMarkup,
-      additionalMetaDataMarkup,
+      additionalMetadataMarkup,
       additionalNavigationMarkup,
       breadcrumbMarkup,
       isNavigationCollapsed,
@@ -304,7 +304,7 @@ function notNull(value: any) {
 
 function determineLayout({
   actionMenuMarkup,
-  additionalMetaDataMarkup,
+  additionalMetadataMarkup,
   additionalNavigationMarkup,
   breadcrumbMarkup,
   isNavigationCollapsed,
@@ -314,7 +314,7 @@ function determineLayout({
   title,
 }: {
   actionMenuMarkup: MaybeJSX;
-  additionalMetaDataMarkup: MaybeJSX;
+  additionalMetadataMarkup: MaybeJSX;
   additionalNavigationMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
@@ -337,7 +337,7 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: additionalMetaDataMarkup,
+        slot5: additionalMetadataMarkup,
         slot6: additionalNavigationMarkup,
       },
       condition:
@@ -352,7 +352,7 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: additionalMetaDataMarkup,
+        slot5: additionalMetadataMarkup,
         slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
@@ -363,7 +363,7 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: additionalMetaDataMarkup,
+        slot5: additionalMetadataMarkup,
         slot6: additionalNavigationMarkup,
       },
       condition:
@@ -384,7 +384,7 @@ function determineLayout({
           </>
         ),
         slot4: paginationMarkup,
-        slot5: additionalMetaDataMarkup,
+        slot5: additionalMetadataMarkup,
         slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
