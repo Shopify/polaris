@@ -137,6 +137,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           <div
             aria-modal
             role="dialog"
+            aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}

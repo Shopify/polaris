@@ -346,6 +346,7 @@ function FrameExample() {
             },
             Frame: {
               skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
               Navigation: {
                 closeMobileNavigationLabel: 'Close navigation',
               },
@@ -680,6 +681,7 @@ function FrameExample() {
             },
             Frame: {
               skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
               Navigation: {
                 closeMobileNavigationLabel: 'Close navigation',
               },
