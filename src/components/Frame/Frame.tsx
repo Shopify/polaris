@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
@@ -62,7 +62,6 @@ interface State {
 const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 
 const APP_FRAME_MAIN = 'AppFrameMain';
-
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -79,8 +78,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null = null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
-  private skipToMainContentTargetNode =
-    this.props.skipToContentTarget || createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -367,9 +364,12 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setState({skipFocused: false});
   };
 
-  private handleClick = () => {
-    this.skipToMainContentTargetNode.current &&
-      this.skipToMainContentTargetNode.current.focus();
+  private handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const {skipToContentTarget} = this.props;
+    if (skipToContentTarget && skipToContentTarget.current) {
+      skipToContentTarget.current.focus();
+      event?.preventDefault();
+    }
   };
 
   private handleNavigationDismiss = () => {
