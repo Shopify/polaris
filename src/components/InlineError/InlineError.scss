@@ -4,8 +4,8 @@ $error-icon-adjustment: rem(2px);
 
 .InlineError {
   display: flex;
-  color: var(--p-text-critical, color('red', 'dark'));
-  fill: var(--p-icon-critical, color('red', 'dark'));
+  color: var(--p-text-critical);
+  fill: var(--p-icon-critical);
 }
 
 .Icon {

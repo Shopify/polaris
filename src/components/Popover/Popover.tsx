@@ -7,7 +7,6 @@ import React, {
   AriaAttributes,
 } from 'react';
 
-import type {InversableColorScheme} from '../ThemeProvider';
 import {
   findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
@@ -50,11 +49,6 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /**
-   * Prevent automatic focus of the popover on activation
-   * @deprecated Use autofocusTarget: 'none' instead.
-   * */
-  preventAutofocus?: boolean;
   /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
   preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
@@ -74,7 +68,7 @@ export interface PopoverProps {
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
   /** Accepts a color scheme for the contents of the popover */
-  colorScheme?: InversableColorScheme;
+  colorScheme?: PopoverOverlayProps['colorScheme'];
   /**
    * The preferred auto focus target defaulting to the popover container
    * @default 'container'

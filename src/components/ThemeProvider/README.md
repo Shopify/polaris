@@ -18,20 +18,14 @@ Use theme provider to share global theme settings throughout the hierarchy of yo
 
 ---
 
-## For development purposes only
-
-Theme provider is currently meant for development and quality assurance usage only. The new design language is not yet meant for production experiences.
-
----
-
 ## Examples
 
 ### Theme provider rendered by the app provider
 
-The app provider component renders a theme provider component and a theme. By default, theme falls back to the current design language. The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance use only. The new design language is not yet meant for production experiences.
+The app provider component renders a ThemeProvider component and a theme.
 
 ```jsx
-<AppProvider i18n={{}} features={{newDesignLanguage: true}}>
+<AppProvider i18n={{}}>
   <Card
     title="Shipment 1234"
     secondaryFooterActions={[{content: 'Edit shipment'}]}
@@ -54,7 +48,6 @@ A custom theme can be passed to the theme prop on the app provider to override o
 ```jsx
 <AppProvider
   i18n={{}}
-  features={{newDesignLanguage: true}}
   theme={{
     colors: {
       surface: '#111213',
@@ -92,7 +85,6 @@ A color scheme can be passed to the theme prop on the app provider to override t
 ```jsx
 <AppProvider
   i18n={{}}
-  features={{newDesignLanguage: true}}
   theme={{
     colorScheme: 'dark',
   }}
@@ -117,7 +109,7 @@ A color scheme can be passed to the theme prop on the app provider to override t
 A theme provider can be nested within the theme provider rendered by the app provider in order to override the color scheme at a local level.
 
 ```jsx
-<AppProvider i18n={{}} features={{newDesignLanguage: true}}>
+<AppProvider i18n={{}}>
   <TextContainer>
     <Card
       title="Shipment 1234"
@@ -154,7 +146,7 @@ A theme provider can be nested within the theme provider rendered by the app pro
 A theme provider can be nested within the theme provider rendered by the app provider in order to override colors at a local level.
 
 ```jsx
-<AppProvider i18n={{}} features={{newDesignLanguage: true}}>
+<AppProvider i18n={{}}>
   <Card>
     <Card.Section>
       <Stack alignment="center">
@@ -188,32 +180,11 @@ A theme provider can be nested within the theme provider rendered by the app pro
 
 The theme provider component uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) to share color values with components. For a full list of available CSS custom properties, see the [Polaris tokens docs](https://github.com/Shopify/polaris-react/blob/main/documentation/Color%20system.md).
 
-We apply the current design language value to the fallback value of the `var()` function in order to gracefully fall back when `{newDesignLanguage: false}`, as the theme CSS custom properties will not be defined.
-
 ```scss
 .Card {
-  background-color: var(--p-surface, color('white'));
-  box-shadow: var(--p-card-shadow, shadow());
-  border-radius: var(--p-border-radius-wide, border-radius());
-}
-```
-
-### Avoid using `linear-gradient()` as a `var()` fallback
-
-Using the `linear-gradient()` function as a fallback to the `var()` function causes infinite re-paints in Safari, and should be avoided. As an alternative, use the value provided to `newDesignLanguage` to create a class name for your component that's only present when that value is `true`.
-
-```scss
-.Button {
-  background-image: linear-gradient(
-    to bottom,
-    color('indigo'),
-    color('indigo', 'dark')
-  );
-}
-
-.Button.newDesignLanguage {
-  background-image: var(--p-override-none);
-  background-color: var(--p-action-primary);
+  background-color: var(--p-surface);
+  box-shadow: var(--p-card-shadow);
+  border-radius: var(--p-border-radius-wide);
 }
 ```
 

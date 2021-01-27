@@ -19,7 +19,7 @@ export function CloseButton({onClick}: CloseButtonProps) {
       className={styles.CloseButton}
       aria-label={i18n.translate('Polaris.Common.close')}
     >
-      <Icon source={MobileCancelMajor} color="inkLighter" />
+      <Icon source={MobileCancelMajor} color="base" />
     </button>
   );
 }

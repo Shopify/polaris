@@ -305,11 +305,6 @@ function FrameExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#225062',
-      },
-    },
     logo: {
       width: 124,
       topBarSource:
@@ -643,12 +638,7 @@ function FrameExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#225062',
-      },
-    },
-    frameOffset: 60,
+    frameOffset: '60px',
     logo: {
       width: 124,
       topBarSource:

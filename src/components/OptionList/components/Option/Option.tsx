@@ -2,8 +2,7 @@ import React, {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
-import type {IconProps} from '../../../../types';
+import type {IconProps} from '../../../Icon';
 import type {ThumbnailProps} from '../../../Thumbnail';
 import type {AvatarProps} from '../../../Avatar';
 import {Scrollable} from '../../../Scrollable';
@@ -41,7 +40,6 @@ export function Option({
   index,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
-  const {newDesignLanguage} = useFeatures();
 
   const handleClick = useCallback(() => {
     if (disabled) {
@@ -67,7 +65,7 @@ export function Option({
     styles.Label,
     disabled && styles.disabled,
     active && styles.active,
-    newDesignLanguage && select && styles.select,
+    select && styles.select,
   );
 
   const checkBoxRole = role === 'option' ? 'presentation' : undefined;
@@ -106,13 +104,8 @@ export function Option({
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
-  const optionClassName = classNames(
-    styles.Option,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   return (
-    <li key={id} className={optionClassName} tabIndex={-1}>
+    <li key={id} className={styles.Option} tabIndex={-1}>
       {scrollMarkup}
       {optionMarkup}
     </li>

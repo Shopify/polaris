@@ -4,13 +4,7 @@ import {ActionMenuProps, ActionMenu} from 'index';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
-import {
-  Actions,
-  MenuAction,
-  MenuGroup,
-  RollupActions,
-  SecondaryAction,
-} from '../..';
+import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 
 describe('<Actions />', () => {
   const mockProps: ActionMenuProps = {
@@ -23,14 +17,6 @@ describe('<Actions />', () => {
     {content: 'mock content 2'},
   ];
 
-  it('renders as <MenuAction /> when `rollup` is `false`', () => {
-    const wrapper = mountWithAppProvider(
-      <ActionMenu {...mockProps} actions={mockActions} />,
-    );
-
-    expect(wrapper.find(MenuAction)).toHaveLength(mockActions.length);
-  });
-
   it('renders as <RollupActions /> `items` when `rollup` is `true`', () => {
     const wrapper = mountWithAppProvider(
       <ActionMenu {...mockProps} actions={mockActions} rollup />,
@@ -41,30 +27,8 @@ describe('<Actions />', () => {
     );
   });
 
-  it('renders actions in their initial order', () => {
-    const actionsBeforeOverriddenOrder: ActionMenuProps['actions'] = [
-      {content: 'mock content 0'},
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
-
-    const expectedOrderAfterOverride = [
-      {content: 'mock content 0'},
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
-
-    const wrapper = mountWithAppProvider(
-      <ActionMenu actions={actionsBeforeOverriddenOrder} />,
-    );
-
-    wrapper.find(MenuAction).forEach((action, index) => {
-      expect(action.props()).toMatchObject(expectedOrderAfterOverride[index]);
-    });
-  });
-
   describe('Actions', () => {
-    it('renders SecondaryActions when the new design language is true', () => {
+    it('renders SecondaryActions', () => {
       const actionsBeforeOverriddenOrder: ActionMenuProps['actions'] = [
         {content: 'mock content 0'},
         {content: 'mock content 1'},
@@ -73,18 +37,14 @@ describe('<Actions />', () => {
 
       const wrapper = mountWithApp(
         <ActionMenu actions={actionsBeforeOverriddenOrder} />,
-        {features: {newDesignLanguage: true}},
       );
 
       expect(wrapper.findAll(SecondaryAction)).toHaveLength(3);
     });
 
-    it('renders a MenuGroup when the new design language is true', () => {
+    it('renders a MenuGroup', () => {
       const wrapper = mountWithApp(
         <ActionMenu groups={[{title: 'group', actions: []}]} />,
-        {
-          features: {newDesignLanguage: true},
-        },
       );
 
       expect(wrapper.findAll(MenuGroup)).toHaveLength(1);
@@ -110,9 +70,7 @@ describe('<Actions />', () => {
         );
       }
 
-      const wrapper = mountWithApp(<ActionsWithToggle />, {
-        features: {newDesignLanguage: true},
-      });
+      const wrapper = mountWithApp(<ActionsWithToggle />);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(SecondaryAction, {
@@ -141,9 +99,7 @@ describe('<Actions />', () => {
         );
       }
 
-      const wrapper = mountWithApp(<ActionsWithToggle />, {
-        features: {newDesignLanguage: true},
-      });
+      const wrapper = mountWithApp(<ActionsWithToggle />);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(MenuGroup, {
@@ -172,9 +128,7 @@ describe('<Actions />', () => {
         );
       }
 
-      const wrapper = mountWithApp(<ActionsWithToggle />, {
-        features: {newDesignLanguage: true},
-      });
+      const wrapper = mountWithApp(<ActionsWithToggle />);
 
       expect(wrapper).toContainReactComponentTimes(SecondaryAction, 1);
 

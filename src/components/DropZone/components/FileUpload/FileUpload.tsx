@@ -8,7 +8,6 @@ import {TextStyle} from '../../../TextStyle';
 import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './FileUpload.scss';
 
@@ -19,7 +18,6 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const {size, measuring, type, focused, disabled} = useContext(
     DropZoneContext,
   );
@@ -37,7 +35,6 @@ export function FileUpload(props: FileUploadProps) {
     size === 'extraLarge' || size === 'large'
       ? classNames(
           styles.Button,
-          newDesignLanguage && styles.newDesignLanguage,
           size && size !== 'extraLarge' && styles.slim,
           focused && styles.focused,
           disabled && styles.disabled,
@@ -65,7 +62,6 @@ export function FileUpload(props: FileUploadProps) {
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
-    newDesignLanguage && styles.newDesignLanguage,
     measuring && styles.measuring,
     size === 'small' && styles.FileUploadSmallView,
   );

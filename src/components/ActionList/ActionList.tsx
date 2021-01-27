@@ -1,7 +1,6 @@
 import React from 'react';
 
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
-import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 
 import {Section} from './components';
@@ -32,11 +31,7 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const {newDesignLanguage} = useFeatures();
-  const className = classNames(
-    styles.ActionList,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const className = classNames(styles.ActionList);
 
   const hasMultipleSections = finalSections.length > 1;
   const Element = hasMultipleSections ? 'ul' : 'div';

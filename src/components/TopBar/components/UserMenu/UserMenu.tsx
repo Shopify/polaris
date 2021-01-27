@@ -1,6 +1,5 @@
 import React from 'react';
 
-import type {InversableColorScheme} from '../../../ThemeProvider';
 import type {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
@@ -28,7 +27,7 @@ export interface UserMenuProps {
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
   /** Accepts a color scheme for the contents of the user menu */
-  colorScheme?: InversableColorScheme;
+  colorScheme?: MenuProps['colorScheme'];
 }
 
 export function UserMenu({
