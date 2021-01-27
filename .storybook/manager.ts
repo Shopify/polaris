@@ -3,13 +3,13 @@ import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 
 addons.setConfig({
-  panelPosition: 'bottom',
+  panelPosition: 'right',
   theme: create({
-    base: 'dark',
+    base: 'light',
     brandTitle: 'Shopify Polaris Storybook',
     brandUrl: '/',
     brandImage:
-      'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-inverted-primary-logo-bdc6ddd67862d9bb1f8c559e1bb50dd233112ac57b29cac2edcf17ed2e1fe6fa.svg',
+      'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg',
     appBorderRadius: 4,
     colorPrimary: '#009671',
     colorSecondary: '#36a3ff',
