@@ -135,6 +135,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            aria-modal
+            role="dialog"
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}

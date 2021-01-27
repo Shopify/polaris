@@ -66,6 +66,7 @@ export function Dialog({
         <TrapFocus>
           <div
             role="dialog"
+            aria-modal
             aria-labelledby={labelledBy}
             tabIndex={-1}
             className={styles.Dialog}
