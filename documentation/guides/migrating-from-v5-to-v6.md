@@ -218,7 +218,7 @@ With the new visual styles we have decided to remove the plain property from `Pa
 
 ### Renamed the `additionalMetaData` property to `additionalMetadata` in `Page`
 
-This keeps the capitilisation consistent in the `Header` and `Title` components.
+This keeps the capitilisation consistent across the `Header` and `Title` components in `Page`.
 
 ```diff
 <Page
