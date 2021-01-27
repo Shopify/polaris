@@ -104,7 +104,7 @@ Include the CSS stylesheet in your HTML. We suggest copying the styles file into
 />
 ```
 
-Wrap your application in a div that contains the CSS variables. This is a temporary workaround and the variables are unstable. This will be updated in the next major release.
+Wrap your application in a div that contains the Polaris CSS variables. This is a temporary workaround and the variables are unstable. This will be updated in the next major release.
 
 ```html
 <div
