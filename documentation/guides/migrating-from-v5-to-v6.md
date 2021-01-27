@@ -216,6 +216,17 @@ With the new visual styles we have decided to remove the plain property from `Pa
 />
 ```
 
+### Renamed the `additionalMetaData` property to `additionalMetadata` in `Header`
+
+This keeps the capitilisation consistent in the `Header` and `Title` components.
+
+```diff
+<Page
+  fullWidth
+- additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
++ additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
+```
+
 ## Sass API Changes
 
 ### Removed `button-filled-disabled` SASS function
