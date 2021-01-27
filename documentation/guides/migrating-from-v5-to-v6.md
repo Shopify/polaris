@@ -216,7 +216,7 @@ With the new visual styles we have decided to remove the plain property from `Pa
 />
 ```
 
-### Renamed the `additionalMetaData` property to `additionalMetadata` in `Header`
+### Renamed the `additionalMetaData` property to `additionalMetadata` in `Page`
 
 This keeps the capitilisation consistent in the `Header` and `Title` components.
 
