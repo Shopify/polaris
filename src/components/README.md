@@ -95,6 +95,8 @@ ReactDOM.render(app, domContainerNode);
 
 ### CSS components
 
+Add the [latest CSS variables](https://unpkg.com/browse/@shopify/polaris-tokens@latest/dist-modern/palette/base.light.polaris.custom-properties.css) from the polaris tokens library.
+
 Include the CSS stylesheet in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
