@@ -246,8 +246,18 @@ With the new visual styles the placeholder and subdued mixins have the same func
 
 ```diff
 .SearchInput {
-- color: @include button-filled-disabled();;
+- color: @include button-filled-disabled();
 + color: @include text-emphasis-subdued();
+}
+```
+
+### Removed `skeleton-page-header-has-secondary-actions` SASS mixin
+
+The `skeleton-page-header-has-secondary-actions` mixin has been removed.
+
+```diff
+.Header {
+- @include skeleton-page-header-has-secondary-actions;
 }
 ```
 
