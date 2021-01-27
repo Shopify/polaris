@@ -2,28 +2,20 @@
 
 Polaris v6.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v6.0.0)) removes deprecated features in past releases. This file describes all code updates required to stay up to date.
 
-## AppProvider theming changes
+## New Design Language
 
-### New Design Language
+In v5 Polaris contained two design languages that could be toggled using the `newDesignLanguage` feature on `AppProvider`. We have removed our old viisual styles, leaving only the new.
 
-In v5 we exposed a feature flag toggle to change between our old and new design languages. In v6 the new design is always enabled by default and our old design language has been removed.
+In v6, you no longer need to configure `AppProvider` to opt into new styles, and legacy theme configuration has been removed:
 
-In v6 you no longer need to enable the newDesignLanguage through the features flag in the `AppProvider`.
+- `AppProvider`'s `features` prop no longer accepts a `newDesignLanguage` key.
+- `AppProvider`'s `theme` prop no longer accepts theming using the `topBar` key. Instead control theming using the new color config that gets pass through to [`ThemeProvider`](https://polaris.shopify.com/components/structure/theme-provider).
+- `AppProvider`'s `theme` prop expects its `frameOffset` to be specified as a string including a unit instead of a number in pixels, to allow for non-pixel based sizing.
 
 ```diff
 <AppProvider
   i18n={{}}
 - features={{newDesignLanguage: true}}
->
-```
-
-### Removed legacy topbar theming
-
-With the new visual styles the TopBar theming has been replaced with the `ThemeProvider`. If you want to change the `TopBar` appearance you can override the theme or the CSS variables.
-
-```diff
-<AppProvider
-  i18n={{}}
   theme={{
     colors: {
 -     topBar: {
@@ -35,18 +27,6 @@ With the new visual styles the TopBar theming has been replaced with the `ThemeP
 +     surface: 'rgb(0, 0, 0)',
 +     onSurface: 'rgb(33,43,54)',
     },
-  }}
->
-```
-
-### Changed `frameOffset` prop to accept a string
-
-This allows relative units for the frame offset. Allowing users to take into account for font-size and matching up breakpoints.
-
-```diff
-<AppProvider
-  i18n={{}}
-  theme={{
 -   frameOffset: 60,
 +   frameOffset: '60px',
   }}
@@ -55,31 +35,42 @@ This allows relative units for the frame offset. Allowing users to take into acc
 
 ## Component API changes
 
-### Icon color prop uses semantic colors
+### Button
 
-`subdued` has replaced `white`, `skyLighter`, `skyLight`, `sky` and `skyDark`.
-`base` has replaced `black`, `inkLightest`, `inkLighter`, `inkLight`, `ink`, `blueLighter`, `blueLight`, `blue`, `blueDark` and `blueDarker`.
-`primary` has replaced `indigoLighter`, `indigoLight`, `indigo`, `indigoDark` and `indigoDarker`.
-`highlight` has replaced `tealLighter`, `tealLight`, `teal`, `tealDark` `tealDarker` and `purple`.
-`success` has replaced `greenLighter`, `green` and `greenDark`.
-`warning` has replaced `yellowLighter`, `yellow`, `yellowDark` and `orange` `orangeDark`.
-`critical` has replaced `redLighter`, `red` and `redDark`.
+The `Button` component's `ariaPressed` prop has been removed. You must the `pressed` prop instead.
+
+```diff
+- <Button ariaPressed={true}>Let’s go</Button>
++ <Button pressed={true}>Let’s go</Button>
+```
+
+The `Button` component's `stretchContent` prop has been removed. Its behaviour can be recreated by combining the `fullWidth` and `textAlign="left"` props.
+
+```diff
+- <Button stretchContent>Lets go</Button>
++ <Button fullWidth textAlign="left">Lets go</Button>
+```
+
+### Icon
+
+The `Icon` component's `color` prop's values have changed. Legacy colors have been removed and have been replaced with semantic color names.
+
+Replace usage of legacy colors with semantic color names.
+
+- Replace `white`, `skyLighter`, `skyLight`, `sky` and `skyDark` with `subdued`.
+- Replace `black`, `inkLightest`, `inkLighter`, `inkLight`, `ink`, `blueLighter`, `blueLight`, `blue`, `blueDark` and `blueDarker` with `base`.
+- Replace `indigoLighter`, `indigoLight`, `indigo`, `indigoDark` and `indigoDarker` with `primary`.
+- Replace `tealLighter`, `tealLight`, `teal`, `tealDark` `tealDarker` and `purple` with `highlight`.
+- Replace `greenLighter`, `green` and `greenDark` with `success`.
+- Replace `yellowLighter`, `yellow`, `yellowDark`, `orange` and `orangeDark` with `warning`.
+- Replace `redLighter`, `red` and `redDark` with `critical`.
 
 ```diff
 - <Icon color="indigo" source={CirclePlusMinor} />
 + <Icon color="primary" source={CirclePlusMinor} />
 ```
 
-### Spinner color prop is now removed
-
-In the new design language `Spinner`s are always green. Thus the `color` prop no longer has any effect and has been removed. Remove any usage of this prop.
-
-```diff
-- <Spinner color="teal" />
-+ <Spinner />
-```
-
-### Link is underlined by default
+### Link
 
 The `Link` component is now underlined by default to make sure that color is not the only way for users to perceive interactivity.
 
@@ -90,9 +81,9 @@ When other factors help a user determine interactivity the underline can be remo
 + <Link url="https://help.shopify.com/" removeUnderline>Orders</Link>
 ```
 
-### Modal title prop is now required
+### Modal
 
-To help enforce accessibility for screen readers, `Modal`'s title prop is now required. You must add a title to all your modals. In the event that you do not want to display this title visually you can add the `titleHidden` prop to hide the title.
+The `Modal` component's `title` prop is now required to help enforce accessibility for screen readers. You must add a `title` prop to all your `Modal`s. In the event that you do not want to display this title visually you can add the `titleHidden` prop to hide the title.
 
 ```diff
 <Modal
@@ -124,9 +115,57 @@ To help enforce accessibility for screen readers, `Modal`'s title prop is now re
 </Modal>
 ```
 
-### Sheet requires an accessibility label
+### Page
 
-Accessibility labels are required for screen readers. This new label does not render anything to the page.
+The `Page` component's `seperator` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
+
+```diff
+- <Page title="Settings" separator>
++ <Page title="Settings">
+```
+
+The `Page` component's `additionalMetaData` prop has been renamed to `additionalMetadata`. You should update the naming of this prop.
+
+```diff
+<Page
+  fullWidth
+- additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
++ additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
+```
+
+### Pagination
+
+The `Pagination` component's `plain` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
+
+```diff
+<Pagination
+  hasPrevious
+  hasNext
+  onPrevious={() => handlePrevious()}
+  onNext={() => handleNext()}
+- plain={true}
+/>
+```
+
+### Popover and PopoverOverlay
+
+The `Popover` and `PopoverOverlay` components' `preventAutoFocus` prop has been removed. Its behaviour is controlled `autofocusTarget` prop. Replace usage of this prop with `autofocusTarget="none"`.
+
+```diff
+<Popover
+  active={popoverActive}
+  activator={activator}
+  onClose={togglePopoverActive}
+- preventAutofocus
++ autofocusTarget="none"
+>
+  <p>Hello world</p>
+</Popover>
+```
+
+### Sheet
+
+The `Sheet` component's `accessibilityLabel` prop is now required to help enforce accessibility for screen readers. You must add an `accessibilityLabel` prop to all your `Sheet`s. This label is only visiible to screen readers, it is not visually shown.
 
 ```diff
 <Sheet
@@ -144,56 +183,18 @@ Accessibility labels are required for screen readers. This new label does not re
 </Sheet>
 ```
 
-### Replace `ariaPressed` prop with `pressed` in `Button` and `UnstyledButton`
+### Spinner
+
+The `Spinner` component's `color` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
 
 ```diff
-- <Button ariaPressed={true}>Let’s go</Button>
-+ <Button pressed={true}>Let’s go</Button>
+- <Spinner color="teal" />
++ <Spinner />
 ```
 
-### Removed `Button`'s `stretchContent` prop
+### Tooltip
 
-Consumers should combine the `fullWidth` and `textAlign="left"` props instead.
-
-```diff
-- <Button stretchContent>Lets go</Button>
-+ <Button fullWidth textAlign="left">Lets go</Button>
-```
-
-### Removed `Page`'s `seperator` prop
-
-Consumers should remove the seperator property as it no longer renders a border or spacing on the `Page`.
-
-```diff
-- <Page title="Settings" separator>
-+ <Page title="Settings">
-  <Layout>
-    <Layout.AnnotatedSection title="Store details">
-      <p>Annotated section content</p>
-    </Layout.AnnotatedSection>
-  </Layout>
-</Page>
-```
-
-### Removed `Popover`/`PopoverOverlay`'s `preventAutoFocus` prop
-
-There was duplicated functionality and we have decided to replace `preventAutofocus` with `autofocusTarget="none"`.
-
-```diff
-<Popover
-  active={popoverActive}
-  activator={activator}
-  onClose={togglePopoverActive}
-- preventAutofocus
-+ autofocusTarget="none"
->
-  <p>Hello world</p>
-</Popover>
-```
-
-### Removed the light prop from Tooltip
-
-In the new design language `Tooltip`s are always light. Thus the `light` prop no longer has any effect and has been removed. Remove any usage of this prop.
+The `Tooltip` component's `light` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
 
 ```diff
 <Tooltip
@@ -202,81 +203,20 @@ In the new design language `Tooltip`s are always light. Thus the `light` prop no
 >Order #1001</Tooltip>
 ```
 
-### Removed `plain` property in `Pagination`
+### UnstyledButton
 
-With the new visual styles we have decided to remove the plain property from `Pagination`. This makes sure the Pagination appears interactive to users.
-
-```diff
-<Pagination
-  hasPrevious
-  hasNext
-  onPrevious={() => handlePrevious()}
-  onNext={() => handleNext()}
-- plain={true}
-/>
-```
-
-### Renamed the `additionalMetaData` property to `additionalMetadata` in `Page`
-
-This keeps the capitilisation consistent across the `Header` and `Title` components in `Page`.
+The `UnstyledButton` component's `ariaPressed` prop has been removed. You must the `pressed` prop instead.
 
 ```diff
-<Page
-  fullWidth
-- additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
-+ additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
+- <UnstyledButton ariaPressed={true}>Let’s go</UnstyledButton>
++ <UnstyledButton pressed={true}>Let’s go</UnstyledButton>
 ```
 
-## Sass API Changes
+## Removed Exports
 
-### Removed `button-filled-disabled` SASS function
+### AnimationProps
 
-This function has been removed as `Button` `disabled` property implements this background.
-
-```diff
-.IconButton {
-  padding: 0.8rem;
-- background: button-filled-disabled();
-}
-```
-
-### Removed `plain-button-background` SASS function
-
-This function has been removed.
-
-```diff
-.IconButton {
-  padding: 0.8rem;
-- background: plain-button-background();
-}
-```
-
-### Removed `text-emphasis-placeholder` SASS mixin
-
-With the new visual styles the placeholder and subdued mixins have the same functionality. We have replaced the placeholder for subdued.
-
-```diff
-.SearchInput {
-- color: @include button-filled-disabled();
-+ color: @include text-emphasis-subdued();
-}
-```
-
-### Removed `skeleton-page-header-has-secondary-actions` SASS mixin
-
-The `skeleton-page-header-has-secondary-actions` mixin has been removed.
-
-```diff
-.Header {
-- @include skeleton-page-header-has-secondary-actions;
-}
-```
-
-## Exported type changes
-
-### Removed `AnimationProps`
-
-`AnimationProps` is a simple type that was used once in `@shopify/polaris` and we have decided to remove it.
+The `AnimationProps` type has been removed as it was an internal prop. You can redefine it if you need it.
 
 ```diff
 - import {AnimationProps} from '@shopify/polaris';
@@ -286,9 +226,23 @@ The `skeleton-page-header-has-secondary-actions` mixin has been removed.
 + }
 ```
 
-### Removed `NewDesignLanguageColor` and `Color`
+### BaseAction
 
-The `NewDesignLanguageColor` and `Color` that describes the argument you pass into Icon's color prop. You should use `IconProps['color']` instead of referencing these low level types.
+The `BaseAction` type has been removed, and replaced with `Action`.
+
+```diff
+- import {BaseAction} from '@shopify/polaris';
++ import {Action} from '@shopify/polaris';
+
+export interface Props {
+- headerAction?: BaseAction;
++ headerAction?: Action;
+}
+```
+
+### Color and NewDesignLanguageColor
+
+The `Color` and `NewDesignLanguageColor` types that describe the argument you pass into `Icon`'s `color` prop have been removed. Use `IconProps['color']` instead of referencing these low level types if you are about to pass these values into the `Icon` component.
 
 ```diff
 - import {Color, NewDesignLanguageColor, Icon} from '@shopify/polaris';
@@ -300,16 +254,11 @@ interface PartyIconProps {
 }
 ```
 
-### Replaced `BaseAction` type with `Action`
+## Sass API Changes
 
-`BaseAction` has been replaced with the `Action` type.
+The following Sass mixins and functions have been removed, because they no longer have any visual effect or their usage has been merged with another mixin/function.
 
-```diff
-- import {BaseAction} from '@shopify/polaris';
-+ import {Action} from '@shopify/polaris';
-
-export interface Props {
-- headerAction?: BaseAction;
-+ headerAction?: Action;
-}
-```
+- The `button-filled-disabled` function. No longer has any effect.
+- The `plain-button-background` function. No longer has any effect.
+- The `skeleton-page-header-has-secondary-actions` mixin. No longer has any effect.
+- The `text-emphasis-placeholder` mixin. Replace usage with `text-emphasis-subdued()`.
