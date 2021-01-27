@@ -91,11 +91,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       border-color: var(--p-border-warning-subdued);
       background: var(--p-surface-warning-subdued-hovered);
     }
-  }
-
-  &.statusWarning .PrimaryAction .Button {
-    border-color: var(--p-border-warning-subdued);
-    background: var(--p-surface-warning-subdued);
 
     &:active {
       border-color: var(--p-border-warning-subdued);
