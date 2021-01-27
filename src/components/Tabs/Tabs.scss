@@ -201,10 +201,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .DisclosureActivator {
-  @include recolor-icon(var(--p-icon-subdued));
   @include focus-ring;
   height: 100%;
-  background-color: transparent;
   cursor: pointer;
   border: none;
   outline: none;
