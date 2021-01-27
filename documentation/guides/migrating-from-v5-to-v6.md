@@ -4,12 +4,12 @@ Polaris v6.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## New Design Language
 
-In v5 Polaris contained two design languages that could be toggled using the `newDesignLanguage` feature on `AppProvider`. We have removed our old viisual styles, leaving only the new.
+In v5 Polaris contained two design languages that could be toggled using the `newDesignLanguage` feature on `AppProvider`. We have removed our old visual styles, leaving only the new.
 
 In v6, you no longer need to configure `AppProvider` to opt into new styles, and legacy theme configuration has been removed:
 
 - `AppProvider`'s `features` prop no longer accepts a `newDesignLanguage` key.
-- `AppProvider`'s `theme` prop no longer accepts theming using the `topBar` key. Instead control theming using the new color config that gets pass through to [`ThemeProvider`](https://polaris.shopify.com/components/structure/theme-provider).
+- `AppProvider`'s `theme` prop no longer accepts theming using the `topBar` key. Instead control theming using the new color config that gets passed through to [`ThemeProvider`](https://polaris.shopify.com/components/structure/theme-provider).
 - `AppProvider`'s `theme` prop expects its `frameOffset` to be specified as a string including a unit instead of a number in pixels, to allow for non-pixel based sizing.
 
 ```diff
@@ -47,8 +47,8 @@ The `Button` component's `ariaPressed` prop has been removed. You must the `pres
 The `Button` component's `stretchContent` prop has been removed. Its behaviour can be recreated by combining the `fullWidth` and `textAlign="left"` props.
 
 ```diff
-- <Button stretchContent>Lets go</Button>
-+ <Button fullWidth textAlign="left">Lets go</Button>
+- <Button stretchContent>Let’s go</Button>
++ <Button fullWidth textAlign="left">Let’s go</Button>
 ```
 
 ### Icon
@@ -117,7 +117,7 @@ The `Modal` component's `title` prop is now required to help enforce accessibili
 
 ### Page
 
-The `Page` component's `seperator` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
+The `Page` component's `separator` prop has been removed, as it no longer has any visual effect. You should remove any usage of this prop.
 
 ```diff
 - <Page title="Settings" separator>
@@ -149,7 +149,7 @@ The `Pagination` component's `plain` prop has been removed, as it no longer has 
 
 ### Popover and PopoverOverlay
 
-The `Popover` and `PopoverOverlay` components' `preventAutoFocus` prop has been removed. Its behaviour is controlled `autofocusTarget` prop. Replace usage of this prop with `autofocusTarget="none"`.
+The `Popover` and `PopoverOverlay` components' `preventAutoFocus` prop has been removed. Its behaviour is controlled by the `autofocusTarget` prop. Replace usage of this prop with `autofocusTarget="none"`.
 
 ```diff
 <Popover
@@ -165,7 +165,7 @@ The `Popover` and `PopoverOverlay` components' `preventAutoFocus` prop has been 
 
 ### Sheet
 
-The `Sheet` component's `accessibilityLabel` prop is now required to help enforce accessibility for screen readers. You must add an `accessibilityLabel` prop to all your `Sheet`s. This label is only visiible to screen readers, it is not visually shown.
+The `Sheet` component's `accessibilityLabel` prop is now required to help enforce accessibility for screen readers. You must add an `accessibilityLabel` prop to all your `Sheet`s. This label is only visible to screen readers, it is not visually shown.
 
 ```diff
 <Sheet
