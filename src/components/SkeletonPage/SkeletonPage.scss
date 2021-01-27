@@ -26,10 +26,6 @@ $skeleton-display-text-max-width: rem(120px);
   @include skeleton-page-header-layout;
 }
 
-.Header-hasSecondaryActions {
-  @include skeleton-page-header-has-secondary-actions;
-}
-
 .BreadcrumbAction {
   padding-top: spacing(base);
   padding-bottom: spacing(base);

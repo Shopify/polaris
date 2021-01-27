@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Zavřít navigaci"
       }
     },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Akce"

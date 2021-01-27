@@ -12,11 +12,6 @@ $action-menu-rollup-computed-width: rem(40px);
   position: relative;
 }
 
-.separator {
-  padding-bottom: spacing();
-  border-bottom: var(--p-override-none);
-}
-
 .titleHidden {
   @include visually-hidden;
 }

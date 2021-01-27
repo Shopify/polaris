@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Sulje navigointi"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} kuvake ei hyväksy taustoja. Kuvakevärit, joissa on tausta, ovat seuraavat: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Toiminnat"

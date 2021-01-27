@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Zamknij nawigację"
       }
     },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nie akceptuje teł. Kolory ikon, które mają tło, są: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Czynności"

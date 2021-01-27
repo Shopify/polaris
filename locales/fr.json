@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Fermer la navigation"
       }
     },
-    "Icon": {
-      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"

@@ -2,7 +2,6 @@
 
 $accent-height: 3px;
 $heading-offset: rem(2px);
-$intermediate-spacing: spacing(base-tight);
 $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
@@ -21,6 +20,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   } @else {
     @include focus-ring('base');
     border-radius: var(--p-border-radius-base);
+    background-color: var(--p-banner-background);
   }
 
   @media (-ms-high-contrast: active) {
@@ -91,6 +91,11 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       border-color: var(--p-border-warning-subdued);
       background: var(--p-surface-warning-subdued-hovered);
     }
+  }
+
+  &.statusWarning .PrimaryAction .Button {
+    border-color: var(--p-border-warning-subdued);
+    background: var(--p-surface-warning-subdued);
 
     &:active {
       border-color: var(--p-border-warning-subdued);
@@ -160,6 +165,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   .Dismiss {
     top: spacing();
+    right: spacing(base-tight);
+    position: absolute;
   }
 
   .Ribbon {
@@ -173,7 +180,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   .Actions {
-    padding: $intermediate-spacing 0 spacing(extra-tight) 0;
+    padding: spacing(base-tight) 0 spacing(extra-tight) 0;
   }
 }
 
@@ -195,7 +202,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   .Ribbon {
-    padding-right: spacing(loose);
+    padding-right: spacing();
   }
 
   .Actions {

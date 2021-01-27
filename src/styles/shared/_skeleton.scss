@@ -53,11 +53,6 @@ $thumbnail-sizes: (
   align-items: center;
 }
 
-@mixin skeleton-page-header-has-secondary-actions {
-  padding-top: rem(24px);
-  margin-top: 0;
-}
-
 @mixin skeleton-page-header-layout {
   padding-bottom: spacing(tight);
 }
