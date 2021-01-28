@@ -44,6 +44,7 @@ export interface PopoverOverlayProps {
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   id: string;
+  zIndexOverride?: number;
   activator: HTMLElement;
   preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
   sectioned?: boolean;
@@ -118,6 +119,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       preferredAlignment = 'center',
       preferInputActivator = true,
       fixed,
+      zIndexOverride,
     } = this.props;
     const {transitionStatus} = this.state;
     if (transitionStatus === TransitionStatus.Exited && !active) return null;
@@ -145,6 +147,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         fixed={fixed}
         onScrollOut={this.handleScrollOut}
         classNames={className}
+        zIndexOverride={zIndexOverride}
       />
     );
   }
