@@ -76,6 +76,7 @@ $skip-vertical-offset: rem(10px);
 .NavigationDismiss {
   @include hidden-when-printing;
   @include recolor-icon(var(--p-surface));
+  @include focus-ring;
   position: absolute;
   top: 0;
   left: 100%;
@@ -98,7 +99,7 @@ $skip-vertical-offset: rem(10px);
   }
 
   &:focus {
-    @include focus-ring;
+    @include focus-ring($style: focused);
     position: absolute;
     border-radius: border-radius();
     background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
