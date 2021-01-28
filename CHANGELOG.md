@@ -10,6 +10,8 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ## 6.0.0 - 2021-01-27
 
+For instructions on updating from v5 to v6, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v5-to-v6.md).
+
 ### Breaking changes
 
 - `Link` is underlined by default, added `removeUnderline` prop to remove underline ([#3705](https://github.com/Shopify/polaris-react/pull/3705))
