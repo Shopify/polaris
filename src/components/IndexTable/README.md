@@ -47,8 +47,6 @@ Index tables can also:
 
 A index table with simple items and no bulk actions, sorting, or filtering.
 
-TODO
-
 ```jsx
 function SimpleIndexTableExample() {
   const customers = [
