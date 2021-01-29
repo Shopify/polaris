@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
-    }
+    },
+    "testPlatform": "หวังว่า async จะได้ผล"
   }
 }

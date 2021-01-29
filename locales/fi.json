@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Työkaluvihje: {label}"
-    }
+    },
+    "testPlatform": "toivottavasti async toimii"
   }
 }

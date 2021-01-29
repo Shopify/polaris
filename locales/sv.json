@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Verktygstips: {label}"
-    }
+    },
+    "testPlatform": "hoppas async fungerar"
   }
 }

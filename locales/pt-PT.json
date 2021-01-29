@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Descrição: {label}"
-    }
+    },
+    "testPlatform": "espero que assínc. funcione"
   }
 }

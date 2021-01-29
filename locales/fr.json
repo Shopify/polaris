@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Infobulle : {label}"
-    }
+    },
+    "testPlatform": "j'espère que le modèle asynchrone fonctionne"
   }
 }

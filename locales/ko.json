@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "툴팁: {label}"
-    }
+    },
+    "testPlatform": "비동기 실행 작업"
   }
 }

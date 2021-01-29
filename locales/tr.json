@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "İpucu: {label}"
-    }
+    },
+    "testPlatform": "hope async works"
   }
 }

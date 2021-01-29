@@ -299,6 +299,7 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "工具提示：{label}"
-    }
+    },
+    "testPlatform": "hope async works"
   }
 }
