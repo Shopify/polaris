@@ -189,6 +189,7 @@ function triggerCheckboxEvent(
 const defaultProviderProps = {
   itemCount: 1,
   selectedItemsCount: 0,
+  onSelectionChange: () => {},
 };
 const defaultIndexProps = {
   headings: [{title: 'first heading'}],

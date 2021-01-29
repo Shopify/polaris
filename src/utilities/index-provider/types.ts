@@ -23,9 +23,16 @@ export interface IndexProviderProps {
   loading?: boolean;
   hasMoreItems?: boolean;
   condensed?: boolean;
-  onSelectionChange?(
+  onSelectionChange(
     selectionType: SelectionType,
     toggleType: boolean,
     selection?: string | Range,
   ): void;
 }
+
+export type HandleSelectionChange = (
+  selectionType: SelectionType,
+  toggleType: boolean,
+  selection?: string | Range,
+  sortOrder?: number,
+) => void;

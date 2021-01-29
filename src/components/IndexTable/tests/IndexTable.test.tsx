@@ -53,7 +53,11 @@ const mockRenderCondensedRow = (item: any) => {
 describe('<IndexTable>', () => {
   it('renders an <EmptySearchResult /> if no items are passed', () => {
     const index = mountWithApp(
-      <IndexProvider itemCount={0} selectedItemsCount={0}>
+      <IndexProvider
+        onSelectionChange={() => {}}
+        itemCount={0}
+        selectedItemsCount={0}
+      >
         <IndexTable headings={mockTableHeadings} />
       </IndexProvider>,
     );
@@ -63,7 +67,11 @@ describe('<IndexTable>', () => {
 
   it('renders a row for each item using renderItem', () => {
     const index = mountWithAppProvider(
-      <IndexProvider itemCount={mockTableItems.length} selectedItemsCount={0}>
+      <IndexProvider
+        onSelectionChange={() => {}}
+        itemCount={mockTableItems.length}
+        selectedItemsCount={0}
+      >
         <IndexTable headings={mockTableHeadings}>
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>
@@ -77,6 +85,7 @@ describe('<IndexTable>', () => {
     const index = mountWithApp(
       <IndexProvider
         itemCount={mockTableItems.length}
+        onSelectionChange={() => {}}
         selectedItemsCount={0}
         loading
       >
@@ -93,10 +102,12 @@ describe('<IndexTable>', () => {
     const zeroSelectionIndexProviderProps = {
       itemCount: mockTableItems.length,
       selectedItemsCount: 0,
+      onSelectionChange: () => {},
     };
     const someSelectionIndexProviderProps = {
       itemCount: mockTableItems.length,
       selectedItemsCount: 1,
+      onSelectionChange: () => {},
     };
     const defaultIndexTableProps = {
       headings: mockTableHeadings,

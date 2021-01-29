@@ -24,6 +24,7 @@ const defaultProps = {
 const defaultIndexProviderProps = {
   itemCount: 1,
   selectedItemsCount: 0,
+  onSelectionChange: () => {},
 };
 const defaultIndexTableProps = {
   headings: [{title: 'first heading'}],
@@ -81,7 +82,13 @@ describe('<Row />', () => {
           </a>
         </th>
       </Row>,
-      {indexProviderProps: {selectedItemsCount: 1, itemCount: 1}},
+      {
+        indexProviderProps: {
+          onSelectionChange: () => {},
+          selectedItemsCount: 1,
+          itemCount: 1,
+        },
+      },
     );
 
     // React uses its own synthetic events that won't be trigger when
