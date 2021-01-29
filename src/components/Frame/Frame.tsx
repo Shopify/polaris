@@ -124,6 +124,13 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
     const tabIndex = mobileNavShowing ? 0 : -1;
 
+    const mobileNavAttributes = {
+      ...(mobileNavShowing && {
+        'aria-modal': true,
+        role: 'dialog',
+      }),
+    };
+
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
         <CSSTransition
@@ -135,8 +142,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
-            aria-modal
-            role="dialog"
+            {...mobileNavAttributes}
             aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}

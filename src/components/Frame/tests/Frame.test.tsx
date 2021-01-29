@@ -224,6 +224,32 @@ describe('<Frame />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('renders mobile accessibility attributes on small screens', () => {
+      const navigation = <div />;
+      const frame = mountWithApp(
+        <Frame showMobileNavigation navigation={navigation} />,
+        {mediaQuery: {isNavigationCollapsed: true}},
+      );
+
+      expect(frame).toContainReactComponent('div', {
+        'aria-modal': true,
+        role: 'dialog',
+      });
+    });
+
+    it('does not render mobile accessibility attributes on large screens', () => {
+      const navigation = <div />;
+      const frame = mountWithApp(
+        <Frame showMobileNavigation navigation={navigation} />,
+        {mediaQuery: {isNavigationCollapsed: false}},
+      );
+
+      expect(frame).not.toContainReactComponent('div', {
+        'aria-modal': true,
+        role: 'dialog',
+      });
+    });
   });
 
   describe('globalRibbon', () => {
