@@ -1,7 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {Image, UnstyledLink} from 'components';
 
 import {TopBar} from '../TopBar';
@@ -249,26 +248,6 @@ describe('<TopBar />', () => {
     it('doesn’t render the wrapper when not defined and no logo is available', () => {
       const topBar = mountWithAppProvider(<TopBar />);
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('does not render a div with newDesignLanguage className when newDesignLanguage is undefined', () => {
-      const topBar = mountWithApp(<TopBar />);
-
-      expect(topBar).not.toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-
-    it('renders a div with newDesignLanguage className when newDesignLanguage is enabled', () => {
-      const topBar = mountWithApp(<TopBar />, {
-        features: {newDesignLanguage: true},
-      });
-
-      expect(topBar).toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
-      });
     });
   });
 });

@@ -6,7 +6,6 @@ import {mountWithApp} from 'test-utilities';
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
-import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
 jest.mock('../../Portal', () => ({
@@ -91,32 +90,6 @@ describe('<Tabs />', () => {
   });
 
   describe('tabs', () => {
-    it('newDesignLanguage class is present on ul element', () => {
-      const tabs: TabsProps['tabs'] = [
-        {content: 'Tab 1', id: 'tab-1'},
-        {content: 'Tab 2', id: 'tab-2'},
-      ];
-
-      const component = <Tabs {...mockProps} tabs={tabs} />;
-
-      const tabsWithoutDesignLanguage = mountWithAppProvider(component);
-      const tabsWithDesignLanguage = mountWithAppProvider(
-        <FeaturesContext.Provider value={{newDesignLanguage: true}}>
-          {component}
-        </FeaturesContext.Provider>,
-      );
-
-      expect(tabsWithDesignLanguage.find('ul')).toHaveLength(1);
-
-      expect(
-        tabsWithoutDesignLanguage.find('ul').prop('className'),
-      ).not.toContain('newDesignLanguage');
-
-      expect(tabsWithDesignLanguage.find('ul').prop('className')).toContain(
-        'newDesignLanguage',
-      );
-    });
-
     it('uses the IDs passed in for the tabs', () => {
       const tabs: TabsProps['tabs'] = [
         {content: 'Tab 1', id: 'tab-1'},

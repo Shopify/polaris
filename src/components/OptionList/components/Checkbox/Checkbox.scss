@@ -3,144 +3,77 @@
 .Checkbox {
   position: relative;
   width: 100%;
-  margin: var(--p-choice-margin, 0);
+  margin: var(--p-choice-margin);
+
+  // stylelint-disable-next-line selector-max-class
+  &.active .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
 }
 
 .Input {
   @include visually-hidden;
-}
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Checkbox:not(.newDesignLanguage) {
-  .Input {
-    &:focus,
-    &:active,
-    &:checked {
-      + .Backdrop {
-        background: color('indigo');
-      }
+
+  // stylelint-disable-next-line selector-max-class
+  &.keyFocused + .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
+
+  // stylelint-disable-next-line selector-max-class
+  &:active:not(:disabled),
+  &:checked,
+  &.Input-indeterminate {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    + .Backdrop {
+      @include control-backdrop(active);
     }
 
-    &:checked {
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    &:focus,
-    &:active {
-      + .Backdrop {
-        @include control-backdrop(focused);
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled);
-      }
-
-      ~ .Icon {
-        @include recolor-icon(color('ink', 'lightest'));
-      }
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    ~ .Icon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+        transform var(--p-duration-1-5-0) var(--p-ease);
     }
   }
 
-  &.active {
-    .Backdrop {
-      @include control-backdrop(focused);
+  // stylelint-disable-next-line selector-max-class
+  &:disabled + .Backdrop {
+    @include control-backdrop(disabled);
+  }
+
+  // stylelint-disable-next-line selector-max-class
+  &:disabled:checked {
+    // stylelint-disable-next-line selector-max-specificity
+    + .Backdrop,
+    + .Backdrop::before {
+      background: var(--p-border-disabled);
     }
-  }
-
-  .Backdrop {
-    @include control-backdrop;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .Icon {
-    @include recolor-icon(color('indigo'));
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: 50% 50%;
-    transition: control-icon-transition();
   }
 }
 
-.Checkbox.newDesignLanguage {
-  .Input {
-    &.keyFocused {
-      + .Backdrop {
-        @include focus-ring($style: 'focused');
-      }
-    }
-
-    &:active:not(:disabled),
-    &:checked,
-    &.Input-indeterminate {
-      + .Backdrop {
-        @include control-backdrop(active, $global-theming: true);
-      }
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        transition: opacity var(--p-duration-1-5-0) var(--p-ease),
-          transform var(--p-duration-1-5-0) var(--p-ease);
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled, $global-theming: true);
-      }
-    }
-
-    &:disabled:checked {
-      + .Backdrop {
-        background: var(--p-border-disabled);
-        &::before {
-          background: var(--p-border-disabled);
-        }
-      }
-    }
-  }
-
-  &.active {
-    .Backdrop {
-      @include focus-ring($style: 'focused');
-    }
-  }
-
-  .Backdrop {
-    @include control-backdrop($global-theming: true);
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    @include focus-ring($border-width: var(--p-control-border-width));
-  }
-
-  .Icon {
-    transform: translate(-50%, -50%) scale(0.25);
-    opacity: 0;
-    transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-      transform var(--p-duration-1-0-0) var(--p-ease);
-  }
+.Backdrop {
+  @include control-backdrop;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include focus-ring($border-width: var(--p-control-border-width));
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-interactive, color('indigo')));
+  @include recolor-icon(var(--p-icon-on-interactive));
   position: absolute;
   top: 50%;
   left: 50%;
   transform-origin: 50% 50%;
   pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.25);
+  opacity: 0;
+  transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+    transform var(--p-duration-1-0-0) var(--p-ease);
 
   @media (-ms-high-contrast: active) {
     fill: ms-high-contrast-color('text');
   }
 }
-// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth

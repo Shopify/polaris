@@ -1,31 +1,18 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$entry-iterations: 1;
-$backdrop-color: rgba(color('ink'), 0.4);
-
 .SearchDismissOverlay {
   position: fixed;
-  top: top-bar-height();
+  top: 0;
   left: 0;
   right: 0;
   z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
-  height: calc(100vh - #{top-bar-height()});
-
-  &.newDesignLanguage {
-    top: 0;
-    height: 100%;
-  }
+  height: 100%;
 }
 
 .visible {
-  background-color: var(--p-backdrop, $backdrop-color);
-  animation: fade-in duration() $entry-iterations forwards;
-
-  &.newDesignLanguage {
-    background-color: transparent;
-    animation: none;
-  }
+  background-color: transparent;
+  animation: none;
 }
 
 @keyframes fade-in {

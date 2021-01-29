@@ -162,18 +162,18 @@ describe('<Popover />', () => {
     expect(popover.children[0].type).toBe('span');
   });
 
-  it('passes preventAutofocus to PopoverOverlay', () => {
+  it('passes autofocusTarget to PopoverOverlay', () => {
     const popover = mountWithApp(
       <Popover
         active={false}
-        preventAutofocus
+        autofocusTarget="none"
         activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
 
     expect(popover).toContainReactComponent(PopoverOverlay, {
-      preventAutofocus: true,
+      autofocusTarget: 'none',
     });
   });
 

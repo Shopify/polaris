@@ -32,13 +32,15 @@ describe('<ToastManager />', () => {
     }).not.toThrow();
   });
 
-  it('has and aria-live attribute of polite', () => {
+  it('has and aria-live attribute of assertive', () => {
     const toastManager = mountWithAppProvider(
       <ToastManager
         toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
       />,
     );
-    expect(toastManager.find('[aria-live]').prop('aria-live')).toBe('polite');
+    expect(toastManager.find('[aria-live]').prop('aria-live')).toBe(
+      'assertive',
+    );
   });
 });
 

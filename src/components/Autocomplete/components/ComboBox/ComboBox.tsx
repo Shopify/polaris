@@ -336,7 +336,7 @@ export function ComboBox({
           onClose={forcePopoverActiveFalse}
           preferredPosition={preferredPosition}
           fullWidth
-          preventAutofocus
+          autofocusTarget="none"
         >
           <Popover.Pane onScrolledToBottom={onEndReached}>
             <div id={id} role="listbox" aria-multiselectable={allowMultiple}>

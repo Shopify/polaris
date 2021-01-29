@@ -156,9 +156,7 @@ describe('<Page />', () => {
         );
       }
 
-      const wrapper = mountWithApp(<PageWithSecondaryActionsToggle />, {
-        features: {newDesignLanguage: true},
-      });
+      const wrapper = mountWithApp(<PageWithSecondaryActionsToggle />);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(Page, {
@@ -187,9 +185,7 @@ describe('<Page />', () => {
         );
       }
 
-      const wrapper = mountWithApp(<PageWithActionsGroupsToggle />, {
-        features: {newDesignLanguage: true},
-      });
+      const wrapper = mountWithApp(<PageWithActionsGroupsToggle />);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(Page, {

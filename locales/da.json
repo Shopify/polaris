@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Luk navigation"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet accepterer ikke baggrunde. De ikonfarver, der har baggrunde, er: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Handlinger"

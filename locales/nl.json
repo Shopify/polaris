@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Navigatie sluiten"
       }
     },
-    "Icon": {
-      "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Acties"
@@ -301,7 +298,7 @@
       "label": "Pagina laadbalk"
     },
     "TooltipOverlay": {
-      "accessibilityLabel": "Knopinfo: {label}"
+      "accessibilityLabel": "Tooltip: {label}"
     }
   }
 }
