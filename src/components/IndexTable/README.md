@@ -100,25 +100,22 @@ function SimpleIndexTableExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <IndexTable
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }
@@ -180,9 +177,9 @@ function SimpleSmallScreenIndexTableExample() {
   );
 
   return (
-    <Card>
-      <div style={{width: '430px'}}>
-        <IndexProvider
+    <div style={{width: '430px'}}>
+      <Card>
+        <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
           selectedItemsCount={
@@ -190,20 +187,17 @@ function SimpleSmallScreenIndexTableExample() {
           }
           onSelectionChange={handleSelectionChange}
           condensed
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {title: 'Order count'},
+            {title: 'Amount spent'},
+          ]}
         >
-          <IndexTable
-            headings={[
-              {title: 'Name'},
-              {title: 'Location'},
-              {title: 'Order count'},
-              {title: 'Amount spent'},
-            ]}
-          >
-            {rowMarkup}
-          </IndexTable>
-        </IndexProvider>
-      </div>
-    </Card>
+          {rowMarkup}
+        </IndexTable>
+      </Card>
+    </div>
   );
 }
 ```
@@ -254,26 +248,23 @@ function IndexTableWithCustomEmptyStateExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        emptyState={emptyStateMarkup}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <IndexTable
-          emptyState={emptyStateMarkup}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }
@@ -355,27 +346,24 @@ function IndexTableWithBulkActionsExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <IndexTable
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }
@@ -457,7 +445,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -465,20 +453,17 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
         }
         onSelectionChange={handleSelectionChange}
         hasMoreItems
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <IndexTable
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }
@@ -539,7 +524,7 @@ function IndexTableWithLoadingExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -547,18 +532,15 @@ function IndexTableWithLoadingExample() {
         }
         onSelectionChange={handleSelectionChange}
         loading
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <IndexTable
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }
@@ -666,46 +648,43 @@ function IndexTableWithFilteringExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <div style={{padding: '16px', display: 'flex'}}>
+        <div style={{flex: 1}}>
+          <Filters
+            queryValue={queryValue}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={setQueryValue}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleClearAll}
+          />
+        </div>
+        <div style={{paddingLeft: '0.4rem'}}>
+          <Select
+            labelInline
+            label="Sort by"
+            options={sortOptions}
+            value={sortValue}
+            onChange={handleSortChange}
+          />
+        </div>
+      </div>
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <div style={{padding: '16px', display: 'flex'}}>
-          <div style={{flex: 1}}>
-            <Filters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={setQueryValue}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            />
-          </div>
-          <div style={{paddingLeft: '0.4rem'}}>
-            <Select
-              labelInline
-              label="Sort by"
-              options={sortOptions}
-              value={sortValue}
-              onChange={handleSortChange}
-            />
-          </div>
-        </div>
-        <IndexTable
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 
@@ -851,7 +830,28 @@ function IndexTableWithAllElementsExample() {
 
   return (
     <Card>
-      <IndexProvider
+      <div style={{padding: '16px', display: 'flex'}}>
+        <div style={{flex: 1}}>
+          <Filters
+            queryValue={queryValue}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={setQueryValue}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleClearAll}
+          />
+        </div>
+        <div style={{paddingLeft: '0.4rem'}}>
+          <Select
+            labelInline
+            label="Sort by"
+            options={sortOptions}
+            value={sortValue}
+            onChange={handleSortChange}
+          />
+        </div>
+      </div>
+      <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -859,41 +859,17 @@ function IndexTableWithAllElementsExample() {
         }
         onSelectionChange={handleSelectionChange}
         hasMoreItems
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
       >
-        <div style={{padding: '16px', display: 'flex'}}>
-          <div style={{flex: 1}}>
-            <Filters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={setQueryValue}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            />
-          </div>
-          <div style={{paddingLeft: '0.4rem'}}>
-            <Select
-              labelInline
-              label="Sort by"
-              options={sortOptions}
-              value={sortValue}
-              onChange={handleSortChange}
-            />
-          </div>
-        </div>
-        <IndexTable
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </IndexProvider>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 
@@ -1040,17 +1016,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
   );
 
   return (
-    <Card>
-      <IndexProvider
-        resourceName={resourceName}
-        itemCount={customers.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
-        hasMoreItems
-        condensed
-      >
+    <div style={{width: '430px'}}>
+      <Card>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -1073,6 +1040,14 @@ function SmallScreenIndexTableWithAllElementsExample() {
           </div>
         </div>
         <IndexTable
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          hasMoreItems
+          condensed
           bulkActions={bulkActions}
           promotedBulkActions={promotedBulkActions}
           headings={[
@@ -1084,8 +1059,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
         >
           {rowMarkup}
         </IndexTable>
-      </IndexProvider>
-    </Card>
+      </Card>
+    </div>
   );
 
   function disambiguateLabel(key, value) {
