@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useCallback} from 'react';
+import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
@@ -139,11 +139,11 @@ function IndexTableBase({
     tableHeadingRects.current = measuredTableHeadingRects;
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleResize = useCallback(
-    debounce(() => {
-      resizeTableHeadings();
-    }, 50),
+  const handleResize = useMemo(
+    () =>
+      debounce(() => {
+        resizeTableHeadings();
+      }, 50),
     [resizeTableHeadings],
   );
 
