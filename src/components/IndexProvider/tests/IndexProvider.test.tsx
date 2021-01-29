@@ -8,6 +8,7 @@ describe('<IndexProvider />', () => {
   const defaultProps = {
     itemCount: 0,
     selectedItemsCount: 0,
+    onSelectionChange: () => {},
   };
 
   it('renders a IndexRowContextProvider', () => {

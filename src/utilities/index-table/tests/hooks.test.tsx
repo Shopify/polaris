@@ -15,6 +15,7 @@ function Component() {
 const defaultIndexProviderProps = {
   itemCount: 0,
   selectedItemsCount: 0,
+  onSelectionChange: () => {},
 };
 
 describe('useRowHovered', () => {

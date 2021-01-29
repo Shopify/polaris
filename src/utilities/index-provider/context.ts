@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 
-import type {SelectionType, SELECT_ALL_ITEMS} from './types';
+import type {SelectionType, SELECT_ALL_ITEMS, Range} from './types';
 
 export interface IndexContextType {
   loading?: boolean;
