@@ -2,10 +2,11 @@ import React, {ReactElement} from 'react';
 import {mountWithApp} from 'test-utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
-import {IndexProvider, IndexProviderProps} from '../../../../IndexProvider';
+import {IndexProvider} from '../../../../IndexProvider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
+import type {IndexProviderProps} from '../../../../../utilities/index-provider';
+import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
-import {RowHoveredContext} from '../context';
 
 const defaultEvent = {
   preventDefault: noop,

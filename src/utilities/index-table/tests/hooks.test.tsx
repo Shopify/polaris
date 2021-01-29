@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
-import {IndexProvider} from '../../../../IndexProvider';
-import {Row} from '../Row';
+import {IndexProvider} from '../../../components/IndexProvider';
+import {IndexTable} from '../../../components/IndexTable';
 import {useRowHovered} from '../hooks';
 
 function Component() {
@@ -18,14 +18,14 @@ const defaultIndexProviderProps = {
 };
 
 describe('useRowHovered', () => {
-  it('returns true when the Row is hovered', () => {
+  it.only('returns true when the Row is hovered', () => {
     const component = mountWithApp(
       <IndexProvider {...defaultIndexProviderProps}>
         <table>
           <tbody>
-            <Row id="id" selected position={1}>
+            <IndexTable.Row id="id" selected position={1}>
               <Component />
-            </Row>
+            </IndexTable.Row>
           </tbody>
         </table>
       </IndexProvider>,
@@ -41,9 +41,9 @@ describe('useRowHovered', () => {
       <IndexProvider {...defaultIndexProviderProps}>
         <table>
           <tbody>
-            <Row id="id" selected position={1}>
+            <IndexTable.Row id="id" selected position={1}>
               <Component />
-            </Row>
+            </IndexTable.Row>
           </tbody>
         </table>
       </IndexProvider>,

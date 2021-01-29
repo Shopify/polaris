@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {IndexProvider} from '../IndexProvider';
-import {IndexRowContext} from '../utilities/context';
+import {IndexRowContext} from '../../../utilities/index-provider';
 
 describe('<IndexProvider />', () => {
   const defaultProps = {
