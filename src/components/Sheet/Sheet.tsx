@@ -76,6 +76,7 @@ export function Sheet({
           <TrapFocus trapping={open}>
             <div
               role="dialog"
+              aria-modal
               tabIndex={-1}
               className={styles.Sheet}
               aria-label={accessibilityLabel}
