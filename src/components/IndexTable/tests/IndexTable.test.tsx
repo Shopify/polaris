@@ -8,7 +8,6 @@ import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable} from '../IndexTable';
-import {IndexProvider} from '../../IndexProvider';
 
 const mockTableItems = [
   {
@@ -51,31 +50,24 @@ const mockRenderCondensedRow = (item: any) => {
 };
 
 describe('<IndexTable>', () => {
+  const defaultProps = {
+    onSelectionChange: () => {},
+    itemCount: 0,
+    selectedItemsCount: 0,
+    headings: mockTableHeadings,
+  };
+
   it('renders an <EmptySearchResult /> if no items are passed', () => {
-    const index = mountWithApp(
-      <IndexProvider
-        onSelectionChange={() => {}}
-        itemCount={0}
-        selectedItemsCount={0}
-      >
-        <IndexTable headings={mockTableHeadings} />
-      </IndexProvider>,
-    );
+    const index = mountWithApp(<IndexTable {...defaultProps} itemCount={0} />);
 
     expect(index).toContainReactComponent(EmptySearchResult);
   });
 
   it('renders a row for each item using renderItem', () => {
     const index = mountWithAppProvider(
-      <IndexProvider
-        onSelectionChange={() => {}}
-        itemCount={mockTableItems.length}
-        selectedItemsCount={0}
-      >
-        <IndexTable headings={mockTableHeadings}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>
-      </IndexProvider>,
+      <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
     );
 
     expect(index.find(Component)).toHaveLength(2);
@@ -83,43 +75,27 @@ describe('<IndexTable>', () => {
 
   it('renders a spinner if loading is passed', () => {
     const index = mountWithApp(
-      <IndexProvider
-        itemCount={mockTableItems.length}
-        onSelectionChange={() => {}}
-        selectedItemsCount={0}
-        loading
-      >
-        <IndexTable headings={mockTableHeadings}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>
-      </IndexProvider>,
+      <IndexTable {...defaultProps} loading itemCount={mockTableItems.length}>
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
     );
 
     expect(index).toContainReactComponent(Spinner);
   });
 
   describe('condensed', () => {
-    const zeroSelectionIndexProviderProps = {
+    const defaultIndexTableProps = {
+      headings: mockTableHeadings,
       itemCount: mockTableItems.length,
       selectedItemsCount: 0,
       onSelectionChange: () => {},
     };
-    const someSelectionIndexProviderProps = {
-      itemCount: mockTableItems.length,
-      selectedItemsCount: 1,
-      onSelectionChange: () => {},
-    };
-    const defaultIndexTableProps = {
-      headings: mockTableHeadings,
-    };
 
     it('renders bulk actions when selectable', () => {
       const index = mountWithApp(
-        <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
-          <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderCondensedRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
       );
 
       index.find(Button, {children: 'Select'})?.trigger('onClick');
@@ -131,14 +107,14 @@ describe('<IndexTable>', () => {
 
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
       const index = mountWithApp(
-        <IndexProvider {...someSelectionIndexProviderProps}>
-          <IndexTable
-            {...defaultIndexTableProps}
-            promotedBulkActions={[{content: 'Action'}]}
-          >
-            {mockTableItems.map(mockRenderRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable
+          {...defaultIndexTableProps}
+          selectedItemsCount={1}
+          condensed={false}
+          promotedBulkActions={[{content: 'Action'}]}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
       );
 
       expect(index).toContainReactComponent(BulkActions, {
@@ -148,11 +124,9 @@ describe('<IndexTable>', () => {
 
     it('toggles selectable state when the bulk action button is triggered', () => {
       const index = mountWithApp(
-        <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
-          <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderCondensedRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
       );
 
       index.find(Button, {children: 'Select'})?.trigger('onClick');
@@ -164,11 +138,13 @@ describe('<IndexTable>', () => {
     it('renders sort markup', () => {
       const id = 'sort';
       const index = mountWithApp(
-        <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
-          <IndexTable {...defaultIndexTableProps} sort={<div id={id} />}>
-            {mockTableItems.map(mockRenderCondensedRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable
+          {...defaultIndexTableProps}
+          condensed
+          sort={<div id={id} />}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
       );
 
       expect(index).toContainReactComponent('div', {id});
@@ -176,11 +152,9 @@ describe('<IndexTable>', () => {
 
     it('renders as a list', () => {
       const index = mountWithApp(
-        <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
-          <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderCondensedRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
       );
 
       expect(index).toContainReactComponent('ul');
@@ -188,11 +162,9 @@ describe('<IndexTable>', () => {
 
     it('leaves small screen select mode when going from condensed to regular', () => {
       const index = mountWithApp(
-        <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
-          <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderCondensedRow)}
-          </IndexTable>
-        </IndexProvider>,
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
       );
 
       index.find(Button, {children: 'Select'})?.trigger('onClick');

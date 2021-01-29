@@ -2,9 +2,7 @@ import React, {ReactElement} from 'react';
 import {mountWithApp} from 'test-utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
-import {IndexProvider} from '../../../../IndexProvider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
-import type {IndexProviderProps} from '../../../../../utilities/index-provider';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
 
@@ -21,13 +19,11 @@ const defaultProps = {
   selected: false,
   position: 0,
 };
-const defaultIndexProviderProps = {
+const defaultIndexTableProps = {
+  headings: [{title: 'first heading'}],
   itemCount: 1,
   selectedItemsCount: 0,
   onSelectionChange: () => {},
-};
-const defaultIndexTableProps = {
-  headings: [{title: 'first heading'}],
 };
 
 describe('<Row />', () => {
@@ -83,7 +79,7 @@ describe('<Row />', () => {
         </th>
       </Row>,
       {
-        indexProviderProps: {
+        indexTableProps: {
           onSelectionChange: () => {},
           selectedItemsCount: 1,
           itemCount: 1,
@@ -209,17 +205,14 @@ function triggerOnClick(
 function mountWithTable(
   children: ReactElement,
   props: {
-    indexProviderProps?: IndexProviderProps;
-    indexTableProps?: IndexTableProps;
+    indexTableProps?: Partial<IndexTableProps>;
   } = {},
 ) {
-  const {indexProviderProps, indexTableProps} = props;
+  const {indexTableProps} = props;
   const table = mountWithApp(
-    <IndexProvider {...defaultIndexProviderProps} {...indexProviderProps}>
-      <IndexTable {...defaultIndexTableProps} {...indexTableProps}>
-        {children}
-      </IndexTable>
-    </IndexProvider>,
+    <IndexTable {...defaultIndexTableProps} {...indexTableProps}>
+      {children}
+    </IndexTable>,
   );
 
   return table;
