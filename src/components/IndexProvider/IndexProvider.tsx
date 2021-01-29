@@ -1,7 +1,6 @@
-import React, {useContext, useRef, useMemo, useCallback} from 'react';
+import React, {useRef, useMemo, useCallback} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-
 import {
   IndexContext,
   IndexRowContext,
@@ -10,7 +9,7 @@ import {
   IndexProviderProps,
   SelectionType,
   Range,
-} from './utilities/index';
+} from '../../utilities/index-provider';
 
 type HandleSelectionChange = (
   selectionType: SelectionType,
@@ -204,30 +203,6 @@ export function IndexProvider({
       );
     }
   }
-}
-
-export function useIndexSelectionChange() {
-  const onSelectionChange = useContext(IndexSelectionChangeContext);
-  if (!onSelectionChange) {
-    throw new Error(`Missing IndexProvider context`);
-  }
-  return onSelectionChange;
-}
-
-export function useIndexRow() {
-  const indexRow = useContext(IndexRowContext);
-  if (!indexRow) {
-    throw new Error(`Missing IndexProvider context`);
-  }
-  return indexRow;
-}
-
-export function useIndexValue() {
-  const index = useContext(IndexContext);
-  if (!index) {
-    throw new Error(`Missing IndexProvider context`);
-  }
-  return index;
 }
 
 function noop() {}

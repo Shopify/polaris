@@ -11,7 +11,7 @@ export enum SelectionType {
 
 export type Range = [number, number];
 
-export interface IndexProviderProps<T = any> {
+export interface IndexProviderProps {
   children?: React.ReactNode;
   selectable?: boolean;
   itemCount: number;
@@ -28,5 +28,4 @@ export interface IndexProviderProps<T = any> {
     toggleType: boolean,
     selection?: string | Range,
   ): void;
-  resolveItemId?(item: T): string;
 }

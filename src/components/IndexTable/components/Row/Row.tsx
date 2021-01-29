@@ -5,12 +5,11 @@ import {
   useIndexRow,
   SelectionType,
   useIndexSelectionChange,
-} from '../../../IndexProvider';
+} from '../../../../utilities/index-provider';
 import {Checkbox} from '../Checkbox';
 import {classNames} from '../../../../utilities/css';
+import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
-
-import {RowContext, RowHoveredContext} from './context';
 
 export interface RowProps {
   children: React.ReactNode;

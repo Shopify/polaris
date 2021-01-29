@@ -1,15 +1,11 @@
 import React from 'react';
 import {mountWithApp, mount} from 'test-utilities';
 
-import {IndexProvider, useIndexRow} from '../IndexProvider';
+import {IndexRowContext} from '../context';
+import {useIndexRow} from '../hooks';
 
 describe('useIndexRow', () => {
-  const defaultIndexProviderProps = {
-    itemCount: 0,
-    selectedItemsCount: 0,
-  };
-
-  it('returns selectMode', () => {
+  it('returns selectMode & condensed', () => {
     const spy = jest.fn();
 
     function MockComponent() {
@@ -19,12 +15,12 @@ describe('useIndexRow', () => {
     }
 
     mountWithApp(
-      <IndexProvider {...defaultIndexProviderProps}>
+      <IndexRowContext.Provider value={{selectMode: true, condensed: true}}>
         <MockComponent />
-      </IndexProvider>,
+      </IndexRowContext.Provider>,
     );
 
-    expect(spy).toHaveBeenCalledWith({selectMode: false});
+    expect(spy).toHaveBeenCalledWith({selectMode: true, condensed: true});
   });
 
   it('throws when IndexProvider is not being used', () => {

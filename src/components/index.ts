@@ -136,7 +136,6 @@ export {Image} from './Image';
 export type {ImageProps} from './Image';
 
 export {IndexProvider as UnstableIndexProvider} from './IndexProvider';
-export type {IndexProviderProps as UnstableIndexProviderProps} from './IndexProvider';
 
 export {IndexTable as UnstableIndexTable} from './IndexTable';
 export type {IndexTableProps as UnstableIndexTableProps} from './IndexTable';

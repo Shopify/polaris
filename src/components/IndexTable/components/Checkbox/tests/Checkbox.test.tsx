@@ -4,7 +4,8 @@ import {mountWithApp} from 'test-utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import {IndexProvider, IndexProviderProps} from '../../../../IndexProvider';
+import {IndexProvider} from '../../../../IndexProvider';
+import type {IndexProviderProps} from '../../../../../utilities/index-provider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {Row, RowProps} from '../../Row';
 import {Checkbox, CheckboxWrapper} from '../Checkbox';

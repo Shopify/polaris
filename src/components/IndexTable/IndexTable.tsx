@@ -23,7 +23,7 @@ import {
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
-} from '../IndexProvider';
+} from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
 
 import {ScrollContainer, Cell, Row} from './components';
