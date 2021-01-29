@@ -40,7 +40,7 @@ describe('<Icon />', () => {
       const element = mountWithApp(<Icon source="placeholder" color="base" />);
 
       expect(element).toContainReactComponent('span', {
-        className: 'Icon colorBase isColored',
+        className: 'Icon colorBase applyColor',
       });
     });
   });
