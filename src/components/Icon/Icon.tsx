@@ -45,6 +45,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
+    color && styles.applyColor,
     backdrop && styles.hasBackdrop,
   );
 

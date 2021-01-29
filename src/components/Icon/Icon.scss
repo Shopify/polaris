@@ -9,6 +9,10 @@
   margin: auto;
 }
 
+.applyColor {
+  color: var(--p-surface);
+}
+
 .hasBackdrop {
   position: relative;
   display: flex;

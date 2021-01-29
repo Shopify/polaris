@@ -44,6 +44,10 @@
       border-radius: border-radius();
     }
   }
+
+  @media print {
+    text-decoration-color: var(--p-border-neutral-subdued);
+  }
 }
 
 .IconLockup {

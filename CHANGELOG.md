@@ -8,6 +8,20 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.0.1 - 2021-01-29
+
+### Enhancements
+
+- Update Link underline style on print to be lighter ([#3943)](https://github.com/Shopify/polaris-react/pull/3943)))
+
+### Bug fixes
+
+- Fix issue with currentColor in icons is black instead of white ([#3938](https://github.com/Shopify/polaris-react/pull/3938))
+
+### Development workflow
+
+- Fix flakey `Tooltip` test that fails due to opacity transition ([#3940](https://github.com/Shopify/polaris-react/pull/3940))
+
 ## 6.0.0 - 2021-01-27
 
 For instructions on updating from v5 to v6, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v5-to-v6.md).

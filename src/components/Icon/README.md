@@ -31,12 +31,62 @@ Use to visually communicate core parts of the product and available actions.
 <Icon source={CirclePlusMinor} />
 ```
 
+### Colored icon
+
+Apply a color to the icon.
+
+```jsx
+<>
+  <Icon source={CirclePlusMinor} color="base" />
+  <Icon source={CirclePlusMinor} color="subdued" />
+  <Icon source={CirclePlusMinor} color="primary" />
+  <Icon source={CirclePlusMinor} color="highlight" />
+  <Icon source={CirclePlusMinor} color="success" />
+  <Icon source={CirclePlusMinor} color="warning" />
+  <Icon source={CirclePlusMinor} color="critical" />
+</>
+```
+
+### Icon with backdrop
+
+Apply a backdrop to the icon.
+
+```jsx
+<>
+  <Icon source={CirclePlusMinor} color="base" backdrop />
+  <Icon source={CirclePlusMinor} color="highlight" backdrop />
+  <Icon source={CirclePlusMinor} color="success" backdrop />
+  <Icon source={CirclePlusMinor} color="warning" backdrop />
+  <Icon source={CirclePlusMinor} color="critical" backdrop />
+</>
+```
+
 ### User provided icon
 
 Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
 
 ```jsx
 <Icon source="<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>" />
+```
+
+### User provided icon with color and currentColor
+
+When using changing color of an svg and it uses currentColor, the white color is applied.
+
+```jsx
+function IconWithReactChild() {
+  const iconContent = () => {
+    return (
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="rebeccapurple" />
+        <circle cx="10" cy="10" r="6" fill="currentColor" />
+        <circle cx="10" cy="10" r="3" />
+      </svg>
+    );
+  };
+
+  return <Icon source={iconContent} color="warning" />;
+}
 ```
 
 ---
