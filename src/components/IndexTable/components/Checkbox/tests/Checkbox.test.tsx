@@ -4,8 +4,6 @@ import {mountWithApp} from 'test-utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import {IndexProvider} from '../../../../IndexProvider';
-import type {IndexProviderProps} from '../../../../../utilities/index-provider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {Row, RowProps} from '../../Row';
 import {Checkbox, CheckboxWrapper} from '../Checkbox';
@@ -41,7 +39,7 @@ describe('<Checkbox />', () => {
   it('renders a Checkbox with a label', () => {
     const resourceName = {singular: 'Singular', plural: 'Plural'};
     const checkbox = mountWithTable(<Checkbox />, {
-      providerProps: {resourceName},
+      indexProps: {resourceName},
     });
 
     expect(checkbox).toContainReactComponent(PolarisCheckbox, {
@@ -73,7 +71,7 @@ describe('<Checkbox />', () => {
   it('toggles the checkbox value when clicked', () => {
     const onSelectionChange = jest.fn();
     const checkbox = mountWithTable(<Checkbox />, {
-      providerProps: {onSelectionChange},
+      indexProps: {onSelectionChange},
       rowProps: {selected: true},
     });
 
@@ -87,7 +85,7 @@ describe('<Checkbox />', () => {
   it('toggles the checkbox when spacebar is pressed', () => {
     const onSelectionChange = jest.fn();
     const checkbox = mountWithTable(<Checkbox />, {
-      providerProps: {onSelectionChange},
+      indexProps: {onSelectionChange},
       rowProps: {selected: true},
     });
 
@@ -102,7 +100,7 @@ describe('<Checkbox />', () => {
   describe('CheckboxWrapper', () => {
     describe('small screen', () => {
       const defaultTableProps = {
-        providerProps: {condensed: true},
+        indexProps: {condensed: true},
       };
 
       it('does not render', () => {
@@ -114,7 +112,7 @@ describe('<Checkbox />', () => {
 
     describe('large screen', () => {
       const defaultTableProps = {
-        providerProps: {condensed: false},
+        indexProps: {condensed: false},
       };
 
       it('renders', () => {
@@ -186,13 +184,11 @@ function triggerCheckboxEvent(
   });
 }
 
-const defaultProviderProps = {
+const defaultIndexProps = {
+  headings: [{title: 'first heading'}],
   itemCount: 1,
   selectedItemsCount: 0,
   onSelectionChange: () => {},
-};
-const defaultIndexProps = {
-  headings: [{title: 'first heading'}],
 };
 const defaultRowProps = {
   id: defaultId,
@@ -202,20 +198,17 @@ const defaultRowProps = {
 function mountWithTable(
   children: ReactElement,
   props: {
-    providerProps?: Partial<IndexProviderProps>;
     indexProps?: Partial<IndexTableProps>;
     rowProps?: Partial<RowProps>;
   } = {},
 ) {
-  const {providerProps, indexProps, rowProps} = props;
+  const {indexProps, rowProps} = props;
   const table = mountWithApp(
-    <IndexProvider {...defaultProviderProps} {...providerProps}>
-      <IndexTable {...defaultIndexProps} {...indexProps}>
-        <Row {...defaultRowProps} {...rowProps}>
-          {children}
-        </Row>
-      </IndexTable>
-    </IndexProvider>,
+    <IndexTable {...defaultIndexProps} {...indexProps}>
+      <Row {...defaultRowProps} {...rowProps}>
+        {children}
+      </Row>
+    </IndexTable>,
   );
 
   return table;

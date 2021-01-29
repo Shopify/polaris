@@ -23,8 +23,10 @@ import {
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
+  IndexProviderProps,
 } from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
+import {IndexProvider} from '../IndexProvider';
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
@@ -35,7 +37,7 @@ export interface IndexTableHeading {
   hidden?: boolean;
 }
 
-export interface IndexTableProps {
+export interface IndexTableBaseProps {
   headings: IndexTableHeading[];
   promotedBulkActions?: BulkActionsProps['promotedActions'];
   bulkActions?: BulkActionsProps['actions'];
@@ -51,14 +53,14 @@ export interface TableHeadingRect {
 
 const SCROLL_BAR_PADDING = 4;
 
-export function IndexTable({
+function IndexTableBase({
   headings,
   bulkActions = [],
   promotedBulkActions = [],
   children,
   emptyState,
   sort,
-}: IndexTableProps) {
+}: IndexTableBaseProps) {
   const {
     loading,
     bulkSelectState,
@@ -609,6 +611,38 @@ export function IndexTable({
     handleSelectionChange(SelectionType.All, false);
     setIsSmallScreenSelectable(val);
   }
+}
+
+export interface IndexTableProps
+  extends IndexTableBaseProps,
+    IndexProviderProps {}
+
+export function IndexTable({
+  children,
+  selectable,
+  itemCount,
+  selectedItemsCount,
+  resourceName: passedResourceName,
+  loading,
+  hasMoreItems,
+  condensed,
+  onSelectionChange,
+  ...indexTableBaseProps
+}: IndexTableProps) {
+  return (
+    <IndexProvider
+      selectable={selectable}
+      itemCount={itemCount}
+      selectedItemsCount={selectedItemsCount}
+      resourceName={passedResourceName}
+      loading={loading}
+      hasMoreItems={hasMoreItems}
+      condensed={condensed}
+      onSelectionChange={onSelectionChange}
+    >
+      <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
+    </IndexProvider>
+  );
 }
 
 IndexTable.Cell = Cell;
