@@ -296,7 +296,6 @@
           }
         }
       }
-    },
-    "testPlatform": "hope async works"
+    }
   }
 }
