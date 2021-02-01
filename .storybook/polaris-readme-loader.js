@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
+const lodash = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
@@ -250,7 +251,10 @@ import {
   ViewMinor,
 } from '@shopify/polaris-icons';
 
-export default { title: ${JSON.stringify(`All Components/${readme.name}`)} };
+export default {
+  title: ${JSON.stringify(`All Components/${readme.name}`)},
+  component: ${readme.component},
+};
 
 ${csfExports.join('\n\n')}
 `;
@@ -283,11 +287,13 @@ function isExampleForPlatform(exampleMarkdown, platform) {
 
 function parseCodeExamples(data) {
   const matter = grayMatter(data);
+  const examples = generateExamples(matter);
 
   return {
     name: matter.data.name,
     category: matter.data.category,
-    examples: generateExamples(matter),
+    component: examples.length ? toPascalCase(matter.data.name) : undefined,
+    examples,
     omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
@@ -429,4 +435,8 @@ function wrapExample(code) {
     return JsxOnlyExample;
   }`;
   }
+}
+
+function toPascalCase(str) {
+  return lodash.startCase(lodash.camelCase(str)).replace(/ /g, '');
 }
