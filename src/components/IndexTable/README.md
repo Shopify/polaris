@@ -125,6 +125,28 @@ A small screen index table with simple items and no bulk actions, sorting, or fi
 
 ```jsx
 function SimpleSmallScreenIndexTableExample() {
+  const isSmallScreen = () => {
+    return typeof window === 'undefined' ? false : window.innerWidth < 458;
+  };
+
+  const [isCondensed, setIsCondensed] = useState(isSmallScreen());
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 458) {
+        setIsCondensed(true);
+      } else {
+        setIsCondensed(false);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+
   const customers = [
     {
       id: '3412',
@@ -154,48 +176,60 @@ function SimpleSmallScreenIndexTableExample() {
     handleSelectionChange,
   } = useIndexResourceState(customers);
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <div style={{padding: '1.2rem 1.6rem'}}>
-          <p>
+  const rowMarkup = isCondensed
+    ? customers.map(({id, name, location, orders, amountSpent}, index) => (
+        <IndexTable.Row
+          id={id}
+          key={id}
+          selected={selectedResources.includes(id)}
+          position={index}
+        >
+          <div style={{padding: '1.2rem 1.6rem'}}>
+            <p>
+              <TextStyle variation="strong">{name}</TextStyle>
+            </p>
+            <p>{location}</p>
+            <p>{orders}</p>
+            <p>{amountSpent}</p>
+          </div>
+        </IndexTable.Row>
+      ))
+    : customers.map(({id, name, location, orders, amountSpent}, index) => (
+        <IndexTable.Row
+          id={id}
+          key={id}
+          selected={selectedResources.includes(id)}
+          position={index}
+        >
+          <IndexTable.Cell>
             <TextStyle variation="strong">{name}</TextStyle>
-          </p>
-          <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
-        </div>
-      </IndexTable.Row>
-    ),
-  );
+          </IndexTable.Cell>
+          <IndexTable.Cell>{location}</IndexTable.Cell>
+          <IndexTable.Cell>{orders}</IndexTable.Cell>
+          <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        </IndexTable.Row>
+      ));
 
   return (
-    <div style={{width: '430px'}}>
-      <Card>
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          condensed
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </Card>
-    </div>
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        condensed={isCondensed}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
   );
 }
 ```
@@ -896,6 +930,28 @@ Use as a broad example that includes most of the elements and props available to
 
 ```jsx
 function SmallScreenIndexTableWithAllElementsExample() {
+  const isSmallScreen = () => {
+    return typeof window === 'undefined' ? false : window.innerWidth < 458;
+  };
+
+  const [isCondensed, setIsCondensed] = useState(isSmallScreen());
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 458) {
+        setIsCondensed(true);
+      } else {
+        setIsCondensed(false);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+
   const customers = [
     {
       id: '3418',
@@ -993,72 +1049,84 @@ function SmallScreenIndexTableWithAllElementsExample() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <div style={{padding: '1.2rem 1.6rem'}}>
-          <p>
+  const rowMarkup = isCondensed
+    ? customers.map(({id, name, location, orders, amountSpent}, index) => (
+        <IndexTable.Row
+          id={id}
+          key={id}
+          selected={selectedResources.includes(id)}
+          position={index}
+        >
+          <div style={{padding: '1.2rem 1.6rem'}}>
+            <p>
+              <TextStyle variation="strong">{name}</TextStyle>
+            </p>
+            <p>{location}</p>
+            <p>{orders}</p>
+            <p>{amountSpent}</p>
+          </div>
+        </IndexTable.Row>
+      ))
+    : customers.map(({id, name, location, orders, amountSpent}, index) => (
+        <IndexTable.Row
+          id={id}
+          key={id}
+          selected={selectedResources.includes(id)}
+          position={index}
+        >
+          <IndexTable.Cell>
             <TextStyle variation="strong">{name}</TextStyle>
-          </p>
-          <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
-        </div>
-      </IndexTable.Row>
-    ),
-  );
+          </IndexTable.Cell>
+          <IndexTable.Cell>{location}</IndexTable.Cell>
+          <IndexTable.Cell>{orders}</IndexTable.Cell>
+          <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        </IndexTable.Row>
+      ));
 
   return (
-    <div style={{width: '430px'}}>
-      <Card>
-        <div style={{padding: '16px', display: 'flex'}}>
-          <div style={{flex: 1}}>
-            <Filters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={setQueryValue}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            />
-          </div>
-          <div style={{paddingLeft: '0.4rem'}}>
-            <Select
-              labelInline
-              label="Sort by"
-              options={sortOptions}
-              value={sortValue}
-              onChange={handleSortChange}
-            />
-          </div>
+    <Card>
+      <div style={{padding: '16px', display: 'flex'}}>
+        <div style={{flex: 1}}>
+          <Filters
+            queryValue={queryValue}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={setQueryValue}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleClearAll}
+          />
         </div>
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          hasMoreItems
-          condensed
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </Card>
-    </div>
+        <div style={{paddingLeft: '0.4rem'}}>
+          <Select
+            labelInline
+            label="Sort by"
+            options={sortOptions}
+            value={sortValue}
+            onChange={handleSortChange}
+          />
+        </div>
+      </div>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        hasMoreItems
+        condensed={isCondensed}
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
   );
 
   function disambiguateLabel(key, value) {
