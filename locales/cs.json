@@ -112,7 +112,8 @@
       "skipToContent": "Přeskočit na obsah",
       "Navigation": {
         "closeMobileNavigationLabel": "Zavřít navigaci"
-      }
+      },
+      "navigationLabel": "Navigace"
     },
     "ActionMenu": {
       "RollupActions": {
