@@ -112,7 +112,8 @@
       "skipToContent": "Gå videre til innholdet",
       "Navigation": {
         "closeMobileNavigationLabel": "Lukk navigering"
-      }
+      },
+      "navigationLabel": "Navigasjon"
     },
     "ActionMenu": {
       "RollupActions": {

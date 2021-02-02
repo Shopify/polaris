@@ -112,7 +112,8 @@
       "skipToContent": "İçeriğe atla",
       "Navigation": {
         "closeMobileNavigationLabel": "Gezinmeyi kapat"
-      }
+      },
+      "navigationLabel": "Gezinme"
     },
     "ActionMenu": {
       "RollupActions": {
