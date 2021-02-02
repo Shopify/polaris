@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Navigation schließen"
       }
     },
-    "Icon": {
-      "backdropWarning": "Das {color}-Symbol akzeptiert keine Hintergründe. Die Symbolfarben, die Hintergründe haben, sind: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Aktionen"
@@ -301,7 +298,7 @@
       "label": "Seiten-Ladeleiste"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Tooltip: {label}"
+      "accessibilityLabel": "Tooltip: {label}"
     }
   }
 }

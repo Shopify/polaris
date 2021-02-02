@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Luk navigation"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet accepterer ikke baggrunde. De ikonfarver, der har baggrunde, er: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Handlinger"
@@ -301,7 +298,7 @@
       "label": "Statuslinje for sideindlæsning"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Værktøjstip: {label}"
+      "accessibilityLabel": "Værktøjstip: {label}"
     }
   }
 }

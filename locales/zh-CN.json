@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "关闭网站地图"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "编辑"
@@ -301,7 +298,7 @@
       "label": "页面加载条"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "工具提示：{label}"
+      "accessibilityLabel": "工具提示：{label}"
     }
   }
 }

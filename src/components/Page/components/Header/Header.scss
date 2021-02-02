@@ -12,25 +12,18 @@ $action-menu-rollup-computed-width: rem(40px);
   position: relative;
 }
 
-.separator {
-  padding-bottom: spacing();
-  border-bottom: var(--p-override-none, border());
-}
-
 .titleHidden {
   @include visually-hidden;
 }
 
 .TitleWrapper {
-  .newDesignLanguage & {
-    grid-area: title;
-    margin-top: spacing(extra-tight);
-    align-self: center;
-    flex: 1 1 auto;
+  grid-area: title;
+  margin-top: spacing(extra-tight);
+  align-self: center;
+  flex: 1 1 auto;
 
-    @include breakpoint-after($mobile-layout) {
-      margin-top: 0;
-    }
+  @include breakpoint-after($mobile-layout) {
+    margin-top: 0;
   }
 }
 
@@ -52,37 +45,31 @@ $action-menu-rollup-computed-width: rem(40px);
 }
 
 .BreadcrumbWrapper {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
+  grid-area: breadcrumbs;
   max-width: 100%;
-
-  &.newDesignLanguage {
-    grid-area: breadcrumbs;
-    flex: 0 0 auto;
-    margin-right: spacing();
-  }
+  margin-right: spacing();
 
   @include print-hidden;
 }
 
 .PaginationWrapper {
   flex: 0 0 auto;
-  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: spacing(extra-tight);
   line-height: 1;
 
-  .newDesignLanguage & {
-    display: flex;
-    justify-content: flex-end;
-    margin-left: spacing(extra-tight);
-    // stylelint-disable-next-line selector-max-combinators
-    button {
-      border: 1px solid var(--p-border-neutral-subdued);
-      box-shadow: none;
-      // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
-      &:hover,
-      &:active,
-      &:focus {
-        border: 1px solid var(--p-border-neutral-subdued);
-      }
+  button {
+    // stylelint-disable declaration-no-important
+    border: 1px solid var(--p-border-neutral-subdued) !important;
+    box-shadow: none !important;
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid var(--p-border-neutral-subdued) !important;
+      // stylelint-enable declaration-no-important
     }
   }
 
@@ -90,18 +77,9 @@ $action-menu-rollup-computed-width: rem(40px);
 }
 
 .AdditionalNavigationWrapper {
-  flex: 1 0 auto;
-  margin: 0 spacing(tight);
   display: flex;
+  flex: 1 0 auto;
   justify-content: flex-end;
-
-  @include page-content-when-not-fully-condensed {
-    margin: 0 spacing(extra-loose);
-  }
-
-  .newDesignLanguage & {
-    margin-right: 0;
-  }
 
   @include print-hidden;
 }
@@ -131,24 +109,18 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .PrimaryActionWrapper {
   flex: 0 0 auto;
-  .mobileView & {
-    margin-top: spacing();
-  }
+  margin-top: 0;
+  margin-left: spacing(extra-tight);
 
-  .newDesignLanguage & {
-    margin-top: 0;
-    margin-left: spacing(extra-tight);
-
-    @include breakpoint-after($button-style-breakpoint) {
-      margin-left: spacing();
-    }
+  @include breakpoint-after($button-style-breakpoint) {
+    margin-left: spacing();
   }
 
   @include print-hidden;
 }
 
 .ActionMenuWrapper {
-  margin-top: spacing(tight);
+  margin-top: 0;
 
   // stylelint-disable-next-line selector-max-class
   .mobileView & {
@@ -168,10 +140,6 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 
   @include print-hidden;
-
-  &.newDesignLanguage {
-    margin-top: 0;
-  }
 }
 
 .Row {
@@ -179,15 +147,14 @@ $action-menu-rollup-computed-width: rem(40px);
   justify-content: space-between;
 
   + .Row {
-    margin-top: spacing();
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .newDesignLanguage & {
-      margin-top: spacing(extra-tight);
-    }
-
+    margin-top: spacing(extra-tight);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .mobileView & {
       margin-top: spacing(tight);
+    }
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .RightAlign {
+      margin-left: 0;
     }
   }
 }
@@ -199,39 +166,30 @@ $action-menu-rollup-computed-width: rem(40px);
 }
 
 .RightAlign {
+  grid-area: actions;
   display: flex;
   align-content: flex-end;
-  align-items: center;
-  margin-left: spacing(tight);
-}
-// Single row styles for new design language
-.RowCondensed {
-  .RightAlign {
-    grid-area: actions;
-    flex: 1 1 auto;
-    align-items: flex-start;
-    justify-content: flex-end;
-    margin-left: spacing();
-    // Necessary for flex to realize this container doesn't want to wrap
-    white-space: nowrap;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-left: spacing();
+  // Necessary for flex to realize this container doesn't want to wrap
+  white-space: nowrap;
 
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .noBreadcrumbs & {
-      @include breakpoint-before($mobile-layout) {
-        margin-left: 0;
-      }
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  .noBreadcrumbs & {
+    @include breakpoint-before($mobile-layout) {
+      margin-left: 0;
     }
   }
 }
 
 .AdditionalMetaData {
-  .newDesignLanguage & {
-    @include breakpoint-after($mobile-layout) {
-      margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
-    }
+  @include breakpoint-after($mobile-layout) {
+    margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
   }
-  // stylelint-disable-next-line selector-max-class
-  .noBreadcrumbs.newDesignLanguage & {
+
+  .noBreadcrumbs & {
     margin-left: 0;
   }
 
@@ -253,11 +211,15 @@ $action-menu-rollup-computed-width: rem(40px);
     margin-left: 0;
   }
 
-  .RowCondensed {
+  .Row {
     display: grid;
     gap: spacing(tight) spacing();
     grid-template-columns: auto 1fr;
     grid-template-areas: 'breadcrumbs actions' 'title title';
+
+    + .Row {
+      gap: 0;
+    }
   }
 }
 
@@ -282,7 +244,7 @@ $action-menu-rollup-computed-width: rem(40px);
     margin-bottom: spacing(extra-tight);
   }
   // stylelint-disable-next-line selector-max-class
-  .RowCondensed {
+  .Row {
     flex-wrap: wrap-reverse;
     @include breakpoint-after(layout-width(page-with-nav)) {
       flex-wrap: nowrap;
@@ -290,6 +252,6 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 }
 
-.isSingleRow .RowCondensed {
+.isSingleRow .Row {
   gap: 0;
 }

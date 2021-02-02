@@ -117,9 +117,6 @@
         "closeMobileNavigationLabel": "Đóng menu điều hướng"
       }
     },
-    "Icon": {
-      "backdropWarning": "Biểu tượng {color} không chấp nhận phông nền. Màu biểu tượng có phông nền là: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Thao tác"
@@ -301,7 +298,7 @@
       "label": "Thanh tải trang"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Chú giải công cụ: {label}"
+      "accessibilityLabel": "Chú giải công cụ: {label}"
     }
   }
 }

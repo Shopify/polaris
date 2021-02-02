@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Stäng navigering"
       }
     },
-    "Icon": {
-      "backdropWarning": "Ikonen {color} accepterar inte bakgrunder. Ikonfärgerna som har bakgrunder är: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Åtgärder"
@@ -301,7 +298,7 @@
       "label": "Fält för att ladda sida"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Verktygstips: {label}"
+      "accessibilityLabel": "Verktygstips: {label}"
     }
   }
 }

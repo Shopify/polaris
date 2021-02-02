@@ -138,7 +138,11 @@ function SheetExample() {
       >
         {salesChannelsCardMarkup}
       </Card>
-      <Sheet size="medium" open={sheetActive} onClose={toggleSheetActive}>
+      <Sheet
+        open={sheetActive}
+        onClose={toggleSheetActive}
+        accessibilityLabel="Manage sales channels"
+      >
         <div
           style={{
             display: 'flex',

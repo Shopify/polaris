@@ -51,6 +51,8 @@ export interface SheetProps {
   transparentBackdrop?: boolean;
   /** Renders as a full sheet or a bottom sheet */
   type?: 'fullSheet' | 'bottomSheet';
+  /** ARIA label for sheet */
+  accessibilityLabel: string;
 }
 
 export function Sheet({
@@ -65,6 +67,7 @@ export function Sheet({
   transparentBackdrop = true,
   type = 'fullSheet',
   size = 'small',
+  accessibilityLabel,
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
@@ -115,6 +118,7 @@ export function Sheet({
                 type === 'bottomSheet' && styles.bottomSheet,
                 type === 'bottomSheet' && minimized && styles.minimized,
               )}
+              aria-label={accessibilityLabel}
             >
               {children}
             </div>

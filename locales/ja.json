@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "メニューを閉じる"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "アクション"
@@ -301,7 +298,7 @@
       "label": "ページの読み込み表示バー"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "ツールチップ: {label}"
+      "accessibilityLabel": "ツールチップ: {label}"
     }
   }
 }

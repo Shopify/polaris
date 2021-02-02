@@ -9,25 +9,19 @@
   border-radius: border-radius(large);
 
   &:hover {
-    background: var(--p-surface-hovered, transparent);
-    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+    background: var(--p-surface-hovered);
+    @include recolor-icon(var(--p-icon-hovered));
   }
 
   &:focus {
-    background: var(--p-override-transparent, plain-button-background());
+    background: var(--p-override-transparent);
   }
 
   &:active {
-    background: var(--p-surface-pressed, plain-button-background());
+    background: var(--p-surface-pressed);
   }
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
-}
-
-.withoutTitle {
-  position: absolute;
-  right: spacing(tight);
-  z-index: 1;
 }

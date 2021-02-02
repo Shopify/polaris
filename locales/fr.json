@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Fermer la navigation"
       }
     },
-    "Icon": {
-      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"
@@ -301,7 +298,7 @@
       "label": "Barre de chargement de la page"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Info-bulle : {label}"
+      "accessibilityLabel": "Infobulle : {label}"
     }
   }
 }

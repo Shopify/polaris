@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "ปิดการนำทาง"
       }
     },
-    "Icon": {
-      "backdropWarning": "ไม่สามารถใช้ฉากหลังกับไอคอน {color} ได้ สีไอคอนที่มีฉากหลังคือ: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "การดำเนินการ"
@@ -301,7 +298,7 @@
       "label": "แถบแสดงการโหลดหน้า"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
+      "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
     }
   }
 }

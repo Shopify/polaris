@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Gezinmeyi kapat"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} renkli simgeye fon eklenmez. Fonu olan simge renkleri şunlardır: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "İşlemler"
@@ -301,7 +298,7 @@
       "label": "Sayfa yüklenme çubuğu"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "İpucu: {label}"
+      "accessibilityLabel": "İpucu: {label}"
     }
   }
 }

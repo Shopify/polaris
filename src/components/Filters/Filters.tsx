@@ -10,7 +10,6 @@ import {classNames} from '../../utilities/css';
 import {ResourceListContext} from '../../utilities/resource-list';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
-import {useFeatures} from '../../utilities/features';
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
@@ -99,7 +98,6 @@ export interface FiltersProps {
 type CombinedProps = FiltersProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -122,6 +120,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   };
 
   private moreFiltersButtonContainer = createRef<HTMLDivElement>();
+  private moreFiltersDoneButtonContainer = createRef<HTMLDivElement>();
   private focusNode = createRef<HTMLDivElement>();
 
   render() {
@@ -141,7 +140,6 @@ class FiltersInner extends Component<CombinedProps, State> {
       helpText,
       hideTags,
       hideQueryField,
-      features: {newDesignLanguage},
       i18n,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
@@ -180,10 +178,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
       const collapsibleID = `${filter.key}Collapsible`;
 
-      const buttonClassName = classNames(
-        styles.FilterTrigger,
-        newDesignLanguage && styles.newDesignLanguage,
-      );
+      const buttonClassName = classNames(styles.FilterTrigger);
 
       return (
         <div key={filter.key} className={className}>
@@ -208,7 +203,7 @@ class FiltersInner extends Component<CombinedProps, State> {
                 </TextStyle>
               </h3>
               <span className={styles.FilterTriggerIcon}>
-                <Icon source={icon} color="inkLightest" />
+                <Icon source={icon} color="base" />
               </span>
             </div>
             {appliedFilterBadgeMarkup}
@@ -298,7 +293,6 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersContainerHeaderClassname = classNames(
       styles.FiltersContainerHeader,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopHeaderMarkup = (
@@ -334,17 +328,21 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopFooterClassname = classNames(
       styles.FiltersContainerFooter,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopFooterMarkup = (
       <div className={filtersDesktopFooterClassname}>
-        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
+        <Button
+          onClick={this.handleClearAll}
+          disabled={!this.hasAppliedFilters()}
+        >
           {i18n.translate('Polaris.Filters.clearAllFilters')}
         </Button>
-        <Button onClick={this.closeFilters} primary>
-          {i18n.translate('Polaris.Filters.done')}
-        </Button>
+        <div ref={this.moreFiltersDoneButtonContainer}>
+          <Button onClick={this.closeFilters} primary>
+            {i18n.translate('Polaris.Filters.done')}
+          </Button>
+        </div>
       </div>
     );
 
@@ -388,16 +386,15 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersMobileContainerContentClassName = classNames(
       styles.FiltersMobileContainerContent,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopContainerContentClassName = classNames(
       styles.FiltersDesktopContainerContent,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
@@ -411,6 +408,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       </Sheet>
     ) : (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
@@ -589,6 +587,16 @@ class FiltersInner extends Component<CombinedProps, State> {
       </div>
     );
   }
+
+  private handleClearAll = () => {
+    this.props.onClearAll();
+
+    this.moreFiltersDoneButtonContainer.current &&
+      focusFirstFocusableNode(
+        this.moreFiltersDoneButtonContainer.current,
+        false,
+      );
+  };
 }
 
 function getShortcutFilters(filters: FilterInterface[]) {
@@ -598,14 +606,6 @@ function getShortcutFilters(filters: FilterInterface[]) {
 export function Filters(props: FiltersProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
-  const features = useFeatures();
 
-  return (
-    <FiltersInner
-      {...props}
-      i18n={i18n}
-      mediaQuery={mediaQuery}
-      features={features}
-    />
-  );
+  return <FiltersInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }

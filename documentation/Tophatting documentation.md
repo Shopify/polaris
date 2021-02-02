@@ -6,7 +6,7 @@ When components are updated in ways that impact how people use them, their `READ
 
 When you update the `README.md` of a component, that content can change the documentation that appears in the [Polaris style guide](https://polaris.shopify.com/).
 
-Manually testing documentation (we call it “[tophatting](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md#history-of-the-phrase)”, or 🎩 for short) adds that extra degree of certainty that what you’re shipping looks like what you expect.
+Manually testing documentation (we call it “[tophatting](https://github.com/Shopify/polaris-react/blob/main/documentation/Tophatting.md#history-of-the-phrase)”, or 🎩 for short) adds that extra degree of certainty that what you’re shipping looks like what you expect.
 
 ## When should you 🎩 documentation?
 

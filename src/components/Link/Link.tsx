@@ -1,7 +1,6 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -21,6 +20,8 @@ export interface LinkProps {
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
+  /** Removes text decoration underline to the link*/
+  removeUnderline?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
@@ -34,11 +35,11 @@ export function Link({
   external,
   id,
   monochrome,
+  removeUnderline,
   accessibilityLabel,
 }: LinkProps) {
   const i18n = useI18n();
   let childrenMarkup = children;
-  const {newDesignLanguage} = useFeatures();
 
   if (external && typeof children === 'string') {
     const iconLabel = i18n.translate(
@@ -65,7 +66,7 @@ export function Link({
         const className = classNames(
           styles.Link,
           shouldBeMonochrome && styles.monochrome,
-          newDesignLanguage && styles.newDesignLanguage,
+          removeUnderline && styles.removeUnderline,
         );
 
         return url ? (

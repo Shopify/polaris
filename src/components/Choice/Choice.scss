@@ -30,7 +30,7 @@ $control-vertical-adjustment: rem(2px);
   cursor: default;
 
   > .Label {
-    color: color('ink', 'lightest');
+    color: var(--p-text-disabled);
 
     &:hover {
       cursor: default;

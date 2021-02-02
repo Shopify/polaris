@@ -2,7 +2,7 @@ import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
 import {findFirstFocusableNode} from '../../../../utilities/focus';
-import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
+import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -46,12 +46,11 @@ export interface PopoverOverlayProps {
   id: string;
   activator: HTMLElement;
   preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
-  preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
-  colorScheme?: InversableColorScheme;
+  colorScheme?: NonNullable<ThemeProviderProps['theme']>['colorScheme'];
   autofocusTarget?: PopoverAutofocusTarget;
 }
 
@@ -161,20 +160,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   }
 
   private focusContent() {
-    const {autofocusTarget = 'container', preventAutofocus} = this.props;
+    const {autofocusTarget = 'container'} = this.props;
 
-    if (preventAutofocus) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: The preventAutofocus prop has been deprecated. Use autofocusTarget: "none" instead. Read more at [https://github.com/Shopify/polaris-react/issues/3602]',
-      );
-    }
-
-    if (
-      preventAutofocus ||
-      autofocusTarget === 'none' ||
-      this.contentNode == null
-    ) {
+    if (autofocusTarget === 'none' || this.contentNode == null) {
       return;
     }
 
@@ -212,7 +200,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent,
       hideOnPrint,
       colorScheme,
-      preventAutofocus,
       autofocusTarget,
     } = this.props;
 
@@ -235,9 +222,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const content = (
       <div
         id={id}
-        tabIndex={
-          preventAutofocus || autofocusTarget === 'none' ? undefined : -1
-        }
+        tabIndex={autofocusTarget === 'none' ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}

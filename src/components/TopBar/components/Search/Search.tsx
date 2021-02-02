@@ -3,7 +3,6 @@ import React from 'react';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './Search.scss';
 
@@ -24,8 +23,6 @@ export function Search({
   onDismiss,
   overlayVisible = false,
 }: SearchProps) {
-  const {newDesignLanguage} = useFeatures();
-
   if (children == null) {
     return null;
   }
@@ -37,20 +34,9 @@ export function Search({
   return (
     <>
       {overlayMarkup}
-      <div
-        className={classNames(
-          styles.Search,
-          visible && styles.visible,
-          newDesignLanguage && styles.newDesignLanguage,
-        )}
-      >
+      <div className={classNames(styles.Search, visible && styles.visible)}>
         <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <div
-            className={classNames(
-              styles.SearchContent,
-              newDesignLanguage && styles.newDesignLanguage,
-            )}
-          >
+          <div className={styles.SearchContent}>
             <div className={styles.Results}>{children}</div>
           </div>
         </ThemeProvider>

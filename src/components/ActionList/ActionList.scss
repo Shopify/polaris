@@ -19,17 +19,12 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 .Actions {
   list-style: none;
   margin: 0;
-  padding: 0;
   border-top: border('divider');
+  padding: 0 spacing(tight);
 
-  &.newDesignLanguage {
-    padding: 0 spacing(tight);
-    border-color: var(--p-surface-neutral);
-
-    // stylelint-disable-next-line selector-max-class
-    .Title + & {
-      padding-top: spacing(tight);
-    }
+  // stylelint-disable-next-line selector-max-class
+  .Title + & {
+    padding-top: spacing(tight);
   }
 }
 
@@ -49,272 +44,68 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 .Item {
   @include unstyled-button;
   @include unstyled-link;
+  @include focus-ring;
   display: block;
   width: 100%;
   min-height: $item-min-height;
-  padding: $item-vertical-padding spacing();
   text-align: left;
   cursor: pointer;
-  border-radius: 0;
+  padding: $item-vertical-padding spacing(tight);
+  border-radius: var(--p-border-radius-base);
+  border-top: 1px solid var(--p-surface); // 1px gap between elements
+
+  &:hover {
+    background-color: var(--p-surface-hovered);
+    text-decoration: none;
+
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('text');
+    }
+  }
 
   &.active {
-    background-image: linear-gradient(
-      rgba(color('indigo', 'light'), 0.1),
-      rgba(color('indigo', 'light'), 0.1)
-    );
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-selected);
+
+    &::before {
+      @include list-selected-indicator;
+    }
   }
 
   &:active {
-    background-image: linear-gradient(
-      rgba(color('indigo', 'light'), 0.1),
-      rgba(color('indigo', 'light'), 0.1)
-    );
-
-    &:hover {
-      background-image: linear-gradient(
-          rgba(color('indigo', 'light'), 0.1),
-          rgba(color('indigo', 'light'), 0.1)
-        ),
-        linear-gradient(
-          rgba(color('indigo', 'light'), 0.2),
-          rgba(color('indigo', 'light'), 0.2)
-        );
-
-      // stylelint-disable-next-line selector-max-specificity
-      &:focus {
-        box-shadow: inset 0.2rem 0 0 color('indigo');
-        background-image: linear-gradient(
-            rgba(color('indigo', 'light'), 0.1),
-            rgba(color('indigo', 'light'), 0.1)
-          ),
-          linear-gradient(
-            rgba(color('indigo', 'light'), 0.2),
-            rgba(color('indigo', 'light'), 0.2)
-          ),
-          linear-gradient(
-            rgba(color('indigo', 'light'), 0.2),
-            rgba(color('indigo', 'light'), 0.2)
-          );
-      }
-    }
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-pressed);
   }
 
-  &:hover {
-    background-image: linear-gradient(
-      rgba(color('indigo', 'light'), 0.2),
-      rgba(color('indigo', 'light'), 0.2)
-    );
-
-    &:focus {
-      box-shadow: inset 0.2rem 0 0 color('indigo');
-      background-image: linear-gradient(
-          rgba(color('indigo', 'light'), 0.2),
-          rgba(color('indigo', 'light'), 0.2)
-        ),
-        linear-gradient(
-          rgba(color('indigo', 'light'), 0.2),
-          rgba(color('indigo', 'light'), 0.2)
-        );
-    }
-  }
-
-  &:focus {
-    box-shadow: inset 0.2rem 0 0 color('indigo');
-    background-image: linear-gradient(
-      rgba(color('indigo', 'light'), 0.2),
-      rgba(color('indigo', 'light'), 0.2)
-    );
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 
   &.destructive {
-    @include recolor-icon(color('red', 'dark'));
-    color: color('red', 'dark');
-
-    &:active {
-      background-image: linear-gradient(
-        rgba(220, 56, 37, 0.03),
-        rgba(220, 56, 37, 0.03)
-      );
-
-      // stylelint-disable-next-line selector-max-specificity
-      &:hover {
-        background-image: linear-gradient(
-            rgba(220, 56, 37, 0.03),
-            rgba(220, 56, 37, 0.03)
-          ),
-          linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4));
-
-        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth
-        &:focus {
-          box-shadow: inset 0.2rem 0 0 color('red');
-          background-image: linear-gradient(
-              rgba(220, 56, 37, 0.03),
-              rgba(220, 56, 37, 0.03)
-            ),
-            linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4)),
-            linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4));
-        }
-      }
-    }
+    @include recolor-icon(var(--p-icon-critical));
+    color: var(--p-interactive-critical);
 
     &:hover {
-      background-image: linear-gradient(
-        rgba(251, 234, 229, 0.4),
-        rgba(251, 234, 229, 0.4)
-      );
-
-      // stylelint-disable-next-line selector-max-specificity
-      &:focus {
-        box-shadow: inset 0.2rem 0 0 color('red');
-        background-image: linear-gradient(
-            rgba(251, 234, 229, 0.4),
-            rgba(251, 234, 229, 0.4)
-          ),
-          linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4));
-      }
+      background-color: var(--p-surface-critical-subdued-hovered);
     }
 
-    &:focus {
-      box-shadow: inset 0.2rem 0 0 color('red');
-      background-image: linear-gradient(
-        rgba(251, 234, 229, 0.4),
-        rgba(251, 234, 229, 0.4)
-      );
+    // stylelint-disable-next-line selector-max-class
+    &:active,
+    &.active {
+      background-color: var(--p-surface-critical-subdued-pressed);
     }
   }
 
   &.disabled {
-    background-image: linear-gradient(
-      rgba(249, 250, 251, 1),
-      rgba(249, 250, 251, 1)
-    );
-    color: color('ink', 'lightest');
-    pointer-events: none;
+    background-image: none;
+    color: var(--p-text-disabled);
 
     // stylelint-disable-next-line selector-max-class
     .Prefix,
     .Suffix {
-      @include recolor-icon(color('ink', 'lightest'), color('white'));
+      @include recolor-icon(var(--p-icon-disabled));
     }
   }
-
-  &::-moz-focus-inner {
-    border: none;
-  }
-
-  // stylelint-disable selector-max-class
-  // stylelint-disable selector-max-specificity
-  &.newDesignLanguage {
-    padding: $item-vertical-padding spacing(tight);
-    border-radius: var(--p-border-radius-base);
-    border-top: 1px solid var(--p-surface);
-    // States
-    // Hovered (:hover)
-    &:hover {
-      background-image: none;
-      background-color: var(--p-surface-hovered);
-      color: inherit;
-      text-decoration: none;
-
-      @media (-ms-high-contrast: active) {
-        outline: 1px solid ms-high-contrast-color('text');
-      }
-    }
-    // Active (.active, :active)
-    // We need to decide if the .active state appears as pressed or focused
-    // Focused might be odd, as another item could be focused simultaneously
-    &.active,
-    &:active {
-      background-image: none;
-      @include recolor-icon(var(--p-interactive));
-    }
-
-    &:active {
-      background-color: var(--p-surface-pressed);
-    }
-
-    &.active {
-      background-color: var(--p-surface-selected);
-    }
-
-    // Only show when the button is selected, not active
-    &.active > &::before {
-      @include list-selected-indicator;
-    }
-
-    // Active, hovered, focused (:active:hover:focus)
-    &:active:hover:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    // Hovered, focused (:hover:focus)
-    &:hover:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    // Focused (:focus)
-    &:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    @include focus-ring;
-
-    &:focus:not(:active) {
-      @include focus-ring($style: 'focused');
-    }
-
-    // Destructive (.destructive)
-    &.destructive {
-      @include recolor-icon(var(--p-icon-critical));
-      color: var(--p-interactive-critical);
-    }
-
-    // Hovered (:hover)
-    &.destructive:hover {
-      background-image: none;
-      background-color: var(--p-surface-critical-subdued-hovered);
-    }
-
-    // Destructive, active (.destructive.active, .destructive:active)
-    &.destructive.active,
-    &.destructive:active {
-      background-image: none;
-      background-color: var(--p-surface-critical-subdued-pressed);
-    }
-
-    // Destructive, active, hovered, focused (.destructive:active:hover:focus)
-    &.destructive:active:hover:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    // Destructive, hovered, focused (.destructive:hover:focus)
-    &.destructive:hover:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    // Destructive, focused (.destructive:focus)
-    &.destructive:focus {
-      box-shadow: none;
-      background-image: none;
-    }
-
-    // Disabled (.disabled)
-    &.disabled {
-      background-image: none;
-      color: var(--p-text-disabled);
-      .Prefix,
-      .Suffix {
-        @include recolor-icon(var(--p-icon-disabled));
-      }
-    }
-  }
-  // stylelint-enable selector-max-specificity
-  // stylelint-enable selector-max-class
 }
 
 .Content {
@@ -323,7 +114,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Prefix {
-  @include recolor-icon(color('ink', 'light'), color('white'));
+  @include recolor-icon(var(--p-icon));
   display: flex;
   flex: 0 0 auto;
   justify-content: center;
@@ -337,19 +128,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
-  }
 }
 
 .Suffix {
-  @include recolor-icon(color('ink', 'light'), color('white'));
+  @include recolor-icon(var(--p-icon));
   margin-left: spacing();
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
-  }
 }
 
 .Text {

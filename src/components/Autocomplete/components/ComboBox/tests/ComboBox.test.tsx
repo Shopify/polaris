@@ -313,7 +313,7 @@ describe('<ComboBox/>', () => {
     });
 
     it('prevents autofocus on Popover', () => {
-      expect(comboBox.find(Popover).prop('preventAutofocus')).toBe(true);
+      expect(comboBox.find(Popover).prop('autofocusTarget')).toBe('none');
     });
 
     it('passes the preferredPosition to Popover', () => {

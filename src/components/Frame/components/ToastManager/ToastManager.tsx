@@ -62,7 +62,7 @@ export const ToastManager = memo(function ToastManager({
   return (
     <Portal>
       <EventListener event="resize" handler={updateToasts} />
-      <div className={styles.ToastManager} aria-live="polite">
+      <div className={styles.ToastManager} aria-live="assertive">
         <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
       </div>
     </Portal>

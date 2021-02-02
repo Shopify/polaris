@@ -114,9 +114,6 @@
         "closeMobileNavigationLabel": "Zavřít navigaci"
       }
     },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Akce"
@@ -303,7 +300,7 @@
       "label": "Panel načítání stránky"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Tip s vysvětlením: {label}"
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
     }
   }
 }
