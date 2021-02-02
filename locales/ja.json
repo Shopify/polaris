@@ -112,7 +112,8 @@
       "skipToContent": "コンテンツにスキップする",
       "Navigation": {
         "closeMobileNavigationLabel": "メニューを閉じる"
-      }
+      },
+      "navigationLabel": "メニュー"
     },
     "ActionMenu": {
       "RollupActions": {

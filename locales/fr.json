@@ -112,7 +112,8 @@
       "skipToContent": "Passer directement au contenu",
       "Navigation": {
         "closeMobileNavigationLabel": "Fermer la navigation"
-      }
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {

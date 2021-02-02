@@ -112,7 +112,8 @@
       "skipToContent": "Skip til indhold",
       "Navigation": {
         "closeMobileNavigationLabel": "Luk navigation"
-      }
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
