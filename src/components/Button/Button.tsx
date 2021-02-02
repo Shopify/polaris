@@ -25,14 +25,6 @@ export interface ButtonProps extends BaseButton {
   children?: string | string[];
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
-  /** Provides extra visual weight and identifies the success state of the button */
-  success?: boolean;
-  /** Provides extra visual weight and identifies the attention state of the button */
-  attention?: boolean;
-  /** Provides extra visual weight and identifies the info state of the button */
-  info?: boolean;
-  /** Provides extra visual weight and identifies the warning state of the button */
-  warning?: boolean;
   /** Indicates a dangerous or potentially negative action */
   destructive?: boolean;
   /**
@@ -117,10 +109,6 @@ export function Button({
   onTouchStart,
   icon,
   primary,
-  success,
-  attention,
-  info,
-  warning,
   outline,
   destructive,
   disclosure,
@@ -138,10 +126,6 @@ export function Button({
   const className = classNames(
     styles.Button,
     primary && styles.primary,
-    success && styles.success,
-    attention && styles.attention,
-    info && styles.info,
-    warning && styles.warning,
     outline && styles.outline,
     destructive && styles.destructive,
     isDisabled && styles.disabled,
@@ -205,10 +189,6 @@ export function Button({
     const connectedDisclosureClassName = classNames(
       styles.Button,
       primary && styles.primary,
-      success && styles.success,
-      attention && styles.attention,
-      info && styles.info,
-      warning && styles.warning,
       outline && styles.outline,
       size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
       textAlign && styles[variationName('textAlign', textAlign)],
