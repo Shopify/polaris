@@ -136,10 +136,7 @@ export class PositionedOverlay extends PureComponent<
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
-      zIndex:
-        !zIndexOverride && (zIndex == null || isNaN(zIndex))
-          ? undefined
-          : zIndexOverride || zIndex,
+      zIndex: zIndexOverride || zIndex || undefined,
     };
 
     const className = classNames(
