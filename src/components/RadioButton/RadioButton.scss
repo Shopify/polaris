@@ -69,9 +69,7 @@
     transition: opacity var(--p-duration-1-0-0) var(--p-ease),
       transform var(--p-duration-1-0-0) var(--p-ease);
 
-    @media (-ms-high-contrast: active) {
-      border: rem(5px) solid ms-high-contrast-color('text');
-    }
+    @include high-contrast-border(rem(5px));
   }
 
   @include focus-ring($border-width: var(--p-control-border-width));

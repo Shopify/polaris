@@ -2,3 +2,8 @@
   outline: $border-width solid transparent;
   @content;
 }
+
+@mixin high-contrast-border($border-width: border-width()) {
+  border: $border-width solid transparent;
+  @content;
+}

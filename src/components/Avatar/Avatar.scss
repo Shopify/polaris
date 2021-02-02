@@ -15,9 +15,7 @@ $large-size: rem(60px);
   border-radius: $large-size / 2;
   user-select: none;
 
-  @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
-  }
+  @include high-contrast-border;
 
   &::after {
     content: '';
