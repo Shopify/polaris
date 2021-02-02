@@ -112,7 +112,8 @@
       "skipToContent": "跳到内容",
       "Navigation": {
         "closeMobileNavigationLabel": "关闭网站地图"
-      }
+      },
+      "navigationLabel": "网站导航"
     },
     "ActionMenu": {
       "RollupActions": {

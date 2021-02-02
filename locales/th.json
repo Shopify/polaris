@@ -112,7 +112,8 @@
       "skipToContent": "ข้ามไปที่เนื้อหา",
       "Navigation": {
         "closeMobileNavigationLabel": "ปิดการนำทาง"
-      }
+      },
+      "navigationLabel": "การนำทาง"
     },
     "ActionMenu": {
       "RollupActions": {

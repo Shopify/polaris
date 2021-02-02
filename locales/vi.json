@@ -115,7 +115,8 @@
       "skipToContent": "Chuyển đến nội dung",
       "Navigation": {
         "closeMobileNavigationLabel": "Đóng menu điều hướng"
-      }
+      },
+      "navigationLabel": "Menu điều hướng"
     },
     "ActionMenu": {
       "RollupActions": {

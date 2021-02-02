@@ -112,7 +112,8 @@
       "skipToContent": "跳到內容",
       "Navigation": {
         "closeMobileNavigationLabel": "關閉導覽"
-      }
+      },
+      "navigationLabel": "導覽"
     },
     "ActionMenu": {
       "RollupActions": {

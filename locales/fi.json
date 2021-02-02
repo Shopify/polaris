@@ -112,7 +112,8 @@
       "skipToContent": "Ohita ja siirry sisältöön",
       "Navigation": {
         "closeMobileNavigationLabel": "Sulje navigointi"
-      }
+      },
+      "navigationLabel": "Navigointi"
     },
     "ActionMenu": {
       "RollupActions": {

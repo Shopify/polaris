@@ -112,7 +112,8 @@
       "skipToContent": "콘텐츠로 건너뛰기",
       "Navigation": {
         "closeMobileNavigationLabel": "탐색 닫기"
-      }
+      },
+      "navigationLabel": "탐색"
     },
     "ActionMenu": {
       "RollupActions": {
