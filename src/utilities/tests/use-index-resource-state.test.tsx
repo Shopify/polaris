@@ -100,6 +100,22 @@ describe('useIndexResourceState', () => {
       });
     });
 
+    it('throws an error when the default resolve cannot accept `resource.id`', () => {
+      function throwResourceSelectionError() {
+        const selectedID = '1';
+        const resources = [{node: {id: selectedID}}];
+        const mockComponent = mountWithApp(
+          <MockComponent resources={resources} />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Page, true);
+      }
+
+      expect(throwResourceSelectionError).toThrowError();
+    });
+
     it('accepts a custom id resolver', () => {
       const selectedID = '1';
       const resources = [{node: {id: selectedID}}];
