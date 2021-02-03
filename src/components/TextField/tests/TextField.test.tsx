@@ -1084,7 +1084,7 @@ describe('<TextField />', () => {
       expect(clearButton.prop('tabIndex')).toBe(-1);
     });
 
-    it('calls onClearButtonClicked() with an id when the clear button is clicked', () => {
+    it('calls onClearButtonClick() with an id when the clear button is clicked', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
         <TextField
@@ -1101,7 +1101,7 @@ describe('<TextField />', () => {
       expect(spy).toHaveBeenCalledWith('MyTextField');
     });
 
-    it('calls onChange with an empty string when clear button is clicked if onClearButtonClicked is not provided', () => {
+    it('calls onChange with an empty string when clear button is clicked if onClearButtonClick is not provided', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
         <TextField
