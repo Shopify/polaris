@@ -53,9 +53,7 @@ $icon-size: rem(16px);
     }
   }
 
-  @media (-ms-high-contrast: active) {
-    outline: 1px solid ms-high-contrast-color('text');
-  }
+  @include high-contrast-outline;
 }
 
 .TagText {

@@ -129,10 +129,6 @@ $stacking-order: (
       border-color: var(--p-surface);
       box-shadow: 0 0 0 rem(2px) var(--p-focused);
     }
-
-    @media (-ms-high-contrast: active) {
-      outline: 1px solid ms-high-contrast-color('text');
-    }
   }
 
   .error & {
@@ -163,7 +159,6 @@ $stacking-order: (
   }
 }
 
-///
 /// Output value indicator
 $range-output-size: rem(32px);
 $range-output-translate-x: calc(
@@ -222,6 +217,7 @@ $range-output-spacing: rem(16px);
       transform: translateY(-($range-output-spacing / 2));
     }
   }
+  @include high-contrast-outline;
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
