@@ -1,6 +1,6 @@
 import {useState, useCallback} from 'react';
 
-enum SelectionType {
+export enum SelectionType {
   All = 'all',
   Page = 'page',
   Multi = 'multi',
