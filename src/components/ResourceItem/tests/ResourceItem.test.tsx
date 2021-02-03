@@ -143,7 +143,9 @@ describe('<ResourceItem />', () => {
         item
           .find(Button)
           .findWhere(
-            (node) => node.prop('accessibilityLabel') === expectedLabel,
+            (node) =>
+              node.prop('plain') &&
+              node.prop('accessibilityLabel') === expectedLabel,
           ),
       ).toHaveLength(1);
     });
@@ -622,32 +624,6 @@ describe('<ResourceItem />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(resourceItem).not.toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-  });
-
   describe('focused', () => {
     it('removes the focus state when mousing out a focused item', () => {
       const resourceItem = mountWithApp(
@@ -655,7 +631,7 @@ describe('<ResourceItem />', () => {
           <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      const wrapperDiv = resourceItem.find('div');
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
 
       wrapperDiv!.trigger('onFocus', {
         target: wrapperDiv!.domNode as HTMLDivElement,

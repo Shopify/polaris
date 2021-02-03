@@ -11,14 +11,7 @@ import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
 
-import {
-  CloseButton,
-  Dialog,
-  Footer,
-  FooterProps,
-  Header,
-  Section,
-} from './components';
+import {Dialog, Footer, FooterProps, Header, Section} from './components';
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
@@ -32,7 +25,12 @@ export interface ModalProps extends FooterProps {
   /** The name of the modal content iframe */
   iFrameName?: string;
   /** The content for the title of the modal */
-  title?: string | React.ReactNode;
+  title: string | React.ReactNode;
+  /**
+   * Hide the title in the modal
+   * @default false
+   */
+  titleHidden?: boolean;
   /** The content to display inside modal */
   children?: React.ReactNode;
   /** Inner content of the footer */
@@ -55,8 +53,8 @@ export interface ModalProps extends FooterProps {
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
-  /** The element to activate the Modal */
-  activator?: React.ReactElement;
+  /** The element or the RefObject that activates the Modal */
+  activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -64,6 +62,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 } = function Modal({
   children,
   title,
+  titleHidden = false,
   src,
   iFrameName,
   open,
@@ -101,11 +100,14 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const handleExited = useCallback(() => {
     setIframeHeight(IFRAME_LOADING_HEIGHT);
 
-    const activatorElement = activatorRef.current;
+    const activatorElement =
+      activator && isRef(activator)
+        ? activator && activator.current
+        : activatorRef.current;
     if (activatorElement) {
       requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
     }
-  }, []);
+  }, [activator]);
 
   const handleIFrameLoad = useCallback(
     (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
@@ -167,27 +169,19 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Scrollable>
     );
 
-    const headerMarkup = title ? (
-      <Header id={headerId} onClose={onClose} testID="ModalHeader">
-        {title}
-      </Header>
-    ) : (
-      <CloseButton onClick={onClose} title={false} testID="ModalCloseButton" />
-    );
-
-    const labelledBy = title ? headerId : undefined;
-
     dialog = (
       <Dialog
         instant={instant}
-        labelledBy={labelledBy}
+        labelledBy={headerId}
         onClose={onClose}
         onEntered={handleEntered}
         onExited={handleExited}
         large={large}
         limitHeight={limitHeight}
       >
-        {headerMarkup}
+        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+          {title}
+        </Header>
         <div className={styles.BodyWrapper}>{bodyMarkup}</div>
         {footerMarkup}
       </Dialog>
@@ -198,9 +192,14 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
   const animated = !instant;
 
+  const activatorMarkup =
+    activator && !isRef(activator) ? (
+      <div ref={activatorRef}>{activator}</div>
+    ) : null;
+
   return (
     <WithinContentContext.Provider value>
-      {activator && <div ref={activatorRef}>{activator}</div>}
+      {activatorMarkup}
       <Portal idPrefix="modal">
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
           {dialog}
@@ -210,5 +209,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     </WithinContentContext.Provider>
   );
 };
+
+function isRef(
+  ref: React.RefObject<HTMLElement> | React.ReactElement,
+): ref is React.RefObject<HTMLElement> {
+  return Object.prototype.hasOwnProperty.call(ref, 'current');
+}
 
 Modal.Section = Section;

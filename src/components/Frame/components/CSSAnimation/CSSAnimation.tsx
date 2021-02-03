@@ -4,7 +4,7 @@ import {classNames, variationName} from '../../../../utilities/css';
 
 import styles from './CSSAnimation.scss';
 
-type AnimationType = 'fade' | 'fadeUp';
+type AnimationType = 'fade';
 
 export interface CSSAnimationProps {
   in: boolean;

@@ -1,19 +1,12 @@
 @import '../../styles/common';
 
 .Card {
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   box-shadow: var(--p-card-shadow, shadow());
   outline: border-width(base) solid transparent;
 
   + .Card {
-    margin-top: spacing(loose);
-  }
-
-  &.newDesignLanguage {
-    // stylelint-disable-next-line selector-max-class
-    + .Card {
-      margin-top: spacing();
-    }
+    margin-top: spacing();
   }
 
   @include page-content-when-not-fully-condensed {
@@ -22,7 +15,7 @@
 }
 
 .subdued {
-  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
+  background-color: var(--p-surface-subdued);
 }
 
 .Header {
@@ -41,18 +34,18 @@
   }
 
   + .Section {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
 .Section:first-child {
-  border-top-left-radius: border-radius();
-  border-top-right-radius: border-radius();
+  border-top-left-radius: var(--p-border-radius-wide, border-radius());
+  border-top-right-radius: var(--p-border-radius-wide, border-radius());
 }
 
 .Section:last-child {
-  border-bottom-left-radius: border-radius();
-  border-bottom-right-radius: border-radius();
+  border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
 }
 
 .Section-fullWidth {
@@ -63,15 +56,23 @@
   }
 }
 
+.Section-flush {
+  padding: spacing(none);
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(none);
+  }
+}
+
 .Section-subdued {
-  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
+  background-color: var(--p-surface-subdued);
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
   }
 
   .Header + & {
-    border-top: border();
+    border-top: border('divider');
     margin-top: spacing(loose);
   }
 }
@@ -94,7 +95,7 @@
   + .Subsection {
     margin-top: spacing();
     padding-top: spacing();
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -112,7 +113,7 @@
   }
 
   .Section-subdued + & {
-    border-top: border();
+    border-top: border('divider');
     padding: spacing(loose);
   }
 }

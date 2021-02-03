@@ -2,66 +2,14 @@
 
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
-$slim-min-height: rem(30px);
+$slim-min-height: rem(28px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
-// darken(color(sky, dark), 4%)
-$pressed-border-color: rgb(184, 195, 205);
-// darken(color(sky), 2%)
-$pressed-hover-background: rgb(217, 222, 228);
-// darken(color(sky), 4%)
-$pressed-active-background: rgb(211, 217, 223);
-// darken(color('indigo'), 10%)
-$primary-pressed-lightest: rgb(63, 78, 174);
-// darken(color('indigo'), 12%)
-$primary-pressed-light: rgb(60, 75, 167);
-// darken(color('indigo', 'dark'), 15%)
-$primary-pressed-dark: rgb(16, 23, 60);
-// darken(color('indigo', 'dark'), 20%)
-$primary-pressed-darkest: rgb(11, 15, 39);
-// darken(color('red'), 10%)
-$destructive-pressed-lightest: rgb(176, 43, 19);
-// darken(color('red'), 12%)
-$destructive-pressed-light: rgb(167, 41, 18);
-// darken(color('red', 'dark'), 15%)
-$destructive-pressed-dark: rgb(117, 4, 10);
-// darken(color('red', 'dark'), 20%)
-$destructive-pressed-darkest: rgb(93, 3, 8);
+
 $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
-
-@mixin pressed-box-shadow($color: transparent) {
-  box-shadow: 0 0 0 1px $color,
-    inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-    inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.1);
-}
-
-@mixin button-filled-pressed(
-  $color-lightest,
-  $color-light,
-  $color-dark,
-  $color-darkest
-) {
-  background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-  border-color: $color-dark;
-  box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-
-  &:focus,
-  &:hover {
-    transition-duration: duration(fast);
-    background: linear-gradient(to bottom, $color-light, $color-light);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-  }
-
-  &:active {
-    background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-darkest;
-  }
-}
 
 $stacking-order: (
   segment: 10,
@@ -91,42 +39,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented='true'] {
-  .Button,
-  .Button::after {
-    border-radius: 0;
-  }
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-[data-buttongroup-connected-top='true'] {
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: 0;
-  }
-
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: 0;
-  }
-}
-
-[data-buttongroup-full-width='true'] {
-  .Button {
-    @include button-full-width;
-  }
-}
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -135,11 +47,19 @@ $stacking-order: (
   align-items: center;
   min-width: 1px;
   min-height: 1px;
+
+  .Button:not(.plain) & {
+    width: 100%;
+  }
 }
 
 .textAlignLeft {
   justify-content: flex-start;
   text-align: left;
+
+  .Content {
+    justify-content: flex-start;
+  }
 }
 
 .textAlignCenter {
@@ -150,16 +70,16 @@ $stacking-order: (
 .textAlignRight {
   justify-content: flex-end;
   text-align: right;
+
+  .Content {
+    justify-content: flex-end;
+  }
 }
 
 .Icon {
-  transition: color duration() easing();
-
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
-  }
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: -(spacing(extra-tight));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
@@ -169,9 +89,18 @@ $stacking-order: (
     margin-left: spacing(extra-tight);
   }
 
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .fullWidth.textAlignLeft &:last-child:not(:only-child) {
+    margin-left: auto;
+  }
+
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .Spinner {
@@ -189,23 +118,14 @@ $stacking-order: (
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
-  @include recolor-icon(color('white'));
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-primary));
-  }
+  @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
-    @include button-filled-disabled(color('indigo'));
-  }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $primary-pressed-lightest,
-      $primary-pressed-light,
-      $primary-pressed-dark,
-      $primary-pressed-darkest
-    );
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-primary-disabled);
+    color: var(--p-text-disabled);
+    border-color: transparent;
+    box-shadow: none;
   }
 }
 
@@ -216,23 +136,14 @@ $stacking-order: (
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
   @include button-filled(color('red'), color('red', 'dark'));
-  @include recolor-icon(color('white'));
+  @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
-    @include button-filled-disabled(color('red'));
-  }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $destructive-pressed-lightest,
-      $destructive-pressed-light,
-      $destructive-pressed-dark,
-      $destructive-pressed-darkest
-    );
-  }
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-critical));
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-critical-disabled);
+    color: var(--p-text-disabled);
+    box-shadow: none;
+    border-color: transparent;
   }
 }
 
@@ -246,15 +157,6 @@ $stacking-order: (
 
 .destructive.outline {
   @include button-outline(color('red'));
-
-  // stylelint-disable-next-line selector-max-class
-  &.pressed {
-    @include button-outline(
-      color('red', 'dark'),
-      rgba(color('red', 'dark'), 0.03)
-    );
-    @include recolor-icon(color('red', 'darker'));
-  }
 }
 
 .disabled {
@@ -268,12 +170,9 @@ $stacking-order: (
   }
 }
 
-.loading,
-.newDesignLanguage.loading {
+.loading {
   position: relative;
-  transition: border-color duration() easing();
 
-  // stylelint-disable-next-line selector-max-class
   &,
   &:hover,
   &.disabled {
@@ -281,80 +180,64 @@ $stacking-order: (
   }
 }
 
-.pressed {
-  background: color(sky);
-  border-color: $pressed-border-color;
-  @include pressed-box-shadow;
-
-  &:hover {
-    transition-duration: duration(fast);
-    background: $pressed-hover-background;
-    border-color: $pressed-border-color;
-    @include pressed-box-shadow;
-  }
-
-  &:focus {
-    border-color: color('indigo');
-    @include pressed-box-shadow(color('indigo'));
-  }
-
-  &:active {
-    background: $pressed-active-background;
-    border-color: $pressed-border-color;
-    @include pressed-box-shadow;
-  }
-
-  @media (-ms-high-contrast: active) {
-    color: ms-high-contrast-color('button-text');
-    background: ms-high-contrast-color('button-text-background');
-  }
+.loading.disabled svg {
+  fill: var(--p-icon-subdued);
 }
 
 // The way the designs work, we need to do lots of reaching down to
 // target the content in pseudo-selectors, so we need higher specificity
 // in this case.
-// stylelint-disable selector-max-specificity
-
+// stylelint-disable selector-max-specificity, selector-max-class
 .plain {
-  @include recolor-icon(color('blue'));
+  @include recolor-icon(var(--p-interactive));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: color('blue');
+  color: var(--p-interactive);
 
-  &.pressed,
+  > .Content {
+    font-weight: 400;
+    @include focus-ring;
+  }
+
   &:hover,
-  &:focus,
-  &:active {
-    @include recolor-icon(color('blue', 'dark'));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: color('blue', 'dark');
+  &:focus {
+    @include recolor-icon(var(--p-interactive-hovered));
+    color: var(--p-interactive-hovered);
     text-decoration: underline;
+    background: transparent;
+    box-shadow: none;
   }
 
   &.pressed,
-  &:focus {
+  &:active {
+    @include recolor-icon(var(--p-interactive-pressed));
+    color: var(--p-interactive-pressed);
     @include high-contrast-button-outline(none);
+    background: transparent;
+    box-shadow: none;
   }
 
-  &:focus > .Content {
-    @include high-contrast-button-outline;
+  &:focus {
+    @include no-focus-ring;
+    @include high-contrast-button-outline(none);
+
+    > .Content {
+      @include high-contrast-button-outline;
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class
-  &.pressed > .Content {
-    @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
+  &:focus:not(:active) {
+    > .Content {
+      @include focus-ring($style: 'focused');
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class
-  &.pressed:hover:not(.iconOnly) > .Content,
-  &.pressed:active:not(.iconOnly) > .Content,
-  &:focus:not(.iconOnly) > .Content {
+  &:active:not(.iconOnly) > .Content,
+  &.pressed:not(.iconOnly) > .Content {
     @include plain-button-backdrop;
   }
 
@@ -363,17 +246,31 @@ $stacking-order: (
     margin-right: 0;
   }
 
-  &.destructive {
-    @include recolor-icon(color('red', 'dark'));
-    color: var(--p-action-critical, color('red', 'dark'));
-    &:focus,
-    &:active {
-      color: var(--p-action-critical-pressed, color('red', 'darker'));
+  &.disabled {
+    color: var(--p-text-disabled);
+    background: none;
+
+    &.loading {
+      color: transparent;
     }
   }
 
-  &.disabled {
-    background: none;
+  &.destructive {
+    @include recolor-icon(var(--p-interactive-critical));
+    color: var(--p-interactive-critical);
+
+    &:hover {
+      color: var(--p-interactive-critical-hovered);
+    }
+
+    &:active,
+    &.pressed {
+      color: var(--p-interactive-critical-pressed);
+    }
+
+    &.disabled {
+      color: var(--p-interactive-critical-disabled);
+    }
   }
 
   &.sizeSlim {
@@ -384,29 +281,39 @@ $stacking-order: (
   &.sizeLarge {
     margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
   }
+
   &.iconOnly {
-    @include recolor-icon(color('ink', 'lighter'));
+    @include recolor-icon(var(--p-icon));
     margin: -0.5 * ($min-height - icon-size());
 
-    &:focus,
-    &:active {
-      @include recolor-icon(color('ink', 'lighter'));
-      background: plain-button-background();
+    &:hover {
+      @include recolor-icon(var(--p-icon-hovered));
     }
 
-    &:hover,
-    &:active {
-      @include recolor-icon(color('ink'));
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-icon-pressed));
     }
 
-    // stylelint-disable-next-line selector-max-class
-    > .Content::after {
-      display: none;
-    }
-
-    // stylelint-disable-next-line selector-max-class
     &.disabled {
-      @include recolor-icon(color('sky', 'dark'));
+      @include recolor-icon(var(--p-icon-disabled));
+    }
+  }
+
+  &.destructive.iconOnly {
+    @include recolor-icon(var(--p-action-critical));
+
+    &:hover {
+      @include recolor-icon(var(--p-action-critical-hovered));
+    }
+
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-action-critical-pressed));
+    }
+
+    &.disabled {
+      @include recolor-icon(var(--p-action-critical-disabled));
     }
   }
 
@@ -414,167 +321,8 @@ $stacking-order: (
     margin-left: 0;
     margin-right: 0;
   }
-
-  // stylelint-disable selector-max-class
-  &.newDesignLanguage {
-    // redeclaring these styles here for specificity
-    @include recolor-icon(var(--p-interactive));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: var(--p-interactive);
-
-    &::after {
-      content: none;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-    }
-
-    > .Content {
-      font-weight: 400;
-      @include focus-ring;
-    }
-
-    &:hover {
-      @include recolor-icon(var(--p-interactive-hovered));
-      color: var(--p-interactive-hovered);
-      text-decoration: underline;
-    }
-
-    &:focus {
-      @include recolor-icon(var(--p-interactive));
-      color: var(--p-interactive);
-      @include no-focus-ring;
-      text-decoration: underline;
-    }
-
-    &:active {
-      @include recolor-icon(var(--p-interactive-pressed));
-      color: var(--p-interactive-pressed);
-    }
-
-    &:focus:not(:active) {
-      > .Content {
-        @include focus-ring($style: 'focused');
-      }
-    }
-
-    &.pressed {
-      background: none;
-      @include recolor-icon(var(--p-interactive-pressed));
-      color: var(--p-interactive-pressed);
-    }
-
-    &:focus:not(.iconOnly) > .Content {
-      background: none;
-    }
-
-    &:active:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
-    }
-
-    &.pressed:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
-    }
-
-    &.destructive {
-      @include recolor-icon(var(--p-interactive-critical));
-      color: var(--p-interactive-critical);
-
-      &:hover {
-        color: var(--p-interactive-critical-hovered);
-      }
-
-      &:active {
-        color: var(--p-interactive-critical-pressed);
-      }
-
-      &.pressed {
-        color: var(--p-interactive-critical-pressed);
-        background: transparent;
-      }
-
-      &.disabled {
-        color: var(--p-interactive-critical-disabled);
-      }
-    }
-
-    &.disabled {
-      color: var(--p-text-disabled);
-      background: none;
-    }
-
-    &.iconOnly {
-      @include recolor-icon(var(--p-icon));
-
-      &:hover {
-        @include recolor-icon(var(--p-icon-hovered));
-      }
-
-      &:focus {
-        @include recolor-icon(var(--p-icon));
-      }
-
-      &:active {
-        @include recolor-icon(var(--p-icon-pressed));
-      }
-
-      &.disabled {
-        @include recolor-icon(var(--p-icon-disabled));
-      }
-    }
-
-    &.destructive.iconOnly {
-      @include recolor-icon(var(--p-action-critical));
-
-      &:hover {
-        @include recolor-icon(var(--p-action-critical-hovered));
-      }
-
-      &:focus {
-        @include recolor-icon(var(--p-action-critical));
-      }
-
-      &:active {
-        @include recolor-icon(var(--p-action-critical-pressed));
-      }
-
-      &.disabled {
-        @include recolor-icon(var(--p-action-critical-disabled));
-      }
-    }
-  }
-  // stylelint-enable selector-max-class
 }
-
-// stylelint-enable selector-max-specificity
-
-.sizeSlim {
-  min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
-
-  &.newDesignLanguage {
-    // Local override for slim button height.
-    $slim-min-height: rem(28px);
-    min-height: $slim-min-height;
-  }
-}
-
-.sizeLarge {
-  min-height: $large-min-height;
-  min-width: $large-min-height;
-  padding: $large-vertical-padding rem(24px);
-
-  .Content {
-    @include text-style-button-large;
-  }
-}
+// stylelint-enable selector-max-specificity, selector-max-class
 
 .fullWidth {
   @include button-full-width;
@@ -596,14 +344,24 @@ $stacking-order: (
   .Icon:last-child {
     margin-right: rem(-4px);
   }
-  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  .Icon + .Icon:last-child {
-    margin-left: 0;
-  }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 
   .Icon:only-child {
     margin-right: 0;
+  }
+}
+
+.sizeSlim {
+  min-height: $slim-min-height;
+  padding: $slim-vertical-padding spacing(base-tight);
+}
+
+.sizeLarge {
+  min-height: $large-min-height;
+  min-width: $large-min-height;
+  padding: $large-vertical-padding rem(24px);
+
+  .Content {
+    @include text-style-button-large;
   }
 }
 
@@ -644,11 +402,6 @@ $stacking-order: (
   }
 
   &.plain {
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      color: currentColor;
-    }
-
     // stylelint-disable selector-max-class, max-nesting-depth
     .Text {
       text-decoration: underline;
@@ -659,10 +412,12 @@ $stacking-order: (
   &.outline {
     position: relative;
     border-color: currentColor;
+    // stylelint-disable selector-max-class
+    box-shadow: 0 0 0 border-width('base') currentColor;
+    @include focus-ring($border-width: rem(2px));
 
     &::before {
       content: '';
-      transition: opacity duration() easing();
       position: absolute;
       top: 0;
       right: 0;
@@ -673,14 +428,13 @@ $stacking-order: (
       z-index: 0;
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;
+      color: currentColor;
 
-      // stylelint-disable selector-max-class
       &::before {
-        opacity: 0.05;
+        opacity: 0.2;
       }
     }
 
@@ -696,35 +450,18 @@ $stacking-order: (
 
     &:focus {
       box-shadow: 0 0 0 1px currentColor;
+      @include focus-ring($style: 'focused');
     }
 
-    &.newDesignLanguage {
-      @include focus-ring($border-width: border-width('base'));
-      box-shadow: 0 0 0 border-width('base') currentColor;
+    &:active::after {
+      box-shadow: none;
+    }
 
-      &:focus {
-        @include focus-ring($style: 'focused');
-      }
-
-      &:active::after {
-        box-shadow: none;
-      }
-
-      &:hover,
-      &:active {
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          opacity: 0.05;
-        }
-      }
-
-      &.pressed {
-        color: currentColor;
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          opacity: 0.2;
-        }
+    &:hover,
+    &:active {
+      // stylelint-disable-next-line max-nesting-depth
+      &::before {
+        opacity: 0.05;
       }
     }
     // stylelint-enable selector-max-class
@@ -732,19 +469,8 @@ $stacking-order: (
 }
 // stylelint-enable selector-max-specificity
 
-.DisclosureIcon {
-  transition-property: transform;
-  transition-duration: duration(slow);
-  transition-timing-function: easing(out);
-}
-
-.DisclosureIconFacingUp {
-  transform: rotate(-180deg);
-}
-
 .ConnectedDisclosureWrapper {
   display: flex;
-  align-items: center;
 }
 
 .ConnectedDisclosure {
@@ -752,6 +478,7 @@ $stacking-order: (
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  height: 100%;
 
   // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
   &.outline:not(:focus) {
@@ -763,14 +490,62 @@ $stacking-order: (
     z-index: z-index(focused, $stacking-order);
   }
 
-  &.newDesignLanguage {
+  &.primary,
+  &.destructive {
     margin-left: rem(1px);
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 
-    &::after {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    // stylelint-disable-next-line selector-max-class
+    &.outline {
+      margin-left: 0;
+      border-left: 0;
     }
   }
+
+  &::after {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+
+  > :last-child:first-child .Button,
+  > :last-child:first-child .Button::after {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

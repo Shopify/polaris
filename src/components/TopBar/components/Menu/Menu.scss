@@ -38,7 +38,7 @@ $activator-variables: (
     @include focus-ring($style: 'focused');
     background-color: var(
       --top-bar-background-lighter,
-      var(--p-override-transparent, rgba(color('white'), 0.16))
+      var(--p-override-transparent)
     );
     outline: none;
   }
@@ -46,7 +46,7 @@ $activator-variables: (
   &:hover {
     background-color: var(
       --top-bar-background-lighter,
-      var(--p-surface-hovered, rgba(color('white'), 0.08))
+      var(--p-surface-hovered)
     );
   }
 
@@ -54,7 +54,7 @@ $activator-variables: (
   &[aria-expanded='true'] {
     background-color: var(
       --top-bar-background-darker,
-      var(--p-surface-pressed, rgba(color('black'), 0.28))
+      var(--p-surface-pressed)
     );
     outline: none;
     transition: none;
@@ -80,5 +80,5 @@ $activator-variables: (
 .Section {
   margin-top: spacing(tight);
   padding-top: spacing(tight);
-  border-top: border();
+  border-top: border('divider');
 }

@@ -46,7 +46,7 @@ Use when you need to make a region within the page independently scrollable. It�
 
 ```jsx
 <Card title="Terms of service" sectioned>
-  <Scrollable shadow style={{height: '100px'}}>
+  <Scrollable shadow style={{height: '100px'}} focusable>
     <p>
       By signing up for the Shopify service (“Service”) or any of the services
       of Shopify Inc. (“Shopify”) you are agreeing to be bound by the following

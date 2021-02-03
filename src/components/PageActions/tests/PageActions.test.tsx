@@ -52,7 +52,14 @@ describe('<PageActions />', () => {
   });
 
   describe('secondaryActions', () => {
-    const mockActions = [{content: 'Delete'}];
+    const mockActions = [
+      {
+        content: 'Delete',
+        destructive: true,
+        outline: true,
+      },
+    ];
+
     it('renders buttons for each secondaryAction', () => {
       mountWithAppProvider(<PageActions secondaryActions={mockActions} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockActions);

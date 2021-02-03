@@ -20,7 +20,8 @@
         "attention": "Atenção",
         "new": "Novo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregar",
@@ -81,7 +82,9 @@
         "friday": "Sexta-feira",
         "saturday": "Sábado",
         "sunday": "Domingo"
-      }
+      },
+      "start": "Início do intervalo",
+      "end": "Fim do intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todas as alterações não guardadas",
@@ -109,10 +112,8 @@
       "skipToContent": "Saltar para o conteúdo",
       "Navigation": {
         "closeMobileNavigationLabel": "Fechar a navegação"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "O ícone {color} não aceita fundos. As cores dos ícones com fundos são: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navegação"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,15 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Mais ações"
+    },
+    "Loading": {
+      "label": "Barra de carregamento da página"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Descrição: {label}"
     }
   }
 }

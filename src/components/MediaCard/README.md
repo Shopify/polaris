@@ -150,7 +150,7 @@ Use to surface educational information about a feature or opportunity.
       objectFit: 'cover',
       objectPosition: 'center',
     }}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -178,7 +178,7 @@ Use when there are limited vertical space, or when the card should be less promi
       objectFit: 'cover',
       objectPosition: 'center',
     }}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -206,7 +206,7 @@ Use when there are two distinct actions merchants can take on the information in
     width="100%"
     height="100%"
     style={{objectFit: 'cover', objectPosition: 'center'}}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -227,7 +227,7 @@ Use to provide a consistent layout for contextual learning content. Use to wrap 
 >
   <VideoThumbnail
     videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -249,7 +249,7 @@ Use when vertical screen space is not limited or when the video card is the page
 >
   <VideoThumbnail
     videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -287,7 +287,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
+The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users. It can also accept a ReactNode.
 
 Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the media card is clear to all merchants, including those with issues related to reading and language.
 

@@ -20,7 +20,8 @@
         "attention": "Huomio",
         "new": "Uusi",
         "critical": "Kriittinen"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ladataan",
@@ -81,7 +82,9 @@
         "friday": "Perjantai",
         "saturday": "Lauantai",
         "sunday": "Sunnuntai"
-      }
+      },
+      "start": "Alueen alku",
+      "end": "Alueen loppu"
     },
     "DiscardConfirmationModal": {
       "title": "Hylkää kaikki tallentamattomat muutokset",
@@ -109,10 +112,8 @@
       "skipToContent": "Ohita ja siirry sisältöön",
       "Navigation": {
         "closeMobileNavigationLabel": "Sulje navigointi"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color} kuvake ei hyväksy taustoja. Kuvakevärit, joissa on tausta, ovat seuraavat: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigointi"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,15 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Lisää toimintoja"
+    },
+    "Loading": {
+      "label": "Sivun latautumisen palkki"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Työkaluvihje: {label}"
     }
   }
 }

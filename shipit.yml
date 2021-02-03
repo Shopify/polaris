@@ -1,6 +1,8 @@
 ci:
   require:
-    - 'Travis CI - Branch'
+    - 'Test'
+    - 'Accessibility test'
+    - 'Visual regression test'
   hide:
     - shrink-ray
     - percy/polaris-react
@@ -12,7 +14,8 @@ ci:
 
 merge:
   require:
-    - 'Travis CI - Branch'
+    - 'Test'
+    - 'Accessibility test'
   ignore:
     - codecov/patch
 

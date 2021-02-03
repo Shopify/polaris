@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
+const lodash = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
@@ -202,7 +203,7 @@ import {
   ArrowUpMinor,
   ArrowUpDownMinor,
   CalendarMinor,
-  MobileCancelMajorMonotone,
+  MobileCancelMajor,
   CancelSmallMinor,
   CaretDownMinor,
   CaretUpMinor,
@@ -216,10 +217,11 @@ import {
   CircleChevronLeftMinor,
   CircleChevronRightMinor,
   CircleChevronUpMinor,
-  CircleInformationMajorTwotone,
+  CircleInformationMajor,
   CirclePlusMinor,
   CirclePlusOutlineMinor,
   ConversationMinor,
+  CustomersMajor,
   DeleteMinor,
   CircleDisableMinor,
   DisputeMinor,
@@ -227,18 +229,19 @@ import {
   EmbedMinor,
   ExportMinor,
   ExternalMinor,
-  QuestionMarkMajorTwotone,
-  HomeMajorMonotone,
+  QuestionMarkMajor,
+  HomeMajor,
   HorizontalDotsMinor,
   ImportMinor,
   LogOutMinor,
-  MobileHamburgerMajorMonotone,
+  MarketingMajor,
+  MobileHamburgerMajor,
   NoteMinor,
-  NotificationMajorMonotone,
-  OnlineStoreMajorTwotone,
-  OrdersMajorTwotone,
+  NotificationMajor,
+  OnlineStoreMajor,
+  OrdersMajor,
   PrintMinor,
-  ProductsMajorTwotone,
+  ProductsMajor,
   ProfileMinor,
   RefreshMinor,
   RiskMinor,
@@ -248,7 +251,10 @@ import {
   ViewMinor,
 } from '@shopify/polaris-icons';
 
-export default { title: ${JSON.stringify(`All Components/${readme.name}`)} };
+export default {
+  title: ${JSON.stringify(`All Components/${readme.name}`)},
+  component: ${readme.component},
+};
 
 ${csfExports.join('\n\n')}
 `;
@@ -281,11 +287,13 @@ function isExampleForPlatform(exampleMarkdown, platform) {
 
 function parseCodeExamples(data) {
   const matter = grayMatter(data);
+  const examples = generateExamples(matter);
 
   return {
     name: matter.data.name,
     category: matter.data.category,
-    examples: generateExamples(matter),
+    component: examples.length ? toPascalCase(matter.data.name) : undefined,
+    examples,
     omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
@@ -323,7 +331,7 @@ function generateExamples(matter) {
 
   if (allExamples.length === 0) {
     console.log(
-      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting`,
+      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/main/documentation/Component%20READMEs.md#troubleshooting`,
     );
   }
 
@@ -427,4 +435,8 @@ function wrapExample(code) {
     return JsxOnlyExample;
   }`;
   }
+}
+
+function toPascalCase(str) {
+  return lodash.startCase(lodash.camelCase(str)).replace(/ /g, '');
 }

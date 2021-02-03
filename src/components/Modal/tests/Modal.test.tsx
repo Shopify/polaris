@@ -1,15 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
-import {Footer, Dialog} from '../components';
+import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import * as focusUtils from '../../../utilities/focus';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -20,7 +16,7 @@ jest.mock('react-transition-group', () => {
   }
 
   return {
-    ...(require.requireActual('react-transition-group') as any),
+    ...(jest.requireActual('react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,
@@ -46,7 +42,7 @@ describe('<Modal>', () => {
     }
 
     const component = mountWithAppProvider(
-      <Modal onClose={jest.fn()} open>
+      <Modal title="foo" onClose={jest.fn()} open>
         <WithinContentContext.Consumer>
           {(withinContentContext) => {
             return (
@@ -62,19 +58,24 @@ describe('<Modal>', () => {
     );
   });
 
-  it('focuses the next focusable node on mount', () => {
-    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-    const focusedNode = focusUtils.findFirstFocusableNode(
-      modal.find(Dialog).getDOMNode(),
+  it('focuses the dialog node on mount', () => {
+    const modal = mountWithAppProvider(
+      <Modal title="foo" onClose={jest.fn()} open instant />,
     );
 
-    expect(document.activeElement).toBe(focusedNode);
+    expect(document.activeElement).toBe(modal.find(Dialog).getDOMNode());
   });
 
   describe('src', () => {
     it('renders an iframe if src is provided', () => {
       const modal = mountWithAppProvider(
-        <Modal src="Source" iFrameName="Name" onClose={jest.fn()} open>
+        <Modal
+          title="foo"
+          src="Source"
+          iFrameName="Name"
+          onClose={jest.fn()}
+          open
+        >
           <Badge />
         </Modal>,
       );
@@ -90,7 +91,7 @@ describe('<Modal>', () => {
 
     it('renders Scrollable if src is not provided', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -108,7 +109,12 @@ describe('<Modal>', () => {
     it('calls onTransitionEnd after it mounts', () => {
       const mockOnTransitionEnd = jest.fn();
       const modal = mountWithAppProvider(
-        <Modal open onClose={noop} onTransitionEnd={mockOnTransitionEnd} />,
+        <Modal
+          title="foo"
+          open
+          onClose={noop}
+          onTransitionEnd={mockOnTransitionEnd}
+        />,
       );
       trigger(modal.find(Dialog), 'onEntered');
       expect(mockOnTransitionEnd).toHaveBeenCalledTimes(1);
@@ -120,6 +126,7 @@ describe('<Modal>', () => {
       const mockOnIframeLoad = jest.fn();
       const modal = mountWithAppProvider(
         <Modal
+          title="foo"
           open
           onClose={noop}
           onIFrameLoad={mockOnIframeLoad}
@@ -134,7 +141,7 @@ describe('<Modal>', () => {
   describe('instant', () => {
     it('passes instant to Dialog if true', () => {
       const modal = mountWithAppProvider(
-        <Modal instant onClose={jest.fn()} open>
+        <Modal title="foo" instant onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -144,7 +151,7 @@ describe('<Modal>', () => {
 
     it('does not pass instant to Dialog be default', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -156,7 +163,7 @@ describe('<Modal>', () => {
   describe('large', () => {
     it('passes large to Dialog if true', () => {
       const modal = mountWithAppProvider(
-        <Modal large onClose={jest.fn()} open>
+        <Modal title="foo" large onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -166,7 +173,7 @@ describe('<Modal>', () => {
 
     it('does not pass large to Dialog be default', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -178,7 +185,7 @@ describe('<Modal>', () => {
   describe('limitHeight', () => {
     it('passes limitHeight to Dialog if true', () => {
       const modal = mountWithAppProvider(
-        <Modal limitHeight onClose={jest.fn()} open>
+        <Modal title="foo" limitHeight onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -188,7 +195,7 @@ describe('<Modal>', () => {
 
     it('does not pass limitHeight to Dialog be default', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
@@ -198,21 +205,21 @@ describe('<Modal>', () => {
   });
 
   describe('open', () => {
-    it('renders <Portal /> with idPrefix modal', () => {
+    it('renders <Portal />', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Portal).prop('idPrefix')).toBe('modal');
+      expect(modal.find(Portal)).toHaveLength(1);
     });
   });
 
   describe('closed', () => {
     it('does not render children', () => {
       const modal = mountWithAppProvider(
-        <Modal open={false} onClose={jest.fn()}>
+        <Modal title="foo" open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
@@ -224,7 +231,7 @@ describe('<Modal>', () => {
   describe('opening / closing', () => {
     it('renders modal content when open = true', () => {
       const modal = mountWithAppProvider(
-        <Modal open onClose={jest.fn()}>
+        <Modal title="foo" open onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
@@ -234,7 +241,7 @@ describe('<Modal>', () => {
 
     it('does not render modal content when open = false', () => {
       const modal = mountWithAppProvider(
-        <Modal open={false} onClose={jest.fn()}>
+        <Modal title="foo" open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
@@ -245,36 +252,38 @@ describe('<Modal>', () => {
 
   describe('header', () => {
     it('renders a header when title is present', () => {
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'Header',
+      });
     });
 
-    it('does not render a header when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+    it('only renders a close button when titleHidden is present', () => {
+      const modal = mountWithApp(
+        <Modal titleHidden onClose={jest.fn()} open title="foo" />,
+      );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(false);
-    });
-
-    it('renders a close button when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-
-      expect(findByTestID(modal, 'ModalCloseButton').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'titleHidden',
+      });
     });
   });
 
   describe('footer', () => {
     it('does not render footer by default', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open />,
+      );
 
       expect(modal.find(Footer).exists()).toBeFalsy();
     });
 
     it('renders if footer are passed in', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open footer="Footer content" />,
+        <Modal title="foo" onClose={jest.fn()} open footer="Footer content" />,
       );
 
       expect(modal.find(Footer).exists()).toBeTruthy();
@@ -283,6 +292,7 @@ describe('<Modal>', () => {
     it('renders if primaryAction are passed in', () => {
       const modal = mountWithAppProvider(
         <Modal
+          title="foo"
           onClose={jest.fn()}
           open
           primaryAction={{content: 'Save', onAction: jest.fn()}}
@@ -295,6 +305,7 @@ describe('<Modal>', () => {
     it('renders if secondaryActions are passed in', () => {
       const modal = mountWithAppProvider(
         <Modal
+          title="foo"
           onClose={jest.fn()}
           open
           secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
@@ -308,7 +319,7 @@ describe('<Modal>', () => {
   describe('body', () => {
     it('limits dialog height from limitHeight prop', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading limitHeight>
+        <Modal title="foo" onClose={jest.fn()} open loading limitHeight>
           <Badge />
         </Modal>,
       );
@@ -320,7 +331,7 @@ describe('<Modal>', () => {
   describe('loading', () => {
     it('renders a spinner', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading>
+        <Modal title="foo" onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,
       );
@@ -330,7 +341,7 @@ describe('<Modal>', () => {
 
     it('does not render children', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading>
+        <Modal title="foo" onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,
       );
@@ -342,7 +353,7 @@ describe('<Modal>', () => {
   describe('lifecycle', () => {
     it('unmounts safely', () => {
       const modal = mountWithAppProvider(
-        <Modal open onClose={jest.fn()}>
+        <Modal title="foo" open onClose={jest.fn()}>
           <p>Child</p>
         </Modal>,
       );
@@ -365,33 +376,97 @@ describe('<Modal>', () => {
       rafSpy.mockRestore();
     });
 
-    it('renders the element that is passed in', () => {
+    it('renders the element if an element is passed in', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={noop} open={false} activator={<Button />} />,
+        <Modal
+          title="foo"
+          onClose={noop}
+          open={false}
+          activator={<Button />}
+        />,
       );
 
       expect(modal.find(Button).exists()).toBe(true);
     });
 
+    it('does not render the element if a ref object is passed in', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal
+              title="foo"
+              onClose={noop}
+              open={false}
+              activator={buttonRef}
+            />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      expect(testHarness.find(Modal)).not.toContainReactComponent(Button);
+    });
+
     it('does not throw an error when no activator is passed in', () => {
-      const modal = mountWithAppProvider(<Modal onClose={noop} open />);
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={noop} open />,
+      );
 
       expect(() => {
         modal.setProps({open: false});
       }).not.toThrow();
     });
 
-    it('focuses the activator when the modal is closed', () => {
+    it('focuses the activator when the activator is an element on close', () => {
       const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
 
       const modal = mountWithApp(
-        <Modal onClose={noop} open activator={<Button />} />,
+        <Modal title="foo" onClose={noop} open activator={<Button />} />,
       );
 
       modal.find(Dialog)!.trigger('onExited');
 
-      expect(document.activeElement).toBe(modal.find(Button)!.domNode);
+      expect(document.activeElement).toBe(modal.find('button')!.domNode);
       expect(focusSpy).toHaveBeenCalledTimes(3);
+    });
+
+    it('focuses the activator when the activator a ref on close', () => {
+      const buttonId = 'buttonId';
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+
+        const button = (
+          <div ref={buttonRef}>
+            <Button id={buttonId} />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal title="foo" onClose={noop} open activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(
+        testHarness.findWhere(
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
+        )!.domNode,
+      );
     });
   });
 });

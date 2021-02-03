@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 
 import {useDeepCompareRef} from './use-deep-compare-ref';
 
-type DependencyList = ReadonlyArray<unknown>;
+type DependencyList = readonly unknown[];
 
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 

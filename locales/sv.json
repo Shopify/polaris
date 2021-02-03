@@ -20,7 +20,8 @@
         "attention": "Observera",
         "new": "Ny",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laddar",
@@ -81,7 +82,9 @@
         "friday": "Fredag",
         "saturday": "Lördag",
         "sunday": "Söndag"
-      }
+      },
+      "start": "Intervallets början",
+      "end": "Intervallets slut"
     },
     "DiscardConfirmationModal": {
       "title": "Ignorera alla ändringar som inte sparats",
@@ -109,10 +112,8 @@
       "skipToContent": "Gå vidare till innehåll",
       "Navigation": {
         "closeMobileNavigationLabel": "Stäng navigering"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikonen {color} accepterar inte bakgrunder. Ikonfärgerna som har bakgrunder är: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigering"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,15 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Fler åtgärder"
+    },
+    "Loading": {
+      "label": "Fält för att ladda sida"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Verktygstips: {label}"
     }
   }
 }

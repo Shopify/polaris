@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 import isEqual from 'lodash/isEqual';
 
-type DependencyList = ReadonlyArray<unknown>;
+type DependencyList = readonly unknown[];
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 /**
@@ -10,8 +10,8 @@ type Comparator = (a: DependencyList, b: DependencyList) => boolean;
  * @param dependencies A dependency array similar to React's useEffect / useCallback / useMemo
  * @param comparator An optional function to compare dependencies that'll default to a deep comparison
  * @returns A dependency list
- * @see {@link https://github.com/Shopify/polaris-react/blob/master/src/utilities/use-deep-effect.tsx}
- * @see {@link https://github.com/Shopify/polaris-react/blob/master/src/utilities/use-deep-callback.tsx}
+ * @see {@link https://github.com/Shopify/polaris-react/blob/main/src/utilities/use-deep-effect.tsx}
+ * @see {@link https://github.com/Shopify/polaris-react/blob/main/src/utilities/use-deep-callback.tsx}
  * @example
  * function useDeepEffectExample(callback, dependencies, customCompare) {
  *  useEffect(callback, useDeepCompareRef(dependencies, customCompare));

@@ -1,5 +1,8 @@
 {
   "Polaris": {
+    "Actions": {
+      "moreActions": "More actions"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
@@ -20,7 +23,8 @@
         "critical": "Critical",
         "attention": "Attention",
         "new": "New"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",
@@ -50,6 +54,8 @@
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
       "today": "Today ",
+      "start": "Start of range",
+      "end": "End of range",
       "months": {
         "january": "January",
         "february": "February",
@@ -107,12 +113,10 @@
     },
     "Frame": {
       "skipToContent": "Skip to content",
+      "navigationLabel": "Navigation",
       "Navigation": {
         "closeMobileNavigationLabel": "Close navigation"
       }
-    },
-    "Icon": {
-      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -129,6 +133,9 @@
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
+    },
+    "Loading": {
+      "label": "Page loading bar"
     },
     "Modal": {
       "iFrameTitle": "body markup",
@@ -220,9 +227,6 @@
     "SkeletonPage": {
       "loadingLabel": "Page loading"
     },
-    "Spinner": {
-      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "More tabs"
     },
@@ -232,6 +236,9 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tooltip: {label}"
     },
     "TopBar": {
       "toggleMenuLabel": "Toggle menu",

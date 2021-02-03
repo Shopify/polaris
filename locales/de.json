@@ -20,7 +20,8 @@
         "attention": "Prüfung erforderlich",
         "new": "Neu",
         "critical": "Kritisch"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Wird geladen",
@@ -81,7 +82,9 @@
         "friday": "Freitag",
         "saturday": "Samstag",
         "sunday": "Sonntag"
-      }
+      },
+      "start": "Beginn des Bereichs",
+      "end": "Ende des Bereichs"
     },
     "DiscardConfirmationModal": {
       "title": "Verwirf alle nicht gespeicherten Änderungen",
@@ -109,10 +112,8 @@
       "skipToContent": "\"Zum Inhalt gehen\"",
       "Navigation": {
         "closeMobileNavigationLabel": "Navigation schließen"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Das {color}-Symbol akzeptiert keine Hintergründe. Die Symbolfarben, die Hintergründe haben, sind: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,15 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Weitere Aktionen"
+    },
+    "Loading": {
+      "label": "Seiten-Ladeleiste"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tooltip: {label}"
     }
   }
 }

@@ -4,7 +4,6 @@ import isEqual from 'lodash/isEqual';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 import type {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -71,7 +70,6 @@ export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 interface PropsFromWrapper {
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -149,7 +147,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
-      features: {newDesignLanguage},
       verticalAlignment,
     } = this.props;
 
@@ -206,13 +203,17 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
-      newDesignLanguage && styles.newDesignLanguage,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
       selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
+    );
+
+    const listItemClassName = classNames(
+      styles.ListItem,
+      focused && !focusedInner && styles.focused,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -321,20 +322,24 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        ref={this.setNode}
-        className={className}
-        onClick={this.handleClick}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        onKeyUp={this.handleKeyUp}
-        onMouseOut={this.handleMouseOut}
-        testID="Item-Wrapper"
-        data-href={url}
-      >
-        {accessibleMarkup}
-        {containerMarkup}
-      </div>
+      <li className={listItemClassName}>
+        <div className={styles.ItemWrapper}>
+          <div
+            ref={this.setNode}
+            className={className}
+            onClick={this.handleClick}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            onMouseOut={this.handleMouseOut}
+            testID="Item-Wrapper"
+            data-href={url}
+          >
+            {accessibleMarkup}
+            {containerMarkup}
+          </div>
+        </div>
+      </li>
     );
   }
 
@@ -467,7 +472,6 @@ export function ResourceItem(props: ResourceItemProps) {
     <BaseResourceItem
       {...props}
       context={useContext(ResourceListContext)}
-      features={useFeatures()}
       i18n={useI18n()}
     />
   );

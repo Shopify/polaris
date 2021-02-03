@@ -8,10 +8,10 @@ $Backdrop-opacity: 0.88;
   display: inline-flex;
   max-width: rem(500px);
   padding: spacing(tight) spacing();
-  border-radius: var(--p-border-radius-wide, border-radius());
-  background: var(--p-surface, rgba(color('black'), $Backdrop-opacity));
-  box-shadow: var(--p-override-none, shadow());
-  color: var(--p-text, color('white'));
+  border-radius: var(--p-border-radius-wide);
+  background: var(--p-surface);
+  box-shadow: var(--p-override-none);
+  color: var(--p-text);
   margin-bottom: spacing(loose);
 
   @include breakpoint-after($breakpoint) {
@@ -29,15 +29,12 @@ $Backdrop-opacity: 0.88;
 }
 
 .error {
-  $error-color: var(--p-text-on-critical, color('white'));
-  background: var(
-    --p-action-critical,
-    rgba(color('red', 'dark'), $Backdrop-opacity)
-  );
+  $error-color: var(--p-text-on-critical);
+  background: var(--p-action-critical);
   color: $error-color;
 
   .CloseButton {
-    fill: var(--p-icon-on-critical, $error-color);
+    fill: var(--p-icon-on-critical);
   }
 }
 
@@ -51,14 +48,11 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: var(--p-icon, color('white'));
+  color: currentColor;
+  @include recolor-icon(currentColor);
   cursor: pointer;
 
   &:focus {
     outline: none;
-  }
-
-  @media (-ms-high-contrast: active) {
-    fill: ms-high-contrast-color('text');
   }
 }

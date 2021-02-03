@@ -2,7 +2,6 @@ import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
-import {FeaturesContext} from '../../../../utilities/features';
 import type {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
@@ -26,6 +25,7 @@ export interface ConnectedFilterControlProps {
   auxiliary?: React.ReactNode;
   disabled?: boolean;
   forceShowMorefiltersButton?: boolean;
+  queryFieldHidden?: boolean;
 }
 
 interface ComputedProperty {
@@ -43,9 +43,6 @@ export class ConnectedFilterControl extends Component<
   ConnectedFilterControlProps,
   State
 > {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
   state: State = {
     availableWidth: 0,
     proxyButtonsWidth: {},
@@ -69,13 +66,13 @@ export class ConnectedFilterControl extends Component<
   }
 
   render() {
-    const {newDesignLanguage} = this.context || {};
     const {
       children,
       rightPopoverableActions,
       rightAction,
       auxiliary,
       forceShowMorefiltersButton = true,
+      queryFieldHidden,
     } = this.props;
 
     const actionsToRender =
@@ -86,7 +83,6 @@ export class ConnectedFilterControl extends Component<
     const className = classNames(
       styles.ConnectedFilterControl,
       rightPopoverableActions && styles.right,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const shouldRenderMoreFiltersButton =
@@ -97,6 +93,7 @@ export class ConnectedFilterControl extends Component<
     const RightContainerClassName = classNames(
       styles.RightContainer,
       !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
+      queryFieldHidden && styles.queryFieldHidden,
     );
 
     const rightMarkup =
@@ -111,9 +108,7 @@ export class ConnectedFilterControl extends Component<
 
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
-      actionsToRender.length === 0 &&
-        newDesignLanguage &&
-        styles.onlyButtonVisible,
+      actionsToRender.length === 0 && styles.onlyButtonVisible,
     );
 
     const rightActionMarkup = rightAction ? (
@@ -133,7 +128,7 @@ export class ConnectedFilterControl extends Component<
       >
         {rightPopoverableActions.map((action) => (
           <div key={action.key} data-key={action.key}>
-            {this.activatorButtonFrom(action)}
+            {this.activatorButtonFrom(action, {proxy: true})}
           </div>
         ))}
       </div>
@@ -148,9 +143,11 @@ export class ConnectedFilterControl extends Component<
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
-            <div className={styles.CenterContainer}>
-              <Item>{children}</Item>
-            </div>
+            {children ? (
+              <div className={styles.CenterContainer}>
+                <Item>{children}</Item>
+              </div>
+            ) : null}
             {rightMarkup}
             {rightActionMarkup}
             <EventListener event="resize" handler={this.handleResize} />
@@ -192,9 +189,13 @@ export class ConnectedFilterControl extends Component<
         .width;
       const filtersActionWidth = 0;
 
+      const filterFieldMinWidth = this.props.queryFieldHidden
+        ? 0
+        : FILTER_FIELD_MIN_WIDTH;
+
       const availableWidth =
         containerWidth -
-        FILTER_FIELD_MIN_WIDTH -
+        filterFieldMinWidth -
         moreFiltersButtonWidth -
         filtersActionWidth;
 
@@ -222,13 +223,17 @@ export class ConnectedFilterControl extends Component<
     return actionsToReturn;
   }
 
-  private activatorButtonFrom(action: PopoverableAction): React.ReactElement {
+  private activatorButtonFrom(
+    action: PopoverableAction,
+    options?: {proxy?: boolean},
+  ): React.ReactElement {
+    const id = options?.proxy ? undefined : `Activator-${action.key}`;
     return (
       <Button
         onClick={action.onAction}
         disclosure
         disabled={this.props.disabled || action.disabled}
-        id={`Activator-${action.key}`}
+        id={id}
       >
         {action.content}
       </Button>

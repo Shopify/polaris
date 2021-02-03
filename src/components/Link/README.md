@@ -110,6 +110,31 @@ Use for text links that should open in a new browser tab (or window, depending o
 
 Use the `url` prop to give the link component a valid `href` value. This allows the element to be identified as a link to assistive technologies and gives it default keyboard support.
 
+The Link component is underlined to give interactive elements a shape. This allows links to not rely on color from being the only way users can tell if an element is interactive.
+
+<!-- usageblock -->
+
+#### Do
+
+- Remove the link underline when link is repeated in a list or navigation
+- Use underlines for links when used inline content
+
+```jsx
+<p>
+  Learn more about <Link>Fraud Protect</Link>.
+</p>
+```
+
+#### Don’t
+
+- Remove underlines when the user cannot determine it's interactivity
+
+```jsx
+<Link removeUnderline>Learn more about Fraud Protect.</Link>
+```
+
+<!-- end -->
+
 ### Submitting data
 
 Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](https://polaris.shopify.com/components/actions/button) instead.
@@ -117,6 +142,8 @@ Merchants generally expect links to navigate, and not to submit data or take act
 ### Labeling
 
 Give links text that clearly describes their purpose.
+
+The `accessibilityLabel` prop adds an `aria-label` attribute to the link, which can be accessed by assistive technologies like screen readers. Typically, this label text replaces the visible text on the link for merchants who use assistive technology.
 
 To provide consistency and clarity:
 

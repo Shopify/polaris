@@ -8,6 +8,7 @@ import type {
   HSLAColor,
   HSBLAColor,
 } from './color-types';
+import {roundNumberToDecimalPlaces} from './roundNumberToDecimalPlaces';
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
@@ -129,11 +130,11 @@ export function hslToRgb(color: HSLAColor): RGBAColor {
 
 // ref https://en.wikipedia.org/wiki/HSL_and_HSV
 function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
-  const {red: r, green: g, blue: b, alpha = 1} = color;
+  const {alpha = 1} = color;
 
-  const red = r / 255;
-  const green = g / 255;
-  const blue = b / 255;
+  const red = color.red / 255;
+  const green = color.green / 255;
+  const blue = color.blue / 255;
 
   const largestComponent = Math.max(red, green, blue);
   const smallestComponent = Math.min(red, green, blue);
@@ -165,14 +166,15 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
       huePercentage = (red - green) / delta + 4;
   }
 
-  const hue = Math.round((huePercentage / 6) * 360);
+  const hue = (huePercentage / 6) * 360;
+  const clampedHue = clamp(hue, 0, 360);
 
   return {
-    hue: clamp(hue, 0, 360) || 0,
-    saturation: parseFloat(clamp(saturation, 0, 1).toFixed(2)),
-    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(2)),
-    lightness: parseFloat(lightness.toFixed(2)),
-    alpha: parseFloat(alpha.toFixed(2)),
+    hue: clampedHue ? roundNumberToDecimalPlaces(clampedHue, 2) : 0,
+    saturation: roundNumberToDecimalPlaces(clamp(saturation, 0, 1), 4),
+    brightness: roundNumberToDecimalPlaces(clamp(largestComponent, 0, 1), 4),
+    lightness: roundNumberToDecimalPlaces(lightness, 4),
+    alpha: roundNumberToDecimalPlaces(alpha, 4),
   };
 }
 
@@ -190,8 +192,10 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
     lightness: rawLightness,
     alpha = 1,
   } = rgbToHsbl(color, 'l');
-  const saturation = rawSaturation * 100;
-  const lightness = rawLightness * 100;
+
+  const saturation = roundNumberToDecimalPlaces(rawSaturation * 100, 2);
+  const lightness = roundNumberToDecimalPlaces(rawLightness * 100, 2);
+
   return {hue, saturation, lightness, alpha};
 }
 
@@ -235,16 +239,6 @@ function getColorType(color: string): ColorType {
   }
 }
 
-export function hslToString(hslColor: HSLColor | HSLAColor | string) {
-  if (typeof hslColor === 'string') {
-    return hslColor;
-  }
-
-  const alpha = 'alpha' in hslColor ? hslColor.alpha : 1;
-  const {hue, lightness, saturation} = hslColor;
-  return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
-}
-
 function rgbToObject(color: string): RGBAColor {
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
@@ -281,10 +275,10 @@ function hslToObject(color: string): HSLAColor {
 
   const [hue, saturation, lightness, alpha] = colorMatch[1].split(',');
   const objColor = {
-    hue: parseInt(hue, 10),
-    saturation: parseInt(saturation, 10),
-    lightness: parseInt(lightness, 10),
-    alpha: parseFloat(alpha) || 1,
+    hue: roundNumberToDecimalPlaces(parseFloat(hue), 2),
+    saturation: roundNumberToDecimalPlaces(parseFloat(saturation), 2),
+    lightness: roundNumberToDecimalPlaces(parseFloat(lightness), 2),
+    alpha: roundNumberToDecimalPlaces(parseFloat(alpha), 2) || 1,
   };
   return objColor;
 }

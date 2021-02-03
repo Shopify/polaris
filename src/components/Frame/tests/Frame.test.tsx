@@ -54,8 +54,9 @@ describe('<Frame />', () => {
 
     it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
       const frame = mountWithApp(<Frame />);
+      const skipLink = frame.find('a', {children: 'Skip to content'});
 
-      frame.find('a', {children: 'Skip to content'})!.trigger('onClick');
+      skipLink!.trigger('onClick');
       expect(document.activeElement).toBe(
         frame.find('a', {id: 'AppFrameMainContent'})!.domNode,
       );
@@ -223,6 +224,32 @@ describe('<Frame />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('renders mobile accessibility attributes on small screens', () => {
+      const navigation = <div />;
+      const frame = mountWithApp(
+        <Frame showMobileNavigation navigation={navigation} />,
+        {mediaQuery: {isNavigationCollapsed: true}},
+      );
+
+      expect(frame).toContainReactComponent('div', {
+        'aria-modal': true,
+        role: 'dialog',
+      });
+    });
+
+    it('does not render mobile accessibility attributes on large screens', () => {
+      const navigation = <div />;
+      const frame = mountWithApp(
+        <Frame showMobileNavigation navigation={navigation} />,
+        {mediaQuery: {isNavigationCollapsed: false}},
+      );
+
+      expect(frame).not.toContainReactComponent('div', {
+        'aria-modal': true,
+        role: 'dialog',
+      });
+    });
   });
 
   describe('globalRibbon', () => {
@@ -294,79 +321,6 @@ describe('<Frame />', () => {
         </Frame>,
       );
       expect(frame.find(FrameLoading).exists()).toBe(true);
-    });
-  });
-  describe('newDesignLanguage', () => {
-    it('renders a Nav with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame navigation={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className: 'Navigation Navigation-newDesignLanguage',
-      });
-    });
-
-    it('renders a TopBar with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame topBar={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-
-    it('renders a ContextualSaveBar with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame topBar={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className:
-          'ContextualSaveBar ContextualSaveBar-newDesignLanguage startFadeUp',
-      });
-    });
-
-    it('renders a GlobalRibbon container with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame globalRibbon={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className:
-          'GlobalRibbonContainer GlobalRibbonContainer-newDesignLanguage',
-      });
-    });
-
-    it('renders a content container with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('main', {
-        className: 'Main Main-newDesignLanguage',
-      });
     });
   });
 });

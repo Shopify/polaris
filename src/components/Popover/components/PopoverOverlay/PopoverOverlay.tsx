@@ -1,6 +1,8 @@
 import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
+import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -24,6 +26,8 @@ export enum PopoverCloseSource {
   ScrollOut,
 }
 
+export type PopoverAutofocusTarget = 'none' | 'first-node' | 'container';
+
 enum TransitionStatus {
   Entering = 'entering',
   Entered = 'entered',
@@ -42,10 +46,12 @@ export interface PopoverOverlayProps {
   id: string;
   activator: HTMLElement;
   preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
-  preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
+  hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: NonNullable<ThemeProviderProps['theme']>['colorScheme'];
+  autofocusTarget?: PopoverAutofocusTarget;
 }
 
 interface State {
@@ -154,10 +160,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   }
 
   private focusContent() {
-    if (this.props.preventAutofocus) {
-      return;
-    }
-    if (this.contentNode == null) {
+    const {autofocusTarget = 'container'} = this.props;
+
+    if (autofocusTarget === 'none' || this.contentNode == null) {
       return;
     }
 
@@ -166,9 +171,17 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         return;
       }
 
-      this.contentNode.current.focus({
-        preventScroll: process.env.NODE_ENV === 'development',
-      });
+      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+
+      if (focusableChild && autofocusTarget === 'first-node') {
+        focusableChild.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      } else {
+        this.contentNode.current.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      }
     });
   }
 
@@ -185,6 +198,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullWidth,
       fullHeight,
       fluidContent,
+      hideOnPrint,
+      colorScheme,
+      autofocusTarget,
     } = this.props;
 
     const className = classNames(
@@ -192,6 +208,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
+      hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
@@ -205,7 +222,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={autofocusTarget === 'none' ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -225,7 +242,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <ThemeProvider alwaysRenderCustomProperties theme={{colorScheme}}>
+          <div className={styles.Wrapper}>{content}</div>
+        </ThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

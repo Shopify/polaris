@@ -10,8 +10,10 @@ import {
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
+import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
-import {ConnectedFilterControl} from '../components';
+import {ConnectedFilterControl, TagsWrapper} from '../components';
+import * as focusUtils from '../../../utilities/focus';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -52,6 +54,19 @@ describe('<Filters />', () => {
     matchMedia.restore();
   });
 
+  it('renders WithinFilterContext with a value of true', () => {
+    WithinFilterContext;
+    const filters = mountWithApp(<Filters {...mockProps} />);
+
+    expect(filters).toContainReactComponentTimes(
+      WithinFilterContext.Provider,
+      1,
+      {
+        value: true,
+      },
+    );
+  });
+
   it('calls the onQueryFocus callback when the query field is focused', () => {
     const onQueryFocus = jest.fn();
     const filters = mountWithAppProvider(
@@ -61,6 +76,20 @@ describe('<Filters />', () => {
     trigger(filters.find(TextField), 'onFocus');
 
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not render the TextField when "hideQueryField" is "true"', () => {
+    const filters = mountWithAppProvider(
+      <Filters {...mockProps} hideQueryField />,
+    );
+
+    expect(filters.find(TextField).exists()).toBe(false);
+  });
+
+  it('renders the TextField when "hideQueryField" is false', () => {
+    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+
+    expect(filters.find(TextField).exists()).toBe(true);
   });
 
   describe('toggleFilters()', () => {
@@ -218,6 +247,16 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('receives the expected props when the query field is hidden', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} hideQueryField />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props().queryFieldHidden,
+      ).toBe(true);
+    });
+
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
@@ -339,6 +378,44 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
 
+    it('renders a clear button when clearButton is not provided', () => {
+      const filters = [
+        {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).toContain('clear');
+    });
+
+    it("doesn't renders a clear button when clearButton is not provided", () => {
+      const filters = [
+        {
+          hideClearButton: true,
+          key: 'filterOne',
+          label: 'foo',
+          onRemove: () => {},
+          filter: null,
+        },
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).not.toContain('clear');
+    });
+
     it('tags are not shown if hideTags prop is given', () => {
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
 
@@ -351,6 +428,21 @@ describe('<Filters />', () => {
         />,
       );
       expect(resourceFilters.find(Tag)).toHaveLength(0);
+    });
+
+    it('hides the tags container when applied filters are not provided', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponent(TagsWrapper, {
+        hidden: true,
+      });
+    });
+
+    it('renders applied filters container with aria live', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponent('div', {
+        className: 'TagsContainer',
+        'aria-live': 'polite',
+      });
     });
 
     it('applied filter count is shown if hideTags prop is given', () => {
@@ -372,6 +464,41 @@ describe('<Filters />', () => {
         'SheetToggleButton',
       );
       expect(rightActionButton.text()).toBe('More filters (2)');
+    });
+
+    it('calls clear all callback and shifts focus when clear all filters is clicked to prevent visual loss of focus', () => {
+      const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
+      const spy = jest.fn();
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} appliedFilters={appliedFilters} />,
+      );
+      resourceFilters.setProps({
+        onClearAll: () => {
+          resourceFilters.setProps({
+            appliedFilters: [],
+          });
+        },
+      });
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+
+      let clearAllButton = resourceFilters
+        .findWhere((node) => node.prop('children') === 'Clear all filters')
+        .first();
+
+      expect(clearAllButton.prop('disabled')).toBeFalsy();
+
+      trigger(clearAllButton, 'onClick');
+
+      clearAllButton = resourceFilters
+        .findWhere((node) => node.prop('children') === 'Clear all filters')
+        .first();
+
+      expect(clearAllButton.prop('disabled')).toBeTruthy();
+      expect(focusSpy).toHaveBeenCalled();
+      focusSpy.mockRestore();
     });
   });
 
@@ -497,32 +624,6 @@ describe('<Filters />', () => {
 
       const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
       expect(helpTextMarkup).toHaveLength(0);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
-        features: {newDesignLanguage: true},
-      });
-
-      filters.find('button', {disabled: true})!.trigger('onClick');
-
-      expect(filters).toContainReactComponent('button', {
-        className: 'FilterTrigger newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
-        features: {newDesignLanguage: false},
-      });
-
-      filters.find('button', {disabled: true})!.trigger('onClick');
-
-      expect(filters).not.toContainReactComponent('button', {
-        className: 'FilterTrigger newDesignLanguage',
-      });
     });
   });
 });

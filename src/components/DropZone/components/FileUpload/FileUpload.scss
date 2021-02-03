@@ -23,6 +23,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
 .Button {
   @include button-base;
+  @include focus-ring;
 
   &.disabled {
     @include base-button-disabled;
@@ -31,10 +32,10 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   &.focused {
-    border-color: color('indigo');
     outline: 0;
-    box-shadow: 0 0 0 1px color('indigo');
+    box-shadow: none;
 
+    @include focus-ring($style: 'focused');
     @include high-contrast-button-outline;
   }
 
@@ -45,65 +46,25 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 }
 
 .ActionTitle {
-  color: color('blue');
+  color: var(--p-interactive);
   text-decoration: none;
 
   &:not(.ActionTitle-disabled) {
     cursor: pointer;
 
+    // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
-      color: color('blue', 'dark');
+      color: var(--p-interactive-pressed);
       text-decoration: underline;
     }
   }
 }
 
 .ActionTitle-focused {
-  color: color('blue', 'dark');
   text-decoration: underline;
 }
 
 .ActionTitle-disabled {
-  color: color('ink', 'lightest');
-}
-
-.newDesignLanguage {
-  .Button {
-    @include focus-ring;
-
-    // stylelint-disable-next-line selector-max-class
-    &.focused {
-      border-color: transparent;
-      box-shadow: none;
-
-      @include focus-ring($style: 'focused');
-      @include high-contrast-button-outline;
-    }
-  }
-
-  .ActionTitle {
-    color: var(--p-interactive);
-    text-decoration: none;
-
-    &:not(.ActionTitle-disabled) {
-      cursor: pointer;
-
-      // stylelint-disable-next-line selector-max-specificity
-      &:hover,
-      &:active {
-        color: color('blue', 'dark');
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .ActionTitle-focused {
-    color: var(--p-interactive);
-    text-decoration: underline;
-  }
-
-  .ActionTitle-disabled {
-    color: --p-interactive;
-  }
+  color: var(--p-interactive-disabled);
 }

@@ -113,14 +113,39 @@ describe('<Link />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
-      const link = mountWithApp(<Link url="MyThing" />, {
-        features: {newDesignLanguage: true},
+  describe('accessibilityLabel', () => {
+    it('passes prop to the button url is not provided', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+      const link = mountWithApp(
+        <Link accessibilityLabel={mockAccessibilityLabel} />,
+      );
+
+      expect(link).toContainReactComponent('button', {
+        'aria-label': mockAccessibilityLabel,
       });
-      expect(link).toContainReactComponent('a', {
-        className: 'Link newDesignLanguage',
+    });
+
+    it('passes the accessibilityLabel to UnstyledLink when url is present', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+
+      const link = mountWithApp(
+        <Link
+          url="https://shopify.com"
+          accessibilityLabel={mockAccessibilityLabel}
+        />,
+      );
+
+      expect(link).toContainReactComponent(UnstyledLink, {
+        'aria-label': mockAccessibilityLabel,
       });
+    });
+  });
+
+  describe('removesUnderline', () => {
+    it('adds removeUnderline class to the link', () => {
+      const link = mountWithAppProvider(<Link removeUnderline>Test</Link>);
+
+      expect(link.find('button').hasClass('removeUnderline')).toBe(true);
     });
   });
 });

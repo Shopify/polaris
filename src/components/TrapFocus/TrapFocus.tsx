@@ -12,6 +12,7 @@ import {
   focusLastKeyboardFocusableNode,
 } from '../../utilities/focus';
 import {useFocusManager} from '../../utilities/focus-manager';
+import {portal} from '../shared';
 
 export interface TrapFocusProps {
   trapping?: boolean;
@@ -22,7 +23,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
     undefined,
   );
-  const {canSafelyFocus} = useFocusManager();
+  const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,7 +52,9 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
     if (
       trapping === false ||
       !focusTrapWrapper.current ||
-      containerContentsHaveFocus
+      containerContentsHaveFocus ||
+      (event.target instanceof Element &&
+        event.target.matches(`${portal.selector} *`))
     ) {
       return;
     }

@@ -20,7 +20,8 @@
         "attention": "Bemærk",
         "new": "Nye",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",
@@ -29,7 +30,7 @@
     "Common": {
       "checkbox": "afkrydsningsfelt",
       "undo": "Fortryd",
-      "cancel": "Annullér",
+      "cancel": "Annuller",
       "newWindowAccessibilityHint": "(åbner et nyt vindue)",
       "clear": "Ryd",
       "close": "Luk",
@@ -81,7 +82,9 @@
         "friday": "Fredag",
         "saturday": "Lørdag",
         "sunday": "Søndag"
-      }
+      },
+      "start": "Start af interval",
+      "end": "Slutning af interval"
     },
     "DiscardConfirmationModal": {
       "title": "Fortryd alle ændringer, der ikke er gemt",
@@ -109,10 +112,8 @@
       "skipToContent": "Skip til indhold",
       "Navigation": {
         "closeMobileNavigationLabel": "Luk navigation"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet accepterer ikke baggrunde. De ikonfarver, der har baggrunde, er: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,15 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Statuslinje for sideindlæsning"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Værktøjstip: {label}"
     }
   }
 }

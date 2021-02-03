@@ -5,7 +5,17 @@
   align-items: flex-start;
   flex-shrink: 0;
   padding: spacing() spacing(loose);
-  border-bottom: var(--p-thin-border-subdued, border());
+  border-bottom: border('divider');
+}
+
+.titleHidden {
+  position: absolute;
+  right: spacing(tight);
+  z-index: 1;
+
+  .Title {
+    display: none;
+  }
 }
 
 .Title {

@@ -2,73 +2,63 @@ import React, {useMemo, useEffect, useContext} from 'react';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {
+  Theme,
   ThemeContext,
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
+  toString,
   Tokens,
 } from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 
-type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
-type Inverse = 'inverse';
-type InversableColorScheme = OriginalColorScheme | Inverse;
-
-// TS 3.5+ includes the built-in Omit type which does the same thing. But if we
-// use that then we break consumers on older versions of TS. Consider removing
-// this when we drop support for consumers using TS <3.5 (in v5?)
-type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
-interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
-  colorScheme?: InversableColorScheme;
-}
-
-interface ThemeProviderProps {
+export interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
-  theme: ThemeProviderThemeConfig;
+  theme?: ThemeConfig;
+  /**
+   * By default, Polaris avoids re-declaring custom properties within the same React tree
+   * This prop ensures that the CSS custom properties are always rendered. This is useful
+   * for components such as portals that render outside of the root DOM node
+   */
+  alwaysRenderCustomProperties?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
-  theme: themeConfig,
+  theme: themeConfig = {},
+  alwaysRenderCustomProperties = false,
   children,
 }: ThemeProviderProps) {
-  const {newDesignLanguage} = useFeatures();
-
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
+
   const parentColorScheme =
     parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
     parentContext && parentContext.colors && parentContext.colors;
 
-  const {colors, colorScheme, ...rest} = themeConfig;
+  const [customProperties, theme] = useMemo(() => {
+    const {colors, colorScheme, ...rest} = themeConfig;
 
-  const processedThemeConfig = {
-    ...rest,
-    ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    colors: {
-      ...(isParentThemeProvider && DefaultThemeColors),
-      ...(parentColors != null && parentColors),
-      ...colors,
-    },
-  };
+    const processedThemeConfig = {
+      ...rest,
+      ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
+      colors: {
+        ...(isParentThemeProvider && DefaultThemeColors),
+        ...(parentColors != null && parentColors),
+        ...colors,
+      },
+    };
 
-  const customProperties = useMemo(
-    () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
-  );
+    const customProperties = buildCustomProperties(
+      processedThemeConfig,
+      Tokens,
+    );
 
-  const theme = useMemo(
-    () =>
-      buildThemeContext(
-        processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
-      ),
-    [customProperties, processedThemeConfig, newDesignLanguage],
-  );
+    const theme = buildThemeContext(processedThemeConfig, customProperties);
+
+    return [customProperties, theme];
+  }, [isParentThemeProvider, parentColorScheme, parentColors, themeConfig]);
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
@@ -82,28 +72,34 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
-  const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+  let style;
+
+  if (isParentThemeProvider) {
+    style = customProperties;
+  } else if (
+    alwaysRenderCustomProperties ||
+    (!isParentThemeProvider &&
+      parentContext!.cssCustomProperties !== toString(customProperties))
+  ) {
+    style = {...customProperties, ...{color}};
+  } else {
+    style = {color};
+  }
 
   return (
-    <ThemeContext.Provider value={{...theme, textColor: color}}>
+    <ThemeContext.Provider value={theme}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
 }
 
-function isInverseColorScheme(
-  colorScheme?: InversableColorScheme,
-): colorScheme is Inverse {
-  return colorScheme === 'inverse';
-}
-
 function getColorScheme(
-  colorScheme: InversableColorScheme | undefined,
-  parentColorScheme: OriginalColorScheme | undefined,
-) {
+  colorScheme: ThemeConfig['colorScheme'],
+  parentColorScheme?: Theme['colorScheme'],
+): Theme['colorScheme'] {
   if (colorScheme == null) {
     return parentColorScheme || 'light';
-  } else if (isInverseColorScheme(colorScheme)) {
+  } else if (colorScheme === 'inverse') {
     return parentColorScheme === 'dark' || parentColorScheme === undefined
       ? 'light'
       : 'dark';

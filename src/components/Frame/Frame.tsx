@@ -1,11 +1,10 @@
 import React, {PureComponent, createRef} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
-import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
@@ -50,7 +49,6 @@ export interface FrameProps {
 type CombinedProps = FrameProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -116,17 +114,22 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       skipToContentTarget,
       i18n,
       mediaQuery: {isNavigationCollapsed},
-      features: {newDesignLanguage},
     } = this.props;
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
-      newDesignLanguage && styles['Navigation-newDesignLanguage'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
     const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
     const tabIndex = mobileNavShowing ? 0 : -1;
+
+    const mobileNavAttributes = {
+      ...(mobileNavShowing && {
+        'aria-modal': true,
+        role: 'dialog',
+      }),
+    };
 
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
@@ -139,6 +142,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            {...mobileNavAttributes}
+            aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
@@ -160,7 +165,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} />
+              <Icon source={MobileCancelMajor} />
             </button>
           </div>
         </CSSTransition>
@@ -174,29 +179,19 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type={newDesignLanguage ? 'fadeUp' : 'fade'}
+        className={styles.ContextualSaveBar}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
     );
 
-    const topBarClassName = classNames(
-      styles.TopBar,
-      newDesignLanguage && styles['TopBar-newDesignLanguage'],
-    );
-
     const topBarMarkup = topBar ? (
       <div
-        className={topBarClassName}
+        className={styles.TopBar}
         {...layer.props}
         {...dataPolarisTopBar.props}
         id={APP_FRAME_TOP_BAR}
@@ -205,14 +200,9 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const globalRibbonClassName = classNames(
-      styles.GlobalRibbonContainer,
-      newDesignLanguage && styles['GlobalRibbonContainer-newDesignLanguage'],
-    );
-
     const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={globalRibbonClassName}
+        className={styles.GlobalRibbonContainer}
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
@@ -224,8 +214,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       skipFocused && styles.focused,
     );
 
-    const skipTarget = skipToContentTarget
-      ? (skipToContentTarget.current && skipToContentTarget.current.id) || ''
+    const skipTarget = skipToContentTarget?.current
+      ? skipToContentTarget.current.id
       : APP_FRAME_MAIN_ANCHOR_TARGET;
 
     const skipMarkup = (
@@ -235,7 +225,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
-          className={styles.SkipAnchor}
         >
           {i18n.translate('Polaris.Frame.skipToContent')}
         </a>
@@ -252,11 +241,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
-    );
-
-    const mainClassName = classNames(
-      styles.Main,
-      newDesignLanguage && styles['Main-newDesignLanguage'],
     );
 
     const navigationOverlayMarkup =
@@ -300,7 +284,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
-            className={mainClassName}
+            className={styles.Main}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
@@ -436,14 +420,6 @@ const navTransitionClasses = {
 export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
-  const features = useFeatures();
 
-  return (
-    <FrameInner
-      {...props}
-      i18n={i18n}
-      mediaQuery={mediaQuery}
-      features={features}
-    />
-  );
+  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }

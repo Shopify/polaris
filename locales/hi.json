@@ -102,9 +102,6 @@
         "closeMobileNavigationLabel": "नेविगेशन बंद करें"
       }
     },
-    "Icon": {
-      "backdropWarning": "{color} आइकन बैकड्रॉप स्वीकार नहीं करता है. आइकन के वे रंग जिनमें बैकड्रॉप होते हैं: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "कार्रवाई"
