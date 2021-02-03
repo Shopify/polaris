@@ -1,4 +1,4 @@
-import React, {NamedExoticComponent} from 'react';
+import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
