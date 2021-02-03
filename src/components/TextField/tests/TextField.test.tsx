@@ -1101,6 +1101,22 @@ describe('<TextField />', () => {
       expect(spy).toHaveBeenCalledWith('MyTextField');
     });
 
+    it('calls onChange with an empty string when clear button is clicked if onClearButtonClicked is not provided', () => {
+      const spy = jest.fn();
+      const textField = mountWithAppProvider(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          type="search"
+          onChange={spy}
+          value="test value"
+          clearButton
+        />,
+      );
+      findByTestID(textField, 'clearButton').simulate('click');
+      expect(spy).toHaveBeenCalledWith('', 'MyTextField');
+    });
+
     it('does not render a clear button by default', () => {
       const textField = mountWithAppProvider(
         <TextField
