@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {NamedExoticComponent} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
@@ -17,17 +17,16 @@ export interface ListProps {
   children?: React.ReactNode;
 }
 
-export class List extends PureComponent<ListProps, never> {
-  static Item = Item;
+export const List: React.FunctionComponent<ListProps> & {
+  Item: typeof Item;
+} = function List({children, type = 'bullet'}: ListProps) {
+  const className = classNames(
+    styles.List,
+    type && styles[variationName('type', type)],
+  );
 
-  render() {
-    const {children, type = 'bullet'} = this.props;
-    const className = classNames(
-      styles.List,
-      type && styles[variationName('type', type)],
-    );
+  const ListElement = type === 'bullet' ? 'ul' : 'ol';
+  return <ListElement className={className}>{children}</ListElement>;
+};
 
-    const ListElement = type === 'bullet' ? 'ul' : 'ol';
-    return <ListElement className={className}>{children}</ListElement>;
-  }
-}
+List.Item = Item;
