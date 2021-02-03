@@ -113,7 +113,9 @@ describe('useIndexResourceState', () => {
           .trigger('onClick', SelectionType.Page, true);
       }
 
-      expect(throwResourceSelectionError).toThrowError();
+      expect(throwResourceSelectionError).toThrow(
+        'Your resource does not directly contain an `id`. Pass a `resourceIDResolver` to `useIndexResourceState`',
+      );
     });
 
     it('accepts a custom id resolver', () => {

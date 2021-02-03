@@ -6,8 +6,11 @@ import {mountWithApp} from 'test-utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
+import {Badge} from '../../Badge';
+import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
+import {SelectionType} from '../../../utilities/index-provider';
 
 const mockTableItems = [
   {
@@ -81,6 +84,97 @@ describe('<IndexTable>', () => {
     );
 
     expect(index).toContainReactComponent(Spinner);
+  });
+
+  describe('headings', () => {
+    it('renders new headings', () => {
+      const headings: IndexTableProps['headings'] = [
+        {title: 'Heading one'},
+        {title: 'Heading two', new: true},
+      ];
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          headings={headings}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(Badge, {children: 'New'});
+    });
+
+    it('renders hidden headings', () => {
+      const title = 'Heading two';
+      const headings: IndexTableProps['headings'] = [
+        {title: 'Heading one'},
+        {title, hidden: true},
+      ];
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          headings={headings}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(VisuallyHidden, {children: title});
+    });
+  });
+
+  describe('BulkActions', () => {
+    it('toggles all resources selected when paginatedSelectionAllAction is triggered', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={[{content: 'promoted action'}]}
+          onSelectionChange={onSelectionChangeSpy}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      index
+        .find(BulkActions)!
+        .triggerKeypath('paginatedSelectAllAction.onAction');
+
+      expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+        SelectionType.All,
+        true,
+      );
+    });
+
+    it('toggles all page resources when onToggleAll is triggered', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={[{content: 'promoted action'}]}
+          onSelectionChange={onSelectionChangeSpy}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      index.find(BulkActions)!.trigger('onToggleAll');
+
+      expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+        SelectionType.Page,
+        true,
+      );
+    });
   });
 
   describe('condensed', () => {

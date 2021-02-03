@@ -78,7 +78,7 @@ describe('useIndexSelectionChange', () => {
       mount(<MockComponent />);
     }
 
-    expect(throwMissingContext).toThrowError();
+    expect(throwMissingContext).toThrow('Missing IndexProvider context');
   });
 
   it('returns onSelectionChange', () => {
@@ -120,7 +120,7 @@ describe('useIndexValue', () => {
       mount(<MockComponent />);
     }
 
-    expect(throwMissingContext).toThrowError();
+    expect(throwMissingContext).toThrow('Missing IndexProvider context');
   });
 
   it('returns index context values', () => {
