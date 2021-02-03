@@ -112,6 +112,7 @@ describe('<TrapFocus />', () => {
   it('keeps focus on nodes contained inside trap focus during mount', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
+        <button>First node</button>
         <TextField label="" value="" onChange={noop} autoFocus />
       </TrapFocus>,
     );
