@@ -14,20 +14,19 @@ const getUrls = async (browser) => {
   // Get the URLS from storybook
   const page = await browser.newPage();
   await page.goto(iframePath);
-  const stories = await page.evaluate(() =>
-    window.__STORYBOOK_CLIENT_API__.raw(),
+  const storyIds = await page.evaluate(() =>
+    window.__STORYBOOK_CLIENT_API__.raw().map((story) => story.id),
   );
   await page.close();
 
-  const urls = stories.reduce((memo, story) => {
+  const urls = storyIds.reduce((memo, storyId) => {
     // If it is a story id that is not in excludedStoryIds
-    if (skippedStoryIds.every((id) => !story.id.includes(id))) {
-      const url = `${iframePath}?id=${story.id}`;
+    if (skippedStoryIds.every((id) => !storyId.includes(id))) {
+      const url = `${iframePath}?id=${storyId}`;
       memo.push(
         url,
-        `${url}&contexts=New%20Design%20Language%3DEnabled%20-%20Light%20Mode`,
         // Dark mode has lots of errors. It is still very WIP so ignore for now
-        // `${url}&contexts=New%20Design%20Language%3DEnabled%20-%20Dark%20Mode`,
+        // `${url}&contexts=Color%20scheme%3DDark%20Mode`,
       );
     }
 

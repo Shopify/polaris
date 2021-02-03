@@ -561,7 +561,7 @@ function LargeModalExample() {
 
 <!-- example-for: web -->
 
-We recommend you add a title to your modal, but you may leave it blank.
+A title is required for accessibility, but you may hide it.
 
 ```jsx
 function ModalWithoutTitleExample() {
@@ -574,6 +574,8 @@ function ModalWithoutTitleExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
+        title="Reach more shoppers with Instagram product tags"
+        titleHidden
         activator={activator}
         open={active}
         onClose={handleChange}
@@ -631,7 +633,9 @@ function ModalWithScrollListenerExample() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <p>Item #{index}</p>
+              <p>
+                Item <a href="#">#{index}</a>
+              </p>
             </TextContainer>
           </Modal.Section>
         ))}

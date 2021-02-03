@@ -5,7 +5,6 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -29,7 +28,6 @@ export interface TabsProps {
 
 type CombinedProps = TabsProps & {
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -71,18 +69,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {
-      tabs,
-      selected,
-      fitted,
-      children,
-      i18n,
-      features,
-      disclosureText,
-    } = this.props;
+    const {tabs, selected, fitted, children, i18n, disclosureText} = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
-    const {newDesignLanguage} = features;
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -116,22 +105,11 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       styles.Tabs,
       fitted && styles.fitted,
       disclosureActivatorVisible && styles.fillSpace,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
-
-    const wrapperClassName = classNames(
-      styles.Wrapper,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureTabClassName = classNames(
       styles.DisclosureTab,
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
-    );
-
-    const disclosureActivatorClassName = classNames(
-      styles.TabContainer,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureButtonClassName = classNames(
@@ -147,10 +125,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const disclosureButtonContent = hasCustomDisclosure ? (
       <>
         {disclosureText}
-        <Icon source={CaretDownMinor} color="inkLighter" />
+        <Icon source={CaretDownMinor} color="subdued" />
       </>
     ) : (
-      <Icon source={HorizontalDotsMinor} />
+      <Icon source={HorizontalDotsMinor} color="subdued" />
     );
 
     const disclosureButton = (
@@ -167,14 +145,14 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
 
     const activator = disclosureText ? (
-      <div className={disclosureActivatorClassName}>{disclosureButton}</div>
+      <div className={styles.TabContainer}>{disclosureButton}</div>
     ) : (
       disclosureButton
     );
 
     return (
       <div>
-        <div className={wrapperClassName}>
+        <div className={styles.Wrapper}>
           <ul
             role="tablist"
             className={classname}
@@ -190,6 +168,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
                 activator={activator}
                 active={disclosureActivatorVisible && showDisclosure}
                 onClose={this.handleClose}
+                autofocusTarget="first-node"
               >
                 <List
                   focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -246,8 +225,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
-    const {selected} = this.props;
+    const {selected, children} = this.props;
     const {tabToFocus} = this.state;
+    const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
     return (
       <Tab
@@ -257,7 +237,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         focused={index === tabToFocus}
         selected={index === selected}
         onClick={this.handleTabClick}
-        panelID={tab.panelID || `${tab.id}-panel`}
+        panelID={children ? tabPanelID : undefined}
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
@@ -399,7 +379,6 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 
 export function Tabs(props: TabsProps) {
   const i18n = useI18n();
-  const features = useFeatures();
 
-  return <TabsInner {...props} i18n={i18n} features={features} />;
+  return <TabsInner {...props} i18n={i18n} />;
 }

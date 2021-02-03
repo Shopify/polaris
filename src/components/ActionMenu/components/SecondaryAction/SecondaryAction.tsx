@@ -2,8 +2,6 @@ import React, {useEffect, useRef} from 'react';
 
 import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
-import {useFeatures} from '../../../../utilities/features';
-import {classNames} from '../../../../utilities/css';
 
 import styles from './SecondaryAction.scss';
 
@@ -18,21 +16,16 @@ export function SecondaryAction({
   getOffsetWidth,
   ...rest
 }: SecondaryAction) {
-  const {newDesignLanguage} = useFeatures();
   const secondaryActionsRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!getOffsetWidth || !secondaryActionsRef.current || !newDesignLanguage)
-      return;
+    if (!getOffsetWidth || !secondaryActionsRef.current) return;
 
     getOffsetWidth(secondaryActionsRef.current?.offsetWidth);
-  }, [getOffsetWidth, newDesignLanguage]);
+  }, [getOffsetWidth]);
 
   return (
-    <span
-      className={classNames(styles.SecondaryAction, styles.newDesignLanguage)}
-      ref={secondaryActionsRef}
-    >
+    <span className={styles.SecondaryAction} ref={secondaryActionsRef}>
       <Button onClick={onAction} {...rest}>
         {children}
       </Button>

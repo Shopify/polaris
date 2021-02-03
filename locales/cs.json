@@ -82,7 +82,9 @@
         "friday": "Pátek",
         "saturday": "Sobota",
         "sunday": "Neděle"
-      }
+      },
+      "start": "Začátek rozsahu",
+      "end": "Konec rozsahu"
     },
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
@@ -110,10 +112,8 @@
       "skipToContent": "Přeskočit na obsah",
       "Navigation": {
         "closeMobileNavigationLabel": "Zavřít navigaci"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigace"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
     }
   }
 }

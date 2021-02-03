@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
-import {useFeatures} from '../../utilities/features';
 import type {ComplexAction} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
@@ -48,11 +47,9 @@ export function EmptyState({
   footerContent,
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
-  const {newDesignLanguage = false} = useFeatures();
   const className = classNames(
     styles.EmptyState,
     fullWidth && styles.fullWidth,
-    newDesignLanguage && styles.newDesignLanguage,
     imageContained && styles.imageContained,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
   );
@@ -74,7 +71,7 @@ export function EmptyState({
   );
 
   const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, newDesignLanguage ? {} : {plain: true})
+    ? buttonFrom(secondaryAction, {})
     : null;
 
   const footerContentMarkup = footerContent ? (
@@ -84,11 +81,9 @@ export function EmptyState({
   ) : null;
 
   const headingSize = withinContentContainer ? 'small' : 'medium';
-  const primaryActionSize =
-    withinContentContainer || newDesignLanguage ? 'medium' : 'large';
 
   const primaryActionMarkup = action
-    ? buttonFrom(action, {primary: true, size: primaryActionSize})
+    ? buttonFrom(action, {primary: true, size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (
@@ -110,11 +105,7 @@ export function EmptyState({
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
       <div className={styles.Actions}>
-        <Stack
-          alignment="center"
-          distribution={newDesignLanguage ? 'center' : undefined}
-          spacing={newDesignLanguage ? 'tight' : undefined}
-        >
+        <Stack alignment="center" distribution="center" spacing="tight">
           {primaryActionMarkup}
           {secondaryActionMarkup}
         </Stack>

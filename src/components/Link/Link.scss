@@ -8,19 +8,18 @@
   background: none;
   border: 0;
   font-size: inherit;
-  color: var(--p-interactive, color('blue'));
-  text-decoration: none;
+  color: var(--p-interactive);
+  text-decoration: underline;
   cursor: pointer;
 
   &:hover {
-    color: var(--p-interactive-hovered, color('blue', 'dark'));
-    text-decoration: underline;
+    color: var(--p-interactive-hovered);
+    text-decoration: none;
   }
 
   &:focus {
     $chrome-default-outline: rgba(0, 103, 244, 0.247) auto rem(4.5px);
-    outline: var(--p-override-none, $chrome-default-outline);
-    text-decoration: underline;
+    outline: var(--p-override-none);
   }
 
   &:focus:not(:active) {
@@ -29,11 +28,10 @@
 
   &:active {
     position: relative;
-    color: var(--p-interactive-pressed, color('blue', 'dark'));
-    text-decoration: underline;
+    color: var(--p-interactive-pressed);
 
     &::before {
-      content: var(--p-non-null-content, none);
+      content: '';
       position: absolute;
       z-index: -1;
       // this mimics the box model of the plain button backdrop
@@ -45,6 +43,10 @@
 
       border-radius: border-radius();
     }
+  }
+
+  @media print {
+    text-decoration-color: var(--p-border-neutral-subdued);
   }
 }
 
@@ -68,11 +70,14 @@
 
 .monochrome {
   color: inherit;
-  text-decoration: underline;
 
   &:hover,
   &:focus,
   &:active {
     color: inherit;
   }
+}
+
+.removeUnderline {
+  text-decoration: none;
 }

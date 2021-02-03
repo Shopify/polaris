@@ -13,7 +13,6 @@ import {
 } from '../../utilities/dates';
 import type {Range} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import {monthName} from './utilities';
 import {Month} from './components';
@@ -43,6 +42,8 @@ export interface DatePickerProps {
    * @default 0
    */
   weekStartsOn?: number;
+  /** Visually hidden prefix text for selected days on single selection date pickers */
+  dayAccessibilityLabelPrefix?: string;
   /** Callback when date is selected. */
   onChange?(date: Range): void;
   /** Callback when month is changed. */
@@ -59,11 +60,11 @@ export function DatePicker({
   disableDatesBefore,
   disableDatesAfter,
   weekStartsOn = 0,
+  dayAccessibilityLabelPrefix,
   onMonthChange,
   onChange = noop,
 }: DatePickerProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
 
@@ -191,6 +192,18 @@ export function DatePicker({
 
   const monthIsSelected = useMemo(() => deriveRange(selected), [selected]);
 
+  const firstDatePickerAccessibilityLabelPrefix = allowRange
+    ? i18n.translate(`Polaris.DatePicker.start`)
+    : dayAccessibilityLabelPrefix;
+  const secondDatePickerAccessibilityLabelPrefix = i18n.translate(
+    `Polaris.DatePicker.end`,
+  );
+
+  const accessibilityLabelPrefixes: [string | undefined, string] = [
+    firstDatePickerAccessibilityLabelPrefix,
+    secondDatePickerAccessibilityLabelPrefix,
+  ];
+
   const secondDatePicker = multiMonth ? (
     <Month
       onFocus={handleFocus}
@@ -205,13 +218,11 @@ export function DatePicker({
       disableDatesAfter={disableDatesAfter}
       allowRange={allowRange}
       weekStartsOn={weekStartsOn}
+      accessibilityLabelPrefixes={accessibilityLabelPrefixes}
     />
   ) : null;
 
-  const datePickerClassName = classNames(
-    styles.DatePicker,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const datePickerClassName = classNames(styles.DatePicker);
 
   return (
     <div
@@ -259,6 +270,7 @@ export function DatePicker({
           disableDatesAfter={disableDatesAfter}
           allowRange={allowRange}
           weekStartsOn={weekStartsOn}
+          accessibilityLabelPrefixes={accessibilityLabelPrefixes}
         />
         {secondDatePicker}
       </div>

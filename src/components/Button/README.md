@@ -314,22 +314,22 @@ function DisclosureButtion() {
 }
 ```
 
-### Stretched disclosure button
+### Right-aligned disclosure
 
 <!-- example-for: web -->
 
-Stretch disclosure button content its full width for a dropdown look
+When working with `fullWidth + textAlign="left"`, the `disclosure` will align itself to the far right.
 
 ```jsx
-function StretchedDisclosureButton() {
+function RightAlignedDisclosureButton() {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div style={{width: '200px'}}>
       <Button
-        disclosure={expanded ? 'up' : 'down'}
         fullWidth
-        stretchContent
+        textAlign="left"
+        disclosure={expanded ? 'up' : 'down'}
         onClick={() => setExpanded(!expanded)}
       >
         {expanded ? 'Show less' : 'Show more'}
@@ -337,6 +337,20 @@ function StretchedDisclosureButton() {
     </div>
   );
 }
+```
+
+### Select disclosure button
+
+<!-- example-for: web -->
+
+Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
+
+```jsx
+<div style={{height: '100px'}}>
+  <Button disclosure="select" onClick={() => console.log('Open Popover')}>
+    Select options
+  </Button>
+</div>
 ```
 
 ### Split button
@@ -447,7 +461,7 @@ Buttons can have different states that are visually and programmatically conveye
 - Use the `ariaControls` prop to add an `aria-controls` attribute to the button. Use the attribute to point to the unique `id` of the content that the button manages.
 - If a button expands or collapses adjacent content, then use the `ariaExpanded` prop to add the `aria-expanded` attribute to the button. Set the value to convey the current expanded (`true`) or collapsed (`false`) state of the content.
 - Use the `disabled` prop to set the `disabled` state of the button. This prevents merchants from being able to interact with the button, and conveys its inactive state to assistive technologies.
-- Use the `ariaPressed` prop to add an `aria-pressed` attribute to the button.
+- Use the `pressed` prop to add an `aria-pressed` attribute to the button.
 
 #### Navigation
 

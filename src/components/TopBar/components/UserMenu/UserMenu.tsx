@@ -1,6 +1,5 @@
 import React from 'react';
 
-import type {InversableColorScheme} from '../../../ThemeProvider';
 import type {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
@@ -17,6 +16,8 @@ export interface UserMenuProps {
   name: string;
   /** A string allowing further detail on the merchant’s name displayed in the user menu */
   detail?: string;
+  /** A string that provides the accessibility labeling */
+  accessibilityLabel?: string;
   /** The merchant’s initials, rendered in place of an avatar image when not provided */
   initials: AvatarProps['initials'];
   /** An avatar image representing the merchant */
@@ -26,7 +27,7 @@ export interface UserMenuProps {
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
   /** Accepts a color scheme for the contents of the user menu */
-  colorScheme?: InversableColorScheme;
+  colorScheme?: MenuProps['colorScheme'];
 }
 
 export function UserMenu({
@@ -39,6 +40,7 @@ export function UserMenu({
   onToggle,
   open,
   colorScheme,
+  accessibilityLabel,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
@@ -67,6 +69,7 @@ export function UserMenu({
       actions={actions}
       message={message}
       colorScheme={colorScheme}
+      accessibilityLabel={accessibilityLabel}
     />
   );
 }

@@ -82,7 +82,9 @@
         "friday": "Cuma",
         "saturday": "Cumartesi",
         "sunday": "Pazar"
-      }
+      },
+      "start": "Aralık başlangıcı",
+      "end": "Aralık bitişi"
     },
     "DiscardConfirmationModal": {
       "title": "Kaydedilmemiş tüm değişiklikleri at",
@@ -110,10 +112,8 @@
       "skipToContent": "İçeriğe atla",
       "Navigation": {
         "closeMobileNavigationLabel": "Gezinmeyi kapat"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color} renkli simgeye fon eklenmez. Fonu olan simge renkleri şunlardır: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Gezinme"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -294,6 +294,12 @@
     },
     "Actions": {
       "moreActions": "Diğer işlemler"
+    },
+    "Loading": {
+      "label": "Sayfa yüklenme çubuğu"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "İpucu: {label}"
     }
   }
 }

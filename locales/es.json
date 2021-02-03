@@ -82,7 +82,9 @@
         "friday": "viernes",
         "saturday": "sábado",
         "sunday": "domingo"
-      }
+      },
+      "start": "Inicio del intervalo",
+      "end": "Fin del intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todos los cambios no guardados",
@@ -107,13 +109,11 @@
       "altText": "Resultados de búsqueda vacíos"
     },
     "Frame": {
-      "skipToContent": "Saltar al contenido",
+      "skipToContent": "Ir directamente al contenido",
       "Navigation": {
         "closeMobileNavigationLabel": "Cerrar la navegación"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "El ícono {color} no acepta fondos. Los colores de los íconos que tienen fondos son: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navegación"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -294,6 +294,12 @@
     },
     "Actions": {
       "moreActions": "Más acciones"
+    },
+    "Loading": {
+      "label": "Barra de \"cargando página\""
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Descripción emergente: {label}"
     }
   }
 }

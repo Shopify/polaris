@@ -61,6 +61,19 @@ describe('<PositionedOverlay />', () => {
         positioning: 'above',
       });
     });
+
+    it('positions below if no preferredPosition is given', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(<PositionedOverlay {...mockProps} render={spy} />);
+
+      expect(spy).toHaveBeenCalledWith({
+        activatorRect: {height: 0, left: 0, top: 0, width: 0},
+        desiredHeight: 0,
+        left: undefined,
+        measuring: true,
+        positioning: 'below',
+      });
+    });
   });
 
   describe('preferredAlignment', () => {

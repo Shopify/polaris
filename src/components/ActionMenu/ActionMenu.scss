@@ -5,13 +5,10 @@
   @include print-hidden;
   // Needed for JS calculations
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
 
   &:not(.rollup) {
     margin-left: var(--p-override-zero, -$menu-action-padding-x);
   }
-}
-
-.newDesignLanguage {
-  display: flex;
-  justify-content: flex-end;
 }

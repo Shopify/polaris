@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -27,7 +27,7 @@ export function UnstyledButton({
   role,
   ariaControls,
   ariaExpanded,
-  ariaPressed,
+  ariaDescribedBy,
   onClick,
   onFocus,
   onBlur,
@@ -38,18 +38,6 @@ export function UnstyledButton({
   onTouchStart,
   ...rest
 }: UnstyledButtonProps) {
-  const hasGivenDeprecationWarning = useRef(false);
-
-  if (ariaPressed && !hasGivenDeprecationWarning.current) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The ariaPressed prop has been replaced with pressed',
-    );
-    hasGivenDeprecationWarning.current = true;
-  }
-
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
-
   let buttonMarkup;
 
   const commonProps = {
@@ -93,7 +81,8 @@ export function UnstyledButton({
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
-        aria-pressed={ariaPressedStatus}
+        aria-describedby={ariaDescribedBy}
+        aria-pressed={pressed}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}

@@ -82,7 +82,9 @@
         "friday": "星期五",
         "saturday": "星期六",
         "sunday": "星期天"
-      }
+      },
+      "start": "范围起始",
+      "end": "范围末端"
     },
     "DiscardConfirmationModal": {
       "title": "放弃所有未保存的更改",
@@ -110,10 +112,8 @@
       "skipToContent": "跳到内容",
       "Navigation": {
         "closeMobileNavigationLabel": "关闭网站地图"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}"
+      },
+      "navigationLabel": "网站导航"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -294,6 +294,12 @@
     },
     "Actions": {
       "moreActions": "其他操作"
+    },
+    "Loading": {
+      "label": "页面加载条"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "工具提示：{label}"
     }
   }
 }

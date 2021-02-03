@@ -22,7 +22,8 @@ describe('<Tooltip />', () => {
   });
 
   it('does not render initially', () => {
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('renders initially when active is true', () => {
@@ -31,9 +32,8 @@ describe('<Tooltip />', () => {
         <Link>link content</Link>
       </Tooltip>,
     );
-    expect(findByTestID(tooltipActive, 'TooltipOverlayLabel').exists()).toBe(
-      true,
-    );
+    const overlayContent = tooltipActive.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
@@ -49,22 +49,26 @@ describe('<Tooltip />', () => {
 
   it('renders on mouseOver', () => {
     wrapperComponent.simulate('mouseOver');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('renders on focus', () => {
     wrapperComponent.simulate('focus');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(true);
   });
 
   it('unrenders its children on blur', () => {
     wrapperComponent.simulate('blur');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('unrenders its children on mouseLeave', () => {
     wrapperComponent.simulate('mouseLeave');
-    expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+    const overlayContent = tooltip.find(TooltipOverlay).find('div');
+    expect(overlayContent.exists()).toBe(false);
   });
 
   it('closes itself when escape is pressed on keyup', () => {
@@ -80,5 +84,38 @@ describe('<Tooltip />', () => {
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
       active: false,
     });
+  });
+
+  it('passes accessibility label to TooltipOverlay', () => {
+    const accessibilityLabel = 'accessibility label';
+
+    const tooltip = mountWithApp(
+      <Tooltip
+        accessibilityLabel={accessibilityLabel}
+        content="Inner content"
+        active
+      >
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      accessibilityLabel,
+    });
+  });
+
+  it('does not propagate click to wrappers', () => {
+    const spyFn = jest.fn();
+    const tooltip = mountWithAppProvider(
+      <div onClick={spyFn}>
+        <Tooltip content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>
+      </div>,
+    );
+
+    const wrapperComponent = findByTestID(tooltip, 'WrapperComponent');
+    wrapperComponent.simulate('click');
+
+    expect(spyFn).not.toHaveBeenCalled();
   });
 });

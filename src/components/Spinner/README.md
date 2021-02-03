@@ -28,7 +28,7 @@ Spinners are used to notify merchants that their action is being processed. For 
 Use to notify merchants that their requested action is being processed.
 
 ```jsx
-<Spinner accessibilityLabel="Spinner example" size="large" color="teal" />
+<Spinner accessibilityLabel="Spinner example" size="large" />
 ```
 
 <!-- content-for: android -->
@@ -50,7 +50,7 @@ Use to notify merchants that their requested action is being processed.
 Smaller than the default spinner.
 
 ```jsx
-<Spinner accessibilityLabel="Small spinner example" size="small" color="teal" />
+<Spinner accessibilityLabel="Small spinner example" size="small" />
 ```
 
 ### Spinner with focus management

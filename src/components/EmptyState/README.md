@@ -152,14 +152,16 @@ primary buttons.
 Use to explain a single feature before merchants have used it.
 
 ```jsx
-<EmptyState
-  heading="Manage your inventory transfers"
-  action={{content: 'Add transfer'}}
-  secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
-  image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
->
-  <p>Track and receive your incoming inventory from suppliers.</p>
-</EmptyState>
+<Card sectioned>
+  <EmptyState
+    heading="Manage your inventory transfers"
+    action={{content: 'Add transfer'}}
+    secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+    image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+  >
+    <p>Track and receive your incoming inventory from suppliers.</p>
+  </EmptyState>
+</Card>
 ```
 
 <!-- content-for: android -->
@@ -181,66 +183,45 @@ Use to explain a single feature before merchants have used it.
 Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
 ```jsx
-<EmptyState
-  heading="Manage your inventory transfers"
-  action={{content: 'Add transfer'}}
-  secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
-  footerContent={
-    <p>
-      If you don’t want to add a transfer, you can import your inventory from{' '}
-      <Link monochrome url="/settings">
-        settings
-      </Link>
-      .
-    </p>
-  }
-  image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
->
-  <p>Track and receive your incoming inventory from suppliers.</p>
-</EmptyState>
-```
-
-### Empty state within a content context
-
-<!-- example-for: web -->
-
-```jsx
-<Card>
-  <Card.Section>
-    <EmptyState
-      heading="Upload a file to get started"
-      action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
-    >
+<Card sectioned>
+  <EmptyState
+    heading="Manage your inventory transfers"
+    action={{content: 'Add transfer'}}
+    secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+    footerContent={
       <p>
-        You can use the Files section to upload images, videos, and other
-        documents
+        If you don’t want to add a transfer, you can import your inventory from{' '}
+        <Link monochrome url="/settings">
+          settings
+        </Link>
+        .
       </p>
-    </EmptyState>
-  </Card.Section>
+    }
+    image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+  >
+    <p>Track and receive your incoming inventory from suppliers.</p>
+  </EmptyState>
 </Card>
 ```
 
-### Empty state with full width layout in a content context
+### Empty state with full width layout
 
 <!-- example-for: web -->
 
 ```jsx
-<Card>
-  <Card.Section>
-    <EmptyState
-      heading="Upload a file to get started"
-      action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
-      fullWidth
-    >
-      <p>
-        You can use the Files section to upload images, videos, and other
-        documents. This example shows the content with a centered layout and
-        full width.
-      </p>
-    </EmptyState>
-  </Card.Section>
+<Card sectioned>
+  <EmptyState
+    heading="Upload a file to get started"
+    action={{content: 'Upload files'}}
+    image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+    fullWidth
+  >
+    <p>
+      You can use the Files section to upload images, videos, and other
+      documents. This example shows the content with a centered layout and full
+      width.
+    </p>
+  </EmptyState>
 </Card>
 ```
 

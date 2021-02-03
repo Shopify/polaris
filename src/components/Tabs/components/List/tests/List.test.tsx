@@ -1,7 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {List} from '../List';
 import {Item} from '../../Item';
@@ -98,26 +97,6 @@ describe('<List />', () => {
       );
       const firstItem = list.find(Item).first();
       expect(firstItem.contains('Repeat customers')).toBe(true);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const list = mountWithApp(<List {...mockProps} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(list).toContainReactComponent('ul', {
-        className: 'List newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is not enabled', () => {
-      const list = mountWithApp(<List {...mockProps} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(list).toContainReactComponent('ul', {
-        className: 'List',
-      });
     });
   });
 });

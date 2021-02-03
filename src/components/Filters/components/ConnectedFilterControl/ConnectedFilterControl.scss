@@ -44,64 +44,52 @@ $stacking-order: (
 
   &.right {
     .CenterContainer * {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &.right.newDesignLanguage {
-    .CenterContainer * {
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
     }
   }
 }
 
-.newDesignLanguage {
-  .CenterContainer + .RightContainer,
-  .CenterContainer + .MoreFiltersButtonContainer {
-    margin-left: spacing(tight);
-  }
+.CenterContainer + .RightContainer,
+.CenterContainer + .MoreFiltersButtonContainer {
+  margin-left: spacing(tight);
 }
 
 .RightContainer {
   display: flex;
 
   .Item > div > button {
-    margin-right: var(--p-button-group-item-spacing, 0);
-    margin-left: var(--p-override-none, -1px);
+    margin-right: var(--p-button-group-item-spacing);
     border-radius: 0;
   }
 
   .Item {
     flex-shrink: 0;
   }
-}
 
-.RightContainer.queryFieldHidden {
-  .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-.RightContainerWithoutMoreFilters {
-  .Item:last-child > div > button {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-.newDesignLanguage .RightContainer {
   .Item:first-of-type > div > button {
     border-top-left-radius: var(--p-border-radius-base);
     border-bottom-left-radius: var(--p-border-radius-base);
   }
 }
 
+.RightContainer.queryFieldHidden {
+  .Item:first-of-type > div > button {
+    border-top-left-radius: var(--p-border-radius-base);
+    border-bottom-left-radius: var(--p-border-radius-base);
+  }
+}
+
+.RightContainerWithoutMoreFilters {
+  .Item:last-child > div > button {
+    border-top-right-radius: var(--p-border-radius-base);
+    border-bottom-right-radius: var(--p-border-radius-base);
+  }
+}
+
 .MoreFiltersButtonContainer {
   > div {
-    margin-left: var(--p-override-none, -1px);
+    margin-left: var(--p-override-none);
   }
 
   .Item > div > button {
@@ -113,7 +101,7 @@ $stacking-order: (
 
 .MoreFiltersButtonContainer.onlyButtonVisible {
   .Item > div > button {
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: var(--p-border-radius-base);
   }
 }
 

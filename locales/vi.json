@@ -85,7 +85,9 @@
         "friday": "T6",
         "saturday": "T7",
         "sunday": "CN"
-      }
+      },
+      "start": "Bắt đầu phạm vi",
+      "end": "Kết thúc phạm vi"
     },
     "DiscardConfirmationModal": {
       "title": "Bỏ tất cả thay đổi chưa lưu",
@@ -113,10 +115,8 @@
       "skipToContent": "Chuyển đến nội dung",
       "Navigation": {
         "closeMobileNavigationLabel": "Đóng menu điều hướng"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Biểu tượng {color} không chấp nhận phông nền. Màu biểu tượng có phông nền là: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Menu điều hướng"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -294,6 +294,12 @@
           }
         }
       }
+    },
+    "Loading": {
+      "label": "Thanh tải trang"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Chú giải công cụ: {label}"
     }
   }
 }

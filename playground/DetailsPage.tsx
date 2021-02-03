@@ -57,6 +57,9 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
+  const initialDescription =
+    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
+  const [previewValue, setPreviewValue] = useState(initialDescription);
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -181,6 +184,7 @@ export function DetailsPage() {
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
       colorScheme="dark"
+      accessibilityLabel="User menu"
     />
   );
 
@@ -235,6 +239,35 @@ export function DetailsPage() {
             },
             matches: navItemActive === 'orders',
             url: '#',
+            subNavigationItems: [
+              {
+                label: 'All orders',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('all-orders');
+                },
+                matches: navItemActive.includes('orders'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Drafts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('drafts');
+                },
+                matches: navItemActive === 'drafts',
+              },
+              {
+                url: '#',
+                label: 'Abandoned checkouts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('abandoned');
+                },
+                matches: navItemActive === 'abandoned',
+              },
+            ],
           },
           {
             label: 'Products',
@@ -257,21 +290,21 @@ export function DetailsPage() {
               },
               {
                 url: '#',
-                label: 'Drafts',
+                label: 'Inventory',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('drafts');
+                  setNavItemActive('inventory');
                 },
-                matches: navItemActive === 'drafts',
+                matches: navItemActive === 'inventory',
               },
               {
                 url: '#',
-                label: 'Abandoned checkouts',
+                label: 'Transfers',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('abandoned');
+                  setNavItemActive('transfers');
                 },
-                matches: navItemActive === 'abandoned',
+                matches: navItemActive === 'transfers',
               },
             ],
           },
@@ -401,9 +434,7 @@ export function DetailsPage() {
   );
 
   // ---- Description ----
-  const [DescriptionValue, setValue] = useState(
-    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.',
-  );
+  const [descriptionValue, setDescriptionValue] = useState(initialDescription);
 
   // ---- Select ----
   const [selected, setSelected] = useState('today');
@@ -416,7 +447,40 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback((newValue) => {
+    setDescriptionValue(newValue);
+    setPreviewValue(newValue);
+  }, []);
+
+  const actions1 = [
+    {
+      content: 'Duplicate',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('duplicate'),
+    },
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+  const actions2 = [
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+
+  const [actions, setActions] = useState(actions1);
+
+  const toggleActions = () => {
+    if (actions.length === 2) {
+      setActions(actions2);
+    } else {
+      setActions(actions1);
+    }
+  };
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -465,22 +529,15 @@ export function DetailsPage() {
         // eslint-disable-next-line no-console
         onAction: () => console.log('save'),
       }}
-      additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
+      additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
-        {
-          content: 'Duplicate',
-          // eslint-disable-next-line no-console
-          onAction: () => console.log('duplicate'),
-        },
+        ...actions,
         {
           content: 'View',
-          // eslint-disable-next-line no-console
-          onAction: () => console.log('view'),
-        },
-        {
-          content: 'Print',
-          // eslint-disable-next-line no-console
-          onAction: () => console.log('print'),
+          onAction: () => {
+            // eslint-disable-next-line no-console
+            console.log(previewValue);
+          },
         },
       ]}
       actionGroups={[
@@ -500,9 +557,8 @@ export function DetailsPage() {
               onAction: () => console.log('embed'),
             },
             {
-              content: 'Share',
-              // eslint-disable-next-line no-console
-              onAction: () => console.log('share'),
+              content: 'Toggle page actions',
+              onAction: toggleActions,
             },
           ],
         },
@@ -524,7 +580,7 @@ export function DetailsPage() {
               />
               <TextField
                 label="Description"
-                value={DescriptionValue}
+                value={descriptionValue}
                 onChange={handleChange}
                 multiline
               />

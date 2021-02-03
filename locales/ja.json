@@ -82,7 +82,9 @@
         "friday": "金曜日",
         "saturday": "土曜日",
         "sunday": "日曜日"
-      }
+      },
+      "start": "範囲の開始",
+      "end": "範囲の終了"
     },
     "DiscardConfirmationModal": {
       "title": "すべての保存されていない変更を破棄する",
@@ -110,10 +112,8 @@
       "skipToContent": "コンテンツにスキップする",
       "Navigation": {
         "closeMobileNavigationLabel": "メニューを閉じる"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "メニュー"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -294,6 +294,12 @@
     },
     "Actions": {
       "moreActions": "その他の操作"
+    },
+    "Loading": {
+      "label": "ページの読み込み表示バー"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "ツールチップ: {label}"
     }
   }
 }

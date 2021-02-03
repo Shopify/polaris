@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
@@ -61,5 +62,17 @@ describe('<Scrollable />', () => {
     );
     scrollArea.find('#scrollContents').simulate('scroll');
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('has a tabIndex when focusable', () => {
+    const scrollArea = mountWithApp(
+      <Scrollable focusable>
+        <p>Hello</p>
+      </Scrollable>,
+    );
+
+    expect(scrollArea.find('div')).toHaveReactProps({
+      tabIndex: 0,
+    });
   });
 });

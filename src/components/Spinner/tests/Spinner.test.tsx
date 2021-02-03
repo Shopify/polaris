@@ -33,13 +33,6 @@ describe('<Spinner />', () => {
       const spinner = mountWithAppProvider(<Spinner size="small" />);
       expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
     });
-
-    it('renders a small spinner when color is white even if size is large', () => {
-      const spinner = mountWithAppProvider(
-        <Spinner size="large" color="white" />,
-      );
-      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
-    });
   });
 
   describe('role', () => {
@@ -51,55 +44,6 @@ describe('<Spinner />', () => {
     it('does not set role to status when a live region is active', () => {
       const spinner = mountWithApp(<Spinner hasFocusableParent />);
       expect(spinner).not.toContainReactComponent('span', {role: 'status'});
-    });
-  });
-
-  describe('console.warn', () => {
-    const oldEnv = process.env;
-    let warnSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      jest.resetModules();
-      process.env = {...oldEnv};
-      delete process.env.NODE_ENV;
-
-      warnSpy = jest.spyOn(console, 'warn');
-      warnSpy.mockImplementation(() => {});
-    });
-
-    afterEach(() => {
-      process.env = oldEnv;
-      warnSpy.mockRestore();
-    });
-
-    it('a large spinner with an unavailable color warns in development', () => {
-      process.env.NODE_ENV = 'development';
-
-      mountWithAppProvider(<Spinner size="large" color="white" />);
-
-      expect(warnSpy).toHaveBeenCalledWith(
-        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest, highlight',
-      );
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const spinner = mountWithApp(<Spinner color="highlight" size="large" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(spinner).toContainReactComponent('span', {
-        className: 'Spinner colorHighlight sizeLarge newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const spinner = mountWithApp(<Spinner color="teal" size="large" />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(spinner).toContainReactComponent('span', {
-        className: 'Spinner colorTeal sizeLarge',
-      });
     });
   });
 });
