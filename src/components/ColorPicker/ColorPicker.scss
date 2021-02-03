@@ -57,7 +57,7 @@ $stacking-order: (
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: var(--p-border-radius-base);
   }
 
   &::before {

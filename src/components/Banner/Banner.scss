@@ -216,7 +216,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .Heading {
-  padding-top: var(--p-override-none, $heading-offset);
+  padding-top: var(--p-override-none);
   word-break: break-word;
 }
 

@@ -9,6 +9,6 @@
   justify-content: flex-end;
 
   &:not(.rollup) {
-    margin-left: var(--p-override-zero, -$menu-action-padding-x);
+    margin-left: var(--p-override-zero);
   }
 }

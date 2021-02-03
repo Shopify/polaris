@@ -77,7 +77,7 @@ $nav-animation-variables: (
 }
 
 @mixin nav-item-icon-attributes {
-  @include recolor-icon(var(--p-icon), transparent, filter('icon'));
+  @include recolor-icon(var(--p-icon), transparent);
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
@@ -93,7 +93,7 @@ $nav-animation-variables: (
 
   .Item:hover &,
   .Item.keyFocused & {
-    @include recolor-icon(var(--p-icon), transparent, filter('icon'));
+    @include recolor-icon(var(--p-icon), transparent);
   }
 
   .Item-selected &,

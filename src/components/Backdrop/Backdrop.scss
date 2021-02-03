@@ -11,7 +11,7 @@ $backdrop-color: rgba(33, 43, 54, 0.4);
   bottom: 0;
   left: 0;
   display: block;
-  background-color: var(--p-backdrop, $backdrop-color);
+  background-color: var(--p-backdrop);
   animation: fade-in duration() $entry-iterations forwards;
   opacity: 1;
   will-change: opacity;

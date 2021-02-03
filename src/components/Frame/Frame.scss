@@ -101,7 +101,7 @@ $skip-vertical-offset: rem(10px);
     @include focus-ring;
     position: absolute;
     border-radius: border-radius();
-    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
+    background-color: var(--p-override-transparent, rgba(color('white'));
     outline: none;
   }
 
@@ -217,7 +217,7 @@ $skip-vertical-offset: rem(10px);
     }
 
     .hasTopBar & {
-      top: var(--p-override-zero, top-bar-height());
+      top: var(--p-override-zero);
       z-index: var(
         --p-override-loading-z-index,
         z-index(loading-bar, $fixed-element-stacking-order)

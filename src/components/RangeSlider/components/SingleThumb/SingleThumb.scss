@@ -94,7 +94,7 @@ $stacking-order: (
     height: $range-thumb-size;
     border: 1px solid transparent;
     border-radius: 50%;
-    background: linear-gradient(var(--p-interactive), var(--p-interactive));
+    background: linear-gradient(var(--p-interactive));
     box-shadow: 0 0 0 0 var(--p-focused);
     appearance: none;
     transition: box-shadow duration(fast) var(--p-ease);
@@ -105,7 +105,7 @@ $stacking-order: (
     @include rangeSliderThumbPosition($range-thumb-size);
 
     &:hover {
-      background: linear-gradient(var(--p-interactive), var(--p-interactive));
+      background: linear-gradient(var(--p-interactive));
     }
   }
 

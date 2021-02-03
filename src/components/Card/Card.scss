@@ -2,7 +2,7 @@
 
 .Card {
   background-color: var(--p-surface);
-  box-shadow: var(--p-card-shadow, shadow());
+  box-shadow: var(--p-card-shadow);
   outline: border-width(base) solid transparent;
 
   + .Card {
@@ -10,7 +10,7 @@
   }
 
   @include page-content-when-not-fully-condensed {
-    border-radius: var(--p-border-radius-wide, border-radius());
+    border-radius: var(--p-border-radius-wide);
   }
 }
 
@@ -39,13 +39,13 @@
 }
 
 .Section:first-child {
-  border-top-left-radius: var(--p-border-radius-wide, border-radius());
-  border-top-right-radius: var(--p-border-radius-wide, border-radius());
+  border-top-left-radius: var(--p-border-radius-wide);
+  border-top-right-radius: var(--p-border-radius-wide);
 }
 
 .Section:last-child {
-  border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
-  border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
+  border-bottom-left-radius: var(--p-border-radius-wide);
+  border-bottom-right-radius: var(--p-border-radius-wide);
 }
 
 .Section-fullWidth {

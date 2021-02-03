@@ -77,7 +77,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
   height: $range-thumb-size;
   border-radius: 50%;
   border: border-width() solid var(--p-interactive);
-  background: linear-gradient(var(--p-interactive), var(--p-interactive));
+  background: linear-gradient(var(--p-interactive));
   -webkit-tap-highlight-color: transparent;
 
   // stylelint-disable-next-line value-no-vendor-prefix

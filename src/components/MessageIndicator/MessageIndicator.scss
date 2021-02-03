@@ -15,6 +15,6 @@ $indicator-position: rem(-3px);
   width: $indicator-size;
   height: $indicator-size;
   border-radius: 100%;
-  background-color: var(--p-icon-highlight, color('teal'));
-  border: solid rem(2px) var(--p-background, var(--top-bar-background));
+  background-color: var(--p-icon-highlight);
+  border: solid rem(2px) var(--p-background);
 }

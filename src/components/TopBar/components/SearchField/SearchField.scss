@@ -151,7 +151,7 @@ $stacking-order: (
   );
   will-change: background-color;
   transition: background-color duration() easing();
-  border-radius: var(--p-border-radius-base, border-radius());
+  border-radius: var(--p-border-radius-base);
   animation: toLightBackground 0.01ms;
 }
 
