@@ -17,7 +17,6 @@ import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {
   useIndexValue,
   useIndexSelectionChange,
@@ -75,7 +74,6 @@ function IndexTableBase({
     condensed,
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
-  const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
 
   const {
@@ -243,9 +241,7 @@ function IndexTableBase({
       style={stickyColumnHeaderStyle}
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        <div
-          className={newDesignLanguage ? styles.StickyColumnHeaderCheckbox : ''}
-        >
+        <div className={styles.StickyColumnHeaderCheckbox}>
           {renderCheckboxContent()}
         </div>
         <div className={styles['StickyTableHeading-second-scrolling']}>
@@ -513,7 +509,6 @@ function IndexTableBase({
     const checkboxClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['TableHeading-first'],
-      index === 0 && newDesignLanguage && styles.newDesignLanguage,
     );
 
     const checkboxContent = (

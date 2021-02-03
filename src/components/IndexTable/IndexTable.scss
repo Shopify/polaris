@@ -154,11 +154,8 @@ $loading-panel-height: rem(53px);
 .TableHeading-first {
   position: sticky;
   left: 0;
-
-  &.newDesignLanguage {
-    padding-left: $checkbox-offset-left;
-    padding-right: $checkbox-offset-right;
-  }
+  padding-left: $checkbox-offset-left;
+  padding-right: $checkbox-offset-right;
 }
 
 .StickyColumnHeaderCheckbox {

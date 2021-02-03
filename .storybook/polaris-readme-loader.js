@@ -139,8 +139,7 @@ import {
   Heading,
   Icon,
   Image,
-  UnstableIndexProvider as IndexProvider,
-  UnstableIndexTable as IndexTable,
+  IndexTable,
   Indicator,
   InlineError,
   KeyboardKey,
@@ -195,7 +194,7 @@ import {
   UnstyledLink,
   VisuallyHidden,
   VideoThumbnail,
-  useIndexResourceStateUnstable as useIndexResourceState,
+  useIndexResourceState,
 } from '@shopify/polaris';
 import {
   PlusMinor,
