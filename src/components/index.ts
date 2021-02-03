@@ -136,8 +136,8 @@ export type {IconProps} from './Icon';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
 
-export {IndexTable as UnstableIndexTable} from './IndexTable';
-export type {IndexTableProps as UnstableIndexTableProps} from './IndexTable';
+export {IndexTable} from './IndexTable';
+export type {IndexTableProps} from './IndexTable';
 
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';

@@ -7,7 +7,7 @@ import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
 import {BulkActions} from '../../BulkActions';
-import {IndexTable} from '../IndexTable';
+import {IndexTable, IndexTableProps} from '../IndexTable';
 
 const mockTableItems = [
   {
@@ -20,7 +20,7 @@ const mockTableItems = [
   },
 ];
 
-const mockTableHeadings = [{title: 'Title'}];
+const mockTableHeadings: IndexTableProps['headings'] = [{title: 'Title'}];
 
 function Component({
   id,
@@ -50,7 +50,7 @@ const mockRenderCondensedRow = (item: any) => {
 };
 
 describe('<IndexTable>', () => {
-  const defaultProps = {
+  const defaultProps: IndexTableProps = {
     onSelectionChange: () => {},
     itemCount: 0,
     selectedItemsCount: 0,
@@ -84,7 +84,7 @@ describe('<IndexTable>', () => {
   });
 
   describe('condensed', () => {
-    const defaultIndexTableProps = {
+    const defaultIndexTableProps: IndexTableProps = {
       headings: mockTableHeadings,
       itemCount: mockTableItems.length,
       selectedItemsCount: 0,

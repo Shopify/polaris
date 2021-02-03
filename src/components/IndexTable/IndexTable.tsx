@@ -27,6 +27,7 @@ import {
 } from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
+import type {NonEmptyArray} from '../../types';
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
@@ -38,7 +39,7 @@ export interface IndexTableHeading {
 }
 
 export interface IndexTableBaseProps {
-  headings: IndexTableHeading[];
+  headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
   bulkActions?: BulkActionsProps['actions'];
   children?: React.ReactNode;
@@ -543,6 +544,7 @@ function IndexTableBase({
 
   function renderHeadingContent(heading: IndexTableHeading) {
     let headingContent;
+
     if (heading.new) {
       headingContent = (
         <Stack wrap={false} alignment="center">

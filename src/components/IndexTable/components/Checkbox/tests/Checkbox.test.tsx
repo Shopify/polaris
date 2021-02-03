@@ -184,7 +184,7 @@ function triggerCheckboxEvent(
   });
 }
 
-const defaultIndexProps = {
+const defaultIndexProps: IndexTableProps = {
   headings: [{title: 'first heading'}],
   itemCount: 1,
   selectedItemsCount: 0,

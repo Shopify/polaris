@@ -19,7 +19,7 @@ const defaultProps = {
   selected: false,
   position: 0,
 };
-const defaultIndexTableProps = {
+const defaultIndexTableProps: IndexTableProps = {
   headings: [{title: 'first heading'}],
   itemCount: 1,
   selectedItemsCount: 0,
