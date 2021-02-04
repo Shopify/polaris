@@ -6,11 +6,14 @@ import {mountWithApp} from 'test-utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
+import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
+import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
+import {AfterInitialMount} from '../../AfterInitialMount';
 
 const mockTableItems = [
   {
@@ -84,6 +87,98 @@ describe('<IndexTable>', () => {
     );
 
     expect(index).toContainReactComponent(Spinner);
+  });
+
+  it('toggles page selection when select all checkbox is changed', () => {
+    const onSelectionchangeSpy = jest.fn();
+    const resourceName = {
+      singular: 'Item',
+      plural: 'Items',
+    };
+    const index = mountWithApp(
+      <IndexTable
+        {...defaultProps}
+        itemCount={mockTableItems.length}
+        resourceName={resourceName}
+        onSelectionChange={onSelectionchangeSpy}
+      >
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
+    );
+
+    index
+      .find(Checkbox, {
+        label: `Select all ${resourceName.plural}`,
+      })!
+      .trigger('onChange', true);
+
+    expect(onSelectionchangeSpy).toHaveBeenCalledWith(SelectionType.Page, true);
+  });
+
+  describe('ScrollContainer', () => {
+    it('updates sticky header scroll left on scoll', () => {
+      const updatedScrollLeft = 25;
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const scrollContainer = index.find(ScrollContainer)!;
+      scrollContainer.prop(
+        'scrollableContainerRef',
+      ).current!.scrollLeft = updatedScrollLeft;
+      scrollContainer!.trigger('onScroll');
+
+      const stickyHeaderElement = index.find('div', {
+        className: 'StickyTableHeadings',
+      })!;
+      const stickyHeaderElementScrollLeft = stickyHeaderElement.domNode!
+        .scrollLeft;
+
+      expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
+    });
+
+    it('updates stickty table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const scrollContainer = index.find(ScrollContainer);
+      scrollContainer!.trigger('onScroll', true);
+
+      expect(index).toContainReactComponent('div', {
+        className:
+          'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
+      });
+    });
+  });
+
+  describe('scroll bar', () => {
+    it('sets scrollleft on scroll', () => {
+      const updatedScrollLeft = 25;
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const afterInitialMounts = index.findAll(AfterInitialMount);
+      const scrollbar = afterInitialMounts[
+        afterInitialMounts.length - 1
+      ].find('div', {className: 'ScrollBar'})!;
+      const scrollContainer = index.find(ScrollContainer)!;
+
+      scrollbar.domNode!.scrollLeft = updatedScrollLeft;
+      scrollbar.trigger('onScroll');
+      const scrollContainerScrollLeft = scrollContainer.prop(
+        'scrollableContainerRef',
+      ).current!.scrollLeft;
+
+      expect(scrollContainerScrollLeft).toBe(updatedScrollLeft);
+    });
   });
 
   describe('headings', () => {

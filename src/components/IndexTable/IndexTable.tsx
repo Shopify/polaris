@@ -80,10 +80,6 @@ function IndexTableBase({
     value: hasMoreLeftColumns,
     toggle: toggleHasMoreLeftColumns,
   } = useToggle(false);
-  const {
-    value: hasMoreRightColumns,
-    toggle: toggleHasMoreRightColumns,
-  } = useToggle(false);
 
   const onboardingScrollButtons = useRef(false);
   const tablePosition = useRef({top: 0, left: 0});
@@ -171,23 +167,11 @@ function IndexTableBase({
         toggleHasMoreLeftColumns();
       }
 
-      if (
-        (canScrollRight && !hasMoreRightColumns) ||
-        (!canScrollRight && hasMoreRightColumns)
-      ) {
-        toggleHasMoreRightColumns();
-      }
-
       if (!canScrollRight) {
         onboardingScrollButtons.current = false;
       }
     },
-    [
-      hasMoreLeftColumns,
-      hasMoreRightColumns,
-      toggleHasMoreLeftColumns,
-      toggleHasMoreRightColumns,
-    ],
+    [hasMoreLeftColumns, toggleHasMoreLeftColumns],
   );
 
   const handleScrollBarScroll = useCallback(() => {
