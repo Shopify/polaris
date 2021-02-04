@@ -708,6 +708,36 @@ describe('<ResourceItem />', () => {
       });
     });
   });
+
+  describe('dataHref', () => {
+    it('renders a data-href tag on the li when the dataHref prop is specified', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+            dataHref="google.com"
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(item.find('li').prop('data-href')).toBe('google.com');
+    });
+    it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(item.find('li').prop('data-href')).toBeUndefined();
+    });
+  });
 });
 
 function noop() {}
