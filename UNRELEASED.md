@@ -13,7 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed virtual cursor leaving dialog in `Modal`, `Navigation` and `Sheet` ([#3931](https://github.com/Shopify/polaris-react/pull/3931))
 - Simplified output of `Badge`'s css ([#3950](https://github.com/Shopify/polaris-react/pull/3950))
 - Fixed click propagation that was preventing the `Tooltip` to open when used as suffix on a `TextField` ([#3956](https://github.com/Shopify/polaris-react/issues/3956))
-- Fixed `Tabs` layout issue on browser resize ([#3976](https://github.com/Shopify/polaris-react/issues/3976)) 
+- Fixed `Tabs` layout issue on browser resize ([#3976](https://github.com/Shopify/polaris-react/issues/3976))
 - Made items in `ActionList` more clear in high contrast mode ([#3971](https://github.com/Shopify/polaris-react/pull/3971))
 
 ### Documentation
