@@ -735,7 +735,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(item.find('li').prop('data-href')).toBe(undefined);
+      expect(item.find('li').prop('data-href')).toBeUndefined();
     });
   });
 });
