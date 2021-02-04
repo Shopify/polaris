@@ -7,6 +7,8 @@ import {
   SelectionType,
   HandleSelectionChange,
   Range,
+  BulkSelectionDataOptions,
+  HandleBulkSelectionOptions,
 } from './types';
 import {
   IndexContext,
@@ -36,16 +38,6 @@ export function useIndexValue() {
     throw new Error(`Missing IndexProvider context`);
   }
   return index;
-}
-
-interface BulkSelectionDataOptions {
-  selectedItemsCount: number | typeof SELECT_ALL_ITEMS;
-  itemCount: number;
-  hasMoreItems?: boolean;
-  resourceName?: {
-    singular: string;
-    plural: string;
-  };
 }
 
 export function useBulkSelectionData({
@@ -153,14 +145,6 @@ export function useBulkSelectionData({
       );
     }
   }
-}
-
-interface HandleBulkSelectionOptions {
-  onSelectionChange(
-    selectionType: SelectionType,
-    toggleType: boolean,
-    selection?: string | Range,
-  ): void;
 }
 
 export function useHandleBulkSelection({

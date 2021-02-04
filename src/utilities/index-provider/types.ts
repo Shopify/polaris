@@ -36,3 +36,21 @@ export type HandleSelectionChange = (
   selection?: string | Range,
   sortOrder?: number,
 ) => void;
+
+export interface BulkSelectionDataOptions {
+  selectedItemsCount: number | typeof SELECT_ALL_ITEMS;
+  itemCount: number;
+  hasMoreItems?: boolean;
+  resourceName?: {
+    singular: string;
+    plural: string;
+  };
+}
+
+export interface HandleBulkSelectionOptions {
+  onSelectionChange(
+    selectionType: SelectionType,
+    toggleType: boolean,
+    selection?: string | Range,
+  ): void;
+}

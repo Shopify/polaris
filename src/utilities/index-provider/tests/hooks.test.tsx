@@ -7,13 +7,31 @@ import {
   IndexContextType,
   IndexContext,
 } from '../context';
-import {useIndexRow, useIndexSelectionChange, useIndexValue} from '../hooks';
+import {
+  BulkSelectionDataOptions,
+  HandleBulkSelectionOptions,
+  SelectionType,
+} from '../types';
+import {
+  useIndexRow,
+  useIndexSelectionChange,
+  useIndexValue,
+  useBulkSelectionData,
+  useHandleBulkSelection,
+} from '../hooks';
 
 interface IndexSelectionChangeTypedChildProps {
   onSelectionChange: ReturnType<typeof useIndexSelectionChange>;
 }
 
 interface IndexValueTypedChildProps extends IndexContextType {}
+
+interface BulkSelectionDataTypedChildProps
+  extends ReturnType<typeof useBulkSelectionData> {}
+
+interface HandleBulkSelectionTypedChildProps {
+  onSelectionChange: ReturnType<typeof useHandleBulkSelection>;
+}
 
 describe('useIndexRow', () => {
   it('returns selectMode & condensed', () => {
@@ -137,5 +155,89 @@ describe('useIndexValue', () => {
     );
 
     expect(mockComponent).toContainReactComponent(TypedChild, contextValues);
+  });
+});
+
+describe('useBulkSelectionData', () => {
+  function TypedChild(_: BulkSelectionDataTypedChildProps) {
+    return null;
+  }
+  function MockComponent(options: Partial<BulkSelectionDataOptions>) {
+    const contextValues = useBulkSelectionData({
+      selectedItemsCount: 0,
+      itemCount: 4,
+      hasMoreItems: true,
+      resourceName: {
+        singular: 'test',
+        plural: 'tests',
+      },
+      ...options,
+    });
+
+    return <TypedChild {...contextValues} />;
+  }
+
+  it('returns paginated select all text when all resources are selected', () => {
+    const itemCount = 4;
+    const resourceName = {
+      singular: 'order',
+      plural: 'orders',
+    };
+    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} in your store are selected.`;
+    const mockComponent = mountWithApp(
+      <MockComponent
+        selectedItemsCount="All"
+        hasMoreItems
+        itemCount={itemCount}
+        resourceName={resourceName}
+      />,
+    );
+
+    expect(mockComponent).toContainReactComponent(TypedChild, {
+      paginatedSelectAllText,
+    });
+  });
+});
+
+describe('useHandleBulkSelection', () => {
+  function TypedChild(_: HandleBulkSelectionTypedChildProps) {
+    return null;
+  }
+  function MockComponent(options: HandleBulkSelectionOptions) {
+    const contextValue = useHandleBulkSelection(options);
+
+    return <TypedChild onSelectionChange={contextValue} />;
+  }
+
+  it('selects ranges', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const mockComponent = mount(
+      <MockComponent onSelectionChange={onSelectionChangeSpy} />,
+    );
+
+    const typedChild = mockComponent.find(TypedChild)!;
+
+    // First selection cannot be multi
+    typedChild.trigger(
+      'onSelectionChange',
+      SelectionType.Multi,
+      true,
+      undefined,
+      3,
+    );
+
+    typedChild.trigger(
+      'onSelectionChange',
+      SelectionType.Multi,
+      true,
+      undefined,
+      4,
+    );
+
+    expect(onSelectionChangeSpy).toHaveBeenLastCalledWith(
+      SelectionType.Multi,
+      true,
+      [3, 4],
+    );
   });
 });
