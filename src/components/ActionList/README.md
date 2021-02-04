@@ -383,4 +383,9 @@ Items in an action list are organized as list items (`<li>`) in an unordered lis
 - Give the action list items keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key
 
+### High contrast support
+
+- Each item is clearly discernible in high contrast mode
+- Each item that is focused and hovered is clearly discernible in high contrast mode
+
 <!-- /content-for -->
