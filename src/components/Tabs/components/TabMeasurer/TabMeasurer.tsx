@@ -47,7 +47,7 @@ export const TabMeasurer = memo(function TabMeasurer({
       const hiddenTabNodes = containerNode.current.children;
       const hiddenTabNodesArray = Array.from(hiddenTabNodes);
       const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
-        return node.getBoundingClientRect().width;
+        return Math.ceil(node.getBoundingClientRect().width);
       });
       const disclosureWidth = hiddenTabWidths.pop() || 0;
 
