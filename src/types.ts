@@ -304,3 +304,5 @@ export enum Key {
 export interface CheckboxHandles {
   focus(): void;
 }
+
+export type NonEmptyArray<T> = [T, ...T[]];

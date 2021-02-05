@@ -302,6 +302,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Etykietka narzędzia: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Pozycja",
+      "defaultItemPlural": "Pozycje",
+      "allItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie są zaznaczone.",
+      "selected": "Wybrano {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nie znaleziono {resourceNamePlural}",
+      "emptySearchDescription": "Spróbuj zmienić filtry lub szukany termin",
+      "onboardingBadgeText": "Nowe",
+      "resourceLoadingAccessibilityLabel": "Ładowanie {resourceNamePlural}...",
+      "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
+      "selected": "Wybrano {selectedItemsCount}",
+      "undo": "Cofnij",
+      "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie",
+      "selectItem": "Wybierz {resourceName}",
+      "selectButtonText": "Wybierz"
     }
   }
 }

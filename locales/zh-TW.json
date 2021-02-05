@@ -300,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "工具提示：{label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "品項",
+      "defaultItemPlural": "品項",
+      "allItemsSelected": "已選取您商店中所有 {itemsLength}+ {resourceNamePlural}。",
+      "selected": "已選取 {selectedItemsCount} 項",
+      "a11yCheckboxDeselectAllSingle": "取消選取 {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "取消選取全部 {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "選取全部 {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "找不到 {resourceNamePlural}",
+      "emptySearchDescription": "嘗試變更篩選條件或搜尋詞彙",
+      "onboardingBadgeText": "新功能",
+      "resourceLoadingAccessibilityLabel": "正在載入 {resourceNamePlural} ......",
+      "selectAllLabel": "選取所有 {resourceNamePlural}",
+      "selected": "已選取 {selectedItemsCount} 項",
+      "undo": "復原",
+      "selectAllItems": "選取您商店中所有 {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "選取 {resourceName}",
+      "selectButtonText": "選取"
     }
   }
 }
