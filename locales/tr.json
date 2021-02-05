@@ -300,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "İpucu: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Ürün",
+      "defaultItemPlural": "Ürünler",
+      "allItemsSelected": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağı seçildi.",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "Seç: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünün seçimini kaldır",
+      "a11yCheckboxSelectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünü seç"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} bulunamadı",
+      "emptySearchDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
+      "onboardingBadgeText": "Yeni",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} yükleniyor…",
+      "selectAllLabel": "Şunların tümünü seç: {resourceNamePlural}",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "undo": "Geri al",
+      "selectAllItems": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağını seçin.",
+      "selectItem": "Seç: {resourceName}",
+      "selectButtonText": "Seç"
     }
   }
 }
