@@ -134,12 +134,22 @@ function IndexTableBase({
     tableHeadingRects.current = measuredTableHeadingRects;
   }, []);
 
+  const resizeTableScrollBar = useCallback(() => {
+    if (scrollBarElement.current && tableElement.current && tableInitialized) {
+      scrollBarElement.current.style.setProperty(
+        '--p-scroll-bar-content-width',
+        `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
+      );
+    }
+  }, [tableInitialized]);
+
   const handleResize = useMemo(
     () =>
       debounce(() => {
         resizeTableHeadings();
+        resizeTableScrollBar();
       }, 50),
-    [resizeTableHeadings],
+    [resizeTableHeadings, resizeTableScrollBar],
   );
 
   const handleScrollContainerScroll = useCallback(
@@ -188,6 +198,10 @@ function IndexTableBase({
   }, []);
 
   useEffect(() => resizeTableHeadings(), [headings, resizeTableHeadings]);
+
+  useEffect(() => {
+    resizeTableScrollBar();
+  }, [tableInitialized, resizeTableScrollBar]);
 
   useEffect(() => {
     if (!condensed && isSmallScreenSelectable) {
@@ -368,18 +382,15 @@ function IndexTableBase({
     </div>
   );
 
-  const scrollBarContentStyles =
-    tableElement.current && tableInitialized
-      ? {
-          height: '1px',
-          width: tableElement.current.offsetWidth - SCROLL_BAR_PADDING,
-        }
-      : undefined;
-
   const scrollBarclassNames = classNames(
     styles.ScrollBarContainer,
     condensed && styles.scrollBarContainerCondensed,
   );
+
+  const scrollBarClassNames = classNames(
+    tableElement.current && tableInitialized && styles.ScrollBarContent,
+  );
+
   const scrollBarMarkup =
     itemCount > 0 ? (
       <AfterInitialMount>
@@ -389,7 +400,7 @@ function IndexTableBase({
             className={styles.ScrollBar}
             ref={scrollBarElement}
           >
-            <div style={scrollBarContentStyles} />
+            <div className={scrollBarClassNames} />
           </div>
         </div>
       </AfterInitialMount>

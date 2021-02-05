@@ -387,3 +387,8 @@ $scroll-bar-border-radius: rem(4px);
 .StickyTableHeader-condensed {
   padding: 1.6rem spacing() 0.8rem;
 }
+
+.ScrollBarContent {
+  height: 1px;
+  width: var(--p-scroll-bar-content-width);
+}
