@@ -17,3 +17,24 @@
     }
   }
 </style>
+<script>
+  window.addEventListener('message', (event) => {
+    if (event.origin === window.location.origin) return;
+
+    const storyData = JSON.parse(
+      JSON.stringify(
+        window.__STORYBOOK_CLIENT_API__
+          .raw()
+          .map(({id, kind, name}) => ({id, kind, name})),
+      ),
+    );
+
+    event.source.postMessage(
+      {
+        height: document.body.scrollHeight,
+        storyData,
+      },
+      event.origin,
+    );
+  });
+</script>
