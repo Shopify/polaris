@@ -15,6 +15,7 @@ export const nonDesignLangaugeCustomProperties = [
   '--top-bar-border',
   '--p-frame-offset',
   '--p-checkbox-offset',
+  '--p-scroll-bar-content-width',
 ];
 
 export const designLangaugeCustomProperties = ([] as string[]).concat(
