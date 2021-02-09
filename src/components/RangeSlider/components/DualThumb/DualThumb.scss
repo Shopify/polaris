@@ -97,7 +97,6 @@ $range-thumb-border-error: rem(2px) solid color('red');
   &:focus {
     @include focus-ring($style: 'focused');
     outline: 0;
-    border-color: var(--p-override-transparent);
   }
 
   .error & {
