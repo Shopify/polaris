@@ -129,6 +129,8 @@ $stacking-order: (
       border-color: var(--p-surface);
       box-shadow: 0 0 0 rem(2px) var(--p-focused);
     }
+
+    @include high-contrast-outline;
   }
 
   .error & {
