@@ -521,14 +521,16 @@ function IndexTableBase({
 
   function renderCheckboxContent() {
     return (
-      <PolarisCheckbox
-        label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
-          resourceNamePlural: resourceName.plural,
-        })}
-        labelHidden
-        onChange={handleSelectPage}
-        checked={bulkSelectState}
-      />
+      <div className={styles.ColumnHeaderCheckboxWrapper}>
+        <PolarisCheckbox
+          label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
+            resourceNamePlural: resourceName.plural,
+          })}
+          labelHidden
+          onChange={handleSelectPage}
+          checked={bulkSelectState}
+        />
+      </div>
     );
   }
 

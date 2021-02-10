@@ -158,6 +158,10 @@ $loading-panel-height: rem(53px);
   padding-right: $checkbox-offset-right;
 }
 
+.ColumnHeaderCheckboxWrapper {
+  display: flex;
+}
+
 .StickyColumnHeaderCheckbox {
   margin-left: #{-1 * $small-checkbox-offset};
   padding-right: $small-checkbox-offset;
