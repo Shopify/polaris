@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
@@ -89,10 +90,9 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {theme = {}, children} = this.props;
 
     const {intl, link} = this.state;
-    const features = {newDesignLanguage: false, ...this.props.features};
 
     return (
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={this.props.features || {}}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>

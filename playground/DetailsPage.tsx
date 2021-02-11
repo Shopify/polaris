@@ -529,7 +529,7 @@ export function DetailsPage() {
         // eslint-disable-next-line no-console
         onAction: () => console.log('save'),
       }}
-      additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
+      additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         ...actions,
         {

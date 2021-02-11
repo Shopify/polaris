@@ -112,10 +112,8 @@
       "skipToContent": "Passer directement au contenu",
       "Navigation": {
         "closeMobileNavigationLabel": "Fermer la navigation"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -302,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Infobulle : {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Article",
+      "defaultItemPlural": "Articles",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique sont sélectionnés.",
+      "selected": "{selectedItemsCount} sélectionné(s)",
+      "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Désélectionner la totalité des {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} introuvables",
+      "emptySearchDescription": "Essayer de changer les filtres ou le terme de recherche",
+      "onboardingBadgeText": "Nouveau",
+      "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours...",
+      "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
+      "selected": "{selectedItemsCount} sélectionné(s)",
+      "undo": "Annuler",
+      "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural} de votre boutique",
+      "selectItem": "Sélectionner {resourceName}",
+      "selectButtonText": "Sélectionner"
     }
   }
 }

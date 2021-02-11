@@ -10,8 +10,8 @@ import React, {
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
-import {Icon} from '../../../Icon';
-import {IconProps, Key} from '../../../../types';
+import {Icon, IconProps} from '../../../Icon';
+import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';

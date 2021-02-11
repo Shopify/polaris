@@ -81,24 +81,18 @@ describe('<Item />', () => {
     );
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(item).toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
+  it('passes `url` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(<Item url="https://shopify.com" disabled />);
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(item).not.toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
+    expect(item.find(UnstyledLink)!.prop('url')).toBeNull();
+  });
+
+  it('passes `onClick` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(
+      <Item onAction={noop} disabled url="https://shopify.com" />,
+    );
+
+    expect(item.find(UnstyledLink)!.prop('onClick')).toBeNull();
   });
 });
 

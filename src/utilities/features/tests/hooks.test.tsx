@@ -5,9 +5,8 @@ import {useFeatures} from '../hooks';
 
 function Component() {
   const features = useFeatures();
-  const {foo} = features;
-
-  return foo ? <div /> : null;
+  // @ts-expect-error There are currently no valid features, so use a fake one for testing
+  return features.foo ? <div /> : null;
 }
 
 describe('useFeatures', () => {

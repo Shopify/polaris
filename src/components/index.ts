@@ -131,9 +131,13 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 
 export {Icon} from './Icon';
+export type {IconProps} from './Icon';
 
 export {Image} from './Image';
 export type {ImageProps} from './Image';
+
+export {IndexTable} from './IndexTable';
+export type {IndexTableProps} from './IndexTable';
 
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';

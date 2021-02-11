@@ -112,10 +112,8 @@
       "skipToContent": "Přeskočit na obsah",
       "Navigation": {
         "closeMobileNavigationLabel": "Zavřít navigaci"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigace"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -304,6 +302,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Tip s vysvětlením: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Položka",
+      "defaultItemPlural": "Položky",
+      "allItemsSelected": "V obchodě bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength}+).",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný výraz",
+      "onboardingBadgeText": "Nové",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
+      "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "undo": "Vrátit zpět",
+      "selectAllItems": "Vybrat v obchodě všechno zboží typu {resourceNamePlural} ({itemsLength}+)",
+      "selectItem": "Vybrat: {resourceName}",
+      "selectButtonText": "Vybrat"
     }
   }
 }

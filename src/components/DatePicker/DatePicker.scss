@@ -1,11 +1,6 @@
 @import '../../styles/common';
 
 $font-size: rem(12px);
-
-// Need to define raw color for the borders of inRange
-// stylelint-disable-next-line color-no-hex
-$in-range-border-color: #9ca6de;
-
 $range-end-border-radius: rem(30px);
 
 .DatePicker {
@@ -44,16 +39,11 @@ $range-end-border-radius: rem(30px);
   background: transparent;
   margin: 0;
   padding: 0;
-  border: border();
-  border-radius: 0;
+  border-radius: var(--p-border-radius-base);
 }
 
 .DayCell-inRange {
-  border: border-width() solid $in-range-border-color;
-}
-
-.DayCell-selected {
-  border: border-width() solid color('indigo');
+  border-radius: 0;
 }
 
 .Day {
@@ -64,18 +54,23 @@ $range-end-border-radius: rem(30px);
   padding: spacing(tight);
   background: transparent;
   border: none;
-  border-radius: 0;
+  border-radius: var(--p-border-radius-base);
   outline: none;
   font-size: $font-size;
   text-align: center;
+  color: var(--p-text);
   cursor: pointer;
 
   &:hover {
-    background: color('sky');
+    background: var(--p-interactive-hovered);
+    color: var(--p-text-on-interactive);
+    @include high-contrast-outline;
   }
 
-  &:focus {
-    box-shadow: inset 0 0 0 2px color('indigo');
+  @include focus-ring;
+  // stylelint-disable-next-line selector-max-specificity
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
@@ -84,45 +79,60 @@ $range-end-border-radius: rem(30px);
 }
 
 .Day-inRange {
-  background: color('indigo', 'light');
+  background: var(--p-surface-selected);
+  border-radius: 0;
 
-  &:hover {
-    background: darken(color('indigo', 'light'), 5%);
-  }
+  @media (-ms-high-contrast: active) {
+    -ms-high-contrast-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
 
-  @media screen and (-ms-high-contrast: active) {
-    background: ms-high-contrast-color('selected-text-background');
+    &:hover {
+      background-color: HighlightText;
+      color: Highlight;
+      outline: 2px solid Highlight;
+    }
   }
 }
 
 .Day-selected {
-  background: color('indigo');
-  color: color('white');
+  background: var(--p-interactive);
+  color: var(--p-text-on-interactive);
 
-  &:hover {
-    background: darken(color('indigo'), 5%);
-  }
+  @media (-ms-high-contrast: active) {
+    -ms-high-contrast-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
 
-  &:focus {
-    box-shadow: inset 0 0 0 2px color('indigo', 'dark');
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    background: ms-high-contrast-color('selected-text-background');
+    &:hover {
+      background-color: HighlightText;
+      color: Highlight;
+      outline: 2px solid Highlight;
+    }
   }
 }
 
 .Day-disabled {
-  background-color: color('sky', 'lighter');
-  color: color('sky', 'dark');
-  cursor: default;
+  background-color: transparent;
+  color: var(--p-text-disabled);
 
   &:hover {
-    background-color: color('sky', 'lighter');
+    background-color: transparent;
+    color: var(--p-text-disabled);
+  }
+
+  @media (-ms-high-contrast) {
+    -ms-high-contrast-adjust: none;
+    color: grayText;
+
+    &:hover {
+      color: grayText;
+      outline: none;
+    }
   }
 
   &:focus {
-    box-shadow: none;
+    @include no-focus-ring;
   }
 }
 
@@ -130,7 +140,6 @@ $range-end-border-radius: rem(30px);
   width: calc(100% / 7);
   margin: 0;
   padding: 0;
-  border: border();
 }
 
 .Weekday {
@@ -138,13 +147,13 @@ $range-end-border-radius: rem(30px);
   background: transparent;
   font-size: $font-size;
   font-weight: 400;
-  color: color('ink', 'lighter');
+  color: var(--p-text-subdued);
   text-align: center;
 }
 
 .Weekday-current {
   font-weight: 700;
-  color: color('black', 'base');
+  color: var(--p-text);
 }
 
 .Header {
@@ -162,157 +171,45 @@ $range-end-border-radius: rem(30px);
   text-align: center;
 }
 
-.newDesignLanguage {
-  .DayCell {
-    border: none;
-    border-radius: var(--p-border-radius-base);
-  }
-
-  .DayCell-selected {
-    border: none;
-  }
-
-  .DayCell-inRange {
-    border-radius: 0;
-  }
-
-  .Day {
-    box-shadow: none;
-    border: 0;
-    border-radius: var(--p-border-radius-base);
-    color: var(--p-text);
-
-    &:hover {
-      background: var(--p-interactive-hovered);
-      color: var(--p-text-on-interactive);
-      @include high-contrast-outline;
-    }
-
-    @include focus-ring;
-    // stylelint-disable-next-line selector-max-specificity
-    &:focus:not(:active) {
-      @include focus-ring($style: 'focused');
-      box-shadow: none;
-
-      @media (-ms-high-contrast: active) {
-        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth
-        &::after {
-          box-shadow: none;
-        }
-      }
-    }
-  }
-
-  .Day-inRange {
-    border-radius: 0;
-    background: var(--p-surface-selected);
-
-    @media (-ms-high-contrast: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: Highlight;
-      color: HighlightText;
-
-      &:hover {
-        background-color: HighlightText;
-        color: Highlight;
-        outline: 2px solid Highlight;
-      }
-    }
-  }
-
-  .Day-selected {
-    background: var(--p-interactive);
-    color: var(--p-text-on-interactive);
-
-    @media (-ms-high-contrast: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: Highlight;
-      color: HighlightText;
-
-      &:hover {
-        background-color: HighlightText;
-        color: Highlight;
-        outline: 2px solid Highlight;
-      }
-    }
-  }
-
-  .Day-firstInRange {
-    border-radius: var(--p-border-radius-base);
-    // stylelint-disable-next-line selector-max-class
-    &.Day-hasRange,
-    &.Day-hoverRight {
-      border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
-      // stylelint-disable-next-line selector-max-specificity, selector-max-class
-      &::after {
-        border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
-      }
-    }
-  }
-  .Day-lastInRange {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+.Day-firstInRange {
+  border-radius: var(--p-border-radius-base);
+  // stylelint-disable-next-line selector-max-class
+  &.Day-hasRange,
+  &.Day-hoverRight {
+    border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     &::after {
-      border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+      border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
     }
   }
+}
 
-  .Week {
-    margin-bottom: rem(2px);
-
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
-    > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-      border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
-    }
-
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
-    > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-      border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
-    }
+.Day-lastInRange {
+  border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+  &::after {
+    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
   }
+}
 
-  .DayCell,
-  .EmptyDayCell {
-    border: none;
-  }
+.Week {
+  margin-bottom: rem(2px);
 
-  .Day-disabled {
-    background-color: transparent;
-    color: var(--p-text-disabled);
-
-    &:hover {
-      background-color: transparent;
-      color: var(--p-text-disabled);
-    }
-
-    @media (-ms-high-contrast) {
-      -ms-high-contrast-adjust: none;
-      color: grayText;
-
-      &:hover {
-        color: grayText;
-        outline: none;
-      }
-    }
-
-    &:focus {
-      @include no-focus-ring;
-    }
-  }
-
-  .Weekday {
-    color: var(--p-text-subdued);
-  }
-
-  .Weekday-current {
-    color: var(--p-text);
+  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+    border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
   }
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
-  .Day-inRange,
-  .Day-inRange:not(:hover) + .Day {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
-    &::after {
-      border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
-    }
+  > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+    border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
+  }
+}
+
+// stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+.Day-inRange,
+.Day-inRange:not(:hover) + .Day {
+  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  &::after {
+    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
   }
 }

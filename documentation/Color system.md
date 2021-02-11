@@ -253,6 +253,8 @@ Used to decorate elements where color does convey a specific meaning in componen
 
 [↑ Back to top](#table-of-contents)
 
+### UNSTABLE these variables are being @deprecated
+
 | CSS variable                              | Value                                                                                                        |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `--p-border-radius-base`                  | `0.4rem`                                                                                                     |

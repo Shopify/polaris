@@ -1,6 +1,31 @@
 import './configure';
 
-export * from './types';
+// Key is an enum, not a type. It probably shouldn't live in a file called types
+export {Key} from './types';
+
+export type {
+  IconSource,
+  HeadingTagName,
+  Error,
+  BaseButton,
+  Action,
+  LinkAction,
+  BadgeAction,
+  BaseCallbackAction,
+  CallbackAction,
+  DisableableAction,
+  DestructableAction,
+  IconableAction,
+  LoadableAction,
+  OutlineableAction,
+  ActionListItemDescriptor,
+  ActionListSection,
+  ComplexAction,
+  MenuActionDescriptor,
+  MenuGroupDescriptor,
+  ConnectedDisclosure,
+  CheckboxHandles,
+} from './types';
 
 export * from './components';
 
@@ -24,10 +49,9 @@ export {
   rgbaString,
 } from './utilities/color-transformers';
 
-export {isNewDesignLanguageColor} from './utilities/color-new-design-language';
-
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useIndexResourceState} from './utilities/use-index-resource-state';
 
 export {
   toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,

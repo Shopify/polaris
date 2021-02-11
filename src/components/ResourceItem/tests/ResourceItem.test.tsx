@@ -624,32 +624,6 @@ describe('<ResourceItem />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(resourceItem).not.toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-  });
-
   describe('focused', () => {
     it('removes the focus state when mousing out a focused item', () => {
       const resourceItem = mountWithApp(
@@ -732,6 +706,36 @@ describe('<ResourceItem />', () => {
       expect(resourceItem).toContainReactComponent('div', {
         className: 'Container alignmentBaseline',
       });
+    });
+  });
+
+  describe('dataHref', () => {
+    it('renders a data-href tag on the li when the dataHref prop is specified', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+            dataHref="google.com"
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(item.find('li').prop('data-href')).toBe('google.com');
+    });
+    it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(item.find('li').prop('data-href')).toBeUndefined();
     });
   });
 });

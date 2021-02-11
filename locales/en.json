@@ -113,12 +113,10 @@
     },
     "Frame": {
       "skipToContent": "Skip to content",
+      "navigationLabel": "Navigation",
       "Navigation": {
         "closeMobileNavigationLabel": "Close navigation"
       }
-    },
-    "Icon": {
-      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -135,6 +133,28 @@
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Items",
+      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "selected": "{selectedItemsCount} selected",
+      "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "No {resourceNamePlural} found",
+      "emptySearchDescription": "Try changing the filters or search term",
+      "onboardingBadgeText": "New",
+      "resourceLoadingAccessibilityLabel": "Loading {resourceNamePlural}…",
+      "selectAllLabel": "Select all {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selected",
+      "undo": "Undo",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "selectItem": "Select {resourceName}",
+      "selectButtonText": "Select"
     },
     "Loading": {
       "label": "Page loading bar"
@@ -228,9 +248,6 @@
     },
     "SkeletonPage": {
       "loadingLabel": "Page loading"
-    },
-    "Spinner": {
-      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "More tabs"

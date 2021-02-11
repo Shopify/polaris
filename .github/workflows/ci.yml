@@ -6,8 +6,7 @@ on:
       - '**'
   push:
     branches:
-      - 'master'
-      - 'version-6.0.0'
+      - 'main'
 
 jobs:
   test:
@@ -127,7 +126,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           storybookBuildDir: 'build/storybook/static'
-          autoAcceptChanges: 'master'
+          autoAcceptChanges: 'main'
           exitZeroOnChanges: true
           exitOnceUploaded: true
 

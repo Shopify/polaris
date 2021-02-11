@@ -6,7 +6,7 @@ import type {
   MenuGroupDescriptor,
   ActionListItemDescriptor,
 } from '../../../types';
-import {MenuAction, MenuGroup, RollupActions} from '../components';
+import {MenuGroup, RollupActions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
@@ -18,9 +18,13 @@ describe('<ActionMenu />', () => {
     rollup: undefined,
   };
 
+  const mockActions: ActionMenuProps['actions'] = [
+    {content: 'mock content 1'},
+    {content: 'mock content 2'},
+  ];
+
   it('does not render when there are no `actions` or `groups`', () => {
     const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-    expect(wrapper.find(MenuAction)).toHaveLength(0);
     expect(wrapper.find(MenuGroup)).toHaveLength(0);
   });
 
@@ -84,27 +88,6 @@ describe('<ActionMenu />', () => {
     });
   });
 
-  describe('<MenuAction />', () => {
-    const mockActions: ActionMenuProps['actions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
-
-    it('does not render <MenuAction /> when there are no `actions`', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
-
-    it('renders `actions`', () => {
-      const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} actions={mockActions} />,
-      );
-
-      expect(wrapper.find(MenuAction)).toHaveLength(2);
-    });
-  });
-
   describe('<MenuGroup />', () => {
     it('does not render when there are no `groups`', () => {
       const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
@@ -147,62 +130,27 @@ describe('<ActionMenu />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    const mockActions: ActionMenuProps['actions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
+  it('uses Button and ButtonGroup as subcomponents', () => {
+    const wrapper = mountWithAppProvider(
+      <ActionMenu {...mockProps} actions={mockActions} />,
+    );
 
-    it('uses Button and ButtonGroup instead of MenuAction as subcomponents', () => {
-      const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} actions={mockActions} />,
-        {features: {newDesignLanguage: true}},
-      );
+    expect(wrapper.find(Button)).toHaveLength(2);
+    expect(wrapper.find(ButtonGroup)).toHaveLength(1);
+  });
 
-      expect(wrapper.find(Button)).toHaveLength(2);
-      expect(wrapper.find(ButtonGroup)).toHaveLength(1);
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
+  it('action callbacks are passed through to Button', () => {
+    const spy = jest.fn();
+    const wrapper = mountWithAppProvider(
+      <ActionMenu
+        {...mockProps}
+        actions={[{content: 'mock', onAction: spy}]}
+      />,
+    );
 
-    it('action callbacks are passed through to Button', () => {
-      const spy = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <ActionMenu
-          {...mockProps}
-          actions={[{content: 'mock', onAction: spy}]}
-        />,
-        {features: {newDesignLanguage: true}},
-      );
+    trigger(wrapper.find(Button), 'onClick');
 
-      trigger(wrapper.find(Button), 'onClick');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
-
-    it('uses MenuAction instead of Button and ButtonGroup as subcomponents when disabled', () => {
-      const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} actions={mockActions} />,
-        {features: {newDesignLanguage: false}},
-      );
-
-      expect(wrapper.find(MenuAction)).toHaveLength(2);
-      expect(wrapper.find(Button)).toHaveLength(0);
-      expect(wrapper.find(ButtonGroup)).toHaveLength(0);
-    });
-
-    it('action callbacks are passed through to MenuAction', () => {
-      const spy = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <ActionMenu
-          {...mockProps}
-          actions={[{content: 'mock', onAction: spy}]}
-        />,
-      );
-
-      trigger(wrapper.find(MenuAction), 'onAction');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 

@@ -112,10 +112,8 @@
       "skipToContent": "\"Zum Inhalt gehen\"",
       "Navigation": {
         "closeMobileNavigationLabel": "Navigation schließen"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Das {color}-Symbol akzeptiert keine Hintergründe. Die Symbolfarben, die Hintergründe haben, sind: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -302,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Tooltip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artikel",
+      "defaultItemPlural": "Artikel",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop sind ausgewählt.",
+      "selected": "{selectedItemsCount} ausgewählt",
+      "a11yCheckboxDeselectAllSingle": "Auswahl für {resourceNameSingular} aufheben",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} auswählen",
+      "a11yCheckboxDeselectAllMultiple": "Auswahl für alle {itemsLength} {resourceNamePlural} aufheben",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} auswählen"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Keine {resourceNamePlural} gefunden",
+      "emptySearchDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
+      "onboardingBadgeText": "Neu",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} wird geladen",
+      "selectAllLabel": "Alle {resourceNamePlural} auswählen",
+      "selected": "{selectedItemsCount} ausgewählt",
+      "undo": "Rückgängig machen",
+      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop auswählen",
+      "selectItem": "{resourceName} auswählen",
+      "selectButtonText": "Auswählen"
     }
   }
 }

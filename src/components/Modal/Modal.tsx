@@ -11,14 +11,7 @@ import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
 
-import {
-  CloseButton,
-  Dialog,
-  Footer,
-  FooterProps,
-  Header,
-  Section,
-} from './components';
+import {Dialog, Footer, FooterProps, Header, Section} from './components';
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
@@ -32,7 +25,12 @@ export interface ModalProps extends FooterProps {
   /** The name of the modal content iframe */
   iFrameName?: string;
   /** The content for the title of the modal */
-  title?: string | React.ReactNode;
+  title: string | React.ReactNode;
+  /**
+   * Hide the title in the modal
+   * @default false
+   */
+  titleHidden?: boolean;
   /** The content to display inside modal */
   children?: React.ReactNode;
   /** Inner content of the footer */
@@ -64,6 +62,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 } = function Modal({
   children,
   title,
+  titleHidden = false,
   src,
   iFrameName,
   open,
@@ -170,27 +169,19 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Scrollable>
     );
 
-    const headerMarkup = title ? (
-      <Header id={headerId} onClose={onClose} testID="ModalHeader">
-        {title}
-      </Header>
-    ) : (
-      <CloseButton onClick={onClose} title={false} testID="ModalCloseButton" />
-    );
-
-    const labelledBy = title ? headerId : undefined;
-
     dialog = (
       <Dialog
         instant={instant}
-        labelledBy={labelledBy}
+        labelledBy={headerId}
         onClose={onClose}
         onEntered={handleEntered}
         onExited={handleExited}
         large={large}
         limitHeight={limitHeight}
       >
-        {headerMarkup}
+        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+          {title}
+        </Header>
         <div className={styles.BodyWrapper}>{bodyMarkup}</div>
         {footerMarkup}
       </Dialog>

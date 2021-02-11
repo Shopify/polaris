@@ -112,10 +112,8 @@
       "skipToContent": "Skip til indhold",
       "Navigation": {
         "closeMobileNavigationLabel": "Luk navigation"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet accepterer ikke baggrunde. De ikonfarver, der har baggrunde, er: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -302,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Værktøjstip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Vare",
+      "defaultItemPlural": "Varer",
+      "allItemsSelected": "Al {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "selected": "{selectedItemsCount} valgt",
+      "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Vælg alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Ingen {resourceNamePlural} blev fundet",
+      "emptySearchDescription": "Prøv et andet filter eller søgeord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Indlæser {resourceNamePlural} …",
+      "selectAllLabel": "Vælg alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valgt",
+      "undo": "Fortryd",
+      "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
+      "selectItem": "Vælg {resourceName}",
+      "selectButtonText": "Vælg"
     }
   }
 }

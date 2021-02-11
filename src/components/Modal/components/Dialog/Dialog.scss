@@ -35,8 +35,8 @@ $large-width: rem(980px);
   flex-direction: column;
   width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
-  background: var(--p-surface, color('white'));
-  box-shadow: var(--p-modal-shadow, shadow(layer));
+  background: var(--p-surface);
+  box-shadow: var(--p-modal-shadow);
 
   @media (-ms-high-contrast: active) {
     border: 1px solid ms-high-contrast-color('text');
@@ -51,7 +51,7 @@ $large-width: rem(980px);
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-wide, border-radius(large));
+    border-radius: var(--p-border-radius-wide);
   }
 
   &.limitHeight {

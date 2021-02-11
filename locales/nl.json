@@ -112,10 +112,8 @@
       "skipToContent": "Meteen naar de content",
       "Navigation": {
         "closeMobileNavigationLabel": "Navigatie sluiten"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigatie"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -301,7 +299,29 @@
       "label": "Pagina laadbalk"
     },
     "TooltipOverlay": {
-      "accessibilityLabel": "Knopinfo: {label}"
+      "accessibilityLabel": "Tooltip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artikel",
+      "defaultItemPlural": "Artikelen",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
+      "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Alle selecties {itemsLength} {resourceNamePlural} opheffen",
+      "a11yCheckboxSelectAllMultiple": "Selecteer alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Geen {resourceNamePlural} gevonden",
+      "emptySearchDescription": "Probeer de filters of zoekterm te wijzigen",
+      "onboardingBadgeText": "Nieuw",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laden...",
+      "selectAllLabel": "Selecteer alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "undo": "Ongedaan maken",
+      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in je winkel",
+      "selectItem": "Selecteer {resourceName}",
+      "selectButtonText": "Selecteren"
     }
   }
 }
