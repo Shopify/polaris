@@ -4,6 +4,11 @@ import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
 import {durationFast} from '@shopify/polaris-tokens';
 
+import {CheckableButton} from '../CheckableButton';
+import type {
+  CheckableButtonKey,
+  CheckableButtons,
+} from '../../utilities/resource-list';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
@@ -24,9 +29,10 @@ import {
   SelectionType,
   IndexProviderProps,
 } from '../../utilities/index-provider';
+import {CheckableButtonContext} from '../../utilities/checkable-button';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
-import type {NonEmptyArray} from '../../types';
+import type {CheckboxHandles, NonEmptyArray} from '../../types';
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
@@ -88,7 +94,9 @@ function IndexTableBase({
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
   const [tableInitialized, setTableInitialized] = useState(false);
-
+  const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
+    new Map(),
+  );
   const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
 
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
@@ -260,7 +268,8 @@ function IndexTableBase({
       SelectionType.Page,
       Boolean(!bulkSelectState || bulkSelectState === 'indeterminate'),
     );
-  }, [bulkSelectState, handleSelectionChange]);
+    console.log('HandlePage', checkableButtons);
+  }, [bulkSelectState, handleSelectionChange, checkableButtons]);
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
@@ -468,14 +477,23 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
+  const handleCheckableButtonRegistration = (
+    key: CheckableButtonKey,
+    button: CheckboxHandles,
+  ) => {
+    if (!checkableButtons.get(key)) {
+      setCheckableButtons(new Map(checkableButtons).set(key, button));
+    }
+  };
+
   return (
-    <>
+    <CheckableButtonContext.Provider value={handleCheckableButtonRegistration}>
       <div className={styles.IndexTable}>
         {!shouldShowBulkActions && !condensed && loadingMarkup}
         {tableContentMarkup}
       </div>
       {scrollBarMarkup}
-    </>
+    </CheckableButtonContext.Provider>
   );
 
   function renderHeading(heading: IndexTableHeading, index: number) {
@@ -526,12 +544,12 @@ function IndexTableBase({
   function renderCheckboxContent() {
     return (
       <div className={styles.ColumnHeaderCheckboxWrapper}>
-        <PolarisCheckbox
+        <CheckableButton
           label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
             resourceNamePlural: resourceName.plural,
           })}
-          labelHidden
-          onChange={handleSelectPage}
+          plain
+          onToggleAll={handleSelectPage}
           checked={bulkSelectState}
         />
       </div>
@@ -560,6 +578,7 @@ function IndexTableBase({
 
   function handleSelectPage(checked: boolean) {
     handleSelectionChange(SelectionType.Page, checked);
+    console.log(checkableButtons);
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
