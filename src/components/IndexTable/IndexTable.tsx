@@ -268,8 +268,22 @@ function IndexTableBase({
       SelectionType.Page,
       Boolean(!bulkSelectState || bulkSelectState === 'indeterminate'),
     );
-    console.log('HandlePage', checkableButtons);
-  }, [bulkSelectState, handleSelectionChange, checkableButtons]);
+    console.log('BulkAction', checkableButtons);
+    let checkbox;
+
+    if (condensed) {
+      checkbox = checkableButtons.get('bulkSm');
+    } else if (!(!bulkSelectState || bulkSelectState === 'indeterminate')) {
+      checkbox = checkableButtons.get('plain');
+    } else {
+      checkbox = checkableButtons.get('bulkLg');
+    }
+
+    // setTimeout ensures execution after the Transition on BulkActions
+    setTimeout(() => {
+      checkbox && checkbox.focus();
+    }, 0);
+  }, [bulkSelectState, handleSelectionChange, checkableButtons, condensed]);
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
@@ -331,8 +345,12 @@ function IndexTableBase({
           const promotedActions = shouldShowActions ? promotedBulkActions : [];
           const actions = shouldShowActions ? bulkActions : [];
 
-          const bulkActionsMarkup = shouldShowBulkActions ? (
-            <div className={bulkActionClassNames} data-condensed={condensed}>
+          const bulkActionsMarkup = (
+            <div
+              className={bulkActionClassNames}
+              style={{display: shouldShowBulkActions ? 'block' : 'none'}}
+              data-condensed={condensed}
+            >
               {loadingMarkup}
               <BulkActions
                 smallScreen={condensed}
@@ -352,7 +370,7 @@ function IndexTableBase({
                 }
               />
             </div>
-          ) : null;
+          );
 
           const stickyColumnHeaderClassNames = classNames(
             styles.StickyTableColumnHeader,
@@ -578,7 +596,29 @@ function IndexTableBase({
 
   function handleSelectPage(checked: boolean) {
     handleSelectionChange(SelectionType.Page, checked);
-    console.log(checkableButtons);
+    console.log('CheckableButton', checkableButtons);
+    // going from regular checkable button to bulk actions checkable button
+    // going from bulk action checkable button to regular checkable button
+    // going from the scrolled checkable button to bulk action checkable button
+    // going from bulk action checkable button to scrolled checkable button
+
+    let checkbox;
+
+    // if (condensed) {
+    //   checkbox = checkableButtons.get('bulkSm');
+    // } else if (!(!bulkSelectState || bulkSelectState === 'indeterminate')) {
+    //   checkbox = checkableButtons.get('plain');
+    // } else {
+    //   checkbox = checkableButtons.get('bulkLg');
+    // }
+
+    checkbox = checkableButtons.get('bulkLg');
+
+    // setTimeout ensures execution after the Transition on BulkActions
+    setTimeout(() => {
+      checkbox && checkbox.focus();
+      console.log(checkbox.focus);
+    }, 0);
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
