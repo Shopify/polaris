@@ -7,6 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `focus-visible` polyfill and default styles ([#3695](https://github.com/Shopify/polaris-react/pull/3695))
+- Added `removeUnderline` prop to `Button` to remove underline when `plain` and `monochrome` are true([#3998](https://github.com/Shopify/polaris-react/))pull/3998)
 
 ### Bug fixes
 

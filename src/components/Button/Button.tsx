@@ -44,6 +44,8 @@ export interface ButtonProps extends BaseButton {
   plain?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
   monochrome?: boolean;
+  /** Removes underline from button text (including on interaction) when `monochrome` and `plain` are true */
+  removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
@@ -114,6 +116,7 @@ export function Button({
   disclosure,
   plain,
   monochrome,
+  removeUnderline,
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
@@ -138,6 +141,7 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
+    removeUnderline && styles.removeUnderline,
   );
 
   const disclosureMarkup = disclosure ? (
@@ -164,7 +168,14 @@ export function Button({
   ) : null;
 
   const childMarkup = children ? (
-    <span className={styles.Text}>{children}</span>
+    <span
+      className={classNames(
+        styles.Text,
+        removeUnderline && styles.removeUnderline,
+      )}
+    >
+      {children}
+    </span>
   ) : null;
 
   const spinnerSVGMarkup = loading ? (
