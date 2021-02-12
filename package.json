@@ -89,8 +89,8 @@
     "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.9.0 || ^17.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
