@@ -80,6 +80,20 @@ describe('<Item />', () => {
       mockAccessibilityLabel,
     );
   });
+
+  it('passes `url` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(<Item url="https://shopify.com" disabled />);
+
+    expect(item.find(UnstyledLink)!.prop('url')).toBeNull();
+  });
+
+  it('passes `onClick` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(
+      <Item onAction={noop} disabled url="https://shopify.com" />,
+    );
+
+    expect(item.find(UnstyledLink)!.prop('onClick')).toBeNull();
+  });
 });
 
 function noop() {}
