@@ -223,6 +223,11 @@ $loading-panel-height: rem(53px);
   position: absolute;
   display: flex;
   width: 100%;
+
+  &:not(.StickyTableHeader-isSticky) {
+    top: rem(-1000px);
+    left: rem(-1000px);
+  }
 }
 
 .StickyTableColumnHeader {
