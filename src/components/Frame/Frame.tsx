@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
@@ -62,9 +62,6 @@ interface State {
 const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 
 const APP_FRAME_MAIN = 'AppFrameMain';
-
-const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
-
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -81,8 +78,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null = null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
-  private skipToMainContentTargetNode =
-    this.props.skipToContentTarget || createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -216,7 +211,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     const skipTarget = skipToContentTarget?.current
       ? skipToContentTarget.current.id
-      : APP_FRAME_MAIN_ANCHOR_TARGET;
+      : APP_FRAME_MAIN;
 
     const skipMarkup = (
       <div className={skipClassName}>
@@ -252,15 +247,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         />
       ) : null;
 
-    const skipToMainContentTarget = skipToContentTarget ? null : (
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a
-        id={APP_FRAME_MAIN_ANCHOR_TARGET}
-        ref={this.skipToMainContentTargetNode}
-        tabIndex={-1}
-      />
-    );
-
     const context = {
       showToast: this.showToast,
       hideToast: this.hideToast,
@@ -288,7 +274,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            {skipToMainContentTarget}
             <div className={styles.Content}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
@@ -379,9 +364,12 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setState({skipFocused: false});
   };
 
-  private handleClick = () => {
-    this.skipToMainContentTargetNode.current &&
-      this.skipToMainContentTargetNode.current.focus();
+  private handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const {skipToContentTarget} = this.props;
+    if (skipToContentTarget && skipToContentTarget.current) {
+      skipToContentTarget.current.focus();
+      event?.preventDefault();
+    }
   };
 
   private handleNavigationDismiss = () => {
