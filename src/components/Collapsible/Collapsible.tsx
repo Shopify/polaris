@@ -36,7 +36,7 @@ export function Collapsible({
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
   const [animationState, setAnimationState] = useState<AnimationState>('idle');
-  const collapisbleContainer = useRef<HTMLDivElement>(null);
+  const collapsibleContainer = useRef<HTMLDivElement>(null);
 
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
@@ -59,10 +59,15 @@ export function Collapsible({
     },
   };
 
-  const handleCompleteAnimation = useCallback(() => {
-    setAnimationState('idle');
-    setIsOpen(open);
-  }, [open]);
+  const handleCompleteAnimation = useCallback(
+    ({target}: React.TransitionEvent<HTMLDivElement>) => {
+      if (target === collapsibleContainer.current) {
+        setAnimationState('idle');
+        setIsOpen(open);
+      }
+    },
+    [open],
+  );
 
   useEffect(() => {
     if (open !== isOpen) {
@@ -71,24 +76,24 @@ export function Collapsible({
   }, [open, isOpen]);
 
   useEffect(() => {
-    if (!open || !collapisbleContainer.current) return;
+    if (!open || !collapsibleContainer.current) return;
     // If collapsible defaults to open, set an initial height
-    setHeight(collapisbleContainer.current.scrollHeight);
+    setHeight(collapsibleContainer.current.scrollHeight);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (!collapisbleContainer.current) return;
+    if (!collapsibleContainer.current) return;
 
     switch (animationState) {
       case 'idle':
         break;
       case 'measuring':
-        setHeight(collapisbleContainer.current.scrollHeight);
+        setHeight(collapsibleContainer.current.scrollHeight);
         setAnimationState('animating');
         break;
       case 'animating':
-        setHeight(open ? collapisbleContainer.current.scrollHeight : 0);
+        setHeight(open ? collapsibleContainer.current.scrollHeight : 0);
     }
   }, [animationState, open, isOpen]);
 
@@ -96,7 +101,7 @@ export function Collapsible({
     <div
       id={id}
       style={collapsibleStyles}
-      ref={collapisbleContainer}
+      ref={collapsibleContainer}
       className={wrapperClassName}
       onTransitionEnd={handleCompleteAnimation}
       aria-expanded={open}
