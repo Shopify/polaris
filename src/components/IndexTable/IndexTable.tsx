@@ -318,6 +318,10 @@ function IndexTableBase({
             isSticky && styles['StickyTableHeader-isSticky'],
           );
 
+          const shouldShowActions = !condensed || selectedItemsCount;
+          const promotedActions = shouldShowActions ? promotedBulkActions : [];
+          const actions = shouldShowActions ? bulkActions : [];
+
           const bulkActionsMarkup = shouldShowBulkActions ? (
             <div className={bulkActionClassNames} data-condensed={condensed}>
               {loadingMarkup}
@@ -330,8 +334,8 @@ function IndexTableBase({
                 selected={bulkSelectState}
                 selectMode={selectMode || isSmallScreenSelectable}
                 onToggleAll={handleTogglePage}
-                promotedActions={promotedBulkActions}
-                actions={bulkActions}
+                promotedActions={promotedActions}
+                actions={actions}
                 paginatedSelectAllText={paginatedSelectAllText}
                 paginatedSelectAllAction={paginatedSelectAllAction}
                 onSelectModeToggle={
