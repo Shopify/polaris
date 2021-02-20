@@ -100,8 +100,8 @@
       "FileUpload": {
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
-        "actionHintFile": "ou solte os arquivos para carregar",
-        "actionHintImage": "ou arraste e solte a imagem para carregar",
+        "actionHintFile": "ou soltar os arquivos para carregar",
+        "actionHintImage": "ou soltar imagens para carregar",
         "label": "Carregar arquivo"
       }
     },
