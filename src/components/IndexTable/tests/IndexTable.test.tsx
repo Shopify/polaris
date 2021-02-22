@@ -3,7 +3,6 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Sticky} from 'components/Sticky';
-import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
