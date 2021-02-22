@@ -18,7 +18,9 @@ $Backdrop-opacity: 0.88;
     padding: spacing();
   }
 
-  @include high-contrast-border(border-width(thick));
+  @media (forced-colors: active) {
+    @include high-contrast-border(border-width(thick));
+  }
 }
 
 .Action {

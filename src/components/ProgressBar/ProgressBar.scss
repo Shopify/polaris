@@ -23,7 +23,9 @@
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-base);
 
-  @include high-contrast-border;
+  @media (forced-colors: active) {
+    @include high-contrast-border;
+  }
 }
 
 .sizeSmall {

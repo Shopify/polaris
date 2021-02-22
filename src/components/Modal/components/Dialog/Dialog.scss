@@ -38,7 +38,9 @@ $large-width: rem(980px);
   background: var(--p-surface);
   box-shadow: var(--p-modal-shadow);
 
-  @include high-contrast-border;
+  @media (forced-colors: active) {
+    @include high-contrast-border;
+  }
 
   @include frame-when-nav-hidden {
     bottom: 0;
