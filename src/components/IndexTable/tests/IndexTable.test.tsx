@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+import {Sticky} from 'components/Sticky';
 
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
@@ -280,6 +281,14 @@ describe('<IndexTable>', () => {
       onSelectionChange: () => {},
     };
 
+    const width = window.innerWidth;
+
+    afterEach(() => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: width,
+      });
+    });
+
     it('renders bulk actions when selectable', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed>
@@ -360,6 +369,44 @@ describe('<IndexTable>', () => {
       index.setProps({condensed: false});
 
       expect(index).not.toContainReactComponent(BulkActions);
+    });
+
+    it('does not render bulk actions with onSelectModeToggle unless items are selected', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: 300,
+      });
+
+      const promotedActions = [{content: 'PromotedAction'}];
+      const bulkActions = [{content: 'Action'}];
+
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultIndexTableProps}
+          condensed
+          hasMoreItems
+          bulkActions={bulkActions}
+          promotedBulkActions={promotedActions}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      expect(index).not.toContainReactComponent(BulkActions);
+
+      index.find(Sticky)!.find(Button)!.trigger('onClick');
+      expect(index).toContainReactComponent(BulkActions, {
+        actions: [],
+        promotedActions: [],
+      });
+
+      index.setProps({
+        selectedItemsCount: 2,
+      });
+
+      expect(index).toContainReactComponent(BulkActions, {
+        actions: bulkActions,
+        promotedActions,
+      });
     });
   });
 });
