@@ -103,9 +103,7 @@ $disabled-fade: 0.6;
     border-bottom-right-radius: var(--p-border-radius-base);
   }
 
-  @media (-ms-high-contrast: active) {
-    outline: 1px solid ms-high-contrast-color('text');
-  }
+  @include high-contrast-outline;
 
   @include focus-ring;
 

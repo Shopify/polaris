@@ -23,9 +23,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     background-color: var(--p-banner-background);
   }
 
-  @media (-ms-high-contrast: active) {
-    outline: 1px solid;
-  }
+  @include high-contrast-outline;
 
   &:focus {
     outline: none;

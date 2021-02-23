@@ -22,8 +22,8 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--p-text);
   }
 
-  @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+  @media (forced-colors: active) {
+    @include high-contrast-border;
   }
 }
 
