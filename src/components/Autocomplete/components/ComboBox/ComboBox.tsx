@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useLayoutEffect, useCallback} from 'react';
 
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -240,7 +240,7 @@ export function ComboBox({
     }
   }, [selected, selectedOptions]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let newNavigableOptions: (
       | OptionDescriptor
       | ActionListItemDescriptor
