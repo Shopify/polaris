@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 import {Tokens} from 'utilities/theme';
 
-import {Collapsible} from '../Collapsible';
+import {Collapsible, CollapsibleProps} from '../Collapsible';
 
 describe('<Collapsible />', () => {
   const ariaExpandedSelector = '[aria-expanded=false]';
@@ -84,4 +85,59 @@ describe('<Collapsible />', () => {
       expect(collapsible.props()).toMatchObject({transition: {timingFunction}});
     });
   });
+
+  describe('onTransitionEnd', () => {
+    it('adds an isFullyClosed class to the collapsible onTransitionEnd if the event target is the collapsible div', () => {
+      const id = 'test-collapsible';
+      const collapsibleWithToggle = mountWithApp(
+        <CollapsibleWithToggle id={id} />,
+      );
+      collapsibleWithToggle.find('button')!.trigger('onClick');
+
+      const wrapper = collapsibleWithToggle.find('div', {id})!;
+      wrapper.trigger('onTransitionEnd', {
+        target: wrapper.domNode as HTMLDivElement,
+      });
+
+      expect(
+        collapsibleWithToggle.find('div', {
+          id,
+          'aria-expanded': false,
+          className: 'Collapsible isFullyClosed',
+        }),
+      ).not.toBeNull();
+    });
+
+    it('does not add an isFullyClosed class to the collapsible onTransitionEnd if the event target is not the collapsible div', () => {
+      const id = 'test-collapsible';
+      const collapsibleWithToggle = mountWithApp(
+        <CollapsibleWithToggle id={id} />,
+      );
+      collapsibleWithToggle.find('button')!.trigger('onClick');
+
+      collapsibleWithToggle.find('div', {id})!.trigger('onTransitionEnd', {
+        target: document.createElement('div'),
+      });
+
+      expect(
+        collapsibleWithToggle.find('div', {
+          id,
+          'aria-expanded': false,
+          className: 'Collapsible',
+        }),
+      ).not.toBeNull();
+    });
+  });
 });
+
+function CollapsibleWithToggle(props: Omit<CollapsibleProps, 'open'>) {
+  const [open, setOpen] = useState(true);
+  const handleToggle = useCallback(() => setOpen((open) => !open), []);
+
+  return (
+    <>
+      <button onClick={handleToggle}>Activator</button>
+      <Collapsible {...props} open={open} />
+    </>
+  );
+}

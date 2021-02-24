@@ -207,9 +207,12 @@ $stacking-order: (
   &:focus {
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
-    text-decoration: underline;
     background: transparent;
     box-shadow: none;
+
+    &:not(.removeUnderline) {
+      text-decoration: underline;
+    }
   }
 
   &.pressed,
@@ -403,7 +406,7 @@ $stacking-order: (
 
   &.plain {
     // stylelint-disable selector-max-class, max-nesting-depth
-    .Text {
+    .Text:not(.removeUnderline) {
       text-decoration: underline;
     }
     // stylelint-enable selector-max-class, max-nesting-depth

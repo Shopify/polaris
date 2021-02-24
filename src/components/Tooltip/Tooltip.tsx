@@ -60,6 +60,7 @@ export function Tooltip({
 
     accessibilityNode.tabIndex = 0;
     accessibilityNode.setAttribute('aria-describedby', id);
+    accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
 
   const handleKeyUp = useCallback(
@@ -93,6 +94,7 @@ export function Tooltip({
       onBlur={handleBlur}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
+      onClick={stopPropagation}
       ref={setActivator}
       onKeyUp={handleKeyUp}
     >
@@ -133,3 +135,7 @@ export function Tooltip({
 }
 
 function noop() {}
+
+function stopPropagation(event: React.MouseEvent<any>) {
+  event.stopPropagation();
+}

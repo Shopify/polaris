@@ -112,7 +112,8 @@
       "skipToContent": "ข้ามไปที่เนื้อหา",
       "Navigation": {
         "closeMobileNavigationLabel": "ปิดการนำทาง"
-      }
+      },
+      "navigationLabel": "การนำทาง"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -299,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "รายการ",
+      "defaultItemPlural": "รายการ",
+      "allItemsSelected": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมดในร้านค้าของคุณแล้ว",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {itemsLength} {resourceNamePlural} ทั้งหมด",
+      "a11yCheckboxSelectAllMultiple": "เลือก {itemsLength} {resourceNamePlural} ทั้งหมด"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
+      "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
+      "onboardingBadgeText": "ใหม่",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}",
+      "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "undo": "เลิกทำ",
+      "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมดในร้านค้าของคุณ",
+      "selectItem": "เลือก {resourceName}",
+      "selectButtonText": "เลือก"
     }
   }
 }

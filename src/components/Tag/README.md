@@ -33,18 +33,42 @@ Tags should:
 
 ### Default tag
 
-Use to allow merchants to add attributes to, and remove attributes from, an object.
+Use to signify the attributes of an object.
 
 ```jsx
 <Tag>Wholesale</Tag>
 ```
 
-### Remove tag
+### Removable tag
 
 Use to allow merchants to remove attributes from an object.
 
 ```jsx
-<Tag onRemove={() => {}}>Wholesale</Tag>
+function RemovableTagExample() {
+  const [selectedTags, setSelectedTags] = useState([
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Refurbished',
+  ]);
+
+  const removeTag = useCallback(
+    (tag) => () => {
+      setSelectedTags((previousTags) =>
+        previousTags.filter((previousTag) => previousTag !== tag),
+      );
+    },
+    [],
+  );
+
+  const tagMarkup = selectedTags.map((option) => (
+    <Tag key={option} onRemove={removeTag(option)}>
+      {option}
+    </Tag>
+  ));
+
+  return <Stack spacing="tight">{tagMarkup}</Stack>;
+}
 ```
 
 ### Clickable tag
@@ -52,13 +76,7 @@ Use to allow merchants to remove attributes from an object.
 Use to allow merchants to add attributes to an object.
 
 ```jsx
-<Tag
-  onClick={() => {
-    console.log('Clicked');
-  }}
->
-  Wholesale
-</Tag>
+<Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
 <!-- content-for: android -->

@@ -420,4 +420,23 @@ describe('<Button />', () => {
       expect(disclosureIcon.props().source).toBe(SelectMinor);
     });
   });
+
+  describe('removeUnderline', () => {
+    it('passes prop to <UnstyledButton/> className', () => {
+      const button = mountWithApp(<Button removeUnderline />);
+
+      expect(button.find(UnstyledButton)!.props.className).toContain(
+        'removeUnderline',
+      );
+    });
+
+    it('passes prop to <span/> className', () => {
+      const children = 'Sample children';
+
+      const button = mountWithApp(<Button removeUnderline>{children}</Button>);
+      const childrenSpan = button.find('span', {children})!;
+
+      expect(childrenSpan.props.className).toContain('removeUnderline');
+    });
+  });
 });

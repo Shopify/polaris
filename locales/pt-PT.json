@@ -112,7 +112,8 @@
       "skipToContent": "Saltar para o conteúdo",
       "Navigation": {
         "closeMobileNavigationLabel": "Fechar a navegação"
-      }
+      },
+      "navigationLabel": "Navegação"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -299,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Descrição: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Itens",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "selected": "{selectedItemsCount} selecionado",
+      "a11yCheckboxDeselectAllSingle": "Anular seleção {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Anular seleção de tudo em {resourceNamePlural} de {itemsLength}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar tudo em {resourceNamePlural} de {itemsLength}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nenhum {resourceNamePlural} encontrado",
+      "emptySearchDescription": "Tente alterar os filtros ou o termo de pesquisa",
+      "onboardingBadgeText": "Novo",
+      "resourceLoadingAccessibilityLabel": "A carregar {resourceNamePlural}",
+      "selectAllLabel": "Selecionar tudo em {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selecionado",
+      "undo": "Anular",
+      "selectAllItems": "Selecionar tudo em {itemsLength}+ {resourceNamePlural} da sua loja",
+      "selectItem": "Selecionar {resourceName}",
+      "selectButtonText": "Selecionar"
     }
   }
 }

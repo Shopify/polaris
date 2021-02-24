@@ -34,3 +34,17 @@ $content-max-width: rem(200px);
   padding: spacing(extra-tight) spacing(tight);
   word-break: break-word;
 }
+
+[data-polaris-tooltip-activator] {
+  outline: 0;
+  @include focus-ring;
+
+  &:focus-visible {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+// stylelint-disable-next-line selector-max-attribute
+[data-polaris-tooltip-activator][data-focus-visible-added] {
+  @include focus-ring($style: 'focused');
+}

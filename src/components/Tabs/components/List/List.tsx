@@ -1,6 +1,5 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-import {FeaturesContext} from '../../../../utilities/features';
 import {Item} from '../Item';
 import type {TabDescriptor} from '../../types';
 import styles from '../../Tabs.scss';
@@ -12,41 +11,31 @@ export interface ListProps {
   onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
 }
 
-export class List extends PureComponent<ListProps, never> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
-  render() {
-    const {focusIndex, disclosureTabs, onClick = noop} = this.props;
-    const tabs = disclosureTabs.map(({id, content, ...tabProps}, index) => {
-      return (
-        <Item
-          {...tabProps}
-          key={id}
-          id={id}
-          focused={index === focusIndex}
-          onClick={onClick.bind(null, id)}
-        >
-          {content}
-        </Item>
-      );
-    });
-
+export function List({
+  focusIndex,
+  disclosureTabs,
+  onClick = noop,
+  onKeyPress = noop,
+}: ListProps) {
+  const tabs = disclosureTabs.map(({id, content, ...tabProps}, index) => {
     return (
-      <ul
-        className={styles.List}
-        onKeyDown={handleKeyDown}
-        onKeyUp={this.handleKeypress}
+      <Item
+        {...tabProps}
+        key={id}
+        id={id}
+        focused={index === focusIndex}
+        onClick={onClick.bind(null, id)}
       >
-        {tabs}
-      </ul>
+        {content}
+      </Item>
     );
-  }
+  });
 
-  private handleKeypress = (event: React.KeyboardEvent<HTMLElement>) => {
-    const {onKeyPress = noop} = this.props;
-    onKeyPress(event);
-  };
+  return (
+    <ul className={styles.List} onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
+      {tabs}
+    </ul>
+  );
 }
 
 function noop() {}
