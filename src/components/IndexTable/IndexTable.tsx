@@ -22,6 +22,7 @@ import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
+import {setRootProperty} from '../../utilities/set-root-property';
 import {
   useIndexValue,
   useIndexSelectionChange,
@@ -93,6 +94,8 @@ function IndexTableBase({
 
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
+  const headerNode = useRef<HTMLTableHeaderCellElement>(null);
+  const containerNode = useRef<HTMLDivElement>(null);
   const [tableInitialized, setTableInitialized] = useState(false);
   const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
     new Map(),
@@ -141,6 +144,39 @@ function IndexTableBase({
     tablePosition.current = {top: boundingRect.top, left: boundingRect.left};
     tableHeadingRects.current = measuredTableHeadingRects;
   }, []);
+
+  const handlePageScroll = useCallback(() => {
+    // console.log(
+    // tableElement.current?.offsetTop,
+    // ,
+    // );
+    // --p-test-3
+    let position;
+    const x = tableElement.current?.getBoundingClientRect().top || 0;
+
+    if (x > 0) {
+      position = 0;
+    } else {
+      position = Math.abs(x);
+    }
+    console.log(position);
+
+    const {scrollTop} = window.document.body;
+    const off = 0;
+    const translate = Math.abs(scrollTop - 122 / window.innerHeight) * 100;
+
+    requestAnimationFrame(() => {
+      setRootProperty('--p-test-3', `${translate}%`);
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handlePageScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handlePageScroll);
+    };
+  }, [handlePageScroll]);
 
   const resizeTableScrollBar = useCallback(() => {
     if (scrollBarElement.current && tableElement.current && tableInitialized) {
@@ -399,7 +435,7 @@ function IndexTableBase({
           return (
             <>
               {bulkActionsMarkup}
-              {stickyHeaderCotentMarkup}
+              {/* {stickyHeaderCotentMarkup} */}
             </>
           );
         }}
@@ -456,6 +492,7 @@ function IndexTableBase({
       <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
     </>
   );
+
   const bodyMarkup = condensed ? (
     <>
       {sharedMarkup}
@@ -474,7 +511,7 @@ function IndexTableBase({
         onScroll={handleScrollContainerScroll}
       >
         <table ref={tableElement} className={tableClassNames}>
-          <thead>
+          <thead ref={headerNode} className={styles.THead}>
             <tr className={styles.HeadingRow}>{headingsMarkup}</tr>
           </thead>
           <tbody ref={tableBodyRef}>{children}</tbody>
@@ -500,7 +537,7 @@ function IndexTableBase({
 
   return (
     <CheckableButtonContext.Provider value={handleCheckableButtonRegistration}>
-      <div className={styles.IndexTable}>
+      <div className={styles.IndexTable} ref={containerNode}>
         {!shouldShowBulkActions && !condensed && loadingMarkup}
         {tableContentMarkup}
       </div>
@@ -557,9 +594,12 @@ function IndexTableBase({
     return (
       <div className={styles.ColumnHeaderCheckboxWrapper}>
         <CheckableButton
-          label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
-            resourceNamePlural: resourceName.plural,
-          })}
+          accessibilityLabel={i18n.translate(
+            'Polaris.IndexTable.selectAllLabel',
+            {
+              resourceNamePlural: resourceName.plural,
+            },
+          )}
           plain
           onToggleAll={handleSelectPage}
           selected={bulkSelectState}
