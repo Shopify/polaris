@@ -9,14 +9,8 @@ $vertical-padding: rem(3px);
 $pip-size: rem(10px);
 $pip-spacing: ($height - $pip-size) / 2;
 
-@mixin pip-color($color) {
-  .Pip {
-    color: $color;
-  }
-}
-
 .Badge {
-  @include pip-color(var(--p-icon));
+  --p-component-badge-pip-color: var(--p-icon);
   display: inline-flex;
   align-items: center;
   padding: $vertical-padding $horizontal-padding;
@@ -40,31 +34,31 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusSuccess {
-  @include pip-color(var(--p-icon-success));
+  --p-component-badge-pip-color: var(--p-icon-success);
   background-color: var(--p-surface-success);
   color: var(--p-text);
 }
 
 .statusInfo {
-  @include pip-color(var(--p-icon-highlight));
+  --p-component-badge-pip-color: var(--p-icon-highlight);
   background-color: var(--p-surface-highlight);
   color: var(--p-text);
 }
 
 .statusAttention {
-  @include pip-color(color('yellow', 'dark'));
+  --p-component-badge-pip-color: color('yellow', 'dark');
   background-color: color('yellow', 'light');
   color: var(--p-text);
 }
 
 .statusWarning {
-  @include pip-color(var(--p-icon-warning));
+  --p-component-badge-pip-color: var(--p-icon-warning);
   background-color: var(--p-surface-warning);
   color: var(--p-text, color('orange', 'text'));
 }
 
 .statusCritical {
-  @include pip-color(var(--p-icon-critical));
+  --p-component-badge-pip-color: var(--p-icon-critical);
   background-color: var(--p-surface-critical);
   color: var(--p-text);
 }
@@ -77,6 +71,7 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .Pip {
+  color: var(--p-component-badge-pip-color);
   height: $pip-size;
   width: $pip-size;
   margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
@@ -85,50 +80,42 @@ $pip-spacing: ($height - $pip-size) / 2;
   flex-shrink: 0;
 }
 
-.progressIncomplete {
-  .Pip {
-    background: transparent;
+.progressIncomplete .Pip {
+  background: transparent;
+}
+
+.progressPartiallyComplete .Pip {
+  background: linear-gradient(
+    to top,
+    currentColor,
+    currentColor 50%,
+    transparent 50%,
+    transparent
+  );
+
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow. y-offset is 3px larger than the spread to make it look
+    // like it is half-way down the pip (which is 6px tall)
+    box-shadow: 0 -103px 0 -100px currentColor inset;
   }
 }
 
-.progressPartiallyComplete {
-  .Pip {
-    background: linear-gradient(
-      to top,
-      currentColor,
-      currentColor 50%,
-      transparent 50%,
-      transparent
-    );
+.progressComplete .Pip {
+  background: currentColor;
 
-    @media print {
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        transform: translateY(100%);
-        box-shadow: 0 0 0 $pip-size currentColor inset;
-      }
-    }
-  }
-}
-
-.progressComplete {
-  .Pip {
-    background: linear-gradient(
-      to top,
-      currentColor,
-      currentColor 50%,
-      currentColor 50%
-    );
-
-    @media print {
-      box-shadow: 0 0 0 $pip-size currentColor inset;
-    }
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow.
+    box-shadow: 0 0 0 100px currentColor inset;
   }
 }
 

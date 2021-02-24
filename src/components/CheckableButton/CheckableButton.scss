@@ -32,7 +32,6 @@ $chekbox-label-margin: rem(20px);
   [data-buttongroup-segmented='true'] & {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-right: none;
   }
 
   &:hover {
@@ -41,10 +40,6 @@ $chekbox-label-margin: rem(20px);
 
   &:active {
     background: var(--p-action-secondary-pressed);
-  }
-
-  @media (-ms-high-contrast: active) {
-    border: border-width(base) solid;
   }
 
   &.CheckableButton-measuring {

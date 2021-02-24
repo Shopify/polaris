@@ -13,9 +13,9 @@ export interface NonMutuallyExclusiveProps {
   children?: string;
   /** Disables the tag  */
   disabled?: boolean;
-  /** Callback when tag is clicked or keypressed */
+  /** Callback when tag is clicked or keypressed. Renders without remove button when set. */
   onClick?(): void;
-  /** Callback when remove button is clicked or keypressed */
+  /** Callback when remove button is clicked or keypressed. */
   onRemove?(): void;
 }
 

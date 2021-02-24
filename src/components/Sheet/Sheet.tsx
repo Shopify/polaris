@@ -110,6 +110,7 @@ export function Sheet({
           <TrapFocus trapping={open && !minimized}>
             <div
               role="dialog"
+              aria-modal
               tabIndex={-1}
               className={classNames(
                 styles.Sheet,

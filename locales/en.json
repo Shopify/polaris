@@ -113,6 +113,7 @@
     },
     "Frame": {
       "skipToContent": "Skip to content",
+      "navigationLabel": "Navigation",
       "Navigation": {
         "closeMobileNavigationLabel": "Close navigation"
       }
@@ -132,6 +133,28 @@
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Items",
+      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "selected": "{selectedItemsCount} selected",
+      "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "No {resourceNamePlural} found",
+      "emptySearchDescription": "Try changing the filters or search term",
+      "onboardingBadgeText": "New",
+      "resourceLoadingAccessibilityLabel": "Loading {resourceNamePlural}…",
+      "selectAllLabel": "Select all {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selected",
+      "undo": "Undo",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "selectItem": "Select {resourceName}",
+      "selectButtonText": "Select"
     },
     "Loading": {
       "label": "Page loading bar"
@@ -296,7 +319,6 @@
           }
         }
       }
-    },
-    "testPlatform": "hope async works"
+    }
   }
 }

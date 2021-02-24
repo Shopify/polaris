@@ -1,7 +1,7 @@
 {
   "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
-  "version": "6.0.1-fork.1",
+  "version": "6.0.1-fork.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Endear <dev@endearhq.com>",
@@ -67,7 +67,7 @@
     "new-version-pr-generator": "node ./scripts/new-version-pr-generator",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens && yarn run copy-polaris-tokens-map",
     "copy-polaris-tokens-map": "rimraf ./src/styles/polaris-tokens/colors.color-map.scss && shx cp -r ./src/styles/_colors.color-map.scss ./src/styles/polaris-tokens/colors.color-map.scss",
-    "prepublish": "in-publish && yarn run build || :",
+    "prepublishOnly": "yarn run build",
     "dev": "npm-run-all copy-polaris-tokens storybook",
     "start": "serve -l ${PORT} -c .storybook/serve.json",
     "heroku-postbuild": "yarn run storybook:build",
@@ -86,6 +86,7 @@
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^4.4.0",
+    "focus-visible": "^5.2.0",
     "lodash": "^4.17.4",
     "react-transition-group": "^4.4.1"
   },
@@ -137,7 +138,6 @@
     "fs-extra": "^7.0.1",
     "glob": "^7.1.4",
     "gray-matter": "^4.0.2",
-    "in-publish": "^2.0.0",
     "ink": "^2.3.0",
     "marked": "^0.7.0",
     "mutationobserver-shim": "^0.3.3",

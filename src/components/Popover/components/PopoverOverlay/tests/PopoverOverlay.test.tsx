@@ -405,7 +405,7 @@ describe('<PopoverOverlay />', () => {
         </PopoverOverlay>,
       );
 
-      expect(document.activeElement?.className).toBe('Content');
+      expect(document.activeElement?.className).toContain('Content');
     });
 
     it('does not focus when autofocusTarget is set to None', () => {

@@ -102,4 +102,20 @@ describe('<Tooltip />', () => {
       accessibilityLabel,
     });
   });
+
+  it('does not propagate click to wrappers', () => {
+    const spyFn = jest.fn();
+    const tooltip = mountWithAppProvider(
+      <div onClick={spyFn}>
+        <Tooltip content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>
+      </div>,
+    );
+
+    const wrapperComponent = findByTestID(tooltip, 'WrapperComponent');
+    wrapperComponent.simulate('click');
+
+    expect(spyFn).not.toHaveBeenCalled();
+  });
 });

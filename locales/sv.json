@@ -112,7 +112,8 @@
       "skipToContent": "Gå vidare till innehåll",
       "Navigation": {
         "closeMobileNavigationLabel": "Stäng navigering"
-      }
+      },
+      "navigationLabel": "Navigering"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -299,6 +300,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Verktygstips: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artikel",
+      "defaultItemPlural": "Artiklar",
+      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} i din butik har valts.",
+      "selected": "{selectedItemsCount} har valts",
+      "a11yCheckboxDeselectAllSingle": "Avmarkera {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Välj {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Avmarkera alla {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Markera alla {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Inga {resourceNamePlural} hittades",
+      "emptySearchDescription": "Prova att byta filter eller sökord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Laddar {resourceNamePlural}",
+      "selectAllLabel": "Välj alla {resourceNamePlural}",
+      "selected": "{selectedItemsCount} har valts",
+      "undo": "Ångra",
+      "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural} i din butik",
+      "selectItem": "Välj {resourceName}",
+      "selectButtonText": "Välj"
     }
   }
 }
