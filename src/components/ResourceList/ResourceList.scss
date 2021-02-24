@@ -218,22 +218,18 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .SectionedResourceList {
-  background-color: color('sky', 'lighter');
+  background-color: var(--p-surface-subdued);
 }
 
 .SectionWrapper {
   padding: 1rem 0 0 0;
-  background-color: color('sky', 'lighter');
+  background-color: var(--p-surface-subdued);
 
   > .SectionHeader {
-    background-color: color('white');
-    border-top: border();
     padding: 1rem 2rem;
   }
 
   > .SectionFooter {
-    background-color: color('white');
-    border-bottom: border();
     padding: 1rem 2rem;
   }
 
@@ -244,14 +240,14 @@ $item-wrapper-loading-height: rem(64px);
 
 .ResourceSectionList {
   padding: 0;
-  border-bottom: border();
-  border-top: border();
-  background-color: color('white');
+  border-bottom: border('divider');
+  border-top: border('divider');
+  background-color: var(--p-surface);
 }
 
 .ResourceSectionListEmpty {
-  border-top: border();
-  border-bottom: border();
+  border-top: border('divider');
+  border-bottom: border('divider');
   padding: 1rem;
 }
 
