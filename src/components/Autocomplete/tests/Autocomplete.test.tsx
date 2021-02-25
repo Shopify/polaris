@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp, ReactTestingElement, CustomRoot} from 'test-utilities';
-import {KeypressListener, TextField} from 'components';
+import {KeypressListener} from 'components';
 
+import {BaseTextField as TextField} from '../../TextField';
 import {Key} from '../../../types';
 import {
   ComboBox,

@@ -1,10 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
-import {
-  TextFieldProps,
-  TextField as PolarisTextField,
-  labelID,
-} from 'components';
+import {TextFieldProps, labelID} from 'components';
+import {BaseTextField as PolarisTextField} from '../../../../../../TextField';
 
 import {TextField} from '../TextField';
 import {
