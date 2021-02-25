@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
-import {Popover, TextField} from 'components';
+import {Popover} from 'components';
 
+import {BaseTextField as TextField} from '../../../../TextField';
 import {ComboBox} from '../ComboBox';
 import {ListBox} from '../../ListBox';
 import {
