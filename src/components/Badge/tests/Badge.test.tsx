@@ -47,4 +47,37 @@ describe('<Badge />', () => {
       className: 'Pip',
     });
   });
+
+  it('renders with a customAccessibilityLabel when provided', () => {
+    const mockAccessibilityLabel = 'mock accessibilityLabel';
+    const badge = mountWithApp(
+      <Badge
+        status="attention"
+        progress="incomplete"
+        customAccessibilityLabel={mockAccessibilityLabel}
+      />,
+    );
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: mockAccessibilityLabel,
+    });
+    expect(badge).not.toContainReactComponent(VisuallyHidden, {
+      children: 'Attention Incomplete',
+    });
+  });
+
+  it('does not render progress or status accessibility labels when a `customAccessibilityLabel` is provided', () => {
+    const mockAccessibilityLabel = 'mock accessibilityLabel';
+    const badge = mountWithApp(
+      <Badge
+        status="attention"
+        progress="incomplete"
+        customAccessibilityLabel={mockAccessibilityLabel}
+      />,
+    );
+
+    expect(badge).not.toContainReactComponent(VisuallyHidden, {
+      children: 'Attention Incomplete',
+    });
+  });
 });
