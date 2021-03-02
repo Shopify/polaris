@@ -61,9 +61,6 @@ describe('<Badge />', () => {
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: mockAccessibilityLabel,
     });
-    expect(badge).not.toContainReactComponent(VisuallyHidden, {
-      children: 'Attention Incomplete',
-    });
   });
 
   it('does not render progress or status accessibility labels when a `customAccessibilityLabel` is provided', () => {
