@@ -13,6 +13,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Replaced mentions of "invalid" with not "valid" ([#4025](https://github.com/Shopify/polaris-react/pull/4025))
+
 ### Development workflow
 
 ### Dependency upgrades
