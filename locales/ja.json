@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "アイテム",
       "defaultItemPlural": "アイテム",
-      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています。",
       "selected": "{selectedItemsCount}を選択済み",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
@@ -319,7 +319,7 @@
       "selectAllLabel": "すべての{resourceNamePlural}を選択する",
       "selected": "{selectedItemsCount}を選択済み",
       "undo": "元に戻す",
-      "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
+      "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
       "selectButtonText": "選択"
     }
