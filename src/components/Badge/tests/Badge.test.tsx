@@ -48,13 +48,13 @@ describe('<Badge />', () => {
     });
   });
 
-  it('renders with a customAccessibilityLabel when provided', () => {
+  it('renders with a custom accessibilityLabel when a `statusAndProgressLabelOverride` is provided', () => {
     const mockAccessibilityLabel = 'mock accessibilityLabel';
     const badge = mountWithApp(
       <Badge
         status="attention"
         progress="incomplete"
-        customAccessibilityLabel={mockAccessibilityLabel}
+        statusAndProgressLabelOverride={mockAccessibilityLabel}
       />,
     );
 
@@ -63,13 +63,13 @@ describe('<Badge />', () => {
     });
   });
 
-  it('does not render progress or status accessibility labels when a `customAccessibilityLabel` is provided', () => {
+  it('does not render progress or status accessibility labels when a `statusAndProgressLabelOverride` is provided', () => {
     const mockAccessibilityLabel = 'mock accessibilityLabel';
     const badge = mountWithApp(
       <Badge
         status="attention"
         progress="incomplete"
-        customAccessibilityLabel={mockAccessibilityLabel}
+        statusAndProgressLabelOverride={mockAccessibilityLabel}
       />,
     );
 
