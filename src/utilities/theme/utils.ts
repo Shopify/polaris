@@ -1,5 +1,4 @@
-import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
-import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
+import {colorFactory, mergeConfigs} from '@shopify/polaris-tokens/dist-modern';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
 
 import type {HSLAColor} from '../color-types';

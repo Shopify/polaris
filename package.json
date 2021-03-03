@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.1.0",
-    "@shopify/polaris-tokens": "^2.16.0",
+    "@shopify/polaris-tokens": "^2.21.0",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^4.4.0",

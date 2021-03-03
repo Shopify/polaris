@@ -1,4 +1,4 @@
-import type {Config} from '@shopify/polaris-tokens/dist-modern/types';
+import type {Config} from '@shopify/polaris-tokens/dist-modern';
 
 export interface ThemeLogo {
   /** Provides a path for a logo used on a dark background */
