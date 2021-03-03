@@ -251,7 +251,7 @@ Use to indicate when a given task has been completed. For example, when merchant
 <Badge progress="complete">Fulfilled</Badge>
 ```
 
-### Badge with customAccessibilityLabel
+### Badge with statusAndProgressLabelOverride
 
 Use when the status and progress accessibilityLabels are not appropriate to a given context.
 
@@ -259,7 +259,7 @@ Use when the status and progress accessibilityLabels are not appropriate to a gi
 <Badge
   status="success"
   progress="complete"
-  customAccessibilityLabel="Status: Published. Your online store is visible."
+  statusAndProgressLabelOverride="Status: Published. Your online store is visible."
 >
   Published
 </Badge>
