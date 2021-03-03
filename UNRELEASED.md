@@ -20,6 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
+- Update `@shopify/polaris-tokens to v2.21.0 ([#4030](https://github.com/Shopify/polaris-react/pull/4030))
+
 ### Code quality
 
 ### Deprecations
