@@ -114,6 +114,37 @@ describe('<PositionedOverlay />', () => {
     });
   });
 
+  describe('zIndex', () => {
+    it('is undefined if no state or prop override exist', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      expect(
+        (positionedOverlay.find('div').prop('style') as any).zIndex,
+      ).toBeUndefined();
+    });
+
+    it('is set to state calculated value if no override prop is given', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      positionedOverlay.setState({zIndex: 200});
+      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
+        200,
+      );
+    });
+
+    it('is set to value of zIndexOverride prop if given', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} zIndexOverride={100} />,
+      );
+      positionedOverlay.setState({zIndex: 200});
+      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
+        100,
+      );
+    });
+  });
+
   describe('preventInteraction', () => {
     it('passes preventInteraction to PositionedOverlay when preventInteraction is true', () => {
       const positionedOverlay = mountWithAppProvider(
