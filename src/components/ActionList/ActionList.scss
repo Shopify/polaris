@@ -137,6 +137,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   margin-left: spacing();
 }
 
+.ContentBlock,
+.ContentBlock span {
+  display: block;
+}
+
 .Text {
   @include layout-flex-fix;
   flex: 1 1 auto;
