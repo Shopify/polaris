@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
+import React, {useRef, useState, useEffect, useCallback} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import throttle from 'lodash/throttle';
