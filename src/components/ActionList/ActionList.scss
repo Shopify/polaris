@@ -138,7 +138,9 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .ContentBlock,
-.ContentBlock span {
+.Prefix,
+.Text,
+.Content {
   display: block;
 }
 
