@@ -180,7 +180,16 @@ $skip-vertical-offset: rem(10px);
   position: relative;
   padding-bottom: var(--global-ribbon-height, 0);
   flex: 1;
+  overflow: auto;
+
   @include layout-flex-fix;
+
+  .hasTopBar & {
+    height: calc(100vh - #{top-bar-height()});
+    @include when-printing {
+      height: auto;
+    }
+  }
 }
 
 .GlobalRibbonContainer {
