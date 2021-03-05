@@ -62,7 +62,7 @@ export function Item({
 
   const contentMarkup = helpText ? (
     <span className={styles.ContentBlock}>
-      <span>{contentText}</span>
+      <span className={styles.ContentBlockInner}>{contentText}</span>
       <TextStyle variation="subdued">{helpText}</TextStyle>
     </span>
   ) : (
