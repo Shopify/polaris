@@ -9,9 +9,9 @@ import type {Error} from '../../types';
 
 import styles from './Select.scss';
 
-interface StrictOption {
+interface StrictOption<Value extends string = string> {
   /** Machine value of the option; this is the value passed to `onChange` */
-  value: string;
+  value: Value;
   /** Human-readable text for the option */
   label: string;
   /** Option will be visible, but not selectable */
@@ -20,27 +20,30 @@ interface StrictOption {
   prefix?: React.ReactNode;
 }
 
-interface HideableStrictOption extends StrictOption {
+interface HideableStrictOption<Value extends string = string>
+  extends StrictOption<Value> {
   hidden?: boolean;
 }
 
-interface StrictGroup {
+interface StrictGroup<Value extends string = string> {
   /** Title for the group */
   title: string;
   /** List of options */
-  options: StrictOption[];
+  options: StrictOption<Value>[];
 }
 
-export type SelectOption = string | StrictOption;
+export type SelectOption<Value extends string = string> =
+  | Value
+  | StrictOption<Value>;
 
-export interface SelectGroup {
+export interface SelectGroup<Value extends string = string> {
   title: string;
-  options: SelectOption[];
+  options: SelectOption<Value>[];
 }
 
-export interface SelectProps {
+export interface SelectProps<Value extends string = string> {
   /** List of options or option groups to choose from */
-  options?: (SelectOption | SelectGroup)[];
+  options?: (SelectOption<Value> | SelectGroup<Value>)[];
   /** Label for the select */
   label: React.ReactNode;
   /** Adds an action to the label */
@@ -60,11 +63,11 @@ export interface SelectProps {
   /** Name for form input */
   name?: string;
   /** Value for form input */
-  value?: string;
+  value?: Value | '';
   /** Display an error state */
   error?: Error | boolean;
   /** Callback when selection is changed */
-  onChange?(selected: string, id: string): void;
+  onChange?(selected: Value | '', id: string): void;
   /** Callback when select is focussed */
   onFocus?(): void;
   /** Callback when focus is removed */
@@ -73,7 +76,7 @@ export interface SelectProps {
 
 const PLACEHOLDER_VALUE = '';
 
-export function Select({
+export function Select<Value extends string = string>({
   options: optionsProp,
   label,
   labelAction,
@@ -89,7 +92,7 @@ export function Select({
   onChange,
   onFocus,
   onBlur,
-}: SelectProps) {
+}: SelectProps<Value>) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
 
@@ -101,7 +104,7 @@ export function Select({
 
   const handleChange = onChange
     ? (event: React.ChangeEvent<HTMLSelectElement>) =>
-        onChange(event.currentTarget.value, id)
+        onChange(event.currentTarget.value as Value, id)
     : undefined;
 
   const describedBy: string[] = [];
@@ -113,7 +116,10 @@ export function Select({
   }
 
   const options = optionsProp || [];
-  let normalizedOptions = options.map(normalizeOption);
+  let normalizedOptions: (
+    | HideableStrictOption<Value | ''>
+    | StrictGroup<Value | ''>
+  )[] = options.map(normalizeOption);
 
   if (placeholder) {
     normalizedOptions = [
@@ -182,17 +188,23 @@ export function Select({
   );
 }
 
-function isString(option: SelectOption | SelectGroup): option is string {
+function isString<Value extends string = string>(
+  option: SelectOption<Value> | SelectGroup<Value>,
+): option is Value {
   return typeof option === 'string';
 }
 
-function isGroup(option: SelectOption | SelectGroup): option is SelectGroup {
+function isGroup<Value extends string = string>(
+  option: SelectOption<Value> | SelectGroup<Value>,
+): option is SelectGroup<Value> {
   return (
     typeof option === 'object' && 'options' in option && option.options != null
   );
 }
 
-function normalizeStringOption(option: string): StrictOption {
+function normalizeStringOption<Value extends string = string>(
+  option: Value,
+): StrictOption<Value> {
   return {
     label: option,
     value: option,
@@ -203,9 +215,9 @@ function normalizeStringOption(option: string): StrictOption {
  * Converts a string option (and each string option in a Group) into
  * an Option object.
  */
-function normalizeOption(
-  option: SelectOption | SelectGroup,
-): HideableStrictOption | StrictGroup {
+function normalizeOption<Value extends string = string>(
+  option: SelectOption<Value> | SelectGroup<Value>,
+): HideableStrictOption<Value> | StrictGroup<Value> {
   if (isString(option)) {
     return normalizeStringOption(option);
   } else if (isGroup(option)) {
@@ -224,10 +236,10 @@ function normalizeOption(
 /**
  * Gets the text to display in the UI, for the currently selected option
  */
-function getSelectedOption(
-  options: (HideableStrictOption | StrictGroup)[],
-  value: string,
-): HideableStrictOption {
+function getSelectedOption<Value extends string = string>(
+  options: (HideableStrictOption<Value> | StrictGroup<Value>)[],
+  value: Value,
+): HideableStrictOption<Value | ''> {
   const flatOptions = flattenOptions(options);
   let selectedOption = flatOptions.find((option) => value === option.value);
 
@@ -242,10 +254,10 @@ function getSelectedOption(
 /**
  * Ungroups an options array
  */
-function flattenOptions(
-  options: (HideableStrictOption | StrictGroup)[],
-): HideableStrictOption[] {
-  let flatOptions: HideableStrictOption[] = [];
+function flattenOptions<Value extends string = string>(
+  options: (HideableStrictOption<Value> | StrictGroup<Value>)[],
+): HideableStrictOption<Value>[] {
+  let flatOptions: HideableStrictOption<Value>[] = [];
 
   options.forEach((optionOrGroup) => {
     if (isGroup(optionOrGroup)) {
@@ -258,7 +270,9 @@ function flattenOptions(
   return flatOptions;
 }
 
-function renderSingleOption(option: HideableStrictOption): React.ReactNode {
+function renderSingleOption<Value extends string = string>(
+  option: HideableStrictOption<Value>,
+): React.ReactNode {
   const {value, label, prefix: _prefix, ...rest} = option;
   return (
     <option key={value} value={value} {...rest}>
@@ -267,8 +281,8 @@ function renderSingleOption(option: HideableStrictOption): React.ReactNode {
   );
 }
 
-function renderOption(
-  optionOrGroup: HideableStrictOption | StrictGroup,
+function renderOption<Value extends string = string>(
+  optionOrGroup: HideableStrictOption<Value> | StrictGroup<Value>,
 ): React.ReactNode {
   if (isGroup(optionOrGroup)) {
     const {title, options} = optionOrGroup;
