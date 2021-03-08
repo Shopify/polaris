@@ -7,17 +7,17 @@ import {Spinner} from '../Spinner';
 import {TextField, ComboBox, ComboBoxProps} from './components';
 import styles from './Autocomplete.scss';
 
-export interface AutocompleteProps {
+export interface AutocompleteProps<Value extends string = string> {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: ComboBoxProps['options'];
+  options: ComboBoxProps<Value>['options'];
   /** The selected options */
-  selected: string[];
+  selected: Value[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
-  preferredPosition?: ComboBoxProps['preferredPosition'];
+  preferredPosition?: ComboBoxProps<Value>['preferredPosition'];
   /** Title of the list of options */
   listTitle?: string;
   /** Allow more than one option to be selected */
@@ -31,7 +31,7 @@ export interface AutocompleteProps {
   /** Is rendered when there are no options */
   emptyState?: React.ReactNode;
   /** Callback when the selection of options is changed */
-  onSelect(selected: string[]): void;
+  onSelect(selected: Value[]): void;
   /** Callback when the end of the list is reached */
   onLoadMoreResults?(): void;
 }
@@ -41,10 +41,15 @@ export interface AutocompleteProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
+interface AutoCompleteComponent {
+  <Value extends string = string>(props: AutocompleteProps<Value>): JSX.Element;
   ComboBox: typeof ComboBox;
   TextField: typeof TextField;
-} = function Autocomplete({
+}
+
+export const Autocomplete: AutoCompleteComponent = function Autocomplete<
+  Value extends string = string
+>({
   id,
   options,
   selected,
@@ -58,7 +63,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   emptyState,
   onSelect,
   onLoadMoreResults,
-}: AutocompleteProps) {
+}: AutocompleteProps<Value>) {
   const i18n = useI18n();
 
   const spinnerMarkup = loading ? (

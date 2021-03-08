@@ -13,13 +13,13 @@ import {isServer} from '../../../../utilities/target';
 import {ComboBoxContext} from './context';
 import styles from './ComboBox.scss';
 
-export interface ComboBoxProps {
+export interface ComboBoxProps<Value extends string = string> {
   /** A unique identifier for the ComboBox */
   id?: string;
   /** Collection of options to be listed */
-  options: OptionDescriptor[];
+  options: OptionDescriptor<Value>[];
   /** The selected options */
-  selected: string[];
+  selected: Value[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
@@ -39,12 +39,12 @@ export interface ComboBoxProps {
   /** Is rendered when there are no options */
   emptyState?: React.ReactNode;
   /** Callback when the selection of options is changed */
-  onSelect(selected: string[]): void;
+  onSelect(selected: Value[]): void;
   /** Callback when the end of the list is reached */
   onEndReached?(): void;
 }
 
-export function ComboBox({
+export function ComboBox<Value extends string = string>({
   id: idProp,
   options,
   selected,
@@ -59,11 +59,11 @@ export function ComboBox({
   emptyState,
   onSelect,
   onEndReached,
-}: ComboBoxProps) {
+}: ComboBoxProps<Value>) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedOptions, setSelectedOptions] = useState(selected);
   const [navigableOptions, setNavigableOptions] = useState<
-    (OptionDescriptor | ActionListItemDescriptor)[]
+    (OptionDescriptor<Value> | ActionListItemDescriptor)[]
   >([]);
   const {
     value: popoverActive,
@@ -87,8 +87,8 @@ export function ComboBox({
 
   const visuallyUpdateSelectedOption = useCallback(
     (
-      newOption: OptionDescriptor | ActionListItemDescriptor,
-      oldOption: OptionDescriptor | ActionListItemDescriptor | undefined,
+      newOption: OptionDescriptor<Value> | ActionListItemDescriptor,
+      oldOption: OptionDescriptor<Value> | ActionListItemDescriptor | undefined,
     ) => {
       if (oldOption) {
         oldOption.active = false;
@@ -156,7 +156,7 @@ export function ComboBox({
   }, [navigableOptions, selectOptionAtIndex, selectedIndex]);
 
   const selectOptions = useCallback(
-    (selected: string[]) => {
+    (selected: Value[]) => {
       selected && onSelect(selected);
       if (!allowMultiple) {
         resetVisuallySelectedOptions();
@@ -172,7 +172,7 @@ export function ComboBox({
   );
 
   const handleSelection = useCallback(
-    (newSelected: string) => {
+    (newSelected: Value) => {
       let newlySelectedOptions = selected;
       if (selected.includes(newSelected)) {
         newlySelectedOptions.splice(
@@ -219,7 +219,7 @@ export function ComboBox({
   }, [forcePopoverActiveTrue, popoverActive]);
 
   const updateIndexOfSelectedOption = useCallback(
-    (newOptions: (OptionDescriptor | ActionListItemDescriptor)[]) => {
+    (newOptions: (OptionDescriptor<Value> | ActionListItemDescriptor)[]) => {
       const selectedOption = navigableOptions[selectedIndex];
       if (selectedOption && newOptions.includes(selectedOption)) {
         selectOptionAtIndex(newOptions.indexOf(selectedOption));
@@ -245,7 +245,7 @@ export function ComboBox({
 
   useIsomorphicLayoutEffect(() => {
     let newNavigableOptions: (
-      | OptionDescriptor
+      | OptionDescriptor<Value>
       | ActionListItemDescriptor
     )[] = [];
     if (actionsBefore) {
@@ -357,24 +357,24 @@ export function ComboBox({
   );
 }
 
-function assignOptionIds(
-  options: (OptionDescriptor | ActionListItemDescriptor)[],
+function assignOptionIds<Value extends string = string>(
+  options: (OptionDescriptor<Value> | ActionListItemDescriptor)[],
   id: string,
-): OptionDescriptor[] | ActionListItemDescriptor[] {
+): OptionDescriptor<Value>[] | ActionListItemDescriptor[] {
   return options.map((option, optionIndex) => ({
     ...option,
     id: `${id}-${optionIndex}`,
   }));
 }
 
-function isOption(
-  navigableOption: OptionDescriptor | ActionListItemDescriptor,
-): navigableOption is OptionDescriptor {
+function isOption<Value extends string = string>(
+  navigableOption: OptionDescriptor<Value> | ActionListItemDescriptor,
+): navigableOption is OptionDescriptor<Value> {
   return 'value' in navigableOption && navigableOption.value !== undefined;
 }
 
-function filterForOptions(
-  mixedArray: (ActionListItemDescriptor | OptionDescriptor)[],
-): OptionDescriptor[] {
+function filterForOptions<Value extends string = string>(
+  mixedArray: (ActionListItemDescriptor | OptionDescriptor<Value>)[],
+): OptionDescriptor<Value>[] {
   return mixedArray.filter(isOption);
 }
