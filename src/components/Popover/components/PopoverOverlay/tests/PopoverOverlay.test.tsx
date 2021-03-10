@@ -170,6 +170,24 @@ describe('<PopoverOverlay />', () => {
     ).toBe(false);
   });
 
+  it('passes zIndexOverride to PositionedOverlay', () => {
+    const popoverOverlay = mountWithApp(
+      <PopoverOverlay
+        active
+        zIndexOverride={100}
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      zIndexOverride: 100,
+    });
+  });
+
   it("doesn't include a tabindex prop when autofocusTarget is 'none'", () => {
     const popoverOverlay = mountWithAppProvider(
       <PopoverOverlay
