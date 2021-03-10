@@ -251,6 +251,20 @@ Use to indicate when a given task has been completed. For example, when merchant
 <Badge progress="complete">Fulfilled</Badge>
 ```
 
+### Badge with statusAndProgressLabelOverride
+
+Use when the status and progress accessibilityLabels are not appropriate to a given context.
+
+```jsx
+<Badge
+  status="success"
+  progress="complete"
+  statusAndProgressLabelOverride="Status: Published. Your online store is visible."
+>
+  Published
+</Badge>
+```
+
 <!-- content-for: android -->
 
 ![Complete badge. Default badge with complete status](/public_images/components/Badge/android/complete@2x.png)

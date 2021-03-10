@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artiklar",
-      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} i din butik har valts.",
+      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} har valts.",
       "selected": "{selectedItemsCount} har valts",
       "a11yCheckboxDeselectAllSingle": "Avmarkera {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Välj {resourceNameSingular}",
@@ -319,7 +319,7 @@
       "selectAllLabel": "Välj alla {resourceNamePlural}",
       "selected": "{selectedItemsCount} har valts",
       "undo": "Ångra",
-      "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural} i din butik",
+      "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",
       "selectButtonText": "Välj"
     }

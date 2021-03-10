@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "品項",
       "defaultItemPlural": "品項",
-      "allItemsSelected": "已選取您商店中所有 {itemsLength}+ {resourceNamePlural}。",
+      "allItemsSelected": "已選取全部 {itemsLength} + {resourceNamePlural}。",
       "selected": "已選取 {selectedItemsCount} 項",
       "a11yCheckboxDeselectAllSingle": "取消選取 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
@@ -319,7 +319,7 @@
       "selectAllLabel": "選取所有 {resourceNamePlural}",
       "selected": "已選取 {selectedItemsCount} 項",
       "undo": "復原",
-      "selectAllItems": "選取您商店中所有 {itemsLength}+ {resourceNamePlural}",
+      "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",
       "selectButtonText": "選取"
     }

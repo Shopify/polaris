@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Mặt hàng",
       "defaultItemPlural": "Các mặt hàng",
-      "allItemsSelected": "Đã chọn tất cả {itemsLength}+ {resourceNamePlural} trong cửa hàng của bạn.",
+      "allItemsSelected": "Đã chọn tất cả {itemsLength}+ {resourceNamePlural}.",
       "selected": "Đã chọn {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Bỏ chọn {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Chọn {resourceNameSingular}",
@@ -319,7 +319,7 @@
       "selectAllLabel": "Chọn tất cả {resourceNamePlural}",
       "selected": "Đã chọn {selectedItemsCount}",
       "undo": "Hoàn tác",
-      "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural} trong cửa hàng của bạn",
+      "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Chọn {resourceName}",
       "selectButtonText": "Chọn"
     }

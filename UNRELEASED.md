@@ -6,11 +6,17 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added `statusAndProgressLabelOverride` prop to `Badge` ([#4028](https://github.com/Shopify/polaris-react/pull/4028))
+- Added an `onError` hook to the `Avatar` component ([#4052](https://github.com/Shopify/polaris-react/pull/4052))
+- Added `zIndexOverride` prop to `Popover` ([#3937](https://github.com/Shopify/polaris-react/pull/3937))
+
 ### Bug fixes
 
+- `IndexTable` Remove parent resource name from bulk select action ([#4013](https://github.com/Shopify/polaris-react/pull/4013))
 - Ensured `@charset` declaration is the first thing in our styles.css file ([#4019](https://github.com/Shopify/polaris-react/pull/4019))
 - Fix `Modal.Section` divider color to match header and footer divider ([#4021](https://github.com/Shopify/polaris-react/pull/4021))
 - Fix `IndexTable` sticky header alignment and jank ([#4033](https://github.com/Shopify/polaris-react/pull/4033)
+- Remove focus ring on click for ActionList ([#4034](https://github.com/Shopify/polaris-react/pull/4034))
 
 ### Documentation
 
@@ -19,6 +25,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 ### Dependency upgrades
+
+- Update `@shopify/polaris-tokens to v2.21.0 ([#4030](https://github.com/Shopify/polaris-react/pull/4030))
 
 ### Code quality
 
