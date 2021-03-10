@@ -186,14 +186,21 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
-    it('sets autoComplete to "off" when false', () => {
+    it('sets autoComplete to "nope" when false', () => {
       const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
-      expect(textField.find('input').prop('autoComplete')).toBe('off');
+      expect(textField.find('input').prop('autoComplete')).toBe('nope');
     });
 
-    it('sets autoComplete to "on" when false', () => {
+    it('sets autoComplete to "nope" when "off"', () => {
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" autoComplete="off" onChange={noop} />,
+      );
+      expect(textField.find('input').prop('autoComplete')).toBe('nope');
+    });
+
+    it('sets autoComplete to "on" when true', () => {
       const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );
