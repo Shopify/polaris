@@ -27,8 +27,8 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
-import {getTableHeadingsBySelector} from './utilities';
 
+import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
