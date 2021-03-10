@@ -1,4 +1,4 @@
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import {spacingLoose} from '@shopify/polaris-tokens';
 
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
@@ -33,20 +33,20 @@ export class StickyManager {
   private container: Document | HTMLElement | null = null;
   private topBarOffset = 0;
 
-  private handleResize = throttle(
+  private handleResize = debounce(
     () => {
       this.manageStickyItems();
     },
     SIXTY_FPS,
-    {leading: true, trailing: true},
+    {leading: true, trailing: true, maxWait: SIXTY_FPS},
   );
 
-  private handleScroll = throttle(
+  private handleScroll = debounce(
     () => {
       this.manageStickyItems();
     },
     SIXTY_FPS,
-    {leading: true, trailing: true},
+    {leading: true, trailing: true, maxWait: SIXTY_FPS},
   );
 
   constructor(container?: Document | HTMLElement) {

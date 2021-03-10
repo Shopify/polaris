@@ -1,7 +1,6 @@
-import React, {useRef, useState, useEffect, useCallback} from 'react';
+import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
-import throttle from 'lodash/throttle';
 import {CSSTransition} from 'react-transition-group';
 import {durationFast} from '@shopify/polaris-tokens';
 
@@ -28,6 +27,7 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
+import {getTableHeadingsBySelector} from './utilities';
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
@@ -132,48 +132,55 @@ function IndexTableBase({
           tableHeadingRects.current[1].offsetWidth;
   }, [condensed]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const resizeTableHeadings = useCallback(
-    throttle(() => {
-      if (!tableElement.current || !scrollableContainerElement.current) {
-        return;
-      }
+  const resizeTableHeadings = useMemo(
+    () =>
+      debounce(
+        () => {
+          if (!tableElement.current || !scrollableContainerElement.current) {
+            return;
+          }
 
-      const boundingRect = scrollableContainerElement.current.getBoundingClientRect();
-      tablePosition.current = {top: boundingRect.top, left: boundingRect.left};
+          const boundingRect = scrollableContainerElement.current.getBoundingClientRect();
+          tablePosition.current = {
+            top: boundingRect.top,
+            left: boundingRect.left,
+          };
 
-      tableHeadingRects.current = tableHeadings.current.map((heading) => ({
-        offsetWidth: heading.offsetWidth || 0,
-        offsetLeft: heading.offsetLeft || 0,
-      }));
+          tableHeadingRects.current = tableHeadings.current.map((heading) => ({
+            offsetWidth: heading.offsetWidth || 0,
+            offsetLeft: heading.offsetLeft || 0,
+          }));
 
-      if (tableHeadings.current.length === 0) {
-        return;
-      }
+          if (tableHeadings.current.length === 0) {
+            return;
+          }
 
-      // update left offset for first column
-      if (tableHeadings.current.length > 1)
-        tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
+          // update left offset for first column
+          if (tableHeadings.current.length > 1)
+            tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
-      // update the min width of the checkbox to be the be the un-padded width of the first heading
-      if (stickyHeaderCheckboxElement?.current) {
-        const elementStyle = getComputedStyle(tableHeadings.current[0]);
-        const boxWidth = tableHeadings.current[0].offsetWidth;
-        stickyHeaderCheckboxElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
-      }
+          // update the min width of the checkbox to be the be the un-padded width of the first heading
+          if (stickyHeaderCheckboxElement?.current) {
+            const elementStyle = getComputedStyle(tableHeadings.current[0]);
+            const boxWidth = tableHeadings.current[0].offsetWidth;
+            stickyHeaderCheckboxElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
+          }
 
-      // update sticky header min-widths
-      stickyTableHeadings.current.forEach((heading, index) => {
-        let minWidth = 0;
-        if (index === 0) {
-          minWidth = calculateFirstHeaderOffset();
-        } else if (tableHeadingRects.current.length > index) {
-          minWidth = tableHeadingRects.current[index].offsetWidth;
-        }
+          // update sticky header min-widths
+          stickyTableHeadings.current.forEach((heading, index) => {
+            let minWidth = 0;
+            if (index === 0) {
+              minWidth = calculateFirstHeaderOffset();
+            } else if (tableHeadingRects.current.length > index) {
+              minWidth = tableHeadingRects.current[index].offsetWidth;
+            }
 
-        heading.style.minWidth = `${minWidth}px`;
-      });
-    }, SIXTY_FPS),
+            heading.style.minWidth = `${minWidth}px`;
+          });
+        },
+        SIXTY_FPS,
+        {leading: true, trailing: true, maxWait: SIXTY_FPS},
+      ),
     [calculateFirstHeaderOffset],
   );
 
@@ -251,8 +258,14 @@ function IndexTableBase({
   }, []);
 
   useEffect(() => {
-    tableHeadings.current = getTableHeadings();
-    stickyTableHeadings.current = getStickyTableHeadings();
+    tableHeadings.current = getTableHeadingsBySelector(
+      tableElement.current,
+      '[data-index-table-heading]',
+    );
+    stickyTableHeadings.current = getTableHeadingsBySelector(
+      stickyHeaderWrapperElement.current,
+      '[data-index-table-sticky-heading]',
+    );
     resizeTableHeadings();
   }, [
     headings,
@@ -646,7 +659,7 @@ function IndexTableBase({
         className={stickyHeadingClassName}
         key={heading.title}
         style={headingStyle}
-        data-index-table-sticky-heading="1"
+        data-index-table-sticky-heading
       >
         {headingContent}
       </div>
@@ -675,26 +688,6 @@ function IndexTableBase({
   function handleSelectModeToggle(val: boolean) {
     handleSelectionChange(SelectionType.All, false);
     setIsSmallScreenSelectable(val);
-  }
-
-  function getTableHeadings() {
-    return tableElement.current
-      ? Array.from(
-          tableElement.current.querySelectorAll<HTMLElement>(
-            '[data-index-table-heading]',
-          ),
-        )
-      : [];
-  }
-
-  function getStickyTableHeadings() {
-    return stickyHeaderWrapperElement.current
-      ? Array.from(
-          stickyHeaderWrapperElement.current.querySelectorAll<HTMLElement>(
-            '[data-index-table-sticky-heading]',
-          ),
-        )
-      : [];
   }
 }
 

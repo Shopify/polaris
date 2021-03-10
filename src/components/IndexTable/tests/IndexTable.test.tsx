@@ -3,6 +3,8 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Sticky} from 'components/Sticky';
+import {EventListener} from 'components/EventListener';
+import {getTableHeadingsBySelector} from '../utilities';
 
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
@@ -15,6 +17,11 @@ import {IndexTable, IndexTableProps} from '../IndexTable';
 import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
+
+jest.mock('../utilities', () => ({
+  ...(jest.requireActual('../utilities') as any),
+  getTableHeadingsBySelector: jest.fn(),
+}));
 
 const mockTableItems = [
   {
@@ -63,6 +70,11 @@ describe('<IndexTable>', () => {
     selectedItemsCount: 0,
     headings: mockTableHeadings,
   };
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
+  });
 
   it('renders an <EmptySearchResult /> if no items are passed', () => {
     const index = mountWithApp(<IndexTable {...defaultProps} itemCount={0} />);
@@ -154,6 +166,31 @@ describe('<IndexTable>', () => {
         className:
           'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
       });
+    });
+  });
+
+  describe('resize', function () {
+    it('does not update columns if no headings are present', () => {
+      const spy = jest.spyOn(window, 'getComputedStyle');
+
+      const headings: IndexTableProps['headings'] = [
+        {title: 'Heading one'},
+        {title: 'Heading two'},
+      ];
+
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          headings={headings}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      index.find(EventListener)!.trigger('handler');
+
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 

@@ -1,0 +1,1 @@
+export {getTableHeadingsBySelector} from './utilities';
