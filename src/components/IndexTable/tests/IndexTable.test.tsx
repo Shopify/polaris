@@ -4,8 +4,8 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Sticky} from 'components/Sticky';
 import {EventListener} from 'components/EventListener';
-import {getTableHeadingsBySelector} from '../utilities';
 
+import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
