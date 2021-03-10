@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Ensured `@charset` declaration is the first thing in our styles.css file ([#4019](https://github.com/Shopify/polaris-react/pull/4019))
 - Fix `Modal.Section` divider color to match header and footer divider ([#4021](https://github.com/Shopify/polaris-react/pull/4021))
 - Remove focus ring on click for ActionList ([#4034](https://github.com/Shopify/polaris-react/pull/4034))
+- Updated `<TextField>` to use `autocomplete=nope` instead of `autocomplete=off` ([#4053](https://github.com/Shopify/polaris-react/pull/4053))
 
 ### Documentation
 
