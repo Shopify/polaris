@@ -55,6 +55,7 @@ export interface TableHeadingRect {
 const SCROLL_BAR_PADDING = 4;
 const SIXTY_FPS = 1000 / 60;
 const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
+const SMALL_SCREEN_WIDTH = 458;
 
 function IndexTableBase({
   headings,
@@ -169,7 +170,7 @@ function IndexTableBase({
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0) {
+            if (index === 0 && !isSmallScreen()) {
               minWidth = calculateFirstHeaderOffset();
             } else if (tableHeadingRects.current.length > index) {
               minWidth = tableHeadingRects.current[index].offsetWidth;
@@ -690,6 +691,12 @@ function IndexTableBase({
     setIsSmallScreenSelectable(val);
   }
 }
+
+const isSmallScreen = () => {
+  return typeof window === 'undefined'
+    ? false
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
+};
 
 export interface IndexTableProps
   extends IndexTableBaseProps,
