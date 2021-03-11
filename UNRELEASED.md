@@ -19,13 +19,13 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
-- Replaced mentions of "invalid" with not "valid" ([#4025](https://github.com/Shopify/polaris-react/pull/4025))
+- Replaced mentions of "invalid" with not "valid" ([#4056](https://github.com/Shopify/polaris-react/pull/4056))
 
 ### Development workflow
 
 ### Dependency upgrades
 
-- Update `@shopify/polaris-tokens to v2.21.0 ([#4030](https://github.com/Shopify/polaris-react/pull/4030))
+- Update `@shopify/polaris-tokens to v3.0.0 ([#4030](https://github.com/Shopify/polaris-react/pull/4030))
 
 ### Code quality
 
