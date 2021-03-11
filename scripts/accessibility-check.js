@@ -1,9 +1,15 @@
 /* eslint-disable no-console */
+const path = require('path');
+
 const {storybookA11yTest} = require('@shopify/storybook-a11y-test');
 
 (async () => {
   const options = {
-    iframePath: 'build/storybook/static/iframe.html',
+    iframePath: path.join(
+      'file://',
+      __dirname,
+      '../build/storybook/static/iframe.html',
+    ),
     skippedStoryIds: ['playground-playground', 'all-examples'],
   };
 
