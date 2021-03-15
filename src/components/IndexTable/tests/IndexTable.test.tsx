@@ -19,7 +19,7 @@ import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 
 jest.mock('../utilities', () => ({
-  ...(jest.requireActual('../utilities') as any),
+  ...jest.requireActual('../utilities'),
   getTableHeadingsBySelector: jest.fn(),
 }));
 
