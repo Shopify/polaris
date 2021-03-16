@@ -49,6 +49,8 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
+  /** Override on the default z-index of 400 */
+  zIndexOverride?: number;
   /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
   preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
@@ -95,6 +97,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   ariaHaspopup,
   preferInputActivator = true,
   colorScheme,
+  zIndexOverride,
   ...rest
 }: PopoverProps) {
   const [activatorNode, setActivatorNode] = useState<HTMLElement>();
@@ -182,6 +185,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
         active={active}
         fixed={fixed}
         colorScheme={colorScheme}
+        zIndexOverride={zIndexOverride}
         {...rest}
       >
         {children}

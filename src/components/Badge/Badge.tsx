@@ -23,6 +23,8 @@ export interface BadgeProps {
    * @default 'medium'
    */
   size?: Size;
+  /** Pass a custom accessibilityLabel */
+  statusAndProgressLabelOverride?: string;
 }
 
 const PROGRESS_LABELS: {[key in Progress]: Progress} = {
@@ -47,6 +49,7 @@ export function Badge({
   status,
   progress,
   size = DEFAULT_SIZE,
+  statusAndProgressLabelOverride,
 }: BadgeProps) {
   const i18n = useI18n();
   const withinFilter = useContext(WithinFilterContext);
@@ -98,12 +101,17 @@ export function Badge({
       break;
   }
 
-  const accessibilityLabel = i18n.translate('Polaris.Badge.progressAndStatus', {
-    progressLabel,
-    statusLabel,
-  });
+  const accessibilityLabel = statusAndProgressLabelOverride
+    ? statusAndProgressLabelOverride
+    : i18n.translate('Polaris.Badge.progressAndStatus', {
+        progressLabel,
+        statusLabel,
+      });
 
-  let accessibilityMarkup = (progressLabel || statusLabel) && (
+  const hasAccessibilityLabel =
+    progressLabel || statusLabel || statusAndProgressLabelOverride;
+
+  let accessibilityMarkup = hasAccessibilityLabel && (
     <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
   );
 

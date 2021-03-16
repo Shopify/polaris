@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "รายการ",
       "defaultItemPlural": "รายการ",
-      "allItemsSelected": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมดในร้านค้าของคุณแล้ว",
+      "allItemsSelected": "{itemsLength}+ {resourceNamePlural} ที่เลือกทั้งหมด",
       "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
       "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
@@ -319,7 +319,7 @@
       "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
       "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
       "undo": "เลิกทำ",
-      "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมดในร้านค้าของคุณ",
+      "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมด",
       "selectItem": "เลือก {resourceName}",
       "selectButtonText": "เลือก"
     }

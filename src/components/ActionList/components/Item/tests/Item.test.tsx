@@ -10,7 +10,9 @@ import {TextStyle} from '../../../../TextStyle';
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
     const item = mountWithAppProvider(<Item image="some-image.png" />);
-    const styledItem = item.find('div').findWhere((node) => node.prop('style'));
+    const styledItem = item
+      .find('span')
+      .findWhere((node) => node.prop('style'));
     expect(styledItem.first().prop('style')).toHaveProperty(
       'backgroundImage',
       'url(some-image.png',
@@ -37,13 +39,13 @@ describe('<Item />', () => {
   });
 
   it('renders a suffix when the suffix prop is defined', () => {
-    const Suffix = () => <div>Suffix</div>;
+    const Suffix = () => <span>Suffix</span>;
     const item = mountWithApp(<Item suffix={<Suffix />} />);
     expect(item).toContainReactComponent(Suffix);
   });
 
   it('renders a prefix when the prefix prop is defined', () => {
-    const Prefix = () => <div>Prefix</div>;
+    const Prefix = () => <span>Prefix</span>;
     const item = mountWithApp(<Item prefix={<Prefix />} />);
     expect(item).toContainReactComponent(Prefix);
   });

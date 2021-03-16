@@ -304,7 +304,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Artículo",
       "defaultItemPlural": "Artículos",
-      "allItemsSelected": "Todos los {itemsLength}+ {resourceNamePlural} en tu tienda están seleccionados.",
+      "allItemsSelected": "Todos los {itemsLength}+ {resourceNamePlural} están seleccionados.",
       "selected": "{selectedItemsCount} seleccionados",
       "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
@@ -319,7 +319,7 @@
       "selectAllLabel": "Seleccionar todos los {resourceNamePlural}",
       "selected": "{selectedItemsCount} seleccionados",
       "undo": "Deshacer",
-      "selectAllItems": "Seleccionar todos los {itemsLength}+ {resourceNamePlural} en tu tienda",
+      "selectAllItems": "Seleccionar todos los {itemsLength}+{resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
       "selectButtonText": "Seleccionar"
     }
