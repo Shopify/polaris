@@ -1,5 +1,5 @@
 import React from 'react';
-import {OptionList, ActionList, Popover} from 'components';
+import {OptionList, OptionListProps, ActionList, Popover} from 'components';
 import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, act} from 'test-utilities/legacy';
@@ -35,7 +35,9 @@ describe('<ComboBox/>', () => {
 
       comboBox.simulate('click');
 
-      const optionListOptions = comboBox.find(OptionList).prop('options') || [
+      const optionListOptions = comboBox
+        .find<OptionListProps>(OptionList)
+        .prop('options') || [
         {
           value: '',
           label: '',

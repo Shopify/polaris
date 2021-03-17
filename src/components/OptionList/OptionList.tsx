@@ -10,9 +10,9 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Option} from './components';
 import styles from './OptionList.scss';
 
-export interface OptionDescriptor {
+export interface OptionDescriptor<Value extends string = string> {
   /** Value of the option */
-  value: string;
+  value: Value;
   /** Display label for the option */
   label: React.ReactNode;
   /** Whether the option is disabled or not */
@@ -25,37 +25,39 @@ export interface OptionDescriptor {
   media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
-interface SectionDescriptor {
+interface SectionDescriptor<Value extends string = string> {
   /** Collection of options within the section */
-  options: OptionDescriptor[];
+  options: OptionDescriptor<Value>[];
   /** Section title */
   title?: string;
 }
 
-type Descriptor = OptionDescriptor | SectionDescriptor;
+type Descriptor<Value extends string = string> =
+  | OptionDescriptor<Value>
+  | SectionDescriptor<Value>;
 
-export interface OptionListProps {
+export interface OptionListProps<Value extends string = string> {
   /** A unique identifier for the option list */
   id?: string;
   /** List title */
   title?: string;
   /** Collection of options to be listed */
-  options?: OptionDescriptor[];
+  options?: OptionDescriptor<Value>[];
   /** Defines a specific role attribute for the list itself */
   role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
-  sections?: SectionDescriptor[];
+  sections?: SectionDescriptor<Value>[];
   /** The selected options */
-  selected: string[];
+  selected: Value[];
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** Callback when selection is changed */
-  onChange(selected: string[]): void;
+  onChange(selected: Value[]): void;
 }
 
-export function OptionList({
+export function OptionList<Value extends string = string>({
   options,
   sections,
   title,
@@ -65,7 +67,7 @@ export function OptionList({
   optionRole,
   onChange,
   id: idProp,
-}: OptionListProps) {
+}: OptionListProps<Value>) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
@@ -153,11 +155,11 @@ export function OptionList({
   );
 }
 
-function createNormalizedOptions(
-  options?: OptionDescriptor[],
-  sections?: SectionDescriptor[],
+function createNormalizedOptions<Value extends string = string>(
+  options?: OptionDescriptor<Value>[],
+  sections?: SectionDescriptor<Value>[],
   title?: string,
-): SectionDescriptor[] {
+): SectionDescriptor<Value>[] {
   if (options == null) {
     const section = {options: [], title};
     return sections == null ? [] : [section, ...sections];
@@ -179,19 +181,21 @@ function createNormalizedOptions(
   ];
 }
 
-function isSection(arr: Descriptor[]): arr is SectionDescriptor[] {
+function isSection<Value extends string = string>(
+  arr: Descriptor<Value>[],
+): arr is SectionDescriptor<Value>[] {
   return (
     typeof arr[0] === 'object' &&
     Object.prototype.hasOwnProperty.call(arr[0], 'options')
   );
 }
 
-function optionArraysAreEqual(
-  firstArray: Descriptor[],
-  secondArray: Descriptor[],
+function optionArraysAreEqual<Value extends string = string>(
+  firstArray: Descriptor<Value>[],
+  secondArray: Descriptor<Value>[],
 ) {
   if (isSection(firstArray) && isSection(secondArray)) {
-    return arraysAreEqual<SectionDescriptor>(
+    return arraysAreEqual<SectionDescriptor<Value>>(
       firstArray,
       secondArray,
       testSectionsPropEquality,
@@ -201,9 +205,9 @@ function optionArraysAreEqual(
   return arraysAreEqual(firstArray, secondArray);
 }
 
-function testSectionsPropEquality(
-  previousSection: SectionDescriptor,
-  currentSection: SectionDescriptor,
+function testSectionsPropEquality<Value extends string = string>(
+  previousSection: SectionDescriptor<Value>,
+  currentSection: SectionDescriptor<Value>,
 ) {
   const {options: previousOptions} = previousSection;
   const {options: currentOptions} = currentSection;

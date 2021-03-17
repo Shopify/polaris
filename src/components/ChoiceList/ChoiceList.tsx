@@ -9,9 +9,9 @@ import {InlineError, errorTextID} from '../InlineError';
 
 import styles from './ChoiceList.scss';
 
-interface Choice {
+interface Choice<Value extends string = string> {
   /** Value of the choice */
-  value: string;
+  value: Value;
   /** Label for the choice */
   label: React.ReactNode;
   /** Disable choice */
@@ -24,13 +24,13 @@ interface Choice {
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
 
-export interface ChoiceListProps {
+export interface ChoiceListProps<Value extends string = string> {
   /** Label for list of choices */
   title: React.ReactNode;
   /** Collection of choices */
-  choices: Choice[];
+  choices: Choice<Value>[];
   /** Collection of selected choices */
-  selected: string[];
+  selected: Value[];
   /** Name for form input */
   name?: string;
   /** Allow merchants to select multiple options at once */
@@ -42,12 +42,12 @@ export interface ChoiceListProps {
   /** Disable all choices **/
   disabled?: boolean;
   /** Callback when the selected choices change */
-  onChange?(selected: string[], name: string): void;
+  onChange?(selected: Value[], name: string): void;
   /** Renders the choicelist horizontal */
   horizontal?: boolean;
 }
 
-export function ChoiceList({
+export function ChoiceList<Value extends string = string>({
   title,
   titleHidden,
   allowMultiple,
@@ -58,7 +58,7 @@ export function ChoiceList({
   disabled = false,
   name: nameProp,
   horizontal,
-}: ChoiceListProps) {
+}: ChoiceListProps<Value>) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
@@ -142,16 +142,19 @@ export function ChoiceList({
 
 function noop() {}
 
-function choiceIsSelected({value}: Choice, selected: string[]) {
+function choiceIsSelected<Value extends string = string>(
+  {value}: Choice<Value>,
+  selected: Value[],
+): boolean {
   return selected.includes(value);
 }
 
-function updateSelectedChoices(
-  {value}: Choice,
+function updateSelectedChoices<Value extends string = string>(
+  {value}: Choice<Value>,
   checked: boolean,
-  selected: string[],
+  selected: Value[],
   allowMultiple = false,
-) {
+): Value[] {
   if (checked) {
     return allowMultiple ? [...selected, value] : [value];
   }
