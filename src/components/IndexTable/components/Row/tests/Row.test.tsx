@@ -186,6 +186,28 @@ describe('<Row />', () => {
 
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('calls handleInteraction when clicked and no primary link child present', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <th>
+          <a href="/">Child without data-primary-link</a>
+        </th>
+      </Row>,
+      {
+        indexTableProps: {
+          itemCount: 50,
+          selectedItemsCount: 0,
+          onSelectionChange: onSelectionChangeSpy,
+        },
+      },
+    );
+
+    triggerOnClick(row, 1, defaultEvent);
+
+    expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+  });
 });
 
 function triggerOnClick(
