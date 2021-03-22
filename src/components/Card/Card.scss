@@ -11,6 +11,7 @@
 
   @include page-content-when-not-fully-condensed {
     border-radius: var(--p-border-radius-wide, border-radius());
+    overflow: hidden;
   }
 }
 
