@@ -122,6 +122,20 @@ describe('<Card />', () => {
     });
   });
 
+  describe('hideWhenPrinting prop', () => {
+    it('renders the classname "Card hideOnPrint" when passed', () => {
+      const card = mountWithApp(
+        <Card hideOnPrint>
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      expect(card).toContainReactComponent('div', {
+        className: 'Card hideOnPrint',
+      });
+    });
+  });
+
   it('renders a primary footer action', () => {
     const card = mountWithAppProvider(
       <Card primaryFooterAction={{content: 'test action'}}>
