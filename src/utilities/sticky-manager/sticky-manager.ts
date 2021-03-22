@@ -149,7 +149,10 @@ export class StickyManager {
     if (boundingElement == null) {
       sticky = scrollPosition >= placeHolderNodeCurrentTop;
     } else {
-      const stickyItemHeight = stickyNode.getBoundingClientRect().height;
+      const stickyItemHeight =
+        stickyNode.getBoundingClientRect().height ||
+        stickyNode.firstElementChild?.getBoundingClientRect().height ||
+        0;
       const stickyItemBottomPosition =
         boundingElement.getBoundingClientRect().bottom -
         stickyItemHeight +

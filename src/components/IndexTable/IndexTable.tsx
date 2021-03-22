@@ -91,9 +91,11 @@ function IndexTableBase({
 
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
-  const [tableInitialized, setTableInitialized] = useState(false);
+  const condensedListElement = useRef<HTMLUListElement>(null);
 
+  const [tableInitialized, setTableInitialized] = useState(false);
   const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
+  const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -277,7 +279,10 @@ function IndexTableBase({
 
   useEffect(() => {
     resizeTableScrollBar();
-  }, [tableInitialized, resizeTableScrollBar]);
+    setStickyWrapper(
+      condensed ? condensedListElement.current : tableElement.current,
+    );
+  }, [tableInitialized, resizeTableScrollBar, condensed]);
 
   useEffect(() => {
     if (!condensed && isSmallScreenSelectable) {
@@ -382,7 +387,7 @@ function IndexTableBase({
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
-      <Sticky>
+      <Sticky boundingElement={stickyWrapper}>
         {(isSticky: boolean) => {
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
@@ -521,6 +526,7 @@ function IndexTableBase({
       <ul
         data-selectmode={Boolean(selectMode || isSmallScreenSelectable)}
         className={styles.CondensedList}
+        ref={condensedListElement}
       >
         {children}
       </ul>
