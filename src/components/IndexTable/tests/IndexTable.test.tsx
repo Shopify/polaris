@@ -128,6 +128,26 @@ describe('<IndexTable>', () => {
     expect(onSelectionchangeSpy).toHaveBeenCalledWith(SelectionType.Page, true);
   });
 
+  it('passes a bounding element to Sticky', () => {
+    const resourceName = {
+      singular: 'Item',
+      plural: 'Items',
+    };
+    const index = mountWithApp(
+      <IndexTable
+        {...defaultProps}
+        itemCount={mockTableItems.length}
+        resourceName={resourceName}
+      >
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
+    );
+
+    expect(index).toContainReactComponent(Sticky, {
+      boundingElement: index.find('table')?.domNode,
+    });
+  });
+
   describe('ScrollContainer', () => {
     it('updates sticky header scroll left on scoll', () => {
       const updatedScrollLeft = 25;
