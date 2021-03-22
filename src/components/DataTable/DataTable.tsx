@@ -53,6 +53,8 @@ export interface DataTableProps {
   verticalAlign?: VerticalAlign;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
+  /** Table row has hover state. Defaults to true. */
+  hoverable?: boolean;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
   /**
@@ -375,8 +377,16 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private defaultRenderRow = (row: TableData[], index: number) => {
-    const className = classNames(styles.TableRow);
-    const {columnContentTypes, truncate = false, verticalAlign} = this.props;
+    const {
+      columnContentTypes,
+      truncate = false,
+      verticalAlign,
+      hoverable = true,
+    } = this.props;
+    const className = classNames(
+      styles.TableRow,
+      hoverable && styles.hoverable,
+    );
 
     return (
       <tr key={`row-${index}`} className={className}>
