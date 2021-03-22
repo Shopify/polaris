@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added `hideOnPrint` prop to `Card` and `CardSection` ([#](https://github.com/Shopify/polaris-react/issues/4062))
+- Added `hideOnPrint` prop to `Card` and `CardSection` ([#4071](https://github.com/Shopify/polaris-react/pull/4071))
 
 ### Bug fixes
 
