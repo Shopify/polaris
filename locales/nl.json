@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Acties"
+        "rollupButton": "Acties bekijken"
+      },
+      "Actions": {
+        "moreActions": "Meer acties"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Meer acties"
-    },
     "Loading": {
       "label": "Pagina laadbalk"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Selecteer {resourceName}",
       "selectButtonText": "Selecteren"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Acties voor {title} bekijken"
+      }
     }
   }
 }

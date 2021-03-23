@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Akce"
+        "rollupButton": "Zobrazit akce"
+      },
+      "Actions": {
+        "moreActions": "Další akce"
       }
     },
     "Filters": {
@@ -306,9 +309,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Další akce"
-    },
     "Loading": {
       "label": "Panel načítání stránky"
     },
@@ -336,6 +336,11 @@
       "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+      }
     }
   }
 }

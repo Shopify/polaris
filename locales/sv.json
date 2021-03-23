@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Åtgärder"
+        "rollupButton": "Visa åtgärder"
+      },
+      "Actions": {
+        "moreActions": "Fler åtgärder"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Fler åtgärder"
-    },
     "Loading": {
       "label": "Fält för att ladda sida"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",
       "selectButtonText": "Välj"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Visa åtgärder för {title}"
+      }
     }
   }
 }

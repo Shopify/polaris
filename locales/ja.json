@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "アクション"
+        "rollupButton": "アクションを表示する"
+      },
+      "Actions": {
+        "moreActions": "その他の操作"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "その他の操作"
-    },
     "Loading": {
       "label": "ページの読み込み表示バー"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
       "selectButtonText": "選択"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title}のアクションを表示"
+      }
     }
   }
 }
