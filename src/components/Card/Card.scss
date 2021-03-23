@@ -18,6 +18,11 @@
   background-color: var(--p-surface-subdued);
 }
 
+.Section-hideOnPrint,
+.hideOnPrint {
+  @include hidden-when-printing;
+}
+
 .Header {
   padding: spacing() spacing() 0;
 
