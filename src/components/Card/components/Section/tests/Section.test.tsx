@@ -34,11 +34,21 @@ describe('<Card.Section />', () => {
     expect(headerMarkup.text()).toStrictEqual(titleString);
   });
 
-  it('renders classname "Section Section-hideOnPrint" when hideOnPrint prop is passed', () => {
-    const card = mountWithApp(<Section hideOnPrint />);
+  describe('hideWhenPrinting prop', () => {
+    it('renders classname "Section Section-hideOnPrint" when prop is passed', () => {
+      const card = mountWithApp(<Section hideOnPrint />);
 
-    expect(card).toContainReactComponent('div', {
-      className: 'Section Section-hideOnPrint',
+      expect(card).toContainReactComponent('div', {
+        className: 'Section Section-hideOnPrint',
+      });
+    });
+
+    it('does not render classname "Section Section-hideOnPrint" when prop is not passed', () => {
+      const card = mountWithApp(<Section />);
+
+      expect(card).not.toContainReactComponent('div', {
+        className: 'Section Section-hideOnPrint',
+      });
     });
   });
 

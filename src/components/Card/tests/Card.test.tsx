@@ -134,6 +134,18 @@ describe('<Card />', () => {
         className: 'Card hideOnPrint',
       });
     });
+
+    it('does not render the classname "Card hideOnPrint" when prop is not passed', () => {
+      const card = mountWithApp(
+        <Card>
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      expect(card).not.toContainReactComponent('div', {
+        className: 'Card hideOnPrint',
+      });
+    });
   });
 
   it('renders a primary footer action', () => {
