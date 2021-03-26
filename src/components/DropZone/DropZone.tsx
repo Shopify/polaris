@@ -35,7 +35,7 @@ import {
 } from './utils';
 import styles from './DropZone.scss';
 
-export type Type = 'file' | 'image';
+export type DropZoneFileType = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -52,7 +52,7 @@ export interface DropZoneProps {
    * Whether is a file or an image
    * @default 'file'
    */
-  type?: Type;
+  type?: DropZoneFileType;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
@@ -453,7 +453,7 @@ interface DropZoneInputProps {
   id: string;
   accept?: string;
   disabled: boolean;
-  type: Type;
+  type: DropZoneFileType;
   multiple: boolean;
   openFileDialog?: boolean;
   onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;

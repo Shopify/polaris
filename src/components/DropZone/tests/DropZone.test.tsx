@@ -6,7 +6,7 @@ import {Label, Labelled, DisplayText, Caption} from 'components';
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
-import {DropZone, Type} from '../DropZone';
+import {DropZone, DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -215,7 +215,11 @@ describe('<DropZone />', () => {
     'renders texts when allowMultiple is %s and type is %s',
     (allowMultiple, type, expectedDisplayText, expectedLabelText) => {
       const dropZone = mountWithApp(
-        <DropZone overlay allowMultiple={allowMultiple} type={type as Type} />,
+        <DropZone
+          overlay
+          allowMultiple={allowMultiple}
+          type={type as DropZoneFileType}
+        />,
       );
 
       act(() => {
