@@ -74,15 +74,13 @@ export class DualThumb extends Component<DualThumbProps, State> {
 
   private track = createRef<HTMLDivElement>();
   private trackWrapper = createRef<HTMLDivElement>();
-  private thumbLower = createRef<HTMLButtonElement>();
-  private thumbUpper = createRef<HTMLButtonElement>();
+  private thumbLower = createRef<HTMLDivElement>();
+  private thumbUpper = createRef<HTMLDivElement>();
 
   private setTrackPosition = debounce(
     () => {
       if (this.track.current) {
-        const newDesignLanguage =
-          this.context && this.context.newDesignLanguage;
-        const thumbSize = newDesignLanguage ? 16 : 24;
+        const thumbSize = 16;
 
         const {width, left} = this.track.current.getBoundingClientRect();
         const adjustedTrackWidth = width - thumbSize;
@@ -244,7 +242,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
                 testID="track"
               />
               <div className={styles['Track--dashed']} />
-              <button
+              <div
                 id={idLower}
                 className={thumbLowerClassName}
                 style={{
@@ -260,14 +258,14 @@ export class DualThumb extends Component<DualThumbProps, State> {
                 aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                tabIndex={0}
                 onKeyDown={this.handleKeypressLower}
                 onMouseDown={this.handleMouseDownThumbLower}
                 onTouchStart={this.handleTouchStartThumbLower}
                 ref={this.thumbLower}
-                disabled={disabled}
               />
               {outputMarkupLower}
-              <button
+              <div
                 id={idUpper}
                 className={thumbUpperClassName}
                 style={{
@@ -283,11 +281,11 @@ export class DualThumb extends Component<DualThumbProps, State> {
                 aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                tabIndex={0}
                 onKeyDown={this.handleKeypressUpper}
                 onMouseDown={this.handleMouseDownThumbUpper}
                 onTouchStart={this.handleTouchStartThumbUpper}
                 ref={this.thumbUpper}
-                disabled={disabled}
               />
               {outputMarkupUpper}
             </div>
@@ -300,7 +298,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   }
 
   private handleMouseDownThumbLower = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLDivElement>,
   ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
@@ -316,7 +314,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 
   private handleTouchStartThumbLower = (
-    event: React.TouchEvent<HTMLButtonElement>,
+    event: React.TouchEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbLower);
@@ -333,7 +331,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 
   private handleMouseDownThumbUpper = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLDivElement>,
   ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
@@ -349,7 +347,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 
   private handleTouchStartThumbUpper = (
-    event: React.TouchEvent<HTMLButtonElement>,
+    event: React.TouchEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbUpper);
@@ -366,7 +364,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 
   private handleKeypressLower = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     const {incrementValueLower, decrementValueLower} = this;
@@ -388,7 +386,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 
   private handleKeypressUpper = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     const {incrementValueUpper, decrementValueUpper} = this;
@@ -451,7 +449,6 @@ export class DualThumb extends Component<DualThumbProps, State> {
     } = this;
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
-
     if (isEqual(sanitizedValue, value) === false) {
       this.setState(
         {
@@ -519,6 +516,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
 
       const relativeX = dirtyXPosition - trackLeft;
       const percentageOfTrack = relativeX / trackWidth;
+
       return percentageOfTrack * (max - min);
     } else {
       return 0;
@@ -558,7 +556,6 @@ function sanitizeValue(
 ): DualValue {
   let upperValue = inBoundsUpper(roundedToStep(value[1]));
   let lowerValue = inBoundsLower(roundedToStep(value[0]));
-
   const maxLowerValue = upperValue - step;
   const minUpperValue = lowerValue + step;
 

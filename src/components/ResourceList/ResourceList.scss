@@ -24,17 +24,17 @@ $item-wrapper-loading-height: rem(64px);
   }
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
 .HeaderOuterWrapper {
   position: relative;
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   z-index: resource-list(header-outer-wrapper-stacking-order);
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -60,7 +60,7 @@ $item-wrapper-loading-height: rem(64px);
   min-height: resource-list(header-min-height);
   padding: resource-list(header-vertical-padding)
     resource-list(header-padding-small);
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
@@ -182,12 +182,12 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .EmptySearchResultWrapper {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: spacing(extra-loose);
+  padding-bottom: spacing(extra-loose);
 
-  @media screen and (max-height: 600px) {
-    padding-top: 32px;
-    padding-bottom: 32px;
+  @media (min-height: em(600px)) {
+    padding-top: spacing(extra-loose) * 2;
+    padding-bottom: spacing(extra-loose) * 2;
   }
 }
 
@@ -210,7 +210,7 @@ $item-wrapper-loading-height: rem(64px);
   max-width: 100%;
 
   + .ItemWrapper {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 

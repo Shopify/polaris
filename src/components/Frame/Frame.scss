@@ -7,10 +7,10 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: var(--p-background, color('sky', 'light'));
+  background-color: var(--p-background);
 
   @include when-printing {
-    background-color: none;
+    background-color: transparent;
   }
 
   @include frame-when-nav-displayed {
@@ -75,7 +75,8 @@ $skip-vertical-offset: rem(10px);
 
 .NavigationDismiss {
   @include hidden-when-printing;
-  @include recolor-icon(color('white'));
+  @include recolor-icon(var(--p-surface));
+  @include focus-ring;
   position: absolute;
   top: 0;
   left: 100%;
@@ -84,6 +85,7 @@ $skip-vertical-offset: rem(10px);
   margin: spacing();
   padding: 0;
   border: none;
+  border-radius: 50%;
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -97,6 +99,8 @@ $skip-vertical-offset: rem(10px);
   }
 
   &:focus {
+    @include focus-ring($style: focused);
+    position: absolute;
     border-radius: border-radius();
     background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
     outline: none;
@@ -106,21 +110,12 @@ $skip-vertical-offset: rem(10px);
     display: none;
   }
 
-  .Navigation-newDesignLanguage & {
-    border-radius: 50%;
+  &:hover {
+    background-color: var(--p-overlay);
+  }
 
-    &:hover {
-      background-color: var(--p-overlay);
-    }
-
-    &:focus {
-      @include focus-ring;
-      position: absolute;
-    }
-
-    &:active {
-      background-color: var(--p-overlay);
-    }
+  &:active {
+    background-color: var(--p-overlay);
   }
 }
 
@@ -177,21 +172,6 @@ $skip-vertical-offset: rem(10px);
     padding-top: top-bar-height();
     @include when-printing {
       padding-top: 0;
-    }
-  }
-}
-
-.Main-newDesignLanguage {
-  .hasTopBar & {
-    @include when-printing {
-      padding-top: 0;
-    }
-  }
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      @include when-printing {
-        padding-left: 0;
-      }
     }
   }
 }
@@ -258,9 +238,20 @@ $skip-vertical-offset: rem(10px);
   &.focused {
     pointer-events: all;
     opacity: 1;
+    > a {
+      @include focus-ring($style: 'focused');
+    }
   }
-}
 
-.SkipAnchor {
-  @include button-base;
+  > a {
+    @include button-base;
+    @include text-style-button;
+    @include focus-ring($border-width: rem(1px));
+    color: var(--p-text);
+
+    &:focus {
+      border-color: none;
+      box-shadow: none;
+    }
+  }
 }

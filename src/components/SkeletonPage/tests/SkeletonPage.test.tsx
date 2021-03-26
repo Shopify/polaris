@@ -33,46 +33,27 @@ describe('<SkeletonPage />', () => {
   });
 
   describe('title', () => {
-    it('renders title when a title is provided', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" narrowWidth />,
-      );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText).toHaveLength(1);
-      expect(displayText.text()).toBe('Products');
-    });
-
-    it('does not render a title when a title is not provided', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage fullWidth />);
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText).toHaveLength(0);
-    });
-
-    it('passes large to the size prop of DisplayText', () => {
+    it('renders an h1 with the Title class when title is defined', () => {
       const skeletonPage = mountWithAppProvider(
         <SkeletonPage title="Products" />,
       );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText.prop('size')).toBe('large');
+
+      expect(skeletonPage.find('h1.Title')).toHaveLength(1);
+      expect(skeletonPage.find(DisplayText)).toHaveLength(0);
     });
 
-    it('passes h1 to the element prop of DisplayText', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
-      );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText.prop('element')).toBe('h1');
+    it('renders SkeletonTitle when a title not defined', () => {
+      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
+
+      expect(skeletonPage.find('h1.Title')).toHaveLength(0);
+      expect(skeletonPage.find('.SkeletonTitle')).toHaveLength(1);
     });
 
-    it('renders a SkeletonDisplayText when the title is an empty string', () => {
+    it('renders SkeletonTitle when title is an empty string', () => {
       const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
-      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
-    });
 
-    it('passes large to the size prop of SkeletonDisplayText', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
-      const skeletonDisplayText = skeletonPage.find(SkeletonDisplayText);
-      expect(skeletonDisplayText.prop('size')).toBe('large');
+      expect(skeletonPage.find('h1.Title')).toHaveLength(0);
+      expect(skeletonPage.find('.SkeletonTitle')).toHaveLength(1);
     });
   });
 

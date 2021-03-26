@@ -1,9 +1,7 @@
 @import '../../../../styles/common';
 
 $min-height: control-height();
-$control-size: rem(16px);
 $control-vertical-adjustment: rem(2px);
-$selected-option-identifier-width: rem(3px);
 
 .Option {
   @include unstyled-button;
@@ -11,11 +9,27 @@ $selected-option-identifier-width: rem(3px);
   width: 100%;
   min-height: $min-height;
   text-align: left;
+  border-radius: var(--p-border-radius-base);
+  margin-top: spacing(tight) / 2;
 }
 
 .SingleSelectOption {
   @include unstyled-button;
   text-align: left;
+  @include focus-ring;
+
+  &.focused:not(:active) {
+    @include focus-ring($style: 'focused');
+  }
+
+  &.active {
+    background: var(--p-surface-selected);
+  }
+
+  &.active::before,
+  &.select::before {
+    @include list-selected-indicator;
+  }
 
   &:not(.disabled) {
     color: inherit;
@@ -31,151 +45,47 @@ $selected-option-identifier-width: rem(3px);
   display: flex;
   align-items: flex-start;
   width: 100%;
-  padding: spacing(tight) spacing();
+  cursor: pointer;
+  border-radius: var(--p-border-radius-base);
+  padding: spacing(tight);
+
+  &:hover:not(.disabled) {
+    background: var(--p-surface-hovered);
+    outline: border-width(base) solid transparent;
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  &.select,
+  &.select:hover:not(.disabled),
+  &:active:not(.disabled) {
+    background: var(--p-surface-selected);
+    outline: border-width(base) solid transparent;
+  }
+
+  &.disabled {
+    background: var(--p-surface-disabled);
+    cursor: default;
+    color: var(--p-text-disabled);
+  }
 }
 
 .Checkbox {
   box-sizing: border-box;
   display: flex;
   flex-shrink: 0;
-  width: var(--p-choice-size, $control-size);
-  height: var(--p-choice-size, $control-size);
-  margin-top: var(--p-override-none, $control-vertical-adjustment);
+  width: var(--p-choice-size);
+  height: var(--p-choice-size);
   margin-right: spacing(tight);
-  margin-left: calc(-1 * var(--p-choice-margin, 0));
+  margin-left: calc(-1 * var(--p-choice-margin));
 }
 
 .disabled {
   .Media {
-    @include recolor-icon(
-      var(--p-icon-disabled, color('ink', 'lightest')),
-      color('white')
-    );
+    @include recolor-icon(var(--p-icon-disabled));
   }
 }
 
 .Media {
-  @include recolor-icon(var(--p-icon, color('ink', 'light')), color('white'));
+  @include recolor-icon(var(--p-icon));
   padding: 0 spacing(tight);
 }
-
-// stylelint-disable selector-max-class, selector-max-specificity
-.Option:not(.newDesignLanguage) {
-  &:hover {
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-  }
-
-  .focused {
-    box-shadow: inset 0.2rem 0 0 color('indigo');
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-
-    &:hover {
-      box-shadow: inset 0.2rem 0 0 color('indigo');
-      background-image: linear-gradient(
-          rgba(223, 227, 232, 0.3),
-          rgba(223, 227, 232, 0.3)
-        ),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-    }
-  }
-
-  .disabled {
-    background-image: linear-gradient(
-      rgba(249, 250, 251, 1),
-      rgba(249, 250, 251, 1)
-    );
-  }
-
-  .select {
-    background-image: linear-gradient(
-      rgba(179, 188, 245, 0.15),
-      rgba(179, 188, 245, 0.15)
-    );
-
-    &.focused {
-      box-shadow: inset 0.2rem 0 0 color('indigo');
-      background-image: linear-gradient(
-          rgba(179, 188, 245, 0.15),
-          rgba(179, 188, 245, 0.15)
-        ),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-
-      &:hover {
-        box-shadow: inset 0.2rem 0 0 color('indigo');
-        background-image: linear-gradient(
-            rgba(179, 188, 245, 0.15),
-            rgba(179, 188, 245, 0.15)
-          ),
-          linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3)),
-          linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-      }
-    }
-  }
-
-  .active {
-    background-image: linear-gradient(
-      rgba(179, 188, 245, 0.1),
-      rgba(179, 188, 245, 0.1)
-    );
-  }
-}
-
-.Option.newDesignLanguage {
-  border-radius: var(--p-border-radius-base);
-  margin-top: spacing(tight) / 2;
-
-  .Label,
-  .SingleSelectOption {
-    cursor: pointer;
-    border-radius: var(--p-border-radius-base);
-    padding: spacing(tight);
-
-    &:hover:not(.disabled) {
-      background: var(--p-surface-hovered);
-      outline: border-width(base) solid transparent;
-    }
-
-    &.select,
-    &.select:hover:not(.disabled),
-    &:active:not(.disabled) {
-      background: var(--p-surface-selected);
-      outline: border-width(base) solid transparent;
-    }
-
-    &.disabled {
-      background: var(--p-surface-disabled);
-      cursor: default;
-      color: var(--p-text-disabled);
-    }
-  }
-
-  .SingleSelectOption {
-    @include focus-ring;
-
-    &.active,
-    &.focused:not(:active) {
-      @include focus-ring($style: 'focused');
-    }
-
-    &.select::before {
-      background: var(--p-interactive);
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -1 * spacing(tight);
-      height: 100%;
-      display: block;
-      width: $selected-option-identifier-width;
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
-    }
-  }
-}
-
-// stylelint-enable selector-max-class, selector-max-specificity

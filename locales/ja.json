@@ -20,7 +20,8 @@
         "attention": "注意",
         "new": "新規",
         "critical": "クリティカル"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "読み込んでいます",
@@ -81,7 +82,9 @@
         "friday": "金曜日",
         "saturday": "土曜日",
         "sunday": "日曜日"
-      }
+      },
+      "start": "範囲の開始",
+      "end": "範囲の終了"
     },
     "DiscardConfirmationModal": {
       "title": "すべての保存されていない変更を破棄する",
@@ -109,10 +112,8 @@
       "skipToContent": "コンテンツにスキップする",
       "Navigation": {
         "closeMobileNavigationLabel": "メニューを閉じる"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "メニュー"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -150,8 +151,8 @@
       "showing": "{itemsCount}個の{resource}を表示しています",
       "loading": "{resource}を読み込んでいます",
       "selected": "{selectedItemsCount}個を選択済",
-      "allItemsSelected": "ストアにあるすべての{itemsLength}{resourceNamePlural}が選択されています。",
-      "selectAllItems": "ストアにあるすべての{itemsLength}{resourceNamePlural}を選択する",
+      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
       "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
       "emptySearchResultDescription": "絞り込みや検索語を変更してください",
       "selectButtonText": "選択する",
@@ -290,6 +291,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "その他の操作"
+    },
+    "Loading": {
+      "label": "ページの読み込み表示バー"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "ツールチップ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "アイテム",
+      "defaultItemPlural": "アイテム",
+      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています。",
+      "selected": "{selectedItemsCount}を選択済み",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
+      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
+      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural}が見つかりませんでした",
+      "emptySearchDescription": "絞り込みや検索ワードを変更してください",
+      "onboardingBadgeText": "新規",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます...",
+      "selectAllLabel": "すべての{resourceNamePlural}を選択する",
+      "selected": "{selectedItemsCount}を選択済み",
+      "undo": "元に戻す",
+      "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
+      "selectItem": "{resourceName}を選択する",
+      "selectButtonText": "選択"
     }
   }
 }

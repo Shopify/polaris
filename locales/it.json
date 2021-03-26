@@ -20,7 +20,8 @@
         "attention": "Attenzione",
         "new": "Nuovi",
         "critical": "Critico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Caricamento",
@@ -81,7 +82,9 @@
         "friday": "venerdì",
         "saturday": "sabato",
         "sunday": "domenica"
-      }
+      },
+      "start": "Inizio intervallo",
+      "end": "Fine intervallo"
     },
     "DiscardConfirmationModal": {
       "title": "Rimuovi tutte le modifiche non salvate",
@@ -109,10 +112,8 @@
       "skipToContent": "Vai direttamente al contenuto",
       "Navigation": {
         "closeMobileNavigationLabel": "Chiudi la navigazione"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "L'icona {color} non accetta gli sfondi. I colori dell'icona con sfondi sono i seguenti: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigazione"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +291,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Altre azioni"
+    },
+    "Loading": {
+      "label": "Barra di caricamento della pagina"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Suggerimento: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Articolo",
+      "defaultItemPlural": "Articoli",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati.",
+      "selected": "{selectedItemsCount} selezionati",
+      "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutti i {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleziona tutti i {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Impossibile trovare gli {resourceNamePlural}",
+      "emptySearchDescription": "Prova a modificare i filtri o il termine di ricerca",
+      "onboardingBadgeText": "Nuovo",
+      "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
+      "selectAllLabel": "Seleziona tutti gli {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selezionati",
+      "undo": "Annulla",
+      "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Seleziona {resourceName}",
+      "selectButtonText": "Seleziona"
     }
   }
 }

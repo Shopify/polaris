@@ -78,16 +78,19 @@ describe('<FilterCreator />', () => {
       .trigger('onChange', mockDefaultProps.filters[0].key);
 
     const activator = filterCreator.find(Button, {children: 'Filter'})!;
+    const activatorButton = activator.find('button')!;
 
     // This any cast is needed as the activator's onFocus actually uses the
     // event argument that gets passed into the onFocus handler, though we type
     // onFocus as accepting no arguments
-    (activator as any).trigger('onFocus', {target: activator!.domNode});
+    (activator as any).trigger('onFocus', {
+      target: activatorButton.domNode,
+    });
     filterCreator.find(FilterValueSelector)!.trigger('onChange', 'x');
 
     filterCreator.find(Button, {children: 'Add filter'})!.trigger('onClick');
 
-    expect(document.activeElement).toBe(activator!.domNode);
+    expect(document.activeElement).toBe(activatorButton.domNode);
   });
 
   it('does not focus the activator after adding a filter if focus was never originally received by the by activator', () => {

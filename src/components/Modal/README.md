@@ -561,7 +561,7 @@ function LargeModalExample() {
 
 <!-- example-for: web -->
 
-We recommend you add a title to your modal, but you may leave it blank.
+A title is required for accessibility, but you may hide it.
 
 ```jsx
 function ModalWithoutTitleExample() {
@@ -574,6 +574,8 @@ function ModalWithoutTitleExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
+        title="Reach more shoppers with Instagram product tags"
+        titleHidden
         activator={activator}
         open={active}
         onClose={handleChange}
@@ -631,7 +633,9 @@ function ModalWithScrollListenerExample() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <p>Item #{index}</p>
+              <p>
+                Item <a href="#">#{index}</a>
+              </p>
             </TextContainer>
           </Modal.Section>
         ))}
@@ -641,11 +645,70 @@ function ModalWithScrollListenerExample() {
 }
 ```
 
-### External activator
+### Modal with activator ref
 
 <!-- example-for: web -->
 
-Use an external activator when technical limitations prevent you from passing it as a prop. Make sure to focus the activator on close when choosing this approach.
+Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
+See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+
+```jsx
+function ModalExample() {
+  const [active, setActive] = useState(true);
+
+  const buttonRef = useRef(null);
+
+  const handleOpen = useCallback(() => setActive(true), []);
+
+  const handleClose = useCallback(() => {
+    setActive(false);
+  }, []);
+
+  const activator = (
+    <div ref={buttonRef}>
+      <Button onClick={handleOpen}>Open</Button>
+    </div>
+  );
+
+  return (
+    <div style={{height: '500px'}}>
+      {activator}
+      <Modal
+        activator={buttonRef}
+        open={active}
+        onClose={handleClose}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleClose,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
+}
+```
+
+### Modal without an activator prop
+
+<!-- example-for: web -->
+
+Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
 See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx

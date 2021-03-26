@@ -1,11 +1,9 @@
 import React, {useCallback} from 'react';
 
 import type {MenuGroupDescriptor} from '../../../../types';
-import {useFeatures} from '../../../../utilities/features';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
-import {MenuAction} from '../MenuAction';
-import {Button} from '../../../Button';
+import {SecondaryAction} from '../SecondaryAction';
 
 import styles from './MenuGroup.scss';
 
@@ -18,6 +16,8 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
   onClose(title: string): void;
+  /** Callback for getting the offsetWidth of the MenuGroup */
+  getOffsetWidth?(width: number): void;
 }
 
 export function MenuGroup({
@@ -29,8 +29,8 @@ export function MenuGroup({
   icon,
   onClose,
   onOpen,
+  getOffsetWidth,
 }: MenuGroupProps) {
-  const {newDesignLanguage} = useFeatures();
   const handleClose = useCallback(() => {
     onClose(title);
   }, [onClose, title]);
@@ -39,27 +39,24 @@ export function MenuGroup({
     onOpen(title);
   }, [onOpen, title]);
 
-  if (!actions.length) {
-    return null;
-  }
+  const handleOffsetWidth = useCallback(
+    (width: number) => {
+      if (!getOffsetWidth) return;
+      getOffsetWidth(width);
+    },
+    [getOffsetWidth],
+  );
 
-  const popoverActivator = newDesignLanguage ? (
-    <Button
+  const popoverActivator = (
+    <SecondaryAction
       disclosure
       icon={icon}
       accessibilityLabel={accessibilityLabel}
       onClick={handleOpen}
+      getOffsetWidth={handleOffsetWidth}
     >
       {title}
-    </Button>
-  ) : (
-    <MenuAction
-      disclosure
-      content={title}
-      icon={icon}
-      accessibilityLabel={accessibilityLabel}
-      onAction={handleOpen}
-    />
+    </SecondaryAction>
   );
 
   return (

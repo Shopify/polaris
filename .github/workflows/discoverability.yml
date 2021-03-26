@@ -7,16 +7,16 @@ jobs:
     name: Discoverability action
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+      - uses: actions/checkout@main
 
-    - name: yarn
-      run: yarn
+      - name: yarn
+        run: yarn
 
-    - name: Add a comment with known areas to test
-      uses: shopify/discoverability-action@average-impact-version-patch1
-      with:
-        codebaseGlob: src/**/*.tsx
-        ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        firstQuartile: 3
-        thirdQuartile: 69
+      - name: Add a comment with known areas to test
+        uses: shopify/discoverability-action@v0.0.13
+        with:
+          codebaseGlob: src/**/*.tsx
+          ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          firstQuartile: 3
+          thirdQuartile: 69

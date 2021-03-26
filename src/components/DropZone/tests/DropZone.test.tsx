@@ -473,51 +473,6 @@ describe('<DropZone />', () => {
       }).not.toThrow();
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const dropZone = mountWithApp(<DropZone />, {
-        features: {newDesignLanguage: true},
-      });
-
-      act(() => {
-        dropZone
-          .find('div', {'aria-disabled': false})!
-          .domNode!.dispatchEvent(new Event('dragenter'));
-      });
-
-      dropZone.forceUpdate();
-
-      expect(dropZone).toContainReactComponent('div', {
-        className:
-          'DropZone hasOutline isDragging newDesignLanguage sizeExtraLarge measuring',
-      });
-      expect(dropZone).toContainReactComponent('div', {
-        className: 'Overlay newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const dropZone = mountWithApp(<DropZone />, {
-        features: {newDesignLanguage: false},
-      });
-      act(() => {
-        dropZone
-          .find('div', {'aria-disabled': false})!
-          .domNode!.dispatchEvent(new Event('dragenter'));
-      });
-
-      dropZone.forceUpdate();
-
-      expect(dropZone).not.toContainReactComponent('div', {
-        className:
-          'DropZone hasOutline isDragging newDesignLanguage sizeExtraLarge measuring',
-      });
-      expect(dropZone).not.toContainReactComponent('div', {
-        className: 'Overlay newDesignLanguage',
-      });
-    });
-  });
 });
 
 function createEvent(name: string, files: any) {
@@ -556,7 +511,7 @@ function fireEvent({
   element: ReactWrapper;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: object[];
+  testFiles?: Record<string, unknown>[];
 }) {
   act(() => {
     if (spy) {

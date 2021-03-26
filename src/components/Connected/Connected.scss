@@ -17,7 +17,7 @@ $stacking-order: (
   flex: 0 0 auto;
 
   &:not(:first-child) {
-    margin-left: -1px;
+    margin-left: spacing(extra-tight);
   }
 }
 
@@ -25,52 +25,13 @@ $stacking-order: (
 // way to remove the border radii on connected elements.
 // TextField.scss has a dependency due to this override.
 // stylelint-disable declaration-no-important
-
 .Item-primary {
   z-index: z-index(primary, $stacking-order);
   flex: 1 1 auto;
-
-  &:not(:first-child) * {
-    border-top-left-radius: var(--p-border-radius-base, 0) !important;
-    border-bottom-left-radius: var(--p-border-radius-base, 0) !important;
-  }
-
-  &:not(:last-child) * {
-    border-top-right-radius: var(--p-border-radius-base, 0) !important;
-    border-bottom-right-radius: var(--p-border-radius-base, 0) !important;
-  }
-}
-
-.Item-connection {
-  &:first-child * {
-    border-top-right-radius: var(--p-border-radius-base, 0) !important;
-    border-bottom-right-radius: var(--p-border-radius-base, 0) !important;
-
-    &::after {
-      border-top-right-radius: var(--p-border-radius-base, 0) !important;
-      border-bottom-right-radius: var(--p-border-radius-base, 0) !important;
-    }
-  }
-
-  &:last-child * {
-    border-top-left-radius: var(--p-border-radius-base, 0) !important;
-    border-bottom-left-radius: var(--p-border-radius-base, 0) !important;
-
-    &::after {
-      border-top-left-radius: var(--p-border-radius-base, 0) !important;
-      border-bottom-left-radius: var(--p-border-radius-base, 0) !important;
-    }
-  }
 }
 
 // stylelint-enable declaration-no-important
 
 .Item-focused {
   z-index: z-index(focused, $stacking-order);
-}
-
-.newDesignLanguage .Item {
-  &:not(:first-child) {
-    margin-left: spacing(extra-tight);
-  }
 }

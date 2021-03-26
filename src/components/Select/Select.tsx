@@ -1,8 +1,7 @@
 import React from 'react';
-import {ArrowUpDownMinor} from '@shopify/polaris-icons';
+import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
@@ -17,6 +16,8 @@ interface StrictOption {
   label: string;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
+  /** Element to display to the left of the option label. Does not show in the dropdown. */
+  prefix?: React.ReactNode;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -41,7 +42,7 @@ export interface SelectProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
   /** Label for the select */
-  label: string;
+  label: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -91,13 +92,11 @@ export function Select({
 }: SelectProps) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
-  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Select,
     error && styles.error,
     disabled && styles.disabled,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const handleChange = onChange
@@ -133,12 +132,17 @@ export function Select({
 
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
+  const prefixMarkup = selectedOption.prefix && (
+    <div className={styles.Prefix}>{selectedOption.prefix}</div>
+  );
+
   const contentMarkup = (
     <div className={styles.Content} aria-hidden aria-disabled={disabled}>
       {inlineLabelMarkup}
-      <span className={styles.SelectedOption}>{selectedOption}</span>
+      {prefixMarkup}
+      <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
-        <Icon source={ArrowUpDownMinor} />
+        <Icon source={SelectMinor} />
       </span>
     </div>
   );
@@ -223,7 +227,7 @@ function normalizeOption(
 function getSelectedOption(
   options: (HideableStrictOption | StrictGroup)[],
   value: string,
-): string {
+): HideableStrictOption {
   const flatOptions = flattenOptions(options);
   let selectedOption = flatOptions.find((option) => value === option.value);
 
@@ -232,7 +236,7 @@ function getSelectedOption(
     selectedOption = flatOptions.find((option) => !option.hidden);
   }
 
-  return selectedOption ? selectedOption.label : '';
+  return selectedOption || {value: '', label: ''};
 }
 
 /**
@@ -255,7 +259,7 @@ function flattenOptions(
 }
 
 function renderSingleOption(option: HideableStrictOption): React.ReactNode {
-  const {value, label, ...rest} = option;
+  const {value, label, prefix: _prefix, ...rest} = option;
   return (
     <option key={value} value={value} {...rest}>
       {label}

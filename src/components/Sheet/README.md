@@ -138,7 +138,11 @@ function SheetExample() {
       >
         {salesChannelsCardMarkup}
       </Card>
-      <Sheet open={sheetActive} onClose={toggleSheetActive}>
+      <Sheet
+        open={sheetActive}
+        onClose={toggleSheetActive}
+        accessibilityLabel="Manage sales channels"
+      >
         <div
           style={{
             display: 'flex',
@@ -159,7 +163,7 @@ function SheetExample() {
             <Heading>Manage sales channels</Heading>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancelMajorMonotone}
+              icon={MobileCancelMajor}
               onClick={toggleSheetActive}
               plain
             />

@@ -16,6 +16,8 @@ export interface UserMenuProps {
   name: string;
   /** A string allowing further detail on the merchant’s name displayed in the user menu */
   detail?: string;
+  /** A string that provides the accessibility labeling */
+  accessibilityLabel?: string;
   /** The merchant’s initials, rendered in place of an avatar image when not provided */
   initials: AvatarProps['initials'];
   /** An avatar image representing the merchant */
@@ -24,6 +26,8 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** Accepts a color scheme for the contents of the user menu */
+  colorScheme?: MenuProps['colorScheme'];
 }
 
 export function UserMenu({
@@ -35,6 +39,8 @@ export function UserMenu({
   message,
   onToggle,
   open,
+  colorScheme,
+  accessibilityLabel,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
@@ -62,6 +68,8 @@ export function UserMenu({
       onClose={onToggle}
       actions={actions}
       message={message}
+      colorScheme={colorScheme}
+      accessibilityLabel={accessibilityLabel}
     />
   );
 }

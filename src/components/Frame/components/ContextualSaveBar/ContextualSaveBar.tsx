@@ -5,7 +5,6 @@ import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
@@ -21,10 +20,10 @@ export function ContextualSaveBar({
   saveAction,
   discardAction,
   fullWidth,
+  contextControl,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const {newDesignLanguage = false} = useFeatures();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -96,16 +95,16 @@ export function ContextualSaveBar({
     <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
   );
 
-  const logoMarkup = alignContentFlush ? null : (
-    <div className={styles.LogoContainer} style={{width}}>
-      {imageMarkup}
-    </div>
-  );
+  const logoMarkup =
+    alignContentFlush || contextControl ? null : (
+      <div className={styles.LogoContainer} style={{width}}>
+        {imageMarkup}
+      </div>
+    );
 
-  const contexualSaveBarClassName = classNames(
-    styles.ContextualSaveBar,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const contextControlMarkup = contextControl ? (
+    <div className={styles.ContextControl}>{contextControl}</div>
+  ) : null;
 
   const contentsClassName = classNames(
     styles.Contents,
@@ -115,7 +114,8 @@ export function ContextualSaveBar({
   return (
     <>
       <ThemeProvider theme={{colorScheme: 'inverse'}}>
-        <div className={contexualSaveBarClassName}>
+        <div className={styles.ContextualSaveBar}>
+          {contextControlMarkup}
           {logoMarkup}
           <div className={contentsClassName}>
             <h2 className={styles.Message}>{message}</h2>

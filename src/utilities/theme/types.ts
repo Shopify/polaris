@@ -1,4 +1,4 @@
-import type {Config} from '@shopify/polaris-tokens/dist-modern/types';
+import type {Config} from '@shopify/polaris-tokens/dist-modern';
 
 export interface ThemeLogo {
   /** Provides a path for a logo used on a dark background */
@@ -38,31 +38,33 @@ export interface RoleColors {
 
 export type Role = keyof RoleColors;
 
-export type ColorScheme = 'light' | 'dark';
-
-export interface LegacyColors {
-  /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-  topBar?: Record<string, string>;
+// The value that is passed into the AppProvider
+export interface AppThemeConfig extends ThemeConfig {
+  colorScheme?: 'light' | 'dark';
 }
 
-// The value that is passed into the ThemeProvider
+// The config that is passed into a ThemeProvider.
+// The ThemeProvider converts this object into a Theme, and then stores
+// the Theme in a context.
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  colors?: Partial<RoleColors> & LegacyColors;
-  colorScheme?: ColorScheme;
+  colors?: Partial<RoleColors>;
+  colorScheme?: 'light' | 'dark' | 'inverse';
   config?: Config;
-  frameOffset?: number;
+  frameOffset?: string;
 }
 
-export type CustomPropertiesLike = Record<string, string>;
+// An intermediate state of transforming the ThemeConfig into a Theme
+export interface ProcessedThemeConfig extends ThemeConfig {
+  colorScheme: 'light' | 'dark';
+}
 
 // The value that is stored in the ThemeContext
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  cssCustomProperties?: string;
   colors?: Partial<RoleColors>;
-  colorScheme?: ColorScheme;
-  textColor?: string;
+  colorScheme: 'light' | 'dark';
+  cssCustomProperties: string;
 }

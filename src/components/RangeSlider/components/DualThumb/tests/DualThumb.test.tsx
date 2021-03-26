@@ -8,7 +8,6 @@ import {
 import {Key} from 'types';
 
 import {DualThumb, DualThumbProps} from '../DualThumb';
-import {FeaturesContext} from '../../../../../utilities/features';
 
 describe('<DualThumb />', () => {
   const mockProps: DualThumbProps = {
@@ -22,29 +21,6 @@ describe('<DualThumb />', () => {
     onChange: noop,
     label: 'Dual thumb range slider',
   };
-
-  it('has a different track width and left value when the design system is used', () => {
-    const dualThumbWithDesignLanguage = mountWithAppProvider(
-      <FeaturesContext.Provider value={{newDesignLanguage: true}}>
-        <DualThumb {...mockProps} />
-      </FeaturesContext.Provider>,
-    );
-
-    const dualThumbWithoutDesignLanguage = mountWithAppProvider(
-      <DualThumb {...mockProps} />,
-    );
-
-    const stateWithDesignLanguage = dualThumbWithDesignLanguage.state();
-    const stateWithoutDesignLanguage = dualThumbWithoutDesignLanguage.state();
-
-    expect(stateWithDesignLanguage.trackWidth).not.toStrictEqual(
-      stateWithoutDesignLanguage.trackWidth,
-    );
-    expect(stateWithDesignLanguage.trackLeft).not.toStrictEqual(
-      stateWithoutDesignLanguage.trackLeft,
-    );
-  });
-
   describe('id', () => {
     it('is used on the lower thumb', () => {
       const id = 'MyNewID';
@@ -106,40 +82,36 @@ describe('<DualThumb />', () => {
   });
 
   describe('disabled', () => {
-    it('sets aria-disabled and disabled to false by default on the lower thumb', () => {
+    it('sets aria-disabled to false by default on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(false);
-      expect(thumbLower.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled and disabled to false by default on the upper thumb', () => {
+    it('sets aria-disabled to false by default on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(false);
-      expect(thumbUpper.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled and disabled to true on the lower thumb', () => {
+    it('sets aria-disabled to true on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(true);
-      expect(thumbLower.prop('disabled')).toBe(true);
     });
 
-    it('sets aria-disabled and disabled to true on the upper thumb', () => {
+    it('sets aria-disabled to true on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(true);
-      expect(thumbUpper.prop('disabled')).toBe(true);
     });
   });
 
@@ -317,7 +289,7 @@ describe('<DualThumb />', () => {
 
       const expected = {
         '--Polaris-RangeSlider-progress-lower': '0px',
-        '--Polaris-RangeSlider-progress-upper': '-0.48px',
+        '--Polaris-RangeSlider-progress-upper': '-0.32px',
       };
       const track = findByTestID(dualThumb, 'track');
       const actual = track.find('[style]').prop('style');
@@ -1044,11 +1016,11 @@ describe('<DualThumb />', () => {
 function noop() {}
 
 function findThumbLower(containerComponent: ReactWrapper) {
-  return containerComponent.find('button').first();
+  return containerComponent.find('[role="slider"]').first();
 }
 
 function findThumbUpper(containerComponent: ReactWrapper) {
-  return containerComponent.find('button').last();
+  return containerComponent.find('[role="slider"]').last();
 }
 
 function findTrack(containerComponent: ReactWrapper) {
@@ -1058,11 +1030,14 @@ function findTrack(containerComponent: ReactWrapper) {
 function mockGetBoundingClientRect(): ReturnType<
   Element['getBoundingClientRect']
 > {
+  // Match thumbSize set in DualThumb.tsx
+  const thumbSize = 16;
+
   return {
-    width: 124,
+    width: 100 + thumbSize,
     height: 0,
     top: 0,
-    left: -12,
+    left: -(thumbSize / 2),
     bottom: 0,
     right: 0,
     x: 0,

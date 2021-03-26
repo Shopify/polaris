@@ -67,24 +67,27 @@ function AutocompleteExample() {
     [deselectedOptions],
   );
 
-  const updateSelection = useCallback((selected) => {
-    const selectedValue = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedValue = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
 
-    setSelectedOptions(selected);
-    setInputValue(selectedValue);
-  }, []);
+      setSelectedOptions(selected);
+      setInputValue(selectedValue);
+    },
+    [options],
+  );
 
   const textField = (
     <Autocomplete.TextField
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );
@@ -237,26 +240,29 @@ function AutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions],
+    [deselectedOptions, options, loading],
   );
 
-  const updateSelection = useCallback((selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText);
-  }, []);
+      setSelectedOptions(selected);
+      setInputValue(selectedText);
+    },
+    [options],
+  );
 
   const textField = (
     <Autocomplete.TextField
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );
@@ -297,7 +303,7 @@ function AutoCompleteLazyLoadExample() {
     if (nextVisibleOptionIndex <= options.length - 1) {
       setVisibleOptionIndex(nextVisibleOptionIndex);
     }
-  }, [visibleOptionIndex]);
+  }, [visibleOptionIndex, options.length]);
 
   const removeTag = useCallback(
     (tag) => () => {
@@ -328,7 +334,7 @@ function AutoCompleteLazyLoadExample() {
       }
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions, options],
   );
 
   const textField = (
@@ -448,7 +454,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );

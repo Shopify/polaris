@@ -20,7 +20,8 @@
         "attention": "Upozornění",
         "new": "Nové",
         "critical": "Kritický"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",
@@ -81,7 +82,9 @@
         "friday": "Pátek",
         "saturday": "Sobota",
         "sunday": "Neděle"
-      }
+      },
+      "start": "Začátek rozsahu",
+      "end": "Konec rozsahu"
     },
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
@@ -109,10 +112,8 @@
       "skipToContent": "Přeskočit na obsah",
       "Navigation": {
         "closeMobileNavigationLabel": "Zavřít navigaci"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigace"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -292,6 +293,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Položka",
+      "defaultItemPlural": "Položky",
+      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný výraz",
+      "onboardingBadgeText": "Nové",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
+      "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "undo": "Vrátit zpět",
+      "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
+      "selectItem": "Vybrat: {resourceName}",
+      "selectButtonText": "Vybrat"
     }
   }
 }

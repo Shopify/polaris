@@ -61,6 +61,19 @@ describe('<PositionedOverlay />', () => {
         positioning: 'above',
       });
     });
+
+    it('positions below if no preferredPosition is given', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(<PositionedOverlay {...mockProps} render={spy} />);
+
+      expect(spy).toHaveBeenCalledWith({
+        activatorRect: {height: 0, left: 0, top: 0, width: 0},
+        desiredHeight: 0,
+        left: undefined,
+        measuring: true,
+        positioning: 'below',
+      });
+    });
   });
 
   describe('preferredAlignment', () => {
@@ -97,6 +110,37 @@ describe('<PositionedOverlay />', () => {
 
       expect((positionedOverlay.find('div').prop('style') as any).width).toBe(
         0,
+      );
+    });
+  });
+
+  describe('zIndex', () => {
+    it('is undefined if no state or prop override exist', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      expect(
+        (positionedOverlay.find('div').prop('style') as any).zIndex,
+      ).toBeUndefined();
+    });
+
+    it('is set to state calculated value if no override prop is given', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      positionedOverlay.setState({zIndex: 200});
+      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
+        200,
+      );
+    });
+
+    it('is set to value of zIndexOverride prop if given', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} zIndexOverride={100} />,
+      );
+      positionedOverlay.setState({zIndex: 200});
+      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
+        100,
       );
     });
   });

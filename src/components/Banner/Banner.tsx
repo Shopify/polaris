@@ -7,32 +7,22 @@ import React, {
 } from 'react';
 import {
   CancelSmallMinor,
-  CircleTickMajorTwotone,
-  FlagMajorTwotone,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleInformationMajorTwotone,
-  CircleInformationMajorFilled,
-  CircleTickMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
-import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
-import type {
-  Action,
-  DisableableAction,
-  LoadableAction,
-  IconProps,
-} from '../../types';
-import {Button, buttonFrom} from '../Button';
+import type {Action, DisableableAction, LoadableAction} from '../../types';
+import {Button} from '../Button';
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
+import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
-import {Icon} from '../Icon';
+import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';
@@ -71,9 +61,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   }: BannerProps,
   bannerRef,
 ) {
-  const {newDesignLanguage} = useFeatures();
   const withinContentContainer = useContext(WithinContentContext);
-  const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
   const id = useUniqueId('Banner');
   const {
     wrapperRef,
@@ -82,10 +70,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     handleMouseUp,
     shouldShowFocus,
   } = useBannerFocus(bannerRef);
-  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(
-    status,
-    newDesignLanguage,
-  );
+  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
   const iconName = icon || defaultIcon;
   const className = classNames(
     styles.Banner,
@@ -93,7 +78,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   let headingMarkup: React.ReactNode = null;
@@ -108,17 +92,27 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     );
   }
 
-  const actionMarkup = action && (
-    <div className={styles.Actions}>
-      <ButtonGroup>
-        <div className={styles.PrimaryAction}>
-          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
-        </div>
-
-        {secondaryAction && <SecondaryActionFrom action={secondaryAction} />}
-      </ButtonGroup>
+  const primaryActionMarkup = action ? (
+    <div className={styles.PrimaryAction}>
+      {unstyledButtonFrom(action, {
+        className: styles.Button,
+      })}
     </div>
-  );
+  ) : null;
+
+  const secondaryActionMarkup = secondaryAction ? (
+    <SecondaryActionFrom action={secondaryAction} />
+  ) : null;
+
+  const actionMarkup =
+    action || secondaryAction ? (
+      <div className={styles.Actions}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
   let contentMarkup: React.ReactNode = null;
   let contentID: string | undefined;
@@ -162,11 +156,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         {dismissButton}
 
         <div className={styles.Ribbon}>
-          <Icon
-            source={iconName}
-            color={iconColor}
-            backdrop={!newDesignLanguage}
-          />
+          <Icon source={iconName} color={iconColor} />
         </div>
 
         <div className={styles.ContentWrapper}>
@@ -192,9 +182,12 @@ function SecondaryActionFrom({action}: {action: Action}) {
   }
 
   return (
-    <button className={styles.SecondaryAction} onClick={action.onAction}>
+    <UnstyledButton
+      className={styles.SecondaryAction}
+      onClick={action.onAction}
+    >
       <span className={styles.Text}>{action.content}</span>
-    </button>
+    </UnstyledButton>
   );
 }
 
@@ -204,53 +197,40 @@ interface BannerAttributes {
   ariaRoleType: 'status' | 'alert';
 }
 
-function useBannerAttributes(
-  status: BannerProps['status'],
-  newDesignLanguage: boolean,
-): BannerAttributes {
+function useBannerAttributes(status: BannerProps['status']): BannerAttributes {
   switch (status) {
     case 'success':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleTickMajorFilled
-          : CircleTickMajorTwotone,
-        iconColor: newDesignLanguage ? 'success' : 'greenDark',
+        defaultIcon: CircleTickMajor,
+        iconColor: 'success',
         ariaRoleType: 'status',
       };
 
     case 'info':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
-          : CircleInformationMajorTwotone,
-        iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
+        defaultIcon: CircleInformationMajor,
+        iconColor: 'highlight',
         ariaRoleType: 'status',
       };
 
     case 'warning':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleAlertMajorFilled
-          : CircleAlertMajorTwotone,
-        iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
+        defaultIcon: CircleAlertMajor,
+        iconColor: 'warning',
         ariaRoleType: 'alert',
       };
 
     case 'critical':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleDisabledMajorFilled
-          : CircleDisabledMajorTwotone,
-        iconColor: newDesignLanguage ? 'critical' : 'redDark',
+        defaultIcon: DiamondAlertMajor,
+        iconColor: 'critical',
         ariaRoleType: 'alert',
       };
 
     default:
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
-          : FlagMajorTwotone,
-        iconColor: newDesignLanguage ? 'base' : 'inkLighter',
+        defaultIcon: CircleInformationMajor,
+        iconColor: 'base',
         ariaRoleType: 'status',
       };
   }
@@ -264,12 +244,16 @@ function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [shouldShowFocus, setShouldShowFocus] = useState(false);
 
-  useImperativeHandle(bannerRef, () => ({
-    focus: () => {
-      wrapperRef.current?.focus();
-      setShouldShowFocus(true);
-    },
-  }));
+  useImperativeHandle(
+    bannerRef,
+    () => ({
+      focus: () => {
+        wrapperRef.current?.focus();
+        setShouldShowFocus(true);
+      },
+    }),
+    [],
+  );
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.target === wrapperRef.current) {

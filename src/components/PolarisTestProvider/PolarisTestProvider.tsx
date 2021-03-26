@@ -1,5 +1,6 @@
 import React, {Fragment, StrictMode} from 'react';
 
+import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
@@ -65,7 +66,7 @@ export function PolarisTestProvider({
   link,
   theme = {},
   mediaQuery,
-  features: featuresProp = {},
+  features = {},
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
@@ -76,15 +77,10 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const features = {newDesignLanguage: false, ...featuresProp};
+  const processedThemeConfig = {...theme, colorScheme: 'light' as const};
 
-  const customProperties = features.newDesignLanguage
-    ? buildCustomProperties(
-        {...theme, colorScheme: 'light'},
-        features.newDesignLanguage,
-      )
-    : undefined;
-  const mergedTheme = buildThemeContext(theme, customProperties);
+  const customProperties = buildCustomProperties(processedThemeConfig);
+  const mergedTheme = buildThemeContext(processedThemeConfig, customProperties);
 
   const mergedFrame = createFrameContext(frame);
 
@@ -100,11 +96,13 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <FocusManager>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
-                      </FocusManager>
+                      <PortalsManager>
+                        <FocusManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManager>
+                      </PortalsManager>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

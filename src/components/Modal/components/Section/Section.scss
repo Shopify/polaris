@@ -5,11 +5,11 @@
   padding: spacing(loose);
 
   &:not(:last-of-type) {
-    border-bottom: border();
+    border-bottom: border('divider');
   }
 
   &.subdued {
-    background: var(--p-surface-subdued, color('sky', 'light'));
+    background: var(--p-surface-subdued);
   }
 
   &.flush {

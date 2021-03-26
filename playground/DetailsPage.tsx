@@ -1,14 +1,26 @@
-import React, {useCallback, useRef, useState, SVGProps} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
+  AnalyticsMajor,
+  AppsMajor,
   CirclePlusMinor,
-  DuplicateMinor,
-  ViewMinor,
+  CustomersMajor,
+  DiscountsMajor,
+  HomeMajor,
+  MarketingMajor,
+  OrdersMajor,
+  ProductsMajor,
+  SettingsMajor,
 } from '@shopify/polaris-icons';
 
 import {
   ActionList,
+  Avatar,
+  Badge,
+  Caption,
   Card,
   ContextualSaveBar,
+  DropZone,
+  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
@@ -16,33 +28,18 @@ import {
   Modal,
   Navigation,
   Page,
+  Select,
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  Stack,
   TextContainer,
   TextField,
+  Thumbnail,
   Toast,
   TopBar,
-  Badge,
-  Select,
-  DropZone,
-  DropZoneProps,
-  Stack,
-  Caption,
-  Thumbnail,
 } from '../src';
 
-import {
-  HomeMajorMonotone,
-  OrdersMajorMonotone,
-  ProductsMajorMonotone,
-  CustomersMajorMonotone,
-  AnalyticsMajorMonotone,
-  MarketingMajorMonotone,
-  DiscountsMajorMonotone,
-  AppsMajorMonotone,
-  SettingsMajorMonotone,
-} from './images';
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
@@ -60,6 +57,9 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
+  const initialDescription =
+    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
+  const [previewValue, setPreviewValue] = useState(initialDescription);
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -135,49 +135,6 @@ export function DetailsPage() {
     },
   ];
 
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: handleSave,
-      }}
-      discardAction={{
-        onAction: handleDiscard,
-        discardConfirmationModal: true,
-      }}
-    />
-  ) : null;
-
-  const userMenuMarkup = (
-    <TopBar.UserMenu
-      actions={userMenuActions}
-      name="Dharma"
-      detail={storeName}
-      initials="D"
-      open={userMenuActive}
-      onToggle={toggleUserMenuActive}
-    />
-  );
-
-  const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
-  );
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      onChange={handleSearchFieldChange}
-      value={searchValue}
-      placeholder="Search"
-    />
-  );
-
   const contextControlMarkup = (
     <div className={styles.ContextControl}>
       <svg
@@ -204,6 +161,47 @@ export function DetailsPage() {
     </div>
   );
 
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: handleSave,
+      }}
+      discardAction={{
+        onAction: handleDiscard,
+        discardConfirmationModal: true,
+      }}
+      contextControl={contextControlMarkup}
+    />
+  ) : null;
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={userMenuActions}
+      name="Dharma"
+      detail={storeName}
+      initials="D"
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+      colorScheme="dark"
+      accessibilityLabel="User menu"
+    />
+  );
+
+  const searchResultsMarkup = (
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
+  );
+
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchFieldChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
+
   const topBarMarkup = (
     <TopBar
       showNavigationToggle
@@ -214,6 +212,7 @@ export function DetailsPage() {
       onSearchResultsDismiss={handleSearchResultsDismiss}
       onNavigationToggle={toggleMobileNavigationActive}
       contextControl={contextControlMarkup}
+      searchResultsOverlayVisible
     />
   );
   // ---- Navigation ----
@@ -223,7 +222,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -233,31 +232,21 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersMajorMonotone,
+            icon: OrdersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
             },
             matches: navItemActive === 'orders',
             url: '#',
-          },
-          {
-            label: 'Products',
-            icon: ProductsMajorMonotone,
-            onClick: () => {
-              toggleIsLoading();
-              setNavItemActive('products');
-            },
-            matches: navItemActive === 'products',
-            url: '#',
             subNavigationItems: [
               {
-                label: 'All products',
+                label: 'All orders',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('all-products');
+                  setNavItemActive('all-orders');
                 },
-                matches: navItemActive.includes('products'),
+                matches: navItemActive.includes('orders'),
                 url: '#',
               },
               {
@@ -281,8 +270,47 @@ export function DetailsPage() {
             ],
           },
           {
+            label: 'Products',
+            icon: ProductsMajor,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('products');
+            },
+            matches: navItemActive === 'products',
+            url: '#',
+            subNavigationItems: [
+              {
+                label: 'All products',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('all-products');
+                },
+                matches: navItemActive.includes('products'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Inventory',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('inventory');
+                },
+                matches: navItemActive === 'inventory',
+              },
+              {
+                url: '#',
+                label: 'Transfers',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('transfers');
+                },
+                matches: navItemActive === 'transfers',
+              },
+            ],
+          },
+          {
             label: 'Customers',
-            icon: CustomersMajorMonotone,
+            icon: CustomersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -292,7 +320,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsMajorMonotone,
+            icon: AnalyticsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -302,7 +330,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingMajorMonotone,
+            icon: MarketingMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -312,7 +340,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsMajorMonotone,
+            icon: DiscountsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -322,7 +350,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: AppsMajorMonotone,
+            icon: AppsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');
@@ -385,7 +413,7 @@ export function DetailsPage() {
       <Navigation.Section
         items={[
           {
-            icon: SettingsMajorMonotone,
+            icon: SettingsMajor,
             label: 'Settings',
             onClick: toggleModalActive,
           },
@@ -406,9 +434,7 @@ export function DetailsPage() {
   );
 
   // ---- Description ----
-  const [DescriptionValue, setValue] = useState(
-    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.',
-  );
+  const [descriptionValue, setDescriptionValue] = useState(initialDescription);
 
   // ---- Select ----
   const [selected, setSelected] = useState('today');
@@ -421,7 +447,40 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback((newValue) => {
+    setDescriptionValue(newValue);
+    setPreviewValue(newValue);
+  }, []);
+
+  const actions1 = [
+    {
+      content: 'Duplicate',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('duplicate'),
+    },
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+  const actions2 = [
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+
+  const [actions, setActions] = useState(actions1);
+
+  const toggleActions = () => {
+    if (actions.length === 2) {
+      setActions(actions2);
+    } else {
+      setActions(actions1);
+    }
+  };
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -460,27 +519,48 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
+      fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="M60-A"
+      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      additionalNavigation={<Avatar initials="JD" />}
+      primaryAction={{
+        content: 'Save this page',
+        // eslint-disable-next-line no-console
+        onAction: () => console.log('save'),
+      }}
+      additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
-        {
-          content: 'Duplicate',
-          icon: DuplicateMinor,
-        },
+        ...actions,
         {
           content: 'View',
-          icon: ViewMinor,
+          onAction: () => {
+            // eslint-disable-next-line no-console
+            console.log(previewValue);
+          },
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          actions: [{content: 'Share on Facebook'}],
+          actions: [
+            // eslint-disable-next-line no-console
+            {content: 'Promote', onAction: () => console.log('promote')},
+          ],
         },
         {
           title: 'More actions',
-          actions: [{content: 'Embed on a website'}],
+          actions: [
+            {
+              content: 'Embed on a website',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('embed'),
+            },
+            {
+              content: 'Toggle page actions',
+              onAction: toggleActions,
+            },
+          ],
         },
       ]}
       pagination={{
@@ -500,7 +580,7 @@ export function DetailsPage() {
               />
               <TextField
                 label="Description"
-                value={DescriptionValue}
+                value={descriptionValue}
                 onChange={handleChange}
                 multiline
               />

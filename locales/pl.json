@@ -20,7 +20,8 @@
         "attention": "Uwaga",
         "new": "Nowe",
         "critical": "Krytyczny"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ładowanie",
@@ -81,7 +82,9 @@
         "friday": "Piątek",
         "saturday": "Sobota",
         "sunday": "Niedziela"
-      }
+      },
+      "start": "Początek zakresu",
+      "end": "Koniec zakresu"
     },
     "DiscardConfirmationModal": {
       "title": "Odrzuć wszystkie niezapisane zmiany",
@@ -109,10 +112,8 @@
       "skipToContent": "Przejdź do treści",
       "Navigation": {
         "closeMobileNavigationLabel": "Zamknij nawigację"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nie akceptuje teł. Kolory ikon, które mają tło, są: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Nawigacja"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -292,6 +293,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Więcej czynności"
+    },
+    "Loading": {
+      "label": "Pasek ładowania strony"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Etykietka narzędzia: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Pozycja",
+      "defaultItemPlural": "Pozycje",
+      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}.",
+      "selected": "Wybrano {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nie znaleziono {resourceNamePlural}",
+      "emptySearchDescription": "Spróbuj zmienić filtry lub szukany termin",
+      "onboardingBadgeText": "Nowe",
+      "resourceLoadingAccessibilityLabel": "Ładowanie {resourceNamePlural}...",
+      "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
+      "selected": "Wybrano {selectedItemsCount}",
+      "undo": "Cofnij",
+      "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Wybierz {resourceName}",
+      "selectButtonText": "Wybierz"
     }
   }
 }

@@ -27,10 +27,13 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 
 export {Banner} from './Banner';
-export type {BannerProps, BannerStatus} from './Banner';
+export type {BannerProps, BannerStatus, BannerHandles} from './Banner';
 
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
+
+export {BulkActions as UnstableBulkActions} from './BulkActions';
+export type {BulkActionsProps as UnstableBulkActionsProps} from './BulkActions';
 
 export {Button, buttonFrom, buttonsFrom} from './Button';
 export type {ButtonProps} from './Button';
@@ -128,9 +131,13 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 
 export {Icon} from './Icon';
+export type {IconProps} from './Icon';
 
 export {Image} from './Image';
 export type {ImageProps} from './Image';
+
+export {IndexTable} from './IndexTable';
+export type {IndexTableProps} from './IndexTable';
 
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';
@@ -147,7 +154,7 @@ export type {KeypressListenerProps} from './KeypressListener';
 export {KonamiCode} from './KonamiCode';
 export type {KonamiCodeProps} from './KonamiCode';
 
-export {Label} from './Label';
+export {Label, labelID} from './Label';
 export type {LabelProps} from './Label';
 
 export {Labelled} from './Labelled';
@@ -196,10 +203,13 @@ export {PolarisTestProvider} from './PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './PolarisTestProvider';
 
 export {Popover, PopoverCloseSource} from './Popover';
-export type {PopoverProps} from './Popover';
+export type {PopoverProps, PopoverAutofocusTarget} from './Popover';
 
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
+
+export {PortalsManager} from './PortalsManager';
+export type {PortalsManagerProps} from './PortalsManager';
 
 export {PositionedOverlay} from './PositionedOverlay';
 export type {PositionedOverlayProps} from './PositionedOverlay';
@@ -222,10 +232,8 @@ export type {ResourceListProps} from './ResourceList';
 // We want to delete this component, but there's one place in web
 // that still relies on it so we have to keep it.
 // We don't want anyone else using it though, use the Filters component instead
-/* eslint-disable @typescript-eslint/camelcase */
 export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
 export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
-/* eslint-enable @typescript-eslint/camelcase */
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
 
@@ -303,6 +311,9 @@ export type {TrapFocusProps} from './TrapFocus';
 
 export {Truncate} from './Truncate';
 export type {TruncateProps} from './Truncate';
+
+export {UnstyledButton, unstyledButtonFrom} from './UnstyledButton';
+export type {UnstyledButtonProps} from './UnstyledButton';
 
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';

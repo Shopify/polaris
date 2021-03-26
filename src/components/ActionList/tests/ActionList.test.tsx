@@ -2,7 +2,6 @@ import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
@@ -139,26 +138,6 @@ describe('<ActionList />', () => {
     expect(actionList.find(Badge).props()).toStrictEqual({
       children: 'badge',
       status: 'new',
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(actionList).toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(actionList).not.toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
     });
   });
 });

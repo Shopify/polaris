@@ -186,14 +186,21 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
-    it('sets autoComplete to "off" when false', () => {
+    it('sets autoComplete to "nope" when false', () => {
       const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
-      expect(textField.find('input').prop('autoComplete')).toBe('off');
+      expect(textField.find('input').prop('autoComplete')).toBe('nope');
     });
 
-    it('sets autoComplete to "on" when false', () => {
+    it('sets autoComplete to "nope" when "off"', () => {
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" autoComplete="off" onChange={noop} />,
+      );
+      expect(textField.find('input').prop('autoComplete')).toBe('nope');
+    });
+
+    it('sets autoComplete to "on" when true', () => {
       const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );
@@ -704,6 +711,20 @@ describe('<TextField />', () => {
         expect(element.find(Spinner)).toHaveLength(0);
       });
 
+      it('removes spinner buttons when type is number and step is 0', () => {
+        const spy = jest.fn();
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyNumberField"
+            label="NumberField"
+            type="number"
+            step={0}
+            onChange={spy}
+          />,
+        );
+        expect(element.find(Spinner)).toHaveLength(0);
+      });
+
       it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
@@ -826,12 +847,7 @@ describe('<TextField />', () => {
   describe('multiline', () => {
     it('does not render a resizer if `multiline` is false', () => {
       const textField = mountWithAppProvider(
-        <TextField
-          label="TextField"
-          id="MyField"
-          onChange={noop}
-          multiline={false}
-        />,
+        <TextField label="TextField" id="MyField" onChange={noop} />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
     });
@@ -885,8 +901,8 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
-          multiline={false}
           ariaOwns="Aria owns"
+          ariaExpanded
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
@@ -894,6 +910,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField.find('input').prop('aria-owns')).toBe('Aria owns');
+      expect(textField.find('input').prop('aria-expanded')).toBe(true);
       expect(textField.find('input').prop('aria-activedescendant')).toBe(
         'Aria active descendant',
       );
@@ -921,7 +938,7 @@ describe('<TextField />', () => {
       expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
     });
 
-    it('renders an input element with `aria-multiline` set to false if multiline is equal to 0', () => {
+    it('renders an input element without `aria-multiline` if multiline is equal to 0', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -934,10 +951,10 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
     });
 
-    it('renders an input element with `aria-multiline` set to false if multiline is undefined', () => {
+    it('renders an input element without `aria-multiline` if multiline is undefined', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -949,7 +966,7 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
     });
   });
 
@@ -1058,7 +1075,7 @@ describe('<TextField />', () => {
       expect(findByTestID(textField, 'clearButton').exists()).toBeTruthy();
     });
 
-    it('does not render in inputs without a value', () => {
+    it('renders a visually hidden clear button in inputs without a value', () => {
       const textField = mountWithAppProvider(
         <TextField
           id="MyTextField"
@@ -1068,7 +1085,10 @@ describe('<TextField />', () => {
           clearButton
         />,
       );
-      expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
+
+      const clearButton = findByTestID(textField, 'clearButton');
+      expect(clearButton.hasClass('ClearButton-hidden')).toBeTruthy();
+      expect(clearButton.prop('tabIndex')).toBe(-1);
     });
 
     it('calls onClearButtonClicked() with an id when the clear button is clicked', () => {
@@ -1100,48 +1120,19 @@ describe('<TextField />', () => {
       );
       expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
     });
-  });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+    it('adds a connected left and right class when a connected element is present', () => {
       const textField = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
-        {
-          features: {newDesignLanguage: true},
-        },
+        <TextField
+          label="TextField"
+          onChange={noop}
+          connectedLeft={<div />}
+          connectedRight={<div />}
+        />,
       );
       expect(textField).toContainReactComponent('div', {
-        className: 'TextField newDesignLanguage',
+        className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
       });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const textField = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(textField).not.toContainReactComponent('div', {
-        className: 'TextField newDesignLanguage',
-      });
-    });
-  });
-
-  it('adds a connected left and right class when a connected element is present', () => {
-    const textField = mountWithApp(
-      <TextField
-        label="TextField"
-        onChange={noop}
-        connectedLeft={<div />}
-        connectedRight={<div />}
-      />,
-      {
-        features: {newDesignLanguage: true},
-      },
-    );
-    expect(textField).toContainReactComponent('div', {
-      className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
     });
   });
 });

@@ -15,12 +15,25 @@
     );
 
     @if $state == 'focused' {
-      box-shadow: inset rem(2px) 0 0 var(--p-focused, color('indigo'));
+      box-shadow: inset rem(2px) 0 0 var(--p-focused);
     }
 
     @if $state == 'focused-destructive' {
-      box-shadow: inset rem(2px) 0 0 var(--p-focused, color('red'));
+      box-shadow: inset rem(2px) 0 0 var(--p-focused);
     }
   }
   background-image: $backgrounds;
+}
+
+@mixin list-selected-indicator($offset: spacing(tight)) {
+  content: '';
+  background-color: var(--p-interactive);
+  position: absolute;
+  top: 0;
+  left: -1 * $offset;
+  height: 100%;
+  display: block;
+  width: border-width(thicker);
+  border-top-right-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-base);
 }

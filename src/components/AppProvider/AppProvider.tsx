@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
+import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -88,10 +90,9 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {theme = {}, children} = this.props;
 
     const {intl, link} = this.state;
-    const features = {newDesignLanguage: false, ...this.props.features};
 
     return (
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={this.props.features || {}}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
@@ -99,7 +100,9 @@ export class AppProvider extends Component<AppProviderProps, State> {
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
                     <MediaQueryProvider>
-                      <FocusManager>{children}</FocusManager>
+                      <PortalsManager>
+                        <FocusManager>{children}</FocusManager>
+                      </PortalsManager>
                     </MediaQueryProvider>
                   </ThemeProvider>
                 </LinkContext.Provider>

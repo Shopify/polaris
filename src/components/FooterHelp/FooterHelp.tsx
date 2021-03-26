@@ -1,10 +1,8 @@
 import React from 'react';
-import {QuestionMarkMajorTwotone, InfoMinor} from '@shopify/polaris-icons';
+import {InfoMinor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
-import type {IconProps} from '../../types';
-import {Icon} from '../Icon';
+import {Icon, IconProps} from '../Icon';
 
 import styles from './FooterHelp.scss';
 
@@ -14,16 +12,11 @@ export interface FooterHelpProps {
 }
 
 export function FooterHelp({children}: FooterHelpProps) {
-  const {newDesignLanguage} = useFeatures();
-  const className = classNames(
-    styles.FooterHelp,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const className = classNames(styles.FooterHelp);
 
   const iconProps: IconProps = {
-    source: newDesignLanguage ? InfoMinor : QuestionMarkMajorTwotone,
-    color: newDesignLanguage ? 'highlight' : 'teal',
-    backdrop: !newDesignLanguage,
+    source: InfoMinor,
+    color: 'highlight',
   };
 
   return (

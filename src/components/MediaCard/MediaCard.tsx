@@ -21,11 +21,11 @@ interface MediaCardProps {
   /** The visual media to display in the card */
   children: React.ReactNode;
   /** Heading content */
-  title: string;
+  title: React.ReactNode;
   /** Body content */
   description: string;
   /** Main call to action, rendered as a basic button */
-  primaryAction: Action;
+  primaryAction?: Action;
   /** Secondary call to action, rendered as a plain button */
   secondaryAction?: Action;
   /** Action list items to render in ellipsis popover */
@@ -52,6 +52,13 @@ export function MediaCard({
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
+
+  let headerMarkup = null;
+  if (title) {
+    const headerContent =
+      typeof title === 'string' ? <Heading>{title}</Heading> : title;
+    headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
+  }
 
   const popoverActivator = (
     <Button
@@ -81,9 +88,9 @@ export function MediaCard({
       </div>
     ) : null;
 
-  const primaryActionMarkup = (
+  const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>{buttonFrom(primaryAction)}</div>
-  );
+  ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
     <div className={styles.SecondaryAction}>
@@ -130,9 +137,7 @@ export function MediaCard({
           <Card.Section>
             {popoverActionsMarkup}
             <Stack vertical spacing="tight">
-              <div className={styles.Heading}>
-                <Heading>{title}</Heading>
-              </div>
+              {headerMarkup}
               <p className={styles.Description}>{description}</p>
               {actionMarkup}
             </Stack>

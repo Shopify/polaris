@@ -20,7 +20,8 @@
         "attention": "Atenção",
         "new": "Novo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregando",
@@ -81,7 +82,9 @@
         "friday": "Sexta",
         "saturday": "Sábado",
         "sunday": "Domingo"
-      }
+      },
+      "start": "Início do intervalo",
+      "end": "Final do intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todas as alterações não salvas",
@@ -97,8 +100,8 @@
       "FileUpload": {
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
-        "actionHintFile": "ou solte os arquivos para carregar",
-        "actionHintImage": "ou arraste e solte a imagem para carregar",
+        "actionHintFile": "ou soltar os arquivos para carregar",
+        "actionHintImage": "ou soltar imagens para carregar",
         "label": "Carregar arquivo"
       }
     },
@@ -109,10 +112,8 @@
       "skipToContent": "Pular para o conteúdo",
       "Navigation": {
         "closeMobileNavigationLabel": "Fechar a navegação"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "O ícone {color} não aceita fundo. As cores dos ícones que têm fundos são: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navegação"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -164,7 +165,7 @@
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu suspenso Ações",
-        "viewItem": "Visualizar informações de {itemName}"
+        "viewItem": "Ver informações de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
@@ -290,6 +291,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Mais ações"
+    },
+    "Loading": {
+      "label": "Barra de carregamento de página"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Dica de ferramenta: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Itens",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} estão selecionados.",
+      "selected": "{selectedItemsCount} selecionados",
+      "a11yCheckboxDeselectAllSingle": "Desmarcar {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar todos os {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nenhum {resourceNamePlural} encontrado",
+      "emptySearchDescription": "Tente alterar os filtros ou o termo de pesquisa",
+      "onboardingBadgeText": "Novo",
+      "resourceLoadingAccessibilityLabel": "Carregando {resourceNamePlural}...",
+      "selectAllLabel": "Selecione todos os {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selecionados",
+      "undo": "Desfazer",
+      "selectAllItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Selecionar {resourceName}",
+      "selectButtonText": "Selecionar"
     }
   }
 }

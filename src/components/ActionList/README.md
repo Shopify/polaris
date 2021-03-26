@@ -254,7 +254,7 @@ function ActionListWithDestructiveItemExample() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
+                {content: 'Import file', icon: ImportMinor, active: true},
                 {content: 'Export file', icon: ExportMinor},
                 {
                   destructive: true,
@@ -312,6 +312,39 @@ function ActionListWithHelpTextExample() {
 }
 ```
 
+### Action list with a prefix and a suffix
+
+Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+
+```jsx
+function ActionListWithPrefixSuffixExample() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        items={[
+          {
+            content: 'Go here',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'Or there',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
 ---
 
 ## Related components
@@ -349,5 +382,10 @@ Items in an action list are organized as list items (`<li>`) in an unordered lis
 
 - Give the action list items keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key
+
+### High contrast support
+
+- Each item is clearly discernible in high contrast mode
+- Each item that is focused and hovered is clearly discernible in high contrast mode
 
 <!-- /content-for -->

@@ -6,15 +6,24 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 .ContextualSaveBar {
   display: flex;
   height: top-bar-height();
-  background-color: color('white');
+  background: var(--p-surface);
   box-shadow: $shadow;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border-bottom: 1px solid transparent;
+  .LogoContainer {
+    border-right: none;
+  }
+
+  .ContextControl {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .Message {
+    color: var(--p-text);
+  }
+
+  @media (forced-colors: active) {
+    @include high-contrast-border;
   }
 }
 
@@ -27,8 +36,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     align-items: center;
     height: 100%;
     padding: 0 spacing();
-    border-right: 1px solid $off-white-border;
-    background-color: $off-white;
+    background-color: transparent;
   }
 }
 
@@ -72,39 +80,11 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: spacing(tight);
 }
 
-.newDesignLanguage {
-  background: var(--p-surface);
-  height: var(--p-contextual-save-bar-height);
-  margin: spacing(tight);
-  border-radius: var(--p-border-radius-wide);
+.ContextControl {
+  display: none;
 
-  &::after {
-    border-bottom: none;
-  }
-
-  @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
-  }
-
-  .LogoContainer {
-    display: none;
-  }
-
-  .Contents {
-    margin: 0;
-    padding: 0 spacing();
-    max-width: 100%;
-
-    @include page-content-when-not-fully-condensed {
-      padding: 0 spacing();
-    }
-
-    @include page-content-when-not-partially-condensed {
-      padding: 0 spacing();
-    }
-  }
-
-  .Message {
-    color: var(--p-text);
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: block;
+    width: layout-width(nav);
   }
 }

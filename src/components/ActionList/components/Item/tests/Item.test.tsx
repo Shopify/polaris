@@ -10,7 +10,9 @@ import {TextStyle} from '../../../../TextStyle';
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
     const item = mountWithAppProvider(<Item image="some-image.png" />);
-    const styledItem = item.find('div').findWhere((node) => node.prop('style'));
+    const styledItem = item
+      .find('span')
+      .findWhere((node) => node.prop('style'));
     expect(styledItem.first().prop('style')).toHaveProperty(
       'backgroundImage',
       'url(some-image.png',
@@ -37,9 +39,15 @@ describe('<Item />', () => {
   });
 
   it('renders a suffix when the suffix prop is defined', () => {
-    const Suffix = () => <div>Suffix</div>;
+    const Suffix = () => <span>Suffix</span>;
     const item = mountWithApp(<Item suffix={<Suffix />} />);
     expect(item).toContainReactComponent(Suffix);
+  });
+
+  it('renders a prefix when the prefix prop is defined', () => {
+    const Prefix = () => <span>Prefix</span>;
+    const item = mountWithApp(<Item prefix={<Prefix />} />);
+    expect(item).toContainReactComponent(Prefix);
   });
 
   it('does not render a label when content is undefined and ellipsis is true', () => {
@@ -75,24 +83,18 @@ describe('<Item />', () => {
     );
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(item).toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
+  it('passes `url` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(<Item url="https://shopify.com" disabled />);
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(item).not.toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
-      });
-    });
+    expect(item.find(UnstyledLink)!.prop('url')).toBeNull();
+  });
+
+  it('passes `onClick` as null to `<UnstyledLink />` when disabled', () => {
+    const item = mountWithApp(
+      <Item onAction={noop} disabled url="https://shopify.com" />,
+    );
+
+    expect(item.find(UnstyledLink)!.prop('onClick')).toBeNull();
   });
 });
 

@@ -1,20 +1,18 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 
 import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
+import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
-import styles from './Tooltip.scss';
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
-  content: string;
-  /** Display tooltip with a light background */
-  light?: boolean;
+  content: React.ReactNode;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Dismiss tooltip when not interacting with its children */
@@ -29,16 +27,18 @@ export interface TooltipProps {
    * @default 'span'
    */
   activatorWrapper?: string;
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
 }
 
 export function Tooltip({
   children,
   content,
-  light,
   dismissOnMouseOut,
   active: originalActive,
   preferredPosition = 'below',
   activatorWrapper = 'span',
+  accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {value: active, setTrue: handleFocus, setFalse: handleBlur} = useToggle(
@@ -60,7 +60,16 @@ export function Tooltip({
 
     accessibilityNode.tabIndex = 0;
     accessibilityNode.setAttribute('aria-describedby', id);
+    accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
+
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.keyCode !== Key.Escape) return;
+      handleBlur();
+    },
+    [handleBlur],
+  );
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
@@ -69,13 +78,11 @@ export function Tooltip({
         preferredPosition={preferredPosition}
         activator={activatorNode}
         active={active}
+        accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        light={light}
         preventInteraction={dismissOnMouseOut}
       >
-        <div className={styles.Label} testID="TooltipOverlayLabel">
-          {content}
-        </div>
+        {content}
       </TooltipOverlay>
     </Portal>
   ) : null;
@@ -87,7 +94,9 @@ export function Tooltip({
       onBlur={handleBlur}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
+      onClick={stopPropagation}
       ref={setActivator}
+      onKeyUp={handleKeyUp}
     >
       {children}
       {portal}
@@ -126,3 +135,7 @@ export function Tooltip({
 }
 
 function noop() {}
+
+function stopPropagation(event: React.MouseEvent<any>) {
+  event.stopPropagation();
+}

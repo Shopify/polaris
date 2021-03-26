@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Image} from '../Image';
@@ -32,6 +31,8 @@ export interface AvatarProps {
   customer?: boolean;
   /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
+  /** Callback fired when the image fails to load  */
+  onError?(): void;
   /** Accessible label for the avatar image */
   accessibilityLabel?: string;
 }
@@ -39,22 +40,19 @@ export interface AvatarProps {
 export function Avatar({
   name,
   source,
+  onError,
   initials,
   customer,
   size = 'medium',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const isAfterInitialMount = useIsAfterInitialMount();
 
   function styleClass(name?: string) {
-    const finalStyleClasses = newDesignLanguage
-      ? STYLE_CLASSES
-      : [...STYLE_CLASSES, 'six'];
     return name
-      ? finalStyleClasses[name.charCodeAt(0) % finalStyleClasses.length]
-      : finalStyleClasses[0];
+      ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]
+      : STYLE_CLASSES[0];
   }
 
   const [status, setStatus] = useState<Status>(Status.Pending);
@@ -66,7 +64,10 @@ export function Avatar({
 
   const handleError = useCallback(() => {
     setStatus(Status.Errored);
-  }, []);
+    if (onError) {
+      onError();
+    }
+  }, [onError]);
   const handleLoad = useCallback(() => {
     setStatus(Status.Loaded);
   }, []);
