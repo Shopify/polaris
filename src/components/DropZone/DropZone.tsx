@@ -27,10 +27,15 @@ import {useToggle} from '../../utilities/use-toggle';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
-import {fileAccepted, getDataTransferFiles} from './utils';
+import {
+  fileAccepted,
+  getDataTransferFiles,
+  defaultAllowMultiple,
+  createAllowMultipleKey,
+} from './utils';
 import styles from './DropZone.scss';
 
-type Type = 'file' | 'image';
+export type Type = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -117,7 +122,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   accept,
   active,
   overlay = true,
-  allowMultiple = true,
+  allowMultiple = defaultAllowMultiple,
   overlayText,
   errorOverlayText,
   id: idProp,
@@ -308,15 +313,25 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   });
 
   const id = useUniqueId('DropZone', idProp);
-  const suffix = capitalize(type);
+  const typeSuffix = capitalize(type);
+  const allowMultipleKey = createAllowMultipleKey(allowMultiple);
+
   const overlayTextWithDefault =
     overlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.overlayText${suffix}`)
+      ? i18n.translate(
+          `Polaris.DropZone.${allowMultipleKey}.overlayText${typeSuffix}`,
+        )
       : overlayText;
+
   const errorOverlayTextWithDefault =
     errorOverlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
+      ? i18n.translate(`Polaris.DropZone.errorOverlayText${typeSuffix}`)
       : errorOverlayText;
+
+  const labelValue =
+    label ||
+    i18n.translate(`Polaris.DropZone.${allowMultipleKey}.label${typeSuffix}`);
+  const labelHiddenValue = label ? labelHidden : true;
 
   const inputAttributes = {
     id,
@@ -351,10 +366,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (internalError || error) &&
     overlayMarkup(CircleAlertMajor, 'critical', errorOverlayTextWithDefault);
 
-  const labelValue =
-    label || i18n.translate('Polaris.DropZone.FileUpload.label');
-  const labelHiddenValue = label ? labelHidden : true;
-
   const context = useMemo(
     () => ({
       disabled,
@@ -362,8 +373,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       size,
       type: type || 'file',
       measuring,
+      allowMultiple,
     }),
-    [disabled, focused, measuring, size, type],
+    [disabled, focused, measuring, size, type, allowMultiple],
   );
 
   return (

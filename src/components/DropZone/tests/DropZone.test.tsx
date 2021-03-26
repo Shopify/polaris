@@ -6,7 +6,7 @@ import {Label, Labelled, DisplayText, Caption} from 'components';
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
-import {DropZone} from '../DropZone';
+import {DropZone, Type} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -205,6 +205,36 @@ describe('<DropZone />', () => {
     const dropZone = mountWithAppProvider(<DropZone disabled />);
     expect(dropZone.find('input[type="file"]').prop('disabled')).toBe(true);
   });
+
+  it.each([
+    [false, 'image', 'Drop image to upload', 'Upload image'],
+    [true, 'image', 'Drop images to upload', 'Upload images'],
+    [false, 'file', 'Drop file to upload', 'Upload file'],
+    [true, 'file', 'Drop files to upload', 'Upload files'],
+  ])(
+    'renders texts when allowMultiple is %s and type is %s',
+    (allowMultiple, type, expectedDisplayText, expectedLabelText) => {
+      const dropZone = mountWithApp(
+        <DropZone overlay allowMultiple={allowMultiple} type={type as Type} />,
+      );
+
+      act(() => {
+        dropZone
+          .find('div', {'aria-disabled': false})!
+          .domNode!.dispatchEvent(new Event('dragenter'));
+      });
+
+      dropZone.forceUpdate();
+
+      expect(dropZone).toContainReactComponent(DisplayText, {
+        children: expectedDisplayText,
+      });
+
+      expect(dropZone).toContainReactComponent(Labelled, {
+        label: expectedLabelText,
+      });
+    },
+  );
 
   describe('onClick', () => {
     it('calls the onClick when clicking the dropzone if one is provided', () => {
