@@ -22,8 +22,8 @@ $item-min-size: rem(220px);
 }
 
 .Item {
-  margin-left: spacing(loose);
   flex: 1 1 $item-min-size;
+  margin-left: spacing(loose);
   max-width: calc(100% - #{spacing(loose)});
 
   &:not(.First) {
