@@ -24,8 +24,6 @@ export interface Country {
 }
 
 export interface PhoneFieldProps {
-  /** Placeholder text  */
-  placeholder?: string;
   /** Textfield label  */
   labelName?: string;
   /** Hides the label for accessibility */
@@ -44,7 +42,6 @@ export interface PhoneFieldProps {
 
 export function PhoneField({
   errorMessage,
-  placeholder,
   labelName,
   labelHidden,
   optional,
@@ -315,7 +312,6 @@ export function PhoneField({
         label={optional ? `${labelName} (optional)` : labelName}
         autoComplete="tel"
         type="tel"
-        placeholder={placeholder}
         value={formattedPhoneNumber}
         onChange={handleTextChange}
         labelHidden={labelHidden}
