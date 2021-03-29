@@ -7,7 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `hideOnPrint` prop to `Card` and `CardSection` ([#4071](https://github.com/Shopify/polaris-react/pull/4071))
-- update Select error background color ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
+- update `Select` error background color ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
 
 ### Bug fixes
 
