@@ -41,8 +41,8 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
     );
   }
 
-  const itemsMarkup = Children.map(children, (child, index) =>
-    wrapWithComponent(child, Item, {index}),
+  const itemsMarkup = Children.map(children, (child) =>
+    wrapWithComponent(child, Item, {}),
   );
 
   return (

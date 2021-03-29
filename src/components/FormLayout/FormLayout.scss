@@ -26,7 +26,7 @@ $item-min-size: rem(220px);
   margin-left: spacing(loose);
   max-width: calc(100% - #{spacing(loose)});
 
-  &:not(.First) {
+  & + & {
     margin-top: spacing();
   }
 

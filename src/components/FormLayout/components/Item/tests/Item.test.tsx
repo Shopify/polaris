@@ -12,16 +12,6 @@ describe('<Item />', () => {
     const item = mountWithApp(<Item {...defaultProps}>{children}</Item>);
     expect(item).toContainReactComponent(TextField);
   });
-
-  it('renders item with First className when index is 0', () => {
-    const item = mountWithApp(<Item {...defaultProps} index={0} />);
-    expect(item.find('div')?.props.className).toContain('First');
-  });
-
-  it('renders item with First className when index is not 0', () => {
-    const item = mountWithApp(<Item {...defaultProps} index={1} />);
-    expect(item.find('div')?.props.className).not.toContain('First');
-  });
 });
 
 function noop() {}
