@@ -28,6 +28,6 @@ function wrapChildren(child: React.ReactElement, index: number) {
   if (isElementOfType(child, Group)) {
     return child;
   }
-  const props = {key: index};
+  const props = {key: index, index};
   return wrapWithComponent(child, Item, props);
 }

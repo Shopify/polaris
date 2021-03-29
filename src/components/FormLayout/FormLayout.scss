@@ -3,7 +3,6 @@
 $item-min-size: rem(220px);
 
 .FormLayout {
-  margin-top: -1 * spacing();
   margin-left: -1 * spacing(loose);
 }
 
@@ -23,10 +22,13 @@ $item-min-size: rem(220px);
 }
 
 .Item {
-  flex: 1 1 $item-min-size;
-  margin-top: spacing();
   margin-left: spacing(loose);
+  flex: 1 1 $item-min-size;
   max-width: calc(100% - #{spacing(loose)});
+
+  &:not(.First) {
+    margin-top: spacing();
+  }
 
   .grouped & {
     min-width: $item-min-size;
