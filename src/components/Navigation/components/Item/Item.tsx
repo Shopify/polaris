@@ -14,12 +14,13 @@ import {Icon, IconProps} from '../../../Icon';
 import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
-import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
 
 import {Secondary} from './components';
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 
 interface ItemURLDetails {
   url?: string;
@@ -33,7 +34,7 @@ export interface SubNavigationItem extends ItemURLDetails {
   url: string;
   label: string;
   disabled?: boolean;
-  new?: boolean;
+  new?: string;
   onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
@@ -51,7 +52,7 @@ export interface ItemProps extends ItemURLDetails {
   accessibilityLabel?: string;
   selected?: boolean;
   exactMatch?: boolean;
-  new?: boolean;
+  new?: string;
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
@@ -76,13 +77,12 @@ export function Item({
   accessibilityLabel,
   selected: selectedOverride,
   badge,
-  new: isNew,
+  new: newLabel,
   matches,
   exactMatch,
   matchPaths,
   excludePaths,
 }: ItemProps) {
-  const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
@@ -126,14 +126,16 @@ export function Item({
     </div>
   ) : null;
 
+  const newLabelMarkup = newLabel ? (
+    <div style={{margin: 'auto', paddingRight: '.5rem'}}>
+      <Caption>
+        <TextStyle variation="subdued">{newLabel}</TextStyle>
+      </Caption>
+    </div>
+  ) : null;
+
   let badgeMarkup: ReactNode = null;
-  if (isNew) {
-    badgeMarkup = (
-      <Badge status="new" size="small">
-        {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
-      </Badge>
-    );
-  } else if (typeof badge === 'string') {
+  if (typeof badge === 'string') {
     badgeMarkup = (
       <Badge status="new" size="small">
         {badge}
@@ -143,10 +145,11 @@ export function Item({
     badgeMarkup = badge;
   }
 
-  const wrappedBadgeMarkup =
-    badgeMarkup == null ? null : (
-      <div className={styles.Badge}>{badgeMarkup}</div>
-    );
+  const wrappedBadgeMarkup = newLabelMarkup ? (
+    newLabelMarkup
+  ) : badgeMarkup == null ? null : (
+    <div className={styles.Badge}>{badgeMarkup}</div>
+  );
 
   const itemContentMarkup = (
     <>
