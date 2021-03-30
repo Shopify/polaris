@@ -93,16 +93,27 @@
       "secondaryAction": "編集を続ける"
     },
     "DropZone": {
-      "overlayTextFile": "ファイルをドロップしてアップロード",
-      "overlayTextImage": "画像をドロップしてアップロードする",
       "errorOverlayTextFile": "ファイルタイプが有効ではありません",
       "errorOverlayTextImage": "画像タイプが有効ではありません",
-      "FileUpload": {
-        "actionTitleFile": "ファイルを追加する",
-        "actionTitleImage": "画像を追加する",
+      "single": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加",
+        "actionTitleImage": "画像を追加",
+        "actionHintFile": "またはファイルをドロップしてアップロード",
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加",
+        "actionTitleImage": "画像を追加",
         "actionHintFile": "または、ファイルをドロップしてアップロード",
-        "actionHintImage": "または、画像をドロップしてアップロードする",
-        "label": "ファイルをアップロード"
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード"
       }
     },
     "EmptySearchResult": {
