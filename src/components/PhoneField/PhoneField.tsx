@@ -25,7 +25,7 @@ export interface Country {
 
 export interface PhoneFieldProps {
   /** Textfield label  */
-  labelName?: string;
+  labelName: string;
   /** Hides the label for accessibility */
   labelHidden?: boolean;
   /** Is textfield optional */
@@ -297,7 +297,7 @@ export function PhoneField({
   const searchBarField = (
     <div className={styles.Searchbar}>
       <TextField
-        label="Store name"
+        label="Search bar"
         value={searchBarText}
         labelHidden
         placeholder="Search for a country"

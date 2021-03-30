@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
-import {TextField} from 'components';
+import {TextField, Popover, Button, ActionList} from 'components';
 
 import {PhoneField, Country} from '../PhoneField';
 
@@ -56,6 +56,7 @@ describe('<PhoneField />', () => {
     const errorMessage = 'Please enter a valid phone number';
     const element = mountWithApp(
       <PhoneField
+        labelName="Mobile Phone Number"
         countries={countries}
         validator={() => false}
         errorMessage={errorMessage}
@@ -71,6 +72,7 @@ describe('<PhoneField />', () => {
     const errorMessage = 'Please enter a valid phone number';
     const element = mountWithApp(
       <PhoneField
+        labelName="Mobile Phone Number"
         countries={countries}
         validator={() => true}
         errorMessage={errorMessage}
@@ -102,6 +104,35 @@ describe('label', () => {
 
     expect(element).toContainReactComponent(TextField, {
       label: `${phoneFieldLabel} (optional)`,
+    });
+  });
+});
+
+describe('Popover', () => {
+  // const textElement = (
+  //   <TextField
+  //     label="Search bar"
+  //     value="+1"
+  //     labelHidden
+  //     placeholder="Search for a country"
+  //     onChange={() => {}}
+  //   />
+  // );
+
+  // it('renders searchBar as children in Popover', () => {
+  //   expect(element).toContainReactComponent(Popover, {
+  //     children: textElement,
+  //   });
+  // });
+
+  it('renders searchBar as children in AB', () => {
+    const element = mountWithApp(
+      <PhoneField labelName="Hi" countries={countries} searchBar />,
+    );
+
+    const actionListProps = [{content: 'Hi', onAction: () => {}}];
+    expect(element).toContainReactComponent(ActionList, {
+      items: [{content: 'Hi', onAction: () => {}}],
     });
   });
 });
