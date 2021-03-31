@@ -93,16 +93,27 @@
       "secondaryAction": "Kontynuuj edycję"
     },
     "DropZone": {
-      "overlayTextFile": "Upuść plik, aby załadować",
-      "overlayTextImage": "Upuść obraz , aby załadować",
       "errorOverlayTextFile": "Nieprawidłowy typ pliku",
       "errorOverlayTextImage": "Nieprawidłowy typ obrazu",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Upuść plik do załadowania",
+        "overlayTextImage": "Upuść obraz do załadowania",
         "actionTitleFile": "Dodaj plik",
         "actionTitleImage": "Dodaj obraz",
-        "actionHintFile": "lub upuść pliki, aby załadować",
-        "actionHintImage": "lub upuść obrazy, aby załadować",
-        "label": "Przekaż plik"
+        "actionHintFile": "lub upuść plik do załadowania",
+        "actionHintImage": "lub upuść zdjęcie do załadowania",
+        "labelFile": "Załaduj plik",
+        "labelImage": "Załaduj obraz"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Upuść pliki do załadowania",
+        "overlayTextImage": "Upuść obrazy do załadowania",
+        "actionTitleFile": "Dodaj pliki",
+        "actionTitleImage": "Dodaj zdjęcia",
+        "actionHintFile": "lub upuść pliki do załadowania",
+        "actionHintImage": "lub upuść zdjęcia do załadowania",
+        "labelFile": "Załaduj pliki",
+        "labelImage": "Załaduj zdjęcia"
       }
     },
     "EmptySearchResult": {

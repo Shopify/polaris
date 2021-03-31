@@ -2,6 +2,7 @@ import React from 'react';
 import {Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
@@ -13,6 +14,7 @@ describe('<FileUpload />', () => {
     focused: false,
     disabled: false,
     measuring: false,
+    allowMultiple: true,
   };
   describe('measuring', () => {
     it('hides the FileUpload while measuring is true', () => {
@@ -118,7 +120,7 @@ describe('<FileUpload />', () => {
     );
 
     fileUpload.setProps({children: <FileUpload />});
-    expect(findByTestID(fileUpload, 'Button').text()).toBe('Add file');
+    expect(findByTestID(fileUpload, 'Button').text()).toBe('Add files');
   });
 
   it('sets a default actionHint if the prop is provided then removed', () => {
@@ -133,4 +135,29 @@ describe('<FileUpload />', () => {
     fileUpload.setProps({children: <FileUpload />});
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
   });
+
+  it.each([
+    [false, 'image', 'Add image', 'or drop image to upload'],
+    [true, 'image', 'Add images', 'or drop images to upload'],
+    [false, 'file', 'Add file', 'or drop file to upload'],
+    [true, 'file', 'Add files', 'or drop files to upload'],
+  ])(
+    'renders texts when allowMultiple is %s and type is %s',
+    (allowMultiple, type, expectedButtonText, expectedTextStyleText) => {
+      const fileUpload = mountWithApp(
+        <DropZoneContext.Provider
+          value={{size: 'large', ...defaultStates, allowMultiple, type}}
+        >
+          <FileUpload />
+        </DropZoneContext.Provider>,
+      );
+
+      expect(fileUpload).toContainReactComponent('div', {
+        children: expectedButtonText,
+      });
+      expect(fileUpload).toContainReactComponent(TextStyle, {
+        children: expectedTextStyleText,
+      });
+    },
+  );
 });
