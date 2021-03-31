@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed the `isMounted` check from `Portal` to only rely on the useEffect for calling `onPortalCreated` ([#4066](https://github.com/Shopify/polaris-react/pull/4066))
 - Removed transition from `BulkActions` to eliminate flicker ([#4080](https://github.com/Shopify/polaris-react/pulls/4080))
 - update error background color in `Select` ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
+- Fixed `Trapfocus` issue that was preventing tabbing with react forms ([#4100](https://github.com/Shopify/polaris-react/pull/4100))
 
 ### Documentation
 
