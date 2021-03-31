@@ -80,7 +80,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Enhancements
 
-- Update Link underline style on print to be lighter ([#3943)](https://github.com/Shopify/polaris-react/pull/3943)))
+- Update Link underline style on print to be lighter ([#3943](https://github.com/Shopify/polaris-react/pull/3943))
 
 ### Bug fixes
 
