@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `Filters` focus state when tabbing into the component from a popover ([#4073](https://github.com/Shopify/polaris-react/issues/4073))
 - Removed the `isMounted` check from `Portal` to only rely on the useEffect for calling `onPortalCreated` ([#4066](https://github.com/Shopify/polaris-react/pull/4066))
 - Removed transition from `BulkActions` to eliminate flicker ([#4080](https://github.com/Shopify/polaris-react/pulls/4080))
+- update error background color in `Select` ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
 
 ### Documentation
 
