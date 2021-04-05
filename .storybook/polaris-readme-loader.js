@@ -158,6 +158,7 @@ import {
   Page,
   PageActions,
   Pagination,
+  PhoneField,
   PolarisTestProvider,
   Popover,
   Portal,
