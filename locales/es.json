@@ -93,16 +93,27 @@
       "secondaryAction": "Continuar editando"
     },
     "DropZone": {
-      "overlayTextFile": "Arrastra y suelta el archivo que deseas subir",
-      "overlayTextImage": "Arrastra y suelta la imagen que deseas subir",
       "errorOverlayTextFile": "El tipo de archivo no es válido",
       "errorOverlayTextImage": "El tipo de imagen no es válida",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Arrastra y suelta el archivo que deseas subir",
+        "overlayTextImage": "Arrastra y suelta la imagen que deseas subir",
         "actionTitleFile": "Agregar archivo",
         "actionTitleImage": "Agregar imagen",
+        "actionHintFile": "o suelta el archivo que deseas subir",
+        "actionHintImage": "o arrastra y suelta la imagen que deseas subir",
+        "labelFile": "Subir archivo",
+        "labelImage": "Subir imagen"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Arrastra y suelta los archivos que deseas subir",
+        "overlayTextImage": "Arrastra y suelta las imágenes que deseas subir",
+        "actionTitleFile": "Agregar archivos",
+        "actionTitleImage": "Agregar imágenes",
         "actionHintFile": "o arrastra y suelta los archivos que deseas subir",
         "actionHintImage": "o arrastra y suelta las imágenes que deseas subir",
-        "label": "Subir archivo"
+        "labelFile": "Subir archivos",
+        "labelImage": "Subir imágenes"
       }
     },
     "EmptySearchResult": {

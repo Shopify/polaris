@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Badge, Subheading, ButtonGroup, Button} from 'components';
 
 import {Section} from '../Section';
@@ -31,6 +32,24 @@ describe('<Card.Section />', () => {
 
     expect(headerMarkup.exists()).toBeTruthy();
     expect(headerMarkup.text()).toStrictEqual(titleString);
+  });
+
+  describe('hideWhenPrinting prop', () => {
+    it('renders classname "Section Section-hideOnPrint" when prop is passed', () => {
+      const card = mountWithApp(<Section hideOnPrint />);
+
+      expect(card).toContainReactComponent('div', {
+        className: 'Section Section-hideOnPrint',
+      });
+    });
+
+    it('does not render classname "Section Section-hideOnPrint" when prop is not passed', () => {
+      const card = mountWithApp(<Section />);
+
+      expect(card).not.toContainReactComponent('div', {
+        className: 'Section Section-hideOnPrint',
+      });
+    });
   });
 
   describe('actions', () => {

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 
 import {Key} from '../../types';
 import {EventListener} from '../EventListener';
@@ -13,7 +13,6 @@ import {
 } from '../../utilities/focus';
 import {useFocusManager} from '../../utilities/focus-manager';
 import {portal} from '../shared';
-import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 
 export interface TrapFocusProps {
   trapping?: boolean;
@@ -23,17 +22,20 @@ export interface TrapFocusProps {
 export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
-  const isMounted = useIsAfterInitialMount();
+  const [disableFocus, setDisableFocus] = useState(true);
 
-  const disableFocus =
-    isMounted &&
-    canSafelyFocus &&
-    !(
-      focusTrapWrapper.current &&
-      focusTrapWrapper.current.contains(document.activeElement)
-    )
-      ? !trapping
-      : true;
+  useEffect(() => {
+    const disable =
+      canSafelyFocus &&
+      !(
+        focusTrapWrapper.current &&
+        focusTrapWrapper.current.contains(document.activeElement)
+      )
+        ? !trapping
+        : true;
+
+    setDisableFocus(disable);
+  }, [canSafelyFocus, trapping]);
 
   const handleFocusIn = (event: FocusEvent) => {
     const containerContentsHaveFocus =

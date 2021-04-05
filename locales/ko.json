@@ -93,16 +93,27 @@
       "secondaryAction": "계속 편집"
     },
     "DropZone": {
-      "overlayTextFile": "업로드할 파일 놓기",
-      "overlayTextImage": "업로드할 이미지 놓기",
       "errorOverlayTextFile": "파일 형식이 유효하지 않습니다.",
       "errorOverlayTextImage": "이미지 형식이 유효하지 않습니다.",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "업로드할 파일 놓기",
+        "overlayTextImage": "업로드할 이미지 놓기",
         "actionTitleFile": "파일 추가",
         "actionTitleImage": "이미지 추가",
         "actionHintFile": "또는 업로드할 파일 놓기",
         "actionHintImage": "또는 업로드할 이미지 놓기",
-        "label": "파일 업로드"
+        "labelFile": "파일 업로드",
+        "labelImage": "이미지 업로드"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "업로드할 파일 놓기",
+        "overlayTextImage": "업로드할 이미지 놓기",
+        "actionTitleFile": "파일 추가",
+        "actionTitleImage": "이미지 추가",
+        "actionHintFile": "또는 업로드할 파일 놓기",
+        "actionHintImage": "또는 업로드할 이미지 놓기",
+        "labelFile": "파일 업로드",
+        "labelImage": "이미지 업로드"
       }
     },
     "EmptySearchResult": {

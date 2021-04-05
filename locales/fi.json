@@ -93,16 +93,27 @@
       "secondaryAction": "Jatka muokkausta"
     },
     "DropZone": {
-      "overlayTextFile": "Pudota ladattava tiedosto",
-      "overlayTextImage": "Pudota lähetettävä kuva",
       "errorOverlayTextFile": "Tiedostotyyppi ei kelpaa",
       "errorOverlayTextImage": "Kuvan tyyppi ei kelpaa",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Pudota tiedosto ladattavaksi",
+        "overlayTextImage": "Pudota kuva ladattavaksi",
         "actionTitleFile": "Lisää tiedosto",
         "actionTitleImage": "Lisää kuva",
-        "actionHintFile": "tai pudota lähetettävät tiedostot",
-        "actionHintImage": "tai pudota lähetettävät kuvat",
-        "label": "Lataa tiedosto"
+        "actionHintFile": "tai pudota tiedosto ladattavaksi",
+        "actionHintImage": "tai pudota kuva ladattavaksi",
+        "labelFile": "Lataa tiedosto",
+        "labelImage": "Lataa kuva"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Pudota ladattavat tiedostot",
+        "overlayTextImage": "Pudota ladattavat kuvat",
+        "actionTitleFile": "Lisää tiedostoja",
+        "actionTitleImage": "Lisää kuvia",
+        "actionHintFile": "tai pudota ladattavat tiedostot",
+        "actionHintImage": "tai pudota ladattavat kuvat",
+        "labelFile": "Lataa tiedostoja",
+        "labelImage": "Lataa kuvia"
       }
     },
     "EmptySearchResult": {
