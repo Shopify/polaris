@@ -14,13 +14,13 @@ export interface Country {
   countryName: string;
   /** Country area code */
   countryCode: string;
+  /** Country alpha code. Used as  */
   countryAlphaCode?: string;
   /** Phone number display format */
   displayFormat: number[];
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
   areaCodes?: number[];
   population?: number;
-  formatter?(): void;
 }
 
 export interface PhoneFieldProps {
@@ -28,8 +28,6 @@ export interface PhoneFieldProps {
   labelName: string;
   /** Hides the label for accessibility */
   labelHidden?: boolean;
-  /** Is textfield optional */
-  optional?: boolean;
   /** Error message */
   errorMessage?: string;
   /** Country list in dropdown */
@@ -41,15 +39,13 @@ export interface PhoneFieldProps {
 }
 
 export function PhoneField({
-  errorMessage,
   labelName,
   labelHidden,
-  optional,
+  errorMessage,
   countries,
-  validator,
   searchBar,
+  validator,
 }: PhoneFieldProps) {
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [validPhoneNumber, setValidPhoneNumber] = useState(true);
   const [popoverActive, setPopoverActive] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -61,38 +57,48 @@ export function PhoneField({
     }),
   );
 
+  // Sets the default country as the country with the most population
   const maxCountryPopulationObj = useCallback((countryArr: Country[]) => {
-    const filteredObj = countryArr.filter(
-      (countryObj) => 'population' in countryObj,
-    );
-
-    if (filteredObj.length > 0) {
-      let selectedCountryObj = filteredObj[0];
-
-      filteredObj.forEach((filteredObj) => {
-        if (filteredObj.population && selectedCountryObj.population) {
-          if (filteredObj.population > selectedCountryObj.population)
-            selectedCountryObj = filteredObj;
+    const populationCountries = countryArr
+      .filter((countryObject) => 'population' in countryObject)
+      .sort((countryA: Country, countryB: Country) => {
+        if (countryA.population && countryB.population) {
+          return countryB.population - countryA.population;
         }
+        return 0;
       });
 
-      return selectedCountryObj;
-    }
-
-    return countryArr[0];
+    return populationCountries.length > 1
+      ? populationCountries[0]
+      : countryArr[0];
   }, []);
 
+  // Selected Country Obbject
   const [selectedCountryObject, setSelectedCountryObject] = useState(
     maxCountryPopulationObj(countries),
   );
 
-  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState(
+  // Formatted phone number
+  const [phoneNumber, setPhoneNumber] = useState(
     `${selectedCountryObject.countryCode}`,
   );
 
+  // Country Options for ActionList
   const [countryOptions, setCountryOptions] = useState(allCountries);
 
-  const handleClicked = useCallback((bool) => setClicked(bool), [setClicked]);
+  /* This state is used when there are two countries with the same area code,
+  and display format (e.g. Russia and Kazakhstan both have '+7'). The formatter
+  will automatically assume that Russia is the phone number since it has
+  the biggest population. However, the clicked value is set to true if
+  the country Kazakhstan is selected in the dropdown, so the phone number entered
+  with +7 will be identified as Kazakhstan*/
+  const handleClicked = useCallback(
+    (bool) => {
+      setClicked(bool);
+    },
+    [setClicked],
+  );
+
   /** Callback function for handling when the popover is clicked */
   const togglePopoverActive = useCallback(() => {
     setPopoverActive((popoverActive) => !popoverActive);
@@ -109,7 +115,7 @@ export function PhoneField({
     return filteredCountryArr.length !== 0;
   }
 
-  // Given a countryArr, where the countryCodes are the same, and we are retrieving the area codes
+  // Given a array of country objects, where the country codes are the same, and we are retrieving the area codes
   function retrieveAreaCodeMatches(countryArr: Country[], phoneNum: string) {
     // If we have pass in '+120255', we obtain '202' as the area code
     // If we have pass in '+120', we obtain '20' as the area code
@@ -133,58 +139,62 @@ export function PhoneField({
     return filteredCountryArr;
   }
 
-  const extractNumberFormat = useCallback((numberStr: string) => {
+  /* Given a phone number, it will check if there is a plus sign before the phone number
+  and insert it if there is not. If a string of just a plus sign or empty string is passed in,
+  then we return the plus sign. */
+  const addPhoneNumberPrefix = useCallback((phoneNumber: string) => {
     const extractNumbersRegex = /\d+/g;
-    const numberPresent = extractNumbersRegex.test(numberStr);
-    const startsWithPlus = numberStr.startsWith('+') ? '+' : '';
+    const numberPresent = extractNumbersRegex.test(phoneNumber);
+    const startsWithPlus = phoneNumber.startsWith('+') ? '+' : '';
 
     /* Since the match function may return 'null', the test function was used to check if there is a match first
     before using the match function */
 
     return numberPresent
-      ? `+${numberStr.match(extractNumbersRegex)?.join('')}`
+      ? `+${phoneNumber.match(extractNumbersRegex)?.join('')}`
       : startsWithPlus;
   }, []);
 
   const retrieveCountryObject = useCallback(
     (countryName: string) => {
-      const foundIndex = countries.findIndex(
+      const countryIndex = countries.findIndex(
         (element) => element.countryName === countryName,
       );
-      return foundIndex;
+      return countryIndex;
     },
     [countries],
   );
 
-  /* This function is responsible for identifying the country flag for a phone number */
+  /* This function is responsible for identifying the country flag for a phone number
+  and returns the formatted phone number*/
   const identifyPhoneNumberCountry = useCallback(
     (countryArr: Country[], phoneNumber) => {
-      const numberStr = extractNumberFormat(phoneNumber);
-      setPhoneNumber(numberStr);
+      const phoneNumberStr = addPhoneNumberPrefix(phoneNumber);
 
       // Filter the countries based on country code
-      const filteredCountries = countryArr.filter((countryObj) =>
-        numberStr.startsWith(countryObj.countryCode),
+      const filteredCountries = countryArr.filter((country) =>
+        phoneNumberStr.startsWith(country.countryCode),
       );
 
       // If there are no countries that match based off of countryCode, then no formatting
       if (filteredCountries.length === 0) {
         handleClicked(false);
-        return numberStr;
+        return phoneNumberStr;
       }
 
       // A default country object
-      let selectedCountryObj = maxCountryPopulationObj(filteredCountries);
+      let identifiedCountry = maxCountryPopulationObj(filteredCountries);
 
       if (filteredCountries.length === 1) {
         setSelectedCountryObject(
-          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+          countries[retrieveCountryObject(identifiedCountry.countryName)],
         );
       }
 
       if (filteredCountries.length > 1) {
         // So, we don't pass in '+1', no need to filter (any country with just countryCode)
-        if (numberStr === filteredCountries[0].countryCode) return numberStr;
+        if (phoneNumberStr === filteredCountries[0].countryCode)
+          return phoneNumberStr;
 
         if (checkAreaCodeKeyExists(filteredCountries)) {
           // Obtains the filtered array of countries with 'key' areaCodes
@@ -194,14 +204,14 @@ export function PhoneField({
 
           // If the filteredCountryArr is greater than 0...
           if (filteredCountryArr.length > 0) {
-            // ... Then, we check if the area code in the numberStr matches one of the area codes in the list
+            // ... Then, we check if the area code in the phoneNumberStr matches one of the area codes in the list
             if (
-              retrieveAreaCodeMatches(filteredCountryArr, numberStr).length !==
-              0
+              retrieveAreaCodeMatches(filteredCountryArr, phoneNumberStr)
+                .length !== 0
             ) {
-              selectedCountryObj = retrieveAreaCodeMatches(
+              identifiedCountry = retrieveAreaCodeMatches(
                 filteredCountryArr,
-                numberStr,
+                phoneNumberStr,
               )[0];
             }
           }
@@ -209,23 +219,22 @@ export function PhoneField({
 
         /* Deals with the case where if user enters a country code with more than two possible countries */
         if (
-          selectedCountryObject.countryCode ===
-            selectedCountryObj.countryCode &&
+          selectedCountryObject.countryCode === identifiedCountry.countryCode &&
           clicked
         ) {
-          selectedCountryObj = selectedCountryObject;
+          identifiedCountry = selectedCountryObject;
         }
 
         setSelectedCountryObject(
-          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+          countries[retrieveCountryObject(identifiedCountry.countryName)],
         );
       }
 
-      return numberStr;
+      return phoneNumberStr;
     },
     [
       countries,
-      extractNumberFormat,
+      addPhoneNumberPrefix,
       maxCountryPopulationObj,
       retrieveCountryObject,
       handleClicked,
@@ -237,7 +246,7 @@ export function PhoneField({
   /** Callback function for handling when the text in the phone number changes */
   const handleTextChange = useCallback(
     (newValue) =>
-      setFormattedPhoneNumber(identifyPhoneNumberCountry(countries, newValue)),
+      setPhoneNumber(identifyPhoneNumberCountry(countries, newValue)),
     [identifyPhoneNumberCountry, countries],
   );
 
@@ -252,6 +261,7 @@ export function PhoneField({
     [countries, handleTextChange, togglePopoverActive, handleClicked],
   );
 
+  /* Retrieves an array of countries that matched based on what is entered in the dropdown */
   const retrieveCountries = useCallback(
     (search: string) => {
       const results = countries
@@ -309,10 +319,10 @@ export function PhoneField({
   return (
     <div>
       <TextField
-        label={optional ? `${labelName} (optional)` : labelName}
+        label={labelName}
         autoComplete="tel"
         type="tel"
-        value={formattedPhoneNumber}
+        value={phoneNumber}
         onChange={handleTextChange}
         labelHidden={labelHidden}
         connectedLeft={
