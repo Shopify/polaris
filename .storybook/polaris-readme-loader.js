@@ -22,7 +22,6 @@ const HOOK_PREFIX = 'use';
  */
 module.exports = function loader(source) {
   this.cacheable();
-
   const readme = parseCodeExamples(source);
 
   const testIndividualExamples = [
@@ -100,6 +99,7 @@ AllExamples.parameters = {
   return `
 import React, {${hooks}} from 'react';
 import {withA11y} from '@storybook/addon-a11y';
+import allCountries from 'testashwin';
 import {
   AccountConnection,
   ActionList,
