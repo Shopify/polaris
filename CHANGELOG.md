@@ -8,6 +8,20 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.2.1 - 2021-04-05
+
+### Bug fixes
+
+- Added `hideOnPrint` prop to `Card` and `CardSection` ([#4071](https://github.com/Shopify/polaris-react/pull/4071))
+- `DropZone` now has plural sentences when `allowMultiple` is true [#4037](https://github.com/Shopify/polaris-react/pull/4037)
+- Hide `IndexTable` header after scrolling past table body ([#4063](https://github.com/Shopify/polaris-react/issues/4063))
+- Update `IndexTable` to select row when clicked ([#4062](https://github.com/Shopify/polaris-react/issues/4062))
+- Fixed `Filters` focus state when tabbing into the component from a popover ([#4073](https://github.com/Shopify/polaris-react/issues/4073))
+- Removed the `isMounted` check from `Portal` to only rely on the useEffect for calling `onPortalCreated` ([#4066](https://github.com/Shopify/polaris-react/pull/4066))
+- Removed transition from `BulkActions` to eliminate flicker ([#4081](https://github.com/Shopify/polaris-react/pull/4081))
+- update error background color in `Select` ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
+- Fixed `Trapfocus` issue that was preventing tabbing with react forms ([#4100](https://github.com/Shopify/polaris-react/pull/4100))
+
 ## 6.2.0 - 2021-03-17
 
 ### Enhancements
@@ -80,7 +94,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Enhancements
 
-- Update Link underline style on print to be lighter ([#3943)](https://github.com/Shopify/polaris-react/pull/3943)))
+- Updated Link underline style on print to be lighter ([#3943](https://github.com/Shopify/polaris-react/pull/3943))
 
 ### Bug fixes
 
