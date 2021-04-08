@@ -8,6 +8,10 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.2.2 - 2021-04-08
+
+- Reverts `<TextField>` to use `autocomplete=off` instead of `autocomplete=nope` ([#4108](https://github.com/Shopify/polaris-react/pull/4108))
+
 ## 6.2.1 - 2021-04-05
 
 ### Bug fixes
