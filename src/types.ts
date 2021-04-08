@@ -50,9 +50,9 @@ export interface BaseButton {
   /** Callback when a keydown event is registered on the button */
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   /** Callback when mouse enter */
-  onMouseEnter?(): void;
+  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
   /** Callback when element is touched */
-  onTouchStart?(): void;
+  onTouchStart?: React.TouchEventHandler<HTMLButtonElement>;
 }
 
 export interface Action {
