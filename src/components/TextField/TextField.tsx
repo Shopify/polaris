@@ -517,9 +517,7 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
   if (autoComplete === true) {
     return 'on';
   } else if (autoComplete === false) {
-    return 'nope';
-  } else if (autoComplete === 'off') {
-    return 'nope';
+    return 'off';
   } else {
     return autoComplete;
   }
