@@ -268,7 +268,8 @@
     },
     "TextField": {
       "characterCount": "{count} characters",
-      "characterCountWithMaxLength": "{count} of {limit} characters used"
+      "characterCountWithMaxLength": "{count} of {limit} characters used",
+      "requiredAsterisk": "This field is required"
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Tooltip: {label}"

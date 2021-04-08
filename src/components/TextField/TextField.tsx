@@ -16,6 +16,7 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
+import {TextStyle} from '../TextStyle';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
@@ -64,6 +65,8 @@ interface NonMutuallyExclusiveProps {
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
+  /** Show an asterisk to mark the field as required  */
+  labelWithRequiredAsterisk?: boolean;
   /** Disable the input */
   disabled?: boolean;
   /** Show a clear text button in the input */
@@ -146,6 +149,7 @@ export function TextField({
   value,
   helpText,
   label,
+  labelWithRequiredAsterisk,
   labelAction,
   labelHidden,
   disabled,
@@ -431,6 +435,7 @@ export function TextField({
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
     'aria-expanded': ariaExpanded,
+    'aria-required': labelWithRequiredAsterisk,
     ...normalizeAriaMultiline(multiline),
   });
 
@@ -442,7 +447,21 @@ export function TextField({
 
   return (
     <Labelled
-      label={label}
+      label={
+        labelWithRequiredAsterisk ? (
+          <>
+            {label}
+            <span
+              className={styles.Asterisk}
+              aria-label={i18n.translate('Polaris.TextField.requiredAsterisk')}
+            >
+              <TextStyle variation="negative">*</TextStyle>
+            </span>
+          </>
+        ) : (
+          label
+        )
+      }
       id={id}
       error={error}
       action={labelAction}
