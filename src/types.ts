@@ -38,17 +38,17 @@ export interface BaseButton {
   /** Indicates the ID of the element that describes the button */
   ariaDescribedBy?: string;
   /** Callback when clicked */
-  onClick?(): void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   /** Callback when button becomes focussed */
-  onFocus?(): void;
+  onFocus?: React.FocusEventHandler<HTMLButtonElement>;
   /** Callback when focus leaves button */
-  onBlur?(): void;
+  onBlur?: React.FocusEventHandler<HTMLButtonElement>;
   /** Callback when a keypress event is registered on the button */
-  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyPress?: React.KeyboardEventHandler<HTMLButtonElement>;
   /** Callback when a keyup event is registered on the button */
-  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyUp?: React.KeyboardEventHandler<HTMLButtonElement>;
   /** Callback when a keydown event is registered on the button */
-  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
   /** Callback when element is touched */
