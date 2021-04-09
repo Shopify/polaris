@@ -417,6 +417,28 @@ describe('<DataTable />', () => {
     });
   });
 
+  describe('hoverable', () => {
+    it('defaults to rows with hover state', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const rows = dataTable.find('tbody tr');
+
+      rows.forEach((row) =>
+        expect(row.props().className).toContain('hoverable'),
+      );
+    });
+
+    it('renders rows without hover state class name when false', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hoverable={false} />,
+      );
+      const rows = dataTable.find('tbody tr');
+
+      rows.forEach((row) =>
+        expect(row.props().className).not.toContain('hoverable'),
+      );
+    });
+  });
+
   describe('defaultSortDirection', () => {
     it('passes the value down to the Cell', () => {
       const sortable = [false, true, false, false, true];
