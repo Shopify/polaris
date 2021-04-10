@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Add PhoneField component ([#4106](https://github.com/Shopify/polaris-react/pull/4106))
+
 ### Bug fixes
 
 ### Documentation
