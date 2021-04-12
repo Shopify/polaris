@@ -1,4 +1,4 @@
-Copyright (c) 2017-present Shopify Inc.
+Copyright (c) 2021-present We Are Arthur, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11,12 +11,9 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 The rights granted above may only be exercised to develop and distribute
-applications that integrate or interoperate with Shopify software or services,
-and in the case of external, stand-alone applications that do not embed
-directly inside Shopify, the rights granted above may only be exercised to
-develop and distribute applications that are dissimilar and visually distinct
-from Shopify products and services (including the internal administration page
-of a Shopify merchant store), as determined by Shopify in its sole discretion.
+applications that integrate or interoperate with Endear software or services.
+External, stand-alone applications that do not integrate with Endear must
+receive permission from Endear in order to use this software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
