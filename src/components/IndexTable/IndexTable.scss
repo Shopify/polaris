@@ -114,7 +114,15 @@ $loading-panel-height: rem(53px);
 }
 
 .TableRow-hovered {
-  background-color: var(--p-surface-selected-hovered, color('sky', 'lighter'));
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  &,
+  .TableCell-first,
+  .TableCell-first + .TableCell {
+    background-color: var(
+      --p-surface-selected-hovered,
+      color('sky', 'lighter')
+    );
+  }
 }
 
 .SubTableRow {
