@@ -8,7 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Add `hoverable` prop to `DataTable` ([#4074](https://github.com/Shopify/polaris-react/pull/4074))
 - Update `IndexTable` hover styles for sticky column ([#4113](https://github.com/Shopify/polaris-react/pull/4113))
-- Remove `IndexTable`'s color fallback styles  ([#4117](https://github.com/Shopify/polaris-react/pull/4117))
+- Remove `IndexTable`'s color fallback styles ([#4117](https://github.com/Shopify/polaris-react/pull/4117))
 
 ### Bug fixes
 
