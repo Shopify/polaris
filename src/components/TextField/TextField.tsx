@@ -130,6 +130,8 @@ interface NonMutuallyExclusiveProps {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Visual required indicator, adds an asterisk to label */
+  requiredIndicator?: boolean;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -181,6 +183,7 @@ export function TextField({
   onChange,
   onFocus,
   onBlur,
+  requiredIndicator,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -431,6 +434,7 @@ export function TextField({
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
     'aria-expanded': ariaExpanded,
+    'aria-required': requiredIndicator,
     ...normalizeAriaMultiline(multiline),
   });
 
@@ -448,6 +452,7 @@ export function TextField({
       action={labelAction}
       labelHidden={labelHidden}
       helpText={helpText}
+      requiredIndicator={requiredIndicator}
     >
       <Connected left={connectedLeft} right={connectedRight}>
         <div
