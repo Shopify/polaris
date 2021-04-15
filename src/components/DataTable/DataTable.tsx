@@ -376,12 +376,26 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
   };
 
+  private getColSpan = (
+    rowLength: number,
+    headingsLength: number,
+    contentTypesLength: number,
+    cellIndex: number,
+  ) => {
+    const rowLen = rowLength ? rowLength : 1;
+    const colLen = headingsLength ? headingsLength : contentTypesLength;
+    const colSpan = Math.floor(colLen / rowLen);
+    const remainder = colLen % rowLen;
+    return cellIndex === 0 ? colSpan + remainder : colSpan;
+  };
+
   private defaultRenderRow = (row: TableData[], index: number) => {
     const {
       columnContentTypes,
       truncate = false,
       verticalAlign,
       hoverable = true,
+      headings,
     } = this.props;
     const className = classNames(
       styles.TableRow,
@@ -392,6 +406,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <tr key={`row-${index}`} className={className}>
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const id = `cell-${cellIndex}-row-${index}`;
+          const colSpan = this.getColSpan(
+            row.length,
+            headings.length,
+            columnContentTypes.length,
+            cellIndex,
+          );
 
           return (
             <Cell
@@ -401,6 +421,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
+              colSpan={colSpan}
             />
           );
         })}
