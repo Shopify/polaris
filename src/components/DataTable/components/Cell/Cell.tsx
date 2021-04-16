@@ -22,6 +22,7 @@ export interface CellProps {
   defaultSortDirection?: SortDirection;
   verticalAlign?: VerticalAlign;
   onSort?(): void;
+  colSpan?: number;
 }
 
 export function Cell({
@@ -38,6 +39,7 @@ export function Cell({
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
+  colSpan,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -86,9 +88,12 @@ export function Cell({
 
   const columnHeadingContent = sortable ? sortableHeadingContent : content;
 
+  const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
+
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
+      {...colSpanProp}
       className={className}
       scope="col"
       aria-sort={sortDirection}
@@ -96,7 +101,7 @@ export function Cell({
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row">
+    <th className={className} scope="row" {...colSpanProp}>
       {content}
     </th>
   );
@@ -105,7 +110,9 @@ export function Cell({
     header || firstColumn ? (
       headingMarkup
     ) : (
-      <td className={className}>{content}</td>
+      <td className={className} {...colSpanProp}>
+        {content}
+      </td>
     );
 
   return cellMarkup;
