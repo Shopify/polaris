@@ -55,7 +55,7 @@ $loading-panel-height: rem(53px);
   width: 100%;
   justify-content: center;
   align-items: center;
-  background: var(--p-surface, color('white'));
+  background: var(--p-surface);
   padding: spacing('tight') spacing();
   box-shadow: shadow();
 
@@ -63,7 +63,7 @@ $loading-panel-height: rem(53px);
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    background: var(--p-surface-highlight-subdued, color('teal', 'lighter'));
+    background: var(--p-surface-highlight-subdued);
     padding: spacing('tight');
     padding-bottom: spacing('extra-tight');
     border-radius: var(--p-border-radius-base, border-radius());
@@ -72,7 +72,7 @@ $loading-panel-height: rem(53px);
 
 .LoadingPanelText {
   margin-left: rem(12px);
-  color: var(--p-text, color('teal', 'darker'));
+  color: var(--p-text);
 }
 
 .Table {
@@ -88,14 +88,14 @@ $loading-panel-height: rem(53px);
   .TableHeading-first,
   .TableHeading-second {
     visibility: visible;
-    background-color: var(--p-surface, color('white'));
+    background-color: var(--p-surface);
   }
 
   .TableCell-first,
   .TableHeading-first {
-    box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
+    box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider);
     @include breakpoint-after($breakpoint-small) {
-      box-shadow: 0 rem(-1px) 0 0 var(--p-divider, color('sky'));
+      box-shadow: 0 rem(-1px) 0 0 var(--p-divider);
     }
   }
 
@@ -103,44 +103,47 @@ $loading-panel-height: rem(53px);
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
-      box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
+      box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider);
     }
   }
 }
 
 .TableRow {
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   cursor: pointer;
 }
 
 .TableRow-hovered {
-  background-color: var(--p-surface-selected-hovered, color('sky', 'lighter'));
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  &,
+  .TableCell-first,
+  .TableCell-first + .TableCell {
+    background-color: var(--p-surface-selected-hovered);
+  }
 }
 
 .SubTableRow {
-  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
-
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  &,
   .TableCell-first,
   .TableCell-first + .TableCell {
-    background-color: var(--p-surface-subdued, color('sky', 'lighter'));
+    background-color: var(--p-surface-subdued);
   }
 }
 
 .TableRow-selected {
-  background-color: var(--p-surface-selected, color('indigo', 'lighter'));
-
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  &,
   .TableHeading-first,
   .TableHeading-second,
   .TableCell-first,
   .TableCell-first + .TableCell {
-    background-color: var(--p-surface-selected, color('indigo', 'lighter'));
+    background-color: var(--p-surface-selected);
   }
 }
 
 .TableRow-subdued {
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+  color: var(--p-text-subdued);
 }
 
 .TableHeading {
@@ -185,7 +188,7 @@ $loading-panel-height: rem(53px);
   text-align: left;
   padding: spacing(tight) spacing();
   white-space: nowrap;
-  box-shadow: 0 rem(-1px) 0 0 var(--p-divider, color('sky'));
+  box-shadow: 0 rem(-1px) 0 0 var(--p-divider);
 }
 
 .TableCell-flush {
@@ -235,8 +238,8 @@ $loading-panel-height: rem(53px);
 }
 
 .StickyTableColumnHeader-isScrolling {
-  box-shadow: 1px 1px 0 0 var(--p-divider, color('sky')),
-    1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  box-shadow: 1px 1px 0 0 var(--p-divider), 1px 0 1px 1px rgba(63, 63, 68, 0.05),
+    1px 0 3px 0 rgba(63, 63, 68, 0.15);
 }
 
 .StickyTableHeadings {
@@ -264,7 +267,7 @@ $loading-panel-height: rem(53px);
 
 .StickyTableHeader-isSticky {
   visibility: visible;
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   box-shadow: shadow();
 }
 
@@ -290,7 +293,7 @@ $loading-panel-height: rem(53px);
   left: 0;
   right: 0;
   padding: spacing('tight');
-  background: var(--p-surface, color('white'));
+  background: var(--p-surface);
 }
 
 $scroll-bar-size: rem(8px);
@@ -302,7 +305,7 @@ $scroll-bar-border-radius: rem(4px);
   bottom: 0;
   padding: rem(2px);
   border-top: border('divider');
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
   border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   border-bottom-left-radius: var(--p-border-radius-base, border-radius());
 }
@@ -333,15 +336,12 @@ $scroll-bar-border-radius: rem(4px);
 
 .ScrollBar::-webkit-scrollbar-thumb {
   border-radius: $scroll-bar-border-radius;
-  background-color: var(
-    --p-border-neutral-subdued,
-    rgba(color('ink', 'light'), 0.3)
-  );
+  background-color: var(--p-border-neutral-subdued);
   transition: background-color duration(fast) ease-out;
 }
 
 .ScrollBar:hover::-webkit-scrollbar-thumb {
-  background-color: var(--p-border-depressed, rgba(color('ink', 'light'), 0.7));
+  background-color: var(--p-border-depressed);
 }
 
 .disableTextSelection {
@@ -385,7 +385,7 @@ $scroll-bar-border-radius: rem(4px);
   width: 100%;
   min-height: 5.6rem;
   padding: 1rem spacing();
-  background-color: var(--p-surface, white);
+  background-color: var(--p-surface);
   box-shadow: shadow();
 }
 

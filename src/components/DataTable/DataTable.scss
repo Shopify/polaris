@@ -51,7 +51,7 @@ $breakpoint: 768px;
   border-spacing: 0;
 }
 
-.TableRow {
+.hoverable {
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
       background: var(--p-surface-hovered);
