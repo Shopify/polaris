@@ -50,6 +50,10 @@
   }
 }
 
+.colorInteractive {
+  @include recolor-icon(var(--p-interactive));
+}
+
 .colorWarning {
   @include recolor-icon(var(--p-icon-warning));
 
