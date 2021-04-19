@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.2.3 - 2021-04-19
+
+- Add `hoverable` prop to `DataTable` ([#4074](https://github.com/Shopify/polaris-react/pull/4074))
+- Added `interactive` color variant to `Icon` ([#4112](https://github.com/Shopify/polaris-react/pull/4112))
+- Update `IndexTable` hover styles for sticky column ([#4113](https://github.com/Shopify/polaris-react/pull/4113))
+- Add `colSpan` to the cells in `DataTable` so that cells fill the table width ([#4120](https://github.com/Shopify/polaris-react/pull/4120))
+
 ## 6.2.2 - 2021-04-08
 
 - Reverts `<TextField>` to use `autocomplete=off` instead of `autocomplete=nope` ([#4108](https://github.com/Shopify/polaris-react/pull/4108))
