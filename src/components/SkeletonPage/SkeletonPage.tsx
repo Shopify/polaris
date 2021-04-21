@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -55,9 +55,10 @@ export function SkeletonPage({
     </div>
   ) : null;
 
-  const secondaryActionsMarkup = secondaryActions
-    ? renderSecondaryActions(secondaryActions)
-    : null;
+  const secondaryActionsMarkup = useMemo(
+    () => (secondaryActions ? renderSecondaryActions(secondaryActions) : null),
+    [secondaryActions],
+  );
 
   const breadcrumbMarkup = breadcrumbs ? (
     <div className={styles.BreadcrumbAction} style={{width: 60}}>
