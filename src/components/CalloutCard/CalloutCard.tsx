@@ -65,9 +65,14 @@ export function CalloutCard({
     onDismiss && styles.DismissImage,
   );
 
+  const containerClassName = classNames(
+    styles.Container,
+    onDismiss && styles.hasDismiss,
+  );
+
   return (
     <Card>
-      <div className={styles.Container}>
+      <div className={containerClassName}>
         {dismissButton}
         <Card.Section>
           <div className={styles.CalloutCard}>
