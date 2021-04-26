@@ -187,8 +187,8 @@ export type {
 export {OptionList} from './OptionList';
 export type {OptionListProps} from './OptionList';
 
-export {Page} from './Page';
-export type {PageProps} from './Page';
+export {Page, PageHeader} from './Page';
+export type {PageProps, PageHeaderProps} from './Page';
 
 export {PageActions} from './PageActions';
 export type {PageActionsProps} from './PageActions';

@@ -5,6 +5,9 @@ import {classNames} from '../../utilities/css';
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
 
+export type PageHeaderProps = HeaderProps;
+export const PageHeader = Header;
+
 export interface PageProps extends HeaderProps {
   /** The contents of the page */
   children?: React.ReactNode;
