@@ -93,16 +93,27 @@
       "secondaryAction": "Continuar editando"
     },
     "DropZone": {
-      "overlayTextFile": "Solte o arquivo para carregar",
-      "overlayTextImage": "Solte a imagem para carregar",
       "errorOverlayTextFile": "O tipo de arquivo é inválido.",
       "errorOverlayTextImage": "O tipo de imagem é inválido.",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Soltar arquivo para carregar",
+        "overlayTextImage": "Soltar imagem para carregar",
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
-        "actionHintFile": "ou soltar os arquivos para carregar",
+        "actionHintFile": "ou soltar arquivo para carregar",
+        "actionHintImage": "ou soltar imagem para carregar",
+        "labelFile": "Carregar arquivo",
+        "labelImage": "Carregar imagem"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Soltar arquivos para carregar",
+        "overlayTextImage": "Soltar imagens para carregar",
+        "actionTitleFile": "Adicionar arquivos",
+        "actionTitleImage": "Adicionar imagens",
+        "actionHintFile": "ou soltar arquivos para carregar",
         "actionHintImage": "ou soltar imagens para carregar",
-        "label": "Carregar arquivo"
+        "labelFile": "Carregar arquivos",
+        "labelImage": "Carregar imagens"
       }
     },
     "EmptySearchResult": {

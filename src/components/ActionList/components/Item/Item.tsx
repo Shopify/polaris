@@ -8,6 +8,7 @@ import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
 import {TextStyle} from '../../../TextStyle';
 import styles from '../../ActionList.scss';
+import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -40,16 +41,16 @@ export function Item({
   let prefixMarkup: React.ReactNode | null = null;
 
   if (prefix) {
-    prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
+    prefixMarkup = <span className={styles.Prefix}>{prefix}</span>;
   } else if (icon) {
     prefixMarkup = (
-      <div className={styles.Prefix}>
+      <span className={styles.Prefix}>
         <Icon source={icon} />
-      </div>
+      </span>
     );
   } else if (image) {
     prefixMarkup = (
-      <div
+      <span
         role="presentation"
         className={styles.Prefix}
         style={{backgroundImage: `url(${image}`}}
@@ -60,10 +61,10 @@ export function Item({
   const contentText = ellipsis && content ? `${content}…` : content;
 
   const contentMarkup = helpText ? (
-    <div>
-      <div>{contentText}</div>
+    <span className={styles.ContentBlock}>
+      <span className={styles.ContentBlockInner}>{contentText}</span>
       <TextStyle variation="subdued">{helpText}</TextStyle>
-    </div>
+    </span>
   ) : (
     contentText
   );
@@ -78,15 +79,15 @@ export function Item({
     <span className={styles.Suffix}>{suffix}</span>
   );
 
-  const textMarkup = <div className={styles.Text}>{contentMarkup}</div>;
+  const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <div className={styles.Content}>
+    <span className={styles.Content}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
-    </div>
+    </span>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
@@ -110,6 +111,7 @@ export function Item({
       disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onAction}
+      onMouseUp={handleMouseUpByBlurring}
     >
       {contentElement}
     </button>

@@ -93,16 +93,27 @@
       "secondaryAction": "Fortsätt redigera"
     },
     "DropZone": {
-      "overlayTextFile": "Släpp fil för uppladdning",
-      "overlayTextImage": "Släpp bild för uppladdning",
       "errorOverlayTextFile": "Filtypen är inte giltig",
       "errorOverlayTextImage": "Bildtypen är inte giltig",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Släpp fil för uppladdning",
+        "overlayTextImage": "Släpp bild för uppladdning",
         "actionTitleFile": "Lägg till fil",
         "actionTitleImage": "Lägg till bild",
+        "actionHintFile": "eller släpp fil för uppladdning",
+        "actionHintImage": "eller släpp bild för att ladda upp",
+        "labelFile": "Ladda upp fil",
+        "labelImage": "Ladda upp bild"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Släpp filer för uppladdning",
+        "overlayTextImage": "Släpp bilder för uppladdning",
+        "actionTitleFile": "Lägg till filer",
+        "actionTitleImage": "Lägg till bilder",
         "actionHintFile": "eller släpp filer för uppladdning",
         "actionHintImage": "eller släpp bilder för uppladdning",
-        "label": "Ladda upp fil"
+        "labelFile": "Ladda upp fil",
+        "labelImage": "Ladda upp bilder"
       }
     },
     "EmptySearchResult": {

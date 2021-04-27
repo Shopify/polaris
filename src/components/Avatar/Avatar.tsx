@@ -31,6 +31,8 @@ export interface AvatarProps {
   customer?: boolean;
   /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
+  /** Callback fired when the image fails to load  */
+  onError?(): void;
   /** Accessible label for the avatar image */
   accessibilityLabel?: string;
 }
@@ -38,6 +40,7 @@ export interface AvatarProps {
 export function Avatar({
   name,
   source,
+  onError,
   initials,
   customer,
   size = 'medium',
@@ -61,7 +64,10 @@ export function Avatar({
 
   const handleError = useCallback(() => {
     setStatus(Status.Errored);
-  }, []);
+    if (onError) {
+      onError();
+    }
+  }, [onError]);
   const handleLoad = useCallback(() => {
     setStatus(Status.Loaded);
   }, []);

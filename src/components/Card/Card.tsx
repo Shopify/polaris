@@ -20,7 +20,7 @@ export interface CardProps {
   children?: React.ReactNode;
   /** A less prominent card */
   subdued?: boolean;
-  /** A recessed card */
+  /** @deprecated A recessed card */
   recessed?: boolean;
   /** Auto wrap content in section */
   sectioned?: boolean;
@@ -34,6 +34,8 @@ export interface CardProps {
   secondaryFooterActionsDisclosureText?: string;
   /** Alignment of the footer actions on the card, defaults to right */
   footerActionAlignment?: 'right' | 'left';
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -47,6 +49,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   Subsection: typeof Subsection;
 } = function Card({
   children,
+  hideOnPrint,
   title,
   subdued,
   recessed,
@@ -67,6 +70,7 @@ export const Card: React.FunctionComponent<CardProps> & {
     styles.Card,
     subdued && styles.subdued,
     recessed && styles.recessed,
+    hideOnPrint && styles.hideOnPrint,
   );
 
   const headerMarkup =

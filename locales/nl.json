@@ -93,16 +93,27 @@
       "secondaryAction": "Doorgaan met bewerken"
     },
     "DropZone": {
-      "overlayTextFile": "Sleep bestand om te uploaden",
-      "overlayTextImage": "Sleep afbeelding om te uploaden",
       "errorOverlayTextFile": "Ongeldig bestandstype",
       "errorOverlayTextImage": "Ongeldig afbeeldingsbestand",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Sleep bestand om te uploaden",
+        "overlayTextImage": "Sleep afbeelding om te uploaden",
         "actionTitleFile": "Bestand toevoegen",
         "actionTitleImage": "Afbeelding toevoegen",
+        "actionHintFile": "of sleep bestand om te uploaden",
+        "actionHintImage": "of sleep afbeelding om te uploaden",
+        "labelFile": "Bestand uploaden",
+        "labelImage": "Afbeelding uploaden"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Zet bestanden neer om te uploaden",
+        "overlayTextImage": "Sleep afbeeldingen om te uploaden",
+        "actionTitleFile": "Bestanden toevoegen",
+        "actionTitleImage": "Afbeeldingen toevoegen",
         "actionHintFile": "of sleep bestanden om te uploaden",
         "actionHintImage": "of sleep afbeeldingen om te uploaden",
-        "label": "Bestand uploaden"
+        "labelFile": "Bestanden uploaden",
+        "labelImage": "Afbeeldingen uploaden"
       }
     },
     "EmptySearchResult": {

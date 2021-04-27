@@ -28,6 +28,7 @@ import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
 
+import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
@@ -52,6 +53,9 @@ export interface TableHeadingRect {
 }
 
 const SCROLL_BAR_PADDING = 4;
+const SIXTY_FPS = 1000 / 60;
+const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
+const SMALL_SCREEN_WIDTH = 458;
 
 function IndexTableBase({
   headings,
@@ -87,10 +91,16 @@ function IndexTableBase({
 
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
+  const condensedListElement = useRef<HTMLUListElement>(null);
+
   const [tableInitialized, setTableInitialized] = useState(false);
-
   const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
+  const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
 
+  const tableHeadings = useRef<HTMLElement[]>([]);
+  const stickyTableHeadings = useRef<HTMLElement[]>([]);
+  const stickyHeaderWrapperElement = useRef<HTMLDivElement>(null);
+  const stickyHeaderCheckboxElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
@@ -118,21 +128,64 @@ function IndexTableBase({
     );
   }, [handleSelectionChange, selectedItemsCount]);
 
-  const resizeTableHeadings = useCallback(() => {
-    if (!tableElement.current || !scrollableContainerElement.current) {
-      return;
-    }
+  const calculateFirstHeaderOffset = useCallback(() => {
+    return condensed
+      ? tableHeadingRects.current[0].offsetWidth
+      : tableHeadingRects.current[0].offsetWidth +
+          tableHeadingRects.current[1].offsetWidth;
+  }, [condensed]);
 
-    const measuredTableHeadingRects = Array.from(
-      tableElement.current.querySelectorAll('[data-index-table-heading]'),
-    ).map((heading) => ({
-      offsetWidth: heading instanceof HTMLElement ? heading.offsetWidth : 0,
-      offsetLeft: heading instanceof HTMLElement ? heading.offsetLeft : 0,
-    }));
-    const boundingRect = scrollableContainerElement.current.getBoundingClientRect();
-    tablePosition.current = {top: boundingRect.top, left: boundingRect.left};
-    tableHeadingRects.current = measuredTableHeadingRects;
-  }, []);
+  const resizeTableHeadings = useMemo(
+    () =>
+      debounce(
+        () => {
+          if (!tableElement.current || !scrollableContainerElement.current) {
+            return;
+          }
+
+          const boundingRect = scrollableContainerElement.current.getBoundingClientRect();
+          tablePosition.current = {
+            top: boundingRect.top,
+            left: boundingRect.left,
+          };
+
+          tableHeadingRects.current = tableHeadings.current.map((heading) => ({
+            offsetWidth: heading.offsetWidth || 0,
+            offsetLeft: heading.offsetLeft || 0,
+          }));
+
+          if (tableHeadings.current.length === 0) {
+            return;
+          }
+
+          // update left offset for first column
+          if (tableHeadings.current.length > 1)
+            tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
+
+          // update the min width of the checkbox to be the be the un-padded width of the first heading
+          if (stickyHeaderCheckboxElement?.current) {
+            const elementStyle = getComputedStyle(tableHeadings.current[0]);
+            const boxWidth = tableHeadings.current[0].offsetWidth;
+            stickyHeaderCheckboxElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
+          }
+
+          // update sticky header min-widths
+          stickyTableHeadings.current.forEach((heading, index) => {
+            let minWidth = 0;
+            if (index === 0 && !isSmallScreen()) {
+              minWidth = calculateFirstHeaderOffset();
+            } else if (tableHeadingRects.current.length > index) {
+              minWidth = tableHeadingRects.current[index].offsetWidth;
+            }
+
+            heading.style.minWidth = `${minWidth}px`;
+          });
+        },
+        SIXTY_FPS,
+        {leading: true, trailing: true, maxWait: SIXTY_FPS},
+      ),
+    [calculateFirstHeaderOffset],
+  );
 
   const resizeTableScrollBar = useCallback(() => {
     if (scrollBarElement.current && tableElement.current && tableInitialized) {
@@ -143,14 +196,24 @@ function IndexTableBase({
     }
   }, [tableInitialized]);
 
-  const handleResize = useMemo(
-    () =>
-      debounce(() => {
-        resizeTableHeadings();
-        resizeTableScrollBar();
-      }, 50),
-    [resizeTableHeadings, resizeTableScrollBar],
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounceResizeTableScrollbar = useCallback(
+    debounce(resizeTableScrollBar, SCROLL_BAR_DEBOUNCE_PERIOD, {
+      trailing: true,
+    }),
+    [resizeTableScrollBar],
   );
+
+  const handleResize = useCallback(() => {
+    // hide the scrollbar when resizing
+    scrollBarElement.current?.style.setProperty(
+      '--p-scroll-bar-content-width',
+      `0px`,
+    );
+
+    resizeTableHeadings();
+    debounceResizeTableScrollbar();
+  }, [debounceResizeTableScrollbar, resizeTableHeadings]);
 
   const handleScrollContainerScroll = useCallback(
     (canScrollLeft, canScrollRight) => {
@@ -197,11 +260,29 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useEffect(() => resizeTableHeadings(), [headings, resizeTableHeadings]);
+  useEffect(() => {
+    tableHeadings.current = getTableHeadingsBySelector(
+      tableElement.current,
+      '[data-index-table-heading]',
+    );
+    stickyTableHeadings.current = getTableHeadingsBySelector(
+      stickyHeaderWrapperElement.current,
+      '[data-index-table-sticky-heading]',
+    );
+    resizeTableHeadings();
+  }, [
+    headings,
+    resizeTableHeadings,
+    stickyHeaderCheckboxElement,
+    tableInitialized,
+  ]);
 
   useEffect(() => {
     resizeTableScrollBar();
-  }, [tableInitialized, resizeTableScrollBar]);
+    setStickyWrapper(
+      condensed ? condensedListElement.current : tableElement.current,
+    );
+  }, [tableInitialized, resizeTableScrollBar, condensed]);
 
   useEffect(() => {
     if (!condensed && isSmallScreenSelectable) {
@@ -225,10 +306,7 @@ function IndexTableBase({
   const stickyColumnHeaderStyle =
     tableHeadingRects.current && tableHeadingRects.current.length > 0
       ? {
-          minWidth: condensed
-            ? tableHeadingRects.current[0].offsetWidth
-            : tableHeadingRects.current[0].offsetWidth +
-              tableHeadingRects.current[1].offsetWidth,
+          minWidth: calculateFirstHeaderOffset(),
         }
       : undefined;
 
@@ -237,9 +315,13 @@ function IndexTableBase({
       className={styles.TableHeading}
       key={headings[0].title}
       style={stickyColumnHeaderStyle}
+      data-index-table-sticky-heading
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        <div className={styles.StickyColumnHeaderCheckbox}>
+        <div
+          className={styles.StickyColumnHeaderCheckbox}
+          ref={stickyHeaderCheckboxElement}
+        >
           {renderCheckboxContent()}
         </div>
         <div className={styles['StickyTableHeading-second-scrolling']}>
@@ -305,7 +387,7 @@ function IndexTableBase({
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
-      <Sticky>
+      <Sticky boundingElement={stickyWrapper}>
         {(isSticky: boolean) => {
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
@@ -362,7 +444,10 @@ function IndexTableBase({
               </Button>
             </div>
           ) : (
-            <div className={stickyHeaderClassNames}>
+            <div
+              className={stickyHeaderClassNames}
+              ref={stickyHeaderWrapperElement}
+            >
               {loadingMarkup}
               <div className={stickyColumnHeaderClassNames}>
                 {stickyColumnHeader}
@@ -386,7 +471,7 @@ function IndexTableBase({
     </div>
   );
 
-  const scrollBarclassNames = classNames(
+  const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     condensed && styles.scrollBarContainerCondensed,
   );
@@ -398,7 +483,7 @@ function IndexTableBase({
   const scrollBarMarkup =
     itemCount > 0 ? (
       <AfterInitialMount>
-        <div className={scrollBarclassNames}>
+        <div className={scrollBarWrapperClassNames}>
           <div
             onScroll={handleScrollBarScroll}
             className={styles.ScrollBar}
@@ -441,6 +526,7 @@ function IndexTableBase({
       <ul
         data-selectmode={Boolean(selectMode || isSmallScreenSelectable)}
         className={styles.CondensedList}
+        ref={condensedListElement}
       >
         {children}
       </ul>
@@ -580,6 +666,7 @@ function IndexTableBase({
         className={stickyHeadingClassName}
         key={heading.title}
         style={headingStyle}
+        data-index-table-sticky-heading
       >
         {headingContent}
       </div>
@@ -610,6 +697,12 @@ function IndexTableBase({
     setIsSmallScreenSelectable(val);
   }
 }
+
+const isSmallScreen = () => {
+  return typeof window === 'undefined'
+    ? false
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
+};
 
 export interface IndexTableProps
   extends IndexTableBaseProps,

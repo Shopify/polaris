@@ -46,7 +46,6 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-
     expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
       expect.any(Object),
       {
@@ -218,6 +217,21 @@ describe('<Popover />', () => {
     );
     expect(popover).toContainReactComponent(PopoverOverlay, {
       fluidContent: true,
+    });
+  });
+
+  it("passes 'zIndexOverride' to PopoverOverlay", () => {
+    const popover = mountWithApp(
+      <Popover
+        active={false}
+        zIndexOverride={100}
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+
+    expect(popover).toContainReactComponent(PopoverOverlay, {
+      zIndexOverride: 100,
     });
   });
 

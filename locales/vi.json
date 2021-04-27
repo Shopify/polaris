@@ -96,16 +96,27 @@
       "secondaryAction": "Tiếp tục chỉnh sửa"
     },
     "DropZone": {
-      "overlayTextFile": "Thả tệp để tải lên",
-      "overlayTextImage": "Thả ảnh để tải lên",
       "errorOverlayTextFile": "Loại tệp không hợp lệ",
       "errorOverlayTextImage": "Loại hình ảnh không hợp lệ",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Thả tệp để tải lên",
+        "overlayTextImage": "Thả ảnh để tải lên",
         "actionTitleFile": "Thêm tệp",
         "actionTitleImage": "Thêm hình ảnh",
         "actionHintFile": "hoặc thả tệp để tải lên",
         "actionHintImage": "hoặc thả ảnh để tải lên",
-        "label": "Tải tệp lên"
+        "labelFile": "Tải lên tệp",
+        "labelImage": "Tải lên hình ảnh"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Thả tệp để tải lên",
+        "overlayTextImage": "Thả ảnh để tải lên",
+        "actionTitleFile": "Thêm tệp",
+        "actionTitleImage": "Thêm hình ảnh",
+        "actionHintFile": "hoặc thả tệp để tải lên",
+        "actionHintImage": "hoặc thả ảnh để tải lên",
+        "labelFile": "Tải lên tệp",
+        "labelImage": "Tải lên hình ảnh"
       }
     },
     "EmptySearchResult": {

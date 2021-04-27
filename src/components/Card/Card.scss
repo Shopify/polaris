@@ -23,6 +23,11 @@
   border-radius: 0;
 }
 
+.Section-hideOnPrint,
+.hideOnPrint {
+  @include hidden-when-printing;
+}
+
 .Header {
   padding: spacing() spacing() 0;
 

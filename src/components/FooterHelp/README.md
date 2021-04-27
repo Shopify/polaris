@@ -81,7 +81,7 @@ Use to direct merchants to more information related to the product or feature th
 ```jsx
 <FooterHelp>
   Learn more about{' '}
-  <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+  <Link external url="https://help.shopify.com/manual/orders/fulfill-orders">
     fulfilling orders
   </Link>
 </FooterHelp>

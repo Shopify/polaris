@@ -93,16 +93,27 @@
       "secondaryAction": "Pokračovat v úpravách"
     },
     "DropZone": {
-      "overlayTextFile": "Soubor nahrajete přetáhnutím",
-      "overlayTextImage": "Obrázek nahrajete přetáhnutím",
       "errorOverlayTextFile": "Typ souboru není platný",
       "errorOverlayTextImage": "Typ obrázku není platný",
-      "FileUpload": {
-        "actionTitleFile": "Přidat soubor",
-        "actionTitleImage": "Přidat obrázek",
-        "actionHintFile": "nebo nahrajte soubor přetáhnutím",
-        "actionHintImage": "nebo nahrajte obrázek přetáhnutím",
-        "label": "Nahrát soubor"
+      "single": {
+        "overlayTextFile": "Soubor nahrajete přetažením",
+        "overlayTextImage": "Obrázek nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubor",
+        "actionTitleImage": "Přidejte obrázek",
+        "actionHintFile": "nebo ho nahrajte přetažením",
+        "actionHintImage": "nebo ho nahrajte přetažením",
+        "labelFile": "Nahrát soubor",
+        "labelImage": "Nahrát obrázek"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Soubory nahrajete přetažením",
+        "overlayTextImage": "Obrázky nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubory",
+        "actionTitleImage": "Přidejte obrázky",
+        "actionHintFile": "nebo je nahrajte přetažením",
+        "actionHintImage": "nebo je nahrajte přetažením",
+        "labelFile": "Nahrát soubory",
+        "labelImage": "Nahrát obrázky"
       }
     },
     "EmptySearchResult": {

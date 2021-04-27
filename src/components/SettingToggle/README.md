@@ -27,10 +27,10 @@ on or off.
 
 Settings toggles should:
 
-- Include different body content for the enabled and disabled states
-- Clearly indicate whether the setting is enabled or disabled and explain the
-  implications of the state of the setting to merchants (“Automatic messages
-  are disabled. Your customers won’t receive automatic shipping updates.”)
+- Include different body content for the activated and deactivated states.
+- Clearly indicate whether the setting is activated or deactivated and explain the
+  implications of the state of the setting to merchants. (“Automatic messages
+  are deactivated. Your customers won’t receive automatic shipping updates.”)
 - Clearly state when a setting or feature is not available and why. Provide
   actionable steps for merchants to unlock the functionality.
 
@@ -42,29 +42,31 @@ Settings toggles should:
 
 Toggle descriptions should:
 
-- Clearly indicate whether the setting is enabled or disabled
+- Clearly indicate whether the setting is activated or deactivated
 - Explain the implications of the state of the setting to merchants
-  (“Automatic messages are disabled. Your customers won’t receive automatic
+  (“Automatic messages are deactivated. Your customers won’t receive automatic
   shipping updates.”)
 
 ### Primary button
 
-The primary buttons for the setting toggle should always say either “Enable” or
-“Disable” depending on whether the setting can be turned on or off.
+The primary buttons for the setting toggle should always say either “Activate” or
+“Deactivate” depending on whether the setting can be turned on or off.
 
-For example, if the setting toggle is on, the button should say “Disable” to
+For example, if the setting toggle is on, the button should say “Deactivate” to
 allow merchants to turn it off. If the setting toggle is off, the button should
-say “Enable” to allow merchants to turn it on.
+say “Activate” to allow merchants to turn it on.
 
 <!-- usagelist -->
 
 #### Do
 
-- Enable
-- Disable
+- Activate
+- Deactivate
 
 #### Don’t
 
+- Enable
+- Disable
 - Turn on
 - Turn off
 
@@ -76,7 +78,7 @@ say “Enable” to allow merchants to turn it on.
 
 ### Default setting toggle
 
-Use on settings pages to allow merchants to toggle a setting that has an enabled or a disabled state.
+Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
 
 ```jsx
 function SettingToggleExample() {
@@ -84,8 +86,8 @@ function SettingToggleExample() {
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? 'Disable' : 'Enable';
-  const textStatus = active ? 'enabled' : 'disabled';
+  const contentStatus = active ? 'Deactivate' : 'Activate';
+  const textStatus = active ? 'activated' : 'deactivated';
 
   return (
     <SettingToggle
@@ -105,7 +107,7 @@ function SettingToggleExample() {
 
 ## Related components
 
-- To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/actions/account-connection)
+- To let merchants connect or disconnect third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/actions/account-connection)
 
 ---
 
