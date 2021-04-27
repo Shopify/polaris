@@ -17,10 +17,10 @@ import {UnstyledLink} from '../../../UnstyledLink';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
-
-import {Secondary} from './components';
 import {Caption} from '../../../Caption';
 import {TextStyle} from '../../../TextStyle';
+
+import {Secondary} from './components';
 
 interface ItemURLDetails {
   url?: string;
@@ -53,6 +53,7 @@ export interface ItemProps extends ItemURLDetails {
   selected?: boolean;
   exactMatch?: boolean;
   new?: string;
+  indicator?: boolean;
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
@@ -78,6 +79,7 @@ export function Item({
   selected: selectedOverride,
   badge,
   new: newLabel,
+  indicator,
   matches,
   exactMatch,
   matchPaths,
@@ -110,11 +112,7 @@ export function Item({
 
   const tabIndex = disabled ? -1 : 0;
 
-  const hasNewChild =
-    subNavigationItems.filter((subNavigationItem) => subNavigationItem.new)
-      .length > 0;
-
-  const indicatorMarkup = hasNewChild ? (
+  const indicatorMarkup = indicator ? (
     <span className={styles.Indicator}>
       <Indicator pulse />
     </span>
