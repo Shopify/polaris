@@ -108,6 +108,36 @@ describe('<ConnectedFilterControl />', () => {
     expect(connectedFilterControl.find(Button).exists()).toBe(false);
   });
 
+  it('renders rightActionMarkup if rightAction is not null', () => {
+    const connectedFilterControl = mountWithApp(
+      <ConnectedFilterControl
+        rightAction={mockRightAction}
+        forceShowMorefiltersButton={false}
+      >
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl).toContainReactComponent('div', {
+      className: 'MoreFiltersButtonContainer onlyButtonVisible',
+    });
+  });
+
+  it('does not render rightActionMarkup if rightAction is null', () => {
+    const connectedFilterControl = mountWithApp(
+      <ConnectedFilterControl
+        rightAction={null}
+        forceShowMorefiltersButton={false}
+      >
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl).not.toContainReactComponent('div', {
+      className: 'MoreFiltersButtonContainer onlyButtonVisible',
+    });
+  });
+
   it('does render a button with a popoverable action', () => {
     const connectedFilterControl = mountWithAppProvider(
       <ConnectedFilterControl

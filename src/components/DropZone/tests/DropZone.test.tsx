@@ -343,6 +343,16 @@ describe('<DropZone />', () => {
       const displayText = dropZone.find(DisplayText);
       expect(displayText.contains(overlayText)).toBe(true);
     });
+
+    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+      setBoundingClientRect('small');
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} variableHeight />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      expect(displayText.contains(overlayText)).toBe(true);
+    });
   });
 
   describe('errorOverlayText', () => {
@@ -383,6 +393,20 @@ describe('<DropZone />', () => {
       setBoundingClientRect('extraLarge');
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      expect(displayText.contains(errorOverlayText)).toBe(true);
+    });
+
+    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+      setBoundingClientRect('small');
+      const dropZone = mountWithAppProvider(
+        <DropZone
+          errorOverlayText={errorOverlayText}
+          accept="image/gif"
+          variableHeight
+        />,
       );
       fireEvent({element: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);

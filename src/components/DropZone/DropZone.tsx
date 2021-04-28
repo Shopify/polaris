@@ -84,6 +84,8 @@ export interface DropZoneProps {
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
+  /** Allows child content to adjust height */
+  variableHeight?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -130,6 +132,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onClick,
   error,
   openFileDialog,
+  variableHeight,
   onFileDialogClose,
   customValidator,
   onDrop,
@@ -147,6 +150,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     debounce(
       () => {
         if (!node.current) {
+          return;
+        }
+        if (variableHeight) {
+          setMeasuring(false);
           return;
         }
 
@@ -351,7 +358,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
     (internalError || error) && styles.hasError,
-    styles[variationName('size', size)],
+    !variableHeight && styles[variationName('size', size)],
     measuring && styles.measuring,
   );
 
