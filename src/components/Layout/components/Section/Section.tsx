@@ -9,7 +9,6 @@ export interface SectionProps {
   fullWidth?: boolean;
   oneHalf?: boolean;
   oneThird?: boolean;
-  hideOnPrint?: boolean;
 }
 
 export function Section({
@@ -18,7 +17,6 @@ export function Section({
   fullWidth,
   oneHalf,
   oneThird,
-  hideOnPrint,
 }: SectionProps) {
   const className = classNames(
     styles.Section,
@@ -26,7 +24,6 @@ export function Section({
     fullWidth && styles['Section-fullWidth'],
     oneHalf && styles['Section-oneHalf'],
     oneThird && styles['Section-oneThird'],
-    hideOnPrint && styles['Section-hideOnPrint'],
   );
 
   return <div className={className}>{children}</div>;
