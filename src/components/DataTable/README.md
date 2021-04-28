@@ -62,6 +62,51 @@ function DataTableExample() {
 }
 ```
 
+### Flexible column size data table
+Use `columnWidths` to override default column size.
+
+```jsx
+function DataTableExample() {
+  const rows = [
+    ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+    ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          columnWidths={[40, 20, 10, 10, 20]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+        />
+      </Card>
+    </Page>
+  );
+}
+```
+
 ### Sortable data table
 
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
