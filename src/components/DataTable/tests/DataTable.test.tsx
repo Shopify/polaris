@@ -98,6 +98,37 @@ describe('<DataTable />', () => {
     });
   });
 
+  describe('columnWidths', () => {
+    it('sets the provided percentage width for each column', () => {
+      const headings = ['Column 1', 'Column 2', 'Column 3'];
+      const rows = [['Cell 1', '2', '3']];
+      const columnContentTypes: DataTableProps['columnContentTypes'] = [
+        'text',
+        'numeric',
+        'numeric'
+      ];
+      const columnWidths = [80, 15, 5];
+      const dataTable = mountWithAppProvider(
+        <DataTable
+          {...defaultProps}
+          columnContentTypes={columnContentTypes}
+          columnWidths={columnWidths}
+          headings={headings}
+          rows={rows}
+        />,
+      );
+
+      const cols = dataTable.find('colgroup col');
+      const firstCol = cols.get(0);
+      const secondCol = cols.get(1);
+      const thirdCol = cols.get(2);
+
+      expect(firstCol.props.width).toBe('80%');
+      expect(secondCol.props.width).toBe('15%');
+      expect(thirdCol.props.width).toBe('5%');
+    });
+  });
+
   describe('headings', () => {
     it('renders a single table header row', () => {
       const headings = ['Heading 1', 'Heading 2', 'Heading 3'];

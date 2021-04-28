@@ -26,6 +26,8 @@ export type ColumnContentType = 'text' | 'numeric';
 export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
+  /** List of column widths. */
+  columnWidths?: Array<number>;
   /** List of column headings. */
   headings: React.ReactNode[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
@@ -126,6 +128,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   render() {
     const {
       headings,
+      columnWidths,
       totals,
       showTotalsInFooter,
       rows,
@@ -148,6 +151,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       styles.TableWrapper,
       condensed && styles.condensed,
     );
+
+    const columnWidthMarkup = columnWidths ? (
+      <colgroup>
+        {columnWidths.map(this.renderColSize)}
+      </colgroup>
+    ) : null;
 
     const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
 
@@ -188,6 +197,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               handler={this.scrollListener}
             />
             <table className={styles.Table} ref={this.table}>
+              {columnWidthMarkup}
               <thead>
                 {headingMarkup}
                 {headerTotalsMarkup}
@@ -327,6 +337,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       />
     );
   };
+
+  private renderColSize = (widthInPercent: number, index: number) => {
+    let widthPercentage = `${widthInPercent}%`
+    return <col key={index} width={widthPercentage} />
+  }
 
   private totalsRowHeading = () => {
     const {i18n, totals, totalsName} = this.props;
