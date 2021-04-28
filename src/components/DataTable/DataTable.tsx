@@ -339,8 +339,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private renderColSize = (widthInPercent: number, index: number) => {
-    let widthPercentage = `${widthInPercent}%`
-    return <col key={index} width={widthPercentage} />
+    const widthPercentage = `${widthInPercent}%`;
+    return <col key={index} width={widthPercentage} />;
   }
 
   private totalsRowHeading = () => {
