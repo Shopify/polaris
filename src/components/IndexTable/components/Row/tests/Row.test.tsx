@@ -208,6 +208,40 @@ describe('<Row />', () => {
 
     expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('has an undefined status by default', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <td />
+      </Row>,
+    );
+
+    expect(row).toHaveReactProps({status: undefined});
+  });
+
+  it('applies success status styles when status prop is set to "success"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} status="success">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow statusSuccess',
+    });
+  });
+
+  it('applies subdued status styles when status prop is set to "subdued"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} status="subdued">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow statusSubdued',
+    });
+  });
 });
 
 function triggerOnClick(
