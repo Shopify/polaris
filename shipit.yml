@@ -6,7 +6,6 @@ ci:
   hide:
     - shrink-ray
     - percy/polaris-react
-    - codecov/patch
     - 'Add new issues to project'
     - 'Move assigned issue to column'
   allow_failures:
@@ -16,8 +15,6 @@ merge:
   require:
     - 'Test'
     - 'Accessibility test'
-  ignore:
-    - codecov/patch
 
 deploy:
   max_commits: false
