@@ -33,6 +33,11 @@ $stacking-order: (
   height: $picker-size;
   width: $picker-size;
 
+  .fullWidth & {
+    width: auto;
+    flex-grow: 1;
+  }
+
   // Need an extra pixel to avoid a small color bleed from happening
   border-radius: var(--p-border-radius-base);
   cursor: pointer;
