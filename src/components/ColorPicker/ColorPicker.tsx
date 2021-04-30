@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
+import debounce from 'lodash/debounce';
 
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
+import {EventListener} from '../EventListener';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
@@ -33,6 +35,7 @@ export interface ColorPickerProps {
   onChange(color: HSBAColor): void;
 }
 
+const RESIZE_DEBOUNCE_TIME_MS = 200;
 export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   state: State = {
     pickerSize: {
@@ -42,6 +45,25 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   };
 
   private colorNode: HTMLElement | null = null;
+
+  private handleResize = debounce(
+    () => {
+      const {colorNode} = this;
+
+      if (colorNode == null) {
+        return;
+      }
+
+      this.setState({
+        pickerSize: {
+          width: colorNode.clientWidth,
+          height: colorNode.clientHeight,
+        },
+      });
+    },
+    RESIZE_DEBOUNCE_TIME_MS,
+    {leading: true, trailing: true, maxWait: RESIZE_DEBOUNCE_TIME_MS},
+  );
 
   componentDidMount() {
     const {colorNode} = this;
@@ -111,6 +133,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
         </div>
         <HuePicker hue={hue} onChange={this.handleHueChange} />
         {alphaSliderMarkup}
+        <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
   }
