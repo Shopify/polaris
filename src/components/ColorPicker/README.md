@@ -45,9 +45,7 @@ function ColorPickerExample() {
     saturation: 1,
   });
 
-  const handleChange = useCallback(setColor, []);
-
-  return <ColorPicker onChange={handleChange} color={color} />;
+  return <ColorPicker onChange={setColor} color={color} />;
 }
 ```
 
@@ -65,8 +63,24 @@ function ColorPickerWithTransparentValueExample() {
     alpha: 0.7,
   });
 
-  const handleChange = useCallback(setColor, []);
+  return <ColorPicker onChange={setColor} color={color} allowAlpha />;
+}
+```
 
-  return <ColorPicker onChange={handleChange} color={color} allowAlpha />;
+### Colorpicker with transparent value full width
+
+Use when attached to a visual builder to allow the designated object to have a
+transparent background that allows underlying objects to show through.
+
+```jsx
+function ColorPickerWithTransparentValueExample() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
+
+  return <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />;
 }
 ```
