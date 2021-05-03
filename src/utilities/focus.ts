@@ -63,6 +63,7 @@ export function focusFirstFocusableNode(
   element: HTMLElement,
   onlyDescendants = true,
 ) {
+  console.log('First focusable', findFirstFocusableNode(element, false));
   findFirstFocusableNode(element, onlyDescendants)?.focus();
 }
 

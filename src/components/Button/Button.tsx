@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {forwardRef, RefObject, useCallback, useState} from 'react';
 import {
   CaretDownMinor,
   CaretUpMinor,
@@ -84,44 +84,51 @@ type ActionButtonProps = Pick<
   | 'onKeyPress'
 >;
 
+export interface ButtonHandles {
+  focus(): void;
+}
+
 const DEFAULT_SIZE = 'medium';
 
-export function Button({
-  id,
-  children,
-  url,
-  disabled,
-  external,
-  download,
-  submit,
-  loading,
-  pressed,
-  accessibilityLabel,
-  role,
-  ariaControls,
-  ariaExpanded,
-  ariaDescribedBy,
-  onClick,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  onKeyPress,
-  onKeyUp,
-  onMouseEnter,
-  onTouchStart,
-  icon,
-  primary,
-  outline,
-  destructive,
-  disclosure,
-  plain,
-  monochrome,
-  removeUnderline,
-  size = DEFAULT_SIZE,
-  textAlign,
-  fullWidth,
-  connectedDisclosure,
-}: ButtonProps) {
+function ButtonComponent(
+  {
+    id,
+    children,
+    url,
+    disabled,
+    external,
+    download,
+    submit,
+    loading,
+    pressed,
+    accessibilityLabel,
+    role,
+    ariaControls,
+    ariaExpanded,
+    ariaDescribedBy,
+    onClick,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    onKeyPress,
+    onKeyUp,
+    onMouseEnter,
+    onTouchStart,
+    icon,
+    primary,
+    outline,
+    destructive,
+    disclosure,
+    plain,
+    monochrome,
+    removeUnderline,
+    size = DEFAULT_SIZE,
+    textAlign,
+    fullWidth,
+    connectedDisclosure,
+  }: ButtonProps,
+  buttonRef: RefObject<HTMLButtonElement>,
+) {
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
@@ -281,7 +288,12 @@ export function Button({
   };
 
   const buttonMarkup = (
-    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+    <UnstyledButton
+      ref={buttonRef}
+      {...commonProps}
+      {...linkProps}
+      {...actionProps}
+    >
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}
@@ -318,3 +330,5 @@ function getDisclosureIconSource(
 
   return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
 }
+
+export const Button = forwardRef(ButtonComponent);

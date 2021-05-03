@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef, RefObject, useImperativeHandle, useRef} from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -12,33 +12,48 @@ export interface UnstyledButtonProps extends BaseButton {
   [key: string]: any;
 }
 
-export function UnstyledButton({
-  id,
-  children,
-  className,
-  url,
-  external,
-  download,
-  submit,
-  disabled,
-  loading,
-  pressed,
-  accessibilityLabel,
-  role,
-  ariaControls,
-  ariaExpanded,
-  ariaDescribedBy,
-  onClick,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  onKeyPress,
-  onKeyUp,
-  onMouseEnter,
-  onTouchStart,
-  ...rest
-}: UnstyledButtonProps) {
+export interface ButtonHandles {
+  focus(): void;
+}
+
+function UnstyledButtonComponent(
+  {
+    id,
+    children,
+    className,
+    url,
+    external,
+    download,
+    submit,
+    disabled,
+    loading,
+    pressed,
+    accessibilityLabel,
+    role,
+    ariaControls,
+    ariaExpanded,
+    ariaDescribedBy,
+    onClick,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    onKeyPress,
+    onKeyUp,
+    onMouseEnter,
+    onTouchStart,
+    ...rest
+  }: UnstyledButtonProps,
+  buttonRef: RefObject<HTMLButtonElement>,
+) {
   let buttonMarkup;
+  // const buttonNode = useRef<HTMLButtonElement>(null);
+  // useImperativeHandle(buttonRef, () => ({
+  //   focus: () => {
+  //     if (buttonNode.current) {
+  //       buttonNode.current.focus();
+  //     }
+  //   },
+  // }));
 
   const commonProps = {
     id,
@@ -73,6 +88,10 @@ export function UnstyledButton({
       </UnstyledLink>
     );
   } else {
+    // console.log('Unstyled button buttonRef', buttonRef);
+    // setTimeout(() => {
+    //   console.log('Unstyled button buttonRef delayed', buttonRef);
+    // }, 5000);
     buttonMarkup = (
       <button
         {...interactiveProps}
@@ -86,6 +105,7 @@ export function UnstyledButton({
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
+        ref={buttonRef}
         {...rest}
       >
         {children}
@@ -95,3 +115,5 @@ export function UnstyledButton({
 
   return buttonMarkup;
 }
+
+export const UnstyledButton = forwardRef(UnstyledButtonComponent);
