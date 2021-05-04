@@ -175,6 +175,7 @@ export function Actions({actions = [], groups = []}: Props) {
 
     const {content, onAction, ...rest} = action;
 
+    console.log('Even though it hurts', action);
     return (
       <SecondaryAction
         key={content}
