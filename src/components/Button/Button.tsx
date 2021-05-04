@@ -84,10 +84,6 @@ type ActionButtonProps = Pick<
   | 'onKeyPress'
 >;
 
-export interface ButtonHandles {
-  focus(): void;
-}
-
 const DEFAULT_SIZE = 'medium';
 
 function ButtonComponent(

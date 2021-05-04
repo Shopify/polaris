@@ -12,10 +12,6 @@ export interface UnstyledButtonProps extends BaseButton {
   [key: string]: any;
 }
 
-export interface ButtonHandles {
-  focus(): void;
-}
-
 function UnstyledButtonComponent(
   {
     id,
@@ -46,14 +42,6 @@ function UnstyledButtonComponent(
   buttonRef: RefObject<HTMLButtonElement>,
 ) {
   let buttonMarkup;
-  // const buttonNode = useRef<HTMLButtonElement>(null);
-  // useImperativeHandle(buttonRef, () => ({
-  //   focus: () => {
-  //     if (buttonNode.current) {
-  //       buttonNode.current.focus();
-  //     }
-  //   },
-  // }));
 
   const commonProps = {
     id,
@@ -88,10 +76,6 @@ function UnstyledButtonComponent(
       </UnstyledLink>
     );
   } else {
-    // console.log('Unstyled button buttonRef', buttonRef);
-    // setTimeout(() => {
-    //   console.log('Unstyled button buttonRef delayed', buttonRef);
-    // }, 5000);
     buttonMarkup = (
       <button
         {...interactiveProps}

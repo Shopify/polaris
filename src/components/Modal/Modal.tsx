@@ -80,7 +80,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onIFrameLoad,
   onTransitionEnd,
 }: ModalProps) {
-  // console.log('Am I ever right', activator);
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
   const headerId = useUniqueId('modal-header');
