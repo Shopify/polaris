@@ -1,43 +1,16 @@
-import React, {useRef} from 'react';
+import React from 'react';
 
-import {Modal, TextStyle} from '../src';
-// import {withI18n, WithI18nProps} from '@shopify/react-i18n';
-// import compose from '@shopify/react-compose';
+import {Modal} from '../src';
 
 export interface Props {
-  // activatorButton?: HTMLElement | null;
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
   title: string;
   open: boolean;
-  loading: boolean;
   onClose(): void;
-  onDelete(): void;
-  resourceName: string;
 }
 
 export function DeleteModal(props: Props) {
-  const {
-    // activatorButton,
-    activator,
-    title,
-    open,
-    onClose,
-    onDelete,
-    loading,
-    resourceName,
-  } = props;
-
-  // console.log('DeleteModal activatorButton!', activatorButton);
-  // forceUpdate();
-
-  // useEffect(() => {}, [activatorButton]);
-
-  // const activator = useRef<HTMLElement>(null);
-
-  // console.log('activator in DeleteModal', activator);
-  // setTimeout(() => {
-  //   console.log('DeleteModal activator delayed', activator);
-  // }, 5000);
+  const {activator, title, open, onClose} = props;
 
   return (
     <Modal
@@ -50,9 +23,8 @@ export function DeleteModal(props: Props) {
           onAction: onClose,
         },
         {
-          content: resourceName,
-          onAction: onDelete,
-          loading,
+          content: 'Delete',
+          onAction: () => {},
           destructive: true,
         },
       ]}
@@ -62,5 +34,3 @@ export function DeleteModal(props: Props) {
     </Modal>
   );
 }
-
-// export default DeleteModal;

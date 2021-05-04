@@ -1,4 +1,4 @@
-import React, {forwardRef, RefObject, useImperativeHandle, useRef} from 'react';
+import React, {forwardRef, RefObject} from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';

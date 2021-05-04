@@ -127,7 +127,9 @@ export interface LoadableAction extends Action {
 
 export interface ReferableAction extends Action {
   /** Should a spinner be displayed */
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?:
+    | React.RefObject<HTMLButtonElement>
+    | ((instance: HTMLButtonElement | null) => void);
 }
 
 export interface OutlineableAction extends Action {
