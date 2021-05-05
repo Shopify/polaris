@@ -38,4 +38,8 @@ $code-font-size: 1.15em;
 
 .variationSubdued {
   @include text-emphasis-subdued;
+
+  @media print {
+    color: var(--p-text-subdued);
+  }
 }
