@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/main/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request) [![Storybook](https://raw.githubusercontent.com/storybookjs/brand/00a3368a85b888fefba88e4ff3edc2821c009f52/badge/badge-storybook.svg)](https://main--5d559397bae39100201eedc1.chromatic.com/)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request) [![Storybook](https://raw.githubusercontent.com/storybookjs/brand/00a3368a85b888fefba88e4ff3edc2821c009f52/badge/badge-storybook.svg)](https://main--5d559397bae39100201eedc1.chromatic.com/)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
