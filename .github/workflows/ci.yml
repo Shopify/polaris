@@ -99,9 +99,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Chromatic git history to track changes
-
       - uses: actions/setup-node@v2
         with:
           node-version: '10.24.0'
@@ -124,14 +121,7 @@ jobs:
       - uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           storybookBuildDir: 'build/storybook/static'
           autoAcceptChanges: 'main'
           exitZeroOnChanges: true
           exitOnceUploaded: true
-
-      - uses: percy/storybook-action@v0.1.6
-        with:
-          custom-command: 'yarn run percy-storybook --build_dir=build/storybook/static'
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

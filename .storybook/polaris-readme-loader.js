@@ -57,7 +57,6 @@ ${example.storyName}.parameters = {
   docs: {
     description: {story: ${JSON.stringify(example.description)}},
   },
-  percy: {skip: ${JSON.stringify(!testIndividualExamples)}},
 };
 `.trim();
   });
@@ -88,8 +87,6 @@ ${example.storyName}.parameters = {
 };
 AllExamples.parameters = {
   docs: {disable: true},
-  percy: {skip: false},
-  chromatic: {disable: true},
 }`);
   }
 

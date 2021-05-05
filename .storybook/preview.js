@@ -7,13 +7,6 @@ import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.j
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 
-export const parameters = {
-  percy: {
-    skip: true,
-    widths: [375, 1280],
-  },
-};
-
 function StrictModeToggle({isStrict = false, children}) {
   const Wrapper = isStrict ? React.StrictMode : React.Fragment;
   return <Wrapper>{children}</Wrapper>;
