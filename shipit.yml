@@ -6,8 +6,6 @@ ci:
   hide:
     - shrink-ray
     - percy/polaris-react
-  allow_failures:
-    - 'buildkite/polaris-react-system-integration-test'
 
 merge:
   require:
