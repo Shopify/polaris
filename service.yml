@@ -1,5 +1,5 @@
 production:
-  classification: tier4
+  classification: tier3
 npm:
   classification: library
 slack_channels:
