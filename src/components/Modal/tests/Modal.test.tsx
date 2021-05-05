@@ -181,6 +181,28 @@ describe('<Modal>', () => {
     });
   });
 
+  describe('small', () => {
+    it('passes small to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" small onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('small')).toBe(true);
+    });
+
+    it('does not pass small to Dialog be default', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('small')).toBeUndefined();
+    });
+  });
+
   describe('limitHeight', () => {
     it('passes limitHeight to Dialog if true', () => {
       const modal = mountWithAppProvider(
