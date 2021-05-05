@@ -6,14 +6,11 @@ ci:
   hide:
     - shrink-ray
     - percy/polaris-react
-    - codecov/patch
 
 merge:
   require:
     - 'Test'
     - 'Accessibility test'
-  ignore:
-    - codecov/patch
 
 deploy:
   max_commits: false
