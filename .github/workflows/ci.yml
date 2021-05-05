@@ -35,7 +35,7 @@ jobs:
       - run: yarn run type-check && yarn run build
       - run: yarn run lint
       - run: yarn run check:custom-properties
-      - run: yarn run test --coverage && yarn run codecov
+      - run: yarn run test
 
   accessibility_test:
     name: 'Accessibility test'
