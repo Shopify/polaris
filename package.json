@@ -95,7 +95,6 @@
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
     "@octokit/rest": "^16.36.0",
-    "@percy/storybook": "^3.3.0",
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-image": "^2.0.5",

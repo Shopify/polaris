@@ -5,7 +5,6 @@ ci:
     - 'Visual regression test'
   hide:
     - shrink-ray
-    - percy/polaris-react
 
 merge:
   require:
