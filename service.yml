@@ -1,4 +1,7 @@
-classification: tier4
+production:
+  classification: library
+website:
+  classification: tier4
 slack_channels:
   - polaris
 url: https://polaris-react.shopifycloud.com
