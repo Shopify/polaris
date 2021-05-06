@@ -80,17 +80,6 @@ module.exports = {
       },
     ];
 
-    config.plugins.push({
-      apply: (compiler) => {
-        compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-          spawn('yarn splash --show-disable-tip', {
-            shell: true,
-            stdio: 'inherit',
-          });
-        });
-      },
-    });
-
     if (isProduction) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
