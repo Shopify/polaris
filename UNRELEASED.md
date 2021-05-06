@@ -25,7 +25,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
-- Added `@shopify/react-hooks v1.13.0 ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
+- Added `@shopify/react-hooks` v1.13.0 ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
 
 ### Code quality
 
