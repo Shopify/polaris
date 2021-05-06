@@ -2,8 +2,6 @@ ci:
   require:
     - 'Test'
     - 'Accessibility test'
-  hide:
-    - shrink-ray
 
 merge:
   require:
