@@ -73,7 +73,6 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
-    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx",
     "precolordocs": "yarn run build",
     "colordocs": "node ./scripts/color-system-docs",
     "postcolordocs": "yarn run format"
@@ -95,7 +94,6 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
-    "@octokit/rest": "^16.36.0",
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-image": "^2.0.5",
@@ -107,7 +105,6 @@
     "@shopify/react-testing": "^2.1.2",
     "@shopify/sewing-kit": "^0.140.0",
     "@shopify/shrink-ray": "^2.3.1",
-    "@shopify/splash": "^0.0.8",
     "@shopify/storybook-a11y-test": "^0.0.1",
     "@storybook/addon-a11y": "^6.1.11",
     "@storybook/addon-console": "^1.2.1",
@@ -134,7 +131,6 @@
     "fs-extra": "^7.0.1",
     "glob": "^7.1.4",
     "gray-matter": "^4.0.2",
-    "ink": "^2.3.0",
     "marked": "^0.7.0",
     "mutationobserver-shim": "^0.3.3",
     "node-cmd": "^3.0.0",
