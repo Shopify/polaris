@@ -24,7 +24,7 @@ export function KeypressListener({
         handlerRef.current(event);
       }
     },
-    [handler, keyCode],
+    [keyCode],
   );
 
   useIsomorphicLayoutEffect(() => {
