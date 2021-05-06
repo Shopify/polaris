@@ -46,7 +46,6 @@
     "lint": "sewing-kit lint",
     "format": "sewing-kit format",
     "type-check": "sewing-kit type-check",
-    "size": "yarn size-limit",
     "test": "sewing-kit test",
     "test:coverage": "CI=true yarn test --coverage",
     "posttest:coverage": "yarn open:coverage",
@@ -174,8 +173,24 @@
   },
   "size-limit": [
     {
+      "name": "cjs",
       "path": "dist/index.js",
-      "limit": "4500 ms"
+      "limit": "165 kB"
+    },
+    {
+      "name": "esm",
+      "path": "dist/esm/index.js",
+      "limit": "100 kB"
+    },
+    {
+      "name": "esnext",
+      "path": "dist/esnext/index.ts.esnext",
+      "limit": "160 kB"
+    },
+    {
+      "name": "css",
+      "path": "dist/styles.css",
+      "limit": "45 kB"
     }
   ]
 }
