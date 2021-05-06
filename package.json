@@ -81,6 +81,7 @@
     "@shopify/polaris-tokens": "^3.0.0",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
+    "@shopify/react-hooks": "^1.13.0",
     "@types/react-transition-group": "^4.4.0",
     "focus-visible": "^5.2.0",
     "lodash": "^4.17.4",
