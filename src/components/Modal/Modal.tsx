@@ -55,6 +55,8 @@ export interface ModalProps extends FooterProps {
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  /** Removes Scrollable container from the modal content */
+  noScroll?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -79,6 +81,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onClose,
   onIFrameLoad,
   onTransitionEnd,
+  noScroll,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
@@ -150,6 +153,18 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       content
     );
 
+    const scrollContainerMarkup = noScroll ? (
+      <div className={styles.Body}>{body}</div>
+    ) : (
+      <Scrollable
+        shadow
+        className={styles.Body}
+        onScrolledToBottom={onScrolledToBottom}
+      >
+        {body}
+      </Scrollable>
+    );
+
     const bodyMarkup = src ? (
       <iframe
         name={iFrameName}
@@ -160,13 +175,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         style={{height: `${iframeHeight}px`}}
       />
     ) : (
-      <Scrollable
-        shadow
-        className={styles.Body}
-        onScrolledToBottom={onScrolledToBottom}
-      >
-        {body}
-      </Scrollable>
+      scrollContainerMarkup
     );
 
     dialog = (

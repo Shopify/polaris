@@ -325,6 +325,17 @@ describe('<Modal>', () => {
 
       expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
     });
+
+    it('does not render a Scrollable with noScroll prop', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open noScroll>
+          <Badge />
+        </Modal>,
+      );
+
+      const scrollable = modal.find(Scrollable).first();
+      expect(scrollable.exists()).toBe(false);
+    });
   });
 
   describe('loading', () => {
