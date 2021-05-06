@@ -3,8 +3,6 @@ ci:
     - 'Test'
     - 'Accessibility test'
     - 'Visual regression test'
-  hide:
-    - shrink-ray
 
 merge:
   require:
