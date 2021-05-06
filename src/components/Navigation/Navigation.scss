@@ -22,7 +22,7 @@ $nav-max-width: rem(360px);
 
   &:focus {
     outline: none;
-  }
+
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
