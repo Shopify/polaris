@@ -25,18 +25,6 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const testIndividualExamples = [
-    'Modal',
-    'Card',
-    'Top bar',
-    'App provider',
-    'Contextual save bar',
-    'Frame',
-    'Loading',
-    'Sheet',
-    'Theme provider',
-  ].includes(readme.name);
-
   const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
     readme.name,
   );
@@ -60,35 +48,6 @@ ${example.storyName}.parameters = {
 };
 `.trim();
   });
-
-  if (readme.examples.length && !testIndividualExamples) {
-    allExamplesCode = readme.examples.map((example) => {
-      // Add styles to prevent false positives in visual regression testing.
-      // Set a minimum height so that examples don't shift and triger a failure
-      // if an example above them changes height
-      return `
-<div key="${example.storyName}" style={{
-    minHeight: '720px',
-    borderBottom: '1px solid #000',
-    marginBottom: '8px',
-  }}>
-  <Heading>${example.name}</Heading>
-  <${example.storyName}Component />
-</div>
-`.trim();
-    });
-
-    csfExports.unshift(`export function AllExamples() {
-  return (
-    <React.Fragment>
-  ${allExamplesCode.join('\n')}
-    </React.Fragment>
-  );
-};
-AllExamples.parameters = {
-  docs: {disable: true},
-}`);
-  }
 
   const hooks = Object.keys(React)
     .filter((key) => key.startsWith(HOOK_PREFIX))
