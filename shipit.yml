@@ -2,7 +2,6 @@ ci:
   require:
     - 'Test'
     - 'Accessibility test'
-    - 'Visual regression test'
 
 merge:
   require:
