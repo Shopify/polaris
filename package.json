@@ -46,6 +46,7 @@
     "lint": "sewing-kit lint",
     "format": "sewing-kit format",
     "type-check": "sewing-kit type-check",
+    "size": "yarn size-limit",
     "test": "sewing-kit test",
     "test:coverage": "CI=true yarn test --coverage",
     "posttest:coverage": "yarn open:coverage",
@@ -106,6 +107,7 @@
     "@shopify/sewing-kit": "^0.140.0",
     "@shopify/shrink-ray": "^2.3.1",
     "@shopify/storybook-a11y-test": "^0.0.1",
+    "@size-limit/preset-small-lib": "^4.10.2",
     "@storybook/addon-a11y": "^6.1.11",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-contexts": "^5.3.19",
@@ -151,6 +153,7 @@
     "serve": "^11.1.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
+    "size-limit": "^4.10.2",
     "svgo": "^1.3.0",
     "typescript": "~4.0.3"
   },
@@ -168,5 +171,11 @@
     "extends": [
       "@shopify/stylelint-plugin/prettier"
     ]
-  }
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "4500 ms"
+    }
+  ]
 }
