@@ -93,16 +93,27 @@
       "secondaryAction": "Düzenlemeye devam et"
     },
     "DropZone": {
-      "overlayTextFile": "Yüklenecek dosyayı bırakın",
-      "overlayTextImage": "Yüklenecek görseli bırakın",
       "errorOverlayTextFile": "Dosya türü geçerli değil",
       "errorOverlayTextImage": "Görsel türü geçerli değil",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Yüklenecek dosyayı bırakın",
+        "overlayTextImage": "Yüklenecek görseli bırakın",
         "actionTitleFile": "Dosya ekleyin",
         "actionTitleImage": "Görsel ekleyin",
+        "actionHintFile": "veya yüklenecek dosyayı bırakın",
+        "actionHintImage": "veya yüklenecek görseli bırakın",
+        "labelFile": "Dosya yükle",
+        "labelImage": "Görsel yükle"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Yüklemek için dosyaları bırakın",
+        "overlayTextImage": "Yüklenecek görselleri bırakın",
+        "actionTitleFile": "Dosyaları ekleyin",
+        "actionTitleImage": "Görsel ekle",
         "actionHintFile": "veya yüklenecek dosyaları bırakın",
         "actionHintImage": "veya yüklenecek görselleri bırakın",
-        "label": "Dosya yükle"
+        "labelFile": "Dosyaları yükle",
+        "labelImage": "Görsel yükle"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "İpucu: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Ürün",
+      "defaultItemPlural": "Ürünler",
+      "allItemsSelected": "Tüm {itemsLength}+ {resourceNamePlural} seçildi.",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "Seç: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünün seçimini kaldır",
+      "a11yCheckboxSelectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünü seç"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} bulunamadı",
+      "emptySearchDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
+      "onboardingBadgeText": "Yeni",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} yükleniyor…",
+      "selectAllLabel": "Şunların tümünü seç: {resourceNamePlural}",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "undo": "Geri al",
+      "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
+      "selectItem": "Seç: {resourceName}",
+      "selectButtonText": "Seç"
     }
   }
 }

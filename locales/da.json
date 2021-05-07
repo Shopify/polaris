@@ -93,16 +93,27 @@
       "secondaryAction": "Fortsæt redigering"
     },
     "DropZone": {
-      "overlayTextFile": "Slip fil for at uploade",
-      "overlayTextImage": "Slip billede for at uploade",
       "errorOverlayTextFile": "Filtype er ikke gyldig",
       "errorOverlayTextImage": "Billedtype er ikke gyldig",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Slip fil for at uploade",
+        "overlayTextImage": "Slip billede for at uploade",
         "actionTitleFile": "Tilføj fil",
         "actionTitleImage": "Tilføj billede",
+        "actionHintFile": "eller slip filen for at uploade",
+        "actionHintImage": "eller slip billedet for at uploade",
+        "labelFile": "Upload fil",
+        "labelImage": "Upload billede"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Slip filer for at uploade",
+        "overlayTextImage": "Slip billeder for at uploade",
+        "actionTitleFile": "Tilføj filer",
+        "actionTitleImage": "Tilføj billeder",
         "actionHintFile": "eller slip filer for at uploade",
         "actionHintImage": "eller slip billeder for at uploade",
-        "label": "Upload fil"
+        "labelFile": "Upload filer",
+        "labelImage": "Upload billeder"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Værktøjstip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Vare",
+      "defaultItemPlural": "Varer",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} er valgt.",
+      "selected": "{selectedItemsCount} valgt",
+      "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Vælg alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Ingen {resourceNamePlural} blev fundet",
+      "emptySearchDescription": "Prøv et andet filter eller søgeord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Indlæser {resourceNamePlural} …",
+      "selectAllLabel": "Vælg alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valgt",
+      "undo": "Fortryd",
+      "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Vælg {resourceName}",
+      "selectButtonText": "Vælg"
     }
   }
 }

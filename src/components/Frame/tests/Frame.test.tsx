@@ -52,13 +52,12 @@ describe('<Frame />', () => {
       expect(skipToContentLinkText).toStrictEqual('Skip to content');
     });
 
-    it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
+    it('targets the main container element by default', () => {
       const frame = mountWithApp(<Frame />);
       const skipLink = frame.find('a', {children: 'Skip to content'});
 
-      skipLink!.trigger('onClick');
-      expect(document.activeElement).toBe(
-        frame.find('a', {id: 'AppFrameMainContent'})!.domNode,
+      expect(skipLink!.domNode!.getAttribute('href')).toBe(
+        `#${frame!.find('main')!.domNode!.id}`,
       );
     });
 

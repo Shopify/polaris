@@ -193,7 +193,7 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
-    it('sets autoComplete to "on" when false', () => {
+    it('sets autoComplete to "on" when true', () => {
       const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );

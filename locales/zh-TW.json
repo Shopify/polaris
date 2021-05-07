@@ -93,16 +93,27 @@
       "secondaryAction": "繼續編輯"
     },
     "DropZone": {
-      "overlayTextFile": "拖入檔案以上傳",
-      "overlayTextImage": "拖入圖片以上傳",
       "errorOverlayTextFile": "檔案類型無效",
       "errorOverlayTextImage": "圖片類型無效",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "拖放檔案以上傳",
+        "overlayTextImage": "拖放圖片以上傳",
         "actionTitleFile": "新增檔案",
         "actionTitleImage": "新增圖片",
-        "actionHintFile": "或將檔案拖入即可上傳",
-        "actionHintImage": "或將圖片拖入即可上傳",
-        "label": "上傳檔案"
+        "actionHintFile": "或拖放檔案即可上傳",
+        "actionHintImage": "或拖放圖像即可上傳",
+        "labelFile": "上傳檔案",
+        "labelImage": "上傳圖片"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "拖放檔案以上傳",
+        "overlayTextImage": "拖放圖片以上傳",
+        "actionTitleFile": "新增檔案",
+        "actionTitleImage": "新增圖片",
+        "actionHintFile": "或拖放檔案以上傳",
+        "actionHintImage": "或拖放圖像即可上傳",
+        "labelFile": "上傳檔案",
+        "labelImage": "上傳圖片"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "工具提示：{label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "品項",
+      "defaultItemPlural": "品項",
+      "allItemsSelected": "已選取全部 {itemsLength} + {resourceNamePlural}。",
+      "selected": "已選取 {selectedItemsCount} 項",
+      "a11yCheckboxDeselectAllSingle": "取消選取 {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "取消選取全部 {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "選取全部 {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "找不到 {resourceNamePlural}",
+      "emptySearchDescription": "嘗試變更篩選條件或搜尋詞彙",
+      "onboardingBadgeText": "新功能",
+      "resourceLoadingAccessibilityLabel": "正在載入 {resourceNamePlural} ......",
+      "selectAllLabel": "選取所有 {resourceNamePlural}",
+      "selected": "已選取 {selectedItemsCount} 項",
+      "undo": "復原",
+      "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
+      "selectItem": "選取 {resourceName}",
+      "selectButtonText": "選取"
     }
   }
 }

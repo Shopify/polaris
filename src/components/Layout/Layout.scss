@@ -13,11 +13,27 @@ $relative-size: $primary-basis / $secondary-basis;
   align-items: flex-start;
   margin-top: -1 * spacing();
   margin-left: -1 * spacing(loose);
+
+  @media print {
+    body & {
+      font-size: rem(11px);
+      line-height: rem(16px);
+    }
+
+    a,
+    button {
+      color: var(--p-text, color('ink'));
+    }
+  }
 }
 
 .Section {
   flex: $relative-size $relative-size $primary-basis;
   min-width: 51%;
+
+  @media print {
+    flex: 2 2 36rem;
+  }
 }
 
 .Section-secondary {

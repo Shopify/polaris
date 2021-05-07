@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 
 import {Key} from '../../types';
 import {EventListener} from '../EventListener';
@@ -20,29 +20,22 @@ export interface TrapFocusProps {
 }
 
 export function TrapFocus({trapping = true, children}: TrapFocusProps) {
-  const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
-    undefined,
-  );
   const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
+  const [disableFocus, setDisableFocus] = useState(true);
 
   useEffect(() => {
-    setFocusSelf(
+    const disable =
+      canSafelyFocus &&
       !(
-        canSafelyFocus &&
         focusTrapWrapper.current &&
         focusTrapWrapper.current.contains(document.activeElement)
-      ),
-    );
-  }, [canSafelyFocus]);
+      )
+        ? !trapping
+        : true;
 
-  const shouldDisableFirstElementFocus = () => {
-    if (shouldFocusSelf === undefined || !canSafelyFocus) {
-      return true;
-    }
-
-    return shouldFocusSelf ? !trapping : !shouldFocusSelf;
-  };
+    setDisableFocus(disable);
+  }, [canSafelyFocus, trapping]);
 
   const handleFocusIn = (event: FocusEvent) => {
     const containerContentsHaveFocus =
@@ -93,10 +86,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   };
 
   return (
-    <Focus
-      disabled={shouldDisableFirstElementFocus()}
-      root={focusTrapWrapper.current}
-    >
+    <Focus disabled={disableFocus} root={focusTrapWrapper.current}>
       <div ref={focusTrapWrapper}>
         <EventListener event="focusin" handler={handleFocusIn} />
         <KeypressListener

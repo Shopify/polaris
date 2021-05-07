@@ -14,6 +14,8 @@ export interface SectionProps {
   subdued?: boolean;
   flush?: boolean;
   fullWidth?: boolean;
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
   actions?: ComplexAction[];
 }
 
@@ -24,12 +26,14 @@ export function Section({
   flush,
   fullWidth,
   actions,
+  hideOnPrint,
 }: SectionProps) {
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],
     subdued && styles['Section-subdued'],
     fullWidth && styles['Section-fullWidth'],
+    hideOnPrint && styles['Section-hideOnPrint'],
   );
 
   const actionMarkup = actions ? (

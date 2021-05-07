@@ -8,8 +8,6 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Group {
   @include text-style-input;
   width: 100%;
-  will-change: opacity, display;
-  transition: opacity easing() duration();
   display: none;
   align-items: center;
   flex-wrap: wrap;

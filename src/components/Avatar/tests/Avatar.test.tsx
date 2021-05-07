@@ -67,6 +67,23 @@ describe('<Avatar />', () => {
     });
   });
 
+  describe('consumer-specified "onError" hook', () => {
+    it('gets invoked in the event of an error', () => {
+      const spy = jest.fn();
+      const avatar = mountWithApp(
+        <Avatar
+          size="large"
+          initials="DL"
+          source="image/path/"
+          onError={spy}
+        />,
+      );
+
+      avatar.find(Image)!.trigger('onError');
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('on Error with changed props', () => {
     it('re-renders the image if a the source prop is changed after an error', () => {
       const workingSrc = 'image/goodPath/';

@@ -8,11 +8,104 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.3.0 - 2021-04-19
+
+- Add `hoverable` prop to `DataTable` ([#4074](https://github.com/Shopify/polaris-react/pull/4074))
+- Added `interactive` color variant to `Icon` ([#4112](https://github.com/Shopify/polaris-react/pull/4112))
+- Update `IndexTable` hover styles for sticky column ([#4113](https://github.com/Shopify/polaris-react/pull/4113))
+- Add `colSpan` to the cells in `DataTable` so that cells fill the table width ([#4120](https://github.com/Shopify/polaris-react/pull/4120))
+
+## 6.2.2 - 2021-04-08
+
+- Reverts `<TextField>` to use `autocomplete=off` instead of `autocomplete=nope` ([#4108](https://github.com/Shopify/polaris-react/pull/4108))
+
+## 6.2.1 - 2021-04-05
+
+### Bug fixes
+
+- Added `hideOnPrint` prop to `Card` and `CardSection` ([#4071](https://github.com/Shopify/polaris-react/pull/4071))
+- `DropZone` now has plural sentences when `allowMultiple` is true [#4037](https://github.com/Shopify/polaris-react/pull/4037)
+- Hide `IndexTable` header after scrolling past table body ([#4063](https://github.com/Shopify/polaris-react/issues/4063))
+- Update `IndexTable` to select row when clicked ([#4062](https://github.com/Shopify/polaris-react/issues/4062))
+- Fixed `Filters` focus state when tabbing into the component from a popover ([#4073](https://github.com/Shopify/polaris-react/issues/4073))
+- Removed the `isMounted` check from `Portal` to only rely on the useEffect for calling `onPortalCreated` ([#4066](https://github.com/Shopify/polaris-react/pull/4066))
+- Removed transition from `BulkActions` to eliminate flicker ([#4081](https://github.com/Shopify/polaris-react/pull/4081))
+- update error background color in `Select` ([#4089](https://github.com/Shopify/polaris-react/pull/4089))
+- Fixed `Trapfocus` issue that was preventing tabbing with react forms ([#4100](https://github.com/Shopify/polaris-react/pull/4100))
+
+## 6.2.0 - 2021-03-17
+
+### Enhancements
+
+- Added `zIndexOverride` prop to `Popover` ([#3937](https://github.com/Shopify/polaris-react/pull/3937))
+- Added `statusAndProgressLabelOverride` prop to `Badge` ([#4028](https://github.com/Shopify/polaris-react/pull/4028))
+- Added an `onError` hook to the `Avatar` component ([#4052](https://github.com/Shopify/polaris-react/pull/4052))
+
+### Bug fixes
+
+- `IndexTable` Remove parent resource name from bulk select action ([#4013](https://github.com/Shopify/polaris-react/pull/4013))
+- Ensured `@charset` declaration is the first thing in our styles.css file ([#4019](https://github.com/Shopify/polaris-react/pull/4019))
+- Fix `Modal.Section` divider color to match header and footer divider ([#4021](https://github.com/Shopify/polaris-react/pull/4021))
+- Fix `IndexTable` sticky header alignment and jank ([#4033](https://github.com/Shopify/polaris-react/pull/4033)
+- Remove focus ring on click for ActionList ([#4034](https://github.com/Shopify/polaris-react/pull/4034))
+- Updated `<TextField>` to use `autocomplete=nope` instead of `autocomplete=off` ([#4053](https://github.com/Shopify/polaris-react/pull/4053))
+
+### Dependency upgrades
+
+- Update `@shopify/polaris-tokens to v3.0.0 ([#4030](https://github.com/Shopify/polaris-react/pull/4030))
+
+### Documentation
+
+- Replaced mentions of "invalid" with not "valid" ([#4056](https://github.com/Shopify/polaris-react/pull/4056))
+
+## 6.1.0 - 2021-02-25
+
+### Enhancements
+
+- Added `focus-visible` polyfill and default styles ([#3695](https://github.com/Shopify/polaris-react/pull/3695))
+- Added `removeUnderline` prop to `Button` to remove underline when `plain` and `monochrome` are true ([#3998](https://github.com/Shopify/polaris-react/pull/3998))
+- Removed `#AppFrameMainContent` link and updated SkipToContent link to target `#AppFrameMain` instead ([#3912](https://github.com/Shopify/polaris-react/pull/3912))
+- Reset `color` in `unstyled-button` mixin ([#4008](https://github.com/Shopify/polaris-react/pull/4008))
+- Added `IndexTable / IndexProvider` component ([#3646](https://github.com/Shopify/polaris-react/pull/3646))
+- Added `dataHref` prop to `ResourceItem` which gets passed to the main `li` element as `data-href`([#3975](https://github.com/Shopify/polaris-react/pull/3975))
+
+### Bug fixes
+
+- Updated examples for `DropZone` so they accept all image types ([#3701](https://github.com/Shopify/polaris-react/pull/3701)) (thanks [@malanjp](https://github.com/malanjp) for the pull request)
+- Added focus styles to the dismissiable navigation button in `Frame` ([#3936](https://github.com/Shopify/polaris-react/pull/3936))
+- Fixed virtual cursor leaving dialog in `Modal`, `Navigation` and `Sheet` ([#3931](https://github.com/Shopify/polaris-react/pull/3931))
+- Fixed `Modal` removing focus from internal elements ([#3964](https://github.com/Shopify/polaris-react/pull/3964))
+- Simplified output of `Badge`'s css ([#3950](https://github.com/Shopify/polaris-react/pull/3950))
+- Fixed click propagation that was preventing the `Tooltip` to open when used as suffix on a `TextField` ([#3959](https://github.com/Shopify/polaris-react/pull/3959))
+- Made items in `ActionList` more clear in high contrast mode ([#3971](https://github.com/Shopify/polaris-react/pull/3971))
+- Fixed the MediaCard thumbnail’s corner roundness, so it wouldn’t overflow out of the parent Card ([#3974](https://github.com/Shopify/polaris-react/pull/3974))
+- Fixed `Tabs` layout issue on browser resize ([#3980](https://github.com/Shopify/polaris-react/pull/3980))
+- Fixed `ActionList` `Item` not disabling properly when url prop is passed ([#3979](https://github.com/Shopify/polaris-react/pull/3979))
+- Update `IndexTable`'s checkbox header to be aligned with other headers ([#3990](https://github.com/Shopify/polaris-react/issues/3990))
+- Fixed `CheckableButton` missing border when focused ([#3988](https://github.com/Shopify/polaris-react/pull/3988))
+- Fixed accessibility issue on `Tabs` disclosure popover on close ([#3994](https://github.com/Shopify/polaris-react/pull/3994))
+- Fixed accessibility issue when tabbing into `IndexTable` ([#4004](https://github.com/Shopify/polaris-react/pull/4004))
+- Fixed an issue where inline code would be hard to select ([#4005](https://github.com/Shopify/polaris-react/pull/4005))
+- Update `Toast` close button alignment for small views ([#4006](https://github.com/Shopify/polaris-react/pull/4006))
+- Fixed `Collapsible` bug where animation complete logic was being prematurely triggered by transitions in the children ([#4000](https://github.com/Shopify/polaris-react/pull/4000))
+- Fixed `IndexTable` bug where bulk actions are operable when no rows are selected ([#4009](https://github.com/Shopify/polaris-react/pull/4009))
+- Fixed `CheckableButton` missing border when focused ([#3987](https://github.com/Shopify/polaris-react/issues/3987))
+- Removed all `outline` and `border`instances of `-ms-high-contrast` as it is non-standard ([#3962](https://github.com/Shopify/polaris-react/pull/3962))
+- Fixed `Autocomplete` popover height not being calculated correctly ([#4015](https://github.com/Shopify/polaris-react/pull/4015))
+
+### Documentation
+
+- Added an example for the `onRemove` prop to `Tag` and clarified that no remove button is rendered when `onClick` is set ([#2987](https://github.com/Shopify/polaris-react/pull/2987))
+
+### Development workflow
+
+- Convert `List`, `Tabs.List`, `Connected.Item` and `Filter.ConnectedFiltterControl.Item` to be functional components ([#3961](https://github.com/Shopify/polaris-react/pull/3961))
+
 ## 6.0.1 - 2021-01-29
 
 ### Enhancements
 
-- Update Link underline style on print to be lighter ([#3943)](https://github.com/Shopify/polaris-react/pull/3943)))
+- Updated Link underline style on print to be lighter ([#3943](https://github.com/Shopify/polaris-react/pull/3943))
 
 ### Bug fixes
 

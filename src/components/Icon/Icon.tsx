@@ -9,10 +9,19 @@ type Color =
   | 'base'
   | 'subdued'
   | 'critical'
+  | 'interactive'
   | 'warning'
   | 'highlight'
   | 'success'
   | 'primary';
+
+const COLORS_WITH_BACKDROPS = [
+  'base',
+  'critical',
+  'highlight',
+  'success',
+  'warning',
+];
 
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
@@ -39,6 +48,13 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
     // eslint-disable-next-line no-console
     console.warn(
       'Recoloring external SVGs is not supported. Set the intended color on your SVG instead.',
+    );
+  }
+
+  if (backdrop && color && !COLORS_WITH_BACKDROPS.includes(color)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `The ${color} variant does not have a supported backdrop color`,
     );
   }
 

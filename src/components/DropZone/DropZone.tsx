@@ -27,10 +27,15 @@ import {useToggle} from '../../utilities/use-toggle';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
-import {fileAccepted, getDataTransferFiles} from './utils';
+import {
+  fileAccepted,
+  getDataTransferFiles,
+  defaultAllowMultiple,
+  createAllowMultipleKey,
+} from './utils';
 import styles from './DropZone.scss';
 
-type Type = 'file' | 'image';
+export type DropZoneFileType = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -47,7 +52,7 @@ export interface DropZoneProps {
    * Whether is a file or an image
    * @default 'file'
    */
-  type?: Type;
+  type?: DropZoneFileType;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
@@ -79,6 +84,8 @@ export interface DropZoneProps {
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
+  /** Allows child content to adjust height */
+  variableHeight?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -117,7 +124,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   accept,
   active,
   overlay = true,
-  allowMultiple = true,
+  allowMultiple = defaultAllowMultiple,
   overlayText,
   errorOverlayText,
   id: idProp,
@@ -125,6 +132,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onClick,
   error,
   openFileDialog,
+  variableHeight,
   onFileDialogClose,
   customValidator,
   onDrop,
@@ -142,6 +150,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     debounce(
       () => {
         if (!node.current) {
+          return;
+        }
+        if (variableHeight) {
+          setMeasuring(false);
           return;
         }
 
@@ -308,15 +320,25 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   });
 
   const id = useUniqueId('DropZone', idProp);
-  const suffix = capitalize(type);
+  const typeSuffix = capitalize(type);
+  const allowMultipleKey = createAllowMultipleKey(allowMultiple);
+
   const overlayTextWithDefault =
     overlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.overlayText${suffix}`)
+      ? i18n.translate(
+          `Polaris.DropZone.${allowMultipleKey}.overlayText${typeSuffix}`,
+        )
       : overlayText;
+
   const errorOverlayTextWithDefault =
     errorOverlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
+      ? i18n.translate(`Polaris.DropZone.errorOverlayText${typeSuffix}`)
       : errorOverlayText;
+
+  const labelValue =
+    label ||
+    i18n.translate(`Polaris.DropZone.${allowMultipleKey}.label${typeSuffix}`);
+  const labelHiddenValue = label ? labelHidden : true;
 
   const inputAttributes = {
     id,
@@ -336,7 +358,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
     (internalError || error) && styles.hasError,
-    styles[variationName('size', size)],
+    !variableHeight && styles[variationName('size', size)],
     measuring && styles.measuring,
   );
 
@@ -351,10 +373,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (internalError || error) &&
     overlayMarkup(CircleAlertMajor, 'critical', errorOverlayTextWithDefault);
 
-  const labelValue =
-    label || i18n.translate('Polaris.DropZone.FileUpload.label');
-  const labelHiddenValue = label ? labelHidden : true;
-
   const context = useMemo(
     () => ({
       disabled,
@@ -362,8 +380,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       size,
       type: type || 'file',
       measuring,
+      allowMultiple,
     }),
-    [disabled, focused, measuring, size, type],
+    [disabled, focused, measuring, size, type, allowMultiple],
   );
 
   return (
@@ -441,7 +460,7 @@ interface DropZoneInputProps {
   id: string;
   accept?: string;
   disabled: boolean;
-  type: Type;
+  type: DropZoneFileType;
   multiple: boolean;
   openFileDialog?: boolean;
   onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;

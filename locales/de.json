@@ -93,16 +93,27 @@
       "secondaryAction": "Weiter bearbeiten"
     },
     "DropZone": {
-      "overlayTextFile": "Datei zum Hochladen ablegen",
-      "overlayTextImage": "Bild zum Hochladen ablegen",
       "errorOverlayTextFile": "Der Dateityp ist nicht gültig",
       "errorOverlayTextImage": "Der Bildtyp ist nicht gültig",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Datei zum Hochladen ablegen",
+        "overlayTextImage": "Bild zum Hochladen ablegen",
         "actionTitleFile": "Datei hinzufügen",
         "actionTitleImage": "Bild hinzufügen",
+        "actionHintFile": "oder Datei zum Hochladen ablegen",
+        "actionHintImage": "oder Bild zum Hochladen ablegen",
+        "labelFile": "Datei hochladen",
+        "labelImage": "Bild hochladen"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Dateien zum Hochladen ablegen",
+        "overlayTextImage": "Bilder zum Hochladen ablegen",
+        "actionTitleFile": "Dateien hinzufügen",
+        "actionTitleImage": "Bilder hinzufügen",
         "actionHintFile": "oder Dateien zum Hochladen ablegen",
         "actionHintImage": "oder Bilder zum Hochladen ablegen",
-        "label": "Datei hochladen"
+        "labelFile": "Dateien hochladen",
+        "labelImage": "Bilder hochladen"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Tooltip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artikel",
+      "defaultItemPlural": "Artikel",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} wurden ausgewählt.",
+      "selected": "{selectedItemsCount} ausgewählt",
+      "a11yCheckboxDeselectAllSingle": "Auswahl für {resourceNameSingular} aufheben",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} auswählen",
+      "a11yCheckboxDeselectAllMultiple": "Auswahl für alle {itemsLength} {resourceNamePlural} aufheben",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} auswählen"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Keine {resourceNamePlural} gefunden",
+      "emptySearchDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
+      "onboardingBadgeText": "Neu",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} wird geladen",
+      "selectAllLabel": "Alle {resourceNamePlural} auswählen",
+      "selected": "{selectedItemsCount} ausgewählt",
+      "undo": "Rückgängig machen",
+      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
+      "selectItem": "{resourceName} auswählen",
+      "selectButtonText": "Auswählen"
     }
   }
 }

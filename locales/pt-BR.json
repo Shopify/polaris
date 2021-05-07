@@ -93,16 +93,27 @@
       "secondaryAction": "Continuar editando"
     },
     "DropZone": {
-      "overlayTextFile": "Solte o arquivo para carregar",
-      "overlayTextImage": "Solte a imagem para carregar",
       "errorOverlayTextFile": "O tipo de arquivo é inválido.",
       "errorOverlayTextImage": "O tipo de imagem é inválido.",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Soltar arquivo para carregar",
+        "overlayTextImage": "Soltar imagem para carregar",
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
-        "actionHintFile": "ou solte os arquivos para carregar",
-        "actionHintImage": "ou arraste e solte a imagem para carregar",
-        "label": "Carregar arquivo"
+        "actionHintFile": "ou soltar arquivo para carregar",
+        "actionHintImage": "ou soltar imagem para carregar",
+        "labelFile": "Carregar arquivo",
+        "labelImage": "Carregar imagem"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Soltar arquivos para carregar",
+        "overlayTextImage": "Soltar imagens para carregar",
+        "actionTitleFile": "Adicionar arquivos",
+        "actionTitleImage": "Adicionar imagens",
+        "actionHintFile": "ou soltar arquivos para carregar",
+        "actionHintImage": "ou soltar imagens para carregar",
+        "labelFile": "Carregar arquivos",
+        "labelImage": "Carregar imagens"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Dica de ferramenta: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Itens",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} estão selecionados.",
+      "selected": "{selectedItemsCount} selecionados",
+      "a11yCheckboxDeselectAllSingle": "Desmarcar {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar todos os {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nenhum {resourceNamePlural} encontrado",
+      "emptySearchDescription": "Tente alterar os filtros ou o termo de pesquisa",
+      "onboardingBadgeText": "Novo",
+      "resourceLoadingAccessibilityLabel": "Carregando {resourceNamePlural}...",
+      "selectAllLabel": "Selecione todos os {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selecionados",
+      "undo": "Desfazer",
+      "selectAllItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Selecionar {resourceName}",
+      "selectButtonText": "Selecionar"
     }
   }
 }

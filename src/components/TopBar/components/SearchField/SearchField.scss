@@ -41,7 +41,7 @@ $stacking-order: (
 .Input:focus {
   ~ .Backdrop {
     @include focus-ring($style: 'focused');
-    background-color: var(--p-on-surface-background);
+    background-color: var(--p-surface-search-field);
   }
 
   ~ .BackdropShowFocusBorder {
@@ -55,7 +55,7 @@ $stacking-order: (
 
 .focused {
   .Backdrop {
-    background-color: var(--p-on-surface-background);
+    background-color: var(--p-surface-search-field);
   }
 
   .BackdropShowFocusBorder {
@@ -146,7 +146,7 @@ $stacking-order: (
   bottom: 0;
   left: 0;
   background-color: var(
-    --p-on-surface-background,
+    --p-surface-search-field,
     var(--top-bar-background-lighter)
   );
   will-change: background-color;

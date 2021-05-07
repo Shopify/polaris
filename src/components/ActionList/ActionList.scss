@@ -52,15 +52,16 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   cursor: pointer;
   padding: $item-vertical-padding spacing(tight);
   border-radius: var(--p-border-radius-base);
-  border-top: 1px solid var(--p-surface); // 1px gap between elements
+  border-top: 1px solid transparent;
+  @media (forced-colors: active) {
+    @include high-contrast-border;
+  }
 
   &:hover {
     background-color: var(--p-surface-hovered);
     text-decoration: none;
 
-    @media (-ms-high-contrast: active) {
-      outline: 1px solid ms-high-contrast-color('text');
-    }
+    @include high-contrast-outline($border-width: border-width(thicker));
   }
 
   &.active {
@@ -79,6 +80,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
+    @include high-contrast-outline($border-width: border-width(thicker));
   }
 
   &.destructive {
@@ -133,6 +135,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 .Suffix {
   @include recolor-icon(var(--p-icon));
   margin-left: spacing();
+}
+
+.ContentBlock,
+.ContentBlockInner {
+  display: block;
 }
 
 .Text {

@@ -32,6 +32,8 @@ export interface CardProps {
   secondaryFooterActionsDisclosureText?: string;
   /** Alignment of the footer actions on the card, defaults to right */
   footerActionAlignment?: 'right' | 'left';
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -45,6 +47,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   Subsection: typeof Subsection;
 } = function Card({
   children,
+  hideOnPrint,
   title,
   subdued,
   sectioned,
@@ -60,7 +63,11 @@ export const Card: React.FunctionComponent<CardProps> & {
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
 
-  const className = classNames(styles.Card, subdued && styles.subdued);
+  const className = classNames(
+    styles.Card,
+    subdued && styles.subdued,
+    hideOnPrint && styles.hideOnPrint,
+  );
 
   const headerMarkup =
     title || actions ? <Header actions={actions} title={title} /> : null;

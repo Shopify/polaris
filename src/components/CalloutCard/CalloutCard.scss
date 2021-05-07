@@ -41,3 +41,7 @@
   top: spacing();
   position: absolute;
 }
+
+.hasDismiss {
+  padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+}

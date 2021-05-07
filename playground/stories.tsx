@@ -6,7 +6,6 @@ import {DetailsPage} from './DetailsPage';
 export default {
   title: 'Playground/Playground',
   parameters: {
-    chromatic: {disable: true},
     layout: 'fullscreen',
   },
 };

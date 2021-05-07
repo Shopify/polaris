@@ -28,6 +28,7 @@ $code-font-size: 1.15em;
     width: 100%;
     height: 100%;
     border: 1px solid transparent;
+    pointer-events: none;
   }
 }
 
@@ -37,4 +38,8 @@ $code-font-size: 1.15em;
 
 .variationSubdued {
   @include text-emphasis-subdued;
+
+  @media print {
+    color: var(--p-text-subdued);
+  }
 }

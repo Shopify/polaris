@@ -64,7 +64,7 @@ Display text should be:
   - Avoid using punctuation such as periods, commas, or semicolons
   - Avoid using exclamation marks—display text already makes enough of a
     statement without an exclamation mark
-  - Written in sentence case
+  - Write in sentence case
 
 ---
 

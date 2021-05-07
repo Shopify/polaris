@@ -6,7 +6,7 @@ import {Label, Labelled, DisplayText, Caption} from 'components';
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
-import {DropZone} from '../DropZone';
+import {DropZone, DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -206,6 +206,40 @@ describe('<DropZone />', () => {
     expect(dropZone.find('input[type="file"]').prop('disabled')).toBe(true);
   });
 
+  it.each([
+    [false, 'image', 'Drop image to upload', 'Upload image'],
+    [true, 'image', 'Drop images to upload', 'Upload images'],
+    [false, 'file', 'Drop file to upload', 'Upload file'],
+    [true, 'file', 'Drop files to upload', 'Upload files'],
+  ])(
+    'renders texts when allowMultiple is %s and type is %s',
+    (allowMultiple, type, expectedDisplayText, expectedLabelText) => {
+      const dropZone = mountWithApp(
+        <DropZone
+          overlay
+          allowMultiple={allowMultiple}
+          type={type as DropZoneFileType}
+        />,
+      );
+
+      act(() => {
+        dropZone
+          .find('div', {'aria-disabled': false})!
+          .domNode!.dispatchEvent(new Event('dragenter'));
+      });
+
+      dropZone.forceUpdate();
+
+      expect(dropZone).toContainReactComponent(DisplayText, {
+        children: expectedDisplayText,
+      });
+
+      expect(dropZone).toContainReactComponent(Labelled, {
+        label: expectedLabelText,
+      });
+    },
+  );
+
   describe('onClick', () => {
     it('calls the onClick when clicking the dropzone if one is provided', () => {
       const spy = jest.fn();
@@ -309,6 +343,16 @@ describe('<DropZone />', () => {
       const displayText = dropZone.find(DisplayText);
       expect(displayText.contains(overlayText)).toBe(true);
     });
+
+    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+      setBoundingClientRect('small');
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} variableHeight />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      expect(displayText.contains(overlayText)).toBe(true);
+    });
   });
 
   describe('errorOverlayText', () => {
@@ -349,6 +393,20 @@ describe('<DropZone />', () => {
       setBoundingClientRect('extraLarge');
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      expect(displayText.contains(errorOverlayText)).toBe(true);
+    });
+
+    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+      setBoundingClientRect('small');
+      const dropZone = mountWithAppProvider(
+        <DropZone
+          errorOverlayText={errorOverlayText}
+          accept="image/gif"
+          variableHeight
+        />,
       );
       fireEvent({element: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);

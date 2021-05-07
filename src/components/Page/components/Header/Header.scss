@@ -202,6 +202,7 @@ $action-menu-rollup-computed-width: rem(40px);
 .Actions {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   text-align: right;
 }

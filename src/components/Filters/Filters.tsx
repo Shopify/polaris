@@ -230,7 +230,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           })
         : i18n.translate('Polaris.Filters.moreFilters');
 
-    const rightActionMarkup = (
+    const rightActionMarkup = filters.length ? (
       <div ref={this.moreFiltersButtonContainer}>
         <Button
           onClick={this.toggleFilters}
@@ -240,7 +240,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           {moreFiltersLabel}
         </Button>
       </div>
-    );
+    ) : null;
 
     const filterResourceName = resourceName || {
       singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),

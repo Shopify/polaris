@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {useI18n} from '../../../../utilities/i18n';
+import {useIsMountedRef} from '../../../../utilities/use-is-mounted-ref';
 
 import styles from './Loading.scss';
 
@@ -8,7 +9,7 @@ const STUCK_THRESHOLD = 99;
 
 export function Loading() {
   const i18n = useI18n();
-
+  const isMountedRef = useIsMountedRef();
   const [progress, setProgress] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -18,11 +19,13 @@ export function Loading() {
     }
 
     requestAnimationFrame(() => {
+      if (!isMountedRef.current) return;
+
       const step = Math.max((STUCK_THRESHOLD - progress) / 10, 1);
       setAnimating(true);
       setProgress(progress + step);
     });
-  }, [progress, animating]);
+  }, [progress, animating, isMountedRef]);
 
   const customStyles = {
     transform: `scaleX(${Math.floor(progress) / 100})`,

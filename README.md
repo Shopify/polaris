@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/main/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.0.1/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.3.0/dist/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.0.1/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.3.0/dist/styles.css"
 />
 ```
 
@@ -130,12 +130,6 @@ yarn run build:development
 ```
 
 Also, when running `yarn install`, copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
-
-### Visual regression testing
-
-[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
-
-Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgment to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team can approve changes.
 
 #### Manual visual regression testing
 

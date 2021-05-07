@@ -96,16 +96,27 @@
       "secondaryAction": "Tiếp tục chỉnh sửa"
     },
     "DropZone": {
-      "overlayTextFile": "Thả tệp để tải lên",
-      "overlayTextImage": "Thả ảnh để tải lên",
       "errorOverlayTextFile": "Loại tệp không hợp lệ",
       "errorOverlayTextImage": "Loại hình ảnh không hợp lệ",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Thả tệp để tải lên",
+        "overlayTextImage": "Thả ảnh để tải lên",
         "actionTitleFile": "Thêm tệp",
         "actionTitleImage": "Thêm hình ảnh",
         "actionHintFile": "hoặc thả tệp để tải lên",
         "actionHintImage": "hoặc thả ảnh để tải lên",
-        "label": "Tải tệp lên"
+        "labelFile": "Tải lên tệp",
+        "labelImage": "Tải lên hình ảnh"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Thả tệp để tải lên",
+        "overlayTextImage": "Thả ảnh để tải lên",
+        "actionTitleFile": "Thêm tệp",
+        "actionTitleImage": "Thêm hình ảnh",
+        "actionHintFile": "hoặc thả tệp để tải lên",
+        "actionHintImage": "hoặc thả ảnh để tải lên",
+        "labelFile": "Tải lên tệp",
+        "labelImage": "Tải lên hình ảnh"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Chú giải công cụ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Mặt hàng",
+      "defaultItemPlural": "Các mặt hàng",
+      "allItemsSelected": "Đã chọn tất cả {itemsLength}+ {resourceNamePlural}.",
+      "selected": "Đã chọn {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Bỏ chọn {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Chọn {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Bỏ chọn tất cả {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Chọn tất cả {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Không tìm thấy {resourceNamePlural} nào",
+      "emptySearchDescription": "Thử thay đổi bộ lọc hoặc cụm từ tìm kiếm",
+      "onboardingBadgeText": "Mới",
+      "resourceLoadingAccessibilityLabel": "Đang tải {resourceNamePlural}...",
+      "selectAllLabel": "Chọn tất cả {resourceNamePlural}",
+      "selected": "Đã chọn {selectedItemsCount}",
+      "undo": "Hoàn tác",
+      "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Chọn {resourceName}",
+      "selectButtonText": "Chọn"
     }
   }
 }

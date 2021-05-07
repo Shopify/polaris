@@ -93,16 +93,27 @@
       "secondaryAction": "Fortsett å redigere"
     },
     "DropZone": {
-      "overlayTextFile": "Slipp fil for å laste opp",
-      "overlayTextImage": "Slipp bilde for å laste opp",
       "errorOverlayTextFile": "Filtypen er ikke gyldig",
       "errorOverlayTextImage": "Bildetypen er ikke gyldig",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Slipp fil for å laste opp",
+        "overlayTextImage": "Slipp bilde for å laste opp",
         "actionTitleFile": "Legg til en fil",
-        "actionTitleImage": "Legg til et bilde",
+        "actionTitleImage": "Legg til bilde",
+        "actionHintFile": "eller slipp filen for å laste den opp",
+        "actionHintImage": "eller slipp bildet for å laste opp",
+        "labelFile": "Last opp fil",
+        "labelImage": "Last opp bilde"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Slipp filer for å laste opp",
+        "overlayTextImage": "Slipp bilder for å laste opp",
+        "actionTitleFile": "Legg til filer",
+        "actionTitleImage": "Legg til bilder",
         "actionHintFile": "eller slipp filer for å laste opp",
         "actionHintImage": "eller slipp bilder for å laste opp",
-        "label": "Last opp fil"
+        "labelFile": "Last opp filer",
+        "labelImage": "Laste opp bilder"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Verktøytips: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Vare",
+      "defaultItemPlural": "Varer",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} er valgt.",
+      "selected": "{selectedItemsCount} valgt",
+      "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Fant ingen {resourceNamePlural}",
+      "emptySearchDescription": "Prøv å endre filtrene eller søkeord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Laster inn {resourceNamePlural} …",
+      "selectAllLabel": "Velg alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valgt",
+      "undo": "Angre",
+      "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
+      "selectItem": "Velg {resourceName}",
+      "selectButtonText": "Velg"
     }
   }
 }

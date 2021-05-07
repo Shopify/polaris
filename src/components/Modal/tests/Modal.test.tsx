@@ -7,7 +7,6 @@ import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
-import * as focusUtils from '../../../utilities/focus';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('react-transition-group', () => {
@@ -326,6 +325,17 @@ describe('<Modal>', () => {
 
       expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
     });
+
+    it('does not render a Scrollable with noScroll prop', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open noScroll>
+          <Badge />
+        </Modal>,
+      );
+
+      const scrollable = modal.find(Scrollable).first();
+      expect(scrollable.exists()).toBe(false);
+    });
   });
 
   describe('loading', () => {
@@ -427,16 +437,20 @@ describe('<Modal>', () => {
     });
 
     it('focuses the activator when the activator is an element on close', () => {
-      const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
-
+      const id = 'activator-id';
       const modal = mountWithApp(
-        <Modal title="foo" onClose={noop} open activator={<Button />} />,
+        <Modal
+          title="foo"
+          onClose={noop}
+          open
+          activator={<Button id={id} />}
+        />,
       );
 
       modal.find(Dialog)!.trigger('onExited');
+      const activator = modal.find('button', {id})!.domNode;
 
-      expect(document.activeElement).toBe(modal.find('button')!.domNode);
-      expect(focusSpy).toHaveBeenCalledTimes(3);
+      expect(document.activeElement).toBe(activator);
     });
 
     it('focuses the activator when the activator a ref on close', () => {

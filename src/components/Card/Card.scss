@@ -7,10 +7,18 @@
 
   + .Card {
     margin-top: spacing();
+
+    @media print {
+      margin-top: -1 * spacing(tight);
+    }
   }
 
   @include page-content-when-not-fully-condensed {
     border-radius: var(--p-border-radius-wide, border-radius());
+  }
+
+  @media print {
+    box-shadow: none;
   }
 }
 
@@ -18,11 +26,22 @@
   background-color: var(--p-surface-subdued);
 }
 
+.Section-hideOnPrint,
+.hideOnPrint {
+  @include hidden-when-printing;
+}
+
 .Header {
   padding: spacing() spacing() 0;
 
   @include page-content-when-not-fully-condensed {
     padding: spacing(loose) spacing(loose) 0;
+  }
+
+  @media print {
+    @include page-content-when-not-fully-condensed {
+      padding: spacing(tight) spacing() spacing(none);
+    }
   }
 }
 
@@ -35,6 +54,15 @@
 
   + .Section {
     border-top: border('divider');
+
+    @media print {
+      border-top: 0;
+    }
+  }
+
+  @media print {
+    padding-top: spacing(extra-tight);
+    padding-bottom: spacing(extra-tight);
   }
 }
 
@@ -96,6 +124,15 @@
     margin-top: spacing();
     padding-top: spacing();
     border-top: border('divider');
+
+    @media print {
+      border-top: 0;
+    }
+  }
+
+  @media print {
+    padding-top: spacing(extra-tight);
+    padding-bottom: spacing(extra-tight);
   }
 }
 

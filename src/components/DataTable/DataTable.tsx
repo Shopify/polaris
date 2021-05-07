@@ -53,6 +53,8 @@ export interface DataTableProps {
   verticalAlign?: VerticalAlign;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
+  /** Table row has hover state. Defaults to true. */
+  hoverable?: boolean;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
   /**
@@ -374,14 +376,42 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
   };
 
+  private getColSpan = (
+    rowLength: number,
+    headingsLength: number,
+    contentTypesLength: number,
+    cellIndex: number,
+  ) => {
+    const rowLen = rowLength ? rowLength : 1;
+    const colLen = headingsLength ? headingsLength : contentTypesLength;
+    const colSpan = Math.floor(colLen / rowLen);
+    const remainder = colLen % rowLen;
+    return cellIndex === 0 ? colSpan + remainder : colSpan;
+  };
+
   private defaultRenderRow = (row: TableData[], index: number) => {
-    const className = classNames(styles.TableRow);
-    const {columnContentTypes, truncate = false, verticalAlign} = this.props;
+    const {
+      columnContentTypes,
+      truncate = false,
+      verticalAlign,
+      hoverable = true,
+      headings,
+    } = this.props;
+    const className = classNames(
+      styles.TableRow,
+      hoverable && styles.hoverable,
+    );
 
     return (
       <tr key={`row-${index}`} className={className}>
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const id = `cell-${cellIndex}-row-${index}`;
+          const colSpan = this.getColSpan(
+            row.length,
+            headings.length,
+            columnContentTypes.length,
+            cellIndex,
+          );
 
           return (
             <Cell
@@ -391,6 +421,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
+              colSpan={colSpan}
             />
           );
         })}

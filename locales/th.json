@@ -93,16 +93,27 @@
       "secondaryAction": "แก้ไขต่อ"
     },
     "DropZone": {
-      "overlayTextFile": "วางไฟล์เพื่ออัพโหลด",
-      "overlayTextImage": "วางรูปภาพเพื่ออัพโหลด",
       "errorOverlayTextFile": "ประเภทของไฟล์ไม่ถูกต้อง",
       "errorOverlayTextImage": "ประเภทของรูปภาพไม่ถูกต้อง",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "วางไฟล์เพื่ออัปโหลด",
+        "overlayTextImage": "วางรูปภาพเพื่ออัปโหลด",
         "actionTitleFile": "เพิ่มไฟล์",
         "actionTitleImage": "เพิ่มรูปภาพ",
-        "actionHintFile": "หรือวางไฟล์เพื่ออัพโหลด",
-        "actionHintImage": "หรือวางรูปภาพเพื่ออัพโหลด",
-        "label": "อัปโหลดไฟล์"
+        "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
+        "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
+        "labelFile": "อัปโหลดไฟล์",
+        "labelImage": "อัปโหลดรูปภาพ"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "วางไฟล์เพื่ออัปโหลด",
+        "overlayTextImage": "วางรูปภาพเพื่ออัปโหลด",
+        "actionTitleFile": "เพิ่มไฟล์",
+        "actionTitleImage": "เพิ่มรูปภาพ",
+        "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
+        "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
+        "labelFile": "อัปโหลดไฟล์",
+        "labelImage": "อัปโหลดรูปภาพ"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "รายการ",
+      "defaultItemPlural": "รายการ",
+      "allItemsSelected": "{itemsLength}+ {resourceNamePlural} ที่เลือกทั้งหมด",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {itemsLength} {resourceNamePlural} ทั้งหมด",
+      "a11yCheckboxSelectAllMultiple": "เลือก {itemsLength} {resourceNamePlural} ทั้งหมด"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
+      "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
+      "onboardingBadgeText": "ใหม่",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}",
+      "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "undo": "เลิกทำ",
+      "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมด",
+      "selectItem": "เลือก {resourceName}",
+      "selectButtonText": "เลือก"
     }
   }
 }

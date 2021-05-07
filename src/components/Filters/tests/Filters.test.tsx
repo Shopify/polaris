@@ -1,6 +1,14 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
+import {
+  Button,
+  Popover,
+  Sheet,
+  Tag,
+  TextField,
+  TextStyle,
+  ButtonProps,
+} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -335,6 +343,15 @@ describe('<Filters />', () => {
         resourceFilters.find(ConnectedFilterControl).props()
           .rightPopoverableActions,
       ).toHaveLength(0);
+    });
+
+    it('does not render the filter button when no filters are passed in', () => {
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} filters={[]} />,
+      );
+      expect(resourceFilters).not.toContainReactComponent(Button, {
+        testID: 'SheetToggleButton',
+      } as ButtonProps);
     });
   });
 

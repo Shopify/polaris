@@ -1,9 +1,7 @@
-org_line: Shopify Core
-owners:
-  - Shopify/polaris-team
-classification: library
+classification: tier4
 slack_channels:
   - polaris
+url: https://polaris-react.shopifycloud.com
 oncall_url: https://shopify.pagerduty.com/services/PQNFXB1
 security:
   data_management:

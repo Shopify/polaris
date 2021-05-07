@@ -153,6 +153,14 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     return (
       <div>
         <div className={styles.Wrapper}>
+          <TabMeasurer
+            tabToFocus={tabToFocus}
+            activator={activator}
+            selected={selected}
+            tabs={tabs}
+            siblingTabHasFocus={tabToFocus > -1}
+            handleMeasurement={this.handleMeasurement}
+          />
           <ul
             role="tablist"
             className={classname}
@@ -179,14 +187,6 @@ class TabsInner extends PureComponent<CombinedProps, State> {
               </Popover>
             </li>
           </ul>
-          <TabMeasurer
-            tabToFocus={tabToFocus}
-            activator={activator}
-            selected={selected}
-            tabs={tabs}
-            siblingTabHasFocus={tabToFocus > -1}
-            handleMeasurement={this.handleMeasurement}
-          />
         </div>
         {panelMarkup}
       </div>

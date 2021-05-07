@@ -18,8 +18,8 @@ $Backdrop-opacity: 0.88;
     padding: spacing();
   }
 
-  @media (-ms-high-contrast: active) {
-    border: border-width(thick) solid ms-high-contrast-color('text');
+  @media (forced-colors: active) {
+    @include high-contrast-border(border-width(thick));
   }
 }
 
@@ -40,17 +40,23 @@ $Backdrop-opacity: 0.88;
 
 .CloseButton {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
   flex-direction: column;
   justify-content: flex-start;
-  margin: (-1 * spacing(tight)) (-1 * spacing()) (-1 * spacing(tight)) 0;
-  padding: (1.5 * spacing(tight)) spacing() spacing(tight);
+  margin-right: (-1 * spacing());
+  padding: 0 spacing();
   border: none;
   appearance: none;
   background: transparent;
   color: currentColor;
   @include recolor-icon(currentColor);
   cursor: pointer;
+
+  @include breakpoint-after($breakpoint) {
+    align-self: flex-start;
+    margin: (-1 * spacing(tight)) (-1 * spacing()) (-1 * spacing(tight)) 0;
+    padding: (1.5 * spacing(tight)) spacing() spacing(tight);
+  }
 
   &:focus {
     outline: none;

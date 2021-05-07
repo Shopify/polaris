@@ -417,6 +417,28 @@ describe('<DataTable />', () => {
     });
   });
 
+  describe('hoverable', () => {
+    it('defaults to rows with hover state', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const rows = dataTable.find('tbody tr');
+
+      rows.forEach((row) =>
+        expect(row.props().className).toContain('hoverable'),
+      );
+    });
+
+    it('renders rows without hover state class name when false', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hoverable={false} />,
+      );
+      const rows = dataTable.find('tbody tr');
+
+      rows.forEach((row) =>
+        expect(row.props().className).not.toContain('hoverable'),
+      );
+    });
+  });
+
   describe('defaultSortDirection', () => {
     it('passes the value down to the Cell', () => {
       const sortable = [false, true, false, false, true];
@@ -488,6 +510,52 @@ describe('<DataTable />', () => {
       trigger(firstHeadingCell, 'onSort');
 
       expect(spyOnSort).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('colSpan', () => {
+    it('has a colSpan of 1 when header length and row length are equal', () => {
+      const rows = [['Emerald Silk Gown', '$230.00', 124689, 32, '$19,090.00']];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} rows={rows} />,
+      );
+
+      const singleSpanCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('colSpan') === 1);
+
+      expect(singleSpanCells).toHaveLength(5);
+    });
+
+    it('has a colSpan that spans all headings when there is only one cell in the row', () => {
+      const rows = [['Emerald Silk Gown']];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} rows={rows} />,
+      );
+
+      const fullSpanCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('colSpan') === headings.length);
+
+      expect(fullSpanCells).toHaveLength(1);
+    });
+
+    it('cells still fill the full table width when there are no headings', () => {
+      const rows = [['Emerald Silk Gown', '$230.00']];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} headings={[]} rows={rows} />,
+      );
+
+      const twoSpanCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('colSpan') === 2);
+
+      const threeSpanCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('colSpan') === 2);
+
+      expect(twoSpanCells).toHaveLength(1);
+      expect(threeSpanCells).toHaveLength(1);
     });
   });
 });

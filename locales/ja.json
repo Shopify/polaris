@@ -93,16 +93,27 @@
       "secondaryAction": "編集を続ける"
     },
     "DropZone": {
-      "overlayTextFile": "ファイルをドロップしてアップロード",
-      "overlayTextImage": "画像をドロップしてアップロードする",
       "errorOverlayTextFile": "ファイルタイプが有効ではありません",
       "errorOverlayTextImage": "画像タイプが有効ではありません",
-      "FileUpload": {
-        "actionTitleFile": "ファイルを追加する",
-        "actionTitleImage": "画像を追加する",
+      "single": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加",
+        "actionTitleImage": "画像を追加",
+        "actionHintFile": "またはファイルをドロップしてアップロード",
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加",
+        "actionTitleImage": "画像を追加",
         "actionHintFile": "または、ファイルをドロップしてアップロード",
-        "actionHintImage": "または、画像をドロップしてアップロードする",
-        "label": "ファイルをアップロード"
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード"
       }
     },
     "EmptySearchResult": {
@@ -300,6 +311,28 @@
     },
     "TooltipOverlay": {
       "accessibilityLabel": "ツールチップ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "アイテム",
+      "defaultItemPlural": "アイテム",
+      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています。",
+      "selected": "{selectedItemsCount}を選択済み",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
+      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
+      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural}が見つかりませんでした",
+      "emptySearchDescription": "絞り込みや検索ワードを変更してください",
+      "onboardingBadgeText": "新規",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます...",
+      "selectAllLabel": "すべての{resourceNamePlural}を選択する",
+      "selected": "{selectedItemsCount}を選択済み",
+      "undo": "元に戻す",
+      "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
+      "selectItem": "{resourceName}を選択する",
+      "selectButtonText": "選択"
     }
   }
 }

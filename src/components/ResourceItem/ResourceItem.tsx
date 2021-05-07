@@ -53,6 +53,8 @@ interface BaseProps {
   children?: React.ReactNode;
   /** Adjust vertical alignment of elements */
   verticalAlignment?: Alignment;
+  /** Prefetched url attribute to bind to the main element being returned */
+  dataHref?: string;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -148,6 +150,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       context: {selectable, selectMode, loading, resourceName},
       i18n,
       verticalAlignment,
+      dataHref,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -322,7 +325,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     return (
-      <li className={listItemClassName}>
+      <li className={listItemClassName} data-href={dataHref}>
         <div className={styles.ItemWrapper}>
           <div
             ref={this.setNode}
