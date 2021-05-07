@@ -77,30 +77,20 @@ export const Row = memo(function Row({
     event.preventDefault();
     event.stopPropagation();
 
-    const primaryLinkElement = tableRowRef.current.querySelector(
-      '[data-primary-link]',
-    );
+    const targetParent = (event.target as Element).parentNode;
 
-    if (primaryLinkElement && !selectMode) {
+    if (!selectMode && targetParent instanceof HTMLAnchorElement) {
       isNavigating.current = true;
-      const {ctrlKey, metaKey} = event.nativeEvent;
+      const hrefUrl = targetParent.href;
 
       if (onNavigation) {
         onNavigation(id);
       }
 
-      if (
-        (ctrlKey || metaKey) &&
-        primaryLinkElement instanceof HTMLAnchorElement
-      ) {
-        isNavigating.current = false;
-        window.open(primaryLinkElement.href, '_blank');
-        return;
-      }
+      isNavigating.current = false;
+      window.open(hrefUrl, '_blank');
+      return;
 
-      primaryLinkElement.dispatchEvent(
-        new MouseEvent(event.type, event.nativeEvent),
-      );
     } else {
       isNavigating.current = false;
       handleInteraction(event);
