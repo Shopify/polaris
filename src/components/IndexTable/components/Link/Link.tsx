@@ -10,7 +10,7 @@ interface LinkProps {
   children: React.ReactNode;
   subdued?: boolean;
   condensed?: boolean;
-  external?: boolean
+  external?: boolean;
   onClick?(): void;
 }
 
@@ -29,7 +29,7 @@ export function Link({
   );
 
   const linkAttributes = {
-    external: external ? true : false,
+    external: external,
     className: linkClasses,
     url,
   };

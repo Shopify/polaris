@@ -28,7 +28,7 @@ export const Row = memo(function Row({
   subdued,
   onNavigation,
 }: RowProps) {
-  const {selectMode, condensed} = useIndexRow();
+  const {condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
   const {
     value: hovered,
@@ -81,7 +81,6 @@ export const Row = memo(function Row({
     }
 
     handleInteraction(event);
-
   };
 
   const RowWrapper = condensed ? 'li' : 'tr';

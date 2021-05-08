@@ -5,7 +5,7 @@ import type {DeepPartial, ThenType} from '@shopify/useful-types';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
-import {Link} from '../../Link'
+import {Link} from '../../Link';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -53,9 +53,7 @@ describe('<Row />', () => {
     const row = mountWithTable(
       <Row {...defaultProps} onNavigation={onNavigationSpy}>
         <th>
-          <Link url="/">
-            Child
-          </Link>
+          <Link url="/">Child</Link>
         </th>
       </Row>,
     );

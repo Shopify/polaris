@@ -51,7 +51,7 @@ describe('<Link />', () => {
       </Link>,
     );
     expect(link).toContainReactComponent(UnstyledLink, {
-      'external': true,
+      external: true,
     });
   });
 });
