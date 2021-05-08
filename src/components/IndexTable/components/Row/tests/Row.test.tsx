@@ -5,6 +5,7 @@ import type {DeepPartial, ThenType} from '@shopify/useful-types';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
+import {Link} from '../../Link'
 
 const defaultEvent = {
   preventDefault: noop,
@@ -52,9 +53,9 @@ describe('<Row />', () => {
     const row = mountWithTable(
       <Row {...defaultProps} onNavigation={onNavigationSpy}>
         <th>
-          <a href="/" data-primary-link>
+          <Link url="/">
             Child
-          </a>
+          </Link>
         </th>
       </Row>,
     );
@@ -64,14 +65,14 @@ describe('<Row />', () => {
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onNavigation when clicked', () => {
+  it('calls onNavigation on row click', () => {
     const onNavigationSpy = jest.fn();
     const row = mountWithTable(
       <Row {...defaultProps} onNavigation={onNavigationSpy}>
         <th>
-          <a href="/" data-primary-link>
+          <Link url="/">
             Child
-          </a>
+          </Link>
         </th>
       </Row>,
     );
@@ -81,12 +82,12 @@ describe('<Row />', () => {
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('calls handleInteraction when clicked and no primary link child present', () => {
+  it('calls handleInteraction on row click', () => {
     const onSelectionChangeSpy = jest.fn();
     const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
-          <a href="/">Child without data-primary-link</a>
+          <Link url="/">Child without data-primary-link</Link>
         </th>
       </Row>,
       {
