@@ -17,7 +17,6 @@ interface LinkProps {
 export function Link({
   url,
   subdued,
-  primary,
   condensed,
   onClick,
   children,
@@ -29,7 +28,6 @@ export function Link({
   );
 
   const linkAttributes = {
-    ...(primary && {'data-primary-link': true}),
     className: linkClasses,
     url,
   };

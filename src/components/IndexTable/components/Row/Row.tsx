@@ -67,34 +67,21 @@ export const Row = memo(function Row({
   );
 
   const tableRowRef = useRef<HTMLTableRowElement & HTMLLIElement>(null);
-  const isNavigating = useRef<boolean>(false);
 
   const handleRowClick = (event: React.MouseEvent) => {
-    if (!tableRowRef.current || isNavigating.current) {
+    if (!tableRowRef.current) {
       return;
     }
 
     event.preventDefault();
     event.stopPropagation();
 
-    const targetParent = (event.target as Element).parentNode;
-
-    if (!selectMode && targetParent instanceof HTMLAnchorElement) {
-      isNavigating.current = true;
-      const hrefUrl = targetParent.href;
-
-      if (onNavigation) {
-        onNavigation(id);
-      }
-
-      isNavigating.current = false;
-      window.open(hrefUrl, '_blank');
-      return;
-
-    } else {
-      isNavigating.current = false;
-      handleInteraction(event);
+    if (onNavigation) {
+      onNavigation(id);
     }
+
+    handleInteraction(event);
+
   };
 
   const RowWrapper = condensed ? 'li' : 'tr';
