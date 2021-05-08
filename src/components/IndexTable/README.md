@@ -202,7 +202,7 @@ function SimpleSmallScreenIndexTableExample() {
 
 ### Index table with row links
 
-A index table with rows that will link to a resource.
+A index table with a column that will link to a resource.
 
 ```jsx
 function LinkingIndexTableExample() {
@@ -210,7 +210,7 @@ function LinkingIndexTableExample() {
     {
       id: '3411',
       url: 'customers/341',
-      name: 'Mae Jemison',
+      name: 'Internal Link',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
@@ -218,10 +218,28 @@ function LinkingIndexTableExample() {
     {
       id: '2561',
       url: 'customers/256',
-      name: 'Ellen Ochoa',
+      name: 'Internal Link',
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+    },
+    {
+      id: '2161',
+      url: 'customers/256',
+      name: 'External Link',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      external: true,
+    },
+    {
+      id: '2761',
+      url: 'customers/256',
+      name: 'External Link',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      external: true,
     },
   ];
   const resourceName = {
@@ -236,7 +254,7 @@ function LinkingIndexTableExample() {
   } = useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, external}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -244,7 +262,7 @@ function LinkingIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <IndexTable.Link primary url={`/customers/${id}`}>
+          <IndexTable.Link external={external} url={`/customers/${id}`}>
             {name}
           </IndexTable.Link>
         </IndexTable.Cell>
