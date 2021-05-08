@@ -9,8 +9,8 @@ interface LinkProps {
   url: string;
   children: React.ReactNode;
   subdued?: boolean;
-  primary?: boolean;
   condensed?: boolean;
+  external?: boolean
   onClick?(): void;
 }
 
@@ -20,6 +20,7 @@ export function Link({
   condensed,
   onClick,
   children,
+  external,
 }: LinkProps) {
   const linkClasses = classNames(
     styles.Link,
@@ -28,6 +29,7 @@ export function Link({
   );
 
   const linkAttributes = {
+    external: external ? true : false,
     className: linkClasses,
     url,
   };
