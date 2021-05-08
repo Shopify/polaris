@@ -48,23 +48,6 @@ describe('<Row />', () => {
     expect(row).toContainReactComponent(RowHoveredContext.Provider);
   });
 
-  it('calls onNavigation when opening a new tab', () => {
-    const onNavigationSpy = jest.fn();
-    const row = mountWithTable(
-      <Row {...defaultProps} onNavigation={onNavigationSpy}>
-        <th>
-          <Link url="/">
-            Child
-          </Link>
-        </th>
-      </Row>,
-    );
-
-    triggerOnClick(row, 1, {...defaultEvent, nativeEvent: {ctrlKey: true}});
-
-    expect(onNavigationSpy).toHaveBeenCalledTimes(1);
-  });
-
   it('calls onNavigation on row click', () => {
     const onNavigationSpy = jest.fn();
     const row = mountWithTable(
