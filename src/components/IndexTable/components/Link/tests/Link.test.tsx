@@ -44,14 +44,14 @@ describe('<Link />', () => {
     expect(onClickSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('adds the primary link data attribute when primary is true', () => {
+  it('adds the external=true attribute when external is true', () => {
     const link = mountWithApp(
-      <Link url="https://shopify.com" primary>
+      <Link url="https://shopify.com" external>
         Test link content
       </Link>,
     );
     expect(link).toContainReactComponent(UnstyledLink, {
-      'data-primary-link': true,
+      'external': true,
     });
   });
 });
