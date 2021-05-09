@@ -4,7 +4,7 @@
   @include text-emphasis-strong;
   @include focus-ring;
   height: 100%;
-  padding: spacing('tight') spacing() spacing('tight') 0;
+  padding: spacing('tight') 0 spacing('tight') 0;
   color: var(--p-text, color('blue'));
   display: block;
   text-decoration: none;
