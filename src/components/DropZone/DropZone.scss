@@ -22,6 +22,12 @@ $dropzone-stacking-order: (
   border: border-width(thick) $dropzone-border-style transparent;
 }
 
+@mixin set-border-radius {
+  border-radius: calc(
+    var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
+  );
+}
+
 .DropZone {
   position: relative;
   display: flex;
@@ -73,6 +79,7 @@ $dropzone-stacking-order: (
     // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
+      @include set-border-radius;
       border-color: var(--p-border);
     }
   }
@@ -122,6 +129,7 @@ $dropzone-stacking-order: (
 }
 
 .Overlay {
+  @include set-border-radius;
   position: absolute;
   z-index: z-index(overlay, $dropzone-stacking-order);
   top: 0;
@@ -132,13 +140,11 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: $dropzone-padding;
-  border: border-width(thick) $dropzone-border-style var(--p-border);
-  border-radius: calc(
-    var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
-  );
+  border: border-width(thick) $dropzone-border-style var(--p-interactive);
   text-align: center;
-  color: var(--p-text);
-  background-color: var(--p-surface-hovered);
+  color: var(--p-interactive);
+  background-color: var(--p-surface-selected);
+  pointer-events: none;
 
   .hasError & {
     border-color: var(--p-border-critical);
