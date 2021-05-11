@@ -79,12 +79,6 @@ module.exports = {
       ...extraRules,
     ];
 
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    });
-
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),

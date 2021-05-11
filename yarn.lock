@@ -2380,7 +2380,7 @@
   dependencies:
     tslib "^1.14.1"
 
-"@shopify/react-hooks@^1.11.2", "@shopify/react-hooks@^1.13.0":
+"@shopify/react-hooks@^1.11.2":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@shopify/react-hooks/-/react-hooks-1.13.1.tgz#0756205f29e5320920f9dcaae8b057bb34f0e21f"
   integrity sha512-i1/HKdpsuNXRi5MoZp2nciw0UtqAWEmV25Moq689X8GrfQLAGuxu97HV1V0TUx9PODlyfJsfuHyepEG+TRSjNA==
