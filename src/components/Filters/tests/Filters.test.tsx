@@ -265,6 +265,24 @@ describe('<Filters />', () => {
       ).toBe(true);
     });
 
+    it('receives a disabled TextField when the disableQueryField is true', () => {
+      const resourceFilters = mountWithApp(
+        <Filters
+          {...mockPropsWithShortcuts}
+          disableQueryField
+          disabled={false}
+        />,
+      );
+
+      const connectedFilterControl = resourceFilters.find(
+        ConnectedFilterControl,
+      )!;
+
+      expect(connectedFilterControl).toContainReactComponent(TextField, {
+        disabled: true,
+      });
+    });
+
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
