@@ -16,6 +16,7 @@ export interface DialogProps {
   children?: React.ReactNode;
   limitHeight?: boolean;
   large?: boolean;
+  small?: boolean;
   onClose(): void;
   onEntered?(): void;
   onExited?(): void;
@@ -30,12 +31,14 @@ export function Dialog({
   onExited,
   onEntered,
   large,
+  small,
   limitHeight,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
   const classes = classNames(
     styles.Modal,
+    small && styles.sizeSmall,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
   );
