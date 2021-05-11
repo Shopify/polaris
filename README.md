@@ -37,10 +37,10 @@ import '@shopify/polaris/dist/styles.css';
 Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"
-/>
+<link rel="stylesheet" <<<<<<< HEAD
+href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css" =======
+href="https://unpkg.com/@shopify/polaris@6.4.0/dist/styles.css" >>>>>>>
+b9c064069 (v6.4.0) />
 ```
 
 2.  Include the translations and any of the provided components in your project:
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.4.0/dist/styles.css"
 />
 ```
 
