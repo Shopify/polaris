@@ -17,6 +17,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Disabled `pointer-events` on the prefix and suffix elements of the `TextField` component ([#4207](https://github.com/Shopify/polaris-react/pull/4207))
 - Added `useIsomorphicLayout` ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
 - Prevent `KeypressListener` attaching/detaching on every render ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
+- Added `useIsomorphicLayoutEffect` hook ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
+- Prevented `KeypressListener` attaching/detaching on every render ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
 
 ### Bug fixes
 

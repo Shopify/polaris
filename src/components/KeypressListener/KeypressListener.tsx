@@ -18,16 +18,16 @@ export function KeypressListener({
 }: KeypressListenerProps) {
   const tracked = useRef({handler, keyCode});
 
+  useIsomorphicLayoutEffect(() => {
+    tracked.current = {handler, keyCode};
+  }, [handler, keyCode]);
+
   const handleKeyEvent = useCallback((event: KeyboardEvent) => {
     const {handler, keyCode} = tracked.current;
     if (event.keyCode === keyCode) {
       handler(event);
     }
   }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    tracked.current = {handler, keyCode};
-  }, [handler, keyCode]);
 
   useEffect(() => {
     document.addEventListener(keyEvent, handleKeyEvent);
