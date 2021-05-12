@@ -1,8 +1,7 @@
-import React, {useState, useCallback, useRef, useContext} from 'react';
+import React, {useState, useCallback, useRef} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
-import {ActionRefsTrackerContext} from '../../utilities/action-refs-tracker';
 import {useUniqueId} from '../../utilities/unique-id/hooks';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -42,8 +41,6 @@ export interface ModalProps extends FooterProps {
   sectioned?: boolean;
   /** Increases the modal width */
   large?: boolean;
-  /** Decreases the modal width */
-  small?: boolean;
   /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed */
@@ -60,8 +57,6 @@ export interface ModalProps extends FooterProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
-  /** id matching Action object */
-  actionId?: string;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -77,7 +72,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   sectioned,
   loading,
   large,
-  small,
   limitHeight,
   footer,
   primaryAction,
@@ -88,14 +82,12 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onIFrameLoad,
   onTransitionEnd,
   noScroll,
-  actionId,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
   const headerId = useUniqueId('modal-header');
   const activatorRef = useRef<HTMLDivElement>(null);
 
-  const actionRefsTracker = useContext(ActionRefsTrackerContext);
   const i18n = useI18n();
   const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
 
@@ -108,32 +100,19 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     }
   }, [onTransitionEnd]);
 
-  const getActivatorElement = useCallback(() => {
-    const filterItem = actionRefsTracker.filter(
-      (item) => item.id === actionId && item.actionRef?.current,
-    );
-
-    if (filterItem.length > 0) {
-      return filterItem[0].actionRef?.current;
-    } else {
-      const activatorElement =
-        activator && isRef(activator)
-          ? activator && activator.current
-          : activatorRef.current;
-
-      return activatorElement;
-    }
-  }, [actionRefsTracker, activator, actionId]);
-
   const handleExited = useCallback(() => {
     setIframeHeight(IFRAME_LOADING_HEIGHT);
 
-    const activatorElement = getActivatorElement();
-
+    const activatorElement =
+      activator && isRef(activator)
+        ? activator && activator.current
+        : activatorRef.current;
     if (activatorElement) {
-      requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
+      requestAnimationFrame(() =>
+        focusFirstFocusableNode(activatorElement, false),
+      );
     }
-  }, [getActivatorElement]);
+  }, [activator]);
 
   const handleIFrameLoad = useCallback(
     (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
@@ -209,7 +188,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         onEntered={handleEntered}
         onExited={handleExited}
         large={large}
-        small={small}
         limitHeight={limitHeight}
       >
         <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
