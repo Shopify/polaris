@@ -296,6 +296,46 @@ describe('<DualThumb />', () => {
 
       expect(actual).toStrictEqual(expected);
     });
+
+    describe('when min is above 0', () => {
+      it('sets min lower position to 0px', () => {
+        const min = 10;
+        const max = 50;
+
+        const dualThumb = mountWithAppProvider(
+          <DualThumb {...mockProps} min={min} max={max} value={[10, 11]} />,
+        );
+
+        const expected = {
+          '--Polaris-RangeSlider-progress-lower': '0px',
+          '--Polaris-RangeSlider-progress-upper': '-0.40000000000000036px',
+        };
+        const track = findByTestID(dualThumb, 'track');
+        const actual = track.find('[style]').prop('style');
+
+        expect(actual).toStrictEqual(expected);
+      });
+    });
+
+    describe('when min is below 0', () => {
+      it('sets min lower position to 0px', () => {
+        const min = -10;
+        const max = 30;
+
+        const dualThumb = mountWithAppProvider(
+          <DualThumb {...mockProps} min={min} max={max} value={[-10, -9]} />,
+        );
+
+        const expected = {
+          '--Polaris-RangeSlider-progress-lower': '0px',
+          '--Polaris-RangeSlider-progress-upper': '-0.3999999999999999px',
+        };
+        const track = findByTestID(dualThumb, 'track');
+        const actual = track.find('[style]').prop('style');
+
+        expect(actual).toStrictEqual(expected);
+      });
+    });
   });
 
   describe('keyboard control', () => {
