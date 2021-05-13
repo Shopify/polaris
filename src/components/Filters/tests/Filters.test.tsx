@@ -267,10 +267,7 @@ describe('<Filters />', () => {
 
     it('receives a readOnly TextField when the readOnlyQueryField is true', () => {
       const resourceFilters = mountWithApp(
-        <Filters
-          {...mockPropsWithShortcuts}
-          readOnlyQueryField
-        />,
+        <Filters {...mockPropsWithShortcuts} readOnlyQueryField />,
       );
 
       const connectedFilterControl = resourceFilters.find(

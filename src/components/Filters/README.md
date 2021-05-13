@@ -1464,7 +1464,7 @@ function ResourceListFiltersExample() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState("Mae");
+  const [queryValue, setQueryValue] = useState('Mae');
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
     [],
@@ -1598,7 +1598,7 @@ function ResourceListFiltersExample() {
               url: 'customers/341',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
-            }
+            },
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
