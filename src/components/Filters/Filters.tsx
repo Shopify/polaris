@@ -93,6 +93,8 @@ export interface FiltersProps {
   hideTags?: boolean;
   /** Hide the query field */
   hideQueryField?: boolean;
+  /** Sets the query field as read only */
+  readOnlyQueryField?: boolean;
 }
 
 type CombinedProps = FiltersProps & {
@@ -141,6 +143,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       hideTags,
       hideQueryField,
       i18n,
+      readOnlyQueryField,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const {resourceName} = this.context;
@@ -286,6 +289,7 @@ class FiltersInner extends Component<CombinedProps, State> {
             clearButton
             onClearButtonClick={onQueryClear}
             disabled={disabled}
+            readOnly={readOnlyQueryField}
           />
         )}
       </ConnectedFilterControl>

@@ -265,6 +265,23 @@ describe('<Filters />', () => {
       ).toBe(true);
     });
 
+    it('receives a readOnly TextField when the readOnlyQueryField is true', () => {
+      const resourceFilters = mountWithApp(
+        <Filters
+          {...mockPropsWithShortcuts}
+          readOnlyQueryField
+        />,
+      );
+
+      const connectedFilterControl = resourceFilters.find(
+        ConnectedFilterControl,
+      )!;
+
+      expect(connectedFilterControl).toContainReactComponent(TextField, {
+        readOnly: true,
+      });
+    });
+
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
