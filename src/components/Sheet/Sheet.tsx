@@ -42,6 +42,7 @@ export interface SheetProps {
   accessibilityLabel: string;
 }
 
+/** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
 export function Sheet({
   children,
   open,
@@ -52,6 +53,13 @@ export function Sheet({
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
+
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Sheet /> is deprecated. This component might be removed in a future major version of Polaris. Use <Modal /> instead or avoid modal patterns all together.',
+    );
+  }
 
   return (
     <Portal idPrefix="sheet">

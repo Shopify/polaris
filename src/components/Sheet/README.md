@@ -13,6 +13,7 @@ keywords:
   - dialog
   - web
 fullSizeExamples: true
+deprecationNotice: The sheet component has been deprecated.
 ---
 
 # Sheet
