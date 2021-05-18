@@ -13,10 +13,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
