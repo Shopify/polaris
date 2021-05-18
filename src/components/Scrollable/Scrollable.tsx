@@ -17,6 +17,7 @@ const DELTA_THRESHOLD = 0.2;
 const DELTA_PERCENTAGE = 0.2;
 const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
 const PREFERS_REDUCED_MOTION = prefersReducedMotion();
+const LOW_RES_BUFFER = 2;
 
 export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
@@ -160,7 +161,8 @@ export class Scrollable extends Component<ScrollableProps, State> {
     const shouldTopShadow = Boolean(shadow && scrollTop > 0);
 
     const canScroll = scrollHeight > clientHeight;
-    const hasScrolledToBottom = scrollHeight - scrollTop === clientHeight;
+    const hasScrolledToBottom =
+      scrollHeight - scrollTop <= clientHeight + LOW_RES_BUFFER;
 
     if (canScroll && hasScrolledToBottom && onScrolledToBottom) {
       onScrolledToBottom();
