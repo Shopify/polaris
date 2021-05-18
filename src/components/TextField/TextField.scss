@@ -191,6 +191,7 @@ $stacking-order: (
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
+  pointer-events: none;
 }
 
 .Prefix {
