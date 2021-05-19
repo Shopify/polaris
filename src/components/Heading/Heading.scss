@@ -3,4 +3,9 @@
 .Heading {
   @include text-style-heading;
   margin: 0;
+
+  @media print {
+    font-size: rem(14px);
+    line-height: rem(18px);
+  }
 }

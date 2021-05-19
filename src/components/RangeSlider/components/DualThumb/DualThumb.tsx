@@ -86,9 +86,12 @@ export class DualThumb extends Component<DualThumbProps, State> {
         const adjustedTrackWidth = width - thumbSize;
         const adjustedTrackLeft = left + thumbSize / 2;
 
+        const range = this.props.max - this.props.min;
+        const minValuePosition = (this.props.min / range) * adjustedTrackWidth;
+
         this.setState({
           trackWidth: adjustedTrackWidth,
-          trackLeft: adjustedTrackLeft,
+          trackLeft: adjustedTrackLeft - minValuePosition,
         });
       }
     },
@@ -168,9 +171,12 @@ export class DualThumb extends Component<DualThumbProps, State> {
 
     const trackWidth = this.state.trackWidth;
     const range = max - min;
+    const minValuePosition = (min / range) * trackWidth;
 
-    const leftPositionThumbLower = (value[0] / range) * trackWidth;
-    const leftPositionThumbUpper = (value[1] / range) * trackWidth;
+    const leftPositionThumbLower =
+      (value[0] / range) * trackWidth - minValuePosition;
+    const leftPositionThumbUpper =
+      (value[1] / range) * trackWidth - minValuePosition;
 
     const outputLowerClassName = classNames(styles.Output, styles.OutputLower);
     const outputMarkupLower =

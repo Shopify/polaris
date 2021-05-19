@@ -3,11 +3,6 @@ const spawn = require('child_process').spawn;
 
 const postcssShopify = require('@shopify/postcss-plugin');
 
-// Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
-// sewing-kit in order avoid a bunch of duplication in our devDependencies
-// eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-
 // Enabling docs means the preview panel takes an extra 2ish seconds to load
 // This usually isn't a big deal, except when we're running all of our stories
 // through our a11y tests, and a 2s delay over several hundred stories adds up.
@@ -24,10 +19,6 @@ module.exports = {
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
-
-    // Shrink ray only strips hashes when comparing filenames with this format.
-    // Without this there will be lots of "add 1 file and removed 1 file" notices.
-    config.output.filename = '[name]-[hash].js';
 
     const extraRules = [
       {
@@ -79,35 +70,6 @@ module.exports = {
         ],
       },
     ];
-
-    config.plugins.push({
-      apply: (compiler) => {
-        compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-          spawn('yarn splash --show-disable-tip', {
-            shell: true,
-            stdio: 'inherit',
-          });
-        });
-      },
-    });
-
-    if (isProduction) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          reportFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/report.html',
-          ),
-          generateStatsFile: true,
-          statsFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/stats.json',
-          ),
-          openAnalyzer: false,
-        }),
-      );
-    }
 
     config.module.rules = [
       // Strip out existing rules that apply to md files

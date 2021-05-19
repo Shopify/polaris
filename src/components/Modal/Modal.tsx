@@ -41,6 +41,8 @@ export interface ModalProps extends FooterProps {
   sectioned?: boolean;
   /** Increases the modal width */
   large?: boolean;
+  /** Decreases the modal width */
+  small?: boolean;
   /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed */
@@ -55,6 +57,8 @@ export interface ModalProps extends FooterProps {
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  /** Removes Scrollable container from the modal content */
+  noScroll?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -70,6 +74,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   sectioned,
   loading,
   large,
+  small,
   limitHeight,
   footer,
   primaryAction,
@@ -79,6 +84,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onClose,
   onIFrameLoad,
   onTransitionEnd,
+  noScroll,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
@@ -150,15 +156,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       content
     );
 
-    const bodyMarkup = src ? (
-      <iframe
-        name={iFrameName}
-        title={iframeTitle}
-        src={src}
-        className={styles.IFrame}
-        onLoad={handleIFrameLoad}
-        style={{height: `${iframeHeight}px`}}
-      />
+    const scrollContainerMarkup = noScroll ? (
+      <div className={styles.Body}>{body}</div>
     ) : (
       <Scrollable
         shadow
@@ -169,6 +168,19 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Scrollable>
     );
 
+    const bodyMarkup = src ? (
+      <iframe
+        name={iFrameName}
+        title={iframeTitle}
+        src={src}
+        className={styles.IFrame}
+        onLoad={handleIFrameLoad}
+        style={{height: `${iframeHeight}px`}}
+      />
+    ) : (
+      scrollContainerMarkup
+    );
+
     dialog = (
       <Dialog
         instant={instant}
@@ -177,6 +189,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         onEntered={handleEntered}
         onExited={handleExited}
         large={large}
+        small={small}
         limitHeight={limitHeight}
       >
         <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>

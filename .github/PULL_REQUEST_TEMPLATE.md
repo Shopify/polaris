@@ -72,7 +72,3 @@ export function Playground() {
 <!--
   When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md).
 -->
-
-<!--
-  If you don't have access to Percy, please request access in the #polaris Slack channel.
--->

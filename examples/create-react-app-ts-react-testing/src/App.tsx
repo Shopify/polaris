@@ -18,7 +18,7 @@ interface AccountProps {
   onAction(): void;
 }
 
-export default function App() {
+export function App() {
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
   const [email, setEmail] = useState('');

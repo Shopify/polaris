@@ -7,9 +7,11 @@ import {
   useIndexSelectionChange,
 } from '../../../../utilities/index-provider';
 import {Checkbox} from '../Checkbox';
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
+
+type RowStatus = 'success' | 'subdued';
 
 export interface RowProps {
   children: React.ReactNode;
@@ -17,6 +19,7 @@ export interface RowProps {
   selected: boolean;
   position: number;
   subdued?: boolean;
+  status?: RowStatus;
   onNavigation?(id: string): void;
 }
 
@@ -26,6 +29,7 @@ export const Row = memo(function Row({
   id,
   position,
   subdued,
+  status,
   onNavigation,
 }: RowProps) {
   const {selectMode, condensed} = useIndexRow();
@@ -42,6 +46,7 @@ export const Row = memo(function Row({
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
+    status && styles[variationName('status', status)],
   );
 
   const handleInteraction = useCallback(
