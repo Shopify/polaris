@@ -403,7 +403,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <div className={styles.Container}>{children}</div>
           <VisuallyHidden>
             <DropZoneInput
               {...inputAttributes}
@@ -411,6 +410,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               onFileDialogClose={onFileDialogClose}
             />
           </VisuallyHidden>
+          <div className={styles.Container}>{children}</div>
         </div>
       </Labelled>
     </DropZoneContext.Provider>

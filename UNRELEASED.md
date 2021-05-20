@@ -25,6 +25,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Prevent extra right margin being added to the `Filter` component when used without filters. ([#4134](https://github.com/Shopify/polaris-react/pull/4134))
 - Fixed offset in `DualThumb` when used with a min value different from 0 [#4172](https://github.com/Shopify/polaris-react/pull/4172)
 - Fixed loading state stacking in `ResourceList` ([#4208](https://github.com/Shopify/polaris-react/issues/4208))
+- Fixed focus order of visually hidden input in `DropZone` ([#4219](https://github.com/Shopify/polaris-react/pull/4219))
 
 ### Documentation
 
