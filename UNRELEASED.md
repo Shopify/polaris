@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `id` prop to `Layout` and `Heading` for hash linking ([#4307](https://github.com/Shopify/polaris-react/pull/4307))
+- Added support for multi-sectioned options in `Autocomplete` [#4221](https://github.com/Shopify/polaris-react/pull/4221)
 
 ### Bug fixes
 
