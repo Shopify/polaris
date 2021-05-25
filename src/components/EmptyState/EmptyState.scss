@@ -115,39 +115,6 @@ $centered-illustration-width: rem(226px);
   }
 }
 
-.withinPage {
-  .Details {
-    position: relative;
-    z-index: z-index(details, $stacking-order);
-    padding: 0 spacing();
-    width: $within-page-detail-width;
-
-    @include page-content-when-not-fully-condensed {
-      padding: 0;
-    }
-  }
-
-  .Image {
-    position: relative;
-    z-index: z-index(illustration, $stacking-order);
-    margin-top: spacing(loose) * -1;
-    margin-left: $illustration-left-margin;
-    width: $illustration-width-cropped;
-    max-width: none;
-
-    @include page-content-when-not-fully-condensed {
-      margin-left: 0;
-      width: 100%;
-    }
-
-    @include page-content-when-not-partially-condensed {
-      margin-top: 0;
-      margin-left: $illustration-left-margin;
-      width: $illustration-width;
-    }
-  }
-}
-
 .imageContained {
   .Image {
     @include page-content-when-not-partially-condensed {
