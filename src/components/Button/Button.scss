@@ -339,6 +339,10 @@ $stacking-order: (
     padding-left: spacing(base-tight);
     padding-right: spacing(base-tight);
   }
+  
+  &.sizeSlim {
+    margin-top: rem(2px);
+  }
 
   .Icon:first-child {
     margin-left: 0;
