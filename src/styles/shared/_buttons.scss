@@ -127,18 +127,21 @@
   &:hover {
     border: border-width() solid var(--p-border);
     box-shadow: none;
+    color: var(--p-text);
     background: var(--p-surface-hovered);
   }
 
   &:focus {
     border: border-width() solid var(--p-border);
     box-shadow: none;
+    color: var(--p-text);
     @include focus-ring($style: 'focused');
   }
 
   &:active {
     border: border-width() solid var(--p-border);
     box-shadow: none;
+    color: var(--p-text);
     background: var(--p-surface-pressed);
     &::after {
       box-shadow: none;
