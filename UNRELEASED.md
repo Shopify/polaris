@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `focus-ring` mixin for when unitless addition occured ([#4234](https://github.com/Shopify/polaris-react/pull/4234))
 - Fixed `Scrollable` lower bound detection for lower resolution screens
 - Fixed a bug where the inner nested drop zone was not available during a dragging event. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
 - Fixed border misalignment and updated color of `DropZone` to match current design. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
