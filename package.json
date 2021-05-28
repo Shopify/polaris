@@ -100,7 +100,7 @@
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/pluginutils": "^3.1.0",
     "@shopify/jest-dom-mocks": "^2.9.1",
-    "@shopify/postcss-plugin": "^3.0.1",
+    "@shopify/postcss-plugin": "^3.1.1",
     "@shopify/react-testing": "^2.1.2",
     "@shopify/sewing-kit": "^0.140.0",
     "@shopify/storybook-a11y-test": "^0.0.1",
