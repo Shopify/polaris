@@ -134,7 +134,6 @@
   &:focus {
     border: border-width() solid var(--p-border);
     box-shadow: none;
-    color: var(--p-text);
     @include focus-ring($style: 'focused');
   }
 
