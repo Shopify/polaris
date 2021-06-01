@@ -140,7 +140,6 @@
   &:active {
     border: border-width() solid var(--p-border);
     box-shadow: none;
-    color: var(--p-text);
     background: var(--p-surface-pressed);
     &::after {
       box-shadow: none;
