@@ -8,6 +8,30 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.5.0 - 2021-06-02
+
+### Enhancements
+
+- Disabled `pointer-events` on the prefix and suffix elements of the `TextField` component ([#4207](https://github.com/Shopify/polaris-react/pull/4207))
+
+### Bug fixes
+
+- Fixed `focus-ring` mixin for when unitless addition occurred ([#4234](https://github.com/Shopify/polaris-react/pull/4234))
+- Fixed `Scrollable` lower bound detection for lower resolution screens ([#4218](https://github.com/Shopify/polaris-react/pull/4218))
+- Fixed a bug where the inner nested drop zone was not available during a dragging event. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
+- Fixed border misalignment and updated color of `DropZone` to match current design. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
+- Fixed heading overflow issue on dismissible CalloutCard ([#4135](https://github.com/Shopify/polaris-react/pull/4135))
+- Fixed `Loading` setting state after it has unmounted ([#4158](https://github.com/Shopify/polaris-react/pull/4158))
+- Prevent extra right margin being added to the `Filter` component when used without filters. ([#4134](https://github.com/Shopify/polaris-react/pull/4134))
+- Fixed off-center image in EmptyState within page context ([#4140](https://github.com/Shopify/polaris-react/pull/4140))
+- Fixed offset in `DualThumb` when used with a min value different from 0 [#4172](https://github.com/Shopify/polaris-react/pull/4172)
+- Fixed loading state stacking in `ResourceList` ([#4208](https://github.com/Shopify/polaris-react/issues/4208))
+- Fixed focus order of visually hidden input in `DropZone` ([#4219](https://github.com/Shopify/polaris-react/pull/4219))
+
+### Deprecations
+
+- Deprecate `Sheet` component [#4210](https://github.com/Shopify/polaris-react/pull/4210)
+
 ## 6.4.0 - 2021-05-11
 
 - Add `variableHeight` prop to `DropZone` so children control its height ([#4136](https://github.com/Shopify/polaris-react/pull/4136))
