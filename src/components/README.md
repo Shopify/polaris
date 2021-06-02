@@ -98,10 +98,10 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"
-/>
+<link rel="stylesheet" <<<<<<< HEAD
+href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css" =======
+href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css" >>>>>>>
+a68c94cdf (v6.5.0) />
 ```
 
 Wrap your application in a div that contains the Polaris CSS variables. This is a temporary workaround and the variables are unstable. This will be updated in the next major release.
