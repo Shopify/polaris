@@ -5,6 +5,7 @@ on:
     branches:
       - '**'
 
+jobs:
   size:
     name: Size limit
     runs-on: ubuntu-latest
