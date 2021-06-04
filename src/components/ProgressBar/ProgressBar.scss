@@ -58,15 +58,17 @@
 .Indicator {
   height: inherit;
   width: 0;
-  will-change: width;
   background-color: var(--p-progressbar-indicator);
-  animation: fillup duration(slowest) easing();
-  transition: width duration(slowest) easing();
 
   @media screen and (-ms-high-contrast: active) {
     border: progress-bar-height() solid
       ms-high-contrast-color('selected-text-background');
   }
+}
+.Animated {
+  will-change: width;
+  animation: fillup duration(slowest) easing();
+  transition: width duration(slowest) easing();
 }
 
 .Progress,
