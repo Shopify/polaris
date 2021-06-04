@@ -66,7 +66,7 @@ We’ll review your pull request and either merge it, request changes to it, or 
 
 1. Fork the repository and create your branch from `main`
 1. Run `yarn` in the repository root
-1. If you’ve fixed a bug or added code that [should be tested](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Testing.md), add tests
+1. If you’ve fixed a bug or added code, make sure to add tests
 1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
 1. If your pull request modifies any SVG files run `yarn run sewing-kit optimize`
 1. Format your code with `yarn format`
@@ -85,7 +85,9 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Best practices
 
-Take a look at [our best practices](https://github.com/Shopify/web-foundation/tree/master/handbook/Best%20practices) which include [testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Testing.md), [React testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/React/Testing.md), [Jest](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Jest.md), and [Enzyme](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Enzyme.md). We will continue to add best practices here.
+Use the [documentation directory](https://github.com/Shopify/polaris-react/tree/main/documentation) for guidance on: [accessibility testing](https://github.com/Shopify/polaris-react/blob/main/documentation/Accessibility%20testing.md) and [adding to the change log](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md). For code style best practices, take a look at existing components.
+
+Making sure the voice and tone is consistent across Polaris is important to us, for more information visit the [voice and tone guidelines](https://polaris.shopify.com/content/voice-and-tone).
 
 ### Development workflow
 
@@ -116,7 +118,7 @@ Linting will catch common issues that may exist in your code. You can check the 
 
 Our code editor of choice is [VS Code](https://code.visualstudio.com/) which has [integrations with Prettier](https://github.com/prettier/prettier-vscode) and our linting tools which make this automatic. If you choose to use VS Code, these integrations will be listed as recommended extensions (or search for `@recommended`) in the extensions panel.
 
-However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [our JavaScript style guide](https://github.com/Shopify/javascript) will guide you in the right direction.
+However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [our JavaScript](https://github.com/Shopify/javascript) and [CSS](https://github.com/Shopify/css) guides may help.
 
 ## Breaking changes
 
