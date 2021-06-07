@@ -54,6 +54,14 @@ Use the color option when you need to blend the progress bar in a context that c
 </div>
 ```
 
+### Non-animated progress bar
+
+Use the animated prop when you want to show a static progress bar.
+
+```jsx
+<ProgressBar progress={80} animated={false} />
+```
+
 ---
 
 ## Related components
