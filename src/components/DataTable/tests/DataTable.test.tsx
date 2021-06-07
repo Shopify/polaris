@@ -60,6 +60,18 @@ describe('<DataTable />', () => {
     expect(test).not.toThrow();
   });
 
+  it('does not set state after the component has been unmounted', () => {
+    // When a React component calls setState after being unmounted it logs the error:
+    // "Warning: Can't perform a React state update on an unmounted component ..."
+    const consoleSpy = jest.spyOn(console, 'error');
+    const dataTable = mountWithApp(
+      <DataTable columnContentTypes={[]} headings={[]} rows={[]} />,
+    );
+    dataTable.unmount();
+    timer.runAllTimers();
+    expect(consoleSpy).not.toHaveBeenCalled();
+  });
+
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
       const headings = ['Column 1', 'Column 2'];
