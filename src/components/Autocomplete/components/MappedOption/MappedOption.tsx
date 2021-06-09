@@ -1,13 +1,13 @@
 import React, {memo} from 'react';
 
-import {ListBox} from '../ListBox';
-import type {ComboBoxProps as ComboBoxOldProps} from '../ComboBoxOld';
+import {ListBox} from '../../../ListBox';
+import type {OptionDescriptor} from '../../../OptionList';
 import type {ArrayElement} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './MappedOption.scss';
 
-type MappedOption = ArrayElement<ComboBoxOldProps['options']> & {
+type MappedOption = ArrayElement<OptionDescriptor[]> & {
   selected: boolean;
   singleSelection: boolean;
 };

@@ -1,23 +1,19 @@
 import React, {useMemo, useCallback} from 'react';
 
 import type {ActionListItemDescriptor} from '../../types';
+import type {OptionDescriptor} from '../OptionList';
 import type {PopoverProps} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
+import {ComboBox} from '../ComboBox';
+import {ListBox} from '../ListBox';
 
-import {
-  ComboBox,
-  ComboBoxOld,
-  ComboBoxOldProps,
-  ListBox,
-  MappedOption,
-  MappedAction,
-} from './components';
+import {MappedOption, MappedAction} from './components';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: ComboBoxOldProps['options'];
+  options: OptionDescriptor[];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
@@ -48,7 +44,6 @@ export interface AutocompleteProps {
 // generated *.d.ts files.
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
-  ComboBox: typeof ComboBoxOld;
   TextField: typeof ComboBox.TextField;
 } = function Autocomplete({
   options,
@@ -151,5 +146,4 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   );
 };
 
-Autocomplete.ComboBox = ComboBoxOld;
 Autocomplete.TextField = ComboBox.TextField;

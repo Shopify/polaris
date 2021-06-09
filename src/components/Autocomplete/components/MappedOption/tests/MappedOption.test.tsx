@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithListBoxProvider} from 'test-utilities/list-box';
 
-import {ListBox} from '../../ListBox';
+import {ListBox} from '../../../../ListBox';
 import {MappedOption} from '../MappedOption';
 
 describe('MappedOption', () => {

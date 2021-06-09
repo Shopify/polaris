@@ -2,17 +2,14 @@ import React from 'react';
 import {mountWithApp, ReactTestingElement, CustomRoot} from 'test-utilities';
 import {KeypressListener} from 'components';
 
-import {BaseTextField as TextField} from '../../TextField';
+import {TextField} from '../../TextField';
 import {Key} from '../../../types';
-import {
-  ComboBox,
-  ListBox,
-  ComboBoxProps,
-  MappedOption,
-  MappedAction,
-} from '../components';
+import {MappedOption, MappedAction} from '../components';
 import {ComboBoxTextFieldContext} from '../../../utilities/combo-box';
 import {Autocomplete} from '../Autocomplete';
+import {ComboBox} from '../../ComboBox';
+import type {ComboBoxProps} from '../../ComboBox';
+import {ListBox} from '../../ListBox';
 
 describe('<Autocomplete/>', () => {
   const options = [

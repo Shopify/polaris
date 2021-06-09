@@ -5,6 +5,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Breaking changes
 
 - Dropping support for node 10.x
+- `Autocomplete` now requires `Autocomplete.TextField` to be used ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
+- Removed ComboBox as a named export on `Autocomplete` ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
 
 ### Enhancements
 
