@@ -9,7 +9,7 @@ import React, {
   Component,
 } from 'react';
 import debounce from 'lodash/debounce';
-import {DragDropMajor, CircleAlertMajor} from '@shopify/polaris-icons';
+import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -364,9 +364,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   const dragOverlay =
     (active || dragging) &&
-    (!internalError || !error) &&
+    !internalError &&
+    !error &&
     overlay &&
-    overlayMarkup(DragDropMajor, 'primary', overlayTextWithDefault);
+    overlayMarkup(UploadMajor, 'interactive', overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
@@ -402,7 +403,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <div className={styles.Container}>{children}</div>
           <VisuallyHidden>
             <DropZoneInput
               {...inputAttributes}
@@ -410,6 +410,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               onFileDialogClose={onFileDialogClose}
             />
           </VisuallyHidden>
+          <div className={styles.Container}>{children}</div>
         </div>
       </Labelled>
     </DropZoneContext.Provider>
@@ -417,13 +418,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   function overlayMarkup(
     icon: FunctionComponent,
-    color: 'critical' | 'primary',
+    color: 'critical' | 'interactive',
     text: string,
   ) {
     return (
       <div className={styles.Overlay}>
         <Stack vertical spacing="tight">
-          <Icon source={icon} color={color} />
+          {size === 'small' && <Icon source={icon} color={color} />}
           {size === 'extraLarge' && (
             <DisplayText size="small" element="p">
               {text}

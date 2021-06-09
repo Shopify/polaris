@@ -23,6 +23,7 @@ import {Tag} from '../Tag';
 import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
+// eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';

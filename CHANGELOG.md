@@ -8,6 +8,41 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.5.0 - 2021-06-02
+
+### Enhancements
+
+- Disabled `pointer-events` on the prefix and suffix elements of the `TextField` component ([#4207](https://github.com/Shopify/polaris-react/pull/4207))
+
+### Bug fixes
+
+- Fixed `focus-ring` mixin for when unitless addition occurred ([#4234](https://github.com/Shopify/polaris-react/pull/4234))
+- Fixed `Scrollable` lower bound detection for lower resolution screens ([#4218](https://github.com/Shopify/polaris-react/pull/4218))
+- Fixed a bug where the inner nested drop zone was not available during a dragging event. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
+- Fixed border misalignment and updated color of `DropZone` to match current design. ([#4123](https://github.com/Shopify/polaris-react/pull/4123))
+- Fixed heading overflow issue on dismissible CalloutCard ([#4135](https://github.com/Shopify/polaris-react/pull/4135))
+- Fixed `Loading` setting state after it has unmounted ([#4158](https://github.com/Shopify/polaris-react/pull/4158))
+- Prevent extra right margin being added to the `Filter` component when used without filters. ([#4134](https://github.com/Shopify/polaris-react/pull/4134))
+- Fixed off-center image in EmptyState within page context ([#4140](https://github.com/Shopify/polaris-react/pull/4140))
+- Fixed offset in `DualThumb` when used with a min value different from 0 [#4172](https://github.com/Shopify/polaris-react/pull/4172)
+- Fixed loading state stacking in `ResourceList` ([#4208](https://github.com/Shopify/polaris-react/issues/4208))
+- Fixed focus order of visually hidden input in `DropZone` ([#4219](https://github.com/Shopify/polaris-react/pull/4219))
+
+### Deprecations
+
+- Deprecate `Sheet` component [#4210](https://github.com/Shopify/polaris-react/pull/4210)
+
+## 6.4.0 - 2021-05-11
+
+- Add `variableHeight` prop to `DropZone` so children control its height ([#4136](https://github.com/Shopify/polaris-react/pull/4136))
+- Add print styles to `Card`, `Heading`, `Layout`, `Layout.Section`, `Subheading`, `TextStyle` components ([#4142](https://github.com/Shopify/polaris-react/pull/4142))
+- Add `fullWidth` prop to `ColorPicker` so the color picker can take the full width ([#4152](https://github.com/Shopify/polaris-react/pull/4152))
+- Add `noScroll` prop to `Modal` which prevents modal contents from scrolling ([#4153](https://github.com/Shopify/polaris-react/pull/4153))
+- Added new `color` prop to ProgressBar ([#3415](https://github.com/Shopify/polaris-react/pull/3415))
+- Added `requiredIndicator` prop to `Label`, `Labelled`, `Select` and `TextField` ([#4119](https://github.com/Shopify/polaris-react/pull/4119))
+- Add `small` prop to `Modal` so that width can be decreased to 380px ([#4177](https://github.com/Shopify/polaris-react/pull/4177))
+- Add `status` prop to `IndexTable.Row` to allow table rows to specify background colors([#4146](https://github.com/Shopify/polaris-react/pull/4146))
+
 ## 6.3.0 - 2021-04-19
 
 - Add `hoverable` prop to `DataTable` ([#4074](https://github.com/Shopify/polaris-react/pull/4074))

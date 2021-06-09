@@ -51,7 +51,7 @@ export function EmptyState({
     styles.EmptyState,
     fullWidth && styles.fullWidth,
     imageContained && styles.imageContained,
-    withinContentContainer ? styles.withinContentContainer : styles.withinPage,
+    withinContentContainer && styles.withinContentContainer,
   );
 
   const imageMarkup = largeImage ? (

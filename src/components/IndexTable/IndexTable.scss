@@ -111,34 +111,43 @@ $loading-panel-height: rem(53px);
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
-}
 
-.TableRow-hovered {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
-  &,
-  .TableCell-first,
-  .TableCell-first + .TableCell {
-    background-color: var(--p-surface-selected-hovered);
+  &.statusSuccess {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-primary-selected);
+    }
   }
-}
 
-.SubTableRow {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
-  &,
-  .TableCell-first,
-  .TableCell-first + .TableCell {
-    background-color: var(--p-surface-subdued);
+  &.statusSubdued {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-subdued);
+    }
   }
-}
 
-.TableRow-selected {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
-  &,
-  .TableHeading-first,
-  .TableHeading-second,
-  .TableCell-first,
-  .TableCell-first + .TableCell {
-    background-color: var(--p-surface-selected);
+  &.TableRow-hovered {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected-hovered);
+    }
+  }
+
+  &.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableHeading-first,
+    .TableHeading-second,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected);
+    }
   }
 }
 

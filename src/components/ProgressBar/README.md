@@ -42,6 +42,26 @@ Use the size option when you need to increase or decrease the visual weight of t
 <ProgressBar progress={40} size="small" />
 ```
 
+### Colored progress bars
+
+Use the color option when you need to blend the progress bar in a context that calls for it, such as a progress toward success or where it’s the primary focus.
+
+```jsx
+<div>
+  <ProgressBar progress={70} color="primary" />
+  <br />
+  <ProgressBar progress={30} color="success" />
+</div>
+```
+
+### Non-animated progress bar
+
+Use the animated prop when you want to show a static progress bar.
+
+```jsx
+<ProgressBar progress={80} animated={false} />
+```
+
 ---
 
 ## Related components

@@ -15,6 +15,15 @@ describe('<Labelled />', () => {
     expect(label.prop('children')).toBe('Label');
   });
 
+  it('passes required indicator prop along to the label', () => {
+    const element = mountWithAppProvider(
+      <Labelled id="my-label" label="Label" requiredIndicator />,
+    );
+    const label = element.find(Label);
+
+    expect(label.prop('requiredIndicator')).toBe(true);
+  });
+
   describe('error', () => {
     it('renders error markup when provided with a value', () => {
       const label = mountWithAppProvider(
