@@ -4,6 +4,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- Dropping support for node 10.x
+
 ### Enhancements
 
 - Added optional `onClick` key to `secondaryAction` on `Nav/Item` component ([#4374](https://github.com/Shopify/polaris-react/pull/4374))
