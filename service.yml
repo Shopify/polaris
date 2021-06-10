@@ -1,9 +1,9 @@
+slack_channels:
+  - polaris
 production:
   classification: tier4
 npm:
   classification: library
-slack_channels:
-  - polaris
 url: https://polaris-react.shopifycloud.com
 oncall_url: https://shopify.pagerduty.com/services/PQNFXB1
 security:
