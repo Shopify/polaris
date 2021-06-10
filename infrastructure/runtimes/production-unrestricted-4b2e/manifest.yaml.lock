@@ -1,0 +1,210 @@
+# THIS FILE IS AUTO-GENERATED. DO NOT MODIFY IT MANUALLY.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    name: web
+    env: production
+    app: polaris-react
+    runtime-component: web
+  annotations:
+    platform.shopify.io/app-containers: web
+    shipit.shopify.io/restart: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: web
+  template:
+    metadata:
+      labels:
+        name: web
+        env: production
+        app: polaris-react
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - name: web
+        image: gcr.io/shopify-docker-images/apps/production/polaris-react
+        args:
+        - web
+        ports:
+        - name: http
+          containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: application-state
+        env:
+        - name: ENV
+          value: production
+        - name: APP_ENV
+          value: production
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: TRACE_PROXY_ADDR
+          value: http://$(NODE_IP):8096/
+        - name: STATSD_ADDR
+          value: 127.0.0.1:8125
+        - name: STATSD_IMPLEMENTATION
+          value: datadog
+        - name: PORT
+          value: "8000"
+        - name: IDENTITY_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: identity-config
+              key: clientId
+              optional: true
+        - name: IDENTITY_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: identity-config
+              key: clientSecret
+              optional: true
+        - name: KAFKA_CLIENT_CERT
+          value: /ssl/kafka-client/tls.crt
+        - name: KAFKA_CLIENT_KEY
+          value: /ssl/kafka-client/tls.key
+        - name: KAFKA_CLOUD_AGGREGATE_CLIENT_CERT
+          value: /ssl/kafka-client/tls.crt
+        - name: KAFKA_CLOUD_AGGREGATE_CLIENT_KEY
+          value: /ssl/kafka-client/tls.key
+        - name: KAFKA_AGGREGATE_BROKERS
+          valueFrom:
+            configMapKeyRef:
+              name: kafka-clusters
+              key: cloud-aggregate
+        - name: KAFKA_REGIONAL_BROKERS
+          valueFrom:
+            configMapKeyRef:
+              name: kafka-clusters
+              key: local
+        - name: KAFKA_CLIENT_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 200m
+            memory: 512Mi
+        volumeMounts:
+        - name: ejson-keys
+          readOnly: true
+          mountPath: /key
+        - name: kafka-client
+          readOnly: true
+          mountPath: /ssl/kafka-client
+        readinessProbe:
+          httpGet:
+            port: 8000
+            httpHeaders:
+            - name: X-Forwarded-Proto
+              value: https
+            path: /services/ping
+          initialDelaySeconds: 20
+          timeoutSeconds: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+            - CHOWN
+            - DAC_OVERRIDE
+            - KILL
+            - SETGID
+            - SETUID
+            drop:
+            - ALL
+          privileged: false
+      volumes:
+      - name: kafka-client
+        secret:
+          secretName: kafka-client
+      - name: ejson-keys
+        secret:
+          secretName: ejson-keys
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  progressDeadlineSeconds: 120
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: web
+  labels:
+    env: production
+    app: polaris-react
+    runtime-component: web
+spec:
+  acme:
+    config:
+    - domains:
+      - polaris-react.shopifycloud.com
+      http01:
+        ingressClass: nginx
+  dnsNames:
+  - polaris-react.shopifycloud.com
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  secretName: polaris-react-shopifycloud-com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  labels:
+    name: web
+    env: production
+    app: polaris-react
+    runtime-component: web
+  annotations:
+    ingress.shopify.io/tls-secretbuddy: "false"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "false"
+    security.shopify.io/auth: oauth2
+spec:
+  rules:
+  - host: polaris-react.shopifycloud.com
+    http:
+      paths:
+      - backend:
+          serviceName: web
+          servicePort: 80
+  tls:
+  - hosts:
+    - polaris-react.shopifycloud.com
+    secretName: polaris-react-shopifycloud-com
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    name: web
+    env: production
+    app: polaris-react
+    runtime-component: web
+spec:
+  selector:
+    name: web
+    env: production
+    app: polaris-react
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
