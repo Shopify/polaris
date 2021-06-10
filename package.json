@@ -67,7 +67,6 @@
     "prepublishOnly": "yarn run build",
     "dev": "npm-run-all copy-polaris-tokens storybook",
     "start": "serve -l ${PORT} -c .storybook/serve.json",
-    "heroku-postbuild": "yarn run storybook:build",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
