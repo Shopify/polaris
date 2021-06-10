@@ -8,13 +8,13 @@ runtimeInfo:
   env: production
   appImage: gcr.io/shopify-docker-images/apps/production/polaris-react
   domains:
-  - polaris-react.shopifycloud.com
+    - polaris-react.shopifycloud.com
 defaultBaseSource: github:Shopify/k8s_base/components
 components:
-- name: web
-  basePath: web/v10
-  resources:
-  - base: ingress.yaml
-  - base: certificate.yaml
-  - base: service.yaml
-  - base: deployment.yaml
+  - name: web
+    basePath: web/v10
+    resources:
+      - base: ingress.yaml
+      - base: certificate.yaml
+      - base: service.yaml
+      - base: deployment.yaml
