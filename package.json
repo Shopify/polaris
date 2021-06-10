@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris",
-  "description": "Shopify’s product component library",
+  "description": "Shopify’s admin product component library",
   "version": "6.5.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
