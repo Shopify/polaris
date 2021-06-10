@@ -1,5 +1,5 @@
 import React from 'react';
-import {InlineError, Icon} from 'components';
+import {InlineError, Icon, Labelled} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
@@ -357,6 +357,17 @@ describe('<Select />', () => {
       );
 
       expect(select.find(InlineError)).toHaveLength(0);
+    });
+  });
+
+  describe('requiredIndicator', () => {
+    it('passes requiredIndicator prop to Labelled', () => {
+      const element = mountWithAppProvider(
+        <Select label="Select" onChange={noop} requiredIndicator />,
+      );
+      const labelled = element.find(Labelled);
+
+      expect(labelled.prop('requiredIndicator')).toBe(true);
     });
   });
 });

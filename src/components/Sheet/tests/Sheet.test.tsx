@@ -4,6 +4,7 @@ import {CSSTransition} from 'react-transition-group';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Backdrop} from 'components/Backdrop';
 
+// eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
 
 describe('<Sheet />', () => {
