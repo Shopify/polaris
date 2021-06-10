@@ -253,6 +253,35 @@ describe('<Page />', () => {
     });
   });
 
+  describe('divider', () => {
+    it('renders border when divider is true and header props exist', () => {
+      const wrapper = mountWithApp(<Page {...mockProps} divider />);
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+    });
+
+    it('does not render border when divider is true and no header props exist', () => {
+      const wrapper = mountWithApp(<Page divider />);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content',
+      });
+    });
+
+    it('does not render border when divider is false', () => {
+      const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content',
+      });
+    });
+  });
+
   describe('<Header />', () => {
     it('is not rendered when there is no header content', () => {
       const page = mountWithAppProvider(<Page title="" />);

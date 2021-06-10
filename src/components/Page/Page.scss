@@ -35,3 +35,7 @@ body {
 .Content {
   @include page-content-layout;
 }
+
+.divider {
+  border-top: border();
+}
