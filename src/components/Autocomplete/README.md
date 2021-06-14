@@ -5,11 +5,13 @@ keywords:
   - autocomplete
   - searchable
   - typeahead
+  - combobox
+  - listbox
 ---
 
 # Autocomplete
 
-The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options.
+The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. Convenience wrapper around the `ComboBox` and `ListBox` components with minor UI differences.
 
 ---
 
@@ -77,7 +79,7 @@ function AutocompleteExample() {
       });
 
       setSelectedOptions(selected);
-      setInputValue(selectedValue);
+      setInputValue(selectedValue[0]);
     },
     [options],
   );
@@ -252,7 +254,7 @@ function AutocompleteExample() {
         return matchedOption && matchedOption.label;
       });
       setSelectedOptions(selected);
-      setInputValue(selectedText);
+      setInputValue(selectedText[0]);
     },
     [options],
   );
@@ -349,6 +351,7 @@ function AutoCompleteLazyLoadExample() {
         endIndex = 0;
       }
       setOptions(resultOptions);
+      setInputValue;
     },
     [deselectedOptions, options],
   );
@@ -462,7 +465,7 @@ function AutocompleteExample() {
         return matchedOption && matchedOption.label;
       });
       setSelectedOptions(selected);
-      setInputValue(selectedText);
+      setInputValue(selectedText[0]);
     },
     [options],
   );
@@ -553,7 +556,7 @@ function AutocompleteActionBeforeExample() {
         return matchedOption && matchedOption.label;
       });
       setSelectedOptions(selected);
-      setInputValue(selectedText);
+      setInputValue(selectedText[0]);
     },
     [options],
   );
@@ -646,7 +649,7 @@ function AutocompleteActionBeforeExample() {
         return matchedOption && matchedOption.label;
       });
       setSelectedOptions(selected);
-      setInputValue(selectedText);
+      setInputValue(selectedText[0]);
     },
     [options],
   );
@@ -688,6 +691,7 @@ function AutocompleteActionBeforeExample() {
 
 - For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
 - For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/lists-and-tables/option-list)
+- For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/forms/combobox)
 
 ---
 
@@ -715,7 +719,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 ### Structure
 
-The autocomplete component is based on the [ARIA 1.1 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). See the [text field component](https://polaris.shopify.com/components/forms/text-field) for information on implementing the autocomplete component with a text field.
+The autocomplete component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) and the [Aria 1.2 ListBox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
 
 The autocomplete list displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 
