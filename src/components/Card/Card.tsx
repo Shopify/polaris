@@ -14,9 +14,9 @@ import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
 export type {
-  SectionProps as CardSectionProps,
-  HeaderProps as CardHeaderProps,
-  SubsectionProps as CardSubsectionProps,
+  CardSectionProps,
+  CardHeaderProps,
+  CardSubsectionProps,
 } from './components';
 
 export interface CardProps {
