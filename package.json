@@ -178,7 +178,7 @@
     {
       "name": "esm",
       "path": "dist/esm/index.js",
-      "limit": "100 kB"
+      "limit": "105 kB"
     },
     {
       "name": "esnext",
