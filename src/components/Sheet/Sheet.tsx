@@ -1,7 +1,8 @@
-import React, {useRef} from 'react';
+import React, {useCallback, useRef} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 import {Key} from '../../types';
@@ -40,6 +41,8 @@ export interface SheetProps {
   onExit?(): void;
   /** ARIA label for sheet */
   accessibilityLabel: string;
+  /** The element or the RefObject that activates the Sheet */
+  activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
 /** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
@@ -50,9 +53,28 @@ export function Sheet({
   onEntered,
   onExit,
   accessibilityLabel,
+  activator,
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
+  const activatorRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = useCallback(() => {
+    onClose();
+
+    const activatorElement =
+      activator && isRef(activator)
+        ? activator && activator.current
+        : activatorRef.current;
+    if (activatorElement) {
+      requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
+    }
+  }, [activator, onClose]);
+
+  const activatorMarkup =
+    activator && !isRef(activator) ? (
+      <div ref={activatorRef}>{activator}</div>
+    ) : null;
 
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
@@ -62,40 +84,49 @@ export function Sheet({
   }
 
   return (
-    <Portal idPrefix="sheet">
-      <CSSTransition
-        nodeRef={container}
-        classNames={
-          isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
-        }
-        timeout={durationSlow}
-        in={open}
-        mountOnEnter
-        unmountOnExit
-        onEntered={onEntered}
-        onExit={onExit}
-      >
-        <div
-          className={styles.Container}
-          {...layer.props}
-          {...overlay.props}
-          ref={container}
+    <>
+      {activatorMarkup}
+      <Portal idPrefix="sheet">
+        <CSSTransition
+          nodeRef={container}
+          classNames={
+            isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
+          }
+          timeout={durationSlow}
+          in={open}
+          mountOnEnter
+          unmountOnExit
+          onEntered={onEntered}
+          onExit={onExit}
         >
-          <TrapFocus trapping={open}>
-            <div
-              role="dialog"
-              aria-modal
-              tabIndex={-1}
-              className={styles.Sheet}
-              aria-label={accessibilityLabel}
-            >
-              {children}
-            </div>
-          </TrapFocus>
-        </div>
-      </CSSTransition>
-      <KeypressListener keyCode={Key.Escape} handler={onClose} />
-      {open && <Backdrop transparent onClick={onClose} />}
-    </Portal>
+          <div
+            className={styles.Container}
+            {...layer.props}
+            {...overlay.props}
+            ref={container}
+          >
+            <TrapFocus trapping={open}>
+              <div
+                role="dialog"
+                aria-modal
+                tabIndex={-1}
+                className={styles.Sheet}
+                aria-label={accessibilityLabel}
+              >
+                {children}
+              </div>
+            </TrapFocus>
+          </div>
+        </CSSTransition>
+        <KeypressListener keyCode={Key.Escape} handler={handleClose} />
+        {open && <Backdrop transparent onClick={handleClose} />}
+      </Portal>
+    </>
   );
+}
+
+function isRef(
+  ref: React.RefObject<HTMLElement> | React.ReactElement,
+): ref is React.RefObject<HTMLElement> {
+  return Object.prototype.hasOwnProperty.call(ref, 'current');
 }
