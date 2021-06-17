@@ -1,0 +1,10 @@
+containers:
+  production:
+    environment: production
+    build:
+      from: ubuntu-latest
+      run:
+        - yarn storybook:build
+
+steps:
+  - build: production

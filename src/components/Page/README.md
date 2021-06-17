@@ -450,6 +450,22 @@ Title metadata appears immediately after the page’s title. Use it to communica
 </Page>
 ```
 
+### Page with divider
+
+<!-- example-for: web -->
+
+Use when the page needs visual separation between the page header and the content.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  divider
+>
+  <p>Page content</p>
+</Page>
+```
+
 ---
 
 ## Related components
