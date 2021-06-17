@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -54,12 +54,14 @@ export function Sheet({
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
 
-  if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: <Sheet /> is deprecated. This component might be removed in a future major version of Polaris. Use <Modal /> instead or avoid modal patterns all together.',
-    );
-  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: <Sheet /> is deprecated. This component might be removed in a future major version of Polaris. Use <Modal /> instead or avoid modal patterns all together.',
+      );
+    }
+  }, []);
 
   return (
     <Portal idPrefix="sheet">
