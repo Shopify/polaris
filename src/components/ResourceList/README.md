@@ -595,6 +595,7 @@ function ResourceListWithFilteringExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -710,6 +711,7 @@ function ResourceListWithFilteringExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -1094,6 +1096,7 @@ function ResourceListExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),

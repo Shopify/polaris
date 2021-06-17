@@ -29,6 +29,7 @@ describe('<TextField />', () => {
         pattern={pattern}
         inputMode={inputMode}
         align="left"
+        autoComplete="name"
       />,
     ).find('input');
 
@@ -45,6 +46,7 @@ describe('<TextField />', () => {
     expect(input.prop('spellCheck')).toBe(false);
     expect(input.prop('pattern')).toBe(pattern);
     expect(input.prop('inputMode')).toBe(inputMode);
+    expect(input.prop('autoComplete')).toBe('name');
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
@@ -58,6 +60,7 @@ describe('<TextField />', () => {
         placeholder="A placeholder"
         value="Some value"
         prefix="test-prefix"
+        autoComplete="off"
       />,
     ).find('input');
 
@@ -66,7 +69,7 @@ describe('<TextField />', () => {
 
   it('always has an `aria-labelledby` property', () => {
     const textField = mountWithAppProvider(
-      <TextField label="TextField" onChange={noop} />,
+      <TextField label="TextField" onChange={noop} autoComplete="off" />,
     );
     const property = textField.find('input').prop('aria-labelledby');
 
@@ -77,7 +80,12 @@ describe('<TextField />', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
       const element = mountWithAppProvider(
-        <TextField id="MyTextField" label="TextField" onChange={spy} />,
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          onChange={spy}
+          autoComplete="off"
+        />,
       );
       (element.find('input') as any).instance().value = 'two';
       element.find('input').simulate('change');
@@ -89,7 +97,12 @@ describe('<TextField />', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
       mountWithApp(
-        <TextField label="TextField" onFocus={spy} onChange={noop} />,
+        <TextField
+          label="TextField"
+          onFocus={spy}
+          onChange={noop}
+          autoComplete="off"
+        />,
       )
         .find('input')!
         .trigger('onFocus');
@@ -101,7 +114,12 @@ describe('<TextField />', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
       const element = mountWithAppProvider(
-        <TextField label="TextField" onBlur={spy} onChange={noop} />,
+        <TextField
+          label="TextField"
+          onBlur={spy}
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       element.find('input').simulate('focus');
       element.find('input').simulate('blur');
@@ -112,7 +130,12 @@ describe('<TextField />', () => {
   describe('id', () => {
     it('sets the id on the input', () => {
       const id = mountWithAppProvider(
-        <TextField label="TextField" id="MyField" onChange={noop} />,
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          autoComplete="off"
+        />,
       )
         .find('input')
         .prop('id');
@@ -121,7 +144,7 @@ describe('<TextField />', () => {
 
     it('sets a random id on the input when none is passed', () => {
       const id = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} />,
+        <TextField label="TextField" onChange={noop} autoComplete="off" />,
       )
         .find('input')
         .prop('id');
@@ -132,7 +155,7 @@ describe('<TextField />', () => {
     it('updates with the new id from props', () => {
       const id = 'input field';
       const textField = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} />,
+        <TextField label="TextField" onChange={noop} autoComplete="off" />,
       );
       textField.setProps({id});
       expect(textField.find('input').prop('id')).toBe(id);
@@ -141,7 +164,12 @@ describe('<TextField />', () => {
     it('updates with the previous id after the id prop has been removed', () => {
       const id = 'input field';
       const textField = mountWithAppProvider(
-        <TextField label="TextField" id={id} onChange={noop} />,
+        <TextField
+          label="TextField"
+          id={id}
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       textField.setProps({});
       expect(textField.find('input').prop('id')).toBe(id);
@@ -151,7 +179,12 @@ describe('<TextField />', () => {
   describe('focused', () => {
     it('input is in focus state if focused is true', () => {
       const element = mountWithApp(
-        <TextField label="TextField" onChange={noop} focused />,
+        <TextField
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+          focused
+        />,
       );
 
       expect(document.activeElement).toBe(element.find('input')!.domNode);
@@ -159,7 +192,7 @@ describe('<TextField />', () => {
 
     it('focuses input if focused is toggled', () => {
       const element = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
+        <TextField label="TextField" onChange={noop} autoComplete="off" />,
       );
 
       element.setProps({focused: true});
@@ -169,7 +202,12 @@ describe('<TextField />', () => {
 
     it('blurs input if focused is toggled', () => {
       const element = mountWithApp(
-        <TextField label="TextField" onChange={noop} focused />,
+        <TextField
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+          focused
+        />,
       );
 
       element.setProps({focused: false});
@@ -179,28 +217,7 @@ describe('<TextField />', () => {
   });
 
   describe('autoComplete', () => {
-    it('defaults to no autoComplete attribute', () => {
-      const textField = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} />,
-      );
-      expect(textField.find('input').prop('autoComplete')).toBeUndefined();
-    });
-
-    it('sets autoComplete to "off" when false', () => {
-      const textField = mountWithAppProvider(
-        <TextField label="TextField" autoComplete={false} onChange={noop} />,
-      );
-      expect(textField.find('input').prop('autoComplete')).toBe('off');
-    });
-
-    it('sets autoComplete to "on" when true', () => {
-      const textField = mountWithAppProvider(
-        <TextField label="TextField" autoComplete onChange={noop} />,
-      );
-      expect(textField.find('input').prop('autoComplete')).toBe('on');
-    });
-
-    it('sets autoComplete to string value when string is given', () => {
+    it('is passed to input as autoComplete', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -215,7 +232,12 @@ describe('<TextField />', () => {
   describe('helpText', () => {
     it('connects the input to the help text', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" helpText="Some help" onChange={noop} />,
+        <TextField
+          label="TextField"
+          helpText="Some help"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       const helpTextID = textField
         .find('input')
@@ -232,6 +254,7 @@ describe('<TextField />', () => {
           error={<span>Invalid</span>}
           label="TextField"
           onChange={noop}
+          autoComplete="off"
         />,
       );
       expect(textField.find('input').prop<string>('aria-invalid')).toBe(true);
@@ -242,7 +265,12 @@ describe('<TextField />', () => {
 
     it('connects the input to the error', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" error="Some error" onChange={noop} />,
+        <TextField
+          label="TextField"
+          error="Some error"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       const errorID = textField.find('input').prop<string>('aria-describedby');
       expect(typeof errorID).toBe('string');
@@ -259,6 +287,7 @@ describe('<TextField />', () => {
             id={textFieldID}
             label="textField"
             onChange={noop}
+            autoComplete="off"
           />
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>,
@@ -279,6 +308,7 @@ describe('<TextField />', () => {
           error="Some error"
           helpText="Some help"
           onChange={noop}
+          autoComplete="off"
         />,
       );
       const descriptions = textField
@@ -297,6 +327,7 @@ describe('<TextField />', () => {
           label="TextField"
           helpText="Some help"
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -310,7 +341,12 @@ describe('<TextField />', () => {
   describe('prefix', () => {
     it('connects the input to the prefix and label', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" prefix="$" onChange={noop} />,
+        <TextField
+          label="TextField"
+          prefix="$"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       const labels = textField
         .find('input')
@@ -323,7 +359,13 @@ describe('<TextField />', () => {
 
     it('connects the input to the prefix, suffix, and label', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" prefix="$" suffix=".00" onChange={noop} />,
+        <TextField
+          label="TextField"
+          prefix="$"
+          suffix=".00"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       const labels = textField
         .find('input')
@@ -346,6 +388,7 @@ describe('<TextField />', () => {
           label="TextField"
           prefix={mockPrefixButton}
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -365,6 +408,7 @@ describe('<TextField />', () => {
           label="TextField"
           prefix={mockPrefixButton}
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -382,7 +426,12 @@ describe('<TextField />', () => {
   describe('suffix', () => {
     it('connects the input to the suffix and label', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" suffix="kg" onChange={noop} />,
+        <TextField
+          label="TextField"
+          suffix="kg"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       const labels = textField
         .find('input')
@@ -404,6 +453,7 @@ describe('<TextField />', () => {
           label="TextField"
           suffix={mockSuffixButton}
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -423,6 +473,7 @@ describe('<TextField />', () => {
           label="TextField"
           suffix={mockSuffixButton}
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -446,6 +497,7 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -463,6 +515,7 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -479,6 +532,7 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
+          autoComplete="off"
         />,
       );
 
@@ -496,7 +550,12 @@ describe('<TextField />', () => {
   describe('type', () => {
     it('sets the type on the input', () => {
       const type = mountWithAppProvider(
-        <TextField label="TextField" type="email" onChange={noop} />,
+        <TextField
+          label="TextField"
+          type="email"
+          onChange={noop}
+          autoComplete="off"
+        />,
       )
         .find('input')
         .prop('type');
@@ -513,6 +572,7 @@ describe('<TextField />', () => {
             type="number"
             value="3"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').first().simulate('click');
@@ -528,6 +588,7 @@ describe('<TextField />', () => {
             type="number"
             value="3"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').last().simulate('click');
@@ -543,6 +604,7 @@ describe('<TextField />', () => {
             type="number"
             value="not a number"
             onChange={spy}
+            autoComplete="off"
           />,
         );
 
@@ -563,6 +625,7 @@ describe('<TextField />', () => {
             label="TextField"
             type="number"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').first().simulate('click');
@@ -578,6 +641,7 @@ describe('<TextField />', () => {
             step={6}
             value="4"
             onChange={noop}
+            autoComplete="off"
           />,
         );
         expect(element.find('input').prop('step')).toBe(6);
@@ -593,6 +657,7 @@ describe('<TextField />', () => {
             step={0.5}
             value="1.25"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').first().simulate('click');
@@ -609,6 +674,7 @@ describe('<TextField />', () => {
             min={2}
             value="2"
             onChange={spy}
+            autoComplete="off"
           />,
         );
 
@@ -629,6 +695,7 @@ describe('<TextField />', () => {
             max={2}
             value="2"
             onChange={spy}
+            autoComplete="off"
           />,
         );
 
@@ -649,6 +716,7 @@ describe('<TextField />', () => {
             min={2}
             value="-1"
             onChange={spy}
+            autoComplete="off"
           />,
         );
 
@@ -669,6 +737,7 @@ describe('<TextField />', () => {
             max={2}
             value="12"
             onChange={spy}
+            autoComplete="off"
           />,
         );
 
@@ -685,6 +754,7 @@ describe('<TextField />', () => {
             id="MyNumberField"
             label="NumberField"
             type="number"
+            autoComplete="off"
             disabled
           />,
         );
@@ -698,6 +768,7 @@ describe('<TextField />', () => {
             id="MyNumberField"
             label="NumberField"
             type="number"
+            autoComplete="off"
             readOnly
           />,
         );
@@ -713,6 +784,7 @@ describe('<TextField />', () => {
             type="number"
             step={0}
             onChange={spy}
+            autoComplete="off"
           />,
         );
         expect(element.find(Spinner)).toHaveLength(0);
@@ -728,6 +800,7 @@ describe('<TextField />', () => {
             value="3.02"
             step={1.044}
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').first().simulate('click');
@@ -744,6 +817,7 @@ describe('<TextField />', () => {
             value="3.02"
             step={1.044}
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element.find('[role="button"]').last().simulate('click');
@@ -760,6 +834,7 @@ describe('<TextField />', () => {
             type="number"
             value="3"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element
@@ -781,6 +856,7 @@ describe('<TextField />', () => {
             type="number"
             value="3"
             onChange={spy}
+            autoComplete="off"
           />,
         );
         element
@@ -822,6 +898,7 @@ describe('<TextField />', () => {
               type="number"
               value="3"
               onChange={spy}
+              autoComplete="off"
             />,
           );
           element
@@ -840,14 +917,25 @@ describe('<TextField />', () => {
   describe('multiline', () => {
     it('does not render a resizer if `multiline` is false', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" id="MyField" onChange={noop} />,
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          autoComplete="off"
+        />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
     });
 
     it('renders a resizer with `minimumLines` set to 1 if `multiline` is true', () => {
       const textField = mountWithApp(
-        <TextField label="TextField" id="MyField" onChange={noop} multiline />,
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          autoComplete="off"
+          multiline
+        />,
       );
       expect(textField).toContainReactComponentTimes(Resizer, 1, {
         minimumLines: 1,
@@ -861,6 +949,7 @@ describe('<TextField />', () => {
           id="MyField"
           onChange={noop}
           multiline={5}
+          autoComplete="off"
         />,
       );
 
@@ -878,6 +967,7 @@ describe('<TextField />', () => {
           onChange={noop}
           placeholder={placeholderText}
           multiline={5}
+          autoComplete="off"
         />,
       );
 
@@ -899,6 +989,7 @@ describe('<TextField />', () => {
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
+          autoComplete="off"
         />,
       );
 
@@ -926,6 +1017,7 @@ describe('<TextField />', () => {
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
+          autoComplete="off"
         />,
       );
       expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
@@ -942,6 +1034,7 @@ describe('<TextField />', () => {
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
+          autoComplete="off"
         />,
       );
       expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
@@ -957,6 +1050,7 @@ describe('<TextField />', () => {
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
+          autoComplete="off"
         />,
       );
       expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
@@ -971,6 +1065,7 @@ describe('<TextField />', () => {
           id="MyField"
           onChange={noop}
           helpText="Help text"
+          autoComplete="off"
         />,
       );
 
@@ -982,7 +1077,13 @@ describe('<TextField />', () => {
 
     it('passes error to Labelled', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" id="MyField" onChange={noop} error />,
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          autoComplete="off"
+          error
+        />,
       );
 
       expect(textField.find(Labelled).prop('error')).toBe(true);
@@ -994,6 +1095,7 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
+          autoComplete="off"
           labelHidden
         />,
       );
@@ -1027,6 +1129,7 @@ describe('<TextField />', () => {
           onChange={noop}
           connectedLeft={connectedLeft}
           connectedRight={connectedRight}
+          autoComplete="off"
           prefix
         />,
       );
@@ -1042,7 +1145,7 @@ describe('<TextField />', () => {
 
     it('sets focus to the <input /> `onClick`', () => {
       const textField = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
+        <TextField label="TextField" onChange={noop} autoComplete="off" />,
       );
 
       expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
@@ -1062,6 +1165,7 @@ describe('<TextField />', () => {
           onChange={noop}
           type="text"
           value="test value"
+          autoComplete="off"
           clearButton
         />,
       );
@@ -1075,6 +1179,7 @@ describe('<TextField />', () => {
           label="TextField"
           type="text"
           onChange={noop}
+          autoComplete="off"
           clearButton
         />,
       );
@@ -1094,6 +1199,7 @@ describe('<TextField />', () => {
           onChange={noop}
           onClearButtonClick={spy}
           value="test value"
+          autoComplete="off"
           clearButton
         />,
       );
@@ -1109,6 +1215,7 @@ describe('<TextField />', () => {
           onChange={noop}
           type="text"
           value="test value"
+          autoComplete="off"
         />,
       );
       expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
@@ -1121,6 +1228,7 @@ describe('<TextField />', () => {
           onChange={noop}
           connectedLeft={<div />}
           connectedRight={<div />}
+          autoComplete="off"
         />,
       );
       expect(textField).toContainReactComponent('div', {
@@ -1132,7 +1240,12 @@ describe('<TextField />', () => {
   describe('requiredIndicator', () => {
     it('passes requiredIndicator prop to Labelled', () => {
       const element = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} requiredIndicator />,
+        <TextField
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+          requiredIndicator
+        />,
       );
       const labelled = element.find(Labelled);
 
@@ -1143,14 +1256,24 @@ describe('<TextField />', () => {
   describe('monospaced', () => {
     it('passes monospaced prop to TextField', () => {
       const element = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} monospaced />,
+        <TextField
+          label="TextField"
+          onChange={noop}
+          monospaced
+          autoComplete="nope"
+        />,
       );
       expect(element.prop('monospaced')).toBe(true);
     });
 
     it('applies the monospaced style', () => {
       const input = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} monospaced />,
+        <TextField
+          label="TextField"
+          onChange={noop}
+          monospaced
+          autoComplete="nope"
+        />,
       ).find('input');
 
       expect(input.prop('className')).toContain('monospaced');

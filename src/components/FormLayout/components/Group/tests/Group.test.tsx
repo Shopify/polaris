@@ -12,7 +12,7 @@ describe('<Group />', () => {
   let item: any;
 
   beforeAll(() => {
-    children = <TextField onChange={noop} label="test" />;
+    children = <TextField onChange={noop} label="test" autoComplete="nope" />;
     title = 'Title';
     helpText = 'Help text';
     item = mountWithAppProvider(

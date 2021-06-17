@@ -245,12 +245,14 @@ function FrameExample() {
                 label="Full name"
                 value={nameFieldValue}
                 onChange={handleNameFieldChange}
+                autoComplete="name"
               />
               <TextField
                 type="email"
                 label="Email"
                 value={emailFieldValue}
                 onChange={handleEmailFieldChange}
+                autoComplete="email"
               />
             </FormLayout>
           </Card>
@@ -292,11 +294,13 @@ function FrameExample() {
             label="Subject"
             value={supportSubject}
             onChange={handleSubjectChange}
+            autoComplete="nope"
           />
           <TextField
             label="Message"
             value={supportMessage}
             onChange={handleMessageChange}
+            autoComplete="nope"
             multiline
           />
         </FormLayout>
@@ -579,12 +583,14 @@ function FrameExample() {
                 label="Full name"
                 value={nameFieldValue}
                 onChange={handleNameFieldChange}
+                autoComplete="name"
               />
               <TextField
                 type="email"
                 label="Email"
                 value={emailFieldValue}
                 onChange={handleEmailFieldChange}
+                autoComplete="email"
               />
             </FormLayout>
           </Card>
@@ -626,11 +632,13 @@ function FrameExample() {
             label="Subject"
             value={supportSubject}
             onChange={handleSubjectChange}
+            autoComplete="nope"
           />
           <TextField
             label="Message"
             value={supportMessage}
             onChange={handleMessageChange}
+            autoComplete="nope"
             multiline
           />
         </FormLayout>

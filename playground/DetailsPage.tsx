@@ -577,11 +577,13 @@ export function DetailsPage() {
                 label="Title"
                 value="M60-A"
                 onChange={() => setIsDirty(true)}
+                autoComplete="nope"
               />
               <TextField
                 label="Description"
                 value={descriptionValue}
                 onChange={handleChange}
+                autoComplete="nope"
                 multiline
               />
             </FormLayout>
@@ -653,11 +655,13 @@ export function DetailsPage() {
             label="Subject"
             value={supportSubject}
             onChange={handleSubjectChange}
+            autoComplete="nope"
           />
           <TextField
             label="Message"
             value={supportMessage}
             onChange={handleMessageChange}
+            autoComplete="nope"
             multiline
           />
         </FormLayout>

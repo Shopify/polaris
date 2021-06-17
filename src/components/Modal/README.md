@@ -369,6 +369,7 @@ function ModalWithPrimaryActionExample() {
                 onFocus={handleFocus}
                 value={DISCOUNT_LINK}
                 onChange={() => {}}
+                autoComplete="nope"
                 connectedRight={
                   <Button primary onClick={handleClick}>
                     Copy link

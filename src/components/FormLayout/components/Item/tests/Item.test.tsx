@@ -7,7 +7,9 @@ import {Item} from '../Item';
 
 describe('<Item />', () => {
   it('renders its children', () => {
-    const children = <TextField onChange={noop} label="test" />;
+    const children = (
+      <TextField onChange={noop} label="test" autoComplete="nope" />
+    );
     const item = mountWithAppProvider(<Item>{children}</Item>);
     expect(item.contains(children)).toBe(true);
   });

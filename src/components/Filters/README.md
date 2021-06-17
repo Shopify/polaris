@@ -211,6 +211,7 @@ function ResourceListFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -423,6 +424,7 @@ function DataTableFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -555,6 +557,7 @@ function FiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -681,6 +684,7 @@ function DisableAllFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -816,6 +820,7 @@ function DisableSomeFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -829,6 +834,7 @@ function DisableSomeFiltersExample() {
           label="Vendor"
           value={vendor}
           onChange={handleVendorChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -960,6 +966,7 @@ function Playground() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -1131,6 +1138,7 @@ function ResourceListFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
@@ -1331,6 +1339,7 @@ function ResourceListFiltersExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="nope"
           labelHidden
         />
       ),
