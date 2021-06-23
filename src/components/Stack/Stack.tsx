@@ -6,7 +6,13 @@ import {elementChildren, wrapWithComponent} from '../../utilities/components';
 import {Item} from './components';
 import styles from './Stack.scss';
 
-type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
+type Spacing =
+  | 'extraTight'
+  | 'tight'
+  | 'baseTight'
+  | 'loose'
+  | 'extraLoose'
+  | 'none';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
