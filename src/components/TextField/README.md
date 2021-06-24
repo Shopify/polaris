@@ -799,6 +799,32 @@ function TextFieldWithClearButtonExample() {
 }
 ```
 
+### Text field with monospaced font
+
+<!-- example-for: web -->
+
+Use to apply a monospaced font to the TextField
+
+```jsx
+function TextFieldWithMonospacedFontExample() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      monospaced
+    />
+  );
+}
+```
+
 ---
 
 ## Related components

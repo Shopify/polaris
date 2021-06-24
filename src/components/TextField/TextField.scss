@@ -310,3 +310,7 @@ $stacking-order: (
     margin-top: 0;
   }
 }
+
+.monospaced {
+  font-family: font-family($family: 'monospace');
+}

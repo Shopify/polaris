@@ -132,6 +132,8 @@ interface NonMutuallyExclusiveProps {
   onBlur?(): void;
   /** Visual required indicator, adds an asterisk to label */
   requiredIndicator?: boolean;
+  /** Indicates whether or not a monospaced font should be used */
+  monospaced?: boolean;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -184,6 +186,7 @@ export function TextField({
   onFocus,
   onBlur,
   requiredIndicator,
+  monospaced,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -398,6 +401,7 @@ export function TextField({
     align && styles[variationName('Input-align', align)],
     suffix && styles['Input-suffixed'],
     clearButton && styles['Input-hasClearButton'],
+    monospaced && styles.monospaced,
   );
 
   const input = createElement(multiline ? 'textarea' : 'input', {

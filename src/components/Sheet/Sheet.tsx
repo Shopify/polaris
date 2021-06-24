@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback, useRef, useEffect} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -71,17 +71,19 @@ export function Sheet({
     }
   }, [activator, onClose]);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: <Sheet /> is deprecated. This component might be removed in a future major version of Polaris. Use <Modal /> instead or avoid modal patterns all together.',
+      );
+    }
+  }, []);
+
   const activatorMarkup =
     activator && !isRef(activator) ? (
       <div ref={activatorRef}>{activator}</div>
     ) : null;
-
-  if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: <Sheet /> is deprecated. This component might be removed in a future major version of Polaris. Use <Modal /> instead or avoid modal patterns all together.',
-    );
-  }
 
   return (
     <>
