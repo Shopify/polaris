@@ -5,6 +5,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Breaking changes
 
 - Updated `react` and `react-dom` to version 16.14.0. This is now the minimum version of React required to use the `@shopify/polaris` library.
+- Dropping support for node 10.x
 
 ### Enhancements
 
