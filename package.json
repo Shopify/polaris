@@ -78,8 +78,8 @@
   "dependencies": {
     "@shopify/polaris-icons": "^4.1.0",
     "@shopify/polaris-tokens": "^3.0.0",
-    "@types/react": "^16.9.12",
-    "@types/react-dom": "^16.9.4",
+    "@types/react": "^16.14.8",
+    "@types/react-dom": "^16.9.13",
     "@types/react-transition-group": "^4.4.0",
     "focus-visible": "^5.2.0",
     "lodash": "^4.17.4",
@@ -87,8 +87,8 @@
     "serve": "^12.0.0"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -139,10 +139,10 @@
     "object-hash": "^1.3.1",
     "postcss": "^7.0.18",
     "postcss-modules": "^3.1.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-is": "^16.9.0",
-    "react-test-renderer": "^16.9.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-is": "^16.7.2",
+    "react-test-renderer": "^16.14.0",
     "rimraf": "^3.0.0",
     "rollup": "^2.22.2",
     "sass-loader": "^8.0.0",
