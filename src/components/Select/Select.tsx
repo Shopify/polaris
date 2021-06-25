@@ -72,6 +72,8 @@ export interface SelectProps<Value extends string = string> {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Visual required indicator, add an asterisk to label */
+  requiredIndicator?: boolean;
 }
 
 const PLACEHOLDER_VALUE = '';
@@ -92,6 +94,7 @@ export function Select<Value extends string = string>({
   onChange,
   onFocus,
   onBlur,
+  requiredIndicator,
 }: SelectProps<Value>) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
@@ -163,6 +166,7 @@ export function Select<Value extends string = string>({
       action={labelAction}
       labelHidden={labelHidden}
       helpText={helpText}
+      requiredIndicator={requiredIndicator}
     >
       <div className={className}>
         <select
@@ -178,6 +182,7 @@ export function Select<Value extends string = string>({
           aria-describedby={
             describedBy.length ? describedBy.join(' ') : undefined
           }
+          aria-required={requiredIndicator}
         >
           {optionsMarkup}
         </select>
@@ -225,12 +230,14 @@ function normalizeOption<Value extends string = string>(
     return {
       title,
       options: options.map((option) => {
-        return isString(option) ? normalizeStringOption(option) : option;
+        return isString(option)
+          ? normalizeStringOption(option)
+          : (option as StrictOption<Value>);
       }),
     };
   }
 
-  return option;
+  return option as StrictOption<Value>;
 }
 
 /**

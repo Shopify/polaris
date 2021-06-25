@@ -181,6 +181,28 @@ describe('<Modal>', () => {
     });
   });
 
+  describe('small', () => {
+    it('passes small to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" small onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('small')).toBe(true);
+    });
+
+    it('does not pass small to Dialog be default', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('small')).toBeUndefined();
+    });
+  });
+
   describe('limitHeight', () => {
     it('passes limitHeight to Dialog if true', () => {
       const modal = mountWithAppProvider(
@@ -324,6 +346,17 @@ describe('<Modal>', () => {
       );
 
       expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
+    });
+
+    it('does not render a Scrollable with noScroll prop', () => {
+      const modal = mountWithAppProvider(
+        <Modal title="foo" onClose={jest.fn()} open noScroll>
+          <Badge />
+        </Modal>,
+      );
+
+      const scrollable = modal.find(Scrollable).first();
+      expect(scrollable.exists()).toBe(false);
     });
   });
 

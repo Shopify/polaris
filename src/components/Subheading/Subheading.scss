@@ -3,4 +3,8 @@
 .Subheading {
   @include text-style-subheading;
   margin: 0;
+
+  @media print {
+    font-size: 1.1rem;
+  }
 }

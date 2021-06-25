@@ -243,7 +243,7 @@
     },
     "TextField": {
       "characterCount": "{count} personnages",
-      "characterCountWithMaxLength": "{count} caractère(s) sur {limit} utilisé(s)"
+      "characterCountWithMaxLength": "{count} sur {limit} caractère(s) utilisé(s)"
     },
     "TopBar": {
       "toggleMenuLabel": "Menu toggle",

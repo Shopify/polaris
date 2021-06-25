@@ -10,7 +10,7 @@ const {storybookA11yTest} = require('@shopify/storybook-a11y-test');
       __dirname,
       '../build/storybook/static/iframe.html',
     ),
-    skippedStoryIds: ['playground-playground', 'all-examples'],
+    skippedStoryIds: ['playground-playground'],
   };
 
   const results = await storybookA11yTest(options);

@@ -23,6 +23,7 @@ import {Tag} from '../Tag';
 import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
+// eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
@@ -230,7 +231,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           })
         : i18n.translate('Polaris.Filters.moreFilters');
 
-    const rightActionMarkup = (
+    const rightActionMarkup = filters.length ? (
       <div ref={this.moreFiltersButtonContainer}>
         <Button
           onClick={this.toggleFilters}
@@ -240,7 +241,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           {moreFiltersLabel}
         </Button>
       </div>
-    );
+    ) : null;
 
     const filterResourceName = resourceName || {
       singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),

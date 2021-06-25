@@ -55,6 +55,7 @@ export interface SheetProps {
   accessibilityLabel: string;
 }
 
+/** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
 export function Sheet({
   children,
   open,

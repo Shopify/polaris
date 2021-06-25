@@ -114,8 +114,8 @@ input. Field placeholder text should:
 
 ### Designating optional fields
 
-Try to only ask for information that’s required. If you need to ask merchants
-to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label.
+Don’t mark required fields with asterisks unless it is expected by the [local cultural norm](https://polaris.shopify.com/foundations/internationalization#plan-for-cultural-differences).
 
 <!-- usagelist -->
 

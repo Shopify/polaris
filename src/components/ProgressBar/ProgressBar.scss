@@ -20,7 +20,7 @@
 .ProgressBar {
   overflow: hidden;
   width: 100%;
-  background-color: var(--p-surface-neutral);
+  background-color: var(--p-progressbar-background);
   border-radius: var(--p-border-radius-base);
 
   @media (forced-colors: active) {
@@ -40,11 +40,26 @@
   height: progress-bar-height(large);
 }
 
+.colorHighlight {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-border-highlight);
+}
+
+.colorPrimary {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-action-primary);
+}
+
+.colorSuccess {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-border-success);
+}
+
 .Indicator {
   height: inherit;
   width: 0;
   will-change: width;
-  background-color: var(--p-border-highlight);
+  background-color: var(--p-progressbar-indicator);
   animation: fillup duration(slowest) easing();
   transition: width duration(slowest) easing();
 
