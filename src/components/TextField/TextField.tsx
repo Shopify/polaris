@@ -125,7 +125,11 @@ interface NonMutuallyExclusiveProps {
   /** Callback when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
-  onChange?(value: string, id: string, inputEvent?: React.ChangeEvent<HTMLInputElement>): void;
+  onChange?(
+    value: string,
+    id: string,
+    inputEvent?: React.ChangeEvent<HTMLInputElement>,
+  ): void;
   /** Callback when input is focused */
   onFocus?(): void;
   /** Callback when focus is removed */
@@ -140,7 +144,13 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
-    | {onChange(value: string, id: string, inputEvent?: React.ChangeEvent<HTMLInputElement>): void}
+    | {
+        onChange(
+          value: string,
+          id: string,
+          inputEvent?: React.ChangeEvent<HTMLInputElement>,
+        ): void;
+      }
   );
 
 export function TextField({
