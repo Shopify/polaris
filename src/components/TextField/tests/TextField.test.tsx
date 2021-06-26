@@ -81,7 +81,7 @@ describe('<TextField />', () => {
       );
       (element.find('input') as any).instance().value = 'two';
       element.find('input').simulate('change');
-      expect(spy).toHaveBeenCalledWith('two', 'MyTextField');
+      expect(spy).toHaveBeenCalledWith('two', 'MyTextField', expect.objectContaining({"type": "change"}));
     });
   });
 
