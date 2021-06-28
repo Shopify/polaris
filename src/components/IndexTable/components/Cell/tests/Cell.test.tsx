@@ -17,14 +17,6 @@ describe('<Cell />', () => {
       className: 'TableCell TableCell-flush',
     });
   });
-
-  it('applies last column styles when last prop is true', () => {
-    const cell = mountWithTable(<Cell last />);
-
-    expect(cell).toContainReactComponent('td', {
-      className: 'TableCell TableCell-last',
-    });
-  });
 });
 
 function mountWithTable(children: ReactElement) {

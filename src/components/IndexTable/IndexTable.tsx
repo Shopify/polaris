@@ -45,6 +45,7 @@ export interface IndexTableBaseProps {
   children?: React.ReactNode;
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
+  lastColumnSticky?: boolean;
 }
 
 export interface TableHeadingRect {
@@ -64,6 +65,7 @@ function IndexTableBase({
   children,
   emptyState,
   sort,
+  lastColumnSticky = false,
 }: IndexTableBaseProps) {
   const {
     loading,
@@ -500,6 +502,7 @@ function IndexTableBase({
     hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
+    lastColumnSticky && styles['Table-sticky-last'],
   );
 
   const emptyStateMarkup = emptyState ? (
@@ -566,9 +569,11 @@ function IndexTableBase({
 
   function renderHeading(heading: IndexTableHeading, index: number) {
     const isSecond = index === 0;
+    const isLast = index === headings.length - 1;
     const headingContentClassName = classNames(
       styles.TableHeading,
       isSecond && styles['TableHeading-second'],
+      isLast && !heading.hidden && styles['TableHeading-last'],
     );
 
     const stickyPositioningStyle =

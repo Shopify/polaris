@@ -116,8 +116,7 @@ $loading-panel-height: rem(53px);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
-    .TableCell-first + .TableCell,
-    .TableCell-last {
+    .TableCell-first + .TableCell {
       background-color: var(--p-surface-primary-selected);
     }
   }
@@ -135,8 +134,7 @@ $loading-panel-height: rem(53px);
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableCell-first,
-    .TableCell-first + .TableCell,
-    .TableCell-last {
+    .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected-hovered);
     }
   }
@@ -147,8 +145,7 @@ $loading-panel-height: rem(53px);
     .TableHeading-first,
     .TableHeading-second,
     .TableCell-first,
-    .TableCell-first + .TableCell,
-    .TableCell-last {
+    .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected);
     }
   }
@@ -190,11 +187,6 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.TableHeading-last {
-  position: sticky;
-  right: 0;
-}
-
 .TableCell {
   z-index: z-index(cell, $index-table-stacking-order);
   text-align: left;
@@ -225,13 +217,36 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.TableCell-last {
+.Table-sticky-last .TableCell:last-child,
+.Table-sticky-last .TableHeading-last {
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
     right: 0;
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
-    box-shadow: rem(-1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
     background-color: var(--p-surface, color('white'));
+    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    outline: rem(1px) solid var(--p-divider, color('sky'));
+  }
+}
+
+.Table-sticky-last {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  .statusSuccess .TableCell:last-child {
+    background-color: var(--p-surface-primary-selected);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  .statusSubdued .TableCell:last-child {
+    background-color: var(--p-surface-subdued);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  .TableRow-hovered .TableCell:last-child {
+    background-color: var(--p-surface-selected-hovered);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  .TableRow-selected .TableCell:last-child {
+    background-color: var(--p-surface-selected);
   }
 }
 
