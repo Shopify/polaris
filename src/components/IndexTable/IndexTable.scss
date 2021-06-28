@@ -197,7 +197,7 @@ $loading-panel-height: rem(53px);
   text-align: left;
   padding: spacing(tight) spacing();
   white-space: nowrap;
-  box-shadow: 0 rem(-1px) 0 0 var(--p-divider);
+  border-top: border(divider);
 }
 
 .TableCell-flush {
