@@ -128,7 +128,7 @@ interface NonMutuallyExclusiveProps {
   onChange?(
     value: string,
     id: string,
-    inputEvent?: React.ChangeEvent<HTMLInputElement>,
+    target?: EventTarget & HTMLInputElement
   ): void;
   /** Callback when input is focused */
   onFocus?(): void;
@@ -148,7 +148,7 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
         onChange(
           value: string,
           id: string,
-          inputEvent?: React.ChangeEvent<HTMLInputElement>,
+          target?: EventTarget & HTMLInputElement, 
         ): void;
       }
   );
@@ -510,7 +510,7 @@ export function TextField({
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.currentTarget.value, id, event);
+    onChange && onChange(event.currentTarget.value, id, event.target);
   }
 
   function handleFocus({target}: React.FocusEvent) {

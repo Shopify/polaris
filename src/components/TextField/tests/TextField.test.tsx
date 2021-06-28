@@ -84,7 +84,7 @@ describe('<TextField />', () => {
       expect(spy).toHaveBeenCalledWith(
         'two',
         'MyTextField',
-        expect.objectContaining({type: 'change'}),
+        expect.any(HTMLInputElement)
       );
     });
   });
