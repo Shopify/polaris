@@ -294,7 +294,7 @@ function SeparateValidationErrorExample() {
             value={weight}
             onChange={handleWeightChange}
             error={Boolean(!weight && unit)}
-            autoComplete="nope"
+            autoComplete="off"
           />
           <Select
             id={unitSelectID}

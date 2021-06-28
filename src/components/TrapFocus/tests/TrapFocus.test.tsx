@@ -116,7 +116,7 @@ describe('<TrapFocus />', () => {
         <TextField
           label=""
           value=""
-          autoComplete="nope"
+          autoComplete="off"
           onChange={noop}
           autoFocus
         />
@@ -130,7 +130,7 @@ describe('<TrapFocus />', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
         <a href="/">
-          <TextField label="" value="" autoComplete="nope" onChange={noop} />
+          <TextField label="" value="" autoComplete="off" onChange={noop} />
         </a>
       </TrapFocus>,
     );
@@ -168,7 +168,7 @@ describe('<TrapFocus />', () => {
           <TextField
             label=""
             value=""
-            autoComplete="nope"
+            autoComplete="off"
             onChange={noop}
             autoFocus
           />
@@ -190,7 +190,7 @@ describe('<TrapFocus />', () => {
           <TextField
             label=""
             value=""
-            autoComplete="nope"
+            autoComplete="off"
             onChange={noop}
             autoFocus
           />

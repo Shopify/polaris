@@ -416,7 +416,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
   >
     <Card sectioned>
       <FormLayout>
-        <TextField label="Store name" onChange={() => {}} autoComplete="nope" />
+        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
         <TextField
           type="email"
           label="Account email"
@@ -446,7 +446,7 @@ Use for settings pages that need a banner or other content at the top.
   >
     <Card sectioned>
       <FormLayout>
-        <TextField label="Store name" onChange={() => {}} autoComplete="nope" />
+        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
         <TextField
           type="email"
           label="Account email"

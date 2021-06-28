@@ -102,7 +102,7 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 
 ```jsx
 <FormLayout>
-  <TextField label="Store name" onChange={() => {}} autoComplete="nope" />
+  <TextField label="Store name" onChange={() => {}} autoComplete="off" />
   <TextField
     type="email"
     label="Account email"
@@ -139,13 +139,13 @@ Field groups will wrap automatically on smaller screens.
       type="number"
       label="Minimum order"
       onChange={() => {}}
-      autoComplete="nope"
+      autoComplete="off"
     />
     <TextField
       type="number"
       label="Maximum order"
       onChange={() => {}}
-      autoComplete="nope"
+      autoComplete="off"
     />
   </FormLayout.Group>
 </FormLayout>
@@ -172,10 +172,10 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 ```jsx
 <FormLayout>
   <FormLayout.Group condensed>
-    <TextField label="Length" onChange={() => {}} autoComplete="nope" />
-    <TextField label="Width" onChange={() => {}} autoComplete="nope" />
-    <TextField label="Height" onChange={() => {}} autoComplete="nope" />
-    <TextField label="Unit" onChange={() => {}} autoComplete="nope" />
+    <TextField label="Length" onChange={() => {}} autoComplete="off" />
+    <TextField label="Width" onChange={() => {}} autoComplete="off" />
+    <TextField label="Height" onChange={() => {}} autoComplete="off" />
+    <TextField label="Unit" onChange={() => {}} autoComplete="off" />
   </FormLayout.Group>
 </FormLayout>
 ```

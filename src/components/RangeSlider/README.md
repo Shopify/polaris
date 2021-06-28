@@ -352,7 +352,7 @@ function DualThumbRangeSliderExample() {
             step={step}
             onChange={handleLowerTextFieldChange}
             onBlur={handleLowerTextFieldBlur}
-            autoComplete="nope"
+            autoComplete="off"
           />
           <TextField
             label="Max money spent"
@@ -364,7 +364,7 @@ function DualThumbRangeSliderExample() {
             step={step}
             onChange={handleUpperTextFieldChange}
             onBlur={handleUpperTextFieldBlur}
-            autoComplete="nope"
+            autoComplete="off"
           />
         </Stack>
       </div>

@@ -8,7 +8,7 @@ import {FormLayout} from '../FormLayout';
 describe('<FormLayout />', () => {
   it('renders its children', () => {
     const children = (
-      <TextField onChange={noop} label="test" autoComplete="nope" />
+      <TextField onChange={noop} label="test" autoComplete="off" />
     );
     const formLayout = mountWithAppProvider(
       <FormLayout>{children}</FormLayout>,

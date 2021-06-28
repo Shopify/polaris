@@ -92,7 +92,7 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
-  /** Enable automatic completion by the browser. Set to "nope" when you do not want the browser to fill in info */
+  /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
   autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
   max?: number | string;

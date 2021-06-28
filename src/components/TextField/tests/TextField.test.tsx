@@ -225,6 +225,7 @@ describe('<TextField />', () => {
           onChange={noop}
         />,
       );
+
       expect(textField.find('input').prop('autoComplete')).toBe('firstName');
     });
   });
@@ -1260,7 +1261,7 @@ describe('<TextField />', () => {
           label="TextField"
           onChange={noop}
           monospaced
-          autoComplete="nope"
+          autoComplete="off"
         />,
       );
       expect(element.prop('monospaced')).toBe(true);
@@ -1272,7 +1273,7 @@ describe('<TextField />', () => {
           label="TextField"
           onChange={noop}
           monospaced
-          autoComplete="nope"
+          autoComplete="off"
         />,
       ).find('input');
 

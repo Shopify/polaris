@@ -101,7 +101,7 @@ function FormWithoutNativeValidationExample() {
           onChange={handleUrlChange}
           label="App URL"
           type="url"
-          autoComplete="nope"
+          autoComplete="off"
         />
 
         <Button submit>Submit</Button>

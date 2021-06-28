@@ -152,7 +152,7 @@ describe('<Autocomplete/>', () => {
 
   function renderTextField() {
     return (
-      <Autocomplete.TextField label="" onChange={noop} autoComplete="nope" />
+      <Autocomplete.TextField label="" onChange={noop} autoComplete="off" />
     );
   }
 

@@ -241,7 +241,7 @@ describe('<PopoverOverlay />', () => {
           label="Store name"
           value="Click me"
           onChange={() => {}}
-          autoComplete="nope"
+          autoComplete="off"
         />
         )
       </PopoverOverlay>,
@@ -274,7 +274,7 @@ describe('<PopoverOverlay />', () => {
           label="Store name"
           value="Click me"
           onChange={() => {}}
-          autoComplete="nope"
+          autoComplete="off"
         />
         )
       </PopoverOverlay>,

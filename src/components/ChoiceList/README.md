@@ -322,7 +322,7 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
         labelHidden
         onChange={handleTextFieldChange}
         value={textFieldValue}
-        autoComplete="nope"
+        autoComplete="off"
       />
     ),
     [handleTextFieldChange, textFieldValue],
@@ -373,7 +373,7 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
           labelHidden
           onChange={handleTextFieldChange}
           value={textFieldValue}
-          autoComplete="nope"
+          autoComplete="off"
         />
       ),
     [handleTextFieldChange, textFieldValue],

@@ -294,13 +294,13 @@ function FrameExample() {
             label="Subject"
             value={supportSubject}
             onChange={handleSubjectChange}
-            autoComplete="nope"
+            autoComplete="off"
           />
           <TextField
             label="Message"
             value={supportMessage}
             onChange={handleMessageChange}
-            autoComplete="nope"
+            autoComplete="off"
             multiline
           />
         </FormLayout>
@@ -632,13 +632,13 @@ function FrameExample() {
             label="Subject"
             value={supportSubject}
             onChange={handleSubjectChange}
-            autoComplete="nope"
+            autoComplete="off"
           />
           <TextField
             label="Message"
             value={supportMessage}
             onChange={handleMessageChange}
-            autoComplete="nope"
+            autoComplete="off"
             multiline
           />
         </FormLayout>

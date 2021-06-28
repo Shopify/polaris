@@ -188,12 +188,7 @@ describe('<Pagination />', () => {
       const spy = jest.fn();
       const wrapper = mountWithAppProvider(
         <div>
-          <TextField
-            label="test"
-            value=""
-            onChange={noop}
-            autoComplete="nope"
-          />
+          <TextField label="test" value="" onChange={noop} autoComplete="off" />
           <Pagination
             nextTooltip="j"
             previousKeys={[Key.KeyJ]}
