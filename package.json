@@ -1,5 +1,5 @@
 {
-  "name": "@shopify/polaris",
+  "name": "@endearhq/polaris",
   "description": "Shopify’s admin product component library",
   "version": "6.6.0-fork.0",
   "private": false,
