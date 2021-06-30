@@ -109,6 +109,7 @@ function SpinnerWithFocusManagement() {
           focused={textFieldFocused}
           onChange={handleUrlChange}
           label={label}
+          autoComplete="off"
         />
         <Button submit>Submit</Button>
       </FormLayout>

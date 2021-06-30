@@ -65,6 +65,7 @@ function FormOnSubmitExample() {
           onChange={handleEmailChange}
           label="Email"
           type="email"
+          autoComplete="email"
           helpText={
             <span>
               We’ll use this email address to inform you on future changes to
@@ -100,6 +101,7 @@ function FormWithoutNativeValidationExample() {
           onChange={handleUrlChange}
           label="App URL"
           type="url"
+          autoComplete="off"
         />
 
         <Button submit>Submit</Button>

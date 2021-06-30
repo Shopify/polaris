@@ -416,8 +416,13 @@ Use for settings pages. When settings are grouped thematically in annotated sect
   >
     <Card sectioned>
       <FormLayout>
-        <TextField label="Store name" onChange={() => {}} />
-        <TextField type="email" label="Account email" onChange={() => {}} />
+        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
+        <TextField
+          type="email"
+          label="Account email"
+          onChange={() => {}}
+          autoComplete="email"
+        />
       </FormLayout>
     </Card>
   </Layout.AnnotatedSection>
@@ -441,8 +446,13 @@ Use for settings pages that need a banner or other content at the top.
   >
     <Card sectioned>
       <FormLayout>
-        <TextField label="Store name" onChange={() => {}} />
-        <TextField type="email" label="Account email" onChange={() => {}} />
+        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
+        <TextField
+          type="email"
+          label="Account email"
+          onChange={() => {}}
+          autoComplete="email"
+        />
       </FormLayout>
     </Card>
   </Layout.AnnotatedSection>

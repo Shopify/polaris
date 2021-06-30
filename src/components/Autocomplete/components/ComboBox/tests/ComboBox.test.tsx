@@ -621,7 +621,7 @@ describe('<ComboBox/>', () => {
 function noop() {}
 
 function renderTextField() {
-  return <TextField label="" onChange={noop} />;
+  return <TextField label="" onChange={noop} autoComplete="off" />;
 }
 
 function renderNodeWithId() {

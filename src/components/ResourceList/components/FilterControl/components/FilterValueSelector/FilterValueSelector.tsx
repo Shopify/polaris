@@ -86,6 +86,7 @@ export function FilterValueSelector({
             value={value}
             type={filter.textFieldType}
             onChange={onChange}
+            autoComplete="off"
           />
         </Stack>
       );
