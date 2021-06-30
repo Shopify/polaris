@@ -159,6 +159,7 @@ export function FilterControl({
         onBlur={onSearchBlur}
         focused={focused}
         disabled={selectMode}
+        autoComplete="off"
       />
       {appliedFiltersWrapper}
     </FormLayout>
