@@ -87,7 +87,6 @@ function IndexTableBase({
     toggle: toggleHasMoreLeftColumns,
   } = useToggle(false);
 
-  const onboardingScrollButtons = useRef(false);
   const tablePosition = useRef({top: 0, left: 0});
   const tableHeadingRects = useRef<TableHeadingRect[]>([]);
 
@@ -217,6 +216,8 @@ function IndexTableBase({
     debounceResizeTableScrollbar();
   }, [debounceResizeTableScrollbar, resizeTableHeadings]);
 
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   const handleScrollContainerScroll = useCallback(
     (canScrollLeft, canScrollRight) => {
       if (!scrollableContainerElement.current || !scrollBarElement.current) {
@@ -242,9 +243,7 @@ function IndexTableBase({
         toggleHasMoreLeftColumns();
       }
 
-      if (!canScrollRight) {
-        onboardingScrollButtons.current = false;
-      }
+      setCanScrollRight(canScrollRight);
     },
     [hasMoreLeftColumns, toggleHasMoreLeftColumns],
   );
@@ -503,6 +502,7 @@ function IndexTableBase({
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
     lastColumnSticky && styles['Table-sticky-last'],
+    lastColumnSticky && !canScrollRight && styles['Table-sticky-scrolled'],
   );
 
   const emptyStateMarkup = emptyState ? (

@@ -231,6 +231,13 @@ $loading-panel-height: rem(53px);
   }
 }
 
+.Table-sticky-scrolled .TableCell:last-child,
+.Table-sticky-scrolled .TableHeading-last {
+  @include breakpoint-after($breakpoint-small) {
+    filter: none;
+  }
+}
+
 .Table-sticky-last {
   // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
   .statusSuccess .TableCell:last-child {
