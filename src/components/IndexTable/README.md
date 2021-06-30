@@ -710,7 +710,7 @@ function IndexTableWithFilteringExample() {
 An index table with rows differentiated by status.
 
 ```jsx
-function SimpleIndexTableExample() {
+function IndexTableWithRowStatusExample() {
   const customers = [
     {
       id: '3411',
@@ -786,10 +786,10 @@ function SimpleIndexTableExample() {
 
 ### Index table with sticky last column
 
-An index table with a sticky last column that stays visible on scroll.
+An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
 
 ```jsx
-function SimpleIndexTableExample() {
+function StickyLastCellIndexTableExample() {
   const customers = [
     {
       id: '3411',
@@ -832,7 +832,7 @@ function SimpleIndexTableExample() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell last>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -850,8 +850,9 @@ function SimpleIndexTableExample() {
           {title: 'Name'},
           {title: 'Location'},
           {title: 'Order count'},
-          {title: 'Amount spent'},
+          {title: 'Amount spent', hidden: false},
         ]}
+        lastColumnSticky
       >
         {rowMarkup}
       </IndexTable>
@@ -1014,11 +1015,12 @@ function IndexTableWithAllElementsExample() {
         hasMoreItems
         bulkActions={bulkActions}
         promotedBulkActions={promotedBulkActions}
+        lastColumnSticky
         headings={[
           {title: 'Name'},
           {title: 'Location'},
           {title: 'Order count'},
-          {title: 'Amount spent'},
+          {title: 'Amount spent', hidden: false},
         ]}
       >
         {rowMarkup}
@@ -1358,7 +1360,6 @@ An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 | Prop  | Type    | Description                                                                      |
 | ----- | ------- | -------------------------------------------------------------------------------- |
 | flush | boolean | A boolean property indicating whether the cell should remove the default padding |
-| last  | boolean | A boolean property indicating whether the last cell should stay sticky           |
 
 ---
 
