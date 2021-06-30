@@ -8,10 +8,13 @@ $font-family-data: (
   'Roboto',
   'Helvetica Neue',
   sans-serif},
-  monospace: #{Monaco,
+  monospace: #{ui-monospace,
+  SFMono-Regular,
+  SF Mono,
   Consolas,
-  'Lucida Console',
-  monospace},
+  Liberation Mono,
+  Menlo,
+  monospace !default},
 );
 
 $line-height-data: (

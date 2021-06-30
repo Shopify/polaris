@@ -150,6 +150,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
 
   private handleScroll = () => {
     const {scrollArea} = this;
+    const {scrollPosition} = this.state;
     const {shadow, onScrolledToBottom} = this.props;
     if (scrollArea == null) {
       return;
@@ -158,7 +159,9 @@ export class Scrollable extends Component<ScrollableProps, State> {
     const shouldBottomShadow = Boolean(
       shadow && !(scrollTop + clientHeight >= scrollHeight),
     );
-    const shouldTopShadow = Boolean(shadow && scrollTop > 0);
+    const shouldTopShadow = Boolean(
+      shadow && scrollTop > 0 && scrollPosition > 0,
+    );
 
     const canScroll = scrollHeight > clientHeight;
     const hasScrolledToBottom =

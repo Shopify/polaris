@@ -1139,6 +1139,23 @@ describe('<TextField />', () => {
       expect(labelled.prop('requiredIndicator')).toBe(true);
     });
   });
+
+  describe('monospaced', () => {
+    it('passes monospaced prop to TextField', () => {
+      const element = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} monospaced />,
+      );
+      expect(element.prop('monospaced')).toBe(true);
+    });
+
+    it('applies the monospaced style', () => {
+      const input = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} monospaced />,
+      ).find('input');
+
+      expect(input.prop('className')).toContain('monospaced');
+    });
+  });
 });
 
 function noop() {}

@@ -1,8 +1,9 @@
-import React, {useRef} from 'react';
+import React, {useCallback, useRef} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 import type {CSSTransitionClassNames} from 'react-transition-group/CSSTransition';
 
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 import {Key} from '../../types';
@@ -53,6 +54,8 @@ export interface SheetProps {
   type?: 'fullSheet' | 'bottomSheet';
   /** ARIA label for sheet */
   accessibilityLabel: string;
+  /** The element or the RefObject that activates the Sheet */
+  activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
 /** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
@@ -69,9 +72,28 @@ export function Sheet({
   type = 'fullSheet',
   size = 'small',
   accessibilityLabel,
+  activator,
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
+  const activatorRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = useCallback(() => {
+    onClose();
+
+    const activatorElement =
+      activator && isRef(activator)
+        ? activator && activator.current
+        : activatorRef.current;
+    if (activatorElement) {
+      requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
+    }
+  }, [activator, onClose]);
+
+  const activatorMarkup =
+    activator && !isRef(activator) ? (
+      <div ref={activatorRef}>{activator}</div>
+    ) : null;
 
   let transitionClasses: CSSTransitionClassNames;
   if (type === 'bottomSheet') {
@@ -83,54 +105,63 @@ export function Sheet({
   }
 
   return (
-    <Portal idPrefix="sheet">
-      <CSSTransition
-        nodeRef={container}
-        classNames={transitionClasses}
-        timeout={durationSlow}
-        in={open}
-        mountOnEnter
-        unmountOnExit
-        onEnter={onEnter}
-        onEntered={onEntered}
-        onExit={onExit}
-        onExited={onExited}
-      >
-        <div
-          className={classNames(
-            styles.Container,
-            size === 'large' && styles.sizeLarge,
-            size === 'medium' && styles.sizeMedium,
-            type === 'bottomSheet' && styles.bottomSheet,
-            type === 'bottomSheet' && minimized && styles.minimized,
-          )}
-          {...layer.props}
-          {...overlay.props}
-          ref={container}
+    <>
+      {activatorMarkup}
+      <Portal idPrefix="sheet">
+        <CSSTransition
+          nodeRef={container}
+          classNames={transitionClasses}
+          timeout={durationSlow}
+          in={open}
+          mountOnEnter
+          unmountOnExit
+          onEnter={onEnter}
+          onEntered={onEntered}
+          onExit={onExit}
+          onExited={onExited}
         >
-          <TrapFocus trapping={open && !minimized}>
-            <div
-              role="dialog"
-              aria-modal
-              tabIndex={-1}
-              className={classNames(
-                styles.Sheet,
-                size === 'large' && styles.sizeLarge,
-                size === 'medium' && styles.sizeMedium,
-                type === 'bottomSheet' && styles.bottomSheet,
-                type === 'bottomSheet' && minimized && styles.minimized,
-              )}
-              aria-label={accessibilityLabel}
-            >
-              {children}
-            </div>
-          </TrapFocus>
-        </div>
-      </CSSTransition>
-      <KeypressListener keyCode={Key.Escape} handler={onClose} />
-      {open && type !== 'bottomSheet' && (
-        <Backdrop transparent={transparentBackdrop} onClick={onClose} />
-      )}
-    </Portal>
+          <div
+            className={classNames(
+              styles.Container,
+              size === 'large' && styles.sizeLarge,
+              size === 'medium' && styles.sizeMedium,
+              type === 'bottomSheet' && styles.bottomSheet,
+              type === 'bottomSheet' && minimized && styles.minimized,
+            )}
+            {...layer.props}
+            {...overlay.props}
+            ref={container}
+          >
+            <TrapFocus trapping={open && !minimized}>
+              <div
+                role="dialog"
+                aria-modal
+                tabIndex={-1}
+                className={classNames(
+                  styles.Sheet,
+                  size === 'large' && styles.sizeLarge,
+                  size === 'medium' && styles.sizeMedium,
+                  type === 'bottomSheet' && styles.bottomSheet,
+                  type === 'bottomSheet' && minimized && styles.minimized,
+                )}
+                aria-label={accessibilityLabel}
+              >
+                {children}
+              </div>
+            </TrapFocus>
+          </div>
+        </CSSTransition>
+        <KeypressListener keyCode={Key.Escape} handler={handleClose} />
+        {open && type !== 'bottomSheet' && (
+          <Backdrop transparent={transparentBackdrop} onClick={handleClose} />
+        )}
+      </Portal>
+    </>
   );
+}
+
+function isRef(
+  ref: React.RefObject<HTMLElement> | React.ReactElement,
+): ref is React.RefObject<HTMLElement> {
+  return Object.prototype.hasOwnProperty.call(ref, 'current');
 }

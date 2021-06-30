@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -8,7 +8,7 @@ import {Popover, PopoverProps} from '../../../Popover';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {EventListener} from '../../../EventListener';
-import {isServer} from '../../../../utilities/target';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 import {ComboBoxContext} from './context';
 import styles from './ComboBox.scss';
@@ -70,8 +70,6 @@ export function ComboBox<Value extends string = string>({
     setTrue: forcePopoverActiveTrue,
     setFalse: forcePopoverActiveFalse,
   } = useToggle(false);
-
-  const useIsomorphicLayoutEffect = isServer ? useEffect : useLayoutEffect;
 
   const id = useUniqueId('ComboBox', idProp);
 

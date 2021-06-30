@@ -48,7 +48,12 @@ export {Caption} from './Caption';
 export type {CaptionProps} from './Caption';
 
 export {Card} from './Card';
-export type {CardProps} from './Card';
+export type {
+  CardProps,
+  CardSectionProps,
+  CardHeaderProps,
+  CardSubsectionProps,
+} from './Card';
 
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
