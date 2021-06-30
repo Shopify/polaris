@@ -85,7 +85,7 @@ The autocomplete attribute in an `input` field controls two types of browser beh
 
 Even if you do not want the browser to autofill a user's information, it is recommended you still have an autocomplete attribute with the value off or nope.
 
-Unfortunately, [not all browsers support](https://caniuse.com/input-autocomplete-onoff) or respect autocomplete="off". This makes things challenging. Chrome, for example, [has a long outstanding bug]9https://bugs.chromium.org/p/chromium/issues/detail?id=468153) and won't add support for off for now.
+Unfortunately, [not all browsers support](https://caniuse.com/input-autocomplete-onoff) or respect autocomplete="off". This makes things challenging. Chrome, for example, [has a long outstanding bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153) and won't add support for off for now.
 
 | Browser | Support for `autocomplete="off"` | Details                                                                                                                                                             |
 | ------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
