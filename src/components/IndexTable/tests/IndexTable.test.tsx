@@ -211,8 +211,7 @@ describe('<IndexTable>', () => {
       scrollContainer!.trigger('onScroll', true, false);
 
       expect(index).toContainReactComponent('table', {
-        className:
-          'Table Table-scrolling Table-sticky-last Table-sticky-scrolled',
+        className: 'Table Table-scrolling Table-sticky-last',
       });
     });
   });

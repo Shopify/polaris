@@ -205,6 +205,27 @@ function IndexTableBase({
     [resizeTableScrollBar],
   );
 
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const setRightScroll = useCallback(() => {
+    if (
+      !lastColumnSticky ||
+      !tableElement.current ||
+      !scrollableContainerElement.current
+    ) {
+      return;
+    }
+
+    const tableRect = tableElement.current.getBoundingClientRect();
+    const scrollableRect = scrollableContainerElement.current.getBoundingClientRect();
+
+    setCanScrollRight(tableRect.width > scrollableRect.width);
+  }, [lastColumnSticky, setCanScrollRight]);
+
+  useEffect(() => {
+    setRightScroll();
+  }, [setRightScroll]);
+
   const handleResize = useCallback(() => {
     // hide the scrollbar when resizing
     scrollBarElement.current?.style.setProperty(
@@ -214,9 +235,8 @@ function IndexTableBase({
 
     resizeTableHeadings();
     debounceResizeTableScrollbar();
-  }, [debounceResizeTableScrollbar, resizeTableHeadings]);
-
-  const [canScrollRight, setCanScrollRight] = useState(true);
+    setRightScroll();
+  }, [debounceResizeTableScrollbar, resizeTableHeadings, setRightScroll]);
 
   const handleScrollContainerScroll = useCallback(
     (canScrollLeft, canScrollRight) => {
@@ -502,7 +522,7 @@ function IndexTableBase({
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
     lastColumnSticky && styles['Table-sticky-last'],
-    lastColumnSticky && !canScrollRight && styles['Table-sticky-scrolled'],
+    lastColumnSticky && canScrollRight && styles['Table-sticky-scrolling'],
   );
 
   const emptyStateMarkup = emptyState ? (

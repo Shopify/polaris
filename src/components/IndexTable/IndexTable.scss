@@ -221,7 +221,6 @@ $loading-panel-height: rem(53px);
     right: 0;
     background-color: var(--p-surface);
     z-index: z-index(sticky-cell, $index-table-stacking-order);
-    filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
   }
 }
 
@@ -231,10 +230,10 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.Table-sticky-scrolled .TableCell:last-child,
-.Table-sticky-scrolled .TableHeading-last {
+.Table-sticky-scrolling .TableCell:last-child,
+.Table-sticky-scrolling .TableHeading-last {
   @include breakpoint-after($breakpoint-small) {
-    filter: none;
+    filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
   }
 }
 
