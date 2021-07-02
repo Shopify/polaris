@@ -409,6 +409,7 @@ $scroll-bar-border-radius: rem(4px);
   transition: transform easing() duration();
   display: flex;
   border-top: border('divider');
+  filter: none;
 }
 
 [data-selectmode='true'] {
@@ -432,7 +433,6 @@ $scroll-bar-border-radius: rem(4px);
   min-height: 5.6rem;
   padding: 1rem spacing();
   background-color: var(--p-surface);
-  box-shadow: shadow();
 }
 
 .StickyTable-condensed {
