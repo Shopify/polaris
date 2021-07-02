@@ -12,6 +12,7 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   source: string;
   crossOrigin?: CrossOrigin;
   sourceSet?: SourceSet[];
+  loading?: 'lazy' | 'eager';
   onLoad?(): void;
   onError?(): void;
 }
