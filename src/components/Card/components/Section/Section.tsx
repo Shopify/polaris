@@ -8,7 +8,7 @@ import {ButtonGroup} from '../../../ButtonGroup';
 import {Subheading} from '../../../Subheading';
 import styles from '../../Card.scss';
 
-export interface SectionProps {
+export interface CardSectionProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   subdued?: boolean;
@@ -27,7 +27,7 @@ export function Section({
   fullWidth,
   actions,
   hideOnPrint,
-}: SectionProps) {
+}: CardSectionProps) {
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],

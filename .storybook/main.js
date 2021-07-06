@@ -1,5 +1,6 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
+const CreateFileWebpack = require('create-file-webpack');
 
 const postcssShopify = require('@shopify/postcss-plugin');
 
@@ -70,6 +71,15 @@ module.exports = {
         ],
       },
     ];
+
+    config.plugins.push(
+      new CreateFileWebpack({
+        path: './build/storybook/static/services/',
+        fileName: 'ping.html',
+        content:
+          '<!DOCTYPE html><html lang="en"><head></head><body>OK</body></html>',
+      }),
+    );
 
     config.module.rules = [
       // Strip out existing rules that apply to md files

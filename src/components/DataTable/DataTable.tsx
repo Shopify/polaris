@@ -123,6 +123,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     this.handleResize();
   }
 
+  componentWillUnmount() {
+    this.handleResize.cancel();
+  }
+
   render() {
     const {
       headings,

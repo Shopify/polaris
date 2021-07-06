@@ -173,6 +173,8 @@ export function Button({
         styles.Text,
         removeUnderline && styles.removeUnderline,
       )}
+      // Fixes Safari bug that doesn't re-render button text to correct color
+      key={disabled ? 'text-disabled' : 'text'}
     >
       {children}
     </span>

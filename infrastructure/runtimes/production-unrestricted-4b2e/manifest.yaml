@@ -1,0 +1,20 @@
+---
+kind: RuntimeManifest
+apiVersion: platform.shopify.io/v1alpha1
+metadata:
+  name: production-unrestricted-4b2e
+runtimeInfo:
+  appName: polaris-react
+  env: production
+  appImage: gcr.io/shopify-docker-images/apps/production/polaris-react
+  domains:
+    - polaris-react.shopifycloud.com
+defaultBaseSource: github:Shopify/k8s_base/components
+components:
+  - name: web
+    basePath: web/v10
+    resources:
+      - base: ingress.yaml
+      - base: certificate.yaml
+      - base: service.yaml
+      - base: deployment.yaml
