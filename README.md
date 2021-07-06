@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.6.0-rc.1/dist/styles.css"
 />
 ```
 
