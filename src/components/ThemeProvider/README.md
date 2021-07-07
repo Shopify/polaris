@@ -141,6 +141,74 @@ A theme provider can be nested within the theme provider rendered by the app pro
 </AppProvider>
 ```
 
+### Theme provider with a color scheme and custom config nested within an app provider
+
+You can pass in a custom config to the theme provider to override default HSL values. Find the lightness value you need using www.hsluv.org
+
+```jsx
+<AppProvider i18n={{}}>
+  <TextContainer>
+    <Card
+      title="Shipment 1234"
+      secondaryFooterActions={[{content: 'Edit shipment'}]}
+      primaryFooterAction={{content: 'Add tracking number'}}
+    >
+      <Card.Section title="Items">
+        <List>
+          <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
+          <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+        </List>
+      </Card.Section>
+    </Card>
+    <ThemeProvider
+      theme={{
+        colors: {
+          surface: '#054948',
+        },
+        config: {
+          surface: [
+            {
+              name: 'surface',
+              description:
+                'For use as a background color, in components such as Card, Modal, and Popover.',
+              light: {lightness: 27.5},
+              dark: {lightness: 27.5},
+              meta: {
+                figmaName: 'Surface/Default',
+              },
+            },
+          ],
+          onSurface: [
+            {
+              name: 'text',
+              description: 'For use as a text color.',
+              light: {lightness: 100},
+              dark: {lightness: 100},
+              meta: {
+                figmaName: 'Text/Default',
+              },
+            },
+          ],
+        },
+      }}
+    >
+      <Card
+        title="Shipment 1234"
+        secondaryFooterActions={[{content: 'Edit shipment'}]}
+        primaryFooterAction={{content: 'Add tracking number'}}
+      >
+        <Card.Section title="Items">
+          <List>
+            <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
+            <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+          </List>
+        </Card.Section>
+      </Card>
+    </ThemeProvider>
+  </TextContainer>
+</AppProvider>
+```
+
 ### Theme provider with colors nested within an app provider
 
 A theme provider can be nested within the theme provider rendered by the app provider in order to override colors at a local level.
