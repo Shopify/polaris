@@ -42,7 +42,7 @@ export interface AppliedFilterInterface {
   /** A label for the applied filter */
   label: string;
   /** Callback when the remove button is pressed */
-  onRemove(key: string): void;
+  onRemove?: (key: string) => void;
 }
 
 export interface FilterInterface {
@@ -369,12 +369,18 @@ class FiltersInner extends Component<CombinedProps, State> {
       <TagsWrapper hidden={shouldHideTagsContainer}>
         <div className={styles.TagsContainer} aria-live="polite">
           {(appliedFilters || []).map((filter) => {
+            const {onRemove} = filter;
+
             return (
               <Tag
                 key={filter.key}
-                onRemove={() => {
-                  filter.onRemove(filter.key);
-                }}
+                onRemove={
+                  onRemove
+                    ? () => {
+                        onRemove(filter.key);
+                      }
+                    : undefined
+                }
                 disabled={disabled}
               >
                 {filter.label}
