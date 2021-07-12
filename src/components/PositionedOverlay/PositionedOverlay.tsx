@@ -39,6 +39,7 @@ export interface PositionedOverlayProps {
   preventInteraction?: boolean;
   classNames?: string;
   zIndexOverride?: number;
+  mutationObserveConfig?: MutationObserverInit;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -57,7 +58,7 @@ interface State {
   lockPosition: boolean;
 }
 
-const OBSERVER_CONFIG = {
+const DEFAULT_OBSERVER_CONFIG: PositionedOverlayProps['mutationObserveConfig'] = {
   childList: true,
   subtree: true,
   characterData: true,
@@ -208,6 +209,7 @@ export class PositionedOverlay extends PureComponent<
           fullWidth,
           fixed,
           preferInputActivator = true,
+          mutationObserveConfig,
         } = this.props;
 
         const preferredActivator = preferInputActivator
@@ -281,8 +283,13 @@ export class PositionedOverlay extends PureComponent<
           },
           () => {
             if (!this.overlay) return;
-            this.observer.observe(this.overlay, OBSERVER_CONFIG);
-            this.observer.observe(activator, OBSERVER_CONFIG);
+
+            this.observer.observe(this.overlay, {
+              ...DEFAULT_OBSERVER_CONFIG,
+              ...mutationObserveConfig,
+            });
+
+            this.observer.observe(activator, DEFAULT_OBSERVER_CONFIG);
           },
         );
       },
