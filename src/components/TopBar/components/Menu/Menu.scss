@@ -21,7 +21,7 @@ $activator-variables: (
 .Activator {
   @include unstyled-button;
   @include focus-ring;
-  color: var(--p-text, var(--top-bar-color));
+  color: var(--p-text);
   position: relative;
   display: flex;
   justify-content: center;
