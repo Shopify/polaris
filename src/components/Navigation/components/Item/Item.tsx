@@ -6,6 +6,7 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
+import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -27,6 +28,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -81,6 +83,7 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -88,6 +91,13 @@ export function Item({
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
   const [keyFocused, setKeyFocused] = useState(false);
+
+  if (external) {
+    label = i18n.translate(
+      'Polaris.Common.newWindowAccessibilityHint',
+    );
+    icon = ExternalSmallMinor;
+  }
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
