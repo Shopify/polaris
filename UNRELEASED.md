@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- [Layout] Add `id` prop for deeplinking to `AnnotatedSection` components
+
 ### Bug fixes
 
 ### Documentation
