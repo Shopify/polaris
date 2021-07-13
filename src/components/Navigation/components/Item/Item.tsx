@@ -193,6 +193,7 @@ export function Item({
 
   const secondaryActionMarkup = secondaryAction && (
     <UnstyledLink
+      external
       url={secondaryAction.url}
       className={styles.SecondaryAction}
       tabIndex={tabIndex}
