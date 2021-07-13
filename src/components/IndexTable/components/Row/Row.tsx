@@ -87,13 +87,12 @@ export const Row = memo(function Row({
     );
 
     if (primaryLinkElement && !selectMode) {
+      isNavigating.current = true;
       const {ctrlKey, metaKey} = event.nativeEvent;
 
       if (onNavigation) {
         onNavigation(id);
       }
-
-      isNavigating.current = true;
 
       if (
         (ctrlKey || metaKey) &&
@@ -107,6 +106,8 @@ export const Row = memo(function Row({
       primaryLinkElement.dispatchEvent(
         new MouseEvent(event.type, event.nativeEvent),
       );
+
+      isNavigating.current = false;
     } else {
       isNavigating.current = false;
       handleInteraction(event);
