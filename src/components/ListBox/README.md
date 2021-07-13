@@ -52,7 +52,7 @@ Basic implementation of a control element used to let merchants select options
 ```jsx
 function BaseListBoxExample() {
   return (
-    <ListBox>
+    <ListBox accessibilityLabel="Basic ListBox example">
       <ListBox.Option value="UniqueValue-1">Item 1</ListBox.Option>
       <ListBox.Option value="UniqueValue-2">Item 2</ListBox.Option>
       <ListBox.Option value="UniqueValue-3">Item 3</ListBox.Option>
@@ -68,7 +68,7 @@ Implementation of a control element used to let merchants select options that ar
 ```jsx
 function ListBoxWithSectionExample() {
   return (
-    <ListBox>
+    <ListBox accessibilityLabel="ListBox with sections example">
       <ListBox.Section title={<ListBox.Header>Section Header</ListBox.Header>}>
         <ListBox.Option value="UniqueValue-1">Item 1</ListBox.Option>
         <ListBox.Option value="UniqueValue-2">Item 2</ListBox.Option>
@@ -86,7 +86,7 @@ Implementation of a control element showing a loading indicator to let merchants
 ```jsx
 function ListBoxWithLoadingExample() {
   return (
-    <ListBox>
+    <ListBox accessibilityLabel="ListBox with loading example">
       <ListBox.Option value="UniqueValue-1">Item 1</ListBox.Option>
       <ListBox.Option value="UniqueValue-2">Item 2</ListBox.Option>
       <ListBox.Option value="UniqueValue-3">Item 3</ListBox.Option>
@@ -103,7 +103,7 @@ Implementation of a control element used to let merchants take an action
 ```jsx
 function ListBoxWithActionExample() {
   return (
-    <ListBox>
+    <ListBox accessibilityLabel="ListBox with Action example">
       <ListBox.Action value="ActionValue" divider>
         <div>Add item</div>
       </ListBox.Action>
@@ -121,7 +121,7 @@ Implementation of a control with custom rendering of options
 ```jsx
 function ListBoxWithCustomElementExample() {
   return (
-    <ListBox>
+    <ListBox accessibilityLabel="ListBox with custom element example">
       <ListBox.Action value="ActionValue" divider>
         Add item
       </ListBox.Action>

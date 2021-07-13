@@ -24,7 +24,7 @@ export const Loading = memo(function LoadingOption({
   }, [label, setLoading]);
 
   return (
-    <li className={styles.ListItem}>
+    <li className={styles.ListItem} role="presentation">
       {children ? (
         children
       ) : (
