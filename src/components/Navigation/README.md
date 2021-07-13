@@ -176,6 +176,7 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
         url: '/path/to/place',
         label: 'Home',
         icon: HomeMajor,
+        external: true,
       },
       {
         url: '/path/to/place',

@@ -6,7 +6,8 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
-import {ExternalSmallMinor} from '@shopify/polaris-icons';
+// TODO: Add an ExternalMajor icon to polaris-icons? (need 20x20 svg icon to match other menu icons)
+import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -92,13 +93,6 @@ export function Item({
   const [expanded, setExpanded] = useState(false);
   const [keyFocused, setKeyFocused] = useState(false);
 
-  if (external) {
-    label = i18n.translate(
-      'Polaris.Common.newWindowAccessibilityHint',
-    );
-    icon = ExternalSmallMinor;
-  }
-
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
       setExpanded(false);
@@ -130,11 +124,33 @@ export function Item({
     </span>
   ) : null;
 
-  const iconMarkup = icon ? (
-    <div className={styles.Icon}>
-      <Icon source={icon} />
-    </div>
-  ) : null;
+  // const iconMarkup = icon ? (
+  //   <div className={styles.Icon}>
+  //     <Icon source={icon} />
+  //   </div>
+  // ) : null;
+
+  let iconMarkup;
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+  if (icon) {
+    if (external) {
+      iconMarkup = (
+        <div className={styles.Icon}>
+          <Icon accessibilityLabel={externalIconLabel} source={ExternalMinor} />
+        </div>
+      );
+    } else {
+      iconMarkup = (
+        <div className={styles.Icon}>
+          <Icon source={icon} />
+        </div>
+      );
+    }
+  } else {
+    iconMarkup = null;
+  }
 
   let badgeMarkup: ReactNode = null;
   if (isNew) {
@@ -196,7 +212,6 @@ export function Item({
 
   const secondaryActionMarkup = secondaryAction && (
     <UnstyledLink
-      external
       url={secondaryAction.url}
       className={styles.SecondaryAction}
       tabIndex={tabIndex}
@@ -284,6 +299,7 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
