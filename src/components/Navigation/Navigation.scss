@@ -153,7 +153,14 @@ $disabled-fade: 0.6;
 }
 
 .ExternalIcon {
-  margin: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+  display: flex;
+  align-items: center;
+  height: nav(mobile-height);
+  padding: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    height: nav(desktop-height);
+  }
 }
 
 .ListItem {
