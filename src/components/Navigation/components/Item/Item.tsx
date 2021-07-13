@@ -6,7 +6,6 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
-// TODO: Add an ExternalMajor icon to polaris-icons? (need 20x20 svg icon to match other menu icons)
 import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -124,33 +123,15 @@ export function Item({
     </span>
   ) : null;
 
-  // const iconMarkup = icon ? (
-  //   <div className={styles.Icon}>
-  //     <Icon source={icon} />
-  //   </div>
-  // ) : null;
+  const iconMarkup = icon ? (
+    <div className={styles.Icon}>
+      <Icon source={icon} />
+    </div>
+  ) : null;
 
-  let iconMarkup;
   const externalIconLabel = i18n.translate(
     'Polaris.Common.newWindowAccessibilityHint',
   );
-  if (icon) {
-    if (external) {
-      iconMarkup = (
-        <div className={styles.Icon}>
-          <Icon accessibilityLabel={externalIconLabel} source={ExternalMinor} />
-        </div>
-      );
-    } else {
-      iconMarkup = (
-        <div className={styles.Icon}>
-          <Icon source={icon} />
-        </div>
-      );
-    }
-  } else {
-    iconMarkup = null;
-  }
 
   let badgeMarkup: ReactNode = null;
   if (isNew) {
@@ -313,6 +294,15 @@ export function Item({
           )}
         >
           {itemContentMarkup}
+          {external && (
+            <div className={styles.ExternalIcon}>
+              <Icon
+                accessibilityLabel={externalIconLabel}
+                source={ExternalMinor}
+                color="base"
+              />
+            </div>
+          )}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>

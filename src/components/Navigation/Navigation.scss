@@ -152,6 +152,10 @@ $disabled-fade: 0.6;
   @include nav-item-icon-attributes;
 }
 
+.ExternalIcon {
+  margin: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+}
+
 .ListItem {
   @include nav-list-item-attributes;
 
