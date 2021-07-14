@@ -306,3 +306,5 @@ export interface CheckboxHandles {
 }
 
 export type NonEmptyArray<T> = [T, ...T[]];
+
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;
