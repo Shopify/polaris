@@ -9,7 +9,7 @@ keywords:
 
 # ListBox
 
-The `ListBox` component is a list component that implements part of the [Aria 1.2 ListBox specs](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox). It presents a list of options and allows users to select one or more of them. If you need more structure than the standard component offers, use composition to customize the presentation of these lists by using sections, headers, or custom elements.
+The `ListBox` component is a list component that implements part of the [Aria 1.2 ListBox specs](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox). It presents a list of options and allows users to select one or more of them. If you need more structure than the standard component offers, use composition to customize the presentation of these lists by using headers or custom elements.
 
 ---
 
@@ -61,24 +61,6 @@ function BaseListBoxExample() {
 }
 ```
 
-### ListBox with Section
-
-Implementation of a control element used to let merchants select options that are grouped into named sections
-
-```jsx
-function ListBoxWithSectionExample() {
-  return (
-    <ListBox accessibilityLabel="ListBox with sections example">
-      <ListBox.Section title={<ListBox.Header>Section Header</ListBox.Header>}>
-        <ListBox.Option value="UniqueValue-1">Item 1</ListBox.Option>
-        <ListBox.Option value="UniqueValue-2">Item 2</ListBox.Option>
-        <ListBox.Option value="UniqueValue-3">Item 3</ListBox.Option>
-      </ListBox.Section>
-    </ListBox>
-  );
-}
-```
-
 ### ListBox with Loading
 
 Implementation of a control element showing a loading indicator to let merchants know more options are being loaded
@@ -125,17 +107,15 @@ function ListBoxWithCustomElementExample() {
       <ListBox.Action value="ActionValue" divider>
         Add item
       </ListBox.Action>
-      <ListBox.Section title={<div>Section Header</div>}>
-        <ListBox.Option value="UniqueValue-1">
-          <div>Item 1</div>
-        </ListBox.Option>
-        <ListBox.Option value="UniqueValue-2">
-          <div>Item 2</div>
-        </ListBox.Option>
-        <ListBox.Option value="UniqueValue-3">
-          <div>Item 3</div>
-        </ListBox.Option>
-      </ListBox.Section>
+      <ListBox.Option value="UniqueValue-1">
+        <div>Item 1</div>
+      </ListBox.Option>
+      <ListBox.Option value="UniqueValue-2">
+        <div>Item 2</div>
+      </ListBox.Option>
+      <ListBox.Option value="UniqueValue-3">
+        <div>Item 3</div>
+      </ListBox.Option>
       <ListBox.Loading accessibilityLabel="items are loading" />
     </ListBox>
   );
