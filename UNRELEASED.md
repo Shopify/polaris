@@ -20,4 +20,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 Modernized tests for Avatar, Backdrop, Badge, Banner components([#4306](https://github.com/Shopify/polaris-react/pull/4306))
 
+- Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
+
 ### Deprecations
