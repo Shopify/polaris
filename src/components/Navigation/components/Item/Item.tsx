@@ -133,6 +133,16 @@ export function Item({
     'Polaris.Common.newWindowAccessibilityHint',
   );
 
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
+    </div>
+  ) : null;
+
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
@@ -295,15 +305,7 @@ export function Item({
           )}
         >
           {itemContentMarkup}
-          {external && (
-            <div className={styles.ExternalIcon}>
-              <Icon
-                accessibilityLabel={externalIconLabel}
-                source={ExternalMinor}
-                color="base"
-              />
-            </div>
-          )}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>
