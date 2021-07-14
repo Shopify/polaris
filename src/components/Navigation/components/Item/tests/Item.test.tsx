@@ -254,6 +254,20 @@ describe('<Nav.Item />', () => {
       });
     });
 
+    it('delegates external to <UnstyledLink />', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" url="foo" external disabled={false} />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'foo',
+        external: true,
+      });
+    });
+
     it('delegates disabled to <UnstyledLink />', () => {
       const item = mountWithNavigationProvider(
         <Item label="some label" url="foo" disabled />,
