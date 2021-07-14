@@ -1,7 +1,5 @@
 import React, {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities/react-testing';
 import {MediaQueryProvider} from 'components/MediaQueryProvider';
 
@@ -19,21 +17,21 @@ describe('<AppProvider />', () => {
   });
 
   it('updates context when props change', () => {
-    const Child: React.SFC = () => {
+    const Child: React.FunctionComponent = () => {
       return useContext(LinkContext) ? <div id="child" /> : null;
     };
     const LinkComponent = () => <div />;
 
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <AppProvider i18n={{}}>
         <Child />
       </AppProvider>,
     );
 
-    expect(wrapper.find('#child')).toHaveLength(0);
+    expect(wrapper).not.toContainReactComponent('div', {id: 'child'});
     wrapper.setProps({linkComponent: LinkComponent});
-    wrapper.update();
-    expect(wrapper.find('#child')).toHaveLength(1);
+    wrapper.forceUpdate();
+    expect(wrapper).toContainReactComponent('div', {id: 'child'});
   });
 
   it('renders a MediaProvider', () => {
