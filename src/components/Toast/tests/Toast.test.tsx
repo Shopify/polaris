@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Toast} from '../Toast';
 
@@ -15,7 +14,7 @@ describe('<Toast />', () => {
     };
 
     const props = {content: 'Image uploaded', onDismiss: noop};
-    mountWithAppProvider(<Toast {...props} />, {
+    mountWithApp(<Toast {...props} />, {
       frame: mockFrameContext,
     });
 
@@ -29,7 +28,7 @@ describe('<Toast />', () => {
       hideToast: jest.fn(),
     };
 
-    const frame = mountWithAppProvider(
+    const frame = mountWithApp(
       <Toast content="Message sent" onDismiss={noop} />,
       {frame: mockFrameContext},
     );
