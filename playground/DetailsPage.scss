@@ -12,9 +12,9 @@ $top-bar-height: 56px;
   margin-left: 8px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--p-text, black);
+  color: var(--p-text);
 
   @media only screen and (min-width: $nav-collapsed) {
-    color: var(--p-text, white);
+    color: var(--p-text);
   }
 }

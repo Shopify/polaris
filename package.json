@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
-  "description": "Shopify’s product component library",
-  "version": "6.3.0",
+  "description": "Shopify’s admin product component library",
+  "version": "6.6.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -66,8 +66,7 @@
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
     "prepublishOnly": "yarn run build",
     "dev": "npm-run-all copy-polaris-tokens storybook",
-    "start": "serve -l ${PORT} -c .storybook/serve.json",
-    "heroku-postbuild": "yarn run storybook:build",
+    "start": "serve ./build/storybook/static -l ${PORT:=6006}",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
@@ -84,7 +83,8 @@
     "@types/react-transition-group": "^4.4.0",
     "focus-visible": "^5.2.0",
     "lodash": "^4.17.4",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "serve": "^12.0.0"
   },
   "peerDependencies": {
     "react": "^16.9.0",
@@ -124,6 +124,7 @@
     "commander": "^4.1.0",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
+    "create-file-webpack": "^1.0.2",
     "downlevel-dts": "^0.6.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -147,7 +148,6 @@
     "sass-loader": "^8.0.0",
     "scss-parser": "^1.0.3",
     "semver": "^6.3.0",
-    "serve": "^11.1.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "size-limit": "^4.10.2",

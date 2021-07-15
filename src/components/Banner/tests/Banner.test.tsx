@@ -6,9 +6,7 @@ import {
   CircleAlertMajor,
   DiamondAlertMajor,
 } from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities/react-testing';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledButton, UnstyledLink, Heading} from 'components';
 
@@ -17,70 +15,78 @@ import {Banner, BannerHandles} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
-    const banner = mountWithAppProvider(<Banner title="Banner title" />);
-    expect(banner.find(Heading).contains('Banner title')).toBe(true);
+    const banner = mountWithApp(<Banner title="Banner title" />);
+    expect(banner.find(Heading)).toContainReactText('Banner title');
   });
 
   it('passes a p element to Heading', () => {
-    const banner = mountWithAppProvider(<Banner title="Banner title" />);
-    expect(banner.find(Heading).prop('element')).toBe('p');
+    const banner = mountWithApp(<Banner title="Banner title" />);
+    expect(banner).toContainReactComponent(Heading, {element: 'p'});
   });
 
   it('passes the provided icon source to Icon', () => {
-    const banner = mountWithAppProvider(<Banner icon={CirclePlusMinor} />);
-    expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
+    const banner = mountWithApp(<Banner icon={CirclePlusMinor} />);
+    expect(banner).toContainReactComponent(Icon, {source: CirclePlusMinor});
   });
 
   it('uses a success circleCheckMark if status is success and sets a status aria role', () => {
-    const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajor);
-    expect(banner.find(Icon).prop('color')).toBe('success');
-    expect(banner.find('div').first().prop('role')).toBe('status');
+    const banner = mountWithApp(<Banner status="success" />);
+
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleTickMajor,
+      color: 'success',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
   it('uses a highlight circleInformation if status is info and sets a status aria role', () => {
-    const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
-    expect(banner.find(Icon).prop('color')).toBe('highlight');
-    expect(banner.find('div').first().prop('role')).toBe('status');
+    const banner = mountWithApp(<Banner status="info" />);
+
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleInformationMajor,
+      color: 'highlight',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
   it('uses a warning circleAlert if status is warning and sets an alert aria role', () => {
-    const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajor);
-    expect(banner.find(Icon).prop('color')).toBe('warning');
-    expect(banner.find('div').first().prop('role')).toBe('alert');
+    const banner = mountWithApp(<Banner status="warning" />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleAlertMajor,
+      color: 'warning',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'alert'});
   });
 
   it('uses a critical circleBarred if status is critical and sets an alert aria role', () => {
-    const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(DiamondAlertMajor);
-    expect(banner.find(Icon).prop('color')).toBe('critical');
-    expect(banner.find('div').first().prop('role')).toBe('alert');
+    const banner = mountWithApp(<Banner status="critical" />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: DiamondAlertMajor,
+      color: 'critical',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'alert'});
   });
 
   it('uses a default icon and aria role', () => {
-    const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
-    expect(banner.find(Icon).prop('color')).toBe('base');
-    expect(banner.find('div').first().prop('role')).toBe('status');
+    const banner = mountWithApp(<Banner />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleInformationMajor,
+      color: 'base',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
   it('disables aria-live when stopAnnouncements is enabled', () => {
-    const politeBanner = mountWithAppProvider(<Banner />)
-      .find('div')
-      .filterWhere((element) => element.prop('aria-live') === 'polite');
-    expect(politeBanner).toBeTruthy();
+    const politeBanner = mountWithApp(<Banner />);
+    const quietBanner = mountWithApp(<Banner stopAnnouncements />);
 
-    const quietBanner = mountWithAppProvider(<Banner stopAnnouncements />)
-      .find('div')
-      .filterWhere((element) => element.prop('aria-live') === 'off');
-    expect(quietBanner).toBeTruthy();
+    expect(politeBanner.find('div')).toHaveReactProps({'aria-live': 'polite'});
+    expect(quietBanner.find('div')).toHaveReactProps({'aria-live': 'off'});
   });
 
   describe('action', () => {
     it('renders an unstyled button', () => {
-      const bannerWithAction = mountWithAppProvider(
+      const bannerWithAction = mountWithApp(
         <Banner
           title="Test"
           action={{
@@ -91,16 +97,15 @@ describe('<Banner />', () => {
         </Banner>,
       );
 
-      const bannerAction = bannerWithAction.find(UnstyledButton);
-
-      expect(bannerAction.exists()).toBeTruthy();
-      expect(bannerAction.text()).toBe('Primary action');
+      expect(bannerWithAction.find(UnstyledButton)).toContainReactText(
+        'Primary action',
+      );
     });
   });
 
   describe('secondaryAction', () => {
     it('renders when a primary action is provided', () => {
-      const bannerWithActions = mountWithAppProvider(
+      const bannerWithActions = mountWithApp(
         <Banner
           title="Test"
           action={{
@@ -116,14 +121,13 @@ describe('<Banner />', () => {
         </Banner>,
       );
 
-      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
-
-      expect(bannerSecondaryAction.exists()).toBeTruthy();
-      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+      expect(bannerWithActions.find(UnstyledLink)).toContainReactText(
+        'Secondary external link',
+      );
     });
 
     it('renders when a primary action is not provided', () => {
-      const bannerWithActions = mountWithAppProvider(
+      const bannerWithActions = mountWithApp(
         <Banner
           title="Test"
           secondaryAction={{
@@ -136,63 +140,63 @@ describe('<Banner />', () => {
         </Banner>,
       );
 
-      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
-
-      expect(bannerSecondaryAction.exists()).toBeTruthy();
-      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+      expect(bannerWithActions.find(UnstyledLink)).toContainReactText(
+        'Secondary external link',
+      );
     });
   });
 
   describe('onDismiss()', () => {
     it('is called when the dismiss button is clicked', () => {
       const spy = jest.fn();
-      const banner = mountWithAppProvider(<Banner onDismiss={spy} />);
-      banner.find(Button).simulate('click');
+      const banner = mountWithApp(<Banner onDismiss={spy} />);
+      banner.find(Button)!.trigger('onClick');
+
       expect(spy).toHaveBeenCalled();
     });
   });
 
-  const bannerWithSecondaryAction = mountWithAppProvider(
-    <Banner
-      title="Test"
-      action={{
-        content: 'Primary action',
-      }}
-      secondaryAction={{
-        content: 'Secondary external link',
-        url: 'https://test.com',
-        external: true,
-      }}
-    >
-      Hello World
-    </Banner>,
-  );
-
-  const unstyledLink = bannerWithSecondaryAction.find(UnstyledLink).find('a');
-
-  it('creates an external link when external prop is true in secondaryAction', () => {
-    expect(unstyledLink.prop('target')).toBe('_blank');
-  });
-
-  it('adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
-    expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
-  });
-
-  const bannerWithContentContext = mountWithAppProvider(
-    <WithinContentContext.Provider value>
+  it('creates an external link and adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
+    const bannerWithSecondaryAction = mountWithApp(
       <Banner
+        title="Test"
         action={{
           content: 'Primary action',
         }}
+        secondaryAction={{
+          content: 'Secondary external link',
+          url: 'https://test.com',
+          external: true,
+        }}
       >
-        Some content
-      </Banner>
-    </WithinContentContext.Provider>,
-  );
+        Hello World
+      </Banner>,
+    );
+
+    const unstyledLink = bannerWithSecondaryAction
+      .find(UnstyledLink)!
+      .find('a');
+
+    expect(unstyledLink).toHaveReactProps({
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    });
+  });
 
   it('renders an unstyled button with contentContext', () => {
-    const button = bannerWithContentContext.find(UnstyledButton);
-    expect(button.exists()).toBeTruthy();
+    const bannerWithContentContext = mountWithApp(
+      <WithinContentContext.Provider value>
+        <Banner
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Some content
+        </Banner>
+      </WithinContentContext.Provider>,
+    );
+
+    expect(bannerWithContentContext).toContainReactComponent(UnstyledButton);
   });
 
   describe('focus', () => {
@@ -261,15 +265,13 @@ describe('<Banner />', () => {
         );
       };
 
-      const banner = mountWithAppProvider(
+      const banner = mountWithApp(
         <Banner>
           <Child />
         </Banner>,
       );
 
-      const div = banner.find(Child).find('div').first();
-
-      expect(div.exists()).toBe(true);
+      expect(banner.find(Child)).toContainReactComponent('div');
     });
   });
 
@@ -295,7 +297,7 @@ describe('<Banner />', () => {
       (_: any, status: any, color: any, iconSource: any) => {
         const banner = mountWithApp(<Banner status={status} />);
 
-        expect(banner.find(Icon)!.props).toStrictEqual({
+        expect(banner).toContainReactComponent(Icon, {
           color,
           source: iconSource,
         });

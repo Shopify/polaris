@@ -411,6 +411,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 ```jsx
 <Layout>
   <Layout.AnnotatedSection
+    id="storeDetails"
     title="Store details"
     description="Shopify and your customers will use this information to contact you."
   >
@@ -436,6 +437,7 @@ Use for settings pages that need a banner or other content at the top.
     </Banner>
   </Layout.Section>
   <Layout.AnnotatedSection
+    id="storeDetails"
     title="Store details"
     description="Shopify and your customers will use this information to contact you."
   >

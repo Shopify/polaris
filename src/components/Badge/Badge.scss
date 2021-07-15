@@ -54,7 +54,7 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusWarning {
   --p-component-badge-pip-color: var(--p-icon-warning);
   background-color: var(--p-surface-warning);
-  color: var(--p-text, color('orange', 'text'));
+  color: var(--p-text);
 }
 
 .statusCritical {
