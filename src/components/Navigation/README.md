@@ -412,6 +412,12 @@ This example showcases the many elements that can compose a navigation, especial
       },
       {
         url: '/path/to/place',
+        label: 'External link item',
+        icon: HomeMajor,
+        external: true,
+      },
+      {
+        url: '/path/to/place',
         label: 'New item',
         new: true,
         icon: HomeMajor,

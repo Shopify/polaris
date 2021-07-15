@@ -6,6 +6,7 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
+import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -27,6 +28,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -81,6 +83,7 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -123,6 +126,20 @@ export function Item({
   const iconMarkup = icon ? (
     <div className={styles.Icon}>
       <Icon source={icon} />
+    </div>
+  ) : null;
+
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
     </div>
   ) : null;
 
@@ -274,6 +291,7 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
@@ -287,6 +305,7 @@ export function Item({
           )}
         >
           {itemContentMarkup}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>
