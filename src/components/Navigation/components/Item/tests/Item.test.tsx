@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {mountWithApp} from 'test-utilities';
@@ -8,6 +8,7 @@ import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 import {Key} from '../../../../../types';
+import en from '../../../../../../locales/en.json';
 
 describe('<Nav.Item />', () => {
   beforeEach(() => {
@@ -265,6 +266,11 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponent(UnstyledLink, {
         url: 'foo',
         external: true,
+      });
+
+      expect(item).toContainReactComponent(Icon, {
+        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
+        source: ExternalMinor,
       });
     });
 
