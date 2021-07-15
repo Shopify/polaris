@@ -131,6 +131,20 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponentTimes(Badge, 1);
       expect(item.find(Badge)).toContainReactText('New');
     });
+
+    it('renders an external icon if the prop is provided with an element', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" url="foo" external disabled={false} />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(Icon, {
+        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
+        source: ExternalMinor,
+      });
+    });
   });
 
   describe('with SubNavigationItems', () => {
@@ -266,11 +280,6 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponent(UnstyledLink, {
         url: 'foo',
         external: true,
-      });
-
-      expect(item).toContainReactComponent(Icon, {
-        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
-        source: ExternalMinor,
       });
     });
 
