@@ -28,7 +28,7 @@
     position: relative;
 
     &::after {
-      content: var(--p-non-null-content, none);
+      content: '';
       position: absolute;
       z-index: 1;
       top: $negative-offset;

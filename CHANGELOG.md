@@ -8,6 +8,25 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 6.6.0 - 2021-07-08
+
+### Enhancements
+
+- Prevented `KeypressListener` attaching/detaching on every render ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
+- Added `animated` prop in `ProgressBar` ([#4251](https://github.com/Shopify/polaris-react/pull/4251))
+- Added `divider` prop to `Page` component ([#4260](https://github.com/Shopify/polaris-react/pull/4260))
+- Added `activator` prop to `Sheet` so the triggering element will regain focus ([#4201](https://github.com/Shopify/polaris-react/pull/4201))
+- Renamed and exposed Card compound components types ([#4261](https://github.com/Shopify/polaris-react/pull/4261))
+- Added `monospaced` prop to `TextField` component ([#4264](https://github.com/Shopify/polaris-react/pull/4264))
+- Added base tight spacing option to `Stack` component([#4273](https://github.com/Shopify/polaris-react/pull/4273))
+
+### Bug fixes
+
+- Fix Safari issue where `Button` text is gray instead of white after changing state from disabled to enabled ([#4270](https://github.com/Shopify/polaris-react/pull/4270))
+- Fix console warnings when `DataTable` unmounts ([#4249](https://github.com/Shopify/polaris-react/pull/4249))
+- Fix console warnings displaying multiple times in `Sheet` ([#4269](https://github.com/Shopify/polaris-react/pull/4269))
+- Remove top shadow when `Popover` and `Scrollable` scroll hinting is complete ([#4265](https://github.com/Shopify/polaris-react/pull/4265))
+
 ## 6.5.0 - 2021-06-02
 
 ### Enhancements
