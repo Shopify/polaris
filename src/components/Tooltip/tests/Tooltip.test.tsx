@@ -7,6 +7,16 @@ import {TooltipOverlay} from '../components';
 import {Key} from '../../../types';
 
 describe('<Tooltip />', () => {
+  it('renders its children', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltip).toContainReactComponent('button');
+  });
+
   it('does not render initially', () => {
     const tooltip = mountWithApp(
       <Tooltip content="Inner content">
@@ -14,7 +24,6 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
     expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
-    expect(tooltip).toContainReactComponent('button');
   });
 
   it('renders initially when active is true', () => {
@@ -44,7 +53,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onMouseOver');
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
     expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
@@ -55,7 +64,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onFocus');
+    findWrapperComponent(tooltip)!.trigger('onFocus');
     expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
@@ -66,7 +75,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onBlur');
+    findWrapperComponent(tooltip)!.trigger('onBlur');
     expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
@@ -77,7 +86,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onMouseLeave');
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
     expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
@@ -88,7 +97,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onKeyUp', {
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
       keyCode: Key.Escape,
     });
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
@@ -128,3 +137,7 @@ describe('<Tooltip />', () => {
     expect(stopPropagationSpy).toHaveBeenCalled();
   });
 });
+
+function findWrapperComponent(tooltip: any) {
+  return tooltip.find('span');
+}
