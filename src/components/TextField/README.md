@@ -107,6 +107,108 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ## Content guidelines
 
+### Field label
+
+A label is a short description of the requested input. Labels are not instructional text but they should be meaningful and clearly indicate what is expected. Labels should be:
+
+- Placed above or beside the form field
+- Short and succinct (1–3 words)
+- Written in sentence case (the first word capitalized, the rest lowercase)
+
+<!-- usagelist -->
+
+#### Do
+
+- Email address
+- Phone number
+
+#### Don’t
+
+- What is your email address?
+- My phone number is:
+
+<!-- end -->
+
+### Field placeholder text
+
+Placeholder text is shown inside the form field to teach merchants what to
+input. Field placeholder text should:
+
+- Be used only for supplementary information because the text has low contrast and is not visible when text is entered
+- Be written as examples instead of instructions
+- Include “Example:” before an example
+
+<!-- usagelist -->
+
+#### Do
+
+- Example: FALLSALE
+
+#### Don’t
+
+- Name your discount code
+- e.g. FALLSALE
+
+<!-- end -->
+
+### Designating optional fields
+
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label.
+Don’t mark required fields with asterisks unless it is expected by the [local cultural norm](https://polaris.shopify.com/foundations/internationalization#plan-for-cultural-differences).
+
+<!-- usagelist -->
+
+#### Do
+
+Phone number (optional)
+
+#### Don’t
+
+First name\*
+
+<!-- end -->
+
+The autocomplete attribute in an `input` field controls two types of browser behavior:
+
+1.  **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
+
+- Autofill is an important feature for our users. Google has found that ["users complete forms up to 30% faster"](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en) when using autofill.
+- The WHATWG has a list of supported autofill values for the `autocomplete` attribute. [Review the section "4.10.18.7 Autofill"](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for all the input types and their corresponding autocomplete attribute values.
+
+2. **Browser autocomplete** - a feature that displays previously submitted values for that field.
+
+- When this is on for a field, a user is presented a list with previously submitted values for the input
+
+**Recommendation**
+
+> Always add an autocomplete attribute and value to inputs if the type is: color, date, datetime-local, email, month, number, password, range, search, tel, text, time, url, or week.
+
+#### Turning autofill/autocomplete off
+
+Even if you do not want the browser to autofill a user's information, it is recommended you still have an autocomplete attribute with the value off or nope.
+
+Unfortunately, [not all browsers support](https://caniuse.com/input-autocomplete-onoff) or respect autocomplete="off". This makes things challenging. Chrome, for example, [has a long outstanding bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153) and won't add support for off for now.
+
+| Browser | Support for `autocomplete="off"` | Details                                                                                                                                                             |
+| ------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chrome  | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality. [See bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153). |
+| Safari  | Partial                          | Ignores `off` value for `username`, `email` and `password` fields.                                                                                                  |
+| Firefox | Partial                          | Ignores `off` value for login forms. [See bug](https://bugzilla.mozilla.org/show_bug.cgi?id=956906).                                                                |
+| Edge    | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality.                                                                          |
+
+Chrome does seem to turn autocomplete off when using the value nope (or any non valid string). However, we have seen some inconsistencies even with that support.
+
+**Recommendation (Chrome only)**
+
+- Turning off both **autofill** and **browser autocomplete** (previously submitted values) in Chrome
+  - Use `autocomplete=nope` and also **must have a `name` attribute**.
+- Turning off **browser autocomplete** (previously submitted values) in Chrome
+  - If you don't have `name` attribute and the field is not a typical autofill input (address, email, etc), use `autocomplete=off`.
+
+---
+
+## Content guidelines
+
 For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
 
 ---
