@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 $accent-height: 3px;
-$heading-offset: rem(2px);
 $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
@@ -214,7 +213,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .Heading {
-  padding-top: var(--p-override-none, $heading-offset);
+  padding-top: var(--p-override-none);
   word-break: break-word;
 }
 

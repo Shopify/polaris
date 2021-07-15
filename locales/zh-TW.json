@@ -257,7 +257,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "撥放影片",
+        "default": "播放影片",
         "defaultWithDuration": "播放長度為 {duration} 的影片",
         "duration": {
           "hours": {
