@@ -287,6 +287,7 @@ class FiltersInner extends Component<CombinedProps, State> {
             clearButton
             onClearButtonClick={onQueryClear}
             disabled={disabled}
+            autoComplete="off"
           />
         )}
       </ConnectedFilterControl>

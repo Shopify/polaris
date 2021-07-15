@@ -113,7 +113,13 @@ describe('<TrapFocus />', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
         <button>First node</button>
-        <TextField label="" value="" onChange={noop} autoFocus />
+        <TextField
+          label=""
+          value=""
+          autoComplete="off"
+          onChange={noop}
+          autoFocus
+        />
       </TrapFocus>,
     );
 
@@ -124,7 +130,7 @@ describe('<TrapFocus />', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
         <a href="/">
-          <TextField label="" value="" onChange={noop} />
+          <TextField label="" value="" autoComplete="off" onChange={noop} />
         </a>
       </TrapFocus>,
     );
@@ -159,7 +165,13 @@ describe('<TrapFocus />', () => {
     it('allows default when trapping is false', () => {
       const trapFocus = mountWithApp(
         <TrapFocus trapping={false}>
-          <TextField label="" value="" onChange={noop} autoFocus />
+          <TextField
+            label=""
+            value=""
+            autoComplete="off"
+            onChange={noop}
+            autoFocus
+          />
         </TrapFocus>,
       );
 
@@ -175,7 +187,13 @@ describe('<TrapFocus />', () => {
     it('allows default when the related target is a child', () => {
       const trapFocus = mountWithApp(
         <TrapFocus>
-          <TextField label="" value="" onChange={noop} autoFocus />
+          <TextField
+            label=""
+            value=""
+            autoComplete="off"
+            onChange={noop}
+            autoFocus
+          />
         </TrapFocus>,
       );
 

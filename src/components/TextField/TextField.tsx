@@ -92,8 +92,8 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
-  /** Enable automatic completion by the browser */
-  autoComplete?: boolean | string;
+  /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
+  autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
   max?: number | string;
   /** Maximum character length for an input */
@@ -417,7 +417,7 @@ export function TextField({
     onBlur,
     onKeyPress: handleKeyPress,
     style,
-    autoComplete: normalizeAutoComplete(autoComplete),
+    autoComplete,
     className: inputClassName,
     onChange: handleChange,
     ref: inputRef,
@@ -519,16 +519,6 @@ export function TextField({
       return;
     }
     inputRef.current && inputRef.current.focus();
-  }
-}
-
-function normalizeAutoComplete(autoComplete?: boolean | string) {
-  if (autoComplete === true) {
-    return 'on';
-  } else if (autoComplete === false) {
-    return 'off';
-  } else {
-    return autoComplete;
   }
 }
 

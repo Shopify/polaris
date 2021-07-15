@@ -64,6 +64,45 @@ Text fields should:
 - Only ask for information that’s really needed
 - Validate input as soon as merchants have finished interacting with a field (but not before)
 
+### Autocomplete
+
+The autocomplete attribute in an `input` field controls two types of browser behavior:
+
+1.  **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
+
+- Autofill is an important feature for our users. Google has found that ["users complete forms up to 30% faster"](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en) when using autofill.
+- The WHATWG has a list of supported autofill values for the `autocomplete` attribute. [Review the section "4.10.18.7 Autofill"](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for all the input types and their corresponding autocomplete attribute values.
+
+2. **Browser autocomplete** - a feature that displays previously submitted values for that field.
+
+- When this is on for a field, a user is presented a list with previously submitted values for the input
+
+**Recommendation**
+
+> Always add an autocomplete attribute and value to inputs if the type is: color, date, datetime-local, email, month, number, password, range, search, tel, text, time, url, or week.
+
+#### Turning autofill/autocomplete off
+
+Even if you do not want the browser to autofill a user's information, it is recommended you still have an autocomplete attribute with the value off or nope.
+
+Unfortunately, [not all browsers support](https://caniuse.com/input-autocomplete-onoff) or respect autocomplete="off". This makes things challenging. Chrome, for example, [has a long outstanding bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153) and won't add support for off for now.
+
+| Browser | Support for `autocomplete="off"` | Details                                                                                                                                                             |
+| ------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chrome  | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality. [See bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153). |
+| Safari  | Partial                          | Ignores `off` value for `username`, `email` and `password` fields.                                                                                                  |
+| Firefox | Partial                          | Ignores `off` value for login forms. [See bug](https://bugzilla.mozilla.org/show_bug.cgi?id=956906).                                                                |
+| Edge    | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality.                                                                          |
+
+Chrome does seem to turn autocomplete off when using the value nope (or any non valid string). However, we have seen some inconsistencies even with that support.
+
+**Recommendation (Chrome only)**
+
+- Turning off both **autofill** and **browser autocomplete** (previously submitted values) in Chrome
+  - Use `autocomplete=nope` and also **must have a `name` attribute**.
+- Turning off **browser autocomplete** (previously submitted values) in Chrome
+  - If you don't have `name` attribute and the field is not a typical autofill input (address, email, etc), use `autocomplete=off`.
+
 ---
 
 ## Content guidelines
@@ -179,7 +218,14 @@ function TextFieldExample() {
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  return <TextField label="Store name" value={value} onChange={handleChange} />;
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+    />
+  );
 }
 ```
 
@@ -211,6 +257,7 @@ function NumberFieldExample() {
       type="number"
       value={value}
       onChange={handleChange}
+      autoComplete="off"
     />
   );
 }
@@ -248,6 +295,7 @@ function EmailFieldExample() {
       type="email"
       value={value}
       onChange={handleChange}
+      autoComplete="email"
     />
   );
 }
@@ -285,6 +333,7 @@ function MultilineFieldExample() {
       value={value}
       onChange={handleChange}
       multiline={4}
+      autoComplete="off"
     />
   );
 }
@@ -338,6 +387,7 @@ function HiddenLabelExample() {
         value={value}
         disabled={selected === 'no'}
         onChange={handleTextChange}
+        autoComplete="off"
         connectedRight={
           <Select
             label="Unit of time"
@@ -372,6 +422,7 @@ function LabelActionExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       labelAction={{content: 'Look up codes'}}
+      autoComplete="off"
     />
   );
 }
@@ -400,6 +451,7 @@ function RightAlignExample() {
         labelHidden
         value={textFieldValue}
         onChange={handleTextFieldChange}
+        autoComplete="off"
         align="right"
       />
     </Stack>
@@ -426,6 +478,7 @@ function PlaceholderExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       placeholder="Example: North America, Europe"
+      autoComplete="off"
     />
   );
 }
@@ -465,6 +518,7 @@ function HelpTextExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       helpText="We’ll use this address if we need to contact you about your account."
+      autoComplete="email"
     />
   );
 }
@@ -505,6 +559,7 @@ function PrefixExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       prefix="$"
+      autoComplete="off"
     />
   );
 }
@@ -550,6 +605,7 @@ function ConnectedFieldsExample() {
       type="number"
       value={textFieldValue}
       onChange={handleTextFieldChange}
+      autoComplete="off"
       connectedLeft={
         <Select
           value={selectValue}
@@ -620,6 +676,7 @@ function ValidationErrorExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       error="Store name is required"
+      autoComplete="off"
     />
   );
 }
@@ -706,6 +763,7 @@ function SeparateValidationErrorExample() {
               id={textFieldID}
               value={textFieldValue}
               onChange={handleTextFieldValueChange}
+              autoComplete="off"
             />
           </FormLayout.Group>
         </FormLayout>
@@ -740,7 +798,7 @@ function SeparateValidationErrorExample() {
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
-<TextField label="Store name" disabled />
+<TextField label="Store name" disabled autoComplete="off" />
 ```
 
 ### Text field with character count
@@ -764,6 +822,7 @@ function TextFieldWithCharacterCountExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       maxLength={20}
+      autoComplete="off"
       showCharacterCount
     />
   );
@@ -794,6 +853,7 @@ function TextFieldWithClearButtonExample() {
       onChange={handleTextFieldChange}
       clearButton
       onClearButtonClick={handleClearButtonClick}
+      autoComplete="off"
     />
   );
 }
@@ -903,13 +963,5 @@ Text fields have standard keyboard support.
 #### Automatically focusing
 
 Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or greater importance.
-
-### Autocomplete
-
-- Use the `ariaControls` and `ariaOwns` props (which implement the `aria-controls` and `aria-owns` attributes) to point to the `id` of the autocomplete list.
-- Use the `ariaAutocomplete` prop to indicate what kind of `aria-autocomplete` input is provided, either `list` or `inline`. Typically, `list` is used.
-- When merchants navigate through the list, the `ariaActiveDescendant` prop indicates which option has programmatic focus so that it can be conveyed to screen reader users.
-
-To learn more about implementing a text field with autocomplete, see the [autocomplete component](https://polaris.shopify.com/components/forms/autocomplete).
 
 <!-- /content-for -->

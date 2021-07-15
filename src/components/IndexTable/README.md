@@ -603,6 +603,7 @@ function IndexTableWithFilteringExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),
@@ -864,6 +865,7 @@ function IndexTableWithAllElementsExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),
@@ -1049,6 +1051,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),
