@@ -291,10 +291,13 @@ describe('<PositionedOverlay />', () => {
     });
 
     it('passes default config', () => {
-      mountWithAppProvider(<PositionedOverlay {...mockProps} />);
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      const element = positionedOverlay.find('div').getDOMNode();
 
       expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
-        expect.any(Function),
+        element,
         DEFAULT_OBSERVER_CONFIG,
       );
     });
@@ -304,20 +307,18 @@ describe('<PositionedOverlay />', () => {
         subtree: false,
         attributes: true,
       };
-      mountWithAppProvider(
+      const positionedOverlay = mountWithAppProvider(
         <PositionedOverlay
           {...mockProps}
           mutationObserveConfig={mockMutationObserveConfig}
         />,
       );
+      const element = positionedOverlay.find('div').getDOMNode();
 
-      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
-        expect.any(Function),
-        {
-          ...DEFAULT_OBSERVER_CONFIG,
-          ...mockMutationObserveConfig,
-        },
-      );
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(element, {
+        ...DEFAULT_OBSERVER_CONFIG,
+        ...mockMutationObserveConfig,
+      });
     });
   });
 });
