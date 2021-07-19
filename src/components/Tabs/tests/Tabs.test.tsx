@@ -6,8 +6,14 @@ import {mountWithApp} from 'test-utilities';
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
-import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
+
+jest.mock('../../Portal', () => ({
+  ...(jest.requireActual('../../Portal') as any),
+  Portal() {
+    return null;
+  },
+}));
 
 describe('<Tabs />', () => {
   const tabs: TabsProps['tabs'] = [
@@ -84,32 +90,6 @@ describe('<Tabs />', () => {
   });
 
   describe('tabs', () => {
-    it('newDesignLanguage class is present on ul element', () => {
-      const tabs: TabsProps['tabs'] = [
-        {content: 'Tab 1', id: 'tab-1'},
-        {content: 'Tab 2', id: 'tab-2'},
-      ];
-
-      const component = <Tabs {...mockProps} tabs={tabs} />;
-
-      const tabsWithoutDesignLanguage = mountWithAppProvider(component);
-      const tabsWithDesignLanguage = mountWithAppProvider(
-        <FeaturesContext.Provider value={{newDesignLanguage: true}}>
-          {component}
-        </FeaturesContext.Provider>,
-      );
-
-      expect(tabsWithDesignLanguage.find('ul')).toHaveLength(1);
-
-      expect(
-        tabsWithoutDesignLanguage.find('ul').prop('className'),
-      ).not.toContain('newDesignLanguage');
-
-      expect(tabsWithDesignLanguage.find('ul').prop('className')).toContain(
-        'newDesignLanguage',
-      );
-    });
-
     it('uses the IDs passed in for the tabs', () => {
       const tabs: TabsProps['tabs'] = [
         {content: 'Tab 1', id: 'tab-1'},
@@ -118,7 +98,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('id')).toBe(tab.id);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('id')).toBe(tab.id);
       });
     });
 
@@ -127,22 +107,39 @@ describe('<Tabs />', () => {
         {...tabs[0], panelID: 'panel-1'},
         {...tabs[1], panelID: 'panel-2'},
       ];
+      const content = <p>Panel contents</p>;
       const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} tabs={panelIDedTabs} />,
+        <Tabs {...mockProps} tabs={panelIDedTabs}>
+          {content}
+        </Tabs>,
       );
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('panelID')).toBe(
+          tab.panelID,
+        );
       });
     });
 
     it('uses an auto-generated panelID if none is provided', () => {
+      const content = <p>Panel contents</p>;
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps}>{content}</Tabs>,
+      );
+
+      tabs.forEach((_, index) => {
+        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
+        expect(typeof panelID).toBe('string');
+        expect(panelID).not.toBe('');
+      });
+    });
+
+    it('sets the panelID to undefined when the tab does not have an associated panel (child)', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find(Tab).at(index).prop('panelID');
-        expect(typeof panelID).toBe('string');
-        expect(panelID).not.toBe('');
+        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
+        expect(panelID).toBeUndefined();
       });
     });
 
@@ -156,7 +153,9 @@ describe('<Tabs />', () => {
       );
 
       urlTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('url'),
+        ).toStrictEqual(tab.url);
       });
     });
 
@@ -171,7 +170,7 @@ describe('<Tabs />', () => {
 
       labelledTabs.forEach((tab, index) => {
         expect(
-          wrapper.find(Tab).at(index).prop('accessibilityLabel'),
+          wrapper.find('ul').find(Tab).at(index).prop('accessibilityLabel'),
         ).toStrictEqual(tab.accessibilityLabel);
       });
     });
@@ -186,9 +185,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
-          tab.content,
-        );
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('children'),
+        ).toStrictEqual(tab.content);
       });
     });
 
@@ -209,9 +208,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
-          tab.content,
-        );
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('children'),
+        ).toStrictEqual(tab.content);
       });
     });
   });
@@ -272,7 +271,7 @@ describe('<Tabs />', () => {
         <Tabs {...mockProps}>{content}</Tabs>,
       );
 
-      const selectedTab = wrapper.find(Tab).at(0);
+      const selectedTab = wrapper.find('ul').find(Tab).at(0);
       const panel = wrapper.find(Panel).at(0);
       expect(panel.exists()).toBe(true);
       expect(panel.contains(content)).toBe(true);
@@ -293,7 +292,7 @@ describe('<Tabs />', () => {
       );
 
       const panel = wrapper.find(Panel).at(0);
-      const selectedTab = wrapper.find(Tab).at(0);
+      const selectedTab = wrapper.find('ul').find(Tab).at(0);
       expect(panel.prop('id')).toBe(selectedTab.prop('panelID'));
     });
   });
@@ -304,7 +303,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(
         <Tabs {...mockProps} onSelect={spy} />,
       );
-      wrapper.find(Tab).at(1).find('button').simulate('click');
+      wrapper.find('ul').find(Tab).at(1).find('button').simulate('click');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });
@@ -359,37 +358,6 @@ describe('<Tabs />', () => {
       });
     });
 
-    describe('ArrowDown', () => {
-      it('shifts focus to the next tab when pressing ArrowDown', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowDown on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-    });
-
     describe('ArrowLeft', () => {
       it('shifts focus to the last tab when pressing ArrowLeft', () => {
         const tabs = mountWithAppProvider(
@@ -399,34 +367,6 @@ describe('<Tabs />', () => {
           key: 'ArrowLeft',
         });
         expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-    });
-
-    describe('ArrowUp', () => {
-      it('shifts focus to the last tab when pressing ArrowUp', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} selected={0} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowUp',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowUp on the second tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowLeft',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
       });
     });
   });
@@ -458,6 +398,15 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
+    it('renders disclosureText when provided', () => {
+      const disclosureText = 'More views';
+      const wrapper = mountWithApp(
+        <Tabs {...mockProps} disclosureText={disclosureText} />,
+      );
+
+      expect(wrapper).toContainReactText(disclosureText);
+    });
+
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

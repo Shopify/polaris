@@ -9,15 +9,15 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding: 0 spacing(tight);
-  background-color: var(--p-action-secondary, color('sky'));
-  border-radius: border-radius();
-  color: var(--p-text, color('ink'));
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-base);
+  color: var(--p-text);
 
   &.disabled {
-    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon-disabled));
     transition: none;
-    background: var(--p-action-secondary-disabled, color('sky', 'light'));
-    color: var(--p-text-disabled, color('ink', 'lightest'));
+    background: var(--p-surface-neutral-disabled);
+    color: var(--p-text-disabled);
   }
 
   &.removable {
@@ -28,62 +28,43 @@ $icon-size: rem(16px);
     @include unstyled-button;
     cursor: pointer;
     padding: 0 spacing(tight);
-    background-color: color('sky');
+    background-color: var(--p-surface-neutral);
 
-    // Start - Delete below me during newDesignLanguage rollout
-    &:hover,
-    &:focus,
-    &:active {
-      background: color('sky', 'dark');
-    }
-    // End - Delete above me during newDesignLanguage rollout
-
-    &:disabled {
-      cursor: default;
-      pointer-events: none;
-      background: none;
+    &:hover {
+      background: var(--p-surface-neutral-hovered);
     }
 
+    @include focus-ring;
     // stylelint-disable selector-max-specificity
     // stylelint-disable selector-max-class
 
-    &.newDesignLanguage {
-      background-color: var(--p-action-secondary);
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
 
-      &:hover {
-        background: var(--p-action-secondary-hovered);
-      }
+    &:active {
+      background: var(--p-surface-neutral-pressed);
+    }
 
-      @include focus-ring;
-
-      &:focus:not(:active) {
-        @include focus-ring($style: 'focused');
-      }
-
-      &:active {
-        background: var(--p-action-secondary-pressed);
-      }
-
-      &:disabled {
-        background: var(--p-action-secondary-disabled);
-      }
-      // stylelint-enable
+    &:disabled {
+      background: var(--p-surface-neutral-disabled);
+      cursor: default;
+      pointer-events: none;
     }
   }
+
+  @include high-contrast-outline;
 }
 
 .TagText {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@media (-ms-high-contrast: active) {
-  outline: 1px solid ms-high-contrast-color('text');
+  vertical-align: middle;
 }
 
 .Button {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon(var(--p-icon));
   @include unstyled-button;
   display: block;
   height: $height;
@@ -91,51 +72,28 @@ $icon-size: rem(16px);
   margin-left: spacing(extra-tight);
   border-radius: 0 border-radius() border-radius() 0;
 
-  // Start - Delete below me during newDesignLanguage rollout
-  &:hover,
-  &:focus,
+  &:hover {
+    background: var(--p-surface-neutral-hovered);
+    @include high-contrast-outline;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  @include focus-ring;
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+  }
+
   &:active {
-    @include recolor-icon(color('ink'));
-    background: color('sky', 'dark');
+    background: var(--p-surface-neutral-pressed);
   }
 
   &:disabled {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(var(--p-icon-disabled));
     cursor: default;
     pointer-events: none;
-  }
-
-  &:active {
-    background: rgba(color('ink', 'lightest'), 0.6);
-  }
-  // End - Delete above me during newDesignLanguage rollout
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
-
-    &:hover {
-      background: var(--p-action-secondary-hovered);
-      @include high-contrast-outline;
-    }
-
-    &:focus {
-      background-color: transparent;
-    }
-
-    @include focus-ring;
-    // stylelint-disable-next-line selector-max-specificity
-    &:focus:not(:active) {
-      @include focus-ring($style: 'focused');
-    }
-
-    &:active {
-      background: var(--p-action-secondary-pressed);
-    }
-
-    &:disabled {
-      @include recolor-icon(var(--p-icon-disabled));
-      cursor: default;
-      pointer-events: none;
-    }
   }
 }

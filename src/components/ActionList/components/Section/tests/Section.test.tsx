@@ -1,13 +1,12 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Item} from '../../Item';
 import {Section} from '../Section';
 
 describe('<Section />', () => {
   it('renders its items', () => {
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections={false}
         section={{
@@ -19,11 +18,11 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find(Item)).toHaveLength(2);
+    expect(section).toContainReactComponentTimes(Item, 2);
   });
 
   it('renders items as li when hasMultipleSections is false', () => {
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections={false}
         section={{
@@ -35,11 +34,11 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li')).toHaveLength(2);
+    expect(section).toContainReactComponentTimes('li', 2);
   });
 
   it('wraps items in an li when hasMultipleSections is true', () => {
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections
         section={{
@@ -51,12 +50,12 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li')).toHaveLength(3);
+    expect(section).toContainReactComponentTimes('li', 3);
   });
 
   it('passes content to Item', () => {
     const callback = () => {};
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections
         section={{
@@ -69,11 +68,13 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find(Item).first().prop('content')).toBe('Import file');
+    expect(section.findAll(Item)[0]).toHaveReactProps({
+      content: 'Import file',
+    });
   });
 
   it('passes helpText to Item', () => {
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections
         section={{
@@ -85,12 +86,14 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find(Item).first().prop('helpText')).toBe('Foo');
+    expect(section.findAll(Item)[0]).toHaveReactProps({
+      helpText: 'Foo',
+    });
   });
 
   it('passes the onActionAnyItem callback to Item', () => {
     const spy = jest.fn();
-    const section = mountWithAppProvider(
+    const section = mountWithApp(
       <Section
         hasMultipleSections
         section={{
@@ -103,7 +106,7 @@ describe('<Section />', () => {
       />,
     );
 
-    section.find('Item button').first().simulate('click');
+    section.findAll(Item)[0].findAll('button')[0].trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

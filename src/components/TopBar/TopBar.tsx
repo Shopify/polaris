@@ -1,11 +1,10 @@
 import React from 'react';
-import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
+import {MobileHamburgerMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
@@ -24,7 +23,7 @@ export interface TopBarProps {
   userMenu?: React.ReactNode;
   /** Accepts a menu component that is made available as a static member of the top bar component */
   secondaryMenu?: React.ReactNode;
-  /** Accepts a component that is ideally used to help users switch between different contexts */
+  /** Accepts a component that is used to help users switch between different contexts */
   contextControl?: React.ReactNode;
   /** Accepts a search field component that is made available as a `TextField` static member of the top bar component */
   searchField?: React.ReactNode;
@@ -63,7 +62,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const {newDesignLanguage} = useFeatures();
 
   const {
     value: focused,
@@ -85,7 +83,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajorMonotone} />
+      <Icon source={MobileHamburgerMajor} />
     </button>
   ) : null;
 
@@ -99,8 +97,15 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       </div>
     );
   } else if (logo) {
+    const className = classNames(
+      styles.LogoContainer,
+      showNavigationToggle || searchField
+        ? styles.LogoDisplayControl
+        : styles.LogoDisplayContainer,
+    );
+
     contextMarkup = (
-      <div className={styles.LogoContainer}>
+      <div className={className}>
         <UnstyledLink
           url={logo.url || ''}
           className={styles.LogoLink}
@@ -130,13 +135,8 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </>
   ) : null;
 
-  const className = classNames(
-    styles.TopBar,
-    newDesignLanguage && styles['TopBar-newDesignLanguage'],
-  );
-
   return (
-    <div className={className}>
+    <div className={styles.TopBar}>
       {navigationButtonMarkup}
       {contextMarkup}
       <div className={styles.Contents}>

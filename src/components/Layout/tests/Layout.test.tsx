@@ -86,6 +86,19 @@ describe('<Layout />', () => {
 
       expect(description.exists()).toBe(false);
     });
+
+    it('passes through an ID for deeplinking', () => {
+      const layout = mountWithAppProvider(
+        <Layout>
+          <Layout.AnnotatedSection id="MySection">
+            <MyComponent />
+          </Layout.AnnotatedSection>
+        </Layout>,
+      );
+      const section = layout.find('#MySection');
+
+      expect(section.exists()).toBe(true);
+    });
   });
 });
 

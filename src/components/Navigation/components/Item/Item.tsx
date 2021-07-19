@@ -6,16 +6,18 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
+import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
-import {Icon} from '../../../Icon';
-import {IconProps, Key} from '../../../../types';
+import {Icon, IconProps} from '../../../Icon';
+import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
+import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
 
 import {Secondary} from './components';
@@ -26,6 +28,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -80,9 +83,11 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
+  const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
   const [keyFocused, setKeyFocused] = useState(false);
@@ -121,6 +126,20 @@ export function Item({
   const iconMarkup = icon ? (
     <div className={styles.Icon}>
       <Icon source={icon} />
+    </div>
+  ) : null;
+
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
     </div>
   ) : null;
 
@@ -230,19 +249,20 @@ export function Item({
 
   let secondaryNavigationMarkup: ReactNode = null;
 
-  if (subNavigationItems.length > 0 && showExpanded) {
+  if (subNavigationItems.length > 0) {
     const longestMatch = matchingSubNavigationItems.sort(
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
     const SecondaryNavigationClassName = classNames(
       styles.SecondaryNavigation,
+      showExpanded && styles.isExpanded,
       !icon && styles['SecondaryNavigation-noIcon'],
     );
 
     secondaryNavigationMarkup = (
       <div className={SecondaryNavigationClassName}>
-        <Secondary expanded={showExpanded}>
+        <Secondary expanded={showExpanded} id={secondaryNavigationId}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;
             return (
@@ -271,14 +291,21 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
           onClick={getClickHandler(onClick)}
           onKeyUp={handleKeyUp}
           onBlur={handleBlur}
+          {...normalizeAriaAttributes(
+            secondaryNavigationId,
+            subNavigationItems.length > 0,
+            showExpanded,
+          )}
         >
           {itemContentMarkup}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>
@@ -385,4 +412,17 @@ function matchStateForItem(
     ? safeEqual(location, url)
     : safeStartsWith(location, url);
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
+}
+
+function normalizeAriaAttributes(
+  controlId: string,
+  hasSubMenu: boolean,
+  expanded: boolean,
+) {
+  return hasSubMenu
+    ? {
+        'aria-expanded': expanded,
+        'aria-controls': controlId,
+      }
+    : undefined;
 }

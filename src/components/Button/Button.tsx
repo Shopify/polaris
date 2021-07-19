@@ -1,108 +1,106 @@
-import React, {useRef, useState, useCallback} from 'react';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import React, {useCallback, useState} from 'react';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  SelectMinor,
+} from '@shopify/polaris-icons';
 
+import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
-import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {useFeatures} from '../../utilities/features';
+import {
+  handleMouseUpByBlurring,
+  MouseUpBlurHandler,
+} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
-import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
-import type {IconProps, ConnectedDisclosure} from '../../types';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
+import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
 
 import styles from './Button.scss';
 
-type Size = 'slim' | 'medium' | 'large';
-type TextAlign = 'left' | 'right' | 'center';
-type IconSource = IconProps['source'];
-
-export interface ButtonProps {
+export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
   children?: string | string[];
-  /** A destination to link to, rendered in the href attribute of a link */
-  url?: string;
-  /** A unique identifier for the button */
-  id?: string;
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
   /** Indicates a dangerous or potentially negative action */
   destructive?: boolean;
-  /** Disables the button, disallowing merchant interaction */
-  disabled?: boolean;
-  /** Replaces button text with a spinner while a background action is being performed */
-  loading?: boolean;
   /**
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: Size;
+  size?: 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
-  textAlign?: TextAlign;
+  textAlign?: 'left' | 'right' | 'center';
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
-  /** Gives the button the appearance of being pressed */
-  pressed?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
-  disclosure?: 'down' | 'up' | boolean;
-  /** Allows the button to submit a form */
-  submit?: boolean;
+  disclosure?: 'down' | 'up' | 'select' | boolean;
   /** Renders a button that looks like a link */
   plain?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
   monochrome?: boolean;
-  /** Forces url to open in a new tab */
-  external?: boolean;
-  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
-  download?: string | boolean;
+  /** Removes underline from button text (including on interaction) when `monochrome` and `plain` are true */
+  removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** Visually hidden text for screen readers */
-  accessibilityLabel?: string;
-  /** Id of the element the button controls */
-  ariaControls?: string;
-  /** Tells screen reader the controlled element is expanded */
-  ariaExpanded?: boolean;
-  /**
-   * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-pressed}
-   * Tells screen reader the element is pressed
-   */
-  ariaPressed?: boolean;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
-  /** Callback when clicked */
-  onClick?(): void;
-  /** Callback when button becomes focussed */
-  onFocus?(): void;
-  /** Callback when focus leaves button */
-  onBlur?(): void;
-  /** Callback when a keypress event is registered on the button */
-  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
-  /** Callback when a keyup event is registered on the button */
-  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
-  /** Callback when a keydown event is registered on the button */
-  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
-  /** Callback when mouse enter */
-  onMouseEnter?(): void;
-  /** Callback when element is touched */
-  onTouchStart?(): void;
 }
+
+interface CommonButtonProps
+  extends Pick<
+    ButtonProps,
+    | 'id'
+    | 'accessibilityLabel'
+    | 'ariaDescribedBy'
+    | 'role'
+    | 'onClick'
+    | 'onFocus'
+    | 'onBlur'
+    | 'onMouseEnter'
+    | 'onTouchStart'
+  > {
+  className: UnstyledButtonProps['className'];
+  onMouseUp: MouseUpBlurHandler;
+}
+
+type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
+
+type ActionButtonProps = Pick<
+  ButtonProps,
+  | 'submit'
+  | 'disabled'
+  | 'loading'
+  | 'ariaControls'
+  | 'ariaExpanded'
+  | 'pressed'
+  | 'onKeyDown'
+  | 'onKeyUp'
+  | 'onKeyPress'
+>;
 
 const DEFAULT_SIZE = 'medium';
 
 export function Button({
   id,
+  children,
   url,
   disabled,
+  external,
+  download,
+  submit,
   loading,
-  children,
+  pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
-  ariaPressed,
+  ariaDescribedBy,
   onClick,
   onFocus,
   onBlur,
@@ -111,8 +109,6 @@ export function Button({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
-  external,
-  download,
   icon,
   primary,
   outline,
@@ -120,31 +116,18 @@ export function Button({
   disclosure,
   plain,
   monochrome,
-  submit,
+  removeUnderline,
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-  pressed,
   connectedDisclosure,
 }: ButtonProps) {
-  const {newDesignLanguage} = useFeatures();
-  const hasGivenDeprecationWarning = useRef(false);
-
-  if (ariaPressed && !hasGivenDeprecationWarning.current) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The ariaPressed prop has been replaced with pressed',
-    );
-    hasGivenDeprecationWarning.current = true;
-  }
-
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
-    newDesignLanguage && styles.newDesignLanguage,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -158,71 +141,55 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
+    removeUnderline && styles.removeUnderline,
   );
 
-  const disclosureIcon = (
-    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
-  );
-
-  const disclosureIconMarkup = disclosure ? (
+  const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
-        className={classNames(
-          styles.DisclosureIcon,
-          disclosure === 'up' && styles.DisclosureIconFacingUp,
-        )}
+        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
-        {disclosureIcon}
+        <Icon
+          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+        />
       </div>
     </span>
   ) : null;
 
-  let iconMarkup;
-
-  if (icon) {
-    const iconInner = isIconSource(icon) ? (
-      <Icon source={loading ? 'placeholder' : icon} />
-    ) : (
-      icon
-    );
-    iconMarkup = <span className={styles.Icon}>{iconInner}</span>;
-  }
-
-  const childMarkup = children ? (
-    <span className={styles.Text}>{children}</span>
+  const iconSource = isIconSource(icon) ? (
+    <Icon source={loading ? 'placeholder' : icon} />
+  ) : (
+    icon
+  );
+  const iconMarkup = iconSource ? (
+    <span className={classNames(styles.Icon, loading && styles.hidden)}>
+      {iconSource}
+    </span>
   ) : null;
 
-  const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
+  const childMarkup = children ? (
+    <span
+      className={classNames(
+        styles.Text,
+        removeUnderline && styles.removeUnderline,
+      )}
+      // Fixes Safari bug that doesn't re-render button text to correct color
+      key={disabled ? 'text-disabled' : 'text'}
+    >
+      {children}
+    </span>
+  ) : null;
 
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
       <Spinner
         size="small"
-        color={spinnerColor}
         accessibilityLabel={i18n.translate(
           'Polaris.Button.spinnerAccessibilityLabel',
         )}
       />
     </span>
   ) : null;
-
-  const content =
-    iconMarkup || disclosureIconMarkup ? (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {iconMarkup}
-        {childMarkup}
-        {disclosureIconMarkup}
-      </span>
-    ) : (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {childMarkup}
-      </span>
-    );
-
-  const type = submit ? 'submit' : 'button';
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   const [disclosureActive, setDisclosureActive] = useState(false);
   const toggleDisclosureActive = useCallback(() => {
@@ -242,7 +209,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
-      newDesignLanguage && styles.newDesignLanguage,
+      monochrome && styles.monochrome,
     );
 
     const defaultLabel = i18n.translate(
@@ -260,6 +227,7 @@ export function Button({
         className={connectedDisclosureClassName}
         disabled={disabled}
         aria-label={disclosureLabel}
+        aria-describedby={ariaDescribedBy}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
@@ -284,61 +252,46 @@ export function Button({
     );
   }
 
-  let buttonMarkup;
+  const commonProps: CommonButtonProps = {
+    id,
+    className,
+    accessibilityLabel,
+    ariaDescribedBy,
+    role,
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseUp: handleMouseUpByBlurring,
+    onMouseEnter,
+    onTouchStart,
+  };
+  const linkProps: LinkButtonProps = {
+    url,
+    external,
+    download,
+  };
+  const actionProps: ActionButtonProps = {
+    submit,
+    disabled: isDisabled,
+    loading,
+    ariaControls,
+    ariaExpanded,
+    pressed,
+    onKeyDown,
+    onKeyUp,
+    onKeyPress,
+  };
 
-  if (url) {
-    buttonMarkup = isDisabled ? (
-      // Render an `<a>` so toggling disabled/enabled state changes only the
-      // `href` attribute instead of replacing the whole element.
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a id={id} className={className} aria-label={accessibilityLabel}>
-        {content}
-      </a>
-    ) : (
-      <UnstyledLink
-        id={id}
-        url={url}
-        external={external}
-        download={download}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
-        aria-label={accessibilityLabel}
-      >
-        {content}
-      </UnstyledLink>
-    );
-  } else {
-    buttonMarkup = (
-      <button
-        id={id}
-        type={type}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
-        disabled={isDisabled}
-        aria-label={accessibilityLabel}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-pressed={ariaPressedStatus}
-        role={loading ? 'alert' : undefined}
-        aria-busy={loading ? true : undefined}
-      >
-        {content}
-      </button>
-    );
-  }
+  const buttonMarkup = (
+    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+      <span className={styles.Content}>
+        {spinnerSVGMarkup}
+        {iconMarkup}
+        {childMarkup}
+        {disclosureMarkup}
+      </span>
+    </UnstyledButton>
+  );
 
   return connectedDisclosureMarkup ? (
     <div className={styles.ConnectedDisclosureWrapper}>
@@ -356,4 +309,14 @@ function isIconSource(x: any): x is IconSource {
     (typeof x === 'object' && x.body) ||
     typeof x === 'function'
   );
+}
+
+function getDisclosureIconSource(
+  disclosure: NonNullable<ButtonProps['disclosure']>,
+) {
+  if (disclosure === 'select') {
+    return SelectMinor;
+  }
+
+  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
 }

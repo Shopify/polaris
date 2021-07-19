@@ -103,7 +103,7 @@ const overridesContents = Object.entries(Tokens).reduce(
   (accumulator, [override, value]) => {
     return accumulator + Template.overrideItem(override, value);
   },
-  '|CSS variable|Value|\n|---|---|\n',
+  '### UNSTABLE these variables are being @deprecated\n|CSS variable|Value|\n|---|---|\n',
 );
 
 const data =

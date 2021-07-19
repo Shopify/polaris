@@ -20,7 +20,8 @@
         "attention": "Attention",
         "new": "Nouveau",
         "critical": "Critique"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Chargement",
@@ -81,7 +82,9 @@
         "friday": "Vendredi",
         "saturday": "Samedi",
         "sunday": "Dimanche"
-      }
+      },
+      "start": "Début de la fourchette",
+      "end": "Fin de la fourchette"
     },
     "DiscardConfirmationModal": {
       "title": "Annuler toutes les modifications non enregistrées",
@@ -90,16 +93,27 @@
       "secondaryAction": "Poursuivre les corrections"
     },
     "DropZone": {
-      "overlayTextFile": "Déposer le fichier à mettre en ligne",
-      "overlayTextImage": "Déposer l'image à mettre en ligne",
       "errorOverlayTextFile": "Le type de fichier n'est pas valide",
       "errorOverlayTextImage": "Le type d'image n'est pas valide",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Déposer le fichier à mettre en ligne",
+        "overlayTextImage": "Déposer l'image à mettre en ligne",
         "actionTitleFile": "Ajouter un fichier",
         "actionTitleImage": "Ajouter une image",
-        "actionHintFile": "ou déposer les fichiers à mettre en ligne",
-        "actionHintImage": "ou déposer les images à mettre en ligne",
-        "label": "Télécharger un fichier"
+        "actionHintFile": "ou déposer le fichier à mettre en ligne",
+        "actionHintImage": "ou déposer l'image à mettre en ligne",
+        "labelFile": "Mettre en ligne un fichier",
+        "labelImage": "Mettre en ligne une image"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Déposer les fichiers à mettre en ligne",
+        "overlayTextImage": "Déposer les images à mettre en ligne",
+        "actionTitleFile": "Ajouter des fichiers",
+        "actionTitleImage": "Ajouter des images",
+        "actionHintFile": "ou déposer des fichiers à mettre en ligne",
+        "actionHintImage": "ou déposer des images à mettre en ligne",
+        "labelFile": "Mettre en ligne des fichiers",
+        "labelImage": "Mettre en ligne des images"
       }
     },
     "EmptySearchResult": {
@@ -109,10 +123,8 @@
       "skipToContent": "Passer directement au contenu",
       "Navigation": {
         "closeMobileNavigationLabel": "Fermer la navigation"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigation"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -231,7 +243,7 @@
     },
     "TextField": {
       "characterCount": "{count} personnages",
-      "characterCountWithMaxLength": "{count} caractère(s) sur {limit} utilisé(s)"
+      "characterCountWithMaxLength": "{count} sur {limit} caractère(s) utilisé(s)"
     },
     "TopBar": {
       "toggleMenuLabel": "Menu toggle",
@@ -290,6 +302,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Autres opérations"
+    },
+    "Loading": {
+      "label": "Barre de chargement de la page"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Infobulle : {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Article",
+      "defaultItemPlural": "Articles",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} est sélectionnée.",
+      "selected": "{selectedItemsCount} sélectionné(s)",
+      "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Désélectionner la totalité des {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} introuvables",
+      "emptySearchDescription": "Essayer de changer les filtres ou le terme de recherche",
+      "onboardingBadgeText": "Nouveau",
+      "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours...",
+      "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
+      "selected": "{selectedItemsCount} sélectionné(s)",
+      "undo": "Annuler",
+      "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Sélectionner {resourceName}",
+      "selectButtonText": "Sélectionner"
     }
   }
 }

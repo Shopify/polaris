@@ -44,7 +44,11 @@ export function isElementOfType<P>(
     return false;
   }
 
-  const {type} = element;
+  const {type: defaultType} = element;
+  // Type override allows components to bypass default wrapping behavior. Ex: Stack, ResourceList...
+  // See https://github.com/Shopify/app-extension-libs/issues/996#issuecomment-710437088
+  const overrideType = element.props?.__type__;
+  const type = overrideType || defaultType;
   const Components = Array.isArray(Component) ? Component : [Component];
 
   return Components.some(
@@ -54,7 +58,7 @@ export function isElementOfType<P>(
 
 // Returns all children that are valid elements as an array. Can optionally be
 // filtered by passing `predicate`.
-export function elementChildren<T extends React.ReactElement<{}>>(
+export function elementChildren<T extends React.ReactElement>(
   children: React.ReactNode,
   predicate: (element: T) => boolean = () => true,
 ): T[] {

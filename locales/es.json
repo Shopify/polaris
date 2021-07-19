@@ -20,7 +20,8 @@
         "attention": "Atención",
         "new": "Nuevo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Cargando",
@@ -81,7 +82,9 @@
         "friday": "viernes",
         "saturday": "sábado",
         "sunday": "domingo"
-      }
+      },
+      "start": "Inicio del intervalo",
+      "end": "Fin del intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todos los cambios no guardados",
@@ -90,29 +93,38 @@
       "secondaryAction": "Continuar editando"
     },
     "DropZone": {
-      "overlayTextFile": "Arrastra y suelta el archivo que deseas subir",
-      "overlayTextImage": "Arrastra y suelta la imagen que deseas subir",
       "errorOverlayTextFile": "El tipo de archivo no es válido",
       "errorOverlayTextImage": "El tipo de imagen no es válida",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Arrastra y suelta el archivo que deseas subir",
+        "overlayTextImage": "Arrastra y suelta la imagen que deseas subir",
         "actionTitleFile": "Agregar archivo",
         "actionTitleImage": "Agregar imagen",
+        "actionHintFile": "o suelta el archivo que deseas subir",
+        "actionHintImage": "o arrastra y suelta la imagen que deseas subir",
+        "labelFile": "Subir archivo",
+        "labelImage": "Subir imagen"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Arrastra y suelta los archivos que deseas subir",
+        "overlayTextImage": "Arrastra y suelta las imágenes que deseas subir",
+        "actionTitleFile": "Agregar archivos",
+        "actionTitleImage": "Agregar imágenes",
         "actionHintFile": "o arrastra y suelta los archivos que deseas subir",
         "actionHintImage": "o arrastra y suelta las imágenes que deseas subir",
-        "label": "Subir archivo"
+        "labelFile": "Subir archivos",
+        "labelImage": "Subir imágenes"
       }
     },
     "EmptySearchResult": {
       "altText": "Resultados de búsqueda vacíos"
     },
     "Frame": {
-      "skipToContent": "Saltar al contenido",
+      "skipToContent": "Ir directamente al contenido",
       "Navigation": {
         "closeMobileNavigationLabel": "Cerrar la navegación"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "El ícono {color} no acepta fondos. Los colores de los íconos que tienen fondos son: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navegación"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -290,6 +302,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Más acciones"
+    },
+    "Loading": {
+      "label": "Barra de \"cargando página\""
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Descripción emergente: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artículo",
+      "defaultItemPlural": "Artículos",
+      "allItemsSelected": "Todos los {itemsLength}+ {resourceNamePlural} están seleccionados.",
+      "selected": "{selectedItemsCount} seleccionados",
+      "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deseleccionar todos los {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleccionar todos los {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "No se encontraron los {resourceNamePlural}",
+      "emptySearchDescription": "Intenta cambiar los filtros o el término de búsqueda",
+      "onboardingBadgeText": "Nuevo",
+      "resourceLoadingAccessibilityLabel": "Cargando {resourceNamePlural}...",
+      "selectAllLabel": "Seleccionar todos los {resourceNamePlural}",
+      "selected": "{selectedItemsCount} seleccionados",
+      "undo": "Deshacer",
+      "selectAllItems": "Seleccionar todos los {itemsLength}+{resourceNamePlural}",
+      "selectItem": "Seleccionar {resourceName}",
+      "selectButtonText": "Seleccionar"
     }
   }
 }

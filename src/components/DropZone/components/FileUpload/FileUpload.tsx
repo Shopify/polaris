@@ -8,7 +8,7 @@ import {TextStyle} from '../../../TextStyle';
 import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
-import {useFeatures} from '../../../../utilities/features';
+import {createAllowMultipleKey} from '../../utils';
 
 import styles from './FileUpload.scss';
 
@@ -19,17 +19,19 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
-  const {size, measuring, type, focused, disabled} = useContext(
+  const {size, measuring, type, focused, disabled, allowMultiple} = useContext(
     DropZoneContext,
   );
-  const suffix = capitalize(type);
+
+  const typeSuffix = capitalize(type);
+  const allowMultipleKey = createAllowMultipleKey(allowMultiple);
+
   const {
     actionTitle = i18n.translate(
-      `Polaris.DropZone.FileUpload.actionTitle${suffix}`,
+      `Polaris.DropZone.${allowMultipleKey}.actionTitle${typeSuffix}`,
     ),
     actionHint = i18n.translate(
-      `Polaris.DropZone.FileUpload.actionHint${suffix}`,
+      `Polaris.DropZone.${allowMultipleKey}.actionHint${typeSuffix}`,
     ),
   } = props;
 
@@ -37,7 +39,6 @@ export function FileUpload(props: FileUploadProps) {
     size === 'extraLarge' || size === 'large'
       ? classNames(
           styles.Button,
-          newDesignLanguage && styles.newDesignLanguage,
           size && size !== 'extraLarge' && styles.slim,
           focused && styles.focused,
           disabled && styles.disabled,
@@ -65,7 +66,6 @@ export function FileUpload(props: FileUploadProps) {
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
-    newDesignLanguage && styles.newDesignLanguage,
     measuring && styles.measuring,
     size === 'small' && styles.FileUploadSmallView,
   );

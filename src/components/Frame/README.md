@@ -166,14 +166,9 @@ function FrameExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -212,12 +207,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -310,11 +305,6 @@ function FrameExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
     logo: {
       width: 124,
       topBarSource:
@@ -356,6 +346,7 @@ function FrameExample() {
             },
             Frame: {
               skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
               Navigation: {
                 closeMobileNavigationLabel: 'Close navigation',
               },
@@ -509,14 +500,9 @@ function FrameExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -555,12 +541,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -653,12 +639,7 @@ function FrameExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
-    frameOffset: 60,
+    frameOffset: '60px',
     logo: {
       width: 124,
       topBarSource:
@@ -700,6 +681,7 @@ function FrameExample() {
             },
             Frame: {
               skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
               Navigation: {
                 closeMobileNavigationLabel: 'Close navigation',
               },

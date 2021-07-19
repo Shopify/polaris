@@ -15,3 +15,9 @@
   color: currentColor;
   -webkit-tap-highlight-color: transparent;
 }
+
+.RequiredIndicator::after {
+  content: '*';
+  color: var(--p-text-critical);
+  margin-left: spacing(extra-tight);
+}

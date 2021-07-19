@@ -4,24 +4,24 @@ import {Transition, CSSTransition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
-import {AnimationProps, Key} from '../../../../types';
+import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
-interface BaseDialogProps {
+export interface DialogProps {
   labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
   large?: boolean;
+  small?: boolean;
   onClose(): void;
   onEntered?(): void;
   onExited?(): void;
+  in?: boolean;
 }
-
-export type DialogProps = BaseDialogProps & AnimationProps;
 
 export function Dialog({
   instant,
@@ -31,12 +31,14 @@ export function Dialog({
   onExited,
   onEntered,
   large,
+  small,
   limitHeight,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
   const classes = classNames(
     styles.Modal,
+    small && styles.sizeSmall,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
   );
@@ -67,6 +69,7 @@ export function Dialog({
         <TrapFocus>
           <div
             role="dialog"
+            aria-modal
             aria-labelledby={labelledBy}
             tabIndex={-1}
             className={styles.Dialog}

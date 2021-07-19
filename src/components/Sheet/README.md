@@ -13,6 +13,7 @@ keywords:
   - dialog
   - web
 fullSizeExamples: true
+deprecationNotice: The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions.
 ---
 
 # Sheet
@@ -138,7 +139,11 @@ function SheetExample() {
       >
         {salesChannelsCardMarkup}
       </Card>
-      <Sheet open={sheetActive} onClose={toggleSheetActive}>
+      <Sheet
+        open={sheetActive}
+        onClose={toggleSheetActive}
+        accessibilityLabel="Manage sales channels"
+      >
         <div
           style={{
             display: 'flex',
@@ -159,7 +164,7 @@ function SheetExample() {
             <Heading>Manage sales channels</Heading>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancelMajorMonotone}
+              icon={MobileCancelMajor}
               onClick={toggleSheetActive}
               plain
             />

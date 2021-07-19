@@ -35,64 +35,46 @@ describe('<Icon />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const icon = mountWithApp(<Icon source={PlusMinor} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(icon).toContainReactComponent('span', {
-        className: 'Icon newDesignLanguage',
+  describe('color', () => {
+    it('renders a color class when color prop is provided', () => {
+      const element = mountWithApp(<Icon source="placeholder" color="base" />);
+
+      expect(element).toContainReactComponent('span', {
+        className: 'Icon colorBase applyColor',
       });
     });
+  });
 
-    it('warns when an untrusted SVG is used with a color option from the new design language', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-      const svg =
-        "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
+  describe('console warnings', () => {
+    let warnSpy: jest.SpyInstance;
 
-      mountWithApp(<Icon source={svg} color="subdued" />, {
-        features: {newDesignLanguage: true},
-      });
+    beforeEach(() => {
+      warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
 
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Recoloring external SVGs is not supported with colors in the new design language. Set the intended color on your SVG instead.',
+    afterEach(() => {
+      warnSpy.mockRestore();
+    });
+
+    it('warns when a backdrop color is not available for `subdued`', () => {
+      mountWithApp(<Icon source="placeholder" color="subdued" backdrop />);
+      expect(warnSpy).toHaveBeenCalledWith(
+        'The subdued variant does not have a supported backdrop color',
       );
-      warningSpy.mockRestore();
     });
 
-    it('warns when a new design language color is used and new design language is not enabled', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
-      mountWithApp(<Icon source={PlusMinor} color="warning" />, {
-        features: {newDesignLanguage: false},
-      });
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'You have selected a color meant to be used in the new design language but new design language is not enabled.',
+    it('warns when a backdrop color is not available for `interactive`', () => {
+      mountWithApp(<Icon source="placeholder" color="interactive" backdrop />);
+      expect(warnSpy).toHaveBeenCalledWith(
+        'The interactive variant does not have a supported backdrop color',
       );
-      warningSpy.mockRestore();
     });
 
-    it('uses a specified color when newDesignLanguage is enabled', () => {
-      const icon = mountWithApp(<Icon source={PlusMinor} color="subdued" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(icon).toContainReactComponent('span', {
-        className: 'Icon colorSubdued isColored newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled, and does not set a default color', () => {
-      const icon = mountWithApp(<Icon source={PlusMinor} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(icon).toContainReactComponent('span', {
-        className: 'Icon',
-      });
+    it('warns when a backdrop color is not available for `primary`', () => {
+      mountWithApp(<Icon source="placeholder" color="primary" backdrop />);
+      expect(warnSpy).toHaveBeenCalledWith(
+        'The primary variant does not have a supported backdrop color',
+      );
     });
   });
 });

@@ -14,6 +14,7 @@ describe('<FileUpload />', () => {
     focused: false,
     disabled: false,
     measuring: false,
+    allowMultiple: true,
   };
   describe('measuring', () => {
     it('hides the FileUpload while measuring is true', () => {
@@ -119,7 +120,7 @@ describe('<FileUpload />', () => {
     );
 
     fileUpload.setProps({children: <FileUpload />});
-    expect(findByTestID(fileUpload, 'Button').text()).toBe('Add file');
+    expect(findByTestID(fileUpload, 'Button').text()).toBe('Add files');
   });
 
   it('sets a default actionHint if the prop is provided then removed', () => {
@@ -135,55 +136,28 @@ describe('<FileUpload />', () => {
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+  it.each([
+    [false, 'image', 'Add image', 'or drop image to upload'],
+    [true, 'image', 'Add images', 'or drop images to upload'],
+    [false, 'file', 'Add file', 'or drop file to upload'],
+    [true, 'file', 'Add files', 'or drop files to upload'],
+  ])(
+    'renders texts when allowMultiple is %s and type is %s',
+    (allowMultiple, type, expectedButtonText, expectedTextStyleText) => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
-          value={{
-            size: 'extraLarge',
-            type: 'file',
-            ...defaultStates,
-            measuring: true,
-          }}
+          value={{size: 'large', ...defaultStates, allowMultiple, type}}
         >
           <FileUpload />
         </DropZoneContext.Provider>,
-        {
-          features: {newDesignLanguage: true},
-        },
       );
 
       expect(fileUpload).toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
+        children: expectedButtonText,
       });
-      expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
+      expect(fileUpload).toContainReactComponent(TextStyle, {
+        children: expectedTextStyleText,
       });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{
-            size: 'extraLarge',
-            type: 'file',
-            ...defaultStates,
-            measuring: true,
-          }}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-
-      expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
-      });
-      expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
-      });
-    });
-  });
+    },
+  );
 });

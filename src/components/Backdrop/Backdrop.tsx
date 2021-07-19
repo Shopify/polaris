@@ -27,7 +27,6 @@ export function Backdrop(props: BackdropProps) {
       <div
         className={className}
         onClick={onClick}
-        testID="Backdrop"
         onTouchStart={onTouchStart}
       />
     </>

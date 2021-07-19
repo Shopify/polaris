@@ -19,7 +19,6 @@ keywords:
   - full-width page
   - narrow-width page
   - page with action groups
-  - page with separator
   - outer wrapper
   - page actions
   - page layouts
@@ -174,7 +173,6 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     hasNext: true,
   }}
   additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
-  separator
 >
   <p>Page content</p>
 </Page>
@@ -430,22 +428,6 @@ Use action groups for sets of actions that relate to one another, particularly w
 </Page>
 ```
 
-### Page with separator
-
-<!-- example-for: web -->
-
-Use a separator for pages that have an [empty state](https://polaris.shopify.com/components/structure/empty-state) as their only content, or that have an [annotated section](https://polaris.shopify.com/components/structure/layout) as the first component on the page.
-
-```jsx
-<Page title="Settings" separator>
-  <Layout>
-    <Layout.AnnotatedSection title="Store details">
-      <p>Annotated section content</p>
-    </Layout.AnnotatedSection>
-  </Layout>
-</Page>
-```
-
 ### Page with content after title (title metadata)
 
 <!-- example-for: web -->
@@ -463,6 +445,22 @@ Title metadata appears immediately after the page’s title. Use it to communica
     hasPrevious: true,
     hasNext: true,
   }}
+>
+  <p>Page content</p>
+</Page>
+```
+
+### Page with divider
+
+<!-- example-for: web -->
+
+Use when the page needs visual separation between the page header and the content.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  divider
 >
   <p>Page content</p>
 </Page>

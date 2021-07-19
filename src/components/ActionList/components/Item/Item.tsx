@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
@@ -9,6 +8,7 @@ import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
 import {TextStyle} from '../../../TextStyle';
 import styles from '../../ActionList.scss';
+import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -22,6 +22,8 @@ export function Item({
   onAction,
   icon,
   image,
+  prefix,
+  suffix,
   disabled,
   external,
   destructive,
@@ -29,28 +31,28 @@ export function Item({
   active,
   role,
 }: ItemProps) {
-  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
-  let imageElement = null;
+  let prefixMarkup: React.ReactNode | null = null;
 
-  if (icon) {
-    imageElement = (
-      <div className={styles.Image}>
+  if (prefix) {
+    prefixMarkup = <span className={styles.Prefix}>{prefix}</span>;
+  } else if (icon) {
+    prefixMarkup = (
+      <span className={styles.Prefix}>
         <Icon source={icon} />
-      </div>
+      </span>
     );
   } else if (image) {
-    imageElement = (
-      <div
+    prefixMarkup = (
+      <span
         role="presentation"
-        className={styles.Image}
+        className={styles.Prefix}
         style={{backgroundImage: `url(${image}`}}
       />
     );
@@ -59,32 +61,33 @@ export function Item({
   const contentText = ellipsis && content ? `${content}…` : content;
 
   const contentMarkup = helpText ? (
-    <div>
-      <div>{contentText}</div>
+    <span className={styles.ContentBlock}>
+      <span className={styles.ContentBlockInner}>{contentText}</span>
       <TextStyle variation="subdued">{helpText}</TextStyle>
-    </div>
+    </span>
   ) : (
     contentText
   );
 
   const badgeMarkup = badge && (
-    <span className={styles.BadgeWrapper}>
+    <span className={styles.Suffix}>
       <Badge status={badge.status}>{badge.content}</Badge>
     </span>
   );
 
-  const textMarkup = imageElement ? (
-    <div className={styles.Text}>{contentMarkup}</div>
-  ) : (
-    contentMarkup
+  const suffixMarkup = suffix && (
+    <span className={styles.Suffix}>{suffix}</span>
   );
 
+  const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
+
   const contentElement = (
-    <div className={styles.Content}>
-      {imageElement}
+    <span className={styles.Content}>
+      {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
-    </div>
+      {suffixMarkup}
+    </span>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
@@ -92,11 +95,11 @@ export function Item({
   const control = url ? (
     <UnstyledLink
       id={id}
-      url={url}
+      url={disabled ? null : url}
       className={className}
       external={external}
       aria-label={accessibilityLabel}
-      onClick={onAction}
+      onClick={disabled ? null : onAction}
     >
       {contentElement}
     </UnstyledLink>
@@ -108,13 +111,14 @@ export function Item({
       disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onAction}
+      onMouseUp={handleMouseUpByBlurring}
     >
       {contentElement}
     </button>
   );
 
   return (
-    <li role={role} aria-selected={active}>
+    <li role={role}>
       {scrollMarkup}
       {control}
     </li>

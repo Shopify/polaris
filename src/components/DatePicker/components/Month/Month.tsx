@@ -28,6 +28,7 @@ export interface MonthProps {
   disableDatesAfter?: Date;
   allowRange?: boolean;
   weekStartsOn: number;
+  accessibilityLabelPrefixes: [string | undefined, string];
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
@@ -46,6 +47,7 @@ export function Month({
   month,
   year,
   weekStartsOn,
+  accessibilityLabelPrefixes,
 }: MonthProps) {
   const i18n = useI18n();
 
@@ -67,7 +69,7 @@ export function Month({
       title={i18n.translate(
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
-      label={i18n.translate(`Polaris.DatePicker.days.${weekdayName(weekday)}`)}
+      label={weekdayLabel(weekday)}
       current={current && new Date().getDay() === weekday}
     />
   ));
@@ -110,9 +112,25 @@ export function Month({
       selected && isSameDay(selected.start, selected.end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
+    const [
+      firstAccessibilityLabelPrefix,
+      lastAccessibilityLabelPrefix,
+    ] = accessibilityLabelPrefixes;
+    let accessibilityLabelPrefix;
+
+    if (
+      (allowRange && isFirstSelectedDay) ||
+      (!allowRange && firstAccessibilityLabelPrefix)
+    ) {
+      accessibilityLabelPrefix = firstAccessibilityLabelPrefix;
+    } else if (allowRange && isLastSelectedDay) {
+      accessibilityLabelPrefix = lastAccessibilityLabelPrefix;
+    }
 
     return (
       <Day
+        selectedAccessibilityLabelPrefix={accessibilityLabelPrefix}
+        weekday={weekdayLabel(dayIndex)}
         focused={focusedDate != null && isSameDay(day, focusedDate)}
         day={day}
         key={dayIndex}
@@ -136,22 +154,29 @@ export function Month({
   }
 
   const weeksMarkup = weeks.map((week, index) => (
-    <div role="row" className={styles.Week} key={index}>
+    <tr className={styles.Week} key={index}>
       {week.map(renderWeek)}
-    </div>
+    </tr>
   ));
 
   return (
-    <div role="grid" className={styles.Month}>
-      <div className={className}>
-        {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
-      </div>
-      <div role="rowheader" className={styles.WeekHeadings}>
-        {weekdays}
-      </div>
-      {weeksMarkup}
+    <div className={styles.MonthContainer}>
+      <table role="grid" className={styles.Month}>
+        <caption className={className}>
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+          {year}
+        </caption>
+        <thead>
+          <tr className={styles.WeekHeadings}>{weekdays}</tr>
+        </thead>
+        <tbody>{weeksMarkup}</tbody>
+      </table>
     </div>
   );
+
+  function weekdayLabel(weekday: number) {
+    return i18n.translate(`Polaris.DatePicker.days.${weekdayName(weekday)}`);
+  }
 }
 
 function noop() {}

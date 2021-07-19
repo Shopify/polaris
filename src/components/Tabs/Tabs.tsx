@@ -1,11 +1,10 @@
 import React, {PureComponent} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -21,13 +20,14 @@ export interface TabsProps {
   tabs: TabDescriptor[];
   /** Fit tabs to container */
   fitted?: boolean;
+  /** Text to replace disclosures horizontal dots */
+  disclosureText?: string;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
 
 type CombinedProps = TabsProps & {
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -69,10 +69,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {tabs, selected, fitted, children, i18n, features} = this.props;
+    const {tabs, selected, fitted, children, i18n, disclosureText} = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
-    const {newDesignLanguage} = features;
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -100,17 +99,12 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       .map((tabIndex) => this.renderTabMarkup(tabs[tabIndex], tabIndex));
 
     const disclosureActivatorVisible = visibleTabs.length < tabs.length;
+    const hasCustomDisclosure = Boolean(disclosureText);
 
     const classname = classNames(
       styles.Tabs,
       fitted && styles.fitted,
       disclosureActivatorVisible && styles.fillSpace,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
-
-    const wrapperClassName = classNames(
-      styles.Wrapper,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureTabClassName = classNames(
@@ -118,22 +112,55 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
     );
 
-    const activator = (
+    const disclosureButtonClassName = classNames(
+      styles.DisclosureActivator,
+      hasCustomDisclosure && styles.Tab,
+    );
+
+    const disclosureButtonContentWrapperClassName = classNames(
+      styles.Title,
+      hasCustomDisclosure && styles.titleWithIcon,
+    );
+
+    const disclosureButtonContent = hasCustomDisclosure ? (
+      <>
+        {disclosureText}
+        <Icon source={CaretDownMinor} color="subdued" />
+      </>
+    ) : (
+      <Icon source={HorizontalDotsMinor} color="subdued" />
+    );
+
+    const disclosureButton = (
       <button
         type="button"
-        className={styles.DisclosureActivator}
+        className={disclosureButtonClassName}
         onClick={this.handleDisclosureActivatorClick}
         aria-label={i18n.translate('Polaris.Tabs.toggleTabsLabel')}
       >
-        <span className={styles.Title}>
-          <Icon source={HorizontalDotsMinor} />
+        <span className={disclosureButtonContentWrapperClassName}>
+          {disclosureButtonContent}
         </span>
       </button>
     );
 
+    const activator = disclosureText ? (
+      <div className={styles.TabContainer}>{disclosureButton}</div>
+    ) : (
+      disclosureButton
+    );
+
     return (
       <div>
-        <div className={wrapperClassName}>
+        <div className={styles.Wrapper}>
+          <TabMeasurer
+            tabToFocus={tabToFocus}
+            activator={activator}
+            selected={selected}
+            tabs={tabs}
+            siblingTabHasFocus={tabToFocus > -1}
+            handleMeasurement={this.handleMeasurement}
+          />
           <ul
             role="tablist"
             className={classname}
@@ -143,12 +170,13 @@ class TabsInner extends PureComponent<CombinedProps, State> {
             onKeyUp={this.handleKeyPress}
           >
             {tabsMarkup}
-            <li className={disclosureTabClassName}>
+            <li className={disclosureTabClassName} role="presentation">
               <Popover
                 preferredPosition="below"
                 activator={activator}
                 active={disclosureActivatorVisible && showDisclosure}
                 onClose={this.handleClose}
+                autofocusTarget="first-node"
               >
                 <List
                   focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -159,14 +187,6 @@ class TabsInner extends PureComponent<CombinedProps, State> {
               </Popover>
             </li>
           </ul>
-          <TabMeasurer
-            tabToFocus={tabToFocus}
-            activator={activator}
-            selected={selected}
-            tabs={tabs}
-            siblingTabHasFocus={tabToFocus > -1}
-            handleMeasurement={this.handleMeasurement}
-          />
         </div>
         {panelMarkup}
       </div>
@@ -182,7 +202,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
-    if (key === 'ArrowRight' || key === 'ArrowDown') {
+    if (key === 'ArrowRight') {
       newFocus += 1;
 
       if (newFocus === tabsArrayInOrder.length) {
@@ -190,7 +210,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === 'ArrowLeft' || key === 'ArrowUp') {
+    if (key === 'ArrowLeft') {
       if (newFocus === -1 || newFocus === 0) {
         newFocus = tabsArrayInOrder.length - 1;
       } else {
@@ -205,8 +225,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
-    const {selected} = this.props;
+    const {selected, children} = this.props;
     const {tabToFocus} = this.state;
+    const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
     return (
       <Tab
@@ -216,7 +237,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         focused={index === tabToFocus}
         selected={index === selected}
         onClick={this.handleTabClick}
-        panelID={tab.panelID || `${tab.id}-panel`}
+        panelID={children ? tabPanelID : undefined}
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
@@ -350,12 +371,7 @@ function noop() {}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
+  if (key === 'ArrowLeft' || key === 'ArrowRight') {
     event.preventDefault();
     event.stopPropagation();
   }
@@ -363,7 +379,6 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 
 export function Tabs(props: TabsProps) {
   const i18n = useI18n();
-  const features = useFeatures();
 
-  return <TabsInner {...props} i18n={i18n} features={features} />;
+  return <TabsInner {...props} i18n={i18n} />;
 }

@@ -1,14 +1,26 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
-  ConversationMinor,
-  DuplicateMinor,
-  ViewMinor,
+  AnalyticsMajor,
+  AppsMajor,
+  CirclePlusMinor,
+  CustomersMajor,
+  DiscountsMajor,
+  HomeMajor,
+  MarketingMajor,
+  OrdersMajor,
+  ProductsMajor,
+  SettingsMajor,
 } from '@shopify/polaris-icons';
 
 import {
   ActionList,
+  Avatar,
+  Badge,
+  Caption,
   Card,
   ContextualSaveBar,
+  DropZone,
+  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
@@ -16,33 +28,18 @@ import {
   Modal,
   Navigation,
   Page,
+  Select,
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  Stack,
   TextContainer,
   TextField,
+  Thumbnail,
   Toast,
   TopBar,
-  Badge,
-  Select,
-  DropZone,
-  DropZoneProps,
-  Stack,
-  Caption,
-  Thumbnail,
 } from '../src';
 
-import {
-  HomeMajorMonotone,
-  OrdersMajorMonotone,
-  ProductsMajorMonotone,
-  CustomersMajorMonotone,
-  AnalyticsMajorMonotone,
-  MarketingMajorMonotone,
-  DiscountsMajorMonotone,
-  AppsMajorMonotone,
-  SettingsMajorMonotone,
-} from './images';
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
@@ -60,6 +57,9 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
+  const initialDescription =
+    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
+  const [previewValue, setPreviewValue] = useState(initialDescription);
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -135,48 +135,6 @@ export function DetailsPage() {
     },
   ];
 
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: handleSave,
-      }}
-      discardAction={{
-        onAction: handleDiscard,
-      }}
-    />
-  ) : null;
-
-  const userMenuMarkup = (
-    <TopBar.UserMenu
-      actions={userMenuActions}
-      name="Dharma"
-      detail={storeName}
-      initials="D"
-      open={userMenuActive}
-      onToggle={toggleUserMenuActive}
-    />
-  );
-
-  const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
-  );
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      onChange={handleSearchFieldChange}
-      value={searchValue}
-      placeholder="Search"
-    />
-  );
-
   const contextControlMarkup = (
     <div className={styles.ContextControl}>
       <svg
@@ -203,6 +161,47 @@ export function DetailsPage() {
     </div>
   );
 
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: handleSave,
+      }}
+      discardAction={{
+        onAction: handleDiscard,
+        discardConfirmationModal: true,
+      }}
+      contextControl={contextControlMarkup}
+    />
+  ) : null;
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={userMenuActions}
+      name="Dharma"
+      detail={storeName}
+      initials="D"
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+      colorScheme="dark"
+      accessibilityLabel="User menu"
+    />
+  );
+
+  const searchResultsMarkup = (
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
+  );
+
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchFieldChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
+
   const topBarMarkup = (
     <TopBar
       showNavigationToggle
@@ -213,6 +212,7 @@ export function DetailsPage() {
       onSearchResultsDismiss={handleSearchResultsDismiss}
       onNavigationToggle={toggleMobileNavigationActive}
       contextControl={contextControlMarkup}
+      searchResultsOverlayVisible
     />
   );
   // ---- Navigation ----
@@ -222,7 +222,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -232,17 +232,46 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersMajorMonotone,
+            icon: OrdersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
             },
             matches: navItemActive === 'orders',
             url: '#',
+            subNavigationItems: [
+              {
+                label: 'All orders',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('all-orders');
+                },
+                matches: navItemActive.includes('orders'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Drafts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('drafts');
+                },
+                matches: navItemActive === 'drafts',
+              },
+              {
+                url: '#',
+                label: 'Abandoned checkouts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('abandoned');
+                },
+                matches: navItemActive === 'abandoned',
+              },
+            ],
           },
           {
             label: 'Products',
-            icon: ProductsMajorMonotone,
+            icon: ProductsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -261,29 +290,27 @@ export function DetailsPage() {
               },
               {
                 url: '#',
-                label: 'Drafts',
-
+                label: 'Inventory',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('drafts');
+                  setNavItemActive('inventory');
                 },
-                matches: navItemActive === 'drafts',
+                matches: navItemActive === 'inventory',
               },
               {
                 url: '#',
-                label: 'Abandoned checkouts',
-
+                label: 'Transfers',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('abandoned');
+                  setNavItemActive('transfers');
                 },
-                matches: navItemActive === 'abandoned',
+                matches: navItemActive === 'transfers',
               },
             ],
           },
           {
             label: 'Customers',
-            icon: CustomersMajorMonotone,
+            icon: CustomersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -293,7 +320,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsMajorMonotone,
+            icon: AnalyticsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -303,7 +330,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingMajorMonotone,
+            icon: MarketingMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -313,7 +340,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsMajorMonotone,
+            icon: DiscountsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -323,7 +350,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: AppsMajorMonotone,
+            icon: AppsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');
@@ -335,18 +362,58 @@ export function DetailsPage() {
       />
       <Navigation.Section
         fill
-        title="Contact support"
+        title="Sales channels"
         action={{
-          icon: ConversationMinor,
-          accessibilityLabel: 'Contact support',
+          icon: CirclePlusMinor,
+          accessibilityLabel: 'Add sales channel',
           onClick: toggleModalActive,
         }}
-        items={[]}
+        items={[
+          {
+            label: 'Point of sale',
+            icon: posIcon,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('pos');
+            },
+            matches: navItemActive === 'pos',
+            url: '#',
+            subNavigationItems: [
+              {
+                label: 'Overview',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('pos');
+                },
+                matches: navItemActive.includes('pos'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Staff',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('pos');
+                },
+                matches: navItemActive === 'pos',
+              },
+              {
+                url: '#',
+                label: 'Locations',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('pos');
+                },
+                matches: navItemActive === 'pos',
+              },
+            ],
+          },
+        ]}
       />
       <Navigation.Section
         items={[
           {
-            icon: SettingsMajorMonotone,
+            icon: SettingsMajor,
             label: 'Settings',
             onClick: toggleModalActive,
           },
@@ -367,9 +434,7 @@ export function DetailsPage() {
   );
 
   // ---- Description ----
-  const [DescriptionValue, setValue] = useState(
-    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.',
-  );
+  const [descriptionValue, setDescriptionValue] = useState(initialDescription);
 
   // ---- Select ----
   const [selected, setSelected] = useState('today');
@@ -382,7 +447,40 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback((newValue) => {
+    setDescriptionValue(newValue);
+    setPreviewValue(newValue);
+  }, []);
+
+  const actions1 = [
+    {
+      content: 'Duplicate',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('duplicate'),
+    },
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+  const actions2 = [
+    {
+      content: 'Print',
+      // eslint-disable-next-line no-console
+      onAction: () => console.log('print'),
+    },
+  ];
+
+  const [actions, setActions] = useState(actions1);
+
+  const toggleActions = () => {
+    if (actions.length === 2) {
+      setActions(actions2);
+    } else {
+      setActions(actions1);
+    }
+  };
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -421,27 +519,48 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
+      fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="M60-A"
+      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      additionalNavigation={<Avatar initials="JD" />}
+      primaryAction={{
+        content: 'Save this page',
+        // eslint-disable-next-line no-console
+        onAction: () => console.log('save'),
+      }}
+      additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
-        {
-          content: 'Duplicate',
-          icon: DuplicateMinor,
-        },
+        ...actions,
         {
           content: 'View',
-          icon: ViewMinor,
+          onAction: () => {
+            // eslint-disable-next-line no-console
+            console.log(previewValue);
+          },
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          actions: [{content: 'Share on Facebook'}],
+          actions: [
+            // eslint-disable-next-line no-console
+            {content: 'Promote', onAction: () => console.log('promote')},
+          ],
         },
         {
           title: 'More actions',
-          actions: [{content: 'Embed on a website'}],
+          actions: [
+            {
+              content: 'Embed on a website',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('embed'),
+            },
+            {
+              content: 'Toggle page actions',
+              onAction: toggleActions,
+            },
+          ],
         },
       ]}
       pagination={{
@@ -461,7 +580,7 @@ export function DetailsPage() {
               />
               <TextField
                 label="Description"
-                value={DescriptionValue}
+                value={descriptionValue}
                 onChange={handleChange}
                 multiline
               />
@@ -562,3 +681,5 @@ export function DetailsPage() {
     </Frame>
   );
 }
+
+const posIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20"><path d="M8.717 9.46l.77-2.26s-.52-.29-1.57-.29c-2.71 0-4.06 1.8-4.06 3.66 0 2.21 2.22 2.27 2.22 3.61 0 .33-.23.77-.8.77-.87 0-1.9-.88-1.9-.88l-.53 1.73s1.01 1.21 2.97 1.21c1.64 0 2.85-1.22 2.85-3.12 0-2.42-2.7-2.81-2.7-3.85 0-.18.06-.93 1.26-.93.82 0 1.49.35 1.49.35zm-2.34-5.62c-.51.14-.88.57-.94 1.09-.04.42.2.85.7.81s.9-.51 1-.97c.11-.49-.18-1.04-.76-.93zm1.35-2.7c-.32 0-.72.55-.84 1.36l1.6-.39c-.19-.64-.53-.97-.76-.97zm1.93.9c.32.09.62.29.81.58l1.62 2.13c.16.23.196.458.18.78l-.23 4.84-.33 6.68-.1 1.96c0 .13-.01.26-.03.38-.09.49-.51.67-.97.59l-8.65-1.62c-.51-.09-1.07-.15-1.57-.29-.6-.17-.34-1.1-.28-1.55l.36-2.78.82-6.23c.03-.21.05-.42.08-.63.05-.28.17-.55.34-.78l1.68-2.39c.18-.28.47-.48.8-.55l1.21-.3.3-.07c.09-1.58.94-2.79 2.04-2.79.9 0 1.65.86 1.92 2.04zM12 2l3.875 2.616c.168.157.276.37.31.598l1.77 13.008c.05.195 0 .4-.135.55-.13.15-.33.226-.527.2l-3.61-.37.066-1.36.33-6.864.25-5.208c.01-.182-.05-.36-.164-.503L12 2z"/></svg>`;

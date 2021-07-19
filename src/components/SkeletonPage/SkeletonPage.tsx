@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
-import {DisplayText} from '../DisplayText';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 
@@ -36,22 +34,20 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
     narrowWidth && styles.narrowWidth,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
-  const headerClassName = classNames(
-    styles.Header,
-    breadcrumbs && styles['Header-hasBreadcrumbs'],
-    secondaryActions && styles['Header-hasSecondaryActions'],
+  const titleContent = title ? (
+    <h1 className={styles.Title}>{title}</h1>
+  ) : (
+    <div className={styles.SkeletonTitle} />
   );
 
-  const titleMarkup = title !== null ? renderTitle(title) : null;
+  const titleMarkup = <div className={styles.TitleWrapper}>{titleContent}</div>;
 
   const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>
@@ -59,9 +55,10 @@ export function SkeletonPage({
     </div>
   ) : null;
 
-  const secondaryActionsMarkup = secondaryActions
-    ? renderSecondaryActions(secondaryActions)
-    : null;
+  const secondaryActionsMarkup = useMemo(
+    () => (secondaryActions ? renderSecondaryActions(secondaryActions) : null),
+    [secondaryActions],
+  );
 
   const breadcrumbMarkup = breadcrumbs ? (
     <div className={styles.BreadcrumbAction} style={{width: 60}}>
@@ -75,7 +72,7 @@ export function SkeletonPage({
       role="status"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
     >
-      <div className={headerClassName}>
+      <div className={styles.Header}>
         {breadcrumbMarkup}
         <div className={styles.TitleAndPrimaryAction}>
           {titleMarkup}
@@ -99,16 +96,4 @@ function renderSecondaryActions(actionCount: number) {
     );
   }
   return <div className={styles.Actions}>{actions}</div>;
-}
-
-function renderTitle(title: string) {
-  const titleContent =
-    title === '' ? (
-      <SkeletonDisplayText size="large" />
-    ) : (
-      <DisplayText size="large" element="h1">
-        {title}
-      </DisplayText>
-    );
-  return <div className={styles.Title}>{titleContent}</div>;
 }

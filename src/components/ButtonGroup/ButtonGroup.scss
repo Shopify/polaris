@@ -44,7 +44,7 @@ $item-spacing: spacing(tight);
     margin-left: 0;
 
     &:not(:first-child) {
-      margin-left: var(--p-button-group-item-spacing, -1 * border-width());
+      margin-left: -1 * border-width();
     }
   }
 
@@ -56,5 +56,35 @@ $item-spacing: spacing(tight);
 .fullWidth {
   .Item {
     flex: 1 1 auto;
+  }
+}
+
+.extraTight {
+  margin-top: -1 * spacing(extra-tight);
+  margin-left: -1 * spacing(extra-tight);
+
+  .Item {
+    margin-top: spacing(extra-tight);
+    margin-left: spacing(extra-tight);
+  }
+}
+
+.tight {
+  margin-top: -1 * spacing(tight);
+  margin-left: -1 * spacing(tight);
+
+  .Item {
+    margin-top: spacing(tight);
+    margin-left: spacing(tight);
+  }
+}
+
+.loose {
+  margin-top: -1 * spacing(loose);
+  margin-left: -1 * spacing(loose);
+
+  .Item {
+    margin-top: spacing(loose);
+    margin-left: spacing(loose);
   }
 }

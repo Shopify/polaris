@@ -1,8 +1,8 @@
 import React from 'react';
-import {InlineError} from 'components';
+import {InlineError, Icon, Labelled} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
 
 import {Select} from '../Select';
 
@@ -203,6 +203,29 @@ describe('<Select />', () => {
     });
   });
 
+  describe('prefix', () => {
+    it('shows the prefix element beside the option label if specified', () => {
+      const options = [
+        {
+          value: 'one',
+          label: 'One',
+          prefix: <Icon source={CircleTickOutlineMinor} />,
+        },
+      ];
+      const select = mountWithAppProvider(
+        <Select label="Select" options={options} onChange={noop} />,
+      );
+
+      expect(
+        select
+          .find(Icon)
+          .filterWhere(
+            (icon) => icon.prop('source') === CircleTickOutlineMinor,
+          ),
+      ).toHaveLength(1);
+    });
+  });
+
   describe('helpText', () => {
     it('connects the select to the help text', () => {
       const select = mountWithAppProvider(
@@ -337,29 +360,14 @@ describe('<Select />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const select = mountWithApp(
-        <Select label="Select" options={[]} onChange={noop} />,
-        {
-          features: {newDesignLanguage: true},
-        },
+  describe('requiredIndicator', () => {
+    it('passes requiredIndicator prop to Labelled', () => {
+      const element = mountWithAppProvider(
+        <Select label="Select" onChange={noop} requiredIndicator />,
       );
-      expect(select).toContainReactComponent('div', {
-        className: 'Select newDesignLanguage',
-      });
-    });
+      const labelled = element.find(Labelled);
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const select = mountWithApp(
-        <Select label="Select" options={[]} onChange={noop} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(select).not.toContainReactComponent('div', {
-        className: 'Select newDesignLanguage',
-      });
+      expect(labelled.prop('requiredIndicator')).toBe(true);
     });
   });
 });

@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![Travis build status](https://travis-ci.com/Shopify/polaris-react.svg?branch=master)](https://travis-ci.com/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@5.2.1/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@5.2.1/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"
 />
 ```
 
@@ -90,11 +90,11 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
-- [create-react-app example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app)
-- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app-ts-react-testing)
-- [Webpack example](https://github.com/Shopify/polaris-react/tree/master/examples/webpack)
-- [CSS-only example](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles)
-- [next.js example](https://github.com/Shopify/polaris-react/tree/master/examples/next.js)
+- [create-react-app example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app)
+- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app-ts-react-testing)
+- [Webpack example](https://github.com/Shopify/polaris-react/tree/main/examples/webpack)
+- [CSS-only example](https://github.com/Shopify/polaris-react/tree/main/examples/cdn-styles)
+- [next.js example](https://github.com/Shopify/polaris-react/tree/main/examples/next.js)
 
 ## Development
 
@@ -131,12 +131,6 @@ yarn run build:development
 
 Also, when running `yarn install`, copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
 
-### Visual regression testing
-
-[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
-
-Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgment to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team can approve changes.
-
 #### Manual visual regression testing
 
 To start a server for manually viewing the visual regression testing examples, run `yarn run dev`.
@@ -161,9 +155,9 @@ We make our components flexible enough to meet diverse needs. They present the i
 
 ## Contributing
 
-Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md) for more information.
+Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md) for more information.
 
 ## Licenses
 
-- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/master/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
+- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/main/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
 - All icons and images are licensed under the [Polaris Design Guidelines License Agreement](https://polaris.shopify.com/legal/license)

@@ -9,7 +9,6 @@ import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -18,7 +17,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 
-import {Resizer, Spinner} from './components';
+import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
@@ -38,6 +37,16 @@ type Type =
 
 type Alignment = 'left' | 'center' | 'right';
 
+type InputMode =
+  | 'none'
+  | 'text'
+  | 'decimal'
+  | 'numeric'
+  | 'tel'
+  | 'search'
+  | 'email'
+  | 'url';
+
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
@@ -50,7 +59,7 @@ interface NonMutuallyExclusiveProps {
   /** Additional hint text to display */
   helpText?: React.ReactNode;
   /** Label for the input */
-  label: string;
+  label: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -95,10 +104,14 @@ interface NonMutuallyExclusiveProps {
   minLength?: number;
   /** A regular expression to check the value against */
   pattern?: string;
+  /** Choose the keyboard that should be used on mobile devices */
+  inputMode?: InputMode;
   /** Indicate whether value should have spelling checked */
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
   ariaOwns?: string;
+  /** Indicates whether or not a Popover is displayed */
+  ariaExpanded?: boolean;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
   /** Indicates the id of a related component’s visually focused element to the input */
@@ -117,6 +130,10 @@ interface NonMutuallyExclusiveProps {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Visual required indicator, adds an asterisk to label */
+  requiredIndicator?: boolean;
+  /** Indicates whether or not a monospaced font should be used */
+  monospaced?: boolean;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -155,9 +172,11 @@ export function TextField({
   min,
   minLength,
   pattern,
+  inputMode,
   spellCheck,
   ariaOwns,
   ariaControls,
+  ariaExpanded,
   ariaActiveDescendant,
   ariaAutocomplete,
   showCharacterCount,
@@ -166,6 +185,8 @@ export function TextField({
   onChange,
   onFocus,
   onBlur,
+  requiredIndicator,
+  monospaced,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -185,8 +206,6 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {newDesignLanguage} = useFeatures();
-
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
   // been known to pass a number in, so make it clear that doesn't work.
@@ -204,7 +223,6 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -255,21 +273,25 @@ export function TextField({
     );
   }
 
-  const clearButtonMarkup =
-    clearButton && normalizedValue !== '' ? (
-      <button
-        type="button"
-        testID="clearButton"
-        className={styles.ClearButton}
-        onClick={handleClearButtonPress}
-        disabled={disabled}
-      >
-        <VisuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </VisuallyHidden>
-        <Icon source={CircleCancelMinor} color="inkLightest" />
-      </button>
-    ) : null;
+  const clearButtonVisible = normalizedValue !== '';
+  const clearButtonClassName = classNames(
+    styles.ClearButton,
+    !clearButtonVisible && styles['ClearButton-hidden'],
+  );
+
+  const clearButtonMarkup = clearButton ? (
+    <button
+      type="button"
+      testID="clearButton"
+      className={clearButtonClassName}
+      onClick={handleClearButtonPress}
+      disabled={disabled}
+      tabIndex={clearButtonVisible ? 0 : -1}
+    >
+      <VisuallyHidden>{i18n.translate('Polaris.Common.clear')}</VisuallyHidden>
+      <Icon source={CircleCancelMinor} color="base" />
+    </button>
+  ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -302,15 +324,15 @@ export function TextField({
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress = useCallback(
-    (onChange: Function) => {
+  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+    (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
       let interval = 200;
 
       const onChangeInterval = () => {
         if (interval > minInterval) interval -= decrementBy;
-        onChange();
+        onChange(0);
         buttonPressTimer.current = window.setTimeout(
           onChangeInterval,
           interval,
@@ -327,7 +349,7 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' && !disabled && !readOnly ? (
+    type === 'number' && step !== 0 && !disabled && !readOnly ? (
       <Spinner
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
@@ -379,6 +401,7 @@ export function TextField({
     align && styles[variationName('Input-align', align)],
     suffix && styles['Input-suffixed'],
     clearButton && styles['Input-hasClearButton'],
+    monospaced && styles.monospaced,
   );
 
   const input = createElement(multiline ? 'textarea' : 'input', {
@@ -405,6 +428,7 @@ export function TextField({
     maxLength,
     spellCheck,
     pattern,
+    inputMode,
     type: inputType,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
@@ -413,13 +437,15 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': normalizeAriaMultiline(multiline),
+    'aria-expanded': ariaExpanded,
+    'aria-required': requiredIndicator,
+    ...normalizeAriaMultiline(multiline),
   });
 
   const backdropClassName = classNames(
     styles.Backdrop,
-    newDesignLanguage && connectedLeft && styles['Backdrop-connectedLeft'],
-    newDesignLanguage && connectedRight && styles['Backdrop-connectedRight'],
+    connectedLeft && styles['Backdrop-connectedLeft'],
+    connectedRight && styles['Backdrop-connectedRight'],
   );
 
   return (
@@ -430,6 +456,7 @@ export function TextField({
       action={labelAction}
       labelHidden={labelHidden}
       helpText={helpText}
+      requiredIndicator={requiredIndicator}
     >
       <Connected left={connectedLeft} right={connectedRight}>
         <div
@@ -506,12 +533,9 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
-  switch (typeof multiline) {
-    case 'undefined':
-      return false;
-    case 'boolean':
-      return multiline;
-    case 'number':
-      return Boolean(multiline > 0);
-  }
+  if (!multiline) return undefined;
+
+  return Boolean(multiline) || multiline > 0
+    ? {'aria-multiline': true}
+    : undefined;
 }

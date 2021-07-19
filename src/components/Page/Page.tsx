@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
@@ -13,15 +12,21 @@ export interface PageProps extends HeaderProps {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   narrowWidth?: boolean;
+  /** Displays a divider between the page header and the page content */
+  divider?: boolean;
 }
 
-export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
-  const {newDesignLanguage} = useFeatures();
-  const className = classNames(
+export function Page({
+  children,
+  fullWidth,
+  narrowWidth,
+  divider,
+  ...rest
+}: PageProps) {
+  const pageClassName = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
     narrowWidth && styles.narrowWidth,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const hasHeaderContent =
@@ -31,12 +36,17 @@ export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
 
+  const contentClassName = classNames(
+    styles.Content,
+    divider && hasHeaderContent && styles.divider,
+  );
+
   const headerMarkup = hasHeaderContent ? <Header {...rest} /> : null;
 
   return (
-    <div className={className}>
+    <div className={pageClassName}>
       {headerMarkup}
-      <div className={styles.Content}>{children}</div>
+      <div className={contentClassName}>{children}</div>
     </div>
   );
 }

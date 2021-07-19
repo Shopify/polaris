@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {List} from '../List';
@@ -22,27 +20,29 @@ describe('<List />', () => {
   };
 
   it('renders an unordered list', () => {
-    const list = mountWithAppProvider(<List {...mockProps} />);
-    expect(list.find('ul')).toHaveLength(1);
+    const list = mountWithApp(<List {...mockProps} />);
+    expect(list).toContainReactComponent('ul');
   });
 
   describe('focusIndex', () => {
     it('does not pass focusIndex to last Item', () => {
       const focusIndex = 1;
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
-      const items = list.find(Item);
-      expect(items.first().prop('focused')).toBe(false);
+      expect(list).toContainReactComponent(Item, {
+        focused: false,
+      });
     });
 
     it('passes focusIndex to first Item', () => {
       const focusIndex = 1;
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
-      const items = list.find(Item);
-      expect(items.last().prop('focused')).toBe(true);
+      expect(list).toContainReactComponent(Item, {
+        focused: true,
+      });
     });
   });
 
@@ -59,17 +59,19 @@ describe('<List />', () => {
     ];
 
     it('renders a button for each item in disclosureTabs', () => {
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      expect(list.find('button')).toHaveLength(2);
+      expect(list).toContainReactComponentTimes('button', 2);
     });
 
     it('passes the id to the button', () => {
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      expect(list.find('button').first().prop('id')).toBe('repeat-customers');
+      expect(list).toContainReactComponent('button', {
+        id: 'repeat-customers',
+      });
     });
   });
 
@@ -86,38 +88,17 @@ describe('<List />', () => {
     ];
 
     it('renders an Item for each item in disclosureTabs', () => {
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      expect(list.find(Item)).toHaveLength(2);
+      expect(list).toContainReactComponentTimes(Item, 2);
     });
 
     it('renders the provided content', () => {
-      const list = mountWithAppProvider(
+      const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      const firstItem = list.find(Item).first();
-      expect(firstItem.contains('Repeat customers')).toBe(true);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const list = mountWithApp(<List {...mockProps} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(list).toContainReactComponent('ul', {
-        className: 'List newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is not enabled', () => {
-      const list = mountWithApp(<List {...mockProps} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(list).toContainReactComponent('ul', {
-        className: 'List',
-      });
+      expect(list).toContainReactText('Repeat customers');
     });
   });
 });

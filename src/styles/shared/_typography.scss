@@ -48,6 +48,7 @@ $typography-condensed: em(640px);
   font-size: font-size(input);
   font-weight: 400;
   line-height: line-height(input);
+  border: none;
 
   text-transform: initial;
   letter-spacing: initial;
@@ -72,7 +73,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button {
   font-size: font-size(button);
-  font-weight: var(--p-button-font-weight, 400);
+  font-weight: var(--p-button-font-weight);
   line-height: line-height(button);
 
   text-transform: initial;
@@ -85,7 +86,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button-large {
   font-size: font-size(button-large);
-  font-weight: var(--p-button-font-weight, 400);
+  font-weight: var(--p-button-font-weight);
   line-height: line-height(button-large);
 
   text-transform: initial;
@@ -140,15 +141,8 @@ $typography-condensed: em(640px);
   }
 }
 
-@mixin text-emphasis-placeholder() {
-  color: color('ink', 'lightest');
-}
-
 @mixin text-emphasis-subdued($for-background: null) {
-  color: var(
-    --p-text-subdued,
-    color('ink', 'lighter', $for-background: $for-background)
-  );
+  color: var(--p-text-subdued);
 }
 
 @mixin text-emphasis-strong {
@@ -157,7 +151,7 @@ $typography-condensed: em(640px);
 
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: 400;
-  color: var(--p-text, color(ink, $for-background: $for-background));
+  color: var(--p-text);
 }
 
 @mixin text-breakword {

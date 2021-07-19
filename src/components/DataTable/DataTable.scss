@@ -29,8 +29,8 @@ $breakpoint: 768px;
 .Pip {
   height: rem(6px);
   width: rem(6px);
-  background: var(--p-text-subdued, color('ink', 'lightest'));
-  border-radius: var(--p-border-radius-base, border-radius());
+  background: var(--p-text-subdued);
+  border-radius: var(--p-border-radius-base);
 
   &:not(:last-of-type) {
     margin-right: spacing(extra-tight);
@@ -38,7 +38,7 @@ $breakpoint: 768px;
 }
 
 .Pip-visible {
-  background: var(--p-text, color('ink'));
+  background: var(--p-text);
 }
 
 .ScrollContainer {
@@ -51,18 +51,23 @@ $breakpoint: 768px;
   border-spacing: 0;
 }
 
-.TableRow {
+.hoverable {
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
-      background: var(--p-surface-hovered, color('sky', 'lighter'));
+      background: var(--p-surface-hovered);
     }
+  }
+}
+
+// stylelint-disable selector-max-class, selector-max-combinators
+.TableRow + .TableRow {
+  .Cell {
+    border-top: border('divider');
   }
 }
 
 .Cell {
   padding: spacing();
-  border-bottom: border-width() solid
-    var(--p-border-subdued, color('sky', 'light'));
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
@@ -120,24 +125,29 @@ $breakpoint: 768px;
 
 .Heading {
   @include unstyled-button;
+  @include focus-ring;
   position: relative;
   display: inline-flex;
   justify-content: flex-end;
   align-items: baseline;
   @include recolor-icon(var(--p-icon));
-  color: var(--p-text, color(ink));
+  color: var(--p-text);
   transition: color duration() easing();
-  padding: spacing();
   cursor: pointer;
+  padding: spacing(tight);
+  margin: spacing(tight);
 
-  &:hover,
-  &:focus {
-    @include recolor-icon(var(--p-interactive-hovered, color('indigo')));
-    color: var(--p-interactive-hovered, color('indigo'));
+  &:hover {
+    @include recolor-icon(var(--p-interactive-hovered));
+    color: var(--p-interactive-hovered);
 
     .Icon {
       opacity: 1;
     }
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
@@ -154,18 +164,23 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
-  background: var(--p-surface-subdued, color('sky', 'lighter'));
+  background: var(--p-surface-subdued);
   border-bottom: border();
 }
 
 .Cell-total-footer {
-  border-top: border();
+  border-top: border('divider');
   border-bottom: none;
+  border-bottom-left-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-base);
 }
 
 .Footer {
   padding: spacing();
-  background: var(--p-surface-subdued, color('sky', 'light'));
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+  background: var(--p-surface-subdued);
+  color: var(--p-text-subdued);
   text-align: center;
+  border-top: border('divider');
+  border-bottom-left-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-base);
 }

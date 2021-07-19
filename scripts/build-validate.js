@@ -34,9 +34,7 @@ function validateStandardBuild() {
   // Standard build css contains namespaced classes
   const cssContent = fs.readFileSync('./dist/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar{'));
-  assert.ok(
-    cssContent.includes('.Polaris-ResourceList-BulkActions__BulkActionButton{'),
-  );
+  assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton{'));
 }
 
 function validateEsNextBuild() {
@@ -60,15 +58,6 @@ function validateEsNextBuild() {
   assert.ok(jsContent.includes("import './Avatar.css';"));
   assert.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
   assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
-
-  assert.ok(
-    fs
-      .readFileSync(
-        './dist/esnext/components/Collapsible/Collapsible.tsx.esnext',
-        'utf-8',
-      )
-      .includes('class Collapsible'),
-  );
 }
 
 function validateSassPublicApi() {

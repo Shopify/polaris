@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Page, PageProps, Card, Avatar, Badge} from 'components';
+import {
+  Page,
+  PageProps,
+  Card,
+  Avatar,
+  Badge,
+  ActionMenuProps,
+} from 'components';
+import {mountWithApp} from 'test-utilities';
 
 import {Header} from '../components';
 
@@ -127,6 +135,63 @@ describe('<Page />', () => {
       );
       expect(page.find(Header).prop('secondaryActions')).toBe(secondaryActions);
     });
+
+    it('re-renders secondaryActions when they change', () => {
+      function PageWithSecondaryActionsToggle() {
+        const initialActions: ActionMenuProps['actions'] = [
+          {content: 'initial'},
+        ];
+
+        const [groups, setGroups] = useState(initialActions);
+        const handleActivatorClick = useCallback(
+          () => setGroups([{content: 'updated'}]),
+          [],
+        );
+
+        return (
+          <>
+            <button onClick={handleActivatorClick}>Activator</button>
+            <Page secondaryActions={groups} />
+          </>
+        );
+      }
+
+      const wrapper = mountWithApp(<PageWithSecondaryActionsToggle />);
+
+      wrapper.find('button')!.trigger('onClick');
+      expect(wrapper).toContainReactComponent(Page, {
+        secondaryActions: [{content: 'updated'}],
+      });
+    });
+
+    it('re-renders actionGroups when they change', () => {
+      function PageWithActionsGroupsToggle() {
+        const initialGroups: ActionMenuProps['groups'] = [
+          {title: 'initial', actions: [{content: 'initial'}]},
+        ];
+
+        const [groups, setGroups] = useState(initialGroups);
+        const handleActivatorClick = useCallback(
+          () =>
+            setGroups([{title: 'updated', actions: [{content: 'updated'}]}]),
+          [],
+        );
+
+        return (
+          <>
+            <button onClick={handleActivatorClick}>Activator</button>
+            <Page actionGroups={groups} />
+          </>
+        );
+      }
+
+      const wrapper = mountWithApp(<PageWithActionsGroupsToggle />);
+
+      wrapper.find('button')!.trigger('onClick');
+      expect(wrapper).toContainReactComponent(Page, {
+        actionGroups: [{title: 'updated', actions: [{content: 'updated'}]}],
+      });
+    });
   });
 
   describe('actionGroups', () => {
@@ -185,6 +250,35 @@ describe('<Page />', () => {
         <Page {...mockProps} breadcrumbs={breadcrumbs} />,
       );
       expect(page.find(Header).prop('breadcrumbs')).toStrictEqual(breadcrumbs);
+    });
+  });
+
+  describe('divider', () => {
+    it('renders border when divider is true and header props exist', () => {
+      const wrapper = mountWithApp(<Page {...mockProps} divider />);
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+    });
+
+    it('does not render border when divider is true and no header props exist', () => {
+      const wrapper = mountWithApp(<Page divider />);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content',
+      });
+    });
+
+    it('does not render border when divider is false', () => {
+      const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: 'Content divider',
+      });
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'Content',
+      });
     });
   });
 

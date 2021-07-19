@@ -46,7 +46,6 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-
     expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
       expect.any(Object),
       {
@@ -162,18 +161,18 @@ describe('<Popover />', () => {
     expect(popover.children[0].type).toBe('span');
   });
 
-  it('passes preventAutofocus to PopoverOverlay', () => {
+  it('passes autofocusTarget to PopoverOverlay', () => {
     const popover = mountWithApp(
       <Popover
         active={false}
-        preventAutofocus
+        autofocusTarget="none"
         activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
 
     expect(popover).toContainReactComponent(PopoverOverlay, {
-      preventAutofocus: true,
+      autofocusTarget: 'none',
     });
   });
 
@@ -218,6 +217,21 @@ describe('<Popover />', () => {
     );
     expect(popover).toContainReactComponent(PopoverOverlay, {
       fluidContent: true,
+    });
+  });
+
+  it("passes 'zIndexOverride' to PopoverOverlay", () => {
+    const popover = mountWithApp(
+      <Popover
+        active={false}
+        zIndexOverride={100}
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+
+    expect(popover).toContainReactComponent(PopoverOverlay, {
+      zIndexOverride: 100,
     });
   });
 
@@ -298,6 +312,36 @@ describe('<Popover />', () => {
     const focusTarget = popover.find('button', {id})!.domNode;
 
     expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it("doesn't focuses the activator or another focusable element when the popover is closed", () => {
+    const activatorId = 'activator1';
+    const nextElementId = 'activator2';
+    function PopoverTest() {
+      return (
+        <>
+          <div>
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              preventFocusOnClose
+              onClose={noop}
+            />
+          </div>
+          <button id={nextElementId} />
+        </>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose');
+    const activatorTarget = popover.find('button', {id: activatorId})!.domNode;
+    const nextElementTarget = popover.find('button', {id: nextElementId})!
+      .domNode;
+
+    expect(document.activeElement).not.toBe(activatorTarget);
+    expect(document.activeElement).not.toBe(nextElementTarget);
   });
 });
 

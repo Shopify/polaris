@@ -7,22 +7,12 @@ import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.j
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 
-export const parameters = {
-  percy: {
-    skip: true,
-    widths: [375, 1280],
-  },
-};
-
 function StrictModeToggle({isStrict = false, children}) {
   const Wrapper = isStrict ? React.StrictMode : React.Fragment;
   return <Wrapper>{children}</Wrapper>;
 }
 
-function AppProviderWithKnobs(
-  {newDesignLanguage, colorScheme, children},
-  context,
-) {
+function AppProviderWithKnobs({colorScheme, children}, context) {
   const omitAppProvider = (() => {
     try {
       return children.props['data-omit-app-provider'];
@@ -44,7 +34,6 @@ function AppProviderWithKnobs(
   return (
     <AppProvider
       i18n={enTranslations}
-      features={{newDesignLanguage}}
       theme={{
         colors,
         colorScheme,
@@ -65,21 +54,17 @@ const withContextsDecorator = withContexts([
     ],
   },
   {
-    title: 'New Design Language',
+    title: 'Color scheme',
     components: [AppProviderWithKnobs],
     params: [
       {
-        name: 'Disabled',
         default: true,
-        props: {newDesignLanguage: false},
+        name: 'Light Mode',
+        props: {colorScheme: 'light'},
       },
       {
-        name: 'Enabled - Light Mode',
-        props: {newDesignLanguage: true, colorScheme: 'light'},
-      },
-      {
-        name: 'Enabled - Dark Mode',
-        props: {newDesignLanguage: true, colorScheme: 'dark'},
+        name: 'Dark Mode',
+        props: {colorScheme: 'dark'},
       },
     ],
   },

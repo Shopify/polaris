@@ -17,7 +17,7 @@ $stacking-order: (
 
 .disabled {
   .Content {
-    color: var(--p-text-disabled, color('ink', 'lightest'));
+    color: var(--p-text-disabled);
   }
 
   .InlineLabel {
@@ -25,22 +25,18 @@ $stacking-order: (
   }
 
   .Icon {
-    opacity: var(--p-override-one, 0.4);
-    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lighter')));
+    @include recolor-icon(var(--p-icon-disabled));
   }
 
-  &.newDesignLanguage {
-    // stylelint-disable-next-line selector-max-class
-    .Backdrop {
-      border-color: var(--p-border-disabled);
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      &::before {
-        background-color: var(--p-action-secondary-disabled);
-      }
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      &:hover {
-        cursor: default;
-      }
+  .Backdrop {
+    border-color: var(--p-border-disabled);
+
+    &::before {
+      background-color: var(--p-action-secondary-disabled);
+    }
+
+    &:hover {
+      cursor: default;
     }
   }
 }
@@ -56,7 +52,7 @@ $stacking-order: (
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
   &.error .Input:-moz-focusring {
     color: transparent;
-    text-shadow: var(--p-override-none, 0 0 0 color('ink', 'base'));
+    text-shadow: var(--p-override-none);
   }
 }
 
@@ -86,8 +82,12 @@ $stacking-order: (
   text-overflow: ellipsis;
 }
 
+.Prefix {
+  padding-right: spacing('tight');
+}
+
 .Icon {
-  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+  @include recolor-icon(var(--p-icon));
 }
 
 .Input {
@@ -107,89 +107,46 @@ $stacking-order: (
   appearance: none;
 }
 
-.Select:not(.newDesignLanguage) {
+.Backdrop {
+  z-index: z-index(backdrop, $stacking-order);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: border-width() solid var(--p-border-subdued);
+  border-bottom-color: var(--p-border-shadow-subdued);
+  border-radius: var(--p-border-radius-base);
+  background-color: var(--p-surface);
+  box-shadow: var(--p-button-drop-shadow);
+  @include focus-ring($border-width: rem(1px));
+  // 'position' needs to sit below focus-ring since it will be overwritten
+  // with relative when the focus ring style is 'base'
+  // stylelint-disable-next-line order/properties-order
+  position: absolute;
+}
+
+.error {
   .Backdrop {
-    @include control-backdrop;
-    position: absolute;
-    z-index: z-index(backdrop, $stacking-order);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  &.error {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
-    .Backdrop {
-      @include control-backdrop(error);
-    }
-
-    // Need to override the higher specificity of the sibling selector
-    // so that errors still have red borders.
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
-    .Input:focus ~ .Backdrop {
-      @include control-backdrop(focused-error);
+    border-color: var(--p-border-critical);
+    background-color: var(--p-surface-critical-subdued);
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    &.hover,
+    &:hover {
+      border-color: var(--p-border-critical);
     }
   }
 
-  &.disabled {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
-    .Backdrop {
-      @include control-backdrop(disabled);
-    }
-  }
-
-  // stylelint-disable-next-line selector-max-specificity
-  .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
-    ~ .Backdrop {
-      @include control-backdrop(focused);
-    }
+  // Need to override the higher specificity of the sibling selector
+  // so that errors still have red borders.
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
+  .Input:focus ~ .Backdrop {
+    @include focus-ring($style: 'focused');
   }
 }
 
-.newDesignLanguage {
-  .Backdrop {
-    z-index: z-index(backdrop, $stacking-order);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: border-width() solid var(--p-border);
-    border-radius: var(--p-border-radius-base);
-    background-color: var(--p-surface);
-    @include focus-ring($border-width: rem(1px));
-    // 'position' needs to sit below focus-ring since it will be overwritten
-    // with relative when the focus ring style is 'base'
-    // stylelint-disable-next-line order/properties-order
-    position: absolute;
-  }
-
-  &.error {
-    // stylelint-disable-next-line selector-max-class
-    .Backdrop {
-      border-color: var(--p-border-critical);
-      background-color: var(--p-surface-critical);
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      &.hover,
-      &:hover {
-        border-color: var(--p-border-critical);
-      }
-    }
-
-    // Need to override the higher specificity of the sibling selector
-    // so that errors still have red borders.
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
-    .Input:focus ~ .Backdrop {
-      @include focus-ring($style: 'focused');
-    }
-  }
-
-  .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
-    ~ .Backdrop {
-      @include focus-ring($style: 'focused');
-    }
+.Input:focus {
+  ~ .Backdrop {
+    @include focus-ring($style: 'focused');
   }
 }
 

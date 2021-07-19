@@ -1,10 +1,7 @@
 import React from 'react';
 
-import {classNames} from '../../../../../../utilities/css';
 import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
-import {DisplayText} from '../../../../../DisplayText';
-import {useFeatures} from '../../../../../../utilities/features';
 
 import styles from './Title.scss';
 
@@ -22,24 +19,10 @@ export interface TitleProps {
 }
 
 export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
-  const {newDesignLanguage} = useFeatures();
-  const titleMarkup = title ? (
-    <div className={styles.Title}>
-      <DisplayText size="large" element="h1">
-        {title}
-      </DisplayText>
-    </div>
-  ) : null;
+  const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
-    <div
-      className={classNames(
-        styles.TitleMetadata,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      {titleMetadata}
-    </div>
+    <div className={styles.TitleMetadata}>{titleMetadata}</div>
   ) : null;
 
   const wrappedTitleMarkup = titleMetadata ? (
@@ -59,9 +42,7 @@ export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
 
   const thumbnailMarkup = thumbnail ? <div>{thumbnail}</div> : null;
 
-  const pageTitleClassName = thumbnail
-    ? classNames(styles.hasThumbnail)
-    : undefined;
+  const pageTitleClassName = thumbnail ? styles.hasThumbnail : undefined;
 
   return (
     <div className={pageTitleClassName}>

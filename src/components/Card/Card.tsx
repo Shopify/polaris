@@ -2,7 +2,6 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {ButtonGroup} from '../ButtonGroup';
@@ -13,6 +12,12 @@ import {Popover} from '../Popover';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
+
+export type {
+  CardSectionProps,
+  CardHeaderProps,
+  CardSubsectionProps,
+} from './components';
 
 export interface CardProps {
   /** Title content for the card */
@@ -33,6 +38,8 @@ export interface CardProps {
   secondaryFooterActionsDisclosureText?: string;
   /** Alignment of the footer actions on the card, defaults to right */
   footerActionAlignment?: 'right' | 'left';
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -46,6 +53,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   Subsection: typeof Subsection;
 } = function Card({
   children,
+  hideOnPrint,
   title,
   subdued,
   sectioned,
@@ -56,7 +64,6 @@ export const Card: React.FunctionComponent<CardProps> & {
   footerActionAlignment = 'right',
 }: CardProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
@@ -65,7 +72,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   const className = classNames(
     styles.Card,
     subdued && styles.subdued,
-    newDesignLanguage && styles.newDesignLanguage,
+    hideOnPrint && styles.hideOnPrint,
   );
 
   const headerMarkup =

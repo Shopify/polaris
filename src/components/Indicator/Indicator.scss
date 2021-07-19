@@ -8,7 +8,7 @@ $base-position: rem(-4px);
   &::after {
     content: '';
     position: absolute;
-    background-color: var(--p-border-highlight, color('teal'));
+    background-color: var(--p-border-highlight);
     right: $base-position;
     top: $base-position;
     width: $size;

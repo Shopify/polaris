@@ -1,141 +1,208 @@
 import React, {useEffect, useRef} from 'react';
 import {
   CirclePlusMinor,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleTickMajorTwotone,
-  CircleInformationMajorTwotone,
-  FlagMajorTwotone,
-  CircleTickMajorFilled,
-  CircleInformationMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities/react-testing';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {BannerContext} from 'utilities/banner-context';
-import {Button, Icon, UnstyledLink, Heading} from 'components';
+import {Button, Icon, UnstyledButton, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
-import {Banner} from '../Banner';
+import {Banner, BannerHandles} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
-    const banner = mountWithAppProvider(<Banner title="Banner title" />);
-    expect(banner.find(Heading).contains('Banner title')).toBe(true);
+    const banner = mountWithApp(<Banner title="Banner title" />);
+    expect(banner.find(Heading)).toContainReactText('Banner title');
   });
 
   it('passes a p element to Heading', () => {
-    const banner = mountWithAppProvider(<Banner title="Banner title" />);
-    expect(banner.find(Heading).prop('element')).toBe('p');
+    const banner = mountWithApp(<Banner title="Banner title" />);
+    expect(banner).toContainReactComponent(Heading, {element: 'p'});
   });
 
   it('passes the provided icon source to Icon', () => {
-    const banner = mountWithAppProvider(<Banner icon={CirclePlusMinor} />);
-    expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
+    const banner = mountWithApp(<Banner icon={CirclePlusMinor} />);
+    expect(banner).toContainReactComponent(Icon, {source: CirclePlusMinor});
   });
 
-  it('uses a greenDark circleCheckMark if status is success', () => {
-    const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('greenDark');
+  it('uses a success circleCheckMark if status is success and sets a status aria role', () => {
+    const banner = mountWithApp(<Banner status="success" />);
+
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleTickMajor,
+      color: 'success',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
-  it('uses a tealDark circleInformation if status is info', () => {
-    const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(
-      CircleInformationMajorTwotone,
-    );
-    expect(banner.find(Icon).prop('color')).toBe('tealDark');
+  it('uses a highlight circleInformation if status is info and sets a status aria role', () => {
+    const banner = mountWithApp(<Banner status="info" />);
+
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleInformationMajor,
+      color: 'highlight',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
-  it('uses a yellowDark circleAlert if status is warning', () => {
-    const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('yellowDark');
+  it('uses a warning circleAlert if status is warning and sets an alert aria role', () => {
+    const banner = mountWithApp(<Banner status="warning" />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleAlertMajor,
+      color: 'warning',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'alert'});
+  });
+
+  it('uses a critical circleBarred if status is critical and sets an alert aria role', () => {
+    const banner = mountWithApp(<Banner status="critical" />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: DiamondAlertMajor,
+      color: 'critical',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'alert'});
+  });
+
+  it('uses a default icon and aria role', () => {
+    const banner = mountWithApp(<Banner />);
+    expect(banner).toContainReactComponent(Icon, {
+      source: CircleInformationMajor,
+      color: 'base',
+    });
+    expect(banner).toContainReactComponent('div', {role: 'status'});
   });
 
   it('disables aria-live when stopAnnouncements is enabled', () => {
-    const politeBanner = mountWithAppProvider(<Banner />)
-      .find('div')
-      .filterWhere((element) => element.prop('aria-live') === 'polite');
-    expect(politeBanner).toBeTruthy();
+    const politeBanner = mountWithApp(<Banner />);
+    const quietBanner = mountWithApp(<Banner stopAnnouncements />);
 
-    const quietBanner = mountWithAppProvider(<Banner stopAnnouncements />)
-      .find('div')
-      .filterWhere((element) => element.prop('aria-live') === 'off');
-    expect(quietBanner).toBeTruthy();
+    expect(politeBanner.find('div')).toHaveReactProps({'aria-live': 'polite'});
+    expect(quietBanner.find('div')).toHaveReactProps({'aria-live': 'off'});
   });
 
-  it('uses a redDark circleBarred if status is critical', () => {
-    const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('redDark');
+  describe('action', () => {
+    it('renders an unstyled button', () => {
+      const bannerWithAction = mountWithApp(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      expect(bannerWithAction.find(UnstyledButton)).toContainReactText(
+        'Primary action',
+      );
+    });
   });
 
-  it('uses a default icon', () => {
-    const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(FlagMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('inkLighter');
+  describe('secondaryAction', () => {
+    it('renders when a primary action is provided', () => {
+      const bannerWithActions = mountWithApp(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      expect(bannerWithActions.find(UnstyledLink)).toContainReactText(
+        'Secondary external link',
+      );
+    });
+
+    it('renders when a primary action is not provided', () => {
+      const bannerWithActions = mountWithApp(
+        <Banner
+          title="Test"
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      expect(bannerWithActions.find(UnstyledLink)).toContainReactText(
+        'Secondary external link',
+      );
+    });
   });
 
   describe('onDismiss()', () => {
     it('is called when the dismiss button is clicked', () => {
       const spy = jest.fn();
-      const banner = mountWithAppProvider(<Banner onDismiss={spy} />);
-      banner.find(Button).simulate('click');
+      const banner = mountWithApp(<Banner onDismiss={spy} />);
+      banner.find(Button)!.trigger('onClick');
+
       expect(spy).toHaveBeenCalled();
     });
   });
 
-  const bannerWithSecondaryAction = mountWithAppProvider(
-    <Banner
-      title="Test"
-      action={{
-        content: 'Primary action',
-      }}
-      secondaryAction={{
-        content: 'Secondary external link',
-        url: 'https://test.com',
-        external: true,
-      }}
-    >
-      Hello World
-    </Banner>,
-  );
-
-  const unstyledLink = bannerWithSecondaryAction.find(UnstyledLink).find('a');
-
-  it('creates an external link when external prop is true in secondaryAction', () => {
-    expect(unstyledLink.prop('target')).toBe('_blank');
-  });
-
-  it('adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
-    expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
-  });
-
-  const bannerWithContentContext = mountWithAppProvider(
-    <WithinContentContext.Provider value>
+  it('creates an external link and adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
+    const bannerWithSecondaryAction = mountWithApp(
       <Banner
+        title="Test"
         action={{
           content: 'Primary action',
         }}
+        secondaryAction={{
+          content: 'Secondary external link',
+          url: 'https://test.com',
+          external: true,
+        }}
       >
-        Some content
-      </Banner>
-    </WithinContentContext.Provider>,
-  );
+        Hello World
+      </Banner>,
+    );
 
-  it('renders a slim button with contentContext', () => {
-    const button = bannerWithContentContext.find(Button);
-    expect(button.prop('size')).toBe('slim');
+    const unstyledLink = bannerWithSecondaryAction
+      .find(UnstyledLink)!
+      .find('a');
+
+    expect(unstyledLink).toHaveReactProps({
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    });
+  });
+
+  it('renders an unstyled button with contentContext', () => {
+    const bannerWithContentContext = mountWithApp(
+      <WithinContentContext.Provider value>
+        <Banner
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Some content
+        </Banner>
+      </WithinContentContext.Provider>,
+    );
+
+    expect(bannerWithContentContext).toContainReactComponent(UnstyledButton);
   });
 
   describe('focus', () => {
     it('exposes a function that allows the banner to be programmatically focused', () => {
       function Test() {
-        const banner = useRef<Banner>(null);
+        const banner = useRef<BannerHandles>(null);
 
         useEffect(() => {
           banner.current && banner.current.focus();
@@ -153,12 +220,10 @@ describe('<Banner />', () => {
 
     describe('Focus className', () => {
       it('adds a keyFocused class to the banner on keyUp', () => {
-        const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner />);
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
 
         bannerDiv!.trigger('onKeyUp', {
@@ -166,17 +231,15 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner keyFocused withinPage newDesignLanguage',
+          className: 'Banner keyFocused withinPage',
         });
       });
 
       it('does not add a keyFocused class onMouseUp', () => {
-        const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner />);
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
 
         bannerDiv!.trigger('onMouseUp', {
@@ -184,7 +247,7 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner withinPage newDesignLanguage',
+          className: 'Banner withinPage',
         });
       });
     });
@@ -202,59 +265,39 @@ describe('<Banner />', () => {
         );
       };
 
-      const banner = mountWithAppProvider(
+      const banner = mountWithApp(
         <Banner>
           <Child />
         </Banner>,
       );
 
-      const div = banner.find(Child).find('div').first();
-
-      expect(div.exists()).toBe(true);
+      expect(banner.find(Child)).toContainReactComponent('div');
     });
   });
 
   describe('Icon', () => {
     it.each([
-      [
-        'Banner has a default status',
-        null,
-        'base',
-        CircleInformationMajorFilled,
-      ],
-      [
-        'Banner has a success status',
-        'success',
-        'success',
-        CircleTickMajorFilled,
-      ],
+      ['Banner has a default status', null, 'base', CircleInformationMajor],
+      ['Banner has a success status', 'success', 'success', CircleTickMajor],
       [
         'Banner has an info status',
         'info',
         'highlight',
-        CircleInformationMajorFilled,
+        CircleInformationMajor,
       ],
-      [
-        'Banner has a warning status',
-        'warning',
-        'warning',
-        CircleAlertMajorFilled,
-      ],
+      ['Banner has a warning status', 'warning', 'warning', CircleAlertMajor],
       [
         'Banner has a critical status',
         'critical',
         'critical',
-        CircleDisabledMajorFilled,
+        DiamondAlertMajor,
       ],
     ])(
       'Sets Icon props when: %s',
       (_: any, status: any, color: any, iconSource: any) => {
-        const banner = mountWithApp(<Banner status={status} />, {
-          features: {newDesignLanguage: true},
-        });
+        const banner = mountWithApp(<Banner status={status} />);
 
-        expect(banner.find(Icon)!.props).toStrictEqual({
-          backdrop: false,
+        expect(banner).toContainReactComponent(Icon, {
           color,
           source: iconSource,
         });

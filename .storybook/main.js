@@ -1,27 +1,25 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
+const CreateFileWebpack = require('create-file-webpack');
 
 const postcssShopify = require('@shopify/postcss-plugin');
 
-// Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
-// sewing-kit in order avoid a bunch of duplication in our devDependencies
-// eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+// Enabling docs means the preview panel takes an extra 2ish seconds to load
+// This usually isn't a big deal, except when we're running all of our stories
+// through our a11y tests, and a 2s delay over several hundred stories adds up.
+// This is an escape hatch to disable docs only wheile we're running a11y tests
+const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
 
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-essentials',
+    {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
-
-    // Shrink ray only strips hashes when comparing filenames with this format.
-    // Without this there will be lots of "add 1 file and removed 1 file" notices.
-    config.output.filename = '[name]-[hash].js';
 
     const extraRules = [
       {
@@ -74,34 +72,14 @@ module.exports = {
       },
     ];
 
-    config.plugins.push({
-      apply: (compiler) => {
-        compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-          spawn('yarn splash --show-disable-tip', {
-            shell: true,
-            stdio: 'inherit',
-          });
-        });
-      },
-    });
-
-    if (isProduction) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          reportFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/report.html',
-          ),
-          generateStatsFile: true,
-          statsFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/stats.json',
-          ),
-          openAnalyzer: false,
-        }),
-      );
-    }
+    config.plugins.push(
+      new CreateFileWebpack({
+        path: './build/storybook/static/services/',
+        fileName: 'ping.html',
+        content:
+          '<!DOCTYPE html><html lang="en"><head></head><body>OK</body></html>',
+      }),
+    );
 
     config.module.rules = [
       // Strip out existing rules that apply to md files

@@ -14,7 +14,7 @@ export interface LabelledProps {
   /** A unique identifier for the label */
   id: LabelProps['id'];
   /** Text for the label */
-  label: string;
+  label: React.ReactNode;
   /** Error to display beneath the label */
   error?: Error | boolean;
   /** An action */
@@ -25,6 +25,8 @@ export interface LabelledProps {
   children?: React.ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
+  /** Visual required indicator for the label */
+  requiredIndicator?: boolean;
 }
 
 export function Labelled({
@@ -35,6 +37,7 @@ export function Labelled({
   helpText,
   children,
   labelHidden,
+  requiredIndicator,
   ...rest
 }: LabelledProps) {
   const className = classNames(labelHidden && styles.hidden);
@@ -57,7 +60,12 @@ export function Labelled({
 
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>
-      <Label id={id} {...rest} hidden={false}>
+      <Label
+        id={id}
+        requiredIndicator={requiredIndicator}
+        {...rest}
+        hidden={false}
+      >
         {label}
       </Label>
 

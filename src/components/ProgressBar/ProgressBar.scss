@@ -20,11 +20,11 @@
 .ProgressBar {
   overflow: hidden;
   width: 100%;
-  background-color: var(--p-action-secondary, color('sky'));
-  border-radius: border-radius();
+  background-color: var(--p-progressbar-background);
+  border-radius: var(--p-border-radius-base);
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+  @media (forced-colors: active) {
+    @include high-contrast-border;
   }
 }
 
@@ -40,18 +40,35 @@
   height: progress-bar-height(large);
 }
 
+.colorHighlight {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-border-highlight);
+}
+
+.colorPrimary {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-action-primary);
+}
+
+.colorSuccess {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-border-success);
+}
+
 .Indicator {
   height: inherit;
   width: 0;
-  will-change: width;
-  background-color: var(--p-border-highlight, color('teal'));
-  animation: fillup duration(slowest) easing();
-  transition: width duration(slowest) easing();
+  background-color: var(--p-progressbar-indicator);
 
   @media screen and (-ms-high-contrast: active) {
     border: progress-bar-height() solid
       ms-high-contrast-color('selected-text-background');
   }
+}
+.Animated {
+  will-change: width;
+  animation: fillup duration(slowest) easing();
+  transition: width duration(slowest) easing();
 }
 
 .Progress,

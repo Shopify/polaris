@@ -120,26 +120,7 @@ describe('<Header />', () => {
         <Header {...mockProps} pagination={pagination} />,
       );
 
-      expect(
-        header.contains(<Pagination {...pagination} plain />),
-      ).toBeTruthy();
-    });
-  });
-
-  describe('secondaryActions', () => {
-    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
-
-    it('passes to <ActionMenu />', () => {
-      const wrapper = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
-      );
-
-      expect(wrapper.find(ActionMenu).prop('actions')).toBe(
-        mockSecondaryActions,
-      );
+      expect(header.contains(<Pagination {...pagination} />)).toBeTruthy();
     });
   });
 
@@ -248,131 +229,90 @@ describe('<Header />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    const primaryAction: HeaderProps['primaryAction'] = {
-      content: 'Click me!',
-      icon: PlusMinor,
-    };
+  const primaryAction: HeaderProps['primaryAction'] = {
+    content: 'Click me!',
+    icon: PlusMinor,
+  };
 
-    const secondaryActions: HeaderProps['secondaryActions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
+  const secondaryActions: HeaderProps['secondaryActions'] = [
+    {content: 'mock content 1'},
+    {content: 'mock content 2'},
+  ];
 
-    const breadcrumbs: LinkAction[] = [
+  const breadcrumbs: LinkAction[] = [
+    {
+      content: 'Products',
+      url: 'https://www.google.com',
+    },
+  ];
+
+  it('does not render primary and secondary action wrapper divs', () => {
+    const header = mountWithAppProvider(
+      <Header
+        title="Hello, world!"
+        primaryAction={primaryAction}
+        secondaryActions={secondaryActions}
+      />,
+    );
+    expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
+    expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
+  });
+
+  it('renders a compact mobile layout with icon-only primary action', () => {
+    const header = mountWithAppProvider(
+      <Header title="mmmmmmmm" primaryAction={primaryAction} />,
       {
-        content: 'Products',
-        url: 'https://www.google.com',
+        mediaQuery: {isNavigationCollapsed: true},
       },
-    ];
+    );
+    expect(header.find('.Row')).toHaveLength(1);
+    expect(header.find(Button).prop('icon')).toStrictEqual(PlusMinor);
+    expect(header.find(Button).text()).toStrictEqual('');
+  });
 
-    it('adds a newDesignLanguage class', () => {
-      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(header.find('div').first().prop('className')).toBe(
-        'Header newDesignLanguage',
-      );
-    });
+  it('renders a compact desktop layout and hides primary action icon', () => {
+    const header = mountWithAppProvider(
+      <Header title="mmmmmmmm" primaryAction={primaryAction} />,
+      {
+        mediaQuery: {isNavigationCollapsed: false},
+      },
+    );
+    expect(header.find('.Row')).toHaveLength(1);
+    expect(header.find(Button).prop('icon')).toBeUndefined();
+    expect(header.find(Button).text()).toStrictEqual('Click me!');
+  });
 
-    it('does not add a newDesignLanguage class if disabled', () => {
-      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(header.find('div').first().prop('className')).toBe('Header');
-    });
+  it('renders a default mobile layout', () => {
+    const header = mountWithAppProvider(
+      <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
+      {
+        mediaQuery: {isNavigationCollapsed: true},
+      },
+    );
+    expect(header.find('.Row')).toHaveLength(1);
+  });
 
-    it('removes primary and secondary action wrapper divs', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(0);
-      expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
-    });
+  it('renders a default desktop layout', () => {
+    const header = mountWithAppProvider(
+      <Header title="mmmmmmmmmmmmmmmmmmmmm" primaryAction={primaryAction} />,
+      {
+        mediaQuery: {isNavigationCollapsed: false},
+      },
+    );
+    expect(header.find('.Row')).toHaveLength(1);
+  });
 
-    it('adds primary and secondary action wrapper divs when disabled', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
-      expect(header.find('.ActionMenuWrapper')).toHaveLength(1);
-    });
-
-    it('renders a compact mobile layout with icon-only primary action', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(1);
-      expect(header.find(Button).prop('icon')).toStrictEqual(PlusMinor);
-      expect(header.find(Button).text()).toStrictEqual('');
-    });
-
-    it('renders a compact desktop layout and hides primary action icon', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: false},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(1);
-      expect(header.find(Button).prop('icon')).toBeUndefined();
-      expect(header.find(Button).text()).toStrictEqual('Click me!');
-    });
-
-    it('renders a default mobile layout', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(2);
-    });
-
-    it('renders a default desktop layout', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmmmmmmmmmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: false},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(2);
-    });
-
-    it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find(ButtonGroup)).toHaveLength(1);
-    });
+  it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
+    const header = mountWithAppProvider(
+      <Header
+        title="Hello, world!"
+        primaryAction={primaryAction}
+        secondaryActions={secondaryActions}
+      />,
+      {
+        mediaQuery: {isNavigationCollapsed: true},
+      },
+    );
+    expect(header.find(ButtonGroup)).toHaveLength(0);
   });
 });

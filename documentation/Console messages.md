@@ -7,7 +7,7 @@ A console message provides developers with information that helps with debugging
 It’s important to write console messages consistently and succinctly so it’s easy for developers to scan and understand quickly. To do this, follow this general content formula (fill in the blanks):
 
 ```js
-console.[type]('[prefix] message [url]');
+console.type('[prefix] message [url]');
 ```
 
 Pro tip: Always mention the affected component.
@@ -34,7 +34,7 @@ console.info('Your project is currently using v1.8.6');
 console.group('Polaris');
 console.info('Your project is currently using v1.18.0');
 console.warn(
-  'Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead. Read more in the v2.0.0 upgrade guide https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md#tabs-no-longer-accept-title-prop',
+  'Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead. Read more in the v2.0.0 upgrade guide https://github.com/Shopify/polaris-react/blob/main/CHANGELOG.md#tabs-no-longer-accept-title-prop',
 );
 console.groupEnd();
 ```

@@ -25,6 +25,8 @@ interface StickyItem {
   ): void;
 }
 
+const SIXTY_FPS = 1000 / 60;
+
 export class StickyManager {
   private stickyItems: StickyItem[] = [];
   private stuckItems: StickyItem[] = [];
@@ -35,16 +37,16 @@ export class StickyManager {
     () => {
       this.manageStickyItems();
     },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
+    SIXTY_FPS,
+    {leading: true, trailing: true, maxWait: SIXTY_FPS},
   );
 
   private handleScroll = debounce(
     () => {
       this.manageStickyItems();
     },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
+    SIXTY_FPS,
+    {leading: true, trailing: true, maxWait: SIXTY_FPS},
   );
 
   constructor(container?: Document | HTMLElement) {
@@ -147,7 +149,10 @@ export class StickyManager {
     if (boundingElement == null) {
       sticky = scrollPosition >= placeHolderNodeCurrentTop;
     } else {
-      const stickyItemHeight = stickyNode.getBoundingClientRect().height;
+      const stickyItemHeight =
+        stickyNode.getBoundingClientRect().height ||
+        stickyNode.firstElementChild?.getBoundingClientRect().height ||
+        0;
       const stickyItemBottomPosition =
         boundingElement.getBoundingClientRect().bottom -
         stickyItemHeight +

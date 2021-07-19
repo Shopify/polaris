@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
+const lodash = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
@@ -24,18 +25,6 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const testIndividualExamples = [
-    'Modal',
-    'Card',
-    'Top bar',
-    'App provider',
-    'Contextual save bar',
-    'Frame',
-    'Loading',
-    'Sheet',
-    'Theme provider',
-  ].includes(readme.name);
-
   const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
     readme.name,
   );
@@ -56,41 +45,9 @@ ${example.storyName}.parameters = {
   docs: {
     description: {story: ${JSON.stringify(example.description)}},
   },
-  percy: {skip: ${JSON.stringify(!testIndividualExamples)}},
 };
 `.trim();
   });
-
-  if (readme.examples.length && !testIndividualExamples) {
-    allExamplesCode = readme.examples.map((example) => {
-      // Add styles to prevent false positives in visual regression testing.
-      // Set a minimum height so that examples don't shift and triger a failure
-      // if an example above them changes height
-      return `
-<div key="${example.storyName}" style={{
-    minHeight: '720px',
-    borderBottom: '1px solid #000',
-    marginBottom: '8px',
-  }}>
-  <Heading>${example.name}</Heading>
-  <${example.storyName}Component />
-</div>
-`.trim();
-    });
-
-    csfExports.unshift(`export function AllExamples() {
-  return (
-    <React.Fragment>
-  ${allExamplesCode.join('\n')}
-    </React.Fragment>
-  );
-};
-AllExamples.parameters = {
-  docs: {disable: true},
-  percy: {skip: false},
-  chromatic: {disable: true},
-}`);
-  }
 
   const hooks = Object.keys(React)
     .filter((key) => key.startsWith(HOOK_PREFIX))
@@ -138,6 +95,7 @@ import {
   Heading,
   Icon,
   Image,
+  IndexTable,
   Indicator,
   InlineError,
   KeyboardKey,
@@ -191,7 +149,8 @@ import {
   Truncate,
   UnstyledLink,
   VisuallyHidden,
-  VideoThumbnail
+  VideoThumbnail,
+  useIndexResourceState,
 } from '@shopify/polaris';
 import {
   PlusMinor,
@@ -202,7 +161,7 @@ import {
   ArrowUpMinor,
   ArrowUpDownMinor,
   CalendarMinor,
-  MobileCancelMajorMonotone,
+  MobileCancelMajor,
   CancelSmallMinor,
   CaretDownMinor,
   CaretUpMinor,
@@ -216,10 +175,11 @@ import {
   CircleChevronLeftMinor,
   CircleChevronRightMinor,
   CircleChevronUpMinor,
-  CircleInformationMajorTwotone,
+  CircleInformationMajor,
   CirclePlusMinor,
   CirclePlusOutlineMinor,
   ConversationMinor,
+  CustomersMajor,
   DeleteMinor,
   CircleDisableMinor,
   DisputeMinor,
@@ -227,18 +187,19 @@ import {
   EmbedMinor,
   ExportMinor,
   ExternalMinor,
-  QuestionMarkMajorTwotone,
-  HomeMajorMonotone,
+  QuestionMarkMajor,
+  HomeMajor,
   HorizontalDotsMinor,
   ImportMinor,
   LogOutMinor,
-  MobileHamburgerMajorMonotone,
+  MarketingMajor,
+  MobileHamburgerMajor,
   NoteMinor,
-  NotificationMajorMonotone,
-  OnlineStoreMajorTwotone,
-  OrdersMajorTwotone,
+  NotificationMajor,
+  OnlineStoreMajor,
+  OrdersMajor,
   PrintMinor,
-  ProductsMajorTwotone,
+  ProductsMajor,
   ProfileMinor,
   RefreshMinor,
   RiskMinor,
@@ -248,7 +209,10 @@ import {
   ViewMinor,
 } from '@shopify/polaris-icons';
 
-export default { title: ${JSON.stringify(`All Components/${readme.name}`)} };
+export default {
+  title: ${JSON.stringify(`All Components/${readme.name}`)},
+  component: ${readme.component},
+};
 
 ${csfExports.join('\n\n')}
 `;
@@ -281,11 +245,13 @@ function isExampleForPlatform(exampleMarkdown, platform) {
 
 function parseCodeExamples(data) {
   const matter = grayMatter(data);
+  const examples = generateExamples(matter);
 
   return {
     name: matter.data.name,
     category: matter.data.category,
-    examples: generateExamples(matter),
+    component: examples.length ? toPascalCase(matter.data.name) : undefined,
+    examples,
     omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
@@ -323,7 +289,7 @@ function generateExamples(matter) {
 
   if (allExamples.length === 0) {
     console.log(
-      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting`,
+      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/main/documentation/Component%20READMEs.md#troubleshooting`,
     );
   }
 
@@ -427,4 +393,8 @@ function wrapExample(code) {
     return JsxOnlyExample;
   }`;
   }
+}
+
+function toPascalCase(str) {
+  return lodash.startCase(lodash.camelCase(str)).replace(/ /g, '');
 }

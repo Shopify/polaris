@@ -25,7 +25,7 @@ App provider is a required component that enables sharing global settings throug
 
 ## Best practices
 
-The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/master/examples/README.md).
+The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/main/examples/README.md).
 
 ---
 
@@ -200,7 +200,7 @@ function AppProviderLinkExample() {
 
 ### With theme
 
-With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](https://polaris.shopify.com/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
+With a `theme`, the app provider component will set a logo and theming for the App. The logo is used by the [TopBar](https://polaris.shopify.com/components/structure/top-bar) and [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar) components. For theming configuration, see the [ThemeProvider](https://polaris.shopify.com/components/structure/theme-provider) documentation.
 
 ```jsx
 function AppProviderThemeExample() {
@@ -218,11 +218,6 @@ function AppProviderThemeExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
     logo: {
       width: 124,
       topBarSource:
@@ -302,161 +297,6 @@ function AppProviderThemeExample() {
           {contextualSaveBarMarkup}
           {pageMarkup}
         </Frame>
-      </AppProvider>
-    </div>
-  );
-}
-```
-
-### With theme using all theme keys
-
-Provide specific keys and corresponding colors to the [top bar](https://polaris.shopify.com/components/structure/top-bar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
-
-```jsx
-function AppProviderWithAllThemeKeysExample() {
-  const [isDirty, setIsDirty] = useState(false);
-  const [searchFieldValue, setSearchFieldValue] = useState('');
-
-  const handleSearchChange = useCallback(
-    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
-    [],
-  );
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-        backgroundLighter: '#6192a9',
-        color: '#FFFFFF',
-      },
-    },
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    },
-  };
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      placeholder="Search"
-      value={searchFieldValue}
-      onChange={handleSearchChange}
-    />
-  );
-
-  const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  const pageMarkup = (
-    <Page title="Account">
-      <Layout>
-        <Layout.Section>
-          <SettingToggle
-            action={{
-              content: contentStatus,
-              onAction: toggleIsDirty,
-            }}
-            enabled={isDirty}
-          >
-            This setting is{' '}
-            <TextStyle variation="strong">{textStatus}</TextStyle>.
-          </SettingToggle>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: toggleIsDirty,
-      }}
-      discardAction={{
-        onAction: toggleIsDirty,
-      }}
-    />
-  ) : null;
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider
-        theme={theme}
-        i18n={{
-          Polaris: {
-            Frame: {
-              skipToContent: 'Skip to content',
-            },
-            ContextualSaveBar: {
-              save: 'Save',
-              discard: 'Discard',
-            },
-            TopBar: {
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup}>
-          {contextualSaveBarMarkup}
-          {pageMarkup}
-        </Frame>
-      </AppProvider>
-    </div>
-  );
-}
-```
-
-### With the new design language enabled
-
-The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance usage only. The new design language is not yet meant for production experiences.
-
-```jsx
-function NewDesignLanguageExample() {
-  const [isDirty, setIsDirty] = useState(false);
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider features={{newDesignLanguage: true}} i18n={{}}>
-        <Page title="Account">
-          <Layout>
-            <Layout.Section>
-              <SettingToggle
-                action={{
-                  content: contentStatus,
-                  onAction: toggleIsDirty,
-                }}
-                enabled={isDirty}
-              >
-                This setting is{' '}
-                <TextStyle variation="strong">{textStatus}</TextStyle>.
-              </SettingToggle>
-            </Layout.Section>
-          </Layout>
-        </Page>
       </AppProvider>
     </div>
   );
@@ -562,4 +402,4 @@ You must include Polaris context in your tests when you use Polaris components.
 To make this easier for you, we’ve provided:
 
 - a PolarisTestProvider component to provide the Polaris contexts for you
-- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app) you can reference
+- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app) you can reference

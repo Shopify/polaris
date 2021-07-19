@@ -114,8 +114,8 @@ input. Field placeholder text should:
 
 ### Designating optional fields
 
-Try to only ask for information that’s required. If you need to ask merchants
-to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label.
+Don’t mark required fields with asterisks unless it is expected by the [local cultural norm](https://polaris.shopify.com/foundations/internationalization#plan-for-cultural-differences).
 
 <!-- usagelist -->
 
@@ -799,6 +799,32 @@ function TextFieldWithClearButtonExample() {
 }
 ```
 
+### Text field with monospaced font
+
+<!-- example-for: web -->
+
+Use to apply a monospaced font to the TextField
+
+```jsx
+function TextFieldWithMonospacedFontExample() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      monospaced
+    />
+  );
+}
+```
+
 ---
 
 ## Related components
@@ -872,6 +898,7 @@ Text fields have standard keyboard support.
 - If the `type` is set to `number`, then merchants can use the up and down arrow keys to adjust the value typed into the field
 - Using the `disabled` prop will prevent the text field from receive keyboard focus or inputs
 - The `readOnly` prop allows focus on the text field but prevents input or editing
+- The `inputMode` prop can be used to bring up a relevant keyboard for merchants on mobile; it’s passed down to the input as an [`inputmode` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
 
 #### Automatically focusing
 

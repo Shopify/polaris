@@ -8,6 +8,7 @@ import {Popover, PopoverProps} from '../../../Popover';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {EventListener} from '../../../EventListener';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 import {ComboBoxContext} from './context';
 import styles from './ComboBox.scss';
@@ -240,7 +241,7 @@ export function ComboBox({
     }
   }, [selected, selectedOptions]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     let newNavigableOptions: (
       | OptionDescriptor
       | ActionListItemDescriptor
@@ -311,13 +312,13 @@ export function ComboBox({
       <div
         onClick={activatePopover}
         onKeyDown={activatePopover}
-        role="combobox"
         aria-expanded={popoverActive}
         aria-owns={id}
         aria-controls={id}
         aria-haspopup
         onFocus={forcePopoverActiveTrue}
         onBlur={handleBlur}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={options.length === 0 ? -1 : 0}
       >
         <KeypressListener keyCode={Key.DownArrow} handler={selectNextOption} />
@@ -336,7 +337,7 @@ export function ComboBox({
           onClose={forcePopoverActiveFalse}
           preferredPosition={preferredPosition}
           fullWidth
-          preventAutofocus
+          autofocusTarget="none"
         >
           <Popover.Pane onScrolledToBottom={onEndReached}>
             <div id={id} role="listbox" aria-multiselectable={allowMultiple}>

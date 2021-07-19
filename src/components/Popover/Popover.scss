@@ -8,8 +8,8 @@ $content-max-width: rem(400px);
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
   margin: $visible-portion-of-arrow spacing(tight) spacing();
-  box-shadow: var(--p-popover-shadow, shadow(deep));
-  border-radius: var(--p-border-radius-wide, border-radius());
+  box-shadow: var(--p-popover-shadow);
+  border-radius: var(--p-border-radius-wide);
   will-change: left, top;
 }
 
@@ -56,8 +56,8 @@ $content-max-width: rem(400px);
 .Wrapper {
   position: relative;
   overflow: hidden;
-  background-color: var(--p-surface, color('white'));
-  border-radius: var(--p-border-radius-wide, border-radius());
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-wide);
   outline: 1px solid transparent;
 }
 
@@ -65,7 +65,7 @@ $content-max-width: rem(400px);
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
   max-width: $content-max-width;
   max-height: $content-max-height;
 
@@ -88,7 +88,11 @@ $content-max-width: rem(400px);
   max-width: 100%;
 
   + .Pane {
-    border-top: border();
+    border-top: border('divider');
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -101,10 +105,14 @@ $content-max-width: rem(400px);
   padding: spacing();
 
   + .Section {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
 .FocusTracker {
   @include visually-hidden;
+}
+
+.PopoverOverlay-hideOnPrint {
+  @include hidden-when-printing;
 }

@@ -17,6 +17,7 @@ const DELTA_THRESHOLD = 0.2;
 const DELTA_PERCENTAGE = 0.2;
 const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
 const PREFERS_REDUCED_MOTION = prefersReducedMotion();
+const LOW_RES_BUFFER = 2;
 
 export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
@@ -29,6 +30,8 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   shadow?: boolean;
   /** Slightly hints content upon mounting when scrollable */
   hint?: boolean;
+  /** Adds a tabIndex to scrollable when children are not focusable */
+  focusable?: boolean;
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -108,6 +111,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
       vertical = true,
       shadow,
       hint,
+      focusable,
       onScrolledToBottom,
       ...rest
     } = this.props;
@@ -130,6 +134,8 @@ export class Scrollable extends Component<ScrollableProps, State> {
             {...scrollable.props}
             {...rest}
             ref={this.setScrollArea}
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex={focusable ? 0 : undefined}
           >
             {children}
           </div>
@@ -144,6 +150,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
 
   private handleScroll = () => {
     const {scrollArea} = this;
+    const {scrollPosition} = this.state;
     const {shadow, onScrolledToBottom} = this.props;
     if (scrollArea == null) {
       return;
@@ -152,10 +159,13 @@ export class Scrollable extends Component<ScrollableProps, State> {
     const shouldBottomShadow = Boolean(
       shadow && !(scrollTop + clientHeight >= scrollHeight),
     );
-    const shouldTopShadow = Boolean(shadow && scrollTop > 0);
+    const shouldTopShadow = Boolean(
+      shadow && scrollTop > 0 && scrollPosition > 0,
+    );
 
     const canScroll = scrollHeight > clientHeight;
-    const hasScrolledToBottom = scrollHeight - scrollTop === clientHeight;
+    const hasScrolledToBottom =
+      scrollHeight - scrollTop <= clientHeight + LOW_RES_BUFFER;
 
     if (canScroll && hasScrolledToBottom && onScrolledToBottom) {
       onScrolledToBottom();

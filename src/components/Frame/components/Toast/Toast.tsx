@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
@@ -54,7 +54,7 @@ export function Toast({
       onClick={onDismiss}
       testID="closeButton"
     >
-      <Icon source={MobileCancelMajorMonotone} />
+      <Icon source={MobileCancelMajor} />
     </button>
   );
 

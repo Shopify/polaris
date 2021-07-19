@@ -17,6 +17,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 
 import {
   PopoverCloseSource,
+  PopoverAutofocusTarget,
   Pane,
   PopoverOverlay,
   PopoverOverlayProps,
@@ -25,6 +26,7 @@ import {
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};
+export type {PopoverAutofocusTarget};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
@@ -47,8 +49,10 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /** Prevent automatic focus of the first field on activation */
-  preventAutofocus?: boolean;
+  /** Override on the default z-index of 400 */
+  zIndexOverride?: number;
+  /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
+  preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
   sectioned?: boolean;
   /** Allow popover to stretch to the full width of its activator */
@@ -61,8 +65,17 @@ export interface PopoverProps {
   fixed?: boolean;
   /** Used to illustrate the type of popover element */
   ariaHaspopup?: AriaAttributes['aria-haspopup'];
+  /** Allow the popover overlay to be hidden when printing */
+  hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
+  /** Accepts a color scheme for the contents of the popover */
+  colorScheme?: PopoverOverlayProps['colorScheme'];
+  /**
+   * The preferred auto focus target defaulting to the popover container
+   * @default 'container'
+   */
+  autofocusTarget?: PopoverAutofocusTarget;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -78,10 +91,13 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   children,
   onClose,
   activator,
+  preventFocusOnClose,
   active,
   fixed,
   ariaHaspopup,
   preferInputActivator = true,
+  colorScheme,
+  zIndexOverride,
   ...rest
 }: PopoverProps) {
   const [activatorNode, setActivatorNode] = useState<HTMLElement>();
@@ -114,8 +130,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
   const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
-
-    if (activatorContainer.current == null) {
+    if (activatorContainer.current == null || preventFocusOnClose) {
       return;
     }
 
@@ -169,6 +184,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
         onClose={handleClose}
         active={active}
         fixed={fixed}
+        colorScheme={colorScheme}
+        zIndexOverride={zIndexOverride}
         {...rest}
       >
         {children}

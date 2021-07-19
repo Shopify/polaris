@@ -2,15 +2,15 @@
 @import './variables';
 
 $icon-size: rem(20px);
-$page-left-alignment-breakpoint-max: 1268px;
-$context-control-extra-spacing: rem(40px);
+$page-left-alignment-breakpoint-max: 1238px;
 $context-control-expand-after: 1400px;
 
 .TopBar {
   position: relative;
   display: flex;
   height: top-bar-height();
-  background-color: var(--p-surface, var(--top-bar-background));
+  box-shadow: var(--p-top-bar-shadow);
+  background-color: var(--p-surface);
   transition: duration() background-color ease-in-out;
 
   &::after {
@@ -22,21 +22,24 @@ $context-control-expand-after: 1400px;
   }
 }
 
-.TopBar-newDesignLanguage {
-  box-shadow: var(--p-top-bar-shadow);
-}
-
-.LogoContainer {
+.LogoDisplayControl {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 layout-width(nav);
-    align-items: center;
-    height: 100%;
-    padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, layout-width(nav), left);
-    @include safe-area-for(padding-left, spacing(), left);
   }
+}
+
+.LogoDisplayContainer {
+  display: flex;
+}
+
+.LogoContainer {
+  flex: 0 0 layout-width(nav);
+  align-items: center;
+  height: 100%;
+  padding: 0 spacing(tight) 0 spacing(base);
+  @include safe-area-for(flex-basis, layout-width(nav), left);
+  @include safe-area-for(padding-left, spacing(), left);
 }
 
 .Logo,
@@ -64,17 +67,17 @@ $context-control-expand-after: 1400px;
   margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
-  fill: var(--p-icon, var(--top-bar-color)); // Icon will inherit this fill
+  fill: var(--p-icon); // Icon will inherit this fill
   transition: (duration() - 33ms) fill easing() 33ms;
 
   &.focused {
-    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
+    background-color: var(--p-override-transparent);
   }
   &.focused:active {
-    background-color: var(--p-surface-pressed, rgba(color('black'), 0.28));
+    background-color: var(--p-surface-pressed);
   }
   &:hover {
-    background-color: var(--p-surface-hovered, rgba(color('white'), 0.08));
+    background-color: var(--p-surface-hovered);
   }
   // This increases hit point size.
   &::after {
@@ -111,22 +114,12 @@ $context-control-expand-after: 1400px;
   max-width: none;
   margin-left: calc((100% - #{$page-max-width}) / 2);
 
-  @include breakpoint-after($context-control-expand-after) {
-    margin-left: calc(
-      (100% - #{$page-max-width + $context-control-extra-spacing}) / 2
-    );
-  }
-
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
     margin-right: spacing(extra-tight);
   }
-
-  .TopBar-newDesignLanguage & {
-    margin-left: 0;
-  }
 }
 
 .SecondaryMenu {
-  @include recolor-icon(var(--p-icon, var(--top-bar-color)), transparent);
+  @include recolor-icon(var(--p-icon, transparent));
 }

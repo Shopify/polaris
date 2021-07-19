@@ -61,7 +61,7 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      expect(comboBox.find('div', {role: 'combobox'})).toHaveReactProps({
+      expect(comboBox.find('div')).toHaveReactProps({
         tabIndex,
       });
     });
@@ -313,7 +313,7 @@ describe('<ComboBox/>', () => {
     });
 
     it('prevents autofocus on Popover', () => {
-      expect(comboBox.find(Popover).prop('preventAutofocus')).toBe(true);
+      expect(comboBox.find(Popover).prop('autofocusTarget')).toBe('none');
     });
 
     it('passes the preferredPosition to Popover', () => {
@@ -403,7 +403,7 @@ describe('<ComboBox/>', () => {
       );
 
       // Focus the combobox so that the popover pane is rendered
-      comboBox.find('div', {role: 'combobox'})!.trigger('onFocus');
+      comboBox.find('div')!.trigger('onFocus');
 
       comboBox.find(Popover.Pane)!.trigger('onScrolledToBottom');
       expect(spy).toHaveBeenCalledTimes(1);

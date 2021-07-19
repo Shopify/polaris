@@ -4,7 +4,7 @@ Polaris React is Shopify’s most active open source project. It’s the only pr
 
 ## Code of conduct
 
-We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
+We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-react/blob/main/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
 
 ## Open development
 
@@ -12,15 +12,15 @@ All work on Polaris React happens directly on GitHub. Both team members and exte
 
 ## Semantic versioning
 
-Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
+Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
 
 We tag every pull request with a label marking whether the change should go in the next patch, minor, or a major version. We release new patch versions most weeks, minor versions every couple weeks, and major versions one or two times a year.
 
-Every significant change is documented in the [CHANGELOG](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md). We have a Probot 🤖 to remind you to include a CHANGELOG entry.
+Every significant change is documented in the [CHANGELOG](https://github.com/Shopify/polaris-react/blob/main/CHANGELOG.md). We have a Probot 🤖 to remind you to include a CHANGELOG entry.
 
 ## Branch organization
 
-We do our best to keep `master` releasable at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `master`. Otherwise, if you send a pull request please do it against the `master` branch. Continue reading for more about pull requests and breaking changes.
+We do our best to keep `main` releasable at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `main`. Otherwise, if you send a pull request please do it against the `main` branch. Continue reading for more about pull requests and breaking changes.
 
 ## Bugs
 
@@ -64,15 +64,15 @@ We’ll review your pull request and either merge it, request changes to it, or 
 
 **Before submitting a pull request**, please:
 
-1. Fork the repository and create your branch from `master`
+1. Fork the repository and create your branch from `main`
 1. Run `yarn` in the repository root
-1. If you’ve fixed a bug or added code that [should be tested](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Testing.md), add tests
-1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
+1. If you’ve fixed a bug or added code, make sure to add tests
+1. Ensure the test suite passes with `yarn test` (protip: `yarn test TestName` is helpful in development)
 1. If your pull request modifies any SVG files run `yarn run sewing-kit optimize`
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn type-check`
-1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md) your changes locally with `yarn dev`
+1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/main/documentation/Tophatting.md) your changes locally with `yarn dev`
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Contributor License Agreement (CLA)
@@ -85,7 +85,9 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Best practices
 
-Take a look at [our best practices](https://github.com/Shopify/web-foundation/tree/master/handbook/Best%20practices) which include [testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Testing.md), [React testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/React/Testing.md), [Jest](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Jest.md), and [Enzyme](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Enzyme.md). We will continue to add best practices here.
+Use the [documentation directory](https://github.com/Shopify/polaris-react/tree/main/documentation) for guidance on: [accessibility testing](https://github.com/Shopify/polaris-react/blob/main/documentation/Accessibility%20testing.md) and [adding to the change log](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md). For code style best practices, take a look at existing components.
+
+Making sure the voice and tone is consistent across Polaris is important to us, for more information visit the [voice and tone guidelines](https://polaris.shopify.com/content/voice-and-tone).
 
 ### Development workflow
 
@@ -116,8 +118,8 @@ Linting will catch common issues that may exist in your code. You can check the 
 
 Our code editor of choice is [VS Code](https://code.visualstudio.com/) which has [integrations with Prettier](https://github.com/prettier/prettier-vscode) and our linting tools which make this automatic. If you choose to use VS Code, these integrations will be listed as recommended extensions (or search for `@recommended`) in the extensions panel.
 
-However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [our JavaScript style guide](https://github.com/Shopify/javascript) will guide you in the right direction.
+However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [our JavaScript](https://github.com/Shopify/javascript) and [CSS](https://github.com/Shopify/css) guides may help.
 
 ## Breaking changes
 
-If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `master` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `master` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.
+If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `main` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `main` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris-react/blob/main/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.

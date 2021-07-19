@@ -10,7 +10,7 @@ export interface SettingToggleProps {
   children?: React.ReactNode;
   /** Card header actions */
   action?: ComplexAction;
-  /** Sets toggle state to enabled or disabled */
+  /** Sets toggle state to activated or deactivated */
   enabled?: boolean;
 }
 

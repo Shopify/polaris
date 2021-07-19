@@ -1,24 +1,26 @@
 @import '../../styles/common';
 
 .Collapsible {
-  overflow: hidden;
-  max-height: 0;
   padding-top: 0;
   padding-bottom: 0;
-  opacity: 0;
-  will-change: opacity, max-height;
-}
-
-.animating {
-  transition-property: opacity, max-height;
-  transition-duration: duration(slow);
+  max-height: 0;
+  overflow: hidden;
+  will-change: max-height;
+  transition-property: max-height;
+  transition-duration: duration(fast);
   transition-timing-function: easing(out);
 }
 
-.open {
-  opacity: 1;
+// Stop children from being focused when fully closed
+.isFullyClosed {
+  display: none;
 }
 
-.fullyOpen {
-  overflow: visible;
+.expandOnPrint {
+  @include when-printing {
+    // stylelint-disable-next-line declaration-no-important
+    max-height: none !important;
+    overflow: visible;
+    display: block;
+  }
 }

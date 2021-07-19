@@ -1,13 +1,14 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
+import {Key} from '../../../../../types';
+import en from '../../../../../../locales/en.json';
 
 describe('<Nav.Item />', () => {
   beforeEach(() => {
@@ -42,36 +43,36 @@ describe('<Nav.Item />', () => {
     const mediaAddListener = spy.mock.calls[0][0];
 
     matchMedia.setMedia(() => ({matches: true}));
-    trigger(item.find(UnstyledLink).first(), 'onClick', {
+
+    item.find(UnstyledLink)!.trigger('onClick', {
       preventDefault: jest.fn(),
       currentTarget: {
         getAttribute: () => '/admin/orders',
       },
     });
 
-    expect(item.find(Secondary).prop('expanded')).toBe(true);
+    expect(item).toContainReactComponent(Secondary, {expanded: true});
 
     matchMedia.setMedia(() => ({matches: false}));
     mediaAddListener();
-    item.update();
+    item.forceUpdate();
 
-    expect(item.find(Secondary).exists()).toBe(false);
+    expect(item).toContainReactComponent(Secondary, {expanded: false});
   });
 
   it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
     const item = itemForLocation('/admin/orders');
 
     matchMedia.setMedia(() => ({matches: true}));
-    trigger(item.find(UnstyledLink).first(), 'onClick', {
+    item!.find(UnstyledLink)!.trigger('onClick', {
       preventDefault: jest.fn(),
       currentTarget: {
         getAttribute: () => '/admin/orders',
       },
     });
-
-    expect(item.find(Secondary).prop('expanded')).toBe(true);
+    expect(item).toContainReactComponent(Secondary, {expanded: true});
     matchMedia.setMedia(() => ({matches: false}));
-    expect(item.find(Secondary).prop('expanded')).toBe(true);
+    expect(item).toContainReactComponent(Secondary, {expanded: true});
   });
 
   describe('renders', () => {
@@ -93,15 +94,13 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      const button = item.find('button');
-      expect(button.exists()).toBe(true);
+      expect(item).toContainReactComponent('button');
     });
 
     it('renders an UnstyledLink when url is provided', () => {
       const item = itemForLocation('/admin/orders');
 
-      const link = item.find(UnstyledLink);
-      expect(link.exists()).toBe(true);
+      expect(item).toContainReactComponent(UnstyledLink);
     });
 
     it('renders a small badge with new status if the prop is provided with a string', () => {
@@ -109,7 +108,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" badge="1" />,
       );
 
-      expect(item.find(Badge).props()).toMatchObject({
+      expect(item).toContainReactComponent(Badge, {
         status: 'new',
         size: 'small',
         children: '1',
@@ -121,17 +120,30 @@ describe('<Nav.Item />', () => {
         <Item label="some label" badge={<Badge>Custom badge</Badge>} />,
       );
 
-      expect(item.find(Badge).text()).toContain('Custom badge');
+      expect(item.find(Badge)).toContainReactText('Custom badge');
     });
 
     it('renders a single new badge even if a badge prop is also provided', () => {
       const item = mountWithNavigationProvider(
         <Item label="some label" badge={<Badge>Custom badge</Badge>} new />,
       );
-      const badge = item.find(Badge);
 
-      expect(badge).toHaveLength(1);
-      expect(badge.text()).toContain('New');
+      expect(item).toContainReactComponentTimes(Badge, 1);
+      expect(item.find(Badge)).toContainReactText('New');
+    });
+
+    it('renders an external icon if the prop is provided with an element', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" url="foo" external disabled={false} />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(Icon, {
+        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
+        source: ExternalMinor,
+      });
     });
   });
 
@@ -139,36 +151,63 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders');
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
 
     it('renders expanded when a url is a startsWith match for location', () => {
       const item = itemForLocation('/admin/orders?foo=bar');
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
 
     it('renders expanded when a child is a perfect match for location', () => {
       const item = itemForLocation('/admin/draft_orders');
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
 
     it('renders expanded when a child is a startsWith match for location', () => {
       const item = itemForLocation('/admin/draft_orders?foo=bar');
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
 
     it('does not render expanded when parent and children both have no match on the location', () => {
       const item = itemForLocation('/admin/notARealRoute');
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(false);
+      expect(item).toContainReactComponent(Secondary, {expanded: false});
+    });
+
+    it('sets aria labels', () => {
+      const item = itemForLocation('/admin/notARealRoute');
+
+      expect(item).toContainReactComponent('a', {
+        'aria-expanded': false,
+        'aria-controls': 'PolarisSecondaryNavigation1',
+      });
+    });
+
+    it('sets aria-expanded to true when item with subNavItems is expanded', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="/admin/orders"
+          subNavigationItems={[
+            {
+              url: '/admin/draft_orders',
+              disabled: false,
+              label: 'draft orders',
+            },
+          ]}
+        />,
+        {
+          location: '/admin/orders',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-expanded': true,
+      });
     });
   });
 
@@ -176,22 +215,19 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders', {exactMatch: true});
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
 
     it('does not render expanded when no exact match on url', () => {
       const item = itemForLocation('/admin/orders/1', {exactMatch: true});
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(false);
+      expect(item).toContainReactComponent(Secondary, {expanded: false});
     });
 
     it('still renders expanded when there is a match on url for one of it`s children', () => {
       const item = itemForLocation('/admin/draft_orders', {exactMatch: true});
 
-      const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
+      expect(item).toContainReactComponent(Secondary);
     });
   });
 
@@ -203,7 +239,10 @@ describe('<Nav.Item />', () => {
           location: 'bar',
         },
       );
-      expect(item.find(Icon).prop('source')).toBe(PlusMinor);
+
+      expect(item).toContainReactComponent(Icon, {
+        source: PlusMinor,
+      });
     });
 
     it('delegates label to <UnstyledLink />', () => {
@@ -214,7 +253,7 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.find(UnstyledLink).text()).toBe('baz');
+      expect(item.find(UnstyledLink)).toContainReactText('baz');
     });
 
     it('delegates url to <UnstyledLink />', () => {
@@ -225,7 +264,23 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.find(UnstyledLink).prop('url')).toBe('foo');
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'foo',
+      });
+    });
+
+    it('delegates external to <UnstyledLink />', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" url="foo" external disabled={false} />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'foo',
+        external: true,
+      });
     });
 
     it('delegates disabled to <UnstyledLink />', () => {
@@ -236,7 +291,9 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.find(UnstyledLink).prop('aria-disabled')).toBe(true);
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-disabled': true,
+      });
     });
 
     it('delegates accessibilityLabel to <UnstyledLink />', () => {
@@ -252,9 +309,9 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.find(UnstyledLink).prop('aria-label')).toBe(
-        accessibilityLabel,
-      );
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-label': accessibilityLabel,
+      });
     });
 
     it('delegates onClick to <UnstyledLink />', () => {
@@ -263,8 +320,10 @@ describe('<Nav.Item />', () => {
         <Item label="some label" url="foo" disabled={false} onClick={spy} />,
         {location: 'bar'},
       );
-
-      item.find(UnstyledLink).find('a').simulate('click');
+      const link = item.find(UnstyledLink)!.find('a');
+      link!.trigger('onClick', {
+        currentTarget: link!.domNode as HTMLDivElement,
+      });
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
@@ -279,7 +338,7 @@ describe('<Nav.Item />', () => {
         {location: 'bar'},
       );
 
-      expect(item.find('button').props()).toMatchObject({
+      expect(item).toContainReactComponent('button', {
         'aria-disabled': false,
         'aria-label': 'some a11y label',
       });
@@ -295,7 +354,15 @@ describe('<Nav.Item />', () => {
         <Item label="some label" url="foo" disabled={false} />,
         {...context},
       );
-      item.find(UnstyledLink).find('a').simulate('click');
+      item
+        .find(UnstyledLink)!
+        .find('a')!
+        .trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => 'foo',
+          },
+        });
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
 
@@ -320,7 +387,15 @@ describe('<Nav.Item />', () => {
         />,
         {...context},
       );
-      item.find(UnstyledLink).last().find('a').simulate('click');
+      item
+        .find(UnstyledLink)!
+        .find('a')!
+        .trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => 'foo',
+          },
+        });
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
   });
@@ -346,7 +421,7 @@ describe('<Nav.Item />', () => {
       },
     );
 
-    expect(item.find(Indicator).exists()).toBe(true);
+    expect(item).toContainReactComponent(Indicator);
   });
 
   it('renders a new badge on sub navigation item if marked as new', () => {
@@ -375,7 +450,7 @@ describe('<Nav.Item />', () => {
       },
     );
 
-    expect(item.find(Item).last().find(Badge).exists()).toBe(true);
+    expect(item).toContainReactComponent(Badge);
   });
 
   describe('small screens', () => {
@@ -406,7 +481,12 @@ describe('<Nav.Item />', () => {
           },
         );
 
-        item.find('button').simulate('click');
+        item.find('button')!.trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => 'baz',
+          },
+        });
         expect(spy).toHaveBeenCalledTimes(1);
       });
 
@@ -419,7 +499,12 @@ describe('<Nav.Item />', () => {
           },
         );
 
-        item.find('button').simulate('click');
+        item.find('button')!.trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => 'baz',
+          },
+        });
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });
@@ -431,11 +516,19 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} />,
       );
 
-      item.find('button').simulate('keyup', {keyCode: 9});
-      expect(item.find('button').hasClass('keyFocused')).toBe(true);
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Tab,
+      };
 
-      item.find('button').simulate('blur');
-      expect(item.find('button').hasClass('keyFocused')).toBe(false);
+      item.find('button')!.trigger('onKeyUp', event);
+      expect(item).toContainReactComponent('button', {
+        className: 'Item keyFocused',
+      });
+
+      item.find('button')!.trigger('onBlur');
+      expect(item).toContainReactComponent('button', {
+        className: 'Item',
+      });
     });
 
     it('adds and removes a class to a link when item was tabbed into focus and then blurred', () => {
@@ -443,11 +536,19 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} url="https://shopify.com" />,
       );
 
-      item.find('a').simulate('keyup', {keyCode: 9});
-      expect(item.find('a').hasClass('keyFocused')).toBe(true);
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Tab,
+      };
 
-      item.find('a').simulate('blur');
-      expect(item.find('a').hasClass('keyFocused')).toBe(false);
+      item.find('a')!.trigger('onKeyUp', event);
+      expect(item).toContainReactComponent('a', {
+        className: 'Item keyFocused',
+      });
+
+      item.find('a')!.trigger('onBlur');
+      expect(item).toContainReactComponent('a', {
+        className: 'Item',
+      });
     });
   });
 });
@@ -477,7 +578,7 @@ function mountWithNavigationProvider(
   node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
-  return mountWithAppProvider(
+  return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
     </NavigationContext.Provider>,
