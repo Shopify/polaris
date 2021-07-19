@@ -7,7 +7,6 @@ describe('<Label />', () => {
   describe('id', () => {
     it('uses the ID as the for attribute', () => {
       const label = mountWithApp(<Label id="MyThing" />);
-      // expect(label.find('label').prop('htmlFor')).toBe('MyThing');
       expect(label).toContainReactComponent('label', {
         htmlFor: 'MyThing',
       });
