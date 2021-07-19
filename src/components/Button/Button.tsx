@@ -281,9 +281,15 @@ export function Button({
     onKeyUp,
     onKeyPress,
   };
+  const dataHref = url && !external && !isDisabled ? url : undefined;
 
   const buttonMarkup = (
-    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+    <UnstyledButton
+      {...commonProps}
+      {...linkProps}
+      {...actionProps}
+      data-href={dataHref}
+    >
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}

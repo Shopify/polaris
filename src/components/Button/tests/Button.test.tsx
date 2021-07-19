@@ -39,10 +39,45 @@ describe('<Button />', () => {
   });
 
   describe('url', () => {
+    const mockUrl = 'https://google.com';
+
     it('passes prop', () => {
-      const mockUrl = 'https://google.com';
       const button = mountWithAppProvider(<Button url={mockUrl} />);
       expect(button.find(UnstyledButton).prop('url')).toBe(mockUrl);
+    });
+
+    describe('prefetching', () => {
+      it('sets the data-href prop if url is passed and is not loading, disabled, or external', () => {
+        const button = mountWithAppProvider(
+          <Button
+            url={mockUrl}
+            external={false}
+            loading={false}
+            disabled={false}
+          />,
+        );
+        expect(button.find(UnstyledButton).prop('data-href')).toBe(mockUrl);
+      });
+
+      it('does not set the data-href prop if url is not passed', () => {
+        const button = mountWithAppProvider(<Button />);
+        expect(button.find(UnstyledButton).prop('data-href')).toBeUndefined();
+      });
+
+      it('does not set the data-href prop if external is true', () => {
+        const button = mountWithAppProvider(<Button url={mockUrl} external />);
+        expect(button.find(UnstyledButton).prop('data-href')).toBeUndefined();
+      });
+
+      it('does not set the data-href prop if loading is true', () => {
+        const button = mountWithAppProvider(<Button url={mockUrl} loading />);
+        expect(button.find(UnstyledButton).prop('data-href')).toBeUndefined();
+      });
+
+      it('does not set the data-href prop if disabled is true', () => {
+        const button = mountWithAppProvider(<Button url={mockUrl} disabled />);
+        expect(button.find(UnstyledButton).prop('data-href')).toBeUndefined();
+      });
     });
   });
 
