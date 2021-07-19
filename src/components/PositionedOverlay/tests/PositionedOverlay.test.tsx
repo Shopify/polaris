@@ -3,7 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {EventListener} from '../../EventListener';
-import {PositionedOverlay} from '../PositionedOverlay';
+import {PositionedOverlay, DEFAULT_OBSERVER_CONFIG} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
 import * as geometry from '../../../utilities/geometry';
 import styles from '../PositionedOverlay.scss';
@@ -277,10 +277,48 @@ describe('<PositionedOverlay />', () => {
   });
 
   describe('mutationObserveConfig', () => {
-    // Find the `overlay` and compare against DEFAULT_OBSERVER_CONFIG
-    it.todo('passes default config');
-    // Find the `overlay` and compare against mockMutationObserveConfig
-    it.todo('merges prop with default config');
+    let mutationObserverObserveSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+    });
+
+    it('passes default config', () => {
+      mountWithAppProvider(<PositionedOverlay {...mockProps} />);
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
+        expect.any(Function),
+        DEFAULT_OBSERVER_CONFIG,
+      );
+    });
+
+    it('merges prop with default config', () => {
+      const mockMutationObserveConfig = {
+        subtree: false,
+        attributes: true,
+      };
+      mountWithAppProvider(
+        <PositionedOverlay
+          {...mockProps}
+          mutationObserveConfig={mockMutationObserveConfig}
+        />,
+      );
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
+        expect.any(Function),
+        {
+          ...DEFAULT_OBSERVER_CONFIG,
+          ...mockMutationObserveConfig,
+        },
+      );
+    });
   });
 });
 

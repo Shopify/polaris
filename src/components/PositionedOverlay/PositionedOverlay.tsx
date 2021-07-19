@@ -58,7 +58,7 @@ interface State {
   lockPosition: boolean;
 }
 
-const DEFAULT_OBSERVER_CONFIG: PositionedOverlayProps['mutationObserveConfig'] = {
+export const DEFAULT_OBSERVER_CONFIG: PositionedOverlayProps['mutationObserveConfig'] = {
   childList: true,
   subtree: true,
   characterData: true,
