@@ -18,6 +18,7 @@ export function IndexProvider({
   itemCount,
   hasMoreItems,
   condensed,
+  selectable,
 }: IndexProviderProps) {
   const {
     paginatedSelectAllText,
@@ -26,7 +27,6 @@ export function IndexProvider({
     resourceName,
     selectMode,
     bulkSelectState,
-    selectable,
   } = useBulkSelectionData({
     selectedItemsCount,
     itemCount,

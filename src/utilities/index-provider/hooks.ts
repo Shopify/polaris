@@ -48,7 +48,7 @@ export function useBulkSelectionData({
 }: BulkSelectionDataOptions) {
   const i18n = useI18n();
 
-  const selectable = Boolean(selectedItemsCount);
+  const hasSelections = Boolean(selectedItemsCount);
   const selectMode = selectedItemsCount === 'All' || selectedItemsCount > 0;
 
   const defaultResourceName = {
@@ -82,11 +82,11 @@ export function useBulkSelectionData({
     resourceName,
     selectMode,
     bulkSelectState,
-    selectable,
+    hasSelections,
   };
 
   function getPaginatedSelectAllText() {
-    if (!selectable || !hasMoreItems) {
+    if (!hasSelections || !hasMoreItems) {
       return;
     }
 
