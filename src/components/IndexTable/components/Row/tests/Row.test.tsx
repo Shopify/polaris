@@ -2,6 +2,7 @@ import React, {ReactElement} from 'react';
 import {mountWithApp} from 'test-utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
+import {Checkbox} from '../../Checkbox';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
@@ -241,6 +242,17 @@ describe('<Row />', () => {
     expect(row).toContainReactComponent('tr', {
       className: 'TableRow statusSubdued',
     });
+  });
+
+  it('does not render a checkbox when not selectable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <td />
+      </Row>,
+      {indexTableProps: {selectable: false}},
+    );
+
+    expect(row).not.toContainReactComponent(Checkbox);
   });
 });
 
