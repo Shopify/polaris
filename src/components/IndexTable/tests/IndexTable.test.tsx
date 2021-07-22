@@ -544,4 +544,21 @@ describe('<IndexTable>', () => {
       });
     });
   });
+
+  describe('not selectable', () => {
+    it('does not render a checkbox in the headings', () => {
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          selectable={false}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      const headings = index.find('thead');
+
+      expect(headings).not.toContainReactComponent(Checkbox);
+    });
+  });
 });
