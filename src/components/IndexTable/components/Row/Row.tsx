@@ -115,6 +115,7 @@ export const Row = memo(function Row({
   };
 
   const RowWrapper = condensed ? 'li' : 'tr';
+  const checkbox = selectable ? <Checkbox /> : null;
 
   return (
     <RowContext.Provider value={contextValue}>
@@ -127,7 +128,7 @@ export const Row = memo(function Row({
           onClick={handleRowClick}
           ref={tableRowRef}
         >
-          <Checkbox />
+          {checkbox}
           {children}
         </RowWrapper>
       </RowHoveredContext.Provider>

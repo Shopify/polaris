@@ -568,7 +568,7 @@ function IndexTableBase({
     const isSecond = index === 0;
     const headingContentClassName = classNames(
       styles.TableHeading,
-      isSecond && styles['TableHeading-second'],
+      selectable && isSecond && styles['TableHeading-second'],
     );
 
     const stickyPositioningStyle =
@@ -589,7 +589,7 @@ function IndexTableBase({
       </th>
     );
 
-    if (index !== 0) return headingContent;
+    if (index !== 0 || !selectable) return headingContent;
 
     const checkboxClassName = classNames(
       styles.TableHeading,
