@@ -614,7 +614,7 @@ function IndexTableBase({
       </th>
     );
 
-    if (index !== 0) return headingContent;
+    if (index !== 0 || !selectable) return headingContent;
 
     const checkboxClassName = classNames(
       styles.TableHeading,
