@@ -72,6 +72,7 @@ function IndexTableBase({
     bulkSelectState,
     resourceName,
     bulkActionsAccessibilityLabel,
+    selectable,
     selectMode,
     paginatedSelectAllText,
     itemCount,
@@ -311,7 +312,7 @@ function IndexTableBase({
     }
   }, [condensed, isSmallScreenSelectable]);
 
-  const selectable = Boolean(
+  const actionable = Boolean(
     (promotedBulkActions && promotedBulkActions.length > 0) ||
       (bulkActions && bulkActions.length > 0),
   );
@@ -699,7 +700,7 @@ function IndexTableBase({
   }
 
   function getPaginatedSelectAllAction() {
-    if (!selectable || !hasMoreItems) {
+    if (!actionable || !hasMoreItems) {
       return;
     }
 
