@@ -2,6 +2,7 @@ import React, {useMemo, memo, useRef, useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {
+  useIndexValue,
   useIndexRow,
   SelectionType,
   useIndexSelectionChange,
@@ -32,6 +33,7 @@ export const Row = memo(function Row({
   status,
   onNavigation,
 }: RowProps) {
+  const {selectable} = useIndexValue();
   const {selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
   const {
@@ -57,9 +59,9 @@ export const Row = memo(function Row({
         ? SelectionType.Multi
         : SelectionType.Single;
 
-      onSelectionChange(selectionType, !selected, id, position);
+      if (selectable) onSelectionChange(selectionType, !selected, id, position);
     },
-    [id, onSelectionChange, position, selected],
+    [id, selectable, onSelectionChange, position, selected],
   );
 
   const contextValue = useMemo(
