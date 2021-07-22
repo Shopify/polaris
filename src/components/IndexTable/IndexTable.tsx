@@ -296,9 +296,8 @@ function IndexTableBase({
       (bulkActions && bulkActions.length > 0),
   );
 
-  const headingsMarkup = headings
-    .map(renderHeading)
-    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
+  const headingsMarkup = headings.map(renderHeading);
+  if (selectable) headingsMarkup.unshift(renderCheckboxCell());
 
   const bulkActionsSelectable = Boolean(
     promotedBulkActions.length > 0 || bulkActions.length > 0,
@@ -569,7 +568,7 @@ function IndexTableBase({
     const isSecond = index === 0;
     const headingContentClassName = classNames(
       styles.TableHeading,
-      selectable && isSecond && styles['TableHeading-second'],
+      isSecond && styles['TableHeading-second'],
     );
 
     const stickyPositioningStyle =
@@ -579,7 +578,7 @@ function IndexTableBase({
         ? {left: tableHeadingRects.current[0].offsetWidth}
         : undefined;
 
-    const headingContent = (
+    return (
       <th
         className={headingContentClassName}
         key={heading.title}
@@ -589,25 +588,23 @@ function IndexTableBase({
         {renderHeadingContent(heading)}
       </th>
     );
+  }
 
-    if (index !== 0 || !selectable) return headingContent;
-
+  function renderCheckboxCell() {
     const checkboxClassName = classNames(
       styles.TableHeading,
-      index === 0 && styles['TableHeading-first'],
+      styles['TableHeading-first'],
     );
 
-    const checkboxContent = (
+    return (
       <th
         className={checkboxClassName}
-        key={`${heading}-${index}`}
+        key="heading-checkbox"
         data-index-table-heading
       >
         {renderCheckboxContent()}
       </th>
     );
-
-    return [checkboxContent, headingContent];
   }
 
   function renderCheckboxContent() {
