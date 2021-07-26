@@ -22,6 +22,7 @@ import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
+import {Spinner} from '../Spinner';
 import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
@@ -94,9 +95,15 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   const primaryActionMarkup = action ? (
     <div className={styles.PrimaryAction}>
-      {unstyledButtonFrom(action, {
-        className: styles.Button,
-      })}
+      {action.loading ? (
+        <div className={styles.Button}>
+          <Spinner size="small" />
+        </div>
+      ) : (
+        unstyledButtonFrom(action, {
+          className: styles.Button,
+        })
+      )}
     </div>
   ) : null;
 
