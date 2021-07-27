@@ -4,6 +4,7 @@ $accent-height: 3px;
 $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
+$spinner-size: rem(20px);
 
 @mixin banner-variants($in-page) {
   --p-banner-background: var(--p-background);
@@ -277,4 +278,18 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   &:focus {
     @include focus-ring($style: 'focused');
   }
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($spinner-size / 2);
+  margin-left: -($spinner-size / 2);
 }

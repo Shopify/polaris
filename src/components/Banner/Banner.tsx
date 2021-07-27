@@ -16,6 +16,7 @@ import {
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
 import {Heading} from '../Heading';
@@ -64,6 +65,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 ) {
   const withinContentContainer = useContext(WithinContentContext);
   const id = useUniqueId('Banner');
+  const i18n = useI18n();
   const {
     wrapperRef,
     handleKeyUp,
@@ -93,17 +95,31 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     );
   }
 
+  const spinnerMarkup = action?.loading ? (
+    <button
+      disabled
+      aria-busy
+      className={classNames(styles.Button, styles.loading)}
+    >
+      <span className={styles.Spinner}>
+        <Spinner
+          size="small"
+          accessibilityLabel={i18n.translate(
+            'Polaris.Button.spinnerAccessibilityLabel',
+          )}
+        />
+      </span>
+      {action.content}
+    </button>
+  ) : null;
+
   const primaryActionMarkup = action ? (
     <div className={styles.PrimaryAction}>
-      {action.loading ? (
-        <div className={styles.Button}>
-          <Spinner size="small" />
-        </div>
-      ) : (
-        unstyledButtonFrom(action, {
-          className: styles.Button,
-        })
-      )}
+      {action.loading
+        ? spinnerMarkup
+        : unstyledButtonFrom(action, {
+            className: styles.Button,
+          })}
     </div>
   ) : null;
 
