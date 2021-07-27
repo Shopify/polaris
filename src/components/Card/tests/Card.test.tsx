@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
 
@@ -13,7 +11,7 @@ describe('<Card />', () => {
       return null;
     }
 
-    const component = mountWithAppProvider(
+    const component = mountWithApp(
       <Card>
         <WithinContentContext.Consumer>
           {(withinContentContext) => {
@@ -24,16 +22,15 @@ describe('<Card />', () => {
         </WithinContentContext.Consumer>
       </Card>,
     );
-
-    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
-      true,
-    );
+    expect(component).toContainReactComponent(TestComponent, {
+      withinContentContainer: true,
+    });
   });
 
   it('has a header tag when the title is a string', () => {
     const title = 'Online store';
-    const card = mountWithAppProvider(<Card title="Online store" />);
-    expect(card.find('h2').text()).toBe(title);
+    const card = mountWithApp(<Card title={title} />);
+    expect(card.find('h2')).toContainReactText(title);
   });
 
   it('can have any valid react element as the title', () => {
@@ -46,31 +43,31 @@ describe('<Card />', () => {
       </h2>
     );
 
-    const card = mountWithAppProvider(<Card title={titleMarkup} />);
-    const headerMarkup = card.find('h2');
+    const card = mountWithApp(<Card title={titleMarkup} />);
+    const headerMarkup = card.find('h2')!;
 
-    expect(headerMarkup.text()).toContain(titleString);
-    expect(headerMarkup.find('Badge').text()).toBe(badgeString);
+    expect(headerMarkup).toContainReactText(titleString);
+    expect(headerMarkup.find(Badge)).toContainReactText(badgeString);
   });
 
   it('exposes the header component', () => {
-    const card = mountWithAppProvider(
+    const card = mountWithApp(
       <Card>
         <Card.Header />
       </Card>,
     );
-    expect(card.find(Card.Header).exists()).toBeTruthy();
+    expect(card).toContainReactComponent(Card.Header);
   });
 
   it('renders a <Header /> component with actions and no title', () => {
-    const card = mountWithAppProvider(
+    const card = mountWithApp(
       <Card actions={[{content: 'test action'}]}>
         <p>Some card content.</p>
       </Card>,
     );
 
-    expect(card.find(Button)).toHaveLength(1);
-    expect(card.find(Card.Header)).toHaveLength(1);
+    expect(card).toContainReactComponent(Button);
+    expect(card).toContainReactComponent(Card.Header);
   });
 
   describe('footerActionAlignment prop', () => {
@@ -149,34 +146,28 @@ describe('<Card />', () => {
   });
 
   it('renders a primary footer action', () => {
-    const card = mountWithAppProvider(
+    const card = mountWithApp(
       <Card primaryFooterAction={{content: 'test action'}}>
         <p>Some card content.</p>
       </Card>,
     );
-
-    const primaryAction = card.find(Button).first();
-
-    expect(primaryAction).toHaveLength(1);
-    expect(primaryAction.text()).toBe('test action');
+    expect(card).toContainReactComponent(Button, {children: 'test action'});
   });
 
   describe('secondaryFooterActions', () => {
     it('renders a single secondary footer action button when only 1 is supplied', () => {
-      const card = mountWithAppProvider(
+      const card = mountWithApp(
         <Card secondaryFooterActions={[{content: 'test action'}]}>
           <p>Some card content.</p>
         </Card>,
       );
 
-      const secondaryAction = card.find(Button).first();
-      expect(secondaryAction).toHaveLength(1);
-      expect(secondaryAction.text()).toBe('test action');
-      expect(card.find(Popover).first()).toHaveLength(0);
+      expect(card).toContainReactComponent(Button, {children: 'test action'});
+      expect(card).not.toContainReactComponent(Popover);
     });
 
     it('renders popover when >1 are supplied', () => {
-      const card = mountWithAppProvider(
+      const card = mountWithApp(
         <Card
           secondaryFooterActions={[
             {content: 'Most important action'},
@@ -187,12 +178,10 @@ describe('<Card />', () => {
         </Card>,
       );
 
-      const disclosureButton = card.find(Button).first();
-      expect(disclosureButton).toHaveLength(1);
-      expect(disclosureButton.text()).toBe('More');
-
-      const popover = card.find(Popover).first();
-      expect(popover).toHaveLength(1);
+      expect(card).toContainReactComponent(Button, {
+        children: 'More',
+      });
+      expect(card).toContainReactComponent(Popover);
     });
 
     it('activates popover when disclosure button is clicked', () => {
@@ -225,7 +214,7 @@ describe('<Card />', () => {
     });
 
     it('sets the disclosure button content to the value set on secondaryFooterActionsDisclosureText', () => {
-      const card = mountWithAppProvider(
+      const card = mountWithApp(
         <Card
           secondaryFooterActions={[
             {content: 'Most important action'},
@@ -237,22 +226,19 @@ describe('<Card />', () => {
         </Card>,
       );
 
-      const disclosureButton = card.find(Button).first();
-      expect(disclosureButton).toHaveLength(1);
-      expect(disclosureButton.text()).toBe('Show more');
+      expect(card).toContainReactComponent(Button, {
+        children: 'Show more',
+      });
     });
   });
 
   it('renders a section when sectioned', () => {
-    const card = mountWithAppProvider(
+    const card = mountWithApp(
       <Card sectioned>
         <p>Some card content.</p>
       </Card>,
     );
 
-    const section = card.find(Section).first();
-
-    expect(section).toHaveLength(1);
-    expect(section.text()).toBe('Some card content.');
+    expect(card.find(Section)).toContainReactText('Some card content.');
   });
 });
