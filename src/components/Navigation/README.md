@@ -115,7 +115,7 @@ The content of the navigation component consists of navigation items. Each item 
 
 | Prop               | Type                | Description                                                                                                                                |
 | ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| url                | string              | A location for the navigation item to navigate to when clicked                                                                             |
+| url                | string              | A location for the navigation item to navigate to when clicked.                                                                             |
 | matches            | boolean             | A boolean property indicating whether the navigation item should respond to a closely matching location property                           |
 | exactMatch         | boolean             | A boolean property indicating whether the navigation item should respond to an exactly matching location property                          |
 | matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                         |
@@ -126,7 +126,7 @@ The content of the navigation component consists of navigation items. Each item 
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                      |
 | new                | boolean             | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
 | accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                                                  |
-| selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                                                   |
+| selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item. It requires `url` to be defined.                                                   |
 | subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                                             |
 | secondaryAction    | SecondaryAction     | Renders an icon-only action as a supplementary action next to a navigation item                                                            |
 | onClick()          | function            | A callback function to handle clicking on a navigation item                                                                                |
