@@ -8,6 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added `id` prop to `Layout` and `Heading` for hash linking ([#4307](https://github.com/Shopify/polaris-react/pull/4307))
 - Added `external` prop to `Navigation.Item` component ([#4310](https://github.com/Shopify/polaris-react/pull/4310))
+- Added `ariaLabelledBy` props to `Navigation` component to allow a hidden label for accessibility ([#4343](https://github.com/Shopify/polaris-react/pull/4343))
 
 ### Bug fixes
 
