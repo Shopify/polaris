@@ -112,10 +112,10 @@ $stacking-order: (
   }
 
   &:disabled {
-    background: none;
-    color: currentColor;
     opacity: 1;
-    -webkit-text-fill-color: currentColor;
+    background: none;
+    color: var(--p-text-disabled);
+    -webkit-text-fill-color: var(--p-text-disabled);
   }
 
   // remove the box shadow in Firefox when the input is invalid
