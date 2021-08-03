@@ -21,6 +21,16 @@ describe('<Navigation />', () => {
     expect(navigation).toContainReactComponent(Image);
   });
 
+  it('renders nav with aria-labelledby when passed as prop', () => {
+    const label = 'label-id';
+    const navigation = mountWithApp(
+      <Navigation location="/" ariaLabelledBy={label} />,
+    );
+    expect(navigation).toContainReactComponent('nav', {
+      'aria-labelledby': label,
+    });
+  });
+
   describe('context', () => {
     it('passes location context', () => {
       const Child: React.SFC = (_props) => {

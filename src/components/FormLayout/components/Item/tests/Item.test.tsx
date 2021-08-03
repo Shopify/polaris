@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {TextField} from 'components';
 
 import {Item} from '../Item';
@@ -10,8 +9,11 @@ describe('<Item />', () => {
     const children = (
       <TextField onChange={noop} label="test" autoComplete="off" />
     );
-    const item = mountWithAppProvider(<Item>{children}</Item>);
-    expect(item.contains(children)).toBe(true);
+    const item = mountWithApp(<Item>{children}</Item>);
+    expect(item).toContainReactComponent(TextField, {
+      onChange: noop,
+      label: 'test',
+    });
   });
 });
 

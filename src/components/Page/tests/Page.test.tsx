@@ -1,7 +1,5 @@
 import React, {useCallback, useState} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {
   Page,
   PageProps,
@@ -40,52 +38,56 @@ describe('<Page />', () => {
   describe('children', () => {
     it('renders its children', () => {
       const card = <Card />;
-      const page = mountWithAppProvider(<Page {...mockProps}>{card}</Page>);
-      expect(page.contains(card)).toBeTruthy();
+      const page = mountWithApp(<Page {...mockProps}>{card}</Page>);
+      expect(page).toContainReactComponent(Card);
     });
   });
 
   describe('title', () => {
     it('renders a <Header /> when defined', () => {
       const title = 'Products';
-      const page = mountWithAppProvider(<Page {...mockProps} title={title} />);
-      expect(page.find(Header).exists()).toBeTruthy();
+      const page = mountWithApp(<Page {...mockProps} title={title} />);
+      expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
       const title = 'Products';
-      const page = mountWithAppProvider(<Page {...mockProps} title={title} />);
-      expect(page.find(Header).prop('title')).toBe(title);
+      const page = mountWithApp(<Page {...mockProps} title={title} />);
+      expect(page).toContainReactComponent(Header, {
+        title,
+      });
     });
   });
 
   describe('subtitle', () => {
     it('gets passed into the <Header />', () => {
       const subtitle = 'Subtitle';
-      const page = mountWithAppProvider(
-        <Page {...mockProps} subtitle={subtitle} />,
-      );
-      expect(page.find(Header).prop('subtitle')).toBe(subtitle);
+      const page = mountWithApp(<Page {...mockProps} subtitle={subtitle} />);
+      expect(page).toContainReactComponent(Header, {
+        subtitle,
+      });
     });
   });
 
   describe('titleMetadata', () => {
     it('gets passed into the <Header />', () => {
       const titleMetadata = <Badge>Sold</Badge>;
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} titleMetadata={titleMetadata} />,
       );
-      expect(page.find(Header).prop('titleMetadata')).toBe(titleMetadata);
+      expect(page).toContainReactComponent(Header, {
+        titleMetadata,
+      });
     });
   });
 
   describe('thumbnail', () => {
     it('gets passed into the <Header />', () => {
       const thumbnail = <Avatar customer />;
-      const page = mountWithAppProvider(
-        <Page {...mockProps} thumbnail={thumbnail} />,
-      );
-      expect(page.find(Header).prop('thumbnail')).toBe(thumbnail);
+      const page = mountWithApp(<Page {...mockProps} thumbnail={thumbnail} />);
+      expect(page).toContainReactComponent(Header, {
+        thumbnail,
+      });
     });
   });
 
@@ -94,20 +96,22 @@ describe('<Page />', () => {
       const primaryAction = {
         content: 'Save',
       };
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} primaryAction={primaryAction} />,
       );
-      expect(page.find(Header).exists()).toBeTruthy();
+      expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
       const primaryAction = {
         content: 'Save',
       };
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} primaryAction={primaryAction} />,
       );
-      expect(page.find(Header).prop('primaryAction')).toBe(primaryAction);
+      expect(page).toContainReactComponent(Header, {
+        primaryAction,
+      });
     });
   });
 
@@ -118,10 +122,10 @@ describe('<Page />', () => {
           content: 'Preview',
         },
       ];
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} secondaryActions={secondaryActions} />,
       );
-      expect(page.find(Header).exists()).toBeTruthy();
+      expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
@@ -130,10 +134,12 @@ describe('<Page />', () => {
           content: 'Preview',
         },
       ];
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} secondaryActions={secondaryActions} />,
       );
-      expect(page.find(Header).prop('secondaryActions')).toBe(secondaryActions);
+      expect(page).toContainReactComponent(Header, {
+        secondaryActions,
+      });
     });
 
     it('re-renders secondaryActions when they change', () => {
@@ -206,10 +212,10 @@ describe('<Page />', () => {
           ],
         },
       ];
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(page.find(Header).exists()).toBeTruthy();
+      expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
@@ -223,10 +229,12 @@ describe('<Page />', () => {
           ],
         },
       ];
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(page.find(Header).prop('actionGroups')).toBe(actionGroups);
+      expect(page).toContainReactComponent(Header, {
+        actionGroups,
+      });
     });
   });
 
@@ -239,17 +247,19 @@ describe('<Page />', () => {
     ];
 
     it('renders a <Header /> when defined', () => {
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} breadcrumbs={breadcrumbs} />,
       );
-      expect(page.find(Header).exists()).toBeTruthy();
+      expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
-      const page = mountWithAppProvider(
+      const page = mountWithApp(
         <Page {...mockProps} breadcrumbs={breadcrumbs} />,
       );
-      expect(page.find(Header).prop('breadcrumbs')).toStrictEqual(breadcrumbs);
+      expect(page).toContainReactComponent(Header, {
+        breadcrumbs,
+      });
     });
   });
 
@@ -284,8 +294,8 @@ describe('<Page />', () => {
 
   describe('<Header />', () => {
     it('is not rendered when there is no header content', () => {
-      const page = mountWithAppProvider(<Page title="" />);
-      expect(page.find(Header).exists()).toBeFalsy();
+      const page = mountWithApp(<Page title="" />);
+      expect(page).not.toContainReactComponent(Header);
     });
   });
 });

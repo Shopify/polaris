@@ -8,7 +8,14 @@ import {
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities';
 import {BannerContext} from 'utilities/banner-context';
-import {Button, Icon, UnstyledButton, UnstyledLink, Heading} from 'components';
+import {
+  Button,
+  Heading,
+  Icon,
+  Spinner,
+  UnstyledButton,
+  UnstyledLink,
+} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Banner, BannerHandles} from '../Banner';
@@ -100,6 +107,41 @@ describe('<Banner />', () => {
       expect(bannerWithAction.find(UnstyledButton)).toContainReactText(
         'Primary action',
       );
+    });
+
+    it('renders a Spinner when loading', () => {
+      const bannerWithAction = mountWithApp(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+            loading: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      expect(bannerWithAction).toContainReactComponent(Spinner);
+    });
+
+    it('renders a disabled button when loading', () => {
+      const bannerWithAction = mountWithApp(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+            loading: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      expect(bannerWithAction).toContainReactComponent('button', {
+        disabled: true,
+        'aria-busy': true,
+      });
     });
   });
 
