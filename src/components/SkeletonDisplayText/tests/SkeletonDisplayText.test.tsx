@@ -1,12 +1,11 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 
 describe('<SkeletonDisplayText />', () => {
   it('renders', () => {
-    const skeletonBodyText = mountWithAppProvider(<SkeletonDisplayText />);
-    expect(skeletonBodyText.exists()).toBe(true);
+    const skeletonBodyText = mountWithApp(<SkeletonDisplayText />);
+    expect(skeletonBodyText).toContainReactComponent('div');
   });
 });
