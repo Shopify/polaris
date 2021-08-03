@@ -214,49 +214,59 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.Table-sticky-last .TableCell:last-child,
-.Table-sticky-last .TableHeading-last {
-  @include breakpoint-after($breakpoint-small) {
-    position: sticky;
-    right: 0;
-    background-color: var(--p-surface);
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
-  }
-}
-
-.Table-sticky-last .TableHeading-last {
-  @include breakpoint-after($breakpoint-small) {
-    z-index: auto;
-  }
-}
-
-.Table-sticky-scrolling .TableCell:last-child,
-.Table-sticky-scrolling .TableHeading-last {
-  @include breakpoint-after($breakpoint-small) {
-    filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+.Table-sticky-scrolling {
+  .TableCell:last-child,
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+    }
   }
 }
 
 .Table-sticky-last {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-  .statusSuccess .TableCell:last-child {
-    background-color: var(--p-surface-primary-selected);
+  .TableCell:last-child {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: z-index(sticky-cell, $index-table-stacking-order);
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-  .statusSubdued .TableCell:last-child {
-    background-color: var(--p-surface-subdued);
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: auto;
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-  .TableRow-hovered .TableCell:last-child {
-    background-color: var(--p-surface-selected-hovered);
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+  .statusSuccess {
+    .TableCell:last-child {
+      background-color: var(--p-surface-primary-selected);
+    }
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-  .TableRow-selected .TableCell:last-child {
-    background-color: var(--p-surface-selected);
+  .statusSubdued {
+    .TableCell:last-child {
+      background-color: var(--p-surface-subdued);
+    }
   }
+
+  .TableRow-hovered {
+    .TableCell:last-child {
+      background-color: var(--p-surface-selected-hovered);
+    }
+  }
+
+  .TableRow-selected {
+    .TableCell:last-child {
+      background-color: var(--p-surface-selected);
+    }
+  }
+  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 }
 
 .StickyTable {
