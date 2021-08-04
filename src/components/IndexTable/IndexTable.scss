@@ -133,7 +133,7 @@ $loading-panel-height: rem(53px);
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
@@ -145,6 +145,15 @@ $loading-panel-height: rem(53px);
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected);
+    }
+  }
+
+  &.TableRow-hovered.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected-hovered);
     }
   }
 }
