@@ -131,11 +131,15 @@ function IndexTableBase({
   }, [handleSelectionChange, selectedItemsCount]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
+    if (!selectable) {
+      return tableHeadingRects.current[0].offsetWidth;
+    }
+
     return condensed
       ? tableHeadingRects.current[0].offsetWidth
       : tableHeadingRects.current[0].offsetWidth +
           tableHeadingRects.current[1].offsetWidth;
-  }, [condensed]);
+  }, [condensed, selectable]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -151,6 +155,8 @@ function IndexTableBase({
             left: boundingRect.left,
           };
 
+          // console.log(tableHeadings.current.map((h) => h.offsetWidth));
+
           tableHeadingRects.current = tableHeadings.current.map((heading) => ({
             offsetWidth: heading.offsetWidth || 0,
             offsetLeft: heading.offsetLeft || 0,
@@ -158,6 +164,10 @@ function IndexTableBase({
 
           if (tableHeadings.current.length === 0) {
             return;
+          }
+
+          if (!selectable) {
+            tableHeadings.current[0].style.left = '0px';
           }
 
           // update left offset for first column
@@ -186,7 +196,7 @@ function IndexTableBase({
         SIXTY_FPS,
         {leading: true, trailing: true, maxWait: SIXTY_FPS},
       ),
-    [calculateFirstHeaderOffset],
+    [selectable, calculateFirstHeaderOffset],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -339,15 +349,32 @@ function IndexTableBase({
       data-index-table-sticky-heading
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        <div
-          className={styles.StickyColumnHeaderCheckbox}
-          ref={stickyHeaderCheckboxElement}
-        >
-          {renderCheckboxContent()}
-        </div>
-        <div className={styles['StickyTableHeading-second-scrolling']}>
-          {renderHeadingContent(headings[0])}
-        </div>
+        {selectable && (
+          <div
+            className={styles.StickyColumnHeaderCheckbox}
+            ref={stickyHeaderCheckboxElement}
+          >
+            {renderCheckboxContent()}
+          </div>
+        )}
+
+        {selectable && (
+          <div className={styles['StickyTableHeading-second-scrolling']}>
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
+
+        {!selectable && (
+          <div
+            className={classNames(
+              styles.StickyColumnHeaderCheckbox,
+              styles.unselectable,
+            )}
+            ref={stickyHeaderCheckboxElement}
+          >
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
       </Stack>
     </div>
   );
@@ -588,16 +615,17 @@ function IndexTableBase({
   );
 
   function renderHeading(heading: IndexTableHeading, index: number) {
-    const isSecond = index === 0;
+    const makeSticky = index === 0;
     const isLast = index === headings.length - 1;
     const headingContentClassName = classNames(
       styles.TableHeading,
-      isSecond && styles['TableHeading-second'],
+      makeSticky && styles['TableHeading-second'],
+      makeSticky && !selectable && styles.unselectable,
       isLast && !heading.hidden && styles['TableHeading-last'],
     );
 
     const stickyPositioningStyle =
-      isSecond &&
+      makeSticky &&
       tableHeadingRects.current &&
       tableHeadingRects.current.length > 0
         ? {left: tableHeadingRects.current[0].offsetWidth}

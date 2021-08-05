@@ -86,19 +86,22 @@ $loading-panel-height: rem(53px);
   .TableCell-first,
   .TableCell-first + .TableCell,
   .TableHeading-first,
-  .TableHeading-second {
+  .TableHeading-second,
+  .TableCell-first-no-checkbox {
     visibility: visible;
     background-color: var(--p-surface);
   }
 
   .TableCell-first,
-  .TableHeading-first {
+  .TableHeading-first,
+  .TableCell-first-no-checkbox {
     filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
-  .TableHeading-second {
+  .TableHeading-second,
+  .TableCell-first-no-checkbox {
     @include breakpoint-after($breakpoint-small) {
       filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
     }
@@ -114,7 +117,8 @@ $loading-panel-height: rem(53px);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
-    .TableCell-first + .TableCell {
+    .TableCell-first + .TableCell,
+    .TableCell-first-no-checkbox {
       background-color: var(--p-surface-primary-selected);
     }
   }
@@ -123,7 +127,8 @@ $loading-panel-height: rem(53px);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
-    .TableCell-first + .TableCell {
+    .TableCell-first + .TableCell,
+    .TableCell-first-no-checkbox {
       background-color: var(--p-surface-subdued);
     }
   }
@@ -132,7 +137,8 @@ $loading-panel-height: rem(53px);
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableCell-first,
-    .TableCell-first + .TableCell {
+    .TableCell-first + .TableCell,
+    .TableCell-first-no-checkbox {
       background-color: var(--p-surface-hovered);
     }
   }
@@ -143,7 +149,8 @@ $loading-panel-height: rem(53px);
     .TableHeading-first,
     .TableHeading-second,
     .TableCell-first,
-    .TableCell-first + .TableCell {
+    .TableCell-first + .TableCell,
+    .TableCell-first-no-checkbox {
       background-color: var(--p-surface-selected);
     }
   }
@@ -190,6 +197,10 @@ $loading-panel-height: rem(53px);
 .TableHeading-second {
   padding-left: 0;
 
+  &.unselectable {
+    padding-left: spacing();
+  }
+
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
   }
@@ -206,11 +217,16 @@ $loading-panel-height: rem(53px);
   padding: 0;
 }
 
-.TableCell-first {
+.TableCell-first,
+.TableCell-first-no-checkbox {
   position: sticky;
   left: 0;
   z-index: z-index(sticky-cell, $index-table-stacking-order);
   padding: 0;
+}
+
+.TableCell-first-no-checkbox {
+  padding-left: spacing();
 }
 
 .TableCell-first + .TableCell {
@@ -325,6 +341,10 @@ $loading-panel-height: rem(53px);
 .StickyTableHeading-second-scrolling {
   padding: 0 rem(0.6px) 0 spacing();
   display: none;
+
+  &.unselectable {
+    padding-left: 0;
+  }
 
   @include breakpoint-after($breakpoint-small) {
     display: block;

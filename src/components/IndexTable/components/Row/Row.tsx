@@ -117,6 +117,18 @@ export const Row = memo(function Row({
   const RowWrapper = condensed ? 'li' : 'tr';
   const checkbox = selectable ? <Checkbox /> : null;
 
+  const rows = useMemo(() => {
+    if (selectable) {
+      return children;
+    }
+
+    return React.Children.map(children, (child, index) => {
+      return React.cloneElement(child as React.ReactElement, {
+        first: index === 0,
+      });
+    });
+  }, [selectable, children]);
+
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
@@ -129,7 +141,7 @@ export const Row = memo(function Row({
           ref={tableRowRef}
         >
           {checkbox}
-          {children}
+          {rows}
         </RowWrapper>
       </RowHoveredContext.Provider>
     </RowContext.Provider>
