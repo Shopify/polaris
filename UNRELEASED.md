@@ -22,6 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Bring back borders on the `IndexTable` sticky cells ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Adjust `IndexTable` sticky z-index to avoid collisions with focused `TextField` ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Adjust `IndexTable` rows to have a grey hover state when unselected ([#4359](https://github.com/Shopify/polaris-react/pull/4359))
+- Allow reusable `data-primary-link` on `IndexTable.Row` ([#4361](https://github.com/Shopify/polaris-react/pull/4361))
 
 ### Documentation
 
