@@ -7,7 +7,7 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size = 'small' | 'medium' | 'large';
+type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 
 enum Status {
   Pending = 'PENDING',

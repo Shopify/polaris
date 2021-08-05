@@ -36,6 +36,7 @@ business in the interface.
 
 Avatars should be one of 3 sizes:
 
+- Extra small (24 x 24 px): use when small size is too big
 - Small (32 × 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
 - Medium (40 × 40 px): use as the default size
 - Large (60 × 60 px): use when an avatar is a focal point, such as on a single customer card
@@ -76,6 +77,12 @@ Use to present an avatar for a merchant, customer, or business.
 ![Default avatar](/public_images/components/Avatar/ios/default@2x.png)
 
 <!-- /content-for -->
+
+### Extra small avatar
+
+```jsx
+<Avatar name="Farrah Fawcett" size="extraSmall" />
+```
 
 ---
 

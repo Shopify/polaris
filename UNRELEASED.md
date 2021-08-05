@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `ariaLabelledBy` props to `Navigation` component to allow a hidden label for accessibility ([#4343](https://github.com/Shopify/polaris-react/pull/4343))
 - Add `lastColumnSticky` prop to `IndexTable` to create a sticky last cell and optional sticky last heading on viewports larger than small ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Allow promoted actions to be rendered as a menu on the `BulkAction` component ([#4266](https://github.com/Shopify/polaris-react/pull/4266))
+- Add `extraSmall` prop to `Avatar` ([#4371](https://github.com/Shopify/polaris-react/pull/4371))
 
 ### Bug fixes
 
