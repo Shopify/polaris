@@ -3,6 +3,7 @@
 $image-size: rem(20px);
 $item-min-height: rem(40px);
 $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
+$titleVerticalSpacing: spacing(tight) * 1.5;
 
 .ActionList {
   list-style: none;
@@ -12,20 +13,13 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .Section-withoutTitle:not(:first-child) {
   border-top: border('divider');
-  margin-top: spacing(tight);
-  padding-top: spacing(tight);
 }
 
 .Actions {
   list-style: none;
   margin: 0;
   border-top: border('divider');
-  padding: 0 spacing(tight);
-
-  // stylelint-disable-next-line selector-max-class
-  .Title + & {
-    padding-top: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .ActionList,
@@ -38,7 +32,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .Title {
   @include text-style-subheading;
-  padding: (spacing(tight) * 1.5) spacing();
+  padding: spacing(extra-tight) spacing() $titleVerticalSpacing spacing();
+
+  &.firstSectionWithTitle {
+    padding-top: $titleVerticalSpacing;
+  }
 }
 
 .Item {
