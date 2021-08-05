@@ -38,20 +38,54 @@ describe('<PositionedOverlay />', () => {
       mutationObserverObserveSpy.mockRestore();
     });
 
-    it('observers the activator', () => {
-      const activator = document.createElement('button');
-      mountWithAppProvider(
-        <PositionedOverlay
-          {...mockProps}
-          activator={activator}
-          preferredPosition="above"
-        />,
-      );
+    describe('overlay', () => {
+      it('passes default config to', () => {
+        const positionedOverlay = mountWithAppProvider(
+          <PositionedOverlay {...mockProps} />,
+        );
+        const element = positionedOverlay.find('div').getDOMNode();
 
-      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(activator, {
-        characterData: true,
-        childList: true,
-        subtree: true,
+        expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
+          element,
+          DEFAULT_OBSERVER_CONFIG,
+        );
+      });
+
+      it('merges prop with default config', () => {
+        const mockMutationObserveConfig = {
+          subtree: false,
+          attributes: true,
+        };
+        const positionedOverlay = mountWithAppProvider(
+          <PositionedOverlay
+            {...mockProps}
+            mutationObserveConfig={mockMutationObserveConfig}
+          />,
+        );
+        const element = positionedOverlay.find('div').getDOMNode();
+
+        expect(mutationObserverObserveSpy).toHaveBeenCalledWith(element, {
+          ...DEFAULT_OBSERVER_CONFIG,
+          ...mockMutationObserveConfig,
+        });
+      });
+    });
+
+    describe('activator', () => {
+      it('observers the activator', () => {
+        const activator = document.createElement('button');
+
+        mountWithAppProvider(
+          <PositionedOverlay
+            {...mockProps}
+            activator={activator}
+            preferredPosition="above"
+          />,
+        );
+
+        expect(mutationObserverObserveSpy).toHaveBeenCalledWith(activator, {
+          ...DEFAULT_OBSERVER_CONFIG,
+        });
       });
     });
   });
@@ -273,52 +307,6 @@ describe('<PositionedOverlay />', () => {
       expect(
         getRectForNodeSpy.mock.calls.some(([node]) => node === input),
       ).toBe(false);
-    });
-  });
-
-  describe('mutationObserveConfig', () => {
-    let mutationObserverObserveSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      mutationObserverObserveSpy = jest.spyOn(
-        MutationObserver.prototype,
-        'observe',
-      );
-    });
-
-    afterEach(() => {
-      mutationObserverObserveSpy.mockRestore();
-    });
-
-    it('passes default config', () => {
-      const positionedOverlay = mountWithAppProvider(
-        <PositionedOverlay {...mockProps} />,
-      );
-      const element = positionedOverlay.find('div').getDOMNode();
-
-      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
-        element,
-        DEFAULT_OBSERVER_CONFIG,
-      );
-    });
-
-    it('merges prop with default config', () => {
-      const mockMutationObserveConfig = {
-        subtree: false,
-        attributes: true,
-      };
-      const positionedOverlay = mountWithAppProvider(
-        <PositionedOverlay
-          {...mockProps}
-          mutationObserveConfig={mockMutationObserveConfig}
-        />,
-      );
-      const element = positionedOverlay.find('div').getDOMNode();
-
-      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(element, {
-        ...DEFAULT_OBSERVER_CONFIG,
-        ...mockMutationObserveConfig,
-      });
     });
   });
 });
