@@ -214,7 +214,8 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(element).toContainReactComponent('div', {'data-href': url});
+      const div = element.find('div', {'data-href': url} as any);
+      expect(div).not.toBeNull();
     });
   });
 
@@ -798,9 +799,10 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-
-      expect(item).toContainReactComponent('li', {'data-href': 'google.com'});
+      const li = item.find('li', {'data-href': 'google.com'} as any);
+      expect(li).not.toBeNull();
     });
+
     it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
       const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
@@ -812,7 +814,8 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(item).toContainReactComponent('li', {'data-href': undefined});
+      const li = item.find('li', {'data-href': undefined} as any);
+      expect(li).not.toBeNull();
     });
   });
 });
