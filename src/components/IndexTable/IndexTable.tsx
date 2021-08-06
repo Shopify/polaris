@@ -104,6 +104,7 @@ function IndexTableBase({
   const stickyHeaderCheckboxElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
+  const loadingPanelRef = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
 
@@ -381,8 +382,9 @@ function IndexTableBase({
       timeout={durationFast}
       appear
       unmountOnExit
+      nodeRef={loadingPanelRef}
     >
-      <div className={styles.LoadingPanel}>
+      <div className={styles.LoadingPanel} ref={loadingPanelRef}>
         <div className={styles.LoadingPanelRow}>
           <Spinner size="small" />
           <span className={styles.LoadingPanelText}>
