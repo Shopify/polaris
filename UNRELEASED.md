@@ -59,5 +59,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
 - Modernized tests for ResourceItem ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
+- Modernized tests for ResourceItem, ResourceList ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
 
 ### Deprecations

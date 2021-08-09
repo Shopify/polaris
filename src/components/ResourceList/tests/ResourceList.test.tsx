@@ -10,16 +10,14 @@ import {
   EmptyState,
 } from 'components';
 import {mountWithApp} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
 import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
 import {BulkActions} from '../../BulkActions';
 import {CheckableButton} from '../../CheckableButton';
+
+import {classNames} from '../../../utilities/css';
+
+import styles from '../ResourceList.scss';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -53,10 +51,10 @@ const defaultWindowWidth = window.innerWidth;
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
     it('renders list items', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find('li')).toHaveLength(3);
+      expect(resourceList).toContainReactComponentTimes('li', 3);
     });
 
     it('renders custom markup and warns user', () => {
@@ -64,10 +62,11 @@ describe('<ResourceList />', () => {
       const warningSpy = jest
         .spyOn(console, 'warn')
         .mockImplementation(() => {});
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().text()).toBe('title 1');
+      expect(resourceList).toContainReactText('title 1');
+      // expect(resourceList.find('li').first().text()).toBe('title 1');
       expect(warningSpy).toHaveBeenCalledWith(
         '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );
@@ -78,66 +77,65 @@ describe('<ResourceList />', () => {
 
   describe('Selectable', () => {
     it('does not render bulk actions if the promotedBulkActions and the bulkActions props are not provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find(BulkActions).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(BulkActions);
     });
 
     it('does not render a `CheckableButton` if the `selectable` prop is not provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find(CheckableButton).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(CheckableButton);
     });
 
     it('does render bulk actions if the promotedBulkActions prop is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
           promotedBulkActions={promotedBulkActions}
         />,
       );
-
-      expect(resourceList.find(BulkActions).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(BulkActions);
     });
 
     it('renders bulk actions if the bulkActions prop is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList.find(BulkActions).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(BulkActions);
     });
 
     it('renders a `CheckableButton` if the `selectable` prop is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList selectable items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find(CheckableButton).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(CheckableButton);
     });
   });
 
   describe('hasMoreItems', () => {
     it('does not add a prop of paginatedSelectAllAction to BulkActions if omitted', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
           bulkActions={bulkActions}
         />,
       );
-      expect(
-        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
-      ).toBeUndefined();
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        paginatedSelectAllAction: undefined,
+      });
     });
 
     it('adds a prop of paginatedSelectAllAction to BulkActions if included', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           hasMoreItems
@@ -145,29 +143,31 @@ describe('<ResourceList />', () => {
           bulkActions={bulkActions}
         />,
       );
+      expect(resourceList).toContainReactComponent(BulkActions);
       expect(
-        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
-      ).toBeDefined();
+        resourceList.find(BulkActions)!.props.paginatedSelectAllAction,
+      ).not.toBe(undefined);
     });
   });
 
   describe('resourceName', () => {
     describe('resoureName.singular', () => {
       it('renders default singular resource name when resourceName isn’t provided', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             showHeader
             items={singleItemNoID}
             renderItem={renderItem}
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 1 item',
-        );
+        const headerTitleWrapper = resourceList.find('div', {
+          className: styles.HeaderTitleWrapper,
+        });
+        expect(headerTitleWrapper).toContainReactText('Showing 1 item');
       });
 
       it('renders the given singular resource name when resourceName is provided', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={singleItemNoID}
             renderItem={renderItem}
@@ -175,24 +175,26 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 1 product',
-        );
+        const headerTitleWrapper = resourceList.find('div', {
+          className: styles.HeaderTitleWrapper,
+        });
+        expect(headerTitleWrapper).toContainReactText('Showing 1 product');
       });
     });
 
-    describe('resoureName.plural', () => {
+    describe('resourceName.plural', () => {
       it('renders default plural resource name when resourceName isn’t provided', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 2 items',
-        );
+        const headerTitleWrapper = resourceList.find('div', {
+          className: styles.HeaderTitleWrapper,
+        });
+        expect(headerTitleWrapper).toContainReactText('Showing 2 items');
       });
 
       it('renders the given plural resource name when resourceName is provided', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsNoID}
             renderItem={renderItem}
@@ -200,16 +202,17 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 2 products',
-        );
+        const headerTitleWrapper = resourceList.find('div', {
+          className: styles.HeaderTitleWrapper,
+        });
+        expect(headerTitleWrapper).toContainReactText('Showing 2 products');
       });
     });
   });
 
   describe('headerTitle', () => {
     it('prints loading text when loading is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -218,13 +221,14 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-        'Loading items',
-      );
+      const headerTitleWrapper = resourceList.find('div', {
+        className: styles.HeaderTitleWrapper,
+      });
+      expect(headerTitleWrapper).toContainReactText('Loading items');
     });
 
     it('prints number of items shown when totalItemsCount is not provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
@@ -233,13 +237,14 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-        'Showing 2 products',
-      );
+      const headerTitleWrapper = resourceList.find('div', {
+        className: styles.HeaderTitleWrapper,
+      });
+      expect(headerTitleWrapper).toContainReactText('Showing 2 products');
     });
 
     it('prints number of items shown of totalItemsCount when totalItemsCount is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
@@ -249,13 +254,14 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-        'Showing 2 of 5 products',
-      );
+      const headerTitleWrapper = resourceList.find('div', {
+        className: styles.HeaderTitleWrapper,
+      });
+      expect(headerTitleWrapper).toContainReactText('Showing 2 of 5 products');
     });
 
     it('prints number of items shown of totalItemsCount plural when totalItemsCount is provided and items is one resource', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemNoID}
           renderItem={renderItem}
@@ -265,28 +271,29 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-        'Showing 1 of 5 products',
-      );
+      const headerTitleWrapper = resourceList.find('div', {
+        className: styles.HeaderTitleWrapper,
+      });
+      expect(headerTitleWrapper).toContainReactText('Showing 1 of 5 products');
     });
   });
 
   describe('bulkActionsAccessibilityLabel', () => {
     it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
-        'Select item',
-      );
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        accessibilityLabel: 'Select item',
+      });
     });
 
     it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -294,13 +301,13 @@ describe('<ResourceList />', () => {
           selectedItems={['1']}
         />,
       );
-      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
-        'Deselect item',
-      );
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        accessibilityLabel: 'Deselect item',
+      });
     });
 
     it('provides the BulkActions with the right accessibilityLabel if there are multiple items and they are selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -308,28 +315,29 @@ describe('<ResourceList />', () => {
           selectedItems={['5', '6', '7']}
         />,
       );
-      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
-        'Deselect all 3 items',
-      );
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        accessibilityLabel: 'Deselect all 3 items',
+      });
     });
+
     it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
-        'Select all 3 items',
-      );
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        accessibilityLabel: 'Select all 3 items',
+      });
     });
   });
 
   describe('onSelectionChange()', () => {
     it('calls onSelectionChange() when an item is clicked', () => {
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           selectedItems={[]}
@@ -338,24 +346,26 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(ResourceItem).first();
-      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+      resourceList.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onSelectionChange).toHaveBeenCalled();
     });
   });
 
   describe('header markup', () => {
     it('renders header markup if the list isn’t selectable but the showHeader prop is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
+      expect(resourceList).toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
     });
 
     it('doesn’t render header markup if the list is selectable but the showHeader prop is false', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           showHeader={false}
           selectable
@@ -363,23 +373,28 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        false,
-      );
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderContentWrapper,
+      });
     });
 
     it('does not render when items is empty', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
-
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        false,
-      );
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderContentWrapper,
+      });
     });
 
     it('renders when sort options are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           sortOptions={sortOptions}
           onSortChange={noop}
@@ -387,98 +402,128 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
+      expect(resourceList).toContainReactComponent('div', {
+        className: classNames(
+          styles.HeaderWrapper,
+          styles['HeaderWrapper-hasSort'],
+        ),
+      });
     });
 
     it('renders when an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           alternateTool={alternateTool}
           items={itemsWithID}
           renderItem={renderItem}
         />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
+      expect(resourceList).toContainReactComponent('div', {
+        className: classNames(
+          styles.HeaderWrapper,
+          styles['HeaderWrapper-hasAlternateTool'],
+        ),
+      });
     });
 
     it('renders when bulkActions are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           bulkActions={bulkActions}
           items={itemsWithID}
           renderItem={renderItem}
         />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
+      expect(resourceList).toContainReactComponent('div', {
+        className: classNames(
+          styles.HeaderWrapper,
+          styles['HeaderWrapper-hasSelect'],
+        ),
+      });
     });
 
     it('renders when promotedBulkActions are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           promotedBulkActions={promotedBulkActions}
           items={itemsWithID}
           renderItem={renderItem}
         />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
+      expect(resourceList).toContainReactComponent('div', {
+        className: classNames(
+          styles.HeaderWrapper,
+          styles['HeaderWrapper-hasSelect'],
+        ),
+      });
     });
 
     it('does not render when sort options, bulkActions and promotedBulkActions are not given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        false,
-      );
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderContentWrapper,
+      });
     });
 
     it('renders on non-initial load when items are provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           bulkActions={bulkActions}
           items={[]}
           renderItem={renderItem}
         />,
       );
-
-      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(0);
+      // initially not rendered
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderContentWrapper,
+      });
+      // update props
       resourceList.setProps({items: itemsWithID});
-      resourceList.update();
-      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(1);
+      // now it's rendered
+      expect(resourceList).toContainReactComponent('div', {
+        className: classNames(
+          styles.HeaderWrapper,
+          styles['HeaderWrapper-hasSelect'],
+        ),
+      });
     });
 
     it('does not render when EmptySearchResult exists', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
         />,
       );
-
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
-      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(0);
+      expect(resourceList).toContainReactComponent(EmptySearchResult);
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderWrapper,
+      });
+      expect(resourceList).not.toContainReactComponent('div', {
+        className: styles.HeaderContentWrapper,
+      });
     });
   });
 
   describe('filterControl', () => {
     it('renders when exists', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
           filterControl={<div id="test123">Test</div>}
         />,
       );
-      expect(resourceList.find('#test123').exists()).toBe(true);
+      expect(resourceList).toContainReactComponent('div', {id: 'test123'});
     });
   });
 
@@ -497,7 +542,7 @@ describe('<ResourceList />', () => {
         </EmptyState>
       );
 
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
@@ -505,7 +550,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(EmptyState)).toHaveLength(1);
+      expect(resourceList).toContainReactComponentTimes(EmptyState, 1);
     });
 
     it('does not render when exists but items are provided', () => {
@@ -522,7 +567,7 @@ describe('<ResourceList />', () => {
         </EmptyState>
       );
 
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
@@ -530,7 +575,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(EmptyState)).toHaveLength(0);
+      expect(resourceList).not.toContainReactComponent(EmptyState);
     });
 
     it('does not render when exists, items is empty, but loading is true', () => {
@@ -547,7 +592,7 @@ describe('<ResourceList />', () => {
         </EmptyState>
       );
 
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           loading
           items={[]}
@@ -556,42 +601,42 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(EmptyState)).toHaveLength(0);
+      expect(resourceList).not.toContainReactComponent(EmptyState);
     });
   });
 
   describe('<EmptySearchResult />', () => {
     it('renders when filterControl exists and items is empty', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
         />,
       );
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(EmptySearchResult);
     });
 
     it('does not render when filterControl does not exist', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(EmptySearchResult);
     });
 
     it('does not render when items is not empty', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
           filterControl={<div id="test123">Test</div>}
         />,
       );
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(EmptySearchResult);
     });
 
     it('does not render when filterControl exists, items is empty, and loading is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
@@ -599,7 +644,7 @@ describe('<ResourceList />', () => {
           loading
         />,
       );
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(EmptySearchResult);
     });
 
     it('does not render when filterControl exists, items is empty, and emptyState is set', () => {
@@ -616,7 +661,7 @@ describe('<ResourceList />', () => {
         </EmptyState>
       );
 
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
@@ -625,11 +670,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(EmptySearchResult);
     });
 
     it('renders the provided markup when emptySearchState is set', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           renderItem={renderItem}
@@ -640,21 +685,23 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
-      expect(resourceList.find('div#emptySearchState').exists()).toBe(true);
+      expect(resourceList).not.toContainReactComponent(EmptySearchResult);
+      expect(resourceList).toContainReactComponent('div', {
+        id: 'emptySearchState',
+      });
     });
   });
 
   describe('Sorting', () => {
     it('does not render a sort select if sortOptions aren’t provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find(Select).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(Select);
     });
 
     it('renders a sort select if sortOptions are provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -662,11 +709,11 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
-      expect(resourceList.find(Select).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(Select);
     });
 
     it('does not render a sort select if an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -675,12 +722,12 @@ describe('<ResourceList />', () => {
           alternateTool={alternateTool}
         />,
       );
-      expect(resourceList.find(Select).exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent(Select);
     });
 
     describe('sortOptions', () => {
       it('passes a sortOptions to the Select options', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -688,17 +735,16 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'options',
-          sortOptions,
-        );
+        expect(resourceList).toContainReactComponent(Select, {
+          options: sortOptions,
+        });
       });
     });
 
     describe('sortValue', () => {
       it('passes a sortValue to the Select value', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -707,17 +753,16 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'value',
-          'sortValue',
-        );
+        expect(resourceList).toContainReactComponent(Select, {
+          value: 'sortValue',
+        });
       });
     });
 
     describe('onSortChange', () => {
       it('calls onSortChange when the Sort Select changes', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             onSortChange={onSortChange}
@@ -725,7 +770,7 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
+        resourceList.find(Select)!.trigger('onChange', 'PRODUCT_TITLE_DESC');
         expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
       });
     });
@@ -733,25 +778,29 @@ describe('<ResourceList />', () => {
 
   describe('Alternate Tool', () => {
     it('does not render if an alternateTool is not provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(false);
+      expect(resourceList).not.toContainReactComponent('div', {
+        id: 'AlternateTool',
+      });
     });
 
     it('renders if an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
           alternateTool={alternateTool}
         />,
       );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
+      expect(resourceList).toContainReactComponent('div', {
+        id: 'AlternateTool',
+      });
     });
 
     it('renders even if sortOptions are provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -759,12 +808,14 @@ describe('<ResourceList />', () => {
           alternateTool={alternateTool}
         />,
       );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
+      expect(resourceList).toContainReactComponent('div', {
+        id: 'AlternateTool',
+      });
     });
 
     describe('sortOptions', () => {
       it('passes a sortOptions to the Select options', () => {
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -772,17 +823,16 @@ describe('<ResourceList />', () => {
             onSortChange={noop}
           />,
         );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'options',
-          sortOptions,
-        );
+        expect(resourceList).toContainReactComponent(Select, {
+          options: sortOptions,
+        });
       });
     });
 
     describe('sortValue', () => {
       it('passes a sortValue to the Select value', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -791,17 +841,16 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'value',
-          'sortValue',
-        );
+        expect(resourceList).toContainReactComponent(Select, {
+          value: 'sortValue',
+        });
       });
     });
 
     describe('onSortChange', () => {
       it('calls onSortChange when the Sort Select changes', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithApp(
           <ResourceList
             items={itemsWithID}
             onSortChange={onSortChange}
@@ -809,7 +858,7 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
+        resourceList.find(Select)!.trigger('onChange', 'PRODUCT_TITLE_DESC');
         expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
       });
     });
@@ -817,7 +866,7 @@ describe('<ResourceList />', () => {
 
   describe('loading', () => {
     it('renders a spinner', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -827,11 +876,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(Spinner).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(Spinner);
     });
 
     it('renders a spinner after initial load when loading is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -841,11 +890,11 @@ describe('<ResourceList />', () => {
       );
 
       resourceList.setProps({loading: true});
-      expect(resourceList.find(Spinner).exists()).toBe(true);
+      expect(resourceList).toContainReactComponent(Spinner);
     });
 
     it('does not render an <Item /> if loading is true and there are no items', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={[]}
           sortOptions={sortOptions}
@@ -855,13 +904,13 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(ResourceItem)).toHaveLength(0);
+      expect(resourceList).not.toContainReactComponent(ResourceItem);
     });
   });
 
   describe('BulkActions', () => {
     it('renders on initial load when items are selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -869,11 +918,11 @@ describe('<ResourceList />', () => {
           selectedItems={['1']}
         />,
       );
-      expect(resourceList.find(BulkActions)).toHaveLength(1);
+      expect(resourceList).toContainReactComponentTimes(BulkActions, 1);
     });
 
     it('enables select mode when items are programmatically selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -882,14 +931,17 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        selectMode: false,
+      });
       resourceList.setProps({selectedItems: ['1']});
-      resourceList.update();
-      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(true);
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        selectMode: true,
+      });
     });
 
     it('disables select mode when items are deselected programmatically selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -898,10 +950,13 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(true);
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        selectMode: true,
+      });
       resourceList.setProps({selectedItems: []});
-      resourceList.update();
-      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        selectMode: false,
+      });
     });
 
     describe('focus', () => {
@@ -1029,7 +1084,7 @@ describe('<ResourceList />', () => {
         return item.id;
       }
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           selectedItems={[]}
@@ -1039,20 +1094,23 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(ResourceItem).first();
-      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
-
-      const lastItem = resourceList.find(ResourceItem).last();
-      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+      const firstItem = resourceList.find(ResourceItem);
+      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      const allItems = resourceList.findAll(ResourceItem);
+      const lastItem = allItems[allItems.length - 1];
+      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
-
       expect(onSelectionChange).toHaveBeenCalledWith(['5', '6', '7']);
     });
 
     it('does not select shift selected items if resolveItemId was not provided', () => {
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           selectedItems={[]}
@@ -1061,11 +1119,15 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(ResourceItem).first();
-      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
-
-      const lastItem = resourceList.find(ResourceItem).last();
-      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+      const firstItem = resourceList.find(ResourceItem);
+      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      const allItems = resourceList.findAll(ResourceItem);
+      const lastItem = allItems[allItems.length - 1];
+      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
 
@@ -1091,7 +1153,7 @@ describe('<ResourceList />', () => {
       }
 
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           selectedItems={[]}
@@ -1101,11 +1163,15 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(ResourceItem).first();
-      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
-
-      const lastItem = resourceList.find(ResourceItem).last();
-      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+      const firstItem = resourceList.find(ResourceItem);
+      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      const allItems = resourceList.findAll(ResourceItem);
+      const lastItem = allItems[allItems.length - 1];
+      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
 
@@ -1118,7 +1184,7 @@ describe('<ResourceList />', () => {
         return item.id;
       }
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           selectedItems={selectedItems}
@@ -1128,12 +1194,16 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      // Sets {lastSeleced: 0}
-      const firstItem = resourceList.find(ResourceItem).first();
-      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
-
-      const lastItem = resourceList.find(ResourceItem).last();
-      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+      // Sets {lastSelected: 0}
+      const firstItem = resourceList.find(ResourceItem);
+      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      const allItems = resourceList.findAll(ResourceItem);
+      const lastItem = allItems[allItems.length - 1];
+      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
 
@@ -1147,7 +1217,7 @@ describe('<ResourceList />', () => {
     });
 
     it('an inline label is hidden on small screen', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -1157,13 +1227,14 @@ describe('<ResourceList />', () => {
       );
 
       setSmallScreen();
-      trigger(resourceList.find(EventListener), 'handler');
-
-      expect(resourceList.find(Select).first().prop('labelInline')).toBe(false);
+      resourceList.find(EventListener)!.trigger('handler');
+      expect(resourceList).toContainReactComponent(Select, {
+        labelInline: false,
+      });
     });
 
     it('select mode is turned off on large screen when no items are selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -1172,15 +1243,17 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      trigger(resourceList.find(BulkActions), 'onSelectModeToggle', true);
-      trigger(resourceList.find(EventListener).first(), 'handler');
-      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+      resourceList.find(BulkActions)!.trigger('onSelectModeToggle', true);
+      resourceList.find(EventListener)!.trigger('handler');
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        selectMode: false,
+      });
     });
   });
 
   describe('isFiltered', () => {
     it('renders `selectAllFilteredItems` label if true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           resourceName={{singular: 'customer', plural: 'customers'}}
@@ -1191,11 +1264,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(
-        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
-      ).toStrictEqual({
-        content: 'Select all 2+ customers in this filter',
-        onAction: expect.any(Function),
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        paginatedSelectAllAction: {
+          content: 'Select all 2+ customers in this filter',
+          onAction: expect.any(Function),
+        },
       });
     });
 
@@ -1215,13 +1288,13 @@ describe('<ResourceList />', () => {
 
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
-      expect(
-        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
-      ).toBe('All 2+ customers in this filter are selected.');
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        paginatedSelectAllText: 'All 2+ customers in this filter are selected.',
+      });
     });
 
     it('renders `selectAllItems` label if not passed', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
           resourceName={{singular: 'customer', plural: 'customers'}}
@@ -1231,11 +1304,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(
-        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
-      ).toStrictEqual({
-        content: 'Select all 2+ customers in your store',
-        onAction: expect.any(Function),
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        paginatedSelectAllAction: {
+          content: 'Select all 2+ customers in your store',
+          onAction: expect.any(Function),
+        },
       });
     });
 
@@ -1254,9 +1327,9 @@ describe('<ResourceList />', () => {
 
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
-      expect(
-        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
-      ).toBe('All 2+ customers in your store are selected.');
+      expect(resourceList).toContainReactComponent(BulkActions, {
+        paginatedSelectAllText: 'All 2+ customers in your store are selected.',
+      });
     });
   });
 });
