@@ -14,9 +14,10 @@ import styles from '../../IndexTable.scss';
 type RowStatus = 'success' | 'subdued';
 
 export interface RowProps {
+  selectable: boolean;
   children: React.ReactNode;
   id: string;
-  selected: boolean;
+  selected?: boolean;
   position: number;
   subdued?: boolean;
   status?: RowStatus;
@@ -32,7 +33,7 @@ export const Row = memo(function Row({
   status,
   onNavigation,
 }: RowProps) {
-  const {selectMode, condensed} = useIndexRow();
+  const {selectable, selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
   const {
     value: hovered,
@@ -42,7 +43,7 @@ export const Row = memo(function Row({
 
   const rowClassName = classNames(
     styles.TableRow,
-    condensed && styles.condensedRow,
+    selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
@@ -114,6 +115,8 @@ export const Row = memo(function Row({
 
   const RowWrapper = condensed ? 'li' : 'tr';
 
+  const checkboxMarkup = selectable ? <Checkbox /> : null;
+
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
@@ -125,7 +128,7 @@ export const Row = memo(function Row({
           onClick={handleRowClick}
           ref={tableRowRef}
         >
-          <Checkbox />
+          {checkboxMarkup}
           {children}
         </RowWrapper>
       </RowHoveredContext.Provider>
