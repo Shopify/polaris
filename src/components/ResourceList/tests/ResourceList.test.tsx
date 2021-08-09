@@ -14,9 +14,7 @@ import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
 import {BulkActions} from '../../BulkActions';
 import {CheckableButton} from '../../CheckableButton';
-
 import {classNames} from '../../../utilities/css';
-
 import styles from '../ResourceList.scss';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -143,10 +141,9 @@ describe('<ResourceList />', () => {
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(BulkActions);
       expect(
         resourceList.find(BulkActions)!.props.paginatedSelectAllAction,
-      ).not.toBe(undefined);
+      ).not.toBeUndefined();
     });
   });
 
