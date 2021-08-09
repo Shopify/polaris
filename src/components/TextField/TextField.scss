@@ -231,10 +231,6 @@ $stacking-order: (
   &:disabled {
     cursor: default;
   }
-
-  &.ClearButton-hidden {
-    @include visually-hidden;
-  }
 }
 
 .Spinner {
