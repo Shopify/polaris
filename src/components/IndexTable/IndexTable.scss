@@ -148,6 +148,7 @@ $loading-panel-height: rem(53px);
     }
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.TableRow-hovered.TableRow-selected {
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
