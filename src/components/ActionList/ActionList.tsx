@@ -13,6 +13,8 @@ export interface ActionListProps {
   sections?: ActionListSection[];
   /** Defines a specific role attribute for each action in the list */
   actionRole?: string;
+  /** Visually hidden group description for screen readers */
+  accessibilityLabel?: string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -21,6 +23,7 @@ export function ActionList({
   items,
   sections = [],
   actionRole,
+  accessibilityLabel,
   onActionAnyItem,
 }: ActionListProps) {
   let finalSections: ActionListSection[] = [];
@@ -48,5 +51,9 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={className}>{sectionMarkup}</Element>;
+  return (
+    <Element aria-label={accessibilityLabel} className={className}>
+      {sectionMarkup}
+    </Element>
+  );
 }

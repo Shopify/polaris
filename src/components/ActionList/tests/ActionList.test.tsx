@@ -162,6 +162,17 @@ describe('<ActionList />', () => {
     expect(actionList.find(Section)).toContainReactText('File option');
   });
 
+  it('passes accessibilityLabel as aria-label to wrapping element', () => {
+    const accessibilityLabel = 'accessibility label';
+    const actionList = mountWithApp(
+      <ActionList accessibilityLabel={accessibilityLabel} sections={[]} />,
+    );
+
+    expect(actionList).toContainReactComponent('div', {
+      'aria-label': accessibilityLabel,
+    });
+  });
+
   it('renders an item with a badge', () => {
     const actionList = mountWithApp(
       <ActionList
