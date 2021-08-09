@@ -1,5 +1,7 @@
 @import '../../styles/common';
 
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth
+
 $index-table-stacking-order: (
   cell: 1,
   sticky-cell: 31,
@@ -20,6 +22,7 @@ $small-checkbox-offset: rem(2px);
 .IndexTable {
   position: relative;
   overflow: hidden;
+  border-radius: inherit;
 }
 
 .LoadingContainer-enter {
@@ -82,7 +85,6 @@ $loading-panel-height: rem(53px);
 }
 
 .Table-scrolling {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first,
   .TableCell-first + .TableCell,
   .TableHeading-first,
@@ -96,11 +98,21 @@ $loading-panel-height: rem(53px);
     filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
       filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+    }
+  }
+
+  &.Table-unselectable {
+    .TableHeading-second,
+    .TableCell:first-child {
+      visibility: visible;
+
+      @include breakpoint-after($breakpoint-small) {
+        filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+      }
     }
   }
 }
@@ -111,7 +123,6 @@ $loading-panel-height: rem(53px);
   filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
 
   &.statusSuccess {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -120,7 +131,6 @@ $loading-panel-height: rem(53px);
   }
 
   &.statusSubdued {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -129,7 +139,6 @@ $loading-panel-height: rem(53px);
   }
 
   &.TableRow-hovered {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -138,7 +147,6 @@ $loading-panel-height: rem(53px);
   }
 
   &.TableRow-selected {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableHeading-first,
     .TableHeading-second,
@@ -178,10 +186,14 @@ $loading-panel-height: rem(53px);
 }
 
 .TableHeading-second {
-  padding-left: 0;
+  &:not(.TableHeading-unselectable) {
+    padding-left: 0;
+  }
 
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
+    z-index: auto;
+    left: 0;
   }
 }
 
@@ -214,6 +226,42 @@ $loading-panel-height: rem(53px);
   }
 }
 
+.Table-unselectable {
+  .TableCell:first-child {
+    left: 0;
+    background-color: var(--p-surface);
+
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      z-index: z-index(sticky-cell, $index-table-stacking-order);
+    }
+  }
+
+  .statusSuccess {
+    .TableCell:first-child {
+      background-color: var(--p-surface-primary-selected);
+    }
+  }
+
+  .statusSubdued {
+    .TableCell:first-child {
+      background-color: var(--p-surface-subdued);
+    }
+  }
+
+  .TableRow-hovered {
+    .TableCell:first-child {
+      background-color: var(--p-surface-selected-hovered);
+    }
+  }
+
+  .TableRow-selected {
+    .TableCell:first-child {
+      background-color: var(--p-surface-selected);
+    }
+  }
+}
+
 .Table-sticky-scrolling {
   .TableCell:last-child,
   .TableHeading-last {
@@ -242,7 +290,6 @@ $loading-panel-height: rem(53px);
     }
   }
 
-  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
   .statusSuccess {
     .TableCell:last-child {
       background-color: var(--p-surface-primary-selected);
@@ -266,7 +313,6 @@ $loading-panel-height: rem(53px);
       background-color: var(--p-surface-selected);
     }
   }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 }
 
 .StickyTable {

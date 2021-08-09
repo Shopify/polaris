@@ -15,7 +15,7 @@ export interface IndexProviderProps {
   children?: React.ReactNode;
   selectable?: boolean;
   itemCount: number;
-  selectedItemsCount: typeof SELECT_ALL_ITEMS | number;
+  selectedItemsCount?: typeof SELECT_ALL_ITEMS | number;
   resourceName?: {
     singular: string;
     plural: string;
@@ -23,7 +23,7 @@ export interface IndexProviderProps {
   loading?: boolean;
   hasMoreItems?: boolean;
   condensed?: boolean;
-  onSelectionChange(
+  onSelectionChange?(
     selectionType: SelectionType,
     toggleType: boolean,
     selection?: string | Range,
@@ -48,7 +48,7 @@ export interface BulkSelectionDataOptions {
 }
 
 export interface HandleBulkSelectionOptions {
-  onSelectionChange(
+  onSelectionChange?(
     selectionType: SelectionType,
     toggleType: boolean,
     selection?: string | Range,

@@ -14,7 +14,7 @@ import {Badge} from '../../Badge';
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
-import {ScrollContainer} from '../components';
+import {ScrollContainer, Checkbox as IndexTableCheckbox} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 
@@ -158,6 +158,17 @@ describe('<IndexTable>', () => {
     expect(index).toContainReactComponent('table', {
       className: 'Table Table-sticky-last',
     });
+  });
+
+  it('does not render checkboxes when selectable is set to false', () => {
+    const index = mountWithApp(
+      <IndexTable {...defaultProps} selectable={false}>
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
+    );
+
+    expect(index).not.toContainReactComponent(IndexTableCheckbox);
+    expect(index).not.toContainReactComponent(Checkbox);
   });
 
   describe('ScrollContainer', () => {
