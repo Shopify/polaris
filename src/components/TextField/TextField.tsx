@@ -274,14 +274,13 @@ export function TextField({
   }
 
   const clearButtonVisible = normalizedValue !== '';
-  const clearButtonClassName = classNames(styles.ClearButton);
 
   const clearButtonMarkup =
     clearButtonVisible && clearButton ? (
       <button
         type="button"
         testID="clearButton"
-        className={clearButtonClassName}
+        className={styles.ClearButton}
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
