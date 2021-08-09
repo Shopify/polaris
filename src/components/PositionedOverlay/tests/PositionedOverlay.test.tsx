@@ -3,7 +3,11 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {EventListener} from '../../EventListener';
-import {PositionedOverlay} from '../PositionedOverlay';
+import {
+  PositionedOverlay,
+  OBSERVER_CONFIG_OVERLAY,
+  OBSERVER_CONFIG_ACTIVATOR,
+} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
 import * as geometry from '../../../utilities/geometry';
 import styles from '../PositionedOverlay.scss';
@@ -38,7 +42,19 @@ describe('<PositionedOverlay />', () => {
       mutationObserverObserveSpy.mockRestore();
     });
 
-    it('observers the activator', () => {
+    it('observes the overlay', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      const element = positionedOverlay.find('div').getDOMNode();
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
+        element,
+        OBSERVER_CONFIG_OVERLAY,
+      );
+    });
+
+    it('observes the activator', () => {
       const activator = document.createElement('button');
       mountWithAppProvider(
         <PositionedOverlay
@@ -48,11 +64,10 @@ describe('<PositionedOverlay />', () => {
         />,
       );
 
-      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(activator, {
-        characterData: true,
-        childList: true,
-        subtree: true,
-      });
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(
+        activator,
+        OBSERVER_CONFIG_ACTIVATOR,
+      );
     });
   });
 

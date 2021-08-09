@@ -57,7 +57,14 @@ interface State {
   lockPosition: boolean;
 }
 
-const OBSERVER_CONFIG = {
+export const OBSERVER_CONFIG_OVERLAY = {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  characterData: true,
+};
+
+export const OBSERVER_CONFIG_ACTIVATOR = {
   childList: true,
   subtree: true,
   characterData: true,
@@ -281,8 +288,8 @@ export class PositionedOverlay extends PureComponent<
           },
           () => {
             if (!this.overlay) return;
-            this.observer.observe(this.overlay, OBSERVER_CONFIG);
-            this.observer.observe(activator, OBSERVER_CONFIG);
+            this.observer.observe(this.overlay, OBSERVER_CONFIG_OVERLAY);
+            this.observer.observe(activator, OBSERVER_CONFIG_ACTIVATOR);
           },
         );
       },
