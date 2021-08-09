@@ -44,5 +44,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for DualThumb ([#4341](https://github.com/Shopify/polaris-react/pull/4341))
 - Modernized tests for AppProvider, AfterInitialMount components([#4315](https://github.com/Shopify/polaris-react/pull/4331))
 - Modernized tests for ResourceItem ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
+- Modernized tests for ResourceItem, ResourceList ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
 
 ### Deprecations
