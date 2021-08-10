@@ -14,7 +14,6 @@ import styles from '../../IndexTable.scss';
 type RowStatus = 'success' | 'subdued';
 
 export interface RowProps {
-  selectable: boolean;
   children: React.ReactNode;
   id: string;
   selected?: boolean;

@@ -27,7 +27,6 @@ export function IndexProvider({
     resourceName,
     selectMode,
     bulkSelectState,
-    selectable,
   } = useBulkSelectionData({
     selectedItemsCount,
     itemCount,
