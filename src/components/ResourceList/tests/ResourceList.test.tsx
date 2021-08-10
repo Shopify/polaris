@@ -14,7 +14,6 @@ import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
 import {BulkActions} from '../../BulkActions';
 import {CheckableButton} from '../../CheckableButton';
-import {classNames} from '../../../utilities/css';
 import styles from '../ResourceList.scss';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -371,10 +370,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderWrapper,
-      });
-      expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderContentWrapper,
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -383,10 +379,7 @@ describe('<ResourceList />', () => {
         <ResourceList items={[]} renderItem={renderItem} />,
       );
       expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderWrapper,
-      });
-      expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderContentWrapper,
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -400,10 +393,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList).toContainReactComponent('div', {
-        className: classNames(
-          styles.HeaderWrapper,
-          styles['HeaderWrapper-hasSort'],
-        ),
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -416,10 +406,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList).toContainReactComponent('div', {
-        className: classNames(
-          styles.HeaderWrapper,
-          styles['HeaderWrapper-hasAlternateTool'],
-        ),
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -432,10 +419,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList).toContainReactComponent('div', {
-        className: classNames(
-          styles.HeaderWrapper,
-          styles['HeaderWrapper-hasSelect'],
-        ),
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -448,10 +432,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList).toContainReactComponent('div', {
-        className: classNames(
-          styles.HeaderWrapper,
-          styles['HeaderWrapper-hasSelect'],
-        ),
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -460,10 +441,7 @@ describe('<ResourceList />', () => {
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderWrapper,
-      });
-      expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderContentWrapper,
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -477,19 +455,13 @@ describe('<ResourceList />', () => {
       );
       // initially not rendered
       expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderWrapper,
-      });
-      expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderContentWrapper,
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
       // update props
       resourceList.setProps({items: itemsWithID});
       // now it's rendered
       expect(resourceList).toContainReactComponent('div', {
-        className: classNames(
-          styles.HeaderWrapper,
-          styles['HeaderWrapper-hasSelect'],
-        ),
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
 
@@ -503,10 +475,7 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList).toContainReactComponent(EmptySearchResult);
       expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderWrapper,
-      });
-      expect(resourceList).not.toContainReactComponent('div', {
-        className: styles.HeaderContentWrapper,
+        className: expect.stringContaining(styles.HeaderWrapper),
       });
     });
   });

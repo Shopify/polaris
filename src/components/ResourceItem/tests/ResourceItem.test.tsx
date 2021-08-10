@@ -10,7 +10,6 @@ import {
 } from 'components';
 
 import {ResourceItem} from '../ResourceItem';
-import {classNames} from '../../../utilities/css';
 import {ResourceListContext} from '../../../utilities/resource-list';
 import styles from '../ResourceItem.scss';
 
@@ -70,6 +69,10 @@ describe('<ResourceItem />', () => {
   const url = 'http://test-link.com';
   const external = false;
   const ariaLabel = 'View Item';
+
+  const resourceItemSelector = {className: styles.ResourceItem};
+  const resourceItemFilter = (node: any) =>
+    node.prop('className').includes(styles.ResourceItem);
 
   describe('accessibilityLabel', () => {
     it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
@@ -214,8 +217,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const div = element.find('div', {'data-href': url} as any);
-      expect(div).not.toBeNull();
+      expect(element).toContainReactComponent('div', {'data-href': url} as any);
     });
   });
 
@@ -299,12 +301,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div', {className: styles.ResourceItem})!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {},
-        });
+      wrapper.find('div', resourceItemSelector)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
@@ -321,12 +321,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div', {className: styles.ResourceItem})!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {},
-        });
+      wrapper.find('div', resourceItemSelector)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
@@ -337,12 +335,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div', {className: styles.ResourceItem})!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {metaKey: true},
-        });
+      wrapper.find('div', resourceItemSelector)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
 
@@ -355,7 +351,7 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {className: styles.ResourceItem})!
+        .find('div', resourceItemSelector)!
         .trigger('onKeyUp', {key: 'Enter'});
 
       expect(onClick).toHaveBeenCalled();
@@ -370,7 +366,7 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {className: styles.ResourceItem})!
+        .find('div', resourceItemSelector)!
         .trigger('onKeyUp', {key: 'Tab'});
 
       expect(onClick).not.toHaveBeenCalled();
@@ -385,13 +381,8 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {
-          className: classNames(
-            styles.ResourceItem,
-            styles.selectable,
-            styles.selectMode,
-          ),
-        })!
+        .find('div')
+        .findWhere(resourceItemFilter)!
         .trigger('onKeyUp', {key: 'Enter'});
 
       expect(onClick).not.toHaveBeenCalled();
@@ -404,12 +395,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div', {className: styles.ResourceItem})!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {ctrlKey: true},
-        });
+      wrapper.find('div', resourceItemSelector)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });
@@ -465,13 +454,8 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {
-          className: classNames(
-            styles.ResourceItem,
-            styles.selectable,
-            styles.selectMode,
-          ),
-        })!
+        .find('div')
+        .findWhere(resourceItemFilter)!
         .trigger('onClick', {
           stopPropagation: () => {},
           nativeEvent: {},
@@ -495,13 +479,8 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {
-          className: classNames(
-            styles.ResourceItem,
-            styles.selectable,
-            styles.selectMode,
-          ),
-        })!
+        .find('div')
+        .findWhere(resourceItemFilter)!
         .trigger('onClick', {
           stopPropagation: () => {},
           nativeEvent: {shiftKey: false},
@@ -531,14 +510,8 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {
-          className: classNames(
-            styles.ResourceItem,
-            styles.selectable,
-            styles.selected,
-            styles.selectMode,
-          ),
-        })!
+        .find('div')
+        .findWhere(resourceItemFilter)!
         .trigger('onClick', {
           stopPropagation: () => {},
           nativeEvent: {metaKey: true},
@@ -554,14 +527,8 @@ describe('<ResourceItem />', () => {
       );
 
       wrapper
-        .find('div', {
-          className: classNames(
-            styles.ResourceItem,
-            styles.selectable,
-            styles.selected,
-            styles.selectMode,
-          ),
-        })!
+        .find('div')
+        .findWhere(resourceItemFilter)!
         .trigger('onClick', {
           stopPropagation: () => {},
           nativeEvent: {ctrlKey: true},
@@ -799,8 +766,10 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      const li = item.find('li', {'data-href': 'google.com'} as any);
-      expect(li).not.toBeNull();
+
+      expect(item).toContainReactComponent('li', {
+        'data-href': 'google.com',
+      } as any);
     });
 
     it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
@@ -814,8 +783,9 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const li = item.find('li', {'data-href': undefined} as any);
-      expect(li).not.toBeNull();
+      expect(item).toContainReactComponent('li', {
+        'data-href': undefined,
+      } as any);
     });
   });
 });
