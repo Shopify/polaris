@@ -190,7 +190,7 @@ $loading-panel-height: rem(53px);
   display: flex;
 }
 
-.StickyColumnHeaderCheckbox {
+.FirstStickyHeaderElement {
   margin-left: #{-1 * $small-checkbox-offset};
   padding-right: $small-checkbox-offset;
 }

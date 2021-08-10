@@ -102,7 +102,7 @@ function IndexTableBase({
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
   const stickyHeaderWrapperElement = useRef<HTMLDivElement>(null);
-  const stickyHeaderCheckboxElement = useRef<HTMLDivElement>(null);
+  const firstStickyHeaderElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
@@ -131,11 +131,15 @@ function IndexTableBase({
   }, [handleSelectionChange, selectedItemsCount]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
+    if (!isSelectableIndex) {
+      return tableHeadingRects.current[0].offsetWidth;
+    }
+
     return condensed
       ? tableHeadingRects.current[0].offsetWidth
       : tableHeadingRects.current[0].offsetWidth +
           tableHeadingRects.current[1].offsetWidth;
-  }, [condensed]);
+  }, [condensed, isSelectableIndex]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -161,14 +165,14 @@ function IndexTableBase({
           }
 
           // update left offset for first column
-          if (selectMode && tableHeadings.current.length > 1)
+          if (isSelectableIndex && tableHeadings.current.length > 1)
             tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
           // update the min width of the checkbox to be the be the un-padded width of the first heading
-          if (selectMode && stickyHeaderCheckboxElement?.current) {
+          if (isSelectableIndex && firstStickyHeaderElement?.current) {
             const elementStyle = getComputedStyle(tableHeadings.current[0]);
             const boxWidth = tableHeadings.current[0].offsetWidth;
-            stickyHeaderCheckboxElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
+            firstStickyHeaderElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
           }
 
           // update sticky header min-widths
@@ -177,7 +181,9 @@ function IndexTableBase({
             if (index === 0 && !isSmallScreen()) {
               minWidth = calculateFirstHeaderOffset();
             } else if (tableHeadingRects.current.length > index) {
-              minWidth = tableHeadingRects.current[index].offsetWidth;
+              minWidth =
+                tableHeadingRects.current[isSelectableIndex ? index : index - 1]
+                  .offsetWidth;
             }
 
             heading.style.minWidth = `${minWidth}px`;
@@ -186,7 +192,7 @@ function IndexTableBase({
         SIXTY_FPS,
         {leading: true, trailing: true, maxWait: SIXTY_FPS},
       ),
-    [calculateFirstHeaderOffset, selectMode],
+    [calculateFirstHeaderOffset, isSelectableIndex],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -295,7 +301,7 @@ function IndexTableBase({
   }, [
     headings,
     resizeTableHeadings,
-    stickyHeaderCheckboxElement,
+    firstStickyHeaderElement,
     tableInitialized,
   ]);
 
@@ -342,15 +348,29 @@ function IndexTableBase({
       data-index-table-sticky-heading
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        <div
-          className={styles.StickyColumnHeaderCheckbox}
-          ref={stickyHeaderCheckboxElement}
-        >
-          {renderCheckboxContent()}
-        </div>
-        <div className={styles['StickyTableHeading-second-scrolling']}>
-          {renderHeadingContent(headings[0])}
-        </div>
+        {isSelectableIndex && (
+          <div
+            className={styles.FirstStickyHeaderElement}
+            ref={firstStickyHeaderElement}
+          >
+            {renderCheckboxContent()}
+          </div>
+        )}
+
+        {isSelectableIndex && (
+          <div className={styles['StickyTableHeading-second-scrolling']}>
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
+
+        {!isSelectableIndex && (
+          <div
+            className={styles.FirstStickyHeaderElement}
+            ref={firstStickyHeaderElement}
+          >
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
       </Stack>
     </div>
   );
