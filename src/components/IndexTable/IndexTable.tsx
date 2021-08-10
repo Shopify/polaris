@@ -183,7 +183,7 @@ function IndexTableBase({
             } else if (tableHeadingRects.current.length > index) {
               minWidth =
                 tableHeadingRects.current[isSelectableIndex ? index : index - 1]
-                  .offsetWidth;
+                  ?.offsetWidth || 0;
             }
 
             heading.style.minWidth = `${minWidth}px`;
