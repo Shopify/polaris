@@ -78,7 +78,7 @@ describe('<Menu />', () => {
       <Menu {...defaultProps} message={message} open />,
     );
 
-    expect(menu.find(Message)!.prop('badge')).toStrictEqual(message.badge);
+    expect(menu).toContainReactComponent(Message, {badge: message.badge});
   });
 
   it('calls the onClose prop in the Popover onClose', () => {
