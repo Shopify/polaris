@@ -125,7 +125,7 @@ describe('<Menu />', () => {
       const {message, ...rest} = defaultProps;
       const menu = mountWithApp(<Menu {...rest} open />);
 
-      expect(menu.find(Popover)!.prop('fullHeight')).toBe(false);
+      expect(menu).toContainReactComponent(Popover, {fullHeight: false});
     });
 
     it('passes isFullHeight to popover as true if menu is provided a message', () => {
