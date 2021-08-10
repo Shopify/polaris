@@ -98,7 +98,7 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      expect(list).toContainReactText('Repeat customers');
+      expect(list.find(Item)).toContainReactText('Repeat customers');
     });
   });
 });

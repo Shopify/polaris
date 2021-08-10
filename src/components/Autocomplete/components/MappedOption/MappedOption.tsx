@@ -1,8 +1,7 @@
 import React, {memo} from 'react';
 
+import type {OptionDescriptor, ArrayElement} from '../../../../types';
 import {ListBox} from '../../../ListBox';
-import type {OptionDescriptor} from '../../../OptionList';
-import type {ArrayElement} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './MappedOption.scss';

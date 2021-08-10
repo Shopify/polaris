@@ -39,6 +39,7 @@ export function ActionList({
     return section.items.length > 0 ? (
       <Section
         key={section.title || index}
+        firstSection={index === 0}
         section={section}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}

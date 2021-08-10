@@ -1,19 +1,24 @@
 import React, {useMemo, useCallback} from 'react';
 
-import type {ActionListItemDescriptor} from '../../types';
-import type {OptionDescriptor} from '../OptionList';
+import type {
+  ActionListItemDescriptor,
+  OptionDescriptor,
+  SectionDescriptor,
+} from '../../types';
 import type {PopoverProps} from '../Popover';
+import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
 import {ComboBox} from '../ComboBox';
 import {ListBox} from '../ListBox';
 
-import {MappedOption, MappedAction} from './components';
+import {MappedAction, MappedOption} from './components';
+import styles from './Autocomplete.scss';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: OptionDescriptor[];
+  options: SectionDescriptor[] | OptionDescriptor[];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
@@ -61,18 +66,56 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 }: AutocompleteProps) {
   const i18n = useI18n();
 
+  const buildMappedOptionFromOption = useCallback(
+    (options: OptionDescriptor[]) => {
+      return options.map((option) => (
+        <MappedOption
+          {...option}
+          key={option.id || option.value}
+          selected={selected.includes(option.value)}
+          singleSelection={!allowMultiple}
+        />
+      ));
+    },
+    [selected, allowMultiple],
+  );
+
   const optionsMarkup = useMemo(() => {
     const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+
+    if (isSection(conditionalOptions)) {
+      const noOptionsAvailable = conditionalOptions.every(
+        ({options}) => options.length === 0,
+      );
+
+      if (noOptionsAvailable) {
+        return null;
+      }
+
+      const optionsMarkup = conditionalOptions.map(({options, title}) => {
+        if (options.length === 0) {
+          return null;
+        }
+
+        const optionMarkup = buildMappedOptionFromOption(options);
+
+        return (
+          <ListBox.Section
+            divider={false}
+            title={<ListBox.Header>{title}</ListBox.Header>}
+            key={title}
+          >
+            {optionMarkup}
+          </ListBox.Section>
+        );
+      });
+
+      return <div className={styles.SectionWrapper}>{optionsMarkup}</div>;
+    }
+
     const optionList =
       conditionalOptions.length > 0
-        ? conditionalOptions.map((option) => (
-            <MappedOption
-              {...option}
-              key={option.id || option.value}
-              selected={selected.includes(option.value)}
-              singleSelection={!allowMultiple}
-            />
-          ))
+        ? buildMappedOptionFromOption(conditionalOptions)
         : null;
 
     if (listTitle) {
@@ -92,8 +135,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     loading,
     options,
     willLoadMoreResults,
-    allowMultiple,
-    selected,
+    buildMappedOptionFromOption,
   ]);
 
   const loadingMarkup = loading ? (

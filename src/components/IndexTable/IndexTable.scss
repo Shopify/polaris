@@ -2,7 +2,7 @@
 
 $index-table-stacking-order: (
   cell: 1,
-  sticky-cell: 30,
+  sticky-cell: 31,
   scroll-bar: 35,
   bulk-actions: 36,
   loading-panel: 37,
@@ -93,17 +93,14 @@ $loading-panel-height: rem(53px);
 
   .TableCell-first,
   .TableHeading-first {
-    box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider);
-    @include breakpoint-after($breakpoint-small) {
-      box-shadow: 0 rem(-1px) 0 0 var(--p-divider);
-    }
+    filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
-      box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider);
+      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
     }
   }
 }
@@ -111,6 +108,7 @@ $loading-panel-height: rem(53px);
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
+  filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
 
   &.statusSuccess {
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
@@ -135,7 +133,7 @@ $loading-panel-height: rem(53px);
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
@@ -147,6 +145,16 @@ $loading-panel-height: rem(53px);
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected);
+    }
+  }
+
+  // stylelint-disable-next-line selector-max-class
+  &.TableRow-hovered.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected-hovered);
     }
   }
 }
@@ -187,17 +195,11 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.TableHeading-last {
-  position: sticky;
-  right: 0;
-}
-
 .TableCell {
   z-index: z-index(cell, $index-table-stacking-order);
   text-align: left;
   padding: spacing(tight) spacing();
   white-space: nowrap;
-  box-shadow: 0 rem(-1px) 0 0 var(--p-divider);
 }
 
 .TableCell-flush {
@@ -220,6 +222,61 @@ $loading-panel-height: rem(53px);
     z-index: z-index(sticky-cell, $index-table-stacking-order);
     padding: 0;
   }
+}
+
+.Table-sticky-scrolling {
+  .TableCell:last-child,
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+    }
+  }
+}
+
+.Table-sticky-last {
+  .TableCell:last-child {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: z-index(sticky-cell, $index-table-stacking-order);
+    }
+  }
+
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: auto;
+    }
+  }
+
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+  .statusSuccess {
+    .TableCell:last-child {
+      background-color: var(--p-surface-primary-selected);
+    }
+  }
+
+  .statusSubdued {
+    .TableCell:last-child {
+      background-color: var(--p-surface-subdued);
+    }
+  }
+
+  .TableRow-hovered {
+    .TableCell:last-child {
+      background-color: var(--p-surface-selected-hovered);
+    }
+  }
+
+  .TableRow-selected {
+    .TableCell:last-child {
+      background-color: var(--p-surface-selected);
+    }
+  }
+  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 }
 
 .StickyTable {
@@ -372,6 +429,7 @@ $scroll-bar-border-radius: rem(4px);
   transition: transform easing() duration();
   display: flex;
   border-top: border('divider');
+  filter: none;
 }
 
 [data-selectmode='true'] {
@@ -395,7 +453,6 @@ $scroll-bar-border-radius: rem(4px);
   min-height: 5.6rem;
   padding: 1rem spacing();
   background-color: var(--p-surface);
-  box-shadow: shadow();
 }
 
 .StickyTable-condensed {

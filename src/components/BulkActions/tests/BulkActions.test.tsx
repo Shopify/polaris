@@ -1,12 +1,16 @@
 import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'test-utilities';
-import {Popover} from 'components';
+import {Popover, ActionList} from 'components';
 
 import {CheckableButton} from '../../CheckableButton';
 import {Button} from '../../Button';
-import {BulkActionButton, BulkActionButtonProps} from '../components';
-import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {
+  BulkActionButton,
+  BulkActionMenu,
+  BulkActionButtonProps,
+} from '../components';
+import {BulkAction, BulkActions, BulkActionsProps} from '../BulkActions';
 import styles from '../BulkActions.scss';
 
 interface Props {
@@ -80,8 +84,8 @@ describe('<BulkActions />', () => {
 
       const bulkActionsCount = bulkActions.findAllWhere(
         (node: any) =>
-          node.props.content === promotedActions[0].content ||
-          node.props.content === promotedActions[1].content,
+          node.props.content === (promotedActions[0] as BulkAction).content ||
+          node.props.content === (promotedActions[1] as BulkAction).content,
       ).length;
 
       expect(bulkActionsCount).toBe(promotedActions.length);
@@ -240,14 +244,30 @@ describe('<BulkActions />', () => {
     });
 
     describe('promotedActions', () => {
+      let warnSpy: jest.SpyInstance;
+
+      beforeEach(() => {
+        warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      });
+
+      afterEach(() => {
+        warnSpy.mockRestore();
+      });
+
       it('renders a BulkActionButton for each item in promotedActions', () => {
-        const warnSpy = jest.spyOn(console, 'warn');
-        warnSpy.mockImplementation(() => {});
         const bulkActionProps: Props = {
           bulkActions: [],
           promotedActions: [
             {
-              content: 'button 1',
+              title: 'button1',
+              actions: [
+                {
+                  content: 'action1',
+                },
+                {
+                  content: 'action2',
+                },
+              ],
             },
             {
               content: 'button 2',
@@ -265,7 +285,88 @@ describe('<BulkActions />', () => {
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
         expect(bulkActions).toContainReactComponentTimes(BulkActionButton, 3);
-        warnSpy.mockRestore();
+      });
+
+      it('renders a BulkActionMenu when promotedActions are menus', () => {
+        const bulkActionProps: Props = {
+          bulkActions: [],
+          promotedActions: [
+            {
+              title: 'button1',
+              actions: [
+                {
+                  content: 'action1',
+                },
+                {
+                  content: 'action2',
+                },
+              ],
+            },
+            {
+              title: 'button2',
+              actions: [
+                {
+                  content: 'action1',
+                },
+                {
+                  content: 'action2',
+                },
+              ],
+            },
+            {
+              content: 'button 2',
+            },
+            {
+              content: 'button 3',
+            },
+          ],
+          paginatedSelectAllText: 'paginated select all text string',
+          selected: false,
+          accessibilityLabel: 'test-aria-label',
+          label: 'Test-Label',
+          disabled: false,
+        };
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+        const bulkActionButtons = bulkActions.findAll(BulkActionButton);
+        expect(bulkActionButtons).toHaveLength(4);
+        const bulkActionMenus = bulkActions.findAll(BulkActionMenu);
+        expect(bulkActionMenus).toHaveLength(2);
+      });
+
+      it('opens a popover menu when clicking on a promoted action that is a menu', () => {
+        const promotedActionToBeClicked = {
+          title: 'button1',
+          actions: [
+            {
+              content: 'action1',
+            },
+            {
+              content: 'action2',
+            },
+          ],
+        };
+        const bulkActionProps: Props = {
+          bulkActions: [],
+          promotedActions: [
+            {...promotedActionToBeClicked},
+            {
+              content: 'button 2',
+            },
+          ],
+          paginatedSelectAllText: 'paginated select all text string',
+          selected: false,
+          accessibilityLabel: 'test-aria-label',
+          label: 'Test-Label',
+          disabled: false,
+        };
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+
+        bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+        const actionList = bulkActions.find(ActionList);
+        expect(actionList!.prop('items')).toBe(
+          promotedActionToBeClicked.actions,
+        );
       });
     });
 
