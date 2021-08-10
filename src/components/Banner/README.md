@@ -262,7 +262,7 @@ Use when you want merchants to take an action after reading the banner.
   title="Some of your product variants are missing weights"
   status="warning"
   action={{content: 'Edit variant weights', url: ''}}
-  secondary={{content: 'Learn more', url: ''}}
+  secondaryAction={{content: 'Learn more', url: ''}}
   onDismiss={() => {}}
 >
   <p>

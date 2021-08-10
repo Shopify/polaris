@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {mount} from 'test-utilities';
+import {mountWithApp} from 'test-utilities/react-testing';
 
 import {AfterInitialMount} from '../AfterInitialMount';
 
@@ -12,7 +12,7 @@ describe('AfterInitialMount', () => {
       return null;
     }
 
-    mount(<AfterInitialMount fallback={<Fallback />} />);
+    mountWithApp(<AfterInitialMount fallback={<Fallback />} />);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -31,7 +31,7 @@ describe('AfterInitialMount', () => {
       return null;
     }
 
-    const afterInitialMount = mount(
+    const afterInitialMount = mountWithApp(
       <AfterInitialMount fallback={<Fallback />}>
         <Children />
       </AfterInitialMount>,

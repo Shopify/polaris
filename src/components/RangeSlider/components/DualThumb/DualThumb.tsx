@@ -238,15 +238,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
             <div
               className={trackWrapperClassName}
               onMouseDown={this.handleMouseDownTrack}
-              testID="trackWrapper"
               ref={this.trackWrapper}
             >
-              <div
-                className={styles.Track}
-                style={cssVars}
-                ref={this.track}
-                testID="track"
-              />
+              <div className={styles.Track} style={cssVars} ref={this.track} />
               <div className={styles['Track--dashed']} />
               <div
                 id={idLower}

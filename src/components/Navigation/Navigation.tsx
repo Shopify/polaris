@@ -16,6 +16,8 @@ export interface NavigationProps {
   children?: React.ReactNode;
   contextControl?: React.ReactNode;
   onDismiss?(): void;
+  /** id of the element used as aria-labelledby */
+  ariaLabelledBy?: string;
 }
 
 export const Navigation: React.FunctionComponent<NavigationProps> & {
@@ -26,6 +28,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   contextControl,
   location,
   onDismiss,
+  ariaLabelledBy,
 }: NavigationProps) {
   const {logo} = useTheme();
   const width = getWidth(logo, 104);
@@ -61,7 +64,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
-        <nav className={styles.Navigation}>
+        <nav className={styles.Navigation} aria-labelledby={ariaLabelledBy}>
           {mediaMarkup}
           <Scrollable className={styles.PrimaryNavigation}>
             {children}

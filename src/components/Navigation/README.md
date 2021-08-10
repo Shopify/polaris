@@ -412,6 +412,12 @@ This example showcases the many elements that can compose a navigation, especial
       },
       {
         url: '/path/to/place',
+        label: 'External link item',
+        icon: HomeMajor,
+        external: true,
+      },
+      {
+        url: '/path/to/place',
         label: 'New item',
         new: true,
         icon: HomeMajor,
@@ -508,6 +514,38 @@ This example showcases the many elements that can compose a navigation, especial
       onClick: () => {},
     }}
     separator
+  />
+</Navigation>
+```
+
+### Navigation with aria-labelledby
+
+This example shows how to add an aria-labelledby to add a hidden label to the `nav` element.
+
+```jsx
+<Navigation location="/" ariaLabelledBy="label-id">
+  <VisuallyHidden>
+    <p id="label-id">Hidden label</p>
+  </VisuallyHidden>
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: HomeMajor,
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: OrdersMajor,
+        badge: '15',
+      },
+      {
+        url: '/path/to/place',
+        label: 'Products',
+        icon: ProductsMajor,
+      },
+    ]}
   />
 </Navigation>
 ```

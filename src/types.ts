@@ -25,7 +25,7 @@ export interface SectionDescriptor {
 export type Descriptor = SectionDescriptor | OptionDescriptor;
 
 export type IconSource =
-  | React.SFC<React.SVGProps<SVGSVGElement>>
+  | React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   | 'placeholder'
   | string;
 

@@ -24,6 +24,38 @@ describe('<PositionedOverlay />', () => {
     });
   });
 
+  describe('mutation observer', () => {
+    let mutationObserverObserveSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+    });
+
+    it('observers the activator', () => {
+      const activator = document.createElement('button');
+      mountWithAppProvider(
+        <PositionedOverlay
+          {...mockProps}
+          activator={activator}
+          preferredPosition="above"
+        />,
+      );
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(activator, {
+        characterData: true,
+        childList: true,
+        subtree: true,
+      });
+    });
+  });
+
   describe('preferredPosition', () => {
     let calculateVerticalPositionMock: jest.SpyInstance;
 
