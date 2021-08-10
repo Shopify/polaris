@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithListBoxProvider} from 'test-utilities/list-box';
+import {mountWithListboxProvider} from 'test-utilities/listbox';
 
-import {ListBox} from '../../../../ListBox';
+import {Listbox} from '../../../../Listbox';
 import {MappedAction} from '../MappedAction';
 import {MappedActionContext} from '../../../../../utilities/autocomplete';
 import {Badge} from '../../../../Badge';
@@ -13,7 +13,7 @@ describe('MappedAction', () => {
       status: 'new' as const,
       content: 'new',
     };
-    const mappedAction = mountWithListBoxProvider(
+    const mappedAction = mountWithListboxProvider(
       <MappedAction badge={badge} />,
     );
 
@@ -24,7 +24,7 @@ describe('MappedAction', () => {
   });
 
   it('renders suffix when provided', () => {
-    const mappedAction = mountWithListBoxProvider(
+    const mappedAction = mountWithListboxProvider(
       <MappedAction suffix={<MockComponent />} />,
     );
 
@@ -33,7 +33,7 @@ describe('MappedAction', () => {
 
   it('renders helpText when provided', () => {
     const helpText = 'help text';
-    const mappedAction = mountWithListBoxProvider(
+    const mappedAction = mountWithListboxProvider(
       <MappedAction helpText={helpText} />,
     );
 
@@ -41,7 +41,7 @@ describe('MappedAction', () => {
   });
 
   it('renders ellipsis when true', () => {
-    const mappedAction = mountWithListBoxProvider(
+    const mappedAction = mountWithListboxProvider(
       <MappedAction ellipsis content="content for ellipsis" />,
     );
 
@@ -56,7 +56,7 @@ describe('MappedAction', () => {
       onAction: () => {},
       destructive: false,
     };
-    const mappedAction = mountWithListBoxProvider(<MappedAction {...props} />);
+    const mappedAction = mountWithListboxProvider(<MappedAction {...props} />);
 
     expect(mappedAction).toContainReactComponent(MappedActionContext.Provider, {
       value: {
@@ -66,48 +66,48 @@ describe('MappedAction', () => {
     });
   });
 
-  describe('ListBox.Action', () => {
+  describe('Listbox.Action', () => {
     it('renders', () => {
-      const mappedAction = mountWithListBoxProvider(<MappedAction />);
+      const mappedAction = mountWithListboxProvider(<MappedAction />);
 
-      expect(mappedAction).toContainReactComponent(ListBox.Action);
+      expect(mappedAction).toContainReactComponent(Listbox.Action);
     });
 
     it('passes active', () => {
-      const mappedAction = mountWithListBoxProvider(<MappedAction active />);
+      const mappedAction = mountWithListboxProvider(<MappedAction active />);
 
-      expect(mappedAction).toContainReactComponent(ListBox.Action, {
+      expect(mappedAction).toContainReactComponent(Listbox.Action, {
         selected: true,
       });
     });
 
     it('passes disabled', () => {
       const disabled = true;
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction disabled={disabled} />,
       );
 
-      expect(mappedAction).toContainReactComponent(ListBox.Action, {
+      expect(mappedAction).toContainReactComponent(Listbox.Action, {
         disabled,
       });
     });
 
     it('passes value', () => {
       const value = 'value';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction content={value} />,
       );
 
-      expect(mappedAction).toContainReactComponent(ListBox.Action, {
+      expect(mappedAction).toContainReactComponent(Listbox.Action, {
         value,
       });
     });
 
     it('defaults value to an empty string', () => {
       const value = '';
-      const mappedAction = mountWithListBoxProvider(<MappedAction />);
+      const mappedAction = mountWithListboxProvider(<MappedAction />);
 
-      expect(mappedAction).toContainReactComponent(ListBox.Action, {
+      expect(mappedAction).toContainReactComponent(Listbox.Action, {
         value,
       });
     });
@@ -116,7 +116,7 @@ describe('MappedAction', () => {
   describe('prefix markup', () => {
     it('renders images', () => {
       const image = 'image';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction image={image} />,
       );
 
@@ -127,7 +127,7 @@ describe('MappedAction', () => {
 
     it('renders icon', () => {
       const source = 'icon';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} />,
       );
 
@@ -135,7 +135,7 @@ describe('MappedAction', () => {
     });
 
     it('renders prefix', () => {
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction prefix={<MockComponent />} />,
       );
 
@@ -145,7 +145,7 @@ describe('MappedAction', () => {
     it('renders icon instead of image', () => {
       const source = 'icon';
       const image = 'image';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} image={image} />,
       );
 
@@ -157,7 +157,7 @@ describe('MappedAction', () => {
 
     it('renders prefix instead of image', () => {
       const image = 'image';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction prefix={<MockComponent />} image={image} />,
       );
 
@@ -169,7 +169,7 @@ describe('MappedAction', () => {
 
     it('renders prefix instead of icon', () => {
       const source = 'icon';
-      const mappedAction = mountWithListBoxProvider(
+      const mappedAction = mountWithListboxProvider(
         <MappedAction prefix={<MockComponent />} icon={source} />,
       );
 

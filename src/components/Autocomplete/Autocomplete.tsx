@@ -8,8 +8,8 @@ import type {
 import type {PopoverProps} from '../Popover';
 import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
-import {ComboBox} from '../ComboBox';
-import {ListBox} from '../ListBox';
+import {Combobox} from '../Combobox';
+import {Listbox} from '../Listbox';
 
 import {MappedAction, MappedOption} from './components';
 import styles from './Autocomplete.scss';
@@ -49,7 +49,7 @@ export interface AutocompleteProps {
 // generated *.d.ts files.
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
-  TextField: typeof ComboBox.TextField;
+  TextField: typeof Combobox.TextField;
 } = function Autocomplete({
   options,
   selected,
@@ -100,13 +100,13 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
         const optionMarkup = buildMappedOptionFromOption(options);
 
         return (
-          <ListBox.Section
+          <Listbox.Section
             divider={false}
-            title={<ListBox.Header>{title}</ListBox.Header>}
+            title={<Listbox.Header>{title}</Listbox.Header>}
             key={title}
           >
             {optionMarkup}
-          </ListBox.Section>
+          </Listbox.Section>
         );
       });
 
@@ -120,12 +120,12 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 
     if (listTitle) {
       return (
-        <ListBox.Section
+        <Listbox.Section
           divider={false}
-          title={<ListBox.Header>{listTitle}</ListBox.Header>}
+          title={<Listbox.Header>{listTitle}</Listbox.Header>}
         >
           {optionList}
-        </ListBox.Section>
+        </Listbox.Section>
       );
     }
 
@@ -139,7 +139,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   ]);
 
   const loadingMarkup = loading ? (
-    <ListBox.Loading
+    <Listbox.Loading
       accessibilityLabel={i18n.translate(
         'Polaris.Autocomplete.spinnerAccessibilityLabel',
       )}
@@ -168,24 +168,24 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   );
 
   return (
-    <ComboBox
+    <Combobox
       activator={textField}
       allowMultiple={allowMultiple}
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
     >
       {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
-        <ListBox onSelect={updateSelection}>
+        <Listbox onSelect={updateSelection}>
           {actionMarkup}
           {optionsMarkup && (!loading || willLoadMoreResults)
             ? optionsMarkup
             : null}
           {loadingMarkup}
           {emptyStateMarkup}
-        </ListBox>
+        </Listbox>
       ) : null}
-    </ComboBox>
+    </Combobox>
   );
 };
 
-Autocomplete.TextField = ComboBox.TextField;
+Autocomplete.TextField = Combobox.TextField;
