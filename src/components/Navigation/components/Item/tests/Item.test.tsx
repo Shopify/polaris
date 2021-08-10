@@ -147,6 +147,76 @@ describe('<Nav.Item />', () => {
     });
   });
 
+  describe('with secondaryAction', () => {
+    it('renders an external icon', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            url: 'bar',
+            icon: PlusMinor,
+            accessibilityLabel: 'label',
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(Icon, {
+        source: PlusMinor,
+      });
+    });
+
+    it('renders an UnstyledLink with props delegated', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            url: 'bar',
+            icon: PlusMinor,
+            accessibilityLabel: 'label',
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'bar',
+        'aria-label': 'label',
+      });
+    });
+
+    it('renders an UnstyledLink with onClick handler if provided', () => {
+      const handler = () => {};
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            url: 'bar',
+            icon: PlusMinor,
+            onClick: handler,
+            accessibilityLabel: 'label',
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'bar',
+        'aria-label': 'label',
+        onClick: handler,
+      });
+    });
+  });
+
   describe('with SubNavigationItems', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders');
