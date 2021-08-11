@@ -449,7 +449,7 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('does not render bulk actions when not selectable', () => {
+    it('does not render a Select button when not selectable', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
           {mockTableItems.map(mockRenderCondensedRow)}
