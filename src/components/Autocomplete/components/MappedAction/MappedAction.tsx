@@ -4,7 +4,7 @@ import type {ActionListItemDescriptor} from '../../../../types';
 import {Badge} from '../../../Badge';
 import {classNames} from '../../../../utilities/css';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
-import {ListBox} from '../../../ListBox';
+import {Listbox} from '../../../Listbox';
 import {Icon} from '../../../Icon';
 import {TextStyle} from '../../../TextStyle';
 import {useI18n} from '../../../../utilities/i18n';
@@ -102,7 +102,7 @@ export function MappedAction({
   return (
     <MappedActionContext.Provider value={context}>
       <div className={styles.ActionContainer}>
-        <ListBox.Action
+        <Listbox.Action
           selected={active}
           disabled={disabled}
           value={content || ''}
@@ -115,7 +115,7 @@ export function MappedAction({
               {suffixMarkup}
             </div>
           </div>
-        </ListBox.Action>
+        </Listbox.Action>
       </div>
     </MappedActionContext.Provider>
   );
