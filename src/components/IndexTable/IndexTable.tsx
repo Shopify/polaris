@@ -486,10 +486,15 @@ function IndexTableBase({
           ) : null;
 
           const headerMarkup = condensed ? (
-            <div className={styles.HeaderWrapper}>
+            <div
+              className={classNames(
+                styles.HeaderWrapper,
+                !isSelectableIndex && styles.unselectable,
+              )}
+            >
               {loadingMarkup}
               {sort}
-              {selectButtonMarkup}
+              {isSelectableIndex && selectButtonMarkup}
             </div>
           ) : (
             <div

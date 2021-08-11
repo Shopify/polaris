@@ -449,6 +449,18 @@ describe('<IndexTable>', () => {
       });
     });
 
+    it('does not render bulk actions when not selectable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      expect(index).not.toContainReactComponent(Button, {
+        children: 'Select',
+      });
+    });
+
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
       const index = mountWithApp(
         <IndexTable
