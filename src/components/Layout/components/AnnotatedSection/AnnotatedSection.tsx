@@ -22,9 +22,7 @@ export function AnnotatedSection(props: AnnotatedSectionProps) {
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <TextContainer>
-            <Heading id={id} testID="AnnotationTitle">
-              {title}
-            </Heading>
+            <Heading id={id}>{title}</Heading>
             {descriptionMarkup && (
               <div
                 className={styles.AnnotationDescription}
