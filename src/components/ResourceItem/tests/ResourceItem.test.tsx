@@ -71,7 +71,7 @@ describe('<ResourceItem />', () => {
   const ariaLabel = 'View Item';
 
   const resourceItemFilter = (node: Node<unknown>) =>
-    node.prop('className').includes(styles.ResourceItem);
+    node.is('div') && node!.domNode.classList.contains(styles.ResourceItem);
 
   describe('accessibilityLabel', () => {
     it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
@@ -300,13 +300,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
@@ -323,13 +320,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
@@ -340,13 +334,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {metaKey: true},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
 
@@ -358,10 +349,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onKeyUp', {key: 'Enter'});
+      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Enter'});
 
       expect(onClick).toHaveBeenCalled();
     });
@@ -374,10 +362,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onKeyUp', {key: 'Tab'});
+      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Tab'});
 
       expect(onClick).not.toHaveBeenCalled();
     });
@@ -390,10 +375,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')
-        .findWhere(resourceItemFilter)!
-        .trigger('onKeyUp', {key: 'Enter'});
+      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Enter'});
       expect(onClick).not.toHaveBeenCalled();
     });
 
@@ -404,13 +386,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')!
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {ctrlKey: true},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });
@@ -465,13 +444,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
@@ -490,13 +466,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {shiftKey: false},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {shiftKey: false},
+      });
       expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
         true,
         itemId,
@@ -521,13 +494,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {metaKey: true},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -538,13 +508,10 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper
-        .find('div')
-        .findWhere(resourceItemFilter)!
-        .trigger('onClick', {
-          stopPropagation: () => {},
-          nativeEvent: {ctrlKey: true},
-        });
+      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
       expect(spy).not.toHaveBeenCalled();
     });
   });

@@ -7,7 +7,8 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export {createMount, mount, Node};
+export {createMount, mount};
+export type {Node};
 
 export const mountWithApp = createMount<
   WithPolarisTestProviderOptions,
