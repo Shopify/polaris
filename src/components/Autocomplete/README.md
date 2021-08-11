@@ -245,7 +245,7 @@ function AutocompleteExample() {
 
       deselectedOptions.forEach((opt) => {
         const lol = opt.options.filter((option) =>
-          option.label?.match?.(filterRegex),
+          option.label.match(filterRegex),
         );
 
         resultOptions.push({
@@ -260,16 +260,25 @@ function AutocompleteExample() {
   );
 
   const updateSelection = useCallback(
-    (selected) => {
-      const selectedValue = selected.map((selectedItem) => {
-        const matchedOption = options.find((option) => {
-          return option.value.match(selectedItem);
-        });
-        return matchedOption && matchedOption.label;
+    ([selected]) => {
+      let selectedValue;
+
+      options.forEach(({options: opt}) => {
+        if (selectedValue) {
+          return;
+        }
+
+        const matchedOption = opt.find((option) =>
+          option.value.match(selected),
+        );
+
+        if (matchedOption) {
+          selectedValue = matchedOption.label;
+        }
       });
 
-      setSelectedOptions(selected);
-      setInputValue(selectedValue[0]);
+      setSelectedOptions([selected]);
+      setInputValue(String(selectedValue) ? String(selectedValue) : '');
     },
     [options],
   );
