@@ -4,6 +4,7 @@ category: Lists and tables
 keywords:
   - list
   - listbox
+  - list box
   - interactive list
 ---
 

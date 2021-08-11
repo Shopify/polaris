@@ -6,7 +6,9 @@ keywords:
   - searchable
   - typeahead
   - combobox
+  - combo box
   - listbox
+  - list box
 ---
 
 # Combobox
@@ -395,7 +397,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 ### Structure
 
-The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`] component to be used.
+The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/lists-and-tables/listbox) component to be used.
 
 The `Combobox` popover displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 
