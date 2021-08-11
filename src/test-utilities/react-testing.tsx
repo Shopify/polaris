@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMount, mount} from '@shopify/react-testing';
+import {createMount, mount, Node} from '@shopify/react-testing';
 
 import translations from '../../locales/en.json';
 import {
@@ -7,7 +7,7 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export {createMount, mount};
+export {createMount, mount, Node};
 
 export const mountWithApp = createMount<
   WithPolarisTestProviderOptions,
