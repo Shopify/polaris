@@ -27,7 +27,6 @@ describe('<Link />', () => {
     it('is passed down to an underlying button', () => {
       const id = 'MyID';
       const link = mountWithApp(<Link id={id} />);
-      // expect(link.find('button').prop('id')).toBe(id);
       expect(link).toContainReactComponent('button', {id});
     });
 
@@ -89,7 +88,6 @@ describe('<Link />', () => {
         <Link url="https://examp.le">Some content</Link>,
       );
 
-      // expect(link.hasClass('monochrome')).toBe(false);
       expect(link).not.toContainReactComponent(UnstyledLink, {
         className: expect.stringContaining('monochrome'),
       });
