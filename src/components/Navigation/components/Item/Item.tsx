@@ -182,6 +182,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
