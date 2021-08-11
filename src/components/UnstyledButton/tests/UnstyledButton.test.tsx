@@ -138,6 +138,9 @@ describe('<Button />', () => {
         <UnstyledButton url={mockUrl} external disabled />,
       );
       expect(button).toContainReactComponent('a');
+      expect(button).not.toContainReactComponent(UnstyledLink, {
+        external: undefined,
+      });
     });
   });
 
@@ -169,7 +172,9 @@ describe('<Button />', () => {
 
     it('is not passed when `url` is missing', () => {
       const button = mountWithApp(<UnstyledButton download />);
-      expect(button.find('button')).toHaveReactProps('button', {
+
+      expect(button).toContainReactComponent('button');
+      expect(button).not.toContainReactComponent(UnstyledLink, {
         download: undefined,
       });
     });
@@ -213,8 +218,9 @@ describe('<Button />', () => {
 
     it('does not pass to link', () => {
       const button = mountWithApp(<UnstyledButton url={mockUrl} disabled />);
-      expect(button).toContainReactComponent('a', {
-        disabled: undefined,
+      expect(button).toContainReactComponent('a');
+      expect(button).not.toContainReactComponent('button', {
+        disabled: true,
       });
     });
   });
