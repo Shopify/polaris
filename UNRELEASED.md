@@ -19,6 +19,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `PositionedOverlay` now exposes an imperative `forceReLayout()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - `Popover` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the underlying overlay component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - `PositionedOverlay` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
+- Updated `IndexTable` component to hide checkboxes when `selectable` prop is `false` ([#4376](https://github.com/Shopify/polaris-react/pull/4376))
 
 ### Bug fixes
 
