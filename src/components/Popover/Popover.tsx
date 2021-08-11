@@ -1,11 +1,13 @@
 import React, {
   Children,
-  useRef,
+  forwardRef,
   useEffect,
   useCallback,
+  useImperativeHandle,
+  useRef,
   useState,
-  AriaAttributes,
 } from 'react';
+import type {AriaAttributes} from 'react';
 
 import {
   findFirstFocusableNodeIncludingDisabled,
@@ -83,27 +85,65 @@ export interface PopoverProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-export const Popover: React.FunctionComponent<PopoverProps> & {
+/*
+type PopoverComponentType = React.FunctionComponent<PopoverProps> & {
   Pane: typeof Pane;
   Section: typeof Section;
-} = function Popover({
-  activatorWrapper = 'div',
-  children,
-  onClose,
-  activator,
-  preventFocusOnClose,
-  active,
-  fixed,
-  ariaHaspopup,
-  preferInputActivator = true,
-  colorScheme,
-  zIndexOverride,
-  ...rest
-}: PopoverProps) {
+};
+*/
+
+export interface PopoverHandles {
+  forceReLayout(): void;
+}
+
+interface PopoverSubcomponents {
+  // TODO: How can we make these required props?
+  Pane?: typeof Pane;
+  Section?: typeof Section;
+}
+
+type PopoverComponentType = React.ForwardRefExoticComponent<
+  PopoverProps & React.RefAttributes<PopoverHandles>
+> &
+  PopoverSubcomponents;
+
+export const Popover: PopoverComponentType = forwardRef(function Popover(
+  {
+    activatorWrapper = 'div',
+    children,
+    onClose,
+    activator,
+    preventFocusOnClose,
+    active,
+    fixed,
+    ariaHaspopup,
+    preferInputActivator = true,
+    colorScheme,
+    zIndexOverride,
+    ...rest
+  }: PopoverProps,
+  ref,
+) {
   const [activatorNode, setActivatorNode] = useState<HTMLElement>();
   const activatorContainer = useRef<HTMLElement>(null);
   const WrapperComponent: any = activatorWrapper;
   const id = useUniqueId('popover');
+
+  const overlayRef = useRef<PopoverOverlay>(null);
+
+  function forceReLayout() {
+    requestAnimationFrame(() => {
+      console.log(`Popover forceReLayout: ${id}`, ref);
+      console.log('Popover > overlayRef', overlayRef);
+      overlayRef.current?.forceReLayout();
+    });
+  }
+
+  useImperativeHandle(ref, () => {
+    return {
+      forceReLayout,
+    };
+  });
 
   const setAccessibilityAttributes = useCallback(() => {
     if (activatorContainer.current == null) {
@@ -178,6 +218,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   const portal = activatorNode ? (
     <Portal idPrefix="popover">
       <PopoverOverlay
+        ref={overlayRef}
         id={id}
         activator={activatorNode}
         preferInputActivator={preferInputActivator}
@@ -199,7 +240,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
       {portal}
     </WrapperComponent>
   );
-};
+});
 
 function isInPortal(element: Element) {
   let parentElement = element.parentElement;

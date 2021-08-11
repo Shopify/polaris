@@ -158,6 +158,11 @@ export class PositionedOverlay extends PureComponent<
     );
   }
 
+  forceReLayout() {
+    console.log('PositionedOverlay > forceReLayout');
+    requestAnimationFrame(() => this.handleMeasurement());
+  }
+
   private overlayDetails = (): OverlayDetails => {
     const {
       measuring,
