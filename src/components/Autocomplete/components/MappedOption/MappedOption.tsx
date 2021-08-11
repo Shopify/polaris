@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
 import type {OptionDescriptor, ArrayElement} from '../../../../types';
-import {ListBox} from '../../../ListBox';
+import {Listbox} from '../../../Listbox';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './MappedOption.scss';
@@ -32,19 +32,19 @@ export const MappedOption = memo(function MappedOption({
   const accessibilityLabel = typeof label === 'string' ? label : undefined;
 
   return (
-    <ListBox.Option
+    <Listbox.Option
       accessibilityLabel={accessibilityLabel}
       key={value}
       selected={selected}
       value={value}
       disabled={disabled}
     >
-      <ListBox.TextOption selected={selected} disabled={disabled}>
+      <Listbox.TextOption selected={selected} disabled={disabled}>
         <div className={styles.Content}>
           {mediaMarkup}
           {label}
         </div>
-      </ListBox.TextOption>
-    </ListBox.Option>
+      </Listbox.TextOption>
+    </Listbox.Option>
   );
 });

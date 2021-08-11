@@ -14,7 +14,7 @@ import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, Key, CheckboxHandles} from '../../types';
-import {WithinListBoxContext} from '../../utilities/list-box/context';
+import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
@@ -74,7 +74,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setFalse: handleMouseOut,
     } = useToggle(false);
     const [keyFocused, setKeyFocused] = useState(false);
-    const isWithinListBox = useContext(WithinListBoxContext);
+    const isWithinListbox = useContext(WithinListboxContext);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -170,7 +170,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onChange={noop}
             aria-invalid={error != null}
             aria-describedby={ariaDescribedBy}
-            role={isWithinListBox ? 'presentation' : 'checkbox'}
+            role={isWithinListbox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}
           />
           <span className={backdropClassName} />

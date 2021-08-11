@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithListBoxProvider} from 'test-utilities/list-box';
+import {mountWithListboxProvider} from 'test-utilities/listbox';
 
-import {ListBox} from '../../../../ListBox';
+import {Listbox} from '../../../../Listbox';
 import {MappedOption} from '../MappedOption';
 
 describe('MappedOption', () => {
@@ -14,7 +14,7 @@ describe('MappedOption', () => {
 
   it('renders label markup', () => {
     const label = 'Test label';
-    const mappedOption = mountWithListBoxProvider(
+    const mappedOption = mountWithListboxProvider(
       <MappedOption {...defaultProps} label={label} />,
     );
 
@@ -24,37 +24,37 @@ describe('MappedOption', () => {
   describe('accessibility', () => {
     it('does not apply an accessibility label when label is not a string', () => {
       const label = <div>test label</div>;
-      const mappedOption = mountWithListBoxProvider(
+      const mappedOption = mountWithListboxProvider(
         <MappedOption {...defaultProps} label={label} />,
       );
 
-      expect(mappedOption).toContainReactComponent(ListBox.Option, {
+      expect(mappedOption).toContainReactComponent(Listbox.Option, {
         accessibilityLabel: undefined,
       });
     });
   });
 
-  describe('ListBox', () => {
-    it('renders ListBox.Option', () => {
-      const mappedOption = mountWithListBoxProvider(
+  describe('Listbox', () => {
+    it('renders Listbox.Option', () => {
+      const mappedOption = mountWithListboxProvider(
         <MappedOption {...defaultProps} />,
       );
 
-      expect(mappedOption).toContainReactComponent(ListBox.Option);
+      expect(mappedOption).toContainReactComponent(Listbox.Option);
     });
 
-    it('renders ListBox.TextOption', () => {
-      const mappedOption = mountWithListBoxProvider(
+    it('renders Listbox.TextOption', () => {
+      const mappedOption = mountWithListboxProvider(
         <MappedOption {...defaultProps} />,
       );
 
-      expect(mappedOption).toContainReactComponent(ListBox.TextOption);
+      expect(mappedOption).toContainReactComponent(Listbox.TextOption);
     });
   });
 
   describe('media', () => {
     it('renders markup when provided', () => {
-      const mappedOption = mountWithListBoxProvider(
+      const mappedOption = mountWithListboxProvider(
         <MappedOption {...defaultProps} media={<MockComponent />} />,
       );
 
@@ -62,7 +62,7 @@ describe('MappedOption', () => {
     });
 
     it('renders with disabled styles when disabled', () => {
-      const mappedOption = mountWithListBoxProvider(
+      const mappedOption = mountWithListboxProvider(
         <MappedOption {...defaultProps} disabled media={<MockComponent />} />,
       );
 
@@ -72,7 +72,7 @@ describe('MappedOption', () => {
     });
 
     it('renders with single selection styles when singleSelection is true', () => {
-      const mappedOption = mountWithListBoxProvider(
+      const mappedOption = mountWithListboxProvider(
         <MappedOption
           {...defaultProps}
           singleSelection

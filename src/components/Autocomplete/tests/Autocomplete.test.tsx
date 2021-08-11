@@ -5,11 +5,11 @@ import {KeypressListener} from 'components';
 import {TextField} from '../../TextField';
 import {Key, SectionDescriptor} from '../../../types';
 import {MappedOption, MappedAction} from '../components';
-import {ComboBoxTextFieldContext} from '../../../utilities/combo-box';
+import {ComboboxTextFieldContext} from '../../../utilities/combobox';
 import {Autocomplete} from '../Autocomplete';
-import {ComboBox} from '../../ComboBox';
-import type {ComboBoxProps} from '../../ComboBox';
-import {ListBox} from '../../ListBox';
+import {Combobox} from '../../Combobox';
+import type {ComboboxProps} from '../../Combobox';
+import {Listbox} from '../../Listbox';
 
 describe('<Autocomplete/>', () => {
   const options = [
@@ -21,7 +21,7 @@ describe('<Autocomplete/>', () => {
     options,
     selected: [],
     textField: (
-      <ComboBox.TextField label="" onChange={noop} autoComplete="off" />
+      <Combobox.TextField label="" onChange={noop} autoComplete="off" />
     ),
     onSelect: noop,
   };
@@ -35,7 +35,7 @@ describe('<Autocomplete/>', () => {
         onSelect={noop}
       />,
     );
-    expect(autocomplete).toContainReactComponent(ComboBox);
+    expect(autocomplete).toContainReactComponent(Combobox);
   });
 
   it('displays a spinner when loading is true', () => {
@@ -49,9 +49,9 @@ describe('<Autocomplete/>', () => {
       />,
     );
 
-    triggerFocus(autocomplete.find(ComboBox));
+    triggerFocus(autocomplete.find(Combobox));
 
-    expect(autocomplete).toContainReactComponent(ListBox.Loading);
+    expect(autocomplete).toContainReactComponent(Listbox.Loading);
   });
 
   describe('<Combobox />', () => {
@@ -69,7 +69,7 @@ describe('<Autocomplete/>', () => {
       });
 
       describe('options', () => {
-        it('renders a ListBox.Option for each option', () => {
+        it('renders a Listbox.Option for each option', () => {
           const options = [
             {value: 'cheese_pizza', label: 'Cheese Pizza'},
             {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
@@ -80,15 +80,15 @@ describe('<Autocomplete/>', () => {
             <Autocomplete {...defaultProps} options={options} />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponentTimes(
-            ListBox.Option,
+            Listbox.Option,
             options.length,
           );
         });
 
-        it('passes selected to ListBox.Option', () => {
+        it('passes selected to Listbox.Option', () => {
           const selected = 'cheese_pizza';
           const options = [
             {value: selected, label: 'Cheese Pizza'},
@@ -104,7 +104,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponent(MappedOption, {
             ...options[0],
@@ -134,7 +134,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponent(MappedOption, {
             ...selectedOption,
@@ -144,9 +144,9 @@ describe('<Autocomplete/>', () => {
       });
 
       describe('textField', () => {
-        it('is passed to ComboBox', () => {
+        it('is passed to Combobox', () => {
           const textField = (
-            <ComboBox.TextField
+            <Combobox.TextField
               label="label"
               onChange={noop}
               autoComplete="off"
@@ -156,14 +156,14 @@ describe('<Autocomplete/>', () => {
             <Autocomplete {...defaultProps} textField={textField} />,
           );
 
-          expect(autocomplete).toContainReactComponent(ComboBox, {
+          expect(autocomplete).toContainReactComponent(Combobox, {
             activator: textField,
           });
         });
       });
 
       describe('preferredPosition', () => {
-        it('is passed to ComboBox', () => {
+        it('is passed to Combobox', () => {
           const preferredPosition = 'above';
           const autocomplete = mountWithApp(
             <Autocomplete
@@ -172,35 +172,35 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          expect(autocomplete).toContainReactComponent(ComboBox, {
+          expect(autocomplete).toContainReactComponent(Combobox, {
             preferredPosition,
           });
         });
       });
 
       describe('listTitle', () => {
-        it('renders a ListBoxSection with a ListBoxHeader', () => {
+        it('renders a ListboxSection with a ListboxHeader', () => {
           const listTitle = 'title';
           const autocomplete = mountWithApp(
             <Autocomplete {...defaultProps} listTitle={listTitle} />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
-          expect(autocomplete).toContainReactComponent(ListBox.Section, {
+          expect(autocomplete).toContainReactComponent(Listbox.Section, {
             divider: false,
           });
         });
       });
 
       describe('allowMultiple', () => {
-        it('is passed to ComboBox', () => {
+        it('is passed to Combobox', () => {
           const allowMultiple = true;
           const autocomplete = mountWithApp(
             <Autocomplete {...defaultProps} allowMultiple={allowMultiple} />,
           );
 
-          expect(autocomplete).toContainReactComponent(ComboBox, {
+          expect(autocomplete).toContainReactComponent(Combobox, {
             allowMultiple,
           });
         });
@@ -229,21 +229,21 @@ describe('<Autocomplete/>', () => {
             <Autocomplete {...defaultProps} actionBefore={actionBefore} />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponent(MappedAction);
         });
       });
 
       describe('loading', () => {
-        it('renders ListBox.Loading', () => {
+        it('renders Listbox.Loading', () => {
           const autocomplete = mountWithApp(
             <Autocomplete {...defaultProps} loading />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
-          expect(autocomplete).toContainReactComponent(ListBox.Loading);
+          expect(autocomplete).toContainReactComponent(Listbox.Loading);
         });
       });
 
@@ -264,10 +264,10 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponentTimes(
-            ListBox.Option,
+            Listbox.Option,
             options.length,
           );
         });
@@ -286,7 +286,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).not.toContainReactComponent(EmptyState);
         });
@@ -302,7 +302,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).not.toContainReactComponent(EmptyState);
         });
@@ -313,7 +313,7 @@ describe('<Autocomplete/>', () => {
             <Autocomplete {...defaultProps} loading emptyState={emptyState} />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).not.toContainReactComponent(EmptyState);
         });
@@ -329,7 +329,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponent(EmptyState);
         });
@@ -351,7 +351,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
           triggerOnSelect(autocomplete, value);
 
           expect(onSelectSpy).toHaveBeenLastCalledWith([value]);
@@ -374,7 +374,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
           triggerOnSelect(autocomplete, value);
 
           expect(onSelectSpy).toHaveBeenLastCalledWith([]);
@@ -398,7 +398,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          triggerFocus(autocomplete.find(ComboBox));
+          triggerFocus(autocomplete.find(Combobox));
           triggerOnSelect(autocomplete, valueTwo);
 
           expect(onSelectSpy).toHaveBeenLastCalledWith([valueOne, valueTwo]);
@@ -406,7 +406,7 @@ describe('<Autocomplete/>', () => {
       });
 
       describe('onLoadMoreResults', () => {
-        it('is passed to ComboBox', () => {
+        it('is passed to Combobox', () => {
           const onLoadMoreResults = jest.fn();
           const autocomplete = mountWithApp(
             <Autocomplete
@@ -415,7 +415,7 @@ describe('<Autocomplete/>', () => {
             />,
           );
 
-          expect(autocomplete).toContainReactComponent(ComboBox, {
+          expect(autocomplete).toContainReactComponent(Combobox, {
             onScrolledToBottom: onLoadMoreResults,
           });
         });
@@ -437,9 +437,10 @@ describe('<Autocomplete/>', () => {
         </form>,
       );
 
-      triggerFocus(autocomplete.find(ComboBox));
+      triggerFocus(autocomplete.find(Combobox));
+
       autocomplete
-        .find(ComboBox.TextField)
+        .find(Combobox.TextField)
         ?.find(TextField)
         ?.trigger('onFocus');
       autocomplete
@@ -465,7 +466,7 @@ describe('<Autocomplete/>', () => {
         />,
       );
 
-      expect(autocomplete).not.toContainReactComponent(ListBox.Option);
+      expect(autocomplete).not.toContainReactComponent(Listbox.Option);
     });
   });
 
@@ -482,7 +483,7 @@ describe('<Autocomplete/>', () => {
         />,
       );
 
-      autocomplete.find(ComboBox)?.trigger('onScrolledToBottom');
+      autocomplete.find(Combobox)?.trigger('onScrolledToBottom');
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -507,7 +508,7 @@ describe('<Autocomplete/>', () => {
       },
     ];
 
-    it('renders one ListBox.Option for each option provided on all sections', () => {
+    it('renders one Listbox.Option for each option provided on all sections', () => {
       const allOptionsLength = multipleSectionsOptions.reduce(
         (lengthAccumulated, {options}) => {
           return lengthAccumulated + options.length;
@@ -519,22 +520,22 @@ describe('<Autocomplete/>', () => {
         <Autocomplete {...defaultProps} options={multipleSectionsOptions} />,
       );
 
-      triggerFocus(autocomplete.find(ComboBox));
+      triggerFocus(autocomplete.find(Combobox));
 
       expect(autocomplete).toContainReactComponentTimes(
-        ListBox.Option,
+        Listbox.Option,
         allOptionsLength,
       );
     });
 
-    it('renders one ListBox.Section for each section', () => {
+    it('renders one Listbox.Section for each section', () => {
       const autocomplete = mountWithApp(
         <Autocomplete {...defaultProps} options={multipleSectionsOptions} />,
       );
 
-      triggerFocus(autocomplete.find(ComboBox));
+      triggerFocus(autocomplete.find(Combobox));
       expect(autocomplete).toContainReactComponentTimes(
-        ListBox.Section,
+        Listbox.Section,
         multipleSectionsOptions.length,
       );
     });
@@ -551,10 +552,10 @@ describe('<Autocomplete/>', () => {
         <Autocomplete {...defaultProps} options={newOptions} />,
       );
 
-      triggerFocus(autocomplete.find(ComboBox));
+      triggerFocus(autocomplete.find(Combobox));
 
       expect(autocomplete).toContainReactComponentTimes(
-        ListBox.Section,
+        Listbox.Section,
         newOptions.length - 1,
       );
     });
@@ -569,10 +570,10 @@ describe('<Autocomplete/>', () => {
   }
 });
 
-function triggerFocus(combobox: ReactTestingElement<ComboBoxProps> | null) {
+function triggerFocus(combobox: ReactTestingElement<ComboboxProps> | null) {
   combobox &&
     combobox
-      .find(ComboBoxTextFieldContext.Provider)!
+      .find(ComboboxTextFieldContext.Provider)!
       .triggerKeypath('value.onTextFieldFocus');
 }
 
@@ -580,6 +581,6 @@ function triggerOnSelect(
   autocomplete: CustomRoot<unknown, any> | null,
   values: string,
 ) {
-  const listbox = autocomplete!.find(ListBox);
+  const listbox = autocomplete!.find(Listbox);
   listbox!.trigger('onSelect', values);
 }
