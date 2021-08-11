@@ -11,7 +11,7 @@ keywords:
 
 # Autocomplete
 
-The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `ComboBox` and `ListBox` components with minor UI differences.
+The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences.
 
 ---
 
@@ -814,7 +814,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 ### Structure
 
-The autocomplete component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) and the [Aria 1.2 ListBox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
+The autocomplete component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) and the [Aria 1.2 Listbox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
 
 The autocomplete list displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 
