@@ -2,7 +2,6 @@ import React from 'react';
 import {InlineError, Icon, Labelled} from 'components';
 import {mountWithApp} from 'test-utilities';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
-import {act} from 'react-dom/test-utils';
 
 import {Select} from '../Select';
 
@@ -20,10 +19,8 @@ describe('<Select />', () => {
       );
 
       const select = element.find('select')! as any;
-      act(() => {
-        select.value = 'two';
-      });
-      // TODO fix this
+      select.value = 'two';
+
       const event = {
         currentTarget: select,
       };
@@ -66,9 +63,6 @@ describe('<Select />', () => {
 
       options.forEach((option, index) => {
         const optionElement = optionElements[index];
-        // TODO does this (key) need to be tested?
-        // expect(optionElement.key()).toBe(option);
-
         expect(optionElement).toHaveReactProps({value: option});
         expect(optionElement.text()).toBe(option);
       });
@@ -109,58 +103,48 @@ describe('<Select />', () => {
   });
 
   describe('groups', () => {
-    const optionsAndGroups = [
-      {title: 'Group one', options: ['one.1', 'one.2']},
-      'one',
-      'two',
-      {title: 'Group two', options: ['two.1', 'two.2']},
-    ];
+    it('translates grouped options into optgroup tags', () => {
+      const groupOptions = [
+        {title: 'Group one', options: ['one.1', 'one.2']},
+        {title: 'Group two', options: ['two.1', 'two.2']},
+      ];
 
-    function testOptions(
-      optionOrGroup: string | {title: string; options: string[]},
-      // TODO need to type
-      optionOrOptgroupElement: any,
-    ) {
-      if (typeof optionOrGroup === 'string') {
-        expect(optionOrOptgroupElement.type).toBe('option');
-        // TODO does this (key) need to be tested?
-        // expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
-        expect(optionOrOptgroupElement).toHaveReactProps({
-          value: optionOrGroup,
-        });
-        expect(optionOrOptgroupElement).toContainReactText(optionOrGroup);
-      } else {
-        expect(optionOrOptgroupElement.type).toBe('optgroup');
-        expect(optionOrOptgroupElement).toHaveReactProps({
+      const optgroupElements = mountWithApp(
+        <Select label="Select" options={groupOptions} onChange={noop} />,
+      ).find('select')!;
+
+      groupOptions.forEach((optionOrGroup, index) => {
+        const optgroupElement = optgroupElements.children[index];
+
+        expect(optgroupElement.type).toBe('optgroup');
+        expect(optgroupElement).toHaveReactProps({
           label: optionOrGroup.title,
         });
-        const options = optionOrOptgroupElement.children;
+        const options = optgroupElement.children;
 
         optionOrGroup.options.forEach((option, optionIndex) => {
           const optionElement = options[optionIndex];
           expect(optionElement.type).toBe('option');
-          // TODO does this (key) need to be tested?
-          // expect(optionElement.key()).toBe(option);
           expect(optionElement).toHaveReactProps({
             value: option,
           });
           expect(optionElement).toContainReactText(option);
         });
-      }
-    }
+      });
+    });
 
-    // Expectations are ran within the call to testOptions()
-    // eslint-disable-next-line jest/expect-expect
-    it('translates grouped options into optgroup tags', () => {
-      const optionOrOptgroupElements = mountWithApp(
-        <Select label="Select" options={optionsAndGroups} onChange={noop} />,
+    it('translates string options into options tags', () => {
+      const stringOptions = ['one', 'two'];
+      const optionGroupElements = mountWithApp(
+        <Select label="Select" options={stringOptions} onChange={noop} />,
       ).find('select')!;
 
-      optionsAndGroups.forEach((optionOrGroup, index) => {
-        const optionOrOptgroupElement =
-          optionOrOptgroupElements.children[index];
-
-        testOptions(optionOrGroup, optionOrOptgroupElement);
+      stringOptions.forEach((optionOrGroup, index) => {
+        const optionGroupElement = optionGroupElements.children[index];
+        expect(optionGroupElement.type).toBe('option');
+        expect(optionGroupElement).toHaveReactProps({
+          value: optionOrGroup,
+        });
       });
     });
   });

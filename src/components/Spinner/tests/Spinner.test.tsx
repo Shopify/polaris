@@ -19,22 +19,25 @@ describe('<Spinner />', () => {
   describe('size', () => {
     it('renders a large spinner by default', () => {
       const spinner = mountWithApp(<Spinner />);
-      expect(spinner).toContainReactComponent('span', {
-        className: 'Spinner sizeLarge',
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeLarge'),
       });
     });
 
     it('renders a large spinner when size is large', () => {
       const spinner = mountWithApp(<Spinner size="large" />);
-      expect(spinner).toContainReactComponent('span', {
-        className: 'Spinner sizeLarge',
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeLarge'),
       });
     });
 
     it('renders a small spinner when size is small', () => {
       const spinner = mountWithApp(<Spinner size="small" />);
-      expect(spinner).toContainReactComponent('span', {
-        className: 'Spinner sizeSmall',
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeSmall'),
       });
     });
   });
