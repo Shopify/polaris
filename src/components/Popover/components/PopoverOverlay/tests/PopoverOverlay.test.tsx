@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -445,6 +445,32 @@ describe('<PopoverOverlay />', () => {
 
       expect(document.activeElement).not.toBe(focusTargetContainer);
       expect(document.activeElement).not.toBe(focusTargetFirstNode);
+    });
+  });
+
+  describe('forceReLayout', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let overlayRef = null;
+
+      function Test() {
+        overlayRef = useRef(null);
+
+        return (
+          <PopoverOverlay
+            active
+            id="MockId"
+            ref={overlayRef}
+            activator={activator}
+            onClose={noop}
+          >
+            <input type="text" />
+          </PopoverOverlay>
+        );
+      }
+
+      mountWithApp(<Test />);
+
+      expect(overlayRef).toHaveProperty('current.forceReLayout');
     });
   });
 });

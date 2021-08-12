@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef} from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
@@ -273,6 +274,22 @@ describe('<PositionedOverlay />', () => {
       expect(
         getRectForNodeSpy.mock.calls.some(([node]) => node === input),
       ).toBe(false);
+    });
+  });
+
+  describe('forceReLayout', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let overlayRef = null;
+
+      function Test() {
+        overlayRef = useRef(null);
+
+        return <PositionedOverlay ref={overlayRef} {...mockProps} />;
+      }
+
+      mountWithApp(<Test />);
+
+      expect(overlayRef).toHaveProperty('current.forceReLayout');
     });
   });
 });

@@ -1,9 +1,10 @@
-import React, {useState, useCallback} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'test-utilities';
 import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
 
 import {Popover} from '../Popover';
+import type {PopoverHandles} from '../Popover';
 import {PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
 
@@ -342,6 +343,33 @@ describe('<Popover />', () => {
 
     expect(document.activeElement).not.toBe(activatorTarget);
     expect(document.activeElement).not.toBe(nextElementTarget);
+  });
+
+  describe('forceReLayout', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let popoverRef: React.RefObject<PopoverHandles> | null = null;
+
+      function Test() {
+        popoverRef = useRef(null);
+
+        return (
+          <Popover
+            ref={popoverRef}
+            active
+            activator={<div>Activator</div>}
+            onClose={spy}
+          />
+        );
+      }
+
+      mountWithApp(<Test />);
+
+      expect(popoverRef).toStrictEqual({
+        current: {
+          forceReLayout: expect.anything(),
+        },
+      });
+    });
   });
 });
 
