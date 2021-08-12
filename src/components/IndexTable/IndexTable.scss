@@ -193,7 +193,7 @@ $loading-panel-height: rem(53px);
 .TableHeading-second {
   &:not(.TableHeading-unselectable) {
     padding-left: 0;
-    
+
     @include breakpoint-after($breakpoint-small) {
       position: sticky;
       z-index: auto;
