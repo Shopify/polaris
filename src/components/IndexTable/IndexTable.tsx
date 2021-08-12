@@ -178,7 +178,7 @@ function IndexTableBase({
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0 && !isSmallScreen()) {
+            if (index === 0 && (!isSmallScreen() || !isSelectableIndex)) {
               minWidth = calculateFirstHeaderOffset();
             } else if (tableHeadingRects.current.length > index) {
               minWidth =
@@ -722,6 +722,7 @@ function IndexTableBase({
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['StickyTableHeading-second'],
+      index === 0 && !isSelectableIndex && styles.unselectable,
     );
 
     return (

@@ -109,10 +109,7 @@ $loading-panel-height: rem(53px);
     .TableHeading-second,
     .TableCell:first-child {
       visibility: visible;
-
-      @include breakpoint-after($breakpoint-small) {
-        filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
-      }
+      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
     }
   }
 }
@@ -238,11 +235,8 @@ $loading-panel-height: rem(53px);
   .TableCell:first-child {
     left: 0;
     background-color: var(--p-surface);
-
-    @include breakpoint-after($breakpoint-small) {
-      position: sticky;
-      z-index: z-index(sticky-cell, $index-table-stacking-order);
-    }
+    position: sticky;
+    z-index: z-index(sticky-cell, $index-table-stacking-order);
   }
 
   .statusSuccess {
@@ -362,6 +356,10 @@ $loading-panel-height: rem(53px);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
+    display: none;
+  }
+
+  &.unselectable {
     display: none;
   }
 }
