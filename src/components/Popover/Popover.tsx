@@ -85,13 +85,6 @@ export interface PopoverProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-/*
-type PopoverComponentType = React.FunctionComponent<PopoverProps> & {
-  Pane: typeof Pane;
-  Section: typeof Section;
-};
-*/
-
 export interface PopoverHandles {
   forceReLayout(): void;
 }
@@ -125,18 +118,15 @@ export const Popover: PopoverComponentType = forwardRef(function Popover(
   ref,
 ) {
   const [activatorNode, setActivatorNode] = useState<HTMLElement>();
+
+  const overlayRef = useRef<PopoverOverlay>(null);
   const activatorContainer = useRef<HTMLElement>(null);
+
   const WrapperComponent: any = activatorWrapper;
   const id = useUniqueId('popover');
 
-  const overlayRef = useRef<PopoverOverlay>(null);
-
   function forceReLayout() {
-    requestAnimationFrame(() => {
-      console.log(`Popover forceReLayout: ${id}`, ref);
-      console.log('Popover > overlayRef', overlayRef);
-      overlayRef.current?.forceReLayout();
-    });
+    overlayRef.current?.forceReLayout();
   }
 
   useImperativeHandle(ref, () => {

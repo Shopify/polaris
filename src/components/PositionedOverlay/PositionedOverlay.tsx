@@ -159,7 +159,10 @@ export class PositionedOverlay extends PureComponent<
   }
 
   forceReLayout() {
-    console.log('PositionedOverlay > forceReLayout');
+    // Wait a single animation frame before re-measuring.
+    // Consumer's may also need to setup their own timers for
+    // triggering forceReLayout() `children` use animation.
+    // Ideally, forceReLayout() is fired at the end of a transition event.
     requestAnimationFrame(() => this.handleMeasurement());
   }
 
