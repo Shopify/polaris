@@ -15,6 +15,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Allow promoted actions to be rendered as a menu on the `BulkAction` component ([#4266](https://github.com/Shopify/polaris-react/pull/4266))
 - Add `extraSmall` prop to `Avatar` ([#4371](https://github.com/Shopify/polaris-react/pull/4371))
 - Add `critical` color option to `ProgressBar` component ([#4408](https://github.com/Shopify/polaris-react/pull/4408))
+- `Popover` now exposes an imperative `forceReLayout()` API for programmatically triggering a re-render of the underlying overlay component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
+- `PositionedOverlay` now exposes an imperative `forceReLayout()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 
 ### Bug fixes
 
