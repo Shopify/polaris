@@ -67,15 +67,25 @@ function SimpleIndexTableExample() {
       amountSpent: '$140',
     },
   ];
-
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
   };
 
+  const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+  } = useIndexResourceState(customers);
+
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
@@ -91,7 +101,10 @@ function SimpleIndexTableExample() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectable={false}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
@@ -130,15 +143,25 @@ function SimpleSmallScreenIndexTableExample() {
       amountSpent: '$140',
     },
   ];
-
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
   };
 
+  const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+  } = useIndexResourceState(customers);
+
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
         <div style={{padding: '1.2rem 1.6rem'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -157,8 +180,11 @@ function SimpleSmallScreenIndexTableExample() {
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
           condensed
-          selectable={false}
           headings={[
             {title: 'Name'},
             {title: 'Location'},
@@ -518,7 +544,7 @@ function IndexTableWithLoadingExample() {
 }
 ```
 
-### IndexTable with only filtering
+### IndexTable with filtering
 
 Allows merchants to narrow the index table to a subset of the original items.
 
@@ -547,6 +573,11 @@ function IndexTableWithFilteringExample() {
     plural: 'customers',
   };
 
+  const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+  } = useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -597,7 +628,12 @@ function IndexTableWithFilteringExample() {
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
@@ -634,7 +670,10 @@ function IndexTableWithFilteringExample() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectable={false}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
@@ -697,9 +736,21 @@ function IndexTableWithRowStatusExample() {
     plural: 'customers',
   };
 
+  const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+  } = useIndexResourceState(customers);
+
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent, status}, index) => (
-      <IndexTable.Row id={id} position={index} status={status}>
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        status={status}
+      >
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
@@ -715,7 +766,10 @@ function IndexTableWithRowStatusExample() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectable={false}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
@@ -759,9 +813,20 @@ function StickyLastCellIndexTableExample() {
     plural: 'customers',
   };
 
+  const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+  } = useIndexResourceState(customers);
+
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
@@ -777,7 +842,10 @@ function StickyLastCellIndexTableExample() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectable={false}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
