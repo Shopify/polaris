@@ -43,6 +43,7 @@ interface SecondaryAction {
   url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  onClick?(): void;
 }
 
 export interface ItemProps extends ItemURLDetails {
@@ -181,6 +182,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
@@ -209,6 +211,7 @@ export function Item({
       tabIndex={tabIndex}
       aria-disabled={disabled}
       aria-label={secondaryAction.accessibilityLabel}
+      onClick={secondaryAction.onClick}
     >
       <Icon source={secondaryAction.icon} />
     </UnstyledLink>
