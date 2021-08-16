@@ -35,7 +35,6 @@ export function Resizer({
 
   const minimumLinesMarkup = minimumLines ? (
     <div
-      testID="MinimumLines"
       ref={minimumLinesNode}
       className={styles.DummyInput}
       dangerouslySetInnerHTML={{
@@ -70,10 +69,9 @@ export function Resizer({
   });
 
   return (
-    <div testID="ResizerWrapper" aria-hidden className={styles.Resizer}>
+    <div aria-hidden className={styles.Resizer}>
       <EventListener event="resize" handler={handleHeightCheck} />
       <div
-        testID="ContentsNode"
         ref={contentNode}
         className={styles.DummyInput}
         dangerouslySetInnerHTML={{__html: getFinalContents(contents)}}
