@@ -66,6 +66,7 @@ export function MenuGroup({
       preferredAlignment="left"
       onClose={handleClose}
       hideOnPrint
+      fullWidth
     >
       <ActionList items={actions} onActionAnyItem={handleClose} />
       {details && <div className={styles.Details}>{details}</div>}

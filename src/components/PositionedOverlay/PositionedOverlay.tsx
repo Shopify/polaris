@@ -223,7 +223,10 @@ export class PositionedOverlay extends PureComponent<
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
         const overlayRect = fullWidth
-          ? new Rect({...currentOverlayRect, width: activatorRect.width})
+          ? new Rect({
+              ...currentOverlayRect,
+              width: Math.max(activatorRect.width, currentOverlayRect.width),
+            })
           : currentOverlayRect;
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
