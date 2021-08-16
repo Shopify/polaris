@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp, Node} from 'test-utilities';
+import {mountWithApp} from 'test-utilities';
 import {
   Avatar,
   ButtonGroup,
@@ -70,8 +70,12 @@ describe('<ResourceItem />', () => {
   const external = false;
   const ariaLabel = 'View Item';
 
-  const resourceItemFilter = (node: Node<unknown>) =>
-    node.is('div') && node!.domNode.classList.contains(styles.ResourceItem);
+  function findResourceItem(wrapper: ReturnType<typeof mountWithApp>) {
+    return wrapper!.findWhere<'div'>(
+      (node) =>
+        node.is('div') && node.domNode!.classList.contains(styles.ResourceItem),
+    );
+  }
 
   describe('accessibilityLabel', () => {
     it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
@@ -300,7 +304,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -320,7 +324,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -334,7 +338,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {metaKey: true},
       });
@@ -349,7 +353,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Enter'});
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
 
       expect(onClick).toHaveBeenCalled();
     });
@@ -362,7 +366,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Tab'});
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Tab'});
 
       expect(onClick).not.toHaveBeenCalled();
     });
@@ -375,7 +379,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onKeyUp', {key: 'Enter'});
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
       expect(onClick).not.toHaveBeenCalled();
     });
 
@@ -386,7 +390,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {ctrlKey: true},
       });
@@ -444,7 +448,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -466,7 +470,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
@@ -494,7 +498,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {metaKey: true},
       });
@@ -508,7 +512,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findWhere(resourceItemFilter)!.trigger('onClick', {
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {ctrlKey: true},
       });
