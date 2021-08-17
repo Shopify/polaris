@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {SingleThumb} from '../SingleThumb';
 
@@ -43,13 +44,15 @@ describe('<SingleThumb />', () => {
     it('is called with a new value', () => {
       const onChangeSpy = jest.fn();
       const {onChange, ...rest} = mockProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb onChange={onChangeSpy} {...rest} />,
       );
 
-      const singleThumb = element.find(SingleThumb);
-      (element.find('input') as any).instance().value = 40;
-      singleThumb.find('input').simulate('change');
+      element.find('input')!.trigger('onChange', {
+        currentTarget: {
+          value: '40',
+        },
+      });
       expect(onChangeSpy).toHaveBeenCalledWith(40, 'MyRangeSlider');
     });
   });
