@@ -119,6 +119,10 @@ $loading-panel-height: rem(53px);
   cursor: pointer;
   filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
 
+  &.TableRow-unclickable {
+    cursor: auto;
+  }
+
   &.statusSuccess {
     &,
     .TableCell-first,

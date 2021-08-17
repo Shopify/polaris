@@ -40,14 +40,9 @@ export const Row = memo(function Row({
     setFalse: setHoverOut,
   } = useToggle(false);
 
-  const rowClassName = classNames(
-    styles.TableRow,
-    selectable && condensed && styles.condensedRow,
-    selected && styles['TableRow-selected'],
-    subdued && styles['TableRow-subdued'],
-    hovered && styles['TableRow-hovered'],
-    status && styles[variationName('status', status)],
-  );
+  const getPrimaryLinkElement = () => {
+    return tableRowRef?.current?.querySelector('[data-primary-link]');
+  };
 
   const handleInteraction = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -74,6 +69,16 @@ export const Row = memo(function Row({
   const tableRowRef = useRef<HTMLTableRowElement & HTMLLIElement>(null);
   const isNavigating = useRef<boolean>(false);
 
+  const rowClassName = classNames(
+    styles.TableRow,
+    selectable && condensed && styles.condensedRow,
+    selected && styles['TableRow-selected'],
+    subdued && styles['TableRow-subdued'],
+    hovered && styles['TableRow-hovered'],
+    status && styles[variationName('status', status)],
+    !selectable && !getPrimaryLinkElement() && styles['TableRow-unclickable'],
+  );
+
   const handleRowClick = (event: React.MouseEvent) => {
     if (!tableRowRef.current || isNavigating.current) {
       return;
@@ -82,9 +87,7 @@ export const Row = memo(function Row({
     event.preventDefault();
     event.stopPropagation();
 
-    const primaryLinkElement = tableRowRef.current.querySelector(
-      '[data-primary-link]',
-    );
+    const primaryLinkElement = getPrimaryLinkElement();
 
     if (primaryLinkElement && !selectMode) {
       isNavigating.current = true;
