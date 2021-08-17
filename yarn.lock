@@ -1914,6 +1914,11 @@
     babel-plugin-react-test-id "^1.0.2"
     babel-plugin-transform-inline-environment-variables "^0.4.3"
 
+"@shopify/browserslist-config@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-3.0.0.tgz#fedfef0dedc97155a60432c152eff50df88e13d2"
+  integrity sha512-NzZTZ8EEG6xmM1ApSsQFDqW6C5CmByNhXyLxwWjVX08GzHxkhMc10MSY7WGvTCzd1lQuZEp8Ko/jOCBTQQsEGg==
+
 "@shopify/eslint-plugin@^39.0.1":
   version "39.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/eslint-plugin/-/eslint-plugin-39.0.1.tgz#c9b8cfeef6b4f03171ba89bc9308b85a16681a7b"
@@ -2016,6 +2021,11 @@
     stylelint-order "^4.0.0"
     stylelint-prettier "^1.1.2"
     stylelint-scss "^3.16.0"
+
+"@shopify/typescript-configs@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.0.0.tgz#4cd1339a6a5ab34e7f7d852d155d2c82b731c152"
+  integrity sha512-1TV9pr3UBr1AlGC//4bdeKiQ2qwDuaqCZGfxO2OtIg/EN3luDdf49UNNm/BL9ZiApHcz7kg9Wklc09vhzD24hw==
 
 "@shopify/useful-types@^3.0.1":
   version "3.0.1"
