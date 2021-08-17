@@ -448,7 +448,7 @@ describe('<PopoverOverlay />', () => {
     });
   });
 
-  describe('forceReLayout', () => {
+  describe('forceUpdatePosition', () => {
     it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
       let overlayRef = null;
 
@@ -470,7 +470,7 @@ describe('<PopoverOverlay />', () => {
 
       mountWithApp(<Test />);
 
-      expect(overlayRef).toHaveProperty('current.forceReLayout');
+      expect(overlayRef).toHaveProperty('current.forceUpdatePosition');
     });
   });
 });

@@ -208,7 +208,7 @@ export {Popover, PopoverCloseSource} from './Popover';
 export type {
   PopoverProps,
   PopoverAutofocusTarget,
-  PopoverHandles,
+  PopoverPublicAPI,
 } from './Popover';
 
 export {Portal} from './Portal';

@@ -76,8 +76,8 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     this.overlayRef = createRef();
   }
 
-  forceReLayout() {
-    this.overlayRef.current?.forceReLayout();
+  forceUpdatePosition() {
+    this.overlayRef.current?.forceUpdatePosition();
   }
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {

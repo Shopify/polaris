@@ -4,7 +4,7 @@ import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
 
 import {Popover} from '../Popover';
-import type {PopoverHandles} from '../Popover';
+import type {PopoverPublicAPI} from '../Popover';
 import {PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
 
@@ -345,9 +345,9 @@ describe('<Popover />', () => {
     expect(document.activeElement).not.toBe(nextElementTarget);
   });
 
-  describe('forceReLayout', () => {
+  describe('forceUpdatePosition', () => {
     it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
-      let popoverRef: React.RefObject<PopoverHandles> | null = null;
+      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
 
       function Test() {
         popoverRef = useRef(null);
@@ -366,7 +366,7 @@ describe('<Popover />', () => {
 
       expect(popoverRef).toStrictEqual({
         current: {
-          forceReLayout: expect.anything(),
+          forceUpdatePosition: expect.anything(),
         },
       });
     });
