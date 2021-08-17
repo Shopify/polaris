@@ -79,41 +79,45 @@ export const Row = memo(function Row({
     !selectable && !getPrimaryLinkElement() && styles['TableRow-unclickable'],
   );
 
-  const handleRowClick = (event: React.MouseEvent) => {
-    if (!tableRowRef.current || isNavigating.current) {
-      return;
-    }
+  let handleRowClick;
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    const primaryLinkElement = getPrimaryLinkElement();
-
-    if (primaryLinkElement && !selectMode) {
-      isNavigating.current = true;
-      const {ctrlKey, metaKey} = event.nativeEvent;
-
-      if (onNavigation) {
-        onNavigation(id);
-      }
-
-      if (
-        (ctrlKey || metaKey) &&
-        primaryLinkElement instanceof HTMLAnchorElement
-      ) {
-        isNavigating.current = false;
-        window.open(primaryLinkElement.href, '_blank');
+  if (selectable || getPrimaryLinkElement()) {
+    handleRowClick = (event: React.MouseEvent) => {
+      if (!tableRowRef.current || isNavigating.current) {
         return;
       }
 
-      primaryLinkElement.dispatchEvent(
-        new MouseEvent(event.type, event.nativeEvent),
-      );
-    } else {
-      isNavigating.current = false;
-      handleInteraction(event);
-    }
-  };
+      event.stopPropagation();
+      event.preventDefault();
+
+      const primaryLinkElement = getPrimaryLinkElement();
+
+      if (primaryLinkElement && !selectMode) {
+        isNavigating.current = true;
+        const {ctrlKey, metaKey} = event.nativeEvent;
+
+        if (onNavigation) {
+          onNavigation(id);
+        }
+
+        if (
+          (ctrlKey || metaKey) &&
+          primaryLinkElement instanceof HTMLAnchorElement
+        ) {
+          isNavigating.current = false;
+          window.open(primaryLinkElement.href, '_blank');
+          return;
+        }
+
+        primaryLinkElement.dispatchEvent(
+          new MouseEvent(event.type, event.nativeEvent),
+        );
+      } else {
+        isNavigating.current = false;
+        handleInteraction(event);
+      }
+    };
+  }
 
   const RowWrapper = condensed ? 'li' : 'tr';
 

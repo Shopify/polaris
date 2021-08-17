@@ -209,6 +209,30 @@ describe('<Row />', () => {
     expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
   });
 
+  it('does not fire onClick handler when row is clicked and no primary link child present and table is not selectable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <th>
+          <a href="/">Child without data-primary-link</a>
+        </th>
+      </Row>,
+      {
+        indexTableProps: {
+          itemCount: 1,
+          selectable: false,
+        },
+      },
+    );
+
+    const onClick = () => {
+      row.find(Row)!.find('tr')!.trigger('onClick');
+    };
+
+    expect(onClick).toThrow(
+      'Attempted to call prop onClick but it was not defined.',
+    );
+  });
+
   it('has an undefined status by default', () => {
     const row = mountWithTable(
       <Row {...defaultProps}>
