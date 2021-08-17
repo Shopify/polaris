@@ -89,18 +89,11 @@ export interface PopoverHandles {
   forceReLayout(): void;
 }
 
-interface PopoverSubcomponents {
-  // TODO: How can we make these required props?
-  Pane?: typeof Pane;
-  Section?: typeof Section;
-}
-
 type PopoverComponentType = React.ForwardRefExoticComponent<
   PopoverProps & React.RefAttributes<PopoverHandles>
-> &
-  PopoverSubcomponents;
+>;
 
-export const Popover: PopoverComponentType = forwardRef(function Popover(
+const PopoverComponent: PopoverComponentType = forwardRef(function Popover(
   {
     activatorWrapper = 'div',
     children,
@@ -243,5 +236,4 @@ function isInPortal(element: Element) {
   return true;
 }
 
-Popover.Pane = Pane;
-Popover.Section = Section;
+export const Popover = Object.assign(PopoverComponent, {Pane, Section});
