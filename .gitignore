@@ -1,6 +1,6 @@
 *.log
 node_modules
-/build
+.sewing-kit
 /dist
 .DS_Store
 *.scss.d.ts

@@ -35,9 +35,7 @@ function plugins({browserslist, stylesConfig}) {
       envName: 'production',
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      caller: {
-        browserslistOverride: browserslist,
-      },
+      targets: browserslist,
     }),
     styles({
       ...stylesConfig,

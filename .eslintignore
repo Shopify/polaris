@@ -1,5 +1,5 @@
 node_modules
+.sewing-kit
 /examples
-/build
 /dist
 /src/styles/polaris-tokens
