@@ -49,9 +49,7 @@ describe('<SingleThumb />', () => {
       );
 
       element.find('input')!.trigger('onChange', {
-        currentTarget: {
-          value: '40',
-        },
+        currentTarget: {value: '40'},
       });
       expect(onChangeSpy).toHaveBeenCalledWith(40, 'MyRangeSlider');
     });
