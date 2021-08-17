@@ -36,7 +36,8 @@ If you include an animated gif showing your issue, wrapping it in a details tag 
 
 ## Steps to reproduce the problem
 
-1. 
+1. First step
+1. Second step
 
 ## Reduced test case
 
