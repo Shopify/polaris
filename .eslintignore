@@ -1,5 +1,5 @@
 node_modules
-.sewing-kit
+/.sewing-kit
 /examples
 /build
 /dist

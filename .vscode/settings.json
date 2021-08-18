@@ -10,7 +10,7 @@
     "**/.DS_Store": true,
     "**/.git": true,
     "**/node_modules": true,
-    ".{dev,shadowenv.d}": true,
+    ".{dev,shadowenv.d,sewing-kit}": true,
     "{build,dist}/": true,
     "examples/*/build": true
   },
