@@ -80,5 +80,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for EmptyState component ([#4427](https://github.com/Shopify/polaris-react/pull/4427))
 - Modernized tests for Pagination, FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
 - Modernized tests for PopoverOverlay component([#4430](https://github.com/Shopify/polaris-react/pull/4430))
+- Modernized tests for Dropzone, EmptySearchResult, EmptyState, EventListener, ExceptionList, and ConnectedFilterControl/Item components([#4412](https://github.com/Shopify/polaris-react/pull/4412))
 
 ### Deprecations

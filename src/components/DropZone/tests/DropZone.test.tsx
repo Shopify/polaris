@@ -3,6 +3,7 @@ import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
 import {mountWithApp} from 'test-utilities';
+import type {CustomRoot} from '@shopify/react-testing';
 
 import {DropZone, DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
@@ -57,16 +58,16 @@ describe('<DropZone />', () => {
 
   it('calls the onDrop callback when a drop event is fired', () => {
     const dropZone = mountWithApp(<DropZone onDrop={spy} />);
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(files, files, []);
   });
 
   it('calls the onDrop callback when a drop event is fired on document twice when a duplicate file is added consecutively', () => {
     const dropZone = mountWithApp(<DropZone onDrop={spy} />);
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(files, files, []);
 
-    fireEvent({element: dropZone, testFiles: duplicateFiles});
+    fireEvent({wrapper: dropZone, testFiles: duplicateFiles});
     expect(spy).toHaveBeenCalledWith(duplicateFiles, duplicateFiles, []);
   });
 
@@ -83,7 +84,7 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone onDrop={spy} accept="image/jpeg" />,
     );
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
@@ -91,7 +92,7 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone onDropAccepted={spy} accept="image/jpeg" />,
     );
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(acceptedFiles);
   });
 
@@ -99,25 +100,25 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone onDropRejected={spy} accept="image/jpeg" />,
     );
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(rejectedFiles);
   });
 
   it('calls the onDragEnter callback when a dragenter event is fired', () => {
     const dropZone = mountWithApp(<DropZone onDragEnter={spy} />);
-    fireEvent({element: dropZone, eventType: 'dragenter'});
+    fireEvent({wrapper: dropZone, eventType: 'dragenter'});
     expect(spy).toHaveBeenCalled();
   });
 
   it('calls the onDragOver callback when a dragover event is fired', () => {
     const dropZone = mountWithApp(<DropZone onDragOver={spy} />);
-    fireEvent({element: dropZone, eventType: 'dragover'});
+    fireEvent({wrapper: dropZone, eventType: 'dragover'});
     expect(spy).toHaveBeenCalled();
   });
 
   it('calls the onDragLeave callback when a dragleave event is fired', () => {
     const dropZone = mountWithApp(<DropZone onDragLeave={spy} />);
-    fireEvent({element: dropZone, eventType: 'dragleave'});
+    fireEvent({wrapper: dropZone, eventType: 'dragleave'});
     expect(spy).toHaveBeenCalled();
   });
 
@@ -128,7 +129,7 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone onDrop={spy} customValidator={customValidator} />,
     );
-    fireEvent({element: dropZone});
+    fireEvent({wrapper: dropZone});
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
@@ -144,13 +145,13 @@ describe('<DropZone />', () => {
         onDragOver={spy}
       />,
     );
-    fireEvent({element: dropZone, spy});
+    fireEvent({wrapper: dropZone, spy});
     expect(spy).not.toHaveBeenCalled();
-    fireEvent({element: dropZone, eventType: 'dragenter', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragenter', spy});
     expect(spy).not.toHaveBeenCalled();
-    fireEvent({element: dropZone, eventType: 'dragleave', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragleave', spy});
     expect(spy).not.toHaveBeenCalled();
-    fireEvent({element: dropZone, eventType: 'dragover', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragover', spy});
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -167,17 +168,17 @@ describe('<DropZone />', () => {
     );
 
     // Initial event to populate zone with data (should succeed)
-    fireEvent({element: dropZone, spy});
+    fireEvent({wrapper: dropZone, spy});
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
 
     // Attempt to replace the current file
-    fireEvent({element: dropZone, spy});
+    fireEvent({wrapper: dropZone, spy});
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
-    fireEvent({element: dropZone, eventType: 'dragenter', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragenter', spy});
     expect(spy).toHaveBeenCalled();
-    fireEvent({element: dropZone, eventType: 'dragleave', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragleave', spy});
     expect(spy).toHaveBeenCalled();
-    fireEvent({element: dropZone, eventType: 'dragover', spy});
+    fireEvent({wrapper: dropZone, eventType: 'dragover', spy});
     expect(spy).toHaveBeenCalled();
   });
 
@@ -250,18 +251,27 @@ describe('<DropZone />', () => {
         <DropZone label="My DropZone label" onClick={spy} />,
       );
 
-      dropZone.findAll('div')[4].trigger('onClick');
+      dropZone
+        .find('div', {
+          'aria-disabled': false,
+        })
+        ?.trigger('onClick');
 
       expect(spy).toHaveBeenCalled();
     });
 
-    it('does not calls the onClick when the dropzone is disabled', () => {
+    it('does not call the onClick when the dropzone is disabled', () => {
       const spy = jest.fn();
       const dropZone = mountWithApp(
         <DropZone disabled label="My DropZone label" onClick={spy} />,
       );
 
-      dropZone.findAll('div')[4].trigger('onClick');
+      dropZone
+        .find('div', {
+          'aria-disabled': true,
+        })
+        ?.domNode!.click();
+
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -306,17 +316,15 @@ describe('<DropZone />', () => {
     it('does not render the overlayText on small screens', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
-      fireEvent({element: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      const caption = dropZone.find(Caption);
-      expect(displayText).toHaveLength(0);
-      expect(caption).toHaveLength(0);
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      expect(dropZone).not.toContainReactComponent(DisplayText);
+      expect(dropZone).not.toContainReactComponent(Caption);
     });
 
     it('renders a Caption containing the overlayText on medium screens', () => {
       setBoundingClientRect('medium');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(overlayText);
     });
@@ -324,7 +332,7 @@ describe('<DropZone />', () => {
     it('renders a Caption containing the overlayText on large screens', () => {
       setBoundingClientRect('large');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(overlayText);
     });
@@ -332,7 +340,7 @@ describe('<DropZone />', () => {
     it('renders a DisplayText containing the overlayText on extra-large screens', () => {
       setBoundingClientRect('extraLarge');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
       expect(displayText).toContainReactText(overlayText);
     });
@@ -342,7 +350,7 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(
         <DropZone overlayText={overlayText} variableHeight />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
       expect(displayText).toContainReactText(overlayText);
     });
@@ -355,11 +363,9 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      const caption = dropZone.find(Caption);
-      expect(displayText).toHaveLength(0);
-      expect(caption).toHaveLength(0);
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      expect(dropZone).not.toContainReactComponent(DisplayText);
+      expect(dropZone).not.toContainReactComponent(Caption);
     });
 
     it('renders a Caption containing the overlayText on medium screens', () => {
@@ -367,7 +373,7 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(errorOverlayText);
     });
@@ -377,7 +383,7 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const captionText = dropZone.find(Caption);
 
       expect(captionText).toContainReactText(errorOverlayText);
@@ -388,7 +394,7 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
       expect(displayText).toContainReactText(errorOverlayText);
     });
@@ -402,7 +408,7 @@ describe('<DropZone />', () => {
           variableHeight
         />,
       );
-      fireEvent({element: dropZone, eventType: 'dragenter'});
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
       expect(displayText).toContainReactText(errorOverlayText);
     });
@@ -454,7 +460,7 @@ describe('<DropZone />', () => {
       );
       const fileInput = dropZone.find('input', {type: 'file'})!;
       fileInput.trigger('onFocus');
-      expect(dropZone.find('#focused')).toHaveLength(1);
+      expect(dropZone).toContainReactComponent('div', {id: 'focused'});
     });
 
     it('sets focused to false when the input file is blur', () => {
@@ -469,7 +475,7 @@ describe('<DropZone />', () => {
       );
       const fileInput = dropZone.find('input', {type: 'file'})!;
       fileInput.trigger('onBlur');
-      expect(dropZone.find('#blurred')).toHaveLength(1);
+      expect(dropZone).toContainReactComponent('div', {id: 'blurred'});
     });
 
     it('sets disabled to true when the dropzone is disabled', () => {
@@ -483,7 +489,7 @@ describe('<DropZone />', () => {
         </DropZone>,
       );
 
-      expect(dropZone.find('#disabled')).toHaveLength(1);
+      expect(dropZone).toContainReactComponent('div', {id: 'disabled'});
     });
 
     it('sets the default type to file if not specified', () => {
@@ -497,7 +503,7 @@ describe('<DropZone />', () => {
         </DropZone>,
       );
 
-      expect(dropZone.find('#file')).toHaveLength(1);
+      expect(dropZone).toContainReactComponent('div', {id: 'file'});
     });
   });
 
@@ -555,12 +561,12 @@ function setBoundingClientRect(size: keyof typeof widths) {
 }
 
 function fireEvent({
-  element,
+  wrapper,
   eventType = 'drop',
   testFiles = files,
   spy,
 }: {
-  element: ReactWrapper;
+  wrapper: CustomRoot<any, any>;
   eventType?: string;
   spy?: jest.Mock;
   testFiles?: Record<string, unknown>[];
@@ -571,11 +577,11 @@ function fireEvent({
     }
     const event = createEvent(eventType, testFiles);
 
-    element.findAll('div')[3].getDOMNode().dispatchEvent(event);
+    wrapper.findAll('div')[3].domNode!.dispatchEvent(event);
 
     if (eventType === 'dragenter') {
       clock.tick(50);
     }
   });
-  element.update();
+  wrapper.forceUpdate();
 }
