@@ -1,7 +1,5 @@
 import React from 'react';
 import {Caption, TextStyle} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {DropZoneContext} from '../../../context';
@@ -18,7 +16,7 @@ describe('<FileUpload />', () => {
   };
   describe('measuring', () => {
     it('hides the FileUpload while measuring is true', () => {
-      const fileUpload = mountWithAppProvider(
+      const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
             size: 'extraLarge',
@@ -31,14 +29,15 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      const wrapper = fileUpload.find('div').first();
-      expect(wrapper.hasClass('measuring')).toBe(true);
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'FileUpload measuring',
+      });
     });
   });
 
   describe('extraLarge', () => {
     it('renders extra large view for type file', () => {
-      const fileUpload = mountWithAppProvider(
+      const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
             size: 'extraLarge',
@@ -50,13 +49,17 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload.find('img').prop('src')).toBe(uploadArrowImage);
-      expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
-      expect(fileUpload.find(TextStyle)).toHaveLength(1);
+      expect(fileUpload).toContainReactComponent('img', {
+        src: uploadArrowImage,
+      });
+      expect(fileUpload).toContainReactComponent(TextStyle);
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'Button',
+      });
     });
 
     it('renders extra large view for type image', () => {
-      const fileUpload = mountWithAppProvider(
+      const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{size: 'extraLarge', type: 'image', ...defaultStates}}
         >
@@ -64,14 +67,16 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
-      expect(fileUpload.find(TextStyle)).toHaveLength(1);
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'Button',
+      });
+      expect(fileUpload).toContainReactComponent(TextStyle);
     });
   });
 
   describe('large', () => {
     it('renders large view', () => {
-      const fileUpload = mountWithAppProvider(
+      const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{size: 'large', type: 'file', ...defaultStates}}
         >
@@ -79,14 +84,17 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
-      expect(fileUpload.find(TextStyle)).toHaveLength(1);
-      expect(fileUpload.find(Caption)).toHaveLength(1);
+      expect(fileUpload).toContainReactComponent(Caption);
+      expect(fileUpload).toContainReactComponent(TextStyle);
+
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'Button slim',
+      });
     });
   });
 
   it('renders medium view', () => {
-    const fileUpload = mountWithAppProvider(
+    const fileUpload = mountWithApp(
       <DropZoneContext.Provider
         value={{size: 'medium', type: 'file', ...defaultStates}}
       >
@@ -94,12 +102,14 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(findByTestID(fileUpload, 'Link')).toHaveLength(1);
-    expect(fileUpload.find(Caption)).toHaveLength(1);
+    expect(fileUpload).toContainReactComponent('div', {
+      className: 'ActionTitle',
+    });
+    expect(fileUpload).toContainReactComponentTimes(Caption, 1);
   });
 
   it('renders small view', () => {
-    const fileUpload = mountWithAppProvider(
+    const fileUpload = mountWithApp(
       <DropZoneContext.Provider
         value={{size: 'small', type: 'file', ...defaultStates}}
       >
@@ -107,11 +117,11 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload.find('img')).toHaveLength(1);
+    expect(fileUpload).toContainReactComponentTimes('img', 1);
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {
-    const fileUpload = mountWithAppProvider(
+    const fileUpload = mountWithApp(
       <DropZoneContext.Provider
         value={{size: 'large', type: 'file', ...defaultStates}}
       >
@@ -120,11 +130,12 @@ describe('<FileUpload />', () => {
     );
 
     fileUpload.setProps({children: <FileUpload />});
-    expect(findByTestID(fileUpload, 'Button').text()).toBe('Add files');
+
+    expect(fileUpload).toContainReactText('Add files');
   });
 
   it('sets a default actionHint if the prop is provided then removed', () => {
-    const fileUpload = mountWithAppProvider(
+    const fileUpload = mountWithApp(
       <DropZoneContext.Provider
         value={{size: 'large', type: 'file', ...defaultStates}}
       >
@@ -133,7 +144,7 @@ describe('<FileUpload />', () => {
     );
 
     fileUpload.setProps({children: <FileUpload />});
-    expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
+    expect(fileUpload).toContainReactText('or drop files to upload');
   });
 
   it.each([
