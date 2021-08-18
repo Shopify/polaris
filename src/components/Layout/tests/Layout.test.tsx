@@ -60,7 +60,6 @@ describe('<Layout />', () => {
         TextContainer,
       )!;
 
-      expect(annotedDescriptionTextContainer).toContainReactComponent('div');
       expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
         description,
       );
