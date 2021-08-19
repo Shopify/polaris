@@ -36,6 +36,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Use `sewing-kit-next` for test and linting harnesses. ([#4402](https://github.com/Shopify/polaris-react/pull/4402))
+
 ### Dependency upgrades
 
 ### Code quality
