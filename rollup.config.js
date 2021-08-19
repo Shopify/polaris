@@ -35,9 +35,10 @@ function plugins({browserslist, stylesConfig}) {
       envName: 'production',
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      caller: {
-        browserslistOverride: browserslist,
-      },
+      // This is kinda silly but if the browserslist is absent we don't want
+      // to set the key at all (which is different to the key being present but
+      // it's value is undefined)
+      ...(browserslist ? {targets: browserslist} : {}),
     }),
     styles({
       ...stylesConfig,

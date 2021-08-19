@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
-import {ActionMenuProps, ActionMenu} from 'index';
 import {mountWithApp} from 'test-utilities';
 
+import {ActionMenuProps, ActionMenu} from '../../..';
 import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 
 describe('<Actions />', () => {
