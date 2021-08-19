@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {EventListener} from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
@@ -13,26 +12,30 @@ const red = {
 };
 
 enum SlidableType {
-  BrightnessSaturation,
+  Color,
   Hue,
+  Alpha,
 }
 
 describe('<ColorPicker />', () => {
-  describe('Saturation/ Brightness pane', () => {
+  describe('Color slider (big square/rectangle)', () => {
     describe('onChange', () => {
-      it('is called when the user mouse downs', () => {
+      it("is called when Slidable's onChange is triggered", () => {
         const spy = jest.fn();
-        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
-          .find(Slidable)
-          .at(SlidableType.BrightnessSaturation)
-          .simulate('mousedown');
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} />,
+        );
+
+        colorPicker
+          .findAll(Slidable)
+          [SlidableType.Color].trigger('onChange', {x: 1, y: 1});
 
         expect(spy).toHaveBeenCalled();
       });
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />);
+        mountWithApp(<ColorPicker color={red} onChange={spy} />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
@@ -42,19 +45,47 @@ describe('<ColorPicker />', () => {
 
   describe('Hue slider', () => {
     describe('onChange', () => {
-      it('is called when the user mouse downs', () => {
+      it("is called when Slidable's onChange is triggered", () => {
         const spy = jest.fn();
-        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
-          .find(Slidable)
-          .at(SlidableType.Hue)
-          .simulate('mousedown');
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} />,
+        );
+
+        colorPicker
+          .findAll(Slidable)
+          [SlidableType.Hue].trigger('onChange', {x: 1, y: 1});
 
         expect(spy).toHaveBeenCalled();
       });
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />);
+        mountWithApp(<ColorPicker color={red} onChange={spy} />);
+
+        window.dispatchEvent(new Event('mousemove'));
+        expect(spy).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('Alpha slider', () => {
+    describe('onChange', () => {
+      it("is called when Slidable's onChange is triggered", () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} allowAlpha />,
+        );
+
+        colorPicker
+          .findAll(Slidable)
+          [SlidableType.Alpha].trigger('onChange', {x: 1, y: 1});
+
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('is not called on mousemove when not dragging', () => {
+        const spy = jest.fn();
+        mountWithApp(<ColorPicker color={red} onChange={spy} allowAlpha />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
@@ -65,22 +96,21 @@ describe('<ColorPicker />', () => {
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
-      const colorPicker = mountWithAppProvider(
+      const colorPicker = mountWithApp(
         <ColorPicker id={id} color={red} onChange={jest.fn()} />,
       );
-
-      expect(colorPicker.childAt(0).prop('id')).toBe(id);
+      expect(colorPicker.children[0]).toHaveReactProps({id});
     });
   });
 
   describe('color', () => {
     it('is passed down to AlphaPicker if allowAlpha is true', () => {
       const id = 'MyID';
-      const colorPicker = mountWithAppProvider(
+      const colorPicker = mountWithApp(
         <ColorPicker id={id} color={red} onChange={jest.fn()} allowAlpha />,
       );
 
-      expect(colorPicker.find(AlphaPicker).prop('color')).toStrictEqual(red);
+      expect(colorPicker).toContainReactComponent(AlphaPicker, {color: red});
     });
   });
 
@@ -91,46 +121,50 @@ describe('<ColorPicker />', () => {
 
     it('passes false to passive prop for "mousemove" EventListener when dragging', () => {
       const onChangeSpy = jest.fn();
-      const colorPicker = mountWithAppProvider(
+      const colorPicker = mountWithApp(
         <ColorPicker color={red} onChange={onChangeSpy} />,
       );
 
-      colorPicker
-        .find(Slidable)
-        .at(SlidableType.BrightnessSaturation)
-        .simulate('mousedown');
+      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+        type: 'mousedown',
+        clientX: 1,
+        clientY: 1,
+      });
 
-      const mouseMoveListener = colorPicker
-        .find(EventListener)
-        .filterWhere((listener) => listener.prop('event') === 'mousemove');
-
-      expect(mouseMoveListener.prop('passive')).toBe(false);
+      expect(colorPicker).toContainReactComponent(EventListener, {
+        event: 'mousemove',
+        passive: false,
+      });
     });
 
     it('passes false to passive prop for "touchmove" EventListener when dragging', () => {
       const onChangeSpy = jest.fn();
-      const colorPicker = mountWithAppProvider(
+      const colorPicker = mountWithApp(
         <ColorPicker color={red} onChange={onChangeSpy} />,
       );
 
-      colorPicker
-        .find(Slidable)
-        .at(SlidableType.BrightnessSaturation)
-        .simulate('mousedown');
+      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+        type: 'mousedown',
+        clientX: 1,
+        clientY: 1,
+      });
 
-      const touchMoveListener = colorPicker
-        .find(EventListener)
-        .filterWhere((listener) => listener.prop('event') === 'touchmove');
-
-      expect(touchMoveListener.prop('passive')).toBe(false);
+      expect(colorPicker).toContainReactComponent(EventListener, {
+        event: 'touchmove',
+        passive: false,
+      });
     });
 
     it('prevents default for touchmove events if dragging the slider', () => {
-      const colorPicker = mountWithAppProvider(
+      const colorPicker = mountWithApp(
         <ColorPicker color={red} onChange={noop} />,
       );
 
-      colorPicker.find(Slidable).first().simulate('mousedown');
+      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+        type: 'mousedown',
+        clientX: 1,
+        clientY: 1,
+      });
 
       const touch = {clientX: 0, clientY: 0};
       const event = new TouchEvent('touchmove', {
