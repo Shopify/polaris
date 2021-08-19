@@ -45,7 +45,7 @@
   "scripts": {
     "lint": "sewing-kit lint",
     "format": "sewing-kit format",
-    "type-check": "sewing-kit --heap 4098 type-check",
+    "type-check": "sewing-kit --heap 8192 type-check",
     "test": "sewing-kit test",
     "test:coverage": "CI=true yarn test --coverage",
     "posttest:coverage": "yarn open:coverage",
