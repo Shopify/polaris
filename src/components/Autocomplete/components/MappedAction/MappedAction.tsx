@@ -11,7 +11,9 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './MappedAction.scss';
 
-interface MappedAction extends ActionListItemDescriptor {}
+interface MappedAction extends ActionListItemDescriptor {
+  wrapOverflow?: boolean;
+}
 
 export function MappedAction({
   active,
@@ -29,10 +31,13 @@ export function MappedAction({
   destructive,
   badge,
   helpText,
+  wrapOverflow = false,
 }: MappedAction) {
   const i18n = useI18n();
 
   let prefixMarkup: React.ReactNode | null = null;
+
+  const contentOverflowStyle = wrapOverflow ? styles.ContentWrap : undefined;
 
   if (prefix) {
     prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
@@ -69,14 +74,8 @@ export function MappedAction({
 
   const contentMarkup = (
     <div className={styles.Text}>
-      {helpText ? (
-        <>
-          <div>{contentText}</div>
-          <TextStyle variation="subdued">{helpText}</TextStyle>
-        </>
-      ) : (
-        contentText
-      )}
+      <div className={contentOverflowStyle}>{contentText}</div>
+      {helpText ? <TextStyle variation="subdued">{helpText}</TextStyle> : null}
     </div>
   );
 
