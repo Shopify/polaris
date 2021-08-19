@@ -31,6 +31,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Adjust `IndexTable` sticky z-index to avoid collisions with focused `TextField` ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Adjust `IndexTable` rows to have a grey hover state when unselected ([#4359](https://github.com/Shopify/polaris-react/pull/4359))
 - Properly support `selected` prop for `Navigation.Item` when `url` prop is not specified ([#4375](https://github.com/Shopify/polaris-react/pull/4375))
+- Fixed a bug in `Option` where the label would cause scrollbars to appear instead of wrapping ([#4411](https://github.com/Shopify/polaris-react/pull/4411))
 
 ### Documentation
 
