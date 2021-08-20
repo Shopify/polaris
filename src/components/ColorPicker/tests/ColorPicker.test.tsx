@@ -26,9 +26,10 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} />,
         );
 
-        colorPicker
-          .findAll(Slidable)
-          [SlidableType.Color].trigger('onChange', {x: 1, y: 1});
+        colorPicker.findAll(Slidable)[SlidableType.Color].trigger('onChange', {
+          x: 1,
+          y: 1,
+        });
 
         expect(spy).toHaveBeenCalled();
       });
@@ -51,9 +52,10 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} />,
         );
 
-        colorPicker
-          .findAll(Slidable)
-          [SlidableType.Hue].trigger('onChange', {x: 1, y: 1});
+        colorPicker.findAll(Slidable)[SlidableType.Hue].trigger('onChange', {
+          x: 1,
+          y: 1,
+        });
 
         expect(spy).toHaveBeenCalled();
       });
@@ -76,9 +78,10 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} allowAlpha />,
         );
 
-        colorPicker
-          .findAll(Slidable)
-          [SlidableType.Alpha].trigger('onChange', {x: 1, y: 1});
+        colorPicker.findAll(Slidable)[SlidableType.Alpha].trigger('onChange', {
+          x: 1,
+          y: 1,
+        });
 
         expect(spy).toHaveBeenCalled();
       });
