@@ -11,12 +11,6 @@ const red = {
   brightness: 1,
 };
 
-enum SlidableType {
-  Color,
-  Hue,
-  Alpha,
-}
-
 describe('<ColorPicker />', () => {
   describe('Color slider (big square/rectangle)', () => {
     describe('onChange', () => {
@@ -26,10 +20,7 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} />,
         );
 
-        colorPicker.findAll(Slidable)[SlidableType.Color].trigger('onChange', {
-          x: 1,
-          y: 1,
-        });
+        colorPicker.findAll(Slidable)[0].trigger('onChange', {x: 1, y: 1});
 
         expect(spy).toHaveBeenCalled();
       });
@@ -52,10 +43,7 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} />,
         );
 
-        colorPicker.findAll(Slidable)[SlidableType.Hue].trigger('onChange', {
-          x: 1,
-          y: 1,
-        });
+        colorPicker.findAll(Slidable)[1].trigger('onChange', {x: 1, y: 1});
 
         expect(spy).toHaveBeenCalled();
       });
@@ -78,10 +66,7 @@ describe('<ColorPicker />', () => {
           <ColorPicker color={red} onChange={spy} allowAlpha />,
         );
 
-        colorPicker.findAll(Slidable)[SlidableType.Alpha].trigger('onChange', {
-          x: 1,
-          y: 1,
-        });
+        colorPicker.findAll(Slidable)[2].trigger('onChange', {x: 1, y: 1});
 
         expect(spy).toHaveBeenCalled();
       });
@@ -128,7 +113,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker color={red} onChange={onChangeSpy} />,
       );
 
-      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+      colorPicker.find(Slidable)!.find('div')!.trigger('onMouseDown', {
         type: 'mousedown',
         clientX: 1,
         clientY: 1,
@@ -146,7 +131,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker color={red} onChange={onChangeSpy} />,
       );
 
-      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+      colorPicker.find(Slidable)!.find('div')!.trigger('onMouseDown', {
         type: 'mousedown',
         clientX: 1,
         clientY: 1,
@@ -163,7 +148,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker color={red} onChange={noop} />,
       );
 
-      colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+      colorPicker.find(Slidable)!.find('div')!.trigger('onMouseDown', {
         type: 'mousedown',
         clientX: 1,
         clientY: 1,

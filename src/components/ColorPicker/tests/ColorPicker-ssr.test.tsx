@@ -22,7 +22,7 @@ describe('<ColorPicker /> Server-side only', () => {
       <ColorPicker color={red} onChange={noop} />,
     );
 
-    colorPicker!.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+    colorPicker.find(Slidable)!.find('div')!.trigger('onMouseDown', {
       type: 'mousedown',
       clientX: 1,
       clientY: 1,
