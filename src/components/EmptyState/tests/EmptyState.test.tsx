@@ -1,4 +1,5 @@
 import React from 'react';
+import {mountWithApp} from 'test-utilities';
 import {
   Button,
   DisplayText,
@@ -7,15 +8,14 @@ import {
   TextContainer,
   UnstyledLink,
 } from 'components';
-import {mountWithApp} from 'test-utilities';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
 
-describe('<EmptyState />', () => {
-  let imgSrc =
-    'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
+const imgSrc =
+  'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
+describe('<EmptyState />', () => {
   describe('action', () => {
     it('renders a button with the action content if action is set', () => {
       const emptyState = mountWithApp(
@@ -109,9 +109,6 @@ describe('<EmptyState />', () => {
     });
 
     it('renders an Image with a sourceSet when largeImage is passed', () => {
-      imgSrc =
-        'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
-
       const emptyState = mountWithApp(
         <EmptyState image={imgSrc} largeImage={imgSrc} />,
       );
@@ -120,13 +117,11 @@ describe('<EmptyState />', () => {
         sourceSet: [
           {
             descriptor: '568w',
-            source:
-              'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg',
+            source: imgSrc,
           },
           {
             descriptor: '1136w',
-            source:
-              'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg',
+            source: imgSrc,
           },
         ],
       });
@@ -189,11 +184,11 @@ describe('<EmptyState />', () => {
   });
 
   describe('footerContent', () => {
-    const expectedContent =
-      'If you don’t want to add a transfer, you can import your inventory from settings';
-    const footerContentMarkup = <p>{expectedContent}</p>;
-
     it('renders footer content', () => {
+      const expectedContent =
+        'If you don’t want to add a transfer, you can import your inventory from settings';
+      const footerContentMarkup = <p>{expectedContent}</p>;
+
       const emptyState = mountWithApp(
         <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
       );
