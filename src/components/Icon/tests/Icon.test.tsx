@@ -3,17 +3,22 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities';
 
 import {Icon} from '../Icon';
+import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Icon />', () => {
   describe('accessibilityLabel', () => {
     it('uses the label as the aria-label for the icon', () => {
+      const label = 'This is an icon';
       const element = mountWithApp(
-        <Icon source="placeholder" accessibilityLabel="This is an icon" />,
+        <Icon source="placeholder" accessibilityLabel={label} />,
       ).find('span');
 
-      expect(element).toHaveReactProps({'aria-label': 'This is an icon'});
+      expect(element).toContainReactComponent(VisuallyHidden, {
+        children: label,
+      });
     });
   });
+
   describe('source', () => {
     it("renders a placeholder div when source is set to 'placeholder'", () => {
       const element = mountWithApp(<Icon source="placeholder" />);
