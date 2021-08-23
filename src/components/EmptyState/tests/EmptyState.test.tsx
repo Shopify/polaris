@@ -16,191 +16,173 @@ const imgSrc =
   'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
 describe('<EmptyState />', () => {
-  describe('action', () => {
-    it('renders a button with the action content if action is set', () => {
-      const emptyState = mountWithApp(
-        <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
-      );
-      expect(emptyState.find('button')).toContainReactText('Add transfer');
-    });
+  it('renders a button with the action content if action is set', () => {
+    const emptyState = mountWithApp(
+      <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
+    );
+    expect(emptyState.find('button')).toContainReactText('Add transfer');
+  });
 
-    it('does not render a button when no action is set', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+  it('does not render a button when no action is set', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
-      expect(emptyState).not.toContainReactComponent('button');
-    });
+    expect(emptyState).not.toContainReactComponent('button');
+  });
 
-    it('renders a medium size primary button by default', () => {
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
-      );
+  it('renders a medium size primary button by default', () => {
+    const emptyState = mountWithApp(
+      <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
+    );
 
-      expect(emptyState).toContainReactComponent(Button, {
-        size: 'medium',
-        primary: true,
-      });
-    });
-
-    it('renders a medium button when in a content context', () => {
-      const emptyStateInContentContext = mountWithApp(
-        <WithinContentContext.Provider value>
-          <EmptyState image={imgSrc} action={{content: 'Upload files'}} />
-        </WithinContentContext.Provider>,
-      );
-
-      expect(emptyStateInContentContext).toContainReactComponent(Button, {
-        size: 'medium',
-      });
-    });
-
-    it('adds center distribution and tight spacing to Stack', () => {
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
-      );
-
-      expect(emptyState).toContainReactComponent(Stack, {
-        spacing: 'tight',
-        distribution: 'center',
-      });
-    });
-
-    it('does not render a plain link as a secondaryAction', () => {
-      const emptyState = mountWithApp(
-        <EmptyState
-          image={imgSrc}
-          secondaryAction={{
-            content: 'Learn more',
-            url: 'https://help.shopify.com',
-          }}
-        />,
-      );
-
-      expect(emptyState).toContainReactComponent(UnstyledLink, {
-        plain: undefined,
-      });
+    expect(emptyState).toContainReactComponent(Button, {
+      size: 'medium',
+      primary: true,
     });
   });
 
-  describe('children', () => {
-    it('renders children', () => {
-      const expectedContent =
-        'If you don’t want to add a transfer, you can import your inventory from settings.';
-      const children = (
-        <p>
-          If you don’t want to add a transfer, you can import your inventory
-          from settings.
-        </p>
-      );
+  it('renders a medium button when in a content context', () => {
+    const emptyStateInContentContext = mountWithApp(
+      <WithinContentContext.Provider value>
+        <EmptyState image={imgSrc} action={{content: 'Upload files'}} />
+      </WithinContentContext.Provider>,
+    );
 
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc}>{children}</EmptyState>,
-      );
-
-      expect(emptyState.find(TextContainer)).toContainReactText(
-        expectedContent,
-      );
+    expect(emptyStateInContentContext).toContainReactComponent(Button, {
+      size: 'medium',
     });
   });
 
-  describe('img', () => {
-    it('passes the provided source to Image', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
-      expect(emptyState).toContainReactComponent(Image, {source: imgSrc});
-    });
+  it('adds center distribution and tight spacing to Stack', () => {
+    const emptyState = mountWithApp(
+      <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
+    );
 
-    it('renders an Image with a sourceSet when largeImage is passed', () => {
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc} largeImage={imgSrc} />,
-      );
-
-      expect(emptyState).toContainReactComponent(Image, {
-        sourceSet: [
-          {
-            descriptor: '568w',
-            source: imgSrc,
-          },
-          {
-            descriptor: '1136w',
-            source: imgSrc,
-          },
-        ],
-      });
+    expect(emptyState).toContainReactComponent(Stack, {
+      spacing: 'tight',
+      distribution: 'center',
     });
   });
 
-  describe('role', () => {
-    it('passes the presentation role to Image', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
-      expect(emptyState).toContainReactComponent(Image, {role: 'presentation'});
+  it('does not render a plain link as a secondaryAction', () => {
+    const emptyState = mountWithApp(
+      <EmptyState
+        image={imgSrc}
+        secondaryAction={{
+          content: 'Learn more',
+          url: 'https://help.shopify.com',
+        }}
+      />,
+    );
+
+    expect(emptyState).toContainReactComponent(UnstyledLink, {
+      plain: undefined,
     });
   });
 
-  describe('alt', () => {
-    it('passes an empty alt to Image', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
-      expect(emptyState).toContainReactComponent(Image, {alt: ''});
+  it('renders children', () => {
+    const expectedContent =
+      'If you don’t want to add a transfer, you can import your inventory from settings.';
+    const children = (
+      <p>
+        If you don’t want to add a transfer, you can import your inventory from
+        settings.
+      </p>
+    );
+
+    const emptyState = mountWithApp(
+      <EmptyState image={imgSrc}>{children}</EmptyState>,
+    );
+
+    expect(emptyState.find(TextContainer)).toContainReactText(expectedContent);
+  });
+
+  it('passes the provided source to Image', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+    expect(emptyState).toContainReactComponent(Image, {source: imgSrc});
+  });
+
+  it('renders an Image with a sourceSet when largeImage is passed', () => {
+    const emptyState = mountWithApp(
+      <EmptyState image={imgSrc} largeImage={imgSrc} />,
+    );
+
+    expect(emptyState).toContainReactComponent(Image, {
+      sourceSet: [
+        {
+          descriptor: '568w',
+          source: imgSrc,
+        },
+        {
+          descriptor: '1136w',
+          source: imgSrc,
+        },
+      ],
     });
   });
 
-  describe('heading', () => {
-    it('passes the provided heading to DisplayText', () => {
-      const expectedHeading = 'Manage your inventory transfers';
-      const emptyState = mountWithApp(
-        <EmptyState heading={expectedHeading} image={imgSrc} />,
-      );
-      const displayText = emptyState.find(DisplayText)!;
+  it('passes the presentation role to Image', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+    expect(emptyState).toContainReactComponent(Image, {role: 'presentation'});
+  });
 
-      expect(displayText).toHaveReactProps({size: 'medium'});
-      expect(displayText).toContainReactText(expectedHeading);
-    });
+  it('passes an empty alt to Image', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+    expect(emptyState).toContainReactComponent(Image, {alt: ''});
+  });
 
-    it('renders a small DisplayText when in a content context', () => {
-      const emptyStateInContentContext = mountWithApp(
-        <WithinContentContext.Provider value>
-          <EmptyState heading="Heading" image={imgSrc} />
-        </WithinContentContext.Provider>,
-      );
+  it('passes the provided heading to DisplayText', () => {
+    const expectedHeading = 'Manage your inventory transfers';
+    const emptyState = mountWithApp(
+      <EmptyState heading={expectedHeading} image={imgSrc} />,
+    );
+    const displayText = emptyState.find(DisplayText)!;
 
-      expect(emptyStateInContentContext).toContainReactComponent(DisplayText, {
-        size: 'small',
-      });
+    expect(displayText).toHaveReactProps({size: 'medium'});
+    expect(displayText).toContainReactText(expectedHeading);
+  });
+
+  it('renders a small DisplayText when in a content context', () => {
+    const emptyStateInContentContext = mountWithApp(
+      <WithinContentContext.Provider value>
+        <EmptyState heading="Heading" image={imgSrc} />
+      </WithinContentContext.Provider>,
+    );
+
+    expect(emptyStateInContentContext).toContainReactComponent(DisplayText, {
+      size: 'small',
     });
   });
 
-  describe('secondaryAction', () => {
-    it('renders secondaryAction if provided', () => {
-      const emptyState = mountWithApp(
-        <EmptyState
-          secondaryAction={{
-            content: 'Learn more',
-            url: 'https://help.shopify.com',
-          }}
-          image={imgSrc}
-        />,
-      );
+  it('renders secondaryAction if provided', () => {
+    const emptyState = mountWithApp(
+      <EmptyState
+        secondaryAction={{
+          content: 'Learn more',
+          url: 'https://help.shopify.com',
+        }}
+        image={imgSrc}
+      />,
+    );
 
-      expect(emptyState.find(UnstyledLink)).toContainReactText('Learn more');
+    expect(emptyState.find(UnstyledLink)).toContainReactText('Learn more');
+  });
+
+  it('renders footer content', () => {
+    const expectedContent =
+      'If you don’t want to add a transfer, you can import your inventory from settings';
+    const footerContentMarkup = <p>{expectedContent}</p>;
+
+    const emptyState = mountWithApp(
+      <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
+    );
+    expect(emptyState).toContainReactComponent(TextContainer, {
+      children: footerContentMarkup,
     });
   });
 
-  describe('footerContent', () => {
-    it('renders footer content', () => {
-      const expectedContent =
-        'If you don’t want to add a transfer, you can import your inventory from settings';
-      const footerContentMarkup = <p>{expectedContent}</p>;
+  it('does not create a footer when footerContent is not provided', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
-      const emptyState = mountWithApp(
-        <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
-      );
-      expect(emptyState).toContainReactComponent(TextContainer, {
-        children: footerContentMarkup,
-      });
-    });
-
-    it('does not create a footer when footerContent is not provided', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
-
-      expect(emptyState).not.toContainReactComponent(TextContainer);
-    });
+    expect(emptyState).not.toContainReactComponent(TextContainer);
   });
 });
