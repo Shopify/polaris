@@ -1,7 +1,6 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {KeypressListener} from 'components';
 
 import {Dialog} from '../Dialog';
@@ -16,23 +15,28 @@ describe('<Dialog>', () => {
   });
 
   it('sets CloseKeypressListener when `in` is true', () => {
-    const listener = mountWithAppProvider(
-      <Dialog labelledBy="test" onClose={jest.fn()} in>
-        something
-      </Dialog>,
-    ).find(KeypressListener);
-
-    expect(listener.exists()).toBe(true);
-  });
-
-  it('triggers an onEntered prop', () => {
-    const dialog = mountWithAppProvider(
-      <Dialog labelledBy="test" onClose={jest.fn()} onEntered={jest.fn()}>
+    const listener = mountWithApp(
+      <Dialog labelledBy="test" onClose={noop} in>
         something
       </Dialog>,
     );
 
-    trigger(dialog.find('FadeUp'), 'onEntered');
-    expect(dialog.find('FadeUp').prop('onEntered')).toHaveBeenCalledTimes(1);
+    expect(listener).toContainReactComponent(KeypressListener);
+  });
+
+  it('triggers an onEntered prop', () => {
+    const spy = jest.fn();
+
+    const dialog = mountWithApp(
+      <Dialog labelledBy="test" onClose={noop} onEntered={spy}>
+        something
+      </Dialog>,
+    );
+
+    dialog.triggerKeypath('onEntered');
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}
