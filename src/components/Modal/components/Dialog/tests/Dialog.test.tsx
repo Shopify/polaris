@@ -16,7 +16,7 @@ describe('<Dialog>', () => {
 
   it('sets CloseKeypressListener when `in` is true', () => {
     const listener = mountWithApp(
-      <Dialog labelledBy="test" onClose={jest.fn()} in>
+      <Dialog labelledBy="test" onClose={noop} in>
         something
       </Dialog>,
     );
@@ -28,7 +28,7 @@ describe('<Dialog>', () => {
     const spy = jest.fn();
 
     const dialog = mountWithApp(
-      <Dialog labelledBy="test" onClose={jest.fn()} onEntered={spy}>
+      <Dialog labelledBy="test" onClose={noop} onEntered={spy}>
         something
       </Dialog>,
     );
@@ -38,3 +38,5 @@ describe('<Dialog>', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

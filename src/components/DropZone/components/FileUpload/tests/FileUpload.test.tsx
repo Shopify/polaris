@@ -30,7 +30,7 @@ describe('<FileUpload />', () => {
       );
 
       expect(fileUpload).toContainReactComponent('div', {
-        className: 'FileUpload measuring',
+        className: expect.stringContaining('measuring'),
       });
     });
   });
