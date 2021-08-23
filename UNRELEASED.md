@@ -35,7 +35,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Fixed incorrect url for tophatting the `Playground` component inside an iframe ([4392](https://github.com/Shopify/polaris-react/pull/4392))
-- Simplified content guidelines section for text field component and linked out to thorough guidelines on the text fields experience page
+- Simplified content guidelines section for text field component and linked out to thorough guidelines on the text fields experience page ([#4422](https://github.com/Shopify/polaris-react/pull/4422))
 
 ### Development workflow
 
