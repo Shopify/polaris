@@ -74,5 +74,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for ContextualSaveBar and DataTable and its subcomponents ([#4397](https://github.com/Shopify/polaris-react/pull/4397))
 - Modernized tests for IndexTable, Indicator, InlineError, KeyboardKey, and KeypressListener components([#4431](https://github.com/Shopify/polaris-react/pull/4431))
 - Modernized tests for EmptyState component ([#](https://github.com/Shopify/polaris-react/pull/))
+- Modernized tests for EmptyState component ([#4427](https://github.com/Shopify/polaris-react/pull/4427))
 
 ### Deprecations
