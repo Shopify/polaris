@@ -5,6 +5,7 @@ import type {DeepPartial, ThenType} from '@shopify/useful-types';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
+import {Checkbox} from '../../Checkbox';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -35,6 +36,38 @@ describe('<Row />', () => {
 
   afterEach(() => {
     windowOpenSpy.mockRestore();
+  });
+
+  it('renders checkboxes by default when selectable not specified in IndexTable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <th>Child</th>
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent(Checkbox);
+  });
+
+  it('renders checkboxes when selectable set to true in IndexTable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <th>Child</th>
+      </Row>,
+      {indexTableProps: {selectable: true}},
+    );
+
+    expect(row).toContainReactComponent(Checkbox);
+  });
+
+  it('does not render checkboxes when selectable is set to false in IndexTable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps}>
+        <th>Child</th>
+      </Row>,
+      {indexTableProps: {selectable: false}},
+    );
+
+    expect(row).not.toContainReactComponent(Checkbox);
   });
 
   it('renders a RowHoveredContext provider', () => {

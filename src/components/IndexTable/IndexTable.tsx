@@ -46,6 +46,7 @@ export interface IndexTableBaseProps {
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
   lastColumnSticky?: boolean;
+  selectable?: boolean;
 }
 
 export interface TableHeadingRect {

@@ -160,17 +160,6 @@ describe('<IndexTable>', () => {
     });
   });
 
-  it('does not render checkboxes when selectable is set to false', () => {
-    const index = mountWithApp(
-      <IndexTable {...defaultProps} selectable={false}>
-        {mockTableItems.map(mockRenderRow)}
-      </IndexTable>,
-    );
-
-    expect(index).not.toContainReactComponent(IndexTableCheckbox);
-    expect(index).not.toContainReactComponent(Checkbox);
-  });
-
   describe('ScrollContainer', () => {
     it('updates sticky header scroll left on scoll', () => {
       const updatedScrollLeft = 25;
