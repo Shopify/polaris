@@ -32,6 +32,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Adjust `IndexTable` rows to have a grey hover state when unselected ([#4359](https://github.com/Shopify/polaris-react/pull/4359))
 - Properly support `selected` prop for `Navigation.Item` when `url` prop is not specified ([#4375](https://github.com/Shopify/polaris-react/pull/4375))
 - Fixed an accessibility bug in `Icon` where `aria-label` was used incorrectly ([#4414](https://github.com/Shopify/polaris-react/pull/4414))
+- Fixed a bug in `Option` where the label would cause scrollbars to appear instead of wrapping ([#4411](https://github.com/Shopify/polaris-react/pull/4411))
 
 ### Documentation
 
@@ -61,10 +62,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for SkeletonBodyTest, SkeletonDisplayTest, SkeletonPage, SkeletonThumbnail, and Spinner components ([#4353](https://github.com/Shopify/polaris-react/pull/4353))
 - Modernized tests for CalloutCard, Caption, CheckableButton, Resizer, VideoThumbnail ([#4387](https://github.com/Shopify/polaris-react/pull/4387))
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
+- Modernized test for UnstyledLink, Tag, DisplayText, FileUpload, MessageIndicator, Choice and Dialog ([#4407](https://github.com/Shopify/polaris-react/pull/4407)).
 - Modernized tests for Konami, Labelled, and Link components([#4389](https://github.com/Shopify/polaris-react/pull/4389))
 - Modernized tests for Scrollable, ScrollTo, ScrollLock, Select, SettingToggle, Sheet, Spinner, and Sticky components([#4386](https://github.com/Shopify/polaris-react/pull/4386))
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
 - Modernized tests for MediaCard, and Layout components ([#4393](https://github.com/Shopify/polaris-react/pull/4393))
 - Modernized tests for Image and Icon components ([#4418](https://github.com/Shopify/polaris-react/pull/4418))
+- Modernized tests for EventListener and EmptySearch components([#4423](https://github.com/Shopify/polaris-react/pull/4423))
 
 ### Deprecations
