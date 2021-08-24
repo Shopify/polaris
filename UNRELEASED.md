@@ -66,6 +66,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
 - Modernized tests for MediaCard, and Layout components ([#4393](https://github.com/Shopify/polaris-react/pull/4393))
 - Modernized tests for Image and Icon components ([#4418](https://github.com/Shopify/polaris-react/pull/4418))
-- Modernized tests for EventListener, EmptySearch, and EmptyState components([#4423](https://github.com/Shopify/polaris-react/pull/4423))
+- Modernized tests for EventListener and EmptySearch components([#4423](https://github.com/Shopify/polaris-react/pull/4423))
 
 ### Deprecations
