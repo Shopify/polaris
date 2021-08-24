@@ -476,14 +476,14 @@ function IndexTableBase({
             hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
           );
 
-          const selectButtonMarkup = isSelectableIndex ? (
+          const selectButtonMarkup = (
             <Button
               icon={EnableSelectionMinor}
               onClick={toggleIsSmallScreenSelectable}
             >
               {i18n.translate('Polaris.IndexTable.selectButtonText')}
             </Button>
-          ) : null;
+          );
 
           const headerMarkup = condensed ? (
             <div
