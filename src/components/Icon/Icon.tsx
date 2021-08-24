@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';
 
@@ -86,7 +87,8 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   };
 
   return (
-    <span className={className} aria-label={accessibilityLabel}>
+    <span className={className}>
+      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
       {contentMarkup[sourceType]}
     </span>
   );
