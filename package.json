@@ -15,7 +15,6 @@
   },
   "files": [
     "dist",
-    "esnext",
     "locales",
     "!*.tsbuildinfo"
   ],
