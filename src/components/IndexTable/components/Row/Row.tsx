@@ -1,4 +1,4 @@
-import React, {useMemo, memo, useRef, useCallback, useEffect} from 'react';
+import React, {useMemo, memo, useRef, useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {
@@ -62,13 +62,20 @@ export const Row = memo(function Row({
     [id, selected, handleInteraction],
   );
 
-  const tableRowRef = useRef<HTMLTableRowElement & HTMLLIElement>(null);
-  const isNavigating = useRef<boolean>(false);
   const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
+  const isNavigating = useRef<boolean>(false);
+  const tableRowRef = useRef<(HTMLTableRowElement & HTMLLIElement) | null>(
+    null,
+  );
 
-  useEffect(() => {
-    primaryLinkElement.current =
-      tableRowRef.current?.querySelector('[data-primary-link]') || null;
+  const tableRowCallbackRef = useCallback((node) => {
+    tableRowRef.current = node;
+
+    const el = node?.querySelector('[data-primary-link]');
+
+    if (el) {
+      primaryLinkElement.current = el;
+    }
   }, []);
 
   const rowClassName = classNames(
@@ -134,7 +141,7 @@ export const Row = memo(function Row({
           onMouseEnter={setHoverIn}
           onMouseLeave={setHoverOut}
           onClick={handleRowClick}
-          ref={tableRowRef}
+          ref={tableRowCallbackRef}
         >
           {checkboxMarkup}
           {children}
