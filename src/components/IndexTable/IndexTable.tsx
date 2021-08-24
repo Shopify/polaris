@@ -72,7 +72,7 @@ function IndexTableBase({
     bulkSelectState,
     resourceName,
     bulkActionsAccessibilityLabel,
-    selectable: isSelectableIndex,
+    selectable,
     selectMode,
     paginatedSelectAllText,
     itemCount,
@@ -131,7 +131,7 @@ function IndexTableBase({
   }, [handleSelectionChange, selectedItemsCount]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
-    if (!isSelectableIndex) {
+    if (!selectable) {
       return tableHeadingRects.current[0].offsetWidth;
     }
 
@@ -139,7 +139,7 @@ function IndexTableBase({
       ? tableHeadingRects.current[0].offsetWidth
       : tableHeadingRects.current[0].offsetWidth +
           tableHeadingRects.current[1].offsetWidth;
-  }, [condensed, isSelectableIndex]);
+  }, [condensed, selectable]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -165,11 +165,11 @@ function IndexTableBase({
           }
 
           // update left offset for first column
-          if (isSelectableIndex && tableHeadings.current.length > 1)
+          if (selectable && tableHeadings.current.length > 1)
             tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
           // update the min width of the checkbox to be the be the un-padded width of the first heading
-          if (isSelectableIndex && firstStickyHeaderElement?.current) {
+          if (selectable && firstStickyHeaderElement?.current) {
             const elementStyle = getComputedStyle(tableHeadings.current[0]);
             const boxWidth = tableHeadings.current[0].offsetWidth;
             firstStickyHeaderElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
@@ -178,11 +178,11 @@ function IndexTableBase({
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0 && (!isSmallScreen() || !isSelectableIndex)) {
+            if (index === 0 && (!isSmallScreen() || !selectable)) {
               minWidth = calculateFirstHeaderOffset();
             } else if (tableHeadingRects.current.length > index) {
               minWidth =
-                tableHeadingRects.current[isSelectableIndex ? index : index - 1]
+                tableHeadingRects.current[selectable ? index : index - 1]
                   ?.offsetWidth || 0;
             }
 
@@ -192,7 +192,7 @@ function IndexTableBase({
         SIXTY_FPS,
         {leading: true, trailing: true, maxWait: SIXTY_FPS},
       ),
-    [calculateFirstHeaderOffset, isSelectableIndex],
+    [calculateFirstHeaderOffset, selectable],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -318,12 +318,10 @@ function IndexTableBase({
     }
   }, [condensed, isSmallScreenSelectable]);
 
-  const selectable =
-    isSelectableIndex &&
-    Boolean(
-      (promotedBulkActions && promotedBulkActions.length > 0) ||
-        (bulkActions && bulkActions.length > 0),
-    );
+  const hasBulkActions = Boolean(
+    (promotedBulkActions && promotedBulkActions.length > 0) ||
+      (bulkActions && bulkActions.length > 0),
+  );
 
   const headingsMarkup = headings
     .map(renderHeading)
@@ -348,7 +346,7 @@ function IndexTableBase({
       data-index-table-sticky-heading
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        {isSelectableIndex && (
+        {selectable && (
           <div
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
@@ -357,13 +355,13 @@ function IndexTableBase({
           </div>
         )}
 
-        {isSelectableIndex && (
+        {selectable && (
           <div className={styles['StickyTableHeading-second-scrolling']}>
             {renderHeadingContent(headings[0])}
           </div>
         )}
 
-        {!isSelectableIndex && (
+        {!selectable && (
           <div
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
@@ -489,12 +487,12 @@ function IndexTableBase({
             <div
               className={classNames(
                 styles.HeaderWrapper,
-                !isSelectableIndex && styles.unselectable,
+                !selectable && styles.unselectable,
               )}
             >
               {loadingMarkup}
               {sort}
-              {isSelectableIndex && selectButtonMarkup}
+              {selectable && selectButtonMarkup}
             </div>
           ) : (
             <div
@@ -553,7 +551,7 @@ function IndexTableBase({
     hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
-    isSelectableIndex === false && styles['Table-unselectable'],
+    !selectable && styles['Table-unselectable'],
     lastColumnSticky && styles['Table-sticky-last'],
     lastColumnSticky && canScrollRight && styles['Table-sticky-scrolling'],
   );
@@ -628,11 +626,11 @@ function IndexTableBase({
       styles.TableHeading,
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
-      isSelectableIndex === false && styles['TableHeading-unselectable'],
+      !selectable && styles['TableHeading-unselectable'],
     );
 
     const stickyPositioningStyle =
-      isSelectableIndex !== false &&
+      selectable !== false &&
       isSecond &&
       tableHeadingRects.current &&
       tableHeadingRects.current.length > 0
@@ -650,7 +648,7 @@ function IndexTableBase({
       </th>
     );
 
-    if (index !== 0 || isSelectableIndex === false) {
+    if (index !== 0 || !selectable) {
       return headingContent;
     }
 
@@ -722,7 +720,7 @@ function IndexTableBase({
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['StickyTableHeading-second'],
-      index === 0 && !isSelectableIndex && styles.unselectable,
+      index === 0 && !selectable && styles.unselectable,
     );
 
     return (
@@ -738,7 +736,7 @@ function IndexTableBase({
   }
 
   function getPaginatedSelectAllAction() {
-    if (!selectable || !hasMoreItems) {
+    if (!selectable || !hasBulkActions || !hasMoreItems) {
       return;
     }
 
