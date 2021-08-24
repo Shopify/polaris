@@ -263,7 +263,7 @@ $loading-panel-height: rem(53px);
 
   .TableRow-hovered {
     .TableCell:first-child {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
@@ -316,7 +316,7 @@ $loading-panel-height: rem(53px);
 
   .TableRow-hovered {
     .TableCell:last-child {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
