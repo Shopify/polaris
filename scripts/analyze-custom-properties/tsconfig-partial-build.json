@@ -4,6 +4,7 @@
   "compilerOptions": {
     "noEmit": false,
     "noEmitHelpers": false,
+    "emitDeclarationOnly": false,
     "module": "commonjs",
     "outDir": "../../build-internal/custom-properties-partial-build"
   },
