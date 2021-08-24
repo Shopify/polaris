@@ -478,5 +478,3 @@ function triggerSomeUpdate(wrapper: CustomRoot<any, any>) {
   wrapper.setProps({fullWidth: true});
   wrapper.forceUpdate();
 }
-
-
