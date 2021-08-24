@@ -1,4 +1,4 @@
-import React, {useMemo, memo, useRef, useCallback} from 'react';
+import React, {useMemo, memo, useRef, useCallback, useEffect} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {
@@ -40,10 +40,6 @@ export const Row = memo(function Row({
     setFalse: setHoverOut,
   } = useToggle(false);
 
-  const getPrimaryLinkElement = () => {
-    return tableRowRef?.current?.querySelector('[data-primary-link]');
-  };
-
   const handleInteraction = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
       event.stopPropagation();
@@ -68,6 +64,12 @@ export const Row = memo(function Row({
 
   const tableRowRef = useRef<HTMLTableRowElement & HTMLLIElement>(null);
   const isNavigating = useRef<boolean>(false);
+  const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    primaryLinkElement.current =
+      tableRowRef.current?.querySelector('[data-primary-link]') || null;
+  }, []);
 
   const rowClassName = classNames(
     styles.TableRow,
@@ -76,12 +78,14 @@ export const Row = memo(function Row({
     subdued && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
     status && styles[variationName('status', status)],
-    !selectable && !getPrimaryLinkElement() && styles['TableRow-unclickable'],
+    !selectable &&
+      !primaryLinkElement.current &&
+      styles['TableRow-unclickable'],
   );
 
   let handleRowClick;
 
-  if (selectable || getPrimaryLinkElement()) {
+  if (selectable || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (!tableRowRef.current || isNavigating.current) {
         return;
@@ -90,9 +94,7 @@ export const Row = memo(function Row({
       event.stopPropagation();
       event.preventDefault();
 
-      const primaryLinkElement = getPrimaryLinkElement();
-
-      if (primaryLinkElement && !selectMode) {
+      if (primaryLinkElement.current && !selectMode) {
         isNavigating.current = true;
         const {ctrlKey, metaKey} = event.nativeEvent;
 
@@ -102,14 +104,14 @@ export const Row = memo(function Row({
 
         if (
           (ctrlKey || metaKey) &&
-          primaryLinkElement instanceof HTMLAnchorElement
+          primaryLinkElement.current instanceof HTMLAnchorElement
         ) {
           isNavigating.current = false;
-          window.open(primaryLinkElement.href, '_blank');
+          window.open(primaryLinkElement.current.href, '_blank');
           return;
         }
 
-        primaryLinkElement.dispatchEvent(
+        primaryLinkElement.current.dispatchEvent(
           new MouseEvent(event.type, event.nativeEvent),
         );
       } else {
