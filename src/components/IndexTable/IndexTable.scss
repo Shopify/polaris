@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth
-
 $index-table-stacking-order: (
   cell: 1,
   sticky-cell: 31,
@@ -85,6 +83,7 @@ $loading-panel-height: rem(53px);
 }
 
 .Table-scrolling {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first,
   .TableCell-first + .TableCell,
   .TableHeading-first,
@@ -98,6 +97,7 @@ $loading-panel-height: rem(53px);
     filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
   }
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
@@ -106,6 +106,7 @@ $loading-panel-height: rem(53px);
   }
 
   &.Table-unselectable {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
     .TableHeading-second,
     .TableCell:first-child {
       visibility: visible;
@@ -124,6 +125,7 @@ $loading-panel-height: rem(53px);
   }
 
   &.statusSuccess {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -132,6 +134,7 @@ $loading-panel-height: rem(53px);
   }
 
   &.statusSubdued {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -140,6 +143,7 @@ $loading-panel-height: rem(53px);
   }
 
   &.TableRow-hovered {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -148,6 +152,7 @@ $loading-panel-height: rem(53px);
   }
 
   &.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableHeading-first,
     .TableHeading-second,
@@ -157,7 +162,9 @@ $loading-panel-height: rem(53px);
     }
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.TableRow-hovered.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
@@ -250,18 +257,21 @@ $loading-panel-height: rem(53px);
   }
 
   .statusSuccess {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     .TableCell:first-child {
       background-color: var(--p-surface-primary-selected);
     }
   }
 
   .statusSubdued {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     .TableCell:first-child {
       background-color: var(--p-surface-subdued);
     }
   }
 
   .TableRow-hovered {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     .TableCell:first-child {
       background-color: var(--p-surface-hovered);
     }
@@ -296,6 +306,7 @@ $loading-panel-height: rem(53px);
     }
   }
 
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
   .statusSuccess {
     .TableCell:last-child {
       background-color: var(--p-surface-primary-selected);
