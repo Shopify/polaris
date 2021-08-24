@@ -266,12 +266,6 @@ $loading-panel-height: rem(53px);
       background-color: var(--p-surface-hovered);
     }
   }
-
-  .TableRow-selected {
-    .TableCell:first-child {
-      background-color: var(--p-surface-selected);
-    }
-  }
 }
 
 .Table-sticky-scrolling {
