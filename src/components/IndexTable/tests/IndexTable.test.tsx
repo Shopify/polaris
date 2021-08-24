@@ -14,7 +14,7 @@ import {Badge} from '../../Badge';
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
-import {ScrollContainer, Checkbox as IndexTableCheckbox} from '../components';
+import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 
