@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `Autocomplete` now requires `Autocomplete.TextField` to be used ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
 - Removed ComboBox as a named export on `Autocomplete` ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
 - Remove the `esnext` folder from the package. If you use Polaris in an app built with sewing-kit, it must use at least sewing-kit 0.152.0 to leverage esnext builds. ([#4425](https://github.com/Shopify/polaris-react/pull/4425))
+- `dist/styles.css` has moved to `build/esm/styles.css`. Consumers who do not use sewing-kit to build their apps shall need to update this CSS import to get styles. ([#4424](https://github.com/Shopify/polaris-react/pull/4424))
 
 ### Enhancements
 
