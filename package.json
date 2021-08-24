@@ -23,7 +23,7 @@
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "**/configure.{js,ts,ts.esnext}"
+    "**/configure.{js,mjs,esnext,ts}"
   ],
   "keywords": [
     "shopify",
@@ -153,7 +153,6 @@
     "react-is": "^16.7.2",
     "react-test-renderer": "^16.14.0",
     "rimraf": "^3.0.0",
-    "rollup": "^2.22.2",
     "sass-loader": "^8.0.0",
     "scss-parser": "^1.0.3",
     "semver": "^6.3.0",
