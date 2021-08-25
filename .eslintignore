@@ -2,5 +2,9 @@ node_modules
 /.sewing-kit
 /examples
 /build
-/dist
+/build-internal
 /src/styles/polaris-tokens
+
+index.esnext
+index.js
+index.mjs

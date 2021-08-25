@@ -8,7 +8,7 @@ const {storybookA11yTest} = require('@shopify/storybook-a11y-test');
     iframePath: path.join(
       'file://',
       __dirname,
-      '../build/storybook/static/iframe.html',
+      '../build-internal/storybook/static/iframe.html',
     ),
     skippedStoryIds: ['playground-playground'],
   };

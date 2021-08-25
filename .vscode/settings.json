@@ -11,7 +11,7 @@
     "**/.git": true,
     "**/node_modules": true,
     ".{dev,shadowenv.d,sewing-kit}": true,
-    "{build,dist}/": true,
+    "{build,build-internal}/": true,
     "examples/*/build": true
   },
   "javascript.validate.enable": false,
@@ -20,7 +20,7 @@
   "search.exclude": {
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "{build,dist}/": true,
+    "{build,build-internal}/": true,
     "examples/*/build": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib"

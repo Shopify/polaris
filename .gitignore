@@ -2,8 +2,12 @@
 node_modules
 /.sewing-kit
 /build
-/dist
+/build-internal
 .DS_Store
 *.scss.d.ts
 /src/styles/polaris-tokens
 .idea
+
+index.esnext
+index.js
+index.mjs

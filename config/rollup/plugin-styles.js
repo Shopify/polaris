@@ -7,12 +7,12 @@ import postcss from 'postcss';
 import cssModules from 'postcss-modules';
 
 export function styles({
-  output,
+  output = '',
   plugins = [],
   modules = {},
   mode,
   include = ['**/*.css', '**/*.scss'],
-  exclude,
+  exclude = [],
 } = {}) {
   if (!['standalone', 'esnext'].includes(mode)) {
     throw new Error(
@@ -76,10 +76,10 @@ export function styles({
 
   function generateBundleStandalone(rollup, generateOptions, bundle) {
     // generateBundle gets called once per call to bundle.write(). We call
-    // that twice - once for the commonjs build (the index.js file), once for
+    // that twice - once for the commonjs build (the cjs folder), once for
     // the esm build (the esm folder). We only want to do perform this logic
-    // once in the commonjs build
-    if (!(generateOptions.file && generateOptions.format === 'cjs')) {
+    // once in the esm build
+    if (!generateOptions.dir.endsWith('/build/esm')) {
       return;
     }
 

@@ -26,10 +26,10 @@ execSync(`${tscBin} --project ${partialBuildTsConfig}`, execOptions);
 const {
   nonDesignLangaugeCustomProperties,
   designLangaugeCustomProperties,
-} = require('../build/custom-properties-partial-build/src/utilities/custom-properties');
+} = require('../build-internal/custom-properties-partial-build/src/utilities/custom-properties');
 
 writeFileSync(
-  resolvePath(root, 'build/known-custom-properties.json'),
+  resolvePath(root, 'build-internal/known-custom-properties.json'),
   JSON.stringify(
     [...designLangaugeCustomProperties, ...nonDesignLangaugeCustomProperties],
     null,

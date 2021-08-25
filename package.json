@@ -14,9 +14,11 @@
     "access": "public"
   },
   "files": [
-    "dist",
-    "locales",
-    "!*.tsbuildinfo"
+    "build/",
+    "!build/ts/**/*.tsbuildinfo",
+    "!build/ts/**/tests/",
+    "!build/ts/**/playground/",
+    "locales/"
   ],
   "sideEffects": [
     "**/*.css",
@@ -30,32 +32,29 @@
     "components",
     "component library"
   ],
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "esnext": "dist/esnext/index.ts.esnext",
-  "types": "dist/types/latest/src/index.d.ts",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "esnext": "build/esnext/index.ts.esnext",
+  "types": "build/ts/latest/src/index.d.ts",
   "typesVersions": {
     "<4.0": {
-      "dist/types/latest/*": [
-        "dist/types/3.4/*"
+      "build/types/latest/*": [
+        "build/ts/3.4/*"
       ]
     }
   },
   "scripts": {
     "lint": "skn lint",
-    "format": "skn format",
+    "format": "skn lint --fix",
     "type-check": "skn type-check",
     "test": "skn test",
-    "test:coverage": "CI=true yarn test --coverage",
-    "posttest:coverage": "yarn open:coverage",
-    "open:coverage": "open build/coverage/index.html",
     "check": "npm-run-all lint type-check check:custom-properties test",
     "build:known-custom-properties": "node ./scripts/build-analyze-custom-properties",
     "precheck:custom-properties": "yarn run build:known-custom-properties",
     "preoutput-custom-properties": "yarn run build:known-custom-properties",
-    "output-custom-properties": "node ./build/custom-properties/cli.js -o build/custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
-    "check:custom-properties": "node ./build/custom-properties/cli.js -l error -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
-    "clean": "rimraf build dist \"./src/styles/polaris-tokens\"",
+    "output-custom-properties": "node ./build-internal/custom-properties/cli.js -o build-internal/custom-properties-data.json -i build-internal/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
+    "check:custom-properties": "node ./build-internal/custom-properties/cli.js -l error -i build-internal/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
+    "clean": "rimraf build build-internal \"./src/styles/polaris-tokens\"",
     "build": "node ./scripts/build.js",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
@@ -65,11 +64,11 @@
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
     "prepublishOnly": "yarn run build",
     "dev": "npm-run-all copy-polaris-tokens storybook",
-    "start": "serve ./build/storybook/static -l ${PORT:=6006}",
+    "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
+    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static",
     "precolordocs": "yarn run build",
     "colordocs": "node ./scripts/color-system-docs",
     "postcolordocs": "yarn run format"
@@ -92,10 +91,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
-    "@rollup/plugin-babel": "^5.1.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/pluginutils": "^3.1.0",
     "@sewing-kit/cli": "^0.6.2",
@@ -103,7 +99,9 @@
     "@sewing-kit/plugin-babel": "^0.1.1",
     "@sewing-kit/plugin-eslint": "^0.4.2",
     "@sewing-kit/plugin-jest": "^0.5.1",
+    "@sewing-kit/plugin-package-build": "^0.5.1",
     "@sewing-kit/plugin-prettier": "^0.1.2",
+    "@sewing-kit/plugin-rollup": "^0.3.3",
     "@sewing-kit/plugin-stylelint": "^0.4.2",
     "@sewing-kit/plugin-typescript": "^0.6.1",
     "@shopify/babel-preset": "^24.1.2",
@@ -184,22 +182,22 @@
   "size-limit": [
     {
       "name": "cjs",
-      "path": "dist/index.js",
+      "path": "build/cjs/index.js",
       "limit": "165 kB"
     },
     {
       "name": "esm",
-      "path": "dist/esm/index.js",
+      "path": "build/esm/index.js",
       "limit": "105 kB"
     },
     {
       "name": "esnext",
-      "path": "dist/esnext/index.ts.esnext",
+      "path": "build/esnext/index.esnext",
       "limit": "160 kB"
     },
     {
       "name": "css",
-      "path": "dist/styles.css",
+      "path": "dist/esm/styles.css",
       "limit": "45 kB"
     }
   ]

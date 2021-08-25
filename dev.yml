@@ -9,7 +9,6 @@ up:
 open:
   app: http://localhost:6006/
   shipit: https://shipit.shopify.io/shopify/polaris-react/production
-  coverage: build/coverage/index.html
 
 commands:
   # People new to the project might be tempted to run some
@@ -21,5 +20,4 @@ commands:
   server: yarn run dev
   style: yarn run lint
   test: yarn run test
-  test:coverage: yarn run test:coverage
   type-check: yarn run type-check
