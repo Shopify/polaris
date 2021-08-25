@@ -181,10 +181,13 @@ function IndexTableBase({
             let minWidth = 0;
             if (index === 0 && (!isSmallScreen() || !selectable)) {
               minWidth = calculateFirstHeaderOffset();
-            } else if (tableHeadingRects.current.length > index) {
-              minWidth =
-                tableHeadingRects.current[selectable ? index : index - 1]
-                  ?.offsetWidth || 0;
+            } else if (selectable && tableHeadingRects.current.length > index) {
+              minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
+            } else if (
+              !selectable &&
+              tableHeadingRects.current.length >= index
+            ) {
+              minWidth = tableHeadingRects.current[index - 1]?.offsetWidth || 0;
             }
 
             heading.style.minWidth = `${minWidth}px`;
