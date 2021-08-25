@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useContext, useRef} from 'react';
 
-import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {KeypressListener} from '../KeypressListener';
+import {PopoverContext} from '../../utilities/popover-context';
+import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
 import {classNames} from '../../utilities/css';
+import {
+  findFirstFocusableNodeIncludingDisabled,
+  focusFirstFocusableNode,
+  focusNextFocusableNode,
+} from '../../utilities/focus';
 
 import {Section} from './components';
 import styles from './ActionList.scss';
@@ -24,6 +31,8 @@ export function ActionList({
   onActionAnyItem,
 }: ActionListProps) {
   let finalSections: ActionListSection[] = [];
+  const isWithinPopover = useContext(PopoverContext);
+  const elementRef = useRef<any>(null);
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -48,5 +57,22 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={className}>{sectionMarkup}</Element>;
+  const handleKeyPress = () => {
+    if (elementRef.current.contains(document.activeElement)) {
+      if (document.activeElement) {
+        focusNextFocusableNode(document.activeElement as HTMLElement);
+      }
+    } else {
+      focusFirstFocusableNode(elementRef.current);
+    }
+  };
+
+  return (
+    <Element ref={elementRef} className={className}>
+      {isWithinPopover ? (
+        <KeypressListener keyCode={Key.DownArrow} handler={handleKeyPress} />
+      ) : null}
+      {sectionMarkup}
+    </Element>
+  );
 }

@@ -16,6 +16,7 @@ import {
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
+import {PopoverContext} from '../../utilities/popover-context';
 
 import {
   PopoverCloseSource,
@@ -198,20 +199,22 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
 
     const portal = activatorNode ? (
       <Portal idPrefix="popover">
-        <PopoverOverlay
-          ref={overlayRef}
-          id={id}
-          activator={activatorNode}
-          preferInputActivator={preferInputActivator}
-          onClose={handleClose}
-          active={active}
-          fixed={fixed}
-          colorScheme={colorScheme}
-          zIndexOverride={zIndexOverride}
-          {...rest}
-        >
-          {children}
-        </PopoverOverlay>
+        <PopoverContext.Provider value>
+          <PopoverOverlay
+            ref={overlayRef}
+            id={id}
+            activator={activatorNode}
+            preferInputActivator={preferInputActivator}
+            onClose={handleClose}
+            active={active}
+            fixed={fixed}
+            colorScheme={colorScheme}
+            zIndexOverride={zIndexOverride}
+            {...rest}
+          >
+            {children}
+          </PopoverOverlay>
+        </PopoverContext.Provider>
       </Portal>
     ) : null;
 
