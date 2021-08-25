@@ -34,6 +34,7 @@ export const IndexSelectionChangeContext = createContext<
 >(undefined);
 
 export interface IndexRowContextType {
+  selectable: boolean;
   selectMode: boolean;
   condensed?: boolean;
 }
