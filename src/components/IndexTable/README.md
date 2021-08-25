@@ -914,6 +914,7 @@ function IndexTableWithoutCheckboxesExample() {
           {title: 'Order count'},
           {title: 'Amount spent', hidden: false},
         ]}
+        selectable={false}
       >
         {rowMarkup}
       </IndexTable>
