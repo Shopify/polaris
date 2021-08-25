@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 import {TextContainer} from 'components';
 
 import {Section} from '../Section';
@@ -11,12 +10,15 @@ describe('<Section />', () => {
       <p>Content</p>
     </TextContainer>
   );
-  const section = mountWithAppProvider(<Section>{children}</Section>);
   it('renders its children', () => {
-    expect(section.contains(children)).toBe(true);
+    const section = mountWithApp(<Section>{children}</Section>);
+
+    expect(section.find(TextContainer)).toContainReactHtml('<p>Content</p>');
   });
 
   it('renders a div', () => {
-    expect(section.find('div').exists()).toBe(true);
+    const section = mountWithApp(<Section>{children}</Section>);
+
+    expect(section).toContainReactComponent('div');
   });
 });

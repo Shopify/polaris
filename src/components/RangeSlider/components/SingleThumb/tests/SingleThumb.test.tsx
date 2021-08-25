@@ -1,6 +1,6 @@
+import {InlineError} from 'components/InlineError';
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 
 import {SingleThumb} from '../SingleThumb';
 
@@ -16,40 +16,47 @@ const mockProps = {
 
 describe('<SingleThumb />', () => {
   it('allows specific props to pass through properties on the input', () => {
-    const input = mountWithAppProvider(
-      <SingleThumb disabled {...mockProps} />,
-    ).find('input');
+    const wrapper = mountWithApp(<SingleThumb disabled {...mockProps} />);
 
-    expect(input.prop('value')).toBe(15);
-    expect(input.prop('min')).toBe(10);
-    expect(input.prop('max')).toBe(20);
-    expect(input.prop('step')).toBe(0.5);
-    expect(input.prop('disabled')).toBe(true);
+    expect(wrapper).toContainReactComponent('input', {
+      value: 15,
+      min: 10,
+      max: 20,
+      step: 0.5,
+      disabled: true,
+    });
   });
 
   describe('onChange()', () => {
     it('is called when the input changes', () => {
       const onChangeSpy = jest.fn();
       const {onChange, ...rest} = mockProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb onChange={onChangeSpy} {...rest} />,
       );
 
-      const singleThumb = element.find(SingleThumb);
-      singleThumb.find('input').simulate('change');
+      const input = element.find('input')!;
+
+      input.trigger('onChange', {
+        currentTarget: input!.domNode as HTMLInputElement,
+      });
+
       expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('is called with a new value', () => {
       const onChangeSpy = jest.fn();
       const {onChange, ...rest} = mockProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb onChange={onChangeSpy} {...rest} />,
       );
 
-      const singleThumb = element.find(SingleThumb);
-      (element.find('input') as any).instance().value = 40;
-      singleThumb.find('input').simulate('change');
+      const input = element.find('input')!;
+
+      (input as any).instance.value = 40;
+      input!.trigger('onChange', {
+        currentTarget: input!.domNode as HTMLInputElement,
+      });
       expect(onChangeSpy).toHaveBeenCalledWith(40, 'MyRangeSlider');
     });
   });
@@ -57,9 +64,11 @@ describe('<SingleThumb />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const onFocusSpy = jest.fn();
-      mountWithAppProvider(<SingleThumb {...mockProps} onFocus={onFocusSpy} />)
-        .find('input')
-        .simulate('focus');
+      const wrapper = mountWithApp(
+        <SingleThumb {...mockProps} onFocus={onFocusSpy} />,
+      );
+
+      wrapper.find('input')!.trigger('onFocus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
   });
@@ -67,12 +76,11 @@ describe('<SingleThumb />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const onBlurSpy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb {...mockProps} onBlur={onBlurSpy} />,
       );
 
-      element.find('input').simulate('focus');
-      element.find('input').simulate('blur');
+      element.find('input')!.trigger('onBlur');
 
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
@@ -80,92 +88,95 @@ describe('<SingleThumb />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = mountWithAppProvider(<SingleThumb {...mockProps} />)
-        .find('input')
-        .prop('id');
+      const wrapper = mountWithApp(<SingleThumb {...mockProps} />);
 
-      expect(id).toBe('MyRangeSlider');
+      expect(wrapper).toContainReactComponent('input', {id: 'MyRangeSlider'});
     });
   });
 
   describe('output', () => {
     it('connects the input to the output', () => {
-      const element = mountWithAppProvider(
-        <SingleThumb {...mockProps} output />,
-      );
-      const inputId = element.find('input').prop('id');
+      const wrapper = mountWithApp(<SingleThumb {...mockProps} output />);
+      const inputId = wrapper.find('input')!.prop('id');
 
       expect(typeof inputId).toBe('string');
-      expect(element.find('output').prop('htmlFor')).toBe(inputId);
+
+      expect(wrapper).toContainReactComponent('output', {htmlFor: inputId});
     });
 
     it('contains the value as text', () => {
-      const element = mountWithAppProvider(
-        <SingleThumb {...mockProps} output />,
-      );
-      const outputText = element.find('output').find('span');
+      const wrapper = mountWithApp(<SingleThumb {...mockProps} output />);
 
-      expect(outputText.text()).toBe('15');
+      expect(wrapper.find('output')).toContainReactText('15');
     });
   });
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb {...mockProps} helpText="Some help" />,
       );
-      const helpTextID = element.find('input').prop<string>('aria-describedby');
+      const helpTextID = element.find('input')!.prop('aria-describedby');
 
       expect(typeof helpTextID).toBe('string');
-      expect(element.find(`#${helpTextID}`).text()).toBe('Some help');
+
+      expect(element.find('div', {id: helpTextID})).toContainReactText(
+        'Some help',
+      );
     });
   });
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb error={<span>Invalid</span>} {...mockProps} />,
       );
-      expect(element.find('input').prop<string>('aria-invalid')).toBe(true);
+      expect(element).toContainReactComponent('input', {'aria-invalid': true});
 
       element.setProps({error: 'Some error'});
-      expect(element.find('input').prop<string>('aria-invalid')).toBe(true);
+      expect(element).toContainReactComponent('input', {'aria-invalid': true});
     });
 
     it('connects the input to the error', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb {...mockProps} error="Some error" />,
       );
-      const errorID = element.find('input').prop<string>('aria-describedby');
+      const errorID = element.find('input')!.prop('aria-describedby');
 
       expect(typeof errorID).toBe('string');
-      expect(element.find(`#${errorID}`).text()).toBe('Some error');
+      expect(element).toContainReactComponent(InlineError, {
+        message: 'Some error',
+      });
     });
 
     it('connects the input to both an error and help text', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb {...mockProps} helpText="Some help" error="Some error" />,
       );
       const descriptions = element
-        .find('input')
-        .prop<string>('aria-describedby')
+        .find('input')!
+        .prop('aria-describedby')!
         .split(' ');
-
       expect(descriptions).toHaveLength(2);
-      expect(element.find(`#${descriptions[1]}`).text()).toBe('Some help');
-      expect(element.find(`#${descriptions[0]}`).text()).toBe('Some error');
+
+      expect(element).toContainReactComponent(InlineError, {
+        message: 'Some error',
+      });
+      expect(element.find('div', {id: descriptions[1]})).toContainReactText(
+        'Some help',
+      );
     });
 
     describe('prefix', () => {
       const text = 'prefix text';
 
       it('outputs the provided prefix element', () => {
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <SingleThumb {...mockProps} prefix={<p>{text}</p>} />,
         );
-        const prefixElement = element.find('p');
+        const prefixElement = element.find('p')!;
 
-        expect(prefixElement.text()).toBe(text);
+        expect(prefixElement).toContainReactText(text);
       });
     });
   });
@@ -173,18 +184,18 @@ describe('<SingleThumb />', () => {
   describe('suffix', () => {
     const text = 'suffix text';
     it('outputs the provided suffix element', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <SingleThumb {...mockProps} suffix={<p>{text}</p>} />,
       );
       const suffixElement = element.find('p');
 
-      expect(suffixElement.text()).toBe(text);
+      expect(suffixElement).toContainReactText(text);
     });
   });
 
   describe('CSS custom properties', () => {
     it('gets set on the parent element', () => {
-      const element = mountWithAppProvider(<SingleThumb {...mockProps} />);
+      const element = mountWithApp(<SingleThumb {...mockProps} />);
       const expected = {
         '--Polaris-RangeSlider-min': 10,
         '--Polaris-RangeSlider-max': 20,
@@ -192,9 +203,10 @@ describe('<SingleThumb />', () => {
         '--Polaris-RangeSlider-progress': '50%',
         '--Polaris-RangeSlider-output-factor': '0',
       };
-      const actual = element.find('[style]').prop('style');
 
-      expect(expected).toStrictEqual(actual || {});
+      expect(element).toContainReactComponent('div', {
+        style: expect.objectContaining(expected),
+      });
     });
   });
 
@@ -202,52 +214,58 @@ describe('<SingleThumb />', () => {
     it('gets adjusted to be at least the min', () => {
       const value = 9;
       const min = 10;
-      const singleThumb = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <SingleThumb {...mockProps} value={value} min={min} />,
       );
 
-      expect(singleThumb.find('input').prop('value')).toBe(min);
+      expect(wrapper).toContainReactComponent('input', {value: min});
     });
 
     it('gets adjusted to be no more than the max', () => {
       const value = 101;
       const max = 100;
-      const singleThumb = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <SingleThumb {...mockProps} value={value} max={max} />,
       );
 
-      expect(singleThumb.find('input').prop('value')).toBe(max);
+      expect(wrapper).toContainReactComponent('input', {value: max});
     });
   });
 
   describe('aria-valuenow', () => {
     it('gets passed the value', () => {
       const value = 15;
-      const singleThumb = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <SingleThumb {...mockProps} value={value} />,
       );
 
-      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(value);
+      expect(wrapper).toContainReactComponent('input', {
+        'aria-valuenow': value,
+      });
     });
 
     it('gets adjusted to be at least the min', () => {
       const value = 9;
       const min = 10;
-      const singleThumb = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <SingleThumb {...mockProps} value={value} min={min} />,
       );
 
-      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(min);
+      expect(wrapper).toContainReactComponent('input', {
+        'aria-valuenow': min,
+      });
     });
 
     it('gets adjusted to be no more than the max', () => {
       const value = 101;
       const max = 100;
-      const singleThumb = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <SingleThumb {...mockProps} value={value} max={max} />,
       );
 
-      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(max);
+      expect(wrapper).toContainReactComponent('input', {
+        'aria-valuenow': max,
+      });
     });
   });
 });
