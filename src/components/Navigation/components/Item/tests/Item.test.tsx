@@ -310,7 +310,7 @@ describe('<Nav.Item />', () => {
           },
         });
 
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('invokes onNavDismiss even if a custom onClick is provided', () => {
@@ -344,7 +344,7 @@ describe('<Nav.Item />', () => {
           },
         });
 
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(2);
     });
   });
 
