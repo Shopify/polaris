@@ -617,9 +617,8 @@ To render an invalid text field and its validation error separately:
 function SeparateValidationErrorExample() {
   const [textFieldValue, setTextFieldValue] = useState('');
   const [selectTypeValue, setSelectTypeValue] = useState('Product type');
-  const [selectConditionValue, setSelectConditionValue] = useState(
-    'is equal to',
-  );
+  const [selectConditionValue, setSelectConditionValue] =
+    useState('is equal to');
 
   const handleTextFieldValueChange = useCallback(
     (value) => setTextFieldValue(value),

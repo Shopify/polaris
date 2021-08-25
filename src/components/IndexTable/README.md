@@ -72,11 +72,8 @@ function SimpleIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -148,11 +145,8 @@ function SimpleSmallScreenIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -212,11 +206,8 @@ function IndexTableWithCustomEmptyStateExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const emptyStateMarkup = (
     <EmptySearchResult
@@ -297,11 +288,8 @@ function IndexTableWithBulkActionsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const promotedBulkActions = [
     {
@@ -396,11 +384,8 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const promotedBulkActions = [
     {
@@ -496,11 +481,8 @@ function IndexTableWithLoadingExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -573,11 +555,8 @@ function IndexTableWithFilteringExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -737,11 +716,8 @@ function IndexTableWithRowStatusExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent, status}, index) => (
@@ -814,11 +790,8 @@ function StickyLastCellIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -891,11 +864,8 @@ function IndexTableWithAllElementsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -1078,11 +1048,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');

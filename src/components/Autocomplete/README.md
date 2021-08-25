@@ -402,9 +402,8 @@ function AutoCompleteLazyLoadExample() {
   const [options, setOptions] = useState(deselectedOptions);
   const [isLoading, setIsLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-  const [visibleOptionIndex, setVisibleOptionIndex] = useState(
-    paginationInterval,
-  );
+  const [visibleOptionIndex, setVisibleOptionIndex] =
+    useState(paginationInterval);
 
   const handleLoadMoreResults = useCallback(() => {
     if (willLoadMoreResults) {

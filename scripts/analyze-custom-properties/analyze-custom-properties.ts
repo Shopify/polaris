@@ -181,9 +181,9 @@ ${locations}
   }
 
   if (logLevel === 'verbose' || logLevel === 'info') {
-    const customPropertiesForTable = Object.keys(customProperties).reduce<
-      TableCustomProperty
-    >((acc, key) => {
+    const customPropertiesForTable = Object.keys(
+      customProperties,
+    ).reduce<TableCustomProperty>((acc, key) => {
       const {declaration, usedFromDeclaration, count} = customProperties[key];
       acc[key] = {
         declaration,
