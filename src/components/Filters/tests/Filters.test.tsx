@@ -9,19 +9,15 @@ import {
   TextStyle,
   ButtonProps,
 } from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  trigger,
-  findByTestID,
-  ReactWrapper,
-} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
+import {Collapsible} from '../../Collapsible';
 import * as focusUtils from '../../../utilities/focus';
+import {classNames} from '../../../utilities/css';
+import styles from '../Filters.scss';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -77,126 +73,154 @@ describe('<Filters />', () => {
 
   it('calls the onQueryFocus callback when the query field is focused', () => {
     const onQueryFocus = jest.fn();
-    const filters = mountWithAppProvider(
+    const filters = mountWithApp(
       <Filters {...mockProps} onQueryFocus={onQueryFocus} />,
     );
 
-    trigger(filters.find(TextField), 'onFocus');
+    filters.find(TextField)!.trigger('onFocus');
 
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
   });
 
   it('does not render the TextField when "hideQueryField" is "true"', () => {
-    const filters = mountWithAppProvider(
-      <Filters {...mockProps} hideQueryField />,
-    );
+    const filters = mountWithApp(<Filters {...mockProps} hideQueryField />);
 
-    expect(filters.find(TextField).exists()).toBe(false);
+    expect(filters).not.toContainReactComponent(TextField);
   });
 
   it('renders the TextField when "hideQueryField" is false', () => {
-    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+    const filters = mountWithApp(<Filters {...mockProps} />);
 
-    expect(filters.find(TextField).exists()).toBe(true);
+    expect(filters).toContainReactComponent(TextField);
   });
 
   describe('toggleFilters()', () => {
     it('opens the sheet on toggle button click', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
       jest.runAllTimers();
-      expect(resourceFilters.find(Sheet).props().open).toBe(true);
+      expect(resourceFilters).toContainReactComponent(Sheet, {open: true});
     });
 
     it('closes the sheet on second toggle button click', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      expect(resourceFilters.find(Sheet).props().open).toBe(false);
+      expect(resourceFilters).toContainReactComponent(Sheet, {open: false});
     });
 
     describe('isMobile()', () => {
       it('renders a sheet on desktop size with right origin', () => {
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        expect(resourceFilters.find(Sheet).exists()).toBe(true);
+        expect(resourceFilters).toContainReactComponent(Sheet);
       });
 
       it('renders a sheet on mobile size with bottom origin', () => {
         matchMedia.setMedia(() => ({matches: true}));
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        expect(resourceFilters.find(Sheet).exists()).toBe(true);
+        expect(resourceFilters).toContainReactComponent(Sheet);
       });
 
       it('opens the sheet at mobile size on toggle button click', () => {
         matchMedia.setMedia(() => ({matches: true}));
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-        expect(resourceFilters.find(Sheet).props().open).toBe(true);
+        resourceFilters
+          .find(Button, {children: 'More filters'})!
+          .trigger('onClick');
+
+        expect(resourceFilters).toContainReactComponent(Sheet, {open: true});
       });
 
       it('closes the sheet at mobile size on second toggle button click', () => {
         matchMedia.setMedia(() => ({matches: true}));
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+        resourceFilters
+          .find(Button, {children: 'More filters'})!
+          .trigger('onClick');
+        resourceFilters
+          .find(Button, {children: 'More filters'})!
+          .trigger('onClick');
 
-        expect(resourceFilters.find(Sheet).props().open).toBe(false);
+        expect(resourceFilters).toContainReactComponent(Sheet, {open: false});
       });
     });
   });
 
   describe('toggleFilter()', () => {
     it('opens the filter on toggle button click', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      expect(
-        findById(resourceFilters, 'filterOneCollapsible').props().open,
-      ).toBe(true);
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+
+      expect(resourceFilters).toContainReactComponent(Collapsible, {
+        id: 'filterOneCollapsible',
+        open: true,
+      });
     });
 
     it('closes the filter on second toggle button click', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterTwoToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterTwoToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      expect(
-        findById(resourceFilters, 'filterTwoCollapsible').props().open,
-      ).toBe(false);
+      const button = resourceFilters.find('button', {
+        id: 'filterTwoToggleButton',
+      });
+
+      button!.trigger('onClick');
+      button!.trigger('onClick');
+
+      expect(resourceFilters).toContainReactComponent(Collapsible, {
+        id: 'filterTwoCollapsible',
+        open: false,
+      });
     });
 
     it('does not close other filters when a filter is toggled', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterThreeToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      expect(
-        findById(resourceFilters, 'filterOneCollapsible').props().open,
-      ).toBe(true);
-      expect(
-        findById(resourceFilters, 'filterThreeCollapsible').props().open,
-      ).toBe(true);
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+
+      resourceFilters
+        .find('button', {id: 'filterThreeToggleButton'})!
+        .trigger('onClick');
+
+      expect(resourceFilters).toContainReactComponent(Collapsible, {
+        id: 'filterOneCollapsible',
+        open: true,
+      });
+
+      expect(resourceFilters).toContainReactComponent(Collapsible, {
+        id: 'filterThreeCollapsible',
+        open: true,
+      });
     });
   });
 
@@ -227,53 +251,53 @@ describe('<Filters />', () => {
     };
 
     it('renders', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      expect(resourceFilters.find(ConnectedFilterControl).exists()).toBe(true);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl);
     });
 
     it('renders children', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts}>
           <MockChild />
         </Filters>,
       );
 
-      expect(resourceFilters.find(MockChild).exists()).toBe(true);
+      expect(resourceFilters).toContainReactComponent(MockChild);
     });
 
     it('receives the expected props when there are shortcut filters', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
       expect(
-        resourceFilters.find(ConnectedFilterControl).props()
-          .rightPopoverableActions,
+        resourceFilters.find(ConnectedFilterControl)!.props[
+          'rightPopoverableActions'
+        ],
       ).toHaveLength(2);
     });
 
     it('receives the expected props when the query field is hidden', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} hideQueryField />,
       );
 
-      expect(
-        resourceFilters.find(ConnectedFilterControl).props().queryFieldHidden,
-      ).toBe(true);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl, {
+        queryFieldHidden: true,
+      });
     });
 
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      expect(
-        resourceFilters.find(ConnectedFilterControl).props()
-          .forceShowMorefiltersButton,
-      ).toBe(true);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl, {
+        forceShowMorefiltersButton: true,
+      });
     });
 
     it('does not force showing the "More Filters" button if all the filters have shorcuts', () => {
@@ -296,53 +320,79 @@ describe('<Filters />', () => {
           },
         ],
       };
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
-      expect(
-        resourceFilters.find(ConnectedFilterControl).props()
-          .forceShowMorefiltersButton,
-      ).toBe(false);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl, {
+        forceShowMorefiltersButton: false,
+      });
     });
 
     it('receives shortcut filters with popoverOpen set to false on mount', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      const rightPopoverableActions = resourceFilters
-        .find(ConnectedFilterControl)
-        .props().rightPopoverableActions;
+      const rightPopoverableActions = resourceFilters.find(
+        ConnectedFilterControl,
+      )!.props['rightPopoverableActions'];
 
       rightPopoverableActions!.forEach((action) => {
         expect(action.popoverOpen).toBe(false);
       });
     });
 
-    it('toggles a shortcut filter', () => {
-      const resourceFilters = mountWithAppProvider(
+    it.only('toggles a shortcut filter', () => {
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      const connected = resourceFilters.find(ConnectedFilterControl).first();
-      connected.setState({availableWidth: 999});
-      const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
-        .find(Button)
-        .first();
+      let connected = resourceFilters.find(ConnectedFilterControl);
+      connected!.instance.setState({availableWidth: 999});
+      connected = resourceFilters.find(ConnectedFilterControl);
+      // console.log(
+      //   ':::: connected:',
+      //   connected?.domNodes[1].children[0].children,
+      // );
+      const shortcut = connected!
+        .find('div')!
+        .findWhere((node) => {
+          node!.domNodes.forEach((domNode) => {
+            console.log(':::: domNode.classList:', domNode.classList);
+            const contains = domNode.classList.contains(styles.ResourceItem);
+            if (contains) {
+              return true;
+            }
+          });
+        })!
+        .find(Button);
+      // const shortcut = connected!
+      //   .find('div', {className: 'RightContainer'})!
+      //   .find(Button);
 
-      trigger(shortcut, 'onClick');
-      expect(resourceFilters.find(Popover).first().props().active).toBe(true);
-      trigger(shortcut, 'onClick');
-      expect(resourceFilters.find(Popover).first().props().active).toBe(false);
+      shortcut!.trigger('onClick');
+      expect(resourceFilters).toContainReactComponent(Popover, {active: true});
+      shortcut!.trigger('onClick');
+      expect(resourceFilters).toContainReactComponent(Popover, {active: false});
+
+      // const connected = resourceFilters.find(ConnectedFilterControl).first();
+      // connected.setState({availableWidth: 999});
+      // const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
+      //   .find(Button)
+      //   .first();
+
+      // trigger(shortcut, 'onClick');
+      // expect(resourceFilters.find(Popover).first().props().active).toBe(true);
+      // trigger(shortcut, 'onClick');
+      // expect(resourceFilters.find(Popover).first().props().active).toBe(false);
     });
 
     it('receives the expected props when there are no shortcut filters', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      expect(
-        resourceFilters.find(ConnectedFilterControl).props()
-          .rightPopoverableActions,
-      ).toHaveLength(0);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl, {
+        rightPopoverableActions: [],
+      });
     });
 
     it('does not render the filter button when no filters are passed in', () => {
@@ -360,7 +410,7 @@ describe('<Filters />', () => {
       const spy = jest.fn();
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters
           {...mockProps}
           queryValue="bar"
@@ -368,10 +418,10 @@ describe('<Filters />', () => {
         />,
       );
 
-      const tag = resourceFilters.find(Tag).first();
-      const removeButton = tag.find('button').first();
+      const tag = resourceFilters.find(Tag);
+      const removeButton = tag!.find('button');
 
-      trigger(removeButton, 'onClick');
+      removeButton!.trigger('onClick');
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
@@ -380,16 +430,24 @@ describe('<Filters />', () => {
       const spy = jest.fn();
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} appliedFilters={appliedFilters} />,
       );
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
-      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
-      const clearButton = collapsible.find(Button).last();
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      trigger(clearButton, 'onClick');
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+      const collapsible = resourceFilters.find(Collapsible, {
+        id: 'filterOneCollapsible',
+      });
+      const buttons = collapsible!.findAll(Button);
+      const clearButton = buttons[buttons.length - 1]; // last button
+
+      clearButton!.trigger('onClick');
 
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
@@ -400,18 +458,25 @@ describe('<Filters />', () => {
         {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},
       ];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} filters={filters} />,
       );
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
-      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
 
-      expect(collapsible.text().toLowerCase()).toContain('clear');
+      const collapsible = resourceFilters.find(Collapsible, {
+        id: 'filterOneCollapsible',
+      });
+
+      expect(collapsible).toContainReactText('Clear');
     });
 
-    it("doesn't renders a clear button when clearButton is not provided", () => {
+    it("doesn't render a clear button when clearButton is not provided", () => {
       const filters = [
         {
           hideClearButton: true,
@@ -422,21 +487,28 @@ describe('<Filters />', () => {
         },
       ];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} filters={filters} />,
       );
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
-      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
-      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
 
-      expect(collapsible.text().toLowerCase()).not.toContain('clear');
+      const collapsible = resourceFilters.find(Collapsible, {
+        id: 'filterOneCollapsible',
+      });
+
+      expect(collapsible).not.toContainReactText('Clear');
     });
 
     it('tags are not shown if hideTags prop is given', () => {
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters
           {...mockProps}
           queryValue=""
@@ -444,7 +516,7 @@ describe('<Filters />', () => {
           hideTags
         />,
       );
-      expect(resourceFilters.find(Tag)).toHaveLength(0);
+      expect(resourceFilters).not.toContainReactComponent(Tag);
     });
 
     it('hides the tags container when applied filters are not provided', () => {
@@ -468,7 +540,7 @@ describe('<Filters />', () => {
         {key: 'filterTwo', label: 'bar', onRemove: noop},
       ];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters
           {...mockProps}
           queryValue=""
@@ -476,11 +548,10 @@ describe('<Filters />', () => {
           hideTags
         />,
       );
-      const rightActionButton = findByTestID(
-        resourceFilters,
-        'SheetToggleButton',
-      );
-      expect(rightActionButton.text()).toBe('More filters (2)');
+
+      expect(resourceFilters).toContainReactComponent(Button, {
+        children: 'More filters (2)',
+      });
     });
 
     it('calls clear all callback and shifts focus when clear all filters is clicked to prevent visual loss of focus', () => {
@@ -488,7 +559,7 @@ describe('<Filters />', () => {
       const spy = jest.fn();
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} appliedFilters={appliedFilters} />,
       );
       resourceFilters.setProps({
@@ -499,21 +570,20 @@ describe('<Filters />', () => {
         },
       });
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
-      let clearAllButton = resourceFilters
-        .findWhere((node) => node.prop('children') === 'Clear all filters')
-        .first();
+      let clearAllButton = resourceFilters.find(Button, {
+        children: 'Clear all filters',
+        disabled: false,
+      });
+      clearAllButton!.trigger('onClick');
 
-      expect(clearAllButton.prop('disabled')).toBeFalsy();
-
-      trigger(clearAllButton, 'onClick');
-
-      clearAllButton = resourceFilters
-        .findWhere((node) => node.prop('children') === 'Clear all filters')
-        .first();
-
-      expect(clearAllButton.prop('disabled')).toBeTruthy();
+      expect(resourceFilters).toContainReactComponent(Button, {
+        children: 'Clear all filters',
+        disabled: true,
+      });
       expect(focusSpy).toHaveBeenCalled();
       focusSpy.mockRestore();
     });
@@ -521,104 +591,103 @@ describe('<Filters />', () => {
 
   describe('disabled', () => {
     it('disables the search field when true', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} queryValue="bar" disabled />,
       );
 
-      expect(resourceFilters.find(TextField).prop('disabled')).toBe(true);
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: true,
+      });
     });
 
     it('disables <ConnectedFilterControl /> when true', () => {
-      const resourceFilters = mountWithAppProvider(
-        <Filters {...mockProps} disabled />,
-      );
-      const rightActionButton = findByTestID(
-        resourceFilters,
-        'SheetToggleButton',
-      );
+      const resourceFilters = mountWithApp(<Filters {...mockProps} disabled />);
 
-      expect(rightActionButton.prop('disabled')).toBe(true);
+      const rightActionButton = resourceFilters.find(Button, {
+        children: 'More filters',
+      });
+
+      expect(rightActionButton).toHaveReactProps({disabled: true});
     });
 
     it('passes disabled prop to connected filters', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} queryValue="bar" disabled />,
       );
 
-      expect(
-        resourceFilters.find(ConnectedFilterControl).prop('disabled'),
-      ).toBe(true);
+      expect(resourceFilters).toContainReactComponent(ConnectedFilterControl, {
+        disabled: true,
+      });
     });
 
     it('subdues each filter headings <Filter /> is mounted with prop disabled as true', () => {
-      const resourceFilters = mountWithAppProvider(
-        <Filters {...mockProps} disabled />,
-      );
+      const resourceFilters = mountWithApp(<Filters {...mockProps} disabled />);
 
-      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
 
       mockProps.filters.forEach((filter) => {
-        const toggleButton = findById(
-          resourceFilters,
-          `${filter.key}ToggleButton`,
-        );
+        const toggleButton = resourceFilters.find('button', {
+          id: `${filter.key}ToggleButton`,
+        });
 
-        expect(toggleButton.find(TextStyle).prop('variation')).toBe('subdued');
+        expect(toggleButton!).toContainReactComponent(TextStyle, {
+          variation: 'subdued',
+        });
       });
     });
 
     it('is passed to <Tag /> with set value', () => {
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
 
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} appliedFilters={appliedFilters} disabled />,
       );
 
-      resourceFilters.find(Tag).forEach((tag) => {
-        expect(tag.prop('disabled')).toBe(true);
+      resourceFilters.findAll(Tag).forEach((tag) => {
+        expect(tag).toHaveReactProps({disabled: true});
       });
     });
 
     describe('individual filters', () => {
       it('subdues disabled filters heading', () => {
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+        resourceFilters
+          .find(Button, {children: 'More filters'})!
+          .trigger('onClick');
 
         mockProps.filters
           .filter(({disabled}) => disabled)
           .forEach((filter) => {
-            const toggleButton = findById(
-              resourceFilters,
-              `${filter.key}ToggleButton`,
-            );
+            const toggleButton = resourceFilters.find('button', {
+              id: `${filter.key}ToggleButton`,
+            });
 
-            expect(toggleButton.find(TextStyle).prop('variation')).toBe(
-              'subdued',
-            );
+            expect(toggleButton).toContainReactComponent(TextStyle, {
+              variation: 'subdued',
+            });
           });
       });
 
       it('does not subdue active filters heading', () => {
-        const resourceFilters = mountWithAppProvider(
-          <Filters {...mockProps} />,
-        );
+        const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+        resourceFilters
+          .find(Button, {children: 'More filters'})!
+          .trigger('onClick');
 
         mockProps.filters
           .filter(({disabled}) => !disabled)
           .forEach((filter) => {
-            const toggleButton = findById(
-              resourceFilters,
-              `${filter.key}ToggleButton`,
-            );
+            const toggleButton = resourceFilters.find('button', {
+              id: `${filter.key}ToggleButton`,
+            });
 
-            expect(
-              toggleButton.find(TextStyle).prop('variation'),
-            ).toBeUndefined();
+            expect(toggleButton).toContainReactComponent(TextStyle, {
+              variation: undefined,
+            });
           });
       });
     });
@@ -627,26 +696,27 @@ describe('<Filters />', () => {
   describe('helpText', () => {
     it('renders a subdued <TextStyle /> when provided', () => {
       const helpText = 'Important filters information';
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockProps} helpText={helpText} />,
       );
 
-      const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
+      const helpTextMarkup = resourceFilters.findAll('div', {
+        id: 'FiltersHelpText',
+      });
       expect(helpTextMarkup).toHaveLength(1);
-      expect(helpTextMarkup.text()).toBe(helpText);
+      expect(helpTextMarkup[0]).toContainReactComponent(TextStyle, {
+        children: helpText,
+      });
     });
 
     it('is not rendered when not provided', () => {
-      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
-      const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
-      expect(helpTextMarkup).toHaveLength(0);
+      expect(resourceFilters).not.toContainReactComponent('div', {
+        id: 'FiltersHelpText',
+      });
     });
   });
 });
 
 function noop() {}
-
-function findById(wrapper: ReactWrapper, id: string) {
-  return wrapper.find(`#${id}`).first();
-}

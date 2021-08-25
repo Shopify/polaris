@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Form} from '../Form';
 
@@ -16,91 +17,83 @@ const target = '_blank';
 describe('<Form />', () => {
   describe('acceptCharset', () => {
     it('sets the acceptCharset attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form acceptCharset={acceptCharset} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('acceptCharset')).toBe(acceptCharset);
+      expect(wrapper).toContainReactComponent('form', {acceptCharset});
     });
   });
 
   describe('action', () => {
     it('sets the action attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Form action={action} onSubmit={noop} />,
-      );
-      expect(wrapper.find('form').prop('action')).toBe(action);
+      const wrapper = mountWithApp(<Form action={action} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {action});
     });
   });
 
   describe('autoComplete', () => {
     it('sets the autocomplete attribute to "off" when provided as false', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form autoComplete={false} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('autoComplete')).toBe('off');
+      expect(wrapper).toContainReactComponent('form', {autoComplete: 'off'});
     });
   });
 
   describe('encType', () => {
     it('sets the encType attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Form encType={encType} onSubmit={noop} />,
-      );
-      expect(wrapper.find('form').prop('encType')).toBe(encType);
+      const wrapper = mountWithApp(<Form encType={encType} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {encType});
     });
   });
 
   describe('implicitSubmit', () => {
     it('renders a button when the prop is set to true', () => {
-      const wrapper = mountWithAppProvider(<Form onSubmit={noop} />);
-      expect(wrapper.find('button')).toHaveLength(1);
+      const wrapper = mountWithApp(<Form onSubmit={noop} />);
+      expect(wrapper).toContainReactComponentTimes('button', 1);
     });
 
     it('does not render a button when the prop is set to false', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form onSubmit={noop} implicitSubmit={false} />,
       );
-      expect(wrapper.find('button')).toHaveLength(0);
+      expect(wrapper).not.toContainReactComponent('button');
     });
   });
 
   describe('method', () => {
     it('sets the method attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Form method={method} onSubmit={noop} />,
-      );
-      expect(wrapper.find('form').prop('method')).toBe(method);
+      const wrapper = mountWithApp(<Form method={method} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {method});
     });
 
     it('defaults to post when no method is set', () => {
-      const wrapper = mountWithAppProvider(<Form onSubmit={noop} />);
-      expect(wrapper.find('form').prop('method')).toBe('post');
+      const wrapper = mountWithApp(<Form onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {method: 'post'});
     });
   });
 
   describe('name', () => {
     it('sets the name attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Form name={name} onSubmit={noop} />,
-      );
-      expect(wrapper.find('form').prop('name')).toBe(name);
+      const wrapper = mountWithApp(<Form name={name} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {name});
     });
   });
 
   describe('noValidate', () => {
     it('sets the noValidate attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form noValidate={noValidate} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('noValidate')).toBe(noValidate);
+      expect(wrapper).toContainReactComponent('form', {noValidate});
     });
   });
 
   describe('onSubmit', () => {
     it('is called when the form is submitted', () => {
       const spy = jest.fn();
-      const wrapper = mountWithAppProvider(<Form onSubmit={spy} />);
-      wrapper.simulate('submit');
+      const wrapper = mountWithApp(<Form onSubmit={spy} />);
+      wrapper.trigger('onSubmit');
 
       expect(spy).toHaveBeenCalled();
     });
@@ -111,11 +104,11 @@ describe('<Form />', () => {
       const onSubmitSpy = jest.fn();
       const preventDefaultSpy = jest.fn();
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form preventDefault={false} onSubmit={onSubmitSpy} />,
       );
 
-      wrapper.simulate('submit', {
+      wrapper.trigger('onSubmit', {
         preventDefault: preventDefaultSpy,
       });
 
@@ -126,9 +119,9 @@ describe('<Form />', () => {
       const onSubmitSpy = jest.fn();
       const preventDefaultSpy = jest.fn();
 
-      const wrapper = mountWithAppProvider(<Form onSubmit={onSubmitSpy} />);
+      const wrapper = mountWithApp(<Form onSubmit={onSubmitSpy} />);
 
-      wrapper.simulate('submit', {
+      wrapper.trigger('onSubmit', {
         preventDefault: preventDefaultSpy,
       });
 
@@ -139,11 +132,11 @@ describe('<Form />', () => {
       const onSubmitSpy = jest.fn();
       const preventDefaultSpy = jest.fn();
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Form preventDefault onSubmit={onSubmitSpy} />,
       );
 
-      wrapper.simulate('submit', {
+      wrapper.trigger('onSubmit', {
         preventDefault: preventDefaultSpy,
       });
 
@@ -153,10 +146,8 @@ describe('<Form />', () => {
 
   describe('target', () => {
     it('sets the target attribute when provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Form target={target} onSubmit={noop} />,
-      );
-      expect(wrapper.find('form').prop('target')).toBe(target);
+      const wrapper = mountWithApp(<Form target={target} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {target});
     });
   });
 });
