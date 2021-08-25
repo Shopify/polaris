@@ -1,4 +1,4 @@
-import React from 'react';
+import {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -38,7 +38,7 @@ export function Item({
     active && styles.active,
   );
 
-  let prefixMarkup: React.ReactNode | null = null;
+  let prefixMarkup: ReactNode | null = null;
 
   if (prefix) {
     prefixMarkup = <span className={styles.Prefix}>{prefix}</span>;

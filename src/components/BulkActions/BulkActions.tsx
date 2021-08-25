@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import {PureComponent, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from 'react-transition-group';

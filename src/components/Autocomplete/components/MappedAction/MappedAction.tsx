@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import {ReactNode, useMemo} from 'react';
 
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Badge} from '../../../Badge';
@@ -32,7 +32,7 @@ export function MappedAction({
 }: MappedAction) {
   const i18n = useI18n();
 
-  let prefixMarkup: React.ReactNode | null = null;
+  let prefixMarkup: ReactNode | null = null;
 
   if (prefix) {
     prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;

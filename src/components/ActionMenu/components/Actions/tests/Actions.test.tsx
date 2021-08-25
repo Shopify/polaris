@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {ActionMenuProps, ActionMenu} from '../../..';

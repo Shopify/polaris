@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppProvider} from '@shopify/polaris';
 import enTranslations from '@shopify/polaris/locales/en.json';

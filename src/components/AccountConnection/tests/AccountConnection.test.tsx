@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'test-utilities';
 import {Avatar} from 'components';
 import {Button} from 'components/Button';

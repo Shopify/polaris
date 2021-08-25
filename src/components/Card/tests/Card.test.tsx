@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'test-utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
 

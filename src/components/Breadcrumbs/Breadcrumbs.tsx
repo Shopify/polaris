@@ -1,4 +1,3 @@
-import React from 'react';
 import {ArrowLeftMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';

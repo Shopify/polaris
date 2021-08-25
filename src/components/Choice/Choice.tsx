@@ -1,4 +1,4 @@
-import React from 'react';
+import {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {Error} from '../../types';
@@ -10,7 +10,7 @@ export interface ChoiceProps {
   /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Whether the associated form control is disabled */
   disabled?: boolean;
   /** Display an error message */
@@ -18,9 +18,9 @@ export interface ChoiceProps {
   /** Visually hide the label */
   labelHidden?: boolean;
   /**  Content to display inside the choice */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional text to aide in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when mouse over */

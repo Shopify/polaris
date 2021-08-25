@@ -1,4 +1,4 @@
-import React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
@@ -21,9 +21,9 @@ export type {
 
 export interface CardProps {
   /** Title content for the card */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /** Inner content of the card */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** A less prominent card */
   subdued?: boolean;
   /** Auto wrap content in section */
@@ -47,7 +47,7 @@ export interface CardProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-export const Card: React.FunctionComponent<CardProps> & {
+export const Card: FunctionComponent<CardProps> & {
   Header: typeof Header;
   Section: typeof Section;
   Subsection: typeof Subsection;

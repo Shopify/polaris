@@ -1,4 +1,4 @@
-import React from 'react';
+import {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ComplexAction} from '../../../../types';
@@ -9,8 +9,8 @@ import {Subheading} from '../../../Subheading';
 import styles from '../../Card.scss';
 
 export interface CardSectionProps {
-  title?: React.ReactNode;
-  children?: React.ReactNode;
+  title?: ReactNode;
+  children?: ReactNode;
   subdued?: boolean;
   flush?: boolean;
   fullWidth?: boolean;

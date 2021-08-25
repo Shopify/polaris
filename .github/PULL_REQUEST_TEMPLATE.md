@@ -46,7 +46,6 @@ Fixes #0000 <!-- link to issue if one exists -->
 <summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
 
 ```jsx
-import React from 'react';
 import {Page} from '../src';
 
 export function Playground() {

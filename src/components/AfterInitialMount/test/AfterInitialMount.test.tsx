@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {mountWithApp} from 'test-utilities/react-testing';
 
 import {AfterInitialMount} from '../AfterInitialMount';

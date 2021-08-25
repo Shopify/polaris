@@ -1,4 +1,3 @@
-import React from 'react';
 import {Page} from '@shopify/polaris';
 import {mount} from './tests/utils/react-testing';
 import {App} from './App';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp, ReactTestingElement, CustomRoot} from 'test-utilities';
 import {KeypressListener} from 'components';
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import {SFC, useEffect, useRef} from 'react';
 import {
   CirclePlusMinor,
   CircleTickMajor,

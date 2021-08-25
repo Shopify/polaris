@@ -1,4 +1,3 @@
-import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'test-utilities';
 import {Popover, ActionList} from 'components';
