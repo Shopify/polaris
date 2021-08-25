@@ -48,7 +48,6 @@ module.exports = {
           {
             loader: 'css-loader',
             query: {
-              sourceMap: false,
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
@@ -58,15 +57,13 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => postcssShopify(),
-              sourceMap: false,
+              postcssOptions: {
+                plugins: [postcssShopify()],
+              },
             },
           },
           {
             loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-            },
           },
         ],
       },
