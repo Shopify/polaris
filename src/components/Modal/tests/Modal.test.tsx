@@ -56,11 +56,11 @@ describe('<Modal>', () => {
   });
 
   it('focuses the dialog node on mount', () => {
-    const modal = mountWithApp(
-      <Modal title="foo" onClose={jest.fn()} open instant />,
-    );
+    const modal = mountWithApp(<Modal title="foo" onClose={noop} open />);
 
-    expect(document.activeElement).toBe(modal.find(Dialog)?.domNode);
+    expect(document.activeElement).toBe(
+      modal.find('div', {className: 'Dialog'})?.domNode,
+    );
   });
 
   describe('src', () => {
