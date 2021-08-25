@@ -85,7 +85,6 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    // expect(popoverOverlay.find(PositionedOverlay).prop('fullWidth')).toBe(true);
     expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
       fullWidth: true,
     });
@@ -324,7 +323,6 @@ describe('<PopoverOverlay />', () => {
     jest.runOnlyPendingTimers();
     popoverOverlay.forceUpdate();
 
-    // expect(popoverOverlay.find(PositionedOverlay)).toHaveLength(0);
     expect(popoverOverlay).not.toContainReactComponent(PositionedOverlay);
   });
 
