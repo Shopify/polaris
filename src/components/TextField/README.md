@@ -168,41 +168,48 @@ First name\*
 
 <!-- end -->
 
-### Help text
+The autocomplete attribute in an `input` field controls two types of browser behavior:
 
-Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
+1.  **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
 
-<!-- usagelist -->
+- Autofill is an important feature for our users. Google has found that ["users complete forms up to 30% faster"](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en) when using autofill.
+- The WHATWG has a list of supported autofill values for the `autocomplete` attribute. [Review the section "4.10.18.7 Autofill"](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for all the input types and their corresponding autocomplete attribute values.
 
-#### Do
+2. **Browser autocomplete** - a feature that displays previously submitted values for that field.
 
-9-digit number
+- When this is on for a field, a user is presented a list with previously submitted values for the input
 
-#### Don’t
+**Recommendation**
 
-Example: 123-456-789
+> Always add an autocomplete attribute and value to inputs if the type is: color, date, datetime-local, email, month, number, password, range, search, tel, text, time, url, or week.
 
-<!-- end -->
+#### Turning autofill/autocomplete off
 
-### Validation error messages
+Even if you do not want the browser to autofill a user's information, it is recommended you still have an autocomplete attribute with the value off or nope.
 
-Error messages should:
+Unfortunately, [not all browsers support](https://caniuse.com/input-autocomplete-onoff) or respect autocomplete="off". This makes things challenging. Chrome, for example, [has a long outstanding bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153) and won't add support for off for now.
 
-- Clearly explain what went wrong and how to fix it
-- Be short and concise, no more than a single sentence
-- Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
+| Browser | Support for `autocomplete="off"` | Details                                                                                                                                                             |
+| ------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chrome  | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality. [See bug](https://bugs.chromium.org/p/chromium/issues/detail?id=468153). |
+| Safari  | Partial                          | Ignores `off` value for `username`, `email` and `password` fields.                                                                                                  |
+| Firefox | Partial                          | Ignores `off` value for login forms. [See bug](https://bugzilla.mozilla.org/show_bug.cgi?id=956906).                                                                |
+| Edge    | Partial                          | Intentionally ignores `off` value when the user uses the browser's autofill functionality.                                                                          |
 
-<!-- usagelist -->
+Chrome does seem to turn autocomplete off when using the value nope (or any non valid string). However, we have seen some inconsistencies even with that support.
 
-#### Do
+**Recommendation (Chrome only)**
 
-Store name is required
+- Turning off both **autofill** and **browser autocomplete** (previously submitted values) in Chrome
+  - Use `autocomplete=nope` and also **must have a `name` attribute**.
+- Turning off **browser autocomplete** (previously submitted values) in Chrome
+  - If you don't have `name` attribute and the field is not a typical autofill input (address, email, etc), use `autocomplete=off`.
 
-#### Don’t
+---
 
-You didn’t enter a store name.
+## Content guidelines
 
-<!-- end -->
+For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
 
 ---
 

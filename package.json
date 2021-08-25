@@ -117,12 +117,12 @@
     "@shopify/stylelint-plugin": "^10.0.1",
     "@shopify/typescript-configs": "^5.0.0",
     "@size-limit/preset-small-lib": "^4.10.2",
-    "@storybook/addon-a11y": "^6.1.11",
-    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-a11y": "^6.3.7",
+    "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-contexts": "^5.3.19",
-    "@storybook/addon-essentials": "^6.1.11",
-    "@storybook/addon-knobs": "^6.1.11",
-    "@storybook/react": "^6.1.11",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-knobs": "^6.3.0",
+    "@storybook/react": "^6.3.7",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/lodash": "^4.14.138",
@@ -163,7 +163,7 @@
     "shx": "^0.3.2",
     "size-limit": "^4.10.2",
     "svgo": "^1.3.0",
-    "typescript": "~4.0.3"
+    "typescript": "~4.3.5"
   },
   "browserslist": [
     "last 3 chrome versions",

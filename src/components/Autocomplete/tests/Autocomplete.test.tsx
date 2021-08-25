@@ -442,6 +442,7 @@ describe('<Autocomplete/>', () => {
         .find(Combobox.TextField)
         ?.find(TextField)
         ?.trigger('onFocus');
+
       autocomplete
         .find(KeypressListener, {keyCode: Key.Enter})!
         .trigger('handler', {

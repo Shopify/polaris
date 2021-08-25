@@ -5,12 +5,12 @@ import {
   useMemo,
   useCallback,
 } from 'react';
-
 import type {
   ActionListItemDescriptor,
   OptionDescriptor,
   SectionDescriptor,
-} from '../../types';
+} from 'types';
+
 import type {PopoverProps} from '../Popover';
 import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';

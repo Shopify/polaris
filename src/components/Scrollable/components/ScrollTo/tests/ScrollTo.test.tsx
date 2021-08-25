@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {ScrollTo} from '../ScrollTo';
 import {ScrollableContext} from '../../../context';
@@ -9,7 +8,7 @@ describe('<Scrollable.ScrollTo />', () => {
   it('calls scrollToPosition on mount', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(
+    mountWithApp(
       <ScrollableContext.Provider value={spy}>
         <ScrollTo />
       </ScrollableContext.Provider>,
@@ -20,7 +19,7 @@ describe('<Scrollable.ScrollTo />', () => {
 
   it("does not call scrollToPosition when it's undefined", () => {
     function fn() {
-      mountWithAppProvider(
+      mountWithApp(
         <ScrollableContext.Provider value={undefined}>
           <ScrollTo />
         </ScrollableContext.Provider>,

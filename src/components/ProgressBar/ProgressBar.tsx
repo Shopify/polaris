@@ -6,7 +6,7 @@ import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
-type Color = 'highlight' | 'primary' | 'success';
+type Color = 'highlight' | 'primary' | 'success' | 'critical';
 
 export interface ProgressBarProps {
   /**

@@ -25,16 +25,7 @@ function libraryPackagePlugin() {
     // find the babel.config.js file at the root of the project
     babel({
       config: {
-        presets: [
-          [
-            '@shopify/babel-preset',
-            {
-              typescript: true,
-              react: true,
-              reactOptions: {runtime: 'automatic'},
-            },
-          ],
-        ],
+        presets: [['@shopify/babel-preset', {typescript: true, react: true}]],
         configFile: false,
       },
     }),

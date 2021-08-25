@@ -47,9 +47,7 @@ export function FileUpload(props: FileUploadProps) {
 
   const buttonMarkup =
     (size === 'extraLarge' || size === 'large') && buttonStyles ? (
-      <div testID="Button" className={buttonStyles}>
-        {actionTitle}
-      </div>
+      <div className={buttonStyles}>{actionTitle}</div>
     ) : null;
 
   const actionTitleClassName = classNames(
@@ -59,9 +57,7 @@ export function FileUpload(props: FileUploadProps) {
   );
 
   const actionTitleMarkup = (
-    <div testID="Link" className={actionTitleClassName}>
-      {actionTitle}
-    </div>
+    <div className={actionTitleClassName}>{actionTitle}</div>
   );
 
   const fileUploadClassName = classNames(

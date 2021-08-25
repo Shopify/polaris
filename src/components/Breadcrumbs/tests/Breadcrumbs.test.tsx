@@ -102,7 +102,9 @@ describe('<Breadcrumbs />', () => {
   it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
     const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={linkBreadcrumbs} />);
 
-    expect(wrapper.find(VisuallyHidden))!.toContainReactText('Products');
+    expect(wrapper).toContainReactComponent(VisuallyHidden, {
+      children: 'Products',
+    });
   });
 
   it('renders nothing when empty', () => {
