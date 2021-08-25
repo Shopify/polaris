@@ -257,7 +257,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "Reproduce el video",
+        "default": "Reproducir el video",
         "defaultWithDuration": "Reproducir video de {duration} de duración",
         "duration": {
           "hours": {
