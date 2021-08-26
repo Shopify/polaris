@@ -24,7 +24,7 @@ describe('<ComboBox/>', () => {
 
   describe('options', () => {
     it('passes options to OptionList', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -33,7 +33,7 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
+      comboBox.find('div').trigger('onClick');
 
       const optionListOptions = comboBox.find(OptionList).prop('options') || [
         {
@@ -69,7 +69,7 @@ describe('<ComboBox/>', () => {
 
   describe('contentBefore and contentAfter', () => {
     it('renders content passed into contentBefore', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -78,12 +78,14 @@ describe('<ComboBox/>', () => {
           contentBefore={renderNodeWithId()}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('#CustomNode')).toHaveLength(1);
+      comboBox.find('div').trigger('onClick');
+      expect(comboBox).toContainReactComponentTimes('div', 1, {
+        id: 'CustomNode',
+      });
     });
 
     it('renders content passed into contentAfter', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -92,30 +94,29 @@ describe('<ComboBox/>', () => {
           contentAfter={renderNodeWithId()}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('#CustomNode')).toHaveLength(1);
+      comboBox.find('div').trigger('onClick');
+      expect(comboBox).toContainReactComponentTimes('div', 1, {
+        id: 'CustomNode',
+      });
     });
   });
 
   describe('actionsBefore and actionsAfter', () => {
-    const comboBox = mountWithAppProvider(
-      <ComboBox
-        options={options}
-        selected={[]}
-        textField={renderTextField()}
-        onSelect={noop}
-        actionsBefore={[{image: '../image/path', role: 'option'}]}
-        actionsAfter={[{image: '../image/path', role: 'option'}]}
-      />,
-    );
-
     it('passes actionsBefore to the options in the first ActionList', () => {
-      comboBox.simulate('click');
+      const comboBox = mountWithApp(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsBefore={[{image: '../image/path', role: 'option'}]}
+          actionsAfter={[{image: '../image/path', role: 'option'}]}
+        />,
+      );
 
-      const actionListItems = comboBox
-        .find(ActionList)
-        .first()
-        .prop('items') || [
+      comboBox.find('div').trigger('onClick');
+
+      const actionListItems = comboBox.find(ActionList).prop('items') || [
         {
           image: '',
           role: '',
@@ -127,12 +128,24 @@ describe('<ComboBox/>', () => {
     });
 
     it('passes actionsAfter to the options in the second ActionList', () => {
-      comboBox.simulate('click');
+      const comboBox = mountWithApp(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsBefore={[{image: '../image/path', role: 'option'}]}
+          actionsAfter={[{image: '../image/path', role: 'option'}]}
+        />,
+      );
 
-      const actionListItems = comboBox
-        .find(ActionList)
-        .last()
-        .prop('items') || [
+      comboBox.find('div').trigger('onClick');
+
+      const actionLists = comboBox.findAll(ActionList);
+      // last actionList
+      const actionListItems = actionLists[actionLists.length - 1].prop(
+        'items',
+      ) || [
         {
           image: '',
           role: '',
@@ -146,7 +159,7 @@ describe('<ComboBox/>', () => {
 
   describe('ids', () => {
     it('passes an id to the options in OptionList', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           id="TestId"
           options={options}
@@ -155,12 +168,12 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('button').at(0).prop('id')).toBe('TestId-0');
+      comboBox.find('div').trigger('onClick');
+      expect(comboBox).toContainReactComponent('button', {id: 'TestId-0'});
     });
 
     it('passes an id to the actions in ActionList', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           id="TestId"
           options={options}
@@ -170,8 +183,8 @@ describe('<ComboBox/>', () => {
           actionsBefore={action}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('button').at(0).prop('id')).toBe('TestId-0');
+      comboBox.find('div').trigger('onClick');
+      expect(comboBox).toContainReactComponent('button', {id: 'TestId-0'});
     });
   });
 
