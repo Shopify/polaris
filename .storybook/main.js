@@ -30,7 +30,7 @@ module.exports = {
             options: {
               cacheDirectory: path.resolve(
                 __dirname,
-                '../build/cache/storybook/markdown',
+                '../build-internal/cache/storybook/markdown',
               ),
             },
           },
@@ -71,7 +71,7 @@ module.exports = {
 
     config.plugins.push(
       new CreateFileWebpack({
-        path: './build/storybook/static/services/',
+        path: './build-internal/storybook/static/services/',
         fileName: 'ping.html',
         content:
           '<!DOCTYPE html><html lang="en"><head></head><body>OK</body></html>',

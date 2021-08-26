@@ -16,42 +16,52 @@ validateVersionReplacement();
 
 function validateStandardBuild() {
   // Standard build
-  assert.ok(fs.existsSync('./dist/index.js'));
-  assert.ok(fs.existsSync('./dist/esm/index.js'));
-  assert.ok(fs.existsSync('./dist/styles.css'));
+  assert.ok(fs.existsSync('./build/cjs/index.js'));
+  assert.ok(fs.existsSync('./build/esm/index.mjs'));
+  assert.ok(fs.existsSync('./build/esm/styles.css'));
 
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const esModuleContent = fs.readFileSync('./dist/index.js', 'utf-8');
-  const unwantedReactUsageMatches =
-    esModuleContent.match(
-      /React__default\.(?!createElement|Fragment)[A-Za-z0-9]+/g,
-    ) || [];
+  const files = glob.sync('./build/cjs/**/*.js');
+  assert.notStrictEqual(files.length, 0);
+  const filesContainingUnwantedReactUsage = [];
+  files.forEach((file) => {
+    const content = fs.readFileSync(file, 'utf-8');
 
-  assert.deepStrictEqual(unwantedReactUsageMatches, []);
+    const unwantedReactUsageMatches =
+      content.match(
+        /React__default\['default'\]\.(?!createElement|Fragment)[A-Za-z0-9]+/g,
+      ) || [];
+
+    if (unwantedReactUsageMatches.length) {
+      filesContainingUnwantedReactUsage.push(file);
+    }
+  });
+
+  assert.deepStrictEqual(filesContainingUnwantedReactUsage, []);
 
   // Standard build css contains namespaced classes
-  const cssContent = fs.readFileSync('./dist/styles.css', 'utf-8');
+  const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar{'));
   assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton{'));
 }
 
 function validateEsNextBuild() {
   // ESnext build
-  assert.ok(fs.existsSync('./dist/esnext/index.ts.esnext'));
-  assert.ok(fs.existsSync('./dist/esnext/components/Avatar/Avatar.tsx.esnext'));
-  assert.ok(fs.existsSync('./dist/esnext/components/Avatar/Avatar.css'));
+  assert.ok(fs.existsSync('./build/esnext/index.esnext'));
+  assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
+  assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
 
   // ESnext build css contains namespaced classes, and
   const cssContent = fs.readFileSync(
-    './dist/esnext/components/Avatar/Avatar.css',
+    './build/esnext/components/Avatar/Avatar.css',
     'utf-8',
   );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p{'));
 
   const jsContent = fs.readFileSync(
-    './dist/esnext/components/Avatar/Avatar.scss.esnext',
+    './build/esnext/components/Avatar/Avatar.scss.esnext',
     'utf-8',
   );
 
@@ -61,11 +71,11 @@ function validateEsNextBuild() {
 }
 
 function validateSassPublicApi() {
-  assert.ok(fs.existsSync('./dist/styles/_public-api.scss'));
-  assert.ok(fs.existsSync('./dist/styles/foundation/_spacing.scss'));
+  assert.ok(fs.existsSync('./build/styles/_public-api.scss'));
+  assert.ok(fs.existsSync('./build/styles/foundation/_spacing.scss'));
 
   // does not contain any :global definitions
-  const files = glob.sync(`./dist/styles/**/*.scss`);
+  const files = glob.sync(`./build/styles/**/*.scss`);
   assert.notStrictEqual(files.length, 0);
 
   const filesWithGlobalDefinitions = files.filter((file) => {
@@ -76,13 +86,13 @@ function validateSassPublicApi() {
 }
 
 function validateAncillaryOutput() {
-  assert.ok(fs.existsSync('./dist/types/latest/src/index.d.ts'));
+  assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
   // Downleveled for consumers on older TypeScript versions
-  assert.ok(fs.existsSync('./dist/types/3.4/src/index.d.ts'));
+  assert.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
 }
 
 function validateVersionReplacement() {
-  const files = glob.sync('./dist/**/*.{js,mjs,esnext,css,scss}');
+  const files = glob.sync('./build/**/*.{js,mjs,esnext,css,scss}');
 
   assert.notStrictEqual(files.length, 0);
 
@@ -106,10 +116,10 @@ function validateVersionReplacement() {
   assert.strictEqual(fileBuckets.includesTemplateString.length, 0);
 
   assert.deepStrictEqual(fileBuckets.includesVersion, [
-    './dist/esm/configure.js',
-    './dist/esnext/components/AppProvider/AppProvider.css',
-    './dist/esnext/configure.ts.esnext',
-    './dist/index.js',
-    './dist/styles.css',
+    './build/cjs/configure.js',
+    './build/esm/configure.mjs',
+    './build/esm/styles.css',
+    './build/esnext/components/AppProvider/AppProvider.css',
+    './build/esnext/configure.esnext',
   ]);
 }
