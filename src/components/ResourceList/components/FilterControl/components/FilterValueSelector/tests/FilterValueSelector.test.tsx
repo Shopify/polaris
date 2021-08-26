@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Select, TextField} from 'components';
 
 import {FilterValueSelector} from '../FilterValueSelector';
@@ -53,7 +52,7 @@ describe('<FilterValueSelector />', () => {
       };
 
       it('renders a Select field', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -61,12 +60,11 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const select = wrapper.find(Select);
-        expect(select.exists()).toBe(true);
+        expect(wrapper).toContainReactComponent(Select);
       });
 
       it('renders label using operatorText when it is a string', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -74,12 +72,13 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const select = wrapper.find(Select);
-        expect(select.prop('label')).toBe(filter.operatorText);
+        expect(wrapper).toContainReactComponent(Select, {
+          label: filter.operatorText,
+        });
       });
 
       it('renders a Select with options using operatorText when it is a list of operators', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={noop}
@@ -89,13 +88,14 @@ describe('<FilterValueSelector />', () => {
 
         const expectedOptions = getOptionsListForOperators(operators);
 
-        const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toStrictEqual(expectedOptions);
+        expect(wrapper).toContainReactComponent(Select, {
+          options: expectedOptions,
+        });
       });
 
       it('renders value using the value prop', () => {
         const value = 'test';
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             value={value}
@@ -104,13 +104,14 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const select = wrapper.find(Select);
-        expect(select.prop('value')).toBe(value);
+        // const select = wrapper.find(Select);
+        // expect(select.prop('value')).toBe(value);
+        expect(wrapper).toContainReactComponent(Select, {value});
       });
 
       it('calls onChange when the Select was changed', () => {
         const onChange = jest.fn();
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={onChange}
@@ -118,7 +119,7 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        trigger(wrapper.find(Select), 'onChange');
+        wrapper.find(Select)?.trigger('onChange');
         expect(onChange).toHaveBeenCalled();
       });
 
@@ -126,7 +127,7 @@ describe('<FilterValueSelector />', () => {
         const onFilterKeyChangeSpy = jest.fn();
         const newOperator = operators[1].key;
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={noop}
@@ -134,8 +135,8 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', newOperator);
+        const operatorsSelect = wrapper.findAll(Select)[0];
+        operatorsSelect.trigger('onChange', newOperator);
 
         expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(newOperator);
       });
@@ -144,7 +145,7 @@ describe('<FilterValueSelector />', () => {
         const onChangeSpy = jest.fn();
         const newFilterValue = 'foo';
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={onChangeSpy}
@@ -152,11 +153,13 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const filterValueSelect = wrapper.find(Select).at(1);
-        trigger(filterValueSelect, 'onChange', newFilterValue);
+        const selects = wrapper.findAll(Select);
 
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', operators[1].key);
+        const filterValueSelect = selects[1];
+        filterValueSelect.trigger('onChange', newFilterValue);
+
+        const operatorsSelect = selects[0];
+        operatorsSelect.trigger('onChange', operators[1].key);
 
         expect(onChangeSpy).toHaveBeenCalledWith(newFilterValue);
       });
@@ -170,7 +173,7 @@ describe('<FilterValueSelector />', () => {
       };
 
       it('renders a TextField', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -178,12 +181,11 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const textField = wrapper.find(TextField);
-        expect(textField.exists()).toBe(true);
+        expect(wrapper).toContainReactComponent(TextField);
       });
 
       it('renders label as empty string if operatorText does not exist', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -191,12 +193,11 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('label')).toBe('');
+        expect(wrapper).toContainReactComponent(TextField, {label: ''});
       });
 
       it('renders a Select with options using operatorText when it is a list of operators', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={noop}
@@ -206,13 +207,14 @@ describe('<FilterValueSelector />', () => {
 
         const expectedOptions = getOptionsListForOperators(operators);
 
-        const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toStrictEqual(expectedOptions);
+        expect(wrapper).toContainReactComponent(Select, {
+          options: expectedOptions,
+        });
       });
 
       it('renders value using the value prop', () => {
         const value = 'test';
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             value={value}
@@ -221,14 +223,13 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('value')).toBe(value);
+        expect(wrapper).toContainReactComponent(TextField, {value});
       });
 
       it('renders type using the textFieldType prop', () => {
         const textFieldType = 'number';
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{
               ...filter,
@@ -239,12 +240,13 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('type')).toBe(textFieldType);
+        expect(wrapper).toContainReactComponent(TextField, {
+          type: textFieldType,
+        });
       });
 
       it('renders undefined type when the textFieldType prop is not passed', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -252,13 +254,14 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('type')).toBeUndefined();
+        expect(wrapper).toContainReactComponent(TextField, {
+          type: undefined,
+        });
       });
 
       it('calls onChange when the text field was changed', () => {
         const onChange = jest.fn();
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={onChange}
@@ -266,7 +269,7 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        trigger(wrapper.find(TextField), 'onChange');
+        wrapper.find(TextField)!.trigger('onChange');
         expect(onChange).toHaveBeenCalled();
       });
 
@@ -274,7 +277,7 @@ describe('<FilterValueSelector />', () => {
         const onFilterKeyChangeSpy = jest.fn();
         const newOperator = operators[1].key;
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={noop}
@@ -282,8 +285,8 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', newOperator);
+        const operatorsSelect = wrapper.findAll(Select)[0];
+        operatorsSelect.trigger('onChange', newOperator);
 
         expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(newOperator);
       });
@@ -292,7 +295,7 @@ describe('<FilterValueSelector />', () => {
         const onChangeSpy = jest.fn();
         const newFilterValue = 'foo';
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={{...filter, operatorText: operators}}
             onChange={onChangeSpy}
@@ -300,11 +303,11 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const filterValueTextField = wrapper.find(TextField);
-        trigger(filterValueTextField, 'onChange', newFilterValue);
+        const filterValueTextField = wrapper.find(TextField)!;
+        filterValueTextField.trigger('onChange', newFilterValue);
 
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', operators[1].key);
+        const operatorsSelect = wrapper.findAll(Select)[0];
+        operatorsSelect.trigger('onChange', operators[1].key);
 
         expect(onChangeSpy).toHaveBeenCalledWith(newFilterValue);
       });
@@ -321,7 +324,7 @@ describe('<FilterValueSelector />', () => {
       };
 
       it('renders a DateSelector', () => {
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -329,28 +332,28 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.exists()).toBe(true);
+        expect(wrapper).toContainReactComponent(DateSelector);
       });
 
       it('renders filterValue using the value prop', () => {
-        const value = 'test';
-        const wrapper = mountWithAppProvider(
+        const filterValue = 'test';
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
-            value={value}
+            value={filterValue}
             onChange={noop}
             onFilterKeyChange={noop}
           />,
         );
 
-        const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.prop('filterValue')).toBe(value);
+        expect(wrapper).toContainReactComponent(DateSelector, {
+          filterValue,
+        });
       });
 
       it('renders filterKey using the filterKey prop', () => {
         const filterKey = 'test';
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             filterKey={filterKey}
@@ -359,15 +362,16 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.prop('filterKey')).toBe(filterKey);
+        expect(wrapper).toContainReactComponent(DateSelector, {
+          filterKey,
+        });
       });
 
       it('renders filterMinKey using the min key of filter on filter prop', () => {
         const filterMinKey = 'test';
         const mockFilter = {...filter, minKey: filterMinKey};
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={mockFilter}
             onChange={noop}
@@ -375,15 +379,16 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.prop('filterMinKey')).toBe(filterMinKey);
+        expect(wrapper).toContainReactComponent(DateSelector, {
+          filterMinKey,
+        });
       });
 
       it('renders filterMaxKey using the max key of filter on filter prop', () => {
         const filterMaxKey = 'test';
         const mockFilter = {...filter, maxKey: filterMaxKey};
 
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={mockFilter}
             onChange={noop}
@@ -391,13 +396,14 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.prop('filterMaxKey')).toBe(filterMaxKey);
+        expect(wrapper).toContainReactComponent(DateSelector, {
+          filterMaxKey,
+        });
       });
 
       it('calls onChange when the filter key was changed', () => {
         const onChange = jest.fn();
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={onChange}
@@ -405,13 +411,13 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        trigger(wrapper.find(DateSelector), 'onFilterValueChange');
+        wrapper.find(DateSelector)!.trigger('onFilterValueChange');
         expect(onChange).toHaveBeenCalled();
       });
 
       it('calls onFilterKeyChange when the filter key was changed', () => {
         const onFilterKeyChange = jest.fn();
-        const wrapper = mountWithAppProvider(
+        const wrapper = mountWithApp(
           <FilterValueSelector
             filter={filter}
             onChange={noop}
@@ -419,7 +425,7 @@ describe('<FilterValueSelector />', () => {
           />,
         );
 
-        trigger(wrapper.find(DateSelector), 'onFilterKeyChange');
+        wrapper.find(DateSelector)!.trigger('onFilterKeyChange');
         expect(onFilterKeyChange).toHaveBeenCalled();
       });
     });
