@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 import {Tokens} from 'utilities/theme';
 
 import {Collapsible, CollapsibleProps} from '../Collapsible';
