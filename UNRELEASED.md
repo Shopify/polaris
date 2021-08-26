@@ -76,8 +76,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Modal ([#4433](https://github.com/Shopify/polaris-react/pull/4433))
 - Modernized tests for Navigation and Navigation.Section ([#4440](https://github.com/Shopify/polaris-react/pull/4440))
 - Modernized tests for EmptyState component ([#4427](https://github.com/Shopify/polaris-react/pull/4427))
-- Modernized tests for FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#](https://github.com/Shopify/polaris-react/pull/))
-- Modernized tests for FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
 - Modernized tests for Pagination, FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
+- Modernized tests for PopoverOverlay component([#4430](https://github.com/Shopify/polaris-react/pull/4430))
 
 ### Deprecations
