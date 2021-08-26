@@ -91,8 +91,7 @@ describe('<Form />', () => {
     it('is called when the form is submitted', () => {
       const spy = jest.fn();
       const wrapper = mountWithApp(<Form onSubmit={spy} />);
-      wrapper.trigger('onSubmit');
-
+      wrapper!.find('form')!.trigger('onSubmit', {preventDefault: () => {}});
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -106,9 +105,9 @@ describe('<Form />', () => {
         <Form preventDefault={false} onSubmit={onSubmitSpy} />,
       );
 
-      wrapper.trigger('onSubmit', {
-        preventDefault: preventDefaultSpy,
-      });
+      wrapper!
+        .find('form')!
+        .trigger('onSubmit', {preventDefault: preventDefaultSpy});
 
       expect(preventDefaultSpy).not.toHaveBeenCalled();
     });
@@ -119,9 +118,9 @@ describe('<Form />', () => {
 
       const wrapper = mountWithApp(<Form onSubmit={onSubmitSpy} />);
 
-      wrapper.trigger('onSubmit', {
-        preventDefault: preventDefaultSpy,
-      });
+      wrapper!
+        .find('form')!
+        .trigger('onSubmit', {preventDefault: preventDefaultSpy});
 
       expect(preventDefaultSpy).toHaveBeenCalled();
     });
@@ -134,9 +133,9 @@ describe('<Form />', () => {
         <Form preventDefault onSubmit={onSubmitSpy} />,
       );
 
-      wrapper.trigger('onSubmit', {
-        preventDefault: preventDefaultSpy,
-      });
+      wrapper!
+        .find('form')!
+        .trigger('onSubmit', {preventDefault: preventDefaultSpy});
 
       expect(preventDefaultSpy).toHaveBeenCalled();
     });
