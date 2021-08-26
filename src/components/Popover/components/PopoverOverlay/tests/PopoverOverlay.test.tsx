@@ -315,14 +315,11 @@ describe('<PopoverOverlay />', () => {
     );
 
     // Start exiting
-    close(popoverOverlay);
-    // Update before exiting is complete
-    triggerSomeUpdate(popoverOverlay);
-
+    popoverOverlay.setProps({active: false});
     // Run any timers and a final update for changed state
     jest.runOnlyPendingTimers();
-    popoverOverlay.forceUpdate();
 
+    popoverOverlay.forceUpdate();
     expect(popoverOverlay).not.toContainReactComponent(PositionedOverlay);
   });
 
@@ -466,13 +463,3 @@ describe('<PopoverOverlay />', () => {
 });
 
 function noop() {}
-
-function close(wrapper: CustomRoot<any, any>) {
-  wrapper.setProps({active: false});
-  wrapper.forceUpdate();
-}
-
-function triggerSomeUpdate(wrapper: CustomRoot<any, any>) {
-  wrapper.setProps({fullWidth: true});
-  wrapper.forceUpdate();
-}
