@@ -2,10 +2,10 @@ import React from 'react';
 import {mountWithApp} from 'test-utilities';
 import {TextContainer} from 'components/TextContainer';
 import {Heading} from 'components/Heading';
-import styles from 'Layout.scss';
 
 import {Section} from '../components';
 import {Layout} from '../Layout';
+import styles from '../Layout.scss';
 
 describe('<Layout />', () => {
   it('renders children', () => {

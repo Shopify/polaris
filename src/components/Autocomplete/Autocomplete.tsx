@@ -1,29 +1,39 @@
-import React from 'react';
+import React, {useMemo, useCallback} from 'react';
 
+import type {
+  ActionListItemDescriptor,
+  OptionDescriptor,
+  SectionDescriptor,
+} from '../../types';
+import type {PopoverProps} from '../Popover';
+import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
-import type {ActionListItemDescriptor} from '../../types';
-import {Spinner} from '../Spinner';
+import {Combobox} from '../Combobox';
+import {Listbox} from '../Listbox';
 
-import {TextField, ComboBox, ComboBoxProps} from './components';
+import {MappedAction, MappedOption} from './components';
 import styles from './Autocomplete.scss';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: ComboBoxProps['options'];
+  options: SectionDescriptor[] | OptionDescriptor[];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
-  preferredPosition?: ComboBoxProps['preferredPosition'];
+  preferredPosition?: PopoverProps['preferredPosition'];
   /** Title of the list of options */
   listTitle?: string;
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** An action to render above the list of options */
-  actionBefore?: ActionListItemDescriptor;
+  actionBefore?: ActionListItemDescriptor & {
+    /** Specifies that if the label is too long it will wrap instead of being hidden  */
+    wrapOverflow?: boolean;
+  };
   /** Display loading state */
   loading?: boolean;
   /** Indicates if more results will load dynamically */
@@ -42,10 +52,8 @@ export interface AutocompleteProps {
 // generated *.d.ts files.
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
-  ComboBox: typeof ComboBox;
-  TextField: typeof TextField;
+  TextField: typeof Combobox.TextField;
 } = function Autocomplete({
-  id,
   options,
   selected,
   textField,
@@ -61,38 +69,126 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 }: AutocompleteProps) {
   const i18n = useI18n();
 
-  const spinnerMarkup = loading ? (
-    <div className={styles.Loading}>
-      <Spinner
-        size="small"
-        accessibilityLabel={i18n.translate(
-          'Polaris.Autocomplete.spinnerAccessibilityLabel',
-        )}
-      />
-    </div>
+  const buildMappedOptionFromOption = useCallback(
+    (options: OptionDescriptor[]) => {
+      return options.map((option) => (
+        <MappedOption
+          {...option}
+          key={option.id || option.value}
+          selected={selected.includes(option.value)}
+          singleSelection={!allowMultiple}
+        />
+      ));
+    },
+    [selected, allowMultiple],
+  );
+
+  const optionsMarkup = useMemo(() => {
+    const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+
+    if (isSection(conditionalOptions)) {
+      const noOptionsAvailable = conditionalOptions.every(
+        ({options}) => options.length === 0,
+      );
+
+      if (noOptionsAvailable) {
+        return null;
+      }
+
+      const optionsMarkup = conditionalOptions.map(({options, title}) => {
+        if (options.length === 0) {
+          return null;
+        }
+
+        const optionMarkup = buildMappedOptionFromOption(options);
+
+        return (
+          <Listbox.Section
+            divider={false}
+            title={<Listbox.Header>{title}</Listbox.Header>}
+            key={title}
+          >
+            {optionMarkup}
+          </Listbox.Section>
+        );
+      });
+
+      return <div className={styles.SectionWrapper}>{optionsMarkup}</div>;
+    }
+
+    const optionList =
+      conditionalOptions.length > 0
+        ? buildMappedOptionFromOption(conditionalOptions)
+        : null;
+
+    if (listTitle) {
+      return (
+        <Listbox.Section
+          divider={false}
+          title={<Listbox.Header>{listTitle}</Listbox.Header>}
+        >
+          {optionList}
+        </Listbox.Section>
+      );
+    }
+
+    return optionList;
+  }, [
+    listTitle,
+    loading,
+    options,
+    willLoadMoreResults,
+    buildMappedOptionFromOption,
+  ]);
+
+  const loadingMarkup = loading ? (
+    <Listbox.Loading
+      accessibilityLabel={i18n.translate(
+        'Polaris.Autocomplete.spinnerAccessibilityLabel',
+      )}
+    />
   ) : null;
 
-  const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
-  const conditionalAction =
-    actionBefore && actionBefore !== [] ? [actionBefore] : undefined;
+  const updateSelection = useCallback(
+    (newSelection: string) => {
+      if (allowMultiple) {
+        if (selected.includes(newSelection)) {
+          onSelect(selected.filter((option) => option !== newSelection));
+        } else {
+          onSelect([...selected, newSelection]);
+        }
+      } else {
+        onSelect([newSelection]);
+      }
+    },
+    [allowMultiple, onSelect, selected],
+  );
+
+  const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;
+
+  const emptyStateMarkup = emptyState && options.length < 1 && !loading && (
+    <div role="status">{emptyState}</div>
+  );
 
   return (
-    <ComboBox
-      id={id}
-      options={conditionalOptions}
-      selected={selected}
-      textField={textField}
-      preferredPosition={preferredPosition}
-      listTitle={listTitle}
+    <Combobox
+      activator={textField}
       allowMultiple={allowMultiple}
-      contentAfter={spinnerMarkup}
-      actionsBefore={conditionalAction}
-      onSelect={onSelect}
-      onEndReached={onLoadMoreResults}
-      emptyState={emptyState}
-    />
+      onScrolledToBottom={onLoadMoreResults}
+      preferredPosition={preferredPosition}
+    >
+      {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
+        <Listbox onSelect={updateSelection}>
+          {actionMarkup}
+          {optionsMarkup && (!loading || willLoadMoreResults)
+            ? optionsMarkup
+            : null}
+          {loadingMarkup}
+          {emptyStateMarkup}
+        </Listbox>
+      ) : null}
+    </Combobox>
   );
 };
 
-Autocomplete.ComboBox = ComboBox;
-Autocomplete.TextField = TextField;
+Autocomplete.TextField = Combobox.TextField;

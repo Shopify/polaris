@@ -67,6 +67,9 @@ export type {CollapsibleProps} from './Collapsible';
 export {ColorPicker} from './ColorPicker';
 export type {ColorPickerProps} from './ColorPicker';
 
+export {Combobox} from './Combobox';
+export type {ComboboxProps} from './Combobox';
+
 export {Connected} from './Connected';
 export type {ConnectedProps} from './Connected';
 
@@ -173,6 +176,9 @@ export type {LinkProps} from './Link';
 
 export {List} from './List';
 export type {ListProps} from './List';
+
+export {Listbox} from './Listbox';
+export type {ListboxProps} from './Listbox';
 
 export {Loading} from './Loading';
 export type {LoadingProps} from './Loading';

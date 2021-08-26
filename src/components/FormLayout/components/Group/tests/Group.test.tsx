@@ -5,7 +5,9 @@ import {mountWithApp} from 'test-utilities';
 import {Group} from '../Group';
 
 describe('<Group />', () => {
-  const children = <TextField onChange={noop} label="test" />;
+  const children = (
+    <TextField onChange={noop} label="test" autoComplete="off" />
+  );
   const title = 'Title';
   const helpText = 'Help text';
 

@@ -1,6 +1,6 @@
 import {InlineError} from 'components/InlineError';
 import React from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 
 import {SingleThumb} from '../SingleThumb';
 
@@ -51,11 +51,8 @@ describe('<SingleThumb />', () => {
         <SingleThumb onChange={onChangeSpy} {...rest} />,
       );
 
-      const input = element.find('input')!;
-
-      (input as any).instance.value = 40;
-      input!.trigger('onChange', {
-        currentTarget: input!.domNode as HTMLInputElement,
+      element.find('input')!.trigger('onChange', {
+        currentTarget: {value: '40'},
       });
       expect(onChangeSpy).toHaveBeenCalledWith(40, 'MyRangeSlider');
     });

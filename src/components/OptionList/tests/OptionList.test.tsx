@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {Option} from '../components';
-import {OptionList, OptionListProps, OptionDescriptor} from '../OptionList';
+import {OptionList, OptionListProps} from '../OptionList';
+import type {OptionDescriptor} from '../../../types';
 
 describe('<OptionList />', () => {
   const defaultProps: OptionListProps = {

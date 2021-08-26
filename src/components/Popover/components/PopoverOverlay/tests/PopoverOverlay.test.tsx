@@ -230,7 +230,14 @@ describe('<PopoverOverlay />', () => {
         activator={activator}
         onClose={spy}
       >
-        (<TextField label="Store name" value="Click me" onChange={() => {}} />)
+        (
+        <TextField
+          label="Store name"
+          value="Click me"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        )
       </PopoverOverlay>,
     );
 
@@ -261,6 +268,7 @@ describe('<PopoverOverlay />', () => {
           label="Store name"
           value="Click me"
           onChange={() => {}}
+          autoComplete="off"
         />
         )
       </PopoverOverlay>,

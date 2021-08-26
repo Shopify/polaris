@@ -279,6 +279,73 @@ describe('<Nav.Item />', () => {
         'aria-expanded': true,
       });
     });
+
+    it('invokes the provided onClick handler', () => {
+      const spy = jest.fn();
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="/admin/orders"
+          subNavigationItems={[
+            {
+              url: '/admin/draft_orders',
+              disabled: false,
+              label: 'draft orders',
+              onClick: spy,
+            },
+          ]}
+        />,
+        {
+          location: '/admin/orders',
+        },
+      );
+
+      item!
+        .find(Secondary)!
+        .find('a')!
+        .trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => '/admin/draft_orders',
+          },
+        });
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('invokes onNavDismiss even if a custom onClick is provided', () => {
+      const spy = jest.fn();
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="/admin/orders"
+          subNavigationItems={[
+            {
+              url: '/admin/draft_orders',
+              disabled: false,
+              label: 'draft orders',
+              onClick: noop,
+            },
+          ]}
+        />,
+        {
+          location: '/admin/orders',
+          onNavigationDismiss: spy,
+        },
+      );
+
+      item!
+        .find(Secondary)!
+        .find('a')!
+        .trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => '/admin/draft_orders',
+          },
+        });
+
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
   });
 
   describe('with exactMatch true', () => {
