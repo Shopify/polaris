@@ -91,9 +91,12 @@ export function styles({
     // resolved. This may change between runs so we can't rely on it.
     // The contents of the emitted css file should use the order in which the
     // files were referenced in the compiled javascript, which can be obtained
-    // by looking at bundles[].modules.
-    const bundleModuleIds = flatMap(Object.values(bundle), (fileInfo) =>
-      Object.keys(fileInfo.modules),
+    // by looking at the imports of each entrypoint's bundle information.
+    const entrypointBundles = Object.values(bundle).filter(
+      (bundleInfo) => bundleInfo.isEntry,
+    );
+    const bundleModuleIds = flatMap(entrypointBundles, (bundleInfo) =>
+      getRecursiveImportOrder(bundleInfo.facadeModuleId, rollup.getModuleInfo),
     );
 
     const missingReferences = Object.keys(cssByFile).filter(
@@ -211,4 +214,27 @@ function hoistCharsetDeclaration(css) {
   }
 
   return `${standaloneCssFileCharset}${result}`;
+}
+
+/**
+ * Recursivly get the correct import order from rollup
+ * We only process a file once
+ *
+ * @param {string} id
+ * @param {Function} getModuleInfo
+ * @param {Set<string>} seen
+ */
+function getRecursiveImportOrder(id, getModuleInfo, seen = new Set()) {
+  if (seen.has(id)) {
+    return [];
+  }
+
+  seen.add(id);
+
+  const result = [id];
+  getModuleInfo(id).importedIds.forEach((importFile) => {
+    result.push(...getRecursiveImportOrder(importFile, getModuleInfo, seen));
+  });
+
+  return result;
 }
