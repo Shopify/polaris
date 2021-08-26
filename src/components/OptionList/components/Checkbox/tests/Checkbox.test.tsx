@@ -15,14 +15,9 @@ describe('<Checkbox />', () => {
   };
 
   it('sets pass through props for input', () => {
-    const input = mountWithApp(<Checkbox {...defaultProps} />).find('input')!;
-    const {checked, disabled, id, name, value} = defaultProps;
+    const input = mountWithApp(<Checkbox {...defaultProps} />);
 
-    expect(input.prop('checked')).toBe(checked);
-    expect(input.prop('disabled')).toBe(disabled);
-    expect(input.prop('id')).toBe(id);
-    expect(input.prop('name')).toBe(name);
-    expect(input.prop('value')).toBe(value);
+    expect(input).toContainReactComponent('input', defaultProps);
   });
 
   it('calls onChange', () => {
@@ -71,6 +66,7 @@ describe('<Checkbox />', () => {
       checkboxInput!.trigger('onChange', {
         currentTarget: checkboxInput!.domNode as HTMLInputElement,
       });
+
       expect(checkbox).not.toContainReactComponent('input', {
         className: 'Input keyFocused',
       });
