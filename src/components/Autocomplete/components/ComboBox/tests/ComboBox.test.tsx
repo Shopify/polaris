@@ -33,9 +33,9 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
 
-      const optionListOptions = comboBox.find(OptionList).prop('options') || [
+      const optionListOptions = comboBox.find(OptionList)!.prop('options') || [
         {
           value: '',
           label: '',
@@ -78,7 +78,7 @@ describe('<ComboBox/>', () => {
           contentBefore={renderNodeWithId()}
         />,
       );
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
       expect(comboBox).toContainReactComponentTimes('div', 1, {
         id: 'CustomNode',
       });
@@ -94,7 +94,7 @@ describe('<ComboBox/>', () => {
           contentAfter={renderNodeWithId()}
         />,
       );
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
       expect(comboBox).toContainReactComponentTimes('div', 1, {
         id: 'CustomNode',
       });
@@ -114,9 +114,9 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
 
-      const actionListItems = comboBox.find(ActionList).prop('items') || [
+      const actionListItems = comboBox.find(ActionList)!.prop('items') || [
         {
           image: '',
           role: '',
@@ -139,7 +139,7 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
 
       const actionLists = comboBox.findAll(ActionList);
       // last actionList
@@ -168,7 +168,7 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
       expect(comboBox).toContainReactComponent('button', {id: 'TestId-0'});
     });
 
@@ -183,14 +183,14 @@ describe('<ComboBox/>', () => {
           actionsBefore={action}
         />,
       );
-      comboBox.find('div').trigger('onClick');
+      comboBox.find('div')!.trigger('onClick');
       expect(comboBox).toContainReactComponent('button', {id: 'TestId-0'});
     });
   });
 
   describe('actions', () => {
     it('renders an action in actionsBefore', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -200,13 +200,12 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-
-      expect(comboBox.find('button').at(0).text()).toBe('Add tag');
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox.find('button')).toContainReactText('Add tag');
     });
 
     it('renders an action in actionsAfter', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -215,14 +214,16 @@ describe('<ComboBox/>', () => {
           actionsAfter={action}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('button').at(3).text()).toBe('Add tag');
+
+      comboBox.find('div')!.trigger('onClick');
+      const buttons = comboBox.findAll('button');
+      expect(buttons[3]).toContainReactText('Add tag');
     });
   });
 
   describe('select', () => {
     it('passes the selected options to OptionList', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={['cheese_pizza']}
@@ -232,16 +233,16 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('selected')).toStrictEqual([
-        'cheese_pizza',
-      ]);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).toContainReactComponent(OptionList, {
+        selected: ['cheese_pizza'],
+      });
     });
   });
 
   describe('listTitle', () => {
     it('passes the listTitle as title to OptionList', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -251,14 +252,16 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('title')).toBe('List title');
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).toContainReactComponent(OptionList, {
+        title: 'List title',
+      });
     });
   });
 
   describe('<TextField />', () => {
     it('renders TextField by default', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -266,11 +269,11 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      expect(comboBox.find(TextField)).toHaveLength(1);
+      expect(comboBox).toContainReactComponentTimes(TextField, 1);
     });
 
     it('renders a custom given input', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -278,12 +281,12 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      expect(comboBox.find('input')).toHaveLength(1);
-      expect(comboBox.find(TextField)).toHaveLength(0);
+      expect(comboBox).toContainReactComponentTimes('input', 1);
+      expect(comboBox).not.toContainReactComponent(TextField);
     });
 
     it('is passed to Popover as the activator', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -292,51 +295,62 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      expect(comboBox.find(Popover).find(TextField)).toHaveLength(1);
+      expect(comboBox.find(Popover)).toContainReactComponentTimes(TextField, 1);
     });
   });
 
   describe('<Popover />', () => {
-    const comboBox = mountWithAppProvider(
-      <ComboBox
-        options={options}
-        selected={[]}
-        textField={renderTextField()}
-        onSelect={noop}
-        preferredPosition="above"
-      />,
-    );
+    const mountComboBox = () =>
+      mountWithApp(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          preferredPosition="above"
+        />,
+      );
 
     it('does not set Popover to active before being clicked', () => {
-      expect(comboBox.find(Popover).prop('active')).toBe(false);
+      const comboBox = mountComboBox();
+      expect(comboBox).toContainReactComponent(Popover, {active: false});
     });
 
     it('sets Popover to active when clicked', () => {
-      comboBox.simulate('click');
-      expect(comboBox.find(Popover).prop('active')).toBe(true);
+      const comboBox = mountComboBox();
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).toContainReactComponent(Popover, {active: true});
     });
 
     it('sets Popover to active on keyDown', () => {
-      comboBox.simulate('keydown');
-      expect(comboBox.find(Popover).prop('active')).toBe(true);
+      const comboBox = mountComboBox();
+      comboBox.find('div')!.trigger('onKeyDown');
+      expect(comboBox).toContainReactComponent(Popover, {active: true});
     });
 
     it('sets Popover to fullWidth', () => {
-      expect(comboBox.find(Popover).prop('fullWidth')).toBe(true);
+      const comboBox = mountComboBox();
+      expect(comboBox).toContainReactComponent(Popover, {fullWidth: true});
     });
 
     it('prevents autofocus on Popover', () => {
-      expect(comboBox.find(Popover).prop('autofocusTarget')).toBe('none');
+      const comboBox = mountComboBox();
+      expect(comboBox).toContainReactComponent(Popover, {
+        autofocusTarget: 'none',
+      });
     });
 
     it('passes the preferredPosition to Popover', () => {
-      expect(comboBox.find(Popover).prop('preferredPosition')).toBe('above');
+      const comboBox = mountComboBox();
+      expect(comboBox).toContainReactComponent(Popover, {
+        preferredPosition: 'above',
+      });
     });
   });
 
   describe('allowMultiple', () => {
     it('renders a button if the prop is false', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -345,12 +359,12 @@ describe('<ComboBox/>', () => {
           allowMultiple={false}
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('button')).toHaveLength(options.length);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).toContainReactComponentTimes('button', options.length);
     });
 
     it('renders a checkbox if the prop is set to true', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -359,17 +373,16 @@ describe('<ComboBox/>', () => {
           allowMultiple
         />,
       );
-      comboBox.simulate('click');
-      expect(comboBox.find('input[type="checkbox"]')).toHaveLength(
-        options.length,
-      );
+      comboBox.find('div')!.trigger('onClick');
+      const checkboxes = comboBox.findAll('input', {type: 'checkbox'});
+      expect(checkboxes).toHaveLength(options.length);
     });
   });
 
   describe('onSelect', () => {
     it('gets called when an item is clicked', () => {
       const spy = jest.fn();
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -377,14 +390,14 @@ describe('<ComboBox/>', () => {
           onSelect={spy}
         />,
       );
-      comboBox.simulate('click');
-      comboBox.find('button').at(0).simulate('click');
+      comboBox.find('div')!.trigger('onClick');
+      comboBox.find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('gets called when a checkbox is changed', () => {
       const spy = jest.fn();
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -393,11 +406,10 @@ describe('<ComboBox/>', () => {
           allowMultiple
         />,
       );
-      comboBox.simulate('click');
+      comboBox.find('div')!.trigger('onClick');
       comboBox
-        .find('input[type="checkbox"]')
-        .at(0)
-        .simulate('change', {target: {checked: true}});
+        .find('input', {type: 'checkbox'})!
+        .trigger('onChange', {target: {checked: true}});
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
@@ -512,7 +524,7 @@ describe('<ComboBox/>', () => {
     });
 
     it('activates the popover when the combobox is focused', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -521,8 +533,8 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('focus');
-      expect(comboBox.find(Popover).prop('active')).toBe(true);
+      comboBox.find('div')!.trigger('onFocus');
+      expect(comboBox).toContainReactComponent(Popover, {active: true});
     });
 
     it('deactivates the popover when the escape key is pressed', () => {
@@ -551,7 +563,7 @@ describe('<ComboBox/>', () => {
     const EmptyState = () => <div>No results</div>;
 
     it('renders an empty state when no options are passed in', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={[]}
           selected={[]}
@@ -561,12 +573,12 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(EmptyState)).toHaveLength(1);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).toContainReactComponentTimes(EmptyState, 1);
     });
 
     it('does not render empty state if actionsBefore exist', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={[]}
           selected={[]}
@@ -577,12 +589,12 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(EmptyState)).toHaveLength(0);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).not.toContainReactComponent(EmptyState);
     });
 
     it('does not render empty state if actionsAfter exist', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={[]}
           selected={[]}
@@ -593,12 +605,12 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(EmptyState)).toHaveLength(0);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).not.toContainReactComponent(EmptyState);
     });
 
     it('does not render empty state if contentAfter exist', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={[]}
           selected={[]}
@@ -609,12 +621,12 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(EmptyState)).toHaveLength(0);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).not.toContainReactComponent(EmptyState);
     });
 
     it('does not render empty state if contentBefore exist', () => {
-      const comboBox = mountWithAppProvider(
+      const comboBox = mountWithApp(
         <ComboBox
           options={[]}
           selected={[]}
@@ -625,8 +637,8 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      comboBox.simulate('click');
-      expect(comboBox.find(EmptyState)).toHaveLength(0);
+      comboBox.find('div')!.trigger('onClick');
+      expect(comboBox).not.toContainReactComponent(EmptyState);
     });
   });
 });
