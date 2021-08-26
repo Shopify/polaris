@@ -3,6 +3,8 @@
 .Content {
   display: flex;
   flex: 1;
+
+  @include text-breakword;
 }
 
 .Media {
