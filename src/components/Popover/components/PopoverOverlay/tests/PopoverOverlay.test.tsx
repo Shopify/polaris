@@ -1,7 +1,6 @@
 import React, {useRef} from 'react';
 import {mountWithApp} from 'test-utilities/react-testing';
 import {TextContainer, TextField, EventListener} from 'components';
-import type {CustomRoot} from '@shopify/react-testing';
 
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
