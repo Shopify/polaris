@@ -2,6 +2,7 @@ import React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Spinner} from 'components';
 
 import {Key} from '../../../types';
@@ -15,20 +16,8 @@ describe('<Autocomplete/>', () => {
     {value: 'pepperoni_pizza', label: 'Pepperoni Pizza'},
   ];
 
-  it('mounts', () => {
-    const autocomplete = mountWithAppProvider(
-      <Autocomplete
-        options={options}
-        selected={[]}
-        textField={renderTextField()}
-        onSelect={noop}
-      />,
-    );
-    expect(autocomplete.find(Autocomplete).exists()).toBe(true);
-  });
-
   it('displays a spinner when loading is true', () => {
-    const autocomplete = mountWithAppProvider(
+    const autocomplete = mountWithApp(
       <Autocomplete
         options={options}
         selected={[]}
@@ -37,13 +26,13 @@ describe('<Autocomplete/>', () => {
         loading
       />,
     );
-    autocomplete.simulate('click');
-    expect(autocomplete.find(Spinner).exists()).toBe(true);
+    autocomplete.find('div')!.trigger('onClick');
+    expect(autocomplete).toContainReactComponent(Spinner);
   });
 
   describe('<Combobox />', () => {
     it('passes props to ComboBox', () => {
-      const actionBefore = {
+      const actionsBefore = {
         content: "Add 'f'",
         icon: CirclePlusMinor,
         id: 'ComboBox3-0',
@@ -51,7 +40,7 @@ describe('<Autocomplete/>', () => {
 
       const EmptyState = () => <span>No results</span>;
 
-      const autocomplete = mountWithAppProvider(
+      const autocomplete = mountWithApp(
         <Autocomplete
           id="Autocomplete-ID"
           options={options}
@@ -60,32 +49,24 @@ describe('<Autocomplete/>', () => {
           preferredPosition="mostSpace"
           listTitle="List title"
           allowMultiple
-          actionBefore={actionBefore}
+          actionBefore={actionsBefore}
           onSelect={handleOnSelect}
           emptyState={<EmptyState />}
         />,
       );
 
-      expect(autocomplete.find(ComboBox).prop('id')).toBe('Autocomplete-ID');
-      expect(autocomplete.find(ComboBox).prop('options')).toBe(options);
-      expect(autocomplete.find(ComboBox).prop('selected')).toStrictEqual([
-        'cheese_pizza',
-      ]);
-      expect(autocomplete.find(ComboBox).prop('textField')).toStrictEqual(
-        renderTextField(),
-      );
-      expect(autocomplete.find(ComboBox).prop('preferredPosition')).toBe(
-        'mostSpace',
-      );
-      expect(autocomplete.find(ComboBox).prop('listTitle')).toBe('List title');
-      expect(autocomplete.find(ComboBox).prop('allowMultiple')).toBe(true);
-      expect(autocomplete.find(ComboBox).prop('actionsBefore')).toStrictEqual([
-        actionBefore,
-      ]);
-      expect(autocomplete.find(ComboBox).prop('onSelect')).toBe(handleOnSelect);
-      expect(autocomplete.find(ComboBox).prop('emptyState')).toStrictEqual(
-        <EmptyState />,
-      );
+      expect(autocomplete).toContainReactComponent(ComboBox, {
+        id: 'Autocomplete-ID',
+        options,
+        selected: ['cheese_pizza'],
+        textField: renderTextField(),
+        preferredPosition: 'mostSpace',
+        listTitle: 'List title',
+        allowMultiple: true,
+        actionsBefore: [actionsBefore],
+        onSelect: handleOnSelect,
+        emptyState: <EmptyState />,
+      });
     });
 
     it('`Enter` keypress in <Autocomplete/> does not trigger `onSubmit` when wrapped in a <form>', () => {
@@ -114,7 +95,7 @@ describe('<Autocomplete/>', () => {
 
   describe('loading', () => {
     it('passes an empty array as options and contentAfter to ComboBox when loading is true', () => {
-      const autocomplete = mountWithAppProvider(
+      const autocomplete = mountWithApp(
         <Autocomplete
           options={options}
           selected={[]}
@@ -123,8 +104,9 @@ describe('<Autocomplete/>', () => {
           loading
         />,
       );
-      expect(autocomplete.find(ComboBox).prop('options')).toStrictEqual([]);
-      expect(autocomplete.find(ComboBox).prop('contentAfter')).not.toBeNull();
+      expect(autocomplete).toContainReactComponent(ComboBox, {options: []});
+      const comboBox = autocomplete.find(ComboBox);
+      expect(comboBox).not.toHaveReactProps({contentAfter: null});
     });
   });
 
