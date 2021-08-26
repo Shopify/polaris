@@ -9,6 +9,7 @@ import {
   TextStyle,
   ButtonProps,
 } from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,
@@ -277,9 +278,8 @@ describe('<Filters />', () => {
       );
 
       expect(
-        resourceFilters.find(ConnectedFilterControl)!.props[
-          'rightPopoverableActions'
-        ],
+        resourceFilters.find(ConnectedFilterControl)!.props
+          .rightPopoverableActions,
       ).toHaveLength(2);
     });
 
@@ -338,7 +338,7 @@ describe('<Filters />', () => {
 
       const rightPopoverableActions = resourceFilters.find(
         ConnectedFilterControl,
-      )!.props['rightPopoverableActions'];
+      )!.props.rightPopoverableActions;
 
       rightPopoverableActions!.forEach((action) => {
         expect(action.popoverOpen).toBe(false);
@@ -420,7 +420,8 @@ describe('<Filters />', () => {
         id: 'filterOneCollapsible',
       });
       const buttons = collapsible!.findAll(Button);
-      const clearButton = buttons[buttons.length - 1]; // last button
+      // last button
+      const clearButton = buttons[buttons.length - 1];
 
       clearButton!.trigger('onClick');
 
@@ -549,11 +550,12 @@ describe('<Filters />', () => {
         .find(Button, {children: 'More filters'})!
         .trigger('onClick');
 
-      let clearAllButton = resourceFilters.find(Button, {
-        children: 'Clear all filters',
-        disabled: false,
-      });
-      clearAllButton!.trigger('onClick');
+      resourceFilters
+        .find(Button, {
+          children: 'Clear all filters',
+          disabled: false,
+        })!
+        .trigger('onClick');
 
       expect(resourceFilters).toContainReactComponent(Button, {
         children: 'Clear all filters',
