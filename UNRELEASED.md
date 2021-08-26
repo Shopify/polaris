@@ -73,8 +73,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Pane, Section, PositionedOverlay, SingleThumb, RangeSlider, and ConnectedFilter components ([#4429](https://github.com/Shopify/polaris-react/pull/4429))
 - Modernized tests for ContextualSaveBar and DataTable and its subcomponents ([#4397](https://github.com/Shopify/polaris-react/pull/4397))
 - Modernized tests for IndexTable, Indicator, InlineError, KeyboardKey, and KeypressListener components([#4431](https://github.com/Shopify/polaris-react/pull/4431))
+- Modernized tests for Form and Filters components ([#4434](https://github.com/Shopify/polaris-react/pull/4434)).
+- Modernized tests for OptionList and its subcomponents ([#4441](https://github.com/Shopify/polaris-react/pull/4441))
+- Modernized tests for Modal ([#4433](https://github.com/Shopify/polaris-react/pull/4433))
 - Modernized tests for Navigation and Navigation.Section ([#4440](https://github.com/Shopify/polaris-react/pull/4440))
 - Modernized tests for EmptyState component ([#4427](https://github.com/Shopify/polaris-react/pull/4427))
 - Modernized tests for ComboBox component ([#4442](https://github.com/Shopify/polaris-react/pull/4442))
+- Modernized tests for Pagination, FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
+- Modernized tests for PopoverOverlay component([#4430](https://github.com/Shopify/polaris-react/pull/4430))
+- Modernized tests for Dropzone, ExceptionList, and ConnectedFilterControl > Item components([#4412](https://github.com/Shopify/polaris-react/pull/4412))
 
 ### Deprecations
