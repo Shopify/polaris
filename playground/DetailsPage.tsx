@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React from 'react';
 import {
   AnalyticsMajor,
   AppsMajor,
@@ -43,49 +43,51 @@ import {
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
-  const defaultState = useRef({
+  const defaultState = React.useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
-  const skipToContentRef = useRef<HTMLAnchorElement>(null);
-  const [toastActive, setToastActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDirty, setIsDirty] = useState(false);
-  const [searchActive, setSearchActive] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [userMenuActive, setUserMenuActive] = useState(false);
-  const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
-  const [modalActive, setModalActive] = useState(false);
-  const [navItemActive, setNavItemActive] = useState('');
+  const skipToContentRef = React.useRef<HTMLAnchorElement>(null);
+  const [toastActive, setToastActive] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isDirty, setIsDirty] = React.useState(false);
+  const [searchActive, setSearchActive] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState('');
+  const [userMenuActive, setUserMenuActive] = React.useState(false);
+  const [mobileNavigationActive, setMobileNavigationActive] = React.useState(
+    false,
+  );
+  const [modalActive, setModalActive] = React.useState(false);
+  const [navItemActive, setNavItemActive] = React.useState('');
   const initialDescription =
     'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
-  const [previewValue, setPreviewValue] = useState(initialDescription);
-  const [nameFieldValue, setNameFieldValue] = useState(
+  const [previewValue, setPreviewValue] = React.useState(initialDescription);
+  const [nameFieldValue, setNameFieldValue] = React.useState(
     defaultState.current.nameFieldValue,
   );
-  const [emailFieldValue, setEmailFieldValue] = useState(
+  const [emailFieldValue, setEmailFieldValue] = React.useState(
     defaultState.current.emailFieldValue,
   );
-  const [storeName, setStoreName] = useState(
+  const [storeName, setStoreName] = React.useState(
     defaultState.current.nameFieldValue,
   );
-  const [supportSubject, setSupportSubject] = useState('');
-  const [supportMessage, setSupportMessage] = useState('');
+  const [supportSubject, setSupportSubject] = React.useState('');
+  const [supportMessage, setSupportMessage] = React.useState('');
 
-  const handleSubjectChange = useCallback(
+  const handleSubjectChange = React.useCallback(
     (value) => setSupportSubject(value),
     [],
   );
-  const handleMessageChange = useCallback(
+  const handleMessageChange = React.useCallback(
     (value) => setSupportMessage(value),
     [],
   );
-  const handleDiscard = useCallback(() => {
+  const handleDiscard = React.useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
     setNameFieldValue(defaultState.current.nameFieldValue);
     setIsDirty(false);
   }, []);
-  const handleSave = useCallback(() => {
+  const handleSave = React.useCallback(() => {
     defaultState.current.nameFieldValue = nameFieldValue;
     defaultState.current.emailFieldValue = emailFieldValue;
 
@@ -93,34 +95,34 @@ export function DetailsPage() {
     setToastActive(true);
     setStoreName(defaultState.current.nameFieldValue);
   }, [emailFieldValue, nameFieldValue]);
-  const handleSearchResultsDismiss = useCallback(() => {
+  const handleSearchResultsDismiss = React.useCallback(() => {
     setSearchActive(false);
     setSearchValue('');
   }, []);
-  const handleSearchFieldChange = useCallback((value) => {
+  const handleSearchFieldChange = React.useCallback((value) => {
     setSearchValue(value);
     setSearchActive(value.length > 0);
   }, []);
-  const toggleToastActive = useCallback(
+  const toggleToastActive = React.useCallback(
     () => setToastActive((toastActive) => !toastActive),
     [],
   );
-  const toggleUserMenuActive = useCallback(
+  const toggleUserMenuActive = React.useCallback(
     () => setUserMenuActive((userMenuActive) => !userMenuActive),
     [],
   );
-  const toggleMobileNavigationActive = useCallback(
+  const toggleMobileNavigationActive = React.useCallback(
     () =>
       setMobileNavigationActive(
         (mobileNavigationActive) => !mobileNavigationActive,
       ),
     [],
   );
-  const toggleIsLoading = useCallback(
+  const toggleIsLoading = React.useCallback(
     () => setIsLoading((isLoading) => !isLoading),
     [],
   );
-  const toggleModalActive = useCallback(
+  const toggleModalActive = React.useCallback(
     () => setModalActive((modalActive) => !modalActive),
     [],
   );
@@ -434,12 +436,17 @@ export function DetailsPage() {
   );
 
   // ---- Description ----
-  const [descriptionValue, setDescriptionValue] = useState(initialDescription);
+  const [descriptionValue, setDescriptionValue] = React.useState(
+    initialDescription,
+  );
 
   // ---- Select ----
-  const [selected, setSelected] = useState('today');
+  const [selected, setSelected] = React.useState('today');
 
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
+  const handleSelectChange = React.useCallback(
+    (value) => setSelected(value),
+    [],
+  );
 
   const options = [
     {label: 'Keyboard', value: 'keyboard'},
@@ -447,7 +454,7 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => {
+  const handleChange = React.useCallback((newValue) => {
     setDescriptionValue(newValue);
     setPreviewValue(newValue);
   }, []);
@@ -472,7 +479,7 @@ export function DetailsPage() {
     },
   ];
 
-  const [actions, setActions] = useState(actions1);
+  const [actions, setActions] = React.useState(actions1);
 
   const toggleActions = () => {
     if (actions.length === 2) {
@@ -483,9 +490,11 @@ export function DetailsPage() {
   };
 
   // ---- Dropzone ----
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = React.useState<File[]>([]);
 
-  const handleDropZoneDrop = useCallback<NonNullable<DropZoneProps['onDrop']>>(
+  const handleDropZoneDrop = React.useCallback<
+    NonNullable<DropZoneProps['onDrop']>
+  >(
     (_dropFiles, acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...acceptedFiles]),
     [],

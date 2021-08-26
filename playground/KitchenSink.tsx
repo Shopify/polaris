@@ -16,7 +16,7 @@ export function KitchenSink() {
     const stories = Object.entries(readmeModule)
       .filter(filterExports)
       .map(([storyName, Story]) => (
-        <StoryWithWrapper key={`${readmeModule.default.title}:${storyName}`}>
+        <StoryWithWrapper key={`${readmeModule.default?.title}:${storyName}`}>
           <Story />
         </StoryWithWrapper>
       ));

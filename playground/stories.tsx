@@ -1,5 +1,6 @@
 import {Playground} from './Playground';
-import {KitchenSink} from './KitchenSink';
+// KitchenSink is still broken
+// import {KitchenSink} from './KitchenSink';
 import {DetailsPage} from './DetailsPage';
 
 // eslint-disable-next-line import/no-default-export, import/no-anonymous-default-export
@@ -10,4 +11,4 @@ export default {
   },
 };
 
-export {Playground, KitchenSink, DetailsPage};
+export {Playground, DetailsPage};
