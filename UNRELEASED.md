@@ -6,7 +6,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Enables optional `onClick` property for `subNavigationItem` on `Nav/Item` component to execute, if provided ([#4394](https://github.com/Shopify/polaris-react/pull/4394))
 - Added optional `onClick` key to `secondaryAction` on `Nav/Item` component ([#4374](https://github.com/Shopify/polaris-react/pull/4374))
 - Added `id` prop to `Layout` and `Heading` for hash linking ([#4307](https://github.com/Shopify/polaris-react/pull/4307))
 - Added `external` prop to `Navigation.Item` component ([#4310](https://github.com/Shopify/polaris-react/pull/4310))
@@ -20,7 +19,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `PositionedOverlay` now exposes an imperative `forceReLayout()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - `Popover` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the underlying overlay component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - `PositionedOverlay` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
-- Added `wrapOverflow` prop to `AutocompleteProps` props to force text-breakword ([#4416](https://github.com/Shopify/polaris-react/pull/4416))
 - Updated `IndexTable` component to hide checkboxes when `selectable` prop is `false` ([#4376](https://github.com/Shopify/polaris-react/pull/4376))
 
 ### Bug fixes
@@ -36,7 +34,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Properly support `selected` prop for `Navigation.Item` when `url` prop is not specified ([#4375](https://github.com/Shopify/polaris-react/pull/4375))
 - Fixed an accessibility bug in `Icon` where `aria-label` was used incorrectly ([#4414](https://github.com/Shopify/polaris-react/pull/4414))
 - Fixed a bug in `Option` where the label would cause scrollbars to appear instead of wrapping ([#4411](https://github.com/Shopify/polaris-react/pull/4411))
-- Fixed a bug in `MappedOption` where the label will generate a scrollbar when the content is too long ([#4416](https://github.com/Shopify/polaris-react/pull/4416))
 
 ### Documentation
 
