@@ -375,7 +375,7 @@ describe('<Filters />', () => {
         <Filters {...mockProps} filters={[]} />,
       );
       expect(resourceFilters).not.toContainReactComponent(Button, {
-        testID: 'SheetToggleButton',
+        children: 'More filters',
       } as ButtonProps);
     });
   });
