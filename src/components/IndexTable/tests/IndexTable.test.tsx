@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Sticky} from 'components/Sticky';
 import {EventListener} from 'components/EventListener';
@@ -83,13 +81,13 @@ describe('<IndexTable>', () => {
   });
 
   it('renders a row for each item using renderItem', () => {
-    const index = mountWithAppProvider(
+    const index = mountWithApp(
       <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
         {mockTableItems.map(mockRenderRow)}
       </IndexTable>,
     );
 
-    expect(index.find(Component)).toHaveLength(2);
+    expect(index).toContainReactComponentTimes(Component, 2);
   });
 
   it('renders a spinner if loading is passed', () => {
