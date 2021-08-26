@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 import {Button} from 'components';
 
 import {Navigation} from '../Navigation';
@@ -13,13 +12,13 @@ describe('<Navigation />', () => {
       {leftEdge: 357, rightEdge: 474, isVisible: true},
     ];
 
-    const navigation = mountWithAppProvider(
+    const navigation = mountWithApp(
       <Navigation
         columnVisibilityData={columnVisibilityData}
         isScrolledFarthestLeft
         isScrolledFarthestRight={false}
       />,
     );
-    expect(navigation.find(Button)).toHaveLength(2);
+    expect(navigation).toContainReactComponentTimes(Button, 2);
   });
 });
