@@ -9,6 +9,11 @@ import {
   TextStyle,
   ButtonProps,
 } from 'components';
+import {
+  findByTestID,
+  mountWithAppProvider,
+  trigger,
+} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
@@ -16,8 +21,6 @@ import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import {Collapsible} from '../../Collapsible';
 import * as focusUtils from '../../../utilities/focus';
-import {classNames} from '../../../utilities/css';
-import styles from '../Filters.scss';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -342,49 +345,21 @@ describe('<Filters />', () => {
       });
     });
 
-    it.only('toggles a shortcut filter', () => {
-      const resourceFilters = mountWithApp(
+    it('toggles a shortcut filter', () => {
+      const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      let connected = resourceFilters.find(ConnectedFilterControl);
-      connected!.instance.setState({availableWidth: 999});
-      connected = resourceFilters.find(ConnectedFilterControl);
-      // console.log(
-      //   ':::: connected:',
-      //   connected?.domNodes[1].children[0].children,
-      // );
-      const shortcut = connected!
-        .find('div')!
-        .findWhere((node) => {
-          node!.domNodes.forEach((domNode) => {
-            console.log(':::: domNode.classList:', domNode.classList);
-            const contains = domNode.classList.contains(styles.ResourceItem);
-            if (contains) {
-              return true;
-            }
-          });
-        })!
-        .find(Button);
-      // const shortcut = connected!
-      //   .find('div', {className: 'RightContainer'})!
-      //   .find(Button);
+      const connected = resourceFilters.find(ConnectedFilterControl).first();
+      connected.setState({availableWidth: 999});
+      const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
+        .find(Button)
+        .first();
 
-      shortcut!.trigger('onClick');
-      expect(resourceFilters).toContainReactComponent(Popover, {active: true});
-      shortcut!.trigger('onClick');
-      expect(resourceFilters).toContainReactComponent(Popover, {active: false});
-
-      // const connected = resourceFilters.find(ConnectedFilterControl).first();
-      // connected.setState({availableWidth: 999});
-      // const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
-      //   .find(Button)
-      //   .first();
-
-      // trigger(shortcut, 'onClick');
-      // expect(resourceFilters.find(Popover).first().props().active).toBe(true);
-      // trigger(shortcut, 'onClick');
-      // expect(resourceFilters.find(Popover).first().props().active).toBe(false);
+      trigger(shortcut, 'onClick');
+      expect(resourceFilters.find(Popover).first().props().active).toBe(true);
+      trigger(shortcut, 'onClick');
+      expect(resourceFilters.find(Popover).first().props().active).toBe(false);
     });
 
     it('receives the expected props when there are no shortcut filters', () => {
