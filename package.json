@@ -186,7 +186,7 @@
     },
     {
       "name": "esm",
-      "path": "build/esm/index.js",
+      "path": "build/esm/index.mjs",
       "limit": "105 kB"
     },
     {
