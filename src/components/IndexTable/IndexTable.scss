@@ -20,6 +20,7 @@ $small-checkbox-offset: rem(2px);
 .IndexTable {
   position: relative;
   overflow: hidden;
+  border-radius: inherit;
 }
 
 .LoadingContainer-enter {
@@ -103,12 +104,25 @@ $loading-panel-height: rem(53px);
       filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
     }
   }
+
+  &.Table-unselectable {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    .TableHeading-second,
+    .TableCell:first-child {
+      visibility: visible;
+      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+    }
+  }
 }
 
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
   filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
+
+  &.TableRow-unclickable {
+    cursor: auto;
+  }
 
   &.statusSuccess {
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
@@ -182,16 +196,26 @@ $loading-panel-height: rem(53px);
   display: flex;
 }
 
-.StickyColumnHeaderCheckbox {
+.FirstStickyHeaderElement {
   margin-left: #{-1 * $small-checkbox-offset};
   padding-right: $small-checkbox-offset;
 }
 
 .TableHeading-second {
-  padding-left: 0;
+  &:not(.TableHeading-unselectable) {
+    padding-left: 0;
 
-  @include breakpoint-after($breakpoint-small) {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      z-index: auto;
+      left: 0;
+    }
+  }
+
+  &.TableHeading-unselectable {
     position: sticky;
+    z-index: auto;
+    left: 0;
   }
 }
 
@@ -221,6 +245,36 @@ $loading-panel-height: rem(53px);
     position: sticky;
     z-index: z-index(sticky-cell, $index-table-stacking-order);
     padding: 0;
+  }
+}
+
+.Table-unselectable {
+  .TableCell:first-child {
+    left: 0;
+    background-color: var(--p-surface);
+    position: sticky;
+    z-index: z-index(sticky-cell, $index-table-stacking-order);
+  }
+
+  .statusSuccess {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-primary-selected);
+    }
+  }
+
+  .statusSubdued {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-subdued);
+    }
+  }
+
+  .TableRow-hovered {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-hovered);
+    }
   }
 }
 
@@ -267,7 +321,7 @@ $loading-panel-height: rem(53px);
 
   .TableRow-hovered {
     .TableCell:last-child {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
@@ -276,7 +330,6 @@ $loading-panel-height: rem(53px);
       background-color: var(--p-surface-selected);
     }
   }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 }
 
 .StickyTable {
@@ -318,6 +371,10 @@ $loading-panel-height: rem(53px);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
+    display: none;
+  }
+
+  &.unselectable {
     display: none;
   }
 }
@@ -430,6 +487,7 @@ $scroll-bar-border-radius: rem(4px);
   display: flex;
   border-top: border('divider');
   filter: none;
+  align-items: center;
 }
 
 [data-selectmode='true'] {
@@ -453,6 +511,11 @@ $scroll-bar-border-radius: rem(4px);
   min-height: 5.6rem;
   padding: 1rem spacing();
   background-color: var(--p-surface);
+
+  &.unselectable {
+    min-height: auto;
+    padding: 0;
+  }
 }
 
 .StickyTable-condensed {

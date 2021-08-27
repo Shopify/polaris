@@ -2,7 +2,7 @@
   "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "../../build/custom-properties",
+    "outDir": "../../build-internal/custom-properties",
     "noEmitHelpers": false,
     "baseUrl": ".",
     "rootDir": ".",

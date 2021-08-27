@@ -98,12 +98,6 @@
       }
     },
     {
-      "files": ["esnext/index.js"],
-      "rules": {
-        "import/no-unresolved": "off"
-      }
-    },
-    {
       "files": ["playground/Playground.tsx"],
       "rules": {
         "react/prefer-stateless-function": "off",

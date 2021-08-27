@@ -13,9 +13,10 @@ export interface PortalsManagerProps {
 }
 
 export function PortalsManager({children, container}: PortalsManagerProps) {
-  const [portalContainerElement, setPortalContainerElement] = useState<
-    PortalsContainerElement
-  >(null);
+  const [
+    portalContainerElement,
+    setPortalContainerElement,
+  ] = useState<PortalsContainerElement>(null);
 
   const currentContainer = container ?? portalContainerElement;
   const contextValue = useMemo(() => ({container: currentContainer}), [

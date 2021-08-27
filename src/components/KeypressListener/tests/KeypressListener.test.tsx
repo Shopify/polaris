@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Key} from '../../../types';
 import {KeypressListener} from '../KeypressListener';
@@ -30,9 +29,7 @@ describe('<KeypressListener />', () => {
   it('attaches a listener for the given key on mount', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(
-      <KeypressListener handler={spy} keyCode={Key.Escape} />,
-    );
+    mountWithApp(<KeypressListener handler={spy} keyCode={Key.Escape} />);
 
     listenerMap.keyup({keyCode: Key.Escape});
     listenerMap.keyup({keyCode: Key.Enter});
@@ -42,7 +39,7 @@ describe('<KeypressListener />', () => {
   it('removes listener for the given key on unmount', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(
+    mountWithApp(
       <KeypressListener handler={spy} keyCode={Key.Escape} />,
     ).unmount();
 

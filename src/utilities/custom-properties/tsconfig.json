@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.json",
   "exclude": ["**/*.test.ts", "**/*.test.tsx"],
   "compilerOptions": {
-    "outDir": "../../../build",
+    "outDir": "../../../build-internal",
     "baseUrl": ".",
     "rootDir": "../",
     "module": "commonjs",

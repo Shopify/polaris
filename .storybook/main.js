@@ -30,7 +30,7 @@ module.exports = {
             options: {
               cacheDirectory: path.resolve(
                 __dirname,
-                '../build/cache/storybook/markdown',
+                '../build-internal/cache/storybook/markdown',
               ),
             },
           },
@@ -48,7 +48,6 @@ module.exports = {
           {
             loader: 'css-loader',
             query: {
-              sourceMap: false,
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
@@ -58,15 +57,13 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => postcssShopify(),
-              sourceMap: false,
+              postcssOptions: {
+                plugins: [postcssShopify()],
+              },
             },
           },
           {
             loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-            },
           },
         ],
       },
@@ -74,7 +71,7 @@ module.exports = {
 
     config.plugins.push(
       new CreateFileWebpack({
-        path: './build/storybook/static/services/',
+        path: './build-internal/storybook/static/services/',
         fileName: 'ping.html',
         content:
           '<!DOCTYPE html><html lang="en"><head></head><body>OK</body></html>',

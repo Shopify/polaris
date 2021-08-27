@@ -92,8 +92,8 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
-  /** Enable automatic completion by the browser */
-  autoComplete?: boolean | string;
+  /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
+  autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
   max?: number | string;
   /** Maximum character length for an input */
@@ -274,24 +274,22 @@ export function TextField({
   }
 
   const clearButtonVisible = normalizedValue !== '';
-  const clearButtonClassName = classNames(
-    styles.ClearButton,
-    !clearButtonVisible && styles['ClearButton-hidden'],
-  );
 
-  const clearButtonMarkup = clearButton ? (
-    <button
-      type="button"
-      testID="clearButton"
-      className={clearButtonClassName}
-      onClick={handleClearButtonPress}
-      disabled={disabled}
-      tabIndex={clearButtonVisible ? 0 : -1}
-    >
-      <VisuallyHidden>{i18n.translate('Polaris.Common.clear')}</VisuallyHidden>
-      <Icon source={CircleCancelMinor} color="base" />
-    </button>
-  ) : null;
+  const clearButtonMarkup =
+    clearButtonVisible && clearButton ? (
+      <button
+        type="button"
+        testID="clearButton"
+        className={styles.ClearButton}
+        onClick={handleClearButtonPress}
+        disabled={disabled}
+      >
+        <VisuallyHidden>
+          {i18n.translate('Polaris.Common.clear')}
+        </VisuallyHidden>
+        <Icon source={CircleCancelMinor} color="base" />
+      </button>
+    ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -417,7 +415,7 @@ export function TextField({
     onBlur,
     onKeyPress: handleKeyPress,
     style,
-    autoComplete: normalizeAutoComplete(autoComplete),
+    autoComplete,
     className: inputClassName,
     onChange: handleChange,
     ref: inputRef,
@@ -519,16 +517,6 @@ export function TextField({
       return;
     }
     inputRef.current && inputRef.current.focus();
-  }
-}
-
-function normalizeAutoComplete(autoComplete?: boolean | string) {
-  if (autoComplete === true) {
-    return 'on';
-  } else if (autoComplete === false) {
-    return 'off';
-  } else {
-    return autoComplete;
   }
 }
 

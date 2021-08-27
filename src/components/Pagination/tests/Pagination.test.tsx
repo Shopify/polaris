@@ -1,7 +1,6 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+import type {CustomRoot} from '@shopify/react-testing';
 import {Tooltip, TextField} from 'components';
 import {TextStyle} from 'components/TextStyle';
 
@@ -58,10 +57,10 @@ describe('<Pagination />', () => {
     });
 
     it('does not render a tooltip if nextTooltip is provided and hasNext is false', () => {
-      const pagination = mountWithAppProvider(
+      const pagination = mountWithApp(
         <Pagination nextTooltip="k" hasNext={false} />,
       );
-      expect(pagination.find(Tooltip)).toHaveLength(0);
+      expect(pagination).not.toContainReactComponent(Tooltip);
     });
 
     it('renders a tooltip if previousToolTip is provided and hasPrevious is true', () => {
@@ -74,34 +73,33 @@ describe('<Pagination />', () => {
     });
 
     it('does not render  tooltip if previousToolTip is provided and hasPrevious is false', () => {
-      const pagination = mountWithAppProvider(
+      const pagination = mountWithApp(
         <Pagination previousTooltip="j" hasPrevious={false} />,
       );
-      expect(pagination.find(Tooltip)).toHaveLength(0);
+      expect(pagination).not.toContainReactComponent(Tooltip);
     });
 
     it('renders a tooltip for nextToolTip and previousToolTip when they are provided and hasPrevious and hasNext are true', () => {
-      const pagination = mountWithAppProvider(
+      const pagination = mountWithApp(
         <Pagination previousTooltip="j" nextTooltip="k" hasPrevious hasNext />,
       );
 
-      expect(pagination.find(Tooltip)).toHaveLength(2);
+      expect(pagination).toContainReactComponentTimes(Tooltip, 2);
     });
   });
 
   describe('accessibilityLabel', () => {
     it('inserts prop as aria-label', () => {
-      const pagination = mountWithAppProvider(
-        <Pagination accessibilityLabel="test" />,
-      );
-      expect(pagination.find('nav').prop('aria-label')).toStrictEqual('test');
+      const pagination = mountWithApp(<Pagination accessibilityLabel="test" />);
+      expect(pagination).toContainReactComponent('nav', {'aria-label': 'test'});
     });
 
     it('uses default value for aria-label', () => {
-      const pagination = mountWithAppProvider(<Pagination />);
-      expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
-        'Pagination',
-      );
+      const pagination = mountWithApp(<Pagination />);
+
+      expect(pagination).toContainReactComponent('nav', {
+        'aria-label': 'Pagination',
+      });
     });
   });
 
@@ -144,21 +142,22 @@ describe('<Pagination />', () => {
 
   describe('label', () => {
     it('renders as text', () => {
-      const pagination = mountWithAppProvider(<Pagination label="test" />);
+      const pagination = mountWithApp(<Pagination label="test" />);
       expect(pagination.text()).toContain('test');
     });
 
     it('has subdued text without next and previous pages', () => {
-      const pagination = mountWithAppProvider(<Pagination label="test" />);
-      expect(pagination.find(TextStyle).prop('variation')).toStrictEqual(
-        'subdued',
-      );
+      const pagination = mountWithApp(<Pagination label="test" />);
+
+      expect(pagination).toContainReactComponent(TextStyle, {
+        variation: 'subdued',
+      });
     });
   });
 
   it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
-    mountWithAppProvider(
+    mountWithApp(
       <Pagination hasNext nextKeys={[Key.KeyK]} onNext={spy} nextTooltip="k" />,
     );
 
@@ -169,7 +168,7 @@ describe('<Pagination />', () => {
 
   it('adds a keypress event for previousKeys', () => {
     const spy = jest.fn();
-    mountWithAppProvider(
+    mountWithApp(
       <Pagination
         hasPrevious
         previousKeys={[Key.KeyJ]}
@@ -186,9 +185,9 @@ describe('<Pagination />', () => {
   describe('input elements', () => {
     it('will not call paginations callback on keypress if a input element is focused', () => {
       const spy = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <div>
-          <TextField label="test" value="" onChange={noop} />
+          <TextField label="test" value="" onChange={noop} autoComplete="off" />
           <Pagination
             nextTooltip="j"
             previousKeys={[Key.KeyJ]}
@@ -205,12 +204,12 @@ describe('<Pagination />', () => {
 
   describe('nextURL/previousURL', () => {
     let getElementById: jest.SpyInstance;
-    let pagination: ReactWrapper;
+    let pagination: CustomRoot<any, any>;
 
     beforeEach(() => {
       getElementById = jest.spyOn(document, 'getElementById');
       getElementById.mockImplementation((id) => {
-        return pagination.find(`#${id}`).at(0).getDOMNode();
+        return pagination.findAll(`#${id}`)[0].domNode;
       });
     });
 
@@ -220,7 +219,7 @@ describe('<Pagination />', () => {
 
     it('navigates the browser to the anchors target when the designated key is pressed', () => {
       const spy = jest.fn();
-      pagination = mountWithAppProvider(
+      pagination = mountWithApp(
         <Pagination
           hasPrevious
           previousKeys={[Key.KeyJ]}
@@ -228,7 +227,7 @@ describe('<Pagination />', () => {
           previousURL="https://www.google.com"
         />,
       );
-      const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
+      const anchor = pagination.find('a')!.domNode as HTMLAnchorElement;
       anchor.click = spy;
       listenerMap.keyup({keyCode: Key.KeyJ});
 
@@ -237,7 +236,7 @@ describe('<Pagination />', () => {
 
     it('does not navigate the browser when hasNext or hasPrevious is false', () => {
       const anchorClickSpy = jest.fn();
-      pagination = mountWithAppProvider(
+      pagination = mountWithApp(
         <Pagination
           hasPrevious={false}
           previousKeys={[Key.KeyJ]}
@@ -246,7 +245,7 @@ describe('<Pagination />', () => {
         />,
       );
 
-      const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
+      const anchor = pagination.find('a')!.domNode as HTMLAnchorElement;
       anchor.click = anchorClickSpy;
       listenerMap.keyup({keyCode: Key.KeyJ});
 
@@ -280,13 +279,10 @@ describe('<Pagination />', () => {
 function noop() {}
 
 function focusElement(
-  wrapper: ReactWrapper,
+  wrapper: CustomRoot<any, any>,
   element: 'input' | 'textarea' | 'select',
 ) {
-  const inputElement = wrapper
-    .find(element)
-    .at(0)
-    .getDOMNode() as HTMLInputElement;
+  const inputElement = wrapper.findAll(element)[0].domNode as HTMLInputElement;
 
   inputElement.focus();
 }

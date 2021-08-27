@@ -8,9 +8,7 @@ export interface MessageIndicatorProps {
 }
 
 export function MessageIndicator({children, active}: MessageIndicatorProps) {
-  const indicatorMarkup = active && (
-    <div testID="indicator" className={styles.MessageIndicator} />
-  );
+  const indicatorMarkup = active && <div className={styles.MessageIndicator} />;
 
   return (
     <div className={styles.MessageIndicatorWrapper}>

@@ -158,6 +158,14 @@ export class PositionedOverlay extends PureComponent<
     );
   }
 
+  forceUpdatePosition() {
+    // Wait a single animation frame before re-measuring.
+    // Consumer's may also need to setup their own timers for
+    // triggering forceUpdatePosition() `children` use animation.
+    // Ideally, forceUpdatePosition() is fired at the end of a transition event.
+    requestAnimationFrame(this.handleMeasurement);
+  }
+
   private overlayDetails = (): OverlayDetails => {
     const {
       measuring,

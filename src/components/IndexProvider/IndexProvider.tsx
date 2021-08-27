@@ -14,10 +14,11 @@ export function IndexProvider({
   resourceName: passedResourceName,
   loading,
   onSelectionChange,
-  selectedItemsCount,
+  selectedItemsCount = 0,
   itemCount,
   hasMoreItems,
   condensed,
+  selectable: isSelectableIndex = true,
 }: IndexProviderProps) {
   const {
     paginatedSelectAllText,
@@ -26,7 +27,6 @@ export function IndexProvider({
     resourceName,
     selectMode,
     bulkSelectState,
-    selectable,
   } = useBulkSelectionData({
     selectedItemsCount,
     itemCount,
@@ -38,8 +38,8 @@ export function IndexProvider({
   const contextValue = useMemo(
     () => ({
       itemCount,
-      selectMode,
-      selectable,
+      selectMode: selectMode && isSelectableIndex,
+      selectable: isSelectableIndex,
       resourceName,
       loading,
       paginatedSelectAllText,
@@ -53,7 +53,7 @@ export function IndexProvider({
     [
       itemCount,
       selectMode,
-      selectable,
+      isSelectableIndex,
       resourceName,
       loading,
       paginatedSelectAllText,
@@ -68,10 +68,11 @@ export function IndexProvider({
 
   const rowContextValue = useMemo(
     () => ({
-      selectMode,
+      selectable: isSelectableIndex,
+      selectMode: selectMode && isSelectableIndex,
       condensed,
     }),
-    [condensed, selectMode],
+    [condensed, selectMode, isSelectableIndex],
   );
 
   return (
