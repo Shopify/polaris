@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 import {TextContainer} from 'components';
 
 import {Section} from '../Section';
