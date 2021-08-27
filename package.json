@@ -33,7 +33,7 @@
     "component library"
   ],
   "main": "build/cjs/index.js",
-  "module": "build/esm/index.mjs",
+  "module": "build/esm/index.js",
   "esnext": "build/esnext/index.esnext",
   "types": "build/ts/latest/src/index.d.ts",
   "typesVersions": {
@@ -185,7 +185,7 @@
     },
     {
       "name": "esm",
-      "path": "build/esm/index.mjs",
+      "path": "build/esm/index.js",
       "limit": "105 kB"
     },
     {

@@ -46,7 +46,8 @@ function libraryPackagePlugin() {
       esmodules: true,
       esnext: true,
     }),
-    rollupAdjustmentsPlugin(),
+    rollupAdjustPluginsPlugin(),
+    rollupAdjustOutputPlugin(),
     jestAdjustmentsPlugin(),
   ]);
 }
@@ -152,7 +153,7 @@ function preAndPostBuildPlugin() {
   });
 }
 
-function rollupAdjustmentsPlugin() {
+function rollupAdjustPluginsPlugin() {
   return rollupPlugins((target) => {
     const stylesConfig = target.options.rollupEsnext
       ? {
@@ -179,5 +180,46 @@ function rollupAdjustmentsPlugin() {
       image(),
       styles(stylesConfig),
     ];
+  });
+}
+
+/**
+ * Output .js files for the esm build instead of .mjs files
+ *
+ * By default webpack 4 handles imports within js and mjs files differently.
+ * mjs files are subject to a stricter set of rules when importing from commonjs
+ * files such as react.
+ * Some apps (including sewing-kit based apps) work around this by adding
+ * `config.module.rules.push({test: /\.mjs$/, type: 'javascript/auto'});`
+ * to their webpack config, which tells webpack to treat .mjs files the same
+ * as .js files. However we should not rely on this behaviour being present.
+ *
+ * Thus publish our esm files with a .js file extension.
+ */
+function rollupAdjustOutputPlugin() {
+  return createProjectPlugin('PolarisJest', ({tasks: {build}}) => {
+    build.hook(({hooks}) => {
+      hooks.target.hook(({hooks, target}) => {
+        const isDefaultBuild = Object.keys(target.options).length === 0;
+        if (!isDefaultBuild) {
+          return;
+        }
+
+        hooks.configure.hook(async (configuration) => {
+          configuration.rollupOutputs?.hook((outputs) => {
+            for (const output of outputs) {
+              if (typeof output.entryFileNames === 'string') {
+                output.entryFileNames = output.entryFileNames.replace(
+                  /\.mjs$/,
+                  '.js',
+                );
+              }
+            }
+
+            return outputs;
+          });
+        });
+      });
+    });
   });
 }

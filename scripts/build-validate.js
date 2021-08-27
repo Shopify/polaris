@@ -17,7 +17,7 @@ validateVersionReplacement();
 function validateStandardBuild() {
   // Standard build
   assert.ok(fs.existsSync('./build/cjs/index.js'));
-  assert.ok(fs.existsSync('./build/esm/index.mjs'));
+  assert.ok(fs.existsSync('./build/esm/index.js'));
   assert.ok(fs.existsSync('./build/esm/styles.css'));
 
   // Assert it uses named exports rather than properties from the React default
@@ -117,7 +117,7 @@ function validateVersionReplacement() {
 
   assert.deepStrictEqual(fileBuckets.includesVersion, [
     './build/cjs/configure.js',
-    './build/esm/configure.mjs',
+    './build/esm/configure.js',
     './build/esm/styles.css',
     './build/esnext/components/AppProvider/AppProvider.css',
     './build/esnext/configure.esnext',
