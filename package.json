@@ -181,7 +181,7 @@
     {
       "name": "cjs",
       "path": "build/cjs/index.js",
-      "limit": "165 kB"
+      "limit": "180 kB"
     },
     {
       "name": "esm",
