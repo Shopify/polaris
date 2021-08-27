@@ -33,8 +33,8 @@
     "component library"
   ],
   "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "esnext": "build/esnext/index.ts.esnext",
+  "module": "build/esm/index.mjs",
+  "esnext": "build/esnext/index.esnext",
   "types": "build/ts/latest/src/index.d.ts",
   "typesVersions": {
     "<4.0": {
