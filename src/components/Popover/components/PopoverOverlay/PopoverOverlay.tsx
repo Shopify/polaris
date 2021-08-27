@@ -69,6 +69,16 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private exitingTimer?: number;
+  private overlayRef: React.RefObject<PositionedOverlay>;
+
+  constructor(props: PopoverOverlayProps) {
+    super(props);
+    this.overlayRef = createRef();
+  }
+
+  forceUpdatePosition() {
+    this.overlayRef.current?.forceUpdatePosition();
+  }
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
     this.setState({transitionStatus}, cb);
@@ -136,6 +146,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
     return (
       <PositionedOverlay
+        ref={this.overlayRef}
         testID="positionedOverlay"
         fullWidth={fullWidth}
         active={active}

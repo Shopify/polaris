@@ -46,7 +46,7 @@ export const Option = memo(function Option({
     (evt: React.MouseEvent) => {
       evt.preventDefault();
       onAction && onAction();
-      if (onOptionSelect && listItemRef.current && !isAction) {
+      if (listItemRef.current && !isAction) {
         onOptionSelect({
           domId,
           value,

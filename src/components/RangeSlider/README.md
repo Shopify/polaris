@@ -266,9 +266,8 @@ function DualThumbRangeSliderExample() {
   const max = 2000;
   const step = 10;
 
-  const [intermediateTextFieldValue, setIntermediateTextFieldValue] = useState(
-    initialValue,
-  );
+  const [intermediateTextFieldValue, setIntermediateTextFieldValue] =
+    useState(initialValue);
   const [rangeValue, setRangeValue] = useState(initialValue);
 
   const handleRangeSliderChange = useCallback((value) => {

@@ -1,28 +1,27 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Sticky} from '../Sticky';
 
 describe('<Sticky />', () => {
   it('renders children component', () => {
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Sticky>
         <FunctionalComponent />
       </Sticky>,
     );
-    expect(element.find('h1').exists()).toBe(true);
+    expect(element).toContainReactComponent('h1');
   });
 
   it('renders a function as child component with a boolean argument set to false by default', () => {
-    const element = mountWithAppProvider(<Sticky>{functionItem}</Sticky>);
-    expect(element.find('h1').exists()).toBe(true);
-    expect(element.find('h2').exists()).toBe(false);
+    const element = mountWithApp(<Sticky>{functionItem}</Sticky>);
+    expect(element).toContainReactComponent('h1');
+    expect(element).not.toContainReactComponent('h2');
   });
 
   describe('lifecycle', () => {
     it('unmounts safely', () => {
-      const sticky = mountWithAppProvider(
+      const sticky = mountWithApp(
         <Sticky>
           <p>Child content</p>
         </Sticky>,

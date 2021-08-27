@@ -47,6 +47,6 @@ export const ComboboxTextFieldContext = createContext<
 
 export const ComboboxListboxContext = createContext<ComboboxListboxType>({});
 
-export const ComboboxListboxOptionContext = createContext<
-  ComboboxListboxOptionType
->({});
+export const ComboboxListboxOptionContext = createContext<ComboboxListboxOptionType>(
+  {},
+);

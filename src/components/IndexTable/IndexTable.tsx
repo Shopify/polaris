@@ -46,6 +46,7 @@ export interface IndexTableBaseProps {
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
   lastColumnSticky?: boolean;
+  selectable?: boolean;
 }
 
 export interface TableHeadingRect {
@@ -72,6 +73,7 @@ function IndexTableBase({
     bulkSelectState,
     resourceName,
     bulkActionsAccessibilityLabel,
+    selectable,
     selectMode,
     paginatedSelectAllText,
     itemCount,
@@ -101,7 +103,7 @@ function IndexTableBase({
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
   const stickyHeaderWrapperElement = useRef<HTMLDivElement>(null);
-  const stickyHeaderCheckboxElement = useRef<HTMLDivElement>(null);
+  const firstStickyHeaderElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
@@ -130,11 +132,15 @@ function IndexTableBase({
   }, [handleSelectionChange, selectedItemsCount]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
+    if (!selectable) {
+      return tableHeadingRects.current[0].offsetWidth;
+    }
+
     return condensed
       ? tableHeadingRects.current[0].offsetWidth
       : tableHeadingRects.current[0].offsetWidth +
           tableHeadingRects.current[1].offsetWidth;
-  }, [condensed]);
+  }, [condensed, selectable]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -160,23 +166,28 @@ function IndexTableBase({
           }
 
           // update left offset for first column
-          if (tableHeadings.current.length > 1)
+          if (selectable && tableHeadings.current.length > 1)
             tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
           // update the min width of the checkbox to be the be the un-padded width of the first heading
-          if (stickyHeaderCheckboxElement?.current) {
+          if (selectable && firstStickyHeaderElement?.current) {
             const elementStyle = getComputedStyle(tableHeadings.current[0]);
             const boxWidth = tableHeadings.current[0].offsetWidth;
-            stickyHeaderCheckboxElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
+            firstStickyHeaderElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
           }
 
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0 && !isSmallScreen()) {
+            if (index === 0 && (!isSmallScreen() || !selectable)) {
               minWidth = calculateFirstHeaderOffset();
-            } else if (tableHeadingRects.current.length > index) {
-              minWidth = tableHeadingRects.current[index].offsetWidth;
+            } else if (selectable && tableHeadingRects.current.length > index) {
+              minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
+            } else if (
+              !selectable &&
+              tableHeadingRects.current.length >= index
+            ) {
+              minWidth = tableHeadingRects.current[index - 1]?.offsetWidth || 0;
             }
 
             heading.style.minWidth = `${minWidth}px`;
@@ -185,7 +196,7 @@ function IndexTableBase({
         SIXTY_FPS,
         {leading: true, trailing: true, maxWait: SIXTY_FPS},
       ),
-    [calculateFirstHeaderOffset],
+    [calculateFirstHeaderOffset, selectable],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -294,7 +305,7 @@ function IndexTableBase({
   }, [
     headings,
     resizeTableHeadings,
-    stickyHeaderCheckboxElement,
+    firstStickyHeaderElement,
     tableInitialized,
   ]);
 
@@ -311,7 +322,7 @@ function IndexTableBase({
     }
   }, [condensed, isSmallScreenSelectable]);
 
-  const selectable = Boolean(
+  const hasBulkActions = Boolean(
     (promotedBulkActions && promotedBulkActions.length > 0) ||
       (bulkActions && bulkActions.length > 0),
   );
@@ -339,15 +350,29 @@ function IndexTableBase({
       data-index-table-sticky-heading
     >
       <Stack spacing="none" wrap={false} alignment="center">
-        <div
-          className={styles.StickyColumnHeaderCheckbox}
-          ref={stickyHeaderCheckboxElement}
-        >
-          {renderCheckboxContent()}
-        </div>
-        <div className={styles['StickyTableHeading-second-scrolling']}>
-          {renderHeadingContent(headings[0])}
-        </div>
+        {selectable && (
+          <div
+            className={styles.FirstStickyHeaderElement}
+            ref={firstStickyHeaderElement}
+          >
+            {renderCheckboxContent()}
+          </div>
+        )}
+
+        {selectable && (
+          <div className={styles['StickyTableHeading-second-scrolling']}>
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
+
+        {!selectable && (
+          <div
+            className={styles.FirstStickyHeaderElement}
+            ref={firstStickyHeaderElement}
+          >
+            {renderHeadingContent(headings[0])}
+          </div>
+        )}
       </Stack>
     </div>
   );
@@ -453,16 +478,25 @@ function IndexTableBase({
             hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
           );
 
+          const selectButtonMarkup = (
+            <Button
+              icon={EnableSelectionMinor}
+              onClick={toggleIsSmallScreenSelectable}
+            >
+              {i18n.translate('Polaris.IndexTable.selectButtonText')}
+            </Button>
+          );
+
           const headerMarkup = condensed ? (
-            <div className={styles.HeaderWrapper}>
+            <div
+              className={classNames(
+                styles.HeaderWrapper,
+                !selectable && styles.unselectable,
+              )}
+            >
               {loadingMarkup}
               {sort}
-              <Button
-                icon={EnableSelectionMinor}
-                onClick={toggleIsSmallScreenSelectable}
-              >
-                {i18n.translate('Polaris.IndexTable.selectButtonText')}
-              </Button>
+              {selectable && selectButtonMarkup}
             </div>
           ) : (
             <div
@@ -521,6 +555,7 @@ function IndexTableBase({
     hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
+    !selectable && styles['Table-unselectable'],
     lastColumnSticky && styles['Table-sticky-last'],
     lastColumnSticky && canScrollRight && styles['Table-sticky-scrolling'],
   );
@@ -543,6 +578,7 @@ function IndexTableBase({
       <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
     </>
   );
+
   const bodyMarkup = condensed ? (
     <>
       {sharedMarkup}
@@ -594,9 +630,11 @@ function IndexTableBase({
       styles.TableHeading,
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
+      !selectable && styles['TableHeading-unselectable'],
     );
 
     const stickyPositioningStyle =
+      selectable !== false &&
       isSecond &&
       tableHeadingRects.current &&
       tableHeadingRects.current.length > 0
@@ -614,7 +652,9 @@ function IndexTableBase({
       </th>
     );
 
-    if (index !== 0) return headingContent;
+    if (index !== 0 || !selectable) {
+      return headingContent;
+    }
 
     const checkboxClassName = classNames(
       styles.TableHeading,
@@ -684,6 +724,7 @@ function IndexTableBase({
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['StickyTableHeading-second'],
+      index === 0 && !selectable && styles.unselectable,
     );
 
     return (
@@ -699,7 +740,7 @@ function IndexTableBase({
   }
 
   function getPaginatedSelectAllAction() {
-    if (!selectable || !hasMoreItems) {
+    if (!selectable || !hasBulkActions || !hasMoreItems) {
       return;
     }
 
@@ -735,9 +776,9 @@ export interface IndexTableProps
 
 export function IndexTable({
   children,
-  selectable,
+  selectable = true,
   itemCount,
-  selectedItemsCount,
+  selectedItemsCount = 0,
   resourceName: passedResourceName,
   loading,
   hasMoreItems,

@@ -150,11 +150,7 @@ class FiltersInner extends Component<CombinedProps, State> {
     const backdropMarkup = open ? (
       <>
         <ScrollLock />
-        <div
-          className={styles.Backdrop}
-          onClick={this.closeFilters}
-          testID="Backdrop"
-        />
+        <div className={styles.Backdrop} onClick={this.closeFilters} />
       </>
     ) : null;
 
@@ -233,11 +229,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const rightActionMarkup = filters.length ? (
       <div ref={this.moreFiltersButtonContainer}>
-        <Button
-          onClick={this.toggleFilters}
-          testID="SheetToggleButton"
-          disabled={disabled}
-        >
+        <Button onClick={this.toggleFilters} disabled={disabled}>
           {moreFiltersLabel}
         </Button>
       </div>

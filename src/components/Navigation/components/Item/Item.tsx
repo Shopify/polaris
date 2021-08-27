@@ -36,7 +36,7 @@ export interface SubNavigationItem extends ItemURLDetails {
   label: string;
   disabled?: boolean;
   new?: boolean;
-  onClick?(event: MouseEvent<HTMLElement>): void;
+  onClick?(): void;
 }
 
 interface SecondaryAction {
@@ -182,6 +182,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
@@ -267,13 +268,23 @@ export function Item({
         <Secondary expanded={showExpanded} id={secondaryNavigationId}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;
+            const onClick = () => {
+              if (onNavigationDismiss) {
+                onNavigationDismiss();
+              }
+
+              if (item.onClick && item.onClick !== onNavigationDismiss) {
+                item.onClick();
+              }
+            };
+
             return (
               <Item
                 {...rest}
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={onNavigationDismiss}
+                onClick={onClick}
               />
             );
           })}

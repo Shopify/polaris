@@ -1,32 +1,32 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {MessageIndicator} from '../MessageIndicator';
 
 describe('<Indicator />', () => {
   it('mounts', () => {
-    const indicator = mountWithAppProvider(<MessageIndicator />);
-    expect(indicator.exists()).toBe(true);
+    const indicator = mountWithApp(<MessageIndicator />);
+    expect(indicator).not.toBeNull();
   });
 
   it('renders its children', () => {
-    const indicator = mountWithAppProvider(
+    const indicator = mountWithApp(
       <MessageIndicator>
         <div>Hello Polaris</div>
       </MessageIndicator>,
     );
 
-    expect(indicator.text()).toContain('Hello Polaris');
+    expect(indicator).toContainReactText('Hello Polaris');
   });
 
   it('renders indicator markup when active is true', () => {
-    const indicator = mountWithAppProvider(
+    const indicator = mountWithApp(
       <MessageIndicator active>
         <div>Hello Polaris</div>
       </MessageIndicator>,
     );
-
-    expect(findByTestID(indicator, 'indicator').exists()).toBe(true);
+    expect(indicator).toContainReactComponent('div', {
+      className: 'MessageIndicator',
+    });
   });
 });

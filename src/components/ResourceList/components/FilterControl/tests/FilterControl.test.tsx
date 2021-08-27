@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {TextField, Tag, Button} from 'components';
 
 import {ResourceListContext} from '../../../../../utilities/resource-list';
@@ -69,32 +68,32 @@ describe('<FilterControl />', () => {
 
   describe('searchValue', () => {
     it('renders with TextField by default', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
         </ResourceListContext.Provider>,
       );
 
-      const searchField = filterControl.find(TextField);
-      expect(searchField.exists()).toBe(true);
+      expect(filterControl).toContainReactComponent(TextField);
     });
 
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} searchValue={searchValue} />
         </ResourceListContext.Provider>,
       );
 
-      const searchField = filterControl.find(TextField);
-      expect(searchField.prop('value')).toBe(searchValue);
+      expect(filterControl).toContainReactComponent(TextField, {
+        value: searchValue,
+      });
     });
   });
 
   describe('appliedFilters', () => {
     it('renders the same number of Tag as appliedFilters', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -103,13 +102,13 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const tags = filterControl.find(Tag);
+      const tags = filterControl.findAll(Tag);
       expect(tags).toHaveLength(mockAppliedFilters.length);
     });
 
     it('calls onFiltersChange without the applied filter when user clicks remove on the appliedFilter', () => {
       const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -119,8 +118,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const tags = filterControl.find(Tag);
-      trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
+      const tag = filterControl.findAll(Tag)[0];
+      tag.trigger('onRemove');
 
       expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
@@ -145,7 +144,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterLabel,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -155,8 +154,9 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).first();
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} ${appliedFilterLabel}`,
       );
     });
@@ -174,7 +174,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -184,8 +184,9 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} ${filterValue}`,
       );
     });
@@ -208,7 +209,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -218,8 +219,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} ${filterValue}`,
       );
     });
@@ -237,7 +238,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -247,8 +248,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
       );
     });
@@ -265,7 +266,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -275,8 +276,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
       );
     });
@@ -296,7 +297,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -306,8 +307,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(
         `${filter.label} ${filter.operatorText} in the last week`,
       );
     });
@@ -327,7 +328,7 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
 
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -337,8 +338,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} after 9/16/2018`);
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(`${filter.label} after 9/16/2018`);
     });
 
     it('renders the provided localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
@@ -355,7 +356,7 @@ describe('<FilterControl />', () => {
         key: filter.maxKey,
         value: selectedDate,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -365,8 +366,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} before 9/16/2018`);
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(`${filter.label} before 9/16/2018`);
     });
 
     it('renders applied filter value when filter is a FilterDateSelector with invalid date predicate', () => {
@@ -383,7 +384,7 @@ describe('<FilterControl />', () => {
         key: filter.maxKey,
         value: selectedDate,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -393,8 +394,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} before INVALID`);
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(`${filter.label} before INVALID`);
     });
 
     it('renders the provided applied filter string when filter uses operators with filter label', () => {
@@ -423,7 +424,7 @@ describe('<FilterControl />', () => {
         key: appliedFilterKey,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -433,9 +434,9 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = filterControl.findAll(Tag)[0];
 
-      expect(firstTag.text()).toBe(
+      expect(firstTag).toContainReactText(
         `${filter.label} ${appliedFilterLabel} ${appliedFilterValue}`,
       );
     });
@@ -464,7 +465,7 @@ describe('<FilterControl />', () => {
         key: appliedFilterKey,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -474,9 +475,9 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = filterControl.findAll(Tag)[0];
 
-      expect(firstTag.text()).toBe(
+      expect(firstTag).toContainReactText(
         `${filter.label} ${appliedOperatorOptionLabel} ${appliedFilterValue}`,
       );
     });
@@ -487,7 +488,7 @@ describe('<FilterControl />', () => {
         key: 'filter key',
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -497,8 +498,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(appliedFilterValue);
+      const firstTag = filterControl.findAll(Tag)[0];
+      expect(firstTag).toContainReactText(appliedFilterValue);
     });
 
     it('renders a ul element containing an li element', () => {
@@ -507,7 +508,7 @@ describe('<FilterControl />', () => {
         key: 'filter key',
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -516,21 +517,22 @@ describe('<FilterControl />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(filterControl.find('ul')).toHaveLength(1);
-      expect(filterControl.find('li')).toHaveLength(1);
+      expect(filterControl.findAll('ul')).toHaveLength(1);
+      expect(filterControl.findAll('li')).toHaveLength(1);
     });
   });
 
   describe('additionalAction', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
         </ResourceListContext.Provider>,
       );
 
-      const searchField = filterControl.find(TextField);
-      expect(searchField.prop('connectedRight')).toBeNull();
+      expect(filterControl).toContainReactComponent(TextField, {
+        connectedRight: null,
+      });
     });
 
     it('renders Button if there is additionalAction', () => {
@@ -538,82 +540,83 @@ describe('<FilterControl />', () => {
         content: 'button label',
         onAction: jest.fn(),
       };
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} additionalAction={action} />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(Button).exists()).toBe(true);
+      expect(filterControl).toContainReactComponent(Button);
 
-      trigger(filterControl.find(Button), 'onClick');
+      filterControl.find(Button)!.trigger('onClick');
       expect(action.onAction).toHaveBeenCalled();
     });
   });
 
   describe('focused', () => {
     it('passes its value to focus of TextField', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} focused />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(TextField).prop('focused')).toBe(true);
+      expect(filterControl).toContainReactComponent(TextField, {focused: true});
     });
   });
 
   describe('filters', () => {
     it('renders no <FilterCreator /> if there are no filters', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
         </ResourceListContext.Provider>,
       );
 
-      const searchField = filterControl.find(TextField);
-      expect(searchField.prop('connectedLeft')).toBeNull();
+      expect(filterControl).toContainReactComponent(TextField, {
+        connectedLeft: null,
+      });
     });
 
     it('renders <FilterCreator /> if there is filters', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(FilterCreator).exists()).toBe(true);
+      expect(filterControl).toContainReactComponent(FilterCreator);
     });
 
     it('renders <FilterCreator /> with filters', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(FilterCreator).prop('filters')).toMatchObject(
-        mockFilters,
-      );
+      expect(filterControl).toContainReactComponent(FilterCreator, {
+        filters: mockFilters,
+      });
     });
   });
 
   describe('placeholder', () => {
     it('renders default text if no placeholder passed.', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(TextField).prop('placeholder')).toBe(
-        'Search items',
-      );
+      expect(filterControl).toContainReactComponent(TextField, {
+        placeholder: 'Search items',
+      });
     });
 
     it('renders the placeholder prop value if provided', () => {
       const placeholder = 'Search by name, email or phone';
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -623,33 +626,35 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(TextField).prop('placeholder')).toBe(
-        'Search by name, email or phone',
-      );
+      expect(filterControl).toContainReactComponent(TextField, {
+        placeholder: 'Search by name, email or phone',
+      });
     });
   });
 
   describe('onSearchBlur()', () => {
     it('gets passed to onBlur of TextField', () => {
       const onSearchBlur = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(TextField).prop('onBlur')).toBe(onSearchBlur);
+      expect(filterControl).toContainReactComponent(TextField, {
+        onBlur: onSearchBlur,
+      });
     });
 
     it('calls onSearchBlur when onBlur is triggered', () => {
       const onSearchBlur = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
         </ResourceListContext.Provider>,
       );
 
-      trigger(filterControl.find(TextField), 'onBlur');
+      filterControl.find(TextField)!.trigger('onBlur');
 
       expect(onSearchBlur).toHaveBeenCalledTimes(1);
     });
@@ -658,7 +663,7 @@ describe('<FilterControl />', () => {
   describe('onSearchChange()', () => {
     it('gets passed to onChange of TextField', () => {
       const onSearchChange = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -667,15 +672,15 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(filterControl.find(TextField).prop('onChange')).toBe(
-        onSearchChange,
-      );
+      expect(filterControl).toContainReactComponent(TextField, {
+        onChange: onSearchChange,
+      });
     });
 
     it('calls onSearchChange with the new searchValue when onChange is triggered', () => {
       const newSearchValue = 'new search value';
       const onSearchChange = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -684,7 +689,7 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      trigger(filterControl.find(TextField), 'onChange', newSearchValue);
+      filterControl.find(TextField)!.trigger('onChange', newSearchValue);
 
       expect(onSearchChange).toHaveBeenCalledWith(newSearchValue);
     });
@@ -698,7 +703,7 @@ describe('<FilterControl />', () => {
       };
 
       const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -709,7 +714,7 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
+      filterControl.find(FilterCreator)!.trigger('onAddFilter', newFilter);
 
       expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters,
@@ -720,7 +725,7 @@ describe('<FilterControl />', () => {
     it('does not get called if the new filter already exists when FilterCreator.onAddFilter is triggered', () => {
       const newFilter = mockAppliedFilters[0];
       const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
@@ -731,7 +736,7 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
+      filterControl.find(FilterCreator)!.trigger('onAddFilter', newFilter);
 
       expect(onFiltersChange).not.toHaveBeenCalled();
     });
@@ -739,12 +744,13 @@ describe('<FilterControl />', () => {
 
   describe('resource name', () => {
     it('will default to the provided translation', () => {
-      const filterControl = mountWithAppProvider(
+      const filterControl = mountWithApp(
         <FilterControl {...mockDefaultProps} />,
       );
-      expect(filterControl.find('TextField').prop('label')).toBe(
-        'Search items',
-      );
+
+      expect(filterControl).toContainReactComponent(TextField, {
+        label: 'Search items',
+      });
     });
   });
 });
