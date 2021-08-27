@@ -9,8 +9,7 @@ import {
 } from '@sewing-kit/core';
 import {babel} from '@sewing-kit/plugin-babel';
 import {workspaceTypeScript} from '@sewing-kit/plugin-typescript';
-import {packageBuild} from '@sewing-kit/plugin-package-build';
-import {rollupPlugins} from '@sewing-kit/plugin-rollup';
+import {packageBuild, rollupPlugins} from '@sewing-kit/plugin-package-build';
 import {eslint} from '@sewing-kit/plugin-eslint';
 import {stylelint} from '@sewing-kit/plugin-stylelint';
 import {prettier} from '@sewing-kit/plugin-prettier';
