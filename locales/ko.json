@@ -5,7 +5,8 @@
       "labelWithInitials": "아바타(이니셜: {initials})"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "로드 중"
+      "spinnerAccessibilityLabel": "로드 중",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components/UnstyledLink';
 
 describe('<UnstyledLink />', () => {

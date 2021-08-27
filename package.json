@@ -34,7 +34,7 @@
   ],
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "esnext": "build/esnext/index.ts.esnext",
+  "esnext": "build/esnext/index.esnext",
   "types": "build/ts/latest/src/index.d.ts",
   "typesVersions": {
     "<4.0": {
@@ -101,7 +101,6 @@
     "@sewing-kit/plugin-jest": "^0.5.1",
     "@sewing-kit/plugin-package-build": "^0.5.1",
     "@sewing-kit/plugin-prettier": "^0.1.2",
-    "@sewing-kit/plugin-rollup": "^0.3.3",
     "@sewing-kit/plugin-stylelint": "^0.4.2",
     "@sewing-kit/plugin-typescript": "^0.6.1",
     "@shopify/babel-preset": "^24.1.2",
@@ -114,7 +113,7 @@
     "@shopify/storybook-a11y-test": "^0.0.1",
     "@shopify/stylelint-plugin": "^10.0.1",
     "@shopify/typescript-configs": "^5.0.0",
-    "@size-limit/preset-small-lib": "^4.10.2",
+    "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/addon-a11y": "^6.3.7",
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-contexts": "^5.3.19",
@@ -158,7 +157,7 @@
     "semver": "^6.3.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
-    "size-limit": "^4.10.2",
+    "size-limit": "^5.0.3",
     "svgo": "^1.3.0",
     "typescript": "~4.3.5"
   },
@@ -182,7 +181,7 @@
     {
       "name": "cjs",
       "path": "build/cjs/index.js",
-      "limit": "165 kB"
+      "limit": "180 kB"
     },
     {
       "name": "esm",

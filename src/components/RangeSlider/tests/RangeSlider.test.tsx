@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 
 import {RangeSlider} from '../RangeSlider';
 import {DualThumb, SingleThumb} from '../components';

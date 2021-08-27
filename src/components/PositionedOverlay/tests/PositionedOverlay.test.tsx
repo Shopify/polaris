@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';

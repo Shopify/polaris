@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar med initialer {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Laddar"
+      "spinnerAccessibilityLabel": "Laddar",
+      "ellipsis": "{content}..."
     },
     "Badge": {
       "PROGRESS_LABELS": {
