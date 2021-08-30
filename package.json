@@ -34,7 +34,7 @@
   ],
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "esnext": "build/esnext/index.ts.esnext",
+  "esnext": "build/esnext/index.esnext",
   "types": "build/ts/latest/src/index.d.ts",
   "typesVersions": {
     "<4.0": {
@@ -101,7 +101,6 @@
     "@sewing-kit/plugin-jest": "^0.5.1",
     "@sewing-kit/plugin-package-build": "^0.5.1",
     "@sewing-kit/plugin-prettier": "^0.1.2",
-    "@sewing-kit/plugin-rollup": "^0.3.3",
     "@sewing-kit/plugin-stylelint": "^0.4.2",
     "@sewing-kit/plugin-typescript": "^0.6.1",
     "@shopify/babel-preset": "^24.1.2",
@@ -182,11 +181,11 @@
     {
       "name": "cjs",
       "path": "build/cjs/index.js",
-      "limit": "165 kB"
+      "limit": "180 kB"
     },
     {
       "name": "esm",
-      "path": "build/esm/index.mjs",
+      "path": "build/esm/index.js",
       "limit": "105 kB"
     },
     {
