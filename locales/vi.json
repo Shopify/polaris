@@ -8,7 +8,8 @@
       "labelWithInitials": "Hình đại diện là tên viết tắt {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Đang tải"
+      "spinnerAccessibilityLabel": "Đang tải",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
