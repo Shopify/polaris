@@ -151,6 +151,15 @@ $loading-panel-height: rem(53px);
     }
   }
 
+  &.TableRow-hovered:active {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-pressed);
+    }
+  }
+
   &.TableRow-selected {
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &,
@@ -169,6 +178,17 @@ $loading-panel-height: rem(53px);
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected-hovered);
+    }
+  }
+
+  &.TableRow-selected:active {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableHeading-first,
+    .TableHeading-second,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected-pressed);
     }
   }
 }

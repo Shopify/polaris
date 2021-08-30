@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Update IndexTable rows styling to have a gray hover state when unselected ([#4319](https://github.com/Shopify/polaris-react/issues/4319))
+
 ### Documentation
 
 ### Development workflow
