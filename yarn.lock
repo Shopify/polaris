@@ -2330,12 +2330,12 @@
   resolved "https://registry.yarnpkg.com/@shopify/prettier-config/-/prettier-config-1.1.2.tgz#612f87c0cd1196e8b43c85425e587d0fa7f1172d"
   integrity sha512-5ugCL9sPGzmOaZjeRGaWUWhHgAbemrS6z+R7v6gwiD+BiqSeoFhIY+imLpfdFCVpuOGalpHeCv6o3gv++EHs0A==
 
-"@shopify/react-testing@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-3.2.0.tgz#496c6282d4d947277f53b27b83db00cb35b82705"
-  integrity sha512-ynBOJ5NyAhEMfgu2Neir2dWE5YoiVzrl3HR7dzmpqqnEsQn6S4AqtMxjDUChPeVxem0o8ey2C0kxuezphGAd4A==
+"@shopify/react-testing@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-3.2.4.tgz#ecc136533270cbb252147318c3c7e300a02d495d"
+  integrity sha512-BhQgroiGA6VhPMAwsy2LVdNR1tv7nWkAL4uvW1SDiQEHhJmWJ1AyDq5UXKdWeDhoH3DoZOjALX1SFfLkSdIoKQ==
   dependencies:
-    "@shopify/useful-types" "^3.0.1"
+    "@shopify/useful-types" "^3.0.4"
     jest-matcher-utils "^26.6.2"
     react-reconciler "^0.26.2"
 
@@ -2365,10 +2365,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.0.0.tgz#4cd1339a6a5ab34e7f7d852d155d2c82b731c152"
   integrity sha512-1TV9pr3UBr1AlGC//4bdeKiQ2qwDuaqCZGfxO2OtIg/EN3luDdf49UNNm/BL9ZiApHcz7kg9Wklc09vhzD24hw==
 
-"@shopify/useful-types@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-3.0.1.tgz#1021459d49917ce5bff6b0cb6c34df44a49375b9"
-  integrity sha512-aWjLNyxGxNKLYKs3evYrars9h8OV2Apc1DcZqkFETnm7EMeoFv16feV21xdwpQxj2W9EwCpw7CSmlvadzXxHyA==
+"@shopify/useful-types@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-3.0.4.tgz#6b1f0908f60487550542c75acebea1a4f4eff968"
+  integrity sha512-uHVbNANIdYgWSF+vgL+H7j3ufyNzAbkHIgL0iYPb/C2OreHC1YaQWeMjjPQobzCb5MxultSPgvAbgWuytm3gCA==
 
 "@sinonjs/commons@^1.7.0":
   version "1.7.1"

@@ -159,9 +159,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     let handleMarkup: React.ReactNode = null;
 
     const mediaMarkup = media ? (
-      <div className={styles.Media} testID="Media">
-        {media}
-      </div>
+      <div className={styles.Media}>{media}</div>
     ) : null;
 
     if (selectable) {
@@ -169,15 +167,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div
-          className={styles.Handle}
-          onClick={this.handleLargerSelectionArea}
-          testID="LargerSelectionArea"
-        >
+        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <div onChange={this.handleLargerSelectionArea}>
               <Checkbox
-                testID="Checkbox"
                 id={this.checkboxId}
                 label={checkboxAccessibilityLabel}
                 labelHidden
@@ -261,7 +254,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <ButtonGroup segmented testID="ShortcutActions">
+            <ButtonGroup segmented>
               {buttonsFrom(shortcutActions, {
                 size: 'slim',
               })}
@@ -282,11 +275,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     const containerMarkup = (
-      <div
-        testID="Item-Content"
-        className={containerClassName}
-        id={this.props.id}
-      >
+      <div className={containerClassName} id={this.props.id}>
         {ownedMarkup}
         {content}
         {actionsMarkup}
@@ -335,7 +324,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             onBlur={this.handleBlur}
             onKeyUp={this.handleKeyUp}
             onMouseOut={this.handleMouseOut}
-            testID="Item-Wrapper"
             data-href={url}
           >
             {accessibleMarkup}
