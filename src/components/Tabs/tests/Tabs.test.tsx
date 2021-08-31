@@ -419,9 +419,7 @@ describe('<Tabs />', () => {
           disclosureWidth: 0,
         });
 
-        tabs.find(Popover)!.find('button')!.trigger('onClick', {
-          key: Key.Enter,
-        });
+        tabs.find(Popover)!.find('button')!.trigger('onClick');
 
         tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
