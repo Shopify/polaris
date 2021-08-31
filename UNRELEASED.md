@@ -65,7 +65,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
 - Modernized test for UnstyledLink, Tag, DisplayText, FileUpload, MessageIndicator, Choice and Dialog ([#4407](https://github.com/Shopify/polaris-react/pull/4407)).
 - Modernized tests for Konami, Labelled, and Link components([#4389](https://github.com/Shopify/polaris-react/pull/4389))
-- Modernized tests for TextStyle, Collapsible, Tabs ([]())
+- Modernized tests for TextStyle, Collapsible, Tabs ([#4453](https://github.com/Shopify/polaris-react/pull/4453))
 - Modernized tests for Scrollable, ScrollTo, ScrollLock, Select, SettingToggle, Sheet, Spinner, and Sticky components([#4386](https://github.com/Shopify/polaris-react/pull/4386))
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
 - Modernized tests for MediaCard, and Layout components ([#4393](https://github.com/Shopify/polaris-react/pull/4393))
