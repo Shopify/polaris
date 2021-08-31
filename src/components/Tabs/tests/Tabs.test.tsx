@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
-import {Key} from '../../../types';
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
