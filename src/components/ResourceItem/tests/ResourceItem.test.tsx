@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'test-utilities';
 import {
   Avatar,
@@ -752,7 +752,7 @@ describe('<ResourceItem />', () => {
 
       expect(item).toContainReactComponent('li', {
         'data-href': 'google.com',
-      } as any);
+      } as AllHTMLAttributes<HTMLElement>);
     });
 
     it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
