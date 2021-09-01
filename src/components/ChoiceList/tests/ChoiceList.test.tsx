@@ -1,8 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
-import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
+import {RadioButton, Checkbox, InlineError} from 'components';
 
 import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
@@ -18,18 +16,18 @@ describe('<ChoiceList />', () => {
   });
 
   it('renders a fieldset', () => {
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
     );
-    expect(element.find('fieldset').exists()).toBe(true);
+    expect(element).toContainReactComponent('fieldset');
   });
 
   describe('title', () => {
     it('renders a legend for the fieldset', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList title="My title" selected={[]} choices={choices} />,
       );
-      expect(element.find('legend').text()).toBe('My title');
+      expect(element.find('legend')).toContainReactText('My title');
     });
 
     it('renders a legend containing JSX for the fieldset', () => {
@@ -58,11 +56,11 @@ describe('<ChoiceList />', () => {
         {...choices[2], helpText: 'Some help text'},
       ];
 
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement, index) => {
+      choiceElements.findAll(RadioButton).forEach((choiceElement, index) => {
         expect(choiceElement.prop('label')).toBe(choices[index].label);
         expect(choiceElement.prop('value')).toBe(choices[index].value);
         expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
@@ -83,11 +81,11 @@ describe('<ChoiceList />', () => {
         {...choices[2], helpText: 'Some help text'},
       ];
 
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement, index) => {
+      choiceElements.findAll(RadioButton).forEach((choiceElement, index) => {
         expect(choiceElement.prop('label')).toBe(choices[index].label);
         expect(choiceElement.prop('value')).toBe(choices[index].value);
         expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
@@ -108,7 +106,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={[]}
@@ -117,7 +115,9 @@ describe('<ChoiceList />', () => {
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
-        expect(choiceElements.contains(children)).toBe(true);
+        expect(choiceElements).toContainReactComponent('span', {
+          children: 'Child',
+        });
       });
     });
 
@@ -139,7 +139,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={selected}
@@ -148,7 +148,9 @@ describe('<ChoiceList />', () => {
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
-        expect(choiceElements.contains(children)).toBe(true);
+        expect(choiceElements).toContainReactComponent('span', {
+          children: 'Child',
+        });
       });
 
       it('renders a choice with children wrapper div when choice is selected', () => {
@@ -168,7 +170,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={selected}
@@ -178,8 +180,8 @@ describe('<ChoiceList />', () => {
 
         expect(renderChildrenSpy).toHaveBeenCalled();
         expect(
-          choiceElements.find('li').at(selectedIndex).find('div').exists(),
-        ).toBeTruthy();
+          choiceElements.findAll('li')[selectedIndex],
+        ).toContainReactComponent('div');
       });
 
       it('does not render a choice with children content when choice is not selected', () => {
@@ -196,7 +198,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={[]}
@@ -205,7 +207,9 @@ describe('<ChoiceList />', () => {
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
-        expect(choiceElements.contains(children)).toBe(false);
+        expect(choiceElements).not.toContainReactComponent('span', {
+          children: 'Child',
+        });
       });
 
       it('does not render a choice with children wrapper div when choice is not selected', () => {
@@ -226,7 +230,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={selected}
@@ -236,8 +240,8 @@ describe('<ChoiceList />', () => {
 
         expect(renderChildrenSpy).toHaveBeenCalled();
         expect(
-          choiceElements.find('li').at(indexWithChildren).find('div').exists(),
-        ).toBeFalsy();
+          choiceElements.findAll('li')[indexWithChildren],
+        ).not.toContainReactComponent('div');
       });
     });
 
@@ -254,7 +258,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = mountWithAppProvider(
+        const choiceElements = mountWithApp(
           <ChoiceList
             title="Choose a number"
             selected={[]}
@@ -262,7 +266,9 @@ describe('<ChoiceList />', () => {
           />,
         );
 
-        expect(choiceElements.contains(children)).toBe(false);
+        expect(choiceElements).not.toContainReactComponent('span', {
+          children: 'Child',
+        });
       });
     });
   });
@@ -271,15 +277,15 @@ describe('<ChoiceList />', () => {
     it('sets the provided choices to be selected', () => {
       const selectedIndexes = [0, 2];
       const selected = selectedIndexes.map((index) => choices[index].value);
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={selected}
           choices={choices}
         />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement, index) => {
+      choiceElements.findAll(RadioButton).forEach((choiceElement, index) => {
         expect(choiceElement.prop('checked')).toBe(
           selectedIndexes.includes(index),
         );
@@ -293,7 +299,7 @@ describe('<ChoiceList />', () => {
       const spy = jest.fn((newSelected: string[]) => {
         selected = newSelected;
       });
-      const choiceList = mountWithAppProvider(
+      const choiceList = mountWithApp(
         <ChoiceList
           title="Choose a number"
           name="MyChoiceList"
@@ -303,60 +309,60 @@ describe('<ChoiceList />', () => {
           choices={choices}
         />,
       );
-      const choiceElements = choiceList.find(Checkbox);
+      const choiceElements = choiceList.findAll(Checkbox);
+      choiceElements[1]!.trigger('onChange');
 
-      changeCheckedForChoice(choiceElements.at(1));
       expect(spy).toHaveBeenLastCalledWith(['one', 'two'], 'MyChoiceList');
-      choiceList.setProps({selected});
 
-      changeCheckedForChoice(choiceElements.at(2));
+      choiceList.setProps({selected});
+      choiceElements[2]!.trigger('onChange');
+
       expect(spy).toHaveBeenLastCalledWith(
         ['one', 'two', 'three'],
         'MyChoiceList',
       );
-      choiceList.setProps({selected});
 
-      changeCheckedForChoice(choiceElements.at(0));
+      choiceList.setProps({selected});
+      choiceElements[0]!.trigger('onChange');
+
       expect(spy).toHaveBeenLastCalledWith(['two', 'three'], 'MyChoiceList');
       choiceList.setProps({selected});
     });
-
-    function changeCheckedForChoice(choice: ReactWrapper) {
-      choice.simulate('click');
-    }
   });
 
   describe('name', () => {
     it('provides a unique name when none is provided', () => {
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
-      ).find(RadioButton);
-      const name = choiceElements.at(0).prop('name');
-      expect(typeof name).toBe('string');
+      );
 
-      choiceElements.forEach((choiceElement) => {
-        expect(choiceElement.prop('name')).toBe(name);
+      const radioButtons = choiceElements.findAll(RadioButton);
+
+      const buttonName = radioButtons[0]!.prop('name');
+
+      radioButtons.forEach((choiceElement) => {
+        expect(choiceElement.prop('name')).toBe(buttonName);
       });
     });
 
     it('uses the same name for choices', () => {
       const name = 'MyChoiceList';
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList
           title="Choose a number"
           name={name}
           selected={[]}
           choices={choices}
         />,
-      ).find(RadioButton);
-      choiceElements.forEach((choiceElement) => {
+      );
+      choiceElements.findAll(RadioButton).forEach((choiceElement) => {
         expect(choiceElement.prop('name')).toBe(name);
       });
     });
 
     it('postpends [] when multiple options are allowed', () => {
       const name = 'MyChoiceList';
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList
           title="Choose a number"
           allowMultiple
@@ -364,9 +370,9 @@ describe('<ChoiceList />', () => {
           selected={[]}
           choices={choices}
         />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement) => {
+      choiceElements.findAll(RadioButton).forEach((choiceElement) => {
         expect(choiceElement.prop('name')).toBe(`${name}[]`);
       });
     });
@@ -374,13 +380,14 @@ describe('<ChoiceList />', () => {
 
   describe('allowMultiple', () => {
     it('renders a radio button for each option when allowMultiple is not true', () => {
-      let element = mountWithAppProvider(
+      let element = mountWithApp(
         <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       );
-      expect(element.find(RadioButton)).toHaveLength(choices.length);
-      expect(element.find(Checkbox).exists()).toBe(false);
 
-      element = mountWithAppProvider(
+      expect(element).toContainReactComponentTimes(RadioButton, choices.length);
+      expect(element).not.toContainReactComponent(Checkbox);
+
+      element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={[]}
@@ -388,12 +395,13 @@ describe('<ChoiceList />', () => {
           allowMultiple={false}
         />,
       );
-      expect(element.find(RadioButton)).toHaveLength(choices.length);
-      expect(element.find(Checkbox).exists()).toBe(false);
+
+      expect(element).toContainReactComponentTimes(RadioButton, choices.length);
+      expect(element).not.toContainReactComponent(Checkbox);
     });
 
     it('renders a checkbox each option when allowMultiple is true', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           allowMultiple
@@ -401,8 +409,9 @@ describe('<ChoiceList />', () => {
           choices={choices}
         />,
       );
-      expect(element.find(RadioButton).exists()).toBe(false);
-      expect(element.find(Checkbox)).toHaveLength(choices.length);
+
+      expect(element).toContainReactComponentTimes(Checkbox, choices.length);
+      expect(element).not.toContainReactComponent(RadioButton);
     });
   });
 
@@ -415,7 +424,7 @@ describe('<ChoiceList />', () => {
     });
 
     it('marks the fieldset as invalid', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={[]}
@@ -423,11 +432,14 @@ describe('<ChoiceList />', () => {
           error="Error message"
         />,
       );
-      expect(element.find('fieldset').prop<string>('aria-invalid')).toBe(true);
+
+      expect(element).toContainReactComponent('fieldset', {
+        'aria-invalid': true,
+      });
     });
 
     it('renders an InlineError markup when truthy', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={[]}
@@ -436,12 +448,11 @@ describe('<ChoiceList />', () => {
         />,
       );
 
-      const error = element.find(InlineError);
-      expect(error.prop('message')).toBe('Error message');
+      expect(element.find(InlineError)).toContainReactText('Error message');
     });
 
     it("connects the InlineError to the choice, with the describedByError key's, ariaDescribedBy prop", () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={[]}
@@ -450,32 +461,21 @@ describe('<ChoiceList />', () => {
         />,
       );
 
-      const fieldId = element.find(InlineError).prop('fieldID');
-      const expectedErrorFieldId = errorTextID(fieldId);
+      const fieldId = `${element.find(InlineError)!.prop('fieldID')}Error`;
 
-      const radioButtonDescribeBy = element
-        .find(RadioButton)
-        .last()
-        .prop('ariaDescribedBy');
-
-      expect(radioButtonDescribeBy).toBe(expectedErrorFieldId);
+      expect(element.find(RadioButton)!.prop('ariaDescribedBy')).toBe(fieldId);
     });
 
     it('does not provide the choice, with the describedByError key, with ariaDescribedBy prop if no error is provided', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList title="Title" selected={[]} choices={choices} />,
       );
 
-      const radioButtonDescribeBy = element
-        .find(RadioButton)
-        .last()
-        .prop('ariaDescribedBy');
-
-      expect(radioButtonDescribeBy).toBeNull();
+      expect(element.find(RadioButton)!.prop('ariaDescribedBy')).toBeNull();
     });
 
     it('does not render an InlineError when falsy', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ChoiceList
           title="Choose a number"
           selected={[]}
@@ -484,17 +484,17 @@ describe('<ChoiceList />', () => {
         />,
       );
 
-      expect(element.find(InlineError)).toHaveLength(0);
+      expect(element).not.toContainReactComponent(InlineError);
     });
   });
 
   describe('disabled', () => {
     it('disables choices', () => {
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList selected={[]} choices={choices} disabled title="title" />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement) => {
+      choiceElements.findAll(RadioButton)!.forEach((choiceElement) => {
         expect(choiceElement.prop('disabled')).toBe(true);
       });
     });
@@ -502,11 +502,11 @@ describe('<ChoiceList />', () => {
     it('preserves disabled choices', () => {
       choices = [choices[0], choices[1], {...choices[2], disabled: true}];
 
-      const choiceElements = mountWithAppProvider(
+      const choiceElements = mountWithApp(
         <ChoiceList selected={[]} choices={choices} disabled title="title" />,
-      ).find(RadioButton);
+      );
 
-      choiceElements.forEach((choiceElement) => {
+      choiceElements.findAll(RadioButton).forEach((choiceElement) => {
         expect(choiceElement.prop('disabled')).toBe(true);
       });
     });
