@@ -345,7 +345,7 @@ describe('<Filters />', () => {
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      let connected = resourceFilters.find(ConnectedFilterControl);
+      const connected = resourceFilters.find(ConnectedFilterControl);
       connected!.instance.setState({availableWidth: 999});
       resourceFilters.forceUpdate();
       const shortcut = resourceFilters
