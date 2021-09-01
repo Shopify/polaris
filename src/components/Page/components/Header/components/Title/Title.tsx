@@ -2,6 +2,7 @@ import React from 'react';
 
 import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
+import {classNames} from '../../../../../../utilities/css';
 
 import styles from './Title.scss';
 
@@ -16,9 +17,17 @@ export interface TitleProps {
   thumbnail?:
     | React.ReactElement<AvatarProps | ThumbnailProps>
     | React.SFC<React.SVGProps<SVGSVGElement>>;
+  /** Removes spacing between title and subtitle */
+  compactTitle?: boolean;
 }
 
-export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
+export function Title({
+  title,
+  subtitle,
+  titleMetadata,
+  thumbnail,
+  compactTitle,
+}: TitleProps) {
   const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
@@ -35,7 +44,12 @@ export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
   );
 
   const subtitleMarkup = subtitle ? (
-    <div className={styles.SubTitle}>
+    <div
+      className={classNames(
+        styles.SubTitle,
+        compactTitle && styles.SubtitleCompact,
+      )}
+    >
       <p>{subtitle}</p>
     </div>
   ) : null;
