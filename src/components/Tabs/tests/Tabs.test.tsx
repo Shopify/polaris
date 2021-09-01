@@ -126,7 +126,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithApp(<Tabs {...mockProps}>{content}</Tabs>);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find('ul')?.findAll(Tab)[index].prop('panelID');
+        const panelID = wrapper.find('ul')!.findAll(Tab)[index].prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
