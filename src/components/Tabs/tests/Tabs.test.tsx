@@ -261,7 +261,6 @@ describe('<Tabs />', () => {
       const selectedTab = wrapper.find('ul')!.findAll(Tab)[0];
       const panel = wrapper.findAll(Panel)[0];
 
-      expect(panel).not.toBeNull();
       expect(panel).toContainReactComponent('p', {children: 'Tab content'});
       expect(panel).toHaveReactProps({id: selectedTab.prop('panelID')});
     });
@@ -438,8 +437,6 @@ describe('<Tabs />', () => {
 
         const popover = tabs.find(Popover)!;
         const disclosureActivator = popover.find('button')!;
-
-        disclosureActivator.domNode!.click;
 
         disclosureActivator.trigger('onClick');
 
