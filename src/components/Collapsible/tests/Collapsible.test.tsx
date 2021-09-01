@@ -28,9 +28,7 @@ describe('<Collapsible />', () => {
       'aria-expanded': false,
     });
 
-    expect(collapsible).toContainReactComponent('div', {
-      children: expect.stringContaining('content'),
-    });
+    expect(collapsible).toContainReactText('content');
   });
 
   it('does not render its children when closed', () => {
