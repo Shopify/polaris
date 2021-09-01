@@ -9,12 +9,6 @@ import {
   TextStyle,
   ButtonProps,
 } from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
@@ -22,6 +16,7 @@ import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import {Collapsible} from '../../Collapsible';
 import * as focusUtils from '../../../utilities/focus';
+import styles from '../Filters.scss';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -346,20 +341,21 @@ describe('<Filters />', () => {
     });
 
     it('toggles a shortcut filter', () => {
-      const resourceFilters = mountWithAppProvider(
+      const resourceFilters = mountWithApp(
         <Filters {...mockPropsWithShortcuts} />,
       );
 
-      const connected = resourceFilters.find(ConnectedFilterControl).first();
-      connected.setState({availableWidth: 999});
-      const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
-        .find(Button)
-        .first();
+      let connected = resourceFilters.find(ConnectedFilterControl);
+      connected!.instance.setState({availableWidth: 999});
+      resourceFilters.forceUpdate();
+      const shortcut = resourceFilters
+        .find('div', {className: styles.RightContainer})!
+        .find(Button);
 
-      trigger(shortcut, 'onClick');
-      expect(resourceFilters.find(Popover).first().props().active).toBe(true);
-      trigger(shortcut, 'onClick');
-      expect(resourceFilters.find(Popover).first().props().active).toBe(false);
+      shortcut!.trigger('onClick');
+      expect(resourceFilters).toContainReactComponent(Popover, {active: true});
+      shortcut!.trigger('onClick');
+      expect(resourceFilters).toContainReactComponent(Popover, {active: false});
     });
 
     it('receives the expected props when there are no shortcut filters', () => {
