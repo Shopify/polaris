@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
 
@@ -11,7 +9,7 @@ describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
     const inputMode = 'numeric';
-    const input = mountWithAppProvider(
+    const input = mountWithApp(
       <TextField
         label="TextField"
         disabled
@@ -31,26 +29,28 @@ describe('<TextField />', () => {
         align="left"
         autoComplete="name"
       />,
-    ).find('input');
+    );
 
-    expect(input.prop('disabled')).toBe(true);
-    expect(input.prop('readOnly')).toBe(false);
-    expect(input.prop('autoFocus')).toBe(true);
-    expect(input.prop('name')).toBe('TextField');
-    expect(input.prop('placeholder')).toBe('A placeholder');
-    expect(input.prop('value')).toBe('Some value');
-    expect(input.prop('min')).toBe(20);
-    expect(input.prop('max')).toBe(50);
-    expect(input.prop('minLength')).toBe(2);
-    expect(input.prop('maxLength')).toBe(2);
-    expect(input.prop('spellCheck')).toBe(false);
-    expect(input.prop('pattern')).toBe(pattern);
-    expect(input.prop('inputMode')).toBe(inputMode);
-    expect(input.prop('autoComplete')).toBe('name');
+    expect(input).toContainReactComponent('input', {
+      disabled: true,
+      readOnly: false,
+      autoFocus: true,
+      placeholder: 'A placeholder',
+      value: 'Some value',
+      max: 50,
+      minLength: 2,
+      maxLength: 2,
+      name: 'TextField',
+      spellCheck: false,
+      pattern,
+      min: 20,
+      inputMode,
+      autoComplete: 'name',
+    });
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
-    const input = mountWithAppProvider(
+    const input = mountWithApp(
       <TextField
         label="TextField"
         disabled
@@ -62,24 +62,27 @@ describe('<TextField />', () => {
         prefix="test-prefix"
         autoComplete="off"
       />,
-    ).find('input');
+    );
 
-    expect(input.prop('prefix')).toBeUndefined();
+    expect(input).toContainReactComponent('input', {
+      prefix: undefined,
+    });
   });
 
   it('always has an `aria-labelledby` property', () => {
-    const textField = mountWithAppProvider(
+    const textField = mountWithApp(
       <TextField label="TextField" onChange={noop} autoComplete="off" />,
     );
-    const property = textField.find('input').prop('aria-labelledby');
 
-    expect(property).not.toHaveLength(0);
+    expect(textField).toContainReactComponent('input', {
+      'aria-labelledby': 'PolarisTextField1Label',
+    });
   });
 
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField
           id="MyTextField"
           label="TextField"
@@ -87,8 +90,12 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      (element.find('input') as any).instance().value = 'two';
-      element.find('input').simulate('change');
+
+      element.find('input')!.trigger('onChange', {
+        currentTarget: {
+          value: 'two',
+        },
+      });
       expect(spy).toHaveBeenCalledWith('two', 'MyTextField');
     });
   });
@@ -113,7 +120,7 @@ describe('<TextField />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField
           label="TextField"
           onBlur={spy}
@@ -121,49 +128,51 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      element.find('input').simulate('focus');
-      element.find('input').simulate('blur');
+      element.find('input')!.trigger('onBlur');
       expect(spy).toHaveBeenCalled();
     });
   });
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
           onChange={noop}
           autoComplete="off"
         />,
-      )
-        .find('input')
-        .prop('id');
-      expect(id).toBe('MyField');
+      );
+
+      expect(textField).toContainReactComponent('input', {
+        id: 'MyField',
+      });
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} autoComplete="off" />,
-      )
-        .find('input')
-        .prop('id');
-      expect(typeof id).toBe('string');
-      expect(id).toBeTruthy();
+      );
+
+      expect(textField).toContainReactComponent('input', {
+        id: 'PolarisTextField1',
+      });
     });
 
     it('updates with the new id from props', () => {
       const id = 'input field';
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} autoComplete="off" />,
       );
       textField.setProps({id});
-      expect(textField.find('input').prop('id')).toBe(id);
+      expect(textField).toContainReactComponent('input', {
+        id,
+      });
     });
 
     it('updates with the previous id after the id prop has been removed', () => {
       const id = 'input field';
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id={id}
@@ -172,7 +181,9 @@ describe('<TextField />', () => {
         />,
       );
       textField.setProps({});
-      expect(textField.find('input').prop('id')).toBe(id);
+      expect(textField).toContainReactComponent('input', {
+        id,
+      });
     });
   });
 
@@ -218,21 +229,22 @@ describe('<TextField />', () => {
 
   describe('autoComplete', () => {
     it('is passed to input as autoComplete', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           autoComplete="firstName"
           onChange={noop}
         />,
       );
-
-      expect(textField.find('input').prop('autoComplete')).toBe('firstName');
+      expect(textField).toContainReactComponent('input', {
+        autoComplete: 'firstName',
+      });
     });
   });
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           helpText="Some help"
@@ -240,17 +252,17 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      const helpTextID = textField
-        .find('input')
-        .prop<string>('aria-describedby');
-      expect(typeof helpTextID).toBe('string');
-      expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
+
+      expect(textField).toContainReactComponent('input', {
+        'aria-describedby': 'PolarisTextField1HelpText',
+      });
+      expect(textField.find('div')).toContainReactText('Some help');
     });
   });
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           error={<span>Invalid</span>}
           label="TextField"
@@ -258,14 +270,20 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(textField.find('input').prop<string>('aria-invalid')).toBe(true);
+
+      expect(textField).toContainReactComponent('input', {
+        'aria-invalid': true,
+      });
 
       textField.setProps({error: 'Some error'});
-      expect(textField.find('input').prop<string>('aria-invalid')).toBe(true);
+
+      expect(textField).toContainReactComponent('input', {
+        'aria-invalid': true,
+      });
     });
 
     it('connects the input to the error', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           error="Some error"
@@ -273,15 +291,16 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      const errorID = textField.find('input').prop<string>('aria-describedby');
-      expect(typeof errorID).toBe('string');
-      expect(textField.find(`#${errorID}`).text()).toBe('Some error');
+
+      expect(textField).toContainReactComponent('input', {
+        'aria-describedby': 'Some error',
+      });
     });
 
     it('connects the input to an error rendered separately', () => {
       const errorMessage = 'Some error';
       const textFieldID = 'collectionRuleType';
-      const fieldGroup = mountWithAppProvider(
+      const fieldGroup = mountWithApp(
         <div>
           <TextField
             error={Boolean(errorMessage)}
@@ -294,16 +313,14 @@ describe('<TextField />', () => {
         </div>,
       );
 
-      const textField = fieldGroup.find(TextField).first();
-      const errorID = textField.find('input').prop<string>('aria-describedby');
-
-      expect(textField.find('input').prop('aria-invalid')).toBe(true);
-      expect(typeof errorID).toBe('string');
-      expect(fieldGroup.find(`#${errorID}`).text()).toBe('Some error');
+      expect(fieldGroup.find(TextField)).toContainReactComponent('input', {
+        'aria-describedby': 'Some error',
+        'aria-invalid': true,
+      });
     });
 
     it('connects the input to both an error and help text', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           error="Some error"
@@ -312,17 +329,17 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      const descriptions = textField
-        .find('input')
-        .prop<string>('aria-describedby')
-        .split(' ');
-      expect(descriptions).toHaveLength(2);
-      expect(textField.find(`#${descriptions[0]}`).text()).toBe('Some error');
-      expect(textField.find(`#${descriptions[1]}`).text()).toBe('Some help');
+
+      expect(textField).toContainReactComponent('input', {
+        'aria-describedby': 'PolarisTextField1Error PolarisTextField1HelpText',
+      });
+
+      expect(textField.find('div')).toContainReactText('Some error');
+      expect(textField.find('div')).toContainReactText('Some help');
     });
 
     it('only renders error markup when not a boolean', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           error
           label="TextField"
@@ -332,16 +349,16 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(InlineError)).toHaveLength(0);
+      expect(textField).not.toContainReactComponent(InlineError);
 
       textField.setProps({error: 'Some error'});
-      expect(textField.find(InlineError)).toHaveLength(1);
+      expect(textField).toContainReactComponent(InlineError);
     });
   });
 
   describe('prefix', () => {
     it('connects the input to the prefix and label', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           prefix="$"
@@ -359,7 +376,7 @@ describe('<TextField />', () => {
     });
 
     it('connects the input to the prefix, suffix, and label', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           prefix="$"
@@ -384,7 +401,7 @@ describe('<TextField />', () => {
       const mockPrefixButton = (
         <button id={mockButtonId} onClick={onClickSpy} />
       );
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           prefix={mockPrefixButton}
@@ -396,7 +413,7 @@ describe('<TextField />', () => {
       textField.find(`#${mockButtonId}`).simulate('click');
 
       expect(onClickSpy).toHaveBeenCalled();
-      expect(textField.getDOMNode().querySelector('input')).not.toBe(
+      expect(textField.domNode!.querySelector('input')).not.toBe(
         document.activeElement,
       );
     });
@@ -404,7 +421,7 @@ describe('<TextField />', () => {
     it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
       const mockButtonId = 'MockPrefix';
       const mockPrefixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           prefix={mockPrefixButton}
@@ -426,7 +443,7 @@ describe('<TextField />', () => {
 
   describe('suffix', () => {
     it('connects the input to the suffix and label', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           suffix="kg"
@@ -449,7 +466,7 @@ describe('<TextField />', () => {
       const mockSuffixButton = (
         <button id={mockButtonId} onClick={onClickSpy} />
       );
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           suffix={mockSuffixButton}
@@ -469,7 +486,7 @@ describe('<TextField />', () => {
     it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
       const mockButtonId = 'MockSuffix';
       const mockSuffixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           suffix={mockSuffixButton}
@@ -491,7 +508,7 @@ describe('<TextField />', () => {
 
   describe('characterCount', () => {
     it('displays number of characters entered in input field', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           value="test"
           showCharacterCount
@@ -508,7 +525,7 @@ describe('<TextField />', () => {
     });
 
     it('displays remaining characters as fraction in input field with maxLength', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           value="test"
           maxLength={10}
@@ -526,7 +543,7 @@ describe('<TextField />', () => {
     });
 
     it('announces updated character count only when input field is in focus', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           value="test"
           showCharacterCount
@@ -550,7 +567,7 @@ describe('<TextField />', () => {
 
   describe('type', () => {
     it('sets the type on the input', () => {
-      const type = mountWithAppProvider(
+      const type = mountWithApp(
         <TextField
           label="TextField"
           type="email"
@@ -566,7 +583,7 @@ describe('<TextField />', () => {
     describe('number', () => {
       it('adds an increment button that increases the value', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -582,7 +599,7 @@ describe('<TextField />', () => {
 
       it('adds a decrement button that increases the value', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -620,7 +637,7 @@ describe('<TextField />', () => {
 
       it('handles incrementing from no value', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -634,7 +651,7 @@ describe('<TextField />', () => {
       });
 
       it('passes the step prop to the input', () => {
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -645,12 +662,15 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        expect(element.find('input').prop('step')).toBe(6);
+
+        expect(element).toContainReactComponent('input', {
+          step: 6,
+        });
       });
 
       it('uses the step prop when incrementing', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -667,7 +687,7 @@ describe('<TextField />', () => {
 
       it('respects a min value', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -688,7 +708,7 @@ describe('<TextField />', () => {
 
       it('respects a max value', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -709,7 +729,7 @@ describe('<TextField />', () => {
 
       it('brings an invalid value up to the min', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -730,7 +750,7 @@ describe('<TextField />', () => {
 
       it('brings an invalid value down to the max', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -750,7 +770,7 @@ describe('<TextField />', () => {
       });
 
       it('removes increment and decrement buttons when disabled', () => {
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyNumberField"
             label="NumberField"
@@ -759,12 +779,11 @@ describe('<TextField />', () => {
             disabled
           />,
         );
-        const buttons = element.find('[role="button"]');
-        expect(buttons).toHaveLength(0);
+        expect(element).not.toContainReactComponent('[role="button"]');
       });
 
       it('removes increment and decrement buttons when readOnly', () => {
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyNumberField"
             label="NumberField"
@@ -773,12 +792,12 @@ describe('<TextField />', () => {
             readOnly
           />,
         );
-        expect(element.find(Spinner)).toHaveLength(0);
+        expect(element).not.toContainReactComponent(Spinner);
       });
 
       it('removes spinner buttons when type is number and step is 0', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyNumberField"
             label="NumberField"
@@ -788,12 +807,12 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        expect(element.find(Spinner)).toHaveLength(0);
+        expect(element).not.toContainReactComponent(Spinner);
       });
 
-      it('increments by step when value, step, or both are float numbers', () => {
+      it.only('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -804,13 +823,15 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').first().simulate('click');
+
+        element.find('button')!.trigger('onClick');
+        // element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
       });
 
       it('decrements by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -828,7 +849,7 @@ describe('<TextField />', () => {
       it('decrements on mouse down', () => {
         jest.useFakeTimers();
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -850,7 +871,7 @@ describe('<TextField />', () => {
       it('stops decrementing on mouse up', () => {
         jest.useFakeTimers();
         const spy = jest.fn();
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -892,7 +913,7 @@ describe('<TextField />', () => {
         it('stops decrementing on mouse up anywhere in document', () => {
           jest.useFakeTimers();
           const spy = jest.fn();
-          const element = mountWithAppProvider(
+          const element = mountWithApp(
             <TextField
               id="MyTextField"
               label="TextField"
@@ -902,10 +923,9 @@ describe('<TextField />', () => {
               autoComplete="off"
             />,
           );
-          element
-            .find('[role="button"]')
-            .last()
-            .simulate('mousedown', {button: 0});
+
+          element.find('button')?.trigger('onMouseDown', {button: 0});
+
           documentEvent.mouseup();
 
           jest.runOnlyPendingTimers();
@@ -917,7 +937,7 @@ describe('<TextField />', () => {
 
   describe('multiline', () => {
     it('does not render a resizer if `multiline` is false', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -925,7 +945,7 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(textField.find(Resizer).exists()).toBe(false);
+      expect(textField).not.toContainReactComponent(Resizer);
     });
 
     it('renders a resizer with `minimumLines` set to 1 if `multiline` is true', () => {
@@ -980,7 +1000,7 @@ describe('<TextField />', () => {
 
   describe('aria labels', () => {
     it('sets aria labels on the input element', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -994,21 +1014,17 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find('input').prop('aria-owns')).toBe('Aria owns');
-      expect(textField.find('input').prop('aria-expanded')).toBe(true);
-      expect(textField.find('input').prop('aria-activedescendant')).toBe(
-        'Aria active descendant',
-      );
-      expect(textField.find('input').prop('aria-autocomplete')).toBe(
-        'Aria autocomplete',
-      );
-      expect(textField.find('input').prop('aria-controls')).toBe(
-        'Aria controls',
-      );
+      expect(textField).toContainReactComponent('input', {
+        'aria-owns': 'Aria owns',
+        'aria-expanded': true,
+        'aria-activedescendant': 'Aria active descendant',
+        'aria-autocomplete': 'Aria autocomplete',
+        'aria-controls': 'Aria controls',
+      });
     });
 
     it('renders a textarea element with `aria-multiline` set to true if multiline greater than 0', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1021,11 +1037,13 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
+      expect(textField).toContainReactComponent('textarea', {
+        'aria-multiline': true,
+      });
     });
 
     it('renders an input element without `aria-multiline` if multiline is equal to 0', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1038,11 +1056,13 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
+      expect(textField).toContainReactComponent('input', {
+        'aria-multiline': undefined,
+      });
     });
 
     it('renders an input element without `aria-multiline` if multiline is undefined', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1054,13 +1074,15 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
+      expect(textField).toContainReactComponent('input', {
+        'aria-multiline': undefined,
+      });
     });
   });
 
   describe('Labelled', () => {
     it('passes props to Labelled', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1070,28 +1092,31 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(Labelled)).toHaveLength(1);
-      expect(textField.find(Labelled).prop('label')).toBe('TextField');
-      expect(textField.find(Labelled).prop('id')).toBe('MyField');
-      expect(textField.find(Labelled).prop('helpText')).toBe('Help text');
+      expect(textField).toContainReactComponent(Labelled, {
+        id: 'MyField',
+        label: 'TextField',
+        helpText: 'Help text',
+      });
     });
 
     it('passes error to Labelled', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
           onChange={noop}
-          autoComplete="off"
           error
+          autoComplete="off"
         />,
       );
 
-      expect(textField.find(Labelled).prop('error')).toBe(true);
+      expect(textField).toContainReactComponent(Labelled, {
+        error: true,
+      });
     });
 
     it('passes labelHidden to Labelled', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1101,7 +1126,9 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(Labelled).prop('labelHidden')).toBe(true);
+      expect(textField).toContainReactComponent(Labelled, {
+        labelHidden: true,
+      });
     });
   });
 
@@ -1123,7 +1150,7 @@ describe('<TextField />', () => {
           onChange={noop}
         />
       );
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -1135,13 +1162,10 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(Connected)).toHaveLength(1);
-      expect(textField.find(Connected).prop('left')).toStrictEqual(
-        connectedLeft,
-      );
-      expect(textField.find(Connected).prop('right')).toStrictEqual(
-        connectedRight,
-      );
+      expect(textField).toContainReactComponent(Connected, {
+        left: connectedLeft,
+        right: connectedRight,
+      });
     });
 
     it('sets focus to the <input /> `onClick`', () => {
@@ -1159,7 +1183,7 @@ describe('<TextField />', () => {
 
   describe('clearButton', () => {
     it('renders a clear button when true', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           id="MyTextField"
           label="TextField"
@@ -1170,7 +1194,9 @@ describe('<TextField />', () => {
           clearButton
         />,
       );
-      expect(findByTestID(textField, 'clearButton').exists()).toBeTruthy();
+      expect(textField).toContainReactComponent('button', {
+        className: 'ClearButton',
+      });
     });
 
     it('does not render a clear button in inputs without a value', () => {
@@ -1186,13 +1212,13 @@ describe('<TextField />', () => {
       );
 
       expect(textField).not.toContainReactComponent('button', {
-        testID: 'clearButton',
+        className: 'ClearButton',
       });
     });
 
     it('calls onClearButtonClicked() with an id when the clear button is clicked', () => {
       const spy = jest.fn();
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           id="MyTextField"
           label="TextField"
@@ -1204,12 +1230,14 @@ describe('<TextField />', () => {
           clearButton
         />,
       );
-      findByTestID(textField, 'clearButton').simulate('click');
+
+      textField.find('button', {className: 'ClearButton'})!.trigger('onClick');
+
       expect(spy).toHaveBeenCalledWith('MyTextField');
     });
 
     it('does not render a clear button by default', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           id="MyTextField"
           label="TextField"
@@ -1219,7 +1247,10 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
+
+      expect(textField).not.toContainReactComponent('button', {
+        className: 'ClearButton',
+      });
     });
 
     it('adds a connected left and right class when a connected element is present', () => {
@@ -1240,7 +1271,7 @@ describe('<TextField />', () => {
 
   describe('requiredIndicator', () => {
     it('passes requiredIndicator prop to Labelled', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField
           label="TextField"
           onChange={noop}
@@ -1248,15 +1279,16 @@ describe('<TextField />', () => {
           requiredIndicator
         />,
       );
-      const labelled = element.find(Labelled);
 
-      expect(labelled.prop('requiredIndicator')).toBe(true);
+      expect(element).toContainReactComponent(Labelled, {
+        requiredIndicator: true,
+      });
     });
   });
 
   describe('monospaced', () => {
     it('passes monospaced prop to TextField', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField
           label="TextField"
           onChange={noop}
@@ -1264,20 +1296,24 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
-      expect(element.prop('monospaced')).toBe(true);
+      expect(element).toHaveReactProps({
+        monospaced: true,
+      });
     });
 
     it('applies the monospaced style', () => {
-      const input = mountWithAppProvider(
+      const input = mountWithApp(
         <TextField
           label="TextField"
           onChange={noop}
           monospaced
           autoComplete="off"
         />,
-      ).find('input');
+      );
 
-      expect(input.prop('className')).toContain('monospaced');
+      expect(input).toContainReactComponent('input', {
+        className: 'monospaced',
+      });
     });
   });
 });
