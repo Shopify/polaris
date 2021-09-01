@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@7.0.0-rc.1/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@v7.0.0-rc.4/build/esm/styles.css"
 />
 ```
 
