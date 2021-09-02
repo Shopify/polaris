@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {Key} from '../../../types';
@@ -23,7 +23,9 @@ describe('<Checkbox />', () => {
       <Checkbox id="MyCheckbox" label="Checkbox" checked />,
     );
 
-    element.find('input')!.domNode!.click;
+    element.find('input')!.trigger('onClick', {
+      stopPropagation: () => {},
+    });
 
     expect(element).toContainReactComponent('input', {
       checked: true,
@@ -36,7 +38,9 @@ describe('<Checkbox />', () => {
       <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
     );
 
-    element.find('input')!.domNode!.click;
+    element.find('input')!.trigger('onClick', {
+      stopPropagation: () => {},
+    });
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -104,7 +108,9 @@ describe('<Checkbox />', () => {
       const checkbox = mountWithApp(
         <Checkbox label="label" disabled onChange={spy} />,
       );
-      checkbox.find('input')!.domNode!.click;
+      checkbox.find('input')!.trigger('onClick', {
+        stopPropagation: () => {},
+      });
       expect(spy).not.toHaveBeenCalled();
     });
   });
@@ -259,7 +265,7 @@ describe('<Checkbox />', () => {
 
       expect(checkbox).toContainReactComponent('input', {
         indeterminate: 'true',
-      });
+      } as AllHTMLAttributes<HTMLInputElement>);
     });
 
     it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {

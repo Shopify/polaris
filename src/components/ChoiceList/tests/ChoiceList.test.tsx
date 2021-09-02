@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'test-utilities';
 import {RadioButton, Checkbox, InlineError} from 'components';
 
+import {Choice} from '../../Choice';
 import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
@@ -309,24 +310,25 @@ describe('<ChoiceList />', () => {
           choices={choices}
         />,
       );
-      const choiceElements = choiceList.findAll(Checkbox);
-      choiceElements[1]!.trigger('onChange');
 
+      const getChoiceElement = (index: number) =>
+        choiceList.findAll(Checkbox)[index];
+
+      getChoiceElement(1).find(Choice)!.trigger('onClick');
       expect(spy).toHaveBeenLastCalledWith(['one', 'two'], 'MyChoiceList');
 
       choiceList.setProps({selected});
-      choiceElements[2]!.trigger('onChange');
 
+      getChoiceElement(2).find(Choice)!.trigger('onClick');
       expect(spy).toHaveBeenLastCalledWith(
         ['one', 'two', 'three'],
         'MyChoiceList',
       );
 
       choiceList.setProps({selected});
-      choiceElements[0]!.trigger('onChange');
 
+      getChoiceElement(0).find(Choice)!.trigger('onClick');
       expect(spy).toHaveBeenLastCalledWith(['two', 'three'], 'MyChoiceList');
-      choiceList.setProps({selected});
     });
   });
 
@@ -463,7 +465,9 @@ describe('<ChoiceList />', () => {
 
       const fieldId = `${element.find(InlineError)!.prop('fieldID')}Error`;
 
-      expect(element.find(RadioButton)!.prop('ariaDescribedBy')).toBe(fieldId);
+      expect(element).toContainReactComponent(RadioButton, {
+        ariaDescribedBy: fieldId,
+      });
     });
 
     it('does not provide the choice, with the describedByError key, with ariaDescribedBy prop if no error is provided', () => {
