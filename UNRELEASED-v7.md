@@ -19,7 +19,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added support for multi-sectioned options in `Autocomplete` [#4221](https://github.com/Shopify/polaris-react/pull/4221)
 - Added `wrapOverflow` prop to `AutocompleteProps` props to force text-breakword ([#4416](https://github.com/Shopify/polaris-react/pull/4416))
-- Removed motion from `Skeleton` components ([#])()
+- Removed motion from `Skeleton` components ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
 
 ### Bug fixes
 

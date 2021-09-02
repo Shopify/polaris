@@ -70,13 +70,3 @@ button::-moz-focus-inner,
 [type='submit']::-moz-focus-inner {
   border-style: none;
 }
-
-@keyframes :global(polaris-SkeletonShimmerAnimation) {
-  0% {
-    opacity: 0.45;
-  }
-
-  100% {
-    opacity: 0.9;
-  }
-}
