@@ -810,7 +810,7 @@ describe('<TextField />', () => {
         expect(element).not.toContainReactComponent(Spinner);
       });
 
-      it.only('increments by step when value, step, or both are float numbers', () => {
+      it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithApp(
           <TextField
@@ -824,8 +824,7 @@ describe('<TextField />', () => {
           />,
         );
 
-        element.find('button')!.trigger('onClick');
-        // element.find('[role="button"]').first().simulate('click');
+        element.findAll('div', {role: 'button'})[0].trigger('onClick');
         expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
       });
 
@@ -842,7 +841,8 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').last().simulate('click');
+        element.findAll('div', {role: 'button'})[1].trigger('onClick');
+
         expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
       });
 
@@ -860,9 +860,8 @@ describe('<TextField />', () => {
           />,
         );
         element
-          .find('[role="button"]')
-          .last()
-          .simulate('mousedown', {button: 0});
+          .findAll('div', {role: 'button'})[1]
+          .trigger('onMouseDown', {button: 0});
 
         jest.runOnlyPendingTimers();
         expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
@@ -881,11 +880,11 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('mousedown', {button: 0});
-        element.find('[role="button"]').last().simulate('mouseup');
+
+        const buttonDiv = element.findAll('div', {role: 'button'})[1];
+
+        buttonDiv.trigger('onMouseDown', {button: 0});
+        buttonDiv.trigger('onMouseUp');
 
         jest.runOnlyPendingTimers();
         expect(spy).not.toHaveBeenCalled();
@@ -924,7 +923,7 @@ describe('<TextField />', () => {
             />,
           );
 
-          element.find('button')?.trigger('onMouseDown', {button: 0});
+          element.find('button')!.trigger('onMouseDown', {button: 0});
 
           documentEvent.mouseup();
 
