@@ -14,12 +14,13 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - The component styles have moved fromm `dist/styles.css` to `build/esm/styles.css`. Consumers who import styles shall need to update their import path. ([#4424](https://github.com/Shopify/polaris-react/pull/4424))
 - The public Sass API has moved from `dist/styles/_public-api.scss` to `build/styles/_public-api.scss`. Consumers who use our Sass API shall need to update their import path. ([#4424](https://github.com/Shopify/polaris-react/pull/4424))
 - Removed event parameter from optional `onClick` property for `subNavigationItem` on `Nav/Item` component ([#4394](https://github.com/Shopify/polaris-react/pull/4394))
+- Removed motion from `Skeleton` components and `skeleton-shimmer` mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
 
 ### Enhancements
 
 - Added support for multi-sectioned options in `Autocomplete` [#4221](https://github.com/Shopify/polaris-react/pull/4221)
 - Added `wrapOverflow` prop to `AutocompleteProps` props to force text-breakword ([#4416](https://github.com/Shopify/polaris-react/pull/4416))
-- Removed motion from `Skeleton` components ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
+
 
 ### Bug fixes
 
