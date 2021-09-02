@@ -21,6 +21,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `PositionedOverlay` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - Updated `IndexTable` component to hide checkboxes when `selectable` prop is `false` ([#4376](https://github.com/Shopify/polaris-react/pull/4376))
 - [Accessibility] - Removes skeleton shimmer animation on devices that have Reduced motion setting enabled [#4460](https://github.com/Shopify/polaris-react/pull/4460)
+- Added optional `compactTitle` prop to `Page` which removes margin between `title` and `subtitle` ([#4463](https://github.com/Shopify/polaris-react/pull/4463))
 
 ### Bug fixes
 
