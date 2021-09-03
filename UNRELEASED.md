@@ -87,5 +87,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Dropzone, ExceptionList, and ConnectedFilterControl > Item components([#4412](https://github.com/Shopify/polaris-react/pull/4412))
 - Modernized tests for Checkbox and Choicelist ([#4457](https://github.com/Shopify/polaris-react/pull/4457))
 - Modernized tests for DatePicker, DescriptionList, and DisplayText ([#4360](https://github.com/Shopify/polaris-react/pull/4360))
+- Modernized tests for TextField ([#4456](https://github.com/Shopify/polaris-react/pull/4456)).
 
 ### Deprecations
