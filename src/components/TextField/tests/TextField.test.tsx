@@ -4,6 +4,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
+import styles from '../TextField.scss';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -422,11 +423,8 @@ describe('<TextField />', () => {
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `prefix`', () => {
-      const onClickSpy = jest.fn();
       const mockButtonId = 'MockPrefix';
-      const mockPrefixButton = (
-        <button id={mockButtonId} onClick={onClickSpy} />
-      );
+      const mockPrefixButton = <button id={mockButtonId} onClick={noop} />;
       const textField = mountWithApp(
         <TextField
           label="TextField"
@@ -436,10 +434,15 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find('button', {id: mockButtonId})!.trigger('onClick');
+      const button = textField.find('button', {id: mockButtonId})!.domNode!;
 
-      expect(onClickSpy).toHaveBeenCalled();
-      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
+      textField
+        .find('div', {className: styles.TextField})!
+        .trigger('onClick', {target: button});
+
+      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+        className: expect.stringContaining(styles.focus),
+      });
     });
 
     it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
@@ -454,10 +457,14 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find('button', {id: mockButtonId})!.trigger('onFocus');
+      const button = textField.find('button', {id: mockButtonId})!.domNode!;
+
+      textField
+        .find('div', {className: styles.TextField})!
+        .trigger('onFocus', {target: button});
 
       expect(textField.find(Connected)!).not.toContainReactComponent('div', {
-        className: expect.stringContaining('focus'),
+        className: expect.stringContaining(styles.focus),
       });
     });
   });
@@ -492,11 +499,8 @@ describe('<TextField />', () => {
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `suffix`', () => {
-      const onClickSpy = jest.fn();
       const mockButtonId = 'MockSuffix';
-      const mockSuffixButton = (
-        <button id={mockButtonId} onClick={onClickSpy} />
-      );
+      const mockSuffixButton = <button id={mockButtonId} onClick={noop} />;
       const textField = mountWithApp(
         <TextField
           label="TextField"
@@ -505,12 +509,15 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
+      const button = textField.find('button', {id: mockButtonId})!.domNode!;
 
-      textField.find('button', {id: mockButtonId})!.trigger('onClick');
+      textField
+        .find('div', {className: styles.TextField})!
+        .trigger('onClick', {target: button});
 
-      expect(onClickSpy).toHaveBeenCalled();
-
-      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
+      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+        className: expect.stringContaining(styles.focus),
+      });
     });
 
     it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
@@ -525,7 +532,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find('button', {id: mockButtonId})!.trigger('onFocus');
+      const button = textField.find('button', {id: mockButtonId})!.domNode!;
+
+      textField
+        .find('div', {className: styles.TextField})!
+        .trigger('onFocus', {target: button});
 
       expect(textField.find(Connected)!).not.toContainReactComponent('div', {
         className: expect.stringContaining('focus'),
@@ -590,7 +601,11 @@ describe('<TextField />', () => {
         'aria-live': 'off',
       });
 
-      textField.find('input')!.trigger('onFocus');
+      const textFieldDiv = textField.find('div', {
+        className: 'TextField hasValue',
+      })!;
+      // onClick callback sets dom focus on input
+      textFieldDiv.trigger('onClick', {target: textFieldDiv.domNode!});
 
       expect(textField).toContainReactComponent('div', {
         id: 'MyFieldCharacterCounter',
@@ -1007,7 +1022,9 @@ describe('<TextField />', () => {
             />,
           );
 
-          element.find('button')!.trigger('onMouseDown', {button: 0});
+          element
+            .findAll('div', {role: 'button'})[1]
+            .trigger('onMouseDown', {button: 0});
 
           documentEvent.mouseup();
 
@@ -1091,7 +1108,7 @@ describe('<TextField />', () => {
           ariaOwns="Aria owns"
           ariaExpanded
           ariaActiveDescendant="Aria active descendant"
-          ariaAutocomplete="Aria autocomplete"
+          ariaAutocomplete="inline"
           ariaControls="Aria controls"
           autoComplete="off"
         />,
@@ -1101,7 +1118,7 @@ describe('<TextField />', () => {
         'aria-owns': 'Aria owns',
         'aria-expanded': true,
         'aria-activedescendant': 'Aria active descendant',
-        'aria-autocomplete': 'Aria autocomplete',
+        'aria-autocomplete': 'inline',
         'aria-controls': 'Aria controls',
       });
     });
