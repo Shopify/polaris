@@ -293,7 +293,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'Some error',
+        'aria-describedby': 'PolarisTextField1Error',
       });
     });
 
@@ -314,7 +314,7 @@ describe('<TextField />', () => {
       );
 
       expect(fieldGroup.find(TextField)).toContainReactComponent('input', {
-        'aria-describedby': 'Some error',
+        'aria-describedby': 'collectionRuleTypeError',
         'aria-invalid': true,
       });
     });
@@ -366,13 +366,24 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
+
       const labels = textField
-        .find('input')
-        .prop<string>('aria-labelledby')
+        .find('input')!
+        .prop('aria-labelledby')!
         .split(' ');
       expect(labels).toHaveLength(2);
-      expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
-      expect(textField.find(`#${labels[1]}`).text()).toBe('$');
+
+      expect(
+        textField.find('label', {
+          id: `${labels[0]}`,
+        }),
+      )!.toContainReactText('TextField');
+
+      expect(
+        textField.find('div', {
+          id: `${labels[1]}`,
+        }),
+      )!.toContainReactText('$');
     });
 
     it('connects the input to the prefix, suffix, and label', () => {
@@ -386,13 +397,28 @@ describe('<TextField />', () => {
         />,
       );
       const labels = textField
-        .find('input')
-        .prop<string>('aria-labelledby')
+        .find('input')!
+        .prop('aria-labelledby')!
         .split(' ');
       expect(labels).toHaveLength(3);
-      expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
-      expect(textField.find(`#${labels[1]}`).text()).toBe('$');
-      expect(textField.find(`#${labels[2]}`).text()).toBe('.00');
+
+      expect(
+        textField.find('label', {
+          id: `${labels[0]}`,
+        }),
+      )!.toContainReactText('TextField');
+
+      expect(
+        textField.find('div', {
+          id: `${labels[1]}`,
+        }),
+      )!.toContainReactText('$');
+
+      expect(
+        textField.find('div', {
+          id: `${labels[2]}`,
+        }),
+      )!.toContainReactText('.00');
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `prefix`', () => {
@@ -410,12 +436,10 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find(`#${mockButtonId}`).simulate('click');
+      textField.find('button', {id: mockButtonId})!.trigger('onClick');
 
       expect(onClickSpy).toHaveBeenCalled();
-      expect(textField.domNode!.querySelector('input')).not.toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
     });
 
     it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
@@ -430,14 +454,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find(`#${mockButtonId}`).simulate('focus');
+      textField.find('button', {id: mockButtonId})!.trigger('onFocus');
 
-      const connectedInteriorWrapper = textField
-        .find(Connected)
-        .find('div')
-        .first();
-
-      expect(connectedInteriorWrapper.hasClass('focus')).toBe(false);
+      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+        className: expect.stringContaining('focus'),
+      });
     });
   });
 
@@ -452,12 +473,22 @@ describe('<TextField />', () => {
         />,
       );
       const labels = textField
-        .find('input')
-        .prop<string>('aria-labelledby')
+        .find('input')!
+        .prop('aria-labelledby')!
         .split(' ');
       expect(labels).toHaveLength(2);
-      expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
-      expect(textField.find(`#${labels[1]}`).text()).toBe('kg');
+
+      expect(
+        textField.find('label', {
+          id: `${labels[0]}`,
+        }),
+      )!.toContainReactText('TextField');
+
+      expect(
+        textField.find('div', {
+          id: `${labels[1]}`,
+        }),
+      )!.toContainReactText('kg');
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `suffix`', () => {
@@ -475,12 +506,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find(`#${mockButtonId}`).simulate('click');
+      textField.find('button', {id: mockButtonId})!.trigger('onClick');
 
       expect(onClickSpy).toHaveBeenCalled();
-      expect(textField.getDOMNode().querySelector('input')).not.toBe(
-        document.activeElement,
-      );
+
+      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
     });
 
     it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
@@ -495,14 +525,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find(`#${mockButtonId}`).simulate('focus');
+      textField.find('button', {id: mockButtonId})!.trigger('onFocus');
 
-      const connectedInteriorWrapper = textField
-        .find(Connected)
-        .find('div')
-        .first();
-
-      expect(connectedInteriorWrapper.hasClass('focus')).toBe(false);
+      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+        className: expect.stringContaining('focus'),
+      });
     });
   });
 
@@ -519,9 +546,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      const characterCount = textField.find('#MyFieldCharacterCounter');
-
-      expect(characterCount.text()).toBe('4');
+      expect(
+        textField.find('div', {
+          id: 'MyFieldCharacterCounter',
+        }),
+      ).toContainReactText('4');
     });
 
     it('displays remaining characters as fraction in input field with maxLength', () => {
@@ -537,9 +566,11 @@ describe('<TextField />', () => {
         />,
       );
 
-      const characterCount = textField.find('#MyFieldCharacterCounter');
-
-      expect(characterCount.text()).toBe('4/10');
+      expect(
+        textField.find('div', {
+          id: 'MyFieldCharacterCounter',
+        }),
+      ).toContainReactText('4/10');
     });
 
     it('announces updated character count only when input field is in focus', () => {
@@ -554,30 +585,34 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find('#MyFieldCharacterCounter').prop('aria-live')).toBe(
-        'off',
-      );
+      expect(textField).toContainReactComponent('div', {
+        id: 'MyFieldCharacterCounter',
+        'aria-live': 'off',
+      });
 
-      textField.find('input').simulate('focus');
-      expect(textField.find('#MyFieldCharacterCounter').prop('aria-live')).toBe(
-        'polite',
-      );
+      textField.find('input')!.trigger('onFocus');
+
+      expect(textField).toContainReactComponent('div', {
+        id: 'MyFieldCharacterCounter',
+        'aria-live': 'polite',
+      });
     });
   });
 
   describe('type', () => {
     it('sets the type on the input', () => {
-      const type = mountWithApp(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           type="email"
           onChange={noop}
           autoComplete="off"
         />,
-      )
-        .find('input')
-        .prop('type');
-      expect(type).toBe('email');
+      );
+
+      expect(textField).toContainReactComponent('input', {
+        type: 'email',
+      });
     });
 
     describe('number', () => {
@@ -593,7 +628,11 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').first().simulate('click');
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
         expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
       });
 
@@ -609,7 +648,12 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').last().simulate('click');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
         expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
       });
 
@@ -646,7 +690,11 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').first().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
         expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
       });
 
@@ -681,7 +729,11 @@ describe('<TextField />', () => {
             autoComplete="off"
           />,
         );
-        element.find('[role="button"]').first().simulate('click');
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
         expect(spy).toHaveBeenCalledWith('1.75', 'MyTextField');
       });
 
@@ -699,10 +751,18 @@ describe('<TextField />', () => {
           />,
         );
 
-        element.find('[role="button"]').last().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element.find('[role="button"]').first().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
       });
 
@@ -720,10 +780,18 @@ describe('<TextField />', () => {
           />,
         );
 
-        element.find('[role="button"]').first().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element.find('[role="button"]').last().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
       });
 
@@ -741,10 +809,18 @@ describe('<TextField />', () => {
           />,
         );
 
-        element.find('[role="button"]').first().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element.find('[role="button"]').last().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
 
@@ -762,10 +838,18 @@ describe('<TextField />', () => {
           />,
         );
 
-        element.find('[role="button"]').first().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element.find('[role="button"]').last().simulate('click');
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
 
@@ -1311,7 +1395,7 @@ describe('<TextField />', () => {
       );
 
       expect(input).toContainReactComponent('input', {
-        className: 'monospaced',
+        className: expect.stringContaining('monospaced'),
       });
     });
   });
