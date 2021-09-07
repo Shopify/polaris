@@ -119,7 +119,6 @@ export function Section({
         className={toggleClassName}
         onClick={toggleExpanded}
         aria-label={ariaLabel}
-        testID="ToggleViewAll"
       >
         <span className={styles.Icon}>
           <Icon source={HorizontalDotsMinor} />
