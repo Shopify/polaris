@@ -1,5 +1,4 @@
-import 'mutationobserver-shim';
-
+export {};
 // Mocks for scrolling
 window.scroll = () => {};
 
