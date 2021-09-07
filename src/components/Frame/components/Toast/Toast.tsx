@@ -48,12 +48,7 @@ export function Toast({
   }, [action, duration, onDismiss]);
 
   const dismissMarkup = (
-    <button
-      type="button"
-      className={styles.CloseButton}
-      onClick={onDismiss}
-      testID="closeButton"
-    >
+    <button type="button" className={styles.CloseButton} onClick={onDismiss}>
       <Icon source={MobileCancelMajor} />
     </button>
   );

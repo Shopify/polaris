@@ -138,7 +138,9 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    channels.find('button', {testID: 'ToggleViewAll'})!.trigger('onClick');
+    channels
+      .find('button', {className: 'Item RollupToggle'})!
+      .trigger('onClick');
     channels.find('a')!.trigger('onClick', {
       preventDefault: noop,
       currentTarget: {
@@ -185,7 +187,9 @@ describe('<Navigation.Section />', () => {
       },
     );
 
-    withSubNav.find('button', {testID: 'ToggleViewAll'})!.trigger('onClick');
+    withSubNav
+      .find('button', {className: 'Item RollupToggle'})!
+      .trigger('onClick');
     withSubNav.find(Item, {url: '/other'})!.trigger('onClick');
 
     expect(withSubNav).toContainReactComponent(Collapsible, {open: true});
@@ -206,7 +210,7 @@ describe('<Navigation.Section />', () => {
     );
 
     expect(channels).toContainReactComponent('button', {
-      testID: 'ToggleViewAll',
+      className: 'Item RollupToggle',
     });
   });
 
