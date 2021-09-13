@@ -2125,106 +2125,6 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@sewing-kit/cli@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/cli/-/cli-0.6.2.tgz#6b352cdec48450a7600db5047125b963055a13ad"
-  integrity sha512-Q6+0NntLSkcARKKYtBOxxmp5fLJ0B1uL7ymsFL5KnVT/tVGBIWa8YwjOqgeA0A0vO3mT36iSaQcDnzISTMbOWA==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    "@types/signal-exit" "^3.0.0"
-    ansi-escapes "^4.3.1"
-    arg "^4.1.3"
-    chalk "^4.0.0"
-    execa "^4.0.0"
-    signal-exit "^3.0.3"
-    supports-hyperlinks "^2.1.0"
-
-"@sewing-kit/core@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/core/-/core-0.6.2.tgz#2ba7c181d531d248a0228048f90d03e28fe4f333"
-  integrity sha512-i7utU6p9pcizjT2/DBrBOhatfNKtEBfs3FsdODK8zW44/d68MzuzY32fwX32UkDDz/Engqv4CUEfWwDXdoprfQ==
-  dependencies:
-    "@babel/preset-env" "^7.14.5"
-    "@babel/preset-typescript" "^7.14.5"
-    "@babel/register" "^7.14.5"
-    "@types/fs-extra" "^9.0.0"
-    "@types/glob" "^7.1.1"
-    change-case "^4.1.0"
-    fs-extra "^9.0.0"
-    glob "^7.1.6"
-
-"@sewing-kit/plugin-babel@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-babel/-/plugin-babel-0.1.1.tgz#6eb02bb50255c85fcc4c90099bce6008f07ff692"
-  integrity sha512-UDrmODheSk03p+Yw8qWcdkRvB7Uie5m8sEDeSDb//FF19OWaFbYyd+AHVM4h1YZrELX7C/qjA6nFJ5ixHU0TRw==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    "@types/babel__core" "^7.1.7"
-    core-js "^3.14.0"
-
-"@sewing-kit/plugin-eslint@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-eslint/-/plugin-eslint-0.4.2.tgz#b82623be738ba4f64550c2a5bfcda02dcec0af55"
-  integrity sha512-RWOYleYOylH993vhu/biUFjZlFcMaLCpZ8pEfB9iqP55cRs0ucIRUKgAcfBLxTeID71Vw2kMadRaWrS09Fh7tA==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    eslint "^7.0.0"
-
-"@sewing-kit/plugin-jest@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-jest/-/plugin-jest-0.5.1.tgz#051f6e4d4e4f80ecbe71f5fba4ebfd4bde6aa947"
-  integrity sha512-4qrJZUF3wEltd9v2UFcL9PStJGnSPuZp/ykQZrmT9QVPBlWNfJsDahDo1PoMZnOWbDIH8EJjRP9aG1t8mCWR4Q==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    "@types/jest" "^26.0.23"
-    babel-jest "^27.0.2"
-    jest "^27.0.4"
-    jest-watch-typeahead "^0.6.4"
-
-"@sewing-kit/plugin-package-build@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-package-build/-/plugin-package-build-0.5.1.tgz#eee307c29895e50fee5a553a9abc9ed7461550b0"
-  integrity sha512-um4mPD7tv8NZGbzgn1lsOp3CK1NuenwklRrhg4OaDuopqmYXoBpBOS93jdUlv+ScV3lD9uLPbTie8D+3yU66RA==
-  dependencies:
-    "@rollup/plugin-babel" "^5.3.0"
-    "@rollup/plugin-commonjs" "^19.0.0"
-    "@rollup/plugin-node-resolve" "^13.0.0"
-    "@sewing-kit/core" "^0.6.2"
-    "@sewing-kit/plugin-rollup" "^0.3.3"
-    rollup-plugin-node-externals "^2.2.0"
-
-"@sewing-kit/plugin-prettier@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-prettier/-/plugin-prettier-0.1.2.tgz#4fcfdc1236ea769f0418682cb319e23d824bbea3"
-  integrity sha512-NAg7sEMQ+65WWJzX/AXgEUPpeFW6IP2ezQfuF+iR3Q6RbiavZAwLo9YLkAxjmI62ebqTAjV7mE2Px2EnxdpNFw==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    prettier "^2.0.0"
-
-"@sewing-kit/plugin-rollup@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-rollup/-/plugin-rollup-0.3.3.tgz#24cfd8dbd10d6ecb72e22afa9c36cd3d9d1a49bb"
-  integrity sha512-MUbDnmoyF6vA8POa6uasgMaOEY213jzyLExJs/2eFH1lKzGSgrvnUFI8lqaeR4sgtV/h02wnoJcbUBb4WxTSYA==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    rollup "^2.48.0"
-
-"@sewing-kit/plugin-stylelint@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-stylelint/-/plugin-stylelint-0.4.2.tgz#1ec469188255efc1993b278232df94a65ef63248"
-  integrity sha512-kLT3eYmNy70AZTMFtDT9T5+9qsnEUzZz8UqjP9tPwqRoTNMigSG8x+FdKKzunCNa6Rf3SNv4VEE8oGFcFLKTeQ==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    stylelint "^13.10.0"
-
-"@sewing-kit/plugin-typescript@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-typescript/-/plugin-typescript-0.6.1.tgz#83d19976e1fcb47a2722aee01e213d93588e2257"
-  integrity sha512-1DuWM6IExvGmO9yjAgOOHjXH6nlOQeWFzzVef4g/IZk72RkApFBzYxkc6umbLgs9g1AfS+tzVRQTes+N46YiCQ==
-  dependencies:
-    "@sewing-kit/core" "^0.6.2"
-    typescript "^4.3.5"
-
 "@shopify/async@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@shopify/async/-/async-3.0.3.tgz#b65e824b5df1a772728823266c7be75499bd90c8"
@@ -2297,6 +2197,106 @@
     fetch-mock "^9.11.0"
     lolex "^2.7.5"
     promise "^8.0.3"
+
+"@shopify/loom-cli@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-cli/-/loom-cli-0.7.0.tgz#1711a812d96dfc7d45af21e2622db4e1e128d710"
+  integrity sha512-ymagygORPJ5FE+ne//S+m201AyJanWf9GdtJ/iT61O5GYkeEftaZ8IBpYGgbOWr2FuTTwrZHxL4U6V+/9HsAZw==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    "@types/signal-exit" "^3.0.0"
+    ansi-escapes "^4.3.1"
+    arg "^4.1.3"
+    chalk "^4.0.0"
+    execa "^4.0.0"
+    signal-exit "^3.0.3"
+    supports-hyperlinks "^2.1.0"
+
+"@shopify/loom-plugin-babel@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-babel/-/loom-plugin-babel-0.3.0.tgz#75c24c0633fe7ca3b5b183f8950e001eef9d6ac7"
+  integrity sha512-vIBhtO26ICU2EtIXHTkxY6/HKUZy6qaDUuaM5kfMdH7xBQs+n1rvlrH88gUQQPIl5ZZd7V52ARVWidm+ZiAyTw==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    "@types/babel__core" "^7.1.7"
+    core-js "^3.14.0"
+
+"@shopify/loom-plugin-eslint@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-eslint/-/loom-plugin-eslint-0.5.0.tgz#6efae8d0a6fec57f14d29fb45d577eeba19b8bfd"
+  integrity sha512-5vZ2w4kNam31IlsVWcwEaWF+VvoB/8yVJXcR3pAbd5354M6/xz59szhpgf30/AANm6K7VzGEoqDa6X3JGuN2cQ==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    eslint "^7.0.0"
+
+"@shopify/loom-plugin-jest@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-jest/-/loom-plugin-jest-0.6.0.tgz#0a78748207fddc0b5269c762777a2fdbc1828c7f"
+  integrity sha512-xZnVwGhmugYEfyE5UjD+GlrvvEHuhPb6KwfOgrm53eQb6OuXwIVTLvZiYkYWHZWPyKR1+3ve4NPaciUqavQpEg==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    "@types/jest" "^26.0.23"
+    babel-jest "^27.0.2"
+    jest "^27.0.4"
+    jest-watch-typeahead "^0.6.4"
+
+"@shopify/loom-plugin-package-build@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-package-build/-/loom-plugin-package-build-0.7.0.tgz#6c9a4884dd8177581c2c7658463bb20297a892a3"
+  integrity sha512-T0IgWYHCcDFKB5Oqa4t6NvVSE2mHOOfJmfPM1+VKPmYTzUtbzdxTkljKhzjSe5hrOCAnE0AWk1DcbDyB87AQwg==
+  dependencies:
+    "@rollup/plugin-babel" "^5.3.0"
+    "@rollup/plugin-commonjs" "^19.0.0"
+    "@rollup/plugin-node-resolve" "^13.0.0"
+    "@shopify/loom" "^0.7.0"
+    "@shopify/loom-plugin-rollup" "^0.4.0"
+    rollup-plugin-node-externals "^2.2.0"
+
+"@shopify/loom-plugin-prettier@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-prettier/-/loom-plugin-prettier-0.2.0.tgz#20d0e466912835c8ab00f29b057840ca11289686"
+  integrity sha512-/leTuPsKCZKhWDBsKOur5f7uvuLMpeU0EMr0vOgMGXWXbGx6Rlx1nms9J7UskZI3QFgry2FVAqpV73XyZIF/6Q==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    prettier "^2.0.0"
+
+"@shopify/loom-plugin-rollup@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-rollup/-/loom-plugin-rollup-0.4.0.tgz#cfe81b07830b698924d3ecd53f50c57d310c8e98"
+  integrity sha512-/kf550Am+MdUZaw9KlBo4vU93FjL27E4wCC7pRU6JNaKmRm54neU6KllVsoTDANU/JBGBaFOJ+QouKOrL2pp9w==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    rollup "^2.48.0"
+
+"@shopify/loom-plugin-stylelint@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-stylelint/-/loom-plugin-stylelint-0.5.0.tgz#dbe90ffdf48c406e77823b30ef5916630e1e0d8a"
+  integrity sha512-prs89Bf0+9k/vQoxpoHuMl3y+la7tSknP9QduC6syUpYnwM4HxilehXBgpfluPpR1mT9b3A/5lHxkd1BrJwdsA==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    stylelint "^13.10.0"
+
+"@shopify/loom-plugin-typescript@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-typescript/-/loom-plugin-typescript-0.8.0.tgz#bbb4e6a617cfbb01ee1cbd4b35a8840f0149fd1d"
+  integrity sha512-kjWvkSGTQCiZ9rubHIuRraUNThJ5xewlBIDVSqTHuFZ5VRLpj419XHRQGHjZhEGej8GiOLkMaMtdXMQcKxkzjg==
+  dependencies:
+    "@shopify/loom" "^0.7.0"
+    typescript "^4.3.5"
+
+"@shopify/loom@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom/-/loom-0.7.0.tgz#ef8a35785ceed91213bab4b4695c92e2f441f241"
+  integrity sha512-0KswABJpCbmLZyTPwVtkgoosgUG1v9j+tORTToMMS+dz9SUhHIC1C3vgzeRB6IcP5Stt88Gl1+2OIm0Dn2DOYA==
+  dependencies:
+    "@babel/preset-env" "^7.14.5"
+    "@babel/preset-typescript" "^7.14.5"
+    "@babel/register" "^7.14.5"
+    "@types/fs-extra" "^9.0.0"
+    "@types/glob" "^7.1.1"
+    change-case "^4.1.0"
+    fs-extra "^9.0.0"
+    glob "^7.1.6"
 
 "@shopify/polaris-icons@^4.1.0":
   version "4.1.0"

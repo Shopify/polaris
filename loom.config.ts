@@ -6,14 +6,14 @@ import {
   createWorkspacePlugin,
   createProjectPlugin,
   DiagnosticError,
-} from '@sewing-kit/core';
-import {babel} from '@sewing-kit/plugin-babel';
-import {workspaceTypeScript} from '@sewing-kit/plugin-typescript';
-import {packageBuild, rollupPlugins} from '@sewing-kit/plugin-package-build';
-import {eslint} from '@sewing-kit/plugin-eslint';
-import {stylelint} from '@sewing-kit/plugin-stylelint';
-import {prettier} from '@sewing-kit/plugin-prettier';
-import {jest} from '@sewing-kit/plugin-jest';
+} from '@shopify/loom';
+import {babel} from '@shopify/loom-plugin-babel';
+import {workspaceTypeScript} from '@shopify/loom-plugin-typescript';
+import {packageBuild, rollupPlugins} from '@shopify/loom-plugin-package-build';
+import {eslint} from '@shopify/loom-plugin-eslint';
+import {stylelint} from '@shopify/loom-plugin-stylelint';
+import {prettier} from '@shopify/loom-plugin-prettier';
+import {jest} from '@shopify/loom-plugin-jest';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import postcssShopify from '@shopify/postcss-plugin';
