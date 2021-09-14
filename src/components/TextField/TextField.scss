@@ -108,6 +108,10 @@ $stacking-order: (
   color: var(--p-text);
   resize: none;
 
+  @include breakpoint-after(nav-min-window-corrected()) {
+    min-width: 0;
+  }
+
   .Prefix + & {
     padding-left: 0;
   }
