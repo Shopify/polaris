@@ -93,8 +93,8 @@ $stacking-order: (
   z-index: z-index(contents, $stacking-order);
   display: block;
   flex: 1 1 0%;
+  min-width: 100%;
   width: 100%;
-  min-width: 0;
   min-height: control-height();
   margin: 0;
   padding: control-vertical-padding() $backdrop-horizontal-spacing;
@@ -106,6 +106,7 @@ $stacking-order: (
   appearance: none;
   caret-color: var(--p-text);
   color: var(--p-text);
+  resize: none;
 
   .Prefix + & {
     padding-left: 0;
@@ -309,4 +310,16 @@ $stacking-order: (
 
 .monospaced {
   font-family: font-family($family: 'monospace');
+}
+
+.Scroll {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: scroll;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

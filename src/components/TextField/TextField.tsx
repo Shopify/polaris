@@ -462,9 +462,11 @@ export function TextField({
           onBlur={handleBlur}
           onClick={handleClick}
         >
-          {prefixMarkup}
-          {input}
-          {suffixMarkup}
+          <div className={styles.Scroll}>
+            {prefixMarkup}
+            {input}
+            {suffixMarkup}
+          </div>
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
