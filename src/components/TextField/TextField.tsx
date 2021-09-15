@@ -430,6 +430,7 @@ export function TextField({
     pattern,
     inputMode,
     type: inputType,
+    dir: 'auto',
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),

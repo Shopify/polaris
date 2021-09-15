@@ -222,7 +222,7 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .SectionWrapper {
-  padding: 1rem 0 0 0;
+  padding: 1rem 0 0;
   background-color: var(--p-surface-subdued);
 
   > .SectionHeader {
@@ -234,7 +234,7 @@ $item-wrapper-loading-height: rem(64px);
   }
 
   &:last-child {
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 0;
   }
 }
 
