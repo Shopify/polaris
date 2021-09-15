@@ -34,7 +34,8 @@ keywords:
 
 # Modal
 
-Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
+Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They are disruptive and should be used only for confirmations and conditional changes, rather than just another way of presenting content. 
+
 
 ---
 
@@ -85,7 +86,7 @@ As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this 
 
 ## Best practices
 
-Use modals when merchants must complete an action before they can continue with the main workflow. Avoid using modals to display complex forms or large amounts of information.
+Use modals when merchants must complete an action before they can continue with the main workflow. Don’t use modals just to nest information that could be displayed in a more persistent place in the UI. Avoid using modals to display complex forms or large amounts of information.
 
 Modals should:
 
