@@ -14,7 +14,7 @@ describe('<Icon />', () => {
       ).find('span');
 
       expect(element).toContainReactComponent(VisuallyHidden, {
-        children: label,
+        children: [' ', label],
       });
     });
   });
