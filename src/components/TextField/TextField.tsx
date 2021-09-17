@@ -99,6 +99,8 @@ interface NonMutuallyExclusiveProps {
   /** Maximum character length for an input */
   maxLength?: number;
   /** Mimics the behavior of the native HTML attribute, limiting the minimum value */
+  maxHeight?: number | string;
+  /** Maximum height of the element */
   min?: number | string;
   /** Minimum character length for an input */
   minLength?: number;
@@ -169,6 +171,7 @@ export function TextField({
   autoComplete,
   max,
   maxLength,
+  maxHeight,
   min,
   minLength,
   pattern,
@@ -354,7 +357,7 @@ export function TextField({
       />
     ) : null;
 
-  const style = multiline && height ? {height} : null;
+  const style = multiline && height ? {height, maxHeight} : null;
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
