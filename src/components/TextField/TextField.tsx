@@ -98,9 +98,9 @@ interface NonMutuallyExclusiveProps {
   max?: number | string;
   /** Maximum character length for an input */
   maxLength?: number;
-  /** Mimics the behavior of the native HTML attribute, limiting the minimum value */
-  maxHeight?: number | string;
-  /** Maximum height of the element */
+  /** Maximum height of the input element. Only applies when `multiline` is `true`. */
+   maxHeight?: number | string;
+  /** Mimics the behavior of the native HTML attribute, limiting the minimum value */ 
   min?: number | string;
   /** Minimum character length for an input */
   minLength?: number;
