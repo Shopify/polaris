@@ -98,10 +98,7 @@ export class ConnectedFilterControl extends Component<
 
     const rightMarkup =
       actionsToRender.length > 0 ? (
-        <div
-          className={RightContainerClassName}
-          testID="FilterShortcutContainer"
-        >
+        <div className={RightContainerClassName}>
           {this.popoverFrom(actionsToRender)}
         </div>
       ) : null;

@@ -5,7 +5,8 @@
       "labelWithInitials": "Baş harfleri {initials} olan avatar"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Yükleniyor"
+      "spinnerAccessibilityLabel": "Yükleniyor",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

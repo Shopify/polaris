@@ -76,6 +76,7 @@ export function Header({
   breadcrumbs = [],
   secondaryActions = [],
   actionGroups = [],
+  compactTitle = false,
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const isSingleRow =
@@ -120,6 +121,7 @@ export function Header({
         subtitle={subtitle}
         titleMetadata={titleMetadata}
         thumbnail={thumbnail}
+        compactTitle={compactTitle}
       />
     </div>
   );

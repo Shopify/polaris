@@ -20,6 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `Popover` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the underlying overlay component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - `PositionedOverlay` now exposes an imperative `forceUpdatePosition()` API for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
 - Updated `IndexTable` component to hide checkboxes when `selectable` prop is `false` ([#4376](https://github.com/Shopify/polaris-react/pull/4376))
+- [Accessibility] - Removes skeleton shimmer animation on devices that have Reduced motion setting enabled [#4460](https://github.com/Shopify/polaris-react/pull/4460)
+- Added optional `compactTitle` prop to `Page` which removes margin between `title` and `subtitle` ([#4463](https://github.com/Shopify/polaris-react/pull/4463))
 
 ### Bug fixes
 
@@ -63,17 +65,19 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for SkeletonBodyTest, SkeletonDisplayTest, SkeletonPage, SkeletonThumbnail, and Spinner components ([#4353](https://github.com/Shopify/polaris-react/pull/4353))
 - Modernized tests for CalloutCard, Caption, CheckableButton, Resizer, VideoThumbnail ([#4387](https://github.com/Shopify/polaris-react/pull/4387))
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
-- Modernized test for UnstyledLink, Tag, DisplayText, FileUpload, MessageIndicator, Choice and Dialog ([#4407](https://github.com/Shopify/polaris-react/pull/4407)).
+- Modernized tests for UnstyledLink, Tag, DisplayText, FileUpload, MessageIndicator, Choice and Dialog ([#4407](https://github.com/Shopify/polaris-react/pull/4407)).
 - Modernized tests for Konami, Labelled, and Link components([#4389](https://github.com/Shopify/polaris-react/pull/4389))
+- Modernized tests for TextStyle, Collapsible, Tabs ([#4453](https://github.com/Shopify/polaris-react/pull/4453))
 - Modernized tests for Scrollable, ScrollTo, ScrollLock, Select, SettingToggle, Sheet, Spinner, and Sticky components([#4386](https://github.com/Shopify/polaris-react/pull/4386))
 - Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
+- Modernized tests for ResourceItem, ResourceList ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
 - Modernized tests for MediaCard, and Layout components ([#4393](https://github.com/Shopify/polaris-react/pull/4393))
 - Modernized tests for Image and Icon components ([#4418](https://github.com/Shopify/polaris-react/pull/4418))
 - Modernized tests for EventListener and EmptySearch components([#4423](https://github.com/Shopify/polaris-react/pull/4423))
 - Modernized tests for Pane, Section, PositionedOverlay, SingleThumb, RangeSlider, and ConnectedFilter components ([#4429](https://github.com/Shopify/polaris-react/pull/4429))
 - Modernized tests for ContextualSaveBar and DataTable and its subcomponents ([#4397](https://github.com/Shopify/polaris-react/pull/4397))
 - Modernized tests for IndexTable, Indicator, InlineError, KeyboardKey, and KeypressListener components([#4431](https://github.com/Shopify/polaris-react/pull/4431))
-- Modernized tests for Form and Filters components ([#4434](https://github.com/Shopify/polaris-react/pull/4434)).
+- Modernized tests for Form and Filters components ([#4434](https://github.com/Shopify/polaris-react/pull/4434) and [#4458](https://github.com/Shopify/polaris-react/pull/4458))
 - Modernized tests for OptionList and its subcomponents ([#4441](https://github.com/Shopify/polaris-react/pull/4441))
 - Modernized tests for Modal ([#4433](https://github.com/Shopify/polaris-react/pull/4433))
 - Modernized tests for Navigation and Navigation.Section ([#4440](https://github.com/Shopify/polaris-react/pull/4440))
@@ -81,6 +85,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Modernized tests for Pagination, FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
 - Modernized tests for PopoverOverlay component([#4430](https://github.com/Shopify/polaris-react/pull/4430))
 - Modernized tests for Dropzone, ExceptionList, and ConnectedFilterControl > Item components([#4412](https://github.com/Shopify/polaris-react/pull/4412))
+- Modernized tests for Checkbox and Choicelist ([#4457](https://github.com/Shopify/polaris-react/pull/4457))
 - Modernized tests for DatePicker, DescriptionList, and DisplayText ([#4360](https://github.com/Shopify/polaris-react/pull/4360))
+- Modernized tests for TextField ([#4456](https://github.com/Shopify/polaris-react/pull/4456)).
 
 ### Deprecations

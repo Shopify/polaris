@@ -67,13 +67,9 @@ describe('<Popover />', () => {
 
   it('renders an activator', () => {
     const popover = mountWithApp(
-      <Popover
-        active
-        activator={<div testID="activator">Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active activator={<div>Activator</div>} onClose={spy} />,
     );
-    expect(popover).toContainReactComponent('div', {testID: 'activator'});
+    expect(popover).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders a positionedOverlay when active is true', () => {

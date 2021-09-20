@@ -279,7 +279,6 @@ export function TextField({
     clearButtonVisible && clearButton ? (
       <button
         type="button"
-        testID="clearButton"
         className={styles.ClearButton}
         onClick={handleClearButtonPress}
         disabled={disabled}

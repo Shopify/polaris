@@ -147,7 +147,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     return (
       <PositionedOverlay
         ref={this.overlayRef}
-        testID="positionedOverlay"
         fullWidth={fullWidth}
         active={active}
         activator={activator}

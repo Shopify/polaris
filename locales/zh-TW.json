@@ -5,7 +5,8 @@
       "labelWithInitials": "姓名首字母為 {initials} 的大頭貼"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "載入中"
+      "spinnerAccessibilityLabel": "載入中",
+      "ellipsis": "{content}……"
     },
     "Badge": {
       "PROGRESS_LABELS": {

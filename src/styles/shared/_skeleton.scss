@@ -23,6 +23,10 @@ $thumbnail-sizes: (
   animation: var(--polaris-animation-skeleton-shimmer)
     $skeleton-shimmer-duration linear infinite alternate;
   will-change: opacity;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
 
 @mixin skeleton-content {

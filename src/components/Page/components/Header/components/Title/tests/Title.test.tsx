@@ -40,6 +40,15 @@ describe('<Title />', () => {
       const pageTitle = mountWithApp(<Title {...mockProps} />);
       expect(pageTitle).not.toContainReactComponent('p');
     });
+
+    it('renders styles when compactTitle prop is defined', () => {
+      const pageTitle = mountWithApp(
+        <Title {...propsWithSubtitle} compactTitle />,
+      );
+      expect(pageTitle).toContainReactComponent('div', {
+        className: expect.stringContaining('SubtitleCompact'),
+      });
+    });
   });
 
   describe('titleMetadata', () => {

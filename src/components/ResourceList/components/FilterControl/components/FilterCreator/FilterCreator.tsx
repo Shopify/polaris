@@ -120,7 +120,6 @@ export function FilterCreator({
     <Button
       onClick={togglePopoverActive}
       disclosure
-      testID="FilterCreator-FilterActivator"
       disabled={disabled}
       onFocus={handleButtonFocus}
     >
@@ -144,11 +143,7 @@ export function FilterCreator({
   ) : null;
 
   const addFilterButtonMarkup = selectedFilter ? (
-    <Button
-      onClick={handleAddFilter}
-      disabled={!canAddFilter}
-      testID="FilterCreator-AddFilterButton"
-    >
+    <Button onClick={handleAddFilter} disabled={!canAddFilter}>
       {i18n.translate(
         'Polaris.ResourceList.FilterCreator.addFilterButtonLabel',
       )}

@@ -92,9 +92,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 
   if (contextControl) {
     contextMarkup = (
-      <div testID="ContextControl" className={styles.ContextControl}>
-        {contextControl}
-      </div>
+      <div className={styles.ContextControl}>{contextControl}</div>
     );
   } else if (logo) {
     const className = classNames(

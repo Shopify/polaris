@@ -89,7 +89,6 @@ export function Tooltip({
 
   return (
     <WrapperComponent
-      testID="WrapperComponent"
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseLeave={handleMouseLeave}

@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Tab, Panel, TabMeasurer} from '../components';
@@ -95,10 +93,12 @@ describe('<Tabs />', () => {
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
       ];
-      const wrapper = mountWithAppProvider(<Tabs {...mockProps} tabs={tabs} />);
+      const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
 
-      tabs.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('id')).toBe(tab.id);
+      tabs.forEach((tab) => {
+        expect(wrapper.find('ul')!).toContainReactComponent(Tab, {
+          id: tab.id,
+        });
       });
     });
 
@@ -108,38 +108,37 @@ describe('<Tabs />', () => {
         {...tabs[1], panelID: 'panel-2'},
       ];
       const content = <p>Panel contents</p>;
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Tabs {...mockProps} tabs={panelIDedTabs}>
           {content}
         </Tabs>,
       );
 
-      panelIDedTabs.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('panelID')).toBe(
-          tab.panelID,
-        );
+      panelIDedTabs.forEach((tab) => {
+        expect(wrapper.find('ul')!).toContainReactComponent(Tab, {
+          panelID: tab.panelID,
+        });
       });
     });
 
     it('uses an auto-generated panelID if none is provided', () => {
       const content = <p>Panel contents</p>;
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps}>{content}</Tabs>,
-      );
+      const wrapper = mountWithApp(<Tabs {...mockProps}>{content}</Tabs>);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
+        const panelID = wrapper.find('ul')!.findAll(Tab)[index].prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
     });
 
     it('sets the panelID to undefined when the tab does not have an associated panel (child)', () => {
-      const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
+      const wrapper = mountWithApp(<Tabs {...mockProps} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
-        expect(panelID).toBeUndefined();
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
+          panelID: undefined,
+        });
       });
     });
 
@@ -148,14 +147,12 @@ describe('<Tabs />', () => {
         {...tabs[0], url: 'https://shopify.com'},
         {...tabs[1], url: 'https://google.com'},
       ];
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} tabs={urlTabs} />,
-      );
+      const wrapper = mountWithApp(<Tabs {...mockProps} tabs={urlTabs} />);
 
       urlTabs.forEach((tab, index) => {
-        expect(
-          wrapper.find('ul').find(Tab).at(index).prop('url'),
-        ).toStrictEqual(tab.url);
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
+          url: tab.url,
+        });
       });
     });
 
@@ -164,14 +161,12 @@ describe('<Tabs />', () => {
         {...tabs[0], accessibilityLabel: 'Tab 1'},
         {...tabs[1], accessibilityLabel: 'Tab 2'},
       ];
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} tabs={labelledTabs} />,
-      );
+      const wrapper = mountWithApp(<Tabs {...mockProps} tabs={labelledTabs} />);
 
       labelledTabs.forEach((tab, index) => {
-        expect(
-          wrapper.find('ul').find(Tab).at(index).prop('accessibilityLabel'),
-        ).toStrictEqual(tab.accessibilityLabel);
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
+          accessibilityLabel: tab.accessibilityLabel,
+        });
       });
     });
 
@@ -180,14 +175,14 @@ describe('<Tabs />', () => {
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Tabs {...mockProps} tabs={tabsWithContent} />,
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(
-          wrapper.find('ul').find(Tab).at(index).prop('children'),
-        ).toStrictEqual(tab.content);
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
+          children: tab!.content,
+        });
       });
     });
 
@@ -203,14 +198,14 @@ describe('<Tabs />', () => {
           id: 'tab-2',
         },
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Tabs {...mockProps} tabs={tabsWithContent} />,
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(
-          wrapper.find('ul').find(Tab).at(index).prop('children'),
-        ).toStrictEqual(tab.content);
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
+          children: tab.content,
+        });
       });
     });
   });
@@ -235,7 +230,7 @@ describe('<Tabs />', () => {
         {...tabs[1], panelID: 'panel-2'},
       ];
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Tabs {...mockProps} tabs={panelIDedTabs}>
           Panel contents
         </Tabs>,
@@ -248,35 +243,26 @@ describe('<Tabs />', () => {
   describe('panel', () => {
     it('renders a Panel for each of the Tabs', () => {
       const content = <p>Tab content</p>;
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps}>{content}</Tabs>,
-      );
-      const panel = wrapper.find(Panel);
-      expect(panel).toHaveLength(2);
+      const wrapper = mountWithApp(<Tabs {...mockProps}>{content}</Tabs>);
+      expect(wrapper).toContainReactComponentTimes(Panel, 2);
     });
 
     it('renders a Panel with a hidden prop for the non selected tabs', () => {
       const content = <p>Tab content</p>;
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps}>{content}</Tabs>,
-      );
+      const wrapper = mountWithApp(<Tabs {...mockProps}>{content}</Tabs>);
 
-      const nonSelectedPanel = wrapper.find(Panel).at(1);
-      expect(nonSelectedPanel.prop('hidden')).toBe(true);
+      expect(wrapper.findAll(Panel)[1]).toHaveReactProps({hidden: true});
     });
 
     it('wraps the children in a Panel with matching aria attributes to the tab', () => {
       const content = <p>Tab content</p>;
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps}>{content}</Tabs>,
-      );
+      const wrapper = mountWithApp(<Tabs {...mockProps}>{content}</Tabs>);
 
-      const selectedTab = wrapper.find('ul').find(Tab).at(0);
-      const panel = wrapper.find(Panel).at(0);
-      expect(panel.exists()).toBe(true);
-      expect(panel.contains(content)).toBe(true);
-      expect(panel.prop('id')).toBeTruthy();
-      expect(panel.prop('id')).toBe(selectedTab.prop('panelID'));
+      const selectedTab = wrapper.find('ul')!.findAll(Tab)[0];
+      const panel = wrapper.findAll(Panel)[0];
+
+      expect(panel).toContainReactComponent('p', {children: 'Tab content'});
+      expect(panel).toHaveReactProps({id: selectedTab.prop('panelID')});
     });
 
     it('uses a custom panelID', () => {
@@ -285,25 +271,23 @@ describe('<Tabs />', () => {
         tabs[1],
       ];
       const content = <p>Tab content</p>;
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Tabs {...mockProps} tabs={panelIDedTabs}>
           {content}
         </Tabs>,
       );
 
-      const panel = wrapper.find(Panel).at(0);
-      const selectedTab = wrapper.find('ul').find(Tab).at(0);
-      expect(panel.prop('id')).toBe(selectedTab.prop('panelID'));
+      const panel = wrapper.findAll(Panel)[0];
+      const selectedTab = wrapper.find('ul')!.findAll(Tab)[0];
+      expect(panel).toHaveReactProps({id: selectedTab.prop('panelID')});
     });
   });
 
   describe('onSelect()', () => {
     it('is called with the index of the clicked tab', () => {
       const spy = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} onSelect={spy} />,
-      );
-      wrapper.find('ul').find(Tab).at(1).find('button').simulate('click');
+      const wrapper = mountWithApp(<Tabs {...mockProps} onSelect={spy} />);
+      wrapper.find('ul')!.findAll(Tab)[1].find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });
@@ -316,57 +300,52 @@ describe('<Tabs />', () => {
     ];
 
     it('is not set to anything by default', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
+      const tabs = mountWithApp(<Tabs {...mockProps} />);
+      expect(tabs.find(TabMeasurer)).toHaveReactProps({tabToFocus: -1});
     });
 
     it('passes the provided selected value if given', () => {
-      const tabs = mountWithAppProvider(
+      const tabs = mountWithApp(
         <Tabs {...mockProps} selected={1} tabs={mockTabs} />,
       );
-      expect(tabs.find(TabMeasurer).prop('selected')).toBe(1);
+      expect(tabs.find(TabMeasurer)).toHaveReactProps({selected: 1});
     });
 
     describe('ArrowRight', () => {
       it('shifts focus to the next tab when pressing ArrowRight', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        const tabs = mountWithApp(<Tabs {...mockProps} tabs={mockTabs} />);
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs.find(TabMeasurer)).toHaveReactProps({tabToFocus: 0});
       });
 
       it('shifts focus to the first tab when pressing ArrowRight on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        const tabs = mountWithApp(<Tabs {...mockProps} tabs={mockTabs} />);
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
-        trigger(tabs.find('ul'), 'onKeyUp', {
+
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs.find(TabMeasurer)).toHaveReactProps({tabToFocus: 0});
       });
     });
 
     describe('ArrowLeft', () => {
       it('shifts focus to the last tab when pressing ArrowLeft', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        const tabs = mountWithApp(<Tabs {...mockProps} tabs={mockTabs} />);
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowLeft',
         });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
+        expect(tabs.find(TabMeasurer)).toHaveReactProps({tabToFocus: 2});
       });
     });
   });
@@ -408,108 +387,100 @@ describe('<Tabs />', () => {
     });
 
     it('passes preferredPosition below to the Popover', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      const tabMeasurer = tabs.find(TabMeasurer);
-      trigger(tabMeasurer, 'handleMeasurement', {
+      const tabs = mountWithApp(<Tabs {...mockProps} />);
+      tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
         hiddenTabWidths: [82, 160, 150, 100, 80, 120],
         containerWidth: 300,
         disclosureWidth: 0,
       });
 
-      const popover = tabs.find(Popover);
-      expect(popover.prop('preferredPosition')).toBe('below');
+      expect(tabs.find(Popover)).toHaveReactProps({preferredPosition: 'below'});
     });
 
     it('renders with a button as the activator when there are hiddenTabs', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      const tabMeasurer = tabs.find(TabMeasurer);
-      trigger(tabMeasurer, 'handleMeasurement', {
+      const tabs = mountWithApp(<Tabs {...mockProps} />);
+      tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
         hiddenTabWidths: [82, 160, 150, 100, 80, 120],
         containerWidth: 300,
         disclosureWidth: 0,
       });
 
-      const popover = tabs.find(Popover);
-      expect(popover.prop('activator').type).toBe('button');
+      expect(tabs.find(Popover)!.prop('activator').type).toBe('button');
     });
 
     describe('ArrowRight', () => {
       it('shifts focus to the first tab when pressing ArrowRight', () => {
-        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-        const tabMeasurer = tabs.find(TabMeasurer);
-        trigger(tabMeasurer, 'handleMeasurement', {
+        const tabs = mountWithApp(<Tabs {...mockProps} />);
+        tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
           hiddenTabWidths: [82, 160, 150, 100, 80, 120],
           containerWidth: 300,
           disclosureWidth: 0,
         });
 
-        const popover = tabs.find(Popover);
-        const disclosureActivator = popover.find('.DisclosureActivator');
+        tabs.find(Popover)!.find('button')!.trigger('onClick');
 
-        trigger(disclosureActivator, 'onClick', {
-          key: 'Enter',
-        });
-
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
 
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs).toContainReactComponent(TabMeasurer, {tabToFocus: 0});
       });
 
       it('shifts focus to the first hidden tab when the last visible tab is focused and the disclosure popover is active', () => {
-        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-        const tabMeasurer = tabs.find(TabMeasurer);
-        trigger(tabMeasurer, 'handleMeasurement', {
+        const tabs = mountWithApp(<Tabs {...mockProps} />);
+
+        tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
           hiddenTabWidths: [82, 160, 150, 100, 80, 120],
           containerWidth: 300,
           disclosureWidth: 0,
         });
-        const popover = tabs.find(Popover);
-        const disclosureActivator = popover.find('button');
 
-        disclosureActivator.simulate('click');
+        const popover = tabs.find(Popover)!;
+        const disclosureActivator = popover.find('button')!;
 
-        trigger(disclosureActivator, 'onClick', {
-          key: 'Enter',
-        });
+        disclosureActivator.trigger('onClick');
 
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
 
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs.find(TabMeasurer)!.prop('tabToFocus')).toBe(0);
 
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
 
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(1);
+        expect(tabs.find(TabMeasurer)!.prop('tabToFocus')).toBe(1);
       });
 
       it('does not shift focus to the first hidden tab when the last visible tab is focused and the disclosure popover is not active', () => {
-        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-        const tabMeasurer = tabs.find(TabMeasurer);
-        trigger(tabMeasurer, 'handleMeasurement', {
+        const tabs = mountWithApp(<Tabs {...mockProps} />);
+
+        tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
           hiddenTabWidths: [82, 160, 150, 100, 80, 120],
           containerWidth: 300,
           disclosureWidth: 0,
         });
 
-        const popover = tabs.find(Popover);
-        expect(popover.prop('active')).toBe(false);
+        expect(tabs).toContainReactComponent(Popover, {
+          active: false,
+        });
 
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'ArrowRight',
         });
 
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs).toContainReactComponent(TabMeasurer, {
+          tabToFocus: 0,
+        });
 
-        trigger(tabs.find('ul'), 'onKeyUp', {
+        tabs.find('ul')!.trigger('onKeyUp', {
           key: 'Enter',
         });
 
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+        expect(tabs).toContainReactComponent(TabMeasurer, {
+          tabToFocus: 0,
+        });
       });
     });
   });
