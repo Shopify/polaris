@@ -36,6 +36,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Properly support `selected` prop for `Navigation.Item` when `url` prop is not specified ([#4375](https://github.com/Shopify/polaris-react/pull/4375))
 - Fixed an accessibility bug in `Icon` where `aria-label` was used incorrectly ([#4414](https://github.com/Shopify/polaris-react/pull/4414))
 - Fixed a bug in `Option` where the label would cause scrollbars to appear instead of wrapping ([#4411](https://github.com/Shopify/polaris-react/pull/4411))
+- Restored pointing device interactivity to prefix and suffix slots of the `TextField` component ([#4477](https://github.com/Shopify/polaris-react/pull/4477))
 
 ### Documentation
 
