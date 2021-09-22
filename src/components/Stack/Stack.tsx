@@ -39,6 +39,10 @@ export interface StackProps {
   distribution?: Distribution;
 }
 
+interface ChildProps {
+  readonly key: number;
+}
+
 export const Stack = memo(function Stack({
   children,
   vertical,
@@ -56,9 +60,20 @@ export const Stack = memo(function Stack({
     wrap === false && styles.noWrap,
   );
 
+  const unwrappedComponent = (child: JSX.Element, props: ChildProps) => ({
+    ...child,
+    props: {
+      ...child.props,
+      ...props,
+    },
+  });
+
   const itemMarkup = elementChildren(children).map((child, index) => {
-    const props = {key: index};
-    return wrapWithComponent(child, Item, props);
+    const props: ChildProps = {key: index};
+    const isValidChildren = child.props.children;
+    return isValidChildren
+      ? wrapWithComponent(child, Item, props)
+      : unwrappedComponent(child, props);
   });
 
   return <div className={className}>{itemMarkup}</div>;
