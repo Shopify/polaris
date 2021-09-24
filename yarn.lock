@@ -2298,10 +2298,10 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
 
-"@shopify/polaris-icons@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.1.0.tgz#296ff47d22b52cb1592e2fa81a609f8f3c912eb0"
-  integrity sha512-U5ODhOJtfYHJskYUknceIjpF+EhHdMQJ54HSWsjuHAapCWbmA8ROVonAnDEM+cWeEVinpPZzQd2nE/DVJUmKkw==
+"@shopify/polaris-icons@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.8.0.tgz#dbcf60bf766b815100850766ac35decaa3e2f0dd"
+  integrity sha512-KnTO2T/UCUW3pubCe9SkDk2fuDVXTO080jXJcVvYgOldyTdN67j3aeNU9s+fxOKQlV2s1j3PufAp1DyG6V17Pg==
 
 "@shopify/polaris-tokens@^3.0.0":
   version "3.0.0"
