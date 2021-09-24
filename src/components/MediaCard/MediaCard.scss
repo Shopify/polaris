@@ -19,8 +19,11 @@ $portrait-breakpoint: 804px;
 
 .MediaContainer {
   overflow: hidden;
-  border-top-left-radius: var(--p-border-radius-wide);
-  border-top-right-radius: var(--p-border-radius-wide);
+
+  @include page-content-when-not-fully-condensed {
+    border-top-right-radius: var(--p-border-radius-wide);
+    border-top-left-radius: var(--p-border-radius-wide);
+  }
 
   &:not(.portrait) {
     flex-basis: 40%;
