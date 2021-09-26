@@ -419,7 +419,7 @@ export function TextField({
     style,
     autoComplete,
     className: inputClassName,
-    onChange: handleChange,
+    onChange: inputType === 'number' ? handleChangeForNumbers : handleChange,
     ref: inputRef,
     min,
     max,
@@ -497,6 +497,16 @@ export function TextField({
       ((prefixRef.current && prefixRef.current.contains(target)) ||
         (suffixRef.current && suffixRef.current.contains(target)))
     );
+  }
+
+  function handleChangeForNumbers(event: React.ChangeEvent<HTMLInputElement>) {
+    if (maxLength && onChange) {
+      if (event.currentTarget.value.length <= maxLength) {
+        onChange(event.currentTarget.value, id);
+      }
+      return;
+    }
+    onChange && onChange(event.currentTarget.value, id);
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
