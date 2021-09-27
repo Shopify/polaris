@@ -169,7 +169,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       handleMarkup = (
         <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <div onChange={this.handleLargerSelectionArea}>
+            <div onClick={this.handleLargerSelectionArea}>
               <Checkbox
                 id={this.checkboxId}
                 label={checkboxAccessibilityLabel}
