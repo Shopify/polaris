@@ -12,7 +12,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Breaking changes
 
-- Removed event parameter from optional `onClick` property for `subNavigationItem` on `Nav/Item` component ([#4394](https://github.com/Shopify/polaris-react/pull/4394))
 - Updated `react` and `react-dom` to version 16.14.0. This is now the minimum version of React required to use the `@shopify/polaris` library.
 - Dropping support for node 10.x
 - Dropped support for Desktop Safari versions less than 13.1, and ios Safari versions less than 13.6. ([#4304](https://github.com/Shopify/polaris-react/pull/4304))
@@ -43,6 +42,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Added `maxHeight` prop to `TextField` component to limit the height of multi-line inputs ([#4476](https://github.com/Shopify/polaris-react/pull/4476))
 - Added support for React 17 ([#4432](https://github.com/Shopify/polaris-react/pull/4432))
 - Added support for multi-sectioned options in `Autocomplete` [#4221](https://github.com/Shopify/polaris-react/pull/4221)
+- Enables optional `onClick` property for `subNavigationItem` on `Nav/Item` component to execute, if provided ([#4394](https://github.com/Shopify/polaris-react/pull/4394))
 
 ### Bug fixes
 
@@ -57,6 +57,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Re-added borders on the `IndexTable` sticky cells ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Adjust `IndexTable` sticky z-index to avoid collisions with focused `TextField` ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
 - Fixed an accessibility bug in `Icon` where `aria-label` was used incorrectly ([#4414](https://github.com/Shopify/polaris-react/pull/4414))
+- Restored pointing device interactivity to prefix and suffix slots of the `TextField` component ([#4477](https://github.com/Shopify/polaris-react/pull/4477))
 
 ### Documentation
 
