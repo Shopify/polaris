@@ -2,47 +2,42 @@
 
 Polaris v7.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v7.0.0)) features a rebuild of the `Autocomplete` component, build changes, . This file describes all code updates required to stay up to date.
 
-## Build changes
+## Build output changes - general consumers
 
-The build process has been update to use `sewing-kit-next`. As a result, a number of build file paths have changed.
+The build process has been update to use `loom`. As a result, a number of build file paths have changed.
 
-Types
-
-```diff
-- '@shopify/polaris/dist/types/*';
-+ '@shopify/polaris/build/ts/*';
-```
-
-Styles
+The compiled styles file has moved. Imports must be updated:
 
 ```diff
-- @import '@shopify/polaris/dist/styles.css';
-+ @import '@shopify/polaris/build/esm/styles.css';
+- import '@shopify/polaris/dist/styles.css';
++ import '@shopify/polaris/build/esm/styles.css';
 ```
+
+The public Sass API entrypoint has moved. Imports must be updated.
 
 ```diff
-- @import '@shopify/polaris/dist/styles/SOME_STYLE';
-+ @import '@shopify/polaris/build/styles/SOME_STYLE';
+- @import 'path_to_node_modules/@shopify/polaris/dist/styles/public-api';
++ @import 'path_to_node_modules/@shopify/polaris/build/styles/public-api';
 ```
 
-Index
+## Build output changes - @shopify/sewing-kit integrations only
+
+If you use Polaris in an app built with sewing-kit, it must use at least sewing-kit 0.152.0 to leverage esnext builds.
+
+Sewing-kit apps can use Polaris React’s Sass public API by configuring their Sass plugin's `autoInclude` option. The path to the Sass API file has now changed and should be updated accordingly:
 
 ```diff
-- '@shopify/polaris/dist/index.js';
-+ '@shopify/polaris/build/cjs/index.js';
+plugins.sass({
+  autoInclude: [
+-    path.join(__dirname, 'node_modules/@shopify/polaris/dist/styles/_public-api.scss'),
++    path.join(__dirname, 'node_modules/@shopify/polaris/build/styles/_public-api.scss'),
+  ],
+ })
 ```
 
-## Dependencies
+## React 16 and 17 dual support
 
-The peer dependencies on `react` and `react-dom` have been increased to 16.8.6 to allow us to use hooks internally. Use `yarn` or `npm` to install a recent version of React.
-
-```bash
-# yarn
-yarn add react react-dom
-
-# npm
-npm install react react-dom
-```
+Polaris has updated its peer dependencies on `react` and `react-dom` to `^16.14.0 || ^17.0.0` to allow for using the [automatic runtime](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) in a future release. Ensure you are using versions of `react` and `react-dom` that satisfies this version range. Use the package manager of your choice to install a recent version of these packages.
 
 ## Component API changes
 
@@ -61,8 +56,4 @@ The internal `ComboBox` which was previously exported as `Autocomplete.ComboBox`
 
 ### TextField
 
-The `autoComplete` prop on `TextField` is now requiredto help enforce accessibility. Refer to the [`TextField autocomplete documentation`](https://github.com/Shopify/polaris-react/blob/main/src/components/TextField/README.md#autocomplete) for more information and recommendations on which values to use under different circumstances.
-
-## Sewing Kit
-
-If you use Polaris in an app built with sewing-kit, it must use at least sewing-kit 0.152.0 to leverage esnext builds.
+The `autoComplete` prop on `TextField` is now required to help enforce accessibility. Refer to the [`TextField autocomplete documentation`](https://github.com/Shopify/polaris-react/blob/main/src/components/TextField/README.md#autocomplete) for more information and recommendations on which values to use under different circumstances.
