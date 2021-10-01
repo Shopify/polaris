@@ -62,9 +62,9 @@ Banners should:
 - Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants.
 - Be concise and scannable—merchants shouldn’t need to spend a lot of time
-    figuring out what they need to know and do.
+  figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary
-    action.
+  action.
 - Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
 
 To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
