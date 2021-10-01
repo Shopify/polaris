@@ -87,7 +87,7 @@ As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this 
 
 ## Best practices
 
-Use modals for confirmations and conditional changes. Avoid using them for stepped experiences or to nest information that could be shown in a more persistent place in the UI. Don’t use modals to display complex forms or large amounts of information.
+Use modals for confirmations and conditional changes. They should be thought of as temporary and not be used for information or actions that need to live on in the UI in a persistent way. Don’t use modals to display complex forms or large amounts of information.
 
 Modals should:
 
