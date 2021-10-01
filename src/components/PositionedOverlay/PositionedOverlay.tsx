@@ -1,8 +1,7 @@
-import React from 'react';
-import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
-import {closest} from '@shopify/javascript-utilities/dom';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
+import {getRectForNode, Rect} from '../../utilities/geometry';
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
 import {layer} from '../shared';
@@ -37,7 +36,9 @@ export interface PositionedOverlayProps {
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
   fixed?: boolean;
+  preventInteraction?: boolean;
   classNames?: string;
+  zIndexOverride?: number;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -56,9 +57,13 @@ interface State {
   lockPosition: boolean;
 }
 
-const OBSERVER_CONFIG = {childList: true, subtree: true};
+const OBSERVER_CONFIG = {
+  childList: true,
+  subtree: true,
+  characterData: true,
+};
 
-export class PositionedOverlay extends React.PureComponent<
+export class PositionedOverlay extends PureComponent<
   PositionedOverlayProps,
   State
 > {
@@ -122,19 +127,26 @@ export class PositionedOverlay extends React.PureComponent<
 
   render() {
     const {left, right, top, zIndex, width} = this.state;
-    const {render, fixed, classNames: propClassNames} = this.props;
+    const {
+      render,
+      fixed,
+      preventInteraction,
+      classNames: propClassNames,
+      zIndexOverride,
+    } = this.props;
 
     const style = {
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
-      zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
+      zIndex: zIndexOverride || zIndex || undefined,
     };
 
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
+      preventInteraction && styles.preventInteraction,
       propClassNames,
     );
 
@@ -144,6 +156,14 @@ export class PositionedOverlay extends React.PureComponent<
         {render(this.overlayDetails())}
       </div>
     );
+  }
+
+  forceUpdatePosition() {
+    // Wait a single animation frame before re-measuring.
+    // Consumer's may also need to setup their own timers for
+    // triggering forceUpdatePosition() `children` use animation.
+    // Ideally, forceUpdatePosition() is fired at the end of a transition event.
+    requestAnimationFrame(this.handleMeasurement);
   }
 
   private overlayDetails = (): OverlayDetails => {
@@ -211,7 +231,7 @@ export class PositionedOverlay extends React.PureComponent<
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
         const overlayRect = fullWidth
-          ? {...currentOverlayRect, width: activatorRect.width}
+          ? new Rect({...currentOverlayRect, width: activatorRect.width})
           : currentOverlayRect;
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
@@ -270,6 +290,7 @@ export class PositionedOverlay extends React.PureComponent<
           () => {
             if (!this.overlay) return;
             this.observer.observe(this.overlay, OBSERVER_CONFIG);
+            this.observer.observe(activator, OBSERVER_CONFIG);
           },
         );
       },
@@ -287,7 +308,7 @@ function getMarginsForNode(node: HTMLElement) {
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
-  const layerNode = closest(node, layer.selector) || document.body;
+  const layerNode = node.closest(layer.selector) || document.body;
   const zIndex =
     layerNode === document.body
       ? 'auto'

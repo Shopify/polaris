@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   useState,
   useRef,
   useCallback,
@@ -8,14 +9,7 @@ import React, {
   Component,
 } from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
-import {
-  DragDropMajorMonotone,
-  CircleAlertMajorMonotone,
-} from '@shopify/polaris-icons';
+import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -30,18 +24,22 @@ import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
-import {useFeatures} from '../../utilities/features';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
-import {fileAccepted, getDataTransferFiles} from './utils';
+import {
+  fileAccepted,
+  getDataTransferFiles,
+  defaultAllowMultiple,
+  createAllowMultipleKey,
+} from './utils';
 import styles from './DropZone.scss';
 
-type Type = 'file' | 'image';
+export type DropZoneFileType = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
-  label?: string;
+  label?: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -54,7 +52,7 @@ export interface DropZoneProps {
    * Whether is a file or an image
    * @default 'file'
    */
-  type?: Type;
+  type?: DropZoneFileType;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
@@ -86,6 +84,8 @@ export interface DropZoneProps {
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
+  /** Allows child content to adjust height */
+  variableHeight?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -124,7 +124,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   accept,
   active,
   overlay = true,
-  allowMultiple = true,
+  allowMultiple = defaultAllowMultiple,
   overlayText,
   errorOverlayText,
   id: idProp,
@@ -132,6 +132,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onClick,
   error,
   openFileDialog,
+  variableHeight,
   onFileDialogClose,
   customValidator,
   onDrop,
@@ -141,7 +142,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
-  const {newDesignLanguage} = useFeatures();
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
@@ -150,6 +150,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     debounce(
       () => {
         if (!node.current) {
+          return;
+        }
+        if (variableHeight) {
+          setMeasuring(false);
           return;
         }
 
@@ -289,18 +293,18 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
     if (!dropNode) return;
 
-    addEventListener(dropNode, 'drop', handleDrop);
-    addEventListener(dropNode, 'dragover', handleDragOver);
-    addEventListener(dropNode, 'dragenter', handleDragEnter);
-    addEventListener(dropNode, 'dragleave', handleDragLeave);
-    addEventListener(window, 'resize', adjustSize);
+    dropNode.addEventListener('drop', handleDrop);
+    dropNode.addEventListener('dragover', handleDragOver);
+    dropNode.addEventListener('dragenter', handleDragEnter);
+    dropNode.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('resize', adjustSize);
 
     return () => {
-      removeEventListener(dropNode, 'drop', handleDrop);
-      removeEventListener(dropNode, 'dragover', handleDragOver);
-      removeEventListener(dropNode, 'dragenter', handleDragEnter);
-      removeEventListener(dropNode, 'dragleave', handleDragLeave);
-      removeEventListener(window, 'resize', adjustSize);
+      dropNode.removeEventListener('drop', handleDrop);
+      dropNode.removeEventListener('dragover', handleDragOver);
+      dropNode.removeEventListener('dragenter', handleDragEnter);
+      dropNode.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('resize', adjustSize);
     };
   }, [
     dropOnPage,
@@ -316,15 +320,25 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   });
 
   const id = useUniqueId('DropZone', idProp);
-  const suffix = capitalize(type);
+  const typeSuffix = capitalize(type);
+  const allowMultipleKey = createAllowMultipleKey(allowMultiple);
+
   const overlayTextWithDefault =
     overlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.overlayText${suffix}`)
+      ? i18n.translate(
+          `Polaris.DropZone.${allowMultipleKey}.overlayText${typeSuffix}`,
+        )
       : overlayText;
+
   const errorOverlayTextWithDefault =
     errorOverlayText === undefined
-      ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
+      ? i18n.translate(`Polaris.DropZone.errorOverlayText${typeSuffix}`)
       : errorOverlayText;
+
+  const labelValue =
+    label ||
+    i18n.translate(`Polaris.DropZone.${allowMultipleKey}.label${typeSuffix}`);
+  const labelHiddenValue = label ? labelHidden : true;
 
   const inputAttributes = {
     id,
@@ -343,26 +357,22 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
-    newDesignLanguage && styles.newDesignLanguage,
     (internalError || error) && styles.hasError,
-    styles[variationName('size', size)],
+    !variableHeight && styles[variationName('size', size)],
     measuring && styles.measuring,
   );
 
   const dragOverlay =
     (active || dragging) &&
-    (!internalError || !error) &&
+    !internalError &&
+    !error &&
     overlay &&
-    overlayMarkup(DragDropMajorMonotone, 'indigo', overlayTextWithDefault);
+    overlayMarkup(UploadMajor, 'interactive', overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajorMonotone, 'red', errorOverlayTextWithDefault);
-
-  const labelValue =
-    label || i18n.translate('Polaris.DropZone.FileUpload.label');
-  const labelHiddenValue = label ? labelHidden : true;
+    overlayMarkup(CircleAlertMajor, 'critical', errorOverlayTextWithDefault);
 
   const context = useMemo(
     () => ({
@@ -371,8 +381,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       size,
       type: type || 'file',
       measuring,
+      allowMultiple,
     }),
-    [disabled, focused, measuring, size, type],
+    [disabled, focused, measuring, size, type, allowMultiple],
   );
 
   return (
@@ -392,7 +403,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <div className={styles.Container}>{children}</div>
           <VisuallyHidden>
             <DropZoneInput
               {...inputAttributes}
@@ -400,6 +410,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               onFileDialogClose={onFileDialogClose}
             />
           </VisuallyHidden>
+          <div className={styles.Container}>{children}</div>
         </div>
       </Labelled>
     </DropZoneContext.Provider>
@@ -407,18 +418,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   function overlayMarkup(
     icon: FunctionComponent,
-    color: 'red' | 'indigo',
+    color: 'critical' | 'interactive',
     text: string,
   ) {
-    const overlayClass = classNames(
-      styles.Overlay,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
-
     return (
-      <div className={overlayClass}>
+      <div className={styles.Overlay}>
         <Stack vertical spacing="tight">
-          <Icon source={icon} color={color} />
+          {size === 'small' && <Icon source={icon} color={color} />}
           {size === 'extraLarge' && (
             <DisplayText size="small" element="p">
               {text}
@@ -455,7 +461,7 @@ interface DropZoneInputProps {
   id: string;
   accept?: string;
   disabled: boolean;
-  type: Type;
+  type: DropZoneFileType;
   multiple: boolean;
   openFileDialog?: boolean;
   onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;
@@ -467,7 +473,7 @@ interface DropZoneInputProps {
 // Due to security reasons, browsers do not allow file inputs to be opened artificially.
 // For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
 class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = React.createRef<HTMLInputElement>();
+  private fileInputNode = createRef<HTMLInputElement>();
 
   componentDidMount() {
     this.props.openFileDialog && this.triggerFileDialog();

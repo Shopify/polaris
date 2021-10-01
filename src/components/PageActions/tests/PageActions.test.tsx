@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {ButtonGroup} from '../../ButtonGroup';
 import {Stack} from '../../Stack';
@@ -15,30 +14,36 @@ jest.mock('../../Button', () => ({
 describe('<PageActions />', () => {
   describe('<Stack />', () => {
     it('renders a stack component', () => {
-      const pageActions = mountWithAppProvider(<PageActions />);
-      expect(pageActions.find(Stack)).toHaveLength(1);
+      const pageActions = mountWithApp(<PageActions />);
+      expect(pageActions).toContainReactComponentTimes(Stack, 1);
     });
 
     it('uses equalSpacing distribution if secondaryActions are provided', () => {
       const mockActions = [{content: 'Delete'}];
 
-      const pageActions = mountWithAppProvider(
+      const pageActions = mountWithApp(
         <PageActions secondaryActions={mockActions} />,
       );
       const stack = pageActions.find(Stack);
-      expect(stack.prop('distribution')).toBe('equalSpacing');
+      expect(stack).toHaveReactProps({
+        distribution: 'equalSpacing',
+      });
     });
 
     it('uses trailing distribution if secondaryActions are not provided', () => {
-      const pageActions = mountWithAppProvider(<PageActions />);
+      const pageActions = mountWithApp(<PageActions />);
       const stack = pageActions.find(Stack);
-      expect(stack.prop('distribution')).toBe('trailing');
+      expect(stack).toHaveReactProps({
+        distribution: 'trailing',
+      });
     });
 
     it('passes spacing tight to Stack', () => {
-      const pageActions = mountWithAppProvider(<PageActions />);
+      const pageActions = mountWithApp(<PageActions />);
       const stack = pageActions.find(Stack);
-      expect(stack.prop('spacing')).toBe('tight');
+      expect(stack).toHaveReactProps({
+        spacing: 'tight',
+      });
     });
   });
 
@@ -46,20 +51,27 @@ describe('<PageActions />', () => {
     const mockAction = {content: 'test content', loading: true};
 
     it('renders a button', () => {
-      mountWithAppProvider(<PageActions primaryAction={mockAction} />);
+      mountWithApp(<PageActions primaryAction={mockAction} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
     });
   });
 
   describe('secondaryActions', () => {
-    const mockActions = [{content: 'Delete'}];
+    const mockActions = [
+      {
+        content: 'Delete',
+        destructive: true,
+        outline: true,
+      },
+    ];
+
     it('renders buttons for each secondaryAction', () => {
-      mountWithAppProvider(<PageActions secondaryActions={mockActions} />);
+      mountWithApp(<PageActions secondaryActions={mockActions} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockActions);
     });
 
     it('renders a button group when defined', () => {
-      const pageActions = mountWithAppProvider(
+      const pageActions = mountWithApp(
         <PageActions
           secondaryActions={[
             {
@@ -68,12 +80,12 @@ describe('<PageActions />', () => {
           ]}
         />,
       );
-      expect(pageActions.find(ButtonGroup)).toHaveLength(1);
+      expect(pageActions.findAll(ButtonGroup)).toHaveLength(1);
     });
 
     it('does not render a button group when not defined', () => {
-      const pageActions = mountWithAppProvider(<PageActions />);
-      expect(pageActions.find(ButtonGroup)).toHaveLength(0);
+      const pageActions = mountWithApp(<PageActions />);
+      expect(pageActions.findAll(ButtonGroup)).toHaveLength(0);
     });
   });
 });

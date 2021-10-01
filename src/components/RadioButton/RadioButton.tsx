@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 
 import {useUniqueId} from '../../utilities/unique-id';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
@@ -53,7 +52,6 @@ export function RadioButton({
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
   const [keyFocused, setKeyFocused] = useState(false);
-  const {newDesignLanguage} = useFeatures();
 
   const {
     value: mouseOver,
@@ -87,15 +85,8 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    newDesignLanguage && keyFocused && styles.keyFocused,
+    keyFocused && styles.keyFocused,
   );
-
-  const wrapperClassName = classNames(
-    styles.RadioButton,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
-  const iconMarkup = !newDesignLanguage && <span className={styles.Icon} />;
 
   const backdropClassName = classNames(
     styles.Backdrop,
@@ -112,7 +103,7 @@ export function RadioButton({
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <span className={wrapperClassName}>
+      <span className={styles.RadioButton}>
         <input
           id={id}
           name={name}
@@ -129,7 +120,6 @@ export function RadioButton({
           ref={inputNode}
         />
         <span className={backdropClassName} />
-        {iconMarkup}
       </span>
     </Choice>
   );

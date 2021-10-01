@@ -102,9 +102,9 @@ function DropZoneExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > 0
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -220,9 +220,9 @@ function DropZoneExample() {
         size="small"
         alt={file.name}
         source={
-          validImageTypes.indexOf(file.type) > 0
+          validImageTypes.includes(file.type)
             ? window.URL.createObjectURL(file)
-            : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            : NoteMinor
         }
       />
       <div>
@@ -264,9 +264,9 @@ function DropZoneWithDropOnPageExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > 0
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -390,9 +390,9 @@ function NestedDropZoneExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > 0
+              validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -440,6 +440,62 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
+### Drop zone with varaible size
+
+Use for cases where you want the child contents of the dropzone to determine its height.
+
+```jsx
+function DropZoneExample() {
+  const [files, setFiles] = useState([]);
+
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFiles((files) => [...files, ...acceptedFiles]),
+    [],
+  );
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !files.length && (
+    <div style={{padding: '1rem'}}>
+      <Stack distribution="center">
+        <Stack vertical>
+          <Button>Add files</Button>
+          <TextStyle variation="subdued">or drop to upload</TextStyle>
+        </Stack>
+      </Stack>
+    </div>
+  );
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.includes(file.type)
+                ? window.URL.createObjectURL(file)
+                : NoteMinor
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  return (
+    <DropZone onDrop={handleDropZoneDrop} variableHeight>
+      {uploadedFiles}
+      {fileUpload}
+    </DropZone>
+  );
+}
+```
+
 ### Drop zone with custom file dialog trigger
 
 Use to trigger the file dialog from an action somewhere else on the page.
@@ -469,9 +525,9 @@ function DropZoneWithCustomFileDialogExample() {
             size="small"
             alt={file.name}
             source={
-              validImageTypes.indexOf(file.type) > 0
+              validImageTypes.indexOf(file.type) > -1
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>

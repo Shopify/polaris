@@ -13,9 +13,6 @@ keywords:
   - translation
   - application wrapper
   - wrapper
-  - easdk
-  - shopify app bridge
-  - embedded app sdk
   - sdk
 omitAppProvider: true
 ---
@@ -28,7 +25,7 @@ App provider is a required component that enables sharing global settings throug
 
 ## Best practices
 
-The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/master/examples/README.md).
+The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/main/examples/README.md).
 
 ---
 
@@ -203,7 +200,7 @@ function AppProviderLinkExample() {
 
 ### With theme
 
-With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](https://polaris.shopify.com/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
+With a `theme`, the app provider component will set a logo and theming for the App. The logo is used by the [TopBar](https://polaris.shopify.com/components/structure/top-bar) and [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar) components. For theming configuration, see the [ThemeProvider](https://polaris.shopify.com/components/structure/theme-provider) documentation.
 
 ```jsx
 function AppProviderThemeExample() {
@@ -221,11 +218,6 @@ function AppProviderThemeExample() {
   );
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
     logo: {
       width: 124,
       topBarSource:
@@ -311,161 +303,6 @@ function AppProviderThemeExample() {
 }
 ```
 
-### With theme using all theme keys
-
-Provide specific keys and corresponding colors to the [top bar](https://polaris.shopify.com/components/structure/top-bar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
-
-```jsx
-function AppProviderWithAllThemeKeysExample() {
-  const [isDirty, setIsDirty] = useState(false);
-  const [searchFieldValue, setSearchFieldValue] = useState('');
-
-  const handleSearchChange = useCallback(
-    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
-    [],
-  );
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-        backgroundLighter: '#6192a9',
-        color: '#FFFFFF',
-      },
-    },
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    },
-  };
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      placeholder="Search"
-      value={searchFieldValue}
-      onChange={handleSearchChange}
-    />
-  );
-
-  const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  const pageMarkup = (
-    <Page title="Account">
-      <Layout>
-        <Layout.Section>
-          <SettingToggle
-            action={{
-              content: contentStatus,
-              onAction: toggleIsDirty,
-            }}
-            enabled={isDirty}
-          >
-            This setting is{' '}
-            <TextStyle variation="strong">{textStatus}</TextStyle>.
-          </SettingToggle>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: toggleIsDirty,
-      }}
-      discardAction={{
-        onAction: toggleIsDirty,
-      }}
-    />
-  ) : null;
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider
-        theme={theme}
-        i18n={{
-          Polaris: {
-            Frame: {
-              skipToContent: 'Skip to content',
-            },
-            ContextualSaveBar: {
-              save: 'Save',
-              discard: 'Discard',
-            },
-            TopBar: {
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup}>
-          {contextualSaveBarMarkup}
-          {pageMarkup}
-        </Frame>
-      </AppProvider>
-    </div>
-  );
-}
-```
-
-### With the new design language enabled
-
-The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance usage only. The new design language is not yet meant for production experiences.
-
-```jsx
-function NewDesignLanguageExample() {
-  const [isDirty, setIsDirty] = useState(false);
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider features={{newDesignLanguage: true}} i18n={{}}>
-        <Page title="Account">
-          <Layout>
-            <Layout.Section>
-              <SettingToggle
-                action={{
-                  content: contentStatus,
-                  onAction: toggleIsDirty,
-                }}
-                enabled={isDirty}
-              >
-                This setting is{' '}
-                <TextStyle variation="strong">{textStatus}</TextStyle>.
-              </SettingToggle>
-            </Layout.Section>
-          </Layout>
-        </Page>
-      </AppProvider>
-    </div>
-  );
-}
-```
-
 ---
 
 ## Using translations
@@ -505,15 +342,8 @@ function App() {
 
   // i18n.translations is an array of translation dictionaries, where the first
   // dictionary is the desired language, and the second is the fallback.
-  // AppProvider however expects that the first dictionary is the fallback
-  // and the second is the desired language. Thus we need to reverse the array
-  // to ensure the dictionaries are in the order desired by AppProvider.
-  // The slice is to ensure we don't manipulate the original translations array
-  // as reverse() modifies the array in-place.
   return (
-    <AppProvider i18n={i18n.translations.slice().reverse()}>
-      {/* App content */}
-    </AppProvider>
+    <AppProvider i18n={i18n.translations}>{/* App content */}</AppProvider>
   );
 }
 ```
@@ -565,81 +395,11 @@ function Link({children, url = '', external, ref, ...rest}) {
 
 ---
 
-## Initializing the Shopify App Bridge (deprecated)
-
-When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the [app provider component](https://polaris.shopify.com/components/structure/app-provider), which wraps all components in an embedded app. The app provider component initializes the Shopify App Bridge using the `apiKey` and `shopOrigin` that you provide. **The `apiKey` and the `shopOrigin` attributes are required.** Find the API key for your app in the Apps section of your [Shopify Partner Dashboard](https://partners.shopify.com). Learn how to get and store the shop origin in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/shop-origin).
-
-```jsx
-ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY" shopOrigin="SHOP_ORIGIN" i18n={{}}>
-    <ResourcePicker
-      resourceType="Product"
-      open={this.state.open}
-      onSelection={({selection}) => {
-        console.log('Selected products: ', selection);
-        this.setState({open: false});
-      }}
-      onCancel={() => this.setState({open: false})}
-    />
-  </AppProvider>,
-);
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Provider`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/provider) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
-
----
-
-## Access to the Shopify App Bridge instance (deprecated)
-
-To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) to navigate:
-
-```js
-import React from 'react';
-import {render} from 'react-dom';
-import {AppProvider, _SECRET_INTERNAL_APP_BRIDGE_CONTEXT} from '@shopify/polaris';
-import {Redirect} from '@shopify/app-bridge/actions';
-
-function MyApp() {
-  const appBridge = useContext(_SECRET_INTERNAL_APP_BRIDGE_CONTEXT)
-
-  redirectToSettings() {
-    const redirect = Redirect.create(appBridge);
-
-    // Go to {appOrigin}/settings
-    redirect.dispatch(Redirect.Action.APP, '/settings');
-  }
-
-  render() {
-    return null;
-  }
-}
-
-render(
-  <AppProvider
-    apiKey="YOUR_APP_API_KEY"
-    shopOrigin="YOUR_SHOP_ORIGIN"
-    i18n={{}}
-  >
-    <MyApp />
-  </AppProvider>,
-  document.querySelector('#app'),
-);
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using the Shopify App Bridge instance in context is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) directly instead.
-
----
-
 ## Testing components
 
 You must include Polaris context in your tests when you use Polaris components.
 
 To make this easier for you, we’ve provided:
 
-- a `createPolarisContext()` function to create the Polaris context for you
-- a `polarisContextTypes` variable that contains all the necessary context types
-- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app) you can reference
+- a PolarisTestProvider component to provide the Polaris contexts for you
+- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app) you can reference

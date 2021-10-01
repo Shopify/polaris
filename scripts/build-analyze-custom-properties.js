@@ -1,56 +1,35 @@
 const {execSync} = require('child_process');
 const {resolve: resolvePath} = require('path');
-const {mkdirSync, writeFileSync} = require('fs');
+const {writeFileSync} = require('fs');
 
 const root = resolvePath(__dirname, '..');
 const tscBin = resolvePath(root, './node_modules/.bin/tsc');
-const scripts = resolvePath(root, 'scripts');
-const build = resolvePath(root, 'build');
-const analyzeCustomProperties = resolvePath(
-  scripts,
-  'analyze-custom-properties',
-);
-const analyzeCustomPropertiesTsconfig = resolvePath(
-  analyzeCustomProperties,
-  'tsconfig.json',
-);
-const customProperties = resolvePath(root, 'src/utilities/custom-properties');
-const analyzeCustomPropertiesBuild = resolvePath(
-  analyzeCustomProperties,
-  'dist',
-);
-const customPropertiesBuild = resolvePath(build, 'custom-properties');
-const knownProperties = resolvePath(root, 'build/known-custom-properties.json');
 
-const execOptions = {
-  stdio: 'inherit',
-};
+const analyzeCustomPropertiesTsconfig = resolvePath(
+  root,
+  'scripts/analyze-custom-properties/tsconfig.json',
+);
+const partialBuildTsConfig = resolvePath(
+  root,
+  'scripts/analyze-custom-properties/tsconfig-partial-build.json',
+);
+
+const execOptions = {stdio: 'inherit'};
 
 // eslint-disable-next-line no-console
 console.log('🛠 Starting to build known custom properties...');
 
-try {
-  mkdirSync(analyzeCustomPropertiesBuild);
-  // eslint-disable-next-line no-empty
-} catch (_) {}
+execSync(`${tscBin} --project ${analyzeCustomPropertiesTsconfig}`, execOptions);
 
-execSync(
-  `${tscBin} --outDir ${analyzeCustomPropertiesBuild} --project ${analyzeCustomPropertiesTsconfig}`,
-  execOptions,
-);
-
-execSync(
-  `${tscBin} --outDir ${build} --project ${customProperties}`,
-  execOptions,
-);
+execSync(`${tscBin} --project ${partialBuildTsConfig}`, execOptions);
 
 const {
   nonDesignLangaugeCustomProperties,
   designLangaugeCustomProperties,
-} = require(customPropertiesBuild);
+} = require('../build-internal/custom-properties-partial-build/src/utilities/custom-properties');
 
 writeFileSync(
-  knownProperties,
+  resolvePath(root, 'build-internal/known-custom-properties.json'),
   JSON.stringify(
     [...designLangaugeCustomProperties, ...nonDesignLangaugeCustomProperties],
     null,

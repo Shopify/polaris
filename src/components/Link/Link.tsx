@@ -1,7 +1,6 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -21,8 +20,12 @@ export interface LinkProps {
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
+  /** Removes text decoration underline to the link*/
+  removeUnderline?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
 }
 
 export function Link({
@@ -32,10 +35,11 @@ export function Link({
   external,
   id,
   monochrome,
+  removeUnderline,
+  accessibilityLabel,
 }: LinkProps) {
   const i18n = useI18n();
   let childrenMarkup = children;
-  const {newDesignLanguage} = useFeatures();
 
   if (external && typeof children === 'string') {
     const iconLabel = i18n.translate(
@@ -43,14 +47,14 @@ export function Link({
     );
 
     childrenMarkup = (
-      <React.Fragment>
+      <>
         {children}
         <span className={styles.IconLockup}>
           <span className={styles.IconLayout}>
             <Icon accessibilityLabel={iconLabel} source={ExternalSmallMinor} />
           </span>
         </span>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -62,7 +66,7 @@ export function Link({
         const className = classNames(
           styles.Link,
           shouldBeMonochrome && styles.monochrome,
-          newDesignLanguage && styles.newDesignLanguage,
+          removeUnderline && styles.removeUnderline,
         );
 
         return url ? (
@@ -72,11 +76,18 @@ export function Link({
             url={url}
             external={external}
             id={id}
+            aria-label={accessibilityLabel}
           >
             {childrenMarkup}
           </UnstyledLink>
         ) : (
-          <button type="button" onClick={onClick} className={className} id={id}>
+          <button
+            type="button"
+            onClick={onClick}
+            className={className}
+            id={id}
+            aria-label={accessibilityLabel}
+          >
             {childrenMarkup}
           </button>
         );

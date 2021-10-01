@@ -1,0 +1,10 @@
+.ScrollContainer {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ScrollContainer::-webkit-scrollbar {
+  display: none;
+}

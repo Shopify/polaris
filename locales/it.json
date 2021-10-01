@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar con iniziali {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Caricamento"
+      "spinnerAccessibilityLabel": "Caricamento",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +21,8 @@
         "attention": "Attenzione",
         "new": "Nuovi",
         "critical": "Critico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Caricamento",
@@ -72,7 +74,18 @@
         "friday": "Ven",
         "saturday": "Sab",
         "sunday": "Dom"
-      }
+      },
+      "days": {
+        "monday": "lunedì",
+        "tuesday": "martedì",
+        "wednesday": "mercoledì",
+        "thursday": "giovedì",
+        "friday": "venerdì",
+        "saturday": "sabato",
+        "sunday": "domenica"
+      },
+      "start": "Inizio intervallo",
+      "end": "Fine intervallo"
     },
     "DiscardConfirmationModal": {
       "title": "Rimuovi tutte le modifiche non salvate",
@@ -81,16 +94,27 @@
       "secondaryAction": "Continua a modificare"
     },
     "DropZone": {
-      "overlayTextFile": "Rilascia il file per caricarlo",
-      "overlayTextImage": "Rilascia l'immagine per caricarla",
       "errorOverlayTextFile": "Il tipo di file non è valido",
       "errorOverlayTextImage": "Il tipo di immagine non è valido",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Rilascia il file per caricarlo",
+        "overlayTextImage": "Rilascia l'immagine per caricarla",
         "actionTitleFile": "Aggiungi file",
         "actionTitleImage": "Aggiungi immagine",
+        "actionHintFile": "o rilascia il file per caricarlo",
+        "actionHintImage": "o rilascia l'immagine per caricarla",
+        "labelFile": "Carica file",
+        "labelImage": "Carica immagine"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Rilascia i file per caricarli",
+        "overlayTextImage": "Rilascia le immagini per caricarle",
+        "actionTitleFile": "Aggiungi file",
+        "actionTitleImage": "Aggiungi immagini",
         "actionHintFile": "o rilascia i file per caricarli",
         "actionHintImage": "o rilascia le immagini per caricarle",
-        "label": "Carica file"
+        "labelFile": "Carica file",
+        "labelImage": "Carica delle immagini"
       }
     },
     "EmptySearchResult": {
@@ -100,10 +124,8 @@
       "skipToContent": "Vai direttamente al contenuto",
       "Navigation": {
         "closeMobileNavigationLabel": "Chiudi la navigazione"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "L'icona {color} non accetta gli sfondi. I colori dell'icona con sfondi sono i seguenti: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigazione"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -154,7 +176,7 @@
       "ariaLivePlural": "{itemsLength} articoli",
       "Item": {
         "actionsDropdownLabel": "Azioni per {accessibilityLabel}",
-        "actionsDropdown": "Menu a tendina delle azioni",
+        "actionsDropdown": "Menu a discesa delle azioni",
         "viewItem": "Visualizza dettagli di {itemName}"
       },
       "BulkActions": {
@@ -204,7 +226,9 @@
           "on_or_after": "dopo il {date}"
         }
       },
-      "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount}{resource}"
+      "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount}{resource}",
+      "allFilteredItemsSelected": "Tutti i {resourceNamePlural} {itemsLength}+ in questo filtro sono selezionati.",
+      "selectAllFilteredItems": "Seleziona tutti i {resourceNamePlural} {itemsLength}+ in questo filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Caricamento della pagina"
@@ -279,6 +303,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Altre azioni"
+    },
+    "Loading": {
+      "label": "Barra di caricamento della pagina"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Suggerimento: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Articolo",
+      "defaultItemPlural": "Articoli",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati.",
+      "selected": "{selectedItemsCount} selezionati",
+      "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutti i {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleziona tutti i {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Impossibile trovare gli {resourceNamePlural}",
+      "emptySearchDescription": "Prova a modificare i filtri o il termine di ricerca",
+      "onboardingBadgeText": "Nuovo",
+      "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
+      "selectAllLabel": "Seleziona tutti gli {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selezionati",
+      "undo": "Annulla",
+      "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Seleziona {resourceName}",
+      "selectButtonText": "Seleziona"
     }
   }
 }

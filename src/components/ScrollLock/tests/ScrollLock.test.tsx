@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import {ScrollLock} from '../ScrollLock';
@@ -19,23 +18,21 @@ describe('ScrollLock', () => {
   it('does not remove the data attribute from the body when two scrolllocks are mounted and one unmounts', () => {
     function DummyFrame() {
       const [showScrollLock, setScrollLock] = useState(true);
-
       const setScollLockFalse = useCallback(() => setScrollLock(false), []);
 
       const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={setScollLockFalse} />
           {scrollLockMarkup}
           <ScrollLock />
-        </React.Fragment>
+        </>
       );
     }
 
-    const scrollLockContainer = mountWithAppProvider(<DummyFrame />);
-
-    scrollLockContainer.find('button').simulate('click');
+    const scrollLockContainer = mountWithApp(<DummyFrame />);
+    scrollLockContainer.find('button')!.trigger('onClick');
 
     expect(document.body.hasAttribute(`${SCROLL_LOCKING_ATTRIBUTE}`)).toBe(
       true,
@@ -43,14 +40,14 @@ describe('ScrollLock', () => {
   });
 
   it('adds data attribute to the body when it mounts', () => {
-    mountWithAppProvider(<ScrollLock />);
+    mountWithApp(<ScrollLock />);
     expect(document.body.hasAttribute(`${SCROLL_LOCKING_ATTRIBUTE}`)).toBe(
       true,
     );
   });
 
   it('removes data attribute from the body when it unmounts', () => {
-    const scrollLock = mountWithAppProvider(<ScrollLock />);
+    const scrollLock = mountWithApp(<ScrollLock />);
     scrollLock.unmount();
     expect(document.body.hasAttribute(`${SCROLL_LOCKING_ATTRIBUTE}`)).toBe(
       false,

@@ -3,15 +3,12 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {
   ActionMenu,
   Breadcrumbs,
-  buttonsFrom,
   Pagination,
   Badge,
   Avatar,
   Button,
   ButtonGroup,
 } from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import type {LinkAction} from '../../../../../types';
@@ -31,25 +28,31 @@ describe('<Header />', () => {
     };
 
     it('sets the title on the Header', () => {
-      const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Header).prop('title')).toBe(mockProps.title);
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).toHaveReactProps({
+        title: mockProps.title,
+      });
     });
 
     it('sets the subtitle on the Header', () => {
-      const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Header).prop('subtitle')).toBe(mockProps.subtitle);
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).toHaveReactProps({
+        subtitle: mockProps.subtitle,
+      });
     });
 
     it('sets the thumbnail on the Header', () => {
-      const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Header).prop('thumbnail')).toBe(mockProps.thumbnail);
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).toHaveReactProps({
+        thumbnail: mockProps.thumbnail,
+      });
     });
 
     it('sets the titleMetadata on the Header', () => {
-      const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Header).prop('titleMetadata')).toBe(
-        mockProps.titleMetadata,
-      );
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).toHaveReactProps({
+        titleMetadata: mockProps.titleMetadata,
+      });
     });
   });
 
@@ -58,46 +61,51 @@ describe('<Header />', () => {
       {
         content: 'Products',
         url: 'https://www.google.com',
-        target: 'REMOTE',
       },
     ];
 
     it('get passed into Breadcrumbs', () => {
-      const header = mountWithAppProvider(
+      const header = mountWithApp(
         <Header {...mockProps} breadcrumbs={breadcrumbs} />,
       );
-      expect(header.find(Breadcrumbs).prop('breadcrumbs')).toStrictEqual(
+      expect(header).toContainReactComponent(Breadcrumbs, {
         breadcrumbs,
-      );
+      });
     });
   });
 
   describe('primaryAction', () => {
+    const buttonContent = 'Click me!';
+
     it('renders a `primary` button based on the given action', () => {
       const primaryAction: HeaderProps['primaryAction'] = {
-        content: 'Click me!',
+        content: buttonContent,
       };
 
-      const header = mountWithAppProvider(
+      const header = mountWithApp(
         <Header {...mockProps} primaryAction={primaryAction} />,
       );
 
-      const expectedButton = buttonsFrom(primaryAction, {primary: true});
-      expect(header.contains(expectedButton)).toBeTruthy();
+      expect(header).toContainReactComponent(Button, {
+        primary: true,
+        children: buttonContent,
+      });
     });
 
     it('renders a regular button based on the given action when primary is set to false', () => {
       const primaryAction: HeaderProps['primaryAction'] = {
-        content: 'Click me!',
+        content: buttonContent,
         primary: false,
       };
 
-      const header = mountWithAppProvider(
+      const header = mountWithApp(
         <Header {...mockProps} primaryAction={primaryAction} />,
       );
 
-      const expectedButton = buttonsFrom(primaryAction, {primary: false});
-      expect(header.contains(expectedButton)).toBeTruthy();
+      expect(header).toContainReactComponent(Button, {
+        primary: false,
+        children: buttonContent,
+      });
     });
 
     it('renders a `ReactNode`', () => {
@@ -117,30 +125,13 @@ describe('<Header />', () => {
         hasNext: true,
       };
 
-      const header = mountWithAppProvider(
+      const header = mountWithApp(
         <Header {...mockProps} pagination={pagination} />,
       );
 
-      expect(
-        header.contains(<Pagination {...pagination} plain />),
-      ).toBeTruthy();
-    });
-  });
-
-  describe('secondaryActions', () => {
-    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
-
-    it('passes to <ActionMenu />', () => {
-      const wrapper = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
-      );
-
-      expect(wrapper.find(ActionMenu).prop('actions')).toBe(
-        mockSecondaryActions,
-      );
+      expect(header).toContainReactComponent(Pagination, {
+        hasNext: true,
+      });
     });
   });
 
@@ -161,11 +152,13 @@ describe('<Header />', () => {
     ];
 
     it('passes to <ActionMenu />', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
-      expect(wrapper.find(ActionMenu).prop('groups')).toBe(mockActionGroups);
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        groups: mockActionGroups,
+      });
     });
   });
 
@@ -173,11 +166,11 @@ describe('<Header />', () => {
     it('renders element if passed', () => {
       const TestComponent = () => <div />;
 
-      const header = mountWithAppProvider(
+      const header = mountWithApp(
         <Header {...mockProps} additionalNavigation={<TestComponent />} />,
       );
 
-      expect(header.find(TestComponent).exists()).toBe(true);
+      expect(header).toContainReactComponent(TestComponent);
     });
   });
 
@@ -187,9 +180,9 @@ describe('<Header />', () => {
     ];
 
     it('does not render without either `secondaryActions` or `actionGroups`', () => {
-      const wrapper = mountWithAppProvider(<Header {...mockProps} />);
+      const wrapper = mountWithApp(<Header {...mockProps} />);
 
-      expect(wrapper.find(ActionMenu).exists()).toBe(false);
+      expect(wrapper).not.toContainReactComponent(ActionMenu);
     });
 
     it('does not render if `actionGroups` has no `actions', () => {
@@ -199,22 +192,22 @@ describe('<Header />', () => {
           actions: [],
         },
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
-      expect(wrapper.find(ActionMenu).exists()).toBe(false);
+      expect(wrapper).not.toContainReactComponent(ActionMenu);
     });
 
     it('renders with at least valid `secondaryActions`', () => {
       const mockSecondaryActions: HeaderProps['secondaryActions'] = [
         {content: 'mock content'},
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
 
-      expect(wrapper.find(ActionMenu).exists()).toBe(true);
+      expect(wrapper).toContainReactComponent(ActionMenu);
     });
 
     it('renders with at least valid `actionGroups`', () => {
@@ -224,157 +217,127 @@ describe('<Header />', () => {
           actions: [{content: 'mock content 1'}],
         },
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
-      expect(wrapper.find(ActionMenu).exists()).toBe(true);
+      expect(wrapper).toContainReactComponent(ActionMenu);
     });
 
     it('renders with `rollup` as `false` when on desktop', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
 
-      expect(wrapper.find(ActionMenu).prop('rollup')).toBe(false);
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        rollup: false,
+      });
     });
 
     it('renders with `rollup` as `true` when on mobile', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
         {mediaQuery: {isNavigationCollapsed: true}},
       );
 
-      expect(wrapper.find(ActionMenu).prop('rollup')).toBe(true);
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        rollup: true,
+      });
     });
   });
 
-  describe('newDesignLanguage', () => {
-    const primaryAction: HeaderProps['primaryAction'] = {
-      content: 'Click me!',
-      icon: PlusMinor,
-    };
+  const primaryAction: HeaderProps['primaryAction'] = {
+    content: 'Click me!',
+    icon: PlusMinor,
+  };
 
-    const secondaryActions: HeaderProps['secondaryActions'] = [
-      {content: 'mock content 1'},
-      {content: 'mock content 2'},
-    ];
+  const secondaryActions: HeaderProps['secondaryActions'] = [
+    {content: 'mock content 1'},
+    {content: 'mock content 2'},
+  ];
 
-    const breadcrumbs: LinkAction[] = [
+  const breadcrumbs: LinkAction[] = [
+    {
+      content: 'Products',
+      url: 'https://www.google.com',
+    },
+  ];
+
+  it('does not render primary and secondary action wrapper divs', () => {
+    const header = mountWithApp(
+      <Header
+        title="Hello, world!"
+        primaryAction={primaryAction}
+        secondaryActions={secondaryActions}
+      />,
+    );
+    expect(
+      header.findAll('div', {className: 'PrimaryActionWrapper'}),
+    ).toHaveLength(1);
+    expect(
+      header.findAll('div', {className: 'ActionMenuWrapper'}),
+    ).toHaveLength(0);
+  });
+
+  it('renders a compact mobile layout with icon-only primary action', () => {
+    const header = mountWithApp(
+      <Header title="mmmmmmmm" primaryAction={primaryAction} />,
       {
-        content: 'Products',
-        url: 'https://www.google.com',
-        target: 'REMOTE',
+        mediaQuery: {isNavigationCollapsed: true},
       },
-    ];
-
-    it('adds a newDesignLanguage class', () => {
-      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(header.find('div').first().prop('className')).toBe(
-        'Header newDesignLanguage',
-      );
+    );
+    expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
+    expect(header).toContainReactComponent(Button, {
+      icon: PlusMinor,
+      children: undefined,
     });
+  });
 
-    it('does not add a newDesignLanguage class if disabled', () => {
-      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(header.find('div').first().prop('className')).toBe('Header');
+  it('renders a compact desktop layout and hides primary action icon', () => {
+    const header = mountWithApp(
+      <Header title="mmmmmmmm" primaryAction={primaryAction} />,
+      {
+        mediaQuery: {isNavigationCollapsed: false},
+      },
+    );
+    expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
+    expect(header).toContainReactComponent(Button, {
+      icon: undefined,
+      children: 'Click me!',
     });
+  });
 
-    it('removes primary and secondary action wrapper divs', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(0);
-      expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
-    });
+  it('renders a default mobile layout', () => {
+    const header = mountWithApp(
+      <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
+      {
+        mediaQuery: {isNavigationCollapsed: true},
+      },
+    );
+    expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
+  });
 
-    it('adds primary and secondary action wrapper divs when disabled', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
-      expect(header.find('.ActionMenuWrapper')).toHaveLength(1);
-    });
+  it('renders a default desktop layout', () => {
+    const header = mountWithApp(
+      <Header title="mmmmmmmmmmmmmmmmmmmmm" primaryAction={primaryAction} />,
+      {
+        mediaQuery: {isNavigationCollapsed: false},
+      },
+    );
+    expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
+  });
 
-    it('renders a compact mobile layout with icon-only primary action', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(1);
-      expect(header.find(Button).prop('icon')).toStrictEqual(PlusMinor);
-      expect(header.find(Button).text()).toStrictEqual('');
-    });
-
-    it('renders a compact desktop layout and hides primary action icon', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: false},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(1);
-      expect(header.find(Button).prop('icon')).toBeUndefined();
-      expect(header.find(Button).text()).toStrictEqual('Click me!');
-    });
-
-    it('renders a default mobile layout', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(2);
-    });
-
-    it('renders a default desktop layout', () => {
-      const header = mountWithAppProvider(
-        <Header title="mmmmmmmmmmmmmmmmmmmmm" primaryAction={primaryAction} />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: false},
-        },
-      );
-      expect(header.find('.Row')).toHaveLength(2);
-    });
-
-    it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
-      const header = mountWithAppProvider(
-        <Header
-          title="Hello, world!"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-        />,
-        {
-          features: {newDesignLanguage: true},
-          mediaQuery: {isNavigationCollapsed: true},
-        },
-      );
-      expect(header.find(ButtonGroup)).toHaveLength(1);
-    });
+  it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
+    const header = mountWithApp(
+      <Header
+        title="Hello, world!"
+        primaryAction={primaryAction}
+        secondaryActions={secondaryActions}
+      />,
+      {
+        mediaQuery: {isNavigationCollapsed: true},
+      },
+    );
+    expect(header.findAll(ButtonGroup)).toHaveLength(0);
   });
 });

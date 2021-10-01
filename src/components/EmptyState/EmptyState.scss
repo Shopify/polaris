@@ -30,23 +30,40 @@ $centered-illustration-width: rem(226px);
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: spacing(loose) auto 0 auto;
+  margin: 0 auto;
   padding: spacing(loose) 0;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
   max-width: $page-max-width;
 }
 
 .Section {
-  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex: 1 1 auto;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 
   @include page-content-when-not-partially-condensed {
     left: spacing(loose);
-    flex-direction: row;
-    align-items: center;
   }
+}
+
+.Details {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  @include page-content-when-not-fully-condensed {
+    max-width: $detail-width;
+  }
+}
+
+.Image {
+  margin: 0;
+  width: initial;
 }
 
 .ImageContainer,
@@ -98,70 +115,12 @@ $centered-illustration-width: rem(226px);
   }
 }
 
-.withinPage {
-  .Details {
-    position: relative;
-    z-index: z-index(details, $stacking-order);
-    padding: 0 spacing();
-    width: $within-page-detail-width;
-
-    @include page-content-when-not-fully-condensed {
-      padding: 0;
-    }
-  }
-
-  .Image {
-    position: relative;
-    z-index: z-index(illustration, $stacking-order);
-    margin-top: spacing(loose) * -1;
-    margin-left: $illustration-left-margin;
-    width: $illustration-width-cropped;
-    max-width: none;
-
-    @include page-content-when-not-fully-condensed {
-      margin-left: 0;
-      width: 100%;
-    }
-
-    @include page-content-when-not-partially-condensed {
-      margin-top: 0;
-      margin-left: $illustration-left-margin;
-      width: $illustration-width;
-    }
-  }
-}
-
 .imageContained {
   .Image {
     @include page-content-when-not-partially-condensed {
       position: initial;
       width: 100%;
     }
-  }
-}
-
-.centeredLayout {
-  .Section {
-    left: 0;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ImageContainer,
-  .DetailsContainer {
-    flex: 0;
-  }
-
-  .Image {
-    margin: unset;
-    width: $centered-illustration-width;
-    max-width: 100%;
-  }
-
-  .Details {
-    text-align: center;
-    width: 100%;
   }
 }
 
@@ -172,8 +131,9 @@ $centered-illustration-width: rem(226px);
 }
 
 .Content {
-  @include text-style-display-small;
+  @include text-style-body;
   @include text-emphasis-subdued;
+  padding-bottom: spacing(tight);
 }
 
 .Actions {

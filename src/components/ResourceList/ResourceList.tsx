@@ -5,12 +5,14 @@ import React, {
   useReducer,
   useRef,
   useState,
+  Children,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
+import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
@@ -27,18 +29,10 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {CheckableButton} from '../CheckableButton';
 
-import {
-  BulkActions,
-  BulkActionsProps,
-  CheckableButton,
-  // eslint-disable-next-line import/no-deprecated
-  FilterControl,
-  FilterControlProps,
-} from './components';
 import styles from './ResourceList.scss';
-
-export type {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
@@ -89,6 +83,8 @@ export interface ResourceListProps<ItemType = any> {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: ResourceListSelectedItems;
+  /** Whether or not the list has filter(s) applied */
+  isFiltered?: boolean;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** Whether or not there are more items than currently set on the items prop. Determines whether or not to set the paginatedSelectAllAction and paginatedSelectAllText props on the BulkActions component. */
@@ -109,7 +105,7 @@ export interface ResourceListProps<ItemType = any> {
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
-  /** Function to render each list item   */
+  /** Function to render each list item, must return a ResourceItem component */
   renderItem(item: ItemType, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: ItemType, index: number): string;
@@ -121,8 +117,6 @@ type ResourceListType = (<ItemType>(
   value: ResourceListProps<ItemType>,
 ) => ReactElement) & {
   Item: typeof ResourceItem;
-  // eslint-disable-next-line import/no-deprecated
-  FilterControl: typeof FilterControl;
 };
 
 export const ResourceList: ResourceListType = function ResourceList<ItemType>({
@@ -134,10 +128,11 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   promotedBulkActions,
   bulkActions,
   selectedItems = [],
+  isFiltered,
   selectable,
   hasMoreItems,
   loading,
-  showHeader = false,
+  showHeader,
   totalItemsCount,
   sortValue,
   sortOptions,
@@ -302,10 +297,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.ResourceList.allItemsSelected', {
-        itemsLength: items.length,
-        resourceNamePlural: resourceName.plural,
-      });
+      return i18n.translate(
+        isFiltered
+          ? 'Polaris.ResourceList.allFilteredItemsSelected'
+          : 'Polaris.ResourceList.allItemsSelected',
+        {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
     }
   };
 
@@ -317,10 +317,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     const actionText =
       selectedItems === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.Common.undo')
-        : i18n.translate('Polaris.ResourceList.selectAllItems', {
-            itemsLength: items.length,
-            resourceNamePlural: resourceName.plural,
-          });
+        : i18n.translate(
+            isFiltered
+              ? 'Polaris.ResourceList.selectAllFilteredItems'
+              : 'Polaris.ResourceList.selectAllItems',
+            {
+              itemsLength: items.length,
+              resourceNamePlural: resourceName.plural,
+            },
+          );
 
     return {
       content: actionText,
@@ -398,11 +403,19 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
-    return (
-      <li key={id} className={styles.ItemWrapper}>
-        {renderItem(item, id, index)}
-      </li>
-    );
+    const itemContent = renderItem(item, id, index);
+
+    if (
+      process.env.NODE_ENV === 'development' &&
+      !isElementOfType(itemContent, ResourceItem)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
+      );
+    }
+
+    return itemContent;
   };
 
   const handleMultiSelectionChange = (
@@ -562,9 +575,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     ) : null;
 
   const headerTitleMarkup = (
-    <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
-      {headerTitle()}
-    </div>
+    <div className={styles.HeaderTitleWrapper}>{headerTitle()}</div>
   );
 
   const selectButtonMarkup = isSelectable ? (
@@ -604,6 +615,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     !showEmptyState && filterControl && !itemsExist && !loading;
 
   const headerMarkup = !showEmptyState &&
+    showHeader !== false &&
     !showEmptySearchState &&
     (showHeader || needsHeader) &&
     listRef.current && (
@@ -625,7 +637,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
               isSticky && styles['HeaderWrapper-isSticky'],
             );
             return (
-              <div className={headerClassName} testID="ResourceList-Header">
+              <div className={headerClassName}>
                 <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>
@@ -660,12 +672,12 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const spinnerSize = items.length < 2 ? 'small' : 'large';
 
   const loadingOverlay = loading ? (
-    <React.Fragment>
-      <div className={styles.SpinnerContainer} style={spinnerStyle}>
+    <>
+      <li className={styles.SpinnerContainer} style={spinnerStyle}>
         <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
-      </div>
-      <div className={styles.LoadingOverlay} />
-    </React.Fragment>
+      </li>
+      <li className={styles.LoadingOverlay} />
+    </>
   ) : null;
 
   const className = classNames(
@@ -693,7 +705,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       aria-busy={loading}
     >
       {loadingOverlay}
-      {items.map(renderItemWithId)}
+      {Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
 
@@ -722,5 +734,6 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 };
 
 ResourceList.Item = ResourceItem;
-// eslint-disable-next-line import/no-deprecated
-ResourceList.FilterControl = FilterControl;
+
+export {FilterControl} from './components';
+export type {FilterControlProps} from './components';

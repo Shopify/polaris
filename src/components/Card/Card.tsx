@@ -13,6 +13,12 @@ import {Popover} from '../Popover';
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
+export type {
+  CardSectionProps,
+  CardHeaderProps,
+  CardSubsectionProps,
+} from './components';
+
 export interface CardProps {
   /** Title content for the card */
   title?: React.ReactNode;
@@ -32,6 +38,8 @@ export interface CardProps {
   secondaryFooterActionsDisclosureText?: string;
   /** Alignment of the footer actions on the card, defaults to right */
   footerActionAlignment?: 'right' | 'left';
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -45,6 +53,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   Subsection: typeof Subsection;
 } = function Card({
   children,
+  hideOnPrint,
   title,
   subdued,
   sectioned,
@@ -55,13 +64,16 @@ export const Card: React.FunctionComponent<CardProps> & {
   footerActionAlignment = 'right',
 }: CardProps) {
   const i18n = useI18n();
-
   const {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
 
-  const className = classNames(styles.Card, subdued && styles.subdued);
+  const className = classNames(
+    styles.Card,
+    subdued && styles.subdued,
+    hideOnPrint && styles.hideOnPrint,
+  );
 
   const headerMarkup =
     title || actions ? <Header actions={actions} title={title} /> : null;
@@ -78,7 +90,7 @@ export const Card: React.FunctionComponent<CardProps> & {
       secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
     } else {
       secondaryFooterActionsMarkup = (
-        <React.Fragment>
+        <>
           <Popover
             active={secondaryActionsPopoverOpen}
             activator={
@@ -91,7 +103,7 @@ export const Card: React.FunctionComponent<CardProps> & {
           >
             <ActionList items={secondaryFooterActions} />
           </Popover>
-        </React.Fragment>
+        </>
       );
     }
   }

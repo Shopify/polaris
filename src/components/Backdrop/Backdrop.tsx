@@ -22,14 +22,13 @@ export function Backdrop(props: BackdropProps) {
   );
 
   return (
-    <React.Fragment>
+    <>
       <ScrollLock />
       <div
         className={className}
         onClick={onClick}
-        testID="Backdrop"
         onTouchStart={onTouchStart}
       />
-    </React.Fragment>
+    </>
   );
 }

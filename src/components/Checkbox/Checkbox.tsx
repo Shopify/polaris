@@ -1,14 +1,20 @@
-import React, {useRef, useImperativeHandle, useState} from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useState,
+  useContext,
+} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, Key, CheckboxHandles} from '../../types';
+import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
@@ -41,7 +47,7 @@ export interface CheckboxProps {
   onBlur?(): void;
 }
 
-export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
+export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
     {
       ariaDescribedBy: ariaDescribedByProp,
@@ -61,7 +67,6 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const {newDesignLanguage} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
@@ -69,6 +74,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
       setFalse: handleMouseOut,
     } = useToggle(false);
     const [keyFocused, setKeyFocused] = useState(false);
+    const isWithinListbox = useContext(WithinListboxContext);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -113,11 +119,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
       ? describedBy.join(' ')
       : undefined;
 
-    const wrapperClassName = classNames(
-      styles.Checkbox,
-      error && styles.error,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
+    const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
     const backdropClassName = classNames(
       styles.Backdrop,
@@ -136,11 +138,10 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
-      newDesignLanguage && keyFocused && styles.keyFocused,
+      keyFocused && styles.keyFocused,
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -169,7 +170,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
             onChange={noop}
             aria-invalid={error != null}
             aria-describedby={ariaDescribedBy}
-            role="checkbox"
+            role={isWithinListbox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}
           />
           <span className={backdropClassName} />
@@ -178,7 +179,6 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   },
 );

@@ -4,19 +4,20 @@ import React, {
   useState,
   MouseEvent,
   ReactNode,
-  Fragment,
   useCallback,
 } from 'react';
+import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
-import {Icon} from '../../../Icon';
-import {IconProps, Key} from '../../../../types';
+import {Icon, IconProps} from '../../../Icon';
+import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
+import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
 
 import {Secondary} from './components';
@@ -27,6 +28,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -34,13 +36,14 @@ export interface SubNavigationItem extends ItemURLDetails {
   label: string;
   disabled?: boolean;
   new?: boolean;
-  onClick?(event: MouseEvent<HTMLElement>): void;
+  onClick?(): void;
 }
 
 interface SecondaryAction {
   url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  onClick?(): void;
 }
 
 export interface ItemProps extends ItemURLDetails {
@@ -81,9 +84,11 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
+  const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
   const [keyFocused, setKeyFocused] = useState(false);
@@ -125,6 +130,20 @@ export function Item({
     </div>
   ) : null;
 
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
+    </div>
+  ) : null;
+
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
@@ -148,14 +167,14 @@ export function Item({
     );
 
   const itemContentMarkup = (
-    <Fragment>
+    <>
       {iconMarkup}
       <span className={styles.Text}>
         {label}
         {indicatorMarkup}
       </span>
       {wrappedBadgeMarkup}
-    </Fragment>
+    </>
   );
 
   if (url == null) {
@@ -163,6 +182,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
@@ -191,6 +211,7 @@ export function Item({
       tabIndex={tabIndex}
       aria-disabled={disabled}
       aria-label={secondaryAction.accessibilityLabel}
+      onClick={secondaryAction.onClick}
     >
       <Icon source={secondaryAction.icon} />
     </UnstyledLink>
@@ -231,28 +252,39 @@ export function Item({
 
   let secondaryNavigationMarkup: ReactNode = null;
 
-  if (subNavigationItems.length > 0 && showExpanded) {
+  if (subNavigationItems.length > 0) {
     const longestMatch = matchingSubNavigationItems.sort(
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
     const SecondaryNavigationClassName = classNames(
       styles.SecondaryNavigation,
+      showExpanded && styles.isExpanded,
       !icon && styles['SecondaryNavigation-noIcon'],
     );
 
     secondaryNavigationMarkup = (
       <div className={SecondaryNavigationClassName}>
-        <Secondary expanded={showExpanded}>
+        <Secondary expanded={showExpanded} id={secondaryNavigationId}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;
+            const onClick = () => {
+              if (onNavigationDismiss) {
+                onNavigationDismiss();
+              }
+
+              if (item.onClick && item.onClick !== onNavigationDismiss) {
+                item.onClick();
+              }
+            };
+
             return (
               <Item
                 {...rest}
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={onNavigationDismiss}
+                onClick={onClick}
               />
             );
           })}
@@ -272,14 +304,21 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
           onClick={getClickHandler(onClick)}
           onKeyUp={handleKeyUp}
           onBlur={handleBlur}
+          {...normalizeAriaAttributes(
+            secondaryNavigationId,
+            subNavigationItems.length > 0,
+            showExpanded,
+          )}
         >
           {itemContentMarkup}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>
@@ -386,4 +425,17 @@ function matchStateForItem(
     ? safeEqual(location, url)
     : safeStartsWith(location, url);
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
+}
+
+function normalizeAriaAttributes(
+  controlId: string,
+  hasSubMenu: boolean,
+  expanded: boolean,
+) {
+  return hasSubMenu
+    ? {
+        'aria-expanded': expanded,
+        'aria-controls': controlId,
+      }
+    : undefined;
 }

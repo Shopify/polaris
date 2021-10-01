@@ -1,0 +1,10 @@
+.Listbox {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}

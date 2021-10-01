@@ -1,10 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
-import {UnstyledLink} from '../../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
+import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Breadcrumbs />', () => {
   describe('url', () => {
@@ -13,15 +12,14 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://www.shopify.com',
-          target: 'REMOTE',
         },
       ];
 
-      const breadcrumbs = mountWithAppProvider(
+      const breadcrumbs = mountWithApp(
         <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
       );
 
-      expect(breadcrumbs.find('a')).toHaveLength(1);
+      expect(breadcrumbs).toContainReactComponentTimes('a', 1);
     });
 
     it('passes the accessibilityLabel through to <a> tag', () => {
@@ -29,18 +27,17 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://shopify.com',
-          target: 'REMOTE',
           accessibilityLabel: 'Go to Products',
         },
       ];
 
-      const breadcrumbs = mountWithAppProvider(
+      const breadcrumbs = mountWithApp(
         <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
       );
 
-      expect(breadcrumbs.find('a').prop('aria-label')).toStrictEqual(
-        'Go to Products',
-      );
+      expect(breadcrumbs).toContainReactComponent('a', {
+        'aria-label': 'Go to Products',
+      });
     });
   });
 
@@ -53,11 +50,11 @@ describe('<Breadcrumbs />', () => {
         },
       ];
 
-      const breadcrumbs = mountWithAppProvider(
+      const breadcrumbs = mountWithApp(
         <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
       );
 
-      expect(breadcrumbs.find('button')).toHaveLength(1);
+      expect(breadcrumbs).toContainReactComponentTimes('button', 1);
     });
 
     it('passes accessibilityLabel through to <button> tag', () => {
@@ -69,13 +66,13 @@ describe('<Breadcrumbs />', () => {
         },
       ];
 
-      const breadcrumbs = mountWithAppProvider(
+      const breadcrumbs = mountWithApp(
         <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
       );
 
-      expect(breadcrumbs.find('button').prop('aria-label')).toStrictEqual(
-        'Go to Products',
-      );
+      expect(breadcrumbs).toContainReactComponent('button', {
+        'aria-label': 'Go to Products',
+      });
     });
 
     it('triggers the callback function when clicked', () => {
@@ -83,53 +80,38 @@ describe('<Breadcrumbs />', () => {
       const callbackBreadcrumbs: CallbackAction[] = [
         {
           content: 'Products',
-          onAction: spy(),
+          onAction: spy,
         },
       ];
 
-      const breadcrumbs = mountWithAppProvider(
+      const breadcrumbs = mountWithApp(
         <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
       );
 
-      breadcrumbs.find('button').simulate('click');
+      breadcrumbs.find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });
   });
 
-  describe('newDesignLanguage', () => {
-    const linkBreadcrumbs: LinkAction[] = [
-      {
-        content: 'Products',
-        url: 'https://www.shopify.com',
-        target: 'REMOTE',
-      },
-    ];
+  const linkBreadcrumbs: LinkAction[] = [
+    {
+      content: 'Products',
+      url: 'https://www.shopify.com',
+    },
+  ];
 
-    it('adds a newDesignLanguage class', () => {
-      const wrapper = mountWithAppProvider(
-        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
+  it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
+    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={linkBreadcrumbs} />);
 
-      expect(wrapper.find(UnstyledLink).prop('className')).toStrictEqual(
-        'Breadcrumb newDesignLanguage',
-      );
+    expect(wrapper).toContainReactComponent(VisuallyHidden, {
+      children: 'Products',
     });
+  });
 
-    it('does not add a newDesignLanguage class', () => {
-      const wrapper = mountWithAppProvider(
-        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
+  it('renders nothing when empty', () => {
+    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={[]} />);
 
-      expect(wrapper.find(UnstyledLink).prop('className')).toStrictEqual(
-        'Breadcrumb',
-      );
-    });
+    expect(wrapper.html()).toBe('');
   });
 });
 

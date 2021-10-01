@@ -19,7 +19,7 @@ omitAppProvider: true
 
 # Top bar
 
-Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of non-embedded interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
+Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
 
 ---
 
@@ -178,11 +178,6 @@ function TopBarExample() {
   }, []);
 
   const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
     logo: {
       width: 124,
       topBarSource:
@@ -211,14 +206,9 @@ function TopBarExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -234,7 +224,7 @@ function TopBarExample() {
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajorTwotone} />
+          <Icon source={QuestionMarkMajor} />
           <VisuallyHidden>Secondary menu</VisuallyHidden>
         </span>
       }
@@ -290,135 +280,9 @@ function TopBarExample() {
 }
 ```
 
-### Top bar themed with keys
+### Top bar themed with colorScheme
 
 Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
-
-```jsx
-function TopBarExample() {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  const [isSearchActive, setIsSearchActive] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-
-  const toggleIsUserMenuOpen = useCallback(
-    () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
-    [],
-  );
-
-  const handleSearchResultsDismiss = useCallback(() => {
-    setIsSearchActive(false);
-    setSearchValue('');
-  }, []);
-
-  const handleSearchChange = useCallback((value) => {
-    setSearchValue(value);
-    setIsSearchActive(value.length > 0);
-  }, []);
-
-  const handleNavigationToggle = useCallback(() => {
-    console.log('toggle navigation visibility');
-  }, []);
-
-  const theme = {
-    colors: {
-      topBar: {
-        background: '#fff',
-        backgroundLighter: '#F4F6F8',
-        backgroundDarker: '#DFE3E8',
-        border: '#C4CDD5',
-        color: '#212B36',
-      },
-    },
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-    },
-  };
-
-  const userMenuMarkup = (
-    <TopBar.UserMenu
-      actions={[
-        {
-          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
-        },
-        {
-          items: [{content: 'Community forums'}],
-        },
-      ]}
-      name="Dharma"
-      detail="Jaded Pixel"
-      initials="D"
-      open={isUserMenuOpen}
-      onToggle={toggleIsUserMenuOpen}
-    />
-  );
-
-  const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
-  );
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      onChange={handleSearchChange}
-      value={searchValue}
-      placeholder="Search"
-      showFocusBorder
-    />
-  );
-
-  const topBarMarkup = (
-    <TopBar
-      showNavigationToggle
-      userMenu={userMenuMarkup}
-      searchResultsVisible={isSearchActive}
-      searchField={searchFieldMarkup}
-      searchResults={searchResultsMarkup}
-      onSearchResultsDismiss={handleSearchResultsDismiss}
-      onNavigationToggle={handleNavigationToggle}
-    />
-  );
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider
-        theme={theme}
-        i18n={{
-          Polaris: {
-            Avatar: {
-              label: 'Avatar',
-              labelWithInitials: 'Avatar with initials {initials}',
-            },
-            Frame: {skipToContent: 'Skip to content'},
-            TopBar: {
-              toggleMenuLabel: 'Toggle menu',
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup} />
-      </AppProvider>
-    </div>
-  );
-}
-```
-
-### Top bar themed for Plus
-
-Plus stores get a branded treatment that depends on whether the side navigation is shown or not. When the side nav is shown, the top bar’s theme stays light. When the side nav isn’t shown, the top bar transitions into a dark theme to signify to the user that they’re in a Plus store. Note that this example shows a logo that may be replaced by an organization switcher in production.
 
 ```jsx
 function TopBarExample() {
@@ -451,26 +315,12 @@ function TopBarExample() {
     console.log('toggle navigation visibility');
   }, []);
 
-  const darkTopBarColors = {
-    background: '#000000',
-    backgroundLighter: '#262626',
-    backgroundDarker: '#444444',
-    border: '#000000',
-    color: '#ffffff',
-  };
-
-  const lightTopBarColors = {
-    background: '#FFFFFF',
-    backgroundLighter: '#F4F6F8',
-    backgroundDarker: '#DFE3E8',
-    border: '#C4CDD5',
-    color: '#212B36',
-  };
-
   const theme = {
     colors: {
-      topBar: isDarkTheme ? darkTopBarColors : lightTopBarColors,
+      surface: '#FFFFFF',
+      onsurface: '#212B36',
     },
+    colorScheme: isDarkTheme ? 'dark' : 'light',
     logo: {
       width: 124,
       topBarSource: `data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 446 92.6' fill='%23${
@@ -500,14 +350,9 @@ function TopBarExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -568,7 +413,7 @@ function TopBarExample() {
 ## Related components
 
 - To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the primary navigation within the frame of a non-embedded application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
 - To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
 - To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.

@@ -7,10 +7,10 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: var(--p-background, color('sky', 'light'));
+  background-color: var(--p-background);
 
   @include when-printing {
-    background-color: none;
+    background-color: transparent;
   }
 
   @include frame-when-nav-displayed {
@@ -37,11 +37,9 @@ $skip-vertical-offset: rem(10px);
     left: var(--p-frame-offset);
     display: flex;
 
-    &:not(.Navigation-newDesignLanguage) {
-      .hasTopBar & {
-        top: top-bar-height();
-        height: calc(100% - #{top-bar-height()});
-      }
+    .hasTopBar & {
+      top: top-bar-height();
+      height: calc(100% - #{top-bar-height()});
     }
   }
 
@@ -77,6 +75,8 @@ $skip-vertical-offset: rem(10px);
 
 .NavigationDismiss {
   @include hidden-when-printing;
+  @include recolor-icon(var(--p-surface));
+  @include focus-ring;
   position: absolute;
   top: 0;
   left: 100%;
@@ -85,6 +85,7 @@ $skip-vertical-offset: rem(10px);
   margin: spacing();
   padding: 0;
   border: none;
+  border-radius: 50%;
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -98,8 +99,9 @@ $skip-vertical-offset: rem(10px);
   }
 
   &:focus {
+    @include focus-ring($style: focused);
+    position: absolute;
     border-radius: border-radius();
-    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
     outline: none;
   }
 
@@ -107,21 +109,12 @@ $skip-vertical-offset: rem(10px);
     display: none;
   }
 
-  .Navigation-newDesignLanguage & {
-    border-radius: 50%;
+  &:hover {
+    background-color: var(--p-overlay);
+  }
 
-    &:hover {
-      background-color: var(--p-overlay);
-    }
-
-    &:focus {
-      @include focus-ring;
-      position: absolute;
-    }
-
-    &:active {
-      background-color: var(--p-overlay);
-    }
+  &:active {
+    background-color: var(--p-overlay);
   }
 }
 
@@ -138,16 +131,6 @@ $skip-vertical-offset: rem(10px);
     left: var(--p-frame-offset);
     width: calc(100% - var(--p-frame-offset));
   }
-
-  &.TopBar-newDesignLanguage {
-    @include frame-when-nav-displayed {
-      // stylelint-disable-next-line selector-max-class
-      .hasNav & {
-        left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-        width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
-      }
-    }
-  }
 }
 
 .ContextualSaveBar {
@@ -160,15 +143,6 @@ $skip-vertical-offset: rem(10px);
   @include frame-when-nav-displayed {
     left: var(--p-frame-offset);
     width: calc(100% - var(--p-frame-offset));
-  }
-}
-
-.ContextualSaveBar-newDesignLanguage {
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-      max-width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
-    }
   }
 }
 
@@ -201,26 +175,8 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.Main-newDesignLanguage {
-  .hasTopBar & {
-    padding-top: new-top-bar-height();
-    @include when-printing {
-      padding-top: 0;
-    }
-  }
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      padding-left: layout-width(new-nav);
-      @include safe-area-for(padding-left, layout-width(new-nav), left);
-
-      @include when-printing {
-        padding-left: 0;
-      }
-    }
-  }
-}
-
 .Content {
+  position: relative;
   padding-bottom: var(--global-ribbon-height, 0);
   flex: 1;
   @include layout-flex-fix;
@@ -247,20 +203,6 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.GlobalRibbonContainer-newDesignLanguage {
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-      @include safe-area-for(
-        left,
-        calc(#{layout-width(new-nav)} + var(--p-frame-offset)),
-        left
-      );
-      width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
-    }
-  }
-}
-
 .LoadingBar {
   @include hidden-when-printing;
   position: fixed;
@@ -275,7 +217,7 @@ $skip-vertical-offset: rem(10px);
     }
 
     .hasTopBar & {
-      top: var(--p-override-zero, top-bar-height());
+      top: var(--p-override-zero);
       z-index: var(
         --p-override-loading-z-index,
         z-index(loading-bar, $fixed-element-stacking-order)
@@ -295,9 +237,20 @@ $skip-vertical-offset: rem(10px);
   &.focused {
     pointer-events: all;
     opacity: 1;
+    > a {
+      @include focus-ring($style: 'focused');
+    }
   }
-}
 
-.SkipAnchor {
-  @include button-base;
+  > a {
+    @include button-base;
+    @include text-style-button;
+    @include focus-ring($border-width: rem(1px));
+    color: var(--p-text);
+
+    &:focus {
+      border-color: none;
+      box-shadow: none;
+    }
+  }
 }

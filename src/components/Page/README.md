@@ -19,13 +19,9 @@ keywords:
   - full-width page
   - narrow-width page
   - page with action groups
-  - page with separator
   - outer wrapper
   - page actions
   - page layouts
-  - easdk
-  - shopify app bridge
-  - embedded app
   - android
   - ios
 ---
@@ -33,53 +29,6 @@ keywords:
 # Page
 
 Use to build the outer wrapper of a page, including the page title and associated actions.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-Note in the props table that a number of properties are only available in stand-alone applications, and won’t work in an embedded context. Configure your application’s icon and navigation in the [Shopify Partner Dashboard](https://partners.shopify.com) app setup section. To help visualize the page component in an embedded application, we’ve provided the following screenshot.
-
-![Screenshot of page component in an embedded application](/public_images/embedded/page/page@2x.jpg)
-
-```jsx
-ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-    <Page
-      breadcrumbs={[{content: 'Products'}]}
-      title="Product reviews"
-      primaryAction={{
-        content: 'Save',
-        disabled: true,
-      }}
-      secondaryActions={[{content: 'Duplicate'}, {content: 'Upgrade'}]}
-      actionGroups={[
-        {
-          title: 'Promote',
-          actions: [
-            {
-              content: 'Share on Facebook',
-              onAction: this.performFacebookShare,
-            },
-            {
-              content: 'Share on Pinterest',
-              onAction: this.performPinterestShare,
-            },
-          ],
-        },
-      ]}
-    >
-      <p>Page content</p>
-    </Page>
-  </AppProvider>,
-);
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Page` to render an embedded app title bar is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`TitleBar`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/titlebar) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) combined with `Page` instead.
 
 ---
 
@@ -194,13 +143,18 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
       alt="Black leather pet collar"
     />
   }
+  compactTitle
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
     {
       content: 'Duplicate',
       accessibilityLabel: 'Secondary action label',
+      onAction: () => alert('Duplicate action'),
     },
-    {content: 'View on your store'},
+    {
+      content: 'View on your store',
+      onAction: () => alert('View on your store action'),
+    },
   ]}
   actionGroups={[
     {
@@ -210,7 +164,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
         {
           content: 'Share on Facebook',
           accessibilityLabel: 'Individual action label',
-          onAction: () => {},
+          onAction: () => alert('Share on Facebook action'),
         },
       ],
     },
@@ -220,7 +174,6 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     hasNext: true,
   }}
   additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
-  separator
 >
   <p>Page content</p>
 </Page>
@@ -383,8 +336,7 @@ Use when a secondary action links to another website. Actions marked external op
       content: 'Promote',
       external: true,
       icon: ExternalMinor,
-      url:
-        'https://www.facebook.com/business/learn/facebook-page-build-audience',
+      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
     },
   ]}
 >
@@ -476,22 +428,6 @@ Use action groups for sets of actions that relate to one another, particularly w
 </Page>
 ```
 
-### Page with separator
-
-<!-- example-for: web -->
-
-Use a separator for pages that have an [empty state](https://polaris.shopify.com/components/structure/empty-state) as their only content, or that have an [annotated section](https://polaris.shopify.com/components/structure/layout) as the first component on the page.
-
-```jsx
-<Page title="Settings" separator>
-  <Layout>
-    <Layout.AnnotatedSection title="Store details">
-      <p>Annotated section content</p>
-    </Layout.AnnotatedSection>
-  </Layout>
-</Page>
-```
-
 ### Page with content after title (title metadata)
 
 <!-- example-for: web -->
@@ -514,6 +450,22 @@ Title metadata appears immediately after the page’s title. Use it to communica
 </Page>
 ```
 
+### Page with divider
+
+<!-- example-for: web -->
+
+Use when the page needs visual separation between the page header and the content.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  divider
+>
+  <p>Page content</p>
+</Page>
+```
+
 ---
 
 ## Related components
@@ -521,4 +473,3 @@ Title metadata appears immediately after the page’s title. Use it to communica
 - To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/structure/layout)
 - To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
 - To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/structure/page-actions)
-- When you use the page component within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), the [app provider component](https://polaris.shopify.com/components/structure/app-provider) delegates rendering to the Shopify App Bridge

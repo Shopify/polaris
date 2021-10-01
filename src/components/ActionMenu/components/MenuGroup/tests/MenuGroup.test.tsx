@@ -1,14 +1,7 @@
 import React from 'react';
-import {SaveMinor} from '@shopify/polaris-icons';
-// eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  trigger,
-  ReactWrapper,
-} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Popover, ActionList, Button} from 'components';
 
-import {MenuAction} from '../../MenuAction';
 import {MenuGroup} from '../MenuGroup';
 
 describe('<MenuGroup />', () => {
@@ -20,74 +13,26 @@ describe('<MenuGroup />', () => {
     onClose: noop,
   };
 
-  describe('<MenuAction />', () => {
-    it('does not render <MenuGroup /> when no actions are passed', () => {
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} actions={[]} />,
-      );
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
-
-    it('passes `title` as the `content` for the <Popover /> activator', () => {
-      const mockTitle = 'mock title';
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} title={mockTitle} />,
-      );
-
-      expect(wrapper.find(MenuAction).prop('content')).toBe(mockTitle);
-    });
-
-    it('passes `accessibilityLabel`', () => {
-      const mockAccessibilityLabel = 'mock a11y';
-      const wrapper = mountWithAppProvider(
-        <MenuGroup
-          {...mockProps}
-          accessibilityLabel={mockAccessibilityLabel}
-        />,
-      );
-
-      expect(wrapper.find(MenuAction).prop('accessibilityLabel')).toBe(
-        mockAccessibilityLabel,
-      );
-    });
-
-    it('passes `icon`', () => {
-      const mockIcon = SaveMinor;
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} icon={mockIcon} />,
-      );
-
-      expect(wrapper.find(MenuAction).prop('icon')).toBe(mockIcon);
-    });
-
-    it('passes `title` when `onOpen` triggers after an action', () => {
-      const mockTitle = 'mock title';
-      const onOpenSpy = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} title={mockTitle} onOpen={onOpenSpy} />,
-      );
-
-      trigger(wrapper.find(MenuAction), 'onAction');
-
-      expect(onOpenSpy).toHaveBeenCalledWith(mockTitle);
-    });
-  });
-
   describe('<Popover />', () => {
     it('passes `details`', () => {
       const mockDetails = 'mock details';
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <MenuGroup {...mockProps} details={mockDetails} />,
       );
-      const popoverContents = getPopoverContents(wrapper);
 
-      expect(popoverContents.text()).toContain(mockDetails);
+      const popoverContents = mountWithApp(
+        <div>{wrapper.find(Popover)!.prop('children')}</div>,
+      );
+
+      expect(popoverContents).toContainReactText(mockDetails);
     });
 
     it('passes `active`', () => {
-      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} active />);
+      const wrapper = mountWithApp(<MenuGroup {...mockProps} active />);
 
-      expect(wrapper.find(Popover).prop('active')).toBeTruthy();
+      expect(wrapper).toContainReactComponent(Popover, {
+        active: true,
+      });
     });
 
     it('passes `actions` into the <ActionList />', () => {
@@ -95,23 +40,25 @@ describe('<MenuGroup />', () => {
         {content: 'mock content 1'},
         {content: 'mock content 2'},
       ];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <MenuGroup {...mockProps} actions={mockActions} />,
       );
-      const popoverContents = getPopoverContents(wrapper);
-
-      expect(popoverContents.find(ActionList).prop('items')).toStrictEqual(
-        mockActions,
+      const popoverContents = mountWithApp(
+        <div>{wrapper.find(Popover)!.prop('children')}</div>,
       );
+
+      expect(popoverContents).toContainReactComponent(ActionList, {
+        items: mockActions,
+      });
     });
 
     it('triggers `onClose` after the <Popover /> closes', () => {
       const onCloseSpy = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <MenuGroup {...mockProps} onClose={onCloseSpy} />,
       );
 
-      trigger(wrapper.find(Popover), 'onClose');
+      wrapper.find(Popover)!.trigger('onClose');
 
       expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
@@ -119,7 +66,7 @@ describe('<MenuGroup />', () => {
     it('triggers `onClose` after an action', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <MenuGroup
           {...mockProps}
           title={mockTitle}
@@ -128,37 +75,17 @@ describe('<MenuGroup />', () => {
         />,
       );
 
-      trigger(wrapper.find(ActionList), 'onActionAnyItem');
+      wrapper.find(ActionList)!.trigger('onActionAnyItem');
 
       expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('uses Button instead of MenuAction as subcomponents', () => {
-      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} />, {
-        features: {newDesignLanguage: true},
-      });
+  it('uses Button instead as subcomponents', () => {
+    const wrapper = mountWithApp(<MenuGroup {...mockProps} />);
 
-      expect(wrapper.find(Button)).toHaveLength(1);
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
-
-    it('uses MenuAction instead of Button as subcomponents when disabled', () => {
-      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} />, {
-        features: {newDesignLanguage: false},
-      });
-
-      expect(wrapper.find(MenuAction)).toHaveLength(1);
-      expect(wrapper.find(Button)).toHaveLength(0);
-    });
+    expect(wrapper.findAll(Button)).toHaveLength(1);
   });
 });
 
 function noop() {}
-
-function getPopoverContents(menuGroup: ReactWrapper) {
-  return mountWithAppProvider(
-    <div>{menuGroup.find(Popover).prop('children')}</div>,
-  );
-}

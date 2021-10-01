@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
-import {useAppBridge} from '../../utilities/app-bridge';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {DisplayText} from '../DisplayText';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 
@@ -24,45 +22,32 @@ export interface SkeletonPageProps {
   breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
-  /** Decreases the maximum layout width. Intended for single-column layouts
-   * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/feedback-indicators/skeleton-page#props-narrow-width}
-   */
-  singleColumn?: boolean;
 }
 
 export function SkeletonPage({
   children,
   fullWidth,
   narrowWidth,
-  singleColumn,
   primaryAction,
   secondaryActions,
   title = '',
   breadcrumbs,
 }: SkeletonPageProps) {
-  if (singleColumn) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-    );
-  }
-
   const i18n = useI18n();
-  const appBridge = useAppBridge();
 
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
-    (narrowWidth || singleColumn) && styles.narrowWidth,
+    narrowWidth && styles.narrowWidth,
   );
 
-  const headerClassName = classNames(
-    styles.Header,
-    breadcrumbs && styles['Header-hasBreadcrumbs'],
-    secondaryActions && styles['Header-hasSecondaryActions'],
+  const titleContent = title ? (
+    <h1 className={styles.Title}>{title}</h1>
+  ) : (
+    <div className={styles.SkeletonTitle} />
   );
 
-  const titleMarkup = title !== null ? renderTitle(title) : null;
+  const titleMarkup = <div className={styles.TitleWrapper}>{titleContent}</div>;
 
   const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>
@@ -70,24 +55,14 @@ export function SkeletonPage({
     </div>
   ) : null;
 
-  const secondaryActionsMarkup = secondaryActions
-    ? renderSecondaryActions(secondaryActions)
-    : null;
+  const secondaryActionsMarkup = useMemo(
+    () => (secondaryActions ? renderSecondaryActions(secondaryActions) : null),
+    [secondaryActions],
+  );
 
   const breadcrumbMarkup = breadcrumbs ? (
     <div className={styles.BreadcrumbAction} style={{width: 60}}>
       <SkeletonBodyText lines={1} />
-    </div>
-  ) : null;
-
-  const headerMarkup = !appBridge ? (
-    <div className={headerClassName}>
-      {breadcrumbMarkup}
-      <div className={styles.TitleAndPrimaryAction}>
-        {titleMarkup}
-        {primaryActionMarkup}
-      </div>
-      {secondaryActionsMarkup}
     </div>
   ) : null;
 
@@ -97,7 +72,14 @@ export function SkeletonPage({
       role="status"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
     >
-      {headerMarkup}
+      <div className={styles.Header}>
+        {breadcrumbMarkup}
+        <div className={styles.TitleAndPrimaryAction}>
+          {titleMarkup}
+          {primaryActionMarkup}
+        </div>
+        {secondaryActionsMarkup}
+      </div>
       <div className={styles.Content}>{children}</div>
     </div>
   );
@@ -114,16 +96,4 @@ function renderSecondaryActions(actionCount: number) {
     );
   }
   return <div className={styles.Actions}>{actions}</div>;
-}
-
-function renderTitle(title: string) {
-  const titleContent =
-    title === '' ? (
-      <SkeletonDisplayText size="large" />
-    ) : (
-      <DisplayText size="large" element="h1">
-        {title}
-      </DisplayText>
-    );
-  return <div className={styles.Title}>{titleContent}</div>;
 }

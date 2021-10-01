@@ -1,18 +1,17 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
-    const scrollable = mountWithAppProvider(<Scrollable />);
+    const scrollable = mountWithApp(<Scrollable />);
     expect(scrollable).toBeTruthy();
   });
 
   it('unmounts', () => {
-    const scrollable = mountWithAppProvider(<Scrollable />);
+    const scrollable = mountWithApp(<Scrollable />);
     expect(() => {
       scrollable.unmount();
     }).not.toThrow();
@@ -25,14 +24,12 @@ describe('<Scrollable />', () => {
         of Shopify Inc.
       </p>
     );
-    const scrollable = mountWithAppProvider(
-      <Scrollable>{children}</Scrollable>,
-    );
-    expect(scrollable.contains(children)).toBe(true);
+    const scrollable = mountWithApp(<Scrollable>{children}</Scrollable>);
+    expect(scrollable).toContainReactComponent('div', {children});
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.SFC = (_) => (
+    const Child: React.FunctionComponent = (_) => (
       <ScrollableContext.Consumer>
         {(scrollToPosition) => {
           return scrollToPosition ? <div /> : null;
@@ -40,7 +37,7 @@ describe('<Scrollable />', () => {
       </ScrollableContext.Consumer>
     );
 
-    const scrollableContainer = mountWithAppProvider(
+    const scrollableContainer = mountWithApp(
       <ScrollableContext.Provider value={() => {}}>
         <Scrollable>
           <Child />
@@ -48,18 +45,30 @@ describe('<Scrollable />', () => {
       </ScrollableContext.Provider>,
     );
 
-    const div = scrollableContainer.find(Child).find('div').first();
-    expect(div.exists()).toBe(true);
+    const scrollChild = scrollableContainer.find(Child)!;
+    expect(scrollChild).toContainReactComponent('div');
   });
 
   it('allows children to receive scroll events', () => {
     const spy = jest.fn();
-    const scrollArea = mountWithAppProvider(
+    const scrollArea = mountWithApp(
       <Scrollable>
-        <div id="scrollContents" onScroll={spy} />
+        <div onScroll={spy} />
       </Scrollable>,
     );
-    scrollArea.find('#scrollContents').simulate('scroll');
+    scrollArea.find('div', {onScroll: spy})!.trigger('onScroll');
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('has a tabIndex when focusable', () => {
+    const scrollArea = mountWithApp(
+      <Scrollable focusable>
+        <p>Hello</p>
+      </Scrollable>,
+    );
+
+    expect(scrollArea.find('div')).toHaveReactProps({
+      tabIndex: 0,
+    });
   });
 });

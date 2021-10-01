@@ -1,30 +1,41 @@
 import React from 'react';
 
-import {useFeatures} from '../../utilities/features';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
-import {IconProps, isNewDesignLanguageColor} from '../../types';
+import type {IconSource} from '../../types';
 
 import styles from './Icon.scss';
 
+type Color =
+  | 'base'
+  | 'subdued'
+  | 'critical'
+  | 'interactive'
+  | 'warning'
+  | 'highlight'
+  | 'success'
+  | 'primary';
+
 const COLORS_WITH_BACKDROPS = [
-  'teal',
-  'tealDark',
-  'greenDark',
-  'redDark',
-  'yellowDark',
-  'ink',
-  'inkLighter',
+  'base',
+  'critical',
+  'highlight',
+  'success',
+  'warning',
 ];
 
-// This is needed for the polaris
-// styleguide to generate the props explorer
-interface Props extends IconProps {}
+export interface IconProps {
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
+  source: IconSource;
+  /** Set the color for the SVG fill */
+  color?: Color;
+  /** Show a backdrop behind the icon */
+  backdrop?: boolean;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
+}
 
-export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
-  const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
-
+export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
@@ -34,41 +45,25 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
     sourceType = 'external';
   }
 
-  if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
+  if (color && sourceType === 'external') {
     // eslint-disable-next-line no-console
     console.warn(
-      i18n.translate('Polaris.Icon.backdropWarning', {
-        color,
-        colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
-      }),
+      'Recoloring external SVGs is not supported. Set the intended color on your SVG instead.',
     );
   }
 
-  if (color && !newDesignLanguage && isNewDesignLanguageColor(color)) {
+  if (backdrop && color && !COLORS_WITH_BACKDROPS.includes(color)) {
     // eslint-disable-next-line no-console
     console.warn(
-      'You have selected a color meant to be used in the new design language but new design language is not enabled.',
-    );
-  }
-
-  if (
-    color &&
-    sourceType === 'external' &&
-    newDesignLanguage === true &&
-    isNewDesignLanguageColor(color)
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Recoloring external SVGs is not supported with colors in the new design language. Set the intended color on your SVG instead.',
+      `The ${color} variant does not have a supported backdrop color`,
     );
   }
 
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
-    color && color !== 'white' && styles.isColored,
+    color && styles.applyColor,
     backdrop && styles.hasBackdrop,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const SourceComponent = source;
@@ -92,7 +87,8 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   };
 
   return (
-    <span className={className} aria-label={accessibilityLabel}>
+    <span className={className}>
+      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
       {contentMarkup[sourceType]}
     </span>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
-import {mount} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mount, mountWithApp} from 'test-utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
 
@@ -18,7 +16,7 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     };
 
-    mountWithAppProvider(<ContextualSaveBar {...props} />, {
+    mountWithApp(<ContextualSaveBar {...props} />, {
       frame: mockFrameContext,
     });
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
@@ -32,7 +30,7 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     };
 
-    const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
+    const frame = mountWithApp(<ContextualSaveBar {...props} />, {
       frame: mockFrameContext,
     });
     expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
@@ -46,10 +44,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     };
 
-    const contextualSaveBar = mountWithAppProvider(
-      <ContextualSaveBar {...props} />,
-      {frame: mockFrameContext},
-    );
+    const contextualSaveBar = mountWithApp(<ContextualSaveBar {...props} />, {
+      frame: mockFrameContext,
+    });
     const newProps = {
       saveAction: {content: 'Save', onAction: noop, loading: true},
       discardAction: {content: 'Discard', onAction: noop},
@@ -68,10 +65,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     };
 
-    const contextualSaveBar = mountWithAppProvider(
-      <ContextualSaveBar {...props} />,
-      {frame: mockFrameContext},
-    );
+    const contextualSaveBar = mountWithApp(<ContextualSaveBar {...props} />, {
+      frame: mockFrameContext,
+    });
 
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
     contextualSaveBar.setProps({...props});
@@ -95,7 +91,7 @@ describe('<ContextualSaveBar />', () => {
       expect(() => {
         mount(<ContextualSaveBar {...props} />);
       }).toThrow(
-        'No Frame context was provided. Your component must be wrapped in a <Frame> component, or be used within an embedded application by setting the apiKey and shopOrigin properties on <AppProvider>. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
+        'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
       );
     });
   });

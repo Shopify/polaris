@@ -1,3 +1,10 @@
+// AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
+// It should be first to ensure its CSS is first in compiled output
+// AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
+// It should be first to ensure its CSS is first in compiled output
+export {AppProvider} from './AppProvider';
+export type {AppProviderProps} from './AppProvider';
+
 export {AccountConnection} from './AccountConnection';
 export type {AccountConnectionProps} from './AccountConnection';
 
@@ -6,9 +13,6 @@ export type {ActionListProps} from './ActionList';
 
 export {ActionMenu} from './ActionMenu';
 export type {ActionMenuProps} from './ActionMenu';
-
-export {AppProvider} from './AppProvider';
-export type {AppProviderProps} from './AppProvider';
 
 export {Autocomplete} from './Autocomplete';
 export type {AutocompleteProps} from './Autocomplete';
@@ -23,10 +27,13 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 
 export {Banner} from './Banner';
-export type {BannerProps, BannerStatus} from './Banner';
+export type {BannerProps, BannerStatus, BannerHandles} from './Banner';
 
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
+
+export {BulkActions as UnstableBulkActions} from './BulkActions';
+export type {BulkActionsProps as UnstableBulkActionsProps} from './BulkActions';
 
 export {Button, buttonFrom, buttonsFrom} from './Button';
 export type {ButtonProps} from './Button';
@@ -41,7 +48,12 @@ export {Caption} from './Caption';
 export type {CaptionProps} from './Caption';
 
 export {Card} from './Card';
-export type {CardProps} from './Card';
+export type {
+  CardProps,
+  CardSectionProps,
+  CardHeaderProps,
+  CardSubsectionProps,
+} from './Card';
 
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
@@ -54,6 +66,9 @@ export type {CollapsibleProps} from './Collapsible';
 
 export {ColorPicker} from './ColorPicker';
 export type {ColorPickerProps} from './ColorPicker';
+
+export {Combobox} from './Combobox';
+export type {ComboboxProps} from './Combobox';
 
 export {Connected} from './Connected';
 export type {ConnectedProps} from './Connected';
@@ -70,8 +85,8 @@ export type {
   ColumnContentType,
 } from './DataTable';
 
-export {DatePicker, Months} from './DatePicker';
-export type {DatePickerProps, Range, Year} from './DatePicker';
+export {DatePicker} from './DatePicker';
+export type {DatePickerProps, Range} from './DatePicker';
 
 export {DescriptionList} from './DescriptionList';
 export type {DescriptionListProps} from './DescriptionList';
@@ -124,9 +139,13 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 
 export {Icon} from './Icon';
+export type {IconProps} from './Icon';
 
 export {Image} from './Image';
 export type {ImageProps} from './Image';
+
+export {IndexTable} from './IndexTable';
+export type {IndexTableProps} from './IndexTable';
 
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';
@@ -143,7 +162,7 @@ export type {KeypressListenerProps} from './KeypressListener';
 export {KonamiCode} from './KonamiCode';
 export type {KonamiCodeProps} from './KonamiCode';
 
-export {Label} from './Label';
+export {Label, labelID} from './Label';
 export type {LabelProps} from './Label';
 
 export {Labelled} from './Labelled';
@@ -158,6 +177,9 @@ export type {LinkProps} from './Link';
 export {List} from './List';
 export type {ListProps} from './List';
 
+export {Listbox} from './Listbox';
+export type {ListboxProps} from './Listbox';
+
 export {Loading} from './Loading';
 export type {LoadingProps} from './Loading';
 
@@ -170,7 +192,6 @@ export {Navigation, isNavigationItemActive} from './Navigation';
 export type {
   NavigationProps,
   NavigationItemProps,
-  NavigationMessageProps,
   SubNavigationItem,
 } from './Navigation';
 
@@ -190,10 +211,20 @@ export {PolarisTestProvider} from './PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './PolarisTestProvider';
 
 export {Popover, PopoverCloseSource} from './Popover';
-export type {PopoverProps} from './Popover';
+export type {
+  PopoverProps,
+  PopoverAutofocusTarget,
+  PopoverPublicAPI,
+} from './Popover';
 
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
+
+export {PortalsManager} from './PortalsManager';
+export type {PortalsManagerProps} from './PortalsManager';
+
+export {PositionedOverlay} from './PositionedOverlay';
+export type {PositionedOverlayProps} from './PositionedOverlay';
 
 export {ProgressBar} from './ProgressBar';
 export type {ProgressBarProps} from './ProgressBar';
@@ -207,20 +238,16 @@ export type {RangeSliderProps} from './RangeSlider';
 export {ResourceItem} from './ResourceItem';
 export type {ResourceItemProps} from './ResourceItem';
 
-export {ResourceList, FilterType} from './ResourceList';
-export type {
-  ResourceListProps,
-  FilterControlProps,
-  Filter,
-  AppliedFilter,
-  FilterSelect,
-  FilterTextField,
-} from './ResourceList';
+export {ResourceList} from './ResourceList';
+export type {ResourceListProps} from './ResourceList';
+
+// We want to delete this component, but there's one place in web
+// that still relies on it so we have to keep it.
+// We don't want anyone else using it though, use the Filters component instead
+export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
+export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
-
-export {ResourcePicker} from './ResourcePicker';
-export type {ResourcePickerProps} from './ResourcePicker';
 
 export {Scrollable} from './Scrollable';
 export type {ScrollableProps} from './Scrollable';
@@ -296,6 +323,9 @@ export type {TrapFocusProps} from './TrapFocus';
 
 export {Truncate} from './Truncate';
 export type {TruncateProps} from './Truncate';
+
+export {UnstyledButton, unstyledButtonFrom} from './UnstyledButton';
+export type {UnstyledButtonProps} from './UnstyledButton';
 
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';

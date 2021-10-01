@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar med initialene {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Laster inn"
+      "spinnerAccessibilityLabel": "Laster inn",
+      "ellipsis": "{content} …"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +21,8 @@
         "attention": "Obs",
         "new": "Ny",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laster inn",
@@ -72,7 +74,18 @@
         "friday": "fre",
         "saturday": "lør",
         "sunday": "søn"
-      }
+      },
+      "days": {
+        "monday": "Mandag",
+        "tuesday": "Tirsdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lørdag",
+        "sunday": "Søndag"
+      },
+      "start": "Start av intervall",
+      "end": "Slutt på intervall"
     },
     "DiscardConfirmationModal": {
       "title": "Forkast alle ulagrede endringer",
@@ -81,16 +94,27 @@
       "secondaryAction": "Fortsett å redigere"
     },
     "DropZone": {
-      "overlayTextFile": "Slipp fil for å laste opp",
-      "overlayTextImage": "Slipp bilde for å laste opp",
       "errorOverlayTextFile": "Filtypen er ikke gyldig",
       "errorOverlayTextImage": "Bildetypen er ikke gyldig",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Slipp fil for å laste opp",
+        "overlayTextImage": "Slipp bilde for å laste opp",
         "actionTitleFile": "Legg til en fil",
-        "actionTitleImage": "Legg til et bilde",
+        "actionTitleImage": "Legg til bilde",
+        "actionHintFile": "eller slipp filen for å laste den opp",
+        "actionHintImage": "eller slipp bildet for å laste opp",
+        "labelFile": "Last opp fil",
+        "labelImage": "Last opp bilde"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Slipp filer for å laste opp",
+        "overlayTextImage": "Slipp bilder for å laste opp",
+        "actionTitleFile": "Legg til filer",
+        "actionTitleImage": "Legg til bilder",
         "actionHintFile": "eller slipp filer for å laste opp",
         "actionHintImage": "eller slipp bilder for å laste opp",
-        "label": "Last opp fil"
+        "labelFile": "Last opp filer",
+        "labelImage": "Laste opp bilder"
       }
     },
     "EmptySearchResult": {
@@ -100,10 +124,8 @@
       "skipToContent": "Gå videre til innholdet",
       "Navigation": {
         "closeMobileNavigationLabel": "Lukk navigering"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color}-ikonet godtar ikke bakgrunnsstiler. Ikonfargene som har bakgrunnsstiler, er: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigasjon"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -204,7 +226,9 @@
           "on_or_after": "etter {date}"
         }
       },
-      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}"
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
+      "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"
     },
     "SkeletonPage": {
       "loadingLabel": "Siden laster"
@@ -279,6 +303,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Sidelastingslinje"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Verktøytips: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Vare",
+      "defaultItemPlural": "Varer",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} er valgt.",
+      "selected": "{selectedItemsCount} valgt",
+      "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Fant ingen {resourceNamePlural}",
+      "emptySearchDescription": "Prøv å endre filtrene eller søkeord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Laster inn {resourceNamePlural} …",
+      "selectAllLabel": "Velg alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valgt",
+      "undo": "Angre",
+      "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
+      "selectItem": "Velg {resourceName}",
+      "selectButtonText": "Velg"
     }
   }
 }

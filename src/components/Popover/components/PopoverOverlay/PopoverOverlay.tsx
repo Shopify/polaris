@@ -1,8 +1,8 @@
-import React, {createRef} from 'react';
-import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
-import {write} from '@shopify/javascript-utilities/fastdom';
+import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
+import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -26,6 +26,8 @@ export enum PopoverCloseSource {
   ScrollOut,
 }
 
+export type PopoverAutofocusTarget = 'none' | 'first-node' | 'container';
+
 enum TransitionStatus {
   Entering = 'entering',
   Entered = 'entered',
@@ -42,22 +44,22 @@ export interface PopoverOverlayProps {
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   id: string;
+  zIndexOverride?: number;
   activator: HTMLElement;
   preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
-  preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
+  hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: NonNullable<ThemeProviderProps['theme']>['colorScheme'];
+  autofocusTarget?: PopoverAutofocusTarget;
 }
 
 interface State {
   transitionStatus: TransitionStatus;
 }
 
-export class PopoverOverlay extends React.PureComponent<
-  PopoverOverlayProps,
-  State
-> {
+export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering
@@ -67,6 +69,16 @@ export class PopoverOverlay extends React.PureComponent<
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private exitingTimer?: number;
+  private overlayRef: React.RefObject<PositionedOverlay>;
+
+  constructor(props: PopoverOverlayProps) {
+    super(props);
+    this.overlayRef = createRef();
+  }
+
+  forceUpdatePosition() {
+    this.overlayRef.current?.forceUpdatePosition();
+  }
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
     this.setState({transitionStatus}, cb);
@@ -117,6 +129,7 @@ export class PopoverOverlay extends React.PureComponent<
       preferredAlignment = 'center',
       preferInputActivator = true,
       fixed,
+      zIndexOverride,
     } = this.props;
     const {transitionStatus} = this.state;
     if (transitionStatus === TransitionStatus.Exited && !active) return null;
@@ -133,7 +146,7 @@ export class PopoverOverlay extends React.PureComponent<
 
     return (
       <PositionedOverlay
-        testID="positionedOverlay"
+        ref={this.overlayRef}
         fullWidth={fullWidth}
         active={active}
         activator={activator}
@@ -144,6 +157,7 @@ export class PopoverOverlay extends React.PureComponent<
         fixed={fixed}
         onScrollOut={this.handleScrollOut}
         classNames={className}
+        zIndexOverride={zIndexOverride}
       />
     );
   }
@@ -159,21 +173,28 @@ export class PopoverOverlay extends React.PureComponent<
   }
 
   private focusContent() {
-    if (this.props.preventAutofocus) {
-      return;
-    }
-    if (this.contentNode == null) {
+    const {autofocusTarget = 'container'} = this.props;
+
+    if (autofocusTarget === 'none' || this.contentNode == null) {
       return;
     }
 
-    write(() => {
+    requestAnimationFrame(() => {
       if (this.contentNode.current == null) {
         return;
       }
 
-      this.contentNode.current.focus({
-        preventScroll: process.env.NODE_ENV === 'development',
-      });
+      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+
+      if (focusableChild && autofocusTarget === 'first-node') {
+        focusableChild.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      } else {
+        this.contentNode.current.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      }
     });
   }
 
@@ -190,6 +211,9 @@ export class PopoverOverlay extends React.PureComponent<
       fullWidth,
       fullHeight,
       fluidContent,
+      hideOnPrint,
+      colorScheme,
+      autofocusTarget,
     } = this.props;
 
     const className = classNames(
@@ -197,6 +221,7 @@ export class PopoverOverlay extends React.PureComponent<
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
+      hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
@@ -210,7 +235,7 @@ export class PopoverOverlay extends React.PureComponent<
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={autofocusTarget === 'none' ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -230,7 +255,9 @@ export class PopoverOverlay extends React.PureComponent<
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <ThemeProvider alwaysRenderCustomProperties theme={{colorScheme}}>
+          <div className={styles.Wrapper}>{content}</div>
+        </ThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -282,9 +309,29 @@ function renderPopoverContent(
   children: React.ReactNode,
   props?: Partial<PaneProps>,
 ) {
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;
   }
   return wrapWithComponent(childrenArray, Pane, props);
+}
+
+export function nodeContainsDescendant(
+  rootNode: HTMLElement,
+  descendant: HTMLElement,
+): boolean {
+  if (rootNode === descendant) {
+    return true;
+  }
+
+  let parent = descendant.parentNode;
+
+  while (parent != null) {
+    if (parent === rootNode) {
+      return true;
+    }
+    parent = parent.parentNode;
+  }
+
+  return false;
 }

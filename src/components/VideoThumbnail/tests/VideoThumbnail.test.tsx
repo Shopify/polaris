@@ -14,11 +14,13 @@ describe('<VideoThumbnail />', () => {
     it('renders with play button and custom overlay', () => {
       const videoThumbnail = mountWithApp(<VideoThumbnail {...mockProps} />);
 
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Thumbnail',
+        style: {
+          backgroundImage: `url(${mockProps.thumbnailUrl})`,
+        },
+      });
       expect(videoThumbnail.find('button')).not.toBeNull();
-      expect(
-        videoThumbnail.find('div', {className: 'Thumbnail'})!.prop('style')!
-          .backgroundImage,
-      ).toBe(`url(${mockProps.thumbnailUrl})`);
     });
   });
 
@@ -37,41 +39,188 @@ describe('<VideoThumbnail />', () => {
         <VideoThumbnail {...mockProps} videoLength={45} />,
       );
 
-      const timestamp = videoThumbnail
-        .find('p', {
-          className: 'Timestamp',
-        })
-        ?.text();
-
-      expect(timestamp).toStrictEqual('0:45');
+      expect(videoThumbnail).toContainReactComponent('p', {
+        className: 'Timestamp',
+        children: '0:45',
+      });
     });
 
     it('renders a timestamp with seconds and minutes only when less than 60 minutes', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={135} />,
       );
-
-      const timestamp = videoThumbnail
-        .find('p', {
-          className: 'Timestamp',
-        })
-        ?.text();
-
-      expect(timestamp).toStrictEqual('2:15');
+      expect(videoThumbnail).toContainReactComponent('p', {
+        className: 'Timestamp',
+        children: '2:15',
+      });
     });
 
     it('renders timestamp with seconds, minutes, and hours when greater than 60 minutes', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={3745} />,
       );
+      expect(videoThumbnail).toContainReactComponent('p', {
+        className: 'Timestamp',
+        children: '1:02:25',
+      });
+    });
+  });
 
-      const timestamp = videoThumbnail
-        .find('p', {
-          className: 'Timestamp',
-        })
-        ?.text();
+  describe('videoProgress', () => {
+    const oldEnv = process.env;
+    let warnSpy: jest.SpyInstance;
 
-      expect(timestamp).toStrictEqual('1:02:25');
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+
+      warnSpy = jest.spyOn(console, 'warn');
+      warnSpy.mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+      warnSpy.mockRestore();
+    });
+
+    it('renders empty progress bar if progress not provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoProgress={undefined}
+          showVideoProgress
+        />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Indicator',
+        style: expect.objectContaining({
+          transform: 'scaleX(0)',
+        }),
+      });
+    });
+
+    it('renders empty progress bar if video length not provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={undefined}
+          videoProgress={50}
+          showVideoProgress
+        />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Indicator',
+        style: expect.objectContaining({
+          transform: 'scaleX(0)',
+        }),
+      });
+    });
+
+    it('renders non-empty progress bar when both video length and progress provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress
+        />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Indicator',
+        style: expect.objectContaining({
+          transform: 'scaleX(0.5)',
+        }),
+      });
+    });
+
+    it('warns when video progress exceeds video length in development environment', () => {
+      process.env.NODE_ENV = 'development';
+
+      mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={100}
+          videoProgress={101}
+          showVideoProgress
+        />,
+      );
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Value passed to the video progress should not exceed video length. Resetting progress to 100%.',
+      );
+    });
+
+    it('does not warn when video progress exceeds video length in production environment', () => {
+      process.env.NODE_ENV = 'production';
+
+      mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={100}
+          videoProgress={101}
+          showVideoProgress
+        />,
+      );
+
+      expect(warnSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('showVideoProgress', () => {
+    it('does not renders progress bar when prop is omitted', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={120} videoProgress={60} />,
+      );
+
+      expect(videoThumbnail).not.toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('renders progress bar when prop is set to true', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress
+        />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('does not render progress bar when prop is set to false', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress={false}
+        />,
+      );
+
+      expect(videoThumbnail).not.toContainReactComponent('div', {
+        className: 'Progress',
+      });
     });
   });
 
@@ -84,9 +233,9 @@ describe('<VideoThumbnail />', () => {
           accessibilityLabel={accessibilityLabel}
         />,
       );
-      expect(videoThumbnail.find('button')!.prop('aria-label')).toStrictEqual(
-        accessibilityLabel,
-      );
+      expect(videoThumbnail).toContainReactComponent('button', {
+        'aria-label': accessibilityLabel,
+      });
     });
 
     describe('when videoLength is provided', () => {
@@ -98,10 +247,9 @@ describe('<VideoThumbnail />', () => {
           <VideoThumbnail {...mockProps} videoLength={videoLength} />,
         );
 
-        const actualLabel = videoThumbnail.find('button')!.prop('aria-label');
-        const expectedLabel = `${defaultLabelWithDuration} 45 seconds`;
-
-        expect(actualLabel).toStrictEqual(expectedLabel);
+        expect(videoThumbnail).toContainReactComponent('button', {
+          'aria-label': `${defaultLabelWithDuration} 45 seconds`,
+        });
       });
 
       it('sets the default label with time in seconds and minutes when less than 60 minutes', () => {
@@ -110,10 +258,9 @@ describe('<VideoThumbnail />', () => {
           <VideoThumbnail {...mockProps} videoLength={videoLength} />,
         );
 
-        const actualLabel = videoThumbnail.find('button')!.prop('aria-label');
-        const expectedLabel = `${defaultLabelWithDuration} 2 minutes and 15 seconds`;
-
-        expect(actualLabel).toStrictEqual(expectedLabel);
+        expect(videoThumbnail).toContainReactComponent('button', {
+          'aria-label': `${defaultLabelWithDuration} 2 minutes and 15 seconds`,
+        });
       });
 
       it('sets the default label with time in seconds, minutes, and hours when greater than 60 minutes', () => {
@@ -121,11 +268,9 @@ describe('<VideoThumbnail />', () => {
         const videoThumbnail = mountWithApp(
           <VideoThumbnail {...mockProps} videoLength={videoLength} />,
         );
-
-        const actualLabel = videoThumbnail.find('button')!.prop('aria-label');
-        const expectedLabel = `${defaultLabelWithDuration} 1 hour, 2 minutes, and 25 seconds`;
-
-        expect(actualLabel).toStrictEqual(expectedLabel);
+        expect(videoThumbnail).toContainReactComponent('button', {
+          'aria-label': `${defaultLabelWithDuration} 1 hour, 2 minutes, and 25 seconds`,
+        });
       });
     });
   });

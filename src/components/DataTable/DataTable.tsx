@@ -1,13 +1,10 @@
-import React from 'react';
+import React, {PureComponent, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {EventListener} from '../EventListener';
 
 import {Cell, CellProps, Navigation} from './components';
@@ -17,11 +14,11 @@ import styles from './DataTable.scss';
 
 export type {SortDirection};
 
-type CombinedProps = DataTableProps & WithAppProviderProps;
 export type TableRow =
   | DataTableProps['headings']
   | DataTableProps['rows']
   | DataTableProps['totals'];
+
 export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
@@ -56,6 +53,8 @@ export interface DataTableProps {
   verticalAlign?: VerticalAlign;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
+  /** Table row has hover state. Defaults to true. */
+  hoverable?: boolean;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
   /**
@@ -72,10 +71,11 @@ export interface DataTableProps {
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
 
-class DataTableInner extends React.PureComponent<
-  CombinedProps,
-  DataTableState
-> {
+type CombinedProps = DataTableProps & {
+  i18n: ReturnType<typeof useI18n>;
+};
+
+class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   state: DataTableState = {
     condensed: false,
     columnVisibilityData: [],
@@ -83,9 +83,9 @@ class DataTableInner extends React.PureComponent<
     isScrolledFarthestRight: false,
   };
 
-  private dataTable = React.createRef<HTMLDivElement>();
-  private scrollContainer = React.createRef<HTMLDivElement>();
-  private table = React.createRef<HTMLTableElement>();
+  private dataTable = createRef<HTMLDivElement>();
+  private scrollContainer = createRef<HTMLDivElement>();
+  private table = createRef<HTMLTableElement>();
 
   private handleResize = debounce(() => {
     const {
@@ -121,6 +121,10 @@ class DataTableInner extends React.PureComponent<
       return;
     }
     this.handleResize();
+  }
+
+  componentWillUnmount() {
+    this.handleResize.cancel();
   }
 
   render() {
@@ -329,17 +333,13 @@ class DataTableInner extends React.PureComponent<
   };
 
   private totalsRowHeading = () => {
-    const {
-      polaris: {intl},
-      totals,
-      totalsName,
-    } = this.props;
+    const {i18n, totals, totalsName} = this.props;
 
     const totalsLabel = totalsName
       ? totalsName
       : {
-          singular: intl.translate('Polaris.DataTable.totalRowHeading'),
-          plural: intl.translate('Polaris.DataTable.totalsRowHeading'),
+          singular: i18n.translate('Polaris.DataTable.totalRowHeading'),
+          plural: i18n.translate('Polaris.DataTable.totalsRowHeading'),
         };
 
     return totals && totals.filter((total) => total !== '').length > 1
@@ -380,14 +380,42 @@ class DataTableInner extends React.PureComponent<
     );
   };
 
+  private getColSpan = (
+    rowLength: number,
+    headingsLength: number,
+    contentTypesLength: number,
+    cellIndex: number,
+  ) => {
+    const rowLen = rowLength ? rowLength : 1;
+    const colLen = headingsLength ? headingsLength : contentTypesLength;
+    const colSpan = Math.floor(colLen / rowLen);
+    const remainder = colLen % rowLen;
+    return cellIndex === 0 ? colSpan + remainder : colSpan;
+  };
+
   private defaultRenderRow = (row: TableData[], index: number) => {
-    const className = classNames(styles.TableRow);
-    const {columnContentTypes, truncate = false, verticalAlign} = this.props;
+    const {
+      columnContentTypes,
+      truncate = false,
+      verticalAlign,
+      hoverable = true,
+      headings,
+    } = this.props;
+    const className = classNames(
+      styles.TableRow,
+      hoverable && styles.hoverable,
+    );
 
     return (
       <tr key={`row-${index}`} className={className}>
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const id = `cell-${cellIndex}-row-${index}`;
+          const colSpan = this.getColSpan(
+            row.length,
+            headings.length,
+            columnContentTypes.length,
+            cellIndex,
+          );
 
           return (
             <Cell
@@ -397,6 +425,7 @@ class DataTableInner extends React.PureComponent<
               firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
+              colSpan={colSpan}
             />
           );
         })}
@@ -441,4 +470,7 @@ class DataTableInner extends React.PureComponent<
   };
 }
 
-export const DataTable = withAppProvider<DataTableProps>()(DataTableInner);
+export function DataTable(props: DataTableProps) {
+  const i18n = useI18n();
+  return <DataTableInner {...props} i18n={i18n} />;
+}

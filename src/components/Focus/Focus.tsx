@@ -1,5 +1,6 @@
 import React, {memo, useEffect} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+
+import {focusFirstFocusableNode} from '../../utilities/focus';
 
 export interface FocusProps {
   children?: React.ReactNode;
@@ -26,7 +27,7 @@ export const Focus = memo(function Focus({
     focusFirstFocusableNode(node, false);
   }, [disabled, root]);
 
-  return <React.Fragment>{children}</React.Fragment>;
+  return <>{children}</>;
 });
 
 function isRef(

@@ -1,10 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Option} from '../components';
-import {OptionList, OptionListProps, OptionDescriptor} from '../OptionList';
+import {OptionList, OptionListProps} from '../OptionList';
+import type {OptionDescriptor} from '../../../types';
 
 describe('<OptionList />', () => {
   const defaultProps: OptionListProps = {
@@ -59,9 +58,9 @@ describe('<OptionList />', () => {
 
   it('renders options and sections', () => {
     const {options, sections} = defaultProps;
-    const optionWrappers = mountWithAppProvider<OptionListProps>(
+    const optionWrappers = mountWithApp(
       <OptionList {...defaultProps} />,
-    ).find(Option);
+    ).findAll(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
   });
@@ -69,9 +68,9 @@ describe('<OptionList />', () => {
   it('renders sections', () => {
     const {sections} = defaultProps;
     const options: OptionDescriptor[] = [];
-    const optionWrappers = mountWithAppProvider<OptionListProps>(
+    const optionWrappers = mountWithApp(
       <OptionList {...defaultProps} options={options} />,
-    ).find(Option);
+    ).findAll(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
   });
@@ -79,18 +78,16 @@ describe('<OptionList />', () => {
   it('renders options', () => {
     const {options} = defaultProps;
     const sections: OptionListProps['sections'] = [];
-    const optionWrappers = mountWithAppProvider<OptionListProps>(
+    const optionWrappers = mountWithApp(
       <OptionList {...defaultProps} sections={sections} />,
-    ).find(Option);
+    ).findAll(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
   });
 
   it('re-renders with new options passed in', () => {
     const {sections} = defaultProps;
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -105,16 +102,14 @@ describe('<OptionList />', () => {
     ];
 
     optionList.setProps({options: newOptions});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, sections));
   });
 
   it('re-renders with new sections passed in', () => {
     const {options} = defaultProps;
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     const newSections: OptionListProps['sections'] = [
       {
@@ -133,15 +128,13 @@ describe('<OptionList />', () => {
     ];
 
     optionList.setProps({sections: newSections});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(options, newSections));
   });
 
   it('re-renders with new options and new sections passed in', () => {
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -172,39 +165,33 @@ describe('<OptionList />', () => {
     ];
 
     optionList.setProps({options: newOptions, sections: newSections});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, newSections));
   });
 
   it('re-renders with undefined options', () => {
     const {sections} = defaultProps;
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     optionList.setProps({options: undefined});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions([], sections));
   });
 
   it('re-renders with undefined sections', () => {
     const {options} = defaultProps;
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     optionList.setProps({sections: undefined});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(options, []));
   });
 
   it('re-renders with undefined options and new sections', () => {
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     const newSections: OptionListProps['sections'] = [
       {
@@ -223,15 +210,13 @@ describe('<OptionList />', () => {
     ];
 
     optionList.setProps({options: undefined, sections: newSections});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(undefined, newSections));
   });
 
   it('re-renders with new options and undefined sections', () => {
-    const optionList = mountWithAppProvider<OptionListProps>(
-      <OptionList {...defaultProps} />,
-    );
+    const optionList = mountWithApp(<OptionList {...defaultProps} />);
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -246,8 +231,8 @@ describe('<OptionList />', () => {
     ];
 
     optionList.setProps({options: newOptions, sections: undefined});
-    optionList.update();
-    const optionWrappers = optionList.find(Option);
+    optionList.forceUpdate();
+    const optionWrappers = optionList.findAll(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, undefined));
   });
 
@@ -255,11 +240,11 @@ describe('<OptionList />', () => {
     const spy = jest.fn();
     const {options, sections} = defaultProps;
 
-    const buttonWrappers = mountWithAppProvider<OptionListProps>(
+    const button = mountWithApp(
       <OptionList {...defaultProps} onChange={spy} />,
     ).find('button');
 
-    buttonWrappers.at(0).simulate('click');
+    button!.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith([firstOption(options, sections)]);
@@ -268,9 +253,9 @@ describe('<OptionList />', () => {
   describe('allowMultiple', () => {
     it('renders options and sections', () => {
       const {options, sections} = defaultProps;
-      const optionWrappers = mountWithAppProvider<OptionListProps>(
+      const optionWrappers = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
-      ).find(Option);
+      ).findAll(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
     });
@@ -278,9 +263,9 @@ describe('<OptionList />', () => {
     it('renders sections', () => {
       const {sections} = defaultProps;
       const options: OptionDescriptor[] = [];
-      const optionWrappers = mountWithAppProvider<OptionListProps>(
+      const optionWrappers = mountWithApp(
         <OptionList {...defaultProps} options={options} allowMultiple />,
-      ).find(Option);
+      ).findAll(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
     });
@@ -288,16 +273,16 @@ describe('<OptionList />', () => {
     it('renders options', () => {
       const {options} = defaultProps;
       const sections: OptionListProps['sections'] = [];
-      const optionWrappers = mountWithAppProvider<OptionListProps>(
+      const optionWrappers = mountWithApp(
         <OptionList {...defaultProps} sections={sections} allowMultiple />,
-      ).find(Option);
+      ).findAll(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
     });
 
     it('re-renders with new options passed in', () => {
       const {sections} = defaultProps;
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -314,14 +299,14 @@ describe('<OptionList />', () => {
       ];
 
       optionList.setProps({options: newOptions});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(newOptions, sections));
     });
 
     it('re-renders with new sections passed in', () => {
       const {options} = defaultProps;
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -342,13 +327,13 @@ describe('<OptionList />', () => {
       ];
 
       optionList.setProps({sections: newSections});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(options, newSections));
     });
 
     it('re-renders with new options and new sections passed in', () => {
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -381,8 +366,8 @@ describe('<OptionList />', () => {
       ];
 
       optionList.setProps({options: newOptions, sections: newSections});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(
         totalOptions(newOptions, newSections),
       );
@@ -390,30 +375,30 @@ describe('<OptionList />', () => {
 
     it('re-renders with undefined options', () => {
       const {sections} = defaultProps;
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
       optionList.setProps({options: undefined});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(undefined, sections));
     });
 
     it('re-renders with undefined sections', () => {
       const {options} = defaultProps;
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
       optionList.setProps({sections: undefined});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(options, undefined));
     });
 
     it('re-renders with undefined options and new sections', () => {
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -434,13 +419,13 @@ describe('<OptionList />', () => {
       ];
 
       optionList.setProps({options: undefined, sections: newSections});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(undefined, newSections));
     });
 
     it('re-renders with new options and undefined sections', () => {
-      const optionList = mountWithAppProvider<OptionListProps>(
+      const optionList = mountWithApp(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -457,8 +442,8 @@ describe('<OptionList />', () => {
       ];
 
       optionList.setProps({options: newOptions, sections: undefined});
-      optionList.update();
-      const optionWrappers = optionList.find(Option);
+      optionList.forceUpdate();
+      const optionWrappers = optionList.findAll(Option);
       expect(optionWrappers).toHaveLength(totalOptions(newOptions, undefined));
     });
 
@@ -467,11 +452,11 @@ describe('<OptionList />', () => {
         const spy = jest.fn();
         const {options, sections} = defaultProps;
 
-        const inputWrappers = mountWithAppProvider<OptionListProps>(
+        const inputWrapper = mountWithApp(
           <OptionList {...defaultProps} onChange={spy} allowMultiple />,
         ).find('input');
 
-        inputWrappers.at(0).simulate('change');
+        inputWrapper!.trigger('onChange');
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith([firstOption(options, sections)]);
@@ -482,7 +467,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['11', '8'];
 
-        const inputWrappers = mountWithAppProvider<OptionListProps>(
+        const inputWrapper = mountWithApp(
           <OptionList
             {...defaultProps}
             onChange={spy}
@@ -491,7 +476,7 @@ describe('<OptionList />', () => {
           />,
         ).find('input');
 
-        inputWrappers.at(0).simulate('change');
+        inputWrapper!.trigger('onChange');
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith([
@@ -505,7 +490,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['10', '8', '5'];
 
-        const inputWrappers = mountWithAppProvider<OptionListProps>(
+        const inputWrapper = mountWithApp(
           <OptionList
             {...defaultProps}
             onChange={spy}
@@ -514,35 +499,13 @@ describe('<OptionList />', () => {
           />,
         ).find('input');
 
-        inputWrappers.at(0).simulate('change');
+        inputWrapper!.trigger('onChange');
 
         const valueToCheck = firstOption(options, sections);
         const newSelected = selected.filter((value) => value !== valueToCheck);
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith(newSelected);
-      });
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a `newDesignLanguage` class to the `OptionList` when `newDesignLanguage` is enabled', () => {
-      const option = mountWithApp(<OptionList {...defaultProps} />, {
-        features: {newDesignLanguage: true},
-      });
-
-      expect(option).toContainReactComponent('ul', {
-        className: 'OptionList newDesignLanguage',
-      });
-    });
-
-    it('does not add a `newDesignLanguage` class to the `OptionList` when `newDesignLanguage` is disabled', () => {
-      const checkBox = mountWithApp(<OptionList {...defaultProps} />, {
-        features: {newDesignLanguage: false},
-      });
-
-      expect(checkBox).not.toContainReactComponent('ul', {
-        className: 'OptionList newDesignLanguage',
       });
     });
   });

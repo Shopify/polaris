@@ -1,27 +1,14 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Spinner.scss';
 
-type Color = 'white' | 'teal' | 'inkLightest';
-
-type NewDesignLanguageColor = 'highlight';
-
 type Size = 'small' | 'large';
 
-const COLORS_FOR_LARGE_SPINNER = ['teal', 'inkLightest', 'highlight'];
-
 export interface SpinnerProps {
-  /**
-   * Color of spinner
-   * @default 'teal'
-   */
-  color?: Color | NewDesignLanguageColor;
   /**
    * Size of spinner
    * @default 'large'
@@ -35,35 +22,14 @@ export interface SpinnerProps {
 
 export function Spinner({
   size = 'large',
-  color = 'teal',
   accessibilityLabel,
   hasFocusableParent,
 }: SpinnerProps) {
-  const {newDesignLanguage} = useFeatures();
-  const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
-
-  if (size === 'large' && !COLORS_FOR_LARGE_SPINNER.includes(color)) {
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        i18n.translate('Polaris.Spinner.warningMessage', {
-          color,
-          size,
-          colors: COLORS_FOR_LARGE_SPINNER.join(', '),
-        }),
-      );
-    }
-
-    // eslint-disable-next-line no-param-reassign
-    size = 'small';
-  }
 
   const className = classNames(
     styles.Spinner,
-    color && styles[variationName('color', color)],
     size && styles[variationName('size', size)],
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const spinnerSVGMarkup =
@@ -87,9 +53,9 @@ export function Spinner({
   );
 
   return (
-    <React.Fragment>
+    <>
       <span className={className}>{spinnerSVGMarkup}</span>
       <span {...spanAttributes}>{accessibilityLabelMarkup}</span>
-    </React.Fragment>
+    </>
   );
 }

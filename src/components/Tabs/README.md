@@ -85,25 +85,25 @@ function TabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers',
+      id: 'all-customers-1',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      panelID: 'all-customers-content-1',
     },
     {
-      id: 'accepts-marketing',
+      id: 'accepts-marketing-1',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      panelID: 'accepts-marketing-content-1',
     },
     {
-      id: 'repeat-customers',
+      id: 'repeat-customers-1',
       content: 'Repeat customers',
-      panelID: 'repeat-customers-content',
+      panelID: 'repeat-customers-content-1',
     },
     {
-      id: 'prospects',
+      id: 'prospects-1',
       content: 'Prospects',
-      panelID: 'prospects-content',
+      panelID: 'prospects-content-1',
     },
   ];
 
@@ -146,15 +146,15 @@ function FittedTabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted',
+      id: 'all-customers-fitted-2',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content',
+      panelID: 'all-customers-fitted-content-2',
     },
     {
-      id: 'accepts-marketing-fitted',
+      id: 'accepts-marketing-fitted-2',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-Ccontent',
+      panelID: 'accepts-marketing-fitted-Ccontent-2',
     },
   ];
 
@@ -183,3 +183,104 @@ Also known as [Segmented controls](https://developer.apple.com/design/human-inte
 ![Fixed tabs on iOS](/public_images/components/Tabs/ios/fixed@2x.png)
 
 <!-- /content-for -->
+
+### Tabs with badge content
+
+Use to inform a piece of information about the tabs.
+
+```jsx
+function TabsWithBadgeExample() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  const tabs = [
+    {
+      id: 'all-customers-fitted-3',
+      content: (
+        <span>
+          All <Badge status="new">10+</Badge>
+        </span>
+      ),
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-fitted-content-3',
+    },
+    {
+      id: 'accepts-marketing-fitted-3',
+      content: (
+        <span>
+          Accepts marketing <Badge status="new">4</Badge>
+        </span>
+      ),
+      panelID: 'accepts-marketing-fitted-content-3',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
+}
+```
+
+### Tabs with custom disclosure
+
+Use to provide information about the popover contents
+
+```jsx
+function TabsWithCustomDisclosureExample() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  const tabs = [
+    {
+      id: 'all-customers-4',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content-4',
+    },
+    {
+      id: 'accepts-marketing-4',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content-4',
+    },
+    {
+      id: 'repeat-customers-4',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content-4',
+    },
+    {
+      id: 'prospects-4',
+      content: 'Prospects',
+      panelID: 'prospects-content-4',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs
+        tabs={tabs}
+        selected={selected}
+        onSelect={handleTabChange}
+        disclosureText="More views"
+      >
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
+}
+```

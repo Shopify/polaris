@@ -1,6 +1,4 @@
-import {GeneralObject, TypeOf} from '../types';
-
-function pickValueAndLength(obj: GeneralObject, key: string) {
+function pickValueAndLength(obj: Record<string, any>, key: string) {
   const keyPaths = key.split('.');
   let value = obj;
   for (const key of keyPaths) {
@@ -15,14 +13,14 @@ function pickValueAndLength(obj: GeneralObject, key: string) {
 }
 
 export function pick(
-  obj: GeneralObject | null,
+  obj: Record<string, any> | null,
   ...keyPaths: (string | string[])[]
 ) {
   const flattenedKeypaths = ([] as string[]).concat(...keyPaths);
   if (obj == null || flattenedKeypaths.length === 0) return {};
   return flattenedKeypaths.reduce((acc, key) => {
     if (
-      typeof key !== TypeOf.String ||
+      typeof key !== 'string' ||
       Object.prototype.hasOwnProperty.call(obj, key)
     ) {
       return {...acc, [key]: obj[key]};

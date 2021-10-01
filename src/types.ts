@@ -1,91 +1,87 @@
-export type Color =
-  | 'white'
-  | 'black'
-  | 'skyLighter'
-  | 'skyLight'
-  | 'sky'
-  | 'skyDark'
-  | 'inkLightest'
-  | 'inkLighter'
-  | 'inkLight'
-  | 'ink'
-  | 'blueLighter'
-  | 'blueLight'
-  | 'blue'
-  | 'blueDark'
-  | 'blueDarker'
-  | 'indigoLighter'
-  | 'indigoLight'
-  | 'indigo'
-  | 'indigoDark'
-  | 'indigoDarker'
-  | 'tealLighter'
-  | 'tealLight'
-  | 'teal'
-  | 'tealDark'
-  | 'tealDarker'
-  | 'greenLighter'
-  | 'green'
-  | 'greenDark'
-  | 'yellowLighter'
-  | 'yellow'
-  | 'yellowDark'
-  | 'orange'
-  | 'redLighter'
-  | 'red'
-  | 'redDark'
-  | 'purple';
+import type {AvatarProps, IconProps, ThumbnailProps} from 'components';
 
-const NEW_DESIGN_LANGUAGE_COLORS = [
-  'base',
-  'subdued',
-  'critical',
-  'warning',
-  'highlight',
-  'success',
-  'primary',
-];
-type NewDesignLanguageColor =
-  | 'base'
-  | 'subdued'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success'
-  | 'primary';
-
-export function isNewDesignLanguageColor(
-  color: Color | NewDesignLanguageColor,
-): color is NewDesignLanguageColor {
-  return NEW_DESIGN_LANGUAGE_COLORS.includes(color as NewDesignLanguageColor);
+export interface OptionDescriptor {
+  /** Value of the option */
+  value: string;
+  /** Display label for the option */
+  label: React.ReactNode;
+  /** Whether the option is disabled or not */
+  disabled?: boolean;
+  /** Whether the option is active or not */
+  active?: boolean;
+  /** Unique identifier for the option */
+  id?: string;
+  /** Media to display to the left of the option content */
+  media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
+export interface SectionDescriptor {
+  /** Collection of options within the section */
+  options: OptionDescriptor[];
+  /** Section title */
+  title?: string;
+}
+
+export type Descriptor = SectionDescriptor | OptionDescriptor;
+
 export type IconSource =
-  | React.SFC<React.SVGProps<SVGSVGElement>>
+  | React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   | 'placeholder'
   | string;
 
-export interface IconProps {
-  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
-  source: IconSource;
-  /** Set the color for the SVG fill */
-  color?: Color | NewDesignLanguageColor;
-  /** Show a backdrop behind the icon */
-  backdrop?: boolean;
-  /** Descriptive text to be read to screenreaders */
-  accessibilityLabel?: string;
-}
-
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-
-export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
   | string
   | React.ReactElement
   | (string | React.ReactElement)[];
 
-export interface BaseAction {
+export interface BaseButton {
+  /** A unique identifier for the button */
+  id?: string;
+  /** A destination to link to, rendered in the href attribute of a link */
+  url?: string;
+  /** Forces url to open in a new tab */
+  external?: boolean;
+  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
+  download?: string | boolean;
+  /** Allows the button to submit a form */
+  submit?: boolean;
+  /** Disables the button, disallowing merchant interaction */
+  disabled?: boolean;
+  /** Replaces button text with a spinner while a background action is being performed */
+  loading?: boolean;
+  /** Sets the button in a pressed state */
+  pressed?: boolean;
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** A valid WAI-ARIA role to define the semantic value of this element */
+  role?: string;
+  /** Id of the element the button controls */
+  ariaControls?: string;
+  /** Tells screen reader the controlled element is expanded */
+  ariaExpanded?: boolean;
+  /** Indicates the ID of the element that describes the button */
+  ariaDescribedBy?: string;
+  /** Callback when clicked */
+  onClick?(): void;
+  /** Callback when button becomes focussed */
+  onFocus?(): void;
+  /** Callback when focus leaves button */
+  onBlur?(): void;
+  /** Callback when a keypress event is registered on the button */
+  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keyup event is registered on the button */
+  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keydown event is registered on the button */
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
+}
+
+export interface Action {
   /** A unique identifier for the action */
   id?: string;
   /** Content the action displays */
@@ -104,13 +100,7 @@ export interface BaseAction {
   onTouchStart?(): void;
 }
 
-export interface Action extends BaseAction {}
-
-export interface AnimationProps {
-  in?: boolean;
-}
-
-export interface BaseLinkAction {
+export interface LinkAction {
   /** A unique identifier for the action */
   id?: string;
   /** Content the action displays */
@@ -120,17 +110,6 @@ export interface BaseLinkAction {
   /** A destination to link to */
   url: string;
 }
-
-export interface AppBridgeActionTarget {
-  /**
-   * Where to display the target link
-   * @default 'APP'
-   * @embeddedAppOnly
-   */
-  target?: AppBridgeTarget;
-}
-
-export interface LinkAction extends BaseLinkAction, AppBridgeActionTarget {}
 
 export interface BadgeAction {
   badge?: {
@@ -162,15 +141,9 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface AppBridgeAction
-  extends Action,
-    DisableableAction,
-    DestructableAction,
-    AppBridgeActionTarget {}
-
 export interface IconableAction extends Action {
   /** Source of the icon */
-  icon?: IconProps['source'];
+  icon?: IconSource;
 }
 
 export interface LoadableAction extends Action {
@@ -178,18 +151,26 @@ export interface LoadableAction extends Action {
   loading?: boolean;
 }
 
+export interface OutlineableAction extends Action {
+  /** Should action be displayed as an outlined button */
+  outline?: boolean;
+}
+
 export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
     BadgeAction,
-    DestructableAction,
-    AppBridgeAction {
+    DestructableAction {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Additional hint text to display with item */
   helpText?: string;
   /** Image source */
   image?: string;
+  /** Prefix source */
+  prefix?: React.ReactNode;
+  /** Suffix source */
+  suffix?: React.ReactNode;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
   /** Whether the action is active or not */
@@ -209,8 +190,8 @@ export interface ComplexAction
   extends Action,
     DisableableAction,
     DestructableAction,
-    AppBridgeAction,
     IconableAction,
+    OutlineableAction,
     LoadableAction {}
 
 export interface MenuActionDescriptor extends ComplexAction {
@@ -346,34 +327,10 @@ export enum Key {
   SingleQuote = 222,
 }
 
-export enum TypeOf {
-  Undefined = 'undefined',
-  Object = 'object',
-  Boolean = 'boolean',
-  Number = 'number',
-  String = 'string',
-  Symbol = 'symbol',
-  Function = 'function',
-}
-
-export interface GeneralObject {
-  [key: string]: any;
-}
-
-export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? DeepPartial<U>[]
-    : T[P] extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : DeepPartial<T[P]>;
-};
-
-export type EffectCallback = () => void | (() => void | undefined);
-
-export type DependencyList = ReadonlyArray<unknown>;
-
-export type Comparator = (a: DependencyList, b: DependencyList) => boolean;
-
 export interface CheckboxHandles {
   focus(): void;
 }
+
+export type NonEmptyArray<T> = [T, ...T[]];
+
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;

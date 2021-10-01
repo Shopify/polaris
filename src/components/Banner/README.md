@@ -267,7 +267,8 @@ Use when you want merchants to take an action after reading the banner.
 <Banner
   title="Some of your product variants are missing weights"
   status="warning"
-  action={{content: 'Edit variant weights'}}
+  action={{content: 'Edit variant weights', url: ''}}
+  secondaryAction={{content: 'Learn more', url: ''}}
   onDismiss={() => {}}
 >
   <p>
@@ -296,7 +297,8 @@ Use to update merchants about a change or give them advice.
 ```jsx
 <Banner
   title="USPS has updated their rates"
-  action={{content: 'Learn more'}}
+  action={{content: 'Update rates', url: ''}}
+  secondaryAction={{content: 'Learn more'}}
   status="info"
   onDismiss={() => {}}
 >
@@ -518,7 +520,7 @@ Banners inside of the navigation render with less spacing and a pared-back desig
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
     ]}
   />

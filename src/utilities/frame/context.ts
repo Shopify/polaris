@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {ToastPropsWithID, ToastID, ContextualSaveBarProps} from './types';
 
@@ -12,6 +12,6 @@ export interface FrameContextType {
   stopLoading(): void;
 }
 
-export const FrameContext = React.createContext<FrameContextType | undefined>(
+export const FrameContext = createContext<FrameContextType | undefined>(
   undefined,
 );

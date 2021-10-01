@@ -1,11 +1,15 @@
 {
   "Polaris": {
+    "Actions": {
+      "moreActions": "More actions"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Loading"
+      "spinnerAccessibilityLabel": "Loading",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +24,8 @@
         "critical": "Critical",
         "attention": "Attention",
         "new": "New"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",
@@ -50,6 +55,8 @@
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
       "today": "Today ",
+      "start": "Start of range",
+      "end": "End of range",
       "months": {
         "january": "January",
         "february": "February",
@@ -63,6 +70,15 @@
         "october": "October",
         "november": "November",
         "december": "December"
+      },
+      "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
       },
       "daysAbbreviated": {
         "monday": "Mo",
@@ -81,29 +97,38 @@
       "secondaryAction": "Continue editing"
     },
     "DropZone": {
-      "overlayTextFile": "Drop file to upload",
-      "overlayTextImage": "Drop image to upload",
-      "errorOverlayTextFile": "File type is not valid",
-      "errorOverlayTextImage": "Image type is not valid",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Drop file to upload",
+        "overlayTextImage": "Drop image to upload",
         "actionTitleFile": "Add file",
         "actionTitleImage": "Add image",
+        "actionHintFile": "or drop file to upload",
+        "actionHintImage": "or drop image to upload",
+        "labelFile": "Upload file",
+        "labelImage": "Upload image"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Drop files to upload",
+        "overlayTextImage": "Drop images to upload",
+        "actionTitleFile": "Add files",
+        "actionTitleImage": "Add images",
         "actionHintFile": "or drop files to upload",
         "actionHintImage": "or drop images to upload",
-        "label": "Upload file"
-      }
+        "labelFile": "Upload files",
+        "labelImage": "Upload images"
+      },
+      "errorOverlayTextFile": "File type is not valid",
+      "errorOverlayTextImage": "Image type is not valid"
     },
     "EmptySearchResult": {
       "altText": "Empty search results"
     },
     "Frame": {
       "skipToContent": "Skip to content",
+      "navigationLabel": "Navigation",
       "Navigation": {
         "closeMobileNavigationLabel": "Close navigation"
       }
-    },
-    "Icon": {
-      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -120,6 +145,31 @@
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Item",
+      "defaultItemPlural": "Items",
+      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} are selected.",
+      "selected": "{selectedItemsCount} selected",
+      "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "No {resourceNamePlural} found",
+      "emptySearchDescription": "Try changing the filters or search term",
+      "onboardingBadgeText": "New",
+      "resourceLoadingAccessibilityLabel": "Loading {resourceNamePlural}…",
+      "selectAllLabel": "Select all {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selected",
+      "undo": "Undo",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Select {resourceName}",
+      "selectButtonText": "Select"
+    },
+    "Loading": {
+      "label": "Page loading bar"
     },
     "Modal": {
       "iFrameTitle": "body markup",
@@ -143,7 +193,9 @@
       "loading": "Loading {resource}",
       "selected": "{selectedItemsCount} selected",
       "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "allFilteredItemsSelected": "All {itemsLength}+ {resourceNamePlural} in this filter are selected.",
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "selectAllFilteredItems": "Select all {itemsLength}+ {resourceNamePlural} in this filter",
       "emptySearchResultTitle": "No {resourceNamePlural} found",
       "emptySearchResultDescription": "Try changing the filters or search term",
       "selectButtonText": "Select",
@@ -209,9 +261,6 @@
     "SkeletonPage": {
       "loadingLabel": "Page loading"
     },
-    "Spinner": {
-      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "More tabs"
     },
@@ -221,6 +270,9 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tooltip: {label}"
     },
     "TopBar": {
       "toggleMenuLabel": "Toggle menu",

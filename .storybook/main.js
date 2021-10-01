@@ -1,42 +1,25 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
+const CreateFileWebpack = require('create-file-webpack');
 
 const postcssShopify = require('@shopify/postcss-plugin');
 
-// Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
-// sewing-kit in order avoid a bunch of duplication in our devDependencies
-// eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-
-const ICON_PATH_REGEX = /icons\//;
-const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
+// Enabling docs means the preview panel takes an extra 2ish seconds to load
+// This usually isn't a big deal, except when we're running all of our stories
+// through our a11y tests, and a 2s delay over several hundred stories adds up.
+// This is an escape hatch to disable docs only wheile we're running a11y tests
+const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
 
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-viewport',
-    '@storybook/addon-actions',
-    '@storybook/addon-notes',
+    {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
-
-    // When transpiling TS using isolatedModules, the compiler doesn't strip
-    // out exported types as it doesn't know if an item is a type or not.
-    // Ignore those warnings as we don't care about them.
-    const stats = {warningsFilter: /export .* was not found in/};
-    config.stats = stats;
-    config.devServer = {stats};
-
-    // Shrink ray only strips hashes when comparing filenames with this format.
-    // Without this there will be lots of "add 1 file and removed 1 file" notices.
-    config.output.filename = '[name]-[hash].js';
-
-    const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
 
     const extraRules = [
       {
@@ -45,37 +28,14 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: `${cacheDir}/markdown`,
+              cacheDirectory: path.resolve(
+                __dirname,
+                '../build-internal/cache/storybook/markdown',
+              ),
             },
           },
           {
             loader: `${__dirname}/polaris-readme-loader.js`,
-          },
-        ],
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: `${cacheDir}/typescript`,
-            },
-          },
-        ],
-      },
-      {
-        test(resource) {
-          return (
-            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
-          );
-        },
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-            },
           },
         ],
       },
@@ -88,7 +48,6 @@ module.exports = {
           {
             loader: 'css-loader',
             query: {
-              sourceMap: false,
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
@@ -98,52 +57,35 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => postcssShopify(),
-              sourceMap: false,
+              postcssOptions: {
+                plugins: [postcssShopify()],
+              },
             },
           },
           {
             loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-            },
           },
         ],
       },
     ];
 
-    config.plugins.push({
-      apply: (compiler) => {
-        compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-          spawn('yarn splash --show-disable-tip', {
-            shell: true,
-            stdio: 'inherit',
-          });
-        });
-      },
-    });
+    config.plugins.push(
+      new CreateFileWebpack({
+        path: './build-internal/storybook/static/services/',
+        fileName: 'ping.html',
+        content:
+          '<!DOCTYPE html><html lang="en"><head></head><body>OK</body></html>',
+      }),
+    );
 
-    config.module.rules = [config.module.rules[0], ...extraRules];
+    config.module.rules = [
+      // Strip out existing rules that apply to md files
+      ...config.module.rules.filter(
+        (rule) => rule.test.toString() !== '/\\.md$/',
+      ),
+      ...extraRules,
+    ];
 
-    if (isProduction) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          reportFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/report.html',
-          ),
-          generateStatsFile: true,
-          statsFilename: path.resolve(
-            __dirname,
-            '../build/storybook/bundle-analysis/stats.json',
-          ),
-          openAnalyzer: false,
-        }),
-      );
-    }
-
-    config.resolve.extensions.push('.ts', '.tsx');
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),

@@ -1,9 +1,10 @@
-import React, {useState, useCallback} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'test-utilities';
 import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
 
 import {Popover} from '../Popover';
+import type {PopoverPublicAPI} from '../Popover';
 import {PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
 
@@ -46,7 +47,6 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-
     expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
       expect.any(Object),
       {
@@ -67,13 +67,9 @@ describe('<Popover />', () => {
 
   it('renders an activator', () => {
     const popover = mountWithApp(
-      <Popover
-        active
-        activator={<div testID="activator">Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active activator={<div>Activator</div>} onClose={spy} />,
     );
-    expect(popover).toContainReactComponent('div', {testID: 'activator'});
+    expect(popover).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders a positionedOverlay when active is true', () => {
@@ -162,18 +158,18 @@ describe('<Popover />', () => {
     expect(popover.children[0].type).toBe('span');
   });
 
-  it('passes preventAutofocus to PopoverOverlay', () => {
+  it('passes autofocusTarget to PopoverOverlay', () => {
     const popover = mountWithApp(
       <Popover
         active={false}
-        preventAutofocus
+        autofocusTarget="none"
         activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
 
     expect(popover).toContainReactComponent(PopoverOverlay, {
-      preventAutofocus: true,
+      autofocusTarget: 'none',
     });
   });
 
@@ -221,6 +217,21 @@ describe('<Popover />', () => {
     });
   });
 
+  it("passes 'zIndexOverride' to PopoverOverlay", () => {
+    const popover = mountWithApp(
+      <Popover
+        active={false}
+        zIndexOverride={100}
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+
+    expect(popover).toContainReactComponent(PopoverOverlay, {
+      zIndexOverride: 100,
+    });
+  });
+
   it('calls onClose when you click outside the Popover', () => {
     mountWithApp(
       <Popover
@@ -241,10 +252,10 @@ describe('<Popover />', () => {
       const handleActivatorClick = useCallback(() => setActive(true), []);
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={handleActivatorClick}>Activator</button>
           <Popover active={active} activator={<div />} onClose={onCloseSpy} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -265,12 +276,12 @@ describe('<Popover />', () => {
     const id = 'focus-target';
     function PopoverTest() {
       return (
-        <React.Fragment>
+        <>
           <div>
             <Popover active activator={<div />} onClose={noop} />
           </div>
           <button id={id} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -286,9 +297,9 @@ describe('<Popover />', () => {
     const id = 'activator';
     function PopoverTest() {
       return (
-        <React.Fragment>
+        <>
           <Popover active activator={<button id={id} />} onClose={noop} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -298,6 +309,63 @@ describe('<Popover />', () => {
     const focusTarget = popover.find('button', {id})!.domNode;
 
     expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it("doesn't focuses the activator or another focusable element when the popover is closed", () => {
+    const activatorId = 'activator1';
+    const nextElementId = 'activator2';
+    function PopoverTest() {
+      return (
+        <>
+          <div>
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              preventFocusOnClose
+              onClose={noop}
+            />
+          </div>
+          <button id={nextElementId} />
+        </>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose');
+    const activatorTarget = popover.find('button', {id: activatorId})!.domNode;
+    const nextElementTarget = popover.find('button', {id: nextElementId})!
+      .domNode;
+
+    expect(document.activeElement).not.toBe(activatorTarget);
+    expect(document.activeElement).not.toBe(nextElementTarget);
+  });
+
+  describe('forceUpdatePosition', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+
+      function Test() {
+        popoverRef = useRef(null);
+
+        return (
+          <Popover
+            ref={popoverRef}
+            active
+            activator={<div>Activator</div>}
+            onClose={spy}
+          />
+        );
+      }
+
+      mountWithApp(<Test />);
+
+      expect(popoverRef).toStrictEqual({
+        current: {
+          forceUpdatePosition: expect.anything(),
+        },
+      });
+    });
   });
 });
 

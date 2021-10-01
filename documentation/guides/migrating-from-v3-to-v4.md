@@ -27,7 +27,7 @@ Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 Polaris React was migrated to [React’s new context API](https://reactjs.org/docs/context.html) while restructuring its entire context structure. Polaris React now exposes all internal contexts required for testing within a single `PolarisTestProvider` component.
 
-**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used, as shown in [these examples](https://github.com/Shopify/polaris-react/tree/master/examples).
+**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used, as shown in [these examples](https://github.com/Shopify/polaris-react/tree/main/examples).
 
 In v3, you could hook into Polaris React’s legacy contexts using `createPolarisContext` and `polarisContextTypes`.
 
@@ -65,7 +65,7 @@ export function mountWithPolaris(node, context = {}) {
 
 ### AppProvider <a name="polaris-appprovider"></a>
 
-Polaris now supports multiple languages and ships with [many translations](https://github.com/Shopify/polaris-react/blob/master/locales) to support internationalization. The `i18n` prop is now required to specify the translations you wish to use.
+Polaris now supports multiple languages and ships with [many translations](https://github.com/Shopify/polaris-react/blob/main/locales) to support internationalization. The `i18n` prop is now required to specify the translations you wish to use.
 
 ```jsx
 // old
@@ -76,7 +76,7 @@ import translations from '@shopify/polaris/locales/en.json';
 <AppProvider i18n={translations}>
 ```
 
-If you use [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) and want to dynamically load translations based on a provided locale, see the [AppProvider README](https://github.com/Shopify/polaris-react/blob/master/src/components/AppProvider/README.md#using-translations) for more information.
+If you use [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) and want to dynamically load translations based on a provided locale, see the [AppProvider README](https://github.com/Shopify/polaris-react/blob/main/src/components/AppProvider/README.md#using-translations) for more information.
 
 ### Autocomplete <a name="polaris-autocomplete"></a>
 
@@ -189,8 +189,7 @@ The `iconBody` prop has been removed from the `Navigation.Item` subcomponent. Pa
     {
       url: '/path/to/place',
       label: 'Item',
-      icon:
-        "<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>",
+      icon: "<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>",
     },
   ]}
 />;

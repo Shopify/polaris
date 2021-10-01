@@ -1,33 +1,41 @@
 import React from 'react';
-import {InlineError, Label, buttonFrom, Labelled} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {InlineError, Label, Labelled} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {Button} from 'components/Button';
 
 describe('<Labelled />', () => {
   it('passes relevant props along to the label', () => {
     const action = {content: 'Do something'};
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Labelled id="my-label" action={action} label="Label" />,
     );
-    const label = element.find(Label);
 
-    expect(label.prop('id')).toBe('my-label');
-    expect(label.prop('children')).toBe('Label');
+    expect(element).toContainReactComponent(Label, {
+      id: 'my-label',
+      children: 'Label',
+    });
+  });
+
+  it('passes required indicator prop along to the label', () => {
+    const element = mountWithApp(
+      <Labelled id="my-label" label="Label" requiredIndicator />,
+    );
+
+    expect(element).toContainReactComponent(Label, {requiredIndicator: true});
   });
 
   describe('error', () => {
     it('renders error markup when provided with a value', () => {
-      const label = mountWithAppProvider(
+      const label = mountWithApp(
         <Labelled id="MyLabelled" label="Label" error="Error message" />,
       );
 
-      const error = label.find(InlineError);
-      expect(error).toHaveLength(1);
-      expect(error.text()).toContain('Error message');
+      expect(label).toContainReactComponentTimes(InlineError, 1);
+      expect(label).toContainReactText('Error message');
     });
 
     it('renders no error markup when provided with a boolean value', () => {
-      const label = mountWithAppProvider(
+      const label = mountWithApp(
         <Labelled
           id="MyLabelled"
           label="Label"
@@ -35,7 +43,7 @@ describe('<Labelled />', () => {
         />,
       );
 
-      expect(label.find(InlineError)).toHaveLength(0);
+      expect(label).not.toContainReactComponent(InlineError);
     });
   });
 
@@ -44,12 +52,12 @@ describe('<Labelled />', () => {
       return <div />;
     }
 
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Labelled id="MyLabelled" label="Label">
         <MyComponent />
       </Labelled>,
     );
-    expect(element.find(MyComponent).exists()).toBe(true);
+    expect(element).toContainReactComponent(MyComponent);
   });
 
   describe('action', () => {
@@ -62,22 +70,22 @@ describe('<Labelled />', () => {
         accessibilityLabel: 'My action with more description',
       };
 
-      const label = mountWithAppProvider(
+      const label = mountWithApp(
         <Labelled id="MyLabelled" label="Label" action={action} />,
       );
-      const button = buttonFrom(action, {plain: true});
-      expect(label.containsMatchingElement(button)).toBe(true);
+
+      expect(label).toContainReactComponent(Button, {plain: true});
     });
 
     it('does not render any block-level elements in the label element', () => {
-      const label = mountWithAppProvider(
+      const label = mountWithApp(
         <Labelled
           id="MyThing"
           action={{content: 'My action'}}
           label="My thing"
         />,
       );
-      expect(label.find('label').find('div')).toHaveLength(0);
+      expect(label.find('label')).not.toContainReactComponent('div');
     });
   });
 });

@@ -1,23 +1,24 @@
-import React from 'react';
-import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
-import {Badge, Spinner, Portal, Scrollable} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
-import {Footer, Dialog} from '../components';
+import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
-jest.mock('../../../utilities/app-bridge-transformers', () => ({
-  ...(jest.requireActual('../../../utilities/app-bridge-transformers') as any),
-  transformActions: jest.fn((...args) => args),
-}));
+jest.mock('react-transition-group', () => {
+  function ChildGroup({children}: {children: React.ReactNode}) {
+    return <div>{children}</div>;
+  }
+
+  return {
+    ...(jest.requireActual('react-transition-group') as any),
+    TransitionGroup: ChildGroup,
+    TransitionChild: ChildGroup,
+    CSSTransition: ChildGroup,
+  };
+});
 
 describe('<Modal>', () => {
   let scrollSpy: jest.SpyInstance;
@@ -37,8 +38,8 @@ describe('<Modal>', () => {
       return null;
     }
 
-    const component = mountWithAppProvider(
-      <Modal onClose={jest.fn()} open>
+    const component = mountWithApp(
+      <Modal title="foo" onClose={jest.fn()} open>
         <WithinContentContext.Consumer>
           {(withinContentContext) => {
             return (
@@ -49,58 +50,62 @@ describe('<Modal>', () => {
       </Modal>,
     );
 
-    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
-      true,
-    );
+    expect(component).toContainReactComponent(TestComponent, {
+      withinContentContainer: true,
+    });
   });
 
-  it('focuses the next focusable node on mount', () => {
-    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-    const focusedNode = findFirstFocusableNode(modal.find(Dialog).getDOMNode());
+  it('focuses the dialog node on mount', () => {
+    const modal = mountWithApp(<Modal title="foo" onClose={noop} open />);
 
-    expect(document.activeElement).toBe(focusedNode);
+    expect(document.activeElement).toBe(
+      modal.find('div', {className: 'Dialog'})?.domNode,
+    );
   });
 
   describe('src', () => {
     it('renders an iframe if src is provided', () => {
-      const modal = mountWithAppProvider(
-        <Modal src="Source" iFrameName="Name" onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          src="Source"
+          iFrameName="Name"
+          onClose={jest.fn()}
+          open
+        >
           <Badge />
         </Modal>,
       );
 
-      const iframe = modal.find('iframe').first();
-      expect(iframe.exists()).toBe(true);
-      expect(iframe.prop('name')).toStrictEqual('Name');
-      expect(iframe.prop('src')).toStrictEqual('Source');
-
-      const scrollable = modal.find(Scrollable).first();
-      expect(scrollable.exists()).toBe(false);
+      const iframe = modal.find('iframe');
+      expect(iframe).toHaveReactProps({name: 'Name', src: 'Source'});
+      expect(iframe).not.toContainReactComponent(Scrollable);
     });
 
     it('renders Scrollable if src is not provided', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      const iframe = modal.find('iframe').first();
-      expect(iframe.exists()).toBe(false);
-
-      const scrollable = modal.find(Scrollable).first();
-      expect(scrollable.exists()).toBe(true);
-      expect(scrollable.prop('shadow')).toBe(true);
+      expect(modal).not.toContainReactComponent('iframe');
+      expect(modal).toContainReactComponent(Scrollable, {shadow: true});
     });
   });
 
   describe('onTransitionEnd', () => {
     it('calls onTransitionEnd after it mounts', () => {
       const mockOnTransitionEnd = jest.fn();
-      const modal = mountWithAppProvider(
-        <Modal open onClose={noop} onTransitionEnd={mockOnTransitionEnd} />,
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          open
+          onClose={noop}
+          onTransitionEnd={mockOnTransitionEnd}
+        />,
       );
-      trigger(modal.find(Dialog), 'onEntered');
+      modal.find(Dialog)?.trigger('onEntered');
       expect(mockOnTransitionEnd).toHaveBeenCalledTimes(1);
     });
   });
@@ -108,231 +113,268 @@ describe('<Modal>', () => {
   describe('onIFrameLoad', () => {
     it('calls onIFrameLoad after it mounts', () => {
       const mockOnIframeLoad = jest.fn();
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal
+          title="foo"
           open
           onClose={noop}
           onIFrameLoad={mockOnIframeLoad}
           src="path/to/place"
         />,
       );
-      trigger(modal.find('iframe'), 'onLoad', {target: {contentWindow: {}}});
+      modal.find('iframe')?.trigger('onLoad', {target: {}});
       expect(mockOnIframeLoad).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('instant', () => {
     it('passes instant to Dialog if true', () => {
-      const modal = mountWithAppProvider(
-        <Modal instant onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" instant onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('instant')).toBe(true);
+      expect(modal).toContainReactComponent(Dialog, {instant: true});
     });
 
     it('does not pass instant to Dialog be default', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('instant')).toBeUndefined();
+      expect(modal).toContainReactComponent(Dialog, {instant: undefined});
     });
   });
 
   describe('large', () => {
     it('passes large to Dialog if true', () => {
-      const modal = mountWithAppProvider(
-        <Modal large onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" large onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('large')).toBe(true);
+      expect(modal).toContainReactComponent(Dialog, {large: true});
     });
 
     it('does not pass large to Dialog be default', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('large')).toBeUndefined();
+      expect(modal).toContainReactComponent(Dialog, {large: undefined});
+    });
+  });
+
+  describe('small', () => {
+    it('passes small to Dialog if true', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" small onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {small: true});
+    });
+
+    it('does not pass small to Dialog be default', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {small: undefined});
     });
   });
 
   describe('limitHeight', () => {
     it('passes limitHeight to Dialog if true', () => {
-      const modal = mountWithAppProvider(
-        <Modal limitHeight onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" limitHeight onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBe(true);
+      expect(modal).toContainReactComponent(Dialog, {limitHeight: true});
     });
 
     it('does not pass limitHeight to Dialog be default', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBeUndefined();
+      expect(modal).toContainReactComponent(Dialog, {limitHeight: undefined});
     });
   });
 
   describe('open', () => {
-    it('renders <Portal /> with idPrefix modal', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open>
+    it('renders <Portal />', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Portal).prop('idPrefix')).toBe('modal');
+      expect(modal).toContainReactComponentTimes(Portal, 1);
     });
   });
 
   describe('closed', () => {
     it('does not render children', () => {
-      const modal = mountWithAppProvider(
-        <Modal open={false} onClose={jest.fn()}>
+      const modal = mountWithApp(
+        <Modal title="foo" open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Badge)).toHaveLength(0);
+      expect(modal).not.toContainReactComponent(Badge);
     });
   });
 
   describe('opening / closing', () => {
     it('renders modal content when open = true', () => {
-      const modal = mountWithAppProvider(
-        <Modal open onClose={jest.fn()}>
+      const modal = mountWithApp(
+        <Modal title="foo" open onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Badge).exists()).toBe(true);
+      expect(modal).toContainReactComponent(Badge);
     });
 
     it('does not render modal content when open = false', () => {
-      const modal = mountWithAppProvider(
-        <Modal open={false} onClose={jest.fn()}>
+      const modal = mountWithApp(
+        <Modal title="foo" open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Badge).exists()).toBe(false);
+      expect(modal).not.toContainReactComponent(Badge);
     });
   });
 
   describe('header', () => {
     it('renders a header when title is present', () => {
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'Header',
+      });
     });
 
-    it('does not render a header when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+    it('only renders a close button when titleHidden is present', () => {
+      const modal = mountWithApp(
+        <Modal titleHidden onClose={jest.fn()} open title="foo" />,
+      );
 
-      expect(findByTestID(modal, 'ModalHeader').exists()).toBe(false);
-    });
-
-    it('renders a close button when title is not present', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-
-      expect(findByTestID(modal, 'ModalCloseButton').exists()).toBe(true);
+      expect(modal.find(Header)).toContainReactComponent('div', {
+        className: 'titleHidden',
+      });
     });
   });
 
   describe('footer', () => {
     it('does not render footer by default', () => {
-      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open />,
+      );
 
-      expect(modal.find(Footer).exists()).toBeFalsy();
+      expect(modal).not.toContainReactComponent(Footer);
     });
 
     it('renders if footer are passed in', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open footer="Footer content" />,
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open footer="Footer content" />,
       );
 
-      expect(modal.find(Footer).exists()).toBeTruthy();
+      expect(modal).toContainReactComponent(Footer);
     });
 
     it('renders if primaryAction are passed in', () => {
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal
+          title="foo"
           onClose={jest.fn()}
           open
           primaryAction={{content: 'Save', onAction: jest.fn()}}
         />,
       );
 
-      expect(modal.find(Footer).exists()).toBeTruthy();
+      expect(modal).toContainReactComponent(Footer);
     });
 
     it('renders if secondaryActions are passed in', () => {
-      const modal = mountWithAppProvider(
+      const modal = mountWithApp(
         <Modal
+          title="foo"
           onClose={jest.fn()}
           open
           secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
         />,
       );
 
-      expect(modal.find(Footer).exists()).toBeTruthy();
+      expect(modal).toContainReactComponent(Footer);
     });
   });
 
   describe('body', () => {
     it('limits dialog height from limitHeight prop', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading limitHeight>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open loading limitHeight>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
+      expect(modal).toContainReactComponent(Dialog, {limitHeight: true});
+    });
+
+    it('does not render a Scrollable with noScroll prop', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open noScroll>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).not.toContainReactComponent(Scrollable);
     });
   });
 
   describe('loading', () => {
     it('renders a spinner', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Spinner).exists()).toBe(true);
+      expect(modal).toContainReactComponent(Spinner);
     });
 
     it('does not render children', () => {
-      const modal = mountWithAppProvider(
-        <Modal onClose={jest.fn()} open loading>
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Badge).exists()).toBe(false);
+      expect(modal).not.toContainReactComponent(Badge);
     });
   });
 
   describe('lifecycle', () => {
     it('unmounts safely', () => {
-      const modal = mountWithAppProvider(
-        <Modal open onClose={jest.fn()}>
+      const modal = mountWithApp(
+        <Modal title="foo" open onClose={jest.fn()}>
           <p>Child</p>
         </Modal>,
       );
@@ -343,191 +385,106 @@ describe('<Modal>', () => {
     });
   });
 
-  describe('with app bridge', () => {
-    let AppBridgeModalCreate: jest.SpyInstance;
-    const appBridgeModalMock = {
-      set: jest.fn(),
-      subscribe: jest.fn(),
-      unsubscribe: jest.fn(),
-      dispatch: jest.fn(),
-    };
-
-    beforeEach(() => {
-      AppBridgeModalCreate = jest.spyOn(AppBridgeModal, 'create');
-      AppBridgeModalCreate.mockReturnValue(appBridgeModalMock);
-    });
-
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-
-    it('creates an app bridge modal', () => {
-      const primaryAction = {
-        content: 'Foo',
-        url: '/foo',
-      };
-
-      const secondaryActions = [
-        {
-          content: 'Bar',
-          onAction: noop,
-        },
-      ];
-
-      const {appBridge} = mountWithAppBridge(
+  describe('activator', () => {
+    it('renders the element if an element is passed in', () => {
+      const modal = mountWithApp(
         <Modal
-          title="Hello world!"
-          open
-          message="Body content"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
+          title="foo"
           onClose={noop}
+          open={false}
+          activator={<Button />}
         />,
       );
 
-      expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModalCreate).toHaveBeenCalledWith(appBridge, {
-        title: 'Hello world!',
-        message: 'Body content',
-        size: undefined,
-        footer: {
-          buttons: [appBridge, {primaryAction, secondaryActions}],
-        },
-      });
-      expect(appBridgeModalMock.subscribe).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.subscribe).toHaveBeenCalledWith(
-        AppBridgeModal.Action.CLOSE,
-        noop,
-      );
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.OPEN,
-      );
+      expect(modal).toContainReactComponent(Button);
     });
 
-    it('does not dispatch an open action if open is false', () => {
-      mountWithAppBridge(<Modal open={false} onClose={noop} />);
+    it('does not render the element if a ref object is passed in', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
 
-      expect(appBridgeModalMock.dispatch).not.toHaveBeenCalled();
+        return (
+          <div>
+            <Modal
+              title="foo"
+              onClose={noop}
+              open={false}
+              activator={buttonRef}
+            />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      expect(testHarness.find(Modal)).not.toContainReactComponent(Button);
     });
 
-    it('accepts an undefined title', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal title={undefined} open onClose={noop} />,
-      );
+    it('does not throw an error when no activator is passed in', () => {
+      const modal = mountWithApp(<Modal title="foo" onClose={noop} open />);
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
+      expect(() => {
+        modal.setProps({open: false});
+      }).not.toThrow();
     });
 
-    it('accepts a size prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal size="Large" open onClose={noop} />,
-      );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: AppBridgeModal.Size.Large,
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('converts a src prop to a url prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal src="https://shopify.com" open onClose={noop} />,
+    // Causes a circular dependency that causes the whole test file to be unrunnable
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('focuses the activator when the activator is an element on close', () => {
+      const id = 'activator-id';
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          onClose={noop}
+          open
+          activator={<Button id={id} />}
+        />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        url: 'https://shopify.com',
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
+      modal.find(Dialog)!.trigger('onExited');
+      const activator = modal.find('button', {id})!.domNode;
+
+      expect(document.activeElement).toBe(activator);
     });
 
-    it('converts a src prop to a path prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal src="/test" open onClose={noop} />,
+    // Causes a circular dependency that causes the whole test file to be unrunnable
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('focuses the activator when the activator a ref on close', () => {
+      const buttonId = 'buttonId';
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+
+        const button = (
+          <div ref={buttonRef}>
+            <Button id={buttonId} />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal title="foo" onClose={noop} open activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(
+        testHarness.findWhere(
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
+        )!.domNode,
       );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        path: '/test',
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('calls set when props change', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-      modal.setProps({src: '/test'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(2);
-    });
-
-    it('does not call set when props do not change', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-    });
-
-    it('closes the modal when the open prop is set to false', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      // dispatch is called to open the modal when it mounts, so let us clear that
-      jest.clearAllMocks();
-
-      modal.setProps({open: false});
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.CLOSE,
-      );
-    });
-
-    it('opens the modal when the open prop is set to true', () => {
-      const {modal} = mountWithAppBridge(<Modal open={false} onClose={noop} />);
-
-      modal.setProps({open: true});
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.OPEN,
-      );
-    });
-
-    it('unsubscribes on unmount', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.unmount();
-      expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
     });
   });
 });
-
-function mountWithAppBridge(element: React.ReactElement) {
-  const appBridge = {};
-  const modal = mountWithAppProvider(element, {appBridge});
-
-  return {modal, appBridge};
-}
 
 function noop() {}

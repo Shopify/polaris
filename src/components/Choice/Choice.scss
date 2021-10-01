@@ -30,7 +30,7 @@ $control-vertical-adjustment: rem(2px);
   cursor: default;
 
   > .Label {
-    color: color('ink', 'lightest');
+    color: var(--p-text-disabled);
 
     &:hover {
       cursor: default;
@@ -46,9 +46,9 @@ $control-vertical-adjustment: rem(2px);
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  width: var(--p-choice-size, $control-size);
-  height: var(--p-choice-size, $control-size);
-  margin-top: var(--p-override-none, $control-vertical-adjustment);
+  width: var(--p-choice-size);
+  height: var(--p-choice-size);
+  margin-top: var(--p-override-none);
   margin-right: spacing(tight);
 
   > * {

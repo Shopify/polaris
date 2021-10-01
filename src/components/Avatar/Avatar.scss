@@ -1,5 +1,6 @@
 @import '../../styles/common';
 
+$extra-small-size: rem(24px);
 $small-size: rem(32px);
 $medium-size: rem(40px);
 $large-size: rem(60px);
@@ -8,15 +9,15 @@ $large-size: rem(60px);
   position: relative;
   display: block;
   overflow: hidden;
-  min-width: $small-size;
+  min-width: $extra-small-size;
   max-width: 100%;
-  background: var(--p-action-secondary, color('sky'));
-  color: var(--p-icon-subdued, color('ink', 'lightest'));
+  background: var(--p-surface-neutral);
+  color: var(--p-icon-subdued);
   border-radius: $large-size / 2;
   user-select: none;
 
-  @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+  @media (forced-colors: active) {
+    @include high-contrast-border;
   }
 
   &::after {
@@ -28,6 +29,10 @@ $large-size: rem(60px);
 
 .hidden {
   visibility: hidden;
+}
+
+.sizeExtraSmall {
+  width: $extra-small-size;
 }
 
 .sizeSmall {
@@ -43,33 +48,28 @@ $large-size: rem(60px);
 }
 
 .styleOne {
-  color: var(--p-decorative-one-text, color('white'));
-  background: var(--p-decorative-one-surface, color('teal'));
+  color: var(--p-decorative-one-text);
+  background: var(--p-decorative-one-surface);
 }
 
 .styleTwo {
-  color: var(--p-decorative-two-text, color('white'));
-  background: var(--p-decorative-two-surface, color('red'));
+  color: var(--p-decorative-two-text);
+  background: var(--p-decorative-two-surface);
 }
 
 .styleThree {
-  color: var(--p-decorative-three-text, color('white'));
-  background: var(--p-decorative-three-surface, color('orange'));
+  color: var(--p-decorative-three-text);
+  background: var(--p-decorative-three-surface);
 }
 
 .styleFour {
-  color: var(--p-decorative-four-text, color('white'));
-  background: var(--p-decorative-four-surface, color('green'));
+  color: var(--p-decorative-four-text);
+  background: var(--p-decorative-four-surface);
 }
 
 .styleFive {
-  color: var(--p-decorative-five-text, color('white'));
-  background: var(--p-decorative-five-surface, color('blue'));
-}
-
-.styleSix {
-  color: color('white');
-  background: color('purple');
+  color: var(--p-decorative-five-text);
+  background: var(--p-decorative-five-surface);
 }
 
 .hasImage {
@@ -82,7 +82,7 @@ $large-size: rem(60px);
   left: 50%;
   width: 100%;
   height: 100%;
-  background-color: var(--p-background, color('sky'));
+  background-color: var(--p-background);
   border-radius: $large-size / 2;
   transform: translate(-50%, -50%);
   object-fit: cover;

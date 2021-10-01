@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar s iniciály {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Načítání"
+      "spinnerAccessibilityLabel": "Načítání",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +21,8 @@
         "attention": "Upozornění",
         "new": "Nové",
         "critical": "Kritický"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",
@@ -72,7 +74,18 @@
         "friday": "Pá",
         "saturday": "So",
         "sunday": "Ne"
-      }
+      },
+      "days": {
+        "monday": "Pondělí",
+        "tuesday": "Úterý",
+        "wednesday": "Středa",
+        "thursday": "Čtvrtek",
+        "friday": "Pátek",
+        "saturday": "Sobota",
+        "sunday": "Neděle"
+      },
+      "start": "Začátek rozsahu",
+      "end": "Konec rozsahu"
     },
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
@@ -81,16 +94,27 @@
       "secondaryAction": "Pokračovat v úpravách"
     },
     "DropZone": {
-      "overlayTextFile": "Soubor nahrajete přetáhnutím",
-      "overlayTextImage": "Obrázek nahrajete přetáhnutím",
       "errorOverlayTextFile": "Typ souboru není platný",
       "errorOverlayTextImage": "Typ obrázku není platný",
-      "FileUpload": {
-        "actionTitleFile": "Přidat soubor",
-        "actionTitleImage": "Přidat obrázek",
-        "actionHintFile": "nebo nahrajte soubor přetáhnutím",
-        "actionHintImage": "nebo nahrajte obrázek přetáhnutím",
-        "label": "Nahrát soubor"
+      "single": {
+        "overlayTextFile": "Soubor nahrajete přetažením",
+        "overlayTextImage": "Obrázek nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubor",
+        "actionTitleImage": "Přidejte obrázek",
+        "actionHintFile": "nebo ho nahrajte přetažením",
+        "actionHintImage": "nebo ho nahrajte přetažením",
+        "labelFile": "Nahrát soubor",
+        "labelImage": "Nahrát obrázek"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Soubory nahrajete přetažením",
+        "overlayTextImage": "Obrázky nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubory",
+        "actionTitleImage": "Přidejte obrázky",
+        "actionHintFile": "nebo je nahrajte přetažením",
+        "actionHintImage": "nebo je nahrajte přetažením",
+        "labelFile": "Nahrát soubory",
+        "labelImage": "Nahrát obrázky"
       }
     },
     "EmptySearchResult": {
@@ -100,10 +124,8 @@
       "skipToContent": "Přeskočit na obsah",
       "Navigation": {
         "closeMobileNavigationLabel": "Zavřít navigaci"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nepoužívá pozadí. Barvy ikon, které mají pozadí: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Navigace"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -204,7 +226,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru.",
+      "selectAllFilteredItems": "Vyberte všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru."
     },
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
@@ -275,10 +299,43 @@
           },
           "seconds": {
             "other": "{secondCount} s",
-            "one": "{secondCount} s"
+            "one": "{secondCount} s",
+            "few": "{secondCount} s",
+            "many": "{secondCount} s"
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Položka",
+      "defaultItemPlural": "Položky",
+      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný výraz",
+      "onboardingBadgeText": "Nové",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
+      "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "undo": "Vrátit zpět",
+      "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
+      "selectItem": "Vybrat: {resourceName}",
+      "selectButtonText": "Vybrat"
     }
   }
 }

@@ -6,17 +6,12 @@ import {
   TextContainer,
   TextField,
   Button,
+  Portal,
 } from 'components';
-import * as focusUtilities from '@shopify/javascript-utilities/focus';
 
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';
-
-jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
-  write: (cb: () => void) => cb(),
-}));
 
 describe('<TrapFocus />', () => {
   let focusFirstFocusableNodeSpy: jest.SpyInstance;
@@ -25,7 +20,7 @@ describe('<TrapFocus />', () => {
 
   beforeEach(() => {
     focusFirstFocusableNodeSpy = jest.spyOn(
-      focusUtilities,
+      focusUtils,
       'focusFirstFocusableNode',
     );
 
@@ -95,10 +90,36 @@ describe('<TrapFocus />', () => {
     expect(trapFocus).toContainReactComponent(Focus, {disabled: false});
   });
 
+  it(`does not trap focus while navigating inside a portal`, () => {
+    const id = 'focusable';
+    const trapFocus = mountWithApp(
+      <TrapFocus>
+        <Portal>
+          <button id={id} />
+        </Portal>
+        <button />
+      </TrapFocus>,
+    );
+    const focusableButton = trapFocus.find('button', {id})?.domNode;
+    focusableButton?.focus();
+    trapFocus
+      .find(EventListener, {event: 'focusin'})
+      ?.trigger('handler', {target: focusableButton});
+
+    expect(document.activeElement).toBe(focusableButton);
+  });
+
   it('keeps focus on nodes contained inside trap focus during mount', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
-        <TextField label="" value="" onChange={noop} autoFocus />
+        <button>First node</button>
+        <TextField
+          label=""
+          value=""
+          autoComplete="off"
+          onChange={noop}
+          autoFocus
+        />
       </TrapFocus>,
     );
 
@@ -109,7 +130,7 @@ describe('<TrapFocus />', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
         <a href="/">
-          <TextField label="" value="" onChange={noop} />
+          <TextField label="" value="" autoComplete="off" onChange={noop} />
         </a>
       </TrapFocus>,
     );
@@ -144,7 +165,13 @@ describe('<TrapFocus />', () => {
     it('allows default when trapping is false', () => {
       const trapFocus = mountWithApp(
         <TrapFocus trapping={false}>
-          <TextField label="" value="" onChange={noop} autoFocus />
+          <TextField
+            label=""
+            value=""
+            autoComplete="off"
+            onChange={noop}
+            autoFocus
+          />
         </TrapFocus>,
       );
 
@@ -160,7 +187,13 @@ describe('<TrapFocus />', () => {
     it('allows default when the related target is a child', () => {
       const trapFocus = mountWithApp(
         <TrapFocus>
-          <TextField label="" value="" onChange={noop} autoFocus />
+          <TextField
+            label=""
+            value=""
+            autoComplete="off"
+            onChange={noop}
+            autoFocus
+          />
         </TrapFocus>,
       );
 

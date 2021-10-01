@@ -8,11 +8,14 @@ import {ButtonGroup} from '../../../ButtonGroup';
 import {Subheading} from '../../../Subheading';
 import styles from '../../Card.scss';
 
-export interface SectionProps {
+export interface CardSectionProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   subdued?: boolean;
+  flush?: boolean;
   fullWidth?: boolean;
+  /** Allow the card to be hidden when printing */
+  hideOnPrint?: boolean;
   actions?: ComplexAction[];
 }
 
@@ -20,13 +23,17 @@ export function Section({
   children,
   title,
   subdued,
+  flush,
   fullWidth,
   actions,
-}: SectionProps) {
+  hideOnPrint,
+}: CardSectionProps) {
   const className = classNames(
     styles.Section,
+    flush && styles['Section-flush'],
     subdued && styles['Section-subdued'],
     fullWidth && styles['Section-fullWidth'],
+    hideOnPrint && styles['Section-hideOnPrint'],
   );
 
   const actionMarkup = actions ? (

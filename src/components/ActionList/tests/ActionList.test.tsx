@@ -1,7 +1,5 @@
 import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {ActionList} from '../ActionList';
@@ -16,18 +14,18 @@ describe('<ActionList />', () => {
   });
 
   it('fires onActionAnyItem on click or keypress of a button item', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         items={[{content: 'Add discount'}]}
         onActionAnyItem={mockOnActionAnyItem}
       />,
     );
-    actionList.find('button').simulate('click');
+    actionList.find('button')!.trigger('onClick');
     expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
   });
 
   it('fires onActionAnyItem on click or keypress of an anchor item', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         items={[
           {
@@ -39,24 +37,24 @@ describe('<ActionList />', () => {
         onActionAnyItem={mockOnActionAnyItem}
       />,
     );
-    actionList.find('a').simulate('click');
+    actionList.find('a')!.trigger('onClick');
     expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
   });
 
   it('fires onActionAnyItem and Item.onAction on click or keypress of an item', () => {
     const mockOnAction = jest.fn();
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         items={[{content: 'Add discount', onAction: mockOnAction}]}
         onActionAnyItem={mockOnActionAnyItem}
       />,
     );
-    actionList.find('button').simulate('click');
+    actionList.find('button')!.trigger('onClick');
     expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
     expect(mockOnAction).toHaveBeenCalledTimes(1);
   });
 
-  it('generates a unique key for each item from the content and index', () => {
+  it('generates an Item for each item', () => {
     const items = [
       {
         content: 'Add Discount',
@@ -66,26 +64,64 @@ describe('<ActionList />', () => {
       },
     ];
 
-    const actionList = mountWithAppProvider(<ActionList items={items} />);
-    actionList.find(Item).forEach((item, index) => {
-      const expectedKey = `${items[index].content}-${index}`;
-      expect(item.key()).toBe(expectedKey);
+    const actionList = mountWithApp(<ActionList items={items} />);
+    actionList.findAll(Item).forEach((item, index) => {
+      expect(item).toHaveReactProps({
+        content: `${items[index].content}`,
+      });
     });
   });
 
   it('passes actionRole to Section', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         items={[{content: 'Add discount'}]}
         onActionAnyItem={mockOnActionAnyItem}
         actionRole="option"
       />,
     );
-    expect(actionList.find(Section).prop('actionRole')).toBe('option');
+    expect(actionList).toContainReactComponent(Section, {
+      actionRole: 'option',
+    });
+  });
+
+  it('passes firstSection=true to the first Section', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        sections={[
+          {title: 'One', items: [{content: 'First section'}]},
+          {title: 'Two', items: [{content: 'Second section'}]},
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+
+    const {firstSection} = actionList.find(Section)!.props;
+
+    expect(firstSection).toBe(true);
+  });
+
+  it('passes firstSection=false to sections that are not the first', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        sections={[
+          {title: 'One', items: [{content: 'First section'}]},
+          {title: 'Two', items: [{content: 'Second section'}]},
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+
+    const sections = actionList.findAll(Section);
+    const {firstSection} = sections[sections.length - 1].props;
+
+    expect(firstSection).toBe(false);
   });
 
   it('renders a ul with sections', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         sections={[
           {
@@ -99,17 +135,17 @@ describe('<ActionList />', () => {
       />,
     );
 
-    expect(actionList.find('ul')).toHaveLength(1);
+    expect(actionList).toContainReactComponentTimes('ul', 1);
   });
 
   it('renders a div without sections', () => {
-    const actionList = mountWithAppProvider(<ActionList />);
+    const actionList = mountWithApp(<ActionList />);
 
-    expect(actionList.find('div')).toHaveLength(1);
+    expect(actionList).toContainReactComponentTimes('div', 1);
   });
 
   it('renders a section with a title', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         sections={[
           {
@@ -123,11 +159,11 @@ describe('<ActionList />', () => {
       />,
     );
 
-    expect(actionList.find(Section).text()).toContain('File option');
+    expect(actionList.find(Section)).toContainReactText('File option');
   });
 
   it('renders an item with a badge', () => {
-    const actionList = mountWithAppProvider(
+    const actionList = mountWithApp(
       <ActionList
         items={[
           {content: 'Add discount', badge: {status: 'new', content: 'badge'}},
@@ -136,29 +172,9 @@ describe('<ActionList />', () => {
         actionRole="option"
       />,
     );
-    expect(actionList.find(Badge).props()).toStrictEqual({
+    expect(actionList).toContainReactComponent(Badge, {
       children: 'badge',
       status: 'new',
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(actionList).toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(actionList).not.toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
     });
   });
 });

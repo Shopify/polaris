@@ -1,20 +1,10 @@
-import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  ReactWrapper,
-  trigger,
-} from 'test-utilities/legacy';
+import React, {useRef} from 'react';
+import {mountWithApp} from 'test-utilities';
 import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
-
-jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
-  write: jest.fn((callback) => callback()),
-}));
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -26,6 +16,8 @@ describe('<PopoverOverlay />', () => {
   let addEventListener: jest.SpyInstance;
   let removeEventListener: jest.SpyInstance;
 
+  let rafSpy: jest.SpyInstance;
+
   beforeEach(() => {
     addEventListener = jest.spyOn(document, 'addEventListener');
     addEventListener.mockImplementation((event, callback) => {
@@ -36,6 +28,9 @@ describe('<PopoverOverlay />', () => {
     removeEventListener.mockImplementation((event) => {
       listenerMap[event] = noop;
     });
+
+    rafSpy = jest.spyOn(window, 'requestAnimationFrame');
+    rafSpy.mockImplementation((callback) => callback());
   });
 
   afterEach(() => {
@@ -45,6 +40,8 @@ describe('<PopoverOverlay />', () => {
 
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
+
+    rafSpy.mockRestore();
   });
 
   const activator = document.createElement('button');
@@ -57,7 +54,7 @@ describe('<PopoverOverlay />', () => {
   );
 
   it('passes activator to PositionedOverlay when active', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -69,13 +66,13 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(popoverOverlay.find(PositionedOverlay).prop('activator')).toBe(
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
       activator,
-    );
+    });
   });
 
   it('passes fullWidth to PositionedOverlay when active', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -87,11 +84,13 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(popoverOverlay.find(PositionedOverlay).prop('fullWidth')).toBe(true);
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      fullWidth: true,
+    });
   });
 
   it('passes fixed to PositionedOverlay when active', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -103,11 +102,13 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(popoverOverlay.find(PositionedOverlay).prop('fixed')).toBe(true);
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      fixed: true,
+    });
   });
 
   it('passes preferredPosition and preferredAlignment to PositionedOverlay when active', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -120,16 +121,14 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(
-      popoverOverlay.find(PositionedOverlay).prop('preferredPosition'),
-    ).toBe('above');
-    expect(
-      popoverOverlay.find(PositionedOverlay).prop('preferredAlignment'),
-    ).toBe('right');
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      preferredPosition: 'above',
+      preferredAlignment: 'right',
+    });
   });
 
   it('passes default preferredPosition and preferredAlignment to PositionedOverlay when active', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -140,16 +139,14 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(
-      popoverOverlay.find(PositionedOverlay).prop('preferredPosition'),
-    ).toBe('below');
-    expect(
-      popoverOverlay.find(PositionedOverlay).prop('preferredAlignment'),
-    ).toBe('center');
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      preferredPosition: 'below',
+      preferredAlignment: 'center',
+    });
   });
 
   it('passes preferInputActivator to PositionedOverlay when false', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -162,15 +159,53 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    expect(
-      popoverOverlay.find(PositionedOverlay).prop('preferInputActivator'),
-    ).toBe(false);
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      preferInputActivator: false,
+    });
+  });
+
+  it('passes zIndexOverride to PositionedOverlay', () => {
+    const popoverOverlay = mountWithApp(
+      <PopoverOverlay
+        active
+        zIndexOverride={100}
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      zIndexOverride: 100,
+    });
+  });
+
+  it("doesn't include a tabindex prop when autofocusTarget is 'none'", () => {
+    const popoverOverlay = mountWithApp(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fixed
+        autofocusTarget="none"
+        preferInputActivator={false}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      preferInputActivator: false,
+    });
   });
 
   it('calls the onClose callback when the escape key is pressed', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(
+    mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -188,24 +223,31 @@ describe('<PopoverOverlay />', () => {
   it('does not call the onClose callback when a descendent HTMLElement is clicked', () => {
     const spy = jest.fn();
 
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
         activator={activator}
         onClose={spy}
       >
-        (<TextField label="Store name" value="Click me" onChange={() => {}} />)
+        (
+        <TextField
+          label="Store name"
+          value="Click me"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        )
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay.find(TextField).find('input').getDOMNode();
+    const target = popoverOverlay.find(TextField)!.find('input')!.domNode;
 
-    const clickEventListener = popoverOverlay
-      .find(EventListener)
-      .findWhere((node) => node.prop('event') === 'click');
+    const clickEventListener = popoverOverlay.find(EventListener, {
+      event: 'click',
+    })!;
 
-    trigger(clickEventListener, 'handler', {target});
+    clickEventListener.trigger('handler', {target});
 
     expect(spy).not.toHaveBeenCalled();
   });
@@ -213,7 +255,7 @@ describe('<PopoverOverlay />', () => {
   it('does not call the onClose callback when a descendent SVGElement is clicked', () => {
     const spy = jest.fn();
 
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -226,30 +268,26 @@ describe('<PopoverOverlay />', () => {
           label="Store name"
           value="Click me"
           onChange={() => {}}
+          autoComplete="off"
         />
         )
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay
-      .find(TextField)
-      .find('svg')
-      .first()
-      .getDOMNode();
+    const target = popoverOverlay.find(TextField)!.find('svg')!.domNode;
 
-    const clickEventListener = popoverOverlay
-      .find(EventListener)
-      .findWhere((node) => node.prop('event') === 'click');
+    const clickEventListener = popoverOverlay.find(EventListener, {
+      event: 'click',
+    })!;
 
-    trigger(clickEventListener, 'handler', {
+    clickEventListener!.trigger('handler', {
       target,
     });
-
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('starts animating in immediately', () => {
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active={false}
         id="PopoverOverlay-1"
@@ -262,16 +300,17 @@ describe('<PopoverOverlay />', () => {
     );
 
     popoverOverlay.setProps({active: true});
-    popoverOverlay.update();
-    expect(popoverOverlay.find(PositionedOverlay).prop('classNames')).toMatch(
-      /PopoverOverlay-entering/,
-    );
+    popoverOverlay.forceUpdate();
+
+    expect(popoverOverlay).toContainReactComponent(PositionedOverlay, {
+      classNames: expect.stringContaining('PopoverOverlay-entering'),
+    });
   });
 
   it('does not render after exiting when the component is updated during exit', () => {
     jest.useFakeTimers();
 
-    const popoverOverlay = mountWithAppProvider(
+    const popoverOverlay = mountWithApp(
       <PopoverOverlay
         active
         id="PopoverOverlay-1"
@@ -283,16 +322,12 @@ describe('<PopoverOverlay />', () => {
     );
 
     // Start exiting
-    close(popoverOverlay);
-
-    // Update before exiting is complete
-    triggerSomeUpdate(popoverOverlay);
-
+    popoverOverlay.setProps({active: false});
     // Run any timers and a final update for changed state
     jest.runOnlyPendingTimers();
-    popoverOverlay.update();
 
-    expect(popoverOverlay.find(PositionedOverlay)).toHaveLength(0);
+    popoverOverlay.forceUpdate();
+    expect(popoverOverlay).not.toContainReactComponent(PositionedOverlay);
   });
 
   describe('focus', () => {
@@ -310,7 +345,7 @@ describe('<PopoverOverlay />', () => {
 
     it('focuses the content on mount', () => {
       const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
-      mountWithAppProvider(
+      mountWithApp(
         <PopoverOverlay
           active
           id="PopoverOverlay-1"
@@ -328,7 +363,7 @@ describe('<PopoverOverlay />', () => {
     it('focuses the content on mount and prevents scroll in development', () => {
       process.env.NODE_ENV = 'development';
       const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
-      mountWithAppProvider(
+      mountWithApp(
         <PopoverOverlay
           active
           id="PopoverOverlay-1"
@@ -342,17 +377,96 @@ describe('<PopoverOverlay />', () => {
       expect(focusSpy).toHaveBeenCalledTimes(1);
       expect(focusSpy).toHaveBeenCalledWith({preventScroll: true});
     });
+
+    it('focuses the container when autofocusTarget is not set', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay active id={id} activator={activator} onClose={noop} />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the container when autofocusTarget is set to Container', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="container"
+        />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
+      mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="first-node"
+        >
+          <p>Hello world</p>
+        </PopoverOverlay>,
+      );
+
+      expect(document.activeElement?.className).toContain('Content');
+    });
+
+    it('does not focus when autofocusTarget is set to None', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="none"
+        >
+          <input type="text" />
+        </PopoverOverlay>,
+      );
+
+      const focusTargetContainer = popoverOverlay.find('div', {id})!.domNode;
+      const focusTargetFirstNode = popoverOverlay.find('input', {})!.domNode;
+
+      expect(document.activeElement).not.toBe(focusTargetContainer);
+      expect(document.activeElement).not.toBe(focusTargetFirstNode);
+    });
+  });
+
+  describe('forceUpdatePosition', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let overlayRef = null;
+
+      function Test() {
+        overlayRef = useRef(null);
+
+        return (
+          <PopoverOverlay
+            active
+            id="MockId"
+            ref={overlayRef}
+            activator={activator}
+            onClose={noop}
+          >
+            <input type="text" />
+          </PopoverOverlay>
+        );
+      }
+
+      mountWithApp(<Test />);
+
+      expect(overlayRef).toHaveProperty('current.forceUpdatePosition');
+    });
   });
 });
 
 function noop() {}
-
-function close(wrapper: ReactWrapper) {
-  wrapper.setProps({active: false});
-  wrapper.update();
-}
-
-function triggerSomeUpdate(wrapper: ReactWrapper) {
-  wrapper.setProps({fullWidth: true});
-  wrapper.update();
-}

@@ -1,13 +1,16 @@
 import React, {
-  useRef,
+  Children,
+  forwardRef,
   useEffect,
   useCallback,
+  useImperativeHandle,
+  useRef,
   useState,
-  AriaAttributes,
 } from 'react';
+import type {AriaAttributes} from 'react';
 
 import {
-  findFirstFocusableNode,
+  findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
 } from '../../utilities/focus';
 import {Portal} from '../Portal';
@@ -16,6 +19,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 
 import {
   PopoverCloseSource,
+  PopoverAutofocusTarget,
   Pane,
   PopoverOverlay,
   PopoverOverlayProps,
@@ -24,6 +28,7 @@ import {
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};
+export type {PopoverAutofocusTarget};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
@@ -46,8 +51,10 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /** Prevent automatic focus of the first field on activation */
-  preventAutofocus?: boolean;
+  /** Override on the default z-index of 400 */
+  zIndexOverride?: number;
+  /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
+  preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
   sectioned?: boolean;
   /** Allow popover to stretch to the full width of its activator */
@@ -60,8 +67,21 @@ export interface PopoverProps {
   fixed?: boolean;
   /** Used to illustrate the type of popover element */
   ariaHaspopup?: AriaAttributes['aria-haspopup'];
+  /** Allow the popover overlay to be hidden when printing */
+  hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
+  /** Accepts a color scheme for the contents of the popover */
+  colorScheme?: PopoverOverlayProps['colorScheme'];
+  /**
+   * The preferred auto focus target defaulting to the popover container
+   * @default 'container'
+   */
+  autofocusTarget?: PopoverAutofocusTarget;
+}
+
+export interface PopoverPublicAPI {
+  forceUpdatePosition(): void;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -69,117 +89,140 @@ export interface PopoverProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-export const Popover: React.FunctionComponent<PopoverProps> & {
-  Pane: typeof Pane;
-  Section: typeof Section;
-} = function Popover({
-  activatorWrapper = 'div',
-  children,
-  onClose,
-  activator,
-  active,
-  fixed,
-  ariaHaspopup,
-  preferInputActivator = true,
-  ...rest
-}: PopoverProps) {
-  const [activatorNode, setActivatorNode] = useState<HTMLElement>();
-  const activatorContainer = useRef<HTMLElement>(null);
-  const WrapperComponent: any = activatorWrapper;
-  const id = useUniqueId('popover');
-
-  const setAccessibilityAttributes = useCallback(() => {
-    if (activatorContainer.current == null) {
-      return;
-    }
-
-    const firstFocusable = findFirstFocusableNode(activatorContainer.current);
-    const focusableActivator: HTMLElement & {
-      disabled?: boolean;
-    } = firstFocusable || activatorContainer.current;
-
-    const activatorDisabled =
-      'disabled' in focusableActivator && Boolean(focusableActivator.disabled);
-
-    setActivatorAttributes(focusableActivator, {
-      id,
+const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
+  function Popover(
+    {
+      activatorWrapper = 'div',
+      children,
+      onClose,
+      activator,
+      preventFocusOnClose,
       active,
+      fixed,
       ariaHaspopup,
-      activatorDisabled,
+      preferInputActivator = true,
+      colorScheme,
+      zIndexOverride,
+      ...rest
+    },
+    ref,
+  ) {
+    const [activatorNode, setActivatorNode] = useState<HTMLElement>();
+
+    const overlayRef = useRef<PopoverOverlay>(null);
+    const activatorContainer = useRef<HTMLElement>(null);
+
+    const WrapperComponent: any = activatorWrapper;
+    const id = useUniqueId('popover');
+
+    function forceUpdatePosition() {
+      overlayRef.current?.forceUpdatePosition();
+    }
+
+    useImperativeHandle(ref, () => {
+      return {
+        forceUpdatePosition,
+      };
     });
-  }, [id, active, ariaHaspopup]);
 
-  const handleClose = (source: PopoverCloseSource) => {
-    onClose(source);
-
-    if (activatorContainer.current == null) {
-      return;
-    }
-
-    if (
-      (source === PopoverCloseSource.FocusOut ||
-        source === PopoverCloseSource.EscapeKeypress) &&
-      activatorNode
-    ) {
-      const focusableActivator =
-        findFirstFocusableNode(activatorNode) ||
-        findFirstFocusableNode(activatorContainer.current) ||
-        activatorContainer.current;
-      if (!focusNextFocusableNode(focusableActivator, isInPortal)) {
-        focusableActivator.focus();
+    const setAccessibilityAttributes = useCallback(() => {
+      if (activatorContainer.current == null) {
+        return;
       }
-    }
-  };
 
-  useEffect(() => {
-    if (!activatorNode && activatorContainer.current) {
-      setActivatorNode(
-        activatorContainer.current.firstElementChild as HTMLElement,
+      const firstFocusable = findFirstFocusableNodeIncludingDisabled(
+        activatorContainer.current,
       );
-    } else if (
-      activatorNode &&
-      activatorContainer.current &&
-      !activatorContainer.current.contains(activatorNode)
-    ) {
-      setActivatorNode(
-        activatorContainer.current.firstElementChild as HTMLElement,
-      );
-    }
-    setAccessibilityAttributes();
-  }, [activatorNode, setAccessibilityAttributes]);
+      const focusableActivator: HTMLElement & {
+        disabled?: boolean;
+      } = firstFocusable || activatorContainer.current;
 
-  useEffect(() => {
-    if (activatorNode && activatorContainer.current) {
-      setActivatorNode(
-        activatorContainer.current.firstElementChild as HTMLElement,
-      );
-    }
-    setAccessibilityAttributes();
-  }, [activatorNode, setAccessibilityAttributes]);
+      const activatorDisabled =
+        'disabled' in focusableActivator &&
+        Boolean(focusableActivator.disabled);
 
-  const portal = activatorNode ? (
-    <Portal idPrefix="popover">
-      <PopoverOverlay
-        id={id}
-        activator={activatorNode}
-        preferInputActivator={preferInputActivator}
-        onClose={handleClose}
-        active={active}
-        fixed={fixed}
-        {...rest}
-      >
-        {children}
-      </PopoverOverlay>
-    </Portal>
-  ) : null;
+      setActivatorAttributes(focusableActivator, {
+        id,
+        active,
+        ariaHaspopup,
+        activatorDisabled,
+      });
+    }, [id, active, ariaHaspopup]);
 
-  return (
-    <WrapperComponent ref={activatorContainer}>
-      {React.Children.only(activator)}
-      {portal}
-    </WrapperComponent>
-  );
-};
+    const handleClose = (source: PopoverCloseSource) => {
+      onClose(source);
+      if (activatorContainer.current == null || preventFocusOnClose) {
+        return;
+      }
+
+      if (
+        (source === PopoverCloseSource.FocusOut ||
+          source === PopoverCloseSource.EscapeKeypress) &&
+        activatorNode
+      ) {
+        const focusableActivator =
+          findFirstFocusableNodeIncludingDisabled(activatorNode) ||
+          findFirstFocusableNodeIncludingDisabled(activatorContainer.current) ||
+          activatorContainer.current;
+        if (!focusNextFocusableNode(focusableActivator, isInPortal)) {
+          focusableActivator.focus();
+        }
+      }
+    };
+
+    useEffect(() => {
+      if (!activatorNode && activatorContainer.current) {
+        setActivatorNode(
+          activatorContainer.current.firstElementChild as HTMLElement,
+        );
+      } else if (
+        activatorNode &&
+        activatorContainer.current &&
+        !activatorContainer.current.contains(activatorNode)
+      ) {
+        setActivatorNode(
+          activatorContainer.current.firstElementChild as HTMLElement,
+        );
+      }
+      setAccessibilityAttributes();
+    }, [activatorNode, setAccessibilityAttributes]);
+
+    useEffect(() => {
+      if (activatorNode && activatorContainer.current) {
+        setActivatorNode(
+          activatorContainer.current.firstElementChild as HTMLElement,
+        );
+      }
+      setAccessibilityAttributes();
+    }, [activatorNode, setAccessibilityAttributes]);
+
+    const portal = activatorNode ? (
+      <Portal idPrefix="popover">
+        <PopoverOverlay
+          ref={overlayRef}
+          id={id}
+          activator={activatorNode}
+          preferInputActivator={preferInputActivator}
+          onClose={handleClose}
+          active={active}
+          fixed={fixed}
+          colorScheme={colorScheme}
+          zIndexOverride={zIndexOverride}
+          {...rest}
+        >
+          {children}
+        </PopoverOverlay>
+      </Portal>
+    ) : null;
+
+    return (
+      <WrapperComponent ref={activatorContainer}>
+        {Children.only(activator)}
+        {portal}
+      </WrapperComponent>
+    );
+  },
+);
 
 function isInPortal(element: Element) {
   let parentElement = element.parentElement;
@@ -192,5 +235,4 @@ function isInPortal(element: Element) {
   return true;
 }
 
-Popover.Pane = Pane;
-Popover.Section = Section;
+export const Popover = Object.assign(PopoverComponent, {Pane, Section});

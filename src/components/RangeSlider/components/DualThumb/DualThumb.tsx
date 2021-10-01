@@ -1,9 +1,5 @@
-import React from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../../../utilities/css';
@@ -40,7 +36,7 @@ enum Control {
   Upper,
 }
 
-export class DualThumb extends React.Component<DualThumbProps, State> {
+export class DualThumb extends Component<DualThumbProps, State> {
   static contextType = FeaturesContext;
 
   static getDerivedStateFromProps(props: DualThumbProps, state: State) {
@@ -76,25 +72,26 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     trackLeft: 0,
   };
 
-  private track = React.createRef<HTMLDivElement>();
-  private trackWrapper = React.createRef<HTMLDivElement>();
-  private thumbLower = React.createRef<HTMLButtonElement>();
-  private thumbUpper = React.createRef<HTMLButtonElement>();
+  private track = createRef<HTMLDivElement>();
+  private trackWrapper = createRef<HTMLDivElement>();
+  private thumbLower = createRef<HTMLDivElement>();
+  private thumbUpper = createRef<HTMLDivElement>();
 
   private setTrackPosition = debounce(
     () => {
       if (this.track.current) {
-        const newDesignLanguage =
-          this.context && this.context.newDesignLanguage;
-        const thumbSize = newDesignLanguage ? 16 : 24;
+        const thumbSize = 16;
 
         const {width, left} = this.track.current.getBoundingClientRect();
         const adjustedTrackWidth = width - thumbSize;
         const adjustedTrackLeft = left + thumbSize / 2;
 
+        const range = this.props.max - this.props.min;
+        const minValuePosition = (this.props.min / range) * adjustedTrackWidth;
+
         this.setState({
           trackWidth: adjustedTrackWidth,
-          trackLeft: adjustedTrackLeft,
+          trackLeft: adjustedTrackLeft - minValuePosition,
         });
       }
     },
@@ -106,8 +103,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     this.setTrackPosition();
 
     if (this.trackWrapper.current != null) {
-      addEventListener(
-        this.trackWrapper.current,
+      this.trackWrapper.current.addEventListener(
         'touchstart',
         this.handleTouchStartTrack,
         {passive: false},
@@ -117,8 +113,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 
   componentWillUnmount() {
     if (this.trackWrapper.current != null) {
-      removeEventListener(
-        this.trackWrapper.current,
+      this.trackWrapper.current.removeEventListener(
         'touchstart',
         this.handleTouchStartTrack,
       );
@@ -176,9 +171,12 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 
     const trackWidth = this.state.trackWidth;
     const range = max - min;
+    const minValuePosition = (min / range) * trackWidth;
 
-    const leftPositionThumbLower = (value[0] / range) * trackWidth;
-    const leftPositionThumbUpper = (value[1] / range) * trackWidth;
+    const leftPositionThumbLower =
+      (value[0] / range) * trackWidth - minValuePosition;
+    const leftPositionThumbUpper =
+      (value[1] / range) * trackWidth - minValuePosition;
 
     const outputLowerClassName = classNames(styles.Output, styles.OutputLower);
     const outputMarkupLower =
@@ -226,7 +224,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     );
 
     return (
-      <React.Fragment>
+      <>
         <Labelled
           id={id}
           label={label}
@@ -240,17 +238,11 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
             <div
               className={trackWrapperClassName}
               onMouseDown={this.handleMouseDownTrack}
-              testID="trackWrapper"
               ref={this.trackWrapper}
             >
-              <div
-                className={styles.Track}
-                style={cssVars}
-                ref={this.track}
-                testID="track"
-              />
+              <div className={styles.Track} style={cssVars} ref={this.track} />
               <div className={styles['Track--dashed']} />
-              <button
+              <div
                 id={idLower}
                 className={thumbLowerClassName}
                 style={{
@@ -266,14 +258,14 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                tabIndex={0}
                 onKeyDown={this.handleKeypressLower}
                 onMouseDown={this.handleMouseDownThumbLower}
                 onTouchStart={this.handleTouchStartThumbLower}
                 ref={this.thumbLower}
-                disabled={disabled}
               />
               {outputMarkupLower}
-              <button
+              <div
                 id={idUpper}
                 className={thumbUpperClassName}
                 style={{
@@ -289,11 +281,11 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                tabIndex={0}
                 onKeyDown={this.handleKeypressUpper}
                 onMouseDown={this.handleMouseDownThumbUpper}
                 onTouchStart={this.handleTouchStartThumbUpper}
                 ref={this.thumbUpper}
-                disabled={disabled}
               />
               {outputMarkupUpper}
             </div>
@@ -301,12 +293,12 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
           </div>
         </Labelled>
         <EventListener event="resize" handler={this.setTrackPosition} />
-      </React.Fragment>
+      </>
     );
   }
 
   private handleMouseDownThumbLower = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLDivElement>,
   ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
@@ -322,7 +314,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
   };
 
   private handleTouchStartThumbLower = (
-    event: React.TouchEvent<HTMLButtonElement>,
+    event: React.TouchEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbLower);
@@ -339,7 +331,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
   };
 
   private handleMouseDownThumbUpper = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLDivElement>,
   ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
@@ -355,7 +347,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
   };
 
   private handleTouchStartThumbUpper = (
-    event: React.TouchEvent<HTMLButtonElement>,
+    event: React.TouchEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbUpper);
@@ -372,7 +364,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
   };
 
   private handleKeypressLower = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     const {incrementValueLower, decrementValueLower} = this;
@@ -394,7 +386,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
   };
 
   private handleKeypressUpper = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (this.props.disabled) return;
     const {incrementValueUpper, decrementValueUpper} = this;
@@ -457,7 +449,6 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     } = this;
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
-
     if (isEqual(sanitizedValue, value) === false) {
       this.setState(
         {
@@ -525,6 +516,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 
       const relativeX = dirtyXPosition - trackLeft;
       const percentageOfTrack = relativeX / trackWidth;
+
       return percentageOfTrack * (max - min);
     } else {
       return 0;
@@ -533,12 +525,11 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 }
 
 function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
-  addEventListener(document, 'mousemove', handler);
-  addEventListener(
-    document,
+  document.addEventListener('mousemove', handler);
+  document.addEventListener(
     'mouseup',
     () => {
-      removeEventListener(document, 'mousemove', handler);
+      document.removeEventListener('mousemove', handler);
     },
     {once: true},
   );
@@ -546,14 +537,14 @@ function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
 
 function registerTouchMoveHandler(handler: (event: TouchEvent) => void) {
   const removeHandler = () => {
-    removeEventListener(document, 'touchmove', handler);
-    removeEventListener(document, 'touchend', removeHandler);
-    removeEventListener(document, 'touchcancel', removeHandler);
+    document.removeEventListener('touchmove', handler);
+    document.removeEventListener('touchend', removeHandler);
+    document.removeEventListener('touchcancel', removeHandler);
   };
 
-  addEventListener(document, 'touchmove', handler, {passive: false});
-  addEventListener(document, 'touchend', removeHandler, {once: true});
-  addEventListener(document, 'touchcancel', removeHandler, {once: true});
+  document.addEventListener('touchmove', handler, {passive: false});
+  document.addEventListener('touchend', removeHandler, {once: true});
+  document.addEventListener('touchcancel', removeHandler, {once: true});
 }
 
 function sanitizeValue(
@@ -565,7 +556,6 @@ function sanitizeValue(
 ): DualValue {
   let upperValue = inBoundsUpper(roundedToStep(value[1]));
   let lowerValue = inBoundsLower(roundedToStep(value[0]));
-
   const maxLowerValue = upperValue - step;
   const minUpperValue = lowerValue + step;
 

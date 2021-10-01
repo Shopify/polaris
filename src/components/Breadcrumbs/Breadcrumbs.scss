@@ -1,11 +1,6 @@
 @import '../../styles/common';
 
-$vertical-padding: (control-height() - line-height(body)) / 2;
-$horizontal-padding: spacing(tight);
 $icon-size: rem(20px);
-
-$difference-between-touch-area-and-backdrop: control-height() -
-  control-slim-height();
 
 .Breadcrumb {
   @include text-style-body;
@@ -15,46 +10,45 @@ $difference-between-touch-area-and-backdrop: control-height() -
   display: flex;
   align-items: center;
   min-height: control-height();
-
-  margin: (-0.5 * $difference-between-touch-area-and-backdrop)
-    (-1 * $horizontal-padding)
-    (-0.5 * $difference-between-touch-area-and-backdrop)
-    (-0.5 * $horizontal-padding);
-
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+  color: var(--p-text-subdued);
   text-decoration: none;
+  margin: 0;
+  padding: spacing(extra-tight) / 2;
+  border-radius: var(--p-border-radius-base);
+  border: 1px solid var(--p-border-neutral-subdued);
+  @include focus-ring($border-width: rem(1px));
 
-  &.newDesignLanguage {
-    margin-left: 0;
+  &:hover {
+    background-color: var(--p-surface-hovered);
+  }
+
+  &:active {
+    background-color: var(--p-surface-pressed);
+
+    .ContentWrapper {
+      background: var(--p-override-transparent);
+    }
   }
 
   &:hover,
   &:active {
-    color: var(--p-text, color('ink'));
+    color: var(--p-text);
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(var(--p-icon-pressed, color('ink')));
+      @include recolor-icon(var(--p-icon-pressed));
     }
   }
   // stylelint-disable selector-max-specificity
   &:focus {
     outline: none;
     .ContentWrapper {
-      background: var(--p-override-transparent, plain-button-background());
-    }
-  }
-
-  &:active {
-    .ContentWrapper {
-      background: var(--p-surface-subdued, plain-button-background());
+      background: var(--p-override-transparent);
     }
   }
 
   &:focus:not(:active) {
-    .ContentWrapper {
-      @include focus-ring($style: 'focused');
-    }
+    @include focus-ring($style: 'focused');
   }
   // stylelint-enable selector-max-specificity
 }
@@ -63,13 +57,15 @@ $difference-between-touch-area-and-backdrop: control-height() -
   position: relative;
   display: flex;
   align-items: center;
-  padding: $vertical-padding $horizontal-padding;
+  justify-content: center;
+  padding: 0;
+  margin-left: 0;
   background: transparent;
   height: control-slim-height();
-  border-radius: var(--p-border-radius-base, border-radius());
+  width: control-slim-height();
+  border-radius: var(--p-border-radius-wide);
   will-change: background;
   transition: background duration() easing();
-  @include focus-ring;
 }
 
 .Content {
@@ -78,9 +74,9 @@ $difference-between-touch-area-and-backdrop: control-height() -
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+  @include recolor-icon(var(--p-icon));
   width: $icon-size;
   height: $icon-size;
   margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
-  margin: 0 0 0 rem(-8px);
+  margin: 0;
 }

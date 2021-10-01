@@ -1,0 +1,13 @@
+$resource-list-small: 458px;
+
+@mixin page-before-resource-list-small() {
+  @include breakpoint-before($resource-list-small) {
+    @content;
+  }
+}
+
+@mixin page-after-resource-list-small() {
+  @include breakpoint-after($resource-list-small) {
+    @content;
+  }
+}

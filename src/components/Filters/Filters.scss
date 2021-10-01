@@ -1,8 +1,7 @@
 @import '../../styles/common';
 
-$list-filters-header-height: rem(56px);
+$list-filters-header-height: top-bar-height();
 $list-filters-footer-height: rem(70px);
-$seperator-color: var(--p-border-subdued, color('sky'));
 
 .Filters {
   position: relative;
@@ -20,17 +19,12 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   top: 0;
   width: 100%;
   padding: spacing(base) spacing(loose);
-  border-bottom: rem(1px) solid $seperator-color;
+  border-bottom: border('divider');
   height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &.newDesignLanguage {
-    height: new-top-bar-height();
-    padding: spacing(base) rem(26px);
-  }
 }
 
 .FiltersDesktopContainerContent {
@@ -38,41 +32,26 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
-
-  &.newDesignLanguage {
-    height: calc(
-      100% - #{$list-filters-footer-height} - #{new-top-bar-height()}
-    );
-
-    padding: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{$list-filters-header-height});
-
-  &.newDesignLanguage {
-    height: calc(100% - #{new-top-bar-height()});
-    padding: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .FiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) spacing(base);
-  border-top: rem(1px) solid $seperator-color;
+  padding: rem(14px) spacing(loose);
+  border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &.newDesignLanguage {
-    padding: rem(14px) spacing(loose);
-  }
 }
 
 .FiltersMobileContainerFooter {
@@ -86,7 +65,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 }
 
 .EmptyFooterState {
-  border-top: border();
+  border-top: border('divider');
   padding-top: rem(14px);
   width: 100%;
   display: flex;
@@ -101,49 +80,25 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   width: 100%;
   margin: 0;
   padding: rem(14px) spacing(loose);
-  border: none;
+  color: var(--p-text);
+  border-radius: var(--p-border-radius-base);
   background: none;
-  color: var(--p-text, color(ink));
-  border-radius: var(--p-border-radius-base, none);
+  border: none;
+  outline: none;
+  @include focus-ring;
+
+  &:focus {
+    box-shadow: none;
+  }
 
   &:hover {
     cursor: pointer;
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
     background-color: var(--p-surface-hovered);
+    @include high-contrast-outline;
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: inset 0.2rem 0 0 var(--p-override-none, color('indigo'));
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-  }
-
-  &.newDesignLanguage {
-    @include focus-ring;
-
-    &:focus,
-    &:hover {
-      background-image: none;
-    }
-
-    &:active {
-      background-color: var(--p-surface-pressed);
-    }
-
-    // stylelint-disable-next-line selector-max-specificity
-    &:focus:not(:active) {
-      @include focus-ring($style: 'focused');
-    }
-
-    &:hover {
-      @include high-contrast-outline;
-    }
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
@@ -175,7 +130,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 
@@ -196,7 +151,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 
@@ -219,7 +174,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 

@@ -11,13 +11,29 @@ $relative-size: $primary-basis / $secondary-basis;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: -1 * spacing(loose);
+  margin-top: -1 * spacing();
   margin-left: -1 * spacing(loose);
+
+  @media print {
+    body & {
+      font-size: rem(11px);
+      line-height: rem(16px);
+    }
+
+    a,
+    button {
+      color: var(--p-text);
+    }
+  }
 }
 
 .Section {
   flex: $relative-size $relative-size $primary-basis;
   min-width: 51%;
+
+  @media print {
+    flex: 2 2 36rem;
+  }
 }
 
 .Section-secondary {
@@ -47,13 +63,13 @@ $relative-size: $primary-basis / $secondary-basis;
 .Section,
 .AnnotatedSection {
   max-width: calc(100% - #{spacing(loose)});
-  margin-top: spacing(loose);
+  margin-top: spacing();
   margin-left: spacing(loose);
 
   + .AnnotatedSection {
     @include page-content-when-not-fully-condensed {
-      padding-top: spacing(loose);
-      border-top: border();
+      padding-top: spacing();
+      border-top: border('divider');
     }
   }
 }
@@ -61,7 +77,7 @@ $relative-size: $primary-basis / $secondary-basis;
 .AnnotationWrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing(loose);
+  margin-top: -1 * spacing();
   margin-left: -1 * spacing(loose);
 }
 
@@ -86,7 +102,7 @@ $relative-size: $primary-basis / $secondary-basis;
 .AnnotationContent {
   min-width: 0;
   max-width: calc(100% - #{spacing(loose)});
-  margin-top: spacing(loose);
+  margin-top: spacing();
   margin-left: spacing(loose);
 }
 

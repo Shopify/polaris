@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {CheckboxHandles} from '../../types';
 
@@ -26,6 +26,4 @@ export interface ResourceListContextType {
   ): void;
 }
 
-export const ResourceListContext = React.createContext<ResourceListContextType>(
-  {},
-);
+export const ResourceListContext = createContext<ResourceListContextType>({});

@@ -1,20 +1,7 @@
+production_platform:
+  application: polaris-react
+  runtime_ids:
+    - production-unrestricted-4b2e
 ci:
   require:
-    - 'Travis CI - Branch'
-  hide:
-    - shrink-ray
-    - percy/polaris-react
-    - codecov/patch
-    - 'Add new issues to project'
-    - 'Move assigned issue to column'
-  allow_failures:
-    - 'buildkite/polaris-react-system-integration-test'
-
-merge:
-  require:
-    - 'Travis CI - Branch'
-  ignore:
-    - codecov/patch
-
-deploy:
-  max_commits: false
+    - buildkite/polaris-react-production-builder

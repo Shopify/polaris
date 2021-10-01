@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![Travis build status](https://travis-ci.com/Shopify/polaris-react.svg?branch=master)](https://travis-ci.com/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -31,7 +31,7 @@ yarn add @shopify/polaris
 1.  Import the CSS directly into your project if your asset packager supports it:
 
 ```js
-import '@shopify/polaris/styles.css';
+import '@shopify/polaris/build/esm/styles.css';
 ```
 
 Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@7.0.0/build/esm/styles.css"
 />
 ```
 
@@ -65,12 +65,6 @@ ReactDOM.render(
 );
 ```
 
-### Building an embedded app
-
-We provide React wrappers around the Shopify App Bridge (formerly known as the EASDK). You don’t need to go through the initialization of the Shopify App Bridge as described in the docs. Instead, [configure the connection to the Shopify admin through the app provider component](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md).
-
-If you need help using Shopify App Bridge, the Embedded App SDK, or the POS App SDK, please visit our [API & SDK forum](https://community.shopify.com/c/Shopify-APIs-SDKs/bd-p/shopify-apis-and-technology). It is the best place to discuss the libraries, get support, notify us about bugs, or request features.
-
 ## Using the CSS components
 
 If React doesn’t make sense for your application, you can use a CSS-only version of our components. This includes all the styles you need for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
@@ -82,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@7.0.0/build/esm/styles.css"
 />
 ```
 
@@ -96,11 +90,11 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
-- [create-react-app example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app)
-- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app-ts-react-testing)
-- [Webpack example](https://github.com/Shopify/polaris-react/tree/master/examples/webpack)
-- [CSS-only example](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles)
-- [next.js example](https://github.com/Shopify/polaris-react/tree/master/examples/next.js)
+- [create-react-app example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app)
+- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app-ts-react-testing)
+- [Webpack example](https://github.com/Shopify/polaris-react/tree/main/examples/webpack)
+- [CSS-only example](https://github.com/Shopify/polaris-react/tree/main/examples/cdn-styles)
+- [next.js example](https://github.com/Shopify/polaris-react/tree/main/examples/next.js)
 
 ## Development
 
@@ -112,7 +106,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 1.  Run `yarn dev`
 1.  Make sure your virtual machine and mobile device are on the same network
-1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?selectedKind=Playground&selectedStory=Playground in your mobile device or virtual machine
+1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?path=/story/playground-playground--playground in your mobile device or virtual machine
 
 ### Testing in a consuming project
 
@@ -136,12 +130,6 @@ yarn run build:development
 ```
 
 Also, when running `yarn install`, copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
-
-### Visual regression testing
-
-[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
-
-Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgment to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team can approve changes.
 
 #### Manual visual regression testing
 
@@ -167,9 +155,9 @@ We make our components flexible enough to meet diverse needs. They present the i
 
 ## Contributing
 
-Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md) for more information.
+Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md) for more information.
 
 ## Licenses
 
-- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/master/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
+- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/main/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
 - All icons and images are licensed under the [Polaris Design Guidelines License Agreement](https://polaris.shopify.com/legal/license)

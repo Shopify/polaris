@@ -15,7 +15,6 @@ export const Layout: React.FunctionComponent<LayoutProps> & {
   Section: typeof Section;
 } = function Layout({sectioned, children}: LayoutProps) {
   const content = sectioned ? <Section>{children}</Section> : children;
-
   return <div className={styles.Layout}>{content}</div>;
 };
 

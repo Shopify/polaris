@@ -1,16 +1,14 @@
 import React, {useContext} from 'react';
-import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
-import {Icon} from '../../../Icon';
 import {Stack} from '../../../Stack';
 import {Caption} from '../../../Caption';
 import {TextStyle} from '../../../TextStyle';
-import {fileUpload, imageUpload} from '../../images';
+import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
-import {useFeatures} from '../../../../utilities/features';
+import {createAllowMultipleKey} from '../../utils';
 
 import styles from './FileUpload.scss';
 
@@ -21,31 +19,26 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
-  const {size, measuring, type, focused, disabled} = useContext(
+  const {size, measuring, type, focused, disabled, allowMultiple} = useContext(
     DropZoneContext,
   );
-  const suffix = capitalize(type);
+
+  const typeSuffix = capitalize(type);
+  const allowMultipleKey = createAllowMultipleKey(allowMultiple);
+
   const {
     actionTitle = i18n.translate(
-      `Polaris.DropZone.FileUpload.actionTitle${suffix}`,
+      `Polaris.DropZone.${allowMultipleKey}.actionTitle${typeSuffix}`,
     ),
     actionHint = i18n.translate(
-      `Polaris.DropZone.FileUpload.actionHint${suffix}`,
+      `Polaris.DropZone.${allowMultipleKey}.actionHint${typeSuffix}`,
     ),
   } = props;
-
-  const imageClasses = classNames(
-    styles.Image,
-    size && size === 'extraLarge' && styles.sizeExtraLarge,
-    size && size === 'large' && styles.sizeLarge,
-  );
 
   const buttonStyles =
     size === 'extraLarge' || size === 'large'
       ? classNames(
           styles.Button,
-          newDesignLanguage && styles.newDesignLanguage,
           size && size !== 'extraLarge' && styles.slim,
           focused && styles.focused,
           disabled && styles.disabled,
@@ -54,39 +47,7 @@ export function FileUpload(props: FileUploadProps) {
 
   const buttonMarkup =
     (size === 'extraLarge' || size === 'large') && buttonStyles ? (
-      <div testID="Button" className={buttonStyles}>
-        {actionTitle}
-      </div>
-    ) : null;
-
-  const extraLargeView =
-    size === 'extraLarge' ? (
-      <Stack vertical>
-        {type === 'file' && (
-          <img className={imageClasses} src={fileUpload} alt="" />
-        )}
-        {type === 'image' && (
-          <img className={imageClasses} src={imageUpload} alt="" />
-        )}
-        {buttonMarkup}
-        <TextStyle variation="subdued">{actionHint}</TextStyle>
-      </Stack>
-    ) : null;
-
-  const largeView =
-    size === 'large' ? (
-      <Stack vertical spacing="tight">
-        {type === 'file' && (
-          <img className={imageClasses} src={fileUpload} alt="" />
-        )}
-        {type === 'image' && (
-          <img className={imageClasses} src={imageUpload} alt="" />
-        )}
-        {buttonMarkup}
-        <Caption>
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Caption>
-      </Stack>
+      <div className={buttonStyles}>{actionTitle}</div>
     ) : null;
 
   const actionTitleClassName = classNames(
@@ -96,40 +57,51 @@ export function FileUpload(props: FileUploadProps) {
   );
 
   const actionTitleMarkup = (
-    <div testID="Link" className={actionTitleClassName}>
-      {actionTitle}
-    </div>
+    <div className={actionTitleClassName}>{actionTitle}</div>
   );
-
-  const mediumView =
-    size === 'medium' ? (
-      <Stack vertical spacing="tight">
-        {actionTitleMarkup}
-        <Caption>
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Caption>
-      </Stack>
-    ) : null;
-
-  const smallView =
-    size === 'small' ? (
-      <Stack vertical spacing="tight">
-        <Icon source={DragDropMajorMonotone} color="inkLightest" />
-      </Stack>
-    ) : null;
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
-    newDesignLanguage && styles.newDesignLanguage,
     measuring && styles.measuring,
+    size === 'small' && styles.FileUploadSmallView,
   );
 
-  return (
-    <div className={fileUploadClassName}>
-      {smallView}
-      {mediumView}
-      {largeView}
-      {extraLargeView}
-    </div>
-  );
+  let viewMarkup;
+  switch (size) {
+    case 'extraLarge':
+      viewMarkup = (
+        <Stack vertical>
+          <img width="40" src={uploadArrow} alt="" />
+          {buttonMarkup}
+          <TextStyle variation="subdued">{actionHint}</TextStyle>
+        </Stack>
+      );
+      break;
+    case 'large':
+      viewMarkup = (
+        <Stack vertical spacing="tight">
+          <img width="40" src={uploadArrow} alt="" />
+          {buttonMarkup}
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
+        </Stack>
+      );
+      break;
+    case 'medium':
+      viewMarkup = (
+        <Stack vertical spacing="tight">
+          {actionTitleMarkup}
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
+        </Stack>
+      );
+      break;
+    case 'small':
+      viewMarkup = <img width="20" src={uploadArrow} alt="" />;
+      break;
+  }
+
+  return <div className={fileUploadClassName}>{viewMarkup}</div>;
 }

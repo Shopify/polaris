@@ -5,7 +5,8 @@
       "labelWithInitials": "아바타(이니셜: {initials})"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "로드 중"
+      "spinnerAccessibilityLabel": "로드 중",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +21,8 @@
         "attention": "주의",
         "new": "신규",
         "critical": "중요"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "로드 중",
@@ -72,7 +74,18 @@
         "friday": "금요일",
         "saturday": "토요일",
         "sunday": "일요일"
-      }
+      },
+      "days": {
+        "monday": "월요일",
+        "tuesday": "화요일",
+        "wednesday": "수요일",
+        "thursday": "목요일",
+        "friday": "금요일",
+        "saturday": "토요일",
+        "sunday": "일요일"
+      },
+      "start": "시작 범위",
+      "end": "끝 범위"
     },
     "DiscardConfirmationModal": {
       "title": "저장되지 않은 모든 변경 사항 버리기",
@@ -81,16 +94,27 @@
       "secondaryAction": "계속 편집"
     },
     "DropZone": {
-      "overlayTextFile": "업로드할 파일 놓기",
-      "overlayTextImage": "업로드할 이미지 놓기",
       "errorOverlayTextFile": "파일 형식이 유효하지 않습니다.",
       "errorOverlayTextImage": "이미지 형식이 유효하지 않습니다.",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "업로드할 파일 놓기",
+        "overlayTextImage": "업로드할 이미지 놓기",
         "actionTitleFile": "파일 추가",
         "actionTitleImage": "이미지 추가",
         "actionHintFile": "또는 업로드할 파일 놓기",
         "actionHintImage": "또는 업로드할 이미지 놓기",
-        "label": "파일 업로드"
+        "labelFile": "파일 업로드",
+        "labelImage": "이미지 업로드"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "업로드할 파일 놓기",
+        "overlayTextImage": "업로드할 이미지 놓기",
+        "actionTitleFile": "파일 추가",
+        "actionTitleImage": "이미지 추가",
+        "actionHintFile": "또는 업로드할 파일 놓기",
+        "actionHintImage": "또는 업로드할 이미지 놓기",
+        "labelFile": "파일 업로드",
+        "labelImage": "이미지 업로드"
       }
     },
     "EmptySearchResult": {
@@ -100,10 +124,8 @@
       "skipToContent": "콘텐츠로 건너뛰기",
       "Navigation": {
         "closeMobileNavigationLabel": "탐색 닫기"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "{color} 아이콘에는 투명 무늬를 사용할 수 없습니다. 투명 무늬가 있는 아이콘 색상: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "탐색"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -204,7 +226,9 @@
           "on_or_after": "{date} 후"
         }
       },
-      "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시"
+      "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시",
+      "allFilteredItemsSelected": "이 필터의 모든 {itemsLength}+ {resourceNamePlural}이(가) 선택됩니다.",
+      "selectAllFilteredItems": "이 필터의 모든 {itemsLength}+ {resourceNamePlural} 선택"
     },
     "SkeletonPage": {
       "loadingLabel": "페이지 로딩"
@@ -279,6 +303,37 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "기타 작업"
+    },
+    "Loading": {
+      "label": "페이지 로딩 표시줄"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "툴팁: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "품목",
+      "defaultItemPlural": "품목",
+      "allItemsSelected": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural}이(가) 선택되었습니다.",
+      "selected": "{selectedItemsCount}개 선택됨",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} 선택 취소",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} 선택",
+      "a11yCheckboxDeselectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택 취소",
+      "a11yCheckboxSelectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} 없음",
+      "emptySearchDescription": "필터나 검색어를 변경해 보십시오.",
+      "onboardingBadgeText": "신규",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} 로드 중...",
+      "selectAllLabel": "{resourceNamePlural} 모두 선택",
+      "selected": "{selectedItemsCount}개 선택됨",
+      "undo": "실행 취소",
+      "selectAllItems": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural} 선택",
+      "selectItem": "{resourceName} 선택",
+      "selectButtonText": "선택"
     }
   }
 }

@@ -89,6 +89,18 @@ Use to emphasize several buttons as a thematically-related set among other contr
 </ButtonGroup>
 ```
 
+### Outline button group with segmented buttons
+
+Use to emphasize several buttons as a thematically-related set among other controls.
+
+```jsx
+<ButtonGroup segmented>
+  <Button outline>Bold</Button>
+  <Button outline>Italic</Button>
+  <Button outline>Underline</Button>
+</ButtonGroup>
+```
+
 <!-- content-for: android -->
 
 ![Alt text](/public_images/components/ButtonGroup/android/segmented-button@2x.png)

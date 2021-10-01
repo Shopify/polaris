@@ -6,8 +6,7 @@ import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
-import {Icon} from '../../../Icon';
-import type {IconProps} from '../../../../types';
+import {Icon, IconProps} from '../../../Icon';
 import {Item, ItemProps} from '../Item';
 import styles from '../../Navigation.scss';
 
@@ -120,7 +119,6 @@ export function Section({
         className={toggleClassName}
         onClick={toggleExpanded}
         aria-label={ariaLabel}
-        testID="ToggleViewAll"
       >
         <span className={styles.Icon}>
           <Icon source={HorizontalDotsMinor} />

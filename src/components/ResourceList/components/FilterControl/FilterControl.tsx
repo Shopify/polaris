@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useContext} from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
 import type {ComplexAction} from '../../../../types';
@@ -26,7 +26,7 @@ export interface FilterControlProps {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-/** @deprecated Use <Filters /> instead. */
+/** @deprecated This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead. */
 export function FilterControl({
   searchValue,
   appliedFilters = [],
@@ -40,18 +40,18 @@ export function FilterControl({
 }: FilterControlProps) {
   // eslint-disable-next-line no-console
   console.warn(
-    'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',
+    'Deprecation: <FilterControl /> is deprecated. This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead.',
   );
 
   const i18n = useI18n();
-  const {selectMode, resourceName} = React.useContext(ResourceListContext);
+  const {selectMode, resourceName} = useContext(ResourceListContext);
 
   const filterResourceName = resourceName || {
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   };
 
-  const handleAddFilter = React.useCallback(
+  const handleAddFilter = useCallback(
     (newFilter: AppliedFilter) => {
       if (!onFiltersChange) {
         return;
@@ -73,7 +73,7 @@ export function FilterControl({
     [onFiltersChange, appliedFilters],
   );
 
-  const handleRemoveFilter = React.useCallback(
+  const handleRemoveFilter = useCallback(
     (filterId: string) => {
       if (!onFiltersChange) {
         return;
@@ -96,7 +96,7 @@ export function FilterControl({
     [appliedFilters, onFiltersChange],
   );
 
-  const getRemoveFilterCallback = React.useCallback(
+  const getRemoveFilterCallback = useCallback(
     (filterId: string) => {
       return () => {
         handleRemoveFilter(filterId);
@@ -153,12 +153,13 @@ export function FilterControl({
         label={textFieldLabel}
         labelHidden
         placeholder={textFieldLabel}
-        prefix={<Icon source={SearchMinor} color="skyDark" />}
+        prefix={<Icon source={SearchMinor} color="subdued" />}
         value={searchValue}
         onChange={onSearchChange}
         onBlur={onSearchBlur}
         focused={focused}
         disabled={selectMode}
+        autoComplete="off"
       />
       {appliedFiltersWrapper}
     </FormLayout>

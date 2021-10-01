@@ -37,6 +37,10 @@
   @include stack-spacing(tight);
 }
 
+.spacingBaseTight {
+  @include stack-spacing(base-tight);
+}
+
 .spacingLoose {
   @include stack-spacing(loose);
 }

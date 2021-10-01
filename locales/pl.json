@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar z inicjałami {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Ładowanie"
+      "spinnerAccessibilityLabel": "Ładowanie",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -20,7 +21,8 @@
         "attention": "Uwaga",
         "new": "Nowe",
         "critical": "Krytyczny"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ładowanie",
@@ -72,7 +74,18 @@
         "friday": "Pt",
         "saturday": "Sb",
         "sunday": "Nd"
-      }
+      },
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
+      },
+      "start": "Początek zakresu",
+      "end": "Koniec zakresu"
     },
     "DiscardConfirmationModal": {
       "title": "Odrzuć wszystkie niezapisane zmiany",
@@ -81,16 +94,27 @@
       "secondaryAction": "Kontynuuj edycję"
     },
     "DropZone": {
-      "overlayTextFile": "Upuść plik, aby załadować",
-      "overlayTextImage": "Upuść obraz , aby załadować",
       "errorOverlayTextFile": "Nieprawidłowy typ pliku",
       "errorOverlayTextImage": "Nieprawidłowy typ obrazu",
-      "FileUpload": {
+      "single": {
+        "overlayTextFile": "Upuść plik do załadowania",
+        "overlayTextImage": "Upuść obraz do załadowania",
         "actionTitleFile": "Dodaj plik",
         "actionTitleImage": "Dodaj obraz",
-        "actionHintFile": "lub upuść pliki, aby załadować",
-        "actionHintImage": "lub upuść obrazy, aby załadować",
-        "label": "Przekaż plik"
+        "actionHintFile": "lub upuść plik do załadowania",
+        "actionHintImage": "lub upuść zdjęcie do załadowania",
+        "labelFile": "Załaduj plik",
+        "labelImage": "Załaduj obraz"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Upuść pliki do załadowania",
+        "overlayTextImage": "Upuść obrazy do załadowania",
+        "actionTitleFile": "Dodaj pliki",
+        "actionTitleImage": "Dodaj zdjęcia",
+        "actionHintFile": "lub upuść pliki do załadowania",
+        "actionHintImage": "lub upuść zdjęcia do załadowania",
+        "labelFile": "Załaduj pliki",
+        "labelImage": "Załaduj zdjęcia"
       }
     },
     "EmptySearchResult": {
@@ -100,10 +124,8 @@
       "skipToContent": "Przejdź do treści",
       "Navigation": {
         "closeMobileNavigationLabel": "Zamknij nawigację"
-      }
-    },
-    "Icon": {
-      "backdropWarning": "Ikona {color} nie akceptuje teł. Kolory ikon, które mają tło, są: {colorsWithBackDrops}"
+      },
+      "navigationLabel": "Nawigacja"
     },
     "ActionMenu": {
       "RollupActions": {
@@ -204,7 +226,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze są zaznaczone.",
+      "selectAllFilteredItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze"
     },
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
@@ -275,10 +299,43 @@
           },
           "seconds": {
             "other": "Liczba sekund: {secondCount}",
-            "one": "{secondCount} sekunda"
+            "one": "{secondCount} sekunda",
+            "few": "Liczba sekund: {secondCount}",
+            "many": "Liczba sekund: {secondCount}"
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Więcej czynności"
+    },
+    "Loading": {
+      "label": "Pasek ładowania strony"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Etykietka narzędzia: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Pozycja",
+      "defaultItemPlural": "Pozycje",
+      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}.",
+      "selected": "Wybrano {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nie znaleziono {resourceNamePlural}",
+      "emptySearchDescription": "Spróbuj zmienić filtry lub szukany termin",
+      "onboardingBadgeText": "Nowe",
+      "resourceLoadingAccessibilityLabel": "Ładowanie {resourceNamePlural}...",
+      "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
+      "selected": "Wybrano {selectedItemsCount}",
+      "undo": "Cofnij",
+      "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Wybierz {resourceName}",
+      "selectButtonText": "Wybierz"
     }
   }
 }

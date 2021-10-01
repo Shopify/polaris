@@ -12,3 +12,7 @@
 .calculating {
   visibility: hidden;
 }
+
+.preventInteraction {
+  pointer-events: none;
+}

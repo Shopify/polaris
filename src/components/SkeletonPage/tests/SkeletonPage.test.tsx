@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {
   Layout,
   Card,
@@ -13,102 +12,76 @@ import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {
-    const children = (
-      <Layout>
-        <Layout.Section>
-          <Card sectioned>
-            <SkeletonBodyText />
-          </Card>
-          <Card sectioned title="Variants">
-            <SkeletonBodyText />
-          </Card>
-        </Layout.Section>
-      </Layout>
-    );
+    const Children = () => {
+      return (
+        <Layout>
+          <Layout.Section>
+            <Card sectioned>
+              <SkeletonBodyText />
+            </Card>
+            <Card sectioned title="Variants">
+              <SkeletonBodyText />
+            </Card>
+          </Layout.Section>
+        </Layout>
+      );
+    };
 
-    const skeletonPage = mountWithAppProvider(
-      <SkeletonPage title="Products">{children}</SkeletonPage>,
+    const skeletonPage = mountWithApp(
+      <SkeletonPage title="Products">
+        <Children />
+      </SkeletonPage>,
     );
-    expect(skeletonPage.contains(children)).toBe(true);
+    expect(skeletonPage).toContainReactComponent(Children);
   });
 
   describe('title', () => {
-    it('renders title when a title is provided', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
-      );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText).toHaveLength(1);
-      expect(displayText.text()).toBe('Products');
+    it('renders an h1 with the Title class when title is defined', () => {
+      const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
+
+      expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
+      expect(skeletonPage).not.toContainReactComponent(DisplayText);
     });
 
-    it('does not render a title when a title is not provided', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText).toHaveLength(0);
+    it('renders SkeletonTitle when a title not defined', () => {
+      const skeletonPage = mountWithApp(<SkeletonPage />);
+
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
+      expect(skeletonPage).toContainReactComponent('div', {
+        className: 'SkeletonTitle',
+      });
     });
 
-    it('passes large to the size prop of DisplayText', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
-      );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText.prop('size')).toBe('large');
-    });
+    it('renders SkeletonTitle when title is an empty string', () => {
+      const skeletonPage = mountWithApp(<SkeletonPage title="" />);
 
-    it('passes h1 to the element prop of DisplayText', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
-      );
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText.prop('element')).toBe('h1');
-    });
-
-    it('renders a SkeletonDisplayText when the title is an empty string', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
-      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
-    });
-
-    it('passes large to the size prop of SkeletonDisplayText', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
-      const skeletonDisplayText = skeletonPage.find(SkeletonDisplayText);
-      expect(skeletonDisplayText.prop('size')).toBe('large');
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
+      expect(skeletonPage).toContainReactComponent('div', {
+        className: 'SkeletonTitle',
+      });
     });
   });
 
   it('renders the provided number of secondary actions as SkeletonBodyText', () => {
-    const skeletonPage = mountWithAppProvider(
-      <SkeletonPage secondaryActions={3} />,
-    );
-    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(3);
+    const skeletonPage = mountWithApp(<SkeletonPage secondaryActions={3} />);
+    expect(skeletonPage).toContainReactComponentTimes(SkeletonBodyText, 3);
   });
 
   it('renders breadcrumbs', () => {
-    const skeletonPage = mountWithAppProvider(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(1);
+    const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
+    expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
   });
 
   describe('primaryAction', () => {
     it('renders SkeletonDisplayText if true', () => {
-      const skeletonPage = mountWithAppProvider(
+      const skeletonPage = mountWithApp(
         <SkeletonPage title="Title" primaryAction />,
       );
-      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
-    });
-  });
-
-  describe('deprecations', () => {
-    it('warns the singleColumn prop has been renamed', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
-      mountWithAppProvider(<SkeletonPage title="title" singleColumn />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-      );
-      warningSpy.mockRestore();
+      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
     });
   });
 });

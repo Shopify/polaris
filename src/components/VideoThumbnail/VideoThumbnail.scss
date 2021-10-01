@@ -1,5 +1,6 @@
 @import '../../styles/common';
-$start-button-size: 60px;
+$start-button-size: rem(60px);
+$progress-bar-height: rem(6px);
 
 .Thumbnail {
   position: relative;
@@ -62,9 +63,36 @@ $start-button-size: 60px;
   padding: 0 spacing(extra-tight);
   margin-bottom: spacing(tight);
   margin-left: spacing(tight);
-  border-radius: var(--p-border-radius-base, border-radius());
-  color: var(--p-text, color('sky', 'lighter'));
-  background-color: var(--p-surface, color('ink'));
+  border-radius: var(--p-border-radius-base);
+  color: var(--p-text);
+  background-color: var(--p-surface);
   opacity: 0.8;
   text-align: center;
+}
+
+.withProgress {
+  margin-bottom: spacing(base-tight);
+}
+
+.Progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--p-surface);
+  height: $progress-bar-height;
+  overflow: hidden;
+}
+
+.Indicator {
+  height: inherit;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  background-color: var(--p-border-highlight);
+  transition: transform duration(slowest) easing();
+}
+
+.ProgressBar,
+.Label {
+  @include visually-hidden;
 }

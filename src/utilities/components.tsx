@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Children, isValidElement} from 'react';
 
 // Wraps `element` in `Component`, if it is not already an instance of
 // `Component`. If `props` is passed, those will be added as props on the
@@ -38,13 +38,17 @@ export function isElementOfType<P>(
 ): boolean {
   if (
     element == null ||
-    !React.isValidElement(element) ||
+    !isValidElement(element) ||
     typeof element.type === 'string'
   ) {
     return false;
   }
 
-  const {type} = element;
+  const {type: defaultType} = element;
+  // Type override allows components to bypass default wrapping behavior. Ex: Stack, ResourceList...
+  // See https://github.com/Shopify/app-extension-libs/issues/996#issuecomment-710437088
+  const overrideType = element.props?.__type__;
+  const type = overrideType || defaultType;
   const Components = Array.isArray(Component) ? Component : [Component];
 
   return Components.some(
@@ -54,12 +58,12 @@ export function isElementOfType<P>(
 
 // Returns all children that are valid elements as an array. Can optionally be
 // filtered by passing `predicate`.
-export function elementChildren<T extends React.ReactElement<{}>>(
+export function elementChildren<T extends React.ReactElement>(
   children: React.ReactNode,
   predicate: (element: T) => boolean = () => true,
 ): T[] {
-  return React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && predicate(child as T),
+  return Children.toArray(children).filter(
+    (child) => isValidElement(child) && predicate(child as T),
   ) as T[];
 }
 
@@ -94,9 +98,8 @@ function hotReloadComponentCheck(
   AnotherComponent: React.ComponentType<any>,
 ) {
   const componentName = AComponent.name;
-  const anotherComponentName = (AnotherComponent as React.StatelessComponent<
-    any
-  >).displayName;
+  const anotherComponentName = (AnotherComponent as React.StatelessComponent<any>)
+    .displayName;
 
   return (
     AComponent === AnotherComponent ||

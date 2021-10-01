@@ -1,11 +1,9 @@
-import React, {useContext} from 'react';
+import React, {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 import type {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -20,6 +18,7 @@ import {
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 
 import styles from './ResourceItem.scss';
 
@@ -54,6 +53,8 @@ interface BaseProps {
   children?: React.ReactNode;
   /** Adjust vertical alignment of elements */
   verticalAlignment?: Alignment;
+  /** Prefetched url attribute to bind to the main element being returned */
+  dataHref?: string;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -71,7 +72,6 @@ export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 interface PropsFromWrapper {
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -83,10 +83,12 @@ interface State {
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
-const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
-const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
+const getUniqueCheckboxID = globalIdGeneratorFactory(
+  'ResourceListItemCheckbox',
+);
+const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
 
-class BaseResourceItem extends React.Component<CombinedProps, State> {
+class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -107,7 +109,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
   private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
-  private buttonOverlay = React.createRef<HTMLButtonElement>();
+  private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
@@ -147,8 +149,8 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
-      features: {newDesignLanguage},
       verticalAlignment,
+      dataHref,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -157,9 +159,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     let handleMarkup: React.ReactNode = null;
 
     const mediaMarkup = media ? (
-      <div className={styles.Media} testID="Media">
-        {media}
-      </div>
+      <div className={styles.Media}>{media}</div>
     ) : null;
 
     if (selectable) {
@@ -167,15 +167,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div
-          className={styles.Handle}
-          onClick={this.handleLargerSelectionArea}
-          testID="LargerSelectionArea"
-        >
+        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <div onChange={this.handleLargerSelectionArea}>
               <Checkbox
-                testID="Checkbox"
                 id={this.checkboxId}
                 label={checkboxAccessibilityLabel}
                 labelHidden
@@ -190,7 +185,12 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <div className={styles.Owned}>
+        <div
+          className={classNames(
+            styles.Owned,
+            !mediaMarkup && styles.OwnedNoMedia,
+          )}
+        >
           {handleMarkup}
           {mediaMarkup}
         </div>
@@ -199,13 +199,17 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
-      newDesignLanguage && styles.newDesignLanguage,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
       selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
+    );
+
+    const listItemClassName = classNames(
+      styles.ListItem,
+      focused && !focusedInner && styles.focused,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -250,7 +254,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       } else {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <ButtonGroup segmented testID="ShortcutActions">
+            <ButtonGroup segmented>
               {buttonsFrom(shortcutActions, {
                 size: 'slim',
               })}
@@ -271,11 +275,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     );
 
     const containerMarkup = (
-      <div
-        testID="Item-Content"
-        className={containerClassName}
-        id={this.props.id}
-      >
+      <div className={containerClassName} id={this.props.id}>
         {ownedMarkup}
         {content}
         {actionsMarkup}
@@ -314,20 +314,23 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        ref={this.setNode}
-        className={className}
-        onClick={this.handleClick}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        onKeyUp={this.handleKeyUp}
-        onMouseOut={this.handleMouseOut}
-        testID="Item-Wrapper"
-        data-href={url}
-      >
-        {accessibleMarkup}
-        {containerMarkup}
-      </div>
+      <li className={listItemClassName} data-href={dataHref}>
+        <div className={styles.ItemWrapper}>
+          <div
+            ref={this.setNode}
+            className={className}
+            onClick={this.handleClick}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            onMouseOut={this.handleMouseOut}
+            data-href={url}
+          >
+            {accessibleMarkup}
+            {containerMarkup}
+          </div>
+        </div>
+      </li>
     );
   }
 
@@ -460,7 +463,6 @@ export function ResourceItem(props: ResourceItemProps) {
     <BaseResourceItem
       {...props}
       context={useContext(ResourceListContext)}
-      features={useFeatures()}
       i18n={useI18n()}
     />
   );

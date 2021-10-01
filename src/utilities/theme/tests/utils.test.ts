@@ -1,117 +1,10 @@
-import tokens from '@shopify/polaris-tokens';
+import {buildThemeContext, buildCustomProperties} from '../utils';
+import type {ProcessedThemeConfig, RoleColors} from '../types';
 
-import {needsVariantList} from '../config';
-import {
-  needsVariant,
-  setTextColor,
-  setBorderColor,
-  setTheme,
-  buildThemeContext,
-  buildCustomProperties,
-} from '../utils';
-import type {ColorScheme, RoleColors} from '../types';
-
-const DefaultColorScheme: ColorScheme = 'light';
-
-describe('setTextColor', () => {
-  it('sets a css variable to white if the variant is dark', () => {
-    const textColor = setTextColor('topBar', 'dark');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorWhite]);
-  });
-
-  it('sets a css variable to white if the variant has no value', () => {
-    const textColor = setTextColor('topBar');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorWhite]);
-  });
-
-  it('sets a css variable to ink if the variant is light', () => {
-    const textColor = setTextColor('topBar', 'light');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorInk]);
-  });
-});
-
-describe('setBorderColor', () => {
-  it('sets a css variable to sky dark if the variant is dark', () => {
-    const textColor = setBorderColor('topBar', 'dark');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
-  });
-
-  it('sets a css variable to sky dark if the variant has no value', () => {
-    const textColor = setBorderColor('topBar');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
-  });
-
-  it('sets a css variable to ink lighter if the variant is light', () => {
-    const textColor = setBorderColor('topBar', 'light');
-    expect(textColor).toStrictEqual(['topBar', tokens.colorInkLighter]);
-  });
-});
-
-describe('setTheme', () => {
-  it('returns a base theme', () => {
-    const theme = setTheme(
-      {hue: 184, saturation: 100, lightness: 28},
-      'topBar',
-      'background',
-      'dark',
-    );
-
-    expect(theme).toStrictEqual([
-      ['--top-bar-color', 'rgb(255, 255, 255)'],
-      ['--top-bar-border', 'rgb(196, 205, 213)'],
-      ['--top-bar-background-lighter', 'hsla(184, 85%, 43%, 1)'],
-    ]);
-  });
-});
-
-describe('needsVariant', () => {
-  it('will return false if the parameter is not on the list', () => {
-    const hasVariant = needsVariant('frame');
-    expect(hasVariant).toBe(needsVariantList.includes('frame'));
-  });
-
-  it('will return true if the parameter is on the list', () => {
-    const hasVariant = needsVariant('topBar');
-    expect(hasVariant).toBe(needsVariantList.includes('topBar'));
-  });
-});
+const DefaultColorScheme: ProcessedThemeConfig['colorScheme'] = 'light';
 
 describe('buildCustomProperties', () => {
-  const legacyCustomProperties = {
-    '--p-frame-offset': '0px',
-    '--top-bar-background': '#eeeeee',
-    '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
-    '--top-bar-border': 'rgb(99, 115, 129)',
-    '--top-bar-color': 'rgb(33, 43, 54)',
-  };
-
-  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toStrictEqual(legacyCustomProperties);
-    expect(colors).not.toStrictEqual(
-      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
-    );
-  });
-
-  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled without defaults', () => {
-    const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, false);
-    expect(colors).toStrictEqual(legacyCustomProperties);
-    expect(colors).not.toStrictEqual(
-      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
-    );
-  });
-
-  it('creates new custom properties when newDesignLanguage is enabled but ignores legacy colors', () => {
+  it('creates new custom properties', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -122,7 +15,7 @@ describe('buildCustomProperties', () => {
     expect(colors).not.toContain('--top-bar-background');
   });
 
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is false', () => {
+  it('creates default custom property of 0px for frameOffset when frameOffset is undefined', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -132,36 +25,15 @@ describe('buildCustomProperties', () => {
     expect(colors).toMatchObject({'--p-frame-offset': '0px'});
   });
 
-  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is true', () => {
+  it('creates custom property with value for frameOffset when frameOffset is provided', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, true);
-    expect(colors).toMatchObject({'--p-frame-offset': '0px'});
-  });
-
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is false', () => {
-    const theme = {
-      frameOffset: 60,
+      frameOffset: '60px',
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
     const colors = buildCustomProperties(theme, false);
     expect(colors).toMatchObject({'--p-frame-offset': '60px'});
-  });
-
-  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is true', () => {
-    const theme = {
-      frameOffset: 80,
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
-      colorScheme: DefaultColorScheme,
-    };
-
-    const colors = buildCustomProperties(theme, true);
-    expect(colors).toMatchObject({'--p-frame-offset': '80px'});
   });
 
   it('uses light adjustments by default', () => {
@@ -175,7 +47,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'rgba(250, 250, 250, 1)',
+        '--p-background': 'rgba(246, 246, 246, 1)',
       }),
     );
   });
@@ -209,12 +81,15 @@ describe('buildCustomProperties', () => {
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {
     expect(
-      buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
+      buildThemeContext(
+        {colors: {}, logo: {}, colorScheme: 'light'},
+        {foo: 'bar'},
+      ),
     ).toStrictEqual({
       logo: {},
       cssCustomProperties: 'foo:bar',
       colors: {},
-      colorScheme: undefined,
+      colorScheme: 'light',
     });
   });
 });

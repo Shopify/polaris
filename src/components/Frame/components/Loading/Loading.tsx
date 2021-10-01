@@ -1,79 +1,50 @@
-import React from 'react';
-import debounce from 'lodash/debounce';
+import React, {useEffect, useState} from 'react';
+
+import {useI18n} from '../../../../utilities/i18n';
+import {useIsMountedRef} from '../../../../utilities/use-is-mounted-ref';
 
 import styles from './Loading.scss';
 
-export interface LoadingProps {}
-
-interface State {
-  progress: number;
-  step: number;
-  animation: number | null;
-}
-
-const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export class Loading extends React.Component<LoadingProps, State> {
-  state: State = {
-    progress: 0,
-    step: INITIAL_STEP,
-    animation: null,
-  };
+export function Loading() {
+  const i18n = useI18n();
+  const isMountedRef = useIsMountedRef();
+  const [progress, setProgress] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
-  private ariaValuenow = debounce(() => {
-    const {progress} = this.state;
-    return Math.floor(progress / 10) * 10;
-  }, 15);
-
-  componentDidMount() {
-    this.increment();
-  }
-
-  componentWillUnmount() {
-    const {animation} = this.state;
-
-    if (animation != null) {
-      cancelAnimationFrame(animation);
-    }
-  }
-
-  render() {
-    const {progress} = this.state;
-
-    const customStyles = {
-      transform: `scaleX(${Math.floor(progress) / 100})`,
-    };
-
-    const ariaValuenow = this.ariaValuenow();
-
-    return (
-      <div className={styles.Loading}>
-        <div
-          className={styles.Level}
-          style={customStyles}
-          aria-valuenow={ariaValuenow}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          role="progressbar"
-        />
-      </div>
-    );
-  }
-
-  private increment() {
-    const {progress, step} = this.state;
-
-    if (progress >= STUCK_THRESHOLD) {
+  useEffect(() => {
+    if (progress >= STUCK_THRESHOLD || animating) {
       return;
     }
 
-    const animation = requestAnimationFrame(() => this.increment());
+    requestAnimationFrame(() => {
+      if (!isMountedRef.current) return;
 
-    this.setState({
-      progress: Math.min(progress + step, 100),
-      step: INITIAL_STEP ** -(progress / 25),
-      animation,
+      const step = Math.max((STUCK_THRESHOLD - progress) / 10, 1);
+      setAnimating(true);
+      setProgress(progress + step);
     });
-  }
+  }, [progress, animating, isMountedRef]);
+
+  const customStyles = {
+    transform: `scaleX(${Math.floor(progress) / 100})`,
+  };
+
+  return (
+    <div
+      className={styles.Loading}
+      aria-valuenow={progress}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      role="progressbar"
+      aria-label={i18n.translate('Polaris.Loading.label')}
+    >
+      <div
+        className={styles.Level}
+        style={customStyles}
+        onTransitionEnd={() => setAnimating(false)}
+      />
+    </div>
+  );
 }

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "exclude": ["./**/*.test.ts", "./**/*.test.tsx"],
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    "emitDeclarationOnly": false,
+    "module": "commonjs",
+    "outDir": "../../build-internal/custom-properties-partial-build"
+  },
+  "include": ["../../src/utilities/custom-properties"]
+}

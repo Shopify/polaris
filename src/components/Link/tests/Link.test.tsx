@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
 
@@ -10,116 +8,146 @@ import {Link} from '../Link';
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {
     const spy = jest.fn();
-    const link = mountWithAppProvider(<Link url="MyThing" onClick={spy} />);
-    link.find('a').simulate('click');
+    const link = mountWithApp(<Link url="MyThing" onClick={spy} />);
+    link.find('a')!.trigger('onClick');
     expect(spy).toHaveBeenCalled();
   });
 
   it('renders a button if no url is provided', () => {
-    const link = mountWithAppProvider(<Link />);
-    const button = link.find('button').first();
-    expect(button.exists()).toBe(true);
+    const link = mountWithApp(<Link />);
+    expect(link).toContainReactComponentTimes('button', 1);
   });
 
   it('renders an anchor if a url is provided', () => {
-    const link = mountWithAppProvider(<Link url="MyThing" />);
-    const anchor = link.find(UnstyledLink).first();
-    expect(anchor.exists()).toBe(true);
+    const link = mountWithApp(<Link url="MyThing" />);
+    expect(link).toContainReactComponentTimes('a', 1);
   });
 
   describe('id', () => {
     it('is passed down to an underlying button', () => {
       const id = 'MyID';
-      const link = mountWithAppProvider(<Link id={id} />);
-      expect(link.find('button').prop('id')).toBe(id);
+      const link = mountWithApp(<Link id={id} />);
+      expect(link).toContainReactComponent('button', {id});
     });
 
     it('is passed down to an underlying UnstyledLink', () => {
       const id = 'MyID';
-      const link = mountWithAppProvider(
-        <Link url="https://shopify.com" id={id} />,
-      );
-      expect(link.find(UnstyledLink).prop('id')).toBe(id);
+      const link = mountWithApp(<Link url="https://shopify.com" id={id} />);
+      expect(link).toContainReactComponent(UnstyledLink, {id});
     });
   });
 
   describe('external link', () => {
     it('has a trailing icon', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           Shopify Help Center
         </Link>,
       );
-      expect(link.children().last().find(Icon).exists()).toBe(true);
+      expect(link).toContainReactComponent(Icon);
     });
 
     it('informs screen readers that it opens in a new window', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           Shopify Help Center
         </Link>,
       );
       const hintText = en.Polaris.Common.newWindowAccessibilityHint;
-      expect(link.children().last().find(Icon).prop('accessibilityLabel')).toBe(
-        hintText,
-      );
+
+      expect(link).toContainReactComponent(Icon, {
+        accessibilityLabel: hintText,
+      });
     });
 
     it('doesn’t have a trailing icon for non-string children', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           <span>Shopify Help Center</span>
         </Link>,
       );
-      expect(link.find(Icon).exists()).toBe(false);
+      expect(link).not.toContainReactComponent(Icon);
     });
   });
 
   describe('monochrome link', () => {
     it('outputs a monochrome unstyled link if rendered within a banner', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Banner>
           <Link url="https://examp.le">Some content</Link>
         </Banner>,
-      ).find(UnstyledLink);
+      );
 
-      expect(link.hasClass('monochrome')).toBe(true);
+      expect(link).toContainReactComponent(UnstyledLink, {
+        className: expect.stringContaining('monochrome'),
+      });
     });
 
     it('does not output a monochrome unstyled link if it is not rendered within a banner', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://examp.le">Some content</Link>,
-      ).find(UnstyledLink);
+      );
 
-      expect(link.hasClass('monochrome')).toBe(false);
+      expect(link).not.toContainReactComponent(UnstyledLink, {
+        className: expect.stringContaining('monochrome'),
+      });
     });
 
     it('outputs a monochrome button if rendered within a banner', () => {
-      const button = mountWithAppProvider(
+      const button = mountWithApp(
         <Banner>
           <Link>Some content</Link>
         </Banner>,
-      ).find('button');
+      );
 
-      expect(button.hasClass('monochrome')).toBe(true);
+      expect(button).toContainReactComponent('button', {
+        className: expect.stringContaining('monochrome'),
+      });
     });
 
     it('does not output a monochrome button if it is not rendered within a banner', () => {
-      const button = mountWithAppProvider(<Link>Some content</Link>).find(
-        'button',
-      );
+      const button = mountWithApp(<Link>Some content</Link>);
 
-      expect(button.hasClass('monochrome')).toBe(false);
+      expect(button).not.toContainReactComponent('button', {
+        className: expect.stringContaining('monochrome'),
+      });
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
-      const link = mountWithApp(<Link url="MyThing" />, {
-        features: {newDesignLanguage: true},
+  describe('accessibilityLabel', () => {
+    it('passes prop to the button url is not provided', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+      const link = mountWithApp(
+        <Link accessibilityLabel={mockAccessibilityLabel} />,
+      );
+
+      expect(link).toContainReactComponent('button', {
+        'aria-label': mockAccessibilityLabel,
       });
-      expect(link).toContainReactComponent('a', {
-        className: 'Link newDesignLanguage',
+    });
+
+    it('passes the accessibilityLabel to UnstyledLink when url is present', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+
+      const link = mountWithApp(
+        <Link
+          url="https://shopify.com"
+          accessibilityLabel={mockAccessibilityLabel}
+        />,
+      );
+
+      expect(link).toContainReactComponent(UnstyledLink, {
+        'aria-label': mockAccessibilityLabel,
+      });
+    });
+  });
+
+  describe('removesUnderline', () => {
+    it('adds removeUnderline class to the link', () => {
+      const link = mountWithApp(<Link removeUnderline>Test</Link>);
+
+      expect(link).toContainReactComponent('button', {
+        className: expect.stringContaining('removeUnderline'),
       });
     });
   });

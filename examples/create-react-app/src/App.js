@@ -14,7 +14,7 @@ import {
 } from '@shopify/polaris';
 import {ImportMinor} from '@shopify/polaris-icons';
 
-export default function App() {
+export function App() {
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
   const [email, setEmail] = useState('');
@@ -29,12 +29,9 @@ export default function App() {
     [],
   );
 
-  const toggleConnection = useCallback(
-    () => {
-      setConnected(!connected);
-    },
-    [connected],
-  );
+  const toggleConnection = useCallback(() => {
+    setConnected(!connected);
+  }, [connected]);
 
   const breadcrumbs = [{content: 'Sample apps'}, {content: 'Create React App'}];
   const primaryAction = {content: 'New product'};
@@ -95,12 +92,14 @@ export default function App() {
                   label="First name"
                   placeholder="Tom"
                   onChange={handleFirstChange}
+                  autoComplete="given-name"
                 />
                 <TextField
                   value={last}
                   label="Last name"
                   placeholder="Ford"
                   onChange={handleLastChange}
+                  autoComplete="family-name"
                 />
               </FormLayout.Group>
 
@@ -109,6 +108,7 @@ export default function App() {
                 label="Email"
                 placeholder="example@email.com"
                 onChange={handleEmailChange}
+                autoComplete="email"
               />
 
               <ChoiceList

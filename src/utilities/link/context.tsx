@@ -1,7 +1,7 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {LinkLikeComponent} from './types';
 
-export const LinkContext = React.createContext<LinkLikeComponent | undefined>(
+export const LinkContext = createContext<LinkLikeComponent | undefined>(
   undefined,
 );

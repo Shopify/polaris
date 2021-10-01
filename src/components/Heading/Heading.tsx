@@ -12,8 +12,14 @@ export interface HeadingProps {
   element?: HeadingTagName;
   /** The content to display inside the heading */
   children?: React.ReactNode;
+  /** A unique identifier for the heading, used for reference in anchor links  */
+  id?: string;
 }
 
-export function Heading({element: Element = 'h2', children}: HeadingProps) {
-  return <Element className={styles.Heading}>{children}</Element>;
+export function Heading({element: Element = 'h2', children, id}: HeadingProps) {
+  return (
+    <Element className={styles.Heading} id={id}>
+      {children}
+    </Element>
+  );
 }

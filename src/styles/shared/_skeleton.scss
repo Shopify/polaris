@@ -23,6 +23,10 @@ $thumbnail-sizes: (
   animation: var(--polaris-animation-skeleton-shimmer)
     $skeleton-shimmer-duration linear infinite alternate;
   will-change: opacity;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
 
 @mixin skeleton-content {
@@ -36,7 +40,7 @@ $thumbnail-sizes: (
     bottom: 0;
     left: 0;
     display: block;
-    background-color: color('sky');
+    background-color: var(--p-surface-neutral);
     border-radius: border-radius();
 
     @media screen and (-ms-high-contrast: active) {
@@ -51,11 +55,6 @@ $thumbnail-sizes: (
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-}
-
-@mixin skeleton-page-header-has-secondary-actions {
-  padding-top: rem(24px);
-  margin-top: 0;
 }
 
 @mixin skeleton-page-header-layout {

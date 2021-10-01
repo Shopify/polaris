@@ -24,12 +24,6 @@ The contextual save bar component must be wrapped in the [frame](https://polaris
 
 ---
 
-## Use in an embedded application
-
-To use the contextual save bar component in an embedded application, you must use App Bridge (version 1.6.0 and up) directly. See the [documentation](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/contextualSaveBar) for more information.
-
----
-
 ## Best practices
 
 The contextual save bar component should:

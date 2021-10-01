@@ -1,9 +1,6 @@
-import {useEffect} from 'react';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
+import {useCallback, useEffect, useRef} from 'react';
 
+import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import type {Key} from '../../types';
 
 export interface KeypressListenerProps {
@@ -19,18 +16,25 @@ export function KeypressListener({
   handler,
   keyEvent = 'keyup',
 }: KeypressListenerProps) {
-  const handleKeyEvent = (event: KeyboardEvent) => {
+  const tracked = useRef({handler, keyCode});
+
+  useIsomorphicLayoutEffect(() => {
+    tracked.current = {handler, keyCode};
+  }, [handler, keyCode]);
+
+  const handleKeyEvent = useCallback((event: KeyboardEvent) => {
+    const {handler, keyCode} = tracked.current;
     if (event.keyCode === keyCode) {
       handler(event);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    addEventListener(document, keyEvent, handleKeyEvent);
+    document.addEventListener(keyEvent, handleKeyEvent);
     return () => {
-      removeEventListener(document, keyEvent, handleKeyEvent);
+      document.removeEventListener(keyEvent, handleKeyEvent);
     };
-  });
+  }, [keyEvent, handleKeyEvent]);
 
   return null;
 }

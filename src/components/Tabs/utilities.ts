@@ -26,7 +26,10 @@ export function getVisibleAndHiddenTabIndices(
       if (currentTabIndex !== selected) {
         const currentTabWidth = tabWidths[currentTabIndex];
 
-        if (tabListWidth + currentTabWidth > containerWidth - disclosureWidth) {
+        if (
+          tabListWidth + currentTabWidth >=
+          containerWidth - disclosureWidth
+        ) {
           hiddenTabs.push(currentTabIndex);
           return;
         }

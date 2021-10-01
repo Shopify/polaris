@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 
 import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
@@ -7,18 +7,18 @@ import {Stack} from '../../../Stack';
 import {Heading} from '../../../Heading';
 import styles from '../../Card.scss';
 
-export interface HeaderProps {
+export interface CardHeaderProps {
   title?: React.ReactNode;
   actions?: DisableableAction[];
   children?: React.ReactNode;
 }
 
-export function Header({children, title, actions}: HeaderProps) {
+export function Header({children, title, actions}: CardHeaderProps) {
   const actionMarkup = actions ? (
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;
 
-  const titleMarkup = React.isValidElement(title) ? (
+  const titleMarkup = isValidElement(title) ? (
     title
   ) : (
     <Heading>{title}</Heading>

@@ -1,43 +1,29 @@
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
+import {useToggle} from '../../../../../../utilities/use-toggle';
 import styles from '../../ConnectedFilterControl.scss';
 
 interface ItemProps {
   children?: React.ReactNode;
 }
 
-interface State {
-  focused: boolean;
-}
+export function Item({children}: ItemProps) {
+  const {
+    value: focused,
+    setTrue: forceTrueFocused,
+    setFalse: forceFalseFocused,
+  } = useToggle(false);
 
-export class Item extends React.PureComponent<ItemProps, State> {
-  state: State = {focused: false};
+  const className = classNames(styles.Item, focused && styles['Item-focused']);
 
-  render() {
-    const {focused} = this.state;
-    const {children} = this.props;
-    const className = classNames(
-      styles.Item,
-      focused && styles['Item-focused'],
-    );
-
-    return (
-      <div
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        className={className}
-      >
-        {children}
-      </div>
-    );
-  }
-
-  private handleBlur = () => {
-    this.setState({focused: false});
-  };
-
-  private handleFocus = () => {
-    this.setState({focused: true});
-  };
+  return (
+    <div
+      onBlur={forceFalseFocused}
+      onFocus={forceTrueFocused}
+      className={className}
+    >
+      {children}
+    </div>
+  );
 }

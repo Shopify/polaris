@@ -1,9 +1,7 @@
 import React from 'react';
 
 import {Scrollable} from '../Scrollable';
-import {classNames} from '../../utilities/css';
 import {useTheme} from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -18,6 +16,8 @@ export interface NavigationProps {
   children?: React.ReactNode;
   contextControl?: React.ReactNode;
   onDismiss?(): void;
+  /** id of the element used as aria-labelledby */
+  ariaLabelledBy?: string;
 }
 
 export const Navigation: React.FunctionComponent<NavigationProps> & {
@@ -28,39 +28,32 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   contextControl,
   location,
   onDismiss,
+  ariaLabelledBy,
 }: NavigationProps) {
   const {logo} = useTheme();
-  const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
 
-  const logoMarkup =
-    logo && newDesignLanguage ? (
-      <div className={styles.LogoContainer}>
-        <UnstyledLink
-          url={logo.url || ''}
-          className={styles.LogoLink}
+  const logoMarkup = logo ? (
+    <div className={styles.LogoContainer}>
+      <UnstyledLink
+        url={logo.url || ''}
+        className={styles.LogoLink}
+        style={{width}}
+      >
+        <Image
+          source={logo.topBarSource || ''}
+          alt={logo.accessibilityLabel || ''}
+          className={styles.Logo}
           style={{width}}
-        >
-          <Image
-            source={logo.topBarSource || ''}
-            alt={logo.accessibilityLabel || ''}
-            className={styles.Logo}
-            style={{width}}
-          />
-        </UnstyledLink>
-      </div>
-    ) : null;
+        />
+      </UnstyledLink>
+    </div>
+  ) : null;
 
   const mediaMarkup = contextControl ? (
     <div className={styles.ContextControl}>{contextControl}</div>
   ) : (
     logoMarkup
-  );
-
-  const className = classNames(
-    styles.Navigation,
-    !mediaMarkup && newDesignLanguage && styles['Navigation-noMedia'],
-    newDesignLanguage && styles['Navigation-newDesignLanguage'],
   );
 
   const context = {
@@ -71,7 +64,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
-        <nav className={className}>
+        <nav className={styles.Navigation} aria-labelledby={ariaLabelledBy}>
           {mediaMarkup}
           <Scrollable className={styles.PrimaryNavigation}>
             {children}

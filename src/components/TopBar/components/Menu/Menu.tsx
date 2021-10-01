@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ActionList, ActionListProps} from '../../../ActionList';
-import {Popover} from '../../../Popover';
+import {Popover, PopoverProps} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
@@ -19,10 +19,25 @@ export interface MenuProps {
   onOpen(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
+  /** A callback function to handle closing the menu popover */
+  onClose(): void;
+  /** Accepts a color scheme for the contents of the menu */
+  colorScheme?: PopoverProps['colorScheme'];
+  /** A string that provides the accessibility labeling */
+  accessibilityLabel?: string;
 }
 
 export function Menu(props: MenuProps) {
-  const {actions, onOpen, onClose, open, activatorContent, message} = props;
+  const {
+    actions,
+    onOpen,
+    onClose,
+    open,
+    activatorContent,
+    message,
+    colorScheme,
+    accessibilityLabel,
+  } = props;
 
   const badgeProps = message &&
     message.badge && {
@@ -48,7 +63,12 @@ export function Menu(props: MenuProps) {
     <Popover
       activator={
         <div className={styles.ActivatorWrapper}>
-          <button type="button" className={styles.Activator} onClick={onOpen}>
+          <button
+            type="button"
+            className={styles.Activator}
+            onClick={onOpen}
+            aria-label={accessibilityLabel}
+          >
             {activatorContent}
           </button>
         </div>
@@ -58,6 +78,7 @@ export function Menu(props: MenuProps) {
       fixed
       fullHeight={isFullHeight}
       preferredAlignment="right"
+      colorScheme={colorScheme}
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />
       {messageMarkup}

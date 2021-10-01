@@ -1,10 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 
-import {classNames} from '../../../../../../utilities/css';
 import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
-import {DisplayText} from '../../../../../DisplayText';
-import {useFeatures} from '../../../../../../utilities/features';
+import {classNames} from '../../../../../../utilities/css';
 
 import styles from './Title.scss';
 
@@ -13,33 +11,27 @@ export interface TitleProps {
   title?: string;
   /** Page subtitle, in regular type*/
   subtitle?: string;
-  /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
+  /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
   /** thumbnail that precedes the title */
   thumbnail?:
     | React.ReactElement<AvatarProps | ThumbnailProps>
     | React.SFC<React.SVGProps<SVGSVGElement>>;
+  /** Removes spacing between title and subtitle */
+  compactTitle?: boolean;
 }
 
-export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
-  const {newDesignLanguage} = useFeatures();
-  const titleMarkup = title ? (
-    <div className={styles.Title}>
-      <DisplayText size="large" element="h1">
-        {title}
-      </DisplayText>
-    </div>
-  ) : null;
+export function Title({
+  title,
+  subtitle,
+  titleMetadata,
+  thumbnail,
+  compactTitle,
+}: TitleProps) {
+  const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
-    <div
-      className={classNames(
-        styles.TitleMetadata,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      {titleMetadata}
-    </div>
+    <div className={styles.TitleMetadata}>{titleMetadata}</div>
   ) : null;
 
   const wrappedTitleMarkup = titleMetadata ? (
@@ -52,16 +44,19 @@ export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
   );
 
   const subtitleMarkup = subtitle ? (
-    <div className={styles.SubTitle}>
+    <div
+      className={classNames(
+        styles.SubTitle,
+        compactTitle && styles.SubtitleCompact,
+      )}
+    >
       <p>{subtitle}</p>
     </div>
   ) : null;
 
   const thumbnailMarkup = thumbnail ? <div>{thumbnail}</div> : null;
 
-  const pageTitleClassName = thumbnail
-    ? classNames(styles.hasThumbnail)
-    : undefined;
+  const pageTitleClassName = thumbnail ? styles.hasThumbnail : undefined;
 
   return (
     <div className={pageTitleClassName}>

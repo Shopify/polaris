@@ -6,6 +6,7 @@ import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
+type Color = 'highlight' | 'primary' | 'success' | 'critical';
 
 export interface ProgressBarProps {
   /**
@@ -18,14 +19,30 @@ export interface ProgressBarProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Color of progressbar
+   * @default 'highlight'
+   */
+  color?: Color;
+  /**
+   * Whether the fill animation is triggered
+   * @default 'true'
+   */
+  animated?: boolean;
 }
 
-export function ProgressBar({progress = 0, size = 'medium'}: ProgressBarProps) {
+export function ProgressBar({
+  progress = 0,
+  size = 'medium',
+  color = 'highlight',
+  animated = true,
+}: ProgressBarProps) {
   const i18n = useI18n();
 
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
+    color && styles[variationName('color', color)],
   );
 
   const warningMessage = i18n.translate(
@@ -39,7 +56,10 @@ export function ProgressBar({progress = 0, size = 'medium'}: ProgressBarProps) {
   return (
     <div className={className}>
       <progress className={styles.Progress} value={parsedProgress} max="100" />
-      <div className={styles.Indicator} style={{width: `${parsedProgress}%`}}>
+      <div
+        className={classNames(styles.Indicator, animated && styles.Animated)}
+        style={{width: `${parsedProgress}%`}}
+      >
         <span className={styles.Label}>{parsedProgress}%</span>
       </div>
     </div>

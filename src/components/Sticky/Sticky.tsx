@@ -1,14 +1,11 @@
-import React from 'react';
-import {getRectForNode} from '@shopify/javascript-utilities/geometry';
+import React, {Component} from 'react';
 
-import {
-  WithAppProviderProps,
-  withAppProvider,
-} from '../../utilities/with-app-provider';
+import {getRectForNode} from '../../utilities/geometry';
+import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {
   isSticky: boolean;
-  style: object;
+  style: Record<string, unknown>;
 }
 
 export type StickyProps = {
@@ -23,9 +20,11 @@ export type StickyProps = {
   | {children(isSticky: boolean): React.ReactNode}
 );
 
-type CombinedProps = StickyProps & WithAppProviderProps;
+type CombinedProps = StickyProps & {
+  stickyManager: ReturnType<typeof useStickyManager>;
+};
 
-class StickyInner extends React.Component<CombinedProps, State> {
+class StickyInner extends Component<CombinedProps, State> {
   state: State = {
     isSticky: false,
     style: {},
@@ -39,7 +38,7 @@ class StickyInner extends React.Component<CombinedProps, State> {
       boundingElement,
       offset = false,
       disableWhenStacked = false,
-      polaris: {stickyManager},
+      stickyManager,
     } = this.props;
 
     if (!this.stickyNode || !this.placeHolderNode) return;
@@ -55,7 +54,7 @@ class StickyInner extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    const {stickyManager} = this.props.polaris;
+    const {stickyManager} = this.props;
     if (!this.stickyNode) return;
     stickyManager.unregisterStickyItem(this.stickyNode);
   }
@@ -120,8 +119,14 @@ class StickyInner extends React.Component<CombinedProps, State> {
   };
 }
 
+// This should have a typeguard instead of using Function
+// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
 
-export const Sticky = withAppProvider<StickyProps>()(StickyInner);
+export function Sticky(props: StickyProps) {
+  const stickyManager = useStickyManager();
+
+  return <StickyInner {...props} stickyManager={stickyManager} />;
+}
