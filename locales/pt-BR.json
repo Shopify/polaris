@@ -233,9 +233,6 @@
     "SkeletonPage": {
       "loadingLabel": "Página carregando"
     },
-    "Spinner": {
-      "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Mais abas"
     },
@@ -244,7 +241,7 @@
     },
     "TextField": {
       "characterCount": "{count} caracteres",
-      "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
+      "characterCountWithMaxLength": "{count} de {limit} caracteres usados"
     },
     "TopBar": {
       "toggleMenuLabel": "Alternar menu",
