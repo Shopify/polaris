@@ -7,8 +7,9 @@ import React, {
   useCallback,
 } from 'react';
 import {ExternalMinor} from '@shopify/polaris-icons';
-import {Caption, TextStyle} from 'components';
 
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
