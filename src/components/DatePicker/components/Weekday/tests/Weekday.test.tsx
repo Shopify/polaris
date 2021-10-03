@@ -1,12 +1,11 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Weekday} from '../Weekday';
 
 describe('<Weekday />', () => {
   it('sets the text and label', () => {
-    const weekday = mountWithAppProvider(
+    const weekday = mountWithApp(
       <table>
         <thead>
           <tr>
@@ -15,7 +14,9 @@ describe('<Weekday />', () => {
         </thead>
       </table>,
     );
-    expect(weekday.text()).toBe('Su');
-    expect(weekday.find('th').prop('aria-label')).toBe('Sunday');
+    expect(weekday).toContainReactText('Su');
+    expect(weekday.find('th'))!.toHaveReactProps({
+      'aria-label': 'Sunday',
+    });
   });
 });

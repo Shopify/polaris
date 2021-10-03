@@ -148,7 +148,7 @@
     },
     "Pagination": {
       "previous": "Anterior",
-      "next": "Próximo",
+      "next": "Avançar",
       "pagination": "Paginação"
     },
     "ProgressBar": {

@@ -1,61 +1,76 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components/UnstyledLink';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
     it('uses a custom link component instead of an anchor', () => {
       const CustomLinkComponent = () => <div />;
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink external url="https://shopify.com" />,
         {link: CustomLinkComponent},
-      ).find(CustomLinkComponent);
-
-      expect(anchorElement).toHaveLength(1);
+      );
+      expect(anchorElement).toContainReactComponentTimes(
+        CustomLinkComponent,
+        1,
+      );
     });
 
     it('doesn’t have polaris prop', () => {
       const CustomLinkComponent = () => <div />;
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink external url="https://shopify.com" />,
         {link: CustomLinkComponent},
-      ).find(CustomLinkComponent);
+      );
 
-      expect(anchorElement.prop('polaris')).not.toBeDefined();
+      expect(anchorElement).toContainReactComponent(CustomLinkComponent, {
+        polaris: undefined,
+      });
     });
   });
 
   describe('external', () => {
     it('adds rel and target attributes', () => {
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink external url="https://shopify.com" />,
-      ).find('a');
-      expect(anchorElement.prop('target')).toBe('_blank');
-      expect(anchorElement.prop('rel')).toBe('noopener noreferrer');
+      );
+
+      expect(anchorElement).toContainReactComponent('a', {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      });
     });
   });
 
   describe('download', () => {
     it('adds true as a boolean attribute', () => {
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink download url="https://shopify.com" />,
-      ).find('a');
-      expect(anchorElement.prop('download')).toBe(true);
+      );
+
+      expect(anchorElement).toContainReactComponent('a', {
+        download: true,
+      });
     });
 
     it('adds the provided string', () => {
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink download="file.txt" url="https://shopify.com" />,
-      ).find('a');
-      expect(anchorElement.prop('download')).toBe('file.txt');
+      );
+
+      expect(anchorElement).toContainReactComponent('a', {
+        download: 'file.txt',
+      });
     });
 
     it('does not add the attribute when not set', () => {
-      const anchorElement = mountWithAppProvider(
+      const anchorElement = mountWithApp(
         <UnstyledLink url="https://shopify.com" />,
-      ).find('a');
-      expect(anchorElement.prop('download')).toBeFalsy();
+      );
+
+      expect(anchorElement).toContainReactComponent('a', {
+        download: undefined,
+      });
     });
   });
 });

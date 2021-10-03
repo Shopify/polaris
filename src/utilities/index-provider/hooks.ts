@@ -148,7 +148,7 @@ export function useBulkSelectionData({
 }
 
 export function useHandleBulkSelection({
-  onSelectionChange,
+  onSelectionChange = () => {},
 }: HandleBulkSelectionOptions) {
   const lastSelected = useRef<number | null>(null);
 

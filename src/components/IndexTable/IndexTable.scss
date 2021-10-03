@@ -2,7 +2,7 @@
 
 $index-table-stacking-order: (
   cell: 1,
-  sticky-cell: 30,
+  sticky-cell: 31,
   scroll-bar: 35,
   bulk-actions: 36,
   loading-panel: 37,
@@ -20,6 +20,7 @@ $small-checkbox-offset: rem(2px);
 .IndexTable {
   position: relative;
   overflow: hidden;
+  border-radius: inherit;
 }
 
 .LoadingContainer-enter {
@@ -66,7 +67,7 @@ $loading-panel-height: rem(53px);
     background: var(--p-surface-highlight-subdued);
     padding: spacing('tight');
     padding-bottom: spacing('extra-tight');
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: var(--p-border-radius-base);
   }
 }
 
@@ -103,12 +104,25 @@ $loading-panel-height: rem(53px);
       filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
     }
   }
+
+  &.Table-unselectable {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    .TableHeading-second,
+    .TableCell:first-child {
+      visibility: visible;
+      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+    }
+  }
 }
 
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
   filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
+
+  &.TableRow-unclickable {
+    cursor: auto;
+  }
 
   &.statusSuccess {
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
@@ -133,7 +147,7 @@ $loading-panel-height: rem(53px);
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-hovered);
     }
   }
 
@@ -145,6 +159,16 @@ $loading-panel-height: rem(53px);
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-surface-selected);
+    }
+  }
+
+  // stylelint-disable-next-line selector-max-class
+  &.TableRow-hovered.TableRow-selected {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-surface-selected-hovered);
     }
   }
 }
@@ -172,22 +196,27 @@ $loading-panel-height: rem(53px);
   display: flex;
 }
 
-.StickyColumnHeaderCheckbox {
+.FirstStickyHeaderElement {
   margin-left: #{-1 * $small-checkbox-offset};
   padding-right: $small-checkbox-offset;
 }
 
 .TableHeading-second {
-  padding-left: 0;
+  &:not(.TableHeading-unselectable) {
+    padding-left: 0;
 
-  @include breakpoint-after($breakpoint-small) {
-    position: sticky;
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      z-index: auto;
+      left: 0;
+    }
   }
-}
 
-.TableHeading-last {
-  position: sticky;
-  right: 0;
+  &.TableHeading-unselectable {
+    position: sticky;
+    z-index: auto;
+    left: 0;
+  }
 }
 
 .TableCell {
@@ -216,6 +245,90 @@ $loading-panel-height: rem(53px);
     position: sticky;
     z-index: z-index(sticky-cell, $index-table-stacking-order);
     padding: 0;
+  }
+}
+
+.Table-unselectable {
+  .TableCell:first-child {
+    left: 0;
+    background-color: var(--p-surface);
+    position: sticky;
+    z-index: z-index(sticky-cell, $index-table-stacking-order);
+  }
+
+  .statusSuccess {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-primary-selected);
+    }
+  }
+
+  .statusSubdued {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-subdued);
+    }
+  }
+
+  .TableRow-hovered {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    .TableCell:first-child {
+      background-color: var(--p-surface-hovered);
+    }
+  }
+}
+
+.Table-sticky-scrolling {
+  .TableCell:last-child,
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+    }
+  }
+}
+
+.Table-sticky-last {
+  .TableCell:last-child {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: z-index(sticky-cell, $index-table-stacking-order);
+    }
+  }
+
+  .TableHeading-last {
+    @include breakpoint-after($breakpoint-small) {
+      position: sticky;
+      right: 0;
+      background-color: var(--p-surface);
+      z-index: auto;
+    }
+  }
+
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+  .statusSuccess {
+    .TableCell:last-child {
+      background-color: var(--p-surface-primary-selected);
+    }
+  }
+
+  .statusSubdued {
+    .TableCell:last-child {
+      background-color: var(--p-surface-subdued);
+    }
+  }
+
+  .TableRow-hovered {
+    .TableCell:last-child {
+      background-color: var(--p-surface-hovered);
+    }
+  }
+
+  .TableRow-selected {
+    .TableCell:last-child {
+      background-color: var(--p-surface-selected);
+    }
   }
 }
 
@@ -258,6 +371,10 @@ $loading-panel-height: rem(53px);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
+    display: none;
+  }
+
+  &.unselectable {
     display: none;
   }
 }
@@ -312,8 +429,8 @@ $scroll-bar-border-radius: rem(4px);
   padding: rem(2px);
   border-top: border('divider');
   background-color: var(--p-surface);
-  border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-base);
+  border-bottom-left-radius: var(--p-border-radius-base);
 }
 
 .scrollBarContainerCondensed {
@@ -370,6 +487,7 @@ $scroll-bar-border-radius: rem(4px);
   display: flex;
   border-top: border('divider');
   filter: none;
+  align-items: center;
 }
 
 [data-selectmode='true'] {
@@ -393,6 +511,11 @@ $scroll-bar-border-radius: rem(4px);
   min-height: 5.6rem;
   padding: 1rem spacing();
   background-color: var(--p-surface);
+
+  &.unselectable {
+    min-height: auto;
+    padding: 0;
+  }
 }
 
 .StickyTable-condensed {

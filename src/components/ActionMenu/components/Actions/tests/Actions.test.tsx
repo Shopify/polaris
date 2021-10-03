@@ -1,9 +1,7 @@
 import React, {useCallback, useState} from 'react';
-import {ActionMenuProps, ActionMenu} from 'index';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
+import {ActionMenuProps, ActionMenu} from '../../..';
 import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 
 describe('<Actions />', () => {
@@ -18,13 +16,13 @@ describe('<Actions />', () => {
   ];
 
   it('renders as <RollupActions /> `items` when `rollup` is `true`', () => {
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <ActionMenu {...mockProps} actions={mockActions} rollup />,
     );
 
-    expect(wrapper.find(RollupActions).prop('items')).toStrictEqual(
-      mockActions,
-    );
+    expect(wrapper).toContainReactComponent(RollupActions, {
+      items: mockActions,
+    });
   });
 
   describe('Actions', () => {

@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Key} from '../../../../../types';
@@ -17,24 +15,19 @@ describe('<Checkbox />', () => {
   };
 
   it('sets pass through props for input', () => {
-    const input = mountWithAppProvider(<Checkbox {...defaultProps} />).find(
-      'input',
-    );
-    const {checked, disabled, id, name, value} = defaultProps;
+    const input = mountWithApp(<Checkbox {...defaultProps} />);
 
-    expect(input.prop('checked')).toBe(checked);
-    expect(input.prop('disabled')).toBe(disabled);
-    expect(input.prop('id')).toBe(id);
-    expect(input.prop('name')).toBe(name);
-    expect(input.prop('value')).toBe(value);
+    expect(input).toContainReactComponent('input', defaultProps);
   });
 
   it('calls onChange', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(<Checkbox {...defaultProps} onChange={spy} />)
-      .find('input')
-      .simulate('change');
+    const input = mountWithApp(
+      <Checkbox {...defaultProps} onChange={spy} />,
+    ).find('input');
+
+    input!.trigger('onChange');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -73,6 +66,7 @@ describe('<Checkbox />', () => {
       checkboxInput!.trigger('onChange', {
         currentTarget: checkboxInput!.domNode as HTMLInputElement,
       });
+
       expect(checkbox).not.toContainReactComponent('input', {
         className: 'Input keyFocused',
       });

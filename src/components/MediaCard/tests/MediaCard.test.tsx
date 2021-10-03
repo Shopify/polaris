@@ -1,8 +1,6 @@
 import React from 'react';
 import {Heading, Popover, Button, ActionList, Badge} from 'components';
 import {mountWithApp} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {MediaCard} from '../MediaCard';
 
@@ -33,14 +31,12 @@ describe('<MediaCard>', () => {
         <Badge>{badgeString}</Badge>
       </h2>
     );
-    const videoCard = mountWithAppProvider(
-      <MediaCard {...mockProps} title={title} />,
-    );
+    const videoCard = mountWithApp(<MediaCard {...mockProps} title={title} />);
 
-    const headerMarkup = videoCard.find('h2');
+    const headerMarkup = videoCard.find('h2')!;
 
-    expect(headerMarkup.text()).toContain(titleString);
-    expect(headerMarkup.find('Badge').text()).toBe(badgeString);
+    expect(headerMarkup.find(Badge)).toContainReactText(badgeString);
+    expect(headerMarkup).toContainReactText(titleString);
   });
 
   it('renders the description as a paragraph', () => {

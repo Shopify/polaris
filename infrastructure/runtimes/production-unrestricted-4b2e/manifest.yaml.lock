@@ -74,10 +74,6 @@ spec:
           value: /ssl/kafka-client/tls.crt
         - name: KAFKA_CLIENT_KEY
           value: /ssl/kafka-client/tls.key
-        - name: KAFKA_CLOUD_AGGREGATE_CLIENT_CERT
-          value: /ssl/kafka-client/tls.crt
-        - name: KAFKA_CLOUD_AGGREGATE_CLIENT_KEY
-          value: /ssl/kafka-client/tls.key
         - name: KAFKA_AGGREGATE_BROKERS
           valueFrom:
             configMapKeyRef:
@@ -141,28 +137,6 @@ spec:
       maxUnavailable: 25%
   progressDeadlineSeconds: 120
 ---
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Certificate
-metadata:
-  name: web
-  labels:
-    env: production
-    app: polaris-react
-    runtime-component: web
-spec:
-  acme:
-    config:
-    - domains:
-      - polaris-react.shopifycloud.com
-      http01:
-        ingressClass: nginx
-  dnsNames:
-  - polaris-react.shopifycloud.com
-  issuerRef:
-    name: letsencrypt-issuer
-    kind: ClusterIssuer
-  secretName: polaris-react-shopifycloud-com
----
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -189,6 +163,19 @@ spec:
   - hosts:
     - polaris-react.shopifycloud.com
     secretName: polaris-react-shopifycloud-com
+---
+apiVersion: stable.shopify.io/v1
+kind: Certificate
+metadata:
+  name: web
+  labels:
+    env: production
+    app: polaris-react
+    runtime-component: web
+spec:
+  dnsNames:
+  - polaris-react.shopifycloud.com
+  secretName: polaris-react-shopifycloud-com
 ---
 apiVersion: v1
 kind: Service

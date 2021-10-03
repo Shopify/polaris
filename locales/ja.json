@@ -5,7 +5,8 @@
       "labelWithInitials": "頭文字が{initials}のアバター"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "読み込んでいます"
+      "spinnerAccessibilityLabel": "読み込んでいます",
+      "ellipsis": "{content}..."
     },
     "Badge": {
       "PROGRESS_LABELS": {

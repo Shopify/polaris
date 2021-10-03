@@ -66,7 +66,7 @@ Include the CSS in your HTML. We suggest copying the styles file into your own p
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@7.0.0/build/esm/styles.css"
 />
 ```
 
@@ -100,7 +100,7 @@ Include the CSS stylesheet in your HTML. We suggest copying the styles file into
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@7.0.0/build/esm/styles.css"
 />
 ```
 

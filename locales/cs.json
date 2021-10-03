@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar s iniciály {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Načítání"
+      "spinnerAccessibilityLabel": "Načítání",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

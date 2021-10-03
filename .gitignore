@@ -1,8 +1,15 @@
 *.log
 node_modules
+/.loom
 /build
-/dist
+/build-internal
 .DS_Store
 *.scss.d.ts
 /src/styles/polaris-tokens
+.idea
+
+index.esnext
+index.js
+index.mjs
+
 .npmrc

@@ -5,7 +5,8 @@
       "labelWithInitials": "姓名首字母為 {initials} 的大頭貼"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "載入中"
+      "spinnerAccessibilityLabel": "載入中",
+      "ellipsis": "{content}……"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -257,7 +258,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "撥放影片",
+        "default": "播放影片",
         "defaultWithDuration": "播放長度為 {duration} 的影片",
         "duration": {
           "hours": {

@@ -1,6 +1,5 @@
-import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import React, {useRef} from 'react';
+import {mountWithApp} from 'test-utilities';
 
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
@@ -17,10 +16,42 @@ describe('<PositionedOverlay />', () => {
 
   describe('render', () => {
     it('renders the provided children', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-      expect(positionedOverlay.text()).toBe('overlay content');
+      expect(positionedOverlay).toContainReactText('overlay content');
+    });
+  });
+
+  describe('mutation observer', () => {
+    let mutationObserverObserveSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+    });
+
+    it('observers the activator', () => {
+      const activator = document.createElement('button');
+      mountWithApp(
+        <PositionedOverlay
+          {...mockProps}
+          activator={activator}
+          preferredPosition="above"
+        />,
+      );
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledWith(activator, {
+        characterData: true,
+        childList: true,
+        subtree: true,
+      });
     });
   });
 
@@ -45,7 +76,7 @@ describe('<PositionedOverlay />', () => {
 
     it('positions above if preferredPosition is given', () => {
       const spy = jest.fn();
-      mountWithAppProvider(
+      mountWithApp(
         <PositionedOverlay
           {...mockProps}
           preferredPosition="above"
@@ -64,7 +95,7 @@ describe('<PositionedOverlay />', () => {
 
     it('positions below if no preferredPosition is given', () => {
       const spy = jest.fn();
-      mountWithAppProvider(<PositionedOverlay {...mockProps} render={spy} />);
+      mountWithApp(<PositionedOverlay {...mockProps} render={spy} />);
 
       expect(spy).toHaveBeenCalledWith({
         activatorRect: {height: 0, left: 0, top: 0, width: 0},
@@ -78,96 +109,98 @@ describe('<PositionedOverlay />', () => {
 
   describe('preferredAlignment', () => {
     it('aligns left if preferredAlignment is given', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} preferredAlignment="left" />,
       );
 
-      expect((positionedOverlay.find('div').prop('style') as any).left).toBe(0);
-      expect(
-        (positionedOverlay.find('div').prop('style') as any).right,
-      ).toBeUndefined();
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({left: 0, right: undefined}),
+      });
     });
 
     it('aligns right if preferredAlignment is given', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} preferredAlignment="right" />,
       );
 
-      expect((positionedOverlay.find('div').prop('style') as any).right).toBe(
-        0,
-      );
-      expect(
-        (positionedOverlay.find('div').prop('style') as any).left,
-      ).toBeUndefined();
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({left: undefined, right: 0}),
+      });
     });
   });
 
   describe('fullWidth', () => {
     it('is set to full width if fullWidth is true', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} fullWidth />,
       );
 
-      expect((positionedOverlay.find('div').prop('style') as any).width).toBe(
-        0,
-      );
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({width: 0}),
+      });
     });
   });
 
   describe('zIndex', () => {
     it('is undefined if no state or prop override exist', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-      expect(
-        (positionedOverlay.find('div').prop('style') as any).zIndex,
-      ).toBeUndefined();
+
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({zIndex: undefined}),
+      });
     });
 
     it('is set to state calculated value if no override prop is given', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-      positionedOverlay.setState({zIndex: 200});
-      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
-        200,
-      );
+      positionedOverlay.instance.setState({zIndex: 200});
+
+      positionedOverlay.forceUpdate();
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({zIndex: 200}),
+      });
     });
 
     it('is set to value of zIndexOverride prop if given', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} zIndexOverride={100} />,
       );
-      positionedOverlay.setState({zIndex: 200});
-      expect((positionedOverlay.find('div').prop('style') as any).zIndex).toBe(
-        100,
-      );
+      positionedOverlay.instance.setState({zIndex: 200});
+
+      positionedOverlay.forceUpdate();
+      expect(positionedOverlay).toContainReactComponent('div', {
+        style: expect.objectContaining({zIndex: 100}),
+      });
     });
   });
 
   describe('preventInteraction', () => {
     it('passes preventInteraction to PositionedOverlay when preventInteraction is true', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} preventInteraction />,
       );
-      expect(positionedOverlay.find('div').prop('className')).toContain(
-        styles.preventInteraction,
-      );
+      expect(positionedOverlay).toContainReactComponent('div', {
+        className: expect.stringContaining(styles.preventInteraction),
+      });
     });
 
     it('does not pass preventInteraction to PositionedOverlay by default', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-      expect(positionedOverlay.find('div').prop('className')).not.toContain(
-        styles.preventInteraction,
-      );
+
+      expect(positionedOverlay).not.toContainReactComponent('div', {
+        className: expect.stringContaining(styles.preventInteraction),
+      });
     });
   });
 
   describe('lifecycle', () => {
     it('updates safely', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} fixed />,
       );
 
@@ -177,7 +210,7 @@ describe('<PositionedOverlay />', () => {
     });
 
     it('unmounts safely', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
 
@@ -189,13 +222,12 @@ describe('<PositionedOverlay />', () => {
 
   describe('<EventListener />', () => {
     it('sets an event listener for resize', () => {
-      const positionedOverlay = mountWithAppProvider(
+      const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-      expect(positionedOverlay.find(EventListener).exists()).toBe(true);
-      expect(positionedOverlay.find(EventListener).prop('event')).toBe(
-        'resize',
-      );
+      expect(positionedOverlay).toContainReactComponent(EventListener, {
+        event: 'resize',
+      });
     });
   });
 
@@ -211,7 +243,7 @@ describe('<PositionedOverlay />', () => {
       const input = document.createElement('input');
       activator.appendChild(input);
 
-      mountWithAppProvider(
+      mountWithApp(
         <PositionedOverlay
           {...mockProps}
           preferInputActivator
@@ -230,7 +262,7 @@ describe('<PositionedOverlay />', () => {
       const input = document.createElement('input');
       activator.appendChild(input);
 
-      mountWithAppProvider(
+      mountWithApp(
         <PositionedOverlay
           {...mockProps}
           preferInputActivator={false}
@@ -241,6 +273,22 @@ describe('<PositionedOverlay />', () => {
       expect(
         getRectForNodeSpy.mock.calls.some(([node]) => node === input),
       ).toBe(false);
+    });
+  });
+
+  describe('forceUpdatePosition', () => {
+    it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
+      let overlayRef = null;
+
+      function Test() {
+        overlayRef = useRef(null);
+
+        return <PositionedOverlay ref={overlayRef} {...mockProps} />;
+      }
+
+      mountWithApp(<Test />);
+
+      expect(overlayRef).toHaveProperty('current.forceUpdatePosition');
     });
   });
 });

@@ -1,7 +1,6 @@
 import React from 'react';
 import {CirclePlusMinor, NoteMinor} from '@shopify/polaris-icons';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Icon} from 'components';
 
 import {ExceptionList} from '../ExceptionList';
@@ -9,7 +8,7 @@ import {Truncate} from '../../Truncate';
 
 describe('<ExceptionList />', () => {
   it('renders its items', () => {
-    const exceptionList = mountWithAppProvider(
+    const exceptionList = mountWithApp(
       <ExceptionList
         items={[
           {
@@ -24,11 +23,11 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find('li')).toHaveLength(2);
+    expect(exceptionList).toContainReactComponentTimes('li', 2);
   });
 
   it('renders its items icon as an <Icon />', () => {
-    const exceptionList = mountWithAppProvider(
+    const exceptionList = mountWithApp(
       <ExceptionList
         items={[
           {
@@ -39,11 +38,12 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find(Icon)).toHaveLength(1);
+
+    expect(exceptionList).toContainReactComponent(Icon);
   });
 
   it('renders an item without an icon', () => {
-    const exceptionList = mountWithAppProvider(
+    const exceptionList = mountWithApp(
       <ExceptionList
         items={[
           {
@@ -53,11 +53,12 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find(Icon)).toHaveLength(0);
+
+    expect(exceptionList).not.toContainReactComponent(Icon);
   });
 
   it('renders an item with a truncate', () => {
-    const exceptionList = mountWithAppProvider(
+    const exceptionList = mountWithApp(
       <ExceptionList
         items={[
           {
@@ -67,11 +68,12 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find(Truncate)).toHaveLength(1);
+
+    expect(exceptionList).toContainReactComponent(Truncate);
   });
 
   it('renders an item with a title', () => {
-    const exceptionList = mountWithAppProvider(
+    const exceptionList = mountWithApp(
       <ExceptionList
         items={[
           {
@@ -80,6 +82,6 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.text()).toBe('Favorite customer');
+    expect(exceptionList).toContainReactText('Favorite customer');
   });
 });

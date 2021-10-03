@@ -1,9 +1,8 @@
 import React from 'react';
 import {Popover, Button} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
+import styles from '../ConnectedFilterControl.scss';
 import {
   ConnectedFilterControl,
   ConnectedFilterControlProps,
@@ -40,7 +39,7 @@ const mockRightAction = <Button onClick={noop}>Right Action</Button>;
 describe('<ConnectedFilterControl />', () => {
   it('mounts', () => {
     expect(() => {
-      mountWithAppProvider(
+      mountWithApp(
         <ConnectedFilterControl>
           <MockChild />
         </ConnectedFilterControl>,
@@ -49,27 +48,27 @@ describe('<ConnectedFilterControl />', () => {
   });
 
   it('does not render buttons without right actions or right popoverable actions', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl>
         <MockChild />
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button).exists()).toBe(false);
+    expect(connectedFilterControl).not.toContainReactComponent(Button);
   });
 
   it('does not render popovers without right popoverable actions', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl>
         <MockChild />
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Popover).exists()).toBe(false);
+    expect(connectedFilterControl).not.toContainReactComponent(Popover);
   });
 
   it('always render a RightAction if forceShowMorefiltersButton is true', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightAction={mockRightAction}
         forceShowMorefiltersButton
@@ -78,11 +77,11 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button).exists()).toBe(true);
+    expect(connectedFilterControl).toContainReactComponent(Button);
   });
 
   it('renders a RightAction if forceShowMorefiltersButton is false and rightPopoverableActions do not fit on the "right action" container', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightAction={mockRightAction}
         rightPopoverableActions={[mockRightOpenPopoverableAction]}
@@ -92,11 +91,11 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button).exists()).toBe(true);
+    expect(connectedFilterControl).toContainReactComponent(Button);
   });
 
   it('does not render a RightAction there are no actions hidden', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightAction={mockRightAction}
         forceShowMorefiltersButton={false}
@@ -105,7 +104,7 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button).exists()).toBe(false);
+    expect(connectedFilterControl).not.toContainReactComponent(Button);
   });
 
   it('renders rightActionMarkup if rightAction is not null', () => {
@@ -139,7 +138,7 @@ describe('<ConnectedFilterControl />', () => {
   });
 
   it('does render a button with a popoverable action', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightPopoverableActions={[mockRightOpenPopoverableAction]}
       >
@@ -147,11 +146,11 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button)).toHaveLength(1);
+    expect(connectedFilterControl).toContainReactComponentTimes(Button, 1);
   });
 
   it('renders three buttons with two popoverable actions and a right action', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightPopoverableActions={[
           mockRightOpenPopoverableAction,
@@ -163,11 +162,11 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(Button)).toHaveLength(3);
+    expect(connectedFilterControl).toContainReactComponentTimes(Button, 3);
   });
 
   it('hides an action if it does not fit', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightPopoverableActions={[
           mockRightOpenPopoverableAction,
@@ -179,19 +178,25 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    connectedFilterControl.setState({availableWidth: 100});
+    connectedFilterControl.instance.setState({availableWidth: 100});
 
-    expect(findActions(connectedFilterControl)).toHaveLength(2);
+    connectedFilterControl.forceUpdate();
+
+    const wrapper = connectedFilterControl.find('div', {
+      className: styles.Wrapper,
+    })!;
+
+    expect(wrapper).toContainReactComponentTimes(Button, 2);
   });
 
   it('renders auxiliary content', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl auxiliary={<MockAux />}>
         <MockChild />
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find(MockAux).exists()).toBe(true);
+    expect(connectedFilterControl).toContainReactComponent(MockAux);
   });
 
   it('only disables activators of inactive rightPopoverableActions', () => {
@@ -234,27 +239,26 @@ describe('<ConnectedFilterControl />', () => {
   });
 
   it('does not render CenterContainer when no child element is "null"', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl>{null}</ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(0);
+    expect(connectedFilterControl).not.toContainReactComponent('div', {
+      className: expect.stringContaining('CenterContainer'),
+    });
   });
 
   it('renders CenterContainer when no child element is not "null"', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl>
         <MockChild />
       </ConnectedFilterControl>,
     );
 
-    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(1);
+    expect(connectedFilterControl).toContainReactComponentTimes('div', 1, {
+      className: expect.stringContaining('CenterContainer'),
+    });
   });
 });
 
 function noop() {}
-
-function findActions(wrapper: ReactWrapper) {
-  // this omits the invisible proxy actions used for measuring width
-  return wrapper.find('.Wrapper Button');
-}

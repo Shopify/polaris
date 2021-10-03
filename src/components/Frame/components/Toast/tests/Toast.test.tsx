@@ -1,11 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  trigger,
-  findByTestID,
-} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Button} from '../../../../Button';
 import {Toast, ToastProps} from '../Toast';
@@ -29,21 +24,23 @@ describe('<Toast />', () => {
     timer.restore();
   });
 
-  const message = mountWithAppProvider(<Toast {...mockProps} />);
-
   it('renders its content', () => {
-    const message = mountWithAppProvider(<Toast {...mockProps} />);
-    expect(message.text()).toStrictEqual('Image uploaded');
+    const message = mountWithApp(<Toast {...mockProps} />);
+    expect(message).toContainReactText('Image uploaded');
   });
 
   it('renders an error Toast when error is true', () => {
-    const message = mountWithAppProvider(<Toast {...mockProps} error />);
-    expect(message.find('.Toast').hasClass('error')).toBe(true);
+    const message = mountWithApp(<Toast {...mockProps} error />);
+
+    expect(message).toContainReactComponent('div', {
+      className: 'Toast error',
+    });
   });
 
   describe('dismiss button', () => {
     it('renders by default', () => {
-      expect(message.find('button')).toHaveLength(1);
+      const message = mountWithApp(<Toast {...mockProps} />);
+      expect(message).toContainReactComponent('button');
     });
   });
 
@@ -54,26 +51,28 @@ describe('<Toast />', () => {
     };
 
     it('does not render when not defined', () => {
-      const message = mountWithAppProvider(<Toast {...mockProps} />);
-      expect(message.find(Button)).toHaveLength(0);
+      const message = mountWithApp(<Toast {...mockProps} />);
+      expect(message).not.toContainReactComponent(Button);
     });
 
     it('passes content as button text', () => {
-      const message = mountWithAppProvider(
+      const message = mountWithApp(
         <Toast {...mockProps} action={mockAction} />,
       );
 
-      expect(message.find(Button).text()).toContain(mockAction.content);
+      expect(message).toContainReactComponent(Button, {
+        children: mockAction.content,
+      });
     });
 
     it('triggers onAction when button is clicked', () => {
       const spy = jest.fn();
       const mockActionWithSpy = {...mockAction, onAction: spy};
-      const message = mountWithAppProvider(
+      const message = mountWithApp(
         <Toast {...mockProps} action={mockActionWithSpy} />,
       );
 
-      trigger(message.find(Button), 'onClick');
+      message.find(Button)?.trigger('onClick');
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -82,7 +81,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       const mockActionWithSpy = {...mockAction, onAction: spy};
 
-      mountWithAppProvider(
+      mountWithApp(
         <Toast
           content="Image uploaded"
           onDismiss={spy}
@@ -100,7 +99,7 @@ describe('<Toast />', () => {
     it('warns that a duration of 10000ms is recommended with action if duration is lower than 10000', () => {
       const logSpy = jest.spyOn(console, 'log');
       logSpy.mockImplementation(() => {});
-      mountWithAppProvider(
+      mountWithApp(
         <Toast {...mockProps} action={mockAction} duration={9000} />,
       );
 
@@ -114,11 +113,11 @@ describe('<Toast />', () => {
   describe('onDismiss()', () => {
     it('is called when the dismiss button is pressed', () => {
       const spy = jest.fn();
-      const message = mountWithAppProvider(
+      const message = mountWithApp(
         <Toast content="Image uploaded" onDismiss={spy} />,
       );
 
-      findByTestID(message, 'closeButton').simulate('click');
+      message.find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });
 
@@ -148,9 +147,7 @@ describe('<Toast />', () => {
 
       it('is called when the escape key is pressed', () => {
         const spy = jest.fn();
-        mountWithAppProvider(
-          <Toast content="Image uploaded" onDismiss={spy} />,
-        );
+        mountWithApp(<Toast content="Image uploaded" onDismiss={spy} />);
 
         listenerMap.keyup({keyCode: Key.Escape});
 
@@ -162,7 +159,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       const duration = 1000;
 
-      mountWithAppProvider(
+      mountWithApp(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );
       expect(spy).not.toHaveBeenCalled();
@@ -174,7 +171,7 @@ describe('<Toast />', () => {
     it('is called after the default duration is reached and no duration was provided', () => {
       const spy = jest.fn();
 
-      mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
+      mountWithApp(<Toast content="Image uploaded" onDismiss={spy} />);
       expect(spy).not.toHaveBeenCalled();
 
       const defaultDuration = 5000;
@@ -186,7 +183,7 @@ describe('<Toast />', () => {
     it('is not called if the component unmounts before the duration is reached', () => {
       const spy = jest.fn();
       const duration = 1000;
-      const toast = mountWithAppProvider(
+      const toast = mountWithApp(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );
       toast.unmount();

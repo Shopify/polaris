@@ -8,10 +8,11 @@ export interface AnnotatedSectionProps {
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  id?: string;
 }
 
 export function AnnotatedSection(props: AnnotatedSectionProps) {
-  const {children, title, description} = props;
+  const {children, title, description, id} = props;
 
   const descriptionMarkup =
     typeof description === 'string' ? <p>{description}</p> : description;
@@ -21,12 +22,9 @@ export function AnnotatedSection(props: AnnotatedSectionProps) {
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <TextContainer>
-            <Heading testID="AnnotationTitle">{title}</Heading>
+            <Heading id={id}>{title}</Heading>
             {descriptionMarkup && (
-              <div
-                className={styles.AnnotationDescription}
-                testID="AnnotationDescription"
-              >
+              <div className={styles.AnnotationDescription}>
                 {descriptionMarkup}
               </div>
             )}

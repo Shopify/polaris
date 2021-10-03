@@ -6,6 +6,8 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
+import {ExternalMinor} from '@shopify/polaris-icons';
+import {Caption, TextStyle} from 'components';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -14,11 +16,10 @@ import {Icon, IconProps} from '../../../Icon';
 import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
+import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
-import {Caption} from '../../../Caption';
-import {TextStyle} from '../../../TextStyle';
 
 import {Secondary} from './components';
 
@@ -28,6 +29,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -35,13 +37,14 @@ export interface SubNavigationItem extends ItemURLDetails {
   label: string;
   disabled?: boolean;
   new?: string;
-  onClick?(event: MouseEvent<HTMLElement>): void;
+  onClick?(): void;
 }
 
 interface SecondaryAction {
   url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  onClick?(): void;
 }
 
 export interface ItemProps extends ItemURLDetails {
@@ -84,7 +87,9 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
+  const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
@@ -132,6 +137,20 @@ export function Item({
     </div>
   ) : null;
 
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
+    </div>
+  ) : null;
+
   let badgeMarkup: ReactNode = null;
   if (typeof badge === 'string') {
     badgeMarkup = (
@@ -143,11 +162,11 @@ export function Item({
     badgeMarkup = badge;
   }
 
-  const wrappedBadgeMarkup = newLabelMarkup ? (
-    newLabelMarkup
-  ) : badgeMarkup == null ? null : (
-    <div className={styles.Badge}>{badgeMarkup}</div>
-  );
+  const wrappedBadgeMarkup =
+    newLabelMarkup ??
+    (badgeMarkup == null ? null : (
+      <div className={styles.Badge}>{badgeMarkup}</div>
+    ));
 
   const itemContentMarkup = (
     <>
@@ -165,6 +184,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
@@ -193,6 +213,7 @@ export function Item({
       tabIndex={tabIndex}
       aria-disabled={disabled}
       aria-label={secondaryAction.accessibilityLabel}
+      onClick={secondaryAction.onClick}
     >
       <Icon source={secondaryAction.icon} />
     </UnstyledLink>
@@ -249,13 +270,23 @@ export function Item({
         <Secondary expanded={showExpanded} id={secondaryNavigationId}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;
+            const onClick = () => {
+              if (onNavigationDismiss) {
+                onNavigationDismiss();
+              }
+
+              if (item.onClick && item.onClick !== onNavigationDismiss) {
+                item.onClick();
+              }
+            };
+
             return (
               <Item
                 {...rest}
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={onNavigationDismiss}
+                onClick={onClick}
               />
             );
           })}
@@ -275,6 +306,7 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
@@ -288,6 +320,7 @@ export function Item({
           )}
         >
           {itemContentMarkup}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>

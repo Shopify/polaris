@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {VisuallyHidden} from 'components';
 
@@ -8,18 +6,18 @@ import {Badge} from '../Badge';
 
 describe('<Badge />', () => {
   it('renders its children', () => {
-    const badge = mountWithAppProvider(<Badge>Badge test</Badge>);
+    const badge = mountWithApp(<Badge>Badge test</Badge>);
     expect(badge.text()).toBe('Badge test');
   });
 
   it('accepts a status prop and renders a visually hidden label', () => {
-    const badge = mountWithAppProvider(<Badge status="success" />);
-    expect(badge.find(VisuallyHidden).exists()).toBe(true);
+    const badge = mountWithApp(<Badge status="success" />);
+    expect(badge).toContainReactComponent(VisuallyHidden);
   });
 
   it('accepts a progress prop and renders a visually hidden label', () => {
-    const badge = mountWithAppProvider(<Badge progress="incomplete" />);
-    expect(badge.find(VisuallyHidden).exists()).toBe(true);
+    const badge = mountWithApp(<Badge progress="incomplete" />);
+    expect(badge).toContainReactComponent(VisuallyHidden);
   });
 
   it('renders progress and status labels in the same element', () => {

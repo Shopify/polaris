@@ -5,7 +5,8 @@
       "labelWithInitials": "头像和姓名缩写 {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "正在加载"
+      "spinnerAccessibilityLabel": "正在加载",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar med initialene {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Laster inn"
+      "spinnerAccessibilityLabel": "Laster inn",
+      "ellipsis": "{content} …"
     },
     "Badge": {
       "PROGRESS_LABELS": {

@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar med initialer {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Indlæser"
+      "spinnerAccessibilityLabel": "Indlæser",
+      "ellipsis": "{content} …"
     },
     "Badge": {
       "PROGRESS_LABELS": {

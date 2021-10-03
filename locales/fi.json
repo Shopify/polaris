@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar alkukirjaimilla {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Ladataan"
+      "spinnerAccessibilityLabel": "Ladataan",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

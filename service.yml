@@ -1,5 +1,3 @@
-slack_channels:
-  - polaris
 production:
   classification: tier4
 npm:

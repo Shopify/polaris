@@ -1,7 +1,7 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Avatar, buttonFrom} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {Avatar} from 'components';
+import {Button} from 'components/Button';
 
 import {AccountConnection} from '../AccountConnection';
 
@@ -9,20 +9,20 @@ describe('<AccountConnection />', () => {
   describe('title', () => {
     it('shows the title when one is provided', () => {
       const title = 'Example app';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection title={title} />,
       );
-      expect(accountConnection.text()).toBe(title);
+      expect(accountConnection).toContainReactText(title);
     });
   });
 
   describe('details', () => {
     it('is shown on the card when provided', () => {
       const details = 'No account connected.';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection details={details} />,
       );
-      expect(accountConnection.text()).toContain(details);
+      expect(accountConnection).toContainReactText(details);
     });
   });
 
@@ -35,10 +35,10 @@ describe('<AccountConnection />', () => {
           made through Sample App.
         </p>
       );
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection termsOfService={<TermsOfService />} />,
       );
-      expect(accountConnection.find(TermsOfService).exists()).toBeTruthy();
+      expect(accountConnection).toContainReactComponent(TermsOfService);
     });
   });
 
@@ -48,12 +48,14 @@ describe('<AccountConnection />', () => {
         content: 'Connect',
         onAction: noop,
       };
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection action={action} />,
       );
-      expect(
-        accountConnection.contains(buttonFrom(action, {primary: true})),
-      ).toBeTruthy();
+      expect(accountConnection).toContainReactComponent(Button, {
+        children: action.content,
+        onClick: action.onAction,
+        primary: true,
+      });
     });
 
     it('makes the button secondary when connected', () => {
@@ -61,63 +63,69 @@ describe('<AccountConnection />', () => {
         content: 'Connect',
         onAction: noop,
       };
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection action={action} connected />,
       );
-      expect(
-        accountConnection.contains(buttonFrom(action, {primary: false})),
-      ).toBeTruthy();
+      expect(accountConnection).toContainReactComponent(Button, {
+        children: action.content,
+        onClick: action.onAction,
+        primary: false,
+      });
     });
   });
 
   describe('connected', () => {
     it('shows an avatar when truthy', () => {
-      const accountConnection = mountWithAppProvider(
-        <AccountConnection connected />,
-      );
-      expect(accountConnection.find(Avatar).exists()).toBeTruthy();
+      const accountConnection = mountWithApp(<AccountConnection connected />);
+      expect(accountConnection).toContainReactComponent(Avatar);
     });
 
     it('doesnt show an avatar by default', () => {
-      const accountConnection = mountWithAppProvider(<AccountConnection />);
-      expect(accountConnection.find(Avatar).exists()).toBeFalsy();
+      const accountConnection = mountWithApp(<AccountConnection />);
+      expect(accountConnection).not.toContainReactComponent(Avatar);
     });
   });
 
   describe('accountName', () => {
     it('is passed into the avatar', () => {
       const accountName = 'John Doe';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection accountName={accountName} connected />,
       );
-      expect(accountConnection.find(Avatar).prop('name')).toBe(accountName);
+      expect(accountConnection).toContainReactComponent(Avatar, {
+        name: accountName,
+      });
     });
 
     it('is used to construct the initials when connected', () => {
       const accountName = 'John Doe';
       const initials = 'JD';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection accountName={accountName} connected />,
       );
-      expect(accountConnection.find(Avatar).prop('initials')).toBe(initials);
+      expect(accountConnection).toContainReactComponent(Avatar, {
+        initials,
+      });
     });
 
     it('is used as the title when not connected and no title is provided', () => {
       const accountName = 'John Doe';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection accountName={accountName} />,
       );
-      expect(accountConnection.text()).toBe(accountName);
+      expect(accountConnection).toContainReactText(accountName);
     });
   });
 
   describe('avatarUrl', () => {
     it('gets passed into the avatar when connected', () => {
       const avatarUrl = 'http://url-to-image/';
-      const accountConnection = mountWithAppProvider(
+      const accountConnection = mountWithApp(
         <AccountConnection avatarUrl={avatarUrl} connected />,
       );
-      expect(accountConnection.find(Avatar).prop('source')).toBe(avatarUrl);
+      expect(accountConnection).toContainReactComponent(Avatar, {
+        source: avatarUrl,
+      });
     });
   });
 });

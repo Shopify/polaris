@@ -57,7 +57,11 @@ interface State {
   lockPosition: boolean;
 }
 
-const OBSERVER_CONFIG = {childList: true, subtree: true};
+const OBSERVER_CONFIG = {
+  childList: true,
+  subtree: true,
+  characterData: true,
+};
 
 export class PositionedOverlay extends PureComponent<
   PositionedOverlayProps,
@@ -152,6 +156,14 @@ export class PositionedOverlay extends PureComponent<
         {render(this.overlayDetails())}
       </div>
     );
+  }
+
+  forceUpdatePosition() {
+    // Wait a single animation frame before re-measuring.
+    // Consumer's may also need to setup their own timers for
+    // triggering forceUpdatePosition() `children` use animation.
+    // Ideally, forceUpdatePosition() is fired at the end of a transition event.
+    requestAnimationFrame(this.handleMeasurement);
   }
 
   private overlayDetails = (): OverlayDetails => {
@@ -278,6 +290,7 @@ export class PositionedOverlay extends PureComponent<
           () => {
             if (!this.overlay) return;
             this.observer.observe(this.overlay, OBSERVER_CONFIG);
+            this.observer.observe(activator, OBSERVER_CONFIG);
           },
         );
       },

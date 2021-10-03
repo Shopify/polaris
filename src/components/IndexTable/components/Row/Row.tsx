@@ -16,7 +16,7 @@ type RowStatus = 'success' | 'subdued';
 export interface RowProps {
   children: React.ReactNode;
   id: string;
-  selected: boolean;
+  selected?: boolean;
   position: number;
   subdued?: boolean;
   status?: RowStatus;
@@ -32,22 +32,13 @@ export const Row = memo(function Row({
   status,
   onNavigation,
 }: RowProps) {
-  const {selectMode, condensed} = useIndexRow();
+  const {selectable, selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
   const {
     value: hovered,
     setTrue: setHoverIn,
     setFalse: setHoverOut,
   } = useToggle(false);
-
-  const rowClassName = classNames(
-    styles.TableRow,
-    condensed && styles.condensedRow,
-    selected && styles['TableRow-selected'],
-    subdued && styles['TableRow-subdued'],
-    hovered && styles['TableRow-hovered'],
-    status && styles[variationName('status', status)],
-  );
 
   const handleInteraction = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -71,50 +62,75 @@ export const Row = memo(function Row({
     [id, selected, handleInteraction],
   );
 
-  const tableRowRef = useRef<HTMLTableRowElement & HTMLLIElement>(null);
+  const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
   const isNavigating = useRef<boolean>(false);
+  const tableRowRef = useRef<(HTMLTableRowElement & HTMLLIElement) | null>(
+    null,
+  );
 
-  const handleRowClick = (event: React.MouseEvent) => {
-    if (!tableRowRef.current || isNavigating.current) {
-      return;
+  const tableRowCallbackRef = useCallback((node) => {
+    tableRowRef.current = node;
+
+    const el = node?.querySelector('[data-primary-link]');
+
+    if (el) {
+      primaryLinkElement.current = el;
     }
+  }, []);
 
-    event.preventDefault();
-    event.stopPropagation();
+  const rowClassName = classNames(
+    styles.TableRow,
+    selectable && condensed && styles.condensedRow,
+    selected && styles['TableRow-selected'],
+    subdued && styles['TableRow-subdued'],
+    hovered && styles['TableRow-hovered'],
+    status && styles[variationName('status', status)],
+    !selectable &&
+      !primaryLinkElement.current &&
+      styles['TableRow-unclickable'],
+  );
 
-    const primaryLinkElement = tableRowRef.current.querySelector(
-      '[data-primary-link]',
-    );
+  let handleRowClick;
 
-    if (primaryLinkElement && !selectMode) {
-      isNavigating.current = true;
-      const {ctrlKey, metaKey} = event.nativeEvent;
-
-      if (onNavigation) {
-        onNavigation(id);
-      }
-
-      if (
-        (ctrlKey || metaKey) &&
-        primaryLinkElement instanceof HTMLAnchorElement
-      ) {
-        isNavigating.current = false;
-        window.open(primaryLinkElement.href, '_blank');
+  if (selectable || primaryLinkElement.current) {
+    handleRowClick = (event: React.MouseEvent) => {
+      if (!tableRowRef.current || isNavigating.current) {
         return;
       }
 
-      primaryLinkElement.dispatchEvent(
-        new MouseEvent(event.type, event.nativeEvent),
-      );
+      event.stopPropagation();
+      event.preventDefault();
 
-      isNavigating.current = false;
-    } else {
-      isNavigating.current = false;
-      handleInteraction(event);
-    }
-  };
+      if (primaryLinkElement.current && !selectMode) {
+        isNavigating.current = true;
+        const {ctrlKey, metaKey} = event.nativeEvent;
+
+        if (onNavigation) {
+          onNavigation(id);
+        }
+
+        if (
+          (ctrlKey || metaKey) &&
+          primaryLinkElement.current instanceof HTMLAnchorElement
+        ) {
+          isNavigating.current = false;
+          window.open(primaryLinkElement.current.href, '_blank');
+          return;
+        }
+
+        primaryLinkElement.current.dispatchEvent(
+          new MouseEvent(event.type, event.nativeEvent),
+        );
+      } else {
+        isNavigating.current = false;
+        handleInteraction(event);
+      }
+    };
+  }
 
   const RowWrapper = condensed ? 'li' : 'tr';
+
+  const checkboxMarkup = selectable ? <Checkbox /> : null;
 
   return (
     <RowContext.Provider value={contextValue}>
@@ -125,9 +141,9 @@ export const Row = memo(function Row({
           onMouseEnter={setHoverIn}
           onMouseLeave={setHoverOut}
           onClick={handleRowClick}
-          ref={tableRowRef}
+          ref={tableRowCallbackRef}
         >
-          <Checkbox />
+          {checkboxMarkup}
           {children}
         </RowWrapper>
       </RowHoveredContext.Provider>

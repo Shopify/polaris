@@ -2,14 +2,13 @@ name: polaris-react
 up:
   - node:
       yarn: v1.13.0
-      version: v10.24.0 # to be kept in sync with .nvmrc and ci.yml
+      version: v12.22.0 # to be kept in sync with .nvmrc and ci.yml
   - git_hooks:
       pre-commit: pre-commit
 
 open:
   app: http://localhost:6006/
   shipit: https://shipit.shopify.io/shopify/polaris-react/production
-  coverage: build/coverage/index.html
 
 commands:
   # People new to the project might be tempted to run some
@@ -21,5 +20,4 @@ commands:
   server: yarn run dev
   style: yarn run lint
   test: yarn run test
-  test:coverage: yarn run test:coverage
   type-check: yarn run type-check

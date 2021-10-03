@@ -12,7 +12,7 @@ runtimeInfo:
 defaultBaseSource: github:Shopify/k8s_base/components
 components:
   - name: web
-    basePath: web/v10
+    basePath: web/v12
     resources:
       - base: ingress.yaml
       - base: certificate.yaml

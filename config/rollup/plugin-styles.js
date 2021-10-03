@@ -7,12 +7,12 @@ import postcss from 'postcss';
 import cssModules from 'postcss-modules';
 
 export function styles({
-  output,
+  output = '',
   plugins = [],
   modules = {},
   mode,
   include = ['**/*.css', '**/*.scss'],
-  exclude,
+  exclude = [],
 } = {}) {
   if (!['standalone', 'esnext'].includes(mode)) {
     throw new Error(
@@ -76,10 +76,10 @@ export function styles({
 
   function generateBundleStandalone(rollup, generateOptions, bundle) {
     // generateBundle gets called once per call to bundle.write(). We call
-    // that twice - once for the commonjs build (the index.js file), once for
+    // that twice - once for the commonjs build (the cjs folder), once for
     // the esm build (the esm folder). We only want to do perform this logic
-    // once in the commonjs build
-    if (!(generateOptions.file && generateOptions.format === 'cjs')) {
+    // once in the esm build
+    if (!generateOptions.dir.endsWith('/build/esm')) {
       return;
     }
 
@@ -91,9 +91,12 @@ export function styles({
     // resolved. This may change between runs so we can't rely on it.
     // The contents of the emitted css file should use the order in which the
     // files were referenced in the compiled javascript, which can be obtained
-    // by looking at bundles[].modules.
-    const bundleModuleIds = flatMap(Object.values(bundle), (fileInfo) =>
-      Object.keys(fileInfo.modules),
+    // by looking at the imports of each entrypoint's bundle information.
+    const entrypointBundles = Object.values(bundle).filter(
+      (bundleInfo) => bundleInfo.isEntry,
+    );
+    const bundleModuleIds = flatMap(entrypointBundles, (bundleInfo) =>
+      getRecursiveImportOrder(bundleInfo.facadeModuleId, rollup.getModuleInfo),
     );
 
     const missingReferences = Object.keys(cssByFile).filter(
@@ -107,10 +110,16 @@ export function styles({
       );
     }
 
-    const css = bundleModuleIds
+    let css = bundleModuleIds
       .filter((id) => id in cssByFile)
       .map((id) => cssByFile[id])
       .join('\n\n');
+
+    try {
+      css = hoistCharsetDeclaration(css);
+    } catch (err) {
+      rollup.error(err.message);
+    }
 
     // Regular css file
     rollup.emitFile({type: 'asset', fileName: output, source: css});
@@ -173,4 +182,59 @@ export function styles({
 // We're still using node 10. Array.flat(fn)/Array.flatMap(fn) are added in v11
 function flatMap(array, fn) {
   return array.reduce((memo, item) => memo.concat(fn(item)), []);
+}
+
+// An @charset declaration must be at the top of a css file rather than part
+// way through. Because we're combining multiple files we need to make sure
+// that's handled correctly.
+function hoistCharsetDeclaration(css) {
+  let result = css;
+
+  const charsetRegex = /(?<=\n|^)@charset .*;\n/;
+  let standaloneCssFileCharset = '';
+  let charsetMatch;
+
+  // This would be a lot more readable with String.matchAll in node v12
+  while ((charsetMatch = charsetRegex.exec(result)) !== null) {
+    // If multiple source files have a charset but they differ then we've
+    // got a problem when it comes to combining them. This shouldn't ever
+    // happen though as prettier/editorconfig should force all our source
+    // files to be UTF-8
+    if (
+      standaloneCssFileCharset !== '' &&
+      charsetMatch[0] === standaloneCssFileCharset
+    ) {
+      throw new Error(
+        'Found multiple conflicting @charset declarations in css content',
+      );
+    }
+
+    standaloneCssFileCharset = charsetMatch[0];
+    result = result.replace(charsetMatch[0], '');
+  }
+
+  return `${standaloneCssFileCharset}${result}`;
+}
+
+/**
+ * Recursivly get the correct import order from rollup
+ * We only process a file once
+ *
+ * @param {string} id
+ * @param {Function} getModuleInfo
+ * @param {Set<string>} seen
+ */
+function getRecursiveImportOrder(id, getModuleInfo, seen = new Set()) {
+  if (seen.has(id)) {
+    return [];
+  }
+
+  seen.add(id);
+
+  const result = [id];
+  getModuleInfo(id).importedIds.forEach((importFile) => {
+    result.push(...getRecursiveImportOrder(importFile, getModuleInfo, seen));
+  });
+
+  return result;
 }

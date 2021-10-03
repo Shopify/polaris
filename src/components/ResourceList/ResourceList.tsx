@@ -658,9 +658,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     ) : null;
 
   const headerTitleMarkup = (
-    <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
-      {headerTitle()}
-    </div>
+    <div className={styles.HeaderTitleWrapper}>{headerTitle()}</div>
   );
 
   const selectButtonMarkup = isSelectable ? (
@@ -722,7 +720,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
               isSticky && styles['HeaderWrapper-isSticky'],
             );
             return (
-              <div className={headerClassName} testID="ResourceList-Header">
+              <div className={headerClassName}>
                 <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>

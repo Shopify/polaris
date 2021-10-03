@@ -1,90 +1,113 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
+import {TextContainer} from 'components/TextContainer';
+import {Heading} from 'components/Heading';
 
 import {Section} from '../components';
 import {Layout} from '../Layout';
+import styles from '../Layout.scss';
 
 describe('<Layout />', () => {
   it('renders children', () => {
-    const layout = mountWithAppProvider(
+    const layout = mountWithApp(
       <Layout>
         <MyComponent />
       </Layout>,
     );
 
-    expect(layout.find(MyComponent).exists()).toBe(true);
+    expect(layout).toContainReactComponent(MyComponent);
   });
 
   it('renders children wrapped in a section', () => {
-    const layout = mountWithAppProvider(
+    const layout = mountWithApp(
       <Layout sectioned>
         <MyComponent />
       </Layout>,
     );
-    const section = layout.find(Section);
 
-    expect(section.exists()).toBe(true);
-    expect(section.find(MyComponent).exists()).toBe(true);
+    expect(layout).toContainReactComponent(Section);
+    expect(layout.find(Section)).toContainReactComponent(MyComponent);
   });
 
   describe('<Layout.AnnotatedSection />', () => {
     it('renders children', () => {
-      const annotatedSection = mountWithAppProvider(
+      const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection>
           <MyComponent />
         </Layout.AnnotatedSection>,
       );
 
-      expect(annotatedSection.find(MyComponent).exists()).toBe(true);
+      expect(annotatedSection).toContainReactComponent(MyComponent);
     });
 
     it('renders a title', () => {
       const title = 'Store details';
-      const annotatedSection = mountWithAppProvider(
-        <Layout.AnnotatedSection title={title} />,
+      const annotatedSection = mountWithApp(
+        <Layout.AnnotatedSection title={title} id="someId" />,
       );
-
-      expect(findByTestID(annotatedSection, 'AnnotationTitle').text()).toBe(
+      expect(annotatedSection.find(Heading, {id: 'someId'})).toContainReactText(
         title,
       );
     });
 
     it('renders a description as a string', () => {
       const description = 'A good description of this section';
-      const annotatedSection = mountWithAppProvider(
+      const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection description={description} />,
       );
 
-      expect(
-        findByTestID(annotatedSection, 'AnnotationDescription').text(),
-      ).toBe(description);
+      const annotedDescriptionTextContainer = annotatedSection.find(
+        TextContainer,
+      )!;
+
+      expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
+        description,
+      );
     });
 
     it('renders a description as a node', () => {
-      const annotatedSection = mountWithAppProvider(
+      const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection description={<MyComponent />} />,
       );
-      const annotatedDescription = findByTestID(
-        annotatedSection,
-        'AnnotationDescription',
-      );
 
-      expect(annotatedDescription.find(MyComponent).exists()).toBe(true);
+      const annotedDescriptionTextContainer = annotatedSection.find(
+        TextContainer,
+      )!;
+
+      expect(annotedDescriptionTextContainer).toContainReactComponent(
+        MyComponent,
+      );
     });
 
     it('does not render an empty description node', () => {
-      const annotatedSection = mountWithAppProvider(
+      const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection>
           <MyComponent />
         </Layout.AnnotatedSection>,
       );
-      const description = findByTestID(
-        annotatedSection,
-        'AnnotationDescription',
-      );
 
-      expect(description.exists()).toBe(false);
+      const annotedDescriptionTextContainer = annotatedSection.find(
+        TextContainer,
+      )!;
+
+      expect(annotatedSection).toContainReactComponent(TextContainer);
+      expect(annotedDescriptionTextContainer).not.toContainReactComponent(
+        'div',
+        {
+          className: expect.stringContaining(styles.AnnotationDescription),
+        },
+      );
+    });
+
+    it('passes through an ID for deeplinking', () => {
+      const layout = mountWithApp(
+        <Layout>
+          <Layout.AnnotatedSection id="MySection">
+            <MyComponent />
+          </Layout.AnnotatedSection>
+        </Layout>,
+      );
+      expect(layout).toContainReactComponent(Heading, {id: 'MySection'});
     });
   });
 });

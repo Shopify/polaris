@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar con iniziali {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Caricamento"
+      "spinnerAccessibilityLabel": "Caricamento",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

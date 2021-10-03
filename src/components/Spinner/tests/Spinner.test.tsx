@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Spinner} from '../Spinner';
@@ -20,18 +18,27 @@ describe('<Spinner />', () => {
 
   describe('size', () => {
     it('renders a large spinner by default', () => {
-      const spinner = mountWithAppProvider(<Spinner />);
-      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
+      const spinner = mountWithApp(<Spinner />);
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeLarge'),
+      });
     });
 
     it('renders a large spinner when size is large', () => {
-      const spinner = mountWithAppProvider(<Spinner size="large" />);
-      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
+      const spinner = mountWithApp(<Spinner size="large" />);
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeLarge'),
+      });
     });
 
     it('renders a small spinner when size is small', () => {
-      const spinner = mountWithAppProvider(<Spinner size="small" />);
-      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
+      const spinner = mountWithApp(<Spinner size="small" />);
+
+      expect(spinner).toContainReactComponentTimes('span', 1, {
+        className: expect.stringContaining('sizeSmall'),
+      });
     });
   });
 

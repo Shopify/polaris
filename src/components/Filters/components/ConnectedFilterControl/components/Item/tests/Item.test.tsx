@@ -1,23 +1,26 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Item} from '../Item';
 
 describe('<Item />', () => {
   it('handles focus', () => {
-    const item = mountWithAppProvider(<Item />);
+    const item = mountWithApp(<Item />);
 
-    trigger(item.find('div'), 'onFocus');
+    item.find('div')!.trigger('onFocus');
 
-    expect(item.find('div').hasClass('Item-focused')).toBe(true);
+    expect(item).toContainReactComponent('div', {
+      className: expect.stringContaining('Item-focused'),
+    });
   });
 
   it('handles blur', () => {
-    const item = mountWithAppProvider(<Item />);
+    const item = mountWithApp(<Item />);
 
-    trigger(item.find('div'), 'onBlur');
+    item.find('div')!.trigger('onBlur');
 
-    expect(item.find('div').hasClass('Item-focused')).toBe(false);
+    expect(item).not.toContainReactComponent('div', {
+      className: expect.stringContaining('Item-focused'),
+    });
   });
 });
