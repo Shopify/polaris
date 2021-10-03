@@ -5,7 +5,7 @@
   padding: spacing(loose);
 
   &:not(:last-of-type) {
-    border-bottom: border();
+    border-bottom: border('divider');
   }
 
   &.subdued {

@@ -316,7 +316,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Ürün",
       "defaultItemPlural": "Ürünler",
-      "allItemsSelected": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağı seçildi.",
+      "allItemsSelected": "Tüm {itemsLength}+ {resourceNamePlural} seçildi.",
       "selected": "{selectedItemsCount} adet seçildi",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} seçimini kaldır",
       "a11yCheckboxSelectAllSingle": "Seç: {resourceNameSingular}",
@@ -331,7 +331,7 @@
       "selectAllLabel": "Şunların tümünü seç: {resourceNamePlural}",
       "selected": "{selectedItemsCount} adet seçildi",
       "undo": "Geri al",
-      "selectAllItems": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağını seçin.",
+      "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
       "selectItem": "Seç: {resourceName}",
       "selectButtonText": "Seç"
     }

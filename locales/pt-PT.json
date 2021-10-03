@@ -316,7 +316,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Itens",
-      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "allItemsSelected": "Todos os itens de {resourceNamePlural} de {itemsLength}+ foram selecionados.",
       "selected": "{selectedItemsCount} selecionado",
       "a11yCheckboxDeselectAllSingle": "Anular seleção {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
@@ -331,7 +331,7 @@
       "selectAllLabel": "Selecionar tudo em {resourceNamePlural}",
       "selected": "{selectedItemsCount} selecionado",
       "undo": "Anular",
-      "selectAllItems": "Selecionar tudo em {itemsLength}+ {resourceNamePlural} da sua loja",
+      "selectAllItems": "Selecionar todos os itens de {resourceNamePlural} de {itemsLength}+",
       "selectItem": "Selecionar {resourceName}",
       "selectButtonText": "Selecionar"
     }

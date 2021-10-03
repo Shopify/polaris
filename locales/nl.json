@@ -315,7 +315,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artikelen",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd.",
       "selected": "{selectedItemsCount} geselecteerd",
       "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
       "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
@@ -330,7 +330,7 @@
       "selectAllLabel": "Selecteer alle {resourceNamePlural}",
       "selected": "{selectedItemsCount} geselecteerd",
       "undo": "Ongedaan maken",
-      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in je winkel",
+      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Selecteer {resourceName}",
       "selectButtonText": "Selecteren"
     }

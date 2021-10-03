@@ -316,7 +316,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Tuote",
       "defaultItemPlural": "Tuotteet",
-      "allItemsSelected": "Kaikki {itemsLength}+ {resourceNamePlural} kaupassasi on valittu.",
+      "allItemsSelected": "Kaikki {itemsLength} ja {resourceNamePlural} on valittu.",
       "selected": "{selectedItemsCount} valittu",
       "a11yCheckboxDeselectAllSingle": "Poista valinta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
@@ -331,7 +331,7 @@
       "selectAllLabel": "Valitse kaikki {resourceNamePlural}",
       "selected": "{selectedItemsCount} valittu",
       "undo": "Peru",
-      "selectAllItems": "Valitse kaikki {itemsLength}+ {resourceNamePlural} kaupassasi",
+      "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
       "selectButtonText": "Valitse"
     }

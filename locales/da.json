@@ -316,7 +316,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Al {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} er valgt.",
       "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
@@ -331,7 +331,7 @@
       "selectAllLabel": "Vælg alle {resourceNamePlural}",
       "selected": "{selectedItemsCount} valgt",
       "undo": "Fortryd",
-      "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
+      "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
       "selectButtonText": "Vælg"
     }

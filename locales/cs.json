@@ -318,7 +318,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Položka",
       "defaultItemPlural": "Položky",
-      "allItemsSelected": "V obchodě bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength}+).",
+      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
       "selected": "Vybráno: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
@@ -333,7 +333,7 @@
       "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
       "selected": "Vybráno: {selectedItemsCount}",
       "undo": "Vrátit zpět",
-      "selectAllItems": "Vybrat v obchodě všechno zboží typu {resourceNamePlural} ({itemsLength}+)",
+      "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat"
     }

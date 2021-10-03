@@ -318,7 +318,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Pozycja",
       "defaultItemPlural": "Pozycje",
-      "allItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie są zaznaczone.",
+      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}.",
       "selected": "Wybrano {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
@@ -333,7 +333,7 @@
       "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
       "selected": "Wybrano {selectedItemsCount}",
       "undo": "Cofnij",
-      "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie",
+      "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",
       "selectButtonText": "Wybierz"
     }

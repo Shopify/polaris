@@ -189,7 +189,7 @@ describe('useBulkSelectionData', () => {
       singular: 'order',
       plural: 'orders',
     };
-    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} in your store are selected.`;
+    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} are selected.`;
     const mockComponent = mountWithApp(
       <MockComponent
         selectedItemsCount="All"

@@ -15,7 +15,7 @@ keywords:
 
 # Inline error
 
-Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may be invalid and how to fix it.
+Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
 
 ---
 
@@ -25,7 +25,7 @@ Inline errors should:
 
 - Be brief
 - Be written in sentence case
-- Be visible immediately upon the invalid form input
+- Be visible immediately upon a form input that is not valid
 - Be removed as soon as the input is valid so merchants can immediately tell they fixed the issue
 - Describe specific solutions so merchants can successfully complete their task in the form
 - Not be placed out of context of the input or group of inputs they describe
@@ -64,7 +64,7 @@ Inline error messages should:
 
 ### Basic inline error
 
-Use when the merchant has entered invalid information into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
+Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 
 ```jsx
 <InlineError message="Store name is required" fieldID="myFieldID" />
