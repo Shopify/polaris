@@ -125,7 +125,11 @@ describe('<Nav.Item />', () => {
 
     it('renders a single new badge even if a badge prop is also provided', () => {
       const item = mountWithNavigationProvider(
-        <Item label="some label" badge={<Badge>Custom badge</Badge>} new />,
+        <Item
+          label="some label"
+          badge={<Badge>Custom badge</Badge>}
+          new="New"
+        />,
       );
 
       expect(item).toContainReactComponentTimes(Badge, 1);
@@ -549,7 +553,7 @@ describe('<Nav.Item />', () => {
             url: '/admin/draft_orders',
             disabled: false,
             label: 'draft orders',
-            new: true,
+            new: 'New',
           },
         ]}
       />,
@@ -578,7 +582,7 @@ describe('<Nav.Item />', () => {
             url: '/admin/draft_orders',
             disabled: false,
             label: 'draft orders',
-            new: true,
+            new: 'New',
           },
         ]}
       />,
