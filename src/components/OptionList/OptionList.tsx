@@ -9,28 +9,28 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Option} from './components';
 import styles from './OptionList.scss';
 
-export interface OptionListProps {
+export interface OptionListProps<Value extends string = string> {
   /** A unique identifier for the option list */
   id?: string;
   /** List title */
   title?: string;
   /** Collection of options to be listed */
-  options?: OptionDescriptor[];
+  options?: OptionDescriptor<Value>[];
   /** Defines a specific role attribute for the list itself */
   role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
-  sections?: SectionDescriptor[];
+  sections?: SectionDescriptor<Value>[];
   /** The selected options */
-  selected: string[];
+  selected: Value[];
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** Callback when selection is changed */
-  onChange(selected: string[]): void;
+  onChange(selected: Value[]): void;
 }
 
-export function OptionList({
+export function OptionList<Value extends string = string>({
   options,
   sections,
   title,
@@ -40,7 +40,7 @@ export function OptionList({
   optionRole,
   onChange,
   id: idProp,
-}: OptionListProps) {
+}: OptionListProps<Value>) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
@@ -128,11 +128,11 @@ export function OptionList({
   );
 }
 
-function createNormalizedOptions(
-  options?: OptionDescriptor[],
-  sections?: SectionDescriptor[],
+function createNormalizedOptions<Value extends string = string>(
+  options?: OptionDescriptor<Value>[],
+  sections?: SectionDescriptor<Value>[],
   title?: string,
-): SectionDescriptor[] {
+): SectionDescriptor<Value>[] {
   if (options == null) {
     const section = {options: [], title};
     return sections == null ? [] : [section, ...sections];

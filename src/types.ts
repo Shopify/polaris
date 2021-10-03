@@ -1,8 +1,8 @@
 import type {AvatarProps, IconProps, ThumbnailProps} from 'components';
 
-export interface OptionDescriptor {
+export interface OptionDescriptor<Value extends string = string> {
   /** Value of the option */
-  value: string;
+  value: Value;
   /** Display label for the option */
   label: React.ReactNode;
   /** Whether the option is disabled or not */
@@ -15,14 +15,16 @@ export interface OptionDescriptor {
   media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
-export interface SectionDescriptor {
+export interface SectionDescriptor<Value extends string = string> {
   /** Collection of options within the section */
-  options: OptionDescriptor[];
+  options: OptionDescriptor<Value>[];
   /** Section title */
   title?: string;
 }
 
-export type Descriptor = SectionDescriptor | OptionDescriptor;
+export type Descriptor<Value extends string = string> =
+  | SectionDescriptor<Value>
+  | OptionDescriptor<Value>;
 
 export type IconSource =
   | React.FunctionComponent<React.SVGProps<SVGSVGElement>>
