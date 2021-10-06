@@ -1,4 +1,4 @@
-# Migrating from v5 to v6
+# Migrating from v6 to v7
 
 Polaris v7.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v7.0.0)) features a rebuild of the `Autocomplete` component, build changes, . This file describes all code updates required to stay up to date.
 
