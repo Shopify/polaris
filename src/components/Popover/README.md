@@ -145,9 +145,13 @@ function PopoverWithActionListExample() {
       <Popover
         active={popoverActive}
         activator={activator}
+        autofocusTarget="first-node"
         onClose={togglePopoverActive}
       >
-        <ActionList items={[{content: 'Import'}, {content: 'Export'}]} />
+        <ActionList
+          actionRole="menuitem"
+          items={[{content: 'Import'}, {content: 'Export'}]}
+        />
       </Popover>
     </div>
   );
@@ -190,6 +194,7 @@ function PopoverContentExample() {
       <Popover
         active={popoverActive}
         activator={activator}
+        autofocusTarget="first-node"
         onClose={togglePopoverActive}
       >
         <Popover.Pane fixed>
@@ -199,6 +204,7 @@ function PopoverContentExample() {
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
+            actionRole="menuitem"
             items={[
               {content: 'Online store'},
               {content: 'Facebook'},
@@ -418,7 +424,9 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
 
-A popover can contain many numerous types of content. Whether it's a menu, grid or something entirely different! When `aria-expanded` is applied to an element, `aria-haspopup` will default to `menu`. To assist screen readers you'll need to pass `ariaHaspopup` to `Popover`.
+To assist screen readers with sending focus to an [action list](https://polaris.shopify.com/components/actions/action-list), pass `autofocusTarget='first-node'` to `Popover`. This will avoid known issues a screen reader may have with keyboard support once focus is moved off the activator.
+
+Web browsers assign a default value of 'menu' to the `aria-haspopup` role. You can use the prop `ariaHaspopup` to specify a value. Screen readers may fail to send focus to the `Popover` content when they expect the content to be adjacent to the element with `aria-haspopup` in the DOM tree. In this scenario, it is recommended not to provide the `ariaHaspopup` prop.
 
 ### Keyboard support
 

@@ -108,8 +108,14 @@ function ActionListInPopoverExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           items={[
             {
               content: 'Import file',
@@ -145,8 +151,14 @@ function ActionListWithMediaExample() {
 
   return (
     <div style={{height: '200px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           items={[
             {content: 'Import file', icon: ImportMinor},
             {content: 'Export file', icon: ExportMinor},
@@ -176,14 +188,20 @@ function ActionListWithSuffixExample() {
 
   return (
     <div style={{height: '200px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           items={[
             {
+              active: true,
               content: 'Import file',
               icon: ImportMinor,
               suffix: <Icon source={TickSmallMinor} />,
-              active: true,
             },
             {content: 'Export file', icon: ExportMinor},
           ]}
@@ -212,8 +230,14 @@ function SectionedActionListExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
@@ -255,13 +279,23 @@ function ActionListWithDestructiveItemExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor, active: true},
+                {
+                  active: true,
+                  content: 'Import file',
+                  icon: ImportMinor,
+                },
                 {content: 'Export file', icon: ExportMinor},
                 {
                   destructive: true,
@@ -296,8 +330,14 @@ function ActionListWithHelpTextExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               items: [
@@ -328,6 +368,7 @@ function ActionListWithPrefixSuffixExample() {
   return (
     <div style={{height: '250px', maxWidth: '350px'}}>
       <ActionList
+        actionRole="menuitem"
         items={[
           {
             content: 'Go here',
@@ -388,6 +429,7 @@ Items in an action list are organized as list items (`<li>`) in an unordered lis
 ### Keyboard support
 
 - Give the action list items keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- When action list items have a role of `menuitem`, navigate through the list with <kbd>down arrow</kbd> (<kbd>up arrow</kbd> to move backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key
 
 ### High contrast support
