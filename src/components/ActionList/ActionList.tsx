@@ -1,6 +1,11 @@
 import React from 'react';
 
-import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {KeypressListener} from '../KeypressListener';
+import {
+  focusNextFocusableNode,
+  focusPreviousFocusableNode,
+} from '../../utilities/focus';
+import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
 import {classNames} from '../../utilities/css';
 
 import {Section} from './components';
@@ -48,5 +53,36 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={className}>{sectionMarkup}</Element>;
+  const handleFocusPreviousItem = (evt: KeyboardEvent) => {
+    evt.preventDefault();
+    focusPreviousFocusableNode(document.activeElement as HTMLElement);
+  };
+
+  const handleFocusNextItem = (evt: KeyboardEvent) => {
+    evt.preventDefault();
+    focusNextFocusableNode(document.activeElement as HTMLElement);
+  };
+
+  const listeners =
+    actionRole === 'menu' ? (
+      <>
+        <KeypressListener
+          keyEvent="keydown"
+          keyCode={Key.DownArrow}
+          handler={handleFocusNextItem}
+        />
+        <KeypressListener
+          keyEvent="keydown"
+          keyCode={Key.UpArrow}
+          handler={handleFocusPreviousItem}
+        />
+      </>
+    ) : null;
+
+  return (
+    <Element className={className}>
+      {listeners}
+      {sectionMarkup}
+    </Element>
+  );
 }

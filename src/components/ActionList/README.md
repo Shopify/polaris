@@ -108,16 +108,24 @@ function ActionListInPopoverExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           items={[
             {
               content: 'Import file',
               onAction: handleImportedAction,
+              role: 'menuitem',
             },
             {
               content: 'Export file',
               onAction: handleExportedAction,
+              role: 'menuitem',
             },
           ]}
         />
@@ -145,11 +153,17 @@ function ActionListWithMediaExample() {
 
   return (
     <div style={{height: '200px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            {content: 'Import file', icon: ImportMinor, role: 'menuitem'},
+            {content: 'Export file', icon: ExportMinor, role: 'menuitem'},
           ]}
         />
       </Popover>
@@ -176,16 +190,23 @@ function ActionListWithSuffixExample() {
 
   return (
     <div style={{height: '200px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           items={[
             {
+              active: true,
               content: 'Import file',
               icon: ImportMinor,
+              role: 'menuitem',
               suffix: <Icon source={TickSmallMinor} />,
-              active: true,
             },
-            {content: 'Export file', icon: ExportMinor},
+            {content: 'Export file', icon: ExportMinor, role: 'menuitem'},
           ]}
         />
       </Popover>
@@ -212,14 +233,20 @@ function SectionedActionListExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           sections={[
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
+                {content: 'Import file', icon: ImportMinor, role: 'menuitem'},
+                {content: 'Export file', icon: ExportMinor, role: 'menuitem'},
               ],
             },
           ]}
@@ -248,18 +275,30 @@ function ActionListWithDestructiveItemExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           sections={[
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor, active: true},
-                {content: 'Export file', icon: ExportMinor},
+                {
+                  active: true,
+                  content: 'Import file',
+                  icon: ImportMinor,
+                  role: 'menuitem',
+                },
+                {content: 'Export file', icon: ExportMinor, role: 'menuitem'},
                 {
                   destructive: true,
                   content: 'Delete file',
                   icon: DeleteMinor,
+                  role: 'menuitem',
                 },
               ],
             },
@@ -289,18 +328,26 @@ function ActionListWithHelpTextExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover active={active} activator={activator} onClose={toggleActive}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
         <ActionList
+          actionRole="menu"
           sections={[
             {
               items: [
                 {
                   content: 'Blog posts',
                   helpText: 'Manage your blog articles',
+                  role: 'menuitem',
                 },
                 {
                   content: 'Blogs',
                   helpText: 'Manage blogs published to your Online Store',
+                  role: 'menuitem',
                 },
               ],
             },
@@ -381,6 +428,7 @@ Items in an action list are organized as list items (`<li>`) in an unordered lis
 ### Keyboard support
 
 - Give the action list items keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Navigate through the action list items with <kbd>down arrow</kbd> (<kbd>up arrow</kbd> to move backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key
 
 ### High contrast support

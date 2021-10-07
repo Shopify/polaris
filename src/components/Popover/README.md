@@ -145,9 +145,16 @@ function PopoverWithActionListExample() {
       <Popover
         active={popoverActive}
         activator={activator}
+        autofocusTarget="first-node"
         onClose={togglePopoverActive}
       >
-        <ActionList items={[{content: 'Import'}, {content: 'Export'}]} />
+        <ActionList
+          actionRole="menu"
+          items={[
+            {content: 'Import', role: 'menuitem'},
+            {content: 'Export', role: 'menuitem'},
+          ]}
+        />
       </Popover>
     </div>
   );
@@ -190,6 +197,7 @@ function PopoverContentExample() {
       <Popover
         active={popoverActive}
         activator={activator}
+        autofocusTarget="first-node"
         onClose={togglePopoverActive}
       >
         <Popover.Pane fixed>
@@ -199,10 +207,11 @@ function PopoverContentExample() {
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
+            actionRole="menu"
             items={[
-              {content: 'Online store'},
-              {content: 'Facebook'},
-              {content: 'Shopify POS'},
+              {content: 'Online store', role: 'menuitem'},
+              {content: 'Facebook', role: 'menuitem'},
+              {content: 'Shopify POS', role: 'menuitem'},
             ]}
           />
         </Popover.Pane>

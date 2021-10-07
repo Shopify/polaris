@@ -100,6 +100,7 @@ export function Item({
       external={external}
       aria-label={accessibilityLabel}
       onClick={disabled ? null : onAction}
+      role={role}
     >
       {contentElement}
     </UnstyledLink>
@@ -112,13 +113,14 @@ export function Item({
       aria-label={accessibilityLabel}
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
+      role={role}
     >
       {contentElement}
     </button>
   );
 
   return (
-    <li role={role}>
+    <li>
       {scrollMarkup}
       {control}
     </li>

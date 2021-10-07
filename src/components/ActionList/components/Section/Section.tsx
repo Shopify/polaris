@@ -63,7 +63,18 @@ export function Section({
     <p className={titleClassName}>{section.title}</p>
   ) : null;
 
-  const sectionRole = actionRole === 'option' ? 'presentation' : undefined;
+  let sectionRole;
+  switch (actionRole) {
+    case 'option':
+      sectionRole = 'presentation';
+      break;
+    case 'menu':
+      sectionRole = 'menu';
+      break;
+    default:
+      sectionRole = undefined;
+      break;
+  }
 
   const sectionMarkup = (
     <div className={className}>

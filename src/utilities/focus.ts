@@ -13,6 +13,28 @@ const KEYBOARD_FOCUSABLE_SELECTORS =
 export const handleMouseUpByBlurring: MouseUpBlurHandler = ({currentTarget}) =>
   currentTarget.blur();
 
+export function previousFocusableNode(
+  node: HTMLElement,
+  filter?: Filter,
+): HTMLElement | Element | null {
+  const allFocusableElements = [
+    ...document.querySelectorAll(FOCUSABLE_SELECTOR),
+  ];
+  const sliceLocation = allFocusableElements.indexOf(node) - 1;
+  const focusableElementsBeforeNode = allFocusableElements.slice(sliceLocation);
+
+  for (const focusableElement of focusableElementsBeforeNode) {
+    if (
+      isElementInViewport(focusableElement) &&
+      (!filter || (filter && filter(focusableElement)))
+    ) {
+      return focusableElement;
+    }
+  }
+
+  return null;
+}
+
 export function nextFocusableNode(
   node: HTMLElement,
   filter?: Filter,
@@ -64,6 +86,16 @@ export function focusFirstFocusableNode(
   onlyDescendants = true,
 ) {
   findFirstFocusableNode(element, onlyDescendants)?.focus();
+}
+
+export function focusPreviousFocusableNode(node: HTMLElement, filter?: Filter) {
+  const previousFocusable = previousFocusableNode(node, filter);
+  if (previousFocusable && previousFocusable instanceof HTMLElement) {
+    previousFocusable.focus();
+    return true;
+  }
+
+  return false;
 }
 
 export function focusNextFocusableNode(node: HTMLElement, filter?: Filter) {
