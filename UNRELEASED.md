@@ -8,7 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Do not wrap empty children with `Item` in the `Stack` component ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
+- Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
 
 ### Documentation
 
