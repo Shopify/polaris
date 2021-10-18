@@ -301,6 +301,18 @@ describe('<Checkbox />', () => {
     });
   });
 
+  describe('ariaControls', () => {
+    it('sets the aria-controls attribute on the input', () => {
+      const checkBox = mountWithApp(
+        <Checkbox label="checkbox" ariaControls="SomeId" />,
+      );
+
+      expect(checkBox).toContainReactComponent('input', {
+        'aria-controls': 'SomeId',
+      });
+    });
+  });
+
   describe('Hovering the label', () => {
     it('adds the hover class to the Backdrop onMouseOver the label', () => {
       const checkBox = mountWithApp(<Checkbox label="checkbox" />);
