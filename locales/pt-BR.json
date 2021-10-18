@@ -157,7 +157,7 @@
       "exceedWarningMessage": "Os valores passados para o prop de progresso não devem exceder 100. Configurando {progress} como 100."
     },
     "ResourceList": {
-      "sortingLabel": "Organizar por",
+      "sortingLabel": "Ordenar por",
       "defaultItemSingular": "item",
       "defaultItemPlural": "itens",
       "showing": "Exibindo {itemsCount} {resource}",
