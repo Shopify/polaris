@@ -1,7 +1,12 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import React, {
+  memo,
+  NamedExoticComponent,
+  isValidElement,
+  Children,
+} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {elementChildren, wrapWithComponent} from '../../utilities/components';
+import {wrapWithComponent} from '../../utilities/components';
 
 import {Item} from './components';
 import styles from './Stack.scss';
@@ -40,7 +45,7 @@ export interface StackProps {
 }
 
 interface ChildProps {
-  readonly key: number;
+  readonly key: number | string;
 }
 
 export const Stack = memo(function Stack({
@@ -68,8 +73,9 @@ export const Stack = memo(function Stack({
     },
   });
 
-  const itemMarkup = elementChildren(children).map((child, index) => {
-    const props: ChildProps = {key: index};
+  const itemMarkup = Children.map(children, (child, index) => {
+    if (!isValidElement(child)) return null;
+    const props: ChildProps = {key: child.key || index};
     const isValidChildren = child.props.children;
     return isValidChildren
       ? wrapWithComponent(child, Item, props)
