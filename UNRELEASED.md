@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Created an example for an IndexTable with multiple promoted bulk actions ([4497](https://github.com/Shopify/polaris-react/pull/4497))
 - Light edits to the best practices for `Modal` and `Banner` ([#4501](https://github.com/Shopify/polaris-react/pull/4501))
+- Removed banner in navigation example ([#4533](https://github.com/Shopify/polaris-react/pull/4533))
 
 ### Development workflow
 

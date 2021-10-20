@@ -507,29 +507,6 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
 </Card>
 ```
 
-### Banner in navigation
-
-<!-- example-for: web -->
-
-Banners inside of the navigation render with less spacing and a pared-back design to fit within a content context.
-
-```jsx
-<Navigation location="/">
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: HomeMajor,
-      },
-    ]}
-  />
-  <Banner status="info">
-    <p>Preview version: 2019-07</p>
-  </Banner>
-</Navigation>
-```
-
 ---
 
 ## Related components
