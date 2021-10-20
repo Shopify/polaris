@@ -31,13 +31,11 @@ export const TextOption = memo(function TextOption({
   );
   return (
     <div className={textOptionClassName}>
-      <div className={styles.Content}>
-        {allowMultiple ? (
-          <Checkbox checked={selected} label={children} />
-        ) : (
-          children
-        )}
-      </div>
+      {allowMultiple ? (
+        <Checkbox checked={selected} label={children} />
+      ) : (
+        children
+      )}
     </div>
   );
 });

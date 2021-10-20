@@ -5,7 +5,6 @@
   border-radius: var(--p-border-radius-base);
   padding: spacing(tight) spacing(tight);
   cursor: pointer;
-  display: flex;
   @include focus-ring;
 
   &.allowMultiple {
@@ -62,9 +61,4 @@
 
 [data-focused]:not(:focus) .TextOption {
   @include focus-ring($style: 'focused');
-}
-
-.Content {
-  flex: 1 1 auto;
-  display: flex;
 }

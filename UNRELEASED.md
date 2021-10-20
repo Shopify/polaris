@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
+- Fixed a bug where `Listbox.Option`'s children wouldn't stretch to fit their container ([#4530](https://github.com/Shopify/polaris-react/pull/4530))
 
 ### Documentation
 
