@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
+- Removed extraneous space in `MediaCard` when card has no actions ([#4534](https://github.com/Shopify/polaris-react/issues/4534))
 
 ### Documentation
 
