@@ -409,7 +409,6 @@ For instructions on updating from v5 to v6, see our [migration guide](https://gi
 - Removed `-ms-high-contrast` media query from `ms-high-contrast-outline` as it is non-standard and updated the outline color from `windowText` to `transparent` ([#3775](https://github.com/Shopify/polaris-react/pull/3775)).
 - Fixed `Collapsible` expand and collapse animation ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
 - Fixed a bug in `Page` where re-rendering of `secondaryActions` could cause layout jittering ([#3641](https://github.com/Shopify/polaris-react/pull/3641))
-- Removed extraneous space in `MediaCard` when card has no actions ([#4534](https://github.com/Shopify/polaris-react/issues/4534))
 
 ### Development workflow
 
