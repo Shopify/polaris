@@ -7,6 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added the `ariaControls` prop to `Checkbox` ([#4509](https://github.com/Shopify/polaris-react/pull/4509))
+- Reduced vertical spacing in `Page` ([#4541](https://github.com/Shopify/polaris-react/pull/4541))
 
 ### Bug fixes
 
