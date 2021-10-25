@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import type {Descriptor, OptionDescriptor, SectionDescriptor} from 'types';
+import type {Descriptor, OptionDescriptor, SectionDescriptor} from '../../types';
 
 import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
