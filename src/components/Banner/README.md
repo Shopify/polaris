@@ -39,27 +39,33 @@ Informs merchants about important changes or persistent conditions. Use this com
 
 Banners should:
 
-- Be placed in the appropriate context:
-  - Banners relevant to an entire page should be placed at the top of that page, below the page header. They should occupy the full width of the content area.
-  - Banners related to a section of a page (like a card,
-    popover, or modal) should be placed inside that section, below any section heading. These banners have less spacing and a pared-back design to fit within a content context.
-  - Banners related to an element more specific than a section should be placed immediately above or below that element.
-- Focus on a single theme, piece of information, or required action to avoid
-  overwhelming merchants.
-- Be dismissible unless they contain critical information or an important step merchants need to take.
-- Be concise and scannable—merchants shouldn’t need to spend a lot of time
-  figuring out what they need to know and do.
-- Be limited to a few important calls to action with no more than one primary
-  action.
 - Be used thoughtfully and sparingly for only the most important information.
-- Not be used as the primary entry point to information or
-  actions merchants need on a regular basis.
-- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Not be used to call attention to what a merchant needs to do in the UI instead of making the action clear in the UI itself.
+- Not be the primary entry point to information or actions merchants need on a regular basis.
+- Be dismissible unless they contain critical information or an important step merchants need to take.
 - Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](https://polaris.shopify.com/design/icons#using-icons-in-your-designs).
+
+### Placement
+
+Banners should be placed in the appropriate context:
+
+- Banners relevant to an entire page should be placed at the top of that page, below the page header. They should occupy the full width of the content area.
+- Banners related to a section of a page (like a card, popover, or modal) should be placed inside that section, below any section heading. These banners have less spacing and a pared-back design to fit within a content context.
+- Banners related to an element more specific that a section should be placed immediately above or below that element.
 
 ---
 
 ## Content guidelines
+
+Banners should:
+
+- Focus on a single theme, piece of information, or required action to avoid
+  overwhelming merchants.
+- Be concise and scannable—merchants shouldn’t need to spend a lot of time
+  figuring out what they need to know and do.
+- Be limited to a few important calls to action with no more than one primary
+  action.
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
 
 To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
 
@@ -499,29 +505,6 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
     <p>View a summary of your online store’s performance.</p>
   </TextContainer>
 </Card>
-```
-
-### Banner in navigation
-
-<!-- example-for: web -->
-
-Banners inside of the navigation render with less spacing and a pared-back design to fit within a content context.
-
-```jsx
-<Navigation location="/">
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: HomeMajor,
-      },
-    ]}
-  />
-  <Banner status="info">
-    <p>Preview version: 2019-07</p>
-  </Banner>
-</Navigation>
 ```
 
 ---

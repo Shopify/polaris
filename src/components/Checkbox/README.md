@@ -171,6 +171,7 @@ Screen readers convey the state of the checkbox automatically.
 - Use the `disabled` prop to apply the HTML `disabled` attribute to the checkbox `<input>`. This prevents merchants from being able to interact with the checkbox, and conveys its inactive state to assistive technologies.
 - Use the `id` prop to provide a unique `id` attribute value for the checkbox. If an `id` isn’t provided, then the component generates one. All checkboxes must have unique `id` values to work correctly with assistive technologies.
 - Setting `checked="indeterminate"` conveys the state of the checkbox using `aria-checked="mixed"`.
+- Setting the `ariaControls` prop conveys the ID of the element whose contents or presence are controlled by the checkbox to screen reader users with the `aria-controls` attribute.
 
 ### Labeling
 
