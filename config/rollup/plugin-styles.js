@@ -1,12 +1,12 @@
-import path from 'path';
-import {promisify} from 'util';
+const path = require('path');
+const {promisify} = require('util');
 
-import {createFilter} from '@rollup/pluginutils';
-import nodeSass from 'node-sass';
-import postcss from 'postcss';
-import cssModules from 'postcss-modules';
+const {createFilter} = require('@rollup/pluginutils');
+const nodeSass = require('node-sass');
+const postcss = require('postcss');
+const cssModules = require('postcss-modules');
 
-export function styles({
+module.exports.styles = function styles({
   output = '',
   plugins = [],
   modules = {},
@@ -177,7 +177,7 @@ export function styles({
       }
     },
   };
-}
+};
 
 // We're still using node 10. Array.flat(fn)/Array.flatMap(fn) are added in v11
 function flatMap(array, fn) {

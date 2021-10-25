@@ -1,19 +1,17 @@
 import {
   createPackage,
-  Runtime,
-  createComposedWorkspacePlugin,
-  createComposedProjectPlugin,
   createWorkspacePlugin,
   createProjectPlugin,
   DiagnosticError,
 } from '@shopify/loom';
-import {babel} from '@shopify/loom-plugin-babel';
-import {workspaceTypeScript} from '@shopify/loom-plugin-typescript';
-import {packageBuild, rollupPlugins} from '@shopify/loom-plugin-package-build';
+import {
+  buildLibrary,
+  buildLibraryWorkspace,
+  rollupPlugins,
+} from '@shopify/loom-plugin-build-library';
 import {eslint} from '@shopify/loom-plugin-eslint';
 import {stylelint} from '@shopify/loom-plugin-stylelint';
 import {prettier} from '@shopify/loom-plugin-prettier';
-import {jest} from '@shopify/loom-plugin-jest';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import postcssShopify from '@shopify/postcss-plugin';
@@ -22,57 +20,39 @@ import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
 import {generateScopedName} from './config/rollup/namespaced-classname';
 
+// Needed so TS realises what configutation hooks are provided by Jest
+import type {} from '@shopify/loom-plugin-jest';
+
 // eslint-disable-next-line import/no-default-export
 export default createPackage((pkg) => {
-  pkg.runtimes(Runtime.Node, Runtime.Browser);
-  pkg.entry({root: './src/index'});
-  pkg.use(libraryPackagePlugin(), libaryWorkspacePlugin());
-});
-
-function libraryPackagePlugin() {
-  return createComposedProjectPlugin('PolarisPackage', [
-    // this needs to be set here as the current setup cannot
-    // find the babel.config.js file at the root of the project
-    babel({
-      config: {
-        presets: [['@shopify/babel-preset', {typescript: true, react: true}]],
-        configFile: false,
-      },
-    }),
-    packageBuild({
-      browserTargets: 'extends @shopify/browserslist-config',
-      nodeTargets: 'node 12.20',
+  pkg.entry({root: './src/index.ts'});
+  pkg.use(
+    buildLibrary({
+      jestTestEnvironment: 'jsdom',
+      targets: 'extends @shopify/browserslist-config, node 12.20',
       commonjs: true,
       esmodules: true,
       esnext: true,
     }),
-    rollupAdjustPluginsPlugin(),
-    rollupAdjustOutputPlugin(),
-    jestAdjustmentsPlugin(),
-  ]);
-}
-
-function libaryWorkspacePlugin() {
-  return createComposedWorkspacePlugin('PolarisWorkspace', [
-    jest(),
+    buildLibraryWorkspace(),
     eslint(),
     stylelint({files: '**/*.scss'}),
     prettier({files: '**/*.{md,json,yaml,yml}'}),
-    workspaceTypeScript(),
+    rollupAdjustPluginsPlugin(),
+    rollupAdjustOutputPlugin(),
+    jestAdjustmentsPlugin(),
     preAndPostBuildPlugin(),
-  ]);
-}
+  );
+});
 
 function jestAdjustmentsPlugin() {
-  return createProjectPlugin('PolarisJest', ({tasks: {test}}) => {
+  return createProjectPlugin('Polaris.Jest', ({tasks: {test}}) => {
     test.hook(({hooks}) => {
       hooks.configure.hook((configuration) => {
-        configuration.jestEnvironment?.hook(() => 'jsdom');
-
-        // Aliases for root-level imports
+        // Aliases for root-level imports, which are used in test files
         // These do not work in rollup builds, so perhaps we shouldn't configure
-        // them to work here either
-        configuration.jestModuleMapper?.hook((moduleMapper) => {
+        // them to work in jest tests either
+        configuration.jestModuleNameMapper?.hook((moduleMapper) => {
           moduleMapper['^(components|test-utilities|types|utilities)(.*)'] =
             '<rootDir>/src/$1$2';
 
@@ -86,7 +66,7 @@ function jestAdjustmentsPlugin() {
         }));
 
         // Novel file types - scss and images
-        configuration.jestTransforms?.hook((transforms) => ({
+        configuration.jestTransform?.hook((transforms) => ({
           ...transforms,
           '\\.s?css$': require.resolve('./config/jest-transform-style'),
           '\\.svg$': require.resolve('./config/jest-transform-image'),
@@ -97,7 +77,7 @@ function jestAdjustmentsPlugin() {
 }
 
 function preAndPostBuildPlugin() {
-  return createWorkspacePlugin('PolarisExtraBuild', ({api, tasks: {build}}) => {
+  return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
       hooks.pre.hook((steps) => [
         ...steps,
@@ -197,7 +177,7 @@ function rollupAdjustPluginsPlugin() {
  * Thus publish our esm files with a .js file extension.
  */
 function rollupAdjustOutputPlugin() {
-  return createProjectPlugin('PolarisJest', ({tasks: {build}}) => {
+  return createProjectPlugin('Polaris.RollupOutput', ({tasks: {build}}) => {
     build.hook(({hooks}) => {
       hooks.target.hook(({hooks, target}) => {
         const isDefaultBuild = Object.keys(target.options).length === 0;
