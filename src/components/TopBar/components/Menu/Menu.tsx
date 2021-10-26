@@ -44,6 +44,8 @@ export function Menu(props: MenuProps) {
       content: message.badge.content,
       status: message.badge.status,
     };
+  const linkProps = message &&
+    message.link && {to: message.link.to, content: message.link.content};
   const messageMarkup = message && (
     <Message
       title={message.title}
@@ -52,7 +54,7 @@ export function Menu(props: MenuProps) {
         onClick: message.action.onClick,
         content: message.action.content,
       }}
-      link={{to: message.link.to, content: message.link.content}}
+      link={linkProps}
       badge={badgeProps}
     />
   );

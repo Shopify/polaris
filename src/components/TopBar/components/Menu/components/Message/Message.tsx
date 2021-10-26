@@ -14,7 +14,7 @@ export interface MessageProps {
   title: string;
   description: string;
   action: {onClick(): void; content: string};
-  link: {to: string; content: string};
+  link?: {to: string; content: string};
   badge?: {content: string; status: BadgeProps['status']};
 }
 
@@ -29,7 +29,8 @@ export function Message({
     <Badge status={badge.status}>{badge.content}</Badge>
   );
 
-  const {to, content: linkContent} = link;
+  const linkMarkup = link && <Link url={link.to}>{link.content}</Link>;
+
   const {onClick, content: actionContent} = action;
 
   return (
@@ -44,7 +45,7 @@ export function Message({
             <p>{description}</p>
           </TextContainer>
 
-          <Link url={to}>{linkContent}</Link>
+          {linkMarkup}
 
           <Button plain onClick={onClick}>
             {actionContent}

@@ -135,6 +135,12 @@ export function DetailsPage() {
     },
   ];
 
+  const notificationsMenuActions = [
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
   const contextControlMarkup = (
     <div className={styles.ContextControl}>
       <svg
@@ -188,6 +194,16 @@ export function DetailsPage() {
     />
   );
 
+  const notificationsMenuMarkup = (
+    <TopBar.NotificationsMenu
+      actions={notificationsMenuActions}
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+      colorScheme="dark"
+      accessibilityLabel="Notifications menu"
+    />
+  );
+
   const searchResultsMarkup = (
     <ActionList
       items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
@@ -206,6 +222,7 @@ export function DetailsPage() {
     <TopBar
       showNavigationToggle
       userMenu={userMenuMarkup}
+      notificationsMenu={notificationsMenuMarkup}
       searchResultsVisible={searchActive}
       searchField={searchFieldMarkup}
       searchResults={searchResultsMarkup}
