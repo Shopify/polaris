@@ -49,8 +49,8 @@
       "totalRowHeading": "total"
     },
     "DatePicker": {
-      "previousMonth": "Exibir mês anterior, {previousMonthName} de {showPreviousYear}",
-      "nextMonth": "Exibir o próximo mês, {nextMonth} {nextYear}",
+      "previousMonth": "Mostrar mês anterior, {previousMonthName} de {showPreviousYear}",
+      "nextMonth": "Mostrar o próximo mês, {nextMonth} {nextYear}",
       "today": "Hoje ",
       "months": {
         "january": "Janeiro",
@@ -160,7 +160,7 @@
       "sortingLabel": "Ordenar por",
       "defaultItemSingular": "item",
       "defaultItemPlural": "itens",
-      "showing": "Exibindo {itemsCount} {resource}",
+      "showing": "Mostrando {itemsCount} {resource}",
       "loading": "Carregando {resource}",
       "selected": "{selectedItemsCount} na seleção",
       "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
@@ -188,7 +188,7 @@
         "filterButtonLabel": "Filtrar",
         "selectFilterKeyPlaceholder": "Selecione um filtro...",
         "addFilterButtonLabel": "Adicionar filtro",
-        "showAllWhere": "Exibir todo {resourceNamePlural} no qual:"
+        "showAllWhere": "Mostrar todo {resourceNamePlural} no qual:"
       },
       "FilterControl": {
         "textFieldLabel": "Pesquisar {resourceNamePlural}"
