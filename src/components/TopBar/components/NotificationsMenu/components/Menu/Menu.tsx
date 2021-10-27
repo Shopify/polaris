@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Button} from '../../../../../Button';
 import {Heading} from '../../../../../Heading';
-import {Stack} from '../../../../../Stack';
 import {TextContainer} from '../../../../../TextContainer';
 import {
   NotificationList,
@@ -10,6 +9,7 @@ import {
 } from '../../../../../NotificationList';
 import {Popover, PopoverProps} from '../../../../../Popover';
 
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {MessageProps} from './components/Message';
 import styles from './Menu.scss';
 

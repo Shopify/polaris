@@ -1,12 +1,12 @@
 import {NotificationMajor} from '@shopify/polaris-icons';
-import {Icon} from '../../../Icon';
 import React from 'react';
 
+import {Icon} from '../../../Icon';
 import type {Notification} from '../../../../types';
 import {MessageIndicator} from '../../../MessageIndicator';
-import {Menu, MenuProps} from './components/Menu';
 
-import styles from './NotificationsMenu.scss';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {Menu, MenuProps} from './components/Menu';
 
 export interface NotificationsMenuProps {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
