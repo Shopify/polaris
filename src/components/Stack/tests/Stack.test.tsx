@@ -11,17 +11,4 @@ describe('<Stack />', () => {
 
     expect(stack).toContainReactComponentTimes(Stack.Item, 2);
   });
-
-  it('does not render a Stack.Item to falsy children', () => {
-    const stack = mountWithApp(
-      <Stack>
-        {renderChildren()}
-        <FalsyComponent />
-      </Stack>,
-    );
-
-    expect(stack).toContainReactComponentTimes(Stack.Item, 2);
-  });
 });
-
-const FalsyComponent = () => null;
