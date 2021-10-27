@@ -229,7 +229,26 @@ export function DetailsPage() {
     />
   );
 
+  const notificationsMessage = {
+    title: 'Notifications',
+    action: {
+      onClick: () => {},
+      content: 'Dismiss all',
+    },
+  };
+
   const notificationsMenuMarkup = (
+    // <TopBar.UserMenu
+    //   actions={userMenuActions}
+    //   name="Dharma"
+    //   detail={storeName}
+    //   initials="D"
+    //   open={userMenuActive}
+    //   onToggle={toggleUserMenuActive}
+    //   colorScheme="dark"
+    //   accessibilityLabel="User menu"
+    //   message={notificationsMessage}
+    // />
     <TopBar.NotificationsMenu
       notifications={[
         {
@@ -237,6 +256,7 @@ export function DetailsPage() {
           items: notifications,
         },
       ]}
+      message={notificationsMessage}
       open={notificationsMenuActive}
       onToggle={toggleNotificationsMenuActive}
       colorScheme="dark"

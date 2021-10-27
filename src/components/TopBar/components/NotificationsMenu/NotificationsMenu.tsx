@@ -4,7 +4,7 @@ import React from 'react';
 
 import type {Notification} from '../../../../types';
 import {MessageIndicator} from '../../../MessageIndicator';
-import {Menu, MenuProps} from '../Menu';
+import {Menu, MenuProps} from './components/Menu';
 
 import styles from './NotificationsMenu.scss';
 
