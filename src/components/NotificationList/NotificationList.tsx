@@ -22,7 +22,7 @@ export function NotificationList({
   sections = [],
   actionRole,
   onActionAnyItem,
-}: ActionListProps) {
+}: NotificationListProps) {
   let finalSections: ActionListSection[] = [];
 
   if (items) {
