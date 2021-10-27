@@ -86,6 +86,35 @@ export interface BaseButton {
   onTouchStart?(): void;
 }
 
+export interface Notification {
+  /** A unique identifier for the action */
+  id?: string;
+  /** Content the action displays */
+  title?: string;
+  /** Content the action displays */
+  body?: string;
+  /** Content the action displays */
+  domain?: string;
+  /** Content the action displays */
+  time?: string;
+  /** Content the action displays */
+  isOpen?: boolean;
+  /** Content the action displays */
+  status?: string;
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** A destination to link to, rendered in the action */
+  url?: string;
+  /** Forces url to open in a new tab */
+  external?: boolean;
+  /** Callback when an action takes place */
+  onAction?(): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
+}
+
 export interface Action {
   /** A unique identifier for the action */
   id?: string;
@@ -194,6 +223,32 @@ export interface ActionListSection {
   title?: string;
   /** Collection of action items for the list */
   items: readonly ActionListItemDescriptor[];
+}
+
+export interface NotificationListItemDescriptor extends Notification {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** Additional hint text to display with item */
+  helpText?: string;
+  /** Image source */
+  image?: string;
+  /** Prefix source */
+  prefix?: React.ReactNode;
+  /** Suffix source */
+  suffix?: React.ReactNode;
+  /**  Add an ellipsis suffix to action content */
+  ellipsis?: boolean;
+  /** Whether the action is active or not */
+  active?: boolean;
+  /** Defines a role for the action */
+  role?: string;
+}
+
+export interface NotificationListSection {
+  /** Section title */
+  title?: string;
+  /** Collection of action items for the list */
+  items: NotificationListItemDescriptor[];
 }
 
 export interface ComplexAction

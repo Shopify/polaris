@@ -155,8 +155,8 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       <div className={styles.Contents}>
         <div className={styles.SearchField}>{searchMarkup}</div>
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
-        {userMenu}
         {notificationsMenu}
+        {userMenu}
       </div>
     </div>
   );

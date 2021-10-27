@@ -1,6 +1,10 @@
 import React from 'react';
 
 import {ActionList, ActionListProps} from '../../../ActionList';
+import {
+  NotificationList,
+  NotificationListProps,
+} from '../../../NotificationList';
 import {Popover, PopoverProps} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
@@ -11,6 +15,8 @@ export interface MenuProps {
   activatorContent: React.ReactNode;
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
   actions: ActionListProps['sections'];
+  /** An array of action objects that are rendered inside of a popover triggered by this menu */
+  notifications: NotificationListProps['sections'];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the menu */
   message?: MessageProps;
   /** A boolean property indicating whether the menu is currently open */
@@ -30,6 +36,7 @@ export interface MenuProps {
 export function Menu(props: MenuProps) {
   const {
     actions,
+    notifications,
     onOpen,
     onClose,
     open,
@@ -82,7 +89,10 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
       colorScheme={colorScheme}
     >
-      <ActionList onActionAnyItem={onClose} sections={actions} />
+      {actions && <ActionList onActionAnyItem={onClose} sections={actions} />}
+      {notifications && (
+        <NotificationList onActionAnyItem={onClose} sections={notifications} />
+      )}
       {messageMarkup}
     </Popover>
   );

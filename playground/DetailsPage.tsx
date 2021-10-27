@@ -54,6 +54,7 @@ export function DetailsPage() {
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [userMenuActive, setUserMenuActive] = useState(false);
+  const [notificationsMenuActive, setNotificationsMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
@@ -109,6 +110,13 @@ export function DetailsPage() {
     () => setUserMenuActive((userMenuActive) => !userMenuActive),
     [],
   );
+  const toggleNotificationsMenuActive = useCallback(
+    () =>
+      setNotificationsMenuActive(
+        (notificationsMenuActive) => !notificationsMenuActive,
+      ),
+    [],
+  );
   const toggleMobileNavigationActive = useCallback(
     () =>
       setMobileNavigationActive(
@@ -135,9 +143,36 @@ export function DetailsPage() {
     },
   ];
 
-  const notificationsMenuActions = [
+  const notifications = [
     {
-      items: [{content: 'Community forums'}],
+      title: 'Monthly bill has been processed for $29.99USD.',
+      domain: 'Billing',
+      time: 'Just now',
+      isOpen: false,
+    },
+    {
+      title: 'Billing payment failed',
+      body: 'Update your credit card to retry payment.',
+      domain: 'Billing',
+      time: '10 min ago',
+      isOpen: true,
+      status: 'critical',
+    },
+    {
+      title:
+        'Your credit card will expire before your next monthly bill is due',
+      body: 'Update your card so that your store can continue to be open.',
+      domain: 'Billing',
+      time: 'Friday',
+      isOpen: true,
+    },
+    {
+      title: 'The order edited invoice is being replaced on Oct. 22',
+      body:
+        "Any changes you've made the current template will be lost. View the template for more details.",
+      domain: 'Settings',
+      time: 'Oct 1',
+      isOpen: true,
     },
   ];
 
@@ -196,9 +231,14 @@ export function DetailsPage() {
 
   const notificationsMenuMarkup = (
     <TopBar.NotificationsMenu
-      actions={notificationsMenuActions}
-      open={userMenuActive}
-      onToggle={toggleUserMenuActive}
+      notifications={[
+        {
+          // items: [],
+          items: notifications,
+        },
+      ]}
+      open={notificationsMenuActive}
+      onToggle={toggleNotificationsMenuActive}
       colorScheme="dark"
       accessibilityLabel="Notifications menu"
     />
