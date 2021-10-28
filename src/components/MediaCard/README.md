@@ -213,7 +213,7 @@ Use when there are two distinct actions merchants can take on the information in
 
 ### Media card with no actions
 
-Use when media card does not require any actions
+Use when media card does not require any actions.
 
 ```jsx
 <MediaCard
