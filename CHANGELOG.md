@@ -8,6 +8,35 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 7.2.0 - 2021-10-28
+
+### Enhancements
+
+- Updated the primary and secondary action type on `MediaCard` to `ComplexAction` ([#4546](https://github.com/shopify/polaris-react/pull/4546))
+
+### Bug fixes
+
+- Fixed `Stack.Item` having margin when empty ([#4556](https://github.com/Shopify/polaris-react/pull/4556))
+
+- Fixed `Stack` not wrapping valid children in `Stack.Item` ([#4556](https://github.com/Shopify/polaris-react/pull/4556)) (thanks [@benjamindoe](https://github.com/benjamindoe) for the [original issue](https://github.com/Shopify/polaris-react/issues/4555))
+
+## 7.1.0 - 2021-10-25
+
+### Enhancements
+
+- Added the `ariaControls` prop to `Checkbox` ([#4509](https://github.com/Shopify/polaris-react/pull/4509))
+- Reduced vertical spacing in `Page` ([#4541](https://github.com/Shopify/polaris-react/pull/4541))
+
+### Bug fixes
+
+- Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
+
+### Documentation
+
+- Created an example for an IndexTable with multiple promoted bulk actions ([4497](https://github.com/Shopify/polaris-react/pull/4497))
+- Light edits to the best practices for `Modal` and `Banner` ([#4501](https://github.com/Shopify/polaris-react/pull/4501))
+- Removed banner in navigation example ([#4533](https://github.com/Shopify/polaris-react/pull/4533))
+
 ## 7.0.0 - 2021-09-23
 
 ### Breaking changes

@@ -6,20 +6,17 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added the `ariaControls` prop to `Checkbox` ([#4509](https://github.com/Shopify/polaris-react/pull/4509))
+- Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
 
 ### Bug fixes
 
-- Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
-- Removed extraneous space in `MediaCard` when card has no actions ([#4534](https://github.com/Shopify/polaris-react/issues/4534))
+- Removed extraneous space in `MediaCard` when card has no actions ([#4538](https://github.com/Shopify/polaris-react/pull/4538))
 
 ### Documentation
 
-- Created an example for an IndexTable with multiple promoted bulk actions ([4497](https://github.com/Shopify/polaris-react/pull/4497))
-- Light edits to the best practices for `Modal` and `Banner` ([#4501](https://github.com/Shopify/polaris-react/pull/4501))
-- Removed banner in navigation example ([#4533](https://github.com/Shopify/polaris-react/pull/4533))
-
 ### Development workflow
+
+- Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
 
 ### Dependency upgrades
 
