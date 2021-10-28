@@ -78,7 +78,15 @@ $activator-variables: (
 }
 
 .Section {
-  margin-top: spacing(tight);
-  padding-top: spacing(tight);
+  margin-top: 0;
+  padding-top: 0;
   border-top: border('divider');
+}
+
+.SectionWithoutTitle {
+  border-top: 0;
+}
+
+.SectionRight {
+  text-align: right;
 }

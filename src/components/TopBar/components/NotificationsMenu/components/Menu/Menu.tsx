@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {classNames} from '../../../../../../utilities/css';
 import {Button} from '../../../../../Button';
 import {Heading} from '../../../../../Heading';
 import {TextContainer} from '../../../../../TextContainer';
@@ -74,10 +75,10 @@ export function Menu(props: MenuProps) {
           <Heading>{message && message.title}</Heading>
         </TextContainer>
       </Popover.Section>
-      <div className={styles.Section}>
+      <div className={classNames(styles.Section, styles.SectionWithoutTitle)}>
         <NotificationList onActionAnyItem={onClose} sections={notifications} />
       </div>
-      <div className={styles.Section}>
+      <div className={classNames(styles.Section, styles.SectionRight)}>
         <Popover.Section>
           <Button plain onClick={message && message.action.onClick}>
             {message && message.action.content}

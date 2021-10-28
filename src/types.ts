@@ -225,7 +225,9 @@ export interface ActionListSection {
   items: readonly ActionListItemDescriptor[];
 }
 
-export interface NotificationListItemDescriptor extends Notification {
+export interface NotificationListItemDescriptor
+  extends BadgeAction,
+    Notification {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Additional hint text to display with item */
@@ -242,6 +244,8 @@ export interface NotificationListItemDescriptor extends Notification {
   active?: boolean;
   /** Defines a role for the action */
   role?: string;
+  /** Defines a role for the action */
+  onDismiss?(): void;
 }
 
 export interface NotificationListSection {

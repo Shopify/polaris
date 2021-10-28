@@ -152,11 +152,11 @@ export function DetailsPage() {
     },
     {
       title: 'Billing payment failed',
-      body: 'Update your credit card to retry payment.',
+      body: 'Update your expired credit card to retry payment.',
       domain: 'Billing',
       time: '10 min ago',
       isOpen: true,
-      status: 'critical',
+      badge: {status: 'critical', content: 'Critical'},
     },
     {
       title:
@@ -238,17 +238,6 @@ export function DetailsPage() {
   };
 
   const notificationsMenuMarkup = (
-    // <TopBar.UserMenu
-    //   actions={userMenuActions}
-    //   name="Dharma"
-    //   detail={storeName}
-    //   initials="D"
-    //   open={userMenuActive}
-    //   onToggle={toggleUserMenuActive}
-    //   colorScheme="dark"
-    //   accessibilityLabel="User menu"
-    //   message={notificationsMessage}
-    // />
     <TopBar.NotificationsMenu
       notifications={[
         {
