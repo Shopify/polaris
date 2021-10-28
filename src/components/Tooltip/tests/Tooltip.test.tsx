@@ -90,6 +90,34 @@ describe('<Tooltip />', () => {
     expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
+  it('opens when active changes later on', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active={false} content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    tooltip.setProps({active: true});
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
+    });
+  });
+
+  it('closes when active changes later on', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    tooltip.setProps({active: false});
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+  });
+
   it('closes itself when escape is pressed on keyup', () => {
     const tooltip = mountWithApp(
       <Tooltip active content="This order has shipping labels.">

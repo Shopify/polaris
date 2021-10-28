@@ -35,20 +35,33 @@ export function Tooltip({
   children,
   content,
   dismissOnMouseOut,
-  active: originalActive,
+  active: givenActive,
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
+  const previousGivenActive = useRef(Boolean(givenActive));
   const {value: active, setTrue: handleFocus, setFalse: handleBlur} = useToggle(
-    Boolean(originalActive),
+    Boolean(givenActive),
   );
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
+
+  useEffect(() => {
+    if (previousGivenActive.current === givenActive) return;
+
+    if (previousGivenActive.current === false && givenActive === true) {
+      handleFocus();
+    } else if (previousGivenActive.current === true && givenActive === false) {
+      handleBlur();
+    }
+
+    previousGivenActive.current = Boolean(givenActive);
+  }, [givenActive, handleFocus, handleBlur]);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
