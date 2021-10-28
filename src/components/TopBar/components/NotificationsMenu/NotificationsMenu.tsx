@@ -3,8 +3,9 @@ import React from 'react';
 
 import {Icon} from '../../../Icon';
 import type {Notification} from '../../../../types';
-import {MessageIndicator} from '../../../MessageIndicator';
 
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {MessageIndicator} from './components/MessageIndicator';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {Menu, MenuProps} from './components/Menu';
 
@@ -17,6 +18,8 @@ export interface NotificationsMenuProps {
   accessibilityLabel?: string;
   /** A boolean property indicating whether the user menu is currently open */
   open: boolean;
+  /** A boolean property indicating whether the user menu is currently open */
+  unreadCount: number;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
   /** Accepts a color scheme for the contents of the user menu */
@@ -25,16 +28,15 @@ export interface NotificationsMenuProps {
 
 export function NotificationsMenu({
   notifications,
+  unreadCount,
   message,
   onToggle,
   open,
   colorScheme,
   accessibilityLabel,
 }: NotificationsMenuProps) {
-  const showIndicator = Boolean(message);
-
   const activatorContentMarkup = (
-    <MessageIndicator active={showIndicator}>
+    <MessageIndicator unreadCount={unreadCount}>
       <Icon source={NotificationMajor} color="base" />
     </MessageIndicator>
   );

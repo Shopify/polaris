@@ -46,7 +46,8 @@ export function Item({
     </p>
   );
 
-  if (id === 'gid://shopify/AdminNotification/2') {
+  const adminNotification = 'gid://shopify/AdminNotification/';
+  if (id === `${adminNotification}2`) {
     badgeMarkup = (
       <p className={styles.Badge}>
         <ThemeProvider theme={{colorScheme: 'light'}}>
@@ -56,12 +57,16 @@ export function Item({
     );
   }
 
-  let notificationDomain = 'Billing';
+  let notificationDomain = 'Settings';
 
   if (domain) {
     notificationDomain = domain;
-  } else if (id === 'gid://shopify/AdminNotification/4') {
-    notificationDomain = 'Settings';
+  } else if (
+    id === `${adminNotification}1` ||
+    id === `${adminNotification}2` ||
+    id === `${adminNotification}3`
+  ) {
+    notificationDomain = 'Billing';
   }
 
   const contentElement = (

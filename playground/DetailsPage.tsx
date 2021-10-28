@@ -244,6 +244,7 @@ export function DetailsPage() {
           items: notifications,
         },
       ]}
+      unreadCount={2}
       message={notificationsMessage}
       open={notificationsMenuActive}
       onToggle={toggleNotificationsMenuActive}
