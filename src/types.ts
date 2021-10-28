@@ -96,9 +96,9 @@ export interface Notification {
   /** Content the action displays */
   domain?: string;
   /** Content the action displays */
-  time?: string;
+  createdAt?: string;
   /** Content the action displays */
-  isOpen?: boolean;
+  isRead?: boolean;
   /** Content the action displays */
   status?: string;
   /** Visually hidden text for screen readers */

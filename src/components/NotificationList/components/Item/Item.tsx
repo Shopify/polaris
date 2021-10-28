@@ -20,13 +20,13 @@ export function Item({
   title,
   body,
   domain,
-  time,
-  isOpen,
   accessibilityLabel,
   onAction,
   active,
   role,
   onDismiss,
+  createdAt,
+  isRead,
 }: ItemProps) {
   const className = classNames(styles.Item, active && styles.active);
 
@@ -38,7 +38,7 @@ export function Item({
     </div>
   );
 
-  const badgeMarkup = badge && (
+  let badgeMarkup = badge && (
     <p className={styles.Badge}>
       <ThemeProvider theme={{colorScheme: 'light'}}>
         <Badge status={badge.status}>{badge.content}</Badge>
@@ -46,13 +46,31 @@ export function Item({
     </p>
   );
 
+  if (id === 'gid://shopify/AdminNotification/2') {
+    badgeMarkup = (
+      <p className={styles.Badge}>
+        <ThemeProvider theme={{colorScheme: 'light'}}>
+          <Badge status="critical">Critical</Badge>
+        </ThemeProvider>
+      </p>
+    );
+  }
+
+  let notificationDomain = 'Billing';
+
+  if (domain) {
+    notificationDomain = domain;
+  } else if (id === 'gid://shopify/AdminNotification/4') {
+    notificationDomain = 'Settings';
+  }
+
   const contentElement = (
     <span className={styles.ContentWrapper}>
-      <MessageIndicator active={!isOpen} />
+      <MessageIndicator active={!isRead} />
       <span className={styles.Content}>
         <p className={styles.Heading}>
           <TextStyle variation="subdued">
-            {domain} · {time}
+            {notificationDomain} · {createdAt}
           </TextStyle>
         </p>
         <p>

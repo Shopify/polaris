@@ -145,34 +145,33 @@ export function DetailsPage() {
 
   const notifications = [
     {
+      title: 'The order edited invoice is being replaced on Oct. 22',
+      body:
+        "Any changes you've made the current template will be lost. View the template for more details.",
+      id: 'gid://shopify/AdminNotification/4',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
+    },
+    {
       title: 'Monthly bill has been processed for $29.99USD.',
-      domain: 'Billing',
-      time: 'Just now',
-      isOpen: false,
+      isRead: false,
+      id: 'gid://shopify/AdminNotification/3',
+      createdAt: '2021-10-28T05:44:06Z',
     },
     {
       title: 'Billing payment failed',
       body: 'Update your expired credit card to retry payment.',
-      domain: 'Billing',
-      time: '10 min ago',
-      isOpen: true,
-      badge: {status: 'critical', content: 'Critical'},
+      id: 'gid://shopify/AdminNotification/2',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
     },
     {
       title:
         'Your credit card will expire before your next monthly bill is due',
       body: 'Update your card so that your store can continue to be open.',
-      domain: 'Billing',
-      time: 'Friday',
-      isOpen: true,
-    },
-    {
-      title: 'The order edited invoice is being replaced on Oct. 22',
-      body:
-        "Any changes you've made the current template will be lost. View the template for more details.",
-      domain: 'Settings',
-      time: 'Oct 1',
-      isOpen: true,
+      id: 'gid://shopify/AdminNotification/1',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
     },
   ];
 
