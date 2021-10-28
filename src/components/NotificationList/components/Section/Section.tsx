@@ -42,7 +42,17 @@ export function Section({
   };
   const actionMarkup = section.items.map(
     (
-      {title, body, domain, time, isOpen, status, helpText, onAction, ...item},
+      {
+        title,
+        body,
+        domain,
+        createdAt,
+        isRead,
+        status,
+        helpText,
+        onAction,
+        ...item
+      },
       index,
     ) => {
       return (
@@ -51,8 +61,8 @@ export function Section({
           title={title}
           body={body}
           domain={domain}
-          time={time}
-          isOpen={isOpen}
+          createdAt={createdAt}
+          isRead={isRead}
           status={status}
           helpText={helpText}
           role={actionRole}
