@@ -8,6 +8,18 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 7.2.0 - 2021-10-28
+
+### Enhancements
+
+- Updated the primary and secondary action type on `MediaCard` to `ComplexAction` ([#4546](https://github.com/shopify/polaris-react/pull/4546))
+
+### Bug fixes
+
+- Fixed `Stack.Item` having margin when empty ([#4556](https://github.com/Shopify/polaris-react/pull/4556))
+
+- Fixed `Stack` not wrapping valid children in `Stack.Item` ([#4556](https://github.com/Shopify/polaris-react/pull/4556)) (thanks [@benjamindoe](https://github.com/benjamindoe) for the [original issue](https://github.com/Shopify/polaris-react/issues/4555))
+
 ## 7.1.0 - 2021-10-25
 
 ### Enhancements
