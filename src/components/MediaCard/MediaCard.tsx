@@ -103,14 +103,15 @@ export function MediaCard({
     portrait && styles.portrait,
   );
 
-  const actionMarkup = (primaryAction || secondaryAction) ? (
-    <div className={actionClassName}>
-      <ButtonGroup>
-        {primaryActionMarkup}
-        {secondaryActionMarkup}
-      </ButtonGroup>
-    </div>
-  ): null;
+  const actionMarkup =
+    primaryActionMarkup || secondaryActionMarkup ? (
+      <div className={actionClassName}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
   const mediaCardClassName = classNames(
     styles.MediaCard,
