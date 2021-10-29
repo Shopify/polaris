@@ -53,7 +53,7 @@ function jestAdjustmentsPlugin() {
         // These do not work in rollup builds, so perhaps we shouldn't configure
         // them to work in jest tests either
         configuration.jestModuleNameMapper?.hook((moduleMapper) => {
-          moduleMapper['^(components|test-utilities|types|utilities)(.*)'] =
+          moduleMapper['^(components|test-utilities)(.*)'] =
             '<rootDir>/src/$1$2';
 
           return moduleMapper;

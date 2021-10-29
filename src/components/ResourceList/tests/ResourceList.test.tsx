@@ -10,8 +10,8 @@ import {
   EmptyState,
 } from 'components';
 import {mountWithApp} from 'test-utilities';
-import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
+import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {BulkActions} from '../../BulkActions';
 import {CheckableButton} from '../../CheckableButton';
 import styles from '../ResourceList.scss';
