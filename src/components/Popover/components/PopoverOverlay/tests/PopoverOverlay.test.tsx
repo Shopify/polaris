@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';

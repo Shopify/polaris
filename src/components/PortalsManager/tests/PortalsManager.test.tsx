@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp, mount} from 'test-utilities';
+import {mountWithApp, mount} from 'tests/utilities';
 
 import {usePortalsManager} from '../../../utilities/portals';
 import {PortalsManager} from '../PortalsManager';

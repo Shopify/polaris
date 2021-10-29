@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithListboxProvider} from 'test-utilities/listbox';
+import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
 import {Listbox} from '../../../../Listbox';
 import {MappedAction} from '../MappedAction';

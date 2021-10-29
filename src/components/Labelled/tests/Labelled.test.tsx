@@ -1,6 +1,6 @@
 import React from 'react';
 import {InlineError, Label, Labelled} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Button} from 'components/Button';
 
 describe('<Labelled />', () => {

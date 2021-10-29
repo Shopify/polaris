@@ -1,6 +1,6 @@
 import React from 'react';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Resizer} from '../Resizer';
 import {EventListener} from '../../../../EventListener';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';

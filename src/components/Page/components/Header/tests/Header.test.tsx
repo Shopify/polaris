@@ -9,7 +9,7 @@ import {
   Button,
   ButtonGroup,
 } from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import type {LinkAction} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';

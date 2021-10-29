@@ -8,7 +8,7 @@ import {
   Badge,
   ActionMenuProps,
 } from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Header} from '../components';
 

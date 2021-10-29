@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Popover, ActionList, Button} from 'components';
 
 import {MenuGroup} from '../MenuGroup';

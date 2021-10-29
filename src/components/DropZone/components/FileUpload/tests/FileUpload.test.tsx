@@ -1,6 +1,6 @@
 import React from 'react';
 import {Caption, TextStyle} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';

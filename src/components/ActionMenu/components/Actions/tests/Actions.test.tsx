@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ActionMenuProps, ActionMenu} from '../../..';
 import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';

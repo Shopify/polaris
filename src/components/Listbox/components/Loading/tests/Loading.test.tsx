@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ListboxContext} from '../../../../../utilities/listbox';
 import {Loading} from '../Loading';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Popover, Button} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import styles from '../ConnectedFilterControl.scss';
 import {

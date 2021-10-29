@@ -1,12 +1,13 @@
 import React, {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
 
-import {PolarisTestProvider} from '../components';
-import {ListboxContext} from '../utilities/listbox';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {PolarisTestProvider} from '../../src/components/PolarisTestProvider';
+import {ListboxContext} from '../../src/utilities/listbox';
 import {
   ComboboxListboxContext,
   ComboboxListboxType,
-} from '../utilities/combobox';
+} from '../../src/utilities/combobox';
 import translations from '../../locales/en.json';
 
 import {mountWithApp} from './react-testing';

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {MediaQueryProvider} from 'components/MediaQueryProvider';
 
 import {LinkContext} from '../../../utilities/link';
