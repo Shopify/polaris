@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {mountWithApp} from 'test-utilities';
-import {Tokens} from 'utilities/theme';
 
+import {Tokens} from '../../../utilities/theme';
 import {Collapsible, CollapsibleProps} from '../Collapsible';
 
 describe('<Collapsible />', () => {
