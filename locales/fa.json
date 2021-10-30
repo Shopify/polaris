@@ -1,0 +1,336 @@
+{
+  "Polaris": {
+    "Actions": {
+      "moreActions": "عملیات‌های دیگر"
+    },
+    "Avatar": {
+      "label": "آواتار",
+      "labelWithInitials": "آواتار با حروف {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "در‌ حال بار‌گذاری",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "نا‌کامل",
+        "partiallyComplete": "تا حدی کامل",
+        "complete": "کامل"
+      },
+      "STATUS_LABELS": {
+        "info": "اطلاعات",
+        "success": "موفقیت",
+        "warning": "هشدار",
+        "critical": "بحرانی",
+        "attention": "توجه",
+        "new": "جدید"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "در‌ حال بار‌گذاری",
+      "connectedDisclosureAccessibilityLabel": "عملیات مرتبط"
+    },
+    "Common": {
+      "checkbox": "کادر انتخابی",
+      "undo": "برگرداندن",
+      "cancel": "لغو",
+      "newWindowAccessibilityHint": "(پنجره جدید باز می‌کند)",
+      "clear": "پاک کردن",
+      "close": "بستن",
+      "submit": "ثبت",
+      "more": "بیشتر"
+    },
+    "ContextualSaveBar": {
+      "save": "ذخیره",
+      "discard": "دور‌اندازی"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "طبقه بندی {direction} بر اساس",
+      "navAccessibilityLabel": "جدول را یک ستون به {direction} ببر",
+      "totalsRowHeading": "جمع کل",
+      "totalRowHeading": "جمع"
+    },
+    "DatePicker": {
+      "previousMonth": "ماه قبل را نشان بده، {previousMonthName} {showPreviousYear}",
+      "nextMonth": "ماه بعد را نشان بده، {nextMonth} {nextYear}",
+      "today": "امروز ",
+      "start": "شروع محدوده",
+      "end": "پایان محدوده",
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      },
+      "days": {
+        "monday": "دو‌شنبه",
+        "tuesday": "سه‌شنبه",
+        "wednesday": "چهار‌شنبه",
+        "thursday": "پنج‌شنبه",
+        "friday": "جمعه",
+        "saturday": "شنبه",
+        "sunday": "یک‌شنبه"
+      },
+      "daysAbbreviated": {
+        "monday": "دو‌شنبه",
+        "tuesday": "سه‌شنبه",
+        "wednesday": "چهار‌شنبه",
+        "thursday": "پنج‌شنبه",
+        "friday": "جمعه",
+        "saturday": "شنبه",
+        "sunday": "یک‌شنبه"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "دور‌اندازی تمام تغییرات ذخیره نشده",
+      "message": "اگر تغییرات را دور‌اندازی کنید، تمام تغییراتی که تا ذخیره قبلی انجام داده‌اید حذف می شوند.",
+      "primaryAction": "دور‌اندازی تغییرات",
+      "secondaryAction": "ادامه ویرایش"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "فایل را برای بارگذاری بیندازید",
+        "overlayTextImage": "عکس را برای بارگذاری بیندازید",
+        "actionTitleFile": "انتخاب فایل",
+        "actionTitleImage": "انتخاب عکس",
+        "actionHintFile": "یا فایلی را بیندازید",
+        "actionHintImage": "یا عکسی را بیندازید",
+        "labelFile": "بارگذاری فایل",
+        "labelImage": "بارگذاری عکس"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "فایل‌ها را برای بارگذاری بیندازید",
+        "overlayTextImage": "عکس‌ها را برای بارگذاری بیندازید",
+        "actionTitleFile": "انتخاب فایل‌ها",
+        "actionTitleImage": "انتخاب عکس‌ها",
+        "actionHintFile": "یا فایل‌ها را بیندازید",
+        "actionHintImage": "یا عکس‌ها را بیندازید",
+        "labelFile": "بارگذاری فایل‌ها",
+        "labelImage": "بارگذاری عکس‌ها"
+      },
+      "errorOverlayTextFile": "نوع فایل معتبر نیست",
+      "errorOverlayTextImage": "نوع عکس معتبر نیست"
+    },
+    "EmptySearchResult": {
+      "altText": "خالی کردن نتایج جست‌و‌جو"
+    },
+    "Frame": {
+      "skipToContent": "پرش به محتوا",
+      "navigationLabel": "ناوبری",
+      "Navigation": {
+        "closeMobileNavigationLabel": "بستن ناوبری"
+      }
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "عملیات‌ها"
+      }
+    },
+    "Filters": {
+      "moreFilters": "فیلتر‌های بیشتر",
+      "moreFiltersWithCount": "فیلتر‌های بیشتر ({count})",
+      "filter": "فیلتر {resourceName}",
+      "noFiltersApplied": "فیلتری اعمال نشده",
+      "cancel": "لغو",
+      "done": "تایید",
+      "clearAllFilters": "پاک کردن تمام فیلتر‌ها",
+      "clear": "پاک کردن",
+      "clearLabel": "پاک کردن {filterName}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "مورد",
+      "defaultItemPlural": "موارد",
+      "allItemsSelected": "تمام {itemsLength}+ {resourceNamePlural} انتخاب شده اند.",
+      "selected": "{selectedItemsCount} انتخاب شده",
+      "a11yCheckboxDeselectAllSingle": "لغو انتخاب {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "انتخاب {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "لغو انتخاب {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "انتخاب همه {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} پیدا نشدند",
+      "emptySearchDescription": "فیلترها یا عبارت جستجو را تغییر دهید",
+      "onboardingBadgeText": "جدید",
+      "resourceLoadingAccessibilityLabel": "در حال بارگذاری {resourceNamePlural}…",
+      "selectAllLabel": "انتخاب همه {resourceNamePlural}",
+      "selected": "{selectedItemsCount} انتخاب شده",
+      "undo": "برگرداندن",
+      "selectAllItems": "انتخاب همه {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "انتخاب {resourceName}",
+      "selectButtonText": "انتخاب"
+    },
+    "Loading": {
+      "label": "خط بارگذاری صفحه"
+    },
+    "Modal": {
+      "iFrameTitle": "نشانه‌گذاری بدنه صفحه",
+      "modalWarning": "تنظیمات ضروری برای این modal پیدا نشدند: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "قبلی",
+      "next": "بعدی",
+      "pagination": "صفحه‌بندی"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "مقادیر داده شده به نوار پیشرفت نباید منفی باشند. پیشرفت به ۰ برگردانده می‌شود.",
+      "exceedWarningMessage": "مقادیر داده شده به نوار پیشرفت نباید از ۱۰۰ بیشتر شوند. پیشرفت به ۱۰۰ برگردانده می‌شود."
+    },
+    "ResourceList": {
+      "sortingLabel": "طبقه‌بندی بر اساس",
+      "defaultItemSingular": "مورد",
+      "defaultItemPlural": "موارد",
+      "showing": "در حال نشان دادن {itemsCount} {resource}",
+      "showingTotalCount": "در حال نشان دادن {itemsCount} از {totalItemsCount} {resource}",
+      "loading": "در حال بارگذاری {resource}",
+      "selected": "{selectedItemsCount} انتخاب شده",
+      "allItemsSelected": "تمام {itemsLength}+ {resourceNamePlural} در فروشگاه شما انتخاب شده‌اند.",
+      "allFilteredItemsSelected": "تمام {itemsLength}+ {resourceNamePlural} در این فیلتر انتخاب شده‌اند.",
+      "selectAllItems": "انتخاب همه {itemsLength}+ {resourceNamePlural} در فروشگاه شما",
+      "selectAllFilteredItems": "انتخاب همه {itemsLength}+ {resourceNamePlural} در این فیلتر",
+      "emptySearchResultTitle": "{resourceNamePlural} پیدا نشدند",
+      "emptySearchResultDescription": "فیلترها یا عبارت جستجو را تغییر دهید",
+      "selectButtonText": "انتخاب",
+      "a11yCheckboxDeselectAllSingle": "لغو انتخاب {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "انتخاب {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "لغو انتخاب همه {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "انتخاب همه {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} مورد",
+      "ariaLivePlural": "{itemsLength} مورد",
+      "Item": {
+        "actionsDropdownLabel": "عملیات‌ها برای {accessibilityLabel}",
+        "actionsDropdown": "عملیات در منو‌ی کشویی",
+        "viewItem": "نشان دادن جزئیات برای {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "عملیات‌ها",
+        "moreActionsActivatorLabel": "عملیات‌های بیشتر",
+        "warningMessage": "برای فراهم کردن تجربه کاربری بهتر. باید حداکثر {maxPromotedActions} عملیات تبلیغ شده باشد. "
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "فیلتر",
+        "selectFilterKeyPlaceholder": "فیلتری را انتخاب کنید\u2026",
+        "addFilterButtonLabel": "اضافه کردن فیلتر",
+        "showAllWhere": "نشان دادن {resourceNamePlural} که:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "جست‌و‌جو {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "فیلتری را انتخاب کنید\u2026"
+      },
+      "DateSelector": {
+        "dateFilterLabel": "مقداری را انتخاب کنید",
+        "dateValueLabel": "تاریخ",
+        "dateValueError": "فرمت YYYY-MM-DD را رعایت کنید",
+        "dateValuePlaceholder": "YYYY-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "در هفته اخیر",
+          "PastMonth": "در ماه اخیر",
+          "PastQuarter": "در ۳ ماه اخیر",
+          "PastYear": "در سال اخیر",
+          "ComingWeek": "هفته بعد",
+          "ComingMonth": "ماه بعد",
+          "ComingQuarter": "در ۳ ماه بعد",
+          "ComingYear": "در سال بعد",
+          "OnOrBefore": "در یا قبل از",
+          "OnOrAfter": "در یا بعد از"
+        },
+        "FilterLabelForValue": {
+          "past_week": "در هفته اخیر",
+          "past_month": "در ماه اخیر",
+          "past_quarter": "در ۳ ماه اخیر",
+          "past_year": "در سال اخیر",
+          "coming_week": "هفته بعد",
+          "coming_month": "ماه بعد",
+          "coming_quarter": "در ۳ ماه بعد",
+          "coming_year": "در سال بعد",
+          "on_or_before": "قبل از {date}",
+          "on_or_after": "بعد از {date}"
+        }
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "در حال بارگذاری صفحه"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "زبانه‌های بیشتر"
+    },
+    "Tag": {
+      "ariaLabel": "حذف {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} کاراکتر",
+      "characterCountWithMaxLength": "{count} از {limit} کاراکتر استفاده شده"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "راهنما: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "منو‌ی تغییر وضعیت",
+      "SearchField": {
+        "clearButtonLabel": "پاک کردن",
+        "search": "جست‌و‌جو"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "عملیات‌ها"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "پخش کردن ویدیو",
+        "defaultWithDuration": "پخش کردن ویدیو به طول {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} ساعت",
+              "andMinutes": "{hourCount} ساعت و {minuteCount} دقیقه",
+              "andMinute": "{hourCount} ساعت و {minuteCount} دقیقه",
+              "minutesAndSeconds": "{hourCount} ساعت، {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minutesAndSecond": "{hourCount} ساعت، {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minuteAndSeconds": "{hourCount} ساعت، {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minuteAndSecond": "{hourCount} ساعت، {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "andSeconds": "{hourCount} ساعت و {secondCount} ثانیه",
+              "andSecond": "{hourCount} ساعت و {secondCount} ثانیه"
+            },
+            "one": {
+              "only": "{hourCount} ساعت",
+              "andMinutes": "{hourCount} ساعت و {minuteCount} دقیقه",
+              "andMinute": "{hourCount} ساعت و {minuteCount} دقیقه",
+              "minutesAndSeconds": "{hourCount} hour, {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minutesAndSecond": "{hourCount} hour, {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minuteAndSeconds": "{hourCount} hour, {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "minuteAndSecond": "{hourCount} hour, {minuteCount} دقیقه، و {secondCount} ثانیه",
+              "andSeconds": "{hourCount} ساعت و {secondCount} ثانیه",
+              "andSecond": "{hourCount} ساعت و {secondCount} ثانیه"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} دقیقه",
+              "andSeconds": "{minuteCount} دقیقه و {secondCount} ثانیه",
+              "andSecond": "{minuteCount} دقیقه و {secondCount} ثانیه"
+            },
+            "one": {
+              "only": "{minuteCount} دقیقه",
+              "andSeconds": "{minuteCount} دقیقه و {secondCount} ثانیه",
+              "andSecond": "{minuteCount} دقیقه و {secondCount} ثانیه"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} ثانیه",
+            "one": "{secondCount} ثانیه"
+          }
+        }
+      }
+    }
+  }
+}
