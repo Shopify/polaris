@@ -1,6 +1,6 @@
 import React from 'react';
-import {mount} from 'test-utilities';
-import {mountWithListboxProvider} from 'test-utilities/listbox';
+import {mount} from 'tests/utilities';
+import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
 import type {ListboxContext} from '../../../../../utilities/listbox';
 import {Option} from '../Option';

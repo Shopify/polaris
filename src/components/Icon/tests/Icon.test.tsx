@@ -1,6 +1,6 @@
 import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../Icon';
 import {VisuallyHidden} from '../../VisuallyHidden';

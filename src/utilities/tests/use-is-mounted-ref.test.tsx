@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {mount} from 'test-utilities';
+import {mount} from 'tests/utilities';
 
 import {useIsMountedRef} from '../use-is-mounted-ref';
 

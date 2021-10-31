@@ -2,7 +2,7 @@
 import React, {useRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {Backdrop, Button} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Sheet} from '../Sheet';
 

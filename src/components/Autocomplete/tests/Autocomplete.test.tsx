@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp, ReactTestingElement, CustomRoot} from 'test-utilities';
+import {mountWithApp, ReactTestingElement, CustomRoot} from 'tests/utilities';
 import {KeypressListener} from 'components';
 
 import {TextField} from '../../TextField';

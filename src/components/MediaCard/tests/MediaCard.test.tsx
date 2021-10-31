@@ -1,6 +1,6 @@
 import React from 'react';
 import {Heading, Popover, Button, ActionList, Badge} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {MediaCard} from '../MediaCard';
 

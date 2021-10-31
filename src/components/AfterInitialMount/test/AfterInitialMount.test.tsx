@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {AfterInitialMount} from '../AfterInitialMount';
 

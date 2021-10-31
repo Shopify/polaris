@@ -1,6 +1,6 @@
 import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Popover, ActionList} from 'components';
 
 import {CheckableButton} from '../../CheckableButton';

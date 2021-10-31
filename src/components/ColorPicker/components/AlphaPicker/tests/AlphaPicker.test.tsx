@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {calculateDraggerY, alphaForDraggerY} from '../utilities';
 import {Slidable} from '../../Slidable';

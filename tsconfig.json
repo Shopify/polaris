@@ -13,9 +13,7 @@
     "strictFunctionTypes": false,
     "paths": {
       "components": ["src/components"],
-      "components/*": ["src/components/*"],
-      "test-utilities": ["src/test-utilities"],
-      "test-utilities/*": ["src/test-utilities/*"]
+      "components/*": ["src/components/*"]
     }
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]

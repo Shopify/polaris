@@ -1,7 +1,7 @@
 import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,

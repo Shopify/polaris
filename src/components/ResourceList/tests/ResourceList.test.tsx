@@ -9,7 +9,7 @@ import {
   Button,
   EmptyState,
 } from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {BulkActions} from '../../BulkActions';

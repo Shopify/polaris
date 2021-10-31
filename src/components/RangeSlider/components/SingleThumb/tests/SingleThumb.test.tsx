@@ -1,6 +1,6 @@
 import {InlineError} from 'components/InlineError';
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {SingleThumb} from '../SingleThumb';
 

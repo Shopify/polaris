@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Collapsible} from '../../../../../../Collapsible';
 import {Secondary} from '../Secondary';

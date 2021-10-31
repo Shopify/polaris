@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {NoteMajor} from '@shopify/polaris-icons';
 
 import {Thumbnail} from '../Thumbnail';
