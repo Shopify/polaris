@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
+
 ### Development workflow
 
 - Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
