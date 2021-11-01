@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed a vertical alignment bug in `Stack` ([#4565](https://github.com/Shopify/polaris-react/pull/4565))
+
 ### Documentation
 
 ### Development workflow

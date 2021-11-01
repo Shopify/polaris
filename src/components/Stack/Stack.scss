@@ -102,12 +102,12 @@
   flex-direction: column;
   margin-left: spacing(none);
 
-  > .Item {
+  > .Item:not(:empty) {
     margin-left: spacing(none);
   }
 }
 
-.Item {
+.Item:not(:empty) {
   flex: 0 0 auto;
   min-width: 0;
 }
