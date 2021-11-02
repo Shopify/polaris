@@ -440,7 +440,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with varaible size
+### Drop zone with variable size
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 
