@@ -1987,10 +1987,10 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
 
-"@shopify/polaris-icons@^4.9.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.9.0.tgz#391a0bc5341b83d7442dfdcea5efa325cdd30122"
-  integrity sha512-x+lDBEnUAaRDqj3MMlsjucaZsw9JLINabPLzdw589sB136ZQFAzdWpkqouKjmb6/1QrgIT2lmr961PbDhMlRkg==
+"@shopify/polaris-icons@^4.10.0":
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.10.0.tgz#fbfc0628c7da0786a6cbe9069ee007070762a4ac"
+  integrity sha512-TxOJeLd4qXNl8bhEtJ3bQrjMgdOTzw3xDfKhqWTinBMcjDsW0+Rb8ynSsxzS9ut821L3qXJK9AnJZwoR/Yd8nw==
 
 "@shopify/polaris-tokens@^3.0.0":
   version "3.0.0"
