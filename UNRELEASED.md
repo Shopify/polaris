@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Removed extraneous space in `MediaCard` when card has no actions ([#4538](https://github.com/Shopify/polaris-react/pull/4538))
+
 ### Documentation
 
 - Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
