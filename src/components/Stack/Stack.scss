@@ -7,10 +7,13 @@
   margin-top: -1 * spacing($spacing);
   margin-left: -1 * spacing($spacing);
 
-  > .Item:not(:empty) {
-    margin-top: spacing($spacing);
-    margin-left: spacing($spacing);
+  > .Item {
     max-width: 100%;
+
+    &:not(:empty) {
+      margin-top: spacing($spacing);
+      margin-left: spacing($spacing);
+    }
   }
 }
 
@@ -65,11 +68,11 @@
   justify-content: space-between;
 }
 
-.distributionFill > .Item {
+.distributionFill > .Item:not(:empty) {
   flex: 1 1 auto;
 }
 
-.distributionFillEvenly > .Item {
+.distributionFillEvenly > .Item:not(:empty) {
   flex: 1 1 auto;
 
   @supports (min-width: fit-content) {
@@ -112,6 +115,6 @@
   min-width: 0;
 }
 
-.Item-fill {
+.Item-fill:not(:empty) {
   flex: 1 1 auto;
 }
