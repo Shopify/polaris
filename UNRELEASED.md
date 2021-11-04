@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Removed extraneous space in `MediaCard` when card has no actions ([#4538](https://github.com/Shopify/polaris-react/pull/4538))
+- Fixed a bug in `Stack` where vertical spacing was off ([#4572](https://github.com/Shopify/polaris-react/pull/4572))
 
 ### Documentation
 
