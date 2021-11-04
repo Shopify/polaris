@@ -74,7 +74,7 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^4.9.0",
+    "@shopify/polaris-icons": "^4.10.0",
     "@shopify/polaris-tokens": "^3.0.0",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",

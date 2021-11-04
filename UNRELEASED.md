@@ -22,7 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
-Bump polaris-icons to v4.9.0 ([#4564](https://github.com/Shopify/polaris-react/pull/4564))
+Bump polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/pull/4569))
 
 ### Code quality
 
