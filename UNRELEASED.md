@@ -7,6 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
+- Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
 
 ### Bug fixes
 
