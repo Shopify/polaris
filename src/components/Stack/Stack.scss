@@ -7,7 +7,7 @@
   margin-top: -1 * spacing($spacing);
   margin-left: -1 * spacing($spacing);
 
-  > .Item:not(:empty) {
+  > .Item {
     margin-top: spacing($spacing);
     margin-left: spacing($spacing);
     max-width: 100%;

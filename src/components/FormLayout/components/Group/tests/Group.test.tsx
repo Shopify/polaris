@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextField} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Group} from '../Group';
 

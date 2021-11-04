@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'test-utilities';
+import {mount} from 'tests/utilities';
 
 import {isInputFocused} from '../is-input-focused';
 

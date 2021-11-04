@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import type {CustomRoot} from '@shopify/react-testing';
 import {Button, Select, Popover, Form} from 'components';
 

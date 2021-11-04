@@ -1,5 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
 

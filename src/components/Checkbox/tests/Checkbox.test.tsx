@@ -1,5 +1,5 @@
 import React, {AllHTMLAttributes} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../types';
 import {Choice} from '../../Choice';

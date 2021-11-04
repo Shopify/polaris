@@ -1,6 +1,6 @@
 import React from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Collapsible} from '../../../../Collapsible';
 import {NavigationContext} from '../../../context';

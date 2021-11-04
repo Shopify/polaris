@@ -1,4 +1,4 @@
-import type {AvatarProps, IconProps, ThumbnailProps} from 'components';
+import type {AvatarProps, IconProps, ThumbnailProps} from './components';
 
 export interface OptionDescriptor {
   /** Value of the option */

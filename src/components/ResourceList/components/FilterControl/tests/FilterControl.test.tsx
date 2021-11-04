@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {TextField, Tag, Button} from 'components';
 
 import {ResourceListContext} from '../../../../../utilities/resource-list';

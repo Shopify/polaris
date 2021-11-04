@@ -1,6 +1,6 @@
 import React from 'react';
 import {clock} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {KonamiCode, KONAMI_CODE} from '../KonamiCode';
 

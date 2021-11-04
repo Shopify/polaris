@@ -211,6 +211,26 @@ Use when there are two distinct actions merchants can take on the information in
 </MediaCard>
 ```
 
+### Media card with no actions
+
+Use when media card does not require any actions.
+
+```jsx
+<MediaCard
+  title="Getting Started"
+  description="Discover how Shopify can power up your entrepreneurial journey."
+  popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
+>
+  <img
+    alt=""
+    width="100%"
+    height="100%"
+    style={{objectFit: 'cover', objectPosition: 'center'}}
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+  />
+</MediaCard>
+```
+
 ### Video card
 
 Use to provide a consistent layout for contextual learning content. Use to wrap thumbnails of educational videos about Shopify features in context.

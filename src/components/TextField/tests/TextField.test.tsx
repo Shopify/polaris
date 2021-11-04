@@ -1,6 +1,6 @@
 import React from 'react';
 import {InlineError, Labelled, Connected, Select} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextContainer, Scrollable} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Pane} from '../Pane';
 import {Section} from '../../Section';

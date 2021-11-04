@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../..';
 import {Cell} from '../Cell';

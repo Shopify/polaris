@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Key} from 'types';
+import {mountWithApp} from 'tests/utilities';
 
+import {Key} from '../../../../../types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
 
 describe('<DualThumb />', () => {
