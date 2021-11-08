@@ -102,7 +102,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, durationBase);
+        }, 150);
       });
     }
 
@@ -111,7 +111,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, durationBase);
+        }, 150);
       });
     }
   }

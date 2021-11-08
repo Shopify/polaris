@@ -2,8 +2,10 @@
 
 $arrow-size: rem(14px);
 $visible-portion-of-arrow: rem(5px);
-$content-max-height: rem(295px);
+$content-max-height: rem(500px);
 $content-max-width: rem(400px);
+$vertical-motion-offset: rem(-20px);
+$motion-duration: 150ms;
 
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
@@ -14,26 +16,32 @@ $content-max-width: rem(400px);
 }
 
 .PopoverOverlay {
-  will-change: opacity;
+  will-change: opacity, transform;
   opacity: 0;
-  transition: opacity duration() easing(in);
+  transition: opacity $motion-duration easing(),
+    transform $motion-duration easing();
+  transform: translateY($vertical-motion-offset);
 }
 
 .PopoverOverlay-entering {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .PopoverOverlay-open {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .PopoverOverlay-exiting {
-  opacity: 0;
-  transition-timing-function: easing(out);
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0ms;
 }
 
 .measuring:not(.PopoverOverlay-exiting) {
   opacity: 0;
+  transform: translateY($vertical-motion-offset);
 }
 
 .fullWidth {
