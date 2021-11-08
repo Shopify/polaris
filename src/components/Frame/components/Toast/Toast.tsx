@@ -23,6 +23,7 @@ export function Toast({
   duration,
   error,
   action,
+  dismissOnAction,
 }: ToastProps) {
   useEffect(() => {
     let timeoutDuration = duration || DEFAULT_TOAST_DURATION;
@@ -58,9 +59,18 @@ export function Toast({
     </button>
   );
 
+  const handleActionClick = () => {
+    if (action?.onAction) {
+      action.onAction();
+    }
+    if (dismissOnAction) {
+      onDismiss();
+    }
+  };
+
   const actionMarkup = action ? (
     <div className={styles.Action}>
-      <Button plain monochrome onClick={action.onAction}>
+      <Button plain monochrome onClick={handleActionClick}>
         {action.content}
       </Button>
     </div>
