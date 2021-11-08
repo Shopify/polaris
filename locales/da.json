@@ -40,7 +40,7 @@
     },
     "ContextualSaveBar": {
       "save": "Gem",
-      "discard": "Fortryd"
+      "discard": "Kassér"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sortér {direction} efter",
@@ -88,9 +88,9 @@
       "end": "Slutning af interval"
     },
     "DiscardConfirmationModal": {
-      "title": "Fortryd alle ændringer, der ikke er gemt",
-      "message": "Hvis du fortryder ændringer, sletter du alle ændringer, du har foretaget, siden du gemte sidste gang.",
-      "primaryAction": "Fortryd ændringer",
+      "title": "Kassér alle ændringer, der ikke er gemt",
+      "message": "Hvis du kasserer ændringer, sletter du alle ændringer, du har foretaget, siden du gemte sidste gang.",
+      "primaryAction": "Kassér ændringer",
       "secondaryAction": "Fortsæt redigering"
     },
     "DropZone": {
@@ -150,7 +150,7 @@
     "Pagination": {
       "previous": "Forrige",
       "next": "Næste",
-      "pagination": "Sidenummerering"
+      "pagination": "Sideinddeling"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Angiver {progress} til 0.",
@@ -232,9 +232,6 @@
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"
-    },
-    "Spinner": {
-      "warningMessage": "Farven {color} er ikke beregnet til at blive anvendt til {size} spinnere. Tilgængelige farver på store spinnere er: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Flere faner"
