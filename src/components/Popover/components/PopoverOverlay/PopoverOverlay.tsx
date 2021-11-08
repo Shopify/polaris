@@ -1,5 +1,4 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {durationBase} from '@shopify/polaris-tokens';
 
 import {findFirstFocusableNode} from '../../../../utilities/focus';
 import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
