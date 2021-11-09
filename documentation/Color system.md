@@ -268,7 +268,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-button-drop-shadow`                  | `0 1px 0 rgba(0, 0, 0, 0.05)`                                                                                |
 | `--p-button-inner-shadow`                 | `inset 0 -1px 0 rgba(0, 0, 0, 0.2)`                                                                          |
 | `--p-button-pressed-inner-shadow`         | `inset 0 1px 0 rgba(0, 0, 0, 0.15)`                                                                          |
-| `--p-override-visible`                    | `visible`                                                                                                    |
 | `--p-override-zero`                       | `0`                                                                                                          |
 | `--p-override-loading-z-index`            | `514`                                                                                                        |
 | `--p-button-font-weight`                  | `500`                                                                                                        |
