@@ -4,8 +4,7 @@ $arrow-size: rem(14px);
 $visible-portion-of-arrow: rem(5px);
 $content-max-height: rem(500px);
 $content-max-width: rem(400px);
-$vertical-motion-offset: rem(-20px);
-$motion-duration: 150ms;
+$vertical-motion-offset: rem(-5px);
 
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
@@ -18,8 +17,7 @@ $motion-duration: 150ms;
 .PopoverOverlay {
   will-change: opacity, transform;
   opacity: 0;
-  transition: opacity $motion-duration easing(),
-    transform $motion-duration easing();
+  transition: opacity duration(fast) easing(), transform duration(fast) easing();
   transform: translateY($vertical-motion-offset);
 }
 
