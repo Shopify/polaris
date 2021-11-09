@@ -51,7 +51,7 @@ $stacking-order: (
 
 .Input {
   --progress-lower: #{var(--p-interactive)};
-  --progress-upper: #{var(--p-override-transparent)};
+  --progress-upper: #{transparent};
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunately its
   // custom properties transpiler has a bug that means it doesn't like multiple

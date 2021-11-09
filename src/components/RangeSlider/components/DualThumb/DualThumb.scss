@@ -38,7 +38,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
   height: $range-track-height;
   border-radius: $range-thumb-size;
 
-  --unselected-range: #{var(--p-override-transparent)};
+  --unselected-range: #{transparent};
   --selected-range: #{var(--p-interactive)};
   --gradient-colors: var(--unselected-range) 0%,
     var(--unselected-range) var(--Polaris-RangeSlider-progress-lower),

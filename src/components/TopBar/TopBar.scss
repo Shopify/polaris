@@ -71,7 +71,7 @@ $context-control-expand-after: 1400px;
   transition: (duration() - 33ms) fill easing() 33ms;
 
   &.focused {
-    background-color: var(--p-override-transparent);
+    background-color: transparent;
   }
   &.focused:active {
     background-color: var(--p-surface-pressed);

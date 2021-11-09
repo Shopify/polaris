@@ -26,7 +26,7 @@ $icon-size: rem(20px);
     background-color: var(--p-surface-pressed);
 
     .ContentWrapper {
-      background: var(--p-override-transparent);
+      background: transparent;
     }
   }
 
@@ -43,7 +43,7 @@ $icon-size: rem(20px);
   &:focus {
     outline: none;
     .ContentWrapper {
-      background: var(--p-override-transparent);
+      background: transparent;
     }
   }
 
