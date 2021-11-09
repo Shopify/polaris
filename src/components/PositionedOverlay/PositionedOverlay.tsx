@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
-import {layer} from '../shared';
+import {layer, dataPolarisTopBar} from '../shared';
 
 import {
   PreferredPosition,
@@ -239,6 +239,14 @@ export class PositionedOverlay extends PureComponent<
           scrollableContainerRect.height = document.body.scrollHeight;
         }
 
+        let topBarOffset = 0;
+        const topBarElement = scrollableElement.querySelector(
+          `${dataPolarisTopBar.selector}`,
+        );
+        if (topBarElement) {
+          topBarOffset = topBarElement.clientHeight;
+        }
+
         const overlayMargins =
           this.overlay.firstElementChild &&
           this.overlay.firstChild instanceof HTMLElement
@@ -257,6 +265,7 @@ export class PositionedOverlay extends PureComponent<
           containerRect,
           preferredPosition,
           fixed,
+          topBarOffset,
         );
         const horizontalPosition = calculateHorizontalPosition(
           activatorRect,
