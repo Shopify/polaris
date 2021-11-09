@@ -279,7 +279,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-banner-border-highlight`             | `inset 0 0.1rem 0 0 var(--p-border-highlight-subdued), inset 0 0 0 0.1rem var(--p-border-highlight-subdued)` |
 | `--p-banner-border-warning`               | `inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)`     |
 | `--p-banner-border-critical`              | `inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)`   |
-| `--p-badge-mix-blend-mode`                | `luminosity`                                                                                                 |
 | `--p-thin-border-subdued`                 | `0.1rem solid var(--p-border-subdued)`                                                                       |
 | `--p-text-field-spinner-offset`           | `0.2rem`                                                                                                     |
 | `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                                    |
