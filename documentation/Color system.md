@@ -270,7 +270,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-button-pressed-inner-shadow`         | `inset 0 1px 0 rgba(0, 0, 0, 0.15)`                                                                          |
 | `--p-override-loading-z-index`            | `514`                                                                                                        |
 | `--p-button-font-weight`                  | `500`                                                                                                        |
-| `--p-non-null-content`                    | `''`                                                                                                         |
 | `--p-choice-size`                         | `2rem`                                                                                                       |
 | `--p-icon-size`                           | `1rem`                                                                                                       |
 | `--p-choice-margin`                       | `0.1rem`                                                                                                     |
