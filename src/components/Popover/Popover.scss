@@ -15,7 +15,6 @@ $vertical-motion-offset: rem(-5px);
 }
 
 .PopoverOverlay {
-  will-change: opacity, transform;
   opacity: 0;
   transition: opacity duration(fast) easing(), transform duration(fast) easing();
   transform: translateY($vertical-motion-offset);
