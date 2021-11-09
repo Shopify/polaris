@@ -120,7 +120,7 @@ $stacking-order: (
 
   &:active {
     @include range-thumb-selectors {
-      transform: scale(var(--p-range-slider-thumb-scale));
+      transform: scale(1.5);
     }
   }
 

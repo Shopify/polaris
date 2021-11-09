@@ -91,7 +91,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
   }
 
   &:active {
-    transform: scale(var(--p-range-slider-thumb-scale));
+    transform: scale(1.5);
   }
 
   &:focus {
