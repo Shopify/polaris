@@ -183,7 +183,7 @@ export interface ActionListSection {
   /** Section title */
   title?: string;
   /** Collection of action items for the list */
-  items: ActionListItemDescriptor[];
+  items: readonly ActionListItemDescriptor[];
 }
 
 export interface ComplexAction
