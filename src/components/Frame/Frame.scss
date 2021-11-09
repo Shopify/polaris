@@ -217,7 +217,7 @@ $skip-vertical-offset: rem(10px);
     }
 
     .hasTopBar & {
-      top: var(--p-override-zero);
+      top: 0;
       z-index: var(
         --p-override-loading-z-index,
         z-index(loading-bar, $fixed-element-stacking-order)

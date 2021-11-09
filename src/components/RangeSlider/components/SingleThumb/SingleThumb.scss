@@ -184,7 +184,7 @@ $range-output-spacing: rem(16px);
 
   .Input:hover + &,
   .Input:focus + & {
-    opacity: var(--p-override-zero);
+    opacity: 0;
   }
 
   .Input:active + & {
