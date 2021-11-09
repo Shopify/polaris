@@ -1,12 +1,6 @@
 import React from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  trigger,
-  mountWithAppProvider,
-  act,
-} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Collapsible} from '../../../../Collapsible';
 import {NavigationContext} from '../../../context';
@@ -49,8 +43,8 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    trigger(section.find(Item), 'onClick');
-    trigger(section.find(Item), 'onClick');
+    section.find(Item)!.trigger('onClick');
+    section.find(Item)!.trigger('onClick');
 
     expect(cancelAnimationFrameSpy).toHaveBeenCalledTimes(1);
   });
@@ -76,9 +70,9 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    expect(
-      mountedSection.find('[aria-label="This is a test section"]'),
-    ).toHaveLength(1);
+    expect(mountedSection).toContainReactComponent('button', {
+      'aria-label': 'This is a test section',
+    });
   });
 
   it('calls iconButton.onClick when icon is clicked', () => {
@@ -103,7 +97,7 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    section.find('button').simulate('click');
+    section.find('button')!.trigger('onClick');
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -115,18 +109,21 @@ describe('<Navigation.Section />', () => {
       },
     );
 
-    expect(section.find('li').length === channelResults.length).toBe(true);
+    expect(section.findAll('li').length === channelResults.length).toBe(true);
   });
 
   it('calls onNavigationDismiss from context on sub item click', () => {
     const channels = mountWithNavigationProvider(
       <Section items={channelResults} />,
-      {
-        ...context,
-      },
+      {...context},
     );
 
-    channels.find('a').first().simulate('click');
+    channels.find('a')!.trigger('onClick', {
+      preventDefault: noop,
+      currentTarget: {
+        getAttribute: () => '/',
+      },
+    });
     animationFrame.runFrame();
 
     expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
@@ -138,19 +135,24 @@ describe('<Navigation.Section />', () => {
         items={channelResults}
         rollup={{after: 0, view: 'test', hide: 'test', activePath: '/'}}
       />,
-      {
-        ...context,
-      },
+      {...context},
     );
-    findByTestID(channels, 'ToggleViewAll').simulate('click');
 
-    channels.find('a').first().simulate('click');
+    channels
+      .find('button', {className: 'Item RollupToggle'})!
+      .trigger('onClick');
+    channels.find('a')!.trigger('onClick', {
+      preventDefault: noop,
+      currentTarget: {
+        getAttribute: () => '/admin/products',
+      },
+    });
 
-    act(() => {
+    channels.act(() => {
       animationFrame.runFrame();
     });
-    channels.update();
-    expect(channels.find(Collapsible).prop('open')).toBe(false);
+    channels.forceUpdate();
+    expect(channels).toContainReactComponent(Collapsible, {open: false});
   });
 
   it('does not set expanded to false on item click when it has a sub nav and on the mobile breakpoint', () => {
@@ -185,13 +187,12 @@ describe('<Navigation.Section />', () => {
       },
     );
 
-    findByTestID(withSubNav, 'ToggleViewAll').simulate('click');
+    withSubNav
+      .find('button', {className: 'Item RollupToggle'})!
+      .trigger('onClick');
+    withSubNav.find(Item, {url: '/other'})!.trigger('onClick');
 
-    withSubNav.find('a[href="/other"]').first().simulate('click');
-
-    animationFrame.runFrame();
-
-    expect(withSubNav.find(Collapsible).first().prop('open')).toBe(true);
+    expect(withSubNav).toContainReactComponent(Collapsible, {open: true});
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {
@@ -208,7 +209,9 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    expect(findByTestID(channels, 'ToggleViewAll').exists()).toBe(true);
+    expect(channels).toContainReactComponent('button', {
+      className: 'Item RollupToggle',
+    });
   });
 
   it('passes the props to Item', () => {
@@ -232,7 +235,7 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    expect(section.find(Item).props()).toMatchObject({
+    expect(section).toContainReactComponent(Item, {
       url: '/admin',
       disabled: false,
       label: 'some label',
@@ -262,7 +265,7 @@ describe('<Navigation.Section />', () => {
       {...context},
     );
 
-    trigger(section.find(Item), 'onClick');
+    section.find(Item)!.trigger('onClick');
     animationFrame.runFrame();
 
     expect(onClickSpy).toHaveBeenCalledTimes(1);
@@ -273,7 +276,7 @@ function mountWithNavigationProvider(
   node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
-  return mountWithAppProvider(
+  return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
     </NavigationContext.Provider>,

@@ -1,4 +1,10 @@
-import React, {forwardRef, useRef, useImperativeHandle, useState} from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useState,
+  useContext,
+} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -8,10 +14,13 @@ import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, Key, CheckboxHandles} from '../../types';
+import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
 export interface CheckboxProps {
+  /** Indicates the ID of the element that is controlled by the checkbox*/
+  ariaControls?: string;
   /** Indicates the ID of the element that describes the checkbox*/
   ariaDescribedBy?: string;
   /** Label for the checkbox */
@@ -43,6 +52,7 @@ export interface CheckboxProps {
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
     {
+      ariaControls,
       ariaDescribedBy: ariaDescribedByProp,
       label,
       labelHidden,
@@ -67,6 +77,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setFalse: handleMouseOut,
     } = useToggle(false);
     const [keyFocused, setKeyFocused] = useState(false);
+    const isWithinListbox = useContext(WithinListboxContext);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -134,7 +145,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -162,8 +172,9 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onClick={stopPropagation}
             onChange={noop}
             aria-invalid={error != null}
+            aria-controls={ariaControls}
             aria-describedby={ariaDescribedBy}
-            role="checkbox"
+            role={isWithinListbox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}
           />
           <span className={backdropClassName} />
@@ -172,7 +183,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   },
 );

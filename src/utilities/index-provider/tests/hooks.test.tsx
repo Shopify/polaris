@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp, mount} from 'test-utilities';
+import {mountWithApp, mount} from 'tests/utilities';
 
 import {
   IndexRowContext,
@@ -34,7 +34,7 @@ interface HandleBulkSelectionTypedChildProps {
 }
 
 describe('useIndexRow', () => {
-  it('returns selectMode & condensed', () => {
+  it('returns selectMode, condensed, & selectable', () => {
     const spy = jest.fn();
 
     function MockComponent() {
@@ -44,12 +44,18 @@ describe('useIndexRow', () => {
     }
 
     mountWithApp(
-      <IndexRowContext.Provider value={{selectMode: true, condensed: true}}>
+      <IndexRowContext.Provider
+        value={{selectMode: true, condensed: true, selectable: true}}
+      >
         <MockComponent />
       </IndexRowContext.Provider>,
     );
 
-    expect(spy).toHaveBeenCalledWith({selectMode: true, condensed: true});
+    expect(spy).toHaveBeenCalledWith({
+      selectMode: true,
+      condensed: true,
+      selectable: true,
+    });
   });
 
   it('throws when IndexProvider is not being used', () => {

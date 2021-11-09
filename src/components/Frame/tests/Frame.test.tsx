@@ -1,9 +1,7 @@
 import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
@@ -44,12 +42,11 @@ describe('<Frame />', () => {
 
   describe('skipToContentTarget', () => {
     it('renders a skip to content link with the proper text', () => {
-      const skipToContentLinkText = mountWithAppProvider(<Frame />)
-        .find('a')
-        .at(0)
-        .text();
+      const skipToContentLinkText = mountWithApp(<Frame />);
 
-      expect(skipToContentLinkText).toStrictEqual('Skip to content');
+      expect(skipToContentLinkText).toContainReactComponent('a', {
+        children: 'Skip to content',
+      });
     });
 
     it('targets the main container element by default', () => {
@@ -84,115 +81,120 @@ describe('<Frame />', () => {
       );
     });
   });
-
   describe('topBar', () => {
     it('renders with a top bar data attribute if a topBar is passed', () => {
       const topbar = <div />;
-      const topBar = mountWithAppProvider(<Frame topBar={topbar} />);
-
-      expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(1);
+      const frame = mountWithApp(<Frame topBar={topbar} />);
+      const selector: any = {
+        'data-polaris-top-bar': true,
+      };
+      expect(frame).toContainReactComponent('div', selector);
     });
 
     it('does not render with a top bar data attribute if none is passed', () => {
-      const topBar = mountWithAppProvider(<Frame />);
-
-      expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(0);
+      const topBar = mountWithApp(<Frame />);
+      const selector: any = {
+        'data-polaris-top-bar': true,
+      };
+      expect(topBar).not.toContainReactComponent('div', selector);
     });
   });
 
   describe('navigation', () => {
     it('renders a TrapFocus with a `trapping` prop set to true around the navigation on small screens and showMobileNavigation is true', () => {
       const navigation = <div />;
-      const frame = mountWithAppProvider(
+      const frame = mountWithApp(
         <Frame showMobileNavigation navigation={navigation} />,
         {mediaQuery: {isNavigationCollapsed: true}},
-      ).find(Frame);
+      );
 
-      const trapFocus = frame.find(TrapFocus);
-
-      expect(trapFocus.exists()).toBe(true);
-      expect(trapFocus.prop('trapping')).toBe(true);
+      expect(frame).toContainReactComponent(TrapFocus, {
+        trapping: true,
+      });
     });
 
     it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on small screens and showMobileNavigation is false', () => {
       const navigation = <div />;
-      const frame = mountWithAppProvider(<Frame navigation={navigation} />, {
+      const frame = mountWithApp(<Frame navigation={navigation} />, {
         mediaQuery: {isNavigationCollapsed: true},
-      }).find(Frame);
+      });
 
-      const trapFocus = frame.find(TrapFocus);
-      expect(trapFocus.exists()).toBe(true);
-      expect(trapFocus.prop('trapping')).toBe(false);
+      expect(frame).toContainReactComponent(TrapFocus, {
+        trapping: false,
+      });
     });
 
     it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on large screens even if showMobileNavigation is true', () => {
       const navigation = <div />;
-      const trapFocus = mountWithAppProvider(
+      const trapFocus = mountWithApp(
         <Frame showMobileNavigation navigation={navigation} />,
-      ).find(TrapFocus);
+      );
 
-      expect(trapFocus.exists()).toBe(true);
-      expect(trapFocus.prop('trapping')).toBe(false);
+      expect(trapFocus).toContainReactComponent(TrapFocus, {
+        trapping: false,
+      });
     });
 
     it('renders a CSSTransition around the navigation with `appear` and `exit` set to true on small screen', () => {
       const navigation = <div />;
-      const cssTransition = mountWithAppProvider(
+      const frame = mountWithApp(
         <Frame showMobileNavigation navigation={navigation} />,
         {mediaQuery: {isNavigationCollapsed: true}},
-      )
-        .find(TrapFocus)
-        .find(CSSTransition);
+      );
 
-      expect(cssTransition.prop('appear')).toBe(true);
-      expect(cssTransition.prop('exit')).toBe(true);
+      expect(frame).toContainReactComponent(CSSTransition, {
+        appear: true,
+        exit: true,
+      });
     });
 
     it('renders a CSSTransition around the navigation with `appear` and `exit` set to false on large screen', () => {
       const navigation = <div />;
-      const cssTransition = mountWithAppProvider(
-        <Frame navigation={navigation} />,
-      )
-        .find(TrapFocus)
-        .find(CSSTransition);
+      const frame = mountWithApp(<Frame navigation={navigation} />);
 
-      expect(cssTransition.prop('appear')).toBe(false);
-      expect(cssTransition.prop('exit')).toBe(false);
+      expect(frame).toContainReactComponent(CSSTransition, {
+        appear: false,
+        exit: false,
+      });
     });
 
     it('renders a CSSTransition around the navigation with an `in` prop set to false if showMobileNavigation is true', () => {
       const navigation = <div />;
-      const cssTransition = mountWithAppProvider(
+      const cssTransition = mountWithApp(
         <Frame showMobileNavigation={false} navigation={navigation} />,
-      )
-        .find(Frame)
-        .find(TrapFocus)
-        .find(CSSTransition);
+      );
 
-      expect(cssTransition.prop('in')).toBe(false);
+      expect(cssTransition).toContainReactComponent(CSSTransition, {
+        in: false,
+      });
     });
 
     it('renders a CSSTransition around the navigation with an `in` prop set to true if showMobileNavigation is true', () => {
       const navigation = <div />;
-      const cssTransition = mountWithAppProvider(
+      const cssTransition = mountWithApp(
         <Frame showMobileNavigation navigation={navigation} />,
-      )
-        .find(Frame)
-        .find(TrapFocus)
-        .find(CSSTransition);
+      );
 
-      expect(cssTransition.prop('in')).toBe(true);
+      expect(cssTransition).toContainReactComponent(CSSTransition, {
+        in: true,
+      });
     });
 
     it('renders with a has nav data attribute when nav is passed', () => {
       const navigation = <div />;
-      const frame = mountWithAppProvider(<Frame navigation={navigation} />);
-      expect(frame.find('[data-has-navigation]')).toHaveLength(1);
+      const frame = mountWithApp(<Frame navigation={navigation} />);
+      const selector: any = {
+        'data-has-navigation': true,
+      };
+      expect(frame).toContainReactComponent('div', selector);
     });
 
     it('does not render with a has nav data attribute when nav is not passed', () => {
-      const frame = mountWithAppProvider(<Frame />);
-      expect(frame.find('[data-has-navigation]')).toHaveLength(0);
+      const frame = mountWithApp(<Frame />);
+      const selector: any = {
+        'data-has-navigation': false,
+      };
+      expect(frame).not.toContainReactComponent('div', selector);
     });
 
     it('does not call onNavigationDismiss when escape is pressed and screen size is large', () => {
@@ -264,9 +266,7 @@ describe('<Frame />', () => {
     });
 
     it('sets a root property with global ribbon height if passed', () => {
-      mountWithAppProvider(
-        <Frame globalRibbon={<div />}>I am some content</Frame>,
-      );
+      mountWithApp(<Frame globalRibbon={<div />}>I am some content</Frame>);
       expect(
         document.documentElement.style.getPropertyValue(
           '--global-ribbon-height',
@@ -275,7 +275,7 @@ describe('<Frame />', () => {
     });
 
     it('sets a root property with global ribbon height if new props are passed', () => {
-      const frame = mountWithAppProvider(<Frame />);
+      const frame = mountWithApp(<Frame />);
 
       expect(
         document.documentElement.style.getPropertyValue(
@@ -292,7 +292,7 @@ describe('<Frame />', () => {
     });
 
     it('sets a root property with global ribbon height of 0 if there is no globalRibbon prop', () => {
-      mountWithAppProvider(<Frame />);
+      mountWithApp(<Frame />);
       expect(
         document.documentElement.style.getPropertyValue(
           '--global-ribbon-height',
@@ -303,23 +303,25 @@ describe('<Frame />', () => {
 
   describe('ContextualSavebar', () => {
     it('renders a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
-      const frame = mountWithAppProvider(
+      const frame = mountWithApp(
         <Frame>
           <PolarisContextualSavebar />
         </Frame>,
       );
-      expect(frame.find(FrameContextualSavebar).exists()).toBe(true);
+
+      expect(frame).toContainReactComponent(FrameContextualSavebar);
     });
   });
 
   describe('loading', () => {
     it('renders a Frame Loading if Polaris Loading is rendered', () => {
-      const frame = mountWithAppProvider(
+      const frame = mountWithApp(
         <Frame>
           <PolarisLoading />
         </Frame>,
       );
-      expect(frame.find(FrameLoading).exists()).toBe(true);
+
+      expect(frame).toContainReactComponent(FrameLoading);
     });
   });
 });

@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {
   Layout,
   Card,
@@ -13,68 +12,76 @@ import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {
-    const children = (
-      <Layout>
-        <Layout.Section>
-          <Card sectioned>
-            <SkeletonBodyText />
-          </Card>
-          <Card sectioned title="Variants">
-            <SkeletonBodyText />
-          </Card>
-        </Layout.Section>
-      </Layout>
-    );
+    const Children = () => {
+      return (
+        <Layout>
+          <Layout.Section>
+            <Card sectioned>
+              <SkeletonBodyText />
+            </Card>
+            <Card sectioned title="Variants">
+              <SkeletonBodyText />
+            </Card>
+          </Layout.Section>
+        </Layout>
+      );
+    };
 
-    const skeletonPage = mountWithAppProvider(
-      <SkeletonPage title="Products">{children}</SkeletonPage>,
+    const skeletonPage = mountWithApp(
+      <SkeletonPage title="Products">
+        <Children />
+      </SkeletonPage>,
     );
-    expect(skeletonPage.contains(children)).toBe(true);
+    expect(skeletonPage).toContainReactComponent(Children);
   });
 
   describe('title', () => {
     it('renders an h1 with the Title class when title is defined', () => {
-      const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
-      );
+      const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
-      expect(skeletonPage.find('h1.Title')).toHaveLength(1);
-      expect(skeletonPage.find(DisplayText)).toHaveLength(0);
+      expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
+      expect(skeletonPage).not.toContainReactComponent(DisplayText);
     });
 
     it('renders SkeletonTitle when a title not defined', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
+      const skeletonPage = mountWithApp(<SkeletonPage />);
 
-      expect(skeletonPage.find('h1.Title')).toHaveLength(0);
-      expect(skeletonPage.find('.SkeletonTitle')).toHaveLength(1);
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
+      expect(skeletonPage).toContainReactComponent('div', {
+        className: 'SkeletonTitle',
+      });
     });
 
     it('renders SkeletonTitle when title is an empty string', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
+      const skeletonPage = mountWithApp(<SkeletonPage title="" />);
 
-      expect(skeletonPage.find('h1.Title')).toHaveLength(0);
-      expect(skeletonPage.find('.SkeletonTitle')).toHaveLength(1);
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
+      expect(skeletonPage).toContainReactComponent('div', {
+        className: 'SkeletonTitle',
+      });
     });
   });
 
   it('renders the provided number of secondary actions as SkeletonBodyText', () => {
-    const skeletonPage = mountWithAppProvider(
-      <SkeletonPage secondaryActions={3} />,
-    );
-    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(3);
+    const skeletonPage = mountWithApp(<SkeletonPage secondaryActions={3} />);
+    expect(skeletonPage).toContainReactComponentTimes(SkeletonBodyText, 3);
   });
 
   it('renders breadcrumbs', () => {
-    const skeletonPage = mountWithAppProvider(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(1);
+    const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
+    expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
   });
 
   describe('primaryAction', () => {
     it('renders SkeletonDisplayText if true', () => {
-      const skeletonPage = mountWithAppProvider(
+      const skeletonPage = mountWithApp(
         <SkeletonPage title="Title" primaryAction />,
       );
-      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
+      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
     });
   });
 });

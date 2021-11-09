@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Slidable} from '../components';
 import {ColorPicker} from '../ColorPicker';
@@ -19,11 +18,15 @@ jest.mock('../../../utilities/target', () => ({
 
 describe('<ColorPicker /> Server-side only', () => {
   it('does not attach the touchmove handler to the window', () => {
-    const colorPicker = mountWithAppProvider(
+    const colorPicker = mountWithApp(
       <ColorPicker color={red} onChange={noop} />,
     );
 
-    colorPicker.find(Slidable).first().simulate('mousedown');
+    colorPicker.find(Slidable)!.find('div')!.trigger('onMouseDown', {
+      type: 'mousedown',
+      clientX: 1,
+      clientY: 1,
+    });
 
     const touch = {clientX: 0, clientY: 0};
     const event = new TouchEvent('touchmove', {

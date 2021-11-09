@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Link} from 'components';
 
 import {Tooltip} from '../Tooltip';
@@ -9,66 +7,87 @@ import {TooltipOverlay} from '../components';
 import {Key} from '../../../types';
 
 describe('<Tooltip />', () => {
-  const tooltip = mountWithAppProvider(
-    <Tooltip content="Inner content">
-      <Link>link content</Link>
-    </Tooltip>,
-  );
-
-  const wrapperComponent = findByTestID(tooltip, 'WrapperComponent');
-
   it('renders its children', () => {
-    expect(tooltip.find('button').exists()).toBe(true);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltip).toContainReactComponent('button');
   });
 
   it('does not render initially', () => {
-    const overlayContent = tooltip.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(false);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
   it('renders initially when active is true', () => {
-    const tooltipActive = mountWithAppProvider(
+    const tooltipActive = mountWithApp(
       <Tooltip content="Inner content" active>
         <Link>link content</Link>
       </Tooltip>,
     );
-    const overlayContent = tooltipActive.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(true);
+    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
-    const tooltipPreventInteraction = mountWithAppProvider(
-      <Tooltip content="Inner content" active dismissOnMouseOut>
+    const tooltip = mountWithApp(
+      <Tooltip dismissOnMouseOut content="Inner content" active>
         <Link>link content</Link>
       </Tooltip>,
     );
-    expect(
-      tooltipPreventInteraction.find(TooltipOverlay).prop('preventInteraction'),
-    ).toBe(true);
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      preventInteraction: true,
+    });
   });
 
   it('renders on mouseOver', () => {
-    wrapperComponent.simulate('mouseOver');
-    const overlayContent = tooltip.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(true);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
   it('renders on focus', () => {
-    wrapperComponent.simulate('focus');
-    const overlayContent = tooltip.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(true);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onFocus');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
   it('unrenders its children on blur', () => {
-    wrapperComponent.simulate('blur');
-    const overlayContent = tooltip.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(false);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onBlur');
+    expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
   it('unrenders its children on mouseLeave', () => {
-    wrapperComponent.simulate('mouseLeave');
-    const overlayContent = tooltip.find(TooltipOverlay).find('div');
-    expect(overlayContent.exists()).toBe(false);
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+    expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
   });
 
   it('closes itself when escape is pressed on keyup', () => {
@@ -78,7 +97,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    tooltip.find('span')!.trigger('onKeyUp', {
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
       keyCode: Key.Escape,
     });
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
@@ -103,19 +122,22 @@ describe('<Tooltip />', () => {
     });
   });
 
-  it('does not propagate click to wrappers', () => {
-    const spyFn = jest.fn();
-    const tooltip = mountWithAppProvider(
-      <div onClick={spyFn}>
-        <Tooltip content="Inner content">
-          <Link>link content</Link>
-        </Tooltip>
-      </div>,
+  it('invokes stopPropagation', () => {
+    const stopPropagationSpy = jest.fn();
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
     );
 
-    const wrapperComponent = findByTestID(tooltip, 'WrapperComponent');
-    wrapperComponent.simulate('click');
+    tooltip
+      .find('span')!
+      .trigger('onClick', {stopPropagation: stopPropagationSpy});
 
-    expect(spyFn).not.toHaveBeenCalled();
+    expect(stopPropagationSpy).toHaveBeenCalled();
   });
 });
+
+function findWrapperComponent(tooltip: any) {
+  return tooltip.find('span');
+}

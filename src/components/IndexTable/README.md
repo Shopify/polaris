@@ -72,11 +72,8 @@ function SimpleIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -148,11 +145,8 @@ function SimpleSmallScreenIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -212,11 +206,8 @@ function IndexTableWithCustomEmptyStateExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const emptyStateMarkup = (
     <EmptySearchResult
@@ -297,16 +288,135 @@ function IndexTableWithBulkActionsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const promotedBulkActions = [
     {
       content: 'Edit customers',
       onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+```
+
+### IndexTable with multiple promoted bulk actions
+
+Allows merchants to select items and perform different actions on the selection.
+
+```jsx
+function IndexTableWithMultiplePromotedBulkActionsExample() {
+  const customers = [
+    {
+      id: '3413',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2563',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const promotedBulkActions = [
+    {
+      content: 'Capture payments',
+      onAction: () => console.log('Todo: implement payment capture'),
+    },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
     },
   ];
   const bulkActions = [
@@ -396,11 +506,8 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const promotedBulkActions = [
     {
@@ -496,11 +603,8 @@ function IndexTableWithLoadingExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
@@ -573,11 +677,8 @@ function IndexTableWithFilteringExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -603,6 +704,7 @@ function IndexTableWithFilteringExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),
@@ -710,7 +812,7 @@ function IndexTableWithFilteringExample() {
 An index table with rows differentiated by status.
 
 ```jsx
-function SimpleIndexTableExample() {
+function IndexTableWithRowStatusExample() {
   const customers = [
     {
       id: '3411',
@@ -736,11 +838,8 @@ function SimpleIndexTableExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent, status}, index) => (
@@ -784,6 +883,142 @@ function SimpleIndexTableExample() {
 }
 ```
 
+### Index table with sticky last column
+
+An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
+
+```jsx
+function StickyLastCellIndexTableExample() {
+  const customers = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent', hidden: false},
+        ]}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+```
+
+### Index table without checkboxes
+
+An index table without checkboxes and bulk actions.
+
+```jsx
+function IndexTableWithoutCheckboxesExample() {
+  const customers = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row id={id} key={id} position={index}>
+        <IndexTable.Cell>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent', hidden: false},
+        ]}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+```
+
 ### IndexTable with all of its elements
 
 Use as a broad example that includes most of the elements and props available to index table.
@@ -813,11 +1048,8 @@ function IndexTableWithAllElementsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -864,6 +1096,7 @@ function IndexTableWithAllElementsExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),
@@ -938,11 +1171,12 @@ function IndexTableWithAllElementsExample() {
         hasMoreItems
         bulkActions={bulkActions}
         promotedBulkActions={promotedBulkActions}
+        lastColumnSticky
         headings={[
           {title: 'Name'},
           {title: 'Location'},
           {title: 'Order count'},
-          {title: 'Amount spent'},
+          {title: 'Amount spent', hidden: false},
         ]}
       >
         {rowMarkup}
@@ -998,11 +1232,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
     plural: 'customers',
   };
 
-  const {
-    selectedResources,
-    allResourcesSelected,
-    handleSelectionChange,
-  } = useIndexResourceState(customers);
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [sortValue, setSortValue] = useState('today');
@@ -1049,6 +1280,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
           label="Tagged with"
           value={taggedWith}
           onChange={handleTaggedWithChange}
+          autoComplete="off"
           labelHidden
         />
       ),

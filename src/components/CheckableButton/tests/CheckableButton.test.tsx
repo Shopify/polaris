@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {Checkbox} from 'components';
 
 import {CheckableButton} from '../CheckableButton';
@@ -18,43 +17,49 @@ describe('<CheckableButton />', () => {
   describe('select', () => {
     it('is passed down to Checkbox', () => {
       const {selected} = CheckableButtonProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find(Checkbox).prop('checked')).toStrictEqual(selected);
+      expect(element).toContainReactComponent(Checkbox, {
+        checked: selected,
+      });
+      expect(element).toContainReactComponentTimes(Checkbox, 1);
     });
   });
 
   describe('label', () => {
     it('is passed down to span', () => {
       const {label} = CheckableButtonProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find('span').last().text()).toStrictEqual(label);
+      expect(element).toContainReactComponent('span', {
+        className: 'Label',
+        children: label,
+      });
     });
   });
 
   describe('accessibilityLabel', () => {
     it('sets the label on the Checkbox', () => {
       const {accessibilityLabel} = CheckableButtonProps;
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find(Checkbox).first().prop('label')).toStrictEqual(
-        accessibilityLabel,
-      );
+      expect(element).toContainReactComponent(Checkbox, {
+        label: accessibilityLabel,
+      });
     });
 
     describe('disabled', () => {
       it('is passed down to checkbox', () => {
         const {disabled} = CheckableButtonProps;
-        const element = mountWithAppProvider(
+        const element = mountWithApp(
           <CheckableButton {...CheckableButtonProps} />,
         );
-        expect(element.find(Checkbox).first().prop('disabled')).toStrictEqual(
+        expect(element).toContainReactComponent(Checkbox, {
           disabled,
-        );
+        });
       });
     });
   });
@@ -62,21 +67,23 @@ describe('<CheckableButton />', () => {
   describe('onToggleAll', () => {
     it('is called when the CheckableButton is clicked', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
-      element.find('div').first().simulate('click');
+      element.find('div')!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });
 
     it('is called when the CheckableButton pressed with spacebar', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
-      element.find(Checkbox).first().simulate('click', {
+
+      element.find(Checkbox)!.find('input')!.trigger('onKeyUp', {
         keyCode: Key.Space,
       });
+
       expect(spy).toHaveBeenCalled();
     });
   });

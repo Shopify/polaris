@@ -5,7 +5,7 @@ $some-var: functioncall(20px);
 .BaseClass {
   --declatation-var: 1px;
   list-style: var(--declatation-var);
-  color: var(--declatation-var, red);
+  color: var(--declatation-var);
 
   &.nesting {
     padding: otherfunctioncall(tight);

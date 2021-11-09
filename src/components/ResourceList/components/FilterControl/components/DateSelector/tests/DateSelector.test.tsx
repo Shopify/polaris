@@ -1,7 +1,6 @@
 import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {
   DateSelector,
@@ -62,50 +61,48 @@ describe('<DateSelector />', () => {
 
   describe('dateOptionType', () => {
     it('builds date filters Select options for past option type', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} dateOptionType="past" />,
       );
 
       const expectOptionValues = dateOptionType.past;
 
       expect(
-        getOptionsValuesList(wrapper.find(Select).prop('options')),
+        getOptionsValuesList(wrapper.find(Select)!.prop('options')),
       ).toStrictEqual(expectOptionValues);
     });
 
     it('builds date filters Select options for future option type', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} dateOptionType="future" />,
       );
 
       const expectOptionValues = dateOptionType.future;
 
       expect(
-        getOptionsValuesList(wrapper.find(Select).prop('options')),
+        getOptionsValuesList(wrapper.find(Select)!.prop('options')),
       ).toStrictEqual(expectOptionValues);
     });
 
     it('builds date filters Select options for full option type', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} dateOptionType="full" />,
       );
 
       const expectOptionValues = dateOptionType.full;
 
       expect(
-        getOptionsValuesList(wrapper.find(Select).prop('options')),
+        getOptionsValuesList(wrapper.find(Select)!.prop('options')),
       ).toStrictEqual(expectOptionValues);
     });
 
     it('defaults to full date filters Select options when option type is missing', () => {
-      const wrapper = mountWithAppProvider(
-        <DateSelector {...mockDefaultProps} />,
-      );
+      const wrapper = mountWithApp(<DateSelector {...mockDefaultProps} />);
 
       const expectOptionValues = dateOptionType.full;
 
       expect(
-        getOptionsValuesList(wrapper.find(Select).prop('options')),
+        getOptionsValuesList(wrapper.find(Select)!.prop('options')),
       ).toStrictEqual(expectOptionValues);
     });
   });
@@ -114,49 +111,51 @@ describe('<DateSelector />', () => {
     it('sets option in date filters Select', () => {
       const dateFilterValue = DateFilterOption.PastMonth;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
       );
 
-      expect(wrapper.find(Select).prop('value')).toBe(dateFilterValue);
+      expect(wrapper).toContainReactComponent(Select, {
+        value: dateFilterValue,
+      });
     });
 
     it('displays DatePicker when filterValue is filter with minimum date predicate (on or after)', () => {
       const dateFilterValue = DateFilterOption.OnOrAfter;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
       );
 
-      expect(wrapper.find(DatePicker).exists()).toBe(true);
+      expect(wrapper).toContainReactComponent(DatePicker);
     });
 
     it('displays DatePicker when filterValue is filter with maximum date predicate (on or before)', () => {
       const dateFilterValue = DateFilterOption.OnOrBefore;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
       );
 
-      expect(wrapper.find(DatePicker).exists()).toBe(true);
+      expect(wrapper).toContainReactComponent(DatePicker);
     });
 
     it('does not display DatePicker when filterValue is filter without date predicate', () => {
       const dateFilterValue = DateFilterOption.PastMonth;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
       );
 
-      expect(wrapper.find(DatePicker).exists()).toBe(false);
+      expect(wrapper).not.toContainReactComponent(DatePicker);
     });
 
     it('is used to calculate dateFilterOption and gets passed to Select as value', () => {
       const filterValue = 'filter value';
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector {...mockDefaultProps} filterValue={filterValue} />,
       );
-      expect(wrapper.find(Select).prop('value')).toBe(filterValue);
+      expect(wrapper).toContainReactComponent(Select, {value: filterValue});
     });
   });
 
@@ -165,7 +164,7 @@ describe('<DateSelector />', () => {
       const filterValue = 'filter value';
       const filterKey = 'before';
       const filterMaxKey = 'before';
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={filterValue}
@@ -173,7 +172,7 @@ describe('<DateSelector />', () => {
           filterMaxKey={filterMaxKey}
         />,
       );
-      expect(wrapper.find(Select).prop('value')).toBe('on_or_before');
+      expect(wrapper).toContainReactComponent(Select, {value: 'on_or_before'});
     });
   });
 
@@ -184,18 +183,18 @@ describe('<DateSelector />', () => {
       const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);
       getTimezoneOffset.mockImplementation(() => timezoneOffset);
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={DateFilterOption.OnOrBefore}
         />,
       );
 
-      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
-      trigger(wrapper.find(TextField), 'onBlur');
+      wrapper.find(TextField)!.trigger('onChange', nextUserInputDate);
+      wrapper.find(TextField)!.trigger('onBlur');
 
-      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
-      const selectedInputDate = wrapper.find(TextField).prop('value');
+      const selectedDate = wrapper.find(DatePicker)!.prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField)!.prop('value');
 
       expect(selectedDate.toISOString()).toBe(
         `2019-01-01T0${timezoneOffsetInHours}:00:00.000Z`,
@@ -207,18 +206,18 @@ describe('<DateSelector />', () => {
       const nextUserInputDate = '2019-01-01';
       getTimezoneOffset.mockImplementation(() => -720);
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={DateFilterOption.OnOrBefore}
         />,
       );
 
-      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
-      trigger(wrapper.find(TextField), 'onBlur');
+      wrapper.find(TextField)!.trigger('onChange', nextUserInputDate);
+      wrapper.find(TextField)!.trigger('onBlur');
 
-      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
-      const selectedInputDate = wrapper.find(TextField).prop('value');
+      const selectedDate = wrapper.find(DatePicker)!.prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField)!.prop('value');
 
       expect(selectedDate.toISOString()).toContain(nextUserInputDate);
       expect(selectedInputDate).toBe(nextUserInputDate);
@@ -230,18 +229,18 @@ describe('<DateSelector />', () => {
       const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);
       getTimezoneOffset.mockImplementation(() => timezoneOffset);
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={DateFilterOption.OnOrBefore}
         />,
       );
 
-      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
-      trigger(wrapper.find(TextField), 'onBlur');
+      wrapper.find(TextField)!.trigger('onChange', nextUserInputDate);
+      wrapper.find(TextField)!.trigger('onBlur');
 
-      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
-      const selectedInputDate = wrapper.find(TextField).prop('value');
+      const selectedDate = wrapper.find(DatePicker)!.prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField)!.prop('value');
 
       expect(selectedDate.toISOString()).toBe(
         `2019-01-01T0${timezoneOffsetInHours}:00:00.000Z`,
@@ -255,7 +254,7 @@ describe('<DateSelector />', () => {
       const filterValue = 'filter value';
       const filterKey = 'after';
       const filterMinKey = 'after';
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={filterValue}
@@ -263,7 +262,7 @@ describe('<DateSelector />', () => {
           filterMinKey={filterMinKey}
         />,
       );
-      expect(wrapper.find(Select).prop('value')).toBe('on_or_after');
+      expect(wrapper).toContainReactComponent(Select, {value: 'on_or_after'});
     });
   });
 
@@ -272,14 +271,14 @@ describe('<DateSelector />', () => {
       const onFilterValueChangeSpy = jest.fn();
       const newDateFilter = DateFilterOption.PastMonth;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           onFilterValueChange={onFilterValueChangeSpy}
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', newDateFilter);
+      wrapper.find(Select)!.trigger('onChange', newDateFilter);
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith(newDateFilter);
     });
@@ -288,14 +287,14 @@ describe('<DateSelector />', () => {
       const onFilterValueChangeSpy = jest.fn();
       const newDateFilter = DateFilterOption.OnOrAfter;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           onFilterValueChange={onFilterValueChangeSpy}
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', newDateFilter);
+      wrapper.find(Select)!.trigger('onChange', newDateFilter);
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith(undefined);
     });
@@ -304,14 +303,14 @@ describe('<DateSelector />', () => {
       const onFilterValueChangeSpy = jest.fn();
       const newDateFilter = DateFilterOption.OnOrBefore;
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           onFilterValueChange={onFilterValueChangeSpy}
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', newDateFilter);
+      wrapper.find(Select)!.trigger('onChange', newDateFilter);
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith(undefined);
     });
@@ -321,7 +320,7 @@ describe('<DateSelector />', () => {
       const newDateFilter = DateFilterOption.OnOrAfter;
       const date = '2019-05-28';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={DateFilterOption.OnOrBefore}
@@ -329,8 +328,8 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(DatePicker), 'onChange', {end: new Date(date)});
-      trigger(wrapper.find(Select), 'onChange', newDateFilter);
+      wrapper.find(DatePicker)!.trigger('onChange', {end: new Date(date)});
+      wrapper.find(Select)!.trigger('onChange', newDateFilter);
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith('2019-05-28');
     });
@@ -340,7 +339,7 @@ describe('<DateSelector />', () => {
       const newDateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-05-28';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={DateFilterOption.OnOrAfter}
@@ -348,8 +347,8 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(DatePicker), 'onChange', {end: new Date(date)});
-      trigger(wrapper.find(Select), 'onChange', newDateFilter);
+      wrapper.find(DatePicker)!.trigger('onChange', {end: new Date(date)});
+      wrapper.find(Select)!.trigger('onChange', newDateFilter);
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith('2019-05-28');
     });
@@ -359,7 +358,7 @@ describe('<DateSelector />', () => {
       const dateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-05-28';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={dateFilter}
@@ -367,7 +366,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(DatePicker), 'onChange', {end: new Date(date)});
+      wrapper.find(DatePicker)!.trigger('onChange', {end: new Date(date)});
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith('2019-05-28');
     });
@@ -377,7 +376,7 @@ describe('<DateSelector />', () => {
       const dateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-08-22';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={dateFilter}
@@ -385,8 +384,8 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(TextField), 'onChange', date);
-      trigger(wrapper.find(TextField), 'onBlur');
+      wrapper.find(TextField)!.trigger('onChange', date);
+      wrapper.find(TextField)!.trigger('onBlur');
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith(date);
     });
@@ -396,7 +395,7 @@ describe('<DateSelector />', () => {
       const dateFilter = DateFilterOption.OnOrBefore;
       const invalidDate = '2019/08/22';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterValue={dateFilter}
@@ -404,8 +403,8 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(TextField), 'onChange', invalidDate);
-      trigger(wrapper.find(TextField), 'onBlur');
+      wrapper.find(TextField)!.trigger('onChange', invalidDate);
+      wrapper.find(TextField)!.trigger('onBlur');
 
       expect(onFilterValueChangeSpy).toHaveBeenCalledWith(undefined);
     });
@@ -416,7 +415,7 @@ describe('<DateSelector />', () => {
       const onFilterKeyChangeSpy = jest.fn();
       const initialConsumerFilterKey = 'starts';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterKey={initialConsumerFilterKey}
@@ -424,7 +423,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOption.PastMonth);
+      wrapper.find(Select)!.trigger('onChange', DateFilterOption.PastMonth);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(
         initialConsumerFilterKey,
@@ -435,7 +434,7 @@ describe('<DateSelector />', () => {
       const onFilterKeyChangeSpy = jest.fn();
       const filterMaxKey = 'starts_max';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterMaxKey={filterMaxKey}
@@ -443,7 +442,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOption.OnOrBefore);
+      wrapper.find(Select)!.trigger('onChange', DateFilterOption.OnOrBefore);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(filterMaxKey);
     });
@@ -452,7 +451,7 @@ describe('<DateSelector />', () => {
       const onFilterKeyChangeSpy = jest.fn();
       const filterMinKey = 'starts_min';
 
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <DateSelector
           {...mockDefaultProps}
           filterMinKey={filterMinKey}
@@ -460,117 +459,116 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOption.OnOrAfter);
+      wrapper.find(Select)!.trigger('onChange', DateFilterOption.OnOrAfter);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(filterMinKey);
     });
   });
 
   it('resets date in DatePicker when user removes date in TextField', () => {
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', '');
-
-    expect(wrapper.find(DatePicker).prop('selected')).toBeUndefined();
+    wrapper.find(TextField)!.trigger('onChange', '');
+    expect(wrapper).toContainReactComponent(DatePicker, {selected: undefined});
   });
 
   it('updates selected date in DatePicker when user enters a valid date in TextField and field is blurred', () => {
     const validUserInputDate = '2020-08-30';
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', validUserInputDate);
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(TextField)!.trigger('onChange', validUserInputDate);
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
+    const selectedDate = wrapper.find(DatePicker)!.prop('selected') as Date;
     expect(selectedDate.toISOString()).toContain(validUserInputDate);
   });
 
   it('does not update selected date in DatePicker when user enters an invalid date in TextField and field is blurred', () => {
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', 'INVALID');
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(TextField)!.trigger('onChange', 'INVALID');
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    expect(wrapper.find(DatePicker).prop('selected')).toBeUndefined();
+    expect(wrapper).toContainReactComponent(DatePicker, {selected: undefined});
   });
 
   it('resets selected date in DatePicker when user enters an invalid date in TextField and field is blurred', () => {
     const invalidUserInputDate = '08/20/2020';
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', invalidUserInputDate);
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(TextField)!.trigger('onChange', invalidUserInputDate);
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    expect(wrapper.find(DatePicker).prop('selected')).toBeUndefined();
+    expect(wrapper).toContainReactComponent(DatePicker, {selected: undefined});
   });
 
   it('removes date field error when invalid date is replaced by valid date in TextField', () => {
     const validUserInputDate = '2020-08-30';
     const invalidUserInputDate = '08/30/2020';
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', invalidUserInputDate);
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(TextField)!.trigger('onChange', invalidUserInputDate);
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    trigger(wrapper.find(TextField), 'onChange', validUserInputDate);
+    wrapper.find(TextField)!.trigger('onChange', validUserInputDate);
 
-    expect(wrapper.find(TextField).prop('error')).toBeUndefined();
+    expect(wrapper).toContainReactComponent(TextField, {error: undefined});
   });
 
   it('removes date field error when new date is selected in DatePicker', () => {
     const invalidUserInputDate = '08/30/2020';
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(TextField), 'onChange', invalidUserInputDate);
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(TextField)!.trigger('onChange', invalidUserInputDate);
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    trigger(wrapper.find(DatePicker), 'onChange', {end: new Date()});
+    wrapper.find(DatePicker)!.trigger('onChange', {end: new Date()});
 
-    expect(wrapper.find(TextField).prop('error')).toBeUndefined();
+    expect(wrapper).toContainReactComponent(TextField, {error: undefined});
   });
 
   it('does not display error when date is added in date filed by DatePicker and date field is blurred', () => {
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <DateSelector
         {...mockDefaultProps}
         filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
-    trigger(wrapper.find(DatePicker), 'onChange', {end: new Date()});
-    trigger(wrapper.find(TextField), 'onBlur');
+    wrapper.find(DatePicker)!.trigger('onChange', {end: new Date()});
+    wrapper.find(TextField)!.trigger('onBlur');
 
-    expect(wrapper.find(TextField).prop('error')).toBeUndefined();
+    expect(wrapper.find(TextField)!.prop('error')).toBeUndefined();
   });
 
   function getOptionsValuesList(options?: any) {

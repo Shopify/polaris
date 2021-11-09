@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {useUniqueId} from '../hooks';
 

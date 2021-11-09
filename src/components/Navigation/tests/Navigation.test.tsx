@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
@@ -9,11 +7,6 @@ import {Image} from '../../Image';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Navigation />', () => {
-  it('mounts', () => {
-    const navigation = mountWithAppProvider(<Navigation location="/" />);
-    expect(navigation.exists()).toBe(true);
-  });
-
   it('renders an image if the theme provider is present', () => {
     const navigation = mountWithApp(<Navigation location="/" />, {
       theme: {logo: {url: 'https://shopify.com/logo'}},
@@ -21,9 +14,19 @@ describe('<Navigation />', () => {
     expect(navigation).toContainReactComponent(Image);
   });
 
+  it('renders nav with aria-labelledby when passed as prop', () => {
+    const label = 'label-id';
+    const navigation = mountWithApp(
+      <Navigation location="/" ariaLabelledBy={label} />,
+    );
+    expect(navigation).toContainReactComponent('nav', {
+      'aria-labelledby': label,
+    });
+  });
+
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.SFC = (_props) => {
+      const Child: React.FunctionComponent = (_props) => {
         return (
           <NavigationContext.Consumer>
             {({location}) => {
@@ -33,7 +36,7 @@ describe('<Navigation />', () => {
         );
       };
 
-      const navigation = mountWithAppProvider(
+      const navigation = mountWithApp(
         <NavigationContext.Provider value={{location: '/'}}>
           <Navigation location="/">
             <Child />
@@ -41,13 +44,11 @@ describe('<Navigation />', () => {
         </NavigationContext.Provider>,
       );
 
-      const div = navigation.find(Child).find('div').first();
-
-      expect(div.exists()).toBe(true);
+      expect(navigation.find(Child)).toContainReactComponent('div');
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC = (_props) => {
+      const Child: React.FunctionComponent = (_props) => {
         return (
           <WithinContentContext.Consumer>
             {(withinContentContainer) => {
@@ -57,29 +58,32 @@ describe('<Navigation />', () => {
         );
       };
 
-      const navigation = mountWithAppProvider(
+      const navigation = mountWithApp(
         <Navigation location="/">
           <Child />
         </Navigation>,
       );
 
-      expect(navigation.find(Child).find('div')).toHaveLength(1);
+      expect(navigation.find(Child)).toContainReactComponentTimes('div', 1);
     });
   });
 
   describe('contextControl', () => {
     it('doesn’t render by default', () => {
-      const contextControl = <div />;
-      const navigation = mountWithAppProvider(<Navigation location="/" />);
-      expect(navigation.contains(contextControl)).toBe(false);
+      const navigation = mountWithApp(<Navigation location="/" />);
+      expect(navigation).not.toContainReactComponent('div', {
+        className: 'ContextControl',
+      });
     });
 
     it('renders the given context control', () => {
       const contextControl = <div />;
-      const navigation = mountWithAppProvider(
+      const navigation = mountWithApp(
         <Navigation location="/" contextControl={contextControl} />,
       );
-      expect(navigation.contains(contextControl)).toBe(true);
+      expect(navigation).toContainReactComponent('div', {
+        className: 'ContextControl',
+      });
     });
   });
 });

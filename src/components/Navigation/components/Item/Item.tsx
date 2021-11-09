@@ -6,6 +6,7 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
+import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -27,6 +28,7 @@ interface ItemURLDetails {
   exactMatch?: boolean;
   matchPaths?: string[];
   excludePaths?: string[];
+  external?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -34,13 +36,14 @@ export interface SubNavigationItem extends ItemURLDetails {
   label: string;
   disabled?: boolean;
   new?: boolean;
-  onClick?(event: MouseEvent<HTMLElement>): void;
+  onClick?(): void;
 }
 
 interface SecondaryAction {
   url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  onClick?(): void;
 }
 
 export interface ItemProps extends ItemURLDetails {
@@ -81,6 +84,7 @@ export function Item({
   exactMatch,
   matchPaths,
   excludePaths,
+  external,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -126,6 +130,20 @@ export function Item({
     </div>
   ) : null;
 
+  const externalIconLabel = i18n.translate(
+    'Polaris.Common.newWindowAccessibilityHint',
+  );
+
+  const externalLinkIconMarkup = external ? (
+    <div className={styles.ExternalIcon}>
+      <Icon
+        accessibilityLabel={externalIconLabel}
+        source={ExternalMinor}
+        color="base"
+      />
+    </div>
+  ) : null;
+
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
@@ -164,6 +182,7 @@ export function Item({
       styles.Item,
       disabled && styles['Item-disabled'],
       keyFocused && styles.keyFocused,
+      selectedOverride && styles['Item-selected'],
     );
 
     return (
@@ -192,6 +211,7 @@ export function Item({
       tabIndex={tabIndex}
       aria-disabled={disabled}
       aria-label={secondaryAction.accessibilityLabel}
+      onClick={secondaryAction.onClick}
     >
       <Icon source={secondaryAction.icon} />
     </UnstyledLink>
@@ -248,13 +268,23 @@ export function Item({
         <Secondary expanded={showExpanded} id={secondaryNavigationId}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;
+            const onClick = () => {
+              if (onNavigationDismiss) {
+                onNavigationDismiss();
+              }
+
+              if (item.onClick && item.onClick !== onNavigationDismiss) {
+                item.onClick();
+              }
+            };
+
             return (
               <Item
                 {...rest}
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={onNavigationDismiss}
+                onClick={onClick}
               />
             );
           })}
@@ -274,6 +304,7 @@ export function Item({
         <UnstyledLink
           url={url}
           className={itemClassName}
+          external={external}
           tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
@@ -287,6 +318,7 @@ export function Item({
           )}
         >
           {itemContentMarkup}
+          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>

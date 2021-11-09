@@ -1,5 +1,6 @@
 export const Tokens = {
   // Border Radiuses
+  borderRadiusSlim: rem('2px'),
   borderRadiusBase: rem('4px'),
   borderRadiusWide: rem('8px'),
   borderRadiusFull: '50%',

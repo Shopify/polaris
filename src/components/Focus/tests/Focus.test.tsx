@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Focus, FocusProps} from '../Focus';
 

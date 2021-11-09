@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {Avatar, Image} from 'components';
 
 jest.mock('../../../utilities/use-is-after-initial-mount', () => {
@@ -14,7 +13,7 @@ jest.mock('../../../utilities/use-is-after-initial-mount', () => {
 describe('<Avatar /> Server-side only', () => {
   it('does not render an Image', () => {
     const src = 'image/path/';
-    const avatar = mountWithAppProvider(<Avatar source={src} />);
-    expect(avatar.find(Image)).toHaveLength(0);
+    const avatar = mountWithApp(<Avatar source={src} />);
+    expect(avatar).not.toContainReactComponent(Image);
   });
 });

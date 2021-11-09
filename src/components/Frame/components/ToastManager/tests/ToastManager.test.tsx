@@ -1,7 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
@@ -19,7 +18,7 @@ window.matchMedia =
 
 describe('<ToastManager />', () => {
   it('updates toast safely', () => {
-    const toastManager = mountWithAppProvider(
+    const toastManager = mountWithApp(
       <ToastManager
         toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
       />,
@@ -33,27 +32,28 @@ describe('<ToastManager />', () => {
   });
 
   it('has and aria-live attribute of assertive', () => {
-    const toastManager = mountWithAppProvider(
+    const toastManager = mountWithApp(
       <ToastManager
         toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
       />,
     );
-    expect(toastManager.find('[aria-live]').prop('aria-live')).toBe(
-      'assertive',
-    );
+
+    expect(toastManager).toContainReactComponent('div', {
+      'aria-live': 'assertive',
+    });
   });
 });
 
 describe('<Toast />', () => {
   it('renders and updates multiple toasts', () => {
-    const multipleMessages = mountWithAppProvider(
+    const multipleMessages = mountWithApp(
       <Frame>
         <Toast content="Image uploaded" onDismiss={noop} />
         <Toast content="Product saved" onDismiss={noop} />
       </Frame>,
     );
 
-    expect(multipleMessages.find(Toast)).toHaveLength(2);
+    expect(multipleMessages).toContainReactComponentTimes(Toast, 2);
   });
 });
 
@@ -72,12 +72,12 @@ describe('onDismiss()', () => {
     const duration1 = 3000;
     const duration2 = 10000;
 
-    mountWithAppProvider(
+    mountWithApp(
       <Frame>
         <Toast content="Product saved" onDismiss={spy1} duration={duration1} />
       </Frame>,
     );
-    mountWithAppProvider(
+    mountWithApp(
       <Frame>
         <Toast content="Product saved" onDismiss={spy2} duration={duration2} />
       </Frame>,

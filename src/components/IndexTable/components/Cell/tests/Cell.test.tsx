@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Cell} from '../Cell';
 

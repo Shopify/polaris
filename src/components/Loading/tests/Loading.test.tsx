@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Loading} from '../Loading';
 
@@ -14,7 +13,7 @@ describe('<Loading />', () => {
       startLoading: jest.fn(),
     };
 
-    mountWithAppProvider(<Loading />, {frame: mockFrameContext});
+    mountWithApp(<Loading />, {frame: mockFrameContext});
     expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
 
@@ -22,7 +21,7 @@ describe('<Loading />', () => {
     const mockFrameContext = {
       stopLoading: jest.fn(),
     };
-    const frame = mountWithAppProvider(<Loading />, {frame: mockFrameContext});
+    const frame = mountWithApp(<Loading />, {frame: mockFrameContext});
     expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
     frame.unmount();

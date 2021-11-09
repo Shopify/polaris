@@ -1,10 +1,9 @@
 import React from 'react';
 import {Heading, Popover, Button, ActionList, Badge} from 'components';
-import {mountWithApp} from 'test-utilities';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {MediaCard} from '../MediaCard';
+import styles from '../MediaCard.scss';
 
 const mockProps = {
   children: <img alt="" />,
@@ -33,14 +32,12 @@ describe('<MediaCard>', () => {
         <Badge>{badgeString}</Badge>
       </h2>
     );
-    const videoCard = mountWithAppProvider(
-      <MediaCard {...mockProps} title={title} />,
-    );
+    const videoCard = mountWithApp(<MediaCard {...mockProps} title={title} />);
 
-    const headerMarkup = videoCard.find('h2');
+    const headerMarkup = videoCard.find('h2')!;
 
-    expect(headerMarkup.text()).toContain(titleString);
-    expect(headerMarkup.find('Badge').text()).toBe(badgeString);
+    expect(headerMarkup.find(Badge)).toContainReactText(badgeString);
+    expect(headerMarkup).toContainReactText(titleString);
   });
 
   it('renders the description as a paragraph', () => {
@@ -50,6 +47,41 @@ describe('<MediaCard>', () => {
     );
 
     expect(videoCard).toContainReactComponent('p', {children: description});
+  });
+
+  it('does not render a wrapper around actions when primaryAction and secondaryAction are empty', () => {
+    const videoCard = mountWithApp(
+      <MediaCard
+        {...mockProps}
+        primaryAction={undefined}
+        secondaryAction={undefined}
+      />,
+    );
+
+    expect(videoCard).not.toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
+  });
+
+  it('renders a wrapper around actions when primaryAction and secondaryAction are provided', () => {
+    const mockAction = {content: 'test'};
+    const videoCardWithPrimaryAction = mountWithApp(
+      <MediaCard {...mockProps} primaryAction={mockAction} />,
+    );
+    const videoCardWithSecondaryAction = mountWithApp(
+      <MediaCard
+        {...mockProps}
+        primaryAction={undefined}
+        secondaryAction={mockAction}
+      />,
+    );
+
+    expect(videoCardWithPrimaryAction).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
+    expect(videoCardWithSecondaryAction).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
   });
 
   it('renders a Button with the primaryAction', () => {

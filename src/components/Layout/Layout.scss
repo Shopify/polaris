@@ -22,7 +22,7 @@ $relative-size: $primary-basis / $secondary-basis;
 
     a,
     button {
-      color: var(--p-text, color('ink'));
+      color: var(--p-text);
     }
   }
 }

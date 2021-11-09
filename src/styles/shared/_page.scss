@@ -23,10 +23,10 @@ $actions-vertical-spacing: spacing(tight);
 }
 
 @mixin page-content-layout {
-  margin: spacing() 0;
+  margin: spacing(tight) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: spacing();
+    margin-top: spacing(tight);
   }
 }
 

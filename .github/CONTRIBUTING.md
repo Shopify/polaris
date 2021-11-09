@@ -68,7 +68,6 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. Run `yarn` in the repository root
 1. If you’ve fixed a bug or added code, make sure to add tests
 1. Ensure the test suite passes with `yarn test` (protip: `yarn test TestName` is helpful in development)
-1. If your pull request modifies any SVG files run `yarn run sewing-kit optimize`
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn type-check`
@@ -95,7 +94,6 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can 
 
 - `yarn dev` runs a Storybook server which includes a playground editable at `playground/Playground.tsx`
 - `yarn test` runs the complete test suite
-- `yarn test:coverage` runs tests and generates a test coverage report
 - `yarn test <pattern>` runs tests with matching filenames
 - `yarn tophat` runs a local development server and mounts all of the component examples
 

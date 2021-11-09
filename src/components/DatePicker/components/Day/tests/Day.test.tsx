@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Day} from '../Day';
 
@@ -18,33 +16,37 @@ function MockTable({children}: {children: React.ReactNode}) {
 describe('<Day />', () => {
   it('renders a button', () => {
     const currentDay = new Date(2017, 1, 1, 0, 0);
-    const day = mountWithAppProvider(
+    const day = mountWithApp(
       <MockTable>
         <Day focused day={currentDay} selected disabled={false} />
       </MockTable>,
     );
-    expect(day.find('button')).toHaveLength(1);
+    expect(day).toContainReactComponentTimes('button', 1);
   });
 
   describe('tabIndex', () => {
     it('sets the tabIndex to 0 if day is today', () => {
       const currentDay = new Date();
-      const day = mountWithAppProvider(
+      const day = mountWithApp(
         <MockTable>
           <Day focused day={currentDay} selected disabled={false} />
         </MockTable>,
       );
-      expect(day.find('button').prop('tabIndex')).toBe(0);
+      expect(day).toContainReactComponent('button', {
+        tabIndex: 0,
+      });
     });
 
     it('sets the tabIndex to -1 if day is disabled', () => {
       const currentDay = new Date();
-      const day = mountWithAppProvider(
+      const day = mountWithApp(
         <MockTable>
           <Day focused day={currentDay} selected disabled />
         </MockTable>,
       );
-      expect(day.find('button').prop('tabIndex')).toBe(-1);
+      expect(day).toContainReactComponent('button', {
+        tabIndex: -1,
+      });
     });
   });
 
@@ -52,7 +54,7 @@ describe('<Day />', () => {
     it('gets called if button is not disabled', () => {
       const spy = jest.fn();
       const currentDay = new Date();
-      const day = mountWithAppProvider(
+      const day = mountWithApp(
         <MockTable>
           <Day
             focused
@@ -63,19 +65,19 @@ describe('<Day />', () => {
           />
         </MockTable>,
       );
-      day.find('button').simulate('click');
+      day.find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('does not get called if button is disabled', () => {
       const spy = jest.fn();
       const currentDay = new Date();
-      const day = mountWithAppProvider(
+      const day = mountWithApp(
         <MockTable>
           <Day focused day={currentDay} selected disabled onClick={spy} />
         </MockTable>,
       );
-      day.find('button').simulate('click');
+      day.find('button')!.trigger('onClick');
       expect(spy).not.toHaveBeenCalled();
     });
   });
@@ -84,12 +86,12 @@ describe('<Day />', () => {
     it('gets called if button is focused', () => {
       const spy = jest.fn();
       const currentDay = new Date();
-      const day = mountWithAppProvider(
+      const day = mountWithApp(
         <MockTable>
           <Day day={currentDay} selected onFocus={spy} />
         </MockTable>,
       );
-      day.find('button').simulate('focus');
+      day.find('button')!.trigger('onFocus');
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });

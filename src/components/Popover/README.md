@@ -263,6 +263,7 @@ function PopoverFormExample() {
             label="Tags"
             value={tagValue}
             onChange={handleTagValueChange}
+            autoComplete="off"
           />
           <Button size="slim">Add filter</Button>
         </FormLayout>

@@ -1,5 +1,5 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {durationBase} from '@shopify/polaris-tokens';
+import {durationFast} from '@shopify/polaris-tokens';
 
 import {findFirstFocusableNode} from '../../../../utilities/focus';
 import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
@@ -69,6 +69,16 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private exitingTimer?: number;
+  private overlayRef: React.RefObject<PositionedOverlay>;
+
+  constructor(props: PopoverOverlayProps) {
+    super(props);
+    this.overlayRef = createRef();
+  }
+
+  forceUpdatePosition() {
+    this.overlayRef.current?.forceUpdatePosition();
+  }
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
     this.setState({transitionStatus}, cb);
@@ -92,7 +102,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, durationBase);
+        }, durationFast);
       });
     }
 
@@ -101,7 +111,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, durationBase);
+        }, 0);
       });
     }
   }
@@ -136,7 +146,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
     return (
       <PositionedOverlay
-        testID="positionedOverlay"
+        ref={this.overlayRef}
         fullWidth={fullWidth}
         active={active}
         activator={activator}

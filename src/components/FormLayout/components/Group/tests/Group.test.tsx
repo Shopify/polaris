@@ -1,37 +1,44 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
 import {Group} from '../Group';
 
 describe('<Group />', () => {
-  let children: React.ReactNode;
-  let title: string;
-  let helpText: string;
-  let item: any;
+  const children = (
+    <TextField onChange={noop} label="test" autoComplete="off" />
+  );
+  const title = 'Title';
+  const helpText = 'Help text';
 
-  beforeAll(() => {
-    children = <TextField onChange={noop} label="test" />;
-    title = 'Title';
-    helpText = 'Help text';
-    item = mountWithAppProvider(
+  it('renders its children', () => {
+    const group = mountWithApp(
       <Group title={title} helpText={helpText}>
         {children}
       </Group>,
     );
-  });
-
-  it('renders its children', () => {
-    expect(item.contains(children)).toBe(true);
+    expect(group).toContainReactComponent(TextField, {
+      onChange: noop,
+      label: 'test',
+    });
   });
 
   it('renders its title', () => {
-    expect(item.contains(title)).toBe(true);
+    const group = mountWithApp(
+      <Group title={title} helpText={helpText}>
+        {children}
+      </Group>,
+    );
+    expect(group).toContainReactText(title);
   });
 
   it('renders its help text', () => {
-    expect(item.contains(helpText)).toBe(true);
+    const group = mountWithApp(
+      <Group title={title} helpText={helpText}>
+        {children}
+      </Group>,
+    );
+    expect(group).toContainReactText(helpText);
   });
 });
 

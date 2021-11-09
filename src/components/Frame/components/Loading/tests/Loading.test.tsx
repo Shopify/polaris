@@ -1,11 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Loading} from '../Loading';
 
 describe('<Loading />', () => {
-  const loading = mountWithAppProvider(<Loading />);
   let requestAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
@@ -21,17 +19,20 @@ describe('<Loading />', () => {
   });
 
   it('mounts', () => {
-    expect(loading.exists()).toBe(true);
+    const loading = mountWithApp(<Loading />);
+    expect(loading).not.toBeNull();
   });
 
   it('unmounts safely', () => {
+    const loading = mountWithApp(<Loading />);
+
     expect(() => {
       loading.unmount();
     }).not.toThrow();
   });
 
   it('calls requestAnimationFrame', () => {
-    mountWithAppProvider(<Loading />);
+    mountWithApp(<Loading />);
     expect(requestAnimationFrameSpy).toHaveBeenCalledTimes(1);
   });
 });

@@ -92,12 +92,14 @@ export function App() {
                   label="First name"
                   placeholder="Tom"
                   onChange={handleFirstChange}
+                  autoComplete="given-name"
                 />
                 <TextField
                   value={last}
                   label="Last name"
                   placeholder="Ford"
                   onChange={handleLastChange}
+                  autoComplete="family-name"
                 />
               </FormLayout.Group>
 
@@ -106,6 +108,7 @@ export function App() {
                 label="Email"
                 placeholder="example@email.com"
                 onChange={handleEmailChange}
+                autoComplete="email"
               />
 
               <ChoiceList

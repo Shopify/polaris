@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {SettingAction} from 'components/SettingAction';
 
 import {SettingToggle} from '../SettingToggle';
@@ -16,9 +15,9 @@ describe('<SettingToggle />', () => {
         content: 'Click me!',
         onAction: noop,
       };
-      const toggle = mountWithAppProvider(<SettingToggle action={action} />);
+      const toggle = mountWithApp(<SettingToggle action={action} />);
       const {children} = getComponentProps(
-        toggle.find(SettingAction).prop('action'),
+        toggle.find(SettingAction)!.prop('action'),
       );
       expect(children).toBe('Click me!');
     });
@@ -30,9 +29,9 @@ describe('<SettingToggle />', () => {
         content: 'Click me!',
         onAction: noop,
       };
-      const toggle = mountWithAppProvider(<SettingToggle action={action} />);
+      const toggle = mountWithApp(<SettingToggle action={action} />);
       const {primary} = getComponentProps(
-        toggle.find(SettingAction).prop('action'),
+        toggle.find(SettingAction)!.prop('action'),
       );
       expect(primary).toBeTruthy();
     });
@@ -42,11 +41,9 @@ describe('<SettingToggle />', () => {
         content: 'Click me!',
         onAction: noop,
       };
-      const toggle = mountWithAppProvider(
-        <SettingToggle action={action} enabled />,
-      );
+      const toggle = mountWithApp(<SettingToggle action={action} enabled />);
       const {primary} = getComponentProps(
-        toggle.find(SettingAction).prop('action'),
+        toggle.find(SettingAction)!.prop('action'),
       );
       expect(primary).toBeFalsy();
     });
@@ -54,11 +51,9 @@ describe('<SettingToggle />', () => {
 
   describe('children', () => {
     it('renders the given children', () => {
-      const children = <div />;
-      const toggle = mountWithAppProvider(
-        <SettingToggle>{children}</SettingToggle>,
-      );
-      expect(toggle.contains(children)).toBeTruthy();
+      const children = <div id="someId" />;
+      const toggle = mountWithApp(<SettingToggle>{children}</SettingToggle>);
+      expect(toggle).toContainReactComponent('div', {id: 'someId'});
     });
   });
 });

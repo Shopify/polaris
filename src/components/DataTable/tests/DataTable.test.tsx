@@ -1,8 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Checkbox} from 'components';
 
 import {Cell, Navigation} from '../components';
@@ -80,7 +78,7 @@ describe('<DataTable />', () => {
         'text',
         'numeric',
       ];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable
           {...defaultProps}
           columnContentTypes={columnContentTypes}
@@ -89,12 +87,12 @@ describe('<DataTable />', () => {
         />,
       );
 
-      const cells = dataTable.find(Cell);
-      const firstColumnCells = cells.filterWhere(
+      const cells = dataTable.findAll(Cell);
+      const firstColumnCells = cells.filter(
         (cell) => cell.prop('firstColumn') === true,
       );
 
-      const secondColumnCells = cells.filterWhere(
+      const secondColumnCells = cells.filter(
         (cell) => cell.prop('firstColumn') !== true,
       );
 
@@ -113,23 +111,23 @@ describe('<DataTable />', () => {
   describe('headings', () => {
     it('renders a single table header row', () => {
       const headings = ['Heading 1', 'Heading 2', 'Heading 3'];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} headings={headings} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(1);
+      expect(dataTable.find('thead')).toContainReactComponentTimes('tr', 1);
     });
 
     it('renders each header Cell with the content provided', () => {
       const headings = ['Heading 1', 'Heading 2', 'Heading 3'];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} headings={headings} />,
       );
 
-      const headingCells = dataTable.find('thead tr').find(Cell);
+      const headingCells = dataTable.find('thead')!.find('tr')!.findAll(Cell);
 
       headingCells.forEach((headingCell, headingCellIndex) =>
-        expect(headingCell.text()).toBe(headings[headingCellIndex]),
+        expect(headingCell).toContainReactText(headings[headingCellIndex]),
       );
     });
 
@@ -139,107 +137,106 @@ describe('<DataTable />', () => {
         'Heading 2',
         'Heading 3',
       ];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} headings={headings} />,
       );
 
-      const checkbox = dataTable.find('thead tr').find(Checkbox);
+      const headerCell = dataTable.find('thead')!.find('tr')!;
 
-      expect(checkbox).toHaveLength(1);
-      expect(checkbox.prop('label')).toBe('Heading 1');
+      expect(headerCell).toContainReactComponent(Checkbox, {
+        label: 'Heading 1',
+      });
     });
   });
 
   describe('totals', () => {
     it('renders a second table header row with totals', () => {
       const totals = ['', '$20.00', ''];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      const headingRows = dataTable.find('thead');
+      expect(headingRows).toContainReactComponentTimes('tr', 2);
 
-      const totalsRow = dataTable.find('thead tr').at(1);
-
-      expect(totalsRow.text()).toContain(totals.join(''));
+      const totalsRow = headingRows!.findAll('tr')[1];
+      expect(totalsRow).toContainReactText(totals.join(''));
     });
 
     it('renders the singular default totals row label when only one total is provided', () => {
       const totals = ['', '', '', '', '$155,830.00'];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      const headingRows = dataTable.find('thead');
+      expect(headingRows).toContainReactComponentTimes('tr', 2);
 
       const firstTotalCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('total') === true)
-        .first();
-
-      expect(firstTotalCell.prop('content')).toBe('Total');
+        .findAll(Cell)
+        .find((cell) => cell.prop('total'));
+      expect(firstTotalCell?.prop('content')).toBe('Total');
     });
 
     it('renders the plural default totals label when more than one total is provided', () => {
       const totals = ['', '', '', '255', '$155,830.00'];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      const headingRows = dataTable.find('thead');
+      expect(headingRows).toContainReactComponentTimes('tr', 2);
 
       const firstTotalCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('total') === true)
-        .first();
-
-      expect(firstTotalCell.prop('content')).toBe('Totals');
+        .findAll(Cell)
+        .find((cell) => cell.prop('total'));
+      expect(firstTotalCell?.prop('content')).toBe('Totals');
     });
 
     it('sets the contentType of non-empty total Cells to numeric', () => {
       const totals = ['', '$20.00', ''];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} />,
       );
-      const totalsCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('total') === true);
 
-      const nonEmptyTotalCells = totalsCells.filterWhere(
+      const totalsCells = dataTable
+        .findAll(Cell)
+        .filter((cell) => cell.prop('total'));
+      const nonEmptyTotalCells = totalsCells.filter(
         (cell) => cell.prop('contentType') === 'numeric',
       );
 
-      const secondTotalsCell = totalsCells.at(1);
-
       expect(nonEmptyTotalCells).toHaveLength(1);
-      expect(secondTotalsCell.prop('contentType')).toBe('numeric');
+
+      const secondTotalsCell = totalsCells[1];
+      expect(secondTotalsCell).toHaveReactProps({contentType: 'numeric'});
     });
 
     it('renders an empty Cell for falsey total values', () => {
       const totals = ['', '', ''];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      expect(dataTable.find('thead')).toContainReactComponentTimes('tr', 2);
 
       const totalsCells = dataTable
-        .find(Cell)
-        .filterWhere(
+        .findAll(Cell)
+        .filter(
           (cell) =>
             cell.prop('total') === true && cell.prop('firstColumn') !== true,
         );
 
-      totalsCells.forEach((total) => expect(total.text()).toBe(''));
+      totalsCells.forEach((total) => expect(total).toContainReactText(''));
     });
 
     it('renders totals in the footer with a showTotalsInFooter prop', () => {
       const totals = ['', '', ''];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} showTotalsInFooter />,
       );
 
-      expect(dataTable.find('tfoot')).toHaveLength(1);
+      expect(dataTable).toContainReactComponentTimes('tfoot', 1);
     });
   });
 
@@ -251,18 +248,16 @@ describe('<DataTable />', () => {
         plural: 'Prices',
       };
 
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      expect(dataTable.find('thead')).toContainReactComponentTimes('tr', 2);
 
-      const firstTotalCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('total') === true)
-        .first();
-
-      expect(firstTotalCell.prop('content')).toBe('Price');
+      expect(dataTable).toContainReactComponentTimes(Cell, 1, {
+        total: true,
+        content: 'Price',
+      });
     });
 
     it('renders the plural custom totals label when more than one total is provided', () => {
@@ -272,104 +267,100 @@ describe('<DataTable />', () => {
         plural: 'Prices',
       };
 
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(2);
+      expect(dataTable.find('thead')).toContainReactComponentTimes('tr', 2);
 
-      const firstTotalCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('total') === true)
-        .first();
-
-      expect(firstTotalCell.prop('content')).toBe('Prices');
+      expect(dataTable).toContainReactComponentTimes(Cell, 1, {
+        total: true,
+        content: 'Prices',
+      });
     });
   });
 
   describe('rows', () => {
     it('renders a table body row for each list of table data provided', () => {
       const rows = [['First row'], ['Second row'], ['Third row']];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} rows={rows} />,
       );
 
-      expect(dataTable.find('tbody tr')).toHaveLength(3);
+      expect(dataTable.find('tbody')).toContainReactComponentTimes('tr', 3);
     });
   });
 
   describe('truncate', () => {
     it('defaults to false', () => {
-      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
 
       const firstColumnCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('firstColumn') === true);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('firstColumn') === true);
 
       firstColumnCells.forEach((cell) =>
-        expect(cell.prop('truncate')).toBe(false),
+        expect(cell).toHaveReactProps({truncate: false}),
       );
     });
 
     it('passes the value provided to its cells', () => {
-      const dataTable = mountWithAppProvider(
-        <DataTable {...defaultProps} truncate />,
-      );
+      const dataTable = mountWithApp(<DataTable {...defaultProps} truncate />);
 
       const firstColumnCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('firstColumn') === true);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('firstColumn') === true);
 
       firstColumnCells.forEach((cell) =>
-        expect(cell.prop('truncate')).toBe(true),
+        expect(cell).toHaveReactProps({truncate: true}),
       );
     });
   });
 
   describe('hideScrollIndicator', () => {
     it('shows <Navigation /> by default', () => {
-      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
 
-      expect(dataTable.find(Navigation)).toHaveLength(1);
+      expect(dataTable).toContainReactComponent(Navigation);
     });
 
-    it('hide <Navigation /> when true', () => {
-      const dataTable = mountWithAppProvider(
+    it('hides <Navigation /> when true', () => {
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} hideScrollIndicator />,
       );
 
-      expect(dataTable.find(Navigation)).toHaveLength(0);
+      expect(dataTable).not.toContainReactComponent(Navigation);
     });
 
-    it('show <Navigation /> when false', () => {
-      const dataTable = mountWithAppProvider(
+    it('shows <Navigation /> when false', () => {
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} hideScrollIndicator={false} />,
       );
 
-      expect(dataTable.find(Navigation)).toHaveLength(1);
+      expect(dataTable).toContainReactComponent(Navigation);
     });
   });
 
   describe('verticalAlign', () => {
     it('defaults to undefined', () => {
-      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
 
-      const cells = dataTable.find(Cell);
+      const cells = dataTable.findAll(Cell);
 
       cells.forEach((cell) =>
-        expect(cell.prop('verticalAlign')).toBeUndefined(),
+        expect(cell).toHaveReactProps({verticalAlign: undefined}),
       );
     });
 
     it('passes the value provided to its cells', () => {
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} verticalAlign="middle" />,
       );
 
-      const cells = dataTable.find(Cell);
+      const cells = dataTable.findAll(Cell);
 
       cells.forEach((cell) =>
-        expect(cell.prop('verticalAlign')).toBe('middle'),
+        expect(cell).toHaveReactProps({verticalAlign: 'middle'}),
       );
     });
   });
@@ -377,53 +368,55 @@ describe('<DataTable />', () => {
   describe('footerContent', () => {
     it('renders string footer content when provided', () => {
       const footerContent = 'Footer text';
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} footerContent={footerContent} />,
       );
 
-      expect(dataTable.text()).toContain(footerContent);
+      expect(dataTable).toContainReactText(footerContent);
     });
 
     it('renders JSX footer content when provided', () => {
-      const footerContent = <div>Footer text</div>;
-      const dataTable = mountWithAppProvider(
+      const footerContent: any = <div>Footer text</div>;
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} footerContent={footerContent} />,
       );
 
-      expect(dataTable.containsMatchingElement(footerContent)).toBe(true);
+      expect(dataTable).toContainReactComponent(footerContent);
     });
   });
 
   describe('sortable', () => {
     it('defaults to a non-sortable table', () => {
-      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
-      const cells = dataTable.find(Cell);
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
+      const cells = dataTable.findAll(Cell);
 
-      cells.forEach((cell) => expect(cell.find('button')).toHaveLength(0));
+      cells.forEach((cell) =>
+        expect(cell).not.toContainReactComponent('button'),
+      );
     });
 
     it('renders a sortable header Cell for each true index', () => {
       const sortable = [false, true, false, false, true];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} sortable={sortable} />,
       );
 
       const sortableCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('sortable') === true);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('sortable') === true);
 
       expect(sortableCells).toHaveLength(2);
     });
 
     it('renders a plain header Cell for each false index', () => {
       const sortable = [false, true, false, false, true];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} sortable={sortable} />,
       );
 
       const nonSortableCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('sortable') === false);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('sortable') === false);
 
       expect(nonSortableCells).toHaveLength(3);
     });
@@ -431,22 +424,26 @@ describe('<DataTable />', () => {
 
   describe('hoverable', () => {
     it('defaults to rows with hover state', () => {
-      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
-      const rows = dataTable.find('tbody tr');
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
+      const rows = dataTable.find('tbody')!.findAll('tr');
 
       rows.forEach((row) =>
-        expect(row.props().className).toContain('hoverable'),
+        expect(row).toHaveReactProps({
+          className: expect.stringContaining('hoverable'),
+        }),
       );
     });
 
     it('renders rows without hover state class name when false', () => {
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} hoverable={false} />,
       );
-      const rows = dataTable.find('tbody tr');
+      const rows = dataTable.find('tbody')!.findAll('tr');
 
       rows.forEach((row) =>
-        expect(row.props().className).not.toContain('hoverable'),
+        expect(row).not.toHaveReactProps({
+          className: expect.stringContaining('hoverable'),
+        }),
       );
     });
   });
@@ -454,7 +451,7 @@ describe('<DataTable />', () => {
   describe('defaultSortDirection', () => {
     it('passes the value down to the Cell', () => {
       const sortable = [false, true, false, false, true];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable
           {...defaultProps}
           sortable={sortable}
@@ -463,33 +460,33 @@ describe('<DataTable />', () => {
       );
 
       const firstHeadingCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.props().header === true)
-        .first();
+        .findAll(Cell)
+        .filter((cell) => cell.prop('header') === true)[0];
 
-      expect(firstHeadingCell.prop('defaultSortDirection')).toBe('ascending');
+      expect(firstHeadingCell).toHaveReactProps({
+        defaultSortDirection: 'ascending',
+      });
     });
   });
 
   describe('initialSortColumnIndex', () => {
     it('defaults to first column if not specified', () => {
       const sortable = [true, true, false, false, true, false];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} sortable={sortable} />,
       );
 
       const firstHeadingCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.props().header === true)
-        .first();
+        .findAll(Cell)
+        .filter((cell) => cell.prop('header') === true)[0];
 
-      expect(firstHeadingCell.props().sorted).toBe(true);
+      expect(firstHeadingCell).toHaveReactProps({sorted: true});
     });
 
     it('sets specified initial sort column', () => {
       const sortable = [true, true, false, false, true, false];
       const initialSortColumnIndex = 4;
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable
           {...defaultProps}
           sortable={sortable}
@@ -498,11 +495,10 @@ describe('<DataTable />', () => {
       );
 
       const fifthHeadingCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.props().header === true)
-        .at(initialSortColumnIndex);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('header') === true)[initialSortColumnIndex];
 
-      expect(fifthHeadingCell.props().sorted).toBe(true);
+      expect(fifthHeadingCell).toHaveReactProps({sorted: true});
     });
   });
 
@@ -510,16 +506,15 @@ describe('<DataTable />', () => {
     it('gets called when sortable column heading is clicked', () => {
       const spyOnSort = jest.fn();
       const sortable = [true, false, false, false, false];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} sortable={sortable} onSort={spyOnSort} />,
       );
 
       const firstHeadingCell = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.props().header === true)
-        .first();
+        .findAll(Cell)
+        .filter((cell) => cell.prop('header') === true)[0];
 
-      trigger(firstHeadingCell, 'onSort');
+      firstHeadingCell.trigger('onSort');
 
       expect(spyOnSort).toHaveBeenCalledTimes(1);
     });
@@ -528,43 +523,43 @@ describe('<DataTable />', () => {
   describe('colSpan', () => {
     it('has a colSpan of 1 when header length and row length are equal', () => {
       const rows = [['Emerald Silk Gown', '$230.00', 124689, 32, '$19,090.00']];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} rows={rows} />,
       );
 
       const singleSpanCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('colSpan') === 1);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('colSpan') === 1);
 
       expect(singleSpanCells).toHaveLength(5);
     });
 
     it('has a colSpan that spans all headings when there is only one cell in the row', () => {
       const rows = [['Emerald Silk Gown']];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} rows={rows} />,
       );
 
       const fullSpanCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('colSpan') === headings.length);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('colSpan') === headings.length);
 
       expect(fullSpanCells).toHaveLength(1);
     });
 
     it('cells still fill the full table width when there are no headings', () => {
       const rows = [['Emerald Silk Gown', '$230.00']];
-      const dataTable = mountWithAppProvider(
+      const dataTable = mountWithApp(
         <DataTable {...defaultProps} headings={[]} rows={rows} />,
       );
 
       const twoSpanCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('colSpan') === 2);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('colSpan') === 2);
 
       const threeSpanCells = dataTable
-        .find(Cell)
-        .filterWhere((cell) => cell.prop('colSpan') === 2);
+        .findAll(Cell)
+        .filter((cell) => cell.prop('colSpan') === 2);
 
       expect(twoSpanCells).toHaveLength(1);
       expect(threeSpanCells).toHaveLength(1);

@@ -6,26 +6,27 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Prevented `KeypressListener` attaching/detaching on every render ([#4173](https://github.com/Shopify/polaris-react/pull/4173))
-- Added `animated` prop in `ProgressBar` ([#4251](https://github.com/Shopify/polaris-react/pull/4251))
-- Added `divider` prop to `Page` component ([#4260](https://github.com/Shopify/polaris-react/pull/4260))
-- Add `activator` prop to `Sheet` so the triggering element will regain focus ([#4201](https://github.com/Shopify/polaris-react/pull/4201))
-- Rename and expose Card compound components types ([#4261](https://github.com/Shopify/polaris-react/pull/4261))
-- Add `monospaced` prop to `TextField` component ([#4264](https://github.com/Shopify/polaris-react/pull/4264))
-- Add base tight spacing option to `Stack` component([#4273](https://github.com/Shopify/polaris-react/pull/4273))
+- Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
+- Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
+- Improves `Popover` component and its animation ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Improves `base` easing curve ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
 
 ### Bug fixes
 
-- Fix bug in Safari where `Button` text is gray instead of white after changing state from disabled to enabled ([#4270](https://github.com/Shopify/polaris-react/pull/4270))
-- Fix console warnings when `DataTable` unmounts ([#4249](https://github.com/Shopify/polaris-react/pull/4249))
-- Fix console warnings displaying multiple times in `Sheet` ([#4269](https://github.com/Shopify/polaris-react/pull/4269))
-- Remove top shadow when `Popover` and `Scrollable` scroll hinting is complete ([#4265](https://github.com/Shopify/polaris-react/pull/4265))
+- Removed extraneous space in `MediaCard` when card has no actions ([#4538](https://github.com/Shopify/polaris-react/pull/4538))
+- Fixed a bug in `Stack` where vertical spacing was off ([#4572](https://github.com/Shopify/polaris-react/pull/4572))
 
 ### Documentation
 
+- Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
+
 ### Development workflow
 
+- Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
+
 ### Dependency upgrades
+
+Bump polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/pull/4569))
 
 ### Code quality
 

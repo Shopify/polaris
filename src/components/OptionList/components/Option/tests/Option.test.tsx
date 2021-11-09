@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Checkbox} from '../../Checkbox';
 import {Scrollable} from '../../../../Scrollable';
@@ -18,27 +16,23 @@ describe('<Option />', () => {
   };
 
   it('renders a checkbox if allowMultiple is true', () => {
-    const checkbox = mountWithAppProvider(
-      <Option {...defaultProps} allowMultiple />,
-    ).find(Checkbox);
-    expect(checkbox.exists()).toBe(true);
+    const checkbox = mountWithApp(<Option {...defaultProps} allowMultiple />);
+    expect(checkbox).toContainReactComponent(Checkbox);
   });
 
   it('renders a button if allowMultiple is false or undefined', () => {
-    const button = mountWithAppProvider(<Option {...defaultProps} />).find(
-      'button',
-    );
-    expect(button.exists()).toBe(true);
+    const button = mountWithApp(<Option {...defaultProps} />);
+    expect(button).toContainReactComponent('button');
   });
 
   it('calls onClick with section and index if option is not disabled', () => {
     const spy = jest.fn();
     const {section, index} = defaultProps;
 
-    const button = mountWithAppProvider(
+    const button = mountWithApp(
       <Option {...defaultProps} onClick={spy} />,
-    ).find('button');
-    button.simulate('click');
+    ).find('button')!;
+    button.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(section, index);
@@ -47,10 +41,10 @@ describe('<Option />', () => {
   it('doesn’t call onClick if option is disabled', () => {
     const spy = jest.fn();
 
-    const button = mountWithAppProvider(
+    const button = mountWithApp(
       <Option {...defaultProps} onClick={spy} disabled />,
-    ).find('button');
-    button.simulate('click');
+    ).find('button')!;
+    button.trigger('onClick');
 
     expect(spy).not.toHaveBeenCalled();
   });
@@ -59,10 +53,10 @@ describe('<Option />', () => {
     const spy = jest.fn();
     const {section, index} = defaultProps;
 
-    const input = mountWithAppProvider(
+    const input = mountWithApp(
       <Option {...defaultProps} onClick={spy} allowMultiple />,
-    ).find('input');
-    input.simulate('change');
+    ).find('input')!;
+    input.trigger('onChange');
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(section, index);
@@ -71,19 +65,19 @@ describe('<Option />', () => {
   it('doesn’t call onClick if option is disabled and multiple options are allowed', () => {
     const spy = jest.fn();
 
-    const input = mountWithAppProvider(
+    const input = mountWithApp(
       <Option {...defaultProps} onClick={spy} disabled allowMultiple />,
-    ).find('input');
-    input.simulate('change');
+    ).find('input')!;
+    input.trigger('onChange');
 
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('sets the pass through props for Checkbox if multiple items are allowed', () => {
     const {id, value, select, disabled} = defaultProps;
-    const checkbox = mountWithAppProvider(
+    const checkbox = mountWithApp(
       <Option {...defaultProps} allowMultiple />,
-    ).find(Checkbox);
+    ).find(Checkbox)!;
 
     expect(checkbox.prop('id')).toBe(id);
     expect(checkbox.prop('value')).toBe(value);

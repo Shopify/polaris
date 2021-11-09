@@ -112,10 +112,10 @@ $stacking-order: (
   }
 
   &:disabled {
-    background: none;
-    color: currentColor;
     opacity: 1;
-    -webkit-text-fill-color: currentColor;
+    background: none;
+    color: var(--p-text-disabled);
+    -webkit-text-fill-color: var(--p-text-disabled);
   }
 
   // remove the box shadow in Firefox when the input is invalid
@@ -191,7 +191,6 @@ $stacking-order: (
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
-  pointer-events: none;
 }
 
 .Prefix {
@@ -230,10 +229,6 @@ $stacking-order: (
 
   &:disabled {
     cursor: default;
-  }
-
-  &.ClearButton-hidden {
-    @include visually-hidden;
   }
 }
 

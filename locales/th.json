@@ -5,7 +5,8 @@
       "labelWithInitials": "ตัวแทนพร้อมอักษรย่อ {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "กำลังโหลด"
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {

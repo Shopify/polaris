@@ -1,11 +1,6 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-// eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  trigger,
-  ReactWrapper,
-} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {Button, Popover} from 'components';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
@@ -13,7 +8,7 @@ import {
   Item as ActionListItem,
   Section as ActionListSection,
 } from '../../../../ActionList/components';
-import {RollupActions, RollupActionsProps} from '../RollupActions';
+import {RollupActions} from '../RollupActions';
 
 describe('<RollupActions />', () => {
   const mockProps = {
@@ -22,9 +17,9 @@ describe('<RollupActions />', () => {
   };
 
   it('does not render without either `items` or `sections`', () => {
-    const wrapper = mountWithAppProvider(<RollupActions {...mockProps} />);
+    const wrapper = mountWithApp(<RollupActions {...mockProps} />);
 
-    expect(wrapper.find(Popover).exists()).toBe(false);
+    expect(wrapper).not.toContainReactComponent(Popover);
   });
 
   describe('items', () => {
@@ -40,30 +35,34 @@ describe('<RollupActions />', () => {
     ];
 
     it('gets rendered as ActionList > Item', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <RollupActions {...mockProps} items={mockItems} />,
       );
 
-      activatePopover(wrapper);
+      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
 
-      expect(wrapper.find(ActionListItem)).toHaveLength(mockItems.length);
+      expect(wrapper.findAll(ActionListItem)).toHaveLength(mockItems.length);
     });
 
     it('<ActionList /> closes the <Popover /> when `onActionAnyItem` is called', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <RollupActions {...mockProps} items={mockItems} />,
       );
 
-      activatePopover(wrapper);
+      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
 
       let popoverComponent = wrapper.find(Popover);
-      expect(popoverComponent.prop('active')).toBe(true);
+      expect(popoverComponent!).toHaveReactProps({
+        active: true,
+      });
 
-      const firstActionListItem = wrapper.find(ActionListItem).first();
-      trigger(firstActionListItem, 'onAction');
+      const firstActionListItem = wrapper.findAll(ActionListItem)[0];
+      firstActionListItem.trigger('onAction');
 
       popoverComponent = wrapper.find(Popover);
-      expect(popoverComponent.prop('active')).toBe(false);
+      expect(popoverComponent!).toHaveReactProps({
+        active: false,
+      });
     });
   });
 
@@ -88,24 +87,15 @@ describe('<RollupActions />', () => {
     ];
 
     it('gets rendered as ActionList > Section', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <RollupActions {...mockProps} sections={mockSections} />,
       );
 
-      activatePopover(wrapper);
+      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
 
-      expect(wrapper.find(ActionListSection)).toHaveLength(mockSections.length);
+      expect(wrapper.findAll(ActionListSection)).toHaveLength(
+        mockSections.length,
+      );
     });
   });
 });
-
-function findPopoverActivator(wrapper: ReactWrapper<RollupActionsProps>) {
-  return wrapper
-    .find(Button)
-    .filterWhere((button) => button.prop('icon') === HorizontalDotsMinor);
-}
-
-function activatePopover(wrapper: ReactWrapper<RollupActionsProps>) {
-  const activator = findPopoverActivator(wrapper);
-  trigger(activator, 'onClick');
-}

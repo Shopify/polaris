@@ -1,7 +1,6 @@
 import React from 'react';
 import {clock} from '@shopify/jest-dom-mocks';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {KonamiCode, KONAMI_CODE} from '../KonamiCode';
 
@@ -20,7 +19,7 @@ describe('<KonamiCode />', () => {
   it('calls the handler when the Konami Code is entered', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(<KonamiCode handler={spy} />);
+    mountWithApp(<KonamiCode handler={spy} />);
     simulateKeySequence(KONAMI_CODE);
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -30,7 +29,7 @@ describe('<KonamiCode />', () => {
     const spy = jest.fn();
     const reverseKonamiCode = [...KONAMI_CODE].reverse();
 
-    mountWithAppProvider(<KonamiCode handler={spy} />);
+    mountWithApp(<KonamiCode handler={spy} />);
     simulateKeySequence(reverseKonamiCode);
 
     expect(spy).toHaveBeenCalledTimes(0);
@@ -39,7 +38,7 @@ describe('<KonamiCode />', () => {
   it('removes Konami Code listener on unmount', () => {
     const spy = jest.fn();
 
-    mountWithAppProvider(<KonamiCode handler={spy} />).unmount();
+    mountWithApp(<KonamiCode handler={spy} />).unmount();
     simulateKeySequence(KONAMI_CODE);
 
     expect(spy).toHaveBeenCalledTimes(0);

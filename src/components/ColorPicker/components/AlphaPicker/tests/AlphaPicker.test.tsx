@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {calculateDraggerY, alphaForDraggerY} from '../utilities';
 import {Slidable} from '../../Slidable';
@@ -24,20 +23,22 @@ describe('<AlphaPicker />', () => {
     it('is used to calculate Slidable’s draggerY coordinate', () => {
       const alpha = 0.7;
       const expectedHue = calculateDraggerY(alpha, 0, 0);
-      const alphaPicker = mountWithAppProvider(
+      const alphaPicker = mountWithApp(
         <AlphaPicker {...mockProps} alpha={alpha} />,
       );
-      expect(alphaPicker.find(Slidable).prop('draggerY')).toBe(expectedHue);
+      expect(alphaPicker).toContainReactComponent(Slidable, {
+        draggerY: expectedHue,
+      });
     });
   });
 
   describe('onChange()', () => {
     it('is called when Slidable changes', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const alphaPicker = mountWithApp(
         <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      trigger(alphaPicker.find(Slidable), 'onChange', {
+      alphaPicker.find(Slidable)!.trigger('onChange', {
         y: 0,
       });
       expect(onChangeSpy).toHaveBeenCalledTimes(1);
@@ -45,12 +46,12 @@ describe('<AlphaPicker />', () => {
 
     it('is called with the new alpha value', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const alphaPicker = mountWithApp(
         <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
       );
       const yPosition = 7;
       const expectedHue = alphaForDraggerY(yPosition, 0);
-      trigger(alphaPicker.find(Slidable), 'onChange', {
+      alphaPicker.find(Slidable)!.trigger('onChange', {
         y: yPosition,
       });
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHue);
@@ -60,18 +61,22 @@ describe('<AlphaPicker />', () => {
   describe('<Slidable />', () => {
     it('receives dragger height changes and uses them to calculate draggerY', () => {
       const alpha = 0.7;
-      const alphaPicker = mountWithAppProvider(
+      const alphaPicker = mountWithApp(
         <AlphaPicker {...mockProps} alpha={alpha} />,
       );
       const newDraggerHeight = 7;
       const expectedNewHue = calculateDraggerY(alpha, 0, newDraggerHeight);
-      trigger(alphaPicker.find(Slidable), 'onDraggerHeight', newDraggerHeight);
-      expect(alphaPicker.find(Slidable).prop('draggerY')).toBe(expectedNewHue);
+      alphaPicker.find(Slidable)!.trigger('onDraggerHeight', newDraggerHeight);
+      expect(alphaPicker).toContainReactComponent(Slidable, {
+        draggerY: expectedNewHue,
+      });
     });
 
     it('passes draggerX to Slidable with value 0', () => {
-      const alphaPicker = mountWithAppProvider(<AlphaPicker {...mockProps} />);
-      expect(alphaPicker.find(Slidable).prop('draggerX')).toBe(0);
+      const alphaPicker = mountWithApp(<AlphaPicker {...mockProps} />);
+      expect(alphaPicker).toContainReactComponent(Slidable, {
+        draggerX: 0,
+      });
     });
   });
 });

@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Day, Month, Weekday} from '../components';
 import {DatePicker} from '../DatePicker';
@@ -17,12 +15,10 @@ describe('<DatePicker />', () => {
   const defaultProps = {month, year};
 
   it('renders Sunday as first day of the week by default', () => {
-    const datePicker = mountWithAppProvider(
-      <DatePicker month={0} year={2018} />,
-    );
+    const datePicker = mountWithApp(<DatePicker month={0} year={2018} />);
 
     const weekday = datePicker.find(Weekday);
-    expect(weekday.first().text()).toStrictEqual('Su');
+    expect(weekday).toContainReactText('Su');
   });
 
   describe('accessibility label', () => {
@@ -53,66 +49,64 @@ describe('<DatePicker />', () => {
 
   describe('when weekStartsOn is passed', () => {
     it('renders Monday as first day of the week', () => {
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <DatePicker month={0} year={2018} weekStartsOn={1} />,
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toStrictEqual('Mo');
+      expect(weekday).toContainReactText('Mo');
     });
 
     it('renders Saturday as first day of the week', () => {
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <DatePicker month={0} year={2018} weekStartsOn={6} />,
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toStrictEqual('Sa');
+      expect(weekday).toContainReactText('Sa');
     });
   });
 
   describe('month', () => {
     it('passes the month value to Month', () => {
-      const datePicker = mountWithAppProvider(
-        <DatePicker month={1} year={2018} />,
-      );
+      const datePicker = mountWithApp(<DatePicker month={1} year={2018} />);
 
       const month = datePicker.find(Month);
-      expect(month.prop('month')).toStrictEqual(1);
+      expect(month).toHaveReactProps({
+        month: 1,
+      });
     });
   });
 
   describe('year', () => {
     it('passes the year value to Month', () => {
-      const datePicker = mountWithAppProvider(
-        <DatePicker month={1} year={2016} />,
-      );
+      const datePicker = mountWithApp(<DatePicker month={1} year={2016} />);
 
       const year = datePicker.find(Month);
-      expect(year.prop('year')).toStrictEqual(2016);
+      expect(year).toHaveReactProps({
+        year: 2016,
+      });
     });
   });
 
   describe('multiMonth', () => {
     it('shows a second month when true', () => {
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <DatePicker month={month} year={year} multiMonth />,
       );
-      expect(datePicker.find(Month)).toHaveLength(2);
+      expect(datePicker.findAll(Month)).toHaveLength(2);
     });
 
     it('shows only one month when false', () => {
-      const datePicker = mountWithAppProvider(
-        <DatePicker month={month} year={year} />,
-      );
-      expect(datePicker.find(Month)).toHaveLength(1);
+      const datePicker = mountWithApp(<DatePicker month={month} year={year} />);
+      expect(datePicker.findAll(Month)).toHaveLength(1);
     });
   });
 
   describe('onChange()', () => {
     it('is called when Day datePicker is clicked', () => {
       const spy = jest.fn();
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <Month
           accessibilityLabelPrefixes={['start', 'end']}
           focusedDate={new Date()}
@@ -124,46 +118,45 @@ describe('<DatePicker />', () => {
           weekStartsOn={0}
         />,
       );
-      const day = datePicker.find(Day);
-      day.first().find('button').simulate('click');
+      const day = datePicker.findAll(Day);
+      day[0].find('button')!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });
 
     it('does not submit an enclosing form', () => {
       const spy = jest.fn();
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <form onSubmit={spy}>
           <DatePicker month={0} year={2018} />
         </form>,
       );
 
-      const day = datePicker.find(Day);
-      day.first().simulate('click');
+      datePicker.findAll(Day)[1]!.trigger('onClick');
       expect(spy).not.toHaveBeenCalled();
     });
   });
 
   describe('focusDate', () => {
     it('passes the focused month value to Month if day has focus', () => {
-      const datePicker = mountWithAppProvider(
-        <DatePicker month={3} year={2018} />,
-      );
+      const datePicker = mountWithApp(<DatePicker month={3} year={2018} />);
       const dateObject = new Date('2018-04-01T00:00:00');
-      datePicker.find(Day).first().find('button').simulate('focus');
-      expect(datePicker.find(Month).prop('focusedDate')).toStrictEqual(
-        dateObject,
-      );
+      datePicker.findAll(Day)[0]!.find('button')!.trigger('onFocus');
+      expect(datePicker).toContainReactComponent(Month, {
+        focusedDate: dateObject,
+      });
     });
   });
 
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
-      const datePicker = mountWithAppProvider(
+      const datePicker = mountWithApp(
         <DatePicker id={id} month={0} year={2018} />,
       );
 
-      expect(datePicker.childAt(0).prop('id')).toBe(id);
+      expect(datePicker.find('div'))!.toHaveReactProps({
+        id,
+      });
     });
   });
 
@@ -175,7 +168,7 @@ describe('<DatePicker />', () => {
     const month = 0;
     const year = 2017;
 
-    const datePicker = mountWithAppProvider(
+    const datePicker = mountWithApp(
       <DatePicker
         selected={selected}
         month={month}
@@ -184,13 +177,17 @@ describe('<DatePicker />', () => {
       />,
     );
 
-    datePicker.find(Day).find('button').first().simulate('click');
+    datePicker.find(Day)!.find('button')!.trigger('onClick');
 
-    expect(datePicker.find(Day).first().prop('focused')).toBe(true);
+    expect(datePicker.find(Day)).toHaveReactProps({
+      focused: true,
+    });
 
-    datePicker.setProps({selected: new Date(2016, 11, 8)}).update();
+    datePicker.setProps({selected: new Date(2016, 11, 8)});
 
-    expect(datePicker.find(Day).first().prop('focused')).toBe(false);
+    expect(datePicker.find(Day)).toHaveReactProps({
+      focused: false,
+    });
   });
 
   it('passes isLastSelectedDay to Day when there is a range', () => {

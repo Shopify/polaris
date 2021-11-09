@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Sticky} from 'components/Sticky';
 import {EventListener} from 'components/EventListener';
 
@@ -83,13 +81,13 @@ describe('<IndexTable>', () => {
   });
 
   it('renders a row for each item using renderItem', () => {
-    const index = mountWithAppProvider(
+    const index = mountWithApp(
       <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
         {mockTableItems.map(mockRenderRow)}
       </IndexTable>,
     );
 
-    expect(index.find(Component)).toHaveLength(2);
+    expect(index).toContainReactComponentTimes(Component, 2);
   });
 
   it('renders a spinner if loading is passed', () => {
@@ -148,6 +146,18 @@ describe('<IndexTable>', () => {
     });
   });
 
+  it('applies sticky last column styles when `lastColumnSticky` prop is true', () => {
+    const index = mountWithApp(
+      <IndexTable {...defaultProps} itemCount={1} lastColumnSticky>
+        {mockTableItems.map(mockRenderRow)}
+      </IndexTable>,
+    );
+
+    expect(index).toContainReactComponent('table', {
+      className: 'Table Table-sticky-last',
+    });
+  });
+
   describe('ScrollContainer', () => {
     it('updates sticky header scroll left on scoll', () => {
       const updatedScrollLeft = 25;
@@ -172,7 +182,7 @@ describe('<IndexTable>', () => {
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
     });
 
-    it('updates stickty table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
+    it('updates sticky table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
       const index = mountWithApp(
         <IndexTable {...defaultProps} itemCount={1}>
           {mockTableItems.map(mockRenderRow)}
@@ -185,6 +195,21 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('div', {
         className:
           'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
+      });
+    });
+
+    it('updates sticky last column styles when scrolled right', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1} lastColumnSticky>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const scrollContainer = index.find(ScrollContainer);
+      scrollContainer!.trigger('onScroll', true, false);
+
+      expect(index).toContainReactComponent('table', {
+        className: 'Table Table-scrolling Table-sticky-last',
       });
     });
   });
@@ -276,6 +301,57 @@ describe('<IndexTable>', () => {
 
       expect(index).toContainReactComponent(VisuallyHidden, {children: title});
     });
+
+    it('renders a sticky last heading if `lastColumnSticky` prop is true and last heading is not hidden', () => {
+      const title = 'Heading two';
+      const headings: IndexTableProps['headings'] = [
+        {title: 'Heading one'},
+        {title, hidden: false},
+      ];
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          headings={headings}
+          lastColumnSticky
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent('table', {
+        className: 'Table Table-sticky-last',
+      });
+      expect(index).toContainReactComponent('th', {
+        children: title,
+        className: 'TableHeading TableHeading-last',
+      });
+    });
+
+    it('does not render a sticky last heading if `lastColumnSticky` prop is true and last heading is hidden', () => {
+      const title = 'Heading two';
+      const headings: IndexTableProps['headings'] = [
+        {title: 'Heading one'},
+        {title, hidden: true},
+      ];
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          itemCount={mockTableItems.length}
+          headings={headings}
+          lastColumnSticky
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent('table', {
+        className: 'Table Table-sticky-last',
+      });
+      expect(index).toContainReactComponent(VisuallyHidden, {
+        children: title,
+      });
+    });
   });
 
   describe('BulkActions', () => {
@@ -357,6 +433,18 @@ describe('<IndexTable>', () => {
 
       expect(index).toContainReactComponent(BulkActions, {
         selectMode: true,
+      });
+    });
+
+    it('does not render a Select button when not selectable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      expect(index).not.toContainReactComponent(Button, {
+        children: 'Select',
       });
     });
 

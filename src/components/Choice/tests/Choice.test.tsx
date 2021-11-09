@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {InlineError} from 'components';
 
 import {Choice} from '../Choice';
@@ -8,38 +7,37 @@ import {Choice} from '../Choice';
 describe('<Choice />', () => {
   it('calls the provided onClick when clicked', () => {
     const spy = jest.fn();
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Choice id="MyChoice" label="Label" onClick={spy} />,
     );
-    element.find('label').simulate('click');
+    element.find('label')!.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('uses the id as the for attribute of a label', () => {
-    const element = mountWithAppProvider(
-      <Choice id="MyChoice" label="Label" />,
-    );
-    const label = element.find('label');
+    const element = mountWithApp(<Choice id="MyChoice" label="Label" />);
 
-    expect(label.prop('htmlFor')).toBe('MyChoice');
-    expect(label.text()).toBe('Label');
+    expect(element).toContainReactComponent('label', {
+      htmlFor: 'MyChoice',
+    });
+    expect(element.find('label'))!.toContainReactText('Label');
   });
 
   it('renders error markup when provided with a value', () => {
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Choice id="MyChoice" label="Label" error="Error message" />,
     );
 
-    expect(element.find('#MyChoiceError').text()).toContain('Error message');
+    expect(element.find(InlineError)).toContainReactText('Error message');
   });
 
   it('avoids rendering error markup when the error is a boolean value', () => {
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Choice id="MyChoice" label="Label" error={Boolean(true)} />,
     );
 
-    expect(element.find(InlineError)).toHaveLength(0);
+    expect(element).not.toContainReactComponent(InlineError);
   });
 
   // We want the entire choice to be clickable, including the space
@@ -49,14 +47,13 @@ describe('<Choice />', () => {
       return <div />;
     }
 
-    const element = mountWithAppProvider(
+    const element = mountWithApp(
       <Choice id="MyChoice" label="Label">
         <MyComponent />
       </Choice>,
     );
-    const label = element.find('label');
 
-    expect(label.containsMatchingElement(<MyComponent />)).toBe(true);
+    expect(element.find('label')).toContainReactComponent(MyComponent);
   });
 
   it('does not render block-level elements in the label', () => {
@@ -80,12 +77,11 @@ describe('<Choice />', () => {
       'hr',
       'table',
     ];
-    const element = mountWithAppProvider(
-      <Choice id="MyChoice" label="Label" />,
-    );
-    const label = element.find('label');
+    const element = mountWithApp(<Choice id="MyChoice" label="Label" />);
     for (const blockLevelElement of blockLevelElements) {
-      expect(label.find(blockLevelElement)).toHaveLength(0);
+      expect(element.find('label')).not.toContainReactComponent(
+        blockLevelElement,
+      );
     }
   });
 });

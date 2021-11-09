@@ -31,7 +31,7 @@ yarn add @shopify/polaris
 1.  Import the CSS directly into your project if your asset packager supports it:
 
 ```js
-import '@shopify/polaris/dist/styles.css';
+import '@shopify/polaris/build/esm/styles.css';
 ```
 
 Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@7.2.0/build/esm/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@6.5.0/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@7.2.0/build/esm/styles.css"
 />
 ```
 
@@ -106,7 +106,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 1.  Run `yarn dev`
 1.  Make sure your virtual machine and mobile device are on the same network
-1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?selectedKind=Playground&selectedStory=Playground in your mobile device or virtual machine
+1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?path=/story/playground-playground--playground in your mobile device or virtual machine
 
 ### Testing in a consuming project
 

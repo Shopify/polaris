@@ -1,11 +1,5 @@
-import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import React, {AllHTMLAttributes} from 'react';
+import {mountWithApp} from 'tests/utilities';
 import {
   Avatar,
   ButtonGroup,
@@ -15,8 +9,9 @@ import {
   Button,
 } from 'components';
 
-import {ResourceListContext} from '../../../utilities/resource-list';
 import {ResourceItem} from '../ResourceItem';
+import {ResourceListContext} from '../../../utilities/resource-list';
+import styles from '../ResourceItem.scss';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;
@@ -75,9 +70,16 @@ describe('<ResourceItem />', () => {
   const external = false;
   const ariaLabel = 'View Item';
 
+  function findResourceItem(wrapper: ReturnType<typeof mountWithApp>) {
+    return wrapper!.findWhere<'div'>(
+      (node) =>
+        node.is('div') && node.domNode!.classList.contains(styles.ResourceItem),
+    );
+  }
+
   describe('accessibilityLabel', () => {
     it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             accessibilityLabel={accessibilityLabel}
@@ -87,15 +89,15 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(item.find(UnstyledLink).prop('aria-label')).toBe(
-        accessibilityLabel,
-      );
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-label': accessibilityLabel,
+      });
     });
   });
 
   describe('name', () => {
     it('is used as the Checkbox label', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem
             accessibilityLabel={accessibilityLabel}
@@ -108,11 +110,11 @@ describe('<ResourceItem />', () => {
 
       const expectedLabel = name;
 
-      expect(item.find(Checkbox).prop('label')).toBe(expectedLabel);
+      expect(item).toContainReactComponent(Checkbox, {label: expectedLabel});
     });
 
     it('is used on <UnstyledLink /> for the aria-label attribute if an `accessibilityLabel` is not provided', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem id={itemId} url="https://shopify.com" name={name} />
         </ResourceListContext.Provider>,
@@ -120,11 +122,13 @@ describe('<ResourceItem />', () => {
 
       const expectedLabel = `View details for ${name}`;
 
-      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-label': expectedLabel,
+      });
     });
 
     it('is used on the disclosure action menu when there are persistent actions', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem
             accessibilityLabel={accessibilityLabel}
@@ -139,21 +143,16 @@ describe('<ResourceItem />', () => {
 
       const expectedLabel = `Actions for ${name}`;
 
-      expect(
-        item
-          .find(Button)
-          .findWhere(
-            (node) =>
-              node.prop('plain') &&
-              node.prop('accessibilityLabel') === expectedLabel,
-          ),
-      ).toHaveLength(1);
+      expect(item).toContainReactComponentTimes(Button, 1, {
+        plain: true,
+        accessibilityLabel: expectedLabel,
+      });
     });
   });
 
   describe('ResourceName.singular', () => {
     it('is used on <UnstyledLink /> for the aria-label attribute if a `name` and `accessibilityLabel` is not provided', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url="https://shopify.com" />
         </ResourceListContext.Provider>,
@@ -161,13 +160,15 @@ describe('<ResourceItem />', () => {
 
       const expectedLabel = `View details for ${mockDefaultContext.resourceName.singular}`;
 
-      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-label': expectedLabel,
+      });
     });
   });
 
   describe('url', () => {
     it('does not render an <UnstyledLink /> by default', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id="itemId"
@@ -177,63 +178,67 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).exists()).toBe(false);
+      expect(element).not.toContainReactComponent(UnstyledLink);
     });
 
     it('renders an <UnstyledLink />', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).exists()).toBe(true);
+      expect(element).toContainReactComponent(UnstyledLink);
     });
 
     it('renders an <UnstyledLink /> with url', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).prop('url')).toBe(url);
+      expect(element).toContainReactComponent(UnstyledLink, {url});
     });
 
     it('renders an <UnstyledLink /> with an aria-label of ariaLabel', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).prop('aria-label')).toBe(ariaLabel);
+      expect(element).toContainReactComponent(UnstyledLink, {
+        'aria-label': ariaLabel,
+      });
     });
 
     it('adds a data-href to the wrapper element', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id="itemId" url={url} />
         </ResourceListContext.Provider>,
       );
 
-      expect(findByTestID(element, 'Item-Wrapper').prop('data-href')).toBe(url);
+      expect(element).toContainReactComponent('div', {'data-href': url} as any);
     });
   });
 
   describe('external', () => {
     it('renders an <UnstyledLink /> with undefined external prop', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id="itemId" url={url} />
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).prop('external')).toBeUndefined();
+      expect(element).toContainReactComponent(UnstyledLink, {
+        external: undefined,
+      });
     });
 
     it('renders an <UnstyledLink /> with external set to true', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id="itemId"
@@ -244,11 +249,13 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).prop('external')).toBe(true);
+      expect(element).toContainReactComponent(UnstyledLink, {
+        external: true,
+      });
     });
 
     it('renders an <UnstyledLink /> with external set to false', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id="itemId"
@@ -259,13 +266,15 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(element.find(UnstyledLink).prop('external')).toBe(false);
+      expect(element).toContainReactComponent(UnstyledLink, {
+        external: false,
+      });
     });
   });
 
   describe('id', () => {
     it('is used on the content node and for the description of a link', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -275,15 +284,17 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(findByTestID(item, 'Item-Content').prop('id')).toBe(itemId);
-      expect(item.find(UnstyledLink).prop('aria-describedby')).toBe(itemId);
+      expect(item).toContainReactComponent('div', {id: itemId});
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-describedby': itemId,
+      });
     });
   });
 
   describe('onClick()', () => {
     it('calls onClick when clicking on the item when onClick exists', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -293,13 +304,16 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -310,18 +324,21 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls window.open on metaKey + click', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
-      const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {
+
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {metaKey: true},
       });
@@ -330,57 +347,50 @@ describe('<ResourceItem />', () => {
 
     it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url="#" onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
-        key: 'Enter',
-      });
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
 
       expect(onClick).toHaveBeenCalled();
     });
 
     it('does not call onClick when hitting keyUp on non Enter key', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url="#" onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
-        key: 'Tab',
-      });
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Tab'});
 
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
           <ResourceItem id={itemId} onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
-        key: 'Enter',
-      });
-
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls window.open on ctrlKey + click', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
-      const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {
+
+      findResourceItem(wrapper)!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {ctrlKey: true},
       });
@@ -391,25 +401,29 @@ describe('<ResourceItem />', () => {
   describe('Selectable', () => {
     it('does not call the Item onClick when clicking the LargerSelectionArea', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem id={itemId} onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
+      wrapper.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
       const sortOrder = 0;
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem id={itemId} url={url} sortOrder={sortOrder} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'LargerSelectionArea').simulate('click', {
+      wrapper.find('div', {className: styles.Handle})!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
       expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(
@@ -424,7 +438,7 @@ describe('<ResourceItem />', () => {
   describe('SelectMode', () => {
     it('calls onClick when item is clicked', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
           <ResourceItem
             id={itemId}
@@ -434,14 +448,17 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
       expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
     it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
       const onClick = jest.fn();
       const sortOrder = 0;
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
           <ResourceItem
             id={itemId}
@@ -453,7 +470,8 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
       expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
@@ -465,33 +483,37 @@ describe('<ResourceItem />', () => {
     });
 
     it('renders a checked Checkbox if the item is in the selectedItems context', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(Checkbox).props().checked).toBe(true);
+      expect(wrapper).toContainReactComponent(Checkbox, {checked: true});
     });
 
     it('does not call window.open when clicking the item with metaKey', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
           <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {metaKey: true},
       });
       expect(spy).not.toHaveBeenCalled();
     });
 
     it('does not call window.open when clicking the item with ctrlKey', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
           <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
         nativeEvent: {ctrlKey: true},
       });
       expect(spy).not.toHaveBeenCalled();
@@ -500,34 +522,37 @@ describe('<ResourceItem />', () => {
 
   describe('media', () => {
     it('does not include media if not provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      expect(findByTestID(wrapper, 'Media').exists()).toBe(false);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: styles.Media,
+      });
     });
 
     it('renders a disabled checked Checkbox if loading context is true', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockLoadingContext}>
           <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
+      expect(wrapper).toContainReactComponent(Checkbox, {disabled: true});
     });
 
     it('includes an <Avatar /> if one is provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
-      expect(findByTestID(wrapper, 'Media').find(Avatar).exists()).toBe(true);
+      const media = wrapper.find('div', {className: styles.Media});
+      expect(media).toContainReactComponent(Avatar);
     });
 
     it('includes a <Thumbnail /> if one is provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -536,24 +561,25 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(findByTestID(wrapper, 'Media').find(Thumbnail).exists()).toBe(
-        true,
-      );
+      const media = wrapper.find('div', {className: styles.Media});
+      expect(media).toContainReactComponent(Thumbnail);
     });
   });
 
   describe('shortcutActions', () => {
     it('does not render shortcut actions if none are provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: styles.Actions,
+      });
     });
 
     it('renders shortcut actions when some are provided', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -562,11 +588,13 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(true);
+      expect(wrapper).toContainReactComponent('div', {
+        className: styles.Actions,
+      });
     });
 
     it('renders persistent shortcut actions if persistActions is true', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -576,11 +604,11 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(ButtonGroup).exists()).toBe(true);
+      expect(wrapper).toContainReactComponent(ButtonGroup);
     });
 
     it('does not render while loading', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={{...mockLoadingContext}}>
           <ResourceItem
             id={itemId}
@@ -590,13 +618,13 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(ButtonGroup)).toHaveLength(0);
+      expect(wrapper).not.toContainReactComponent(ButtonGroup);
     });
   });
 
   describe('accessibleMarkup', () => {
     it('renders with a tab index of -1 when loading is true', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockLoadingContext}>
           <ResourceItem
             id={itemId}
@@ -606,11 +634,11 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(-1);
+      expect(wrapper).toContainReactComponent(UnstyledLink, {tabIndex: -1});
     });
 
     it('renders with a tab index of 0 when loading is false', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             id={itemId}
@@ -620,7 +648,7 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(0);
+      expect(wrapper).toContainReactComponent(UnstyledLink, {tabIndex: 0});
     });
   });
 
@@ -711,7 +739,7 @@ describe('<ResourceItem />', () => {
 
   describe('dataHref', () => {
     it('renders a data-href tag on the li when the dataHref prop is specified', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             accessibilityLabel={accessibilityLabel}
@@ -722,10 +750,13 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(item.find('li').prop('data-href')).toBe('google.com');
+      expect(item).toContainReactComponent('li', {
+        'data-href': 'google.com',
+      } as AllHTMLAttributes<HTMLElement>);
     });
+
     it('renders a data-href tag on the li when the dataHref prop is not specified', () => {
-      const item = mountWithAppProvider(
+      const item = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
             accessibilityLabel={accessibilityLabel}
@@ -735,7 +766,9 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      expect(item.find('li').prop('data-href')).toBeUndefined();
+      expect(item).toContainReactComponent('li', {
+        'data-href': undefined,
+      } as any);
     });
   });
 });

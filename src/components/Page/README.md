@@ -143,6 +143,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
       alt="Black leather pet collar"
     />
   }
+  compactTitle
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
     {
@@ -335,8 +336,7 @@ Use when a secondary action links to another website. Actions marked external op
       content: 'Promote',
       external: true,
       icon: ExternalMinor,
-      url:
-        'https://www.facebook.com/business/learn/facebook-page-build-audience',
+      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
     },
   ]}
 >

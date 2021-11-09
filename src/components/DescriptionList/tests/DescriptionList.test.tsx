@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {DescriptionList} from '../DescriptionList';
 
@@ -21,14 +20,10 @@ describe('<DescriptionList />', () => {
       },
     ];
 
-    const descriptionList = mountWithAppProvider(
-      <DescriptionList items={items} />,
-    );
+    const descriptionList = mountWithApp(<DescriptionList items={items} />);
 
-    expect(descriptionList.find('dt').first().contains('Term 1')).toBe(true);
+    expect(descriptionList.find('dt')).toContainReactText('Term 1');
 
-    expect(descriptionList.find('dd').first().contains('Description 1')).toBe(
-      true,
-    );
+    expect(descriptionList.find('dd')).toContainReactText('Description 1');
   });
 });

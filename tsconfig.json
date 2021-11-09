@@ -1,15 +1,20 @@
 {
   "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "rootDir": "./",
-    "noEmit": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
     "incremental": true,
-    "outDir": "dist/types/latest",
+    "outDir": "build/ts/latest",
     "declarationMap": false,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+    "paths": {
+      "components": ["src/components"],
+      "components/*": ["src/components/*"]
+    }
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Backdrop} from '..';
 
@@ -8,8 +7,8 @@ describe('<Backdrop />', () => {
   describe('onDismiss()', () => {
     it('is called when the backdrop is clicked', () => {
       const spy = jest.fn();
-      const backdrop = mountWithAppProvider(<Backdrop onClick={spy} />);
-      findByTestID(backdrop, 'Backdrop').simulate('click');
+      const backdrop = mountWithApp(<Backdrop onClick={spy} />);
+      backdrop.find('div', {onClick: spy})!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -17,8 +16,8 @@ describe('<Backdrop />', () => {
   describe('onTouchStart()', () => {
     it('is called when the backdrop is touched', () => {
       const spy = jest.fn();
-      const backdrop = mountWithAppProvider(<Backdrop onTouchStart={spy} />);
-      findByTestID(backdrop, 'Backdrop').simulate('touchStart');
+      const backdrop = mountWithApp(<Backdrop onTouchStart={spy} />);
+      backdrop.find('div', {onTouchStart: spy})!.trigger('onTouchStart');
       expect(spy).toHaveBeenCalled();
     });
   });

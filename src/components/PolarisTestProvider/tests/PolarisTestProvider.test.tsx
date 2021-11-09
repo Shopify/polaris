@@ -1,7 +1,7 @@
 import React, {StrictMode} from 'react';
-import {mount, mountWithApp} from 'test-utilities';
-import {MediaQueryContext, useMediaQuery} from 'utilities/media-query';
+import {mount, mountWithApp} from 'tests/utilities';
 
+import {MediaQueryContext, useMediaQuery} from '../../../utilities/media-query';
 import {PolarisTestProvider} from '../PolarisTestProvider';
 
 describe('PolarisTestProvider', () => {

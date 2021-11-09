@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import type {
   MenuGroupDescriptor,
@@ -24,8 +23,8 @@ describe('<ActionMenu />', () => {
   ];
 
   it('does not render when there are no `actions` or `groups`', () => {
-    const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-    expect(wrapper.find(MenuGroup)).toHaveLength(0);
+    const wrapper = mountWithApp(<ActionMenu {...mockProps} />);
+    expect(wrapper.findAll(MenuGroup)).toHaveLength(0);
   });
 
   describe('groups', () => {
@@ -46,31 +45,31 @@ describe('<ActionMenu />', () => {
     ];
 
     it('renders as <MenuGroup /> when `rollup` is `false`', () => {
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
-      expect(wrapper.find(MenuGroup)).toHaveLength(mockGroups.length);
+      expect(wrapper.findAll(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {
       const convertedSections = mockGroups.map((group) => {
         return {title: group.title, items: group.actions};
       });
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} rollup />,
       );
 
-      expect(wrapper.find(RollupActions).prop('sections')).toStrictEqual(
-        convertedSections,
-      );
+      expect(wrapper).toContainReactComponent(RollupActions, {
+        sections: convertedSections,
+      });
     });
 
     it('renders groups in their initial order when no indexes are set', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu groups={mockGroups} />);
+      const wrapper = mountWithApp(<ActionMenu groups={mockGroups} />);
 
-      wrapper.find(MenuGroup).forEach((group, index) => {
-        expect(group.props()).toMatchObject(mockGroups[index]);
+      wrapper.findAll(MenuGroup).forEach((group, index) => {
+        expect(group.props).toMatchObject(mockGroups[index]);
       });
     });
 
@@ -82,73 +81,79 @@ describe('<ActionMenu />', () => {
         },
       ];
 
-      const wrapper = mountWithAppProvider(<ActionMenu groups={groups} />);
+      const wrapper = mountWithApp(<ActionMenu groups={groups} />);
 
-      expect(wrapper.find(MenuGroup)).toHaveLength(1);
+      expect(wrapper.findAll(MenuGroup)).toHaveLength(1);
     });
   });
 
   describe('<MenuGroup />', () => {
     it('does not render when there are no `groups`', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
+      const wrapper = mountWithApp(<ActionMenu {...mockProps} />);
 
-      expect(wrapper.find(MenuGroup)).toHaveLength(0);
+      expect(wrapper).not.toContainReactComponent(MenuGroup);
     });
 
     it('is inactive by default', () => {
       const mockGroups = [fillMenuGroup()];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
-      expect(wrapper.find(MenuGroup).prop('active')).toBeFalsy();
+      expect(wrapper).toContainReactComponent(MenuGroup, {
+        active: false,
+      });
     });
 
     it('becomes active when opened', () => {
       const mockTitle = 'mock title';
       const mockGroups = [fillMenuGroup({title: mockTitle})];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
-      trigger(wrapper.find(MenuGroup), 'onOpen', mockTitle);
+      wrapper.find(MenuGroup)!.trigger('onOpen', mockTitle);
 
-      expect(wrapper.find(MenuGroup).prop('active')).toBeTruthy();
+      expect(wrapper).toContainReactComponent(MenuGroup, {
+        active: true,
+      });
     });
 
     it('becomes inactive when closed', () => {
       const mockTitle = 'mock title';
       const mockGroups = [fillMenuGroup({title: mockTitle})];
-      const wrapper = mountWithAppProvider(
+      const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
-      trigger(wrapper.find(MenuGroup), 'onOpen', mockTitle);
-      trigger(wrapper.find(MenuGroup), 'onClose', mockTitle);
+      wrapper.find(MenuGroup)!.trigger('onOpen', mockTitle);
+      wrapper.find(MenuGroup)!.trigger('onClose', mockTitle);
 
-      expect(wrapper.find(MenuGroup).prop('active')).toBeFalsy();
+      expect(wrapper).toContainReactComponent(MenuGroup, {
+        active: false,
+      });
     });
   });
 
   it('uses Button and ButtonGroup as subcomponents', () => {
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <ActionMenu {...mockProps} actions={mockActions} />,
     );
 
-    expect(wrapper.find(Button)).toHaveLength(2);
-    expect(wrapper.find(ButtonGroup)).toHaveLength(1);
+    expect(wrapper.findAll(Button)).toHaveLength(2);
+    expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
   });
 
   it('action callbacks are passed through to Button', () => {
     const spy = jest.fn();
-    const wrapper = mountWithAppProvider(
+    const wrapper = mountWithApp(
       <ActionMenu
         {...mockProps}
         actions={[{content: 'mock', onAction: spy}]}
       />,
     );
 
-    trigger(wrapper.find(Button), 'onClick');
+    wrapper.find(Button)!.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

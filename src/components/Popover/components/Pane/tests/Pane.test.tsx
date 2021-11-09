@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextContainer, Scrollable} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
@@ -15,13 +14,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane fixed>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Scrollable)).toHaveLength(0);
+      expect(popoverPane).not.toContainReactComponent(Scrollable);
     });
 
     it('renders content in a Scrollable when set to false', () => {
@@ -31,13 +30,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane fixed={false}>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Scrollable)).toHaveLength(1);
+      expect(popoverPane).toContainReactComponentTimes(Scrollable, 1);
     });
 
     it('renders content in a Scrollable when unset', () => {
@@ -47,13 +46,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Scrollable)).toHaveLength(1);
+      expect(popoverPane).toContainReactComponentTimes(Scrollable, 1);
     });
   });
 
@@ -65,13 +64,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane sectioned>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Section)).toHaveLength(1);
+      expect(popoverPane).toContainReactComponentTimes(Section, 1);
     });
 
     it('does not render content in a Section when set to false', () => {
@@ -81,13 +80,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane sectioned={false}>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Section)).toHaveLength(0);
+      expect(popoverPane).not.toContainReactComponent(Section);
     });
 
     it('does not render content in a Section when unset', () => {
@@ -97,13 +96,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane>
           <Children />
         </Pane>,
       );
 
-      expect(popoverPane.find(Section)).toHaveLength(0);
+      expect(popoverPane).not.toContainReactComponent(Section);
     });
   });
 
@@ -116,13 +115,13 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = mountWithAppProvider(
+      const popoverPane = mountWithApp(
         <Pane onScrolledToBottom={onScrolledToBottom}>
           <Children />
         </Pane>,
       );
 
-      trigger(popoverPane.find(Scrollable).first(), 'onScrolledToBottom');
+      popoverPane.find(Scrollable)!.trigger('onScrolledToBottom');
 
       expect(onScrolledToBottom).toHaveBeenCalled();
     });

@@ -1,7 +1,6 @@
 import React, {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../..';
 import {Cell} from '../Cell';
@@ -20,8 +19,8 @@ describe('<Cell />', () => {
       const cellMarkup = <p>{cellContent}</p>;
       const cell = mountWithTable(<Cell content={cellMarkup} />);
 
-      expect(cell.find('p')).toHaveLength(1);
-      expect(cell.text()).toBe(cellContent);
+      expect(cell).toContainReactComponent('p');
+      expect(cell).toContainReactText(cellContent);
     });
   });
 
@@ -29,7 +28,7 @@ describe('<Cell />', () => {
     it('renders a table heading element when true', () => {
       const cell = mountWithTable(<Cell firstColumn />);
 
-      expect(cell.find('th')).toHaveLength(1);
+      expect(cell).toContainReactComponent('th');
     });
   });
 
@@ -37,7 +36,7 @@ describe('<Cell />', () => {
     it('renders a table heading element when true', () => {
       const cell = mountWithTable(<Cell header />);
 
-      expect(cell.find('th')).toHaveLength(1);
+      expect(cell).toContainReactComponent('th');
     });
   });
 
@@ -54,7 +53,9 @@ describe('<Cell />', () => {
         />,
       );
 
-      expect(cell.find('th').prop('aria-sort')).toBe(sortDirection);
+      expect(cell).toContainReactComponent('th', {
+        'aria-sort': sortDirection,
+      });
     });
 
     it('sets the aria-sort attribute to none when the table is not currently sorted by that column', () => {
@@ -69,7 +70,9 @@ describe('<Cell />', () => {
         />,
       );
 
-      expect(cell.find('th').prop('aria-sort')).toBe('none');
+      expect(cell).toContainReactComponent('th', {
+        'aria-sort': 'none',
+      });
     });
   });
 
@@ -77,13 +80,13 @@ describe('<Cell />', () => {
     it('renders an Icon when table is sortable by that column', () => {
       const cell = mountWithTable(<Cell header firstColumn sortable />);
 
-      expect(cell.find(Icon)).toHaveLength(1);
+      expect(cell).toContainReactComponent(Icon);
     });
 
     it('renders no Icon when table is not sortable by that column', () => {
       const cell = mountWithTable(<Cell header firstColumn sortable={false} />);
 
-      expect(cell.find(Icon)).not.toHaveLength(1);
+      expect(cell).not.toContainReactComponent(Icon);
     });
   });
 
@@ -100,7 +103,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretDownMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretDownMinor,
+        });
       });
 
       it('renders an up caret Icon when defaultSortDirection is ascending', () => {
@@ -114,7 +119,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretUpMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretUpMinor,
+        });
       });
     });
 
@@ -124,7 +131,9 @@ describe('<Cell />', () => {
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretUpMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretUpMinor,
+        });
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is descending', () => {
@@ -132,9 +141,9 @@ describe('<Cell />', () => {
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
-          'sort descending by',
-        );
+        expect(cell).toContainReactComponent(Icon, {
+          accessibilityLabel: 'sort descending by',
+        });
       });
     });
 
@@ -150,7 +159,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretDownMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretDownMinor,
+        });
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is ascending', () => {
@@ -164,9 +175,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
-          'sort ascending by',
-        );
+        expect(cell).toContainReactComponent(Icon, {
+          accessibilityLabel: 'sort ascending by',
+        });
       });
     });
   });
@@ -185,7 +196,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretUpMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretUpMinor,
+        });
       });
     });
     describe('when set to ascending', () => {
@@ -200,7 +213,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretUpMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretUpMinor,
+        });
       });
     });
 
@@ -216,7 +231,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell.find(Icon).prop('source')).toBe(CaretDownMinor);
+        expect(cell).toContainReactComponent(Icon, {
+          source: CaretDownMinor,
+        });
       });
     });
   });
@@ -236,7 +253,7 @@ describe('<Cell />', () => {
         />,
       );
 
-      trigger(cell.find('button'), 'onClick');
+      cell.find('button')?.trigger('onClick');
 
       expect(sortSpy).toHaveBeenCalledTimes(1);
     });
@@ -244,7 +261,7 @@ describe('<Cell />', () => {
 });
 
 function mountWithTable<P>(node: ReactElement) {
-  return mountWithAppProvider<P>(
+  return mountWithApp<P>(
     <table>
       <thead />
       <tbody>

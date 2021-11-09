@@ -1,7 +1,6 @@
 import React from 'react';
 import {InlineError, Icon, Labelled} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
 
 import {Select} from '../Select';
@@ -10,7 +9,7 @@ describe('<Select />', () => {
   describe('onChange()', () => {
     it('is called with the value of the newly-selected option', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <Select
           id="MySelect"
           label="Select"
@@ -18,8 +17,15 @@ describe('<Select />', () => {
           onChange={spy}
         />,
       );
-      (element.find('select') as any).instance().value = 'two';
-      element.find('select').simulate('change');
+
+      const select = element.find('select')! as any;
+      select.value = 'two';
+
+      const event = {
+        currentTarget: select,
+      };
+
+      select.trigger('onChange', event);
       expect(spy).toHaveBeenCalledWith('two', 'MySelect');
     });
   });
@@ -27,11 +33,11 @@ describe('<Select />', () => {
   describe('onFocus()', () => {
     it('is called when the select is focused', () => {
       const spy = jest.fn();
-      mountWithAppProvider(
+      mountWithApp(
         <Select label="Select" options={[]} onFocus={spy} onChange={noop} />,
       )
-        .find('select')
-        .simulate('focus');
+        .find('select')!
+        .trigger('onFocus');
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -39,11 +45,11 @@ describe('<Select />', () => {
   describe('onBlur()', () => {
     it('is called when the select is blurred', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <Select label="Select" options={[]} onBlur={spy} onChange={noop} />,
       );
-      element.find('select').simulate('focus');
-      element.find('select').simulate('blur');
+      element.find('select')!.trigger('onBlur');
+
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -51,14 +57,13 @@ describe('<Select />', () => {
   describe('options', () => {
     it('translates an array of strings into options', () => {
       const options = ['one', 'two'];
-      const optionElements = mountWithAppProvider(
+      const optionElements = mountWithApp(
         <Select label="Select" options={options} onChange={noop} />,
-      ).find('option');
+      ).findAll('option');
 
       options.forEach((option, index) => {
-        const optionElement = optionElements.at(index);
-        expect(optionElement.key()).toBe(option);
-        expect(optionElement.prop('value')).toBe(option);
+        const optionElement = optionElements[index];
+        expect(optionElement).toHaveReactProps({value: option});
         expect(optionElement.text()).toBe(option);
       });
     });
@@ -68,15 +73,15 @@ describe('<Select />', () => {
         {value: 'one', label: 'One'},
         {value: 'two', label: 'Two'},
       ];
-      const optionElements = mountWithAppProvider(
+      const optionElements = mountWithApp(
         <Select label="Select" options={options} onChange={noop} />,
-      ).find('option');
+      ).findAll('option');
 
       options.forEach(({value, label}, index) => {
-        const optionElement = optionElements.at(index);
-        expect(optionElement.key()).toBe(value);
-        expect(optionElement.prop('value')).toBe(value);
-        expect(optionElement.text()).toBe(label);
+        const optionElement = optionElements[index];
+
+        expect(optionElement).toHaveReactProps({value});
+        expect(optionElement).toContainReactText(label);
       });
     });
 
@@ -86,96 +91,93 @@ describe('<Select />', () => {
         {value: 'two', label: 'Two', disabled: true},
         {value: 'three', label: 'Three', disabled: false},
       ];
-      const optionElements = mountWithAppProvider(
+      const optionElements = mountWithApp(
         <Select label="Select" options={options} onChange={noop} />,
-      ).find('option');
-
+      ).findAll('option')!;
       options.forEach(({disabled}, index) => {
-        const optionElement = optionElements.at(index);
-        expect(optionElement.prop('disabled')).toBe(disabled);
+        const optionElement = optionElements[index];
+
+        expect(optionElement).toHaveReactProps({disabled});
       });
     });
   });
 
   describe('groups', () => {
-    const optionsAndGroups = [
-      {title: 'Group one', options: ['one.1', 'one.2']},
-      'one',
-      'two',
-      {title: 'Group two', options: ['two.1', 'two.2']},
-    ];
+    it('translates grouped options into optgroup tags', () => {
+      const groupOptions = [
+        {title: 'Group one', options: ['one.1', 'one.2']},
+        {title: 'Group two', options: ['two.1', 'two.2']},
+      ];
 
-    function testOptions(
-      optionOrGroup: string | {title: string; options: string[]},
-      optionOrOptgroupElement: ReactWrapper,
-    ) {
-      if (typeof optionOrGroup === 'string') {
-        expect(optionOrOptgroupElement.type()).toBe('option');
-        expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
-        expect(optionOrOptgroupElement.prop('value')).toBe(optionOrGroup);
-        expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
-      } else {
-        expect(optionOrOptgroupElement.type()).toBe('optgroup');
-        expect(optionOrOptgroupElement.prop('label')).toBe(optionOrGroup.title);
-        const options = optionOrOptgroupElement.children();
+      const optgroupElements = mountWithApp(
+        <Select label="Select" options={groupOptions} onChange={noop} />,
+      ).find('select')!;
+
+      groupOptions.forEach((optionOrGroup, index) => {
+        const optgroupElement = optgroupElements.children[index];
+
+        expect(optgroupElement.type).toBe('optgroup');
+        expect(optgroupElement).toHaveReactProps({
+          label: optionOrGroup.title,
+        });
+        const options = optgroupElement.children;
 
         optionOrGroup.options.forEach((option, optionIndex) => {
-          const optionElement = options.at(optionIndex);
-          expect(optionElement.type()).toBe('option');
-          expect(optionElement.key()).toBe(option);
-          expect(optionElement.prop('value')).toBe(option);
-          expect(optionElement.text()).toBe(option);
+          const optionElement = options[optionIndex];
+          expect(optionElement.type).toBe('option');
+          expect(optionElement).toHaveReactProps({
+            value: option,
+          });
+          expect(optionElement).toContainReactText(option);
         });
-      }
-    }
+      });
+    });
 
-    // Expectations are ran within the call to testOptions()
-    // eslint-disable-next-line jest/expect-expect
-    it('translates grouped options into optgroup tags', () => {
-      const optionOrOptgroupElements = mountWithAppProvider(
-        <Select label="Select" options={optionsAndGroups} onChange={noop} />,
-      )
-        .find('select')
-        .children();
+    it('translates string options into options tags', () => {
+      const stringOptions = ['one', 'two'];
+      const optionGroupElements = mountWithApp(
+        <Select label="Select" options={stringOptions} onChange={noop} />,
+      ).find('select')!;
 
-      optionsAndGroups.forEach((optionOrGroup, index) => {
-        const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
-        testOptions(optionOrGroup, optionOrOptgroupElement);
+      stringOptions.forEach((optionOrGroup, index) => {
+        const optionGroupElement = optionGroupElements.children[index];
+        expect(optionGroupElement.type).toBe('option');
+        expect(optionGroupElement).toHaveReactProps({
+          value: optionOrGroup,
+        });
       });
     });
   });
 
   describe('value', () => {
     it('uses the passed value for the select', () => {
-      const value = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           value="Some value"
           options={[]}
           onChange={jest.fn()}
         />,
-      )
-        .find('select')
-        .prop('value');
-      expect(value).toBe('Some value');
+      );
+
+      expect(select).toContainReactComponent('select', {value: 'Some value'});
     });
   });
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = mountWithAppProvider(
+      const select = mountWithApp(
         <Select label="Select" id="MySelect" options={[]} onChange={noop} />,
-      )
-        .find('select')
-        .prop('id');
-      expect(id).toBe('MySelect');
+      );
+
+      expect(select).toContainReactComponent('select', {id: 'MySelect'});
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = mountWithAppProvider(
+      const id = mountWithApp(
         <Select label="Select" options={[]} onChange={noop} />,
       )
-        .find('select')
+        .find('select')!
         .prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
@@ -184,22 +186,22 @@ describe('<Select />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the select', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select label="Select" disabled options={[]} onChange={noop} />,
       );
-      expect(select.find('select').prop('disabled')).toBe(true);
+      expect(select.find('select')!.prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let select = mountWithAppProvider(
+      let select = mountWithApp(
         <Select label="Select" options={[]} onChange={noop} />,
       );
-      expect(select.find('select').prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBeFalsy();
 
-      select = mountWithAppProvider(
+      select = mountWithApp(
         <Select label="Select" disabled={false} options={[]} onChange={noop} />,
       );
-      expect(select.find('select').prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBeFalsy();
     });
   });
 
@@ -212,23 +214,19 @@ describe('<Select />', () => {
           prefix: <Icon source={CircleTickOutlineMinor} />,
         },
       ];
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select label="Select" options={options} onChange={noop} />,
       );
 
-      expect(
-        select
-          .find(Icon)
-          .filterWhere(
-            (icon) => icon.prop('source') === CircleTickOutlineMinor,
-          ),
-      ).toHaveLength(1);
+      expect(select).toContainReactComponentTimes(Icon, 1, {
+        source: CircleTickOutlineMinor,
+      });
     });
   });
 
   describe('helpText', () => {
     it('connects the select to the help text', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           options={[]}
@@ -236,71 +234,78 @@ describe('<Select />', () => {
           onChange={noop}
         />,
       );
-      const helpTextID = select.find('select').prop<string>('aria-describedby');
+      const helpTextID = select.find('select')!.prop('aria-describedby');
       expect(typeof helpTextID).toBe('string');
-      expect(select.find(`#${helpTextID}`).text()).toBe('Some help');
+      expect(select.find('div', {id: helpTextID})).toContainReactText(
+        'Some help',
+      );
     });
   });
 
   describe('placeholder', () => {
     it('renders the placeholder as the initially selected option', () => {
       const placeholderValue = '';
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           placeholder="Choose something"
           options={[]}
           onChange={noop}
         />,
-      ).find('select');
-      const placeholderOption = select.find('option').first();
-
-      expect(placeholderValue).toBe(placeholderOption.prop('value'));
-      expect(placeholderOption.prop('disabled')).toBe(true);
+      ).find('select')!;
+      const placeholderOption = select.findAll('option')![0];
+      expect(placeholderOption).toHaveReactProps({
+        disabled: true,
+        value: placeholderValue,
+      });
     });
 
     it('sets the placeholder value as the select value when there is an onChange handler', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           placeholder="Choose something"
           options={[]}
           onChange={jest.fn()}
         />,
-      ).find('select');
-      const placeholderOption = select.find('option').first();
-      expect(select.prop('value')).toBe(placeholderOption.prop('value'));
+      ).find('select')!;
+      const placeholderOption = select.findAll('option')![0];
+      expect(select).toHaveReactProps({
+        value: placeholderOption.prop('value'),
+      });
     });
   });
 
   describe('error', () => {
     it('marks the select as invalid', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select error={<span>Invalid</span>} label="Select" onChange={noop} />,
       );
 
-      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(select).toContainReactComponent('select', {'aria-invalid': true});
 
       select.setProps({error: 'Some error'});
-      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(select).toContainReactComponent('select', {'aria-invalid': true});
 
       select.setProps({error: 'true'});
-      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(select).toContainReactComponent('select', {'aria-invalid': true});
     });
 
     it('connects the select to the error', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select label="Select" error="Some error" onChange={noop} />,
       );
-      const errorID = select.find('select').prop<string>('aria-describedby');
+      const errorID = select.find('select')!.prop('aria-describedby');
       expect(typeof errorID).toBe('string');
-      expect(select.find(`#${errorID}`).text()).toBe('Some error');
+      expect(select.find('div', {id: errorID})!).toContainReactText(
+        'Some error',
+      );
     });
 
     it('connects the select to an error rendered separately', () => {
       const errorMessage = 'Some error';
       const selectID = 'collectionRuleType';
-      const fieldGroup = mountWithAppProvider(
+      const fieldGroup = mountWithApp(
         <div>
           <Select
             error={Boolean(errorMessage)}
@@ -312,16 +317,19 @@ describe('<Select />', () => {
         </div>,
       );
 
-      const select = fieldGroup.find(Select).last();
-      const errorID = select.find('select').prop<string>('aria-describedby');
+      const selects = fieldGroup.findAll(Select)!;
+      const select = selects[selects.length - 1];
+      const errorID = select.find('select')!.prop('aria-describedby');
 
-      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(select).toContainReactComponent('select', {'aria-invalid': true});
       expect(typeof errorID).toBe('string');
-      expect(fieldGroup.find(`#${errorID}`).text()).toBe('Some error');
+      expect(fieldGroup.find('div', {id: errorID})!).toContainReactText(
+        'Some error',
+      );
     });
 
     it('connects the select to both an error and help text', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           error="Some error"
@@ -330,16 +338,19 @@ describe('<Select />', () => {
         />,
       );
       const descriptions = select
-        .find('select')
-        .prop<string>('aria-describedby')
+        .find('select')!
+        .prop('aria-describedby')!
         .split(' ');
+
       expect(descriptions).toHaveLength(2);
-      expect(select.find(`#${descriptions[0]}`).text()).toBe('Some help');
-      expect(select.find(`#${descriptions[1]}`).text()).toBe('Some error');
+      expect(select).toContainReactComponent(Labelled, {
+        helpText: 'Some help',
+        error: 'Some error',
+      });
     });
 
     it('renders error markup when a non-boolean value', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select
           label="Select"
           helpText="Some help"
@@ -348,26 +359,27 @@ describe('<Select />', () => {
         />,
       );
 
-      expect(select.find(InlineError)).toHaveLength(1);
+      expect(select).toContainReactComponent(InlineError);
     });
 
     it('does not render error markup when a boolean value', () => {
-      const select = mountWithAppProvider(
+      const select = mountWithApp(
         <Select error label="Select" helpText="Some help" onChange={noop} />,
       );
 
-      expect(select.find(InlineError)).toHaveLength(0);
+      expect(select).not.toContainReactComponent(InlineError);
     });
   });
 
   describe('requiredIndicator', () => {
     it('passes requiredIndicator prop to Labelled', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <Select label="Select" onChange={noop} requiredIndicator />,
       );
-      const labelled = element.find(Labelled);
 
-      expect(labelled.prop('requiredIndicator')).toBe(true);
+      expect(element).toContainReactComponent(Labelled, {
+        requiredIndicator: true,
+      });
     });
   });
 });

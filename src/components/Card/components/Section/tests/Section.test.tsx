@@ -1,7 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Badge, Subheading, ButtonGroup, Button} from 'components';
 
 import {Section} from '../Section';
@@ -17,21 +15,17 @@ describe('<Card.Section />', () => {
       </h2>
     );
 
-    const section = mountWithAppProvider(<Section title={titleMarkup} />);
-    const headerMarkup = section.find('h2');
+    const section = mountWithApp(<Section title={titleMarkup} />);
+    const headerMarkup = section.find('h2')!;
 
-    expect(headerMarkup.text()).toContain(titleString);
-    expect(headerMarkup.find('Badge').text()).toBe(badgeString);
+    expect(headerMarkup).toContainReactText(titleString);
+    expect(headerMarkup.find(Badge)).toContainReactText(badgeString);
   });
 
   it('wraps plain string titles in a <Subheading />', () => {
     const titleString = 'Online store';
-
-    const card = mountWithAppProvider(<Section title={titleString} />);
-    const headerMarkup = card.find(Subheading);
-
-    expect(headerMarkup.exists()).toBeTruthy();
-    expect(headerMarkup.text()).toStrictEqual(titleString);
+    const card = mountWithApp(<Section title={titleString} />);
+    expect(card.find(Subheading)).toContainReactText(titleString);
   });
 
   describe('hideWhenPrinting prop', () => {
@@ -56,18 +50,18 @@ describe('<Card.Section />', () => {
     const mockActions = [{content: 'Preview'}, {content: 'Open'}];
 
     it('renders a button group when defined', () => {
-      const section = mountWithAppProvider(<Section actions={mockActions} />);
-      expect(section.find(ButtonGroup).exists()).toBeTruthy();
+      const section = mountWithApp(<Section actions={mockActions} />);
+      expect(section).toContainReactComponent(ButtonGroup);
     });
 
     it('renders buttons for each action', () => {
-      const section = mountWithAppProvider(<Section actions={mockActions} />);
-      expect(section.find(Button)).toHaveLength(2);
+      const section = mountWithApp(<Section actions={mockActions} />);
+      expect(section).toContainReactComponentTimes(Button, 2);
     });
 
     it('does not render a button group when not defined', () => {
-      const section = mountWithAppProvider(<Section />);
-      expect(section.find(ButtonGroup).exists()).toBeFalsy();
+      const section = mountWithApp(<Section />);
+      expect(section).not.toContainReactComponent(ButtonGroup);
     });
 
     it('renders both custom title markup and actions', () => {
@@ -79,12 +73,12 @@ describe('<Card.Section />', () => {
           <Badge>{badgeString}</Badge>
         </h2>
       );
-      const section = mountWithAppProvider(
+      const section = mountWithApp(
         <Section actions={mockActions} title={titleMarkup} />,
       );
-      expect(section.find(Button)).toHaveLength(2);
-      expect(section.text()).toContain(titleString);
-      expect(section.find('Badge').text()).toBe(badgeString);
+      expect(section).toContainReactComponentTimes(Button, 2);
+      expect(section).toContainReactText(titleString);
+      expect(section.find(Badge)).toContainReactText(badgeString);
     });
   });
 });

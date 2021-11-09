@@ -55,6 +55,11 @@
   --p-progressbar-indicator: var(--p-border-success);
 }
 
+.colorCritical {
+  --p-progressbar-background: var(--p-surface-neutral);
+  --p-progressbar-indicator: var(--p-interactive-critical);
+}
+
 .Indicator {
   height: inherit;
   width: 0;

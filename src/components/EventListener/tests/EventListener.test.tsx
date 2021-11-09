@@ -1,27 +1,26 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'tests/utilities';
 
 import {EventListener} from '../EventListener';
 
 describe('<EventListener />', () => {
   it('calls handler when the resize event is fired', () => {
     const spy = jest.fn();
-    mountWithAppProvider(<EventListener event="resize" handler={spy} />);
+    mountWithApp(<EventListener event="resize" handler={spy} />);
     window.dispatchEvent(new Event('resize'));
     expect(spy).toHaveBeenCalled();
   });
 
   it('does not call handler when a different event is fired', () => {
     const spy = jest.fn();
-    mountWithAppProvider(<EventListener event="click" handler={spy} />);
+    mountWithApp(<EventListener event="click" handler={spy} />);
     window.dispatchEvent(new Event('resize'));
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('removes listener on update', () => {
     const spy = jest.fn();
-    const eventListener = mountWithAppProvider(
+    const eventListener = mountWithApp(
       <EventListener event="resize" handler={spy} />,
     );
     eventListener.setProps({event: 'scroll', handler: noop});
@@ -31,9 +30,7 @@ describe('<EventListener />', () => {
 
   it('removes listener when unmounted', () => {
     const spy = jest.fn();
-    mountWithAppProvider(
-      <EventListener event="resize" handler={spy} />,
-    ).unmount();
+    mountWithApp(<EventListener event="resize" handler={spy} />).unmount();
     window.dispatchEvent(new Event('resize'));
     expect(spy).not.toHaveBeenCalled();
   });
