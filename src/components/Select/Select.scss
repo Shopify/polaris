@@ -52,7 +52,7 @@ $stacking-order: (
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
   &.error .Input:-moz-focusring {
     color: transparent;
-    text-shadow: var(--p-override-none);
+    text-shadow: none;
   }
 }
 

@@ -10,7 +10,7 @@ $Backdrop-opacity: 0.88;
   padding: spacing(tight) spacing();
   border-radius: var(--p-border-radius-wide);
   background: var(--p-surface);
-  box-shadow: var(--p-override-none);
+  box-shadow: none;
   color: var(--p-text);
   margin-bottom: spacing(loose);
 

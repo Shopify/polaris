@@ -91,7 +91,7 @@ $stacking-order: (
 
 .MoreFiltersButtonContainer {
   > div {
-    margin-left: var(--p-override-none);
+    margin-left: 0;
   }
 
   .Item > div > button {

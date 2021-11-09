@@ -137,7 +137,7 @@ $stacking-order: (
     --progress-lower: #{var(--p-action-critical)};
 
     @include range-track-selectors {
-      background-color: var(--p-override-none);
+      background-color: transparent;
     }
 
     @include range-thumb-selectors {
