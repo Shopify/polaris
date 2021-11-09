@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
 - Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
+- Improves `Popover` component and its animation ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Improves `base` easing curve ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
 
 ### Bug fixes
 
