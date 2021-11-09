@@ -1,6 +1,6 @@
 # Unreleased changes
 
-Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
+Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) to format new entries. 💜
 
 ### Breaking changes
 
