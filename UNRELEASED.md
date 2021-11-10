@@ -10,6 +10,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
 - Improves `Popover` component and its animation ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
 - Improves `base` easing curve ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Remove vertical padding from wrapping div of `ActionList` ([#4571](https://github.com/Shopify/polaris-react/pull/4571))
 
 ### Bug fixes
 
