@@ -46,7 +46,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: color('sky', 'light');
+  background-color: var(--p-background);
 
   @include when-printing {
     // AppProvider sets styles on the body. These needs to

@@ -8,7 +8,7 @@ $stacking-order: (
 
 $range-wrapper: rem(28px);
 
-$range-thumb-border-error: rem(2px) solid color('red');
+$range-thumb-border-error: rem(2px) solid var(--p-border-critical);
 
 .Wrapper {
   position: relative;

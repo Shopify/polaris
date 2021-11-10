@@ -214,7 +214,7 @@ $disabled-fade: 0.6;
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
-        $fill-color: color('white'),
+        $fill-color: var(--p-icon-on-interactive),
         $filter-color: filter('white')
       );
     }
@@ -382,7 +382,7 @@ $secondary-item-font-size: rem(15px);
 
       @media (-ms-high-contrast: active) {
         @include recolor-icon(
-          $fill-color: color('white'),
+          $fill-color: var(--p-icon-on-interactive),
           $filter-color: filter('white')
         );
       }
