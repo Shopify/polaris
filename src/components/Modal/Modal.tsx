@@ -119,9 +119,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
       const iframe = evt.target as HTMLIFrameElement;
       if (iframe && iframe.contentWindow) {
-          const iframeHeight = iframe.contentWindow.document.body.scrollHeight || DEFAULT_IFRAME_CONTENT_HEIGHT;
-          setIframeHeight(iframeHeight);
-        }
+        setIframeHeight(iframe.contentWindow.document.body.scrollHeight || DEFAULT_IFRAME_CONTENT_HEIGHT);
       }
 
       if (onIFrameLoad != null) {
