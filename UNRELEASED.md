@@ -15,20 +15,11 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Removed extraneous space in `MediaCard` when card has no actions ([#4538](https://github.com/Shopify/polaris-react/pull/4538))
-- Fixed a bug in `Stack` where vertical spacing was off ([#4572](https://github.com/Shopify/polaris-react/pull/4572))
-
 ### Documentation
-
-- Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
 
 ### Development workflow
 
-- Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
-
 ### Dependency upgrades
-
-Bump polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/pull/4569))
 
 ### Code quality
 
