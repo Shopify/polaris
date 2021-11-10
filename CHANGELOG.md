@@ -8,6 +8,33 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 7.3.0 - 2021-11-10
+
+### Enhancements
+
+- Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
+- Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
+- Improved `Popover` component and its animation ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Improved `base` easing curve ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Removed vertical padding from wrapping div of `ActionList` ([#4571](https://github.com/Shopify/polaris-react/pull/4571))
+
+### Bug fixes
+
+- Removed extraneous space in `MediaCard` when card has no actions (thanks to [@emilycritter](https://github.com/emilycritter) for the [pull request](https://github.com/Shopify/polaris-react/pull/4538))
+- Fixed a bug in `Stack` where vertical spacing was off ([#4572](https://github.com/Shopify/polaris-react/pull/4572))
+
+### Documentation
+
+- Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
+
+### Development workflow
+
+- Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
+
+### Dependency upgrades
+
+Bumped polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/pull/4569))
+
 ## 7.2.0 - 2021-10-28
 
 ### Enhancements

@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -100,8 +100,8 @@
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/loom": "^1.0.0",
     "@shopify/loom-cli": "^1.0.0",
-    "@shopify/loom-plugin-eslint": "^1.0.0",
     "@shopify/loom-plugin-build-library": "^1.0.0",
+    "@shopify/loom-plugin-eslint": "^1.0.0",
     "@shopify/loom-plugin-prettier": "^1.0.0",
     "@shopify/loom-plugin-stylelint": "^1.0.0",
     "@shopify/postcss-plugin": "^3.1.1",
