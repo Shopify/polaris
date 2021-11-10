@@ -222,6 +222,13 @@ function SectionedActionListExample() {
                 {content: 'Export file', icon: ExportMinor},
               ],
             },
+            {
+              title: 'Bulk actions',
+              items: [
+                {content: 'Edit', icon: EditMinor},
+                {content: 'Delete', icon: DeleteMinor},
+              ],
+            },
           ]}
         />
       </Popover>
