@@ -20,7 +20,7 @@ import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
 import {generateScopedName} from './config/rollup/namespaced-classname';
 
-// Needed so TS realises what configutation hooks are provided by Jest
+// Needed so TS realises what configuration hooks are provided by Jest
 import type {} from '@shopify/loom-plugin-jest';
 
 // eslint-disable-next-line import/no-default-export

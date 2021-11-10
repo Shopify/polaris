@@ -18,10 +18,11 @@ export function calculateVerticalPosition(
   containerRect: Rect,
   preferredPosition: PreferredPosition,
   fixed: boolean | undefined,
+  topBarOffset = 0,
 ) {
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
-  const spaceAbove = activatorRect.top;
+  const spaceAbove = activatorRect.top - topBarOffset;
   const spaceBelow =
     containerRect.height - activatorRect.top - activatorRect.height;
 
