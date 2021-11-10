@@ -87,7 +87,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, children} = this.props;
+    const {colorScheme = 'light', children} = this.props;
 
     const {intl, link} = this.state;
 
@@ -98,7 +98,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
+                  <ThemeProvider colorScheme={colorScheme}>
                     <MediaQueryProvider>
                       <PortalsManager>
                         <FocusManager>{children}</FocusManager>
