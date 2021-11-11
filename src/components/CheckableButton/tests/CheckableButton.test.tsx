@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 import {Checkbox} from 'components';
 
 import {CheckableButton} from '../CheckableButton';
-import {Key} from '../../../types';
 
 const CheckableButtonProps = {
   label: 'Test-Label',
@@ -71,19 +70,6 @@ describe('<CheckableButton />', () => {
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
       element.find('div')!.trigger('onClick');
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('is called when the CheckableButton pressed with spacebar', () => {
-      const spy = jest.fn();
-      const element = mountWithApp(
-        <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
-      );
-
-      element.find(Checkbox)!.find('input')!.trigger('onKeyUp', {
-        keyCode: Key.Space,
-      });
-
       expect(spy).toHaveBeenCalled();
     });
   });
