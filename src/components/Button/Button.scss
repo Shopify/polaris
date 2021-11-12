@@ -117,9 +117,7 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
-  @include button-filled(
-    var(--p-interactive)
-  ); // removing second arg because $focus-color not used
+  @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
@@ -137,9 +135,7 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
-  @include button-filled(
-    var(--p-action-critical)
-  ); // removing second arg because $focus-color not used
+  @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
