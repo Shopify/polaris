@@ -24,10 +24,6 @@ $icon-size: rem(20px);
 
   &:active {
     background-color: var(--p-surface-pressed);
-
-    .ContentWrapper {
-      background: transparent;
-    }
   }
 
   &:hover,
@@ -42,9 +38,6 @@ $icon-size: rem(20px);
   // stylelint-disable selector-max-specificity
   &:focus {
     outline: none;
-    .ContentWrapper {
-      background: transparent;
-    }
   }
 
   &:focus:not(:active) {
@@ -60,7 +53,6 @@ $icon-size: rem(20px);
   justify-content: center;
   padding: 0;
   margin-left: 0;
-  background: transparent;
   height: control-slim-height();
   width: control-slim-height();
   border-radius: var(--p-border-radius-wide);

@@ -13,10 +13,6 @@
     @include recolor-icon(var(--p-icon-hovered));
   }
 
-  &:focus {
-    background: transparent;
-  }
-
   &:active {
     background: var(--p-surface-pressed);
   }
