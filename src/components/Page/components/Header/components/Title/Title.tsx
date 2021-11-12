@@ -10,7 +10,7 @@ export interface TitleProps {
   /** Page title, in large type */
   title?: string;
   /** Page subtitle, in regular type*/
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
   /** thumbnail that precedes the title */

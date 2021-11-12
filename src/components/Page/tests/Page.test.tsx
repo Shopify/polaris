@@ -67,6 +67,14 @@ describe('<Page />', () => {
         subtitle,
       });
     });
+
+    it('gets passed into the <Header /> as an html element', () => {
+      const subtitle = <div>Subtitle</div>;
+      const page = mountWithApp(<Page {...mockProps} subtitle={subtitle} />);
+      expect(page).toContainReactComponent(Header, {
+        subtitle,
+      });
+    });
   });
 
   describe('titleMetadata', () => {

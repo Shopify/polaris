@@ -6,6 +6,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
+- Changed the `Page` prop `subtitle` type from a string to a React node ([#](https://github.com/Shopify/polaris-react/pull/))
+
 ### Bug fixes
 
 ### Documentation
