@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, ThemeProvider} from 'components';
+import {Button, Image, ThemeProviderLegacy} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
@@ -283,9 +283,9 @@ describe('<ContextualSaveBar />', () => {
     });
   });
 
-  it('renders a ThemeProvider with inverted theme', () => {
+  it('renders a ThemeProviderLegacy with inverted theme', () => {
     const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
-    expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
+    expect(contextualSaveBar).toContainReactComponent(ThemeProviderLegacy, {
       theme: {colorScheme: 'inverse'},
     });
   });

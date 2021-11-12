@@ -43,8 +43,8 @@ export interface AppThemeConfig extends ThemeConfig {
   colorScheme?: 'light' | 'dark';
 }
 
-// The config that is passed into a ThemeProvider.
-// The ThemeProvider converts this object into a Theme, and then stores
+// The config that is passed into a ThemeProviderLegacy.
+// The ThemeProviderLegacy converts this object into a Theme, and then stores
 // the Theme in a context.
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
