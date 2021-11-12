@@ -30,4 +30,6 @@ Bump polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/
 
 ### Code quality
 
+- Remove all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
+
 ### Deprecations
