@@ -304,7 +304,9 @@ export type {TextFieldProps} from './TextField';
 export {TextStyle} from './TextStyle';
 export type {TextStyleProps} from './TextStyle';
 
-export {ThemeProvider} from './ThemeProvider';
+// Renamed to ThemeProvider until we deprecate this component.
+export {ThemeProviderLegacy as ThemeProvider} from './ThemeProviderLegacy';
+export {ThemeProvider as ThemeProviderNew} from './ThemeProvider';
 
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';

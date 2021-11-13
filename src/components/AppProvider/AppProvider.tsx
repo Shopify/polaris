@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
+import {ThemeProviderLegacy} from '../ThemeProviderLegacy';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
@@ -91,6 +92,11 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     const {intl, link} = this.state;
 
+    const colorScheme =
+      theme.colorScheme === 'light' || theme.colorScheme === 'dark'
+        ? theme.colorScheme
+        : undefined;
+
     return (
       <FeaturesContext.Provider value={this.props.features || {}}>
         <I18nContext.Provider value={intl}>
@@ -98,13 +104,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
-                    <MediaQueryProvider>
-                      <PortalsManager>
-                        <FocusManager>{children}</FocusManager>
-                      </PortalsManager>
-                    </MediaQueryProvider>
-                  </ThemeProvider>
+                  <ThemeProviderLegacy theme={theme}>
+                    <ThemeProvider colorScheme={colorScheme}>
+                      <MediaQueryProvider>
+                        <PortalsManager>
+                          <FocusManager>{children}</FocusManager>
+                        </PortalsManager>
+                      </MediaQueryProvider>
+                    </ThemeProvider>
+                  </ThemeProviderLegacy>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>
