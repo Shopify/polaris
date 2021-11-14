@@ -1,8 +1,8 @@
 import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
-import {Avatar} from 'components/Avatar';
 
+import {Avatar} from '../../../../Avatar';
 import {UserMenu} from '../UserMenu';
 import {Menu} from '../../Menu';
 

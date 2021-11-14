@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {SettingAction} from 'components/SettingAction';
 
+import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
 
 describe('<SettingToggle />', () => {

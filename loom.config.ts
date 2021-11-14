@@ -55,7 +55,7 @@ function jestAdjustmentsPlugin() {
         configuration.jestModuleNameMapper?.hook((moduleNameMapper) => ({
           ...moduleNameMapper,
           '^tests/(.*)': '<rootDir>/tests/$1',
-          '^components($|/.*)': '<rootDir>/src/components$1',
+          '^components$': '<rootDir>/src/components',
         }));
 
         // Ignore tests in the examples folder

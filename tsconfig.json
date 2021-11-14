@@ -12,7 +12,6 @@
     "strictFunctionTypes": false,
     "paths": {
       "components": ["./src/components"],
-      "components/*": ["./src/components/*"],
       "tests/*": ["./tests/*"]
     }
   },
