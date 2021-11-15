@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {TextContainer} from 'components/TextContainer';
-import {Heading} from 'components/Heading';
 
+import {Heading} from '../../Heading';
+import {TextContainer} from '../../TextContainer';
 import {Section} from '../components';
 import {Layout} from '../Layout';
 import styles from '../Layout.scss';

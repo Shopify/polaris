@@ -1,7 +1,8 @@
 import React from 'react';
 import {InlineError, Label, Labelled} from 'components';
 import {mountWithApp} from 'tests/utilities';
-import {Button} from 'components/Button';
+
+import {Button} from '../../Button';
 
 describe('<Labelled />', () => {
   it('passes relevant props along to the label', () => {
