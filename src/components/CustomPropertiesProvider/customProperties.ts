@@ -1,4 +1,4 @@
-import {tokens} from './tokens';
+import {tokens, ColorSchemeTokens} from './tokens';
 
 /**
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
@@ -30,11 +30,11 @@ ${Object.entries(tokens)
   .join('\n')}
 `;
 
-function getCustomProperties(tokens: {[key: string]: string}, pad = '') {
+function getCustomProperties(tokens: ColorSchemeTokens, pad = '') {
   return Object.entries(tokens)
     .map(([name, value]) => {
-      if (name === 'scheme') {
-        return `${pad}color-scheme: ${value};`;
+      if (name === 'colorScheme') {
+        return `${pad}color-scheme: ${value || 'normal'};`;
       } else {
         return `${pad}--p-${name}: ${value};`;
       }

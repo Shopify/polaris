@@ -1,9 +1,25 @@
-export type ColorScheme = keyof typeof tokens;
+export type ColorScheme = 'light' | 'dark' | 'dim';
 
-export const tokens = {
+export interface ColorSchemeTokens {
+  /**
+   * Value set for the CSS `color-scheme` declaration.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+   */
+  colorScheme: 'light' | 'dark' | 'normal';
+  /**
+   * Values converted to CSS custom properties.
+   * @example --p-background: #000;
+   */
+  [token: string]: string;
+}
+
+export type Tokens = {
+  [C in ColorScheme]: ColorSchemeTokens;
+};
+
+export const tokens: Tokens = {
   light: {
-    // This set the color-scheme css declaration.
-    scheme: 'light',
+    colorScheme: 'light',
     'action-critical-depressed': '#6c0f00',
     'action-critical-disabled': '#f1f1f1',
     'action-critical-hovered': '#bc2200',
@@ -133,7 +149,7 @@ export const tokens = {
     text: '#202223',
   },
   dark: {
-    scheme: 'dark',
+    colorScheme: 'dark',
     'action-critical-depressed': '#fd5749',
     'action-critical-disabled': '#bb250a',
     'action-critical-hovered': '#e32f0e',
@@ -263,7 +279,7 @@ export const tokens = {
     text: '#e3e5e7',
   },
   dim: {
-    scheme: 'dark',
+    colorScheme: 'dark',
     'action-critical-depressed': '#fd5749',
     'action-critical-disabled': '#bb250a',
     'action-critical-hovered': '#e32f0e',
