@@ -10,7 +10,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Fixed try-catch syntax error in Modal ([#4553](https://github.com/Shopify/polaris-react/pull/4553))
+- Fixed try-catch syntax error in `Modal` ([#4553](https://github.com/Shopify/polaris-react/pull/4553))
 
 ### Documentation
 
