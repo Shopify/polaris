@@ -3,10 +3,6 @@ import React from 'react';
 import type {ColorScheme} from './tokens';
 import {customProperties} from './customProperties';
 
-const styleSheet = document.createElement('style');
-styleSheet.textContent = customProperties;
-styleSheet.dataset.polarisCustomProperties = 'false';
-
 // This variable is intentionally in module scope to ensure
 // Polaris custom properties are only inject one time.
 let injectedCustomProperties = false;
@@ -34,6 +30,13 @@ export function CustomPropertiesProvider(props: CustomPropertiesProviderProps) {
     if (injectedCustomProperties) return;
     injectedCustomProperties = true;
 
+    const styleSheet = document.createElement('style');
+
+    // This data attribute is used to identify the stylesheet in the devtools.
+    styleSheet.dataset.polarisCustomPropertiesProvider = '';
+
+    styleSheet.textContent = customProperties;
+
     document.head.appendChild(styleSheet);
   }, []);
 
@@ -46,9 +49,7 @@ export function CustomPropertiesProvider(props: CustomPropertiesProviderProps) {
 
 /**
  * TODO:
- * - Restructure to support SSR
- * - Revert CustomPropertiesProviderLegacy name change
- * - Rename this to CustomPropertiesProvider
+ * - Excessive use of the name `color-scheme` may be a source of confusion
  *
  * - Discussion how to ship these changes
  */
