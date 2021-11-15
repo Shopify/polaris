@@ -26,5 +26,10 @@ $button-spacing: rem(12px);
       border: none !important;
       @include focus-ring($border-width: rem(0));
     }
+
+    &.destructive {
+      // --p-button-color: var(--p-action-critical);
+      background: var(--p-text-on-critical);
+    }
   }
 }

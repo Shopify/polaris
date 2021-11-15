@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
+import {classNames} from '../../../../utilities/css';
 import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
 
@@ -25,7 +26,13 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   return (
-    <span className={styles.SecondaryAction} ref={secondaryActionsRef}>
+    <span
+      className={classNames(
+        styles.SecondaryAction,
+        rest?.destructive && styles.destructive,
+      )}
+      ref={secondaryActionsRef}
+    >
       <Button onClick={onAction} {...rest}>
         {children}
       </Button>
