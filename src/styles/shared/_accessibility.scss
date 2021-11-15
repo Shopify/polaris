@@ -4,13 +4,16 @@
 /// styles referenced from GOV.UK design system
 /// https://github.com/h5bp/main.css/issues/12#issuecomment-451965809
 @mixin visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  white-space: nowrap;
+  // Need to make sure we override any existing styles.
+  // stylelint-disable declaration-no-important
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  // stylelint-enable declaration-no-important
 }
