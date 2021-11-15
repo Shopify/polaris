@@ -1,7 +1,7 @@
-import {InlineError} from 'components/InlineError';
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import {InlineError} from '../../../../InlineError';
 import {SingleThumb} from '../SingleThumb';
 
 const mockProps = {
