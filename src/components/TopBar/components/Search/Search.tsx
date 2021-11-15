@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ThemeProviderLegacy} from '../../../ThemeProviderLegacy';
+import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';
 
@@ -35,11 +35,11 @@ export function Search({
     <>
       {overlayMarkup}
       <div className={classNames(styles.Search, visible && styles.visible)}>
-        <ThemeProviderLegacy theme={{colorScheme: 'dark'}}>
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <div className={styles.SearchContent}>
             <div className={styles.Results}>{children}</div>
           </div>
-        </ThemeProviderLegacy>
+        </ThemeProvider>
       </div>
     </>
   );

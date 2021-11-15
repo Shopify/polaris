@@ -22,7 +22,7 @@ Use theme provider to share global theme settings throughout the hierarchy of yo
 
 ### Theme provider rendered by the app provider
 
-The app provider component renders a ThemeProviderLegacy component and a theme.
+The app provider component renders a ThemeProvider component and a theme.
 
 ```jsx
 <AppProvider i18n={{}}>
@@ -123,7 +123,7 @@ A theme provider can be nested within the theme provider rendered by the app pro
         </List>
       </Card.Section>
     </Card>
-    <ThemeProviderLegacy theme={{colorScheme: 'dark'}}>
+    <ThemeProvider theme={{colorScheme: 'dark'}}>
       <Card
         title="Shipment 1234"
         secondaryFooterActions={[{content: 'Edit shipment'}]}
@@ -136,7 +136,7 @@ A theme provider can be nested within the theme provider rendered by the app pro
           </List>
         </Card.Section>
       </Card>
-    </ThemeProviderLegacy>
+    </ThemeProvider>
   </TextContainer>
 </AppProvider>
 ```
@@ -160,7 +160,7 @@ You can pass in a custom config to the theme provider to override default HSL va
         </List>
       </Card.Section>
     </Card>
-    <ThemeProviderLegacy
+    <ThemeProvider
       theme={{
         colors: {
           surface: '#054948',
@@ -204,7 +204,7 @@ You can pass in a custom config to the theme provider to override default HSL va
           </List>
         </Card.Section>
       </Card>
-    </ThemeProviderLegacy>
+    </ThemeProvider>
   </TextContainer>
 </AppProvider>
 ```
@@ -232,9 +232,9 @@ A theme provider can be nested within the theme provider rendered by the app pro
           This setting is <TextStyle variation="strong">disabled</TextStyle>.
         </Stack.Item>
         <Stack.Item>
-          <ThemeProviderLegacy theme={{colors: {primary: '#3b5998'}}}>
+          <ThemeProvider theme={{colors: {primary: '#3b5998'}}}>
             <Button primary>Enable</Button>
-          </ThemeProviderLegacy>
+          </ThemeProvider>
         </Stack.Item>
       </Stack>
     </Card.Section>
@@ -264,9 +264,9 @@ To create contrast with surrounding elements, some components render themselves 
 
 ```jsx
 return (
-  <ThemeProviderLegacy theme={{colorScheme: 'inverse'}}>
+  <ThemeProvider theme={{colorScheme: 'inverse'}}>
     <div className="InverseComponent">Component content</div>
-  </ThemeProviderLegacy>
+  </ThemeProvider>
 );
 ```
 

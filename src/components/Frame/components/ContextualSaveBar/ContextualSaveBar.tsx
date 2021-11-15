@@ -3,7 +3,7 @@ import React, {useCallback} from 'react';
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
-import {ThemeProviderLegacy} from '../../../ThemeProviderLegacy';
+import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
@@ -113,7 +113,7 @@ export function ContextualSaveBar({
 
   return (
     <>
-      <ThemeProviderLegacy theme={{colorScheme: 'inverse'}}>
+      <ThemeProvider theme={{colorScheme: 'inverse'}}>
         <div className={styles.ContextualSaveBar}>
           {contextControlMarkup}
           {logoMarkup}
@@ -127,7 +127,7 @@ export function ContextualSaveBar({
             </div>
           </div>
         </div>
-      </ThemeProviderLegacy>
+      </ThemeProvider>
       {discardConfirmationModalMarkup}
     </>
   );

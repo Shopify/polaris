@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
-import {ThemeProviderLegacy} from '../ThemeProviderLegacy';
 import {ThemeProvider} from '../ThemeProvider';
+import {CustomPropertiesProvider} from '../CustomPropertiesProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -104,15 +104,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProviderLegacy theme={theme}>
-                    <ThemeProvider colorScheme={colorScheme}>
+                  <ThemeProvider theme={theme}>
+                    <CustomPropertiesProvider colorScheme={colorScheme}>
                       <MediaQueryProvider>
                         <PortalsManager>
                           <FocusManager>{children}</FocusManager>
                         </PortalsManager>
                       </MediaQueryProvider>
-                    </ThemeProvider>
-                  </ThemeProviderLegacy>
+                    </CustomPropertiesProvider>
+                  </ThemeProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>

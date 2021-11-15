@@ -200,7 +200,7 @@ function AppProviderLinkExample() {
 
 ### With theme
 
-With a `theme`, the app provider component will set a logo and theming for the App. The logo is used by the [TopBar](https://polaris.shopify.com/components/structure/top-bar) and [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar) components. For theming configuration, see the [ThemeProviderLegacy](https://polaris.shopify.com/components/structure/theme-provider) documentation.
+With a `theme`, the app provider component will set a logo and theming for the App. The logo is used by the [TopBar](https://polaris.shopify.com/components/structure/top-bar) and [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar) components. For theming configuration, see the [ThemeProvider](https://polaris.shopify.com/components/structure/theme-provider) documentation.
 
 ```jsx
 function AppProviderThemeExample() {

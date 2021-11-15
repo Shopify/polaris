@@ -1,18 +1,18 @@
 import React, {useContext} from 'react';
 import {mount} from 'tests/utilities';
 
-import {ThemeProviderLegacy} from '../ThemeProviderLegacy';
+import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext} from '../../../utilities/theme';
 import {colorToHsla} from '../../../utilities/color-transformers';
 
-describe('<ThemeProviderLegacy />', () => {
+describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const ThemeProviderLegacy = mount(
-      <ThemeProviderLegacy>
+    const themeProvider = mount(
+      <ThemeProvider>
         <p>Hello</p>
-      </ThemeProviderLegacy>,
+      </ThemeProvider>,
     );
-    expect(ThemeProviderLegacy).not.toBeNull();
+    expect(themeProvider).not.toBeNull();
   });
 
   it('passes context', () => {
@@ -22,8 +22,8 @@ describe('<ThemeProviderLegacy />', () => {
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const ThemeProviderLegacy = mount(
-      <ThemeProviderLegacy
+    const themeProvider = mount(
+      <ThemeProvider
         theme={{
           logo: {
             width: 104,
@@ -35,20 +35,20 @@ describe('<ThemeProviderLegacy />', () => {
         }}
       >
         <Child />
-      </ThemeProviderLegacy>,
+      </ThemeProvider>,
     );
 
-    expect(ThemeProviderLegacy.find(Child)).toContainReactComponent('div');
+    expect(themeProvider.find(Child)).toContainReactComponent('div');
   });
 
   it('has a default theme', () => {
-    const ThemeProviderLegacy = mount(
-      <ThemeProviderLegacy>
+    const themeProvider = mount(
+      <ThemeProvider>
         <p>Hello</p>
-      </ThemeProviderLegacy>,
+      </ThemeProvider>,
     );
 
-    expect(ThemeProviderLegacy.find('div')).toHaveReactProps({
+    expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--p-override-zero': expect.any(String),
         '--p-background': expect.any(String),
@@ -67,15 +67,15 @@ describe('<ThemeProviderLegacy />', () => {
 
   describe('when nested', () => {
     it('does not render custom properties if themes are identical', () => {
-      const ThemeProviderLegacy = mount(
-        <ThemeProviderLegacy>
-          <ThemeProviderLegacy>
+      const themeProvider = mount(
+        <ThemeProvider>
+          <ThemeProvider>
             <p>Hello</p>
-          </ThemeProviderLegacy>
-        </ThemeProviderLegacy>,
+          </ThemeProvider>
+        </ThemeProvider>,
       );
 
-      expect(ThemeProviderLegacy.findAll('div')[1]).toHaveReactProps({
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.not.objectContaining({
           '--p-background': expect.any(String),
           '--p-text': expect.any(String),
@@ -92,18 +92,18 @@ describe('<ThemeProviderLegacy />', () => {
     });
 
     it('renders custom properties if themes are identical but alwaysRenderCustomProperties is true', () => {
-      const ThemeProviderLegacy = mount(
-        <ThemeProviderLegacy theme={{colorScheme: 'dark'}}>
-          <ThemeProviderLegacy
+      const themeProvider = mount(
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
+          <ThemeProvider
             theme={{colorScheme: 'dark'}}
             alwaysRenderCustomProperties
           >
             <p>Hello</p>
-          </ThemeProviderLegacy>
-        </ThemeProviderLegacy>,
+          </ThemeProvider>
+        </ThemeProvider>,
       );
 
-      expect(ThemeProviderLegacy.findAll('div')[1]).toHaveReactProps({
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.objectContaining({
           '--p-background': expect.any(String),
           '--p-text': expect.any(String),
@@ -120,23 +120,23 @@ describe('<ThemeProviderLegacy />', () => {
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const ThemeProviderLegacy = mount(
-        <ThemeProviderLegacy
+      const themeProvider = mount(
+        <ThemeProvider
           theme={{
             colors: {surface: '#FFFFFF'},
           }}
         >
-          <ThemeProviderLegacy
+          <ThemeProvider
             theme={{
               colors: {surface: '#000000'},
             }}
           >
             <p>Hello</p>
-          </ThemeProviderLegacy>
-        </ThemeProviderLegacy>,
+          </ThemeProvider>
+        </ThemeProvider>,
       );
 
-      expect(ThemeProviderLegacy.findAll('div')[1]).toHaveReactProps({
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.not.objectContaining({
           '--p-surface': 'rgba(255, 255, 255, 1)',
         }),
@@ -225,15 +225,15 @@ describe('<ThemeProviderLegacy />', () => {
     ])(
       'Inherits color scheme from parent where: %s',
       (_: any, topLevelTheme: any, childTheme: any, expectedIsDark: any) => {
-        const ThemeProviderLegacy = mount(
-          <ThemeProviderLegacy theme={topLevelTheme}>
-            <ThemeProviderLegacy theme={childTheme}>
+        const themeProvider = mount(
+          <ThemeProvider theme={topLevelTheme}>
+            <ThemeProvider theme={childTheme}>
               <p>Hello</p>
-            </ThemeProviderLegacy>
-          </ThemeProviderLegacy>,
+            </ThemeProvider>
+          </ThemeProvider>,
         );
 
-        const div = ThemeProviderLegacy.findAll('div')[1];
+        const div = themeProvider.findAll('div')[1];
 
         expect(div).toHaveReactProps({
           style: expect.objectContaining({

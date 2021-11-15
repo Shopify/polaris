@@ -4,16 +4,16 @@ import {tokens} from './tokens';
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
  */
 export const customProperties = /* css */ `
-/* Defaults */
+/* Default light custom properties */
 :root {\n${getCustomProperties(tokens.light, ' '.repeat(2))}\n}
 
-/* Dark mode */
+/* Default dark custom properties  */
 @media (prefers-color-scheme: dark) {
-  :root {\n${getCustomProperties(tokens.dark, ' '.repeat(4))}\n}
+  :root {\n${getCustomProperties(tokens.dark, ' '.repeat(4))}\n\t}
 }
 
 /*
-  Custom properties for each scheme.
+  Custom properties for each color-scheme.
   @example:
   [color-scheme="light"] {...}
   [color-scheme="dark"] {...}

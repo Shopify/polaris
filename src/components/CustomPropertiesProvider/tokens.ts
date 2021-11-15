@@ -2,6 +2,7 @@ export type ColorScheme = keyof typeof tokens;
 
 export const tokens = {
   light: {
+    // This set the color-scheme css declaration.
     scheme: 'light',
     'action-critical-depressed': '#6c0f00',
     'action-critical-disabled': '#f1f1f1',

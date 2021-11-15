@@ -76,6 +76,8 @@ export type {ConnectedProps} from './Connected';
 export {ContextualSaveBar} from './ContextualSaveBar';
 export type {ContextualSaveBarProps} from './ContextualSaveBar';
 
+export {CustomPropertiesProvider} from './CustomPropertiesProvider';
+
 export {DataTable} from './DataTable';
 export type {
   DataTableProps,
@@ -304,9 +306,7 @@ export type {TextFieldProps} from './TextField';
 export {TextStyle} from './TextStyle';
 export type {TextStyleProps} from './TextStyle';
 
-// Renamed to ThemeProvider until we deprecate this component.
-export {ThemeProviderLegacy as ThemeProvider} from './ThemeProviderLegacy';
-export {ThemeProvider as ThemeProviderNew} from './ThemeProvider';
+export {ThemeProvider} from './ThemeProvider';
 
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
