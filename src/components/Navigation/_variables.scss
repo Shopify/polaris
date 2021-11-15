@@ -77,7 +77,7 @@ $nav-animation-variables: (
 }
 
 @mixin nav-item-icon-attributes {
-  @include recolor-icon(var(--p-icon), transparent, filter('icon'));
+  @include recolor-icon(var(--p-icon), transparent, var(--p-icon));
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
@@ -93,7 +93,7 @@ $nav-animation-variables: (
 
   .Item:hover &,
   .Item.keyFocused & {
-    @include recolor-icon(var(--p-icon), transparent, filter('icon'));
+    @include recolor-icon(var(--p-icon), transparent, var(--p-icon));
   }
 
   .Item-selected &,
@@ -104,7 +104,7 @@ $nav-animation-variables: (
     @include recolor-icon(
       var(--p-action-primary),
       transparent,
-      filter('action')
+      var(--p-icon-on-interactive)
     );
   }
 
