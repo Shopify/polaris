@@ -1,14 +1,16 @@
 /// Used to hide an element visually, but keeping it accessible for
 /// accessibility tools.
 
+/// styles referenced from GOV.UK design system
+/// https://github.com/h5bp/main.css/issues/12#issuecomment-451965809
 @mixin visually-hidden {
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   position: absolute;
-  white-space: nowrap;
+  width: 1px;
+  height: 1px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
   border: 0;
+  white-space: nowrap;
 }

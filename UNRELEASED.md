@@ -6,9 +6,9 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-### Bug fixes
+- Update `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641)).
 
-- Fixed `VisuallyHidden` to be positioned in the top left corner of its parent to avoid horizontal scroll issues ([#4641](https://github.com/Shopify/polaris-react/pull/4641)).
+### Bug fixes
 
 ### Documentation
 
