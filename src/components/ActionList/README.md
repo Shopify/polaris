@@ -110,6 +110,7 @@ function ActionListInPopoverExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           items={[
             {
               content: 'Import file',
@@ -147,6 +148,7 @@ function ActionListWithMediaExample() {
     <div style={{height: '200px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           items={[
             {content: 'Import file', icon: ImportMinor},
             {content: 'Export file', icon: ExportMinor},
@@ -178,6 +180,7 @@ function ActionListWithSuffixExample() {
     <div style={{height: '200px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           items={[
             {
               content: 'Import file',
@@ -214,6 +217,7 @@ function SectionedActionListExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
@@ -250,6 +254,7 @@ function ActionListWithDestructiveItemExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
@@ -291,6 +296,7 @@ function ActionListWithHelpTextExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
+          actionRole="menuitem"
           sections={[
             {
               items: [
@@ -321,6 +327,7 @@ function ActionListWithPrefixSuffixExample() {
   return (
     <div style={{height: '250px', maxWidth: '350px'}}>
       <ActionList
+        actionRole="menuitem"
         items={[
           {
             content: 'Go here',

@@ -63,7 +63,18 @@ export function Section({
     <p className={titleClassName}>{section.title}</p>
   ) : null;
 
-  const sectionRole = actionRole === 'option' ? 'presentation' : undefined;
+  let sectionRole;
+  switch (actionRole) {
+    case 'option':
+      sectionRole = 'presentation';
+      break;
+    case 'menuitem':
+      sectionRole = 'menu';
+      break;
+    default:
+      sectionRole = undefined;
+      break;
+  }
 
   const sectionMarkup = (
     <div className={className}>
@@ -75,7 +86,9 @@ export function Section({
   );
 
   return hasMultipleSections ? (
-    <li className={styles.Section}>{sectionMarkup}</li>
+    <li className={styles.Section} role="presentation">
+      {sectionMarkup}
+    </li>
   ) : (
     sectionMarkup
   );

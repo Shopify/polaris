@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
-import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {
+  wrapFocusNextFocusableMenuItem,
+  wrapFocusPreviousFocusableMenuItem,
+} from '../../utilities/focus';
+import {KeypressListener} from '../KeypressListener';
+import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
 import {classNames} from '../../utilities/css';
 
 import {Section} from './components';
@@ -24,6 +29,7 @@ export function ActionList({
   onActionAnyItem,
 }: ActionListProps) {
   let finalSections: ActionListSection[] = [];
+  const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -48,5 +54,46 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={className}>{sectionMarkup}</Element>;
+  const handleFocusPreviousItem = (evt: KeyboardEvent) => {
+    evt.preventDefault();
+    if (actionListRef.current && evt.target) {
+      wrapFocusPreviousFocusableMenuItem(
+        actionListRef.current,
+        evt.target as HTMLElement,
+      );
+    }
+  };
+
+  const handleFocusNextItem = (evt: KeyboardEvent) => {
+    evt.preventDefault();
+    if (actionListRef.current && evt.target) {
+      wrapFocusNextFocusableMenuItem(
+        actionListRef?.current,
+        evt.target as HTMLElement,
+      );
+    }
+  };
+
+  const listeners =
+    actionRole === 'menuitem' ? (
+      <>
+        <KeypressListener
+          keyEvent="keydown"
+          keyCode={Key.DownArrow}
+          handler={handleFocusNextItem}
+        />
+        <KeypressListener
+          keyEvent="keydown"
+          keyCode={Key.UpArrow}
+          handler={handleFocusPreviousItem}
+        />
+      </>
+    ) : null;
+
+  return (
+    <Element ref={actionListRef} className={className}>
+      {listeners}
+      {sectionMarkup}
+    </Element>
+  );
 }
