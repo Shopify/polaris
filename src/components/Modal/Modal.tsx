@@ -121,7 +121,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       if (iframe && iframe.contentWindow) {
         try {
           setIframeHeight(iframe.contentWindow.document.body.scrollHeight);
-        } catch (err) {
+        } catch (_error) {
           setIframeHeight(DEFAULT_IFRAME_CONTENT_HEIGHT);
         }
       }
