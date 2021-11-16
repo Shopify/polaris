@@ -6,8 +6,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- Update `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641)).
-- Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489)
+- Updated `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641)).
+- Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489))
 
 ### Bug fixes
 
@@ -23,6 +23,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
-Clean up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Removed miscellaneous css custom properties ([#4620](https://github.com/Shopify/polaris-react/pull/4620))
 
 ### Deprecations
