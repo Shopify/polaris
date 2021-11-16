@@ -45,8 +45,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusAttention {
-  --p-component-badge-pip-color: color('yellow', 'dark');
-  background-color: color('yellow', 'light');
+  --p-component-badge-pip-color: var(--p-text-warning);
+  background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 
