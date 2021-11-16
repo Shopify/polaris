@@ -50,7 +50,6 @@ describe('<ThemeProvider />', () => {
 
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
-        '--p-override-zero': expect.any(String),
         '--p-background': expect.any(String),
         '--p-text': expect.any(String),
         '--p-interactive': expect.any(String),
