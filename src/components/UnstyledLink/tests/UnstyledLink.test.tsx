@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {UnstyledLink} from 'components/UnstyledLink';
+
+import {UnstyledLink} from '../UnstyledLink';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {

@@ -111,21 +111,28 @@ $stacking-order: (
   margin-left: -($spinner-size / 2);
 }
 
+.primary,
+.destructive {
+  @include button-filled;
+
+  &.disabled {
+    @include recolor-icon(var(--p-icon-disabled));
+    color: var(--p-text-disabled);
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+
 .primary {
   --p-button-color: var(--p-action-primary);
   --p-button-text: var(--p-text-on-primary);
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
-  @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
-    @include recolor-icon(var(--p-icon-disabled));
     background: var(--p-action-primary-disabled);
-    color: var(--p-text-disabled);
-    border-color: transparent;
-    box-shadow: none;
   }
 }
 
@@ -135,15 +142,10 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
-  @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
-    @include recolor-icon(var(--p-icon-disabled));
     background: var(--p-action-critical-disabled);
-    color: var(--p-text-disabled);
-    box-shadow: none;
-    border-color: transparent;
   }
 }
 

@@ -1,7 +1,6 @@
 {
   "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
-    "baseUrl": "./",
     "rootDir": "./",
     "noEmit": false,
     "emitDeclarationOnly": true,
@@ -12,8 +11,8 @@
     "importsNotUsedAsValues": "error",
     "strictFunctionTypes": false,
     "paths": {
-      "components": ["src/components"],
-      "components/*": ["src/components/*"]
+      "components": ["./src/components"],
+      "tests/*": ["./tests/*"]
     }
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]
