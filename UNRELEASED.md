@@ -7,7 +7,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Enhancements
 
 - Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489))
-- Removed miscellaneous css custom properties ([#4620](https://github.com/Shopify/polaris-react/pull/4620))
 
 ### Bug fixes
 
@@ -22,5 +21,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Dependency upgrades
 
 ### Code quality
+
+- Removed miscellaneous css custom properties ([#4620](https://github.com/Shopify/polaris-react/pull/4620))
 
 ### Deprecations
