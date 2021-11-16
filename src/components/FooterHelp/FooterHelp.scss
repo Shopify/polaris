@@ -19,15 +19,11 @@ $border-radius: 999px;
   display: inline-flex;
   align-items: center;
   padding: spacing(loose) spacing(loose) spacing(loose) spacing();
-  border-top: var(--p-override-none);
-  border-bottom: var(--p-override-none);
   width: 100%;
   justify-content: center;
 
   @include page-content-when-not-fully-condensed {
     width: auto;
-    border: var(--p-override-none);
-    border-radius: var(--p-override-none);
   }
 }
 

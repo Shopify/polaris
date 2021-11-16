@@ -268,11 +268,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-button-drop-shadow`                  | `0 1px 0 rgba(0, 0, 0, 0.05)`                                                                                |
 | `--p-button-inner-shadow`                 | `inset 0 -1px 0 rgba(0, 0, 0, 0.2)`                                                                          |
 | `--p-button-pressed-inner-shadow`         | `inset 0 1px 0 rgba(0, 0, 0, 0.15)`                                                                          |
-| `--p-override-none`                       | `none`                                                                                                       |
-| `--p-override-transparent`                | `transparent`                                                                                                |
-| `--p-override-one`                        | `1`                                                                                                          |
-| `--p-override-visible`                    | `visible`                                                                                                    |
-| `--p-override-zero`                       | `0`                                                                                                          |
 | `--p-override-loading-z-index`            | `514`                                                                                                        |
 | `--p-choice-size`                         | `2rem`                                                                                                       |
 | `--p-icon-size`                           | `1rem`                                                                                                       |
@@ -283,7 +278,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-banner-border-highlight`             | `inset 0 0.1rem 0 0 var(--p-border-highlight-subdued), inset 0 0 0 0.1rem var(--p-border-highlight-subdued)` |
 | `--p-banner-border-warning`               | `inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)`     |
 | `--p-banner-border-critical`              | `inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)`   |
-| `--p-badge-mix-blend-mode`                | `luminosity`                                                                                                 |
 | `--p-thin-border-subdued`                 | `0.1rem solid var(--p-border-subdued)`                                                                       |
 | `--p-text-field-spinner-offset`           | `0.2rem`                                                                                                     |
 | `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                                    |
