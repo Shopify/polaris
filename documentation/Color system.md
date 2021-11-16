@@ -274,7 +274,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-override-visible`                    | `visible`                                                                                                    |
 | `--p-override-zero`                       | `0`                                                                                                          |
 | `--p-override-loading-z-index`            | `514`                                                                                                        |
-| `--p-non-null-content`                    | `''`                                                                                                         |
 | `--p-choice-size`                         | `2rem`                                                                                                       |
 | `--p-icon-size`                           | `1rem`                                                                                                       |
 | `--p-choice-margin`                       | `0.1rem`                                                                                                     |
@@ -296,4 +295,3 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-ease`                                | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                           |
 | `--p-range-slider-thumb-size-base`        | `1.6rem`                                                                                                     |
 | `--p-range-slider-thumb-size-active`      | `2.4rem`                                                                                                     |
-| `--p-range-slider-thumb-scale`            | `1.5`                                                                                                        |
