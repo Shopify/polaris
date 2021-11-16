@@ -15,12 +15,11 @@ $pip-spacing: ($height - $pip-size) / 2;
   align-items: center;
   padding: $vertical-padding $horizontal-padding;
   background-color: var(--p-surface-neutral);
-  border: var(--p-override-zero);
   border-radius: $height;
   font-size: rem(13px);
   line-height: $extra-small-height;
   color: var(--p-text);
-  font-weight: var(--p-badge-font-weight);
+  font-weight: 400;
 
   @media print {
     border: solid rem(0.1px) var(--p-border);
@@ -46,8 +45,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusAttention {
-  --p-component-badge-pip-color: color('yellow', 'dark');
-  background-color: color('yellow', 'light');
+  --p-component-badge-pip-color: var(--p-text-warning);
+  background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 

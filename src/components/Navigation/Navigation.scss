@@ -207,14 +207,14 @@ $disabled-fade: 0.6;
   &:active {
     @include recolor-icon(
       var(--p-icon-hovered),
-      var(--p-override-transparent),
+      transparent,
       $filter-color: filter('action')
     );
     background: var(--p-background-hovered);
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
-        $fill-color: color('white'),
+        $fill-color: var(--p-icon-on-interactive),
         $filter-color: filter('white')
       );
     }
@@ -375,14 +375,11 @@ $secondary-item-font-size: rem(15px);
     &:hover,
     &:focus {
       background: var(--p-background-hovered);
-      @include recolor-icon(
-        var(--p-icon-hovered),
-        var(--p-override-transparent)
-      );
+      @include recolor-icon(var(--p-icon-hovered), transparent);
 
       @media (-ms-high-contrast: active) {
         @include recolor-icon(
-          $fill-color: color('white'),
+          $fill-color: var(--p-icon-on-interactive),
           $filter-color: filter('white')
         );
       }

@@ -51,7 +51,7 @@ $stacking-order: (
 
 .Input {
   --progress-lower: #{var(--p-interactive)};
-  --progress-upper: #{var(--p-override-transparent)};
+  --progress-upper: transparent;
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunately its
   // custom properties transpiler has a bug that means it doesn't like multiple
@@ -120,7 +120,7 @@ $stacking-order: (
 
   &:active {
     @include range-thumb-selectors {
-      transform: scale(var(--p-range-slider-thumb-scale));
+      transform: scale(1.5);
     }
   }
 
@@ -135,10 +135,6 @@ $stacking-order: (
 
   .error & {
     --progress-lower: #{var(--p-action-critical)};
-
-    @include range-track-selectors {
-      background-color: var(--p-override-none);
-    }
 
     @include range-thumb-selectors {
       border-color: var(--p-action-critical);
@@ -181,11 +177,6 @@ $range-output-spacing: rem(16px);
   transition-property: opacity, visibility, bottom;
   transition-duration: duration();
   transition-timing-function: easing();
-
-  .Input:hover + &,
-  .Input:focus + & {
-    opacity: var(--p-override-zero);
-  }
 
   .Input:active + & {
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -

@@ -1,8 +1,8 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
 
+import {PositionedOverlay} from '../../PositionedOverlay';
 import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
 import {PopoverOverlay} from '../components';

@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 7.3.1 - 2021-11-12
+
+### Bug fixes
+
+- Reverted exit timeout in `Popover` to avoid race conditions ([#4633](https://github.com/Shopify/polaris-react/pull/4633))
+
 ## 7.3.0 - 2021-11-10
 
 ### Enhancements
