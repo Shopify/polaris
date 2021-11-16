@@ -16,3 +16,13 @@
     filter: $filter-color;
   }
 }
+
+@mixin color-icon($value, $hue: base) {
+  svg {
+    fill: color($value, $hue);
+  }
+
+  img {
+    filter: filter($value, $hue);
+  }
+}
