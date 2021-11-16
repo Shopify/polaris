@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {MediaQueryProvider} from 'components/MediaQueryProvider';
 
 import {LinkContext} from '../../../utilities/link';
-import {AppProvider} from '../AppProvider';
 import {FocusManager} from '../../FocusManager';
+import {MediaQueryProvider} from '../../MediaQueryProvider';
+import {AppProvider} from '../AppProvider';
 
 describe('<AppProvider />', () => {
   beforeEach(() => {

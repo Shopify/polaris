@@ -36,10 +36,7 @@ $activator-variables: (
 
   &:focus {
     @include focus-ring($style: 'focused');
-    background-color: var(
-      --top-bar-background-lighter,
-      var(--p-override-transparent)
-    );
+    background-color: var(--top-bar-background-lighter);
     outline: none;
   }
 

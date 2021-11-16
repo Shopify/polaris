@@ -20,7 +20,7 @@ import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
 import {generateScopedName} from './config/rollup/namespaced-classname';
 
-// Needed so TS realises what configutation hooks are provided by Jest
+// Needed so TS realises what configuration hooks are provided by Jest
 import type {} from '@shopify/loom-plugin-jest';
 
 // eslint-disable-next-line import/no-default-export
@@ -50,13 +50,13 @@ function jestAdjustmentsPlugin() {
     test.hook(({hooks}) => {
       hooks.configure.hook((configuration) => {
         // Aliases for root-level imports, which are used in test files
-        // These do not work in rollup builds, so perhaps we shouldn't configure
-        // them to work in jest tests either
-        configuration.jestModuleNameMapper?.hook((moduleMapper) => {
-          moduleMapper['^tests(.*)'] = '<rootDir>/tests$1';
-          moduleMapper['^(components)(.*)'] = '<rootDir>/src/$1$2';
-          return moduleMapper;
-        });
+        // `tests/*` as an alias for test-only utilities is acceptable, but
+        // avoid others as paths working in jest but not in rollup is confusing
+        configuration.jestModuleNameMapper?.hook((moduleNameMapper) => ({
+          ...moduleNameMapper,
+          '^tests/(.*)': '<rootDir>/tests/$1',
+          '^components$': '<rootDir>/src/components',
+        }));
 
         // Ignore tests in the examples folder
         configuration.jestConfig?.hook((config) => ({
