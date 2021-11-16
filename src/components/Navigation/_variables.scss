@@ -4,7 +4,7 @@ $item-line-height-small: rem(32px);
 $item-line-height-large: rem(36px);
 // This is the only place this color is used.
 // stylelint-disable-next-line color-no-hex
-$item-selected-background: rgba(color('indigo'), 0.12);
+$item-selected-background: rgba(var(--p-background-selected), 0.12);
 $text-line-height: rem(20px);
 $nav-variables: (
   mobile-spacing: rem(10px),

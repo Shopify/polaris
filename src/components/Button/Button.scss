@@ -150,15 +150,15 @@ $stacking-order: (
 }
 
 .outline {
-  @include button-outline(color('ink', 'lighter'));
+  @include button-outline(var(--p-border));
 
   &.disabled {
-    @include button-outline-disabled(color('ink', 'lighter'));
+    @include button-outline-disabled(var(--p-border-disabled));
   }
 }
 
 .destructive.outline {
-  @include button-outline(color('red'));
+  @include button-outline(var(--p-border-critical));
 }
 
 .disabled {
@@ -487,7 +487,7 @@ $stacking-order: (
 
   // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
   &.outline:not(:focus) {
-    border-left-color: rgba(color('ink', 'lighter'), 0);
+    border-left-color: rgba(var(--p-border-disabled), 0);
   }
 
   &:focus,
