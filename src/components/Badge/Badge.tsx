@@ -19,7 +19,7 @@ export interface BadgeProps {
   /** Render a pip showing the progress of a given task. */
   progress?: Progress;
   /**
-   * Medium or small size. Use `small` only in the main navigation of an app frame.
+   * Medium or small size.
    * @default 'medium'
    */
   size?: Size;
