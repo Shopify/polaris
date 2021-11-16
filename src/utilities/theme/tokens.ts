@@ -24,7 +24,6 @@ export const Tokens = {
   overrideVisible: 'visible',
   overrideZero: '0',
   overrideLoadingZIndex: '514',
-  buttonFontWeight: '500',
   nonNullContent: "''",
   choiceSize: rem('20px'),
   iconSize: rem('10px'),
@@ -48,7 +47,6 @@ export const Tokens = {
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '400',
 };
 
 function rem(px: string) {
