@@ -23,6 +23,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
-Clean up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Removed custom and unnecessary font weight properties ([#4648](https://github.com/Shopify/polaris-react/pull/4648))
 
 ### Deprecations
