@@ -208,14 +208,14 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-icon-hovered),
       transparent,
-      $filter-color: filter('action')
+      $filter-color: var(--p-action-primary)
     );
     background: var(--p-background-hovered);
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
         $fill-color: var(--p-icon-on-interactive),
-        $filter-color: filter('white')
+        $filter-color: var(--p-icon-on-interactive)
       );
     }
   }
@@ -380,13 +380,13 @@ $secondary-item-font-size: rem(15px);
       @media (-ms-high-contrast: active) {
         @include recolor-icon(
           $fill-color: var(--p-icon-on-interactive),
-          $filter-color: filter('white')
+          $filter-color: var(--p-icon-on-interactive)
         );
       }
     }
 
     &:hover {
-      @include recolor-icon($filter-color: filter('action'));
+      @include recolor-icon($filter-color: var(--p-icon-on-interactive));
     }
 
     &:focus {
@@ -421,7 +421,7 @@ $secondary-item-font-size: rem(15px);
     @include recolor-icon(
       var(--p-action-primary),
       null,
-      $filter-color: filter('action')
+      $filter-color: var(--p-icon-on-interactive)
     );
     color: var(--p-text-primary);
   }
