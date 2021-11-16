@@ -8,7 +8,7 @@ $stacking-order: (
 
 $range-wrapper: rem(28px);
 
-$range-thumb-border-error: rem(2px) solid color('red');
+$range-thumb-border-error: rem(2px) solid var(--p-border-critical);
 
 .Wrapper {
   position: relative;
@@ -38,7 +38,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
   height: $range-track-height;
   border-radius: $range-thumb-size;
 
-  --unselected-range: #{var(--p-override-transparent)};
+  --unselected-range: transparent;
   --selected-range: #{var(--p-interactive)};
   --gradient-colors: var(--unselected-range) 0%,
     var(--unselected-range) var(--Polaris-RangeSlider-progress-lower),
@@ -91,7 +91,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
   }
 
   &:active {
-    transform: scale(var(--p-range-slider-thumb-scale));
+    transform: scale(1.5);
   }
 
   &:focus {
@@ -132,11 +132,6 @@ $range-output-spacing: rem(16px);
   transition-duration: var(--p-duration-1-5-0);
   transition-timing-function: var(--p-ease);
   transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
-
-  .Thumbs:hover + &,
-  .Thumbs:focus + & {
-    opacity: var(--p-override-zero);
-  }
 
   .Thumbs:active + & {
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -

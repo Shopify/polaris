@@ -70,9 +70,6 @@ $context-control-expand-after: 1400px;
   fill: var(--p-icon); // Icon will inherit this fill
   transition: (duration() - 33ms) fill easing() 33ms;
 
-  &.focused {
-    background-color: var(--p-override-transparent);
-  }
   &.focused:active {
     background-color: var(--p-surface-pressed);
   }

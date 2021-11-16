@@ -41,21 +41,6 @@ $stacking-order: (
   }
 }
 
-.placeholder {
-  // stylelint-disable-next-line selector-max-class
-  &.error .Input {
-    // This is the only place this color is used.
-    // stylelint-disable-next-line color-no-hex
-    color: #9c9798;
-  }
-
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity
-  &.error .Input:-moz-focusring {
-    color: transparent;
-    text-shadow: var(--p-override-none);
-  }
-}
-
 .Content {
   @include text-style-input;
   position: relative;

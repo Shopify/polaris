@@ -17,11 +17,6 @@
     text-decoration: none;
   }
 
-  &:focus {
-    $chrome-default-outline: rgba(0, 103, 244, 0.247) auto rem(4.5px);
-    outline: var(--p-override-none);
-  }
-
   &:focus:not(:active) {
     outline: var(--p-focused) auto 1px;
   }

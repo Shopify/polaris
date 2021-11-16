@@ -90,10 +90,6 @@ $stacking-order: (
 }
 
 .MoreFiltersButtonContainer {
-  > div {
-    margin-left: var(--p-override-none);
-  }
-
   .Item > div > button {
     white-space: nowrap;
     border-top-left-radius: 0;

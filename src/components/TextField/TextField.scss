@@ -100,9 +100,7 @@ $stacking-order: (
   padding: control-vertical-padding() $backdrop-horizontal-spacing;
   background: none;
   border: border(transparent);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  font-family: font-family();
   appearance: none;
   caret-color: var(--p-text);
   color: var(--p-text);

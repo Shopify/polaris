@@ -18,14 +18,7 @@ export const Tokens = {
   buttonPressedInnerShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
 
   // Overrides
-  overrideNone: 'none',
-  overrideTransparent: 'transparent',
-  overrideOne: '1',
-  overrideVisible: 'visible',
-  overrideZero: '0',
   overrideLoadingZIndex: '514',
-  buttonFontWeight: '500',
-  nonNullContent: "''",
   choiceSize: rem('20px'),
   iconSize: rem('10px'),
   choiceMargin: rem('1px'),
@@ -35,7 +28,6 @@ export const Tokens = {
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
   bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
   bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
-  badgeMixBlendMode: 'luminosity',
   thinBorderSubdued: `${rem('1px')} solid var(--p-border-subdued)`,
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
@@ -47,8 +39,6 @@ export const Tokens = {
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
-  rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '400',
 };
 
 function rem(px: string) {
