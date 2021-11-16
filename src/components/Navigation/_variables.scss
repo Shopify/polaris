@@ -77,7 +77,13 @@ $nav-animation-variables: (
 }
 
 @mixin nav-item-icon-attributes {
-  @include recolor-icon(var(--p-icon), transparent, var(--p-icon));
+  // hardcoding this variable for now because we need to rip out all instances
+  // of filter() eventually but can't for this one right now. The value is the
+  // equivalent value for filter('icon').
+  --p-icon-filter: brightness(0) saturate(100%) invert(36%) sepia(13%)
+    saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
+
+  @include recolor-icon(var(--p-icon), transparent, var(--p-icon-filter));
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
