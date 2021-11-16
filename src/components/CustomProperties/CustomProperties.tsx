@@ -1,13 +1,13 @@
 import React from 'react';
 
-import type {ColorScheme} from './tokens';
-import {customProperties} from './customProperties';
+import {styles} from './styles';
+import type {ColorScheme} from './designTokens';
 
 // This variable is intentionally in module scope to ensure
 // Polaris custom properties are only inject one time.
 let injectedCustomProperties = false;
 
-export interface CustomPropertiesProviderProps {
+export interface CustomPropertiesProps {
   /** Custom logos and colors provided to select components. */
   colorScheme?: ColorScheme;
   /** The content to display. */
@@ -18,7 +18,7 @@ export interface CustomPropertiesProviderProps {
   as?: React.ElementType;
 }
 
-export function CustomPropertiesProvider(props: CustomPropertiesProviderProps) {
+export function CustomProperties(props: CustomPropertiesProps) {
   const {
     as: Component = 'div',
     children,
@@ -33,9 +33,9 @@ export function CustomPropertiesProvider(props: CustomPropertiesProviderProps) {
     const styleSheet = document.createElement('style');
 
     // This data attribute is used to identify the stylesheet in the devtools.
-    styleSheet.dataset.polarisCustomPropertiesProvider = '';
+    styleSheet.dataset.polarisCustomProperties = '';
 
-    styleSheet.textContent = customProperties;
+    styleSheet.textContent = styles;
 
     document.head.appendChild(styleSheet);
   }, []);
@@ -46,10 +46,3 @@ export function CustomPropertiesProvider(props: CustomPropertiesProviderProps) {
     </Component>
   );
 }
-
-/**
- * TODO:
- * - Excessive use of the name `color-scheme` may be a source of confusion
- *
- * - Discussion how to ship these changes
- */

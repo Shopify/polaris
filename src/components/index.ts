@@ -76,7 +76,7 @@ export type {ConnectedProps} from './Connected';
 export {ContextualSaveBar} from './ContextualSaveBar';
 export type {ContextualSaveBarProps} from './ContextualSaveBar';
 
-export {CustomPropertiesProvider} from './CustomPropertiesProvider';
+export {CustomProperties} from './CustomProperties';
 
 export {DataTable} from './DataTable';
 export type {

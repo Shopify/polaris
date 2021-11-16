@@ -3,7 +3,7 @@ import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
-import {CustomPropertiesProvider} from '../CustomPropertiesProvider';
+import {CustomProperties} from '../CustomProperties';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -105,13 +105,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
-                    <CustomPropertiesProvider colorScheme={colorScheme}>
+                    <CustomProperties colorScheme={colorScheme}>
                       <MediaQueryProvider>
                         <PortalsManager>
                           <FocusManager>{children}</FocusManager>
                         </PortalsManager>
                       </MediaQueryProvider>
-                    </CustomPropertiesProvider>
+                    </CustomProperties>
                   </ThemeProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
