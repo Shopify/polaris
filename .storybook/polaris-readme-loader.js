@@ -142,7 +142,6 @@ import {
   TextContainer,
   TextField,
   TextStyle,
-  ThemeProvider,
   Thumbnail,
   Toast,
   Tooltip,

@@ -3,12 +3,10 @@ import React, {useCallback} from 'react';
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
-import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
-import {useTheme} from '../../../../utilities/theme';
 import {useToggle} from '../../../../utilities/use-toggle';
 
 import {DiscardConfirmationModal} from './components';
@@ -23,7 +21,8 @@ export function ContextualSaveBar({
   contextControl,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  const {logo} = useTheme();
+  // TODO: This behavior will be re-enabled in a separate PR.
+  const logo: {[key: string]: any} = {};
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -113,7 +112,7 @@ export function ContextualSaveBar({
 
   return (
     <>
-      <ThemeProvider theme={{colorScheme: 'inverse'}}>
+      <div>
         <div className={styles.ContextualSaveBar}>
           {contextControlMarkup}
           {logoMarkup}
@@ -127,7 +126,7 @@ export function ContextualSaveBar({
             </div>
           </div>
         </div>
-      </ThemeProvider>
+      </div>
       {discardConfirmationModalMarkup}
     </>
   );
