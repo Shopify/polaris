@@ -5,6 +5,7 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 import {getWidth} from '../../utilities/get-width';
+import {useFrame} from '../../utilities/frame';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
@@ -29,8 +30,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
   ariaLabelledBy,
 }: NavigationProps) {
-  // TODO: This behavior will be re-enabled in a separate PR.
-  const logo = undefined as {[key: string]: any} | undefined;
+  const {logo} = useFrame();
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (

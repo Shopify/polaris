@@ -6,6 +6,7 @@ import {CSSTransition} from 'react-transition-group';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
+import type {Logo} from '../../utilities/frame/types';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
@@ -28,6 +29,8 @@ import {
 import styles from './Frame.scss';
 
 export interface FrameProps {
+  /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components*/
+  logo?: Logo;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -101,6 +104,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showContextualSaveBar,
     } = this.state;
     const {
+      logo,
       children,
       navigation,
       topBar,
@@ -248,6 +252,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       ) : null;
 
     const context = {
+      logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
       startLoading: this.startLoading,

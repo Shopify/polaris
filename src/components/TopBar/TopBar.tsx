@@ -5,6 +5,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useToggle} from '../../utilities/use-toggle';
+import {useFrame} from '../../utilities/frame';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -60,8 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   contextControl,
 }: TopBarProps) {
   const i18n = useI18n();
-  // TODO: This behavior will be re-enabled in a separate PR.
-  const logo = undefined as {[key: string]: any} | undefined;
+  const {logo} = useFrame();
 
   const {
     value: focused,
@@ -108,11 +108,10 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           url={logo.url || ''}
           className={styles.LogoLink}
           style={{width}}
-          aria-label={logo.accessibilityLabel || ''}
         >
           <Image
             source={logo.topBarSource || ''}
-            alt=""
+            alt={logo.accessibilityLabel || ''}
             className={styles.Logo}
             style={{width}}
           />
