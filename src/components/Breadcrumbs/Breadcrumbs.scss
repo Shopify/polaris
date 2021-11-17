@@ -9,7 +9,9 @@ $icon-size: rem(20px);
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: control-height();
+  min-width: control-height();
   color: var(--p-text-subdued);
   text-decoration: none;
   margin: 0;
@@ -24,10 +26,6 @@ $icon-size: rem(20px);
 
   &:active {
     background-color: var(--p-surface-pressed);
-
-    .ContentWrapper {
-      background: var(--p-override-transparent);
-    }
   }
 
   &:hover,
@@ -42,30 +40,12 @@ $icon-size: rem(20px);
   // stylelint-disable selector-max-specificity
   &:focus {
     outline: none;
-    .ContentWrapper {
-      background: var(--p-override-transparent);
-    }
   }
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
   // stylelint-enable selector-max-specificity
-}
-
-.ContentWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin-left: 0;
-  background: transparent;
-  height: control-slim-height();
-  width: control-slim-height();
-  border-radius: var(--p-border-radius-wide);
-  will-change: background;
-  transition: background duration() easing();
 }
 
 .Content {

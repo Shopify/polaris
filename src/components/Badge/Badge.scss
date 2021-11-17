@@ -1,13 +1,9 @@
 @import '../../styles/common';
-
-$height: rem(20px);
-$small-height: rem(18px);
-$extra-small-height: rem(16px);
 $horizontal-padding: spacing(tight);
-$vertical-padding: rem(3px);
+$vertical-padding: calc(#{spacing(extra-tight)} - #{rem(2px)});
 
-$pip-size: rem(10px);
-$pip-spacing: ($height - $pip-size) / 2;
+$pip-size: spacing(tight);
+$pip-spacing: calc(#{$pip-size} / 2);
 
 .Badge {
   --p-component-badge-pip-color: var(--p-icon);
@@ -15,22 +11,19 @@ $pip-spacing: ($height - $pip-size) / 2;
   align-items: center;
   padding: $vertical-padding $horizontal-padding;
   background-color: var(--p-surface-neutral);
-  border: var(--p-override-zero);
-  border-radius: $height;
-  font-size: rem(13px);
-  line-height: $extra-small-height;
+  border-radius: spacing(loose);
+  font-size: font-size(caption);
+  line-height: line-height(caption, large-screen);
   color: var(--p-text);
-  font-weight: var(--p-badge-font-weight);
+  font-weight: 400;
 
   @media print {
     border: solid rem(0.1px) var(--p-border);
-    border-radius: $height;
   }
 }
 
 .sizeSmall {
   font-size: font-size(caption, large-screen);
-  line-height: $small-height;
 }
 
 .statusSuccess {
@@ -46,8 +39,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusAttention {
-  --p-component-badge-pip-color: color('yellow', 'dark');
-  background-color: color('yellow', 'light');
+  --p-component-badge-pip-color: var(--p-text-warning);
+  background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 
@@ -74,7 +67,8 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: var(--p-component-badge-pip-color);
   height: $pip-size;
   width: $pip-size;
-  margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
+  margin-right: $pip-spacing;
+  margin-left: calc(#{$vertical-padding} - #{$pip-spacing});
   border: border-width(thick) solid currentColor;
   border-radius: 50%;
   flex-shrink: 0;
@@ -99,9 +93,9 @@ $pip-spacing: ($height - $pip-size) / 2;
   @media print {
     background: none;
     // 100px is an arbitrarily large number so that you can't see the curvature
-    // of the box shadow. y-offset is 3px larger than the spread to make it look
-    // like it is half-way down the pip (which is 6px tall)
-    box-shadow: 0 -103px 0 -100px currentColor inset;
+    // of the box shadow. y-offset is 2px larger than the spread to make it look
+    // like it is half-way down the pip (which is 4px tall)
+    box-shadow: 0 -102px 0 -100px currentColor inset;
   }
 }
 

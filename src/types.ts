@@ -156,6 +156,11 @@ export interface OutlineableAction extends Action {
   outline?: boolean;
 }
 
+export interface PlainAction extends Action {
+  /** Should action be displayed as a plain link */
+  plain?: boolean;
+}
+
 export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
@@ -183,7 +188,7 @@ export interface ActionListSection {
   /** Section title */
   title?: string;
   /** Collection of action items for the list */
-  items: ActionListItemDescriptor[];
+  items: readonly ActionListItemDescriptor[];
 }
 
 export interface ComplexAction
@@ -192,7 +197,8 @@ export interface ComplexAction
     DestructableAction,
     IconableAction,
     OutlineableAction,
-    LoadableAction {}
+    LoadableAction,
+    PlainAction {}
 
 export interface MenuActionDescriptor extends ComplexAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */

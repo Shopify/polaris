@@ -16,7 +16,7 @@ import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Stack} from '../Stack';
 import {Caption} from '../Caption';
-import {DisplayText} from '../DisplayText';
+import {TextStyle} from '../TextStyle';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
@@ -157,15 +157,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
           return;
         }
 
-        let size = 'extraLarge';
+        let size = 'large';
         const width = node.current.getBoundingClientRect().width;
 
         if (width < 100) {
           size = 'small';
         } else if (width < 160) {
           size = 'medium';
-        } else if (width < 300) {
-          size = 'large';
         }
 
         setSize(size);
@@ -184,7 +182,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(false);
-  const [size, setSize] = useState('extraLarge');
+  const [size, setSize] = useState('large');
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
@@ -425,12 +423,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       <div className={styles.Overlay}>
         <Stack vertical spacing="tight">
           {size === 'small' && <Icon source={icon} color={color} />}
-          {size === 'extraLarge' && (
-            <DisplayText size="small" element="p">
-              {text}
-            </DisplayText>
+          {(size === 'medium' || size === 'large') && (
+            <Caption>
+              <TextStyle variation="strong">{text}</TextStyle>
+            </Caption>
           )}
-          {(size === 'medium' || size === 'large') && <Caption>{text}</Caption>}
         </Stack>
       </div>
     );

@@ -23,12 +23,12 @@ export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
   const {content} = breadcrumb;
 
   const contentMarkup = (
-    <span className={styles.ContentWrapper}>
+    <>
       <span className={styles.Icon}>
         <Icon source={ArrowLeftMinor} />
       </span>
       <VisuallyHidden>{content}</VisuallyHidden>
-    </span>
+    </>
   );
 
   const breadcrumbMarkup =

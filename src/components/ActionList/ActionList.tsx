@@ -8,9 +8,9 @@ import styles from './ActionList.scss';
 
 export interface ActionListProps {
   /** Collection of actions for list */
-  items?: ActionListItemDescriptor[];
+  items?: readonly ActionListItemDescriptor[];
   /** Collection of sectioned action items */
-  sections?: ActionListSection[];
+  sections?: readonly ActionListSection[];
   /** Defines a specific role attribute for each action in the list */
   actionRole?: string;
   /** Callback when any item is clicked or keypressed */
@@ -23,7 +23,7 @@ export function ActionList({
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
-  let finalSections: ActionListSection[] = [];
+  let finalSections: readonly ActionListSection[] = [];
 
   if (items) {
     finalSections = [{items}, ...sections];
