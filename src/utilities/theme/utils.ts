@@ -25,9 +25,8 @@ export function buildThemeContext(
   themeConfig: ProcessedThemeConfig,
   cssCustomProperties?: CustomPropertiesObject,
 ): Theme {
-  const {logo, colors = {}, colorScheme} = themeConfig;
+  const {colors = {}, colorScheme} = themeConfig;
   return {
-    logo,
     cssCustomProperties: toString(cssCustomProperties),
     colors,
     colorScheme,
