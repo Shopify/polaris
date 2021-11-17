@@ -45,6 +45,9 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
+      expect(fileUpload).toContainReactComponent('img', {
+        src: uploadArrowImage,
+      });
       expect(fileUpload).toContainReactComponent(Caption);
       expect(fileUpload).toContainReactComponent(TextStyle);
 
