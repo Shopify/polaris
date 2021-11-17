@@ -80,10 +80,13 @@ $nav-animation-variables: (
   // hardcoding this variable for now because we need to rip out all instances
   // of filter() eventually but can't for this one right now. The value is the
   // equivalent value for filter('icon').
-  --p-icon-filter: brightness(0) saturate(100%) invert(36%) sepia(13%)
+  --p-filter-icon: brightness(0) saturate(100%) invert(36%) sepia(13%)
     saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
+  --p-filter-icon-action: brightness(0) saturate(100%) invert(20%) sepia(59%)
+    saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%);
+  --p-filter-icon-on-interactive: brightness(0) saturate(100%) invert(100%);
 
-  @include recolor-icon(var(--p-icon), transparent, var(--p-icon-filter));
+  @include recolor-icon(var(--p-icon), transparent, var(--p-filter-icon));
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
@@ -99,7 +102,7 @@ $nav-animation-variables: (
 
   .Item:hover &,
   .Item.keyFocused & {
-    @include recolor-icon(var(--p-icon), transparent, var(--p-icon));
+    @include recolor-icon(var(--p-icon), transparent, var(--p-filter-icon));
   }
 
   .Item-selected &,
@@ -110,7 +113,7 @@ $nav-animation-variables: (
     @include recolor-icon(
       var(--p-action-primary),
       transparent,
-      var(--p-icon-on-interactive)
+      var(--p-filter-icon-action)
     );
   }
 

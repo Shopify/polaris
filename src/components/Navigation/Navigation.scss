@@ -208,14 +208,14 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-icon-hovered),
       transparent,
-      $filter-color: var(--p-action-primary)
+      $filter-color: var(--p-filter-icon-action)
     );
     background: var(--p-background-hovered);
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
-        $fill-color: var(--p-icon-on-interactive),
-        $filter-color: var(--p-icon-on-interactive)
+        $fill-color: var(--p-icon-interactive),
+        $filter-color: var(--p-filter-icon-on-interactive)
       );
     }
   }
@@ -380,13 +380,13 @@ $secondary-item-font-size: rem(15px);
       @media (-ms-high-contrast: active) {
         @include recolor-icon(
           $fill-color: var(--p-icon-on-interactive),
-          $filter-color: var(--p-icon-on-interactive)
+          $filter-color: var(--p-filter-icon-on-interactive)
         );
       }
     }
 
     &:hover {
-      @include recolor-icon($filter-color: var(--p-icon-on-interactive));
+      @include recolor-icon($filter-color: var(--p-filter-icon));
     }
 
     &:focus {
@@ -419,9 +419,8 @@ $secondary-item-font-size: rem(15px);
 
   &:hover {
     @include recolor-icon(
-      var(--p-action-primary),
-      null,
-      $filter-color: var(--p-icon-on-interactive)
+      $fill-color: var(--p-action-primary),
+      $filter-color: var(--p-filter-icon-action)
     );
     color: var(--p-text-primary);
   }
