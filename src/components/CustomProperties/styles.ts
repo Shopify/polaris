@@ -30,10 +30,10 @@ const colorSchemeRules = Object.keys(designTokens.colorSchemes)
   .join('\n');
 
 /**
- * Common CSS custom properties.
+ * Static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-const commonCustomProperties = Object.entries(designTokens)
+const staticCustomProperties = Object.entries(designTokens)
   .map(([key, tokens]) =>
     key === 'colorSchemes' ? '' : getCustomProperties(tokens, ' '.repeat(2)),
   )
@@ -64,7 +64,7 @@ function getCustomProperties(tokens: Tokens, pad = '') {
 export const styles = /* css */ `
 :root {
 ${lightDeclarations}
-${commonCustomProperties}
+${staticCustomProperties}
 }
 
 @media (prefers-color-scheme: dark) {

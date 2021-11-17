@@ -7,26 +7,18 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  toString,
   Tokens,
 } from '../../utilities/theme';
 
 export interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme?: ThemeConfig;
-  /**
-   * By default, Polaris avoids re-declaring custom properties within the same React tree
-   * This prop ensures that the CSS custom properties are always rendered. This is useful
-   * for components such as portals that render outside of the root DOM node
-   */
-  alwaysRenderCustomProperties?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
   theme: themeConfig = {},
-  alwaysRenderCustomProperties = false,
   children,
 }: ThemeProviderProps) {
   const parentContext = useContext(ThemeContext);
@@ -70,23 +62,9 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
-  let style;
-
-  if (isParentThemeProvider) {
-    style = customProperties;
-  } else if (
-    alwaysRenderCustomProperties ||
-    (!isParentThemeProvider &&
-      parentContext!.cssCustomProperties !== toString(customProperties))
-  ) {
-    style = {...customProperties, ...{color}};
-  } else {
-    style = {color};
-  }
-
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={style}>{children}</div>
+      <div>{children}</div>
     </ThemeContext.Provider>
   );
 }
