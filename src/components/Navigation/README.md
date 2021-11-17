@@ -173,7 +173,7 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
   <Navigation.Section
     items={[
       {
-        url: '/path/to/place',
+        url: '/',
         label: 'Home',
         icon: HomeMajor,
       },
@@ -202,7 +202,7 @@ Use to present a secondary action, related to a section and to title the section
   <Navigation.Section
     items={[
       {
-        url: '/',
+        url: '/path/to/place',
         label: 'Home',
         icon: HomeMajor,
       },
