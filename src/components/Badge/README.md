@@ -99,6 +99,14 @@ Use to give a non-critical status update on a piece of information or action.
 
 <!-- /content-for -->
 
+### Small badge
+
+Use in layouts with minimal space, like inside of an `IndexTable` cell.
+
+```jsx
+<Badge size="small">Fulfilled</Badge>
+```
+
 ### Informational badge
 
 Use to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
