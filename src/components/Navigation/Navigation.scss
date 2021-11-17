@@ -213,7 +213,7 @@ $disabled-fade: 0.6;
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
-        $fill-color: var(--p-icon-interactive),
+        $fill-color: var(--p-icon-on-interactive),
         $filter-color: var(--p-filter-icon-on-interactive)
       );
     }
