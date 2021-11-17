@@ -9,7 +9,7 @@ import {styles} from './styles';
 let injectedCustomProperties = false;
 
 export interface CustomPropertiesProps {
-  /** Custom logos and colors provided to select components. */
+  /** Determines what color scheme is applied to child content. */
   colorScheme?: ColorScheme;
   /** The content to display. */
   children?: React.ReactNode;

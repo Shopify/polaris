@@ -306,8 +306,6 @@ export type {TextFieldProps} from './TextField';
 export {TextStyle} from './TextStyle';
 export type {TextStyleProps} from './TextStyle';
 
-export {ThemeProvider} from './ThemeProvider';
-
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
 
