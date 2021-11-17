@@ -97,20 +97,22 @@ function DropZoneExample() {
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
-          <Thumbnail
-            size="small"
-            alt={file.name}
-            source={
-              validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
-                : NoteMinor
-            }
-          />
-          <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
-          </div>
-        </Stack>
+        <div style={{padding: '1.6rem'}}>
+          <Stack alignment="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name} <Caption>{file.size} bytes</Caption>
+            </div>
+          </Stack>
+        </div>
       ))}
     </Stack>
   );
