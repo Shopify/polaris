@@ -1,4 +1,4 @@
-import {buildThemeContext, buildCustomProperties} from '../utils';
+import {buildCustomProperties} from '../utils';
 import type {ProcessedThemeConfig, RoleColors} from '../types';
 
 const DefaultColorScheme: ProcessedThemeConfig['colorScheme'] = 'light';
@@ -75,21 +75,5 @@ describe('buildCustomProperties', () => {
         '--p-background': 'rgba(12, 12, 12, 1)',
       }),
     );
-  });
-});
-
-describe('buildThemeContext', () => {
-  it('reduces theme config down to a theme', () => {
-    expect(
-      buildThemeContext(
-        {colors: {}, logo: {}, colorScheme: 'light'},
-        {foo: 'bar'},
-      ),
-    ).toStrictEqual({
-      logo: {},
-      cssCustomProperties: 'foo:bar',
-      colors: {},
-      colorScheme: 'light',
-    });
   });
 });

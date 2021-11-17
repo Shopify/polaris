@@ -3,7 +3,7 @@ import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
 
 import type {HSLAColor} from '../color-types';
 
-import type {Theme, ProcessedThemeConfig} from './types';
+import type {ProcessedThemeConfig} from './types';
 
 type CustomPropertiesObject = Record<string, string>;
 
@@ -19,19 +19,6 @@ export function buildCustomPropertiesNoMemo(
     ...tokens,
     frameOffset,
   });
-}
-
-export function buildThemeContext(
-  themeConfig: ProcessedThemeConfig,
-  cssCustomProperties?: CustomPropertiesObject,
-): Theme {
-  const {logo, colors = {}, colorScheme} = themeConfig;
-  return {
-    logo,
-    cssCustomProperties: toString(cssCustomProperties),
-    colors,
-    colorScheme,
-  };
 }
 
 export function toString(obj?: CustomPropertiesObject) {
