@@ -1,6 +1,11 @@
 import {createContext} from 'react';
 
-import type {ToastPropsWithID, ToastID, ContextualSaveBarProps} from './types';
+import type {
+  ToastPropsWithID,
+  ToastID,
+  ContextualSaveBarProps,
+  Logo,
+} from './types';
 
 // This is internal, but TS throws a build-time error if we don't export it
 export interface FrameContextType {
@@ -15,3 +20,5 @@ export interface FrameContextType {
 export const FrameContext = createContext<FrameContextType | undefined>(
   undefined,
 );
+
+export const LogoContext = createContext<Logo | undefined>(undefined);

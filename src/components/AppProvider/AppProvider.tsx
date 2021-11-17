@@ -35,7 +35,7 @@ export interface AppProviderProps {
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
-  /** Custom logos and colors provided to select components */
+  /** Custom colors provided to select components */
   theme?: ThemeConfig;
   /** For toggling features */
   features?: FeaturesConfig;

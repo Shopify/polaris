@@ -12,7 +12,7 @@ import {
 } from '../../utilities/theme';
 
 export interface ThemeProviderProps {
-  /** Custom logos and colors provided to select components */
+  /** Custom colors provided to select components */
   theme?: ThemeConfig;
   /**
    * By default, Polaris avoids re-declaring custom properties within the same React tree

@@ -1,18 +1,5 @@
 import type {Config} from '@shopify/polaris-tokens/dist-modern';
 
-export interface ThemeLogo {
-  /** Provides a path for a logo used on a dark background */
-  topBarSource?: string;
-  /** Provides a path for a logo used on a light background */
-  contextualSaveBarSource?: string;
-  /** Destination the merchant will navigate to when clicking the logo */
-  url?: string;
-  /** Accessible label the logo image */
-  accessibilityLabel?: string;
-  /** Number of pixels wide the logo image is */
-  width?: number;
-}
-
 export interface RoleColors {
   /** The surface role is used for the backgrounds of the UI. With a light color scheme, surface colors are nearly white, while in a dark color scheme, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts. */
   surface: string;
@@ -47,8 +34,6 @@ export interface AppThemeConfig extends ThemeConfig {
 // The ThemeProvider converts this object into a Theme, and then stores
 // the Theme in a context.
 export interface ThemeConfig {
-  /** Sets the logo for the top bar and contextual save bar components*/
-  logo?: ThemeLogo;
   colors?: Partial<RoleColors>;
   colorScheme?: 'light' | 'dark' | 'inverse';
   config?: Config;
@@ -62,8 +47,6 @@ export interface ProcessedThemeConfig extends ThemeConfig {
 
 // The value that is stored in the ThemeContext
 export interface Theme {
-  /** Sets the logo for the top bar and contextual save bar components*/
-  logo?: ThemeLogo;
   colors?: Partial<RoleColors>;
   colorScheme: 'light' | 'dark';
   cssCustomProperties: string;

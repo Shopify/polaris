@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {Scrollable} from '../Scrollable';
-import {useTheme} from '../../utilities/theme';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 import {getWidth} from '../../utilities/get-width';
+import {useLogo} from '../../utilities/frame';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
@@ -30,7 +30,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
   ariaLabelledBy,
 }: NavigationProps) {
-  const {logo} = useTheme();
+  const logo = useLogo();
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (
