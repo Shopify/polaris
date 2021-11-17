@@ -1,10 +1,74 @@
+/**
+ * This file contains legacy design tokens that have not yet been categorized
+ * and organized into files. The goal is to eventually remove this file by
+ * categorizing tokens by group, moving them into separate files, and/or
+ * deprecating any undesired tokens.
+ */
 import type {Tokens} from './designTokens';
+
+/**
+ * All static design tokens.
+ *
+ * Note: These values were cut/paste directly from the devtools.
+ */
+export const legacyTokens: Tokens = {
+  'border-radius-slim': '0.2rem',
+  'border-radius-base': '0.4rem',
+  'border-radius-wide': '0.8rem',
+  'border-radius-full': '50%',
+  'card-shadow':
+    '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
+  'popover-shadow':
+    '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
+  'modal-shadow':
+    '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
+  'top-bar-shadow': '0 2px 2px -1px var(--p-shadow-from-direct-light)',
+  'button-drop-shadow': '0 1px 0 rgba(0, 0, 0, 0.05)',
+  'button-inner-shadow': 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
+  'button-pressed-inner-shadow': 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
+  'override-none': 'none',
+  'override-transparent': 'transparent',
+  'override-one': '1',
+  'override-visible': 'visible',
+  'override-zero': '0',
+  'override-loading-z-index': '514',
+  'button-font-weight': '500',
+  'non-null-content': '""',
+  'choice-size': '2rem',
+  'icon-size': '1rem',
+  'choice-margin': '0.1rem',
+  'control-border-width': '0.2rem',
+  'banner-border-default':
+    'inset 0 0.1rem 0 0 var(--p-border-neutral-subdued), inset 0 0 0 0.1rem var(--p-border-neutral-subdued)',
+  'banner-border-success':
+    'inset 0 0.1rem 0 0 var(--p-border-success-subdued), inset 0 0 0 0.1rem var(--p-border-success-subdued)',
+  'banner-border-highlight':
+    'inset 0 0.1rem 0 0 var(--p-border-highlight-subdued), inset 0 0 0 0.1rem var(--p-border-highlight-subdued)',
+  'banner-border-warning':
+    'inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)',
+  'banner-border-critical':
+    'inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)',
+  'badge-mix-blend-mode': 'luminosity',
+  'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
+  'text-field-spinner-offset': '0.2rem',
+  'text-field-focus-ring-offset': '-0.4rem',
+  'text-field-focus-ring-border-radius': '0.7rem',
+  'button-group-item-spacing': '-0.1rem',
+  'duration-1-0-0': '100ms',
+  'duration-1-5-0': '150ms',
+  'ease-in': 'cubic-bezier(0.5, 0.1, 1, 1)',
+  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
+  'range-slider-thumb-size-base': '1.6rem',
+  'range-slider-thumb-size-active': '2.4rem',
+  'range-slider-thumb-scale': '1.5',
+  'badge-font-weight': '400',
+  'frame-offset': '0px',
+};
 
 /**
  * All light color-scheme tokens.
  *
- * Note: These values were cut/past directly from the devtools
- * and include more then color tokens.
+ * Note: These values were cut/paste directly from the devtools.
  */
 export const lightLegacyTokens: Tokens = {
   background: 'rgba(246, 246, 247, 1)',
@@ -134,64 +198,12 @@ export const lightLegacyTokens: Tokens = {
   'decorative-five-icon': 'rgba(174, 43, 76, 1)',
   'decorative-five-surface': 'rgba(253, 201, 208, 1)',
   'decorative-five-text': 'rgba(79, 14, 31, 1)',
-  'border-radius-slim': '0.2rem',
-  'border-radius-base': '0.4rem',
-  'border-radius-wide': '0.8rem',
-  'border-radius-full': '50%',
-  'card-shadow':
-    '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
-  'popover-shadow':
-    '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
-  'modal-shadow':
-    '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
-  'top-bar-shadow': '0 2px 2px -1px var(--p-shadow-from-direct-light)',
-  'button-drop-shadow': '0 1px 0 rgba(0, 0, 0, 0.05)',
-  'button-inner-shadow': 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
-  'button-pressed-inner-shadow': 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
-  'override-none': 'none',
-  'override-transparent': 'transparent',
-  'override-one': '1',
-  'override-visible': 'visible',
-  'override-zero': '0',
-  'override-loading-z-index': '514',
-  'button-font-weight': '500',
-  'non-null-content': '""',
-  'choice-size': '2rem',
-  'icon-size': '1rem',
-  'choice-margin': '0.1rem',
-  'control-border-width': '0.2rem',
-  'banner-border-default':
-    'inset 0 0.1rem 0 0 var(--p-border-neutral-subdued), inset 0 0 0 0.1rem var(--p-border-neutral-subdued)',
-  'banner-border-success':
-    'inset 0 0.1rem 0 0 var(--p-border-success-subdued), inset 0 0 0 0.1rem var(--p-border-success-subdued)',
-  'banner-border-highlight':
-    'inset 0 0.1rem 0 0 var(--p-border-highlight-subdued), inset 0 0 0 0.1rem var(--p-border-highlight-subdued)',
-  'banner-border-warning':
-    'inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)',
-  'banner-border-critical':
-    'inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)',
-  'badge-mix-blend-mode': 'luminosity',
-  'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
-  'text-field-spinner-offset': '0.2rem',
-  'text-field-focus-ring-offset': '-0.4rem',
-  'text-field-focus-ring-border-radius': '0.7rem',
-  'button-group-item-spacing': '-0.1rem',
-  'duration-1-0-0': '100ms',
-  'duration-1-5-0': '150ms',
-  'ease-in': 'cubic-bezier(0.5, 0.1, 1, 1)',
-  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  'range-slider-thumb-size-base': '1.6rem',
-  'range-slider-thumb-size-active': '2.4rem',
-  'range-slider-thumb-scale': '1.5',
-  'badge-font-weight': '400',
-  'frame-offset': '0px',
 };
 
 /**
  * All dark color-scheme tokens.
  *
- * Note: These values were cut/past directly from the devtools
- * and include more then color tokens.
+ * Note: These values were cut/paste directly from the devtools.
  */
 export const darkLegacyTokens: Tokens = {
   background: 'rgba(11, 12, 13, 1)',
@@ -321,55 +333,4 @@ export const darkLegacyTokens: Tokens = {
   'decorative-five-icon': 'rgba(244, 183, 191, 1)',
   'decorative-five-surface': 'rgba(194, 51, 86, 1)',
   'decorative-five-text': 'rgba(255, 255, 255, 1)',
-  'border-radius-slim': '0.2rem',
-  'border-radius-base': '0.4rem',
-  'border-radius-wide': '0.8rem',
-  'border-radius-full': '50%',
-  'card-shadow':
-    '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
-  'popover-shadow':
-    '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
-  'modal-shadow':
-    '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
-  'top-bar-shadow': '0 2px 2px -1px var(--p-shadow-from-direct-light)',
-  'button-drop-shadow': '0 1px 0 rgba(0, 0, 0, 0.05)',
-  'button-inner-shadow': 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
-  'button-pressed-inner-shadow': 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
-  'override-none': 'none',
-  'override-transparent': 'transparent',
-  'override-one': '1',
-  'override-visible': 'visible',
-  'override-zero': '0',
-  'override-loading-z-index': '514',
-  'button-font-weight': '500',
-  'non-null-content': '""',
-  'choice-size': '2rem',
-  'icon-size': '1rem',
-  'choice-margin': '0.1rem',
-  'control-border-width': '0.2rem',
-  'banner-border-default':
-    'inset 0 0.1rem 0 0 var(--p-border-neutral-subdued), inset 0 0 0 0.1rem var(--p-border-neutral-subdued)',
-  'banner-border-success':
-    'inset 0 0.1rem 0 0 var(--p-border-success-subdued), inset 0 0 0 0.1rem var(--p-border-success-subdued)',
-  'banner-border-highlight':
-    'inset 0 0.1rem 0 0 var(--p-border-highlight-subdued), inset 0 0 0 0.1rem var(--p-border-highlight-subdued)',
-  'banner-border-warning':
-    'inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)',
-  'banner-border-critical':
-    'inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)',
-  'badge-mix-blend-mode': 'luminosity',
-  'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
-  'text-field-spinner-offset': '0.2rem',
-  'text-field-focus-ring-offset': '-0.4rem',
-  'text-field-focus-ring-border-radius': '0.7rem',
-  'button-group-item-spacing': '-0.1rem',
-  'duration-1-0-0': '100ms',
-  'duration-1-5-0': '150ms',
-  'ease-in': 'cubic-bezier(0.5, 0.1, 1, 1)',
-  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  'range-slider-thumb-size-base': '1.6rem',
-  'range-slider-thumb-size-active': '2.4rem',
-  'range-slider-thumb-scale': '1.5',
-  'badge-font-weight': '400',
-  'frame-offset': '0px',
 };

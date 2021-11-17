@@ -1,7 +1,8 @@
 import React from 'react';
 
+import type {ColorScheme} from '../../designTokens';
+
 import {styles} from './styles';
-import type {ColorScheme} from './designTokens';
 
 // This variable is intentionally in module scope to ensure
 // Polaris custom properties are only inject one time.

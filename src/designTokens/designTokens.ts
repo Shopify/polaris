@@ -1,5 +1,6 @@
 import {colorSchemes, ColorSchemes} from './colorSchemes';
 import {motion} from './motion';
+import {legacyTokens} from './legacyTokens';
 
 export interface Tokens {
   /**
@@ -11,10 +12,12 @@ export interface Tokens {
 
 export interface DesignTokens {
   colorSchemes: ColorSchemes;
+  legacyTokens: Tokens;
   motion: Tokens;
 }
 
 export const designTokens: DesignTokens = {
   colorSchemes,
+  legacyTokens,
   motion,
 };
