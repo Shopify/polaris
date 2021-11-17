@@ -59,12 +59,3 @@ export interface ThemeConfig {
 export interface ProcessedThemeConfig extends ThemeConfig {
   colorScheme: 'light' | 'dark';
 }
-
-// The value that is stored in the ThemeContext
-export interface Theme {
-  /** Sets the logo for the top bar and contextual save bar components*/
-  logo?: ThemeLogo;
-  colors?: Partial<RoleColors>;
-  colorScheme: 'light' | 'dark';
-  cssCustomProperties: string;
-}
