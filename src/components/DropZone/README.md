@@ -95,9 +95,9 @@ function DropZoneExample() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
-      {files.map((file, index) => (
-        <div style={{padding: '1.6rem'}}>
+    <div style={{padding: '0'}}>
+      <Stack vertical>
+        {files.map((file, index) => (
           <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
@@ -112,9 +112,9 @@ function DropZoneExample() {
               {file.name} <Caption>{file.size} bytes</Caption>
             </div>
           </Stack>
-        </div>
-      ))}
-    </Stack>
+        ))}
+      </Stack>
+    </div>
   );
 
   return (
@@ -279,6 +279,26 @@ function DropZoneWithDropOnPageExample() {
     </Stack>
   );
 
+  const uploadMessage = !uploadedFiles && (
+    <div
+      style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Caption>
+        <TextStyle variation="strong">
+          <TextStyle variation="subdued">
+            Drop or <Link>browse files</Link>
+          </TextStyle>
+        </TextStyle>
+      </Caption>
+    </div>
+  );
+
   return (
     <Page
       breadcrumbs={[{content: 'Products'}]}
@@ -295,6 +315,7 @@ function DropZoneWithDropOnPageExample() {
     >
       <DropZone dropOnPage onDrop={handleDropZoneDrop}>
         {uploadedFiles}
+        {uploadMessage}
       </DropZone>
     </Page>
   );
