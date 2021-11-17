@@ -2,8 +2,7 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-min-height-extra-large: rem(205px);
-$dropzone-min-height-large: rem(160px);
+$dropzone-min-height-large: rem(100px);
 $dropzone-min-height-medium: rem(100px);
 $dropzone-min-height-small: rem(50px);
 
@@ -97,10 +96,6 @@ $dropzone-stacking-order: (
   &::after {
     border-color: var(--p-border-disabled);
   }
-}
-
-.sizeExtraLarge {
-  min-height: $dropzone-min-height-extra-large;
 }
 
 .sizeLarge {
