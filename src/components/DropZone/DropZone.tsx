@@ -16,7 +16,7 @@ import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Stack} from '../Stack';
 import {Caption} from '../Caption';
-import {DisplayText} from '../DisplayText';
+import {TextStyle} from '../TextStyle';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
@@ -426,9 +426,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         <Stack vertical spacing="tight">
           {size === 'small' && <Icon source={icon} color={color} />}
           {size === 'extraLarge' && (
-            <DisplayText size="small" element="p">
-              {text}
-            </DisplayText>
+            <TextStyle variation="strong">{text}</TextStyle>
           )}
           {(size === 'medium' || size === 'large') && <Caption>{text}</Caption>}
         </Stack>
