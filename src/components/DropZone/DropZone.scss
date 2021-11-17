@@ -69,7 +69,11 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     &:hover {
       cursor: pointer;
-      background-color: var(--p-surface-hovered);
+      background-color: var(--p-surface-selected-hovered);
+
+      &::after {
+        border-color: var(--p-interactive-hovered);
+      }
     }
   }
 
