@@ -10,7 +10,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641))
 - Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489))
 - Updated timeout of `Popover` exit to `durationFast`. ([#4651](https://github.com/Shopify/polaris-react/pull/4651))
-- Reduced the size of the font and `progress` pip in `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 - Reduced the size of the `progress` pip in `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 
 ### Bug fixes
@@ -37,3 +36,5 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed custom and unnecessary font weight properties ([#4648](https://github.com/Shopify/polaris-react/pull/4648))
 
 ### Deprecations
+
+- Deprecated passing `attention` to the `status` prop on `Badge` in favor of `warning` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
