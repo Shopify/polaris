@@ -19,7 +19,7 @@ describe('<FileUpload />', () => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
-            size: 'extraLarge',
+            size: 'large',
             type: 'file',
             ...defaultStates,
             measuring: true,
@@ -32,45 +32,6 @@ describe('<FileUpload />', () => {
       expect(fileUpload).toContainReactComponent('div', {
         className: expect.stringContaining('measuring'),
       });
-    });
-  });
-
-  describe('extraLarge', () => {
-    it('renders extra large view for type file', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{
-            size: 'extraLarge',
-            type: 'file',
-            ...defaultStates,
-          }}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-      );
-
-      expect(fileUpload).toContainReactComponent('img', {
-        src: uploadArrowImage,
-      });
-      expect(fileUpload).toContainReactComponent(TextStyle);
-      expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button',
-      });
-    });
-
-    it('renders extra large view for type image', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{size: 'extraLarge', type: 'image', ...defaultStates}}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-      );
-
-      expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button',
-      });
-      expect(fileUpload).toContainReactComponent(TextStyle);
     });
   });
 
