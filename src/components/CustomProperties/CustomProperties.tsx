@@ -15,6 +15,8 @@ export interface CustomPropertiesProps {
   children?: React.ReactNode;
   /** Class name applied to the root element. */
   className?: string;
+  /** Inline styles applied to the root element. */
+  style?: React.CSSProperties;
   /** Element used for the root node. */
   as?: React.ElementType;
 }
@@ -24,6 +26,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
     as: Component = 'div',
     children,
     className,
+    style,
     colorScheme = 'light',
   } = props;
 
@@ -42,7 +45,11 @@ export function CustomProperties(props: CustomPropertiesProps) {
   }, []);
 
   return (
-    <Component color-scheme={colorScheme} className={className}>
+    <Component
+      color-scheme={colorScheme}
+      className={className}
+      style={{color: 'var(--p-text)', ...style}}
+    >
       {children}
     </Component>
   );

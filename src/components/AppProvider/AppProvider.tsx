@@ -65,30 +65,37 @@ export class AppProvider extends Component<AppProviderProps, State> {
   componentDidMount() {
     if (document != null) {
       this.stickyManager.setContainer(document);
-
-      // Inlining the following custom properties to maintain backward
-      // compatibility with the legacy ThemeProvider implementation.
-      document.body.style.backgroundColor = 'var(--p-background)';
-      document.body.style.color = 'var(--p-text)';
+      this.setBodyStyles();
     }
   }
 
   componentDidUpdate({
+    colorScheme: prevColorScheme,
     i18n: prevI18n,
     linkComponent: prevLinkComponent,
   }: AppProviderProps) {
-    const {i18n, linkComponent} = this.props;
+    const {colorScheme, i18n, linkComponent} = this.props;
 
-    if (i18n === prevI18n && linkComponent === prevLinkComponent) {
-      return;
+    if (colorScheme !== prevColorScheme) {
+      this.setBodyStyles();
     }
 
-    // eslint-disable-next-line react/no-did-update-set-state
-    this.setState({
-      link: linkComponent,
-      intl: new I18n(i18n),
-    });
+    if (i18n !== prevI18n && linkComponent !== prevLinkComponent) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        link: linkComponent,
+        intl: new I18n(i18n),
+      });
+    }
   }
+
+  setBodyStyles = () => {
+    // Inlining the following custom properties to maintain backward
+    // compatibility with the legacy ThemeProvider implementation.
+    document.body.setAttribute('color-scheme', this.props.colorScheme || '');
+    document.body.style.backgroundColor = 'var(--p-background)';
+    document.body.style.color = 'var(--p-text)';
+  };
 
   render() {
     const {children, colorScheme} = this.props;
