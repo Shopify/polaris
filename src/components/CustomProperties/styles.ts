@@ -3,7 +3,7 @@ import {
   designTokens,
   osColorSchemes,
   Tokens,
-} from './designTokens';
+} from '../../designTokens';
 
 /** Default light color-scheme declarations. */
 const lightDeclarations = getColorSchemeDeclarations('light', ' '.repeat(2));
