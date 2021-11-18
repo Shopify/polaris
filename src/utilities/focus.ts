@@ -177,7 +177,7 @@ function getCurrentFocusedElementIndex(
     }
     currentItemIdx++;
   }
-  return currentItemIdx;
+  return currentItemIdx === allFocusableChildren.length ? -1 : currentItemIdx;
 }
 
 export function wrapFocusPreviousFocusableMenuItem(
@@ -189,11 +189,13 @@ export function wrapFocusPreviousFocusableMenuItem(
     allFocusableChildren,
     currentFocusedElement,
   );
-
-  if (currentItemIdx === 0) {
-    allFocusableChildren[allFocusableChildren.length - 1].focus();
+  if (currentItemIdx === -1) {
+    allFocusableChildren[0].focus();
   } else {
-    allFocusableChildren[currentItemIdx - 1].focus();
+    allFocusableChildren[
+      (currentItemIdx - 1 + allFocusableChildren.length) %
+        allFocusableChildren.length
+    ].focus();
   }
 }
 
@@ -206,11 +208,12 @@ export function wrapFocusNextFocusableMenuItem(
     allFocusableChildren,
     currentFocusedElement,
   );
-
-  if (currentItemIdx === allFocusableChildren.length - 1) {
+  if (currentItemIdx === -1) {
     allFocusableChildren[0].focus();
   } else {
-    allFocusableChildren[currentItemIdx + 1].focus();
+    allFocusableChildren[
+      (currentItemIdx + 1) % allFocusableChildren.length
+    ].focus();
   }
 }
 
