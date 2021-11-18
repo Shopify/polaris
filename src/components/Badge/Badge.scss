@@ -15,7 +15,7 @@ $pip-spacing: calc(#{$pip-size} / 2);
   font-size: font-size(caption);
   line-height: line-height(caption, large-screen);
   color: var(--p-text);
-  font-weight: var(--p-badge-font-weight);
+  font-weight: 400;
 
   @media print {
     border: solid rem(0.1px) var(--p-border);
