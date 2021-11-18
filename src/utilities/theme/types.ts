@@ -1,5 +1,3 @@
-import type {Config} from '@shopify/polaris-tokens/dist-modern';
-
 export interface ThemeLogo {
   /** Provides a path for a logo used on a dark background */
   topBarSource?: string;
@@ -37,15 +35,3 @@ export interface RoleColors {
 }
 
 export type Role = keyof RoleColors;
-
-// The config that is passed into a ThemeProvider.
-// The ThemeProvider converts this object into a Theme, and then stores
-// the Theme in a context.
-export interface ThemeConfig {
-  /** Sets the logo for the top bar and contextual save bar components*/
-  logo?: ThemeLogo;
-  colors?: Partial<RoleColors>;
-  colorScheme?: 'light' | 'dark' | 'inverse';
-  config?: Config;
-  frameOffset?: string;
-}
