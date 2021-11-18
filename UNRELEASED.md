@@ -16,11 +16,11 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Bug fixes
 
 - Fixed try-catch syntax error in `Modal` ([#4553](https://github.com/Shopify/polaris-react/pull/4553))
-- Fixed the round corners on the `BulkActions` wrapper of `ResourceList` ([#4666](https://github.com/Shopify/polaris-react/pull/4666))
 
 ### Documentation
 
 - Added an example for the `small` `size` variant of `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
+- Updated top bar description and keywords to include `header` ([#4672](https://github.com/Shopify/polaris-react/pull/4672))
 
 ### Development workflow
 
