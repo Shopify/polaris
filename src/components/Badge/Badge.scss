@@ -59,7 +59,7 @@ $pip-spacing: calc(#{$pip-size} / 2);
 .statusNew {
   background-color: var(--p-surface-neutral);
   color: var(--p-text);
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   border: none;
 }
 

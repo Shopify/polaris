@@ -75,7 +75,7 @@ $chekbox-label-margin: rem(20px);
 
   &.CheckableButton-selectMode {
     @include text-emphasis-subdued;
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
   }
 
   &.CheckableButton-selected {

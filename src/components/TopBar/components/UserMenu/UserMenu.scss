@@ -12,7 +12,7 @@
 .Name {
   @include truncate;
   @include text-style-body;
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   line-height: line-height(subheading);
   color: var(--p-text);
   text-align: left;
