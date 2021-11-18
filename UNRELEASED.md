@@ -4,6 +4,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
+- Removed filter sass function and color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
+
 ### Enhancements
 
 - Updated `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641))
