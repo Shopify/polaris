@@ -13,34 +13,34 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-style-caption {
-  font-size: font-size(caption);
+  font-size: var(--fs-1);
   font-weight: 400;
   line-height: line-height(caption);
 
   @include when-typography-not-condensed {
-    font-size: font-size(caption, large-screen);
+    font-size: var(--fs-0);
     line-height: line-height(caption, large-screen);
   }
 }
 
 @mixin text-style-heading {
-  font-size: font-size(heading);
+  font-size: var(--fs-8);
   font-weight: 600;
   line-height: line-height(heading);
 
   @include when-typography-not-condensed {
-    font-size: font-size(heading, large-screen);
+    font-size: var(--fs-4);
   }
 }
 
 @mixin text-style-subheading {
-  font-size: font-size(subheading);
+  font-size: var(--fs-1);
   font-weight: 600;
-  line-height: line-height(subheading);
+  line-height: var(--lh-0);
   text-transform: uppercase;
 
   @include when-typography-not-condensed {
-    font-size: font-size(subheading, large-screen);
+    font-size: var(--fs-0);
   }
 }
 
@@ -59,7 +59,7 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-style-body {
-  font-size: font-size(body);
+  font-size: var(--fs-2);
   font-weight: 400;
   line-height: line-height(body);
 
@@ -67,7 +67,7 @@ $typography-condensed: em(640px);
   letter-spacing: initial;
 
   @include when-typography-not-condensed {
-    font-size: font-size(body, large-screen);
+    font-size: var(--fs-3);
   }
 }
 

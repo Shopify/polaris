@@ -3,11 +3,11 @@
 .Title {
   @include text-breakword;
   @include text-emphasis-strong;
-  font-size: rem(24px);
-  line-height: rem(28px);
+  font-size: var(--fs-8);
+  line-height: var(--lh-3);
 
   @include when-typography-not-condensed {
-    font-size: rem(20px);
+    font-size: var(--fs-6);
   }
 }
 

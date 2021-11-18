@@ -13,7 +13,7 @@ $base-font-size: 10px;
   } @else if $unit == 'rem' {
     @return $value;
   } @else if $unit == 'px' {
-    @return $value / $base-font-size * 1rem;
+    @return $value / $default-browser-font-size * 1rem;
   } @else if $unit == 'em' {
     @return $unit / 1em * 1rem;
   } @else {
