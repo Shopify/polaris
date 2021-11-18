@@ -29,11 +29,10 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 - Added an example for the `small` `size` variant of `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 - Updated top bar description and keywords to include `header` ([#4672](https://github.com/Shopify/polaris-react/pull/4672))
 
+
 ### Development workflow
 
 - Tightened up what absolute imports are allowed. Removed `baseUrl` from `tsconfig.json`. Attempting to do an absolute import from `src/X` or `components/X` now results in a error when type-checking. ([#4643](https://github.com/Shopify/polaris-react/pull/4643))
-
-### Dependency upgrades
 
 ### Code quality
 
