@@ -1,11 +1,12 @@
 ---
 name: Top bar
-category: Structure
+category: Navigation
 keywords:
   - global chrome
   - global features
   - topbar
   - top bar
+  - header
   - nav bar
   - bar
   - navbar
