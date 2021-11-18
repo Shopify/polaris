@@ -515,7 +515,7 @@ export function TextField({
   }
 
   function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target)) {
+    if (containsAffix(target) || type === 'datetime-local') {
       return;
     }
     inputRef.current && inputRef.current.focus();
