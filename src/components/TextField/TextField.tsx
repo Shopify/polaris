@@ -16,7 +16,6 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
-import {isInputFocused} from '../../utilities/is-input-focused';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
