@@ -86,7 +86,7 @@ $disabled-fade: 0.6;
 }
 
 .Item-selected {
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
 
