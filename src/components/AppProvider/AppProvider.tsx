@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import 'focus-visible/dist/focus-visible';
 
-import {CustomProperties, CustomPropertiesProps} from '../CustomProperties';
+import {
+  CustomProperties,
+  CustomPropertiesProps,
+  DEFAULT_COLOR_SCHEME,
+} from '../CustomProperties';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -92,7 +96,10 @@ export class AppProvider extends Component<AppProviderProps, State> {
   setBodyStyles = () => {
     // Inlining the following custom properties to maintain backward
     // compatibility with the legacy ThemeProvider implementation.
-    document.body.setAttribute('color-scheme', this.props.colorScheme || '');
+    document.body.setAttribute(
+      'color-scheme',
+      this.props.colorScheme || DEFAULT_COLOR_SCHEME,
+    );
     document.body.style.backgroundColor = 'var(--p-background)';
     document.body.style.color = 'var(--p-text)';
   };

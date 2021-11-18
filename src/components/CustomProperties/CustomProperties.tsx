@@ -8,6 +8,8 @@ import {styles} from './styles';
 // Polaris custom properties are only inject one time.
 let injectedCustomProperties = false;
 
+export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
+
 export interface CustomPropertiesProps {
   /** Determines what color scheme is applied to child content. */
   colorScheme?: ColorScheme;
@@ -26,8 +28,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
     as: Component = 'div',
     children,
     className,
-    style,
-    colorScheme = 'light',
+    colorScheme = DEFAULT_COLOR_SCHEME,
   } = props;
 
   React.useEffect(() => {
@@ -45,11 +46,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
   }, []);
 
   return (
-    <Component
-      color-scheme={colorScheme}
-      className={className}
-      style={{color: 'var(--p-text)', ...style}}
-    >
+    <Component color-scheme={colorScheme} className={className}>
       {children}
     </Component>
   );
