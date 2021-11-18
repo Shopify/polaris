@@ -31,7 +31,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Month-current {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
 }
 
 .DayCell {
@@ -75,7 +75,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Day-today {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
 }
 
 .Day-inRange {
@@ -152,7 +152,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Weekday-current {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
   color: var(--p-text);
 }
 
