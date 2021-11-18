@@ -54,8 +54,3 @@ export interface ThemeConfig {
   config?: Config;
   frameOffset?: string;
 }
-
-// An intermediate state of transforming the ThemeConfig into a Theme
-export interface ProcessedThemeConfig extends ThemeConfig {
-  colorScheme: 'light' | 'dark';
-}
