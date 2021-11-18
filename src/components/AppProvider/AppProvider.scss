@@ -78,7 +78,7 @@ h6,
 p {
   margin: 0;
   font-size: 1em;
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
 }
 
 button::-moz-focus-inner,

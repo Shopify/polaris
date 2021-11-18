@@ -14,7 +14,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-caption {
   font-size: font-size(caption);
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   line-height: line-height(caption);
 
   @include when-typography-not-condensed {
@@ -46,7 +46,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-input {
   font-size: font-size(input);
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   line-height: line-height(input);
   border: none;
 
@@ -60,7 +60,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-body {
   font-size: font-size(body);
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   line-height: line-height(body);
 
   text-transform: initial;
@@ -121,7 +121,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-display-medium {
   font-size: font-size(display-medium);
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   line-height: line-height(display-medium);
 
   @include when-typography-not-condensed {
@@ -132,7 +132,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-display-small {
   font-size: font-size(display-small);
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   line-height: line-height(display-small);
 
   @include when-typography-not-condensed {
@@ -150,7 +150,7 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-normal($for-background: null) {
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   color: var(--p-text);
 }
 
