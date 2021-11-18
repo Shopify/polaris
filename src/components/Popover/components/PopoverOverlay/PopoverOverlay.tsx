@@ -252,9 +252,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div>
-          <div className={styles.Wrapper}>{content}</div>
-        </div>
+        <div className={styles.Wrapper}>{content}</div>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
