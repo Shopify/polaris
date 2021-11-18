@@ -149,11 +149,8 @@ function PopoverWithActionListExample() {
         onClose={togglePopoverActive}
       >
         <ActionList
-          actionRole="menu"
-          items={[
-            {content: 'Import', role: 'menuitem'},
-            {content: 'Export', role: 'menuitem'},
-          ]}
+          actionRole="menuitem"
+          items={[{content: 'Import'}, {content: 'Export'}]}
         />
       </Popover>
     </div>
@@ -207,7 +204,7 @@ function PopoverContentExample() {
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
-            actionRole="menu"
+            actionRole="menuitem"
             items={[
               {content: 'Online store', role: 'menuitem'},
               {content: 'Facebook', role: 'menuitem'},

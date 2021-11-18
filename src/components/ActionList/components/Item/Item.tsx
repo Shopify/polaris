@@ -120,7 +120,7 @@ export function Item({
   );
 
   return (
-    <li>
+    <li role={role === 'menuitem' ? 'presentation' : undefined}>
       {scrollMarkup}
       {control}
     </li>

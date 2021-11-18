@@ -8,6 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Keyboard arrow navigation support added in `ActionList` ([#4505](https://github.com/Shopify/polaris-react/pull/4505))
 - Menu role attribute value support added in `ActionList/Section` ([#4505](https://github.com/Shopify/polaris-react/pull/4505))
+- Keyboard wrapping arrow navigation added in `ActionList` ([#4654](https://github.com/Shopify/polaris-react/pull/4654))
 
 ### Bug fixes
 

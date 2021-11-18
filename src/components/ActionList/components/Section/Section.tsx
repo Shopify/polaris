@@ -68,7 +68,7 @@ export function Section({
     case 'option':
       sectionRole = 'presentation';
       break;
-    case 'menu':
+    case 'menuitem':
       sectionRole = 'menu';
       break;
     default:

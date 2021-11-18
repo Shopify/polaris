@@ -115,7 +115,7 @@ function ActionListInPopoverExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           items={[
             {
               content: 'Import file',
@@ -160,7 +160,7 @@ function ActionListWithMediaExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           items={[
             {content: 'Import file', icon: ImportMinor, role: 'menuitem'},
             {content: 'Export file', icon: ExportMinor, role: 'menuitem'},
@@ -197,7 +197,7 @@ function ActionListWithSuffixExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           items={[
             {
               active: true,
@@ -240,7 +240,7 @@ function SectionedActionListExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
@@ -282,7 +282,7 @@ function ActionListWithDestructiveItemExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           sections={[
             {
               title: 'File options',
@@ -335,7 +335,7 @@ function ActionListWithHelpTextExample() {
         onClose={toggleActive}
       >
         <ActionList
-          actionRole="menu"
+          actionRole="menuitem"
           sections={[
             {
               items: [
@@ -368,6 +368,7 @@ function ActionListWithPrefixSuffixExample() {
   return (
     <div style={{height: '250px', maxWidth: '350px'}}>
       <ActionList
+        actionRole="menuitem"
         items={[
           {
             content: 'Go here',
