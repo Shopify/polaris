@@ -515,10 +515,10 @@ export function TextField({
   }
 
   function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target)) {
+    if (containsAffix(target) || focus) {
       return;
     }
-    inputRef.current && inputRef.current.focus();
+    inputRef.current?.focus();
   }
 }
 
