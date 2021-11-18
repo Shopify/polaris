@@ -16,6 +16,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Bug fixes
 
 - Fixed try-catch syntax error in `Modal` ([#4553](https://github.com/Shopify/polaris-react/pull/4553))
+- Fixed bug with selecting time in `TextField` with `type="datetime-local"` in Safari ([#4669](https://github.com/Shopify/polaris-react/pull/4669))
 
 ### Documentation
 
