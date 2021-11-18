@@ -38,11 +38,6 @@ export interface RoleColors {
 
 export type Role = keyof RoleColors;
 
-// The value that is passed into the AppProvider
-export interface AppThemeConfig extends ThemeConfig {
-  colorScheme?: 'light' | 'dark';
-}
-
 // The config that is passed into a ThemeProvider.
 // The ThemeProvider converts this object into a Theme, and then stores
 // the Theme in a context.
