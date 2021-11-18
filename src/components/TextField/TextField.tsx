@@ -16,6 +16,7 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
+import {isInputFocused} from '../../utilities/is-input-focused';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
@@ -515,10 +516,10 @@ export function TextField({
   }
 
   function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target)) {
+    if (containsAffix(target) || isInputFocused) {
       return;
     }
-    inputRef.current && inputRef.current.focus();
+    inputRef.current?.focus();
   }
 }
 
