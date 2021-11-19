@@ -4,11 +4,9 @@ import type {ColorScheme} from '../../designTokens';
 
 import {styles} from './styles';
 
-// This variable is intentionally in module scope to ensure
-// Polaris custom properties are only inject one time.
-let injectedCustomProperties = false;
-
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
+
+export const STYLE_SHEET_ID = 'polaris-custom-properties';
 
 export interface CustomPropertiesProps {
   /** Determines what color scheme is applied to child content. */
@@ -32,14 +30,13 @@ export function CustomProperties(props: CustomPropertiesProps) {
   } = props;
 
   React.useEffect(() => {
-    if (injectedCustomProperties) return;
-    injectedCustomProperties = true;
+    let styleSheet = document.getElementById(STYLE_SHEET_ID);
 
-    const styleSheet = document.createElement('style');
+    if (styleSheet) return;
 
-    // This data attribute is used to identify the stylesheet in the devtools.
-    styleSheet.dataset.polarisCustomProperties = '';
+    styleSheet = document.createElement('style');
 
+    styleSheet.id = STYLE_SHEET_ID;
     styleSheet.textContent = styles;
 
     document.head.appendChild(styleSheet);

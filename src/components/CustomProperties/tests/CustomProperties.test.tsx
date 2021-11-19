@@ -8,7 +8,11 @@ import {
   osColorSchemes,
   Tokens,
 } from '../../../designTokens';
-import {CustomProperties, DEFAULT_COLOR_SCHEME} from '../CustomProperties';
+import {
+  CustomProperties,
+  DEFAULT_COLOR_SCHEME,
+  STYLE_SHEET_ID,
+} from '../CustomProperties';
 import {
   getColorSchemeDeclarations,
   getColorSchemeRules,
@@ -21,8 +25,8 @@ interface ColorSchemeAttribute {
 }
 
 const mockTokens: Tokens = {
-  'design-token-1': 'value',
-  'design-token-2': 'value',
+  'design-token-1': 'valueA',
+  'design-token-2': 'valueB',
 };
 
 const mockColorSchemes: ColorSchemes = {
@@ -38,12 +42,16 @@ const mockDesignTokens: DesignTokens = {
 };
 
 const expectedCustomProperties =
-  '--p-design-token-1:value;--p-design-token-2:value;';
+  '--p-design-token-1:valueA;--p-design-token-2:valueB;';
 
 const expectedColorSchemeDeclarations = (colorScheme: ColorScheme) =>
   `color-scheme:${osColorSchemes[colorScheme]};${expectedCustomProperties}`;
 
 describe('<CustomProperties />', () => {
+  afterEach(() => {
+    document.head.innerHTML = '';
+  });
+
   it('renders its children', () => {
     const customProperties = mountWithApp(
       <CustomProperties>Hello world</CustomProperties>,
@@ -113,22 +121,28 @@ describe('<CustomProperties />', () => {
 
   describe('side effects', () => {
     it('injects styles in the head tag', () => {
-      // const customProperties = mountWithApp(<CustomProperties />);
-      // console.log(document.head.innerHTML);
+      mountWithApp(<CustomProperties />);
 
-      // TODO:
-      expect(true).toBe(true);
+      expect(document.head.innerHTML).toMatch(
+        new RegExp(`<style id="${STYLE_SHEET_ID}">`),
+      );
     });
 
     it('injects styles in the head tag one time', () => {
-      const customProperties = mountWithApp(
+      mountWithApp(
         <CustomProperties>
-          <CustomProperties />
+          <CustomProperties>
+            <CustomProperties />
+          </CustomProperties>
         </CustomProperties>,
       );
 
-      // TODO:
-      expect(true).toBe(true);
+      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
+      const styleSheets = document.head.innerHTML.match(
+        new RegExp(`<style id="${STYLE_SHEET_ID}">`, 'g'),
+      );
+
+      expect(styleSheets).toHaveLength(1);
     });
   });
 
