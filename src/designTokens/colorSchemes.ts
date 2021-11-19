@@ -12,9 +12,11 @@ export type ColorScheme = 'light' | 'dark';
  * Note: The associated OS value will be set for the CSS `color-scheme` declaration.
  * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
  */
-export const osColorSchemes: {
+export type OSColorSchemes = {
   [C in ColorScheme]: 'light' | 'dark' | 'normal';
-} = {
+};
+
+export const osColorSchemes: OSColorSchemes = {
   light: 'light',
   dark: 'dark',
 };
