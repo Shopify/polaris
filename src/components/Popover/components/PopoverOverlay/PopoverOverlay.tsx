@@ -1,6 +1,10 @@
 import React, {PureComponent, Children, createRef} from 'react';
 import {durationFast, durationBase} from '@shopify/polaris-tokens';
 
+import {
+  CustomProperties,
+  CustomPropertiesProps,
+} from '../../../CustomProperties';
 import {findFirstFocusableNode} from '../../../../utilities/focus';
 import {classNames} from '../../../../utilities/css';
 import {
@@ -50,6 +54,7 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: CustomPropertiesProps['colorScheme'];
   autofocusTarget?: PopoverAutofocusTarget;
 }
 
@@ -210,6 +215,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullHeight,
       fluidContent,
       hideOnPrint,
+      colorScheme,
       autofocusTarget,
     } = this.props;
 
@@ -252,7 +258,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <CustomProperties colorScheme={colorScheme}>
+          <div className={styles.Wrapper}>{content}</div>
+        </CustomProperties>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
