@@ -5,7 +5,7 @@ import {legacyTokens} from './legacyTokens';
 export interface Tokens {
   /**
    * Values to convert to CSS custom properties.
-   * @example --p-background: #000;
+   * @example {background: '#000'} // --p-background: #000;
    */
   [token: string]: string;
 }
