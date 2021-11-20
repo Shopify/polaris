@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image} from 'components';
+import {Button} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
