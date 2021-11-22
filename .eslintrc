@@ -12,6 +12,9 @@
       "version": "16.8"
     }
   },
+  "parserOptions": {
+    "jsxPragma": null // for @typescript/eslint-parser
+  },
   "rules": {
     "func-style": "off",
     "no-process-env": "off",
@@ -34,6 +37,8 @@
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "react/no-unsafe": ["error", {"checkAliases": true}],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
     "@shopify/jsx-no-complex-expressions": "off",
     "@shopify/jsx-prefer-fragment-wrappers": "off",
     "@shopify/no-ancestor-directory-import": "error",

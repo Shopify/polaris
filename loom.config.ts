@@ -5,6 +5,7 @@ import {
   DiagnosticError,
 } from '@shopify/loom';
 import {
+  babel,
   buildLibrary,
   buildLibraryWorkspace,
   rollupPlugins,
@@ -35,6 +36,9 @@ export default createPackage((pkg) => {
       esnext: true,
     }),
     buildLibraryWorkspace(),
+    // Blank out the babel config provided by buildLibrary
+    // load config from the babel.config.js file
+    babel({config: {}}),
     eslint(),
     stylelint({files: '**/*.scss'}),
     prettier({files: '**/*.{md,json,yaml,yml}'}),
