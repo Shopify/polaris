@@ -13,7 +13,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- Removed motion from `Skeleton` components mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
+- Removed motion from `Skeleton` components mixin ([#4462](https://github.com/Shopify/polaris-react/pull/4462))
 
 ### Bug fixes
 
