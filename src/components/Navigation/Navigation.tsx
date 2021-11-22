@@ -30,7 +30,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   ariaLabelledBy,
 }: NavigationProps) {
   // TODO: This behavior will be re-enabled in a separate PR.
-  const logo: {[key: string]: any} = {};
+  const logo = undefined;
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (

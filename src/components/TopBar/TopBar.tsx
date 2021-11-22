@@ -61,7 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   // TODO: This behavior will be re-enabled in a separate PR.
-  const logo: {[key: string]: any} = {};
+  const logo = undefined;
 
   const {
     value: focused,
