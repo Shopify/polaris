@@ -61,7 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   // TODO: This behavior will be re-enabled in a separate PR.
-  const logo = undefined;
+  const logo: {[key: string]: any} = {};
 
   const {
     value: focused,
@@ -108,10 +108,11 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           url={logo.url || ''}
           className={styles.LogoLink}
           style={{width}}
+          aria-label={logo.accessibilityLabel || ''}
         >
           <Image
             source={logo.topBarSource || ''}
-            alt={logo.accessibilityLabel || ''}
+            alt=""
             className={styles.Logo}
             style={{width}}
           />
