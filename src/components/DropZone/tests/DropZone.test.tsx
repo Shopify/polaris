@@ -1,7 +1,7 @@
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
-import {Label, Labelled, DisplayText, Caption} from 'components';
+import {Label, Labelled, TextStyle, Caption} from 'components';
 import {mountWithApp} from 'tests/utilities';
 import type {CustomRoot} from '@shopify/react-testing';
 
@@ -36,7 +36,6 @@ const widths = {
   small: 99,
   medium: 159,
   large: 299,
-  extraLarge: 1024,
 };
 
 describe('<DropZone />', () => {
@@ -217,7 +216,7 @@ describe('<DropZone />', () => {
     [true, 'file', 'Drop files to upload', 'Upload files'],
   ])(
     'renders texts when allowMultiple is %s and type is %s',
-    (allowMultiple, type, expectedDisplayText, expectedLabelText) => {
+    (allowMultiple, type, expectedTextStyle, expectedLabelText) => {
       const dropZone = mountWithApp(
         <DropZone
           overlay
@@ -234,8 +233,8 @@ describe('<DropZone />', () => {
 
       dropZone.forceUpdate();
 
-      expect(dropZone).toContainReactComponent(DisplayText, {
-        children: expectedDisplayText,
+      expect(dropZone).toContainReactComponent(TextStyle, {
+        children: expectedTextStyle,
       });
 
       expect(dropZone).toContainReactComponent(Labelled, {
@@ -317,7 +316,7 @@ describe('<DropZone />', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      expect(dropZone).not.toContainReactComponent(DisplayText);
+      expect(dropZone).not.toContainReactComponent(TextStyle);
       expect(dropZone).not.toContainReactComponent(Caption);
     });
 
@@ -337,22 +336,14 @@ describe('<DropZone />', () => {
       expect(captionText).toContainReactText(overlayText);
     });
 
-    it('renders a DisplayText containing the overlayText on extra-large screens', () => {
-      setBoundingClientRect('extraLarge');
-      const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
-      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      expect(displayText).toContainReactText(overlayText);
-    });
-
-    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+    it('renders a TextStyle containing the overlayText on any screen size when variableHeight is true', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(
         <DropZone overlayText={overlayText} variableHeight />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      expect(displayText).toContainReactText(overlayText);
+      const textStyle = dropZone.find(TextStyle);
+      expect(textStyle).toContainReactText(overlayText);
     });
   });
 
@@ -364,7 +355,7 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      expect(dropZone).not.toContainReactComponent(DisplayText);
+      expect(dropZone).not.toContainReactComponent(TextStyle);
       expect(dropZone).not.toContainReactComponent(Caption);
     });
 
@@ -389,17 +380,7 @@ describe('<DropZone />', () => {
       expect(captionText).toContainReactText(errorOverlayText);
     });
 
-    it('renders a DisplayText containing the overlayText on extra-large screens', () => {
-      setBoundingClientRect('extraLarge');
-      const dropZone = mountWithApp(
-        <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
-      );
-      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      expect(displayText).toContainReactText(errorOverlayText);
-    });
-
-    it('renders a DisplayText containing the overlayText on any screen size when variableHeight is true', () => {
+    it('renders a TextStyle containing the overlayText on any screen size when variableHeight is true', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(
         <DropZone
@@ -409,8 +390,8 @@ describe('<DropZone />', () => {
         />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const displayText = dropZone.find(DisplayText);
-      expect(displayText).toContainReactText(errorOverlayText);
+      const textStyle = dropZone.find(TextStyle);
+      expect(textStyle).toContainReactText(errorOverlayText);
     });
   });
 
