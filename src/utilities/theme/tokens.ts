@@ -55,6 +55,25 @@ export const Tokens = {
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '400',
+
+  // Spacing
+  space0: 0,
+  space025: rem('1px'),
+  space05: rem('2px'),
+  space1: rem('4px'),
+  space2: rem('8px'),
+  space3: rem('12px'),
+  space4: rem('16px'),
+  space5: rem('20px'),
+  space6: rem('24px'),
+  space8: rem('32px'),
+  space10: rem('40px'),
+  space12: rem('48px'),
+  space16: rem('64px'),
+  space20: rem('80px'),
+  space24: rem('96px'),
+  space28: rem('112px'),
+  space32: rem('128px'),
 };
 
 function rem(px: string) {
