@@ -7,11 +7,11 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed filter sass function and color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.
 - Removed miscellaneous css custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
-- Removed skeleton-shimmer mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
+- Removed `skeleton-shimmer` mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
 
 ### Enhancements
 
-- Removed motion from `Skeleton` components and `skeleton-shimmer` mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
+- Removed motion from `Skeleton` components mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
 - Allow for `readonly` items in ActionList ([#4623](https://github.com/Shopify/polaris-react/pull/4623))
 - Updated `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641))
 - Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489))
