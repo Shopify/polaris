@@ -44,10 +44,7 @@ The app provider component renders a CustomProperties component with the default
 A color scheme can be passed to the app provider to determine what color scheme is globally applied to the application.
 
 ```jsx
-<AppProvider
-  i18n={{}}
-  colorScheme="dark"
->
+<AppProvider i18n={{}} colorScheme="dark">
   <Card
     title="Shipment 1234"
     secondaryFooterActions={[{content: 'Edit shipment'}]}
