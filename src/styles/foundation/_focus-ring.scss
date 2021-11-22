@@ -38,7 +38,7 @@
       display: block;
       pointer-events: none;
       box-shadow: 0 0 0 $negative-offset var(--p-focused);
-      transition: box-shadow duration(fast) var(--p-ease);
+      transition: box-shadow var(--p-duration-100) var(--p-ease);
       border-radius: calc(#{$border-radius} + #{rem(1px)});
     }
   } @else if $style == 'focused' {

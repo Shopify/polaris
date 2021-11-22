@@ -97,7 +97,7 @@ $stacking-order: (
     background: linear-gradient(var(--p-interactive), var(--p-interactive));
     box-shadow: 0 0 0 0 var(--p-focused);
     appearance: none;
-    transition: box-shadow duration(fast) var(--p-ease);
+    transition: box-shadow var(--p-duration-100) var(--p-ease);
     transition-property: border-color, box-shadow, transform;
     transition-duration: duration();
     transition-timing-function: easing();

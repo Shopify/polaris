@@ -15,7 +15,7 @@ $bottom-shadow-size: 2px;
   border-radius: var(--p-border-radius-base);
   font-family: font-family();
   font-size: rem(12px);
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   line-height: $key-base-height;
   color: var(--p-text-subdued);
   text-align: center;

@@ -4,6 +4,10 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
+- Removed filter sass function and color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
+- Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.
+- Removed miscellaneous css custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
+
 ### Enhancements
 
 - Removed motion from `Skeleton` components and `skeleton-shimmer` mixin ([#4462])(https://github.com/Shopify/polaris-react/pull/4462)
@@ -34,11 +38,10 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
-- Clean up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
-- Remove filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
-- Remove all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
 - Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
-- Removed miscellaneous css custom properties ([#4620](https://github.com/Shopify/polaris-react/pull/4620))
+- Removed filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
+- Removed all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
+- Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
 
 ### Deprecations
 

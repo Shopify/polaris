@@ -10,7 +10,7 @@ $spinner-size: rem(20px);
   --p-banner-background: var(--p-background);
   --p-banner-border: var(--p-banner-border-default);
   transition: box-shadow duration() easing();
-  transition-delay: duration(fast);
+  transition-delay: var(--p-duration-100);
   box-shadow: var(--p-banner-border);
 
   @if $in-page {
