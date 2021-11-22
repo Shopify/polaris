@@ -277,7 +277,7 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-override-one`                        | `1`                                                                                                          |
 | `--p-override-visible`                    | `visible`                                                                                                    |
 | `--p-override-zero`                       | `0`                                                                                                          |
-| `--p-override-loading-zindex`             | `514`                                                                                                        |
+| `--p-override-loading-z-index`            | `514`                                                                                                        |
 | `--p-button-font-weight`                  | `500`                                                                                                        |
 | `--p-non-null-content`                    | `''`                                                                                                         |
 | `--p-choice-size`                         | `2rem`                                                                                                       |
