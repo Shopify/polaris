@@ -27,6 +27,12 @@ Badges are used to inform merchants of the status of an object or of an action t
 
 ---
 
+## Deprecation rationale
+
+- As of v7.4.0, the `attention` `status` is deprecated. Use `warning` status instead. Support for the `attention` `status` will be removed in v8.0.0. The new design language that shipped in v6.0.0 replaced the 12 color spectrum with a [semantic color system](https://polaris.shopify.com/design/colors#section-color-roles). Since there is no attention color role in the semantic color system, `attention` `status` now uses warning color role tokens and is redundant to the `warning` status.
+
+---
+
 ## Best practices
 
 Badges benefit merchants by:
@@ -98,6 +104,14 @@ Use to give a non-critical status update on a piece of information or action.
 ![Default badge with gray background](/public_images/components/Badge/ios/default@2x.png)
 
 <!-- /content-for -->
+
+### Small badge
+
+Use in layouts with minimal space, like inside of an `IndexTable` cell.
+
+```jsx
+<Badge size="small">Fulfilled</Badge>
+```
 
 ### Informational badge
 

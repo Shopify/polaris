@@ -2,8 +2,7 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-min-height-extra-large: rem(205px);
-$dropzone-min-height-large: rem(160px);
+$dropzone-min-height-large: rem(100px);
 $dropzone-min-height-medium: rem(100px);
 $dropzone-min-height-small: rem(50px);
 
@@ -19,12 +18,12 @@ $dropzone-stacking-order: (
   bottom: 0;
   opacity: 1;
   transform: scale(1);
-  border: border-width(thick) $dropzone-border-style transparent;
+  border: border-width() $dropzone-border-style transparent;
 }
 
 @mixin set-border-radius {
   border-radius: calc(
-    var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
+    var(--p-border-radius-base) + #{border-width()} + #{rem(1px)}
   );
 }
 
@@ -43,7 +42,7 @@ $dropzone-stacking-order: (
     right: 0;
     bottom: 0;
     left: 0;
-    border: border-width(thick) $dropzone-border-style transparent;
+    border: border-width() $dropzone-border-style transparent;
     border-radius: var(--p-border-radius-base);
     pointer-events: none;
   }
@@ -61,7 +60,7 @@ $dropzone-stacking-order: (
 }
 
 .hasOutline {
-  padding: border-width(thick);
+  padding: border-width();
 
   &::after {
     border-color: var(--p-border);
@@ -70,7 +69,12 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     &:hover {
       cursor: pointer;
-      background-color: var(--p-surface-hovered);
+      background-color: var(--p-surface-selected-hovered);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &::after {
+        border-color: var(--p-interactive-hovered);
+      }
     }
   }
 
@@ -99,10 +103,6 @@ $dropzone-stacking-order: (
   }
 }
 
-.sizeExtraLarge {
-  min-height: $dropzone-min-height-extra-large;
-}
-
 .sizeLarge {
   min-height: $dropzone-min-height-large;
 }
@@ -124,7 +124,7 @@ $dropzone-stacking-order: (
 }
 
 .Container {
-  @include focus-ring($border-width: border-width(thick));
+  @include focus-ring($border-width: border-width());
   flex: 1;
 }
 
@@ -140,7 +140,7 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: $dropzone-padding;
-  border: border-width(thick) $dropzone-border-style var(--p-interactive);
+  border: border-width() $dropzone-border-style var(--p-interactive);
   text-align: center;
   color: var(--p-interactive);
   background-color: var(--p-surface-selected);
