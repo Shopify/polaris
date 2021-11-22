@@ -490,6 +490,7 @@ $stacking-order: (
   // Note 2: hardcoding this value because we can't use custom css properties in sass functions. Will clean up in a follow-up
   // https://github.com/Shopify/polaris-react/pull/4655#discussion_r750793847
   &.outline:not(:focus) {
+    /* stylelint-disable color-no-hex */
     border-left-color: rgba(#d2d5d8, 0);
   }
 
