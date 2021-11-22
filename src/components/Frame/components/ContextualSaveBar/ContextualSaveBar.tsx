@@ -22,7 +22,8 @@ export function ContextualSaveBar({
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   // TODO: This behavior will be re-enabled in a separate PR.
-  const logo: {[key: string]: any} = {};
+  const logo = undefined as {[key: string]: any} | undefined;
+
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
