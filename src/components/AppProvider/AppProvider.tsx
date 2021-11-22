@@ -84,13 +84,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
       this.setBodyStyles();
     }
 
-    if (i18n !== prevI18n && linkComponent !== prevLinkComponent) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        link: linkComponent,
-        intl: new I18n(i18n),
-      });
+    if (i18n === prevI18n && linkComponent === prevLinkComponent) {
+      return;
     }
+
+    // eslint-disable-next-line react/no-did-update-set-state
+    this.setState({
+      link: linkComponent,
+      intl: new I18n(i18n),
+    });
   }
 
   setBodyStyles = () => {
