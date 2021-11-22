@@ -32,6 +32,9 @@ $item-wrapper-loading-height: rem(64px);
   position: relative;
   background-color: var(--p-surface);
   z-index: resource-list(header-outer-wrapper-stacking-order);
+  overflow: hidden;
+  border-top-left-radius: var(--p-border-radius-wide, border-radius(large));
+  border-top-right-radius: var(--p-border-radius-wide, border-radius(large));
 
   + .ResourceList {
     border-top: border('divider');

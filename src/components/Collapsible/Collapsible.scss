@@ -7,7 +7,7 @@
   overflow: hidden;
   will-change: max-height;
   transition-property: max-height;
-  transition-duration: duration(fast);
+  transition-duration: var(--p-duration-100);
   transition-timing-function: easing(out);
 }
 

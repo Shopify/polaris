@@ -23,8 +23,8 @@
 
     // stylelint-disable-next-line selector-max-specificity
     &::before {
-      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
-        transform var(--p-duration-1-5-0) var(--p-ease);
+      transition: opacity var(--p-duration-150) var(--p-ease),
+        transform var(--p-duration-150) var(--p-ease);
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
@@ -52,7 +52,7 @@
   border: var(--p-control-border-width) solid var(--p-border);
   border-radius: 50%;
   background-color: var(--p-surface);
-  transition: border-color var(--p-duration-1-0-0) var(--p-ease);
+  transition: border-color var(--p-duration-100) var(--p-ease);
 
   &::before {
     content: '';
@@ -66,8 +66,8 @@
     width: var(--p-icon-size);
     background-color: var(--p-interactive);
     border-radius: 50%;
-    transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-      transform var(--p-duration-1-0-0) var(--p-ease);
+    transition: opacity var(--p-duration-100) var(--p-ease),
+      transform var(--p-duration-100) var(--p-ease);
 
     @media (forced-colors: active) {
       @include high-contrast-border(rem(5px));
