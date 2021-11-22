@@ -190,7 +190,7 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryAction {
-  @include recolor-icon(var(--p-icon));
+  @include recolor-icon($fill-color: var(--p-icon));
   display: flex;
   align-items: center;
   height: nav(mobile-height);
@@ -206,16 +206,15 @@ $disabled-fade: 0.6;
   &:focus,
   &:active {
     @include recolor-icon(
-      var(--p-icon-hovered),
-      var(--p-override-transparent),
-      $filter-color: filter('action')
+      $fill-color: var(--p-icon-hovered),
+      $filter-color: var(--p-filter-icon-action-primary)
     );
     background: var(--p-background-hovered);
 
     @media (-ms-high-contrast: active) {
       @include recolor-icon(
-        $fill-color: color('white'),
-        $filter-color: filter('white')
+        $fill-color: var(--p-icon-on-interactive),
+        $filter-color: var(--p-filter-icon-on-interactive)
       );
     }
   }
@@ -228,7 +227,7 @@ $disabled-fade: 0.6;
 
   &:active {
     @include no-focus-ring;
-    @include recolor-icon(var(--p-icon-pressed));
+    @include recolor-icon($fill-color: var(--p-icon-pressed));
     background: var(--p-background-pressed);
   }
 
@@ -358,7 +357,7 @@ $secondary-item-font-size: rem(15px);
 
   .Action {
     @include unstyled-button;
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon($fill-color: var(--p-icon));
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
@@ -375,21 +374,18 @@ $secondary-item-font-size: rem(15px);
     &:hover,
     &:focus {
       background: var(--p-background-hovered);
-      @include recolor-icon(
-        var(--p-icon-hovered),
-        var(--p-override-transparent)
-      );
+      @include recolor-icon($fill-color: var(--p-icon-hovered));
 
       @media (-ms-high-contrast: active) {
         @include recolor-icon(
-          $fill-color: color('white'),
-          $filter-color: filter('white')
+          $fill-color: var(--p-icon-on-interactive),
+          $filter-color: var(--p-filter-icon-on-interactive)
         );
       }
     }
 
     &:hover {
-      @include recolor-icon($filter-color: filter('action'));
+      @include recolor-icon($filter-color: var(--p-filter-icon));
     }
 
     &:focus {
@@ -404,7 +400,7 @@ $secondary-item-font-size: rem(15px);
     // stylelint-disable-next-line selector-max-specificity
     &:active,
     &:active:hover {
-      @include recolor-icon(var(--p-icon-pressed));
+      @include recolor-icon($fill-color: var(--p-icon-pressed));
       background: var(--p-background-pressed);
       @include no-focus-ring;
     }
@@ -422,9 +418,8 @@ $secondary-item-font-size: rem(15px);
 
   &:hover {
     @include recolor-icon(
-      var(--p-action-primary),
-      null,
-      $filter-color: filter('action')
+      $fill-color: var(--p-action-primary),
+      $filter-color: var(--p-filter-icon-action-primary)
     );
     color: var(--p-text-primary);
   }

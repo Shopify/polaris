@@ -76,10 +76,8 @@
   color: var(--p-text-disabled);
 }
 
-@mixin button-filled($button-color, $focus-color, $outline-color: null) {
+@mixin button-filled() {
   @include focus-ring($border-width: 0);
-  $border-color: darken($button-color, 10%);
-  $active-color: darken($button-color, 15%);
   background: var(--p-button-color);
   border-width: 0;
   border-color: transparent;
