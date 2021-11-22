@@ -4,8 +4,10 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
+- Removed filter sass function and color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.
 - Removed custom and unnecessary font weight properties ([#4687](https://github.com/Shopify/polaris-react/pull/4687))
+- Removed miscellaneous css custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
 
 ### Enhancements
 
@@ -16,6 +18,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Reduced the size of the `progress` pip in `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
+- Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
 
 ### Bug fixes
 

@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "การดำเนินการ"
+        "rollupButton": "ดูการดำเนินการ"
+      },
+      "Actions": {
+        "moreActions": "การดำเนินการเพิ่มเติม"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "การดำเนินการเพิ่มเติม"
-    },
     "Loading": {
       "label": "แถบแสดงการโหลดหน้า"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมด",
       "selectItem": "เลือก {resourceName}",
       "selectButtonText": "เลือก"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+      }
     }
   }
 }

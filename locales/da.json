@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Handlinger"
+        "rollupButton": "Se handlinger"
+      },
+      "Actions": {
+        "moreActions": "Flere handlinger"
       }
     },
     "Filters": {
@@ -301,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Flere handlinger"
-    },
     "Loading": {
       "label": "Statuslinje for sideindlæsning"
     },
@@ -331,6 +331,11 @@
       "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
       "selectButtonText": "Vælg"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Se handlinger for {title}"
+      }
     }
   }
 }
