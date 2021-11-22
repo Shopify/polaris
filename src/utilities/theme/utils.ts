@@ -57,7 +57,7 @@ function customPropertyTransformer(
 }
 
 export function toCssCustomPropertySyntax(camelCase: string) {
-  return `--p-${camelCase.replace(/([A-Z]|[0-9]+)/g, '-$1').toLowerCase()}`;
+  return `--p-${camelCase.replace(/([A-Z]+|[0-9]+)/g, '-$1').toLowerCase()}`;
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
