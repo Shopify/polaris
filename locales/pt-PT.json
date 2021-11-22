@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Ações"
+        "rollupButton": "Visualizar ações"
+      },
+      "Actions": {
+        "moreActions": "Mais ações"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Mais ações"
-    },
     "Loading": {
       "label": "Barra de carregamento da página"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "Selecionar todos os itens de {resourceNamePlural} de {itemsLength}+",
       "selectItem": "Selecionar {resourceName}",
       "selectButtonText": "Selecionar"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Ver ações para {title}"
+      }
     }
   }
 }

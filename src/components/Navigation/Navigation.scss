@@ -86,7 +86,7 @@ $disabled-fade: 0.6;
 }
 
 .Item-selected {
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
 
@@ -254,7 +254,7 @@ $secondary-item-font-size: rem(15px);
 
   .Item {
     font-size: $secondary-item-font-size;
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
     padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
@@ -308,7 +308,7 @@ $secondary-item-font-size: rem(15px);
     }
   }
   .Item-disabled {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     color: var(--p-text-disabled);
   }
 }

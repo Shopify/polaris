@@ -11,5 +11,5 @@ export function toString(obj?: CustomPropertiesObject) {
 }
 
 export function toCssCustomPropertySyntax(camelCase: string) {
-  return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
+  return `--p-${camelCase.replace(/([A-Z]|[0-9]+)/g, '-$1').toLowerCase()}`;
 }
