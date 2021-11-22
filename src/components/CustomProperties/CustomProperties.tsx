@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import type {ColorScheme} from '../../designTokens';
 
@@ -29,7 +29,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
     colorScheme = DEFAULT_COLOR_SCHEME,
   } = props;
 
-  React.useEffect(() => {
+  useEffect(() => {
     let styleSheet = document.getElementById(STYLE_SHEET_ID);
 
     if (styleSheet) return;
