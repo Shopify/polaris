@@ -5,7 +5,8 @@
       "labelWithInitials": "Avatar com as iniciais {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Carregando"
+      "spinnerAccessibilityLabel": "Carregando",
+      "ellipsis": "{content}..."
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -48,8 +49,8 @@
       "totalRowHeading": "total"
     },
     "DatePicker": {
-      "previousMonth": "Exibir mês anterior, {previousMonthName} de {showPreviousYear}",
-      "nextMonth": "Exibir o próximo mês, {nextMonth} {nextYear}",
+      "previousMonth": "Mostrar mês anterior, {previousMonthName} de {showPreviousYear}",
+      "nextMonth": "Mostrar o próximo mês, {nextMonth} {nextYear}",
       "today": "Hoje ",
       "months": {
         "january": "Janeiro",
@@ -128,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Ações"
+        "rollupButton": "Ver ações"
+      },
+      "Actions": {
+        "moreActions": "Mais ações"
       }
     },
     "Filters": {
@@ -156,10 +160,10 @@
       "exceedWarningMessage": "Os valores passados para o prop de progresso não devem exceder 100. Configurando {progress} como 100."
     },
     "ResourceList": {
-      "sortingLabel": "Organizar por",
+      "sortingLabel": "Ordenar por",
       "defaultItemSingular": "item",
       "defaultItemPlural": "itens",
-      "showing": "Exibindo {itemsCount} {resource}",
+      "showing": "Mostrando {itemsCount} {resource}",
       "loading": "Carregando {resource}",
       "selected": "{selectedItemsCount} na seleção",
       "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
@@ -187,7 +191,7 @@
         "filterButtonLabel": "Filtrar",
         "selectFilterKeyPlaceholder": "Selecione um filtro...",
         "addFilterButtonLabel": "Adicionar filtro",
-        "showAllWhere": "Exibir todo {resourceNamePlural} no qual:"
+        "showAllWhere": "Mostrar todo {resourceNamePlural} no qual:"
       },
       "FilterControl": {
         "textFieldLabel": "Pesquisar {resourceNamePlural}"
@@ -232,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Página carregando"
     },
-    "Spinner": {
-      "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Mais abas"
     },
@@ -243,7 +244,7 @@
     },
     "TextField": {
       "characterCount": "{count} caracteres",
-      "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
+      "characterCountWithMaxLength": "{count} de {limit} caracteres usados"
     },
     "TopBar": {
       "toggleMenuLabel": "Alternar menu",
@@ -303,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Mais ações"
-    },
     "Loading": {
       "label": "Barra de carregamento de página"
     },
@@ -333,6 +331,11 @@
       "selectAllItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Selecionar {resourceName}",
       "selectButtonText": "Selecionar"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Ver ações para {title}"
+      }
     }
   }
 }

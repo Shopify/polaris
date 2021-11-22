@@ -2,11 +2,178 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [these versioning and changelog guidelines](https://git.io/polaris-changelog-guidelines).
+The format is based on [these versioning and changelog guidelines](/documentation/Versioning%20and%20changelog.md).
 
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+
+## 7.3.1 - 2021-11-12
+
+### Bug fixes
+
+- Reverted exit timeout in `Popover` to avoid race conditions ([#4633](https://github.com/Shopify/polaris-react/pull/4633))
+
+## 7.3.0 - 2021-11-10
+
+### Enhancements
+
+- Added helper hooks `useIndexTableRowHovered`, `useIndexTableRowSelected`, and `useIndexTableContainerScroll` to `IndexTable` ([#4286](https://github.com/Shopify/polaris-react/pull/4286))
+- Added token for slim border radius ([#4573](https://github.com/Shopify/polaris-react/pull/4573))
+- Improved `Popover` component and its animation ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Improved `base` easing curve ([#4580](https://github.com/Shopify/polaris-react/pull/4580))
+- Removed vertical padding from wrapping div of `ActionList` ([#4571](https://github.com/Shopify/polaris-react/pull/4571))
+
+### Bug fixes
+
+- Removed extraneous space in `MediaCard` when card has no actions (thanks to [@emilycritter](https://github.com/emilycritter) for the [pull request](https://github.com/Shopify/polaris-react/pull/4538))
+- Fixed a bug in `Stack` where vertical spacing was off ([#4572](https://github.com/Shopify/polaris-react/pull/4572))
+
+### Documentation
+
+- Fixed typo in `DropZone` documentation [4566](https://github.com/Shopify/polaris-react/pull/4566)
+
+### Development workflow
+
+- Updated Loom to v1 ([#950](https://github.com/Shopify/global-nav/pull/950))
+
+### Dependency upgrades
+
+Bumped polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-react/pull/4569))
+
+## 7.2.0 - 2021-10-28
+
+### Enhancements
+
+- Updated the primary and secondary action type on `MediaCard` to `ComplexAction` ([#4546](https://github.com/shopify/polaris-react/pull/4546))
+
+### Bug fixes
+
+- Fixed `Stack.Item` having margin when empty ([#4556](https://github.com/Shopify/polaris-react/pull/4556))
+
+- Fixed `Stack` not wrapping valid children in `Stack.Item` ([#4556](https://github.com/Shopify/polaris-react/pull/4556)) (thanks [@benjamindoe](https://github.com/benjamindoe) for the [original issue](https://github.com/Shopify/polaris-react/issues/4555))
+
+## 7.1.0 - 2021-10-25
+
+### Enhancements
+
+- Added the `ariaControls` prop to `Checkbox` ([#4509](https://github.com/Shopify/polaris-react/pull/4509))
+- Reduced vertical spacing in `Page` ([#4541](https://github.com/Shopify/polaris-react/pull/4541))
+
+### Bug fixes
+
+- Fixed empty children being wrapped with `Item` in `Stack` ([#4487](https://github.com/Shopify/polaris-react/pull/4487))
+
+### Documentation
+
+- Created an example for an IndexTable with multiple promoted bulk actions ([4497](https://github.com/Shopify/polaris-react/pull/4497))
+- Light edits to the best practices for `Modal` and `Banner` ([#4501](https://github.com/Shopify/polaris-react/pull/4501))
+- Removed banner in navigation example ([#4533](https://github.com/Shopify/polaris-react/pull/4533))
+
+## 7.0.0 - 2021-09-23
+
+### Breaking changes
+
+- Updated `react` and `react-dom` to version 16.14.0. This is now the minimum version of React required to use the `@shopify/polaris` library.
+- Dropping support for node 10.x
+- Dropped support for Desktop Safari versions less than 13.1, and ios Safari versions less than 13.6. ([#4304](https://github.com/Shopify/polaris-react/pull/4304))
+- Made `autoComplete` prop in `TextField` a required string ([#4267](https://github.com/Shopify/polaris-react/pull/4267)). If you do not want the browser to autofill a user's information (for example an email input which is a customer's email, but not the email of the user who is entering the information), we recommend setting `autoComplete` to `"off"`.
+- `Autocomplete` now requires `Autocomplete.TextField` to be used ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
+- Removed ComboBox as a named export on `Autocomplete` ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
+- Remove the `esnext` folder from the package. If you use Polaris in an app built with sewing-kit, it must use at least sewing-kit 0.152.0 to leverage esnext builds. ([#4425](https://github.com/Shopify/polaris-react/pull/4425))
+- The component styles have moved fromm `dist/styles.css` to `build/esm/styles.css`. Consumers who import styles shall need to update their import path. ([#4424](https://github.com/Shopify/polaris-react/pull/4424))
+- The public Sass API has moved from `dist/styles/_public-api.scss` to `build/styles/_public-api.scss`. Consumers who use our Sass API shall need to update their import path. ([#4424](https://github.com/Shopify/polaris-react/pull/4424))
+
+### Enhancements
+
+- Add `lastColumnSticky` prop to `IndexTable` to create a sticky last cell and optional sticky last heading on viewports larger than small ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
+- Added `id` prop to `Layout` and `Heading` for hash linking ([#4307](https://github.com/Shopify/polaris-react/pull/4307))
+- Added `external` prop to `Navigation.Item` component ([#4310](https://github.com/Shopify/polaris-react/pull/4310))
+- Added `ariaLabelledBy` props to `Navigation` component to allow a hidden label for accessibility ([#4343](https://github.com/Shopify/polaris-react/pull/4343))
+- Added consistent spacing to `ActionList` ([#4355](https://github.com/Shopify/polaris-react/pull/4355))
+- Added support for promoted actions to be rendered as a menu on the `BulkAction` component ([#4266](https://github.com/Shopify/polaris-react/pull/4266))
+- Added optional `onClick` key to `secondaryAction` on `Nav/Item` component ([#4374](https://github.com/Shopify/polaris-react/pull/4374))
+- Added `extraSmall` prop to `Avatar` ([#4371](https://github.com/Shopify/polaris-react/pull/4371))
+- Added `critical` color option to `ProgressBar` component ([#4408](https://github.com/Shopify/polaris-react/pull/4408))
+- Added an imperative `forceUpdatePosition()` API to `Popover` for programmatically triggering a re-render of the underlying overlay component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
+- Added an imperative `forceUpdatePosition()` API to `PositionedOverlay` for programmatically triggering a re-render of the component ([#4385](https://github.com/Shopify/polaris-react/pull/4385))
+- Added `wrapOverflow` prop to `AutocompleteProps` props to force text-breakword ([#4416](https://github.com/Shopify/polaris-react/pull/4416))
+- Improved `IndexTable` handling of checkboxes when `selectable` prop is `false` ([#4376](https://github.com/Shopify/polaris-react/pull/4376))
+- [Accessibility] - Removed skeleton shimmer animation on devices that have Reduced motion setting enabled [#4460](https://github.com/Shopify/polaris-react/pull/4460)
+- Added optional `compactTitle` prop to `Page` which removes margin between `title` and `subtitle` ([#4463](https://github.com/Shopify/polaris-react/pull/4463))
+- Added `maxHeight` prop to `TextField` component to limit the height of multi-line inputs ([#4476](https://github.com/Shopify/polaris-react/pull/4476))
+- Added support for React 17 ([#4432](https://github.com/Shopify/polaris-react/pull/4432))
+- Added support for multi-sectioned options in `Autocomplete` [#4221](https://github.com/Shopify/polaris-react/pull/4221)
+- Enables optional `onClick` property for `subNavigationItem` on `Nav/Item` component to execute, if provided ([#4394](https://github.com/Shopify/polaris-react/pull/4394))
+
+### Bug fixes
+
+- Fixed `IndexTable` row hover state colour when unselected ([#4359](https://github.com/Shopify/polaris-react/pull/4359))
+- Fixed `selected` prop having no effect for `Navigation.Item` when `url` prop is not specified ([#4375](https://github.com/Shopify/polaris-react/pull/4375))
+- Fixed screen readers reading out the clear button in `TextField` when there is no input ([#4369](https://github.com/Shopify/polaris-react/pull/4369))
+- Fixed label causing scrollbars to appear instead of wrapping `Option` ([#4411](https://github.com/Shopify/polaris-react/pull/4411))
+- Fixed loading state not being passed to `primaryAction` in `Banner` ([#4338](https://github.com/Shopify/polaris-react/pull/4338))
+- Fixed `Popover` not correctly positioning itself ([#4357](https://github.com/Shopify/polaris-react/pull/4357))
+- Fixed text colour of disabled `TextField` in Safari ([#4344](https://github.com/Shopify/polaris-react/pull/4344))
+- Fixed `Button` text colour after changing state from disabled to enabled ([#4270](https://github.com/Shopify/polaris-react/pull/4270))
+- Re-added borders on the `IndexTable` sticky cells ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
+- Adjust `IndexTable` sticky z-index to avoid collisions with focused `TextField` ([#4150](https://github.com/Shopify/polaris-react/pull/4150))
+- Fixed an accessibility bug in `Icon` where `aria-label` was used incorrectly ([#4414](https://github.com/Shopify/polaris-react/pull/4414))
+- Restored pointing device interactivity to prefix and suffix slots of the `TextField` component ([#4477](https://github.com/Shopify/polaris-react/pull/4477))
+
+### Documentation
+
+- Fixed incorrect url for tophatting the `Playground` component inside an iframe ([4392](https://github.com/Shopify/polaris-react/pull/4392))
+- Simplified content guidelines section for text field component and linked out to thorough guidelines on the text fields experience page ([#4422](https://github.com/Shopify/polaris-react/pull/4422))
+
+### Development workflow
+
+- Use `loom` for test and linting harnesses. ([#4402](https://github.com/Shopify/polaris-react/pull/4402), [#4471](https://github.com/Shopify/polaris-react/pull/4471))
+
+### Code quality
+
+- Rebuilt `Autocomplete` internals using new `Combobox` and `Listbox` components built on the ARIA 1.2 spec for improved accessibility ([#3910](https://github.com/Shopify/polaris-react/pull/3910))
+- Updated `@shopify/react-testing` to v3.2.0 for React 17 support in tests ([#4349](https://github.com/Shopify/polaris-react/pull/4349))
+- Modernized tests for Avatar, Backdrop, Badge, Banner components([#4306](https://github.com/Shopify/polaris-react/pull/4306))
+- Modernized tests for Card: Subsection, Header, Sections and Card ([#4325](https://github.com/Shopify/polaris-react/pull/4325)).
+- Modernized tests for Item, Panel, List, Tab, TabMeasurer (from Tabs components). ([#4313](https://github.com/Shopify/polaris-react/pull/4313))
+- Modernized tests for Tooltip, Toast components([#4314](https://github.com/Shopify/polaris-react/pull/4314))
+- Modernized tests for AccountConnection, ActionList components([#4316](https://github.com/Shopify/polaris-react/pull/4316))
+- Modernized tests for ActionMenu and its subcomponents ([#4318](https://github.com/Shopify/polaris-react/pull/4318))
+- Modernized tests for Loading-List-Item-Label components([#4321](https://github.com/Shopify/polaris-react/pull/4321))
+- Modernized tests for DiscardConfirmationModal, ContextualSaveBar, Loading, Toast, ToastManager, Frame (from Frame components) ([#4324](https://github.com/Shopify/polaris-react/pull/4324))
+- Modernized tests for Truncate and UnstyledButton ([#4327](https://github.com/Shopify/polaris-react/pull/4327)).
+- Modernized tests for PageActions, Page and its components ([#4326](https://github.com/Shopify/polaris-react/pull/4326))
+- Modernized tests for FormLayout and some components of ColorPicker ([#4330](https://github.com/Shopify/polaris-react/pull/4330))
+- Modernized tests for Breadcrumbs, BulkActions, Button, ButtonGroup/Item, and ButtonGroup components([#4315](https://github.com/Shopify/polaris-react/pull/4315))
+- Modernized tests for DualThumb ([#4341](https://github.com/Shopify/polaris-react/pull/4341))
+- Modernized tests for AppProvider, AfterInitialMount components([#4331](https://github.com/Shopify/polaris-react/pull/4331))
+- Modernized tests for SkeletonBodyTest, SkeletonDisplayTest, SkeletonPage, SkeletonThumbnail, and Spinner components ([#4353](https://github.com/Shopify/polaris-react/pull/4353))
+- Modernized tests for CalloutCard, Caption, CheckableButton, Resizer, VideoThumbnail ([#4387](https://github.com/Shopify/polaris-react/pull/4387))
+- Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
+- Modernized tests for UnstyledLink, Tag, DisplayText, FileUpload, MessageIndicator, Choice and Dialog ([#4407](https://github.com/Shopify/polaris-react/pull/4407)).
+- Modernized tests for Konami, Labelled, and Link components([#4389](https://github.com/Shopify/polaris-react/pull/4389))
+- Modernized tests for TextStyle, Collapsible, Tabs ([#4453](https://github.com/Shopify/polaris-react/pull/4453))
+- Modernized tests for Scrollable, ScrollTo, ScrollLock, Select, SettingToggle, Sheet, Spinner, and Sticky components([#4386](https://github.com/Shopify/polaris-react/pull/4386))
+- Modernized tests for Message, Menu, Search, SearchDismissOverlay, SearchField, UserMenu and TopBar components. ([#4311](https://github.com/Shopify/polaris-react/pull/4311))
+- Modernized tests for ResourceItem, ResourceList ([#4362](https://github.com/Shopify/polaris-react/pull/4362))
+- Modernized tests for MediaCard, and Layout components ([#4393](https://github.com/Shopify/polaris-react/pull/4393))
+- Modernized tests for Image and Icon components ([#4418](https://github.com/Shopify/polaris-react/pull/4418))
+- Modernized tests for EventListener and EmptySearch components([#4423](https://github.com/Shopify/polaris-react/pull/4423))
+- Modernized tests for Pane, Section, PositionedOverlay, SingleThumb, RangeSlider, and ConnectedFilter components ([#4429](https://github.com/Shopify/polaris-react/pull/4429))
+- Modernized tests for ContextualSaveBar and DataTable and its subcomponents ([#4397](https://github.com/Shopify/polaris-react/pull/4397))
+- Modernized tests for IndexTable, Indicator, InlineError, KeyboardKey, and KeypressListener components([#4431](https://github.com/Shopify/polaris-react/pull/4431))
+- Modernized tests for Form and Filters components ([#4434](https://github.com/Shopify/polaris-react/pull/4434) and [#4458](https://github.com/Shopify/polaris-react/pull/4458))
+- Modernized tests for OptionList and its subcomponents ([#4441](https://github.com/Shopify/polaris-react/pull/4441))
+- Modernized tests for Modal ([#4433](https://github.com/Shopify/polaris-react/pull/4433))
+- Modernized tests for Navigation and Navigation.Section ([#4440](https://github.com/Shopify/polaris-react/pull/4440))
+- Modernized tests for EmptyState component ([#4427](https://github.com/Shopify/polaris-react/pull/4427))
+- Modernized tests for Pagination, FilterControl, FilterCreator, FilterValueSelector, and DateSelector components ([#4438](https://github.com/Shopify/polaris-react/pull/4438))
+- Modernized tests for PopoverOverlay component([#4430](https://github.com/Shopify/polaris-react/pull/4430))
+- Modernized tests for Dropzone, ExceptionList, and ConnectedFilterControl > Item components([#4412](https://github.com/Shopify/polaris-react/pull/4412))
+- Modernized tests for Checkbox and Choicelist ([#4457](https://github.com/Shopify/polaris-react/pull/4457))
+- Modernized tests for DatePicker, DescriptionList, and DisplayText ([#4360](https://github.com/Shopify/polaris-react/pull/4360))
+- Modernized tests for TextField ([#4456](https://github.com/Shopify/polaris-react/pull/4456))
 
 ## 6.6.0 - 2021-07-08
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';

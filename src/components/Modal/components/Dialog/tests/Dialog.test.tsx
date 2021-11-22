@@ -1,6 +1,6 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {KeypressListener} from 'components';
 
 import {Dialog} from '../Dialog';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {TextField as PolarisTextField} from '../../../../TextField';
 import type {TextFieldProps} from '../../../../TextField';

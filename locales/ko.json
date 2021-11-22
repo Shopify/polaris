@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "작업"
+        "rollupButton": "작업 보기"
+      },
+      "Actions": {
+        "moreActions": "기타 작업"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "기타 작업"
-    },
     "Loading": {
       "label": "페이지 로딩 표시줄"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural} 선택",
       "selectItem": "{resourceName} 선택",
       "selectButtonText": "선택"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} 작업 보기"
+      }
     }
   }
 }

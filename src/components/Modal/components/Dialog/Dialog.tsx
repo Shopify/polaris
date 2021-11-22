@@ -75,11 +75,7 @@ export function Dialog({
             className={styles.Dialog}
           >
             <div className={classes}>
-              <KeypressListener
-                keyCode={Key.Escape}
-                handler={onClose}
-                testID="CloseKeypressListener"
-              />
+              <KeypressListener keyCode={Key.Escape} handler={onClose} />
               {children}
             </div>
           </div>

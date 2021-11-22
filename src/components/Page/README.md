@@ -143,6 +143,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
       alt="Black leather pet collar"
     />
   }
+  compactTitle
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
     {

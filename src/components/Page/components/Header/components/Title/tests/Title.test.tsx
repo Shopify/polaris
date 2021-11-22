@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Badge, DisplayText, Avatar} from 'components';
 
 import {Title} from '../Title';
@@ -39,6 +39,15 @@ describe('<Title />', () => {
     it('does not render a paragraph when not defined', () => {
       const pageTitle = mountWithApp(<Title {...mockProps} />);
       expect(pageTitle).not.toContainReactComponent('p');
+    });
+
+    it('renders styles when compactTitle prop is defined', () => {
+      const pageTitle = mountWithApp(
+        <Title {...propsWithSubtitle} compactTitle />,
+      );
+      expect(pageTitle).toContainReactComponent('div', {
+        className: expect.stringContaining('SubtitleCompact'),
+      });
     });
   });
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Sticky} from 'components/Sticky';
-import {EventListener} from 'components/EventListener';
+import {mountWithApp} from 'tests/utilities';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
+import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
+import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';

@@ -95,24 +95,26 @@ function DropZoneExample() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
-      {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
-          <Thumbnail
-            size="small"
-            alt={file.name}
-            source={
-              validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
-                : NoteMinor
-            }
-          />
-          <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
-          </div>
-        </Stack>
-      ))}
-    </Stack>
+    <div style={{padding: '0'}}>
+      <Stack vertical>
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name} <Caption>{file.size} bytes</Caption>
+            </div>
+          </Stack>
+        ))}
+      </Stack>
+    </div>
   );
 
   return (
@@ -277,6 +279,26 @@ function DropZoneWithDropOnPageExample() {
     </Stack>
   );
 
+  const uploadMessage = !uploadedFiles && (
+    <div
+      style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Caption>
+        <TextStyle variation="strong">
+          <TextStyle variation="subdued">
+            Drop or <Link>browse files</Link>
+          </TextStyle>
+        </TextStyle>
+      </Caption>
+    </div>
+  );
+
   return (
     <Page
       breadcrumbs={[{content: 'Products'}]}
@@ -293,6 +315,7 @@ function DropZoneWithDropOnPageExample() {
     >
       <DropZone dropOnPage onDrop={handleDropZoneDrop}>
         {uploadedFiles}
+        {uploadMessage}
       </DropZone>
     </Page>
   );
@@ -440,7 +463,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with varaible size
+### Drop zone with variable size
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 

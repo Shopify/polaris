@@ -1,8 +1,8 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {mountWithApp} from 'test-utilities';
-import {PositionedOverlay} from 'components/PositionedOverlay';
+import {mountWithApp} from 'tests/utilities';
 import {Portal} from 'components';
 
+import {PositionedOverlay} from '../../PositionedOverlay';
 import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
 import {PopoverOverlay} from '../components';
@@ -67,13 +67,9 @@ describe('<Popover />', () => {
 
   it('renders an activator', () => {
     const popover = mountWithApp(
-      <Popover
-        active
-        activator={<div testID="activator">Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active activator={<div>Activator</div>} onClose={spy} />,
     );
-    expect(popover).toContainReactComponent('div', {testID: 'activator'});
+    expect(popover).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders a positionedOverlay when active is true', () => {

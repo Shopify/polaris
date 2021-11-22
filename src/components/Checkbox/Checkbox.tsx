@@ -19,6 +19,8 @@ import {WithinListboxContext} from '../../utilities/listbox/context';
 import styles from './Checkbox.scss';
 
 export interface CheckboxProps {
+  /** Indicates the ID of the element that is controlled by the checkbox*/
+  ariaControls?: string;
   /** Indicates the ID of the element that describes the checkbox*/
   ariaDescribedBy?: string;
   /** Label for the checkbox */
@@ -50,6 +52,7 @@ export interface CheckboxProps {
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
     {
+      ariaControls,
       ariaDescribedBy: ariaDescribedByProp,
       label,
       labelHidden,
@@ -169,6 +172,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onClick={stopPropagation}
             onChange={noop}
             aria-invalid={error != null}
+            aria-controls={ariaControls}
             aria-describedby={ariaDescribedBy}
             role={isWithinListbox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}

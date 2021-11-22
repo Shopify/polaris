@@ -98,6 +98,8 @@ interface NonMutuallyExclusiveProps {
   max?: number | string;
   /** Maximum character length for an input */
   maxLength?: number;
+  /** Maximum height of the input element. Only applies when `multiline` is `true` */
+  maxHeight?: number | string;
   /** Mimics the behavior of the native HTML attribute, limiting the minimum value */
   min?: number | string;
   /** Minimum character length for an input */
@@ -169,6 +171,7 @@ export function TextField({
   autoComplete,
   max,
   maxLength,
+  maxHeight,
   min,
   minLength,
   pattern,
@@ -279,7 +282,6 @@ export function TextField({
     clearButtonVisible && clearButton ? (
       <button
         type="button"
-        testID="clearButton"
         className={styles.ClearButton}
         onClick={handleClearButtonPress}
         disabled={disabled}
@@ -355,7 +357,7 @@ export function TextField({
       />
     ) : null;
 
-  const style = multiline && height ? {height} : null;
+  const style = multiline && height ? {height, maxHeight} : null;
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
@@ -513,10 +515,10 @@ export function TextField({
   }
 
   function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target)) {
+    if (containsAffix(target) || focus) {
       return;
     }
-    inputRef.current && inputRef.current.focus();
+    inputRef.current?.focus();
   }
 }
 

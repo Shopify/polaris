@@ -6,8 +6,7 @@ import {
   CircleAlertMajor,
   DiamondAlertMajor,
 } from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
-import {BannerContext} from 'utilities/banner-context';
+import {mountWithApp} from 'tests/utilities';
 import {
   Button,
   Heading,
@@ -17,6 +16,7 @@ import {
   UnstyledLink,
 } from 'components';
 
+import {BannerContext} from '../../../utilities/banner-context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Banner, BannerHandles} from '../Banner';
 

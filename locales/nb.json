@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Handlinger"
+        "rollupButton": "Vis handlinger"
+      },
+      "Actions": {
+        "moreActions": "Flere handlinger"
       }
     },
     "Filters": {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Flere handlinger"
-    },
     "Loading": {
       "label": "Sidelastingslinje"
     },
@@ -334,6 +334,11 @@
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
       "selectButtonText": "Velg"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Vis handlinger for {title}"
+      }
     }
   }
 }

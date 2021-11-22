@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Search} from '../Search';
 import {SearchDismissOverlay} from '../../SearchDismissOverlay';

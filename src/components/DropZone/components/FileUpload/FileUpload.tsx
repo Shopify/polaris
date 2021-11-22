@@ -35,18 +35,15 @@ export function FileUpload(props: FileUploadProps) {
     ),
   } = props;
 
-  const buttonStyles =
-    size === 'extraLarge' || size === 'large'
-      ? classNames(
-          styles.Button,
-          size && size !== 'extraLarge' && styles.slim,
-          focused && styles.focused,
-          disabled && styles.disabled,
-        )
-      : null;
+  const buttonStyles = classNames(
+    styles.Button,
+    styles.slim,
+    focused && styles.focused,
+    disabled && styles.disabled,
+  );
 
   const buttonMarkup =
-    (size === 'extraLarge' || size === 'large') && buttonStyles ? (
+    size === 'large' && buttonStyles ? (
       <div className={buttonStyles}>{actionTitle}</div>
     ) : null;
 
@@ -63,20 +60,12 @@ export function FileUpload(props: FileUploadProps) {
   const fileUploadClassName = classNames(
     styles.FileUpload,
     measuring && styles.measuring,
-    size === 'small' && styles.FileUploadSmallView,
+    size === 'large' && styles.large,
+    size === 'small' && styles.small,
   );
 
   let viewMarkup;
   switch (size) {
-    case 'extraLarge':
-      viewMarkup = (
-        <Stack vertical>
-          <img width="40" src={uploadArrow} alt="" />
-          {buttonMarkup}
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Stack>
-      );
-      break;
     case 'large':
       viewMarkup = (
         <Stack vertical spacing="tight">

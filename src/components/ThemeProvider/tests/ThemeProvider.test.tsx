@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mount} from 'test-utilities';
+import {mount} from 'tests/utilities';
 
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext} from '../../../utilities/theme';
@@ -50,7 +50,6 @@ describe('<ThemeProvider />', () => {
 
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
-        '--p-override-zero': expect.any(String),
         '--p-background': expect.any(String),
         '--p-text': expect.any(String),
         '--p-interactive': expect.any(String),

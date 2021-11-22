@@ -1,4 +1,4 @@
-import type {Descriptor, SectionDescriptor} from 'types';
+import type {Descriptor, SectionDescriptor} from '../types';
 
 export function isSection(arr: Descriptor[]): arr is SectionDescriptor[] {
   return (

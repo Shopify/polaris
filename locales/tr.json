@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "İşlemler"
+        "rollupButton": "İşlemleri görüntüle"
+      },
+      "Actions": {
+        "moreActions": "Diğer işlemler"
       }
     },
     "Filters": {
@@ -303,9 +306,6 @@
           }
         }
       }
-    },
-    "Actions": {
-      "moreActions": "Diğer işlemler"
     },
     "Loading": {
       "label": "Sayfa yüklenme çubuğu"

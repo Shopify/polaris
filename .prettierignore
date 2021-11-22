@@ -1,5 +1,5 @@
 node_modules
-/.sewing-kit
+/.loom
 /build
 /build-internal
 /src/styles/polaris-tokens

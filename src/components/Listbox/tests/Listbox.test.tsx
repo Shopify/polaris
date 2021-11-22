@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {animationFrame, timer} from '@shopify/jest-dom-mocks';
-import {Key} from 'types';
 import {
   mountWithComboboxListContext,
   mountWithListboxProvider,
-} from 'test-utilities/listbox';
+} from 'tests/utilities/listbox';
 
+import {Key} from '../../../types';
 import {Button} from '../../Button';
 import {KeypressListener} from '../../KeypressListener';
 import {Scrollable} from '../../Scrollable';

@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
 import {Footer, Dialog, Header} from '../components';
