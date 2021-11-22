@@ -61,7 +61,7 @@
 
   .statusWarning &,
   .statusCritical & {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
   }
 
   .statusWarning & {
