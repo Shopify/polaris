@@ -201,7 +201,7 @@ $stacking-order: (
   color: var(--p-interactive);
 
   > .Content {
-    font-weight: 400;
+    font-weight: var(--p-font-weight-regular);
     @include focus-ring;
   }
 
