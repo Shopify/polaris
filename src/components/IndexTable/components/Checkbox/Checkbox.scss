@@ -23,8 +23,8 @@ $condensed-width: rem(50px);
 }
 
 .condensed {
-  --spacing-extra-loose: var(--p-space-3) + var(--p-space-1);
+  --p-spacing-extra-loose: var(--p-space-3) + var(--p-space-1);
   min-width: $condensed-width;
   min-height: $condensed-height;
-  margin-right: calc(-1 * var(--spacing-extra-loose));
+  margin-right: calc(-1 * var(--p-spacing-extra-loose));
 }
