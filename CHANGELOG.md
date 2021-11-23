@@ -14,6 +14,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 - Added back miscellaneous css custom properties ([#4679](https://github.com/Shopify/polaris-react/pull/4679))
 - Added back custom and unnecessary font weight properties ([#4677](https://github.com/Shopify/polaris-react/pull/4677))
+- Fixed an issue with `Popover` where the transform property interfered with descendants positioning ([#4685](https://github.com/Shopify/polaris-react/pull/4685))
+- Fixed screen reader accessibility issue of the `Checkbox` component ([#4631](https://github.com/Shopify/polaris-react/pull/4631))
 
 ## 7.4.0 - 2021-11-18
 
