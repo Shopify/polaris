@@ -19,21 +19,11 @@ describe('<ThemeProvider />', () => {
     const Child: React.SFC = () => {
       const polarisTheme = useContext(ThemeContext);
       // eslint-disable-next-line jest/no-if
-      return polarisTheme && polarisTheme.logo ? <div /> : null;
+      return polarisTheme?.colorScheme ? <div /> : null;
     };
 
     const themeProvider = mount(
-      <ThemeProvider
-        theme={{
-          logo: {
-            width: 104,
-            topBarSource:
-              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
-            contextualSaveBarSource:
-              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
-          },
-        }}
-      >
+      <ThemeProvider theme={{colorScheme: 'light'}}>
         <Child />
       </ThemeProvider>,
     );

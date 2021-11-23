@@ -81,12 +81,8 @@ describe('buildCustomProperties', () => {
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {
     expect(
-      buildThemeContext(
-        {colors: {}, logo: {}, colorScheme: 'light'},
-        {foo: 'bar'},
-      ),
+      buildThemeContext({colors: {}, colorScheme: 'light'}, {foo: 'bar'}),
     ).toStrictEqual({
-      logo: {},
       cssCustomProperties: 'foo:bar',
       colors: {},
       colorScheme: 'light',

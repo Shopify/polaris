@@ -9,7 +9,7 @@ import {WithinContentContext} from '../../../utilities/within-content-context';
 describe('<Navigation />', () => {
   it('renders an image if the theme provider is present', () => {
     const navigation = mountWithApp(<Navigation location="/" />, {
-      theme: {logo: {url: 'https://shopify.com/logo'}},
+      logo: {url: 'https://shopify.com/logo'},
     });
     expect(navigation).toContainReactComponent(Image);
   });

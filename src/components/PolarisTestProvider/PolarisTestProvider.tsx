@@ -3,7 +3,7 @@ import React, {Fragment, StrictMode} from 'react';
 import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
-import {FrameContext} from '../../utilities/frame';
+import {FrameContext, LogoContext} from '../../utilities/frame';
 import {
   ThemeContext,
   ThemeConfig,
@@ -29,6 +29,7 @@ import {
 } from '../../utilities/unique-id';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
+type LogoContextType = NonNullable<React.ContextType<typeof LogoContext>>;
 type MediaQueryContextType = NonNullable<
   React.ContextType<typeof MediaQueryContext>
 >;
@@ -46,6 +47,7 @@ export interface WithPolarisTestProviderOptions {
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: FeaturesConfig;
   // Contexts provided by Frame
+  logo?: Partial<LogoContextType>;
   frame?: Partial<FrameContextType>;
 }
 
@@ -67,6 +69,7 @@ export function PolarisTestProvider({
   theme = {},
   mediaQuery,
   features = {},
+  logo,
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
@@ -99,7 +102,9 @@ export function PolarisTestProvider({
                       <PortalsManager>
                         <FocusManager>
                           <FrameContext.Provider value={mergedFrame}>
-                            {children}
+                            <LogoContext.Provider value={logo}>
+                              {children}
+                            </LogoContext.Provider>
                           </FrameContext.Provider>
                         </FocusManager>
                       </PortalsManager>
