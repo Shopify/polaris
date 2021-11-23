@@ -1,6 +1,6 @@
 @import '../../styles/common';
 $horizontal-padding: spacing(tight);
-$vertical-padding: calc(#{spacing(extra-tight)} - #{rem(2px)});
+$vertical-padding: calc(var(--p-space-1) - #{rem(2px)});
 
 $pip-size: spacing(tight);
 $pip-spacing: calc(#{$pip-size} / 2);

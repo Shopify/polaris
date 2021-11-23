@@ -98,7 +98,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 }
 
 .PaginatedSelectAll {
-  padding: spacing(extra-tight) 0;
+  padding: var(--p-space-1) var(--p-space-0);
 }
 
 .Slide {

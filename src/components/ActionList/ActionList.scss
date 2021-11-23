@@ -32,7 +32,7 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
 
 .Title {
   @include text-style-subheading;
-  padding: spacing(extra-tight) spacing() $titleVerticalSpacing spacing();
+  padding: var(--p-space-1) spacing() $titleVerticalSpacing spacing();
 
   &.firstSectionWithTitle {
     padding-top: $titleVerticalSpacing;

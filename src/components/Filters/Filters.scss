@@ -108,7 +108,7 @@ $list-filters-footer-height: rem(70px);
 }
 
 .AppliedFilterBadgeContainer {
-  padding-top: spacing(extra-tight);
+  padding-top: var(--p-space-1);
   display: flex;
 
   .open & {

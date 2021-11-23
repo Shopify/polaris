@@ -26,13 +26,13 @@ $control-size: rem(16px);
 }
 
 .ChoiceError {
-  margin-top: spacing(extra-tight);
+  margin-top: var(--p-space-1);
   margin-bottom: spacing(tight);
 }
 
 .Title {
   @include text-style-body;
   display: block;
-  margin: 0 0 spacing(extra-tight);
+  margin: 0 0 var(--p-space-1);
   padding: 0;
 }

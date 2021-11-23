@@ -12,7 +12,7 @@
   color: var(--p-text-subdued);
 
   + .Item {
-    margin-top: spacing(extra-tight);
+    margin-top: var(--p-space-1);
   }
 }
 
@@ -25,7 +25,7 @@
   justify-content: center;
   min-width: rem(20px);
   height: rem(20px);
-  margin-right: spacing(extra-tight);
+  margin-right: var(--p-space-1);
 
   @include recolor-icon(var(--p-icon-subdued));
 
@@ -56,7 +56,7 @@
 .Title {
   + .Description::before {
     content: '–';
-    margin: 0 spacing(extra-tight);
+    margin: 0 var(--p-space-1);
   }
 
   .statusWarning &,

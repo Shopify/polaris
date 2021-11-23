@@ -60,12 +60,12 @@ $item-spacing: spacing(tight);
 }
 
 .extraTight {
-  margin-top: -1 * spacing(extra-tight);
-  margin-left: -1 * spacing(extra-tight);
+  margin-top: calc(-1 * (var(--p-space-1)));
+  margin-left: calc(-1 * (var(--p-space-1)));
 
   .Item {
-    margin-top: spacing(extra-tight);
-    margin-left: spacing(extra-tight);
+    margin-top: var(--p-space-1);
+    margin-left: var(--p-space-1);
   }
 }
 

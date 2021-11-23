@@ -19,7 +19,7 @@ $breakpoint: 550px;
   padding: spacing() 0 spacing(tight);
 
   .spacingTight & {
-    padding: spacing(tight) 0 spacing(extra-tight);
+    padding: spacing(tight) 0 var(--p-space-1);
   }
 
   @include page-content-breakpoint-after($breakpoint) {

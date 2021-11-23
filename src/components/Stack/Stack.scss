@@ -100,10 +100,10 @@
 
 .vertical {
   flex-direction: column;
-  margin-left: spacing(none);
+  margin-left: var(--p-space-0);
 
   > .Item {
-    margin-left: spacing(none);
+    margin-left: var(--p-space-0);
   }
 }
 

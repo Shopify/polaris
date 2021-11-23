@@ -173,7 +173,7 @@ $spinner-size: rem(20px);
   }
 
   .Actions {
-    padding: spacing(base-tight) 0 spacing(extra-tight) 0;
+    padding: spacing(base-tight) 0 var(--p-space-1) 0;
   }
 }
 

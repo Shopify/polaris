@@ -9,7 +9,7 @@ $control-vertical-adjustment: rem(2px);
 .Choice {
   display: inline-flex;
   justify-content: flex-start;
-  padding: spacing(extra-tight) 0;
+  padding: var(--p-space-1) 0;
   cursor: pointer;
 }
 
@@ -73,5 +73,5 @@ $control-vertical-adjustment: rem(2px);
 .HelpText {
   @include text-style-body;
   @include text-emphasis-subdued;
-  margin-bottom: spacing(extra-tight);
+  margin-bottom: var(--p-space-1);
 }

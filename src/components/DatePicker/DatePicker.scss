@@ -167,7 +167,7 @@ $range-end-border-radius: rem(30px);
 .Title {
   flex: 1 1 auto;
   margin-top: rem(2px);
-  padding-bottom: spacing(extra-tight);
+  padding-bottom: var(--p-space-1);
   text-align: center;
 }
 

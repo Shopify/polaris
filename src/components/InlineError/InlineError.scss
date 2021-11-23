@@ -1,8 +1,7 @@
 @import '../../styles/common';
 
-$error-icon-adjustment: rem(2px);
-
 .InlineError {
+  --error-icon-adjustment: var(--space-05);
   display: flex;
   color: var(--p-text-critical);
   fill: var(--p-icon-critical);
@@ -10,6 +9,6 @@ $error-icon-adjustment: rem(2px);
 
 .Icon {
   fill: currentColor;
-  margin-left: -1 * $error-icon-adjustment;
-  margin-right: spacing(extra-tight) + $error-icon-adjustment;
+  margin-left: calc(-1 * var(--error-icon-adjustment));
+  margin-right: calc(var(--space-1) + var(--error-icon-adjustment));
 }
