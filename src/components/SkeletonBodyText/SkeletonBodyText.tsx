@@ -17,5 +17,5 @@ export function SkeletonBodyText({lines = 3}: SkeletonBodyTextProps) {
     bodyTextLines.push(<div className={styles.SkeletonBodyText} key={i} />);
   }
 
-  return bodyTextLines;
+  return <>{bodyTextLines}</>;
 }
