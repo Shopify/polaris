@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -7,7 +7,7 @@ import styles from './Page.scss';
 
 export interface PageProps extends HeaderProps {
   /** The contents of the page */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import {useRef} from 'react';
 
 import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';

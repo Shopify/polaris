@@ -1,11 +1,11 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
 
 describe('<SettingToggle />', () => {
-  function getComponentProps(node: React.ReactNode) {
+  function getComponentProps(node: ReactNode) {
     return (node as JSX.Element).props;
   }
 

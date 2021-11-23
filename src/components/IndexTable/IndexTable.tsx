@@ -1,4 +1,5 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
+import type {ReactNode} from 'react';
+import {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
@@ -42,9 +43,9 @@ export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
   bulkActions?: BulkActionsProps['actions'];
-  children?: React.ReactNode;
-  emptyState?: React.ReactNode;
-  sort?: React.ReactNode;
+  children?: ReactNode;
+  emptyState?: ReactNode;
+  sort?: ReactNode;
   lastColumnSticky?: boolean;
   selectable?: boolean;
 }

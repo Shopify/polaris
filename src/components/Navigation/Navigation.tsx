@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode, FunctionComponent} from 'react';
 
 import {Scrollable} from '../Scrollable';
 import {useTheme} from '../../utilities/theme';
@@ -13,14 +13,14 @@ import styles from './Navigation.scss';
 
 export interface NavigationProps {
   location: string;
-  children?: React.ReactNode;
-  contextControl?: React.ReactNode;
+  children?: ReactNode;
+  contextControl?: ReactNode;
   onDismiss?(): void;
   /** id of the element used as aria-labelledby */
   ariaLabelledBy?: string;
 }
 
-export const Navigation: React.FunctionComponent<NavigationProps> & {
+export const Navigation: FunctionComponent<NavigationProps> & {
   Item: typeof Item;
   Section: typeof Section;
 } = function Navigation({

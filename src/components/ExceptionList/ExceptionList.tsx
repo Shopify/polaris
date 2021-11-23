@@ -1,4 +1,5 @@
-import React, {Fragment} from 'react';
+import type {ReactElement} from 'react';
+import {Fragment} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Icon, IconProps} from '../Icon';
@@ -6,10 +7,7 @@ import {Truncate} from '../Truncate';
 
 import styles from './ExceptionList.scss';
 
-type Description =
-  | string
-  | React.ReactElement
-  | (string | React.ReactElement)[];
+type Description = string | ReactElement | (string | ReactElement)[];
 
 interface Item {
   /** Set the color of the icon and title for the given item. */

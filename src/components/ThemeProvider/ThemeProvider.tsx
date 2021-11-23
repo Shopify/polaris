@@ -1,4 +1,5 @@
-import React, {useMemo, useEffect, useContext} from 'react';
+import type {ReactNode} from 'react';
+import {useMemo, useEffect, useContext} from 'react';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {
@@ -21,7 +22,7 @@ export interface ThemeProviderProps {
    */
   alwaysRenderCustomProperties?: boolean;
   /** The content to display */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function ThemeProvider({

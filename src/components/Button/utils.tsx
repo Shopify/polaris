@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactElement} from 'react';
 
 import type {ComplexAction} from '../../types';
 
@@ -7,11 +7,11 @@ import {Button, ButtonProps} from './Button';
 export function buttonsFrom(
   action: ComplexAction,
   overrides?: Partial<ButtonProps>,
-): React.ReactElement<ButtonProps>;
+): ReactElement<ButtonProps>;
 export function buttonsFrom(
   actions: ComplexAction[],
   overrides?: Partial<ButtonProps>,
-): React.ReactElement<ButtonProps>[];
+): ReactElement<ButtonProps>[];
 export function buttonsFrom(
   actions: ComplexAction[] | ComplexAction,
   overrides: Partial<ButtonProps> = {},

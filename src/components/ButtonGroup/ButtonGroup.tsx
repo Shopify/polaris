@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
@@ -18,7 +18,7 @@ export interface ButtonGroupProps {
   /** Remove top left and right border radius */
   connectedTop?: boolean;
   /** Button components */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function ButtonGroup({

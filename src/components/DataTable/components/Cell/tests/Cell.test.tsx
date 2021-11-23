@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import type {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 

@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import type {MouseEvent} from 'react';
+import {PureComponent} from 'react';
 import debounce from 'lodash/debounce';
 
 import {clamp} from '../../utilities/clamp';
@@ -172,7 +173,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   };
 
   private handlePickerDrag = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     // prevents external elements from being selected
     event.preventDefault();

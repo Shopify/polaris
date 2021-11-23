@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import type {ReactNode, ChangeEvent} from 'react';
+import {useRef, useState} from 'react';
 
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
@@ -11,13 +12,13 @@ export interface RadioButtonProps {
   /** Indicates the ID of the element that describes the the radio button*/
   ariaDescribedBy?: string;
   /** Label for the radio button */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Radio button is selected */
   checked?: boolean;
   /** Additional text to aid in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Disable input */
   disabled?: boolean;
   /** ID for form input */
@@ -68,7 +69,7 @@ export function RadioButton({
     setKeyFocused(false);
   };
 
-  function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange({currentTarget}: ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
   }
 

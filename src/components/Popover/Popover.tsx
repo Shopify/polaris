@@ -1,4 +1,5 @@
-import React, {
+import type {ReactNode, AriaAttributes, ReactElement} from 'react';
+import {
   Children,
   forwardRef,
   useEffect,
@@ -7,7 +8,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import type {AriaAttributes} from 'react';
 
 import {
   findFirstFocusableNodeIncludingDisabled,
@@ -32,7 +32,7 @@ export type {PopoverAutofocusTarget};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** The preferred direction to open the popover */
   preferredPosition?: PopoverOverlayProps['preferredPosition'];
   /** The preferred alignment of the popover relative to its activator */
@@ -40,7 +40,7 @@ export interface PopoverProps {
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */
-  activator: React.ReactElement;
+  activator: ReactElement;
   /**
    * Use the activator's input element to calculate the Popover position
    * @default true

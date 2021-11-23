@@ -1,4 +1,4 @@
-import React from 'react';
+import type {SFC, SVGProps} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Image} from '../Image';
@@ -15,7 +15,7 @@ export interface ThumbnailProps {
    */
   size?: Size;
   /** URL for the image */
-  source: string | React.SFC<React.SVGProps<SVGSVGElement>>;
+  source: string | SFC<SVGProps<SVGSVGElement>>;
   /** Alt text for the thumbnail image */
   alt: string;
 }

@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback, useEffect} from 'react';
+import {useMemo, useCallback, useEffect} from 'react';
 
 import {labelID} from '../../../Label';
 import {useUniqueId} from '../../../../utilities/unique-id';

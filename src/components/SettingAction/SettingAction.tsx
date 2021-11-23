@@ -1,10 +1,10 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import styles from './SettingAction.scss';
 
 export interface SettingActionProps {
-  action?: React.ReactNode;
-  children?: React.ReactNode;
+  action?: ReactNode;
+  children?: ReactNode;
 }
 
 export function SettingAction({action, children}: SettingActionProps) {

@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {TextField, Tag, Button} from 'components';
 

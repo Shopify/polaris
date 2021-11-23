@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import type {ReactNode, ContextType, ReactElement} from 'react';
+import {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
@@ -9,7 +10,7 @@ export interface ItemProps {
   id: string;
   focused: boolean;
   panelID?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   url?: string;
   accessibilityLabel?: string;
   onClick?(): void;
@@ -17,9 +18,9 @@ export interface ItemProps {
 
 export class Item extends PureComponent<ItemProps, never> {
   static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
+  context!: ContextType<typeof FeaturesContext>;
 
-  private focusedNode: HTMLElement | React.ReactElement | null = null;
+  private focusedNode: HTMLElement | ReactElement | null = null;
 
   componentDidMount() {
     const {focusedNode} = this;
@@ -74,7 +75,7 @@ export class Item extends PureComponent<ItemProps, never> {
     return <li>{markup}</li>;
   }
 
-  private setFocusedNode = (node: HTMLElement | React.ReactElement | null) => {
+  private setFocusedNode = (node: HTMLElement | ReactElement | null) => {
     this.focusedNode = node;
   };
 }

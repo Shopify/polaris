@@ -1,4 +1,5 @@
-import React, {PureComponent, createRef, MouseEvent} from 'react';
+import type {ReactNode, RefObject, KeyboardEvent} from 'react';
+import {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
@@ -29,19 +30,19 @@ import styles from './Frame.scss';
 
 export interface FrameProps {
   /** The content to display inside the frame. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
-  topBar?: React.ReactNode;
+  topBar?: ReactNode;
   /** Accepts a navigation component that will be rendered in the left sidebar of an application frame */
-  navigation?: React.ReactNode;
+  navigation?: ReactNode;
   /** Accepts a global ribbon component that will be rendered fixed to the bottom of an application frame */
-  globalRibbon?: React.ReactNode;
+  globalRibbon?: ReactNode;
   /** A boolean property indicating whether the mobile navigation is currently visible
    * @default false
    */
   showMobileNavigation?: boolean;
   /** Accepts a ref to the html anchor element you wish to focus when clicking the skip to content link */
-  skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
+  skipToContentTarget?: RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
 }
@@ -383,7 +384,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.globalRibbonContainer = node;
   };
 
-  private handleNavKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
+  private handleNavKeydown = (event: KeyboardEvent<HTMLElement>) => {
     const {key} = event;
     const {
       mediaQuery: {isNavigationCollapsed},

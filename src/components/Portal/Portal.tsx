@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react';
+import type {ReactNode} from 'react';
+import {useEffect} from 'react';
 import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
 import {useUniqueId} from '../../utilities/unique-id';
 
 export interface PortalProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   idPrefix?: string;
   onPortalCreated?(): void;
 }

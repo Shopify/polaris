@@ -1,4 +1,5 @@
-import React, {useCallback, useState} from 'react';
+import type {ReactElement} from 'react';
+import {useCallback, useState} from 'react';
 import {
   CaretDownMinor,
   CaretUpMinor,
@@ -47,7 +48,7 @@ export interface ButtonProps extends BaseButton {
   /** Removes underline from button text (including on interaction) when `monochrome` and `plain` are true */
   removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
-  icon?: React.ReactElement | IconSource;
+  icon?: ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
 }

@@ -1,4 +1,5 @@
-import React, {useRef} from 'react';
+import type {ReactNode} from 'react';
+import {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
@@ -8,7 +9,7 @@ import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('react-transition-group', () => {
-  function ChildGroup({children}: {children: React.ReactNode}) {
+  function ChildGroup({children}: {children: ReactNode}) {
     return <div>{children}</div>;
   }
 

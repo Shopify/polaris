@@ -1,4 +1,5 @@
-import React, {isValidElement} from 'react';
+import type {ReactNode} from 'react';
+import {isValidElement} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
@@ -39,7 +40,7 @@ export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
   /** Primary page-level action */
-  primaryAction?: PrimaryAction | React.ReactNode;
+  primaryAction?: PrimaryAction | ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
   /** Collection of breadcrumbs */
@@ -49,13 +50,13 @@ export interface HeaderProps extends TitleProps {
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
   /** Additional navigation markup */
-  additionalNavigation?: React.ReactNode;
+  additionalNavigation?: ReactNode;
   // Additional meta data
-  additionalMetadata?: React.ReactNode | string;
+  additionalMetadata?: ReactNode | string;
 }
 
 export function isPrimaryAction(
-  x: PrimaryAction | React.ReactNode,
+  x: PrimaryAction | ReactNode,
 ): x is PrimaryAction {
   return !isValidElement(x) && x !== undefined;
 }
@@ -212,7 +213,7 @@ export function Header({
 function PrimaryActionMarkup({
   primaryAction,
 }: {
-  primaryAction: PrimaryAction | React.ReactNode;
+  primaryAction: PrimaryAction | ReactNode;
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
   let content = primaryAction;

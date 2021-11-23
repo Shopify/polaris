@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import type {ReactNode} from 'react';
+import {useEffect, useState, useCallback} from 'react';
 import debounce from 'lodash/debounce';
 
 import {MediaQueryContext} from '../../utilities/media-query';
@@ -6,7 +7,7 @@ import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {EventListener} from '../EventListener';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const MediaQueryProvider = function MediaQueryProvider({

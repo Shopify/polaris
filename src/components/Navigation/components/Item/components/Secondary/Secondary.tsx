@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {useUniqueId} from '../../../../../../utilities/unique-id';
 import {Collapsible} from '../../../../../Collapsible';
@@ -6,7 +6,7 @@ import styles from '../../../../Navigation.scss';
 
 interface SecondaryProps {
   expanded: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   id?: string;
 }
 

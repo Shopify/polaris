@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -6,7 +6,7 @@ import styles from './Label.scss';
 
 export interface LabelProps {
   /** Label content */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** A unique identifier for the label */
   id: string;
   /** Visually hide the label */

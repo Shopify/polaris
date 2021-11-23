@@ -1,4 +1,5 @@
-import React, {createRef, memo} from 'react';
+import type {RefObject} from 'react';
+import {createRef, memo} from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
@@ -18,7 +19,7 @@ export interface ToastManagerProps {
 export const ToastManager = memo(function ToastManager({
   toastMessages,
 }: ToastManagerProps) {
-  const toastNodes: React.RefObject<HTMLDivElement>[] = [];
+  const toastNodes: RefObject<HTMLDivElement>[] = [];
 
   const updateToasts = useDeepCallback(() => {
     let targetInPos = 0;

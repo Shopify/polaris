@@ -1,4 +1,5 @@
-import React, {
+import type {ReactNode, RefObject} from 'react';
+import {
   ReactElement,
   useCallback,
   useEffect,
@@ -65,13 +66,13 @@ function defaultIdForItem<ItemType extends {id?: any}>(
 export interface ResourceListProps<ItemType = any> {
   /** Item data; each item is passed to renderItem */
   items: ItemType[];
-  filterControl?: React.ReactNode;
+  filterControl?: ReactNode;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
-  emptyState?: React.ReactNode;
+  emptyState?: ReactNode;
   /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
    * @default EmptySearchResult
    */
-  emptySearchState?: React.ReactNode;
+  emptySearchState?: ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -100,13 +101,13 @@ export interface ResourceListProps<ItemType = any> {
   /** Collection of sort options to choose from */
   sortOptions?: SelectOption[];
   /** ReactNode to display instead of the sort control */
-  alternateTool?: React.ReactNode;
+  alternateTool?: ReactNode;
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item, must return a ResourceItem component */
-  renderItem(item: ItemType, id: string, index: number): React.ReactNode;
+  renderItem(item: ItemType, id: string, index: number): ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: ItemType, index: number): string;
   /** Function to resolve the ids of items */
@@ -163,7 +164,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   }));
-  const listRef: React.RefObject<HTMLUListElement> = useRef(null);
+  const listRef: RefObject<HTMLUListElement> = useRef(null);
 
   const handleSelectMode = (selectMode: boolean) => {
     setSelectMode(selectMode);

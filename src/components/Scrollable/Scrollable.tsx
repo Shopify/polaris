@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import type {ReactNode, HTMLProps} from 'react';
+import {Component} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../utilities/css';
@@ -19,9 +20,9 @@ const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
 const PREFERS_REDUCED_MOTION = prefersReducedMotion();
 const LOW_RES_BUFFER = 2;
 
-export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
+export interface ScrollableProps extends HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Scroll content vertically */
   vertical?: boolean;
   /** Scroll content horizontally */

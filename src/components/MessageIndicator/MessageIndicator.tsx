@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import styles from './MessageIndicator.scss';
 
 export interface MessageIndicatorProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   active?: boolean;
 }
 

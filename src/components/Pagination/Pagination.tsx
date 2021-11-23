@@ -1,5 +1,6 @@
+import type {ReactNode, RefObject} from 'react';
+import {createRef} from 'react';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
-import React, {createRef} from 'react';
 
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
@@ -41,7 +42,7 @@ export interface PaginationProps {
   /** Callback when previous button is clicked */
   onPrevious?(): void;
   /** Text to provide more context in between the arrow buttons */
-  label?: React.ReactNode;
+  label?: ReactNode;
 }
 
 export function Pagination({
@@ -61,7 +62,7 @@ export function Pagination({
 }: PaginationProps) {
   const i18n = useI18n();
 
-  const node: React.RefObject<HTMLElement> = createRef();
+  const node: RefObject<HTMLElement> = createRef();
 
   const navLabel =
     accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
@@ -171,7 +172,7 @@ export function Pagination({
   );
 }
 
-function clickPaginationLink(id: string, node: React.RefObject<HTMLElement>) {
+function clickPaginationLink(id: string, node: RefObject<HTMLElement>) {
   return () => {
     if (node.current == null) {
       return;

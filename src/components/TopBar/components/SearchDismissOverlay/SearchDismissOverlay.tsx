@@ -1,4 +1,5 @@
-import React, {useCallback, useRef} from 'react';
+import type {MouseEvent} from 'react';
+import {useCallback, useRef} from 'react';
 
 import {ScrollLock} from '../../../ScrollLock';
 import {classNames} from '../../../../utilities/css';
@@ -16,7 +17,7 @@ export function SearchDismissOverlay({onDismiss, visible}: Props) {
   const node = useRef<HTMLDivElement>(null);
 
   const handleDismiss = useCallback(
-    ({target}: React.MouseEvent<HTMLDivElement>) => {
+    ({target}: MouseEvent<HTMLDivElement>) => {
       if (target === node.current && onDismiss != null) {
         onDismiss();
       }

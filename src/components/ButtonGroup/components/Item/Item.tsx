@@ -1,11 +1,11 @@
-import React from 'react';
+import type {ReactElement} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
 import styles from '../../ButtonGroup.scss';
 
 export interface ItemProps {
-  button: React.ReactElement;
+  button: ReactElement;
 }
 
 export function Item({button}: ItemProps) {

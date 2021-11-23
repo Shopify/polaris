@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {VisuallyHidden} from '../../../VisuallyHidden';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   hidden: boolean;
 }
 

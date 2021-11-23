@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import type {ReactNode} from 'react';
+import {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
@@ -39,7 +40,7 @@ export interface PositionedOverlayProps {
   preventInteraction?: boolean;
   classNames?: string;
   zIndexOverride?: number;
-  render(overlayDetails: OverlayDetails): React.ReactNode;
+  render(overlayDetails: OverlayDetails): ReactNode;
   onScrollOut?(): void;
 }
 

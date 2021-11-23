@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Day} from '../Day';
 
-function MockTable({children}: {children: React.ReactNode}) {
+function MockTable({children}: {children: ReactNode}) {
   return (
     <table>
       <tbody>

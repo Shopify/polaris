@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -9,7 +9,7 @@ import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
 
 export interface CellProps {
-  content?: React.ReactNode;
+  content?: ReactNode;
   contentType?: string;
   firstColumn?: boolean;
   truncate?: boolean;

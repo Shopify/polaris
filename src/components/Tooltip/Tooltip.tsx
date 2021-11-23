@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
+import type {ReactNode, MouseEvent} from 'react';
+import {useEffect, useState, useRef, useCallback} from 'react';
 
 import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
@@ -10,9 +11,9 @@ import {TooltipOverlay, TooltipOverlayProps} from './components';
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** The content to display within the tooltip */
-  content: React.ReactNode;
+  content: ReactNode;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Dismiss tooltip when not interacting with its children */
@@ -64,7 +65,7 @@ export function Tooltip({
   }, [id, children]);
 
   const handleKeyUp = useCallback(
-    (event: React.KeyboardEvent) => {
+    (event: KeyboardEvent) => {
       if (event.keyCode !== Key.Escape) return;
       handleBlur();
     },
@@ -135,6 +136,6 @@ export function Tooltip({
 
 function noop() {}
 
-function stopPropagation(event: React.MouseEvent<any>) {
+function stopPropagation(event: MouseEvent<any>) {
   event.stopPropagation();
 }

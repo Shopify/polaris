@@ -1,4 +1,5 @@
-import React, {useRef, useEffect, useState} from 'react';
+import type {ReactNode} from 'react';
+import {useRef, useEffect, useState} from 'react';
 
 import {Key} from '../../types';
 import {EventListener} from '../EventListener';
@@ -16,7 +17,7 @@ import {portal} from '../shared';
 
 export interface TrapFocusProps {
   trapping?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function TrapFocus({trapping = true, children}: TrapFocusProps) {

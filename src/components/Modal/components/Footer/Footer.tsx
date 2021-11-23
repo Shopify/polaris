@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
@@ -13,7 +13,7 @@ export interface FooterProps {
   /** Collection of secondary actions */
   secondaryActions?: ComplexAction[];
   /** The content to display inside modal */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Footer({

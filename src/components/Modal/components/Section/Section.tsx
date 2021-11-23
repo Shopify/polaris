@@ -1,11 +1,11 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 
 import styles from './Section.scss';
 
 export interface SectionProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   flush?: boolean;
   subdued?: boolean;
 }

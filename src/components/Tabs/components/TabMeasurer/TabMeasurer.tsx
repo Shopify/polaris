@@ -1,4 +1,5 @@
-import React, {memo, useEffect, useRef, useCallback} from 'react';
+import type {ReactElement} from 'react';
+import {memo, useEffect, useRef, useCallback} from 'react';
 
 import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
@@ -16,7 +17,7 @@ interface TabMeasurements {
 export interface TabMeasurerProps {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
-  activator: React.ReactElement;
+  activator: ReactElement;
   selected: number;
   tabs: TabDescriptor[];
   handleMeasurement(measurements: TabMeasurements): void;

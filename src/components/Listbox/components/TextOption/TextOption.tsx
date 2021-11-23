@@ -1,4 +1,5 @@
-import React, {memo, useContext} from 'react';
+import type {ReactNode} from 'react';
+import {memo, useContext} from 'react';
 
 import {Checkbox} from '../../../Checkbox';
 import {classNames} from '../../../../utilities/css';
@@ -8,7 +9,7 @@ import {MappedActionContext} from '../../../../utilities/autocomplete';
 import styles from './TextOption.scss';
 
 export interface TextOptionProps {
-  children: React.ReactNode;
+  children: ReactNode;
   // Whether the option is selected
   selected?: boolean;
   // Whether the option is disabled

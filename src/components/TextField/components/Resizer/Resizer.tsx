@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useCallback, useLayoutEffect} from 'react';
+import {useRef, useEffect, useCallback, useLayoutEffect} from 'react';
 
 import {EventListener} from '../../../EventListener';
 import styles from '../../TextField.scss';

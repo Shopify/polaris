@@ -1,4 +1,5 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import type {ReactNode, TransitionEvent} from 'react';
+import {useState, useRef, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -21,7 +22,7 @@ export interface CollapsibleProps {
   /** Assign transition properties to the collapsible */
   transition?: Transition;
   /** The content to display inside the collapsible. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 type AnimationState = 'idle' | 'measuring' | 'animating';
@@ -60,7 +61,7 @@ export function Collapsible({
   };
 
   const handleCompleteAnimation = useCallback(
-    ({target}: React.TransitionEvent<HTMLDivElement>) => {
+    ({target}: TransitionEvent<HTMLDivElement>) => {
       if (target === collapsibleContainer.current) {
         setAnimationState('idle');
         setIsOpen(open);

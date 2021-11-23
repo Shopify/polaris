@@ -1,4 +1,5 @@
-import React, {Component, createRef} from 'react';
+import type {ReactNode} from 'react';
+import {Component, createRef} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -51,7 +52,7 @@ export interface FilterInterface {
   /** The label for the filter */
   label: string;
   /** The markup for the given filter */
-  filter: React.ReactNode;
+  filter: ReactNode;
   /** Whether or not the filter should have a shortcut popover displayed */
   shortcut?: boolean;
   /** Whether or not the filter is disabled */
@@ -85,11 +86,11 @@ export interface FiltersProps {
   /** Callback when the query field is focused */
   onQueryFocus?(): void;
   /** The content to display inline with the controls */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Disable all filters */
   disabled?: boolean;
   /** Additional hint text to display below the filters */
-  helpText?: string | React.ReactNode;
+  helpText?: string | ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
   /** Hide the query field */

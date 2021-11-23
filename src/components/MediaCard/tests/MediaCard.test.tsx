@@ -1,4 +1,3 @@
-import React from 'react';
 import {Heading, Popover, Button, ActionList, Badge} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

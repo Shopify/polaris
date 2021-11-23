@@ -1,4 +1,3 @@
-import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

@@ -1,4 +1,5 @@
-import React, {isValidElement} from 'react';
+import type {ReactNode} from 'react';
+import {isValidElement} from 'react';
 
 import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
@@ -8,9 +9,9 @@ import {Heading} from '../../../Heading';
 import styles from '../../Card.scss';
 
 export interface CardHeaderProps {
-  title?: React.ReactNode;
+  title?: ReactNode;
   actions?: DisableableAction[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Header({children, title, actions}: CardHeaderProps) {

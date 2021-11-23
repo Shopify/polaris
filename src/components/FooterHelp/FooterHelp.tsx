@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {InfoMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -8,7 +8,7 @@ import styles from './FooterHelp.scss';
 
 export interface FooterHelpProps {
   /** The content to display inside the layout. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function FooterHelp({children}: FooterHelpProps) {

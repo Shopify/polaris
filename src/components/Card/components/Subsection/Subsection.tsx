@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import styles from '../../Card.scss';
 
 export interface CardSubsectionProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Subsection({children}: CardSubsectionProps) {

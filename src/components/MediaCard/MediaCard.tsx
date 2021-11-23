@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {useToggle} from '../../utilities/use-toggle';
@@ -19,9 +19,9 @@ type Size = 'small' | 'medium';
 
 interface MediaCardProps {
   /** The visual media to display in the card */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Heading content */
-  title: React.ReactNode;
+  title: ReactNode;
   /** Body content */
   description: string;
   /** Main call to action, rendered as a basic button */

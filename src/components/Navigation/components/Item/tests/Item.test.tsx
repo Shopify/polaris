@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ContextType, ReactElement} from 'react';
 import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
@@ -712,8 +712,8 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 }
 
 function mountWithNavigationProvider(
-  node: React.ReactElement,
-  context: React.ContextType<typeof NavigationContext> = {location: ''},
+  node: ReactElement,
+  context: ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithApp(
     <NavigationContext.Provider value={context}>

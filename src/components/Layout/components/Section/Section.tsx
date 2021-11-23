@@ -1,10 +1,10 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import styles from '../../Layout.scss';
 
 export interface SectionProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   secondary?: boolean;
   fullWidth?: boolean;
   oneHalf?: boolean;

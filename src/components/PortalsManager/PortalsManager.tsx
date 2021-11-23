@@ -1,4 +1,5 @@
-import React, {useMemo, useState} from 'react';
+import type {ReactNode} from 'react';
+import {useMemo, useState} from 'react';
 
 import {
   PortalsManagerContext,
@@ -8,7 +9,7 @@ import {
 import {PortalsContainer} from './components';
 
 export interface PortalsManagerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   container?: PortalsContainerElement;
 }
 

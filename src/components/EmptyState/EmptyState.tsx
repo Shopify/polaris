@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import type {ReactNode} from 'react';
+import {useContext} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -26,13 +27,13 @@ export interface EmptyStateProps {
   /** Whether or not the content should span the full width of its container  */
   fullWidth?: boolean;
   /** Elements to display inside empty state */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Primary action for empty state */
   action?: ComplexAction;
   /** Secondary action for empty state */
   secondaryAction?: ComplexAction;
   /** Secondary elements to display below empty state actions */
-  footerContent?: React.ReactNode;
+  footerContent?: ReactNode;
 }
 
 export function EmptyState({

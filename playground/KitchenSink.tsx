@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 type ReadmeModule = Record<string, any>;
 
@@ -31,7 +31,7 @@ function filterExports([exportName]: [string, any]) {
   return exportName !== 'default' && !excludedStoryNames.test(exportName);
 }
 
-function StoryWithWrapper({children}: {children: React.ReactNode}) {
+function StoryWithWrapper({children}: {children: ReactNode}) {
   return (
     <>
       {children}

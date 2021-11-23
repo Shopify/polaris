@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';

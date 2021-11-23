@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import styles from '../../Tabs.scss';
@@ -7,7 +7,7 @@ export interface PanelProps {
   hidden?: boolean;
   id: string;
   tabID: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Panel({hidden, id, tabID, children}: PanelProps) {

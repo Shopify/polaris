@@ -1,4 +1,5 @@
-import React, {useState, useCallback, useMemo, Children} from 'react';
+import type {ReactElement} from 'react';
+import {useState, useCallback, useMemo, Children} from 'react';
 
 import {Popover} from '../Popover';
 import type {PopoverProps} from '../Popover';
@@ -17,8 +18,8 @@ import styles from './Combobox.scss';
 import {TextField} from './components';
 
 export interface ComboboxProps {
-  children?: React.ReactElement<ListboxProps> | null;
-  activator: React.ReactElement<TextFieldProps>;
+  children?: ReactElement<ListboxProps> | null;
+  activator: ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
   onScrolledToBottom?(): void;
   preferredPosition?: PopoverProps['preferredPosition'];

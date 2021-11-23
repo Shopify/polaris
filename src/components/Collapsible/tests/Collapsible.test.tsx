@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import {useState, useCallback} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Tokens} from '../../../utilities/theme';

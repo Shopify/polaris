@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {BulkActionButton} from '../BulkActionButton';

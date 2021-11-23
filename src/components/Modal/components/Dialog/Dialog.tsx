@@ -1,4 +1,5 @@
-import React, {useRef, useEffect} from 'react';
+import type {ReactNode} from 'react';
+import {useRef, useEffect} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 import {Transition, CSSTransition} from 'react-transition-group';
 
@@ -13,7 +14,7 @@ import styles from './Dialog.scss';
 export interface DialogProps {
   labelledBy?: string;
   instant?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   limitHeight?: boolean;
   large?: boolean;
   small?: boolean;

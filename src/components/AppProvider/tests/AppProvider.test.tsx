@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import type {FunctionComponent} from 'react';
+import {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -17,7 +18,7 @@ describe('<AppProvider />', () => {
   });
 
   it('updates context when props change', () => {
-    const Child: React.FunctionComponent = () => {
+    const Child: FunctionComponent = () => {
       return useContext(LinkContext) ? <div id="child" /> : null;
     };
     const LinkComponent = () => <div />;

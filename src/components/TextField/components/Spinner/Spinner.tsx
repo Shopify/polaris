@@ -1,4 +1,4 @@
-import React from 'react';
+import type {MouseEvent} from 'react';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
@@ -24,7 +24,7 @@ export function Spinner({
   }
 
   function handleMouseDown(onChange: HandleStepFn) {
-    return (event: React.MouseEvent) => {
+    return (event: MouseEvent) => {
       if (event.button !== 0) return;
       onMouseDown(onChange);
     };

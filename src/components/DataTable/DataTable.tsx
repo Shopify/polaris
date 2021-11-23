@@ -1,4 +1,5 @@
-import React, {PureComponent, createRef} from 'react';
+import type {ReactNode} from 'react';
+import {PureComponent, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -19,7 +20,7 @@ export type TableRow =
   | DataTableProps['rows']
   | DataTableProps['totals'];
 
-export type TableData = string | number | React.ReactNode;
+export type TableData = string | number | ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
@@ -27,7 +28,7 @@ export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
   /** List of column headings. */
-  headings: React.ReactNode[];
+  headings: ReactNode[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Custom totals row heading */

@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import type {KeyboardEvent, ChangeEvent} from 'react';
+import {useCallback, useEffect, useState, useRef} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -48,7 +49,7 @@ export function SearchField({
   const searchId = useUniqueId('SearchField');
 
   const handleChange = useCallback(
-    ({currentTarget}: React.ChangeEvent<HTMLInputElement>) => {
+    ({currentTarget}: ChangeEvent<HTMLInputElement>) => {
       onChange(currentTarget.value);
     },
     [onChange],
@@ -141,7 +142,7 @@ export function SearchField({
   );
 }
 
-function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
+function preventDefault(event: KeyboardEvent<HTMLInputElement>) {
   if (event.key === 'Enter') {
     event.preventDefault();
   }

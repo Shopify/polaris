@@ -1,4 +1,5 @@
-import React, {
+import type {FocusEvent} from 'react';
+import {
   useState,
   useRef,
   useEffect,
@@ -250,7 +251,7 @@ export function Listbox({
     enableKeyboardEvents();
   }
 
-  function handleBlur(event: React.FocusEvent) {
+  function handleBlur(event: FocusEvent) {
     event.stopPropagation();
     if (keyboardEventsEnabled) {
       handleChangeActiveOption();

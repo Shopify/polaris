@@ -1,4 +1,12 @@
-import React, {Component, createRef, useContext} from 'react';
+import type {
+  ReactNode,
+  ReactElement,
+  ContextType,
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+} from 'react';
+import {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'lodash/isEqual';
 
@@ -36,7 +44,7 @@ interface BaseProps {
   /** Unique identifier for the item */
   id: string;
   /** Content for the media area at the left of the item, usually an Avatar or Thumbnail */
-  media?: React.ReactElement<AvatarProps | ThumbnailProps>;
+  media?: ReactElement<AvatarProps | ThumbnailProps>;
   /** Makes the shortcut actions always visible */
   persistActions?: boolean;
   /** 1 or 2 shortcut actions; must be available on the page linked to by url */
@@ -50,7 +58,7 @@ interface BaseProps {
   /** Callback when clicked (required if url is omitted) */
   onClick?(id?: string): void;
   /** Content for the details area */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Adjust vertical alignment of elements */
   verticalAlignment?: Alignment;
   /** Prefetched url attribute to bind to the main element being returned */
@@ -70,7 +78,7 @@ interface PropsWithClick extends BaseProps {
 export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 
 interface PropsFromWrapper {
-  context: React.ContextType<typeof ResourceListContext>;
+  context: ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
 }
 
@@ -155,8 +163,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
 
-    let ownedMarkup: React.ReactNode = null;
-    let handleMarkup: React.ReactNode = null;
+    let ownedMarkup: ReactNode = null;
+    let handleMarkup: ReactNode = null;
 
     const mediaMarkup = media ? (
       <div className={styles.Media}>{media}</div>
@@ -212,8 +220,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       focused && !focusedInner && styles.focused,
     );
 
-    let actionsMarkup: React.ReactNode | null = null;
-    let disclosureMarkup: React.ReactNode | null = null;
+    let actionsMarkup: ReactNode | null = null;
+    let disclosureMarkup: ReactNode | null = null;
 
     if (shortcutActions && !loading) {
       if (persistActions) {
@@ -338,7 +346,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     this.node = node;
   };
 
-  private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+  private handleFocus = (event: FocusEvent<HTMLElement>) => {
     if (
       event.target === this.buttonOverlay.current ||
       (this.node &&
@@ -350,7 +358,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     }
   };
 
-  private handleBlur = ({relatedTarget}: React.FocusEvent) => {
+  private handleBlur = ({relatedTarget}: FocusEvent) => {
     if (
       this.node &&
       relatedTarget instanceof Element &&
@@ -366,7 +374,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     this.state.focused && this.setState({focused: false, focusedInner: false});
   };
 
-  private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
+  private handleLargerSelectionArea = (event: MouseEvent<any>) => {
     stopPropagation(event);
     this.handleSelection(!this.state.selected, event.nativeEvent.shiftKey);
   };
@@ -386,7 +394,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     onSelectionChange(value, id, sortOrder, shiftKey);
   };
 
-  private handleClick = (event: React.MouseEvent<any>) => {
+  private handleClick = (event: MouseEvent<any>) => {
     stopPropagation(event);
     const {
       id,
@@ -421,7 +429,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   // This fires onClick when there is a URL on the item
-  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+  private handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
     const {
       onClick = noop,
       context: {selectMode},
@@ -446,7 +454,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
 function noop() {}
 
-function stopPropagation(event: React.MouseEvent<any>) {
+function stopPropagation(event: MouseEvent<any>) {
   event.stopPropagation();
 }
 

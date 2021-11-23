@@ -1,4 +1,3 @@
-import React from 'react';
 import {Popover, Button} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

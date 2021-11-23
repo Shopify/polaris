@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import type {ReactNode} from 'react';
+import {Component} from 'react';
 import 'focus-visible/dist/focus-visible';
 
 import type {ThemeConfig} from '../../utilities/theme';
@@ -40,7 +41,7 @@ export interface AppProviderProps {
   /** For toggling features */
   features?: FeaturesConfig;
   /** Inner content of the application */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export class AppProvider extends Component<AppProviderProps, State> {

@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode, FunctionComponent} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
@@ -14,10 +14,10 @@ export interface ListProps {
    */
   type?: Type;
   /** List item elements */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
-export const List: React.FunctionComponent<ListProps> & {
+export const List: FunctionComponent<ListProps> & {
   Item: typeof Item;
 } = function List({children, type = 'bullet'}: ListProps) {
   const className = classNames(

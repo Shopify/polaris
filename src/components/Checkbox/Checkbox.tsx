@@ -1,4 +1,5 @@
-import React, {
+import type {ReactNode, KeyboardEvent, MouseEvent} from 'react';
+import {
   forwardRef,
   useRef,
   useImperativeHandle,
@@ -24,13 +25,13 @@ export interface CheckboxProps {
   /** Indicates the ID of the element that describes the checkbox*/
   ariaDescribedBy?: string;
   /** Label for the checkbox */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
   checked?: boolean | 'indeterminate';
   /** Additional text to aide in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Disable input */
   disabled?: boolean;
   /** ID for form input */
@@ -100,7 +101,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       inputNode.current.focus();
     };
 
-    const handleKeyUp = (event: React.KeyboardEvent) => {
+    const handleKeyUp = (event: KeyboardEvent) => {
       const {keyCode} = event;
       !keyFocused && setKeyFocused(true);
       if (keyCode === Key.Space) {
@@ -189,6 +190,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
 
 function noop() {}
 
-function stopPropagation<E>(event: React.MouseEvent<E>) {
+function stopPropagation<E>(event: MouseEvent<E>) {
   event.stopPropagation();
 }

@@ -1,4 +1,5 @@
-import React, {useCallback} from 'react';
+import type {ReactNode, FormEvent} from 'react';
+import {useCallback} from 'react';
 
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useI18n} from '../../utilities/i18n';
@@ -20,7 +21,7 @@ export interface FormProps {
   /** Grants the browser the ability to autocomplete input elements */
   autoComplete?: boolean;
   /** The content to display inside the form. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Media type when submitting content to server */
   encType?: Enctype;
   /** Toggles if form submits on Enter keypress. Defaults to true. */
@@ -36,7 +37,7 @@ export interface FormProps {
   /** Where to display response after form submittal */
   target?: Target;
   /** Callback when form is submitted */
-  onSubmit(event: React.FormEvent<HTMLFormElement>): void;
+  onSubmit(event: FormEvent<HTMLFormElement>): void;
 }
 
 export function Form({
@@ -56,7 +57,7 @@ export function Form({
   const i18n = useI18n();
 
   const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    (event: FormEvent<HTMLFormElement>) => {
       if (!preventDefault) {
         return;
       }

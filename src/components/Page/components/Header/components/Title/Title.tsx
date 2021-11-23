@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode, ReactElement, SFC, SVGProps} from 'react';
 
 import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
@@ -12,11 +12,11 @@ export interface TitleProps {
   /** Page subtitle, in regular type*/
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
-  titleMetadata?: React.ReactNode;
+  titleMetadata?: ReactNode;
   /** thumbnail that precedes the title */
   thumbnail?:
-    | React.ReactElement<AvatarProps | ThumbnailProps>
-    | React.SFC<React.SVGProps<SVGSVGElement>>;
+    | ReactElement<AvatarProps | ThumbnailProps>
+    | SFC<SVGProps<SVGSVGElement>>;
   /** Removes spacing between title and subtitle */
   compactTitle?: boolean;
 }

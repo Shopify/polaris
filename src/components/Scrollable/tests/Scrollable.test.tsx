@@ -1,4 +1,4 @@
-import React from 'react';
+import type {FunctionComponent} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../Scrollable';
@@ -29,7 +29,7 @@ describe('<Scrollable />', () => {
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.FunctionComponent = (_) => (
+    const Child: FunctionComponent = (_) => (
       <ScrollableContext.Consumer>
         {(scrollToPosition) => {
           return scrollToPosition ? <div /> : null;

@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import type {HeadingTagName} from '../../types';
@@ -19,7 +19,7 @@ export interface DisplayTextProps {
    */
   size?: Size;
   /** Content to display */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function DisplayText({

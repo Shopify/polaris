@@ -1,10 +1,5 @@
-import React, {
-  createElement,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from 'react';
+import type {ReactNode, ChangeEvent, FocusEvent, MouseEvent} from 'react';
+import {createElement, useState, useEffect, useRef, useCallback} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
@@ -49,17 +44,17 @@ type InputMode =
 
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** Text to display after value */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /** Hint text to display */
   placeholder?: string;
   /** Initial value for the input */
   value?: string;
   /** Additional hint text to display */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Label for the input */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -79,9 +74,9 @@ interface NonMutuallyExclusiveProps {
   /** Error to display beneath the label */
   error?: Error | boolean;
   /** An element connected to the right of the input */
-  connectedRight?: React.ReactNode;
+  connectedRight?: ReactNode;
   /** An element connected to the left of the input */
-  connectedLeft?: React.ReactNode;
+  connectedLeft?: ReactNode;
   /** Determine type of input */
   type?: Type;
   /** Name of the input */
@@ -482,7 +477,7 @@ export function TextField({
     onClearButtonClick && onClearButtonClick(id);
   }
 
-  function handleKeyPress(event: React.KeyboardEvent) {
+  function handleKeyPress(event: KeyboardEvent) {
     const {key, which} = event;
     const numbersSpec = /[\d.eE+-]$/;
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
@@ -499,11 +494,11 @@ export function TextField({
     );
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     onChange && onChange(event.currentTarget.value, id);
   }
 
-  function handleFocus({target}: React.FocusEvent) {
+  function handleFocus({target}: FocusEvent) {
     if (containsAffix(target)) {
       return;
     }
@@ -514,7 +509,7 @@ export function TextField({
     setFocus(false);
   }
 
-  function handleClick({target}: React.MouseEvent) {
+  function handleClick({target}: MouseEvent) {
     if (containsAffix(target) || focus) {
       return;
     }

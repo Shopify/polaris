@@ -1,4 +1,3 @@
-import React from 'react';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

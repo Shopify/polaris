@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
@@ -7,7 +7,7 @@ import {Card} from '../Card';
 
 export interface SettingToggleProps {
   /** Inner content of the card */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Card header actions */
   action?: ComplexAction;
   /** Sets toggle state to activated or deactivated */

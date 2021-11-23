@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactElement, ContextType} from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -10,7 +10,7 @@ import {Section} from '../Section';
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 describe('<Navigation.Section />', () => {
-  let context: React.ContextType<typeof NavigationContext>;
+  let context: ContextType<typeof NavigationContext>;
   let cancelAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
@@ -273,8 +273,8 @@ describe('<Navigation.Section />', () => {
 });
 
 function mountWithNavigationProvider(
-  node: React.ReactElement,
-  context: React.ContextType<typeof NavigationContext> = {location: ''},
+  node: ReactElement,
+  context: ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithApp(
     <NavigationContext.Provider value={context}>

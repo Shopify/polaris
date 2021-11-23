@@ -1,4 +1,5 @@
-import React, {useRef, useCallback, memo, useContext} from 'react';
+import type {ReactNode, MouseEvent} from 'react';
+import {useRef, useCallback, memo, useContext} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useUniqueId} from '../../../../utilities/unique-id';
@@ -16,7 +17,7 @@ export interface OptionProps {
   // Visually hidden text for screen readers
   accessibilityLabel?: string;
   // Children. When a string, children are rendered in a styled TextOption
-  children?: string | React.ReactNode;
+  children?: string | ReactNode;
   // Option is selected
   selected?: boolean;
   // Option is disabled
@@ -43,7 +44,7 @@ export const Option = memo(function Option({
   const isWithinSection = Boolean(sectionId);
 
   const handleOptionClick = useCallback(
-    (evt: React.MouseEvent) => {
+    (evt: MouseEvent) => {
       evt.preventDefault();
       onAction && onAction();
       if (listItemRef.current && !isAction) {
@@ -59,7 +60,7 @@ export const Option = memo(function Option({
   );
 
   // prevents lost of focus on Textfield
-  const handleMouseDown = (evt: React.MouseEvent) => {
+  const handleMouseDown = (evt: MouseEvent) => {
     evt.preventDefault();
   };
 

@@ -1,4 +1,5 @@
-import React, {useEffect, useRef} from 'react';
+import type {SFC} from 'react';
+import {useEffect, useRef} from 'react';
 import {
   CirclePlusMinor,
   CircleTickMajor,
@@ -297,7 +298,7 @@ describe('<Banner />', () => {
 
   describe('context', () => {
     it('passes the within banner context', () => {
-      const Child: React.SFC = (_props) => {
+      const Child: SFC = (_props) => {
         return (
           <BannerContext.Consumer>
             {(BannerContext) => {

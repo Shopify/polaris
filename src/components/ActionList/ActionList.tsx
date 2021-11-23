@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {classNames} from '../../utilities/css';
 

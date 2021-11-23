@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {Action, Error} from '../../types';
@@ -14,15 +14,15 @@ export interface LabelledProps {
   /** A unique identifier for the label */
   id: LabelProps['id'];
   /** Text for the label */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Error to display beneath the label */
   error?: Error | boolean;
   /** An action */
   action?: Action;
   /** Additional hint text to display */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Content to display inside the connected */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Visual required indicator for the label */

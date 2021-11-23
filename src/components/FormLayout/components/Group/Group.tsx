@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import type {ReactNode} from 'react';
+import {Children} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
@@ -7,10 +8,10 @@ import styles from '../../FormLayout.scss';
 import {Item} from '../Item';
 
 export interface GroupProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   condensed?: boolean;
   title?: string;
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
 }
 
 export function Group({children, condensed, title, helpText}: GroupProps) {

@@ -1,4 +1,5 @@
-import React, {useRef, useState, useCallback} from 'react';
+import type {FocusEvent} from 'react';
+import {useRef, useState, useCallback} from 'react';
 
 import {Button} from '../../../../../Button';
 import {Popover} from '../../../../../Popover';
@@ -46,7 +47,7 @@ export function FilterCreator({
   );
 
   const handleButtonFocus = useCallback(
-    (...args: React.FocusEvent<HTMLButtonElement>[]) => {
+    (...args: FocusEvent<HTMLButtonElement>[]) => {
       const event = args[0];
       if (!node.current && event) {
         node.current = event.target;

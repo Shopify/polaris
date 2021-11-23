@@ -1,9 +1,10 @@
-import React, {useMemo, useState, useCallback, ContextType} from 'react';
+import type {ReactNode} from 'react';
+import {useMemo, useState, useCallback, ContextType} from 'react';
 
 import {FocusManagerContext} from '../../utilities/focus-manager';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 type Context = NonNullable<ContextType<typeof FocusManagerContext>>;

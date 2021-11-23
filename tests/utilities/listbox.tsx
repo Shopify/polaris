@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import type {ContextType, ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
@@ -12,20 +12,20 @@ import translations from '../../locales/en.json';
 
 import {mountWithApp} from './react-testing';
 
-const defaultContext: React.ContextType<typeof ListboxContext> = {
+const defaultContext: ContextType<typeof ListboxContext> = {
   onOptionSelect: noop,
   setLoading: noop,
 };
 
 export function mountWithListboxProvider(
-  element: React.ReactElement,
-  context: React.ContextType<typeof ListboxContext> = defaultContext,
+  element: ReactElement,
+  context: ContextType<typeof ListboxContext> = defaultContext,
 ) {
   return createMount({
     context: () => {
       return {context};
     },
-    render(element: React.ReactElement) {
+    render(element: ReactElement) {
       return (
         <PolarisTestProvider
           i18n={translations}

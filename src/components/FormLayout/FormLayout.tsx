@@ -1,4 +1,5 @@
-import React, {memo, Children, NamedExoticComponent} from 'react';
+import type {ReactNode, ReactElement} from 'react';
+import {memo, Children, NamedExoticComponent} from 'react';
 
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
@@ -7,7 +8,7 @@ import styles from './FormLayout.scss';
 
 export interface FormLayoutProps {
   /** The content to display inside the layout. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const FormLayout = memo(function FormLayout({
@@ -24,7 +25,7 @@ export const FormLayout = memo(function FormLayout({
 
 FormLayout.Group = Group;
 
-function wrapChildren(child: React.ReactElement, index: number) {
+function wrapChildren(child: ReactElement, index: number) {
   if (isElementOfType(child, Group)) {
     return child;
   }

@@ -1,4 +1,5 @@
-import React, {useCallback} from 'react';
+import type {ReactNode, ReactElement} from 'react';
+import {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
@@ -12,11 +13,11 @@ import styles from './Option.scss';
 
 export interface OptionProps {
   id: string;
-  label: React.ReactNode;
+  label: ReactNode;
   value: string;
   section: number;
   index: number;
-  media?: React.ReactElement<IconProps | AvatarProps | ThumbnailProps>;
+  media?: ReactElement<IconProps | AvatarProps | ThumbnailProps>;
   disabled?: boolean;
   active?: boolean;
   select?: boolean;

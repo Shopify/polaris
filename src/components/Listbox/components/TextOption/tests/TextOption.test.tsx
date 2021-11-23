@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount, mountWithApp} from 'tests/utilities';
 
 import {TextOption} from '../TextOption';

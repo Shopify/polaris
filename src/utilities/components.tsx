@@ -1,13 +1,19 @@
-import React, {Children, isValidElement} from 'react';
+import type {
+  ReactNode,
+  ComponentType,
+  ReactElement,
+  StatelessComponent,
+} from 'react';
+import {Children, isValidElement} from 'react';
 
 // Wraps `element` in `Component`, if it is not already an instance of
 // `Component`. If `props` is passed, those will be added as props on the
 // wrapped component. If `element` is null, the component is not wrapped.
 export function wrapWithComponent<P>(
-  element: React.ReactNode | null | undefined,
-  Component: React.ComponentType<P>,
+  element: ReactNode | null | undefined,
+  Component: ComponentType<P>,
   props: P,
-): React.ReactNode {
+): ReactNode {
   if (element == null) {
     return null;
   }
@@ -25,16 +31,14 @@ export function wrapWithComponent<P>(
 const isComponent =
   process.env.NODE_ENV === 'development'
     ? hotReloadComponentCheck
-    : (
-        AComponent: React.ComponentType<any>,
-        AnotherComponent: React.ComponentType<any>,
-      ) => AComponent === AnotherComponent;
+    : (AComponent: ComponentType<any>, AnotherComponent: ComponentType<any>) =>
+        AComponent === AnotherComponent;
 
 // Checks whether `element` is a React element of type `Component` (or one of
 // the passed components, if `Component` is an array of React components).
 export function isElementOfType<P>(
-  element: React.ReactNode | null | undefined,
-  Component: React.ComponentType<P> | React.ComponentType<P>[],
+  element: ReactNode | null | undefined,
+  Component: ComponentType<P> | ComponentType<P>[],
 ): boolean {
   if (
     element == null ||
@@ -58,8 +62,8 @@ export function isElementOfType<P>(
 
 // Returns all children that are valid elements as an array. Can optionally be
 // filtered by passing `predicate`.
-export function elementChildren<T extends React.ReactElement>(
-  children: React.ReactNode,
+export function elementChildren<T extends ReactElement>(
+  children: ReactNode,
   predicate: (element: T) => boolean = () => true,
 ): T[] {
   return Children.toArray(children).filter(
@@ -94,11 +98,11 @@ export function ConditionalRender({
 }
 
 function hotReloadComponentCheck(
-  AComponent: React.ComponentType<any>,
-  AnotherComponent: React.ComponentType<any>,
+  AComponent: ComponentType<any>,
+  AnotherComponent: ComponentType<any>,
 ) {
   const componentName = AComponent.name;
-  const anotherComponentName = (AnotherComponent as React.StatelessComponent<any>)
+  const anotherComponentName = (AnotherComponent as StatelessComponent<any>)
     .displayName;
 
   return (

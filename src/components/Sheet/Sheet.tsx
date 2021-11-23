@@ -1,4 +1,5 @@
-import React, {useCallback, useRef, useEffect} from 'react';
+import type {ReactNode, RefObject, ReactElement} from 'react';
+import {useCallback, useRef, useEffect} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -32,7 +33,7 @@ export interface SheetProps {
   /** Whether or not the sheet is open */
   open: boolean;
   /** The child elements to render in the sheet */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
   onClose(): void;
   /** Callback when the sheet has completed entering */
@@ -42,7 +43,7 @@ export interface SheetProps {
   /** ARIA label for sheet */
   accessibilityLabel: string;
   /** The element or the RefObject that activates the Sheet */
-  activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  activator?: RefObject<HTMLElement> | ReactElement;
 }
 
 /** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
@@ -128,7 +129,7 @@ export function Sheet({
 }
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | React.ReactElement,
-): ref is React.RefObject<HTMLElement> {
+  ref: RefObject<HTMLElement> | ReactElement,
+): ref is RefObject<HTMLElement> {
   return Object.prototype.hasOwnProperty.call(ref, 'current');
 }

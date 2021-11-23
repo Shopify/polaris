@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {BannerContext} from '../../utilities/banner-context';
@@ -15,7 +15,7 @@ export interface LinkProps {
   /** The url to link to */
   url?: string;
   /** The content to display inside the link */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Makes the link open in a new tab */
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */

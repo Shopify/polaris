@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import type {ReactNode, RefObject} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import debounce from 'lodash/debounce';
 
 import {
@@ -10,8 +11,8 @@ import {
 import styles from './ScrollContainer.scss';
 
 export interface ScrollContainerProps {
-  children: React.ReactNode;
-  scrollableContainerRef: React.RefObject<HTMLDivElement>;
+  children: ReactNode;
+  scrollableContainerRef: RefObject<HTMLDivElement>;
   onScroll(canScrollLeft: boolean, canScrollRight: boolean): void;
 }
 

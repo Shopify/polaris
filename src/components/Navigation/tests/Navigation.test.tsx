@@ -1,4 +1,4 @@
-import React from 'react';
+import type {FunctionComponent} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Navigation} from '../Navigation';
@@ -26,7 +26,7 @@ describe('<Navigation />', () => {
 
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.FunctionComponent = (_props) => {
+      const Child: FunctionComponent = (_props) => {
         return (
           <NavigationContext.Consumer>
             {({location}) => {
@@ -48,7 +48,7 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.FunctionComponent = (_props) => {
+      const Child: FunctionComponent = (_props) => {
         return (
           <WithinContentContext.Consumer>
             {(withinContentContainer) => {

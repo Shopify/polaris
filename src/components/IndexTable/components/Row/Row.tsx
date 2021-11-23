@@ -1,4 +1,5 @@
-import React, {useMemo, memo, useRef, useCallback} from 'react';
+import type {ReactNode, KeyboardEvent, MouseEvent} from 'react';
+import {useMemo, memo, useRef, useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {
@@ -14,7 +15,7 @@ import styles from '../../IndexTable.scss';
 type RowStatus = 'success' | 'subdued';
 
 export interface RowProps {
-  children: React.ReactNode;
+  children: ReactNode;
   id: string;
   selected?: boolean;
   position: number;
@@ -41,7 +42,7 @@ export const Row = memo(function Row({
   } = useToggle(false);
 
   const handleInteraction = useCallback(
-    (event: React.MouseEvent | React.KeyboardEvent) => {
+    (event: MouseEvent | KeyboardEvent) => {
       event.stopPropagation();
       if (('key' in event && event.key !== ' ') || !onSelectionChange) return;
       const selectionType = event.nativeEvent.shiftKey
@@ -93,7 +94,7 @@ export const Row = memo(function Row({
   let handleRowClick;
 
   if (selectable || primaryLinkElement.current) {
-    handleRowClick = (event: React.MouseEvent) => {
+    handleRowClick = (event: MouseEvent) => {
       if (!tableRowRef.current || isNavigating.current) {
         return;
       }

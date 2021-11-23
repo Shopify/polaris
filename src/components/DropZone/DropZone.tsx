@@ -1,4 +1,5 @@
-import React, {
+import type {ReactNode, MouseEvent, ChangeEvent, DragEvent} from 'react';
+import {
   createRef,
   useState,
   useRef,
@@ -39,7 +40,7 @@ export type DropZoneFileType = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
-  label?: React.ReactNode;
+  label?: ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -79,7 +80,7 @@ export interface DropZoneProps {
   /** Sets a disabled state */
   disabled?: boolean;
   /** The child elements to render in the dropzone. */
-  children?: string | React.ReactNode;
+  children?: string | ReactNode;
   /** Allows a file to be dropped anywhere on the page */
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
@@ -89,7 +90,7 @@ export interface DropZoneProps {
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
-  onClick?(event: React.MouseEvent<HTMLElement>): void;
+  onClick?(event: MouseEvent<HTMLElement>): void;
   /** Callback triggered on any file drop */
   onDrop?(files: File[], acceptedFiles: File[], rejectedFiles: File[]): void;
   /** Callback triggered when at least one of the files dropped was accepted */
@@ -111,7 +112,7 @@ export interface DropZoneProps {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-export const DropZone: React.FunctionComponent<DropZoneProps> & {
+export const DropZone: FunctionComponent<DropZoneProps> & {
   FileUpload: typeof FileUpload;
 } = function DropZone({
   dropOnPage,
@@ -440,14 +441,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       fileInputNode.click();
   }
 
-  function handleClick(event: React.MouseEvent<HTMLElement>) {
+  function handleClick(event: MouseEvent<HTMLElement>) {
     if (disabled) return;
 
     return onClick ? onClick(event) : open();
   }
 };
 
-function stopEvent(event: DragEvent | React.DragEvent) {
+function stopEvent(event: DragEvent | DragEvent) {
   event.preventDefault();
   event.stopPropagation();
 }
@@ -461,7 +462,7 @@ interface DropZoneInputProps {
   type: DropZoneFileType;
   multiple: boolean;
   openFileDialog?: boolean;
-  onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;
+  onChange(event: DragEvent | ChangeEvent<HTMLInputElement>): void;
   onFocus(): void;
   onBlur(): void;
   onFileDialogClose?(): void;

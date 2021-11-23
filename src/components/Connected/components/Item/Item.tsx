@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -10,7 +10,7 @@ export interface ItemProps {
   /** Position of the item */
   position: ItemPosition;
   /** Item content */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Item({children, position}: ItemProps) {

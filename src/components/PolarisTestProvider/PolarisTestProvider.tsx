@@ -1,4 +1,5 @@
-import React, {Fragment, StrictMode} from 'react';
+import type {ReactElement, ContextType} from 'react';
+import {Fragment, StrictMode} from 'react';
 
 import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
@@ -28,10 +29,8 @@ import {
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
 
-type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
-type MediaQueryContextType = NonNullable<
-  React.ContextType<typeof MediaQueryContext>
->;
+type FrameContextType = NonNullable<ContextType<typeof FrameContext>>;
+type MediaQueryContextType = NonNullable<ContextType<typeof MediaQueryContext>>;
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`
@@ -51,7 +50,7 @@ export interface WithPolarisTestProviderOptions {
 
 export interface PolarisTestProviderProps
   extends WithPolarisTestProviderOptions {
-  children: React.ReactElement;
+  children: ReactElement;
   strict?: boolean;
 }
 

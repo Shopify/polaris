@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
@@ -10,7 +10,7 @@ export interface SearchProps {
   /** Toggles whether or not the search is visible */
   visible?: boolean;
   /** The content to display inside the search */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Whether or not the search results overlay has a visible backdrop */
   overlayVisible?: boolean;
   /** Callback when the search is dismissed */

@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useUniqueId} from '../../../../utilities/unique-id';

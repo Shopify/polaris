@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import styles from '../../Popover.scss';
 
 export interface SectionProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Section({children}: SectionProps) {

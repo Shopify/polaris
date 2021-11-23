@@ -1,4 +1,5 @@
-import React, {useEffect, useRef} from 'react';
+import type {ReactNode} from 'react';
+import {useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
@@ -14,7 +15,7 @@ export interface TabProps {
   siblingTabHasFocus?: boolean;
   selected?: boolean;
   panelID?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   url?: string;
   measuring?: boolean;
   accessibilityLabel?: string;

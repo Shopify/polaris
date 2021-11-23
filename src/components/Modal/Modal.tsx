@@ -1,4 +1,11 @@
-import React, {useState, useCallback, useRef} from 'react';
+import type {
+  ReactNode,
+  ReactElement,
+  FunctionComponent,
+  RefObject,
+  SyntheticEvent,
+} from 'react';
+import {useState, useCallback, useRef} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -25,16 +32,16 @@ export interface ModalProps extends FooterProps {
   /** The name of the modal content iframe */
   iFrameName?: string;
   /** The content for the title of the modal */
-  title: string | React.ReactNode;
+  title: string | ReactNode;
   /**
    * Hide the title in the modal
    * @default false
    */
   titleHidden?: boolean;
   /** The content to display inside modal */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Inner content of the footer */
-  footer?: React.ReactNode;
+  footer?: ReactNode;
   /** Disable animations and open modal instantly */
   instant?: boolean;
   /** Automatically adds sections to modal */
@@ -50,18 +57,18 @@ export interface ModalProps extends FooterProps {
   /** Callback when the modal is closed */
   onClose(): void;
   /** Callback when iframe has loaded */
-  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
+  onIFrameLoad?(evt: SyntheticEvent<HTMLIFrameElement>): void;
   /** Callback when modal transition animation has ended */
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
-  activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  activator?: RefObject<HTMLElement> | ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
 }
 
-export const Modal: React.FunctionComponent<ModalProps> & {
+export const Modal: FunctionComponent<ModalProps> & {
   Section: typeof Section;
 } = function Modal({
   children,
@@ -94,8 +101,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const i18n = useI18n();
   const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
 
-  let dialog: React.ReactNode;
-  let backdrop: React.ReactNode;
+  let dialog: ReactNode;
+  let backdrop: ReactNode;
 
   const handleEntered = useCallback(() => {
     if (onTransitionEnd) {
@@ -116,7 +123,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   }, [activator]);
 
   const handleIFrameLoad = useCallback(
-    (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
+    (evt: SyntheticEvent<HTMLIFrameElement>) => {
       const iframe = evt.target as HTMLIFrameElement;
       if (iframe && iframe.contentWindow) {
         try {
@@ -224,8 +231,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 };
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | React.ReactElement,
-): ref is React.RefObject<HTMLElement> {
+  ref: RefObject<HTMLElement> | ReactElement,
+): ref is RefObject<HTMLElement> {
   return Object.prototype.hasOwnProperty.call(ref, 'current');
 }
 

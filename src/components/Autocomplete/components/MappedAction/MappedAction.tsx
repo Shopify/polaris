@@ -1,4 +1,5 @@
-import React, {useMemo} from 'react';
+import type {ReactNode} from 'react';
+import {useMemo} from 'react';
 
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Badge} from '../../../Badge';
@@ -35,7 +36,7 @@ export function MappedAction({
 }: MappedAction) {
   const i18n = useI18n();
 
-  let prefixMarkup: React.ReactNode | null = null;
+  let prefixMarkup: ReactNode | null = null;
 
   const contentOverflowStyle = wrapOverflow ? styles.ContentWrap : undefined;
 

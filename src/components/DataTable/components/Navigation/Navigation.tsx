@@ -1,4 +1,3 @@
-import React from 'react';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';

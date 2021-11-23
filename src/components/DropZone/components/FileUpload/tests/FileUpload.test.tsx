@@ -1,4 +1,3 @@
-import React from 'react';
 import {Caption, TextStyle} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

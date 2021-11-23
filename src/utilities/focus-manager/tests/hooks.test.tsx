@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount, mountWithApp} from 'tests/utilities';
 
 import {useFocusManager} from '../hooks';

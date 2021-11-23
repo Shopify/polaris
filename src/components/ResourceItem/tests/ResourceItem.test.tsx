@@ -1,4 +1,4 @@
-import React, {AllHTMLAttributes} from 'react';
+import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {
   Avatar,

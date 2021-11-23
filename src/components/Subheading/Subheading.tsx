@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import type {HeadingTagName} from '../../types';
 
@@ -11,7 +11,7 @@ export interface SubheadingProps {
    */
   element?: HeadingTagName;
   /** Text to display in subheading */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Subheading({

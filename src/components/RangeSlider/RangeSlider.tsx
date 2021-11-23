@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {useUniqueId} from '../../utilities/unique-id';
 
 import type {RangeSliderProps, RangeSliderValue, DualValue} from './types';

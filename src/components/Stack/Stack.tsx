@@ -1,4 +1,5 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import type {ReactNode} from 'react';
+import {memo, NamedExoticComponent} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
@@ -26,7 +27,7 @@ type Distribution =
 
 export interface StackProps {
   /** Elements to display inside stack */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean;
   /** Stack the elements vertically */

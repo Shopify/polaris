@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode, ChangeEvent} from 'react';
 import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -17,7 +17,7 @@ interface StrictOption {
   /** Option will be visible, but not selectable */
   disabled?: boolean;
   /** Element to display to the left of the option label. Does not show in the dropdown. */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -42,7 +42,7 @@ export interface SelectProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
   /** Label for the select */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -52,7 +52,7 @@ export interface SelectProps {
   /** Disable input */
   disabled?: boolean;
   /** Additional text to aide in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Example text to display as placeholder */
   placeholder?: string;
   /** ID for form input */
@@ -103,7 +103,7 @@ export function Select({
   );
 
   const handleChange = onChange
-    ? (event: React.ChangeEvent<HTMLSelectElement>) =>
+    ? (event: ChangeEvent<HTMLSelectElement>) =>
         onChange(event.currentTarget.value, id)
     : undefined;
 
@@ -263,7 +263,7 @@ function flattenOptions(
   return flatOptions;
 }
 
-function renderSingleOption(option: HideableStrictOption): React.ReactNode {
+function renderSingleOption(option: HideableStrictOption): ReactNode {
   const {value, label, prefix: _prefix, ...rest} = option;
   return (
     <option key={value} value={value} {...rest}>
@@ -274,7 +274,7 @@ function renderSingleOption(option: HideableStrictOption): React.ReactNode {
 
 function renderOption(
   optionOrGroup: HideableStrictOption | StrictGroup,
-): React.ReactNode {
+): ReactNode {
   if (isGroup(optionOrGroup)) {
     const {title, options} = optionOrGroup;
     return (

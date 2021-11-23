@@ -1,4 +1,3 @@
-import React from 'react';
 import {Button, Image, ThemeProvider} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

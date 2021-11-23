@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
@@ -10,7 +10,7 @@ export interface TextContainerProps {
   /** The amount of vertical spacing children will get between them */
   spacing?: Spacing;
   /** The content to render in the text container. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function TextContainer({spacing, children}: TextContainerProps) {

@@ -1,4 +1,5 @@
-import React, {useRef, useState, useEffect} from 'react';
+import type {ReactNode} from 'react';
+import {useRef, useState, useEffect} from 'react';
 
 import {classNames, variationName} from '../../../../utilities/css';
 
@@ -10,7 +11,7 @@ export interface CSSAnimationProps {
   in: boolean;
   className: string;
   type: AnimationType;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 enum TransitionStatus {

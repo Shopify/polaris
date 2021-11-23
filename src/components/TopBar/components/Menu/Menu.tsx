@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {ActionList, ActionListProps} from '../../../ActionList';
 import {Popover, PopoverProps} from '../../../Popover';
@@ -8,7 +8,7 @@ import styles from './Menu.scss';
 
 export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
-  activatorContent: React.ReactNode;
+  activatorContent: ReactNode;
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
   actions: ActionListProps['sections'];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the menu */

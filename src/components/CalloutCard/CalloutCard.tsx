@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -14,7 +14,7 @@ import styles from './CalloutCard.scss';
 
 export interface CalloutCardProps {
   /** The content to display inside the callout card. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** The title of the card */
   title: string;
   /** URL to the card illustration */

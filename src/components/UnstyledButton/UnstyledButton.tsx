@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -6,7 +6,7 @@ import {UnstyledLink} from '../UnstyledLink';
 
 export interface UnstyledButtonProps extends BaseButton {
   /** The content to display inside the button */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** A custom class name to apply styles to button */
   className?: string;
   [key: string]: any;

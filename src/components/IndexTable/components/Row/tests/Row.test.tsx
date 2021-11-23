@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
@@ -304,7 +304,7 @@ describe('<Row />', () => {
 function triggerOnClick(
   row: ThenType<ReturnType<typeof mountWithTable>>,
   times = 1,
-  event: DeepPartial<React.MouseEvent>,
+  event: DeepPartial<MouseEvent>,
 ) {
   // React uses its own synthetic events that won't be trigger when
   // dispatching events so we need to attach our own handler

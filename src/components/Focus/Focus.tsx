@@ -1,11 +1,12 @@
-import React, {memo, useEffect} from 'react';
+import type {ReactNode, RefObject} from 'react';
+import {memo, useEffect} from 'react';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
 
 export interface FocusProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   disabled?: boolean;
-  root: React.RefObject<HTMLElement> | HTMLElement | null;
+  root: RefObject<HTMLElement> | HTMLElement | null;
 }
 
 export const Focus = memo(function Focus({
@@ -31,7 +32,7 @@ export const Focus = memo(function Focus({
 });
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | HTMLElement,
-): ref is React.RefObject<HTMLElement> {
-  return (ref as React.RefObject<HTMLElement>).current !== undefined;
+  ref: RefObject<HTMLElement> | HTMLElement,
+): ref is RefObject<HTMLElement> {
+  return (ref as RefObject<HTMLElement>).current !== undefined;
 }

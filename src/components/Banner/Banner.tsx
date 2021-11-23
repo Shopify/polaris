@@ -1,4 +1,5 @@
-import React, {
+import type {Ref, ReactNode, KeyboardEvent, MouseEvent} from 'react';
+import {
   forwardRef,
   useRef,
   useState,
@@ -39,7 +40,7 @@ export interface BannerProps {
   /** Sets the status of the banner. */
   status?: BannerStatus;
   /** The child elements to render in the banner. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Action for banner */
   action?: DisableableAction & LoadableAction;
   /** Action | Displays a secondary action */
@@ -83,7 +84,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
   );
 
-  let headingMarkup: React.ReactNode = null;
+  let headingMarkup: ReactNode = null;
   let headingID: string | undefined;
 
   if (title) {
@@ -137,7 +138,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       </div>
     ) : null;
 
-  let contentMarkup: React.ReactNode = null;
+  let contentMarkup: ReactNode = null;
   let contentID: string | undefined;
 
   if (children || actionMarkup) {
@@ -263,7 +264,7 @@ export interface BannerHandles {
   focus(): void;
 }
 
-function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
+function useBannerFocus(bannerRef: Ref<BannerHandles>) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [shouldShowFocus, setShouldShowFocus] = useState(false);
 
@@ -278,14 +279,14 @@ function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
     [],
   );
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target === wrapperRef.current) {
       setShouldShowFocus(true);
     }
   };
 
   const handleBlur = () => setShouldShowFocus(false);
-  const handleMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseUp = (event: MouseEvent<HTMLDivElement>) => {
     event.currentTarget.blur();
     setShouldShowFocus(false);
   };

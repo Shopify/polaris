@@ -1,4 +1,4 @@
-import React from 'react';
+import type {HTMLProps} from 'react';
 
 interface SourceSet {
   source: string;
@@ -7,7 +7,7 @@ interface SourceSet {
 
 type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
 
-export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
+export interface ImageProps extends HTMLProps<HTMLImageElement> {
   alt: string;
   source: string;
   crossOrigin?: CrossOrigin;

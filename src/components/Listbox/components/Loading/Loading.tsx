@@ -1,4 +1,5 @@
-import React, {memo, useEffect} from 'react';
+import type {ReactNode} from 'react';
+import {memo, useEffect} from 'react';
 
 import {Spinner} from '../../../Spinner';
 import {useListbox} from '../../../../utilities/listbox';
@@ -6,7 +7,7 @@ import {useListbox} from '../../../../utilities/listbox';
 import styles from './Loading.scss';
 
 export interface LoadingProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   accessibilityLabel: string;
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import type {KeyboardEvent} from 'react';
 
 import {Item} from '../Item';
 import type {TabDescriptor} from '../../types';
@@ -8,7 +8,7 @@ export interface ListProps {
   focusIndex: number;
   disclosureTabs: TabDescriptor[];
   onClick?(id: string): void;
-  onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
+  onKeyPress?(event: KeyboardEvent<HTMLElement>): void;
 }
 
 export function List({
@@ -40,7 +40,7 @@ export function List({
 
 function noop() {}
 
-function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (key === 'ArrowLeft' || key === 'ArrowRight') {

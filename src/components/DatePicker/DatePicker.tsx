@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useCallback, useMemo} from 'react';
+import type {KeyboardEvent} from 'react';
+import {useState, useEffect, useCallback, useMemo} from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../Button';
@@ -114,7 +115,7 @@ export function DatePicker({
   }, []);
 
   const handleKeyUp = useCallback(
-    (event: React.KeyboardEvent<HTMLElement>) => {
+    (event: KeyboardEvent<HTMLElement>) => {
       const {key} = event;
 
       const range = deriveRange(selected);
@@ -280,7 +281,7 @@ export function DatePicker({
 
 function noop() {}
 
-function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (

@@ -1,4 +1,5 @@
-import React, {useCallback, useRef, useState} from 'react';
+import type {RefObject} from 'react';
+import {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {Portal} from 'components';
 
@@ -343,7 +344,7 @@ describe('<Popover />', () => {
 
   describe('forceUpdatePosition', () => {
     it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
-      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+      let popoverRef: RefObject<PopoverPublicAPI> | null = null;
 
       function Test() {
         popoverRef = useRef(null);

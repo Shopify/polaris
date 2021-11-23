@@ -1,4 +1,5 @@
-import React, {PureComponent, Children, createRef} from 'react';
+import type {ReactNode, RefObject} from 'react';
+import {PureComponent, Children, createRef} from 'react';
 import {durationFast} from '@shopify/polaris-tokens';
 
 import {findFirstFocusableNode} from '../../../../utilities/focus';
@@ -36,7 +37,7 @@ enum TransitionStatus {
 }
 
 export interface PopoverOverlayProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   fullWidth?: boolean;
   fullHeight?: boolean;
   fluidContent?: boolean;
@@ -69,7 +70,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private exitingTimer?: number;
-  private overlayRef: React.RefObject<PositionedOverlay>;
+  private overlayRef: RefObject<PositionedOverlay>;
 
   constructor(props: PopoverOverlayProps) {
     super(props);
@@ -305,10 +306,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   };
 }
 
-function renderPopoverContent(
-  children: React.ReactNode,
-  props?: Partial<PaneProps>,
-) {
+function renderPopoverContent(children: ReactNode, props?: Partial<PaneProps>) {
   const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;

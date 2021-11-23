@@ -1,15 +1,15 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {Item} from './components';
 import styles from './Connected.scss';
 
 export interface ConnectedProps {
   /** Content to display on the left */
-  left?: React.ReactNode;
+  left?: ReactNode;
   /** Content to display on the right */
-  right?: React.ReactNode;
+  right?: ReactNode;
   /** Connected content */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Connected({children, left, right}: ConnectedProps) {

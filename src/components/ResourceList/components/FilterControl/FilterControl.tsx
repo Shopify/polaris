@@ -1,4 +1,4 @@
-import React, {useCallback, useContext} from 'react';
+import {useCallback, useContext} from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
 import type {ComplexAction} from '../../../../types';

@@ -1,11 +1,11 @@
-import React, {
+import type {ReactNode, FormEvent} from 'react';
+import {
   useContext,
   memo,
   useEffect,
   useRef,
   useCallback,
   Fragment,
-  ReactNode,
 } from 'react';
 
 import {useI18n} from '../../../../utilities/i18n';
@@ -92,8 +92,6 @@ export function CheckboxWrapper({children}: CheckboxWrapperProps) {
   );
 }
 
-function stopPropagation(
-  event: React.MouseEvent | React.KeyboardEvent | React.FormEvent,
-) {
+function stopPropagation(event: MouseEvent | KeyboardEvent | FormEvent) {
   event.stopPropagation();
 }

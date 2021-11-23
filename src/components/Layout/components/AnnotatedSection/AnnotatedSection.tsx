@@ -1,13 +1,13 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {Heading} from '../../../Heading';
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
 
 export interface AnnotatedSectionProps {
-  children?: React.ReactNode;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
+  children?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
   id?: string;
 }
 

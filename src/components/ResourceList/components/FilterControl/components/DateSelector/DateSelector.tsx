@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, memo} from 'react';
+import {useState, useCallback, useRef, memo} from 'react';
 import {CalendarMinor} from '@shopify/polaris-icons';
 
 import {DatePicker, Range} from '../../../../../DatePicker';

@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
@@ -12,7 +12,7 @@ export interface PaneProps {
   /** Automatically wrap children in padded sections */
   sectioned?: boolean;
   /** The pane content */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Callback when the bottom of the popover is reached by mouse or keyboard  */
   onScrolledToBottom?(): void;
 }

@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import type {MouseEvent, TouchEvent} from 'react';
+import {PureComponent} from 'react';
 
 import {isServer} from '../../../../utilities/target';
 import {EventListener} from '../../../EventListener';
@@ -135,7 +136,7 @@ export class Slidable extends PureComponent<SlidableProps, State> {
   };
 
   private startDrag = (
-    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+    event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>,
   ) => {
     if (isMouseDownEvent(event)) {
       this.handleDraggerMove(event.clientX, event.clientY);
@@ -184,8 +185,6 @@ function isMouseMoveEvent(event: Event): event is MouseEvent {
   return event.type === 'mousemove';
 }
 
-function isMouseDownEvent(
-  event: React.MouseEvent | React.TouchEvent,
-): event is React.MouseEvent {
+function isMouseDownEvent(event: MouseEvent | TouchEvent): event is MouseEvent {
   return event.type === 'mousedown';
 }

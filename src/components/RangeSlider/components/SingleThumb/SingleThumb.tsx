@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ChangeEvent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
@@ -117,7 +117,7 @@ export function SingleThumb(props: SingleThumbProps) {
     </Labelled>
   );
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const {onChange} = props;
 
     onChange && onChange(parseFloat(event.currentTarget.value), id);

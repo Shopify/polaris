@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -13,20 +13,20 @@ interface Choice {
   /** Value of the choice */
   value: string;
   /** Label for the choice */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Disable choice */
   disabled?: boolean;
   /** Additional text to aide in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Indicates that the choice is aria-describedBy the error message*/
   describedByError?: boolean;
   /**  Method to render children with a choice */
-  renderChildren?(isSelected: boolean): React.ReactNode | false;
+  renderChildren?(isSelected: boolean): ReactNode | false;
 }
 
 export interface ChoiceListProps {
   /** Label for list of choices */
-  title: React.ReactNode;
+  title: ReactNode;
   /** Collection of choices */
   choices: Choice[];
   /** Collection of selected choices */

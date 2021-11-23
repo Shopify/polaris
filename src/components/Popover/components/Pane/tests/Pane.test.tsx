@@ -1,4 +1,3 @@
-import React from 'react';
 import {TextContainer, Scrollable} from 'components';
 import {mountWithApp} from 'tests/utilities';
 

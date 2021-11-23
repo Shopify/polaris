@@ -1,11 +1,11 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 import {useToggle} from '../../../../../../utilities/use-toggle';
 import styles from '../../ConnectedFilterControl.scss';
 
 interface ItemProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Item({children}: ItemProps) {

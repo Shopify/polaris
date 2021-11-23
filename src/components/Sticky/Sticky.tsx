@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import type {ReactNode} from 'react';
+import {Component} from 'react';
 
 import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';
@@ -15,10 +16,7 @@ export type StickyProps = {
   offset?: boolean;
   /** Should the element remain in a fixed position when the layout is stacked (smaller screens)  */
   disableWhenStacked?: boolean;
-} & (
-  | {children: React.ReactNode}
-  | {children(isSticky: boolean): React.ReactNode}
-);
+} & ({children: ReactNode} | {children(isSticky: boolean): ReactNode});
 
 type CombinedProps = StickyProps & {
   stickyManager: ReturnType<typeof useStickyManager>;

@@ -1,4 +1,3 @@
-import React from 'react';
 import {InlineError, Icon, Labelled} from 'components';
 import {mountWithApp} from 'tests/utilities';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './KeyboardKey.scss';
 
 export interface KeyboardKeyProps {

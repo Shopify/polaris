@@ -1,4 +1,5 @@
-import React, {Component, createRef} from 'react';
+import type {MouseEvent, TouchEvent, KeyboardEvent, ContextType} from 'react';
+import {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -59,7 +60,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     };
   }
 
-  context!: React.ContextType<typeof FeaturesContext>;
+  context!: ContextType<typeof FeaturesContext>;
 
   state: State = {
     value: sanitizeValue(
@@ -297,9 +298,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     );
   }
 
-  private handleMouseDownThumbLower = (
-    event: React.MouseEvent<HTMLDivElement>,
-  ) => {
+  private handleMouseDownThumbLower = (event: MouseEvent<HTMLDivElement>) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
     event.stopPropagation();
@@ -313,9 +312,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     );
   };
 
-  private handleTouchStartThumbLower = (
-    event: React.TouchEvent<HTMLDivElement>,
-  ) => {
+  private handleTouchStartThumbLower = (event: TouchEvent<HTMLDivElement>) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbLower);
     event.stopPropagation();
@@ -330,9 +327,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     );
   };
 
-  private handleMouseDownThumbUpper = (
-    event: React.MouseEvent<HTMLDivElement>,
-  ) => {
+  private handleMouseDownThumbUpper = (event: MouseEvent<HTMLDivElement>) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
     event.stopPropagation();
@@ -346,9 +341,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     );
   };
 
-  private handleTouchStartThumbUpper = (
-    event: React.TouchEvent<HTMLDivElement>,
-  ) => {
+  private handleTouchStartThumbUpper = (event: TouchEvent<HTMLDivElement>) => {
     if (this.props.disabled) return;
     registerTouchMoveHandler(this.handleTouchMoveThumbUpper);
     event.stopPropagation();
@@ -363,9 +356,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     );
   };
 
-  private handleKeypressLower = (
-    event: React.KeyboardEvent<HTMLDivElement>,
-  ) => {
+  private handleKeypressLower = (event: KeyboardEvent<HTMLDivElement>) => {
     if (this.props.disabled) return;
     const {incrementValueLower, decrementValueLower} = this;
 
@@ -385,9 +376,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     }
   };
 
-  private handleKeypressUpper = (
-    event: React.KeyboardEvent<HTMLDivElement>,
-  ) => {
+  private handleKeypressUpper = (event: KeyboardEvent<HTMLDivElement>) => {
     if (this.props.disabled) return;
     const {incrementValueUpper, decrementValueUpper} = this;
 
@@ -459,7 +448,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     }
   };
 
-  private handleMouseDownTrack = (event: React.MouseEvent) => {
+  private handleMouseDownTrack = (event: MouseEvent) => {
     if (event.button !== 0 || this.props.disabled) return;
     event.preventDefault();
     const clickXPosition = this.actualXPosition(event.clientX);

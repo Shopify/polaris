@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
@@ -15,7 +15,7 @@ export interface TooltipOverlayProps {
   active: boolean;
   preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
-  children?: React.ReactNode;
+  children?: ReactNode;
   activator: HTMLElement;
   accessibilityLabel?: string;
   onClose(): void;

@@ -1,4 +1,5 @@
-import React, {useMemo} from 'react';
+import type {ReactNode} from 'react';
+import {useMemo} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -21,7 +22,7 @@ export interface SkeletonPageProps {
   /** Shows a skeleton over the breadcrumb */
   breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function SkeletonPage({

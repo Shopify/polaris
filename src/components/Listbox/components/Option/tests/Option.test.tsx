@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ContextType} from 'react';
 import {mount} from 'tests/utilities';
 import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
@@ -20,7 +20,7 @@ const defaultProps = {
   value: 'value',
 };
 
-const defaultContext: React.ContextType<typeof ListboxContext> = {
+const defaultContext: ContextType<typeof ListboxContext> = {
   onOptionSelect: noop,
   setLoading: noop,
 };
@@ -61,7 +61,7 @@ describe('Option', () => {
 
   it('calls the `onOptionSelect` on context with the DOM ID, value and option div Ref when the option div is clicked', () => {
     const onOptionSelectSpy = jest.fn();
-    const context: React.ContextType<typeof ListboxContext> = {
+    const context: ContextType<typeof ListboxContext> = {
       ...defaultContext,
       onOptionSelect: onOptionSelectSpy,
     };

@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp, mount} from 'tests/utilities';
 
 import {

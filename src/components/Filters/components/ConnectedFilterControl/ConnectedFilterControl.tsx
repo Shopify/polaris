@@ -1,4 +1,5 @@
-import React, {Component, createRef} from 'react';
+import type {ReactNode, ReactElement} from 'react';
+import {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
@@ -12,17 +13,17 @@ import styles from './ConnectedFilterControl.scss';
 
 interface PopoverableAction extends DisableableAction {
   popoverOpen: boolean;
-  popoverContent: React.ReactNode;
+  popoverContent: ReactNode;
   key: string;
   content: string;
   onAction(): void;
 }
 
 export interface ConnectedFilterControlProps {
-  children: React.ReactNode;
+  children: ReactNode;
   rightPopoverableActions?: PopoverableAction[] | null;
-  rightAction?: React.ReactNode;
-  auxiliary?: React.ReactNode;
+  rightAction?: ReactNode;
+  auxiliary?: ReactNode;
   disabled?: boolean;
   forceShowMorefiltersButton?: boolean;
   queryFieldHidden?: boolean;
@@ -223,7 +224,7 @@ export class ConnectedFilterControl extends Component<
   private activatorButtonFrom(
     action: PopoverableAction,
     options?: {proxy?: boolean},
-  ): React.ReactElement {
+  ): ReactElement {
     const id = options?.proxy ? undefined : `Activator-${action.key}`;
     return (
       <Button
@@ -237,7 +238,7 @@ export class ConnectedFilterControl extends Component<
     );
   }
 
-  private popoverFrom(actions: PopoverableAction[]): React.ReactElement[] {
+  private popoverFrom(actions: PopoverableAction[]): ReactElement[] {
     return actions.map((action) => {
       return (
         <Item key={action.key}>

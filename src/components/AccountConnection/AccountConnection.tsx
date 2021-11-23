@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
@@ -12,11 +12,11 @@ import styles from './AccountConnection.scss';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /** Content to display as additional details */
-  details?: React.ReactNode;
+  details?: ReactNode;
   /** Content to display as terms of service */
-  termsOfService?: React.ReactNode;
+  termsOfService?: ReactNode;
   /** The name of the service */
   accountName?: string;
   /** URL for the user’s avatar image */
@@ -52,7 +52,7 @@ export function AccountConnection({
     />
   ) : null;
 
-  let titleMarkup: React.ReactNode = null;
+  let titleMarkup: ReactNode = null;
   if (title) {
     titleMarkup = <div>{title}</div>;
   } else if (accountName) {

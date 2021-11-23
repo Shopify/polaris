@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -6,9 +6,9 @@ import styles from './DescriptionList.scss';
 
 interface Item {
   /** Title of the item */
-  term: React.ReactNode;
+  term: ReactNode;
   /**  Item content */
-  description: React.ReactNode;
+  description: ReactNode;
 }
 
 export interface DescriptionListProps {

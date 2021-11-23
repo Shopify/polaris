@@ -1,4 +1,4 @@
-import React from 'react';
+import type {ReactNode} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
@@ -18,7 +18,7 @@ export interface TextStyleProps {
   /** Give text additional visual meaning */
   variation?: Variation;
   /** The content that should get the intended styling */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function TextStyle({variation, children}: TextStyleProps) {

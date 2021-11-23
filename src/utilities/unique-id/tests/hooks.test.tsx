@@ -1,9 +1,10 @@
-import React, {useState, useCallback} from 'react';
+import type {ReactNode} from 'react';
+import {useState, useCallback} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {useUniqueId} from '../hooks';
 
-function TestHarness({children}: {children: React.ReactNode}) {
+function TestHarness({children}: {children: ReactNode}) {
   return <>{children}</>;
 }
 

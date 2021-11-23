@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import type {ReactNode, KeyboardEvent, FocusEvent} from 'react';
+import {PureComponent} from 'react';
 import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -13,7 +14,7 @@ import styles from './Tabs.scss';
 
 export interface TabsProps {
   /** Content to display in tabs */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Index of selected tab */
   selected: number;
   /** List of tabs */
@@ -193,7 +194,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
   }
 
-  private handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
+  private handleKeyPress = (event: KeyboardEvent<HTMLElement>) => {
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const key = event.key;
     const tabsArrayInOrder = showDisclosure
@@ -246,7 +247,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
   };
 
-  private handleFocus = (event: React.FocusEvent<HTMLUListElement>) => {
+  private handleFocus = (event: FocusEvent<HTMLUListElement>) => {
     const {selected, tabs} = this.props;
 
     // If we are explicitly focusing a non-selected tab, this focuses it
@@ -295,7 +296,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     }
   };
 
-  private handleBlur = (event: React.FocusEvent<HTMLUListElement>) => {
+  private handleBlur = (event: FocusEvent<HTMLUListElement>) => {
     // If we blur and the target is not another tab, forget the focus position
     if (event.relatedTarget == null) {
       this.setState({tabToFocus: -1});
@@ -368,7 +369,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
 function noop() {}
 
-function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (key === 'ArrowLeft' || key === 'ArrowRight') {
