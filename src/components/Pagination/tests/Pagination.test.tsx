@@ -203,18 +203,18 @@ describe('<Pagination />', () => {
   });
 
   describe('nextURL/previousURL', () => {
-    let getElementById: jest.SpyInstance;
+    // let getElementById: jest.SpyInstance;
     let pagination: CustomRoot<any, any>;
 
     beforeEach(() => {
-      getElementById = jest.spyOn(document, 'getElementById');
-      getElementById.mockImplementation((id) => {
-        return pagination.findAll(`#${id}`)[0].domNode;
-      });
+      // getElementById = jest.spyOn(document, 'getElementById');
+      // getElementById.mockImplementation((id) => {
+      //   return pagination.findAll(`#${id}`)[0].domNode;
+      // });
     });
 
     afterEach(() => {
-      getElementById.mockRestore();
+      // getElementById.mockRestore();
     });
 
     it('navigates the browser to the anchors target when the designated key is pressed', () => {
