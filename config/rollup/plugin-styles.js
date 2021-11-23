@@ -4,6 +4,7 @@ const {promisify} = require('util');
 const {createFilter} = require('@rollup/pluginutils');
 const nodeSass = require('node-sass');
 const postcss = require('postcss');
+const pxtorem = require('postcss-pxtorem');
 const cssModules = require('postcss-modules');
 
 module.exports.styles = function styles({
@@ -25,6 +26,13 @@ module.exports.styles = function styles({
   const renderSass = promisify(nodeSass.render);
 
   const styleProcessor = postcss([
+    pxtorem({
+      rootValue: 10,
+      replace: true,
+      propList: ['*'],
+      selectorBlackList: [],
+      browsers: ['extends @shopify/browserslist-config'],
+    }),
     cssModules({
       ...modules,
       // eslint-disable-next-line no-empty-function

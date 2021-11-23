@@ -3,6 +3,7 @@ const spawn = require('child_process').spawn;
 const CreateFileWebpack = require('create-file-webpack');
 
 const postcssShopify = require('@shopify/postcss-plugin');
+const pxtorem = require('postcss-pxtorem');
 
 // Enabling docs means the preview panel takes an extra 2ish seconds to load
 // This usually isn't a big deal, except when we're running all of our stories
@@ -58,7 +59,16 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [postcssShopify()],
+                plugins: [
+                  postcssShopify(),
+                  pxtorem({
+                    rootValue: 10,
+                    replace: true,
+                    propList: ['*'],
+                    selectorBlackList: [],
+                    browsers: ['extends @shopify/browserslist-config'],
+                  }),
+                ],
               },
             },
           },
