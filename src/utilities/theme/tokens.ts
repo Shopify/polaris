@@ -5,6 +5,12 @@ export const Tokens = {
   borderRadiusWide: rem('8px'),
   borderRadiusFull: '50%',
 
+  // Font-Weights
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightSemibold: 600,
+  fontWeightBold: 700,
+
   // Shadows
   cardShadow:
     '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
