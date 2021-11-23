@@ -3,7 +3,7 @@
 .startFade {
   opacity: 0;
   will-change: opacity;
-  transition: opacity duration(slow) easing(out);
+  transition: opacity var(--p-duration-300) easing(out);
   pointer-events: none;
 }
 
