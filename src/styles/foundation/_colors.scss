@@ -27,36 +27,6 @@ $color-palette-data: map-extend(
   )
 );
 
-/// Returns the color value for a given color name and group.
-///
-/// @param {String} $hue - The color’s hue.
-/// @param {String} $value - The darkness/lightness of the color. Defaults to
-/// base.
-/// @param {Color} $for-background - The background color on which this color
-/// will appear. Applies a multiply filter to ensure appropriate contrast.
-/// @return {Color} The color value.
-
-@function color($hue, $value: base, $for-background: null) {
-  $fetched-color: map-get(map-get($color-palette-data, $hue), $value);
-
-  @if map-has-key($color-palette-data, $fetched-color) {
-    $fetched-color: map-get(
-      map-get($color-palette-data, $fetched-color),
-      $value
-    );
-  }
-
-  @if $for-background {
-    $fetched-color: color-multiply($fetched-color, $for-background);
-  }
-
-  @if type-of($fetched-color) == color {
-    @return $fetched-color;
-  } @else {
-    @error "Color `#{$hue}, #{$value}` not found.\a Make sure arguments are strings.\a GOOD: `color('yellow')`.\a BAD: `color(yellow)`.\a\a Available options: #{available-names($color-palette-data)}";
-  }
-}
-
 /// Darkens the foreground color by the background color. This is the same as
 /// the "multiply" filter in graphics apps.
 ///
