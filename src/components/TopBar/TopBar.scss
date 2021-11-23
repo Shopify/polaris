@@ -11,7 +11,7 @@ $context-control-expand-after: 1400px;
   height: top-bar-height();
   box-shadow: var(--p-top-bar-shadow);
   background-color: var(--p-surface);
-  transition: duration() background-color ease-in-out;
+  transition: var(--p-duration-200) background-color ease-in-out;
 
   &::after {
     content: '';
@@ -68,7 +68,7 @@ $context-control-expand-after: 1400px;
   padding: spacing(tight);
   border-radius: border-radius();
   fill: var(--p-icon); // Icon will inherit this fill
-  transition: (duration() - 33ms) fill easing() 33ms;
+  transition: (var(--p-duration-200) - 33ms) fill easing() 33ms;
 
   &.focused:active {
     background-color: var(--p-surface-pressed);
