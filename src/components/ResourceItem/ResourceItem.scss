@@ -7,7 +7,6 @@ $resource-list-item-variables: (
   min-height: rem(44px),
   handle-width: rem(48px),
   disclosure-width: rem(48px),
-  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
   clickable-stacking-order: 1,
   content-stacking-order: 2,
   actions-height: rem(56px),
@@ -35,6 +34,7 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
+  --translate-offset: calc(#{rem(48px)} - #{rem(12px)} + var(--p-space-1));
   position: relative;
   outline: none;
   cursor: pointer;
@@ -133,7 +133,7 @@ $resource-list-item-variables: (
 }
 
 .OwnedNoMedia {
-  padding-top: spacing(extra-tight);
+  padding-top: var(--p-space-1);
 }
 
 // Item handle
@@ -142,7 +142,7 @@ $resource-list-item-variables: (
   min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
+  margin: (-1 * resource-list-item(padding)) var(--p-space-1)
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 
@@ -156,10 +156,10 @@ $resource-list-item-variables: (
 }
 
 .selectable {
-  width: calc(100% + #{resource-list-item(translate-offset)});
-  transform: translateX(-1 * resource-list-item(translate-offset));
+  width: calc(100% + var(--translate-offset));
+  transform: translateX(calc(-1 * var(--translate-offset)));
   transition: transform easing() duration();
-  margin-right: -1 * resource-list-item(translate-offset);
+  margin-right: calc(-1 * var(--translate-offset));
 
   &.selectMode {
     transform: translateX(0);

@@ -69,7 +69,7 @@ $icon-size: rem(16px);
   display: block;
   height: $height;
   width: $height;
-  margin-left: spacing(extra-tight);
+  margin-left: var(--p-space-1);
   border-radius: 0 border-radius() border-radius() 0;
 
   &:hover {

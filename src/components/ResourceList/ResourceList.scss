@@ -133,7 +133,7 @@ $item-wrapper-loading-height: rem(64px);
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
-  padding-left: spacing(extra-tight);
+  padding-left: var(--p-space-1);
   align-self: center;
 
   .HeaderWrapper-hasAlternateTool &,

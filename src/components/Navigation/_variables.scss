@@ -35,14 +35,12 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-1) 0 var(--p-space-3);
   margin: 0 spacing(tight);
   border-radius: var(--p-border-radius-base);
   color: var(--p-text);
   text-decoration: none;
   text-align: left;
-  padding-left: spacing() - spacing(extra-tight);
-  padding-right: spacing(extra-tight);
 
   &:hover {
     background: var(--p-background-hovered);

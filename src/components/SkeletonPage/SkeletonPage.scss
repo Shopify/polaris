@@ -29,8 +29,8 @@ $skeleton-display-text-max-width: rem(120px);
 .BreadcrumbAction {
   padding-top: spacing(base);
   padding-bottom: spacing(base);
-  margin-top: (-1 * spacing(extra-tight));
-  margin-bottom: (-1 * spacing(extra-tight));
+  margin-top: calc(-1 * var(--p-space-1));
+  margin-bottom: calc(-1 * var(--p-space-1));
 }
 
 .TitleAndPrimaryAction {
@@ -99,8 +99,8 @@ $skeleton-display-text-max-width: rem(120px);
   justify-content: center;
   min-height: control-slim-height();
   padding-right: $action-text-spacing;
-  margin-top: (-1 * spacing(extra-tight));
-  margin-bottom: (-1 * spacing(extra-tight));
+  margin-top: calc(-1 * var(--p-space-1));
+  margin-bottom: calc(-1 * var(--p-space-1));
   padding-top: spacing();
 
   &:first-child {

@@ -56,7 +56,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: spacing(tight) spacing(extra-tight);
+  padding: spacing(tight) var(--p-space-1);
   outline: none;
   text-align: center;
   white-space: nowrap;
