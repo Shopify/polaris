@@ -85,13 +85,6 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 ```jsx
 <div style={{height: '250px'}}>
   <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
     i18n={{
       Polaris: {
         Frame: {
@@ -104,7 +97,13 @@ Use the save action to provide an opportunity to save changes. Use the discard a
       },
     }}
   >
-    <Frame>
+    <Frame
+      logo={{
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      }}
+    >
       <ContextualSaveBar
         message="Unsaved changes"
         saveAction={{
@@ -128,13 +127,6 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 ```jsx
 <div style={{height: '250px'}}>
   <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
     i18n={{
       Polaris: {
         Frame: {
@@ -147,7 +139,13 @@ Use the save action to provide an opportunity to save a newly-created resource. 
       },
     }}
   >
-    <Frame>
+    <Frame
+      logo={{
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      }}
+    >
       <ContextualSaveBar
         message="Unsaved product"
         saveAction={{
@@ -172,13 +170,6 @@ repurpose that space to extend the message contents fully to the left side of th
 ```jsx
 <div style={{height: '250px'}}>
   <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
     i18n={{
       Polaris: {
         Frame: {
@@ -191,7 +182,13 @@ repurpose that space to extend the message contents fully to the left side of th
       },
     }}
   >
-    <Frame>
+    <Frame
+      logo={{
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      }}
+    >
       <ContextualSaveBar
         alignContentFlush
         message="Unsaved changes"
@@ -214,13 +211,6 @@ Use the fullWidth flag when you want to remove the default max-width set on the 
 ```jsx
 <div style={{height: '250px'}}>
   <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
     i18n={{
       Polaris: {
         Frame: {
@@ -233,7 +223,13 @@ Use the fullWidth flag when you want to remove the default max-width set on the 
       },
     }}
   >
-    <Frame>
+    <Frame
+      logo={{
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      }}
+    >
       <ContextualSaveBar
         fullWidth
         message="Unsaved changes"
