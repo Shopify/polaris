@@ -4,7 +4,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
-- Replace easing() function with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
+- Removed the easing() function and replaced any instances with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 
 ### Enhancements
 
