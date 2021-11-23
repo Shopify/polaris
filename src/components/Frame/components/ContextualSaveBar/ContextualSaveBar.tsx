@@ -8,6 +8,7 @@ import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {CustomProperties} from '../../../CustomProperties';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -113,7 +114,7 @@ export function ContextualSaveBar({
 
   return (
     <>
-      <div>
+      <CustomProperties colorScheme="dark">
         <div className={styles.ContextualSaveBar}>
           {contextControlMarkup}
           {logoMarkup}
@@ -127,7 +128,7 @@ export function ContextualSaveBar({
             </div>
           </div>
         </div>
-      </div>
+      </CustomProperties>
       {discardConfirmationModalMarkup}
     </>
   );
