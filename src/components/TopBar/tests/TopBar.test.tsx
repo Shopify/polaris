@@ -192,8 +192,8 @@ describe('<TopBar />', () => {
           },
         },
       });
-      expect(topBar).toContainReactComponent(Image, {
-        alt: 'Shopify',
+      expect(topBar).toContainReactComponent(UnstyledLink, {
+        ariaLabel: 'Shopify',
       });
     });
 
