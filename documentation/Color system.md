@@ -265,6 +265,13 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-font-weight-medium`                  | `500`                                                                                                        |
 | `--p-font-weight-semibold`                | `600`                                                                                                        |
 | `--p-font-weight-bold`                    | `700`                                                                                                        |
+| `--p-duration-0`                          | `0ms`                                                                                                        |
+| `--p-duration-100`                        | `100ms`                                                                                                      |
+| `--p-duration-150`                        | `150ms`                                                                                                      |
+| `--p-duration-200`                        | `200ms`                                                                                                      |
+| `--p-duration-300`                        | `300ms`                                                                                                      |
+| `--p-duration-400`                        | `400ms`                                                                                                      |
+| `--p-duration-500`                        | `500ms`                                                                                                      |
 | `--p-card-shadow`                         | `0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)`              |
 | `--p-popover-shadow`                      | `-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)`            |
 | `--p-modal-shadow`                        | `0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)`                   |
@@ -287,8 +294,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                                    |
 | `--p-text-field-focus-ring-border-radius` | `0.7rem`                                                                                                     |
 | `--p-button-group-item-spacing`           | `-0.1rem`                                                                                                    |
-| `--p-duration-100`                        | `100ms`                                                                                                      |
-| `--p-duration-150`                        | `150ms`                                                                                                      |
 | `--p-ease-in`                             | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                               |
 | `--p-ease`                                | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                           |
 | `--p-range-slider-thumb-size-base`        | `1.6rem`                                                                                                     |

@@ -11,6 +11,15 @@ export const Tokens = {
   fontWeightSemibold: 600,
   fontWeightBold: 700,
 
+  // Duration
+  duration0: '0ms',
+  duration100: '100ms',
+  duration150: '150ms',
+  duration200: '200ms',
+  duration300: '300ms',
+  duration400: '400ms',
+  duration500: '500ms',
+
   // Shadows
   cardShadow:
     '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
@@ -39,8 +48,6 @@ export const Tokens = {
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('-1px'),
-  duration100: '100ms',
-  duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
   rangeSliderThumbSizeBase: rem('16px'),
