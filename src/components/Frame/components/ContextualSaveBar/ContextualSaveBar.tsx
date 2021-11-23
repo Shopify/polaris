@@ -5,10 +5,9 @@ import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
-import type {ContextualSaveBarProps} from '../../../../utilities/frame';
+import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
-import {useLogo} from '../../../../utilities/frame';
 import {useToggle} from '../../../../utilities/use-toggle';
 
 import {DiscardConfirmationModal} from './components';
@@ -23,7 +22,7 @@ export function ContextualSaveBar({
   contextControl,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  const logo = useLogo();
+  const {logo} = useFrame();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,

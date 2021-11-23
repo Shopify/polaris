@@ -9,6 +9,7 @@ import type {
 
 // This is internal, but TS throws a build-time error if we don't export it
 export interface FrameContextType {
+  logo?: Logo;
   showToast(toast: ToastPropsWithID): void;
   hideToast(toast: ToastID): void;
   setContextualSaveBar(props: ContextualSaveBarProps): void;
@@ -20,5 +21,3 @@ export interface FrameContextType {
 export const FrameContext = createContext<FrameContextType | undefined>(
   undefined,
 );
-
-export const LogoContext = createContext<Logo | undefined>(undefined);

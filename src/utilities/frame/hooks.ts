@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 
-import {LogoContext, FrameContext} from './context';
+import {FrameContext} from './context';
 
 export function useFrame() {
   const frame = useContext(FrameContext);
@@ -12,8 +12,4 @@ export function useFrame() {
   }
 
   return frame;
-}
-
-export function useLogo() {
-  return useContext(LogoContext);
 }

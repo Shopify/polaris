@@ -1,18 +1,14 @@
 import React, {useContext} from 'react';
 import {mountWithApp, mount} from 'tests/utilities';
 
-import {useFrame, useLogo} from '../hooks';
-import {FrameContext, LogoContext} from '../context';
+import {useFrame} from '../hooks';
+import {FrameContext} from '../context';
 
 describe('useFrame', () => {
   let consoleErrorSpy: jest.SpyInstance;
 
-  function FrameComponent() {
+  function Component() {
     return useFrame() === useContext(FrameContext) ? <div /> : null;
-  }
-
-  function LogoComponent() {
-    return useLogo() === useContext(LogoContext) ? <div /> : null;
   }
 
   beforeEach(() => {
@@ -24,17 +20,12 @@ describe('useFrame', () => {
   });
 
   it('returns frame context', () => {
-    const component = mountWithApp(<FrameComponent />);
-    expect(component).toContainReactComponent('div');
-  });
-
-  it('returns logo context', () => {
-    const component = mountWithApp(<LogoComponent />);
+    const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
   });
 
   it('throws an error if context is not set', () => {
-    const fn = () => mount(<FrameComponent />);
+    const fn = () => mount(<Component />);
     expect(fn).toThrow(
       'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
     );

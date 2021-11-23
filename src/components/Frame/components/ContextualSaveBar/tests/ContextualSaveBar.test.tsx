@@ -224,9 +224,11 @@ describe('<ContextualSaveBar />', () => {
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        logo: {
-          width: 200,
-          contextualSaveBarSource: './assets/monochrome_shopify.svg',
+        frame: {
+          logo: {
+            width: 200,
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
+          },
         },
       });
 
@@ -237,9 +239,11 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render an image with the width provided', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        logo: {
-          width: 200,
-          contextualSaveBarSource: './assets/monochrome_shopify.svg',
+        frame: {
+          logo: {
+            width: 200,
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
+          },
         },
       });
       expect(contextualSaveBar).toContainReactComponent(Image, {
@@ -249,9 +253,11 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render the image with a default width if 0 is provided', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        logo: {
-          contextualSaveBarSource: './assets/monochrome_shopify.svg',
-          width: 0,
+        frame: {
+          logo: {
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
+            width: 0,
+          },
         },
       });
 
@@ -264,9 +270,11 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithApp(
         <ContextualSaveBar alignContentFlush />,
         {
-          logo: {
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            width: 200,
+          frame: {
+            logo: {
+              contextualSaveBarSource: './assets/monochrome_shopify.svg',
+              width: 200,
+            },
           },
         },
       );

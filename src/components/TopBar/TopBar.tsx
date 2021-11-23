@@ -5,7 +5,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useToggle} from '../../utilities/use-toggle';
-import {useLogo} from '../../utilities/frame';
+import {useFrame} from '../../utilities/frame';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -61,7 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   contextControl,
 }: TopBarProps) {
   const i18n = useI18n();
-  const logo = useLogo();
+  const {logo} = useFrame();
 
   const {
     value: focused,

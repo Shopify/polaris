@@ -18,7 +18,6 @@ import {
   ContextualSaveBarProps,
   ToastID,
   ToastPropsWithID,
-  LogoContext,
 } from '../../utilities/frame';
 
 import {
@@ -253,6 +252,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       ) : null;
 
     const context = {
+      logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
       startLoading: this.startLoading,
@@ -263,30 +263,28 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     return (
       <FrameContext.Provider value={context}>
-        <LogoContext.Provider value={logo}>
-          <div
-            className={frameClassName}
-            {...layer.props}
-            {...navigationAttributes}
+        <div
+          className={frameClassName}
+          {...layer.props}
+          {...navigationAttributes}
+        >
+          {skipMarkup}
+          {topBarMarkup}
+          {navigationMarkup}
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {navigationOverlayMarkup}
+          <main
+            className={styles.Main}
+            id={APP_FRAME_MAIN}
+            data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            {skipMarkup}
-            {topBarMarkup}
-            {navigationMarkup}
-            {contextualSaveBarMarkup}
-            {loadingMarkup}
-            {navigationOverlayMarkup}
-            <main
-              className={styles.Main}
-              id={APP_FRAME_MAIN}
-              data-has-global-ribbon={Boolean(globalRibbon)}
-            >
-              <div className={styles.Content}>{children}</div>
-            </main>
-            <ToastManager toastMessages={toastMessages} />
-            {globalRibbonMarkup}
-            <EventListener event="resize" handler={this.handleResize} />
-          </div>
-        </LogoContext.Provider>
+            <div className={styles.Content}>{children}</div>
+          </main>
+          <ToastManager toastMessages={toastMessages} />
+          {globalRibbonMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
+        </div>
       </FrameContext.Provider>
     );
   }
