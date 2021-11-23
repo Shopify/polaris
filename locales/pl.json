@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Czynności"
+        "rollupButton": "Wyświetl czynności"
+      },
+      "Actions": {
+        "moreActions": "Więcej czynności"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
     },
-    "Spinner": {
-      "warningMessage": "Kolor {color} nie jest przeznaczony do używania na pokrętłach {size}. Kolory dostępne na dużych pokrętłach to: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Więcej kart"
     },
@@ -306,9 +306,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Więcej czynności"
-    },
     "Loading": {
       "label": "Pasek ładowania strony"
     },
@@ -336,6 +333,11 @@
       "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",
       "selectButtonText": "Wybierz"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Wyświetl czynności dla {title}"
+      }
     }
   }
 }

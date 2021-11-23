@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Acciones"
+        "rollupButton": "Ver acciones"
+      },
+      "Actions": {
+        "moreActions": "Más acciones"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
     },
-    "Spinner": {
-      "warningMessage": "El color {color} no está concebido para ser utilizado en spinners {size} Los colores disponibles en los spinners grandes son: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Más pestañas"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Más acciones"
-    },
     "Loading": {
       "label": "Barra de \"cargando página\""
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Seleccionar todos los {itemsLength}+{resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
       "selectButtonText": "Seleccionar"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Ver acciones para {title}"
+      }
     }
   }
 }

@@ -1,8 +1,5 @@
 {
   "Polaris": {
-    "Actions": {
-      "moreActions": "Thao tác khác"
-    },
     "Avatar": {
       "label": "Hình đại diện",
       "labelWithInitials": "Hình đại diện là tên viết tắt {initials}"
@@ -132,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Thao tác"
+        "rollupButton": "Xem thao tác"
+      },
+      "Actions": {
+        "moreActions": "Thao tác khác"
       }
     },
     "Filters": {
@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Đang tải trang"
     },
-    "Spinner": {
-      "warningMessage": "Màu {color} không nhằm mục đích sử dụng trên con quay {size}. Màu có sẵn trên con quay cỡ lớn là: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Tab khác"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Chọn {resourceName}",
       "selectButtonText": "Chọn"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Xem thao tác đối với {title}"
+      }
     }
   }
 }

@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Acties"
+        "rollupButton": "Acties bekijken"
+      },
+      "Actions": {
+        "moreActions": "Meer acties"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
     },
-    "Spinner": {
-      "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Meer tabbladen"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Meer acties"
-    },
     "Loading": {
       "label": "Pagina laadbalk"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Selecteer {resourceName}",
       "selectButtonText": "Selecteren"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Acties voor {title} bekijken"
+      }
     }
   }
 }

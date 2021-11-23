@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Akce"
+        "rollupButton": "Zobrazit akce"
+      },
+      "Actions": {
+        "moreActions": "Další akce"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
     },
-    "Spinner": {
-      "warningMessage": "Barva ({color}) není určena pro spinnery o velikosti: {size}). Pro velké spinnery jsou k dispozici tyto barvy: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Více karet"
     },
@@ -306,9 +306,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Další akce"
-    },
     "Loading": {
       "label": "Panel načítání stránky"
     },
@@ -336,6 +333,11 @@
       "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+      }
     }
   }
 }

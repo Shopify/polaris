@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Toiminnat"
+        "rollupButton": "Näytä toiminnot"
+      },
+      "Actions": {
+        "moreActions": "Lisää toimintoja"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
     },
-    "Spinner": {
-      "warningMessage": "Väriä {color} ei ole tarkoitus käyttää koon {size} spinnereissä. Suurten spinnerien värit ovat: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Lisää välilehtiä"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Lisää toimintoja"
-    },
     "Loading": {
       "label": "Sivun latautumisen palkki"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
       "selectButtonText": "Valitse"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Näytä nimikettä {title} koskevat toiminnot"
+      }
     }
   }
 }

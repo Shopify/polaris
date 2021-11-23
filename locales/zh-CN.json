@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "编辑"
+        "rollupButton": "查看操作"
+      },
+      "Actions": {
+        "moreActions": "更多操作"
       }
     },
     "Filters": {
@@ -301,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "其他操作"
-    },
     "Loading": {
       "label": "页面加载条"
     },
@@ -331,6 +331,11 @@
       "selectAllItems": "选择所有 {itemsLength}+ 的 {resourceNamePlural}",
       "selectItem": "选择 {resourceName}",
       "selectButtonText": "选择"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "查看用于 {title} 的操作"
+      }
     }
   }
 }

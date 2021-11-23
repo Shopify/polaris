@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Actions"
+        "rollupButton": "Afficher les actions"
+      },
+      "Actions": {
+        "moreActions": "Autres actions"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Chargement de page"
     },
-    "Spinner": {
-      "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Plus d'onglets"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Autres opérations"
-    },
     "Loading": {
       "label": "Barre de chargement de la page"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Sélectionner {resourceName}",
       "selectButtonText": "Sélectionner"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Voir les actions pour {title}"
+      }
     }
   }
 }
