@@ -105,13 +105,14 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     contextMarkup = (
       <div className={className}>
         <UnstyledLink
+          ariaLabel={logo.accessibilityLabel || ''}
           url={logo.url || ''}
           className={styles.LogoLink}
           style={{width}}
         >
           <Image
+            alt=""
             source={logo.topBarSource || ''}
-            alt={logo.accessibilityLabel || ''}
             className={styles.Logo}
             style={{width}}
           />

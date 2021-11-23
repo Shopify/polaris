@@ -36,13 +36,14 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   const logoMarkup = logo ? (
     <div className={styles.LogoContainer}>
       <UnstyledLink
+        ariaLabel={logo.accessibilityLabel || ''}
         url={logo.url || ''}
         className={styles.LogoLink}
         style={{width}}
       >
         <Image
+          alt=""
           source={logo.topBarSource || ''}
-          alt={logo.accessibilityLabel || ''}
           className={styles.Logo}
           style={{width}}
         />
