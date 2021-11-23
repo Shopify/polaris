@@ -39,6 +39,7 @@ const mockDesignTokens: DesignTokens = {
   motion: mockTokens,
   // Note: We don't need to assign mock values to the remaining static tokens.
   legacyTokens: {},
+  typography: {},
 };
 
 const expectedCustomProperties =
