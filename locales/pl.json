@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
     },
-    "Spinner": {
-      "warningMessage": "Kolor {color} nie jest przeznaczony do używania na pokrętłach {size}. Kolory dostępne na dużych pokrętłach to: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Więcej kart"
     },
