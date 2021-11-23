@@ -61,7 +61,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-enterActive {
   transform: translateX(0%);
-  transition: transform duration(slow) easing(out);
+  transition: transform duration(slow) var(--p-ease-out);
 }
 
 .Navigation-exit {
@@ -70,7 +70,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-exitActive {
   transform: translateX(-100%);
-  transition: transform duration(slow) easing(out);
+  transition: transform duration(slow) var(--p-ease-out);
 }
 
 .NavigationDismiss {
