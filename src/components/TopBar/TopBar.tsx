@@ -4,7 +4,6 @@ import {MobileHamburgerMajor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
-import {useTheme} from '../../utilities/theme';
 import {useToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
@@ -61,7 +60,8 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   contextControl,
 }: TopBarProps) {
   const i18n = useI18n();
-  const {logo} = useTheme();
+  // TODO: This behavior will be re-enabled in a separate PR.
+  const logo = undefined as {[key: string]: any} | undefined;
 
   const {
     value: focused,
@@ -108,10 +108,11 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           url={logo.url || ''}
           className={styles.LogoLink}
           style={{width}}
+          aria-label={logo.accessibilityLabel || ''}
         >
           <Image
             source={logo.topBarSource || ''}
-            alt={logo.accessibilityLabel || ''}
+            alt=""
             className={styles.Logo}
             style={{width}}
           />

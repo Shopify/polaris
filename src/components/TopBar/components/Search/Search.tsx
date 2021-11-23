@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ThemeProvider} from '../../../ThemeProvider';
+import {CustomProperties} from '../../../CustomProperties';
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';
 
@@ -35,11 +35,11 @@ export function Search({
     <>
       {overlayMarkup}
       <div className={classNames(styles.Search, visible && styles.visible)}>
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
+        <CustomProperties colorScheme="dark">
           <div className={styles.SearchContent}>
             <div className={styles.Results}>{children}</div>
           </div>
-        </ThemeProvider>
+        </CustomProperties>
       </div>
     </>
   );
