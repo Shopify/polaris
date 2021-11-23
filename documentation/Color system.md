@@ -265,7 +265,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-font-weight-medium`                  | `500`                                                                                                        |
 | `--p-font-weight-semibold`                | `600`                                                                                                        |
 | `--p-font-weight-bold`                    | `700`                                                                                                        |
-| `--p-duration-0`                          | `0ms`                                                                                                        |
 | `--p-duration-100`                        | `100ms`                                                                                                      |
 | `--p-duration-150`                        | `150ms`                                                                                                      |
 | `--p-duration-200`                        | `200ms`                                                                                                      |

@@ -12,7 +12,6 @@ export const Tokens = {
   fontWeightBold: 700,
 
   // Duration
-  duration0: '0ms',
   duration100: '100ms',
   duration150: '150ms',
   duration200: '200ms',
