@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
     },
-    "Spinner": {
-      "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Meer tabbladen"
     },
