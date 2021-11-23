@@ -4,10 +4,6 @@ $body-text-height: rem(8px);
 $body-text-line-height: rem(12px);
 $body-text-last-line-width: 80%;
 
-.SkeletonBodyTextContainer {
-  @include skeleton-shimmer;
-}
-
 .SkeletonBodyText {
   height: $body-text-height;
 
