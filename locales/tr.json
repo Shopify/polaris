@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
     },
-    "Spinner": {
-      "warningMessage": "{color} rengi {size} boyutlu çarklarda kullanıma yönelik değildir. Büyük çarklarda kullanılabilen renkler şunlardır: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Daha fazla sekme"
     },
