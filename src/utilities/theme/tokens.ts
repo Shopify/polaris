@@ -52,5 +52,5 @@ export const Tokens = {
 };
 
 function buildBannerBorder(cssVar: string) {
-  return `inset 0 0.1rem 0 0 var(${cssVar}), inset 0 0 0 0.1rem, var(${cssVar})`;
+  return `inset 0 0.1rem 0 0 var(${cssVar}), inset 0 0 0 0.1rem var(${cssVar})`;
 }
