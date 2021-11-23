@@ -32,7 +32,6 @@ export const legacyTokens: Tokens = {
   'override-visible': 'visible',
   'override-zero': '0',
   'override-loading-z-index': '514',
-  'button-font-weight': '500',
   'non-null-content': '""',
   'choice-size': '2rem',
   'icon-size': '1rem',
@@ -61,7 +60,6 @@ export const legacyTokens: Tokens = {
   'range-slider-thumb-size-base': '1.6rem',
   'range-slider-thumb-size-active': '2.4rem',
   'range-slider-thumb-scale': '1.5',
-  'badge-font-weight': '400',
   'frame-offset': '0px',
 };
 
