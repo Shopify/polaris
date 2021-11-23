@@ -36,19 +36,19 @@ export const Tokens = {
   bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
   bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
   badgeMixBlendMode: 'luminosity',
-  thinBorderSubdued: `${'0.1rem'} solid var(--p-border-subdued)`,
+  thinBorderSubdued: '0.1rem solid var(--p-border-subdued)',
   textFieldSpinnerOffset: '0.2rem',
   textFieldFocusRingOffset: '-0.4rem',
-  textFieldFocusRingBorderRadius: '0.7px',
+  textFieldFocusRingBorderRadius: '0.7rem',
   buttonGroupItemSpacing: '-0.1rem',
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '400',
   rangeSliderThumbSizeBase: '1.6rem',
   rangeSliderThumbSizeActive: '2.4rem',
+  rangeSliderThumbScale: '1.5',
+  badgeFontWeight: '400',
 };
 
 function buildBannerBorder(cssVar: string) {

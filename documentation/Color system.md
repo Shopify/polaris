@@ -289,13 +289,13 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-thin-border-subdued`                 | `0.1rem solid var(--p-border-subdued)`                                                                        |
 | `--p-text-field-spinner-offset`           | `0.2rem`                                                                                                      |
 | `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                                     |
-| `--p-text-field-focus-ring-border-radius` | `0.7px`                                                                                                       |
+| `--p-text-field-focus-ring-border-radius` | `0.7rem`                                                                                                      |
 | `--p-button-group-item-spacing`           | `-0.1rem`                                                                                                     |
 | `--p-duration-1-0-0`                      | `100ms`                                                                                                       |
 | `--p-duration-1-5-0`                      | `150ms`                                                                                                       |
 | `--p-ease-in`                             | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                                |
 | `--p-ease`                                | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                            |
-| `--p-range-slider-thumb-scale`            | `1.5`                                                                                                         |
-| `--p-badge-font-weight`                   | `400`                                                                                                         |
 | `--p-range-slider-thumb-size-base`        | `1.6rem`                                                                                                      |
 | `--p-range-slider-thumb-size-active`      | `2.4rem`                                                                                                      |
+| `--p-range-slider-thumb-scale`            | `1.5`                                                                                                         |
+| `--p-badge-font-weight`                   | `400`                                                                                                         |
