@@ -5,6 +5,12 @@ export const Tokens = {
   borderRadiusWide: rem('8px'),
   borderRadiusFull: '50%',
 
+  // Easing
+  ease: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+  easeIn: 'cubic-bezier(0.36, 0, 1, 1)',
+  easeOut: 'cubic-bezier(0, 0, 0.42, 1)',
+  easeExcite: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)',
+
   // Font-Weights
   fontWeightRegular: 400,
   fontWeightMedium: 500,
@@ -41,8 +47,6 @@ export const Tokens = {
   buttonGroupItemSpacing: rem('-1px'),
   duration100: '100ms',
   duration150: '150ms',
-  easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
-  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
 };

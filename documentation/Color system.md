@@ -261,6 +261,10 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-border-radius-base`                  | `0.4rem`                                                                                                     |
 | `--p-border-radius-wide`                  | `0.8rem`                                                                                                     |
 | `--p-border-radius-full`                  | `50%`                                                                                                        |
+| `--p-ease`                                | `cubic-bezier(0.25, 0.1, 0.25, 1)`                                                                           |
+| `--p-ease-in`                             | `cubic-bezier(0.36, 0, 1, 1)`                                                                                |
+| `--p-ease-out`                            | `cubic-bezier(0, 0, 0.42, 1)`                                                                                |
+| `--p-ease-excite`                         | `cubic-bezier(0.18, 0.67, 0.6, 1.22)`                                                                        |
 | `--p-font-weight-regular`                 | `400`                                                                                                        |
 | `--p-font-weight-medium`                  | `500`                                                                                                        |
 | `--p-font-weight-semibold`                | `600`                                                                                                        |
@@ -289,7 +293,5 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-button-group-item-spacing`           | `-0.1rem`                                                                                                    |
 | `--p-duration-100`                        | `100ms`                                                                                                      |
 | `--p-duration-150`                        | `150ms`                                                                                                      |
-| `--p-ease-in`                             | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                               |
-| `--p-ease`                                | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                           |
 | `--p-range-slider-thumb-size-base`        | `1.6rem`                                                                                                     |
 | `--p-range-slider-thumb-size-active`      | `2.4rem`                                                                                                     |
