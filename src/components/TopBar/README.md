@@ -15,7 +15,6 @@ keywords:
   - user
   - menu
   - logo
-omitAppProvider: true
 ---
 
 # Top bar
@@ -253,26 +252,7 @@ function TopBarExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <AppProvider
-        i18n={{
-          Polaris: {
-            Avatar: {
-              label: 'Avatar',
-              labelWithInitials: 'Avatar with initials {initials}',
-            },
-            Frame: {skipToContent: 'Skip to content'},
-            TopBar: {
-              toggleMenuLabel: 'Toggle menu',
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup} logo={logo} />
-      </AppProvider>
+      <Frame topBar={topBarMarkup} logo={logo} />
     </div>
   );
 }
@@ -377,31 +357,11 @@ function TopBarExample() {
 
   return (
     <div style={{height: '250px'}}>
-      <AppProvider
-        theme={theme}
-        i18n={{
-          Polaris: {
-            Avatar: {
-              label: 'Avatar',
-              labelWithInitials: 'Avatar with initials {initials}',
-            },
-            Frame: {skipToContent: 'Skip to content'},
-            TopBar: {
-              toggleMenuLabel: 'Toggle menu',
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup} logo={logo}>
-          <Button onClick={handleThemeChange}>
-            Toggle between dark and light themes
-          </Button>
-        </Frame>
-      </AppProvider>
+      <Frame topBar={topBarMarkup} logo={logo}>
+        <Button onClick={handleThemeChange}>
+          Toggle between dark and light themes
+        </Button>
+      </Frame>
     </div>
   );
 }
