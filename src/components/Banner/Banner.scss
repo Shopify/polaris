@@ -9,7 +9,7 @@ $spinner-size: rem(20px);
 @mixin banner-variants($in-page) {
   --p-banner-background: var(--p-background);
   --p-banner-border: var(--p-banner-border-default);
-  transition: box-shadow duration() easing();
+  transition: box-shadow duration() var(--p-ease);
   transition-delay: var(--p-duration-100);
   box-shadow: var(--p-banner-border);
 
@@ -265,7 +265,7 @@ $spinner-size: rem(20px);
 .Text {
   box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0.25) inset;
   will-change: box-shadow;
-  transition: box-shadow duration() easing();
+  transition: box-shadow duration() var(--p-ease);
 }
 
 .Button {

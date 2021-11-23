@@ -91,7 +91,7 @@ $skip-vertical-offset: rem(10px);
   pointer-events: none;
   will-change: opacity;
   cursor: pointer;
-  transition: opacity var(--p-duration-100) easing();
+  transition: opacity var(--p-duration-100) var(--p-ease);
 
   .Navigation-visible & {
     pointer-events: all;

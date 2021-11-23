@@ -78,12 +78,12 @@ $stacking-order: (
   outline: none;
   color: var(--p-text);
   will-change: fill, color;
-  transition: fill duration() easing(), color duration() easing();
+  transition: fill duration() var(--p-ease), color duration() var(--p-ease);
   appearance: textfield;
 
   &::placeholder {
     color: var(--p-text);
-    transition: (duration() - 33ms) color easing() 33ms;
+    transition: (duration() - 33ms) color var(--p-ease) 33ms;
   }
 
   &::-webkit-search-decoration,
@@ -104,7 +104,7 @@ $stacking-order: (
   transform: translateY(-50%);
 
   svg {
-    transition: (duration() - 33ms) fill easing() 33ms;
+    transition: (duration() - 33ms) fill var(--p-ease) 33ms;
   }
 }
 
@@ -150,7 +150,7 @@ $stacking-order: (
     var(--top-bar-background-lighter)
   );
   will-change: background-color;
-  transition: background-color duration() easing();
+  transition: background-color duration() var(--p-ease);
   border-radius: var(--p-border-radius-base);
   animation: toLightBackground 0.01ms;
 }

@@ -120,7 +120,7 @@ $breakpoint: 768px;
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity duration() easing(), fill duration() easing();
+  transition: opacity duration() var(--p-ease), fill duration() var(--p-ease);
 }
 
 .Heading {
@@ -132,7 +132,7 @@ $breakpoint: 768px;
   align-items: baseline;
   @include recolor-icon(var(--p-icon));
   color: var(--p-text);
-  transition: color duration() easing();
+  transition: color duration() var(--p-ease);
   cursor: pointer;
   padding: spacing(tight);
   margin: spacing(tight);
