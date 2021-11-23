@@ -19,7 +19,7 @@ describe('useFrame', () => {
     consoleErrorSpy.mockRestore();
   });
 
-  it('returns frame context', () => {
+  it('returns context', () => {
     const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
   });
