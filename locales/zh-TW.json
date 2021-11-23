@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
     },
-    "Spinner": {
-      "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "更多索引標籤"
     },

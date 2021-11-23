@@ -6,6 +6,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
+- Removed animtion from `Skeleton` components ([#](https://github.com/Shopify/polaris-react/pull/))
 - Allow for `readonly` items in ActionList ([#4623](https://github.com/Shopify/polaris-react/pull/4623))
 - Updated `VisuallyHidden` styles to not use `top` or `clip` ([#4641](https://github.com/Shopify/polaris-react/pull/4641))
 - Added `PlainAction` type to `ComplexAction`. ([#4489](https://github.com/Shopify/polaris-react/pull/4489))
@@ -20,6 +21,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Fixed try-catch syntax error in `Modal` ([#4553](https://github.com/Shopify/polaris-react/pull/4553))
 - Fixed an issue with `TextField` where date and time were uneditable on click ([#4671](https://github.com/Shopify/polaris-react/pull/4671))
+- Fixed an issue with `Popover` where the transform property interfered with descendants positioning ([#4685](https://github.com/Shopify/polaris-react/pull/4685))
+- Fixed screen reader accessibility issue of the `Checkbox` component ([#4631](https://github.com/Shopify/polaris-react/pull/4631))
 
 ### Documentation
 

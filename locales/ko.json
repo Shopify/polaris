@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "페이지 로딩"
     },
-    "Spinner": {
-      "warningMessage": "{color} 색상은 {size} 스피너에 사용할 수 없습니다. 대형 스피너에 사용할 수 있는 색상: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "탭 더 보기"
     },

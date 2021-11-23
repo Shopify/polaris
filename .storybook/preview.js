@@ -55,16 +55,3 @@ const withContextsDecorator = withContexts([
 ]);
 
 export const decorators = [withContextsDecorator];
-
-function strToHex(str) {
-  if (str.charAt(0) === '#') return str;
-
-  return `#${str
-    .slice(5, -1)
-    .split(',')
-    .slice(0, 3)
-    .map(Number)
-    .map((n) => n.toString(16))
-    .map((n) => n.padStart(2, '0'))
-    .join('')}`;
-}
