@@ -15,7 +15,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
-- Move logo description from `<img alt>` to `<UnstyledLink ariaLabel>` in `TopBar` and `Navigation` ([#4713](https://github.com/Shopify/polaris-react/pull/4713))
+- Moved logo description from `<img alt>` to `<UnstyledLink ariaLabel>` in `TopBar` and `Navigation` ([#4713](https://github.com/Shopify/polaris-react/pull/4713))
 
 ### Bug fixes
 
