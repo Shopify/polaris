@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 7.4.1 - 2021-11-18
+
+### Bug fixes
+
+- Added back miscellaneous css custom properties ([#4679](https://github.com/Shopify/polaris-react/pull/4679))
+- Added back custom and unnecessary font weight properties ([#4677](https://github.com/Shopify/polaris-react/pull/4677))
+
 ## 7.4.0 - 2021-11-18
 
 ### Enhancements
@@ -39,8 +46,6 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 - Removed filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
 - Removed all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
 - Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
-- Removed miscellaneous css custom properties ([#4620](https://github.com/Shopify/polaris-react/pull/4620))
-- Removed custom and unnecessary font weight properties ([#4648](https://github.com/Shopify/polaris-react/pull/4648))
 
 ### Deprecations
 
