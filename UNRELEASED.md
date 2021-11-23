@@ -4,6 +4,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
+- Removed the duration() function and replaced any instances with tokens ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
+
 ### Enhancements
 
 - Allow for `readonly` items in ActionList ([#4623](https://github.com/Shopify/polaris-react/pull/4623))
