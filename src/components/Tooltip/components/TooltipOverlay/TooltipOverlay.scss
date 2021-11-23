@@ -31,7 +31,7 @@ $content-max-width: rem(200px);
   background-color: var(--p-surface);
   color: var(--p-text);
   max-width: $content-max-width;
-  padding: spacing(extra-tight) spacing(tight);
+  padding: var(--p-space-1) spacing(tight);
   word-break: break-word;
 }
 

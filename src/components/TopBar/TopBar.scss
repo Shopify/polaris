@@ -113,7 +113,7 @@ $context-control-expand-after: 1400px;
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
-    margin-right: spacing(extra-tight);
+    margin-right: var(--p-space-1);
   }
 }
 
