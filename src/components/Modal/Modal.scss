@@ -25,6 +25,6 @@ $small-width: rem(620px);
 }
 
 .Spinner {
-  margin: spacing();
+  margin: var(--p-space-4);
   text-align: center;
 }

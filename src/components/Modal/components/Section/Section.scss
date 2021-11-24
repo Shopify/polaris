@@ -2,7 +2,7 @@
 
 .Section {
   flex: 0 0 auto;
-  padding: spacing(loose);
+  padding: var(--p-space-5);
 
   &:not(:last-of-type) {
     border-bottom: border('divider');

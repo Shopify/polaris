@@ -4,13 +4,13 @@
   display: flex;
   align-items: flex-start;
   flex-shrink: 0;
-  padding: spacing() spacing(loose);
+  padding: var(--p-space-4) var(--p-space-5);
   border-bottom: border('divider');
 }
 
 .titleHidden {
   position: absolute;
-  right: spacing(tight);
+  right: var(--p-space-2);
   z-index: 1;
 
   .Title {
