@@ -108,6 +108,7 @@ export function PolarisTestProvider({
 function noop() {}
 
 function createFrameContext({
+  logo = undefined,
   showToast = noop,
   hideToast = noop,
   setContextualSaveBar = noop,
@@ -116,6 +117,7 @@ function createFrameContext({
   stopLoading = noop,
 }: Partial<FrameContextType> = {}): FrameContextType {
   return {
+    logo,
     showToast,
     hideToast,
     setContextualSaveBar,

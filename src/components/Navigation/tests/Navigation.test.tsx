@@ -10,7 +10,7 @@ describe('<Navigation />', () => {
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('renders an image if the theme provider is present', () => {
     const navigation = mountWithApp(<Navigation location="/" />, {
-      // theme: {logo: {url: 'https://shopify.com/logo'}},
+      frame: {logo: {url: 'https://shopify.com/logo'}},
     });
     expect(navigation).toContainReactComponent(Image);
   });
