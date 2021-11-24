@@ -9,9 +9,5 @@ addons.setConfig({
     brandUrl: '/',
     brandImage: null,
     appBorderRadius: 0,
-    // TODO investigate removing these values
-    appBg: '#f4f6f8',
-    contentBg: '#f4f6f8',
-    textColor: '#212b36',
   }),
 });
