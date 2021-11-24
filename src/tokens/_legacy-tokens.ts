@@ -1,4 +1,4 @@
-import type {TokenObject} from './tokens';
+import type {TokensGroup} from './tokens';
 
 /**
  * This file contains legacy design tokens that have not yet been categorized
@@ -6,7 +6,7 @@ import type {TokenObject} from './tokens';
  * categorizing tokens by group, moving them into separate files, and/or
  * deprecating any undesired tokens.
  */
-export const legacyTokens: TokenObject = {
+export const legacyTokens: TokensGroup = {
   'border-radius-slim': '0.2rem',
   'border-radius-base': '0.4rem',
   'border-radius-wide': '0.8rem',

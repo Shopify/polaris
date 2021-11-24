@@ -1,6 +1,6 @@
-import type {TokenObject} from './tokens';
+import type {TokensGroup} from './tokens';
 
-export const typography: TokenObject = {
+export const typography: TokensGroup = {
   'font-weight-regular': '400',
   'font-weight-medium': '500',
   'font-weight-semibold': '600',
