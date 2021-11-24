@@ -5,12 +5,6 @@ export const Tokens = {
   borderRadiusWide: '0.8rem',
   borderRadiusFull: '50%',
 
-  // Easing
-  ease: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
-  easeIn: 'cubic-bezier(0.36, 0, 1, 1)',
-  easeOut: 'cubic-bezier(0, 0, 0.42, 1)',
-  easeExcite: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)',
-
   // Font-Weights
   fontWeightRegular: 400,
   fontWeightMedium: 500,
