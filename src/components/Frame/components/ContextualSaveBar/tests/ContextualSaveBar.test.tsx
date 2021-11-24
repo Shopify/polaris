@@ -283,7 +283,7 @@ describe('<ContextualSaveBar />', () => {
     });
   });
 
-  it('renders a CustomProperties with inverted theme', () => {
+  it('renders a CustomProperties with a dark color scheme', () => {
     const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
     expect(contextualSaveBar).toContainReactComponent(CustomProperties, {
       colorScheme: 'dark',
