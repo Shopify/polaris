@@ -4,7 +4,7 @@ import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 import {classNames} from '../../../../utilities/css';
-import type {ContextualSaveBarProps} from '../../../../utilities/frame';
+import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -22,9 +22,7 @@ export function ContextualSaveBar({
   contextControl,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  // TODO: This behavior will be re-enabled in a separate PR.
-  const logo = undefined as {[key: string]: any} | undefined;
-
+  const {logo} = useFrame();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,

@@ -1,7 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {motion} from '../../../designTokens';
 import {Collapsible, CollapsibleProps} from '../Collapsible';
 
 describe('<Collapsible />', () => {
@@ -69,7 +68,7 @@ describe('<Collapsible />', () => {
 
   describe('Transition', () => {
     it('passes a duration property', () => {
-      const duration = motion['duration-1'];
+      const duration = '150ms';
       const collapsible = mountWithApp(
         <Collapsible id="test-collapsible" open transition={{duration}} />,
       );
@@ -78,7 +77,7 @@ describe('<Collapsible />', () => {
     });
 
     it('passes a timingFunction property', () => {
-      const timingFunction = motion['easing-base'];
+      const timingFunction = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
       const collapsible = mountWithApp(
         <Collapsible
           id="test-collapsible"

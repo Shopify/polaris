@@ -308,22 +308,19 @@ function FrameExample() {
     </Modal>
   );
 
-  const theme = {
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-    },
+  const logo = {
+    width: 124,
+    topBarSource:
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+    contextualSaveBarSource:
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+    url: 'http://jadedpixel.com',
+    accessibilityLabel: 'Jaded Pixel',
   };
 
   return (
     <div style={{height: '500px'}}>
       <AppProvider
-        theme={theme}
         i18n={{
           Polaris: {
             Avatar: {
@@ -359,6 +356,7 @@ function FrameExample() {
         }}
       >
         <Frame
+          logo={logo}
           topBar={topBarMarkup}
           navigation={navigationMarkup}
           showMobileNavigation={mobileNavigationActive}
@@ -646,17 +644,16 @@ function FrameExample() {
     </Modal>
   );
 
-  const theme = {
-    frameOffset: '60px',
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-    },
+  const theme = {frameOffset: '60px'};
+
+  const logo = {
+    width: 124,
+    topBarSource:
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+    contextualSaveBarSource:
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+    url: 'http://jadedpixel.com',
+    accessibilityLabel: 'Jaded Pixel',
   };
 
   return (
@@ -698,6 +695,7 @@ function FrameExample() {
         }}
       >
         <Frame
+          logo={logo}
           globalRibbon={
             <div style={{background: '#C0FFEE', padding: '30px'}}>
               Global ribbon
