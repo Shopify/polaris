@@ -74,7 +74,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   @include page-after-resource-list-small {
     width: auto;
     justify-content: flex-start;
-    margin-right: spacing(tight);
+    margin-right: var(--p-space-2);
   }
 
   .Group-measuring & {

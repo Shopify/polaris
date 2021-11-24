@@ -2,8 +2,6 @@
 
 $accent-height: 3px;
 $ribbon-flex-basis: rem(32px);
-$secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
-$secondary-action-horizontal-padding: 1.5 * spacing(tight);
 $spinner-size: rem(20px);
 
 @mixin banner-variants($in-page) {
@@ -57,6 +55,9 @@ $spinner-size: rem(20px);
 
 .Banner {
   --p-rgb-text: 33, 43, 54;
+  --p-secondary-action-horizontal-padding: calc(1.5 * var(--p-space-2));
+  --p-secondary-action-vertical-padding: 0.5 *
+    (control-height() - line-height(body));
   position: relative;
   display: flex;
 
@@ -148,69 +149,68 @@ $spinner-size: rem(20px);
 }
 
 .withinContentContainer {
-  $bannerSpacing: rem(14px);
-  $bannerOffset: $bannerSpacing - spacing();
-  padding: spacing() spacing() $bannerSpacing;
+  --p-banner-spacing: rem(14px);
+  --p-banner-offset: calc(var(--p-banner-spacing) - var(--p-space-4));
+  padding: var(--p-space-4) var(--p-space-4) var(--p-banner-spacing);
 
   .ContentWrapper {
-    margin-top: $bannerOffset;
+    margin-top: var(--p-banner-offset);
   }
 
   .Dismiss {
-    top: spacing();
-    right: spacing(base-tight);
+    top: var(--p-space-4);
+    right: var(--p-space-3);
     position: absolute;
   }
 
   .Ribbon {
-    padding-right: spacing();
+    padding-right: var(--p-space-4);
   }
 
   @include banner-variants($in-page: false);
 
   + .Banner {
-    margin-top: spacing(tight);
+    margin-top: var(--p-space-2);
   }
 
   .Actions {
-    padding: spacing(base-tight) 0 var(--p-space-1) 0;
+    padding: var(--p-space-3) 0 var(--p-space-1) 0;
   }
 }
 
 .withinPage {
+  --p-banner-spacing: #{rem(18px)};
+  --p-banner-offset: calc(var(--p-banner-spacing) - var(--p-space-5));
   border-radius: 0 0 border-radius() border-radius();
-
-  $bannerSpacing: rem(18px);
-  $bannerOffset: $bannerSpacing - spacing(loose);
-  padding: spacing(loose) spacing(loose) $bannerSpacing;
+  padding: var(--p-space-5) var(--p-space-5) var(--p-banner-spacing);
 
   .ContentWrapper {
-    margin-top: $bannerOffset;
+    margin-top: var(--p-banner-offset);
   }
 
   @include banner-variants(true);
 
   + .Banner {
-    margin-top: spacing(loose);
+    margin-top: var(--p-space-5);
   }
 
   .Ribbon {
-    padding-right: spacing();
+    padding-right: var(--p-space-4);
   }
 
   .Actions {
-    padding-top: spacing();
+    padding-top: var(--p-space-4);
   }
 
   .Dismiss {
-    right: spacing();
-    top: spacing(loose);
+    right: var(--p-space-4);
+    top: var(--p-space-5);
     position: absolute;
   }
 }
 
 .hasDismiss {
-  padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  padding-right: calc(2 * var(--p-space-4) + var(--p-icon-size));
 }
 
 .Heading {
@@ -240,10 +240,10 @@ $spinner-size: rem(20px);
   @include unstyled-link;
   display: inline-block;
   text-align: left;
-  margin: (-1 * $secondary-action-vertical-padding)
-    (-0.5 * $secondary-action-horizontal-padding);
-  padding: $secondary-action-vertical-padding
-    $secondary-action-horizontal-padding;
+  margin: calc(-1 * var(--p-secondary-action-vertical-padding))
+    calc(-0.5 * var(--p-secondary-action-horizontal-padding));
+  padding: var(--p-secondary-action-vertical-padding)
+    var(--p-secondary-action-horizontal-padding);
   color: var(--p-text);
   padding-left: rem(6px);
 

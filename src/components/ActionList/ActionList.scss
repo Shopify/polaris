@@ -31,6 +31,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .Title {
   @include text-style-subheading;
+
   --p-titleVerticalSpacing: calc(var(--p-space-2) * 1.5);
   padding: var(--p-space-1) var(--p-space-4) var(--p-titleVerticalSpacing)
     var(--p-space-4);

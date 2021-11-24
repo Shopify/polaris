@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
 .Details {
-  margin-top: -(spacing());
-  padding: spacing();
+  margin-top: calc(-1 * (var(--p-space-4)));
+  padding: var(--p-space-4);
 }

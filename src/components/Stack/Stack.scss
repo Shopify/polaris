@@ -2,11 +2,9 @@
 
 .Stack {
   --p-stack-spacing: var(--p-space-4);
-
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-
   margin-top: calc(-1 * var(--p-stack-spacing));
   margin-left: calc(-1 * var(--p-stack-spacing));
 
