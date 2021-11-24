@@ -149,7 +149,7 @@ describe('<CustomProperties />', () => {
 
   describe('getCustomProperties', () => {
     it('creates a string of CSS custom properties', () => {
-      const customProperties = getCustomProperties(mockTokens);
+      const customProperties = getCustomProperties(mockTokensGroup);
 
       expect(customProperties).toBe(expectedCustomProperties);
     });
