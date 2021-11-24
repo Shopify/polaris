@@ -20,9 +20,11 @@ export const FormLayout = memo(function FormLayout({
   );
 }) as NamedExoticComponent<FormLayoutProps> & {
   Group: typeof Group;
+  Item: typeof Item;
 };
 
 FormLayout.Group = Group;
+FormLayout.Item = Item;
 
 function wrapChildren(child: React.ReactElement, index: number) {
   if (isElementOfType(child, Group)) {

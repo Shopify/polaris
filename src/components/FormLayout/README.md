@@ -163,6 +163,32 @@ Field groups will wrap automatically on smaller screens.
 
 <!-- /content-for -->
 
+### Form Layout with custom widths
+
+<!-- example-for: web -->
+
+Pass in the `size` prop (`small | medium | large | full`) to `FormLayout.Item` to render form controls in custom widths.
+
+```jsx
+<FormLayout>
+  <FormLayout.Item size="small">
+    <TextField label="Postal Code" onChange={() => {}} autoComplete="off" />
+  </FormLayout.Item>
+  <FormLayout.Group>
+    <FormLayout.Item size="large">
+      <TextField label="Address" onChange={() => {}} autoComplete="off" />
+    </FormLayout.Item>
+    <FormLayout.Item size="small">
+      <TextField
+        label="Apartment, suite, etc."
+        onChange={() => {}}
+        autoComplete="off"
+      />
+    </FormLayout.Item>
+  </FormLayout.Group>
+</FormLayout>
+```
+
 ### Condensed field group
 
 <!-- example-for: web -->

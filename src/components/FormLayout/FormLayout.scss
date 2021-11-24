@@ -1,6 +1,12 @@
+/* stylelint-disable function-name-case */
 @import '../../styles/common';
 
-$item-min-size: rem(220px);
+$item-min-size: rem(200px);
+$container-width: rem(684px);
+// This is a trick for container aware responsive design
+// Inspired from: https://heydonworks.com/article/the-flexbox-holy-albatross/
+$modifier: calc(#{$container-width} - 100%);
+$modifier-value: calc(#{$modifier} * 999);
 
 .FormLayout {
   margin-top: -1 * spacing();
@@ -26,7 +32,6 @@ $item-min-size: rem(220px);
   flex: 1 1 $item-min-size;
   margin-top: spacing();
   margin-left: spacing(loose);
-  max-width: calc(100% - #{spacing(loose)});
 
   .grouped & {
     min-width: $item-min-size;
@@ -35,5 +40,24 @@ $item-min-size: rem(220px);
   .condensed & {
     flex-basis: (0.5 * $item-min-size);
     min-width: (0.5 * $item-min-size);
+  }
+
+  &.small {
+    flex-basis: #{$modifier-value};
+    max-width: Max(calc(33.33% - #{spacing(loose)}), #{$modifier-value});
+  }
+
+  &.medium {
+    flex-basis: #{$modifier-value};
+    max-width: Max(calc(50% - #{spacing(loose)}), #{$modifier-value});
+  }
+
+  &.large {
+    flex-basis: #{$modifier-value};
+    max-width: Max(calc(66.66% - #{spacing(loose)}), #{$modifier-value});
+  }
+
+  &.full {
+    max-width: calc(100% - #{spacing(loose)});
   }
 }

@@ -15,6 +15,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
+- Added custom width functionality to `FormLayout` ([#4723](https://github.com/Shopify/polaris-react/pull/4723))
 
 ### Bug fixes
 
@@ -27,6 +28,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Added an example for the `small` `size` variant of `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 - Updated top bar description and keywords to include `header`, changed category to `Navigation` ([#4672](https://github.com/Shopify/polaris-react/pull/4672))
+- Added an example for `FormLayout` custom width ([#4723](https://github.com/Shopify/polaris-react/pull/4723))
 
 ### Development workflow
 
