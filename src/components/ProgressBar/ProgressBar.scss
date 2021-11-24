@@ -72,8 +72,8 @@
 }
 .Animated {
   will-change: width;
-  animation: fillup duration(slowest) var(--p-ease);
-  transition: width duration(slowest) var(--p-ease);
+  animation: fillup var(--p-duration-500) var(--p-ease);
+  transition: width var(--p-duration-500) var(--p-ease);
 }
 
 .Progress,

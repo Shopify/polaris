@@ -40,7 +40,7 @@ $sheet-desktop-width: rem(380px);
 
 .Bottom {
   will-change: transform;
-  transition: transform duration('slow') var(--p-ease);
+  transition: transform var(--p-duration-300) easing('base');
   transform-origin: bottom;
 }
 .enterBottom {
@@ -58,7 +58,7 @@ $sheet-desktop-width: rem(380px);
 
 .Right {
   will-change: transform;
-  transition: transform duration('slow') var(--p-ease);
+  transition: transform var(--p-duration-300) easing('base');
   transform-origin: right;
 }
 .enterRight {

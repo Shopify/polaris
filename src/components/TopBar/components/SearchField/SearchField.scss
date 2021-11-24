@@ -78,12 +78,13 @@ $stacking-order: (
   outline: none;
   color: var(--p-text);
   will-change: fill, color;
-  transition: fill duration() var(--p-ease), color duration() var(--p-ease);
+  transition: fill var(--p-duration-200) var(--p-ease),
+    color var(--p-duration-200) var(--p-ease);
   appearance: textfield;
 
   &::placeholder {
     color: var(--p-text);
-    transition: (duration() - 33ms) color var(--p-ease) 33ms;
+    transition: var(--p-duration-150) color var(--p-ease) 33ms;
   }
 
   &::-webkit-search-decoration,
@@ -104,7 +105,7 @@ $stacking-order: (
   transform: translateY(-50%);
 
   svg {
-    transition: (duration() - 33ms) fill var(--p-ease) 33ms;
+    transition: var(--p-duration-150) fill var(--p-ease) 33ms;
   }
 }
 
@@ -150,7 +151,7 @@ $stacking-order: (
     var(--top-bar-background-lighter)
   );
   will-change: background-color;
-  transition: background-color duration() var(--p-ease);
+  transition: background-color var(--p-duration-200) var(--p-ease);
   border-radius: var(--p-border-radius-base);
   animation: toLightBackground 0.01ms;
 }
