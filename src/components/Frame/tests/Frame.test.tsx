@@ -41,6 +41,22 @@ describe('<Frame />', () => {
   });
 
   describe('skipToContentTarget', () => {
+    it('renders an offset property of 0px by default', () => {
+      const frame = mountWithApp(<Frame />);
+
+      expect(frame).toContainReactComponent('div', {
+        style: {'--p-frame-offset': '0px'} as React.CSSProperties,
+      });
+    });
+
+    it('renders a custom offset property when offset is passed', () => {
+      const frame = mountWithApp(<Frame offset="6rem" />);
+
+      expect(frame).toContainReactComponent('div', {
+        style: {'--p-frame-offset': '6rem'} as React.CSSProperties,
+      });
+    });
+
     it('renders a skip to content link with the proper text', () => {
       const skipToContentLinkText = mountWithApp(<Frame />);
 

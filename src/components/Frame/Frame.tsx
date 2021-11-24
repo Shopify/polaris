@@ -31,6 +31,8 @@ import styles from './Frame.scss';
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
   logo?: Logo;
+  /** A horizontal offset that pushes the frame to the right, leaving empty space on the left */
+  offset?: string;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -63,6 +65,7 @@ interface State {
 }
 
 const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+const FRAME_OFFSET_CUSTOM_PROPERTY = '--p-frame-offset';
 
 const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
@@ -107,6 +110,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       logo,
       children,
       navigation,
+      offset = '0px',
       topBar,
       globalRibbon,
       showMobileNavigation = false,
@@ -261,9 +265,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       removeContextualSaveBar: this.removeContextualSaveBar,
     };
 
+    const offsetProperty = {
+      [FRAME_OFFSET_CUSTOM_PROPERTY]: offset,
+    } as React.CSSProperties;
+
     return (
       <FrameContext.Provider value={context}>
         <div
+          style={offsetProperty}
           className={frameClassName}
           {...layer.props}
           {...navigationAttributes}
