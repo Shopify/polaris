@@ -11,6 +11,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed custom and unnecessary font weight properties ([#4687](https://github.com/Shopify/polaris-react/pull/4687))
 - Removed miscellaneous css custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
 - Removed `skeleton-shimmer` mixin ([#4462](https://github.com/Shopify/polaris-react/pull/4462))
+- Remove `color-multiply` function ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
+- Remove `$color-palette-data` global variable ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
 
 ### New components
 
