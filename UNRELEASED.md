@@ -4,8 +4,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
-- Removed the easing() function and replaced any instances with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
-
 ### Enhancements
 
 - Removed animtion from `Skeleton` components ([#](https://github.com/Shopify/polaris-react/pull/))

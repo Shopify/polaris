@@ -14,6 +14,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Remove `color-multiply` function ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
 - Remove `$color-palette-data` global variable ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
 - Moved `logo` from `ThemeProvider` to `Frame` context ([#4667](https://github.com/Shopify/polaris-react/pull/4667))
+- Removed the easing() function and replaced any instances with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
+- Removed `$easing-data` global variable ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 
 ### New components
 
