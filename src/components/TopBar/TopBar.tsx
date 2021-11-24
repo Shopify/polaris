@@ -108,11 +108,10 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           url={logo.url || ''}
           className={styles.LogoLink}
           style={{width}}
-          aria-label={logo.accessibilityLabel || ''}
         >
           <Image
             source={logo.topBarSource || ''}
-            alt=""
+            alt={logo.accessibilityLabel || ''}
             className={styles.Logo}
             style={{width}}
           />
