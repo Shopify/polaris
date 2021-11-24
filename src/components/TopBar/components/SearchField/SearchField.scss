@@ -84,7 +84,7 @@ $stacking-order: (
 
   &::placeholder {
     color: var(--p-text);
-    transition: (var(--p-duration-200) - 33ms) color easing() 33ms;
+    transition: var(--p-duration-150) color easing() 33ms;
   }
 
   &::-webkit-search-decoration,
