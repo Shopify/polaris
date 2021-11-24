@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
     },
-    "Spinner": {
-      "warningMessage": "Barva ({color}) není určena pro spinnery o velikosti: {size}). Pro velké spinnery jsou k dispozici tyto barvy: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Více karet"
     },

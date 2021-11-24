@@ -36,8 +36,7 @@ export const Checkbox = memo(function Checkbox() {
         <div
           className={wrapperClassName}
           onClick={onInteraction}
-          onKeyUp={onInteraction}
-          onChange={stopPropagation}
+          onKeyUp={noop}
         >
           <PolarisCheckbox
             id={itemId}
@@ -92,8 +91,4 @@ export function CheckboxWrapper({children}: CheckboxWrapperProps) {
   );
 }
 
-function stopPropagation(
-  event: React.MouseEvent | React.KeyboardEvent | React.FormEvent,
-) {
-  event.stopPropagation();
-}
+function noop() {}
