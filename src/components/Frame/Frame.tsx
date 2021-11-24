@@ -29,7 +29,7 @@ import {
 import styles from './Frame.scss';
 
 export interface FrameProps {
-  /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components*/
+  /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
   logo?: Logo;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
