@@ -14,10 +14,10 @@ The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` c
 
 const App = (props) => (
 -  <ThemeProvider theme={{colorScheme: 'dark'}}>
--    {props.children} 
+-    {props.children}
 -  </ThemeProvider>
 +  <CustomProperties colorScheme="dark">
-+    {props.children} 
++    {props.children}
 +  </CustomProperties>
 )
 ```
@@ -31,9 +31,10 @@ import {AppProvider} from '@shopify/polaris-react';
 
 const App = (props) => (
 -  <AppProvider theme={{colorScheme: 'dark'}}>
--    {props.children} 
+-    {props.children}
 -  </AppProvider>
 +  <AppProvider colorScheme="dark">
-+    {props.children} 
++    {props.children}
 +  </AppProvider>
 )
+```
