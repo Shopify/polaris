@@ -85,7 +85,7 @@ $stacking-order: (
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -(spacing(tight));
+    margin-right: calc(-1 * (var(--p-space-2)));
     margin-left: var(--p-space-1);
   }
 
@@ -193,8 +193,8 @@ $stacking-order: (
 .plain {
   @include recolor-icon(var(--p-interactive));
   margin: (-1 * $vertical-padding) rem(-8px);
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -284,7 +284,7 @@ $stacking-order: (
   }
 
   &.sizeLarge {
-    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+    margin: (-1 * $large-vertical-padding) calc(-1 * var(--p-space-5));
   }
 
   &.iconOnly {
@@ -334,12 +334,12 @@ $stacking-order: (
 }
 
 .iconOnly {
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
 
   &.sizeLarge {
-    padding-left: spacing(base-tight);
-    padding-right: spacing(base-tight);
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
   }
 
   .Icon:first-child {
@@ -357,7 +357,7 @@ $stacking-order: (
 
 .sizeSlim {
   min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
+  padding: $slim-vertical-padding var(--p-space-3);
 }
 
 .sizeLarge {

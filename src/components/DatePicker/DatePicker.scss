@@ -10,15 +10,15 @@ $range-end-border-radius: rem(30px);
 .MonthLayout {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: calc(-1 * var(--p-space-4));
+  margin-left: calc(-1 * var(--p-space-4));
 }
 
 .MonthContainer {
   flex: 1 1 rem(230px);
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
+  margin-top: var(--p-space-4);
+  margin-left: var(--p-space-4);
+  max-width: calc(100% - var(--p-space-4));
   min-width: rem(230px);
 }
 
@@ -51,7 +51,7 @@ $range-end-border-radius: rem(30px);
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   background: transparent;
   border: none;
   border-radius: var(--p-border-radius-base);
@@ -143,7 +143,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Weekday {
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   background: transparent;
   font-size: $font-size;
   font-weight: var(--p-font-weight-regular);
@@ -158,7 +158,7 @@ $range-end-border-radius: rem(30px);
 
 .Header {
   position: absolute;
-  top: spacing();
+  top: var(--p-space-4);
   display: flex;
   justify-content: space-between;
   width: 100%;

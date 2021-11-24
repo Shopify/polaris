@@ -5,29 +5,28 @@ $stacking-order: (
   focused: 20,
 );
 
-$plain-horizontal-spacing: spacing(tight);
-$item-spacing: spacing(tight);
-
 .ButtonGroup {
+  --p-plain-horizontal-spacing: var(--p-space-2);
+  --p-item-spacing: var(--p-space-2);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: (-1 * $item-spacing);
-  margin-left: (-1 * $item-spacing);
+  margin-top: calc(-1 * var(--p-item-spacing));
+  margin-left: calc(-1 * var(--p-item-spacing));
 }
 
 .Item {
-  margin-top: $item-spacing;
-  margin-left: $item-spacing;
+  margin-top: var(--p-item-spacing);
+  margin-left: var(--p-item-spacing);
 }
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: $item-spacing + $plain-horizontal-spacing;
+    margin-left: var(--p-item-spacing) + var(--p-plain-horizontal-spacing);
   }
 
   &:not(:last-child) {
-    margin-right: $plain-horizontal-spacing;
+    margin-right: var(--p-plain-horizontal-spacing);
   }
 }
 
@@ -70,21 +69,21 @@ $item-spacing: spacing(tight);
 }
 
 .tight {
-  margin-top: -1 * spacing(tight);
-  margin-left: -1 * spacing(tight);
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 
   .Item {
-    margin-top: spacing(tight);
-    margin-left: spacing(tight);
+    margin-top: var(--p-space-2);
+    margin-left: var(--p-space-2);
   }
 }
 
 .loose {
-  margin-top: -1 * spacing(loose);
-  margin-left: -1 * spacing(loose);
+  margin-top: calc(-1 * var(--p-space-5));
+  margin-left: calc(-1 * var(--p-space-5));
 
   .Item {
-    margin-top: spacing(loose);
-    margin-left: spacing(loose);
+    margin-top: var(--p-space-5);
+    margin-left: var(--p-space-5);
   }
 }
