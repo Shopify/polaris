@@ -1,32 +1,3 @@
-// stylelint-disable-next-line scss/partial-no-import
-@import '../polaris-tokens/colors.color-map';
-
-///
-/// Color data
-///
-/// Shopify color palette, extended specifically for polaris-react.
-///
-/// @type map
-$color-palette-data: $polaris-colors;
-
-// Add state colors to the palette
-$color-palette-data: map-extend(
-  $color-palette-data,
-  (
-    'state': (
-      'hover': rgba(223, 227, 232, 0.3),
-      'focused': rgba(223, 227, 232, 0.3),
-      'active': rgba(179, 188, 245, 0.1),
-      'selected': rgba(179, 188, 245, 0.15),
-      'subdued': rgba(249, 250, 251, 1),
-      'disabled': rgba(249, 250, 251, 1),
-      'hover-destructive': rgba(251, 234, 229, 0.4),
-      'focused-destructive': rgba(251, 234, 229, 0.4),
-      'active-destructive': rgba(220, 56, 37, 0.03),
-    ),
-  )
-);
-
 ///
 /// Color palette for Windows high-contrast mode
 /// See https://bit.ly/2vN9aGO
