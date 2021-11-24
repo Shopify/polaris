@@ -1,11 +1,11 @@
-import type {TokensGroup} from './tokens';
+import type {TokenGroup} from './tokens';
 
 /**
  * All light color-scheme tokens.
  *
  * Note: These values were cut/paste directly from the devtools.
  */
-export const lightColorScheme: TokensGroup = {
+export const lightColorScheme: TokenGroup = {
   background: 'rgba(246, 246, 247, 1)',
   'background-hovered': 'rgba(241, 242, 243, 1)',
   'background-pressed': 'rgba(237, 238, 239, 1)',
@@ -140,7 +140,7 @@ export const lightColorScheme: TokensGroup = {
  *
  * Note: These values were cut/paste directly from the devtools.
  */
-export const darkColorScheme: TokensGroup = {
+export const darkColorScheme: TokenGroup = {
   background: 'rgba(11, 12, 13, 1)',
   'background-hovered': 'rgba(11, 12, 13, 1)',
   'background-pressed': 'rgba(11, 12, 13, 1)',

@@ -3,7 +3,7 @@ import {
   osColorSchemes,
   Tokens,
   ColorScheme,
-  TokensGroup,
+  TokenGroup,
   OSColorSchemes,
 } from '../../tokens';
 
@@ -76,7 +76,7 @@ export function getColorSchemeDeclarations(
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-export function getCustomProperties(tokens: TokensGroup) {
+export function getCustomProperties(tokens: TokenGroup) {
   return Object.entries(tokens)
     .map(([name, value]) => `--p-${name}:${value};`)
     .join('');

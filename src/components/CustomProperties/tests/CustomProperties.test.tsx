@@ -6,7 +6,7 @@ import {
   ColorScheme,
   ColorSchemes,
   Tokens,
-  TokensGroup,
+  TokenGroup,
 } from '../../../tokens';
 import {
   CustomProperties,
@@ -24,19 +24,19 @@ interface ColorSchemeAttribute {
   'color-scheme': ColorScheme;
 }
 
-const mockTokensGroup: TokensGroup = {
+const mockTokenGroup: TokenGroup = {
   'design-token-1': 'valueA',
   'design-token-2': 'valueB',
 };
 
 const mockColorSchemes: ColorSchemes = {
-  light: mockTokensGroup,
-  dark: mockTokensGroup,
+  light: mockTokenGroup,
+  dark: mockTokenGroup,
 };
 
 const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
-  motion: mockTokensGroup,
+  motion: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
   legacyTokens: {},
   typography: {},
@@ -149,7 +149,7 @@ describe('<CustomProperties />', () => {
 
   describe('getCustomProperties', () => {
     it('creates a string of CSS custom properties', () => {
-      const customProperties = getCustomProperties(mockTokensGroup);
+      const customProperties = getCustomProperties(mockTokenGroup);
 
       expect(customProperties).toBe(expectedCustomProperties);
     });
