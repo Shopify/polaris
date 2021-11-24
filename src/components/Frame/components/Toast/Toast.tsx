@@ -4,10 +4,10 @@ import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
-import {ThemeProvider} from '../../../ThemeProvider';
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
+import {CustomProperties} from '../../../CustomProperties';
 
 import styles from './Toast.scss';
 
@@ -64,13 +64,13 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <ThemeProvider theme={{colorScheme: 'inverse'}}>
+    <CustomProperties colorScheme="dark">
       <div className={className}>
         <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
         {content}
         {actionMarkup}
         {dismissMarkup}
       </div>
-    </ThemeProvider>
+    </CustomProperties>
   );
 }

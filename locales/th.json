@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"
     },
-    "Spinner": {
-      "warningMessage": "สี {color} ไม่ได้มีไว้เพื่อใช้กับสปินเนอร์ขนาด {size} สีที่มีให้บริการสำหรับสปินเนอร์ขนาดใหญ่คือ: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "แท็บเพิ่มเติม"
     },

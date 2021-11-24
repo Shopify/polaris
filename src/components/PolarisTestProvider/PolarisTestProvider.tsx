@@ -4,12 +4,7 @@ import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
-import {
-  ThemeContext,
-  ThemeConfig,
-  buildThemeContext,
-  buildCustomProperties,
-} from '../../utilities/theme';
+import {CustomProperties, CustomPropertiesProps} from '../CustomProperties';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
@@ -42,7 +37,7 @@ export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
   i18n?: ConstructorParameters<typeof I18n>[0];
   link?: LinkLikeComponent;
-  theme?: ThemeConfig;
+  colorScheme?: CustomPropertiesProps['colorScheme'];
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: FeaturesConfig;
   // Contexts provided by Frame
@@ -64,7 +59,7 @@ export function PolarisTestProvider({
   children,
   i18n,
   link,
-  theme = {},
+  colorScheme = 'light',
   mediaQuery,
   features = {},
   frame,
@@ -76,11 +71,6 @@ export function PolarisTestProvider({
   const stickyManager = new StickyManager();
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
-
-  const processedThemeConfig = {...theme, colorScheme: 'light' as const};
-
-  const customProperties = buildCustomProperties(processedThemeConfig);
-  const mergedTheme = buildThemeContext(processedThemeConfig, customProperties);
 
   const mergedFrame = createFrameContext(frame);
 
@@ -94,7 +84,7 @@ export function PolarisTestProvider({
             <StickyManagerContext.Provider value={stickyManager}>
               <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeContext.Provider value={mergedTheme}>
+                  <CustomProperties colorScheme={colorScheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
                       <PortalsManager>
                         <FocusManager>
@@ -104,7 +94,7 @@ export function PolarisTestProvider({
                         </FocusManager>
                       </PortalsManager>
                     </MediaQueryContext.Provider>
-                  </ThemeContext.Provider>
+                  </CustomProperties>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>

@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
     },
-    "Spinner": {
-      "warningMessage": "Väriä {color} ei ole tarkoitus käyttää koon {size} spinnereissä. Suurten spinnerien värit ovat: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Lisää välilehtiä"
     },

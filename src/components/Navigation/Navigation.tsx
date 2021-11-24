@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {Scrollable} from '../Scrollable';
-import {useTheme} from '../../utilities/theme';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -30,7 +29,8 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
   ariaLabelledBy,
 }: NavigationProps) {
-  const {logo} = useTheme();
+  // TODO: This behavior will be re-enabled in a separate PR.
+  const logo = undefined as {[key: string]: any} | undefined;
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (
@@ -39,10 +39,11 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
         url={logo.url || ''}
         className={styles.LogoLink}
         style={{width}}
+        alt={logo.accessibilityLabel || ''}
       >
         <Image
           source={logo.topBarSource || ''}
-          alt={logo.accessibilityLabel || ''}
+          alt=""
           className={styles.Logo}
           style={{width}}
         />
