@@ -15,7 +15,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
-- Added `pxtorem` dependency to automatically convert px values to rem ([#4701](https://github.com/Shopify/polaris-react/pull/)4701)
 
 ### Bug fixes
 
@@ -33,9 +32,16 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Tightened up what absolute imports are allowed. Removed `baseUrl` from `tsconfig.json`. Attempting to do an absolute import from `src/X` or `components/X` now results in a error when type-checking. ([#4643](https://github.com/Shopify/polaris-react/pull/4643))
 
+### New dependencies
+
+- Added `posctcss-pxtorem` to automatically convert px values to rem ([#4701](https://github.com/Shopify/polaris-react/pull/)4701)
+
 ### Dependency upgrades
 
-- Bumped `postcss` to v8.0.0 ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
+- Bumped `postcss` to `v8.3.1` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
+- Bumped `@shopify/postcss-plugin` to `v5.0.1` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
+- Bumped `postcss-loader` to `v4.2.0` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
+- Bumped `postcss-modules` to `v4.2.2` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
 
 ### Code quality
 
