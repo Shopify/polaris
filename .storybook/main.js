@@ -66,7 +66,6 @@ module.exports = {
                     replace: true,
                     propList: ['*'],
                     selectorBlackList: [],
-                    browsers: ['extends @shopify/browserslist-config'],
                   }),
                 ],
               },
