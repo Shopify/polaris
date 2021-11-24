@@ -331,6 +331,11 @@
       "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
       "selectItem": "Seç: {resourceName}",
       "selectButtonText": "Seç"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} için işlemleri görüntüle"
+      }
     }
   }
 }
