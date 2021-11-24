@@ -1,8 +1,8 @@
 export const Tokens = {
   // Border Radiuses
-  borderRadiusSlim: rem('2px'),
-  borderRadiusBase: rem('4px'),
-  borderRadiusWide: rem('8px'),
+  borderRadiusSlim: '0.2rem',
+  borderRadiusBase: '0.4rem',
+  borderRadiusWide: '0.8rem',
   borderRadiusFull: '50%',
 
   // Font-Weights
@@ -25,35 +25,28 @@ export const Tokens = {
 
   // Overrides
   overrideLoadingZIndex: '514',
-  choiceSize: rem('20px'),
-  iconSize: rem('10px'),
-  choiceMargin: rem('1px'),
-  controlBorderWidth: rem('2px'),
+  choiceSize: '2rem',
+  iconSize: '1rem',
+  choiceMargin: '0.1rem',
+  controlBorderWidth: '0.2rem',
   bannerBorderDefault: buildBannerBorder('--p-border-neutral-subdued'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success-subdued'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
   bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
   bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
-  thinBorderSubdued: `${rem('1px')} solid var(--p-border-subdued)`,
-  textFieldSpinnerOffset: rem('2px'),
-  textFieldFocusRingOffset: rem('-4px'),
-  textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('-1px'),
+  thinBorderSubdued: '0.1rem solid var(--p-border-subdued)',
+  textFieldSpinnerOffset: '0.2rem',
+  textFieldFocusRingOffset: '-0.4rem',
+  textFieldFocusRingBorderRadius: '0.7rem',
+  buttonGroupItemSpacing: '-0.1rem',
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  rangeSliderThumbSizeBase: rem('16px'),
-  rangeSliderThumbSizeActive: rem('24px'),
+  rangeSliderThumbSizeBase: '1.6rem',
+  rangeSliderThumbSizeActive: '2.4rem',
 };
 
-function rem(px: string) {
-  const baseFontSize = 10;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
 function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('1px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '1px',
-  )} var(${cssVar})`;
+  return `inset 0 0.1rem 0 0 var(${cssVar}), inset 0 0 0 0.1rem var(${cssVar})`;
 }

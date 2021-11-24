@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Chargement de page"
     },
-    "Spinner": {
-      "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Plus d'onglets"
     },

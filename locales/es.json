@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
     },
-    "Spinner": {
-      "warningMessage": "El color {color} no está concebido para ser utilizado en spinners {size} Los colores disponibles en los spinners grandes son: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Más pestañas"
     },

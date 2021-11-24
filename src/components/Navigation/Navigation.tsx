@@ -39,10 +39,11 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
         url={logo.url || ''}
         className={styles.LogoLink}
         style={{width}}
+        alt={logo.accessibilityLabel || ''}
       >
         <Image
           source={logo.topBarSource || ''}
-          alt={logo.accessibilityLabel || ''}
+          alt=""
           className={styles.Logo}
           style={{width}}
         />

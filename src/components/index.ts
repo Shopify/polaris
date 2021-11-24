@@ -76,6 +76,8 @@ export type {ConnectedProps} from './Connected';
 export {ContextualSaveBar} from './ContextualSaveBar';
 export type {ContextualSaveBarProps} from './ContextualSaveBar';
 
+export {CustomProperties} from './CustomProperties';
+
 export {DataTable} from './DataTable';
 export type {
   DataTableProps,
@@ -303,8 +305,6 @@ export type {TextFieldProps} from './TextField';
 
 export {TextStyle} from './TextStyle';
 export type {TextStyleProps} from './TextStyle';
-
-export {ThemeProvider} from './ThemeProvider';
 
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
