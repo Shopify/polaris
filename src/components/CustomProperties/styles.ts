@@ -1,23 +1,22 @@
-import {
-  ColorScheme,
-  designTokens,
-  DesignTokens,
-  osColorSchemes,
-  OSColorSchemes,
+import type {
   Tokens,
-} from '../../designTokens';
+  ColorScheme,
+  TokenObject,
+  OSColorSchemes,
+} from '../../tokens';
+import {tokens, osColorSchemes} from '../../tokens';
 
 /** Default light color-scheme declarations. */
 const lightDeclarations = getColorSchemeDeclarations(
   'light',
-  designTokens,
+  tokens,
   osColorSchemes,
 );
 
 /** Default dark color-scheme declarations.  */
 const darkDeclarations = getColorSchemeDeclarations(
   'dark',
-  designTokens,
+  tokens,
   osColorSchemes,
 );
 
@@ -29,17 +28,17 @@ const darkDeclarations = getColorSchemeDeclarations(
  * [color-scheme="dim"] {...}
  */
 export function getColorSchemeRules(
-  designTokens: DesignTokens,
+  tokens: Tokens,
   osColorSchemes: OSColorSchemes,
 ) {
-  return Object.keys(designTokens.colorSchemes)
+  return Object.keys(tokens.colorSchemes)
     .map((key) => {
       const colorScheme = key as ColorScheme;
 
       const selector = `[color-scheme="${colorScheme}"]`;
       const properties = getColorSchemeDeclarations(
         colorScheme,
-        designTokens,
+        tokens,
         osColorSchemes,
       );
 
@@ -52,7 +51,7 @@ export function getColorSchemeRules(
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(designTokens: DesignTokens) {
+export function getStaticCustomProperties(designTokens: Tokens) {
   return Object.entries(designTokens)
     .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
     .map(([_, tokens]) => getCustomProperties(tokens))
@@ -64,19 +63,19 @@ export function getStaticCustomProperties(designTokens: DesignTokens) {
  */
 export function getColorSchemeDeclarations(
   colorScheme: ColorScheme,
-  designTokens: DesignTokens,
+  tokens: Tokens,
   osColorSchemes: OSColorSchemes,
 ) {
   return [
     `color-scheme:${osColorSchemes[colorScheme]};`,
-    getCustomProperties(designTokens.colorSchemes[colorScheme]),
+    getCustomProperties(tokens.colorSchemes[colorScheme]),
   ].join('');
 }
 
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-export function getCustomProperties(tokens: Tokens) {
+export function getCustomProperties(tokens: TokenObject) {
   return Object.entries(tokens)
     .map(([name, value]) => `--p-${name}:${value};`)
     .join('');
@@ -88,7 +87,7 @@ export function getCustomProperties(tokens: Tokens) {
 export const styles = /* css */ `
 :root {
   ${lightDeclarations}
-  ${getStaticCustomProperties(designTokens)}
+  ${getStaticCustomProperties(tokens)}
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,5 +96,5 @@ export const styles = /* css */ `
   }
 }
 
-${getColorSchemeRules(designTokens, osColorSchemes)}
+${getColorSchemeRules(tokens, osColorSchemes)}
 `;

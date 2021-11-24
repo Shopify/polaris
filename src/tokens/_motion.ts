@@ -1,6 +1,6 @@
-import type {Tokens} from './designTokens';
+import type {TokenObject} from './tokens';
 
-export const motion: Tokens = {
+export const motion: TokenObject = {
   'duration-1': '100ms',
   'duration-2': '200ms',
   'duration-3': '300ms',

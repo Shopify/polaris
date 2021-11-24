@@ -1,13 +1,13 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {
+import type {
   ColorScheme,
   ColorSchemes,
-  DesignTokens,
-  osColorSchemes,
   Tokens,
-} from '../../../designTokens';
+  TokenObject,
+} from '../../../tokens';
+import {osColorSchemes} from '../../../tokens';
 import {
   CustomProperties,
   DEFAULT_COLOR_SCHEME,
@@ -24,7 +24,7 @@ interface ColorSchemeAttribute {
   'color-scheme': ColorScheme;
 }
 
-const mockTokens: Tokens = {
+const mockTokens: TokenObject = {
   'design-token-1': 'valueA',
   'design-token-2': 'valueB',
 };
@@ -34,7 +34,7 @@ const mockColorSchemes: ColorSchemes = {
   dark: mockTokens,
 };
 
-const mockDesignTokens: DesignTokens = {
+const mockDesignTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   motion: mockTokens,
   // Note: We don't need to assign mock values to the remaining static tokens.
