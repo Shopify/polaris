@@ -173,11 +173,7 @@ describe('<TopBar />', () => {
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
       const topBar = mountWithApp(<TopBar />, {
-        theme: {
-          logo: {
-            topBarSource: './assets/shopify.svg',
-          },
-        },
+        frame: {logo: {topBarSource: './assets/shopify.svg'}},
       });
       expect(topBar).toContainReactComponent(Image, {
         source: './assets/shopify.svg',
@@ -186,7 +182,7 @@ describe('<TopBar />', () => {
 
     it('will render an image with the logo accessibility label', () => {
       const topBar = mountWithApp(<TopBar />, {
-        theme: {
+        frame: {
           logo: {
             accessibilityLabel: 'Shopify',
           },
@@ -199,7 +195,7 @@ describe('<TopBar />', () => {
 
     it('will render an unstyled link with the logo URL', () => {
       const topBar = mountWithApp(<TopBar />, {
-        theme: {logo: {url: 'https://shopify.com'}},
+        frame: {logo: {url: 'https://shopify.com'}},
       });
 
       expect(topBar).toContainReactComponent(UnstyledLink, {
@@ -209,7 +205,7 @@ describe('<TopBar />', () => {
 
     it('will render an unstyled link with the logo width', () => {
       const topBar = mountWithApp(<TopBar />, {
-        theme: {logo: {width: 124}},
+        frame: {logo: {width: 124}},
       });
 
       expect(topBar).toContainReactComponent(UnstyledLink, {
@@ -219,7 +215,7 @@ describe('<TopBar />', () => {
 
     it('will render an unstyled link with a default width', () => {
       const topBar = mountWithApp(<TopBar />, {
-        theme: {logo: {}},
+        frame: {logo: {}},
       });
       expect(topBar).toContainReactComponent(UnstyledLink, {
         style: {width: '104px'},
@@ -248,14 +244,9 @@ describe('<TopBar />', () => {
       expect(topBar).toContainReactComponent(TopBar.Menu);
     });
 
-    it('doesn’t render a logo when defined', () => {
+    it('doesn’t render an image when defined', () => {
       const topBar = mountWithApp(
         <TopBar contextControl={mockContextControl} />,
-        {
-          theme: {
-            logo: {topBarSource: './assets/shopify.svg'},
-          },
-        },
       );
       expect(topBar).not.toContainReactComponent(Image);
     });

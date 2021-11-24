@@ -236,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Sidan laddar"
     },
-    "Spinner": {
-      "warningMessage": "Färgen {color} är inte tänkt att användas för {size} spinnare. De färger som finns för stora spinnare är: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Fler flikar"
     },
