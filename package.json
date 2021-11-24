@@ -115,7 +115,6 @@
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-contexts": "^5.3.19",
     "@storybook/addon-essentials": "^6.3.7",
-    "@storybook/addon-knobs": "^6.3.0",
     "@storybook/react": "^6.3.7",
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.5",
