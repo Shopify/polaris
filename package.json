@@ -68,10 +68,7 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static",
-    "precolordocs": "yarn run build",
-    "colordocs": "node ./scripts/color-system-docs",
-    "postcolordocs": "yarn run format"
+    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.10.0",

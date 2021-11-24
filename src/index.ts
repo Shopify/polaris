@@ -57,8 +57,3 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
-
-export {
-  toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
-  Tokens as UNSTABLE_Tokens,
-} from './utilities/theme';
