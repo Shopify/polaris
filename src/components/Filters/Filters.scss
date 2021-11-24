@@ -18,7 +18,7 @@ $list-filters-footer-height: rem(70px);
 .FiltersContainerHeader {
   top: 0;
   width: 100%;
-  padding: spacing(base) spacing(loose);
+  padding: var(--p-space-4) var(--p-space-5);
   border-bottom: border('divider');
   height: $list-filters-header-height;
   box-sizing: border-box;
@@ -32,20 +32,20 @@ $list-filters-footer-height: rem(70px);
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{$list-filters-header-height});
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 }
 
 .FiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) spacing(loose);
+  padding: rem(14px) var(--p-space-5);
   border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
@@ -56,7 +56,7 @@ $list-filters-footer-height: rem(70px);
 
 .FiltersMobileContainerFooter {
   width: 100%;
-  padding: rem(14px) spacing(base);
+  padding: rem(14px) var(--p-space-4);
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
@@ -79,7 +79,7 @@ $list-filters-footer-height: rem(70px);
 .FilterTrigger {
   width: 100%;
   margin: 0;
-  padding: rem(14px) spacing(loose);
+  padding: rem(14px) var(--p-space-5);
   color: var(--p-text);
   border-radius: var(--p-border-radius-base);
   background: none;
@@ -127,7 +127,7 @@ $list-filters-footer-height: rem(70px);
   &::after {
     content: '';
     position: relative;
-    left: spacing(base);
+    left: var(--p-space-4);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: var(--p-surface-subdued);
@@ -148,7 +148,7 @@ $list-filters-footer-height: rem(70px);
     content: '';
     bottom: 0;
     position: relative;
-    left: spacing(base);
+    left: var(--p-space-4);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: var(--p-surface-subdued);
@@ -171,7 +171,7 @@ $list-filters-footer-height: rem(70px);
     content: '';
     top: 0;
     position: relative;
-    left: spacing(base);
+    left: var(--p-space-4);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: var(--p-surface-subdued);
@@ -190,7 +190,7 @@ $list-filters-footer-height: rem(70px);
 }
 
 .FilterNodeContainer {
-  padding: rem(8px) spacing(loose) spacing(loose) spacing(loose);
+  padding: var(--p-space-2) var(--p-space-5) var(--p-space-5) var(--p-space-5);
 }
 
 .SearchIcon {
@@ -214,11 +214,11 @@ $list-filters-footer-height: rem(70px);
 
 .TagsContainer {
   display: flex;
-  padding-top: spacing(tight);
+  padding-top: var(--p-space-2);
   flex-wrap: wrap;
 
   > * {
-    margin-right: spacing(tight);
-    margin-bottom: spacing(tight);
+    margin-right: var(--p-space-2);
+    margin-bottom: var(--p-space-2);
   }
 }

@@ -35,7 +35,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 0 0 layout-width(nav);
     align-items: center;
     height: 100%;
-    padding: 0 spacing();
+    padding: 0 var(--p-space-4);
     background-color: transparent;
   }
 }
@@ -50,20 +50,20 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     layout-width(inner-spacing);
   height: 100%;
   margin: 0 auto;
-  padding: 0 spacing();
+  padding: 0 var(--p-space-4);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose);
+    padding: 0 var(--p-space-5);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding: 0 spacing(extra-loose);
+    padding: 0 var(--p-space-8);
   }
 }
 
 .fullWidth {
   max-width: none;
-  padding: 0 spacing();
+  padding: 0 var(--p-space-4);
 }
 
 .Message {
@@ -77,7 +77,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .Action {
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
 }
 
 .ContextControl {

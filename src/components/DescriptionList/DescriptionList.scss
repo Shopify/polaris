@@ -16,18 +16,18 @@ $breakpoint: 550px;
 
 .Term {
   @include text-emphasis-strong;
-  padding: spacing() 0 spacing(tight);
+  padding: var(--p-space-4) 0 var(--p-space-2);
 
   .spacingTight & {
-    padding: spacing(tight) 0 var(--p-space-1);
+    padding: var(--p-space-2) 0 var(--p-space-1);
   }
 
   @include page-content-breakpoint-after($breakpoint) {
     flex: 0 1 25%;
-    padding: spacing() spacing() spacing() 0;
+    padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
 
     .spacingTight & {
-      padding: spacing(tight) spacing(tight) spacing(tight) 0;
+      padding: var(--p-space-2) var(--p-space-2) var(--p-space-2) 0;
     }
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
@@ -39,10 +39,10 @@ $breakpoint: 550px;
 
 .Description {
   margin-left: 0;
-  padding: 0 0 spacing();
+  padding: 0 0 var(--p-space-4);
 
   .spacingTight & {
-    padding: 0 0 spacing(tight);
+    padding: 0 0 var(--p-space-2);
   }
 
   + .Term {
@@ -51,10 +51,10 @@ $breakpoint: 550px;
 
   @include page-content-breakpoint-after($breakpoint) {
     flex: 1 1 51%;
-    padding: spacing() 0;
+    padding: var(--p-space-4) 0;
 
     .spacingTight & {
-      padding: spacing(tight) 0;
+      padding: var(--p-space-2) 0;
     }
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators

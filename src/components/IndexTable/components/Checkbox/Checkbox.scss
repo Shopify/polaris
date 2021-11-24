@@ -19,7 +19,7 @@ $condensed-width: rem(50px);
 .expanded {
   width: $expanded-width;
   height: $expanded-height;
-  padding-left: spacing();
+  padding-left: var(--p-space-4);
 }
 
 .condensed {
