@@ -1,13 +1,13 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import type {
+import {
+  osColorSchemes,
   ColorScheme,
   ColorSchemes,
   Tokens,
-  TokenObject,
+  TokenGroup,
 } from '../../../tokens';
-import {osColorSchemes} from '../../../tokens';
 import {
   CustomProperties,
   DEFAULT_COLOR_SCHEME,
@@ -24,19 +24,19 @@ interface ColorSchemeAttribute {
   'color-scheme': ColorScheme;
 }
 
-const mockTokens: TokenObject = {
+const mockTokenGroup: TokenGroup = {
   'design-token-1': 'valueA',
   'design-token-2': 'valueB',
 };
 
 const mockColorSchemes: ColorSchemes = {
-  light: mockTokens,
-  dark: mockTokens,
+  light: mockTokenGroup,
+  dark: mockTokenGroup,
 };
 
-const mockDesignTokens: Tokens = {
+const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
-  motion: mockTokens,
+  motion: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
   legacyTokens: {},
   typography: {},
@@ -149,7 +149,7 @@ describe('<CustomProperties />', () => {
 
   describe('getCustomProperties', () => {
     it('creates a string of CSS custom properties', () => {
-      const customProperties = getCustomProperties(mockTokens);
+      const customProperties = getCustomProperties(mockTokenGroup);
 
       expect(customProperties).toBe(expectedCustomProperties);
     });
@@ -159,7 +159,7 @@ describe('<CustomProperties />', () => {
     it('creates a string of CSS declarations for a given color-scheme', () => {
       const declarations = getColorSchemeDeclarations(
         'dark',
-        mockDesignTokens,
+        mockTokens,
         osColorSchemes,
       );
 
@@ -169,7 +169,7 @@ describe('<CustomProperties />', () => {
 
   describe('getColorSchemeRules', () => {
     it('creates a string of CSS rules for each color-scheme', () => {
-      const rules = getColorSchemeRules(mockDesignTokens, osColorSchemes);
+      const rules = getColorSchemeRules(mockTokens, osColorSchemes);
 
       const expectedRules = Object.keys(mockColorSchemes)
         .map(
@@ -186,9 +186,7 @@ describe('<CustomProperties />', () => {
 
   describe('getStaticCustomProperties', () => {
     it('creates a string of static CSS custom properties', () => {
-      const staticCustomProperties = getStaticCustomProperties(
-        mockDesignTokens,
-      );
+      const staticCustomProperties = getStaticCustomProperties(mockTokens);
 
       expect(staticCustomProperties).toBe(expectedCustomProperties);
     });

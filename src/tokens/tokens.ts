@@ -7,7 +7,7 @@ import {typography} from './_typography';
  * Values to convert to CSS custom properties.
  * @example {background: '#000'} // --p-background: #000;
  */
-export interface TokenObject {
+export interface TokenGroup {
   [token: string]: string;
 }
 
@@ -32,23 +32,19 @@ export const osColorSchemes: OSColorSchemes = {
  * Polaris color schemes and their associated color tokens.
  */
 export type ColorSchemes = {
-  [C in ColorScheme]: TokenObject;
+  [C in ColorScheme]: TokenGroup;
 };
 
 const colorSchemes: ColorSchemes = {
-  light: {
-    ...lightColorScheme,
-  },
-  dark: {
-    ...darkColorScheme,
-  },
+  light: lightColorScheme,
+  dark: darkColorScheme,
 };
 
 export interface Tokens {
   colorSchemes: ColorSchemes;
-  legacyTokens: TokenObject;
-  motion: TokenObject;
-  typography: TokenObject;
+  legacyTokens: TokenGroup;
+  motion: TokenGroup;
+  typography: TokenGroup;
 }
 
 export const tokens: Tokens = {

@@ -1,10 +1,11 @@
-import type {
+import {
+  tokens,
+  osColorSchemes,
   Tokens,
   ColorScheme,
-  TokenObject,
+  TokenGroup,
   OSColorSchemes,
 } from '../../tokens';
-import {tokens, osColorSchemes} from '../../tokens';
 
 /** Default light color-scheme declarations. */
 const lightDeclarations = getColorSchemeDeclarations(
@@ -51,8 +52,8 @@ export function getColorSchemeRules(
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(designTokens: Tokens) {
-  return Object.entries(designTokens)
+export function getStaticCustomProperties(tokens: Tokens) {
+  return Object.entries(tokens)
     .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
     .map(([_, tokens]) => getCustomProperties(tokens))
     .join('');
@@ -75,7 +76,7 @@ export function getColorSchemeDeclarations(
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-export function getCustomProperties(tokens: TokenObject) {
+export function getCustomProperties(tokens: TokenGroup) {
   return Object.entries(tokens)
     .map(([name, value]) => `--p-${name}:${value};`)
     .join('');
