@@ -4,7 +4,7 @@ const CreateFileWebpack = require('create-file-webpack');
 
 const postcssShopify = require('@shopify/postcss-plugin');
 const pxtorem = require('postcss-pxtorem');
-
+const pixelsToRemsConfig = require('../config/px-to-rem');
 // Enabling docs means the preview panel takes an extra 2ish seconds to load
 // This usually isn't a big deal, except when we're running all of our stories
 // through our a11y tests, and a 2s delay over several hundred stories adds up.
@@ -59,15 +59,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  postcssShopify(),
-                  pxtorem({
-                    rootValue: 10,
-                    replace: true,
-                    propList: ['*'],
-                    selectorBlackList: [],
-                  }),
-                ],
+                plugins: [postcssShopify(), pxtorem(pixelsToRemsConfig)],
               },
             },
           },

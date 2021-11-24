@@ -7,6 +7,8 @@ const postcss = require('postcss');
 const pxtorem = require('postcss-pxtorem');
 const cssModules = require('postcss-modules');
 
+const pixelsToRemsConfig = require('../px-to-rem');
+
 module.exports.styles = function styles({
   output = '',
   plugins = [],
@@ -26,12 +28,7 @@ module.exports.styles = function styles({
   const renderSass = promisify(nodeSass.render);
 
   const styleProcessor = postcss([
-    pxtorem({
-      rootValue: 10,
-      replace: true,
-      propList: ['*'],
-      selectorBlackList: [],
-    }),
+    pxtorem(pixelsToRemsConfig),
     cssModules({
       ...modules,
       // eslint-disable-next-line no-empty-function
