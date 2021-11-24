@@ -68,7 +68,7 @@ $context-control-expand-after: 1400px;
   padding: spacing(tight);
   border-radius: border-radius();
   fill: var(--p-icon); // Icon will inherit this fill
-  transition: var(--p-duration-150) fill easing() 33ms;
+  transition: var(--p-duration-150) fill var(--p-ease) 33ms;
 
   &.focused:active {
     background-color: var(--p-surface-pressed);
