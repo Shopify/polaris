@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-commented-out-tests */
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {Image, UnstyledLink} from 'components';
