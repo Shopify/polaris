@@ -105,7 +105,7 @@ $stacking-order: (
   transform: translateY(-50%);
 
   svg {
-    transition: (var(--p-duration-200) - 33ms) fill easing() 33ms;
+    transition: var(--p-duration-150) fill easing() 33ms;
   }
 }
 
