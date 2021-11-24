@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "การดำเนินการ"
+        "rollupButton": "ดูการดำเนินการ"
+      },
+      "Actions": {
+        "moreActions": "การดำเนินการเพิ่มเติม"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"
     },
-    "Spinner": {
-      "warningMessage": "สี {color} ไม่ได้มีไว้เพื่อใช้กับสปินเนอร์ขนาด {size} สีที่มีให้บริการสำหรับสปินเนอร์ขนาดใหญ่คือ: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "แท็บเพิ่มเติม"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "การดำเนินการเพิ่มเติม"
-    },
     "Loading": {
       "label": "แถบแสดงการโหลดหน้า"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมด",
       "selectItem": "เลือก {resourceName}",
       "selectButtonText": "เลือก"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+      }
     }
   }
 }

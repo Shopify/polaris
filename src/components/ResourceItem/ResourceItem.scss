@@ -158,7 +158,7 @@ $resource-list-item-variables: (
 .selectable {
   width: calc(100% + var(--p-translate-offset));
   transform: translateX(calc(-1 * var(--p-translate-offset)));
-  transition: transform easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200);
   margin-right: calc(-1 * var(--p-translate-offset));
 
   &.selectMode {

@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "アクション"
+        "rollupButton": "アクションを表示する"
+      },
+      "Actions": {
+        "moreActions": "その他の操作"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"
     },
-    "Spinner": {
-      "warningMessage": "{color}色は{size}のスピナーでは使用されていません。大きなスピナーで利用可能な色は次のとおりです: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "その他のタブ"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "その他の操作"
-    },
     "Loading": {
       "label": "ページの読み込み表示バー"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
       "selectButtonText": "選択"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title}のアクションを表示"
+      }
     }
   }
 }

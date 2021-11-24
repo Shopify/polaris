@@ -485,7 +485,7 @@ $scroll-bar-border-radius: rem(4px);
 .condensedRow {
   width: calc(100% + var(--translate-offset));
   transform: translateX(calc(-1 * var(--translate-offset)));
-  transition: transform easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
   border-top: border('divider');
   filter: none;

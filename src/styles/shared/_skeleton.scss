@@ -1,6 +1,3 @@
-/// Used to create the shimmer effect of skeleton components
-$skeleton-shimmer-duration: duration(slower) * 2;
-
 // Used by both Thumbnail and SkeletonThumbnail
 $small-thumbnail-size: rem(40px);
 $medium-thumbnail-size: rem(60px);
@@ -14,19 +11,6 @@ $thumbnail-sizes: (
 
 @function thumbnail-size($size) {
   @return map-get($thumbnail-sizes, $size);
-}
-
-@mixin skeleton-shimmer {
-  // This is a global animation, defined in /src/components/AppProvider/AppProvider.scss
-  // See that file for why this is referenced as a custom property instead of
-  // by name
-  animation: var(--polaris-animation-skeleton-shimmer)
-    $skeleton-shimmer-duration linear infinite alternate;
-  will-change: opacity;
-
-  @media (prefers-reduced-motion) {
-    animation: none;
-  }
 }
 
 @mixin skeleton-content {

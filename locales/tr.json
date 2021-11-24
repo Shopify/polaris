@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "İşlemler"
+        "rollupButton": "İşlemleri görüntüle"
+      },
+      "Actions": {
+        "moreActions": "Diğer işlemler"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
     },
-    "Spinner": {
-      "warningMessage": "{color} rengi {size} boyutlu çarklarda kullanıma yönelik değildir. Büyük çarklarda kullanılabilen renkler şunlardır: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Daha fazla sekme"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Diğer işlemler"
-    },
     "Loading": {
       "label": "Sayfa yüklenme çubuğu"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
       "selectItem": "Seç: {resourceName}",
       "selectButtonText": "Seç"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} için işlemleri görüntüle"
+      }
     }
   }
 }

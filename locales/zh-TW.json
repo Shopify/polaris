@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "動作"
+        "rollupButton": "檢視動作"
+      },
+      "Actions": {
+        "moreActions": "更多動作"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
     },
-    "Spinner": {
-      "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "更多索引標籤"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "更多動作"
-    },
     "Loading": {
       "label": "頁面載入進度條"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",
       "selectButtonText": "選取"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "檢視 {title} 的動作"
+      }
     }
   }
 }

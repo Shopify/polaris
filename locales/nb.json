@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Handlinger"
+        "rollupButton": "Vis handlinger"
+      },
+      "Actions": {
+        "moreActions": "Flere handlinger"
       }
     },
     "Filters": {
@@ -233,9 +236,6 @@
     "SkeletonPage": {
       "loadingLabel": "Siden laster"
     },
-    "Spinner": {
-      "warningMessage": "Fargen {color} er ikke ment å bli brukt på {size} spinnere. Fargene som er tilgjengelige på store spinnere, er: {colors}"
-    },
     "Tabs": {
       "toggleTabsLabel": "Flere faner"
     },
@@ -304,9 +304,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Flere handlinger"
-    },
     "Loading": {
       "label": "Sidelastingslinje"
     },
@@ -334,6 +331,11 @@
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
       "selectButtonText": "Velg"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Vis handlinger for {title}"
+      }
     }
   }
 }
