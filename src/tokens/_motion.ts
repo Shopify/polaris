@@ -1,11 +1,12 @@
 import type {TokenGroup} from './tokens';
 
 export const motion: TokenGroup = {
-  'duration-1': '100ms',
-  'duration-2': '200ms',
-  'duration-3': '300ms',
-  'duration-4': '400ms',
-  'duration-5': '500m',
+  'duration-100': '100ms',
+  'duration-150': '150ms',
+  'duration-200': '200ms',
+  'duration-300': '300ms',
+  'duration-400': '400ms',
+  'duration-500': '500ms',
   'easing-base': 'cubic-bezier(0.64, 0, 0.35, 1)',
   'easing-in': 'cubic-bezier(0.36, 0, 1, 1)',
   'easing-out': 'cubic-bezier(0, 0, 0.42, 1)',

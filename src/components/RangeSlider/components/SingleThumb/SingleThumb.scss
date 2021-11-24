@@ -99,7 +99,7 @@ $stacking-order: (
     appearance: none;
     transition: box-shadow var(--p-duration-100) var(--p-ease);
     transition-property: border-color, box-shadow, transform;
-    transition-duration: duration();
+    transition-duration: var(--p-duration-200);
     transition-timing-function: easing();
 
     @include rangeSliderThumbPosition($range-thumb-size);
@@ -175,7 +175,7 @@ $range-output-spacing: rem(16px);
   visibility: hidden;
   pointer-events: none;
   transition-property: opacity, visibility, bottom;
-  transition-duration: duration();
+  transition-duration: var(--p-duration-200);
   transition-timing-function: easing();
 
   .Input:active + & {
@@ -197,7 +197,7 @@ $range-output-spacing: rem(16px);
   background-color: var(--p-surface);
   border-radius: border-radius();
   transition-property: transform;
-  transition-duration: duration();
+  transition-duration: var(--p-duration-200);
   transition-timing-function: easing();
 
   // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
