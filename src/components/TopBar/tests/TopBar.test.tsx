@@ -1,7 +1,6 @@
-/* eslint-disable jest/no-commented-out-tests */
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-// import {Image, UnstyledLink} from 'components';
+import {Image, UnstyledLink} from 'components';
 
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
@@ -171,67 +170,58 @@ describe('<TopBar />', () => {
     });
   });
 
-  // describe('logo', () => {
-  // it('will render an image with the logo top bar source', () => {
-  //   const topBar = mountWithApp(<TopBar />, {
-  //     theme: {
-  //       logo: {
-  //         topBarSource: './assets/shopify.svg',
-  //       },
-  //     },
-  //   });
-  //   expect(topBar).toContainReactComponent(Image, {
-  //     source: './assets/shopify.svg',
-  //   });
-  // });
-  // it('will render an image with the logo accessibility label', () => {
-  //   const topBar = mountWithApp(<TopBar />, {
-  //     theme: {
-  //       logo: {
-  //         accessibilityLabel: 'Shopify',
-  //       },
-  //     },
-  //   });
-  //   expect(topBar).toContainReactComponent(Image, {
-  //     alt: 'Shopify',
-  //   });
-  // });
-  // it('will render an unstyled link with the logo URL', () => {
-  //   const topBar = mountWithApp(<TopBar />, {
-  //     theme: {logo: {url: 'https://shopify.com'}},
-  //   });
-  //   expect(topBar).toContainReactComponent(UnstyledLink, {
-  //     url: 'https://shopify.com',
-  //   });
-  // });
-  // it('will render an unstyled link with the logo width', () => {
-  //   const topBar = mountWithApp(<TopBar />, {
-  //     theme: {logo: {width: 124}},
-  //   });
-  //   expect(topBar).toContainReactComponent(UnstyledLink, {
-  //     style: {width: '124px'},
-  //   });
-  // });
-  // it('will render an unstyled link with a default width', () => {
-  //   const topBar = mountWithApp(<TopBar />, {
-  //     theme: {logo: {}},
-  //   });
-  //   expect(topBar).toContainReactComponent(UnstyledLink, {
-  //     style: {width: '104px'},
-  //   });
-  // });
-  // it('doesn’t render a logo when defined', () => {
-  //   const topBar = mountWithApp(
-  //     <TopBar contextControl={mockContextControl} />,
-  //     {
-  //       theme: {
-  //         logo: {topBarSource: './assets/shopify.svg'},
-  //       },
-  //     },
-  //   );
-  //   expect(topBar).not.toContainReactComponent(Image);
-  // });
-  // });
+  describe('logo', () => {
+    it('will render an image with the logo top bar source', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        frame: {logo: {topBarSource: './assets/shopify.svg'}},
+      });
+      expect(topBar).toContainReactComponent(Image, {
+        source: './assets/shopify.svg',
+      });
+    });
+
+    it('will render an image with the logo accessibility label', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        frame: {
+          logo: {
+            accessibilityLabel: 'Shopify',
+          },
+        },
+      });
+      expect(topBar).toContainReactComponent(Image, {
+        alt: 'Shopify',
+      });
+    });
+
+    it('will render an unstyled link with the logo URL', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        frame: {logo: {url: 'https://shopify.com'}},
+      });
+
+      expect(topBar).toContainReactComponent(UnstyledLink, {
+        url: 'https://shopify.com',
+      });
+    });
+
+    it('will render an unstyled link with the logo width', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        frame: {logo: {width: 124}},
+      });
+
+      expect(topBar).toContainReactComponent(UnstyledLink, {
+        style: {width: '124px'},
+      });
+    });
+
+    it('will render an unstyled link with a default width', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        frame: {logo: {}},
+      });
+      expect(topBar).toContainReactComponent(UnstyledLink, {
+        style: {width: '104px'},
+      });
+    });
+  });
 
   describe('contextControl', () => {
     const mockContextControl = (
@@ -252,6 +242,13 @@ describe('<TopBar />', () => {
         className: 'ContextControl',
       });
       expect(topBar).toContainReactComponent(TopBar.Menu);
+    });
+
+    it('doesn’t render an image when defined', () => {
+      const topBar = mountWithApp(
+        <TopBar contextControl={mockContextControl} />,
+      );
+      expect(topBar).not.toContainReactComponent(Image);
     });
 
     it('doesn’t render the wrapper when not defined and no logo is available', () => {

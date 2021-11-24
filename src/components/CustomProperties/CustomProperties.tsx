@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import type {ColorScheme} from '../../designTokens';
+import type {ColorScheme} from '../../tokens';
 
 import {styles} from './styles';
 
