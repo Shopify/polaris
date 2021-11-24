@@ -244,7 +244,7 @@ describe('<TopBar />', () => {
       expect(topBar).toContainReactComponent(TopBar.Menu);
     });
 
-    it('doesn’t render a logo when defined', () => {
+    it('doesn’t render an image when defined', () => {
       const topBar = mountWithApp(
         <TopBar contextControl={mockContextControl} />,
       );
