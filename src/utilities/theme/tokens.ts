@@ -25,8 +25,6 @@ export const Tokens = {
 
   // Overrides
   overrideLoadingZIndex: '514',
-  buttonFontWeight: '500',
-  nonNullContent: "''",
   choiceSize: '2rem',
   iconSize: '1rem',
   choiceMargin: '0.1rem',
@@ -36,7 +34,6 @@ export const Tokens = {
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
   bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
   bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
-  badgeMixBlendMode: 'luminosity',
   thinBorderSubdued: '0.1rem solid var(--p-border-subdued)',
   textFieldSpinnerOffset: '0.2rem',
   textFieldFocusRingOffset: '-0.4rem',
@@ -48,8 +45,6 @@ export const Tokens = {
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
   rangeSliderThumbSizeBase: '1.6rem',
   rangeSliderThumbSizeActive: '2.4rem',
-  rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '400',
 };
 
 function buildBannerBorder(cssVar: string) {
