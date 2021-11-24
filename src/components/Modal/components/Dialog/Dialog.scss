@@ -88,7 +88,8 @@ $large-width: rem(980px);
   will-change: transform, opacity;
   opacity: 1;
   transform: translateY(0);
-  transition: transform easing() duration(), opacity easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200),
+    opacity var(--p-ease) var(--p-duration-200);
 
   &.entering,
   &.exiting,

@@ -28,5 +28,5 @@
 
 .Name,
 .Detail {
-  transition: (duration() - 33ms) color easing() 33ms;
+  transition: var(--p-duration-150) color var(--p-ease) 33ms;
 }
