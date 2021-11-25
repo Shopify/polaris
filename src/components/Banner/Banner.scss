@@ -57,7 +57,7 @@ $spinner-size: rem(20px);
   --p-rgb-text: 33, 43, 54;
   --p-secondary-action-horizontal-padding: calc(1.5 * var(--p-space-2));
   --p-secondary-action-vertical-padding: 0.5 *
-    (control-height() - line-height(body));
+    (#{control-height() - line-height(body)});
   position: relative;
   display: flex;
 
