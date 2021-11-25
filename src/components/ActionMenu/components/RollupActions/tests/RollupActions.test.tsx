@@ -1,8 +1,9 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
-import {Button, Popover} from 'components';
 
+import {Button} from '../../../../Button';
+import {Popover} from '../../../../Popover';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {
   Item as ActionListItem,

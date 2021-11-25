@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Checkbox} from 'components';
 
+import {Checkbox} from '../../Checkbox';
 import {CheckableButton} from '../CheckableButton';
 
 const CheckableButtonProps = {

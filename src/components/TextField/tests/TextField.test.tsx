@@ -1,7 +1,10 @@
 import React from 'react';
-import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Connected} from '../../Connected';
+import {InlineError} from '../../InlineError';
+import {Labelled} from '../../Labelled';
+import {Select} from '../../Select';
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
 import styles from '../TextField.scss';

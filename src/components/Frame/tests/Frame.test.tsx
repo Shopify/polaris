@@ -2,12 +2,10 @@ import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {
-  ContextualSaveBar as PolarisContextualSavebar,
-  Loading as PolarisLoading,
-  TrapFocus,
-} from 'components';
 
+import {ContextualSaveBar as PolarisContextualSavebar} from '../../ContextualSaveBar';
+import {Loading as PolarisLoading} from '../../Loading';
+import {TrapFocus} from '../../TrapFocus';
 import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,

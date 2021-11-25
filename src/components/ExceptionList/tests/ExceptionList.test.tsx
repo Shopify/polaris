@@ -1,9 +1,9 @@
 import React from 'react';
 import {CirclePlusMinor, NoteMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
-import {Icon} from 'components';
 
 import {ExceptionList} from '../ExceptionList';
+import {Icon} from '../../Icon';
 import {Truncate} from '../../Truncate';
 
 describe('<ExceptionList />', () => {

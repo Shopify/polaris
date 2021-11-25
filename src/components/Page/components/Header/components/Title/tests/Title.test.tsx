@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Badge, DisplayText, Avatar} from 'components';
 
+import {Badge} from '../../../../../../Badge';
+import {DisplayText} from '../../../../../../DisplayText';
+import {Avatar} from '../../../../../../Avatar';
 import {Title} from '../Title';
 
 describe('<Title />', () => {
