@@ -13,7 +13,7 @@ export interface TitleProps {
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
-  /** thumbnail that precedes the title */
+  /** @deprecated thumbnail that precedes the title */
   thumbnail?:
     | React.ReactElement<AvatarProps | ThumbnailProps>
     | React.SFC<React.SVGProps<SVGSVGElement>>;
