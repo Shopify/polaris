@@ -38,10 +38,12 @@ export function FilterControl({
   onSearchChange,
   onFiltersChange,
 }: FilterControlProps) {
-  // eslint-disable-next-line no-console
-  console.warn(
-    'Deprecation: <FilterControl /> is deprecated. This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead.',
-  );
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <FilterControl /> is deprecated. This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead.',
+    );
+  }
 
   const i18n = useI18n();
   const {selectMode, resourceName} = useContext(ResourceListContext);
