@@ -27,8 +27,8 @@ $skeleton-display-text-max-width: rem(120px);
 }
 
 .BreadcrumbAction {
-  padding-top: spacing(base);
-  padding-bottom: spacing(base);
+  padding-top: var(--p-space-4);
+  padding-bottom: var(--p-space-4);
   margin-top: calc(-1 * var(--p-space-1));
   margin-bottom: calc(-1 * var(--p-space-1));
 }
@@ -70,13 +70,13 @@ $skeleton-display-text-max-width: rem(120px);
   }
 
   @include page-content-when-layout-stacked {
-    margin-top: spacing(base);
-    margin-bottom: (-1 * spacing(tight));
+    margin-top: var(--p-space-4);
+    margin-bottom: calc(-1 * var(--p-space-2));
   }
 
   @include page-content-when-not-fully-condensed {
     margin-top: $actions-vertical-spacing;
-    margin-bottom: (-1 * spacing(tight));
+    margin-bottom: calc(-1 * var(--p-space-2));
   }
 
   @include page-content-when-not-partially-condensed {
@@ -100,7 +100,7 @@ $skeleton-display-text-max-width: rem(120px);
   padding-right: $action-text-spacing;
   margin-top: calc(-1 * var(--p-space-1));
   margin-bottom: calc(-1 * var(--p-space-1));
-  padding-top: spacing();
+  padding-top: var(--p-space-4);
 
   &:first-child {
     padding-right: 0;

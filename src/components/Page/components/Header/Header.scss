@@ -4,7 +4,7 @@ $mobile-layout: 468px;
 $button-style-breakpoint: 768px;
 $medium-layout: 860px;
 $desktop-layout: 1080px;
-$individual-action-padding-x: (1.5 * spacing(tight));
+$individual-action-padding-x: calc(1.5 * var(--p-space-2));
 $action-menu-rollup-computed-width: rem(40px);
 
 .Header {
@@ -48,7 +48,7 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 0 0 auto;
   grid-area: breadcrumbs;
   max-width: 100%;
-  margin-right: spacing();
+  margin-right: var(--p-space-4);
 
   @include print-hidden;
 }
@@ -98,7 +98,7 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 1 1 auto;
 
   .Header:not(.mobileView) & {
-    padding-right: spacing(loose);
+    padding-right: var(--p-space-5);
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
@@ -113,7 +113,7 @@ $action-menu-rollup-computed-width: rem(40px);
   margin-left: var(--p-space-1);
 
   @include breakpoint-after($button-style-breakpoint) {
-    margin-left: spacing();
+    margin-left: var(--p-space-4);
   }
 
   @include print-hidden;
@@ -125,12 +125,12 @@ $action-menu-rollup-computed-width: rem(40px);
   // stylelint-disable-next-line selector-max-class
   .mobileView & {
     position: absolute;
-    top: spacing(loose) + (control-height() / 4);
-    right: spacing(loose);
+    top: calc(var(--p-space-5) + (#{control-height()} / 4));
+    right: var(--p-space-5);
     margin-top: 0;
 
     @include page-content-when-not-fully-condensed {
-      right: -(spacing(tight));
+      right: calc(-1 * (var(--p-space-2)));
     }
   }
 
@@ -150,7 +150,7 @@ $action-menu-rollup-computed-width: rem(40px);
     margin-top: var(--p-space-1);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .mobileView & {
-      margin-top: spacing(tight);
+      margin-top: var(--p-space-2);
     }
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .RightAlign {
@@ -172,7 +172,7 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 1 1 auto;
   align-items: flex-start;
   justify-content: flex-end;
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
   // Necessary for flex to realize this container doesn't want to wrap
   white-space: nowrap;
 
@@ -216,7 +216,7 @@ $action-menu-rollup-computed-width: rem(40px);
 
   .Row {
     display: grid;
-    gap: spacing(tight) spacing();
+    gap: var(--p-space-2) var(--p-space-4);
     grid-template-columns: auto 1fr;
     grid-template-areas: 'breadcrumbs actions' 'title title';
 

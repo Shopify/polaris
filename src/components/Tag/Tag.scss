@@ -8,7 +8,7 @@ $icon-size: rem(16px);
   max-width: 100%;
   align-items: center;
   min-height: $height;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-base);
   color: var(--p-text);
@@ -27,7 +27,7 @@ $icon-size: rem(16px);
   &.clickable {
     @include unstyled-button;
     cursor: pointer;
-    padding: 0 spacing(tight);
+    padding: 0 var(--p-space-2);
     background-color: var(--p-surface-neutral);
 
     &:hover {

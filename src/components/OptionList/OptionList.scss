@@ -2,7 +2,7 @@
 
 .OptionList {
   @include unstyled-list;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 }
 
 .Options {
@@ -11,6 +11,6 @@
 
 .Title {
   @include text-style-subheading;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   color: var(--p-text-subdued);
 }

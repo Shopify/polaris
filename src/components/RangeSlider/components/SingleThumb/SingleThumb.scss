@@ -23,7 +23,7 @@ $stacking-order: (
   height: $range-thumb-size;
 
   input {
-    padding: spacing(base-tight) 0;
+    padding: var(--p-space-3) 0;
     background-color: transparent;
     cursor: pointer;
   }
@@ -41,12 +41,12 @@ $stacking-order: (
 
 .Prefix {
   flex: 0 0 auto;
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
 }
 
 .Suffix {
   flex: 0 0 auto;
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
 }
 
 .Input {
@@ -191,7 +191,7 @@ $range-output-spacing: rem(16px);
   position: relative;
   display: flex;
   box-shadow: var(--p-popover-shadow);
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);

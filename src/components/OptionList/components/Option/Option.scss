@@ -11,7 +11,7 @@ $control-vertical-adjustment: rem(2px);
   min-height: $min-height;
   text-align: left;
   border-radius: var(--p-border-radius-base);
-  margin-top: spacing(tight) / 2;
+  margin-top: calc(var(--p-space-2) / 2);
 }
 
 .SingleSelectOption {
@@ -37,7 +37,7 @@ $control-vertical-adjustment: rem(2px);
   }
 
   .Media {
-    padding: 0 spacing(tight) 0 0;
+    padding: 0 var(--p-space-2) 0 0;
   }
 }
 
@@ -48,7 +48,7 @@ $control-vertical-adjustment: rem(2px);
   width: 100%;
   cursor: pointer;
   border-radius: var(--p-border-radius-base);
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   @include text-breakword;
 
   &:hover:not(.disabled) {
@@ -77,7 +77,7 @@ $control-vertical-adjustment: rem(2px);
   flex-shrink: 0;
   width: var(--p-choice-size);
   height: var(--p-choice-size);
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
   margin-left: calc(-1 * var(--p-choice-margin));
 }
 
@@ -89,5 +89,5 @@ $control-vertical-adjustment: rem(2px);
 
 .Media {
   @include recolor-icon(var(--p-icon));
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
 }
