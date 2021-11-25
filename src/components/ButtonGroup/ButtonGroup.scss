@@ -22,7 +22,9 @@ $stacking-order: (
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: var(--p-item-spacing) + var(--p-plain-horizontal-spacing);
+    margin-left: calc(
+      var(--p-item-spacing) + var(--p-plain-horizontal-spacing)
+    );
   }
 
   &:not(:last-child) {
