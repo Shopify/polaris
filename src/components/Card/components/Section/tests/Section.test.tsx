@@ -1,7 +1,10 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Badge, Subheading, ButtonGroup, Button} from 'components';
 
+import {Badge} from '../../../../Badge';
+import {Button} from '../../../../Button';
+import {ButtonGroup} from '../../../../ButtonGroup';
+import {Subheading} from '../../../../Subheading';
 import {Section} from '../Section';
 
 describe('<Card.Section />', () => {

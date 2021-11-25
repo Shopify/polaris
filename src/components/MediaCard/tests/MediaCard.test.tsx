@@ -1,7 +1,11 @@
 import React from 'react';
-import {Heading, Popover, Button, ActionList, Badge} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Heading} from '../../Heading';
+import {Popover} from '../../Popover';
+import {Button} from '../../Button';
+import {ActionList} from '../../ActionList';
+import {Badge} from '../../Badge';
 import {MediaCard} from '../MediaCard';
 import styles from '../MediaCard.scss';
 

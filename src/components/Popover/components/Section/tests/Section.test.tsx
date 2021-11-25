@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {TextContainer} from 'components';
 
+import {TextContainer} from '../../../../TextContainer';
 import {Section} from '../Section';
 
 describe('<Section />', () => {

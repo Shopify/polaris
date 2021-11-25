@@ -1,13 +1,14 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {CustomRoot} from '@shopify/react-testing';
-import {Tooltip, TextField} from 'components';
 
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
+import {TextField} from '../../TextField';
 import {TextStyle} from '../../TextStyle';
+import {Tooltip} from '../../Tooltip';
 import en from '../../../../locales/en.json';
 
 interface HandlerMap {

@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Image, UnstyledLink} from 'components';
 
+import {Image} from '../../Image';
+import {UnstyledLink} from '../../UnstyledLink';
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 

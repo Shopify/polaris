@@ -1,8 +1,10 @@
 import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
+import {EventListener} from '../../../../EventListener';
+import {TextContainer} from '../../../../TextContainer';
+import {TextField} from '../../../../TextField';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 

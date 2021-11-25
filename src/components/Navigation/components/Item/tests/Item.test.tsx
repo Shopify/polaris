@@ -1,9 +1,12 @@
 import React from 'react';
 import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Badge} from '../../../../Badge';
+import {Icon} from '../../../../Icon';
+import {Indicator} from '../../../../Indicator';
+import {UnstyledLink} from '../../../../UnstyledLink';
 import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
