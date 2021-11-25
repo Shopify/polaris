@@ -1,10 +1,12 @@
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
-import {Label, Labelled, TextStyle, Caption} from 'components';
-import {mountWithApp} from 'tests/utilities';
-import type {CustomRoot} from '@shopify/react-testing';
+import {mountWithApp, CustomRoot} from 'tests/utilities';
 
+import {Caption} from '../../Caption';
+import {Label} from '../../Label';
+import {Labelled} from '../../Labelled';
+import {TextStyle} from '../../TextStyle';
 import {DropZone, DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
 

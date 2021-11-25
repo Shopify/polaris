@@ -1,14 +1,12 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {
-  Button,
-  DisplayText,
-  Image,
-  Stack,
-  TextContainer,
-  UnstyledLink,
-} from 'components';
 
+import {Button} from '../../Button';
+import {DisplayText} from '../../DisplayText';
+import {Image} from '../../Image';
+import {Stack} from '../../Stack';
+import {TextContainer} from '../../TextContainer';
+import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
 
