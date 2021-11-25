@@ -63,7 +63,7 @@ export function CheckboxWrapper({children}: CheckboxWrapperProps) {
     if (!checkboxNode.current) return;
 
     const {width} = checkboxNode.current.getBoundingClientRect();
-    setRootProperty('--p-checkbox-offset', `${width}px`, null);
+    setRootProperty('--p-checkbox-offset', `${width}px`);
   }, []);
 
   useEffect(() => {
