@@ -32,10 +32,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Tightened up what absolute imports are allowed. Removed `baseUrl` from `tsconfig.json`. Attempting to do an absolute import from `src/X` or `components/X` now results in a error when type-checking. ([#4643](https://github.com/Shopify/polaris-react/pull/4643))
 
-### New dependencies
-
-- Added `posctcss-pxtorem` to automatically convert px values to rem ([#4701](https://github.com/Shopify/polaris-react/pull/)4701)
-
 ### Dependency upgrades
 
 - Bumped `postcss` to `v8.3.1` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
