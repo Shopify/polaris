@@ -91,12 +91,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       return;
     }
     this.setGlobalRibbonRootProperty();
+    this.setOffset();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
+    this.setOffset();
   }
 
   render() {
@@ -110,7 +112,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       logo,
       children,
       navigation,
-      offset = '0px',
       topBar,
       globalRibbon,
       showMobileNavigation = false,
@@ -265,14 +266,9 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       removeContextualSaveBar: this.removeContextualSaveBar,
     };
 
-    const offsetProperty = {
-      [FRAME_OFFSET_CUSTOM_PROPERTY]: offset,
-    } as React.CSSProperties;
-
     return (
       <FrameContext.Provider value={context}>
         <div
-          style={offsetProperty}
           className={frameClassName}
           {...layer.props}
           {...navigationAttributes}
@@ -310,13 +306,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
   };
 
+  private setOffset = () => {
+    const {offset = '0px'} = this.props;
+    setRootProperty(FRAME_OFFSET_CUSTOM_PROPERTY, offset);
+  };
+
   private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
-    setRootProperty(
-      GLOBAL_RIBBON_CUSTOM_PROPERTY,
-      `${globalRibbonHeight}px`,
-      null,
-    );
+    setRootProperty(GLOBAL_RIBBON_CUSTOM_PROPERTY, `${globalRibbonHeight}px`);
   };
 
   private showToast = (toast: ToastPropsWithID) => {
