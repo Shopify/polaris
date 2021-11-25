@@ -104,7 +104,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Slide {
   will-change: transform;
   transform: translateY(0);
-  transition: transform easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200);
 }
 
 .Slide-appear,
