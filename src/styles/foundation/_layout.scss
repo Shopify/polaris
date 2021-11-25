@@ -1,4 +1,8 @@
 $navigation-width: 240px !default;
+// @TODO simplify media queries so this isn't needed
+$dangerous-magic-space-3: rem(12px);
+$dangerous-magic-space-5: rem(20px);
+$dangerous-magic-space-8: rem(32px);
 
 ////
 /// Layout
@@ -31,11 +35,11 @@ $layout-width-data: (
     partially-condensed: rem(450px),
   ),
   inner-spacing: (
-    base: spacing(),
+    base: $dangerous-magic-space-3,
   ),
   outer-spacing: (
-    min: spacing(loose),
-    max: spacing(extra-loose),
+    min: $dangerous-magic-space-5,
+    max: $dangerous-magic-space-8,
   ),
 );
 
@@ -60,7 +64,7 @@ $dismiss-icon-size: 32px;
 }
 
 @function mobile-nav-width() {
-  @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
+  @return calc(100vw - #{rem($dismiss-icon-size) + $dangerous-magic-space-8});
 }
 
 @function nav-min-window-corrected() {

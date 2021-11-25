@@ -2,11 +2,12 @@
 
 $top-offset-slide-in-start: rem(200px);
 $vertical-spacing: 60px;
-$horizontal-spacing: spacing(extra-loose) * 2;
 $height-limit: 600px;
 $xsmall-width: rem(380px);
 $small-width: rem(620px);
 $large-width: rem(980px);
+// @TODO simplify media queries so this isn't needed
+$dangerous-magic-unitless-space-16: 64;
 
 .Container {
   position: fixed;
@@ -28,6 +29,7 @@ $large-width: rem(980px);
 }
 
 .Modal {
+  --p-horizontal-spacing: var(--p-space-16);
   position: fixed;
   right: 0;
   bottom: 0;
@@ -65,20 +67,24 @@ $large-width: rem(980px);
 
   &.sizeSmall {
     @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - #{$horizontal-spacing});
+      max-width: calc(100% - var(--p-horizontal-spacing));
     }
 
-    @include breakpoint-after($xsmall-width + $horizontal-spacing) {
+    @include breakpoint-after(
+      $xsmall-width + $dangerous-magic-unitless-space-16
+    ) {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
     @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - #{$horizontal-spacing});
+      max-width: calc(100% - var(--p-horizontal-spacing));
     }
 
-    @include breakpoint-after($large-width + $horizontal-spacing) {
+    @include breakpoint-after(
+      $large-width + $dangerous-magic-unitless-space-16
+    ) {
       max-width: $large-width;
     }
   }
