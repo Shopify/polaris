@@ -9,8 +9,5 @@ addons.setConfig({
     brandUrl: '/',
     brandImage: null,
     appBorderRadius: 0,
-    appBg: '#f4f6f8',
-    contentBg: '#f4f6f8',
-    textColor: '#212b36',
   }),
 });
