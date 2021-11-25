@@ -61,8 +61,8 @@ $progress-bar-height: rem(6px);
   position: absolute;
   bottom: 0;
   padding: 0 var(--p-space-1);
-  margin-bottom: spacing(tight);
-  margin-left: spacing(tight);
+  margin-bottom: var(--p-space-2);
+  margin-left: var(--p-space-2);
   border-radius: var(--p-border-radius-base);
   color: var(--p-text);
   background-color: var(--p-surface);
@@ -71,7 +71,7 @@ $progress-bar-height: rem(6px);
 }
 
 .withProgress {
-  margin-bottom: spacing(base-tight);
+  margin-bottom: var(--p-space-3);
 }
 
 .Progress {

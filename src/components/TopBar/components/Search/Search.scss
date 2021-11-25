@@ -16,12 +16,12 @@
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
-    margin: var(--p-space-1) spacing(loose) 0;
+    margin: var(--p-space-1) var(--p-space-5) 0;
     border-radius: var(--p-border-radius-wide);
   }
 
   @include page-content-when-not-partially-condensed {
-    margin: var(--p-space-1) spacing(extra-loose) 0;
+    margin: var(--p-space-1) var(--p-space-8) 0;
   }
 }
 
