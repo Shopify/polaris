@@ -6,7 +6,7 @@ $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
 
 .Navigation {
-  --icon-size: rem(20px);
+  --icon-size: #{rem(20px)};
   display: flex;
   flex-direction: column;
   align-items: stretch;
