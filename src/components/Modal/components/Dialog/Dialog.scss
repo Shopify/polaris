@@ -7,7 +7,7 @@ $xsmall-width: rem(380px);
 $small-width: rem(620px);
 $large-width: rem(980px);
 // @TODO simplify media queries so this isn't needed
-$dangerous-magic-unitless-space-16: 64;
+$dangerous-magic-space-16: rem(64px);
 
 .Container {
   position: fixed;
@@ -70,9 +70,7 @@ $dangerous-magic-unitless-space-16: 64;
       max-width: calc(100% - var(--p-horizontal-spacing));
     }
 
-    @include breakpoint-after(
-      $xsmall-width + $dangerous-magic-unitless-space-16
-    ) {
+    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
       max-width: $xsmall-width;
     }
   }
@@ -82,9 +80,7 @@ $dangerous-magic-unitless-space-16: 64;
       max-width: calc(100% - var(--p-horizontal-spacing));
     }
 
-    @include breakpoint-after(
-      $large-width + $dangerous-magic-unitless-space-16
-    ) {
+    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
       max-width: $large-width;
     }
   }
