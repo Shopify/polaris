@@ -14,9 +14,7 @@ $checkbox-offset-right: rem(18px);
 $small-checkbox-offset: rem(2px);
 
 .IndexTable {
-  --spacing-loose: var(--p-space-3);
-  --spacing-extra-loose: calc(var(--spacing-loose) + var(--p-space-1));
-  --translate-offset: calc(#{rem(50px)} - var(--spacing-extra-loose));
+  --translate-offset: calc(#{rem(50px)} - var(--p-space-4));
   --table-header-offset: #{rem(52px)};
   position: relative;
   overflow: hidden;
