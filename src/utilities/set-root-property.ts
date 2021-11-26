@@ -1,7 +1,7 @@
 export function setRootProperty(
   name: string,
   value: string,
-  node: Element | null,
+  node: Element | null = null,
 ) {
   if (document == null) {
     return;

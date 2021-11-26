@@ -99,7 +99,6 @@ describe('<Checkbox />', () => {
         expect(setRootPropertySpy).toHaveBeenLastCalledWith(
           '--p-checkbox-offset',
           '0px',
-          null,
         );
       });
 
@@ -111,7 +110,6 @@ describe('<Checkbox />', () => {
         expect(setRootPropertySpy).toHaveBeenLastCalledWith(
           '--p-checkbox-offset',
           '200px',
-          null,
         );
       });
 

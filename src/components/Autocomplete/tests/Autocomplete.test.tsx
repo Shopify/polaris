@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithApp, ReactTestingElement, CustomRoot} from 'tests/utilities';
-import {KeypressListener} from 'components';
 
 import {TextField} from '../../TextField';
 import {Key, SectionDescriptor} from '../../../types';
@@ -9,6 +8,7 @@ import {ComboboxTextFieldContext} from '../../../utilities/combobox';
 import {Autocomplete} from '../Autocomplete';
 import {Combobox} from '../../Combobox';
 import type {ComboboxProps} from '../../Combobox';
+import {KeypressListener} from '../../KeypressListener';
 import {Listbox} from '../../Listbox';
 
 describe('<Autocomplete/>', () => {

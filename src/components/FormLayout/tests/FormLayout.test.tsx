@@ -1,7 +1,7 @@
 import React from 'react';
-import {TextField} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {TextField} from '../../TextField';
 import {FormLayout} from '../FormLayout';
 
 describe('<FormLayout />', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Button} from 'components';
 
+import {Button} from '../../../../Button';
 import {Navigation} from '../Navigation';
 
 describe('<Navigation />', () => {

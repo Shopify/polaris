@@ -8,13 +8,6 @@ import {TextOption} from '../../TextOption';
 import {MappedActionContext} from '../../../../../utilities/autocomplete';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
-jest.mock('components', () => ({
-  ...jest.requireActual('components'),
-  Icon() {
-    return null;
-  },
-}));
-
 const defaultProps = {
   accessibilityLabel: 'label',
   value: 'value',

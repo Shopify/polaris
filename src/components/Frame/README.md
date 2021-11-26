@@ -644,8 +644,6 @@ function FrameExample() {
     </Modal>
   );
 
-  const theme = {frameOffset: '60px'};
-
   const logo = {
     width: 124,
     topBarSource:
@@ -657,9 +655,8 @@ function FrameExample() {
   };
 
   return (
-    <div style={{height: '500px', background: '#DE1373', margin: '-8px'}}>
+    <div style={{height: '500px', background: '#DE1373'}}>
       <AppProvider
-        theme={theme}
         i18n={{
           Polaris: {
             Avatar: {
@@ -696,6 +693,7 @@ function FrameExample() {
       >
         <Frame
           logo={logo}
+          offset="6rem"
           globalRibbon={
             <div style={{background: '#C0FFEE', padding: '30px'}}>
               Global ribbon

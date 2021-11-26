@@ -33,8 +33,8 @@ $item-wrapper-loading-height: rem(64px);
   background-color: var(--p-surface);
   z-index: resource-list(header-outer-wrapper-stacking-order);
   overflow: hidden;
-  border-top-left-radius: var(--p-border-radius-wide, border-radius(large));
-  border-top-right-radius: var(--p-border-radius-wide, border-radius(large));
+  border-top-left-radius: var(--p-border-radius-wide);
+  border-top-right-radius: var(--p-border-radius-wide);
 
   + .ResourceList {
     border-top: border('divider');

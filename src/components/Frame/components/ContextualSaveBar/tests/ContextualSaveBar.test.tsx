@@ -1,7 +1,9 @@
 import React from 'react';
-import {Button, CustomProperties, Image} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../../../Button';
+import {Image} from '../../../../Image';
+import {CustomProperties} from '../../../../CustomProperties';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
