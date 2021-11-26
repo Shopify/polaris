@@ -1,4 +1,9 @@
-import type {AvatarProps, IconProps, ThumbnailProps} from './components';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {AvatarProps} from './components/Avatar';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {IconProps} from './components/Icon';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {ThumbnailProps} from './components/Thumbnail';
 
 export interface OptionDescriptor {
   /** Value of the option */
