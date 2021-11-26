@@ -54,3 +54,4 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Deprecations
 
 - Deprecated passing `attention` to the `status` prop on `Badge` in favor of `warning` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
+- Deprecated `thumbnail` property for `Page` ([#4733](https://github.com/Shopify/polaris-react/pull/4733))
