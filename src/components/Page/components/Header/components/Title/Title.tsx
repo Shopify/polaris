@@ -48,9 +48,9 @@ export function Title({
   ) : null;
 
   return (
-    <div>
+    <>
       {wrappedTitleMarkup}
       {subtitleMarkup}
-    </div>
+    </>
   );
 }
