@@ -149,7 +149,7 @@ $spinner-size: rem(20px);
 }
 
 .withinContentContainer {
-  --p-banner-spacing: rem(14px);
+  --p-banner-spacing: #{rem(14px)};
   --p-banner-offset: calc(var(--p-banner-spacing) - var(--p-space-4));
   padding: var(--p-space-4) var(--p-space-4) var(--p-banner-spacing);
 
