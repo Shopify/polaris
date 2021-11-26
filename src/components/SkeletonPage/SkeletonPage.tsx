@@ -16,7 +16,7 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Number of secondary page-level actions to display */
+  /** @deprecated Number of secondary page-level actions to display */
   secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
   breadcrumbs?: boolean;
