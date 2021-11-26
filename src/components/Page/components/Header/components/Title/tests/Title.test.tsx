@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Badge} from '../../../../../../Badge';
 import {DisplayText} from '../../../../../../DisplayText';
-import {Avatar} from '../../../../../../Avatar';
 import {Title} from '../Title';
 
 describe('<Title />', () => {
@@ -61,18 +60,6 @@ describe('<Title />', () => {
     it('renders the titleMetadata when defined', () => {
       const pageTitle = mountWithApp(<Title {...propsWithMetadata} />);
       expect(pageTitle).toContainReactComponent(Badge);
-    });
-  });
-
-  describe('thumbail', () => {
-    const propsWithThumbail = {
-      ...mockProps,
-      thumbnail: <Avatar customer />,
-    };
-
-    it('renders the thumbnail when defined', () => {
-      const pageTitle = mountWithApp(<Title {...propsWithThumbail} />);
-      expect(pageTitle).toContainReactComponent(Avatar);
     });
   });
 });

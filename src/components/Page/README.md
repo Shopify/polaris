@@ -137,12 +137,6 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
   title="3/4 inch Leather pet collar"
   titleMetadata={<Badge status="success">Paid</Badge>}
   subtitle="Perfect for any pet"
-  thumbnail={
-    <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-      alt="Black leather pet collar"
-    />
-  }
   compactTitle
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
@@ -275,52 +269,6 @@ Use when the page title benefits from secondary content.
 </Page>
 ```
 
-### Page with title thumbnail
-
-<!-- example-for: web -->
-
-Use when an image will help merchants identify the purpose of the page.
-
-```jsx
-<Page
-  breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-  title="3/4 inch Leather pet collar"
-  titleMetadata={<Badge status="success">Paid</Badge>}
-  thumbnail={
-    <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-      alt="Black leather pet collar"
-    />
-  }
-  secondaryActions={[
-    {
-      content: 'Duplicate',
-      icon: DuplicateMinor,
-    },
-    {
-      content: 'View',
-      icon: ViewMinor,
-    },
-  ]}
-  actionGroups={[
-    {
-      title: 'Promote',
-      actions: [{content: 'Share on Facebook'}],
-    },
-    {
-      title: 'More actions',
-      actions: [{content: 'Embed on a website'}],
-    },
-  ]}
-  pagination={{
-    hasPrevious: true,
-    hasNext: true,
-  }}
->
-  <p>Page content</p>
-</Page>
-```
-
 ### Page with external link
 
 <!-- example-for: web -->
@@ -336,7 +284,8 @@ Use when a secondary action links to another website. Actions marked external op
       content: 'Promote',
       external: true,
       icon: ExternalMinor,
-      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
+      url:
+        'https://www.facebook.com/business/learn/facebook-page-build-audience',
     },
   ]}
 >
