@@ -47,37 +47,4 @@ describe('<Icon />', () => {
       });
     });
   });
-
-  describe('console warnings', () => {
-    let warnSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-    });
-
-    afterEach(() => {
-      warnSpy.mockRestore();
-    });
-
-    it('warns when a backdrop color is not available for `subdued`', () => {
-      mountWithApp(<Icon source="placeholder" color="subdued" backdrop />);
-      expect(warnSpy).toHaveBeenCalledWith(
-        'The subdued variant does not have a supported backdrop color',
-      );
-    });
-
-    it('warns when a backdrop color is not available for `interactive`', () => {
-      mountWithApp(<Icon source="placeholder" color="interactive" backdrop />);
-      expect(warnSpy).toHaveBeenCalledWith(
-        'The interactive variant does not have a supported backdrop color',
-      );
-    });
-
-    it('warns when a backdrop color is not available for `primary`', () => {
-      mountWithApp(<Icon source="placeholder" color="primary" backdrop />);
-      expect(warnSpy).toHaveBeenCalledWith(
-        'The primary variant does not have a supported backdrop color',
-      );
-    });
-  });
 });

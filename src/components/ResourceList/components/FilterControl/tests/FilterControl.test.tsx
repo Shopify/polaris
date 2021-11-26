@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {TextField, Tag, Button} from 'components';
 
+import {Button} from '../../../../Button';
+import {TextField} from '../../../../TextField';
+import {Tag} from '../../../../Tag';
 import {ResourceListContext} from '../../../../../utilities/resource-list';
 import {
   Filter,

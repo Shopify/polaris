@@ -19,18 +19,6 @@
   }
 }
 
-.hasThumbnail {
-  display: grid;
-  grid-gap: var(--p-space-4);
-  grid-template-columns: auto 1fr;
-
-  .TitleAndSubtitleWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
 .TitleWithMetadataWrapper {
   display: flex;
   flex-wrap: wrap;

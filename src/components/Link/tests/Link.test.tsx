@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Banner, UnstyledLink, Icon} from 'components';
 
+import {Banner} from '../../Banner';
+import {UnstyledLink} from '../../UnstyledLink';
+import {Icon} from '../../Icon';
 import en from '../../../../locales/en.json';
 import {Link} from '../Link';
 

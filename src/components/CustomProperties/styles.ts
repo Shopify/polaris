@@ -14,13 +14,6 @@ const lightDeclarations = getColorSchemeDeclarations(
   osColorSchemes,
 );
 
-/** Default dark color-scheme declarations.  */
-const darkDeclarations = getColorSchemeDeclarations(
-  'dark',
-  tokens,
-  osColorSchemes,
-);
-
 /**
  * Creates CSS Rules for each color-scheme.
  * @example:
@@ -89,12 +82,6 @@ export const styles = /* css */ `
 :root {
   ${lightDeclarations}
   ${getStaticCustomProperties(tokens)}
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    ${darkDeclarations}
-  }
 }
 
 ${getColorSchemeRules(tokens, osColorSchemes)}

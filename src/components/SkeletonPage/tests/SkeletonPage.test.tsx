@@ -1,13 +1,11 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {
-  Layout,
-  Card,
-  SkeletonBodyText,
-  DisplayText,
-  SkeletonDisplayText,
-} from 'components';
 
+import {Card} from '../../Card';
+import {DisplayText} from '../../DisplayText';
+import {Layout} from '../../Layout';
+import {SkeletonBodyText} from '../../SkeletonBodyText';
+import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {
@@ -64,11 +62,6 @@ describe('<SkeletonPage />', () => {
         className: 'SkeletonTitle',
       });
     });
-  });
-
-  it('renders the provided number of secondary actions as SkeletonBodyText', () => {
-    const skeletonPage = mountWithApp(<SkeletonPage secondaryActions={3} />);
-    expect(skeletonPage).toContainReactComponentTimes(SkeletonBodyText, 3);
   });
 
   it('renders breadcrumbs', () => {

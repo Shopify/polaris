@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -16,8 +16,6 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Number of secondary page-level actions to display */
-  secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
   breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
@@ -29,12 +27,10 @@ export function SkeletonPage({
   fullWidth,
   narrowWidth,
   primaryAction,
-  secondaryActions,
   title = '',
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
-
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
@@ -55,11 +51,6 @@ export function SkeletonPage({
     </div>
   ) : null;
 
-  const secondaryActionsMarkup = useMemo(
-    () => (secondaryActions ? renderSecondaryActions(secondaryActions) : null),
-    [secondaryActions],
-  );
-
   const breadcrumbMarkup = breadcrumbs ? (
     <div className={styles.BreadcrumbAction} style={{width: 60}}>
       <SkeletonBodyText lines={1} />
@@ -78,22 +69,8 @@ export function SkeletonPage({
           {titleMarkup}
           {primaryActionMarkup}
         </div>
-        {secondaryActionsMarkup}
       </div>
       <div className={styles.Content}>{children}</div>
     </div>
   );
-}
-
-function renderSecondaryActions(actionCount: number) {
-  const actions = [];
-  for (let i = 0; i < actionCount; i++) {
-    const width = Math.round(Math.random() * 40 + 60);
-    actions.push(
-      <div className={styles.Action} style={{width}} key={i}>
-        <SkeletonBodyText lines={1} />
-      </div>,
-    );
-  }
-  return <div className={styles.Actions}>{actions}</div>;
 }

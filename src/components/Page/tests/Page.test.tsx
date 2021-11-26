@@ -1,15 +1,11 @@
 import React, {useCallback, useState} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {
-  Page,
-  PageProps,
-  Card,
-  Avatar,
-  Badge,
-  ActionMenuProps,
-} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import type {ActionMenuProps} from '../../ActionMenu';
+import {Badge} from '../../Badge';
+import {Card} from '../../Card';
+import {Page, PageProps} from '../Page';
 import {Header} from '../components';
 
 window.matchMedia =
@@ -77,16 +73,6 @@ describe('<Page />', () => {
       );
       expect(page).toContainReactComponent(Header, {
         titleMetadata,
-      });
-    });
-  });
-
-  describe('thumbnail', () => {
-    it('gets passed into the <Header />', () => {
-      const thumbnail = <Avatar customer />;
-      const page = mountWithApp(<Page {...mockProps} thumbnail={thumbnail} />);
-      expect(page).toContainReactComponent(Header, {
-        thumbnail,
       });
     });
   });

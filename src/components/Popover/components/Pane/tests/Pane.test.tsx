@@ -1,7 +1,8 @@
 import React from 'react';
-import {TextContainer, Scrollable} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Scrollable} from '../../../../Scrollable';
+import {TextContainer} from '../../../../TextContainer';
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
 
