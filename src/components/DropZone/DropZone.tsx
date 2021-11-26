@@ -1,4 +1,11 @@
-import type {ReactNode, MouseEvent, ChangeEvent, DragEvent} from 'react';
+import type {
+  ReactNode,
+  MouseEvent,
+  ChangeEvent,
+  DragEvent,
+  ComponentProps,
+  SyntheticEvent,
+} from 'react';
 import {
   createRef,
   useState,
@@ -211,7 +218,9 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
   );
 
   const handleDrop = useCallback(
-    (event: DragEvent) => {
+    (
+      event: globalThis.DragEvent | DragEvent | ChangeEvent<HTMLInputElement>,
+    ) => {
       stopEvent(event);
       if (disabled) return;
 
@@ -234,7 +243,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragEnter = useCallback(
-    (event: DragEvent) => {
+    (event: globalThis.DragEvent) => {
       stopEvent(event);
       if (disabled) return;
 
@@ -257,7 +266,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragOver = useCallback(
-    (event: DragEvent) => {
+    (event: globalThis.DragEvent) => {
       stopEvent(event);
       if (disabled) return;
       onDragOver && onDragOver();
@@ -266,7 +275,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragLeave = useCallback(
-    (event: DragEvent) => {
+    (event: globalThis.DragEvent) => {
       event.preventDefault();
 
       if (disabled) return;
@@ -292,6 +301,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
 
     if (!dropNode) return;
 
+    // @ts-expect-error Typescript incorrectly widens the type of the dropNode's event listener to be `Event`, when it should be globalThis.DragEvent, which handleDrop is capable of accepting
     dropNode.addEventListener('drop', handleDrop);
     dropNode.addEventListener('dragover', handleDragOver);
     dropNode.addEventListener('dragenter', handleDragEnter);
@@ -299,6 +309,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
     window.addEventListener('resize', adjustSize);
 
     return () => {
+      // @ts-expect-error Typescript incorrectly widens the type of the dropNode's event listener to be `Event`, when it should be globalThis.DragEvent, which handleDrop is capable of accepting
       dropNode.removeEventListener('drop', handleDrop);
       dropNode.removeEventListener('dragover', handleDragOver);
       dropNode.removeEventListener('dragenter', handleDragEnter);
@@ -339,7 +350,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
     i18n.translate(`Polaris.DropZone.${allowMultipleKey}.label${typeSuffix}`);
   const labelHiddenValue = label ? labelHidden : true;
 
-  const inputAttributes = {
+  const inputAttributes: ComponentProps<typeof DropZoneInput> = {
     id,
     accept,
     disabled,
@@ -448,7 +459,7 @@ export const DropZone: FunctionComponent<DropZoneProps> & {
   }
 };
 
-function stopEvent(event: DragEvent | DragEvent) {
+function stopEvent(event: globalThis.Event | SyntheticEvent) {
   event.preventDefault();
   event.stopPropagation();
 }

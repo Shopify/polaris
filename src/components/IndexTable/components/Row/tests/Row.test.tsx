@@ -1,4 +1,4 @@
-import type {ReactElement} from 'react';
+import type {ReactElement, MouseEvent} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 

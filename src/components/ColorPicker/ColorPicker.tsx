@@ -1,4 +1,4 @@
-import type {MouseEvent} from 'react';
+import type {SyntheticEvent} from 'react';
 import {PureComponent} from 'react';
 import debounce from 'lodash/debounce';
 
@@ -172,9 +172,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     onChange({hue, saturation, brightness, alpha});
   };
 
-  private handlePickerDrag = (
-    event: MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+  private handlePickerDrag = (event: SyntheticEvent) => {
     // prevents external elements from being selected
     event.preventDefault();
   };

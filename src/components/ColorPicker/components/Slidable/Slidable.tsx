@@ -151,7 +151,9 @@ export class Slidable extends PureComponent<SlidableProps, State> {
     this.setState({dragging: false});
   };
 
-  private handleMove = (event: MouseEvent | TouchEvent) => {
+  private handleMove = (
+    event: globalThis.MouseEvent | globalThis.TouchEvent,
+  ) => {
     event.stopImmediatePropagation();
     event.stopPropagation();
 
@@ -181,7 +183,9 @@ export class Slidable extends PureComponent<SlidableProps, State> {
   };
 }
 
-function isMouseMoveEvent(event: Event): event is MouseEvent {
+function isMouseMoveEvent(
+  event: globalThis.Event,
+): event is globalThis.MouseEvent {
   return event.type === 'mousemove';
 }
 

@@ -304,7 +304,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     event.stopPropagation();
   };
 
-  private handleMouseMoveThumbLower = (event: MouseEvent) => {
+  private handleMouseMoveThumbLower = (event: globalThis.MouseEvent) => {
     const valueUpper = this.state.value[1];
     this.setValue(
       [this.actualXPosition(event.clientX), valueUpper],
@@ -318,7 +318,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     event.stopPropagation();
   };
 
-  private handleTouchMoveThumbLower = (event: TouchEvent) => {
+  private handleTouchMoveThumbLower = (event: globalThis.TouchEvent) => {
     event.preventDefault();
     const valueUpper = this.state.value[1];
     this.setValue(
@@ -333,7 +333,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     event.stopPropagation();
   };
 
-  private handleMouseMoveThumbUpper = (event: MouseEvent) => {
+  private handleMouseMoveThumbUpper = (event: globalThis.MouseEvent) => {
     const valueLower = this.state.value[0];
     this.setValue(
       [valueLower, this.actualXPosition(event.clientX)],
@@ -347,7 +347,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     event.stopPropagation();
   };
 
-  private handleTouchMoveThumbUpper = (event: TouchEvent) => {
+  private handleTouchMoveThumbUpper = (event: globalThis.TouchEvent) => {
     event.preventDefault();
     const valueLower = this.state.value[0];
     this.setValue(
@@ -473,7 +473,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     }
   };
 
-  private handleTouchStartTrack = (event: TouchEvent) => {
+  private handleTouchStartTrack = (event: globalThis.TouchEvent) => {
     if (this.props.disabled) return;
     event.preventDefault();
     const clickXPosition = this.actualXPosition(event.touches[0].clientX);
@@ -513,7 +513,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
   };
 }
 
-function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
+function registerMouseMoveHandler(
+  handler: (event: globalThis.MouseEvent) => void,
+) {
   document.addEventListener('mousemove', handler);
   document.addEventListener(
     'mouseup',
@@ -524,7 +526,9 @@ function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
   );
 }
 
-function registerTouchMoveHandler(handler: (event: TouchEvent) => void) {
+function registerTouchMoveHandler(
+  handler: (event: globalThis.TouchEvent) => void,
+) {
   const removeHandler = () => {
     document.removeEventListener('touchmove', handler);
     document.removeEventListener('touchend', removeHandler);

@@ -1,4 +1,9 @@
-type DropZoneEvent = DragEvent | React.ChangeEvent<HTMLInputElement>;
+import type {ChangeEvent, DragEvent} from 'react';
+
+type DropZoneEvent =
+  | globalThis.DragEvent
+  | DragEvent
+  | ChangeEvent<HTMLInputElement>;
 
 const dragEvents = ['dragover', 'dragenter', 'drop'];
 
@@ -48,7 +53,9 @@ function accepts(file: File, acceptedFiles: string | string[] | undefined) {
   return true;
 }
 
-function isDragEvent(event: DropZoneEvent): event is DragEvent {
+function isDragEvent(
+  event: DropZoneEvent,
+): event is DragEvent | globalThis.DragEvent {
   return dragEvents.indexOf(event.type) > 0;
 }
 
