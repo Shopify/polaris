@@ -1,10 +1,10 @@
 @import '../../../../styles/common';
 
-$offset-from-activator: rem(4px);
 $content-max-width: rem(200px);
 
 .TooltipOverlay {
-  margin: $offset-from-activator var(--p-space-2) var(--p-space-2);
+  --p-offset-from-activator: var(--p-space-1);
+  margin: var(--p-offset-from-activator) var(--p-space-4) var(--p-space-4);
   opacity: 1;
   box-shadow: var(--p-popover-shadow);
   border-radius: var(--p-border-radius-base);
@@ -23,7 +23,7 @@ $content-max-width: rem(200px);
 }
 
 .positionedAbove {
-  margin: var(--p-space-2) var(--p-space-2) $offset-from-activator;
+  margin: var(--p-space-4) var(--p-space-4) var(--p-offset-from-activator);
 }
 
 .Content {
