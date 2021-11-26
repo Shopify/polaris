@@ -15,7 +15,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
-- Deprecate thumbnail property for `Page` ([#4733](https://github.com/Shopify/polaris-react/pull/4733))
 
 ### Bug fixes
 
@@ -54,3 +53,4 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Deprecations
 
 - Deprecated passing `attention` to the `status` prop on `Badge` in favor of `warning` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
+- Deprecated `thumbnail` property for `Page` ([#4733](https://github.com/Shopify/polaris-react/pull/4733))

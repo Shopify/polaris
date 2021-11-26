@@ -28,6 +28,11 @@ export function Title({
   thumbnail,
   compactTitle,
 }: TitleProps) {
+  if (process.env.NODE_ENV === 'development' && thumbnail != null) {
+    // eslint-disable-next-line no-console
+    console.warn('The thumbnail prop from Page has been deprecated');
+  }
+
   const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
