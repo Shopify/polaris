@@ -1,15 +1,13 @@
 import {PlusMinor} from '@shopify/polaris-icons';
-import {
-  ActionMenu,
-  Breadcrumbs,
-  Pagination,
-  Badge,
-  Avatar,
-  Button,
-  ButtonGroup,
-} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Avatar} from '../../../../Avatar';
+import {ActionMenu} from '../../../../ActionMenu';
+import {Badge} from '../../../../Badge';
+import {Breadcrumbs} from '../../../../Breadcrumbs';
+import {Button} from '../../../../Button';
+import {ButtonGroup} from '../../../../ButtonGroup';
+import {Pagination} from '../../../../Pagination';
 import type {LinkAction} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 

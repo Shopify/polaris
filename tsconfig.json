@@ -12,7 +12,6 @@
     "strictFunctionTypes": false,
     "jsx": "react-jsx",
     "paths": {
-      "components": ["./src/components"],
       "tests/*": ["./tests/*"]
     }
   },

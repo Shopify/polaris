@@ -55,19 +55,6 @@ describe('<Checkbox />', () => {
     });
   });
 
-  it('prevents onChange propagation', () => {
-    let stopPropagationSpy = false;
-    const checkbox = mountWithTable(<Checkbox />);
-
-    triggerCheckboxEvent(checkbox, 'onChange', {
-      stopPropagation: () => {
-        stopPropagationSpy = true;
-      },
-    });
-
-    expect(stopPropagationSpy).toBe(true);
-  });
-
   it('toggles the checkbox value when clicked', () => {
     const onSelectionChange = jest.fn();
     const checkbox = mountWithTable(<Checkbox />, {
@@ -76,21 +63,6 @@ describe('<Checkbox />', () => {
     });
 
     triggerCheckboxEvent(checkbox, 'onClick', {
-      nativeEvent: {shiftKey: false},
-    });
-
-    expect(onSelectionChange).toHaveBeenCalledWith('single', false, defaultId);
-  });
-
-  it('toggles the checkbox when spacebar is pressed', () => {
-    const onSelectionChange = jest.fn();
-    const checkbox = mountWithTable(<Checkbox />, {
-      indexProps: {onSelectionChange},
-      rowProps: {selected: true},
-    });
-
-    triggerCheckboxEvent(checkbox, 'onKeyUp', {
-      key: ' ',
       nativeEvent: {shiftKey: false},
     });
 

@@ -1,6 +1,8 @@
 import {mountWithApp} from 'tests/utilities';
-import {Popover, ActionList, Button} from 'components';
 
+import {ActionList} from '../../../../ActionList';
+import {Button} from '../../../../Button';
+import {Popover} from '../../../../Popover';
 import {MenuGroup} from '../MenuGroup';
 
 describe('<MenuGroup />', () => {

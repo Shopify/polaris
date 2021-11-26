@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {Modal} from 'components';
 
+import {Modal} from '../../../../../../Modal';
 import {DiscardConfirmationModal} from '../DiscardConfirmationModal';
 
 describe('<DiscardConfirmationModal />', () => {

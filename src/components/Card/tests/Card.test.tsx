@@ -1,7 +1,11 @@
 import {mountWithApp} from 'tests/utilities';
-import {Card, Badge, Button, Popover, ActionList} from 'components';
 
+import {Badge} from '../../Badge';
+import {Button} from '../../Button';
+import {Popover} from '../../Popover';
+import {ActionList} from '../../ActionList';
 import {WithinContentContext} from '../../../utilities/within-content-context';
+import {Card} from '../Card';
 import {Section} from '../components';
 
 describe('<Card />', () => {

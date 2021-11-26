@@ -13,7 +13,6 @@ $skeleton-display-text-max-width: rem(120px);
 .DisplayText {
   max-width: $skeleton-display-text-max-width;
 
-  @include skeleton-shimmer;
   @include skeleton-content;
 }
 

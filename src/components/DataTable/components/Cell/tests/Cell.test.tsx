@@ -2,7 +2,7 @@ import type {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
-import {Icon} from '../../../..';
+import {Icon} from '../../../../Icon';
 import {Cell} from '../Cell';
 
 describe('<Cell />', () => {

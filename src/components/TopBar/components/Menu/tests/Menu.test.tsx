@@ -1,6 +1,7 @@
 import {mountWithApp} from 'tests/utilities';
-import {ActionList, Popover} from 'components';
 
+import {ActionList} from '../../../../ActionList';
+import {Popover} from '../../../../Popover';
 import {Menu} from '../Menu';
 import {Message} from '../components';
 

@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {VisuallyHidden} from 'components';
 
+import {VisuallyHidden} from '../../VisuallyHidden';
 import {Badge} from '../Badge';
 
 describe('<Badge />', () => {

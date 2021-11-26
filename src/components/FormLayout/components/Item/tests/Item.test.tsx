@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {TextField} from 'components';
 
+import {TextField} from '../../../../TextField';
 import {Item} from '../Item';
 
 describe('<Item />', () => {

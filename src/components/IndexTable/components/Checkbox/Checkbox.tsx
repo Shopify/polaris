@@ -1,4 +1,4 @@
-import type {ReactNode, FormEvent} from 'react';
+import type {ReactNode} from 'react';
 import {
   useContext,
   memo,
@@ -36,8 +36,7 @@ export const Checkbox = memo(function Checkbox() {
         <div
           className={wrapperClassName}
           onClick={onInteraction}
-          onKeyUp={onInteraction}
-          onChange={stopPropagation}
+          onKeyUp={noop}
         >
           <PolarisCheckbox
             id={itemId}
@@ -92,6 +91,4 @@ export function CheckboxWrapper({children}: CheckboxWrapperProps) {
   );
 }
 
-function stopPropagation(event: MouseEvent | KeyboardEvent | FormEvent) {
-  event.stopPropagation();
-}
+function noop() {}

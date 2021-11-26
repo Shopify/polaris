@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {Avatar} from 'components';
 
+import {Avatar} from '../../Avatar';
 import {Button} from '../../Button';
 import {AccountConnection} from '../AccountConnection';
 

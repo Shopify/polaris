@@ -1,4 +1,4 @@
-import type {ReactNode, KeyboardEvent, MouseEvent} from 'react';
+import type {ReactNode, KeyboardEvent, MouseEvent, FormEvent} from 'react';
 import {
   forwardRef,
   useRef,
@@ -14,7 +14,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
-import {Error, Key, CheckboxHandles} from '../../types';
+import {Error, CheckboxHandles, Key} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
@@ -93,20 +93,21 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setKeyFocused(false);
     };
 
-    const handleInput = () => {
+    const handleKeyUp = (event: React.KeyboardEvent) => {
+      const {keyCode} = event;
+
+      if (keyCode === Key.Space || keyCode === Key.Tab) {
+        !keyFocused && setKeyFocused(true);
+      }
+    };
+
+    const handleOnClick = () => {
       if (onChange == null || inputNode.current == null || disabled) {
         return;
       }
-      onChange(!inputNode.current.checked, id);
-      inputNode.current.focus();
-    };
 
-    const handleKeyUp = (event: KeyboardEvent) => {
-      const {keyCode} = event;
-      !keyFocused && setKeyFocused(true);
-      if (keyCode === Key.Space) {
-        handleInput();
-      }
+      onChange(inputNode.current.checked, id);
+      inputNode.current.focus();
     };
 
     const describedBy: string[] = [];
@@ -153,13 +154,11 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         helpText={helpText}
         error={error}
         disabled={disabled}
-        onClick={handleInput}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
         <span className={wrapperClassName}>
           <input
-            onKeyUp={handleKeyUp}
             ref={inputNode}
             id={id}
             name={name}
@@ -168,17 +167,22 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             checked={isChecked}
             disabled={disabled}
             className={inputClassName}
-            onFocus={onFocus}
             onBlur={handleBlur}
-            onClick={stopPropagation}
             onChange={noop}
+            onClick={handleOnClick}
+            onFocus={onFocus}
+            onKeyUp={handleKeyUp}
             aria-invalid={error != null}
             aria-controls={ariaControls}
             aria-describedby={ariaDescribedBy}
             role={isWithinListbox ? 'presentation' : 'checkbox'}
             {...indeterminateAttributes}
           />
-          <span className={backdropClassName} />
+          <span
+            className={backdropClassName}
+            onClick={stopPropagation}
+            onKeyUp={stopPropagation}
+          />
           <span className={styles.Icon}>
             <Icon source={iconSource} />
           </span>
@@ -190,6 +194,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
 
 function noop() {}
 
-function stopPropagation<E>(event: MouseEvent<E>) {
+function stopPropagation(event: MouseEvent | KeyboardEvent | FormEvent) {
   event.stopPropagation();
 }

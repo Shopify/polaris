@@ -1,7 +1,9 @@
-import {mountWithApp} from 'tests/utilities';
-import type {CustomRoot} from '@shopify/react-testing';
-import {Button, Select, Popover, Form} from 'components';
+import {mountWithApp, CustomRoot} from 'tests/utilities';
 
+import {Button} from '../../../../../../Button';
+import {Form} from '../../../../../../Form';
+import {Popover} from '../../../../../../Popover';
+import {Select} from '../../../../../../Select';
 import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
 import {FilterValueSelector} from '../../FilterValueSelector';
 import {FilterType} from '../../../types';

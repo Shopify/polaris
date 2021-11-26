@@ -1,7 +1,8 @@
 import {mountWithApp} from 'tests/utilities';
-import {RadioButton, Checkbox, InlineError} from 'components';
 
-import {Choice} from '../../Choice';
+import {Checkbox} from '../../Checkbox';
+import {InlineError} from '../../InlineError';
+import {RadioButton} from '../../RadioButton';
 import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
@@ -313,12 +314,18 @@ describe('<ChoiceList />', () => {
       const getChoiceElement = (index: number) =>
         choiceList.findAll(Checkbox)[index];
 
-      getChoiceElement(1).find(Choice)!.trigger('onClick');
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+
+      getChoiceElement(1).find('input')!.domNode?.dispatchEvent(event);
       expect(spy).toHaveBeenLastCalledWith(['one', 'two'], 'MyChoiceList');
 
       choiceList.setProps({selected});
 
-      getChoiceElement(2).find(Choice)!.trigger('onClick');
+      getChoiceElement(2).find('input')!.domNode?.dispatchEvent(event);
       expect(spy).toHaveBeenLastCalledWith(
         ['one', 'two', 'three'],
         'MyChoiceList',
@@ -326,7 +333,7 @@ describe('<ChoiceList />', () => {
 
       choiceList.setProps({selected});
 
-      getChoiceElement(0).find(Choice)!.trigger('onClick');
+      getChoiceElement(0).find('input')!.domNode?.dispatchEvent(event);
       expect(spy).toHaveBeenLastCalledWith(['two', 'three'], 'MyChoiceList');
     });
   });

@@ -17,7 +17,7 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Number of secondary page-level actions to display */
+  /** @deprecated Number of secondary page-level actions to display */
   secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
   breadcrumbs?: boolean;
@@ -35,6 +35,13 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
+
+  if (process.env.NODE_ENV === 'development' && secondaryActions != null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'The secondaryActions prop from SkeletonPage has been deprecated',
+    );
+  }
 
   const className = classNames(
     styles.Page,

@@ -15,11 +15,11 @@ import {stylelint} from '@shopify/loom-plugin-stylelint';
 import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
-import postcssShopify from '@shopify/postcss-plugin';
 
 import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
 import {generateScopedName} from './config/rollup/namespaced-classname';
+import postcssPlugins from './config/postcss-plugins';
 
 // Needed so TS realises what configuration hooks are provided by Jest
 import type {} from '@shopify/loom-plugin-jest';
@@ -59,7 +59,6 @@ function jestAdjustmentsPlugin() {
         configuration.jestModuleNameMapper?.hook((moduleNameMapper) => ({
           ...moduleNameMapper,
           '^tests/(.*)': '<rootDir>/tests/$1',
-          '^components$': '<rootDir>/src/components',
         }));
 
         // Ignore tests in the examples folder
@@ -144,7 +143,7 @@ function rollupAdjustPluginsPlugin() {
           modules: {
             generateScopedName: generateScopedName({includeHash: true}),
           },
-          plugins: [postcssShopify],
+          plugins: postcssPlugins,
         }
       : {
           mode: 'standalone',
@@ -152,7 +151,7 @@ function rollupAdjustPluginsPlugin() {
           modules: {
             generateScopedName: generateScopedName({includeHash: false}),
           },
-          plugins: [postcssShopify],
+          plugins: postcssPlugins,
         };
 
     return [

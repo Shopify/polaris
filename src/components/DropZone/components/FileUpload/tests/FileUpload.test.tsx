@@ -1,6 +1,7 @@
-import {Caption, TextStyle} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Caption} from '../../../../Caption';
+import {TextStyle} from '../../../../TextStyle';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
 import {uploadArrow as uploadArrowImage} from '../../../images';

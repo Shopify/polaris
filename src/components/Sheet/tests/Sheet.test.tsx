@@ -1,9 +1,10 @@
 /* eslint-disable import/no-deprecated */
 import {useRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {Backdrop, Button} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Backdrop} from '../../Backdrop';
+import {Button} from '../../Button';
 import {Sheet} from '../Sheet';
 
 describe('<Sheet />', () => {

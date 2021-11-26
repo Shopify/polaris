@@ -1,7 +1,7 @@
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {Checkbox} from 'components';
 
+import {Checkbox} from '../../Checkbox';
 import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
 

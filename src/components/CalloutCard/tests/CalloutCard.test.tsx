@@ -1,6 +1,7 @@
 import {mountWithApp} from 'tests/utilities';
-import {Button, ButtonGroup} from 'components';
 
+import {Button} from '../../Button';
+import {ButtonGroup} from '../../ButtonGroup';
 import {CalloutCard} from '../CalloutCard';
 
 describe('<CalloutCard />', () => {

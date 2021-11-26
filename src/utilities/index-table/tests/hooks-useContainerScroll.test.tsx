@@ -1,8 +1,11 @@
 import {mountWithApp} from 'tests/utilities';
-import {IndexTable, IndexTableProps} from 'components';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
-import {ScrollContainer} from '../../../components/IndexTable';
+import {
+  IndexTable,
+  IndexTableProps,
+  ScrollContainer,
+} from '../../../components/IndexTable';
 import {useContainerScroll} from '../hooks';
 
 function Component({condensed}: {condensed?: boolean}) {

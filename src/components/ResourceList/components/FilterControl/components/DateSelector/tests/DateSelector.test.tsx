@@ -1,6 +1,8 @@
-import {DatePicker, Select, TextField} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {DatePicker} from '../../../../../../DatePicker';
+import {Select} from '../../../../../../Select';
+import {TextField} from '../../../../../../TextField';
 import {
   DateSelector,
   DateSelectorProps,

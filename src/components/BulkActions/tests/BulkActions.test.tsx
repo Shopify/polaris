@@ -1,9 +1,10 @@
 import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
-import {Popover, ActionList} from 'components';
 
+import {ActionList} from '../../ActionList';
 import {CheckableButton} from '../../CheckableButton';
 import {Button} from '../../Button';
+import {Popover} from '../../Popover';
 import {
   BulkActionButton,
   BulkActionMenu,

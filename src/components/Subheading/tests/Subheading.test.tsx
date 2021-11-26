@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {Button} from 'components';
 
+import {Button} from '../../Button';
 import {Subheading} from '../Subheading';
 
 describe('<Subheading />', () => {

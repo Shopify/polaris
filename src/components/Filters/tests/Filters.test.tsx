@@ -1,19 +1,17 @@
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {
-  Button,
-  Popover,
-  Sheet,
-  Tag,
-  TextField,
-  TextStyle,
-  ButtonProps,
-} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Button, ButtonProps} from '../../Button';
+import {Collapsible} from '../../Collapsible';
+import {Popover} from '../../Popover';
+// eslint-disable-next-line import/no-deprecated
+import {Sheet} from '../../Sheet';
+import {Tag} from '../../Tag';
+import {TextField} from '../../TextField';
+import {TextStyle} from '../../TextStyle';
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
-import {Collapsible} from '../../Collapsible';
 import * as focusUtils from '../../../utilities/focus';
 import styles from '../Filters.scss';
 
@@ -100,6 +98,8 @@ describe('<Filters />', () => {
         .find(Button, {children: 'More filters'})!
         .trigger('onClick');
       jest.runAllTimers();
+
+      // eslint-disable-next-line import/no-deprecated
       expect(resourceFilters).toContainReactComponent(Sheet, {open: true});
     });
 
@@ -113,6 +113,7 @@ describe('<Filters />', () => {
         .find(Button, {children: 'More filters'})!
         .trigger('onClick');
 
+      // eslint-disable-next-line import/no-deprecated
       expect(resourceFilters).toContainReactComponent(Sheet, {open: false});
     });
 
@@ -120,6 +121,7 @@ describe('<Filters />', () => {
       it('renders a sheet on desktop size with right origin', () => {
         const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
+        // eslint-disable-next-line import/no-deprecated
         expect(resourceFilters).toContainReactComponent(Sheet);
       });
 
@@ -127,6 +129,7 @@ describe('<Filters />', () => {
         matchMedia.setMedia(() => ({matches: true}));
         const resourceFilters = mountWithApp(<Filters {...mockProps} />);
 
+        // eslint-disable-next-line import/no-deprecated
         expect(resourceFilters).toContainReactComponent(Sheet);
       });
 
@@ -138,6 +141,7 @@ describe('<Filters />', () => {
           .find(Button, {children: 'More filters'})!
           .trigger('onClick');
 
+        // eslint-disable-next-line import/no-deprecated
         expect(resourceFilters).toContainReactComponent(Sheet, {open: true});
       });
 
@@ -152,6 +156,7 @@ describe('<Filters />', () => {
           .find(Button, {children: 'More filters'})!
           .trigger('onClick');
 
+        // eslint-disable-next-line import/no-deprecated
         expect(resourceFilters).toContainReactComponent(Sheet, {open: false});
       });
     });

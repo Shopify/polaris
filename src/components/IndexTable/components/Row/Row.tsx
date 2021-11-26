@@ -44,6 +44,7 @@ export const Row = memo(function Row({
   const handleInteraction = useCallback(
     (event: MouseEvent | KeyboardEvent) => {
       event.stopPropagation();
+
       if (('key' in event && event.key !== ' ') || !onSelectionChange) return;
       const selectionType = event.nativeEvent.shiftKey
         ? SelectionType.Multi
@@ -98,7 +99,6 @@ export const Row = memo(function Row({
       if (!tableRowRef.current || isNavigating.current) {
         return;
       }
-
       event.stopPropagation();
       event.preventDefault();
 

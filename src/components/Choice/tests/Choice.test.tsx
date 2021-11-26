@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {InlineError} from 'components';
 
+import {InlineError} from '../../InlineError';
 import {Choice} from '../Choice';
 
 describe('<Choice />', () => {

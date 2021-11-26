@@ -1,6 +1,6 @@
 import {mountWithApp} from 'tests/utilities';
-import {UnstyledLink} from 'components';
 
+import {UnstyledLink} from '../../UnstyledLink';
 import {UnstyledButton} from '../UnstyledButton';
 
 describe('<Button />', () => {

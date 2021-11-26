@@ -1,6 +1,7 @@
 import {mountWithApp} from 'tests/utilities';
-import {Select, TextField} from 'components';
 
+import {Select} from '../../../../../../Select';
+import {TextField} from '../../../../../../TextField';
 import {FilterValueSelector} from '../FilterValueSelector';
 import {DateSelector} from '../../DateSelector';
 import {Filter, FilterType, Operator} from '../../../types';

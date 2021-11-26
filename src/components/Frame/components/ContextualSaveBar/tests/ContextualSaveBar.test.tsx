@@ -1,6 +1,8 @@
-import {Button, Image, ThemeProvider} from 'components';
 import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../../../Button';
+import {Image} from '../../../../Image';
+import {ThemeProvider} from '../../../../ThemeProvider';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 

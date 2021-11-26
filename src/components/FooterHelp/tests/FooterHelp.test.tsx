@@ -1,7 +1,7 @@
 import {InfoMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
-import {Icon} from 'components';
 
+import {Icon} from '../../Icon';
 import {FooterHelp} from '../FooterHelp';
 
 describe('<FooterHelp />', () => {

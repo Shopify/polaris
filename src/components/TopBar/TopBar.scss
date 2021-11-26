@@ -118,5 +118,5 @@ $context-control-expand-after: 1400px;
 }
 
 .SecondaryMenu {
-  @include recolor-icon(var(--p-icon, transparent));
+  @include recolor-icon(var(--p-icon));
 }

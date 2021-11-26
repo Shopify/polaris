@@ -5,8 +5,12 @@ import {
   SelectMinor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
-import {ActionList, Icon, Popover, Spinner, UnstyledButton} from 'components';
 
+import {ActionList} from '../../ActionList';
+import {Icon} from '../../Icon';
+import {Popover} from '../../Popover';
+import {Spinner} from '../../Spinner';
+import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
 import en from '../../../../locales/en.json';
 import styles from '../Button.scss';

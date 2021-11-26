@@ -27,7 +27,7 @@ $vertical-motion-offset: rem(-5px);
 
 .PopoverOverlay-open {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .PopoverOverlay-exiting {
