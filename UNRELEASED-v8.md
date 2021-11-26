@@ -8,7 +8,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed custom and unnecessary font weight properties ([#4687](https://github.com/Shopify/polaris-react/pull/4687))
 - Moved `logo` from `ThemeProvider` to `Frame` context ([#4667](https://github.com/Shopify/polaris-react/pull/4667))
 - Moved `frameOffset` from `ThemeProvider` to `offset` prop on `Frame` ([#4727](https://github.com/Shopify/polaris-react/pull/4727))
-- Removed the deprecated `secondaryAction` prop on `SkeletonPage` ([#](https://github.com/Shopify/polaris-react/pull/))
+- Removed the deprecated `secondaryAction` prop on `SkeletonPage` ([#4742](https://github.com/Shopify/polaris-react/pull/4742))
 - Removed filter sass function ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Removed color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.

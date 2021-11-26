@@ -31,14 +31,6 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
-
-  if (process.env.NODE_ENV === 'development' && secondaryActions != null) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'The secondaryActions prop from SkeletonPage has been deprecated',
-    );
-  }
-
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
