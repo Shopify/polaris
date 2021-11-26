@@ -30,7 +30,8 @@ $small-checkbox-offset: rem(2px);
 
 .LoadingContainer-enter-active {
   opacity: 1;
-  transition: opacity duration(fast) ease-out, transform duration(fast) ease-out;
+  transition: opacity var(--p-duration-100) ease-out,
+    transform var(--p-duration-100) ease-out;
   transform: translateY(0);
 }
 
@@ -42,7 +43,8 @@ $small-checkbox-offset: rem(2px);
 .LoadingContainer-exit-active {
   opacity: 0;
   transform: translateY(-100%);
-  transition: opacity duration(fast) ease-in, transform duration(fast) ease-in;
+  transition: opacity var(--p-duration-100) ease-in,
+    transform var(--p-duration-100) ease-in;
 }
 
 $loading-panel-height: rem(53px);
@@ -180,7 +182,7 @@ $loading-panel-height: rem(53px);
 .TableHeading {
   padding: spacing();
   text-align: left;
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   white-space: nowrap;
   border: 0;
 }
@@ -460,7 +462,7 @@ $scroll-bar-border-radius: rem(4px);
 .ScrollBar::-webkit-scrollbar-thumb {
   border-radius: $scroll-bar-border-radius;
   background-color: var(--p-border-neutral-subdued);
-  transition: background-color duration(fast) ease-out;
+  transition: background-color var(--p-duration-100) ease-out;
 }
 
 .ScrollBar:hover::-webkit-scrollbar-thumb {
@@ -483,7 +485,7 @@ $scroll-bar-border-radius: rem(4px);
 .condensedRow {
   width: calc(100% + #{$translate-offset});
   transform: translateX(-1 * $translate-offset);
-  transition: transform easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
   border-top: border('divider');
   filter: none;

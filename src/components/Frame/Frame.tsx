@@ -6,6 +6,7 @@ import {CSSTransition} from 'react-transition-group';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
+import type {Logo} from '../../utilities/frame/types';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
@@ -28,6 +29,10 @@ import {
 import styles from './Frame.scss';
 
 export interface FrameProps {
+  /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
+  logo?: Logo;
+  /** A horizontal offset that pushes the frame to the right, leaving empty space on the left */
+  offset?: string;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -60,6 +65,7 @@ interface State {
 }
 
 const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+const FRAME_OFFSET_CUSTOM_PROPERTY = '--p-frame-offset';
 
 const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
@@ -85,12 +91,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       return;
     }
     this.setGlobalRibbonRootProperty();
+    this.setOffset();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
+    this.setOffset();
   }
 
   render() {
@@ -101,6 +109,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showContextualSaveBar,
     } = this.state;
     const {
+      logo,
       children,
       navigation,
       topBar,
@@ -248,6 +257,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       ) : null;
 
     const context = {
+      logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
       startLoading: this.startLoading,
@@ -296,13 +306,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
   };
 
+  private setOffset = () => {
+    const {offset = '0px'} = this.props;
+    setRootProperty(FRAME_OFFSET_CUSTOM_PROPERTY, offset);
+  };
+
   private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
-    setRootProperty(
-      GLOBAL_RIBBON_CUSTOM_PROPERTY,
-      `${globalRibbonHeight}px`,
-      null,
-    );
+    setRootProperty(GLOBAL_RIBBON_CUSTOM_PROPERTY, `${globalRibbonHeight}px`);
   };
 
   private showToast = (toast: ToastPropsWithID) => {

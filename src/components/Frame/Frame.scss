@@ -61,7 +61,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-enterActive {
   transform: translateX(0%);
-  transition: transform duration(slow) easing(out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .Navigation-exit {
@@ -70,7 +70,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-exitActive {
   transform: translateX(-100%);
-  transition: transform duration(slow) easing(out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .NavigationDismiss {
@@ -91,7 +91,7 @@ $skip-vertical-offset: rem(10px);
   pointer-events: none;
   will-change: opacity;
   cursor: pointer;
-  transition: opacity duration(fast) easing();
+  transition: opacity var(--p-duration-100) var(--p-ease);
 
   .Navigation-visible & {
     pointer-events: all;

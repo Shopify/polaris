@@ -338,8 +338,6 @@ export type {TextFieldProps} from './components/TextField';
 export {TextStyle} from './components/TextStyle';
 export type {TextStyleProps} from './components/TextStyle';
 
-export {ThemeProvider} from './components/ThemeProvider';
-
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 
@@ -397,10 +395,3 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
-
-export type {ResourceListSelectedItems} from './utilities/resource-list';
-
-export {
-  toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
-  Tokens as UNSTABLE_Tokens,
-} from './utilities/theme';

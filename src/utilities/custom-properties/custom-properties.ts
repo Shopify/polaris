@@ -1,6 +1,8 @@
 import {config} from '@shopify/polaris-tokens/dist-modern/configs/base';
 
-import {toCssCustomPropertySyntax, Tokens} from '../theme';
+function toCssCustomPropertySyntax(camelCase: string) {
+  return `--p-${camelCase.replace(/([A-Z]|[0-9]+)/g, '-$1').toLowerCase()}`;
+}
 
 export const nonDesignLangaugeCustomProperties = [
   '--global-ribbon-height',
@@ -22,5 +24,4 @@ export const designLangaugeCustomProperties = ([] as string[]).concat(
   ...Object.values(config).map((variant) =>
     variant.map(({name}) => toCssCustomPropertySyntax(name)),
   ),
-  ...Object.keys(Tokens).map(toCssCustomPropertySyntax),
 );

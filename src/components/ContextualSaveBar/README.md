@@ -9,7 +9,6 @@ keywords:
   - save
   - cancel
   - logo
-omitAppProvider: true
 ---
 
 # Contextual Save Bar
@@ -84,40 +83,25 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 
 ```jsx
 <div style={{height: '250px'}}>
-  <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
-    i18n={{
-      Polaris: {
-        Frame: {
-          skipToContent: 'Skip to content',
-        },
-        ContextualSaveBar: {
-          save: 'Save',
-          discard: 'Discard',
-        },
-      },
+  <Frame
+    logo={{
+      width: 124,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     }}
   >
-    <Frame>
-      <ContextualSaveBar
-        message="Unsaved changes"
-        saveAction={{
-          onAction: () => console.log('add form submit logic'),
-          loading: false,
-          disabled: false,
-        }}
-        discardAction={{
-          onAction: () => console.log('add clear form logic'),
-        }}
-      />
-    </Frame>
-  </AppProvider>
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+        loading: false,
+        disabled: false,
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
 </div>
 ```
 
@@ -127,40 +111,25 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 
 ```jsx
 <div style={{height: '250px'}}>
-  <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
-    i18n={{
-      Polaris: {
-        Frame: {
-          skipToContent: 'Skip to content',
-        },
-        ContextualSaveBar: {
-          save: 'Save',
-          discard: 'Discard',
-        },
-      },
+  <Frame
+    logo={{
+      width: 124,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     }}
   >
-    <Frame>
-      <ContextualSaveBar
-        message="Unsaved product"
-        saveAction={{
-          onAction: () => console.log('add form submit logic'),
-          loading: false,
-          disabled: false,
-        }}
-        discardAction={{
-          onAction: () => console.log('add clear form logic'),
-        }}
-      />
-    </Frame>
-  </AppProvider>
+    <ContextualSaveBar
+      message="Unsaved product"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+        loading: false,
+        disabled: false,
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
 </div>
 ```
 
@@ -171,39 +140,24 @@ repurpose that space to extend the message contents fully to the left side of th
 
 ```jsx
 <div style={{height: '250px'}}>
-  <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
-    i18n={{
-      Polaris: {
-        Frame: {
-          skipToContent: 'Skip to content',
-        },
-        ContextualSaveBar: {
-          save: 'Save',
-          discard: 'Discard',
-        },
-      },
+  <Frame
+    logo={{
+      width: 124,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     }}
   >
-    <Frame>
-      <ContextualSaveBar
-        alignContentFlush
-        message="Unsaved changes"
-        saveAction={{
-          onAction: () => console.log('add form submit logic'),
-        }}
-        discardAction={{
-          onAction: () => console.log('add clear form logic'),
-        }}
-      />
-    </Frame>
-  </AppProvider>
+    <ContextualSaveBar
+      alignContentFlush
+      message="Unsaved changes"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
 </div>
 ```
 
@@ -213,41 +167,26 @@ Use the fullWidth flag when you want to remove the default max-width set on the 
 
 ```jsx
 <div style={{height: '250px'}}>
-  <AppProvider
-    theme={{
-      logo: {
-        width: 124,
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    }}
-    i18n={{
-      Polaris: {
-        Frame: {
-          skipToContent: 'Skip to content',
-        },
-        ContextualSaveBar: {
-          save: 'Save',
-          discard: 'Discard',
-        },
-      },
+  <Frame
+    logo={{
+      width: 124,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     }}
   >
-    <Frame>
-      <ContextualSaveBar
-        fullWidth
-        message="Unsaved changes"
-        saveAction={{
-          onAction: () => console.log('add form submit logic'),
-          loading: false,
-          disabled: false,
-        }}
-        discardAction={{
-          onAction: () => console.log('add clear form logic'),
-        }}
-      />
-    </Frame>
-  </AppProvider>
+    <ContextualSaveBar
+      fullWidth
+      message="Unsaved changes"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+        loading: false,
+        disabled: false,
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
 </div>
 ```
 

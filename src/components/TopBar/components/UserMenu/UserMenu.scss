@@ -12,7 +12,7 @@
 .Name {
   @include truncate;
   @include text-style-body;
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   line-height: line-height(subheading);
   color: var(--p-text);
   text-align: left;
@@ -28,5 +28,5 @@
 
 .Name,
 .Detail {
-  transition: (duration() - 33ms) color easing() 33ms;
+  transition: var(--p-duration-150) color var(--p-ease) 33ms;
 }

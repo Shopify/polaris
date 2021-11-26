@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
 import {Image} from '../../../../Image';
-import {ThemeProvider} from '../../../../ThemeProvider';
+import {CustomProperties} from '../../../../CustomProperties';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
@@ -226,7 +226,7 @@ describe('<ContextualSaveBar />', () => {
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        theme: {
+        frame: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
@@ -241,7 +241,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render an image with the width provided', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        theme: {
+        frame: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
@@ -255,7 +255,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render the image with a default width if 0 is provided', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        theme: {
+        frame: {
           logo: {
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
             width: 0,
@@ -272,7 +272,7 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithApp(
         <ContextualSaveBar alignContentFlush />,
         {
-          theme: {
+          frame: {
             logo: {
               contextualSaveBarSource: './assets/monochrome_shopify.svg',
               width: 200,
@@ -285,10 +285,10 @@ describe('<ContextualSaveBar />', () => {
     });
   });
 
-  it('renders a ThemeProvider with inverted theme', () => {
+  it('renders a CustomProperties with a dark color scheme', () => {
     const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
-    expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
-      theme: {colorScheme: 'inverse'},
+    expect(contextualSaveBar).toContainReactComponent(CustomProperties, {
+      colorScheme: 'dark',
     });
   });
 });
