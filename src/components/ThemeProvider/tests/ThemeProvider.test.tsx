@@ -1,4 +1,4 @@
-import type {SFC} from 'react';
+import type {FunctionComponent} from 'react';
 import {useContext} from 'react';
 import {mount} from 'tests/utilities';
 
@@ -17,7 +17,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('passes context', () => {
-    const Child: SFC = () => {
+    const Child: FunctionComponent = () => {
       const polarisTheme = useContext(ThemeContext);
       // eslint-disable-next-line jest/no-if
       return polarisTheme && polarisTheme.logo ? <div /> : null;

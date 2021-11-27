@@ -1,4 +1,4 @@
-import type {ReactNode, ReactElement, SFC, SVGProps} from 'react';
+import type {ReactNode, ReactElement, FunctionComponent, SVGProps} from 'react';
 
 import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
@@ -16,7 +16,7 @@ export interface TitleProps {
   /** @deprecated thumbnail that precedes the title */
   thumbnail?:
     | ReactElement<AvatarProps | ThumbnailProps>
-    | SFC<SVGProps<SVGSVGElement>>;
+    | FunctionComponent<SVGProps<SVGSVGElement>>;
   /** Removes spacing between title and subtitle */
   compactTitle?: boolean;
 }
