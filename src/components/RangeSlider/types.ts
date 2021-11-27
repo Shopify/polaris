@@ -1,3 +1,5 @@
+import type {ReactNode} from 'react';
+
 import type {LabelledProps} from '../Labelled';
 import type {Error} from '../../types';
 
@@ -7,7 +9,7 @@ export type RangeSliderValue = number | DualValue;
 
 export interface RangeSliderProps {
   /** Label for the range input */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
@@ -25,15 +27,15 @@ export interface RangeSliderProps {
   /** Provide a tooltip while sliding, indicating the current value */
   output?: boolean;
   /** Additional text to aid in use */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /** Display an error message */
   error?: Error;
   /** Disable input */
   disabled?: boolean;
   /** Element to display before the input */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** Element to display after the input */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /** Callback when the range input is changed */
   onChange(value: RangeSliderValue, id: string): void;
   /** Callback when range input is focused */

@@ -1,3 +1,5 @@
+import type {ReactNode} from 'react';
+
 interface RectConfig {
   top?: number;
   left?: number;
@@ -35,7 +37,7 @@ export class Rect {
   }
 }
 
-export function getRectForNode(node: Element | React.ReactNode | Window): Rect {
+export function getRectForNode(node: Element | ReactNode | Window): Rect {
   if (!(node instanceof Element)) {
     return new Rect({
       width: window.innerWidth,

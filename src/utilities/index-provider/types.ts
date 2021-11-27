@@ -1,3 +1,5 @@
+import type {ReactNode} from 'react';
+
 export type IndexSelectedItems = string[] | 'All';
 
 export const SELECT_ALL_ITEMS = 'All';
@@ -12,7 +14,7 @@ export enum SelectionType {
 export type Range = [number, number];
 
 export interface IndexProviderProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   selectable?: boolean;
   itemCount: number;
   selectedItemsCount?: typeof SELECT_ALL_ITEMS | number;

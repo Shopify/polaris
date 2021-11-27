@@ -1,9 +1,10 @@
+import type {MouseEvent, KeyboardEvent} from 'react';
 import {createContext} from 'react';
 
 interface RowContextType {
   itemId?: string;
   selected?: boolean;
-  onInteraction?: (event: React.MouseEvent | React.KeyboardEvent) => void;
+  onInteraction?: (event: MouseEvent | KeyboardEvent) => void;
 }
 
 export const RowContext = createContext<RowContextType>({});

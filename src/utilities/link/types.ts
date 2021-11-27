@@ -1,9 +1,10 @@
-export interface LinkLikeComponentProps
-  extends React.HTMLProps<HTMLAnchorElement> {
+import type {HTMLProps, ReactNode, ComponentType} from 'react';
+
+export interface LinkLikeComponentProps extends HTMLProps<HTMLAnchorElement> {
   /** The url to link to */
   url: string;
   /**	The content to display inside the link */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Makes the link open in a new tab */
   external?: boolean;
   /** Makes the browser download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
@@ -11,4 +12,4 @@ export interface LinkLikeComponentProps
   [key: string]: any;
 }
 
-export type LinkLikeComponent = React.ComponentType<LinkLikeComponentProps>;
+export type LinkLikeComponent = ComponentType<LinkLikeComponentProps>;

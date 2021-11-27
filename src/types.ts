@@ -1,3 +1,11 @@
+import type {
+  ReactNode,
+  ReactElement,
+  SVGProps,
+  FunctionComponent,
+  KeyboardEvent,
+} from 'react';
+
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import type {AvatarProps} from './components/Avatar';
 // eslint-disable-next-line @shopify/strict-component-boundaries
@@ -9,7 +17,7 @@ export interface OptionDescriptor {
   /** Value of the option */
   value: string;
   /** Display label for the option */
-  label: React.ReactNode;
+  label: ReactNode;
   /** Whether the option is disabled or not */
   disabled?: boolean;
   /** Whether the option is active or not */
@@ -17,7 +25,7 @@ export interface OptionDescriptor {
   /** Unique identifier for the option */
   id?: string;
   /** Media to display to the left of the option content */
-  media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
+  media?: ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
 export interface SectionDescriptor {
@@ -30,16 +38,13 @@ export interface SectionDescriptor {
 export type Descriptor = SectionDescriptor | OptionDescriptor;
 
 export type IconSource =
-  | React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+  | FunctionComponent<SVGProps<SVGSVGElement>>
   | 'placeholder'
   | string;
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
-export type Error =
-  | string
-  | React.ReactElement
-  | (string | React.ReactElement)[];
+export type Error = string | ReactElement | (string | ReactElement)[];
 
 export interface BaseButton {
   /** A unique identifier for the button */
@@ -75,11 +80,11 @@ export interface BaseButton {
   /** Callback when focus leaves button */
   onBlur?(): void;
   /** Callback when a keypress event is registered on the button */
-  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyPress?(event: KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keyup event is registered on the button */
-  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyUp?(event: KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keydown event is registered on the button */
-  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  onKeyDown?(event: KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
   /** Callback when element is touched */
@@ -178,9 +183,9 @@ export interface ActionListItemDescriptor
   /** Image source */
   image?: string;
   /** Prefix source */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** Suffix source */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
   /** Whether the action is active or not */
@@ -218,7 +223,7 @@ export interface MenuGroupDescriptor extends BadgeAction {
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** Action details */
-  details?: React.ReactNode;
+  details?: ReactNode;
   /** Zero-indexed numerical position. Overrides the group's order in the menu. */
   index?: number;
   /** Callback when any action takes place */

@@ -1,4 +1,4 @@
-import React from 'react';
+import {StrictMode, Fragment} from 'react';
 import {addParameters, addDecorator} from '@storybook/react';
 import {withContexts} from '@storybook/addon-contexts/react';
 
@@ -6,7 +6,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 
 function StrictModeToggle({isStrict = false, children}) {
-  const Wrapper = isStrict ? React.StrictMode : React.Fragment;
+  const Wrapper = isStrict ? StrictMode : Fragment;
   return <Wrapper>{children}</Wrapper>;
 }
 

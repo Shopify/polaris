@@ -1,8 +1,10 @@
+import type {MouseEvent} from 'react';
+
 import {isElementInViewport} from './is-element-in-viewport';
 
 type Filter = (element: Element) => void;
 export type MouseUpBlurHandler = (
-  event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
 ) => void;
 
 const FOCUSABLE_SELECTOR =

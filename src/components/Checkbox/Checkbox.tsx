@@ -93,7 +93,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setKeyFocused(false);
     };
 
-    const handleKeyUp = (event: React.KeyboardEvent) => {
+    const handleKeyUp = (event: KeyboardEvent) => {
       const {keyCode} = event;
 
       if (keyCode === Key.Space || keyCode === Key.Tab) {
