@@ -6,7 +6,6 @@
   --pc-item-vertical-padding: calc(
     (var(--pc-item-min-height) - #{line-height(body)}) / 2
   );
-
   list-style: none;
   margin: 0;
   padding: 0;
