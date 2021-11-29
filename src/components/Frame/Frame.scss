@@ -22,7 +22,7 @@ $skip-vertical-offset: rem(10px);
 .Navigation {
   @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(nav, $fixed-element-stacking-order);
+  z-index: var(--p-nav);
   top: 0;
   left: 0;
   display: none;
@@ -121,7 +121,7 @@ $skip-vertical-offset: rem(10px);
 .TopBar {
   @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(top-bar, $fixed-element-stacking-order);
+  z-index: var(--p-top-bar);
   top: 0;
   left: 0;
   width: 100%;
@@ -135,7 +135,7 @@ $skip-vertical-offset: rem(10px);
 
 .ContextualSaveBar {
   position: fixed;
-  z-index: z-index(context-bar, $fixed-element-stacking-order);
+  z-index: var(--p-context-bar);
   top: 0;
   left: 0;
   width: 100%;
@@ -184,7 +184,7 @@ $skip-vertical-offset: rem(10px);
 
 .GlobalRibbonContainer {
   position: fixed;
-  z-index: z-index(global-ribbon, $fixed-element-stacking-order);
+  z-index: var(--p-global-ribbon);
   bottom: 0;
   width: 100%;
 
@@ -206,7 +206,7 @@ $skip-vertical-offset: rem(10px);
 .LoadingBar {
   @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
+  z-index: var(--p-small-screen-loading-bar, $fixed-element-stacking-order);
   top: 0;
   right: 0;
   left: 0;
@@ -217,17 +217,14 @@ $skip-vertical-offset: rem(10px);
     }
 
     .hasTopBar & {
-      z-index: var(
-        --p-override-loading-z-index,
-        z-index(loading-bar, $fixed-element-stacking-order)
-      );
+      z-index: var(--p-small-screen-loading-bar);
     }
   }
 }
 
 .Skip {
   position: fixed;
-  z-index: z-index(skip-to-content, $fixed-element-stacking-order);
+  z-index: var(--p-skip-to-content);
   top: $skip-vertical-offset;
   left: calc(var(--p-space-2) + var(--p-frame-offset));
   opacity: 0;

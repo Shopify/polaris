@@ -4,7 +4,7 @@ $entry-iterations: 1;
 
 .Backdrop {
   position: fixed;
-  z-index: z-index(backdrop, $fixed-element-stacking-order);
+  z-index: var(--p-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
@@ -21,7 +21,7 @@ $entry-iterations: 1;
 }
 
 .belowNavigation {
-  z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
+  z-index: var(--p-nav-backdrop);
 }
 
 @keyframes fade-in {
