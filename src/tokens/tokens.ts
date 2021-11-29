@@ -1,4 +1,5 @@
 import {legacyTokens} from './_legacy-tokens';
+import {border} from './_border';
 import {lightColorScheme, darkColorScheme} from './_color';
 import {motion} from './_motion';
 import {spacing} from './_spacing';
@@ -42,6 +43,7 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
+  border: TokenGroup;
   colorSchemes: ColorSchemes;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
@@ -50,6 +52,7 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
+  border,
   colorSchemes,
   legacyTokens,
   motion,
