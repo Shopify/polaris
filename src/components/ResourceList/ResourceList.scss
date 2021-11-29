@@ -17,10 +17,10 @@ $item-wrapper-loading-height: rem(64px);
 
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
-    resource-list(header-padding-small) spacing();
+    resource-list(header-padding-small) var(--p-space-4);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    padding: spacing();
+    padding: var(--p-space-4);
   }
 
   + .ResourceList {
@@ -52,7 +52,7 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .FiltersWrapper + .HeaderOuterWrapper {
-  margin-top: -1 * spacing();
+  margin-top: calc(-1 * var(--p-space-4));
 }
 
 .HeaderWrapper {
@@ -67,7 +67,7 @@ $item-wrapper-loading-height: rem(64px);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
-    padding: resource-list(header-vertical-padding) spacing();
+    padding: resource-list(header-vertical-padding) var(--p-space-4);
   }
 }
 
@@ -83,15 +83,15 @@ $item-wrapper-loading-height: rem(64px);
   display: flex;
   min-height: resource-list(header-content-min-height);
   opacity: 1;
-  transition: opacity easing() duration();
+  transition: opacity var(--p-ease) var(--p-duration-200);
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    right: spacing();
-    left: spacing();
+    right: var(--p-space-4);
+    left: var(--p-space-4);
     align-self: flex-start;
   }
 }
@@ -104,14 +104,14 @@ $item-wrapper-loading-height: rem(64px);
   align-items: center;
 
   .HeaderWrapper-hasSelect & {
-    padding-right: spacing(tight);
+    padding-right: var(--p-space-2);
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     position: relative;
     left: auto;
     flex: 0 1 auto;
-    margin-left: spacing();
+    margin-left: var(--p-space-4);
 
     // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
@@ -133,7 +133,7 @@ $item-wrapper-loading-height: rem(64px);
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
-  padding-left: spacing(extra-tight);
+  padding-left: var(--p-space-1);
   align-self: center;
 
   .HeaderWrapper-hasAlternateTool &,
@@ -185,12 +185,12 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .EmptySearchResultWrapper {
-  padding-top: spacing(extra-loose);
-  padding-bottom: spacing(extra-loose);
+  padding-top: var(--p-space-8);
+  padding-bottom: var(--p-space-8);
 
   @media (min-height: em(600px)) {
-    padding-top: spacing(extra-loose) * 2;
-    padding-bottom: spacing(extra-loose) * 2;
+    padding-top: calc(var(--p-space-8) * 2);
+    padding-bottom: calc(var(--p-space-8) * 2);
   }
 }
 

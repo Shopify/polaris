@@ -14,7 +14,7 @@ $breakpoint: 768px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: spacing() spacing(tight);
+    padding: var(--p-space-4) var(--p-space-2);
 
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
@@ -33,7 +33,7 @@ $breakpoint: 768px;
   border-radius: var(--p-border-radius-base);
 
   &:not(:last-of-type) {
-    margin-right: spacing(extra-tight);
+    margin-right: var(--p-space-1);
   }
 }
 
@@ -67,7 +67,7 @@ $breakpoint: 768px;
 }
 
 .Cell {
-  padding: spacing();
+  padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
@@ -120,7 +120,8 @@ $breakpoint: 768px;
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity duration() easing(), fill duration() easing();
+  transition: opacity var(--p-duration-200) var(--p-ease),
+    fill var(--p-duration-200) var(--p-ease);
 }
 
 .Heading {
@@ -132,10 +133,10 @@ $breakpoint: 768px;
   align-items: baseline;
   @include recolor-icon(var(--p-icon));
   color: var(--p-text);
-  transition: color duration() easing();
+  transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
-  padding: spacing(tight);
-  margin: spacing(tight);
+  padding: var(--p-space-2);
+  margin: var(--p-space-2);
 
   &:hover {
     @include recolor-icon(var(--p-interactive-hovered));
@@ -176,7 +177,7 @@ $breakpoint: 768px;
 }
 
 .Footer {
-  padding: spacing();
+  padding: var(--p-space-4);
   background: var(--p-surface-subdued);
   color: var(--p-text-subdued);
   text-align: center;

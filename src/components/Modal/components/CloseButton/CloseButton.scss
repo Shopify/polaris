@@ -3,9 +3,9 @@
 .CloseButton {
   @include unstyled-button;
   @include focus-ring;
-  margin-left: spacing(loose);
-  margin-right: -1 * spacing(tight);
-  padding: spacing(tight);
+  margin-left: var(--p-space-5);
+  margin-right: calc(-1 * var(--p-space-2));
+  padding: var(--p-space-2);
   border-radius: border-radius(large);
 
   &:hover {

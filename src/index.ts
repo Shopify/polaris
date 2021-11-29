@@ -109,6 +109,9 @@ export type {ConnectedProps} from './components/Connected';
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
 
+export {CustomProperties} from './components/CustomProperties';
+export type {CustomPropertiesProps} from './components/CustomProperties';
+
 export {DataTable} from './components/DataTable';
 export type {
   DataTableProps,
@@ -335,8 +338,6 @@ export type {TextFieldProps} from './components/TextField';
 export {TextStyle} from './components/TextStyle';
 export type {TextStyleProps} from './components/TextStyle';
 
-export {ThemeProvider} from './components/ThemeProvider';
-
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 
@@ -394,10 +395,3 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
-
-export type {ResourceListSelectedItems} from './utilities/resource-list';
-
-export {
-  toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
-  Tokens as UNSTABLE_Tokens,
-} from './utilities/theme';

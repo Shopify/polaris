@@ -1,9 +1,9 @@
 @import '../../../../../../styles/common';
 
 .DateTextField {
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
 }
 
 .DatePicker {
-  margin-top: spacing();
+  margin-top: var(--p-space-4);
 }

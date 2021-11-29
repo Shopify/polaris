@@ -6,6 +6,7 @@ $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
 
 .Navigation {
+  --icon-size: #{rem(20px)};
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -66,9 +67,9 @@ $nav-max-width: rem(360px);
     flex: 0 0 top-bar-height();
     align-items: center;
     height: top-bar-height();
-    padding: 0 spacing(tight) 0 spacing(base);
+    padding: 0 var(--p-space-2) 0 var(--p-space-4);
     @include safe-area-for(flex-basis, top-bar-height(), left);
-    @include safe-area-for(padding-left, spacing(), left);
+    @include safe-area-for(padding-left, var(--p-space-4), left);
   }
 }
 
@@ -86,7 +87,7 @@ $disabled-fade: 0.6;
 }
 
 .Item-selected {
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
 
@@ -95,7 +96,7 @@ $disabled-fade: 0.6;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -1 * spacing(tight);
+    left: calc(-1 * var(--p-space-2));
     height: 100%;
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
@@ -139,12 +140,12 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
   display: inline-flex;
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: spacing(extra-tight);
+    margin-top: var(--p-space-1);
   }
 }
 
@@ -156,7 +157,7 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  padding: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+  padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -175,7 +176,7 @@ $disabled-fade: 0.6;
 
 .ListItem-hasAction .Item {
   max-width: calc(
-    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+    100% - var(--icon-size) + var(--p-space-4) * 2 + var(--p-space-1)
   );
 }
 
@@ -194,8 +195,8 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: spacing(extra-tight);
-  padding: spacing(extra-tight) spacing();
+  margin-right: var(--p-space-1);
+  padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-base);
 
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -245,7 +246,7 @@ $secondary-item-font-size: rem(15px);
   overflow-x: visible;
 
   &.isExpanded {
-    margin-bottom: spacing(tight);
+    margin-bottom: var(--p-space-2);
   }
 
   .List {
@@ -254,10 +255,10 @@ $secondary-item-font-size: rem(15px);
 
   .Item {
     font-size: $secondary-item-font-size;
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
+    padding-left: calc(var(--icon-size) + var(--p-space-8) - var(--p-space-1));
 
     &:hover {
       color: var(--p-text-subdued);
@@ -308,26 +309,26 @@ $secondary-item-font-size: rem(15px);
     }
   }
   .Item-disabled {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     color: var(--p-text-disabled);
   }
 }
 
 .SecondaryNavigation-noIcon {
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 // Section styles
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
-  padding: spacing() 0;
+  padding: var(--p-space-4) 0;
   padding-top: 0;
   @include safe-area-for(padding-left, 0, left);
 
   + .Section {
-    padding-top: spacing(extra-tight);
-    padding-bottom: spacing();
+    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-4);
   }
 }
 
@@ -344,7 +345,7 @@ $secondary-item-font-size: rem(15px);
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: spacing();
+  padding-left: var(--p-space-4);
 
   .Text {
     font-size: font-size(subheading);
@@ -361,8 +362,8 @@ $secondary-item-font-size: rem(15px);
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
-    margin-right: spacing(extra-tight);
-    padding: spacing(extra-tight) spacing();
+    margin-right: var(--p-space-1);
+    padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-base);
 
     @include breakpoint-after(nav-min-window-corrected()) {
@@ -442,5 +443,5 @@ $secondary-item-font-size: rem(15px);
 }
 
 .SecondaryNavigation-noIcon .Item {
-  padding-left: spacing(tight) + spacing(extra-tight);
+  padding-left: calc(var(--p-space-2) + var(--p-space-1));
 }

@@ -1,10 +1,10 @@
 @import '../../styles/common';
 
 $textfield-backdrop-offset: -(border-width(thick));
-$backdrop-horizontal-spacing: spacing(tight) * 1.5;
+$backdrop-horizontal-spacing: calc(var(--p-space-2) * 1.5);
 $addon-horizontal-spacing: 0.25em;
 $spinner-icon-size: rem(12px);
-$prefix-horizontal-spacing: spacing(tight);
+$prefix-horizontal-spacing: var(--p-space-2);
 
 $stacking-order: (
   contents: 20,
@@ -100,9 +100,7 @@ $stacking-order: (
   padding: control-vertical-padding() $backdrop-horizontal-spacing;
   background: none;
   border: border(transparent);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  font-family: font-family();
   appearance: none;
   caret-color: var(--p-text);
   color: var(--p-text);
@@ -214,7 +212,7 @@ $stacking-order: (
 .AlignFieldBottom {
   align-self: flex-end;
   width: 100%;
-  padding-bottom: spacing(tight);
+  padding-bottom: var(--p-space-2);
 }
 
 .ClearButton {

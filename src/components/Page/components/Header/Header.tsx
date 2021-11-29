@@ -69,7 +69,6 @@ export function Header({
   subtitle,
   titleMetadata,
   additionalMetadata,
-  thumbnail,
   titleHidden = false,
   primaryAction,
   pagination,
@@ -122,7 +121,6 @@ export function Header({
         title={title}
         subtitle={subtitle}
         titleMetadata={titleMetadata}
-        thumbnail={thumbnail}
         compactTitle={compactTitle}
       />
     </div>

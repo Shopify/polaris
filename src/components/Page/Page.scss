@@ -38,5 +38,5 @@ body {
 
 .divider {
   border-top: border();
-  padding-top: spacing();
+  padding-top: var(--p-space-4);
 }

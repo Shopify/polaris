@@ -1,7 +1,5 @@
 @import '../../../../styles/common';
 
-$spacing-loose: rem(12px);
-$spacing-extra-loose: $spacing-loose + spacing(extra-tight);
 $expanded-height: rem(32px);
 $expanded-width: rem(32px);
 $condensed-height: rem(44px);
@@ -21,11 +19,11 @@ $condensed-width: rem(50px);
 .expanded {
   width: $expanded-width;
   height: $expanded-height;
-  padding-left: spacing();
+  padding-left: var(--p-space-4);
 }
 
 .condensed {
   min-width: $condensed-width;
   min-height: $condensed-height;
-  margin-right: -1 * $spacing-extra-loose;
+  margin-right: calc(-1 * var(--p-space-4));
 }

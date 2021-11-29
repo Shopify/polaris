@@ -54,7 +54,7 @@ $stacking-order: (
 
 .CenterContainer + .RightContainer,
 .CenterContainer + .MoreFiltersButtonContainer {
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
 }
 
 .RightContainer {

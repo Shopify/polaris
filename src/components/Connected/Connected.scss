@@ -17,7 +17,7 @@ $stacking-order: (
   flex: 0 0 auto;
 
   &:not(:first-child) {
-    margin-left: spacing(extra-tight);
+    margin-left: var(--p-space-1);
   }
 }
 

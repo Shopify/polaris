@@ -74,7 +74,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   @include page-after-resource-list-small {
     width: auto;
     justify-content: flex-start;
-    margin-right: spacing(tight);
+    margin-right: var(--p-space-2);
   }
 
   .Group-measuring & {
@@ -98,13 +98,13 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 }
 
 .PaginatedSelectAll {
-  padding: spacing(extra-tight) 0;
+  padding: var(--p-space-1) var(--p-space-0);
 }
 
 .Slide {
   will-change: transform;
   transform: translateY(0);
-  transition: transform easing() duration();
+  transition: transform var(--p-ease) var(--p-duration-200);
 }
 
 .Slide-appear,

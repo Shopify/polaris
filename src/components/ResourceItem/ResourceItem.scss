@@ -7,7 +7,6 @@ $resource-list-item-variables: (
   min-height: rem(44px),
   handle-width: rem(48px),
   disclosure-width: rem(48px),
-  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
   clickable-stacking-order: 1,
   content-stacking-order: 2,
   actions-height: rem(56px),
@@ -35,6 +34,7 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
+  --p-translate-offset: calc(#{rem(48px)} - #{rem(12px)} + var(--p-space-1));
   position: relative;
   outline: none;
   cursor: pointer;
@@ -42,7 +42,7 @@ $resource-list-item-variables: (
   &:not(.persistActions) {
     // stylelint-disable-next-line selector-max-combinators
     .Actions {
-      right: spacing();
+      right: var(--p-space-4);
     }
   }
 
@@ -98,13 +98,13 @@ $resource-list-item-variables: (
 .Container {
   position: relative;
   z-index: resource-list-item(content-stacking-order);
-  padding: resource-list-item(padding) spacing();
+  padding: resource-list-item(padding) var(--p-space-4);
   min-height: resource-list-item(min-height);
   display: flex;
   align-items: flex-start;
 
   @include breakpoint-after(resource-list-item(breakpoint-small)) {
-    padding: resource-list-item(padding) spacing(loose);
+    padding: resource-list-item(padding) var(--p-space-5);
   }
 }
 
@@ -133,7 +133,7 @@ $resource-list-item-variables: (
 }
 
 .OwnedNoMedia {
-  padding-top: spacing(extra-tight);
+  padding-top: var(--p-space-1);
 }
 
 // Item handle
@@ -142,7 +142,7 @@ $resource-list-item-variables: (
   min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
+  margin: (-1 * resource-list-item(padding)) var(--p-space-1)
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 
@@ -156,10 +156,10 @@ $resource-list-item-variables: (
 }
 
 .selectable {
-  width: calc(100% + #{resource-list-item(translate-offset)});
-  transform: translateX(-1 * resource-list-item(translate-offset));
-  transition: transform easing() duration();
-  margin-right: -1 * resource-list-item(translate-offset);
+  width: calc(100% + var(--p-translate-offset));
+  transform: translateX(calc(-1 * var(--p-translate-offset)));
+  transition: transform var(--p-ease) var(--p-duration-200);
+  margin-right: calc(-1 * var(--p-translate-offset));
 
   &.selectMode {
     transform: translateX(0);
@@ -174,7 +174,7 @@ $resource-list-item-variables: (
 
 .Media {
   flex: 0 0 auto;
-  margin-right: spacing(loose);
+  margin-right: var(--p-space-5);
   color: inherit;
   text-decoration: none;
 }
@@ -213,7 +213,7 @@ $resource-list-item-variables: (
     flex-basis: auto;
     align-items: center;
     margin-top: 0;
-    margin-left: spacing();
+    margin-left: var(--p-space-4);
     pointer-events: initial;
     height: 100%;
 
@@ -226,7 +226,7 @@ $resource-list-item-variables: (
 .Disclosure {
   position: relative;
   top: -1 * resource-list-item(padding);
-  right: -1 * spacing();
+  right: calc(-1 * var(--p-space-4));
   display: none;
   width: resource-list-item(disclosure-width);
   min-height: resource-list-item(min-height);

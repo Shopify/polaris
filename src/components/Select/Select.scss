@@ -49,8 +49,8 @@ $stacking-order: (
   align-items: center;
   width: 100%;
   min-height: control-height();
-  padding: control-vertical-padding() spacing(tight) control-vertical-padding()
-    spacing(base-tight);
+  padding: control-vertical-padding() var(--p-space-2)
+    control-vertical-padding() var(--p-space-3);
 }
 
 .InlineLabel {
@@ -68,7 +68,7 @@ $stacking-order: (
 }
 
 .Prefix {
-  padding-right: spacing('tight');
+  padding-right: var(--p-space-2);
 }
 
 .Icon {

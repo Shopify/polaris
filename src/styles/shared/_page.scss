@@ -1,11 +1,11 @@
-$actions-vertical-spacing: spacing(tight);
+$actions-vertical-spacing: var(--p-space-2);
 
 @mixin page-padding-not-fully-condensed {
-  padding: 0 spacing(loose);
+  padding: 0 var(--p-space-5);
 }
 
 @mixin page-padding-not-partially-condensed {
-  padding: 0 spacing(extra-loose);
+  padding: 0 var(--p-space-8);
 }
 
 @mixin page-layout {
@@ -23,10 +23,10 @@ $actions-vertical-spacing: spacing(tight);
 }
 
 @mixin page-content-layout {
-  margin: spacing(tight) 0;
+  margin: var(--p-space-2) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: spacing(tight);
+    margin-top: var(--p-space-2);
   }
 }
 
@@ -36,17 +36,17 @@ $actions-vertical-spacing: spacing(tight);
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  margin-top: -1 * spacing(tight);
-  margin-left: -1 * spacing(tight);
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 
   > * {
-    margin-top: spacing(tight);
-    margin-left: spacing(tight);
+    margin-top: var(--p-space-2);
+    margin-left: var(--p-space-2);
   }
 }
 
 @mixin page-header-layout {
-  padding: spacing() spacing() 0;
+  padding: var(--p-space-4) var(--p-space-4) 0;
 
   @include page-content-when-not-fully-condensed {
     padding-left: 0;
@@ -54,12 +54,12 @@ $actions-vertical-spacing: spacing(tight);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding-top: spacing();
+    padding-top: var(--p-space-4);
   }
 }
 
 @mixin page-header-has-navigation {
-  padding-top: spacing();
+  padding-top: var(--p-space-4);
 }
 
 @mixin page-header-without-navigation {
@@ -67,7 +67,7 @@ $actions-vertical-spacing: spacing(tight);
 }
 
 @mixin page-header-has-secondary-actions {
-  padding-top: spacing();
+  padding-top: var(--p-space-4);
 }
 
 @mixin page-actions-layout {

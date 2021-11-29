@@ -15,7 +15,7 @@ $large-size: rem(44px);
 }
 
 .Spinner svg {
-  animation: loading duration(slowest) linear infinite;
+  animation: loading var(--p-duration-500) linear infinite;
   fill: var(--p-border-highlight);
 }
 

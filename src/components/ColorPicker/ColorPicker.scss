@@ -15,7 +15,7 @@ $stacking-order: (
       var(--p-surface) 0% 25%,
       var(--p-surface-neutral-subdued) 0% 50%
     )
-    50% / #{spacing() spacing()};
+    50% / var(--p-space-4) var(--p-space-4);
 }
 
 .ColorPicker {
@@ -100,7 +100,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
   overflow: hidden;
   height: $picker-size;
   width: rem(24px);
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-base);
   border-radius: $picker-size * 0.5;
 }

@@ -82,7 +82,7 @@ $range-thumb-border-error: rem(2px) solid var(--p-border-critical);
 
   // stylelint-disable-next-line value-no-vendor-prefix
   cursor: -webkit-grab;
-  transition: transform var(--p-duration-1-5-0) var(--p-ease);
+  transition: transform var(--p-duration-150) var(--p-ease);
 
   &.disabled {
     cursor: not-allowed;
@@ -113,12 +113,12 @@ $range-output-spacing: rem(16px);
 
 .Prefix {
   flex: 0 0 auto;
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
 }
 
 .Suffix {
   flex: 0 0 auto;
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
 }
 
 .Output {
@@ -129,7 +129,7 @@ $range-output-spacing: rem(16px);
   visibility: hidden;
   pointer-events: none;
   transition-property: opacity, visibility, bottom;
-  transition-duration: var(--p-duration-1-5-0);
+  transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
   transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
 
@@ -147,14 +147,14 @@ $range-output-spacing: rem(16px);
 .OutputBubble {
   position: relative;
   display: flex;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);
   box-shadow: var(--p-popover-shadow);
   border-radius: border-radius();
   transition-property: transform;
-  transition-duration: var(--p-duration-1-5-0);
+  transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
 
   // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class

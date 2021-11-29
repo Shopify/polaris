@@ -64,11 +64,6 @@ describe('<SkeletonPage />', () => {
     });
   });
 
-  it('renders the provided number of secondary actions as SkeletonBodyText', () => {
-    const skeletonPage = mountWithApp(<SkeletonPage secondaryActions={3} />);
-    expect(skeletonPage).toContainReactComponentTimes(SkeletonBodyText, 3);
-  });
-
   it('renders breadcrumbs', () => {
     const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
     expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
