@@ -5,7 +5,7 @@ $item-min-height: rem(40px);
 $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .ActionContainer {
-  margin-bottom: spacing(base-tight);
+  margin-bottom: var(--p-space-3);
 }
 
 [data-focused] {
@@ -25,7 +25,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   min-height: $item-min-height;
   text-align: left;
   cursor: pointer;
-  padding: $item-vertical-padding spacing(tight);
+  padding: $item-vertical-padding var(--p-space-2);
   border-radius: var(--p-border-radius-base);
   border-top: 1px solid var(--p-surface); // 1px gap between elements
 
@@ -96,14 +96,14 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  margin: (-0.5 * $image-size) var(--p-space-4) (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
 }
 
 .Suffix {
   @include recolor-icon(var(--p-icon));
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 .Text {

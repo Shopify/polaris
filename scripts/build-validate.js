@@ -72,8 +72,7 @@ function validateEsNextBuild() {
 
 function validateSassPublicApi() {
   assert.ok(fs.existsSync('./build/styles/_public-api.scss'));
-  assert.ok(fs.existsSync('./build/styles/foundation/_spacing.scss'));
-
+  assert.ok(fs.existsSync('./build/styles/foundation/_layout.scss'));
   // does not contain any :global definitions
   const files = glob.sync(`./build/styles/**/*.scss`);
   assert.notStrictEqual(files.length, 0);

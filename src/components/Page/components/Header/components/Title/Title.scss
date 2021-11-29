@@ -12,7 +12,7 @@
 }
 
 .SubTitle {
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
   color: var(--p-text-subdued);
   &.SubtitleCompact {
     margin-top: 0;
@@ -26,7 +26,7 @@
 
   .Title {
     display: inline;
-    margin-right: spacing(tight);
+    margin-right: var(--p-space-2);
 
     // stylelint-disable-next-line selector-max-combinators
     > * {

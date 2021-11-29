@@ -17,7 +17,7 @@
   min-height: $min-height;
   min-width: $min-height;
   margin: 0;
-  padding: $vertical-padding spacing();
+  padding: $vertical-padding var(--p-space-4);
   background: var(--p-surface);
   box-shadow: var(--p-button-drop-shadow);
   border-radius: var(--p-border-radius-base);

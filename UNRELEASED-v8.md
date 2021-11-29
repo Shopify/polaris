@@ -20,6 +20,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `$easing-data` global variable ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 - Removed the `duration()` scss function and replaced any instances with tokens ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
+- Removed the `spacing()` scss function and replaced any instances with tokens ([#4691](https://github.com/Shopify/polaris-react/pull/4691/))
 
 ### New components
 

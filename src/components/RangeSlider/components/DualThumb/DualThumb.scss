@@ -113,12 +113,12 @@ $range-output-spacing: rem(16px);
 
 .Prefix {
   flex: 0 0 auto;
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
 }
 
 .Suffix {
   flex: 0 0 auto;
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
 }
 
 .Output {
@@ -147,7 +147,7 @@ $range-output-spacing: rem(16px);
 .OutputBubble {
   position: relative;
   display: flex;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);

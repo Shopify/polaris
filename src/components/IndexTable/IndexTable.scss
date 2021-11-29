@@ -9,15 +9,13 @@ $index-table-stacking-order: (
 );
 
 $breakpoint-small: 458px;
-$table-header-offset: rem(52px);
-$spacing-loose: rem(12px);
-$spacing-extra-loose: $spacing-loose + spacing(extra-tight);
-$translate-offset: rem(50px) - $spacing-extra-loose;
 $checkbox-offset-left: rem(14px);
 $checkbox-offset-right: rem(18px);
 $small-checkbox-offset: rem(2px);
 
 .IndexTable {
+  --translate-offset: calc(#{rem(50px)} - var(--p-space-4));
+  --table-header-offset: #{rem(52px)};
   position: relative;
   overflow: hidden;
   border-radius: inherit;
@@ -59,7 +57,7 @@ $loading-panel-height: rem(53px);
   justify-content: center;
   align-items: center;
   background: var(--p-surface);
-  padding: spacing('tight') spacing();
+  padding: var(--p-space-2) var(--p-space-4);
   box-shadow: shadow();
 
   .LoadingPanelRow {
@@ -67,8 +65,8 @@ $loading-panel-height: rem(53px);
     flex-wrap: nowrap;
     width: 100%;
     background: var(--p-surface-highlight-subdued);
-    padding: spacing('tight');
-    padding-bottom: spacing('extra-tight');
+    padding: var(--p-space-2);
+    padding-bottom: var(--p-space-1);
     border-radius: var(--p-border-radius-base);
   }
 }
@@ -180,7 +178,7 @@ $loading-panel-height: rem(53px);
 }
 
 .TableHeading {
-  padding: spacing();
+  padding: var(--p-space-4);
   text-align: left;
   font-weight: var(--p-font-weight-medium);
   white-space: nowrap;
@@ -224,7 +222,7 @@ $loading-panel-height: rem(53px);
 .TableCell {
   z-index: z-index(cell, $index-table-stacking-order);
   text-align: left;
-  padding: spacing(tight) spacing();
+  padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
 }
 
@@ -382,7 +380,7 @@ $loading-panel-height: rem(53px);
 }
 
 .StickyTableHeading-second-scrolling {
-  padding: 0 rem(0.6px) 0 spacing();
+  padding: 0 rem(0.6px) 0 var(--p-space-4);
   display: none;
 
   @include breakpoint-after($breakpoint-small) {
@@ -417,7 +415,7 @@ $loading-panel-height: rem(53px);
   top: 0;
   left: 0;
   right: 0;
-  padding: spacing('tight');
+  padding: var(--p-space-2);
   background: var(--p-surface);
 }
 
@@ -474,17 +472,17 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .selectMode {
-  transform: translateY(-$table-header-offset);
-  margin-bottom: -$table-header-offset;
+  transform: translateY(calc(-1 * var(--table-header-offset)));
+  margin-bottom: calc(-1 * var(--table-header-offset));
 }
 
 .EmptySearchResultWrapper {
-  padding: spacing();
+  padding: var(--p-space-4);
 }
 
 .condensedRow {
-  width: calc(100% + #{$translate-offset});
-  transform: translateX(-1 * $translate-offset);
+  width: calc(100% + var(--translate-offset));
+  transform: translateX(calc(-1 * var(--translate-offset)));
   transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
   border-top: border('divider');
@@ -511,7 +509,7 @@ $scroll-bar-border-radius: rem(4px);
   align-items: flex-start;
   width: 100%;
   min-height: 5.6rem;
-  padding: 1rem spacing();
+  padding: 1rem var(--p-space-4);
   background-color: var(--p-surface);
 
   &.unselectable {
@@ -525,7 +523,7 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .StickyTableHeader-condensed {
-  padding: 1.6rem spacing() 0.8rem;
+  padding: 1.6rem var(--p-space-4) 0.8rem;
 }
 
 .ScrollBarContent {

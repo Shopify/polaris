@@ -32,14 +32,12 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 spacing(tight);
-  margin: 0 spacing(tight);
+  padding: 0 var(--p-space-1) 0 var(--p-space-3);
+  margin: 0 var(--p-space-2);
   border-radius: var(--p-border-radius-base);
   color: var(--p-text);
   text-decoration: none;
   text-align: left;
-  padding-left: spacing() - spacing(extra-tight);
-  padding-right: spacing(extra-tight);
 
   &:hover {
     background: var(--p-background-hovered);
@@ -92,11 +90,11 @@ $nav-animation-variables: (
   width: nav(icon-size);
   height: nav(icon-size);
   margin-top: nav(mobile-spacing);
-  margin-right: spacing();
+  margin-right: var(--p-space-4);
   margin-bottom: nav(mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
-    margin-right: spacing();
+    margin-right: var(--p-space-4);
     margin-bottom: nav(desktop-spacing);
   }
 
@@ -170,11 +168,11 @@ $nav-animation-variables: (
 
 @mixin usermenu-section-attributes {
   position: relative;
-  margin-top: spacing();
+  margin-top: var(--p-space-4);
   &::before {
     content: '';
     position: absolute;
-    top: spacing(tight) * -1;
+    top: calc(var(--p-space-2) * -1);
     left: 0;
     display: block;
     width: 100%;

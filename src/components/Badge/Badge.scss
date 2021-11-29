@@ -1,17 +1,16 @@
 @import '../../styles/common';
-$horizontal-padding: spacing(tight);
-$vertical-padding: calc(#{spacing(extra-tight)} - #{rem(2px)});
-
-$pip-size: spacing(tight);
-$pip-spacing: calc(#{$pip-size} / 2);
 
 .Badge {
+  --p-horizontal-padding: var(--p-space-2);
+  --p-vertical-padding: calc(var(--p-space-1) - #{rem(2px)});
+  --p-pip-size: var(--p-space-2);
+  --p-pip-spacing: calc(var(--p-pip-size) / 2);
   --p-component-badge-pip-color: var(--p-icon);
   display: inline-flex;
   align-items: center;
-  padding: $vertical-padding $horizontal-padding;
+  padding: var(--p-vertical-padding) var(--p-horizontal-padding);
   background-color: var(--p-surface-neutral);
-  border-radius: spacing(loose);
+  border-radius: var(--p-space-5);
   font-size: font-size(caption);
   line-height: line-height(caption, large-screen);
   color: var(--p-text);
@@ -65,10 +64,10 @@ $pip-spacing: calc(#{$pip-size} / 2);
 
 .Pip {
   color: var(--p-component-badge-pip-color);
-  height: $pip-size;
-  width: $pip-size;
-  margin-right: $pip-spacing;
-  margin-left: calc(#{$vertical-padding} - #{$pip-spacing});
+  height: var(--p-pip-size);
+  width: var(--p-pip-size);
+  margin-right: var(--p-pip-spacing);
+  margin-left: calc(var(--p-vertical-padding) - var(--p-pip-spacing));
   border: border-width(thick) solid currentColor;
   border-radius: 50%;
   flex-shrink: 0;

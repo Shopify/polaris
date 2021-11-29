@@ -45,7 +45,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
   .sizeSlim {
     min-height: $slim-min-height;
-    padding: $slim-vertical-padding spacing(base-tight);
+    padding: $slim-vertical-padding var(--p-space-3);
   }
 }
 

@@ -6,10 +6,10 @@
   outline: border-width(base) solid transparent;
 
   + .Card {
-    margin-top: spacing();
+    margin-top: var(--p-space-4);
 
     @media print {
-      margin-top: -1 * spacing(tight);
+      margin-top: calc(-1 * var(--p-space-2));
     }
   }
 
@@ -32,24 +32,24 @@
 }
 
 .Header {
-  padding: spacing() spacing() 0;
+  padding: var(--p-space-4) var(--p-space-4) 0;
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose) spacing(loose) 0;
+    padding: var(--p-space-5) var(--p-space-5) 0;
   }
 
   @media print {
     @include page-content-when-not-fully-condensed {
-      padding: spacing(tight) spacing() spacing(none);
+      padding: var(--p-space-2) var(--p-space-4) var(--p-space-0);
     }
   }
 }
 
 .Section {
-  padding: spacing();
+  padding: var(--p-space-4);
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose);
+    padding: var(--p-space-5);
   }
 
   + .Section {
@@ -61,8 +61,8 @@
   }
 
   @media print {
-    padding-top: spacing(extra-tight);
-    padding-bottom: spacing(extra-tight);
+    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-1);
   }
 }
 
@@ -77,18 +77,18 @@
 }
 
 .Section-fullWidth {
-  padding: spacing() spacing(none);
+  padding: var(--p-space-4) var(--p-space-0);
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose) spacing(none);
+    padding: var(--p-space-5) var(--p-space-0);
   }
 }
 
 .Section-flush {
-  padding: spacing(none);
+  padding: var(--p-space-0);
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(none);
+    padding: var(--p-space-0);
   }
 }
 
@@ -101,28 +101,28 @@
 
   .Header + & {
     border-top: border('divider');
-    margin-top: spacing(loose);
+    margin-top: var(--p-space-5);
   }
 }
 
 .SectionHeader {
-  padding-bottom: spacing(tight);
+  padding-bottom: var(--p-space-2);
 
   .Section-fullWidth & {
-    padding-left: spacing();
-    padding-right: spacing();
+    padding-left: var(--p-space-4);
+    padding-right: var(--p-space-4);
 
     @include page-content-when-not-fully-condensed {
-      padding-left: spacing(loose);
-      padding-right: spacing(loose);
+      padding-left: var(--p-space-5);
+      padding-right: var(--p-space-5);
     }
   }
 }
 
 .Subsection {
   + .Subsection {
-    margin-top: spacing();
-    padding-top: spacing();
+    margin-top: var(--p-space-4);
+    padding-top: var(--p-space-4);
     border-top: border('divider');
 
     @media print {
@@ -131,18 +131,18 @@
   }
 
   @media print {
-    padding-top: spacing(extra-tight);
-    padding-bottom: spacing(extra-tight);
+    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-1);
   }
 }
 
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 spacing() spacing();
+  padding: 0 var(--p-space-4) var(--p-space-4);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose) spacing(loose);
+    padding: 0 var(--p-space-5) var(--p-space-5);
   }
 
   &.LeftJustified {
@@ -151,6 +151,6 @@
 
   .Section-subdued + & {
     border-top: border('divider');
-    padding: spacing(loose);
+    padding: var(--p-space-5);
   }
 }

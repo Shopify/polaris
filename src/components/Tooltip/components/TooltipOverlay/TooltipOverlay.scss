@@ -1,10 +1,10 @@
 @import '../../../../styles/common';
 
-$offset-from-activator: rem(4px);
 $content-max-width: rem(200px);
 
 .TooltipOverlay {
-  margin: $offset-from-activator spacing() spacing();
+  --p-offset-from-activator: var(--p-space-1);
+  margin: var(--p-offset-from-activator) var(--p-space-4) var(--p-space-4);
   opacity: 1;
   box-shadow: var(--p-popover-shadow);
   border-radius: var(--p-border-radius-base);
@@ -23,7 +23,7 @@ $content-max-width: rem(200px);
 }
 
 .positionedAbove {
-  margin: spacing() spacing() $offset-from-activator;
+  margin: var(--p-space-4) var(--p-space-4) var(--p-offset-from-activator);
 }
 
 .Content {
@@ -32,7 +32,7 @@ $content-max-width: rem(200px);
   background-color: var(--p-surface);
   color: var(--p-text);
   max-width: $content-max-width;
-  padding: spacing(extra-tight) spacing(tight);
+  padding: var(--p-space-1) var(--p-space-2);
   word-break: break-word;
 }
 

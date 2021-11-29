@@ -4,7 +4,7 @@
 $icon-size: rem(20px);
 $input-height: rem(34px);
 $new-input-height: rem(36px);
-$search-icon-width: $icon-size + spacing();
+$search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 $stacking-order: (
   backdrop: 1,
@@ -98,7 +98,7 @@ $stacking-order: (
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
-  left: spacing(tight);
+  left: var(--p-space-2);
   display: flex;
   height: $icon-size;
   pointer-events: none;
@@ -117,7 +117,7 @@ $stacking-order: (
   border: none;
   appearance: none;
   background: transparent;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 
   &:focus,
   &:hover {

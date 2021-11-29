@@ -54,30 +54,30 @@ $portrait-breakpoint: 804px;
 .Popover {
   position: absolute;
   z-index: z-index(overlay);
-  top: spacing();
-  right: spacing();
+  top: var(--p-space-4);
+  right: var(--p-space-4);
 }
 
 .Heading {
-  margin-right: spacing(extra-loose);
+  margin-right: var(--p-space-8);
 }
 
 .PrimaryAction {
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
 }
 
 .SecondaryAction {
-  margin-left: -spacing(tight);
+  margin-left: -var(--p-space-2);
 }
 
 .ActionContainer {
-  padding-top: spacing(tight);
+  padding-top: var(--p-space-2);
 
   &.portrait {
-    padding-top: spacing(extra-loose);
+    padding-top: var(--p-space-8);
   }
 
   @include breakpoint-before($portrait-breakpoint, inclusive) {
-    padding-top: spacing(extra-loose);
+    padding-top: var(--p-space-8);
   }
 }
