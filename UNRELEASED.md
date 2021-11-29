@@ -15,6 +15,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
+- Added `stacked` prop to `Layout.AnnotatedSection` to render in stacked layout ([#4755](https://github.com/Shopify/polaris-react/pull/4755))
 
 ### Bug fixes
 

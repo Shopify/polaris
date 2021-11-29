@@ -430,6 +430,33 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 </Layout>
 ```
 
+### Stacked annotated layout
+
+When stacked is true, annotated section is displayed in a stacked layout, where title, description, and children all stack on the same column.
+
+```jsx
+<Layout>
+  <Layout.AnnotatedSection
+    id="storeDetails"
+    title="Store details"
+    description="Shopify and your customers will use this information to contact you."
+    stacked
+  >
+    <Card sectioned>
+      <FormLayout>
+        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
+        <TextField
+          type="email"
+          label="Account email"
+          onChange={() => {}}
+          autoComplete="email"
+        />
+      </FormLayout>
+    </Card>
+  </Layout.AnnotatedSection>
+</Layout>
+```
+
 ### Annotated layout with Banner at the top
 
 Use for settings pages that need a banner or other content at the top.
