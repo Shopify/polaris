@@ -39,7 +39,6 @@ export const legacyTokens: TokenGroup = {
   'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
   'text-field-spinner-offset': '0.2rem',
   'text-field-focus-ring-offset': '-0.4rem',
-  'text-field-focus-ring-border-radius': '0.7rem',
   'button-group-item-spacing': '-0.1rem',
   'duration-100': '100ms',
   'duration-150': '150ms',
