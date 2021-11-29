@@ -15,7 +15,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated styling of `DropZone` border and overlay text. ([#4662](https://github.com/Shopify/polaris-react/pull/4662))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
-- Use the [automatic runtime](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) for importing React, instead of having to add it to the scope of every file manually ([#4694](https://github.com/Shopify/polaris-react/pull/4694))
 
 ### Bug fixes
 
@@ -51,6 +50,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `rem()` function from `tokens.ts` ([#4695](https://github.com/Shopify/polaris-react/pull/4695))
 - Remove unnecessary import of `Tokens` in `Collapsible` test ([#4722](https://github.com/Shopify/polaris-react/pull/4722))
 - Remove legacy tokens and use default theme for `.storybook/manager.js` ([#4729](https://github.com/Shopify/polaris-react/pull/4729))
+- Use the [automatic runtime](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) for importing React, instead of having to add it to the scope of every file manually ([#4694](https://github.com/Shopify/polaris-react/pull/4694))
 
 ### Deprecations
 
