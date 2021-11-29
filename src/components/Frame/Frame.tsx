@@ -298,11 +298,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
   private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
-    setRootProperty(
-      GLOBAL_RIBBON_CUSTOM_PROPERTY,
-      `${globalRibbonHeight}px`,
-      null,
-    );
+    setRootProperty(GLOBAL_RIBBON_CUSTOM_PROPERTY, `${globalRibbonHeight}px`);
   };
 
   private showToast = (toast: ToastPropsWithID) => {
