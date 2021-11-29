@@ -32,6 +32,7 @@ export const legacyTokens: TokenGroup = {
     'inset 0 0.1rem 0 0 var(--p-border-warning-subdued), inset 0 0 0 0.1rem var(--p-border-warning-subdued)',
   'banner-border-critical':
     'inset 0 0.1rem 0 0 var(--p-border-critical-subdued), inset 0 0 0 0.1rem var(--p-border-critical-subdued)',
+  'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
   'text-field-spinner-offset': '0.2rem',
   'text-field-focus-ring-offset': '-0.4rem',
   'button-group-item-spacing': '-0.1rem',
@@ -42,5 +43,4 @@ export const legacyTokens: TokenGroup = {
   'range-slider-thumb-size-base': '1.6rem',
   'range-slider-thumb-size-active': '2.4rem',
   'frame-offset': '0px',
-  'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
 };
