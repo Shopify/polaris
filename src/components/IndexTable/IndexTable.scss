@@ -43,7 +43,7 @@ $loading-panel-height: 53px;
 
 .LoadingPanel {
   position: absolute;
-  z-index: var(-pc-loading-panel);
+  z-index: var(--pc-loading-panel);
   top: 0;
   left: 0;
   display: flex;
@@ -216,7 +216,7 @@ $loading-panel-height: 53px;
 }
 
 .TableCell {
-  z-index: var(-pc-cell);
+  z-index: var(--pc-cell);
   text-align: left;
   padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
@@ -229,7 +229,7 @@ $loading-panel-height: 53px;
 .TableCell-first {
   position: sticky;
   left: 0;
-  z-index: var(-pc-sticky-cell);
+  z-index: var(--pc-sticky-cell);
   padding: 0;
 }
 
@@ -239,7 +239,7 @@ $loading-panel-height: 53px;
 
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
-    z-index: var(-pc-sticky-cell);
+    z-index: var(--pc-sticky-cell);
     padding: 0;
   }
 }
@@ -249,7 +249,7 @@ $loading-panel-height: 53px;
     left: 0;
     background-color: var(--p-surface);
     position: sticky;
-    z-index: var(-pc-sticky-cell);
+    z-index: var(--pc-sticky-cell);
   }
 
   .statusSuccess {
@@ -289,7 +289,7 @@ $loading-panel-height: 53px;
       position: sticky;
       right: 0;
       background-color: var(--p-surface);
-      z-index: var(-pc-sticky-cell);
+      z-index: var(--pc-sticky-cell);
     }
   }
 
@@ -334,7 +334,7 @@ $loading-panel-height: 53px;
   left: 0;
   right: 0;
   visibility: hidden;
-  z-index: var(-pc-loading-panel);
+  z-index: var(--pc-loading-panel);
 }
 
 .StickyTableHeader {
@@ -407,7 +407,7 @@ $loading-panel-height: 53px;
 .BulkActionsWrapper {
   visibility: visible;
   position: relative;
-  z-index: var(-pc-bulk-actions);
+  z-index: var(--pc-bulk-actions);
   top: 0;
   left: 0;
   right: 0;
@@ -420,7 +420,7 @@ $scroll-bar-border-radius: 4px;
 
 .ScrollBarContainer {
   position: sticky;
-  z-index: var(-pc-scroll-bar);
+  z-index: var(--pc-scroll-bar);
   bottom: 0;
   padding: var(--p-space-05);
   border-top: border('divider');
