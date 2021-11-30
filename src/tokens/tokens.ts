@@ -3,6 +3,7 @@ import {lightColorScheme, darkColorScheme} from './_color';
 import {motion} from './_motion';
 import {spacing} from './_spacing';
 import {typography} from './_typography';
+import {zIndex} from './_z-index';
 
 /**
  * Values to convert to CSS custom properties.
@@ -47,6 +48,7 @@ export interface Tokens {
   motion: TokenGroup;
   spacing: TokenGroup;
   typography: TokenGroup;
+  zIndex: TokenGroup;
 }
 
 export const tokens: Tokens = {
@@ -55,4 +57,5 @@ export const tokens: Tokens = {
   motion,
   spacing,
   typography,
+  zIndex,
 };
