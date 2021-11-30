@@ -34,7 +34,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   padding: var(--p-space-1) var(--p-space-4) var(space-3) var(--p-space-4);
 
   &.firstSectionWithTitle {
-    padding-top: var(space-3);
+    padding-top: var(--p-space-3);
   }
 }
 
