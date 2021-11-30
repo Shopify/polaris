@@ -1,34 +1,31 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  item: 10,
-  focused: 20,
-);
-
 .ButtonGroup {
-  --p-plain-horizontal-spacing: var(--p-space-2);
-  --p-item-spacing: var(--p-space-2);
+  --pc-item: 10;
+  --pc-focused: 20;
+  --pc-plain-horizontal-spacing: var(--p-space-2);
+  --pc-item-spacing: var(--p-space-2);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: calc(-1 * var(--p-item-spacing));
-  margin-left: calc(-1 * var(--p-item-spacing));
+  margin-top: calc(-1 * var(--pc-item-spacing));
+  margin-left: calc(-1 * var(--pc-item-spacing));
 }
 
 .Item {
-  margin-top: var(--p-item-spacing);
-  margin-left: var(--p-item-spacing);
+  margin-top: var(--pc-item-spacing);
+  margin-left: var(--pc-item-spacing);
 }
 
 .Item-plain {
   &:not(:first-child) {
     margin-left: calc(
-      var(--p-item-spacing) + var(--p-plain-horizontal-spacing)
+      var(--pc-item-spacing) + var(--pc-plain-horizontal-spacing)
     );
   }
 
   &:not(:last-child) {
-    margin-right: var(--p-plain-horizontal-spacing);
+    margin-right: var(--pc-plain-horizontal-spacing);
   }
 }
 
@@ -40,7 +37,7 @@ $stacking-order: (
 
   .Item {
     position: relative;
-    z-index: z-index(item, $stacking-order);
+    z-index: var(--pc-item);
     margin-top: 0;
     margin-left: 0;
 
@@ -50,7 +47,7 @@ $stacking-order: (
   }
 
   .Item-focused {
-    z-index: z-index(focused, $stacking-order);
+    z-index: var(--pc-focused);
   }
 }
 

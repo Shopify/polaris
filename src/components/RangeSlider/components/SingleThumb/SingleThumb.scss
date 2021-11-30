@@ -1,12 +1,9 @@
 @import '../../../../styles/common';
 @import '../../RangeSlider';
 
-$stacking-order: (
-  input: 10,
-  output: 20,
-);
-
 .SingleThumb {
+  --pc-input: 10;
+  --pc-output: 20;
   display: flex;
   align-items: center;
 
@@ -75,7 +72,7 @@ $stacking-order: (
 
   @include unstyled-input;
   position: relative;
-  z-index: z-index('input', $stacking-order);
+  z-index: var(--pc-input);
   flex: 1 1 auto;
 
   @include range-track-selectors {
@@ -169,7 +166,7 @@ $range-output-spacing: rem(16px);
 
 .Output {
   position: absolute;
-  z-index: z-index('output', $stacking-order);
+  z-index: var(--pc-output);
   bottom: var(--pc-range-thumb-size);
   left: var(--Polaris-RangeSlider-progress);
   transform: translateX($range-output-translate-x);
