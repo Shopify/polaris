@@ -21,26 +21,6 @@ $base-font-size: 10px;
   }
 }
 
-/// Returns the value in pixels for a given rem value.
-/// @param {Number} $value - The rem value to be converted.
-/// @return {Number} The converted value in pixels.
-
-@function px($value) {
-  $unit: unit($value);
-
-  @if $value == 0 {
-    @return 0;
-  } @else if $unit == 'px' {
-    @return $value;
-  } @else if $unit == 'em' {
-    @return ($value / 1em) * $base-font-size;
-  } @else if $unit == 'rem' {
-    @return ($value / 1rem) * $base-font-size;
-  } @else {
-    @error 'Value must be in rem, em, or px.';
-  }
-}
-
 /// Returns the value in ems for a given pixel value. Note that this
 /// only works for elements that have had no font-size changes.
 /// @param {Number} $value - The pixel value to be converted.
