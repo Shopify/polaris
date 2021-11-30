@@ -69,7 +69,7 @@
   margin-right: var(--p-pip-spacing);
   margin-left: calc(var(--p-vertical-padding) - var(--p-pip-spacing));
   border: border-width(thick) solid currentColor;
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-full);
   flex-shrink: 0;
 }
 

@@ -93,7 +93,7 @@ $stacking-order: (
     width: $range-thumb-size;
     height: $range-thumb-size;
     border: 1px solid transparent;
-    border-radius: 50%;
+    border-radius: var(--p-border-radius-full);
     background: linear-gradient(var(--p-interactive), var(--p-interactive));
     box-shadow: 0 0 0 0 var(--p-focused);
     appearance: none;

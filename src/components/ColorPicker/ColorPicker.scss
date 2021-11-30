@@ -85,7 +85,7 @@ $stacking-order: (
   will-change: transform;
   background: transparent;
   border: var(--p-border-radius-base) solid var(--p-surface);
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-full);
   pointer-events: none;
 }
 

@@ -85,7 +85,7 @@ $skip-vertical-offset: rem(10px);
   margin: var(--p-space-4);
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-full);
   background: none;
   opacity: 0;
   pointer-events: none;
