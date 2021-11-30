@@ -3,7 +3,7 @@ import type {TokenGroup} from './tokens';
 export const zIndex: TokenGroup = {
   'z-content': '100',
   'z-overlay': '400',
-  'z-globalRibbon': '510',
+  'z-global-ribbon': '510',
   'z-top-bar': '512',
   'z-context-bar': '513',
   'z-small-screen-loading-bar': '514',
