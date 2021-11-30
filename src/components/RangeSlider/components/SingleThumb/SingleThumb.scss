@@ -20,7 +20,7 @@ $stacking-order: (
   display: flex;
   align-items: center;
   flex: 1 1 auto;
-  height: $range-thumb-size;
+  height: var(--pc-range-thumb-size);
 
   input {
     padding: var(--p-space-3) 0;
@@ -66,7 +66,7 @@ $stacking-order: (
     var(--progress-upper, transparent) 100%;
 
   @mixin rangeSliderThumbPosition($size) {
-    margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
+    margin-top: calc(-1 * (#{$size} - #{var(--pc-range-track-height)}) / 2);
   }
 
   &::-ms-tooltip {
@@ -81,17 +81,17 @@ $stacking-order: (
   @include range-track-selectors {
     cursor: pointer;
     width: 100%;
-    height: $range-track-height;
+    height: var(--pc-range-track-height);
     background-image: linear-gradient(to right, var(--gradient-colors));
     border: none;
-    border-radius: $range-track-height;
+    border-radius: var(--pc-range-track-height);
   }
 
   @include range-thumb-selectors {
     // stylelint-disable-next-line value-no-vendor-prefix
     cursor: -webkit-grab;
-    width: $range-thumb-size;
-    height: $range-thumb-size;
+    width: var(--pc-range-thumb-size);
+    height: var(--pc-range-thumb-size);
     border: 1px solid transparent;
     border-radius: var(--p-border-radius-full);
     background: linear-gradient(var(--p-interactive), var(--p-interactive));
@@ -102,7 +102,7 @@ $stacking-order: (
     transition-duration: var(--p-duration-200);
     transition-timing-function: var(--p-ease);
 
-    @include rangeSliderThumbPosition($range-thumb-size);
+    @include rangeSliderThumbPosition(var(--pc-range-thumb-size));
 
     &:hover {
       background: linear-gradient(var(--p-interactive), var(--p-interactive));
@@ -111,11 +111,11 @@ $stacking-order: (
 
   &::-ms-thumb {
     margin-top: 0;
-    transform: translateY($range-thumb-size / 5) scale(0.4);
+    transform: translateY(var(--pc-range-thumb-size) / 5) scale(0.4);
   }
 
   &::-webkit-slider-thumb {
-    margin-top: -($range-thumb-size - $range-track-height) / 2;
+    margin-top: -(var(--pc-range-thumb-size) - var(--pc-range-track-height)) / 2;
   }
 
   &:active {
@@ -160,7 +160,9 @@ $stacking-order: (
 /// Output value indicator
 $range-output-size: rem(32px);
 $range-output-translate-x: calc(
-  -50% + var(--Polaris-RangeSlider-output-factor) * #{$range-thumb-size}
+  -50% + var(--Polaris-RangeSlider-output-factor) * #{var(
+      --pc-range-thumb-size
+    )}
 );
 
 $range-output-spacing: rem(16px);
@@ -168,7 +170,7 @@ $range-output-spacing: rem(16px);
 .Output {
   position: absolute;
   z-index: z-index('output', $stacking-order);
-  bottom: $range-thumb-size;
+  bottom: var(--pc-range-thumb-size);
   left: var(--Polaris-RangeSlider-progress);
   transform: translateX($range-output-translate-x);
   opacity: 0;
@@ -183,7 +185,9 @@ $range-output-spacing: rem(16px);
       var(--p-range-slider-thumb-size-base);
     opacity: 1;
     visibility: visible;
-    bottom: calc(#{$range-thumb-size} + #{$range-thumb-size-difference});
+    bottom: calc(
+      #{var(--pc-range-thumb-size)} + #{$range-thumb-size-difference}
+    );
   }
 }
 

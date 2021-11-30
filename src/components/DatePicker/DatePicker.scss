@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 $font-size: rem(12px);
-$range-end-border-radius: rem(30px);
 
 .DatePicker {
+  --pc-range-end-border-radius: rem(30px);
   position: relative;
 }
 
@@ -176,18 +176,22 @@ $range-end-border-radius: rem(30px);
   // stylelint-disable-next-line selector-max-class
   &.Day-hasRange,
   &.Day-hoverRight {
-    border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+    border-radius: var(--pc-range-end-border-radius) 0 0
+      var(--pc-range-end-border-radius);
     // stylelint-disable-next-line selector-max-specificity, selector-max-class
     &::after {
-      border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+      border-radius: var(--pc-range-end-border-radius) 0 0
+        var(--pc-range-end-border-radius);
     }
   }
 }
 
 .Day-lastInRange {
-  border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+  border-radius: 0 var(--pc-range-end-border-radius)
+    var(--pc-range-end-border-radius) 0;
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-range-end-border-radius)
+      var(--pc-range-end-border-radius) 0;
   }
 }
 
@@ -210,6 +214,7 @@ $range-end-border-radius: rem(30px);
 .Day-inRange:not(:hover) + .Day {
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-range-end-border-radius)
+      var(--pc-range-end-border-radius) 0;
   }
 }
