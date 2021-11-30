@@ -1,19 +1,18 @@
 @import '../../styles/common';
 
-$extra-small-size: rem(24px);
-$small-size: rem(32px);
-$medium-size: rem(40px);
-$large-size: rem(60px);
-
 .Avatar {
+  --pc-extra-small-size: 24px;
+  --pc-small-size: 32px;
+  --pc-medium-size: 40px;
+  --pc-large-size: 60px;
   position: relative;
   display: block;
   overflow: hidden;
-  min-width: $extra-small-size;
+  min-width: var(--pc-extra-small-size);
   max-width: 100%;
   background: var(--p-surface-neutral);
   color: var(--p-icon-subdued);
-  border-radius: $large-size / 2;
+  border-radius: calc(var(--pc-large-size) / 2);
   user-select: none;
 
   @media (forced-colors: active) {
@@ -32,19 +31,19 @@ $large-size: rem(60px);
 }
 
 .sizeExtraSmall {
-  width: $extra-small-size;
+  width: var(--pc-extra-small-size);
 }
 
 .sizeSmall {
-  width: $small-size;
+  width: var(--pc-small-size);
 }
 
 .sizeMedium {
-  width: $medium-size;
+  width: var(--pc-medium-size);
 }
 
 .sizeLarge {
-  width: $large-size;
+  width: var(--pc-large-size);
 }
 
 .styleOne {
@@ -83,7 +82,7 @@ $large-size: rem(60px);
   width: 100%;
   height: 100%;
   background-color: var(--p-background);
-  border-radius: $large-size / 2;
+  border-radius: calc(var(--pc-large-size) / 2);
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
