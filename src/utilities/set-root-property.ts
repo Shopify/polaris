@@ -5,6 +5,6 @@ export function setRootProperty(
 ) {
   if (!document) return;
 
-  const styleNode = node ? node : document.documentElement;
-  styleNode.style.setProperty(name, value);
+  const element = node || document.documentElement;
+  element.style.setProperty(name, value);
 }
