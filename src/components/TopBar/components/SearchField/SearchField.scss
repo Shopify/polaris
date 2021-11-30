@@ -11,7 +11,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   --pc-input: 2;
   --pc-icon: 3;
   --pc-action: 3;
-  z-index: var(--pc-modal);
+  z-index: var(--p-z-modal);
   position: relative;
   display: flex;
   flex: 1 1 auto;
