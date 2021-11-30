@@ -8,7 +8,7 @@
 .Image {
   display: none;
   flex: 0 0 auto;
-  width: rem(100px);
+  width: 100px;
 
   @include page-content-when-not-fully-condensed {
     display: block;
