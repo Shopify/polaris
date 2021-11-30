@@ -4,12 +4,6 @@ $picker-size: rem(160px);
 $dragger-size: rem(18px);
 $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 
-$stacking-order: (
-  color: 10,
-  adjustments: 20,
-  dragger: 30,
-);
-
 @mixin checkers {
   background: repeating-conic-gradient(
       var(--p-surface) 0% 25%,
@@ -19,6 +13,9 @@ $stacking-order: (
 }
 
 .ColorPicker {
+  --pc-color: 10;
+  --pc-adjustments: 20;
+  --pc-dragger: 30;
   user-select: none;
   display: flex;
 }
@@ -55,7 +52,7 @@ $stacking-order: (
   &::before {
     content: '';
     position: absolute;
-    z-index: z-index(adjustments, $stacking-order);
+    z-index: var(--pc-adjustments);
     top: 0;
     left: 0;
     display: block;
@@ -76,7 +73,7 @@ $stacking-order: (
 
 .Dragger {
   position: relative;
-  z-index: z-index(dragger, $stacking-order);
+  z-index: var(--pc-dragger);
   bottom: 0.5 * $dragger-size;
   transform: none;
   height: $dragger-size;
@@ -124,7 +121,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
 
 .ColorLayer {
   position: absolute;
-  z-index: z-index(color, $stacking-order);
+  z-index: var(--pc-color);
   top: 0;
   left: 0;
   height: 100%;

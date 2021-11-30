@@ -2,7 +2,7 @@
 
 .PositionedOverlay {
   position: absolute;
-  z-index: z-index(overlay);
+  z-index: var(--p-z-overlay);
 }
 
 .fixed {

@@ -1,23 +1,35 @@
 @import '../../../../styles/common';
-
 // stylelint-disable selector-max-class
 // stylelint-disable selector-max-combinators
 // stylelint-disable selector-max-specificity
 // stylelint-disable selector-max-compound-selectors
 // stylelint-disable selector-max-type
-// 🐦🐀
-$stacking-order: (
-  item: 10,
-  focused: 20,
-);
+.ConnectedFilterControl {
+  --pc-item: 10;
+  --pc-focused: 20;
+  display: flex;
+  flex-grow: 1;
+
+  .CenterContainer {
+    flex: 1 1 auto;
+    min-width: rem(100px);
+  }
+
+  &.right {
+    .CenterContainer * {
+      border-top-right-radius: var(--p-border-radius-base);
+      border-bottom-right-radius: var(--p-border-radius-base);
+    }
+  }
+}
 
 .Item {
   position: relative;
-  z-index: z-index(item, $stacking-order);
+  z-index: var(--pc-item);
 }
 
 .Item-focused {
-  z-index: z-index(focused, $stacking-order);
+  z-index: var(--pc-focused);
 }
 
 .ProxyButtonContainer {
@@ -32,23 +44,6 @@ $stacking-order: (
 
   > * {
     flex-shrink: 0;
-  }
-}
-
-.ConnectedFilterControl {
-  display: flex;
-  flex-grow: 1;
-
-  .CenterContainer {
-    flex: 1 1 auto;
-    min-width: rem(100px);
-  }
-
-  &.right {
-    .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
-    }
   }
 }
 

@@ -21,7 +21,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 
   &.connectedDisclosure {
-    z-index: var(--p-segment);
+    z-index: var(--pc-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 

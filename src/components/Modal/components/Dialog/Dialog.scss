@@ -11,7 +11,7 @@ $dangerous-magic-space-16: rem(64px);
 
 .Container {
   position: fixed;
-  z-index: z-index(modal, $fixed-element-stacking-order);
+  z-index: var(--p-z-modal);
   top: 0;
   right: 0;
   bottom: 0;

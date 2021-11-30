@@ -1,21 +1,18 @@
 @import '../../styles/common';
 
-$index-table-stacking-order: (
-  cell: 1,
-  sticky-cell: 31,
-  scroll-bar: 35,
-  bulk-actions: 36,
-  loading-panel: 37,
-);
-
 $breakpoint-small: 458px;
 $checkbox-offset-left: rem(14px);
 $checkbox-offset-right: rem(18px);
 $small-checkbox-offset: rem(2px);
 
 .IndexTable {
-  --translate-offset: calc(#{rem(50px)} - var(--p-space-4));
-  --table-header-offset: #{rem(52px)};
+  --pc-translate-offset: calc(#{rem(50px)} - var(--p-space-4));
+  --pc-table-header-offset: #{rem(52px)};
+  --pc-cell: 1;
+  --pc-sticky-cell: 31;
+  --pc-scroll-bar: 35;
+  --pc-bulk-actions: 36;
+  --pc-loading-panel: 37;
   position: relative;
   overflow: hidden;
   border-radius: inherit;
@@ -49,7 +46,7 @@ $loading-panel-height: rem(53px);
 
 .LoadingPanel {
   position: absolute;
-  z-index: z-index(loading-panel, $index-table-stacking-order);
+  z-index: var(-pc-loading-panel);
   top: 0;
   left: 0;
   display: flex;
@@ -220,7 +217,7 @@ $loading-panel-height: rem(53px);
 }
 
 .TableCell {
-  z-index: z-index(cell, $index-table-stacking-order);
+  z-index: var(-pc-cell);
   text-align: left;
   padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
@@ -233,7 +230,7 @@ $loading-panel-height: rem(53px);
 .TableCell-first {
   position: sticky;
   left: 0;
-  z-index: z-index(sticky-cell, $index-table-stacking-order);
+  z-index: var(-pc-sticky-cell);
   padding: 0;
 }
 
@@ -243,7 +240,7 @@ $loading-panel-height: rem(53px);
 
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    z-index: var(-pc-sticky-cell);
     padding: 0;
   }
 }
@@ -253,7 +250,7 @@ $loading-panel-height: rem(53px);
     left: 0;
     background-color: var(--p-surface);
     position: sticky;
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    z-index: var(-pc-sticky-cell);
   }
 
   .statusSuccess {
@@ -293,7 +290,7 @@ $loading-panel-height: rem(53px);
       position: sticky;
       right: 0;
       background-color: var(--p-surface);
-      z-index: z-index(sticky-cell, $index-table-stacking-order);
+      z-index: var(-pc-sticky-cell);
     }
   }
 
@@ -338,7 +335,7 @@ $loading-panel-height: rem(53px);
   left: 0;
   right: 0;
   visibility: hidden;
-  z-index: z-index(loading-panel, $index-table-stacking-order);
+  z-index: var(-pc-loading-panel);
 }
 
 .StickyTableHeader {
@@ -411,7 +408,7 @@ $loading-panel-height: rem(53px);
 .BulkActionsWrapper {
   visibility: visible;
   position: relative;
-  z-index: z-index(bulk-actions, $index-table-stacking-order);
+  z-index: var(-pc-bulk-actions);
   top: 0;
   left: 0;
   right: 0;
@@ -424,7 +421,7 @@ $scroll-bar-border-radius: rem(4px);
 
 .ScrollBarContainer {
   position: sticky;
-  z-index: z-index(scroll-bar, $index-table-stacking-order);
+  z-index: var(-pc-scroll-bar);
   bottom: 0;
   padding: rem(2px);
   border-top: border('divider');
@@ -472,8 +469,8 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .selectMode {
-  transform: translateY(calc(-1 * var(--table-header-offset)));
-  margin-bottom: calc(-1 * var(--table-header-offset));
+  transform: translateY(calc(-1 * var(--pc-table-header-offset)));
+  margin-bottom: calc(-1 * var(--pc-table-header-offset));
 }
 
 .EmptySearchResultWrapper {
@@ -481,8 +478,8 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .condensedRow {
-  width: calc(100% + var(--translate-offset));
-  transform: translateX(calc(-1 * var(--translate-offset)));
+  width: calc(100% + var(--pc-translate-offset));
+  transform: translateX(calc(-1 * var(--pc-translate-offset)));
   transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
   border-top: border('divider');

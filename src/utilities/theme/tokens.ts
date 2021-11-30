@@ -48,19 +48,6 @@ export const Tokens = {
   rangeSliderThumbSizeActive: '2.4rem',
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '400',
-
-  // Global z-index
-  globalRibbon: 510,
-  toBbar: 512,
-  contextBar: 513,
-  smallScreenLoadingBar: 514,
-  navBackdrop: 515,
-  nav: 516,
-  skipToContent: 517,
-  backdrop: 518,
-  modal: 519,
-  toast: 520,
-  devUi: 521,
 };
 
 function buildBannerBorder(cssVar: string) {

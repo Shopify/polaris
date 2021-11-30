@@ -6,12 +6,9 @@ $addon-horizontal-spacing: 0.25em;
 $spinner-icon-size: rem(12px);
 $prefix-horizontal-spacing: var(--p-space-2);
 
-$stacking-order: (
-  contents: 20,
-  backdrop: 10,
-);
-
 .TextField {
+  --pc-contents: 20;
+  --pc-backdrop: 10;
   @include text-style-input;
   position: relative;
   display: flex;
@@ -90,7 +87,7 @@ $stacking-order: (
 .Input {
   @include text-style-input;
   position: relative;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-contents);
   display: block;
   flex: 1 1 0%;
   width: 100%;
@@ -170,7 +167,7 @@ $stacking-order: (
 .Backdrop {
   @include focus-ring($border-width: border-width());
   position: absolute;
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
@@ -185,7 +182,7 @@ $stacking-order: (
 .Prefix,
 .Suffix {
   position: relative;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-contents);
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
@@ -203,7 +200,7 @@ $stacking-order: (
 
 .CharacterCount {
   @include text-emphasis-subdued;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
   pointer-events: none;
   text-align: right;
@@ -218,7 +215,7 @@ $stacking-order: (
 .ClearButton {
   @include focus-ring;
   @include unstyled-button;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
 
   &:focus:enabled {
@@ -234,7 +231,7 @@ $stacking-order: (
   --p-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + #{border-width()}
   );
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-contents);
   margin: var(--p-text-field-spinner-offset-large);
   color: var(--p-icon);
   display: flex;
