@@ -2,8 +2,7 @@
 
 $button-min-height: control-height();
 
-$button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) /
-  2;
+$button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
 
 .CheckableButton {
   @include text-style-button;

@@ -3,9 +3,9 @@
 @function progress-bar-height($height: base) {
   $base: 16px;
   $data: (
-    small: rem($base / 2),
-    base: rem($base),
-    large: rem($base * 2),
+    small: $base / 2,
+    base: $base,
+    large: $base * 2,
   );
 
   @return map-get($data, $height);

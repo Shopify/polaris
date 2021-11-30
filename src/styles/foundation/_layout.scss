@@ -1,8 +1,8 @@
 $navigation-width: 240px !default;
 // @TODO simplify media queries so this isn't needed
-$dangerous-magic-space-4: rem(16px);
-$dangerous-magic-space-5: rem(20px);
-$dangerous-magic-space-8: rem(32px);
+$dangerous-magic-space-4: 16px;
+$dangerous-magic-space-5: 20px;
+$dangerous-magic-space-8: 32px;
 
 ////
 /// Layout
@@ -11,28 +11,28 @@ $dangerous-magic-space-8: rem(32px);
 
 $layout-width-data: (
   primary: (
-    min: rem(480px),
-    max: rem(662px),
+    min: 480px,
+    max: 662px,
   ),
   secondary: (
-    min: rem(240px),
-    max: rem(320px),
+    min: 240px,
+    max: 320px,
   ),
   one-half-width: (
-    base: rem(450px),
+    base: 450px,
   ),
   one-third-width: (
-    base: rem(240px),
+    base: 240px,
   ),
   nav: (
-    base: rem($navigation-width),
+    base: $navigation-width,
   ),
   page-with-nav: (
-    base: rem(769px),
+    base: 769px,
   ),
   page-content: (
-    not-condensed: rem(680px),
-    partially-condensed: rem(450px),
+    not-condensed: 680px,
+    partially-condensed: 450px,
   ),
   inner-spacing: (
     base: $dangerous-magic-space-4,
@@ -60,13 +60,13 @@ $layout-width-data: (
 $dismiss-icon-size: 32px;
 
 @function top-bar-height() {
-  @return rem(56px);
+  @return 56px;
 }
 
 @function mobile-nav-width() {
-  @return calc(100vw - #{rem($dismiss-icon-size) + $dangerous-magic-space-8});
+  @return calc(100vw - #{$dismiss-icon-size} + #{$dangerous-magic-space-8});
 }
 
 @function nav-min-window-corrected() {
-  @return rem(769px);
+  @return 769px;
 }

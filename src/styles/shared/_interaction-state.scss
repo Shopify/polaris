@@ -15,11 +15,11 @@
     );
 
     @if $state == 'focused' {
-      box-shadow: inset rem(2px) 0 0 var(--p-focused);
+      box-shadow: inset 2px 0 0 var(--p-focused);
     }
 
     @if $state == 'focused-destructive' {
-      box-shadow: inset rem(2px) 0 0 var(--p-focused);
+      box-shadow: inset 2px 0 0 var(--p-focused);
     }
   }
   background-image: $backgrounds;

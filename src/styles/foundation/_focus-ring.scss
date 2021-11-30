@@ -8,15 +8,11 @@
 ///
 
 @mixin focus-ring($size: 'base', $border-width: 0, $style: 'base') {
-  $stroke: rem(2px);
+  $stroke: 2px;
   // calc does not like performing addition with a unitless number (`0`, NOT `0px`)
-  // This is a problem because `rem(0px)` returns `0`, not `0px`.
+  // This is a problem because `0px` returns `0`, not `0px`.
   // Make sure that we can handle unitless zeros by not trying to do math with them
-  $offset: if(
-    $border-width == 0,
-    rem(1px),
-    calc(#{$border-width} + #{rem(1px)})
-  );
+  $offset: if($border-width == 0, 1px, calc(#{$border-width} + 1px));
   $border-radius: if(
     $size == 'wide',
     var(--p-border-radius-wide),
@@ -39,7 +35,7 @@
       pointer-events: none;
       box-shadow: 0 0 0 $negative-offset var(--p-focused);
       transition: box-shadow var(--p-duration-100) var(--p-ease);
-      border-radius: calc(#{$border-radius} + #{rem(1px)});
+      border-radius: calc(#{$border-radius} + 1px);
     }
   } @else if $style == 'focused' {
     &::after {

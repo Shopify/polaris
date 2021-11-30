@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
-$content-max-width: rem(200px);
+$content-max-width: 200px;
 
 .TooltipOverlay {
   --p-offset-from-activator: var(--p-space-1);

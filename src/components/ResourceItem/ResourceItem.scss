@@ -2,14 +2,14 @@
 
 // translate-offset equals handle-width - padding
 $resource-list-item-variables: (
-  padding: rem(12px),
-  control-indent: -1 * rem(12px),
-  min-height: rem(44px),
-  handle-width: rem(48px),
-  disclosure-width: rem(48px),
+  padding: 12px,
+  control-indent: -1 * 12px,
+  min-height: 44px,
+  handle-width: 48px,
+  disclosure-width: 48px,
   clickable-stacking-order: 1,
   content-stacking-order: 2,
-  actions-height: rem(56px),
+  actions-height: 56px,
   breakpoint-small: 458px,
 );
 
@@ -34,7 +34,7 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
-  --p-translate-offset: calc(#{rem(48px)} - #{rem(12px)} + var(--p-space-1));
+  --p-translate-offset: calc(48px - 12px + var(--p-space-1));
   position: relative;
   outline: none;
   cursor: pointer;
@@ -258,14 +258,14 @@ $resource-list-item-variables: (
 
 .ListItem {
   position: relative;
-  @include focus-ring($border-width: rem(-1px));
+  @include focus-ring($border-width: -1px);
 
   .ListItem + & {
     border-top: border('divider');
   }
 
   &::after {
-    border-radius: rem(2px);
+    border-radius: 2px;
   }
 
   &:last-of-type {
@@ -292,6 +292,6 @@ $resource-list-item-variables: (
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
   * + ul > &:first-of-type.focused::after {
-    top: rem(1px);
+    top: 1px;
   }
 }

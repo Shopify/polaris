@@ -1,8 +1,8 @@
 @import '../../../../styles/common';
 
 $fileupload-padding: 15px;
-$slim-min-height: rem(30px);
-$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
+$slim-min-height: 30px;
+$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
 
 .FileUpload {
   padding: $fileupload-padding;
