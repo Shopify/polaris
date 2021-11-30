@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: rem(15px);
+$fileupload-padding: 15px;
 $slim-min-height: rem(30px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
@@ -14,7 +14,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 }
 
 .large {
-  padding: rem(32px);
+  padding: var(--p-space-8);
 }
 
 .small {
