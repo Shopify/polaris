@@ -5,20 +5,20 @@ $ribbon-flex-basis: rem(32px);
 $spinner-size: rem(20px);
 
 @mixin banner-variants($in-page) {
-  --p-banner-background: var(--p-background);
-  --p-banner-border: var(--p-banner-border-default);
+  --pc-banner-background: var(--p-background);
+  --pc-banner-border: var(--p-banner-border-default);
   transition: box-shadow var(--p-duration-200) var(--p-ease);
   transition-delay: var(--p-duration-100);
-  box-shadow: var(--p-banner-border);
+  box-shadow: var(--pc-banner-border);
 
   @if $in-page {
     @include focus-ring('wide');
     border-radius: var(--p-border-radius-wide);
-    background-color: var(--p-banner-background);
+    background-color: var(--pc-banner-background);
   } @else {
     @include focus-ring('base');
     border-radius: var(--p-border-radius-base);
-    background-color: var(--p-banner-background);
+    background-color: var(--pc-banner-background);
   }
 
   @include high-contrast-outline;
@@ -28,35 +28,35 @@ $spinner-size: rem(20px);
   }
 
   &.keyFocused {
-    box-shadow: var(--p-banner-border);
+    box-shadow: var(--pc-banner-border);
     @include focus-ring('wide', $style: 'focused');
   }
 
   &.statusSuccess {
-    --p-banner-background: var(--p-surface-success-subdued);
-    --p-banner-border: var(--p-banner-border-success);
+    --pc-banner-background: var(--p-surface-success-subdued);
+    --pc-banner-border: var(--p-banner-border-success);
   }
 
   &.statusInfo {
-    --p-banner-background: var(--p-surface-highlight-subdued);
-    --p-banner-border: var(--p-banner-border-highlight);
+    --pc-banner-background: var(--p-surface-highlight-subdued);
+    --pc-banner-border: var(--p-banner-border-highlight);
   }
 
   &.statusWarning {
-    --p-banner-background: var(--p-surface-warning-subdued);
-    --p-banner-border: var(--p-banner-border-warning);
+    --pc-banner-background: var(--p-surface-warning-subdued);
+    --pc-banner-border: var(--p-banner-border-warning);
   }
 
   &.statusCritical {
-    --p-banner-background: var(--p-surface-critical-subdued);
-    --p-banner-border: var(--p-banner-border-critical);
+    --pc-banner-background: var(--p-surface-critical-subdued);
+    --pc-banner-border: var(--p-banner-border-critical);
   }
 }
 
 .Banner {
-  --p-rgb-text: 33, 43, 54;
-  --p-secondary-action-horizontal-padding: calc(1.5 * var(--p-space-2));
-  --p-secondary-action-vertical-padding: 0.5 *
+  --pc-banner-rgb-text: 33, 43, 54;
+  --pc-banner-secondary-action-horizontal-padding: calc(1.5 * var(--p-space-2));
+  --pc-banner-secondary-action-vertical-padding: 0.5 *
     (#{control-height() - line-height(body)});
   position: relative;
   display: flex;
@@ -149,12 +149,12 @@ $spinner-size: rem(20px);
 }
 
 .withinContentContainer {
-  --p-banner-spacing: #{rem(14px)};
-  --p-banner-offset: calc(var(--p-banner-spacing) - var(--p-space-4));
-  padding: var(--p-space-4) var(--p-space-4) var(--p-banner-spacing);
+  --pc-banner-spacing: #{rem(14px)};
+  --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-4));
+  padding: var(--p-space-4) var(--p-space-4) var(--pc-banner-spacing);
 
   .ContentWrapper {
-    margin-top: var(--p-banner-offset);
+    margin-top: var(--pc-banner-offset);
   }
 
   .Dismiss {
@@ -179,13 +179,13 @@ $spinner-size: rem(20px);
 }
 
 .withinPage {
-  --p-banner-spacing: #{rem(18px)};
-  --p-banner-offset: calc(var(--p-banner-spacing) - var(--p-space-5));
+  --pc-banner-spacing: #{rem(18px)};
+  --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-5));
   border-radius: 0 0 border-radius() border-radius();
-  padding: var(--p-space-5) var(--p-space-5) var(--p-banner-spacing);
+  padding: var(--p-space-5) var(--p-space-5) var(--pc-banner-spacing);
 
   .ContentWrapper {
-    margin-top: var(--p-banner-offset);
+    margin-top: var(--pc-banner-offset);
   }
 
   @include banner-variants(true);
@@ -240,19 +240,19 @@ $spinner-size: rem(20px);
   @include unstyled-link;
   display: inline-block;
   text-align: left;
-  margin: calc(-1 * var(--p-secondary-action-vertical-padding))
-    calc(-0.5 * var(--p-secondary-action-horizontal-padding));
-  padding: var(--p-secondary-action-vertical-padding)
-    var(--p-secondary-action-horizontal-padding);
+  margin: calc(-1 * var(--pc-banner-secondary-action-vertical-padding))
+    calc(-0.5 * var(--pc-banner-secondary-action-horizontal-padding));
+  padding: var(--pc-banner-secondary-action-vertical-padding)
+    var(--pc-banner-secondary-action-horizontal-padding);
   color: var(--p-text);
   padding-left: rem(6px);
 
   &:hover > .Text {
-    box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0.75) inset;
+    box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.75) inset;
   }
 
   &:active > .Text {
-    box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0) inset;
+    box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0) inset;
   }
 
   &:focus > .Text {
@@ -263,7 +263,7 @@ $spinner-size: rem(20px);
 }
 
 .Text {
-  box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0.25) inset;
+  box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.25) inset;
   will-change: box-shadow;
   transition: box-shadow var(--p-duration-200) var(--p-ease);
 }

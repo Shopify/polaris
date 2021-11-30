@@ -6,7 +6,7 @@ $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
 
 .Navigation {
-  --icon-size: #{rem(20px)};
+  --pc-navigation-icon-size: #{rem(20px)};
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -176,7 +176,8 @@ $disabled-fade: 0.6;
 
 .ListItem-hasAction .Item {
   max-width: calc(
-    100% - var(--icon-size) + var(--p-space-4) * 2 + var(--p-space-1)
+    100% - var(--pc-navigation-icon-size) + var(--p-space-4) * 2 +
+      var(--p-space-1)
   );
 }
 
@@ -258,7 +259,9 @@ $secondary-item-font-size: rem(15px);
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: calc(var(--icon-size) + var(--p-space-8) - var(--p-space-1));
+    padding-left: calc(
+      var(--pc-navigation-icon-size) + var(--p-space-8) - var(--p-space-1)
+    );
 
     &:hover {
       color: var(--p-text-subdued);

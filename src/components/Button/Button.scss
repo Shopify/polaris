@@ -12,8 +12,8 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
 
 .Button {
-  --pc-segment: 10;
-  --pc-focused: 20;
+  --pc-button-segment: 10;
+  --pc-button-focused: 20;
   @include button-base;
 
   &.disabled {
@@ -21,7 +21,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 
   &.connectedDisclosure {
-    z-index: var(--pc-segment);
+    z-index: var(--pc-button-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -31,7 +31,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &:focus {
-      z-index: var(--pc-focused);
+      z-index: var(--pc-button-focused);
     }
   }
 }
@@ -121,11 +121,11 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .primary {
-  --p-button-color: var(--p-action-primary);
-  --p-button-text: var(--p-text-on-primary);
-  --p-button-color-hover: var(--p-action-primary-hovered);
-  --p-button-color-active: var(--p-action-primary-pressed);
-  --p-button-color-depressed: var(--p-action-primary-depressed);
+  --pc-button-color: var(--p-action-primary);
+  --pc-button-text: var(--p-text-on-primary);
+  --pc-button-color-hover: var(--p-action-primary-hovered);
+  --pc-button-color-active: var(--p-action-primary-pressed);
+  --pc-button-color-depressed: var(--p-action-primary-depressed);
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
@@ -134,11 +134,11 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .destructive {
-  --p-button-color: var(--p-action-critical);
-  --p-button-text: var(--p-text-on-critical);
-  --p-button-color-hover: var(--p-action-critical-hovered);
-  --p-button-color-active: var(--p-action-critical-pressed);
-  --p-button-color-depressed: var(--p-action-critical-depressed);
+  --pc-button-color: var(--p-action-critical);
+  --pc-button-text: var(--p-text-on-critical);
+  --pc-button-color-hover: var(--p-action-critical-hovered);
+  --pc-button-color-active: var(--p-action-critical-pressed);
+  --pc-button-color-depressed: var(--p-action-critical-depressed);
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
@@ -477,7 +477,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .ConnectedDisclosure {
-  z-index: var(--pc-segment);
+  z-index: var(--pc-button-segment);
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -493,7 +493,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
   &:focus,
   &:active {
-    z-index: var(--pc-focused);
+    z-index: var(--pc-button-focused);
   }
 
   &.primary,

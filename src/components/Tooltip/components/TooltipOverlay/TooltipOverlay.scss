@@ -3,8 +3,8 @@
 $content-max-width: rem(200px);
 
 .TooltipOverlay {
-  --p-offset-from-activator: var(--p-space-1);
-  margin: var(--p-offset-from-activator) var(--p-space-4) var(--p-space-4);
+  --pc-tooltip-overlay-offset: var(--p-space-1);
+  margin: var(--pc-tooltip-overlay-offset) var(--p-space-4) var(--p-space-4);
   opacity: 1;
   box-shadow: var(--p-popover-shadow);
   border-radius: var(--p-border-radius-base);
@@ -23,7 +23,7 @@ $content-max-width: rem(200px);
 }
 
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-4) var(--p-offset-from-activator);
+  margin: var(--p-space-4) var(--p-space-4) var(--pc-tooltip-overlay-offset);
 }
 
 .Content {
