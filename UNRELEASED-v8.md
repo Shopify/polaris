@@ -22,6 +22,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `spacing()` scss function and replaced any instances with tokens ([#4691](https://github.com/Shopify/polaris-react/pull/4691/))
 - Removed the `px()` scss function ([#4751](https://github.com/Shopify/polaris-react/pull/4751))
+- Removed unnecessary `--p-border-radius-` properties and moved legacy `--p-border-radius-` custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
 
 ### New components
 
@@ -40,6 +41,5 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 - Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
-- Moved legacy `--p-border-radius-` custom properties to tokens and removed any unnecessary properties ([#4754](https://github.com/Shopify/polaris-react/pull/4754))
 
 ### Deprecations
