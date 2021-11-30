@@ -1,26 +1,6 @@
 $default-browser-font-size: 16px;
 $base-font-size: 10px;
 
-/// Returns the value in rem for a given pixel value.
-/// @param {Number} $value - The pixel value to be converted.
-/// @return {Number} The converted value in rem.
-
-@function rem($value) {
-  $unit: unit($value);
-
-  @if $value == 0 {
-    @return 0;
-  } @else if $unit == 'rem' {
-    @return $value;
-  } @else if $unit == 'px' {
-    @return $value / $base-font-size * 1rem;
-  } @else if $unit == 'em' {
-    @return $unit / 1em * 1rem;
-  } @else {
-    @error 'Value must be in px, em, or rem.';
-  }
-}
-
 /// Returns the value in ems for a given pixel value. Note that this
 /// only works for elements that have had no font-size changes.
 /// @param {Number} $value - The pixel value to be converted.
