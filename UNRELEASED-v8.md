@@ -22,6 +22,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `spacing()` scss function and replaced any instances with tokens ([#4691](https://github.com/Shopify/polaris-react/pull/4691/))
 - Removed the `px()` scss function ([#4751](https://github.com/Shopify/polaris-react/pull/4751))
+- Removed the `z-index()` scss function ([#4753](https://github.com/Shopify/polaris-react/pull/4753))
 - Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
 
 ### New components

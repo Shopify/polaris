@@ -1,19 +1,16 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  item: 10,
-  primary: 20,
-  focused: 30,
-);
-
 .Connected {
+  --pc-item: 10;
+  --pc-primary: 20;
+  --pc-focused: 30;
   position: relative;
   display: flex;
 }
 
 .Item {
   position: relative;
-  z-index: z-index(item, $stacking-order);
+  z-index: var(--pc-item);
   flex: 0 0 auto;
 
   &:not(:first-child) {
@@ -26,12 +23,12 @@ $stacking-order: (
 // TextField.scss has a dependency due to this override.
 // stylelint-disable declaration-no-important
 .Item-primary {
-  z-index: z-index(primary, $stacking-order);
+  z-index: var(--pc-primary);
   flex: 1 1 auto;
 }
 
 // stylelint-enable declaration-no-important
 
 .Item-focused {
-  z-index: z-index(focused, $stacking-order);
+  z-index: var(--pc-focused);
 }

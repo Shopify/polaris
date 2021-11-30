@@ -6,11 +6,6 @@ $dropzone-min-height-large: 100px;
 $dropzone-min-height-medium: 100px;
 $dropzone-min-height-small: 50px;
 
-$dropzone-stacking-order: (
-  outline: 29,
-  overlay: 30,
-);
-
 @mixin reset-after {
   top: 0;
   left: 0;
@@ -26,6 +21,8 @@ $dropzone-stacking-order: (
 }
 
 .DropZone {
+  --pc-outline: 29;
+  --pc-overlay: 30;
   position: relative;
   display: flex;
   justify-content: center;
@@ -35,7 +32,7 @@ $dropzone-stacking-order: (
   &::after {
     content: '';
     position: absolute;
-    z-index: z-index(outline, $dropzone-stacking-order);
+    z-index: var(--pc-outline);
     top: 0;
     right: 0;
     bottom: 0;
@@ -129,7 +126,7 @@ $dropzone-stacking-order: (
 .Overlay {
   @include set-border-radius;
   position: absolute;
-  z-index: z-index(overlay, $dropzone-stacking-order);
+  z-index: var(--pc-overlay);
   top: 0;
   right: 0;
   bottom: 0;

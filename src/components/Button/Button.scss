@@ -11,12 +11,9 @@ $spinner-size: 20px;
 $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
 
-$stacking-order: (
-  segment: 10,
-  focused: 20,
-);
-
 .Button {
+  --pc-segment: 10;
+  --pc-focused: 20;
   @include button-base;
 
   &.disabled {
@@ -24,7 +21,7 @@ $stacking-order: (
   }
 
   &.connectedDisclosure {
-    z-index: z-index(segment, $stacking-order);
+    z-index: var(--pc-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -34,7 +31,7 @@ $stacking-order: (
     }
 
     &:focus {
-      z-index: z-index(focused, $stacking-order);
+      z-index: var(--pc-focused);
     }
   }
 }
@@ -480,7 +477,7 @@ $stacking-order: (
 }
 
 .ConnectedDisclosure {
-  z-index: z-index(segment, $stacking-order);
+  z-index: var(--pc-segment);
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -496,7 +493,7 @@ $stacking-order: (
 
   &:focus,
   &:active {
-    z-index: z-index(focused, $stacking-order);
+    z-index: var(--pc-focused);
   }
 
   &.primary,

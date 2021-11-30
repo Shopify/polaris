@@ -1,16 +1,13 @@
 @import '../../../../styles/common';
 @import '../../RangeSlider';
 
-$stacking-order: (
-  input: 10,
-  output: 20,
-);
-
 $range-wrapper: rem(28px);
 
 $range-thumb-border-error: rem(2px) solid var(--p-border-critical);
 
 .Wrapper {
+  --pc-input: 10;
+  --pc-output: 20;
   position: relative;
   width: 100%;
   display: flex;
@@ -71,7 +68,7 @@ $range-thumb-border-error: rem(2px) solid var(--p-border-critical);
 .Thumbs {
   @include focus-ring($size: 'wide', $border-width: border-width());
   position: absolute;
-  z-index: z-index('input', $stacking-order);
+  z-index: var(--pc-input);
   padding: 0;
   width: $range-thumb-size;
   height: $range-thumb-size;
@@ -123,7 +120,7 @@ $range-output-spacing: rem(16px);
 
 .Output {
   position: absolute;
-  z-index: z-index('output', $stacking-order);
+  z-index: var(--pc-output);
   bottom: var(--p-range-slider-thumb-size-active);
   opacity: 0;
   visibility: hidden;
