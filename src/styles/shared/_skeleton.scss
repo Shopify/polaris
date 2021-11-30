@@ -1,7 +1,7 @@
 // Used by both Thumbnail and SkeletonThumbnail
-$small-thumbnail-size: rem(40px);
-$medium-thumbnail-size: rem(60px);
-$large-thumbnail-size: rem(80px);
+$small-thumbnail-size: 40px;
+$medium-thumbnail-size: 60px;
+$large-thumbnail-size: 80px;
 
 $thumbnail-sizes: (
   small: $small-thumbnail-size,

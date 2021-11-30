@@ -5,7 +5,7 @@ $button-style-breakpoint: 768px;
 $medium-layout: 860px;
 $desktop-layout: 1080px;
 $individual-action-padding-x: calc(1.5 * var(--p-space-2));
-$action-menu-rollup-computed-width: rem(40px);
+$action-menu-rollup-computed-width: 40px;
 
 .Header {
   @include page-header-layout;

@@ -3,7 +3,7 @@
 $textfield-backdrop-offset: -(border-width(thick));
 $backdrop-horizontal-spacing: calc(var(--p-space-2) * 1.5);
 $addon-horizontal-spacing: 0.25em;
-$spinner-icon-size: rem(12px);
+$spinner-icon-size: 12px;
 $prefix-horizontal-spacing: var(--p-space-2);
 
 .TextField {
@@ -237,7 +237,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   display: flex;
   align-self: stretch;
   flex-direction: column;
-  width: rem(22px);
+  width: 22px;
   cursor: pointer;
 }
 

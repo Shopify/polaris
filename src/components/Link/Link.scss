@@ -31,10 +31,10 @@
       position: absolute;
       z-index: -1;
       // this mimics the box model of the plain button backdrop
-      top: rem(-2px);
-      right: rem(-5px);
-      bottom: rem(-2px);
-      left: rem(-5px);
+      top: -2px;
+      right: -5px;
+      bottom: -2px;
+      left: -5px;
       display: block;
 
       border-radius: border-radius();
