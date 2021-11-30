@@ -1,9 +1,5 @@
 @import '../../styles/common';
 
-$picker-size: rem(160px);
-$dragger-size: rem(18px);
-$inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
-
 $stacking-order: (
   color: 10,
   adjustments: 20,
@@ -19,6 +15,8 @@ $stacking-order: (
 }
 
 .ColorPicker {
+  --pc-picker-size: 160px;
+  --pc-dragger-size: 18px;
   user-select: none;
   display: flex;
 }
@@ -30,8 +28,8 @@ $stacking-order: (
   @include checkers;
   position: relative;
   overflow: hidden;
-  height: $picker-size;
-  width: $picker-size;
+  height: var(--pc-picker-size);
+  width: var(--pc-picker-size);
 
   .fullWidth & {
     width: auto;
@@ -43,7 +41,7 @@ $stacking-order: (
   cursor: pointer;
 
   .Dragger {
-    right: 0.5 * $dragger-size;
+    right: calc(0.5 * var(--pc-dragger-size));
     margin: 0;
   }
 
@@ -77,10 +75,10 @@ $stacking-order: (
 .Dragger {
   position: relative;
   z-index: z-index(dragger, $stacking-order);
-  bottom: 0.5 * $dragger-size;
+  bottom: calc(0.5 * var(--pc-dragger-size));
   transform: none;
-  height: $dragger-size;
-  width: $dragger-size;
+  height: var(--pc-dragger-size);
+  width: var(--pc-dragger-size);
   margin: 0 auto;
   will-change: transform;
   background: transparent;
@@ -91,24 +89,26 @@ $stacking-order: (
 
 $green: rgb(0, 255, 0);
 $purple: rgb(255, 0, 255);
-$huepicker-padding: $dragger-size;
-$huepicker-bottom-padding-start: $picker-size - $dragger-size;
+$huepicker-padding: var(--pc-dragger-size);
+$huepicker-bottom-padding-start: calc(
+  var(--pc-picker-size) - var(--pc-dragger-size)
+);
 
 .HuePicker,
 .AlphaPicker {
   position: relative;
   overflow: hidden;
-  height: $picker-size;
-  width: rem(24px);
+  height: var(--pc-picker-size);
+  width: var(--p-space-6);
   margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-base);
-  border-radius: $picker-size * 0.5;
+  border-radius: calc(var(--pc-picker-size) * 0.5);
 }
 
 .HuePicker {
   background-image: linear-gradient(
     to bottom,
-    red $dragger-size,
+    red var(--pc-dragger-size),
     yellow,
     $green,
     cyan,
