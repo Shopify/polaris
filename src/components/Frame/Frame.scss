@@ -243,7 +243,7 @@
   > a {
     @include button-base;
     @include text-style-button;
-    @include focus-ring($border-width: rem(1px));
+    @include focus-ring($border-width: 1px);
     color: var(--p-text);
 
     &:focus {
