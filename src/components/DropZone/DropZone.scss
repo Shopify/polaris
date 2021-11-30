@@ -1,10 +1,10 @@
 @import '../../styles/common';
 
-$dropzone-padding: rem(15px);
+$dropzone-padding: 15px;
 $dropzone-border-style: dashed;
-$dropzone-min-height-large: rem(100px);
-$dropzone-min-height-medium: rem(100px);
-$dropzone-min-height-small: rem(50px);
+$dropzone-min-height-large: 100px;
+$dropzone-min-height-medium: 100px;
+$dropzone-min-height-small: 50px;
 
 $dropzone-stacking-order: (
   outline: 29,
@@ -22,9 +22,7 @@ $dropzone-stacking-order: (
 }
 
 @mixin set-border-radius {
-  border-radius: calc(
-    var(--p-border-radius-base) + #{border-width()} + #{rem(1px)}
-  );
+  border-radius: calc(var(--p-border-radius-base) + #{border-width()} + 1px);
 }
 
 .DropZone {
