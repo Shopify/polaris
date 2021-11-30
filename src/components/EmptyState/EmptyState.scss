@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$within-page-detail-width: rem(336px);
-$detail-width: rem(400px);
+$within-page-detail-width: 336px;
+$detail-width: 400px;
 
 $stacking-order: (
   illustration: 0,
@@ -23,7 +23,7 @@ $illustration-width-cropped: calc(
   #{$illustration-width} + #{$right-offset} * 2
 );
 
-$centered-illustration-width: rem(226px);
+$centered-illustration-width: 226px;
 
 .EmptyState {
   display: flex;
