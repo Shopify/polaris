@@ -53,7 +53,7 @@ $portrait-breakpoint: 804px;
 
 .Popover {
   position: absolute;
-  z-index: var(--p-z-overlay);
+  z-index: var(--p-z-2);
   top: var(--p-space-4);
   right: var(--p-space-4);
 }
