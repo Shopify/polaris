@@ -286,6 +286,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: calc(-1 * ((var(--pc-spinner-size) / 2));
+  margin-top: calc(-1 * (var(--pc-spinner-size) / 2));
   margin-left: calc(-1 * (var(--pc-spinner-size) / 2));
 }
