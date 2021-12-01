@@ -109,7 +109,7 @@ $bulk-actions-button-stacking-order: (
 .Slide-appear,
 .Slide-enter,
 .Slide-exit {
-  transform: translateX(calc(-1 * var(--p-space10)));
+  transform: translateX(calc(-1 * var(--p-space-10)));
 }
 
 .Slide-appearing,
