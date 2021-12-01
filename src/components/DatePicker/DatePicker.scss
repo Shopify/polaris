@@ -39,7 +39,7 @@ $font-size: rem(12px);
   background: transparent;
   margin: 0;
   padding: 0;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-2);
 }
 
 .DayCell-inRange {
@@ -54,7 +54,7 @@ $font-size: rem(12px);
   padding: var(--p-space-2);
   background: transparent;
   border: none;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-2);
   outline: none;
   font-size: $font-size;
   text-align: center;
@@ -172,7 +172,7 @@ $font-size: rem(12px);
 }
 
 .Day-firstInRange {
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-2);
   // stylelint-disable-next-line selector-max-class
   &.Day-hasRange,
   &.Day-hoverRight {
@@ -200,12 +200,12 @@ $font-size: rem(12px);
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-2) 0 0 var(--p-border-radius-2);
   }
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
+    border-radius: 0 var(--p-border-radius-2) var(--p-border-radius-2) 0;
   }
 }
 

@@ -26,7 +26,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   text-align: left;
   cursor: pointer;
   padding: $item-vertical-padding var(--p-space-2);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-2);
   border-top: 1px solid var(--p-surface); // 1px gap between elements
 
   &:hover {

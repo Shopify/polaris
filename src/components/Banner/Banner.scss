@@ -13,11 +13,11 @@ $spinner-size: rem(20px);
 
   @if $in-page {
     @include focus-ring('wide');
-    border-radius: var(--p-border-radius-wide);
+    border-radius: var(--p-border-radius-3);
     background-color: var(--pc-banner-background);
   } @else {
     @include focus-ring('base');
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-2);
     background-color: var(--pc-banner-background);
   }
 

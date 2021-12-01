@@ -18,7 +18,7 @@ $dropzone-min-height-small: rem(50px);
 
 @mixin set-border-radius {
   border-radius: calc(
-    var(--p-border-radius-base) + #{border-width()} + #{rem(1px)}
+    var(--p-border-radius-2) + #{border-width()} + #{rem(1px)}
   );
 }
 
@@ -29,7 +29,7 @@ $dropzone-min-height-small: rem(50px);
   display: flex;
   justify-content: center;
   background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-2);
 
   &::after {
     content: '';
@@ -40,7 +40,7 @@ $dropzone-min-height-small: rem(50px);
     bottom: 0;
     left: 0;
     border: border-width() $dropzone-border-style transparent;
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-2);
     pointer-events: none;
   }
 

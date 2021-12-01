@@ -17,8 +17,8 @@
 
   &.right {
     .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
     }
   }
 }
@@ -65,22 +65,22 @@
   }
 
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-base);
-    border-bottom-left-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-2);
+    border-bottom-left-radius: var(--p-border-radius-2);
   }
 }
 
 .RightContainer.queryFieldHidden {
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-base);
-    border-bottom-left-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-2);
+    border-bottom-left-radius: var(--p-border-radius-2);
   }
 }
 
 .RightContainerWithoutMoreFilters {
   .Item:last-child > div > button {
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-2);
   }
 }
 
@@ -94,7 +94,7 @@
 
 .MoreFiltersButtonContainer.onlyButtonVisible {
   .Item > div > button {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-2);
   }
 }
 
