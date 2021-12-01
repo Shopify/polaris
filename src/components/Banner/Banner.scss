@@ -145,6 +145,8 @@
 }
 
 .withinContentContainer {
+  padding: var(--p-space-4);
+
   .Dismiss {
     top: var(--p-space-4);
     right: var(--p-space-3);
