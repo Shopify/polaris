@@ -47,7 +47,6 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 - Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 - Removed filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
 - Removed all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
-- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 
 ### Deprecations
 

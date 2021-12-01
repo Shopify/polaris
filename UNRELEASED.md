@@ -6,7 +6,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- Removed animtion from `Skeleton` components ([#](https://github.com/Shopify/polaris-react/pull/))
+- Removed animtion from `Skeleton` components ([#4697](https://github.com/Shopify/polaris-react/pull/4697))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
 
@@ -28,10 +28,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
-- Clean up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
-- Remove filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
-- Remove all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
-- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 - Removed `rem()` function from `tokens.ts` ([#4695](https://github.com/Shopify/polaris-react/pull/4695))
 - Remove unnecessary import of `Tokens` in `Collapsible` test ([#4722](https://github.com/Shopify/polaris-react/pull/4722))
 - Remove legacy tokens and use default theme for `.storybook/manager.js` ([#4729](https://github.com/Shopify/polaris-react/pull/4729))
