@@ -7,9 +7,11 @@
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
+  // stylelint-disable function-calc-no-unspaced-operator
   margin-top: calc(resource-list(header-padding-small) * -1);
   margin-left: calc(resource-list(header-padding-small) * -1);
   margin-right: calc(resource-list(header-padding-small) * -1);
+  // stylelint-enable function-calc-no-unspaced-operator
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
