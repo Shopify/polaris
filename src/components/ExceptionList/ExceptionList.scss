@@ -8,7 +8,7 @@
 
 .Item {
   position: relative;
-  padding-left: rem(24px);
+  padding-left: var(--p-space-6);
   color: var(--p-text-subdued);
 
   + .Item {
@@ -23,8 +23,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: rem(20px);
-  height: rem(20px);
+  min-width: var(--p-space-5);
+  height: var(--p-space-5);
   margin-right: var(--p-space-1);
 
   @include recolor-icon(var(--p-icon-subdued));
@@ -39,8 +39,8 @@
 }
 
 .Bullet {
-  width: rem(6px);
-  height: rem(6px);
+  width: 6px;
+  height: 6px;
   border-radius: var(--p-border-radius-7);
   background-color: var(--p-icon-subdued);
 

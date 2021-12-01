@@ -1,7 +1,7 @@
 $border-width-data: (
-  base: rem(1px),
-  thick: rem(2px),
-  thicker: rem(3px),
+  base: 1px,
+  thick: 2px,
+  thicker: 3px,
 );
 
 /// Returns the width of the specified border type.

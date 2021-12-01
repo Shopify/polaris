@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$shadow-size: rem(20px);
+$shadow-size: 20px;
 $shadow-bottom: inset 0 (-1 * $shadow-size) $shadow-size (-1 * $shadow-size)
   var(--p-hint-from-direct-light);
 $shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size)

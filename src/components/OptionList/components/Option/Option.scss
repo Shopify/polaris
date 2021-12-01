@@ -2,7 +2,7 @@
 @import '../../../../styles/shared/typography';
 
 $min-height: control-height();
-$control-vertical-adjustment: rem(2px);
+$control-vertical-adjustment: 2px;
 
 .Option {
   @include unstyled-button;

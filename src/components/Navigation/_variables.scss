@@ -1,15 +1,15 @@
-$item-font-size: rem(16px);
-$item-font-size-small: rem(14px);
-$item-line-height-small: rem(32px);
-$item-line-height-large: rem(36px);
-$text-line-height: rem(20px);
+$item-font-size: 16px;
+$item-font-size-small: 14px;
+$item-line-height-small: 32px;
+$item-line-height-large: 36px;
+$text-line-height: 20px;
 $nav-variables: (
-  mobile-spacing: rem(10px),
-  desktop-spacing: rem(6px),
-  mobile-height: rem(40px),
-  desktop-height: rem(32px),
-  icon-size: rem(20px),
-  item-line-height: rem(40px),
+  mobile-spacing: 10px,
+  desktop-spacing: 6px,
+  mobile-height: 40px,
+  desktop-height: 32px,
+  icon-size: 20px,
+  item-line-height: 40px,
 );
 @function nav($variable) {
   @return map-get($nav-variables, $variable);
@@ -154,8 +154,8 @@ $nav-animation-variables: (
   }
 
   @include breakpoint-before(nav-min-window-corrected()) {
-    font-size: rem(15px);
-    line-height: rem(19px);
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 

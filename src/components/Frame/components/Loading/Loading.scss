@@ -1,10 +1,8 @@
 @import '../../../../styles/common';
 
-$height: rem(3px);
-
 .Loading {
   overflow: hidden;
-  height: rem($height);
+  height: 3px;
   background-color: var(--p-surface);
   opacity: 1;
 }

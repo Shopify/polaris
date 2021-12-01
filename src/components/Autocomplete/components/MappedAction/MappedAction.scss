@@ -1,10 +1,11 @@
 @import '../../../../styles/common';
 
-$image-size: rem(20px);
-$item-min-height: rem(40px);
-$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
-
 .ActionContainer {
+  --pc-mapped-actions-image-size: 20px;
+  --pc-mapped-actions-item-min-height: var(--p-space-10);
+  --pc-mapped-actions-item-vertical-padding: calc(
+    (var(--pc-mapped-actions-item-min-height) - #{line-height(body)}) / 2
+  );
   margin-bottom: var(--p-space-3);
 }
 
@@ -22,10 +23,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   @include focus-ring;
   display: block;
   width: 100%;
-  min-height: $item-min-height;
+  min-height: var(--pc-mapped-actions-item-min-height);
   text-align: left;
   cursor: pointer;
-  padding: $item-vertical-padding var(--p-space-2);
+  padding: var(--pc-mapped-actions-item-vertical-padding) var(--p-space-2);
   border-radius: var(--p-border-radius-2);
   border-top: 1px solid var(--p-surface); // 1px gap between elements
 
@@ -90,13 +91,14 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
-  height: $image-size;
-  width: $image-size;
+  height: var(--pc-mapped-actions-image-size);
+  width: var(--pc-mapped-actions-image-size);
   border-radius: border-radius();
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: (-0.5 * $image-size) var(--p-space-4) (-0.5 * $image-size) 0;
+  margin: calc(-0.5 * var(--pc-mapped-actions-image-size)) var(--p-space-4)
+    calc(-0.5 * var(--pc-mapped-actions-image-size)) 0;
   background-size: cover;
   background-position: center center;
 }

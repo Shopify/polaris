@@ -1,7 +1,7 @@
 @import '../../styles/common';
 @import './variables';
 
-$icon-size: rem(20px);
+$icon-size: 20px;
 $page-left-alignment-breakpoint-max: 1238px;
 $context-control-expand-after: 1400px;
 
@@ -63,7 +63,7 @@ $context-control-expand-after: 1400px;
   @include unstyled-button;
   position: relative;
   align-self: center;
-  margin-left: calc(var(--p-space-2) + #{rem(2px)});
+  margin-left: calc(var(--p-space-2) + 2px);
   margin-right: var(--p-space-2);
   padding: var(--p-space-2);
   border-radius: border-radius();

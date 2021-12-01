@@ -52,7 +52,7 @@
 
 .InlineLabel {
   @include text-emphasis-subdued;
-  margin-right: rem(4px);
+  margin-right: 4px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -100,7 +100,7 @@
   border-radius: var(--p-border-radius-2);
   background-color: var(--p-surface);
   box-shadow: var(--p-button-drop-shadow);
-  @include focus-ring($border-width: rem(1px));
+  @include focus-ring($border-width: 1px);
   // 'position' needs to sit below focus-ring since it will be overwritten
   // with relative when the focus ring style is 'base'
   // stylelint-disable-next-line order/properties-order

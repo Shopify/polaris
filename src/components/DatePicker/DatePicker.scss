@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$font-size: rem(12px);
+$font-size: 12px;
 
 .DatePicker {
   --pc-date-picker-range-end-border-radius: 30px;
@@ -15,11 +15,11 @@ $font-size: rem(12px);
 }
 
 .MonthContainer {
-  flex: 1 1 rem(230px);
+  flex: 1 1 230px;
   margin-top: var(--p-space-4);
   margin-left: var(--p-space-4);
   max-width: calc(100% - var(--p-space-4));
-  min-width: rem(230px);
+  min-width: 230px;
 }
 
 .Month {
@@ -166,7 +166,7 @@ $font-size: rem(12px);
 
 .Title {
   flex: 1 1 auto;
-  margin-top: rem(2px);
+  margin-top: var(--p-space-05);
   padding-bottom: var(--p-space-1);
   text-align: center;
 }
@@ -196,7 +196,7 @@ $font-size: rem(12px);
 }
 
 .Week {
-  margin-bottom: rem(2px);
+  margin-bottom: var(--p-space-05);
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {

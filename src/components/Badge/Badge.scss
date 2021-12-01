@@ -2,7 +2,7 @@
 
 .Badge {
   --pc-badge-horizontal-padding: var(--p-space-2);
-  --pc-badge-vertical-padding: calc(var(--p-space-1) - #{rem(2px)});
+  --pc-badge-vertical-padding: calc(var(--p-space-1) - 2px);
   --pc-badge-pip-size: var(--p-space-2);
   --pc-badge-pip-spacing: calc(var(--pc-badge-pip-size) / 2);
   --pc-badge-component-badge-pip-color: var(--p-icon);
@@ -17,7 +17,7 @@
   font-weight: var(--p-font-weight-regular);
 
   @media print {
-    border: solid rem(0.1px) var(--p-border);
+    border: solid 0.1px var(--p-border);
   }
 }
 

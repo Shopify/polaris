@@ -1,9 +1,5 @@
 @import '../../styles/common';
 
-$accent-height: 3px;
-$ribbon-flex-basis: rem(32px);
-$spinner-size: rem(20px);
-
 @mixin banner-variants($in-page) {
   --pc-banner-background: var(--p-background);
   --pc-banner-border: var(--p-banner-border-default);
@@ -149,7 +145,7 @@ $spinner-size: rem(20px);
 }
 
 .withinContentContainer {
-  --pc-banner-spacing: #{rem(14px)};
+  --pc-banner-spacing: 14px;
   --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-4));
   padding: var(--p-space-4) var(--p-space-4) var(--pc-banner-spacing);
 
@@ -179,7 +175,7 @@ $spinner-size: rem(20px);
 }
 
 .withinPage {
-  --pc-banner-spacing: #{rem(18px)};
+  --pc-banner-spacing: 18px;
   --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-5));
   border-radius: 0 0 border-radius() border-radius();
   padding: var(--p-space-5) var(--p-space-5) var(--pc-banner-spacing);
@@ -219,15 +215,15 @@ $spinner-size: rem(20px);
 
 .Content {
   @include text-breakword;
-  padding: rem(2px) 0;
+  padding: var(--p-space-05) 0;
 }
 
 .Ribbon {
-  flex: 0 0 $ribbon-flex-basis;
+  flex: 0 0 var(--p-space-8);
 }
 
 .PrimaryAction {
-  margin-right: rem(6px);
+  margin-right: 6px;
 }
 
 // We need pretty high specificity to do the descendant selectors
@@ -245,7 +241,7 @@ $spinner-size: rem(20px);
   padding: var(--pc-banner-secondary-action-vertical-padding)
     var(--pc-banner-secondary-action-horizontal-padding);
   color: var(--p-text);
-  padding-left: rem(6px);
+  padding-left: 6px;
 
   &:hover > .Text {
     box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.75) inset;
@@ -271,7 +267,7 @@ $spinner-size: rem(20px);
 .Button {
   @include button-base;
   @include text-style-button;
-  @include focus-ring($border-width: rem(2px));
+  @include focus-ring($border-width: 2px);
   color: var(--p-text);
 
   &:focus {
@@ -286,9 +282,10 @@ $spinner-size: rem(20px);
 }
 
 .Spinner {
+  --pc-spinner-size: var(--p-space-5);
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -($spinner-size / 2);
-  margin-left: -($spinner-size / 2);
+  margin-top: calc(-1 * (var(--pc-spinner-size) / 2));
+  margin-left: calc(-1 * (var(--pc-spinner-size) / 2));
 }

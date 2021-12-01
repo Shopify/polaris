@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $activator-variables: (
-  min-width: rem(36px),
+  min-width: 36px,
   transition: (
     background-color 0.1s,
   ),
@@ -27,7 +27,7 @@ $activator-variables: (
   justify-content: center;
   align-items: center;
   min-width: menu(min-width);
-  padding: rem(6px) var(--p-space-2);
+  padding: 6px var(--p-space-2);
   border: 0;
   cursor: pointer;
   transition: menu(transition);

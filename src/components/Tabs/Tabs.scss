@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$item-min-height: rem(16px);
-$item-min-width: rem(50px);
+$item-min-height: 16px;
+$item-min-width: 50px;
 $item-vertical-padding: $item-min-height / 2;
 $underline-height: border-width(thicker);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);

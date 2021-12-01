@@ -1,13 +1,13 @@
 @import '../../../../styles/common';
 
-$top-offset-slide-in-start: rem(200px);
+$top-offset-slide-in-start: 200px;
 $vertical-spacing: 60px;
 $height-limit: 600px;
-$xsmall-width: rem(380px);
-$small-width: rem(620px);
-$large-width: rem(980px);
+$xsmall-width: 380px;
+$small-width: 620px;
+$large-width: 980px;
 // @TODO simplify media queries so this isn't needed
-$dangerous-magic-space-16: rem(64px);
+$dangerous-magic-space-16: 64px;
 
 .Container {
   position: fixed;

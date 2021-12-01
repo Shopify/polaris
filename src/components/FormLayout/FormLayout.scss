@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$item-min-size: rem(220px);
+$item-min-size: 220px;
 
 .FormLayout {
   margin-top: calc(-1 * var(--p-space-4));

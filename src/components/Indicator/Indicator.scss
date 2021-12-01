@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$size: rem(10px);
-$base-position: rem(-4px);
+$size: 10px;
+$base-position: -4px;
 
 .Indicator {
   &::before,

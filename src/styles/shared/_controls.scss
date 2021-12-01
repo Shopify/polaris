@@ -1,13 +1,13 @@
 @function control-height() {
-  @return rem(36px);
+  @return 36px;
 }
 
 @function control-slim-height() {
-  @return rem(28px);
+  @return 28px;
 }
 
 @function control-vertical-padding() {
-  @return (control-height() - line-height(input) - rem(2px)) / 2;
+  @return (control-height() - line-height(input) - 2px) / 2;
 }
 
 @function control-icon-transition() {

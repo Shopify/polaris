@@ -3,7 +3,7 @@
 
 $range-wrapper: 28px;
 
-$range-thumb-border-error: rem(2px) solid var(--p-border-critical);
+$range-thumb-border-error: 2px solid var(--p-border-critical);
 
 .Wrapper {
   --pc-dual-thumb-input: 10;
@@ -119,8 +119,8 @@ $range-thumb-border-error: rem(2px) solid var(--p-border-critical);
   }
 }
 
-$range-output-size: rem(32px);
-$range-output-spacing: rem(16px);
+$range-output-size: 32px;
+$range-output-spacing: 16px;
 
 .Prefix {
   flex: 0 0 auto;
