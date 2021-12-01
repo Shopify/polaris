@@ -1,8 +1,6 @@
 import React from 'react';
 import {addParameters, addDecorator} from '@storybook/react';
 import {withContexts} from '@storybook/addon-contexts/react';
-import {color, withKnobs} from '@storybook/addon-knobs';
-import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -23,22 +21,8 @@ function AppProviderWithKnobs({colorScheme, children}, context) {
 
   if (omitAppProvider === 'true') return children;
 
-  const colors = Object.entries(DefaultThemeColors).reduce(
-    (accumulator, [key, value]) => ({
-      ...accumulator,
-      [key]: strToHex(color(key, value, 'Theme')),
-    }),
-    {},
-  );
-
   return (
-    <AppProvider
-      i18n={enTranslations}
-      theme={{
-        colors,
-        colorScheme,
-      }}
-    >
+    <AppProvider i18n={enTranslations} theme={{colorScheme}}>
       {children}
     </AppProvider>
   );
@@ -71,16 +55,3 @@ const withContextsDecorator = withContexts([
 ]);
 
 export const decorators = [withContextsDecorator];
-
-function strToHex(str) {
-  if (str.charAt(0) === '#') return str;
-
-  return `#${str
-    .slice(5, -1)
-    .split(',')
-    .slice(0, 3)
-    .map(Number)
-    .map((n) => n.toString(16))
-    .map((n) => n.padStart(2, '0'))
-    .join('')}`;
-}

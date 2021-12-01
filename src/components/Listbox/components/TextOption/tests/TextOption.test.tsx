@@ -5,13 +5,6 @@ import {TextOption} from '../TextOption';
 import {Checkbox} from '../../../../Checkbox';
 import {ComboboxListboxOptionContext} from '../../../../../utilities/combobox/context';
 
-jest.mock('components', () => ({
-  ...jest.requireActual('components'),
-  Icon() {
-    return null;
-  },
-}));
-
 describe('TextOption', () => {
   it('renders children', () => {
     const child = 'child';

@@ -240,7 +240,11 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const actionSections = this.actionSections();
 
-    if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
+    if (
+      promotedActions &&
+      promotedActions.length > MAX_PROMOTED_ACTIONS &&
+      process.env.NODE_ENV === 'development'
+    ) {
       // eslint-disable-next-line no-console
       console.warn(
         i18n.translate('Polaris.ResourceList.BulkActions.warningMessage', {

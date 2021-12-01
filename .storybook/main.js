@@ -1,9 +1,7 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
 const CreateFileWebpack = require('create-file-webpack');
-
-const postcssShopify = require('@shopify/postcss-plugin');
-
+const postcssPlugins = require('../config/postcss-plugins');
 // Enabling docs means the preview panel takes an extra 2ish seconds to load
 // This usually isn't a big deal, except when we're running all of our stories
 // through our a11y tests, and a 2s delay over several hundred stories adds up.
@@ -16,7 +14,6 @@ module.exports = {
     {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
-    '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
@@ -58,7 +55,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [postcssShopify()],
+                plugins: postcssPlugins,
               },
             },
           },

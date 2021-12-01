@@ -6,7 +6,6 @@
 }
 
 .SkeletonThumbnail {
-  @include skeleton-shimmer;
   @include skeleton-content;
 }
 

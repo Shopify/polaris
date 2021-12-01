@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {RadioButton, Checkbox, InlineError} from 'components';
 
+import {Checkbox} from '../../Checkbox';
+import {InlineError} from '../../InlineError';
+import {RadioButton} from '../../RadioButton';
 import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
