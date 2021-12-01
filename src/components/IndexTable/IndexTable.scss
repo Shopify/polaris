@@ -422,7 +422,7 @@ $loading-panel-height: rem(53px);
 $scroll-bar-size: rem(8px);
 
 .ScrollBarContainer {
-  --pc-scroll-bar-border-radius: rem(4px);
+  --pc-scroll-bar-container-border-radius: rem(4px);
   position: sticky;
   z-index: z-index(scroll-bar, $index-table-stacking-order);
   bottom: 0;
@@ -446,7 +446,7 @@ $scroll-bar-size: rem(8px);
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: var(--pc-scroll-bar-border-radius);
+  border-radius: var(--pc-scroll-bar-container-border-radius);
   background-color: transparent;
 }
 
@@ -458,7 +458,7 @@ $scroll-bar-size: rem(8px);
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: var(--pc-scroll-bar-border-radius);
+  border-radius: var(--pc-scroll-bar-container-border-radius);
   background-color: var(--p-border-neutral-subdued);
   transition: background-color var(--p-duration-100) ease-out;
 }
