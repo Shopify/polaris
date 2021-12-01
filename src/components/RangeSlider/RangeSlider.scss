@@ -4,7 +4,7 @@
 }
 
 @mixin track-dashed {
-  --pc-borderRadius: var(--p-border-radius-base);
+  $borderRadius: var(--p-border-radius-base);
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;
