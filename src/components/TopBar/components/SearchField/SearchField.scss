@@ -7,10 +7,10 @@ $new-input-height: rem(36px);
 $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 .SearchField {
-  --pc-backdrop: 1;
-  --pc-input: 2;
-  --pc-icon: 3;
-  --pc-action: 3;
+  --pc-search-field-backdrop: 1;
+  --pc-search-field-input: 2;
+  --pc-search-field-icon: 3;
+  --pc-search-field-action: 3;
   z-index: var(--p-z-11);
   position: relative;
   display: flex;
@@ -66,7 +66,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 .Input {
   @include text-style-input;
-  z-index: var(--pc-input);
+  z-index: var(--pc-search-field-input);
   height: $new-input-height;
   width: 100%;
   padding: 0 0 0 $search-icon-width;
@@ -93,7 +93,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 .Icon {
   @include recolor-icon(var(--p-icon));
   position: absolute;
-  z-index: var(--pc-icon);
+  z-index: var(--pc-search-field-icon);
   top: 50%;
   left: var(--p-space-2);
   display: flex;
@@ -110,7 +110,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   @include recolor-icon(var(--p-icon));
   @include focus-ring($size: 'wide');
   position: relative;
-  z-index: var(--pc-action);
+  z-index: var(--pc-search-field-action);
   border: none;
   appearance: none;
   background: transparent;
@@ -138,7 +138,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 .Backdrop {
   @include focus-ring;
   position: absolute;
-  z-index: var(--pc-backdrop);
+  z-index: var(--pc-search-field-backdrop);
   top: 0;
   right: 0;
   bottom: 0;

@@ -23,8 +23,8 @@ $dropzone-min-height-small: rem(50px);
 }
 
 .DropZone {
-  --pc-outline: 29;
-  --pc-overlay: 30;
+  --pc-drop-zone-outline: 29;
+  --pc-drop-zone-overlay: 30;
   position: relative;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ $dropzone-min-height-small: rem(50px);
   &::after {
     content: '';
     position: absolute;
-    z-index: var(--pc-outline);
+    z-index: var(--pc-drop-zone-outline);
     top: 0;
     right: 0;
     bottom: 0;
@@ -128,7 +128,7 @@ $dropzone-min-height-small: rem(50px);
 .Overlay {
   @include set-border-radius;
   position: absolute;
-  z-index: var(--pc-overlay);
+  z-index: var(--pc-drop-zone-overlay);
   top: 0;
   right: 0;
   bottom: 0;

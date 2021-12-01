@@ -34,7 +34,9 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
-  --p-translate-offset: calc(#{rem(48px)} - #{rem(12px)} + var(--p-space-1));
+  --pc-resource-item-offset: calc(
+    #{rem(48px)} - #{rem(12px)} + var(--p-space-1)
+  );
   position: relative;
   outline: none;
   cursor: pointer;
@@ -156,10 +158,10 @@ $resource-list-item-variables: (
 }
 
 .selectable {
-  width: calc(100% + var(--p-translate-offset));
-  transform: translateX(calc(-1 * var(--p-translate-offset)));
+  width: calc(100% + var(--pc-resource-item-offset));
+  transform: translateX(calc(-1 * var(--pc-resource-item-offset)));
   transition: transform var(--p-ease) var(--p-duration-200);
-  margin-right: calc(-1 * var(--p-translate-offset));
+  margin-right: calc(-1 * var(--pc-resource-item-offset));
 
   &.selectMode {
     transform: translateX(0);

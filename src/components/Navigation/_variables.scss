@@ -75,15 +75,17 @@ $nav-animation-variables: (
   // hardcoding this variable for now because we need to rip out all instances
   // of filter() eventually but can't for this one right now. The value is the
   // equivalent value for filter('icon').
-  --p-filter-icon: brightness(0) saturate(100%) invert(36%) sepia(13%)
-    saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
-  --p-filter-icon-action-primary: brightness(0) saturate(100%) invert(20%)
-    sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%);
-  --p-filter-icon-on-interactive: brightness(0) saturate(100%) invert(100%);
+  --pc-navigation-filter-icon: brightness(0) saturate(100%) invert(36%)
+    sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
+  --pc-navigation-filter-icon-action-primary: brightness(0) saturate(100%)
+    invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%)
+    contrast(101%);
+  --pc-navigation-filter-icon-on-interactive: brightness(0) saturate(100%)
+    invert(100%);
 
   @include recolor-icon(
     $fill-color: var(--p-icon),
-    $filter-color: var(--p-filter-icon)
+    $filter-color: var(--pc-navigation-filter-icon)
   );
   flex-shrink: 0;
   align-self: flex-start;
@@ -102,7 +104,7 @@ $nav-animation-variables: (
   .Item.keyFocused & {
     @include recolor-icon(
       $fill-color: var(--p-icon),
-      $filter-color: var(--p-filter-icon)
+      $filter-color: var(--pc-navigation-filter-icon)
     );
   }
 
@@ -113,7 +115,7 @@ $nav-animation-variables: (
   .Item-selected.keyFocused & {
     @include recolor-icon(
       $fill-color: var(--p-action-primary),
-      $filter-color: var(--p-filter-icon-action-primary)
+      $filter-color: var(--pc-navigation-filter-icon-action-primary)
     );
   }
 
