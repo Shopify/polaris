@@ -4,7 +4,7 @@
 }
 
 @mixin track-dashed {
-  $borderRadius: var(--p-border-radius-base);
+  --pc-track-dashed-border-radius: var(--p-border-radius-base);
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;
@@ -19,6 +19,6 @@
   );
   background-size: var(--pc-range-slider-track-height)
     var(--pc-range-slider-track-height);
-  border-radius: var(--pc-borderRadius);
-  border-right: var(--pc-borderRadius) $dashedTrackColor solid;
+  border-radius: var(--pc-track-dashed-border-radius);
+  border-right: var(--pc-track-dashed-border-radius) $dashedTrackColor solid;
 }
