@@ -199,7 +199,7 @@ $list-filters-footer-height: rem(70px);
 
 .Backdrop {
   position: fixed;
-  z-index: z-index(backdrop, $fixed-element-stacking-order);
+  z-index: var(--p-z-backdrop);
   top: 0;
   right: 0;
   bottom: 0;

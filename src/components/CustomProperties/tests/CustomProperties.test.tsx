@@ -42,6 +42,7 @@ const mockTokens: Tokens = {
   legacyTokens: {},
   spacing: {},
   typography: {},
+  zIndex: {},
 };
 
 const expectedCustomProperties =

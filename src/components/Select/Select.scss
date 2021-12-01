@@ -1,12 +1,9 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  backdrop: 10,
-  content: 20,
-  input: 30,
-);
-
 .Select {
+  --pc-backdrop: 10;
+  --pc-content: 20;
+  --pc-input: 30;
   position: relative;
 
   // IE 11 fix to remove default dropdown arrow
@@ -44,7 +41,7 @@ $stacking-order: (
 .Content {
   @include text-style-input;
   position: relative;
-  z-index: z-index(content, $stacking-order);
+  z-index: var(--pc-content);
   display: flex;
   align-items: center;
   width: 100%;
@@ -83,7 +80,7 @@ $stacking-order: (
   text-rendering: auto;
   top: 0;
   left: 0;
-  z-index: z-index(input, $stacking-order);
+  z-index: var(--pc-input);
   width: 100%;
   height: 100%;
   margin: 0;
@@ -93,7 +90,7 @@ $stacking-order: (
 }
 
 .Backdrop {
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-backdrop);
   top: 0;
   right: 0;
   bottom: 0;

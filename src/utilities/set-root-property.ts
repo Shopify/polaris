@@ -1,13 +1,10 @@
 export function setRootProperty(
   name: string,
   value: string,
-  node: Element | null = null,
+  node?: HTMLElement,
 ) {
-  if (document == null) {
-    return;
-  }
+  if (!document) return;
 
-  const styleNode =
-    node && node instanceof HTMLElement ? node : document.documentElement;
-  styleNode && styleNode.style.setProperty(name, value);
+  const element = node || document.documentElement;
+  element.style.setProperty(name, value);
 }
