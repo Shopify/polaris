@@ -131,7 +131,7 @@
   &:focus {
     @include range-thumb-selectors {
       border-color: var(--p-surface);
-      box-shadow: 0 0 0 rem(2px) var(--p-focused);
+      box-shadow: 0 0 0 2px var(--p-focused);
     }
 
     @include high-contrast-outline;
@@ -162,14 +162,14 @@
 }
 
 /// Output value indicator
-$range-output-size: rem(32px);
+$range-output-size: 32px;
 $range-output-translate-x: calc(
   -50% + var(--Polaris-RangeSlider-output-factor) * #{var(
       --pc-range-slider-thumb-size
     )}
 );
 
-$range-output-spacing: rem(16px);
+$range-output-spacing: 16px;
 
 .Output {
   position: absolute;
