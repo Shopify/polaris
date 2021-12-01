@@ -1,31 +1,27 @@
 @import '../../styles/common';
 
 .ButtonGroup {
-  --pc-item: 10;
-  --pc-focused: 20;
-  --pc-plain-horizontal-spacing: var(--p-space-2);
-  --pc-item-spacing: var(--p-space-2);
+  --pc-button-group-item: 10;
+  --pc-button-group-focused: 20;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: calc(-1 * var(--pc-item-spacing));
-  margin-left: calc(-1 * var(--pc-item-spacing));
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 }
 
 .Item {
-  margin-top: var(--pc-item-spacing);
-  margin-left: var(--pc-item-spacing);
+  margin-top: var(--p-space-2);
+  margin-left: var(--p-space-2);
 }
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: calc(
-      var(--pc-item-spacing) + var(--pc-plain-horizontal-spacing)
-    );
+    margin-left: calc(var(--p-space-2) + var(--p-space-2));
   }
 
   &:not(:last-child) {
-    margin-right: var(--pc-plain-horizontal-spacing);
+    margin-right: var(--p-space-2);
   }
 }
 
@@ -37,7 +33,7 @@
 
   .Item {
     position: relative;
-    z-index: var(--pc-item);
+    z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
 
@@ -47,7 +43,7 @@
   }
 
   .Item-focused {
-    z-index: var(--pc-focused);
+    z-index: var(--pc-button-group-focused);
   }
 }
 

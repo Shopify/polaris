@@ -2,8 +2,8 @@
 @import '../../RangeSlider';
 
 .SingleThumb {
-  --pc-input: 10;
-  --pc-output: 20;
+  --pc-single-thumb-input: 10;
+  --pc-single-thumb-output: 20;
   display: flex;
   align-items: center;
 
@@ -47,8 +47,8 @@
 }
 
 .Input {
-  --progress-lower: #{var(--p-interactive)};
-  --progress-upper: transparent;
+  --pc-single-thumb-progress-lower: #{var(--p-interactive)};
+  --pc-single-thumb-progress-upper: transparent;
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunately its
   // custom properties transpiler has a bug that means it doesn't like multiple
@@ -57,10 +57,10 @@
   // so that we only use one custom-property in the linear-gradient.
   // See https://github.com/Shopify/polaris-react/issues/441 and
   // https://github.com/postcss/postcss-custom-properties/issues/150
-  --gradient-colors: var(--progress-lower, transparent) 0%,
-    var(--progress-lower, transparent) var(--Polaris-RangeSlider-progress, 0%),
-    var(--progress-upper, transparent) var(--Polaris-RangeSlider-progress, 100%),
-    var(--progress-upper, transparent) 100%;
+  --pc-single-thumb-gradient-colors: var(--pc-single-thumb-progress-lower) 0%,
+    var(--pc-single-thumb-progress-lower) var(--Polaris-RangeSlider-progress),
+    var(--pc-single-thumb-progress-upper) var(--Polaris-RangeSlider-progress),
+    var(--pc-single-thumb-progress-upper) 100%;
 
   @mixin rangeSliderThumbPosition($size) {
     margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
@@ -72,14 +72,17 @@
 
   @include unstyled-input;
   position: relative;
-  z-index: var(--pc-input);
+  z-index: var(--pc-single-thumb-input);
   flex: 1 1 auto;
 
   @include range-track-selectors {
     cursor: pointer;
     width: 100%;
     height: $range-track-height;
-    background-image: linear-gradient(to right, var(--gradient-colors));
+    background-image: linear-gradient(
+      to right,
+      var(--pc-single-thumb-gradient-colors)
+    );
     border: none;
     border-radius: $range-track-height;
   }
@@ -131,7 +134,7 @@
   }
 
   .error & {
-    --progress-lower: #{var(--p-action-critical)};
+    --pc-single-thumb-progress-lower: #{var(--p-action-critical)};
 
     @include range-thumb-selectors {
       border-color: var(--p-action-critical);
@@ -164,7 +167,7 @@ $range-output-spacing: 16px;
 
 .Output {
   position: absolute;
-  z-index: var(--pc-output);
+  z-index: var(--pc-single-thumb-output);
   bottom: $range-thumb-size;
   left: var(--Polaris-RangeSlider-progress);
   transform: translateX($range-output-translate-x);

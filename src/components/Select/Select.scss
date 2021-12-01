@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 .Select {
-  --pc-backdrop: 10;
-  --pc-content: 20;
-  --pc-input: 30;
+  --pc-select-backdrop: 10;
+  --pc-select-content: 20;
+  --pc-select-input: 30;
   position: relative;
 
   // IE 11 fix to remove default dropdown arrow
@@ -41,7 +41,7 @@
 .Content {
   @include text-style-input;
   position: relative;
-  z-index: var(--pc-content);
+  z-index: var(--pc-select-content);
   display: flex;
   align-items: center;
   width: 100%;
@@ -80,7 +80,7 @@
   text-rendering: auto;
   top: 0;
   left: 0;
-  z-index: var(--pc-input);
+  z-index: var(--pc-select-input);
   width: 100%;
   height: 100%;
   margin: 0;
@@ -90,7 +90,7 @@
 }
 
 .Backdrop {
-  z-index: var(--pc-backdrop);
+  z-index: var(--pc-select-backdrop);
   top: 0;
   right: 0;
   bottom: 0;

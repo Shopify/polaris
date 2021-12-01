@@ -4,7 +4,7 @@
 .Search {
   position: fixed;
   visibility: hidden;
-  z-index: var(--p-z-nav);
+  z-index: var(--p-z-8);
   pointer-events: none;
   top: top-bar-height();
   left: 0;

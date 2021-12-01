@@ -3,15 +3,15 @@
 $key-base-height: 24px;
 
 .KeyboardKey {
-  --p-bottom-shadow-size: 2px;
+  --pc-keyboard-key-bottom-shadow-size: 2px;
   display: inline-block;
   height: $key-base-height;
-  margin: 0 calc(var(--p-space-1) / 2) var(--p-bottom-shadow-size);
+  margin: 0 calc(var(--p-space-1) / 2) var(--pc-keyboard-key-bottom-shadow-size);
   padding: 0 var(--p-space-1);
   background-color: var(--p-surface);
   box-shadow: 0 0 0 1px var(--p-border-subdued),
-    0 var(--p-bottom-shadow-size) 0 0 var(--p-surface),
-    0 var(--p-bottom-shadow-size) 0 1px var(--p-border-subdued);
+    0 var(--pc-keyboard-key-bottom-shadow-size) 0 0 var(--p-surface),
+    0 var(--pc-keyboard-key-bottom-shadow-size) 0 1px var(--p-border-subdued);
   border-radius: var(--p-border-radius-base);
   font-family: font-family();
   font-size: 12px;

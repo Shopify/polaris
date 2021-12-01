@@ -15,11 +15,11 @@ $stacking-order: (
 }
 
 .ColorPicker {
-  --pc-picker-size: 160px;
-  --pc-dragger-size: 18px;
-  --pc-color: 10;
-  --pc-adjustments: 20;
-  --pc-dragger: 30;
+  --pc-color-picker-size: 160px;
+  --pc-color-picker-dragger-size: 18px;
+  --pc-color-picker: 10;
+  --pc-color-picker-adjustments: 20;
+  --pc-color-picker-dragger: 30;
   user-select: none;
   display: flex;
 }
@@ -31,8 +31,8 @@ $stacking-order: (
   @include checkers;
   position: relative;
   overflow: hidden;
-  height: var(--pc-picker-size);
-  width: var(--pc-picker-size);
+  height: var(--pc-color-picker-size);
+  width: var(--pc-color-picker-size);
 
   .fullWidth & {
     width: auto;
@@ -44,7 +44,7 @@ $stacking-order: (
   cursor: pointer;
 
   .Dragger {
-    right: calc(0.5 * var(--pc-dragger-size));
+    right: calc(0.5 * var(--pc-color-picker-dragger-size));
     margin: 0;
   }
 
@@ -56,7 +56,7 @@ $stacking-order: (
   &::before {
     content: '';
     position: absolute;
-    z-index: var(--pc-adjustments);
+    z-index: var(--pc-color-picker-adjustments);
     top: 0;
     left: 0;
     display: block;
@@ -77,11 +77,11 @@ $stacking-order: (
 
 .Dragger {
   position: relative;
-  z-index: var(--pc-dragger);
-  bottom: calc(0.5 * var(--pc-dragger-size));
+  z-index: var(--pc-color-picker-dragger);
+  bottom: calc(0.5 * var(--pc-color-picker-dragger-size));
   transform: none;
-  height: var(--pc-dragger-size);
-  width: var(--pc-dragger-size);
+  height: var(--pc-color-picker-dragger-size);
+  width: var(--pc-color-picker-dragger-size);
   margin: 0 auto;
   will-change: transform;
   background: transparent;
@@ -92,26 +92,26 @@ $stacking-order: (
 
 $green: rgb(0, 255, 0);
 $purple: rgb(255, 0, 255);
-$huepicker-padding: var(--pc-dragger-size);
+$huepicker-padding: var(--pc-color-picker-dragger-size);
 $huepicker-bottom-padding-start: calc(
-  var(--pc-picker-size) - var(--pc-dragger-size)
+  var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size)
 );
 
 .HuePicker,
 .AlphaPicker {
   position: relative;
   overflow: hidden;
-  height: var(--pc-picker-size);
+  height: var(--pc-color-picker-size);
   width: var(--p-space-6);
   margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-base);
-  border-radius: calc(var(--pc-picker-size) * 0.5);
+  border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .HuePicker {
   background-image: linear-gradient(
     to bottom,
-    red var(--pc-dragger-size),
+    red var(--pc-color-picker-dragger-size),
     yellow,
     $green,
     cyan,
@@ -127,7 +127,7 @@ $huepicker-bottom-padding-start: calc(
 
 .ColorLayer {
   position: absolute;
-  z-index: var(--pc-color);
+  z-index: var(--pc-color-picker);
   top: 0;
   left: 0;
   height: 100%;

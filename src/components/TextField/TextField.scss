@@ -7,8 +7,8 @@ $spinner-icon-size: 12px;
 $prefix-horizontal-spacing: var(--p-space-2);
 
 .TextField {
-  --pc-contents: 20;
-  --pc-backdrop: 10;
+  --pc-text-field-contents: 20;
+  --pc-text-field-backdrop: 10;
   @include text-style-input;
   position: relative;
   display: flex;
@@ -87,7 +87,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 .Input {
   @include text-style-input;
   position: relative;
-  z-index: var(--pc-contents);
+  z-index: var(--pc-text-field-contents);
   display: block;
   flex: 1 1 0%;
   width: 100%;
@@ -167,7 +167,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 .Backdrop {
   @include focus-ring($border-width: border-width());
   position: absolute;
-  z-index: var(--pc-backdrop);
+  z-index: var(--pc-text-field-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
@@ -182,7 +182,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 .Prefix,
 .Suffix {
   position: relative;
-  z-index: var(--pc-contents);
+  z-index: var(--pc-text-field-contents);
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
@@ -200,7 +200,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 
 .CharacterCount {
   @include text-emphasis-subdued;
-  z-index: var(--pc-contents);
+  z-index: var(--pc-text-field-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
   pointer-events: none;
   text-align: right;
@@ -215,7 +215,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 .ClearButton {
   @include focus-ring;
   @include unstyled-button;
-  z-index: var(--pc-contents);
+  z-index: var(--pc-text-field-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
 
   &:focus:enabled {
@@ -228,11 +228,11 @@ $prefix-horizontal-spacing: var(--p-space-2);
 }
 
 .Spinner {
-  --p-text-field-spinner-offset-large: calc(
+  --pc-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + #{border-width()}
   );
-  z-index: var(--pc-contents);
-  margin: var(--p-text-field-spinner-offset-large);
+  z-index: var(--pc-text-field-contents);
+  margin: var(--pc-text-field-spinner-offset-large);
   color: var(--p-icon);
   display: flex;
   align-self: stretch;
@@ -267,11 +267,11 @@ $prefix-horizontal-spacing: var(--p-space-2);
 }
 
 .Segment {
-  --p-text-field-spinner-border-radius: calc(
+  --pc-text-field-spinner-border-radius: calc(
     var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
   );
   background: var(--p-surface-neutral);
-  border-radius: var(--p-text-field-spinner-border-radius);
+  border-radius: var(--pc-text-field-spinner-border-radius);
   display: flex;
   flex: 1 1 0%;
   justify-content: center;
@@ -288,12 +288,12 @@ $prefix-horizontal-spacing: var(--p-space-2);
   }
 
   &:first-child {
-    border-top-right-radius: var(--p-text-field-spinner-border-radius);
+    border-top-right-radius: var(--pc-text-field-spinner-border-radius);
     margin-bottom: var(--p-text-field-spinner-offset);
   }
 
   &:last-child {
-    border-bottom-right-radius: var(--p-text-field-spinner-border-radius);
+    border-bottom-right-radius: var(--pc-text-field-spinner-border-radius);
   }
 
   &:not(:first-child) {
