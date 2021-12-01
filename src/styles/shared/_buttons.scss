@@ -78,16 +78,16 @@
 
 @mixin button-filled() {
   @include focus-ring($border-width: 0);
-  background: var(--p-button-color);
+  background: var(--pc-button-color);
   border-width: 0;
   border-color: transparent;
   box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
-  color: var(--p-button-text);
+  color: var(--pc-button-text);
 
   &:hover {
-    background: var(--p-button-color-hover);
+    background: var(--pc-button-color-hover);
     border-color: transparent;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &:focus {
@@ -96,20 +96,20 @@
   }
 
   &:active {
-    background: var(--p-button-color-active);
+    background: var(--pc-button-color-active);
     border-color: transparent;
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
   }
 
   &.pressed {
-    color: var(--p-button-text);
-    background: var(--p-button-color-depressed);
+    color: var(--pc-button-text);
+    background: var(--pc-button-color-depressed);
     border-color: transparent;
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
 
     &:hover,
     &:focus {
-      background: var(--p-button-color-depressed);
+      background: var(--pc-button-color-depressed);
       box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
   }
@@ -147,7 +147,7 @@
     background: var(--p-action-secondary-pressed);
     border: border-width() solid var(--p-border);
     box-shadow: none;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &.disabled {
