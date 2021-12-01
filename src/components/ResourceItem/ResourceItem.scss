@@ -267,7 +267,7 @@ $resource-list-item-variables: (
   }
 
   &::after {
-    border-radius: rem(2px);
+    border-radius: var(--p-border-radius-1);
   }
 
   &:last-of-type {
