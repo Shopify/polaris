@@ -13,9 +13,9 @@ $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 
 .ColorPicker {
   --pc-color-picker-size: rem(160px);
-  --pc-color: 10;
-  --pc-adjustments: 20;
-  --pc-dragger: 30;
+  --pc-color-picker-color: 10;
+  --pc-color-picker-adjustments: 20;
+  --pc-color-picker-dragger: 30;
   user-select: none;
   display: flex;
 }
@@ -52,7 +52,7 @@ $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
   &::before {
     content: '';
     position: absolute;
-    z-index: var(--pc-adjustments);
+    z-index: var(--pc-color-picker-adjustments);
     top: 0;
     left: 0;
     display: block;
@@ -73,7 +73,7 @@ $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 
 .Dragger {
   position: relative;
-  z-index: var(--pc-dragger);
+  z-index: var(--pc-color-picker-dragger);
   bottom: 0.5 * $dragger-size;
   transform: none;
   height: $dragger-size;
@@ -121,7 +121,7 @@ $huepicker-bottom-padding-start: var(--pc-color-picker-size) - $dragger-size;
 
 .ColorLayer {
   position: absolute;
-  z-index: var(--pc-color);
+  z-index: var(--pc-color-picker-color);
   top: 0;
   left: 0;
   height: 100%;
