@@ -1,6 +1,6 @@
 .RangeSlider {
-  --pc-range-track-height: rem(4px);
-  --pc-range-thumb-size: var(--p-range-slider-thumb-size-base);
+  --pc-range-slider-track-height: rem(4px);
+  --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
 }
 
 @mixin track-dashed {
@@ -8,7 +8,7 @@
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;
-  height: var(--pc-range-track-height);
+  height: var(--pc-range-slider-track-height);
   width: 100%;
   background-image: linear-gradient(
     to right,
@@ -17,7 +17,8 @@
     transparent 50%,
     transparent 100%
   );
-  background-size: var(--pc-range-track-height) var(--pc-range-track-height);
+  background-size: var(--pc-range-slider-track-height)
+    var(--pc-range-slider-track-height);
   border-radius: var(--pc-borderRadius);
   border-right: var(--pc-borderRadius) $dashedTrackColor solid;
 }
