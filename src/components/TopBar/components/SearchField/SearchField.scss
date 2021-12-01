@@ -149,7 +149,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   );
   will-change: background-color;
   transition: background-color var(--p-duration-200) var(--p-ease);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
   animation: toLightBackground 0.01ms;
 }
 

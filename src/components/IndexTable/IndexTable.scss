@@ -61,7 +61,7 @@ $loading-panel-height: 53px;
     background: var(--p-surface-highlight-subdued);
     padding: var(--p-space-2);
     padding-bottom: var(--p-space-1);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
@@ -425,8 +425,8 @@ $scroll-bar-size: var(--p-space-2);
   padding: var(--p-space-05);
   border-top: border('divider');
   background-color: var(--p-surface);
-  border-bottom-right-radius: var(--p-border-radius-2);
-  border-bottom-left-radius: var(--p-border-radius-2);
+  border-bottom-right-radius: var(--p-border-radius-1);
+  border-bottom-left-radius: var(--p-border-radius-1);
 }
 
 .scrollBarContainerCondensed {

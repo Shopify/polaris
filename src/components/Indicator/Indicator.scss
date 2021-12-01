@@ -13,7 +13,7 @@ $base-position: -4px;
     top: $base-position;
     width: $size;
     height: $size;
-    border-radius: var(--p-border-radius-7);
+    border-radius: var(--p-border-radius-6);
     border: calc(#{$size} / 2) solid transparent;
   }
 }

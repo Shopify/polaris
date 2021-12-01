@@ -1,7 +1,7 @@
 @mixin track-dashed {
   --pc-range-slider-track-height: 4px;
   --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
-  --pc-track-dashed-border-radius: var(--p-border-radius-2);
+  --pc-track-dashed-border-radius: var(--p-border-radius-1);
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;

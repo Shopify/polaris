@@ -34,7 +34,7 @@
   }
 
   // Need an extra pixel to avoid a small color bleed from happening
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
   cursor: pointer;
 
   .Dragger {
@@ -43,7 +43,7 @@
   }
 
   .ColorLayer {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::after,
@@ -57,7 +57,7 @@
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::before {
@@ -79,8 +79,8 @@
   margin: 0 auto;
   will-change: transform;
   background: transparent;
-  border: var(--p-border-radius-2) solid var(--p-surface);
-  border-radius: var(--p-border-radius-7);
+  border: var(--p-border-radius-1) solid var(--p-surface);
+  border-radius: var(--p-border-radius-6);
   pointer-events: none;
 }
 
@@ -98,7 +98,7 @@ $huepicker-bottom-padding-start: calc(
   height: var(--pc-color-picker-size);
   width: var(--p-space-6);
   margin-left: var(--p-space-2);
-  border-width: var(--p-border-radius-2);
+  border-width: var(--p-border-radius-1);
   border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 

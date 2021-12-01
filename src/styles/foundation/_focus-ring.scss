@@ -14,8 +14,8 @@
   $offset: if($border-width == 0, 1px, calc(#{$border-width} + 1px));
   $border-radius: if(
     $size == 'wide',
-    var(--p-border-radius-3),
-    var(--p-border-radius-2)
+    var(--p-border-radius-2),
+    var(--p-border-radius-1)
   );
   $negative-offset: calc(-1 * #{$offset});
 

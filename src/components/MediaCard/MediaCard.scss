@@ -19,8 +19,8 @@ $portrait-breakpoint: 804px;
 
 .MediaContainer {
   overflow: hidden;
-  border-top-left-radius: var(--p-border-radius-3);
-  border-top-right-radius: var(--p-border-radius-3);
+  border-top-left-radius: var(--p-border-radius-2);
+  border-top-right-radius: var(--p-border-radius-2);
 
   &:not(.portrait) {
     flex-basis: 40%;
@@ -33,8 +33,8 @@ $portrait-breakpoint: 804px;
   @include breakpoint-after($portrait-breakpoint, inclusive) {
     &:not(.portrait) {
       border-top-right-radius: 0;
-      border-top-left-radius: var(--p-border-radius-3);
-      border-bottom-left-radius: var(--p-border-radius-3);
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
     }
   }
 }

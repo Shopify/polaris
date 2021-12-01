@@ -30,7 +30,7 @@ $breakpoint: 768px;
   height: 6px;
   width: 6px;
   background: var(--p-text-subdued);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
 
   &:not(:last-of-type) {
     margin-right: var(--p-space-1);
@@ -172,8 +172,8 @@ $breakpoint: 768px;
 .Cell-total-footer {
   border-top: border('divider');
   border-bottom: none;
-  border-bottom-left-radius: var(--p-border-radius-2);
-  border-bottom-right-radius: var(--p-border-radius-2);
+  border-bottom-left-radius: var(--p-border-radius-1);
+  border-bottom-right-radius: var(--p-border-radius-1);
 }
 
 .Footer {
@@ -182,6 +182,6 @@ $breakpoint: 768px;
   color: var(--p-text-subdued);
   text-align: center;
   border-top: border('divider');
-  border-bottom-left-radius: var(--p-border-radius-2);
-  border-bottom-right-radius: var(--p-border-radius-2);
+  border-bottom-left-radius: var(--p-border-radius-1);
+  border-bottom-right-radius: var(--p-border-radius-1);
 }

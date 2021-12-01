@@ -17,7 +17,7 @@ $dropzone-min-height-small: 50px;
 }
 
 @mixin set-border-radius {
-  border-radius: calc(var(--p-border-radius-2) + #{border-width()} + #{1px});
+  border-radius: calc(var(--p-border-radius-1) + #{border-width()} + #{1px});
 }
 
 .DropZone {
@@ -27,7 +27,7 @@ $dropzone-min-height-small: 50px;
   display: flex;
   justify-content: center;
   background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
 
   &::after {
     content: '';
@@ -38,7 +38,7 @@ $dropzone-min-height-small: 50px;
     bottom: 0;
     left: 0;
     border: border-width() $dropzone-border-style transparent;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-1);
     pointer-events: none;
   }
 

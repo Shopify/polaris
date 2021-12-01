@@ -49,7 +49,7 @@
   text-align: left;
   cursor: pointer;
   padding: var(--pc-action-list-item-vertical-padding) var(--p-space-2);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
   border-top: 1px solid transparent;
   @media (forced-colors: active) {
     @include high-contrast-border;

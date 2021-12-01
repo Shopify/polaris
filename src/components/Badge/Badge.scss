@@ -10,7 +10,7 @@
   align-items: center;
   padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
   background-color: var(--p-surface-neutral);
-  border-radius: var(--p-border-radius-6);
+  border-radius: var(--p-border-radius-5);
   font-size: font-size(caption);
   line-height: line-height(caption, large-screen);
   color: var(--p-text);
@@ -71,7 +71,7 @@
     var(--pc-badge-vertical-padding) - var(--pc-badge-pip-spacing)
   );
   border: border-width(thick) solid currentColor;
-  border-radius: var(--p-border-radius-7);
+  border-radius: var(--p-border-radius-6);
   flex-shrink: 0;
 }
 
@@ -115,5 +115,5 @@
 }
 
 .withinFilter {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
 }

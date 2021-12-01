@@ -97,7 +97,7 @@
   left: 0;
   border: border-width() solid var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-1);
   background-color: var(--p-surface);
   box-shadow: var(--p-button-drop-shadow);
   @include focus-ring($border-width: 1px);
