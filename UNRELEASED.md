@@ -19,7 +19,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Remove analyze custom properties check. ([#4718](https://github.com/Shopify/polaris-react/pull/4718))
 - Removed support for importing from `components` as it slows tests down ([#4735](https://github.com/Shopify/polaris-react/pull/4735), [#4739](https://github.com/Shopify/polaris-react/pull/4739))
 
-
 ### Dependency upgrades
 
 - Bumped `postcss` to `v8.3.1` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
@@ -29,9 +28,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
-
-### Deprecations
-
 - Clean up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 - Remove filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
 - Remove all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
@@ -39,6 +35,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `rem()` function from `tokens.ts` ([#4695](https://github.com/Shopify/polaris-react/pull/4695))
 - Remove unnecessary import of `Tokens` in `Collapsible` test ([#4722](https://github.com/Shopify/polaris-react/pull/4722))
 - Remove legacy tokens and use default theme for `.storybook/manager.js` ([#4729](https://github.com/Shopify/polaris-react/pull/4729))
+
+### Deprecations
+
 - Deprecated `thumbnail` property for `Page` ([#4733](https://github.com/Shopify/polaris-react/pull/4733))
 - Deprecated `secondaryActions` property for `SkeletonPage` ([#4740](https://github.com/Shopify/polaris-react/pull/4740))
-
