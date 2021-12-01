@@ -18,7 +18,7 @@ $stacking-order: (
 }
 
 .ColorPicker {
-  --pc-picker-size: rem(160px);
+  --pc-color-picker-size: rem(160px);
   user-select: none;
   display: flex;
 }
@@ -30,8 +30,8 @@ $stacking-order: (
   @include checkers;
   position: relative;
   overflow: hidden;
-  height: var(--pc-picker-size);
-  width: var(--pc-picker-size);
+  height: var(--pc-color-picker-size);
+  width: var(--pc-color-picker-size);
 
   .fullWidth & {
     width: auto;
@@ -92,17 +92,17 @@ $stacking-order: (
 $green: rgb(0, 255, 0);
 $purple: rgb(255, 0, 255);
 $huepicker-padding: $dragger-size;
-$huepicker-bottom-padding-start: var(--pc-picker-size) - $dragger-size;
+$huepicker-bottom-padding-start: var(--pc-color-picker-size) - $dragger-size;
 
 .HuePicker,
 .AlphaPicker {
   position: relative;
   overflow: hidden;
-  height: var(--pc-picker-size);
+  height: var(--pc-color-picker-size);
   width: rem(24px);
   margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-base);
-  border-radius: calc(var(--pc-picker-size) * 0.5);
+  border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .HuePicker {
