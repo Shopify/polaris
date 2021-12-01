@@ -25,7 +25,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `z-index()` scss function ([#4753](https://github.com/Shopify/polaris-react/pull/4753))
 - Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
 - Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
-- Replaced hardcoded spacing values with spacing tokens ([#4775](https://github.com/Shopify/polaris-react/pull/4775))
 
 ### New components
 
@@ -44,5 +43,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 - Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
+- Replaced hardcoded spacing values with spacing tokens ([#4775](https://github.com/Shopify/polaris-react/pull/4775))
 
 ### Deprecations
