@@ -4,13 +4,13 @@
   // Sass does not allow arbitrary Sass function calls in custom properties.
   // They must be interpolated
   // See https://github.com/sass/libsass/issues/2585
-  --toast-translate-y-out: #{rem(150px)};
-  --toast-translate-y-in: 0;
+  --pc-toast-manager-translate-y-out: #{rem(150px)};
+  --pc-toast-manager-translate-y-in: 0;
 }
 
 .ToastManager {
   position: fixed;
-  z-index: var(--p-z-toast);
+  z-index: var(--p-z-12);
   right: 0;
   left: 0;
   text-align: center;
@@ -26,16 +26,16 @@
   opacity: 0;
   transition: transform var(--p-duration-400) ease,
     opacity var(--p-duration-400) ease;
-  transform: translateY(var(--toast-translate-y-out));
+  transform: translateY(var(--pc-toast-manager-translate-y-out));
 }
 
 .ToastWrapper-enter,
 .ToastWrapper-exit {
-  transform: translateY(var(--toast-translate-y-out));
+  transform: translateY(var(--pc-toast-manager-translate-y-out));
   opacity: 0;
 }
 
 .ToastWrapper-enter-done {
-  transform: translateY(var(--toast-translate-y-in));
+  transform: translateY(var(--pc-toast-manager-translate-y-in));
   opacity: 1;
 }

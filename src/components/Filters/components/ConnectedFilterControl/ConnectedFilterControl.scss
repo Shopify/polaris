@@ -5,8 +5,8 @@
 // stylelint-disable selector-max-compound-selectors
 // stylelint-disable selector-max-type
 .ConnectedFilterControl {
-  --pc-item: 10;
-  --pc-focused: 20;
+  --pc-connceted-filter-control-item: 10;
+  --pc-connceted-filter-control-focused: 20;
   display: flex;
   flex-grow: 1;
 
@@ -25,11 +25,11 @@
 
 .Item {
   position: relative;
-  z-index: var(--pc-item);
+  z-index: var(--pc-connceted-filter-control-item);
 }
 
 .Item-focused {
-  z-index: var(--pc-focused);
+  z-index: var(--pc-connceted-filter-control-focused);
 }
 
 .ProxyButtonContainer {

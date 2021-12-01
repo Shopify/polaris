@@ -1,16 +1,16 @@
 @import '../../styles/common';
 
 .Stack {
-  --p-stack-spacing: var(--p-space-4);
+  --pc-stack-spacing: var(--p-space-4);
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-top: calc(-1 * var(--p-stack-spacing));
-  margin-left: calc(-1 * var(--p-stack-spacing));
+  margin-top: calc(-1 * var(--pc-stack-spacing));
+  margin-left: calc(-1 * var(--pc-stack-spacing));
 
   > .Item {
-    margin-top: var(--p-stack-spacing);
-    margin-left: var(--p-stack-spacing);
+    margin-top: var(--pc-stack-spacing);
+    margin-left: var(--pc-stack-spacing);
     max-width: 100%;
   }
 }
@@ -20,27 +20,27 @@
 }
 
 .spacingNone {
-  --p-stack-spacing: var(--p-space-0);
+  --pc-stack-spacing: var(--p-space-0);
 }
 
 .spacingExtraTight {
-  --p-stack-spacing: var(--p-space-1);
+  --pc-stack-spacing: var(--p-space-1);
 }
 
 .spacingTight {
-  --p-stack-spacing: var(--p-space-2);
+  --pc-stack-spacing: var(--p-space-2);
 }
 
 .spacingBaseTight {
-  --p-stack-spacing: var(--p-space-3);
+  --pc-stack-spacing: var(--p-space-3);
 }
 
 .spacingLoose {
-  --p-stack-spacing: var(--p-space-5);
+  --pc-stack-spacing: var(--p-space-5);
 }
 
 .spacingExtraLoose {
-  --p-stack-spacing: var(--p-space-8);
+  --pc-stack-spacing: var(--p-space-8);
 }
 
 .distributionLeading {
