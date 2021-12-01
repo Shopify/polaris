@@ -7,9 +7,9 @@
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -1 * resource-list(header-padding-small);
-  margin-left: -1 * resource-list(header-padding-small);
-  margin-right: -1 * resource-list(header-padding-small);
+  margin-top: calc(-1 * resource-list(header-padding-small));
+  margin-left: calc(-1 * resource-list(header-padding-small));
+  margin-right: calc(-1 * resource-list(header-padding-small));
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;

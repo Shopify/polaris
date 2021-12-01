@@ -4,8 +4,8 @@ $item-line-height-small: 32px;
 $item-line-height-large: 36px;
 $text-line-height: 20px;
 $nav-variables: (
-  mobile-spacing: 10px,
-  desktop-spacing: 6px,
+  mobile-spacing: var(--p-space-2),
+  desktop-spacing: var(--p-space-1),
   mobile-height: 40px,
   desktop-height: 32px,
   icon-size: 20px,

@@ -27,7 +27,7 @@ $activator-variables: (
   justify-content: center;
   align-items: center;
   min-width: menu(min-width);
-  padding: 6px var(--p-space-2);
+  padding: var(--p-space-1) var(--p-space-2);
   border: 0;
   cursor: pointer;
   transition: menu(transition);
