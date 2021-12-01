@@ -1,18 +1,18 @@
 @import '../../styles/common';
 
 .Avatar {
-  --pc-extra-small-size: var(--p-space-6);
-  --pc-small-size: var(--p-space-8);
-  --pc-medium-size: var(--p-space-10);
-  --pc-large-size: 60px;
+  --pc-avatar-extra-small-size: var(--p-space-6);
+  --pc-avatar-small-size: var(--p-space-8);
+  --pc-avatar-medium-size: var(--p-space-10);
+  --pc-avatar-large-size: 60px;
   position: relative;
   display: block;
   overflow: hidden;
-  min-width: var(--pc-extra-small-size);
+  min-width: var(--pc-avatar-extra-small-size);
   max-width: 100%;
   background: var(--p-surface-neutral);
   color: var(--p-icon-subdued);
-  border-radius: calc(var(--pc-large-size) / 2);
+  border-radius: calc(var(--pc-avatar-large-size) / 2);
   user-select: none;
 
   @media (forced-colors: active) {
@@ -31,19 +31,19 @@
 }
 
 .sizeExtraSmall {
-  width: var(--pc-extra-small-size);
+  width: var(--pc-avatar-extra-small-size);
 }
 
 .sizeSmall {
-  width: var(--pc-small-size);
+  width: var(--pc-avatar-small-size);
 }
 
 .sizeMedium {
-  width: var(--pc-medium-size);
+  width: var(--pc-avatar-medium-size);
 }
 
 .sizeLarge {
-  width: var(--pc-large-size);
+  width: var(--pc-avatar-large-size);
 }
 
 .styleOne {
@@ -82,7 +82,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--p-background);
-  border-radius: calc(var(--pc-large-size) / 2);
+  border-radius: calc(var(--pc-avatar-large-size) / 2);
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
