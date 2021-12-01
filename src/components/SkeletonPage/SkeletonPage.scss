@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
-$action-text-spacing: rem(24px);
-$primary-action-button-height: rem(36px);
-$primary-action-button-width: rem(100px);
-$skeleton-display-text-max-width: rem(120px);
+$action-text-spacing: 24px;
+$primary-action-button-height: 36px;
+$primary-action-button-width: 100px;
+$skeleton-display-text-max-width: 120px;
 
 .Page {
   @include page-layout;
@@ -47,18 +47,18 @@ $skeleton-display-text-max-width: rem(120px);
 
 .Title {
   @include text-emphasis-strong;
-  font-size: rem(24px);
-  line-height: rem(28px);
+  font-size: 24px;
+  line-height: 28px;
 
   @include when-typography-not-condensed {
-    font-size: rem(20px);
+    font-size: 20px;
   }
 }
 
 .SkeletonTitle {
   @include skeleton-content;
   max-width: $skeleton-display-text-max-width;
-  height: rem(28px);
+  height: 28px;
 }
 
 .PrimaryAction {

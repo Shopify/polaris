@@ -2,11 +2,11 @@
 @import './variables';
 
 // Base Navigation styles
-$active-indicator-width: rem(3px);
-$nav-max-width: rem(360px);
+$active-indicator-width: 3px;
+$nav-max-width: 360px;
 
 .Navigation {
-  --pc-navigation-icon-size: #{rem(20px)};
+  --pc-navigation-icon-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -56,7 +56,7 @@ $nav-max-width: rem(360px);
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: rem(12px);
+    padding-top: 12px;
   }
 }
 
@@ -240,7 +240,7 @@ $disabled-fade: 0.6;
 }
 
 // Secondary styles
-$secondary-item-font-size: rem(15px);
+$secondary-item-font-size: 15px;
 .SecondaryNavigation {
   flex-basis: 100%;
   margin-left: 0;
@@ -285,14 +285,14 @@ $secondary-item-font-size: rem(15px);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
-      line-height: rem(28px);
+      line-height: 28px;
     }
   }
 
   .Text {
-    margin-top: rem(6px);
-    margin-bottom: rem(6px);
-    line-height: rem(20px);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 20px;
   }
 
   .Item-selected {
@@ -441,8 +441,8 @@ $secondary-item-font-size: rem(15px);
 .Indicator {
   position: relative;
   display: inline-block;
-  height: rem(10px);
-  width: rem(10px);
+  height: 10px;
+  width: 10px;
 }
 
 .SecondaryNavigation-noIcon .Item {

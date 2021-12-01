@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$icon-size: rem(20px);
-
 .Breadcrumb {
   @include text-style-body;
   @include text-emphasis-subdued;
@@ -18,7 +16,7 @@ $icon-size: rem(20px);
   padding: var(--p-space-1) / 2;
   border-radius: var(--p-border-radius-base);
   border: 1px solid var(--p-border-neutral-subdued);
-  @include focus-ring($border-width: rem(1px));
+  @include focus-ring($border-width: 1px);
 
   &:hover {
     background-color: var(--p-surface-hovered);
@@ -54,9 +52,11 @@ $icon-size: rem(20px);
 }
 
 .Icon {
+  --pc-icon-size: 20px;
   @include recolor-icon(var(--p-icon));
-  width: $icon-size;
-  height: $icon-size;
-  margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
+  width: var(--pc-icon-size);
+  height: var(--pc-icon-size);
+  margin: calc(-0.5 * var(--pc-icon-size)) 0 calc(-0.5 * var(--pc-icon-size))
+    calc(-1 * var(--p-space2));
   margin: 0;
 }

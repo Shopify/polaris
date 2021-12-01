@@ -1,7 +1,7 @@
 @import '../../styles/common';
 @import './variables';
 
-$item-wrapper-loading-height: rem(64px);
+$item-wrapper-loading-height: 64px;
 
 @mixin disabled-pointer-events {
   pointer-events: none;

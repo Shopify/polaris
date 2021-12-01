@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
-$first-column-width: rem(145px);
 $breakpoint: 768px;
 
 .DataTable {
+  --pc-data-table-first-column-width: 145px;
   position: relative;
   max-width: 100vw;
 }
@@ -27,8 +27,8 @@ $breakpoint: 768px;
 }
 
 .Pip {
-  height: rem(6px);
-  width: rem(6px);
+  height: 6px;
+  width: 6px;
   background: var(--p-text-subdued);
   border-radius: var(--p-border-radius-base);
 
@@ -87,7 +87,7 @@ $breakpoint: 768px;
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
-  max-width: $first-column-width;
+  max-width: var(--pc-data-table-first-column-width);
 }
 
 .Cell-header {

@@ -1,10 +1,10 @@
 @import '../../styles/common';
 
-$arrow-size: rem(14px);
-$visible-portion-of-arrow: rem(5px);
-$content-max-height: rem(500px);
-$content-max-width: rem(400px);
-$vertical-motion-offset: rem(-5px);
+$arrow-size: 14px;
+$visible-portion-of-arrow: 5px;
+$content-max-height: 500px;
+$content-max-width: 400px;
+$vertical-motion-offset: -5px;
 
 .Popover {
   max-width: calc(100vw - 2 * var(--p-space-4));

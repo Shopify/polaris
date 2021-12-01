@@ -1,9 +1,9 @@
 @import '../../../../styles/common';
 
-$expanded-height: rem(32px);
-$expanded-width: rem(32px);
-$condensed-height: rem(44px);
-$condensed-width: rem(50px);
+$expanded-height: 32px;
+$expanded-width: 32px;
+$condensed-height: 44px;
+$condensed-width: 50px;
 
 .TableCellContentContainer {
   display: flex;

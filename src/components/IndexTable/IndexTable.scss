@@ -1,13 +1,10 @@
 @import '../../styles/common';
 
 $breakpoint-small: 458px;
-$checkbox-offset-left: rem(14px);
-$checkbox-offset-right: rem(18px);
-$small-checkbox-offset: rem(2px);
 
 .IndexTable {
-  --pc-index-table-translate-offset: calc(#{rem(50px)} - var(--p-space-4));
-  --pc-index-table-table-header-offset: #{rem(52px)};
+  --pc-index-table-translate-offset: calc(50px - var(--p-space-4));
+  --pc-index-table-table-header-offset: 52px;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 31;
   --pc-index-table-scroll-bar: 35;
@@ -42,7 +39,7 @@ $small-checkbox-offset: rem(2px);
     transform var(--p-duration-100) ease-in;
 }
 
-$loading-panel-height: rem(53px);
+$loading-panel-height: 53px;
 
 .LoadingPanel {
   position: absolute;
@@ -69,7 +66,7 @@ $loading-panel-height: rem(53px);
 }
 
 .LoadingPanelText {
-  margin-left: rem(12px);
+  margin-left: var(--p-space-3);
   color: var(--p-text);
 }
 
@@ -91,14 +88,14 @@ $loading-panel-height: rem(53px);
 
   .TableCell-first,
   .TableHeading-first {
-    filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+    filter: drop-shadow(1px 0 0 var(--p-divider));
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+      filter: drop-shadow(1px 0 0 var(--p-divider));
     }
   }
 
@@ -107,7 +104,7 @@ $loading-panel-height: rem(53px);
     .TableHeading-second,
     .TableCell:first-child {
       visibility: visible;
-      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+      filter: drop-shadow(1px 0 0 var(--p-divider));
     }
   }
 }
@@ -115,7 +112,7 @@ $loading-panel-height: rem(53px);
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
-  filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
+  filter: drop-shadow(0 -1px 0 var(--p-divider));
 
   &.TableRow-unclickable {
     cursor: auto;
@@ -183,10 +180,12 @@ $loading-panel-height: rem(53px);
 }
 
 .TableHeading-first {
+  --pc-index-table-checkbox-offset-left: 14px;
+  --pc-index-table-checkbox-offset-right: 18px;
   position: sticky;
   left: 0;
-  padding-left: $checkbox-offset-left;
-  padding-right: $checkbox-offset-right;
+  padding-left: var(--pc-index-table-checkbox-offset-left);
+  padding-right: var(--pc-index-table-checkbox-offset-right);
 }
 
 .ColumnHeaderCheckboxWrapper {
@@ -194,8 +193,8 @@ $loading-panel-height: rem(53px);
 }
 
 .FirstStickyHeaderElement {
-  margin-left: #{-1 * $small-checkbox-offset};
-  padding-right: $small-checkbox-offset;
+  margin-left: calc(-1 * var(--p-space-05));
+  padding-right: var(--p-space-05);
 }
 
 .TableHeading-second {
@@ -279,7 +278,7 @@ $loading-panel-height: rem(53px);
   .TableCell:last-child,
   .TableHeading-last {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+      filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
 }
@@ -344,8 +343,8 @@ $loading-panel-height: rem(53px);
   width: 100%;
 
   &:not(.StickyTableHeader-isSticky) {
-    top: rem(-1000px);
-    left: rem(-1000px);
+    top: -1000px;
+    left: -1000px;
   }
 }
 
@@ -377,7 +376,7 @@ $loading-panel-height: rem(53px);
 }
 
 .StickyTableHeading-second-scrolling {
-  padding: 0 rem(0.6px) 0 var(--p-space-4);
+  padding: 0 0.6px 0 var(--p-space-4);
   display: none;
 
   @include breakpoint-after($breakpoint-small) {
@@ -416,14 +415,14 @@ $loading-panel-height: rem(53px);
   background: var(--p-surface);
 }
 
-$scroll-bar-size: rem(8px);
-$scroll-bar-border-radius: rem(4px);
+$scroll-bar-size: var(--p-space-2);
+$scroll-bar-border-radius: 4px;
 
 .ScrollBarContainer {
   position: sticky;
   z-index: var(--pc-index-table-scroll-bar);
   bottom: 0;
-  padding: rem(2px);
+  padding: var(--p-space-05);
   border-top: border('divider');
   background-color: var(--p-surface);
   border-bottom-right-radius: var(--p-border-radius-base);
@@ -520,7 +519,7 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .StickyTableHeader-condensed {
-  padding: 1.6rem var(--p-space-4) 0.8rem;
+  padding: var(--p-space-4) var(--p-space-4) var(--p-space-2);
 }
 
 .ScrollBarContent {

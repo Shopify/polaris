@@ -3,7 +3,6 @@
 $bulk-actions-button-stacking-order: (
   focused: 20,
 );
-$bulk-actions-offset-slide-in-start: rem(-40px);
 
 .Group {
   @include text-style-input;
@@ -110,7 +109,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Slide-appear,
 .Slide-enter,
 .Slide-exit {
-  transform: translateX($bulk-actions-offset-slide-in-start);
+  transform: translateX(calc(-1 * var(--p-space-10)));
 }
 
 .Slide-appearing,
