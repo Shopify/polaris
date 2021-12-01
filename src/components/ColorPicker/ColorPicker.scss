@@ -13,7 +13,7 @@ $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .ColorPicker {
-  --pc-color-picker-color: 10;
+  --pc-color-picker: 10;
   --pc-color-picker-adjustments: 20;
   --pc-color-picker-dragger: 30;
   user-select: none;
@@ -121,7 +121,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
 
 .ColorLayer {
   position: absolute;
-  z-index: var(--pc-color-picker-color);
+  z-index: var(--pc-color-picker);
   top: 0;
   left: 0;
   height: 100%;
