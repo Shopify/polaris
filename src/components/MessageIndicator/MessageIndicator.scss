@@ -14,7 +14,7 @@ $indicator-position: rem(-3px);
   right: $indicator-position;
   width: $indicator-size;
   height: $indicator-size;
-  border-radius: 100%;
+  border-radius: var(--p-border-radius-7);
   background-color: var(--p-icon-highlight);
   border: solid rem(2px) var(--p-background);
 }
