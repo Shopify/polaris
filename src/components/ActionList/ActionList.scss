@@ -1,10 +1,10 @@
 @import '../../styles/common';
 
 .ActionList {
-  --pc-image-size: 20px;
-  --pc-item-min-height: var(--p-space-10);
-  --pc-item-vertical-padding: calc(
-    (var(--pc-item-min-height) - #{line-height(body)}) / 2
+  --pc-action-list-image-size: 20px;
+  --pc-action-list-item-min-height: var(--p-space-10);
+  --pc-action-list-item-vertical-padding: calc(
+    (var(--pc-action-list-item-min-height) - #{line-height(body)}) / 2
   );
   list-style: none;
   margin: 0;
@@ -48,10 +48,10 @@
   @include focus-ring;
   display: block;
   width: 100%;
-  min-height: var(--pc-item-min-height);
+  min-height: var(--pc-action-list-item-min-height);
   text-align: left;
   cursor: pointer;
-  padding: var(--pc-item-vertical-padding) var(--p-space-2);
+  padding: var(--pc-action-list-item-vertical-padding) var(--p-space-2);
   border-radius: var(--p-border-radius-base);
   border-top: 1px solid transparent;
   @media (forced-colors: active) {
@@ -122,14 +122,14 @@
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
-  height: var(--pc-image-size);
-  width: var(--pc-image-size);
+  height: var(--pc-action-list-image-size);
+  width: var(--pc-action-list-image-size);
   border-radius: border-radius();
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: calc(-0.5 * var(--pc-image-size)) var(--p-space-4)
-    calc(-0.5 * var(--pc-image-size)) 0;
+  margin: calc(-0.5 * var(--pc-action-list-image-size)) var(--p-space-4)
+    calc(-0.5 * var(--pc-action-list-image-size)) 0;
   background-size: cover;
   background-position: center center;
 }
