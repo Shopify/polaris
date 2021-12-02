@@ -157,7 +157,7 @@ function SheetExample() {
               borderBottom: '1px solid #DFE3E8',
               display: 'flex',
               justifyContent: 'space-between',
-              padding: '1.6rem',
+              padding: '1rem',
               width: '100%',
             }}
           >
@@ -169,7 +169,7 @@ function SheetExample() {
               plain
             />
           </div>
-          <Scrollable style={{padding: '1.6rem', height: '100%'}}>
+          <Scrollable style={{padding: '1rem', height: '100%'}}>
             <ChoiceList
               title="Select a sales channel"
               name="salesChannelsList"
@@ -186,7 +186,7 @@ function SheetExample() {
               borderTop: '1px solid #DFE3E8',
               display: 'flex',
               justifyContent: 'space-between',
-              padding: '1.6rem',
+              padding: '1rem',
               width: '100%',
             }}
           >
