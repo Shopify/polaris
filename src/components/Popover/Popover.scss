@@ -10,7 +10,7 @@ $vertical-motion-offset: -5px;
   max-width: calc(100vw - 2 * var(--p-space-4));
   margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
   box-shadow: var(--p-popover-shadow);
-  border-radius: var(--p-border-radius-wide);
+  border-radius: var(--p-border-radius-2);
   will-change: left, top;
 }
 
@@ -63,7 +63,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   overflow: hidden;
   background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-wide);
+  border-radius: var(--p-border-radius-2);
   outline: 1px solid transparent;
 }
 
@@ -71,7 +71,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   max-width: $content-max-width;
   max-height: $content-max-height;
 

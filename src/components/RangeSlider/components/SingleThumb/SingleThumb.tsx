@@ -5,6 +5,7 @@ import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
 import type {RangeSliderProps} from '../../types';
+import sharedStyles from '../../RangeSlider.scss';
 
 import styles from './SingleThumb.scss';
 
@@ -75,6 +76,7 @@ export function SingleThumb(props: SingleThumbProps) {
 
   const className = classNames(
     styles.SingleThumb,
+    sharedStyles.RangeSlider,
     error && styles.error,
     disabled && styles.disabled,
   );

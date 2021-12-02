@@ -265,23 +265,23 @@ $resource-list-item-variables: (
   }
 
   &::after {
-    border-radius: 2px;
+    border-radius: var(--p-border-radius-05);
   }
 
   &:last-of-type {
-    border-bottom-left-radius: var(--p-border-radius-wide);
-    border-bottom-right-radius: var(--p-border-radius-wide);
+    border-bottom-left-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-2);
 
     .ItemWrapper {
-      border-bottom-left-radius: var(--p-border-radius-wide);
-      border-bottom-right-radius: var(--p-border-radius-wide);
+      border-bottom-left-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
     }
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
   &:last-of-type.focused::after {
-    border-bottom-left-radius: var(--p-border-radius-wide);
-    border-bottom-right-radius: var(--p-border-radius-wide);
+    border-bottom-left-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-2);
   }
 
   // stylelint-disable-next-line selector-max-class
