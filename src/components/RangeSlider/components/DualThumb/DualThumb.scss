@@ -5,9 +5,7 @@ $range-wrapper: 28px;
 
 $range-thumb-border-error: 2px solid var(--p-border-critical);
 
-.Wrapper {
-  --pc-dual-thumb-input: 10;
-  --pc-dual-thumb-output: 20;
+.DualThumb {
   position: relative;
   width: 100%;
   display: flex;
@@ -82,7 +80,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
 .Thumbs {
   @include focus-ring($size: 'wide', $border-width: border-width());
   position: absolute;
-  z-index: var(--pc-dual-thumb-input);
+  z-index: var(--pc-range-slider-input);
   padding: 0;
   width: var(--pc-range-slider-thumb-size);
   height: var(--pc-range-slider-thumb-size);
@@ -134,7 +132,7 @@ $range-output-spacing: 16px;
 
 .Output {
   position: absolute;
-  z-index: var(--pc-dual-thumb-output);
+  z-index: var(--pc-range-slider-output);
   bottom: var(--p-range-slider-thumb-size-active);
   opacity: 0;
   visibility: hidden;
