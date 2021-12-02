@@ -84,7 +84,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   padding: 0;
   width: var(--pc-range-slider-thumb-size);
   height: var(--pc-range-slider-thumb-size);
-  border-radius: var(--p-border-radius-6);
+  border-radius: var(--p-border-radius-half);
   border: border-width() solid var(--p-interactive);
   background: linear-gradient(var(--p-interactive), var(--p-interactive));
   -webkit-tap-highlight-color: transparent;
