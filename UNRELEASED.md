@@ -18,6 +18,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Remove analyze custom properties check. ([#4718](https://github.com/Shopify/polaris-react/pull/4718))
 - Removed support for importing from `components` as it slows tests down ([#4735](https://github.com/Shopify/polaris-react/pull/4735), [#4739](https://github.com/Shopify/polaris-react/pull/4739))
+- Hello
 
 ### Dependency upgrades
 
