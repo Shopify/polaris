@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-      - uses: andresz1/size-limit-action@v1.4.1
+      - uses: andresz1/size-limit-action@v1.4.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
