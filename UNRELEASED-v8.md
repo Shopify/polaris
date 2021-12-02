@@ -32,7 +32,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- Add duration token values between 0 and 500 with 50ms increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
+- Added duration token values between 0 and 500 with 50ms increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
 
 ### Bug fixes
 
