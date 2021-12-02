@@ -56,7 +56,7 @@ $nav-max-width: 360px;
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: 12px;
+    padding-top: var(--p-space-3);
   }
 }
 
@@ -290,8 +290,8 @@ $secondary-item-font-size: 15px;
   }
 
   .Text {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
     line-height: 20px;
   }
 

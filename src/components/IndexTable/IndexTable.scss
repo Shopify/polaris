@@ -376,7 +376,7 @@ $loading-panel-height: 53px;
 }
 
 .StickyTableHeading-second-scrolling {
-  padding: 0 0.6px 0 var(--p-space-4);
+  padding: 0 var(--p-space-025) 0 var(--p-space-4);
   display: none;
 
   @include breakpoint-after($breakpoint-small) {

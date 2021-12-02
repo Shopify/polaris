@@ -45,7 +45,7 @@ $list-filters-footer-height: 70px;
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 14px var(--p-space-5);
+  padding: var(--p-space-4) var(--p-space-5);
   border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
@@ -56,7 +56,7 @@ $list-filters-footer-height: 70px;
 
 .FiltersMobileContainerFooter {
   width: 100%;
-  padding: 14px var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
@@ -66,7 +66,7 @@ $list-filters-footer-height: 70px;
 
 .EmptyFooterState {
   border-top: border('divider');
-  padding-top: 14px;
+  padding-top: var(--p-space-4);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -79,7 +79,7 @@ $list-filters-footer-height: 70px;
 .FilterTrigger {
   width: 100%;
   margin: 0;
-  padding: 14px var(--p-space-5);
+  padding: var(--p-space-4) var(--p-space-5);
   color: var(--p-text);
   border-radius: var(--p-border-radius-1);
   background: none;
@@ -209,7 +209,7 @@ $list-filters-footer-height: 70px;
 }
 
 .HelpText {
-  margin-top: 10px;
+  margin-top: var(--p-space-2);
 }
 
 .TagsContainer {

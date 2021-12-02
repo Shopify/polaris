@@ -52,7 +52,7 @@
 
 .InlineLabel {
   @include text-emphasis-subdued;
-  margin-right: 4px;
+  margin-right: var(--p-space-1);
   white-space: nowrap;
   overflow: hidden;
 }

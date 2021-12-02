@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$dropzone-padding: 15px;
+$dropzone-padding: var(--p-space-4);
 $dropzone-border-style: dashed;
 $dropzone-min-height-large: 100px;
 $dropzone-min-height-medium: 100px;
