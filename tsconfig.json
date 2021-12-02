@@ -1,7 +1,6 @@
 {
   "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
-    "jsx": "react",
     "rootDir": "./",
     "noEmit": false,
     "emitDeclarationOnly": true,
