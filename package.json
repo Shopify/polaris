@@ -43,6 +43,9 @@
       ]
     }
   },
+  "engines": {
+    "node": ">=16.13.0"
+  },
   "scripts": {
     "lint": "loom lint",
     "format": "loom lint --fix",
