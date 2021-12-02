@@ -61,9 +61,7 @@
     var(--pc-single-thumb-progress-upper) 100%;
 
   @mixin rangeSliderThumbPosition($size) {
-    margin-top: calc(
-      -1 * (#{$size} - #{var(--pc-range-slider-track-height)}) / 2
-    );
+    margin-top: calc(-1 * (#{$size} - var(--pc-range-slider-track-height)) / 2);
   }
 
   &::-ms-tooltip {
@@ -162,9 +160,7 @@
 /// Output value indicator
 $range-output-size: 32px;
 $range-output-translate-x: calc(
-  -50% + var(--Polaris-RangeSlider-output-factor) * #{var(
-      --pc-range-slider-thumb-size
-    )}
+  -50% + var(--Polaris-RangeSlider-output-factor) * var(--pc-range-slider-thumb-size)
 );
 
 $range-output-spacing: 16px;
@@ -188,7 +184,7 @@ $range-output-spacing: 16px;
     opacity: 1;
     visibility: visible;
     bottom: calc(
-      #{var(--pc-range-slider-thumb-size)} + #{$range-thumb-size-difference}
+      var(--pc-range-slider-thumb-size) + #{$range-thumb-size-difference}
     );
   }
 }

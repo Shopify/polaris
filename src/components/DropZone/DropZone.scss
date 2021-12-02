@@ -17,7 +17,7 @@ $dropzone-min-height-small: 50px;
 }
 
 @mixin set-border-radius {
-  border-radius: calc(var(--p-border-radius-1) + #{border-width()} + #{1px});
+  border-radius: calc(var(--p-border-radius-1) + #{border-width()} + 1px);
 }
 
 .DropZone {
