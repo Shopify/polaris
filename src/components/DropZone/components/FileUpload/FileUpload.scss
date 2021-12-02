@@ -18,7 +18,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
 }
 
 .small {
-  padding: 1.25rem;
+  padding: var(--p-space-3);
 }
 
 .FileUpload img {
