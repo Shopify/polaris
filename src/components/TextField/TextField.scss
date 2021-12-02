@@ -135,7 +135,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   }
 
   &:-webkit-autofill {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
@@ -175,7 +175,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   background-color: var(--p-surface);
   border: 1px solid var(--p-border-subdued);
   border-top-color: var(--p-border-shadow);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   pointer-events: none;
 }
 
@@ -268,7 +268,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 
 .Segment {
   --pc-text-field-spinner-border-radius: calc(
-    var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
+    var(--p-border-radius-1) - var(--p-text-field-spinner-offset)
   );
   background: var(--p-surface-neutral);
   border-radius: var(--pc-text-field-spinner-border-radius);

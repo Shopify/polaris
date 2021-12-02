@@ -100,8 +100,8 @@ $disabled-fade: 0.6;
     height: 100%;
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 
   @include high-contrast-outline;
@@ -198,7 +198,7 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   margin-right: var(--p-space-1);
   padding: var(--p-space-1) var(--p-space-4);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -367,7 +367,7 @@ $secondary-item-font-size: 15px;
     height: nav(mobile-nav-height);
     margin-right: var(--p-space-1);
     padding: var(--p-space-1) var(--p-space-4);
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);

@@ -21,7 +21,7 @@
   overflow: hidden;
   width: 100%;
   background-color: var(--pc-progress-bar-background);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 
   @media (forced-colors: active) {
     @include high-contrast-border;

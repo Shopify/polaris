@@ -1,11 +1,5 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  color: 10,
-  adjustments: 20,
-  dragger: 30,
-);
-
 @mixin checkers {
   background: repeating-conic-gradient(
       var(--p-surface) 0% 25%,
@@ -40,7 +34,7 @@ $stacking-order: (
   }
 
   // Need an extra pixel to avoid a small color bleed from happening
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   cursor: pointer;
 
   .Dragger {
@@ -49,7 +43,7 @@ $stacking-order: (
   }
 
   .ColorLayer {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::after,
@@ -63,7 +57,7 @@ $stacking-order: (
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::before {
@@ -85,8 +79,8 @@ $stacking-order: (
   margin: 0 auto;
   will-change: transform;
   background: transparent;
-  border: var(--p-border-radius-base) solid var(--p-surface);
-  border-radius: 50%;
+  border: var(--p-border-radius-1) solid var(--p-surface);
+  border-radius: var(--p-border-radius-6);
   pointer-events: none;
 }
 
@@ -104,7 +98,7 @@ $huepicker-bottom-padding-start: calc(
   height: var(--pc-color-picker-size);
   width: var(--p-space-6);
   margin-left: var(--p-space-2);
-  border-width: var(--p-border-radius-base);
+  border-width: var(--p-border-radius-1);
   border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 

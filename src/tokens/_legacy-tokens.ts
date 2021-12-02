@@ -7,10 +7,6 @@ import type {TokenGroup} from './tokens';
  * deprecating any undesired tokens.
  */
 export const legacyTokens: TokenGroup = {
-  'border-radius-slim': '0.2rem',
-  'border-radius-base': '0.4rem',
-  'border-radius-wide': '0.8rem',
-  'border-radius-full': '50%',
   'card-shadow':
     '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
   'popover-shadow':
@@ -39,7 +35,6 @@ export const legacyTokens: TokenGroup = {
   'thin-border-subdued': '0.1rem solid var(--p-border-subdued)',
   'text-field-spinner-offset': '0.2rem',
   'text-field-focus-ring-offset': '-0.4rem',
-  'text-field-focus-ring-border-radius': '0.7rem',
   'button-group-item-spacing': '-0.1rem',
   'duration-100': '100ms',
   'duration-150': '150ms',

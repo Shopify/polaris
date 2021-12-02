@@ -7,7 +7,7 @@
   background: var(--p-surface);
   min-width: thumbnail-size(small);
   max-width: 100%;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   border: border('divider');
 
   &::after {

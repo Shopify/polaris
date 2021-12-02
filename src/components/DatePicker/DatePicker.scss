@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 $font-size: 12px;
-$range-end-border-radius: 30px;
 
 .DatePicker {
+  --pc-date-picker-range-end-border-radius: 30px;
   position: relative;
 }
 
@@ -39,7 +39,7 @@ $range-end-border-radius: 30px;
   background: transparent;
   margin: 0;
   padding: 0;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 }
 
 .DayCell-inRange {
@@ -54,7 +54,7 @@ $range-end-border-radius: 30px;
   padding: var(--p-space-2);
   background: transparent;
   border: none;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   outline: none;
   font-size: $font-size;
   text-align: center;
@@ -172,22 +172,26 @@ $range-end-border-radius: 30px;
 }
 
 .Day-firstInRange {
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   // stylelint-disable-next-line selector-max-class
   &.Day-hasRange,
   &.Day-hoverRight {
-    border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+    border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
+      var(--pc-date-picker-range-end-border-radius);
     // stylelint-disable-next-line selector-max-specificity, selector-max-class
     &::after {
-      border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+      border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
+        var(--pc-date-picker-range-end-border-radius);
     }
   }
 }
 
 .Day-lastInRange {
-  border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+  border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+    var(--pc-date-picker-range-end-border-radius) 0;
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+      var(--pc-date-picker-range-end-border-radius) 0;
   }
 }
 
@@ -196,12 +200,12 @@ $range-end-border-radius: 30px;
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1) 0 0 var(--p-border-radius-1);
   }
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
+    border-radius: 0 var(--p-border-radius-1) var(--p-border-radius-1) 0;
   }
 }
 
@@ -210,6 +214,7 @@ $range-end-border-radius: 30px;
 .Day-inRange:not(:hover) + .Day {
   // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+      var(--pc-date-picker-range-end-border-radius) 0;
   }
 }

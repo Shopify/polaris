@@ -38,6 +38,7 @@ const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   motion: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
+  shape: {},
   legacyTokens: {},
   spacing: {},
   typography: {},

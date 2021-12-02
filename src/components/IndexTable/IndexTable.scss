@@ -61,7 +61,7 @@ $loading-panel-height: 53px;
     background: var(--p-surface-highlight-subdued);
     padding: var(--p-space-2);
     padding-bottom: var(--p-space-1);
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
@@ -416,17 +416,17 @@ $loading-panel-height: 53px;
 }
 
 $scroll-bar-size: var(--p-space-2);
-$scroll-bar-border-radius: 4px;
 
 .ScrollBarContainer {
+  --pc-scroll-bar-container-border-radius: 4px;
   position: sticky;
   z-index: var(--pc-index-table-scroll-bar);
   bottom: 0;
   padding: var(--p-space-05);
   border-top: border('divider');
   background-color: var(--p-surface);
-  border-bottom-right-radius: var(--p-border-radius-base);
-  border-bottom-left-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-1);
+  border-bottom-left-radius: var(--p-border-radius-1);
 }
 
 .scrollBarContainerCondensed {
@@ -442,7 +442,7 @@ $scroll-bar-border-radius: 4px;
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: $scroll-bar-border-radius;
+  border-radius: var(--pc-scroll-bar-container-border-radius);
   background-color: transparent;
 }
 
@@ -454,7 +454,7 @@ $scroll-bar-border-radius: 4px;
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: $scroll-bar-border-radius;
+  border-radius: var(--pc-scroll-bar-container-border-radius);
   background-color: var(--p-border-neutral-subdued);
   transition: background-color var(--p-duration-100) ease-out;
 }

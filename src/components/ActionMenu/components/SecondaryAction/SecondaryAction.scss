@@ -10,7 +10,7 @@ $breakpoint: 768px;
     @include focus-ring($border-width: 1px);
     background: transparent !important;
     box-shadow: none !important;
-    border-radius: var(--p-border-radius-base) !important;
+    border-radius: var(--p-border-radius-1) !important;
     padding-left: var(--pc-secondary-action-button-spacing);
     padding-right: var(--pc-secondary-action-button-spacing);
     // stylelint-disable-next-line selector-max-specificity

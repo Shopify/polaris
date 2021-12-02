@@ -18,7 +18,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   width: 100%;
   background: var(--p-surface);
   box-shadow: var(--p-button-drop-shadow);
