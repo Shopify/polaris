@@ -26,6 +26,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Bumped `@shopify/postcss-plugin` to `v5.0.1` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
 - Bumped `postcss-loader` to `v4.2.0` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
 - Bumped `postcss-modules` to `v4.2.2` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
+- Bumped `node-sass` to `v6.0.1` ([#4783](https://github.com/Shopify/polaris-react/pull/4783))
+- Bumped `sass-loader` to `v10.1.1` ([#4783](https://github.com/Shopify/polaris-react/pull/4783))
 
 ### Code quality
 
