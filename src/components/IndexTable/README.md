@@ -1312,7 +1312,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <div style={{padding: '1.2rem 1.6rem'}}>
+        <div style={{padding: '.75rem 1rem'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
           </p>
