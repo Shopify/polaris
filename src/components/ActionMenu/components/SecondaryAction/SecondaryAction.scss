@@ -3,7 +3,7 @@
 $breakpoint: 768px;
 
 .SecondaryAction {
-  --pc-button-spacing: var(--p-space-3);
+  --pc-secondary-action-button-spacing: var(--p-space-3);
   // stylelint-disable declaration-no-important
   a,
   button {
@@ -11,8 +11,8 @@ $breakpoint: 768px;
     background: transparent !important;
     box-shadow: none !important;
     border-radius: var(--p-border-radius-1) !important;
-    padding-left: var(--pc-button-spacing);
-    padding-right: var(--pc-button-spacing);
+    padding-left: var(--pc-secondary-action-button-spacing);
+    padding-right: var(--pc-secondary-action-button-spacing);
     // stylelint-disable-next-line selector-max-specificity
     &:hover {
       background: var(--p-background-hovered) !important;

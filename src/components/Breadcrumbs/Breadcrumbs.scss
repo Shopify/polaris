@@ -52,11 +52,11 @@
 }
 
 .Icon {
-  --pc-icon-size: 20px;
+  --pc-breadcrumbs-icon-size: 20px;
   @include recolor-icon(var(--p-icon));
-  width: var(--pc-icon-size);
-  height: var(--pc-icon-size);
-  margin: calc(-0.5 * var(--pc-icon-size)) 0 calc(-0.5 * var(--pc-icon-size))
-    calc(-1 * var(--p-space2));
+  width: var(--pc-breadcrumbs-icon-size);
+  height: var(--pc-breadcrumbs-icon-size);
+  margin: calc(-0.5 * var(--pc-breadcrumbs-icon-size)) 0
+    calc(-0.5 * var(--pc-breadcrumbs-icon-size)) calc(-1 * var(--p-space2));
   margin: 0;
 }
