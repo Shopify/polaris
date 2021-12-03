@@ -2,6 +2,7 @@
 const path = require('path');
 
 const {testPages, getCurrentStoryIds} = require('@shopify/storybook-a11y-test');
+<<<<<<< HEAD
 
 (async () => {
   const iframePath = path.join(
@@ -19,6 +20,22 @@ const {testPages, getCurrentStoryIds} = require('@shopify/storybook-a11y-test');
     iframePath,
     storyIds,
   });
+=======
+
+const iframePath = path.join(
+  'file://',
+  __dirname,
+  '../build-internal/storybook/static/iframe.html',
+);
+
+(async () => {
+  const storyIds = await getCurrentStoryIds({
+    iframePath,
+    skippedStoryIds: ['playground-playground'],
+  });
+
+  const results = await testPages({iframePath, storyIds});
+>>>>>>> 424a8d6e1 (Fix a11y check)
 
   if (results.length) {
     console.error(`‼️  Accessibility violations found`);
