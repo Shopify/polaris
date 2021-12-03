@@ -197,7 +197,7 @@ $range-output-spacing: 16px;
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
   transition-property: transform;
   transition-duration: var(--p-duration-200);
   transition-timing-function: var(--p-ease);

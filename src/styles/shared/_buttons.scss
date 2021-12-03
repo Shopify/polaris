@@ -209,7 +209,7 @@
   padding: 2px 5px;
   margin: -2px -5px;
   background: var(--p-action-secondary-hovered);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
 }
 
 @mixin unstyled-button() {

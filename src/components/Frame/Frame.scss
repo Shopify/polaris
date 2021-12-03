@@ -99,7 +99,7 @@
   &:focus {
     @include focus-ring($style: focused);
     position: absolute;
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
     outline: none;
   }
 
