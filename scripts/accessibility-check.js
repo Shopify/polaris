@@ -1,21 +1,19 @@
 /* eslint-disable no-console */
 const path = require('path');
 
-const {getCurrentStoryIds, testPages} = require('@shopify/storybook-a11y-test');
+const {storybookA11yTest} = require('@shopify/storybook-a11y-test');
 
 (async () => {
-  const iframePath = path.join(
-    'file://',
-    __dirname,
-    '../build-internal/storybook/static/iframe.html',
-  );
-
-  const storyIds = await getCurrentStoryIds({
-    iframePath,
+  const options = {
+    iframePath: path.join(
+      'file://',
+      __dirname,
+      '../build-internal/storybook/static/iframe.html',
+    ),
     skippedStoryIds: ['playground-playground'],
-  });
+  };
 
-  const results = await testPages({iframePath, storyIds});
+  const results = await storybookA11yTest(options);
 
   if (results.length) {
     console.error(`‼️  Test failures found`);
