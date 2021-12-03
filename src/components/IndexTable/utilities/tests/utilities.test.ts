@@ -7,9 +7,9 @@ describe('#getTableHeadingsBySelector', function () {
 
   it('returns array when wrapper is passed', () => {
     const response = [{id: 'test'}];
-    const fakeElement = ({
+    const fakeElement = {
       querySelectorAll: () => response,
-    } as unknown) as HTMLElement;
+    } as unknown as HTMLElement;
 
     expect(getTableHeadingsBySelector(fakeElement, '')).toStrictEqual(response);
   });

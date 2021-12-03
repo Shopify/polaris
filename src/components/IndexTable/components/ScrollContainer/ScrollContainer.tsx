@@ -25,9 +25,8 @@ export function ScrollContainer({
     scrollableContainerRef.current.dispatchEvent(new Event('scroll'));
   }, [scrollableContainerRef]);
 
-  const [containerScroll, setContainerScroll] = useState<ScrollContextType>(
-    scrollDefaultContext,
-  );
+  const [containerScroll, setContainerScroll] =
+    useState<ScrollContextType>(scrollDefaultContext);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = useCallback(

@@ -28,11 +28,8 @@ describe('useIndexResourceState', () => {
     resources?: T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
-    const {
-      selectedResources,
-      allResourcesSelected,
-      handleSelectionChange,
-    } = useIndexResourceState(resources, options);
+    const {selectedResources, allResourcesSelected, handleSelectionChange} =
+      useIndexResourceState(resources, options);
 
     return (
       <TypedChild

@@ -98,8 +98,9 @@ function hotReloadComponentCheck(
   AnotherComponent: React.ComponentType<any>,
 ) {
   const componentName = AComponent.name;
-  const anotherComponentName = (AnotherComponent as React.StatelessComponent<any>)
-    .displayName;
+  const anotherComponentName = (
+    AnotherComponent as React.StatelessComponent<any>
+  ).displayName;
 
   return (
     AComponent === AnotherComponent ||

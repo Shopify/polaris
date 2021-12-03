@@ -30,10 +30,10 @@ export function TextField({
   const uniqueId = useUniqueId('ComboboxTextField');
   const textFieldId = useMemo(() => idProp || uniqueId, [uniqueId, idProp]);
 
-  const labelId = useMemo(() => labelID(idProp || uniqueId), [
-    uniqueId,
-    idProp,
-  ]);
+  const labelId = useMemo(
+    () => labelID(idProp || uniqueId),
+    [uniqueId, idProp],
+  );
 
   useEffect(() => {
     if (setTextFieldLabelId) setTextFieldLabelId(labelId);
