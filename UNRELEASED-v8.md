@@ -26,6 +26,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
 - Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
 - Removed unnecessary `--p-border-radius-` properties and moved border-radius custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
+- Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 
 ### New components
 
