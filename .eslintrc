@@ -28,7 +28,7 @@
         "allowBlockStart": false
       }
     ],
-    "babel/no-unused-expressions": "off",
+    "@babel/no-unused-expressions": "off",
     "import/named": "off",
     "import/no-default-export": ["error"],
     "react/button-has-type": "off",
@@ -74,7 +74,9 @@
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "jest/no-truthy-falsy": "off",
-        "@shopify/no-ancestor-directory-import": "off"
+        "@shopify/jsx-no-hardcoded-content": "off",
+        "@shopify/no-ancestor-directory-import": "off",
+        "@shopify/react-require-autocomplete": "off"
       }
     },
     {
@@ -87,7 +89,7 @@
       }
     },
     {
-      "files": ["playground/Playground.tsx"],
+      "files": ["playground/*.tsx"],
       "rules": {
         "react/prefer-stateless-function": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
