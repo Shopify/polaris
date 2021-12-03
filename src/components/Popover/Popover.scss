@@ -42,7 +42,7 @@ $vertical-motion-offset: rem(-5px);
 }
 
 .fullWidth {
-  margin: $visible-portion-of-arrow auto 0;
+  margin: $visible-portion-of-arrow auto 0 auto;
 
   .Content {
     max-width: none;
@@ -53,7 +53,7 @@ $vertical-motion-offset: rem(-5px);
   margin: spacing() spacing(tight) $visible-portion-of-arrow;
 
   &.fullWidth {
-    margin: 0 auto $visible-portion-of-arrow;
+    margin: 0 auto $visible-portion-of-arrow auto;
   }
 }
 
