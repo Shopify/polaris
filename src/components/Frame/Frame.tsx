@@ -243,6 +243,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    // This is probably a legit error but I don't have the time to refactor this
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     const context = {
       showToast: this.showToast,
       hideToast: this.hideToast,

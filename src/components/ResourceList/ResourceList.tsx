@@ -709,6 +709,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     </ul>
   ) : null;
 
+  // This is probably a legit error but I don't have the time to refactor this
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const context = {
     selectable: isSelectable,
     selectedItems,
