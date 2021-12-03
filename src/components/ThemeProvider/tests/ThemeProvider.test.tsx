@@ -222,7 +222,7 @@ describe('<ThemeProvider />', () => {
         true,
       ],
     ])(
-      'Inherits color scheme from parent where: %s',
+      'inherits color scheme from parent where: %s',
       (_: any, topLevelTheme: any, childTheme: any, expectedIsDark: any) => {
         const themeProvider = mount(
           <ThemeProvider theme={topLevelTheme}>

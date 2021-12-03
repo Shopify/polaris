@@ -4,21 +4,21 @@ describe('UniqueIdFactory', () => {
   it('returns unique IDs across multiple calls', () => {
     const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    expect(uniqueIdFactory.nextId('')).toStrictEqual('Polaris1');
-    expect(uniqueIdFactory.nextId('')).toStrictEqual('Polaris2');
-    expect(uniqueIdFactory.nextId('')).toStrictEqual('Polaris3');
+    expect(uniqueIdFactory.nextId('')).toBe('Polaris1');
+    expect(uniqueIdFactory.nextId('')).toBe('Polaris2');
+    expect(uniqueIdFactory.nextId('')).toBe('Polaris3');
 
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA1');
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA2');
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA3');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA1');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA2');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA3');
   });
 
   it('returns unique IDs across prefixes', () => {
     const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA1');
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA2');
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('PolarisA3');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA1');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA2');
+    expect(uniqueIdFactory.nextId('A')).toBe('PolarisA3');
   });
 
   it('can accept a custom factory', () => {
@@ -29,8 +29,8 @@ describe('UniqueIdFactory', () => {
 
     const uniqueIdFactory = new UniqueIdFactory(customIdGeneratorFactory);
 
-    expect(uniqueIdFactory.nextId('')).toStrictEqual('Custom101');
-    expect(uniqueIdFactory.nextId('')).toStrictEqual('Custom102');
-    expect(uniqueIdFactory.nextId('A')).toStrictEqual('CustomA101');
+    expect(uniqueIdFactory.nextId('')).toBe('Custom101');
+    expect(uniqueIdFactory.nextId('')).toBe('Custom102');
+    expect(uniqueIdFactory.nextId('A')).toBe('CustomA101');
   });
 });

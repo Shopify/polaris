@@ -201,6 +201,7 @@ describe('<Cell />', () => {
         });
       });
     });
+
     describe('when set to ascending', () => {
       it('renders an up caret Icon when table is not currently sorted by that column', () => {
         const cell = mountWithTable(

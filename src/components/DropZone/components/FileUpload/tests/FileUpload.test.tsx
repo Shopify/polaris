@@ -15,6 +15,7 @@ describe('<FileUpload />', () => {
     measuring: false,
     allowMultiple: true,
   };
+
   describe('measuring', () => {
     it('hides the FileUpload while measuring is true', () => {
       const fileUpload = mountWithApp(

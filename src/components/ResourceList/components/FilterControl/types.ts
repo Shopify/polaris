@@ -19,26 +19,26 @@ export enum FilterType {
   DateSelector,
 }
 
-export interface FilterBase<FilterKeys = Record<string, unknown>> {
+export interface FilterBase<FilterKeys = {[key: string]: unknown}> {
   label: string;
   key: keyof FilterKeys | string;
   operatorText?: string | Operator[];
   type: FilterType;
 }
 
-export interface FilterSelect<FilterKeys = Record<string, unknown>>
+export interface FilterSelect<FilterKeys = {[key: string]: unknown}>
   extends FilterBase<FilterKeys> {
   type: FilterType.Select;
   options: SelectOption[];
 }
 
-export interface FilterTextField<FilterKeys = Record<string, unknown>>
+export interface FilterTextField<FilterKeys = {[key: string]: unknown}>
   extends FilterBase<FilterKeys> {
   type: FilterType.TextField;
   textFieldType?: TextFieldProps['type'];
 }
 
-export interface FilterDateSelector<FilterKeys = Record<string, unknown>>
+export interface FilterDateSelector<FilterKeys = {[key: string]: unknown}>
   extends FilterBase<FilterKeys> {
   type: FilterType.DateSelector;
   minKey: string;
@@ -46,7 +46,7 @@ export interface FilterDateSelector<FilterKeys = Record<string, unknown>>
   dateOptionType?: 'past' | 'future' | 'full';
 }
 
-export type Filter<FilterKeys = Record<string, unknown>> =
+export type Filter<FilterKeys = {[key: string]: unknown}> =
   | FilterSelect<FilterKeys>
   | FilterTextField<FilterKeys>
   | FilterDateSelector<FilterKeys>;

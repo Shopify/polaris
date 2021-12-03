@@ -139,7 +139,7 @@ describe('<ResourceList />', () => {
       );
       expect(
         resourceList.find(BulkActions)!.props.paginatedSelectAllAction,
-      ).not.toBeUndefined();
+      ).toBeDefined();
     });
   });
 
