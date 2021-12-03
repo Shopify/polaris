@@ -133,13 +133,13 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            key="NavContent"
             {...mobileNavAttributes}
             aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
             id={APP_FRAME_NAV}
-            key="NavContent"
             hidden={mobileNavHidden}
           >
             {navigation}

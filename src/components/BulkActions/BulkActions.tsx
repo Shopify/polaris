@@ -336,9 +336,9 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
               }
               return (
                 <BulkActionButton
+                  key={index}
                   disabled={disabled}
                   {...action}
-                  key={index}
                   handleMeasurement={this.handleMeasurement}
                 />
               );

@@ -20,8 +20,8 @@ export function List({
   const tabs = disclosureTabs.map(({id, content, ...tabProps}, index) => {
     return (
       <Item
-        {...tabProps}
         key={id}
+        {...tabProps}
         id={id}
         focused={index === focusIndex}
         onClick={onClick.bind(null, id)}
