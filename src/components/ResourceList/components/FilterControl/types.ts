@@ -19,34 +19,34 @@ export enum FilterType {
   DateSelector,
 }
 
-export interface FilterBase<FilterKeys = {[key: string]: unknown}> {
+export interface FilterBase<TFilterKeys = {[key: string]: unknown}> {
   label: string;
-  key: keyof FilterKeys | string;
+  key: keyof TFilterKeys | string;
   operatorText?: string | Operator[];
   type: FilterType;
 }
 
-export interface FilterSelect<FilterKeys = {[key: string]: unknown}>
-  extends FilterBase<FilterKeys> {
+export interface FilterSelect<TFilterKeys = {[key: string]: unknown}>
+  extends FilterBase<TFilterKeys> {
   type: FilterType.Select;
   options: SelectOption[];
 }
 
-export interface FilterTextField<FilterKeys = {[key: string]: unknown}>
-  extends FilterBase<FilterKeys> {
+export interface FilterTextField<TFilterKeys = {[key: string]: unknown}>
+  extends FilterBase<TFilterKeys> {
   type: FilterType.TextField;
   textFieldType?: TextFieldProps['type'];
 }
 
-export interface FilterDateSelector<FilterKeys = {[key: string]: unknown}>
-  extends FilterBase<FilterKeys> {
+export interface FilterDateSelector<TFilterKeys = {[key: string]: unknown}>
+  extends FilterBase<TFilterKeys> {
   type: FilterType.DateSelector;
   minKey: string;
   maxKey: string;
   dateOptionType?: 'past' | 'future' | 'full';
 }
 
-export type Filter<FilterKeys = {[key: string]: unknown}> =
-  | FilterSelect<FilterKeys>
-  | FilterTextField<FilterKeys>
-  | FilterDateSelector<FilterKeys>;
+export type Filter<TFilterKeys = {[key: string]: unknown}> =
+  | FilterSelect<TFilterKeys>
+  | FilterTextField<TFilterKeys>
+  | FilterDateSelector<TFilterKeys>;

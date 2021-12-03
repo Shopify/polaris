@@ -261,8 +261,8 @@ describe('<Cell />', () => {
   });
 });
 
-function mountWithTable<P>(node: ReactElement) {
-  return mountWithApp<P>(
+function mountWithTable<T>(node: ReactElement) {
+  return mountWithApp<T>(
     <table>
       <thead />
       <tbody>
