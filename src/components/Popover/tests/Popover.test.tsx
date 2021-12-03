@@ -334,8 +334,9 @@ describe('<Popover />', () => {
 
     popover.find(PopoverOverlay)!.trigger('onClose');
     const activatorTarget = popover.find('button', {id: activatorId})!.domNode;
-    const nextElementTarget = popover.find('button', {id: nextElementId})!
-      .domNode;
+    const nextElementTarget = popover.find('button', {
+      id: nextElementId,
+    })!.domNode;
 
     expect(document.activeElement).not.toBe(activatorTarget);
     expect(document.activeElement).not.toBe(nextElementTarget);

@@ -168,16 +168,15 @@ describe('<IndexTable>', () => {
       );
 
       const scrollContainer = index.find(ScrollContainer)!;
-      scrollContainer.prop(
-        'scrollableContainerRef',
-      ).current!.scrollLeft = updatedScrollLeft;
+      scrollContainer.prop('scrollableContainerRef').current!.scrollLeft =
+        updatedScrollLeft;
       scrollContainer!.trigger('onScroll');
 
       const stickyHeaderElement = index.find('div', {
         className: 'StickyTableHeadings',
       })!;
-      const stickyHeaderElementScrollLeft = stickyHeaderElement.domNode!
-        .scrollLeft;
+      const stickyHeaderElementScrollLeft =
+        stickyHeaderElement.domNode!.scrollLeft;
 
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
     });
@@ -249,9 +248,10 @@ describe('<IndexTable>', () => {
       );
 
       const afterInitialMounts = index.findAll(AfterInitialMount);
-      const scrollbar = afterInitialMounts[
-        afterInitialMounts.length - 1
-      ].find('div', {className: 'ScrollBar'})!;
+      const scrollbar = afterInitialMounts[afterInitialMounts.length - 1].find(
+        'div',
+        {className: 'ScrollBar'},
+      )!;
       const scrollContainer = index.find(ScrollContainer)!;
 
       scrollbar.domNode!.scrollLeft = updatedScrollLeft;

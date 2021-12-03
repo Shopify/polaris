@@ -32,12 +32,10 @@ export function FilterCreator({
     setFalse: setPopoverActiveFalse,
   } = useToggle(false);
   const [selectedFilter, setSelectedFilter] = useState<Filter>();
-  const [selectedFilterKey, setSelectedFilterKey] = useState<
-    AppliedFilter['key']
-  >();
-  const [selectedFilterValue, setSelectedFilterValue] = useState<
-    AppliedFilter['value']
-  >();
+  const [selectedFilterKey, setSelectedFilterKey] =
+    useState<AppliedFilter['key']>();
+  const [selectedFilterValue, setSelectedFilterValue] =
+    useState<AppliedFilter['value']>();
   const i18n = useI18n();
   const node = useRef<HTMLButtonElement | null>(null);
 

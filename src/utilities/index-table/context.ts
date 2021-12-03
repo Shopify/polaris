@@ -22,6 +22,5 @@ export const scrollDefaultContext = {
   canScrollRight: false,
 };
 
-export const ScrollContext = createContext<ScrollContextType>(
-  scrollDefaultContext,
-);
+export const ScrollContext =
+  createContext<ScrollContextType>(scrollDefaultContext);

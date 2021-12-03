@@ -94,12 +94,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {
-      skipFocused,
-      loadingStack,
-      toastMessages,
-      showContextualSaveBar,
-    } = this.state;
+    const {skipFocused, loadingStack, toastMessages, showContextualSaveBar} =
+      this.state;
     const {
       children,
       navigation,

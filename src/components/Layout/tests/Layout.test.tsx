@@ -56,9 +56,8 @@ describe('<Layout />', () => {
         <Layout.AnnotatedSection description={description} />,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
         description,
@@ -70,9 +69,8 @@ describe('<Layout />', () => {
         <Layout.AnnotatedSection description={<MyComponent />} />,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer).toContainReactComponent(
         MyComponent,
@@ -86,9 +84,8 @@ describe('<Layout />', () => {
         </Layout.AnnotatedSection>,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotatedSection).toContainReactComponent(TextContainer);
       expect(annotedDescriptionTextContainer).not.toContainReactComponent(
