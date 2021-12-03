@@ -2,9 +2,9 @@ import type {TokenGroup} from './tokens';
 
 export const shape: TokenGroup = {
   'border-radius-05': '2px',
-  'border-radius-base': '4px',
+  'border-radius-base': '3px',
   'border-radius-1': '4px',
-  'border-radius-large': '6px',
+  'border-radius-large': '4px',
   'border-radius-2': '8px',
   'border-radius-3': '12px',
   'border-radius-4': '16px',
