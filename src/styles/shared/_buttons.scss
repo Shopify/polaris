@@ -138,6 +138,7 @@
     border: border-width() solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-pressed);
+
     &::after {
       box-shadow: none;
     }

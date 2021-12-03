@@ -48,6 +48,7 @@ $resource-list-item-variables: (
 
   &:hover {
     background-color: var(--p-surface-hovered);
+
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {

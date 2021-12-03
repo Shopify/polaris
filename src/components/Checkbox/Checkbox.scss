@@ -21,6 +21,7 @@
     + .Backdrop {
       @include control-backdrop(active);
     }
+
     ~ .Icon {
       transition: opacity var(--p-duration-1-5-0) var(--p-ease),
         transform var(--p-duration-1-5-0) var(--p-ease);
@@ -38,6 +39,7 @@
   &:disabled:checked {
     + .Backdrop {
       background: var(--p-border-disabled);
+
       &::before {
         background: var(--p-border-disabled);
       }
@@ -82,6 +84,7 @@
   .Backdrop {
     @include control-backdrop(error);
   }
+
   .Input:checked,
   .Input:active,
   .Input.Input-indeterminate {

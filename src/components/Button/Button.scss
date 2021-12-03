@@ -449,6 +449,7 @@ $stacking-order: (
     &:active {
       background-color: transparent;
       border-color: currentColor;
+
       &::before {
         opacity: 0.07;
       }
@@ -521,12 +522,14 @@ $stacking-order: (
   .Button::after {
     border-radius: 0;
   }
+
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
     border-top-left-radius: var(--p-border-radius-base);
     border-bottom-left-radius: var(--p-border-radius-base);
   }
+
   > :last-child .Button,
   > :last-child .Button::after {
     border-radius: 0;

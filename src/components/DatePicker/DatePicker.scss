@@ -186,6 +186,7 @@ $range-end-border-radius: rem(30px);
 
 .Day-lastInRange {
   border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+
   &::after {
     border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
   }

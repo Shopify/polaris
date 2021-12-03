@@ -43,15 +43,19 @@ $sheet-desktop-width: rem(380px);
   transition: transform duration('slow') easing('base');
   transform-origin: bottom;
 }
+
 .enterBottom {
   transform: translateY(100%);
 }
+
 .enterBottomActive {
   transform: translateY(0%);
 }
+
 .exitBottom {
   transform: translateY(0%);
 }
+
 .exitBottomActive {
   transform: translateY(100%);
 }
@@ -61,15 +65,19 @@ $sheet-desktop-width: rem(380px);
   transition: transform duration('slow') easing('base');
   transform-origin: right;
 }
+
 .enterRight {
   transform: translateX(100%);
 }
+
 .enterRightActive {
   transform: translateX(0%);
 }
+
 .exitRight {
   transform: translateX(0%);
 }
+
 .exitRightActive {
   transform: translateX(100%);
 }

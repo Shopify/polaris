@@ -102,6 +102,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tab-selected {
   @include text-emphasis-normal;
+
   &:focus .Title {
     @include high-contrast-outline($border-width: border-width(thicker));
     // stylelint-disable-next-line  selector-max-specificity
