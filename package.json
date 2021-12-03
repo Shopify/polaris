@@ -43,6 +43,9 @@
       ]
     }
   },
+  "engines": {
+    "node": ">=16.13.0"
+  },
   "scripts": {
     "lint": "loom lint",
     "format": "loom lint --fix",
@@ -112,7 +115,7 @@
     "@storybook/addon-essentials": "^6.3.7",
     "@storybook/react": "^6.3.7",
     "@types/lodash": "^4.14.138",
-    "@types/node": "^12.7.5",
+    "@types/node": "^16.11.11",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
