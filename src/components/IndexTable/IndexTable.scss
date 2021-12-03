@@ -508,8 +508,8 @@ $scroll-bar-border-radius: rem(4px);
   display: flex;
   align-items: flex-start;
   width: 100%;
-  min-height: 5.6rem;
-  padding: 1rem spacing();
+  min-height: 56px;
+  padding: 10px spacing();
   background-color: var(--p-surface);
 
   &.unselectable {
@@ -523,7 +523,7 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .StickyTableHeader-condensed {
-  padding: 1.6rem spacing() 0.8rem;
+  padding: 16px spacing() 8px;
 }
 
 .ScrollBarContent {
