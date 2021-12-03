@@ -1923,13 +1923,12 @@
     common-ancestor-path "^1.0.1"
     rollup-plugin-node-externals "^2.2.0"
 
-"@shopify/loom-plugin-eslint@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-eslint/-/loom-plugin-eslint-1.0.0.tgz#983edb464f722d9aaceac665f7badda5c30d380b"
-  integrity sha512-0nY3vPQI2VHDfqXfLjVd+11TCn5TisOl4IfAQa69a+Bl50B59ag0kmqgs1gvXLDN2bamHVmLKCr63/j+ZT3h/Q==
+"@shopify/loom-plugin-eslint@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-eslint/-/loom-plugin-eslint-2.0.0.tgz#135a30fded12d6e7f325529dfeba5e09d08ff272"
+  integrity sha512-8Uf3pyS1iGIMEh4xjQOBlwVAnV+0FOUPvlLEe2dITCqi1zO0VzfRj0pT1lsQwkwyhUebqNXEPho2ARsybwCp7Q==
   dependencies:
-    "@shopify/loom" "^1.0.0"
-    eslint "^7.0.0"
+    "@shopify/loom" "^1.0.1"
 
 "@shopify/loom-plugin-jest@^1.0.0":
   version "1.0.0"
@@ -1941,13 +1940,12 @@
     jest "^27.2.4"
     jest-watch-typeahead "^1.0.0"
 
-"@shopify/loom-plugin-prettier@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-prettier/-/loom-plugin-prettier-1.0.0.tgz#af76323c5be54be4d095eafcc6a22d54448844ff"
-  integrity sha512-20I/IgmwvFK99noomGyLIBtPbwRm71jhGzU3LgJAvdZ7NVA64eymdZxc/fgdlwQuBe02psX/KFyp177MCGl2SQ==
+"@shopify/loom-plugin-prettier@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-prettier/-/loom-plugin-prettier-2.0.0.tgz#fc13bdd6b5c69735517f9fac3fa132516bc9ef2f"
+  integrity sha512-zs+bShodNV9Qx8IyVPLbMtvO3uXhh8ARWGGbAQQQX51Brp4q5SgtUQ1hZWVfsUiMjh++YMMiFtt0+Xcx/Rp41g==
   dependencies:
-    "@shopify/loom" "^1.0.0"
-    prettier "^2.0.0"
+    "@shopify/loom" "^1.0.1"
 
 "@shopify/loom-plugin-rollup@^1.0.0":
   version "1.0.0"
@@ -1957,13 +1955,12 @@
     "@shopify/loom" "^1.0.0"
     rollup "^2.48.0"
 
-"@shopify/loom-plugin-stylelint@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-stylelint/-/loom-plugin-stylelint-1.0.0.tgz#ff1a9b541035c6f70b3efd339f025bac85f074fa"
-  integrity sha512-FXgNdF729w37LCWkYzBTO4sRN3rY60QpvLqDF+FHKDluNGXk1r7wSmzSYFFIEqaqxab+9ZWijBGzjm20N7joxg==
+"@shopify/loom-plugin-stylelint@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-stylelint/-/loom-plugin-stylelint-2.0.0.tgz#8716daca516473ef3ee965d64b6afba9a013493c"
+  integrity sha512-LSaIlZAM8hucqt5B6Q559Myq0wuWkOmTNvFr0ESrWTQcEXNHbxfJx99QwqZitNB1XyVpR8BJsDOw3VAlFm2uzA==
   dependencies:
-    "@shopify/loom" "^1.0.0"
-    stylelint "^13.10.0"
+    "@shopify/loom" "^1.0.1"
 
 "@shopify/loom-plugin-typescript@^1.0.0":
   version "1.0.0"
@@ -1973,10 +1970,10 @@
     "@shopify/loom" "^1.0.0"
     typescript "^4.3.5"
 
-"@shopify/loom@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom/-/loom-1.0.0.tgz#c458c5e464f11ed85bb7936fa2fc895d9fc2b138"
-  integrity sha512-o33omY+spU02hj+5vaZjEwaHHETeswqAuNLFjoRhhB/g7GL5yttmssIpg3NnhvHLpqGH4y+Wa1EjkqvbQX2c0w==
+"@shopify/loom@^1.0.0", "@shopify/loom@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@shopify/loom/-/loom-1.0.1.tgz#d56a50570f3e445ac40ad1962a6f0a5a67b28a12"
+  integrity sha512-FpL77FrqlYYXUbx04ELQQmXWN4+hZ9aYwmxCVWcH0CR9bOuLSizYiiAjNhp1/fB6IJjOGctofT+NJ6xEQ/DYlQ==
   dependencies:
     "@babel/preset-env" "^7.14.5"
     "@babel/preset-typescript" "^7.14.5"
@@ -6752,7 +6749,7 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
-eslint@^7.0.0:
+eslint@^7.32.0:
   version "7.32.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.32.0.tgz#c6d328a14be3fb08c8d1d21e12c02fdb7a2a812d"
   integrity sha512-VHZ8gX+EDfz+97jGcgyGCyRia/dPOd6Xh9yPv8Bl1+SoaIwD+a/vlrOmGRUyOYu7MwUhc7CxqeaDZU13S4+EpA==
@@ -11901,15 +11898,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.0.0:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
-  integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
-
 prettier@~2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
+prettier@~2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
+  integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
 
 pretty-error@^2.1.1:
   version "2.1.1"
@@ -14023,7 +14020,7 @@ stylelint-scss@^3.16.0:
     postcss-selector-parser "^6.0.2"
     postcss-value-parser "^4.1.0"
 
-stylelint@^13.10.0:
+stylelint@^13.13.1:
   version "13.13.1"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.13.1.tgz#fca9c9f5de7990ab26a00f167b8978f083a18f3c"
   integrity sha512-Mv+BQr5XTUrKqAXmpqm6Ddli6Ief+AiPZkRsIrAoUKFuq/ElkUh9ZMYxXD0iQNZ5ADghZKLOWz1h7hTClB7zgQ==
