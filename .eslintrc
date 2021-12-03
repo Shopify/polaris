@@ -74,6 +74,7 @@
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "jest/no-truthy-falsy": "off",
+        "react/jsx-no-constructed-context-values": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
         "@shopify/no-ancestor-directory-import": "off",
         "@shopify/react-require-autocomplete": "off"
