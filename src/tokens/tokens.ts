@@ -52,10 +52,10 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  colorSchemes,
-  legacyTokens,
-  motion,
+  // colorSchemes,
+  // legacyTokens,
+  // motion,
   spacing,
-  typography,
-  zIndex,
+  // typography,
+  // zIndex,
 };

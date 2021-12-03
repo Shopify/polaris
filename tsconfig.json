@@ -14,5 +14,19 @@
       "tests/*": ["./tests/*"]
     }
   },
-  "include": ["./config/typescript", "./src", "./tests", "./playground"]
+  "include": ["./config/typescript", "./src", "./tests", "./playground"],
+  "ts-node": {
+    // It is faster to skip typechecking.
+    // Remove if you want ts-node to do typechecking.
+    "transpileOnly": true,
+
+    "files": true,
+
+    "compilerOptions": {
+      "module": "commonjs"
+      // compilerOptions specified here will override those declared below,
+      // but *only* in ts-node.  Useful if you want ts-node and tsc to use
+      // different options with a single tsconfig.json.
+    }
+  },
 }
