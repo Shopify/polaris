@@ -408,11 +408,11 @@ $stacking-order: (
   }
 
   &.plain {
-    // stylelint-disable selector-max-class, max-nesting-depth
+    // stylelint-disable selector-max-class
     .Text:not(.removeUnderline) {
       text-decoration: underline;
     }
-    // stylelint-enable selector-max-class, max-nesting-depth
+    // stylelint-enable selector-max-class
   }
 
   &.outline {
@@ -466,7 +466,6 @@ $stacking-order: (
 
     &:hover,
     &:active {
-      // stylelint-disable-next-line max-nesting-depth
       &::before {
         opacity: 0.05;
       }
@@ -516,7 +515,7 @@ $stacking-order: (
     border-bottom-left-radius: 0;
   }
 }
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-disable selector-max-combinators, selector-max-specificity
 [data-buttongroup-segmented='true'] {
   .Button,
   .Button::after {
@@ -560,4 +559,4 @@ $stacking-order: (
     @include button-full-width;
   }
 }
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-enable selector-max-combinators, selector-max-specificity

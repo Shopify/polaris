@@ -5,7 +5,7 @@
   margin: var(--p-choice-margin);
 }
 
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+// stylelint-disable selector-max-specificity, selector-max-class
 .Input {
   @include visually-hidden;
 
@@ -46,7 +46,7 @@
     }
   }
 }
-// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
+// stylelint-enable selector-max-specificity, selector-max-class
 
 .Backdrop {
   @include control-backdrop;
@@ -75,7 +75,7 @@
   }
 }
 
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators
 .error {
   .Icon {
     @include recolor-icon(var(--p-icon-on-critical));
@@ -93,4 +93,4 @@
     }
   }
 }
-// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
+// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators

@@ -23,9 +23,6 @@ $stacking-order: (
   display: flex;
 }
 
-// stylelint-disable selector-max-class
-// stylelint-disable selector-max-combinators
-
 .MainColor {
   @include checkers;
   position: relative;

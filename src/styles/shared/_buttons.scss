@@ -180,14 +180,12 @@
       background: var(--p-surface-critical-subdued);
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.disabled {
       border: border-width('base') solid var(--p-border-critical-disabled);
       background: transparent;
       color: var(--p-interactive-critical-disabled);
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: var(--p-surface-critical-subdued);
       box-shadow: border-width('base') solid var(--p-border-critical);
