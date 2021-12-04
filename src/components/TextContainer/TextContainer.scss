@@ -16,23 +16,5 @@
 }
 
 .spacingLoose {
-  --pc-text-container-spacing: var(--p-space-2);
-}
-
-.invalid-custom-vars {
-  --p-these-vars-should-be-auto-generated: test;
-  --this-should-have-a-pc-prefix: test;
-}
-
-.invalid-var-value {
-  width: var(--p-space-33);
-  width: var(--p-spacez-3);
-  width: var(--invalid-1) var(--invalid-2);
-}
-
-.test-short-hands {
-  border: 1px solid var(--p-space-2);
-  border: var(--p-space-2) solid var(--p-space-2);
-  border: var(--p-space-2) solid var(--p-space-2);
-  // border: 1px solid var(--pc-local-var);
+  --pc-text-container-spacing: var(--p-space-5);
 }

@@ -64,7 +64,7 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static",
-    "check-styles": "ts-node ./scripts/stylelint.ts"
+    "check-script-types": "tsc -p scripts/tsconfig.json"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.10.0",
@@ -158,8 +158,11 @@
   ],
   "prettier": "@shopify/prettier-config",
   "stylelint": {
+    "customSyntax": "postcss-scss",
+    "plugins": "./scripts/stylelint/plugins/custom-properties-allowed-list",
     "extends": [
-      "@shopify/stylelint-plugin/prettier"
+      "@shopify/stylelint-plugin/prettier",
+      "./scripts/stylelint/config"
     ]
   },
   "size-limit": [

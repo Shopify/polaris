@@ -11,3 +11,4 @@ node_modules
 index.esnext
 index.js
 index.mjs
+!scripts/**/index.js
