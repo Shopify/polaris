@@ -9,6 +9,42 @@ The purpose of this plugin is to ensure that we're following our established con
 
 ## How to use
 
+Options:
+
+```ts
+interface PrimaryOptions {
+  /**
+   * A list of regular expressions or string literals that match custom properties
+   * that are allowed to be used.
+   */
+  allowedProperties: (string | RegExp)[];
+  /**
+   * A map of properties and their allowed custom properties represented as a list
+   * of regular expressions or string literals.
+   */
+  allowedValues: {[property: string]: (string | RegExp)[]};
+}
+```
+
+e.x. How to configure
+
+```js
+const stylelintConfig = {
+  rules: {
+    '@shopify/custom-properties-allowed-list': {
+      allowedProperties: ['--pc-.+'],
+      allowedValues: {
+        width: ['--p-space-0', '--p-space-1' /* etc... */],
+        '/.+/': ['--pc-.+', '--p-space-0', '--p-space-1' /* etc... */],
+      },
+    },
+  },
+};
+```
+
+> Note: Property keys for `allowedValues` are evaluated in order. Please ensure that you
+> order your property keys from most specific to least specific.
+
 :warning: Please note that we're still working out some of the kinks. To run this plugin:
 
 ```
