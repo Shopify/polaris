@@ -1,4 +1,5 @@
 import {utils, createPlugin} from 'stylelint';
+import valueParser from 'postcss-value-parser';
 
 import {
   vendor,
@@ -17,14 +18,16 @@ interface PrimaryOptions {
   allowedValues: {[property: string]: AllowedPatterns};
 }
 
+interface InvalidOptions {
+  invalidProperties: string[];
+  invalidValues: string[];
+}
+
 export const customPropertiesAllowedListPlugin = createPlugin(
   ruleName,
   (primary: PrimaryOptions) => {
     return (root, result) => {
-      const invalidOptions: {
-        invalidProperties: string[];
-        invalidValues: string[];
-      } = {
+      const invalidOptions: InvalidOptions = {
         invalidProperties: [],
         invalidValues: [],
       };
@@ -34,41 +37,13 @@ export const customPropertiesAllowedListPlugin = createPlugin(
         ruleName,
         {
           actual: primary.allowedProperties,
-          possible: (option) => {
-            const allowedProperties = option as PrimaryOptions['allowedProperties'];
-
-            const [isValid, invalidPatterns] = validateAllowedOptions(
-              allowedProperties,
-            );
-
-            invalidOptions.invalidProperties = invalidPatterns;
-
-            return isValid;
-          },
+          possible: (options) =>
+            validateAllowedPropertiesOption(options, invalidOptions),
         },
         {
           actual: primary.allowedValues,
-          possible: (option) => {
-            const allowedValues = option as PrimaryOptions['allowedValues'];
-
-            let isValid = true;
-
-            Object.entries(allowedValues).forEach(([property, values]) => {
-              const [isValidValues, invalidPatterns] = validateAllowedOptions(
-                values,
-              );
-
-              if (isString(property) && isValidValues) return;
-
-              invalidOptions.invalidValues.push(
-                `${property}: [${invalidPatterns.join(', ')}]`,
-              );
-
-              isValid = false;
-            });
-
-            return isValid;
-          },
+          possible: (options) =>
+            validateAllowedValuesOption(options, invalidOptions),
         },
       );
 
@@ -123,7 +98,7 @@ function validateCustomPropertyValues(
   prop: string,
   value: string,
 ) {
-  const invalidValues = [];
+  const invalidValues: string[] = [];
 
   const unprefixedProp = vendor.unprefixed(prop);
 
@@ -138,17 +113,15 @@ function validateCustomPropertyValues(
 
   if (!allowedValues.length) return;
 
-  const customPropertyRegex = /--[^),\s\n]+/g;
-
-  let match;
-
-  while ((match = customPropertyRegex.exec(value)) !== null) {
-    const customProperty = match[0];
-
-    if (!matchesStringOrRegExp(customProperty, allowedValues)) {
-      invalidValues.push(customProperty);
+  valueParser(value).walk((node) => {
+    if (
+      node.type === 'word' &&
+      isCustomProperty(node.value) &&
+      !matchesStringOrRegExp(node.value, allowedValues)
+    ) {
+      invalidValues.push(node.value);
     }
-  }
+  });
 
   if (!invalidValues.length) return;
 
@@ -189,4 +162,40 @@ function validateAllowedOptions(allowedArray: AllowedPatterns) {
   });
 
   return [isValid, invalidPatterns] as const;
+}
+
+function validateAllowedPropertiesOption(
+  option: unknown,
+  invalidOptions: InvalidOptions,
+) {
+  const allowedProperties = option as PrimaryOptions['allowedProperties'];
+
+  const [isValid, invalidPatterns] = validateAllowedOptions(allowedProperties);
+
+  invalidOptions.invalidProperties = invalidPatterns;
+
+  return isValid;
+}
+
+function validateAllowedValuesOption(
+  option: unknown,
+  invalidOptions: InvalidOptions,
+) {
+  const allowedValues = option as PrimaryOptions['allowedValues'];
+
+  let isValid = true;
+
+  Object.entries(allowedValues).forEach(([property, values]) => {
+    const [isValidValues, invalidPatterns] = validateAllowedOptions(values);
+
+    if (isString(property) && isValidValues) return;
+
+    invalidOptions.invalidValues.push(
+      `${property}: [${invalidPatterns.join(', ')}]`,
+    );
+
+    isValid = false;
+  });
+
+  return isValid;
 }

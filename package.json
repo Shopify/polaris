@@ -131,6 +131,7 @@
     "postcss-loader": "^4.2.0",
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
+    "postcss-value-parser": "^4.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
