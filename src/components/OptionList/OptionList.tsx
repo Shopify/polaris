@@ -13,6 +13,8 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Option} from './components';
 import styles from './OptionList.scss';
 
+type Alignment = 'top' | 'center' | 'bottom';
+
 export interface OptionListProps {
   /** A unique identifier for the option list */
   id?: string;
@@ -30,6 +32,8 @@ export interface OptionListProps {
   selected: string[];
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
+  /** Vertically align child content to the center, top, or bottom.  */
+  verticalAlign?: Alignment;
   /** Callback when selection is changed */
   onChange(selected: string[]): void;
 }
@@ -42,6 +46,7 @@ export function OptionList({
   allowMultiple,
   role,
   optionRole,
+  verticalAlign,
   onChange,
   id: idProp,
 }: OptionListProps) {
@@ -105,6 +110,7 @@ export function OptionList({
                 onClick={handleClick}
                 select={isSelected}
                 allowMultiple={allowMultiple}
+                verticalAlign={verticalAlign}
                 role={optionRole}
               />
             );
