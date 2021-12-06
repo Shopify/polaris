@@ -233,7 +233,6 @@ $spinner-size: rem(20px);
 // We need pretty high specificity to do the descendant selectors
 // onto the text, which needs to be the relative positioned wrapper
 // so that the borders/ backgrounds do not extend outside of it.
-// stylelint-disable selector-max-specificity
 
 .SecondaryAction {
   @include unstyled-button;

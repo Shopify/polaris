@@ -13,11 +13,11 @@ $button-spacing: rem(12px);
     border-radius: var(--p-border-radius-base) !important;
     padding-left: $button-spacing;
     padding-right: $button-spacing;
-    // stylelint-disable-next-line selector-max-specificity
+
     &:hover {
       background: var(--p-background-hovered) !important;
     }
-    // stylelint-disable-next-line selector-max-specificity
+
     &:active {
       background: var(--p-background-pressed) !important;
     }

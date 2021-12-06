@@ -68,7 +68,7 @@ $range-end-border-radius: rem(30px);
   }
 
   @include focus-ring;
-  // stylelint-disable-next-line selector-max-specificity
+
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
@@ -173,11 +173,11 @@ $range-end-border-radius: rem(30px);
 
 .Day-firstInRange {
   border-radius: var(--p-border-radius-base);
-  // stylelint-disable-next-line selector-max-class
+
   &.Day-hasRange,
   &.Day-hoverRight {
     border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
+
     &::after {
       border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
     }
@@ -186,6 +186,7 @@ $range-end-border-radius: rem(30px);
 
 .Day-lastInRange {
   border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+
   &::after {
     border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
   }
@@ -194,21 +195,20 @@ $range-end-border-radius: rem(30px);
 .Week {
   margin-bottom: rem(2px);
 
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
     border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
   }
 
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
     border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
   }
 }
 
-// stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
 .Day-inRange,
 .Day-inRange:not(:hover) + .Day {
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   &::after {
     border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
   }

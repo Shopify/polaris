@@ -73,6 +73,7 @@ $context-control-expand-after: 1400px;
   &.focused:active {
     background-color: var(--p-surface-pressed);
   }
+
   &:hover {
     background-color: var(--p-surface-hovered);
   }

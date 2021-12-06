@@ -236,6 +236,7 @@ $skip-vertical-offset: rem(10px);
   &.focused {
     pointer-events: all;
     opacity: 1;
+
     > a {
       @include focus-ring($style: 'focused');
     }

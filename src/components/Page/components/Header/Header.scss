@@ -64,7 +64,7 @@ $action-menu-rollup-computed-width: rem(40px);
     // stylelint-disable declaration-no-important
     border: 1px solid var(--p-border-neutral-subdued) !important;
     box-shadow: none !important;
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+
     &:hover,
     &:active,
     &:focus {
@@ -122,7 +122,6 @@ $action-menu-rollup-computed-width: rem(40px);
 .ActionMenuWrapper {
   margin-top: 0;
 
-  // stylelint-disable-next-line selector-max-class
   .mobileView & {
     position: absolute;
     top: spacing(loose) + (control-height() / 4);
@@ -176,7 +175,6 @@ $action-menu-rollup-computed-width: rem(40px);
   // Necessary for flex to realize this container doesn't want to wrap
   white-space: nowrap;
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .noBreadcrumbs & {
     @include breakpoint-before($mobile-layout) {
       margin-left: 0;
@@ -235,6 +233,7 @@ $action-menu-rollup-computed-width: rem(40px);
     @include condensed-layout;
   }
 }
+
 .mediumTitle.noBreadcrumbs {
   // stylelint-disable-next-line selector-max-class
   .TitleWrapper {

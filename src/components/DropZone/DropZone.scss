@@ -48,7 +48,6 @@ $dropzone-stacking-order: (
   }
 
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
     }
@@ -78,9 +77,7 @@ $dropzone-stacking-order: (
     }
   }
 
-  // stylelint-disable-next-line selector-max-specificity
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
       @include set-border-radius;
@@ -159,7 +156,6 @@ $dropzone-stacking-order: (
 
 .focused {
   &:not(.isDisabled) {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     .Container {
       @include focus-ring($style: 'focused');
     }
