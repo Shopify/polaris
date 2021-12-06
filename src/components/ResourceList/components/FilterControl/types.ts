@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import type {SelectOption} from '../../../Select';
 import type {TextFieldProps} from '../../../TextField';
 
@@ -19,26 +20,26 @@ export enum FilterType {
   DateSelector,
 }
 
-export interface FilterBase<TFilterKeys = {[key: string]: unknown}> {
+export interface FilterBase<TFilterKeys = Record<string, unknown>> {
   label: string;
   key: keyof TFilterKeys | string;
   operatorText?: string | Operator[];
   type: FilterType;
 }
 
-export interface FilterSelect<TFilterKeys = {[key: string]: unknown}>
+export interface FilterSelect<TFilterKeys = Record<string, unknown>>
   extends FilterBase<TFilterKeys> {
   type: FilterType.Select;
   options: SelectOption[];
 }
 
-export interface FilterTextField<TFilterKeys = {[key: string]: unknown}>
+export interface FilterTextField<TFilterKeys = Record<string, unknown>>
   extends FilterBase<TFilterKeys> {
   type: FilterType.TextField;
   textFieldType?: TextFieldProps['type'];
 }
 
-export interface FilterDateSelector<TFilterKeys = {[key: string]: unknown}>
+export interface FilterDateSelector<TFilterKeys = Record<string, unknown>>
   extends FilterBase<TFilterKeys> {
   type: FilterType.DateSelector;
   minKey: string;
@@ -46,7 +47,7 @@ export interface FilterDateSelector<TFilterKeys = {[key: string]: unknown}>
   dateOptionType?: 'past' | 'future' | 'full';
 }
 
-export type Filter<TFilterKeys = {[key: string]: unknown}> =
+export type Filter<TFilterKeys = Record<string, unknown>> =
   | FilterSelect<TFilterKeys>
   | FilterTextField<TFilterKeys>
   | FilterDateSelector<TFilterKeys>;
