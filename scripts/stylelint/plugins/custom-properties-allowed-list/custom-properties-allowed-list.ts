@@ -96,7 +96,7 @@ export const customPropertiesAllowedListPlugin = createPlugin(
         if (!invalidValues && !invalidProperty) return;
 
         utils.report({
-          message: messages.rejected(value, invalidProperty, invalidValues),
+          message: messages.rejected(invalidProperty, invalidValues),
           node: decl,
           result,
           ruleName,
@@ -156,19 +156,13 @@ function validateCustomPropertyValues(
 }
 
 export const messages = utils.ruleMessages(ruleName, {
-  rejected: (
-    value: string,
-    invalidProperty = '',
-    invalidValues: string[] = [],
-  ) => {
+  rejected: (invalidProperty = '', invalidValues: string[] = []) => {
     const invalidPropertyMessage = invalidProperty
       ? `Unexpected custom property [${invalidProperty}].`
       : null;
 
     const invalidValuesMessage = invalidValues.length
-      ? `Invalid custom properties [${invalidValues.join(
-          ', ',
-        )}] in value [${value}].`
+      ? `Invalid custom properties [${invalidValues.join(', ')}].`
       : null;
 
     return [invalidPropertyMessage, invalidValuesMessage]
