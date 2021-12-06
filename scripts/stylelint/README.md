@@ -1,5 +1,45 @@
+## Allowed Custom Properties plugin
+
+The purpose of this plugin is to ensure that we're following our established conventions for Polaris custom properties, and only using custom properties that are generated Polaris tokens.
+
+### Enforced Rules
+
+- If a `--p-*` custom property is used it must match an existing Polaris [token](../../../../src/tokens/tokens.ts).
+- Local component custom properties must have a `-pc--` prefix.
+
+## How to use
+
+:warning: Please note that we're still working out some of the kinks. To run this plugin:
+
+```
+yarn stylelint <file-glob>
+```
+
+e.x.
+
+```
+yarn stylelint **/*.scss // lint all files
+```
+
+```
+yarn stylelint src/components/TextContainer/TextContainer.scss // lint the TextContainer.scss file
+```
+
+e.x. output
+
+`--p-text-container-spacing` is not a valid Polaris custom property from [`tokens.sd`](../../../../src/tokens/tokens.ts). This custom property should use the local component prefix `--pc-` instead.
+
+```
+src/components/TextContainer/TextContainer.scss
+  4:3  ✖  Unexpected custom property [--p-text-container-spacing].                                            @shopify/custom-properties-allowed-list
+  6:5  ✖  Invalid custom properties [--p-text-container-spacing] in value [var(--p-text-container-spacing)].  @shopify/custom-properties-allowed-list
+ 15:3  ✖  Unexpected custom property [--p-text-container-spacing].                                            @shopify/custom-properties-allowed-list
+ 19:3  ✖  Unexpected custom property [--p-text-container-spacing].                                            @shopify/custom-properties-allowed-list
+```
+
 ## TODO
 
+- [ ] Get plugin working with `yarn lint` command. Right now it only works by running `stylelint` directly.
 - stylelint-config rename
   - [x] stylelint.ts
 - renaming scripts plugin wrapper to name of the plugin
@@ -12,13 +52,13 @@
 - documentation
 
 ## FUTURE
+
 - think about how to keep polaris tokens in sync in both plugin and polaris-react
   - shared token generator function?
 - plugin to ensure color-scheme tokens have the same values
 
-
-
 ## Notes:
+
 - Maybe include in plugin documentation
   Note: We recommend using String.raw`...` instead of double escaping regex patterns.
   e.g. String.raw`\.css` instead of '\\.css'
