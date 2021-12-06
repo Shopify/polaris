@@ -34,7 +34,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `rem()` function from `tokens.ts` ([#4695](https://github.com/Shopify/polaris-react/pull/4695))
 - Remove unnecessary import of `Tokens` in `Collapsible` test ([#4722](https://github.com/Shopify/polaris-react/pull/4722))
 - Remove legacy tokens and use default theme for `.storybook/manager.js` ([#4729](https://github.com/Shopify/polaris-react/pull/4729))
-- Changed `TextContainer.scss` custom properties to use `--pc-` prefix
+- Changed `TextContainer.scss` custom properties to use `--pc-` prefix ([#4799](https://github.com/Shopify/polaris-react/pull/4799))
 
 ### Deprecations
 
