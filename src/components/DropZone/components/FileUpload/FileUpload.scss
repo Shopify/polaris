@@ -56,7 +56,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
   &:not(.ActionTitle-disabled) {
     cursor: pointer;
 
-    // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
       color: var(--p-interactive-pressed);

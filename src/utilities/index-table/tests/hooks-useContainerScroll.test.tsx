@@ -10,11 +10,8 @@ import {
 import {useContainerScroll} from '../hooks';
 
 function Component({condensed}: {condensed?: boolean}) {
-  const {
-    scrollableContainer,
-    canScrollLeft,
-    canScrollRight,
-  } = useContainerScroll();
+  const {scrollableContainer, canScrollLeft, canScrollRight} =
+    useContainerScroll();
   const container = scrollableContainer ? 'ref' : 'null';
   const left = canScrollLeft ? 'can scroll left' : 'cannot scroll left';
   const right = canScrollRight ? 'can scroll right' : 'cannot scroll right';

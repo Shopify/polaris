@@ -95,6 +95,7 @@ describe('<Frame />', () => {
       );
     });
   });
+
   describe('topBar', () => {
     it('renders with a top bar data attribute if a topBar is passed', () => {
       const topbar = <div />;

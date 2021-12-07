@@ -216,10 +216,8 @@ export function Button({
       'Polaris.Button.connectedDisclosureAccessibilityLabel',
     );
 
-    const {
-      disabled,
-      accessibilityLabel: disclosureLabel = defaultLabel,
-    } = connectedDisclosure;
+    const {disabled, accessibilityLabel: disclosureLabel = defaultLabel} =
+      connectedDisclosure;
 
     const connectedDisclosureActivator = (
       <button

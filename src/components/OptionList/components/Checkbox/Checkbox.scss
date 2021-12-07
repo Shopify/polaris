@@ -19,7 +19,6 @@
     @include focus-ring($style: 'focused');
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:active:not(:disabled),
   &:checked,
   &.Input-indeterminate {
@@ -37,12 +36,10 @@
     }
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:disabled + .Backdrop {
     @include control-backdrop(disabled);
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:disabled:checked {
     // stylelint-disable-next-line selector-max-specificity
     + .Backdrop,

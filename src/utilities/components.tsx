@@ -3,10 +3,10 @@ import React, {Children, isValidElement} from 'react';
 // Wraps `element` in `Component`, if it is not already an instance of
 // `Component`. If `props` is passed, those will be added as props on the
 // wrapped component. If `element` is null, the component is not wrapped.
-export function wrapWithComponent<P>(
+export function wrapWithComponent<TProps>(
   element: React.ReactNode | null | undefined,
-  Component: React.ComponentType<P>,
-  props: P,
+  Component: React.ComponentType<TProps>,
+  props: TProps,
 ): React.ReactNode {
   if (element == null) {
     return null;
@@ -32,9 +32,9 @@ const isComponent =
 
 // Checks whether `element` is a React element of type `Component` (or one of
 // the passed components, if `Component` is an array of React components).
-export function isElementOfType<P>(
+export function isElementOfType<TProps>(
   element: React.ReactNode | null | undefined,
-  Component: React.ComponentType<P> | React.ComponentType<P>[],
+  Component: React.ComponentType<TProps> | React.ComponentType<TProps>[],
 ): boolean {
   if (
     element == null ||
@@ -98,8 +98,9 @@ function hotReloadComponentCheck(
   AnotherComponent: React.ComponentType<any>,
 ) {
   const componentName = AComponent.name;
-  const anotherComponentName = (AnotherComponent as React.StatelessComponent<any>)
-    .displayName;
+  const anotherComponentName = (
+    AnotherComponent as React.StatelessComponent<any>
+  ).displayName;
 
   return (
     AComponent === AnotherComponent ||

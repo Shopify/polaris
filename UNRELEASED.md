@@ -13,6 +13,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Centered full width `Popover` on small viewports ([#4114](https://github.com/Shopify/polaris-react/pull/4114))
+
 ### Documentation
 
 ### Development workflow
@@ -28,6 +30,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Bumped `postcss-modules` to `v4.2.2` ([#4701](https://github.com/Shopify/polaris-react/pull/4701))
 - Bumped `node-sass` to `v6.0.1` ([#4783](https://github.com/Shopify/polaris-react/pull/4783))
 - Bumped `sass-loader` to `v10.1.1` ([#4783](https://github.com/Shopify/polaris-react/pull/4783))
+- Bumped `stylelint` to `v14.1.0` and `@shopify/stylelint-plugin` to `v11.0.0` ([#4798](https://github.com/Shopify/polaris-react/pull/4798))
+- Bumped `eslint` to `v8.3.0` and `@shopify/eslint-plugin` to `v41.0.1` ([#4797](https://github.com/Shopify/polaris-react/pull/4797))
 
 ### Code quality
 

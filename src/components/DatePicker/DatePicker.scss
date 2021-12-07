@@ -68,7 +68,7 @@ $font-size: 12px;
   }
 
   @include focus-ring;
-  // stylelint-disable-next-line selector-max-specificity
+
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
@@ -173,12 +173,12 @@ $font-size: 12px;
 
 .Day-firstInRange {
   border-radius: var(--p-border-radius-1);
-  // stylelint-disable-next-line selector-max-class
+
   &.Day-hasRange,
   &.Day-hoverRight {
     border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
       var(--pc-date-picker-range-end-border-radius);
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
+
     &::after {
       border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
         var(--pc-date-picker-range-end-border-radius);
@@ -189,6 +189,7 @@ $font-size: 12px;
 .Day-lastInRange {
   border-radius: 0 var(--pc-date-picker-range-end-border-radius)
     var(--pc-date-picker-range-end-border-radius) 0;
+
   &::after {
     border-radius: 0 var(--pc-date-picker-range-end-border-radius)
       var(--pc-date-picker-range-end-border-radius) 0;
@@ -198,21 +199,20 @@ $font-size: 12px;
 .Week {
   margin-bottom: var(--p-space-05);
 
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
     border-radius: var(--p-border-radius-1) 0 0 var(--p-border-radius-1);
   }
 
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
     border-radius: 0 var(--p-border-radius-1) var(--p-border-radius-1) 0;
   }
 }
 
-// stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
 .Day-inRange,
 .Day-inRange:not(:hover) + .Day {
-  // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity
   &::after {
     border-radius: 0 var(--pc-date-picker-range-end-border-radius)
       var(--pc-date-picker-range-end-border-radius) 0;

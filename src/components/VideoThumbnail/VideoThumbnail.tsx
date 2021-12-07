@@ -89,6 +89,7 @@ export function VideoThumbnail({
     const progressValue = calculateProgress(videoLength, videoProgress);
     const progressValuePercents = Math.round(progressValue * 100);
 
+    /* eslint-disable @shopify/jsx-no-hardcoded-content */
     progressMarkup = (
       <div className={styles.Progress}>
         <progress
@@ -104,6 +105,7 @@ export function VideoThumbnail({
         </div>
       </div>
     );
+    /* eslint-enable @shopify/jsx-no-hardcoded-content */
   }
 
   return (

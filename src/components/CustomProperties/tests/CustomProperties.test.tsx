@@ -141,7 +141,6 @@ describe('<CustomProperties />', () => {
         </CustomProperties>,
       );
 
-      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
       const styleSheets = document.head.innerHTML.match(
         new RegExp(`<style id="${STYLE_SHEET_ID}">`, 'g'),
       );

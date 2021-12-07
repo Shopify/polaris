@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {Scrollable} from '../Scrollable';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -56,10 +56,10 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     logoMarkup
   );
 
-  const context = {
-    location,
-    onNavigationDismiss: onDismiss,
-  };
+  const context = useMemo(
+    () => ({location, onNavigationDismiss: onDismiss}),
+    [location, onDismiss],
+  );
 
   return (
     <NavigationContext.Provider value={context}>

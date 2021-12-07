@@ -19,9 +19,8 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {size, measuring, type, focused, disabled, allowMultiple} = useContext(
-    DropZoneContext,
-  );
+  const {size, measuring, type, focused, disabled, allowMultiple} =
+    useContext(DropZoneContext);
 
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);

@@ -167,14 +167,8 @@ export class PositionedOverlay extends PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {
-      measuring,
-      left,
-      right,
-      positioning,
-      height,
-      activatorRect,
-    } = this.state;
+    const {measuring, left, right, positioning, height, activatorRect} =
+      this.state;
 
     return {
       measuring,

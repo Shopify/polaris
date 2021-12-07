@@ -44,13 +44,15 @@ export function mountWithComboboxListContext(
   listbox: ReactElement,
   context: ComboboxListboxType = {},
 ) {
+  // This is probably a legit error but I don't have the time to refactor this
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const providerValue = {
+    setActiveOptionId: () => null,
+    ...context,
+  };
+
   const comboxBox = mountWithApp(
-    <ComboboxListboxContext.Provider
-      value={{
-        setActiveOptionId: () => null,
-        ...context,
-      }}
-    >
+    <ComboboxListboxContext.Provider value={providerValue}>
       {listbox}
     </ComboboxListboxContext.Provider>,
   );

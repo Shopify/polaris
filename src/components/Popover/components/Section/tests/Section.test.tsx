@@ -10,6 +10,7 @@ describe('<Section />', () => {
       <p>Content</p>
     </TextContainer>
   );
+
   it('renders its children', () => {
     const section = mountWithApp(<Section>{children}</Section>);
 

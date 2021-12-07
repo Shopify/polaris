@@ -70,6 +70,7 @@
       ms-high-contrast-color('selected-text-background');
   }
 }
+
 .Animated {
   will-change: width;
   animation: fillup var(--p-duration-500) var(--p-ease);

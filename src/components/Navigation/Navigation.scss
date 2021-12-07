@@ -241,6 +241,7 @@ $disabled-fade: 0.6;
 
 // Secondary styles
 $secondary-item-font-size: 15px;
+
 .SecondaryNavigation {
   flex-basis: 100%;
   margin-left: 0;
@@ -306,11 +307,13 @@ $secondary-item-font-size: 15px;
     &.keyFocused {
       color: var(--p-text-primary);
     }
+
     &:active {
       color: var(--p-text-primary);
       @include no-focus-ring;
     }
   }
+
   .Item-disabled {
     font-weight: var(--p-font-weight-medium);
     color: var(--p-text-disabled);

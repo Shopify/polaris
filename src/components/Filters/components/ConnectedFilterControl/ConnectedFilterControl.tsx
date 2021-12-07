@@ -180,10 +180,10 @@ export class ConnectedFilterControl extends Component<
 
   private measureAvailableWidth() {
     if (this.container.current && this.moreFiltersButtonContainer.current) {
-      const containerWidth = this.container.current.getBoundingClientRect()
-        .width;
-      const moreFiltersButtonWidth = this.moreFiltersButtonContainer.current.getBoundingClientRect()
-        .width;
+      const containerWidth =
+        this.container.current.getBoundingClientRect().width;
+      const moreFiltersButtonWidth =
+        this.moreFiltersButtonContainer.current.getBoundingClientRect().width;
       const filtersActionWidth = 0;
 
       const filterFieldMinWidth = this.props.queryFieldHidden

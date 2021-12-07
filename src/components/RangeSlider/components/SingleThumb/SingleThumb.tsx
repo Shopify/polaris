@@ -81,6 +81,7 @@ export function SingleThumb(props: SingleThumbProps) {
     disabled && styles.disabled,
   );
 
+  /* eslint-disable @shopify/react-require-autocomplete */
   return (
     <Labelled
       id={id}
@@ -118,6 +119,7 @@ export function SingleThumb(props: SingleThumbProps) {
       </div>
     </Labelled>
   );
+  /* eslint-enable @shopify/react-require-autocomplete */
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const {onChange} = props;

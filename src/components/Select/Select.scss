@@ -111,7 +111,7 @@
   .Backdrop {
     border-color: var(--p-border-critical);
     background-color: var(--p-surface-critical-subdued);
-    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    // stylelint-disable-next-line selector-max-class
     &.hover,
     &:hover {
       border-color: var(--p-border-critical);

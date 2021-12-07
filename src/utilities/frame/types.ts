@@ -31,8 +31,8 @@ interface ContextualSaveBarDiscardActionProps {
   discardConfirmationModal?: boolean;
 }
 
-type ContextualSaveBarCombinedActionProps = ContextualSaveBarDiscardActionProps &
-  ContextualSaveBarAction;
+type ContextualSaveBarCombinedActionProps =
+  ContextualSaveBarDiscardActionProps & ContextualSaveBarAction;
 
 export interface ContextualSaveBarProps {
   /** Extend the contents section to be flush with the left edge  */
