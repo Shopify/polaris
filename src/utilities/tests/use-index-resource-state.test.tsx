@@ -21,7 +21,7 @@ describe('useIndexResourceState', () => {
     return null;
   }
 
-  function MockComponent<T extends Record<string, unknown>>({
+  function MockComponent<T extends {[key: string]: unknown}>({
     resources = [],
     options,
   }: {

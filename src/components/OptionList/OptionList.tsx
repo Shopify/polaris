@@ -97,8 +97,8 @@ export function OptionList({
 
             return (
               <Option
-                {...option}
                 key={optionId}
+                {...option}
                 id={optionId}
                 section={sectionIndex}
                 index={optionIndex}

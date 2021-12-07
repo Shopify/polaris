@@ -314,6 +314,7 @@ describe('<DropZone />', () => {
 
   describe('overlayText', () => {
     const overlayText = 'overlay text';
+
     it('does not render the overlayText on small screens', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
@@ -351,6 +352,7 @@ describe('<DropZone />', () => {
 
   describe('errorOverlayText', () => {
     const errorOverlayText = "can't drop this";
+
     it("doesn't render the overlayText on small screens", () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(
@@ -552,7 +554,7 @@ function fireEvent({
   wrapper: CustomRoot<any, any>;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: Record<string, unknown>[];
+  testFiles?: {[key: string]: unknown}[];
 }) {
   act(() => {
     if (spy) {

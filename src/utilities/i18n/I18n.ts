@@ -23,7 +23,7 @@ export class I18n {
 
   translate(
     id: string,
-    replacements?: Record<string, string | number>,
+    replacements?: {[key: string]: string | number},
   ): string {
     const text: string = get(this.translation, id, '');
 

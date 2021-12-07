@@ -87,12 +87,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, children} = this.props;
+    const {theme = {}, features = {}, children} = this.props;
 
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={this.props.features || {}}>
+      <FeaturesContext.Provider value={features}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>

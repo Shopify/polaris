@@ -73,8 +73,8 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     (options: OptionDescriptor[]) => {
       return options.map((option) => (
         <MappedOption
-          {...option}
           key={option.id || option.value}
+          {...option}
           selected={selected.includes(option.value)}
           singleSelection={!allowMultiple}
         />

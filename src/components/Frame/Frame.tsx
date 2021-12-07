@@ -133,13 +133,13 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            key="NavContent"
             {...mobileNavAttributes}
             aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
             id={APP_FRAME_NAV}
-            key="NavContent"
             hidden={mobileNavHidden}
           >
             {navigation}
@@ -243,6 +243,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    // This is probably a legit error but I don't have the time to refactor this
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     const context = {
       showToast: this.showToast,
       hideToast: this.hideToast,

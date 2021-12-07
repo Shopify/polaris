@@ -1,6 +1,8 @@
 import React from 'react';
 
-type ReadmeModule = Record<string, any>;
+interface ReadmeModule {
+  [key: string]: any;
+}
 
 const readmeReq = require.context(
   '../src/components',

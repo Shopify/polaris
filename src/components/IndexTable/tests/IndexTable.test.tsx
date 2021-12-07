@@ -54,11 +54,11 @@ function Component({
 }
 
 const mockRenderRow = (item: any) => {
-  return <Component {...item} key={item.id} />;
+  return <Component key={item.id} {...item} />;
 };
 
 const mockRenderCondensedRow = (item: any) => {
-  return <Component {...item} key={item.id} condensed />;
+  return <Component key={item.id} {...item} condensed />;
 };
 
 describe('<IndexTable>', () => {

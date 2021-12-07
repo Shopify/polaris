@@ -100,8 +100,8 @@ export function Section({
 
     return (
       <Item
-        {...rest}
         key={label}
+        {...rest}
         label={label}
         subNavigationItems={subNavigationItems}
         onClick={handleClick(onClick, hasSubNavItems)}
