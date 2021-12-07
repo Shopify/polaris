@@ -7,9 +7,9 @@
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -1 * resource-list(header-padding-small);
-  margin-left: -1 * resource-list(header-padding-small);
-  margin-right: -1 * resource-list(header-padding-small);
+  margin-top: calc(resource-list(header-padding-small) * -1);
+  margin-left: calc(resource-list(header-padding-small) * -1);
+  margin-right: calc(resource-list(header-padding-small) * -1);
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -22,8 +22,8 @@
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-wrap: wrap;
     margin-right: 0;
-    margin-left: calc(-1 * var(--p-space-2));
-    margin-top: calc(-1 * var(--p-space-4));
+    margin-left: calc(var(--p-space-2) * -1);
+    margin-top: calc(var(--p-space-4) * -1);
 
     &::after {
       content: none;

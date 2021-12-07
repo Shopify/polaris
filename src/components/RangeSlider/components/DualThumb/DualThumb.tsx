@@ -9,6 +9,7 @@ import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
 import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';
+import sharedStyles from '../../RangeSlider.scss';
 
 import styles from './DualThumb.scss';
 
@@ -233,7 +234,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
           labelHidden={labelHidden}
           helpText={helpText}
         >
-          <div className={styles.Wrapper}>
+          <div
+            className={classNames(styles.DualThumb, sharedStyles.RangeSlider)}
+          >
             {prefixMarkup}
             <div
               className={trackWrapperClassName}

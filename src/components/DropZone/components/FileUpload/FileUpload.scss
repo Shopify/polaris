@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: 15px;
+$fileupload-padding: var(--p-space-4);
 $slim-min-height: 30px;
 $slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
 
@@ -56,7 +56,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
   &:not(.ActionTitle-disabled) {
     cursor: pointer;
 
-    // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
       color: var(--p-interactive-pressed);

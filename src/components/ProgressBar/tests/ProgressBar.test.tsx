@@ -31,6 +31,7 @@ describe('<ProgressBar />', () => {
         className: 'Indicator Animated',
       });
     });
+
     it('sets the progress bar to exclude the Animated class when animated is false', () => {
       const progress = mountWithApp(
         <ProgressBar animated={false} progress={20} />,

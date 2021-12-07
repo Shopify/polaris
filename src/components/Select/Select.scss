@@ -52,7 +52,7 @@
 
 .InlineLabel {
   @include text-emphasis-subdued;
-  margin-right: 4px;
+  margin-right: var(--p-space-1);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -97,7 +97,7 @@
   left: 0;
   border: border-width() solid var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   background-color: var(--p-surface);
   box-shadow: var(--p-button-drop-shadow);
   @include focus-ring($border-width: 1px);
@@ -111,7 +111,7 @@
   .Backdrop {
     border-color: var(--p-border-critical);
     background-color: var(--p-surface-critical-subdued);
-    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    // stylelint-disable-next-line selector-max-class
     &.hover,
     &:hover {
       border-color: var(--p-border-critical);

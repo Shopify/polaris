@@ -123,7 +123,7 @@ describe('<RadioButton />', () => {
         .find('input')!
         .prop('id');
       expect(typeof id).toBe('string');
-      expect(id).toBeTruthy();
+      expect(id).toBeDefined();
     });
   });
 

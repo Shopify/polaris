@@ -182,7 +182,7 @@ describe('<Select />', () => {
         .find('select')!
         .prop('id');
       expect(typeof id).toBe('string');
-      expect(id).toBeTruthy();
+      expect(id).toBeDefined();
     });
   });
 
@@ -198,12 +198,12 @@ describe('<Select />', () => {
       let select = mountWithApp(
         <Select label="Select" options={[]} onChange={noop} />,
       );
-      expect(select.find('select')!.prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBeUndefined();
 
       select = mountWithApp(
         <Select label="Select" disabled={false} options={[]} onChange={noop} />,
       );
-      expect(select.find('select')!.prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBe(false);
     });
   });
 

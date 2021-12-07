@@ -10,7 +10,7 @@ $icon-size: 16px;
   min-height: $height;
   padding: 0 var(--p-space-2);
   background-color: var(--p-surface-neutral);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
 
   &.disabled {
@@ -36,7 +36,6 @@ $icon-size: 16px;
 
     @include focus-ring;
     // stylelint-disable selector-max-specificity
-    // stylelint-disable selector-max-class
 
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');

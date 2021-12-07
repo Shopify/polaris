@@ -4,7 +4,7 @@ type IdGeneratorFactory = (prefix: string) => IdGenerator;
 export class UniqueIdFactory {
   private idGeneratorFactory: IdGeneratorFactory;
 
-  private idGenerators: Record<string, IdGenerator> = {};
+  private idGenerators: {[key: string]: IdGenerator} = {};
 
   constructor(idGeneratorFactory: IdGeneratorFactory) {
     this.idGeneratorFactory = idGeneratorFactory;

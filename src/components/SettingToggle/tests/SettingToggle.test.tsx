@@ -33,7 +33,7 @@ describe('<SettingToggle />', () => {
       const {primary} = getComponentProps(
         toggle.find(SettingAction)!.prop('action'),
       );
-      expect(primary).toBeTruthy();
+      expect(primary).toBe(true);
     });
 
     it('makes the button secondary when enabled', () => {
@@ -45,7 +45,7 @@ describe('<SettingToggle />', () => {
       const {primary} = getComponentProps(
         toggle.find(SettingAction)!.prop('action'),
       );
-      expect(primary).toBeFalsy();
+      expect(primary).toBe(false);
     });
   });
 

@@ -14,7 +14,7 @@
   text-decoration: none;
   margin: 0;
   padding: var(--p-space-1) / 2;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   border: 1px solid var(--p-border-neutral-subdued);
   @include focus-ring($border-width: 1px);
 
@@ -35,7 +35,7 @@
       @include recolor-icon(var(--p-icon-pressed));
     }
   }
-  // stylelint-disable selector-max-specificity
+
   &:focus {
     outline: none;
   }
@@ -43,7 +43,6 @@
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
-  // stylelint-enable selector-max-specificity
 }
 
 .Content {

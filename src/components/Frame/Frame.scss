@@ -83,7 +83,7 @@
   margin: var(--p-space-4);
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-6);
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -232,6 +232,7 @@
   &.focused {
     pointer-events: all;
     opacity: 1;
+
     > a {
       @include focus-ring($style: 'focused');
     }

@@ -84,10 +84,8 @@ function IndexTableBase({
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
 
-  const {
-    value: hasMoreLeftColumns,
-    toggle: toggleHasMoreLeftColumns,
-  } = useToggle(false);
+  const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
+    useToggle(false);
 
   const tablePosition = useRef({top: 0, left: 0});
   const tableHeadingRects = useRef<TableHeadingRect[]>([]);
@@ -150,7 +148,8 @@ function IndexTableBase({
             return;
           }
 
-          const boundingRect = scrollableContainerElement.current.getBoundingClientRect();
+          const boundingRect =
+            scrollableContainerElement.current.getBoundingClientRect();
           tablePosition.current = {
             top: boundingRect.top,
             left: boundingRect.left,
@@ -228,7 +227,8 @@ function IndexTableBase({
     }
 
     const tableRect = tableElement.current.getBoundingClientRect();
-    const scrollableRect = scrollableContainerElement.current.getBoundingClientRect();
+    const scrollableRect =
+      scrollableContainerElement.current.getBoundingClientRect();
 
     setCanScrollRight(tableRect.width > scrollableRect.width);
   }, [lastColumnSticky]);

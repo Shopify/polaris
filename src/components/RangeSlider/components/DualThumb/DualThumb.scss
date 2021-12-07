@@ -5,9 +5,7 @@ $range-wrapper: 28px;
 
 $range-thumb-border-error: 2px solid var(--p-border-critical);
 
-.Wrapper {
-  --pc-dual-thumb-input: 10;
-  --pc-dual-thumb-output: 20;
+.DualThumb {
   position: relative;
   width: 100%;
   display: flex;
@@ -32,8 +30,8 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   position: absolute;
   z-index: 1;
   width: 100%;
-  height: $range-track-height;
-  border-radius: $range-thumb-size;
+  height: var(--pc-range-slider-track-height);
+  border-radius: var(--pc-range-slider-thumb-size);
 
   --pc-dual-thumb-unselected-range: transparent;
   --pc-dual-thumb-selected-range: #{var(--p-interactive)};
@@ -82,11 +80,11 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
 .Thumbs {
   @include focus-ring($size: 'wide', $border-width: border-width());
   position: absolute;
-  z-index: var(--pc-dual-thumb-input);
+  z-index: var(--pc-range-slider-input);
   padding: 0;
-  width: $range-thumb-size;
-  height: $range-thumb-size;
-  border-radius: 50%;
+  width: var(--pc-range-slider-thumb-size);
+  height: var(--pc-range-slider-thumb-size);
+  border-radius: var(--p-border-radius-6);
   border: border-width() solid var(--p-interactive);
   background: linear-gradient(var(--p-interactive), var(--p-interactive));
   -webkit-tap-highlight-color: transparent;
@@ -134,7 +132,7 @@ $range-output-spacing: 16px;
 
 .Output {
   position: absolute;
-  z-index: var(--pc-dual-thumb-output);
+  z-index: var(--pc-range-slider-output);
   bottom: var(--p-range-slider-thumb-size-active);
   opacity: 0;
   visibility: hidden;
@@ -142,7 +140,7 @@ $range-output-spacing: 16px;
   transition-property: opacity, visibility, bottom;
   transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
-  transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
+  transform: translateX(calc(-50% + #{var(--pc-range-slider-thumb-size) / 2}));
 
   .Thumbs:active + & {
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -

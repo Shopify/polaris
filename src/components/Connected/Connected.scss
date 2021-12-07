@@ -21,13 +21,10 @@
 // This is a violation of our component model, but it’s the cleanest
 // way to remove the border radii on connected elements.
 // TextField.scss has a dependency due to this override.
-// stylelint-disable declaration-no-important
 .Item-primary {
   z-index: var(--pc-connected-primary);
   flex: 1 1 auto;
 }
-
-// stylelint-enable declaration-no-important
 
 .Item-focused {
   z-index: var(--pc-connected-focused);

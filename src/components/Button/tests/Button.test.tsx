@@ -109,6 +109,7 @@ describe('<Button />', () => {
     });
 
     it.todo('renders a placeholder disclosure icon');
+
     it.todo('renders a placeholder inner icon');
   });
 

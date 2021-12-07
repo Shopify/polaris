@@ -24,6 +24,7 @@ $dangerous-magic-space-16: 64px;
     justify-content: center;
   }
 }
+
 .Dialog:focus {
   outline: 0;
 }
@@ -54,7 +55,7 @@ $dangerous-magic-space-16: 64px;
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-wide);
+    border-radius: var(--p-border-radius-2);
   }
 
   &.limitHeight {

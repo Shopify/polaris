@@ -38,6 +38,7 @@ const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   motion: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
+  shape: {},
   legacyTokens: {},
   spacing: {},
   typography: {},
@@ -140,7 +141,6 @@ describe('<CustomProperties />', () => {
         </CustomProperties>,
       );
 
-      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
       const styleSheets = document.head.innerHTML.match(
         new RegExp(`<style id="${STYLE_SHEET_ID}">`, 'g'),
       );

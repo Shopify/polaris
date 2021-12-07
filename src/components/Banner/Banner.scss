@@ -9,11 +9,11 @@
 
   @if $in-page {
     @include focus-ring('wide');
-    border-radius: var(--p-border-radius-wide);
+    border-radius: var(--p-border-radius-2);
     background-color: var(--pc-banner-background);
   } @else {
     @include focus-ring('base');
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
     background-color: var(--pc-banner-background);
   }
 
@@ -145,13 +145,7 @@
 }
 
 .withinContentContainer {
-  --pc-banner-spacing: 14px;
-  --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-4));
-  padding: var(--p-space-4) var(--p-space-4) var(--pc-banner-spacing);
-
-  .ContentWrapper {
-    margin-top: var(--pc-banner-offset);
-  }
+  padding: var(--p-space-4);
 
   .Dismiss {
     top: var(--p-space-4);
@@ -175,14 +169,8 @@
 }
 
 .withinPage {
-  --pc-banner-spacing: 18px;
-  --pc-banner-offset: calc(var(--pc-banner-spacing) - var(--p-space-5));
   border-radius: 0 0 border-radius() border-radius();
-  padding: var(--p-space-5) var(--p-space-5) var(--pc-banner-spacing);
-
-  .ContentWrapper {
-    margin-top: var(--pc-banner-offset);
-  }
+  padding: var(--p-space-5);
 
   @include banner-variants(true);
 
@@ -223,13 +211,12 @@
 }
 
 .PrimaryAction {
-  margin-right: 6px;
+  margin-right: var(--p-space-2);
 }
 
 // We need pretty high specificity to do the descendant selectors
 // onto the text, which needs to be the relative positioned wrapper
 // so that the borders/ backgrounds do not extend outside of it.
-// stylelint-disable selector-max-specificity
 
 .SecondaryAction {
   @include unstyled-button;
@@ -241,7 +228,7 @@
   padding: var(--pc-banner-secondary-action-vertical-padding)
     var(--pc-banner-secondary-action-horizontal-padding);
   color: var(--p-text);
-  padding-left: 6px;
+  padding-left: var(--p-space-2);
 
   &:hover > .Text {
     box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.75) inset;

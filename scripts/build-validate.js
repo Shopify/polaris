@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unsupported-features/node-builtins
 const assert = require('assert').strict;
 const fs = require('fs');
 

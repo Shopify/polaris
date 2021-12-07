@@ -7,7 +7,7 @@ import {ScrollableContext} from '../context';
 describe('<Scrollable />', () => {
   it('mounts', () => {
     const scrollable = mountWithApp(<Scrollable />);
-    expect(scrollable).toBeTruthy();
+    expect(scrollable).toBeDefined();
   });
 
   it('unmounts', () => {

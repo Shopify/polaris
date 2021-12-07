@@ -1,12 +1,16 @@
-$range-track-height: 4px;
-$range-thumb-size: var(--p-range-slider-thumb-size-base);
+.RangeSlider {
+  --pc-range-slider-input: 10;
+  --pc-range-slider-output: 20;
+  --pc-range-slider-track-height: 4px;
+  --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
+  --pc-track-dashed-border-radius: var(--p-border-radius-1);
+}
 
 @mixin track-dashed {
-  $borderRadius: var(--p-border-radius-base);
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;
-  height: $range-track-height;
+  height: var(--pc-range-slider-track-height);
   width: 100%;
   background-image: linear-gradient(
     to right,
@@ -15,7 +19,8 @@ $range-thumb-size: var(--p-range-slider-thumb-size-base);
     transparent 50%,
     transparent 100%
   );
-  background-size: $range-track-height $range-track-height;
-  border-radius: $borderRadius;
-  border-right: $borderRadius $dashedTrackColor solid;
+  background-size: var(--pc-range-slider-track-height)
+    var(--pc-range-slider-track-height);
+  border-radius: var(--pc-track-dashed-border-radius);
+  border-right: var(--pc-track-dashed-border-radius) $dashedTrackColor solid;
 }

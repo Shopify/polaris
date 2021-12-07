@@ -102,6 +102,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tab-selected {
   @include text-emphasis-normal;
+
   &:focus .Title {
     @include high-contrast-outline($border-width: border-width(thicker));
     // stylelint-disable-next-line  selector-max-specificity
@@ -122,7 +123,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Title {
   @include focus-ring;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   display: block;
   padding: var(--p-space-2) var(--p-space-4);
   min-width: $item-min-width;
@@ -135,8 +136,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     left: 0;
     right: 0;
     height: $underline-height;
-    border-top-left-radius: var(--p-border-radius-base);
-    border-top-right-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-top-right-radius: var(--p-border-radius-1);
   }
 }
 
@@ -172,7 +173,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   padding: $item-vertical-padding var(--p-space-4);
   text-align: left;
   cursor: pointer;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 
   &::-moz-focus-inner {
     border: none;
@@ -186,7 +187,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     background-color: var(--p-surface-primary-selected-pressed);
   }
 
-  // stylelint-disable-next-line selector-max-specificity
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }

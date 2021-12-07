@@ -4,8 +4,8 @@ $item-line-height-small: 32px;
 $item-line-height-large: 36px;
 $text-line-height: 20px;
 $nav-variables: (
-  mobile-spacing: 10px,
-  desktop-spacing: 6px,
+  mobile-spacing: var(--p-space-2),
+  desktop-spacing: var(--p-space-1),
   mobile-height: 40px,
   desktop-height: 32px,
   icon-size: 20px,
@@ -34,7 +34,7 @@ $nav-animation-variables: (
   max-width: 100%;
   padding: 0 var(--p-space-1) 0 var(--p-space-3);
   margin: 0 var(--p-space-2);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
   text-decoration: none;
   text-align: left;
@@ -66,6 +66,7 @@ $nav-animation-variables: (
     font-weight: var(--p-font-weight-semibold);
     line-height: $item-line-height-small;
   }
+
   &::-moz-focus-inner {
     border: 0;
   }
@@ -130,6 +131,7 @@ $nav-animation-variables: (
   position: relative;
   display: flex;
   flex-wrap: wrap;
+
   .RollupSection &,
   .SecondaryNavigation & {
     opacity: 1;
@@ -163,6 +165,7 @@ $nav-animation-variables: (
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -171,6 +174,7 @@ $nav-animation-variables: (
 @mixin usermenu-section-attributes {
   position: relative;
   margin-top: var(--p-space-4);
+
   &::before {
     content: '';
     position: absolute;

@@ -19,7 +19,7 @@
     position: relative;
     border: var(--p-control-border-width) solid var(--p-border);
     background-color: var(--p-surface);
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
 
     &::before {
       content: '';
@@ -28,7 +28,7 @@
       right: calc(-1 * var(--p-control-border-width));
       bottom: calc(-1 * var(--p-control-border-width));
       left: calc(-1 * var(--p-control-border-width));
-      border-radius: var(--p-border-radius-base);
+      border-radius: var(--p-border-radius-1);
       background-color: var(--p-interactive);
       opacity: 0;
       transform: scale(0.25);
@@ -43,6 +43,7 @@
     }
   } @else if $style == active {
     border-color: var(--p-interactive);
+
     &::before {
       opacity: 1;
       transform: scale(1);

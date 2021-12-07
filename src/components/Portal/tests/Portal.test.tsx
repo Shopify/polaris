@@ -9,9 +9,8 @@ jest.mock('react-dom', () => ({
   createPortal: jest.fn(),
 }));
 
-const {
-  createPortal: createPortalSpy,
-}: {[key: string]: jest.Mock} = jest.requireMock('react-dom');
+const {createPortal: createPortalSpy}: {[key: string]: jest.Mock} =
+  jest.requireMock('react-dom');
 
 function lastSpyCall(spy: jest.Mock) {
   return spy.mock.calls.pop() as any[];

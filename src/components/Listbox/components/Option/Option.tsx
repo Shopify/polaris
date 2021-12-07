@@ -34,9 +34,8 @@ export const Option = memo(function Option({
   divider,
 }: OptionProps) {
   const {onOptionSelect} = useListbox();
-  const {role, url, external, onAction, destructive, isAction} = useContext(
-    MappedActionContext,
-  );
+  const {role, url, external, onAction, destructive, isAction} =
+    useContext(MappedActionContext);
   const listItemRef = useRef<HTMLLIElement>(null);
   const domId = useUniqueId('ListboxOption');
   const sectionId = useSection();
