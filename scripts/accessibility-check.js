@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const path = require('path');
 
-const {testPages, getCurrentStoryIds} = require('@shopify/storybook-a11y-test');
+const { testPages, getCurrentStoryIds } = require('./storybook-a11y-test');
 
 const iframePath = path.join(
   'file://',
@@ -15,7 +15,7 @@ const iframePath = path.join(
     skippedStoryIds: ['playground-playground'],
   });
 
-  const results = await testPages({iframePath, storyIds});
+  const results = await testPages({ iframePath, storyIds, timeout: 15000 });
 
   if (results.length) {
     console.error(`‼️  Test failures found`);
