@@ -164,7 +164,7 @@
   "stylelint": {
     "extends": [
       "@shopify/stylelint-plugin/prettier",
-      "./scripts/stylelint/config"
+      "./stylelint/config"
     ]
   },
   "size-limit": [

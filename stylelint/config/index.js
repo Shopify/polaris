@@ -1,6 +1,6 @@
 const path = require('path');
 
-const {tokenList} = require('../../../build/cjs/token-list');
+const {tokenList} = require('../../build/cjs/token-list');
 
 /**
  * Allowed custom property names in Polaris component styles.
