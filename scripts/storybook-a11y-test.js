@@ -74,32 +74,6 @@ async function getA11yParams(storyId, iframePath) {
   );
 }
 
-function nodeToSelector(element) {
-  const { tagName, id, className, parentNode } = element;
-  let elementTagName = tagName;
-  elementTagName += id === '' ? '' : `#${id}`;
-
-  if (className) {
-    const classes = className.split(/\s/);
-    classes.forEach((cssClass) => {
-      elementTagName += `.${cssClass}`;
-    });
-  }
-
-  let childIndex = 1;
-
-  for (
-    let currentElement = element;
-    currentElement.previousElementSibling;
-    currentElement = currentElement.previousElementSibling
-  ) {
-    childIndex += 1;
-  }
-
-  elementTagName += `:nth-child(${childIndex})`;
-  return `${nodeToSelector(parentNode)} > ${elementTagName}`;
-}
-
 async function getCurrentStoryIds({ iframePath, skippedStoryIds = [] }) {
   const stories =
     process.argv[2] == null
@@ -166,6 +140,32 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
       }
 
       const elementSelector = await page.evaluate(() => {
+        function nodeToSelector(element) {
+          const { tagName, id, className, parentNode } = element;
+          let elementTagName = tagName;
+          elementTagName += id === '' ? '' : `#${id}`;
+
+          if (className) {
+            const classes = className.split(/\s/);
+            classes.forEach((cssClass) => {
+              elementTagName += `.${cssClass}`;
+            });
+          }
+
+          let childIndex = 1;
+
+          for (
+            let currentElement = element;
+            currentElement.previousElementSibling;
+            currentElement = currentElement.previousElementSibling
+          ) {
+            childIndex += 1;
+          }
+
+          elementTagName += `:nth-child(${childIndex})`;
+          return `${nodeToSelector(parentNode)} > ${elementTagName}`;
+        }
+
         function getElement() {
           const storyRoot = document.getElementById('story-root');
           return storyRoot
