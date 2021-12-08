@@ -15,7 +15,12 @@ const iframePath = path.join(
     skippedStoryIds: ['playground-playground'],
   });
 
-  const results = await testPages({ iframePath, storyIds, timeout: 15000 });
+  const results = await testPages({
+    iframePath,
+    storyIds,
+    timeout: 15000,
+    disableAnimation: true,
+  });
 
   if (results.length) {
     console.error(`‼️  Test failures found`);
