@@ -14,5 +14,5 @@
       "tests/*": ["./tests/*"]
     }
   },
-  "include": ["./config/typescript", "./src", "./tests", "./playground"],
+  "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }
