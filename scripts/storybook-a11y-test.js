@@ -5,7 +5,7 @@ const os = require('os');
 const puppeteer = require('puppeteer');
 const pMap = require('p-map');
 const chalk = require('chalk');
-const axeCore = require('axe-core');
+const puppeteer$1 = require('@axe-core/puppeteer');
 
 function _interopDefaultLegacy(e) {
   return e && typeof e === 'object' && 'default' in e ? e : { default: e };
@@ -15,9 +15,10 @@ const os__default = /* #__PURE__*/ _interopDefaultLegacy(os);
 const puppeteer__default = /* #__PURE__*/ _interopDefaultLegacy(puppeteer);
 const pMap__default = /* #__PURE__*/ _interopDefaultLegacy(pMap);
 const chalk__default = /* #__PURE__*/ _interopDefaultLegacy(chalk);
-const axeCore__default = /* #__PURE__*/ _interopDefaultLegacy(axeCore);
 
 /* eslint-disable no-console */
+// Until https://github.com/dequelabs/axe-core/pull/3161 is fixed
+// type A11yParametersElement = A11yParameters['element'] | NodeList;
 const FORMATTING_SPACER = '    ';
 
 function getBrowser() {
@@ -92,23 +93,12 @@ function isAutocompleteNope(violation) {
   return isAutocompleteAttribute && hasNope;
 }
 
-function setOnWindow(page, name, value) {
-  page.evaluateOnNewDocument(`
-    Object.defineProperty(window, '${name}', {
-      get() {
-        return '${value}'
-      }
-    })
-  `);
-}
-
 function testPage(iframePath, browser, timeout, disableAnimation) {
   return async function (id) {
     console.log(` - ${id}`);
 
     try {
       const page = await browser.newPage();
-      setOnWindow(page, 'axe', axeCore__default.default);
       await page.goto(`${iframePath}?id=${id}`, {
         waitUntil: 'load',
         timeout,
@@ -127,52 +117,56 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         });
       }
 
-      const result = await page.evaluate(async (id) => {
-        // Implementation matching
-        function getElement() {
-          const storyRoot = document.getElementById('story-root');
-          return storyRoot
-            ? storyRoot.childNodes
-            : document.getElementById('root');
-        } // Returns story parameters or default ones.
-        // Originally inspired by:
-        // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
+      const results = await new puppeteer$1.AxePuppeteer(page) // .configure(storyA11yParams)
+        .include('#story-root')
+        .analyze(); // const result: axeCore.AxeResults = await page.evaluate(
+      //   async (id: StoryId) => {
+      //     // Implementation matching
+      //     function getElement(): A11yParametersElement {
+      //       const storyRoot = document.getElementById('story-root');
+      //       return storyRoot
+      //         ? storyRoot.childNodes
+      //         : document.getElementById('root')!;
+      //     }
+      //     // Returns story parameters or default ones.
+      //     // Originally inspired by:
+      //     // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
+      //     function getA11yParams(storyId: StoryId): A11yParameters {
+      //       const {parameters} = window.__STORYBOOK_STORY_STORE__.fromId(
+      //         storyId,
+      //       )!;
+      //       return (
+      //         parameters.a11y || {
+      //           config: {},
+      //           options: {
+      //             restoreScroll: true,
+      //           },
+      //         }
+      //       );
+      //     }
+      //     const storyA11yParams = getA11yParams(id);
+      //     const {
+      //       // Context for axe to analyze
+      //       // https://www.deque.com/axe/core-documentation/api-documentation/#context-parameter
+      //       element = getElement(),
+      //       // axe-core configurationOptions (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#parameters-1)
+      //       config,
+      //       // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
+      //       options = {},
+      //     } = storyA11yParams;
+      //     window.axe.reset();
+      //     if (config) {
+      //       window.axe.configure(config);
+      //     }
+      //     return window.axe.run(element as ElementContext, options);
+      //   },
+      //   id,
+      // );
 
-        function getA11yParams(storyId) {
-          const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
-
-          return (
-            parameters.a11y || {
-              config: {},
-              options: {
-                restoreScroll: true,
-              },
-            }
-          );
-        }
-
-        const storyA11yParams = getA11yParams(id);
-        const {
-          // Context for axe to analyze
-          // https://www.deque.com/axe/core-documentation/api-documentation/#context-parameter
-          element = getElement(),
-          // axe-core configurationOptions (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#parameters-1)
-          config,
-          // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
-          options = {},
-        } = storyA11yParams;
-        window.axe.reset();
-
-        if (config) {
-          window.axe.configure(config);
-        }
-
-        return window.axe.run(element, options);
-      }, id);
       await page.close();
 
-      if (result.violations && result.violations.length) {
-        const filteredViolations = result.violations.filter(
+      if (results.violations && results.violations.length) {
+        const filteredViolations = results.violations.filter(
           (violation) => !isAutocompleteNope(violation),
         );
         return formatMessage(id, filteredViolations);

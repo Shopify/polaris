@@ -69,6 +69,7 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
+    "@axe-core/puppeteer": "^4.3.2",
     "@shopify/polaris-icons": "^4.10.0",
     "@shopify/polaris-tokens": "^3.0.0",
     "@types/react": "^17.0.19",

@@ -9,6 +9,13 @@
   dependencies:
     tslib "~2.0.1"
 
+"@axe-core/puppeteer@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.3.2.tgz#196748648ce1c5bcf537395441f4ae3b8d9190e9"
+  integrity sha512-/0Od30pNxUr00cO20pndz2n/b5DyYrkAKBBXlpTAbAMPuLtz6JnavR9A1oQMDyBeoQDNbKr7B97FRYSNPPgI9Q==
+  dependencies:
+    axe-core "^4.3.3"
+
 "@babel/code-frame@7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
@@ -4250,7 +4257,18 @@ axe-core@^4.2.0, axe-core@^4.3.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
 
-axobject-query@^2.2.0:
+
+axe-core@^4.2.0:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.2.tgz#fcf8777b82c62cfc69c7e9f32c0d2226287680e7"
+  integrity sha512-5LMaDRWm8ZFPAEdzTYmgjjEdj1YnQcpfrVajO/sn/LhbpGp0Y0H64c2hLZI1gRMxfA+w1S71Uc/nHaOXgcCvGg==
+
+axe-core@^4.3.3:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
+  integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
+
+axobject-query@^2.1.2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
   integrity sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==
