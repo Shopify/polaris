@@ -161,12 +161,6 @@
     "ios >= 13.4"
   ],
   "prettier": "@shopify/prettier-config",
-  "stylelint": {
-    "extends": [
-      "@shopify/stylelint-plugin/prettier",
-      "./stylelint/config"
-    ]
-  },
   "size-limit": [
     {
       "name": "cjs",
