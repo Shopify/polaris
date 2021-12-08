@@ -67,7 +67,7 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static",
-    "validate-tokens": "ajv validate -s tokens/schema.token-group.json -d 'tokens/_!(color)*.json' && ajv validate -s tokens/schema.color.json -d 'tokens/_color.json'"
+    "validate-tokens": "ajv validate -s tokens/schemas/token-group.json -d 'tokens/*.json'"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.10.0",
