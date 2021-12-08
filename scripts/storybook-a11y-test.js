@@ -57,11 +57,11 @@ async function getA11yParams(storyId, iframePath) {
   const browser = await getBrowser();
   const page = await browser.newPage();
   await page.goto(iframePath);
-  const parameters = await page.evaluate(() => {
+  const parameters = await page.evaluate((storyId) => {
     const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
 
     return parameters;
-  });
+  }, storyId);
   await page.close();
   await browser.close();
   return (
