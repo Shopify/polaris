@@ -91,18 +91,6 @@ function isAutocompleteNope(violation) {
   return isAutocompleteAttribute && hasNope;
 }
 
-// Returns story parameters or default ones.
-// Originally inspired by:
-// https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
-
-function getA11yParams(_storyId) {
-  // const {parameters} = window.__STORYBOOK_STORY_STORE__.fromId(storyId)!;
-  return {
-    config: {},
-    options: {},
-  };
-}
-
 function testPage(iframePath, browser, timeout, disableAnimation) {
   return async function (id) {
     console.log(` - ${id}`);
@@ -127,7 +115,28 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         });
       }
 
-      const elementSelector = await page.evaluate((evalVar) => {
+      const a11yParams = await page.evaluate((id) => {
+        // Returns story parameters or default ones.
+        // Originally inspired by:
+        // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
+        function getA11yParams(storyId) {
+          const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
+
+          return (
+            parameters.a11y || {
+              config: {},
+              options: {
+                restoreScroll: true,
+              },
+            }
+          );
+        }
+
+        return getA11yParams(id);
+      });
+      const config = a11yParams.config ? a11yParams.config : {};
+      const options = a11yParams.options ? a11yParams.options : {};
+      const elementSelector = await page.evaluate(() => {
         function nodeToSelector(elem) {
           const { tagName, id, className, parentNode } = elem;
           if (tagName === 'HTML') return 'HTML';
@@ -166,11 +175,6 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         const element = getElement();
         return nodeToSelector(element);
       });
-
-      const a11yParams = getA11yParams(id);
-      const config = a11yParams.config ? a11yParams.config : {};
-      const options = a11yParams.options ? a11yParams.options : {};
-
       const results = await new puppeteer$1.AxePuppeteer(page)
         .include(elementSelector)
         .configure(config)
