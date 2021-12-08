@@ -117,9 +117,8 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         });
       }
 
-      const results = await new puppeteer$1.AxePuppeteer(page) // .configure(storyA11yParams)
-        .include('#story-root')
-        .analyze(); // const result: axeCore.AxeResults = await page.evaluate(
+      const results = await new puppeteer$1.AxePuppeteer(page).analyze(); // .configure(storyA11yParams)
+      // const result: axeCore.AxeResults = await page.evaluate(
       //   async (id: StoryId) => {
       //     // Implementation matching
       //     function getElement(): A11yParametersElement {
