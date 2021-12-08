@@ -64,9 +64,6 @@ interface State {
   showContextualSaveBar: boolean;
 }
 
-const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
-const FRAME_OFFSET_CUSTOM_PROPERTY = '--p-frame-offset';
-
 const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
@@ -306,12 +303,15 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
   private setOffset = () => {
     const {offset = '0px'} = this.props;
-    setRootProperty(FRAME_OFFSET_CUSTOM_PROPERTY, offset);
+    setRootProperty('--pc-frame-offset', offset);
   };
 
   private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
-    setRootProperty(GLOBAL_RIBBON_CUSTOM_PROPERTY, `${globalRibbonHeight}px`);
+    setRootProperty(
+      '--pc-frame-global-ribbon-height',
+      `${globalRibbonHeight}px`,
+    );
   };
 
   private showToast = (toast: ToastPropsWithID) => {

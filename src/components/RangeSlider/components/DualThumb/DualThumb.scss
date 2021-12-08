@@ -36,14 +36,10 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   --pc-dual-thumb-unselected-range: transparent;
   --pc-dual-thumb-selected-range: #{var(--p-interactive)};
   --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
-    var(--pc-dual-thumb-unselected-range)
-      var(--Polaris-RangeSlider-progress-lower),
-    var(--pc-dual-thumb-selected-range)
-      var(--Polaris-RangeSlider-progress-lower),
-    var(--pc-dual-thumb-selected-range)
-      var(--Polaris-RangeSlider-progress-upper),
-    var(--pc-dual-thumb-unselected-range)
-      var(--Polaris-RangeSlider-progress-upper),
+    var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-lower),
+    var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
+    var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-upper),
+    var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-upper),
     var(--pc-dual-thumb-unselected-range) 100%;
   background-image: linear-gradient(
     to right,
@@ -54,13 +50,11 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
     --pc-dual-thumb-selected-range: #{var(--p-action-critical)};
     --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
       var(--pc-dual-thumb-unselected-range)
-        var(--Polaris-RangeSlider-progress-lower),
-      var(--pc-dual-thumb-selected-range)
-        var(--Polaris-RangeSlider-progress-lower),
-      var(--pc-dual-thumb-selected-range)
-        var(--Polaris-RangeSlider-progress-upper),
+        var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-upper),
       var(--pc-dual-thumb-unselected-range)
-        var(--Polaris-RangeSlider-progress-upper),
+        var(--pc-range-slider-progress-upper),
       var(--pc-dual-thumb-unselected-range) 100%;
     background-image: linear-gradient(
       to right,

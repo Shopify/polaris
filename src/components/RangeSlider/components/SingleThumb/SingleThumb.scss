@@ -56,8 +56,8 @@
   // See https://github.com/Shopify/polaris-react/issues/441 and
   // https://github.com/postcss/postcss-custom-properties/issues/150
   --pc-single-thumb-gradient-colors: var(--pc-single-thumb-progress-lower) 0%,
-    var(--pc-single-thumb-progress-lower) var(--Polaris-RangeSlider-progress),
-    var(--pc-single-thumb-progress-upper) var(--Polaris-RangeSlider-progress),
+    var(--pc-single-thumb-progress-lower) var(--pc-range-slider-progress),
+    var(--pc-single-thumb-progress-upper) var(--pc-range-slider-progress),
     var(--pc-single-thumb-progress-upper) 100%;
 
   @mixin rangeSliderThumbPosition($size) {
@@ -162,7 +162,7 @@
 /// Output value indicator
 $range-output-size: 32px;
 $range-output-translate-x: calc(
-  -50% + var(--Polaris-RangeSlider-output-factor) * #{var(
+  -50% + var(--pc-range-slider-output-factor) * #{var(
       --pc-range-slider-thumb-size
     )}
 );
@@ -173,7 +173,7 @@ $range-output-spacing: 16px;
   position: absolute;
   z-index: var(--pc-range-slider-output);
   bottom: var(--pc-range-slider-thumb-size);
-  left: var(--Polaris-RangeSlider-progress);
+  left: var(--pc-range-slider-progress);
   transform: translateX($range-output-translate-x);
   opacity: 0;
   visibility: hidden;

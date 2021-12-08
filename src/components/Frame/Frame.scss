@@ -12,8 +12,8 @@
   }
 
   @include frame-when-nav-displayed {
-    width: calc(100% - var(--p-frame-offset));
-    margin-left: var(--p-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
+    margin-left: var(--pc-frame-offset);
   }
 }
 
@@ -32,7 +32,7 @@
 
   @include frame-when-nav-displayed {
     z-index: 1;
-    left: var(--p-frame-offset);
+    left: var(--pc-frame-offset);
     display: flex;
 
     .hasTopBar & {
@@ -126,8 +126,8 @@
   height: top-bar-height();
 
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
-    width: calc(100% - var(--p-frame-offset));
+    left: var(--pc-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
   }
 }
 
@@ -139,8 +139,8 @@
   width: 100%;
 
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
-    width: calc(100% - var(--p-frame-offset));
+    left: var(--pc-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
   }
 }
 
@@ -175,7 +175,7 @@
 
 .Content {
   position: relative;
-  padding-bottom: var(--global-ribbon-height, 0);
+  padding-bottom: var(--pc-frame-global-ribbon-height, 0);
   flex: 1;
   @include layout-flex-fix;
 }
@@ -187,16 +187,16 @@
   width: 100%;
 
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
+    left: var(--pc-frame-offset);
 
     .hasNav & {
-      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+      left: calc(#{layout-width(nav)} + var(--pc-frame-offset));
       @include safe-area-for(
         left,
-        calc(#{layout-width(nav)} + var(--p-frame-offset)),
+        calc(#{layout-width(nav)} + var(--pc-frame-offset)),
         left
       );
-      width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
+      width: calc(100% - #{layout-width(nav)} - var(--pc-frame-offset));
     }
   }
 }
@@ -211,7 +211,7 @@
 
   @include frame-when-nav-displayed {
     .hasNav & {
-      left: var(--p-frame-offset);
+      left: var(--pc-frame-offset);
     }
 
     .hasTopBar & {
@@ -225,7 +225,7 @@
   position: fixed;
   z-index: var(--p-z-9);
   top: var(--pc-frame-skip-vertical-offset);
-  left: calc(var(--p-space-2) + var(--p-frame-offset));
+  left: calc(var(--p-space-2) + var(--pc-frame-offset));
   opacity: 0;
   pointer-events: none;
 
