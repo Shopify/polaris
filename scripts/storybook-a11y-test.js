@@ -53,6 +53,53 @@ function removeSkippedStories(skippedStoryIds) {
   };
 }
 
+async function getA11yParams(storyId, iframePath) {
+  const browser = await getBrowser();
+  const page = await browser.newPage();
+  await page.goto(iframePath);
+  const parameters = await page.evaluate(() => {
+    const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
+
+    return parameters;
+  });
+  await page.close();
+  await browser.close();
+  return (
+    parameters.a11y || {
+      config: {},
+      options: {
+        restoreScroll: true,
+      },
+    }
+  );
+}
+
+function nodeToSelector(element) {
+  const { tagName, id, className, parentNode } = element;
+  let elementTagName = tagName;
+  elementTagName += id === '' ? '' : `#${id}`;
+
+  if (className) {
+    const classes = className.split(/\s/);
+    classes.forEach((cssClass) => {
+      elementTagName += `.${cssClass}`;
+    });
+  }
+
+  let childIndex = 1;
+
+  for (
+    let currentElement = element;
+    currentElement.previousElementSibling;
+    currentElement = currentElement.previousElementSibling
+  ) {
+    childIndex += 1;
+  }
+
+  elementTagName += `:nth-child(${childIndex})`;
+  return `${nodeToSelector(parentNode)} > ${elementTagName}`;
+}
+
 async function getCurrentStoryIds({ iframePath, skippedStoryIds = [] }) {
   const stories =
     process.argv[2] == null
@@ -94,6 +141,9 @@ function isAutocompleteNope(violation) {
 function testPage(iframePath, browser, timeout, disableAnimation) {
   return async function (id) {
     console.log(` - ${id}`);
+    const a11yParams = await getA11yParams(id, iframePath);
+    const config = a11yParams.config ? a11yParams.config : {};
+    const options = a11yParams.options ? a11yParams.options : {};
 
     try {
       const page = await browser.newPage();
@@ -115,56 +165,7 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         });
       }
 
-      const a11yParams = await page.evaluate((id) => {
-        // Returns story parameters or default ones.
-        // Originally inspired by:
-        // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
-        function getA11yParams(storyId) {
-          const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
-
-          return (
-            parameters.a11y || {
-              config: {},
-              options: {
-                restoreScroll: true,
-              },
-            }
-          );
-        }
-
-        return getA11yParams(id);
-      });
-      const config = a11yParams.config ? a11yParams.config : {};
-      const options = a11yParams.options ? a11yParams.options : {};
       const elementSelector = await page.evaluate(() => {
-        function nodeToSelector(elem) {
-          const { tagName, id, className, parentNode } = elem;
-          if (tagName === 'HTML') return 'HTML';
-          let str = tagName;
-          str += id === '' ? '' : `#${id}`;
-
-          if (className) {
-            const classes = className.split(/\s/); // eslint-disable-next-line @typescript-eslint/prefer-for-of
-
-            for (let i = 0; i < classes.length; i++) {
-              str += `.${classes[i]}`;
-            }
-          }
-
-          let childIndex = 1;
-
-          for (
-            let e = elem;
-            e.previousElementSibling;
-            e = e.previousElementSibling
-          ) {
-            childIndex += 1;
-          }
-
-          str += `:nth-child(${childIndex})`;
-          return `${nodeToSelector(parentNode)} > ${str}`;
-        }
-
         function getElement() {
           const storyRoot = document.getElementById('story-root');
           return storyRoot
