@@ -7,8 +7,3 @@ node_modules
 *.scss.d.ts
 /src/styles/polaris-tokens
 .idea
-
-index.esnext
-index.js
-index.mjs
-!scripts/**/index.js

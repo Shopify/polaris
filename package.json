@@ -149,7 +149,6 @@
     "size-limit": "^5.0.3",
     "stylelint": "^14.1.0",
     "svgo": "^1.3.0",
-    "ts-node": "^10.4.0",
     "typescript": "~4.3.5"
   },
   "browserslist": [
@@ -164,8 +163,6 @@
   ],
   "prettier": "@shopify/prettier-config",
   "stylelint": {
-    "customSyntax": "postcss-scss",
-    "plugins": "./scripts/stylelint/plugins/custom-properties-allowed-list",
     "extends": [
       "@shopify/stylelint-plugin/prettier",
       "./scripts/stylelint/config"

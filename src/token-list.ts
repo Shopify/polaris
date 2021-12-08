@@ -1,20 +1,15 @@
-import {tokens, TokenGroup, ColorSchemes} from '../../../src/tokens/tokens';
+import {tokens, TokenGroup, ColorSchemes} from './tokens';
 
 function getPolarisCustomProperties(tokens: TokenGroup) {
   return Object.keys(tokens).map((token) => `--p-${token}`);
 }
 
 /**
- * Allowed custom property names in Polaris component styles.
- */
-const polarisComponentCustomProperties = /--pc-.+/;
-
-/**
  * Allowed Polaris token custom properties.
  *
  * Result: ['--p-background', '--p-text', etc...]
  */
-const polarisTokenCustomProperties = Array.from(
+export const tokenList = Array.from(
   new Set(
     Object.entries(tokens)
       .map((entry) => {
@@ -38,22 +33,3 @@ const polarisTokenCustomProperties = Array.from(
       .flat(Infinity),
   ),
 );
-
-const rules = {
-  '@shopify/custom-properties-allowed-list': {
-    allowedProperties: [
-      '--polaris-version-number',
-      polarisComponentCustomProperties,
-    ],
-    allowedValues: {
-      '/.+/': [
-        polarisComponentCustomProperties,
-        ...polarisTokenCustomProperties,
-      ],
-    },
-  },
-};
-
-export const stylelintConfig = {
-  rules,
-};
