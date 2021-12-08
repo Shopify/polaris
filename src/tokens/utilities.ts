@@ -1,4 +1,5 @@
+const BASE_FONT_SIZE = 16;
+
 export function rem(px: string) {
-  const baseFontSize = 16;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
+  return `${parseInt(px, 10) / BASE_FONT_SIZE}rem`;
 }
