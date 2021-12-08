@@ -60,7 +60,7 @@ export function SingleThumb(props: SingleThumbProps) {
     '--pc-range-slider-current': clampedValue,
     '--pc-range-slider-progress': `${sliderProgress}%`,
     '--pc-range-slider-output-factor': `${outputFactor}`,
-  };
+  } as React.CSSProperties;
 
   const outputMarkup = !disabled && output && (
     <output htmlFor={id} className={styles.Output}>

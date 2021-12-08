@@ -213,7 +213,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     const cssVars = {
       '--pc-range-slider-progress-lower': `${leftPositionThumbLower}px`,
       '--pc-range-slider-progress-upper': `${leftPositionThumbUpper}px`,
-    };
+    } as React.CSSProperties;
 
     const prefixMarkup = prefix && (
       <div className={styles.Prefix}>{prefix}</div>
