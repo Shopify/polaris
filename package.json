@@ -66,8 +66,7 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static",
-    "check-script-types": "tsc -p scripts/tsconfig.json"
+    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build-internal/storybook/static"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.10.0",
