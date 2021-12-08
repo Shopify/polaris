@@ -1998,14 +1998,6 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.10.0.tgz#fbfc0628c7da0786a6cbe9069ee007070762a4ac"
   integrity sha512-TxOJeLd4qXNl8bhEtJ3bQrjMgdOTzw3xDfKhqWTinBMcjDsW0+Rb8ynSsxzS9ut821L3qXJK9AnJZwoR/Yd8nw==
 
-"@shopify/polaris-tokens@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-3.0.0.tgz#7e6a6d3ac3fa2ba75a19f9bd5db260f904758844"
-  integrity sha512-6ClNAkklttSqtGtBTSoSX+RG3M2fLX8nh6YMKvG6eLRMfkPAFq19krh8jgJ3+8uUqgdmA3VvNFYnNxbdyqbrQQ==
-  dependencies:
-    hsluv "^0.1.0"
-    tslib "^1.14.1"
-
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz#2926cc11ef5ca456b8ac6586810c0f284136fc17"
@@ -8091,11 +8083,6 @@ hosted-git-info@^4.0.1:
   integrity sha512-c9OGXbZ3guC/xOlCg1Ci/VgWlwsqDv1yMQL1CWqXDL0hDjXuNcq0zuR4xqPSuasI3kqFDhqSyTjREz5gzq0fXg==
   dependencies:
     lru-cache "^6.0.0"
-
-hsluv@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-0.1.0.tgz#29f40d49642bd56dd0c192122abcc723bb5c2d6c"
-  integrity sha512-ERcanKLAszD2XN3Vh5r5Szkrv9q0oSTudmP0rkiKAGM/3NMc9FLmMZBB7TSqTaXJfSDBOreYTfjezCOYbRKqlw==
 
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
