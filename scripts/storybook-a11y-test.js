@@ -122,17 +122,12 @@ function getElement() {
 // Originally inspired by:
 // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
 
-function getA11yParams(storyId) {
-  const { parameters } = window.__STORYBOOK_STORY_STORE__.fromId(storyId);
-
-  return (
-    parameters.a11y || {
-      config: {},
-      options: {
-        restoreScroll: true,
-      },
-    }
-  );
+function getA11yParams(_storyId) {
+  // const {parameters} = window.__STORYBOOK_STORY_STORE__.fromId(storyId)!;
+  return {
+    config: {},
+    options: {},
+  };
 }
 
 function testPage(iframePath, browser, timeout, disableAnimation) {
@@ -168,50 +163,7 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         .include(elementSelector)
         .configure(config)
         .options(options)
-        .analyze(); // const result: axeCore.AxeResults = await page.evaluate(
-      //   async (id: StoryId) => {
-      //     // Implementation matching
-      //     function getElement(): A11yParametersElement {
-      //       const storyRoot = document.getElementById('story-root');
-      //       return storyRoot
-      //         ? storyRoot.childNodes
-      //         : document.getElementById('root')!;
-      //     }
-      //     // Returns story parameters or default ones.
-      //     // Originally inspired by:
-      //     // https://github.com/storybookjs/storybook/blob/78c580eac4c91231b5966116492e34de0a0df66f/addons/a11y/src/a11yRunner.ts#L69-L80
-      //     function getA11yParams(storyId: StoryId): A11yParameters {
-      //       const {parameters} = window.__STORYBOOK_STORY_STORE__.fromId(
-      //         storyId,
-      //       )!;
-      //       return (
-      //         parameters.a11y || {
-      //           config: {},
-      //           options: {
-      //             restoreScroll: true,
-      //           },
-      //         }
-      //       );
-      //     }
-      //     const storyA11yParams = getA11yParams(id);
-      //     const {
-      //       // Context for axe to analyze
-      //       // https://www.deque.com/axe/core-documentation/api-documentation/#context-parameter
-      //       element = getElement(),
-      //       // axe-core configurationOptions (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#parameters-1)
-      //       config,
-      //       // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
-      //       options = {},
-      //     } = storyA11yParams;
-      //     window.axe.reset();
-      //     if (config) {
-      //       window.axe.configure(config);
-      //     }
-      //     return window.axe.run(element as ElementContext, options);
-      //   },
-      //   id,
-      // );
-
+        .analyze();
       await page.close();
 
       if (results.violations && results.violations.length) {
