@@ -105,7 +105,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(tokens.motion['duration-200'], 10));
+        }, parseInt(tokens.motion['duration-100'], 10));
       });
     }
 
