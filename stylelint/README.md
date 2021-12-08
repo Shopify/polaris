@@ -48,10 +48,10 @@ const stylelintConfig = {
 ### Run all linters
 
 ```
-yarn lint 
+yarn lint
 ```
 
-OR 
+OR
 
 ```
 yarn stylelint <file-glob>

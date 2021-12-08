@@ -24,7 +24,5 @@
     "examples/*/build": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.words": [
-    "unprefixed"
-  ]
+  "cSpell.words": ["unprefixed"]
 }
