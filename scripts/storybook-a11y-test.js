@@ -5,10 +5,35 @@ const os = require('os');
 const puppeteer = require('puppeteer');
 const pMap = require('p-map');
 const chalk = require('chalk');
-const axe = require('axe-core');
 
 function _interopDefaultLegacy(e) {
   return e && typeof e === 'object' && 'default' in e ? e : { default: e };
+}
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  const n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        const d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(
+          n,
+          k,
+          d.get
+            ? d
+            : {
+              enumerable: true,
+              get() {
+                return e[k];
+              },
+            },
+        );
+      }
+    });
+  }
+  n.default = e;
+  return Object.freeze(n);
 }
 
 const os__default = /* #__PURE__*/ _interopDefaultLegacy(os);
@@ -26,7 +51,6 @@ function getBrowser() {
 }
 
 async function getStoryIds(iframePath) {
-  console.log('Story ids...');
   const browser = await getBrowser();
   const page = await browser.newPage();
   await page.goto(iframePath);
@@ -117,7 +141,6 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
       }
 
       const result = await page.evaluate(async (id) => {
-        console.log('axe', window.axe);
         // Implementation matching
         function getElement() {
           const storyRoot = document.getElementById('story-root');
@@ -141,6 +164,9 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
           );
         }
 
+        const axe = await Promise.resolve().then(function () {
+          return /* #__PURE__*/ _interopNamespace(require('axe-core'));
+        });
         const storyA11yParams = getA11yParams(id);
         const {
           // Context for axe to analyze
