@@ -1,22 +1,19 @@
 @import '../../styles/common';
 
 $min-height: control-height();
-$vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
-$slim-min-height: rem(28px);
-$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
-$large-min-height: rem(44px);
-$large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
-$spinner-size: rem(20px);
+$vertical-padding: ($min-height - line-height(body) - 2px) / 2;
+$slim-min-height: 28px;
+$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
+$large-min-height: 44px;
+$large-vertical-padding: ($large-min-height - line-height(body) - 2px) / 2;
+$spinner-size: 20px;
 
 $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
 
-$stacking-order: (
-  segment: 10,
-  focused: 20,
-);
-
 .Button {
+  --pc-button-segment: 10;
+  --pc-button-focused: 20;
   @include button-base;
 
   &.disabled {
@@ -24,7 +21,7 @@ $stacking-order: (
   }
 
   &.connectedDisclosure {
-    z-index: z-index(segment, $stacking-order);
+    z-index: var(--pc-button-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -34,7 +31,7 @@ $stacking-order: (
     }
 
     &:focus {
-      z-index: z-index(focused, $stacking-order);
+      z-index: var(--pc-button-focused);
     }
   }
 }
@@ -79,14 +76,14 @@ $stacking-order: (
 .Icon {
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
-  margin-left: -(spacing(extra-tight));
+  margin-left: calc(-1 * (var(--p-space-1)));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -(spacing(tight));
-    margin-left: spacing(extra-tight);
+    margin-right: calc(-1 * (var(--p-space-2)));
+    margin-left: var(--p-space-1);
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
@@ -95,7 +92,7 @@ $stacking-order: (
   }
 
   + *:not(.Icon) {
-    margin-left: spacing(extra-tight);
+    margin-left: var(--p-space-1);
   }
 }
 
@@ -124,11 +121,11 @@ $stacking-order: (
 }
 
 .primary {
-  --p-button-color: var(--p-action-primary);
-  --p-button-text: var(--p-text-on-primary);
-  --p-button-color-hover: var(--p-action-primary-hovered);
-  --p-button-color-active: var(--p-action-primary-pressed);
-  --p-button-color-depressed: var(--p-action-primary-depressed);
+  --pc-button-color: var(--p-action-primary);
+  --pc-button-text: var(--p-text-on-primary);
+  --pc-button-color-hover: var(--p-action-primary-hovered);
+  --pc-button-color-active: var(--p-action-primary-pressed);
+  --pc-button-color-depressed: var(--p-action-primary-depressed);
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
@@ -137,11 +134,11 @@ $stacking-order: (
 }
 
 .destructive {
-  --p-button-color: var(--p-action-critical);
-  --p-button-text: var(--p-text-on-critical);
-  --p-button-color-hover: var(--p-action-critical-hovered);
-  --p-button-color-active: var(--p-action-critical-pressed);
-  --p-button-color-depressed: var(--p-action-critical-depressed);
+  --pc-button-color: var(--p-action-critical);
+  --pc-button-text: var(--p-text-on-critical);
+  --pc-button-color-hover: var(--p-action-critical-hovered);
+  --pc-button-color-active: var(--p-action-critical-pressed);
+  --pc-button-color-depressed: var(--p-action-critical-depressed);
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
@@ -193,9 +190,9 @@ $stacking-order: (
 // stylelint-disable selector-max-specificity, selector-max-class
 .plain {
   @include recolor-icon(var(--p-interactive));
-  margin: (-1 * $vertical-padding) rem(-8px);
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  margin: (-1 * $vertical-padding) calc(-1 * var(--p-space-2));
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -285,7 +282,7 @@ $stacking-order: (
   }
 
   &.sizeLarge {
-    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+    margin: (-1 * $large-vertical-padding) calc(-1 * var(--p-space-5));
   }
 
   &.iconOnly {
@@ -335,12 +332,12 @@ $stacking-order: (
 }
 
 .iconOnly {
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
 
   &.sizeLarge {
-    padding-left: spacing(base-tight);
-    padding-right: spacing(base-tight);
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
   }
 
   .Icon:first-child {
@@ -348,7 +345,7 @@ $stacking-order: (
   }
 
   .Icon:last-child {
-    margin-right: rem(-4px);
+    margin-right: calc(-1 * var(--p-space-1));
   }
 
   .Icon:only-child {
@@ -358,13 +355,13 @@ $stacking-order: (
 
 .sizeSlim {
   min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
+  padding: $slim-vertical-padding var(--p-space-3);
 }
 
 .sizeLarge {
   min-height: $large-min-height;
   min-width: $large-min-height;
-  padding: $large-vertical-padding rem(24px);
+  padding: $large-vertical-padding var(--p-space-6);
 
   .Content {
     @include text-style-button-large;
@@ -408,11 +405,11 @@ $stacking-order: (
   }
 
   &.plain {
-    // stylelint-disable selector-max-class, max-nesting-depth
+    // stylelint-disable selector-max-class
     .Text:not(.removeUnderline) {
       text-decoration: underline;
     }
-    // stylelint-enable selector-max-class, max-nesting-depth
+    // stylelint-enable selector-max-class
   }
 
   &.outline {
@@ -420,7 +417,7 @@ $stacking-order: (
     border-color: currentColor;
     // stylelint-disable selector-max-class
     box-shadow: 0 0 0 border-width('base') currentColor;
-    @include focus-ring($border-width: rem(2px));
+    @include focus-ring($border-width: 2px);
 
     &::before {
       content: '';
@@ -449,6 +446,7 @@ $stacking-order: (
     &:active {
       background-color: transparent;
       border-color: currentColor;
+
       &::before {
         opacity: 0.07;
       }
@@ -465,7 +463,6 @@ $stacking-order: (
 
     &:hover,
     &:active {
-      // stylelint-disable-next-line max-nesting-depth
       &::before {
         opacity: 0.05;
       }
@@ -480,7 +477,7 @@ $stacking-order: (
 }
 
 .ConnectedDisclosure {
-  z-index: z-index(segment, $stacking-order);
+  z-index: var(--pc-button-segment);
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -496,12 +493,12 @@ $stacking-order: (
 
   &:focus,
   &:active {
-    z-index: z-index(focused, $stacking-order);
+    z-index: var(--pc-button-focused);
   }
 
   &.primary,
   &.destructive {
-    margin-left: rem(1px);
+    margin-left: var(--p-space-025);
 
     // stylelint-disable-next-line selector-max-class
     &.outline {
@@ -515,28 +512,30 @@ $stacking-order: (
     border-bottom-left-radius: 0;
   }
 }
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-disable selector-max-combinators, selector-max-specificity
 [data-buttongroup-segmented='true'] {
   .Button,
   .Button::after {
     border-radius: 0;
   }
+
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
-    border-top-left-radius: var(--p-border-radius-base);
-    border-bottom-left-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-bottom-left-radius: var(--p-border-radius-1);
   }
+
   > :last-child .Button,
   > :last-child .Button::after {
     border-radius: 0;
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 
   > :last-child:first-child .Button,
   > :last-child:first-child .Button::after {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
@@ -557,4 +556,4 @@ $stacking-order: (
     @include button-full-width;
   }
 }
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-enable selector-max-combinators, selector-max-specificity

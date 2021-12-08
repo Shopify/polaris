@@ -1,24 +1,18 @@
 @import '../../styles/common';
 
-/// Adjusts the spacing for the stack and contained items.
-/// @param {String} $spacing - The spacing variant to use.
-
-@mixin stack-spacing($spacing: base) {
-  margin-top: -1 * spacing($spacing);
-  margin-left: -1 * spacing($spacing);
-
-  > .Item {
-    margin-top: spacing($spacing);
-    margin-left: spacing($spacing);
-    max-width: 100%;
-  }
-}
-
 .Stack {
-  @include stack-spacing;
+  --pc-stack-spacing: var(--p-space-4);
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  margin-top: calc(-1 * var(--pc-stack-spacing));
+  margin-left: calc(-1 * var(--pc-stack-spacing));
+
+  > .Item {
+    margin-top: var(--pc-stack-spacing);
+    margin-left: var(--pc-stack-spacing);
+    max-width: 100%;
+  }
 }
 
 .noWrap {
@@ -26,27 +20,27 @@
 }
 
 .spacingNone {
-  @include stack-spacing(none);
+  --pc-stack-spacing: var(--p-space-0);
 }
 
 .spacingExtraTight {
-  @include stack-spacing(extra-tight);
+  --pc-stack-spacing: var(--p-space-1);
 }
 
 .spacingTight {
-  @include stack-spacing(tight);
+  --pc-stack-spacing: var(--p-space-2);
 }
 
 .spacingBaseTight {
-  @include stack-spacing(base-tight);
+  --pc-stack-spacing: var(--p-space-3);
 }
 
 .spacingLoose {
-  @include stack-spacing(loose);
+  --pc-stack-spacing: var(--p-space-5);
 }
 
 .spacingExtraLoose {
-  @include stack-spacing(extra-loose);
+  --pc-stack-spacing: var(--p-space-8);
 }
 
 .distributionLeading {
@@ -100,10 +94,10 @@
 
 .vertical {
   flex-direction: column;
-  margin-left: spacing(none);
+  margin-left: var(--p-space-0);
 
   > .Item {
-    margin-left: spacing(none);
+    margin-left: var(--p-space-0);
   }
 }
 

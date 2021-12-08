@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$skeleton-display-text-max-width: rem(120px);
+$skeleton-display-text-max-width: 120px;
 
 @mixin skeleton-display-text-height($size) {
   height: line-height($size);

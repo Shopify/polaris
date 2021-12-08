@@ -1,8 +1,8 @@
 @import '../../../../styles/common';
 
 .Details {
-  max-width: rem(160px);
-  margin-left: spacing(tight);
+  max-width: 160px;
+  margin-left: var(--p-space-2);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     display: none;

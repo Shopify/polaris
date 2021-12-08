@@ -14,7 +14,7 @@
 
     // stylelint-disable-next-line selector-max-specificity, selector-max-class
     &::after {
-      border-radius: 50%;
+      border-radius: var(--p-border-radius-6);
     }
   }
 
@@ -50,7 +50,7 @@
   width: 100%;
   height: 100%;
   border: var(--p-control-border-width) solid var(--p-border);
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-6);
   background-color: var(--p-surface);
   transition: border-color var(--p-duration-100) var(--p-ease);
 
@@ -65,19 +65,19 @@
     height: var(--p-icon-size);
     width: var(--p-icon-size);
     background-color: var(--p-interactive);
-    border-radius: 50%;
+    border-radius: var(--p-border-radius-6);
     transition: opacity var(--p-duration-100) var(--p-ease),
       transform var(--p-duration-100) var(--p-ease);
 
     @media (forced-colors: active) {
-      @include high-contrast-border(rem(5px));
+      @include high-contrast-border(5px);
     }
   }
 
   @include focus-ring($border-width: var(--p-control-border-width));
 
   &::after {
-    border-radius: 50%;
+    border-radius: var(--p-border-radius-6);
   }
 
   &.hover,

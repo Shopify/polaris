@@ -1,15 +1,10 @@
 @import '../../styles/common';
 
-$dropzone-padding: rem(15px);
+$dropzone-padding: var(--p-space-4);
 $dropzone-border-style: dashed;
-$dropzone-min-height-large: rem(100px);
-$dropzone-min-height-medium: rem(100px);
-$dropzone-min-height-small: rem(50px);
-
-$dropzone-stacking-order: (
-  outline: 29,
-  overlay: 30,
-);
+$dropzone-min-height-large: 100px;
+$dropzone-min-height-medium: 100px;
+$dropzone-min-height-small: 50px;
 
 @mixin reset-after {
   top: 0;
@@ -22,33 +17,32 @@ $dropzone-stacking-order: (
 }
 
 @mixin set-border-radius {
-  border-radius: calc(
-    var(--p-border-radius-base) + #{border-width()} + #{rem(1px)}
-  );
+  border-radius: calc(var(--p-border-radius-1) + #{border-width()} + #{1px});
 }
 
 .DropZone {
+  --pc-drop-zone-outline: 29;
+  --pc-drop-zone-overlay: 30;
   position: relative;
   display: flex;
   justify-content: center;
   background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 
   &::after {
     content: '';
     position: absolute;
-    z-index: z-index(outline, $dropzone-stacking-order);
+    z-index: var(--pc-drop-zone-outline);
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     border: border-width() $dropzone-border-style transparent;
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
     pointer-events: none;
   }
 
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
     }
@@ -78,9 +72,7 @@ $dropzone-stacking-order: (
     }
   }
 
-  // stylelint-disable-next-line selector-max-specificity
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
       @include set-border-radius;
@@ -131,7 +123,7 @@ $dropzone-stacking-order: (
 .Overlay {
   @include set-border-radius;
   position: absolute;
-  z-index: z-index(overlay, $dropzone-stacking-order);
+  z-index: var(--pc-drop-zone-overlay);
   top: 0;
   right: 0;
   bottom: 0;
@@ -159,7 +151,6 @@ $dropzone-stacking-order: (
 
 .focused {
   &:not(.isDisabled) {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     .Container {
       @include focus-ring($style: 'focused');
     }

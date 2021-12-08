@@ -2,6 +2,7 @@ import {setActivatorAttributes} from '../set-activator-attributes';
 
 describe('setActivatorAttributes', () => {
   const id = 'id';
+
   it('applies aria-controls to the activator', () => {
     const div = document.createElement('div');
     setActivatorAttributes(div, {

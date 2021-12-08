@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$small-width: rem(620px);
+$small-width: 620px;
 
 .BodyWrapper {
   display: flex;
@@ -25,6 +25,6 @@ $small-width: rem(620px);
 }
 
 .Spinner {
-  margin: spacing();
+  margin: var(--p-space-4);
   text-align: center;
 }

@@ -2,8 +2,8 @@
 
 .Icon {
   display: block;
-  height: rem(20px);
-  width: rem(20px);
+  height: 20px;
+  width: 20px;
   max-height: 100%;
   max-width: 100%;
   margin: auto;
@@ -17,16 +17,16 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin: spacing(extra-tight);
+  margin: var(--p-space-1);
 
   &::before {
     content: '';
     position: absolute;
-    top: -1 * spacing(extra-tight);
-    bottom: -1 * spacing(extra-tight);
-    left: -1 * spacing(extra-tight);
-    right: -1 * spacing(extra-tight);
-    border-radius: 50%;
+    top: calc(-1 * var(--p-space-1));
+    bottom: calc(-1 * var(--p-space-1));
+    left: calc(-1 * var(--p-space-1));
+    right: calc(-1 * var(--p-space-1));
+    border-radius: var(--p-border-radius-6);
   }
 }
 

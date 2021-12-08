@@ -57,6 +57,7 @@ describe('<Title />', () => {
       ...mockProps,
       titleMetadata: <Badge>Sold</Badge>,
     };
+
     it('renders the titleMetadata when defined', () => {
       const pageTitle = mountWithApp(<Title {...propsWithMetadata} />);
       expect(pageTitle).toContainReactComponent(Badge);

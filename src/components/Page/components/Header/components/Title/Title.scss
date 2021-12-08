@@ -3,17 +3,18 @@
 .Title {
   @include text-breakword;
   @include text-emphasis-strong;
-  font-size: rem(24px);
-  line-height: rem(28px);
+  font-size: 24px;
+  line-height: 28px;
 
   @include when-typography-not-condensed {
-    font-size: rem(20px);
+    font-size: 20px;
   }
 }
 
 .SubTitle {
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
   color: var(--p-text-subdued);
+
   &.SubtitleCompact {
     margin-top: 0;
   }
@@ -26,7 +27,7 @@
 
   .Title {
     display: inline;
-    margin-right: spacing(tight);
+    margin-right: var(--p-space-2);
 
     // stylelint-disable-next-line selector-max-combinators
     > * {

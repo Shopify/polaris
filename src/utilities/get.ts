@@ -1,7 +1,7 @@
 const OBJECT_NOTATION_MATCHER = /\[(.*?)\]|(\w+)/g;
 
 export function get<T>(
-  obj: Record<string, any> | undefined,
+  obj: {[key: string]: any} | undefined,
   keypath: string | string[],
   defaultValue?: T,
 ): T | any {

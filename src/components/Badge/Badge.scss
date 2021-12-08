@@ -1,24 +1,23 @@
 @import '../../styles/common';
-$horizontal-padding: spacing(tight);
-$vertical-padding: calc(#{spacing(extra-tight)} - #{rem(2px)});
-
-$pip-size: spacing(tight);
-$pip-spacing: calc(#{$pip-size} / 2);
 
 .Badge {
-  --p-component-badge-pip-color: var(--p-icon);
+  --pc-badge-horizontal-padding: var(--p-space-2);
+  --pc-badge-vertical-padding: calc(var(--p-space-1) - 2px);
+  --pc-badge-pip-size: var(--p-space-2);
+  --pc-badge-pip-spacing: calc(var(--pc-badge-pip-size) / 2);
+  --pc-badge-component-badge-pip-color: var(--p-icon);
   display: inline-flex;
   align-items: center;
-  padding: $vertical-padding $horizontal-padding;
+  padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
   background-color: var(--p-surface-neutral);
-  border-radius: spacing(loose);
+  border-radius: var(--p-border-radius-5);
   font-size: font-size(caption);
   line-height: line-height(caption, large-screen);
   color: var(--p-text);
   font-weight: var(--p-font-weight-regular);
 
   @media print {
-    border: solid rem(0.1px) var(--p-border);
+    border: solid 0.1px var(--p-border);
   }
 }
 
@@ -27,31 +26,31 @@ $pip-spacing: calc(#{$pip-size} / 2);
 }
 
 .statusSuccess {
-  --p-component-badge-pip-color: var(--p-icon-success);
+  --pc-badge-component-badge-pip-color: var(--p-icon-success);
   background-color: var(--p-surface-success);
   color: var(--p-text);
 }
 
 .statusInfo {
-  --p-component-badge-pip-color: var(--p-icon-highlight);
+  --pc-badge-component-badge-pip-color: var(--p-icon-highlight);
   background-color: var(--p-surface-highlight);
   color: var(--p-text);
 }
 
 .statusAttention {
-  --p-component-badge-pip-color: var(--p-text-warning);
+  --pc-badge-component-badge-pip-color: var(--p-text-warning);
   background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 
 .statusWarning {
-  --p-component-badge-pip-color: var(--p-icon-warning);
+  --pc-badge-component-badge-pip-color: var(--p-icon-warning);
   background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 
 .statusCritical {
-  --p-component-badge-pip-color: var(--p-icon-critical);
+  --pc-badge-component-badge-pip-color: var(--p-icon-critical);
   background-color: var(--p-surface-critical);
   color: var(--p-text);
 }
@@ -64,13 +63,15 @@ $pip-spacing: calc(#{$pip-size} / 2);
 }
 
 .Pip {
-  color: var(--p-component-badge-pip-color);
-  height: $pip-size;
-  width: $pip-size;
-  margin-right: $pip-spacing;
-  margin-left: calc(#{$vertical-padding} - #{$pip-spacing});
+  color: var(--pc-badge-component-badge-pip-color);
+  height: var(--pc-badge-pip-size);
+  width: var(--pc-badge-pip-size);
+  margin-right: var(--pc-badge-pip-spacing);
+  margin-left: calc(
+    var(--pc-badge-vertical-padding) - var(--pc-badge-pip-spacing)
+  );
   border: border-width(thick) solid currentColor;
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-6);
   flex-shrink: 0;
 }
 
@@ -114,5 +115,5 @@ $pip-spacing: calc(#{$pip-size} / 2);
 }
 
 .withinFilter {
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 }

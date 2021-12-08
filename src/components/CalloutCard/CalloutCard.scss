@@ -8,16 +8,16 @@
 .Image {
   display: none;
   flex: 0 0 auto;
-  width: rem(100px);
+  width: 100px;
 
   @include page-content-when-not-fully-condensed {
     display: block;
-    margin-left: spacing(loose);
+    margin-left: var(--p-space-5);
   }
 }
 
 .DismissImage {
-  margin-right: spacing(loose);
+  margin-right: var(--p-space-5);
 }
 
 .Content {
@@ -25,11 +25,11 @@
 }
 
 .Title {
-  margin-bottom: spacing(loose);
+  margin-bottom: var(--p-space-5);
 }
 
 .Buttons {
-  margin-top: spacing(loose);
+  margin-top: var(--p-space-5);
 }
 
 .Container {
@@ -37,11 +37,11 @@
 }
 
 .Dismiss {
-  right: spacing();
-  top: spacing();
+  right: var(--p-space-4);
+  top: var(--p-space-4);
   position: absolute;
 }
 
 .hasDismiss {
-  padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  padding-right: calc(2 * var(--p-space-4) + var(--p-icon-size));
 }

@@ -1,37 +1,29 @@
 @import '../../styles/common';
 
-$picker-size: rem(160px);
-$dragger-size: rem(18px);
-$inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
-
-$stacking-order: (
-  color: 10,
-  adjustments: 20,
-  dragger: 30,
-);
-
 @mixin checkers {
   background: repeating-conic-gradient(
       var(--p-surface) 0% 25%,
       var(--p-surface-neutral-subdued) 0% 50%
     )
-    50% / #{spacing() spacing()};
+    50% / var(--p-space-4) var(--p-space-4);
 }
 
 .ColorPicker {
+  --pc-color-picker-size: 160px;
+  --pc-color-picker-dragger-size: 18px;
+  --pc-color-picker: 10;
+  --pc-color-picker-adjustments: 20;
+  --pc-color-picker-dragger: 30;
   user-select: none;
   display: flex;
 }
-
-// stylelint-disable selector-max-class
-// stylelint-disable selector-max-combinators
 
 .MainColor {
   @include checkers;
   position: relative;
   overflow: hidden;
-  height: $picker-size;
-  width: $picker-size;
+  height: var(--pc-color-picker-size);
+  width: var(--pc-color-picker-size);
 
   .fullWidth & {
     width: auto;
@@ -39,30 +31,30 @@ $stacking-order: (
   }
 
   // Need an extra pixel to avoid a small color bleed from happening
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   cursor: pointer;
 
   .Dragger {
-    right: 0.5 * $dragger-size;
+    right: calc(0.5 * var(--pc-color-picker-dragger-size));
     margin: 0;
   }
 
   .ColorLayer {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::after,
   &::before {
     content: '';
     position: absolute;
-    z-index: z-index(adjustments, $stacking-order);
+    z-index: var(--pc-color-picker-adjustments);
     top: 0;
     left: 0;
     display: block;
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 
   &::before {
@@ -76,39 +68,41 @@ $stacking-order: (
 
 .Dragger {
   position: relative;
-  z-index: z-index(dragger, $stacking-order);
-  bottom: 0.5 * $dragger-size;
+  z-index: var(--pc-color-picker-dragger);
+  bottom: calc(0.5 * var(--pc-color-picker-dragger-size));
   transform: none;
-  height: $dragger-size;
-  width: $dragger-size;
+  height: var(--pc-color-picker-dragger-size);
+  width: var(--pc-color-picker-dragger-size);
   margin: 0 auto;
   will-change: transform;
   background: transparent;
-  border: var(--p-border-radius-base) solid var(--p-surface);
-  border-radius: 50%;
+  border: var(--p-border-radius-1) solid var(--p-surface);
+  border-radius: var(--p-border-radius-6);
   pointer-events: none;
 }
 
 $green: rgb(0, 255, 0);
 $purple: rgb(255, 0, 255);
-$huepicker-padding: $dragger-size;
-$huepicker-bottom-padding-start: $picker-size - $dragger-size;
+$huepicker-padding: var(--pc-color-picker-dragger-size);
+$huepicker-bottom-padding-start: calc(
+  var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size)
+);
 
 .HuePicker,
 .AlphaPicker {
   position: relative;
   overflow: hidden;
-  height: $picker-size;
-  width: rem(24px);
-  margin-left: spacing(tight);
-  border-width: var(--p-border-radius-base);
-  border-radius: $picker-size * 0.5;
+  height: var(--pc-color-picker-size);
+  width: var(--p-space-6);
+  margin-left: var(--p-space-2);
+  border-width: var(--p-border-radius-1);
+  border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .HuePicker {
   background-image: linear-gradient(
     to bottom,
-    red $dragger-size,
+    red var(--pc-color-picker-dragger-size),
     yellow,
     $green,
     cyan,
@@ -124,7 +118,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
 
 .ColorLayer {
   position: absolute;
-  z-index: z-index(color, $stacking-order);
+  z-index: var(--pc-color-picker);
   top: 0;
   left: 0;
   height: 100%;

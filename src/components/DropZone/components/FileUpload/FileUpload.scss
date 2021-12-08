@@ -1,8 +1,8 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: rem(15px);
-$slim-min-height: rem(30px);
-$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
+$fileupload-padding: var(--p-space-4);
+$slim-min-height: 30px;
+$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
 
 .FileUpload {
   padding: $fileupload-padding;
@@ -14,7 +14,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 }
 
 .large {
-  padding: rem(32px);
+  padding: var(--p-space-8);
 }
 
 .small {
@@ -45,7 +45,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
   .sizeSlim {
     min-height: $slim-min-height;
-    padding: $slim-vertical-padding spacing(base-tight);
+    padding: $slim-vertical-padding var(--p-space-3);
   }
 }
 
@@ -56,7 +56,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   &:not(.ActionTitle-disabled) {
     cursor: pointer;
 
-    // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
       color: var(--p-interactive-pressed);

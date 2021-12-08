@@ -20,12 +20,22 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `$easing-data` global variable ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 - Removed the `duration()` scss function and replaced any instances with tokens ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
+- Removed the `spacing()` scss function and replaced any instances with tokens ([#4691](https://github.com/Shopify/polaris-react/pull/4691/))
+- Removed the `px()` scss function ([#4751](https://github.com/Shopify/polaris-react/pull/4751))
+- Removed the `z-index()` scss function ([#4753](https://github.com/Shopify/polaris-react/pull/4753))
+- Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
+- Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
+- Removed unnecessary `--p-border-radius-` properties and moved border-radius custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
+- Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 
 ### New components
 
 - Added `CustomProperties` component ([#4642](https://github.com/Shopify/polaris-react/pull/4642))
 
 ### Enhancements
+
+- Added duration token values between 0 and 500 with 50ms increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
+- Aligned easing tokens and values with CSS defaults ([#4790](https://github.com/Shopify/polaris-react/pull/4790))
 
 ### Bug fixes
 
@@ -38,5 +48,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 - Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
+- Replaced hardcoded spacing values with spacing tokens ([#4775](https://github.com/Shopify/polaris-react/pull/4775))
 
 ### Deprecations

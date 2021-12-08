@@ -1,20 +1,17 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$icon-size: rem(20px);
-$input-height: rem(34px);
-$new-input-height: rem(36px);
-$search-icon-width: $icon-size + spacing();
-
-$stacking-order: (
-  backdrop: 1,
-  input: 2,
-  icon: 3,
-  action: 3,
-);
+$icon-size: 20px;
+$input-height: 34px;
+$new-input-height: 36px;
+$search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 .SearchField {
-  z-index: z-index(modal, $fixed-element-stacking-order);
+  --pc-search-field-backdrop: 1;
+  --pc-search-field-input: 2;
+  --pc-search-field-icon: 3;
+  --pc-search-field-action: 3;
+  z-index: var(--p-z-11);
   position: relative;
   display: flex;
   flex: 1 1 auto;
@@ -69,7 +66,7 @@ $stacking-order: (
 
 .Input {
   @include text-style-input;
-  z-index: z-index(input, $stacking-order);
+  z-index: var(--pc-search-field-input);
   height: $new-input-height;
   width: 100%;
   padding: 0 0 0 $search-icon-width;
@@ -96,9 +93,9 @@ $stacking-order: (
 .Icon {
   @include recolor-icon(var(--p-icon));
   position: absolute;
-  z-index: z-index(icon, $stacking-order);
+  z-index: var(--pc-search-field-icon);
   top: 50%;
-  left: spacing(tight);
+  left: var(--p-space-2);
   display: flex;
   height: $icon-size;
   pointer-events: none;
@@ -113,11 +110,11 @@ $stacking-order: (
   @include recolor-icon(var(--p-icon));
   @include focus-ring($size: 'wide');
   position: relative;
-  z-index: z-index(action, $stacking-order);
+  z-index: var(--pc-search-field-action);
   border: none;
   appearance: none;
   background: transparent;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 
   &:focus,
   &:hover {
@@ -141,7 +138,7 @@ $stacking-order: (
 .Backdrop {
   @include focus-ring;
   position: absolute;
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-search-field-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
@@ -152,7 +149,7 @@ $stacking-order: (
   );
   will-change: background-color;
   transition: background-color var(--p-duration-200) var(--p-ease);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   animation: toLightBackground 0.01ms;
 }
 

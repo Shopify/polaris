@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$sheet-desktop-width: rem(380px);
+$sheet-desktop-width: 380px;
 
 .Sheet {
   position: fixed;
@@ -26,7 +26,7 @@ $sheet-desktop-width: rem(380px);
 
 .Container {
   position: fixed;
-  z-index: z-index('modal', $fixed-element-stacking-order);
+  z-index: var(--p-z-11);
   top: 0;
   right: 0;
   bottom: 0;
@@ -43,15 +43,19 @@ $sheet-desktop-width: rem(380px);
   transition: transform var(--p-duration-300) easing('base');
   transform-origin: bottom;
 }
+
 .enterBottom {
   transform: translateY(100%);
 }
+
 .enterBottomActive {
   transform: translateY(0%);
 }
+
 .exitBottom {
   transform: translateY(0%);
 }
+
 .exitBottomActive {
   transform: translateY(100%);
 }
@@ -61,15 +65,19 @@ $sheet-desktop-width: rem(380px);
   transition: transform var(--p-duration-300) easing('base');
   transform-origin: right;
 }
+
 .enterRight {
   transform: translateX(100%);
 }
+
 .enterRightActive {
   transform: translateX(0%);
 }
+
 .exitRight {
   transform: translateX(0%);
 }
+
 .exitRightActive {
   transform: translateX(100%);
 }

@@ -1,17 +1,14 @@
 @import '../../styles/common';
 
 $textfield-backdrop-offset: -(border-width(thick));
-$backdrop-horizontal-spacing: spacing(tight) * 1.5;
+$backdrop-horizontal-spacing: calc(var(--p-space-2) * 1.5);
 $addon-horizontal-spacing: 0.25em;
-$spinner-icon-size: rem(12px);
-$prefix-horizontal-spacing: spacing(tight);
-
-$stacking-order: (
-  contents: 20,
-  backdrop: 10,
-);
+$spinner-icon-size: 12px;
+$prefix-horizontal-spacing: var(--p-space-2);
 
 .TextField {
+  --pc-text-field-contents: 20;
+  --pc-text-field-backdrop: 10;
   @include text-style-input;
   position: relative;
   display: flex;
@@ -44,7 +41,7 @@ $stacking-order: (
 .Input:focus {
   outline: none;
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
     @include focus-ring($style: 'focused');
   }
@@ -90,7 +87,7 @@ $stacking-order: (
 .Input {
   @include text-style-input;
   position: relative;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-text-field-contents);
   display: block;
   flex: 1 1 0%;
   width: 100%;
@@ -138,7 +135,7 @@ $stacking-order: (
   }
 
   &:-webkit-autofill {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
@@ -170,7 +167,7 @@ $stacking-order: (
 .Backdrop {
   @include focus-ring($border-width: border-width());
   position: absolute;
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-text-field-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
@@ -178,14 +175,14 @@ $stacking-order: (
   background-color: var(--p-surface);
   border: 1px solid var(--p-border-subdued);
   border-top-color: var(--p-border-shadow);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   pointer-events: none;
 }
 
 .Prefix,
 .Suffix {
   position: relative;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-text-field-contents);
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
@@ -203,7 +200,7 @@ $stacking-order: (
 
 .CharacterCount {
   @include text-emphasis-subdued;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-text-field-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
   pointer-events: none;
   text-align: right;
@@ -212,13 +209,13 @@ $stacking-order: (
 .AlignFieldBottom {
   align-self: flex-end;
   width: 100%;
-  padding-bottom: spacing(tight);
+  padding-bottom: var(--p-space-2);
 }
 
 .ClearButton {
   @include focus-ring;
   @include unstyled-button;
-  z-index: z-index(contents, $stacking-order);
+  z-index: var(--pc-text-field-contents);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
 
   &:focus:enabled {
@@ -231,16 +228,16 @@ $stacking-order: (
 }
 
 .Spinner {
-  --p-text-field-spinner-offset-large: calc(
+  --pc-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + #{border-width()}
   );
-  z-index: z-index(contents, $stacking-order);
-  margin: var(--p-text-field-spinner-offset-large);
+  z-index: var(--pc-text-field-contents);
+  margin: var(--pc-text-field-spinner-offset-large);
   color: var(--p-icon);
   display: flex;
   align-self: stretch;
   flex-direction: column;
-  width: rem(22px);
+  width: 22px;
   cursor: pointer;
 }
 
@@ -270,11 +267,11 @@ $stacking-order: (
 }
 
 .Segment {
-  --p-text-field-spinner-border-radius: calc(
-    var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
+  --pc-text-field-spinner-border-radius: calc(
+    var(--p-border-radius-1) - var(--p-text-field-spinner-offset)
   );
   background: var(--p-surface-neutral);
-  border-radius: var(--p-text-field-spinner-border-radius);
+  border-radius: var(--pc-text-field-spinner-border-radius);
   display: flex;
   flex: 1 1 0%;
   justify-content: center;
@@ -291,12 +288,12 @@ $stacking-order: (
   }
 
   &:first-child {
-    border-top-right-radius: var(--p-text-field-spinner-border-radius);
+    border-top-right-radius: var(--pc-text-field-spinner-border-radius);
     margin-bottom: var(--p-text-field-spinner-offset);
   }
 
   &:last-child {
-    border-bottom-right-radius: var(--p-text-field-spinner-border-radius);
+    border-bottom-right-radius: var(--pc-text-field-spinner-border-radius);
   }
 
   &:not(:first-child) {

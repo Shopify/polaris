@@ -1,33 +1,27 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  item: 10,
-  focused: 20,
-);
-
-$plain-horizontal-spacing: spacing(tight);
-$item-spacing: spacing(tight);
-
 .ButtonGroup {
+  --pc-button-group-item: 10;
+  --pc-button-group-focused: 20;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: (-1 * $item-spacing);
-  margin-left: (-1 * $item-spacing);
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 }
 
 .Item {
-  margin-top: $item-spacing;
-  margin-left: $item-spacing;
+  margin-top: var(--p-space-2);
+  margin-left: var(--p-space-2);
 }
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: $item-spacing + $plain-horizontal-spacing;
+    margin-left: calc(var(--p-space-2) + var(--p-space-2));
   }
 
   &:not(:last-child) {
-    margin-right: $plain-horizontal-spacing;
+    margin-right: var(--p-space-2);
   }
 }
 
@@ -39,7 +33,7 @@ $item-spacing: spacing(tight);
 
   .Item {
     position: relative;
-    z-index: z-index(item, $stacking-order);
+    z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
 
@@ -49,7 +43,7 @@ $item-spacing: spacing(tight);
   }
 
   .Item-focused {
-    z-index: z-index(focused, $stacking-order);
+    z-index: var(--pc-button-group-focused);
   }
 }
 
@@ -60,31 +54,31 @@ $item-spacing: spacing(tight);
 }
 
 .extraTight {
-  margin-top: -1 * spacing(extra-tight);
-  margin-left: -1 * spacing(extra-tight);
+  margin-top: calc(-1 * (var(--p-space-1)));
+  margin-left: calc(-1 * (var(--p-space-1)));
 
   .Item {
-    margin-top: spacing(extra-tight);
-    margin-left: spacing(extra-tight);
+    margin-top: var(--p-space-1);
+    margin-left: var(--p-space-1);
   }
 }
 
 .tight {
-  margin-top: -1 * spacing(tight);
-  margin-left: -1 * spacing(tight);
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 
   .Item {
-    margin-top: spacing(tight);
-    margin-left: spacing(tight);
+    margin-top: var(--p-space-2);
+    margin-left: var(--p-space-2);
   }
 }
 
 .loose {
-  margin-top: -1 * spacing(loose);
-  margin-left: -1 * spacing(loose);
+  margin-top: calc(-1 * var(--p-space-5));
+  margin-left: calc(-1 * var(--p-space-5));
 
   .Item {
-    margin-top: spacing(loose);
-    margin-left: spacing(loose);
+    margin-top: var(--p-space-5);
+    margin-left: var(--p-space-5);
   }
 }

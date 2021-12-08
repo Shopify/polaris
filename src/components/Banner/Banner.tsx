@@ -66,13 +66,8 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   const withinContentContainer = useContext(WithinContentContext);
   const id = useUniqueId('Banner');
   const i18n = useI18n();
-  const {
-    wrapperRef,
-    handleKeyUp,
-    handleBlur,
-    handleMouseUp,
-    shouldShowFocus,
-  } = useBannerFocus(bannerRef);
+  const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
+    useBannerFocus(bannerRef);
   const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
   const iconName = icon || defaultIcon;
   const className = classNames(

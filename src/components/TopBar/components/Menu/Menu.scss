@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $activator-variables: (
-  min-width: rem(36px),
+  min-width: 36px,
   transition: (
     background-color 0.1s,
   ),
@@ -27,11 +27,11 @@ $activator-variables: (
   justify-content: center;
   align-items: center;
   min-width: menu(min-width);
-  padding: rem(6px) spacing(tight);
+  padding: var(--p-space-1) var(--p-space-2);
   border: 0;
   cursor: pointer;
   transition: menu(transition);
-  margin-right: spacing(tight);
+  margin-right: var(--p-space-2);
   border-radius: border-radius();
 
   &:focus {
@@ -75,7 +75,7 @@ $activator-variables: (
 }
 
 .Section {
-  margin-top: spacing(tight);
-  padding-top: spacing(tight);
+  margin-top: var(--p-space-2);
+  padding-top: var(--p-space-2);
   border-top: border('divider');
 }

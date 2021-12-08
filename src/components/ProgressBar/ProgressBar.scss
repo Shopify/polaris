@@ -3,9 +3,9 @@
 @function progress-bar-height($height: base) {
   $base: 16px;
   $data: (
-    small: rem($base / 2),
-    base: rem($base),
-    large: rem($base * 2),
+    small: $base / 2,
+    base: $base,
+    large: $base * 2,
   );
 
   @return map-get($data, $height);
@@ -20,8 +20,8 @@
 .ProgressBar {
   overflow: hidden;
   width: 100%;
-  background-color: var(--p-progressbar-background);
-  border-radius: var(--p-border-radius-base);
+  background-color: var(--pc-progress-bar-background);
+  border-radius: var(--p-border-radius-1);
 
   @media (forced-colors: active) {
     @include high-contrast-border;
@@ -41,35 +41,36 @@
 }
 
 .colorHighlight {
-  --p-progressbar-background: var(--p-surface-neutral);
-  --p-progressbar-indicator: var(--p-border-highlight);
+  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-indicator: var(--p-border-highlight);
 }
 
 .colorPrimary {
-  --p-progressbar-background: var(--p-surface-neutral);
-  --p-progressbar-indicator: var(--p-action-primary);
+  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-indicator: var(--p-action-primary);
 }
 
 .colorSuccess {
-  --p-progressbar-background: var(--p-surface-neutral);
-  --p-progressbar-indicator: var(--p-border-success);
+  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-indicator: var(--p-border-success);
 }
 
 .colorCritical {
-  --p-progressbar-background: var(--p-surface-neutral);
-  --p-progressbar-indicator: var(--p-interactive-critical);
+  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-indicator: var(--p-interactive-critical);
 }
 
 .Indicator {
   height: inherit;
   width: 0;
-  background-color: var(--p-progressbar-indicator);
+  background-color: var(--pc-progress-bar-indicator);
 
   @media screen and (-ms-high-contrast: active) {
     border: progress-bar-height() solid
       ms-high-contrast-color('selected-text-background');
   }
 }
+
 .Animated {
   will-change: width;
   animation: fillup var(--p-duration-500) var(--p-ease);

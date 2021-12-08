@@ -4,7 +4,7 @@
 .Search {
   position: fixed;
   visibility: hidden;
-  z-index: z-index(nav, $fixed-element-stacking-order);
+  z-index: var(--p-z-8);
   pointer-events: none;
   top: top-bar-height();
   left: 0;
@@ -16,12 +16,12 @@
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
-    margin: spacing(extra-tight) spacing(loose) 0;
-    border-radius: var(--p-border-radius-wide);
+    margin: var(--p-space-1) var(--p-space-5) 0;
+    border-radius: var(--p-border-radius-2);
   }
 
   @include page-content-when-not-partially-condensed {
-    margin: spacing(extra-tight) spacing(extra-loose) 0;
+    margin: var(--p-space-1) var(--p-space-8) 0;
   }
 }
 

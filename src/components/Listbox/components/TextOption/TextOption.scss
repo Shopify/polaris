@@ -1,17 +1,17 @@
 @import '../../../../styles/common';
 
 .TextOption {
-  margin: spacing(extra-tight) spacing(tight) 0;
+  margin: var(--p-space-1) var(--p-space-2) 0;
   flex: 1;
-  border-radius: var(--p-border-radius-base);
-  padding: spacing(tight) spacing(tight);
+  border-radius: var(--p-border-radius-1);
+  padding: var(--p-space-2) var(--p-space-2);
   cursor: pointer;
   display: flex;
   @include focus-ring;
 
   &.allowMultiple {
-    margin: spacing(extra-tight) spacing(tight) 0;
-    padding: spacing(extra-tight) spacing(tight);
+    margin: var(--p-space-1) var(--p-space-2) 0;
+    padding: var(--p-space-1) var(--p-space-2);
   }
 
   &.isAction {
@@ -46,12 +46,12 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -1 * spacing(extra-tight);
+    left: calc(-1 * var(--p-space-1));
     height: 100%;
-    width: var(--p-border-radius-base);
+    width: var(--p-border-radius-1);
     background-color: var(--p-interactive);
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
     transform: translateX(-100%);
   }
 }

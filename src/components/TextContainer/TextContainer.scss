@@ -1,8 +1,10 @@
 @import '../../styles/common';
 
-@mixin text-container-spacing($spacing: base) {
+@mixin text-container-spacing {
+  --pc-text-container-spacing: var(--p-space-4);
+
   > *:not(:first-child) {
-    margin-top: (spacing($spacing));
+    margin-top: var(--pc-text-container-spacing);
   }
 }
 
@@ -11,9 +13,9 @@
 }
 
 .spacingTight {
-  @include text-container-spacing(tight);
+  --pc-text-container-spacing: var(--p-space-2);
 }
 
 .spacingLoose {
-  @include text-container-spacing(loose);
+  --pc-text-container-spacing: var(--p-space-5);
 }

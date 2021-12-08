@@ -141,8 +141,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {accessibilityLabel} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
@@ -167,8 +167,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {label} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
           checkableButtonLength,
@@ -189,8 +189,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {selected} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
@@ -392,8 +392,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {disabled} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,

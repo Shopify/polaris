@@ -503,8 +503,7 @@ export function DetailsPage() {
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > 0
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? URL.createObjectURL(file)
                 : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
             }
           />

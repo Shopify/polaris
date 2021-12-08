@@ -5,6 +5,7 @@ import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
 import type {RangeSliderProps} from '../../types';
+import sharedStyles from '../../RangeSlider.scss';
 
 import styles from './SingleThumb.scss';
 
@@ -75,10 +76,12 @@ export function SingleThumb(props: SingleThumbProps) {
 
   const className = classNames(
     styles.SingleThumb,
+    sharedStyles.RangeSlider,
     error && styles.error,
     disabled && styles.disabled,
   );
 
+  /* eslint-disable @shopify/react-require-autocomplete */
   return (
     <Labelled
       id={id}
@@ -116,6 +119,7 @@ export function SingleThumb(props: SingleThumbProps) {
       </div>
     </Labelled>
   );
+  /* eslint-enable @shopify/react-require-autocomplete */
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const {onChange} = props;

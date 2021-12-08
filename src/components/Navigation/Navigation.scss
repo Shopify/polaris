@@ -2,10 +2,11 @@
 @import './variables';
 
 // Base Navigation styles
-$active-indicator-width: rem(3px);
-$nav-max-width: rem(360px);
+$active-indicator-width: 3px;
+$nav-max-width: 360px;
 
 .Navigation {
+  --pc-navigation-icon-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -55,7 +56,7 @@ $nav-max-width: rem(360px);
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: rem(12px);
+    padding-top: var(--p-space-3);
   }
 }
 
@@ -66,9 +67,9 @@ $nav-max-width: rem(360px);
     flex: 0 0 top-bar-height();
     align-items: center;
     height: top-bar-height();
-    padding: 0 spacing(tight) 0 spacing(base);
+    padding: 0 var(--p-space-2) 0 var(--p-space-4);
     @include safe-area-for(flex-basis, top-bar-height(), left);
-    @include safe-area-for(padding-left, spacing(), left);
+    @include safe-area-for(padding-left, var(--p-space-4), left);
   }
 }
 
@@ -95,12 +96,12 @@ $disabled-fade: 0.6;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -1 * spacing(tight);
+    left: calc(-1 * var(--p-space-2));
     height: 100%;
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 
   @include high-contrast-outline;
@@ -139,12 +140,12 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
   display: inline-flex;
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: spacing(extra-tight);
+    margin-top: var(--p-space-1);
   }
 }
 
@@ -156,7 +157,7 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  padding: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+  padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -175,7 +176,8 @@ $disabled-fade: 0.6;
 
 .ListItem-hasAction .Item {
   max-width: calc(
-    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+    100% - var(--pc-navigation-icon-size) + var(--p-space-4) * 2 +
+      var(--p-space-1)
   );
 }
 
@@ -194,9 +196,9 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: spacing(extra-tight);
-  padding: spacing(extra-tight) spacing();
-  border-radius: var(--p-border-radius-base);
+  margin-right: var(--p-space-1);
+  padding: var(--p-space-1) var(--p-space-4);
+  border-radius: var(--p-border-radius-1);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -238,14 +240,15 @@ $disabled-fade: 0.6;
 }
 
 // Secondary styles
-$secondary-item-font-size: rem(15px);
+$secondary-item-font-size: 15px;
+
 .SecondaryNavigation {
   flex-basis: 100%;
   margin-left: 0;
   overflow-x: visible;
 
   &.isExpanded {
-    margin-bottom: spacing(tight);
+    margin-bottom: var(--p-space-2);
   }
 
   .List {
@@ -257,7 +260,9 @@ $secondary-item-font-size: rem(15px);
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
+    padding-left: calc(
+      var(--pc-navigation-icon-size) + var(--p-space-8) - var(--p-space-1)
+    );
 
     &:hover {
       color: var(--p-text-subdued);
@@ -281,14 +286,14 @@ $secondary-item-font-size: rem(15px);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
-      line-height: rem(28px);
+      line-height: 28px;
     }
   }
 
   .Text {
-    margin-top: rem(6px);
-    margin-bottom: rem(6px);
-    line-height: rem(20px);
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
+    line-height: 20px;
   }
 
   .Item-selected {
@@ -302,11 +307,13 @@ $secondary-item-font-size: rem(15px);
     &.keyFocused {
       color: var(--p-text-primary);
     }
+
     &:active {
       color: var(--p-text-primary);
       @include no-focus-ring;
     }
   }
+
   .Item-disabled {
     font-weight: var(--p-font-weight-medium);
     color: var(--p-text-disabled);
@@ -314,20 +321,20 @@ $secondary-item-font-size: rem(15px);
 }
 
 .SecondaryNavigation-noIcon {
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 // Section styles
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
-  padding: spacing() 0;
+  padding: var(--p-space-4) 0;
   padding-top: 0;
   @include safe-area-for(padding-left, 0, left);
 
   + .Section {
-    padding-top: spacing(extra-tight);
-    padding-bottom: spacing();
+    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-4);
   }
 }
 
@@ -344,7 +351,7 @@ $secondary-item-font-size: rem(15px);
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: spacing();
+  padding-left: var(--p-space-4);
 
   .Text {
     font-size: font-size(subheading);
@@ -361,9 +368,9 @@ $secondary-item-font-size: rem(15px);
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
-    margin-right: spacing(extra-tight);
-    padding: spacing(extra-tight) spacing();
-    border-radius: var(--p-border-radius-base);
+    margin-right: var(--p-space-1);
+    padding: var(--p-space-1) var(--p-space-4);
+    border-radius: var(--p-border-radius-1);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
@@ -437,10 +444,10 @@ $secondary-item-font-size: rem(15px);
 .Indicator {
   position: relative;
   display: inline-block;
-  height: rem(10px);
-  width: rem(10px);
+  height: 10px;
+  width: 10px;
 }
 
 .SecondaryNavigation-noIcon .Item {
-  padding-left: spacing(tight) + spacing(extra-tight);
+  padding-left: calc(var(--p-space-2) + var(--p-space-1));
 }

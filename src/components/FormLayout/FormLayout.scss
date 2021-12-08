@@ -1,15 +1,15 @@
 @import '../../styles/common';
 
-$item-min-size: rem(220px);
+$item-min-size: 220px;
 
 .FormLayout {
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing(loose);
+  margin-top: calc(-1 * var(--p-space-4));
+  margin-left: calc(-1 * var(--p-space-5));
 }
 
 .Title {
-  margin-bottom: -1 * spacing(tight);
-  padding: spacing() spacing(loose) 0;
+  margin-bottom: calc(-1 * var(--p-space-2));
+  padding: var(--p-space-4) var(--p-space-5) 0;
 }
 
 .Items {
@@ -19,14 +19,14 @@ $item-min-size: rem(220px);
 
 .HelpText {
   @include text-emphasis-subdued;
-  padding: spacing(tight) spacing(loose) 0;
+  padding: var(--p-space-2) var(--p-space-5) 0;
 }
 
 .Item {
   flex: 1 1 $item-min-size;
-  margin-top: spacing();
-  margin-left: spacing(loose);
-  max-width: calc(100% - #{spacing(loose)});
+  margin-top: var(--p-space-4);
+  margin-left: var(--p-space-5);
+  max-width: calc(100% - var(--p-space-5));
 
   .grouped & {
     min-width: $item-min-size;

@@ -1,15 +1,15 @@
-$item-font-size: rem(16px);
-$item-font-size-small: rem(14px);
-$item-line-height-small: rem(32px);
-$item-line-height-large: rem(36px);
-$text-line-height: rem(20px);
+$item-font-size: 16px;
+$item-font-size-small: 14px;
+$item-line-height-small: 32px;
+$item-line-height-large: 36px;
+$text-line-height: 20px;
 $nav-variables: (
-  mobile-spacing: rem(10px),
-  desktop-spacing: rem(6px),
-  mobile-height: rem(40px),
-  desktop-height: rem(32px),
-  icon-size: rem(20px),
-  item-line-height: rem(40px),
+  mobile-spacing: var(--p-space-2),
+  desktop-spacing: var(--p-space-1),
+  mobile-height: 40px,
+  desktop-height: 32px,
+  icon-size: 20px,
+  item-line-height: 40px,
 );
 @function nav($variable) {
   @return map-get($nav-variables, $variable);
@@ -32,14 +32,12 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 spacing(tight);
-  margin: 0 spacing(tight);
-  border-radius: var(--p-border-radius-base);
+  padding: 0 var(--p-space-1) 0 var(--p-space-3);
+  margin: 0 var(--p-space-2);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
   text-decoration: none;
   text-align: left;
-  padding-left: spacing() - spacing(extra-tight);
-  padding-right: spacing(extra-tight);
 
   &:hover {
     background: var(--p-background-hovered);
@@ -68,6 +66,7 @@ $nav-animation-variables: (
     font-weight: var(--p-font-weight-semibold);
     line-height: $item-line-height-small;
   }
+
   &::-moz-focus-inner {
     border: 0;
   }
@@ -77,26 +76,28 @@ $nav-animation-variables: (
   // hardcoding this variable for now because we need to rip out all instances
   // of filter() eventually but can't for this one right now. The value is the
   // equivalent value for filter('icon').
-  --p-filter-icon: brightness(0) saturate(100%) invert(36%) sepia(13%)
-    saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
-  --p-filter-icon-action-primary: brightness(0) saturate(100%) invert(20%)
-    sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%);
-  --p-filter-icon-on-interactive: brightness(0) saturate(100%) invert(100%);
+  --pc-navigation-filter-icon: brightness(0) saturate(100%) invert(36%)
+    sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%);
+  --pc-navigation-filter-icon-action-primary: brightness(0) saturate(100%)
+    invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%)
+    contrast(101%);
+  --pc-navigation-filter-icon-on-interactive: brightness(0) saturate(100%)
+    invert(100%);
 
   @include recolor-icon(
     $fill-color: var(--p-icon),
-    $filter-color: var(--p-filter-icon)
+    $filter-color: var(--pc-navigation-filter-icon)
   );
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
   height: nav(icon-size);
   margin-top: nav(mobile-spacing);
-  margin-right: spacing();
+  margin-right: var(--p-space-4);
   margin-bottom: nav(mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
-    margin-right: spacing();
+    margin-right: var(--p-space-4);
     margin-bottom: nav(desktop-spacing);
   }
 
@@ -104,7 +105,7 @@ $nav-animation-variables: (
   .Item.keyFocused & {
     @include recolor-icon(
       $fill-color: var(--p-icon),
-      $filter-color: var(--p-filter-icon)
+      $filter-color: var(--pc-navigation-filter-icon)
     );
   }
 
@@ -115,7 +116,7 @@ $nav-animation-variables: (
   .Item-selected.keyFocused & {
     @include recolor-icon(
       $fill-color: var(--p-action-primary),
-      $filter-color: var(--p-filter-icon-action-primary)
+      $filter-color: var(--pc-navigation-filter-icon-action-primary)
     );
   }
 
@@ -130,6 +131,7 @@ $nav-animation-variables: (
   position: relative;
   display: flex;
   flex-wrap: wrap;
+
   .RollupSection &,
   .SecondaryNavigation & {
     opacity: 1;
@@ -154,8 +156,8 @@ $nav-animation-variables: (
   }
 
   @include breakpoint-before(nav-min-window-corrected()) {
-    font-size: rem(15px);
-    line-height: rem(19px);
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 
@@ -163,6 +165,7 @@ $nav-animation-variables: (
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -170,11 +173,12 @@ $nav-animation-variables: (
 
 @mixin usermenu-section-attributes {
   position: relative;
-  margin-top: spacing();
+  margin-top: var(--p-space-4);
+
   &::before {
     content: '';
     position: absolute;
-    top: spacing(tight) * -1;
+    top: calc(var(--p-space-2) * -1);
     left: 0;
     display: block;
     width: 100%;

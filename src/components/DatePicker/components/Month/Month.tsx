@@ -58,11 +58,10 @@ export function Month({
     styles.Title,
     current && styles['Month-current'],
   );
-  const weeks = useMemo(() => getWeeksForMonth(month, year, weekStartsOn), [
-    month,
-    weekStartsOn,
-    year,
-  ]);
+  const weeks = useMemo(
+    () => getWeeksForMonth(month, year, weekStartsOn),
+    [month, weekStartsOn, year],
+  );
   const weekdays = getOrderedWeekdays(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
@@ -112,10 +111,8 @@ export function Month({
       selected && isSameDay(selected.start, selected.end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
-    const [
-      firstAccessibilityLabelPrefix,
-      lastAccessibilityLabelPrefix,
-    ] = accessibilityLabelPrefixes;
+    const [firstAccessibilityLabelPrefix, lastAccessibilityLabelPrefix] =
+      accessibilityLabelPrefixes;
     let accessibilityLabelPrefix;
 
     if (

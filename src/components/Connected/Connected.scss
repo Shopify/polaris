@@ -1,37 +1,31 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  item: 10,
-  primary: 20,
-  focused: 30,
-);
-
 .Connected {
+  --pc-connected-item: 10;
+  --pc-connected-primary: 20;
+  --pc-connected-focused: 30;
   position: relative;
   display: flex;
 }
 
 .Item {
   position: relative;
-  z-index: z-index(item, $stacking-order);
+  z-index: var(--pc-connected-item);
   flex: 0 0 auto;
 
   &:not(:first-child) {
-    margin-left: spacing(extra-tight);
+    margin-left: var(--p-space-1);
   }
 }
 
 // This is a violation of our component model, but it’s the cleanest
 // way to remove the border radii on connected elements.
 // TextField.scss has a dependency due to this override.
-// stylelint-disable declaration-no-important
 .Item-primary {
-  z-index: z-index(primary, $stacking-order);
+  z-index: var(--pc-connected-primary);
   flex: 1 1 auto;
 }
 
-// stylelint-enable declaration-no-important
-
 .Item-focused {
-  z-index: z-index(focused, $stacking-order);
+  z-index: var(--pc-connected-focused);
 }

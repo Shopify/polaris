@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$size: rem(10px);
-$base-position: rem(-4px);
+$size: 10px;
+$base-position: -4px;
 
 .Indicator {
   &::before,
@@ -13,7 +13,7 @@ $base-position: rem(-4px);
     top: $base-position;
     width: $size;
     height: $size;
-    border-radius: 100%;
+    border-radius: var(--p-border-radius-6);
     border: calc(#{$size} / 2) solid transparent;
   }
 }

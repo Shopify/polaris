@@ -1,7 +1,7 @@
 // Used by both Thumbnail and SkeletonThumbnail
-$small-thumbnail-size: rem(40px);
-$medium-thumbnail-size: rem(60px);
-$large-thumbnail-size: rem(80px);
+$small-thumbnail-size: 40px;
+$medium-thumbnail-size: 60px;
+$large-thumbnail-size: 80px;
 
 $thumbnail-sizes: (
   small: $small-thumbnail-size,
@@ -34,7 +34,7 @@ $thumbnail-sizes: (
 }
 
 @mixin skeleton-page-secondary-actions-layout {
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -42,5 +42,5 @@ $thumbnail-sizes: (
 }
 
 @mixin skeleton-page-header-layout {
-  padding-bottom: spacing(tight);
+  padding-bottom: var(--p-space-2);
 }

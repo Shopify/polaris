@@ -2,15 +2,14 @@
 
 // translate-offset equals handle-width - padding
 $resource-list-item-variables: (
-  padding: rem(12px),
-  control-indent: -1 * rem(12px),
-  min-height: rem(44px),
-  handle-width: rem(48px),
-  disclosure-width: rem(48px),
-  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
+  padding: 12px,
+  control-indent: -1 * 12px,
+  min-height: 44px,
+  handle-width: 48px,
+  disclosure-width: 48px,
   clickable-stacking-order: 1,
   content-stacking-order: 2,
-  actions-height: rem(56px),
+  actions-height: 56px,
   breakpoint-small: 458px,
 );
 
@@ -35,19 +34,20 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
+  --pc-resource-item-offset: calc(48px - 12px + var(--p-space-1));
   position: relative;
   outline: none;
   cursor: pointer;
 
   &:not(.persistActions) {
-    // stylelint-disable-next-line selector-max-combinators
     .Actions {
-      right: spacing();
+      right: var(--p-space-4);
     }
   }
 
   &:hover {
     background-color: var(--p-surface-hovered);
+
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
@@ -98,13 +98,13 @@ $resource-list-item-variables: (
 .Container {
   position: relative;
   z-index: resource-list-item(content-stacking-order);
-  padding: resource-list-item(padding) spacing();
+  padding: resource-list-item(padding) var(--p-space-4);
   min-height: resource-list-item(min-height);
   display: flex;
   align-items: flex-start;
 
   @include breakpoint-after(resource-list-item(breakpoint-small)) {
-    padding: resource-list-item(padding) spacing(loose);
+    padding: resource-list-item(padding) var(--p-space-5);
   }
 }
 
@@ -133,7 +133,7 @@ $resource-list-item-variables: (
 }
 
 .OwnedNoMedia {
-  padding-top: spacing(extra-tight);
+  padding-top: var(--p-space-1);
 }
 
 // Item handle
@@ -142,7 +142,7 @@ $resource-list-item-variables: (
   min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
+  margin: (-1 * resource-list-item(padding)) var(--p-space-1)
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 
@@ -156,10 +156,10 @@ $resource-list-item-variables: (
 }
 
 .selectable {
-  width: calc(100% + #{resource-list-item(translate-offset)});
-  transform: translateX(-1 * resource-list-item(translate-offset));
+  width: calc(100% + var(--pc-resource-item-offset));
+  transform: translateX(calc(-1 * var(--pc-resource-item-offset)));
   transition: transform var(--p-ease) var(--p-duration-200);
-  margin-right: -1 * resource-list-item(translate-offset);
+  margin-right: calc(-1 * var(--pc-resource-item-offset));
 
   &.selectMode {
     transform: translateX(0);
@@ -174,7 +174,7 @@ $resource-list-item-variables: (
 
 .Media {
   flex: 0 0 auto;
-  margin-right: spacing(loose);
+  margin-right: var(--p-space-5);
   color: inherit;
   text-decoration: none;
 }
@@ -213,7 +213,7 @@ $resource-list-item-variables: (
     flex-basis: auto;
     align-items: center;
     margin-top: 0;
-    margin-left: spacing();
+    margin-left: var(--p-space-4);
     pointer-events: initial;
     height: 100%;
 
@@ -226,7 +226,7 @@ $resource-list-item-variables: (
 .Disclosure {
   position: relative;
   top: -1 * resource-list-item(padding);
-  right: -1 * spacing();
+  right: calc(-1 * var(--p-space-4));
   display: none;
   width: resource-list-item(disclosure-width);
   min-height: resource-list-item(min-height);
@@ -258,40 +258,39 @@ $resource-list-item-variables: (
 
 .ListItem {
   position: relative;
-  @include focus-ring($border-width: rem(-1px));
+  @include focus-ring($border-width: -1px);
 
   .ListItem + & {
     border-top: border('divider');
   }
 
   &::after {
-    border-radius: rem(2px);
+    border-radius: var(--p-border-radius-05);
   }
 
   &:last-of-type {
-    border-bottom-left-radius: var(--p-border-radius-wide);
-    border-bottom-right-radius: var(--p-border-radius-wide);
+    border-bottom-left-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-2);
 
     .ItemWrapper {
-      border-bottom-left-radius: var(--p-border-radius-wide);
-      border-bottom-right-radius: var(--p-border-radius-wide);
+      border-bottom-left-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
     }
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  // stylelint-disable-next-line selector-max-specificity
   &:last-of-type.focused::after {
-    border-bottom-left-radius: var(--p-border-radius-wide);
-    border-bottom-right-radius: var(--p-border-radius-wide);
+    border-bottom-left-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-2);
   }
 
-  // stylelint-disable-next-line selector-max-class
   &.focused {
     @include focus-ring($style: 'focused');
     z-index: resource-list-item(clickable-stacking-order);
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
   * + ul > &:first-of-type.focused::after {
-    top: rem(1px);
+    top: 1px;
   }
 }

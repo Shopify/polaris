@@ -1,16 +1,17 @@
 @import '../../../../styles/common';
 
-$top-offset-slide-in-start: rem(200px);
+$top-offset-slide-in-start: 200px;
 $vertical-spacing: 60px;
-$horizontal-spacing: spacing(extra-loose) * 2;
 $height-limit: 600px;
-$xsmall-width: rem(380px);
-$small-width: rem(620px);
-$large-width: rem(980px);
+$xsmall-width: 380px;
+$small-width: 620px;
+$large-width: 980px;
+// @TODO simplify media queries so this isn't needed
+$dangerous-magic-space-16: 64px;
 
 .Container {
   position: fixed;
-  z-index: z-index(modal, $fixed-element-stacking-order);
+  z-index: var(--p-z-11);
   top: 0;
   right: 0;
   bottom: 0;
@@ -23,11 +24,13 @@ $large-width: rem(980px);
     justify-content: center;
   }
 }
+
 .Dialog:focus {
   outline: 0;
 }
 
 .Modal {
+  --pc-dialog-horizontal-spacing: var(--p-space-16);
   position: fixed;
   right: 0;
   bottom: 0;
@@ -52,7 +55,7 @@ $large-width: rem(980px);
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-wide);
+    border-radius: var(--p-border-radius-2);
   }
 
   &.limitHeight {
@@ -65,20 +68,20 @@ $large-width: rem(980px);
 
   &.sizeSmall {
     @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - #{$horizontal-spacing});
+      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
     }
 
-    @include breakpoint-after($xsmall-width + $horizontal-spacing) {
+    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
     @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - #{$horizontal-spacing});
+      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
     }
 
-    @include breakpoint-after($large-width + $horizontal-spacing) {
+    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
       max-width: $large-width;
     }
   }

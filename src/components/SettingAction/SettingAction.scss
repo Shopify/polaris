@@ -1,21 +1,21 @@
 @import '../../styles/common';
 
-$feature-width: rem(350px);
+$feature-width: 350px;
 
 .SettingAction {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: calc(-1 * var(--p-space-4));
+  margin-left: calc(-1 * var(--p-space-4));
 }
 
 .Setting,
 .Action {
   flex: 0 0 auto;
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
+  margin-top: var(--p-space-4);
+  margin-left: var(--p-space-4);
+  max-width: calc(100% - var(--p-space-4));
   min-width: 0;
 }
 

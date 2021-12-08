@@ -1,7 +1,10 @@
 import {legacyTokens} from './_legacy-tokens';
+import {shape} from './_shape';
 import {lightColorScheme, darkColorScheme} from './_color';
 import {motion} from './_motion';
+import {spacing} from './_spacing';
 import {typography} from './_typography';
+import {zIndex} from './_z-index';
 
 /**
  * Values to convert to CSS custom properties.
@@ -41,15 +44,21 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
+  shape: TokenGroup;
   colorSchemes: ColorSchemes;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
+  spacing: TokenGroup;
   typography: TokenGroup;
+  zIndex: TokenGroup;
 }
 
 export const tokens: Tokens = {
+  shape,
   colorSchemes,
   legacyTokens,
   motion,
+  spacing,
   typography,
+  zIndex,
 };

@@ -1,16 +1,16 @@
 @import '../../styles/common';
 
-$height: rem(28px);
-$icon-size: rem(16px);
+$height: 28px;
+$icon-size: 16px;
 
 .Tag {
   display: inline-flex;
   max-width: 100%;
   align-items: center;
   min-height: $height;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   background-color: var(--p-surface-neutral);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
 
   &.disabled {
@@ -27,7 +27,7 @@ $icon-size: rem(16px);
   &.clickable {
     @include unstyled-button;
     cursor: pointer;
-    padding: 0 spacing(tight);
+    padding: 0 var(--p-space-2);
     background-color: var(--p-surface-neutral);
 
     &:hover {
@@ -36,7 +36,6 @@ $icon-size: rem(16px);
 
     @include focus-ring;
     // stylelint-disable selector-max-specificity
-    // stylelint-disable selector-max-class
 
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
@@ -69,7 +68,7 @@ $icon-size: rem(16px);
   display: block;
   height: $height;
   width: $height;
-  margin-left: spacing(extra-tight);
+  margin-left: var(--p-space-1);
   border-radius: 0 border-radius() border-radius() 0;
 
   &:hover {

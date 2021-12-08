@@ -19,5 +19,5 @@
 .RequiredIndicator::after {
   content: '*';
   color: var(--p-text-critical);
-  margin-left: spacing(extra-tight);
+  margin-left: var(--p-space-1);
 }

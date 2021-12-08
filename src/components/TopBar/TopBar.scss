@@ -1,7 +1,7 @@
 @import '../../styles/common';
 @import './variables';
 
-$icon-size: rem(20px);
+$icon-size: 20px;
 $page-left-alignment-breakpoint-max: 1238px;
 $context-control-expand-after: 1400px;
 
@@ -37,9 +37,9 @@ $context-control-expand-after: 1400px;
   flex: 0 0 layout-width(nav);
   align-items: center;
   height: 100%;
-  padding: 0 spacing(tight) 0 spacing(base);
+  padding: 0 var(--p-space-2) 0 var(--p-space-4);
   @include safe-area-for(flex-basis, layout-width(nav), left);
-  @include safe-area-for(padding-left, spacing(), left);
+  @include safe-area-for(padding-left, var(--p-space-4), left);
 }
 
 .Logo,
@@ -63,9 +63,9 @@ $context-control-expand-after: 1400px;
   @include unstyled-button;
   position: relative;
   align-self: center;
-  margin-left: spacing(tight) + rem(2px);
-  margin-right: spacing(tight);
-  padding: spacing(tight);
+  margin-left: calc(var(--p-space-2) + 2px);
+  margin-right: var(--p-space-2);
+  padding: var(--p-space-2);
   border-radius: border-radius();
   fill: var(--p-icon); // Icon will inherit this fill
   transition: var(--p-duration-150) fill var(--p-ease) 33ms;
@@ -73,6 +73,7 @@ $context-control-expand-after: 1400px;
   &.focused:active {
     background-color: var(--p-surface-pressed);
   }
+
   &:hover {
     background-color: var(--p-surface-hovered);
   }
@@ -80,10 +81,10 @@ $context-control-expand-after: 1400px;
   &::after {
     content: '';
     position: absolute;
-    top: spacing(tight) * -1;
-    left: spacing(tight) * -1;
-    width: calc(100% + #{spacing(loose)});
-    height: calc(100% + #{spacing(loose)});
+    top: calc(var(--p-space-2) * -1);
+    left: calc(var(--p-space-2) * -1);
+    width: calc(100% + var(--p-space-5));
+    height: calc(100% + var(--p-space-5));
   }
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
@@ -91,7 +92,7 @@ $context-control-expand-after: 1400px;
 }
 
 .Contents {
-  z-index: z-index(content, $stacking-order);
+  z-index: var(--p-z-1);
   display: flex;
   flex: 1 1 auto;
   align-items: center;
@@ -113,7 +114,7 @@ $context-control-expand-after: 1400px;
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
-    margin-right: spacing(extra-tight);
+    margin-right: var(--p-space-1);
   }
 }
 
