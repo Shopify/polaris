@@ -5,41 +5,17 @@ const os = require('os');
 const puppeteer = require('puppeteer');
 const pMap = require('p-map');
 const chalk = require('chalk');
+const axeCore = require('axe-core');
 
 function _interopDefaultLegacy(e) {
   return e && typeof e === 'object' && 'default' in e ? e : { default: e };
-}
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  const n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        const d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(
-          n,
-          k,
-          d.get
-            ? d
-            : {
-              enumerable: true,
-              get() {
-                return e[k];
-              },
-            },
-        );
-      }
-    });
-  }
-  n.default = e;
-  return Object.freeze(n);
 }
 
 const os__default = /* #__PURE__*/ _interopDefaultLegacy(os);
 const puppeteer__default = /* #__PURE__*/ _interopDefaultLegacy(puppeteer);
 const pMap__default = /* #__PURE__*/ _interopDefaultLegacy(pMap);
 const chalk__default = /* #__PURE__*/ _interopDefaultLegacy(chalk);
+const axeCore__default = /* #__PURE__*/ _interopDefaultLegacy(axeCore);
 
 /* eslint-disable no-console */
 const FORMATTING_SPACER = '    ';
@@ -116,12 +92,23 @@ function isAutocompleteNope(violation) {
   return isAutocompleteAttribute && hasNope;
 }
 
+function setOnWindow(page, name, value) {
+  page.evaluateOnNewDocument(`
+    Object.defineProperty(window, '${name}', {
+      get() {
+        return '${value}'
+      }
+    })
+  `);
+}
+
 function testPage(iframePath, browser, timeout, disableAnimation) {
   return async function (id) {
     console.log(` - ${id}`);
 
     try {
       const page = await browser.newPage();
+      setOnWindow(page, 'axe', axeCore__default.default);
       await page.goto(`${iframePath}?id=${id}`, {
         waitUntil: 'load',
         timeout,
@@ -164,9 +151,6 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
           );
         }
 
-        const axe = await Promise.resolve().then(function () {
-          return /* #__PURE__*/ _interopNamespace(require('axe-core'));
-        });
         const storyA11yParams = getA11yParams(id);
         const {
           // Context for axe to analyze
@@ -177,13 +161,13 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
           // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
           options = {},
         } = storyA11yParams;
-        axe.reset();
+        window.axe.reset();
 
         if (config) {
-          axe.configure(config);
+          window.axe.configure(config);
         }
 
-        return axe.run(element, options);
+        return window.axe.run(element, options);
       }, id);
       await page.close();
 
