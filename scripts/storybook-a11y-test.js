@@ -139,45 +139,45 @@ function testPage(iframePath, browser, timeout, disableAnimation) {
         });
       }
 
-      const elementSelector = await page.evaluate(() => {
-        function nodeToSelector(element) {
-          const { tagName, id, className, parentNode } = element;
-          let elementTagName = tagName;
-          elementTagName += id === '' ? '' : `#${id}`;
+      // const elementSelector = await page.evaluate(() => {
+      //   function nodeToSelector(element) {
+      //     const { tagName, id, className, parentNode } = element;
+      //     let elementTagName = tagName;
+      //     elementTagName += id === '' ? '' : `#${id}`;
 
-          if (className) {
-            const classes = className.split(/\s/);
-            classes.forEach((cssClass) => {
-              elementTagName += `.${cssClass}`;
-            });
-          }
+      //     if (className) {
+      //       const classes = className.split(/\s/);
+      //       classes.forEach((cssClass) => {
+      //         elementTagName += `.${cssClass}`;
+      //       });
+      //     }
 
-          let childIndex = 1;
+      //     let childIndex = 1;
 
-          for (
-            let currentElement = element;
-            currentElement.previousElementSibling;
-            currentElement = currentElement.previousElementSibling
-          ) {
-            childIndex += 1;
-          }
+      //     for (
+      //       let currentElement = element;
+      //       currentElement.previousElementSibling;
+      //       currentElement = currentElement.previousElementSibling
+      //     ) {
+      //       childIndex += 1;
+      //     }
 
-          elementTagName += `:nth-child(${childIndex})`;
-          return `${nodeToSelector(parentNode)} > ${elementTagName}`;
-        }
+      //     elementTagName += `:nth-child(${childIndex})`;
+      //     return `${nodeToSelector(parentNode)} > ${elementTagName}`;
+      //   }
 
-        function getElement() {
-          const storyRoot = document.getElementById('story-root');
-          return storyRoot
-            ? storyRoot.childNodes
-            : document.getElementById('root');
-        }
+      //   function getElement() {
+      //     const storyRoot = document.getElementById('story-root');
+      //     return storyRoot
+      //       ? storyRoot.childNodes
+      //       : document.getElementById('root');
+      //   }
 
-        const element = getElement();
-        return nodeToSelector(element);
-      });
+      //   const element = getElement();
+      //   return nodeToSelector(element);
+      // });
       const results = await new puppeteer$1.AxePuppeteer(page)
-        .include(elementSelector)
+        .include('#root')
         .configure(config)
         .options(options)
         .analyze();
