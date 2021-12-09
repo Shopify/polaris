@@ -4,7 +4,7 @@ const pxtorem = require('postcss-pxtorem');
 module.exports = [
   postcssShopify,
   pxtorem({
-    rootValue: 16,
+    rootValue: 10,
     replace: true,
     propList: ['*'],
   }),
