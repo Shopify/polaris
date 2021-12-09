@@ -28,7 +28,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed unnecessary `--p-border-radius-` properties and moved border-radius custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
 - Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 - Updated `--global-ribbon-height` CSS custom property to `--pc-frame-global-ribbon-height`
-- Updated `--pc-frame-offset` CSS custom property to `--pc-frame-offset`
+- Updated `--p-frame-offset` CSS custom property to `--pc-frame-offset`
 - Updated all `--top-bar-*` CSS custom properties to `--pc-top-bar-*`
 
 ### New components
