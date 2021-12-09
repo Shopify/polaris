@@ -6,11 +6,16 @@ import motion from '../tokens/motion.json';
 import spacing from '../tokens/spacing.json';
 import typography from '../tokens/typography.json';
 import zIndex from '../tokens/z-index.json';
-import type {TokenGroup} from '../tokens/types';
-
-export type {TokenGroup} from '../tokens/types';
 
 export type ColorScheme = 'light' | 'dark';
+
+/**
+ * Values to convert to CSS custom properties.
+ * @example {background: '#000'} // --p-background: #000;
+ */
+export interface TokenGroup {
+  [token: string]: string;
+}
 
 /**
  * Mapping of Polaris color schemes to operating system color schemes.
