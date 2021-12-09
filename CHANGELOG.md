@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ### Enhancements
 
-- Removed animtion from `Skeleton` components ([#4697](https://github.com/Shopify/polaris-react/pull/4697))
+- Removed animation from `Skeleton` components ([#4697](https://github.com/Shopify/polaris-react/pull/4697))
 - Remove duplicate duration(fast) usage. ([#4682](https://github.com/Shopify/polaris-react/pull/4682))
 - Updated the accessability label for the rollup actions in the `Page` header ([#4080](https://github.com/Shopify/polaris-react/pull/4080))
 
