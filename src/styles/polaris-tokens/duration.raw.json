@@ -1,0 +1,47 @@
+{
+  "aliases": {},
+  "props": {
+    "duration-none": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-none",
+      "value": 0,
+      "originalValue": 0
+    },
+    "duration-fast": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-fast",
+      "value": "100ms",
+      "originalValue": "100ms"
+    },
+    "duration-base": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-base",
+      "value": "200ms",
+      "originalValue": "200ms"
+    },
+    "duration-slow": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-slow",
+      "value": "300ms",
+      "originalValue": "300ms"
+    },
+    "duration-slower": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-slower",
+      "value": "400ms",
+      "originalValue": "400ms"
+    },
+    "duration-slowest": {
+      "type": "time",
+      "category": "time",
+      "name": "duration-slowest",
+      "value": "500ms",
+      "originalValue": "500ms"
+    }
+  }
+}

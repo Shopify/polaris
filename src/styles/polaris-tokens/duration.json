@@ -1,0 +1,8 @@
+{
+  "duration-none": 0,
+  "duration-fast": 100,
+  "duration-base": 200,
+  "duration-slow": 300,
+  "duration-slower": 400,
+  "duration-slowest": 500
+}

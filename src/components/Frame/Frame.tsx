@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
-import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {tokens} from '../../tokens';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
@@ -138,7 +138,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
-          timeout={durationSlow}
+          timeout={parseInt(tokens.motion['duration-300'], 10)}
           classNames={navTransitionClasses}
         >
           <div

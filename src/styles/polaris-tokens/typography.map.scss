@@ -1,0 +1,17 @@
+$polaris-typography-map: (
+  'font-stack-base': (
+    -apple-system,
+    BlinkMacSystemFont,
+    'San Francisco',
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    sans-serif,
+  ),
+  'font-stack-monospace': (
+    Monaco,
+    Consolas,
+    'Lucida Console',
+    monospace,
+  ),
+);

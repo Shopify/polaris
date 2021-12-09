@@ -1,0 +1,586 @@
+{
+  "aliases": {
+    "color-sky-light": {
+      "value": "#f4f6f8"
+    },
+    "color-ink-lightest": {
+      "value": "#919eab"
+    },
+    "color-green-text": {
+      "value": "#414f3e"
+    },
+    "color-orange-light": {
+      "value": "#ffc58b"
+    },
+    "color-orange-text": {
+      "value": "#594430"
+    },
+    "color-green-light": {
+      "value": "#bbe5b3"
+    },
+    "color-blue": {
+      "value": "#006fbb"
+    },
+    "color-indigo-light": {
+      "value": "#b3bcf5"
+    },
+    "color-yellow-dark": {
+      "value": "#8a6116"
+    },
+    "color-ink-light": {
+      "value": "#454f5b"
+    },
+    "color-purple": {
+      "value": "#9c6ade"
+    },
+    "color-teal": {
+      "value": "#47c1bf"
+    },
+    "color-yellow-light": {
+      "value": "#ffea8a"
+    },
+    "color-indigo-dark": {
+      "value": "#202e78"
+    },
+    "color-red": {
+      "value": "#de3618"
+    },
+    "color-red-darker": {
+      "value": "#330101"
+    },
+    "color-green-dark": {
+      "value": "#108043"
+    },
+    "color-purple-darker": {
+      "value": "#230051"
+    },
+    "color-teal-darker": {
+      "value": "#003135"
+    },
+    "color-orange-dark": {
+      "value": "#c05717"
+    },
+    "color-blue-darker": {
+      "value": "#001429"
+    },
+    "color-sky-dark": {
+      "value": "#c4cdd5"
+    },
+    "color-sky-lighter": {
+      "value": "#f9fafb"
+    },
+    "color-blue-light": {
+      "value": "#b4e1fa"
+    },
+    "color-orange-lighter": {
+      "value": "#fcebdb"
+    },
+    "color-purple-light": {
+      "value": "#e3d0ff"
+    },
+    "color-green-lighter": {
+      "value": "#e3f1df"
+    },
+    "color-teal-light": {
+      "value": "#b7ecec"
+    },
+    "color-red-light": {
+      "value": "#fead9a"
+    },
+    "color-yellow-darker": {
+      "value": "#573b00"
+    },
+    "color-ink-lighter": {
+      "value": "#637381"
+    },
+    "color-indigo-lighter": {
+      "value": "#f4f5fa"
+    },
+    "color-red-text": {
+      "value": "#583c35"
+    },
+    "color-teal-text": {
+      "value": "#405352"
+    },
+    "color-indigo-darker": {
+      "value": "#000639"
+    },
+    "color-purple-text": {
+      "value": "#50495a"
+    },
+    "color-yellow-lighter": {
+      "value": "#fcf1cd"
+    },
+    "color-black": {
+      "value": "#000000"
+    },
+    "color-blue-text": {
+      "value": "#3e4e57"
+    },
+    "color-green-darker": {
+      "value": "#173630"
+    },
+    "color-sky": {
+      "value": "#dfe3e8"
+    },
+    "color-orange-darker": {
+      "value": "#4a1504"
+    },
+    "color-orange": {
+      "value": "#f49342"
+    },
+    "color-green": {
+      "value": "#50b83c"
+    },
+    "color-blue-lighter": {
+      "value": "#ebf5fa"
+    },
+    "color-indigo": {
+      "value": "#5c6ac4"
+    },
+    "color-red-dark": {
+      "value": "#bf0711"
+    },
+    "color-ink": {
+      "value": "#212b36"
+    },
+    "color-purple-lighter": {
+      "value": "#f6f0fd"
+    },
+    "color-yellow-text": {
+      "value": "#595130"
+    },
+    "color-teal-lighter": {
+      "value": "#e0f5f5"
+    },
+    "color-teal-dark": {
+      "value": "#00848e"
+    },
+    "color-purple-dark": {
+      "value": "#50248f"
+    },
+    "color-red-lighter": {
+      "value": "#fbeae5"
+    },
+    "color-yellow": {
+      "value": "#eec200"
+    },
+    "color-indigo-text": {
+      "value": "#3e4155"
+    },
+    "color-white": {
+      "value": "#ffffff"
+    },
+    "color-blue-dark": {
+      "value": "#084e8a"
+    }
+  },
+  "props": {
+    "color-purple-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-purple-text",
+      "value": "brightness(0) saturate(100%) invert(29%) sepia(3%) saturate(2843%) hue-rotate(223deg) brightness(92%) contrast(86%)",
+      "originalValue": "{!color-purple-text}"
+    },
+    "color-purple-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-darker",
+      "value": "brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(6605%) hue-rotate(265deg) brightness(99%) contrast(124%)",
+      "originalValue": "{!color-purple-darker}"
+    },
+    "color-purple-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-dark",
+      "value": "brightness(0) saturate(100%) invert(12%) sepia(46%) saturate(4964%) hue-rotate(258deg) brightness(101%) contrast(93%)",
+      "originalValue": "{!color-purple-dark}"
+    },
+    "color-purple": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple",
+      "value": "brightness(0) saturate(100%) invert(49%) sepia(77%) saturate(1864%) hue-rotate(229deg) brightness(91%) contrast(91%)",
+      "originalValue": "{!color-purple}"
+    },
+    "color-purple-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-light",
+      "value": "brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(1535%) hue-rotate(203deg) brightness(103%) contrast(104%)",
+      "originalValue": "{!color-purple-light}"
+    },
+    "color-purple-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-lighter",
+      "value": "brightness(0) saturate(100%) invert(84%) sepia(15%) saturate(135%) hue-rotate(219deg) brightness(110%) contrast(98%)",
+      "originalValue": "{!color-purple-lighter}"
+    },
+    "color-indigo-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-indigo-text",
+      "value": "brightness(0) saturate(100%) invert(24%) sepia(11%) saturate(1035%) hue-rotate(195deg) brightness(97%) contrast(94%)",
+      "originalValue": "{!color-indigo-text}"
+    },
+    "color-indigo-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-darker",
+      "value": "brightness(0) saturate(100%) invert(5%) sepia(81%) saturate(5060%) hue-rotate(229deg) brightness(72%) contrast(111%)",
+      "originalValue": "{!color-indigo-darker}"
+    },
+    "color-indigo-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-dark",
+      "value": "brightness(0) saturate(100%) invert(17%) sepia(28%) saturate(4409%) hue-rotate(218deg) brightness(87%) contrast(98%)",
+      "originalValue": "{!color-indigo-dark}"
+    },
+    "color-indigo": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo",
+      "value": "brightness(0) saturate(100%) invert(45%) sepia(17%) saturate(1966%) hue-rotate(194deg) brightness(88%) contrast(84%)",
+      "originalValue": "{!color-indigo}"
+    },
+    "color-indigo-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-light",
+      "value": "brightness(0) saturate(100%) invert(82%) sepia(37%) saturate(4261%) hue-rotate(194deg) brightness(111%) contrast(92%)",
+      "originalValue": "{!color-indigo-light}"
+    },
+    "color-indigo-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-lighter",
+      "value": "brightness(0) saturate(100%) invert(100%) sepia(25%) saturate(1090%) hue-rotate(179deg) brightness(100%) contrast(96%)",
+      "originalValue": "{!color-indigo-lighter}"
+    },
+    "color-blue-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-blue-text",
+      "value": "brightness(0) saturate(100%) invert(27%) sepia(13%) saturate(709%) hue-rotate(158deg) brightness(96%) contrast(89%)",
+      "originalValue": "{!color-blue-text}"
+    },
+    "color-blue-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-darker",
+      "value": "brightness(0) saturate(100%) invert(5%) sepia(33%) saturate(5606%) hue-rotate(195deg) brightness(97%) contrast(102%)",
+      "originalValue": "{!color-blue-darker}"
+    },
+    "color-blue-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-dark",
+      "value": "brightness(0) saturate(100%) invert(22%) sepia(70%) saturate(1308%) hue-rotate(182deg) brightness(94%) contrast(101%)",
+      "originalValue": "{!color-blue-dark}"
+    },
+    "color-blue": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue",
+      "value": "brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2885%) hue-rotate(190deg) brightness(99%) contrast(101%)",
+      "originalValue": "{!color-blue}"
+    },
+    "color-blue-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-light",
+      "value": "brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(1832%) hue-rotate(178deg) brightness(108%) contrast(96%)",
+      "originalValue": "{!color-blue-light}"
+    },
+    "color-blue-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-lighter",
+      "value": "brightness(0) saturate(100%) invert(100%) sepia(94%) saturate(686%) hue-rotate(175deg) brightness(103%) contrast(96%)",
+      "originalValue": "{!color-blue-lighter}"
+    },
+    "color-teal-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-teal-text",
+      "value": "brightness(0) saturate(100%) invert(31%) sepia(11%) saturate(665%) hue-rotate(128deg) brightness(94%) contrast(93%)",
+      "originalValue": "{!color-teal-text}"
+    },
+    "color-teal-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-darker",
+      "value": "brightness(0) saturate(100%) invert(15%) sepia(23%) saturate(2237%) hue-rotate(141deg) brightness(96%) contrast(104%)",
+      "originalValue": "{!color-teal-darker}"
+    },
+    "color-teal-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-dark",
+      "value": "brightness(0) saturate(100%) invert(28%) sepia(83%) saturate(3919%) hue-rotate(168deg) brightness(93%) contrast(101%)",
+      "originalValue": "{!color-teal-dark}"
+    },
+    "color-teal": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal",
+      "value": "brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(2838%) hue-rotate(130deg) brightness(92%) contrast(87%)",
+      "originalValue": "{!color-teal}"
+    },
+    "color-teal-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-light",
+      "value": "brightness(0) saturate(100%) invert(95%) sepia(12%) saturate(683%) hue-rotate(122deg) brightness(97%) contrast(91%)",
+      "originalValue": "{!color-teal-light}"
+    },
+    "color-teal-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-lighter",
+      "value": "brightness(0) saturate(100%) invert(87%) sepia(5%) saturate(1124%) hue-rotate(173deg) brightness(114%) contrast(92%)",
+      "originalValue": "{!color-teal-lighter}"
+    },
+    "color-green-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-green-text",
+      "value": "brightness(0) saturate(100%) invert(30%) sepia(8%) saturate(1010%) hue-rotate(63deg) brightness(91%) contrast(91%)",
+      "originalValue": "{!color-green-text}"
+    },
+    "color-green-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-darker",
+      "value": "brightness(0) saturate(100%) invert(15%) sepia(32%) saturate(727%) hue-rotate(118deg) brightness(93%) contrast(91%)",
+      "originalValue": "{!color-green-darker}"
+    },
+    "color-green-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-dark",
+      "value": "brightness(0) saturate(100%) invert(18%) sepia(75%) saturate(6649%) hue-rotate(155deg) brightness(97%) contrast(87%)",
+      "originalValue": "{!color-green-dark}"
+    },
+    "color-green": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green",
+      "value": "brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(2637%) hue-rotate(64deg) brightness(106%) contrast(91%)",
+      "originalValue": "{!color-green}"
+    },
+    "color-green-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-light",
+      "value": "brightness(0) saturate(100%) invert(93%) sepia(15%) saturate(599%) hue-rotate(52deg) brightness(93%) contrast(93%)",
+      "originalValue": "{!color-green-light}"
+    },
+    "color-green-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-lighter",
+      "value": "brightness(0) saturate(100%) invert(92%) sepia(51%) saturate(187%) hue-rotate(46deg) brightness(108%) contrast(89%)",
+      "originalValue": "{!color-green-lighter}"
+    },
+    "color-yellow-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-yellow-text",
+      "value": "brightness(0) saturate(100%) invert(28%) sepia(42%) saturate(413%) hue-rotate(11deg) brightness(97%) contrast(91%)",
+      "originalValue": "{!color-yellow-text}"
+    },
+    "color-yellow-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-darker",
+      "value": "brightness(0) saturate(100%) invert(19%) sepia(75%) saturate(981%) hue-rotate(17deg) brightness(103%) contrast(103%)",
+      "originalValue": "{!color-yellow-darker}"
+    },
+    "color-yellow-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-dark",
+      "value": "brightness(0) saturate(100%) invert(37%) sepia(51%) saturate(709%) hue-rotate(0deg) brightness(93%) contrast(89%)",
+      "originalValue": "{!color-yellow-dark}"
+    },
+    "color-yellow": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow",
+      "value": "brightness(0) saturate(100%) invert(65%) sepia(91%) saturate(530%) hue-rotate(5deg) brightness(100%) contrast(100%)",
+      "originalValue": "{!color-yellow}"
+    },
+    "color-yellow-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-light",
+      "value": "brightness(0) saturate(100%) invert(77%) sepia(72%) saturate(246%) hue-rotate(355deg) brightness(103%) contrast(107%)",
+      "originalValue": "{!color-yellow-light}"
+    },
+    "color-yellow-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-lighter",
+      "value": "brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(234%) hue-rotate(357deg) brightness(103%) contrast(98%)",
+      "originalValue": "{!color-yellow-lighter}"
+    },
+    "color-orange-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-orange-text",
+      "value": "brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(1092%) hue-rotate(348deg) brightness(99%) contrast(84%)",
+      "originalValue": "{!color-orange-text}"
+    },
+    "color-orange-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-darker",
+      "value": "brightness(0) saturate(100%) invert(9%) sepia(83%) saturate(1926%) hue-rotate(356deg) brightness(98%) contrast(99%)",
+      "originalValue": "{!color-orange-darker}"
+    },
+    "color-orange-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-dark",
+      "value": "brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(1431%) hue-rotate(5deg) brightness(96%) contrast(82%)",
+      "originalValue": "{!color-orange-dark}"
+    },
+    "color-orange": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange",
+      "value": "brightness(0) saturate(100%) invert(54%) sepia(86%) saturate(416%) hue-rotate(340deg) brightness(105%) contrast(91%)",
+      "originalValue": "{!color-orange}"
+    },
+    "color-orange-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-light",
+      "value": "brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(483%) hue-rotate(335deg) brightness(101%) contrast(103%)",
+      "originalValue": "{!color-orange-light}"
+    },
+    "color-orange-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-lighter",
+      "value": "brightness(0) saturate(100%) invert(93%) sepia(11%) saturate(918%) hue-rotate(312deg) brightness(107%) contrast(98%)",
+      "originalValue": "{!color-orange-lighter}"
+    },
+    "color-red-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-red-text",
+      "value": "brightness(0) saturate(100%) invert(22%) sepia(9%) saturate(2068%) hue-rotate(325deg) brightness(92%) contrast(83%)",
+      "originalValue": "{!color-red-text}"
+    },
+    "color-red-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-darker",
+      "value": "brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)",
+      "originalValue": "{!color-red-darker}"
+    },
+    "color-red-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-dark",
+      "value": "brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)",
+      "originalValue": "{!color-red-dark}"
+    },
+    "color-red": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red",
+      "value": "brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(3622%) hue-rotate(353deg) brightness(89%) contrast(95%)",
+      "originalValue": "{!color-red}"
+    },
+    "color-red-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-light",
+      "value": "brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(2561%) hue-rotate(313deg) brightness(101%) contrast(99%)",
+      "originalValue": "{!color-red-light}"
+    },
+    "color-red-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-lighter",
+      "value": "brightness(0) saturate(100%) invert(89%) sepia(21%) saturate(137%) hue-rotate(324deg) brightness(102%) contrast(97%)",
+      "originalValue": "{!color-red-lighter}"
+    },
+    "color-ink": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink",
+      "value": "brightness(0) saturate(100%) invert(10%) sepia(10%) saturate(2259%) hue-rotate(171deg) brightness(99%) contrast(84%)",
+      "originalValue": "{!color-ink}"
+    },
+    "color-ink-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-light",
+      "value": "brightness(0) saturate(100%) invert(32%) sepia(9%) saturate(1069%) hue-rotate(173deg) brightness(83%) contrast(84%)",
+      "originalValue": "{!color-ink-light}"
+    },
+    "color-ink-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-lighter",
+      "value": "brightness(0) saturate(100%) invert(45%) sepia(8%) saturate(825%) hue-rotate(166deg) brightness(95%) contrast(90%)",
+      "originalValue": "{!color-ink-lighter}"
+    },
+    "color-ink-lightest": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-lightest",
+      "value": "brightness(0) saturate(100%) invert(68%) sepia(18%) saturate(246%) hue-rotate(169deg) brightness(88%) contrast(90%)",
+      "originalValue": "{!color-ink-lightest}"
+    },
+    "color-sky-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-dark",
+      "value": "brightness(0) saturate(100%) invert(86%) sepia(4%) saturate(502%) hue-rotate(167deg) brightness(96%) contrast(91%)",
+      "originalValue": "{!color-sky-dark}"
+    },
+    "color-sky": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky",
+      "value": "brightness(0) saturate(100%) invert(100%) sepia(95%) saturate(336%) hue-rotate(175deg) brightness(97%) contrast(87%)",
+      "originalValue": "{!color-sky}"
+    },
+    "color-sky-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-light",
+      "value": "brightness(0) saturate(100%) invert(99%) sepia(12%) saturate(467%) hue-rotate(174deg) brightness(99%) contrast(96%)",
+      "originalValue": "{!color-sky-light}"
+    },
+    "color-sky-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-lighter",
+      "value": "brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(159%) hue-rotate(170deg) brightness(99%) contrast(99%)",
+      "originalValue": "{!color-sky-lighter}"
+    },
+    "color-black": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-black",
+      "value": "brightness(0) saturate(100%)",
+      "originalValue": "{!color-black}"
+    },
+    "color-white": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-white",
+      "value": "brightness(0) saturate(100%) invert(100%)",
+      "originalValue": "{!color-white}"
+    }
+  }
+}
