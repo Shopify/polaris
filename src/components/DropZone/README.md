@@ -279,25 +279,7 @@ function DropZoneWithDropOnPageExample() {
     </Stack>
   );
 
-  const uploadMessage = !uploadedFiles && (
-    <div
-      style={{
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Caption>
-        <TextStyle variation="strong">
-          <TextStyle variation="subdued">
-            Drop or <Link>browse files</Link>
-          </TextStyle>
-        </TextStyle>
-      </Caption>
-    </div>
-  );
+  const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
 
   return (
     <Page
