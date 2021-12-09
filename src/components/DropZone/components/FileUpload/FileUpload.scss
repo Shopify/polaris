@@ -43,7 +43,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   text-align: center;
   appearance: none;
 
-  &:focus {
+  &.focused {
     outline: 0;
     box-shadow: none;
     @include focus-ring($style: 'focused');

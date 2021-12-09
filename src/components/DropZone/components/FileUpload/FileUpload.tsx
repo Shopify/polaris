@@ -32,13 +32,13 @@ export function FileUpload(props: FileUploadProps) {
     actionHint,
   } = props;
 
-  const buttonStyles = classNames(
+  const actionClassNames = classNames(
     styles.Button,
     focused && styles.focused,
     disabled && styles.disabled,
   );
 
-  const buttonMarkup = <div className={buttonStyles}>{actionTitle}</div>;
+  const actionMarkup = <div className={actionClassNames}>{actionTitle}</div>;
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
@@ -58,7 +58,7 @@ export function FileUpload(props: FileUploadProps) {
     case 'large':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          {buttonMarkup}
+          {actionMarkup}
           {actionHintMarkup}
         </Stack>
       );
@@ -66,7 +66,7 @@ export function FileUpload(props: FileUploadProps) {
     case 'medium':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          {buttonMarkup}
+          {actionMarkup}
           {actionHintMarkup}
         </Stack>
       );
