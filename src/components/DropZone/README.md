@@ -480,7 +480,7 @@ function DropZoneExample() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const fileUpload = !files.length && (
-    <div style={{padding: '1rem'}}>
+    <div style={{padding: '10px'}}>
       <Stack distribution="center">
         <Stack vertical>
           <Button>Add files</Button>
