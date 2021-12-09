@@ -4,7 +4,7 @@ The purpose of this plugin is to ensure that we're following our established con
 
 ### Enforced Rules
 
-- If a `--p-*` custom property is used it must match an existing Polaris [token](../../../../src/tokens/tokens.ts).
+- If a `--p-*` custom property is used it must match an existing Polaris [token](/src/tokens/tokens.ts).
 - Local component custom properties must have a `--pc-` prefix.
 
 ## How to use
