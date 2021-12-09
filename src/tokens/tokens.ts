@@ -1,11 +1,13 @@
-import legacyTokens from '../tokens/legacy-tokens.json';
-import shape from '../tokens/shape.json';
-import lightColorScheme from '../tokens/color.light.json';
-import darkColorScheme from '../tokens/color.dark.json';
-import motion from '../tokens/motion.json';
-import spacing from '../tokens/spacing.json';
-import typography from '../tokens/typography.json';
-import zIndex from '../tokens/z-index.json';
+import legacyTokens from '../../tokens/legacy-tokens.json';
+import shape from '../../tokens/shape.json';
+import lightColorScheme from '../../tokens/color.light.json';
+import darkColorScheme from '../../tokens/color.dark.json';
+import motion from '../../tokens/motion.json';
+import spacing from '../../tokens/spacing.json';
+import typography from '../../tokens/typography.json';
+import zIndex from '../../tokens/z-index.json';
+
+import {tokensToRems} from './utilities';
 
 /**
  * Values to convert to CSS custom properties.
@@ -55,11 +57,11 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  shape,
+  shape: tokensToRems(shape),
   colorSchemes,
   legacyTokens,
   motion,
-  spacing,
+  spacing: tokensToRems(spacing),
   typography,
   zIndex,
 };
