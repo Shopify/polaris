@@ -1,6 +1,6 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {durationFast} from '@shopify/polaris-tokens';
 
+import {tokens} from '../../../../tokens';
 import {
   CustomProperties,
   CustomPropertiesProps,
@@ -105,7 +105,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, durationFast);
+        }, parseInt(tokens.motion['duration-100'], 10));
       });
     }
 
@@ -114,7 +114,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, durationFast);
+        }, parseInt(tokens.motion['duration-100'], 10));
       });
     }
   }

@@ -79,24 +79,6 @@ function jestAdjustmentsPlugin() {
 function preAndPostBuildPlugin() {
   return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
-      hooks.pre.hook((steps) => [
-        ...steps,
-        api.createStep(
-          {id: 'PolarisBuild.Pre', label: 'polaris pre-build'},
-          async (step) => {
-            try {
-              await step.exec('yarn', ['run', 'copy-polaris-tokens'], {
-                all: true,
-              });
-            } catch (error) {
-              throw new DiagnosticError({
-                title: 'Error runing prebuild steps',
-                content: error.all,
-              });
-            }
-          },
-        ),
-      ]);
       hooks.post.hook((steps) => [
         ...steps,
         api.createStep(
