@@ -1,18 +1,14 @@
-import {legacyTokens} from './_legacy-tokens';
-import {shape} from './_shape';
-import {lightColorScheme, darkColorScheme} from './_color';
-import {motion} from './_motion';
-import {spacing} from './_spacing';
-import {typography} from './_typography';
-import {zIndex} from './_z-index';
+import legacyTokens from '../tokens/legacy-tokens.json';
+import shape from '../tokens/shape.json';
+import lightColorScheme from '../tokens/color.light.json';
+import darkColorScheme from '../tokens/color.dark.json';
+import motion from '../tokens/motion.json';
+import spacing from '../tokens/spacing.json';
+import typography from '../tokens/typography.json';
+import zIndex from '../tokens/z-index.json';
+import type {TokenGroup} from '../tokens/types';
 
-/**
- * Values to convert to CSS custom properties.
- * @example {background: '#000'} // --p-background: #000;
- */
-export interface TokenGroup {
-  [token: string]: string;
-}
+export type {TokenGroup} from '../tokens/types';
 
 export type ColorScheme = 'light' | 'dark';
 
