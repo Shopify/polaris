@@ -68,7 +68,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     &:hover {
       cursor: pointer;
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-subdued);
 
       // stylelint-disable-next-line selector-max-specificity
       &::after {

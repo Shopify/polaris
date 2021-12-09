@@ -463,7 +463,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with variable size
+### Drop zone with custom FileUpload text
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 
@@ -480,15 +480,9 @@ function DropZoneExample() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const fileUpload = !files.length && (
-    <div style={{padding: '1rem'}}>
-      <Stack distribution="center">
-        <Stack vertical>
-          <Button>Add files</Button>
-          <TextStyle variation="subdued">or drop to upload</TextStyle>
-        </Stack>
-      </Stack>
-    </div>
+    <DropZone.FileUpload actionHint="Accepts .gif, .jpg, and .png" />
   );
+
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
       {files.map((file, index) => (
