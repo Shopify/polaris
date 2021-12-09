@@ -88,6 +88,7 @@
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/pluginutils": "^3.1.0",
     "@shopify/babel-preset": "^24.1.2",
