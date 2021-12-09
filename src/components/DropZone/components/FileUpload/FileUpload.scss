@@ -27,7 +27,8 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
 .Button {
   @include focus-ring;
-
+  display: inline-flex;
+  flex: 0 0 auto;
   border: none;
   border-radius: var(--p-border-radius-base);
   padding: rem(4px) rem(6px);
