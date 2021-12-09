@@ -62,7 +62,7 @@ $dropzone-stacking-order: (
   padding: border-width();
 
   &::after {
-    border-color: var(--p-border);
+    border-color: var(--p-border-neutral-subdued);
   }
 
   &:not(.isDisabled) {
@@ -81,7 +81,7 @@ $dropzone-stacking-order: (
     &::after {
       @include reset-after;
       @include set-border-radius;
-      border-color: var(--p-border);
+      border-color: var(--p-border-neutral-subdued);
     }
   }
 }

@@ -25,7 +25,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   vertical-align: bottom;
 }
 
-.Button {
+.Action {
   @include focus-ring;
   display: inline-flex;
   flex: 0 0 auto;
@@ -42,12 +42,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   cursor: pointer;
   text-align: center;
   appearance: none;
-
-  &.focused {
-    outline: 0;
-    box-shadow: none;
-    @include focus-ring($style: 'focused');
-  }
 
   &:hover {
     color: var(--p-interactive-hovered);

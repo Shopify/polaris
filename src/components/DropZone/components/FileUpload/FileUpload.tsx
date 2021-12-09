@@ -19,7 +19,7 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {size, measuring, type, focused, disabled, allowMultiple} =
+  const {size, measuring, type, disabled, allowMultiple} =
     useContext(DropZoneContext);
 
   const typeSuffix = capitalize(type);
@@ -33,8 +33,7 @@ export function FileUpload(props: FileUploadProps) {
   } = props;
 
   const actionClassNames = classNames(
-    styles.Button,
-    focused && styles.focused,
+    styles.Action,
     disabled && styles.disabled,
   );
 
