@@ -285,6 +285,7 @@ function ModalExample() {
         activator={activator}
         open={active}
         onClose={handleChange}
+        instant
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
           content: 'Add Instagram',
@@ -344,6 +345,7 @@ function ModalWithPrimaryActionExample() {
       <Modal
         activator={activator}
         open={active}
+        instant
         onClose={toggleModal}
         title="Get a shareable link"
         primaryAction={{
@@ -440,6 +442,7 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
         open={active}
         onClose={handleClose}
         title="Export customers"
+        instant
         primaryAction={{
           content: 'Export customers',
           onAction: handleClose,
@@ -640,6 +643,7 @@ function ModalWithoutTitleExample() {
         activator={activator}
         open={active}
         onClose={handleChange}
+        instant
         primaryAction={{
           content: 'Add Instagram',
           onAction: handleChange,
@@ -738,6 +742,7 @@ function ModalExample() {
         activator={buttonRef}
         open={active}
         onClose={handleClose}
+        instant
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
           content: 'Add Instagram',
