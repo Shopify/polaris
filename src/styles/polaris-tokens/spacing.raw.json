@@ -1,0 +1,54 @@
+{
+  "aliases": {},
+  "props": {
+    "spacing-none": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-none",
+      "value": 0,
+      "originalValue": 0
+    },
+    "spacing-extra-tight": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-extra-tight",
+      "value": "4px",
+      "originalValue": "4px"
+    },
+    "spacing-tight": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-tight",
+      "value": "8px",
+      "originalValue": "8px"
+    },
+    "spacing-base-tight": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-base-tight",
+      "value": "12px",
+      "originalValue": "12px"
+    },
+    "spacing-base": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-base",
+      "value": "16px",
+      "originalValue": "16px"
+    },
+    "spacing-loose": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-loose",
+      "value": "20px",
+      "originalValue": "20px"
+    },
+    "spacing-extra-loose": {
+      "type": "number",
+      "category": "spacing",
+      "name": "spacing-extra-loose",
+      "value": "32px",
+      "originalValue": "32px"
+    }
+  }
+}

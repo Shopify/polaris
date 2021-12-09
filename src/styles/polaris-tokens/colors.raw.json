@@ -1,0 +1,586 @@
+{
+  "aliases": {
+    "color-sky-light": {
+      "value": "#f4f6f8"
+    },
+    "color-ink-lightest": {
+      "value": "#919eab"
+    },
+    "color-green-text": {
+      "value": "#414f3e"
+    },
+    "color-orange-light": {
+      "value": "#ffc58b"
+    },
+    "color-orange-text": {
+      "value": "#594430"
+    },
+    "color-green-light": {
+      "value": "#bbe5b3"
+    },
+    "color-blue": {
+      "value": "#006fbb"
+    },
+    "color-indigo-light": {
+      "value": "#b3bcf5"
+    },
+    "color-yellow-dark": {
+      "value": "#8a6116"
+    },
+    "color-ink-light": {
+      "value": "#454f5b"
+    },
+    "color-purple": {
+      "value": "#9c6ade"
+    },
+    "color-teal": {
+      "value": "#47c1bf"
+    },
+    "color-yellow-light": {
+      "value": "#ffea8a"
+    },
+    "color-indigo-dark": {
+      "value": "#202e78"
+    },
+    "color-red": {
+      "value": "#de3618"
+    },
+    "color-red-darker": {
+      "value": "#330101"
+    },
+    "color-green-dark": {
+      "value": "#108043"
+    },
+    "color-purple-darker": {
+      "value": "#230051"
+    },
+    "color-teal-darker": {
+      "value": "#003135"
+    },
+    "color-orange-dark": {
+      "value": "#c05717"
+    },
+    "color-blue-darker": {
+      "value": "#001429"
+    },
+    "color-sky-dark": {
+      "value": "#c4cdd5"
+    },
+    "color-sky-lighter": {
+      "value": "#f9fafb"
+    },
+    "color-blue-light": {
+      "value": "#b4e1fa"
+    },
+    "color-orange-lighter": {
+      "value": "#fcebdb"
+    },
+    "color-purple-light": {
+      "value": "#e3d0ff"
+    },
+    "color-green-lighter": {
+      "value": "#e3f1df"
+    },
+    "color-teal-light": {
+      "value": "#b7ecec"
+    },
+    "color-red-light": {
+      "value": "#fead9a"
+    },
+    "color-yellow-darker": {
+      "value": "#573b00"
+    },
+    "color-ink-lighter": {
+      "value": "#637381"
+    },
+    "color-indigo-lighter": {
+      "value": "#f4f5fa"
+    },
+    "color-red-text": {
+      "value": "#583c35"
+    },
+    "color-teal-text": {
+      "value": "#405352"
+    },
+    "color-indigo-darker": {
+      "value": "#000639"
+    },
+    "color-purple-text": {
+      "value": "#50495a"
+    },
+    "color-yellow-lighter": {
+      "value": "#fcf1cd"
+    },
+    "color-black": {
+      "value": "#000000"
+    },
+    "color-blue-text": {
+      "value": "#3e4e57"
+    },
+    "color-green-darker": {
+      "value": "#173630"
+    },
+    "color-sky": {
+      "value": "#dfe3e8"
+    },
+    "color-orange-darker": {
+      "value": "#4a1504"
+    },
+    "color-orange": {
+      "value": "#f49342"
+    },
+    "color-green": {
+      "value": "#50b83c"
+    },
+    "color-blue-lighter": {
+      "value": "#ebf5fa"
+    },
+    "color-indigo": {
+      "value": "#5c6ac4"
+    },
+    "color-red-dark": {
+      "value": "#bf0711"
+    },
+    "color-ink": {
+      "value": "#212b36"
+    },
+    "color-purple-lighter": {
+      "value": "#f6f0fd"
+    },
+    "color-yellow-text": {
+      "value": "#595130"
+    },
+    "color-teal-lighter": {
+      "value": "#e0f5f5"
+    },
+    "color-teal-dark": {
+      "value": "#00848e"
+    },
+    "color-purple-dark": {
+      "value": "#50248f"
+    },
+    "color-red-lighter": {
+      "value": "#fbeae5"
+    },
+    "color-yellow": {
+      "value": "#eec200"
+    },
+    "color-indigo-text": {
+      "value": "#3e4155"
+    },
+    "color-white": {
+      "value": "#ffffff"
+    },
+    "color-blue-dark": {
+      "value": "#084e8a"
+    }
+  },
+  "props": {
+    "color-purple-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-purple-text",
+      "value": "rgb(80, 73, 90)",
+      "originalValue": "{!color-purple-text}"
+    },
+    "color-purple-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-darker",
+      "value": "rgb(35, 0, 81)",
+      "originalValue": "{!color-purple-darker}"
+    },
+    "color-purple-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-dark",
+      "value": "rgb(80, 36, 143)",
+      "originalValue": "{!color-purple-dark}"
+    },
+    "color-purple": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple",
+      "value": "rgb(156, 106, 222)",
+      "originalValue": "{!color-purple}"
+    },
+    "color-purple-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-light",
+      "value": "rgb(227, 208, 255)",
+      "originalValue": "{!color-purple-light}"
+    },
+    "color-purple-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-purple-lighter",
+      "value": "rgb(246, 240, 253)",
+      "originalValue": "{!color-purple-lighter}"
+    },
+    "color-indigo-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-indigo-text",
+      "value": "rgb(62, 65, 85)",
+      "originalValue": "{!color-indigo-text}"
+    },
+    "color-indigo-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-darker",
+      "value": "rgb(0, 6, 57)",
+      "originalValue": "{!color-indigo-darker}"
+    },
+    "color-indigo-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-dark",
+      "value": "rgb(32, 46, 120)",
+      "originalValue": "{!color-indigo-dark}"
+    },
+    "color-indigo": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo",
+      "value": "rgb(92, 106, 196)",
+      "originalValue": "{!color-indigo}"
+    },
+    "color-indigo-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-light",
+      "value": "rgb(179, 188, 245)",
+      "originalValue": "{!color-indigo-light}"
+    },
+    "color-indigo-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-indigo-lighter",
+      "value": "rgb(244, 245, 250)",
+      "originalValue": "{!color-indigo-lighter}"
+    },
+    "color-blue-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-blue-text",
+      "value": "rgb(62, 78, 87)",
+      "originalValue": "{!color-blue-text}"
+    },
+    "color-blue-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-darker",
+      "value": "rgb(0, 20, 41)",
+      "originalValue": "{!color-blue-darker}"
+    },
+    "color-blue-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-dark",
+      "value": "rgb(8, 78, 138)",
+      "originalValue": "{!color-blue-dark}"
+    },
+    "color-blue": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue",
+      "value": "rgb(0, 111, 187)",
+      "originalValue": "{!color-blue}"
+    },
+    "color-blue-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-light",
+      "value": "rgb(180, 225, 250)",
+      "originalValue": "{!color-blue-light}"
+    },
+    "color-blue-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-blue-lighter",
+      "value": "rgb(235, 245, 250)",
+      "originalValue": "{!color-blue-lighter}"
+    },
+    "color-teal-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-teal-text",
+      "value": "rgb(64, 83, 82)",
+      "originalValue": "{!color-teal-text}"
+    },
+    "color-teal-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-darker",
+      "value": "rgb(0, 49, 53)",
+      "originalValue": "{!color-teal-darker}"
+    },
+    "color-teal-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-dark",
+      "value": "rgb(0, 132, 142)",
+      "originalValue": "{!color-teal-dark}"
+    },
+    "color-teal": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal",
+      "value": "rgb(71, 193, 191)",
+      "originalValue": "{!color-teal}"
+    },
+    "color-teal-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-light",
+      "value": "rgb(183, 236, 236)",
+      "originalValue": "{!color-teal-light}"
+    },
+    "color-teal-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-teal-lighter",
+      "value": "rgb(224, 245, 245)",
+      "originalValue": "{!color-teal-lighter}"
+    },
+    "color-green-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-green-text",
+      "value": "rgb(65, 79, 62)",
+      "originalValue": "{!color-green-text}"
+    },
+    "color-green-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-darker",
+      "value": "rgb(23, 54, 48)",
+      "originalValue": "{!color-green-darker}"
+    },
+    "color-green-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-dark",
+      "value": "rgb(16, 128, 67)",
+      "originalValue": "{!color-green-dark}"
+    },
+    "color-green": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green",
+      "value": "rgb(80, 184, 60)",
+      "originalValue": "{!color-green}"
+    },
+    "color-green-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-light",
+      "value": "rgb(187, 229, 179)",
+      "originalValue": "{!color-green-light}"
+    },
+    "color-green-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-green-lighter",
+      "value": "rgb(227, 241, 223)",
+      "originalValue": "{!color-green-lighter}"
+    },
+    "color-yellow-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-yellow-text",
+      "value": "rgb(89, 81, 48)",
+      "originalValue": "{!color-yellow-text}"
+    },
+    "color-yellow-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-darker",
+      "value": "rgb(87, 59, 0)",
+      "originalValue": "{!color-yellow-darker}"
+    },
+    "color-yellow-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-dark",
+      "value": "rgb(138, 97, 22)",
+      "originalValue": "{!color-yellow-dark}"
+    },
+    "color-yellow": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow",
+      "value": "rgb(238, 194, 0)",
+      "originalValue": "{!color-yellow}"
+    },
+    "color-yellow-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-light",
+      "value": "rgb(255, 234, 138)",
+      "originalValue": "{!color-yellow-light}"
+    },
+    "color-yellow-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-yellow-lighter",
+      "value": "rgb(252, 241, 205)",
+      "originalValue": "{!color-yellow-lighter}"
+    },
+    "color-orange-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-orange-text",
+      "value": "rgb(89, 68, 48)",
+      "originalValue": "{!color-orange-text}"
+    },
+    "color-orange-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-darker",
+      "value": "rgb(74, 21, 4)",
+      "originalValue": "{!color-orange-darker}"
+    },
+    "color-orange-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-dark",
+      "value": "rgb(192, 87, 23)",
+      "originalValue": "{!color-orange-dark}"
+    },
+    "color-orange": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange",
+      "value": "rgb(244, 147, 66)",
+      "originalValue": "{!color-orange}"
+    },
+    "color-orange-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-light",
+      "value": "rgb(255, 197, 139)",
+      "originalValue": "{!color-orange-light}"
+    },
+    "color-orange-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-orange-lighter",
+      "value": "rgb(252, 235, 219)",
+      "originalValue": "{!color-orange-lighter}"
+    },
+    "color-red-text": {
+      "type": "color",
+      "category": "text-color",
+      "name": "color-red-text",
+      "value": "rgb(88, 60, 53)",
+      "originalValue": "{!color-red-text}"
+    },
+    "color-red-darker": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-darker",
+      "value": "rgb(51, 1, 1)",
+      "originalValue": "{!color-red-darker}"
+    },
+    "color-red-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-dark",
+      "value": "rgb(191, 7, 17)",
+      "originalValue": "{!color-red-dark}"
+    },
+    "color-red": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red",
+      "value": "rgb(222, 54, 24)",
+      "originalValue": "{!color-red}"
+    },
+    "color-red-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-light",
+      "value": "rgb(254, 173, 154)",
+      "originalValue": "{!color-red-light}"
+    },
+    "color-red-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-red-lighter",
+      "value": "rgb(251, 234, 229)",
+      "originalValue": "{!color-red-lighter}"
+    },
+    "color-ink": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink",
+      "value": "rgb(33, 43, 54)",
+      "originalValue": "{!color-ink}"
+    },
+    "color-ink-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-light",
+      "value": "rgb(69, 79, 91)",
+      "originalValue": "{!color-ink-light}"
+    },
+    "color-ink-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-lighter",
+      "value": "rgb(99, 115, 129)",
+      "originalValue": "{!color-ink-lighter}"
+    },
+    "color-ink-lightest": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-ink-lightest",
+      "value": "rgb(145, 158, 171)",
+      "originalValue": "{!color-ink-lightest}"
+    },
+    "color-sky-dark": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-dark",
+      "value": "rgb(196, 205, 213)",
+      "originalValue": "{!color-sky-dark}"
+    },
+    "color-sky": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky",
+      "value": "rgb(223, 227, 232)",
+      "originalValue": "{!color-sky}"
+    },
+    "color-sky-light": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-light",
+      "value": "rgb(244, 246, 248)",
+      "originalValue": "{!color-sky-light}"
+    },
+    "color-sky-lighter": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-sky-lighter",
+      "value": "rgb(249, 250, 251)",
+      "originalValue": "{!color-sky-lighter}"
+    },
+    "color-black": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-black",
+      "value": "rgb(0, 0, 0)",
+      "originalValue": "{!color-black}"
+    },
+    "color-white": {
+      "type": "color",
+      "category": "background-color",
+      "name": "color-white",
+      "value": "rgb(255, 255, 255)",
+      "originalValue": "{!color-white}"
+    }
+  }
+}

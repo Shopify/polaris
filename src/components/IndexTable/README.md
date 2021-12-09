@@ -759,7 +759,7 @@ function IndexTableWithFilteringExample() {
             onClearAll={handleClearAll}
           />
         </div>
-        <div style={{paddingLeft: '0.4rem'}}>
+        <div style={{paddingLeft: '0.25rem'}}>
           <Select
             labelInline
             label="Sort by"
@@ -1151,7 +1151,7 @@ function IndexTableWithAllElementsExample() {
             onClearAll={handleClearAll}
           />
         </div>
-        <div style={{paddingLeft: '0.4rem'}}>
+        <div style={{paddingLeft: '0.25rem'}}>
           <Select
             labelInline
             label="Sort by"
@@ -1312,7 +1312,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <div style={{padding: '1.2rem 1.6rem'}}>
+        <div style={{padding: '.75rem 1rem'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
           </p>
@@ -1338,7 +1338,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
               onClearAll={handleClearAll}
             />
           </div>
-          <div style={{paddingLeft: '0.4rem'}}>
+          <div style={{paddingLeft: '0.25rem'}}>
             <Select
               labelInline
               label="Sort by"
