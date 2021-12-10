@@ -11,7 +11,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Remove Button is smaller in `Tag` with ellipsis ([#4815](https://github.com/Shopify/polaris-react/issues/4815))
+- Fixed a bug where remove button could shrink in the `Tag` component ([#4816](https://github.com/Shopify/polaris-react/issues/4816))
 
 ### Documentation
 
