@@ -1,12 +1,11 @@
-import legacyTokens from '../../tokens/legacy-tokens.json';
-import shape from '../../tokens/shape.json';
-import lightColorScheme from '../../tokens/color.light.json';
-import darkColorScheme from '../../tokens/color.dark.json';
-import motion from '../../tokens/motion.json';
-import spacing from '../../tokens/spacing.json';
-import typography from '../../tokens/typography.json';
-import zIndex from '../../tokens/z-index.json';
-
+import legacyTokens from './token-groups/legacy-tokens.json';
+import shape from './token-groups/shape.json';
+import lightColorScheme from './token-groups/color.light.json';
+import darkColorScheme from './token-groups/color.dark.json';
+import motion from './token-groups/motion.json';
+import spacing from './token-groups/spacing.json';
+import typography from './token-groups/typography.json';
+import zIndex from './token-groups/z-index.json';
 import {tokensToRems} from './utilities';
 
 /**
