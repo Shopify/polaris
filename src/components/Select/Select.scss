@@ -99,7 +99,7 @@
   border-bottom-color: var(--p-border-shadow-subdued);
   border-radius: var(--p-border-radius-1);
   background-color: var(--p-surface);
-  box-shadow: var(--p-button-drop-shadow);
+  box-shadow: var(--p-shadow-button);
   @include focus-ring($border-width: 1px);
   // 'position' needs to sit below focus-ring since it will be overwritten
   // with relative when the focus ring style is 'base'

@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
-import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
+import {invertNumber} from '../../utilities';
 import type {RangeSliderProps} from '../../types';
 import sharedStyles from '../../RangeSlider.scss';
 
@@ -55,12 +55,12 @@ export function SingleThumb(props: SingleThumbProps) {
   const outputFactor = invertNumber((sliderProgress - 50) / 100);
 
   const cssVars = {
-    [`${CSS_VAR_PREFIX}min`]: min,
-    [`${CSS_VAR_PREFIX}max`]: max,
-    [`${CSS_VAR_PREFIX}current`]: clampedValue,
-    [`${CSS_VAR_PREFIX}progress`]: `${sliderProgress}%`,
-    [`${CSS_VAR_PREFIX}output-factor`]: `${outputFactor}`,
-  };
+    '--pc-range-slider-min': min,
+    '--pc-range-slider-max': max,
+    '--pc-range-slider-current': clampedValue,
+    '--pc-range-slider-progress': `${sliderProgress}%`,
+    '--pc-range-slider-output-factor': `${outputFactor}`,
+  } as React.CSSProperties;
 
   const outputMarkup = !disabled && output && (
     <output htmlFor={id} className={styles.Output}>

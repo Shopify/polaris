@@ -42,7 +42,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   ~ .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border);
+    border: 1px solid var(--pc-top-bar-border);
   }
 
   ~ .Icon {
@@ -56,7 +56,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border);
+    border: 1px solid var(--pc-top-bar-border);
   }
 
   .Icon {
@@ -145,7 +145,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   left: 0;
   background-color: var(
     --p-surface-search-field,
-    var(--top-bar-background-lighter)
+    var(--pc-top-bar-background-lighter)
   );
   will-change: background-color;
   transition: background-color var(--p-duration-200) var(--p-ease);
@@ -157,7 +157,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   to {
     background-color: var(
       --p-surface-neutral,
-      var(--top-bar-background-lighter)
+      var(--pc-top-bar-background-lighter)
     );
   }
 }

@@ -4,7 +4,3 @@ node_modules
 /build-internal
 
 /package.json
-
-index.esnext
-index.js
-index.mjs
