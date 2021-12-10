@@ -6,7 +6,7 @@ $content-max-width: 200px;
   --pc-tooltip-overlay-offset: var(--p-space-1);
   margin: var(--pc-tooltip-overlay-offset) var(--p-space-4) var(--p-space-4);
   opacity: 1;
-  box-shadow: var(--p-popover-shadow);
+  box-shadow: var(--p-shadow-popover);
   border-radius: var(--p-border-radius-1);
   pointer-events: none;
   will-change: opacity, left, top;

@@ -160,7 +160,7 @@ $range-output-spacing: 16px;
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);
-  box-shadow: var(--p-popover-shadow);
+  box-shadow: var(--p-shadow-popover);
   border-radius: border-radius();
   transition-property: transform;
   transition-duration: var(--p-duration-150);

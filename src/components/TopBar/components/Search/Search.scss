@@ -9,7 +9,7 @@
   top: top-bar-height();
   left: 0;
   right: 0;
-  box-shadow: var(--p-modal-shadow);
+  box-shadow: var(--p-shadow-modal);
   overflow: hidden;
 
   @include page-content-when-not-fully-condensed {

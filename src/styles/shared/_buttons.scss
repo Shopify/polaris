@@ -19,7 +19,7 @@
   margin: 0;
   padding: $vertical-padding var(--p-space-4);
   background: var(--p-surface);
-  box-shadow: var(--p-button-drop-shadow);
+  box-shadow: var(--p-shadow-button);
   border-radius: var(--p-border-radius-1);
   color: var(--p-text);
   border: 1px solid var(--p-border-neutral-subdued);
@@ -38,7 +38,7 @@
   }
 
   &:focus {
-    box-shadow: var(--p-button-drop-shadow);
+    box-shadow: var(--p-shadow-button);
     outline: 0;
 
     @include focus-ring($style: 'focused');
@@ -46,7 +46,7 @@
 
   &:active {
     background: var(--p-action-secondary-pressed);
-    box-shadow: var(--p-button-drop-shadow);
+    box-shadow: var(--p-shadow-button);
 
     &::after {
       border: none;
@@ -56,7 +56,7 @@
 
   &.pressed {
     background: var(--p-action-secondary-depressed);
-    box-shadow: var(--p-button-pressed-inner-shadow);
+    box-shadow: var(--p-shadows-inset-button-pressed);
     color: var(--p-text-on-primary);
     border-color: var(--p-border-depressed);
     @include recolor-icon(currentColor);
@@ -81,7 +81,7 @@
   background: var(--pc-button-color);
   border-width: 0;
   border-color: transparent;
-  box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+  box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   color: var(--pc-button-text);
 
   &:hover {
@@ -92,25 +92,25 @@
 
   &:focus {
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   }
 
   &:active {
     background: var(--pc-button-color-active);
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   }
 
   &.pressed {
     color: var(--pc-button-text);
     background: var(--pc-button-color-depressed);
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
 
     &:hover,
     &:focus {
       background: var(--pc-button-color-depressed);
-      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+      box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
     }
   }
 }
