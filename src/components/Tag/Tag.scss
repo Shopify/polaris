@@ -66,6 +66,7 @@ $icon-size: rem(16px);
   @include recolor-icon(var(--p-icon));
   @include unstyled-button;
   display: block;
+  flex-shrink: 0;
   height: $height;
   width: $height;
   margin-left: spacing(extra-tight);
