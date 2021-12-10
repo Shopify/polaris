@@ -11,7 +11,7 @@
 .variationCode {
   position: relative;
   padding: 0 var(--p-space-1);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
   background-color: var(--p-surface-subdued);
   display: inline-block;
   font-size: 1.15em;

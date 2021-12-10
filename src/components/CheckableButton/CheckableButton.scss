@@ -60,7 +60,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
   }
 
   &.CheckableButton-plain {
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
     box-shadow: none;
     background: transparent;
     border: none;

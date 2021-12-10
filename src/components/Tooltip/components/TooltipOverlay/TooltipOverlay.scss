@@ -28,7 +28,7 @@ $content-max-width: 200px;
 
 .Content {
   position: relative;
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
   background-color: var(--p-surface);
   color: var(--p-text);
   max-width: $content-max-width;

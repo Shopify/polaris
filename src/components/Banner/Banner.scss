@@ -169,7 +169,7 @@
 }
 
 .withinPage {
-  border-radius: 0 0 border-radius() border-radius();
+  border-radius: 0 0 var(--p-border-radius-base) var(--p-border-radius-base);
   padding: var(--p-space-5);
 
   @include banner-variants(true);
