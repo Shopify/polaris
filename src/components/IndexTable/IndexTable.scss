@@ -503,8 +503,8 @@ $scroll-bar-size: var(--p-space-2);
   display: flex;
   align-items: flex-start;
   width: 100%;
-  min-height: 5.6rem;
-  padding: 1rem var(--p-space-4);
+  min-height: 56px;
+  padding: 10px var(--p-space-4);
   background-color: var(--p-surface);
 
   &.unselectable {

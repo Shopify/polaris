@@ -5,7 +5,7 @@ import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {
   isSticky: boolean;
-  style: Record<string, unknown>;
+  style: {[key: string]: unknown};
 }
 
 export type StickyProps = {

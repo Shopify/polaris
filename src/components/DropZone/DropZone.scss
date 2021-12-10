@@ -43,7 +43,6 @@ $dropzone-min-height-small: 50px;
   }
 
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
     }
@@ -73,9 +72,7 @@ $dropzone-min-height-small: 50px;
     }
   }
 
-  // stylelint-disable-next-line selector-max-specificity
   &:not(.focused) {
-    // stylelint-disable-next-line selector-max-specificity
     &::after {
       @include reset-after;
       @include set-border-radius;
@@ -154,7 +151,6 @@ $dropzone-min-height-small: 50px;
 
 .focused {
   &:not(.isDisabled) {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     .Container {
       @include focus-ring($style: 'focused');
     }

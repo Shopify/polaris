@@ -43,6 +43,7 @@
     }
   } @else if $style == active {
     border-color: var(--p-interactive);
+
     &::before {
       opacity: 1;
       transform: scale(1);

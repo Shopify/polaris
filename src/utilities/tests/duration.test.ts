@@ -8,11 +8,11 @@ import {
 describe('<VideoThumbnail /> utilities', () => {
   describe('ensureTwoDigits', () => {
     it('stringifies the number when greater than 9', () => {
-      expect(ensureTwoDigits(12)).toStrictEqual('12');
+      expect(ensureTwoDigits(12)).toBe('12');
     });
 
     it('stringifies the number with a leading zero when less than 9', () => {
-      expect(ensureTwoDigits(8)).toStrictEqual('08');
+      expect(ensureTwoDigits(8)).toBe('08');
     });
   });
 
@@ -42,21 +42,21 @@ describe('<VideoThumbnail /> utilities', () => {
   describe('secondsToTimestamp', () => {
     describe('when numSeconds is > 60 minutes', () => {
       it('includes hours in the timestamp', () => {
-        expect(secondsToTimestamp(4745)).toStrictEqual('1:19:05');
+        expect(secondsToTimestamp(4745)).toBe('1:19:05');
       });
 
       it('adds a leading zero to minutes when less than 10', () => {
-        expect(secondsToTimestamp(3745)).toStrictEqual('1:02:25');
+        expect(secondsToTimestamp(3745)).toBe('1:02:25');
       });
     });
 
     describe('when numSeconds is > 60 seconds and < 60 minutes', () => {
       it('does not include hours in the timestamp', () => {
-        expect(secondsToTimestamp(745)).toStrictEqual('12:25');
+        expect(secondsToTimestamp(745)).toBe('12:25');
       });
 
       it('does not add a leading zero to minutes when less than 10', () => {
-        expect(secondsToTimestamp(145)).toStrictEqual('2:25');
+        expect(secondsToTimestamp(145)).toBe('2:25');
       });
     });
   });

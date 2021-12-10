@@ -41,9 +41,11 @@ export function Tooltip({
   accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
-  const {value: active, setTrue: handleFocus, setFalse: handleBlur} = useToggle(
-    Boolean(originalActive),
-  );
+  const {
+    value: active,
+    setTrue: handleFocus,
+    setFalse: handleBlur,
+  } = useToggle(Boolean(originalActive));
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
   const id = useUniqueId('TooltipContent');

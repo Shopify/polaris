@@ -595,6 +595,7 @@ describe('<Nav.Item />', () => {
 
   describe('small screens', () => {
     let matchMedia: jest.SpyInstance;
+
     beforeEach(() => {
       matchMedia = jest.spyOn(window, 'matchMedia');
       matchMedia.mockImplementation(() => {

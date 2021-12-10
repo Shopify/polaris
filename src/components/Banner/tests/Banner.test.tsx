@@ -333,7 +333,7 @@ describe('<Banner />', () => {
         DiamondAlertMajor,
       ],
     ])(
-      'Sets Icon props when: %s',
+      'sets Icon props when: %s',
       (_: any, status: any, color: any, iconSource: any) => {
         const banner = mountWithApp(<Banner status={status} />);
 

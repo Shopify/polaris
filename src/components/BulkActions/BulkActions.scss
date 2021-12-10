@@ -64,7 +64,7 @@ $bulk-actions-button-stacking-order: (
 
   // We need the first item of button group on small screen to fill the space
   @include page-before-resource-list-small {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-type
+    // stylelint-disable-next-line, selector-max-combinators, selector-max-type
     > div > div:first-child {
       flex: 1 1 auto;
     }

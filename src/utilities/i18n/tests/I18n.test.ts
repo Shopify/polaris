@@ -17,7 +17,7 @@ describe('I18n.translate', () => {
   });
 
   it('merges multiple dictionaries', () => {
-    const translations: Record<string, string>[] = [
+    const translations: {[key: string]: string}[] = [
       {one: 'un', two: 'deux', three: 'trois'},
       {one: 'one', two: 'two', three: 'three', fallback: 'fallback'},
     ];

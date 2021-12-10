@@ -180,6 +180,7 @@ describe('<SingleThumb />', () => {
 
   describe('suffix', () => {
     const text = 'suffix text';
+
     it('outputs the provided suffix element', () => {
       const element = mountWithApp(
         <SingleThumb {...mockProps} suffix={<p>{text}</p>} />,

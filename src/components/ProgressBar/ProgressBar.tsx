@@ -53,6 +53,7 @@ export function ProgressBar({
   );
   const parsedProgress = parseProgress(progress, warningMessage);
 
+  /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
     <div className={className}>
       <progress className={styles.Progress} value={parsedProgress} max="100" />
@@ -63,6 +64,7 @@ export function ProgressBar({
         <span className={styles.Label}>{parsedProgress}%</span>
       </div>
     </div>
+    /* eslint-enable @shopify/jsx-no-hardcoded-content */
   );
 }
 

@@ -70,10 +70,8 @@ export function Listbox({
   const scrollableRef = useRef<HTMLElement | null>(null);
   const listboxRef = useRef<HTMLUListElement>(null);
   const [loading, setLoading] = useState<string>();
-  const [
-    currentActiveOption,
-    setCurrentActiveOption,
-  ] = useState<NavigableOption>();
+  const [currentActiveOption, setCurrentActiveOption] =
+    useState<NavigableOption>();
   const {
     setActiveOptionId,
     setListboxId,

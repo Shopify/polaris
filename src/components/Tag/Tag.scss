@@ -36,7 +36,6 @@ $icon-size: 16px;
 
     @include focus-ring;
     // stylelint-disable selector-max-specificity
-    // stylelint-disable selector-max-class
 
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');

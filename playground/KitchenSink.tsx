@@ -1,6 +1,8 @@
 import React from 'react';
 
-type ReadmeModule = Record<string, any>;
+interface ReadmeModule {
+  [key: string]: any;
+}
 
 const readmeReq = require.context(
   '../src/components',
@@ -27,7 +29,8 @@ export function KitchenSink() {
 }
 
 function filterExports([exportName]: [string, any]) {
-  const excludedStoryNames = /AllExamples|frame|theme|ContextualSaveBar|topbar|defaultloading|modal|sheet/i;
+  const excludedStoryNames =
+    /AllExamples|frame|theme|ContextualSaveBar|topbar|defaultloading|modal|sheet/i;
   return exportName !== 'default' && !excludedStoryNames.test(exportName);
 }
 

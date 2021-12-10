@@ -13,11 +13,11 @@ $breakpoint: 768px;
     border-radius: var(--p-border-radius-1) !important;
     padding-left: var(--pc-secondary-action-button-spacing);
     padding-right: var(--pc-secondary-action-button-spacing);
-    // stylelint-disable-next-line selector-max-specificity
+
     &:hover {
       background: var(--p-background-hovered) !important;
     }
-    // stylelint-disable-next-line selector-max-specificity
+
     &:active {
       background: var(--p-background-pressed) !important;
     }

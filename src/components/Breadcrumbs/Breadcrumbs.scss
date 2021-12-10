@@ -35,7 +35,7 @@
       @include recolor-icon(var(--p-icon-pressed));
     }
   }
-  // stylelint-disable selector-max-specificity
+
   &:focus {
     outline: none;
   }
@@ -43,7 +43,6 @@
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
-  // stylelint-enable selector-max-specificity
 }
 
 .Content {

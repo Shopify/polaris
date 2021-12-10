@@ -280,8 +280,8 @@ export function Item({
 
             return (
               <Item
-                {...rest}
                 key={label}
+                {...rest}
                 label={label}
                 matches={item === longestMatch}
                 onClick={onClick}

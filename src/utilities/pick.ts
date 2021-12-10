@@ -1,4 +1,4 @@
-function pickValueAndLength(obj: Record<string, any>, key: string) {
+function pickValueAndLength(obj: {[key: string]: any}, key: string) {
   const keyPaths = key.split('.');
   let value = obj;
   for (const key of keyPaths) {
@@ -13,7 +13,7 @@ function pickValueAndLength(obj: Record<string, any>, key: string) {
 }
 
 export function pick(
-  obj: Record<string, any> | null,
+  obj: {[key: string]: any} | null,
   ...keyPaths: (string | string[])[]
 ) {
   const flattenedKeypaths = ([] as string[]).concat(...keyPaths);

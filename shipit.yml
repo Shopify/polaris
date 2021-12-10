@@ -1,11 +1,11 @@
 ci:
   require:
-    - 'Test'
+    - 'Test (12.22.0)'
     - 'Accessibility test'
 
 merge:
   require:
-    - 'Test'
+    - 'Test (12.22.0)'
     - 'Accessibility test'
 
 deploy:

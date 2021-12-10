@@ -26,6 +26,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
 - Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
 - Removed unnecessary `--p-border-radius-` properties and moved border-radius custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
+- Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
+- Removed `build/styles` directory from build output ([#4728](https://github.com/Shopify/polaris-react/pull/4728))
 - Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
 
 ### New components
@@ -35,6 +37,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Enhancements
 
 - Added duration token values between 0 and 500 with 50ms increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
+- Aligned easing tokens and values with CSS defaults ([#4790](https://github.com/Shopify/polaris-react/pull/4790))
 
 ### Bug fixes
 

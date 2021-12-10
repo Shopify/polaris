@@ -232,6 +232,7 @@
   &.focused {
     pointer-events: all;
     opacity: 1;
+
     > a {
       @include focus-ring($style: 'focused');
     }

@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
-import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {tokens} from '../../tokens';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
@@ -102,12 +102,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {
-      skipFocused,
-      loadingStack,
-      toastMessages,
-      showContextualSaveBar,
-    } = this.state;
+    const {skipFocused, loadingStack, toastMessages, showContextualSaveBar} =
+      this.state;
     const {
       logo,
       children,
@@ -142,17 +138,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
-          timeout={durationSlow}
+          timeout={parseInt(tokens.motion['duration-300'], 10)}
           classNames={navTransitionClasses}
         >
           <div
+            key="NavContent"
             {...mobileNavAttributes}
             aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
             ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
             id={APP_FRAME_NAV}
-            key="NavContent"
             hidden={mobileNavHidden}
           >
             {navigation}
@@ -256,6 +252,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    // This is probably a legit error but I don't have the time to refactor this
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     const context = {
       logo,
       showToast: this.showToast,
