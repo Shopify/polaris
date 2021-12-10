@@ -1,7 +1,8 @@
+import {depth} from './_depth';
 import {legacyTokens} from './_legacy-tokens';
-import {shape} from './_shape';
 import {lightColorScheme, darkColorScheme} from './_color';
 import {motion} from './_motion';
+import {shape} from './_shape';
 import {spacing} from './_spacing';
 import {typography} from './_typography';
 import {zIndex} from './_z-index';
@@ -44,20 +45,22 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
-  shape: TokenGroup;
+  depth: TokenGroup;
   colorSchemes: ColorSchemes;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
+  shape: TokenGroup;
   spacing: TokenGroup;
   typography: TokenGroup;
   zIndex: TokenGroup;
 }
 
 export const tokens: Tokens = {
-  shape,
+  depth,
   colorSchemes,
   legacyTokens,
   motion,
+  shape,
   spacing,
   typography,
   zIndex,
