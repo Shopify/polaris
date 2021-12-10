@@ -65,7 +65,8 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "build-storybook -o build-internal/storybook/static"
+    "storybook:build": "build-storybook -o build-internal/storybook/static",
+    "validate-tokens": "ajv validate -s tokens/schemas/token-group.json -d 'tokens/*.json'"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.10.0",
@@ -111,6 +112,7 @@
     "@storybook/react": "^6.3.7",
     "@types/lodash": "^4.14.138",
     "@types/node": "^16.11.11",
+    "ajv-cli": "^5.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",

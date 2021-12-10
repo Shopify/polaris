@@ -17,6 +17,7 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
+      - run: yarn run validate-tokens
       - run: yarn run type-check && yarn run build
       - run: yarn run lint
       - run: yarn run test
