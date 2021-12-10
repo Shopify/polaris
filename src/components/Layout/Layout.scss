@@ -32,7 +32,7 @@ $relative-size: $primary-basis / $secondary-basis;
   min-width: 51%;
 
   @media print {
-    flex: 2 2 36rem;
+    flex: 2 2 360px;
   }
 }
 

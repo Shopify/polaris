@@ -23,6 +23,5 @@
     "{build,build-internal}/": true,
     "examples/*/build": true
   },
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.words": ["semibold"]
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }
