@@ -85,7 +85,58 @@ Use to allow merchants to add attributes to an object.
 Use to allow merchants to add attributes to an object.
 
 ```jsx
-<Tag onClick={() => console.log('Clicked')} onRemove={() => console.log('Removed')}>Wholesale</Tag>
+<Tag
+  onClick={() => console.log('Clicked')}
+  onRemove={() => console.log('Removed')}
+>
+  Wholesale
+</Tag>
+```
+
+### Custom content tag
+
+Use to allow merchants to add attributes to an object.
+
+```jsx
+<>
+  <Tag>
+    <Stack alignment="center" spacing="extraTight" title="Farrah Fawcett">
+      <Icon source={SearchMinor} color="inkLighter" />
+      <TextContainer>Farrah Fawcett</TextContainer>
+    </Stack>
+  </Tag>
+
+  <hr />
+
+  <Tag onClick={() => console.log('Clicked')} title="Farrah Fawcett">
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} color="inkLighter" />
+      <TextContainer>Farrah Fawcett</TextContainer>
+    </Stack>
+  </Tag>
+
+  <hr />
+
+  <Tag onRemove={() => console.log('Removed')} title="Farrah Fawcett">
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} color="inkLighter" />
+      <TextContainer>Farrah Fawcett</TextContainer>
+    </Stack>
+  </Tag>
+
+  <hr />
+
+  <Tag
+    onClick={() => console.log('Clicked')}
+    onRemove={() => console.log('Removed')}
+    title="Farrah Fawcett"
+  >
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} color="inkLighter" />
+      <TextContainer>Farrah Fawcett</TextContainer>
+    </Stack>
+  </Tag>
+</>
 ```
 
 <!-- content-for: android -->

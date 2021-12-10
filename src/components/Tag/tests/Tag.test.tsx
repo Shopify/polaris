@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../Button';
 import {Tag} from '../Tag';
 
 describe('<Tag />', () => {

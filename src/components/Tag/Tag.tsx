@@ -1,7 +1,7 @@
 import React from 'react';
-import {ButtonGroup} from '../ButtonGroup';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
+import {ButtonGroup} from '../ButtonGroup';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
@@ -11,16 +11,24 @@ import styles from './Tag.scss';
 
 export interface TagProps {
   /** Content to display in the tag */
-  children?: string;
+  children?: string | React.ReactElement;
   /** Disables the tag  */
   disabled?: boolean;
   /** Callback when tag is clicked or keypressed. Renders without remove button when set. */
   onClick?(): void;
   /** Callback when remove button is clicked or keypressed. */
   onRemove?(): void;
+  /** A string to use when tag has more than textual content */
+  title?: string;
 }
 
-export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
+export function Tag({
+  children,
+  disabled = false,
+  onClick,
+  onRemove,
+  title = '',
+}: TagProps) {
   const i18n = useI18n();
 
   const tagClassName = classNames(
@@ -37,8 +45,10 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     onClick && onRemove && styles.segmented,
   );
 
+  const tagTitle = typeof children === 'string' ? children : title;
+
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
-    children: children || '',
+    children: tagTitle,
   });
 
   const removeButton = onRemove ? (
@@ -65,7 +75,7 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     </button>
   ) : (
     <span className={tagClassName}>
-      <span title={children} className={styles.TagText}>
+      <span title={tagTitle} className={styles.TagText}>
         {children}
       </span>
       {removeButton}
@@ -73,10 +83,12 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
   );
 
   if (onClick && onRemove) {
-    return <ButtonGroup segmented>
-      {tagButton}
-      {removeButton}
-    </ButtonGroup>
+    return (
+      <ButtonGroup segmented>
+        {tagButton}
+        {removeButton}
+      </ButtonGroup>
+    );
   }
 
   return tagButton;
