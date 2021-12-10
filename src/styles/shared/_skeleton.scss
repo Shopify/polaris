@@ -25,7 +25,7 @@ $thumbnail-sizes: (
     left: 0;
     display: block;
     background-color: var(--p-surface-neutral);
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
 
     @media screen and (-ms-high-contrast: active) {
       background-color: ms-high-contrast-color('disabled-text');

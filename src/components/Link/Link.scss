@@ -37,7 +37,7 @@
       left: -5px;
       display: block;
 
-      border-radius: border-radius();
+      border-radius: var(--p-border-radius-base);
     }
   }
 

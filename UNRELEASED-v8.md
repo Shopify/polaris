@@ -31,6 +31,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated `--global-ribbon-height` CSS custom property to `--pc-frame-global-ribbon-height` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
 - Updated `--p-frame-offset` CSS custom property to `--pc-frame-offset` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
 - Updated all `--top-bar-*` CSS custom properties to `--pc-top-bar-*` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
+- Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
+- Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
 
 ### New components
 

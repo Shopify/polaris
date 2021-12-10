@@ -83,7 +83,7 @@
   margin: var(--p-space-4);
   padding: 0;
   border: none;
-  border-radius: var(--p-border-radius-6);
+  border-radius: var(--p-border-radius-half);
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -99,7 +99,7 @@
   &:focus {
     @include focus-ring($style: focused);
     position: absolute;
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
     outline: none;
   }
 
