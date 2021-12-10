@@ -19,7 +19,7 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {size, measuring, type, focused, disabled, allowMultiple} =
+  const {size, measuring, type, disabled, allowMultiple} =
     useContext(DropZoneContext);
 
   const typeSuffix = capitalize(type);
@@ -29,32 +29,15 @@ export function FileUpload(props: FileUploadProps) {
     actionTitle = i18n.translate(
       `Polaris.DropZone.${allowMultipleKey}.actionTitle${typeSuffix}`,
     ),
-    actionHint = i18n.translate(
-      `Polaris.DropZone.${allowMultipleKey}.actionHint${typeSuffix}`,
-    ),
+    actionHint,
   } = props;
 
-  const buttonStyles = classNames(
-    styles.Button,
-    styles.slim,
-    focused && styles.focused,
+  const actionClassNames = classNames(
+    styles.Action,
     disabled && styles.disabled,
   );
 
-  const buttonMarkup =
-    size === 'large' && buttonStyles ? (
-      <div className={buttonStyles}>{actionTitle}</div>
-    ) : null;
-
-  const actionTitleClassName = classNames(
-    styles.ActionTitle,
-    focused && !disabled && styles['ActionTitle-focused'],
-    disabled && styles['ActionTitle-disabled'],
-  );
-
-  const actionTitleMarkup = (
-    <div className={actionTitleClassName}>{actionTitle}</div>
-  );
+  const actionMarkup = <div className={actionClassNames}>{actionTitle}</div>;
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
@@ -63,26 +46,27 @@ export function FileUpload(props: FileUploadProps) {
     size === 'small' && styles.small,
   );
 
+  const actionHintMarkup = actionHint && (
+    <Caption>
+      <TextStyle variation="subdued">{actionHint}</TextStyle>
+    </Caption>
+  );
+
   let viewMarkup;
   switch (size) {
     case 'large':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          <img width="40" src={uploadArrow} alt="" />
-          {buttonMarkup}
-          <Caption>
-            <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
+          {actionMarkup}
+          {actionHintMarkup}
         </Stack>
       );
       break;
     case 'medium':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          {actionTitleMarkup}
-          <Caption>
-            <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
+          {actionMarkup}
+          {actionHintMarkup}
         </Stack>
       );
       break;
