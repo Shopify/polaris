@@ -80,6 +80,14 @@ Use to allow merchants to add attributes to an object.
 <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
+### Clickable and removable tag
+
+Use to allow merchants to add attributes to an object.
+
+```jsx
+<Tag onClick={() => console.log('Clicked')} onRemove={() => console.log('Removed')}>Wholesale</Tag>
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)

@@ -52,6 +52,11 @@ $icon-size: rem(16px);
     }
   }
 
+  &.segmented {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
   @include high-contrast-outline;
 }
 
@@ -95,5 +100,25 @@ $icon-size: rem(16px);
     @include recolor-icon(var(--p-icon-disabled));
     cursor: default;
     pointer-events: none;
+  }
+
+  &.segmented {
+    cursor: pointer;
+    background-color: var(--p-surface-neutral);
+    margin-left: 0;
+
+    &:hover {
+      background: var(--p-surface-neutral-hovered);
+    }
+
+    @include focus-ring;
+
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-surface-neutral-pressed);
+    }
   }
 }
