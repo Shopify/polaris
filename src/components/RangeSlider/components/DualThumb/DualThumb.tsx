@@ -4,7 +4,6 @@ import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
-import {CSS_VAR_PREFIX} from '../../utilities';
 import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
 import {EventListener} from '../../../EventListener';
@@ -212,9 +211,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
       ) : null;
 
     const cssVars = {
-      [`${CSS_VAR_PREFIX}progress-lower`]: `${leftPositionThumbLower}px`,
-      [`${CSS_VAR_PREFIX}progress-upper`]: `${leftPositionThumbUpper}px`,
-    };
+      '--pc-range-slider-progress-lower': `${leftPositionThumbLower}px`,
+      '--pc-range-slider-progress-upper': `${leftPositionThumbUpper}px`,
+    } as React.CSSProperties;
 
     const prefixMarkup = prefix && (
       <div className={styles.Prefix}>{prefix}</div>

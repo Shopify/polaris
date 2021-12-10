@@ -201,7 +201,7 @@ function IndexTableBase({
   const resizeTableScrollBar = useCallback(() => {
     if (scrollBarElement.current && tableElement.current && tableInitialized) {
       scrollBarElement.current.style.setProperty(
-        '--p-scroll-bar-content-width',
+        '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
       );
     }
@@ -240,7 +240,7 @@ function IndexTableBase({
   const handleResize = useCallback(() => {
     // hide the scrollbar when resizing
     scrollBarElement.current?.style.setProperty(
-      '--p-scroll-bar-content-width',
+      '--pc-index-table-scroll-bar-content-width',
       `0px`,
     );
 

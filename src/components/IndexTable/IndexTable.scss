@@ -52,7 +52,7 @@ $loading-panel-height: 53px;
   align-items: center;
   background: var(--p-surface);
   padding: var(--p-space-2) var(--p-space-4);
-  box-shadow: shadow();
+  box-shadow: var(--p-shadow-base);
 
   .LoadingPanelRow {
     display: flex;
@@ -234,7 +234,7 @@ $loading-panel-height: 53px;
 }
 
 .TableCell-first + .TableCell {
-  left: var(--p-checkbox-offset);
+  left: var(--pc-checkbox-offset);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
@@ -387,7 +387,7 @@ $loading-panel-height: 53px;
 .StickyTableHeader-isSticky {
   visibility: visible;
   background-color: var(--p-surface);
-  box-shadow: shadow();
+  box-shadow: var(--p-shadow-base);
 }
 
 .IndexTable:hover {
@@ -418,7 +418,6 @@ $loading-panel-height: 53px;
 $scroll-bar-size: var(--p-space-2);
 
 .ScrollBarContainer {
-  --pc-scroll-bar-container-border-radius: 4px;
   position: sticky;
   z-index: var(--pc-index-table-scroll-bar);
   bottom: 0;
@@ -442,7 +441,7 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: var(--pc-scroll-bar-container-border-radius);
+  border-radius: var(--p-border-radius-1);
   background-color: transparent;
 }
 
@@ -454,7 +453,7 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: var(--pc-scroll-bar-container-border-radius);
+  border-radius: var(--p-border-radius-1);
   background-color: var(--p-border-neutral-subdued);
   transition: background-color var(--p-duration-100) ease-out;
 }
@@ -524,5 +523,5 @@ $scroll-bar-size: var(--p-space-2);
 
 .ScrollBarContent {
   height: 1px;
-  width: var(--p-scroll-bar-content-width);
+  width: var(--pc-index-table-scroll-bar-content-width);
 }

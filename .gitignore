@@ -6,7 +6,3 @@ node_modules
 .DS_Store
 *.scss.d.ts
 .idea
-
-index.esnext
-index.js
-index.mjs

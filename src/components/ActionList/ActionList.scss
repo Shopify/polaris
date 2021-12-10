@@ -121,7 +121,7 @@
   align-items: center;
   height: var(--pc-action-list-image-size);
   width: var(--pc-action-list-image-size);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.

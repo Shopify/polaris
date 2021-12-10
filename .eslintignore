@@ -3,7 +3,4 @@ node_modules
 /examples
 /build
 /build-internal
-
-index.esnext
-index.js
-index.mjs
+/src/styles/polaris-tokens

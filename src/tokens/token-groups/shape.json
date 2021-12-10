@@ -5,5 +5,7 @@
   "border-radius-3": "12px",
   "border-radius-4": "16px",
   "border-radius-5": "20px",
-  "border-radius-6": "50%"
+  "border-radius-base": "3px",
+  "border-radius-large": "6px",
+  "border-radius-half": "50%"
 }

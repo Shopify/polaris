@@ -36,14 +36,10 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   --pc-dual-thumb-unselected-range: transparent;
   --pc-dual-thumb-selected-range: #{var(--p-interactive)};
   --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
-    var(--pc-dual-thumb-unselected-range)
-      var(--Polaris-RangeSlider-progress-lower),
-    var(--pc-dual-thumb-selected-range)
-      var(--Polaris-RangeSlider-progress-lower),
-    var(--pc-dual-thumb-selected-range)
-      var(--Polaris-RangeSlider-progress-upper),
-    var(--pc-dual-thumb-unselected-range)
-      var(--Polaris-RangeSlider-progress-upper),
+    var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-lower),
+    var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
+    var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-upper),
+    var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-upper),
     var(--pc-dual-thumb-unselected-range) 100%;
   background-image: linear-gradient(
     to right,
@@ -54,13 +50,11 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
     --pc-dual-thumb-selected-range: #{var(--p-action-critical)};
     --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
       var(--pc-dual-thumb-unselected-range)
-        var(--Polaris-RangeSlider-progress-lower),
-      var(--pc-dual-thumb-selected-range)
-        var(--Polaris-RangeSlider-progress-lower),
-      var(--pc-dual-thumb-selected-range)
-        var(--Polaris-RangeSlider-progress-upper),
+        var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-upper),
       var(--pc-dual-thumb-unselected-range)
-        var(--Polaris-RangeSlider-progress-upper),
+        var(--pc-range-slider-progress-upper),
       var(--pc-dual-thumb-unselected-range) 100%;
     background-image: linear-gradient(
       to right,
@@ -84,7 +78,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   padding: 0;
   width: var(--pc-range-slider-thumb-size);
   height: var(--pc-range-slider-thumb-size);
-  border-radius: var(--p-border-radius-6);
+  border-radius: var(--p-border-radius-half);
   border: border-width() solid var(--p-interactive);
   background: linear-gradient(var(--p-interactive), var(--p-interactive));
   -webkit-tap-highlight-color: transparent;
@@ -160,8 +154,8 @@ $range-output-spacing: 16px;
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);
-  box-shadow: var(--p-popover-shadow);
-  border-radius: border-radius();
+  box-shadow: var(--p-shadow-popover);
+  border-radius: var(--p-border-radius-base);
   transition-property: transform;
   transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);

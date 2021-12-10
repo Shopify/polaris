@@ -32,17 +32,17 @@ $activator-variables: (
   cursor: pointer;
   transition: menu(transition);
   margin-right: var(--p-space-2);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
 
   &:focus {
     @include focus-ring($style: 'focused');
-    background-color: var(--top-bar-background-lighter);
+    background-color: var(--pc-top-bar-background-lighter);
     outline: none;
   }
 
   &:hover {
     background-color: var(
-      --top-bar-background-lighter,
+      --pc-top-bar-background-lighter,
       var(--p-surface-hovered)
     );
   }
@@ -50,7 +50,7 @@ $activator-variables: (
   &:active,
   &[aria-expanded='true'] {
     background-color: var(
-      --top-bar-background-darker,
+      --pc-top-bar-background-darker,
       var(--p-surface-pressed)
     );
     outline: none;

@@ -41,7 +41,7 @@
 .Bullet {
   width: 6px;
   height: 6px;
-  border-radius: var(--p-border-radius-6);
+  border-radius: var(--p-border-radius-half);
   background-color: var(--p-icon-subdued);
 
   .statusWarning & {

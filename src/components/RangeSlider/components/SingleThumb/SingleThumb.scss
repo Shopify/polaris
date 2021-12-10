@@ -56,14 +56,12 @@
   // See https://github.com/Shopify/polaris-react/issues/441 and
   // https://github.com/postcss/postcss-custom-properties/issues/150
   --pc-single-thumb-gradient-colors: var(--pc-single-thumb-progress-lower) 0%,
-    var(--pc-single-thumb-progress-lower) var(--Polaris-RangeSlider-progress),
-    var(--pc-single-thumb-progress-upper) var(--Polaris-RangeSlider-progress),
+    var(--pc-single-thumb-progress-lower) var(--pc-range-slider-progress),
+    var(--pc-single-thumb-progress-upper) var(--pc-range-slider-progress),
     var(--pc-single-thumb-progress-upper) 100%;
 
   @mixin rangeSliderThumbPosition($size) {
-    margin-top: calc(
-      -1 * (#{$size} - #{var(--pc-range-slider-track-height)}) / 2
-    );
+    margin-top: calc(-1 * (#{$size} - var(--pc-range-slider-track-height)) / 2);
   }
 
   &::-ms-tooltip {
@@ -93,7 +91,7 @@
     width: var(--pc-range-slider-thumb-size);
     height: var(--pc-range-slider-thumb-size);
     border: 1px solid transparent;
-    border-radius: var(--p-border-radius-6);
+    border-radius: var(--p-border-radius-half);
     background: linear-gradient(var(--p-interactive), var(--p-interactive));
     box-shadow: 0 0 0 0 var(--p-focused);
     appearance: none;
@@ -162,9 +160,7 @@
 /// Output value indicator
 $range-output-size: 32px;
 $range-output-translate-x: calc(
-  -50% + var(--Polaris-RangeSlider-output-factor) * #{var(
-      --pc-range-slider-thumb-size
-    )}
+  -50% + var(--pc-range-slider-output-factor) * var(--pc-range-slider-thumb-size)
 );
 
 $range-output-spacing: 16px;
@@ -173,7 +169,7 @@ $range-output-spacing: 16px;
   position: absolute;
   z-index: var(--pc-range-slider-output);
   bottom: var(--pc-range-slider-thumb-size);
-  left: var(--Polaris-RangeSlider-progress);
+  left: var(--pc-range-slider-progress);
   transform: translateX($range-output-translate-x);
   opacity: 0;
   visibility: hidden;
@@ -188,7 +184,7 @@ $range-output-spacing: 16px;
     opacity: 1;
     visibility: visible;
     bottom: calc(
-      #{var(--pc-range-slider-thumb-size)} + #{$range-thumb-size-difference}
+      var(--pc-range-slider-thumb-size) + #{$range-thumb-size-difference}
     );
   }
 }
@@ -196,12 +192,12 @@ $range-output-spacing: 16px;
 .OutputBubble {
   position: relative;
   display: flex;
-  box-shadow: var(--p-popover-shadow);
+  box-shadow: var(--p-shadow-popover);
   padding: 0 var(--p-space-2);
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-surface);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
   transition-property: transform;
   transition-duration: var(--p-duration-200);
   transition-timing-function: var(--p-ease);

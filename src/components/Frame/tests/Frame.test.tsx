@@ -43,7 +43,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame />);
 
       expect(
-        document.documentElement.style.getPropertyValue('--p-frame-offset'),
+        document.documentElement.style.getPropertyValue('--pc-frame-offset'),
       ).toBe('0px');
     });
 
@@ -51,7 +51,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame offset="6rem" />);
 
       expect(
-        document.documentElement.style.getPropertyValue('--p-frame-offset'),
+        document.documentElement.style.getPropertyValue('--pc-frame-offset'),
       ).toBe('6rem');
     });
 
@@ -269,7 +269,7 @@ describe('<Frame />', () => {
   });
 
   describe('globalRibbon', () => {
-    // Frame sets the --global-ribbon-height custom property based off the
+    // Frame sets the --pc-frame-global-ribbon-height custom property based off the
     // offsetHeight of the component passed into globalRibbon. JSDom doesn't
     // have a layout engine so use a mock value
     beforeEach(() => {
@@ -284,7 +284,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame globalRibbon={<div />}>I am some content</Frame>);
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('30px');
     });
@@ -294,14 +294,14 @@ describe('<Frame />', () => {
 
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('0px');
 
       frame.setProps({globalRibbon: <div />});
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('30px');
     });
@@ -310,7 +310,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame />);
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('0px');
     });
