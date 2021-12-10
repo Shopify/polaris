@@ -1,6 +1,25 @@
+const fs = require('fs');
 const path = require('path');
 
-const {tokenList} = require('./build/cjs/token-list');
+const tokenGroupsDir = path.join(__dirname, './src/tokens/token-groups');
+
+/**
+ * Allowed Polaris token custom properties.
+ *
+ * Result: ['--p-background', '--p-text', etc...]
+ */
+const polarisTokenCustomProperties = Array.from(
+  new Set(
+    fs
+      .readdirSync(tokenGroupsDir)
+      .map((file) => {
+        const tokenGroup = require(path.join(tokenGroupsDir, file));
+
+        return Object.keys(tokenGroup).map((token) => `--p-${token}`);
+      })
+      .flat(),
+  ),
+);
 
 /**
  * Allowed custom property names in Polaris component styles.
@@ -19,7 +38,10 @@ module.exports = {
         polarisComponentCustomProperties,
       ],
       allowedValues: {
-        '/.+/': [polarisComponentCustomProperties, ...tokenList],
+        '/.+/': [
+          polarisComponentCustomProperties,
+          ...polarisTokenCustomProperties,
+        ],
       },
     },
   },
