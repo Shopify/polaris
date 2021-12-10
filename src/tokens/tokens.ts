@@ -60,7 +60,7 @@ export interface Tokens {
 export const tokens: Tokens = {
   colorSchemes,
   depth,
-  legacyTokens,
+  legacyTokens: tokensToRems(legacyTokens),
   motion,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
