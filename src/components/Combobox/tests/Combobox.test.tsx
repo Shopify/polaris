@@ -4,14 +4,30 @@ import {mountWithApp} from 'tests/utilities';
 import {TextField} from '../../TextField';
 import {Combobox} from '../Combobox';
 import {Listbox} from '../../Listbox';
-import {Popover} from '../../Popover';
+import {Popover, PopoverPublicAPI} from '../../Popover';
 import {
   ComboboxTextFieldContext,
   ComboboxListboxContext,
 } from '../../../utilities/combobox';
 import {Key} from '../../../types';
 
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useImperativeHandle: jest.fn(),
+}));
+
+const mockUseImperativeHandle: jest.Mock =
+  jest.requireMock('react').useImperativeHandle;
+
 describe('<Combobox />', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   const activator = (
     <TextField onChange={noop} label="" value="" autoComplete="off" />
   );
@@ -127,6 +143,32 @@ describe('<Combobox />', () => {
     expect(combobox).toContainReactComponent(Popover, {
       active: true,
     });
+  });
+
+  it('calls Popover.forceUpdatePosition() when onOptionSelected is triggered and allowMultiple is true and there are children', () => {
+    const mockForceUpdatePosition = jest.fn();
+    mockUseImperativeHandle.mockImplementation(
+      (ref: {current: PopoverPublicAPI}) => {
+        ref.current = {
+          forceUpdatePosition: mockForceUpdatePosition,
+        };
+      },
+    );
+    const combobox = mountWithApp(
+      <Combobox activator={activator} allowMultiple>
+        <Listbox>
+          <Listbox.Option accessibilityLabel="Option 1" value="option1" />
+        </Listbox>
+      </Combobox>,
+    );
+
+    triggerFocus(combobox);
+
+    combobox
+      .find(ComboboxListboxContext.Provider)!
+      .triggerKeypath('value.onOptionSelected');
+
+    expect(mockForceUpdatePosition).toHaveBeenCalled();
   });
 
   it('calls the onScrolledToBottom when the Popovers onScrolledToBottom is triggered', () => {
