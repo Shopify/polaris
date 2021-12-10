@@ -9,7 +9,7 @@ $context-control-expand-after: 1400px;
   position: relative;
   display: flex;
   height: top-bar-height();
-  box-shadow: var(--p-top-bar-shadow);
+  box-shadow: var(--p-shadow-top-bar);
   background-color: var(--p-surface);
   transition: var(--p-duration-200) background-color ease-in-out;
 

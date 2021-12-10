@@ -29,6 +29,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 - Removed `build/styles` directory from build output ([#4728](https://github.com/Shopify/polaris-react/pull/4728))
 - Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
+- Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
 
 ### New components
 

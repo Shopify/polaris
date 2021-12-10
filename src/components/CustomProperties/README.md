@@ -106,7 +106,7 @@ The CustomProperties component uses [CSS custom properties](https://developer.mo
 ```scss
 .Card {
   background-color: var(--p-surface);
-  box-shadow: var(--p-card-shadow);
+  box-shadow: var(--p-shadow-card);
   border-radius: var(--p-border-radius-2);
 }
 ```
