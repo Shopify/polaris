@@ -54,7 +54,7 @@ describe('<FileUpload />', () => {
       expect(fileUpload).not.toContainReactComponent(TextStyle);
 
       expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button',
+        className: 'Action',
       });
     });
   });
@@ -75,7 +75,7 @@ describe('<FileUpload />', () => {
     expect(fileUpload).not.toContainReactComponent(TextStyle);
 
     expect(fileUpload).toContainReactComponent('div', {
-      className: 'Button',
+      className: 'Action',
     });
   });
 
@@ -129,7 +129,7 @@ describe('<FileUpload />', () => {
     [true, 'file', 'Add files'],
   ])(
     'renders texts when allowMultiple is %s and type is %s',
-    (allowMultiple, type, expectedButtonText) => {
+    (allowMultiple, type, expectedActionText) => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{size: 'large', ...defaultStates, allowMultiple, type}}
@@ -139,7 +139,7 @@ describe('<FileUpload />', () => {
       );
 
       expect(fileUpload).toContainReactComponent('div', {
-        children: expectedButtonText,
+        children: expectedActionText,
       });
     },
   );
