@@ -25,27 +25,32 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   vertical-align: bottom;
 }
 
-.Button {
-  @include button-base;
+.Action {
   @include focus-ring;
+  display: inline-flex;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: var(--p-border-radius-base);
+  padding: rem(4px) rem(6px);
+  margin: 0;
+  text-decoration: none;
+  background: var(--p-surface-selected-pressed);
+  color: var(--p-interactive);
+  font-size: rem(12px);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  appearance: none;
+
+  &:hover {
+    color: var(--p-interactive-hovered);
+  }
 
   &.disabled {
     @include base-button-disabled;
     cursor: not-allowed;
     box-shadow: none;
-  }
-
-  &.focused {
-    outline: 0;
-    box-shadow: none;
-
-    @include focus-ring($style: 'focused');
-    @include high-contrast-button-outline;
-  }
-
-  .sizeSlim {
-    min-height: $slim-min-height;
-    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
