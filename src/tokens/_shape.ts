@@ -8,5 +8,7 @@ export const shape: TokenGroup = {
   'border-radius-3': rem('12px'),
   'border-radius-4': rem('16px'),
   'border-radius-5': rem('20px'),
-  'border-radius-6': '50%',
+  'border-radius-base': rem('3px'),
+  'border-radius-large': rem('6px'),
+  'border-radius-half': '50%',
 };
