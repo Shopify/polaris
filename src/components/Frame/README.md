@@ -693,7 +693,7 @@ function FrameExample() {
       >
         <Frame
           logo={logo}
-          offset="6rem"
+          offset="60px"
           globalRibbon={
             <div style={{background: '#C0FFEE', padding: '30px'}}>
               Global ribbon
