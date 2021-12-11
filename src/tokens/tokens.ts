@@ -1,11 +1,13 @@
-import {depth} from './_depth';
-import {legacyTokens} from './_legacy-tokens';
-import {lightColorScheme, darkColorScheme} from './_color';
-import {motion} from './_motion';
-import {shape} from './_shape';
-import {spacing} from './_spacing';
-import {typography} from './_typography';
-import {zIndex} from './_z-index';
+import depth from './token-groups/depth.json';
+import legacyTokens from './token-groups/legacy-tokens.json';
+import darkColorScheme from './token-groups/color.dark.json';
+import lightColorScheme from './token-groups/color.light.json';
+import motion from './token-groups/motion.json';
+import shape from './token-groups/shape.json';
+import spacing from './token-groups/spacing.json';
+import typography from './token-groups/typography.json';
+import zIndex from './token-groups/z-index.json';
+import {tokensToRems} from './utilities';
 
 /**
  * Values to convert to CSS custom properties.
@@ -56,12 +58,12 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  depth,
   colorSchemes,
-  legacyTokens,
+  depth,
+  legacyTokens: tokensToRems(legacyTokens),
   motion,
-  shape,
-  spacing,
+  shape: tokensToRems(shape),
+  spacing: tokensToRems(spacing),
   typography,
   zIndex,
 };

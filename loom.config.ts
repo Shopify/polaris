@@ -14,6 +14,7 @@ import {stylelint} from '@shopify/loom-plugin-stylelint';
 import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 
 import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
@@ -140,6 +141,9 @@ function rollupAdjustPluginsPlugin() {
         delimiters: ['', ''],
       }),
       image(),
+      json({
+        compact: true,
+      }),
       styles(stylesConfig),
     ];
   });
