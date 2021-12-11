@@ -156,7 +156,7 @@ function SimpleSmallScreenIndexTableExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <div style={{padding: '1.2rem 1.6rem'}}>
+        <div style={{padding: '12px 16px'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
           </p>
