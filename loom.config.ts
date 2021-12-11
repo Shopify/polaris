@@ -27,7 +27,6 @@ import type {} from '@shopify/loom-plugin-jest';
 // eslint-disable-next-line import/no-default-export
 export default createPackage((pkg) => {
   pkg.entry({root: './src/index.ts'});
-  pkg.entry({name: 'token-list', root: './src/token-list.ts'});
   pkg.use(
     buildLibrary({
       rootEntrypoints: false,
