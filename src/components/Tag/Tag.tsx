@@ -13,27 +13,51 @@ export interface NonMutuallyExclusiveProps {
   children?: string;
   /** Disables the tag  */
   disabled?: boolean;
-  /** Callback when tag is clicked or keypressed. Renders without remove button when set. */
+  /** Callback when tag is clicked or keypressed. Renders without remove button or url when set. */
   onClick?(): void;
   /** Callback when remove button is clicked or keypressed. */
   onRemove?(): void;
+  /** Url to navigate to when tag is clicked or keypressed. */
+  url?: string;
 }
 
 export type TagProps = NonMutuallyExclusiveProps &
   (
-    | {onClick?(): void; onRemove?: undefined}
-    | {onClick?: undefined; onRemove?(): void}
+    | {onClick?(): void; onRemove?: undefined; url?: undefined}
+    | {onClick?: undefined; onRemove?(): void; url?: string}
   );
 
-export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
+export function Tag({
+  children,
+  disabled = false,
+  onClick,
+  onRemove,
+  url,
+}: TagProps) {
   const i18n = useI18n();
 
+  const segmented = onRemove && url;
   const className = classNames(
     styles.Tag,
     disabled && styles.disabled,
     onClick && styles.clickable,
     onRemove && styles.removable,
+    url && styles.linkable,
+    segmented && styles.segmented,
   );
+
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        disabled={disabled}
+        className={className}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  }
 
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
     children: children || '',
@@ -43,7 +67,7 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     <button
       type="button"
       aria-label={ariaLabel}
-      className={styles.Button}
+      className={classNames(styles.Button, segmented && styles.segmented)}
       onClick={onRemove}
       onMouseUp={handleMouseUpByBlurring}
       disabled={disabled}
@@ -52,22 +76,25 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     </button>
   ) : null;
 
-  const tagMarkup = onClick ? (
-    <button
-      type="button"
-      disabled={disabled}
-      className={className}
-      onClick={onClick}
+  const tagContent = url ? (
+    <a
+      className={classNames(styles.Link, segmented && styles.segmented)}
+      href={url}
     >
-      {children}
-    </button>
-  ) : (
-    <span className={className}>
-      <span title={children} className={styles.TagText}>
+      <span title={children} className={styles.LinkText}>
         {children}
       </span>
+    </a>
+  ) : (
+    <span title={children} className={styles.TagText}>
+      {children}
+    </span>
+  );
+
+  return (
+    <span className={className}>
+      {tagContent}
       {removeButton}
     </span>
   );
-  return tagMarkup;
 }

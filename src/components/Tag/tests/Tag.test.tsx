@@ -35,4 +35,19 @@ describe('<Tag />', () => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
+
+  describe('url', () => {
+    it('renders an anchor tag when url is provided', () => {
+      const tag = mountWithApp(<Tag url="#" disabled />);
+      expect(tag).toContainReactComponent('a', {href: '#'});
+    });
+
+    it('allows url and onRemove props at the same time', () => {
+      const spy = jest.fn();
+      const tag = mountWithApp(<Tag onRemove={spy} url="#" />);
+      tag.find('button')!.domNode!.click();
+      expect(spy).toHaveBeenCalled();
+      expect(tag).toContainReactComponent('a', {href: '#'});
+    });
+  });
 });

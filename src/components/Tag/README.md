@@ -80,6 +80,49 @@ Use to allow merchants to add attributes to an object.
 <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
+### Tagss with links
+
+Use to allow merchants to navigate to an entity.
+
+```jsx
+function URLTagExample() {
+  return (
+    <Stack spacing="tight">
+      <Tag url="https://www.shopify.com/">Wholesale</Tag>
+      <Tag url="https://www.shopify.com/">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at
+        ipsum quam. Aliquam fermentum bibendum vestibulum. Vestibulum
+        condimentum luctus metus, sed sagittis magna pellentesque eget. Duis
+        dapibus pretium nisi, et venenatis tortor dignissim ut. Quisque eget
+        lacus ac ex eleifend ultrices. Phasellus facilisis ex sit amet leo
+        elementum condimentum. Ut vel maximus felis. Etiam eget diam eu eros
+        blandit interdum. Sed eu metus sed justo aliquam iaculis ac sit amet ex.
+        Curabitur justo magna, porttitor non pulvinar eu, malesuada at leo. Cras
+        mollis consectetur eros, quis maximus lorem dignissim at. Proin in
+        rhoncus massa. Vivamus lectus nunc, fringilla euismod risus commodo,
+        mattis blandit nulla
+      </Tag>
+      <Tag url="https://www.shopify.com/" onRemove={() => {}}>
+        Wholesale
+      </Tag>
+      <Tag url="https://www.shopify.com/" onRemove={() => {}}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at
+        ipsum quam. Aliquam fermentum bibendum vestibulum. Vestibulum
+        condimentum luctus metus, sed sagittis magna pellentesque eget. Duis
+        dapibus pretium nisi, et venenatis tortor dignissim ut. Quisque eget
+        lacus ac ex eleifend ultrices. Phasellus facilisis ex sit amet leo
+        elementum condimentum. Ut vel maximus felis. Etiam eget diam eu eros
+        blandit interdum. Sed eu metus sed justo aliquam iaculis ac sit amet ex.
+        Curabitur justo magna, porttitor non pulvinar eu, malesuada at leo. Cras
+        mollis consectetur eros, quis maximus lorem dignissim at. Proin in
+        rhoncus massa. Vivamus lectus nunc, fringilla euismod risus commodo,
+        mattis blandit nulla
+      </Tag>
+    </Stack>
+  );
+}
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)
