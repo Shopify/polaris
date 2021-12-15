@@ -39,8 +39,8 @@ $pip-spacing: calc(#{$pip-size} / 2);
 }
 
 .statusAttention {
-  --p-component-badge-pip-color: var(--p-text-warning);
-  background-color: var(--p-surface-warning);
+  --p-component-badge-pip-color: rgb(138, 97, 22);
+  background-color: rgb(255, 234, 138);
   color: var(--p-text);
 }
 
