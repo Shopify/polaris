@@ -95,10 +95,10 @@ function URLTagExample() {
 Use when a tag needs to be visually distinguished from others, like when it's added automatically.
 
 ```jsx
-<Tag url="/customers?tag=VIP">
+<Tag url="/collections/wholesale">
   <Stack spacing="extraTight">
-    <Icon source={SearchMinor} />
-    <span>VIP</span>
+    <Icon source={WandMinor} />
+    <span>Wholesale</span>
   </Stack>
 </Tag>
 ```
