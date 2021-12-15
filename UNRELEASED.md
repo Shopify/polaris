@@ -28,6 +28,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
+Bump polaris-icons to v4.11.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
+
 ### Code quality
 
 ### Deprecations
