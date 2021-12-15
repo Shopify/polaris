@@ -123,6 +123,58 @@ function URLTagExample() {
 }
 ```
 
+### Tag with custom content
+
+Use to allow merchants to generate special custom content for a tag.
+
+```jsx
+<Stack>
+  <Tag>
+    <Stack alignment="center" spacing="extraTight" title="Order #123">
+      <Icon source={SearchMinor} />
+      <span>Order #123</span>
+      <Badge status="attention" progress="partiallyComplete">
+        In Progress
+      </Badge>
+    </Stack>
+  </Tag>
+
+  <Tag onClick={() => console.log('Clicked')} title="Order #123">
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} />
+      <span>Order #123</span>
+      <Badge status="attention" progress="partiallyComplete">
+        In Progress
+      </Badge>
+    </Stack>
+  </Tag>
+
+  <Tag onRemove={() => console.log('Removed')} title="Order #123">
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} />
+      <span>Order #123</span>
+      <Badge status="attention" progress="partiallyComplete">
+        In Progress
+      </Badge>
+    </Stack>
+  </Tag>
+
+  <Tag
+    url="https://www.shopify.com/"
+    onRemove={() => console.log('Removed')}
+    title="Order #123"
+  >
+    <Stack alignment="center" spacing="extraTight">
+      <Icon source={SearchMinor} />
+      <span>Order #123</span>
+      <Badge status="attention" progress="partiallyComplete">
+        In Progress
+      </Badge>
+    </Stack>
+  </Tag>
+</Stack>
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)

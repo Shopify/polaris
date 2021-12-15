@@ -1,5 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {SearchMinor} from '@shopify/polaris-icons';
+import {Icon} from '../../Icon';
 
 import {Tag} from '../Tag';
 
@@ -48,6 +50,65 @@ describe('<Tag />', () => {
       tag.find('button')!.domNode!.click();
       expect(spy).toHaveBeenCalled();
       expect(tag).toContainReactComponent('a', {href: '#'});
+    });
+  });
+
+  describe('children', () => {
+    it('accepts simple strings as children', () => {
+      const tag = mountWithApp(<Tag>children</Tag>);
+      expect(tag).toContainReactComponent('span', {
+        children: 'children',
+        title: 'children',
+      });
+    });
+
+    it('accepts React components as children', () => {
+      const tag = mountWithApp(
+        <Tag>
+          <Icon source={SearchMinor} />
+        </Tag>,
+      );
+      expect(tag).toContainReactComponent(Icon, {source: SearchMinor});
+    });
+  });
+
+  describe('title', () => {
+    it('uses children to render title if no title prop is provided', () => {
+      const tag = mountWithApp(<Tag>children</Tag>);
+      expect(tag).toContainReactComponent('span', {
+        children: 'children',
+        title: 'children',
+      });
+    });
+
+    it('uses the title prop to render title when a string is received as children', () => {
+      const tag = mountWithApp(<Tag title="customTitle">children</Tag>);
+      expect(tag).toContainReactComponent('span', {
+        children: 'children',
+        title: 'customTitle',
+      });
+    });
+
+    it('uses the title prop to render title when a component is received as children and url prop is passed', () => {
+      const tag = mountWithApp(
+        <Tag title="customTitle" url="#">
+          <Icon source={SearchMinor} />
+        </Tag>,
+      );
+      expect(tag).toContainReactComponent('span', {
+        title: 'customTitle',
+      });
+    });
+
+    it('renders an empty title if no title prop when a component is received as children and url prop is passed', () => {
+      const tag = mountWithApp(
+        <Tag url="#">
+          <Icon source={SearchMinor} />
+        </Tag>,
+      );
+      expect(tag).toContainReactComponent('span', {
+        title: '',
+      });
     });
   });
 });

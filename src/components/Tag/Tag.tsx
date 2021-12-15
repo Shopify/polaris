@@ -10,13 +10,15 @@ import styles from './Tag.scss';
 
 export interface NonMutuallyExclusiveProps {
   /** Content to display in the tag */
-  children?: string;
+  children?: string | React.ReactElement;
   /** Disables the tag  */
   disabled?: boolean;
   /** Callback when tag is clicked or keypressed. Renders without remove button or url when set. */
   onClick?(): void;
   /** Callback when remove button is clicked or keypressed. */
   onRemove?(): void;
+  /** A string to use when tag has more than textual content */
+  title?: string;
   /** Url to navigate to when tag is clicked or keypressed. */
   url?: string;
 }
@@ -32,6 +34,7 @@ export function Tag({
   disabled = false,
   onClick,
   onRemove,
+  title = '',
   url,
 }: TagProps) {
   const i18n = useI18n();
@@ -59,8 +62,14 @@ export function Tag({
     );
   }
 
+  let tagTitle = title;
+
+  if (!tagTitle) {
+    tagTitle = typeof children === 'string' ? children : '';
+  }
+
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
-    children: children || '',
+    children: tagTitle,
   });
 
   const removeButton = onRemove ? (
@@ -81,12 +90,12 @@ export function Tag({
       className={classNames(styles.Link, segmented && styles.segmented)}
       href={url}
     >
-      <span title={children} className={styles.LinkText}>
+      <span title={tagTitle} className={styles.LinkText}>
         {children}
       </span>
     </a>
   ) : (
-    <span title={children} className={styles.TagText}>
+    <span title={tagTitle} className={styles.TagText}>
       {children}
     </span>
   );
