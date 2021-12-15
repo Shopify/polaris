@@ -45,7 +45,7 @@
 }
 
 .Input {
-  --pc-single-thumb-progress-lower: #{var(--p-interactive)};
+  --pc-single-thumb-progress-lower: var(--p-interactive);
   --pc-single-thumb-progress-upper: transparent;
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunately its
@@ -134,7 +134,7 @@
   }
 
   .error & {
-    --pc-single-thumb-progress-lower: #{var(--p-action-critical)};
+    --pc-single-thumb-progress-lower: var(--p-action-critical);
 
     @include range-thumb-selectors {
       border-color: var(--p-action-critical);

@@ -2,8 +2,6 @@
 
 // translate-offset equals handle-width - padding
 $resource-list-item-variables: (
-  padding: 12px,
-  control-indent: -1 * 12px,
   min-height: 44px,
   handle-width: 48px,
   disclosure-width: 48px,
@@ -98,13 +96,13 @@ $resource-list-item-variables: (
 .Container {
   position: relative;
   z-index: resource-list-item(content-stacking-order);
-  padding: resource-list-item(padding) var(--p-space-4);
+  padding: var(--p-space-3) var(--p-space-4);
   min-height: resource-list-item(min-height);
   display: flex;
   align-items: flex-start;
 
   @include breakpoint-after(resource-list-item(breakpoint-small)) {
-    padding: resource-list-item(padding) var(--p-space-5);
+    padding: var(--p-space-3) var(--p-space-5);
   }
 }
 
@@ -142,8 +140,8 @@ $resource-list-item-variables: (
   min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * resource-list-item(padding)) var(--p-space-1)
-    (-1 * resource-list-item(padding)) resource-list-item(control-indent);
+  margin: calc(-1 * var(--p-space-3)) var(--p-space-1)
+    calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
   @include breakpoint-before(resource-list-item(breakpoint-small), false) {
@@ -225,7 +223,7 @@ $resource-list-item-variables: (
 
 .Disclosure {
   position: relative;
-  top: -1 * resource-list-item(padding);
+  top: calc(-1 * var(--p-space-3));
   right: calc(-1 * var(--p-space-4));
   display: none;
   width: resource-list-item(disclosure-width);

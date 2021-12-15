@@ -11,7 +11,7 @@
 .ColorPicker {
   --pc-color-picker-size: 160px;
   --pc-color-picker-dragger-size: 18px;
-  --pc-color-picker: 10;
+  --pc-color-picker-z-index: 10;
   --pc-color-picker-adjustments: 20;
   --pc-color-picker-dragger: 30;
   user-select: none;
@@ -118,7 +118,7 @@ $huepicker-bottom-padding-start: calc(
 
 .ColorLayer {
   position: absolute;
-  z-index: var(--pc-color-picker);
+  z-index: var(--pc-color-picker-z-index);
   top: 0;
   left: 0;
   height: 100%;

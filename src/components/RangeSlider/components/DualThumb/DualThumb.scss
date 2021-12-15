@@ -2,7 +2,6 @@
 @import '../../RangeSlider';
 
 $range-wrapper: 28px;
-
 $range-thumb-border-error: 2px solid var(--p-border-critical);
 
 .DualThumb {
@@ -34,7 +33,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   border-radius: var(--pc-range-slider-thumb-size);
 
   --pc-dual-thumb-unselected-range: transparent;
-  --pc-dual-thumb-selected-range: #{var(--p-interactive)};
+  --pc-dual-thumb-selected-range: var(--p-interactive);
   --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
     var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-lower),
     var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
@@ -47,7 +46,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   );
 
   .error & {
-    --pc-dual-thumb-selected-range: #{var(--p-action-critical)};
+    --pc-dual-thumb-selected-range: var(--p-action-critical);
     --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
       var(--pc-dual-thumb-unselected-range)
         var(--pc-range-slider-progress-lower),
@@ -134,7 +133,7 @@ $range-output-spacing: 16px;
   transition-property: opacity, visibility, bottom;
   transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
-  transform: translateX(calc(-50% + #{var(--pc-range-slider-thumb-size) / 2}));
+  transform: translateX(calc(-50% + var(--pc-range-slider-thumb-size) / 2));
 
   .Thumbs:active + & {
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -
@@ -142,7 +141,7 @@ $range-output-spacing: 16px;
     opacity: 1;
     visibility: visible;
     bottom: calc(
-      #{var(--p-range-slider-thumb-size-active)} + #{$range-thumb-size-difference}
+      var(--p-range-slider-thumb-size-active) + #{$range-thumb-size-difference}
     );
   }
 }

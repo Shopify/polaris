@@ -3,7 +3,7 @@
 $font-size: 12px;
 
 .DatePicker {
-  --pc-date-picker-range-end-border-radius: 30px;
+  --pc-date-picker-range-end-border-radius: var(--p-border-radius-6);
   position: relative;
 }
 
