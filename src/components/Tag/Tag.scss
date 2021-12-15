@@ -45,6 +45,7 @@ $icon-size: rem(16px);
       background: var(--p-surface-neutral-disabled);
       cursor: default;
       pointer-events: none;
+      color: var(--p-text-disabled);
     }
   }
 
@@ -76,7 +77,6 @@ $icon-size: rem(16px);
   width: $height;
   margin-left: spacing(extra-tight);
   border-radius: 0 border-radius() border-radius() 0;
-  background-color: var(--p-surface-neutral);
 
   &:hover {
     background: var(--p-surface-neutral-hovered);

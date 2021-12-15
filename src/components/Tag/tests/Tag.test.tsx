@@ -40,7 +40,7 @@ describe('<Tag />', () => {
 
   describe('url', () => {
     it('renders an anchor tag when url is provided', () => {
-      const tag = mountWithApp(<Tag url="#" disabled />);
+      const tag = mountWithApp(<Tag url="#" />);
       expect(tag).toContainReactComponent('a', {href: '#'});
     });
 
@@ -50,6 +50,11 @@ describe('<Tag />', () => {
       tag.find('button')!.domNode!.click();
       expect(spy).toHaveBeenCalled();
       expect(tag).toContainReactComponent('a', {href: '#'});
+    });
+
+    it('renders plain text when the tag is disabled', () => {
+      const tag = mountWithApp(<Tag url="#" disabled />);
+      expect(tag).not.toContainReactComponent('a', {href: '#'});
     });
   });
 

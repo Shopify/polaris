@@ -45,7 +45,7 @@ export function Tag({
     disabled && styles.disabled,
     onClick && styles.clickable,
     onRemove && styles.removable,
-    url && styles.linkable,
+    url && !disabled && styles.linkable,
     segmented && styles.segmented,
   );
 
@@ -85,20 +85,21 @@ export function Tag({
     </button>
   ) : null;
 
-  const tagContent = url ? (
-    <a
-      className={classNames(styles.Link, segmented && styles.segmented)}
-      href={url}
-    >
-      <span title={tagTitle} className={styles.LinkText}>
+  const tagContent =
+    url && !disabled ? (
+      <a
+        className={classNames(styles.Link, segmented && styles.segmented)}
+        href={url}
+      >
+        <span title={tagTitle} className={styles.LinkText}>
+          {children}
+        </span>
+      </a>
+    ) : (
+      <span title={tagTitle} className={styles.TagText}>
         {children}
       </span>
-    </a>
-  ) : (
-    <span title={tagTitle} className={styles.TagText}>
-      {children}
-    </span>
-  );
+    );
 
   return (
     <span className={className}>
