@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {SearchMinor} from '@shopify/polaris-icons';
-import {Icon} from '../../Icon';
 
+import {Icon} from '../../Icon';
 import {Tag} from '../Tag';
 
 describe('<Tag />', () => {
@@ -72,7 +72,7 @@ describe('<Tag />', () => {
     });
   });
 
-  describe('title', () => {
+  describe('accessibilityLabel', () => {
     it('uses children to render title if no title prop is provided', () => {
       const tag = mountWithApp(<Tag>children</Tag>);
       expect(tag).toContainReactComponent('span', {
@@ -81,17 +81,19 @@ describe('<Tag />', () => {
       });
     });
 
-    it('uses the title prop to render title when a string is received as children', () => {
-      const tag = mountWithApp(<Tag title="customTitle">children</Tag>);
+    it('uses the accessibilityLabel prop to render title when a string is received as children', () => {
+      const tag = mountWithApp(
+        <Tag accessibilityLabel="customTitle">children</Tag>,
+      );
       expect(tag).toContainReactComponent('span', {
         children: 'children',
         title: 'customTitle',
       });
     });
 
-    it('uses the title prop to render title when a component is received as children and url prop is passed', () => {
+    it('uses the accessibilityLabel prop to render title when a component is received as children and url prop is passed', () => {
       const tag = mountWithApp(
-        <Tag title="customTitle" url="#">
+        <Tag accessibilityLabel="customTitle" url="#">
           <Icon source={SearchMinor} />
         </Tag>,
       );

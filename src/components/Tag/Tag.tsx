@@ -10,7 +10,7 @@ import styles from './Tag.scss';
 
 export interface NonMutuallyExclusiveProps {
   /** Content to display in the tag */
-  children?: string | React.ReactElement;
+  children?: React.ReactNode;
   /** Disables the tag  */
   disabled?: boolean;
   /** Callback when tag is clicked or keypressed. Renders without remove button or url when set. */
@@ -18,7 +18,7 @@ export interface NonMutuallyExclusiveProps {
   /** Callback when remove button is clicked or keypressed. */
   onRemove?(): void;
   /** A string to use when tag has more than textual content */
-  title?: string;
+  accessibilityLabel?: string;
   /** Url to navigate to when tag is clicked or keypressed. */
   url?: string;
 }
@@ -34,7 +34,7 @@ export function Tag({
   disabled = false,
   onClick,
   onRemove,
-  title = '',
+  accessibilityLabel = '',
   url,
 }: TagProps) {
   const i18n = useI18n();
@@ -62,7 +62,7 @@ export function Tag({
     );
   }
 
-  let tagTitle = title;
+  let tagTitle = accessibilityLabel;
 
   if (!tagTitle) {
     tagTitle = typeof children === 'string' ? children : '';
