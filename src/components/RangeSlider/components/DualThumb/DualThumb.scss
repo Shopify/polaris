@@ -133,7 +133,7 @@ $range-output-spacing: 16px;
   transition-property: opacity, visibility, bottom;
   transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
-  transform: translateX(calc(-50% + var(--pc-range-slider-thumb-size) / 2));
+  transform: translateX(calc(-50% + (var(--pc-range-slider-thumb-size) / 2)));
 
   .Thumbs:active + & {
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -
