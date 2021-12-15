@@ -127,10 +127,12 @@ $icon-size: rem(16px);
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
+    text-decoration: underline;
   }
 
   &:hover {
     background: var(--p-surface-neutral-hovered);
+    text-decoration: underline;
   }
 
   &.segmented::after {
