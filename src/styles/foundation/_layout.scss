@@ -64,7 +64,7 @@ $dismiss-icon-size: 32px;
 }
 
 @function mobile-nav-width() {
-  @return calc(100vw - #{$dismiss-icon-size} + #{$dangerous-magic-space-8});
+  @return calc(100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8}));
 }
 
 @function nav-min-window-corrected() {

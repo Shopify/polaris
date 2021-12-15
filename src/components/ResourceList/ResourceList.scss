@@ -61,13 +61,11 @@ $item-wrapper-loading-height: 64px;
   align-items: flex-start;
   width: 100%;
   min-height: resource-list(header-min-height);
-  padding: resource-list(header-vertical-padding)
-    resource-list(header-padding-small);
+  padding: calc(var(--p-space-3) - var(--p-space-05)) var(--p-space-4);
   background-color: var(--p-surface);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
-    padding: resource-list(header-vertical-padding) var(--p-space-4);
   }
 }
 
