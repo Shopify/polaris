@@ -1,6 +1,5 @@
 @import '../../styles/common';
 
-$action-text-spacing: 24px;
 $primary-action-button-height: 36px;
 $primary-action-button-width: 100px;
 $skeleton-display-text-max-width: 120px;
@@ -97,7 +96,7 @@ $skeleton-display-text-max-width: 120px;
   flex-direction: column;
   justify-content: center;
   min-height: control-slim-height();
-  padding-right: $action-text-spacing;
+  padding-right: var(--p-space-6);
   margin-top: calc(-1 * var(--p-space-1));
   margin-bottom: calc(-1 * var(--p-space-1));
   padding-top: var(--p-space-4);

@@ -291,8 +291,8 @@ $secondary-item-font-size: 15px;
   }
 
   .Text {
-    margin-top: var(--p-space-1);
-    margin-bottom: var(--p-space-1);
+    margin-top: calc(var(--p-space-1) + var(--p-space-05));
+    margin-bottom: calc(var(--p-space-1) + var(--p-space-05));
     line-height: 20px;
   }
 

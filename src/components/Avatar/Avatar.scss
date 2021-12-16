@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 .Avatar {
-  --pc-avatar-extra-small-size: var(--p-space-6);
-  --pc-avatar-small-size: var(--p-space-8);
-  --pc-avatar-medium-size: var(--p-space-10);
+  --pc-avatar-extra-small-size: 24px;
+  --pc-avatar-small-size: 32px;
+  --pc-avatar-medium-size: 40px;
   --pc-avatar-large-size: 60px;
   position: relative;
   display: block;

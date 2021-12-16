@@ -2,9 +2,9 @@
 
 .Badge {
   --pc-badge-horizontal-padding: var(--p-space-2);
-  --pc-badge-vertical-padding: calc(var(--p-space-1) - 2px);
+  --pc-badge-vertical-padding: var(--p-space-05);
   --pc-badge-pip-size: var(--p-space-2);
-  --pc-badge-pip-spacing: calc(var(--pc-badge-pip-size) / 2);
+  --pc-badge-pip-spacing: var(--p-space-1);
   --pc-badge-component-badge-pip-color: var(--p-icon);
   display: inline-flex;
   align-items: center;

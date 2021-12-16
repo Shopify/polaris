@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Scrollable {
-  --pc-scrollable-shadow-size: 20px;
+  --pc-scrollable-shadow-size: var(--p-space-5);
   --pc-scrollable-shadow-bottom: inset 0
     calc(-1 * var(--pc-scrollable-shadow-size)) var(--pc-scrollable-shadow-size)
     calc(-1 * var(--pc-scrollable-shadow-size)) var(--p-hint-from-direct-light);

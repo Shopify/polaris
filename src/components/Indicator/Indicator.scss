@@ -1,20 +1,20 @@
 @import '../../styles/common';
 
-$size: 10px;
-$base-position: -4px;
-
 .Indicator {
+  --pc-indicator-size: 10px;
+  --pc-indicator-base-position: calc(-1 * var(--p-space-1));
+
   &::before,
   &::after {
     content: '';
     position: absolute;
     background-color: var(--p-border-highlight);
-    right: $base-position;
-    top: $base-position;
-    width: $size;
-    height: $size;
+    right: var(--pc-indicator-base-position);
+    top: var(--pc-indicator-base-position);
+    width: var(--pc-indicator-size);
+    height: var(--pc-indicator-size);
     border-radius: var(--p-border-radius-half);
-    border: calc(#{$size} / 2) solid transparent;
+    border: calc(var(--pc-indicator-size) / 2) solid transparent;
   }
 }
 
@@ -24,8 +24,8 @@ $base-position: -4px;
 }
 
 .pulseIndicator::after {
-  right: $base-position;
-  top: $base-position;
+  right: var(--pc-indicator-base-position);
+  top: var(--pc-indicator-base-position);
   animation: pulse 5s ease infinite;
 }
 
