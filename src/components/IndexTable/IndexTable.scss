@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$breakpoint-small: 458px;
+$breakpoint-small: 28.625em;
 
 .IndexTable {
   --pc-index-table-translate-offset: calc(50px - var(--p-space-4));

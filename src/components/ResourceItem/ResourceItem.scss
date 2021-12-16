@@ -8,7 +8,7 @@ $resource-list-item-variables: (
   clickable-stacking-order: 1,
   content-stacking-order: 2,
   actions-height: 56px,
-  breakpoint-small: 458px,
+  breakpoint-small: 28.625em,
 );
 
 @function resource-list-item($variable) {
