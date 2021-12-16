@@ -28,9 +28,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   // between two media queries
   // See https://github.com/sass-mq/sass-mq/issues/6
   @if $adjustment == -1px {
-    $adjusted-value: -0.01em;
+    $adjusted-value: -0.0625em;
   } @else if $adjustment == 1px {
-    $adjusted-value: 0.01em;
+    $adjusted-value: 0.0625em;
   }
 
   @return em($value) + $adjusted-value;

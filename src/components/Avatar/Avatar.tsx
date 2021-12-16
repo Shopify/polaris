@@ -114,7 +114,7 @@ export function Avatar({
     ) : null;
 
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
-  const verticalOffset = '0.35em';
+  const verticalOffset = '0.21875em';
 
   const avatarBody =
     customer || !initials ? (

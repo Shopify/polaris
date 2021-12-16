@@ -2,7 +2,7 @@
 
 $textfield-backdrop-offset: -(border-width(thick));
 $backdrop-horizontal-spacing: calc(var(--p-space-2) * 1.5);
-$addon-horizontal-spacing: 0.25em;
+$addon-horizontal-spacing: var(--p-space-05);
 $spinner-icon-size: 12px;
 $prefix-horizontal-spacing: var(--p-space-2);
 
