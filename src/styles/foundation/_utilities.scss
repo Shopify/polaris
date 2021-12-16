@@ -1,27 +1,3 @@
-$default-browser-font-size: 16px;
-$base-font-size: 10px;
-
-/// Returns the value in ems for a given pixel value. Note that this
-/// only works for elements that have had no font-size changes.
-/// @param {Number} $value - The pixel value to be converted.
-/// @return {Number} The converted value in ems.
-
-@function em($value) {
-  $unit: unit($value);
-
-  @if $value == 0 {
-    @return 0;
-  } @else if $unit == 'em' {
-    @return $value;
-  } @else if $unit == 'rem' {
-    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
-  } @else if $unit == 'px' {
-    @return $value / $default-browser-font-size * 1em;
-  } @else {
-    @error 'Value must be in px, rem, or em.';
-  }
-}
-
 /// Returns the list of available names in a given map.
 /// @param {Map} $map - The map of data to list the names from.
 /// @param {Number} $map - The level of depth to get names from.
