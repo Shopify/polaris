@@ -80,6 +80,29 @@ Use to allow merchants to add attributes to an object.
 <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
+### Tag with link
+
+Use to allow merchants to navigate to a resource. For example a customer segment or a smart collection
+
+```jsx
+function URLTagExample() {
+  return <Tag url="/collections/wholesale">Wholesale</Tag>;
+}
+```
+
+### Tag with custom content
+
+Use when a tag needs to be visually distinguished from others, like when it's added automatically.
+
+```jsx
+<Tag url="/collections/wholesale">
+  <Stack spacing="extraTight">
+    <Icon source={WandMinor} />
+    <span>Wholesale</span>
+  </Stack>
+</Tag>
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)
