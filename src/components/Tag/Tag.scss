@@ -54,7 +54,6 @@ $icon-size: rem(16px);
   }
 
   &.linkable {
-    align-items: stretch;
     padding: 0;
   }
 
@@ -118,9 +117,7 @@ $icon-size: rem(16px);
   padding: spacing(extra-tight) spacing(tight);
 
   .LinkText {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    @include truncate;
   }
 
   @include focus-ring;
@@ -135,9 +132,14 @@ $icon-size: rem(16px);
     text-decoration: underline;
   }
 
-  &.segmented::after {
-    margin-right: spacing(extra-tight);
+  &.segmented {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+
+    &::after {
+      margin-right: spacing(extra-tight);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }

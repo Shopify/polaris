@@ -53,8 +53,13 @@ describe('<Tag />', () => {
     });
 
     it('renders plain text when the tag is disabled', () => {
-      const tag = mountWithApp(<Tag url="#" disabled />);
+      const tag = mountWithApp(
+        <Tag url="#" disabled>
+          #
+        </Tag>,
+      );
       expect(tag).not.toContainReactComponent('a', {href: '#'});
+      expect(tag).toContainReactComponent('span', {children: '#'});
     });
   });
 
@@ -78,7 +83,7 @@ describe('<Tag />', () => {
   });
 
   describe('accessibilityLabel', () => {
-    it('uses children to render title if no title prop is provided', () => {
+    it('uses children to render title if no accessibilityLabel prop is provided', () => {
       const tag = mountWithApp(<Tag>children</Tag>);
       expect(tag).toContainReactComponent('span', {
         children: 'children',
@@ -107,14 +112,17 @@ describe('<Tag />', () => {
       });
     });
 
-    it('renders an empty title if no title prop when a component is received as children and url prop is passed', () => {
+    it('does not render the title attribute if accessibilityLabel is `undefined` when a component is received as children and url prop is passed', () => {
       const tag = mountWithApp(
         <Tag url="#">
           <Icon source={SearchMinor} />
         </Tag>,
       );
-      expect(tag).toContainReactComponent('span', {
+      expect(tag).not.toContainReactComponent('span', {
         title: '',
+      });
+      expect(tag).toContainReactComponent('span', {
+        title: undefined,
       });
     });
   });

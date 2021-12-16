@@ -34,7 +34,7 @@ export function Tag({
   disabled = false,
   onClick,
   onRemove,
-  accessibilityLabel = '',
+  accessibilityLabel,
   url,
 }: TagProps) {
   const i18n = useI18n();
@@ -65,11 +65,11 @@ export function Tag({
   let tagTitle = accessibilityLabel;
 
   if (!tagTitle) {
-    tagTitle = typeof children === 'string' ? children : '';
+    tagTitle = typeof children === 'string' ? children : undefined;
   }
 
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
-    children: tagTitle,
+    children: tagTitle || '',
   });
 
   const removeButton = onRemove ? (
