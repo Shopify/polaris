@@ -15,18 +15,18 @@ $typography-condensed: em(640px);
 @mixin text-style-caption {
   font-size: font-size(caption);
   font-weight: var(--p-font-weight-regular);
-  line-height: line-height(caption);
+  line-height: var(--p-line-height-1);
 
   @include when-typography-not-condensed {
     font-size: font-size(caption, large-screen);
-    line-height: line-height(caption, large-screen);
+    line-height: var(--p-line-height-0);
   }
 }
 
 @mixin text-style-heading {
   font-size: font-size(heading);
   font-weight: var(--p-font-weight-semibold);
-  line-height: line-height(heading);
+  line-height: var(--p-line-height-2);
 
   @include when-typography-not-condensed {
     font-size: font-size(heading, large-screen);
@@ -36,7 +36,7 @@ $typography-condensed: em(640px);
 @mixin text-style-subheading {
   font-size: font-size(subheading);
   font-weight: var(--p-font-weight-semibold);
-  line-height: line-height(subheading);
+  line-height: var(--p-line-height-0);
   text-transform: uppercase;
 
   @include when-typography-not-condensed {
@@ -47,7 +47,7 @@ $typography-condensed: em(640px);
 @mixin text-style-input {
   font-size: font-size(input);
   font-weight: var(--p-font-weight-regular);
-  line-height: line-height(input);
+  line-height: var(--p-line-height-2);
   border: none;
 
   text-transform: initial;
@@ -61,7 +61,7 @@ $typography-condensed: em(640px);
 @mixin text-style-body {
   font-size: font-size(body);
   font-weight: var(--p-font-weight-regular);
-  line-height: line-height(body);
+  line-height: var(--p-line-height-1);
 
   text-transform: initial;
   letter-spacing: initial;
@@ -74,7 +74,7 @@ $typography-condensed: em(640px);
 @mixin text-style-button {
   font-size: font-size(button);
   font-weight: var(--p-font-weight-medium);
-  line-height: line-height(button);
+  line-height: var(--p-line-height-0);
 
   text-transform: initial;
   letter-spacing: initial;
@@ -87,7 +87,7 @@ $typography-condensed: em(640px);
 @mixin text-style-button-large {
   font-size: font-size(button-large);
   font-weight: var(--p-font-weight-medium);
-  line-height: line-height(button-large);
+  line-height: var(--p-line-height-1);
 
   text-transform: initial;
   letter-spacing: initial;
@@ -100,44 +100,44 @@ $typography-condensed: em(640px);
 @mixin text-style-display-x-large {
   font-size: font-size(display-x-large);
   font-weight: var(--p-font-weight-semibold);
-  line-height: line-height(display-x-large);
+  line-height: var(--p-line-height-5);
 
   @include when-typography-not-condensed {
     font-size: font-size(display-x-large, large-screen);
-    line-height: line-height(display-x-large, large-screen);
+    line-height: var(--p-line-height-6);
   }
 }
 
 @mixin text-style-display-large {
   font-size: font-size(display-large);
   font-weight: var(--p-font-weight-semibold);
-  line-height: line-height(display-large);
+  line-height: var(--p-line-height-3);
 
   @include when-typography-not-condensed {
     font-size: font-size(display-large, large-screen);
-    line-height: line-height(display-large, large-screen);
+    line-height: var(--p-line-height-4);
   }
 }
 
 @mixin text-style-display-medium {
   font-size: font-size(display-medium);
   font-weight: var(--p-font-weight-regular);
-  line-height: line-height(display-medium);
+  line-height: var(--p-line-height-3);
 
   @include when-typography-not-condensed {
     font-size: font-size(display-medium, large-screen);
-    line-height: line-height(display-medium, large-screen);
+    line-height: var(--p-line-height-4);
   }
 }
 
 @mixin text-style-display-small {
   font-size: font-size(display-small);
   font-weight: var(--p-font-weight-regular);
-  line-height: line-height(display-small);
+  line-height: var(--p-line-height-2);
 
   @include when-typography-not-condensed {
     font-size: font-size(display-small, large-screen);
-    line-height: line-height(display-small, large-screen);
+    line-height: var(--p-line-height-3);
   }
 }
 

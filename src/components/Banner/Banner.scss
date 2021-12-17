@@ -53,7 +53,7 @@
   --pc-banner-rgb-text: 33, 43, 54;
   --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
   --pc-banner-secondary-action-vertical-padding: 0.5 *
-    (#{control-height() - line-height(body)});
+    (#{control-height()} - var(--p-line-height-1));
   position: relative;
   display: flex;
 

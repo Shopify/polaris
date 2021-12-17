@@ -4,7 +4,7 @@
   --pc-action-list-image-size: 20px;
   --pc-action-list-item-min-height: var(--p-space-10);
   --pc-action-list-item-vertical-padding: calc(
-    (var(--pc-action-list-item-min-height) - #{line-height(body)}) / 2
+    (var(--pc-action-list-item-min-height) - var(--p-line-height-1)) / 2
   );
   list-style: none;
   margin: 0;

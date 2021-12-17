@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 $navigation-elements-height: 36px;
-$title-height: line-height(display-large, large-screen);
+$title-height: var(--p-line-height-4);
 $stacking-order: (
   title: 10,
   breadcrumbs: 20,
