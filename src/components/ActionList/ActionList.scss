@@ -1,11 +1,7 @@
 @import '../../styles/common';
 
 .ActionList {
-  --pc-action-list-image-size: 20px;
-  --pc-action-list-item-min-height: var(--p-space-10);
-  --pc-action-list-item-vertical-padding: calc(
-    (var(--pc-action-list-item-min-height) - var(--p-line-height-1)) / 2
-  );
+  outline: none;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -16,6 +12,7 @@
 }
 
 .Actions {
+  outline: none;
   list-style: none;
   margin: 0;
   border-top: border('divider');

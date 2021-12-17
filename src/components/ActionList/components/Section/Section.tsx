@@ -14,7 +14,7 @@ export interface SectionProps {
   /** Should there be multiple sections */
   hasMultipleSections: boolean;
   /** Defines a specific role attribute for each action in the list */
-  actionRole?: string;
+  actionRole?: 'option' | 'menuitem' | string;
   /** Whether or not the section is the first to appear */
   firstSection?: boolean;
   /** Callback when any item is clicked or keypressed */
@@ -63,19 +63,36 @@ export function Section({
     <p className={titleClassName}>{section.title}</p>
   ) : null;
 
-  const sectionRole = actionRole === 'option' ? 'presentation' : undefined;
+  let sectionRole;
+  switch (actionRole) {
+    case 'option':
+      sectionRole = 'presentation';
+      break;
+    case 'menuitem':
+      sectionRole = !hasMultipleSections ? 'menu' : 'presentation';
+      break;
+    default:
+      sectionRole = undefined;
+      break;
+  }
 
   const sectionMarkup = (
     <div className={className}>
       {titleMarkup}
-      <ul className={styles.Actions} role={sectionRole}>
+      <ul
+        className={styles.Actions}
+        role={sectionRole}
+        tabIndex={!hasMultipleSections ? -1 : undefined}
+      >
         {actionMarkup}
       </ul>
     </div>
   );
 
   return hasMultipleSections ? (
-    <li className={styles.Section}>{sectionMarkup}</li>
+    <li className={styles.Section} role="presentation">
+      {sectionMarkup}
+    </li>
   ) : (
     sectionMarkup
   );

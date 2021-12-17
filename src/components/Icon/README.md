@@ -36,7 +36,7 @@ Use to visually communicate core parts of the product and available actions.
 Apply a color to the icon.
 
 ```jsx
-<>
+<div>
   <Icon source={CirclePlusMinor} color="base" />
   <Icon source={CirclePlusMinor} color="subdued" />
   <Icon source={CirclePlusMinor} color="primary" />
@@ -44,7 +44,7 @@ Apply a color to the icon.
   <Icon source={CirclePlusMinor} color="success" />
   <Icon source={CirclePlusMinor} color="warning" />
   <Icon source={CirclePlusMinor} color="critical" />
-</>
+</div>
 ```
 
 ### Icon with backdrop
@@ -52,13 +52,13 @@ Apply a color to the icon.
 Apply a backdrop to the icon.
 
 ```jsx
-<>
+<div>
   <Icon source={CirclePlusMinor} color="base" backdrop />
   <Icon source={CirclePlusMinor} color="highlight" backdrop />
   <Icon source={CirclePlusMinor} color="success" backdrop />
   <Icon source={CirclePlusMinor} color="warning" backdrop />
   <Icon source={CirclePlusMinor} color="critical" backdrop />
-</>
+</div>
 ```
 
 ### User provided icon
