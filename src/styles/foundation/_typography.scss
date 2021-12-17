@@ -125,6 +125,7 @@ $font-size-data: (
 /// @param {String} $style - The font style.
 /// @param {String} $variant [base] - The variant on the font-size.
 /// @return {Number} The line-height for the text-style.
+//
 
 @function line-height($style, $variant: base) {
   $fetched-line-height: map-get(map-get($line-height-data, $style), $variant);
