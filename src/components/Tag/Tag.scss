@@ -99,7 +99,7 @@ $icon-size: 16px;
   }
 
   &.segmented {
-    margin-left: -1 * spacing(extra-tight);
+    margin-left: calc(-1 * var(--p-space-1));
 
     &::after {
       border-top-left-radius: 0;
@@ -114,7 +114,7 @@ $icon-size: 16px;
   outline: none;
   border-radius: var(--p-border-radius-base);
   text-decoration: none;
-  padding: spacing(extra-tight) spacing(tight);
+  padding: var(--p-space-1) var(--p-space-2);
 
   .LinkText {
     @include truncate;
@@ -137,7 +137,7 @@ $icon-size: 16px;
     border-bottom-right-radius: 0;
 
     &::after {
-      margin-right: spacing(extra-tight);
+      margin-right: var(--p-space-1);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
