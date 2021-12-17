@@ -50,6 +50,7 @@ function RemovableTagExample() {
     'Antique',
     'Vinyl',
     'Refurbished',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at ipsum quam. Aliquam fermentum bibendum vestibulum. Vestibulum condimentum luctus metus, sed sagittis magna pellentesque eget. Duis dapibus pretium nisi, et venenatis tortor dignissim ut. Quisque eget lacus ac ex eleifend ultrices. Phasellus facilisis ex sit amet leo elementum condimentum. Ut vel maximus felis. Etiam eget diam eu eros blandit interdum. Sed eu metus sed justo aliquam iaculis ac sit amet ex. Curabitur justo magna, porttitor non pulvinar eu, malesuada at leo. Cras mollis consectetur eros, quis maximus lorem dignissim at. Proin in rhoncus massa. Vivamus lectus nunc, fringilla euismod risus commodo, mattis blandit nulla.',
   ]);
 
   const removeTag = useCallback(
@@ -77,6 +78,29 @@ Use to allow merchants to add attributes to an object.
 
 ```jsx
 <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
+```
+
+### Tag with link
+
+Use to allow merchants to navigate to a resource. For example a customer segment or a smart collection
+
+```jsx
+function URLTagExample() {
+  return <Tag url="/collections/wholesale">Wholesale</Tag>;
+}
+```
+
+### Tag with custom content
+
+Use when a tag needs to be visually distinguished from others, like when it's added automatically.
+
+```jsx
+<Tag url="/collections/wholesale">
+  <Stack spacing="extraTight">
+    <Icon source={WandMinor} />
+    <span>Wholesale</span>
+  </Stack>
+</Tag>
 ```
 
 <!-- content-for: android -->
