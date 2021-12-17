@@ -1,4 +1,4 @@
-$typography-condensed: em(640px);
+$typography-condensed: 40em;
 
 @mixin when-typography-not-condensed {
   @include breakpoint-after($typography-condensed) {
