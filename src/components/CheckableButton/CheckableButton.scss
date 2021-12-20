@@ -1,16 +1,16 @@
 @import '../../styles/common';
 
-$button-min-height: control-height();
-
-$button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
+$button-vertical-padding: calc(
+  (var(--p-line-height-5) - var(--p-line-height-1) - 2px) / 2
+);
 
 .CheckableButton {
   @include text-style-button;
   @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
-  min-height: $button-min-height;
-  min-width: $button-min-height;
+  min-height: var(--p-line-height-5);
+  min-width: var(--p-line-height-5);
   margin: 0;
   padding: $button-vertical-padding var(--p-space-4);
   line-height: 1;
