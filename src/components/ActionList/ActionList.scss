@@ -6,7 +6,6 @@
   --pc-action-list-item-vertical-padding: calc(
     (var(--pc-action-list-item-min-height) - #{line-height(body)}) / 2
   );
-
   outline: none;
   list-style: none;
   margin: 0;
