@@ -7,7 +7,7 @@
 }
 
 @function control-vertical-padding() {
-  @return (control-height() - line-height(input) - 2px) / 2;
+  @return calc((var(--p-line-height-5) - var(--p-line-height-2) - 2px) / 2);
 }
 
 @function control-icon-transition() {

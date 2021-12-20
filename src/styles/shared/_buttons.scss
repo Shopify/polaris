@@ -5,8 +5,9 @@
 }
 
 @mixin button-base {
-  $min-height: control-height();
-  $vertical-padding: ($min-height - line-height(body) - 2px) / 2;
+  $vertical-padding: calc(
+    (var(--p-line-height-5) - var(--p-line-height-1) - 2px) / 2
+  );
 
   @include recolor-icon(var(--p-icon));
   @include focus-ring($border-width: border-width('base'));
@@ -14,8 +15,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: $min-height;
-  min-width: $min-height;
+  min-height: var(--p-line-height-5);
+  min-width: var(--p-line-height-5);
   margin: 0;
   padding: $vertical-padding var(--p-space-4);
   background: var(--p-surface);
