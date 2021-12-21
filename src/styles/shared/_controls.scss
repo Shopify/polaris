@@ -2,6 +2,10 @@
   @return 36px;
 }
 
+:root {
+  -p-control-height: var(--p-line-height-5);
+}
+
 @function control-slim-height() {
   @return 28px;
 }
