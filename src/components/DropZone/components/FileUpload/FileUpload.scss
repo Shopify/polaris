@@ -1,11 +1,7 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: var(--p-space-4);
-$slim-min-height: 30px;
-$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
-
 .FileUpload {
-  padding: $fileupload-padding;
+  padding: var(--p-space-4);
   text-align: center;
   display: flex;
   align-items: center;

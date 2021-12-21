@@ -12,7 +12,7 @@
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-5);
   font-size: font-size(caption);
-  line-height: line-height(caption, large-screen);
+  line-height: var(--p-line-height-1);
   color: var(--p-text);
   font-weight: var(--p-font-weight-regular);
 
