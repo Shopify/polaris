@@ -17,47 +17,6 @@ $font-family-data: (
   monospace},
 );
 
-$line-height-data: (
-  caption: (
-    base: 20px,
-    large-screen: 16px,
-  ),
-  heading: (
-    base: 24px,
-  ),
-  subheading: (
-    base: 16px,
-  ),
-  input: (
-    base: 24px,
-  ),
-  body: (
-    base: 20px,
-  ),
-  button: (
-    base: 16px,
-  ),
-  button-large: (
-    base: 20px,
-  ),
-  display-x-large: (
-    base: 36px,
-    large-screen: 44px,
-  ),
-  display-large: (
-    base: 28px,
-    large-screen: 32px,
-  ),
-  display-medium: (
-    base: 28px,
-    large-screen: 32px,
-  ),
-  display-small: (
-    base: 24px,
-    large-screen: 28px,
-  ),
-);
-
 $font-size-data: (
   caption: (
     base: 13px,
@@ -117,23 +76,6 @@ $font-size-data: (
     @return $fetched-value;
   } @else {
     @error 'Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}';
-  }
-}
-
-/// Returns the line height for a given text style and variant.
-///
-/// @param {String} $style - The font style.
-/// @param {String} $variant [base] - The variant on the font-size.
-/// @return {Number} The line-height for the text-style.
-//
-
-@function line-height($style, $variant: base) {
-  $fetched-line-height: map-get(map-get($line-height-data, $style), $variant);
-
-  @if type-of($fetched-line-height) {
-    @return $fetched-line-height;
-  } @else {
-    @error 'Line height `#{$style} - #{$variant}` not found. Available line heights: #{available-names($line-height-data)}';
   }
 }
 
