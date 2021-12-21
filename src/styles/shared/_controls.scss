@@ -11,7 +11,7 @@
 }
 
 @function control-vertical-padding() {
-  @return calc((var(--p-line-height-6) - var(--p-line-height-3) - 2px) / 2);
+  @return calc((var(--p-line-height-6) - var(--p-line-height-3) - var(--p-space-05)) / 2);
 }
 
 @function control-icon-transition() {
