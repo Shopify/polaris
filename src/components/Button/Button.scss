@@ -291,7 +291,7 @@
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: calc(-0.5 * (var(--pc-button-min-height) - icon-size()));
+    margin: calc(-0.5 * (var(--pc-button-min-height) - #{icon-size()}));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));
