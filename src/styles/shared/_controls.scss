@@ -3,7 +3,7 @@
 }
 
 :root {
-  --pc-control-height: var(--p-line-height-5);
+  --pc-control-height: var(--p-line-height-6);
 }
 
 @function control-slim-height() {
@@ -11,7 +11,7 @@
 }
 
 @function control-vertical-padding() {
-  @return calc((var(--p-line-height-5) - var(--p-line-height-2) - 2px) / 2);
+  @return calc((var(--p-line-height-6) - var(--p-line-height-3) - 2px) / 2);
 }
 
 @function control-icon-transition() {

@@ -2,16 +2,16 @@
 
 .Button {
   --pc-button-min-height: var(--pc-control-height);
-  --pc-button-slim-min-height: var(--p-line-height-3);
-  --pc-button-large-min-height: var(--p-line-height-6);
+  --pc-button-slim-min-height: var(--p-line-height-4);
+  --pc-button-large-min-height: var(--p-line-height-7);
   --pc-button-vertical-padding: calc(
-    (var(--pc-button-min-height) - var(--p-line-height-1) - 2px) / 2
+    (var(--pc-button-min-height) - var(--p-line-height-2) - 2px) / 2
   );
   --pc-button-slim-vertical-padding: calc(
-    (var(--pc-button-slim-min-height) - var(--p-line-height-1) - 2px) / 2
+    (var(--pc-button-slim-min-height) - var(--p-line-height-2) - 2px) / 2
   );
   --pc-button-large-vertical-padding: calc(
-    (var(--pc-button-large-min-height) - var(--p-line-height-1) - 2px) / 2
+    (var(--pc-button-large-min-height) - var(--p-line-height-2) - 2px) / 2
   );
   --pc-button-spinner-size: 20px;
   --pc-button-segment: 10;

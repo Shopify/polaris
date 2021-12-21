@@ -6,7 +6,7 @@
 
 @mixin button-base {
   $vertical-padding: calc(
-    (var(--p-line-height-5) - var(--p-line-height-1) - 2px) / 2
+    (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
   );
 
   @include recolor-icon(var(--p-icon));
@@ -15,8 +15,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--p-line-height-5);
-  min-width: var(--p-line-height-5);
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
   margin: 0;
   padding: $vertical-padding var(--p-space-4);
   background: var(--p-surface);

@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 $button-vertical-padding: calc(
-  (var(--p-line-height-5) - var(--p-line-height-1) - 2px) / 2
+  (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
 );
 
 .CheckableButton {
@@ -9,8 +9,8 @@ $button-vertical-padding: calc(
   @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
-  min-height: var(--p-line-height-5);
-  min-width: var(--p-line-height-5);
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
   margin: 0;
   padding: $button-vertical-padding var(--p-space-4);
   line-height: 1;
