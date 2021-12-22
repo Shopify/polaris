@@ -1,11 +1,7 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: var(--p-space-4);
-$slim-min-height: 30px;
-$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
-
 .FileUpload {
-  padding: $fileupload-padding;
+  padding: var(--p-space-4);
   text-align: center;
   display: flex;
   align-items: center;
@@ -25,27 +21,32 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
   vertical-align: bottom;
 }
 
-.Button {
-  @include button-base;
+.Action {
   @include focus-ring;
+  display: inline-flex;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: var(--p-border-radius-base);
+  padding: var(--p-space-1) 6px;
+  margin: 0;
+  text-decoration: none;
+  background: var(--p-surface-selected-pressed);
+  color: var(--p-interactive);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  appearance: none;
+
+  &:hover {
+    color: var(--p-interactive-hovered);
+  }
 
   &.disabled {
     @include base-button-disabled;
     cursor: not-allowed;
     box-shadow: none;
-  }
-
-  &.focused {
-    outline: 0;
-    box-shadow: none;
-
-    @include focus-ring($style: 'focused');
-    @include high-contrast-button-outline;
-  }
-
-  .sizeSlim {
-    min-height: $slim-min-height;
-    padding: $slim-vertical-padding var(--p-space-3);
   }
 }
 

@@ -1,14 +1,19 @@
 @import '../../styles/common';
 
-$min-height: control-height();
-$vertical-padding: ($min-height - line-height(body) - 2px) / 2;
-$slim-min-height: 28px;
-$slim-vertical-padding: ($slim-min-height - line-height(body) - 2px) / 2;
-$large-min-height: 44px;
-$large-vertical-padding: ($large-min-height - line-height(body) - 2px) / 2;
-$spinner-size: 20px;
-
 .Button {
+  --pc-button-min-height: var(--pc-control-height);
+  --pc-button-slim-min-height: var(--p-line-height-4);
+  --pc-button-large-min-height: var(--p-line-height-7);
+  --pc-button-vertical-padding: calc(
+    (var(--pc-button-min-height) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-slim-vertical-padding: calc(
+    (var(--pc-button-slim-min-height) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-large-vertical-padding: calc(
+    (var(--pc-button-large-min-height) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-spinner-size: 20px;
   --pc-button-segment: 10;
   --pc-button-focused: 20;
   @include button-base;
@@ -101,8 +106,8 @@ $spinner-size: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -($spinner-size / 2);
-  margin-left: -($spinner-size / 2);
+  margin-top: calc(-1 * (var(--pc-button-spinner-size) / 2));
+  margin-left: calc(-1 * (var(--pc-button-spinner-size) / 2));
 }
 
 .primary,
@@ -187,7 +192,8 @@ $spinner-size: 20px;
 // stylelint-disable selector-max-specificity, selector-max-class
 .plain {
   @include recolor-icon(var(--p-interactive));
-  margin: (-1 * $vertical-padding) calc(-1 * var(--p-space-2));
+  margin: calc(-1 * var(--pc-button-vertical-padding))
+    calc(-1 * var(--p-space-2));
   padding-left: var(--p-space-2);
   padding-right: var(--p-space-2);
   background: transparent;
@@ -274,17 +280,18 @@ $spinner-size: 20px;
   }
 
   &.sizeSlim {
-    margin-top: (-1 * $slim-vertical-padding);
-    margin-bottom: (-1 * $slim-vertical-padding);
+    margin-top: calc(-1 * var(--pc-button-slim-vertical-padding));
+    margin-bottom: calc(-1 * var(--pc-button-slim-vertical-padding));
   }
 
   &.sizeLarge {
-    margin: (-1 * $large-vertical-padding) calc(-1 * var(--p-space-5));
+    margin: calc(-1 * var(--pc-button-large-vertical-padding))
+      calc(-1 * var(--p-space-5));
   }
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: -0.5 * ($min-height - icon-size());
+    margin: calc(-0.5 * (var(--pc-button-min-height) - #{icon-size()}));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));
@@ -351,14 +358,14 @@ $spinner-size: 20px;
 }
 
 .sizeSlim {
-  min-height: $slim-min-height;
-  padding: $slim-vertical-padding var(--p-space-3);
+  min-height: var(--pc-button-slim-min-height);
+  padding: var(--pc-button-slim-vertical-padding) var(--p-space-3);
 }
 
 .sizeLarge {
-  min-height: $large-min-height;
-  min-width: $large-min-height;
-  padding: $large-vertical-padding var(--p-space-6);
+  min-height: var(--pc-button-large-min-height);
+  min-width: var(--pc-button-large-min-height);
+  padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
 
   .Content {
     @include text-style-button-large;

@@ -11,8 +11,8 @@
   padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-5);
-  font-size: font-size(caption);
-  line-height: line-height(caption, large-screen);
+  font-size: var(--p-font-size-2);
+  line-height: var(--p-line-height-1);
   color: var(--p-text);
   font-weight: var(--p-font-weight-regular);
 
@@ -22,7 +22,7 @@
 }
 
 .sizeSmall {
-  font-size: font-size(caption, large-screen);
+  font-size: var(--p-font-size-1);
 }
 
 .statusSuccess {
@@ -38,8 +38,8 @@
 }
 
 .statusAttention {
-  --pc-badge-component-badge-pip-color: var(--p-text-warning);
-  background-color: var(--p-surface-warning);
+  --pc-badge-component-badge-pip-color: rgb(138, 97, 22);
+  background-color: rgb(255, 234, 138);
   color: var(--p-text);
 }
 

@@ -1,16 +1,16 @@
 @import '../../styles/common';
 
-$button-min-height: control-height();
-
-$button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
+$button-vertical-padding: calc(
+  (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
+);
 
 .CheckableButton {
   @include text-style-button;
   @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
-  min-height: $button-min-height;
-  min-width: $button-min-height;
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
   margin: 0;
   padding: $button-vertical-padding var(--p-space-4);
   line-height: 1;
@@ -40,14 +40,14 @@ $button-vertical-padding: ($button-min-height - line-height(body) - 2px) / 2;
   }
 
   &.CheckableButton-measuring {
-    font-size: font-size(button);
+    font-size: var(--p-font-size-4);
     font-weight: var(--p-font-weight-bold);
 
     // simulates measuring with an additional digit (e.g. 00 instead of 0)
     &::before {
       content: '';
       display: inline-block;
-      width: font-size(button);
+      width: var(--p-font-size-4);
     }
   }
 

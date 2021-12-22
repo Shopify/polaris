@@ -210,6 +210,7 @@ import {
   MinusMinor,
   ViewMinor,
   EditMinor,
+  WandMinor,
 } from '@shopify/polaris-icons';
 
 export default {

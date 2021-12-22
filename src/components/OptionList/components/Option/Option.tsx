@@ -1,14 +1,16 @@
 import React, {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
-import {classNames} from '../../../../utilities/css';
 import type {IconProps} from '../../../Icon';
 import type {ThumbnailProps} from '../../../Thumbnail';
 import type {AvatarProps} from '../../../Avatar';
 import {Scrollable} from '../../../Scrollable';
 import {Checkbox} from '../Checkbox';
+import {classNames, variationName} from '../../../../utilities/css';
 
 import styles from './Option.scss';
+
+type Alignment = 'top' | 'center' | 'bottom';
 
 export interface OptionProps {
   id: string;
@@ -21,6 +23,7 @@ export interface OptionProps {
   active?: boolean;
   select?: boolean;
   allowMultiple?: boolean;
+  verticalAlign?: Alignment;
   role?: string;
   onClick(section: number, option: number): void;
 }
@@ -38,6 +41,7 @@ export function Option({
   onClick,
   section,
   index,
+  verticalAlign,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
 
@@ -59,6 +63,7 @@ export function Option({
     disabled && styles.disabled,
     select && styles.select,
     active && styles.active,
+    verticalAlign && styles[variationName('verticalAlign', verticalAlign)],
   );
 
   const multiSelectClassName = classNames(
@@ -66,6 +71,7 @@ export function Option({
     disabled && styles.disabled,
     active && styles.active,
     select && styles.select,
+    verticalAlign && styles[variationName('verticalAlign', verticalAlign)],
   );
 
   const checkBoxRole = role === 'option' ? 'presentation' : undefined;

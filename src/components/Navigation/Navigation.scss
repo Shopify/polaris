@@ -354,11 +354,11 @@ $secondary-item-font-size: 15px;
   padding-left: var(--p-space-4);
 
   .Text {
-    font-size: font-size(subheading);
+    font-size: var(--p-font-size-2);
     color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: font-size(subheading, large-screen);
+      font-size: var(--p-font-size-1);
     }
   }
 

@@ -2,9 +2,14 @@
 
 $dropzone-padding: var(--p-space-4);
 $dropzone-border-style: dashed;
-$dropzone-min-height-large: 100px;
+$dropzone-min-height-large: 120px;
 $dropzone-min-height-medium: 100px;
 $dropzone-min-height-small: 50px;
+
+$dropzone-stacking-order: (
+  outline: 29,
+  overlay: 30,
+);
 
 @mixin reset-after {
   top: 0;
@@ -57,13 +62,13 @@ $dropzone-min-height-small: 50px;
   padding: border-width();
 
   &::after {
-    border-color: var(--p-border);
+    border-color: var(--p-border-neutral-subdued);
   }
 
   &:not(.isDisabled) {
     &:hover {
       cursor: pointer;
-      background-color: var(--p-surface-selected-hovered);
+      background-color: var(--p-surface-subdued);
 
       // stylelint-disable-next-line selector-max-specificity
       &::after {
@@ -76,7 +81,7 @@ $dropzone-min-height-small: 50px;
     &::after {
       @include reset-after;
       @include set-border-radius;
-      border-color: var(--p-border);
+      border-color: var(--p-border-neutral-subdued);
     }
   }
 }
