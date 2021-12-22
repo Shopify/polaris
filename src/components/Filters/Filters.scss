@@ -103,7 +103,7 @@ $list-filters-footer-height: 70px;
 }
 
 .FilterTriggerTitle {
-  font-size: font-size(body);
+  font-size: var(--p-font-size-4);
   @include text-emphasis-strong;
 }
 
