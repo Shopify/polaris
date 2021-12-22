@@ -1,11 +1,10 @@
 @import '../../styles/common';
 
 .Button {
-  --pc-button-min-height: var(--pc-control-height);
   --pc-button-slim-min-height: var(--p-line-height-4);
   --pc-button-large-min-height: var(--p-line-height-7);
   --pc-button-vertical-padding: calc(
-    (var(--pc-button-min-height) - var(--p-line-height-2) - 2px) / 2
+    (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
   );
   --pc-button-slim-vertical-padding: calc(
     (var(--pc-button-slim-min-height) - var(--p-line-height-2) - 2px) / 2
@@ -291,7 +290,7 @@
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: calc(-0.5 * (var(--pc-button-min-height) - #{icon-size()}));
+    margin: calc(-0.5 * (var(--p-line-height-6) - #{icon-size()}));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));
