@@ -17,53 +17,6 @@ $font-family-data: (
   monospace},
 );
 
-$font-size-data: (
-  caption: (
-    base: 13px,
-    large-screen: 12px,
-  ),
-  heading: (
-    base: 17px,
-    large-screen: 16px,
-  ),
-  subheading: (
-    base: 13px,
-    large-screen: 12px,
-  ),
-  input: (
-    base: 16px,
-    large-screen: 14px,
-  ),
-  body: (
-    base: 15px,
-    large-screen: 14px,
-  ),
-  button: (
-    base: 15px,
-    large-screen: 14px,
-  ),
-  button-large: (
-    base: 17px,
-    large-screen: 16px,
-  ),
-  display-x-large: (
-    base: 27px,
-    large-screen: 42px,
-  ),
-  display-large: (
-    base: 24px,
-    large-screen: 28px,
-  ),
-  display-medium: (
-    base: 21px,
-    large-screen: 26px,
-  ),
-  display-small: (
-    base: 16px,
-    large-screen: 20px,
-  ),
-);
-
 /// Returns the font stack for a given family.
 ///
 /// @param {String} $family - The key for the given family.
@@ -76,21 +29,5 @@ $font-size-data: (
     @return $fetched-value;
   } @else {
     @error 'Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}';
-  }
-}
-
-/// Returns the font size for a given text style and variant.
-///
-/// @param {String} $style - The font style.
-/// @param {String} $variant [base] - The variant on the font-size.
-/// @return {Number} The font-size for the text-style.
-
-@function font-size($style, $variant: base) {
-  $fetched-font-size: map-get(map-get($font-size-data, $style), $variant);
-
-  @if type-of($fetched-font-size) {
-    @return $fetched-font-size;
-  } @else {
-    @error 'Font size `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
   }
 }
