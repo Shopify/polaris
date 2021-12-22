@@ -6321,6 +6321,14 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
+em-media-query@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/em-media-query/-/em-media-query-2.0.0.tgz#058cc2ac47a227d46ff2c7d909a930169637daea"
+  integrity sha512-00WaHd1seQTAlWFKjmSNQx1NVflBdC4YWIEhDA08P7gv2JdRrMEdx5do3j4xOcJgQlrUuvE1Yx0FaYoPl5Ql8w==
+  dependencies:
+    lodash.round "^4.0.4"
+    postcss-value-parser "^4.1.0"
+
 emittery@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.8.1.tgz#bb23cc86d03b30aa75a7f734819dee2e1ba70860"
@@ -9839,6 +9847,11 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
+lodash.round@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/lodash.round/-/lodash.round-4.0.4.tgz#101b6ba5c6cecc998f2abbe80b6029affd25d262"
+  integrity sha1-EBtrpcbOzJmPKrvoC2Apr/0l0mI=
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -11504,6 +11517,13 @@ postcss-discard-overridden@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/postcss-discard-overridden/-/postcss-discard-overridden-5.0.1.tgz#454b41f707300b98109a75005ca4ab0ff2743ac6"
   integrity sha512-Y28H7y93L2BpJhrdUR2SR2fnSsT+3TVx1NmVQLbcnZWwIUpJ7mfcTC6Za9M2PG6w8j7UQRfzxqn8jU2VwFxo3Q==
+
+postcss-em-media-query@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-em-media-query/-/postcss-em-media-query-4.1.0.tgz#910d71394296f058c2b0aefca66e80bc53289dfc"
+  integrity sha512-BYw6a13M9SGVqK/ORWi1P2oqCNKi4/DHlA5tSM8Do4pIRN3jwMyfaAqxsEyu8xqr2I+dXwdEQPjLJOclgF5MGg==
+  dependencies:
+    em-media-query "^2.0.0"
 
 postcss-flexbugs-fixes@^4.2.1:
   version "4.2.1"

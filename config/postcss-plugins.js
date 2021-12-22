@@ -1,11 +1,13 @@
 const postcssShopify = require('@shopify/postcss-plugin');
-const pxtorem = require('postcss-pxtorem');
+const pxToRem = require('postcss-pxtorem');
+const pxToEmMediaQuery = require('postcss-em-media-query');
 
 module.exports = [
   postcssShopify,
-  pxtorem({
+  pxToRem({
     rootValue: 16,
     replace: true,
     propList: ['*'],
   }),
+  pxToEmMediaQuery(),
 ];
