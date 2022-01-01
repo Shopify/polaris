@@ -27,7 +27,7 @@ Each component includes information to help you implement them, such as:
 - Interactive examples so you can see the component in action
 - Best practices and guidelines to use the component correctly
 
-Learn more about developing apps and themes for Shopify on our [developer hub](https://developers.shopify.com/).
+Learn more about developing apps and themes for Shopify on our [developer hub](https://shopify.dev).
 
 ---
 
@@ -138,7 +138,7 @@ Here are some additional resources:
 
 ### Shopify’s developer hub
 
-Learn more about developing apps and themes for Shopify on our [developer hub](https://developers.shopify.com/).
+Learn more about developing apps and themes for Shopify on our [developer hub](https://shopify.dev).
 
 ---
 
