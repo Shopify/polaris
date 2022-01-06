@@ -9,6 +9,7 @@ const {testPages, getCurrentStoryIds} = require('@shopify/storybook-a11y-test');
     __dirname,
     '../build-internal/storybook/static/iframe.html',
   );
+
   const storyIds = await getCurrentStoryIds({
     iframePath,
     skippedStoryIds: ['playground-playground'],
