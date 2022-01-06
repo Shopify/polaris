@@ -102,7 +102,7 @@
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/react-testing": "^3.2.4",
-    "@shopify/storybook-a11y-test": "^0.3.0",
+    "@shopify/storybook-a11y-test": "0.4.0",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.0.0",
     "@size-limit/preset-small-lib": "^5.0.3",

@@ -2038,10 +2038,10 @@
     jest-matcher-utils "^26.6.2"
     react-reconciler "^0.26.2"
 
-"@shopify/storybook-a11y-test@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.3.0.tgz#4f881aff9f8e670c87931b618d4f08fbfc02d126"
-  integrity sha512-oxY+wiLe8xb8jJLUPUdTpV6bLtHToESSnhYwkzS2g+w3PmPyqDmNpLlO2HZt8GDeI8af46hxWmWebnbFplmIAw==
+"@shopify/storybook-a11y-test@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.4.0.tgz#46bb8749a13fa126ae29cab35b99c6833d7189e5"
+  integrity sha512-oKexBJuFuQAZ1w0we1735MF2dX6fJUW0K/KPejcqUhj6Ril6SUwFJIadHPDk61Gqr6bAXlLIDvUTvNIC32n28A==
   dependencies:
     chalk "^4.1.0"
     p-map "^4.0.0"
