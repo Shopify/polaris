@@ -282,7 +282,6 @@ function ModalExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         activator={activator}
         open={active}
         onClose={handleChange}
@@ -343,7 +342,6 @@ function ModalWithPrimaryActionExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         activator={activator}
         open={active}
         onClose={toggleModal}
@@ -438,7 +436,6 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         activator={activator}
         open={active}
         onClose={handleClose}
@@ -523,7 +520,6 @@ function LargeModalExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         large
         activator={activator}
         open={active}
@@ -583,7 +579,6 @@ function SmallModalExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         small
         activator={activator}
         open={active}
@@ -640,7 +635,6 @@ function ModalWithoutTitleExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         title="Reach more shoppers with Instagram product tags"
         titleHidden
         activator={activator}
@@ -691,7 +685,6 @@ function ModalWithScrollListenerExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        instant
         activator={activator}
         open={active}
         title="Scrollable content"
@@ -742,7 +735,6 @@ function ModalExample() {
     <div style={{height: '500px'}}>
       {activator}
       <Modal
-        instant
         activator={buttonRef}
         open={active}
         onClose={handleClose}
