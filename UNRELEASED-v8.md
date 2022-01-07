@@ -51,6 +51,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
+- Removed `@shopify/polaris-tokens` dependency ([#4868](https://github.com/Shopify/polaris-react/pull/4868))
+
 ### Code quality
 
 - Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
