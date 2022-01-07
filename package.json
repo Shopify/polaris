@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "7.4.1",
+  "version": "7.5.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -72,7 +72,7 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^4.10.0",
+    "@shopify/polaris-icons": "^4.11.0",
     "@shopify/polaris-tokens": "^3.0.0",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
@@ -105,7 +105,7 @@
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/react-testing": "^3.2.4",
-    "@shopify/storybook-a11y-test": "^0.0.1",
+    "@shopify/storybook-a11y-test": "^0.3.0",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.0.0",
     "@size-limit/preset-small-lib": "^5.0.3",

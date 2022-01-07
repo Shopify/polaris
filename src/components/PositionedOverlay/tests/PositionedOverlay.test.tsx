@@ -25,19 +25,25 @@ describe('<PositionedOverlay />', () => {
 
   describe('mutation observer', () => {
     let mutationObserverObserveSpy: jest.SpyInstance;
+    let mutationObserverDisconnectSpy: jest.SpyInstance;
 
     beforeEach(() => {
       mutationObserverObserveSpy = jest.spyOn(
         MutationObserver.prototype,
         'observe',
       );
+      mutationObserverDisconnectSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'disconnect',
+      );
     });
 
     afterEach(() => {
       mutationObserverObserveSpy.mockRestore();
+      mutationObserverDisconnectSpy.mockRestore();
     });
 
-    it('observers the activator', () => {
+    it('observes the activator', () => {
       const activator = document.createElement('button');
       mountWithApp(
         <PositionedOverlay
@@ -52,6 +58,21 @@ describe('<PositionedOverlay />', () => {
         childList: true,
         subtree: true,
       });
+    });
+
+    it('disconnects the observer when componentWillUnMount', () => {
+      const activator = document.createElement('button');
+      const overlay = mountWithApp(
+        <PositionedOverlay
+          {...mockProps}
+          activator={activator}
+          preferredPosition="above"
+        />,
+      );
+
+      overlay.unmount();
+
+      expect(mutationObserverDisconnectSpy).toHaveBeenCalled();
     });
   });
 

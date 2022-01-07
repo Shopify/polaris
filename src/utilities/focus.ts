@@ -9,7 +9,8 @@ const FOCUSABLE_SELECTOR =
   'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]';
 const KEYBOARD_FOCUSABLE_SELECTORS =
   'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]:not([tabindex="-1"])';
-
+const MENUITEM_FOCUSABLE_SELECTORS =
+  'a[role="menuitem"],frame[role="menuitem"],iframe[role="menuitem"],input[role="menuitem"]:not([type=hidden]):not(:disabled),select[role="menuitem"]:not(:disabled),textarea[role="menuitem"]:not(:disabled),button[role="menuitem"]:not(:disabled),*[tabindex]:not([tabindex="-1"])';
 export const handleMouseUpByBlurring: MouseUpBlurHandler = ({currentTarget}) =>
   currentTarget.blur();
 
@@ -124,6 +125,66 @@ export function focusLastKeyboardFocusableNode(
   }
 
   return false;
+}
+
+export function wrapFocusPreviousFocusableMenuItem(
+  parentElement: HTMLElement,
+  currentFocusedElement: HTMLElement,
+) {
+  const allFocusableChildren = getMenuFocusableDescendants(parentElement);
+  const currentItemIdx = getCurrentFocusedElementIndex(
+    allFocusableChildren,
+    currentFocusedElement,
+  );
+  if (currentItemIdx === -1) {
+    allFocusableChildren[0].focus();
+  } else {
+    allFocusableChildren[
+      (currentItemIdx - 1 + allFocusableChildren.length) %
+        allFocusableChildren.length
+    ].focus();
+  }
+}
+
+export function wrapFocusNextFocusableMenuItem(
+  parentElement: HTMLElement,
+  currentFocusedElement: HTMLElement,
+) {
+  const allFocusableChildren = getMenuFocusableDescendants(parentElement);
+  const currentItemIdx = getCurrentFocusedElementIndex(
+    allFocusableChildren,
+    currentFocusedElement,
+  );
+  if (currentItemIdx === -1) {
+    allFocusableChildren[0].focus();
+  } else {
+    allFocusableChildren[
+      (currentItemIdx + 1) % allFocusableChildren.length
+    ].focus();
+  }
+}
+
+function getMenuFocusableDescendants(
+  element: HTMLElement,
+): NodeListOf<HTMLElement> {
+  return element.querySelectorAll(
+    MENUITEM_FOCUSABLE_SELECTORS,
+  ) as NodeListOf<HTMLElement>;
+}
+
+function getCurrentFocusedElementIndex(
+  allFocusableChildren: NodeListOf<HTMLElement>,
+  currentFocusedElement: HTMLElement,
+): number {
+  let currentItemIdx = 0;
+
+  for (const focusableChild of allFocusableChildren) {
+    if (focusableChild === currentFocusedElement) {
+      break;
+    }
+    currentItemIdx++;
+  }
+  return currentItemIdx === allFocusableChildren.length ? -1 : currentItemIdx;
 }
 
 function matches(node: HTMLElement, selector: string) {

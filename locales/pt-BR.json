@@ -49,8 +49,8 @@
       "totalRowHeading": "total"
     },
     "DatePicker": {
-      "previousMonth": "Mostrar mês anterior, {previousMonthName} de {showPreviousYear}",
-      "nextMonth": "Mostrar o próximo mês, {nextMonth} {nextYear}",
+      "previousMonth": "Exibir mês anterior, {previousMonthName} de {showPreviousYear}",
+      "nextMonth": "Exibir o próximo mês, {nextMonth} {nextYear}",
       "today": "Hoje ",
       "months": {
         "january": "Janeiro",
@@ -191,7 +191,7 @@
         "filterButtonLabel": "Filtrar",
         "selectFilterKeyPlaceholder": "Selecione um filtro...",
         "addFilterButtonLabel": "Adicionar filtro",
-        "showAllWhere": "Mostrar todo {resourceNamePlural} no qual:"
+        "showAllWhere": "Exibir todo {resourceNamePlural} no qual:"
       },
       "FilterControl": {
         "textFieldLabel": "Pesquisar {resourceNamePlural}"

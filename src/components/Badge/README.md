@@ -27,12 +27,6 @@ Badges are used to inform merchants of the status of an object or of an action t
 
 ---
 
-## Deprecation rationale
-
-- As of v7.4.0, the `attention` `status` is deprecated. Use `warning` status instead. Support for the `attention` `status` will be removed in v8.0.0. The new design language that shipped in v6.0.0 replaced the 12 color spectrum with a [semantic color system](https://polaris.shopify.com/design/colors#section-color-roles). Since there is no attention color role in the semantic color system, `attention` `status` now uses warning color role tokens and is redundant to the `warning` status.
-
----
-
 ## Best practices
 
 Badges benefit merchants by:
@@ -158,7 +152,7 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 
 ```jsx
-<Badge status="attention">Unfulfilled</Badge>
+<Badge status="attention">Inactive</Badge>
 ```
 
 <!-- content-for: android -->
@@ -180,7 +174,7 @@ Use for critical and time-sensitive issues that require merchants’ attention a
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
-<Badge status="warning">SSL unavailable</Badge>
+<Badge status="warning">Expired</Badge>
 ```
 
 <!-- content-for: android -->
@@ -202,7 +196,7 @@ Use for critical and irreversible issues that require merchants’ attention and
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
-<Badge status="critical">Not approved</Badge>
+<Badge status="critical">Action required</Badge>
 ```
 
 <!-- content-for: android -->
@@ -222,7 +216,9 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
 
 ```jsx
-<Badge progress="incomplete">Unfulfilled</Badge>
+<Badge progress="incomplete" status="warning">
+  Unfulfilled
+</Badge>
 ```
 
 <!-- content-for: android -->
@@ -242,7 +238,9 @@ Use to indicate when a given task has not yet been completed. For example, when 
 Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
 
 ```jsx
-<Badge progress="partiallyComplete">Partially fulfilled</Badge>
+<Badge progress="partiallyComplete" status="attention">
+  Partially fulfilled
+</Badge>
 ```
 
 <!-- content-for: android -->

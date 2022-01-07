@@ -102,12 +102,6 @@ export function Badge({
       break;
     case STATUS_LABELS.attention:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'Deprecation: The `attention` `status` on Badge is deprecated and will be removed in the next major version. Use the `warning` `status` instead.',
-        );
-      }
       break;
     case STATUS_LABELS.new:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
