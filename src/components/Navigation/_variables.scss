@@ -1,13 +1,13 @@
 $item-font-size: rem(16px);
 $item-font-size-small: rem(14px);
-$item-line-height-small: rem(32px);
+$item-line-height-small: rem(28px);
 $item-line-height-large: rem(36px);
 $text-line-height: rem(20px);
 $nav-variables: (
   mobile-spacing: rem(10px),
-  desktop-spacing: rem(6px),
+  desktop-spacing: rem(4px),
   mobile-height: rem(40px),
-  desktop-height: rem(32px),
+  desktop-height: rem(28px),
   icon-size: rem(20px),
   item-line-height: rem(40px),
 );
@@ -65,12 +65,29 @@ $nav-animation-variables: (
 
   @include breakpoint-after(nav-min-window-corrected()) {
     font-size: $item-font-size;
-    font-weight: 600;
+    font-weight: 500;
     line-height: $item-line-height-small;
+    padding-left: rem(14px);
   }
 
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  svg,
+  img {
+    display: block;
+    height: rem(20px);
+    width: rem(20px);
+  }
+
+  .Icon-resized {
+    svg,
+    img {
+      margin: rem(2px);
+      height: rem(16px);
+      width: rem(16px);
+    }
   }
 }
 
@@ -93,11 +110,11 @@ $nav-animation-variables: (
   width: nav(icon-size);
   height: nav(icon-size);
   margin-top: nav(mobile-spacing);
-  margin-right: spacing();
+  margin-right: spacing(base-tight);
   margin-bottom: nav(mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
-    margin-right: spacing();
+    margin-right: nav(desktop-spacing);
     margin-bottom: nav(desktop-spacing);
   }
 

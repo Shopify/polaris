@@ -55,7 +55,7 @@ $nav-max-width: rem(360px);
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: rem(12px);
+    padding-top: rem(16px);
   }
 }
 
@@ -93,10 +93,9 @@ $disabled-fade: 0.6;
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: rem(1px);
+    bottom: rem(1px);
     left: -1 * spacing(tight);
-    height: 100%;
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
     border-top-right-radius: var(--p-border-radius-base);
@@ -122,6 +121,10 @@ $disabled-fade: 0.6;
     @include no-focus-ring;
     color: var(--p-text-primary);
     background-color: var(--p-background-pressed);
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    font-weight: 500;
   }
 }
 
@@ -282,7 +285,8 @@ $secondary-item-font-size: rem(15px);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
-      line-height: rem(28px);
+      line-height: rem(16px);
+      padding-left: nav(icon-size) + spacing(base-tight);
     }
   }
 
@@ -290,6 +294,10 @@ $secondary-item-font-size: rem(15px);
     margin-top: rem(6px);
     margin-bottom: rem(6px);
     line-height: rem(20px);
+
+    @include breakpoint-after(nav-min-window-corrected()) {
+      line-height: rem(16px);
+    }
   }
 
   .Item-selected {
@@ -329,8 +337,12 @@ $secondary-item-font-size: rem(15px);
   @include safe-area-for(padding-left, 0, left);
 
   + .Section {
-    padding-top: spacing(extra-tight);
     padding-bottom: spacing();
+    padding-top: spacing('tight');
+  }
+
+  + .Section-withSeparator {
+    padding-top: spacing('extra-tight');
   }
 }
 
@@ -344,10 +356,15 @@ $secondary-item-font-size: rem(15px);
 
 .SectionHeading {
   @include text-style-subheading;
+  text-transform: none; // Adding this intentionally to override the default subheading styling.
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    padding-left: spacing(loose);
+  }
 
   .Text {
     font-size: font-size(subheading);
@@ -370,6 +387,14 @@ $secondary-item-font-size: rem(15px);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
+
+      // stylelint-disable selector-max-combinators
+      svg,
+      img {
+        height: rem(16px);
+        width: rem(16px);
+        margin: rem(2px);
+      }
     }
 
     @include focus-ring;
