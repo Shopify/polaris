@@ -9,6 +9,13 @@
   dependencies:
     tslib "~2.0.1"
 
+"@axe-core/puppeteer@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.3.2.tgz#196748648ce1c5bcf537395441f4ae3b8d9190e9"
+  integrity sha512-/0Od30pNxUr00cO20pndz2n/b5DyYrkAKBBXlpTAbAMPuLtz6JnavR9A1oQMDyBeoQDNbKr7B97FRYSNPPgI9Q==
+  dependencies:
+    axe-core "^4.3.3"
+
 "@babel/code-frame@7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
@@ -2038,11 +2045,12 @@
     jest-matcher-utils "^26.6.2"
     react-reconciler "^0.26.2"
 
-"@shopify/storybook-a11y-test@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.4.0.tgz#46bb8749a13fa126ae29cab35b99c6833d7189e5"
-  integrity sha512-oKexBJuFuQAZ1w0we1735MF2dX6fJUW0K/KPejcqUhj6Ril6SUwFJIadHPDk61Gqr6bAXlLIDvUTvNIC32n28A==
+"@shopify/storybook-a11y-test@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.4.1.tgz#99fa217d0d38b8cf84314187a24ebd687c8bd907"
+  integrity sha512-LZcopRSALg64omO1hoIUhUsXDXCIAACyDbw5vxsFe2/hBQVb7VMRKx39W7wp5w1YVNVGmipbXmVXh1YDatWjRQ==
   dependencies:
+    "@axe-core/puppeteer" "^4.3.2"
     chalk "^4.1.0"
     p-map "^4.0.0"
     puppeteer "^10.4.0"
@@ -4245,7 +4253,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
-axe-core@^4.2.0, axe-core@^4.3.5:
+axe-core@^4.2.0, axe-core@^4.3.3, axe-core@^4.3.5:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
