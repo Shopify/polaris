@@ -16,9 +16,12 @@ const iframePath = path.join(
   });
 
   const results = await testPages({iframePath, storyIds});
+  const failures = results.length;
 
-  if (results.length) {
-    console.error(`‼️ ${results.length} failures found`);
+  if (failures) {
+    console.error(
+      `🔴 ${failures} ${failures === 1 ? 'failure' : 'failures'} found`,
+    );
     console.log(results.join('\n'));
     process.exit(1);
   } else {
