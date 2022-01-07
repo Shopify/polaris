@@ -103,6 +103,7 @@ export class PositionedOverlay extends PureComponent<
   }
 
   componentWillUnmount() {
+    this.observer.disconnect();
     if (this.scrollableContainer && !this.props.fixed) {
       this.scrollableContainer.removeEventListener(
         'scroll',
@@ -202,6 +203,7 @@ export class PositionedOverlay extends PureComponent<
         if (this.overlay == null || this.scrollableContainer == null) {
           return;
         }
+
         const {
           activator,
           preferredPosition = 'below',
