@@ -2045,10 +2045,10 @@
     jest-matcher-utils "^26.6.2"
     react-reconciler "^0.26.2"
 
-"@shopify/storybook-a11y-test@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.4.1.tgz#99fa217d0d38b8cf84314187a24ebd687c8bd907"
-  integrity sha512-LZcopRSALg64omO1hoIUhUsXDXCIAACyDbw5vxsFe2/hBQVb7VMRKx39W7wp5w1YVNVGmipbXmVXh1YDatWjRQ==
+"@shopify/storybook-a11y-test@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@shopify/storybook-a11y-test/-/storybook-a11y-test-0.4.3.tgz#65ec5ba6e1d9fc756d75cbcbe1893aaf92c954f8"
+  integrity sha512-XjH9ZOQvlvvYK3YlnVcXlJFGFFn6+1UzdxZYhZxqB8aBQ9XvWdG0EpOVSMen69F1o99BR3gEXzPp+NnFF50p0Q==
   dependencies:
     "@axe-core/puppeteer" "^4.3.2"
     chalk "^4.1.0"

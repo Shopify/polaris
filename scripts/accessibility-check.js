@@ -30,6 +30,6 @@ const iframePath = path.join(
     console.log(results.join('\n'));
     process.exit(1);
   } else {
-    console.log('🧚  Accessibility tests passed');
+    console.log('🟢 Accessibility tests passed');
   }
 })();
