@@ -222,7 +222,7 @@ export interface ActionListSection {
   /** Section title */
   title?: string;
   /** Collection of action items for the list */
-  items: readonly ActionListItemDescriptor[];
+  items: ActionListItemDescriptor[];
 }
 
 export interface NotificationListItemDescriptor
