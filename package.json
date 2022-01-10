@@ -47,6 +47,7 @@
     "lint": "loom lint",
     "format": "loom lint --fix",
     "type-check": "loom type-check",
+    "a11y-check": "node ./scripts/accessibility-check.js",
     "test": "loom test",
     "check": "npm-run-all lint type-check test",
     "clean": "rimraf build build-internal \"./src/styles/polaris-tokens\"",

@@ -15,7 +15,12 @@ const iframePath = path.join(
     skippedStoryIds: ['playground-playground'],
   });
 
-  const results = await testPages({iframePath, storyIds});
+  const results = await testPages({
+    iframePath,
+    storyIds,
+    disableAnimation: true,
+  });
+
   const failures = results.length;
 
   if (failures) {
