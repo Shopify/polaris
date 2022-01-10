@@ -5,7 +5,7 @@ module.exports = {
       {
         typescript: true,
         react: true,
-        reactOptions: {runtime: 'automatic', useBuiltIns: true},
+        reactOptions: {runtime: 'automatic'},
       },
     ],
   ],
