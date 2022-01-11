@@ -34,8 +34,8 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   padding: rem(4px) rem(6px);
   margin: 0;
   text-decoration: none;
+  color: var(--p-interactive-hovered);
   background: var(--p-surface-selected-pressed);
-  color: var(--p-interactive);
   font-size: rem(12px);
   font-weight: 600;
   line-height: 1;
@@ -44,7 +44,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   appearance: none;
 
   &:hover {
-    color: var(--p-interactive-hovered);
+    color: var(--p-interactive-pressed);
   }
 
   &.disabled {
