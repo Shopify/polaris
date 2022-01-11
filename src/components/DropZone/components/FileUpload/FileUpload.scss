@@ -30,8 +30,8 @@
   padding: var(--p-space-1) 6px;
   margin: 0;
   text-decoration: none;
+  color: var(--p-interactive-hovered);
   background: var(--p-surface-selected-pressed);
-  color: var(--p-interactive);
   font-size: 12px;
   font-weight: 600;
   line-height: 1;
@@ -40,7 +40,7 @@
   appearance: none;
 
   &:hover {
-    color: var(--p-interactive-hovered);
+    color: var(--p-interactive-pressed);
   }
 
   &.disabled {
