@@ -45,3 +45,5 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Changed `TextContainer.scss` custom properties to use `--pc-` prefix ([#4799](https://github.com/Shopify/polaris-react/pull/4799))
 
 ### Deprecations
+
+- Temporary change...
