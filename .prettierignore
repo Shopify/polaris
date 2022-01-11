@@ -5,7 +5,3 @@ node_modules
 /src/styles/polaris-tokens
 
 /package.json
-
-index.esnext
-index.js
-index.mjs
