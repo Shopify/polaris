@@ -33,7 +33,9 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
-Bump polaris-icons to v4.11.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
+- Bumped `@shopify/polaris-icons` to v4.11.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
+- Bumped `@storybook/react` to 6.4.10 ([#4796](https://github.com/Shopify/polaris-react/pull/4796))
+- Bumped `@shopify/storybook-a11y-test` to 0.4.3 ([#4796](https://github.com/Shopify/polaris-react/pull/4796))
 
 ### Code quality
 
