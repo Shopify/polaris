@@ -11,6 +11,10 @@ $code-font-size: 1.15em;
   color: var(--p-text-critical);
 }
 
+.variationWarning {
+  color: var(--p-text-warning);
+}
+
 .variationCode {
   position: relative;
   padding: $code-padding;

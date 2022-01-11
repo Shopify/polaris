@@ -33,6 +33,13 @@ describe('<TextStyle />', () => {
     expect(textStyle).toContainReactComponent('span');
   });
 
+  it('renders a span when the variant warning is provided', () => {
+    const textStyle = mountWithApp(
+      <TextStyle variation="warning">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle).toContainReactComponent('span');
+  });
+
   it('renders a span when the variant subdued is provided', () => {
     const textStyle = mountWithApp(
       <TextStyle variation="subdued">Hello Polaris</TextStyle>,
