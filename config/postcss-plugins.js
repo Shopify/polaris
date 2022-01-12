@@ -7,5 +7,6 @@ module.exports = [
     rootValue: 16,
     replace: true,
     propList: ['*'],
+    minPixelValue: 4,
   }),
 ];
