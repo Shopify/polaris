@@ -14,6 +14,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added suppport for a `url` prop in the `Tag` component ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
 - Added support for `children` to take elements other than strings in the `Tag` component ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
 - Bumped the `@shopify/storybook-a11y-test` package to the latest version `0.3.0` ([#4870](https://github.com/Shopify/polaris-react/pull/4870))
+- Added a `warning` variation to `TextStyle` ([#4880](https://github.com/Shopify/polaris-react/pull/4880))
 
 ### Bug fixes
 
