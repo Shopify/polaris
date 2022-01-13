@@ -23,7 +23,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Reverted the deprecation of the "attention" `status` in `Badge` ([#4840](https://github.com/Shopify/polaris-react/pull/4840))
 - Fixed an issue where the `MutationObserver` of the `PositionedOverlay` was calling setState on an unmounted component ([#4869](https://github.com/Shopify/polaris-react/pull/4869));
 - Fixed a color contrast issue in `FileUpload` ([#4875](https://github.com/Shopify/polaris-react/pull/4875))
-- Moved dependency `serve` back to dev dependencies ([#4876](https://github.com/Shopify/polaris-react/pull/4876))
 - Fixed a bug where a checkbox showed on an `Autocomplete` action when `allowMultiple` is true ([#4886](https://github.com/Shopify/polaris-react/pull/4886))
 
 ### Documentation
@@ -34,11 +33,14 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Development workflow
 
+- Removed `dev start` command ([#4876](https://github.com/Shopify/polaris-react/pull/4876))
+
 ### Dependency upgrades
 
 - Bumped `@shopify/polaris-icons` to v4.11.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
 - Bumped `@storybook/react` to 6.4.10 ([#4796](https://github.com/Shopify/polaris-react/pull/4796))
 - Bumped `@shopify/storybook-a11y-test` to 0.4.3 ([#4796](https://github.com/Shopify/polaris-react/pull/4796))
+- Removed dependency `serve` ([#4876](https://github.com/Shopify/polaris-react/pull/4876))
 
 ### Code quality
 
