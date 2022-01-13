@@ -124,6 +124,7 @@ export function Header({
         titleMetadata={titleMetadata}
         thumbnail={thumbnail}
         compactTitle={compactTitle}
+        isSingleRow={isSingleRow}
       />
     </div>
   );

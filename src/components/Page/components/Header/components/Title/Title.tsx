@@ -19,6 +19,8 @@ export interface TitleProps {
     | React.SFC<React.SVGProps<SVGSVGElement>>;
   /** Removes spacing between title and subtitle */
   compactTitle?: boolean;
+  /** Increases height of Title for visual consistency with Titles alongside ActionMenus */
+  isSingleRow?: boolean;
 }
 
 export function Title({
@@ -27,13 +29,18 @@ export function Title({
   titleMetadata,
   thumbnail,
   compactTitle,
+  isSingleRow,
 }: TitleProps) {
   if (process.env.NODE_ENV === 'development' && thumbnail != null) {
     // eslint-disable-next-line no-console
     console.warn('The thumbnail prop from Page has been deprecated');
   }
 
-  const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
+  const titleMarkup = title ? (
+    <h1 className={classNames(styles.Title, isSingleRow && styles.TitleTaller)}>
+      {title}
+    </h1>
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>

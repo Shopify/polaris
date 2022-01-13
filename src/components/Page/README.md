@@ -466,6 +466,26 @@ Use when the page needs visual separation between the page header and the conten
 </Page>
 ```
 
+### Very simple Page
+
+<!-- example-for: web -->
+
+Use when the page needs visual separation between the page header and the content.
+
+```jsx
+<Page title="General">
+  <p
+    style={{
+      marginTop: '0.8rem',
+      borderTop: '0.1rem solid var(--p-divider)',
+      paddingTop: '1.6rem',
+    }}
+  >
+    Page content
+  </p>
+</Page>
+```
+
 ---
 
 ## Related components

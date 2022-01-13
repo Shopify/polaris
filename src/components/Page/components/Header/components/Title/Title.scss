@@ -11,6 +11,10 @@
   }
 }
 
+.TitleTaller {
+  padding: spacing('extra-tight') 0;
+}
+
 .SubTitle {
   margin-top: spacing(tight);
   color: var(--p-text-subdued);
