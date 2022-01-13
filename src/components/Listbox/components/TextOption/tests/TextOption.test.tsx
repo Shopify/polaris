@@ -4,6 +4,7 @@ import {mount, mountWithApp} from 'tests/utilities';
 import {TextOption} from '../TextOption';
 import {Checkbox} from '../../../../Checkbox';
 import {ComboboxListboxOptionContext} from '../../../../../utilities/combobox/context';
+import {MappedActionContext} from '../../../../../utilities/autocomplete/context';
 
 describe('TextOption', () => {
   it('renders children', () => {
@@ -34,11 +35,20 @@ describe('TextOption', () => {
       <ComboboxListboxOptionContext.Provider value={{allowMultiple: true}}>
         <TextOption>child</TextOption>
       </ComboboxListboxOptionContext.Provider>,
-      {
-        features: {newDesignLanguage: true},
-      },
     );
 
     expect(textOption).toContainReactComponent(Checkbox);
+  });
+
+  it('does not render visual checkbox when allowMultiple is provided and isAction is true', () => {
+    const textOption = mountWithApp(
+      <ComboboxListboxOptionContext.Provider value={{allowMultiple: true}}>
+        <MappedActionContext.Provider value={{isAction: true}}>
+          <TextOption>child</TextOption>
+        </MappedActionContext.Provider>
+      </ComboboxListboxOptionContext.Provider>,
+    );
+
+    expect(textOption).not.toContainReactComponent(Checkbox);
   });
 });

@@ -32,7 +32,7 @@ export const TextOption = memo(function TextOption({
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>
-        {allowMultiple ? (
+        {allowMultiple && !isAction ? (
           <Checkbox checked={selected} label={children} />
         ) : (
           children

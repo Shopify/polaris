@@ -28,6 +28,7 @@ export default createPackage((pkg) => {
   pkg.entry({root: './src/index.ts'});
   pkg.use(
     buildLibrary({
+      rootEntrypoints: false,
       jestTestEnvironment: 'jsdom',
       targets: 'extends @shopify/browserslist-config, node 12.20',
       commonjs: true,
