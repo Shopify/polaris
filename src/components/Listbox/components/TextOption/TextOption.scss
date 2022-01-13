@@ -15,8 +15,8 @@
   }
 
   &.isAction {
-    padding: 0;
     margin-top: 0;
+    padding: spacing(tight) spacing(tight);
   }
 
   &:hover {
@@ -54,6 +54,10 @@
     border-bottom-right-radius: var(--p-border-radius-base);
     transform: translateX(-100%);
   }
+}
+
+li:first-of-type > .TextOption {
+  margin-top: 0;
 }
 
 [data-focused] .TextOption {

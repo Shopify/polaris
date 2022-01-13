@@ -3,7 +3,7 @@ import React, {memo, useContext} from 'react';
 import {Checkbox} from '../../../Checkbox';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
-import {MappedActionContext} from '../../../../utilities/autocomplete';
+import {ActionContext} from '../../../../utilities/listbox/context';
 
 import styles from './TextOption.scss';
 
@@ -21,7 +21,8 @@ export const TextOption = memo(function TextOption({
   disabled,
 }: TextOptionProps) {
   const {allowMultiple} = useContext(ComboboxListboxOptionContext);
-  const {isAction} = useContext(MappedActionContext);
+  const isAction = useContext(ActionContext);
+
   const textOptionClassName = classNames(
     styles.TextOption,
     selected && !allowMultiple && styles.selected,
@@ -29,6 +30,7 @@ export const TextOption = memo(function TextOption({
     allowMultiple && styles.allowMultiple,
     isAction && styles.isAction,
   );
+
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>
