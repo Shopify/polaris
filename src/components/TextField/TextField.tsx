@@ -125,7 +125,10 @@ interface NonMutuallyExclusiveProps {
   /** Determines the alignment of the text in the input */
   align?: Alignment;
   /** Callback when clear button is clicked */
-  onClearButtonClick?(id: string): void;
+  onClearButtonClick?(
+    id: string,
+    event: React.MouseEvent | React.TouchEvent,
+  ): void;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -478,8 +481,8 @@ export function TextField({
     </Labelled>
   );
 
-  function handleClearButtonPress() {
-    onClearButtonClick && onClearButtonClick(id);
+  function handleClearButtonPress(event: React.MouseEvent | React.TouchEvent) {
+    onClearButtonClick && onClearButtonClick(id, event);
   }
 
   function handleKeyPress(event: React.KeyboardEvent) {
