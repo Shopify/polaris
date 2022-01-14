@@ -73,3 +73,7 @@ li:first-of-type > .TextOption {
   flex: 1 1 auto;
   display: flex;
 }
+
+.Checkbox {
+  pointer-events: none;
+}
