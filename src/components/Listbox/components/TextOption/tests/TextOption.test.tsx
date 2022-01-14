@@ -2,9 +2,9 @@ import React from 'react';
 import {mount, mountWithApp} from 'tests/utilities';
 
 import {TextOption} from '../TextOption';
+import {Listbox} from '../../..';
 import {Checkbox} from '../../../../Checkbox';
 import {ComboboxListboxOptionContext} from '../../../../../utilities/combobox/context';
-import {MappedActionContext} from '../../../../../utilities/autocomplete/context';
 
 describe('TextOption', () => {
   it('renders children', () => {
@@ -40,12 +40,24 @@ describe('TextOption', () => {
     expect(textOption).toContainReactComponent(Checkbox);
   });
 
-  it('does not render visual checkbox when allowMultiple is provided and isAction is true', () => {
+  it('does not render visual checkbox when allowMultiple is false', () => {
+    const textOption = mountWithApp(
+      <ComboboxListboxOptionContext.Provider value={{allowMultiple: false}}>
+        <TextOption>child</TextOption>
+      </ComboboxListboxOptionContext.Provider>,
+    );
+
+    expect(textOption).not.toContainReactComponent(Checkbox);
+  });
+
+  it('does not render visual checkbox wrapped in a ListBox.Action', () => {
     const textOption = mountWithApp(
       <ComboboxListboxOptionContext.Provider value={{allowMultiple: true}}>
-        <MappedActionContext.Provider value={{isAction: true}}>
-          <TextOption>child</TextOption>
-        </MappedActionContext.Provider>
+        <Listbox accessibilityLabel="Listbox with Action example">
+          <Listbox.Action value="action">
+            <TextOption>child</TextOption>
+          </Listbox.Action>
+        </Listbox>
       </ComboboxListboxOptionContext.Provider>,
     );
 
