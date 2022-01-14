@@ -58,6 +58,8 @@ export interface ItemProps extends ItemURLDetails {
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
+  onToggleExpandedState?(): void;
+  expanded?: boolean;
   shouldResizeIcon?: boolean;
 }
 
@@ -86,20 +88,21 @@ export function Item({
   matchPaths,
   excludePaths,
   external,
+  onToggleExpandedState,
+  expanded,
   shouldResizeIcon,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
-  const [expanded, setExpanded] = useState(false);
   const [keyFocused, setKeyFocused] = useState(false);
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
-      setExpanded(false);
+      onToggleExpandedState?.();
     }
-  }, [expanded, isNavigationCollapsed]);
+  }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
 
   const handleKeyUp = useCallback(
     (event) => {
@@ -254,6 +257,7 @@ export function Item({
     disabled && styles['Item-disabled'],
     selected && subNavigationItems.length === 0 && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
+    childIsActive && styles['Item-child-active'],
     keyFocused && styles.keyFocused,
   );
 
@@ -347,7 +351,7 @@ export function Item({
         isNavigationCollapsed
       ) {
         event.preventDefault();
-        setExpanded(!expanded);
+        onToggleExpandedState?.();
       } else if (onNavigationDismiss) {
         onNavigationDismiss();
         if (onClick && onClick !== onNavigationDismiss) {

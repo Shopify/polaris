@@ -220,10 +220,128 @@ Use to present a secondary action, related to a section and to title the section
         selected: true,
         subNavigationItems: [
           {
-            url: '/admin/products',
+            url: '/admin/products/collections',
             disabled: false,
             selected: true,
-            label: 'All products',
+            label: 'Collections',
+          },
+          {
+            url: '/admin/products/inventory',
+            disabled: false,
+            label: 'Inventory',
+          },
+        ],
+      },
+    ]}
+  />
+</Navigation>
+```
+
+### Navigation with multiple secondary navigations
+
+Use to present a secondary action, related to a section and to title the section.
+
+```jsx
+<Navigation location="/">
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: HomeMajor,
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: OrdersMajor,
+        badge: '15',
+        subNavigationItems: [
+          {
+            url: '/admin/orders/collections',
+            disabled: false,
+            selected: false,
+            label: 'Collections',
+          },
+          {
+            url: '/admin/orders/inventory',
+            disabled: false,
+            label: 'Inventory',
+          },
+        ],
+      },
+      {
+        url: '/path/to/place',
+        label: 'Marketing',
+        icon: MarketingMajor,
+        badge: '15',
+        subNavigationItems: [
+          {
+            url: '/admin/analytics/collections',
+            disabled: false,
+            selected: false,
+            label: 'Reports',
+          },
+          {
+            url: '/admin/analytics/inventory',
+            disabled: false,
+            label: 'Live view',
+          },
+        ],
+      },
+      {
+        url: '/admin/products',
+        label: 'Products',
+        icon: ProductsMajor,
+        selected: true,
+        subNavigationItems: [
+          {
+            url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+            disabled: false,
+            selected: true,
+            label: 'Collections',
+          },
+          {
+            url: '/admin/products/inventory',
+            disabled: false,
+            label: 'Inventory',
+          },
+        ],
+      },
+    ]}
+  />
+</Navigation>
+```
+
+### Navigation with an active root item with secondary navigation items
+
+Use to present a secondary action, related to a section and to title the section.
+
+```jsx
+<Navigation location="/">
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: HomeMajor,
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: OrdersMajor,
+        badge: '15',
+      },
+      {
+        url: '/admin/products',
+        label: 'Products',
+        icon: ProductsMajor,
+        selected: true,
+        subNavigationItems: [
+          {
+            url: '/admin/products/collections',
+            disabled: false,
+            selected: false,
+            label: 'Collections',
           },
           {
             url: '/admin/products/inventory',

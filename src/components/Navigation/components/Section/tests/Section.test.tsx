@@ -2,6 +2,8 @@ import React from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import {PolarisTestProvider} from '../../../../PolarisTestProvider';
+import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Collapsible} from '../../../../Collapsible';
 import {NavigationContext} from '../../../context';
 import {Item} from '../../Item';
@@ -270,6 +272,128 @@ describe('<Navigation.Section />', () => {
 
     expect(onClickSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('duplicates the root item when on a mobile viewport', () => {
+    matchMedia.setMedia(() => ({matches: true}));
+    const withSubNav = mountWithNavigationAndPolarisTestProvider(
+      <Section
+        items={[
+          {
+            label: 'some label',
+            url: '/admin',
+          },
+          {
+            label: 'other label',
+            url: '/other',
+            subNavigationItems: [
+              {
+                label: 'sub label',
+                url: '/other/sub',
+              },
+            ],
+          },
+        ]}
+      />,
+      {
+        ...context,
+      },
+      {
+        isNavigationCollapsed: true,
+      },
+    );
+    expect(withSubNav).toContainReactComponent(Item, {
+      label: 'other label',
+      subNavigationItems: [
+        {
+          label: 'other label',
+          url: '/other',
+        },
+        {label: 'sub label', url: '/other/sub'},
+      ],
+    });
+  });
+
+  it('acts as an accordion when on a mobile viewport', () => {
+    matchMedia.setMedia(() => ({matches: true}));
+    const withSubNav = mountWithNavigationAndPolarisTestProvider(
+      <Section
+        items={[
+          {
+            label: 'label a',
+            url: '/a',
+            subNavigationItems: [
+              {
+                label: 'label a sub 1',
+                url: '/a/sub-1',
+              },
+              {
+                label: 'label a sub 2',
+                url: '/a/sub-2',
+              },
+            ],
+          },
+          {
+            label: 'label b',
+            url: '/b',
+            subNavigationItems: [
+              {
+                label: 'label b sub 1',
+                url: '/b/sub-1',
+              },
+              {
+                label: 'label a sub 2',
+                url: '/b/sub-2',
+              },
+            ],
+          },
+          {
+            label: 'label c',
+            url: '/c',
+            subNavigationItems: [
+              {
+                label: 'label c sub 1',
+                url: '/c/sub-1',
+              },
+              {
+                label: 'label c sub 2',
+                url: '/c/sub-2',
+              },
+            ],
+          },
+        ]}
+      />,
+      {
+        ...context,
+      },
+      {
+        isNavigationCollapsed: true,
+      },
+    );
+    const firstItem = withSubNav.find(Item, {label: 'label a'});
+    const secondItem = withSubNav.find(Item, {label: 'label b'});
+    const thirdItem = withSubNav.find(Item, {label: 'label c'});
+
+    firstItem?.trigger('onToggleExpandedState');
+    expect(withSubNav.find(Item, {label: 'label a'})).toHaveReactProps({
+      expanded: true,
+    });
+
+    secondItem?.trigger('onToggleExpandedState');
+    expect(withSubNav.find(Item, {label: 'label a'})).toHaveReactProps({
+      expanded: false,
+    });
+    expect(withSubNav.find(Item, {label: 'label b'})).toHaveReactProps({
+      expanded: true,
+    });
+
+    thirdItem?.trigger('onToggleExpandedState');
+    expect(withSubNav.find(Item, {label: 'label b'})).toHaveReactProps({
+      expanded: false,
+    });
+    expect(withSubNav.find(Item, {label: 'label c'})).toHaveReactProps({
+      expanded: true,
+    });
+  });
 });
 
 function mountWithNavigationProvider(
@@ -279,6 +403,24 @@ function mountWithNavigationProvider(
   return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
+    </NavigationContext.Provider>,
+  );
+}
+
+function mountWithNavigationAndPolarisTestProvider(
+  node: React.ReactElement,
+  navigationContext: React.ContextType<typeof NavigationContext> = {
+    location: '',
+  },
+  mediaQueryContext: React.ContextType<typeof MediaQueryContext> = {
+    isNavigationCollapsed: false,
+  },
+) {
+  return mountWithApp(
+    <NavigationContext.Provider value={navigationContext}>
+      <PolarisTestProvider mediaQuery={mediaQueryContext}>
+        {node}
+      </PolarisTestProvider>
     </NavigationContext.Provider>,
   );
 }

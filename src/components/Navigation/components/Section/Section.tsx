@@ -1,13 +1,13 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
+import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon, IconProps} from '../../../Icon';
-import {Item, ItemProps} from '../Item';
+import {Item, ItemProps, SubNavigationItem} from '../Item';
 import styles from '../../Navigation.scss';
 
 export interface SectionProps {
@@ -43,6 +43,8 @@ export function Section({
     setFalse: setExpandedFalse,
   } = useToggle(false);
   const animationFrame = useRef<number | null>(null);
+  const {isNavigationCollapsed} = useMediaQuery();
+  const [expandedIndex, setExpandedIndex] = useState<number>();
 
   const handleClick = (
     onClick: ItemProps['onClick'],
@@ -57,7 +59,7 @@ export function Section({
         cancelAnimationFrame(animationFrame.current);
       }
 
-      if (!hasSubNavItems || !navigationBarCollapsed().matches) {
+      if (!hasSubNavItems || !isNavigationCollapsed) {
         animationFrame.current = requestAnimationFrame(setExpandedFalse);
       }
     };
@@ -93,18 +95,43 @@ export function Section({
     </li>
   );
 
-  const itemsMarkup = items.map((item) => {
-    const {onClick, label, subNavigationItems, ...rest} = item;
+  const itemsMarkup = items.map((item, index) => {
+    const {onClick, label, url, disabled, subNavigationItems, ...rest} = item;
     const hasSubNavItems =
       subNavigationItems != null && subNavigationItems.length > 0;
+    const itemAsSubNavigationItem: SubNavigationItem = {
+      onClick,
+      label,
+      url: url as string,
+      disabled,
+    };
+    const addedSubNavigationItems =
+      isNavigationCollapsed && hasSubNavItems
+        ? [
+            itemAsSubNavigationItem,
+            ...(subNavigationItems as SubNavigationItem[]),
+          ]
+        : subNavigationItems;
+
+    const handleToggleExpandedState = () => {
+      if (expandedIndex === index) {
+        setExpandedIndex(-1);
+      } else {
+        setExpandedIndex(index);
+      }
+    };
 
     return (
       <Item
         key={label}
         {...rest}
         label={label}
-        subNavigationItems={subNavigationItems}
+        url={url}
+        disabled={disabled}
+        subNavigationItems={addedSubNavigationItems}
         onClick={handleClick(onClick, hasSubNavItems)}
+        onToggleExpandedState={handleToggleExpandedState}
+        expanded={expandedIndex === index}
       />
     );
   });
