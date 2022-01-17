@@ -15,6 +15,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added support for `children` to take elements other than strings in the `Tag` component ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
 - Bumped the `@shopify/storybook-a11y-test` package to the latest version `0.3.0` ([#4870](https://github.com/Shopify/polaris-react/pull/4870))
 - Added a `warning` variation to `TextStyle` ([#4880](https://github.com/Shopify/polaris-react/pull/4880))
+- Added a class to hide the clear button in the `TextField` component instead of removing it from the DOM ([#4897](https://github.com/Shopify/polaris-react/pull/4897))
 
 ### Bug fixes
 
