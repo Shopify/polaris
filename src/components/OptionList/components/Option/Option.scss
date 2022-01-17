@@ -53,7 +53,7 @@ $control-vertical-adjustment: 2px;
 
   &:hover:not(.disabled) {
     background: var(--p-surface-hovered);
-    outline: border-width(base) solid transparent;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   // stylelint-disable-next-line selector-max-specificity
@@ -61,7 +61,7 @@ $control-vertical-adjustment: 2px;
   &.select:hover:not(.disabled),
   &:active:not(.disabled) {
     background: var(--p-surface-selected);
-    outline: border-width(base) solid transparent;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   &.disabled {

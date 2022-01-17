@@ -118,25 +118,25 @@
 
 @mixin button-outline($outline-color, $background-color: transparent) {
   background: transparent;
-  border: border-width() solid var(--p-border);
+  border: var(--p-border-width-1) solid var(--p-border);
   box-shadow: none;
   color: var(--p-text);
   @include focus-ring($border-width: border-width('base'));
 
   &:hover {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-hovered);
   }
 
   &:focus {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     @include focus-ring($style: 'focused');
   }
 
   &:active {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-pressed);
 
@@ -147,7 +147,7 @@
 
   &.pressed {
     background: var(--p-action-secondary-pressed);
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     color: var(--pc-button-text);
   }

@@ -71,14 +71,14 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
 }
 
 .Thumbs {
-  @include focus-ring($size: 'wide', $border-width: border-width());
+  @include focus-ring($size: 'wide', $border-width: var(--p-border-width-1));
   position: absolute;
   z-index: var(--pc-range-slider-input);
   padding: 0;
   width: var(--pc-range-slider-thumb-size);
   height: var(--pc-range-slider-thumb-size);
   border-radius: var(--p-border-radius-half);
-  border: border-width() solid var(--p-interactive);
+  border: var(--p-border-width-1) solid var(--p-interactive);
   background: linear-gradient(var(--p-interactive), var(--p-interactive));
   -webkit-tap-highlight-color: transparent;
 

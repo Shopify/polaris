@@ -95,7 +95,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  border: border-width() solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
   border-radius: var(--p-border-radius-1);
   background-color: var(--p-surface);

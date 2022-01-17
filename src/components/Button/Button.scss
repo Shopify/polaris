@@ -481,7 +481,7 @@
 
 .ConnectedDisclosure {
   z-index: var(--pc-button-segment);
-  margin-left: -(border-width());
+  margin-left: calc(-1 * var(--p-border-width-1));
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   height: 100%;
