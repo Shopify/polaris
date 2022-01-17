@@ -1336,7 +1336,7 @@ describe('<TextField />', () => {
 
       textField.find('button', {className: 'ClearButton'})!.trigger('onClick');
 
-      expect(spy).toHaveBeenCalledWith('MyTextField', undefined);
+      expect(spy).toHaveBeenCalledWith('MyTextField');
     });
 
     it('does not render a clear button by default', () => {

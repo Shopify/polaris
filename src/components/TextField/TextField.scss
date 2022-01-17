@@ -232,6 +232,10 @@ $stacking-order: (
   }
 }
 
+.Hidden {
+  visibility: hidden;
+}
+
 .Spinner {
   --p-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + #{border-width()}

@@ -125,10 +125,7 @@ interface NonMutuallyExclusiveProps {
   /** Determines the alignment of the text in the input */
   align?: Alignment;
   /** Callback when clear button is clicked */
-  onClearButtonClick?(
-    id: string,
-    event: React.MouseEvent | React.TouchEvent,
-  ): void;
+  onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -281,20 +278,22 @@ export function TextField({
 
   const clearButtonVisible = normalizedValue !== '';
 
-  const clearButtonMarkup =
-    clearButtonVisible && clearButton ? (
-      <button
-        type="button"
-        className={styles.ClearButton}
-        onClick={handleClearButtonPress}
-        disabled={disabled}
-      >
-        <VisuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </VisuallyHidden>
-        <Icon source={CircleCancelMinor} color="base" />
-      </button>
-    ) : null;
+  const clearButtonClassNames = classNames(
+    styles.ClearButton,
+    !clearButtonVisible && styles.Hidden,
+  );
+
+  const clearButtonMarkup = clearButton ? (
+    <button
+      type="button"
+      className={clearButtonClassNames}
+      onClick={handleClearButtonPress}
+      disabled={disabled}
+    >
+      <VisuallyHidden>{i18n.translate('Polaris.Common.clear')}</VisuallyHidden>
+      <Icon source={CircleCancelMinor} color="base" />
+    </button>
+  ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -481,8 +480,8 @@ export function TextField({
     </Labelled>
   );
 
-  function handleClearButtonPress(event: React.MouseEvent | React.TouchEvent) {
-    onClearButtonClick && onClearButtonClick(id, event);
+  function handleClearButtonPress() {
+    onClearButtonClick && onClearButtonClick(id);
   }
 
   function handleKeyPress(event: React.KeyboardEvent) {
