@@ -3,7 +3,7 @@
 $item-min-height: 16px;
 $item-min-width: 50px;
 $item-vertical-padding: $item-min-height / 2;
-$underline-height: border-width(thicker);
+$underline-height: var(--p-border-width-3);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tabs {
@@ -104,7 +104,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   @include text-emphasis-normal;
 
   &:focus .Title {
-    @include high-contrast-outline($border-width: border-width(thicker));
+    @include high-contrast-outline($border-width: var(--p-border-width-3));
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -112,7 +112,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Title {
-    @include high-contrast-outline($border-width: border-width(thicker));
+    @include high-contrast-outline($border-width: var(--p-border-width-3));
     color: var(--p-text);
 
     &::before {
