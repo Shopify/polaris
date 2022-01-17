@@ -39,6 +39,7 @@ const mockTokens: Tokens = {
   motion: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
   depth: {},
+  borderWidth: {},
   fontSize: {},
   legacyTokens: {},
   lineHeight: {},

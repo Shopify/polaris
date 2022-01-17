@@ -1,5 +1,6 @@
 import depth from './token-groups/depth.json';
 import legacyTokens from './token-groups/legacy-tokens.json';
+import borderWidth from './token-groups/border.json';
 import darkColorScheme from './token-groups/color.dark.json';
 import fontSize from './token-groups/font-size.json';
 import lightColorScheme from './token-groups/color.light.json';
@@ -50,6 +51,7 @@ const colorSchemes: ColorSchemes = {
 
 export interface Tokens {
   depth: TokenGroup;
+  borderWidth: TokenGroup;
   colorSchemes: ColorSchemes;
   fontSize: TokenGroup;
   legacyTokens: TokenGroup;
@@ -63,6 +65,7 @@ export interface Tokens {
 
 export const tokens: Tokens = {
   colorSchemes,
+  borderWidth: tokensToRems(borderWidth),
   depth,
   fontSize: tokensToRems(fontSize),
   legacyTokens: tokensToRems(legacyTokens),
