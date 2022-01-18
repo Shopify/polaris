@@ -274,12 +274,6 @@ export type {ResourceItemProps} from './components/ResourceItem';
 export {ResourceList} from './components/ResourceList';
 export type {ResourceListProps} from './components/ResourceList';
 
-// We want to delete this component, but there's one place in web
-// that still relies on it so we have to keep it.
-// We don't want anyone else using it though, use the Filters component instead
-export {FilterControl as _SECRET_INTERNAL_FilterControl} from './components/ResourceList';
-export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './components/ResourceList';
-
 export {Scrollable} from './components/Scrollable';
 export type {ScrollableProps} from './components/Scrollable';
 
