@@ -9,6 +9,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Enhancements
 
 - Tightened up the Navigation component UI density. ([#4874](https://github.com/Shopify/polaris-react/pull/4874))
+- Updated the Navigation IA ([#4902](https://github.com/Shopify/polaris-react/pull/4902))
 
 ### Bug fixes
 
