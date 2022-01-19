@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "Meer acties",
         "warningMessage": "Voor een betere gebruikerservaring. Er een maximum van {maxPromotedActions} gepromote acties."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Selecteer een filter...",
-        "addFilterButtonLabel": "Filter toevoegen",
-        "showAllWhere": "Toon alle {resourceNamePlural} waar:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural} zoeken"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Selecteer een filter..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Selecteer een waarde",
-        "dateValueLabel": "Datum",
-        "dateValueError": "Overeenkomen met indelen YYYY-MM-DD",
-        "dateValuePlaceholder": "JJJJ-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "in de afgelopen week",
-          "PastMonth": "in de afgelopen maand",
-          "PastQuarter": "in de afgelopen 3 maanden",
-          "PastYear": "in het afgelopen jaar",
-          "ComingWeek": "volgende week",
-          "ComingMonth": "volgende maand",
-          "ComingQuarter": "in de komende 3 maanden",
-          "ComingYear": "in het komend jaar",
-          "OnOrBefore": "op of voor",
-          "OnOrAfter": "op of na"
-        },
-        "FilterLabelForValue": {
-          "past_week": "in de afgelopen week",
-          "past_month": "in de afgelopen maand",
-          "past_quarter": "in de afgelopen 3 maanden",
-          "past_year": "in het afgelopen jaar",
-          "coming_week": "volgende week",
-          "coming_month": "volgende maand",
-          "coming_quarter": "in de komende 3 maanden",
-          "coming_year": "in het komend jaar",
-          "on_or_before": "vóór {date}",
-          "on_or_after": "na {date}"
-        }
-      },
       "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
       "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."

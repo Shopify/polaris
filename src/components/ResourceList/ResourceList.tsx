@@ -736,6 +736,3 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
 };
 
 ResourceList.Item = ResourceItem;
-
-export {FilterControl} from './components';
-export type {FilterControlProps} from './components';
