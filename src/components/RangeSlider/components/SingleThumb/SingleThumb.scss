@@ -109,13 +109,15 @@
 
   &::-ms-thumb {
     margin-top: 0;
-    transform: translateY(var(--pc-range-slider-thumb-size) * 0.2) scale(0.4);
+    transform: translateY(calc(var(--pc-range-slider-thumb-size) * 0.2))
+      scale(0.4);
   }
 
   &::-webkit-slider-thumb {
-    margin-top: -(
-        var(--pc-range-slider-thumb-size) - var(--pc-range-slider-track-height)
-      ) * 0.5;
+    margin-top: calc(
+      (var(--pc-range-slider-thumb-size) - var(--pc-range-slider-track-height)) *
+        -0.5
+    );
   }
 
   &:active {
