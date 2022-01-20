@@ -12,6 +12,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added new `duplicateRootItem` prop to a Navigation Section to support new mobile Navigation IA ([#4902](https://github.com/Shopify/polaris-react/pull/4902))
 - Updated mobile behaviour of Navigation to only show one sub-section at a time ([#4902](https://github.com/Shopify/polaris-react/pull/4902))
 - Remove the info icon and external link guidance from FooterHelp ([#4982](https://github.com/Shopify/polaris-react/pull/4982))
+- Normalise spacing around the `Header` within the `Page` ([#4911](https://github.com/Shopify/polaris-react/pull/4911))
 
 ### Bug fixes
 

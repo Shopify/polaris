@@ -37,7 +37,7 @@ export function Page({
     (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
 
   const contentClassName = classNames(
-    styles.Content,
+    !hasHeaderContent && styles.ContentSpaced,
     divider && hasHeaderContent && styles.divider,
   );
 

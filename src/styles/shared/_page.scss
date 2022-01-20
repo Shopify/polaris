@@ -26,7 +26,7 @@ $actions-vertical-spacing: spacing(tight);
   margin: spacing(tight) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: spacing(tight);
+    margin-top: spacing(loose);
   }
 }
 
@@ -46,7 +46,7 @@ $actions-vertical-spacing: spacing(tight);
 }
 
 @mixin page-header-layout {
-  padding: spacing() spacing() 0;
+  padding: spacing();
 
   @include page-content-when-not-fully-condensed {
     padding-left: 0;
@@ -54,7 +54,7 @@ $actions-vertical-spacing: spacing(tight);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding-top: spacing();
+    padding: spacing(loose) 0;
   }
 }
 

@@ -246,6 +246,9 @@ $action-menu-rollup-computed-width: rem(40px);
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: spacing(extra-tight);
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      margin-bottom: 0;
+    }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {

@@ -271,10 +271,10 @@ describe('<Page />', () => {
     it('does not render border when divider is true and no header props exist', () => {
       const wrapper = mountWithApp(<Page divider />);
       expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content divider',
+        className: 'Content ContentSpaced divider',
       });
       expect(wrapper).toContainReactComponent('div', {
-        className: 'Content',
+        className: 'Content ContentSpaced',
       });
     });
 

@@ -32,11 +32,11 @@ body {
   max-width: layout-width(primary, max);
 }
 
-.Content {
+.ContentSpaced {
   @include page-content-layout;
 }
 
 .divider {
-  border-top: border();
+  border-top: border(divider);
   padding-top: spacing();
 }
