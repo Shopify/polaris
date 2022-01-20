@@ -57,5 +57,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Replaced font-weight values with tokens ([#4599](https://github.com/Shopify/polaris-react/issues/4599))
 - Replaced hardcoded spacing values with spacing tokens ([#4775](https://github.com/Shopify/polaris-react/pull/4775))
+- Avoid some usage of `/` for division in preparation for dart-sass support [#4933](https://github.com/Shopify/polaris-react/pull/4933))
 
 ### Deprecations
