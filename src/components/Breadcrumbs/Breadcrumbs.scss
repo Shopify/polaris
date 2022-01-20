@@ -13,7 +13,7 @@
   color: var(--p-text-subdued);
   text-decoration: none;
   margin: 0;
-  padding: var(--p-space-1) / 2;
+  padding: var(--p-space-1) * 0.5;
   border-radius: var(--p-border-radius-1);
   border: 1px solid var(--p-border-neutral-subdued);
   @include focus-ring($border-width: 1px);
