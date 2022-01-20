@@ -1,9 +1,9 @@
-@mixin high-contrast-outline($border-width: border-width()) {
+@mixin high-contrast-outline($border-width: var(--p-border-width-1)) {
   outline: $border-width solid transparent;
   @content;
 }
 
-@mixin high-contrast-border($border-width: border-width()) {
+@mixin high-contrast-border($border-width: var(--p-border-width-1)) {
   border: $border-width solid transparent;
   @content;
 }

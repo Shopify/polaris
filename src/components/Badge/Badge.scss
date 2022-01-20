@@ -70,7 +70,7 @@
   margin-left: calc(
     var(--pc-badge-vertical-padding) - var(--pc-badge-pip-spacing)
   );
-  border: border-width(thick) solid currentColor;
+  border: var(--p-border-width-2) solid currentColor;
   border-radius: var(--p-border-radius-half);
   flex-shrink: 0;
 }

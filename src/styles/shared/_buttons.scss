@@ -10,7 +10,7 @@
   );
 
   @include recolor-icon(var(--p-icon));
-  @include focus-ring($border-width: border-width('base'));
+  @include focus-ring($border-width: var(--p-border-width-1));
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -118,25 +118,25 @@
 
 @mixin button-outline($outline-color, $background-color: transparent) {
   background: transparent;
-  border: border-width() solid var(--p-border);
+  border: var(--p-border-width-1) solid var(--p-border);
   box-shadow: none;
   color: var(--p-text);
-  @include focus-ring($border-width: border-width('base'));
+  @include focus-ring($border-width: var(--p-border-width-1));
 
   &:hover {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-hovered);
   }
 
   &:focus {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     @include focus-ring($style: 'focused');
   }
 
   &:active {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-pressed);
 
@@ -147,13 +147,13 @@
 
   &.pressed {
     background: var(--p-action-secondary-pressed);
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     color: var(--pc-button-text);
   }
 
   &.disabled {
-    border: border-width('base') solid var(--p-border-disabled);
+    border: var(--p-border-width-1) solid var(--p-border-disabled);
     box-shadow: none;
     background: transparent;
     color: var(--p-text-disabled);
@@ -161,35 +161,35 @@
 
   &.destructive {
     background: transparent;
-    border: border-width('base') solid var(--p-border-critical);
+    border: var(--p-border-width-1) solid var(--p-border-critical);
     box-shadow: none;
     color: var(--p-interactive-critical);
     @include recolor-icon(var(--p-icon-critical));
 
     &:hover {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
     }
 
     &:focus {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
     }
 
     &.disabled {
-      border: border-width('base') solid var(--p-border-critical-disabled);
+      border: var(--p-border-width-1) solid var(--p-border-critical-disabled);
       background: transparent;
       color: var(--p-interactive-critical-disabled);
     }
 
     &.pressed {
       background: var(--p-surface-critical-subdued);
-      box-shadow: border-width('base') solid var(--p-border-critical);
+      box-shadow: var(--p-border-width-1) solid var(--p-border-critical);
       color: var(--p-interactive-critical);
     }
   }

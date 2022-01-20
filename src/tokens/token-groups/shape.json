@@ -8,5 +8,8 @@
   "border-radius-6": "30px",
   "border-radius-base": "3px",
   "border-radius-large": "6px",
-  "border-radius-half": "50%"
+  "border-radius-half": "50%",
+  "border-width-1": "1px",
+  "border-width-2": "2px",
+  "border-width-3": "3px"
 }

@@ -1,8 +1,8 @@
 $borders-data: (
-  base: border-width() solid var(--p-border-subdued),
-  dark: border-width() solid var(--p-border),
-  transparent: border-width() solid transparent,
-  divider: border-width() solid var(--p-divider),
+  base: var(--p-border-width-1) solid var(--p-border-subdued),
+  dark: var(--p-border-width-1) solid var(--p-border),
+  transparent: var(--p-border-width-1) solid transparent,
+  divider: var(--p-border-width-1) solid var(--p-divider),
 );
 
 /// Returns the default border.

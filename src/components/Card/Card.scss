@@ -3,7 +3,7 @@
 .Card {
   background-color: var(--p-surface);
   box-shadow: var(--p-shadow-card);
-  outline: border-width(base) solid transparent;
+  outline: var(--p-border-width-1) solid transparent;
 
   + .Card {
     margin-top: var(--p-space-4);

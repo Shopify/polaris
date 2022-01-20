@@ -18,11 +18,13 @@ $dropzone-stacking-order: (
   bottom: 0;
   opacity: 1;
   transform: scale(1);
-  border: border-width() $dropzone-border-style transparent;
+  border: var(--p-border-width-1) $dropzone-border-style transparent;
 }
 
 @mixin set-border-radius {
-  border-radius: calc(var(--p-border-radius-1) + #{border-width()} + 1px);
+  border-radius: calc(
+    var(--p-border-radius-1) + #{var(--p-border-width-1)} + 1px
+  );
 }
 
 .DropZone {
@@ -42,7 +44,7 @@ $dropzone-stacking-order: (
     right: 0;
     bottom: 0;
     left: 0;
-    border: border-width() $dropzone-border-style transparent;
+    border: var(--p-border-width-1) $dropzone-border-style transparent;
     border-radius: var(--p-border-radius-1);
     pointer-events: none;
   }
@@ -59,7 +61,7 @@ $dropzone-stacking-order: (
 }
 
 .hasOutline {
-  padding: border-width();
+  padding: var(--p-border-width-1);
 
   &::after {
     border-color: var(--p-border-neutral-subdued);
@@ -121,7 +123,7 @@ $dropzone-stacking-order: (
 }
 
 .Container {
-  @include focus-ring($border-width: border-width());
+  @include focus-ring($border-width: var(--p-border-width-1));
   flex: 1;
 }
 
@@ -137,7 +139,7 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: $dropzone-padding;
-  border: border-width() $dropzone-border-style var(--p-interactive);
+  border: var(--p-border-width-1) $dropzone-border-style var(--p-interactive);
   text-align: center;
   color: var(--p-interactive);
   background-color: var(--p-surface-selected);
