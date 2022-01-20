@@ -4,6 +4,8 @@ import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
 import {Option, OptionProps} from '../Option';
 import {TextOption} from '../TextOption';
+import {classNames} from '../../../../utilities/css';
+import {ActionContext} from '../../../../utilities/listbox/context';
 
 import styles from './Action.scss';
 
@@ -12,7 +14,7 @@ interface ActionProps extends OptionProps {
 }
 
 export function Action(props: ActionProps) {
-  const {selected, disabled, children, icon} = props;
+  const {selected, disabled, children, icon, divider} = props;
 
   const iconMarkup = icon && (
     <div className={styles.Icon}>
@@ -20,14 +22,18 @@ export function Action(props: ActionProps) {
     </div>
   );
 
+  const className = classNames(styles.Action, divider && styles.ActionDivider);
+
   return (
     <Option {...props}>
-      <TextOption selected={selected} disabled={disabled}>
-        <div className={styles.Action}>
-          {iconMarkup}
-          {children}
+      <ActionContext.Provider value>
+        <div className={className}>
+          <TextOption selected={selected} disabled={disabled}>
+            {iconMarkup}
+            {children}
+          </TextOption>
         </div>
-      </TextOption>
+      </ActionContext.Provider>
     </Option>
   );
 }

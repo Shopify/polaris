@@ -61,7 +61,6 @@ describe('MappedAction', () => {
     expect(mappedAction).toContainReactComponent(MappedActionContext.Provider, {
       value: {
         ...props,
-        isAction: true,
       },
     });
   });
@@ -174,7 +173,9 @@ describe('MappedAction', () => {
       );
 
       expect(mappedAction).toContainReactComponent(MockComponent);
-      expect(mappedAction).not.toContainReactComponent(Icon, {source});
+      expect(mappedAction).not.toContainReactComponent(Icon, {
+        source,
+      });
     });
   });
 });
