@@ -40,9 +40,9 @@ $item-spacing: spacing(tight);
   .Item {
     position: relative;
     z-index: z-index(item, $stacking-order);
-    display: flex;
     margin-top: 0;
     margin-left: 0;
+    line-height: initial;
 
     &:not(:first-child) {
       margin-left: -1 * border-width();
