@@ -182,6 +182,7 @@ import {
   CirclePlusOutlineMinor,
   ConversationMinor,
   CustomersMajor,
+  CustomersMinor,
   DeleteMinor,
   CircleDisableMinor,
   DisputeMinor,
@@ -191,17 +192,22 @@ import {
   ExternalMinor,
   QuestionMarkMajor,
   HomeMajor,
+  HomeMinor,
   HorizontalDotsMinor,
   ImportMinor,
   LogOutMinor,
   MarketingMajor,
+  MarketingMinor,
   MobileHamburgerMajor,
   NoteMinor,
   NotificationMajor,
   OnlineStoreMajor,
+  OnlineStoreMinor,
   OrdersMajor,
+  OrdersMinor,
   PrintMinor,
   ProductsMajor,
+  ProductsMinor,
   ProfileMinor,
   RefreshMinor,
   RiskMinor,
@@ -356,7 +362,8 @@ function filterMarkdownForPlatform(markdown, platform) {
     `<!-- content-for: (?:[\\w\\s,]*${platform}[\\w\\s,]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
     'gu',
   );
-  const deleteRemainingPlatformsRegExp = /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
+  const deleteRemainingPlatformsRegExp =
+    /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
 
   return (
     markdown
