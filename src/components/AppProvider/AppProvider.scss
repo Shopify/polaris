@@ -17,7 +17,7 @@ body {
 html,
 body,
 button {
-  font-family: font-family();
+  font-family: var(--p-font-family-base);
 }
 
 html {

@@ -97,7 +97,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   padding: control-vertical-padding() $backdrop-horizontal-spacing;
   background: none;
   border: border(transparent);
-  font-family: font-family();
+  font-family: var(--p-font-family-base);
   appearance: none;
   caret-color: var(--p-text);
   color: var(--p-text);
