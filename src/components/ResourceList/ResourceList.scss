@@ -24,7 +24,7 @@ $item-wrapper-loading-height: 64px;
   }
 
   + .ResourceList {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 
@@ -37,7 +37,7 @@ $item-wrapper-loading-height: 64px;
   border-top-right-radius: var(--p-border-radius-2);
 
   + .ResourceList {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 
@@ -212,7 +212,7 @@ $item-wrapper-loading-height: 64px;
   max-width: 100%;
 
   + .ItemWrapper {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 

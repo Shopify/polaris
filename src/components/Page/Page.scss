@@ -37,6 +37,6 @@ body {
 }
 
 .divider {
-  border-top: border();
+  border-top: var(--p-border-base);
   padding-top: var(--p-space-4);
 }

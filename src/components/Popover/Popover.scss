@@ -93,7 +93,7 @@ $vertical-motion-offset: -5px;
   max-width: 100%;
 
   + .Pane {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 
   &:focus {
@@ -110,7 +110,7 @@ $vertical-motion-offset: -5px;
   padding: var(--p-space-4);
 
   + .Section {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 
