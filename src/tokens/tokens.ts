@@ -51,9 +51,7 @@ const colorSchemes: ColorSchemes = {
 export interface Tokens {
   depth: TokenGroup;
   colorSchemes: ColorSchemes;
-  fontSize: TokenGroup;
   legacyTokens: TokenGroup;
-  lineHeight: TokenGroup;
   motion: TokenGroup;
   shape: TokenGroup;
   spacing: TokenGroup;
@@ -64,12 +62,10 @@ export interface Tokens {
 export const tokens: Tokens = {
   colorSchemes,
   depth,
-  fontSize: tokensToRems(fontSize),
   legacyTokens: tokensToRems(legacyTokens),
-  lineHeight: tokensToRems(lineHeight),
   motion,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
-  typography,
+  typography: tokensToRems(typography),
   zIndex,
 };
