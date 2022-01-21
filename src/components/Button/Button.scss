@@ -540,13 +540,6 @@ $stacking-order: (
   > :last-child:first-child .Button::after {
     border-radius: var(--p-border-radius-base);
   }
-
-  // This compensates for when an Icon is used within
-  // a segmented ButtonGroup. Because of the Icon size, it
-  // causes the size of the item to exceed the parent element.
-  .Icon {
-    margin-top: rem(-1px);
-  }
 }
 
 [data-buttongroup-connected-top='true'] {
