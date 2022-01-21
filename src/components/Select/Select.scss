@@ -163,7 +163,7 @@
 
   .Input:focus {
     ~ .Content {
-      color: ms-high-contrast-color('selected-text');
+      color: highlightText;
     }
 
     ~ .Backdrop {
