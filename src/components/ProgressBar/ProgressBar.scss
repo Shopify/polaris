@@ -3,7 +3,7 @@
 @function progress-bar-height($height: base) {
   $base: 16px;
   $data: (
-    small: $base / 2,
+    small: $base * 0.5,
     base: $base,
     large: $base * 2,
   );

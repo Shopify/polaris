@@ -53,8 +53,8 @@ $progress-bar-height: 6px;
   left: 50%;
   width: $start-button-size;
   height: $start-button-size;
-  margin-top: -$start-button-size / 2;
-  margin-left: -$start-button-size / 2;
+  margin-top: -$start-button-size * 0.5;
+  margin-left: -$start-button-size * 0.5;
 }
 
 .Timestamp {
