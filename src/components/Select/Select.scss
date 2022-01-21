@@ -134,7 +134,7 @@
 
 @media (-ms-high-contrast: active) {
   .Content {
-    color: ms-high-contrast-color('text');
+    color: windowText;
     -ms-high-contrast-adjust: none;
   }
 
