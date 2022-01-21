@@ -302,5 +302,5 @@ $prefix-horizontal-spacing: var(--p-space-2);
 }
 
 .monospaced {
-  font-family: font-family($family: 'monospace');
+  font-family: var(--p-font-family-mono);
 }
