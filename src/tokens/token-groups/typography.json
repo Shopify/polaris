@@ -1,4 +1,7 @@
 {
+  "font-family-base": "-apple-system, BlinkMacSystemFont, \"San Francisco\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif",
+  "font-family-mono": "ui-monospace, SFMono-Regular, \"SF Mono\", Consolas, \"Liberation Mono\", Menlo, monospace",
+
   "font-weight-regular": "400",
   "font-weight-medium": "500",
   "font-weight-semibold": "600",
