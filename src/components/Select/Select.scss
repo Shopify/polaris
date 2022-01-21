@@ -151,7 +151,7 @@
   }
 
   .Icon {
-    @include recolor-icon(ms-high-contrast-color('button-text'));
+    @include recolor-icon(buttonText);
   }
 
   .Backdrop {
