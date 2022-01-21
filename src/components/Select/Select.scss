@@ -175,11 +175,11 @@
 
   .disabled {
     .Content {
-      color: ms-high-contrast-color('disabled-text');
+      color: grayText;
     }
 
     .Icon {
-      @include recolor-icon(ms-high-contrast-color('disabled-text'));
+      @include recolor-icon(grayText);
       opacity: 1;
     }
   }
