@@ -103,8 +103,8 @@
         "actionTitleImage": "Adicionar imagem",
         "actionHintFile": "ou soltar arquivo para carregar",
         "actionHintImage": "ou soltar imagem para carregar",
-        "labelFile": "Carregar arquivo",
-        "labelImage": "Carregar imagem"
+        "labelFile": "Fazer upload de arquivo",
+        "labelImage": "Fazer upload de imagem"
       },
       "allowMultiple": {
         "overlayTextFile": "Soltar arquivos para carregar",
@@ -113,8 +113,8 @@
         "actionTitleImage": "Adicionar imagens",
         "actionHintFile": "ou soltar arquivos para carregar",
         "actionHintImage": "ou soltar imagens para carregar",
-        "labelFile": "Carregar arquivos",
-        "labelImage": "Carregar imagens"
+        "labelFile": "Fazer upload de arquivos",
+        "labelImage": "Fazer upload de imagens"
       }
     },
     "EmptySearchResult": {
