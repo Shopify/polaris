@@ -42,6 +42,7 @@ $item-spacing: spacing(tight);
     z-index: z-index(item, $stacking-order);
     margin-top: 0;
     margin-left: 0;
+    line-height: normal;
 
     &:not(:first-child) {
       margin-left: -1 * border-width();
