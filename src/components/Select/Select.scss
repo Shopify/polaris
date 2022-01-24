@@ -134,7 +134,7 @@
 
 @media (-ms-high-contrast: active) {
   .Content {
-    color: ms-high-contrast-color('text');
+    color: windowText;
     -ms-high-contrast-adjust: none;
   }
 
@@ -151,7 +151,7 @@
   }
 
   .Icon {
-    @include recolor-icon(ms-high-contrast-color('button-text'));
+    @include recolor-icon(buttonText);
   }
 
   .Backdrop {
@@ -163,23 +163,23 @@
 
   .Input:focus {
     ~ .Content {
-      color: ms-high-contrast-color('selected-text');
+      color: highlightText;
     }
 
     ~ .Backdrop {
       // Align with the native styling for this element, which differs from
       // what the control-backdrop mixin provides.
-      background-color: ms-high-contrast-color('selected-text-background');
+      background-color: highlight;
     }
   }
 
   .disabled {
     .Content {
-      color: ms-high-contrast-color('disabled-text');
+      color: grayText;
     }
 
     .Icon {
-      @include recolor-icon(ms-high-contrast-color('disabled-text'));
+      @include recolor-icon(grayText);
       opacity: 1;
     }
   }

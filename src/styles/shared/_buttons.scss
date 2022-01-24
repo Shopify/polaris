@@ -64,7 +64,7 @@
   }
 
   @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+    border: 1px solid windowText;
   }
 }
 

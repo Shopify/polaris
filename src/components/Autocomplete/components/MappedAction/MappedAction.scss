@@ -35,7 +35,7 @@
     text-decoration: none;
 
     @media (-ms-high-contrast: active) {
-      outline: 1px solid ms-high-contrast-color('text');
+      outline: 1px solid windowText;
     }
   }
 
