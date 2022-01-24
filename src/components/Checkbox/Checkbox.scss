@@ -71,7 +71,7 @@
     transform var(--p-duration-100) var(--p-ease);
 
   @media (-ms-high-contrast: active) {
-    fill: ms-high-contrast-color('text');
+    fill: windowText;
   }
 }
 
