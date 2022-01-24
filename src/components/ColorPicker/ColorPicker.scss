@@ -3,6 +3,8 @@
 $picker-size: rem(160px);
 $dragger-size: rem(18px);
 $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
+$dragger-shadow: inset 0 0.5px 2px 0 rgba(0, 0, 0, 0.4),
+  0 0.5px 3px 0 rgba(0, 0, 0, 0.4);
 
 $stacking-order: (
   color: 10,
@@ -42,6 +44,7 @@ $stacking-order: (
   .Dragger {
     right: 0.5 * $dragger-size;
     margin: 0;
+    box-shadow: $dragger-shadow;
   }
 
   .ColorLayer {
@@ -68,6 +71,7 @@ $stacking-order: (
 
   &::after {
     background-image: linear-gradient(to top, black, transparent);
+    box-shadow: $inner-shadow;
   }
 }
 
@@ -84,12 +88,14 @@ $stacking-order: (
   border: var(--p-border-radius-base) solid var(--p-surface);
   border-radius: 50%;
   pointer-events: none;
+  box-shadow: $dragger-shadow;
 }
 
 $green: rgb(0, 255, 0);
 $purple: rgb(255, 0, 255);
 $huepicker-padding: $dragger-size;
 $huepicker-bottom-padding-start: $picker-size - $dragger-size;
+$vertical-picker-border-radius: $picker-size * 0.5;
 
 .HuePicker,
 .AlphaPicker {
@@ -99,7 +105,21 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
   width: rem(24px);
   margin-left: spacing(tight);
   border-width: var(--p-border-radius-base);
-  border-radius: $picker-size * 0.5;
+  border-radius: $vertical-picker-border-radius;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: z-index(adjustments, $stacking-order);
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-radius: $vertical-picker-border-radius;
+    box-shadow: $inner-shadow;
+  }
 }
 
 .HuePicker {
