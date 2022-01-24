@@ -34,6 +34,11 @@ export interface AutocompleteProps {
     /** Specifies that if the label is too long it will wrap instead of being hidden  */
     wrapOverflow?: boolean;
   };
+  /** An action to render below the list of options */
+  actionAfter?: ActionListItemDescriptor & {
+    /** Specifies that if the label is too long it will wrap instead of being hidden  */
+    wrapOverflow?: boolean;
+  };
   /** Display loading state */
   loading?: boolean;
   /** Indicates if more results will load dynamically */
@@ -62,6 +67,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   allowMultiple,
   loading,
   actionBefore,
+  actionAfter,
   willLoadMoreResults,
   emptyState,
   onSelect,
@@ -164,7 +170,10 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     [allowMultiple, onSelect, selected],
   );
 
-  const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;
+  const actionBeforeMarkup = actionBefore && <MappedAction {...actionBefore} />;
+  const actionAfterMarkup = actionAfter && (
+    <MappedAction {...actionAfter} position="after" />
+  );
 
   const emptyStateMarkup = emptyState && options.length < 1 && !loading && (
     <div role="status">{emptyState}</div>
@@ -177,12 +186,17 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
     >
-      {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
+      {actionBeforeMarkup ||
+      actionAfterMarkup ||
+      optionsMarkup ||
+      loadingMarkup ||
+      emptyStateMarkup ? (
         <Listbox onSelect={updateSelection}>
-          {actionMarkup}
+          {actionBeforeMarkup}
           {optionsMarkup && (!loading || willLoadMoreResults)
             ? optionsMarkup
             : null}
+          {actionAfterMarkup}
           {loadingMarkup}
           {emptyStateMarkup}
         </Listbox>

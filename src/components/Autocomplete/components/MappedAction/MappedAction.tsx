@@ -13,6 +13,7 @@ import styles from './MappedAction.scss';
 
 interface MappedAction extends ActionListItemDescriptor {
   wrapOverflow?: boolean;
+  position?: 'before' | 'after' | null;
 }
 
 export function MappedAction({
@@ -32,6 +33,7 @@ export function MappedAction({
   badge,
   helpText,
   wrapOverflow = false,
+  position = 'before',
 }: MappedAction) {
   const i18n = useI18n();
 
@@ -100,7 +102,13 @@ export function MappedAction({
 
   return (
     <MappedActionContext.Provider value={context}>
-      <div className={styles.ActionContainer}>
+      <div
+        className={
+          position === 'before'
+            ? styles.ActionContainerBefore
+            : styles.ActionContainerAfter
+        }
+      >
         <Listbox.Action
           selected={active}
           disabled={disabled}

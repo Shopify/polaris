@@ -607,12 +607,12 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with action
+### Autocomplete with action after
 
 Use to indicate there are no search results.
 
 ```jsx
-function AutocompleteActionBeforeExample() {
+function AutocompleteActionAfterExample() {
   const deselectedOptions = [
     {value: 'rustic', label: 'Rustic'},
     {value: 'antique', label: 'Antique'},
@@ -677,7 +677,7 @@ function AutocompleteActionBeforeExample() {
   return (
     <div style={{height: '225px'}}>
       <Autocomplete
-        actionBefore={{
+        actionAfter={{
           accessibilityLabel: 'Action label',
           badge: {
             status: 'new',
