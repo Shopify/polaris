@@ -258,6 +258,21 @@ Use when a primary action functions better as part of the page content instead o
 </Page>
 ```
 
+### Page with destructive secondary action
+
+<!-- example-for: web -->
+
+Used to visually indicate that the secondary page action is destructive.
+
+```jsx
+<Page
+  title="General"
+  secondaryActions={[{content: 'Delete', destructive: true}]}
+>
+  <p>Page content</p>
+</Page>
+```
+
 ### Page with subtitle
 
 <!-- example-for: web -->
