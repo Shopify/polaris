@@ -277,6 +277,7 @@ describe('<Navigation.Section />', () => {
     matchMedia.setMedia(() => ({matches: true}));
     const withSubNav = mountWithNavigationAndPolarisTestProvider(
       <Section
+        duplicateRootItem
         items={[
           {
             label: 'some label',

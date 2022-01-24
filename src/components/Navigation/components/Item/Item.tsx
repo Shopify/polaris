@@ -252,10 +252,12 @@ export function Item({
 
   const showExpanded = selected || expanded || childIsActive;
 
+  const canBeActive = subNavigationItems.length === 0 || !childIsActive;
+
   const itemClassName = classNames(
     styles.Item,
     disabled && styles['Item-disabled'],
-    selected && subNavigationItems.length === 0 && styles['Item-selected'],
+    selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
     keyFocused && styles.keyFocused,

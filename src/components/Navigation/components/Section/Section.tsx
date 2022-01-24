@@ -27,6 +27,7 @@ export interface SectionProps {
     onClick(): void;
   };
   separator?: boolean;
+  duplicateRootItem?: boolean;
 }
 
 export function Section({
@@ -36,6 +37,7 @@ export function Section({
   items,
   rollup,
   separator,
+  duplicateRootItem,
 }: SectionProps) {
   const {
     value: expanded,
@@ -106,7 +108,7 @@ export function Section({
       disabled,
     };
     const addedSubNavigationItems =
-      isNavigationCollapsed && hasSubNavItems
+      isNavigationCollapsed && hasSubNavItems && duplicateRootItem
         ? [
             itemAsSubNavigationItem,
             ...(subNavigationItems as SubNavigationItem[]),
