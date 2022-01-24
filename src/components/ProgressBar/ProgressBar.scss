@@ -66,8 +66,7 @@
   background-color: var(--pc-progress-bar-indicator);
 
   @media screen and (-ms-high-contrast: active) {
-    border: progress-bar-height() solid
-      ms-high-contrast-color('selected-text-background');
+    border: progress-bar-height() solid highlight;
   }
 }
 

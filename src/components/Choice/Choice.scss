@@ -31,7 +31,7 @@
     }
 
     @media (-ms-high-contrast: active) {
-      color: ms-high-contrast-color('disabled-text');
+      color: grayText;
     }
   }
 }
