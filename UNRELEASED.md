@@ -17,6 +17,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Development workflow
 
+- Improve error logging in the event of sass errors. ([#4954](https://github.com/Shopify/polaris-react/pull/4954))
+
 ### Dependency upgrades
 
 ### Code quality
