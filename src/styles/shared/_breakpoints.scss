@@ -1,40 +1,39 @@
+@function breakpoint($value) {
+  $value-unit: unit($value);
+
+  @if $value-unit == 'em' {
+    @return $value;
+  } @else if $value-unit == 'px' {
+    @return $value / 16px * 1em;
+  } @else {
+    @error 'The $value passed into breakpoint() must be a pixel or em value. Got "#{$value}"';
+  }
+}
+
 $page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
   layout-width(inner-spacing);
 $frame-with-nav-max-width: layout-width(nav) + $page-max-width;
 
-$stacked-content: em(
+$stacked-content: breakpoint(
   layout-width(primary, min) + layout-width(secondary, min) +
     layout-width(inner-spacing)
 );
-$not-condensed-content: em(layout-width(page-content, not-condensed));
-$partially-condensed-content: em(
+$not-condensed-content: breakpoint(layout-width(page-content, not-condensed));
+$partially-condensed-content: breakpoint(
   layout-width(page-content, partially-condensed)
 );
 
-$not-condensed-outer-spacing: em(2 * layout-width(outer-spacing, max));
-$partially-condensed-outer-spacing: em(2 * layout-width(outer-spacing, min));
+$not-condensed-outer-spacing: breakpoint(2 * layout-width(outer-spacing, max));
+$partially-condensed-outer-spacing: breakpoint(
+  2 * layout-width(outer-spacing, min)
+);
 
 $not-condensed-min-page: $not-condensed-content + $not-condensed-outer-spacing;
 $partially-condensed-min-page: $partially-condensed-content +
   $partially-condensed-outer-spacing;
 
-$nav-size: em(layout-width(nav));
-$nav-min-window: em(layout-width(page-with-nav));
-
-@function breakpoint($value, $adjustment: 0) {
-  $adjusted-value: em($adjustment);
-
-  // Reduces chances to have a style void
-  // between two media queries
-  // See https://github.com/sass-mq/sass-mq/issues/6
-  @if $adjustment == -1px {
-    $adjusted-value: -0.01em;
-  } @else if $adjustment == 1px {
-    $adjusted-value: 0.01em;
-  }
-
-  @return em($value) + $adjusted-value;
-}
+$nav-size: breakpoint(layout-width(nav));
+$nav-min-window: breakpoint(layout-width(page-with-nav));
 
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
@@ -121,13 +120,13 @@ $nav-min-window: em(layout-width(page-with-nav));
 }
 
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
-  @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
+  @media (min-width: #{breakpoint($breakpoint) + if($inclusive, 0, 0.01em)}) {
     @content;
   }
 }
 
 @mixin breakpoint-before($breakpoint, $inclusive: true) {
-  @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
+  @media (max-width: #{breakpoint($breakpoint) + if($inclusive, 0, -0.01em)}) {
     @content;
   }
 }

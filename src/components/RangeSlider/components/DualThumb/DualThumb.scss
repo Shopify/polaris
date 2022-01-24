@@ -166,7 +166,7 @@ $range-output-spacing: 16px;
     transform: translateY(-$range-output-spacing);
 
     @include page-content-when-not-partially-condensed {
-      transform: translateY(-($range-output-spacing / 2));
+      transform: translateY(-($range-output-spacing * 0.5));
     }
   }
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class

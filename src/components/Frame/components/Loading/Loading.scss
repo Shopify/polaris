@@ -15,6 +15,6 @@
   transition: transform var(--p-duration-500) linear;
 
   @media screen and (-ms-high-contrast: active) {
-    background-color: ms-high-contrast-color('selected-text-background');
+    background-color: highlight;
   }
 }
