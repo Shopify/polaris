@@ -19,7 +19,7 @@ $list-filters-footer-height: 70px;
   top: 0;
   width: 100%;
   padding: var(--p-space-4) var(--p-space-5);
-  border-bottom: border('divider');
+  border-bottom: var(--p-border-divider);
   height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
@@ -46,7 +46,7 @@ $list-filters-footer-height: 70px;
   bottom: 0;
   width: 100%;
   padding: var(--p-space-4) var(--p-space-5);
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
@@ -65,7 +65,7 @@ $list-filters-footer-height: 70px;
 }
 
 .EmptyFooterState {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   padding-top: var(--p-space-4);
   width: 100%;
   display: flex;

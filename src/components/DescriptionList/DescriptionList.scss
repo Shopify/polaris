@@ -32,7 +32,7 @@ $breakpoint: 550px;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Description + & + .Description {
-      border-top: border('divider');
+      border-top: var(--p-border-divider);
     }
   }
 }
@@ -46,7 +46,7 @@ $breakpoint: 550px;
   }
 
   + .Term {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 
   @include page-content-breakpoint-after($breakpoint) {
@@ -59,7 +59,7 @@ $breakpoint: 550px;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     + .Term + .Description {
-      border-top: border('divider');
+      border-top: var(--p-border-divider);
     }
   }
 }

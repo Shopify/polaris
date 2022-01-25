@@ -11,7 +11,7 @@ $sheet-desktop-width: 380px;
   box-shadow: var(--p-shadow-modal);
 
   @media screen and (-ms-high-contrast: active) {
-    border-left: border();
+    border-left: var(--p-border-base);
   }
 
   @include frame-when-nav-displayed {
