@@ -67,7 +67,7 @@ $nav-animation-variables: (
     font-size: $item-font-size;
     font-weight: 500;
     line-height: $item-line-height-small;
-    padding-left: rem(14px);
+    padding-left: spacing() - (spacing(extra-tight) / 2);
   }
 
   &::-moz-focus-inner {
@@ -77,16 +77,16 @@ $nav-animation-variables: (
   svg,
   img {
     display: block;
-    height: rem(20px);
-    width: rem(20px);
+    height: spacing(loose);
+    width: spacing(loose);
   }
 
   .Icon-resized {
     svg,
     img {
-      margin: rem(2px);
-      height: rem(16px);
-      width: rem(16px);
+      margin: spacing(extra-tight) / 2;
+      height: spacing();
+      width: spacing();
     }
   }
 }
