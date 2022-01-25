@@ -252,7 +252,9 @@ $secondary-item-font-size: 15px;
   }
 
   .List {
-    @include unstyled-list;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .Item {
@@ -326,11 +328,12 @@ $secondary-item-font-size: 15px;
 
 // Section styles
 .Section {
-  @include unstyled-list;
   flex: 0 0 auto;
+  margin: 0;
   padding: var(--p-space-4) 0;
   padding-top: 0;
   @include safe-area-for(padding-left, 0, left);
+  list-style: none;
 
   + .Section {
     padding-top: var(--p-space-1);
@@ -438,7 +441,9 @@ $secondary-item-font-size: 15px;
 }
 
 .List {
-  @include unstyled-list;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .Indicator {
