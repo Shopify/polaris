@@ -18,7 +18,7 @@ $Backdrop-opacity: 0.88;
   }
 
   @media (forced-colors: active) {
-    @include high-contrast-border(var(--p-border-width-2));
+    border: var(--p-border-width-2) solid transparent;
   }
 }
 

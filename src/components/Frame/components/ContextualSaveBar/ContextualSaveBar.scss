@@ -22,7 +22,7 @@ $off-white-border: rgb(235, 238, 240);
   }
 
   @media (forced-colors: active) {
-    @include high-contrast-border;
+    border: var(--p-border-width-1) solid transparent;
   }
 }
 
