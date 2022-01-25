@@ -22,6 +22,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `spacing()` scss function and replaced any instances with tokens ([#4691](https://github.com/Shopify/polaris-react/pull/4691/))
 - Removed the `px()` scss function ([#4751](https://github.com/Shopify/polaris-react/pull/4751))
+- Removed the `em()` scss function ([#4937](https://github.com/Shopify/polaris-react/pull/4937))
 - Removed the `z-index()` scss function ([#4753](https://github.com/Shopify/polaris-react/pull/4753))
 - Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
 - Removed the `rem()` scss function and any references ([#4761](https://github.com/Shopify/polaris-react/pull/4761/))
@@ -34,7 +35,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
 - Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
 - Removed the ms-high-contrast-color() function and replaced any instances with values ([#4938](https://github.com/Shopify/polaris-react/pull/4938))
-- Removed the font-family() function and replaced any instances with values ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
+- Removed the font-family() function and replaced any instances with tokens ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
 - Removed the unstyled-link() mixin and replaced any instances with values ([#4951](https://github.com/Shopify/polaris-react/pull/4951))
 
 ### New components
