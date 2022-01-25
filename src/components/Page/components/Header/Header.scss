@@ -144,7 +144,10 @@ $action-menu-rollup-computed-width: rem(40px);
 .Row {
   display: flex;
   justify-content: space-between;
-  min-height: 36px;
+
+  &:first-child {
+    min-height: 36px;
+  }
 
   + .Row {
     margin-top: spacing(extra-tight);
