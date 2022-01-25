@@ -62,7 +62,7 @@ $breakpoint: 768px;
 // stylelint-disable selector-max-class, selector-max-combinators
 .TableRow + .TableRow {
   .Cell {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 
@@ -92,7 +92,7 @@ $breakpoint: 768px;
 
 .Cell-header {
   @include text-emphasis-normal;
-  border-bottom: border(dark);
+  border-bottom: var(--p-border-dark);
   border-top: 0;
 }
 
@@ -166,11 +166,11 @@ $breakpoint: 768px;
 .Cell-total {
   @include text-emphasis-strong;
   background: var(--p-surface-subdued);
-  border-bottom: border();
+  border-bottom: var(--p-border-base);
 }
 
 .Cell-total-footer {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   border-bottom: none;
   border-bottom-left-radius: var(--p-border-radius-1);
   border-bottom-right-radius: var(--p-border-radius-1);
@@ -181,7 +181,7 @@ $breakpoint: 768px;
   background: var(--p-surface-subdued);
   color: var(--p-text-subdued);
   text-align: center;
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   border-bottom-left-radius: var(--p-border-radius-1);
   border-bottom-right-radius: var(--p-border-radius-1);
 }

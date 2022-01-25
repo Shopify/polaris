@@ -17,7 +17,7 @@ $nav-max-width: 360px;
   min-height: 100%;
   background-color: var(--p-background);
   -webkit-overflow-scrolling: touch;
-  border-right: border('divider');
+  border-right: var(--p-border-divider);
 
   @include safe-area-for(padding-bottom, 0, bottom);
 
@@ -346,7 +346,7 @@ $secondary-item-font-size: 15px;
 }
 
 .Section-withSeparator {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
 }
 
 .SectionHeading {
