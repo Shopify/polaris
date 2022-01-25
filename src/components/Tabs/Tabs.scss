@@ -45,7 +45,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Tab {
-  @include unstyled-link;
   @include unstyled-button;
   @include text-style-body;
   @include text-emphasis-subdued;
@@ -97,6 +96,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
         @include focus-ring($style: 'focused');
       }
     }
+  }
+
+  &:visited {
+    color: var(--p-text);
   }
 }
 
@@ -164,7 +167,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Item {
-  @include unstyled-link;
   @include unstyled-button;
   @include focus-ring;
   display: block;
@@ -172,8 +174,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   min-height: $item-min-height;
   padding: $item-vertical-padding var(--p-space-4);
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   border-radius: var(--p-border-radius-1);
+  color: inherit;
 
   &::-moz-focus-inner {
     border: none;
@@ -189,6 +193,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
+  }
+
+  &:visited {
+    color: inherit;
   }
 }
 
