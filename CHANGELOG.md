@@ -12,7 +12,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ### Breaking changes
 
-- Update the base font size to `100%` from `62.5%` and update `rem` values accordingly, along with `pxtorem` `rootValue` ([#4794](https://github.com/Shopify/polaris-react/pull/4794))
+- Updated the base font size to `100%` from `62.5%` and update `rem` values accordingly, along with `pxtorem` `rootValue` ([#4794](https://github.com/Shopify/polaris-react/pull/4794))
+- Updated node version to `v16.9.1` ([#4853](https://github.com/Shopify/polaris-react/pull/4853))
 
 ### Enhancements
 
