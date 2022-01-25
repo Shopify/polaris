@@ -35,6 +35,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
 - Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
 - Removed the ms-high-contrast-color() function and replaced any instances with values ([#4938](https://github.com/Shopify/polaris-react/pull/4938))
+- Removed the `border()` scss function ([#4934](https://github.com/Shopify/polaris-react/pull/4934))
 - Removed the font-family() function and replaced any instances with tokens ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
 - Removed the unstyled-link() mixin and replaced any instances with values ([#4951](https://github.com/Shopify/polaris-react/pull/4951))
 

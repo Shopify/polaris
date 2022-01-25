@@ -13,14 +13,14 @@
 }
 
 .Section-withoutTitle:not(:first-child) {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
 }
 
 .Actions {
   outline: none;
   list-style: none;
   margin: 0;
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   padding: var(--p-space-2);
 }
 

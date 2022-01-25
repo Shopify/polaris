@@ -259,7 +259,7 @@ $resource-list-item-variables: (
   @include focus-ring($border-width: -1px);
 
   .ListItem + & {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 
   &::after {

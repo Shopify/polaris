@@ -8,7 +8,7 @@
   min-width: thumbnail-size(small);
   max-width: 100%;
   border-radius: var(--p-border-radius-1);
-  border: border('divider');
+  border: var(--p-border-divider);
 
   &::after {
     content: '';
