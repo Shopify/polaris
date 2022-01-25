@@ -39,7 +39,7 @@
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-focused);
-      @include high-contrast-outline;
+      outline: var(--p-border-width-1) solid transparent;
     }
   }
 }

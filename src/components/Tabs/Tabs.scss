@@ -104,7 +104,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   @include text-emphasis-normal;
 
   &:focus .Title {
-    @include high-contrast-outline($border-width: var(--p-border-width-3));
+    outline: var(--p-border-width-3) solid transparent;
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -112,7 +112,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Title {
-    @include high-contrast-outline($border-width: var(--p-border-width-3));
+    outline: var(--p-border-width-3) solid transparent;
     color: var(--p-text);
 
     &::before {

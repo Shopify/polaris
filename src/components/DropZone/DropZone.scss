@@ -56,7 +56,7 @@ $dropzone-stacking-order: (
   }
 
   &:hover {
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 }
 

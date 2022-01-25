@@ -90,6 +90,7 @@ $disabled-fade: 0.6;
   font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
+  outline: var(--p-border-width-1) solid transparent;
 
   &::before {
     content: '';
@@ -103,8 +104,6 @@ $disabled-fade: 0.6;
     border-top-right-radius: var(--p-border-radius-1);
     border-bottom-right-radius: var(--p-border-radius-1);
   }
-
-  @include high-contrast-outline;
 
   @include focus-ring;
 
