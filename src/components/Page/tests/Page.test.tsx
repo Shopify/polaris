@@ -264,27 +264,24 @@ describe('<Page />', () => {
     it('renders border when divider is true and header props exist', () => {
       const wrapper = mountWithApp(<Page {...mockProps} divider />);
       expect(wrapper).toContainReactComponent('div', {
-        className: 'Content divider',
+        className: 'divider',
       });
     });
 
     it('does not render border when divider is true and no header props exist', () => {
       const wrapper = mountWithApp(<Page divider />);
       expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content ContentSpaced divider',
+        className: 'Content divider',
       });
       expect(wrapper).toContainReactComponent('div', {
-        className: 'Content ContentSpaced',
+        className: 'Content',
       });
     });
 
     it('does not render border when divider is false', () => {
       const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
       expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content divider',
-      });
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'Content',
+        className: 'divider',
       });
     });
   });

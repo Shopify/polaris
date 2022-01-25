@@ -32,7 +32,7 @@ body {
   max-width: layout-width(primary, max);
 }
 
-.ContentSpaced {
+.Content {
   @include page-content-layout;
 }
 
