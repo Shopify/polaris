@@ -112,7 +112,7 @@ export function Listbox({
   );
 
   const handleChangeActiveOption = useCallback(
-    (nextOption?: NavigableOption) => {
+    (nextOption?: NavigableOption, isKeyboardChange?: boolean) => {
       setCurrentActiveOption((currentActiveOption) => {
         if (currentActiveOption) {
           currentActiveOption.element.removeAttribute(DATA_ATTRIBUTE);
@@ -120,7 +120,7 @@ export function Listbox({
 
         if (nextOption) {
           nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
-          if (scrollableRef.current) {
+          if (scrollableRef.current && isKeyboardChange) {
             const first =
               getNavigableOptions().findIndex(
                 (element) => element.id === nextOption.element.id,
@@ -224,7 +224,7 @@ export function Listbox({
       disabled: nextValidElement.getAttribute('aria-disabled') === 'true',
     };
 
-    handleChangeActiveOption(nextOption);
+    handleChangeActiveOption(nextOption, true);
   }
 
   function handleDownArrow(evt: KeyboardEvent) {
