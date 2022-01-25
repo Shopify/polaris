@@ -95,16 +95,15 @@ A navigation section groups together related navigation items. Navigation sectio
 
 ### Section properties
 
-| Prop              | Type                     | Description                                                                                              |
-| ----------------- | ------------------------ | -------------------------------------------------------------------------------------------------------- |
-| items             | [Item[]](#type-item)     | A collection of navigation items to be rendered inside the section                                       |
-| icon              | IconProps['source']      | An icon to be displayed next to the section title                                                        |
-| title             | string                   | A string property providing a title for the navigation section                                           |
-| fill              | boolean                  | A boolean property indicating whether the section should take up all vertical space available            |
-| rollup            | [Rollup[]](#type-rollup) | An object determining the collapsing behavior of the navigation section                                  |
-| action            | [Action[]](#type-action) | Renders an icon-only action as a supplementary action next to the section title                          |
-| separator         | boolean                  | A boolean property indicating whether the section should have a visual separator                         |
-| duplicateRootItem | boolean                  | A boolean property to duplicate the root level item as the first sub navigation item on mobile viewports |
+| Prop      | Type                     | Description                                                                                   |
+| --------- | ------------------------ | --------------------------------------------------------------------------------------------- |
+| items     | [Item[]](#type-item)     | A collection of navigation items to be rendered inside the section                            |
+| icon      | IconProps['source']      | An icon to be displayed next to the section title                                             |
+| title     | string                   | A string property providing a title for the navigation section                                |
+| fill      | boolean                  | A boolean property indicating whether the section should take up all vertical space available |
+| rollup    | [Rollup[]](#type-rollup) | An object determining the collapsing behavior of the navigation section                       |
+| action    | [Action[]](#type-action) | Renders an icon-only action as a supplementary action next to the section title               |
+| separator | boolean                  | A boolean property indicating whether the section should have a visual separator              |
 
 <a name="type-item"></a>
 

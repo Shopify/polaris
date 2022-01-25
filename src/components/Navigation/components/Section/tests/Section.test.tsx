@@ -273,47 +273,6 @@ describe('<Navigation.Section />', () => {
     expect(onClickSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('duplicates the root item when on a mobile viewport', () => {
-    matchMedia.setMedia(() => ({matches: true}));
-    const withSubNav = mountWithNavigationAndPolarisTestProvider(
-      <Section
-        duplicateRootItem
-        items={[
-          {
-            label: 'some label',
-            url: '/admin',
-          },
-          {
-            label: 'other label',
-            url: '/other',
-            subNavigationItems: [
-              {
-                label: 'sub label',
-                url: '/other/sub',
-              },
-            ],
-          },
-        ]}
-      />,
-      {
-        ...context,
-      },
-      {
-        isNavigationCollapsed: true,
-      },
-    );
-    expect(withSubNav).toContainReactComponent(Item, {
-      label: 'other label',
-      subNavigationItems: [
-        {
-          label: 'other label',
-          url: '/other',
-        },
-        {label: 'sub label', url: '/other/sub'},
-      ],
-    });
-  });
-
   it('acts as an accordion when on a mobile viewport', () => {
     matchMedia.setMedia(() => ({matches: true}));
     const withSubNav = mountWithNavigationAndPolarisTestProvider(

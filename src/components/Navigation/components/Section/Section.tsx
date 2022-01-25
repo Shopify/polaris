@@ -7,7 +7,7 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon, IconProps} from '../../../Icon';
-import {Item, ItemProps, SubNavigationItem} from '../Item';
+import {Item, ItemProps} from '../Item';
 import styles from '../../Navigation.scss';
 
 export interface SectionProps {
@@ -27,7 +27,6 @@ export interface SectionProps {
     onClick(): void;
   };
   separator?: boolean;
-  duplicateRootItem?: boolean;
 }
 
 export function Section({
@@ -37,7 +36,6 @@ export function Section({
   items,
   rollup,
   separator,
-  duplicateRootItem,
 }: SectionProps) {
   const {
     value: expanded,
@@ -98,22 +96,9 @@ export function Section({
   );
 
   const itemsMarkup = items.map((item, index) => {
-    const {onClick, label, url, disabled, subNavigationItems, ...rest} = item;
+    const {onClick, label, subNavigationItems, ...rest} = item;
     const hasSubNavItems =
       subNavigationItems != null && subNavigationItems.length > 0;
-    const itemAsSubNavigationItem: SubNavigationItem = {
-      onClick,
-      label,
-      url: url as string,
-      disabled,
-    };
-    const addedSubNavigationItems =
-      isNavigationCollapsed && hasSubNavItems && duplicateRootItem
-        ? [
-            itemAsSubNavigationItem,
-            ...(subNavigationItems as SubNavigationItem[]),
-          ]
-        : subNavigationItems;
 
     const handleToggleExpandedState = () => {
       if (expandedIndex === index) {
@@ -128,9 +113,7 @@ export function Section({
         key={label}
         {...rest}
         label={label}
-        url={url}
-        disabled={disabled}
-        subNavigationItems={addedSubNavigationItems}
+        subNavigationItems={subNavigationItems}
         onClick={handleClick(onClick, hasSubNavItems)}
         onToggleExpandedState={handleToggleExpandedState}
         expanded={expandedIndex === index}
