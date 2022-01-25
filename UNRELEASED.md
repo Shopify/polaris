@@ -10,6 +10,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Tightened up the Navigation component UI density. ([#4874](https://github.com/Shopify/polaris-react/pull/4874))
 - Updated the Navigation IA ([#4902](https://github.com/Shopify/polaris-react/pull/4902))
+- Added new `duplicateRootItem` prop to a Navigation Section to support new mobile Navigation IA ([#4902](https://github.com/Shopify/polaris-react/pull/4902))
 
 ### Bug fixes
 
