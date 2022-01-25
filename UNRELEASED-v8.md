@@ -36,6 +36,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
 - Removed the ms-high-contrast-color() function and replaced any instances with values ([#4938](https://github.com/Shopify/polaris-react/pull/4938))
 - Removed the font-family() function and replaced any instances with values ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
+- Removed the unstyled-list() mixin and replaced any instances with values ([#](https://github.com/Shopify/polaris-react/pull/))
 
 ### New components
 
