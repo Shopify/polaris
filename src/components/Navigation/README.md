@@ -194,13 +194,90 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
 </Navigation>
 ```
 
-### Navigation with an active secondary navigation item
+### Navigation with multiple secondary navigations
 
 Use to present a secondary action, related to a section and to title the section.
 
 ```jsx
 <Navigation location="/">
   <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: HomeMinor,
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: OrdersMinor,
+        badge: '15',
+        subNavigationItems: [
+          {
+            url: '/admin/orders/collections',
+            disabled: false,
+            selected: false,
+            label: 'Collections',
+          },
+          {
+            url: '/admin/orders/inventory',
+            disabled: false,
+            label: 'Inventory',
+          },
+        ],
+      },
+      {
+        url: '/path/to/place',
+        label: 'Marketing',
+        icon: MarketingMinor,
+        badge: '15',
+        subNavigationItems: [
+          {
+            url: '/admin/analytics/collections',
+            disabled: false,
+            selected: false,
+            label: 'Reports',
+          },
+          {
+            url: '/admin/analytics/inventory',
+            disabled: false,
+            label: 'Live view',
+          },
+        ],
+      },
+      {
+        url: '/admin/products',
+        label: 'Products',
+        icon: ProductsMinor,
+        selected: true,
+        subNavigationItems: [
+          {
+            url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+            disabled: false,
+            selected: false,
+            label: 'Collections',
+          },
+          {
+            url: '/admin/products/inventory',
+            disabled: false,
+            selected: true,
+            label: 'Inventory',
+          },
+        ],
+      },
+    ]}
+  />
+</Navigation>
+```
+
+### Navigation with an active root item with secondary navigation items
+
+Use to present a secondary action, related to a section and to title the section.
+
+```jsx
+<Navigation location="/">
+  <Navigation.Section
+    duplicateRootItem
     items={[
       {
         url: '/path/to/place',
@@ -220,10 +297,10 @@ Use to present a secondary action, related to a section and to title the section
         selected: true,
         subNavigationItems: [
           {
-            url: '/admin/products',
+            url: '/admin/products/collections',
             disabled: false,
-            selected: true,
-            label: 'All products',
+            selected: false,
+            label: 'Collections',
           },
           {
             url: '/admin/products/inventory',

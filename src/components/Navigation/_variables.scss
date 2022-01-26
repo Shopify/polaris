@@ -130,6 +130,8 @@ $nav-animation-variables: (
   .Item-selected:hover &,
   .subNavigationActive &,
   .subNavigationActive:hover &,
+  .Item-child-active &,
+  .Item-child-active:hover &,
   .Item-selected.keyFocused & {
     @include recolor-icon(
       $fill-color: var(--p-action-primary),
