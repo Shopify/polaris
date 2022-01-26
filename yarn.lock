@@ -2008,10 +2008,10 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
 
-"@shopify/polaris-icons@^4.11.0":
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.11.0.tgz#8b1ebf7f07077300f8281e12824588835f108b23"
-  integrity sha512-vq37+I6oDlFzQXqkuDI0DO4AXz36AiyGOMkSstnBWTI6UR/eHAuI2aALqbPMxYbD6877Pi1kk+bAfWIFf3D4LA==
+"@shopify/polaris-icons@4.14.0":
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.14.0.tgz#26d134af7fda64e81ecb97212ff5f424a8a6774a"
+  integrity sha512-UyNcPmR/emsL01ezXR87U++9fLANaBiZZtG55XBe92cDeiG+VmVnx/a75U9wEL9jlDGjWNtO1Jd7juq0r/EHLQ==
 
 "@shopify/polaris-tokens@^3.0.0":
   version "3.0.0"

@@ -58,6 +58,7 @@ export interface ItemProps extends ItemURLDetails {
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
+  shouldResizeIcon?: boolean;
 }
 
 enum MatchState {
@@ -85,6 +86,7 @@ export function Item({
   matchPaths,
   excludePaths,
   external,
+  shouldResizeIcon,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -125,7 +127,12 @@ export function Item({
   ) : null;
 
   const iconMarkup = icon ? (
-    <div className={styles.Icon}>
+    <div
+      className={classNames(
+        styles.Icon,
+        shouldResizeIcon && styles['Icon-resized'],
+      )}
+    >
       <Icon source={icon} />
     </div>
   ) : null;
