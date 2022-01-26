@@ -43,36 +43,6 @@ $layout-width-data: (
   ),
 );
 
-/// Returns the list of available layout names.
-/// @param {Number} $map - The level of depth to get names from.
-/// @return {String} The list of names in the map.
-
-@function available-layout-names($level: 1) {
-  $output: '';
-  $newline: '\A ';
-
-  @if $level == 1 {
-    @each $key, $value in $layout-width-data {
-      $output: $output +
-        '#{$newline}- #{$key} #{available-layout-names($value, $level + 1)}';
-    }
-  } @else {
-    $output: '(';
-    $i: 1;
-
-    @each $key, $value in $layout-width-data {
-      $sep: if($i < length($layout-width-data), ', ', '');
-      $output: $output +
-        '#{$key}#{$sep}#{available-layout-names($value, $level + 1)}';
-      $i: $i + 1;
-    }
-
-    $output: $output + ')';
-  }
-
-  @return $output;
-}
-
 /// Returns the widths of the specified column.
 /// @param {String} $name - The column name.
 /// @return {Number} The width for the column.
@@ -83,7 +53,7 @@ $layout-width-data: (
   @if type-of($fetched-value) {
     @return $fetched-value;
   } @else {
-    @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-layout-names()}';
+    @error 'Column `#{$name} - #{$value}` not found. Available columns:\a       - primary (min, max)\a       - secondary (min, max)\a       - one-half-width (base)\a       - one-third-width (base)\a       - nav (base)\a       - page-with-nav (base)\a       - page-content (not-condensed, partially-condensed)\a       - inner-spacing (base)\a       - outer-spacing (min, max)';
   }
 }
 
