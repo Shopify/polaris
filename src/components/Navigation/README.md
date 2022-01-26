@@ -194,7 +194,7 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
 </Navigation>
 ```
 
-### Navigation with an active secondary navigation item
+### Navigation with multiple secondary navigations
 
 Use to present a secondary action, related to a section and to title the section.
 
@@ -211,49 +211,6 @@ Use to present a secondary action, related to a section and to title the section
         url: '/path/to/place',
         label: 'Orders',
         icon: OrdersMinor,
-        badge: '15',
-      },
-      {
-        url: '/admin/products',
-        label: 'Products',
-        icon: ProductsMinor,
-        selected: true,
-        subNavigationItems: [
-          {
-            url: '/admin/products/collections',
-            disabled: false,
-            selected: true,
-            label: 'Collections',
-          },
-          {
-            url: '/admin/products/inventory',
-            disabled: false,
-            label: 'Inventory',
-          },
-        ],
-      },
-    ]}
-  />
-</Navigation>
-```
-
-### Navigation with multiple secondary navigations
-
-Use to present a secondary action, related to a section and to title the section.
-
-```jsx
-<Navigation location="/">
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: HomeMajor,
-      },
-      {
-        url: '/path/to/place',
-        label: 'Orders',
-        icon: OrdersMajor,
         badge: '15',
         subNavigationItems: [
           {
@@ -272,7 +229,7 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Marketing',
-        icon: MarketingMajor,
+        icon: MarketingMinor,
         badge: '15',
         subNavigationItems: [
           {
@@ -291,18 +248,19 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/admin/products',
         label: 'Products',
-        icon: ProductsMajor,
+        icon: ProductsMinor,
         selected: true,
         subNavigationItems: [
           {
             url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
             disabled: false,
-            selected: true,
+            selected: false,
             label: 'Collections',
           },
           {
             url: '/admin/products/inventory',
             disabled: false,
+            selected: true,
             label: 'Inventory',
           },
         ],
@@ -324,18 +282,18 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajor,
+        icon: HomeMinor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajor,
+        icon: OrdersMinor,
         badge: '15',
       },
       {
         url: '/admin/products',
         label: 'Products',
-        icon: ProductsMajor,
+        icon: ProductsMinor,
         selected: true,
         subNavigationItems: [
           {
