@@ -27,6 +27,7 @@ $stacking-order: (
 
 .MainColor {
   @include checkers;
+  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: $picker-size;
@@ -99,6 +100,7 @@ $vertical-picker-border-radius: $picker-size * 0.5;
 
 .HuePicker,
 .AlphaPicker {
+  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: $picker-size;
