@@ -23,6 +23,7 @@
 
 .MainColor {
   @include checkers;
+  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
@@ -100,6 +101,7 @@ $huepicker-bottom-padding-start: calc(
 
 .HuePicker,
 .AlphaPicker {
+  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
