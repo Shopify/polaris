@@ -99,7 +99,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   &:visited {
-    color: var(--p-text);
+    color: inherit;
   }
 }
 
