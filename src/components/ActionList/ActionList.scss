@@ -43,16 +43,17 @@
 
 .Item {
   @include unstyled-button;
-  @include unstyled-link;
   @include focus-ring;
   display: block;
   width: 100%;
   min-height: var(--pc-action-list-item-min-height);
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   padding: var(--pc-action-list-item-vertical-padding) var(--p-space-2);
   border-radius: var(--p-border-radius-1);
   border-top: 1px solid transparent;
+  color: inherit;
   @media (forced-colors: active) {
     border: var(--p-border-width-1) solid transparent;
   }
@@ -63,15 +64,6 @@
     outline: var(--p-border-width-3) solid transparent;
   }
 
-  &.active {
-    @include recolor-icon(var(--p-interactive));
-    background-color: var(--p-surface-selected);
-
-    &::before {
-      @include list-selected-indicator;
-    }
-  }
-
   &:active {
     @include recolor-icon(var(--p-interactive));
     background-color: var(--p-surface-pressed);
@@ -80,6 +72,19 @@
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
     outline: var(--p-border-width-3) solid transparent;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &.active {
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-selected);
+
+    &::before {
+      @include list-selected-indicator;
+    }
   }
 
   &.destructive {
