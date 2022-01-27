@@ -53,7 +53,7 @@ $layout-width-data: (
   @if type-of($fetched-value) {
     @return $fetched-value;
   } @else {
-    @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-names($layout-width-data)}';
+    @error 'Column `#{$name} - #{$value}` not found. Available columns:\a       - primary (min, max)\a       - secondary (min, max)\a       - one-half-width (base)\a       - one-third-width (base)\a       - nav (base)\a       - page-with-nav (base)\a       - page-content (not-condensed, partially-condensed)\a       - inner-spacing (base)\a       - outer-spacing (min, max)';
   }
 }
 

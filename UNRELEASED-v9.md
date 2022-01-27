@@ -9,14 +9,14 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Moved `logo` from `ThemeProvider` to `Frame` context ([#4667](https://github.com/Shopify/polaris-react/pull/4667))
 - Moved `frameOffset` from `ThemeProvider` to `offset` prop on `Frame` ([#4727](https://github.com/Shopify/polaris-react/pull/4727))
 - Removed the deprecated `secondaryAction` prop on `SkeletonPage` ([#4742](https://github.com/Shopify/polaris-react/pull/4742))
-- Removed filter sass function ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
-- Removed color-icon() mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
+- Removed `filter()` sass function ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
+- Removed `color-icon()` mixin ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.
 - Removed miscellaneous css custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
 - Removed `skeleton-shimmer` mixin ([#4462](https://github.com/Shopify/polaris-react/pull/4462))
 - Remove `color-multiply` function ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
 - Remove `$color-palette-data` global variable ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
-- Removed the easing() function and replaced any instances with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
+- Removed the `easing()` function and replaced any instances with tokens ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 - Removed `$easing-data` global variable ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 - Removed the `duration()` scss function and replaced any instances with tokens ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 - Removed the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
@@ -32,12 +32,13 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated `--global-ribbon-height` CSS custom property to `--pc-frame-global-ribbon-height` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
 - Updated `--p-frame-offset` CSS custom property to `--pc-frame-offset` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
 - Updated all `--top-bar-*` CSS custom properties to `--pc-top-bar-*` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
-- Removed the border-radius() function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
-- Removed the shadow() function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
-- Removed the ms-high-contrast-color() function and replaced any instances with values ([#4938](https://github.com/Shopify/polaris-react/pull/4938))
+- Removed the `border-radius()` function and replaced any instances with tokens ([#4793](https://github.com/Shopify/polaris-react/pull/4793))
+- Removed the `shadow()` function (replaced any instances with tokens) and renamed shadow legacy tokens ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
+- Removed the `ms-high-contrast-color()` function and replaced any instances with values ([#4938](https://github.com/Shopify/polaris-react/pull/4938))
 - Removed the `border()` scss function ([#4934](https://github.com/Shopify/polaris-react/pull/4934))
-- Removed the font-family() function and replaced any instances with tokens ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
-- Removed the unstyled-list() mixin and replaced any instances with values ([#4960](https://github.com/Shopify/polaris-react/pull/4960))
+- Removed the `font-family()` function and replaced any instances with tokens ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
+- Removed the `available-names()` scss function ([#4967](https://github.com/Shopify/polaris-react/pull/4967))
+- Removed the `unstyled-list()` mixin and replaced any instances with values ([#4960](https://github.com/Shopify/polaris-react/pull/4960))
 
 ### New components
 
@@ -45,7 +46,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- Added duration token values between 0 and 500 with 50ms increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
+- Added duration token values between `0` and `500` with `50ms` increments ([#4781](https://github.com/Shopify/polaris-react/pull/4781))
 - Aligned easing tokens and values with CSS defaults ([#4790](https://github.com/Shopify/polaris-react/pull/4790))
 
 ### Bug fixes
