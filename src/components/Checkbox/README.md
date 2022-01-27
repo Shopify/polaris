@@ -134,6 +134,24 @@ function CheckboxExample() {
 
 <!-- /content-for -->
 
+### Checkbox with label hidden
+
+```jsx
+function CheckboxExample() {
+  const [checked, setChecked] = useState(false);
+  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+
+  return (
+    <Checkbox
+      label="Basic checkbox"
+      checked={checked}
+      onChange={handleChange}
+      labelHidden={true}
+    />
+  );
+}
+```
+
 ---
 
 ## Related components

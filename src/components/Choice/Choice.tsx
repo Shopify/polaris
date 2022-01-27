@@ -56,7 +56,14 @@ export function Choice({
       onMouseOut={onMouseOut}
     >
       <span className={styles.Control}>{children}</span>
-      <span className={styles.Label}>{label}</span>
+      <span
+        className={classNames(
+          styles.Label,
+          labelHidden && 'polaris-visually-hidden',
+        )}
+      >
+        {label}
+      </span>
     </label>
   );
 

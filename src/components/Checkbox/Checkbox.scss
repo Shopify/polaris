@@ -7,8 +7,6 @@
 
 // stylelint-disable selector-max-specificity, selector-max-class
 .Input {
-  @include visually-hidden;
-
   &.keyFocused {
     + .Backdrop {
       @include focus-ring($style: 'focused');

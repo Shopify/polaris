@@ -143,6 +143,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
       keyFocused && styles.keyFocused,
+      'polaris-visually-hidden',
     );
 
     return (

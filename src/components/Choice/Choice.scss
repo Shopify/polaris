@@ -10,10 +10,6 @@
 .labelHidden {
   padding: 0;
 
-  > .Label {
-    @include visually-hidden;
-  }
-
   .Control {
     margin-top: 0;
     margin-right: 0;
