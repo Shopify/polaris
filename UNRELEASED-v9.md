@@ -38,6 +38,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `border()` scss function ([#4934](https://github.com/Shopify/polaris-react/pull/4934))
 - Removed the `font-family()` function and replaced any instances with tokens ([#4940](https://github.com/Shopify/polaris-react/pull/4940))
 - Removed the `available-names()` scss function ([#4967](https://github.com/Shopify/polaris-react/pull/4967))
+- Removed the `unstyled-link()` mixin and replaced any instances with values ([#4951](https://github.com/Shopify/polaris-react/pull/4951))
 
 ### New components
 
