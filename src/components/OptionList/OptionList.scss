@@ -1,12 +1,15 @@
 @import '../../styles/common';
 
 .OptionList {
-  @include unstyled-list;
+  margin: 0;
   padding: var(--p-space-2);
+  list-style: none;
 }
 
 .Options {
-  @include unstyled-list;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .Title {
