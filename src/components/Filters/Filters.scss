@@ -94,7 +94,7 @@ $list-filters-footer-height: 70px;
   &:hover {
     cursor: pointer;
     background-color: var(--p-surface-hovered);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   &:focus:not(:active) {

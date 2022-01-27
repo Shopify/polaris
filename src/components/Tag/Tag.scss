@@ -25,6 +25,7 @@ $icon-size: 16px;
     cursor: pointer;
     padding: 0 var(--p-space-2);
     background-color: var(--p-surface-neutral);
+    outline: var(--p-border-width-1) solid transparent;
 
     &:hover {
       background: var(--p-surface-neutral-hovered);
@@ -56,8 +57,6 @@ $icon-size: 16px;
   &.linkable {
     padding: 0;
   }
-
-  @include high-contrast-outline;
 }
 
 .TagText {
@@ -79,7 +78,7 @@ $icon-size: 16px;
 
   &:hover {
     background: var(--p-surface-neutral-hovered);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   @include focus-ring;

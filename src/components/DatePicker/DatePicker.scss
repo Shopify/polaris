@@ -64,7 +64,7 @@ $font-size: 12px;
   &:hover {
     background: var(--p-interactive-hovered);
     color: var(--p-text-on-interactive);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   @include focus-ring;

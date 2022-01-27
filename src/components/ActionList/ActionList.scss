@@ -55,14 +55,13 @@
   border-top: 1px solid transparent;
   color: inherit;
   @media (forced-colors: active) {
-    @include high-contrast-border;
+    border: var(--p-border-width-1) solid transparent;
   }
 
   &:hover {
     background-color: var(--p-surface-hovered);
     text-decoration: none;
-
-    @include high-contrast-outline($border-width: var(--p-border-width-3));
+    outline: var(--p-border-width-3) solid transparent;
   }
 
   &:active {
@@ -72,7 +71,7 @@
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
-    @include high-contrast-outline($border-width: var(--p-border-width-3));
+    outline: var(--p-border-width-3) solid transparent;
   }
 
   &:visited {

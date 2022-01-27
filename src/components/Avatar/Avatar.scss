@@ -16,7 +16,7 @@
   user-select: none;
 
   @media (forced-colors: active) {
-    @include high-contrast-border;
+    border: var(--p-border-width-1) solid transparent;
   }
 
   &::after {

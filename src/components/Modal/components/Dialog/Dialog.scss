@@ -43,7 +43,7 @@ $dangerous-magic-space-16: 64px;
   box-shadow: var(--p-shadow-modal);
 
   @media (forced-colors: active) {
-    @include high-contrast-border;
+    border: var(--p-border-width-1) solid transparent;
   }
 
   @include frame-when-nav-hidden {
