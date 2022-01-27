@@ -16,7 +16,7 @@
 
 @mixin range-track-selectors {
   &::-ms-track {
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
     @content;
   }
 

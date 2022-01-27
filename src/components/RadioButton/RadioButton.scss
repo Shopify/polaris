@@ -70,7 +70,7 @@
       transform var(--p-duration-100) var(--p-ease);
 
     @media (forced-colors: active) {
-      @include high-contrast-border(5px);
+      border: 5px solid transparent;
     }
   }
 

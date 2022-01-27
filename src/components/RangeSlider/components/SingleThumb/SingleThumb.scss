@@ -127,12 +127,11 @@
   }
 
   &:focus {
+    outline: var(--p-border-width-1) solid transparent;
     @include range-thumb-selectors {
       border-color: var(--p-surface);
       box-shadow: 0 0 0 2px var(--p-focused);
     }
-
-    @include high-contrast-outline;
   }
 
   .error & {
@@ -203,6 +202,7 @@ $range-output-spacing: 16px;
   transition-property: transform;
   transition-duration: var(--p-duration-200);
   transition-timing-function: var(--p-ease);
+  outline: var(--p-border-width-1) solid transparent;
 
   // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Input:hover + .Output &,
@@ -214,7 +214,6 @@ $range-output-spacing: 16px;
       transform: translateY(-($range-output-spacing * 0.5));
     }
   }
-  @include high-contrast-outline;
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
