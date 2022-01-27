@@ -92,7 +92,7 @@ $breakpoint: 768px;
 
 .Cell-header {
   @include text-emphasis-normal;
-  border-bottom: border(dark);
+  border-bottom: border('divider');
   border-top: 0;
 }
 
@@ -165,7 +165,7 @@ $breakpoint: 768px;
 .Cell-total {
   @include text-emphasis-strong;
   background: var(--p-surface-subdued);
-  border-bottom: border();
+  border-bottom: border('divider');
 }
 
 .Cell-total-footer {
