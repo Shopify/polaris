@@ -3,6 +3,7 @@
 // components then this css shall always be present.
 
 @import '../../styles/common';
+@import '../../styles/utilities.scss';
 
 :root {
   --polaris-version-number: '{{POLARIS_VERSION}}';

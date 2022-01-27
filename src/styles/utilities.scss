@@ -1,0 +1,14 @@
+:global(.polaris-visually-hidden) {
+  // Need to make sure we override any existing styles.
+  // stylelint-disable declaration-no-important
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  // stylelint-enable declaration-no-important
+}
