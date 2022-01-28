@@ -95,6 +95,7 @@ import {
   FormLayout,
   Frame,
   Heading,
+  Typography,
   Icon,
   Image,
   IndexTable,
@@ -356,7 +357,8 @@ function filterMarkdownForPlatform(markdown, platform) {
     `<!-- content-for: (?:[\\w\\s,]*${platform}[\\w\\s,]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
     'gu',
   );
-  const deleteRemainingPlatformsRegExp = /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
+  const deleteRemainingPlatformsRegExp =
+    /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
 
   return (
     markdown

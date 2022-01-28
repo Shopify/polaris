@@ -356,6 +356,9 @@ export type {TrapFocusProps} from './components/TrapFocus';
 export {Truncate} from './components/Truncate';
 export type {TruncateProps} from './components/Truncate';
 
+export {Typography} from './components/Typography';
+export type {TypographyProps} from './components/Typography';
+
 export {UnstyledButton, unstyledButtonFrom} from './components/UnstyledButton';
 export type {UnstyledButtonProps} from './components/UnstyledButton';
 

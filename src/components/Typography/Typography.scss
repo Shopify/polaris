@@ -1,0 +1,186 @@
+@import '../../styles/common';
+
+$breakpoints-md: 640px;
+
+.root {
+  margin: 0;
+}
+
+.inherit {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+  }
+}
+
+.body {
+  font-size: var(--p-font-size-4);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-2);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+.caption {
+  font-size: var(--p-font-size-2);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-2);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-1);
+    line-height: var(--p-line-height-1);
+  }
+}
+
+.heading {
+  font-size: var(--p-font-size-6);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-3);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-5);
+  }
+}
+
+.subheading {
+  font-size: var(--p-font-size-2);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-1);
+  text-transform: uppercase;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-1);
+  }
+}
+
+.input {
+  font-size: var(--p-font-size-5);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-3);
+  border: none; // TODO: Investigate why is this is here.
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+.button {
+  font-size: var(--p-font-size-4);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-1);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+.buttonLarge {
+  font-size: var(--p-font-size-6);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-2);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-5);
+  }
+}
+
+.displayExtraLarge {
+  font-size: var(--p-font-size-11);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-6);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-13);
+    line-height: var(--p-line-height-7);
+  }
+}
+
+.displayLarge {
+  font-size: var(--p-font-size-9);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-4);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-12);
+    line-height: var(--p-line-height-5);
+  }
+}
+
+.displayMedium {
+  font-size: var(--p-font-size-8);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-4);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-10);
+    line-height: var(--p-line-height-5);
+  }
+}
+
+.displaySmall {
+  font-size: var(--p-font-size-5);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-3);
+
+  @include breakpoint-after($breakpoints-md) {
+    font-size: var(--p-font-size-7);
+    line-height: var(--p-line-height-4);
+  }
+}
+
+.noWrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.breakword {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.printHidden {
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+// TODO: Can we get rid of these?
+
+.emphasis-subdued {
+  color: var(--p-text-subdued);
+}
+
+.emphasis-strong {
+  font-weight: var(--p-font-weight-semibold);
+}
+
+.emphasis-normal {
+  font-weight: var(--p-font-weight-regular);
+  color: var(--p-text);
+}
