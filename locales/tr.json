@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "İşlemler"
+        "rollupButton": "İşlemleri görüntüle"
+      },
+      "Actions": {
+        "moreActions": "Diğer işlemler"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Diğer işlemler",
         "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan maksimum işlem sayısı {maxPromotedActions} olmalıdır."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtrele",
-        "selectFilterKeyPlaceholder": "Filtre seçin...",
-        "addFilterButtonLabel": "Filtre ekle",
-        "showAllWhere": "Şu özellikleri taşıyan tüm {resourceNamePlural} kaynağını göster:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Arayın: {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Filtre seçin..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Değer seçin",
-        "dateValueLabel": "Tarih",
-        "dateValueError": "YYYY-AA-GG biçimini eşleştir",
-        "dateValuePlaceholder": "YYYY-AA-GG",
-        "SelectOptions": {
-          "PastWeek": "geçtiğimiz hafta içinde",
-          "PastMonth": "geçtiğimiz ay içinde",
-          "PastQuarter": "geçtiğimiz 3 ay içinde",
-          "PastYear": "geçtiğimiz yıl içinde",
-          "ComingWeek": "önümüzdeki hafta",
-          "ComingMonth": "önümüzdeki ay",
-          "ComingQuarter": "önümüzdeki 3 ay içinde",
-          "ComingYear": "önümüzdeki yıl",
-          "OnOrBefore": "şu tarihte veya bundan önce:",
-          "OnOrAfter": "şu tarihte veya bundan sonra:"
-        },
-        "FilterLabelForValue": {
-          "past_week": "geçtiğimiz hafta içinde",
-          "past_month": "geçtiğimiz ay içinde",
-          "past_quarter": "geçtiğimiz 3 ay içinde",
-          "past_year": "geçtiğimiz yıl içinde",
-          "coming_week": "önümüzdeki hafta",
-          "coming_month": "önümüzdeki ay",
-          "coming_quarter": "önümüzdeki 3 ay içinde",
-          "coming_year": "önümüzdeki yıl",
-          "on_or_before": "{date} tarihinden önce",
-          "on_or_after": "{date} tarihinden sonra"
-        }
-      },
       "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor",
       "allFilteredItemsSelected": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} seçildi.",
       "selectAllFilteredItems": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} öğelerini seç"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
-    },
-    "Spinner": {
-      "warningMessage": "{color} rengi {size} boyutlu çarklarda kullanıma yönelik değildir. Büyük çarklarda kullanılabilen renkler şunlardır: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Daha fazla sekme"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Diğer işlemler"
-    },
     "Loading": {
       "label": "Sayfa yüklenme çubuğu"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
       "selectItem": "Seç: {resourceName}",
       "selectButtonText": "Seç"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} için işlemleri görüntüle"
+      }
     }
   }
 }

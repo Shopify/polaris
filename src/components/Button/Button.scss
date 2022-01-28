@@ -111,21 +111,28 @@ $stacking-order: (
   margin-left: -($spinner-size / 2);
 }
 
+.primary,
+.destructive {
+  @include button-filled;
+
+  &.disabled {
+    @include recolor-icon(var(--p-icon-disabled));
+    color: var(--p-text-disabled);
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+
 .primary {
   --p-button-color: var(--p-action-primary);
   --p-button-text: var(--p-text-on-primary);
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
-  @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
-    @include recolor-icon(var(--p-icon-disabled));
     background: var(--p-action-primary-disabled);
-    color: var(--p-text-disabled);
-    border-color: transparent;
-    box-shadow: none;
   }
 }
 
@@ -135,28 +142,24 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
-  @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
-    @include recolor-icon(var(--p-icon-disabled));
     background: var(--p-action-critical-disabled);
-    color: var(--p-text-disabled);
-    box-shadow: none;
-    border-color: transparent;
   }
 }
 
 .outline {
-  @include button-outline(color('ink', 'lighter'));
+  @include button-outline(var(--p-border));
 
   &.disabled {
-    @include button-outline-disabled(color('ink', 'lighter'));
+    background: transparent;
+    box-shadow: none;
   }
 }
 
 .destructive.outline {
-  @include button-outline(color('red'));
+  @include button-outline(var(--p-border-critical));
 }
 
 .disabled {
@@ -405,11 +408,11 @@ $stacking-order: (
   }
 
   &.plain {
-    // stylelint-disable selector-max-class, max-nesting-depth
+    // stylelint-disable selector-max-class
     .Text:not(.removeUnderline) {
       text-decoration: underline;
     }
-    // stylelint-enable selector-max-class, max-nesting-depth
+    // stylelint-enable selector-max-class
   }
 
   &.outline {
@@ -446,6 +449,7 @@ $stacking-order: (
     &:active {
       background-color: transparent;
       border-color: currentColor;
+
       &::before {
         opacity: 0.07;
       }
@@ -462,7 +466,6 @@ $stacking-order: (
 
     &:hover,
     &:active {
-      // stylelint-disable-next-line max-nesting-depth
       &::before {
         opacity: 0.05;
       }
@@ -483,9 +486,12 @@ $stacking-order: (
   border-bottom-left-radius: 0;
   height: 100%;
 
-  // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
+  // Note 1: Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
+  // Note 2: hardcoding this value because we can't use custom css properties in sass functions. Will clean up in a follow-up
+  // https://github.com/Shopify/polaris-react/pull/4655#discussion_r750793847
   &.outline:not(:focus) {
-    border-left-color: rgba(color('ink', 'lighter'), 0);
+    /* stylelint-disable color-no-hex */
+    border-left-color: rgba(#d2d5d8, 0);
   }
 
   &:focus,
@@ -509,18 +515,20 @@ $stacking-order: (
     border-bottom-left-radius: 0;
   }
 }
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-disable selector-max-combinators, selector-max-specificity
 [data-buttongroup-segmented='true'] {
   .Button,
   .Button::after {
     border-radius: 0;
   }
+
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
     border-top-left-radius: var(--p-border-radius-base);
     border-bottom-left-radius: var(--p-border-radius-base);
   }
+
   > :last-child .Button,
   > :last-child .Button::after {
     border-radius: 0;
@@ -551,4 +559,4 @@ $stacking-order: (
     @include button-full-width;
   }
 }
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+// stylelint-enable selector-max-combinators, selector-max-specificity

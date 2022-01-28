@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Tab} from '../Tab';
 
@@ -36,7 +36,7 @@ describe('<Tab />', () => {
 
     it('is not aria-selected when the tab is not selected', () => {
       let tab = mountWithApp(<Tab id="my-tab">Tab</Tab>);
-      expect(tab.find('button')!.prop('aria-selected')).toBeFalsy();
+      expect(tab.find('button')!.prop('aria-selected')).toBeUndefined();
 
       tab = mountWithApp(
         <Tab id="my-tab" selected={false}>

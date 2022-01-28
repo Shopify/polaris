@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState, useCallback, useMemo} from 'react';
 import debounce from 'lodash/debounce';
 
 import {MediaQueryContext} from '../../utilities/media-query';
@@ -34,8 +34,13 @@ export const MediaQueryProvider = function MediaQueryProvider({
     setIsNavigationCollapsed(navigationBarCollapsed().matches);
   }, []);
 
+  const context = useMemo(
+    () => ({isNavigationCollapsed}),
+    [isNavigationCollapsed],
+  );
+
   return (
-    <MediaQueryContext.Provider value={{isNavigationCollapsed}}>
+    <MediaQueryContext.Provider value={context}>
       <EventListener event="resize" handler={handleResize} />
       {children}
     </MediaQueryContext.Provider>

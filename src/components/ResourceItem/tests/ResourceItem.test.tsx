@@ -1,14 +1,12 @@
 import React, {AllHTMLAttributes} from 'react';
-import {mountWithApp} from 'test-utilities';
-import {
-  Avatar,
-  ButtonGroup,
-  Checkbox,
-  Thumbnail,
-  UnstyledLink,
-  Button,
-} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Avatar} from '../../Avatar';
+import {Button} from '../../Button';
+import {ButtonGroup} from '../../ButtonGroup';
+import {Checkbox} from '../../Checkbox';
+import {Thumbnail} from '../../Thumbnail';
+import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
 import {ResourceListContext} from '../../../utilities/resource-list';
 import styles from '../ResourceItem.scss';

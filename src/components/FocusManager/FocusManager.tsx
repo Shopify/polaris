@@ -29,11 +29,10 @@ export function FocusManager({children}: Props) {
     return removed;
   }, []);
 
-  const value = useMemo(() => ({trapFocusList, add, remove}), [
-    add,
-    trapFocusList,
-    remove,
-  ]);
+  const value = useMemo(
+    () => ({trapFocusList, add, remove}),
+    [add, trapFocusList, remove],
+  );
 
   return (
     <FocusManagerContext.Provider value={value}>

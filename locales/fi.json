@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Toiminnat"
+        "rollupButton": "Näytä toiminnot"
+      },
+      "Actions": {
+        "moreActions": "Lisää toimintoja"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Lisää toimintoja",
         "warningMessage": "Paremman käyttäjäkokemuksen tarjoamiseksi. Mainostettavia toimintoja saa olla enintään {maxPromotedActions}."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Suodata",
-        "selectFilterKeyPlaceholder": "Valitse suodatin…",
-        "addFilterButtonLabel": "Lisää suodatin",
-        "showAllWhere": "Näytä kaikki {resourceNamePlural}, joissa:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Hae {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Valitse suodatin…"
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Valitse arvo",
-        "dateValueLabel": "Päivämäärä",
-        "dateValueError": "Noudata muotoa VVVV-KK-PP",
-        "dateValuePlaceholder": "VVVV-KK-PP",
-        "SelectOptions": {
-          "PastWeek": "viime viikolla",
-          "PastMonth": "viime kuussa",
-          "PastQuarter": "viimeisten kolmen kuukauden aikana",
-          "PastYear": "viime vuonna",
-          "ComingWeek": "ensi viikolla",
-          "ComingMonth": "ensi kuussa",
-          "ComingQuarter": "seuraavien kolmen kuukauden aikana",
-          "ComingYear": "ensi vuonna",
-          "OnOrBefore": "päivänä tai sitä ennen",
-          "OnOrAfter": "päivänä tai sen jälkeen"
-        },
-        "FilterLabelForValue": {
-          "past_week": "viime viikolla",
-          "past_month": "viime kuussa",
-          "past_quarter": "viimeisten kolmen kuukauden aikana",
-          "past_year": "viime vuonna",
-          "coming_week": "ensi viikolla",
-          "coming_month": "ensi kuussa",
-          "coming_quarter": "seuraavien kolmen kuukauden aikana",
-          "coming_year": "ensi vuonna",
-          "on_or_before": "ennen {date}",
-          "on_or_after": "jälkeen {date}"
-        }
-      },
       "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural} on valittu.",
       "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
-    },
-    "Spinner": {
-      "warningMessage": "Väriä {color} ei ole tarkoitus käyttää koon {size} spinnereissä. Suurten spinnerien värit ovat: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Lisää välilehtiä"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Lisää toimintoja"
-    },
     "Loading": {
       "label": "Sivun latautumisen palkki"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
       "selectButtonText": "Valitse"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Näytä nimikettä {title} koskevat toiminnot"
+      }
     }
   }
 }

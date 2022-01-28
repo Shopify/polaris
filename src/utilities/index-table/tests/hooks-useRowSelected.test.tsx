@@ -1,12 +1,13 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
-import {IndexTable, IndexTableProps} from '../../../components';
-import {useRowHovered} from '../hooks';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {IndexTable, IndexTableProps} from '../../../components/IndexTable';
+import {useRowSelected} from '../hooks';
 
 function Component() {
-  const hovered = useRowHovered();
-  const content = hovered ? 'In' : 'Out';
+  const selected = useRowSelected();
+  const content = selected ? 'Selected' : 'Unselected';
 
   return <td>{content}</td>;
 }
@@ -19,7 +20,7 @@ const defaultIndexTableProps: IndexTableProps = {
 };
 
 describe('useRowHovered', () => {
-  it('returns true when the Row is hovered', () => {
+  it('returns true when the Row is selected', () => {
     const component = mountWithApp(
       <IndexTable {...defaultIndexTableProps}>
         <IndexTable.Row id="id" selected position={1}>
@@ -28,22 +29,18 @@ describe('useRowHovered', () => {
       </IndexTable>,
     );
 
-    component.findAll('tr')[1]!.trigger('onMouseEnter');
-
-    expect(component).toContainReactText('In');
+    expect(component).toContainReactText('Selected');
   });
 
-  it('returns false when the Row is not hovered', () => {
+  it('returns false when the Row is not selected', () => {
     const component = mountWithApp(
       <IndexTable {...defaultIndexTableProps}>
-        <IndexTable.Row id="id" selected position={1}>
+        <IndexTable.Row id="id" selected={false} position={1}>
           <Component />
         </IndexTable.Row>
       </IndexTable>,
     );
 
-    component.findAll('tr')[1]!.trigger('onMouseLeave');
-
-    expect(component).toContainReactText('Out');
+    expect(component).toContainReactText('Unselected');
   });
 });

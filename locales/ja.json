@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "アクション"
+        "rollupButton": "アクションを表示する"
+      },
+      "Actions": {
+        "moreActions": "その他の操作"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "その他の操作",
         "warningMessage": "さらによいユーザーエクスペリエンスのために。宣伝のアクションは最大で{maxPromotedActions}回までです。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "絞り込む",
-        "selectFilterKeyPlaceholder": "絞り込みを選択する...",
-        "addFilterButtonLabel": "絞り込みを追加する",
-        "showAllWhere": "すべての{resourceNamePlural}を表示する:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural}を検索する"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "絞り込みを選択する..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "値を選択する",
-        "dateValueLabel": "日付",
-        "dateValueError": "YYYY年MM月DD日フォーマットと一致する",
-        "dateValuePlaceholder": "YYYY年MM月DD日",
-        "SelectOptions": {
-          "PastWeek": "先週",
-          "PastMonth": "先月",
-          "PastQuarter": "過去3か月",
-          "PastYear": "昨年",
-          "ComingWeek": "来週",
-          "ComingMonth": "来月",
-          "ComingQuarter": "今後3か月",
-          "ComingYear": "来年",
-          "OnOrBefore": "以前",
-          "OnOrAfter": "以後"
-        },
-        "FilterLabelForValue": {
-          "past_week": "先週",
-          "past_month": "先月",
-          "past_quarter": "過去3か月",
-          "past_year": "昨年",
-          "coming_week": "来週",
-          "coming_month": "来月",
-          "coming_quarter": "今後3か月",
-          "coming_year": "来年",
-          "on_or_before": "{date}以前",
-          "on_or_after": "{date}以後"
-        }
-      },
       "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中",
       "allFilteredItemsSelected": "この絞り込みの{itemsLength}と{resourceNamePlural}がすべて選択されます。",
       "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"
-    },
-    "Spinner": {
-      "warningMessage": "{color}色は{size}のスピナーでは使用されていません。大きなスピナーで利用可能な色は次のとおりです: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "その他のタブ"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "その他の操作"
-    },
     "Loading": {
       "label": "ページの読み込み表示バー"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
       "selectButtonText": "選択"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title}のアクションを表示"
+      }
     }
   }
 }

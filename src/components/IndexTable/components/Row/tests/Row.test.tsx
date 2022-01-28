@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
 import {IndexTable, IndexTableProps} from '../../../IndexTable';

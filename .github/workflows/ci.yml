@@ -6,18 +6,19 @@ jobs:
   test:
     name: 'Test'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16.9.1']
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2
         with:
-          node-version: '12.22.0'
-          cache: 'yarn'
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
 
       - run: yarn --frozen-lockfile
       - run: yarn run type-check && yarn run build
       - run: yarn run lint
-      - run: yarn run check:custom-properties
       - run: yarn run test
 
   accessibility_test:
@@ -25,14 +26,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2
         with:
-          node-version: '12.22.0'
-          cache: 'yarn'
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
 
       - run: yarn --frozen-lockfile
       - run: yarn run storybook:build --quiet
       - run: node ./scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
+
+  visual_regression_test:
+    name: 'Visual regression test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Chromatic git history to track changes
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - run: yarn --frozen-lockfile
+      - run: yarn storybook:build --quiet
+
+      - uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: 'build-internal/storybook/static'
+          autoAcceptChanges: 'main'
+          exitZeroOnChanges: true
+          exitOnceUploaded: true

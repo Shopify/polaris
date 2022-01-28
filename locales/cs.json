@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Akce"
+        "rollupButton": "Zobrazit akce"
+      },
+      "Actions": {
+        "moreActions": "Další akce"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Další akce",
         "warningMessage": "Za účelem zlepšení uživatelské zkušenosti. Promo akcí by mělo být maximálně {maxPromotedActions}."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtr",
-        "selectFilterKeyPlaceholder": "Vyberte filtr...",
-        "addFilterButtonLabel": "Přidat filtr",
-        "showAllWhere": "Zobrazit všechny případy ({resourceNamePlural}), kde:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Prohledejte {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Vyberte filtr..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Vyberte hodnotu",
-        "dateValueLabel": "Datum",
-        "dateValueError": "Použijte formát RRRR-MM-DD",
-        "dateValuePlaceholder": "RRRR-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "za poslední týden",
-          "PastMonth": "za poslední měsíc",
-          "PastQuarter": "za poslední tři měsíce",
-          "PastYear": "za poslední rok",
-          "ComingWeek": "příští týden",
-          "ComingMonth": "příští měsíc",
-          "ComingQuarter": "v příštích třech měsících",
-          "ComingYear": "v příštím roce",
-          "OnOrBefore": "dne nebo dříve než",
-          "OnOrAfter": "dne nebo později než"
-        },
-        "FilterLabelForValue": {
-          "past_week": "za poslední týden",
-          "past_month": "za poslední měsíc",
-          "past_quarter": "za poslední tři měsíce",
-          "past_year": "za poslední rok",
-          "coming_week": "příští týden",
-          "coming_month": "příští měsíc",
-          "coming_quarter": "v příštích třech měsících",
-          "coming_year": "v příštím roce",
-          "on_or_before": "před {date}",
-          "on_or_after": "po {date}"
-        }
-      },
       "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Jsou vybrány všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru.",
       "selectAllFilteredItems": "Vyberte všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru."
     },
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
-    },
-    "Spinner": {
-      "warningMessage": "Barva ({color}) není určena pro spinnery o velikosti: {size}). Pro velké spinnery jsou k dispozici tyto barvy: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Více karet"
@@ -306,9 +264,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Další akce"
-    },
     "Loading": {
       "label": "Panel načítání stránky"
     },
@@ -336,6 +291,11 @@
       "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+      }
     }
   }
 }

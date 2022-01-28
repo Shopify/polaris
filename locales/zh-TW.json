@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "動作"
+        "rollupButton": "檢視動作"
+      },
+      "Actions": {
+        "moreActions": "更多動作"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "更多動作",
         "warningMessage": "為提供更良好的使用者體驗，您一次舉辦的促銷活動應以 {maxPromotedActions} 項為限。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "篩選",
-        "selectFilterKeyPlaceholder": "選擇篩選條件......",
-        "addFilterButtonLabel": "新增篩選條件",
-        "showAllWhere": "顯示符合以下條件的所有 {resourceNamePlural}："
-      },
-      "FilterControl": {
-        "textFieldLabel": "搜尋 {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "選擇篩選條件......"
-      },
-      "DateSelector": {
-        "dateFilterLabel": "選擇一個值",
-        "dateValueLabel": "日期",
-        "dateValueError": "符合「YYYY-MM-DD」格式",
-        "dateValuePlaceholder": "YYYY-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "上週",
-          "PastMonth": "上個月",
-          "PastQuarter": "過去 3 個月",
-          "PastYear": "去年",
-          "ComingWeek": "下週",
-          "ComingMonth": "下個月",
-          "ComingQuarter": "未來 3 個月",
-          "ComingYear": "明年",
-          "OnOrBefore": "當天或之前",
-          "OnOrAfter": "當天或之後"
-        },
-        "FilterLabelForValue": {
-          "past_week": "上週",
-          "past_month": "上個月",
-          "past_quarter": "過去 3 個月",
-          "past_year": "去年",
-          "coming_week": "下週",
-          "coming_month": "下個月",
-          "coming_quarter": "未來 3 個月",
-          "coming_year": "明年",
-          "on_or_before": "{date} 之前",
-          "on_or_after": "{date} 之後"
-        }
-      },
       "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個",
       "allFilteredItemsSelected": "已選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}。",
       "selectAllFilteredItems": "選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
-    },
-    "Spinner": {
-      "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "更多索引標籤"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "更多動作"
-    },
     "Loading": {
       "label": "頁面載入進度條"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",
       "selectButtonText": "選取"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "檢視 {title} 的動作"
+      }
     }
   }
 }

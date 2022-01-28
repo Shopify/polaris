@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ProgressBar} from '../ProgressBar';
 
@@ -31,6 +31,7 @@ describe('<ProgressBar />', () => {
         className: 'Indicator Animated',
       });
     });
+
     it('sets the progress bar to exclude the Animated class when animated is false', () => {
       const progress = mountWithApp(
         <ProgressBar animated={false} progress={20} />,

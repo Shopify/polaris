@@ -1,8 +1,10 @@
 import React from 'react';
-import {InlineError, Icon, Labelled} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
 
+import {InlineError} from '../../InlineError';
+import {Icon} from '../../Icon';
+import {Labelled} from '../../Labelled';
 import {Select} from '../Select';
 
 describe('<Select />', () => {
@@ -180,7 +182,7 @@ describe('<Select />', () => {
         .find('select')!
         .prop('id');
       expect(typeof id).toBe('string');
-      expect(id).toBeTruthy();
+      expect(id).toBeDefined();
     });
   });
 
@@ -196,12 +198,12 @@ describe('<Select />', () => {
       let select = mountWithApp(
         <Select label="Select" options={[]} onChange={noop} />,
       );
-      expect(select.find('select')!.prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBeUndefined();
 
       select = mountWithApp(
         <Select label="Select" disabled={false} options={[]} onChange={noop} />,
       );
-      expect(select.find('select')!.prop('disabled')).toBeFalsy();
+      expect(select.find('select')!.prop('disabled')).toBe(false);
     });
   });
 

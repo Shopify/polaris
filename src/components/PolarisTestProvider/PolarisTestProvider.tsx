@@ -1,4 +1,4 @@
-import React, {Fragment, StrictMode} from 'react';
+import React, {useMemo, Fragment, StrictMode} from 'react';
 
 import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
@@ -70,12 +70,15 @@ export function PolarisTestProvider({
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
-  const intl = new I18n(i18n || {});
-  const scrollLockManager = new ScrollLockManager();
+  const intl = useMemo(() => new I18n(i18n || {}), [i18n]);
+  const scrollLockManager = useMemo(() => new ScrollLockManager(), []);
 
-  const stickyManager = new StickyManager();
+  const stickyManager = useMemo(() => new StickyManager(), []);
 
-  const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
+  const uniqueIdFactory = useMemo(
+    () => new UniqueIdFactory(globalIdGeneratorFactory),
+    [],
+  );
 
   const processedThemeConfig = {...theme, colorScheme: 'light' as const};
 

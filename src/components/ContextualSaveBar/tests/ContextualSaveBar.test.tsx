@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, mountWithApp} from 'test-utilities';
+import {mount, mountWithApp} from 'tests/utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
 

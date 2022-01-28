@@ -1,11 +1,12 @@
 ---
 name: Top bar
-category: Structure
+category: Navigation
 keywords:
   - global chrome
   - global features
   - topbar
   - top bar
+  - header
   - nav bar
   - bar
   - navbar
@@ -19,7 +20,7 @@ omitAppProvider: true
 
 # Top bar
 
-Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
+The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
 
 ---
 

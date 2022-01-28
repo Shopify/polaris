@@ -1,6 +1,8 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Avatar, Image} from 'components';
+import {mountWithApp} from 'tests/utilities';
+
+import {Image} from '../../Image';
+import {Avatar} from '../Avatar';
 
 jest.mock('../../../utilities/use-is-after-initial-mount', () => {
   return {

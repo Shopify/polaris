@@ -1,6 +1,10 @@
 import React, {useState, useCallback} from 'react';
-import type {Descriptor, OptionDescriptor, SectionDescriptor} from 'types';
 
+import type {
+  Descriptor,
+  OptionDescriptor,
+  SectionDescriptor,
+} from '../../types';
 import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -9,28 +13,32 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Option} from './components';
 import styles from './OptionList.scss';
 
-export interface OptionListProps<Value extends string = string> {
+type Alignment = 'top' | 'center' | 'bottom';
+
+export interface OptionListProps<TValue extends string = string> {
   /** A unique identifier for the option list */
   id?: string;
   /** List title */
   title?: string;
   /** Collection of options to be listed */
-  options?: OptionDescriptor<Value>[];
+  options?: OptionDescriptor<TValue>[];
   /** Defines a specific role attribute for the list itself */
   role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
-  sections?: SectionDescriptor<Value>[];
+  sections?: SectionDescriptor<TValue>[];
   /** The selected options */
-  selected: Value[];
+  selected: TValue[];
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
+  /** Vertically align child content to the center, top, or bottom.  */
+  verticalAlign?: Alignment;
   /** Callback when selection is changed */
-  onChange(selected: Value[]): void;
+  onChange(selected: TValue[]): void;
 }
 
-export function OptionList<Value extends string = string>({
+export function OptionList<TValue extends string = string>({
   options,
   sections,
   title,
@@ -38,9 +46,10 @@ export function OptionList<Value extends string = string>({
   allowMultiple,
   role,
   optionRole,
+  verticalAlign,
   onChange,
   id: idProp,
-}: OptionListProps<Value>) {
+}: OptionListProps<TValue>) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
@@ -58,13 +67,13 @@ export function OptionList<Value extends string = string>({
 
   const handleClick = useCallback(
     (sectionIndex: number, optionIndex: number) => {
-      const selectedValue =
+      const selectedTValue =
         normalizedOptions[sectionIndex].options[optionIndex].value;
-      const foundIndex = selected.indexOf(selectedValue);
+      const foundIndex = selected.indexOf(selectedTValue);
       if (allowMultiple) {
         const newSelection =
           foundIndex === -1
-            ? [selectedValue, ...selected]
+            ? [selectedTValue, ...selected]
             : [
                 ...selected.slice(0, foundIndex),
                 ...selected.slice(foundIndex + 1, selected.length),
@@ -72,7 +81,7 @@ export function OptionList<Value extends string = string>({
         onChange(newSelection);
         return;
       }
-      onChange([selectedValue]);
+      onChange([selectedTValue]);
     },
     [normalizedOptions, selected, allowMultiple, onChange],
   );
@@ -93,14 +102,15 @@ export function OptionList<Value extends string = string>({
 
             return (
               <Option
-                {...option}
                 key={optionId}
+                {...option}
                 id={optionId}
                 section={sectionIndex}
                 index={optionIndex}
                 onClick={handleClick}
                 select={isSelected}
                 allowMultiple={allowMultiple}
+                verticalAlign={verticalAlign}
                 role={optionRole}
               />
             );
@@ -128,11 +138,11 @@ export function OptionList<Value extends string = string>({
   );
 }
 
-function createNormalizedOptions<Value extends string = string>(
-  options?: OptionDescriptor<Value>[],
-  sections?: SectionDescriptor<Value>[],
+function createNormalizedOptions<TValue extends string = string>(
+  options?: OptionDescriptor<TValue>[],
+  sections?: SectionDescriptor<TValue>[],
   title?: string,
-): SectionDescriptor<Value>[] {
+): SectionDescriptor<TValue>[] {
   if (options == null) {
     const section = {options: [], title};
     return sections == null ? [] : [section, ...sections];

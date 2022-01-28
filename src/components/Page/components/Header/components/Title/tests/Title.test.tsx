@@ -1,7 +1,9 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Badge, DisplayText, Avatar} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Badge} from '../../../../../../Badge';
+import {DisplayText} from '../../../../../../DisplayText';
+import {Avatar} from '../../../../../../Avatar';
 import {Title} from '../Title';
 
 describe('<Title />', () => {
@@ -56,6 +58,7 @@ describe('<Title />', () => {
       ...mockProps,
       titleMetadata: <Badge>Sold</Badge>,
     };
+
     it('renders the titleMetadata when defined', () => {
       const pageTitle = mountWithApp(<Title {...propsWithMetadata} />);
       expect(pageTitle).toContainReactComponent(Badge);

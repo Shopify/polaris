@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {UnstyledLink} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {UnstyledLink} from '../../UnstyledLink';
 import {UnstyledButton} from '../UnstyledButton';
 
 describe('<Button />', () => {

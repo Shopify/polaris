@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {TextField} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {TextField} from '../../../../TextField';
 import {Item} from '../Item';
 
 describe('<Item />', () => {

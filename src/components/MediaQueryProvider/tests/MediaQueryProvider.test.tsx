@@ -1,9 +1,9 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {act} from 'react-dom/test-utils';
-import {mountWithApp} from 'test-utilities';
-import {EventListener} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {EventListener} from '../../EventListener';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {useMediaQuery} from '../../../utilities/media-query';
 

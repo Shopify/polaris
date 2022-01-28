@@ -91,3 +91,15 @@ $control-vertical-adjustment: rem(2px);
   @include recolor-icon(var(--p-icon));
   padding: 0 spacing(tight);
 }
+
+.verticalAlignTop {
+  align-items: flex-start;
+}
+
+.verticalAlignCenter {
+  align-items: center;
+}
+
+.verticalAlignBottom {
+  align-items: flex-end;
+}

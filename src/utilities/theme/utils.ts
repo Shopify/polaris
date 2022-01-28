@@ -5,11 +5,13 @@ import type {HSLAColor} from '../color-types';
 
 import type {Theme, ProcessedThemeConfig} from './types';
 
-type CustomPropertiesObject = Record<string, string>;
+interface CustomPropertiesObject {
+  [key: string]: string;
+}
 
 export function buildCustomPropertiesNoMemo(
   themeConfig: ProcessedThemeConfig,
-  tokens?: Record<string, string>,
+  tokens?: {[key: string]: string},
 ): CustomPropertiesObject {
   const {colors = {}, colorScheme, config, frameOffset = '0px'} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
@@ -44,9 +46,9 @@ export function toString(obj?: CustomPropertiesObject) {
   }
 }
 
-function customPropertyTransformer(
-  properties: Record<string, HSLAColor | string>,
-) {
+function customPropertyTransformer(properties: {
+  [key: string]: HSLAColor | string;
+}) {
   return Object.entries(properties).reduce(
     (transformed, [key, value]) => ({
       ...transformed,

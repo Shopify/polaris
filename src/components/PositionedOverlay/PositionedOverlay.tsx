@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
-import {layer} from '../shared';
+import {layer, dataPolarisTopBar} from '../shared';
 
 import {
   PreferredPosition,
@@ -103,6 +103,7 @@ export class PositionedOverlay extends PureComponent<
   }
 
   componentWillUnmount() {
+    this.observer.disconnect();
     if (this.scrollableContainer && !this.props.fixed) {
       this.scrollableContainer.removeEventListener(
         'scroll',
@@ -167,14 +168,8 @@ export class PositionedOverlay extends PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {
-      measuring,
-      left,
-      right,
-      positioning,
-      height,
-      activatorRect,
-    } = this.state;
+    const {measuring, left, right, positioning, height, activatorRect} =
+      this.state;
 
     return {
       measuring,
@@ -208,6 +203,7 @@ export class PositionedOverlay extends PureComponent<
         if (this.overlay == null || this.scrollableContainer == null) {
           return;
         }
+
         const {
           activator,
           preferredPosition = 'below',
@@ -239,6 +235,14 @@ export class PositionedOverlay extends PureComponent<
           scrollableContainerRect.height = document.body.scrollHeight;
         }
 
+        let topBarOffset = 0;
+        const topBarElement = scrollableElement.querySelector(
+          `${dataPolarisTopBar.selector}`,
+        );
+        if (topBarElement) {
+          topBarOffset = topBarElement.clientHeight;
+        }
+
         const overlayMargins =
           this.overlay.firstElementChild &&
           this.overlay.firstChild instanceof HTMLElement
@@ -257,6 +261,7 @@ export class PositionedOverlay extends PureComponent<
           containerRect,
           preferredPosition,
           fixed,
+          topBarOffset,
         );
         const horizontalPosition = calculateHorizontalPosition(
           activatorRect,

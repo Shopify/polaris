@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {VisuallyHidden} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {VisuallyHidden} from '../../VisuallyHidden';
 import {Badge} from '../Badge';
 
 describe('<Badge />', () => {

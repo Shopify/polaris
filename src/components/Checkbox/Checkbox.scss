@@ -5,7 +5,7 @@
   margin: var(--p-choice-margin);
 }
 
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+// stylelint-disable selector-max-specificity, selector-max-class
 .Input {
   @include visually-hidden;
 
@@ -21,6 +21,7 @@
     + .Backdrop {
       @include control-backdrop(active);
     }
+
     ~ .Icon {
       transition: opacity var(--p-duration-1-5-0) var(--p-ease),
         transform var(--p-duration-1-5-0) var(--p-ease);
@@ -38,13 +39,14 @@
   &:disabled:checked {
     + .Backdrop {
       background: var(--p-border-disabled);
+
       &::before {
         background: var(--p-border-disabled);
       }
     }
   }
 }
-// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
+// stylelint-enable selector-max-specificity, selector-max-class
 
 .Backdrop {
   @include control-backdrop;
@@ -65,15 +67,15 @@
 
   transform: translate(-50%, -50%) scale(0.25);
   opacity: 0;
-  transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-    transform var(--p-duration-1-0-0) var(--p-ease);
+  transition: opacity duration(fast) var(--p-ease),
+    transform duration(fast) var(--p-ease);
 
   @media (-ms-high-contrast: active) {
     fill: ms-high-contrast-color('text');
   }
 }
 
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators
 .error {
   .Icon {
     @include recolor-icon(var(--p-icon-on-critical));
@@ -82,6 +84,7 @@
   .Backdrop {
     @include control-backdrop(error);
   }
+
   .Input:checked,
   .Input:active,
   .Input.Input-indeterminate {
@@ -90,4 +93,4 @@
     }
   }
 }
-// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
+// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {TextStyle} from '../TextStyle';
 
@@ -29,6 +29,13 @@ describe('<TextStyle />', () => {
   it('renders a span when the variant negative is provided', () => {
     const textStyle = mountWithApp(
       <TextStyle variation="negative">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle).toContainReactComponent('span');
+  });
+
+  it('renders a span when the variant warning is provided', () => {
+    const textStyle = mountWithApp(
+      <TextStyle variation="warning">Hello Polaris</TextStyle>,
     );
     expect(textStyle).toContainReactComponent('span');
   });

@@ -2,8 +2,9 @@
 
 $arrow-size: rem(14px);
 $visible-portion-of-arrow: rem(5px);
-$content-max-height: rem(295px);
+$content-max-height: rem(500px);
 $content-max-width: rem(400px);
+$vertical-motion-offset: rem(-5px);
 
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
@@ -14,31 +15,34 @@ $content-max-width: rem(400px);
 }
 
 .PopoverOverlay {
-  will-change: opacity;
   opacity: 0;
-  transition: opacity duration() easing(in);
+  transition: opacity duration(fast) easing(), transform duration(fast) easing();
+  transform: translateY($vertical-motion-offset);
 }
 
 .PopoverOverlay-entering {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .PopoverOverlay-open {
   opacity: 1;
+  transform: none;
 }
 
 .PopoverOverlay-exiting {
-  opacity: 0;
-  transition-timing-function: easing(out);
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0ms;
 }
 
 .measuring:not(.PopoverOverlay-exiting) {
   opacity: 0;
+  transform: translateY($vertical-motion-offset);
 }
 
 .fullWidth {
-  margin: 0;
-  margin-top: $visible-portion-of-arrow;
+  margin: $visible-portion-of-arrow auto 0 auto;
 
   .Content {
     max-width: none;
@@ -49,7 +53,7 @@ $content-max-width: rem(400px);
   margin: spacing() spacing(tight) $visible-portion-of-arrow;
 
   &.fullWidth {
-    margin: 0 0 $visible-portion-of-arrow;
+    margin: 0 auto $visible-portion-of-arrow auto;
   }
 }
 

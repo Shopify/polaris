@@ -44,7 +44,7 @@ $stacking-order: (
 .Input:focus {
   outline: none;
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
     @include focus-ring($style: 'focused');
   }
@@ -230,6 +230,10 @@ $stacking-order: (
   &:disabled {
     cursor: default;
   }
+}
+
+.Hidden {
+  visibility: hidden;
 }
 
 .Spinner {

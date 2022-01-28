@@ -19,7 +19,6 @@
     @include focus-ring($style: 'focused');
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:active:not(:disabled),
   &:checked,
   &.Input-indeterminate {
@@ -37,12 +36,10 @@
     }
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:disabled + .Backdrop {
     @include control-backdrop(disabled);
   }
 
-  // stylelint-disable-next-line selector-max-class
   &:disabled:checked {
     // stylelint-disable-next-line selector-max-specificity
     + .Backdrop,
@@ -70,8 +67,8 @@
   pointer-events: none;
   transform: translate(-50%, -50%) scale(0.25);
   opacity: 0;
-  transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-    transform var(--p-duration-1-0-0) var(--p-ease);
+  transition: opacity duration(fast) var(--p-ease),
+    transform duration(fast) var(--p-ease);
 
   @media (-ms-high-contrast: active) {
     fill: ms-high-contrast-color('text');

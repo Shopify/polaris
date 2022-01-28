@@ -1,19 +1,17 @@
 import React from 'react';
-import {
-  ResourceList,
-  Select,
-  Spinner,
-  EmptySearchResult,
-  ResourceItem,
-  EventListener,
-  Button,
-  EmptyState,
-} from 'components';
-import {mountWithApp} from 'test-utilities';
-import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
+import {mountWithApp} from 'tests/utilities';
 
 import {BulkActions} from '../../BulkActions';
+import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
+import {EmptySearchResult} from '../../EmptySearchResult';
+import {EmptyState} from '../../EmptyState';
+import {EventListener} from '../../EventListener';
+import {Select} from '../../Select';
+import {Spinner} from '../../Spinner';
+import {ResourceItem} from '../../ResourceItem';
+import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
+import {ResourceList} from '../ResourceList';
 import styles from '../ResourceList.scss';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -141,7 +139,7 @@ describe('<ResourceList />', () => {
       );
       expect(
         resourceList.find(BulkActions)!.props.paginatedSelectAllAction,
-      ).not.toBeUndefined();
+      ).toBeDefined();
     });
   });
 

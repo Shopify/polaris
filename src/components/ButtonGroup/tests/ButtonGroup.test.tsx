@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Button} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../Button';
 import {Item} from '../components';
 import {ButtonGroup} from '../ButtonGroup';
 

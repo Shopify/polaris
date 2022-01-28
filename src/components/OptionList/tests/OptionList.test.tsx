@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Option} from '../components';
 import {OptionList, OptionListProps} from '../OptionList';
@@ -506,6 +506,28 @@ describe('<OptionList />', () => {
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith(newSelected);
+      });
+    });
+  });
+
+  describe('verticalAlign', () => {
+    it('renders with the vertical align prop', () => {
+      const optionList = mountWithApp(
+        <OptionList {...defaultProps} verticalAlign="center" />,
+      );
+      const optionWrappers = optionList.findAll(Option);
+
+      optionWrappers.forEach((option) => {
+        expect(option.props.verticalAlign).toBe('center');
+      });
+    });
+
+    it('renders without the vertical align prop', () => {
+      const optionList = mountWithApp(<OptionList {...defaultProps} />);
+      const optionWrappers = optionList.findAll(Option);
+
+      optionWrappers.forEach((option) => {
+        expect(option.props.verticalAlign).toBeUndefined();
       });
     });
   });

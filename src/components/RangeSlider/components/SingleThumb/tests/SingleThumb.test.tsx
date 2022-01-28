@@ -1,7 +1,7 @@
-import {InlineError} from 'components/InlineError';
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
+import {InlineError} from '../../../../InlineError';
 import {SingleThumb} from '../SingleThumb';
 
 const mockProps = {
@@ -180,6 +180,7 @@ describe('<SingleThumb />', () => {
 
   describe('suffix', () => {
     const text = 'suffix text';
+
     it('outputs the provided suffix element', () => {
       const element = mountWithApp(
         <SingleThumb {...mockProps} suffix={<p>{text}</p>} />,

@@ -4,7 +4,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import type {Action, ActionListItemDescriptor} from '../../types';
+import type {ActionListItemDescriptor, ComplexAction} from '../../types';
 import {Card} from '../Card';
 import {Button, buttonFrom} from '../Button';
 import {Heading} from '../Heading';
@@ -25,9 +25,9 @@ interface MediaCardProps {
   /** Body content */
   description: string;
   /** Main call to action, rendered as a basic button */
-  primaryAction?: Action;
+  primaryAction?: ComplexAction;
   /** Secondary call to action, rendered as a plain button */
-  secondaryAction?: Action;
+  secondaryAction?: ComplexAction;
   /** Action list items to render in ellipsis popover */
   popoverActions?: ActionListItemDescriptor[];
   /** Whether or not card content should be laid out vertically
@@ -103,14 +103,15 @@ export function MediaCard({
     portrait && styles.portrait,
   );
 
-  const actionMarkup = (
-    <div className={actionClassName}>
-      <ButtonGroup>
-        {primaryActionMarkup}
-        {secondaryActionMarkup}
-      </ButtonGroup>
-    </div>
-  );
+  const actionMarkup =
+    primaryActionMarkup || secondaryActionMarkup ? (
+      <div className={actionClassName}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
   const mediaCardClassName = classNames(
     styles.MediaCard,

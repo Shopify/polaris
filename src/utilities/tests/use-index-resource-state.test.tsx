@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {
   useIndexResourceState,
@@ -21,18 +21,15 @@ describe('useIndexResourceState', () => {
     return null;
   }
 
-  function MockComponent<T extends Record<string, unknown>>({
+  function MockComponent<T extends {[key: string]: unknown}>({
     resources = [],
     options,
   }: {
     resources?: T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
-    const {
-      selectedResources,
-      allResourcesSelected,
-      handleSelectionChange,
-    } = useIndexResourceState(resources, options);
+    const {selectedResources, allResourcesSelected, handleSelectionChange} =
+      useIndexResourceState(resources, options);
 
     return (
       <TypedChild

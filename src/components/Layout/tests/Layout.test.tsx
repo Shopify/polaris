@@ -1,8 +1,8 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {TextContainer} from 'components/TextContainer';
-import {Heading} from 'components/Heading';
+import {mountWithApp} from 'tests/utilities';
 
+import {Heading} from '../../Heading';
+import {TextContainer} from '../../TextContainer';
 import {Section} from '../components';
 import {Layout} from '../Layout';
 import styles from '../Layout.scss';
@@ -56,9 +56,8 @@ describe('<Layout />', () => {
         <Layout.AnnotatedSection description={description} />,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
         description,
@@ -70,9 +69,8 @@ describe('<Layout />', () => {
         <Layout.AnnotatedSection description={<MyComponent />} />,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer).toContainReactComponent(
         MyComponent,
@@ -86,9 +84,8 @@ describe('<Layout />', () => {
         </Layout.AnnotatedSection>,
       );
 
-      const annotedDescriptionTextContainer = annotatedSection.find(
-        TextContainer,
-      )!;
+      const annotedDescriptionTextContainer =
+        annotatedSection.find(TextContainer)!;
 
       expect(annotatedSection).toContainReactComponent(TextContainer);
       expect(annotedDescriptionTextContainer).not.toContainReactComponent(

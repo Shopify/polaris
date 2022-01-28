@@ -1,7 +1,8 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {DisplayText, TextStyle} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {DisplayText} from '../../DisplayText';
+import {TextStyle} from '../../TextStyle';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {emptySearch} from '../illustrations';
 

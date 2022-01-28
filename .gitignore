@@ -8,8 +8,4 @@ node_modules
 /src/styles/polaris-tokens
 .idea
 
-index.esnext
-index.js
-index.mjs
-
 .npmrc

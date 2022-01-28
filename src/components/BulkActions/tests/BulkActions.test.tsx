@@ -1,10 +1,11 @@
 import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {mountWithApp} from 'test-utilities';
-import {Popover, ActionList} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {ActionList} from '../../ActionList';
 import {CheckableButton} from '../../CheckableButton';
 import {Button} from '../../Button';
+import {Popover} from '../../Popover';
 import {
   BulkActionButton,
   BulkActionMenu,
@@ -140,8 +141,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {accessibilityLabel} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
@@ -166,8 +167,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {label} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
           checkableButtonLength,
@@ -188,8 +189,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {selected} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,
@@ -391,8 +392,8 @@ describe('<BulkActions />', () => {
       it('is passed down to CheckableButton', () => {
         const {disabled} = bulkActionProps;
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength = bulkActions.findAll(CheckableButton)
-          .length;
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
 
         expect(bulkActions).toContainReactComponentTimes(
           CheckableButton,

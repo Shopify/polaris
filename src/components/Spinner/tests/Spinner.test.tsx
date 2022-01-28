@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../../VisuallyHidden';

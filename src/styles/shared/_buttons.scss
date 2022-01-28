@@ -76,10 +76,8 @@
   color: var(--p-text-disabled);
 }
 
-@mixin button-filled($button-color, $focus-color, $outline-color: null) {
+@mixin button-filled() {
   @include focus-ring($border-width: 0);
-  $border-color: darken($button-color, 10%);
-  $active-color: darken($button-color, 15%);
   background: var(--p-button-color);
   border-width: 0;
   border-color: transparent;
@@ -140,6 +138,7 @@
     border: border-width() solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-pressed);
+
     &::after {
       box-shadow: none;
     }
@@ -181,14 +180,12 @@
       background: var(--p-surface-critical-subdued);
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.disabled {
       border: border-width('base') solid var(--p-border-critical-disabled);
       background: transparent;
       color: var(--p-interactive-critical-disabled);
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: var(--p-surface-critical-subdued);
       box-shadow: border-width('base') solid var(--p-border-critical);
@@ -199,11 +196,7 @@
 
 @mixin button-outline-disabled($outline-color) {
   background: transparent;
-  // border-color: rgba($outline-color, 0.25);
   box-shadow: none;
-  // color: color('ink', 'lightest');
-
-  // @include recolor-icon(color('ink', 'lightest'));
 }
 
 @mixin button-full-width {

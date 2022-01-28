@@ -1,11 +1,11 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Sticky} from 'components/Sticky';
-import {EventListener} from 'components/EventListener';
+import {mountWithApp} from 'tests/utilities';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
+import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
+import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
@@ -54,11 +54,11 @@ function Component({
 }
 
 const mockRenderRow = (item: any) => {
-  return <Component {...item} key={item.id} />;
+  return <Component key={item.id} {...item} />;
 };
 
 const mockRenderCondensedRow = (item: any) => {
-  return <Component {...item} key={item.id} condensed />;
+  return <Component key={item.id} {...item} condensed />;
 };
 
 describe('<IndexTable>', () => {
@@ -168,16 +168,15 @@ describe('<IndexTable>', () => {
       );
 
       const scrollContainer = index.find(ScrollContainer)!;
-      scrollContainer.prop(
-        'scrollableContainerRef',
-      ).current!.scrollLeft = updatedScrollLeft;
+      scrollContainer.prop('scrollableContainerRef').current!.scrollLeft =
+        updatedScrollLeft;
       scrollContainer!.trigger('onScroll');
 
       const stickyHeaderElement = index.find('div', {
         className: 'StickyTableHeadings',
       })!;
-      const stickyHeaderElementScrollLeft = stickyHeaderElement.domNode!
-        .scrollLeft;
+      const stickyHeaderElementScrollLeft =
+        stickyHeaderElement.domNode!.scrollLeft;
 
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
     });
@@ -249,9 +248,10 @@ describe('<IndexTable>', () => {
       );
 
       const afterInitialMounts = index.findAll(AfterInitialMount);
-      const scrollbar = afterInitialMounts[
-        afterInitialMounts.length - 1
-      ].find('div', {className: 'ScrollBar'})!;
+      const scrollbar = afterInitialMounts[afterInitialMounts.length - 1].find(
+        'div',
+        {className: 'ScrollBar'},
+      )!;
       const scrollContainer = index.find(ScrollContainer)!;
 
       scrollbar.domNode!.scrollLeft = updatedScrollLeft;

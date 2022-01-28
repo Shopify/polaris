@@ -36,7 +36,9 @@ export function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
   return final;
 }
 
-type GeneralObject = Record<string, any>;
+interface GeneralObject {
+  [key: string]: any;
+}
 
 function mergeRecursively(inputObjA: GeneralObject, objB: GeneralObject) {
   const objA: GeneralObject = Array.isArray(inputObjA)

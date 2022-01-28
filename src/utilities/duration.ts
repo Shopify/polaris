@@ -5,9 +5,11 @@ export function ensureTwoDigits(num: number): string {
   return num > 9 ? String(num) : `0${num}`;
 }
 
-export function secondsToTimeComponents(
-  seconds: number,
-): {hours: number; minutes: number; seconds: number} {
+export function secondsToTimeComponents(seconds: number): {
+  hours: number;
+  minutes: number;
+  seconds: number;
+} {
   return {
     hours: Math.floor(seconds / HOUR),
     minutes: Math.floor((seconds % HOUR) / MINUTE),

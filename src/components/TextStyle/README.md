@@ -11,6 +11,7 @@ keywords:
   - subdued
   - strong
   - negative
+  - warning
   - positive
   - cues
   - enhancements
@@ -37,6 +38,7 @@ Text style should be:
 
 - Used when enhancing the text to help merchants understand its meaning
 - Subdued if the text is less important than its surrounding text
+- Warning if the text denotes something that needs attention, or that merchants need to take action on.
 - Strong for input fields, or for a row total in a price table
 - Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
 
@@ -123,6 +125,14 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 ![Negative text style](/public_images/components/TextStyle/ios/negative@2x.png)
 
 <!-- /content-for -->
+
+### Warning text style
+
+Use to denote something that needs attention, or that merchants need to take action on.
+
+```jsx
+<TextStyle variation="warning">Scheduled maintenance</TextStyle>
+```
 
 ### Code text style
 

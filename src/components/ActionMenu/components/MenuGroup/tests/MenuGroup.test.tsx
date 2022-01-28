@@ -1,7 +1,9 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Popover, ActionList, Button} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {ActionList} from '../../../../ActionList';
+import {Button} from '../../../../Button';
+import {Popover} from '../../../../Popover';
 import {MenuGroup} from '../MenuGroup';
 
 describe('<MenuGroup />', () => {

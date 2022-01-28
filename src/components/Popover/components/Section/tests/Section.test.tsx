@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {TextContainer} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {TextContainer} from '../../../../TextContainer';
 import {Section} from '../Section';
 
 describe('<Section />', () => {
@@ -10,6 +10,7 @@ describe('<Section />', () => {
       <p>Content</p>
     </TextContainer>
   );
+
   it('renders its children', () => {
     const section = mountWithApp(<Section>{children}</Section>);
 

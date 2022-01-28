@@ -1,8 +1,8 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
-import {KeypressListener} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {KeypressListener} from '../../../../KeypressListener';
 import {Dialog} from '../Dialog';
 
 describe('<Dialog>', () => {

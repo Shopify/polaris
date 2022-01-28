@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Åtgärder"
+        "rollupButton": "Visa åtgärder"
+      },
+      "Actions": {
+        "moreActions": "Fler åtgärder"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Fler åtgärder",
         "warningMessage": "För att tillhandahålla en bättre användarupplevelse bör det vara maximalt {maxPromotedActions} föredragna åtgärder."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Välj ett filter ...",
-        "addFilterButtonLabel": "Lägg till filter",
-        "showAllWhere": "Visa alla {resourceNamePlural} där:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Sök {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Välj ett filter ..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Välj ett värde",
-        "dateValueLabel": "Datum",
-        "dateValueError": "Matcha formatet ÅÅÅÅ-MM-DD",
-        "dateValuePlaceholder": "ÅÅÅÅ-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "under den senaste veckan",
-          "PastMonth": "under den senaste månaden",
-          "PastQuarter": "under de senaste 3 månaderna",
-          "PastYear": "under det senaste året",
-          "ComingWeek": "nästa vecka",
-          "ComingMonth": "nästa månad",
-          "ComingQuarter": "under de närmaste 3 månaderna",
-          "ComingYear": "under det närmaste året",
-          "OnOrBefore": "på eller innan",
-          "OnOrAfter": "på eller efter"
-        },
-        "FilterLabelForValue": {
-          "past_week": "under den senaste veckan",
-          "past_month": "under den senaste månaden",
-          "past_quarter": "under de senaste 3 månaderna",
-          "past_year": "under det senaste året",
-          "coming_week": "nästa vecka",
-          "coming_month": "nästa månad",
-          "coming_quarter": "under de kommande 3 månaderna",
-          "coming_year": "under det kommande året",
-          "on_or_before": "före {date}",
-          "on_or_after": "efter {date}"
-        }
-      },
       "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter är valda.",
       "selectAllFilteredItems": "Välj alla {itemsLength} + {resourceNamePlural} i det här filtret"
     },
     "SkeletonPage": {
       "loadingLabel": "Sidan laddar"
-    },
-    "Spinner": {
-      "warningMessage": "Färgen {color} är inte tänkt att användas för {size} spinnare. De färger som finns för stora spinnare är: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Fler flikar"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Fler åtgärder"
-    },
     "Loading": {
       "label": "Fält för att ladda sida"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",
       "selectButtonText": "Välj"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Visa åtgärder för {title}"
+      }
     }
   }
 }

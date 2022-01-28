@@ -40,7 +40,6 @@ $resource-list-item-variables: (
   cursor: pointer;
 
   &:not(.persistActions) {
-    // stylelint-disable-next-line selector-max-combinators
     .Actions {
       right: spacing();
     }
@@ -48,6 +47,7 @@ $resource-list-item-variables: (
 
   &:hover {
     background-color: var(--p-surface-hovered);
+
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
@@ -278,19 +278,18 @@ $resource-list-item-variables: (
     }
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  // stylelint-disable-next-line selector-max-specificity
   &:last-of-type.focused::after {
     border-bottom-left-radius: var(--p-border-radius-wide);
     border-bottom-right-radius: var(--p-border-radius-wide);
   }
 
-  // stylelint-disable-next-line selector-max-class
   &.focused {
     @include focus-ring($style: 'focused');
     z-index: resource-list-item(clickable-stacking-order);
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
   * + ul > &:first-of-type.focused::after {
     top: rem(1px);
   }

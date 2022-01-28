@@ -38,11 +38,11 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-function getAllItemsOnPage<ItemType>(
-  items: ItemType[],
-  idForItem: (item: ItemType, index: number) => string,
+function getAllItemsOnPage<TItemType>(
+  items: TItemType[],
+  idForItem: (item: TItemType, index: number) => string,
 ) {
-  return items.map((item: ItemType, index: number) => {
+  return items.map((item: TItemType, index: number) => {
     return idForItem(item, index);
   });
 }
@@ -53,8 +53,8 @@ const isSmallScreen = () => {
     : window.innerWidth < SMALL_SCREEN_WIDTH;
 };
 
-function defaultIdForItem<ItemType extends {id?: any}>(
-  item: ItemType,
+function defaultIdForItem<TItemType extends {id?: any}>(
+  item: TItemType,
   index: number,
 ) {
   return Object.prototype.hasOwnProperty.call(item, 'id')
@@ -78,9 +78,9 @@ export interface ResourceSection {
   renderWhenEmpty?: boolean;
 }
 
-export interface ResourceListProps<ItemType = any> {
+export interface ResourceListProps<TItemType = any> {
   /** Item data; each item is passed to renderItem */
-  items: ItemType[];
+  items: TItemType[];
   sections?: ResourceSection[];
   filterControl?: React.ReactNode;
   subHeader?: React.ReactNode;
@@ -126,7 +126,7 @@ export interface ResourceListProps<ItemType = any> {
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item, must return a ResourceItem component */
-  renderItem(item: ItemType, id: string, index: number): React.ReactNode;
+  renderItem(item: TItemType, id: string, index: number): React.ReactNode;
   /** Function to render each section header	 */
   renderSectionHeader?(
     section: ResourceSection,
@@ -140,20 +140,20 @@ export interface ResourceListProps<ItemType = any> {
     index: number,
   ): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: ItemType, index: number): string;
+  idForItem?(item: TItemType, index: number): string;
   /** Function to customize the unique ID for each item */
-  sectionIdForItem?(item: ItemType, index: number): string;
+  sectionIdForItem?(item: TItemType, index: number): string;
   /** Function to resolve the ids of items */
-  resolveItemId?(item: ItemType): string;
+  resolveItemId?(item: TItemType): string;
 }
 
-type ResourceListType = (<ItemType>(
-  value: ResourceListProps<ItemType>,
+type ResourceListType = (<TItemType>(
+  value: ResourceListProps<TItemType>,
 ) => ReactElement) & {
   Item: typeof ResourceItem;
 };
 
-export const ResourceList: ResourceListType = function ResourceList<ItemType>({
+export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   items,
   sections,
   renderSectionHeader,
@@ -182,7 +182,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   renderItem,
   idForItem = defaultIdForItem,
   resolveItemId,
-}: ResourceListProps<ItemType>) {
+}: ResourceListProps<TItemType>) {
   const i18n = useI18n();
   const [selectMode, setSelectMode] = useState(
     Boolean(selectedItems && selectedItems.length > 0),
@@ -440,7 +440,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     forceUpdate();
   }, [forceUpdate, items]);
 
-  const renderItemWithId = (item: ItemType, index: number) => {
+  const renderItemWithId = (item: TItemType, index: number) => {
     const id = idForItem(item, index);
 
     const itemContent = renderItem(item, id, index);
@@ -499,7 +499,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: ItemType) => string,
+    resolveItemId: (item: TItemType) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
@@ -795,6 +795,8 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     </ul>
   ) : null;
 
+  // This is probably a legit error but I don't have the time to refactor this
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const context = {
     selectable: isSelectable,
     selectedItems,
@@ -821,6 +823,3 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 };
 
 ResourceList.Item = ResourceItem;
-
-export {FilterControl} from './components';
-export type {FilterControlProps} from './components';

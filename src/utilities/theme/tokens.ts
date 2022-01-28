@@ -1,7 +1,8 @@
 export const Tokens = {
   // Border Radiuses
-  borderRadiusBase: rem('4px'),
-  borderRadiusWide: rem('8px'),
+  borderRadiusSlim: '2px',
+  borderRadiusBase: '4px',
+  borderRadiusWide: '8px',
   borderRadiusFull: '50%',
 
   // Shadows
@@ -25,38 +26,31 @@ export const Tokens = {
   overrideLoadingZIndex: '514',
   buttonFontWeight: '500',
   nonNullContent: "''",
-  choiceSize: rem('20px'),
-  iconSize: rem('10px'),
-  choiceMargin: rem('1px'),
-  controlBorderWidth: rem('2px'),
+  choiceSize: '20px',
+  iconSize: '10px',
+  choiceMargin: '1px',
+  controlBorderWidth: '2px',
   bannerBorderDefault: buildBannerBorder('--p-border-neutral-subdued'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success-subdued'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
   bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
   bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
   badgeMixBlendMode: 'luminosity',
-  thinBorderSubdued: `${rem('1px')} solid var(--p-border-subdued)`,
-  textFieldSpinnerOffset: rem('2px'),
-  textFieldFocusRingOffset: rem('-4px'),
-  textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('-1px'),
+  thinBorderSubdued: '1px solid var(--p-border-subdued)',
+  textFieldSpinnerOffset: '2px',
+  textFieldFocusRingOffset: '-4px',
+  textFieldFocusRingBorderRadi: '7px',
+  buttonGroupItemSpacing: '-1px',
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
-  rangeSliderThumbSizeBase: rem('16px'),
-  rangeSliderThumbSizeActive: rem('24px'),
+  rangeSliderThumbSizeBase: '16px',
+  rangeSliderThumbSizeActive: '24px',
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '400',
 };
 
-function rem(px: string) {
-  const baseFontSize = 10;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
 function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('1px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '1px',
-  )} var(${cssVar})`;
+  return `inset 0 1px 0 0 var(${cssVar}), inset 0 0 0 1px var(${cssVar})`;
 }

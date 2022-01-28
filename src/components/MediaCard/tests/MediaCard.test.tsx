@@ -1,8 +1,13 @@
 import React from 'react';
-import {Heading, Popover, Button, ActionList, Badge} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
+import {Heading} from '../../Heading';
+import {Popover} from '../../Popover';
+import {Button} from '../../Button';
+import {ActionList} from '../../ActionList';
+import {Badge} from '../../Badge';
 import {MediaCard} from '../MediaCard';
+import styles from '../MediaCard.scss';
 
 const mockProps = {
   children: <img alt="" />,
@@ -46,6 +51,41 @@ describe('<MediaCard>', () => {
     );
 
     expect(videoCard).toContainReactComponent('p', {children: description});
+  });
+
+  it('does not render a wrapper around actions when primaryAction and secondaryAction are empty', () => {
+    const videoCard = mountWithApp(
+      <MediaCard
+        {...mockProps}
+        primaryAction={undefined}
+        secondaryAction={undefined}
+      />,
+    );
+
+    expect(videoCard).not.toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
+  });
+
+  it('renders a wrapper around actions when primaryAction and secondaryAction are provided', () => {
+    const mockAction = {content: 'test'};
+    const videoCardWithPrimaryAction = mountWithApp(
+      <MediaCard {...mockProps} primaryAction={mockAction} />,
+    );
+    const videoCardWithSecondaryAction = mountWithApp(
+      <MediaCard
+        {...mockProps}
+        primaryAction={undefined}
+        secondaryAction={mockAction}
+      />,
+    );
+
+    expect(videoCardWithPrimaryAction).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
+    expect(videoCardWithSecondaryAction).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.ActionContainer),
+    });
   });
 
   it('renders a Button with the primaryAction', () => {

@@ -95,24 +95,26 @@ function DropZoneExample() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
-      {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
-          <Thumbnail
-            size="small"
-            alt={file.name}
-            source={
-              validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
-                : NoteMinor
-            }
-          />
-          <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
-          </div>
-        </Stack>
-      ))}
-    </Stack>
+    <div style={{padding: '0'}}>
+      <Stack vertical>
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name} <Caption>{file.size} bytes</Caption>
+            </div>
+          </Stack>
+        ))}
+      </Stack>
+    </div>
   );
 
   return (
@@ -277,6 +279,8 @@ function DropZoneWithDropOnPageExample() {
     </Stack>
   );
 
+  const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
+
   return (
     <Page
       breadcrumbs={[{content: 'Products'}]}
@@ -293,6 +297,7 @@ function DropZoneWithDropOnPageExample() {
     >
       <DropZone dropOnPage onDrop={handleDropZoneDrop}>
         {uploadedFiles}
+        {uploadMessage}
       </DropZone>
     </Page>
   );
@@ -440,7 +445,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with varaible size
+### Drop zone with custom FileUpload text
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 
@@ -457,15 +462,9 @@ function DropZoneExample() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const fileUpload = !files.length && (
-    <div style={{padding: '1rem'}}>
-      <Stack distribution="center">
-        <Stack vertical>
-          <Button>Add files</Button>
-          <TextStyle variation="subdued">or drop to upload</TextStyle>
-        </Stack>
-      </Stack>
-    </div>
+    <DropZone.FileUpload actionHint="Accepts .gif, .jpg, and .png" />
   );
+
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
       {files.map((file, index) => (

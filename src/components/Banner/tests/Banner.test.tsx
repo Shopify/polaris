@@ -6,17 +6,15 @@ import {
   CircleAlertMajor,
   DiamondAlertMajor,
 } from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
-import {BannerContext} from 'utilities/banner-context';
-import {
-  Button,
-  Heading,
-  Icon,
-  Spinner,
-  UnstyledButton,
-  UnstyledLink,
-} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../Button';
+import {Heading} from '../../Heading';
+import {Icon} from '../../Icon';
+import {Spinner} from '../../Spinner';
+import {UnstyledButton} from '../../UnstyledButton';
+import {UnstyledLink} from '../../UnstyledLink';
+import {BannerContext} from '../../../utilities/banner-context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Banner, BannerHandles} from '../Banner';
 
@@ -335,7 +333,7 @@ describe('<Banner />', () => {
         DiamondAlertMajor,
       ],
     ])(
-      'Sets Icon props when: %s',
+      'sets Icon props when: %s',
       (_: any, status: any, color: any, iconSource: any) => {
         const banner = mountWithApp(<Banner status={status} />);
 

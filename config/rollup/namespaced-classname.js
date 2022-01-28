@@ -6,7 +6,9 @@ const COMPONENT_REGEX = /^[A-Z]\w+$/;
 const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
 const NESTED_COMPONENT_PATH_REGEX = /.*\/components\/(.*)\/components/;
 
-export function generateScopedName({includeHash = false} = {}) {
+module.exports.generateScopedName = function generateScopedName({
+  includeHash = false,
+} = {}) {
   return (name, filename) => {
     const componentName = basename(filename, '.scss');
     const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filename);
@@ -40,7 +42,7 @@ export function generateScopedName({includeHash = false} = {}) {
 
     return className + suffix;
   };
-}
+};
 
 function isComponent(className) {
   return COMPONENT_REGEX.test(className);

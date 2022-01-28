@@ -1,7 +1,8 @@
 import React from 'react';
-import {Popover, ActionList} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
+import {ActionList} from '../../../../ActionList';
+import {Popover} from '../../../../Popover';
 import {BulkActionMenu, BulkActionsMenuProps, BulkActionButton} from '../..';
 
 const defaultProps: BulkActionsMenuProps = {

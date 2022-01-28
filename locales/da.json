@@ -40,7 +40,7 @@
     },
     "ContextualSaveBar": {
       "save": "Gem",
-      "discard": "Fortryd"
+      "discard": "Kassér"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sortér {direction} efter",
@@ -88,9 +88,9 @@
       "end": "Slutning af interval"
     },
     "DiscardConfirmationModal": {
-      "title": "Fortryd alle ændringer, der ikke er gemt",
-      "message": "Hvis du fortryder ændringer, sletter du alle ændringer, du har foretaget, siden du gemte sidste gang.",
-      "primaryAction": "Fortryd ændringer",
+      "title": "Kassér alle ændringer, der ikke er gemt",
+      "message": "Hvis du kasserer ændringer, sletter du alle ændringer, du har foretaget, siden du gemte sidste gang.",
+      "primaryAction": "Kassér ændringer",
       "secondaryAction": "Fortsæt redigering"
     },
     "DropZone": {
@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Handlinger"
+        "rollupButton": "Se handlinger"
+      },
+      "Actions": {
+        "moreActions": "Flere handlinger"
       }
     },
     "Filters": {
@@ -150,7 +153,7 @@
     "Pagination": {
       "previous": "Forrige",
       "next": "Næste",
-      "pagination": "Sidenummerering"
+      "pagination": "Sideinddeling"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Angiver {progress} til 0.",
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Flere handlinger",
         "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtrer",
-        "selectFilterKeyPlaceholder": "Vælg et filter ...",
-        "addFilterButtonLabel": "Tilføj filter",
-        "showAllWhere": "Vis alle {resourceNamePlural}, hvor:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Søg efter {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Vælg et filter ..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Vælg en værdi",
-        "dateValueLabel": "Dato",
-        "dateValueError": "Match ÅÅÅÅ-MM-DD-format",
-        "dateValuePlaceholder": "ÅÅÅÅ-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "i den sidste uge",
-          "PastMonth": "i den sidste måned",
-          "PastQuarter": "i de sidste 3 måneder",
-          "PastYear": "i det sidste år",
-          "ComingWeek": "næste uge",
-          "ComingMonth": "næste måned",
-          "ComingQuarter": "i de næste 3 måneder",
-          "ComingYear": "i det næste år",
-          "OnOrBefore": "på eller før",
-          "OnOrAfter": "på eller efter"
-        },
-        "FilterLabelForValue": {
-          "past_week": "i den sidste uge",
-          "past_month": "i den sidste måned",
-          "past_quarter": "i de sidste 3 måneder",
-          "past_year": "i det sidste år",
-          "coming_week": "næste uge",
-          "coming_month": "næste måned",
-          "coming_quarter": "i de næste 3 måneder",
-          "coming_year": "i det næste år",
-          "on_or_before": "før {date}",
-          "on_or_after": "efter {date}"
-        }
-      },
       "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt.",
       "selectAllFilteredItems": "Vælg alle mere end {itemsLength} {resourceNamePlural} i dette filter"
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"
-    },
-    "Spinner": {
-      "warningMessage": "Farven {color} er ikke beregnet til at blive anvendt til {size} spinnere. Tilgængelige farver på store spinnere er: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Flere faner"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Flere handlinger"
-    },
     "Loading": {
       "label": "Statuslinje for sideindlæsning"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
       "selectButtonText": "Vælg"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Se handlinger for {title}"
+      }
     }
   }
 }

@@ -19,9 +19,8 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {size, measuring, type, focused, disabled, allowMultiple} = useContext(
-    DropZoneContext,
-  );
+  const {size, measuring, type, disabled, allowMultiple} =
+    useContext(DropZoneContext);
 
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
@@ -30,71 +29,44 @@ export function FileUpload(props: FileUploadProps) {
     actionTitle = i18n.translate(
       `Polaris.DropZone.${allowMultipleKey}.actionTitle${typeSuffix}`,
     ),
-    actionHint = i18n.translate(
-      `Polaris.DropZone.${allowMultipleKey}.actionHint${typeSuffix}`,
-    ),
+    actionHint,
   } = props;
 
-  const buttonStyles =
-    size === 'extraLarge' || size === 'large'
-      ? classNames(
-          styles.Button,
-          size && size !== 'extraLarge' && styles.slim,
-          focused && styles.focused,
-          disabled && styles.disabled,
-        )
-      : null;
-
-  const buttonMarkup =
-    (size === 'extraLarge' || size === 'large') && buttonStyles ? (
-      <div className={buttonStyles}>{actionTitle}</div>
-    ) : null;
-
-  const actionTitleClassName = classNames(
-    styles.ActionTitle,
-    focused && !disabled && styles['ActionTitle-focused'],
-    disabled && styles['ActionTitle-disabled'],
+  const actionClassNames = classNames(
+    styles.Action,
+    disabled && styles.disabled,
   );
 
-  const actionTitleMarkup = (
-    <div className={actionTitleClassName}>{actionTitle}</div>
-  );
+  const actionMarkup = <div className={actionClassNames}>{actionTitle}</div>;
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
     measuring && styles.measuring,
-    size === 'small' && styles.FileUploadSmallView,
+    size === 'large' && styles.large,
+    size === 'small' && styles.small,
+  );
+
+  const actionHintMarkup = actionHint && (
+    <Caption>
+      <TextStyle variation="subdued">{actionHint}</TextStyle>
+    </Caption>
   );
 
   let viewMarkup;
   switch (size) {
-    case 'extraLarge':
-      viewMarkup = (
-        <Stack vertical>
-          <img width="40" src={uploadArrow} alt="" />
-          {buttonMarkup}
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Stack>
-      );
-      break;
     case 'large':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          <img width="40" src={uploadArrow} alt="" />
-          {buttonMarkup}
-          <Caption>
-            <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
+          {actionMarkup}
+          {actionHintMarkup}
         </Stack>
       );
       break;
     case 'medium':
       viewMarkup = (
         <Stack vertical spacing="tight">
-          {actionTitleMarkup}
-          <Caption>
-            <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
+          {actionMarkup}
+          {actionHintMarkup}
         </Stack>
       );
       break;

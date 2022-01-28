@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Link} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
 import {TooltipOverlay} from '../components';
 import {Key} from '../../../types';

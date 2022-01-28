@@ -1,7 +1,12 @@
-production_platform:
-  application: polaris-react
-  runtime_ids:
-    - production-unrestricted-4b2e
 ci:
   require:
-    - buildkite/polaris-react-production-builder
+    - 'Test (16.9.1)'
+    - 'Accessibility test'
+
+merge:
+  require:
+    - 'Test (16.9.1)'
+    - 'Accessibility test'
+
+deploy:
+  max_commits: false

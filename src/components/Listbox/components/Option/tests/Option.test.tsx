@@ -1,19 +1,12 @@
 import React from 'react';
-import {mount} from 'test-utilities';
-import {mountWithListboxProvider} from 'test-utilities/listbox';
+import {mount} from 'tests/utilities';
+import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
 import type {ListboxContext} from '../../../../../utilities/listbox';
 import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
 import {MappedActionContext} from '../../../../../utilities/autocomplete';
 import {UnstyledLink} from '../../../../UnstyledLink';
-
-jest.mock('components', () => ({
-  ...jest.requireActual('components'),
-  Icon() {
-    return null;
-  },
-}));
 
 const defaultProps = {
   accessibilityLabel: 'label',
@@ -256,7 +249,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             role,
           }}
         >
@@ -276,7 +268,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             url: 'google.com',
           }}
         >
@@ -294,7 +285,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             url: 'google.com',
             external: true,
           }}
@@ -314,7 +304,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             onAction: onActionSpy,
           }}
         >
@@ -339,7 +328,7 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
+            onAction: () => {},
           }}
         >
           <Option {...defaultProps} />

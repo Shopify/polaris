@@ -1,8 +1,12 @@
 import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
-import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Badge} from '../../Badge';
+import {Button} from '../../Button';
+import {Scrollable} from '../../Scrollable';
+import {Spinner} from '../../Spinner';
+import {Portal} from '../../Portal';
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';

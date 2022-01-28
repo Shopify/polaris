@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import type {ThenType} from '@shopify/useful-types';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
@@ -55,19 +55,6 @@ describe('<Checkbox />', () => {
     });
   });
 
-  it('prevents onChange propagation', () => {
-    let stopPropagationSpy = false;
-    const checkbox = mountWithTable(<Checkbox />);
-
-    triggerCheckboxEvent(checkbox, 'onChange', {
-      stopPropagation: () => {
-        stopPropagationSpy = true;
-      },
-    });
-
-    expect(stopPropagationSpy).toBe(true);
-  });
-
   it('toggles the checkbox value when clicked', () => {
     const onSelectionChange = jest.fn();
     const checkbox = mountWithTable(<Checkbox />, {
@@ -76,21 +63,6 @@ describe('<Checkbox />', () => {
     });
 
     triggerCheckboxEvent(checkbox, 'onClick', {
-      nativeEvent: {shiftKey: false},
-    });
-
-    expect(onSelectionChange).toHaveBeenCalledWith('single', false, defaultId);
-  });
-
-  it('toggles the checkbox when spacebar is pressed', () => {
-    const onSelectionChange = jest.fn();
-    const checkbox = mountWithTable(<Checkbox />, {
-      indexProps: {onSelectionChange},
-      rowProps: {selected: true},
-    });
-
-    triggerCheckboxEvent(checkbox, 'onKeyUp', {
-      key: ' ',
       nativeEvent: {shiftKey: false},
     });
 
@@ -173,12 +145,14 @@ function triggerCheckboxEvent(
   eventType: any,
   event: {[key: string]: any},
 ) {
-  (checkbox
-    // We're looking for the Checkbox without the table wrapper to avoid deep filtering
-    .find(Checkbox)
-    ?.findWhere((el: any) =>
-      el.prop('className')?.includes('Wrapper'),
-    ) as ElementType<any>)?.trigger(eventType, {
+  (
+    checkbox
+      // We're looking for the Checkbox without the table wrapper to avoid deep filtering
+      .find(Checkbox)
+      ?.findWhere((el: any) =>
+        el.prop('className')?.includes('Wrapper'),
+      ) as ElementType<any>
+  )?.trigger(eventType, {
     stopPropagation: () => {},
     ...event,
   });

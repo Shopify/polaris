@@ -15,8 +15,8 @@
   }
 
   &.isAction {
-    padding: 0;
     margin-top: 0;
+    padding: spacing(tight) spacing(tight);
   }
 
   &:hover {
@@ -56,6 +56,10 @@
   }
 }
 
+li:first-of-type > .TextOption {
+  margin-top: 0;
+}
+
 [data-focused] .TextOption {
   outline: none;
   background-color: var(--p-surface-selected);
@@ -68,4 +72,8 @@
 .Content {
   flex: 1 1 auto;
   display: flex;
+}
+
+.Checkbox {
+  pointer-events: none;
 }

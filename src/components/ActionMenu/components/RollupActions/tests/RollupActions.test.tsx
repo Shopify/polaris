@@ -1,8 +1,9 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
-import {Button, Popover} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../../../Button';
+import {Popover} from '../../../../Popover';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {
   Item as ActionListItem,
@@ -12,6 +13,7 @@ import {RollupActions} from '../RollupActions';
 
 describe('<RollupActions />', () => {
   const mockProps = {
+    accessibilityLabel: undefined,
     items: undefined,
     sections: undefined,
   };
@@ -33,6 +35,16 @@ describe('<RollupActions />', () => {
         url: 'https://www.shopify.ca',
       },
     ];
+
+    it('renders a Button with the default accessibility label', () => {
+      const wrapper = mountWithApp(
+        <RollupActions {...mockProps} items={mockItems} />,
+      );
+
+      expect(wrapper).toContainReactComponent(Button, {
+        accessibilityLabel: 'View actions',
+      });
+    });
 
     it('gets rendered as ActionList > Item', () => {
       const wrapper = mountWithApp(
@@ -62,6 +74,23 @@ describe('<RollupActions />', () => {
       popoverComponent = wrapper.find(Popover);
       expect(popoverComponent!).toHaveReactProps({
         active: false,
+      });
+    });
+
+    describe('accessibilityLabel', () => {
+      it('renders a Button with the accessibilityLabel', () => {
+        const accessibilityLabel = 'View test actions';
+        const wrapper = mountWithApp(
+          <RollupActions
+            {...mockProps}
+            items={mockItems}
+            accessibilityLabel={accessibilityLabel}
+          />,
+        );
+
+        expect(wrapper).toContainReactComponent(Button, {
+          accessibilityLabel,
+        });
       });
     });
   });

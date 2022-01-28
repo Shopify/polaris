@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {RadioButton} from '../RadioButton';
 
@@ -123,7 +123,7 @@ describe('<RadioButton />', () => {
         .find('input')!
         .prop('id');
       expect(typeof id).toBe('string');
-      expect(id).toBeTruthy();
+      expect(id).toBeDefined();
     });
   });
 

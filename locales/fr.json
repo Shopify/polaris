@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Actions"
+        "rollupButton": "Afficher les actions"
+      },
+      "Actions": {
+        "moreActions": "Autres actions"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "Autres opérations",
         "warningMessage": "Pour fournir une meilleure expérience aux utilisateurs. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtrer",
-        "selectFilterKeyPlaceholder": "Sélectionner un filtre...",
-        "addFilterButtonLabel": "Ajouter un filtre",
-        "showAllWhere": "Afficher tous les {resourceNamePlural} où :"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Rechercher {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Sélectionner un filtre..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Sélectionner une valeur",
-        "dateValueLabel": "Date",
-        "dateValueError": "Correspondre au format JJ-MM-AAAA",
-        "dateValuePlaceholder": "JJ-MM-AAAA",
-        "SelectOptions": {
-          "PastWeek": "au cours de la dernière semaine",
-          "PastMonth": "au cours du dernier mois",
-          "PastQuarter": "au cours des 3 derniers mois",
-          "PastYear": "au cours de la dernière année",
-          "ComingWeek": "la semaine prochaine",
-          "ComingMonth": "le mois prochain",
-          "ComingQuarter": "au cours des 3 prochains mois",
-          "ComingYear": "l'année prochaine",
-          "OnOrBefore": "le ou avant le",
-          "OnOrAfter": "le ou après le"
-        },
-        "FilterLabelForValue": {
-          "past_week": "au cours de la dernière semaine",
-          "past_month": "au cours du dernier mois",
-          "past_quarter": "au cours des 3 derniers mois",
-          "past_year": "au cours de la dernière année",
-          "coming_week": "la semaine prochaine",
-          "coming_month": "le mois prochain",
-          "coming_quarter": "au cours des 3 mois prochains",
-          "coming_year": "l'année prochaine",
-          "on_or_before": "avant le {date}",
-          "on_or_after": "après le {date}"
-        }
-      },
       "showingTotalCount": "Afficher {itemsCount} sur {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre sont sélectionnés.",
       "selectAllFilteredItems": "Sélectionner tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre"
     },
     "SkeletonPage": {
       "loadingLabel": "Chargement de page"
-    },
-    "Spinner": {
-      "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "Plus d'onglets"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "Autres opérations"
-    },
     "Loading": {
       "label": "Barre de chargement de la page"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Sélectionner {resourceName}",
       "selectButtonText": "Sélectionner"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Voir les actions pour {title}"
+      }
     }
   }
 }

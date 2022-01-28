@@ -1,10 +1,12 @@
 import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
 import {Item, Section} from '../components';
+import {Key} from '../../../types';
+import {KeypressListener} from '../../KeypressListener';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -176,5 +178,97 @@ describe('<ActionList />', () => {
       children: 'badge',
       status: 'new',
     });
+  });
+
+  it('wraps focus to first item in action list after keydown event on last element', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        sections={[
+          {
+            title: 'One',
+            items: [
+              {content: 'First section'},
+              {content: 'First section second item'},
+            ],
+          },
+          {
+            title: 'Two',
+            items: [
+              {content: 'Second section'},
+              {content: 'Second section second item'},
+            ],
+          },
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="menuitem"
+      />,
+    );
+
+    const actionListButtons = actionList.findAll('button');
+    const keypressListener = actionList.find(KeypressListener, {
+      keyCode: Key.DownArrow,
+    });
+
+    const event = new KeyboardEvent('keydown', {
+      keyCode: Key.DownArrow,
+    });
+
+    Object.defineProperty(event, 'target', {
+      writable: false,
+      // set target to last focusable item in list
+      value: actionListButtons[actionListButtons.length - 1].domNode,
+    });
+
+    keypressListener?.trigger('handler', event);
+
+    // expect focus to wrap back to first item in action list
+    expect(document.activeElement).toStrictEqual(actionListButtons[0].domNode);
+  });
+
+  it('wraps focus to last item in action list after keyup event on first element', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        sections={[
+          {
+            title: 'One',
+            items: [
+              {content: 'First section'},
+              {content: 'First section second item'},
+            ],
+          },
+          {
+            title: 'Two',
+            items: [
+              {content: 'Second section'},
+              {content: 'Second section second item'},
+            ],
+          },
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="menuitem"
+      />,
+    );
+
+    const actionListButtons = actionList.findAll('button');
+    const keypressListener = actionList.find(KeypressListener, {
+      keyCode: Key.UpArrow,
+    });
+
+    const event = new KeyboardEvent('keydown', {
+      keyCode: Key.UpArrow,
+    });
+
+    Object.defineProperty(event, 'target', {
+      writable: false,
+      // set target to first focusable item in list
+      value: actionListButtons[0].domNode,
+    });
+
+    keypressListener?.trigger('handler', event);
+
+    // expect focus to wrap to last item in action list
+    expect(document.activeElement).toStrictEqual(
+      actionListButtons[actionListButtons.length - 1].domNode,
+    );
   });
 });

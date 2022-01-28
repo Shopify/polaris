@@ -1,6 +1,6 @@
-import React, {useState, useCallback, useMemo, Children} from 'react';
+import React, {useState, useCallback, useMemo, Children, useRef} from 'react';
 
-import {Popover} from '../Popover';
+import {Popover, PopoverPublicAPI} from '../Popover';
 import type {PopoverProps} from '../Popover';
 import type {TextFieldProps} from '../TextField';
 import type {ListboxProps} from '../Listbox';
@@ -37,12 +37,15 @@ export function Combobox({
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
   const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
+  const ref = useRef<PopoverPublicAPI | null>(null);
 
   const onOptionSelected = useCallback(() => {
     if (!allowMultiple) {
       setPopoverActive(false);
       setActiveOptionId(undefined);
+      return;
     }
+    ref.current?.forceUpdatePosition();
   }, [allowMultiple]);
 
   const handleClose = useCallback(() => {
@@ -122,6 +125,7 @@ export function Combobox({
 
   return (
     <Popover
+      ref={ref}
       active={popoverActive}
       onClose={handleClose}
       activator={

@@ -129,7 +129,10 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "การดำเนินการ"
+        "rollupButton": "ดูการดำเนินการ"
+      },
+      "Actions": {
+        "moreActions": "การดำเนินการเพิ่มเติม"
       }
     },
     "Filters": {
@@ -184,57 +187,12 @@
         "moreActionsActivatorLabel": "การดำเนินการเพิ่มเติม",
         "warningMessage": "ในการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมทไม่ควรมีมากเกินไปกว่า {maxPromotedActions} รายการ"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "ตัวกรอง",
-        "selectFilterKeyPlaceholder": "เลือกตัวกรอง...",
-        "addFilterButtonLabel": "เพิ่มตัวกรอง",
-        "showAllWhere": "แสดง {resourceNamePlural} ทั้งหมดที่:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "ค้นหา {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "เลือกตัวกรอง..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "เลือกค่า",
-        "dateValueLabel": "วันที่",
-        "dateValueError": "จับคู่รูปแบบ ปปปป-ดด-วว",
-        "dateValuePlaceholder": "ปปปป-ดด-วว",
-        "SelectOptions": {
-          "PastWeek": "ในสัปดาห์ที่ผ่านมา",
-          "PastMonth": "ในเดือนที่ผ่านมา",
-          "PastQuarter": "ใน 3 เดือนที่ผ่านมา",
-          "PastYear": "ในปีที่ผ่านมา",
-          "ComingWeek": "สัปดาห์ถัดไป",
-          "ComingMonth": "เดือนถัดไป",
-          "ComingQuarter": "ใน 3 เดือนถัดไป",
-          "ComingYear": "ในปีถัดไป",
-          "OnOrBefore": "ในวันดังกล่าวหรือก่อนหน้า",
-          "OnOrAfter": "ในวันดังกล่าวหรือหลังจาก"
-        },
-        "FilterLabelForValue": {
-          "past_week": "ในสัปดาห์ที่ผ่านมา",
-          "past_month": "ในเดือนที่ผ่านมา",
-          "past_quarter": "ใน 3 เดือนที่ผ่านมา",
-          "past_year": "ในปีที่ผ่านมา",
-          "coming_week": "สัปดาห์ถัดไป",
-          "coming_month": "เดือนถัดไป",
-          "coming_quarter": "ใน 3 เดือนถัดไป",
-          "coming_year": "ในปีถัดไป",
-          "on_or_before": "ก่อน {date}",
-          "on_or_after": "หลัง {date}"
-        }
-      },
       "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้แล้ว",
       "selectAllFilteredItems": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้"
     },
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"
-    },
-    "Spinner": {
-      "warningMessage": "สี {color} ไม่ได้มีไว้เพื่อใช้กับสปินเนอร์ขนาด {size} สีที่มีให้บริการสำหรับสปินเนอร์ขนาดใหญ่คือ: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "แท็บเพิ่มเติม"
@@ -304,9 +262,6 @@
         }
       }
     },
-    "Actions": {
-      "moreActions": "การดำเนินการเพิ่มเติม"
-    },
     "Loading": {
       "label": "แถบแสดงการโหลดหน้า"
     },
@@ -334,6 +289,11 @@
       "selectAllItems": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมด",
       "selectItem": "เลือก {resourceName}",
       "selectButtonText": "เลือก"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+      }
     }
   }
 }

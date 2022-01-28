@@ -1,8 +1,8 @@
 import React, {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
-import {Icon} from '../../../..';
+import {Icon} from '../../../../Icon';
 import {Cell} from '../Cell';
 
 describe('<Cell />', () => {
@@ -201,6 +201,7 @@ describe('<Cell />', () => {
         });
       });
     });
+
     describe('when set to ascending', () => {
       it('renders an up caret Icon when table is not currently sorted by that column', () => {
         const cell = mountWithTable(
@@ -260,8 +261,8 @@ describe('<Cell />', () => {
   });
 });
 
-function mountWithTable<P>(node: ReactElement) {
-  return mountWithApp<P>(
+function mountWithTable<T>(node: ReactElement) {
+  return mountWithApp<T>(
     <table>
       <thead />
       <tbody>

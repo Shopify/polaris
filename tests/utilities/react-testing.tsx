@@ -7,10 +7,11 @@ import {
 } from '@shopify/react-testing';
 
 import translations from '../../locales/en.json';
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import {
   PolarisTestProvider,
   WithPolarisTestProviderOptions,
-} from '../components';
+} from '../../src/components/PolarisTestProvider';
 
 export {createMount, mount, ReactTestingElement, CustomRoot};
 

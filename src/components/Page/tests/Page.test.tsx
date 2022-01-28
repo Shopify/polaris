@@ -1,15 +1,12 @@
 import React, {useCallback, useState} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {
-  Page,
-  PageProps,
-  Card,
-  Avatar,
-  Badge,
-  ActionMenuProps,
-} from 'components';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
+import {Avatar} from '../../Avatar';
+import type {ActionMenuProps} from '../../ActionMenu';
+import {Badge} from '../../Badge';
+import {Card} from '../../Card';
+import {Page, PageProps} from '../Page';
 import {Header} from '../components';
 
 window.matchMedia =

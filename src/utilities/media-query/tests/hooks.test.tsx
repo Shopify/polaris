@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mount, mountWithApp} from 'test-utilities';
+import {mount, mountWithApp} from 'tests/utilities';
 
 import {useMediaQuery} from '../hooks';
 import {MediaQueryContext} from '../context';

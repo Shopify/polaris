@@ -1,13 +1,11 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {
-  Layout,
-  Card,
-  SkeletonBodyText,
-  DisplayText,
-  SkeletonDisplayText,
-} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Card} from '../../Card';
+import {DisplayText} from '../../DisplayText';
+import {Layout} from '../../Layout';
+import {SkeletonBodyText} from '../../SkeletonBodyText';
+import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {

@@ -13,35 +13,44 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   height: 100%;
 }
 
-.FileUploadSmallView {
-  padding: 1.25rem;
+.large {
+  padding: rem(32px);
+}
+
+.small {
+  padding: 12px;
 }
 
 .FileUpload img {
   vertical-align: bottom;
 }
 
-.Button {
-  @include button-base;
+.Action {
   @include focus-ring;
+  display: inline-flex;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: var(--p-border-radius-base);
+  padding: rem(4px) rem(6px);
+  margin: 0;
+  text-decoration: none;
+  color: var(--p-interactive-hovered);
+  background: var(--p-surface-selected-pressed);
+  font-size: rem(12px);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  appearance: none;
+
+  &:hover {
+    color: var(--p-interactive-pressed);
+  }
 
   &.disabled {
     @include base-button-disabled;
     cursor: not-allowed;
     box-shadow: none;
-  }
-
-  &.focused {
-    outline: 0;
-    box-shadow: none;
-
-    @include focus-ring($style: 'focused');
-    @include high-contrast-button-outline;
-  }
-
-  .sizeSlim {
-    min-height: $slim-min-height;
-    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
@@ -52,7 +61,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   &:not(.ActionTitle-disabled) {
     cursor: pointer;
 
-    // stylelint-disable-next-line selector-max-specificity
     &:hover,
     &:active {
       color: var(--p-interactive-pressed);

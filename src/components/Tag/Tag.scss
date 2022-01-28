@@ -20,10 +20,6 @@ $icon-size: rem(16px);
     color: var(--p-text-disabled);
   }
 
-  &.removable {
-    padding-right: 0;
-  }
-
   &.clickable {
     @include unstyled-button;
     cursor: pointer;
@@ -36,7 +32,6 @@ $icon-size: rem(16px);
 
     @include focus-ring;
     // stylelint-disable selector-max-specificity
-    // stylelint-disable selector-max-class
 
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
@@ -50,7 +45,16 @@ $icon-size: rem(16px);
       background: var(--p-surface-neutral-disabled);
       cursor: default;
       pointer-events: none;
+      color: var(--p-text-disabled);
     }
+  }
+
+  &.removable {
+    padding-right: 0;
+  }
+
+  &.linkable {
+    padding: 0;
   }
 
   @include high-contrast-outline;
@@ -67,6 +71,7 @@ $icon-size: rem(16px);
   @include recolor-icon(var(--p-icon));
   @include unstyled-button;
   display: block;
+  flex-shrink: 0;
   height: $height;
   width: $height;
   margin-left: spacing(extra-tight);
@@ -75,10 +80,6 @@ $icon-size: rem(16px);
   &:hover {
     background: var(--p-surface-neutral-hovered);
     @include high-contrast-outline;
-  }
-
-  &:focus {
-    background-color: transparent;
   }
 
   @include focus-ring;
@@ -95,5 +96,50 @@ $icon-size: rem(16px);
     @include recolor-icon(var(--p-icon-disabled));
     cursor: default;
     pointer-events: none;
+  }
+
+  &.segmented {
+    margin-left: -1 * spacing(extra-tight);
+
+    &::after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.Link {
+  display: inline-grid;
+  color: var(--p-text);
+  outline: none;
+  border-radius: var(--p-border-radius-base);
+  text-decoration: none;
+  padding: spacing(extra-tight) spacing(tight);
+
+  .LinkText {
+    @include truncate;
+  }
+
+  @include focus-ring;
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+    text-decoration: underline;
+  }
+
+  &:hover {
+    background: var(--p-surface-neutral-hovered);
+    text-decoration: underline;
+  }
+
+  &.segmented {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &::after {
+      margin-right: spacing(extra-tight);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }

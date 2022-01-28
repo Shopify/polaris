@@ -24,13 +24,10 @@ $stacking-order: (
 // This is a violation of our component model, but it’s the cleanest
 // way to remove the border radii on connected elements.
 // TextField.scss has a dependency due to this override.
-// stylelint-disable declaration-no-important
 .Item-primary {
   z-index: z-index(primary, $stacking-order);
   flex: 1 1 auto;
 }
-
-// stylelint-enable declaration-no-important
 
 .Item-focused {
   z-index: z-index(focused, $stacking-order);

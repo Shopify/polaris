@@ -32,7 +32,6 @@ export function Pane({
     <div className={className}>{content}</div>
   ) : (
     <Scrollable
-      hint
       shadow
       className={className}
       onScrolledToBottom={onScrolledToBottom}

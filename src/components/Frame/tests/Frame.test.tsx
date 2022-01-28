@@ -1,13 +1,11 @@
 import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
-import {
-  ContextualSaveBar as PolarisContextualSavebar,
-  Loading as PolarisLoading,
-  TrapFocus,
-} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {ContextualSaveBar as PolarisContextualSavebar} from '../../ContextualSaveBar';
+import {Loading as PolarisLoading} from '../../Loading';
+import {TrapFocus} from '../../TrapFocus';
 import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
@@ -81,6 +79,7 @@ describe('<Frame />', () => {
       );
     });
   });
+
   describe('topBar', () => {
     it('renders with a top bar data attribute if a topBar is passed', () => {
       const topbar = <div />;

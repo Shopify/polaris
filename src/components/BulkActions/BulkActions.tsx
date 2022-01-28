@@ -181,7 +181,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
   private rolledInPromotedActions() {
     const {promotedActions} = this.props;
-    const numberOfPromotedActionsToRender = this.numberOfPromotedActionsToRender();
+    const numberOfPromotedActionsToRender =
+      this.numberOfPromotedActionsToRender();
 
     if (
       !promotedActions ||
@@ -206,7 +207,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     const {actions, promotedActions} = this.props;
 
     if (promotedActions && !actions && this.moreActionsNode) {
-      this.addedMoreActionsWidthForMeasuring = this.moreActionsNode.getBoundingClientRect().width;
+      this.addedMoreActionsWidthForMeasuring =
+        this.moreActionsNode.getBoundingClientRect().width;
     }
 
     this.bulkActionsWidth = this.largeScreenButtonsNode
@@ -240,7 +242,11 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const actionSections = this.actionSections();
 
-    if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
+    if (
+      promotedActions &&
+      promotedActions.length > MAX_PROMOTED_ACTIONS &&
+      process.env.NODE_ENV === 'development'
+    ) {
       // eslint-disable-next-line no-console
       console.warn(
         i18n.translate('Polaris.ResourceList.BulkActions.warningMessage', {
@@ -249,11 +255,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       );
     }
 
-    const {
-      smallScreenPopoverVisible,
-      largeScreenPopoverVisible,
-      measuring,
-    } = this.state;
+    const {smallScreenPopoverVisible, largeScreenPopoverVisible, measuring} =
+      this.state;
 
     const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
       <Button
@@ -288,7 +291,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       </Button>
     );
 
-    const numberOfPromotedActionsToRender = this.numberOfPromotedActionsToRender();
+    const numberOfPromotedActionsToRender =
+      this.numberOfPromotedActionsToRender();
 
     const allActionsPopover = this.hasActions() ? (
       <div className={styles.Popover} ref={this.setMoreActionsNode}>
@@ -332,9 +336,9 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
               }
               return (
                 <BulkActionButton
+                  key={index}
                   disabled={disabled}
                   {...action}
-                  key={index}
                   handleMeasurement={this.handleMeasurement}
                 />
               );

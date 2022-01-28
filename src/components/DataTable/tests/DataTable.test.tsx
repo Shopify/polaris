@@ -1,8 +1,8 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'test-utilities';
-import {Checkbox} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Checkbox} from '../../Checkbox';
 import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
 

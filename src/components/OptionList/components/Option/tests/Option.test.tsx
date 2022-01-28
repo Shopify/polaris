@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Checkbox} from '../../Checkbox';
 import {Scrollable} from '../../../../Scrollable';
@@ -112,6 +112,46 @@ describe('<Option />', () => {
     expect(option).toContainReactComponent(Scrollable.ScrollTo);
     expect(option).toContainReactComponent('label', {
       className: 'Label active',
+    });
+  });
+
+  describe('verticalAlignment', () => {
+    it('renders with default flex-start alignment if not provided', () => {
+      const option = mountWithApp(<Option {...defaultProps} allowMultiple />);
+
+      expect(option).toContainReactComponent('label', {
+        className: 'Label',
+      });
+    });
+
+    it('renders with top alignment', () => {
+      const option = mountWithApp(
+        <Option {...defaultProps} allowMultiple verticalAlign="top" />,
+      );
+
+      expect(option).toContainReactComponent('label', {
+        className: 'Label verticalAlignTop',
+      });
+    });
+
+    it('renders with center alignment', () => {
+      const option = mountWithApp(
+        <Option {...defaultProps} allowMultiple verticalAlign="center" />,
+      );
+
+      expect(option).toContainReactComponent('label', {
+        className: 'Label verticalAlignCenter',
+      });
+    });
+
+    it('renders with bottom alignment', () => {
+      const option = mountWithApp(
+        <Option {...defaultProps} allowMultiple verticalAlign="bottom" />,
+      );
+
+      expect(option).toContainReactComponent('label', {
+        className: 'Label verticalAlignBottom',
+      });
     });
   });
 });

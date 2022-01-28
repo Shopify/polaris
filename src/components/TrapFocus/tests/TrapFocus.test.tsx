@@ -1,14 +1,12 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {
-  EventListener,
-  Focus,
-  TextContainer,
-  TextField,
-  Button,
-  Portal,
-} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../Button';
+import {EventListener} from '../../EventListener';
+import {Focus} from '../../Focus';
+import {TextContainer} from '../../TextContainer';
+import {TextField} from '../../TextField';
+import {Portal} from '../../Portal';
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';

@@ -5,9 +5,13 @@ import {
   PlusMinor,
   SelectMinor,
 } from '@shopify/polaris-icons';
-import {mountWithApp} from 'test-utilities';
-import {ActionList, Icon, Popover, Spinner, UnstyledButton} from 'components';
+import {mountWithApp} from 'tests/utilities';
 
+import {ActionList} from '../../ActionList';
+import {Icon} from '../../Icon';
+import {Popover} from '../../Popover';
+import {Spinner} from '../../Spinner';
+import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
 import en from '../../../../locales/en.json';
 import styles from '../Button.scss';
@@ -105,6 +109,7 @@ describe('<Button />', () => {
     });
 
     it.todo('renders a placeholder disclosure icon');
+
     it.todo('renders a placeholder inner icon');
   });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
@@ -7,7 +7,7 @@ import {ScrollableContext} from '../context';
 describe('<Scrollable />', () => {
   it('mounts', () => {
     const scrollable = mountWithApp(<Scrollable />);
-    expect(scrollable).toBeTruthy();
+    expect(scrollable).toBeDefined();
   });
 
   it('unmounts', () => {

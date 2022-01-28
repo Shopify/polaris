@@ -1,8 +1,8 @@
 import React from 'react';
-import {mountWithApp} from 'test-utilities';
-import {Avatar} from 'components';
-import {Button} from 'components/Button';
+import {mountWithApp} from 'tests/utilities';
 
+import {Avatar} from '../../Avatar';
+import {Button} from '../../Button';
 import {AccountConnection} from '../AccountConnection';
 
 describe('<AccountConnection />', () => {

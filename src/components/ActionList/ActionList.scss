@@ -6,9 +6,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 $titleVerticalSpacing: spacing(tight) * 1.5;
 
 .ActionList {
+  outline: none;
   list-style: none;
   margin: 0;
-  padding: spacing(tight) 0;
+  padding: 0;
 }
 
 .Section-withoutTitle:not(:first-child) {
@@ -16,6 +17,7 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
 }
 
 .Actions {
+  outline: none;
   list-style: none;
   margin: 0;
   border-top: border('divider');
