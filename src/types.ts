@@ -90,7 +90,7 @@ export interface Action {
   /** A unique identifier for the action */
   id?: string;
   /** Content the action displays */
-  content?: string;
+  content?: string | React.ReactNode;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** A destination to link to, rendered in the action */
