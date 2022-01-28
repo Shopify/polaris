@@ -62,8 +62,8 @@ function defaultIdForItem<TItemType extends {id?: any}>(
     : index.toString();
 }
 
-function defaultSectionIdForItem<ItemType extends {id?: any; sectionId?: any}>(
-  item: ItemType,
+function defaultSectionIdForItem<TItemType extends {id?: any; sectionId?: any}>(
+  item: TItemType,
   index: number,
 ) {
   return Object.prototype.hasOwnProperty.call(item, 'sectionId')
