@@ -27,10 +27,6 @@ $border-radius: 999px;
   }
 }
 
-.Icon {
-  margin-right: spacing(tight);
-}
-
 .Text {
   @include text-style-input;
 }
