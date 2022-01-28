@@ -7,22 +7,11 @@ $border-radius: 999px;
   display: flex;
   justify-content: center;
   margin: spacing(loose) 0;
+  padding: spacing(loose) spacing(loose) spacing(loose) spacing();
   width: 100%;
 
   @include page-content-when-not-fully-condensed {
     margin: spacing(loose);
-    width: auto;
-  }
-}
-
-.Content {
-  display: inline-flex;
-  align-items: center;
-  padding: spacing(loose) spacing(loose) spacing(loose) spacing();
-  width: 100%;
-  justify-content: center;
-
-  @include page-content-when-not-fully-condensed {
     width: auto;
   }
 }

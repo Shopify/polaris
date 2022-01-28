@@ -10,9 +10,7 @@ export interface FooterHelpProps {
 export function FooterHelp({children}: FooterHelpProps) {
   return (
     <div className={styles.FooterHelp}>
-      <div className={styles.Content}>
-        <div className={styles.Text}>{children}</div>
-      </div>
+      <div className={styles.Text}>{children}</div>
     </div>
   );
 }
