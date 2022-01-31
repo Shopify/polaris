@@ -42,7 +42,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `unstyled-list()` mixin and replaced any instances with values ([#4960](https://github.com/Shopify/polaris-react/pull/4960))
 - Removed `high-contrast-outline()` and `high-contrast-border()` mixins and replaced any instances with tokens and values ([#4962](https://github.com/Shopify/polaris-react/pull/4962))
 - Removed the `map-extend` scss function ([#4970](https://github.com/Shopify/polaris-react/pull/4970))
-- Removed the `state()` scss mixin ([#](https://github.com/Shopify/polaris-react/pull/))
+- Removed the `state()` scss mixin ([#4989](https://github.com/Shopify/polaris-react/pull/4989))
 
 ### New components
 
