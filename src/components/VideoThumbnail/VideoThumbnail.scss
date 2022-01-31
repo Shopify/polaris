@@ -43,7 +43,11 @@ $progress-bar-height: 6px;
 
   &:focus {
     outline: none;
-    @include state(focused);
+    box-shadow: inset 2px 0 0 var(--p-focused);
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
+    );
   }
 }
 
