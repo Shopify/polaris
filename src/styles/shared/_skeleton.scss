@@ -40,7 +40,3 @@ $thumbnail-sizes: (
   justify-content: flex-end;
   align-items: center;
 }
-
-@mixin skeleton-page-header-layout {
-  padding-bottom: var(--p-space-2);
-}
