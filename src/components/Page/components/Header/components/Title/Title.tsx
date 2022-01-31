@@ -33,7 +33,13 @@ export function Title({
     console.warn('The thumbnail prop from Page has been deprecated');
   }
 
-  const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
+  const titleMarkup = title ? (
+    <h1
+      className={classNames(styles.Title, subtitle && styles.TitleWithSubtitle)}
+    >
+      {title}
+    </h1>
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
