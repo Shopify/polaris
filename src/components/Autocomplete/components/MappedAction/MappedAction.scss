@@ -1,8 +1,6 @@
 @import '../../../../styles/common';
 
 $image-size: rem(20px);
-$item-min-height: rem(40px);
-$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .ActionContainer {
   margin-bottom: spacing(base-tight);
@@ -22,7 +20,6 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   @include focus-ring;
   display: block;
   width: 100%;
-  min-height: $item-min-height;
   text-align: left;
   cursor: pointer;
 
