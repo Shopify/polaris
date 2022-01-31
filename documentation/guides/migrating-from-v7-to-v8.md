@@ -14,7 +14,7 @@ Node 16 is now a requirement.
 
 No changes are needed if your app uses the `rem()` function for css values. If your app caches css files you'll need to rebuild them once you upgrade to v8.0.0.
 
-Polaris has switched to the browser default of 16px for it's base font size instead of the previous 10px.
+Polaris has switched to the browser default of 16px for its base font size instead of the previous 10px.
 
 If you have hard coded rem values then you will need to modify them to use the `rem()` function or recalculate them accordingly:
 
