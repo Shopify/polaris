@@ -24,6 +24,7 @@ $progress-bar-height: 6px;
 }
 
 .PlayButton {
+  --pc-play-button-focused-state-overlay: rgba(223, 227, 232, 0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -45,8 +46,8 @@ $progress-bar-height: 6px;
     outline: none;
     box-shadow: inset 2px 0 0 var(--p-focused);
     background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
+      var(--pc-play-button-focused-state-overlay),
+      var(--pc-play-button-focused-state-overlay)
     );
   }
 }
