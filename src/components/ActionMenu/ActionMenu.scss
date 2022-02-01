@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .ActionMenu {
-  @include print-hidden;
+  @include hidden-when-printing;
   // Needed for JS calculations
   width: 100%;
   display: flex;
