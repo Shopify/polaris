@@ -45,7 +45,7 @@ body {
   // stylelint-disable color-no-hex
   background-color: #f6f6f7;
 
-  @include when-printing {
+  @media print {
     // AppProvider sets styles on the body. These needs to
     // be overridden using !important.
     // stylelint-disable-next-line declaration-no-important

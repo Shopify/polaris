@@ -193,7 +193,7 @@ $action-menu-rollup-computed-width: 40px;
     margin-left: 0;
   }
 
-  @include when-printing {
+  @media print {
     // stylelint-disable-next-line declaration-no-important
     margin-left: 0 !important;
   }
