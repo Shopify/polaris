@@ -1,9 +1,3 @@
-@mixin when-not-printing {
-  @media not print {
-    @content;
-  }
-}
-
 @mixin hidden-when-printing {
   @media print {
     // We really, really don't want to see this thing when it is printed.
