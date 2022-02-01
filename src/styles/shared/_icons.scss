@@ -1,7 +1,3 @@
-@function icon-size() {
-  @return 20px;
-}
-
 @mixin recolor-icon(
   $fill-color: null,
   $secondary-color: null,

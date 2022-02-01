@@ -17,3 +17,15 @@ $resource-list-variables: (
 @function resource-list($variable) {
   @return map-get($resource-list-variables, $variable);
 }
+
+@mixin page-before-resource-list-small() {
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    @content;
+  }
+}
+
+@mixin page-after-resource-list-small() {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    @content;
+  }
+}
