@@ -40,7 +40,10 @@ $action-menu-rollup-computed-width: 40px;
     padding-right: $action-menu-rollup-computed-width;
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .BreadcrumbWrapper {
@@ -49,7 +52,10 @@ $action-menu-rollup-computed-width: 40px;
   max-width: 100%;
   margin-right: var(--p-space-4);
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .PaginationWrapper {
@@ -72,7 +78,10 @@ $action-menu-rollup-computed-width: 40px;
     }
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .AdditionalNavigationWrapper {
@@ -80,7 +89,10 @@ $action-menu-rollup-computed-width: 40px;
   flex: 1 0 auto;
   justify-content: flex-end;
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 ///
@@ -115,7 +127,10 @@ $action-menu-rollup-computed-width: 40px;
     margin-left: var(--p-space-4);
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .ActionMenuWrapper {
@@ -137,7 +152,10 @@ $action-menu-rollup-computed-width: 40px;
     top: control-height() * 0.5;
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .Row {
@@ -193,7 +211,7 @@ $action-menu-rollup-computed-width: 40px;
     margin-left: 0;
   }
 
-  @include when-printing {
+  @media print {
     // stylelint-disable-next-line declaration-no-important
     margin-left: 0 !important;
   }

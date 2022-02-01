@@ -7,7 +7,7 @@
   display: flex;
   background-color: var(--p-background);
 
-  @include when-printing {
+  @media print {
     background-color: transparent;
   }
 
@@ -18,7 +18,6 @@
 }
 
 .Navigation {
-  @include hidden-when-printing;
   position: fixed;
   z-index: var(--p-z-8);
   top: 0;
@@ -29,6 +28,11 @@
   height: 100%;
   outline: none;
   transform: translateX(0%);
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 
   @include frame-when-nav-displayed {
     z-index: 1;
@@ -72,7 +76,6 @@
 }
 
 .NavigationDismiss {
-  @include hidden-when-printing;
   @include recolor-icon(var(--p-surface));
   @include focus-ring;
   position: absolute;
@@ -90,6 +93,11 @@
   will-change: opacity;
   cursor: pointer;
   transition: opacity var(--p-duration-100) var(--p-ease);
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 
   .Navigation-visible & {
     pointer-events: all;
@@ -117,13 +125,17 @@
 }
 
 .TopBar {
-  @include hidden-when-printing;
   position: fixed;
   z-index: var(--p-z-4);
   top: 0;
   left: 0;
   width: 100%;
   height: top-bar-height();
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 
   @include frame-when-nav-displayed {
     left: var(--pc-frame-offset);
@@ -158,7 +170,7 @@
   @include frame-when-nav-displayed {
     .hasNav & {
       padding-left: layout-width(nav);
-      @include when-printing {
+      @media print {
         padding-left: 0;
       }
       @include safe-area-for(padding-left, layout-width(nav), left);
@@ -167,7 +179,7 @@
 
   .hasTopBar & {
     padding-top: top-bar-height();
-    @include when-printing {
+    @media print {
       padding-top: 0;
     }
   }
@@ -202,12 +214,16 @@
 }
 
 .LoadingBar {
-  @include hidden-when-printing;
   position: fixed;
   z-index: var(--p-z-6);
   top: 0;
   right: 0;
   left: 0;
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 
   @include frame-when-nav-displayed {
     .hasNav & {

@@ -165,10 +165,3 @@ $typography-condensed: 640px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
-@mixin print-hidden {
-  @media print {
-    // stylelint-disable-next-line declaration-no-important
-    display: none !important;
-  }
-}

@@ -17,7 +17,7 @@
 }
 
 .expandOnPrint {
-  @include when-printing {
+  @media print {
     // stylelint-disable-next-line declaration-no-important
     max-height: none !important;
     overflow: visible;

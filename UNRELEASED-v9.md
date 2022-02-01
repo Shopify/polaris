@@ -43,6 +43,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `unstyled-link()` mixin and replaced with values ([#4951](https://github.com/Shopify/polaris-react/pull/4951))
 - Removed the `unstyled-list()` mixin and replaced with values ([#4960](https://github.com/Shopify/polaris-react/pull/4960))
 - Removed the `high-contrast-outline()` and `high-contrast-border()` mixins and replaced with tokens and values ([#4962](https://github.com/Shopify/polaris-react/pull/4962))
+- Removed the `when-printing`, `when-not-printing`, `hidden-when-printing`, and `print-hidden` scss mixins ([#4995](https://github.com/Shopify/polaris-react/pull/4995))
 - Replaced the `icon-size()` function with the `--p-icon-size-medium` custom property ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
 
 **Sass global variables**
