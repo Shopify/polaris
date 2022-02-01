@@ -119,5 +119,8 @@ $vertical-motion-offset: -5px;
 }
 
 .PopoverOverlay-hideOnPrint {
-  @include hidden-when-printing;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }

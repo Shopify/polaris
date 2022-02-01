@@ -1,9 +1,13 @@
 @import '../../styles/common';
 
 .ActionMenu {
-  @include hidden-when-printing;
   // Needed for JS calculations
   width: 100%;
   display: flex;
   justify-content: flex-end;
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
