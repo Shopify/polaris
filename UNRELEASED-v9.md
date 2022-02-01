@@ -43,6 +43,11 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `high-contrast-outline()` and `high-contrast-border()` mixins and replaced any instances with tokens and values ([#4962](https://github.com/Shopify/polaris-react/pull/4962))
 - Removed the `map-extend` scss function ([#4970](https://github.com/Shopify/polaris-react/pull/4970))
 - Removed the `when-printing` and `when-not-printing` scss mixins ([#4995](https://github.com/Shopify/polaris-react/pull/4995))
+- Removed the `skeleton-page-header-layout` scss mixin ([#4991](https://github.com/Shopify/polaris-react/pull/4991))
+- Removed the `skeleton-page-secondary-actions-layout` scss mixin ([#4991](https://github.com/Shopify/polaris-react/pull/4991))
+- Updated `--p-icon-size` custom property to `--p-icon-size-small` ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
+- Replaced `icon-size()` SCSS function with the `--p-icon-size-medium` custom property ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
+- Removed the `state()` scss mixin ([#4989](https://github.com/Shopify/polaris-react/pull/4989))
 
 ### New components
 

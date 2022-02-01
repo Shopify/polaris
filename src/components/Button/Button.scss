@@ -290,7 +290,7 @@
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: calc(-0.5 * (var(--p-line-height-6) - #{icon-size()}));
+    margin: calc(-0.5 * (var(--p-line-height-6) - var(--p-icon-size-medium)));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));

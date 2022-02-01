@@ -32,15 +32,3 @@ $thumbnail-sizes: (
     }
   }
 }
-
-@mixin skeleton-page-secondary-actions-layout {
-  margin-top: var(--p-space-2);
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-@mixin skeleton-page-header-layout {
-  padding-bottom: var(--p-space-2);
-}
