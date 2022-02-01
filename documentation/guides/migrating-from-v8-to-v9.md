@@ -6,7 +6,7 @@ Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## Removal of the public scss api
 
-Any functions that were being consumed from `build/styles/_public-api.scsspri` have been removed. The functions can be found in the following permalinks.
+Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.
 
 [`./foundation/layout`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/foundation/_layout.scss)
 
