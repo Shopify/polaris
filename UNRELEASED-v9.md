@@ -6,22 +6,16 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 **CSS custom properties**
 
-- Removed `--p-badge-font-weight` and `--p-button-font-weight` custom properties ([#4687](https://github.com/Shopify/polaris-react/pull/4687))
+- Removed `--p-badge-font-weight` and `--p-button-font-weight` ([#4687](https://github.com/Shopify/polaris-react/pull/4687))
 - Renamed `--p-duration-1-0-0` and `--p-duration-1-5-0` to `--p-duration-100` and `--p-duration-150`.
-- Removed `--p-border-radius-` properties and moved border-radius custom properties to tokens ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
 - Removed `--p-override-*` `--p-non-null-content` `--p-badge-mix-blend-mode` `--p-range-slider-thumb-scale` custom properties ([#4686](https://github.com/Shopify/polaris-react/pull/4686))
 - Removed `nonDesignLangaugeCustomProperties` and `designLangaugeCustomProperties` ([#4770](https://github.com/Shopify/polaris-react/pull/4770))
 - Renamed shadow custom properties ([#4823](https://github.com/Shopify/polaris-react/pull/4823))
-- Renamed `--p-icon-size` custom property to `--p-icon-size-small` ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
-- Updated `--global-ribbon-height` custom property to `--pc-frame-global-ribbon-height` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
-- Updated `--p-frame-offset` custom property to `--pc-frame-offset` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
-- Updated `--top-bar-*` custom properties to `--pc-top-bar-*` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
-
-**ThemeProvider**
-
-- Removed `ThemeProvider` component ([#4642](https://github.com/Shopify/polaris-react/pull/4642))
-- Moved `logo` from `ThemeProvider` to `Frame` context ([#4667](https://github.com/Shopify/polaris-react/pull/4667))
-- Moved `frameOffset` from `ThemeProvider` to `offset` prop on `Frame` ([#4727](https://github.com/Shopify/polaris-react/pull/4727))
+- Renamed border radius custom properties ([#4763](https://github.com/Shopify/polaris-react/pull/4763))
+- Renamed `--p-icon-size` to `--p-icon-size-small` ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
+- Updated `--global-ribbon-height` to `--pc-frame-global-ribbon-height` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
+- Updated `--p-frame-offset` to `--pc-frame-offset` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
+- Updated `--top-bar-*` to `--pc-top-bar-*` ([#4804](https://github.com/Shopify/polaris-react/pull/4804))
 
 **Sass functions and mixins**
 
@@ -57,14 +51,20 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `$easing-data` ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
 - Removed `$duration-data` ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 
+**ThemeProvider**
+
+- Removed `ThemeProvider` component ([#4642](https://github.com/Shopify/polaris-react/pull/4642))
+- Moved `logo` from `ThemeProvider` to `Frame` context ([#4667](https://github.com/Shopify/polaris-react/pull/4667))
+- Moved `frameOffset` from `ThemeProvider` to `offset` prop on `Frame` ([#4727](https://github.com/Shopify/polaris-react/pull/4727))
+
 **Components**
 
 - Removed the deprecated `secondaryAction` prop on `SkeletonPage` ([#4742](https://github.com/Shopify/polaris-react/pull/4742))
-- Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 
-**Build**
+**Development workflow**
 
 - Removed `build/styles` directory from build output ([#4728](https://github.com/Shopify/polaris-react/pull/4728))
+- Dropped support for node < 16 ([#4778](https://github.com/Shopify/polaris-react/pull/4778))
 
 ### New components
 
