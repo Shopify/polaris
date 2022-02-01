@@ -51,11 +51,11 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `high-contrast-outline()` and `high-contrast-border()` mixins and replaced with tokens and values ([#4962](https://github.com/Shopify/polaris-react/pull/4962))
 - Replaced the `icon-size()` function with the `--p-icon-size-medium` custom property ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
 
-**Sass variables**
+**Sass global variables**
 
-- Removed the `$color-palette-data` global variable ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
-- Removed the `$easing-data` global variable ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
-- Removed the the `$duration-data` global variable ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
+- Removed `$color-palette-data` ([#4714](https://github.com/Shopify/polaris-react/pull/4714))
+- Removed `$easing-data` ([#4698](https://github.com/Shopify/polaris-react/pull/4698))
+- Removed `$duration-data` ([#4699](https://github.com/Shopify/polaris-react/pull/4699))
 
 **Components**
 
