@@ -62,8 +62,8 @@
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.1);
     transform-origin: 50% 50%;
-    height: var(--p-icon-size);
-    width: var(--p-icon-size);
+    height: var(--p-icon-size-small);
+    width: var(--p-icon-size-small);
     background-color: var(--p-interactive);
     border-radius: var(--p-border-radius-half);
     transition: opacity var(--p-duration-100) var(--p-ease),
