@@ -432,6 +432,7 @@ export function TextField({
     pattern,
     inputMode,
     type: inputType,
+    rows: getRows(multiline),
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
@@ -530,4 +531,10 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
+}
+
+function getRows(multiline?: boolean | number) {
+  if (!multiline) return undefined;
+
+  return typeof multiline === 'number' ? multiline : 1;
 }
