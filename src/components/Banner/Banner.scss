@@ -269,6 +269,7 @@ $spinner-size: rem(20px);
   will-change: box-shadow;
   transition: box-shadow duration() easing();
   display: block;
+  line-height: line-height(button);
 }
 
 .Button {
