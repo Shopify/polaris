@@ -30,7 +30,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Fixed a bug where the `Checkbox` in a `Combobox` with `allowMultiple` would steal focus and close the `Popover` when clicked ([#4895](https://github.com/Shopify/polaris-react/pull/4895))
 - Fixed an issue where `TextField` was the wrong height on initial render ([#4903](https://github.com/Shopify/polaris-react/pull/4903))
 - Fixed an issue where token values in px weren't converted to rems ([#5000](https://github.com/Shopify/polaris-react/pull/5000))
-- Fixed `display` on `Banner` `secondaryAction` in Firefox ([#5001](https://github.com/Shopify/polaris-react/pull/5001))
 - Fixed `display` and `line-height` on `Banner` `secondaryAction` on focus in Firefox ([#5001](https://github.com/Shopify/polaris-react/pull/5001))
 
 ### Documentation
