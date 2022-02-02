@@ -36,6 +36,7 @@
     z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
+    line-height: normal;
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-border-width-1));

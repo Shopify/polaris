@@ -242,7 +242,9 @@
   &:focus > .Text {
     @include plain-button-backdrop;
     @include high-contrast-button-outline;
+    @include focus-ring($style: 'focused');
     box-shadow: none;
+    background-color: transparent;
   }
 
   &:visited {
@@ -251,6 +253,7 @@
 }
 
 .Text {
+  @include focus-ring;
   box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.25) inset;
   will-change: box-shadow;
   transition: box-shadow var(--p-duration-200) var(--p-ease);

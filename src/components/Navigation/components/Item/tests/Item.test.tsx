@@ -3,6 +3,8 @@ import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import {PolarisTestProvider} from '../../../../PolarisTestProvider';
+import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Badge} from '../../../../Badge';
 import {Icon} from '../../../../Icon';
 import {Indicator} from '../../../../Indicator';
@@ -649,6 +651,30 @@ describe('<Nav.Item />', () => {
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });
+
+    describe('onToggleExpandedState', () => {
+      it('fires the onToggleExpandedState handler when clicked', () => {
+        const onToggleExpandedState = jest.fn();
+        const item = mountWithNavigationAndPolarisTestProvider(
+          <Item
+            label="some label"
+            disabled={false}
+            url="/admin/orders"
+            onToggleExpandedState={onToggleExpandedState}
+            subNavigationItems={[{label: 'sub item', url: '/sub-item'}]}
+          />,
+          {location: '/admin/orders'},
+          {isNavigationCollapsed: true},
+        );
+        item?.find('a')?.trigger('onClick', {
+          preventDefault: jest.fn(),
+          currentTarget: {
+            getAttribute: () => 'baz',
+          },
+        });
+        expect(onToggleExpandedState).toHaveBeenCalledTimes(1);
+      });
+    });
   });
 
   describe('keyFocused', () => {
@@ -722,6 +748,24 @@ function mountWithNavigationProvider(
   return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
+    </NavigationContext.Provider>,
+  );
+}
+
+function mountWithNavigationAndPolarisTestProvider(
+  node: React.ReactElement,
+  navigationContext: React.ContextType<typeof NavigationContext> = {
+    location: '',
+  },
+  mediaQueryContext: React.ContextType<typeof MediaQueryContext> = {
+    isNavigationCollapsed: false,
+  },
+) {
+  return mountWithApp(
+    <NavigationContext.Provider value={navigationContext}>
+      <PolarisTestProvider mediaQuery={mediaQueryContext}>
+        {node}
+      </PolarisTestProvider>
     </NavigationContext.Provider>,
   );
 }

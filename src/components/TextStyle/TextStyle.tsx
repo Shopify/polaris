@@ -4,11 +4,18 @@ import {classNames, variationName} from '../../utilities/css';
 
 import styles from './TextStyle.scss';
 
-type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
+type Variation =
+  | 'positive'
+  | 'negative'
+  | 'warning'
+  | 'strong'
+  | 'subdued'
+  | 'code';
 
 enum VariationValue {
   Positive = 'positive',
   Negative = 'negative',
+  Warning = 'warning',
   Strong = 'strong',
   Subdued = 'subdued',
   Code = 'code',

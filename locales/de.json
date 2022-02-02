@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "Weitere Aktionen",
         "warningMessage": "Um eine bessere Benutzererfahrung zu bieten. Es sollte nur maximal {maxPromotedActions} beworbene Aktionen geben."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Filter auswählen ...",
-        "addFilterButtonLabel": "Filter hinzufügen",
-        "showAllWhere": "Alle {resourceNamePlural} auswählen, bei denen:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural} suchen"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Filter auswählen …"
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Wert auswählen",
-        "dateValueLabel": "Datum",
-        "dateValueError": "Übereinstimmung mit Format JJJJ-MM-TT",
-        "dateValuePlaceholder": "JJJJ-MM-TT",
-        "SelectOptions": {
-          "PastWeek": "in der letzten Woche",
-          "PastMonth": "im letzten Monat",
-          "PastQuarter": "in den letzten 3 Monaten",
-          "PastYear": "im letzten Jahr",
-          "ComingWeek": "nächste Woche",
-          "ComingMonth": "nächster Monat",
-          "ComingQuarter": "in den nächsten 3 Monaten",
-          "ComingYear": "im nächsten Jahr",
-          "OnOrBefore": "bis zum",
-          "OnOrAfter": "nach dem"
-        },
-        "FilterLabelForValue": {
-          "past_week": "in der letzten Woche",
-          "past_month": "im letzten Monat",
-          "past_quarter": "in den letzten 3 Monaten",
-          "past_year": "im letzten Jahr",
-          "coming_week": "nächste Woche",
-          "coming_month": "nächster Monat",
-          "coming_quarter": "in den nächsten 3 Monaten",
-          "coming_year": "im nächsten Jahr",
-          "on_or_before": "vor {date}",
-          "on_or_after": "nach {date}"
-        }
-      },
       "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt",
       "allFilteredItemsSelected": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter sind ausgewählt.",
       "selectAllFilteredItems": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter auswählen"

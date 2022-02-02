@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "Altre azioni",
         "warningMessage": "Per offrire una migliore User Experience. È previsto solo un massimo di {maxPromotedActions} azioni promosse."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtra",
-        "selectFilterKeyPlaceholder": "Seleziona un filtro...",
-        "addFilterButtonLabel": "Aggiungi filtro",
-        "showAllWhere": "Mostra tutti gli {resourceNamePlural} dove:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Cerca {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Seleziona un filtro..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Seleziona un valore",
-        "dateValueLabel": "Data",
-        "dateValueError": "Usa il formato AAAA-MM-GG",
-        "dateValuePlaceholder": "AAAA-MM-GG",
-        "SelectOptions": {
-          "PastWeek": "nell'ultima settimana",
-          "PastMonth": "nello scorso mese",
-          "PastQuarter": "negli ultimi 3 mesi",
-          "PastYear": "nell'ultimo anno",
-          "ComingWeek": "la prossima settimana",
-          "ComingMonth": "il prossimo mese",
-          "ComingQuarter": "nei prossimi 3 mesi",
-          "ComingYear": "nel prossimo anno",
-          "OnOrBefore": "il giorno o prima",
-          "OnOrAfter": "il giorno o dopo"
-        },
-        "FilterLabelForValue": {
-          "past_week": "nell'ultima settimana",
-          "past_month": "nello scorso mese",
-          "past_quarter": "negli ultimi 3 mesi",
-          "past_year": "nell'ultimo anno",
-          "coming_week": "la prossima settimana",
-          "coming_month": "il prossimo mese",
-          "coming_quarter": "nei prossimi 3 mesi",
-          "coming_year": "nel prossimo anno",
-          "on_or_before": "prima del {date}",
-          "on_or_after": "dopo il {date}"
-        }
-      },
       "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount}{resource}",
       "allFilteredItemsSelected": "Tutti i {resourceNamePlural} {itemsLength}+ in questo filtro sono selezionati.",
       "selectAllFilteredItems": "Seleziona tutti i {resourceNamePlural} {itemsLength}+ in questo filtro"

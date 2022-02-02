@@ -86,7 +86,6 @@ export function MappedAction({
       external,
       onAction,
       destructive,
-      isAction: true,
     }),
     [role, url, external, onAction, destructive],
   );

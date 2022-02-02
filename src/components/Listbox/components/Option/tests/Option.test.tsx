@@ -249,7 +249,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             role,
           }}
         >
@@ -269,7 +268,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             url: 'google.com',
           }}
         >
@@ -287,7 +285,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             url: 'google.com',
             external: true,
           }}
@@ -307,7 +304,6 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
             onAction: onActionSpy,
           }}
         >
@@ -332,7 +328,7 @@ describe('Option', () => {
       const option = mountWithListboxProvider(
         <MappedActionContext.Provider
           value={{
-            isAction: true,
+            onAction: () => {},
           }}
         >
           <Option {...defaultProps} />
