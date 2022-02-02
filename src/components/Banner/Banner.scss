@@ -257,11 +257,14 @@ $spinner-size: rem(20px);
   &:focus > .Text {
     @include plain-button-backdrop;
     @include high-contrast-button-outline;
+    @include focus-ring($style: 'focused');
     box-shadow: none;
+    background-color: transparent;
   }
 }
 
 .Text {
+  @include focus-ring;
   box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0.25) inset;
   will-change: box-shadow;
   transition: box-shadow duration() easing();

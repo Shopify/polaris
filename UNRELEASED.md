@@ -21,6 +21,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed `min-height` from `Page` `additionalNavigation` ([#4952](https://github.com/Shopify/polaris-react/pull/4952))
 - Fixed overly dark `bottom-border` on `DataTable` header cell and total cell ([#4975](https://github.com/Shopify/polaris-react/pull/4975))
 - Removed `min-height` on `Autocomplete` `action` ([#4977](https://github.com/Shopify/polaris-react/pull/4977))
+- Fixed `focus-ring` on `Banner` `secondaryAction` ([#4997](https://github.com/Shopify/polaris-react/pull/4997))
 
 ### Documentation
 
