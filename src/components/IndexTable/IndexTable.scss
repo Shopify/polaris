@@ -353,8 +353,8 @@ $loading-panel-height: 53px;
 }
 
 .StickyTableColumnHeader-isScrolling {
-  box-shadow: 1px 1px 0 0 var(--p-border-divider), 1px 0 1px 1px rgba(63, 63, 68, 0.05),
-    1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  box-shadow: 1px 1px 0 0 var(--p-border-divider),
+    1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
 }
 
 .StickyTableHeadings {

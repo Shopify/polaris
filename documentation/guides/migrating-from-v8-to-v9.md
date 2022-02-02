@@ -38,6 +38,7 @@ const App = (props) => (
 +  </AppProvider>
 )
 ```
+
 ## Removal of the public scss api
 
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.

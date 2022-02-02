@@ -20,7 +20,6 @@
 
 .MainColor {
   @include checkers;
-  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
@@ -67,6 +66,10 @@
     background-image: linear-gradient(to top, black, transparent);
     box-shadow: $inner-shadow;
   }
+
+  @media (-ms-high-contrast: active) {
+    outline: 1px solid windowText;
+  }
 }
 
 .Dragger {
@@ -95,7 +98,6 @@ $vertical-picker-border-radius: $picker-size * 0.5;
 
 .HuePicker,
 .AlphaPicker {
-  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
@@ -116,6 +118,10 @@ $vertical-picker-border-radius: $picker-size * 0.5;
     pointer-events: none;
     border-radius: $vertical-picker-border-radius;
     box-shadow: $inner-shadow;
+  }
+
+  @media (-ms-high-contrast: active) {
+    outline: 1px solid windowText;
   }
 }
 
