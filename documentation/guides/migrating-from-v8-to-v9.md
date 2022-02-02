@@ -6,8 +6,6 @@ Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## CSS Custom Properties
 
-### Global CSS Custom Properties
-
 |                 Before                 |               After                |
 | :------------------------------------: | :--------------------------------: |
 |        `--p-badge-font-weight`         |              removed               |
