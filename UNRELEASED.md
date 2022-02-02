@@ -31,6 +31,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Fixed an issue where `TextField` was the wrong height on initial render ([#4903](https://github.com/Shopify/polaris-react/pull/4903))
 - Fixed an issue where token values in px weren't converted to rems ([#5000](https://github.com/Shopify/polaris-react/pull/5000))
 - Fixed `display` on `Banner` `secondaryAction` in Firefox ([#5001](https://github.com/Shopify/polaris-react/pull/5001))
+- Fixed `display` on `Banner` `secondaryAction` on focus in Firefox ([#5001](https://github.com/Shopify/polaris-react/pull/5001))
 
 ### Documentation
 
