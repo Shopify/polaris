@@ -94,13 +94,13 @@ $context-control-expand-after: 1400px;
     @include focus-ring($border-width: rem(6px));
   }
 
-  // style-lint-disable selector-max-specificity
+  // stylelint-disable selector-max-specificity
   &:focus:not(:active) {
     .IconWrapper {
       @include focus-ring($style: 'focused');
     }
   }
-  // style-lint-enable selector-max-specificity
+  // stylelint-enable selector-max-specificity
 }
 
 .Contents {
