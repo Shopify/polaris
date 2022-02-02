@@ -36,8 +36,6 @@ CSS Custom Properties that have been deprecated can be replaced with the CSS pro
 |   `--p-badge-mix-blend-mode`    |       `luminosity`       |
 | `--p-range-slider-thumb-scale`  |          `1.5`           |
 |       `--p-frame-offset`        |          `0px`           |
-|      `--p-checkbox-offset`      |         removed          |
-| `--p-scroll-bar-content-width`  |         removed          |
 | `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
 | `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
 |   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
