@@ -25,32 +25,22 @@ CSS Custom Properties that were renamed can be replaced with the new CSS custom 
 
 CSS Custom Properties that have been deprecated can be replaced with the CSS property value.
 
-|                 Before                 |          Value           |
-| :------------------------------------: | :----------------------: |
-|          `--p-override-none`           |          `none`          |
-|       `--p-override-transparent`       |      `transparent`       |
-|           `--p-override-one`           |           `1`            |
-|         `--p-override-visible`         |        `visible`         |
-|          `--p-override-zero`           |           `0`            |
-|         `--p-non-null-content`         |           `''`           |
-|       `--p-badge-mix-blend-mode`       |       `luminosity`       |
-|     `--p-range-slider-thumb-scale`     |          `1.5`           |
-|        `--global-ribbon-height`        |         removed          |
-| `--Polaris-RangeSlider-progress-lower` |         removed          |
-| `--Polaris-RangeSlider-progress-upper` |         removed          |
-|    `--Polaris-RangeSlider-progress`    |         removed          |
-| `--Polaris-RangeSlider-output-factor`  |         removed          |
-|           `--top-bar-color`            |         removed          |
-|         `--top-bar-background`         |         removed          |
-|     `--top-bar-background-lighter`     |         removed          |
-|     `--top-bar-background-darker`      |         removed          |
-|           `--top-bar-border`           |         removed          |
-|           `--p-frame-offset`           |          `0px`           |
-|         `--p-checkbox-offset`          |         removed          |
-|     `--p-scroll-bar-content-width`     |         removed          |
-|    `--p-shadow-from-ambient-light`     | `rgba(23, 24, 24, 0.05)` |
-|     `--p-shadow-from-direct-light`     |  `rgba(0, 0, 0, 0.15)`   |
-|      `--p-shadow-from-dim-light`       |   `rgba(0, 0, 0, 0.2)`   |
+|             Before              |          Value           |
+| :-----------------------------: | :----------------------: |
+|       `--p-override-none`       |          `none`          |
+|   `--p-override-transparent`    |      `transparent`       |
+|       `--p-override-one`        |           `1`            |
+|     `--p-override-visible`      |        `visible`         |
+|       `--p-override-zero`       |           `0`            |
+|     `--p-non-null-content`      |           `''`           |
+|   `--p-badge-mix-blend-mode`    |       `luminosity`       |
+| `--p-range-slider-thumb-scale`  |          `1.5`           |
+|       `--p-frame-offset`        |          `0px`           |
+|      `--p-checkbox-offset`      |         removed          |
+| `--p-scroll-bar-content-width`  |         removed          |
+| `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
+| `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
+|   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
 
 ## Removal of the public scss api
 
