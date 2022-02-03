@@ -6,7 +6,7 @@ Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## CSS Custom Properties
 
-CSS Custom Properties that were renamed can be replaced with the new CSS custom property name.
+CSS custom properties that were renamed can be replaced with the new CSS custom property name.
 
 |              Before               |               After                |
 | :-------------------------------: | :--------------------------------: |
