@@ -361,7 +361,7 @@ $secondary-item-font-size: 15px;
   padding-left: var(--p-space-4);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-left: spacing(loose);
+    padding-left: var(--p-space-5);
   }
 
   .Text {
