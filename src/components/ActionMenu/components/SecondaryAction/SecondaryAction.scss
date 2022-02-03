@@ -45,4 +45,22 @@ $breakpoint: 768px;
       }
     }
   }
+
+  &.destructive {
+    a,
+    button {
+      @include recolor-icon(var(--p-icon-critical));
+      color: var(--p-interactive-critical);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:hover {
+        background-color: var(--p-surface-critical-subdued-hovered) !important;
+      }
+
+      // stylelint-disable selector-max-specificity
+      &:active {
+        background-color: var(--p-surface-critical-subdued-pressed) !important;
+      }
+    }
+  }
 }

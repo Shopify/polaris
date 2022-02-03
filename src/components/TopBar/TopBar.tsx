@@ -83,7 +83,9 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajor} />
+      <div className={styles.IconWrapper}>
+        <Icon source={MobileHamburgerMajor} />
+      </div>
     </button>
   ) : null;
 

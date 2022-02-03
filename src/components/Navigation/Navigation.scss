@@ -364,6 +364,10 @@ $secondary-item-font-size: 15px;
     padding-left: var(--p-space-5);
   }
 
+  @include breakpoint-after(nav-min-window-corrected()) {
+    padding-left: var(--p-space-5);
+  }
+
   .Text {
     font-size: var(--p-font-size-2);
     color: var(--p-text-subdued);
