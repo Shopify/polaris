@@ -124,7 +124,7 @@ $disabled-fade: 0.6;
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
   }
 }
 
