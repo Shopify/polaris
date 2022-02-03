@@ -23,7 +23,7 @@ CSS custom properties that were renamed can be replaced with the new CSS custom 
 | `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
 |          `--p-icon-size`          |       `--p-icon-size-small`        |
 
-CSS Custom Properties that have been deprecated can be replaced with the CSS property value.
+CSS custom properties that have been deprecated can be replaced with the CSS property value.
 
 |             Before              |          Value           |
 | :-----------------------------: | :----------------------: |
