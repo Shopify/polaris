@@ -34,6 +34,8 @@ export interface ContextualSaveBarProps {
   fullWidth?: boolean;
   /** Accepts a component that is used to help users switch between different contexts */
   contextControl?: React.ReactNode;
+  /** Accepts a node that is rendered before the discard and save actions */
+  secondaryMenu?: React.ReactNode;
 }
 
 // Toast
