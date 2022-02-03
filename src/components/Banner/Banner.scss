@@ -260,6 +260,7 @@ $spinner-size: rem(20px);
     @include focus-ring($style: 'focused');
     box-shadow: none;
     background-color: transparent;
+    display: block;
   }
 }
 
