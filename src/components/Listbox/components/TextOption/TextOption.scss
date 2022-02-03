@@ -16,7 +16,7 @@
 
   &.isAction {
     margin-top: 0;
-    padding: spacing(tight) spacing(tight);
+    padding: var(--p-space-2);
   }
 
   &:hover {
