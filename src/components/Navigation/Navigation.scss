@@ -389,9 +389,9 @@ $secondary-item-font-size: 15px;
       // stylelint-disable selector-max-combinators
       svg,
       img {
-        height: spacing();
-        width: spacing();
-        margin: spacing(extra-tight) / 2;
+        height: var(--p-space-4);
+        width: var(--p-space-4);
+        margin: var(--p-space-05);
       }
     }
 
