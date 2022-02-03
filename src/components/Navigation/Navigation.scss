@@ -291,7 +291,7 @@ $secondary-item-font-size: 15px;
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
       line-height: 1;
-      padding-left: nav(icon-size) + spacing(base-tight);
+      padding-left: calc(nav(icon-size) + var(--p-space-3));
     }
   }
 
