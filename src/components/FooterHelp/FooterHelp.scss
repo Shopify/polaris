@@ -12,22 +12,6 @@
   }
 }
 
-.Content {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) var(--p-space-4);
-  width: 100%;
-  justify-content: center;
-
-  @include page-content-when-not-fully-condensed {
-    width: auto;
-  }
-}
-
-.Icon {
-  margin-right: var(--p-space-2);
-}
-
 .Text {
   @include text-style-input;
 }

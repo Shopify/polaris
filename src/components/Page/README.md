@@ -169,7 +169,9 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
   }}
   additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -217,7 +219,9 @@ Use to create a custom primary action.
     </Button>
   }
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -252,6 +256,21 @@ Use when a primary action functions better as part of the page content instead o
 </Page>
 ```
 
+### Page with destructive secondary action
+
+<!-- example-for: web -->
+
+Used to visually indicate that the secondary page action is destructive.
+
+```jsx
+<Page
+  title="General"
+  secondaryActions={[{content: 'Delete', destructive: true}]}
+>
+  <p>Page content</p>
+</Page>
+```
+
 ### Page with subtitle
 
 <!-- example-for: web -->
@@ -265,7 +284,9 @@ Use when the page title benefits from secondary content.
   subtitle="Statement period: May 3, 2019 to June 2, 2019"
   secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -288,7 +309,9 @@ Use when a secondary action links to another website. Actions marked external op
     },
   ]}
 >
-  <p>Page Content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -304,7 +327,9 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
   title="General"
   primaryAction={{content: 'Save'}}
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -324,7 +349,9 @@ Use for layouts that benefit from more screen width, such as wide tables or list
     hasNext: true,
   }}
 >
-  <p>Wide page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -372,7 +399,9 @@ Use action groups for sets of actions that relate to one another, particularly w
     },
   ]}
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -394,7 +423,9 @@ Title metadata appears immediately after the page’s title. Use it to communica
     hasNext: true,
   }}
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 
@@ -410,7 +441,9 @@ Use when the page needs visual separation between the page header and the conten
   title="General"
   divider
 >
-  <p>Page content</p>
+  <Card title="Credit card" sectioned>
+    <p>Credit card information</p>
+  </Card>
 </Page>
 ```
 

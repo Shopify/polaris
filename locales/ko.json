@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "기타 작업",
         "warningMessage": "더 나은 사용자 환경을 제공하려면 프로모션 작업의 수가 {maxPromotedActions}개 이하여야 합니다."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "필터",
-        "selectFilterKeyPlaceholder": "필터 선택...",
-        "addFilterButtonLabel": "필터 추가",
-        "showAllWhere": "다음에 해당하는 모든 {resourceNamePlural} 표시:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural} 검색"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "필터 선택..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "값 선택",
-        "dateValueLabel": "일",
-        "dateValueError": "YYYY-MM-DD 형식 일치",
-        "dateValuePlaceholder": "YYYY-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "지난 주",
-          "PastMonth": "지난 달",
-          "PastQuarter": "지난 3개월",
-          "PastYear": "작년",
-          "ComingWeek": "다음 주",
-          "ComingMonth": "다음 달",
-          "ComingQuarter": "다음 3개월",
-          "ComingYear": "내년",
-          "OnOrBefore": "해당 날짜 또는 이전",
-          "OnOrAfter": "해당 날짜 또는 이후"
-        },
-        "FilterLabelForValue": {
-          "past_week": "지난 주",
-          "past_month": "지난 달",
-          "past_quarter": "지난 3개월",
-          "past_year": "작년",
-          "coming_week": "다음 주",
-          "coming_month": "다음 달",
-          "coming_quarter": "다음 3개월",
-          "coming_year": "내년",
-          "on_or_before": "{date} 전",
-          "on_or_after": "{date} 후"
-        }
-      },
       "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시",
       "allFilteredItemsSelected": "이 필터의 모든 {itemsLength}+ {resourceNamePlural}이(가) 선택됩니다.",
       "selectAllFilteredItems": "이 필터의 모든 {itemsLength}+ {resourceNamePlural} 선택"

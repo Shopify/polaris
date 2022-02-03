@@ -21,7 +21,12 @@ export function Title({
   titleMetadata,
   compactTitle,
 }: TitleProps) {
-  const titleMarkup = title ? <h1 className={styles.Title}>{title}</h1> : null;
+  const className = classNames(
+    styles.Title,
+    subtitle && styles.TitleWithSubtitle,
+  );
+
+  const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
