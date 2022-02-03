@@ -75,16 +75,16 @@ $nav-animation-variables: (
   svg,
   img {
     display: block;
-    height: spacing(loose);
-    width: spacing(loose);
+    height: var(--p-space-5);
+    width: var(--p-space-5);
   }
 
   .Icon-resized {
     svg,
     img {
-      margin: spacing(extra-tight) / 2;
-      height: spacing();
-      width: spacing();
+      margin: var(--p-space-05);
+      height: var(--p-space-4);
+      width: var(--p-space-4);
     }
   }
 }
