@@ -19,13 +19,6 @@ To quickly help you add these functions back to your repo, we've created a css f
 #### `filter()`
 
 <details>
-<summary>Token replacement guide</summary>
-
-| Function + Parameters | Replacement Value |
-| --------------------- | ----------------- |
-
-</details>
-<details>
 <summary>Value replacement guide</summary>
 
 | Function                               | Replacement Value                                                                                                      |
