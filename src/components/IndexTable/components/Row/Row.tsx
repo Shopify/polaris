@@ -21,6 +21,7 @@ export interface RowProps {
   subdued?: boolean;
   status?: RowStatus;
   onNavigation?(id: string): void;
+  disabled?: boolean;
 }
 
 export const Row = memo(function Row({
@@ -31,6 +32,7 @@ export const Row = memo(function Row({
   subdued,
   status,
   onNavigation,
+  disabled,
 }: RowProps) {
   const {selectable, selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
@@ -83,12 +85,13 @@ export const Row = memo(function Row({
     styles.TableRow,
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
-    subdued && styles['TableRow-subdued'],
+    (subdued || disabled) && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
     status && styles[variationName('status', status)],
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
+    disabled && styles['TableRow-disabled'],
   );
 
   let handleRowClick;
@@ -122,6 +125,7 @@ export const Row = memo(function Row({
           new MouseEvent(event.type, event.nativeEvent),
         );
       } else {
+        if (disabled) return;
         isNavigating.current = false;
         handleInteraction(event);
       }
@@ -130,7 +134,7 @@ export const Row = memo(function Row({
 
   const RowWrapper = condensed ? 'li' : 'tr';
 
-  const checkboxMarkup = selectable ? <Checkbox /> : null;
+  const checkboxMarkup = selectable ? <Checkbox disabled={disabled} /> : null;
 
   return (
     <RowContext.Provider value={contextValue}>

@@ -18,7 +18,11 @@ import sharedStyles from '../../IndexTable.scss';
 
 import styles from './Checkbox.scss';
 
-export const Checkbox = memo(function Checkbox() {
+export interface CheckboxProps {
+  disabled?: boolean;
+}
+
+export const Checkbox = memo(function Checkbox({disabled}: CheckboxProps) {
   const i18n = useI18n();
   const {resourceName, condensed} = useIndexValue();
   const {itemId, selected, onInteraction} = useContext(RowContext);
@@ -45,6 +49,7 @@ export const Checkbox = memo(function Checkbox() {
             })}
             labelHidden
             checked={selected}
+            disabled={disabled}
           />
         </div>
       </div>

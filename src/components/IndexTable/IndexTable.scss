@@ -124,6 +124,10 @@ $loading-panel-height: rem(53px);
     cursor: auto;
   }
 
+  &.TableRow-disabled {
+    cursor: not-allowed;
+  }
+
   &.statusSuccess {
     // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
     &,
