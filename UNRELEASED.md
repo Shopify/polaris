@@ -52,7 +52,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
-
 ### Dependency upgrades
 
 ### Code quality
