@@ -65,7 +65,7 @@ $nav-animation-variables: (
     font-size: $item-font-size;
     font-weight: var(--p-font-weight-semibold);
     line-height: $item-line-height-small;
-    padding-left: spacing() - (spacing(extra-tight) / 2);
+    padding-left: calc(var(--p-space-4) - var(--p-space-05));
   }
 
   &::-moz-focus-inner {
