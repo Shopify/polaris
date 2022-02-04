@@ -89,17 +89,6 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
-#### `easing()`
-
-| Function                     | Replacement Value/Token                |
-| ---------------------------- | -------------------------------------- |
-| `easing()`<br>`easing(base)` | `--p-ease`                             |
-| `easing(in)`                 | `--p-ease-in`                          |
-| `easing(out)`                | `--p-ease-out`                         |
-| `easing(excite)`             | `--p-ease-excite`                      |
-| `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
-| `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
-
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
@@ -111,6 +100,27 @@ A list of functions/mixins and their value equivalents or new token values.
 | `duration(slower)`               | `--p-duration-400`      |
 | `duration(slowest)`              | `--p-duration-500`      |
 
+#### `easing()`
+
+| Function                     | Replacement Value/Token                |
+| ---------------------------- | -------------------------------------- |
+| `easing()`<br>`easing(base)` | `--p-ease`                             |
+| `easing(in)`                 | `--p-ease-in`                          |
+| `easing(out)`                | `--p-ease-out`                         |
+| `easing(excite)`             | `--p-ease-excite`                      |
+| `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
+| `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
+
+#### `shadow()`
+
+| Function                     | Replacement Value/Token  |
+| ---------------------------- | ------------------------ |
+| `shadow(faint)`              | `--p-shadow-faint`       |
+| `shadow()`<br>`shadow(base)` | `--p-shadow-base`        |
+| `shadow(deep)`               | `--p-shadow-deep`        |
+| `shadow(layer)`              | `--p-shadow-layer`       |
+| `shadow(transparent)`        | `--p-shadow-transparent` |
+
 ## Tokens
 
 ### Duration
@@ -119,6 +129,21 @@ A list of functions/mixins and their value equivalents or new token values.
 | -------------------- | ----------------------- |
 | `--p-duration-1-0-0` | `--p-duration-100`      |
 | `--p-duration-1-5-0` | `--p-duration-150`      |
+
+### Shadow
+
+| Token                             | Replacement Value/Token            |
+| --------------------------------- | ---------------------------------- |
+| `--p-card-shadow`                 | `--p-shadow-card`                  |
+| `--p-popover-shadow`              | `--p-shadow-popover`               |
+| `--p-modal-shadow`                | `--p-shadow-modal`                 |
+| `--p-top-bar-shadow`              | `--p-shadow-top-bar`               |
+| `--p-button-drop-shadow`          | `--p-shadow-button`                |
+| `--p-button-inner-shadow`         | `--p-shadows-inset-button`         |
+| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
+| `--p-shadow-from-ambient-light`   | `rgba(23, 24, 24, 0.05)`           |
+| `--p-shadow-from-direct-light`    | `rgba(0, 0, 0, 0.15)`              |
+| `--p-shadow-from-dim-light`       | `rgba(0, 0, 0, 0.2)`               |
 
 ## Removal of the public scss api
 
