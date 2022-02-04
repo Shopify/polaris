@@ -39,6 +39,42 @@ const App = (props) => (
 )
 ```
 
+## CSS custom properties
+
+CSS custom properties that were renamed can be replaced with the new CSS custom property name.
+
+|              Before               |               After                |
+| :-------------------------------: | :--------------------------------: |
+|      `--p-badge-font-weight`      |     `--p-font-weight-regular`      |
+|     `--p-button-font-weight`      |      `--p-font-weight-medium`      |
+|       `--p-duration-1-0-0`        |         `--p-duration-100`         |
+|       `--p-duration-1-5-0`        |         `--p-duration-150`         |
+|         `--p-card-shadow`         |         `--p-shadow-card`          |
+|       `--p-popover-shadow`        |        `--p-shadow-popover`        |
+|        `--p-modal-shadow`         |         `--p-shadow-modal`         |
+|       `--p-top-bar-shadow`        |        `--p-shadow-top-bar`        |
+|     `--p-button-drop-shadow`      |        `--p-shadow-button`         |
+|     `--p-button-inner-shadow`     |     `--p-shadows-inset-button`     |
+| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
+|          `--p-icon-size`          |       `--p-icon-size-small`        |
+
+CSS custom properties that have been deprecated can be replaced with the CSS property value.
+
+|             Before              |          Value           |
+| :-----------------------------: | :----------------------: |
+|       `--p-override-none`       |          `none`          |
+|   `--p-override-transparent`    |      `transparent`       |
+|       `--p-override-one`        |           `1`            |
+|     `--p-override-visible`      |        `visible`         |
+|       `--p-override-zero`       |           `0`            |
+|     `--p-non-null-content`      |           `''`           |
+|   `--p-badge-mix-blend-mode`    |       `luminosity`       |
+| `--p-range-slider-thumb-scale`  |          `1.5`           |
+|       `--p-frame-offset`        |          `0px`           |
+| `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
+| `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
+|   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
+
 ## Sass functions and mixins
 
 The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
