@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 8.2.0 - 2022-02-04
+
+### Dependency upgrades
+
+- Bumped `@shopify/polaris-icons` to v4.17.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
+
 ## 8.1.0 - 2022-02-04
 
 ### Enhancements
