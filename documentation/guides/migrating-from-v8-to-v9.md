@@ -89,6 +89,17 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `duration()`
+
+| Function                         | Replacement Value/Token |
+| -------------------------------- | ----------------------- |
+| `duration(none)`                 | 0                       |
+| `duration(fast)`                 | `--p-duration-100`      |
+| `duration()`<br>`duration(base)` | `--p-duration-200`      |
+| `duration(slow)`                 | `--p-duration-300`      |
+| `duration(slower)`               | `--p-duration-400`      |
+| `duration(slowest)`              | `--p-duration-500`      |
+
 #### `easing()`
 
 | Function                     | Replacement Value/Token                |
@@ -172,6 +183,15 @@ A list of functions/mixins and their value equivalents or new token values.
 [^2]: Token usage varied depending on state.
 
 </details>
+
+## Tokens
+
+### Duration
+
+| Token                | Replacement Value/Token |
+| -------------------- | ----------------------- |
+| `--p-duration-1-0-0` | `--p-duration-100`      |
+| `--p-duration-1-5-0` | `--p-duration-150`      |
 
 ## Removal of the public scss api
 
