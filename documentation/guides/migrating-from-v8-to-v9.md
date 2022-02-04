@@ -39,6 +39,31 @@ const App = (props) => (
 )
 ```
 
+## Sass functions and mixins
+
+The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
+
+### Adding the functions to your repo
+
+To help you quickly add these functions back to your repo, we've created a css file with all the removed functions.
+
+[✨ Amazing mega file linked here ✨]
+
+### Replacing function instances with values or tokens
+
+To help you replace function instances in your repo, we've provided the following list of functions and their value equivalents or new token values.
+
+#### `easing()`
+
+| Function                 | Replacement Value/Token              |
+| ------------------------ | ------------------------------------ |
+| easing()<br>easing(base) | var(--p-ease)                        |
+| easing(in)               | var(--p-ease-in)                     |
+| easing(out)              | var(--p-ease-out)                    |
+| easing(excite)           | var(--p-ease-excite)                 |
+| easing(overshoot)        | cubic-bezier(0.07, 0.28, 0.32, 1.22) |
+| easing(anticipate)       | cubic-bezier(0.38, -0.4, 0.88, 0.65) |
+
 ## Removal of the public scss api
 
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.
