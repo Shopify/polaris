@@ -96,12 +96,6 @@ function preAndPostBuildPlugin() {
                 ['./src/**/*.md', './build/docs', '--up=1'],
                 {all: true},
               );
-
-              await step.exec(
-                'node_modules/.bin/copyfiles',
-                ['./src/styles/**/*.scss', './build/styles', '--up=2'],
-                {all: true},
-              );
             } catch (error) {
               throw new DiagnosticError({
                 title: 'Error runing postbuild steps',

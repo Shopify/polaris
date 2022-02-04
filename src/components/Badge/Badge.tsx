@@ -7,14 +7,7 @@ import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Badge.scss';
 
-type StatusDeprecated = 'attention';
-type Status =
-  | 'success'
-  | 'info'
-  | 'critical'
-  | 'warning'
-  | 'new'
-  | StatusDeprecated;
+type Status = 'info' | 'success' | 'attention' | 'warning' | 'critical' | 'new';
 type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 type Size = 'small' | 'medium';
 

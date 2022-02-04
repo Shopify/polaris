@@ -11,8 +11,12 @@
   }
 }
 
+.TitleWithSubtitle {
+  margin-top: var(--p-space-1);
+}
+
 .SubTitle {
-  margin-top: var(--p-space-2);
+  margin-top: var(--p-space-1);
   color: var(--p-text-subdued);
 
   &.SubtitleCompact {

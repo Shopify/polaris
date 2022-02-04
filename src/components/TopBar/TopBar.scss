@@ -89,6 +89,18 @@ $context-control-expand-after: 1400px;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
   }
+
+  .IconWrapper {
+    @include focus-ring($border-width: rem(6px));
+  }
+
+  // stylelint-disable selector-max-specificity
+  &:focus:not(:active) {
+    .IconWrapper {
+      @include focus-ring($style: 'focused');
+    }
+  }
+  // stylelint-enable selector-max-specificity
 }
 
 .Contents {

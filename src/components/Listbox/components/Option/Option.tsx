@@ -34,8 +34,9 @@ export const Option = memo(function Option({
   divider,
 }: OptionProps) {
   const {onOptionSelect} = useListbox();
-  const {role, url, external, onAction, destructive, isAction} =
+  const {role, url, external, onAction, destructive} =
     useContext(MappedActionContext);
+
   const listItemRef = useRef<HTMLLIElement>(null);
   const domId = useUniqueId('ListboxOption');
   const sectionId = useSection();
@@ -45,7 +46,7 @@ export const Option = memo(function Option({
     (evt: React.MouseEvent) => {
       evt.preventDefault();
       onAction && onAction();
-      if (listItemRef.current && !isAction) {
+      if (listItemRef.current && !onAction) {
         onOptionSelect({
           domId,
           value,
@@ -54,7 +55,7 @@ export const Option = memo(function Option({
         });
       }
     },
-    [domId, onOptionSelect, value, disabled, onAction, isAction],
+    [domId, onOptionSelect, value, disabled, onAction],
   );
 
   // prevents lost of focus on Textfield

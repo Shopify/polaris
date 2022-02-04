@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "筛选",
-        "selectFilterKeyPlaceholder": "选择筛选条件...",
-        "addFilterButtonLabel": "添加筛选条件",
-        "showAllWhere": "显示所有这些 {resourceNamePlural}："
-      },
-      "FilterControl": {
-        "textFieldLabel": "搜索 {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "选择筛选条件..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "选择一个值",
-        "dateValueLabel": "日期",
-        "dateValueError": "匹配 YYYY-MM-DD 格式",
-        "dateValuePlaceholder": "YYYY-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "过去一周",
-          "PastMonth": "过去 1 个月",
-          "PastQuarter": "过去 3 个月",
-          "PastYear": "过去一年",
-          "ComingWeek": "下周",
-          "ComingMonth": "下个月",
-          "ComingQuarter": "接下来的 3 个月",
-          "ComingYear": "接下来的一年",
-          "OnOrBefore": "截至",
-          "OnOrAfter": "自此以后"
-        },
-        "FilterLabelForValue": {
-          "past_week": "过去一周",
-          "past_month": "过去 1 个月",
-          "past_quarter": "过去 3 个月",
-          "past_year": "过去一年",
-          "coming_week": "下周",
-          "coming_month": "下个月",
-          "coming_quarter": "接下来的 3 个月",
-          "coming_year": "接下来的一年",
-          "on_or_before": "{date} 之前",
-          "on_or_after": "{date} 之后"
-        }
-      },
       "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）",
       "allFilteredItemsSelected": "已选择此筛选器中的所有 {itemsLength}+ 个{resourceNamePlural}。",
       "selectAllFilteredItems": "选择此筛选器中的所有 {itemsLength}+ 个 {resourceNamePlural}"

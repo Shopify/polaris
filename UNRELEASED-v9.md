@@ -45,6 +45,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed the `high-contrast-outline()` and `high-contrast-border()` mixins and replaced with tokens and values ([#4962](https://github.com/Shopify/polaris-react/pull/4962))
 - Removed the `when-printing`, `when-not-printing`, `hidden-when-printing`, and `print-hidden` scss mixins ([#4995](https://github.com/Shopify/polaris-react/pull/4995))
 - Replaced the `icon-size()` function with the `--p-icon-size-medium` custom property ([#4990](https://github.com/Shopify/polaris-react/pull/4990))
+- Removed the public scss api ([#4993](https://github.com/Shopify/polaris-react/pull/4993))
 
 **Sass global variables**
 

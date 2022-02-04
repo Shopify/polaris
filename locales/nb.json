@@ -187,48 +187,6 @@
         "moreActionsActivatorLabel": "Flere handlinger",
         "warningMessage": "For å gi en bedre brukeropplevelse. Det bør ikke være mer enn {maxPromotedActions} promoterte handlinger."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Velg et filter",
-        "addFilterButtonLabel": "Legg til filter",
-        "showAllWhere": "Vis alle {resourceNamePlural} der:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Søk {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Velg et filter"
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Velg en verdi",
-        "dateValueLabel": "Dato",
-        "dateValueError": "Match formatet ÅÅÅÅ-MM-DD",
-        "dateValuePlaceholder": "ÅÅÅÅ-MM-DD",
-        "SelectOptions": {
-          "PastWeek": "i løpet av den siste uken",
-          "PastMonth": "i løpet av den siste måneden",
-          "PastQuarter": "i løpet av de siste 3 månedene",
-          "PastYear": "i løpet av det siste året",
-          "ComingWeek": "neste uke",
-          "ComingMonth": "neste måned",
-          "ComingQuarter": "i løpet av de neste 3 månedene",
-          "ComingYear": "i løpet av det neste året",
-          "OnOrBefore": "på eller før",
-          "OnOrAfter": "på eller etter"
-        },
-        "FilterLabelForValue": {
-          "past_week": "i løpet av den siste uken",
-          "past_month": "i løpet av den siste måneden",
-          "past_quarter": "i løpet av de siste 3 månedene",
-          "past_year": "i løpet av det siste året",
-          "coming_week": "neste uke",
-          "coming_month": "neste måned",
-          "coming_quarter": "i løpet av de neste 3 månedene",
-          "coming_year": "i løpet av det neste året",
-          "on_or_before": "før {date}",
-          "on_or_after": "etter {date}"
-        }
-      },
       "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
       "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"

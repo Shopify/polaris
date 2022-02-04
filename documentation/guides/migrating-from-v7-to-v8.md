@@ -1,40 +1,86 @@
 # Migrating from v7 to v8
 
-Polaris v8.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v8.0.0)) features a rebuild of the `Autocomplete` component, build changes, . This file describes all code updates required to stay up to date.
+Polaris v8.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v8.0.0)) features a change to the required node version and root font size.
 
-## `ThemeProvider` changes
+## Node support
 
-The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use the `CustomProperties` component and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
+Node 16 is now a requirement.
 
-`polaris-react` no longer supports accepting and transforming a custom theme object to influence the component library. Polaris will now maintain a set of predefined color-schemes that meet the immediate needs of the admin and thus the following changes are required:
+## Base font size
 
-```diff
-- import {ThemeProvider} from '@shopify/polaris-react';
-+ import {CustomProperties} from '@shopify/polaris-react';
+~~`html {font-size: 62.5%}`~~
 
-const App = (props) => (
--  <ThemeProvider theme={{colorScheme: 'dark'}}>
--    {props.children}
--  </ThemeProvider>
-+  <CustomProperties colorScheme="dark">
-+    {props.children}
-+  </CustomProperties>
-)
+`html {font-size: 100%}`
+
+No changes are needed if your app uses the `rem()` function for css values. If your app caches css files you'll need to rebuild them once you upgrade to v8.0.0.
+
+Polaris has switched to the browser default of 16px for its base font size instead of the previous 10px.
+
+If you have hard coded rem values then you will need to modify them to use the `rem()` function or recalculate them accordingly:
+
+`rem(16px) => 1.6rem` is no longer true (16 / 10).
+
+`rem(16px) => 1rem` is the new conversion (16 / 16).
+
+We've created the following codemod to help with manually set rem values:
+
+<details>
+  <summary>Codemod to convert hard coded rems</summary>
+
+```jsx
+// node index.js <target-path>
+​
+import fs from 'fs/promises'
+import path from 'path'
+import os from 'os'
+​
+import pMap from 'p-map'
+import { globby } from 'globby'
+​
+const target = path.resolve(process.cwd(), process.argv[2])
+​
+const stats = {
+  files: 0,
+  rems: 0,
+}
+​
+if (!target) {
+  console.log('Please specify a target directory')
+  process.exit(1)
+}
+​
+const scssPaths = await globby('**/*.scss', {
+  cwd: target,
+  ignore: ['**/node_modules/**/*.scss'],
+  absolute: true,
+})
+​
+console.log(`Checking for rems in ${scssPaths.length} file(s)\n`)
+​
+async function replaceRems(filePath) {
+  let hasRems = false
+  const fileContent = await fs.readFile(filePath, { encoding: 'utf8' })
+  const remRegex = /(-?\d+(?:\.\d+|\d*))rem/g
+​
+  const newContent = fileContent.replace(remRegex, (_, unit) => {
+    hasRems = true
+    stats.rems++
+​
+    const value = parseFloat(unit) * 10 // Note: 1rem was previously 10px
+​
+    return `rem(${value}px)`
+  })
+​
+  if (hasRems) stats.files++
+​
+  await fs.writeFile(filePath, newContent)
+}
+​
+await pMap(scssPaths, replaceRems, { concurrency: os.cpus().length })
+​
+console.log(`Updated ${stats.rems} rems in ${stats.files} files\n`)
+​
+console.log('Done! 🌈')
 ```
 
-As mentioned above, the `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component.
-
-With that said, the `AppProvider` no longer accepts a custom theme object to forward to the `ThemeProvider`. However, similar behavior is still optionally exposed by forwarding the `colorScheme` prop to the `CustomProperties` component:
-
-```diff
-import {AppProvider} from '@shopify/polaris-react';
-
-const App = (props) => (
--  <AppProvider theme={{colorScheme: 'dark'}}>
--    {props.children}
--  </AppProvider>
-+  <AppProvider colorScheme="dark">
-+    {props.children}
-+  </AppProvider>
-)
-```
+</details>

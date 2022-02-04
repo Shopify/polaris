@@ -9,7 +9,6 @@ const packageJSON = require('../package.json');
 
 validateStandardBuild();
 validateEsNextBuild();
-validateSassPublicApi();
 validateAncillaryOutput();
 validateVersionReplacement();
 
@@ -69,20 +68,6 @@ function validateEsNextBuild() {
   assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
 }
 
-function validateSassPublicApi() {
-  assert.ok(fs.existsSync('./build/styles/_public-api.scss'));
-  assert.ok(fs.existsSync('./build/styles/foundation/_layout.scss'));
-  // does not contain any :global definitions
-  const files = glob.sync(`./build/styles/**/*.scss`);
-  assert.notStrictEqual(files.length, 0);
-
-  const filesWithGlobalDefinitions = files.filter((file) => {
-    return fs.readFileSync(file, 'utf-8').includes(':global');
-  });
-
-  assert.deepStrictEqual(filesWithGlobalDefinitions, []);
-}
-
 function validateAncillaryOutput() {
   assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
   // Downleveled for consumers on older TypeScript versions
@@ -90,7 +75,7 @@ function validateAncillaryOutput() {
 }
 
 function validateVersionReplacement() {
-  const files = glob.sync('./build/**/*.{js,mjs,esnext,css,scss}');
+  const files = glob.sync('./build/**/*.{js,mjs,esnext,css}');
 
   assert.notStrictEqual(files.length, 0);
 
