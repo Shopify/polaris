@@ -39,7 +39,7 @@ const App = (props) => (
 )
 ```
 
-## CSS Custom Properties
+## CSS custom properties
 
 CSS custom properties that were renamed can be replaced with the new CSS custom property name.
 
@@ -74,6 +74,31 @@ CSS custom properties that have been deprecated can be replaced with the CSS pro
 | `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
 | `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
 |   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
+
+## Sass functions and mixins
+
+The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
+
+### Adding the functions and mixins to your repo
+
+To help you quickly add these functions and mixins back to your repo, we've created a css file with all the removed functions and mixins.
+
+[✨ Amazing mega file linked here ✨]
+
+### Replacing function and mixin instances with values or tokens
+
+A list of functions/mixins and their value equivalents or new token values.
+
+#### `easing()`
+
+| Function                     | Replacement Value/Token                |
+| ---------------------------- | -------------------------------------- |
+| `easing()`<br>`easing(base)` | `var(--p-ease)`                        |
+| `easing(in)`                 | `var(--p-ease-in)`                     |
+| `easing(out)`                | `var(--p-ease-out)`                    |
+| `easing(excite)`             | `var(--p-ease-excite)`                 |
+| `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
+| `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
 ## Removal of the public scss api
 
