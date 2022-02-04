@@ -91,14 +91,14 @@ A list of functions/mixins and their value equivalents or new token values.
 
 #### `easing()`
 
-| Function                 | Replacement Value/Token              |
-| ------------------------ | ------------------------------------ |
-| easing()<br>easing(base) | var(--p-ease)                        |
-| easing(in)               | var(--p-ease-in)                     |
-| easing(out)              | var(--p-ease-out)                    |
-| easing(excite)           | var(--p-ease-excite)                 |
-| easing(overshoot)        | cubic-bezier(0.07, 0.28, 0.32, 1.22) |
-| easing(anticipate)       | cubic-bezier(0.38, -0.4, 0.88, 0.65) |
+| Function                     | Replacement Value/Token                |
+| ---------------------------- | -------------------------------------- |
+| `easing()`<br>`easing(base)` | `var(--p-ease)`                        |
+| `easing(in)`                 | `var(--p-ease-in)`                     |
+| `easing(out)`                | `var(--p-ease-out)`                    |
+| `easing(excite)`             | `var(--p-ease-excite)`                 |
+| `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
+| `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
 ## Removal of the public scss api
 
