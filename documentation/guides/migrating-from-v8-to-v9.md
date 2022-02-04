@@ -87,7 +87,7 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 ### Replacing function and mixin instances with values or tokens
 
-To help you replace function and mixin instances in your repo, we've provided the following list of functions/mixins and their value equivalents or new token values.
+A list of functions/mixins and their value equivalents or new token values.
 
 #### `easing()`
 
