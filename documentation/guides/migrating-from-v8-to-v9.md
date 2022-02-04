@@ -100,6 +100,17 @@ A list of functions/mixins and their value equivalents or new token values.
 | `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
 | `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
+#### `duration()`
+
+| Function                         | Replacement Value/Token |
+| -------------------------------- | ----------------------- |
+| `duration(none)`                 | 0                       |
+| `duration(fast)`                 | `var(--p-duration-100)` |
+| `duration()`<br>`duration(base)` | `var(--p-duration-200)` |
+| `duration(slow)`                 | `var(--p-duration-300)` |
+| `duration(slower)`               | `var(--p-duration-400)` |
+| `duration(slowest)`              | `var(--p-duration-500)` |
+
 ## Removal of the public scss api
 
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.
