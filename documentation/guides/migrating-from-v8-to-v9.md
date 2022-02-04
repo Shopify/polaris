@@ -169,7 +169,7 @@ A list of functions/mixins and their value equivalents or new token values.
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`<br><br>`var(--p-action-primary)`[^1][^2]<br>`var(--p-icon-on-interactive)`[^1][^2] |
 
 [^1]: Our team did replace some of these filter function instances with color tokens but be careful in doing so it can break intended behaviour.
-[^2]: Token usage varried depending on state.
+[^2]: Token usage varied depending on state.
 
 </details>
 
