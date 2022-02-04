@@ -123,6 +123,16 @@ A list of functions/mixins and their value equivalents or new token values.
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
 
+#### `shadow()`
+
+| Function                     | Replacement Value/Token  |
+| ---------------------------- | ------------------------ |
+| `shadow(faint)`              | `--p-shadow-faint`       |
+| `shadow()`<br>`shadow(base)` | `--p-shadow-base`        |
+| `shadow(deep)`               | `--p-shadow-deep`        |
+| `shadow(layer)`              | `--p-shadow-layer`       |
+| `shadow(transparent)`        | `--p-shadow-transparent` |
+
 ## Tokens
 
 ### Duration
@@ -131,6 +141,21 @@ A list of functions/mixins and their value equivalents or new token values.
 | -------------------- | ----------------------- |
 | `--p-duration-1-0-0` | `--p-duration-100`      |
 | `--p-duration-1-5-0` | `--p-duration-150`      |
+
+### Shadow
+
+| Token                             | Replacement Value/Token            |
+| --------------------------------- | ---------------------------------- |
+| `--p-card-shadow`                 | `--p-shadow-card`                  |
+| `--p-popover-shadow`              | `--p-shadow-popover`               |
+| `--p-modal-shadow`                | `--p-shadow-modal`                 |
+| `--p-top-bar-shadow`              | `--p-shadow-top-bar`               |
+| `--p-button-drop-shadow`          | `--p-shadow-button`                |
+| `--p-button-inner-shadow`         | `--p-shadows-inset-button`         |
+| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
+| `--p-shadow-from-ambient-light`   | `rgba(23, 24, 24, 0.05)`           |
+| `--p-shadow-from-direct-light`    | `rgba(0, 0, 0, 0.15)`              |
+| `--p-shadow-from-dim-light`       | `rgba(0, 0, 0, 0.2)`               |
 
 ## Removal of the public scss api
 
