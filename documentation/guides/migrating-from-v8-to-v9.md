@@ -89,6 +89,17 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `duration()`
+
+| Function                         | Replacement Value/Token |
+| -------------------------------- | ----------------------- |
+| `duration(none)`                 | 0                       |
+| `duration(fast)`                 | `--p-duration-100`      |
+| `duration()`<br>`duration(base)` | `--p-duration-200`      |
+| `duration(slow)`                 | `--p-duration-300`      |
+| `duration(slower)`               | `--p-duration-400`      |
+| `duration(slowest)`              | `--p-duration-500`      |
+
 #### `easing()`
 
 | Function                     | Replacement Value/Token                |
@@ -100,16 +111,17 @@ A list of functions/mixins and their value equivalents or new token values.
 | `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
 | `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
-#### `duration()`
+#### `ms-high-contrast-color()`
 
-| Function                         | Replacement Value/Token |
-| -------------------------------- | ----------------------- |
-| `duration(none)`                 | 0                       |
-| `duration(fast)`                 | `--p-duration-100`      |
-| `duration()`<br>`duration(base)` | `--p-duration-200`      |
-| `duration(slow)`                 | `--p-duration-300`      |
-| `duration(slower)`               | `--p-duration-400`      |
-| `duration(slowest)`              | `--p-duration-500`      |
+| Function                                             | Replacement Value/Token |
+| ---------------------------------------------------- | ----------------------- |
+| `ms-high-contrast-color('text')`                     | `windowText`            |
+| `ms-high-contrast-color('disabled-text')`            | `grayText`              |
+| `ms-high-contrast-color('selected-text')`            | `highlightText`         |
+| `ms-high-contrast-color('selected-text-background')` | `highlight`             |
+| `ms-high-contrast-color('button-text')`              | `buttonText`            |
+| `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
+| `ms-high-contrast-color('background')`               | `window`                |
 
 ## Tokens
 
