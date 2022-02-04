@@ -189,48 +189,6 @@
         "actionsActivatorLabel": "Thao tác",
         "moreActionsActivatorLabel": "Thao tác khác",
         "warningMessage": "Để mang đến trải nghiệm tốt hơn cho người dùng. Chỉ nên có tối đa {maxPromotedActions} thao tác quảng cáo."
-      },
-      "FilterCreator": {
-        "filterButtonLabel": "Bộ lọc",
-        "selectFilterKeyPlaceholder": "Chọn một bộ lọc...",
-        "addFilterButtonLabel": "Thêm bộ lọc",
-        "showAllWhere": "Hiển thị tất cả {resourceNamePlural}:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Tìm {resourceNamePlural}"
-      },
-      "FilterValueSelector": {
-        "selectFilterValuePlaceholder": "Chọn một bộ lọc..."
-      },
-      "DateSelector": {
-        "dateFilterLabel": "Chọn một giá trị",
-        "dateValueLabel": "Ngày",
-        "dateValueError": "Trùng khớp định dạng DD-MM-YYYY",
-        "dateValuePlaceholder": "DD-MM-YYYY",
-        "SelectOptions": {
-          "PastWeek": "tuần trước",
-          "PastMonth": "tháng trước",
-          "PastQuarter": "3 tháng trước",
-          "PastYear": "năm ngoái",
-          "ComingWeek": "tuần sau",
-          "ComingMonth": "tháng sau",
-          "ComingQuarter": "3 tháng sau",
-          "ComingYear": "năm sau",
-          "OnOrBefore": "vào hoặc trước",
-          "OnOrAfter": "vào hoặc sau"
-        },
-        "FilterLabelForValue": {
-          "past_week": "tuần trước",
-          "past_month": "tháng trước",
-          "past_quarter": "3 tháng trước",
-          "past_year": "năm ngoái",
-          "coming_week": "tuần sau",
-          "coming_month": "tháng sau",
-          "coming_quarter": "3 tháng sau",
-          "coming_year": "năm sau",
-          "on_or_before": "trước ngày {date}",
-          "on_or_after": "sau ngày {date}"
-        }
       }
     },
     "SkeletonPage": {

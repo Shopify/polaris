@@ -1,5 +1,4 @@
 const path = require('path');
-const {promisify} = require('util');
 
 const {createFilter} = require('@rollup/pluginutils');
 const nodeSass = require('node-sass');
@@ -21,8 +20,6 @@ module.exports.styles = function styles({
   }
 
   const filter = createFilter(include, exclude);
-
-  const renderSass = promisify(nodeSass.render);
 
   const styleProcessor = postcss([
     cssModules({
@@ -148,11 +145,19 @@ module.exports.styles = function styles({
         return null;
       }
 
-      const sassOutput = await renderSass({
-        data: source,
-        outputStyle: 'compact',
-        includePaths: [path.dirname(id)],
-      }).then((result) => result.css.toString());
+      let sassOutput;
+      try {
+        sassOutput = nodeSass
+          .renderSync({
+            data: source,
+            file: id,
+            outputStyle: 'compact',
+            includePaths: [path.dirname(id)],
+          })
+          .css.toString();
+      } catch (err) {
+        throw new Error(err.formatted);
+      }
 
       const postCssOutput = await styleProcessor
         .process(sassOutput, {from: id})

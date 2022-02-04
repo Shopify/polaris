@@ -56,7 +56,7 @@ $nav-max-width: 360px;
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: var(--p-space-3);
+    padding-top: var(--p-space-4);
   }
 }
 
@@ -95,10 +95,9 @@ $disabled-fade: 0.6;
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 1px;
+    bottom: 1px;
     left: calc(-1 * var(--p-space-2));
-    height: 100%;
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
     border-top-right-radius: var(--p-border-radius-1);
@@ -122,6 +121,10 @@ $disabled-fade: 0.6;
     @include no-focus-ring;
     color: var(--p-text-primary);
     background-color: var(--p-background-pressed);
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    font-weight: var(--p-font-weight-medium);
   }
 }
 
@@ -287,14 +290,15 @@ $secondary-item-font-size: 15px;
 
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
-      line-height: 28px;
+      line-height: 1;
+      padding-left: calc(nav(icon-size) + var(--p-space-3));
     }
   }
 
   .Text {
-    margin-top: calc(var(--p-space-1) + var(--p-space-05));
-    margin-bottom: calc(var(--p-space-1) + var(--p-space-05));
-    line-height: 20px;
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
+    line-height: var(--p-space-5);
   }
 
   .Item-selected {
@@ -335,7 +339,7 @@ $secondary-item-font-size: 15px;
   list-style: none;
 
   + .Section {
-    padding-top: var(--p-space-1);
+    padding-top: var(--p-space-2);
     padding-bottom: var(--p-space-4);
   }
 }
@@ -350,10 +354,19 @@ $secondary-item-font-size: 15px;
 
 .SectionHeading {
   @include text-style-subheading;
+  text-transform: none; // Adding this intentionally to override the default subheading styling.
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: var(--p-space-4);
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    padding-left: var(--p-space-5);
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    padding-left: var(--p-space-5);
+  }
 
   .Text {
     font-size: var(--p-font-size-2);
@@ -376,6 +389,14 @@ $secondary-item-font-size: 15px;
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
+
+      // stylelint-disable selector-max-combinators
+      svg,
+      img {
+        height: var(--p-space-4);
+        width: var(--p-space-4);
+        margin: var(--p-space-05);
+      }
     }
 
     @include focus-ring;

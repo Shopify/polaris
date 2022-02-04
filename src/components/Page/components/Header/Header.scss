@@ -161,7 +161,10 @@ $action-menu-rollup-computed-width: 40px;
 .Row {
   display: flex;
   justify-content: space-between;
-  min-height: 36px;
+
+  &:first-child {
+    min-height: 36px;
+  }
 
   + .Row {
     margin-top: var(--p-space-1);
@@ -262,6 +265,9 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      margin-bottom: 0;
+    }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
