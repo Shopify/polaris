@@ -100,20 +100,6 @@ A list of functions/mixins and their value equivalents or new token values.
 | `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
 | `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
-## Sass functions and mixins
-
-The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
-
-### Adding the functions and mixins to your repo
-
-To help you quickly add these functions and mixins back to your repo, we've created a css file with all the removed functions and mixins.
-
-[✨ Amazing mega file linked here ✨]
-
-### Replacing function and mixin instances with values or tokens
-
-To help you replace function and mixin instances in your repo, we've provided the following list of functions/mixins and their value equivalents or new token values.
-
 #### `filter()`
 
 <details>
