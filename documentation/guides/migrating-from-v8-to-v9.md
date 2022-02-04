@@ -10,11 +10,13 @@ The following sass functions and mixins have been removed. You will either need 
 
 ### Adding the functions to your repo
 
-To quickly help you add these functions back to your repo, we've created a css file with all the removed functions.
+To help you quickly add these functions back to your repo, we've created a css file with all the removed functions.
 
 [✨ Amazing mega file linked here ✨]
 
-### Replacing all function instances with values
+### Replacing function instances with values or tokens
+
+To help you replace function instances in your repo, we've provided the following list of functions and their value equivalents or new token values.
 
 #### `filter()`
 
