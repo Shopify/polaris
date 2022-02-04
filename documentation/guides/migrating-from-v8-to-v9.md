@@ -111,6 +111,18 @@ A list of functions/mixins and their value equivalents or new token values.
 | `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
 | `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
+#### `ms-high-contrast-color()`
+
+| Function                                             | Replacement Value/Token |
+| ---------------------------------------------------- | ----------------------- |
+| `ms-high-contrast-color('text')`                     | `windowText`            |
+| `ms-high-contrast-color('disabled-text')`            | `grayText`              |
+| `ms-high-contrast-color('selected-text')`            | `highlightText`         |
+| `ms-high-contrast-color('selected-text-background')` | `highlight`             |
+| `ms-high-contrast-color('button-text')`              | `buttonText`            |
+| `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
+| `ms-high-contrast-color('background')`               | `window`                |
+
 #### `shadow()`
 
 | Function                     | Replacement Value/Token  |
