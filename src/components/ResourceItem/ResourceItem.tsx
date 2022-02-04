@@ -55,6 +55,8 @@ interface BaseProps {
   verticalAlignment?: Alignment;
   /** Prefetched url attribute to bind to the main element being returned */
   dataHref?: string;
+  /** Disable reactions to item clicks and hovers */
+  disabled?: boolean;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -151,6 +153,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       i18n,
       verticalAlignment,
       dataHref,
+      disabled,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -319,8 +322,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           <div
             ref={this.setNode}
             className={className}
-            onClick={this.handleClick}
-            onFocus={this.handleFocus}
+            onClick={!disabled ? this.handleClick : undefined}
+            onFocus={!disabled ? this.handleFocus : undefined}
             onBlur={this.handleBlur}
             onKeyUp={this.handleKeyUp}
             onMouseOut={this.handleMouseOut}
