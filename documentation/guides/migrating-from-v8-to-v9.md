@@ -111,6 +111,15 @@ A list of functions/mixins and their value equivalents or new token values.
 | `duration(slower)`               | `--p-duration-400`      |
 | `duration(slowest)`              | `--p-duration-500`      |
 
+## Tokens
+
+### Duration
+
+| Token                | Replacement Value/Token |
+| -------------------- | ----------------------- |
+| `--p-duration-1-0-0` | `--p-duration-100`      |
+| `--p-duration-1-5-0` | `--p-duration-150`      |
+
 ## Removal of the public scss api
 
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.
