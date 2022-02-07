@@ -178,6 +178,18 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
+#### `ms-high-contrast-color()`
+
+| Function                                             | Replacement Value/Token |
+| ---------------------------------------------------- | ----------------------- |
+| `ms-high-contrast-color('text')`                     | `windowText`            |
+| `ms-high-contrast-color('disabled-text')`            | `grayText`              |
+| `ms-high-contrast-color('selected-text')`            | `highlightText`         |
+| `ms-high-contrast-color('selected-text-background')` | `highlight`             |
+| `ms-high-contrast-color('button-text')`              | `buttonText`            |
+| `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
+| `ms-high-contrast-color('background')`               | `window`                |
+
 #### `shadow()`
 
 | Function                     | Replacement Value/Token  |
