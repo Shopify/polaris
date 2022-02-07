@@ -89,6 +89,12 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `color()`
+
+#### `color-icon()`
+
+#### `color-multiply()`
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
