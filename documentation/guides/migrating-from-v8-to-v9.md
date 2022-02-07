@@ -190,6 +190,10 @@ We replaced a few of the following filter function instances with color tokens i
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
 
+#### `px()`
+
+All `px` values are now automatically converted to `rem` through our postcss config with the `postcss-pxtorem` plugin.
+
 #### `shadow()`
 
 | Function                     | Replacement Value/Token  |
