@@ -113,76 +113,70 @@ A list of functions/mixins and their value equivalents or new token values.
 
 #### `filter()`
 
-<details>
-<summary>Replacement guide</summary>
+We replaced a few of the following filter function instances with color tokens instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well.
 
-| Function                                         | Replacement Value/Token                                                                                                                                                                          |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `filter('purple', 'text')`                       | `brightness(0) saturate(100%) invert(29%) sepia(3%) saturate(2843%) hue-rotate(223deg) brightness(92%) contrast(86%)`                                                                            |
-| `filter('purple', 'darker')`                     | `brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(6605%) hue-rotate(265deg) brightness(99%) contrast(124%)`                                                                           |
-| `filter('purple', 'dark')`                       | `brightness(0) saturate(100%) invert(12%) sepia(46%) saturate(4964%) hue-rotate(258deg) brightness(101%) contrast(93%)`                                                                          |
-| `filter('purple')`<br>`filter('purple', 'base')` | `brightness(0) saturate(100%) invert(49%) sepia(77%) saturate(1864%) hue-rotate(229deg) brightness(91%) contrast(91%)`                                                                           |
-| `filter('purple', 'light')`                      | `brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(1535%) hue-rotate(203deg) brightness(103%) contrast(104%)`                                                                         |
-| `filter('purple', 'lighter')`                    | `brightness(0) saturate(100%) invert(84%) sepia(15%) saturate(135%) hue-rotate(219deg) brightness(110%) contrast(98%)`                                                                           |
-| `filter('indigo', 'text')`                       | `brightness(0) saturate(100%) invert(24%) sepia(11%) saturate(1035%) hue-rotate(195deg) brightness(97%) contrast(94%)`                                                                           |
-| `filter('indigo', 'darker')`                     | `brightness(0) saturate(100%) invert(5%) sepia(81%) saturate(5060%) hue-rotate(229deg) brightness(72%) contrast(111%)`                                                                           |
-| `filter('indigo', 'dark')`                       | `brightness(0) saturate(100%) invert(17%) sepia(28%) saturate(4409%) hue-rotate(218deg) brightness(87%) contrast(98%)`                                                                           |
-| `filter('indigo')`<br>`filter('indigo', 'base')` | `brightness(0) saturate(100%) invert(45%) sepia(17%) saturate(1966%) hue-rotate(194deg) brightness(88%) contrast(84%)`                                                                           |
-| `filter('indigo', 'light')`                      | `brightness(0) saturate(100%) invert(82%) sepia(37%) saturate(4261%) hue-rotate(194deg) brightness(111%) contrast(92%)`                                                                          |
-| `filter('indigo', 'lighter')`                    | `brightness(0) saturate(100%) invert(100%) sepia(25%) saturate(1090%) hue-rotate(179deg) brightness(100%) contrast(96%)`                                                                         |
-| `filter('blue', 'text')`                         | `brightness(0) saturate(100%) invert(27%) sepia(13%) saturate(709%) hue-rotate(158deg) brightness(96%) contrast(89%)`                                                                            |
-| `filter('blue', 'darker')`                       | `brightness(0) saturate(100%) invert(5%) sepia(33%) saturate(5606%) hue-rotate(195deg) brightness(97%) contrast(102%)`                                                                           |
-| `filter('blue', 'dark')`                         | `brightness(0) saturate(100%) invert(22%) sepia(70%) saturate(1308%) hue-rotate(182deg) brightness(94%) contrast(101%)`                                                                          |
-| `filter('blue')`<br>`filter('blue', 'base')`     | `brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2885%) hue-rotate(190deg) brightness(99%) contrast(101%)`                                                                          |
-| `filter('blue', 'light')`                        | `brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(1832%) hue-rotate(178deg) brightness(108%) contrast(96%)`                                                                           |
-| `filter('blue', 'lighter')`                      | `brightness(0) saturate(100%) invert(100%) sepia(94%) saturate(686%) hue-rotate(175deg) brightness(103%) contrast(96%)`                                                                          |
-| `filter('teal', 'text')`                         | `brightness(0) saturate(100%) invert(31%) sepia(11%) saturate(665%) hue-rotate(128deg) brightness(94%) contrast(93%)`                                                                            |
-| `filter('teal', 'darker')`                       | `brightness(0) saturate(100%) invert(15%) sepia(23%) saturate(2237%) hue-rotate(141deg) brightness(96%) contrast(104%)`                                                                          |
-| `filter('teal', 'dark')`                         | `brightness(0) saturate(100%) invert(28%) sepia(83%) saturate(3919%) hue-rotate(168deg) brightness(93%) contrast(101%)`                                                                          |
-| `filter('teal')`<br>`filter('teal', 'base')`     | `brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(2838%) hue-rotate(130deg) brightness(92%) contrast(87%)`                                                                            |
-| `filter('teal', 'light')`                        | `brightness(0) saturate(100%) invert(95%) sepia(12%) saturate(683%) hue-rotate(122deg) brightness(97%) contrast(91%)`                                                                            |
-| `filter('teal', 'lighter')`                      | `brightness(0) saturate(100%) invert(87%) sepia(5%) saturate(1124%) hue-rotate(173deg) brightness(114%) contrast(92%)`                                                                           |
-| `filter('green', 'text')`                        | `brightness(0) saturate(100%) invert(30%) sepia(8%) saturate(1010%) hue-rotate(63deg) brightness(91%) contrast(91%)`                                                                             |
-| `filter('green', 'darker')`                      | `brightness(0) saturate(100%) invert(15%) sepia(32%) saturate(727%) hue-rotate(118deg) brightness(93%) contrast(91%)`                                                                            |
-| `filter('green', 'dark')`                        | `brightness(0) saturate(100%) invert(18%) sepia(75%) saturate(6649%) hue-rotate(155deg) brightness(97%) contrast(87%)`                                                                           |
-| `filter('green')`<br>`filter('green', 'base')`   | `brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(2637%) hue-rotate(64deg) brightness(106%) contrast(91%)`                                                                           |
-| `filter('green', 'light')`                       | `brightness(0) saturate(100%) invert(93%) sepia(15%) saturate(599%) hue-rotate(52deg) brightness(93%) contrast(93%)`                                                                             |
-| `filter('green', 'lighter')`                     | `brightness(0) saturate(100%) invert(92%) sepia(51%) saturate(187%) hue-rotate(46deg) brightness(108%) contrast(89%)`                                                                            |
-| `filter('yellow', 'text')`                       | `brightness(0) saturate(100%) invert(28%) sepia(42%) saturate(413%) hue-rotate(11deg) brightness(97%) contrast(91%)`                                                                             |
-| `filter('yellow', 'darker')`                     | `brightness(0) saturate(100%) invert(19%) sepia(75%) saturate(981%) hue-rotate(17deg) brightness(103%) contrast(103%)`                                                                           |
-| `filter('yellow', 'dark')`                       | `brightness(0) saturate(100%) invert(37%) sepia(51%) saturate(709%) hue-rotate(0deg) brightness(93%) contrast(89%)`                                                                              |
-| `filter('yellow')`<br>`filter('yellow', 'base')` | `brightness(0) saturate(100%) invert(65%) sepia(91%) saturate(530%) hue-rotate(5deg) brightness(100%) contrast(100%)`                                                                            |
-| `filter('yellow', 'light')`                      | `brightness(0) saturate(100%) invert(77%) sepia(72%) saturate(246%) hue-rotate(355deg) brightness(103%) contrast(107%)`                                                                          |
-| `filter('yellow', 'lighter')`                    | `brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(234%) hue-rotate(357deg) brightness(103%) contrast(98%)`                                                                           |
-| `filter('orange', 'text')`                       | `brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(1092%) hue-rotate(348deg) brightness(99%) contrast(84%)`                                                                           |
-| `filter('orange', 'darker')`                     | `brightness(0) saturate(100%) invert(9%) sepia(83%) saturate(1926%) hue-rotate(356deg) brightness(98%) contrast(99%)`                                                                            |
-| `filter('orange', 'dark')`                       | `brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(1431%) hue-rotate(5deg) brightness(96%) contrast(82%)`                                                                             |
-| `filter('orange')`<br>`filter('orange', 'base')` | `brightness(0) saturate(100%) invert(54%) sepia(86%) saturate(416%) hue-rotate(340deg) brightness(105%) contrast(91%)`                                                                           |
-| `filter('orange', 'light')`                      | `brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(483%) hue-rotate(335deg) brightness(101%) contrast(103%)`                                                                          |
-| `filter('orange', 'lighter')`                    | `brightness(0) saturate(100%) invert(93%) sepia(11%) saturate(918%) hue-rotate(312deg) brightness(107%) contrast(98%)`                                                                           |
-| `filter('red', 'text')`                          | `brightness(0) saturate(100%) invert(22%) sepia(9%) saturate(2068%) hue-rotate(325deg) brightness(92%) contrast(83%)`                                                                            |
-| `filter('red', 'darker')`                        | `brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)`                                                                         |
-| `filter('red', 'dark')`                          | `brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)`                                                                         |
-| `filter('red')`<br>`filter('red', 'base')`       | `brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(3622%) hue-rotate(353deg) brightness(89%) contrast(95%)`                                                                           |
-| `filter('red', 'light')`                         | `brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(2561%) hue-rotate(313deg) brightness(101%) contrast(99%)`                                                                           |
-| `filter('red', 'lighter')`                       | `brightness(0) saturate(100%) invert(89%) sepia(21%) saturate(137%) hue-rotate(324deg) brightness(102%) contrast(97%)`                                                                           |
-| `filter('ink')`<br>`filter('ink', 'base')`       | `brightness(0) saturate(100%) invert(10%) sepia(10%) saturate(2259%) hue-rotate(171deg) brightness(99%) contrast(84%)`                                                                           |
-| `filter('ink', 'light')`                         | `brightness(0) saturate(100%) invert(32%) sepia(9%) saturate(1069%) hue-rotate(173deg) brightness(83%) contrast(84%)`                                                                            |
-| `filter('ink', 'lighter')`                       | `brightness(0) saturate(100%) invert(45%) sepia(8%) saturate(825%) hue-rotate(166deg) brightness(95%) contrast(90%)`                                                                             |
-| `filter('ink', 'lightest')`                      | `brightness(0) saturate(100%) invert(68%) sepia(18%) saturate(246%) hue-rotate(169deg) brightness(88%) contrast(90%)`                                                                            |
-| `filter('sky', 'dark')`                          | `brightness(0) saturate(100%) invert(86%) sepia(4%) saturate(502%) hue-rotate(167deg) brightness(96%) contrast(91%)`                                                                             |
-| `filter('sky')`<br>`filter('sky', 'base')`       | `brightness(0) saturate(100%) invert(100%) sepia(95%) saturate(336%) hue-rotate(175deg) brightness(97%) contrast(87%)`                                                                           |
-| `filter('sky', 'light')`                         | `brightness(0) saturate(100%) invert(99%) sepia(12%) saturate(467%) hue-rotate(174deg) brightness(99%) contrast(96%)`                                                                            |
-| `filter('sky', 'lighter')`                       | `brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(159%) hue-rotate(170deg) brightness(99%) contrast(99%)`                                                                             |
-| `filter('black')`<br>`filter('black', 'base')`   | `brightness(0) saturate(100%)`                                                                                                                                                                   |
-| `filter('white')`<br>`filter('white', 'base')`   | `brightness(0) saturate(100%) invert(100%)`<br><br>`--p-icon-on-interactive`[^1]                                                                                                                 |
-| `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`<br><br>`--p-icon`[^1]                                                      |
-| `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`<br><br>`--p-action-primary`[^1][^2]<br>`--p-icon-on-interactive`[^1][^2] |
-
-[^1]: Our team did replace some of these filter function instances with color tokens but be careful in doing so it can break intended behaviour.
-[^2]: Token usage varied depending on state.
-
-</details>
+| Function                                         | Replacement Value/Token                                                                                                  |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `filter('purple', 'text')`                       | `brightness(0) saturate(100%) invert(29%) sepia(3%) saturate(2843%) hue-rotate(223deg) brightness(92%) contrast(86%)`    |
+| `filter('purple', 'darker')`                     | `brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(6605%) hue-rotate(265deg) brightness(99%) contrast(124%)`   |
+| `filter('purple', 'dark')`                       | `brightness(0) saturate(100%) invert(12%) sepia(46%) saturate(4964%) hue-rotate(258deg) brightness(101%) contrast(93%)`  |
+| `filter('purple')`<br>`filter('purple', 'base')` | `brightness(0) saturate(100%) invert(49%) sepia(77%) saturate(1864%) hue-rotate(229deg) brightness(91%) contrast(91%)`   |
+| `filter('purple', 'light')`                      | `brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(1535%) hue-rotate(203deg) brightness(103%) contrast(104%)` |
+| `filter('purple', 'lighter')`                    | `brightness(0) saturate(100%) invert(84%) sepia(15%) saturate(135%) hue-rotate(219deg) brightness(110%) contrast(98%)`   |
+| `filter('indigo', 'text')`                       | `brightness(0) saturate(100%) invert(24%) sepia(11%) saturate(1035%) hue-rotate(195deg) brightness(97%) contrast(94%)`   |
+| `filter('indigo', 'darker')`                     | `brightness(0) saturate(100%) invert(5%) sepia(81%) saturate(5060%) hue-rotate(229deg) brightness(72%) contrast(111%)`   |
+| `filter('indigo', 'dark')`                       | `brightness(0) saturate(100%) invert(17%) sepia(28%) saturate(4409%) hue-rotate(218deg) brightness(87%) contrast(98%)`   |
+| `filter('indigo')`<br>`filter('indigo', 'base')` | `brightness(0) saturate(100%) invert(45%) sepia(17%) saturate(1966%) hue-rotate(194deg) brightness(88%) contrast(84%)`   |
+| `filter('indigo', 'light')`                      | `brightness(0) saturate(100%) invert(82%) sepia(37%) saturate(4261%) hue-rotate(194deg) brightness(111%) contrast(92%)`  |
+| `filter('indigo', 'lighter')`                    | `brightness(0) saturate(100%) invert(100%) sepia(25%) saturate(1090%) hue-rotate(179deg) brightness(100%) contrast(96%)` |
+| `filter('blue', 'text')`                         | `brightness(0) saturate(100%) invert(27%) sepia(13%) saturate(709%) hue-rotate(158deg) brightness(96%) contrast(89%)`    |
+| `filter('blue', 'darker')`                       | `brightness(0) saturate(100%) invert(5%) sepia(33%) saturate(5606%) hue-rotate(195deg) brightness(97%) contrast(102%)`   |
+| `filter('blue', 'dark')`                         | `brightness(0) saturate(100%) invert(22%) sepia(70%) saturate(1308%) hue-rotate(182deg) brightness(94%) contrast(101%)`  |
+| `filter('blue')`<br>`filter('blue', 'base')`     | `brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2885%) hue-rotate(190deg) brightness(99%) contrast(101%)`  |
+| `filter('blue', 'light')`                        | `brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(1832%) hue-rotate(178deg) brightness(108%) contrast(96%)`   |
+| `filter('blue', 'lighter')`                      | `brightness(0) saturate(100%) invert(100%) sepia(94%) saturate(686%) hue-rotate(175deg) brightness(103%) contrast(96%)`  |
+| `filter('teal', 'text')`                         | `brightness(0) saturate(100%) invert(31%) sepia(11%) saturate(665%) hue-rotate(128deg) brightness(94%) contrast(93%)`    |
+| `filter('teal', 'darker')`                       | `brightness(0) saturate(100%) invert(15%) sepia(23%) saturate(2237%) hue-rotate(141deg) brightness(96%) contrast(104%)`  |
+| `filter('teal', 'dark')`                         | `brightness(0) saturate(100%) invert(28%) sepia(83%) saturate(3919%) hue-rotate(168deg) brightness(93%) contrast(101%)`  |
+| `filter('teal')`<br>`filter('teal', 'base')`     | `brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(2838%) hue-rotate(130deg) brightness(92%) contrast(87%)`    |
+| `filter('teal', 'light')`                        | `brightness(0) saturate(100%) invert(95%) sepia(12%) saturate(683%) hue-rotate(122deg) brightness(97%) contrast(91%)`    |
+| `filter('teal', 'lighter')`                      | `brightness(0) saturate(100%) invert(87%) sepia(5%) saturate(1124%) hue-rotate(173deg) brightness(114%) contrast(92%)`   |
+| `filter('green', 'text')`                        | `brightness(0) saturate(100%) invert(30%) sepia(8%) saturate(1010%) hue-rotate(63deg) brightness(91%) contrast(91%)`     |
+| `filter('green', 'darker')`                      | `brightness(0) saturate(100%) invert(15%) sepia(32%) saturate(727%) hue-rotate(118deg) brightness(93%) contrast(91%)`    |
+| `filter('green', 'dark')`                        | `brightness(0) saturate(100%) invert(18%) sepia(75%) saturate(6649%) hue-rotate(155deg) brightness(97%) contrast(87%)`   |
+| `filter('green')`<br>`filter('green', 'base')`   | `brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(2637%) hue-rotate(64deg) brightness(106%) contrast(91%)`   |
+| `filter('green', 'light')`                       | `brightness(0) saturate(100%) invert(93%) sepia(15%) saturate(599%) hue-rotate(52deg) brightness(93%) contrast(93%)`     |
+| `filter('green', 'lighter')`                     | `brightness(0) saturate(100%) invert(92%) sepia(51%) saturate(187%) hue-rotate(46deg) brightness(108%) contrast(89%)`    |
+| `filter('yellow', 'text')`                       | `brightness(0) saturate(100%) invert(28%) sepia(42%) saturate(413%) hue-rotate(11deg) brightness(97%) contrast(91%)`     |
+| `filter('yellow', 'darker')`                     | `brightness(0) saturate(100%) invert(19%) sepia(75%) saturate(981%) hue-rotate(17deg) brightness(103%) contrast(103%)`   |
+| `filter('yellow', 'dark')`                       | `brightness(0) saturate(100%) invert(37%) sepia(51%) saturate(709%) hue-rotate(0deg) brightness(93%) contrast(89%)`      |
+| `filter('yellow')`<br>`filter('yellow', 'base')` | `brightness(0) saturate(100%) invert(65%) sepia(91%) saturate(530%) hue-rotate(5deg) brightness(100%) contrast(100%)`    |
+| `filter('yellow', 'light')`                      | `brightness(0) saturate(100%) invert(77%) sepia(72%) saturate(246%) hue-rotate(355deg) brightness(103%) contrast(107%)`  |
+| `filter('yellow', 'lighter')`                    | `brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(234%) hue-rotate(357deg) brightness(103%) contrast(98%)`   |
+| `filter('orange', 'text')`                       | `brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(1092%) hue-rotate(348deg) brightness(99%) contrast(84%)`   |
+| `filter('orange', 'darker')`                     | `brightness(0) saturate(100%) invert(9%) sepia(83%) saturate(1926%) hue-rotate(356deg) brightness(98%) contrast(99%)`    |
+| `filter('orange', 'dark')`                       | `brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(1431%) hue-rotate(5deg) brightness(96%) contrast(82%)`     |
+| `filter('orange')`<br>`filter('orange', 'base')` | `brightness(0) saturate(100%) invert(54%) sepia(86%) saturate(416%) hue-rotate(340deg) brightness(105%) contrast(91%)`   |
+| `filter('orange', 'light')`                      | `brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(483%) hue-rotate(335deg) brightness(101%) contrast(103%)`  |
+| `filter('orange', 'lighter')`                    | `brightness(0) saturate(100%) invert(93%) sepia(11%) saturate(918%) hue-rotate(312deg) brightness(107%) contrast(98%)`   |
+| `filter('red', 'text')`                          | `brightness(0) saturate(100%) invert(22%) sepia(9%) saturate(2068%) hue-rotate(325deg) brightness(92%) contrast(83%)`    |
+| `filter('red', 'darker')`                        | `brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)` |
+| `filter('red', 'dark')`                          | `brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%)` |
+| `filter('red')`<br>`filter('red', 'base')`       | `brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(3622%) hue-rotate(353deg) brightness(89%) contrast(95%)`   |
+| `filter('red', 'light')`                         | `brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(2561%) hue-rotate(313deg) brightness(101%) contrast(99%)`   |
+| `filter('red', 'lighter')`                       | `brightness(0) saturate(100%) invert(89%) sepia(21%) saturate(137%) hue-rotate(324deg) brightness(102%) contrast(97%)`   |
+| `filter('ink')`<br>`filter('ink', 'base')`       | `brightness(0) saturate(100%) invert(10%) sepia(10%) saturate(2259%) hue-rotate(171deg) brightness(99%) contrast(84%)`   |
+| `filter('ink', 'light')`                         | `brightness(0) saturate(100%) invert(32%) sepia(9%) saturate(1069%) hue-rotate(173deg) brightness(83%) contrast(84%)`    |
+| `filter('ink', 'lighter')`                       | `brightness(0) saturate(100%) invert(45%) sepia(8%) saturate(825%) hue-rotate(166deg) brightness(95%) contrast(90%)`     |
+| `filter('ink', 'lightest')`                      | `brightness(0) saturate(100%) invert(68%) sepia(18%) saturate(246%) hue-rotate(169deg) brightness(88%) contrast(90%)`    |
+| `filter('sky', 'dark')`                          | `brightness(0) saturate(100%) invert(86%) sepia(4%) saturate(502%) hue-rotate(167deg) brightness(96%) contrast(91%)`     |
+| `filter('sky')`<br>`filter('sky', 'base')`       | `brightness(0) saturate(100%) invert(100%) sepia(95%) saturate(336%) hue-rotate(175deg) brightness(97%) contrast(87%)`   |
+| `filter('sky', 'light')`                         | `brightness(0) saturate(100%) invert(99%) sepia(12%) saturate(467%) hue-rotate(174deg) brightness(99%) contrast(96%)`    |
+| `filter('sky', 'lighter')`                       | `brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(159%) hue-rotate(170deg) brightness(99%) contrast(99%)`     |
+| `filter('black')`<br>`filter('black', 'base')`   | `brightness(0) saturate(100%)`                                                                                           |
+| `filter('white')`<br>`filter('white', 'base')`   | `brightness(0) saturate(100%) invert(100%)`                                                                              |
+| `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
+| `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
 #### `shadow()`
 
