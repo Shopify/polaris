@@ -178,6 +178,13 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
+#### `font-family()`
+
+| Function                                        | Replacement Value/Token |
+| ----------------------------------------------- | ----------------------- |
+| `font-family()`<br>`font-family($family: base)` | `--p-font-family-sans`  |
+| `font-family($family: 'monospace')`             | `--p-font-family-mono`  |
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
