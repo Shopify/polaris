@@ -8,6 +8,18 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 8.2.1 - 2022-02-04
+
+### Bug fixes
+
+- Reverted [ColorPicker] Add an inset box-shadow to make it easier to see the draggers ([#4948](https://github.com/Shopify/polaris-react/pull/4948))
+
+## 8.2.0 - 2022-02-04
+
+### Dependency upgrades
+
+- Bumped `@shopify/polaris-icons` to v4.17.0 ([#4837](https://github.com/Shopify/polaris-react/pull/4837))
+
 ## 8.1.0 - 2022-02-04
 
 ### Enhancements
