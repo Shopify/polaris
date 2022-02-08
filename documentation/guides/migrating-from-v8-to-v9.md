@@ -102,7 +102,9 @@ A list of functions/mixins and their value equivalents or new token values.
 
 #### `em()`
 
-Any usage of this function can be hardcoded to `em` units. Alternatively, values can also be hardcoded to `px` units, which will automatically be converted to `rem` in postcss.
+| Function | Source to copy       |
+| -------- | -------------------- |
+| `px()`   | [link to function]() |
 
 #### `easing()`
 
