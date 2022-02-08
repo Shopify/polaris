@@ -107,13 +107,9 @@ img {
 }
 ```
 
-| Function                     | Replacement Value/Token                                                         |
-| ---------------------------- | ------------------------------------------------------------------------------- |
-| `color-icon(<value>, <hue>)` | svg {fill: color(\<value>, \<hue>);}<br>img {filter: filter(\<value>, \<hue>);} |
-
 #### `color-multiply()`
 
-Use browser developer tools to inspect the output color value of the function and hard code the color value you need.
+Use your browser developer tools to inspect the output color value of the function and hard code the color value you need.
 
 #### `duration()`
 
