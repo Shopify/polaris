@@ -20,6 +20,7 @@ export function ContextualSaveBar({
   discardAction,
   fullWidth,
   contextControl,
+  secondaryMenu,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useFrame();
@@ -120,6 +121,7 @@ export function ContextualSaveBar({
             <h2 className={styles.Message}>{message}</h2>
             <div className={styles.ActionContainer}>
               <Stack spacing="tight" wrap={false}>
+                {secondaryMenu}
                 {discardActionMarkup}
                 {saveActionMarkup}
               </Stack>
