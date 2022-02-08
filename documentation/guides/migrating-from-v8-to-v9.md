@@ -192,7 +192,9 @@ We replaced a few of the following filter function instances with color tokens i
 
 #### `px()`
 
-All `px` values are now automatically converted to `rem` through our postcss config with the `postcss-pxtorem` plugin.
+| Function | Source to copy       |
+| -------- | -------------------- |
+| `px()`   | [link to function]() |
 
 #### `shadow()`
 
