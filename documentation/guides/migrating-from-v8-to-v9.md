@@ -95,7 +95,7 @@ Reference our [new color token file](https://github.com/Shopify/polaris-react/bl
 
 #### `color-icon()`
 
-Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the `color()` and `filter()` sections for repalcing those functions.
+Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for repalcing those functions.
 
 ```scss
 svg {
