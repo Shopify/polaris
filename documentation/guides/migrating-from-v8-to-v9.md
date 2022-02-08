@@ -91,9 +91,29 @@ A list of functions/mixins and their value equivalents or new token values.
 
 #### `color()`
 
+Reference our [new color token file](https://github.com/Shopify/polaris-react/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) and search for a token with an applicable semantic name. If you can't find a suitable token replacement hard code the color value you need.
+
 #### `color-icon()`
 
+Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the `color()` and `filter()` sections for repalcing those functions.
+
+```scss
+svg {
+  fill: color(<value>, <hue>);
+}
+
+img {
+  filter: filter(<value>, <hue>);
+}
+```
+
+| Function                     | Replacement Value/Token                                                         |
+| ---------------------------- | ------------------------------------------------------------------------------- |
+| `color-icon(<value>, <hue>)` | svg {fill: color(\<value>, \<hue>);}<br>img {filter: filter(\<value>, \<hue>);} |
+
 #### `color-multiply()`
+
+Use browser developer tools to inspect the output color value of the function and hard code the color value you need.
 
 #### `duration()`
 
