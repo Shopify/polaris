@@ -89,6 +89,13 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `border-radius()`
+
+| Function                                   | Replacement Value/Token   |
+| ------------------------------------------ | ------------------------- |
+| `border-radius()`<br>`border-radius(base)` | `--p-border-radius-base`  |
+| `border-radius(large)`                     | `--p-border-radius-large` |
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
@@ -231,6 +238,16 @@ list-style: none;
 ```
 
 ## Tokens
+
+### Border Radius
+
+| Token                                     | Replacement Value/Token  |
+| ----------------------------------------- | ------------------------ |
+| `--p-border-radius-slim`                  | `--p-border-radius-05`   |
+| `--p-border-radius-base`                  | `--p-border-radius-1`    |
+| `--p-border-radius-wide`                  | `--p-border-radius-2`    |
+| `--p-border-radius-full`                  | `--p-border-radius-half` |
+| `--p-text-field-focus-ring-border-radius` | `7px`                    |
 
 ### Duration
 
