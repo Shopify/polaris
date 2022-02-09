@@ -256,6 +256,12 @@ For `<border-width>` instances that are functions, see the [`border-width()`](#b
 
 For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
+#### `icon-size()`
+
+| Function      | Replacement Value/Token |
+|---------------|-------------------------|
+| `icon-size()` | `--p-icon-size-medium`  |
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
