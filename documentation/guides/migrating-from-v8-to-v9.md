@@ -114,12 +114,29 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `border()`
+
+| Function                     | Replacement Value/Token  |
+| ---------------------------- | ------------------------ |
+| `border()`<br>`border(base)` | `--p-border-base`        |
+| `border(dark)`               | `--p-border-dark`        |
+| `border(transparent)`        | `--p-border-transparent` |
+| `border(divider)`            | `--p-border-divider`     |
+
 #### `border-radius()`
 
 | Function                                   | Replacement Value/Token   |
 | ------------------------------------------ | ------------------------- |
 | `border-radius()`<br>`border-radius(base)` | `--p-border-radius-base`  |
 | `border-radius(large)`                     | `--p-border-radius-large` |
+
+#### `border-width()`
+
+| Function                                 | Replacement Value/Token |
+| ---------------------------------------- | ----------------------- |
+| `border-width()`<br>`border-width(base)` | `--p-border-width-1`    |
+| `border-width(thick)`                    | `--p-border-width-2`    |
+| `border-width(thicker)`                  | `--p-border-width-3`    |
 
 #### `color()`
 
@@ -239,6 +256,28 @@ We replaced a few of the following filter function instances with color tokens i
 | `font-family()`<br>`font-family($family: base)` | `--p-font-family-sans`  |
 | `font-family($family: 'monospace')`             | `--p-font-family-mono`  |
 
+#### `high-contrast-border()`
+
+| Mixin                                                          | Replacement Value/Token                              |
+| -------------------------------------------------------------- | ---------------------------------------------------- |
+| `@include high-contrast-border`                                | `border: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-border($border-width: <border-width>)` | `border: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+
+#### `high-contrast-outline()`
+
+| Mixin                                                           | Replacement Value/Token                               |
+| --------------------------------------------------------------- | ----------------------------------------------------- |
+| `@include high-contrast-outline`                                | `outline: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-outline($border-width: <border-width>)` | `outline: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
@@ -251,6 +290,14 @@ We replaced a few of the following filter function instances with color tokens i
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
 
+#### `rem()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function | Source                                                                                                                                                           |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293) |
+
 #### `shadow()`
 
 | Function                     | Replacement Value/Token  |
@@ -260,6 +307,18 @@ We replaced a few of the following filter function instances with color tokens i
 | `shadow(deep)`               | `--p-shadow-deep`        |
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
+
+#### `spacing()`
+
+| Function                       | Replacement Value/Token |
+| ------------------------------ | ----------------------- |
+| `spacing(none)`                | `--p-space-0`           |
+| `spacing(extra-tight)`         | `--p-space-1`           |
+| `spacing(tight)`               | `--p-space-2`           |
+| `spacing(base-tight)`          | `--p-space-3`           |
+| `spacing()`<br>`spacing(base)` | `--p-space-4`           |
+| `spacing(loose)`               | `--p-space-5`           |
+| `spacing(extra-loose)`         | `--p-space-8`           |
 
 #### `unstyled-link()`
 
