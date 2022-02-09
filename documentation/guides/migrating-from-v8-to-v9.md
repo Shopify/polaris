@@ -207,6 +207,29 @@ We replaced a few of the following filter function instances with color tokens i
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
 
+#### `unstyled-link()`
+
+Replace any instances of `@include unstyled-link` with the following code block.
+
+```scss
+color: inherit;
+text-decoration: none;
+
+&:visited {
+  color: inherit;
+}
+```
+
+#### `unstyled-list()`
+
+Replace any instances of `@include unstyled-list` with the following code block.
+
+```scss
+margin: 0;
+padding: 0;
+list-style: none;
+```
+
 ## Tokens
 
 ### Duration
