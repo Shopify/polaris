@@ -312,6 +312,14 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | ------------- | ----------------------- |
 | `icon-size()` | `--p-icon-size-medium`  |
 
+#### `map-extend()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function       | Source                                                                                                                                                                |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map-extend()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L388-L409) |
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
