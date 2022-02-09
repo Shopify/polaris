@@ -114,6 +114,15 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `border()`
+
+| Function                     | Replacement Value/Token  |
+| ---------------------------- | ------------------------ |
+| `border()`<br>`border(base)` | `--p-border-base`        |
+| `border(dark)`               | `--p-border-dark`        |
+| `border(transparent)`        | `--p-border-transparent` |
+| `border(divider)`            | `--p-border-divider`     |
+
 #### `border-radius()`
 
 | Function                                   | Replacement Value/Token   |
