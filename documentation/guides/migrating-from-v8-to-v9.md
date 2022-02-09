@@ -2,11 +2,11 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## ThemeProvider changes
+## From `ThemeProvider` to `CustomProperties`
 
-The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use the `CustomProperties` component and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
+The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use `CustomProperties` and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
 
-`polaris-react` no longer supports accepting and transforming a custom theme object to influence the component library. Polaris will now maintain a set of predefined color-schemes that meet the immediate needs of the admin and thus the following changes are required:
+`@shopify/polaris` no longer supports custom theme objects used to influence the component library and will now maintain a set of predefined color-schemes that meet the immediate needs of the admin. Replace the `ThemeProvider` with the `CustomProperties` component and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
 ```diff
 - import {ThemeProvider} from '@shopify/polaris-react';
@@ -22,9 +22,15 @@ const App = (props) => (
 )
 ```
 
-As mentioned above, the `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component.
+The `CustomProperties` component will generate Polaris custom properties (`--p-*`) based on the `colorScheme` prop and make them accessible to all it's descendants.
 
-With that said, the `AppProvider` no longer accepts a custom theme object to forward to the `ThemeProvider`. However, similar behavior is still optionally exposed by forwarding the `colorScheme` prop to the `CustomProperties` component:
+> Note: `colorScheme="inverse"` has been deprecated and requires authors to explicitly set `light` or `dark` values.
+
+> IMPORTANT: We do not officially support dark mode at this time and the example above is simply representative of the current implementation.
+
+## `AppProvider` changes
+
+The `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component. Thus, the `AppProvider` no longer accepts a custom theme object. Remove the `theme` prop from the `AppProvider` and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
 ```diff
 import {AppProvider} from '@shopify/polaris-react';
@@ -38,6 +44,25 @@ const App = (props) => (
 +  </AppProvider>
 )
 ```
+
+## Removed all theme types, constants, and utilities
+
+A number of types, constants, and utilities have been removed with the deprecation of the `ThemeProvider` component:
+
+- `ThemeContext` - React context
+- `useTheme` - React hook
+- `Theme` - Type
+- `ThemeConfig` - Type
+- `ProcessThemeConfig` - Type
+- `RoleColors` - Type
+- `Role` - Type
+- `AppThemeConfig` - Type
+- `buildCustomProperties` - Utility
+- `buildThemeContext` - Utility
+- `toString` - Utility
+- `toCssCustomPropertySyntax` - Utility
+- `UNSTABLE_toCssCustomPropertySyntax` - Utility
+- `UNSTABLE_Tokens` - Constant
 
 ## CSS custom properties
 
