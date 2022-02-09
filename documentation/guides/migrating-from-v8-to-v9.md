@@ -2,11 +2,11 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## ThemeProvider changes
+## From `ThemeProvider` to `CustomProperties`
 
-The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use the `CustomProperties` component and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
+The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use `CustomProperties` and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
 
-`polaris-react` no longer supports accepting and transforming a custom theme object to influence the component library. Polaris will now maintain a set of predefined color-schemes that meet the immediate needs of the admin and thus the following changes are required:
+`@shopify/polaris` no longer supports custom theme objects used to influence the component library and will now maintain a set of predefined color-schemes that meet the immediate needs of the admin. Replace the `ThemeProvider` with the `CustomProperties` component and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
 ```diff
 - import {ThemeProvider} from '@shopify/polaris-react';
@@ -22,9 +22,15 @@ const App = (props) => (
 )
 ```
 
-As mentioned above, the `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component.
+The `CustomProperties` component will generate Polaris custom properties (`--p-*`) based on the `colorScheme` prop and make them accessible to all it's descendants.
 
-With that said, the `AppProvider` no longer accepts a custom theme object to forward to the `ThemeProvider`. However, similar behavior is still optionally exposed by forwarding the `colorScheme` prop to the `CustomProperties` component:
+> Note: `colorScheme="inverse"` has been deprecated and requires authors to explicitly set `light` or `dark` values.
+
+> IMPORTANT: We do not officially support dark mode at this time and the example above is simply representative of the current implementation.
+
+## `AppProvider` changes
+
+The `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component. Thus, the `AppProvider` no longer accepts a custom theme object. Remove the `theme` prop from the `AppProvider` and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
 ```diff
 import {AppProvider} from '@shopify/polaris-react';
@@ -38,6 +44,25 @@ const App = (props) => (
 +  </AppProvider>
 )
 ```
+
+## Removed all theme types, constants, and utilities
+
+A number of types, constants, and utilities have been removed with the deprecation of the `ThemeProvider` component:
+
+- `ThemeContext` - React context
+- `useTheme` - React hook
+- `Theme` - Type
+- `ThemeConfig` - Type
+- `ProcessThemeConfig` - Type
+- `RoleColors` - Type
+- `Role` - Type
+- `AppThemeConfig` - Type
+- `buildCustomProperties` - Utility
+- `buildThemeContext` - Utility
+- `toString` - Utility
+- `toCssCustomPropertySyntax` - Utility
+- `UNSTABLE_toCssCustomPropertySyntax` - Utility
+- `UNSTABLE_Tokens` - Constant
 
 ## CSS custom properties
 
@@ -88,6 +113,30 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 ### Replacing function and mixin instances with values or tokens
 
 A list of functions/mixins and their value equivalents or new token values.
+
+#### `border()`
+
+| Function                     | Replacement Value/Token  |
+| ---------------------------- | ------------------------ |
+| `border()`<br>`border(base)` | `--p-border-base`        |
+| `border(dark)`               | `--p-border-dark`        |
+| `border(transparent)`        | `--p-border-transparent` |
+| `border(divider)`            | `--p-border-divider`     |
+
+#### `border-radius()`
+
+| Function                                   | Replacement Value/Token   |
+| ------------------------------------------ | ------------------------- |
+| `border-radius()`<br>`border-radius(base)` | `--p-border-radius-base`  |
+| `border-radius(large)`                     | `--p-border-radius-large` |
+
+#### `border-width()`
+
+| Function                                 | Replacement Value/Token |
+| ---------------------------------------- | ----------------------- |
+| `border-width()`<br>`border-width(base)` | `--p-border-width-1`    |
+| `border-width(thick)`                    | `--p-border-width-2`    |
+| `border-width(thicker)`                  | `--p-border-width-3`    |
 
 #### `duration()`
 
@@ -184,6 +233,35 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
+#### `font-family()`
+
+| Function                                        | Replacement Value/Token |
+| ----------------------------------------------- | ----------------------- |
+| `font-family()`<br>`font-family($family: base)` | `--p-font-family-sans`  |
+| `font-family($family: 'monospace')`             | `--p-font-family-mono`  |
+
+#### `high-contrast-border()`
+
+| Mixin                                                          | Replacement Value/Token                              |
+| -------------------------------------------------------------- | ---------------------------------------------------- |
+| `@include high-contrast-border`                                | `border: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-border($border-width: <border-width>)` | `border: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+
+#### `high-contrast-outline()`
+
+| Mixin                                                           | Replacement Value/Token                               |
+| --------------------------------------------------------------- | ----------------------------------------------------- |
+| `@include high-contrast-outline`                                | `outline: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-outline($border-width: <border-width>)` | `outline: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
@@ -206,7 +284,52 @@ We replaced a few of the following filter function instances with color tokens i
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
 
+#### `spacing()`
+
+| Function                       | Replacement Value/Token |
+| ------------------------------ | ----------------------- |
+| `spacing(none)`                | `--p-space-0`           |
+| `spacing(extra-tight)`         | `--p-space-1`           |
+| `spacing(tight)`               | `--p-space-2`           |
+| `spacing(base-tight)`          | `--p-space-3`           |
+| `spacing()`<br>`spacing(base)` | `--p-space-4`           |
+| `spacing(loose)`               | `--p-space-5`           |
+| `spacing(extra-loose)`         | `--p-space-8`           |
+
+#### `unstyled-link()`
+
+Replace any instances of `@include unstyled-link` with the following code block.
+
+```scss
+color: inherit;
+text-decoration: none;
+
+&:visited {
+  color: inherit;
+}
+```
+
+#### `unstyled-list()`
+
+Replace any instances of `@include unstyled-list` with the following code block.
+
+```scss
+margin: 0;
+padding: 0;
+list-style: none;
+```
+
 ## Tokens
+
+### Border Radius
+
+| Token                                     | Replacement Value/Token  |
+| ----------------------------------------- | ------------------------ |
+| `--p-border-radius-slim`                  | `--p-border-radius-05`   |
+| `--p-border-radius-base`                  | `--p-border-radius-1`    |
+| `--p-border-radius-wide`                  | `--p-border-radius-2`    |
+| `--p-border-radius-full`                  | `--p-border-radius-half` |
+| `--p-text-field-focus-ring-border-radius` | `7px`                    |
 
 ### Duration
 
