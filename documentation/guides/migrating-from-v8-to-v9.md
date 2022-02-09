@@ -132,6 +132,12 @@ A list of functions/mixins and their value equivalents or new token values.
 
 #### `border-width()`
 
+| Function                                 | Replacement Value/Token |
+| ---------------------------------------- | ----------------------- |
+| `border-width()`<br>`border-width(base)` | `--p-border-width-1`    |
+| `border-width(thick)`                    | `--p-border-width-2`    |
+| `border-width(thicker)`                  | `--p-border-width-3`    |
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
