@@ -154,7 +154,7 @@ A list of functions/mixins and their value equivalents or new token values.
 This function has been deprecated, but the definition can be copied and used locally.
 | Function | Source |
 | -------- | -------------------- |
-| `em()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333) |
+| `em()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
 
 #### `easing()`
 
