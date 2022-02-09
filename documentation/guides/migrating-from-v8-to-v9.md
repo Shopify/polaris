@@ -216,7 +216,6 @@ We replaced a few of the following filter function instances with color tokens i
 | `spacing(extra-tight)` | `--p-space-1`           |
 | `spacing(tight)`       | `--p-space-2`           |
 | `spacing(base-tight)`  | `--p-space-3`           |
-| `spacing(base)`        | `--p-space-4`           |
 | `spacing(loose)`       | `--p-space-5`           |
 | `spacing(extra-loose)` | `--p-space-8`           |
 
