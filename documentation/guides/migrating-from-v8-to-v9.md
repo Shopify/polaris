@@ -313,6 +313,23 @@ padding: 0;
 list-style: none;
 ```
 
+#### `z-index()`
+
+| Function                   | Replacement Value/Token          |
+| -------------------------- | -------------------------------- |
+| `z-index(content)`         | `--p-z-content`                  |
+| `z-index(overlay)`         | `--p-z-overlay`                  |
+| `z-index(global-ribbon)`   | `--p-z-global-ribbon`            |
+| `z-index(top-bar)`         | `--p-z-top-bar`                  |
+| `z-index(context-bar)`     | `--p-z-context-bar`              |
+| `z-index(loading-bar)`     | `--p-z-small-screen-loading-bar` |
+| `z-index(nav-backdrop)`    | `--p-z-nav-backdrop`             |
+| `z-index(nav)`             | `--p-z-nav`                      |
+| `z-index(skip-to-content)` | `--p-z-skip-to-content`          |
+| `z-index(backdrop)`        | `--p-z-backdrop`                 |
+| `z-index(modal)`           | `--p-z-modal`                    |
+| `z-index(toast)`           | `--p-z-toast`                    |
+
 ## Tokens
 
 ### Border Radius
