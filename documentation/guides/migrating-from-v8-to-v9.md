@@ -268,6 +268,14 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
 
+#### `rem()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function | Source                                                                                                                                                           |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293) |
+
 #### `shadow()`
 
 | Function                     | Replacement Value/Token  |
