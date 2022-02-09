@@ -226,7 +226,7 @@ We replaced a few of the following filter function instances with color tokens i
 | `@include high-contrast-border`                                | `border: var(--p-border-width-1) solid transparent;` |
 | `@include high-contrast-border($border-width: <border-width>)` | `border: <border-width> solid transparent;`          |
 
-For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for repalcing it.
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
 
 For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
@@ -237,7 +237,7 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | `@include high-contrast-outline`                                | `outline: var(--p-border-width-1) solid transparent;` |
 | `@include high-contrast-outline($border-width: <border-width>)` | `outline: <border-width> solid transparent;`          |
 
-For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for repalcing it.
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
 
 For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
