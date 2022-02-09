@@ -211,7 +211,7 @@ We replaced a few of the following filter function instances with color tokens i
 
 | Function               | Replacement Value/Token |
 | ---------------------- | ----------------------- |
-| `spacing()`            | `--p-space-4`           |
+| `spacing()`<br>`spacing(base)`            | `--p-space-4`           |
 | `spacing(none)`        | `--p-space-0`           |
 | `spacing(extra-tight)` | `--p-space-1`           |
 | `spacing(tight)`       | `--p-space-2`           |
