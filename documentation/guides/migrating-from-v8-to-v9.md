@@ -114,6 +114,10 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `available-names()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+
 #### `border()`
 
 | Function                     | Replacement Value/Token  |
