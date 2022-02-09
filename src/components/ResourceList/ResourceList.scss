@@ -15,12 +15,6 @@ $item-wrapper-loading-height: rem(64px);
   left: 0;
 }
 
-.SubHeaderWrapper {
-  + .ResourceList {
-    border-top: border();
-  }
-}
-
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
     resource-list(header-padding-small) spacing();
@@ -31,10 +25,6 @@ $item-wrapper-loading-height: rem(64px);
 
   + .ResourceList {
     border-top: border('divider');
-  }
-
-  + .SubHeaderWrapper {
-    border-top: border();
   }
 }
 
@@ -48,10 +38,6 @@ $item-wrapper-loading-height: rem(64px);
 
   + .ResourceList {
     border-top: border('divider');
-  }
-
-  + .SubHeaderWrapper {
-    border-top: border();
   }
 }
 

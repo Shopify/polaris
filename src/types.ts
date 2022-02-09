@@ -5,9 +5,9 @@ import type {IconProps} from './components/Icon';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import type {ThumbnailProps} from './components/Thumbnail';
 
-export interface OptionDescriptor<Value extends string = string> {
-  /** Value of the option */
-  value: Value;
+export interface OptionDescriptor<TValue extends string = string> {
+  /** TValue of the option */
+  value: TValue;
   /** Display label for the option */
   label: React.ReactNode;
   /** Whether the option is disabled or not */
@@ -20,16 +20,16 @@ export interface OptionDescriptor<Value extends string = string> {
   media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
-export interface SectionDescriptor<Value extends string = string> {
+export interface SectionDescriptor<TValue extends string = string> {
   /** Collection of options within the section */
-  options: OptionDescriptor<Value>[];
+  options: OptionDescriptor<TValue>[];
   /** Section title */
   title?: string;
 }
 
-export type Descriptor<Value extends string = string> =
-  | SectionDescriptor<Value>
-  | OptionDescriptor<Value>;
+export type Descriptor<TValue extends string = string> =
+  | SectionDescriptor<TValue>
+  | OptionDescriptor<TValue>;
 
 export type IconSource =
   | React.FunctionComponent<React.SVGProps<SVGSVGElement>>

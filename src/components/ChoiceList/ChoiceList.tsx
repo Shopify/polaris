@@ -9,9 +9,9 @@ import {InlineError, errorTextID} from '../InlineError';
 
 import styles from './ChoiceList.scss';
 
-interface Choice<Value extends string = string> {
-  /** Value of the choice */
-  value: Value;
+interface Choice<TValue extends string = string> {
+  /** TValue of the choice */
+  value: TValue;
   /** Label for the choice */
   label: React.ReactNode;
   /** Disable choice */
@@ -24,13 +24,13 @@ interface Choice<Value extends string = string> {
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
 
-export interface ChoiceListProps<Value extends string = string> {
+export interface ChoiceListProps<TValue extends string = string> {
   /** Label for list of choices */
   title: React.ReactNode;
   /** Collection of choices */
-  choices: Choice<Value>[];
+  choices: Choice<TValue>[];
   /** Collection of selected choices */
-  selected: Value[];
+  selected: TValue[];
   /** Name for form input */
   name?: string;
   /** Allow merchants to select multiple options at once */
@@ -42,12 +42,12 @@ export interface ChoiceListProps<Value extends string = string> {
   /** Disable all choices **/
   disabled?: boolean;
   /** Callback when the selected choices change */
-  onChange?(selected: Value[], name: string): void;
+  onChange?(selected: TValue[], name: string): void;
   /** Renders the choicelist horizontal */
   horizontal?: boolean;
 }
 
-export function ChoiceList<Value extends string = string>({
+export function ChoiceList<TValue extends string = string>({
   title,
   titleHidden,
   allowMultiple,
@@ -58,7 +58,7 @@ export function ChoiceList<Value extends string = string>({
   disabled = false,
   name: nameProp,
   horizontal,
-}: ChoiceListProps<Value>) {
+}: ChoiceListProps<TValue>) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
@@ -142,19 +142,19 @@ export function ChoiceList<Value extends string = string>({
 
 function noop() {}
 
-function choiceIsSelected<Value extends string = string>(
-  {value}: Choice<Value>,
-  selected: Value[],
+function choiceIsSelected<TValue extends string = string>(
+  {value}: Choice<TValue>,
+  selected: TValue[],
 ): boolean {
   return selected.includes(value);
 }
 
-function updateSelectedChoices<Value extends string = string>(
-  {value}: Choice<Value>,
+function updateSelectedChoices<TValue extends string = string>(
+  {value}: Choice<TValue>,
   checked: boolean,
-  selected: Value[],
+  selected: TValue[],
   allowMultiple = false,
-): Value[] {
+): TValue[] {
   if (checked) {
     return allowMultiple ? [...selected, value] : [value];
   }

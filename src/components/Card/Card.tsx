@@ -26,8 +26,6 @@ export interface CardProps {
   children?: React.ReactNode;
   /** A less prominent card */
   subdued?: boolean;
-  /** @deprecated A recessed card */
-  recessed?: boolean;
   /** Auto wrap content in section */
   sectioned?: boolean;
   /** Card header actions */
@@ -58,7 +56,6 @@ export const Card: React.FunctionComponent<CardProps> & {
   hideOnPrint,
   title,
   subdued,
-  recessed,
   sectioned,
   actions,
   primaryFooterAction,
@@ -75,7 +72,6 @@ export const Card: React.FunctionComponent<CardProps> & {
   const className = classNames(
     styles.Card,
     subdued && styles.subdued,
-    recessed && styles.recessed,
     hideOnPrint && styles.hideOnPrint,
   );
 

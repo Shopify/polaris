@@ -26,11 +26,6 @@
   background-color: var(--p-surface-subdued);
 }
 
-.recessed {
-  box-shadow: none;
-  border-radius: 0;
-}
-
 .Section-hideOnPrint,
 .hideOnPrint {
   @include hidden-when-printing;

@@ -81,9 +81,10 @@ export interface ResourceSection {
 export interface ResourceListProps<TItemType = any> {
   /** Item data; each item is passed to renderItem */
   items: TItemType[];
+  /** Section data; each section is passed to renderSection */
   sections?: ResourceSection[];
+  /** A filter control for the resource list */
   filterControl?: React.ReactNode;
-  subHeader?: React.ReactNode;
   /** The markup to display when no items in the section exist. */
   emptySectionState?: React.ReactNode;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
@@ -160,7 +161,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   renderSectionFooter,
   sectionIdForItem = defaultSectionIdForItem,
   emptySectionState,
-  subHeader,
   filterControl,
   emptyState,
   emptySearchState,
@@ -628,11 +628,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     </div>
   ) : null;
 
-  const subHeaderMarkup =
-    !loading && subHeader && itemsExist ? (
-      <div className={styles.SubHeaderWrapper}>{subHeader}</div>
-    ) : null;
-
   const filterControlMarkup = filterControl ? (
     <div className={styles.FiltersWrapper}>{filterControl}</div>
   ) : null;
@@ -812,7 +807,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       <div className={styles.ResourceListWrapper}>
         {filterControlMarkup}
         {headerMarkup}
-        {subHeaderMarkup}
         {listMarkup}
         {emptySearchStateMarkup}
         {emptyStateMarkup}

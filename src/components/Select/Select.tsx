@@ -9,9 +9,9 @@ import type {Error} from '../../types';
 
 import styles from './Select.scss';
 
-interface StrictOption<Value extends string = string> {
+interface StrictOption<TValue extends string = string> {
   /** Machine value of the option; this is the value passed to `onChange` */
-  value: Value;
+  value: TValue;
   /** Human-readable text for the option */
   label: string;
   /** Option will be visible, but not selectable */
@@ -20,30 +20,30 @@ interface StrictOption<Value extends string = string> {
   prefix?: React.ReactNode;
 }
 
-interface HideableStrictOption<Value extends string = string>
-  extends StrictOption<Value> {
+interface HideableStrictOption<TValue extends string = string>
+  extends StrictOption<TValue> {
   hidden?: boolean;
 }
 
-interface StrictGroup<Value extends string = string> {
+interface StrictGroup<TValue extends string = string> {
   /** Title for the group */
   title: string;
   /** List of options */
-  options: StrictOption<Value>[];
+  options: StrictOption<TValue>[];
 }
 
-export type SelectOption<Value extends string = string> =
-  | Value
-  | StrictOption<Value>;
+export type SelectOption<TValue extends string = string> =
+  | TValue
+  | StrictOption<TValue>;
 
-export interface SelectGroup<Value extends string = string> {
+export interface SelectGroup<TValue extends string = string> {
   title: string;
-  options: SelectOption<Value>[];
+  options: SelectOption<TValue>[];
 }
 
-export interface SelectProps<Value extends string = string> {
+export interface SelectProps<TValue extends string = string> {
   /** List of options or option groups to choose from */
-  options?: (SelectOption<Value> | SelectGroup<Value>)[];
+  options?: (SelectOption<TValue> | SelectGroup<TValue>)[];
   /** Label for the select */
   label: React.ReactNode;
   /** Adds an action to the label */
@@ -62,12 +62,12 @@ export interface SelectProps<Value extends string = string> {
   id?: string;
   /** Name for form input */
   name?: string;
-  /** Value for form input */
-  value?: Value | '';
+  /** TValue for form input */
+  value?: TValue | '';
   /** Display an error state */
   error?: Error | boolean;
   /** Callback when selection is changed */
-  onChange?(selected: Value | '', id: string): void;
+  onChange?(selected: TValue | '', id: string): void;
   /** Callback when select is focussed */
   onFocus?(): void;
   /** Callback when focus is removed */
@@ -78,7 +78,7 @@ export interface SelectProps<Value extends string = string> {
 
 const PLACEHOLDER_VALUE = '';
 
-export function Select<Value extends string = string>({
+export function Select<TValue extends string = string>({
   options: optionsProp,
   label,
   labelAction,
@@ -95,7 +95,7 @@ export function Select<Value extends string = string>({
   onFocus,
   onBlur,
   requiredIndicator,
-}: SelectProps<Value>) {
+}: SelectProps<TValue>) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
 
@@ -107,7 +107,7 @@ export function Select<Value extends string = string>({
 
   const handleChange = onChange
     ? (event: React.ChangeEvent<HTMLSelectElement>) =>
-        onChange(event.currentTarget.value as Value, id)
+        onChange(event.currentTarget.value as TValue, id)
     : undefined;
 
   const describedBy: string[] = [];
@@ -120,8 +120,8 @@ export function Select<Value extends string = string>({
 
   const options = optionsProp || [];
   let normalizedOptions: (
-    | HideableStrictOption<Value | ''>
-    | StrictGroup<Value | ''>
+    | HideableStrictOption<TValue | ''>
+    | StrictGroup<TValue | ''>
   )[] = options.map(normalizeOption);
 
   if (placeholder) {
@@ -193,23 +193,23 @@ export function Select<Value extends string = string>({
   );
 }
 
-function isString<Value extends string = string>(
-  option: SelectOption<Value> | SelectGroup<Value>,
-): option is Value {
+function isString<TValue extends string = string>(
+  option: SelectOption<TValue> | SelectGroup<TValue>,
+): option is TValue {
   return typeof option === 'string';
 }
 
-function isGroup<Value extends string = string>(
-  option: SelectOption<Value> | SelectGroup<Value>,
-): option is SelectGroup<Value> {
+function isGroup<TValue extends string = string>(
+  option: SelectOption<TValue> | SelectGroup<TValue>,
+): option is SelectGroup<TValue> {
   return (
     typeof option === 'object' && 'options' in option && option.options != null
   );
 }
 
-function normalizeStringOption<Value extends string = string>(
-  option: Value,
-): StrictOption<Value> {
+function normalizeStringOption<TValue extends string = string>(
+  option: TValue,
+): StrictOption<TValue> {
   return {
     label: option,
     value: option,
@@ -220,9 +220,9 @@ function normalizeStringOption<Value extends string = string>(
  * Converts a string option (and each string option in a Group) into
  * an Option object.
  */
-function normalizeOption<Value extends string = string>(
-  option: SelectOption<Value> | SelectGroup<Value>,
-): HideableStrictOption<Value> | StrictGroup<Value> {
+function normalizeOption<TValue extends string = string>(
+  option: SelectOption<TValue> | SelectGroup<TValue>,
+): HideableStrictOption<TValue> | StrictGroup<TValue> {
   if (isString(option)) {
     return normalizeStringOption(option);
   } else if (isGroup(option)) {
@@ -232,21 +232,21 @@ function normalizeOption<Value extends string = string>(
       options: options.map((option) => {
         return isString(option)
           ? normalizeStringOption(option)
-          : (option as StrictOption<Value>);
+          : (option as StrictOption<TValue>);
       }),
     };
   }
 
-  return option as StrictOption<Value>;
+  return option as StrictOption<TValue>;
 }
 
 /**
  * Gets the text to display in the UI, for the currently selected option
  */
-function getSelectedOption<Value extends string = string>(
-  options: (HideableStrictOption<Value> | StrictGroup<Value>)[],
-  value: Value,
-): HideableStrictOption<Value | ''> {
+function getSelectedOption<TValue extends string = string>(
+  options: (HideableStrictOption<TValue> | StrictGroup<TValue>)[],
+  value: TValue,
+): HideableStrictOption<TValue | ''> {
   const flatOptions = flattenOptions(options);
   let selectedOption = flatOptions.find((option) => value === option.value);
 
@@ -261,10 +261,10 @@ function getSelectedOption<Value extends string = string>(
 /**
  * Ungroups an options array
  */
-function flattenOptions<Value extends string = string>(
-  options: (HideableStrictOption<Value> | StrictGroup<Value>)[],
-): HideableStrictOption<Value>[] {
-  let flatOptions: HideableStrictOption<Value>[] = [];
+function flattenOptions<TValue extends string = string>(
+  options: (HideableStrictOption<TValue> | StrictGroup<TValue>)[],
+): HideableStrictOption<TValue>[] {
+  let flatOptions: HideableStrictOption<TValue>[] = [];
 
   options.forEach((optionOrGroup) => {
     if (isGroup(optionOrGroup)) {
@@ -277,8 +277,8 @@ function flattenOptions<Value extends string = string>(
   return flatOptions;
 }
 
-function renderSingleOption<Value extends string = string>(
-  option: HideableStrictOption<Value>,
+function renderSingleOption<TValue extends string = string>(
+  option: HideableStrictOption<TValue>,
 ): React.ReactNode {
   const {value, label, prefix: _prefix, ...rest} = option;
   return (
@@ -288,8 +288,8 @@ function renderSingleOption<Value extends string = string>(
   );
 }
 
-function renderOption<Value extends string = string>(
-  optionOrGroup: HideableStrictOption<Value> | StrictGroup<Value>,
+function renderOption<TValue extends string = string>(
+  optionOrGroup: HideableStrictOption<TValue> | StrictGroup<TValue>,
 ): React.ReactNode {
   if (isGroup(optionOrGroup)) {
     const {title, options} = optionOrGroup;
