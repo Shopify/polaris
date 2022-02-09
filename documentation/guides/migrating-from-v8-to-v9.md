@@ -273,15 +273,15 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 This function has been deprecated, but the definition can be copied and used locally.
 | Function | Source |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L313) |
+| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
 
 #### `rem()`
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Function | Source                                                                                                                                                           |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293) |
+| Function | Source                                                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293-L311) |
 
 #### `shadow()`
 
