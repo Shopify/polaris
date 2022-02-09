@@ -209,15 +209,15 @@ We replaced a few of the following filter function instances with color tokens i
 
 #### `spacing()`
 
-| Function               | Replacement Value/Token |
-| ---------------------- | ----------------------- |
-| `spacing()`<br>`spacing(base)`            | `--p-space-4`           |
-| `spacing(none)`        | `--p-space-0`           |
-| `spacing(extra-tight)` | `--p-space-1`           |
-| `spacing(tight)`       | `--p-space-2`           |
-| `spacing(base-tight)`  | `--p-space-3`           |
-| `spacing(loose)`       | `--p-space-5`           |
-| `spacing(extra-loose)` | `--p-space-8`           |
+| Function                       | Replacement Value/Token |
+| ------------------------------ | ----------------------- |
+| `spacing(none)`                | `--p-space-0`           |
+| `spacing(extra-tight)`         | `--p-space-1`           |
+| `spacing(tight)`               | `--p-space-2`           |
+| `spacing(base-tight)`          | `--p-space-3`           |
+| `spacing()`<br>`spacing(base)` | `--p-space-4`           |
+| `spacing(loose)`               | `--p-space-5`           |
+| `spacing(extra-loose)`         | `--p-space-8`           |
 
 #### `unstyled-link()`
 
