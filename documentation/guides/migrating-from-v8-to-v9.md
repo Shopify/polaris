@@ -234,6 +234,16 @@ We replaced a few of the following filter function instances with color tokens i
 | `font-family()`<br>`font-family($family: base)` | `--p-font-family-sans`  |
 | `font-family($family: 'monospace')`             | `--p-font-family-mono`  |
 
+#### `hidden-when-printing()`
+
+Replace any instance of `@include hidden-when-printing;` with the following code
+
+```scss
+@media print {
+  display: none !important;
+}
+```
+
 #### `high-contrast-border()`
 
 | Mixin                                                          | Replacement Value/Token                              |
@@ -267,6 +277,16 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | `ms-high-contrast-color('button-text')`              | `buttonText`            |
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
+
+#### `print-hidden()`
+
+Replace any instance of `@include print-hidden;` with the following code
+
+```scss
+@media print {
+  display: none !important;
+}
+```
 
 #### `rem()`
 
@@ -320,6 +340,18 @@ margin: 0;
 padding: 0;
 list-style: none;
 ```
+
+#### `when-not-printing()`
+
+| Function                      | Replacement Value/Token |
+|------------------------------|-------------------------|
+| `@include when-not-printing` | `@media not print`      |
+
+#### `when-printing()`
+
+| Function                      | Replacement Value/Token |
+|------------------------------|-------------------------|
+| `@include when-printing`     | `@media print`          |
 
 ## Tokens
 
