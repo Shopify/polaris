@@ -16,4 +16,20 @@ describe('<Thumbnail />', () => {
       expect(thumbnail).toContainReactComponent('img');
     });
   });
+
+  describe('transparent', () => {
+    it('adds transparent class when transparent is true', () => {
+      const thumbnail = mountWithApp(<Thumbnail alt="" source="abc.jpg" />);
+
+      expect(thumbnail).toContainReactComponent('span', {
+        className: 'Thumbnail sizeMedium',
+      });
+
+      thumbnail.setProps({transparent: true});
+
+      expect(thumbnail).toContainReactComponent('span', {
+        className: 'Thumbnail sizeMedium transparent',
+      });
+    });
+  });
 });

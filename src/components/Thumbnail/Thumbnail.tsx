@@ -18,12 +18,20 @@ export interface ThumbnailProps {
   source: string | React.SFC<React.SVGProps<SVGSVGElement>>;
   /** Alt text for the thumbnail image */
   alt: string;
+  /** Transparent background */
+  transparent?: boolean;
 }
 
-export function Thumbnail({source, alt, size = 'medium'}: ThumbnailProps) {
+export function Thumbnail({
+  source,
+  alt,
+  size = 'medium',
+  transparent,
+}: ThumbnailProps) {
   const className = classNames(
     styles.Thumbnail,
     size && styles[variationName('size', size)],
+    transparent && styles.transparent,
   );
 
   const content =
