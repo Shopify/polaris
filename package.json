@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "8.0.0",
+  "version": "8.2.1",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -70,7 +70,7 @@
     "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "4.14.0",
+    "@shopify/polaris-icons": "^4.17.0",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-transition-group": "^4.4.2",
