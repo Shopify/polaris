@@ -231,9 +231,10 @@ We replaced a few of the following filter function instances with color tokens i
 
 #### `px()`
 
-| Function | Source to copy       |
-| -------- | -------------------- |
-| `px()`   | [link to function]() |
+This function has been deprecated, but the definition can be copied and used locally.
+| Function | Source |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/a75c305d2cc4b72808d6d9f7302d479c68178706/documentation/guides/legacy-polaris-v8-public-api.scss#L317) |
 
 #### `shadow()`
 
