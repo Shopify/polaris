@@ -89,6 +89,8 @@ To help you quickly add these functions and mixins back to your repo, we've crea
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `border-width()`
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
@@ -177,6 +179,28 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('white')`<br>`filter('white', 'base')`   | `brightness(0) saturate(100%) invert(100%)`                                                                              |
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
+
+#### `high-contrast-outline()`
+
+| Mixin                                                           | Replacement Value/Token                               |
+| --------------------------------------------------------------- | ----------------------------------------------------- |
+| `@include high-contrast-outline`                                | `outline: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-outline($border-width: <border-width>)` | `outline: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for repalcing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+
+#### `high-contrast-border()`
+
+| Mixin                                                          | Replacement Value/Token                              |
+| -------------------------------------------------------------- | ---------------------------------------------------- |
+| `@include high-contrast-border`                                | `border: var(--p-border-width-1) solid transparent;` |
+| `@include high-contrast-border($border-width: <border-width>)` | `border: <border-width> solid transparent;`          |
+
+For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for repalcing it.
+
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
 #### `ms-high-contrast-color()`
 
