@@ -10,8 +10,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Updated Navigation alignment in `Navigation` ([#5135](https://github.com/Shopify/polaris-react/pull/5135))
-
 ### Documentation
 
 ### Development workflow
