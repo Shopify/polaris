@@ -354,7 +354,7 @@ This function has been deprecated, but the definition can be copied and used loc
 <th>Replacement Value</th>
 </tr>
 <tr>
-<td style='text-align:center;'>
+<td>
 
 `@include state(hover)`
 
