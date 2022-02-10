@@ -74,7 +74,7 @@ The prop `secondaryActions` has been removed and is no longer supported.
 
 The following CSS custom properties have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents.
 
-| Deprecated Name                           | Replacement Value                  |
+| Deprecated CSS Custom Property            | Replacement Value                  |
 | ----------------------------------------- | ---------------------------------- |
 | `--p-badge-font-weight`                   | `--p-font-weight-regular`          |
 | `--p-badge-mix-blend-mode`                | `luminosity`                       |
