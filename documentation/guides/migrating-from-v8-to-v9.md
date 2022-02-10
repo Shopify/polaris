@@ -336,6 +336,31 @@ This function has been deprecated, but the definition can be copied and used loc
 
 #### `skeleton-page-secondary-actions-layout()`
 
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-page-secondary-actions-layout`
+
+</td>
+<td>
+
+```scss
+margin-top: var(--p-space-2);
+display: flex;
+flex-direction: row-reverse;
+justify-content: flex-end;
+align-items: center;
+```
+
+</td>
+</tr>
+</table>
+
 #### `skeleton-shimmer()`
 
 #### `spacing()`
