@@ -401,6 +401,24 @@ list-style: none;
 | ------------------------ | ----------------------- |
 | `@include when-printing` | `@media print`          |
 
+#### `z-index()`
+
+| Function                   | Replacement Value/Token |
+| -------------------------- | ----------------------- |
+| `z-index(content)`         | `--p-z-1`               |
+| `z-index(overlay)`         | `--p-z-2`               |
+| `z-index(global-ribbon)`   | `--p-z-3`               |
+| `z-index(top-bar)`         | `--p-z-4`               |
+| `z-index(context-bar)`     | `--p-z-5`               |
+| `z-index(loading-bar)`     | `--p-z-6`               |
+| `z-index(nav-backdrop)`    | `--p-z-7`               |
+| `z-index(nav)`             | `--p-z-8`               |
+| `z-index(skip-to-content)` | `--p-z-9`               |
+| `z-index(backdrop)`        | `--p-z-10`              |
+| `z-index(modal)`           | `--p-z-11`              |
+| `z-index(toast)`           | `--p-z-12`              |
+| `z-index(devUi)`           | `521`                   |
+
 ## Tokens
 
 ### Border Radius
