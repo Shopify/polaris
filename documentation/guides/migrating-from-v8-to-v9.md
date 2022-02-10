@@ -343,7 +343,7 @@ list-style: none;
 
 #### `when-not-printing()`
 
-| Function                      | Replacement Value/Token |
+| Mixin                      | Replacement Value/Token |
 |------------------------------|-------------------------|
 | `@include when-not-printing` | `@media not print`      |
 
