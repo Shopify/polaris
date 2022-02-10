@@ -452,3 +452,7 @@ Any functions that were being consumed from `build/styles/_public-api.scss` have
 [`./shared/interaction-state`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_interaction-state.scss)
 
 [`./shared/printing`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_printing.scss)
+
+## `@shopify/polaris-tokens`
+
+`@shopify/polaris-tokens` is no longer a dependency and using tokens from `@shopify/polaris-tokens` is deprecated. The library will continue to be available via NPM, however we highly encourage removing any usage in your application and instead using token values from `@shopify/polaris`.
