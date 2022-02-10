@@ -2,7 +2,7 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## Components 
+## Components
 
 ### From `ThemeProvider` to `CustomProperties`
 
