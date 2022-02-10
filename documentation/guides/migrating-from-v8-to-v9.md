@@ -349,7 +349,7 @@ list-style: none;
 
 #### `when-printing()`
 
-| Function                      | Replacement Value/Token |
+| Mixin                      | Replacement Value/Token |
 |------------------------------|-------------------------|
 | `@include when-printing`     | `@media print`          |
 
