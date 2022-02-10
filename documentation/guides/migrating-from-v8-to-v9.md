@@ -2,7 +2,9 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## From `ThemeProvider` to `CustomProperties`
+## Components
+
+### From `ThemeProvider` to `CustomProperties`
 
 The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use `CustomProperties` and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
 
@@ -28,7 +30,7 @@ The `CustomProperties` component will generate Polaris custom properties (`--p-*
 
 > IMPORTANT: We do not officially support dark mode at this time and the example above is simply representative of the current implementation.
 
-## `AppProvider` changes
+### `AppProvider` changes
 
 The `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component. Thus, the `AppProvider` no longer accepts a custom theme object. Remove the `theme` prop from the `AppProvider` and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
@@ -45,7 +47,7 @@ const App = (props) => (
 )
 ```
 
-## Removed all theme types, constants, and utilities
+### Removed all theme types, constants, and utilities
 
 A number of types, constants, and utilities have been removed with the deprecation of the `ThemeProvider` component:
 
@@ -63,6 +65,10 @@ A number of types, constants, and utilities have been removed with the deprecati
 - `toCssCustomPropertySyntax` - Utility
 - `UNSTABLE_toCssCustomPropertySyntax` - Utility
 - `UNSTABLE_Tokens` - Constant
+
+### `SkeletonPage`
+
+The prop `secondaryActions` has been removed and is no longer supported.
 
 ## CSS custom properties
 
