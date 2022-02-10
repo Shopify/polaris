@@ -315,20 +315,20 @@ list-style: none;
 
 #### `z-index()`
 
-| Function                   | Replacement Value/Token          |
-| -------------------------- | -------------------------------- |
-| `z-index(content)`         | `--p-z-content`                  |
-| `z-index(overlay)`         | `--p-z-overlay`                  |
-| `z-index(global-ribbon)`   | `--p-z-global-ribbon`            |
-| `z-index(top-bar)`         | `--p-z-top-bar`                  |
-| `z-index(context-bar)`     | `--p-z-context-bar`              |
-| `z-index(loading-bar)`     | `--p-z-small-screen-loading-bar` |
-| `z-index(nav-backdrop)`    | `--p-z-nav-backdrop`             |
-| `z-index(nav)`             | `--p-z-nav`                      |
-| `z-index(skip-to-content)` | `--p-z-skip-to-content`          |
-| `z-index(backdrop)`        | `--p-z-backdrop`                 |
-| `z-index(modal)`           | `--p-z-modal`                    |
-| `z-index(toast)`           | `--p-z-toast`                    |
+| Function                   | Replacement Value/Token |
+| -------------------------- | ----------------------- |
+| `z-index(content)`         | `--p-z-1`               |
+| `z-index(overlay)`         | `--p-z-2`               |
+| `z-index(global-ribbon)`   | `--p-z-3`               |
+| `z-index(top-bar)`         | `--p-z-4`               |
+| `z-index(context-bar)`     | `--p-z-5`               |
+| `z-index(loading-bar)`     | `--p-z-6`               |
+| `z-index(nav-backdrop)`    | `--p-z-7`               |
+| `z-index(nav)`             | `--p-z-8`               |
+| `z-index(skip-to-content)` | `--p-z-9`               |
+| `z-index(backdrop)`        | `--p-z-10`              |
+| `z-index(modal)`           | `--p-z-11`              |
+| `z-index(toast)`           | `--p-z-12`              |
 
 ## Tokens
 
