@@ -328,6 +328,16 @@ This function has been deprecated, but the definition can be copied and used loc
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
 
+#### `skeleton-page-header-layout()`
+
+| Deprecated Mixin                       | Replacement Value                   |
+| -------------------------------------- | ----------------------------------- |
+| `@include skeleton-page-header-layout` | `padding-bottom: var(--p-space-2);` |
+
+#### `skeleton-page-secondary-actions-layout()`
+
+#### `skeleton-shimmer()`
+
 #### `spacing()`
 
 | Function                       | Replacement Value/Token |
