@@ -19,6 +19,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 **Sass functions and mixins**
 
+- Removed the `color()` function ([#4696](https://github.com/Shopify/polaris-react/pull/4696))
 - Removed the `border-width()` function ([#4900](https://github.com/Shopify/polaris-react/pull/4900))
 - Removed the `filter()` function ([#4676](https://github.com/Shopify/polaris-react/pull/4676))
 - Removed the `px()` function ([#4751](https://github.com/Shopify/polaris-react/pull/4751))

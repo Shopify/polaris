@@ -144,6 +144,34 @@ A list of functions/mixins and their value equivalents or new token values.
 | `border-width(thick)`                    | `--p-border-width-2`    |
 | `border-width(thicker)`                  | `--p-border-width-3`    |
 
+#### `color()`
+
+Reference our [new color token file](https://github.com/Shopify/polaris-react/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) and search for a token with an applicable semantic name. These tokens get mapped to css custom properties, if you use them make sure to prefix them with `--p-`. If you can't find a suitable token replacement hard code the color value you need.
+
+#### `color-icon()`
+
+Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
+
+```scss
+svg {
+  fill: color(<value>, <hue>);
+}
+
+img {
+  filter: filter(<value>, <hue>);
+}
+```
+
+#### `color-multiply()`
+
+Use your browser developer tools to inspect the output color value of the function and hard code the color value you need.
+
+Otherwise, you can copy the function definition and use it locally.
+
+| Function           | Source                                                                                                                                                                |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color-multiply()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L479-L500) |
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
