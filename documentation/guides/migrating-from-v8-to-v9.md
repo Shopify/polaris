@@ -483,18 +483,6 @@ If replacement is too complicated, you can copy the function definition and use 
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `state()`        | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L2049-L2076) |
 
-| Deprecated Mixin                      | Replacement Value                                                                                                                   |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `@include state(hover)`               | `background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))`                                             |
-| `@include state(focused)`             | `box-shadow: inset 2px 0 0 var(--p-focused); background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))` |
-| `@include state(active)`              | `background-image: linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1))`                                             |
-| `@include state(selected)`            | `background-image: linear-gradient(rgba(179, 188, 245, 0.15), rgba(179, 188, 245, 0.15))`                                           |
-| `@include state(subdued)`             | `background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`                                                 |
-| `@include state(disabled)`            | `background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`                                                 |
-| `@include state(hover-destructive)`   | `background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))`                                             |
-| `@include state(focused-destructive)` | `box-shadow: inset 2px 0 0 var(--p-focused); background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))` |
-| `@include state(active-destructive)`  | `background-image: linear-gradient(rgba(220, 56, 37, 0.03), rgba(220, 56, 37, 0.03))`                                               |
-
 #### `unstyled-link()`
 
 Replace any instances of `@include unstyled-link` with the following code block.
