@@ -259,7 +259,7 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 #### `icon-size()`
 
 | Function      | Replacement Value/Token |
-|---------------|-------------------------|
+| ------------- | ----------------------- |
 | `icon-size()` | `--p-icon-size-medium`  |
 
 #### `ms-high-contrast-color()`
