@@ -149,6 +149,13 @@ A list of functions/mixins and their value equivalents or new token values.
 | `duration(slower)`               | `--p-duration-400`      |
 | `duration(slowest)`              | `--p-duration-500`      |
 
+#### `em()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+| Function | Source |
+| -------- | -------------------- |
+| `em()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
+
 #### `easing()`
 
 | Function                     | Replacement Value/Token                |
@@ -288,13 +295,20 @@ Replace any instance of `@include print-hidden;` with the following code
 }
 ```
 
+#### `px()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+| Function | Source |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
+
 #### `rem()`
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Function | Source                                                                                                                                                           |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293) |
+| Function | Source                                                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293-L311) |
 
 #### `shadow()`
 
@@ -343,15 +357,15 @@ list-style: none;
 
 #### `when-not-printing()`
 
-| Mixin                      | Replacement Value/Token |
-|------------------------------|-------------------------|
+| Mixin                        | Replacement Value/Token |
+| ---------------------------- | ----------------------- |
 | `@include when-not-printing` | `@media not print`      |
 
 #### `when-printing()`
 
-| Mixin                      | Replacement Value/Token |
-|------------------------------|-------------------------|
-| `@include when-printing`     | `@media print`          |
+| Mixin                    | Replacement Value/Token |
+| ------------------------ | ----------------------- |
+| `@include when-printing` | `@media print`          |
 
 ## Tokens
 
