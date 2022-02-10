@@ -68,7 +68,7 @@ A number of types, constants, and utilities have been removed with the deprecati
 
 ### `SkeletonPage`
 
-The prop `secondaryAction` has been removed and is no longer supported.
+The prop `secondaryActions` has been removed and is no longer supported.
 
 ## CSS custom properties
 
