@@ -346,6 +346,155 @@ This function has been deprecated, but the definition can be copied and used loc
 | `spacing(loose)`               | `--p-space-5`           |
 | `spacing(extra-loose)`         | `--p-space-8`           |
 
+#### `state()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td style='text-align:center;'>
+
+`@include state(hover)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(focused)`
+
+</td>
+<td>
+
+```scss
+box-shadow: inset 2px 0 0 var(--p-focused);
+background-image: linear-gradient(
+  rgba(223, 227, 232, 0.3),
+  rgba(223, 227, 232, 0.3)
+);
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(active)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(selected)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(179, 188, 245, 0.15), rgba(179, 188, 245, 0.15))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(subdued)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(disabled)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(hover-destructive)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(focused-destructive)`
+
+</td>
+<td>
+
+```scss
+box-shadow: inset 2px 0 0 var(--p-focused);
+background-image: linear-gradient(
+  rgba(251, 234, 229, 0.4),
+  rgba(251, 234, 229, 0.4)
+);
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(active-destructive)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(220, 56, 37, 0.03), rgba(220, 56, 37, 0.03))`
+
+</td>
+</tr>
+</table>
+
+For `@include state(<interaction-state>)` instances that have multiple `<interaction-state>` parameters, combine the replacement values (make sure to separate multiple `linear gradients()` by a comma).
+
+If replacement is too complicated, you can copy the function definition and use it locally.
+
+| Deprecated Mixin | Source                                                                                                                                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `state()`        | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L2049-L2076) |
+
+| Deprecated Mixin                      | Replacement Value                                                                                                                   |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `@include state(hover)`               | `background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))`                                             |
+| `@include state(focused)`             | `box-shadow: inset 2px 0 0 var(--p-focused); background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))` |
+| `@include state(active)`              | `background-image: linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1))`                                             |
+| `@include state(selected)`            | `background-image: linear-gradient(rgba(179, 188, 245, 0.15), rgba(179, 188, 245, 0.15))`                                           |
+| `@include state(subdued)`             | `background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`                                                 |
+| `@include state(disabled)`            | `background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`                                                 |
+| `@include state(hover-destructive)`   | `background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))`                                             |
+| `@include state(focused-destructive)` | `box-shadow: inset 2px 0 0 var(--p-focused); background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))` |
+| `@include state(active-destructive)`  | `background-image: linear-gradient(rgba(220, 56, 37, 0.03), rgba(220, 56, 37, 0.03))`                                               |
+
 #### `unstyled-link()`
 
 Replace any instances of `@include unstyled-link` with the following code block.
