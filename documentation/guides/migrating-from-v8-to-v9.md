@@ -110,12 +110,6 @@ CSS custom properties that have been deprecated can be replaced with the CSS pro
 
 The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
 
-### Adding the functions and mixins to your repo
-
-To help you quickly add these functions and mixins back to your repo, we've created a css file with all the removed functions and mixins.
-
-[✨ Amazing mega file linked here ✨]
-
 ### Replacing function and mixin instances with values or tokens
 
 A list of functions/mixins and their value equivalents or new token values.
@@ -387,6 +381,12 @@ list-style: none;
 | `z-index(toast)`           | `--p-z-12`              |
 | `z-index(devUi)`           | `521`                   |
 
+### Adding the functions and mixins to your repo
+
+Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
+
+[Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
+
 ## Tokens
 
 ### Border Radius
@@ -420,35 +420,3 @@ list-style: none;
 | `--p-shadow-from-ambient-light`   | `rgba(23, 24, 24, 0.05)`           |
 | `--p-shadow-from-direct-light`    | `rgba(0, 0, 0, 0.15)`              |
 | `--p-shadow-from-dim-light`       | `rgba(0, 0, 0, 0.2)`               |
-
-## Removal of the public scss api
-
-Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. The functions can be found in the following permalinks.
-
-[`./foundation/layout`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/foundation/_layout.scss)
-
-[`./foundation/focus-ring`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/foundation/_focus-ring.scss)
-
-[`./shared/accessibility`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_accessibility.scss)
-
-[`./shared/breakpoints`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_breakpoints.scss)
-
-[`./shared/buttons`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_buttons.scss)
-
-[`./shared/controls`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_controls.scss)
-
-[`./shared/forms`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_forms.scss)
-
-[`./shared/icons`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_icons.scss)
-
-[`./shared/layout`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_layout.scss)
-
-[`./shared/page`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_page.scss)
-
-[`./shared/typography`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_typography.scss)
-
-[`./shared/skeleton`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_skeleton.scss)
-
-[`./shared/interaction-state`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_interaction-state.scss)
-
-[`./shared/printing`](https://github.com/Shopify/polaris-react/blob/e2e6cb263bac1c5c1e607a6f6bd949a2d349d197/src/styles/shared/_printing.scss)
