@@ -363,6 +363,44 @@ align-items: center;
 
 #### `skeleton-shimmer()`
 
+We completely removed motion from our skeleton components for a better user experience but if you want to keep the functionality of this mixin you can reference the table below for replacement values.
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-shimmer`
+
+</td>
+<td>
+
+```scss
+animation: shimmer 800ms linear infinite alternate;
+will-change: opacity;
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  animation: none;
+}
+```
+
+</td>
+</tr>
+</table>
+
 #### `spacing()`
 
 | Function                       | Replacement Value/Token |
