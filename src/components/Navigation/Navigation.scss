@@ -261,7 +261,7 @@ $secondary-item-font-size: rem(15px);
     font-weight: 500;
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
+    padding-left: spacing(extra-loose) + spacing(base-tight);
 
     &:hover {
       color: var(--p-text-subdued);
@@ -286,7 +286,7 @@ $secondary-item-font-size: rem(15px);
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
       line-height: 1;
-      padding-left: nav(icon-size) + spacing(base-tight);
+      padding-left: nav(icon-size) + spacing(loose);
     }
   }
 
@@ -356,11 +356,7 @@ $secondary-item-font-size: rem(15px);
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: spacing();
-
-  @include breakpoint-after(nav-min-window-corrected()) {
-    padding-left: spacing(loose);
-  }
+  padding-left: spacing(loose) + (spacing(extra-tight) / 2);
 
   .Text {
     font-size: font-size(subheading);

@@ -67,7 +67,7 @@ $nav-animation-variables: (
     font-size: $item-font-size;
     font-weight: 500;
     line-height: $item-line-height-small;
-    padding-left: spacing() - (spacing(extra-tight) / 2);
+    padding-left: spacing(base-tight);
   }
 
   &::-moz-focus-inner {
@@ -114,7 +114,7 @@ $nav-animation-variables: (
   margin-bottom: nav(mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
-    margin-right: nav(desktop-spacing);
+    margin-right: spacing(tight);
     margin-bottom: nav(desktop-spacing);
   }
 
