@@ -329,6 +329,7 @@ list-style: none;
 | `z-index(backdrop)`        | `--p-z-10`              |
 | `z-index(modal)`           | `--p-z-11`              |
 | `z-index(toast)`           | `--p-z-12`              |
+| `z-index(devUi)`           | `521`                   |
 
 ## Tokens
 
