@@ -2,7 +2,9 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## From `ThemeProvider` to `CustomProperties`
+## Components
+
+### From `ThemeProvider` to `CustomProperties`
 
 The `ThemeProvider` has been deprecated in favor of the new `CustomProperties` component. As a result, a number of internal components using the `ThemeProvider` have been updated to use `CustomProperties` and adjusted their prop interfaces accordingly (such as: `AppProvider`, `Popover`, etc.).
 
@@ -28,7 +30,7 @@ The `CustomProperties` component will generate Polaris custom properties (`--p-*
 
 > IMPORTANT: We do not officially support dark mode at this time and the example above is simply representative of the current implementation.
 
-## `AppProvider` changes
+### `AppProvider` changes
 
 The `ThemeProvider` has been removed from the `AppProvider` and replaced with the `CustomProperties` component. Thus, the `AppProvider` no longer accepts a custom theme object. Remove the `theme` prop from the `AppProvider` and (optionally) set the `colorScheme` prop to `light` or `dark`:
 
@@ -45,7 +47,7 @@ const App = (props) => (
 )
 ```
 
-## Removed all theme types, constants, and utilities
+### Removed all theme types, constants, and utilities
 
 A number of types, constants, and utilities have been removed with the deprecation of the `ThemeProvider` component:
 
@@ -63,6 +65,10 @@ A number of types, constants, and utilities have been removed with the deprecati
 - `toCssCustomPropertySyntax` - Utility
 - `UNSTABLE_toCssCustomPropertySyntax` - Utility
 - `UNSTABLE_Tokens` - Constant
+
+### `SkeletonPage`
+
+The prop `secondaryActions` has been removed and is no longer supported.
 
 ## CSS custom properties
 
@@ -138,6 +144,34 @@ A list of functions/mixins and their value equivalents or new token values.
 | `border-width(thick)`                    | `--p-border-width-2`    |
 | `border-width(thicker)`                  | `--p-border-width-3`    |
 
+#### `color()`
+
+Reference our [new color token file](https://github.com/Shopify/polaris-react/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) and search for a token with an applicable semantic name. These tokens get mapped to css custom properties, if you use them make sure to prefix them with `--p-`. If you can't find a suitable token replacement hard code the color value you need.
+
+#### `color-icon()`
+
+Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
+
+```scss
+svg {
+  fill: color(<value>, <hue>);
+}
+
+img {
+  filter: filter(<value>, <hue>);
+}
+```
+
+#### `color-multiply()`
+
+Use your browser developer tools to inspect the output color value of the function and hard code the color value you need.
+
+Otherwise, you can copy the function definition and use it locally.
+
+| Function           | Source                                                                                                                                                                |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color-multiply()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L479-L500) |
+
 #### `duration()`
 
 | Function                         | Replacement Value/Token |
@@ -148,6 +182,13 @@ A list of functions/mixins and their value equivalents or new token values.
 | `duration(slow)`                 | `--p-duration-300`      |
 | `duration(slower)`               | `--p-duration-400`      |
 | `duration(slowest)`              | `--p-duration-500`      |
+
+#### `em()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+| Function | Source |
+| -------- | -------------------- |
+| `em()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
 
 #### `easing()`
 
@@ -273,6 +314,21 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | `ms-high-contrast-color('button-text')`              | `buttonText`            |
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
+
+#### `px()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+| Function | Source |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
+
+#### `rem()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function | Source                                                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293-L311) |
 
 #### `shadow()`
 
