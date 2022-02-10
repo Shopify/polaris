@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 8.2.2 - 2022-02-10
+
+### Bug fixes
+
+- Updated Navigation alignment in `Navigation` ([#5135](https://github.com/Shopify/polaris-react/pull/5135))
+
 ## 8.2.1 - 2022-02-04
 
 ### Bug fixes
