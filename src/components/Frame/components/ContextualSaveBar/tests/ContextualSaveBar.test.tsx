@@ -285,6 +285,15 @@ describe('<ContextualSaveBar />', () => {
     });
   });
 
+  it('renders the secondaryMenu prop', () => {
+    const expectedContent = 'some content';
+    const contextualSaveBar = mountWithApp(
+      <ContextualSaveBar secondaryMenu={<>{expectedContent}</>} />,
+    );
+
+    expect(contextualSaveBar).toContainReactText(expectedContent);
+  });
+
   it('renders a CustomProperties with a dark color scheme', () => {
     const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
     expect(contextualSaveBar).toContainReactComponent(CustomProperties, {

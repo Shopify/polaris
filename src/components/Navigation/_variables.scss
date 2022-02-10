@@ -65,7 +65,7 @@ $nav-animation-variables: (
     font-size: $item-font-size;
     font-weight: var(--p-font-weight-medium);
     line-height: $item-line-height-small;
-    padding-left: calc(var(--p-space-4) - var(--p-space-05));
+    padding-left: var(--p-space-3);
   }
 
   &::-moz-focus-inner {
@@ -113,9 +113,9 @@ $nav-animation-variables: (
   margin-right: var(--p-space-3);
   margin-bottom: var(--pc-navigation-mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: var(--p-space-1);
-    margin-right: var(--p-space-1);
-    margin-bottom: var(--p-space-1);
+    margin-top: nav(desktop-spacing);
+    margin-right: var(--p-space-2);
+    margin-bottom: nav(desktop-spacing);
   }
 
   .Item:hover &,
