@@ -354,6 +354,79 @@ This function has been deprecated, but the definition can be copied and used loc
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
 
+#### `skeleton-page-header-layout()`
+
+| Deprecated Mixin                       | Replacement Value                  |
+| -------------------------------------- | ---------------------------------- |
+| `@include skeleton-page-header-layout` | `padding-bottom: var(--p-space-2)` |
+
+#### `skeleton-page-secondary-actions-layout()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-page-secondary-actions-layout`
+
+</td>
+<td>
+
+```scss
+margin-top: var(--p-space-2);
+display: flex;
+flex-direction: row-reverse;
+justify-content: flex-end;
+align-items: center;
+```
+
+</td>
+</tr>
+</table>
+
+#### `skeleton-shimmer()`
+
+We completely removed motion from our skeleton components for a better user experience but if you want to keep the functionality of this mixin you can reference the table below for replacement values.
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-shimmer`
+
+</td>
+<td>
+
+```scss
+animation: shimmer 800ms linear infinite alternate;
+will-change: opacity;
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  animation: none;
+}
+```
+
+</td>
+</tr>
+</table>
+
 #### `spacing()`
 
 | Function                       | Replacement Value/Token |
