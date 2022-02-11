@@ -177,18 +177,18 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
         {
           url: '/',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
           badge: '15',
         },
         {
           url: '/path/to/place',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
         },
       ]}
     />
@@ -208,25 +208,104 @@ Use to present a secondary action, related to a section and to title the section
         {
           url: '/path/to/place',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
+          badge: '15',
+          subNavigationItems: [
+            {
+              url: '/admin/orders/collections',
+              disabled: false,
+              selected: false,
+              label: 'Collections',
+            },
+            {
+              url: '/admin/orders/inventory',
+              disabled: false,
+              label: 'Inventory',
+            },
+          ],
+        },
+        {
+          url: '/path/to/place',
+          label: 'Marketing',
+          icon: MarketingMinor,
+          badge: '15',
+          subNavigationItems: [
+            {
+              url: '/admin/analytics/collections',
+              disabled: false,
+              selected: false,
+              label: 'Reports',
+            },
+            {
+              url: '/admin/analytics/inventory',
+              disabled: false,
+              label: 'Live view',
+            },
+          ],
+        },
+        {
+          url: '/admin/products',
+          label: 'Products',
+          icon: ProductsMinor,
+          selected: true,
+          subNavigationItems: [
+            {
+              url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+              disabled: false,
+              selected: false,
+              label: 'Collections',
+            },
+            {
+              url: '/admin/products/inventory',
+              disabled: false,
+              selected: true,
+              label: 'Inventory',
+            },
+          ],
+        },
+      ]}
+    />
+  </Navigation>
+</Frame>
+```
+
+### Navigation with an active root item with secondary navigation items
+
+Use to present a secondary action, related to a section and to title the section.
+
+```jsx
+<Frame>
+  <Navigation location="/">
+    <Navigation.Section
+      duplicateRootItem
+      items={[
+        {
+          url: '/path/to/place',
+          label: 'Home',
+          icon: HomeMinor,
+        },
+        {
+          url: '/path/to/place',
+          label: 'Orders',
+          icon: OrdersMinor,
           badge: '15',
         },
         {
           url: '/admin/products',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
           selected: true,
           subNavigationItems: [
             {
-              url: '/admin/products',
+              url: '/admin/products/collections',
               disabled: false,
-              selected: true,
-              label: 'All products',
+              selected: false,
+              label: 'Collections',
             },
             {
               url: '/admin/products/inventory',
@@ -253,17 +332,17 @@ Use to present a secondary action, related to a section and to title the section
         {
           url: '/path/to/place',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
         },
         {
           url: '/path/to/place',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
         },
       ]}
     />
@@ -273,7 +352,7 @@ Use to present a secondary action, related to a section and to title the section
         {
           url: '/path/to/place',
           label: 'Online Store',
-          icon: OnlineStoreMajor,
+          icon: OnlineStoreMinor,
         },
       ]}
       action={{
@@ -298,12 +377,12 @@ Use to add a different action for an item than the main action, like to view or 
         {
           url: '/path/to/place',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
           secondaryAction: {
             url: '/admin/orders/add',
             accessibilityLabel: 'Add an order',
@@ -313,7 +392,7 @@ Use to add a different action for an item than the main action, like to view or 
         {
           url: '/path/to/place',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
         },
       ]}
     />
@@ -333,17 +412,17 @@ Use to show a limited number of items in a section with an option to expand the 
         {
           url: '/path/to/place',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
         },
         {
           url: '/path/to/place',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
         },
       ]}
       rollup={{
@@ -369,17 +448,17 @@ Use to add a horizontal line below the section.
         {
           url: '/path/to/place',
           label: 'Home',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Orders',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
         },
         {
           url: '/path/to/place',
           label: 'Products',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
         },
       ]}
     />
@@ -388,7 +467,7 @@ Use to add a horizontal line below the section.
         {
           url: '/path/to/place',
           label: 'Online Store',
-          icon: OnlineStoreMajor,
+          icon: OnlineStoreMinor,
         },
       ]}
       separator
@@ -409,12 +488,12 @@ This example showcases the many elements that can compose a navigation, especial
         {
           url: '/path/to/place',
           label: 'Inactive item',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Item with indicator',
-          icon: HomeMajor,
+          icon: HomeMinor,
           subNavigationItems: [
             {
               url: '/path/to/place/index',
@@ -427,25 +506,25 @@ This example showcases the many elements that can compose a navigation, especial
         {
           url: '/path/to/place',
           label: 'External link item',
-          icon: HomeMajor,
+          icon: HomeMinor,
           external: true,
         },
         {
           url: '/path/to/place',
           label: 'New item',
           new: true,
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Badged item',
           badge: 'Old',
-          icon: HomeMajor,
+          icon: HomeMinor,
         },
         {
           url: '/path/to/place',
           label: 'Active with secondary action',
-          icon: OrdersMajor,
+          icon: OrdersMinor,
           selected: true,
           secondaryAction: {
             url: '/admin/orders/add',
@@ -456,7 +535,7 @@ This example showcases the many elements that can compose a navigation, especial
         {
           url: '/admin/products',
           label: 'Active item with sub navigation',
-          icon: ProductsMajor,
+          icon: ProductsMinor,
           selected: true,
           subNavigationItems: [
             {
@@ -480,13 +559,13 @@ This example showcases the many elements that can compose a navigation, especial
         {
           url: '/path/to/place',
           label: 'Disabled item',
-          icon: CustomersMajor,
+          icon: CustomersMinor,
           disabled: true,
         },
         {
           url: '/path/to/place',
           label: 'Overflow item',
-          icon: MarketingMajor,
+          icon: MarketingMinor,
         },
       ]}
       rollup={{
@@ -502,7 +581,7 @@ This example showcases the many elements that can compose a navigation, especial
         {
           url: '/path/to/place',
           label: 'Icon as svg',
-          icon: OnlineStoreMajor,
+          icon: OnlineStoreMinor,
         },
         {
           url: '/path/to/place',
@@ -551,6 +630,37 @@ This example shows how to add an aria-labelledby to add a hidden label to the `n
         {
           url: '/path/to/place',
           label: 'Home',
+          icon: HomeMinor,
+        },
+        {
+          url: '/path/to/place',
+          label: 'Orders',
+          icon: OrdersMinor,
+          badge: '15',
+        },
+        {
+          url: '/path/to/place',
+          label: 'Products',
+          icon: ProductsMinor,
+        },
+      ]}
+    />
+  </Navigation>
+</Frame>
+```
+
+### Navigation using Major icons
+
+This example shows how to use the shouldResizeIcon prop when using Major icons
+
+```jsx
+<Frame>
+  <Navigation location="/">
+    <Navigation.Section
+      items={[
+        {
+          url: '/path/to/place',
+          label: 'Home',
           icon: HomeMajor,
         },
         {
@@ -563,6 +673,11 @@ This example shows how to add an aria-labelledby to add a hidden label to the `n
           url: '/path/to/place',
           label: 'Products',
           icon: ProductsMajor,
+        },
+        {
+          url: '/path/to/place',
+          label: 'Customers',
+          icon: CustomersMajor,
         },
       ]}
     />
