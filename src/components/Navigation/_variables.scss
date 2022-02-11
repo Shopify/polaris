@@ -63,7 +63,7 @@ $nav-animation-variables: (
 
   @include breakpoint-after(nav-min-window-corrected()) {
     font-size: $item-font-size;
-    font-weight: var(--p-font-weight-semibold);
+    font-weight: var(--p-font-weight-medium);
     line-height: $item-line-height-small;
     padding-left: var(--p-space-3);
   }
@@ -109,13 +109,13 @@ $nav-animation-variables: (
   align-self: flex-start;
   width: nav(icon-size);
   height: nav(icon-size);
-  margin-top: nav(mobile-spacing);
-  margin-right: var(--p-space-4);
-  margin-bottom: nav(mobile-spacing);
+  margin-top: calc(var(--p-space-2) + var(--p-space-05));
+  margin-right: var(--p-space-3);
+  margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: nav(desktop-spacing);
+    margin-top: var(--p-space-1);
     margin-right: var(--p-space-2);
-    margin-bottom: nav(desktop-spacing);
+    margin-bottom: var(--p-space-1);
   }
 
   .Item:hover &,
@@ -164,14 +164,14 @@ $nav-animation-variables: (
 
 @mixin nav-item-text-attributes {
   flex: 1 1 auto;
-  margin-top: nav(mobile-spacing);
-  margin-bottom: nav(mobile-spacing);
+  margin-top: calc(var(--p-space-2) + var(--p-space-05));
+  margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
   line-height: $text-line-height;
   font-size: $item-font-size-small;
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: nav(desktop-spacing);
-    margin-bottom: nav(desktop-spacing);
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
   }
 
   @include breakpoint-before(nav-min-window-corrected()) {

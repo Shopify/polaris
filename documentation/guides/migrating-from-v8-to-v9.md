@@ -114,6 +114,16 @@ The following sass functions and mixins have been removed. You will either need 
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `available-names()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+
+Otherwise, you can copy the function definition and use it locally.
+
+| Deprecated Function | Source                                                                                                                                                                |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `available-names()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L354-L386) |
+
 #### `border()`
 
 | Function                     | Replacement Value/Token  |
@@ -144,7 +154,18 @@ Reference our [new color token file](https://github.com/Shopify/polaris-react/bl
 
 #### `color-icon()`
 
-Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include color-icon(<value>, <hue>)`
+
+</td>
+<td>
 
 ```scss
 svg {
@@ -155,6 +176,12 @@ img {
   filter: filter(<value>, <hue>);
 }
 ```
+
+</td>
+</tr>
+</table>
+
+See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
 
 #### `color-multiply()`
 
@@ -198,6 +225,9 @@ This function has been deprecated, but the definition can be copied and used loc
 #### `filter()`
 
 We replaced a few of the following filter function instances with color tokens instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well.
+
+<details>
+<summary>Table of Replacement Values/Tokens</summary>
 
 | Function                                         | Replacement Value/Token                                                                                                  |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -262,6 +292,8 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
+</details>
+
 #### `font-family()`
 
 | Function                                        | Replacement Value/Token |
@@ -271,13 +303,28 @@ We replaced a few of the following filter function instances with color tokens i
 
 #### `hidden-when-printing()`
 
-Replace any instance of `@include hidden-when-printing;` with the following code
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include hidden-when-printing`
+
+</td>
+<td>
 
 ```scss
 @media print {
   display: none !important;
 }
 ```
+
+</td>
+</tr>
+</table>
 
 #### `high-contrast-border()`
 
@@ -307,6 +354,14 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | ------------- | ----------------------- |
 | `icon-size()` | `--p-icon-size-medium`  |
 
+#### `map-extend()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function       | Source                                                                                                                                                                |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map-extend()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L388-L409) |
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
@@ -321,13 +376,28 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 
 #### `print-hidden()`
 
-Replace any instance of `@include print-hidden;` with the following code
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include print-hidden`
+
+</td>
+<td>
 
 ```scss
 @media print {
   display: none !important;
 }
 ```
+
+</td>
+</tr>
+</table>
 
 #### `px()`
 
@@ -439,9 +509,157 @@ will-change: opacity;
 | `spacing(loose)`               | `--p-space-5`           |
 | `spacing(extra-loose)`         | `--p-space-8`           |
 
+#### `state()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include state(hover)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(focused)`
+
+</td>
+<td>
+
+```scss
+box-shadow: inset 2px 0 0 var(--p-focused);
+background-image: linear-gradient(
+  rgba(223, 227, 232, 0.3),
+  rgba(223, 227, 232, 0.3)
+);
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(active)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(selected)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(179, 188, 245, 0.15), rgba(179, 188, 245, 0.15))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(subdued)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(disabled)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(249, 250, 251, 1), rgba(249, 250, 251, 1))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(hover-destructive)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(251, 234, 229, 0.4), rgba(251, 234, 229, 0.4))`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(focused-destructive)`
+
+</td>
+<td>
+
+```scss
+box-shadow: inset 2px 0 0 var(--p-focused);
+background-image: linear-gradient(
+  rgba(251, 234, 229, 0.4),
+  rgba(251, 234, 229, 0.4)
+);
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`@include state(active-destructive)`
+
+</td>
+<td>
+
+`background-image: linear-gradient(rgba(220, 56, 37, 0.03), rgba(220, 56, 37, 0.03))`
+
+</td>
+</tr>
+</table>
+
+For `@include state(<interaction-state>)` instances that have multiple `<interaction-state>` parameters, combine the replacement values (make sure to separate multiple `linear gradients()` by a comma).
+
+If replacement is too complicated, you can copy the function definition and use it locally.
+
+| Deprecated Mixin | Source                                                                                                                                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `state()`        | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L2049-L2076) |
+
 #### `unstyled-link()`
 
-Replace any instances of `@include unstyled-link` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-link`
+
+</td>
+<td>
 
 ```scss
 color: inherit;
@@ -452,15 +670,34 @@ text-decoration: none;
 }
 ```
 
+</td>
+</tr>
+</table>
+
 #### `unstyled-list()`
 
-Replace any instances of `@include unstyled-list` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-list`
+
+</td>
+<td>
 
 ```scss
 margin: 0;
 padding: 0;
 list-style: none;
 ```
+
+</td>
+</tr>
+</table>
 
 #### `when-not-printing()`
 
@@ -507,3 +744,7 @@ The following Sass global variables have been removed because the functions usin
 | `$color-palette-data`<br/>`$polaris-colors`  | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L5-L88)    |
 | `$duration-data`<br/>`$polaris-duration-map` | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L243-L262) |
 | `$easing-data`                               | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L678-L685) |
+
+## `@shopify/polaris-tokens`
+
+`@shopify/polaris-tokens` is no longer a dependency. The library will continue to be available via NPM, however we highly encourage removing any usage in your application.
