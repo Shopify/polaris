@@ -20,6 +20,8 @@
   "shadow-from-dim-light": "rgba(0, 0, 0, 0.2)",
   "shadow-from-ambient-light": "rgba(23, 24, 24, 0.05)",
   "shadow-from-direct-light": "rgba(0, 0, 0, 0.15)",
+  "shadow-color-picker": "rgba(0, 0, 0, 0.5)",
+  "shadow-color-picker-dragger": "rgba(33, 43, 54, 0.32)",
   "hint-from-direct-light": "rgba(0, 0, 0, 0.15)",
   "border": "rgba(140, 145, 150, 1)",
   "border-neutral-subdued": "rgba(186, 191, 195, 1)",

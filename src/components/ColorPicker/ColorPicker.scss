@@ -14,16 +14,16 @@
   --pc-color-picker-z-index: 10;
   --pc-color-picker-adjustments: 20;
   --pc-color-picker-dragger: 30;
-  --pc-color-picker-inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
-  --pc-color-picker-dragger-shadow: inset 0 0.5px 2px 0 rgba(0, 0, 0, 0.4),
-    0 0.5px 3px 0 rgba(0, 0, 0, 0.4);
+  --pc-color-picker-inner-shadow: inset 0 0 2px 0 var(--p-shadow-color-picker);
+  --pc-color-picker-dragger-shadow: inset 0 1px 2px 0
+      var(--p-shadow-color-picker-dragger),
+    0 1px 2px 0 var(--p-shadow-color-picker-dragger);
   user-select: none;
   display: flex;
 }
 
 .MainColor {
   @include checkers;
-  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
@@ -98,17 +98,17 @@ $huepicker-padding: var(--pc-color-picker-dragger-size);
 $huepicker-bottom-padding-start: calc(
   var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size)
 );
+$vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 
 .HuePicker,
 .AlphaPicker {
-  @include high-contrast-outline;
   position: relative;
   overflow: hidden;
   height: var(--pc-color-picker-size);
   width: var(--p-space-6);
   margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-1);
-  border-radius: calc(var(--pc-color-picker-size) * 0.5);
+  border-radius: $vertical-picker-border-radius;
 
   &::after {
     content: '';
@@ -120,7 +120,7 @@ $huepicker-bottom-padding-start: calc(
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: calc(var(--pc-color-picker-size) * 0.5);
+    border-radius: $vertical-picker-border-radius;
     box-shadow: var(--pc-color-picker-inner-shadow);
   }
 
