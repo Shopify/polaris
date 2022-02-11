@@ -24,6 +24,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- [ContextualSaveBar] Register `secondaryMenu` prop in frame context ([#5116](https://github.com/Shopify/polaris-react/pull/5116))
+
 ### Documentation
 
 ### Development workflow
