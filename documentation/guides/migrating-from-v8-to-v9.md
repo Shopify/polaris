@@ -108,7 +108,7 @@ The following CSS custom properties have either been renamed or removed. You wil
 
 ## Sass functions and mixins
 
-The following Sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
+The following sass functions and mixins have been removed. You will either need to add the functions to your repo or replace all function instances with values.
 
 ### Replacing function and mixin instances with values or tokens
 
@@ -500,7 +500,7 @@ Any functions that were being consumed from `build/styles/_public-api.scss` have
 
 ## Sass global variables
 
-The following sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
+The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
 
 | Deprecated Variable                          | Value                                                                                                                                                                 |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
