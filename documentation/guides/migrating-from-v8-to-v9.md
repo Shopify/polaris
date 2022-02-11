@@ -13,7 +13,8 @@ Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
     - [`SkeletonPage`](#skeletonpage)
   - [CSS custom properties](#css-custom-properties)
   - [Sass functions and mixins](#sass-functions-and-mixins)
-    - [Replacing function and mixin instances with values or tokens](#replacing-function-and-mixin-instances-with-values-or-tokens)
+    - [Replacing function and mixin instances with value equivalents](#replacing-function-and-mixin-instances-with-value-equivalents)
+      - [`available-names()`](#available-names)
       - [`border()`](#border)
       - [`border-radius()`](#border-radius)
       - [`border-width()`](#border-width)
@@ -39,12 +40,15 @@ Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
       - [`skeleton-page-secondary-actions-layout()`](#skeleton-page-secondary-actions-layout)
       - [`skeleton-shimmer()`](#skeleton-shimmer)
       - [`spacing()`](#spacing)
+      - [`state()`](#state)
       - [`unstyled-link()`](#unstyled-link)
       - [`unstyled-list()`](#unstyled-list)
       - [`when-not-printing()`](#when-not-printing)
       - [`when-printing()`](#when-printing)
       - [`z-index()`](#z-index)
     - [Adding the functions and mixins to your repo](#adding-the-functions-and-mixins-to-your-repo)
+  - [Sass global variables](#sass-global-variables)
+  - [`@shopify/polaris-tokens`](#shopifypolaris-tokens)
 
 ## Components
 
