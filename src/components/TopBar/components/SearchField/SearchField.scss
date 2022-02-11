@@ -32,6 +32,9 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
   &::placeholder {
     color: var(--p-text-subdued);
+
+    // Firefox sets the default opacity to 50%. To keep browsers consistent we explicitly set opacity here.
+    opacity: 1;
   }
 }
 
@@ -82,6 +85,9 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   &::placeholder {
     color: var(--p-text);
     transition: var(--p-duration-150) color var(--p-ease) 33ms;
+
+    // Firefox sets the default opacity to 50%. To keep browsers consistent we explicitly set opacity here.
+    opacity: 1;
   }
 
   &::-webkit-search-decoration,

@@ -52,6 +52,9 @@ $prefix-horizontal-spacing: var(--p-space-2);
     // This is the only place this color is used.
     // stylelint-disable-next-line color-no-hex
     color: #9c9798;
+
+    // Firefox sets the default opacity to 50%. To keep browsers consistent we explicitly set opacity here.
+    opacity: 1;
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
@@ -120,6 +123,9 @@ $prefix-horizontal-spacing: var(--p-space-2);
 
   &::placeholder {
     color: var(--p-text-subdued);
+
+    // Firefox sets the default opacity to 50%. To keep browsers consistent we explicitly set opacity here.
+    opacity: 1;
   }
 
   // These properties are used to remove the default "spinner" controls
