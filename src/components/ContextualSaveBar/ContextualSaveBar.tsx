@@ -18,6 +18,7 @@ export const ContextualSaveBar = memo(function ContextualSaveBar({
   alignContentFlush,
   fullWidth,
   contextControl,
+  secondaryMenu,
 }: ContextualSaveBarProps) {
   const {setContextualSaveBar, removeContextualSaveBar} = useFrame();
 
@@ -29,6 +30,7 @@ export const ContextualSaveBar = memo(function ContextualSaveBar({
       alignContentFlush,
       fullWidth,
       contextControl,
+      secondaryMenu,
     });
   }, [
     message,
@@ -38,6 +40,7 @@ export const ContextualSaveBar = memo(function ContextualSaveBar({
     setContextualSaveBar,
     fullWidth,
     contextControl,
+    secondaryMenu,
   ]);
 
   useEffect(() => {
