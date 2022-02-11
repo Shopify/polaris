@@ -423,4 +423,4 @@ Any functions that were being consumed from `build/styles/_public-api.scss` have
 
 ## `@shopify/polaris-tokens`
 
-`@shopify/polaris-tokens` is no longer a dependency and using tokens from `@shopify/polaris-tokens` is deprecated. The library will continue to be available via NPM, however we highly encourage removing any usage in your application and instead using token values from `@shopify/polaris`.
+`@shopify/polaris-tokens` is no longer a dependency. The library will continue to be available via NPM, however we highly encourage removing any usage in your application.
