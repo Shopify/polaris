@@ -108,7 +108,7 @@ The following CSS custom properties have either been renamed or removed. You wil
 
 ## Sass functions and mixins
 
-The following Sass functions and mixins have been removed. You will need to either add the function or mixin to your repo or replace any instances of them with the CSS custom property or value equivalent.
+The following Sass functions and mixins have been removed. You will need to either add the function or mixin to your repo or replace any instances of them with a CSS custom property or value equivalent.
 
 ### Replacing function and mixin instances with value equivalents
 
