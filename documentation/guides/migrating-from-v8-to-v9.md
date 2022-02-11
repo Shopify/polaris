@@ -144,7 +144,18 @@ Reference our [new color token file](https://github.com/Shopify/polaris-react/bl
 
 #### `color-icon()`
 
-Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include color-icon(<value>, <hue>)`
+
+</td>
+<td>
 
 ```scss
 svg {
@@ -155,6 +166,12 @@ img {
   filter: filter(<value>, <hue>);
 }
 ```
+
+</td>
+</tr>
+</table>
+
+See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
 
 #### `color-multiply()`
 
@@ -276,13 +293,28 @@ We replaced a few of the following filter function instances with color tokens i
 
 #### `hidden-when-printing()`
 
-Replace any instance of `@include hidden-when-printing;` with the following code
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include hidden-when-printing`
+
+</td>
+<td>
 
 ```scss
 @media print {
   display: none !important;
 }
 ```
+
+</td>
+</tr>
+</table>
 
 #### `high-contrast-border()`
 
@@ -334,13 +366,28 @@ This function has been deprecated, but the definition can be copied and used loc
 
 #### `print-hidden()`
 
-Replace any instance of `@include print-hidden;` with the following code
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include print-hidden`
+
+</td>
+<td>
 
 ```scss
 @media print {
   display: none !important;
 }
 ```
+
+</td>
+</tr>
+</table>
 
 #### `px()`
 
@@ -454,7 +501,18 @@ will-change: opacity;
 
 #### `unstyled-link()`
 
-Replace any instances of `@include unstyled-link` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-link`
+
+</td>
+<td>
 
 ```scss
 color: inherit;
@@ -465,15 +523,34 @@ text-decoration: none;
 }
 ```
 
+</td>
+</tr>
+</table>
+
 #### `unstyled-list()`
 
-Replace any instances of `@include unstyled-list` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-list`
+
+</td>
+<td>
 
 ```scss
 margin: 0;
 padding: 0;
 list-style: none;
 ```
+
+</td>
+</tr>
+</table>
 
 #### `when-not-printing()`
 
