@@ -734,3 +734,7 @@ list-style: none;
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
 
 [Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
+
+## `@shopify/polaris-tokens`
+
+`@shopify/polaris-tokens` is no longer a dependency. The library will continue to be available via NPM, however we highly encourage removing any usage in your application.
