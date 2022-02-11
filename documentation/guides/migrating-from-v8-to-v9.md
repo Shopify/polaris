@@ -735,6 +735,16 @@ Any functions that were being consumed from `build/styles/_public-api.scss` have
 
 [Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
 
+## Sass global variables
+
+The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
+
+| Deprecated Variable                          | Value                                                                                                                                                                 |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$color-palette-data`<br/>`$polaris-colors`  | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L5-L88)    |
+| `$duration-data`<br/>`$polaris-duration-map` | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L243-L262) |
+| `$easing-data`                               | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L678-L685) |
+
 ## `@shopify/polaris-tokens`
 
 `@shopify/polaris-tokens` is no longer a dependency. The library will continue to be available via NPM, however we highly encourage removing any usage in your application.
