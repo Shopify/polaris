@@ -72,39 +72,39 @@ The prop `secondaryActions` has been removed and is no longer supported.
 
 ## CSS custom properties
 
-CSS custom properties that were renamed can be replaced with the new CSS custom property name.
+The following CSS custom properties have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents.
 
-|              Before               |               After                |
-| :-------------------------------: | :--------------------------------: |
-|      `--p-badge-font-weight`      |     `--p-font-weight-regular`      |
-|     `--p-button-font-weight`      |      `--p-font-weight-medium`      |
-|       `--p-duration-1-0-0`        |         `--p-duration-100`         |
-|       `--p-duration-1-5-0`        |         `--p-duration-150`         |
-|         `--p-card-shadow`         |         `--p-shadow-card`          |
-|       `--p-popover-shadow`        |        `--p-shadow-popover`        |
-|        `--p-modal-shadow`         |         `--p-shadow-modal`         |
-|       `--p-top-bar-shadow`        |        `--p-shadow-top-bar`        |
-|     `--p-button-drop-shadow`      |        `--p-shadow-button`         |
-|     `--p-button-inner-shadow`     |     `--p-shadows-inset-button`     |
-| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
-|          `--p-icon-size`          |       `--p-icon-size-small`        |
-
-CSS custom properties that have been deprecated can be replaced with the CSS property value.
-
-|             Before              |          Value           |
-| :-----------------------------: | :----------------------: |
-|       `--p-override-none`       |          `none`          |
-|   `--p-override-transparent`    |      `transparent`       |
-|       `--p-override-one`        |           `1`            |
-|     `--p-override-visible`      |        `visible`         |
-|       `--p-override-zero`       |           `0`            |
-|     `--p-non-null-content`      |           `''`           |
-|   `--p-badge-mix-blend-mode`    |       `luminosity`       |
-| `--p-range-slider-thumb-scale`  |          `1.5`           |
-|       `--p-frame-offset`        |          `0px`           |
-| `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
-| `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
-|   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
+| Deprecated CSS Custom Property            | Replacement Value                  |
+| ----------------------------------------- | ---------------------------------- |
+| `--p-badge-font-weight`                   | `--p-font-weight-regular`          |
+| `--p-badge-mix-blend-mode`                | `luminosity`                       |
+| `--p-border-radius-base`                  | `--p-border-radius-1`              |
+| `--p-border-radius-full`                  | `--p-border-radius-half`           |
+| `--p-border-radius-slim`                  | `--p-border-radius-05`             |
+| `--p-border-radius-wide`                  | `--p-border-radius-2`              |
+| `--p-button-drop-shadow`                  | `--p-shadow-button`                |
+| `--p-button-font-weight`                  | `--p-font-weight-medium`           |
+| `--p-button-inner-shadow`                 | `--p-shadows-inset-button`         |
+| `--p-button-pressed-inner-shadow`         | `--p-shadows-inset-button-pressed` |
+| `--p-card-shadow`                         | `--p-shadow-card`                  |
+| `--p-duration-1-0-0`                      | `--p-duration-100`                 |
+| `--p-duration-1-5-0`                      | `--p-duration-150`                 |
+| `--p-frame-offset`                        | `0px`                              |
+| `--p-icon-size`                           | `--p-icon-size-small`              |
+| `--p-modal-shadow`                        | `--p-shadow-modal`                 |
+| `--p-non-null-content`                    | `''`                               |
+| `--p-popover-shadow`                      | `--p-shadow-popover`               |
+| `--p-override-none`                       | `none`                             |
+| `--p-override-one`                        | `1`                                |
+| `--p-override-transparent`                | `transparent`                      |
+| `--p-override-visible`                    | `visible`                          |
+| `--p-override-zero`                       | `0`                                |
+| `--p-range-slider-thumb-scale`            | `1.5`                              |
+| `--p-text-field-focus-ring-border-radius` | `7px`                              |
+| `--p-top-bar-shadow`                      | `--p-shadow-top-bar`               |
+| `--p-shadow-from-ambient-light`           | `rgba(23, 24, 24, 0.05)`           |
+| `--p-shadow-from-dim-light`               | `rgba(0, 0, 0, 0.2)`               |
+| `--p-shadow-from-direct-light`            | `rgba(0, 0, 0, 0.15)`              |
 
 ## Sass functions and mixins
 
@@ -424,37 +424,3 @@ list-style: none;
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
 
 [Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
-
-## Tokens
-
-### Border Radius
-
-| Token                                     | Replacement Value/Token  |
-| ----------------------------------------- | ------------------------ |
-| `--p-border-radius-slim`                  | `--p-border-radius-05`   |
-| `--p-border-radius-base`                  | `--p-border-radius-1`    |
-| `--p-border-radius-wide`                  | `--p-border-radius-2`    |
-| `--p-border-radius-full`                  | `--p-border-radius-half` |
-| `--p-text-field-focus-ring-border-radius` | `7px`                    |
-
-### Duration
-
-| Token                | Replacement Value/Token |
-| -------------------- | ----------------------- |
-| `--p-duration-1-0-0` | `--p-duration-100`      |
-| `--p-duration-1-5-0` | `--p-duration-150`      |
-
-### Shadow
-
-| Token                             | Replacement Value/Token            |
-| --------------------------------- | ---------------------------------- |
-| `--p-card-shadow`                 | `--p-shadow-card`                  |
-| `--p-popover-shadow`              | `--p-shadow-popover`               |
-| `--p-modal-shadow`                | `--p-shadow-modal`                 |
-| `--p-top-bar-shadow`              | `--p-shadow-top-bar`               |
-| `--p-button-drop-shadow`          | `--p-shadow-button`                |
-| `--p-button-inner-shadow`         | `--p-shadows-inset-button`         |
-| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
-| `--p-shadow-from-ambient-light`   | `rgba(23, 24, 24, 0.05)`           |
-| `--p-shadow-from-direct-light`    | `rgba(0, 0, 0, 0.15)`              |
-| `--p-shadow-from-dim-light`       | `rgba(0, 0, 0, 0.2)`               |
