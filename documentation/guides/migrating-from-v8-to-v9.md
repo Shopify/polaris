@@ -2,6 +2,50 @@
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
+## Table of Contents
+
+- [Migrating from v8 to v9](#migrating-from-v8-to-v9)
+  - [Table of Contents](#table-of-contents)
+  - [Components](#components)
+    - [From `ThemeProvider` to `CustomProperties`](#from-themeprovider-to-customproperties)
+    - [`AppProvider` changes](#appprovider-changes)
+    - [Removed all theme types, constants, and utilities](#removed-all-theme-types-constants-and-utilities)
+    - [`SkeletonPage`](#skeletonpage)
+  - [CSS custom properties](#css-custom-properties)
+  - [Sass functions and mixins](#sass-functions-and-mixins)
+    - [Replacing function and mixin instances with values or tokens](#replacing-function-and-mixin-instances-with-values-or-tokens)
+      - [`border()`](#border)
+      - [`border-radius()`](#border-radius)
+      - [`border-width()`](#border-width)
+      - [`color()`](#color)
+      - [`color-icon()`](#color-icon)
+      - [`color-multiply()`](#color-multiply)
+      - [`duration()`](#duration)
+      - [`em()`](#em)
+      - [`easing()`](#easing)
+      - [`filter()`](#filter)
+      - [`font-family()`](#font-family)
+      - [`hidden-when-printing()`](#hidden-when-printing)
+      - [`high-contrast-border()`](#high-contrast-border)
+      - [`high-contrast-outline()`](#high-contrast-outline)
+      - [`icon-size()`](#icon-size)
+      - [`map-extend()`](#map-extend)
+      - [`ms-high-contrast-color()`](#ms-high-contrast-color)
+      - [`print-hidden()`](#print-hidden)
+      - [`px()`](#px)
+      - [`rem()`](#rem)
+      - [`shadow()`](#shadow)
+      - [`skeleton-page-header-layout()`](#skeleton-page-header-layout)
+      - [`skeleton-page-secondary-actions-layout()`](#skeleton-page-secondary-actions-layout)
+      - [`skeleton-shimmer()`](#skeleton-shimmer)
+      - [`spacing()`](#spacing)
+      - [`unstyled-link()`](#unstyled-link)
+      - [`unstyled-list()`](#unstyled-list)
+      - [`when-not-printing()`](#when-not-printing)
+      - [`when-printing()`](#when-printing)
+      - [`z-index()`](#z-index)
+    - [Adding the functions and mixins to your repo](#adding-the-functions-and-mixins-to-your-repo)
+
 ## Components
 
 ### From `ThemeProvider` to `CustomProperties`
