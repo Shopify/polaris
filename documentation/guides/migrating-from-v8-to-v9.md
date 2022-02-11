@@ -120,7 +120,7 @@ Use `console.log()` to get the function output and hard code the value you need.
 
 Otherwise, you can copy the function definition and use it locally.
 
-| Function            | Source                                                                                                                                                                |
+| Deprecated Function | Source                                                                                                                                                                |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `available-names()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L354-L386) |
 
