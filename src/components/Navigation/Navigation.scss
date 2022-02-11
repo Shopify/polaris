@@ -264,9 +264,7 @@ $secondary-item-font-size: 15px;
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: calc(
-      var(--pc-navigation-icon-size) + var(--p-space-8) - var(--p-space-1)
-    );
+    padding-left: calc(var(--p-space-8) + var(--p-space-3));
 
     &:hover {
       color: var(--p-text-subdued);
@@ -291,7 +289,7 @@ $secondary-item-font-size: 15px;
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
       line-height: 1;
-      padding-left: calc(nav(icon-size) + var(--p-space-3));
+      padding-left: var(--p-space-10);
     }
   }
 
@@ -358,15 +356,7 @@ $secondary-item-font-size: 15px;
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: var(--p-space-4);
-
-  @include breakpoint-after(nav-min-window-corrected()) {
-    padding-left: var(--p-space-5);
-  }
-
-  @include breakpoint-after(nav-min-window-corrected()) {
-    padding-left: var(--p-space-5);
-  }
+  padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
   .Text {
     font-size: var(--p-font-size-2);

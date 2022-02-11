@@ -72,39 +72,39 @@ The prop `secondaryActions` has been removed and is no longer supported.
 
 ## CSS custom properties
 
-CSS custom properties that were renamed can be replaced with the new CSS custom property name.
+The following CSS custom properties have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents.
 
-|              Before               |               After                |
-| :-------------------------------: | :--------------------------------: |
-|      `--p-badge-font-weight`      |     `--p-font-weight-regular`      |
-|     `--p-button-font-weight`      |      `--p-font-weight-medium`      |
-|       `--p-duration-1-0-0`        |         `--p-duration-100`         |
-|       `--p-duration-1-5-0`        |         `--p-duration-150`         |
-|         `--p-card-shadow`         |         `--p-shadow-card`          |
-|       `--p-popover-shadow`        |        `--p-shadow-popover`        |
-|        `--p-modal-shadow`         |         `--p-shadow-modal`         |
-|       `--p-top-bar-shadow`        |        `--p-shadow-top-bar`        |
-|     `--p-button-drop-shadow`      |        `--p-shadow-button`         |
-|     `--p-button-inner-shadow`     |     `--p-shadows-inset-button`     |
-| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
-|          `--p-icon-size`          |       `--p-icon-size-small`        |
-
-CSS custom properties that have been deprecated can be replaced with the CSS property value.
-
-|             Before              |          Value           |
-| :-----------------------------: | :----------------------: |
-|       `--p-override-none`       |          `none`          |
-|   `--p-override-transparent`    |      `transparent`       |
-|       `--p-override-one`        |           `1`            |
-|     `--p-override-visible`      |        `visible`         |
-|       `--p-override-zero`       |           `0`            |
-|     `--p-non-null-content`      |           `''`           |
-|   `--p-badge-mix-blend-mode`    |       `luminosity`       |
-| `--p-range-slider-thumb-scale`  |          `1.5`           |
-|       `--p-frame-offset`        |          `0px`           |
-| `--p-shadow-from-ambient-light` | `rgba(23, 24, 24, 0.05)` |
-| `--p-shadow-from-direct-light`  |  `rgba(0, 0, 0, 0.15)`   |
-|   `--p-shadow-from-dim-light`   |   `rgba(0, 0, 0, 0.2)`   |
+| Deprecated CSS Custom Property            | Replacement Value                  |
+| ----------------------------------------- | ---------------------------------- |
+| `--p-badge-font-weight`                   | `--p-font-weight-regular`          |
+| `--p-badge-mix-blend-mode`                | `luminosity`                       |
+| `--p-border-radius-base`                  | `--p-border-radius-1`              |
+| `--p-border-radius-full`                  | `--p-border-radius-half`           |
+| `--p-border-radius-slim`                  | `--p-border-radius-05`             |
+| `--p-border-radius-wide`                  | `--p-border-radius-2`              |
+| `--p-button-drop-shadow`                  | `--p-shadow-button`                |
+| `--p-button-font-weight`                  | `--p-font-weight-medium`           |
+| `--p-button-inner-shadow`                 | `--p-shadows-inset-button`         |
+| `--p-button-pressed-inner-shadow`         | `--p-shadows-inset-button-pressed` |
+| `--p-card-shadow`                         | `--p-shadow-card`                  |
+| `--p-duration-1-0-0`                      | `--p-duration-100`                 |
+| `--p-duration-1-5-0`                      | `--p-duration-150`                 |
+| `--p-frame-offset`                        | `0px`                              |
+| `--p-icon-size`                           | `--p-icon-size-small`              |
+| `--p-modal-shadow`                        | `--p-shadow-modal`                 |
+| `--p-non-null-content`                    | `''`                               |
+| `--p-popover-shadow`                      | `--p-shadow-popover`               |
+| `--p-override-none`                       | `none`                             |
+| `--p-override-one`                        | `1`                                |
+| `--p-override-transparent`                | `transparent`                      |
+| `--p-override-visible`                    | `visible`                          |
+| `--p-override-zero`                       | `0`                                |
+| `--p-range-slider-thumb-scale`            | `1.5`                              |
+| `--p-text-field-focus-ring-border-radius` | `7px`                              |
+| `--p-top-bar-shadow`                      | `--p-shadow-top-bar`               |
+| `--p-shadow-from-ambient-light`           | `rgba(23, 24, 24, 0.05)`           |
+| `--p-shadow-from-dim-light`               | `rgba(0, 0, 0, 0.2)`               |
+| `--p-shadow-from-direct-light`            | `rgba(0, 0, 0, 0.15)`              |
 
 ## Sass functions and mixins
 
@@ -144,7 +144,18 @@ Reference our [new color token file](https://github.com/Shopify/polaris-react/bl
 
 #### `color-icon()`
 
-Replace any `color-icon(<value>, <hue>)` instances with the following code block. See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include color-icon(<value>, <hue>)`
+
+</td>
+<td>
 
 ```scss
 svg {
@@ -155,6 +166,12 @@ img {
   filter: filter(<value>, <hue>);
 }
 ```
+
+</td>
+</tr>
+</table>
+
+See the [`color()`](#color) and [`filter()`](#filter) sections for replacing those functions.
 
 #### `color-multiply()`
 
@@ -198,6 +215,9 @@ This function has been deprecated, but the definition can be copied and used loc
 #### `filter()`
 
 We replaced a few of the following filter function instances with color tokens instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well.
+
+<details>
+<summary>Table of Replacement Values/Tokens</summary>
 
 | Function                                         | Replacement Value/Token                                                                                                  |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -262,12 +282,39 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
 
+</details>
+
 #### `font-family()`
 
 | Function                                        | Replacement Value/Token |
 | ----------------------------------------------- | ----------------------- |
 | `font-family()`<br>`font-family($family: base)` | `--p-font-family-sans`  |
 | `font-family($family: 'monospace')`             | `--p-font-family-mono`  |
+
+#### `hidden-when-printing()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include hidden-when-printing`
+
+</td>
+<td>
+
+```scss
+@media print {
+  display: none !important;
+}
+```
+
+</td>
+</tr>
+</table>
 
 #### `high-contrast-border()`
 
@@ -291,6 +338,20 @@ For `<border-width>` instances that are functions, see the [`border-width()`](#b
 
 For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
+#### `icon-size()`
+
+| Function      | Replacement Value/Token |
+| ------------- | ----------------------- |
+| `icon-size()` | `--p-icon-size-medium`  |
+
+#### `map-extend()`
+
+This function has been deprecated, but the definition can be copied and used locally.
+
+| Function       | Source                                                                                                                                                                |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map-extend()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L388-L409) |
+
 #### `ms-high-contrast-color()`
 
 | Function                                             | Replacement Value/Token |
@@ -302,6 +363,31 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 | `ms-high-contrast-color('button-text')`              | `buttonText`            |
 | `ms-high-contrast-color('button-text-background')`   | `buttonFace`            |
 | `ms-high-contrast-color('background')`               | `window`                |
+
+#### `print-hidden()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include print-hidden`
+
+</td>
+<td>
+
+```scss
+@media print {
+  display: none !important;
+}
+```
+
+</td>
+</tr>
+</table>
 
 #### `px()`
 
@@ -328,6 +414,79 @@ This function has been deprecated, but the definition can be copied and used loc
 | `shadow(layer)`              | `--p-shadow-layer`       |
 | `shadow(transparent)`        | `--p-shadow-transparent` |
 
+#### `skeleton-page-header-layout()`
+
+| Deprecated Mixin                       | Replacement Value                  |
+| -------------------------------------- | ---------------------------------- |
+| `@include skeleton-page-header-layout` | `padding-bottom: var(--p-space-2)` |
+
+#### `skeleton-page-secondary-actions-layout()`
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-page-secondary-actions-layout`
+
+</td>
+<td>
+
+```scss
+margin-top: var(--p-space-2);
+display: flex;
+flex-direction: row-reverse;
+justify-content: flex-end;
+align-items: center;
+```
+
+</td>
+</tr>
+</table>
+
+#### `skeleton-shimmer()`
+
+We completely removed motion from our skeleton components for a better user experience but if you want to keep the functionality of this mixin you can reference the table below for replacement values.
+
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include skeleton-shimmer`
+
+</td>
+<td>
+
+```scss
+animation: shimmer 800ms linear infinite alternate;
+will-change: opacity;
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  animation: none;
+}
+```
+
+</td>
+</tr>
+</table>
+
 #### `spacing()`
 
 | Function                       | Replacement Value/Token |
@@ -342,7 +501,18 @@ This function has been deprecated, but the definition can be copied and used loc
 
 #### `unstyled-link()`
 
-Replace any instances of `@include unstyled-link` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-link`
+
+</td>
+<td>
 
 ```scss
 color: inherit;
@@ -353,15 +523,46 @@ text-decoration: none;
 }
 ```
 
+</td>
+</tr>
+</table>
+
 #### `unstyled-list()`
 
-Replace any instances of `@include unstyled-list` with the following code block.
+<table>
+<tr>
+<th>Deprecated Mixin</th>
+<th>Replacement Value</th>
+</tr>
+<tr>
+<td>
+
+`@include unstyled-list`
+
+</td>
+<td>
 
 ```scss
 margin: 0;
 padding: 0;
 list-style: none;
 ```
+
+</td>
+</tr>
+</table>
+
+#### `when-not-printing()`
+
+| Mixin                        | Replacement Value/Token |
+| ---------------------------- | ----------------------- |
+| `@include when-not-printing` | `@media not print`      |
+
+#### `when-printing()`
+
+| Mixin                    | Replacement Value/Token |
+| ------------------------ | ----------------------- |
+| `@include when-printing` | `@media print`          |
 
 #### `z-index()`
 
@@ -386,40 +587,6 @@ list-style: none;
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
 
 [Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
-
-## Tokens
-
-### Border Radius
-
-| Token                                     | Replacement Value/Token  |
-| ----------------------------------------- | ------------------------ |
-| `--p-border-radius-slim`                  | `--p-border-radius-05`   |
-| `--p-border-radius-base`                  | `--p-border-radius-1`    |
-| `--p-border-radius-wide`                  | `--p-border-radius-2`    |
-| `--p-border-radius-full`                  | `--p-border-radius-half` |
-| `--p-text-field-focus-ring-border-radius` | `7px`                    |
-
-### Duration
-
-| Token                | Replacement Value/Token |
-| -------------------- | ----------------------- |
-| `--p-duration-1-0-0` | `--p-duration-100`      |
-| `--p-duration-1-5-0` | `--p-duration-150`      |
-
-### Shadow
-
-| Token                             | Replacement Value/Token            |
-| --------------------------------- | ---------------------------------- |
-| `--p-card-shadow`                 | `--p-shadow-card`                  |
-| `--p-popover-shadow`              | `--p-shadow-popover`               |
-| `--p-modal-shadow`                | `--p-shadow-modal`                 |
-| `--p-top-bar-shadow`              | `--p-shadow-top-bar`               |
-| `--p-button-drop-shadow`          | `--p-shadow-button`                |
-| `--p-button-inner-shadow`         | `--p-shadows-inset-button`         |
-| `--p-button-pressed-inner-shadow` | `--p-shadows-inset-button-pressed` |
-| `--p-shadow-from-ambient-light`   | `rgba(23, 24, 24, 0.05)`           |
-| `--p-shadow-from-direct-light`    | `rgba(0, 0, 0, 0.15)`              |
-| `--p-shadow-from-dim-light`       | `rgba(0, 0, 0, 0.2)`               |
 
 ## `@shopify/polaris-tokens`
 
