@@ -289,7 +289,7 @@ $secondary-item-font-size: 15px;
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
       line-height: 1;
-      padding-left: calc(nav(icon-size) + var(--p-space-5));
+      padding-left: var(--p-space-10);
     }
   }
 
@@ -356,7 +356,7 @@ $secondary-item-font-size: 15px;
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: cacl(var(--p-space-5) + var(--p-space-05));
+  padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
   .Text {
     font-size: var(--p-font-size-2);
