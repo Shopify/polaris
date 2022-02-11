@@ -114,6 +114,16 @@ The following sass functions and mixins have been removed. You will either need 
 
 A list of functions/mixins and their value equivalents or new token values.
 
+#### `available-names()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+
+Otherwise, you can copy the function definition and use it locally.
+
+| Deprecated Function | Source                                                                                                                                                                |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `available-names()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L354-L386) |
+
 #### `border()`
 
 | Function                     | Replacement Value/Token  |
