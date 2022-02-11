@@ -108,7 +108,7 @@ The following CSS custom properties have either been renamed or removed. You wil
 
 ## Sass functions and mixins
 
-The following sass functions and mixins have been removed. You will need to either add the functions to your repo or replace any instances of them with their new CSS custom property or value equivalent.
+The following Sass functions and mixins have been removed. You will need to either add the function or mixin to your repo or replace any instances of them with the CSS custom property or value equivalent.
 
 ### Replacing function and mixin instances with value equivalents
 
@@ -195,9 +195,10 @@ Otherwise, you can copy the function definition and use it locally.
 #### `em()`
 
 This function has been deprecated, but the definition can be copied and used locally.
-| Deprecated Function | Source |
-| -------- | -------------------- |
-| `em()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
+
+| Deprecated Function | Source                                                                                                                                                                |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `em()`              | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
 
 #### `easing()`
 
@@ -390,9 +391,10 @@ This function has been deprecated, but the definition can be copied and used loc
 #### `px()`
 
 This function has been deprecated, but the definition can be copied and used locally.
-| Deprecated Function | Source |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `px()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
+
+| Deprecated Function | Source                                                                                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `px()`              | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
 
 #### `rem()`
 
