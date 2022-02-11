@@ -199,6 +199,9 @@ This function has been deprecated, but the definition can be copied and used loc
 
 We replaced a few of the following filter function instances with color tokens instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well.
 
+<details>
+<summary>Table of Replacement Values/Tokens</summary>
+
 | Function                                         | Replacement Value/Token                                                                                                  |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `filter('purple', 'text')`                       | `brightness(0) saturate(100%) invert(29%) sepia(3%) saturate(2843%) hue-rotate(223deg) brightness(92%) contrast(86%)`    |
@@ -261,6 +264,8 @@ We replaced a few of the following filter function instances with color tokens i
 | `filter('white')`<br>`filter('white', 'base')`   | `brightness(0) saturate(100%) invert(100%)`                                                                              |
 | `filter('icon')`<br>`filter('icon', 'base')`     | `brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%) hue-rotate(169deg) brightness(95%) contrast(87%)`    |
 | `filter('action')`<br>`filter('action', 'base')` | `brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%) hue-rotate(162deg) brightness(95%) contrast(101%)`  |
+
+</details>
 
 #### `font-family()`
 
