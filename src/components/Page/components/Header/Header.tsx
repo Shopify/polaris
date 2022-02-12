@@ -81,6 +81,14 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
+
+  if (additionalNavigation && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
+    );
+  }
+
   const isSingleRow =
     !primaryAction &&
     !pagination &&
