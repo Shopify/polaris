@@ -48,7 +48,7 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
-  /** Additional navigation markup */
+  /** @deprecated Additional navigation markup */
   additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
