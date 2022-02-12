@@ -21,3 +21,5 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 ### Deprecations
+
+- Deprecated `additionalNavigation` in `<Page>` component
