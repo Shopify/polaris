@@ -14,7 +14,6 @@ import {
 
 import {
   ActionList,
-  Avatar,
   Badge,
   Caption,
   Card,
