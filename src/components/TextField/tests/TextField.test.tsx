@@ -6,7 +6,7 @@ import {InlineError} from '../../InlineError';
 import {Labelled} from '../../Labelled';
 import {Select} from '../../Select';
 import {Resizer, Spinner} from '../components';
-import {TextField} from '../TextField';
+import {TextField, TextFieldProps} from '../TextField';
 import styles from '../TextField.scss';
 
 describe('<TextField />', () => {
@@ -616,6 +616,69 @@ describe('<TextField />', () => {
       });
     });
   });
+
+  /* eslint-disable jest/no-commented-out-tests */
+  // describe('selection', () => {
+  //   const selection: TextFieldProps['selection'] = {
+  //     start: 2,
+  //     end: 8,
+  //     direction: 'none',
+  //   };
+
+  //   it('sets the selection on the input when provided', () => {
+  //     const textField = mountWithApp(
+  //       <TextField
+  //         autoComplete = 'off';
+  //         label="TextField"
+  //         type="text"
+  //         value="abcdefghi"
+  //         onChange={noop}
+  //         selection={selection}
+  //       />,
+  //     );
+  //     expect(textField).toContainReactComponent('input', {
+  //       selectionStart,
+  //     });
+  //   });
+
+  //   it('does not set the selection on the input when not provided', () => {
+  //     const textField = mountWithApp(
+  //       <TextField
+  //         autoComplete = 'off';
+  //         label="TextField"
+  //         type="text"
+  //         value="abcdefghi"
+  //         onChange={noop}
+  //       />,
+  //     );
+
+  //     expect(textField).not.toContainReactComponent('input', {
+  //       selectionStart: selection.start,
+  //       selectionEnd: selection.end,
+  //       selctionDirection: selection.direction,
+  //     });
+  //   });
+
+  //   it('does not set the selection on the input when type does not support support', () => {
+  //     const textField = mountWithApp(
+  //       <TextField
+  //         autoComplete = 'off';
+  //         label="TextField"
+  //         type="number"
+  //         value="abcdefghi"
+  //         onChange={noop}
+  //       />,
+  //     );
+
+  //     expect(textField).not.toContainReactComponent('input', {
+  //       selectionStart: selection.start,
+  //       selectionEnd: selection.end,
+  //       selctionDirection: selection.direction,
+  //     });
+  //   });
+  // });
+
+  /* eslint-enable jest/no-commented-out-tests */
 
   describe('type', () => {
     it('sets the type on the input', () => {

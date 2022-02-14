@@ -68,6 +68,12 @@ interface NonMutuallyExclusiveProps {
   disabled?: boolean;
   /** Show a clear text button in the input */
   clearButton?: boolean;
+  /* Text to render after the cursor to visually indicate pending autocompletion */
+  selection?: {
+    start: number;
+    end: number;
+    direction: 'none' | 'forward' | 'backward';
+  };
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -124,6 +130,12 @@ interface NonMutuallyExclusiveProps {
   showCharacterCount?: boolean;
   /** Determines the alignment of the text in the input */
   align?: Alignment;
+  /** Visual required indicator, adds an asterisk to label */
+  requiredIndicator?: boolean;
+  /** Indicates whether or not a monospaced font should be used */
+  monospaced?: boolean;
+  /** Indicates whether or not the entire input/text area text should be selected on focus */
+  selectTextOnFocus?: boolean;
   /** Callback when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
@@ -132,12 +144,6 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
   /** Callback when focus is removed */
   onBlur?(): void;
-  /** Visual required indicator, adds an asterisk to label */
-  requiredIndicator?: boolean;
-  /** Indicates whether or not a monospaced font should be used */
-  monospaced?: boolean;
-  /** Indicates whether or not the entire input/text area text should be selected on focus */
-  selectTextOnFocus?: boolean;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -186,13 +192,14 @@ export function TextField({
   ariaAutocomplete,
   showCharacterCount,
   align,
+  requiredIndicator,
+  monospaced,
+  selectTextOnFocus,
+  selection,
   onClearButtonClick,
   onChange,
   onFocus,
   onBlur,
-  requiredIndicator,
-  monospaced,
-  selectTextOnFocus,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -201,7 +208,8 @@ export function TextField({
 
   const id = useUniqueId('TextField', idProp);
 
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
@@ -211,6 +219,19 @@ export function TextField({
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
   }, [focused]);
+
+  useEffect(() => {
+    const input = inputRef.current;
+    const isSupportedInputType =
+      type === 'text' ||
+      type === 'tel' ||
+      type === 'search' ||
+      type === 'url' ||
+      type === 'password';
+    if (!input || !isSupportedInputType || selection === undefined) return;
+    const {start, end, direction} = selection;
+    input.setSelectionRange(start, end, direction);
+  }, [selection, type]);
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
@@ -234,7 +255,7 @@ export function TextField({
   const inputType = type === 'currency' ? 'text' : type;
 
   const prefixMarkup = prefix ? (
-    <div className={styles.Prefix} id={`${id}Prefix`} ref={prefixRef}>
+    <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
       {prefix}
     </div>
   ) : null;
@@ -268,7 +289,7 @@ export function TextField({
 
     characterCountMarkup = (
       <div
-        id={`${id}CharacterCounter`}
+        id={`${id}-CharacterCounter`}
         className={characterCountClassName}
         aria-label={characterCountLabel}
         aria-live={focus ? 'polite' : 'off'}
@@ -434,7 +455,7 @@ export function TextField({
     autoComplete,
     className: inputClassName,
     onChange: handleChange,
-    ref: inputRef,
+    ref: multiline ? textAreaRef : inputRef,
     min,
     max,
     step,
