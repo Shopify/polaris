@@ -1,8 +1,8 @@
-# Migrating from v8 to v9 <!-- omit in toc -->
+# Migrating from v8 to v9
 
 Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
-## Table of Contents <!-- omit in toc -->
+## Table of Contents
 
 - [Components](#components)
   - [From `ThemeProvider` to `CustomProperties`](#from-themeprovider-to-customproperties)
