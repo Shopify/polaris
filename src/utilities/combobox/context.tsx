@@ -1,6 +1,8 @@
 import {createContext} from 'react';
 
 export interface ComboboxTextFieldType {
+  // Index of the option set as the aria-activedescendant and visually indicated as active.
+  activeOptionValue?: string;
   // Value for the TextField aria-activedescendant. (also on list context when not in combobox)
   activeOptionId?: string;
   // Value for the Combobox aria-owns and TextField aria-control
@@ -11,12 +13,12 @@ export interface ComboboxTextFieldType {
   setTextFieldLabelId?(id: string): void;
   // Sets a boolean to enable/disable keyboard control for the Listbox
   setTextFieldFocused?(value: boolean): void;
-  // Callback when TextField is focused
+  // Callback fired when TextField is focused
   onTextFieldFocus?(): void;
-  // Callback when TextField is blured
+  // Callback fired when TextField is blured
   onTextFieldBlur?(): void;
-  // Callback when TextField is changed
-  onTextFieldChange?(): void;
+  // Callback fired when TextField value changes
+  onTextFieldChange?(value: string): void;
 }
 
 export interface ComboboxListboxType {
@@ -32,6 +34,8 @@ export interface ComboboxListboxType {
   listboxId?: string;
   // Handler used in Combobox to brings to manage popover state and focus based on multi or single select
   onOptionSelected?(): void;
+  // Callback fired when the active listbox option changes
+  onActiveOptionChange?(activeOptionValue: string): void;
   // Callback to onScrolledToBottom when using keyboard navigation navigates to the last item
   onKeyToBottom?(): void;
 }

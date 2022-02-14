@@ -6,7 +6,7 @@ import {InlineError} from '../../InlineError';
 import {Labelled} from '../../Labelled';
 import {Select} from '../../Select';
 import {Resizer, Spinner} from '../components';
-import {TextField, TextFieldProps} from '../TextField';
+import {TextField /* TextFieldProps */} from '../TextField';
 import styles from '../TextField.scss';
 
 describe('<TextField />', () => {

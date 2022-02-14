@@ -33,6 +33,7 @@ export function Combobox({
 }: ComboboxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
+  const [activeOptionValue, setActiveOptionValue] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
@@ -77,8 +78,16 @@ export function Combobox({
     }
   }, [popoverActive, handleClose]);
 
+  const handleNavigateList = useCallback(
+    (activeOptionValue: string) => {
+      setActiveOptionValue(activeOptionValue);
+    },
+    [setActiveOptionValue],
+  );
+
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
+      activeOptionValue,
       activeOptionId,
       expanded: popoverActive,
       listboxId,
@@ -89,6 +98,7 @@ export function Combobox({
       onTextFieldBlur: handleBlur,
     }),
     [
+      activeOptionValue,
       activeOptionId,
       popoverActive,
       listboxId,
@@ -115,6 +125,7 @@ export function Combobox({
       setActiveOptionId,
       setListboxId,
       onOptionSelected,
+      onActiveOptionChange: handleNavigateList,
       onKeyToBottom: onScrolledToBottom,
     }),
     [
@@ -125,6 +136,7 @@ export function Combobox({
       setListboxId,
       onOptionSelected,
       onScrolledToBottom,
+      handleNavigateList,
     ],
   );
 

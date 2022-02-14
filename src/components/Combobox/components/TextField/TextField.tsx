@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback, useEffect} from 'react';
+import React, {useMemo, useCallback, useEffect, useState} from 'react';
 
 import {labelID} from '../../../Label';
 import {useUniqueId} from '../../../../utilities/unique-id';
@@ -9,14 +9,19 @@ import {useComboboxTextField} from '../../../../utilities/combobox';
 export function TextField({
   value,
   id: idProp,
+  ariaAutocomplete = 'list',
   onFocus,
   onBlur,
   onChange,
   ...rest
 }: TextFieldProps) {
+  const [inlineAutocomplete, setInlineAutocomplete] = useState('');
+  const [selection, setSelection] = useState<TextFieldProps['selection']>();
+
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
+    activeOptionValue,
     activeOptionId,
     listboxId,
     expanded,
@@ -39,6 +44,33 @@ export function TextField({
     if (setTextFieldLabelId) setTextFieldLabelId(labelId);
   }, [labelId, setTextFieldLabelId]);
 
+  useEffect(() => {
+    if (
+      ariaAutocomplete === 'both' &&
+      value !== undefined &&
+      activeOptionValue !== undefined &&
+      activeOptionValue.startsWith(value)
+    ) {
+      const nextInlineAutocomplete = activeOptionValue;
+      const start = value.length;
+      const end = activeOptionValue.length;
+      const selection: TextFieldProps['selection'] = {
+        start,
+        end,
+        direction: 'backward',
+      };
+
+      setInlineAutocomplete(`${value}${nextInlineAutocomplete}`);
+      setSelection(selection);
+    }
+  }, [
+    value,
+    ariaAutocomplete,
+    activeOptionValue,
+    setInlineAutocomplete,
+    setSelection,
+  ]);
+
   const handleFocus = useCallback(() => {
     if (onFocus) onFocus();
     if (onTextFieldFocus) onTextFieldFocus();
@@ -54,25 +86,28 @@ export function TextField({
   const handleChange = useCallback(
     (value: string, id: string) => {
       if (onChange) onChange(value, id);
-      if (onTextFieldChange) onTextFieldChange();
+      if (onTextFieldChange) onTextFieldChange(value);
     },
     [onChange, onTextFieldChange],
   );
 
+  const inputValue = inlineAutocomplete ? inlineAutocomplete : value;
+
   return (
     <PolarisTextField
       {...rest}
-      value={value}
+      value={inputValue}
       id={textFieldId}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      ariaAutocomplete="list"
+      selection={selection}
+      ariaAutocomplete={ariaAutocomplete}
       aria-haspopup="listbox"
       ariaActiveDescendant={activeOptionId}
       ariaControls={listboxId}
       role="combobox"
       ariaExpanded={expanded}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChange={handleChange}
     />
   );
 }
