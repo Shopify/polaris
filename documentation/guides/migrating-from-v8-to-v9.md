@@ -66,6 +66,10 @@ A number of types, constants, and utilities have been removed with the deprecati
 - `UNSTABLE_toCssCustomPropertySyntax` - Utility
 - `UNSTABLE_Tokens` - Constant
 
+### `Page`
+
+The prop `thumbnail` has been removed and is no longer supported.
+
 ### `SkeletonPage`
 
 The prop `secondaryActions` has been removed and is no longer supported.
