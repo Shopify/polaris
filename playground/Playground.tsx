@@ -1,11 +1,23 @@
 import React from 'react';
 
-import {Page} from '../src';
-
 export function Playground() {
   return (
-    <Page title="Playground">
-      {/* Add the code you want to test in here */}
-    </Page>
+    <div
+      style={{
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <iframe
+        width={300}
+        height={220}
+        src="http://localhost:6006/iframe.html?id=playground-playground--popover-frame&args="
+      />
+      <strong style={{width: 300}}>Click here ☝</strong>
+    </div>
   );
 }

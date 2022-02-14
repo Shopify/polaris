@@ -239,6 +239,7 @@ export class PositionedOverlay extends PureComponent<
         const topBarElement = scrollableElement.querySelector(
           `${dataPolarisTopBar.selector}`,
         );
+        // This is the problematic code. Commenting this solve the issue.
         if (topBarElement) {
           topBarOffset = topBarElement.clientHeight;
         }
