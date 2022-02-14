@@ -392,6 +392,11 @@ $stacking-order: (
       opacity: 0.4;
     }
 
+    // Prevents the loading spinner from overlapping the button’s text, while retaining its width.
+    &.loading .Text {
+      visibility: hidden;
+    }
+
     &.iconOnly {
       @include recolor-icon(currentColor);
 
