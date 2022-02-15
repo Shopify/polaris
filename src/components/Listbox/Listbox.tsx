@@ -83,7 +83,7 @@ export function Listbox({
     setActiveOptionId,
     setListboxId,
     onOptionSelected,
-    onActiveOptionChange,
+    setActiveOptionValue,
     onKeyToBottom,
   } = useComboboxListbox();
 
@@ -234,10 +234,10 @@ export function Listbox({
         onOptionSelected();
       }
       if (onSelect) onSelect(option.value);
-      if (onActiveOptionChange) onActiveOptionChange(option.value);
+      if (setActiveOptionValue) setActiveOptionValue(option.value);
     },
     [
-      onActiveOptionChange,
+      setActiveOptionValue,
       handleChangeActiveOption,
       onSelect,
       onOptionSelected,
@@ -363,8 +363,6 @@ export function Listbox({
         />
       </>
     ) : null;
-
-  console.log('Active descendant', activeOption?.domId);
 
   return (
     <>

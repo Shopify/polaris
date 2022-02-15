@@ -35,7 +35,7 @@ export interface ComboboxListboxType {
   // Handler used in Combobox to brings to manage popover state and focus based on multi or single select
   onOptionSelected?(): void;
   // Callback fired when the active listbox option changes
-  onActiveOptionChange?(activeOptionValue: string): void;
+  setActiveOptionValue?(activeOptionValue: string): void;
   // Callback to onScrolledToBottom when using keyboard navigation navigates to the last item
   onKeyToBottom?(): void;
 }
