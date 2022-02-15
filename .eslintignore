@@ -1,7 +1,6 @@
 node_modules
 /.loom
-
-# react
-/react/build
-/react/build-internal
-/react/src/styles/polaris-tokens
+/examples
+/build
+/build-internal
+/src/styles/polaris-tokens
