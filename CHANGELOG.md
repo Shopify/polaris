@@ -10,6 +10,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ## 9.0.0 - 2022-02-15
 
+For instructions on updating from v8 to v9, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v8-to-v9.md).
+
 ### Breaking changes
 
 **CSS custom properties**
@@ -161,6 +163,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 - Improve error logging in the event of sass errors ([#4954](https://github.com/Shopify/polaris-react/pull/4954))
 
 ## 8.0.0 - 2022-01-20
+
+For instructions on updating from v7 to v8, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v7-to-v8.md).
 
 ### Breaking changes
 
@@ -360,6 +364,8 @@ Bumped polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-reac
 - Removed banner in navigation example ([#4533](https://github.com/Shopify/polaris-react/pull/4533))
 
 ## 7.0.0 - 2021-09-23
+
+For instructions on updating from v6 to v7, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v6-to-v7.md).
 
 ### Breaking changes
 
