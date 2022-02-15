@@ -21,7 +21,7 @@ import {
 } from '../styles';
 
 interface ColorSchemeAttribute {
-  'color-scheme': ColorScheme;
+  'p-color-scheme': ColorScheme;
 }
 
 const mockTokenGroup: TokenGroup = {
@@ -94,7 +94,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'color-scheme'
+          'p-color-scheme'
         ],
       ).toBe(DEFAULT_COLOR_SCHEME);
     });
@@ -106,7 +106,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'color-scheme'
+          'p-color-scheme'
         ],
       ).toBe('light');
     });
@@ -118,7 +118,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'color-scheme'
+          'p-color-scheme'
         ],
       ).toBe('dark');
     });
@@ -177,7 +177,7 @@ describe('<CustomProperties />', () => {
       const expectedRules = Object.keys(mockColorSchemes)
         .map(
           (colorScheme) =>
-            `[color-scheme="${colorScheme}"]{${expectedColorSchemeDeclarations(
+            `[p-color-scheme="${colorScheme}"]{${expectedColorSchemeDeclarations(
               colorScheme as ColorScheme,
             )}}`,
         )

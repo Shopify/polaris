@@ -44,7 +44,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
 
   return (
     <Component
-      color-scheme={colorScheme}
+      p-color-scheme={colorScheme}
       className={className}
       // TODO: Remove this inline style when we update individual components
       // to set their own color and background-color properties.
