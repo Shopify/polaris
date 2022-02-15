@@ -4,8 +4,7 @@ $mobile-layout: 468px;
 $button-style-breakpoint: 768px;
 $medium-layout: 860px;
 $desktop-layout: 1080px;
-$individual-action-padding-x: (1.5 * spacing(tight));
-$action-menu-rollup-computed-width: rem(40px);
+$action-menu-rollup-computed-width: 40px;
 
 .Header {
   @include page-header-layout;
@@ -18,7 +17,7 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .TitleWrapper {
   grid-area: title;
-  margin-top: spacing(extra-tight);
+  margin-top: var(--p-space-1);
   align-self: center;
   flex: 1 1 auto;
 
@@ -34,30 +33,36 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: spacing(extra-tight);
+  margin-bottom: var(--p-space-1);
 
   // stylelint-disable-next-line selector-max-class
   .hasActionMenu.mobileView & {
     padding-right: $action-menu-rollup-computed-width;
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .BreadcrumbWrapper {
   flex: 0 0 auto;
   grid-area: breadcrumbs;
   max-width: 100%;
-  margin-right: spacing();
+  margin-right: var(--p-space-4);
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .PaginationWrapper {
   flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
-  margin-left: spacing(extra-tight);
+  margin-left: var(--p-space-1);
   line-height: 1;
 
   button {
@@ -73,7 +78,10 @@ $action-menu-rollup-computed-width: rem(40px);
     }
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .AdditionalNavigationWrapper {
@@ -81,7 +89,10 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 1 0 auto;
   justify-content: flex-end;
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 ///
@@ -98,7 +109,7 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 1 1 auto;
 
   .Header:not(.mobileView) & {
-    padding-right: spacing(loose);
+    padding-right: var(--p-space-5);
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
@@ -110,13 +121,16 @@ $action-menu-rollup-computed-width: rem(40px);
 .PrimaryActionWrapper {
   flex: 0 0 auto;
   margin-top: 0;
-  margin-left: spacing(extra-tight);
+  margin-left: var(--p-space-1);
 
   @include breakpoint-after($button-style-breakpoint) {
-    margin-left: spacing();
+    margin-left: var(--p-space-4);
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .ActionMenuWrapper {
@@ -124,21 +138,24 @@ $action-menu-rollup-computed-width: rem(40px);
 
   .mobileView & {
     position: absolute;
-    top: spacing(loose) + (control-height() / 4);
-    right: spacing(loose);
+    top: calc(var(--p-space-5) + (#{control-height()} / 4));
+    right: var(--p-space-5);
     margin-top: 0;
 
     @include page-content-when-not-fully-condensed {
-      right: -(spacing(tight));
+      right: calc(-1 * (var(--p-space-2)));
     }
   }
 
   // stylelint-disable-next-line selector-max-class
   .mobileView.hasNavigation & {
-    top: control-height() / 2;
+    top: control-height() * 0.5;
   }
 
-  @include print-hidden;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .Row {
@@ -150,10 +167,10 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 
   + .Row {
-    margin-top: spacing(extra-tight);
+    margin-top: var(--p-space-1);
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .mobileView & {
-      margin-top: spacing(tight);
+      margin-top: var(--p-space-2);
     }
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .RightAlign {
@@ -175,7 +192,7 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 1 1 auto;
   align-items: flex-start;
   justify-content: flex-end;
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
   // Necessary for flex to realize this container doesn't want to wrap
   white-space: nowrap;
 
@@ -188,14 +205,16 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .AdditionalMetaData {
   @include breakpoint-after($mobile-layout) {
-    margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
+    margin-left: calc(
+      var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
+    );
   }
 
   .noBreadcrumbs & {
     margin-left: 0;
   }
 
-  @include when-printing {
+  @media print {
     // stylelint-disable-next-line declaration-no-important
     margin-left: 0 !important;
   }
@@ -216,7 +235,7 @@ $action-menu-rollup-computed-width: rem(40px);
 
   .Row {
     display: grid;
-    gap: spacing(tight) spacing();
+    gap: var(--p-space-2) var(--p-space-4);
     grid-template-columns: auto 1fr;
     grid-template-areas: 'breadcrumbs actions' 'title title';
 
@@ -245,7 +264,7 @@ $action-menu-rollup-computed-width: rem(40px);
   }
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
-    margin-bottom: spacing(extra-tight);
+    margin-bottom: var(--p-space-1);
     @include breakpoint-after(layout-width(page-with-nav)) {
       margin-bottom: 0;
     }

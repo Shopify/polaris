@@ -2,10 +2,11 @@
 @import './variables';
 
 // Base Navigation styles
-$active-indicator-width: rem(3px);
-$nav-max-width: rem(360px);
+$active-indicator-width: 3px;
+$nav-max-width: 360px;
 
 .Navigation {
+  --pc-navigation-icon-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -16,7 +17,7 @@ $nav-max-width: rem(360px);
   min-height: 100%;
   background-color: var(--p-background);
   -webkit-overflow-scrolling: touch;
-  border-right: border('divider');
+  border-right: var(--p-border-divider);
 
   @include safe-area-for(padding-bottom, 0, bottom);
 
@@ -55,7 +56,7 @@ $nav-max-width: rem(360px);
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    padding-top: spacing();
+    padding-top: var(--p-space-4);
   }
 }
 
@@ -66,9 +67,9 @@ $nav-max-width: rem(360px);
     flex: 0 0 top-bar-height();
     align-items: center;
     height: top-bar-height();
-    padding: 0 spacing(tight) 0 spacing(base);
+    padding: 0 var(--p-space-2) 0 var(--p-space-4);
     @include safe-area-for(flex-basis, top-bar-height(), left);
-    @include safe-area-for(padding-left, spacing(), left);
+    @include safe-area-for(padding-left, var(--p-space-4), left);
   }
 }
 
@@ -86,23 +87,22 @@ $disabled-fade: 0.6;
 }
 
 .Item-selected {
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
+  outline: var(--p-border-width-1) solid transparent;
 
   &::before {
     content: '';
     position: absolute;
     top: 1px;
     bottom: 1px;
-    left: -1 * spacing(tight);
+    left: calc(-1 * var(--p-space-2));
     width: $active-indicator-width;
     background-color: var(--p-action-primary);
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
-
-  @include high-contrast-outline;
 
   @include focus-ring;
 
@@ -124,7 +124,7 @@ $disabled-fade: 0.6;
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
   }
 }
 
@@ -142,12 +142,12 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  margin-left: spacing(tight);
+  margin-left: var(--p-space-2);
   display: inline-flex;
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: spacing(extra-tight);
+    margin-top: var(--p-space-1);
   }
 }
 
@@ -159,7 +159,7 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  padding: spacing(extra-tight) spacing(tight) spacing(extra-tight) spacing();
+  padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -178,7 +178,8 @@ $disabled-fade: 0.6;
 
 .ListItem-hasAction .Item {
   max-width: calc(
-    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+    100% - var(--pc-navigation-icon-size) + var(--p-space-4) * 2 +
+      var(--p-space-1)
   );
 }
 
@@ -197,9 +198,9 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: spacing(extra-tight);
-  padding: spacing(extra-tight) spacing();
-  border-radius: var(--p-border-radius-base);
+  margin-right: var(--p-space-1);
+  padding: var(--p-space-1) var(--p-space-4);
+  border-radius: var(--p-border-radius-1);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -241,7 +242,7 @@ $disabled-fade: 0.6;
 }
 
 // Secondary styles
-$secondary-item-font-size: rem(15px);
+$secondary-item-font-size: 15px;
 
 .SecondaryNavigation {
   flex-basis: 100%;
@@ -249,19 +250,21 @@ $secondary-item-font-size: rem(15px);
   overflow-x: visible;
 
   &.isExpanded {
-    margin-bottom: spacing(tight);
+    margin-bottom: var(--p-space-2);
   }
 
   .List {
-    @include unstyled-list;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .Item {
     font-size: $secondary-item-font-size;
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
-    padding-left: spacing(extra-loose) + spacing(base-tight);
+    padding-left: calc(var(--p-space-8) + var(--p-space-3));
 
     &:hover {
       color: var(--p-text-subdued);
@@ -286,14 +289,14 @@ $secondary-item-font-size: rem(15px);
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: $item-font-size-small;
       line-height: 1;
-      padding-left: nav(icon-size) + spacing(loose);
+      padding-left: var(--p-space-10);
     }
   }
 
   .Text {
-    margin-top: spacing(tight) / 2;
-    margin-bottom: spacing(tight) / 2;
-    line-height: spacing(loose);
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
+    line-height: var(--p-space-5);
   }
 
   .Item-selected {
@@ -315,30 +318,27 @@ $secondary-item-font-size: rem(15px);
   }
 
   .Item-disabled {
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
     color: var(--p-text-disabled);
   }
 }
 
 .SecondaryNavigation-noIcon {
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 // Section styles
 .Section {
-  @include unstyled-list;
   flex: 0 0 auto;
-  padding: spacing() 0;
+  margin: 0;
+  padding: var(--p-space-4) 0;
   padding-top: 0;
   @include safe-area-for(padding-left, 0, left);
+  list-style: none;
 
   + .Section {
-    padding-bottom: spacing();
-    padding-top: spacing(tight);
-  }
-
-  + .Section-withSeparator {
-    padding-top: spacing(extra-tight);
+    padding-top: var(--p-space-2);
+    padding-bottom: var(--p-space-4);
   }
 }
 
@@ -347,7 +347,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .Section-withSeparator {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
 }
 
 .SectionHeading {
@@ -356,14 +356,14 @@ $secondary-item-font-size: rem(15px);
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: spacing(loose) + (spacing(extra-tight) / 2);
+  padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
   .Text {
-    font-size: font-size(subheading);
+    font-size: var(--p-font-size-2);
     color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: font-size(subheading, large-screen);
+      font-size: var(--p-font-size-1);
     }
   }
 
@@ -373,9 +373,9 @@ $secondary-item-font-size: rem(15px);
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
-    margin-right: spacing(extra-tight);
-    padding: spacing(extra-tight) spacing();
-    border-radius: var(--p-border-radius-base);
+    margin-right: var(--p-space-1);
+    padding: var(--p-space-1) var(--p-space-4);
+    border-radius: var(--p-border-radius-1);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
@@ -383,9 +383,9 @@ $secondary-item-font-size: rem(15px);
       // stylelint-disable selector-max-combinators
       svg,
       img {
-        height: spacing();
-        width: spacing();
-        margin: spacing(extra-tight) / 2;
+        height: var(--p-space-4);
+        width: var(--p-space-4);
+        margin: var(--p-space-05);
       }
     }
 
@@ -451,16 +451,18 @@ $secondary-item-font-size: rem(15px);
 }
 
 .List {
-  @include unstyled-list;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .Indicator {
   position: relative;
   display: inline-block;
-  height: rem(10px);
-  width: rem(10px);
+  height: 10px;
+  width: 10px;
 }
 
 .SecondaryNavigation-noIcon .Item {
-  padding-left: spacing(tight) + spacing(extra-tight);
+  padding-left: calc(var(--p-space-2) + var(--p-space-1));
 }

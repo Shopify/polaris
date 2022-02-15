@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
-$item-min-height: rem(16px);
-$item-min-width: rem(50px);
-$item-vertical-padding: $item-min-height / 2;
-$underline-height: border-width(thicker);
+$item-min-height: 16px;
+$item-min-width: 50px;
+$item-vertical-padding: $item-min-height * 0.5;
+$underline-height: var(--p-border-width-3);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tabs {
@@ -15,8 +15,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Wrapper {
-  border-bottom: border('divider');
-  padding: 0 spacing(tight);
+  border-bottom: var(--p-border-divider);
+  padding: 0 var(--p-space-2);
 }
 
 .fitted {
@@ -28,7 +28,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Title {
     width: 100%;
-    padding: spacing(tight) spacing();
+    padding: var(--p-space-2) var(--p-space-4);
   }
 }
 
@@ -45,7 +45,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Tab {
-  @include unstyled-link;
   @include unstyled-button;
   @include text-style-body;
   @include text-emphasis-subdued;
@@ -56,7 +55,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: spacing(tight) spacing(extra-tight);
+  padding: var(--p-space-2) var(--p-space-1);
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -98,13 +97,17 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       }
     }
   }
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 .Tab-selected {
   @include text-emphasis-normal;
 
   &:focus .Title {
-    @include high-contrast-outline($border-width: border-width(thicker));
+    outline: var(--p-border-width-3) solid transparent;
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -112,7 +115,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Title {
-    @include high-contrast-outline($border-width: border-width(thicker));
+    outline: var(--p-border-width-3) solid transparent;
     color: var(--p-text);
 
     &::before {
@@ -123,21 +126,21 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Title {
   @include focus-ring;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   display: block;
-  padding: spacing(tight) spacing();
+  padding: var(--p-space-2) var(--p-space-4);
   min-width: $item-min-width;
   color: var(--p-text-subdued);
 
   &::before {
     content: '';
     position: absolute;
-    bottom: -1 * spacing(tight);
+    bottom: calc(-1 * var(--p-space-2));
     left: 0;
     right: 0;
     height: $underline-height;
-    border-top-left-radius: var(--p-border-radius-base);
-    border-top-right-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-top-right-radius: var(--p-border-radius-1);
   }
 }
 
@@ -160,20 +163,21 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .List {
   list-style: none;
   margin: 0;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 }
 
 .Item {
-  @include unstyled-link;
   @include unstyled-button;
   @include focus-ring;
   display: block;
   width: 100%;
   min-height: $item-min-height;
-  padding: $item-vertical-padding spacing();
+  padding: $item-vertical-padding var(--p-space-4);
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
+  color: inherit;
 
   &::-moz-focus-inner {
     border: none;
@@ -189,6 +193,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
+  }
+
+  &:visited {
+    color: inherit;
   }
 }
 

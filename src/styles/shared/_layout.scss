@@ -11,7 +11,7 @@
 ///
 /// @param {String} $property - The property name i.e. padding-left.
 /// @param {Space} $spacing - The spacing value to be added to the safe-area
-/// value. i.e. spacing().
+/// value. i.e. var(--p-space-4).
 /// @param {string} $area - The area where the inset is to be added. i.e. left
 ///
 /// If overriding an existing padding / margin that value should be used as

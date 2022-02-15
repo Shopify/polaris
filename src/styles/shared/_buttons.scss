@@ -5,22 +5,23 @@
 }
 
 @mixin button-base {
-  $min-height: control-height();
-  $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+  $vertical-padding: calc(
+    (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
+  );
 
   @include recolor-icon(var(--p-icon));
-  @include focus-ring($border-width: border-width('base'));
+  @include focus-ring($border-width: var(--p-border-width-1));
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: $min-height;
-  min-width: $min-height;
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
   margin: 0;
-  padding: $vertical-padding spacing();
+  padding: $vertical-padding var(--p-space-4);
   background: var(--p-surface);
-  box-shadow: var(--p-button-drop-shadow);
-  border-radius: var(--p-border-radius-base);
+  box-shadow: var(--p-shadow-button);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
   border: 1px solid var(--p-border-neutral-subdued);
   border-top-color: var(--p-border-subdued);
@@ -34,11 +35,11 @@
 
   &:hover {
     background: var(--p-action-secondary-hovered);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   &:focus {
-    box-shadow: var(--p-button-drop-shadow);
+    box-shadow: var(--p-shadow-button);
     outline: 0;
 
     @include focus-ring($style: 'focused');
@@ -46,7 +47,7 @@
 
   &:active {
     background: var(--p-action-secondary-pressed);
-    box-shadow: var(--p-button-drop-shadow);
+    box-shadow: var(--p-shadow-button);
 
     &::after {
       border: none;
@@ -56,14 +57,14 @@
 
   &.pressed {
     background: var(--p-action-secondary-depressed);
-    box-shadow: var(--p-button-pressed-inner-shadow);
+    box-shadow: var(--p-shadows-inset-button-pressed);
     color: var(--p-text-on-primary);
     border-color: var(--p-border-depressed);
     @include recolor-icon(currentColor);
   }
 
   @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+    border: 1px solid windowText;
   }
 }
 
@@ -78,64 +79,64 @@
 
 @mixin button-filled() {
   @include focus-ring($border-width: 0);
-  background: var(--p-button-color);
+  background: var(--pc-button-color);
   border-width: 0;
   border-color: transparent;
-  box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
-  color: var(--p-button-text);
+  box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  color: var(--pc-button-text);
 
   &:hover {
-    background: var(--p-button-color-hover);
+    background: var(--pc-button-color-hover);
     border-color: transparent;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &:focus {
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   }
 
   &:active {
-    background: var(--p-button-color-active);
+    background: var(--pc-button-color-active);
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   }
 
   &.pressed {
-    color: var(--p-button-text);
-    background: var(--p-button-color-depressed);
+    color: var(--pc-button-text);
+    background: var(--pc-button-color-depressed);
     border-color: transparent;
-    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
 
     &:hover,
     &:focus {
-      background: var(--p-button-color-depressed);
-      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
+      background: var(--pc-button-color-depressed);
+      box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
     }
   }
 }
 
 @mixin button-outline($outline-color, $background-color: transparent) {
   background: transparent;
-  border: border-width() solid var(--p-border);
+  border: var(--p-border-width-1) solid var(--p-border);
   box-shadow: none;
   color: var(--p-text);
-  @include focus-ring($border-width: border-width('base'));
+  @include focus-ring($border-width: var(--p-border-width-1));
 
   &:hover {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-hovered);
   }
 
   &:focus {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     @include focus-ring($style: 'focused');
   }
 
   &:active {
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
     background: var(--p-surface-pressed);
 
@@ -146,13 +147,13 @@
 
   &.pressed {
     background: var(--p-action-secondary-pressed);
-    border: border-width() solid var(--p-border);
+    border: var(--p-border-width-1) solid var(--p-border);
     box-shadow: none;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &.disabled {
-    border: border-width('base') solid var(--p-border-disabled);
+    border: var(--p-border-width-1) solid var(--p-border-disabled);
     box-shadow: none;
     background: transparent;
     color: var(--p-text-disabled);
@@ -160,35 +161,35 @@
 
   &.destructive {
     background: transparent;
-    border: border-width('base') solid var(--p-border-critical);
+    border: var(--p-border-width-1) solid var(--p-border-critical);
     box-shadow: none;
     color: var(--p-interactive-critical);
     @include recolor-icon(var(--p-icon-critical));
 
     &:hover {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
     }
 
     &:focus {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      border: border-width('base') solid var(--p-border-critical);
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
     }
 
     &.disabled {
-      border: border-width('base') solid var(--p-border-critical-disabled);
+      border: var(--p-border-width-1) solid var(--p-border-critical-disabled);
       background: transparent;
       color: var(--p-interactive-critical-disabled);
     }
 
     &.pressed {
       background: var(--p-surface-critical-subdued);
-      box-shadow: border-width('base') solid var(--p-border-critical);
+      box-shadow: var(--p-border-width-1) solid var(--p-border-critical);
       color: var(--p-interactive-critical);
     }
   }
@@ -208,7 +209,7 @@
   padding: 2px 5px;
   margin: -2px -5px;
   background: var(--p-action-secondary-hovered);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base);
 }
 
 @mixin unstyled-button() {

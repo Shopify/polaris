@@ -5,9 +5,9 @@
   align-self: flex-end;
   align-items: center;
   width: 100%;
-  min-height: spacing() * 4;
-  padding: spacing();
-  border-top: border('divider');
+  min-height: calc(var(--p-space-4) * 4);
+  padding: var(--p-space-4);
+  border-top: var(--p-border-divider);
 }
 
 .FooterContent {

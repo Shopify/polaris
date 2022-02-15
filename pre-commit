@@ -1,14 +1,12 @@
 #!/usr/bin/ruby --disable-gems
 
 NON_COMMITTABLE_FILE_PATHS = ['playground/Playground.tsx']
-COLOR_DOC_SOURCE_FILE_PATHS = ['src/utilities/theme/tokens.ts']
 
 module PreCommit
   extend self
 
   def main
     ignore_playground
-    generate_color_docs
   end
 
   private
@@ -20,16 +18,6 @@ module PreCommit
         puts "Please remove changes from #{path} before committing"
         puts "Or run `git update-index --assume-unchanged #{path}` to git ignore this file"
         abort "Use `git commit --no-verify` to force add this file"
-      end
-    end
-  end
-
-  def generate_color_docs
-    changed_files.each do |path|
-      if COLOR_DOC_SOURCE_FILE_PATHS.include? path
-        puts "Color system changes detected. Generating new docs (may take a couple minutes)..."
-        %x(yarn run colordocs)
-        %x(git add "documentation/Color system.md")
       end
     end
   end

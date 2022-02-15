@@ -1,12 +1,9 @@
 @import '../../styles/common';
 
-$stacking-order: (
-  backdrop: 10,
-  content: 20,
-  input: 30,
-);
-
 .Select {
+  --pc-select-backdrop: 10;
+  --pc-select-content: 20;
+  --pc-select-input: 30;
   position: relative;
 
   // IE 11 fix to remove default dropdown arrow
@@ -44,18 +41,18 @@ $stacking-order: (
 .Content {
   @include text-style-input;
   position: relative;
-  z-index: z-index(content, $stacking-order);
+  z-index: var(--pc-select-content);
   display: flex;
   align-items: center;
   width: 100%;
   min-height: control-height();
-  padding: control-vertical-padding() spacing(tight) control-vertical-padding()
-    spacing(base-tight);
+  padding: control-vertical-padding() var(--p-space-2)
+    control-vertical-padding() var(--p-space-3);
 }
 
 .InlineLabel {
   @include text-emphasis-subdued;
-  margin-right: rem(4px);
+  margin-right: var(--p-space-1);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -68,7 +65,7 @@ $stacking-order: (
 }
 
 .Prefix {
-  padding-right: spacing('tight');
+  padding-right: var(--p-space-2);
 }
 
 .Icon {
@@ -83,7 +80,7 @@ $stacking-order: (
   text-rendering: auto;
   top: 0;
   left: 0;
-  z-index: z-index(input, $stacking-order);
+  z-index: var(--pc-select-input);
   width: 100%;
   height: 100%;
   margin: 0;
@@ -93,17 +90,17 @@ $stacking-order: (
 }
 
 .Backdrop {
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-select-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  border: border-width() solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   background-color: var(--p-surface);
-  box-shadow: var(--p-button-drop-shadow);
-  @include focus-ring($border-width: rem(1px));
+  box-shadow: var(--p-shadow-button);
+  @include focus-ring($border-width: 1px);
   // 'position' needs to sit below focus-ring since it will be overwritten
   // with relative when the focus ring style is 'base'
   // stylelint-disable-next-line order/properties-order
@@ -137,7 +134,7 @@ $stacking-order: (
 
 @media (-ms-high-contrast: active) {
   .Content {
-    color: ms-high-contrast-color('text');
+    color: windowText;
     -ms-high-contrast-adjust: none;
   }
 
@@ -154,7 +151,7 @@ $stacking-order: (
   }
 
   .Icon {
-    @include recolor-icon(ms-high-contrast-color('button-text'));
+    @include recolor-icon(buttonText);
   }
 
   .Backdrop {
@@ -166,23 +163,23 @@ $stacking-order: (
 
   .Input:focus {
     ~ .Content {
-      color: ms-high-contrast-color('selected-text');
+      color: highlightText;
     }
 
     ~ .Backdrop {
       // Align with the native styling for this element, which differs from
       // what the control-backdrop mixin provides.
-      background-color: ms-high-contrast-color('selected-text-background');
+      background-color: highlight;
     }
   }
 
   .disabled {
     .Content {
-      color: ms-high-contrast-color('disabled-text');
+      color: grayText;
     }
 
     .Icon {
-      @include recolor-icon(ms-high-contrast-color('disabled-text'));
+      @include recolor-icon(grayText);
       opacity: 1;
     }
   }

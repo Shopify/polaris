@@ -1,9 +1,12 @@
 @import '../../../../styles/common';
 
-$image-size: rem(20px);
-
 .ActionContainer {
-  margin-bottom: spacing(base-tight);
+  --pc-mapped-actions-image-size: 20px;
+  --pc-mapped-actions-item-min-height: var(--p-space-10);
+  --pc-mapped-actions-item-vertical-padding: calc(
+    (var(--pc-mapped-actions-item-min-height) - var(--p-line-height-2)) / 2
+  );
+  margin-bottom: var(--p-space-3);
 }
 
 [data-focused] {
@@ -20,15 +23,19 @@ $image-size: rem(20px);
   @include focus-ring;
   display: block;
   width: 100%;
+  min-height: var(--pc-mapped-actions-item-min-height);
   text-align: left;
   cursor: pointer;
+  padding: var(--pc-mapped-actions-item-vertical-padding) var(--p-space-2);
+  border-radius: var(--p-border-radius-1);
+  border-top: 1px solid var(--p-surface); // 1px gap between elements
 
   &:hover {
     background-color: var(--p-surface-hovered);
     text-decoration: none;
 
     @media (-ms-high-contrast: active) {
-      outline: 1px solid ms-high-contrast-color('text');
+      outline: 1px solid windowText;
     }
   }
 
@@ -84,20 +91,21 @@ $image-size: rem(20px);
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
-  height: $image-size;
-  width: $image-size;
-  border-radius: border-radius();
+  height: var(--pc-mapped-actions-image-size);
+  width: var(--pc-mapped-actions-image-size);
+  border-radius: var(--p-border-radius-base);
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  margin: calc(-0.5 * var(--pc-mapped-actions-image-size)) var(--p-space-4)
+    calc(-0.5 * var(--pc-mapped-actions-image-size)) 0;
   background-size: cover;
   background-position: center center;
 }
 
 .Suffix {
   @include recolor-icon(var(--p-icon));
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 .Text {

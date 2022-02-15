@@ -1,11 +1,12 @@
 import React, {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
-import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {tokens} from '../../tokens';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
+import type {Logo} from '../../utilities/frame/types';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
@@ -28,6 +29,10 @@ import {
 import styles from './Frame.scss';
 
 export interface FrameProps {
+  /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
+  logo?: Logo;
+  /** A horizontal offset that pushes the frame to the right, leaving empty space on the left */
+  offset?: string;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -59,8 +64,6 @@ interface State {
   showContextualSaveBar: boolean;
 }
 
-const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
-
 const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
@@ -85,18 +88,21 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       return;
     }
     this.setGlobalRibbonRootProperty();
+    this.setOffset();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
+    this.setOffset();
   }
 
   render() {
     const {skipFocused, loadingStack, toastMessages, showContextualSaveBar} =
       this.state;
     const {
+      logo,
       children,
       navigation,
       topBar,
@@ -129,7 +135,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
-          timeout={durationSlow}
+          timeout={parseInt(tokens.motion['duration-300'], 10)}
           classNames={navTransitionClasses}
         >
           <div
@@ -246,6 +252,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     // This is probably a legit error but I don't have the time to refactor this
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     const context = {
+      logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
       startLoading: this.startLoading,
@@ -294,12 +301,16 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
   };
 
+  private setOffset = () => {
+    const {offset = '0px'} = this.props;
+    setRootProperty('--pc-frame-offset', offset);
+  };
+
   private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
     setRootProperty(
-      GLOBAL_RIBBON_CUSTOM_PROPERTY,
+      '--pc-frame-global-ribbon-height',
       `${globalRibbonHeight}px`,
-      null,
     );
   };
 

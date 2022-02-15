@@ -14,6 +14,7 @@ import {stylelint} from '@shopify/loom-plugin-stylelint';
 import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 
 import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
@@ -78,24 +79,6 @@ function jestAdjustmentsPlugin() {
 function preAndPostBuildPlugin() {
   return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
-      hooks.pre.hook((steps) => [
-        ...steps,
-        api.createStep(
-          {id: 'PolarisBuild.Pre', label: 'polaris pre-build'},
-          async (step) => {
-            try {
-              await step.exec('yarn', ['run', 'copy-polaris-tokens'], {
-                all: true,
-              });
-            } catch (error) {
-              throw new DiagnosticError({
-                title: 'Error runing prebuild steps',
-                content: error.all,
-              });
-            }
-          },
-        ),
-      ]);
       hooks.post.hook((steps) => [
         ...steps,
         api.createStep(
@@ -111,12 +94,6 @@ function preAndPostBuildPlugin() {
               await step.exec(
                 'node_modules/.bin/copyfiles',
                 ['./src/**/*.md', './build/docs', '--up=1'],
-                {all: true},
-              );
-
-              await step.exec(
-                'node_modules/.bin/copyfiles',
-                ['./src/styles/**/*.scss', './build/styles', '--up=2'],
                 {all: true},
               );
             } catch (error) {
@@ -157,6 +134,9 @@ function rollupAdjustPluginsPlugin() {
         delimiters: ['', ''],
       }),
       image(),
+      json({
+        compact: true,
+      }),
       styles(stylesConfig),
     ];
   });

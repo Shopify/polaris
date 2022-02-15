@@ -2,7 +2,6 @@ import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
-import {Avatar} from '../../../../Avatar';
 import {ActionMenu} from '../../../../ActionMenu';
 import {Badge} from '../../../../Badge';
 import {Breadcrumbs} from '../../../../Breadcrumbs';
@@ -22,7 +21,6 @@ describe('<Header />', () => {
       title: 'title',
       subtitle: 'subtitle',
       titleMetadata: <Badge>Sold</Badge>,
-      thumbnail: <Avatar customer />,
     };
 
     it('sets the title on the Header', () => {
@@ -36,13 +34,6 @@ describe('<Header />', () => {
       const header = mountWithApp(<Header {...mockProps} />);
       expect(header).toHaveReactProps({
         subtitle: mockProps.subtitle,
-      });
-    });
-
-    it('sets the thumbnail on the Header', () => {
-      const header = mountWithApp(<Header {...mockProps} />);
-      expect(header).toHaveReactProps({
-        thumbnail: mockProps.thumbnail,
       });
     });
 

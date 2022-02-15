@@ -1,17 +1,19 @@
 @function control-height() {
-  @return rem(36px);
+  @return 36px;
 }
 
 @function control-slim-height() {
-  @return rem(28px);
+  @return 28px;
 }
 
 @function control-vertical-padding() {
-  @return (control-height() - line-height(input) - rem(2px)) / 2;
+  @return calc(
+    (var(--p-line-height-6) - var(--p-line-height-3) - var(--p-space-05)) / 2
+  );
 }
 
 @function control-icon-transition() {
-  @return transform duration(fast) easing(in);
+  @return transform var(--p-duration-100) var(--p-ease-in);
 }
 
 @mixin control-backdrop($style: base) {
@@ -19,7 +21,7 @@
     position: relative;
     border: var(--p-control-border-width) solid var(--p-border);
     background-color: var(--p-surface);
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
 
     &::before {
       content: '';
@@ -28,12 +30,12 @@
       right: calc(-1 * var(--p-control-border-width));
       bottom: calc(-1 * var(--p-control-border-width));
       left: calc(-1 * var(--p-control-border-width));
-      border-radius: var(--p-border-radius-base);
+      border-radius: var(--p-border-radius-1);
       background-color: var(--p-interactive);
       opacity: 0;
       transform: scale(0.25);
-      transition: opacity duration(fast) var(--p-ease),
-        transform duration(fast) var(--p-ease);
+      transition: opacity var(--p-duration-100) var(--p-ease),
+        transform var(--p-duration-100) var(--p-ease);
     }
 
     &.hover,
@@ -48,7 +50,7 @@
       opacity: 1;
       transform: scale(1);
       @media (-ms-high-contrast: active) {
-        border: 2px solid ms-high-contrast-color('text');
+        border: 2px solid windowText;
       }
     }
   } @else if $style == disabled {
