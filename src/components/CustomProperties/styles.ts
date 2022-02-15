@@ -61,7 +61,7 @@ export function getColorSchemeDeclarations(
   osColorSchemes: OSColorSchemes,
 ) {
   return [
-    `p-color-scheme:${osColorSchemes[colorScheme]};`,
+    `color-scheme:${osColorSchemes[colorScheme]};`,
     getCustomProperties(tokens.colorSchemes[colorScheme]),
   ].join('');
 }
