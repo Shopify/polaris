@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback, useEffect, useState} from 'react';
+import React, {useMemo, useCallback, useEffect} from 'react';
 
 import {labelID} from '../../../Label';
 import {useUniqueId} from '../../../../utilities/unique-id';
@@ -15,13 +15,9 @@ export function TextField({
   onChange,
   ...rest
 }: TextFieldProps) {
-  const [inlineAutocomplete, setInlineAutocomplete] = useState('');
-  const [selection, setSelection] = useState<TextFieldProps['selection']>();
-
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
-    activeOptionValue,
     activeOptionId,
     listboxId,
     expanded,
@@ -44,33 +40,6 @@ export function TextField({
     if (setTextFieldLabelId) setTextFieldLabelId(labelId);
   }, [labelId, setTextFieldLabelId]);
 
-  useEffect(() => {
-    if (
-      ariaAutocomplete === 'both' &&
-      value !== undefined &&
-      activeOptionValue !== undefined &&
-      activeOptionValue.startsWith(value)
-    ) {
-      const nextInlineAutocomplete = activeOptionValue;
-      const start = value.length;
-      const end = activeOptionValue.length;
-      const selection: TextFieldProps['selection'] = {
-        start,
-        end,
-        direction: 'backward',
-      };
-
-      setInlineAutocomplete(`${value}${nextInlineAutocomplete}`);
-      setSelection(selection);
-    }
-  }, [
-    value,
-    ariaAutocomplete,
-    activeOptionValue,
-    setInlineAutocomplete,
-    setSelection,
-  ]);
-
   const handleFocus = useCallback(() => {
     if (onFocus) onFocus();
     if (onTextFieldFocus) onTextFieldFocus();
@@ -91,14 +60,11 @@ export function TextField({
     [onChange, onTextFieldChange],
   );
 
-  const inputValue = inlineAutocomplete ? inlineAutocomplete : value;
-
   return (
     <PolarisTextField
       {...rest}
-      value={inputValue}
+      value={value}
       id={textFieldId}
-      selection={selection}
       ariaAutocomplete={ariaAutocomplete}
       aria-haspopup="listbox"
       ariaActiveDescendant={activeOptionId}

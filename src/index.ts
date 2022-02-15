@@ -392,3 +392,4 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
+export {useComboboxListbox} from './utilities/combobox';

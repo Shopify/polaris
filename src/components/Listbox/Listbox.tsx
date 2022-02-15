@@ -83,7 +83,6 @@ export function Listbox({
     setActiveOptionId,
     setListboxId,
     onOptionSelected,
-    setActiveOptionValue,
     onKeyToBottom,
   } = useComboboxListbox();
 
@@ -234,14 +233,8 @@ export function Listbox({
         onOptionSelected();
       }
       if (onSelect) onSelect(option.value);
-      if (setActiveOptionValue) setActiveOptionValue(option.value);
     },
-    [
-      setActiveOptionValue,
-      handleChangeActiveOption,
-      onSelect,
-      onOptionSelected,
-    ],
+    [handleChangeActiveOption, onSelect, onOptionSelected],
   );
 
   const listboxContext = useMemo(
