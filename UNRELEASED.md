@@ -5,6 +5,9 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Breaking changes
 
 - Update the base font size to `100%` from `62.5%` and update `rem` values accordingly, along with `pxtorem` `rootValue` ([#4794](https://github.com/Shopify/polaris-react/pull/4794))
+- Removed `additionalNavigation` property in `<Page>` component
+
+### Enhancements
 
 ### Enhancements
 

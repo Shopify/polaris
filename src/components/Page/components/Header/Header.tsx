@@ -48,8 +48,6 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
-  /** @deprecated Additional navigation markup */
-  additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
 }
@@ -72,7 +70,6 @@ export function Header({
   titleHidden = false,
   primaryAction,
   pagination,
-  additionalNavigation,
   breadcrumbs = [],
   secondaryActions = [],
   actionGroups = [],
@@ -80,13 +77,6 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-
-  if (additionalNavigation && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
-    );
-  }
 
   const isSingleRow =
     !primaryAction &&
@@ -108,17 +98,10 @@ export function Header({
       </div>
     ) : null;
 
-  const additionalNavigationMarkup = additionalNavigation ? (
-    <div className={styles.AdditionalNavigationWrapper}>
-      {additionalNavigation}
-    </div>
-  ) : null;
-
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
+    breadcrumbMarkup || paginationMarkup ? (
       <div className={styles.Navigation}>
         {breadcrumbMarkup}
-        {additionalNavigationMarkup}
         {paginationMarkup}
       </div>
     ) : null;
@@ -173,7 +156,6 @@ export function Header({
   const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
     actionMenuMarkup,
     additionalMetadataMarkup,
-    additionalNavigationMarkup,
     breadcrumbMarkup,
     isNavigationCollapsed,
     pageTitleMarkup,
@@ -266,7 +248,6 @@ function notNull(value: any) {
 function determineLayout({
   actionMenuMarkup,
   additionalMetadataMarkup,
-  additionalNavigationMarkup,
   breadcrumbMarkup,
   isNavigationCollapsed,
   pageTitleMarkup,
@@ -276,7 +257,6 @@ function determineLayout({
 }: {
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
-  additionalNavigationMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
@@ -288,7 +268,7 @@ function determineLayout({
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
   // |----------------------------------------------------|
-  // | slot5 |                                    | slot6 |
+  // | slot5 |                                            |
   // |----------------------------------------------------|
   //
   const layouts = {
@@ -299,7 +279,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
@@ -314,7 +293,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -325,7 +303,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
@@ -346,7 +323,6 @@ function determineLayout({
         ),
         slot4: paginationMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

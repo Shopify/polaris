@@ -84,17 +84,6 @@ $action-menu-rollup-computed-width: 40px;
   }
 }
 
-.AdditionalNavigationWrapper {
-  display: flex;
-  flex: 1 0 auto;
-  justify-content: flex-end;
-
-  @media print {
-    // stylelint-disable-next-line declaration-no-important
-    display: none !important;
-  }
-}
-
 ///
 /// Main content
 
@@ -161,22 +150,7 @@ $action-menu-rollup-computed-width: 40px;
 .Row {
   display: flex;
   justify-content: space-between;
-
-  &:first-child {
-    min-height: 36px;
-  }
-
-  + .Row {
-    margin-top: var(--p-space-1);
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .mobileView & {
-      margin-top: var(--p-space-2);
-    }
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .RightAlign {
-      margin-left: 0;
-    }
-  }
+  min-height: 36px;
 }
 
 .LeftAlign {
