@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$navigation-elements-height: rem(36px);
-$title-height: line-height(display-large, large-screen);
+$navigation-elements-height: 36px;
+$title-height: var(--p-line-height-5);
 $stacking-order: (
   title: 10,
   breadcrumbs: 20,
@@ -37,6 +37,6 @@ body {
 }
 
 .divider {
-  border-top: border(divider);
-  padding-top: spacing();
+  border-top: var(--p-border-divider);
+  padding-top: var(--p-space-4);
 }

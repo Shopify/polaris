@@ -1,8 +1,11 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {durationFast} from '@shopify/polaris-tokens';
 
+import {tokens} from '../../../../tokens';
+import {
+  CustomProperties,
+  CustomPropertiesProps,
+} from '../../../CustomProperties';
 import {findFirstFocusableNode} from '../../../../utilities/focus';
-import {ThemeProvider, ThemeProviderProps} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -51,7 +54,7 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
-  colorScheme?: NonNullable<ThemeProviderProps['theme']>['colorScheme'];
+  colorScheme?: CustomPropertiesProps['colorScheme'];
   autofocusTarget?: PopoverAutofocusTarget;
 }
 
@@ -102,7 +105,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, durationFast);
+        }, parseInt(tokens.motion['duration-100'], 10));
       });
     }
 
@@ -111,7 +114,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, durationFast);
+        }, parseInt(tokens.motion['duration-100'], 10));
       });
     }
   }
@@ -255,9 +258,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <ThemeProvider alwaysRenderCustomProperties theme={{colorScheme}}>
+        <CustomProperties colorScheme={colorScheme}>
           <div className={styles.Wrapper}>{content}</div>
-        </ThemeProvider>
+        </CustomProperties>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

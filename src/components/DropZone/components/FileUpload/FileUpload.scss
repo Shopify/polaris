@@ -1,11 +1,7 @@
 @import '../../../../styles/common';
 
-$fileupload-padding: rem(15px);
-$slim-min-height: rem(30px);
-$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
-
 .FileUpload {
-  padding: $fileupload-padding;
+  padding: var(--p-space-4);
   text-align: center;
   display: flex;
   align-items: center;
@@ -14,11 +10,11 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 }
 
 .large {
-  padding: rem(32px);
+  padding: var(--p-space-8);
 }
 
 .small {
-  padding: 12px;
+  padding: var(--p-space-3);
 }
 
 .FileUpload img {
@@ -31,12 +27,12 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   flex: 0 0 auto;
   border: none;
   border-radius: var(--p-border-radius-base);
-  padding: rem(4px) rem(6px);
+  padding: var(--p-space-1) 6px;
   margin: 0;
   text-decoration: none;
   color: var(--p-interactive-hovered);
   background: var(--p-surface-selected-pressed);
-  font-size: rem(12px);
+  font-size: 12px;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;

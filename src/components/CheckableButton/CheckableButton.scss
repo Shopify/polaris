@@ -1,30 +1,28 @@
 @import '../../styles/common';
+@import '../ResourceList/variables';
 
-$button-min-height: control-height();
-
-$button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) /
-  2;
-$control-size: rem(16px);
-$chekbox-label-margin: rem(20px);
+$button-vertical-padding: calc(
+  (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
+);
 
 .CheckableButton {
   @include text-style-button;
   @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
-  min-height: $button-min-height;
-  min-width: $button-min-height;
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
   margin: 0;
-  padding: $button-vertical-padding spacing();
+  padding: $button-vertical-padding var(--p-space-4);
   line-height: 1;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   width: 100%;
   background: var(--p-surface);
-  box-shadow: var(--p-button-drop-shadow);
+  box-shadow: var(--p-shadow-button);
   border: 1px solid var(--p-border-neutral-subdued);
   border-top-color: var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
@@ -43,14 +41,14 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-measuring {
-    font-size: font-size(button);
-    font-weight: 700;
+    font-size: var(--p-font-size-4);
+    font-weight: var(--p-font-weight-bold);
 
     // simulates measuring with an additional digit (e.g. 00 instead of 0)
     &::before {
       content: '';
       display: inline-block;
-      width: font-size(button);
+      width: var(--p-font-size-4);
     }
   }
 
@@ -63,7 +61,7 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-plain {
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
     box-shadow: none;
     background: transparent;
     border: none;
@@ -75,7 +73,7 @@ $chekbox-label-margin: rem(20px);
 
   &.CheckableButton-selectMode {
     @include text-emphasis-subdued;
-    font-weight: 500;
+    font-weight: var(--p-font-weight-medium);
   }
 
   &.CheckableButton-selected {
@@ -88,7 +86,7 @@ $chekbox-label-margin: rem(20px);
   height: var(--p-choice-size);
   width: var(--p-choice-size);
   margin-left: calc(
-    -1 * #{spacing(tight) + rem(1px)} - var(--p-control-border-width)
+    -1 * ((var(--p-space-2) + var(--p-space-025))) - var(--p-control-border-width)
   ); // 1px accounts for border
 }
 
@@ -99,6 +97,6 @@ $chekbox-label-margin: rem(20px);
   max-width: 100%;
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
-  padding: rem(1px) 0;
-  margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
+  padding: var(--p-space-025) 0;
+  margin-left: calc(var(--p-space-5) - var(--p-control-border-width));
 }

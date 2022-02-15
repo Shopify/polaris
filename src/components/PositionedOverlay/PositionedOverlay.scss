@@ -1,8 +1,6 @@
-@import '../../styles/common';
-
 .PositionedOverlay {
   position: absolute;
-  z-index: z-index(overlay);
+  z-index: var(--p-z-2);
 }
 
 .fixed {

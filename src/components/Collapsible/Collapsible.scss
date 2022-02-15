@@ -1,5 +1,3 @@
-@import '../../styles/common';
-
 .Collapsible {
   padding-top: 0;
   padding-bottom: 0;
@@ -7,8 +5,8 @@
   overflow: hidden;
   will-change: max-height;
   transition-property: max-height;
-  transition-duration: duration(fast);
-  transition-timing-function: easing(out);
+  transition-duration: var(--p-duration-100);
+  transition-timing-function: var(--p-ease-out);
 }
 
 // Stop children from being focused when fully closed
@@ -17,7 +15,7 @@
 }
 
 .expandOnPrint {
-  @include when-printing {
+  @media print {
     // stylelint-disable-next-line declaration-no-important
     max-height: none !important;
     overflow: visible;

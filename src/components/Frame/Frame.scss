@@ -1,28 +1,25 @@
 @import '../../styles/common';
 
-$button-size: rem(32px);
-$skip-vertical-offset: rem(10px);
-
 .Frame {
+  --pc-frame-button-size: var(--p-space-8);
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: var(--p-background);
 
-  @include when-printing {
+  @media print {
     background-color: transparent;
   }
 
   @include frame-when-nav-displayed {
-    width: calc(100% - var(--p-frame-offset));
-    margin-left: var(--p-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
+    margin-left: var(--pc-frame-offset);
   }
 }
 
 .Navigation {
-  @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(nav, $fixed-element-stacking-order);
+  z-index: var(--p-z-8);
   top: 0;
   left: 0;
   display: none;
@@ -32,9 +29,14 @@ $skip-vertical-offset: rem(10px);
   outline: none;
   transform: translateX(0%);
 
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+
   @include frame-when-nav-displayed {
     z-index: 1;
-    left: var(--p-frame-offset);
+    left: var(--pc-frame-offset);
     display: flex;
 
     .hasTopBar & {
@@ -61,7 +63,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-enterActive {
   transform: translateX(0%);
-  transition: transform duration(slow) easing(out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .Navigation-exit {
@@ -70,28 +72,32 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-exitActive {
   transform: translateX(-100%);
-  transition: transform duration(slow) easing(out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .NavigationDismiss {
-  @include hidden-when-printing;
   @include recolor-icon(var(--p-surface));
   @include focus-ring;
   position: absolute;
   top: 0;
   left: 100%;
-  width: $button-size;
-  height: $button-size;
-  margin: spacing();
+  width: var(--pc-frame-button-size);
+  height: var(--pc-frame-button-size);
+  margin: var(--p-space-4);
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--p-border-radius-half);
   background: none;
   opacity: 0;
   pointer-events: none;
   will-change: opacity;
   cursor: pointer;
-  transition: opacity duration(fast) easing();
+  transition: opacity var(--p-duration-100) var(--p-ease);
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 
   .Navigation-visible & {
     pointer-events: all;
@@ -101,7 +107,7 @@ $skip-vertical-offset: rem(10px);
   &:focus {
     @include focus-ring($style: focused);
     position: absolute;
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base);
     outline: none;
   }
 
@@ -119,30 +125,34 @@ $skip-vertical-offset: rem(10px);
 }
 
 .TopBar {
-  @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(top-bar, $fixed-element-stacking-order);
+  z-index: var(--p-z-4);
   top: 0;
   left: 0;
   width: 100%;
   height: top-bar-height();
 
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
-    width: calc(100% - var(--p-frame-offset));
+    left: var(--pc-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
   }
 }
 
 .ContextualSaveBar {
   position: fixed;
-  z-index: z-index(context-bar, $fixed-element-stacking-order);
+  z-index: var(--p-z-5);
   top: 0;
   left: 0;
   width: 100%;
 
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
-    width: calc(100% - var(--p-frame-offset));
+    left: var(--pc-frame-offset);
+    width: calc(100% - var(--pc-frame-offset));
   }
 }
 
@@ -160,7 +170,7 @@ $skip-vertical-offset: rem(10px);
   @include frame-when-nav-displayed {
     .hasNav & {
       padding-left: layout-width(nav);
-      @include when-printing {
+      @media print {
         padding-left: 0;
       }
       @include safe-area-for(padding-left, layout-width(nav), left);
@@ -169,7 +179,7 @@ $skip-vertical-offset: rem(10px);
 
   .hasTopBar & {
     padding-top: top-bar-height();
-    @include when-printing {
+    @media print {
       padding-top: 0;
     }
   }
@@ -177,59 +187,61 @@ $skip-vertical-offset: rem(10px);
 
 .Content {
   position: relative;
-  padding-bottom: var(--global-ribbon-height, 0);
+  padding-bottom: var(--pc-frame-global-ribbon-height, 0);
   flex: 1;
   @include layout-flex-fix;
 }
 
 .GlobalRibbonContainer {
   position: fixed;
-  z-index: z-index(global-ribbon, $fixed-element-stacking-order);
+  z-index: var(--p-z-3);
   bottom: 0;
   width: 100%;
 
   @include frame-when-nav-displayed {
-    left: var(--p-frame-offset);
+    left: var(--pc-frame-offset);
 
     .hasNav & {
-      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+      left: calc(#{layout-width(nav)} + var(--pc-frame-offset));
       @include safe-area-for(
         left,
-        calc(#{layout-width(nav)} + var(--p-frame-offset)),
+        calc(#{layout-width(nav)} + var(--pc-frame-offset)),
         left
       );
-      width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
+      width: calc(100% - #{layout-width(nav)} - var(--pc-frame-offset));
     }
   }
 }
 
 .LoadingBar {
-  @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
+  z-index: var(--p-z-6);
   top: 0;
   right: 0;
   left: 0;
 
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+
   @include frame-when-nav-displayed {
     .hasNav & {
-      left: var(--p-frame-offset);
+      left: var(--pc-frame-offset);
     }
 
     .hasTopBar & {
-      z-index: var(
-        --p-override-loading-z-index,
-        z-index(loading-bar, $fixed-element-stacking-order)
-      );
+      z-index: var(--p-z-6);
     }
   }
 }
 
 .Skip {
+  --pc-frame-skip-vertical-offset: 10px;
   position: fixed;
-  z-index: z-index(skip-to-content, $fixed-element-stacking-order);
-  top: $skip-vertical-offset;
-  left: calc(#{spacing(tight)} + var(--p-frame-offset));
+  z-index: var(--p-z-9);
+  top: var(--pc-frame-skip-vertical-offset);
+  left: calc(var(--p-space-2) + var(--pc-frame-offset));
   opacity: 0;
   pointer-events: none;
 
@@ -245,7 +257,7 @@ $skip-vertical-offset: rem(10px);
   > a {
     @include button-base;
     @include text-style-button;
-    @include focus-ring($border-width: rem(1px));
+    @include focus-ring($border-width: 1px);
     color: var(--p-text);
 
     &:focus {

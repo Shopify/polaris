@@ -1,20 +1,17 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$icon-size: rem(20px);
-$input-height: rem(34px);
-$new-input-height: rem(36px);
-$search-icon-width: $icon-size + spacing();
-
-$stacking-order: (
-  backdrop: 1,
-  input: 2,
-  icon: 3,
-  action: 3,
-);
+$icon-size: 20px;
+$input-height: 34px;
+$new-input-height: 36px;
+$search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 .SearchField {
-  z-index: z-index(modal, $fixed-element-stacking-order);
+  --pc-search-field-backdrop: 1;
+  --pc-search-field-input: 2;
+  --pc-search-field-icon: 3;
+  --pc-search-field-action: 3;
+  z-index: var(--p-z-11);
   position: relative;
   display: flex;
   flex: 1 1 auto;
@@ -45,7 +42,7 @@ $stacking-order: (
   }
 
   ~ .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border);
+    border: 1px solid var(--pc-top-bar-border);
   }
 
   ~ .Icon {
@@ -59,7 +56,7 @@ $stacking-order: (
   }
 
   .BackdropShowFocusBorder {
-    border: 1px solid var(--top-bar-border);
+    border: 1px solid var(--pc-top-bar-border);
   }
 
   .Icon {
@@ -69,7 +66,7 @@ $stacking-order: (
 
 .Input {
   @include text-style-input;
-  z-index: z-index(input, $stacking-order);
+  z-index: var(--pc-search-field-input);
   height: $new-input-height;
   width: 100%;
   padding: 0 0 0 $search-icon-width;
@@ -78,12 +75,13 @@ $stacking-order: (
   outline: none;
   color: var(--p-text);
   will-change: fill, color;
-  transition: fill duration() easing(), color duration() easing();
+  transition: fill var(--p-duration-200) var(--p-ease),
+    color var(--p-duration-200) var(--p-ease);
   appearance: textfield;
 
   &::placeholder {
     color: var(--p-text);
-    transition: (duration() - 33ms) color easing() 33ms;
+    transition: var(--p-duration-150) color var(--p-ease) 33ms;
   }
 
   &::-webkit-search-decoration,
@@ -95,16 +93,16 @@ $stacking-order: (
 .Icon {
   @include recolor-icon(var(--p-icon));
   position: absolute;
-  z-index: z-index(icon, $stacking-order);
+  z-index: var(--pc-search-field-icon);
   top: 50%;
-  left: spacing(tight);
+  left: var(--p-space-2);
   display: flex;
   height: $icon-size;
   pointer-events: none;
   transform: translateY(-50%);
 
   svg {
-    transition: (duration() - 33ms) fill easing() 33ms;
+    transition: var(--p-duration-150) fill var(--p-ease) 33ms;
   }
 }
 
@@ -112,11 +110,11 @@ $stacking-order: (
   @include recolor-icon(var(--p-icon));
   @include focus-ring($size: 'wide');
   position: relative;
-  z-index: z-index(action, $stacking-order);
+  z-index: var(--pc-search-field-action);
   border: none;
   appearance: none;
   background: transparent;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
 
   &:focus,
   &:hover {
@@ -140,18 +138,18 @@ $stacking-order: (
 .Backdrop {
   @include focus-ring;
   position: absolute;
-  z-index: z-index(backdrop, $stacking-order);
+  z-index: var(--pc-search-field-backdrop);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: var(
     --p-surface-search-field,
-    var(--top-bar-background-lighter)
+    var(--pc-top-bar-background-lighter)
   );
   will-change: background-color;
-  transition: background-color duration() easing();
-  border-radius: var(--p-border-radius-base);
+  transition: background-color var(--p-duration-200) var(--p-ease);
+  border-radius: var(--p-border-radius-1);
   animation: toLightBackground 0.01ms;
 }
 
@@ -159,7 +157,7 @@ $stacking-order: (
   to {
     background-color: var(
       --p-surface-neutral,
-      var(--top-bar-background-lighter)
+      var(--pc-top-bar-background-lighter)
     );
   }
 }

@@ -195,11 +195,11 @@ describe('<SingleThumb />', () => {
     it('gets set on the parent element', () => {
       const element = mountWithApp(<SingleThumb {...mockProps} />);
       const expected = {
-        '--Polaris-RangeSlider-min': 10,
-        '--Polaris-RangeSlider-max': 20,
-        '--Polaris-RangeSlider-current': 15,
-        '--Polaris-RangeSlider-progress': '50%',
-        '--Polaris-RangeSlider-output-factor': '0',
+        '--pc-range-slider-min': 10,
+        '--pc-range-slider-max': 20,
+        '--pc-range-slider-current': 15,
+        '--pc-range-slider-progress': '50%',
+        '--pc-range-slider-output-factor': '0',
       };
 
       expect(element).toContainReactComponent('div', {

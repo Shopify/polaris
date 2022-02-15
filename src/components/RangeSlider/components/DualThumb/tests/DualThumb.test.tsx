@@ -296,8 +296,8 @@ describe('<DualThumb />', () => {
 
       expect(dualThumb).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--Polaris-RangeSlider-progress-lower': '0px',
-          '--Polaris-RangeSlider-progress-upper': '-0.32px',
+          '--pc-range-slider-progress-lower': '0px',
+          '--pc-range-slider-progress-upper': '-0.32px',
         }),
       });
     });
@@ -313,8 +313,8 @@ describe('<DualThumb />', () => {
 
         expect(dualThumb).toContainReactComponent('div', {
           style: expect.objectContaining({
-            '--Polaris-RangeSlider-progress-lower': '0px',
-            '--Polaris-RangeSlider-progress-upper': '-0.40000000000000036px',
+            '--pc-range-slider-progress-lower': '0px',
+            '--pc-range-slider-progress-upper': '-0.40000000000000036px',
           }),
         });
       });
@@ -331,8 +331,8 @@ describe('<DualThumb />', () => {
 
         expect(dualThumb).toContainReactComponent('div', {
           style: expect.objectContaining({
-            '--Polaris-RangeSlider-progress-lower': '0px',
-            '--Polaris-RangeSlider-progress-upper': '-0.3999999999999999px',
+            '--pc-range-slider-progress-lower': '0px',
+            '--pc-range-slider-progress-upper': '-0.3999999999999999px',
           }),
         });
       });

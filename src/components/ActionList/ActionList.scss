@@ -1,11 +1,11 @@
 @import '../../styles/common';
 
-$image-size: rem(20px);
-$item-min-height: rem(40px);
-$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
-$titleVerticalSpacing: spacing(tight) * 1.5;
-
 .ActionList {
+  --pc-action-list-image-size: 20px;
+  --pc-action-list-item-min-height: var(--p-space-10);
+  --pc-action-list-item-vertical-padding: calc(
+    (var(--pc-action-list-item-min-height) - var(--p-line-height-2)) / 2
+  );
   outline: none;
   list-style: none;
   margin: 0;
@@ -13,15 +13,15 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
 }
 
 .Section-withoutTitle:not(:first-child) {
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
 }
 
 .Actions {
   outline: none;
   list-style: none;
   margin: 0;
-  border-top: border('divider');
-  padding: spacing(tight);
+  border-top: var(--p-border-divider);
+  padding: var(--p-space-2);
 }
 
 .ActionList,
@@ -34,43 +34,34 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
 
 .Title {
   @include text-style-subheading;
-  padding: spacing(extra-tight) spacing() $titleVerticalSpacing spacing();
+  padding: var(--p-space-1) var(--p-space-4) var(--p-space-3) var(--p-space-4);
 
   &.firstSectionWithTitle {
-    padding-top: $titleVerticalSpacing;
+    padding-top: var(--p-space-3);
   }
 }
 
 .Item {
   @include unstyled-button;
-  @include unstyled-link;
   @include focus-ring;
   display: block;
   width: 100%;
-  min-height: $item-min-height;
+  min-height: var(--pc-action-list-item-min-height);
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
-  padding: $item-vertical-padding spacing(tight);
-  border-radius: var(--p-border-radius-base);
+  padding: var(--pc-action-list-item-vertical-padding) var(--p-space-2);
+  border-radius: var(--p-border-radius-1);
   border-top: 1px solid transparent;
+  color: inherit;
   @media (forced-colors: active) {
-    @include high-contrast-border;
+    border: var(--p-border-width-1) solid transparent;
   }
 
   &:hover {
     background-color: var(--p-surface-hovered);
     text-decoration: none;
-
-    @include high-contrast-outline($border-width: border-width(thicker));
-  }
-
-  &.active {
-    @include recolor-icon(var(--p-interactive));
-    background-color: var(--p-surface-selected);
-
-    &::before {
-      @include list-selected-indicator;
-    }
+    outline: var(--p-border-width-3) solid transparent;
   }
 
   &:active {
@@ -80,7 +71,20 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
-    @include high-contrast-outline($border-width: border-width(thicker));
+    outline: var(--p-border-width-3) solid transparent;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &.active {
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-selected);
+
+    &::before {
+      @include list-selected-indicator;
+    }
   }
 
   &.destructive {
@@ -121,20 +125,21 @@ $titleVerticalSpacing: spacing(tight) * 1.5;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
-  height: $image-size;
-  width: $image-size;
-  border-radius: border-radius();
+  height: var(--pc-action-list-image-size);
+  width: var(--pc-action-list-image-size);
+  border-radius: var(--p-border-radius-base);
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  margin: calc(-0.5 * var(--pc-action-list-image-size)) var(--p-space-4)
+    calc(-0.5 * var(--pc-action-list-image-size)) 0;
   background-size: cover;
   background-position: center center;
 }
 
 .Suffix {
   @include recolor-icon(var(--p-icon));
-  margin-left: spacing();
+  margin-left: var(--p-space-4);
 }
 
 .ContentBlock,
