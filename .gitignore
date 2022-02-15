@@ -1,9 +1,6 @@
 *.log
 node_modules
 /.loom
-/build
-/build-internal
 .DS_Store
 *.scss.d.ts
-/src/styles/polaris-tokens
 .idea
