@@ -91,7 +91,7 @@ $context-control-expand-after: 1400px;
   }
 
   .IconWrapper {
-    @include focus-ring($border-width: rem(6px));
+    @include focus-ring($border-width: 6px);
   }
 
   // stylelint-disable selector-max-specificity
