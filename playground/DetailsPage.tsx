@@ -14,7 +14,6 @@ import {
 
 import {
   ActionList,
-  Avatar,
   Badge,
   Caption,
   Card,
@@ -522,7 +521,6 @@ export function DetailsPage() {
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
-      additionalNavigation={<Avatar initials="JD" />}
       primaryAction={{
         content: 'Save this page',
         // eslint-disable-next-line no-console

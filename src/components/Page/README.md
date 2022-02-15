@@ -173,7 +173,6 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     hasPrevious: true,
     hasNext: true,
   }}
-  additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
 >
   <Card title="Credit card" sectioned>
     <p>Credit card information</p>
