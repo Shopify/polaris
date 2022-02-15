@@ -17,9 +17,9 @@ const lightDeclarations = getColorSchemeDeclarations(
 /**
  * Creates CSS Rules for each color-scheme.
  * @example:
- * [color-scheme="light"] {...}
- * [color-scheme="dark"] {...}
- * [color-scheme="dim"] {...}
+ * [p-color-scheme="light"] {...}
+ * [p-color-scheme="dark"] {...}
+ * [p-color-scheme="dim"] {...}
  */
 export function getColorSchemeRules(
   tokens: Tokens,
@@ -29,7 +29,7 @@ export function getColorSchemeRules(
     .map((key) => {
       const colorScheme = key as ColorScheme;
 
-      const selector = `[color-scheme="${colorScheme}"]`;
+      const selector = `[p-color-scheme="${colorScheme}"]`;
       const properties = getColorSchemeDeclarations(
         colorScheme,
         tokens,
@@ -61,7 +61,7 @@ export function getColorSchemeDeclarations(
   osColorSchemes: OSColorSchemes,
 ) {
   return [
-    `color-scheme:${osColorSchemes[colorScheme]};`,
+    `p-color-scheme:${osColorSchemes[colorScheme]};`,
     getCustomProperties(tokens.colorSchemes[colorScheme]),
   ].join('');
 }

@@ -99,7 +99,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     // Inlining the following custom properties to maintain backward
     // compatibility with the legacy ThemeProvider implementation.
     document.body.setAttribute(
-      'color-scheme',
+      'p-color-scheme',
       this.props.colorScheme || DEFAULT_COLOR_SCHEME,
     );
     document.body.style.backgroundColor = 'var(--p-background)';
