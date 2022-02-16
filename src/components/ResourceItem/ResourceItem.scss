@@ -45,22 +45,19 @@ $resource-list-item-variables: (
     }
   }
 
-  &:not(.disabled) {
-    cursor: pointer;
-
-    &:hover {
+  &:hover {
+    &:not(.disabled) {
       background-color: var(--p-surface-hovered);
+      cursor: pointer;
+    }
 
+    &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
-      &:not(.persistActions) {
-        .Actions {
-          // stylelint-disable-next-line selector-max-specificity max-nesting-depth
-          @include action-unhide;
-
-          // stylelint-disable-next-line max-nesting-depth
-          @include page-content-when-partially-condensed {
-            display: none;
-          }
+      .Actions {
+        @include action-unhide;
+        // stylelint-disable-next-line max-nesting-depth
+        @include page-content-when-partially-condensed {
+          display: none;
         }
       }
     }
