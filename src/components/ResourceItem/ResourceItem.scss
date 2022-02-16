@@ -50,7 +50,7 @@ $resource-list-item-variables: (
     &:hover {
       background-color: var(--p-surface-hovered);
 
-      // stylelint-disable-next-line max-nesting-depth
+      // stylelint-disable-next-line selector-max-specificity
       &:not(.persistActions) {
         // stylelint-disable-next-line selector-max-specificity
         .Actions {
