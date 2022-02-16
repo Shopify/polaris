@@ -72,7 +72,7 @@ interface NonMutuallyExclusiveProps {
   selection?: {
     start: number;
     end: number;
-    direction: 'none' | 'forward' | 'backward';
+    direction?: 'forward' | 'backward' | 'none';
   };
   /** Disable editing of the input */
   readOnly?: boolean;
@@ -229,8 +229,9 @@ export function TextField({
       type === 'url' ||
       type === 'password';
     if (!input || !isSupportedInputType || selection === undefined) return;
-    const {start, end, direction} = selection;
-    input.setSelectionRange(start, end, direction);
+    const {start, end} = selection;
+    input.setSelectionRange(start, end);
+    console.log('set selection: ', selection);
   }, [selection, type]);
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy

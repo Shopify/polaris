@@ -7,6 +7,8 @@ import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
 
 export function TextField({
+  type = 'text',
+  selection,
   value,
   id: idProp,
   ariaAutocomplete = 'list',
@@ -63,6 +65,7 @@ export function TextField({
   return (
     <PolarisTextField
       {...rest}
+      selection={selection}
       value={value}
       id={textFieldId}
       ariaAutocomplete={ariaAutocomplete}
@@ -70,6 +73,7 @@ export function TextField({
       ariaActiveDescendant={activeOptionId}
       ariaControls={listboxId}
       role="combobox"
+      type={type}
       ariaExpanded={expanded}
       onFocus={handleFocus}
       onBlur={handleBlur}
