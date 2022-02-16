@@ -178,7 +178,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 label={checkboxAccessibilityLabel}
                 labelHidden
                 checked={selected}
-                disabled={loading}
+                disabled={loading || disabled}
               />
             </div>
           </div>
@@ -224,10 +224,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {!disabled &&
-                buttonsFrom(shortcutActions, {
-                  plain: true,
-                })}
+              {buttonsFrom(shortcutActions, {
+                plain: true,
+              })}
             </ButtonGroup>
           </div>
         );
