@@ -224,9 +224,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(shortcutActions, {
-                plain: true,
-              })}
+              {!disabled &&
+                buttonsFrom(shortcutActions, {
+                  plain: true,
+                })}
             </ButtonGroup>
           </div>
         );
