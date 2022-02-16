@@ -208,6 +208,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
+      disabled && styles.disabled,
     );
 
     const listItemClassName = classNames(

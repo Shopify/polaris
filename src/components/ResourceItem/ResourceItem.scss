@@ -37,7 +37,7 @@ $resource-list-item-variables: (
 .ResourceItem {
   position: relative;
   outline: none;
-  cursor: pointer;
+  cursor: default;
 
   &:not(.persistActions) {
     .Actions {
@@ -45,17 +45,20 @@ $resource-list-item-variables: (
     }
   }
 
-  &:hover {
-    background-color: var(--p-surface-hovered);
+  &:not(.disabled) {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--p-surface-hovered);
 
-    &:not(.persistActions) {
-      // stylelint-disable-next-line selector-max-specificity
-      .Actions {
-        @include action-unhide;
+      &:not(.persistActions) {
+        // stylelint-disable-next-line selector-max-specificity
+        .Actions {
+          @include action-unhide;
 
-        // stylelint-disable-next-line max-nesting-depth
-        @include page-content-when-partially-condensed {
-          display: none;
+          // stylelint-disable-next-line max-nesting-depth
+          @include page-content-when-partially-condensed {
+            display: none;
+          }
         }
       }
     }
