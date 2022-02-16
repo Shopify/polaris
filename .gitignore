@@ -1,8 +1,9 @@
 *.log
 node_modules
 /.loom
-/build
-/build-internal
+
+#
 .DS_Store
-*.scss.d.ts
+
+# IntelliJ IDE crap
 .idea

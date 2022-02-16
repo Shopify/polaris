@@ -1,0 +1,3 @@
+*.scss.d.ts
+/build
+/build-internal
