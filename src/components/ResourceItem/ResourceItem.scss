@@ -53,8 +53,8 @@ $resource-list-item-variables: (
 
       // stylelint-disable-next-line selector-max-specificity
       &:not(.persistActions) {
-        // stylelint-disable-next-line selector-max-specificity max-nesting-depth
         .Actions {
+          // stylelint-disable-next-line selector-max-specificity max-nesting-depth
           @include action-unhide;
 
           // stylelint-disable-next-line max-nesting-depth
