@@ -304,6 +304,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         external={external}
         tabIndex={tabIndex}
         id={this.overlayId}
+        disabled={disabled}
       />
     ) : (
       <button
@@ -314,6 +315,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         onClick={this.handleClick}
         tabIndex={tabIndex}
         ref={this.buttonOverlay}
+        disabled={disabled}
       />
     );
 
