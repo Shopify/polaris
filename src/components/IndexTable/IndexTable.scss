@@ -1,23 +1,15 @@
 @import '../../styles/common';
 
-$index-table-stacking-order: (
-  cell: 1,
-  sticky-cell: 31,
-  scroll-bar: 35,
-  bulk-actions: 36,
-  loading-panel: 37,
-);
-
 $breakpoint-small: 458px;
-$table-header-offset: rem(52px);
-$spacing-loose: rem(12px);
-$spacing-extra-loose: $spacing-loose + spacing(extra-tight);
-$translate-offset: rem(50px) - $spacing-extra-loose;
-$checkbox-offset-left: rem(14px);
-$checkbox-offset-right: rem(18px);
-$small-checkbox-offset: rem(2px);
 
 .IndexTable {
+  --pc-index-table-translate-offset: calc(50px - var(--p-space-4));
+  --pc-index-table-table-header-offset: 52px;
+  --pc-index-table-cell: 1;
+  --pc-index-table-sticky-cell: 31;
+  --pc-index-table-scroll-bar: 35;
+  --pc-index-table-bulk-actions: 36;
+  --pc-index-table-loading-panel: 37;
   position: relative;
   overflow: hidden;
   border-radius: inherit;
@@ -30,7 +22,8 @@ $small-checkbox-offset: rem(2px);
 
 .LoadingContainer-enter-active {
   opacity: 1;
-  transition: opacity duration(fast) ease-out, transform duration(fast) ease-out;
+  transition: opacity var(--p-duration-100) ease-out,
+    transform var(--p-duration-100) ease-out;
   transform: translateY(0);
 }
 
@@ -42,14 +35,15 @@ $small-checkbox-offset: rem(2px);
 .LoadingContainer-exit-active {
   opacity: 0;
   transform: translateY(-100%);
-  transition: opacity duration(fast) ease-in, transform duration(fast) ease-in;
+  transition: opacity var(--p-duration-100) ease-in,
+    transform var(--p-duration-100) ease-in;
 }
 
-$loading-panel-height: rem(53px);
+$loading-panel-height: 53px;
 
 .LoadingPanel {
   position: absolute;
-  z-index: z-index(loading-panel, $index-table-stacking-order);
+  z-index: var(--pc-index-table-loading-panel);
   top: 0;
   left: 0;
   display: flex;
@@ -57,22 +51,22 @@ $loading-panel-height: rem(53px);
   justify-content: center;
   align-items: center;
   background: var(--p-surface);
-  padding: spacing('tight') spacing();
-  box-shadow: shadow();
+  padding: var(--p-space-2) var(--p-space-4);
+  box-shadow: var(--p-shadow-base);
 
   .LoadingPanelRow {
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
     background: var(--p-surface-highlight-subdued);
-    padding: spacing('tight');
-    padding-bottom: spacing('extra-tight');
-    border-radius: var(--p-border-radius-base);
+    padding: var(--p-space-2);
+    padding-bottom: var(--p-space-1);
+    border-radius: var(--p-border-radius-1);
   }
 }
 
 .LoadingPanelText {
-  margin-left: rem(12px);
+  margin-left: var(--p-space-3);
   color: var(--p-text);
 }
 
@@ -94,14 +88,14 @@ $loading-panel-height: rem(53px);
 
   .TableCell-first,
   .TableHeading-first {
-    filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+    filter: drop-shadow(1px 0 0 var(--p-divider));
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+      filter: drop-shadow(1px 0 0 var(--p-divider));
     }
   }
 
@@ -110,7 +104,7 @@ $loading-panel-height: rem(53px);
     .TableHeading-second,
     .TableCell:first-child {
       visibility: visible;
-      filter: drop-shadow(rem(1px) 0 0 var(--p-divider));
+      filter: drop-shadow(1px 0 0 var(--p-divider));
     }
   }
 }
@@ -118,7 +112,7 @@ $loading-panel-height: rem(53px);
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
-  filter: drop-shadow(0 rem(-1px) 0 var(--p-divider));
+  filter: drop-shadow(0 -1px 0 var(--p-divider));
 
   &.TableRow-unclickable {
     cursor: auto;
@@ -178,18 +172,20 @@ $loading-panel-height: rem(53px);
 }
 
 .TableHeading {
-  padding: spacing();
+  padding: var(--p-space-4);
   text-align: left;
-  font-weight: 500;
+  font-weight: var(--p-font-weight-medium);
   white-space: nowrap;
   border: 0;
 }
 
 .TableHeading-first {
+  --pc-index-table-checkbox-offset-left: 14px;
+  --pc-index-table-checkbox-offset-right: 18px;
   position: sticky;
   left: 0;
-  padding-left: $checkbox-offset-left;
-  padding-right: $checkbox-offset-right;
+  padding-left: var(--pc-index-table-checkbox-offset-left);
+  padding-right: var(--pc-index-table-checkbox-offset-right);
 }
 
 .ColumnHeaderCheckboxWrapper {
@@ -197,8 +193,8 @@ $loading-panel-height: rem(53px);
 }
 
 .FirstStickyHeaderElement {
-  margin-left: #{-1 * $small-checkbox-offset};
-  padding-right: $small-checkbox-offset;
+  margin-left: calc(-1 * var(--p-space-05));
+  padding-right: var(--p-space-05);
 }
 
 .TableHeading-second {
@@ -220,9 +216,9 @@ $loading-panel-height: rem(53px);
 }
 
 .TableCell {
-  z-index: z-index(cell, $index-table-stacking-order);
+  z-index: var(--pc-index-table-cell);
   text-align: left;
-  padding: spacing(tight) spacing();
+  padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
 }
 
@@ -233,17 +229,17 @@ $loading-panel-height: rem(53px);
 .TableCell-first {
   position: sticky;
   left: 0;
-  z-index: z-index(sticky-cell, $index-table-stacking-order);
+  z-index: var(--pc-index-table-sticky-cell);
   padding: 0;
 }
 
 .TableCell-first + .TableCell {
-  left: var(--p-checkbox-offset);
+  left: var(--pc-checkbox-offset);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    z-index: var(--pc-index-table-sticky-cell);
     padding: 0;
   }
 }
@@ -253,7 +249,7 @@ $loading-panel-height: rem(53px);
     left: 0;
     background-color: var(--p-surface);
     position: sticky;
-    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    z-index: var(--pc-index-table-sticky-cell);
   }
 
   .statusSuccess {
@@ -282,7 +278,7 @@ $loading-panel-height: rem(53px);
   .TableCell:last-child,
   .TableHeading-last {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(rem(-1px) 0 0 var(--p-divider));
+      filter: drop-shadow(-1px 0 0 var(--p-border-divider));
     }
   }
 }
@@ -293,7 +289,7 @@ $loading-panel-height: rem(53px);
       position: sticky;
       right: 0;
       background-color: var(--p-surface);
-      z-index: z-index(sticky-cell, $index-table-stacking-order);
+      z-index: var(--pc-index-table-sticky-cell);
     }
   }
 
@@ -338,7 +334,7 @@ $loading-panel-height: rem(53px);
   left: 0;
   right: 0;
   visibility: hidden;
-  z-index: z-index(loading-panel, $index-table-stacking-order);
+  z-index: var(--pc-index-table-loading-panel);
 }
 
 .StickyTableHeader {
@@ -347,8 +343,8 @@ $loading-panel-height: rem(53px);
   width: 100%;
 
   &:not(.StickyTableHeader-isSticky) {
-    top: rem(-1000px);
-    left: rem(-1000px);
+    top: -1000px;
+    left: -1000px;
   }
 }
 
@@ -357,8 +353,8 @@ $loading-panel-height: rem(53px);
 }
 
 .StickyTableColumnHeader-isScrolling {
-  box-shadow: 1px 1px 0 0 var(--p-divider), 1px 0 1px 1px rgba(63, 63, 68, 0.05),
-    1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  box-shadow: 1px 1px 0 0 var(--p-border-divider),
+    1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
 }
 
 .StickyTableHeadings {
@@ -380,7 +376,7 @@ $loading-panel-height: rem(53px);
 }
 
 .StickyTableHeading-second-scrolling {
-  padding: 0 rem(0.6px) 0 spacing();
+  padding: 0 var(--p-space-025) 0 var(--p-space-4);
   display: none;
 
   @include breakpoint-after($breakpoint-small) {
@@ -391,7 +387,7 @@ $loading-panel-height: rem(53px);
 .StickyTableHeader-isSticky {
   visibility: visible;
   background-color: var(--p-surface);
-  box-shadow: shadow();
+  box-shadow: var(--p-shadow-base);
 }
 
 .IndexTable:hover {
@@ -411,26 +407,25 @@ $loading-panel-height: rem(53px);
 .BulkActionsWrapper {
   visibility: visible;
   position: relative;
-  z-index: z-index(bulk-actions, $index-table-stacking-order);
+  z-index: var(--pc-index-table-bulk-actions);
   top: 0;
   left: 0;
   right: 0;
-  padding: spacing('tight');
+  padding: var(--p-space-2);
   background: var(--p-surface);
 }
 
-$scroll-bar-size: rem(8px);
-$scroll-bar-border-radius: rem(4px);
+$scroll-bar-size: var(--p-space-2);
 
 .ScrollBarContainer {
   position: sticky;
-  z-index: z-index(scroll-bar, $index-table-stacking-order);
+  z-index: var(--pc-index-table-scroll-bar);
   bottom: 0;
-  padding: rem(2px);
-  border-top: border('divider');
+  padding: var(--p-space-05);
+  border-top: var(--p-border-divider);
   background-color: var(--p-surface);
-  border-bottom-right-radius: var(--p-border-radius-base);
-  border-bottom-left-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-1);
+  border-bottom-left-radius: var(--p-border-radius-1);
 }
 
 .scrollBarContainerCondensed {
@@ -446,7 +441,7 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: $scroll-bar-border-radius;
+  border-radius: var(--p-border-radius-1);
   background-color: transparent;
 }
 
@@ -458,9 +453,9 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: $scroll-bar-border-radius;
+  border-radius: var(--p-border-radius-1);
   background-color: var(--p-border-neutral-subdued);
-  transition: background-color duration(fast) ease-out;
+  transition: background-color var(--p-duration-100) ease-out;
 }
 
 .ScrollBar:hover::-webkit-scrollbar-thumb {
@@ -472,20 +467,20 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .selectMode {
-  transform: translateY(-$table-header-offset);
-  margin-bottom: -$table-header-offset;
+  transform: translateY(calc(-1 * var(--pc-index-table-table-header-offset)));
+  margin-bottom: calc(-1 * var(--pc-index-table-table-header-offset));
 }
 
 .EmptySearchResultWrapper {
-  padding: spacing();
+  padding: var(--p-space-4);
 }
 
 .condensedRow {
-  width: calc(100% + #{$translate-offset});
-  transform: translateX(-1 * $translate-offset);
-  transition: transform easing() duration();
+  width: calc(100% + var(--pc-index-table-translate-offset));
+  transform: translateX(calc(-1 * var(--pc-index-table-translate-offset)));
+  transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
-  border-top: border('divider');
+  border-top: var(--p-border-divider);
   filter: none;
   align-items: center;
 }
@@ -509,7 +504,7 @@ $scroll-bar-border-radius: rem(4px);
   align-items: flex-start;
   width: 100%;
   min-height: 56px;
-  padding: 10px spacing();
+  padding: 10px var(--p-space-4);
   background-color: var(--p-surface);
 
   &.unselectable {
@@ -523,10 +518,10 @@ $scroll-bar-border-radius: rem(4px);
 }
 
 .StickyTableHeader-condensed {
-  padding: 16px spacing() 8px;
+  padding: var(--p-space-4) var(--p-space-4) var(--p-space-2);
 }
 
 .ScrollBarContent {
   height: 1px;
-  width: var(--p-scroll-bar-content-width);
+  width: var(--pc-index-table-scroll-bar-content-width);
 }

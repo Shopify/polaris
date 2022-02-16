@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.9.1']
+        node-version: ['16.13.0']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -17,6 +17,7 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
+      - run: yarn run validate-tokens
       - run: yarn run type-check && yarn run build
       - run: yarn run lint
       - run: yarn run test

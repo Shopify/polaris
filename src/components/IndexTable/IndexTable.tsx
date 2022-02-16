@@ -2,8 +2,8 @@ import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
-import {durationFast} from '@shopify/polaris-tokens';
 
+import {tokens} from '../../tokens';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
@@ -201,7 +201,7 @@ function IndexTableBase({
   const resizeTableScrollBar = useCallback(() => {
     if (scrollBarElement.current && tableElement.current && tableInitialized) {
       scrollBarElement.current.style.setProperty(
-        '--p-scroll-bar-content-width',
+        '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
       );
     }
@@ -240,7 +240,7 @@ function IndexTableBase({
   const handleResize = useCallback(() => {
     // hide the scrollbar when resizing
     scrollBarElement.current?.style.setProperty(
-      '--p-scroll-bar-content-width',
+      '--pc-index-table-scroll-bar-content-width',
       `0px`,
     );
 
@@ -403,7 +403,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={durationFast}
+      timeout={parseInt(tokens.motion['duration-100'], 10)}
       appear
       unmountOnExit
     >

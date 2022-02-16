@@ -1,25 +1,25 @@
 @import '../../styles/common';
 
-$font-size: rem(12px);
-$range-end-border-radius: rem(30px);
+$font-size: 12px;
 
 .DatePicker {
+  --pc-date-picker-range-end-border-radius: var(--p-border-radius-6);
   position: relative;
 }
 
 .MonthLayout {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: calc(-1 * var(--p-space-4));
+  margin-left: calc(-1 * var(--p-space-4));
 }
 
 .MonthContainer {
-  flex: 1 1 rem(230px);
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
-  min-width: rem(230px);
+  flex: 1 1 230px;
+  margin-top: var(--p-space-4);
+  margin-left: var(--p-space-4);
+  max-width: calc(100% - var(--p-space-4));
+  min-width: 230px;
 }
 
 .Month {
@@ -31,7 +31,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Month-current {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
 }
 
 .DayCell {
@@ -39,7 +39,7 @@ $range-end-border-radius: rem(30px);
   background: transparent;
   margin: 0;
   padding: 0;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 }
 
 .DayCell-inRange {
@@ -51,10 +51,10 @@ $range-end-border-radius: rem(30px);
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   background: transparent;
   border: none;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   outline: none;
   font-size: $font-size;
   text-align: center;
@@ -64,7 +64,7 @@ $range-end-border-radius: rem(30px);
   &:hover {
     background: var(--p-interactive-hovered);
     color: var(--p-text-on-interactive);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   @include focus-ring;
@@ -75,7 +75,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Day-today {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
 }
 
 .Day-inRange {
@@ -143,22 +143,22 @@ $range-end-border-radius: rem(30px);
 }
 
 .Weekday {
-  padding: spacing(tight);
+  padding: var(--p-space-2);
   background: transparent;
   font-size: $font-size;
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   color: var(--p-text-subdued);
   text-align: center;
 }
 
 .Weekday-current {
-  font-weight: 700;
+  font-weight: var(--p-font-weight-bold);
   color: var(--p-text);
 }
 
 .Header {
   position: absolute;
-  top: spacing();
+  top: var(--p-space-4);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -166,43 +166,47 @@ $range-end-border-radius: rem(30px);
 
 .Title {
   flex: 1 1 auto;
-  margin-top: rem(2px);
-  padding-bottom: spacing(extra-tight);
+  margin-top: var(--p-space-05);
+  padding-bottom: var(--p-space-1);
   text-align: center;
 }
 
 .Day-firstInRange {
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
 
   &.Day-hasRange,
   &.Day-hoverRight {
-    border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+    border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
+      var(--pc-date-picker-range-end-border-radius);
 
     &::after {
-      border-radius: $range-end-border-radius 0 0 $range-end-border-radius;
+      border-radius: var(--pc-date-picker-range-end-border-radius) 0 0
+        var(--pc-date-picker-range-end-border-radius);
     }
   }
 }
 
 .Day-lastInRange {
-  border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+  border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+    var(--pc-date-picker-range-end-border-radius) 0;
 
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+      var(--pc-date-picker-range-end-border-radius) 0;
   }
 }
 
 .Week {
-  margin-bottom: rem(2px);
+  margin-bottom: var(--p-space-05);
 
   // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1) 0 0 var(--p-border-radius-1);
   }
 
   // stylelint-disable-next-line selector-max-specificity
   > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-    border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
+    border-radius: 0 var(--p-border-radius-1) var(--p-border-radius-1) 0;
   }
 }
 
@@ -210,6 +214,7 @@ $range-end-border-radius: rem(30px);
 .Day-inRange:not(:hover) + .Day {
   // stylelint-disable-next-line selector-max-specificity
   &::after {
-    border-radius: 0 $range-end-border-radius $range-end-border-radius 0;
+    border-radius: 0 var(--pc-date-picker-range-end-border-radius)
+      var(--pc-date-picker-range-end-border-radius) 0;
   }
 }

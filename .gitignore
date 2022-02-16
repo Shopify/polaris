@@ -5,5 +5,4 @@ node_modules
 /build-internal
 .DS_Store
 *.scss.d.ts
-/src/styles/polaris-tokens
 .idea

@@ -22,7 +22,7 @@ function AppProviderWithKnobs({colorScheme, children}, context) {
   if (omitAppProvider === 'true') return children;
 
   return (
-    <AppProvider i18n={enTranslations} theme={{colorScheme}}>
+    <AppProvider colorScheme={colorScheme} i18n={enTranslations}>
       {children}
     </AppProvider>
   );

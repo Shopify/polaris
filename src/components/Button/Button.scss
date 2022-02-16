@@ -1,22 +1,20 @@
 @import '../../styles/common';
 
-$min-height: control-height();
-$vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
-$slim-min-height: rem(28px);
-$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
-$large-min-height: rem(44px);
-$large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
-$spinner-size: rem(20px);
-
-$partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
-  inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
-
-$stacking-order: (
-  segment: 10,
-  focused: 20,
-);
-
 .Button {
+  --pc-button-slim-min-height: var(--p-line-height-4);
+  --pc-button-large-min-height: var(--p-line-height-7);
+  --pc-button-vertical-padding: calc(
+    (var(--p-line-height-6) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-slim-vertical-padding: calc(
+    (var(--pc-button-slim-min-height) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-large-vertical-padding: calc(
+    (var(--pc-button-large-min-height) - var(--p-line-height-2) - 2px) / 2
+  );
+  --pc-button-spinner-size: 20px;
+  --pc-button-segment: 10;
+  --pc-button-focused: 20;
   @include button-base;
 
   &.disabled {
@@ -24,7 +22,7 @@ $stacking-order: (
   }
 
   &.connectedDisclosure {
-    z-index: z-index(segment, $stacking-order);
+    z-index: var(--pc-button-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -34,7 +32,7 @@ $stacking-order: (
     }
 
     &:focus {
-      z-index: z-index(focused, $stacking-order);
+      z-index: var(--pc-button-focused);
     }
   }
 }
@@ -79,14 +77,14 @@ $stacking-order: (
 .Icon {
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
-  margin-left: -(spacing(extra-tight));
+  margin-left: calc(-1 * (var(--p-space-1)));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -(spacing(tight));
-    margin-left: spacing(extra-tight);
+    margin-right: calc(-1 * (var(--p-space-2)));
+    margin-left: var(--p-space-1);
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
@@ -95,7 +93,7 @@ $stacking-order: (
   }
 
   + *:not(.Icon) {
-    margin-left: spacing(extra-tight);
+    margin-left: var(--p-space-1);
   }
 }
 
@@ -107,8 +105,8 @@ $stacking-order: (
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -($spinner-size / 2);
-  margin-left: -($spinner-size / 2);
+  margin-top: calc(-1 * (var(--pc-button-spinner-size) / 2));
+  margin-left: calc(-1 * (var(--pc-button-spinner-size) / 2));
 }
 
 .primary,
@@ -124,11 +122,11 @@ $stacking-order: (
 }
 
 .primary {
-  --p-button-color: var(--p-action-primary);
-  --p-button-text: var(--p-text-on-primary);
-  --p-button-color-hover: var(--p-action-primary-hovered);
-  --p-button-color-active: var(--p-action-primary-pressed);
-  --p-button-color-depressed: var(--p-action-primary-depressed);
+  --pc-button-color: var(--p-action-primary);
+  --pc-button-text: var(--p-text-on-primary);
+  --pc-button-color-hover: var(--p-action-primary-hovered);
+  --pc-button-color-active: var(--p-action-primary-pressed);
+  --pc-button-color-depressed: var(--p-action-primary-depressed);
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
@@ -137,11 +135,11 @@ $stacking-order: (
 }
 
 .destructive {
-  --p-button-color: var(--p-action-critical);
-  --p-button-text: var(--p-text-on-critical);
-  --p-button-color-hover: var(--p-action-critical-hovered);
-  --p-button-color-active: var(--p-action-critical-pressed);
-  --p-button-color-depressed: var(--p-action-critical-depressed);
+  --pc-button-color: var(--p-action-critical);
+  --pc-button-text: var(--p-text-on-critical);
+  --pc-button-color-hover: var(--p-action-critical-hovered);
+  --pc-button-color-active: var(--p-action-critical-pressed);
+  --pc-button-color-depressed: var(--p-action-critical-depressed);
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
@@ -193,16 +191,17 @@ $stacking-order: (
 // stylelint-disable selector-max-specificity, selector-max-class
 .plain {
   @include recolor-icon(var(--p-interactive));
-  margin: (-1 * $vertical-padding) rem(-8px);
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  margin: calc(-1 * var(--pc-button-vertical-padding))
+    calc(-1 * var(--p-space-2));
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
   background: transparent;
   border: 0;
   box-shadow: none;
   color: var(--p-interactive);
 
   > .Content {
-    font-weight: 400;
+    font-weight: var(--p-font-weight-regular);
     @include focus-ring;
   }
 
@@ -280,17 +279,18 @@ $stacking-order: (
   }
 
   &.sizeSlim {
-    margin-top: (-1 * $slim-vertical-padding);
-    margin-bottom: (-1 * $slim-vertical-padding);
+    margin-top: calc(-1 * var(--pc-button-slim-vertical-padding));
+    margin-bottom: calc(-1 * var(--pc-button-slim-vertical-padding));
   }
 
   &.sizeLarge {
-    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+    margin: calc(-1 * var(--pc-button-large-vertical-padding))
+      calc(-1 * var(--p-space-5));
   }
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: -0.5 * ($min-height - icon-size());
+    margin: calc(-0.5 * (var(--p-line-height-6) - var(--p-icon-size-medium)));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));
@@ -335,12 +335,12 @@ $stacking-order: (
 }
 
 .iconOnly {
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
 
   &.sizeLarge {
-    padding-left: spacing(base-tight);
-    padding-right: spacing(base-tight);
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
   }
 
   .Icon:first-child {
@@ -348,7 +348,7 @@ $stacking-order: (
   }
 
   .Icon:last-child {
-    margin-right: rem(-4px);
+    margin-right: calc(-1 * var(--p-space-1));
   }
 
   .Icon:only-child {
@@ -357,14 +357,14 @@ $stacking-order: (
 }
 
 .sizeSlim {
-  min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
+  min-height: var(--pc-button-slim-min-height);
+  padding: var(--pc-button-slim-vertical-padding) var(--p-space-3);
 }
 
 .sizeLarge {
-  min-height: $large-min-height;
-  min-width: $large-min-height;
-  padding: $large-vertical-padding rem(24px);
+  min-height: var(--pc-button-large-min-height);
+  min-width: var(--pc-button-large-min-height);
+  padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
 
   .Content {
     @include text-style-button-large;
@@ -424,8 +424,8 @@ $stacking-order: (
     position: relative;
     border-color: currentColor;
     // stylelint-disable selector-max-class
-    box-shadow: 0 0 0 border-width('base') currentColor;
-    @include focus-ring($border-width: rem(2px));
+    box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
+    @include focus-ring($border-width: 2px);
 
     &::before {
       content: '';
@@ -485,8 +485,8 @@ $stacking-order: (
 }
 
 .ConnectedDisclosure {
-  z-index: z-index(segment, $stacking-order);
-  margin-left: -(border-width());
+  z-index: var(--pc-button-segment);
+  margin-left: calc(-1 * var(--p-border-width-1));
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   height: 100%;
@@ -501,12 +501,12 @@ $stacking-order: (
 
   &:focus,
   &:active {
-    z-index: z-index(focused, $stacking-order);
+    z-index: var(--pc-button-focused);
   }
 
   &.primary,
   &.destructive {
-    margin-left: rem(1px);
+    margin-left: var(--p-space-025);
 
     // stylelint-disable-next-line selector-max-class
     &.outline {
@@ -530,20 +530,20 @@ $stacking-order: (
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
-    border-top-left-radius: var(--p-border-radius-base);
-    border-bottom-left-radius: var(--p-border-radius-base);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-bottom-left-radius: var(--p-border-radius-1);
   }
 
   > :last-child .Button,
   > :last-child .Button::after {
     border-radius: 0;
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 
   > :last-child:first-child .Button,
   > :last-child:first-child .Button::after {
-    border-radius: var(--p-border-radius-base);
+    border-radius: var(--p-border-radius-1);
   }
 }
 

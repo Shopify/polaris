@@ -11,8 +11,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Bug fixes
 
 - Fixed `Form` > `VisuallyHidden` markup causing excessive vertical whitespace ([#5181](https://github.com/Shopify/polaris-react/pull/5181))
-- Fixed `ContextualSaveBar` not registering the `secondaryMenu` in the `Frame` context ([#5116](https://github.com/Shopify/polaris-react/pull/5116))
-- Fixed `monochrome` `outline` `Button` `children` being visible when `loading` ([#5145](https://github.com/Shopify/polaris-react/pull/5145))
 
 ### Documentation
 
@@ -23,5 +21,3 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 ### Deprecations
-
-- Deprecated `additionalNavigation` in `<Page>` component

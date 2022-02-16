@@ -1,7 +1,3 @@
-@function icon-size() {
-  @return rem(20px);
-}
-
 @mixin recolor-icon(
   $fill-color: null,
   $secondary-color: null,
@@ -14,15 +10,5 @@
 
   img {
     filter: $filter-color;
-  }
-}
-
-@mixin color-icon($value, $hue: base) {
-  svg {
-    fill: color($value, $hue);
-  }
-
-  img {
-    filter: filter($value, $hue);
   }
 }

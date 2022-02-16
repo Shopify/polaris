@@ -1,22 +1,23 @@
 @import '../../styles/common';
 
-$arrow-size: rem(14px);
-$visible-portion-of-arrow: rem(5px);
-$content-max-height: rem(500px);
-$content-max-width: rem(400px);
-$vertical-motion-offset: rem(-5px);
+$arrow-size: 14px;
+$visible-portion-of-arrow: 5px;
+$content-max-height: 500px;
+$content-max-width: 400px;
+$vertical-motion-offset: -5px;
 
 .Popover {
-  max-width: calc(100vw - #{2 * spacing()});
-  margin: $visible-portion-of-arrow spacing(tight) spacing();
-  box-shadow: var(--p-popover-shadow);
-  border-radius: var(--p-border-radius-wide);
+  max-width: calc(100vw - 2 * var(--p-space-4));
+  margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
+  box-shadow: var(--p-shadow-popover);
+  border-radius: var(--p-border-radius-2);
   will-change: left, top;
 }
 
 .PopoverOverlay {
   opacity: 0;
-  transition: opacity duration(fast) easing(), transform duration(fast) easing();
+  transition: opacity var(--p-duration-100) var(--p-ease),
+    transform var(--p-duration-100) var(--p-ease);
   transform: translateY($vertical-motion-offset);
 }
 
@@ -33,7 +34,7 @@ $vertical-motion-offset: rem(-5px);
 .PopoverOverlay-exiting {
   opacity: 1;
   transform: translateY(0);
-  transition-duration: 0ms;
+  transition-duration: var(--p-duration-0);
 }
 
 .measuring:not(.PopoverOverlay-exiting) {
@@ -50,7 +51,7 @@ $vertical-motion-offset: rem(-5px);
 }
 
 .positionedAbove {
-  margin: spacing() spacing(tight) $visible-portion-of-arrow;
+  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
 
   &.fullWidth {
     margin: 0 auto $visible-portion-of-arrow auto;
@@ -61,7 +62,7 @@ $vertical-motion-offset: rem(-5px);
   position: relative;
   overflow: hidden;
   background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-wide);
+  border-radius: var(--p-border-radius-2);
   outline: 1px solid transparent;
 }
 
@@ -69,7 +70,7 @@ $vertical-motion-offset: rem(-5px);
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   max-width: $content-max-width;
   max-height: $content-max-height;
 
@@ -92,7 +93,7 @@ $vertical-motion-offset: rem(-5px);
   max-width: 100%;
 
   + .Pane {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 
   &:focus {
@@ -106,10 +107,10 @@ $vertical-motion-offset: rem(-5px);
 }
 
 .Section {
-  padding: spacing();
+  padding: var(--p-space-4);
 
   + .Section {
-    border-top: border('divider');
+    border-top: var(--p-border-divider);
   }
 }
 
@@ -118,5 +119,8 @@ $vertical-motion-offset: rem(-5px);
 }
 
 .PopoverOverlay-hideOnPrint {
-  @include hidden-when-printing;
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }

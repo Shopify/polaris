@@ -1,16 +1,16 @@
 @import '../../styles/common';
 
-$height: rem(28px);
-$icon-size: rem(16px);
+$height: 28px;
+$icon-size: 16px;
 
 .Tag {
   display: inline-flex;
   max-width: 100%;
   align-items: center;
   min-height: $height;
-  padding: 0 spacing(tight);
+  padding: 0 var(--p-space-2);
   background-color: var(--p-surface-neutral);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   color: var(--p-text);
 
   &.disabled {
@@ -23,8 +23,9 @@ $icon-size: rem(16px);
   &.clickable {
     @include unstyled-button;
     cursor: pointer;
-    padding: 0 spacing(tight);
+    padding: 0 var(--p-space-2);
     background-color: var(--p-surface-neutral);
+    outline: var(--p-border-width-1) solid transparent;
 
     &:hover {
       background: var(--p-surface-neutral-hovered);
@@ -56,8 +57,6 @@ $icon-size: rem(16px);
   &.linkable {
     padding: 0;
   }
-
-  @include high-contrast-outline;
 }
 
 .TagText {
@@ -74,12 +73,12 @@ $icon-size: rem(16px);
   flex-shrink: 0;
   height: $height;
   width: $height;
-  margin-left: spacing(extra-tight);
-  border-radius: 0 border-radius() border-radius() 0;
+  margin-left: var(--p-space-1);
+  border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
 
   &:hover {
     background: var(--p-surface-neutral-hovered);
-    @include high-contrast-outline;
+    outline: var(--p-border-width-1) solid transparent;
   }
 
   @include focus-ring;
@@ -99,7 +98,7 @@ $icon-size: rem(16px);
   }
 
   &.segmented {
-    margin-left: -1 * spacing(extra-tight);
+    margin-left: calc(-1 * var(--p-space-1));
 
     &::after {
       border-top-left-radius: 0;
@@ -114,7 +113,7 @@ $icon-size: rem(16px);
   outline: none;
   border-radius: var(--p-border-radius-base);
   text-decoration: none;
-  padding: spacing(extra-tight) spacing(tight);
+  padding: var(--p-space-1) var(--p-space-2);
 
   .LinkText {
     @include truncate;
@@ -137,7 +136,7 @@ $icon-size: rem(16px);
     border-bottom-right-radius: 0;
 
     &::after {
-      margin-right: spacing(extra-tight);
+      margin-right: var(--p-space-1);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

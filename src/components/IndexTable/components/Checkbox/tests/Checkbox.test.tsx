@@ -93,25 +93,23 @@ describe('<Checkbox />', () => {
         expect(checkbox).toContainReactComponent(CheckboxWrapper);
       });
 
-      it('sets `--p-checkbox-offset` custom property', () => {
+      it('sets `--pc-checkbox-offset` custom property', () => {
         mountWithTable(<Checkbox />, defaultTableProps);
 
         expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-          '--p-checkbox-offset',
+          '--pc-checkbox-offset',
           '0px',
-          null,
         );
       });
 
-      it('updates `--p-checkbox-offset` custom property on resize', () => {
+      it('updates `--pc-checkbox-offset` custom property on resize', () => {
         mountWithTable(<Checkbox />, defaultTableProps);
         setGetBoundingClientRect(200);
         window.dispatchEvent(new Event('resize'));
 
         expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-          '--p-checkbox-offset',
+          '--pc-checkbox-offset',
           '200px',
-          null,
         );
       });
 

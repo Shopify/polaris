@@ -39,6 +39,22 @@ describe('<Frame />', () => {
   });
 
   describe('skipToContentTarget', () => {
+    it('renders an offset property of 0px by default', () => {
+      mountWithApp(<Frame />);
+
+      expect(
+        document.documentElement.style.getPropertyValue('--pc-frame-offset'),
+      ).toBe('0px');
+    });
+
+    it('renders a custom offset property when offset is passed', () => {
+      mountWithApp(<Frame offset="6rem" />);
+
+      expect(
+        document.documentElement.style.getPropertyValue('--pc-frame-offset'),
+      ).toBe('6rem');
+    });
+
     it('renders a skip to content link with the proper text', () => {
       const skipToContentLinkText = mountWithApp(<Frame />);
 
@@ -253,7 +269,7 @@ describe('<Frame />', () => {
   });
 
   describe('globalRibbon', () => {
-    // Frame sets the --global-ribbon-height custom property based off the
+    // Frame sets the --pc-frame-global-ribbon-height custom property based off the
     // offsetHeight of the component passed into globalRibbon. JSDom doesn't
     // have a layout engine so use a mock value
     beforeEach(() => {
@@ -268,7 +284,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame globalRibbon={<div />}>I am some content</Frame>);
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('30px');
     });
@@ -278,14 +294,14 @@ describe('<Frame />', () => {
 
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('0px');
 
       frame.setProps({globalRibbon: <div />});
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('30px');
     });
@@ -294,7 +310,7 @@ describe('<Frame />', () => {
       mountWithApp(<Frame />);
       expect(
         document.documentElement.style.getPropertyValue(
-          '--global-ribbon-height',
+          '--pc-frame-global-ribbon-height',
         ),
       ).toBe('0px');
     });

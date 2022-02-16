@@ -2,4 +2,4 @@ node_modules
 /.loom
 /build
 /build-internal
-/src/styles/polaris-tokens
+/documentation/guides/legacy-polaris-v8-public-api.scss

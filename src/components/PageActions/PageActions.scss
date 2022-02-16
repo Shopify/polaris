@@ -2,10 +2,10 @@
 
 .PageActions {
   margin: 0 auto;
-  padding: spacing(loose);
-  border-top: border('divider');
+  padding: var(--p-space-5);
+  border-top: var(--p-border-divider);
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose) 0;
+    padding: var(--p-space-5) 0;
   }
 }

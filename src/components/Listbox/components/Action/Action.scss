@@ -6,9 +6,9 @@
 }
 
 .ActionDivider {
-  margin-bottom: spacing(extra-tight);
+  margin-bottom: var(--p-space-1);
 }
 
 .Icon {
-  padding-right: spacing(tight);
+  padding-right: var(--p-space-2);
 }
