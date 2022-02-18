@@ -410,9 +410,6 @@ $base-font-size: 16px;
 
 /* FOUNDATION: colors */
 
-// stylelint-disable-next-line scss/partial-no-import
-@import '../polaris-tokens/colors.color-map';
-
 ///
 /// Color data
 ///
@@ -533,9 +530,6 @@ $ms-high-contrast-color-data: (
 
 /* FOUNDATION: filters */
 
-// stylelint-disable-next-line scss/partial-no-import
-@import '../polaris-tokens/color-filters.color-map';
-
 ///
 /// Color filter data
 ///
@@ -569,9 +563,6 @@ $color-filter-palette-data: $polaris-color-filters;
 }
 
 /* FOUNDATION: spacing */
-
-// stylelint-disable-next-line scss/partial-no-import
-@import '../polaris-tokens/spacing.spacing-map';
 
 $spacing-data: $polaris-spacing;
 
@@ -651,9 +642,6 @@ $border-radius-data: (
 }
 
 /* FOUNDATION: duration */
-
-// stylelint-disable-next-line scss/partial-no-import
-@import '../polaris-tokens/duration.map';
 
 $duration-data: $polaris-duration-map;
 
@@ -1001,9 +989,6 @@ $fixed-element-stacking-order: (
 }
 
 /* FOUNDATION: focus-ring */
-
-// stylelint-disable-next-line scss/partial-no-import
-@import './accessibility';
 
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
