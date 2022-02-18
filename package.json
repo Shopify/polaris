@@ -54,7 +54,7 @@
     "test": "loom test",
     "check": "npm-run-all lint type-check test",
     "clean": "rimraf build build-internal",
-    "build": "node ./scripts/build.js",
+    "build": "node ./scripts/build.js && echo oooooooooooooooo",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
     "secrets": "ejson decrypt -o secrets.json secrets.ejson",
