@@ -86,16 +86,6 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 <button class="Polaris-Button">Example button</button>
 ```
 
-## Examples
-
-We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
-
-- [create-react-app example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app)
-- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/main/examples/create-react-app-ts-react-testing)
-- [Webpack example](https://github.com/Shopify/polaris-react/tree/main/examples/webpack)
-- [CSS-only example](https://github.com/Shopify/polaris-react/tree/main/examples/cdn-styles)
-- [next.js example](https://github.com/Shopify/polaris-react/tree/main/examples/next.js)
-
 ## Development
 
 We use Storybook to create a simple, hot-reloading playground for development on these components. You can edit the `playground/Playground.tsx` file to import the components you are working on, and run `yarn dev` in order to start the development server. Please do not commit your work on the playground so that it remains pristine for other developers to work on.

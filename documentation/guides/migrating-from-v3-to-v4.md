@@ -27,7 +27,7 @@ Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 Polaris React was migrated to [React’s new context API](https://reactjs.org/docs/context.html) while restructuring its entire context structure. Polaris React now exposes all internal contexts required for testing within a single `PolarisTestProvider` component.
 
-**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used, as shown in [these examples](https://github.com/Shopify/polaris-react/tree/main/examples).
+**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used.
 
 In v3, you could hook into Polaris React’s legacy contexts using `createPolarisContext` and `polarisContextTypes`.
 
