@@ -89,8 +89,8 @@ export function Form({
       target={target}
       onSubmit={handleSubmit}
     >
-      {children}
       {submitMarkup}
+      {children}
     </form>
   );
 }
