@@ -59,10 +59,10 @@ function jestAdjustmentsPlugin() {
           '^tests/(.*)': '<rootDir>/tests/$1',
         }));
 
-        // Ignore tests in the examples folder
+        // Ignore tests in the node_modules folder
         configuration.jestConfig?.hook((config) => ({
           ...config,
-          testPathIgnorePatterns: ['/node_modules/', '<rootDir>/examples/'],
+          testPathIgnorePatterns: ['/node_modules/'],
         }));
 
         // Novel file types - scss and images

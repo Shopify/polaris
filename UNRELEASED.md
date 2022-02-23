@@ -14,6 +14,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Documentation
 
+- Removed `examples` dir and all references ([#5207](https://github.com/Shopify/polaris-react/pull/5207))
+
 ### Development workflow
 
 ### Dependency upgrades
