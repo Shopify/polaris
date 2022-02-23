@@ -1,0 +1,12 @@
+{
+  "extends": "@shopify/typescript-configs/library.json",
+  "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "lib": ["dom", "dom.iterable", "es2020"],
+    "module": "commonjs",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "typeRoots": ["../../node_modules/@types", "./typings"]
+  }
+}
