@@ -91,6 +91,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -172,6 +173,7 @@ function MultiAutocompleteExample() {
       label="Tags"
       value={inputValue}
       placeholder="Vintage, cotton, summer"
+      autoComplete="off"
     />
   );
 
@@ -290,6 +292,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -370,6 +373,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -465,6 +469,7 @@ function AutoCompleteLazyLoadExample() {
       label="Tags"
       value={inputValue}
       placeholder="Vintage, cotton, summer"
+      autoComplete="off"
     />
   );
 
@@ -580,6 +585,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -671,6 +677,7 @@ function AutocompleteActionBeforeExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="inkLighter" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -764,6 +771,7 @@ function AutocompleteActionBeforeExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="inkLighter" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -859,6 +867,7 @@ function AutocompleteActionBeforeExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="inkLighter" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
