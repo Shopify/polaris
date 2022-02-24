@@ -1,6 +1,6 @@
 # shopify-dev-intellisense README
 
-:warning: This repo is still experimental
+:warning: This extension is still experimental
 
 This project is a prototype from the [Admin Design Foundations team](https://vault.shopify.io/teams/612-Admin-Design-Foundations/overview?teamProjectRelationshipType=contributing&subteams=yes&order=progress_desc&page=first_25&progress=Explore_Build). Currently, it is a proof of concept for a VSCode extension that provides autocomplete and other intellisense features for the [Polaris](https://polaris.shopify.com/) design system
 
