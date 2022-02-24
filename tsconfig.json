@@ -1,5 +1,12 @@
 {
   "files": [],
   "include": [],
-  "references": [{ "path": "./packages/polaris" }]
+  "references": [
+    {
+      "path": "./packages/polaris"
+    },
+    {
+      "path": "./packages/site"
+    }
+  ]
 }
