@@ -10,6 +10,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed logo appearing in `Navigation` at 769px ([#5213](https://github.com/Shopify/polaris-react/pull/5213))
 - Fixed `Form` > `VisuallyHidden` markup causing excessive vertical whitespace ([#5181](https://github.com/Shopify/polaris-react/pull/5181))
 
 ### Documentation
