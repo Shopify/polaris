@@ -789,6 +789,32 @@ function TextFieldWithMonospacedFontExample() {
 }
 ```
 
+### Text field with the ability to select all text on focus
+
+<!-- example-for: web -->
+
+Use to select all text inside TextField on focus.
+
+```jsx
+function TextFieldWithSelectTextOnFocusExample() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      selectTextOnFocus
+    />
+  );
+}
+```
+
 ---
 
 ## Related components
