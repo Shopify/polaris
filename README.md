@@ -26,14 +26,14 @@ yarn refresh
 
 Simply run `yarn dev:<package-name>`
 
-Develop the `polaris` package in watch mode:
-
-```sh
-yarn dev:polaris
-```
-
 Run the `Next.js App` in watch mode:
 
 ```sh
 yarn dev:site
+```
+
+Develop the `polaris` package in watch mode:
+
+```sh
+yarn dev:polaris
 ```
