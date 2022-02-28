@@ -137,7 +137,7 @@
     },
     "Filters": {
       "moreFilters": "Lisää suodattimia",
-      "filter": "{resourceName}-suodatin",
+      "filter": "Suodata {resourceName}",
       "noFiltersApplied": "Suodattimia ei ole käytetty",
       "cancel": "Peruuta",
       "done": "Valmis",
@@ -162,7 +162,7 @@
     "ResourceList": {
       "sortingLabel": "Lajittele:",
       "defaultItemSingular": "tuote",
-      "defaultItemPlural": "tuotteet",
+      "defaultItemPlural": "tuotetta",
       "showing": "Näytetään {itemsCount} {resource}",
       "loading": "Ladataan {resource}",
       "selected": "{selectedItemsCount} valittu",
@@ -176,7 +176,7 @@
       "a11yCheckboxDeselectAllMultiple": "Poista kaikki valitut {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} tuote",
-      "ariaLivePlural": "{itemsLength} tuotteet",
+      "ariaLivePlural": "{itemsLength} tuotetta",
       "Item": {
         "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
         "actionsDropdown": "Toiminnat-pudotusvalikko",
