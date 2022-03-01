@@ -62,7 +62,10 @@ $nav-max-width: 360px;
 
 .LogoContainer {
   display: none;
-  @include breakpoint-before(nav-min-window-corrected()) {
+  @include breakpoint-before(
+    $breakpoint: nav-min-window-corrected(),
+    $inclusive: false
+  ) {
     display: flex;
     flex: 0 0 top-bar-height();
     align-items: center;
