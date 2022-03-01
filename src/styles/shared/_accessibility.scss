@@ -7,6 +7,10 @@
   // Need to make sure we override any existing styles.
   // stylelint-disable declaration-no-important
   position: absolute !important;
+  // Top position is required to prevent unexpected
+  // scrolling with Sheet component
+  // https://github.com/Shopify/polaris-react/pull/5208
+  top: 0;
   width: 1px !important;
   height: 1px !important;
   margin: 0 !important;
