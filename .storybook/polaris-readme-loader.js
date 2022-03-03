@@ -133,6 +133,7 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  SkeletonTabs,
   SkeletonThumbnail,
   Spinner,
   Stack,
