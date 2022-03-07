@@ -26,7 +26,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			selector,
 			new PolarisAutocomplete(),
 			// trigger characters
-			'*'
+			'--p'
 		)
 	);
 }
