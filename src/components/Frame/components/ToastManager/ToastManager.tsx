@@ -27,11 +27,11 @@ export const ToastManager = memo(function ToastManager({
       if (!currentToast.current) return;
       targetInPos += currentToast.current.clientHeight;
       currentToast.current.style.setProperty(
-        '--toast-translate-y-in',
+        '--pc-toast-manager-translate-y-in',
         `-${targetInPos}px`,
       );
       currentToast.current.style.setProperty(
-        '--toast-translate-y-out',
+        '--pc-toast-manager-translate-y-out',
         `${-targetInPos + 150}px`,
       );
     });
