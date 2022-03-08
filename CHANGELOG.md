@@ -8,6 +8,24 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.1.0 - 2022-03-08
+
+### Enhancements
+
+- Added `SkeletonTabs` component ([#5229](https://github.com/Shopify/polaris-react/pull/5229))
+- Added an inset box-shadow to `ColorPicker` to make it easier to see the draggers ([#4948](https://github.com/Shopify/polaris-react/pull/4948))
+
+### Bug fixes
+
+- Fixed logo appearing in `Navigation` at 769px ([#5213](https://github.com/Shopify/polaris-react/pull/5213))
+- Reintroduced `top: 0` to `VisuallyHidden` CSS to prevent unexpected scrolling when using a `Sheet` ([#5208](https://github.com/Shopify/polaris-react/pull/5208))
+- Fixed `Form` > `VisuallyHidden` markup causing excessive vertical whitespace ([#5181](https://github.com/Shopify/polaris-react/pull/5181))
+- Fixed a bug in `Toast` where it wasn't rendering ([#5224](https://github.com/Shopify/polaris-react/pull/5224))
+
+### Documentation
+
+- Removed `examples` dir and all references ([#5207](https://github.com/Shopify/polaris-react/pull/5207))
+
 ## 9.0.0 - 2022-02-15
 
 For instructions on updating from v8 to v9, see our [migration guide](https://github.com/Shopify/polaris-react/blob/main/documentation/guides/migrating-from-v8-to-v9.md).
