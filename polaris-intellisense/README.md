@@ -1,4 +1,4 @@
-# shopify-dev-intellisense README
+# `polaris-intellisense` VSCode Extension
 
 :warning: This extension is still an experimental prototype
 
