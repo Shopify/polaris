@@ -15,7 +15,7 @@ We don't want to publish this extension to the VSCode Extensions Marketplace yet
 
 ```bash
 # example of running install command
-❯ code --install-extension shopify-dev-intellisense-0.0.1.vsix
+code --install-extension shopify-dev-intellisense-0.0.1.vsix
 ```
 
 ![Success message of installed package in the terminal](docs/sample-install.png)
