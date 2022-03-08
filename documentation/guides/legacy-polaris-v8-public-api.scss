@@ -314,9 +314,9 @@ $base-font-size: 16px;
   } @else if $unit == 'rem' {
     @return $value;
   } @else if $unit == 'px' {
-    @return $value / $base-font-size * 1rem;
+    @return math.div($value, $base-font-size) * 1rem;
   } @else if $unit == 'em' {
-    @return $unit / 1em * 1rem;
+    @return math.div($unit, 1em) * 1rem;
   } @else {
     @error 'Value must be in px, em, or rem.';
   }
@@ -334,9 +334,9 @@ $base-font-size: 16px;
   } @else if $unit == 'px' {
     @return $value;
   } @else if $unit == 'em' {
-    @return ($value / 1em) * $base-font-size;
+    @return math.div($value, 1em) * $base-font-size;
   } @else if $unit == 'rem' {
-    @return ($value / 1rem) * $base-font-size;
+    @return math.div($value, 1rem) * $base-font-size;
   } @else {
     @error 'Value must be in rem, em, or px.';
   }
@@ -355,9 +355,10 @@ $base-font-size: 16px;
   } @else if $unit == 'em' {
     @return $value;
   } @else if $unit == 'rem' {
-    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
+    @return math.div($value, 1rem) * 1em *
+      math.div($base-font-size, $default-browser-font-size);
   } @else if $unit == 'px' {
-    @return $value / $default-browser-font-size * 1em;
+    @return math.div($value, $default-browser-font-size) * 1em;
   } @else {
     @error 'Value must be in px, rem, or em.';
   }
@@ -492,9 +493,9 @@ $color-palette-data: map-extend(
     $background: rgb(255, 255, 255);
   }
 
-  $red: red($background) * red($foreground) / 255;
-  $green: green($background) * green($foreground) / 255;
-  $blue: blue($background) * blue($foreground) / 255;
+  $red: red($background) * math.div(red($foreground), 255);
+  $green: green($background) * math.div(green($foreground), 255);
+  $blue: blue($background) * math.div(blue($foreground), 255);
 
   $opacity: opacity($foreground);
   $background-opacity: opacity($background);
@@ -1316,7 +1317,7 @@ $nav-min-window: em(layout-width(page-with-nav));
 
 @mixin button-base {
   $min-height: control-height();
-  $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+  $vertical-padding: math.div(($min-height - line-height(body) - rem(2px)), 2);
 
   @include recolor-icon(var(--p-icon));
   @include focus-ring($border-width: border-width('base'));
@@ -1550,7 +1551,7 @@ $nav-min-window: em(layout-width(page-with-nav));
 }
 
 @function control-vertical-padding() {
-  @return (control-height() - line-height(input) - rem(2px)) / 2;
+  @return math.div((control-height() - line-height(input) - rem(2px)), 2);
 }
 
 @function control-icon-transition() {
