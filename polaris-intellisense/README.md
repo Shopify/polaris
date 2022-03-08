@@ -1,8 +1,8 @@
 # shopify-dev-intellisense README
 
-:warning: This extension is still experimental
+:warning: This extension is still an experimental prototype
 
-This project is a prototype testing out VSCode intellisense features to support developing with the Polaris Design System.
+VSCode intellisense features to support developing with the Polaris Design System.
 
 ## Installation
 
