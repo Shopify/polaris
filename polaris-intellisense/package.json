@@ -2,6 +2,7 @@
   "name": "polaris-intellisense",
   "displayName": "polaris-intellisense",
   "description": "Polaris Design System intelligent tooling",
+  "repository": "https://github.com/Shopify/polaris-react",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.64.0"
