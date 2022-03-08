@@ -302,6 +302,9 @@ export type {SkeletonDisplayTextProps} from './components/SkeletonDisplayText';
 export {SkeletonPage} from './components/SkeletonPage';
 export type {SkeletonPageProps} from './components/SkeletonPage';
 
+export {SkeletonTabs} from './components/SkeletonTabs';
+export type {SkeletonTabsProps} from './components/SkeletonTabs';
+
 export {SkeletonThumbnail} from './components/SkeletonThumbnail';
 export type {SkeletonThumbnailProps} from './components/SkeletonThumbnail';
 

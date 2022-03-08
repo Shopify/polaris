@@ -3,7 +3,6 @@
 $item-min-height: 16px;
 $item-min-width: 50px;
 $item-vertical-padding: $item-min-height * 0.5;
-$underline-height: var(--p-border-width-3);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tabs {
@@ -138,7 +137,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     bottom: calc(-1 * var(--p-space-2));
     left: 0;
     right: 0;
-    height: $underline-height;
+    height: var(--p-border-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
   }

@@ -6,7 +6,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Enhancements
 
-- [ColorPicker] Add an inset box-shadow to make it easier to see the draggers ([#4948](https://github.com/Shopify/polaris-react/pull/4948))
+- Added `SkeletonTabs` component ([#5229](https://github.com/Shopify/polaris-react/pull/5229))
+- Added an inset box-shadow to `ColorPicker` to make it easier to see the draggers ([#4948](https://github.com/Shopify/polaris-react/pull/4948))
 
 ### Bug fixes
 
