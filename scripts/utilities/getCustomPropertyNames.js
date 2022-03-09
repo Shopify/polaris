@@ -3,12 +3,12 @@ const path = require('path');
 
 const tokenGroupsDir = path.join(__dirname, '../src/tokens/token-groups');
 
-const generateTokensArray = () => {
-  /**
-   * Allowed Polaris token custom properties.
-   *
-   * Result: ['--p-background', '--p-text', etc...]
-   */
+/**
+ * Allowed Polaris token custom properties.
+ *
+ * Result: ['--p-background', '--p-text', etc...]
+ */
+const getCustomPropertyNames = () => {
   const polarisTokenCustomProperties = Array.from(
     new Set(
       fs
@@ -25,4 +25,4 @@ const generateTokensArray = () => {
   return polarisTokenCustomProperties;
 };
 
-module.exports = generateTokensArray;
+module.exports = getCustomPropertyNames;
