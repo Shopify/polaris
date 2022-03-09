@@ -10,6 +10,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed sheet animation by replacing deprecated `easing()` with css custom property ([5251](https://github.com/Shopify/polaris-react/pull/5251))
+
 ### Documentation
 
 ### Development workflow
