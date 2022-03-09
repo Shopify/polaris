@@ -57,6 +57,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
   },
+  "ignorePatterns": ["out", "dist", "**/*.d.ts"],
   "overrides": [
     {
       "files": ["src/**/*.{ts,tsx}"],
@@ -86,6 +87,23 @@
         "react/prefer-stateless-function": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
         "@shopify/react-initialize-state": "off"
+      }
+    },
+    {
+      "files": ["polaris-for-vscode/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+      },
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "warn",
+        "@typescript-eslint/semi": "warn",
+        "curly": "warn",
+        "eqeqeq": "warn",
+        "no-throw-literal": "warn",
+        "semi": "off"
       }
     }
   ]
