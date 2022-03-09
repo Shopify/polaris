@@ -3,7 +3,7 @@ const path = require('path');
 
 const getCustomPropertyNames = require('../../scripts/utilities/getCustomPropertyNames');
 
-const outDir = '../polaris-intellisense/src/data/allTokens.ts';
+const outDir = '../../polaris-for-vscode/src/data/allTokens.ts';
 
 const tokens = getCustomPropertyNames();
 
