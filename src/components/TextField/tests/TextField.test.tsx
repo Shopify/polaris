@@ -1390,20 +1390,6 @@ describe('<TextField />', () => {
   });
 
   describe('monospaced', () => {
-    it('passes monospaced prop to TextField', () => {
-      const element = mountWithApp(
-        <TextField
-          label="TextField"
-          onChange={noop}
-          monospaced
-          autoComplete="off"
-        />,
-      );
-      expect(element).toHaveReactProps({
-        monospaced: true,
-      });
-    });
-
     it('applies the monospaced style', () => {
       const input = mountWithApp(
         <TextField
@@ -1417,6 +1403,63 @@ describe('<TextField />', () => {
       expect(input).toContainReactComponent('input', {
         className: expect.stringContaining('monospaced'),
       });
+    });
+  });
+
+  describe('selectTextOnFocus', () => {
+    it('selects entire input onFocus', () => {
+      const value = 'test';
+      const selection = {start: 0, end: value.length};
+
+      const element = mountWithApp(
+        <TextField
+          value={value}
+          label="TextField"
+          onChange={noop}
+          selectTextOnFocus
+          autoComplete="off"
+        />,
+      );
+
+      element?.find('input')!.trigger('onFocus');
+
+      const textareaDOMNode = element.find('input')!
+        .domNode as HTMLInputElement;
+
+      const currentSelection = {
+        start: textareaDOMNode.selectionStart,
+        end: textareaDOMNode.selectionEnd,
+      };
+
+      expect(currentSelection).toStrictEqual(selection);
+    });
+
+    it('selects entire textarea onFocus', () => {
+      const value = 'multiline';
+      const selection = {start: 0, end: value.length};
+
+      const element = mountWithApp(
+        <TextField
+          value={value}
+          label="TextField"
+          onChange={noop}
+          selectTextOnFocus
+          autoComplete="off"
+          multiline
+        />,
+      );
+
+      element?.find('textarea')!.trigger('onFocus');
+
+      const textareaDOMNode = element.find('textarea')!
+        .domNode as HTMLTextAreaElement;
+
+      const currentSelection = {
+        start: textareaDOMNode.selectionStart,
+        end: textareaDOMNode.selectionEnd,
+      };
+
+      expect(currentSelection).toStrictEqual(selection);
     });
   });
 });
