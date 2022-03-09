@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const tokenGroupsDir = path.join(__dirname, '../src/tokens/token-groups');
+const tokenGroupsDir = path.join(__dirname, '../../src/tokens/token-groups');
 
 /**
  * Allowed Polaris token custom properties.
