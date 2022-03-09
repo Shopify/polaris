@@ -2,7 +2,7 @@
 
 :warning: This extension is still an experimental prototype
 
-VSCode intellisense features to support developing with the Polaris Design System.
+VSCode features to support developing with the Polaris Design System.
 
 ## Installation
 

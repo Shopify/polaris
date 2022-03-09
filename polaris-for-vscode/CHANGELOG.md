@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to the "polaris-for-vscode" extension will be documented in this file.
 
