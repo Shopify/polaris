@@ -1,4 +1,4 @@
-# `polaris-intellisense` VSCode Extension
+# `polaris-for-vscode` Extension
 
 :warning: This extension is still an experimental prototype
 
@@ -9,8 +9,8 @@ VSCode intellisense features to support developing with the Polaris Design Syste
 We don't want to publish this extension to the VSCode Extensions Marketplace yet, so we have to install the package directly from the compiled `.vsix` file.
 
 1. (Install the `vsce` package)[https://code.visualstudio.com/api/working-with-extensions/publishing-extension#vsce]
-2. `cd` to the `polaris-intellisense` directory in the project.
-3. From the `polaris-intellisense` directory run the (`vsce package`)[https://code.visualstudio.com/api/working-with-extensions/publishing-extension#packaging-extensions] command in your terminal. After running you should have a new `.vsix` file in the directory (ex. `polaris-intellisense-0.0.1.vsix`)
+2. `cd` to the `polaris-for-vscode` directory in the project.
+3. From the `polaris-for-vscode` directory run the (`vsce package`)[https://code.visualstudio.com/api/working-with-extensions/publishing-extension#packaging-extensions] command in your terminal. After running you should have a new `.vsix` file in the directory (ex. `polaris-for-vscode-0.0.1.vsix`)
 4. To install the extension run `code --install-extension EXTENSION_FILENAME.vsix`
 
 ```bash
