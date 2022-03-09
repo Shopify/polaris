@@ -231,7 +231,7 @@ export function TextField({
     if (!input || !isSupportedInputType || selection === undefined) return;
     const {start, end} = selection;
     input.setSelectionRange(start, end);
-    console.log('set selection: ', selection);
+    // console.log('set selection: ', selection);
   }, [selection, type]);
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
@@ -525,6 +525,7 @@ export function TextField({
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
+
     event.preventDefault();
   }
 

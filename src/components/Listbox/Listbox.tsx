@@ -62,6 +62,7 @@ export function Listbox({
 }: ListboxProps) {
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
+  const [navItems, setNavItems] = useState(getNavigableOptions());
   const [listLength, setListLength] = useState(0);
   const [reset, setReset] = useState(false);
 
@@ -75,7 +76,6 @@ export function Listbox({
 
   const scrollableRef = useRef<HTMLElement | null>(null);
   const listboxRef = useRef<HTMLUListElement>(null);
-
   const {
     listboxId,
     textFieldLabelId,
@@ -114,7 +114,10 @@ export function Listbox({
 
     if (!element) return;
 
-    return {element, index: navItems.indexOf(element)};
+    const index = navItems.indexOf(element);
+    console.log('First navigable option: ', index);
+
+    return {element, index};
   }, []);
 
   const handleScrollIntoView = useCallback(
@@ -248,9 +251,10 @@ export function Listbox({
   const getNextValidOption = useCallback(
     (key: ArrowKeys) => {
       const navItems = getNavigableOptions();
+      setNavItems(navItems);
+
       const lastIndex = navItems.length - 1;
       const currentIndex = activeOption?.index ? activeOption.index : 0;
-
       let nextIndex = 0;
       let element = activeOption?.element;
       let count = -1;
