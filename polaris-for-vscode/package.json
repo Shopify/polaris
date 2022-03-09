@@ -1,7 +1,7 @@
 {
   "name": "polaris-for-vscode",
   "displayName": "polaris-for-vscode",
-  "description": "Polaris Design System intelligent tooling",
+  "description": "Polaris Design System vscode tooling",
   "repository": "https://github.com/Shopify/polaris-react",
   "version": "0.0.1",
   "engines": {
