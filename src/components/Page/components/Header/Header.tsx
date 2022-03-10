@@ -1,4 +1,4 @@
-import React, {isValidElement} from 'react';
+import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
@@ -20,6 +20,7 @@ import type {
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 import {Pagination, PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
+import {isInterface, isReactElement} from '../../utilities';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
@@ -45,19 +46,13 @@ export interface HeaderProps extends TitleProps {
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: MenuActionDescriptor[];
+  secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
   /** @deprecated Additional navigation markup */
   additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
-}
-
-export function isPrimaryAction(
-  x: PrimaryAction | React.ReactNode,
-): x is PrimaryAction {
-  return !isValidElement(x) && x !== undefined;
 }
 
 const SHORT_TITLE = 20;
@@ -91,7 +86,8 @@ export function Header({
   const isSingleRow =
     !primaryAction &&
     !pagination &&
-    !secondaryActions.length &&
+    ((isInterface(secondaryActions) && !secondaryActions.length) ||
+      isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
   const breadcrumbMarkup =
@@ -138,8 +134,12 @@ export function Header({
     <PrimaryActionMarkup primaryAction={primaryAction} />
   ) : null;
 
-  const actionMenuMarkup =
-    secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
+  let actionMenuMarkup: MaybeJSX = null;
+  if (
+    isInterface(secondaryActions) &&
+    (secondaryActions.length > 0 || hasGroupsWithActions(actionGroups))
+  ) {
+    actionMenuMarkup = (
       <ActionMenu
         actions={secondaryActions}
         groups={actionGroups}
@@ -150,7 +150,10 @@ export function Header({
             : undefined
         }
       />
-    ) : null;
+    );
+  } else if (isReactElement(secondaryActions)) {
+    actionMenuMarkup = <>{secondaryActions}</>;
+  }
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
@@ -222,7 +225,7 @@ function PrimaryActionMarkup({
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
   let content = primaryAction;
-  if (isPrimaryAction(primaryAction)) {
+  if (isInterface(primaryAction)) {
     const primary =
       primaryAction.primary === undefined ? true : primaryAction.primary;
 
