@@ -121,7 +121,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
         ? buildMappedOptionFromOption(conditionalOptions)
         : null;
 
-    if (listTitle) {
+    if (listTitle && optionList) {
       return (
         <Listbox.Section
           divider={false}
@@ -178,7 +178,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       preferredPosition={preferredPosition}
     >
       {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
-        <Listbox onSelect={updateSelection}>
+        <Listbox enableKeyboardControl onSelect={updateSelection}>
           {actionMarkup}
           {optionsMarkup && (!loading || willLoadMoreResults)
             ? optionsMarkup
