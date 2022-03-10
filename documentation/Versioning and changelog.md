@@ -97,3 +97,35 @@ Because we expose both React components (for which the markup, including class n
 - Changes that do not impact public APIs
 - Non-breaking changes to minimum version of dependencies
 - Breaking changes to private Sass variables, functions, and mixins
+
+## Creating a new release
+
+Follow the following steps to deploy a new version of Polaris:
+
+1. Checkout the `main` branch and pull the latest commits
+
+   `git checkout main && git pull`
+
+2. Create a new `polaris-release` branch from `main`
+
+   `git checkout -b polaris-release`
+
+3. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris-react/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
+
+4. Commit changelog updates
+
+   `git add . && commit -m "Polaris vX.X.X release"`
+
+5. Version and tag the new release
+
+   `yarn version`
+
+6. Push the `polaris-release` branch with tags
+
+   `git push --follow-tags`
+
+7. Create a new PR to merge `polaris-release` into `main` in GitHub
+
+   ⚠️ Note: Don't squash your commits when merging! Squashing can cause the release tag to point to a non-existing commit.
+
+8. Once merged, deploy the tagged commit in shipit
