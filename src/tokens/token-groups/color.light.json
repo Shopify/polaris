@@ -127,5 +127,14 @@
   "decorative-four-text": "rgba(0, 45, 45, 1)",
   "decorative-five-icon": "rgba(174, 43, 76, 1)",
   "decorative-five-surface": "rgba(253, 201, 208, 1)",
-  "decorative-five-text": "rgba(79, 14, 31, 1)"
+  "decorative-five-text": "rgba(79, 14, 31, 1)",
+  "border-base": "var(--p-border-width-1) solid var(--p-border-subdued)",
+  "border-dark": "var(--p-border-width-1) solid var(--p-border)",
+  "border-divider": "var(--p-border-width-1) solid var(--p-divider)",
+  "banner-border-default": "inset 0 1px 0 0 var(--p-border-neutral-subdued), inset 0 0 0 1px var(--p-border-neutral-subdued)",
+  "banner-border-success": "inset 0 1px 0 0 var(--p-border-success-subdued), inset 0 0 0 1px var(--p-border-success-subdued)",
+  "banner-border-highlight": "inset 0 1px 0 0 var(--p-border-highlight-subdued), inset 0 0 0 1px var(--p-border-highlight-subdued)",
+  "banner-border-warning": "inset 0 1px 0 0 var(--p-border-warning-subdued), inset 0 0 0 1px var(--p-border-warning-subdued)",
+  "banner-border-critical": "inset 0 1px 0 0 var(--p-border-critical-subdued), inset 0 0 0 1px var(--p-border-critical-subdued)",
+  "thin-border-subdued": "1px solid var(--p-border-subdued)"
 }
