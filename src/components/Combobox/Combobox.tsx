@@ -20,16 +20,16 @@ export interface ComboboxProps {
   children?: React.ReactElement<ListboxProps> | null;
   activator: React.ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
-  onScrolledToBottom?(): void;
   preferredPosition?: PopoverProps['preferredPosition'];
+  onScrolledToBottom?(): void;
 }
 
 export function Combobox({
   children,
   activator,
   allowMultiple,
-  onScrolledToBottom,
   preferredPosition = 'below',
+  onScrolledToBottom,
 }: ComboboxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
@@ -39,38 +39,43 @@ export function Combobox({
   const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
   const ref = useRef<PopoverPublicAPI | null>(null);
 
-  const onOptionSelected = useCallback(() => {
-    if (!allowMultiple) {
-      setPopoverActive(false);
-      setActiveOptionId(undefined);
-      return;
-    }
-    ref.current?.forceUpdatePosition();
-  }, [allowMultiple]);
-
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     setActiveOptionId(undefined);
   }, []);
 
+  const handleOpen = useCallback(() => {
+    setPopoverActive(true);
+    setActiveOptionId(undefined);
+  }, []);
+
+  const onOptionSelected = useCallback(() => {
+    if (!allowMultiple) {
+      handleClose();
+      return;
+    } else {
+      setActiveOptionId(undefined);
+    }
+    ref.current?.forceUpdatePosition();
+  }, [allowMultiple, handleClose]);
+
   const handleFocus = useCallback(() => {
     if (shouldOpen) {
-      setPopoverActive(true);
+      handleOpen();
     }
-  }, [shouldOpen]);
+  }, [shouldOpen, handleOpen]);
 
   const handleChange = useCallback(() => {
     if (shouldOpen) {
-      setPopoverActive(true);
+      handleOpen();
     }
-  }, [shouldOpen]);
+  }, [shouldOpen, handleOpen]);
 
   const handleBlur = useCallback(() => {
     if (popoverActive) {
-      setPopoverActive(false);
-      setActiveOptionId(undefined);
+      handleClose();
     }
-  }, [popoverActive]);
+  }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
@@ -104,21 +109,21 @@ export function Combobox({
 
   const listboxContextValue: ComboboxListboxType = useMemo(
     () => ({
-      setActiveOptionId,
-      setListboxId,
       listboxId,
       textFieldLabelId,
-      onOptionSelected,
       textFieldFocused,
+      setActiveOptionId,
+      setListboxId,
+      onOptionSelected,
       onKeyToBottom: onScrolledToBottom,
     }),
     [
-      setActiveOptionId,
-      setListboxId,
       listboxId,
       textFieldLabelId,
-      onOptionSelected,
       textFieldFocused,
+      setActiveOptionId,
+      setListboxId,
+      onOptionSelected,
       onScrolledToBottom,
     ],
   );
