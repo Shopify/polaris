@@ -7,6 +7,7 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+
 ## 9.2.2 - 2022-03-11
 
 ### Bug fixes
