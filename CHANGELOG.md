@@ -8,7 +8,7 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
-## 9.2.2 - 2022-03-11 ⚗️
+## 9.2.2 - 2022-03-11
 
 ### Bug fixes
 
