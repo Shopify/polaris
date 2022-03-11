@@ -65,7 +65,6 @@
   }
 
   &:active {
-    @include recolor-icon(var(--p-interactive));
     background-color: var(--p-surface-pressed);
   }
 
@@ -79,7 +78,6 @@
   }
 
   &.active {
-    @include recolor-icon(var(--p-interactive));
     background-color: var(--p-surface-selected);
 
     &::before {
