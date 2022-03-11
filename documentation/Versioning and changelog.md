@@ -127,14 +127,15 @@ Follow the following steps to deploy a new version of Polaris:
    `git push origin --follow-tags`
 
 8. Verify tag was created and is linked to the last commit in the last release
-
 9. Create a new PR to merge `polaris-release` into `main` in GitHub
 
-⚠️ Note: Don't squash your commits when merging! Squashing can cause the release tag to point to a non-existing commit.
+   Don't squash your commits when merging! Squashing can cause the release tag to point to a non-existing commit.
 
-11. Once merged, deploy the tagged commit in shipit
+10. Once merged, deploy the tagged commit in shipit
 
-12. Add release notes to the new release
+    This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
+
+11. Add release notes to the new release
 
     a. Copy release notes from `CHANGELOG.md`
 
