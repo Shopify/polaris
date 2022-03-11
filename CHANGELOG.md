@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.2.1 - 2022-03-11
+
+### Bug fixes
+
+- Fixed compound CSS custom properties not updating when using a scoped color scheme (light or dark) ([#5257](https://github.com/Shopify/polaris-react/pull/5257))
+
 ## 9.2.0 - 2022-03-09
 
 ### Enhancements
