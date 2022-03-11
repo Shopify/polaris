@@ -18,15 +18,15 @@ yarn build
 
 ## Local development
 
-Simply run `yarn dev:<package-name>`
+Run `yarn dev:<package-name>`
 
-Run the `packages/website` in watch mode:
+Develop `packages/website` in watch mode:
 
 ```sh
 yarn dev:website
 ```
 
-Develop the `packages/components/` in watch mode:
+Develop `packages/components` in watch mode:
 
 ```sh
 yarn dev:components
