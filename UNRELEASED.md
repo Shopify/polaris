@@ -8,8 +8,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Passed TextField event object to onFocus handler to address failing admin unit tests ([#5265](https://github.com/Shopify/polaris-react/pull/5265))
-
 ### Documentation
 
 ### Development workflow

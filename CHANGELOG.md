@@ -7,6 +7,11 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+## 9.2.2 - 2022-03-11
+
+### Bug fixes
+
+- Passed TextField event object to onFocus callback to address failing admin unit tests ([#5265](https://github.com/Shopify/polaris-react/pull/5265))
 
 ## 9.2.1 - 2022-03-11
 
