@@ -2,4 +2,4 @@ name: polaris-monorepo
 up:
   - node:
       yarn: v1.13.0
-      version: v16.13.0 # to be kept in sync with .nvmrc and ci.yml
+      version: v16.13.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml

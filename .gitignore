@@ -1,18 +1,3 @@
 *.log
 node_modules
-/.loom
-/build
-/build-internal
 .DS_Store
-*.scss.d.ts
-.idea
-
-##############################
-# packages/components
-##############################
-build
-
-##############################
-# packages/website
-##############################
-.next

@@ -1,8 +1,7 @@
 {
-  "name": "polaris-monorepo",
+  "name": "polaris",
   "private": true,
   "engines": {
-    "npm": ">=7.0.0",
     "node": ">=16.13.0"
   },
   "workspaces": [
