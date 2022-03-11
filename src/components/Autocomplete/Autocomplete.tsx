@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback} from 'react';
+import React, {useCallback} from 'react';
 
 import type {
   ActionListItemDescriptor,
@@ -46,10 +46,7 @@ export interface AutocompleteProps {
   onLoadMoreResults?(): void;
 }
 
-// TypeScript can't generate types that correctly infer the typing of
-// subcomponents so explicitly state the subcomponents in the type definition.
-// Letting this be implicit works in this project but fails in projects that use
-// generated *.d.ts files.
+/* TypeScript can't generate types that correctly infer the typing of subcomponents so explicitly state the subcomponents in the type definition. Letting this be implicit works in this project but fails in projects that use generated *.d.ts files. */
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   TextField: typeof Combobox.TextField;
@@ -69,7 +66,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 }: AutocompleteProps) {
   const i18n = useI18n();
 
-  const buildMappedOptionFromOption = useCallback(
+  const getMappedOptions = useCallback(
     (options: OptionDescriptor[]) => {
       return options.map((option) => (
         <MappedOption
@@ -83,63 +80,42 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     [selected, allowMultiple],
   );
 
-  const optionsMarkup = useMemo(() => {
-    const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+  const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+  const isSectioned = isSection(conditionalOptions);
+  const optionsAvailable = isSectioned
+    ? conditionalOptions.every(({options}) => options.length > 0)
+    : conditionalOptions.length > 0;
 
-    if (isSection(conditionalOptions)) {
-      const noOptionsAvailable = conditionalOptions.every(
-        ({options}) => options.length === 0,
-      );
+  let optionMarkup = null;
 
-      if (noOptionsAvailable) {
-        return null;
-      }
+  if (optionsAvailable) {
+    optionMarkup = isSectioned ? (
+      <div className={styles.SectionWrapper}>
+        {conditionalOptions.map((section) => {
+          if (section.options.length === 0) {
+            return null;
+          }
 
-      const optionsMarkup = conditionalOptions.map(({options, title}) => {
-        if (options.length === 0) {
-          return null;
-        }
-
-        const optionMarkup = buildMappedOptionFromOption(options);
-
-        return (
-          <Listbox.Section
-            divider={false}
-            title={<Listbox.Header>{title}</Listbox.Header>}
-            key={title}
-          >
-            {optionMarkup}
-          </Listbox.Section>
-        );
-      });
-
-      return <div className={styles.SectionWrapper}>{optionsMarkup}</div>;
-    }
-
-    const optionList =
-      conditionalOptions.length > 0
-        ? buildMappedOptionFromOption(conditionalOptions)
-        : null;
-
-    if (listTitle && optionList) {
-      return (
-        <Listbox.Section
-          divider={false}
-          title={<Listbox.Header>{listTitle}</Listbox.Header>}
-        >
-          {optionList}
-        </Listbox.Section>
-      );
-    }
-
-    return optionList;
-  }, [
-    listTitle,
-    loading,
-    options,
-    willLoadMoreResults,
-    buildMappedOptionFromOption,
-  ]);
+          return (
+            <Listbox.Section
+              divider={false}
+              title={<Listbox.Header>{section.title}</Listbox.Header>}
+              key={section.title}
+            >
+              {getMappedOptions(section.options)}
+            </Listbox.Section>
+          );
+        })}
+      </div>
+    ) : (
+      <Listbox.Section
+        divider={false}
+        title={listTitle && <Listbox.Header>{listTitle}</Listbox.Header>}
+      >
+        {getMappedOptions(conditionalOptions)}
+      </Listbox.Section>
+    );
+  }
 
   const loadingMarkup = loading ? (
     <Listbox.Loading
@@ -170,6 +146,16 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     <div role="status">{emptyState}</div>
   );
 
+  const listboxMarkup =
+    actionMarkup || optionMarkup || loadingMarkup || emptyStateMarkup ? (
+      <Listbox enableKeyboardControl onSelect={updateSelection}>
+        {actionMarkup}
+        {optionMarkup}
+        {loadingMarkup}
+        {emptyStateMarkup}
+      </Listbox>
+    ) : null;
+
   return (
     <Combobox
       activator={textField}
@@ -177,16 +163,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
     >
-      {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
-        <Listbox enableKeyboardControl onSelect={updateSelection}>
-          {actionMarkup}
-          {optionsMarkup && (!loading || willLoadMoreResults)
-            ? optionsMarkup
-            : null}
-          {loadingMarkup}
-          {emptyStateMarkup}
-        </Listbox>
-      ) : null}
+      {listboxMarkup}
     </Combobox>
   );
 };
