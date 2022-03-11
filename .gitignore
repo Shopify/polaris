@@ -6,3 +6,13 @@ node_modules
 .DS_Store
 *.scss.d.ts
 .idea
+
+##############################
+# packages/components
+##############################
+build
+
+##############################
+# packages/website
+##############################
+.next
