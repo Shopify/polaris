@@ -129,7 +129,7 @@ interface NonMutuallyExclusiveProps {
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
-  onFocus?(): void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
   /** Callback when focus is removed */
   onBlur?(): void;
   /** Visual required indicator, adds an asterisk to label */
@@ -409,12 +409,12 @@ export function TextField({
     monospaced && styles.monospaced,
   );
 
-  const handleOnFocus = () => {
+  const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (selectTextOnFocus) {
       inputRef.current?.select();
     }
     if (onFocus) {
-      onFocus();
+      onFocus(event);
     }
   };
 
