@@ -8,6 +8,22 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.2.1 - 2022-03-11
+
+### Bug fixes
+
+- Moved all CSS custom properties to be defined under the Polaris color-scheme selector ([#5257](https://github.com/Shopify/polaris-react/pull/5257))
+
+## 9.2.0 - 2022-03-09
+
+### Enhancements
+
+- Added the `selectTextOnFocus` prop to `TextField` ([#5216](https://github.com/Shopify/polaris-react/pull/5216))
+
+### Bug fixes
+
+- Fixed Sheet animation by replacing deprecated `easing()` with css custom property ([#5251](https://github.com/Shopify/polaris-react/pull/5251))
+
 ## 9.1.0 - 2022-03-08
 
 ### Enhancements

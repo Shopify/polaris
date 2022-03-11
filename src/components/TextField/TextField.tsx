@@ -129,13 +129,15 @@ interface NonMutuallyExclusiveProps {
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
-  onFocus?(): void;
+  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
   /** Callback when focus is removed */
   onBlur?(): void;
   /** Visual required indicator, adds an asterisk to label */
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
+  /** Indicates whether or not the entire input/text area text should be selected on focus */
+  selectTextOnFocus?: boolean;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -190,6 +192,7 @@ export function TextField({
   onBlur,
   requiredIndicator,
   monospaced,
+  selectTextOnFocus,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -198,7 +201,7 @@ export function TextField({
 
   const id = useUniqueId('TextField', idProp);
 
-  const inputRef = useRef<HTMLElement>(null);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
@@ -406,6 +409,15 @@ export function TextField({
     monospaced && styles.monospaced,
   );
 
+  const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (selectTextOnFocus) {
+      inputRef.current?.select();
+    }
+    if (onFocus) {
+      onFocus(event);
+    }
+  };
+
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
     id,
@@ -415,7 +427,7 @@ export function TextField({
     autoFocus,
     value: normalizedValue,
     placeholder,
-    onFocus,
+    onFocus: handleOnFocus,
     onBlur,
     onKeyPress: handleKeyPress,
     style,
