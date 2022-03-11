@@ -8,7 +8,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Fixed compound CSS custom properties not updating when using a scoped color scheme (light or dark) ([#5257](https://github.com/Shopify/polaris-react/pull/5257))
+- Moved all CSS custom properties to be defined under the Polaris color-scheme selector ([#5257](https://github.com/Shopify/polaris-react/pull/5257))
 
 ### Documentation
 
