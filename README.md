@@ -20,7 +20,7 @@ yarn build
 
 Run `yarn dev:<package-name>`
 
-Develop `packages/website` in watch mode:
+Develop `packages/secretpolaris.shopify.com` in watch mode:
 
 ```sh
 yarn dev:website
