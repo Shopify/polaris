@@ -39,14 +39,11 @@ export function TextField({
     if (setTextFieldLabelId) setTextFieldLabelId(labelId);
   }, [labelId, setTextFieldLabelId]);
 
-  const handleFocus = useCallback(
-    (event: React.FocusEvent<HTMLElement>) => {
-      if (onFocus) onFocus(event);
-      if (onTextFieldFocus) onTextFieldFocus();
-      if (setTextFieldFocused) setTextFieldFocused(true);
-    },
-    [onFocus, onTextFieldFocus, setTextFieldFocused],
-  );
+  const handleFocus = useCallback(() => {
+    if (onFocus) onFocus();
+    if (onTextFieldFocus) onTextFieldFocus();
+    if (setTextFieldFocused) setTextFieldFocused(true);
+  }, [onFocus, onTextFieldFocus, setTextFieldFocused]);
 
   const handleBlur = useCallback(() => {
     if (onBlur) onBlur();
