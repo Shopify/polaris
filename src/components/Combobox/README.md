@@ -176,7 +176,7 @@ function MultiComboboxExample() {
         setSelectedOptions([...selectedOptions, selected]);
       }
 
-      setInputValue(('');
+      setInputValue('');
     },
     [options, selectedOptions],
   );

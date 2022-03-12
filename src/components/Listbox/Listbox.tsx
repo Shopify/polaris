@@ -62,7 +62,6 @@ export function Listbox({
 }: ListboxProps) {
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
-  const [navItems, setNavItems] = useState(getNavigableOptions());
   const [listLength, setListLength] = useState(0);
   const [reset, setReset] = useState(false);
 
@@ -94,6 +93,20 @@ export function Listbox({
       setListboxId(listId);
     }
   }, [setListboxId, listboxId, listId]);
+
+  function getNavigableOptions() {
+    if (!listboxRef.current) {
+      return [];
+    }
+
+    return [
+      ...new Set(
+        listboxRef.current.querySelectorAll<HTMLElement>(
+          LISTBOX_OPTION_SELECTOR,
+        ),
+      ),
+    ];
+  }
 
   const getFirstNavigableOption = useCallback(() => {
     const navItems = getNavigableOptions();
@@ -251,8 +264,6 @@ export function Listbox({
   const getNextValidOption = useCallback(
     (key: ArrowKeys) => {
       const navItems = getNavigableOptions();
-      setNavItems(navItems);
-
       const lastIndex = navItems.length - 1;
       const currentIndex = activeOption?.index ? activeOption.index : 0;
       let nextIndex = 0;
@@ -390,16 +401,6 @@ export function Listbox({
       </ListboxContext.Provider>
     </>
   );
-
-  function getNavigableOptions() {
-    return [
-      ...new Set(
-        listboxRef.current?.querySelectorAll<HTMLElement>(
-          LISTBOX_OPTION_SELECTOR,
-        ),
-      ),
-    ];
-  }
 }
 
 Listbox.Option = Option;
