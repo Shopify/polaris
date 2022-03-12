@@ -68,12 +68,16 @@ interface NonMutuallyExclusiveProps {
   disabled?: boolean;
   /** Show a clear text button in the input */
   clearButton?: boolean;
-  /* Text to render after the cursor to visually indicate pending autocompletion */
+  /** Indicates whether or not the entire value should be selected on focus. */
+  selectTextOnFocus?: boolean;
+  /* Range of characters to select. */
   selection?: {
     start: number;
     end: number;
     direction?: 'forward' | 'backward' | 'none';
   };
+  /** Whether or not the input implements inline autocompletion. When true, the characters within the `selection` range will be subdued. */
+  typeahead?: boolean;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -134,8 +138,6 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
-  /** Indicates whether or not the entire input/text area text should be selected on focus */
-  selectTextOnFocus?: boolean;
   /** Callback when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
@@ -196,6 +198,7 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   selection,
+  typeahead,
   onClearButtonClick,
   onChange,
   onFocus,
@@ -228,10 +231,11 @@ export function TextField({
       type === 'search' ||
       type === 'url' ||
       type === 'password';
+
     if (!input || !isSupportedInputType || selection === undefined) return;
+
     const {start, end} = selection;
     input.setSelectionRange(start, end);
-    // console.log('set selection: ', selection);
   }, [selection, type]);
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
@@ -429,6 +433,7 @@ export function TextField({
     suffix && styles['Input-suffixed'],
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
+    typeahead && styles.typeahead,
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {

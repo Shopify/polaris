@@ -137,6 +137,13 @@ $prefix-horizontal-spacing: var(--p-space-2);
   &:-webkit-autofill {
     border-radius: var(--p-border-radius-1);
   }
+
+  &.typeahead {
+    &::selection {
+      color: hotpink;
+      background: transparent;
+    }
+  }
 }
 
 .Input-hasClearButton {
