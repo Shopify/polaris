@@ -40,6 +40,8 @@ export interface ListboxProps {
   accessibilityLabel?: string;
   /** Callback when an option is selected */
   onSelect?(value: string): void;
+  /** Callback when fired when an option becomes active */
+  onActiveOptionChange?(value: string): void;
 }
 
 export type ArrowKeys = 'up' | 'down';
@@ -59,6 +61,7 @@ export function Listbox({
   enableKeyboardControl,
   accessibilityLabel,
   onSelect,
+  onActiveOptionChange,
 }: ListboxProps) {
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
@@ -114,23 +117,28 @@ export function Listbox({
       (option) => option.getAttribute('aria-selected') === 'true',
     );
 
-    const element = navItems.find((option) => {
+    let elementIndex = 0;
+    const element = navItems.find((option, index) => {
       const isInteractable = option.getAttribute('aria-disabled') !== 'true';
+      let isFirstNavigableOption;
 
       if (hasSelectedOptions) {
         const isSelected = option.getAttribute('aria-selected') === 'true';
-        return isSelected && isInteractable;
+        isFirstNavigableOption = isSelected && isInteractable;
       } else {
-        return isInteractable;
+        isFirstNavigableOption = isInteractable;
       }
+
+      if (isFirstNavigableOption) elementIndex = index;
+
+      return isFirstNavigableOption;
     });
 
     if (!element) return;
 
-    const index = navItems.indexOf(element);
-    console.log('First navigable option: ', index);
+    console.log('First navigable option: ', elementIndex);
 
-    return {element, index};
+    return {element, index: elementIndex};
   }, []);
 
   const handleScrollIntoView = useCallback(
@@ -171,9 +179,15 @@ export function Listbox({
         setActiveOption(nextOption);
 
         if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
+        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
       }
     },
-    [activeOption, setActiveOptionId, handleScrollIntoViewDebounced],
+    [
+      activeOption,
+      setActiveOptionId,
+      onActiveOptionChange,
+      handleScrollIntoViewDebounced,
+    ],
   );
 
   const getFormattedOption = useCallback(
@@ -208,7 +222,7 @@ export function Listbox({
   }, [children, listLength, getFirstNavigableOption]);
 
   useEffect(() => {
-    if (loading || listLength === 0) return;
+    if (loading || listLength <= 1) return;
 
     if (reset) {
       const nextActiveOption = getFirstNavigableOption();
