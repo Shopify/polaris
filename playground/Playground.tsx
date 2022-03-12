@@ -1,12 +1,7 @@
-import React, {useState, useEffect, useCallback} from 'react';
-
-import {Page, Combobox, Listbox, Stack, Icon, TextStyle} from '../src';
+import React, {useState, useCallback, useEffect} from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
-interface Option {
-  label: string;
-  value: string;
-}
+import {Page, Combobox, Listbox, TextStyle} from '../src';
 
 const tags = [
   'one',
@@ -26,160 +21,159 @@ const tags = [
   'fifteen',
 ];
 
-const formattedTags = tags.map((tag) => ({label: tag, value: tag}));
-
 export function Playground() {
-  const [inputValue, setInputValue] = useState<string>('');
-
-  const [options, setOptions] = useState<Option[]>(formattedTags);
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>(
-    formattedTags.slice(0, 7),
-  );
-  const [filteredOptions, setFilteredOptions] = useState<Option[]>(
-    formattedTags.slice(0, 7),
-  );
+  const [query, setQuery] = useState<string>('');
+  const [suggestion, setSuggestion] = useState<string>('');
   const [selection, setSelection] = useState({start: 0, end: 0});
-  const [autofillValue, setAutofillValue] = useState<string>('');
+  const [selectedTags, setSelectedTags] = useState(tags.slice(3, 7));
+  const [filteredTags, setFilteredTags] = useState<string[]>(tags.slice(3, 7));
 
-  const label = 'Tags';
+  const handleSuggestion = useCallback((activeOption, query) => {
+    setSuggestion(activeOption);
+    setSelection({
+      start: query.length,
+      end: activeOption.length,
+    });
+  }, []);
 
-  const updateSelection = useCallback(
-    (selected) => {
-      debugger;
-      const selectedValues = selectedOptions.map((opt) => opt.value);
-      if (selectedValues.includes(selected)) {
-        setSelectedOptions(
-          selectedOptions.filter((option) => option.value !== selected),
-        );
-      } else {
-        setSelectedOptions([
-          ...selectedOptions,
-          {label: selected, value: selected},
-        ]);
+  const handleFilterOptions = useCallback(
+    (query: string) => {
+      if (query === '') {
+        setFilteredTags(selectedTags);
 
-        setFilteredOptions([
-          ...filteredOptions,
-          {label: selected, value: selected},
-        ]);
-      }
-    },
-    [options, selectedOptions],
-  );
-
-  const updateText = useCallback(
-    (value) => {
-      setInputValue(value);
-      setAutofillValue(value);
-
-      if (value === '') {
-        setFilteredOptions(selectedOptions);
+        if (selectedTags.length) handleSuggestion(selectedTags[0], query);
         return;
       }
 
-      // fetch with query
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = options.filter((option) =>
-        option.label.match(filterRegex),
+      const filterRegex = new RegExp(query, 'i');
+      const nextFilteredTags = tags.filter((option) =>
+        option.match(filterRegex),
       );
 
-      setFilteredOptions(resultOptions);
+      setFilteredTags(nextFilteredTags);
 
-      if (Boolean(resultOptions.length)) {
-        const firstMatch = resultOptions[0].value.slice(value.length);
-        setInputValue(value);
-        setAutofillValue(`${value}${firstMatch}`);
-        setSelection({
-          start: value.length,
-          end: firstMatch.length + 1,
-        });
+      if (nextFilteredTags.length > 0) {
+        handleSuggestion(nextFilteredTags[0], query);
       }
     },
-    [options, filteredOptions],
+    [selectedTags, handleSuggestion],
   );
 
-  const handleOptionChange = useCallback(
-    (value) => {
-      if (!autofillValue) return;
+  const handleInputChange = useCallback((value) => {
+    setQuery(value);
+    setSuggestion('');
+  }, []);
 
-      if (filteredOptions.length === 0) {
-        setAutofillValue(inputValue);
-        return;
-      }
+  useEffect(() => {
+    handleFilterOptions(query);
+  }, [query, handleFilterOptions]);
 
-      if (autofillValue !== value) {
-        setAutofillValue(value);
-        setSelection({
-          start: value.length,
-          end: value.length,
-        });
-        return;
+  const handleActiveOptionChange = useCallback(
+    (option) => {
+      setSuggestion(option);
+      setSelection(() => ({
+        start: query ? query.length : 0,
+        end: option.length,
+      }));
+    },
+    [query],
+  );
+
+  const handleSelect = useCallback(
+    (selected) => {
+      if (selectedTags.includes(selected)) {
+        setSelectedTags(selectedTags.filter((option) => option !== selected));
+      } else {
+        setSelectedTags([selected, ...selectedTags]);
+        handleInputChange('');
       }
     },
-    [inputValue, autofillValue],
+    [selectedTags, handleInputChange],
   );
 
-  const activator = (
+  const formatOption = useCallback(
+    (option) => {
+      if (!query) return option;
+
+      const matchIndex = option.toLowerCase().indexOf(query);
+      const start = option.slice(0, matchIndex);
+      const highlight = option.slice(matchIndex, matchIndex + query.length);
+      const end = option.slice(matchIndex + query.length, option.length);
+
+      return (
+        <p>
+          {start}
+          <TextStyle variation="strong">{highlight}</TextStyle>
+          {end}
+        </p>
+      );
+    },
+    [query],
+  );
+
+  const inputValue =
+    query && suggestion.includes(query) && suggestion !== query
+      ? suggestion
+      : query;
+
+  const input = (
     <Combobox.TextField
+      labelHidden
+      typeahead
       disabled={false}
       label="Tags"
-      value={autofillValue}
-      onChange={updateText}
-      labelHidden
+      value={inputValue}
       type="text"
       autoComplete="on"
       ariaAutocomplete="list"
       selection={selection}
+      onChange={handleInputChange}
     />
   );
 
-  const optionMarkup =
-    filteredOptions.length > 0 ? (
-      filteredOptions.map((option) => {
-        const {label, value} = option;
-        const selected = selectedOptions
-          .map((opt) => opt.value)
-          .includes(value);
+  const createActionMarkup = query ? (
+    <Listbox.Action
+      accessibilityLabel={`Add: ${query}`}
+      value={query}
+      icon={CirclePlusMinor}
+    >
+      <p>
+        <TextStyle variation="strong">Add: </TextStyle>
+        {query}
+      </p>
+    </Listbox.Action>
+  ) : null;
 
-        return (
-          <Listbox.Option
-            accessibilityLabel={label}
-            key={`${value}`}
-            value={value}
-            selected={selected}
-          >
-            {label}
-          </Listbox.Option>
-        );
-      })
-    ) : (
-      <Listbox.Option
-        accessibilityLabel={`Add: ${inputValue}`}
-        key={`Add: ${inputValue}`}
-        value={`Add: ${inputValue}`}
-        selected={false}
+  const optionMarkup =
+    filteredTags.length > 0
+      ? filteredTags.map((option) => {
+          return (
+            <Listbox.Option key={option} value={option}>
+              <Listbox.TextOption selected={selectedTags.includes(option)}>
+                {formatOption(option)}
+              </Listbox.TextOption>
+            </Listbox.Option>
+          );
+        })
+      : null;
+
+  const listboxMarkup =
+    optionMarkup || createActionMarkup ? (
+      <Listbox
+        accessibilityLabel="Find or create tags"
+        onSelect={handleSelect}
+        onActiveOptionChange={handleActiveOptionChange}
+        enableKeyboardControl
       >
-        <Stack spacing="tight" wrap={false}>
-          <Icon source={CirclePlusMinor} color="interactive" />
-          <p>
-            <TextStyle variation="strong">Add: </TextStyle>
-            {inputValue}
-          </p>
-        </Stack>
-      </Listbox.Option>
-    );
+        {optionMarkup}
+        {createActionMarkup}
+      </Listbox>
+    ) : null;
 
   return (
     <Page title="Playground">
-      {/* Add the code you want to test in here */}
-      <Combobox activator={activator} allowMultiple>
-        <Listbox
-          accessibilityLabel={label}
-          onSelect={updateSelection}
-          onActiveOptionChange={handleOptionChange}
-          enableKeyboardControl
-        >
-          {optionMarkup}
-        </Listbox>
+      <Combobox activator={input} allowMultiple>
+        {listboxMarkup}
       </Combobox>
     </Page>
   );
