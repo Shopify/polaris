@@ -4,6 +4,20 @@
 
 VSCode features to support developing with the Polaris Design System.
 
+## Development instructions
+
+1. Download the `polaris-react` project
+2. Open the `polaris-react/polaris-for-vscode` directory in a VSCode window
+3. Run the `generateCustomPropertyNames` script to create the tokens file
+
+```bash
+yarn run generateCustomPropertyNames
+```
+
+4. Press `F5` to run the `watch` script using the [VSCode debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension). This will open up a new `Extension Development Host` window
+5. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
+6. Start typing the extension trigger characters `--p` to bring up the Polaris custom properties autocomplete
+
 ## Installation
 
 We don't want to publish this extension to the VSCode Extensions Marketplace yet, so we have to install the package directly from the compiled `.vsix` file.
