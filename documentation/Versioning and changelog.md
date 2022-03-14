@@ -106,39 +106,40 @@ Follow the following steps to deploy a new version of Polaris:
 
    `git checkout main && git pull`
 
-2. Create a new `polaris-release` branch from `main`
+1. Create a new `polaris-release` branch from `main`
 
    `git checkout -b polaris-release`
 
-3. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris-react/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
+1. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris-react/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
 
-4. Commit changelog updates
+1. Commit changelog updates
 
-   `git add . && commit -m "Polaris vX.X.X release"`
+   `git add . && git commit -m "Polaris vX.X.X release"`
 
-5. Publish the `polaris-release` branch if it isn't already
-
-6. Version and tag the new release
+1. Version and tag the new release
 
    `yarn version`
 
-7. Push the `polaris-release` branch with tags
+1. Verify the new tag was created and is linked to the last commit in the last release
 
-   `git push origin --follow-tags`
+1. Push the `polaris-release` branch to the remote repository with tags
 
-8. Verify tag was created and is linked to the last commit in the last release
-9. Create a new PR to merge `polaris-release` into `main` in GitHub
+   `git push origin polaris-release --follow-tags`
 
-   Don't squash your commits when merging! Squashing can cause the release tag to point to a non-existing commit.
+1. Create a new PR to merge `polaris-release` into `main` in GitHub
 
-10. Once merged, deploy the tagged commit in shipit
+1. Deploy the tagged commit in shipit
 
-    This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
+   This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
 
-11. Add release notes to the new release
+1. Once successfully deployed, merge the release PR into `main`
 
-    a. Copy release notes from `CHANGELOG.md`
+   Use the **Rebase and merge** option when merging. Squashing your commits can lead to loosing the tagged commit.
 
-    b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris-react/releases) section, click `Edit tag`, and paste the release notes into the release description
+1. Add release notes to the new release
 
-    c. Push the `Publish Release` button
+   a. Copy release notes from `CHANGELOG.md`
+
+   b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris-react/releases) section, click `Edit tag`, and paste the release notes into the release description
+
+   c. Push the `Publish Release` button
