@@ -1,0 +1,4 @@
+{
+  "extends": "../.eslintrc",
+  "ignorePatterns": ["out", "dist", "**/*.d.ts"]
+}
