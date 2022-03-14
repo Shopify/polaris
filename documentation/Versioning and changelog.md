@@ -100,6 +100,8 @@ Because we expose both React components (for which the markup, including class n
 
 ## Creating a new release
 
+> This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
+
 Follow the following steps to deploy a new version of Polaris:
 
 1. Checkout the `main` branch and pull the latest commits
@@ -129,8 +131,6 @@ Follow the following steps to deploy a new version of Polaris:
 1. Create a new PR to merge `polaris-release` into `main` in GitHub
 
 1. Deploy the tagged commit in shipit
-
-   This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
 
 1. Once successfully deployed, merge the release PR into `main`
 
