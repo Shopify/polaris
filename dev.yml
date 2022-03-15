@@ -1,4 +1,4 @@
-name: polaris-monorepo
+name: polaris
 up:
   - node:
       yarn: v1.13.0
