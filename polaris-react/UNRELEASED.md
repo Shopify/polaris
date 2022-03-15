@@ -15,6 +15,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced hard coded `font-size` and `line-height` values with tokens ([5355](https://github.com/Shopify/polaris/pull/5355/))
 - Replaced hard coded spacing values with tokens ([5364](https://github.com/Shopify/polaris/pull/5364/))
 - Simplified usage of color tokens ([5360](https://github.com/Shopify/polaris/pull/5360/))
+- Added `flattedReactFragments` as an optional prop to `Stack` to allow conditional rendering of multiple child elements wrapped in a `React.Fragment` ([#5293](https://github.com/Shopify/polaris-react/pull/5293))
 
 ### Bug fixes
 

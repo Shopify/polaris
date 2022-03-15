@@ -1,7 +1,11 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import React, {memo, NamedExoticComponent, useMemo} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {elementChildren, wrapWithComponent} from '../../utilities/components';
+import {
+  elementChildren,
+  wrapWithComponent,
+  isElementOfType,
+} from '../../utilities/components';
 
 import {Item} from './components';
 import styles from './Stack.scss';
@@ -37,6 +41,8 @@ export interface StackProps {
   alignment?: Alignment;
   /** Adjust horizontal alignment of elements */
   distribution?: Distribution;
+  /** Flatten top level React.Fragments */
+  flattenReactFragments?: boolean;
 }
 
 export const Stack = memo(function Stack({
@@ -46,6 +52,7 @@ export const Stack = memo(function Stack({
   distribution,
   alignment,
   wrap,
+  flattenReactFragments,
 }: StackProps) {
   const className = classNames(
     styles.Stack,
@@ -56,10 +63,10 @@ export const Stack = memo(function Stack({
     wrap === false && styles.noWrap,
   );
 
-  const itemMarkup = elementChildren(children).map((child, index) => {
-    const props = {key: index};
-    return wrapWithComponent(child, Item, props);
-  });
+  const itemMarkup = useMemo(
+    () => wrapChildrenWithStackItem(children, flattenReactFragments),
+    [children, flattenReactFragments],
+  );
 
   return <div className={className}>{itemMarkup}</div>;
 }) as NamedExoticComponent<StackProps> & {
@@ -67,3 +74,32 @@ export const Stack = memo(function Stack({
 };
 
 Stack.Item = Item;
+
+function wrapChildrenWithStackItem(
+  children: React.ReactNode,
+  flattenReactFragments?: boolean,
+  keyProps?: {key: number},
+) {
+  const props = keyProps ?? {key: -1};
+
+  return elementChildren<React.ReactElement<{children: React.ReactNode}>>(
+    children,
+  ).reduce((acc, child) => {
+    props.key++;
+
+    if (
+      flattenReactFragments &&
+      isElementOfType(child, React.Fragment) &&
+      child.props.children
+    ) {
+      acc.push(
+        ...wrapChildrenWithStackItem(child.props.children, false, props),
+      );
+      return acc;
+    }
+
+    acc.push(wrapWithComponent(child, Item, props));
+
+    return acc;
+  }, [] as React.ReactNode[]);
+}
