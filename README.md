@@ -2,6 +2,14 @@
 
 Placeholder text.
 
+## Folder
+
+```sh
+spectrum/
+├── polaris-react               # Components for @shopify/polaris package
+├── secretpolaris-shopify-com   # Documentation website
+```
+
 ## Getting Started (One time)
 
 1. Initialize the repository by installing external dependencies and symlinking internal packages.
@@ -18,16 +26,14 @@ yarn build
 
 ## Local development
 
-Run `yarn dev:<package-name>`
-
-Develop `packages/secretpolaris.shopify.com` in watch mode:
+Develop `secretpolaris.shopify.com` in watch mode:
 
 ```sh
-yarn dev:website
+yarn dev
 ```
 
-Develop `packages/components` in watch mode:
+Develop `polaris-react` in watch mode:
 
 ```sh
-yarn dev:components
+yarn dev:react
 ```
