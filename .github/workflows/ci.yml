@@ -33,7 +33,7 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn run storybook:build --quiet
+      - run: yarn workspace @shopify/polaris run storybook:build --quiet
       - run: node ./polaris-react/scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
@@ -51,7 +51,7 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn workspace @shopify/polaris storybook:build --quiet
+      - run: yarn workspace @shopify/polaris run storybook:build --quiet
 
       - uses: chromaui/action@v1
         with:
