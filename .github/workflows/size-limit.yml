@@ -3,7 +3,7 @@ name: Size limit
 on:
   pull_request:
     branches:
-      - "**"
+      - '**'
 
 jobs:
   size:

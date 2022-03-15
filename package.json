@@ -17,7 +17,9 @@
     "build:site": "yarn workspace polaris-shopify-com build"
   },
   "devDependencies": {
+    "@shopify/prettier-config": "^1.1.2",
     "@shopify/typescript-configs": "^5.1.0",
     "typescript": ">=3.0.0"
-  }
+  },
+  "prettier": "@shopify/prettier-config"
 }
