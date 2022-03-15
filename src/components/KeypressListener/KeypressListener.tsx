@@ -3,11 +3,17 @@ import {useCallback, useEffect, useRef} from 'react';
 import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import type {Key} from '../../types';
 
-export interface KeypressListenerProps {
+export interface NonMutuallyExclusiveProps {
   keyCode: Key;
   handler(event: KeyboardEvent): void;
   keyEvent?: KeyEvent;
 }
+
+export type KeypressListenerProps = NonMutuallyExclusiveProps &
+  (
+    | {useCapture?: boolean; options?: undefined}
+    | {useCapture?: undefined; options?: AddEventListenerOptions}
+  );
 
 type KeyEvent = 'keydown' | 'keyup';
 
@@ -15,6 +21,8 @@ export function KeypressListener({
   keyCode,
   handler,
   keyEvent = 'keyup',
+  options,
+  useCapture,
 }: KeypressListenerProps) {
   const tracked = useRef({handler, keyCode});
 
@@ -30,11 +38,15 @@ export function KeypressListener({
   }, []);
 
   useEffect(() => {
-    document.addEventListener(keyEvent, handleKeyEvent);
+    document.addEventListener(keyEvent, handleKeyEvent, useCapture || options);
     return () => {
-      document.removeEventListener(keyEvent, handleKeyEvent);
+      document.removeEventListener(
+        keyEvent,
+        handleKeyEvent,
+        useCapture || options,
+      );
     };
-  }, [keyEvent, handleKeyEvent]);
+  }, [keyEvent, handleKeyEvent, useCapture, options]);
 
   return null;
 }
