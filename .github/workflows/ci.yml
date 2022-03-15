@@ -17,10 +17,10 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn run validate-tokens
-      - run: yarn run type-check && yarn run build
-      - run: yarn run lint
-      - run: yarn run test
+      - run: yarn workspace @shopify/polaris run validate-tokens
+      - run: yarn workspace @shopify/polaris run type-check && yarn run build
+      - run: yarn workspace @shopify/polaris run lint
+      - run: yarn workspace @shopify/polaris run test
 
   accessibility_test:
     name: 'Accessibility test'
@@ -34,7 +34,7 @@ jobs:
 
       - run: yarn --frozen-lockfile
       - run: yarn run storybook:build --quiet
-      - run: node ./scripts/accessibility-check.js
+      - run: node ./polaris-react/scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
 
@@ -51,7 +51,7 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn storybook:build --quiet
+      - run: yarn workspace @shopify/polaris storybook:build --quiet
 
       - uses: chromaui/action@v1
         with:
