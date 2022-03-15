@@ -227,7 +227,8 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
     );
 
-    const contentStyles = measuring ? undefined : {height: desiredHeight};
+    console.log({measuring, desiredHeight});
+    const contentStyles = measuring ? undefined : {height: '200px'};
 
     const contentClassNames = classNames(
       styles.Content,
