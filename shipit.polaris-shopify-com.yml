@@ -1,0 +1,12 @@
+production_platform:
+  application: polaris-shopify-com
+  runtime_ids:
+    - production-unrestricted
+ci:
+  require:
+    - Build
+dependencies:
+  override:
+    - yarn install
+  post:
+    - yarn run build

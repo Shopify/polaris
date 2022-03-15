@@ -1,0 +1,12 @@
+name: polaris-shopify-com
+type: node
+up:
+  - node:
+      yarn: v1.13.0
+      version: v16.13.0
+commands:
+  server:
+    aliases: [run, dev, s, start]
+    depends-railgun: false
+    run: yarn run server
+    build: yarn run build

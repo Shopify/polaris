@@ -1,11 +1,17 @@
 {
   "name": "polaris-shopify-com",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next build && next start -p 8000",
+    "server": "next start -p 8000",
+    "lint": "next lint",
+    "heroku-postbuild": "next build",
+    "heroku-prebuild": "printf \"@shopify:registry=https://npm.shopify.io/node/\\n//npm.shopify.io/node/:_authToken=${NODEJS_CLOUDSMITH_TOKEN}\" >> .npmrc"
   },
   "dependencies": {
     "@shopify/polaris": "^9.0.0",
