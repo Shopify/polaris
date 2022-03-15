@@ -4,11 +4,11 @@ on: push
 
 jobs:
   test:
-    name: 'Test'
+    name: "Test"
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.13.0']
+        node-version: ["16.13.0"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -23,7 +23,7 @@ jobs:
       - run: yarn workspace @shopify/polaris run test
 
   accessibility_test:
-    name: 'Accessibility test'
+    name: "Accessibility test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
           STORYBOOK_DISABLE_DOCS: 1
 
   visual_regression_test:
-    name: 'Visual regression test'
+    name: "Visual regression test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -57,8 +57,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: 'build-internal/storybook/static'
-          autoAcceptChanges: 'main'
-          storybookBuildDir: 'polaris-react/build-internal/storybook/static'
+          autoAcceptChanges: "main"
+          storybookBuildDir: "polaris-react/build-internal/storybook/static"
           exitZeroOnChanges: true
           exitOnceUploaded: true
