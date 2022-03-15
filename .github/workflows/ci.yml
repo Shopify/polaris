@@ -4,11 +4,11 @@ on: push
 
 jobs:
   test:
-    name: 'Test'
+    name: "Test"
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.13.0']
+        node-version: ["16.13.0"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -17,13 +17,13 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn run validate-tokens
-      - run: yarn run type-check && yarn run build
-      - run: yarn run lint
-      - run: yarn run test
+      - run: yarn workspace @shopify/polaris run validate-tokens
+      - run: yarn workspace @shopify/polaris run type-check && yarn run build
+      - run: yarn workspace @shopify/polaris run lint
+      - run: yarn workspace @shopify/polaris run test
 
   accessibility_test:
-    name: 'Accessibility test'
+    name: "Accessibility test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -33,13 +33,13 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn run storybook:build --quiet
-      - run: node ./scripts/accessibility-check.js
+      - run: yarn workspace @shopify/polaris run storybook:build --quiet
+      - run: node ./polaris-react/scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
 
   visual_regression_test:
-    name: 'Visual regression test'
+    name: "Visual regression test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,13 +51,13 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
-      - run: yarn storybook:build --quiet
+      - run: yarn workspace @shopify/polaris run storybook:build --quiet
 
       - uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: 'build-internal/storybook/static'
-          autoAcceptChanges: 'main'
+          autoAcceptChanges: "main"
+          storybookBuildDir: "polaris-react/build-internal/storybook/static"
           exitZeroOnChanges: true
           exitOnceUploaded: true
