@@ -74,6 +74,20 @@ describe('<Listbox>', () => {
   });
 
   describe('ul', () => {
+    it('renders children', () => {
+      const wrapper = mountWithApp(<MockComponent />);
+
+      expect(wrapper).toContainReactComponent(Listbox.Option);
+    });
+
+    it('does not render a ul when children are null', () => {
+      const listbox = mountWithApp(
+        <Listbox enableKeyboardControl>{null}</Listbox>,
+      );
+
+      expect(listbox).not.toContainReactComponent('ul');
+    });
+
     it('renders with tab index in order', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
@@ -131,7 +145,7 @@ describe('<Listbox>', () => {
       });
     });
 
-    it('renders with aria activedescendant with an id when an option is active', () => {
+    it('renders with aria-activedescendant with an id when an option is active', () => {
       const listbox = mountWithApp(
         <Listbox enableKeyboardControl>
           <Listbox.Option {...defaultOptionProps}>Option 1</Listbox.Option>
@@ -221,8 +235,6 @@ describe('<Listbox>', () => {
           </Listbox>,
         );
 
-        triggerDown(listbox);
-
         listbox.find('ul')!.trigger('onBlur', {stopPropagation: () => {}});
 
         expect(listbox).toContainReactComponentTimes('ul', 1, {
@@ -285,46 +297,10 @@ describe('<Listbox>', () => {
     expect(setListboxIdSpy).toHaveBeenCalledWith(expect.any(String));
   });
 
-  it('passes `accessibilityLabel` to the lists aria-label attribute', () => {
+  it("passes `accessibilityLabel` to the list's aria-label attribute", () => {
     const wrapper = mountWithApp(<MockComponent accessibilityLabel="test" />);
 
     expect(wrapper).toContainReactComponent('ul', {'aria-label': 'test'});
-  });
-
-  it('renders children', () => {
-    const wrapper = mountWithApp(<MockComponent />);
-
-    expect(wrapper).toContainReactComponent(Listbox.Option);
-  });
-
-  it('does not render a ul when children are null', () => {
-    const listbox = mountWithApp(
-      <Listbox enableKeyboardControl>{null}</Listbox>,
-    );
-
-    expect(listbox).not.toContainReactComponent('ul');
-  });
-
-  it('scrolls selected option into view when outside scrollable view', () => {
-    animationFrame.mock();
-    const scrollBySpy = jest.fn();
-    const wrapper = mountWithApp(<MockComponent />);
-    const option3 = wrapper.findAll(Listbox.Option)[2]!;
-
-    const scrollable = option3.domNode?.closest('[data-polaris-scrollable]')!;
-    scrollable.scrollBy = scrollBySpy;
-
-    triggerUp(wrapper);
-
-    expect(option3.domNode!.getAttribute('data-focused')).toBe('true');
-
-    timer.runAllTimers();
-
-    animationFrame.runFrame();
-
-    expect(scrollBySpy).toHaveBeenCalled();
-
-    animationFrame.restore();
   });
 
   describe('KeypressListenner', () => {
@@ -428,33 +404,10 @@ describe('<Listbox>', () => {
 
   describe('Keyboard control', () => {
     describe('down arrow', () => {
-      it('move the data-focused attribute to true of the selected list item', () => {
-        const wrapper = mountWithApp(<MockComponent />);
-
-        const options = wrapper.findAll(Listbox.Option);
-
-        expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
-
-        triggerDown(wrapper);
-
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
-
-        triggerDown(wrapper);
-
-        expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
-        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
-      });
-
-      it('set the active-descendant attribute of the list to the id of the focused element', () => {
+      it('sets the aria-activedescendant attribute to the id of the active option', () => {
         const wrapper = mountWithApp(<MockComponent />);
         const listbox = wrapper.find('ul', {role: 'listbox'})!;
         const options = wrapper.findAll(Listbox.Option);
-
-        expect(
-          listbox.domNode!.getAttribute('aria-activedescendant'),
-        ).toBeNull();
-
-        triggerDown(wrapper);
 
         expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
           options[0].domNode!.id,
@@ -467,15 +420,33 @@ describe('<Listbox>', () => {
         );
       });
 
-      it('move the focus back to the first option when the bottom of the list is reached', () => {
+      it('moves the data-focused attribute to true on the active option', () => {
+        const wrapper = mountWithApp(<MockComponent />);
+
+        const options = wrapper.findAll(Listbox.Option);
+
+        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+
+        triggerDown(wrapper);
+
+        expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
+        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+      });
+
+      it('moves the focus back to the first option when the bottom of the list is reached', () => {
         const wrapper = mountWithApp(<MockComponent />);
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
+        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
         triggerDown(wrapper);
+
+        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+
         triggerDown(wrapper);
-        triggerDown(wrapper);
+
+        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+
         triggerDown(wrapper);
 
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
@@ -486,8 +457,6 @@ describe('<Listbox>', () => {
         const options = wrapper.findAll(Listbox.Option);
 
         wrapper.find(Button)!.trigger('onClick');
-
-        triggerDown(wrapper);
 
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
@@ -516,7 +485,31 @@ describe('<Listbox>', () => {
     });
 
     describe('up arrow', () => {
-      it('move the data-focused attribute to true of the selected list item', () => {
+      it('scrolls selected option into view when outside scrollable view', () => {
+        animationFrame.mock();
+        const scrollBySpy = jest.fn();
+        const wrapper = mountWithApp(<MockComponent />);
+        const option3 = wrapper.findAll(Listbox.Option)[2]!;
+
+        const scrollable = option3.domNode?.closest(
+          '[data-polaris-scrollable]',
+        )!;
+        scrollable.scrollBy = scrollBySpy;
+
+        triggerUp(wrapper);
+
+        expect(option3.domNode!.getAttribute('data-focused')).toBe('true');
+
+        timer.runAllTimers();
+
+        animationFrame.runFrame();
+
+        expect(scrollBySpy).toHaveBeenCalled();
+
+        animationFrame.restore();
+      });
+
+      it('moves the data-focused attribute to true of the selected list item', () => {
         const wrapper = mountWithApp(<MockComponent />);
 
         const options = wrapper.findAll(Listbox.Option);
@@ -533,14 +526,10 @@ describe('<Listbox>', () => {
         expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
       });
 
-      it('set the active-descendant attribute of the list to the id of the focused element', () => {
+      it('sets the aria-activedescendant attribute to the id of the focused element', () => {
         const wrapper = mountWithApp(<MockComponent />);
         const listbox = wrapper.find('ul', {role: 'listbox'})!;
         const options = wrapper.findAll(Listbox.Option);
-
-        expect(
-          listbox.domNode!.getAttribute('aria-activedescendant'),
-        ).toBeNull();
 
         triggerUp(wrapper);
 
@@ -555,7 +544,7 @@ describe('<Listbox>', () => {
         );
       });
 
-      it('move the focus back to the last option when the top of the list is reached', () => {
+      it('moves the focus back to the last option when the top of the list is reached', () => {
         const wrapper = mountWithApp(<MockComponent />);
         const options = wrapper.findAll(Listbox.Option);
 
@@ -590,13 +579,13 @@ describe('<Listbox>', () => {
       it('calls onOptionSelect with the data-listbox-option-value when enter is pressed', () => {
         const onSelect = jest.fn();
         const wrapper = mountWithApp(<MockComponent onSelect={onSelect} />);
-        const option = wrapper.find(Listbox.Option);
+        const options = wrapper.findAll(Listbox.Option);
         triggerDown(wrapper);
 
         triggerEnter(wrapper);
 
         expect(onSelect).toHaveBeenCalledWith(
-          option!.domNode!.getAttribute('data-listbox-option-value'),
+          options[1]!.domNode!.getAttribute('data-listbox-option-value'),
         );
       });
     });
@@ -631,7 +620,10 @@ describe('<Listbox>', () => {
       const wrapper = mountWithComboboxListContext(<MockComponent />, {
         onKeyToBottom: onKeyToBottomSpy,
       });
-      triggerUp(wrapper);
+
+      triggerDown(wrapper);
+      triggerDown(wrapper);
+      triggerDown(wrapper);
 
       expect(onKeyToBottomSpy).toHaveBeenCalled();
     });
