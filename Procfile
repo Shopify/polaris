@@ -1,1 +1,1 @@
-web: npm start
+web: yarn workspace polaris-shopify-com server

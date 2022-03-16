@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next build && next start -p 8000",
     "server": "next start -p 8000",
     "lint": "next lint",
     "heroku-postbuild": "next build",
