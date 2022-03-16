@@ -1,5 +1,8 @@
+containers:
+  production:
+    environment: production
+    build:
+      from: ubuntu-latest
+
 steps:
-- label: Tests
-  timeout: 5m
-  run:
-  - echo "Hello World"
+  - build: production
