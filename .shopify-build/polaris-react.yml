@@ -1,0 +1,5 @@
+steps:
+- label: Tests
+  timeout: 5m
+  run:
+  - echo "Hello World"

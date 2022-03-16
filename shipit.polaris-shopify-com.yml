@@ -1,12 +1,11 @@
-production_platform:
-  application: polaris-shopify-com
-  runtime_ids:
-    - production-unrestricted
 ci:
   require:
-    # - Build
-    # - buildkite/polaris-shopify-com-builder
+    - buildkite/polaris-react-production-builder
     - krate/lockfile-upload
+production_platform:
+  application: polaris-react
+  runtime_ids:
+    - production-unrestricted-3217
 dependencies:
   override:
     - yarn install

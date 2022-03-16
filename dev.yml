@@ -1,4 +1,4 @@
-name: polaris
+name: polaris-react
 up:
   - node:
       yarn: v1.13.0
