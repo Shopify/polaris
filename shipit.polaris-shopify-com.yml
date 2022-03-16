@@ -4,7 +4,9 @@ production_platform:
     - production-unrestricted
 ci:
   require:
-    - Build
+    # - Build
+    # - buildkite/polaris-shopify-com-builder
+    - krate/lockfile-upload
 dependencies:
   override:
     - yarn install
