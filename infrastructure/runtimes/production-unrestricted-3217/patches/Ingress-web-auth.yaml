@@ -1,0 +1,22 @@
+metadata:
+  annotations:
+    ingress.shopify.io/tls-secretbuddy: 'false'
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: 'false'
+    security.shopify.io/auth: oauth2
+spec:
+  rules:
+    - host: polaris-react.shopifycloud.com
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: web
+                port:
+                  number: 80
+            path: /
+  tls:
+    - hosts:
+        - polaris-react.shopifycloud.com
+      secretName: polaris-react-shopifycloud-com

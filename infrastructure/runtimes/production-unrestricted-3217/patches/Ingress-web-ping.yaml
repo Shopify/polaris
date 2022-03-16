@@ -1,0 +1,15 @@
+metadata:
+  annotations:
+    security.shopify.io/auth: 'none'
+spec:
+  rules:
+    - host: polaris-react.shopifycloud.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: web
+                port:
+                  number: 80
+            path: /services/ping
+            pathType: ImplementationSpecific

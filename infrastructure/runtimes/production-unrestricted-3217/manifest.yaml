@@ -5,16 +5,25 @@ metadata:
   name: production-unrestricted-3217
 runtimeInfo:
   appName: polaris-react
-  env: production
+  env: polaris-shopify-com
   appImage: gcr.io/shopify-docker-images/apps/production/polaris-react
   domains:
-  - polaris-react.shopifycloud.com
+    - polaris-react.shopifycloud.com
 defaultBaseSource: github:Shopify/k8s_base/components
 components:
-- name: web
-  basePath: web/v18
-  resources:
-  - base: ingress.yaml
-  - base: certificate.yaml
-  - base: service.yaml
-  - base: deployment.yaml
+  - name: web
+    basePath: web/v18
+    resources:
+      - base: ingress.yaml
+        patches:
+          - production-unrestricted-3217/patches/Ingress-web-auth.yaml
+      - base: certificate.yaml
+        name: polaris-react-shopifycloud-com
+        patches:
+          - github:Shopify/k8s_base/patches/legacy/cert-label/env/certificate.yaml
+      - base: ingress.yaml
+        name: web-ping
+        patches:
+          - production-unrestricted-3217/patches/Ingress-web-ping.yaml
+      - base: service.yaml
+      - base: deployment.yaml

@@ -167,6 +167,38 @@ spec:
             name: web
             port:
               number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - polaris-react.shopifycloud.com
+    secretName: polaris-react-shopifycloud-com
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ping
+  labels:
+    name: web-ping
+    env: production
+    app: polaris-react
+    runtime-component: web
+  annotations:
+    ingress.shopify.io/tls-secretbuddy: "false"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "false"
+    security.shopify.io/auth: none
+spec:
+  rules:
+  - host: polaris-react.shopifycloud.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: web
+            port:
+              number: 80
+        path: /services/ping
         pathType: ImplementationSpecific
   tls:
   - hosts:
@@ -176,9 +208,8 @@ spec:
 apiVersion: stable.shopify.io/v1
 kind: Certificate
 metadata:
-  name: web
+  name: polaris-react-shopifycloud-com
   labels:
-    env: production
     app: polaris-react
     runtime-component: web
 spec:
