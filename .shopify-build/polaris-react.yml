@@ -1,8 +1,6 @@
 containers:
-  production:
+  production-container:
     environment: production
-    build:
-      from: ubuntu-latest
 
 steps:
-  - build: production
+  - build: production-container
