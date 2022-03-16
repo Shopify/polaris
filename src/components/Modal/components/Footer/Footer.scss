@@ -5,7 +5,7 @@
   align-self: flex-end;
   align-items: center;
   width: 100%;
-  min-height: calc(var(--p-space-4) * 4);
+  min-height: var(--p-space-16);
   padding: var(--p-space-4);
   border-top: var(--p-border-divider);
 }

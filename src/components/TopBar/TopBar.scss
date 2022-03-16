@@ -63,7 +63,7 @@ $context-control-expand-after: 1400px;
   @include unstyled-button;
   position: relative;
   align-self: center;
-  margin-left: calc(var(--p-space-2) + 2px);
+  margin-left: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-2);
   padding: var(--p-space-2);
   border-radius: var(--p-border-radius-base);
@@ -81,8 +81,8 @@ $context-control-expand-after: 1400px;
   &::after {
     content: '';
     position: absolute;
-    top: calc(var(--p-space-2) * -1);
-    left: calc(var(--p-space-2) * -1);
+    top: calc(-1 * var(--p-space-2));
+    left: calc(-1 * var(--p-space-2));
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }

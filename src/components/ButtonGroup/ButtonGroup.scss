@@ -15,7 +15,7 @@
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: calc(var(--p-space-2) + var(--p-space-2));
+    margin-left: var(--p-space-4);
   }
 
   &:not(:last-child) {
@@ -53,8 +53,8 @@
 }
 
 .extraTight {
-  margin-top: calc(-1 * (var(--p-space-1)));
-  margin-left: calc(-1 * (var(--p-space-1)));
+  margin-top: calc(-1 * var(--p-space-1));
+  margin-left: calc(-1 * var(--p-space-1));
 
   .Item {
     margin-top: var(--p-space-1);

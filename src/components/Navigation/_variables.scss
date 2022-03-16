@@ -197,7 +197,7 @@ $nav-animation-variables: (
   &::before {
     content: '';
     position: absolute;
-    top: calc(var(--p-space-2) * -1);
+    top: calc(-1 * var(--p-space-2));
     left: 0;
     display: block;
     width: 100%;

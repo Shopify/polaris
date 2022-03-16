@@ -3,7 +3,7 @@ $key-base-height: 24px;
 .KeyboardKey {
   display: inline-block;
   height: $key-base-height;
-  margin: 0 calc(var(--p-space-1) / 2) var(--p-space-05);
+  margin: 0 var(--p-space-05) var(--p-space-05);
   padding: 0 var(--p-space-1);
   background-color: var(--p-surface);
   box-shadow: 0 0 0 1px var(--p-border-subdued),
