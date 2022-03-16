@@ -1,3 +1,4 @@
+# name needs to match services-db
 name: polaris-react
 up:
   - node:
