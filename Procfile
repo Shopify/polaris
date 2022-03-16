@@ -1,1 +1,1 @@
-web: yarn workspace polaris-shopify-com server
+web: yarn workspace polaris-shopify-com start
