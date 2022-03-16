@@ -5,7 +5,7 @@ metadata:
   name: production-unrestricted-3217
 runtimeInfo:
   appName: polaris-react
-  env: polaris-shopify-com
+  env: production
   appImage: gcr.io/shopify-docker-images/apps/production/polaris-react
   domains:
     - polaris-react.shopifycloud.com
