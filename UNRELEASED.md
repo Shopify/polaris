@@ -19,4 +19,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Code quality
 
+- Replace `calc()` with space token equivalent ([#5295](https://github.com/Shopify/polaris-react/pull/5295))
+
 ### Deprecations
