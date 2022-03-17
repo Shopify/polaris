@@ -11,10 +11,7 @@ merge:
 dependencies:
   override:
     - yarn install
-  post:
-    - yarn workspace @shopify/polaris build
 
 deploy:
   override:
-    # - yarn workspace @shopify/polaris publish --tag latest --access public
     - npm publish polaris-react --tag latest --access public
