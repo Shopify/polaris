@@ -270,6 +270,30 @@ Used to visually indicate that the secondary page action is destructive.
 </Page>
 ```
 
+### Page with custom secondary action
+
+<!-- example-for: web -->
+
+Use to create a custom secondary action.
+
+```jsx
+<Page
+  title="General"
+  secondaryActions={
+    <Button
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as new'}],
+      }}
+    >
+      Save
+    </Button>
+  }
+>
+  <p>Page content</p>
+</Page>
+```
+
 ### Page with subtitle
 
 <!-- example-for: web -->

@@ -8,7 +8,7 @@ import {Breadcrumbs} from '../../../../Breadcrumbs';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
-import type {LinkAction} from '../../../../../types';
+import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 
 describe('<Header />', () => {
@@ -125,18 +125,18 @@ describe('<Header />', () => {
   });
 
   describe('actionGroups', () => {
-    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
+    const mockActionGroupsActions: MenuActionDescriptor[] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
     const mockActionGroups: HeaderProps['actionGroups'] = [
       {
         title: 'First group',
-        actions: mockSecondaryActions,
+        actions: mockActionGroupsActions,
       },
       {
         title: 'Second group',
-        actions: mockSecondaryActions,
+        actions: mockActionGroupsActions,
       },
     ];
 
@@ -163,18 +163,19 @@ describe('<Header />', () => {
     });
   });
 
-  describe('<ActionMenu />', () => {
+  describe('action menu', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
     ];
+    const CustomSecondaryActions = () => null;
 
-    it('does not render without either `secondaryActions` or `actionGroups`', () => {
+    it('does not render <ActionMenu /> without either `secondaryActions` or `actionGroups`', () => {
       const wrapper = mountWithApp(<Header {...mockProps} />);
 
       expect(wrapper).not.toContainReactComponent(ActionMenu);
     });
 
-    it('does not render if `actionGroups` has no `actions', () => {
+    it('does not render <ActionMenu /> if `actionGroups` has no `actions', () => {
       const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',
@@ -188,7 +189,15 @@ describe('<Header />', () => {
       expect(wrapper).not.toContainReactComponent(ActionMenu);
     });
 
-    it('renders with at least valid `secondaryActions`', () => {
+    it('does not render <ActionMenu /> if `ReactNode` is provided as `secondaryActions`', () => {
+      const wrapper = mountWithApp(
+        <Header secondaryActions={<CustomSecondaryActions />} />,
+      );
+
+      expect(wrapper).not.toContainReactComponent(ActionMenu);
+    });
+
+    it('renders <ActionMenu /> with at least valid `secondaryActions`', () => {
       const mockSecondaryActions: HeaderProps['secondaryActions'] = [
         {content: 'mock content'},
       ];
@@ -199,7 +208,7 @@ describe('<Header />', () => {
       expect(wrapper).toContainReactComponent(ActionMenu);
     });
 
-    it('renders with at least valid `actionGroups`', () => {
+    it('renders <ActionMenu /> with at least valid `actionGroups`', () => {
       const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',
@@ -213,7 +222,7 @@ describe('<Header />', () => {
       expect(wrapper).toContainReactComponent(ActionMenu);
     });
 
-    it('renders with `rollup` as `false` when on desktop', () => {
+    it('renders <ActionMenu /> with `rollup` as `false` when on desktop', () => {
       const wrapper = mountWithApp(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
@@ -223,7 +232,7 @@ describe('<Header />', () => {
       });
     });
 
-    it('renders with `rollup` as `true` when on mobile', () => {
+    it('renders <ActionMenu /> with `rollup` as `true` when on mobile', () => {
       const wrapper = mountWithApp(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
         {mediaQuery: {isNavigationCollapsed: true}},
@@ -232,6 +241,14 @@ describe('<Header />', () => {
       expect(wrapper).toContainReactComponent(ActionMenu, {
         rollup: true,
       });
+    });
+
+    it('renders <CustomSecondaryActions /> if `ReactNode` is provided as `secondaryActions`', () => {
+      const wrapper = mountWithApp(
+        <Header secondaryActions={<CustomSecondaryActions />} />,
+      );
+
+      expect(wrapper).toContainReactComponent(CustomSecondaryActions);
     });
   });
 
