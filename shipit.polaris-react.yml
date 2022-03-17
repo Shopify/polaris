@@ -12,8 +12,8 @@ dependencies:
   override:
     - yarn install
   post:
-    - yarn run build
+    - yarn workspace @shopify/polaris build
 
 deploy:
   override:
-    - yarn workspace @shopify/polaris publish
+    - yarn workspace @shopify/polaris publish --tag latest --access public
