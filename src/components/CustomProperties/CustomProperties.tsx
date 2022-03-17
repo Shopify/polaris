@@ -30,6 +30,9 @@ export function CustomProperties(props: CustomPropertiesProps) {
     colorScheme = DEFAULT_COLOR_SCHEME,
   } = props;
 
+  // This flag is used to prevent a flash of unstyled content when the
+  // component mounts. Since the main stylesheet is injected in the useEffect
+  // we don't want to render children until they have access to the custom properties.
   const [hasInjectedStyleSheet, setHasInjectStyleSheet] = useState(
     isServer ? false : Boolean(document.getElementById(STYLE_SHEET_ID)),
   );
