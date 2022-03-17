@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import type {ColorScheme} from '../../tokens';
 
@@ -8,6 +8,11 @@ export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
 export const STYLE_SHEET_ID = 'polaris-custom-properties';
 
+const canUseDOM = Boolean(
+  typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement,
+);
 export interface CustomPropertiesProps {
   /** Determines what color scheme is applied to child content. */
   colorScheme?: ColorScheme;
@@ -29,28 +34,30 @@ export function CustomProperties(props: CustomPropertiesProps) {
     colorScheme = DEFAULT_COLOR_SCHEME,
   } = props;
 
+  const [hasInjectedStyleSheet, setHasInjectStyleSheet] = useState(
+    canUseDOM ? Boolean(document.getElementById(STYLE_SHEET_ID)) : false,
+  );
+
   useEffect(() => {
-    let styleSheet = document.getElementById(STYLE_SHEET_ID);
+    if (hasInjectedStyleSheet) return;
 
-    if (styleSheet) return;
-
-    styleSheet = document.createElement('style');
+    const styleSheet = document.createElement('style');
 
     styleSheet.id = STYLE_SHEET_ID;
     styleSheet.textContent = styles;
 
     document.head.appendChild(styleSheet);
-  }, []);
 
-  return (
+    setHasInjectStyleSheet(true);
+  }, [hasInjectedStyleSheet]);
+
+  return hasInjectedStyleSheet ? (
     <Component
       p-color-scheme={colorScheme}
       className={className}
-      // TODO: Remove this inline style when we update individual components
-      // to set their own color and background-color properties.
       style={{color: 'var(--p-text)'}}
     >
       {children}
     </Component>
-  );
+  ) : null;
 }
