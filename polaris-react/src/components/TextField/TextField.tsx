@@ -47,6 +47,12 @@ type InputMode =
   | 'email'
   | 'url';
 
+interface Selection {
+  start: number;
+  end: number;
+  direction?: 'forward' | 'backward' | 'none';
+}
+
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
@@ -68,6 +74,10 @@ interface NonMutuallyExclusiveProps {
   disabled?: boolean;
   /** Show a clear text button in the input */
   clearButton?: boolean;
+  /** Indicates whether or not the entire value should be selected on focus. */
+  selectTextOnFocus?: boolean;
+  /** Inline textahead value based on input */
+  suggestion?: string;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -124,20 +134,18 @@ interface NonMutuallyExclusiveProps {
   showCharacterCount?: boolean;
   /** Determines the alignment of the text in the input */
   align?: Alignment;
-  /** Callback when clear button is clicked */
-  onClearButtonClick?(id: string): void;
-  /** Callback when value is changed */
-  onChange?(value: string, id: string): void;
-  /** Callback when input is focused */
-  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
-  /** Callback when focus is removed */
-  onBlur?(): void;
   /** Visual required indicator, adds an asterisk to label */
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
-  /** Indicates whether or not the entire input/text area text should be selected on focus */
-  selectTextOnFocus?: boolean;
+  /** Callback fired when clear button is clicked */
+  onClearButtonClick?(id: string): void;
+  /** Callback fired when value is changed */
+  onChange?(value: string, id: string): void;
+  /** Callback fired when input is focused */
+  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
+  /** Callback fired when focus is removed */
+  onBlur?(): void;
 }
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
@@ -186,22 +194,25 @@ export function TextField({
   ariaAutocomplete,
   showCharacterCount,
   align,
+  requiredIndicator,
+  monospaced,
+  selectTextOnFocus,
+  suggestion = '',
   onClearButtonClick,
   onChange,
   onFocus,
   onBlur,
-  requiredIndicator,
-  monospaced,
-  selectTextOnFocus,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
+  const [selection, setSelection] = useState<Selection | null>(null);
   const isAfterInitial = useIsAfterInitialMount();
 
   const id = useUniqueId('TextField', idProp);
 
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
@@ -212,10 +223,47 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  // Use a typeof check here as Typescript mostly protects us from non-stringy
-  // values but overzealous usage of `any` in consuming apps means people have
-  // been known to pass a number in, so make it clear that doesn't work.
-  const normalizedValue = typeof value === 'string' ? value : '';
+  useEffect(() => {
+    if (!value || !suggestion) return;
+
+    setSelection({
+      start: value.length,
+      end: suggestion.length,
+    });
+  }, [value, suggestion]);
+
+  useEffect(() => {
+    const input = inputRef.current;
+    const isSupportedInputType =
+      type === 'text' ||
+      type === 'tel' ||
+      type === 'search' ||
+      type === 'url' ||
+      type === 'password';
+
+    if (
+      !input ||
+      !isSupportedInputType ||
+      selection === null ||
+      selection === undefined
+    )
+      return;
+
+    const {start, end} = selection;
+    input.setSelectionRange(start, end);
+  }, [selection, type]);
+
+  let normalizedValue = '';
+  const typeaheadValue =
+    value && suggestion?.includes(value) && suggestion !== value;
+  if (typeaheadValue) {
+    normalizedValue = suggestion;
+  } else {
+    // Use a typeof check here as Typescript mostly protects us from non-stringy
+    // values but overzealous usage of `any` in consuming apps means people have
+    // been known to pass a number in, so make it clear that doesn't work.
+    normalizedValue = typeof value === 'string' ? value : '';
+  }
 
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
@@ -234,13 +282,13 @@ export function TextField({
   const inputType = type === 'currency' ? 'text' : type;
 
   const prefixMarkup = prefix ? (
-    <div className={styles.Prefix} id={`${id}Prefix`} ref={prefixRef}>
+    <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
       {prefix}
     </div>
   ) : null;
 
   const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}Suffix`} ref={suffixRef}>
+    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
       {suffix}
     </div>
   ) : null;
@@ -268,7 +316,7 @@ export function TextField({
 
     characterCountMarkup = (
       <div
-        id={`${id}CharacterCounter`}
+        id={`${id}-CharacterCounter`}
         className={characterCountClassName}
         aria-label={characterCountLabel}
         aria-live={focus ? 'polite' : 'off'}
@@ -407,6 +455,7 @@ export function TextField({
     suffix && styles['Input-suffixed'],
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
+    suggestion && styles.suggestion,
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
@@ -434,7 +483,7 @@ export function TextField({
     autoComplete,
     className: inputClassName,
     onChange: handleChange,
-    ref: inputRef,
+    ref: multiline ? textAreaRef : inputRef,
     min,
     max,
     step,
@@ -503,6 +552,7 @@ export function TextField({
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
+
     event.preventDefault();
   }
 

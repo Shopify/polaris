@@ -133,6 +133,13 @@ $spinner-icon-size: 12px;
   &:-webkit-autofill {
     border-radius: var(--p-border-radius-1);
   }
+
+  &.suggestion {
+    &::selection {
+      color: var(--p-text-disabled);
+      background: transparent;
+    }
+  }
 }
 
 .Input-hasClearButton {

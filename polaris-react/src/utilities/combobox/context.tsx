@@ -16,7 +16,7 @@ export interface ComboboxTextFieldType {
   // Callback fired when TextField is blurred
   onTextFieldBlur?(): void;
   // Callback fired when TextField value changes
-  onTextFieldChange?(): void;
+  onTextFieldChange?(value: string): void;
 }
 
 export interface ComboboxListboxType {
