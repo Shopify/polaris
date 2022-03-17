@@ -4,6 +4,7 @@ import {classNames} from '../../utilities/css';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
+import {isInterface, isReactElement} from './utilities';
 
 export interface PageProps extends HeaderProps {
   /** The contents of the page */
@@ -32,7 +33,10 @@ export function Page({
   const hasHeaderContent =
     (rest.title != null && rest.title !== '') ||
     rest.primaryAction != null ||
-    (rest.secondaryActions != null && rest.secondaryActions.length > 0) ||
+    (rest.secondaryActions != null &&
+      ((isInterface(rest.secondaryActions) &&
+        rest.secondaryActions.length > 0) ||
+        isReactElement(rest.secondaryActions))) ||
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
 

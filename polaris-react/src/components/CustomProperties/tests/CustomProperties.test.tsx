@@ -52,6 +52,9 @@ const expectedCustomProperties =
 const expectedColorSchemeDeclarations = (colorScheme: ColorScheme) =>
   `color-scheme:${osColorSchemes[colorScheme]};${expectedCustomProperties}`;
 
+const expectedColorSchemeRules = (colorScheme: ColorScheme) =>
+  `${expectedColorSchemeDeclarations(colorScheme)}${expectedCustomProperties}`;
+
 describe('<CustomProperties />', () => {
   afterEach(() => {
     document.head.innerHTML = '';
@@ -177,7 +180,7 @@ describe('<CustomProperties />', () => {
       const expectedRules = Object.keys(mockColorSchemes)
         .map(
           (colorScheme) =>
-            `[p-color-scheme="${colorScheme}"]{${expectedColorSchemeDeclarations(
+            `[p-color-scheme="${colorScheme}"]{${expectedColorSchemeRules(
               colorScheme as ColorScheme,
             )}}`,
         )

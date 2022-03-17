@@ -7,12 +7,10 @@ import {
   OSColorSchemes,
 } from '../../tokens';
 
-/** Default light color-scheme declarations. */
-const lightDeclarations = getColorSchemeDeclarations(
-  'light',
-  tokens,
-  osColorSchemes,
-);
+const defaultCustomProperties = `
+  ${getColorSchemeDeclarations('light', tokens, osColorSchemes)}
+  ${getStaticCustomProperties(tokens)}
+`;
 
 /**
  * Creates CSS Rules for each color-scheme.
@@ -30,13 +28,15 @@ export function getColorSchemeRules(
       const colorScheme = key as ColorScheme;
 
       const selector = `[p-color-scheme="${colorScheme}"]`;
-      const properties = getColorSchemeDeclarations(
+      const colorCustomProperties = getColorSchemeDeclarations(
         colorScheme,
         tokens,
         osColorSchemes,
       );
 
-      return `${selector}{${properties}}`;
+      return `${selector}{${colorCustomProperties}${getStaticCustomProperties(
+        tokens,
+      )}}`;
     })
     .join('');
 }
@@ -78,11 +78,7 @@ export function getCustomProperties(tokens: TokenGroup) {
 /**
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
  */
-export const styles = /* css */ `
-:root {
-  ${lightDeclarations}
-  ${getStaticCustomProperties(tokens)}
-}
-
-${getColorSchemeRules(tokens, osColorSchemes)}
+export const styles = `
+  :root{${defaultCustomProperties}}
+  ${getColorSchemeRules(tokens, osColorSchemes)}
 `;
