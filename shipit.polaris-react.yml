@@ -8,5 +8,12 @@ merge:
     - 'Test (16.13.0)'
     - 'Accessibility test'
 
+dependencies:
+  override:
+    - yarn install
+  post:
+    - yarn run build
+
 deploy:
-  max_commits: false
+  override:
+    - yarn workspace @shopify/polaris publish
