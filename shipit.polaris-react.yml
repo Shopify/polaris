@@ -17,5 +17,4 @@ dependencies:
 deploy:
   override:
     # - yarn workspace @shopify/polaris publish --tag latest --access public
-    - cd ./polaris-react
-    - npm publish --tag latest --access public
+    - npm publish polaris-react --tag latest --access public
