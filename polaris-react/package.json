@@ -11,7 +11,8 @@
     "url": "https://github.com/Shopify/polaris-react/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
   },
   "files": [
     "build/",
