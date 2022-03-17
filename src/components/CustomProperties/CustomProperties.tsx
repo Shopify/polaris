@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import type {ColorScheme} from '../../tokens';
+import {isServer} from '../../utilities/target';
 
 import {styles} from './styles';
 
@@ -8,11 +9,6 @@ export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
 export const STYLE_SHEET_ID = 'polaris-custom-properties';
 
-const canUseDOM = Boolean(
-  typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement,
-);
 export interface CustomPropertiesProps {
   /** Determines what color scheme is applied to child content. */
   colorScheme?: ColorScheme;
@@ -35,7 +31,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
   } = props;
 
   const [hasInjectedStyleSheet, setHasInjectStyleSheet] = useState(
-    canUseDOM ? Boolean(document.getElementById(STYLE_SHEET_ID)) : false,
+    isServer ? false : Boolean(document.getElementById(STYLE_SHEET_ID)),
   );
 
   useEffect(() => {
