@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import type {ColorScheme} from '../../tokens';
+import {isServer} from '../../utilities/target';
 
 import {styles} from './styles';
 
@@ -29,25 +30,19 @@ export function CustomProperties(props: CustomPropertiesProps) {
     colorScheme = DEFAULT_COLOR_SCHEME,
   } = props;
 
-  useEffect(() => {
-    let styleSheet = document.getElementById(STYLE_SHEET_ID);
-
-    if (styleSheet) return;
-
-    styleSheet = document.createElement('style');
+  if (!isServer && !document.getElementById(STYLE_SHEET_ID)) {
+    const styleSheet = document.createElement('style');
 
     styleSheet.id = STYLE_SHEET_ID;
     styleSheet.textContent = styles;
 
     document.head.appendChild(styleSheet);
-  }, []);
+  }
 
   return (
     <Component
       p-color-scheme={colorScheme}
       className={className}
-      // TODO: Remove this inline style when we update individual components
-      // to set their own color and background-color properties.
       style={{color: 'var(--p-text)'}}
     >
       {children}
