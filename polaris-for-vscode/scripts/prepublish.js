@@ -3,15 +3,15 @@ const path = require('path');
 
 const getCustomPropertyNames = require('../../scripts/utilities/getCustomPropertyNames');
 
-const dirPath = path.join(__dirname, '../src/data')
+const dirPath = path.join(__dirname, '../src/data');
 const outFile = 'allTokens.ts';
-const filePath = path.join(dirPath, outFile)
+const filePath = path.join(dirPath, outFile);
 
 const tokens = getCustomPropertyNames();
 
 try {
   if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath)
+    fs.mkdirSync(dirPath);
   }
 
   fs.writeFileSync(
@@ -19,6 +19,7 @@ try {
     `export const allTokens = ${JSON.stringify(tokens)};`,
   );
 } catch (err) {
-  console.error(`ERROR Could not create custom properties file "${filePath}": ${err}`)
+  throw new Error(
+    `Could not create custom properties file "${filePath}": ${err}`,
+  );
 }
-
