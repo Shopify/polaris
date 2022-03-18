@@ -7,3 +7,7 @@ merge:
   require:
     - 'Test (16.13.0)'
     - 'Accessibility test'
+
+deploy:
+  override:
+    - npm publish polaris-react --tag latest
