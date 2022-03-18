@@ -1,17 +1,12 @@
-filename: UNRELEASED.md
+filename: polaris-react/UNRELEASED.md
 include:
-  - /^config\//
-  - /^documentation\//
-  - /^scripts\//
-  - /^src\//
-  - /^.babelrc$/
-  - /^.eslintrc$/
-  - /^.nvmrc$/
-  - /^.prettierrc$/
-  - /^app.json$/
   - /^LICENSE.md$/
-  - /^package.json$/
-  - /^tsconfig.json$/
-inProgressMessage: missing an entry in UNRELEASED.md
+  - /polaris-react/^config\//
+  - /polaris-react/^documentation\//
+  - /polaris-react/^scripts\//
+  - /polaris-react/^src\//
+  - /polaris-react/^package.json$/
+  - /polaris-react/^tsconfig.json$/
+inProgressMessage: missing an entry in polaris-react/UNRELEASED.md
 skipLabel: 🤖Skip Changelog
 detailsUrl: https://github.com/Shopify/polaris-react/blob/main/UNRELEASED.md
