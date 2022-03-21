@@ -109,7 +109,6 @@
     "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-contexts": "^5.3.21",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/builder-webpack5": "^6.4.19",
     "@storybook/manager-webpack5": "^6.4.19",

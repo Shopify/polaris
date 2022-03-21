@@ -1,57 +1,42 @@
 import React from 'react';
 import {addParameters, addDecorator} from '@storybook/react';
-import {withContexts} from '@storybook/addon-contexts/react';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 
-function StrictModeToggle({isStrict = false, children}) {
-  const Wrapper = isStrict ? React.StrictMode : React.Fragment;
-  return <Wrapper>{children}</Wrapper>;
-}
-
-function AppProviderWithKnobs({colorScheme, children}, context) {
-  const omitAppProvider = (() => {
-    try {
-      return children.props['data-omit-app-provider'];
-    } catch (e) {
-      return null;
-    }
-  })();
-
-  if (omitAppProvider === 'true') return children;
+function StrictModeDecorator(Story, context) {
+  const Wrapper =
+    context.globals.strictMode === 'true' ? React.StrictMode : React.Fragment;
 
   return (
-    <AppProvider colorScheme={colorScheme} i18n={enTranslations}>
-      {children}
+    <Wrapper>
+      <Story {...context} />
+    </Wrapper>
+  );
+}
+
+function AppProviderDecorator(Story, context) {
+  if (context.args.omitAppProvider) return <Story {...context} />;
+
+  return (
+    <AppProvider i18n={enTranslations}>
+      <Story {...context} />
     </AppProvider>
   );
 }
 
-const withContextsDecorator = withContexts([
-  {
-    title: 'Strict Mode',
-    components: [StrictModeToggle],
-    params: [
-      {name: 'Disabled', props: {isStrict: false}},
-      {name: 'Enabled', default: true, props: {isStrict: true}},
-    ],
+export const globalTypes = {
+  strictMode: {
+    name: 'React.StrictMode',
+    defaultValue: 'false',
+    toolbar: {
+      items: [
+        {title: 'Disabled', value: 'false'},
+        {title: 'Enabled', value: 'true'},
+      ],
+      showName: true,
+    },
   },
-  {
-    title: 'Color scheme',
-    components: [AppProviderWithKnobs],
-    params: [
-      {
-        default: true,
-        name: 'Light Mode',
-        props: {colorScheme: 'light'},
-      },
-      {
-        name: 'Dark Mode',
-        props: {colorScheme: 'dark'},
-      },
-    ],
-  },
-]);
+};
 
-export const decorators = [withContextsDecorator];
+export const decorators = [StrictModeDecorator, AppProviderDecorator];
