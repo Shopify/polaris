@@ -129,7 +129,7 @@
     "gray-matter": "^4.0.2",
     "marked": "^0.7.0",
     "node-cmd": "^3.0.0",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "object-hash": "^1.3.1",
     "postcss": "^8.3.1",
