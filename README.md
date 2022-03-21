@@ -6,6 +6,7 @@ Polaris is our design system that helps us work together to build a great experi
 
 ```sh
 polaris/
+├── documentation               # Documentation for working in the monorepo
 ├── polaris-react               # Components for @shopify/polaris package
 ├── secretpolaris-shopify-com   # Documentation website
 ```
