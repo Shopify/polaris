@@ -21,5 +21,8 @@
     "@shopify/typescript-configs": "^5.1.0",
     "typescript": ">=3.0.0"
   },
-  "prettier": "@shopify/prettier-config"
+  "prettier": "@shopify/prettier-config",
+  "resolutions": {
+    "node-gyp": "^8.4.1"
+  }
 }
