@@ -6,6 +6,8 @@ import {styles} from './styles';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
+export const STYLE_SHEET_ID = 'polaris-custom-properties';
+
 export interface CustomPropertiesProps {
   /** Determines what color scheme is applied to child content. */
   colorScheme?: ColorScheme;
