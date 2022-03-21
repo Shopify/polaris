@@ -9,11 +9,16 @@ const postcssPlugins = require('../config/postcss-plugins');
 const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
+  // Added to work around https://github.com/storybookjs/storybook/issues/15336
+  // The line below can be removed in @storybook/react v6.5.0
+  typescript: {reactDocgen: false},
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
     {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
-    '@storybook/addon-contexts',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
@@ -44,7 +49,7 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            query: {
+            options: {
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
