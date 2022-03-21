@@ -6,7 +6,7 @@ const {config, cp, mkdir, rm} = require('shelljs');
 
 const packageJSON = require('../package.json');
 
-const root = resolve(__dirname, '..');
+const root = resolve(__dirname, '../../');
 const projectDir = process.argv[2];
 
 config.fatal = true;
