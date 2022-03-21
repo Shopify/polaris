@@ -55,11 +55,11 @@ const Home: NextPage = () => {
           <Layout.Section secondary>
             <Card>
               <Card.Section title="Customer">
-                <p>Tobi Lutke</p>
+                <p>Loyal Customer</p>
                 <p>99 orders</p>
               </Card.Section>
               <Card.Section title="Order Contact">
-                <p>tobi@shopify.com</p>
+                <p>customer@email.com</p>
                 <p>No phone provided</p>
               </Card.Section>
               <Card.Section title="Shipping Address">
