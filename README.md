@@ -1,11 +1,11 @@
 # Polaris
 
-Placeholder text.
+Polaris is our design system helps us work together to build a great experience for all of Shopify’s merchants. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
 ## Folder
 
 ```sh
-spectrum/
+polaris/
 ├── polaris-react               # Components for @shopify/polaris package
 ├── secretpolaris-shopify-com   # Documentation website
 ```
@@ -15,7 +15,7 @@ spectrum/
 1. Initialize the repository by installing external dependencies and symlinking internal packages.
 
 ```sh
-dev up
+yarn install
 ```
 
 2. Build every package in the monorepo.
@@ -37,3 +37,12 @@ Develop `polaris-react` in watch mode:
 ```sh
 yarn dev:react
 ```
+
+## Contributing
+
+Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md) for more information.
+
+## Licenses
+
+- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/main/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
+- All icons and images are licensed under the [Polaris Design Guidelines License Agreement](https://polaris.shopify.com/legal/license)
