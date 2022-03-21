@@ -1,6 +1,6 @@
 # Polaris
 
-Polaris is our design system helps us work together to build a great experience for all of Shopify’s merchants. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
+Polaris is our design system that helps us work together to build a great experience for all of Shopify’s merchants. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
 ## Folder
 
