@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@9.2.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@9.2.2/build/esm/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@9.2.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@9.2.2/build/esm/styles.css"
 />
 ```
 
@@ -109,7 +109,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 yarn run build-consumer polaris-styleguide
 ```
 
-2. In your terminal, open a second tab and run `yarn run dev` from the `polaris-styleguide` repository
+2. In your terminal, open a second tab and run `dev up && dev run` from the `polaris-styleguide` repository (or `yarn install && yarn dev` in your consuming project)
 
 In the example above, the build is copied to `polaris-styleguide/node_modules/@shopify/polaris`. And in this case, a rebuild of `polaris-styleguide` is required after copying the `polaris-react` build, but may not be the case for all consuming projects.
 
