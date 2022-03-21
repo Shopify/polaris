@@ -404,6 +404,31 @@ describe('<IndexTable>', () => {
         true,
       );
     });
+
+    it('displays a loading spinner on a promoted bulk action when loading is true for that bulk action', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const promotedBulkActions = [{content: 'promoted action', loading: true}];
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={promotedBulkActions}
+          onSelectionChange={onSelectionChangeSpy}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const button = index.find(BulkActions)!.find(Button);
+
+
+      expect(button).toHaveReactProps(
+        {loading: true},
+      );
+    });
   });
 
   describe('condensed', () => {

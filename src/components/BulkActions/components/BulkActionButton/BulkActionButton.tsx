@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 
-import type {DisableableAction} from '../../../../types';
+import type {DisableableAction, LoadableAction} from '../../../../types';
 import {Button} from '../../../Button';
 import {Indicator} from '../../../Indicator';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
@@ -10,7 +10,7 @@ export type BulkActionButtonProps = {
   disclosure?: boolean;
   indicator?: boolean;
   handleMeasurement?(width: number): void;
-} & DisableableAction;
+} & DisableableAction & LoadableAction;
 
 export function BulkActionButton({
   handleMeasurement,
@@ -21,6 +21,7 @@ export function BulkActionButton({
   disclosure,
   accessibilityLabel,
   disabled,
+  loading,
   indicator,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
@@ -40,6 +41,7 @@ export function BulkActionButton({
         aria-label={accessibilityLabel}
         onClick={onAction}
         disabled={disabled}
+        loading={loading}
         disclosure={disclosure}
       >
         {content}

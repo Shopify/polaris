@@ -12,6 +12,7 @@ import type {
   Action,
   ActionListSection,
   MenuGroupDescriptor,
+  LoadableAction,
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -23,7 +24,7 @@ import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton, BulkActionMenu} from './components';
 import styles from './BulkActions.scss';
 
-export type BulkAction = DisableableAction & BadgeAction;
+export type BulkAction = DisableableAction & BadgeAction & LoadableAction;
 
 type BulkActionListSection = ActionListSection;
 
@@ -52,6 +53,8 @@ export interface BulkActionsProps {
   paginatedSelectAllAction?: Action;
   /** Disables bulk actions */
   disabled?: boolean;
+  /** Disables bulk actions */
+  loading?: boolean;
   /** Callback when the select all checkbox is clicked */
   onToggleAll?(): void;
   /** Callback when selectable state of list is changed */
@@ -234,6 +237,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       selected,
       smallScreen,
       disabled,
+      loading,
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
@@ -263,6 +267,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         onClick={paginatedSelectAllAction.onAction}
         plain
         disabled={disabled}
+        loading={loading}
       >
         {paginatedSelectAllAction.content}
       </Button>
