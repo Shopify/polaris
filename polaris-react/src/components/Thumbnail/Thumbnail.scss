@@ -29,6 +29,10 @@
   width: thumbnail-size(large);
 }
 
+.transparent {
+  background: transparent;
+}
+
 .Thumbnail > * {
   position: absolute;
   top: 0;
