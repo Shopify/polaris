@@ -3,4 +3,5 @@ export interface NavigableOption {
   value: string;
   element: HTMLElement;
   disabled: boolean;
+  index?: number;
 }

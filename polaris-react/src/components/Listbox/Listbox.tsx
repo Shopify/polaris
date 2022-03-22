@@ -5,20 +5,20 @@ import React, {
   useCallback,
   ReactNode,
   useMemo,
+  Children,
 } from 'react';
 import debounce from 'lodash/debounce';
 
-import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
-import {Key} from '../../types';
-import {KeypressListener} from '../KeypressListener';
-import {VisuallyHidden} from '../VisuallyHidden';
 import {useComboboxListbox} from '../../utilities/combobox';
 import {closestParentMatch} from '../../utilities/closest-parent-match';
 import {scrollIntoView} from '../../utilities/scroll-into-view';
 import {ListboxContext, WithinListboxContext} from '../../utilities/listbox';
 import type {NavigableOption} from '../../utilities/listbox';
+import {Key} from '../../types';
+import {KeypressListener} from '../KeypressListener';
+import {VisuallyHidden} from '../VisuallyHidden';
 
 import {
   Option,
@@ -38,8 +38,10 @@ export interface ListboxProps {
   enableKeyboardControl?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
-  /** Callback when an option is selected */
+  /** Callback fired when an option is selected */
   onSelect?(value: string): void;
+  /** Callback fired when an option becomes active */
+  onActiveOptionChange?(value: string): void;
 }
 
 export type ArrowKeys = 'up' | 'down';
@@ -59,27 +61,32 @@ export function Listbox({
   enableKeyboardControl,
   accessibilityLabel,
   onSelect,
+  onActiveOptionChange,
 }: ListboxProps) {
-  const listboxClassName = classNames(styles.Listbox);
+  const [loading, setLoading] = useState<string>();
+  const [activeOption, setActiveOption] = useState<NavigableOption>();
+  const [listLength, setListLength] = useState(0);
+  const [reset, setReset] = useState(false);
+
   const {
     value: keyboardEventsEnabled,
     setTrue: enableKeyboardEvents,
     setFalse: disableKeyboardEvents,
   } = useToggle(Boolean(enableKeyboardControl));
+
   const listId = useUniqueId('Listbox');
+
   const scrollableRef = useRef<HTMLElement | null>(null);
   const listboxRef = useRef<HTMLUListElement>(null);
-  const [loading, setLoading] = useState<string>();
-  const [currentActiveOption, setCurrentActiveOption] =
-    useState<NavigableOption>();
+
   const {
-    setActiveOptionId,
-    setListboxId,
     listboxId,
     textFieldLabelId,
+    textFieldFocused,
+    setActiveOptionId,
+    setListboxId,
     onOptionSelected,
     onKeyToBottom,
-    textFieldFocused,
   } = useComboboxListbox();
 
   const inCombobox = Boolean(setActiveOptionId);
@@ -90,14 +97,50 @@ export function Listbox({
     }
   }, [setListboxId, listboxId, listId]);
 
-  useEffect(() => {
-    if (!currentActiveOption || !setActiveOptionId) return;
-    setActiveOptionId(currentActiveOption.domId);
-  }, [currentActiveOption, setActiveOptionId]);
+  const getNavigableOptions = () => {
+    if (!listboxRef.current) {
+      return [];
+    }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return [
+      ...new Set(
+        listboxRef.current.querySelectorAll<HTMLElement>(
+          LISTBOX_OPTION_SELECTOR,
+        ),
+      ),
+    ];
+  };
+
+  const getFirstNavigableOption = useCallback(() => {
+    const navItems = getNavigableOptions();
+    const hasSelectedOptions = navItems.some(
+      (option) => option.getAttribute('aria-selected') === 'true',
+    );
+
+    let elementIndex = 0;
+    const element = navItems.find((option, index) => {
+      const isInteractable = option.getAttribute('aria-disabled') !== 'true';
+      let isFirstNavigableOption;
+
+      if (hasSelectedOptions) {
+        const isSelected = option.getAttribute('aria-selected') === 'true';
+        isFirstNavigableOption = isSelected && isInteractable;
+      } else {
+        isFirstNavigableOption = isInteractable;
+      }
+
+      if (isFirstNavigableOption) elementIndex = index;
+
+      return isFirstNavigableOption;
+    });
+
+    if (!element) return;
+
+    return {element, index: elementIndex};
+  }, []);
+
   const handleScrollIntoView = useCallback(
-    debounce((option: NavigableOption, first: boolean) => {
+    (option: NavigableOption, first: boolean) => {
       if (scrollableRef.current) {
         const {element} = option;
         const focusTarget = first
@@ -107,35 +150,114 @@ export function Listbox({
 
         scrollIntoView(focusTarget, scrollableRef.current);
       }
-    }, 15),
+    },
     [],
   );
 
+  const handleScrollIntoViewDebounced = debounce(handleScrollIntoView, 15);
+
   const handleChangeActiveOption = useCallback(
     (nextOption?: NavigableOption) => {
-      setCurrentActiveOption((currentActiveOption) => {
-        if (currentActiveOption) {
-          currentActiveOption.element.removeAttribute(DATA_ATTRIBUTE);
+      if (activeOption && activeOption.domId !== nextOption?.domId) {
+        activeOption.element.removeAttribute(DATA_ATTRIBUTE);
+      }
+
+      if (nextOption) {
+        if (scrollableRef.current) {
+          const first =
+            getNavigableOptions().findIndex(
+              (element) => element.id === nextOption.element.id,
+            ) === 0;
+
+          handleScrollIntoViewDebounced(nextOption, first);
         }
 
-        if (nextOption) {
-          nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
-          if (scrollableRef.current) {
-            const first =
-              getNavigableOptions().findIndex(
-                (element) => element.id === nextOption.element.id,
-              ) === 0;
+        nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
 
-            handleScrollIntoView(nextOption, first);
-          }
-          return nextOption;
-        } else {
-          return undefined;
-        }
-      });
+        setActiveOption(nextOption);
+
+        if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
+        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
+      }
     },
-    [handleScrollIntoView],
+    [
+      activeOption,
+      setActiveOptionId,
+      onActiveOptionChange,
+      handleScrollIntoViewDebounced,
+    ],
   );
+
+  const getFormattedOption = useCallback(
+    (element: HTMLElement, index: number) => {
+      return {
+        index,
+        domId: element.id,
+        value: element.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE) || '',
+        element,
+        disabled: element.getAttribute('aria-disabled') === 'true',
+      };
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (children) {
+      let reset = false;
+      setListLength((length) => {
+        const nextListLength = Children.count(children);
+
+        // check if active option is for creating new listbox option
+        const activeOptionLabel =
+          activeOption?.element &&
+          activeOption?.element.getAttribute('aria-label');
+        const activeOptionCreate = activeOptionLabel?.includes('Add: ');
+
+        // reset when active option is to create a new listbox option.
+        // without this conditional check, then reset will only be set
+        // to true when you type the first char of the new option and
+        // not be subsequently called as you continue typing the new
+        // option value
+        if (activeOptionCreate && nextListLength === length) {
+          reset = true;
+        }
+
+        // reset when number of listbox children change
+        if (nextListLength !== length) {
+          reset = true;
+          return nextListLength;
+        }
+
+        return length;
+      });
+
+      if (reset) {
+        setReset(true);
+      }
+    }
+  }, [children, listLength, getFirstNavigableOption, activeOption]);
+
+  useEffect(() => {
+    if (loading || listLength <= 1) return;
+
+    if (reset) {
+      const nextActiveOption = getFirstNavigableOption();
+
+      if (nextActiveOption) {
+        const {element, index} = nextActiveOption;
+        const option = getFormattedOption(element, index);
+        handleChangeActiveOption(option);
+        setReset(false);
+      }
+    }
+  }, [
+    listLength,
+    loading,
+    reset,
+    getFormattedOption,
+    getFirstNavigableOption,
+    handleChangeActiveOption,
+  ]);
 
   useEffect(() => {
     if (listboxRef.current) {
@@ -161,101 +283,132 @@ export function Listbox({
     [handleChangeActiveOption, onSelect, onOptionSelected],
   );
 
-  const listboxContext = useMemo(
-    () => ({
-      onOptionSelect,
-      setLoading,
-    }),
-    [onOptionSelect],
-  );
+  const getNextValidOption = useCallback(
+    (key: ArrowKeys) => {
+      const navItems = getNavigableOptions();
+      const lastIndex = navItems.length - 1;
+      let currentIndex = activeOption?.index || 0;
+      let nextIndex = 0;
+      let element = activeOption?.element;
+      let totalOptions = -1;
 
-  function findNextValidOption(type: ArrowKeys) {
-    const isUp = type === 'up';
-    const navItems = getNavigableOptions();
-    let nextElement: HTMLElement | null | undefined =
-      currentActiveOption?.element;
-    let count = -1;
+      const disabledItems = navItems.filter(
+        (item) => item?.getAttribute('aria-disabled') === 'true',
+      );
+      const allNavItemsDisabled = disabledItems.length === navItems.length;
 
-    while (count++ < navItems.length) {
-      let nextIndex;
-      if (nextElement) {
-        const currentId = nextElement?.id;
-        const currentIndex = navItems.findIndex(
-          (currentNavItem) => currentNavItem.id === currentId,
-        );
+      // when all nav options are disabled and there is no onScrollToBottom,
+      // don't set any enabled options
+      if (allNavItemsDisabled && !onKeyToBottom) {
+        return {element: undefined, nextIndex: -1};
+      }
 
-        let increment = isUp ? -1 : 1;
-        if (currentIndex === 0 && isUp) {
-          increment = navItems.length - 1;
-        } else if (currentIndex === navItems.length - 1 && !isUp) {
-          increment = -(navItems.length - 1);
+      // exit if we've cycled through all nav options
+      while (totalOptions++ < lastIndex) {
+        // increment nextIndex to able to find next option
+        if (key === 'down') {
+          nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+        } else {
+          nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
         }
 
-        nextIndex = currentIndex + increment;
-        nextElement = navItems[nextIndex];
-      } else {
-        nextIndex = isUp ? navItems.length - 1 : 0;
-        nextElement = navItems[nextIndex];
+        // when current nav options are all disabled but there is an onScrollToBottom,
+        // set nextIndex to either one before current index or one after last index
+        if (allNavItemsDisabled) {
+          nextIndex = key === 'down' ? lastIndex + 1 : nextIndex - 1;
+        }
+
+        // when the activeOption is the last nav item,
+        // set nextIndex to either one before current index
+        // or reset back to beginning of nav options
+        if (currentIndex === lastIndex) {
+          nextIndex = key === 'down' ? 0 : lastIndex - 1;
+        }
+
+        element = navItems[nextIndex];
+
+        // check if the next option is disabled
+        if (element?.getAttribute('aria-disabled') === 'true') {
+          // when keying down, set currentIndex either to one after
+          // or reset back to beginning of nav options.
+          // when keying up, set currentIndex to one before activeOption index.
+          if (key === 'down') {
+            currentIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+          } else {
+            currentIndex--;
+          }
+
+          // restart while loop to find next valid option
+          continue;
+        }
       }
 
-      if (nextElement?.getAttribute('aria-disabled') === 'true') continue;
-
-      if (nextIndex === navItems.length - 1 && onKeyToBottom) {
+      if (onKeyToBottom && nextIndex >= lastIndex) {
         onKeyToBottom();
       }
-      return nextElement;
-    }
 
-    return null;
-  }
+      return {element, nextIndex};
+    },
+    [activeOption, onKeyToBottom],
+  );
 
-  function handleArrow(type: ArrowKeys, evt: KeyboardEvent) {
-    evt.preventDefault();
+  const handleArrow = useCallback(
+    (type: ArrowKeys, event: KeyboardEvent) => {
+      event.preventDefault();
+      const {element, nextIndex} = getNextValidOption(type);
+      if (!element) return;
+      const nextOption = getFormattedOption(element, nextIndex);
+      handleChangeActiveOption(nextOption);
+    },
+    [getFormattedOption, getNextValidOption, handleChangeActiveOption],
+  );
 
-    const nextValidElement = findNextValidOption(type);
+  const handleDownArrow = useCallback(
+    (event: KeyboardEvent) => {
+      handleArrow('down', event);
+    },
+    [handleArrow],
+  );
 
-    if (!nextValidElement) return;
+  const handleUpArrow = useCallback(
+    (event: KeyboardEvent) => {
+      handleArrow('up', event);
+    },
+    [handleArrow],
+  );
 
-    const nextOption = {
-      domId: nextValidElement.id,
-      value:
-        nextValidElement.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE) || '',
-      element: nextValidElement,
-      disabled: nextValidElement.getAttribute('aria-disabled') === 'true',
-    };
+  const handleEnter = useCallback(
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (activeOption) {
+        onOptionSelect(activeOption);
+      }
+    },
+    [activeOption, onOptionSelect],
+  );
 
-    handleChangeActiveOption(nextOption);
-  }
-
-  function handleDownArrow(evt: KeyboardEvent) {
-    handleArrow('down', evt);
-  }
-
-  function handleUpArrow(evt: KeyboardEvent) {
-    handleArrow('up', evt);
-  }
-
-  function handleEnter(evt: KeyboardEvent) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    if (currentActiveOption) {
-      onOptionSelect(currentActiveOption);
-    }
-  }
-
-  function handleFocus() {
+  const handleFocus = useCallback(() => {
     if (enableKeyboardControl) return;
     enableKeyboardEvents();
-  }
+  }, [enableKeyboardControl, enableKeyboardEvents]);
 
-  function handleBlur(event: React.FocusEvent) {
-    event.stopPropagation();
-    if (keyboardEventsEnabled) {
-      handleChangeActiveOption();
-    }
-    if (enableKeyboardControl) return;
-    disableKeyboardEvents();
-  }
+  const handleBlur = useCallback(
+    (event: React.FocusEvent) => {
+      event.stopPropagation();
+      if (keyboardEventsEnabled) {
+        handleChangeActiveOption();
+      }
+      if (enableKeyboardControl) return;
+      disableKeyboardEvents();
+    },
+    [
+      enableKeyboardControl,
+      keyboardEventsEnabled,
+      disableKeyboardEvents,
+      handleChangeActiveOption,
+    ],
+  );
 
   const listeners =
     keyboardEventsEnabled || textFieldFocused ? (
@@ -278,6 +431,14 @@ export function Listbox({
       </>
     ) : null;
 
+  const listboxContext = useMemo(
+    () => ({
+      onOptionSelect,
+      setLoading,
+    }),
+    [onOptionSelect],
+  );
+
   return (
     <>
       {listeners}
@@ -290,13 +451,11 @@ export function Listbox({
             <ul
               tabIndex={0}
               role="listbox"
-              className={listboxClassName}
+              className={styles.Listbox}
               aria-label={inCombobox ? undefined : accessibilityLabel}
               aria-labelledby={textFieldLabelId}
               aria-busy={Boolean(loading)}
-              aria-activedescendant={
-                currentActiveOption && currentActiveOption.domId
-              }
+              aria-activedescendant={activeOption && activeOption.domId}
               id={listId}
               onFocus={inCombobox ? undefined : handleFocus}
               onBlur={inCombobox ? undefined : handleBlur}
@@ -309,16 +468,6 @@ export function Listbox({
       </ListboxContext.Provider>
     </>
   );
-
-  function getNavigableOptions() {
-    return [
-      ...new Set(
-        listboxRef.current?.querySelectorAll<HTMLElement>(
-          LISTBOX_OPTION_SELECTOR,
-        ),
-      ),
-    ];
-  }
 }
 
 Listbox.Option = Option;

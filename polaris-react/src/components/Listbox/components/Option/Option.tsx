@@ -42,9 +42,9 @@ export const Option = memo(function Option({
   const sectionId = useSection();
   const isWithinSection = Boolean(sectionId);
 
-  const handleOptionClick = useCallback(
-    (evt: React.MouseEvent) => {
-      evt.preventDefault();
+  const handleOptionSelect = useCallback(
+    (event: React.MouseEvent | React.KeyboardEvent) => {
+      event.preventDefault();
       onAction && onAction();
       if (listItemRef.current && !onAction) {
         onOptionSelect({
@@ -59,8 +59,8 @@ export const Option = memo(function Option({
   );
 
   // prevents lost of focus on Textfield
-  const handleMouseDown = (evt: React.MouseEvent) => {
-    evt.preventDefault();
+  const handleMouseDown = (event: React.MouseEvent) => {
+    event.preventDefault();
   };
 
   const content =
@@ -89,20 +89,21 @@ export const Option = memo(function Option({
   return (
     <li
       {...sectionAttributes}
-      data-within-section={isWithinSection}
+      data-listbox-option
       data-listbox-option-value={value}
       data-listbox-option-destructive={destructive}
+      data-within-section={isWithinSection}
       className={classNames(styles.Option, divider && styles.divider)}
       id={domId}
       ref={listItemRef}
       tabIndex={-1}
-      onMouseDown={handleMouseDown}
-      aria-disabled={disabled}
-      onClick={disabled ? undefined : handleOptionClick}
       role={legacyRoleSupport}
       aria-label={accessibilityLabel}
       aria-selected={selected}
-      data-listbox-option
+      aria-disabled={disabled}
+      onClick={disabled ? undefined : handleOptionSelect}
+      onKeyUp={disabled ? undefined : handleOptionSelect}
+      onMouseDown={handleMouseDown}
     >
       {contentMarkup}
     </li>

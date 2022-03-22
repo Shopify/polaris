@@ -12,6 +12,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed accessibility issues and logic to set active descendant on `Listbox` ([#5297](https://github.com/Shopify/polaris-react/pull/5297))
+
 ### Documentation
 
 ### Development workflow
