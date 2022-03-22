@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const getCustomPropertyNames = require('../../scripts/utilities/getCustomPropertyNames');
+const getCustomPropertyNames = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
 
 const dirPath = path.join(__dirname, '../src/data');
 const outFile = 'allTokens.ts';
