@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.2.3 - 2022-03-22
+
+### Bug fixes
+
+- Fixed flash of unstyled content in the CustomProperties component ([#5299](https://github.com/Shopify/polaris/pull/5299))
+
 ## 9.2.2 - 2022-03-11
 
 ### Bug fixes
