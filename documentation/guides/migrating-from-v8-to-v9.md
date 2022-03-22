@@ -188,6 +188,14 @@ The following CSS custom properties have either been renamed or removed. You wil
 
 The following Sass functions and mixins have been removed. You will need to either add the function or mixin to your repo or replace any instances of them with a CSS custom property or value equivalent.
 
+The [legacy public API file](./legacy-polaris-v8-public-api.scss) is designed to support Node Sass. If you are using [Dart Sass](https://sass-lang.com/dart-sass) in your project, you can convert the legacy public API file to a Dart-friendly version using the [sass-migrator](https://www.npmjs.com/package/sass-migrator) utility.
+
+```sh
+ npx sass-migrator division path/to/legacy-polaris-v8-public-api.scss
+```
+
+Once converted, use the resulting Dart-friendly file in your local project to replace usages of the legacy API.
+
 ### Replacing function and mixin instances with value equivalents
 
 #### `available-names()`

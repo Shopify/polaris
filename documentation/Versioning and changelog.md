@@ -97,3 +97,49 @@ Because we expose both React components (for which the markup, including class n
 - Changes that do not impact public APIs
 - Non-breaking changes to minimum version of dependencies
 - Breaking changes to private Sass variables, functions, and mixins
+
+## Creating a new release
+
+> This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
+
+Follow the following steps to deploy a new version of Polaris:
+
+1. Checkout the `main` branch and pull the latest commits
+
+   `git checkout main && git pull`
+
+1. Create a new `polaris-release` branch from `main`
+
+   `git checkout -b polaris-release`
+
+1. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris-react/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
+
+1. Commit changelog updates
+
+   `git add . && git commit -m "Polaris vX.X.X release"`
+
+1. Version and tag the new release
+
+   `yarn version`
+
+1. Verify the new tag was created and is linked to the last commit in the last release
+
+1. Push the `polaris-release` branch to the remote repository with tags
+
+   `git push origin polaris-release --follow-tags`
+
+1. Create a new PR to merge `polaris-release` into `main` in GitHub
+
+1. Deploy the tagged commit in shipit
+
+1. Once successfully deployed, merge the release PR into `main`
+
+   Use the **Rebase and merge** option when merging. Squashing your commits can lead to loosing the tagged commit.
+
+1. Add release notes to the new release
+
+   a. Copy release notes from `CHANGELOG.md`
+
+   b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris-react/releases) section, click `Edit tag`, and paste the release notes into the release description
+
+   c. Push the `Publish Release` button
