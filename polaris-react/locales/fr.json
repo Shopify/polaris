@@ -5,8 +5,8 @@
       "labelWithInitials": "Avatar avec les initiales {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Chargement",
-      "ellipsis": "{content}..."
+      "spinnerAccessibilityLabel": "Chargement en cours",
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -15,7 +15,7 @@
         "complete": "Terminé"
       },
       "STATUS_LABELS": {
-        "info": "Info",
+        "info": "Informations",
         "success": "Réussite",
         "warning": "Avertissement",
         "attention": "Attention",
@@ -25,7 +25,7 @@
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Chargement",
+      "spinnerAccessibilityLabel": "Chargement en cours",
       "connectedDisclosureAccessibilityLabel": "Actions associées"
     },
     "Common": {
@@ -35,23 +35,23 @@
       "newWindowAccessibilityHint": "(ouvre une nouvelle fenêtre)",
       "clear": "Effacer",
       "close": "Fermer",
-      "submit": "Envoyer",
+      "submit": "Soumettre",
       "more": "Plus"
     },
     "ContextualSaveBar": {
       "save": "Enregistrer",
-      "discard": "Annuler"
+      "discard": "Supprimer"
     },
     "DataTable": {
       "sortAccessibilityLabel": "trier {direction} par",
-      "navAccessibilityLabel": "Faire défiler le tableau {direction} une colonne",
+      "navAccessibilityLabel": "Faire défiler le tableau {direction} d’une colonne",
       "totalsRowHeading": "Totaux",
-      "totalRowHeading": "total"
+      "totalRowHeading": "Total"
     },
     "DatePicker": {
-      "previousMonth": "Afficher le mois précédent, {previousMonthName} {showPreviousYear}",
-      "nextMonth": "Afficher le mois suivant, {nextMonth} {nextYear}",
-      "today": "Aujourd'hui ",
+      "previousMonth": "Afficher le mois précédent, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Afficher le mois suivant, {nextMonth} {nextYear}",
+      "today": "Aujourd’hui ",
       "months": {
         "january": "Janvier",
         "february": "Février",
@@ -84,44 +84,44 @@
         "saturday": "Samedi",
         "sunday": "Dimanche"
       },
-      "start": "Début de la fourchette",
-      "end": "Fin de la fourchette"
+      "start": "Début de la période",
+      "end": "Fin de la période"
     },
     "DiscardConfirmationModal": {
       "title": "Annuler toutes les modifications non enregistrées",
-      "message": "Si vous annulez les modifications, vous effacerez toutes les corrections effectuées depuis votre dernière sauvegarde.",
+      "message": "Si vous annulez les modifications, vous supprimerez toutes les corrections effectuées depuis votre dernière sauvegarde.",
       "primaryAction": "Annuler les modifications",
-      "secondaryAction": "Poursuivre les corrections"
+      "secondaryAction": "Poursuivre les modifications"
     },
     "DropZone": {
-      "errorOverlayTextFile": "Le type de fichier n'est pas valide",
-      "errorOverlayTextImage": "Le type d'image n'est pas valide",
+      "errorOverlayTextFile": "Le type de fichier n’est pas valide",
+      "errorOverlayTextImage": "Le type d’image n’est pas valide",
       "single": {
-        "overlayTextFile": "Déposer le fichier à mettre en ligne",
-        "overlayTextImage": "Déposer l'image à mettre en ligne",
+        "overlayTextFile": "Déposer le fichier à importer",
+        "overlayTextImage": "Déposer l’image à importer",
         "actionTitleFile": "Ajouter un fichier",
         "actionTitleImage": "Ajouter une image",
-        "actionHintFile": "ou déposer le fichier à mettre en ligne",
-        "actionHintImage": "ou déposer l'image à mettre en ligne",
-        "labelFile": "Mettre en ligne un fichier",
-        "labelImage": "Mettre en ligne une image"
+        "actionHintFile": "ou déposer le fichier à importer",
+        "actionHintImage": "ou déposer l’image à importer",
+        "labelFile": "Importer un fichier",
+        "labelImage": "Importer une image"
       },
       "allowMultiple": {
-        "overlayTextFile": "Déposer les fichiers à mettre en ligne",
-        "overlayTextImage": "Déposer les images à mettre en ligne",
+        "overlayTextFile": "Déposer les fichiers à importer",
+        "overlayTextImage": "Déposer les images à importer",
         "actionTitleFile": "Ajouter des fichiers",
         "actionTitleImage": "Ajouter des images",
-        "actionHintFile": "ou déposer des fichiers à mettre en ligne",
-        "actionHintImage": "ou déposer des images à mettre en ligne",
-        "labelFile": "Mettre en ligne des fichiers",
-        "labelImage": "Mettre en ligne des images"
+        "actionHintFile": "ou déposer les fichiers à importer",
+        "actionHintImage": "ou déposer les images à importer",
+        "labelFile": "Importer des fichiers",
+        "labelImage": "Importer des images"
       }
     },
     "EmptySearchResult": {
-      "altText": "Effacer les résultats de la recherche"
+      "altText": "Résultats de recherche vides"
     },
     "Frame": {
-      "skipToContent": "Passer directement au contenu",
+      "skipToContent": "Ignorer et passer au contenu",
       "Navigation": {
         "closeMobileNavigationLabel": "Fermer la navigation"
       },
@@ -132,12 +132,12 @@
         "rollupButton": "Afficher les actions"
       },
       "Actions": {
-        "moreActions": "Autres actions"
+        "moreActions": "Autres opérations"
       }
     },
     "Filters": {
       "moreFilters": "Plus de filtres",
-      "filter": "Filtre {resourceName}",
+      "filter": "Filtrer {resourceName}",
       "noFiltersApplied": "Aucun filtre appliqué",
       "cancel": "Annuler",
       "done": "Terminé",
@@ -156,25 +156,25 @@
       "pagination": "Pagination"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Les valeurs transmises à l'accessoire de progression ne doivent pas être négatives. Réinitialisation de {progress} à 0.",
-      "exceedWarningMessage": "Les valeurs transmises à l'accessoire de progression ne doivent pas dépasser 100. Réglage de {progress} à 100."
+      "negativeWarningMessage": "Les valeurs transmises à l‘accessoire de progression ne doivent pas être négatives. Réinitialisation de {progress} à 0.",
+      "exceedWarningMessage": "Les valeurs transmises à l‘accessoire de progression ne doivent pas dépasser 100. Réglage de {progress} à 100."
     },
     "ResourceList": {
       "sortingLabel": "Trier par",
-      "defaultItemSingular": "élément",
-      "defaultItemPlural": "éléments",
-      "showing": "Afficher {itemsCount} {resource}",
-      "loading": "Chargement en cours {resource}",
-      "selected": "{selectedItemsCount} choisi(s)",
-      "allItemsSelected": "Tous les {itemsLength} + {resourceNamePlural} de votre boutique sont sélectionnés.",
-      "selectAllItems": "Sélectionner tous les {itemsLength} + {resourceNamePlural} de votre boutique",
-      "emptySearchResultTitle": "{resourceNamePlural} introuvables",
-      "emptySearchResultDescription": "Essayer de changer les filtres ou le terme de recherche",
+      "defaultItemSingular": "article",
+      "defaultItemPlural": "articles",
+      "showing": "{itemsCount} {resource} sont affichés",
+      "loading": "Chargement de {resource} en cours",
+      "selected": "{selectedItemsCount} sélectionné(s)",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique sont sélectionnés.",
+      "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural} de votre boutique",
+      "emptySearchResultTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchResultDescription": "Essayez de changer les filtres ou le terme de recherche",
       "selectButtonText": "Sélectionner",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Désélectionner les {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Sélectionner les {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Désélectionner la totalité des {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} article",
       "ariaLivePlural": "{itemsLength} articles",
       "Item": {
@@ -185,30 +185,30 @@
       "BulkActions": {
         "actionsActivatorLabel": "Actions",
         "moreActionsActivatorLabel": "Autres opérations",
-        "warningMessage": "Pour fournir une meilleure expérience aux utilisateurs. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
+        "warningMessage": "Pour fournir une meilleure expérience utilisateur. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
       },
-      "showingTotalCount": "Afficher {itemsCount} sur {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre sont sélectionnés.",
-      "selectAllFilteredItems": "Sélectionner tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre"
+      "showingTotalCount": "{itemsCount} sur {totalItemsCount} {resource} sont affichés",
+      "allFilteredItemsSelected": "La totalité des {resourceNamePlural}+ {itemsLength} de ce filtre sont sélectionnés.",
+      "selectAllFilteredItems": "Sélectionner la totalité des éléments {resourceNamePlural}+ {itemsLength} de ce filtre"
     },
     "SkeletonPage": {
-      "loadingLabel": "Chargement de page"
+      "loadingLabel": "Chargement de la page"
     },
     "Tabs": {
-      "toggleTabsLabel": "Plus d'onglets"
+      "toggleTabsLabel": "Plus d’onglets"
     },
     "Tag": {
       "ariaLabel": "Supprimer {children}"
     },
     "TextField": {
-      "characterCount": "{count} personnages",
-      "characterCountWithMaxLength": "{count} sur {limit} caractère(s) utilisé(s)"
+      "characterCount": "{count} caractères",
+      "characterCountWithMaxLength": "{count} sur {limit} caractères utilisés"
     },
     "TopBar": {
-      "toggleMenuLabel": "Menu toggle",
+      "toggleMenuLabel": "Activer le menu",
       "SearchField": {
         "clearButtonLabel": "Effacer",
-        "search": "Recherche"
+        "search": "Rechercher"
       }
     },
     "MediaCard": {
@@ -217,47 +217,47 @@
     "VideoThumbnail": {
       "playButtonA11yLabel": {
         "default": "Lire la vidéo",
-        "defaultWithDuration": "Lire une vidéo d'une durée de {duration}",
+        "defaultWithDuration": "Lire une vidéo d’une durée de {duration}",
         "duration": {
           "hours": {
             "other": {
-              "only": "{hourCount} heures",
+              "only": "{hourCount} heures",
               "andMinutes": "{hourCount} heures et {minuteCount} minutes",
               "andMinute": "{hourCount} heures et {minuteCount} minute",
-              "minutesAndSeconds": "{hourCount} heures, {minuteCount} minutes et {secondCount} secondes",
-              "minutesAndSecond": "{hourCount} heures, {minuteCount} minutes et {secondCount} seconde",
-              "minuteAndSeconds": "{hourCount} heures, {minuteCount} minute et {secondCount} secondes",
-              "minuteAndSecond": "{hourCount} heures, {minuteCount} minute et {secondCount} seconde",
-              "andSeconds": "{hourCount} heures et {secondCount} secondes",
-              "andSecond": "{hourCount} heures and {secondCount} secondes"
+              "minutesAndSeconds": "{hourCount} heures, {minuteCount} minutes et {secondCount} secondes",
+              "minutesAndSecond": "{hourCount} heures, {minuteCount} minutes et {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} heures, {minuteCount} minute et {secondCount} secondes",
+              "minuteAndSecond": "{hourCount} heures, {minuteCount} minute et {secondCount} seconde",
+              "andSeconds": "{hourCount} heures et {secondCount} secondes",
+              "andSecond": "{hourCount} heures et {secondCount} seconde"
             },
             "one": {
-              "only": "{hourCount} heure",
-              "andMinutes": "{hourCount} heures et {minuteCount} minutes",
+              "only": "{hourCount} heure",
+              "andMinutes": "{hourCount} heure et {minuteCount} minutes",
               "andMinute": "{hourCount} heure et {minuteCount} minute",
-              "minutesAndSeconds": "{hourCount} heure, {minuteCount} minutes et {secondCount} secondes",
-              "minutesAndSecond": "{hourCount} heure, {minuteCount} minutes et {secondCount} seconde",
-              "minuteAndSeconds": "{hourCount} heure, {minuteCount} minute et {secondCount} seconde",
-              "minuteAndSecond": "{hourCount} heure, {minuteCount} minute et {secondCount} seconde",
-              "andSeconds": "{hourCount} heure and {secondCount} seconde",
-              "andSecond": "{hourCount} heure et {secondCount} seconde"
+              "minutesAndSeconds": "{hourCount} heure, {minuteCount} minutes et {secondCount} secondes",
+              "minutesAndSecond": "{hourCount} heure, {minuteCount} minutes et {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} heure, {minuteCount} minute et {secondCount} secondes",
+              "minuteAndSecond": "{hourCount} heure, {minuteCount} minute et {secondCount} seconde",
+              "andSeconds": "{hourCount} heure et {secondCount} secondes",
+              "andSecond": "{hourCount} heure et {secondCount} seconde"
             }
           },
           "minutes": {
             "other": {
-              "only": "{minuteCount} minutes",
-              "andSeconds": "{minuteCount} minute et {secondCount} seconde",
-              "andSecond": "{minuteCount} minutes et {secondCount} seconde"
+              "only": "{minuteCount} minutes",
+              "andSeconds": "{minuteCount} minutes et {secondCount} secondes",
+              "andSecond": "{minuteCount} minutes et {secondCount} seconde"
             },
             "one": {
-              "only": "{minuteCount} minute",
-              "andSeconds": "{minuteCount} minute et {secondCount} secondes",
-              "andSecond": "{minuteCount} minute et {secondCount} seconde"
+              "only": "{minuteCount} minute",
+              "andSeconds": "{minuteCount} minute et {secondCount} secondes",
+              "andSecond": "{minuteCount} minute et {secondCount} seconde"
             }
           },
           "seconds": {
-            "other": "{secondCount} secondes",
-            "one": "{secondCount} seconde"
+            "other": "{secondCount} secondes",
+            "one": "{secondCount} seconde"
           }
         }
       }
@@ -271,7 +271,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Article",
       "defaultItemPlural": "Articles",
-      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} est sélectionnée.",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} sont sélectionnés.",
       "selected": "{selectedItemsCount} sélectionné(s)",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
@@ -279,10 +279,10 @@
       "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
-      "emptySearchTitle": "{resourceNamePlural} introuvables",
-      "emptySearchDescription": "Essayer de changer les filtres ou le terme de recherche",
+      "emptySearchTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchDescription": "Essayez de changer les filtres ou le terme de recherche",
       "onboardingBadgeText": "Nouveau",
-      "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours...",
+      "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours…",
       "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
       "selected": "{selectedItemsCount} sélectionné(s)",
       "undo": "Annuler",
@@ -292,7 +292,7 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Voir les actions pour {title}"
+        "rollupActionsLabel": "Afficher les actions pour {title}"
       }
     }
   }

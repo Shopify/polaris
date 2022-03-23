@@ -179,7 +179,7 @@
       "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
         "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
-        "actionsDropdown": "Vervolgkeuze acties",
+        "actionsDropdown": "Acties vervolgkeuzelijst",
         "viewItem": "Details weergeven voor {itemName}"
       },
       "BulkActions": {

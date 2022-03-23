@@ -35,7 +35,7 @@
       "newWindowAccessibilityHint": "(åpner et nytt vindu)",
       "clear": "Fjern",
       "close": "Lukk",
-      "submit": "Send",
+      "submit": "Send inn",
       "more": "Mer"
     },
     "ContextualSaveBar": {
@@ -46,7 +46,7 @@
       "sortAccessibilityLabel": "sortere {direction} etter",
       "navAccessibilityLabel": "Rull tabell {direction} en kolonne",
       "totalsRowHeading": "Totalt",
-      "totalRowHeading": "Totalt"
+      "totalRowHeading": "Total"
     },
     "DatePicker": {
       "previousMonth": "Vis forrige måned, {previousMonthName} {showPreviousYear}",
@@ -91,7 +91,7 @@
       "title": "Forkast alle ulagrede endringer",
       "message": "Hvis du forkaster endringer, sletter du alt du har gjort siden du sist gang du lagret.",
       "primaryAction": "Forkast endringer",
-      "secondaryAction": "Fortsett å redigere"
+      "secondaryAction": "Fortsett redigering"
     },
     "DropZone": {
       "errorOverlayTextFile": "Filtypen er ikke gyldig",
@@ -123,7 +123,7 @@
     "Frame": {
       "skipToContent": "Gå videre til innholdet",
       "Navigation": {
-        "closeMobileNavigationLabel": "Lukk navigering"
+        "closeMobileNavigationLabel": "Lukk navigasjon"
       },
       "navigationLabel": "Navigasjon"
     },
@@ -141,7 +141,7 @@
       "noFiltersApplied": "Ingen filtre ble brukt",
       "cancel": "Avbryt",
       "done": "Ferdig",
-      "clearAllFilters": "Fjern alle filtrene",
+      "clearAllFilters": "Fjern alle filtre",
       "clear": "Fjern",
       "clearLabel": "Fjern {filterName}",
       "moreFiltersWithCount": "Flere filtre ({count})"
@@ -161,11 +161,11 @@
     },
     "ResourceList": {
       "sortingLabel": "Sorter etter",
-      "defaultItemSingular": "gjenstand",
-      "defaultItemPlural": "gjenstander",
+      "defaultItemSingular": "vare",
+      "defaultItemPlural": "varer",
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Laster inn {resource}",
-      "selected": "{selectedItemsCount} er valgt",
+      "selected": "{selectedItemsCount} valgt",
       "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i butikken din er valgt.",
       "selectAllItems": "Velg alle {itemsLength}+ {resourceNamePlural} i butikken din",
       "emptySearchResultTitle": "Fant ingen {resourceNamePlural}",
@@ -175,12 +175,12 @@
       "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} gjenstand",
-      "ariaLivePlural": "{itemsLength} gjenstander",
+      "ariaLiveSingular": "{itemsLength} vare",
+      "ariaLivePlural": "{itemsLength} varer",
       "Item": {
         "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
         "actionsDropdown": "Handlinger-rullegardin",
-        "viewItem": "Se detaljer for {itemName}"
+        "viewItem": "Vis detaljer for {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Handlinger",

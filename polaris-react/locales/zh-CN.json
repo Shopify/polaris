@@ -40,7 +40,7 @@
     },
     "ContextualSaveBar": {
       "save": "保存",
-      "discard": "取消"
+      "discard": "放弃"
     },
     "DataTable": {
       "sortAccessibilityLabel": "向 {direction} 排序",
@@ -67,13 +67,13 @@
         "december": "十二月"
       },
       "daysAbbreviated": {
-        "monday": "一",
-        "tuesday": "二",
-        "wednesday": "三",
-        "thursday": "四",
-        "friday": "五",
-        "saturday": "六",
-        "sunday": "日"
+        "monday": "周一",
+        "tuesday": "周二",
+        "wednesday": "周三",
+        "thursday": "周四",
+        "friday": "周五",
+        "saturday": "周六",
+        "sunday": "周日"
       },
       "days": {
         "monday": "星期一",
@@ -82,10 +82,10 @@
         "thursday": "星期四",
         "friday": "星期五",
         "saturday": "星期六",
-        "sunday": "星期天"
+        "sunday": "星期日"
       },
-      "start": "范围起始",
-      "end": "范围末端"
+      "start": "起始日期",
+      "end": "结束日期"
     },
     "DiscardConfirmationModal": {
       "title": "放弃所有未保存的更改",
@@ -118,25 +118,25 @@
       }
     },
     "EmptySearchResult": {
-      "altText": "清空搜索结果"
+      "altText": "没有搜索结果"
     },
     "Frame": {
       "skipToContent": "跳到内容",
       "Navigation": {
-        "closeMobileNavigationLabel": "关闭网站地图"
+        "closeMobileNavigationLabel": "关闭导航"
       },
-      "navigationLabel": "网站导航"
+      "navigationLabel": "导航"
     },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "查看操作"
       },
       "Actions": {
-        "moreActions": "更多操作"
+        "moreActions": "其他操作"
       }
     },
     "Filters": {
-      "moreFilters": "更多筛选器",
+      "moreFilters": "更多筛选条件",
       "filter": "筛选 {resourceName}",
       "noFiltersApplied": "未应用筛选条件",
       "cancel": "取消",
@@ -144,15 +144,15 @@
       "clearAllFilters": "清除所有筛选条件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}",
-      "moreFiltersWithCount": "更多筛选器（{count} 个）"
+      "moreFiltersWithCount": "更多筛选条件（{count} 个）"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
-      "modalWarning": "模态缺少这些必需的属性：{missingProps}"
+      "modalWarning": "模态窗口缺少这些必需的属性：{missingProps}"
     },
     "Pagination": {
       "previous": "上一页",
-      "next": "下一页",
+      "next": "下一步",
       "pagination": "分页"
     },
     "ProgressBar": {
@@ -160,35 +160,35 @@
       "exceedWarningMessage": "传递给进度条的值不可超过 100。将 {progress} 设置为 100。"
     },
     "ResourceList": {
-      "sortingLabel": "排序方式",
-      "defaultItemSingular": "件产品",
-      "defaultItemPlural": "件产品",
-      "showing": "显示 {itemsCount} 件 {resource}",
+      "sortingLabel": "排序依据",
+      "defaultItemSingular": "项",
+      "defaultItemPlural": "项",
+      "showing": "显示 {itemsCount} 个 {resource}",
       "loading": "正在加载 {resource}",
-      "selected": "已选择 {selectedItemsCount} 件",
-      "allItemsSelected": "已选择您商店中所有的 {itemsLength}+ 件 {resourceNamePlural}。",
-      "selectAllItems": "选择商店中所有的 {itemsLength}+ 件 {resourceNamePlural}",
+      "selected": "已选择 {selectedItemsCount} 个",
+      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "selectAllItems": "选择商店中所有 {itemsLength}+ 个 {resourceNamePlural}",
       "emptySearchResultTitle": "找不到 {resourceNamePlural}",
-      "emptySearchResultDescription": "尝试更改筛选条件或搜索词",
+      "emptySearchResultDescription": "请尝试更改筛选条件或搜索词",
       "selectButtonText": "选择",
       "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 件 {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 件 {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} 件产品",
-      "ariaLivePlural": "{itemsLength} 件产品",
+      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} 个项",
+      "ariaLivePlural": "{itemsLength} 个项",
       "Item": {
-        "actionsDropdownLabel": "{accessibilityLabel}的操作",
+        "actionsDropdownLabel": "{accessibilityLabel} 的操作",
         "actionsDropdown": "操作下拉菜单",
-        "viewItem": "查看 {itemName} 详细信息"
+        "viewItem": "查看 {itemName} 的详细信息"
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
-      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）",
-      "allFilteredItemsSelected": "已选择此筛选器中的所有 {itemsLength}+ 个{resourceNamePlural}。",
+      "showingTotalCount": "显示 {itemsCount} 个 {resource}（共 {totalItemsCount} 个）",
+      "allFilteredItemsSelected": "已选择此筛选器中所有 {itemsLength}+ 个{resourceNamePlural}。",
       "selectAllFilteredItems": "选择此筛选器中的所有 {itemsLength}+ 个 {resourceNamePlural}"
     },
     "SkeletonPage": {
@@ -202,7 +202,7 @@
     },
     "TextField": {
       "characterCount": "{count} 个字符",
-      "characterCountWithMaxLength": "使用的字符长度为 {count}，限制为 {limit}"
+      "characterCountWithMaxLength": "已使用 {count}/{limit} 个字符"
     },
     "TopBar": {
       "toggleMenuLabel": "切换菜单",
@@ -245,12 +245,12 @@
           },
           "minutes": {
             "other": {
-              "only": "{minuteCount} 分钟",
+              "only": "{minuteCount} 分",
               "andSeconds": "{minuteCount} 分 {secondCount} 秒",
               "andSecond": "{minuteCount} 分 {secondCount} 秒"
             },
             "one": {
-              "only": "{minuteCount} 分钟",
+              "only": "{minuteCount} 分",
               "andSeconds": "{minuteCount} 分 {secondCount} 秒",
               "andSecond": "{minuteCount} 分 {secondCount} 秒"
             }
@@ -269,24 +269,24 @@
       "accessibilityLabel": "工具提示：{label}"
     },
     "IndexProvider": {
-      "defaultItemSingular": "商品",
-      "defaultItemPlural": "商品",
-      "allItemsSelected": "所有 {itemsLength}+ 的{resourceNamePlural} 均已被选中。",
+      "defaultItemSingular": "项",
+      "defaultItemPlural": "项",
+      "allItemsSelected": "已选择所有 {itemsLength}+ 个 {resourceNamePlural}。",
       "selected": "已选择 {selectedItemsCount} 个",
       "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 件 {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 件 {resourceNamePlural}"
+      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}"
     },
     "IndexTable": {
       "emptySearchTitle": "找不到 {resourceNamePlural}",
-      "emptySearchDescription": "尝试更改筛选条件或搜索词",
+      "emptySearchDescription": "请尝试更改筛选条件或搜索词",
       "onboardingBadgeText": "新",
-      "resourceLoadingAccessibilityLabel": "正在加载 {resourceNamePlural}……",
+      "resourceLoadingAccessibilityLabel": "正在加载 {resourceNamePlural}…",
       "selectAllLabel": "选择所有 {resourceNamePlural}",
       "selected": "已选择 {selectedItemsCount} 个",
       "undo": "撤销",
-      "selectAllItems": "选择所有 {itemsLength}+ 的 {resourceNamePlural}",
+      "selectAllItems": "选择所有 {itemsLength}+ 个 {resourceNamePlural}",
       "selectItem": "选择 {resourceName}",
       "selectButtonText": "选择"
     },

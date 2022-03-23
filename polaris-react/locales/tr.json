@@ -5,7 +5,7 @@
       "labelWithInitials": "Baş harfleri {initials} olan avatar"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Yükleniyor",
+      "spinnerAccessibilityLabel": "Yükleniyor:",
       "ellipsis": "{content}…"
     },
     "Badge": {
@@ -22,7 +22,7 @@
         "new": "Yeni",
         "critical": "Kritik"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndStatus": "{statusLabel} - {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Yükleniyor",
@@ -31,8 +31,8 @@
     "Common": {
       "checkbox": "onay kutusu",
       "undo": "Geri al",
-      "cancel": "İptal",
-      "newWindowAccessibilityHint": "(yeni bir pencerede açılır)",
+      "cancel": "İptal et",
+      "newWindowAccessibilityHint": "(yeni bir pencere açar)",
       "clear": "Temizle",
       "close": "Kapat",
       "submit": "Gönder",
@@ -40,7 +40,7 @@
     },
     "ContextualSaveBar": {
       "save": "Kaydet",
-      "discard": "At"
+      "discard": "Sil"
     },
     "DataTable": {
       "sortAccessibilityLabel": "{direction} tarafı şuna göre sırala:",
@@ -49,8 +49,8 @@
       "totalRowHeading": "Toplam"
     },
     "DatePicker": {
-      "previousMonth": "Önceki ayı göster, {previousMonthName} {showPreviousYear}",
-      "nextMonth": "Sonraki ayı göster, {nextMonth} {nextYear}",
+      "previousMonth": "Önceki ayı ({previousMonthName} {showPreviousYear}) göster",
+      "nextMonth": "Sonraki ayı ({nextMonth} {nextYear}) göster",
       "today": "Bugün ",
       "months": {
         "january": "Ocak",
@@ -67,13 +67,13 @@
         "december": "Aralık"
       },
       "daysAbbreviated": {
-        "monday": "Pt",
-        "tuesday": "Sa",
-        "wednesday": "Ça",
-        "thursday": "Pe",
-        "friday": "Cu",
-        "saturday": "Ct",
-        "sunday": "Pz"
+        "monday": "Pzt",
+        "tuesday": "Sal",
+        "wednesday": "Çar",
+        "thursday": "Per",
+        "friday": "Cum",
+        "saturday": "Cmt",
+        "sunday": "Paz"
       },
       "days": {
         "monday": "Pazartesi",
@@ -88,32 +88,32 @@
       "end": "Aralık bitişi"
     },
     "DiscardConfirmationModal": {
-      "title": "Kaydedilmemiş tüm değişiklikleri at",
-      "message": "Değişiklikleri atarsanız son kaydetme işleminizden itibaren yaptığınız tüm düzenlemeleri silersiniz.",
-      "primaryAction": "Değişiklikleri at",
+      "title": "Kaydedilmemiş tüm değişiklikleri silin",
+      "message": "Değişiklikleri silerseniz son kaydetme işleminizden itibaren yaptığınız düzenlemeler uygulanmaz.",
+      "primaryAction": "Değişiklikleri sil",
       "secondaryAction": "Düzenlemeye devam et"
     },
     "DropZone": {
       "errorOverlayTextFile": "Dosya türü geçerli değil",
       "errorOverlayTextImage": "Görsel türü geçerli değil",
       "single": {
-        "overlayTextFile": "Yüklenecek dosyayı bırakın",
-        "overlayTextImage": "Yüklenecek görseli bırakın",
+        "overlayTextFile": "Yüklenecek dosyayı sürükleyip bırakın",
+        "overlayTextImage": "Yüklenecek görseli sürükleyip bırakın",
         "actionTitleFile": "Dosya ekleyin",
         "actionTitleImage": "Görsel ekleyin",
-        "actionHintFile": "veya yüklenecek dosyayı bırakın",
-        "actionHintImage": "veya yüklenecek görseli bırakın",
+        "actionHintFile": "veya yüklenecek dosyayı sürükleyip bırakın",
+        "actionHintImage": "veya yüklenecek görseli sürükleyip bırakın",
         "labelFile": "Dosya yükle",
         "labelImage": "Görsel yükle"
       },
       "allowMultiple": {
-        "overlayTextFile": "Yüklemek için dosyaları bırakın",
-        "overlayTextImage": "Yüklenecek görselleri bırakın",
-        "actionTitleFile": "Dosyaları ekleyin",
-        "actionTitleImage": "Görsel ekle",
-        "actionHintFile": "veya yüklenecek dosyaları bırakın",
-        "actionHintImage": "veya yüklenecek görselleri bırakın",
-        "labelFile": "Dosyaları yükle",
+        "overlayTextFile": "Yüklenecek dosyaları sürükleyip bırakın",
+        "overlayTextImage": "Yüklenecek görselleri sürükleyip bırakın",
+        "actionTitleFile": "Dosya ekleyin",
+        "actionTitleImage": "Görsel ekleyin",
+        "actionHintFile": "veya yüklenecek dosyaları sürükleyip bırakın",
+        "actionHintImage": "veya yüklenecek görselleri sürükleyip bırakın",
+        "labelFile": "Dosya yükle",
         "labelImage": "Görsel yükle"
       }
     },
@@ -139,7 +139,7 @@
       "moreFilters": "Daha fazla filtre",
       "filter": "Şunu filtrele: {resourceName}",
       "noFiltersApplied": "Filtre uygulanmadı",
-      "cancel": "İptal",
+      "cancel": "İptal et",
       "done": "Bitti",
       "clearAllFilters": "Tüm filtreleri temizle",
       "clear": "Temizle",
@@ -148,48 +148,48 @@
     },
     "Modal": {
       "iFrameTitle": "gövde işaretlemesi",
-      "modalWarning": "Bu gerekli özellikler şu Modda yok: {missingProps}"
+      "modalWarning": "Şu gerekli özellikler Modda yok: {missingProps}"
     },
     "Pagination": {
       "previous": "Önceki",
       "next": "Sonraki",
-      "pagination": "Sayfa numaralama"
+      "pagination": "Sayfalara ayırma"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "İlerleme özelliğine geçirilen değerler negatif olmamalıdır. {progress} 0 olarak sıfırlanıyor.",
+      "negativeWarningMessage": "İlerleme özelliğine geçirilen değerler negatif olmamalıdır. {progress} sıfırlanıyor.",
       "exceedWarningMessage": "İlerleme özelliğine geçirilen değerler 100'ü aşmamalıdır. {progress} 100 olarak ayarlanıyor."
     },
     "ResourceList": {
-      "sortingLabel": "Sıralama ölçütü:",
+      "sortingLabel": "Sıralama ölçütü",
       "defaultItemSingular": "ürün",
-      "defaultItemPlural": "ürün",
+      "defaultItemPlural": "ürünler",
       "showing": "{itemsCount} {resource} gösteriliyor",
       "loading": "{resource} yükleniyor",
-      "selected": "{selectedItemsCount} seçildi",
-      "allItemsSelected": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağı seçildi.",
-      "selectAllItems": "Mağazanızdaki tüm {itemsLength}+ {resourceNamePlural} kaynağını seçin.",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "allItemsSelected": "Mağazanızdaki şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "selectAllItems": "Mağazanızdaki şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}",
       "emptySearchResultTitle": "{resourceNamePlural} bulunamadı",
       "emptySearchResultDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
       "selectButtonText": "Seç",
-      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} seçimini kaldır",
-      "a11yCheckboxSelectAllSingle": "Seç: {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünün seçimini kaldır",
-      "a11yCheckboxSelectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünü seç",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kaynağının seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
+      "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} ürün",
       "ariaLivePlural": "{itemsLength} ürün",
       "Item": {
-        "actionsDropdownLabel": "{accessibilityLabel} için işlemler",
+        "actionsDropdownLabel": "{accessibilityLabel} ile ilgili işlemler",
         "actionsDropdown": "İşlemler açılır listesi",
-        "viewItem": "{itemName} için ayrıntıları görüntüle"
+        "viewItem": "{itemName} ile ilgili ayrıntıları görüntüle"
       },
       "BulkActions": {
         "actionsActivatorLabel": "İşlemler",
         "moreActionsActivatorLabel": "Diğer işlemler",
-        "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan maksimum işlem sayısı {maxPromotedActions} olmalıdır."
+        "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan işlemlerin sayısı en fazla {maxPromotedActions} olmalıdır."
       },
-      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor",
-      "allFilteredItemsSelected": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} seçildi.",
-      "selectAllFilteredItems": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} öğelerini seç"
+      "showingTotalCount": "{totalItemsCount} {resource} içinden {itemsCount} tanesi gösteriliyor",
+      "allFilteredItemsSelected": "Mevcut filtreyle gösterilen şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "selectAllFilteredItems": "Mevcut filtreyle gösterilen şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
@@ -198,7 +198,7 @@
       "toggleTabsLabel": "Daha fazla sekme"
     },
     "Tag": {
-      "ariaLabel": "Kaldır: {children}"
+      "ariaLabel": "Şunu kaldır: {children}"
     },
     "TextField": {
       "characterCount": "{count} karakter",
@@ -271,28 +271,28 @@
     "IndexProvider": {
       "defaultItemSingular": "Ürün",
       "defaultItemPlural": "Ürünler",
-      "allItemsSelected": "Tüm {itemsLength}+ {resourceNamePlural} seçildi.",
+      "allItemsSelected": "Şunların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
       "selected": "{selectedItemsCount} adet seçildi",
-      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} seçimini kaldır",
-      "a11yCheckboxSelectAllSingle": "Seç: {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünün seçimini kaldır",
-      "a11yCheckboxSelectAllMultiple": "{itemsLength} {resourceNamePlural} kaynağın tümünü seç"
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kaynağının seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
+      "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
       "emptySearchTitle": "{resourceNamePlural} bulunamadı",
       "emptySearchDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
       "onboardingBadgeText": "Yeni",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} yükleniyor…",
-      "selectAllLabel": "Şunların tümünü seç: {resourceNamePlural}",
+      "selectAllLabel": "{resourceNamePlural} kaynaklarının tümünü seç",
       "selected": "{selectedItemsCount} adet seçildi",
       "undo": "Geri al",
-      "selectAllItems": "{itemsLength}+ {resourceNamePlural} kaynağın tümünü seç",
-      "selectItem": "Seç: {resourceName}",
+      "selectAllItems": "Şunların tümünü seç: {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "{resourceName} kaynağını seç",
       "selectButtonText": "Seç"
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "{title} için işlemleri görüntüle"
+        "rollupActionsLabel": "{title} ile ilgili işlemleri görüntüle"
       }
     }
   }

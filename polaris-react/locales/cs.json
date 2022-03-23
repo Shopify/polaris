@@ -2,7 +2,7 @@
   "Polaris": {
     "Avatar": {
       "label": "Avatar",
-      "labelWithInitials": "Avatar s iniciály {initials}"
+      "labelWithInitials": "Avatar s iniciálami {initials}"
     },
     "Autocomplete": {
       "spinnerAccessibilityLabel": "Načítání",
@@ -12,15 +12,15 @@
       "PROGRESS_LABELS": {
         "incomplete": "Nedokončeno",
         "partiallyComplete": "Částečně dokončeno",
-        "complete": "Dokončen"
+        "complete": "Dokončeno"
       },
       "STATUS_LABELS": {
         "info": "Informace",
-        "success": "Zdařilo se",
+        "success": "Úspěch",
         "warning": "Varování",
         "attention": "Upozornění",
-        "new": "Nové",
-        "critical": "Kritický"
+        "new": "Novinka",
+        "critical": "Kritické"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
@@ -76,20 +76,20 @@
         "sunday": "Ne"
       },
       "days": {
-        "monday": "Pondělí",
-        "tuesday": "Úterý",
-        "wednesday": "Středa",
-        "thursday": "Čtvrtek",
-        "friday": "Pátek",
-        "saturday": "Sobota",
-        "sunday": "Neděle"
+        "monday": "pondělí",
+        "tuesday": "úterý",
+        "wednesday": "středa",
+        "thursday": "čtvrtek",
+        "friday": "pátek",
+        "saturday": "sobota",
+        "sunday": "neděle"
       },
-      "start": "Začátek rozsahu",
-      "end": "Konec rozsahu"
+      "start": "Začátek rozmezí",
+      "end": "Konec rozmezí"
     },
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
-      "message": "Pokud zahodíte změny, smažete všechny úpravy provedené od posledního uložení.",
+      "message": "Pokud zahodíte změny, odstraníte všechny úpravy provedené od posledního uložení.",
       "primaryAction": "Zahodit změny",
       "secondaryAction": "Pokračovat v úpravách"
     },
@@ -147,7 +147,7 @@
       "moreFiltersWithCount": "Další filtry ({count})"
     },
     "Modal": {
-      "iFrameTitle": "kód těla stránky",
+      "iFrameTitle": "kód hlavní části",
       "modalWarning": "V modálním parametru chybí následující povinné vlastnosti: {missingProps}"
     },
     "Pagination": {
@@ -156,27 +156,27 @@
       "pagination": "Stránkování"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Hodnoty předané dál by neměly být záporné. {progress}: vynulování",
-      "exceedWarningMessage": "Hodnoty předané dál by neměly být vyšší než 100. {progress}: nastavení na hodnotu 100"
+      "negativeWarningMessage": "Hodnoty předané vlastnosti průběhu by neměly být záporné. Hodnota {progress} se resetuje na 0.",
+      "exceedWarningMessage": "Hodnoty předané vlastnosti průběhu by neměly být vyšší než 100. Hodnota {progress} se nastavuje na 100."
     },
     "ResourceList": {
       "sortingLabel": "Seřadit podle",
       "defaultItemSingular": "položka",
-      "defaultItemPlural": "položek",
-      "showing": "Zobrazení: {itemsCount} {resource}",
+      "defaultItemPlural": "položky",
+      "showing": "Zobrazuje se tento počet: {itemsCount} ({resource})",
       "loading": "Načítání: {resource}",
-      "selected": "Výběr: {selectedItemsCount}",
-      "allItemsSelected": "V obchodě bylo vybráno veškeré zboží typu {resourceNamePlural} o délce {itemsLength}+.",
-      "selectAllItems": "Vybrat v obchodě všechno zboží typu {resourceNamePlural} o délce {itemsLength}+",
-      "emptySearchResultTitle": "{resourceNamePlural} se nepodařilo nalézt",
-      "emptySearchResultDescription": "Zkuste změnit filtry nebo hledaný výraz",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "allItemsSelected": "V obchodě bylo vybráno vše typu {resourceNamePlural}: {itemsLength} a více.",
+      "selectAllItems": "Vybrat v obchodě vše typu {resourceNamePlural}: {itemsLength} a více",
+      "emptySearchResultTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchResultDescription": "Zkuste změnit filtry nebo hledaný termín",
       "selectButtonText": "Vybrat",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
-      "a11yCheckboxSelectAllSingle": "Vybrat {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})",
       "ariaLiveSingular": "{itemsLength} položka",
-      "ariaLivePlural": "{itemsLength} položek",
+      "ariaLivePlural": "{itemsLength} polož.",
       "Item": {
         "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
         "actionsDropdown": "Rozevírací nabídka akcí",
@@ -185,30 +185,30 @@
       "BulkActions": {
         "actionsActivatorLabel": "Akce",
         "moreActionsActivatorLabel": "Další akce",
-        "warningMessage": "Za účelem zlepšení uživatelské zkušenosti. Promo akcí by mělo být maximálně {maxPromotedActions}."
+        "warningMessage": "Chceme zlepšit uživatelské zkušenosti. Propagačních akcí by mělo být maximálně {maxPromotedActions}."
       },
-      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru.",
-      "selectAllFilteredItems": "Vyberte všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru."
+      "showingTotalCount": "Zobrazuje se tento počet: {itemsCount} z {totalItemsCount} ({resource})",
+      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru.",
+      "selectAllFilteredItems": "Vybrat všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru"
     },
     "SkeletonPage": {
-      "loadingLabel": "Načítání stránky"
+      "loadingLabel": "Stránka se načítá"
     },
     "Tabs": {
       "toggleTabsLabel": "Více karet"
     },
     "Tag": {
-      "ariaLabel": "Odstranit {children}"
+      "ariaLabel": "Odebrat: {children}"
     },
     "TextField": {
       "characterCount": "Počet znaků: {count}",
-      "characterCountWithMaxLength": "Použito {count} z {limit} znaků"
+      "characterCountWithMaxLength": "Použité znaky: {count} z {limit}"
     },
     "TopBar": {
       "toggleMenuLabel": "Přepnout nabídku",
       "SearchField": {
         "clearButtonLabel": "Vymazat",
-        "search": "Hledat"
+        "search": "Hledání"
       }
     },
     "MediaCard": {
@@ -222,37 +222,37 @@
           "hours": {
             "other": {
               "only": "{hourCount} h",
-              "andMinutes": "hodiny: {hourCount}, minuty: {minuteCount}",
-              "andMinute": "hodiny: {hourCount}, minuty: {minuteCount}",
-              "minutesAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minutesAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minuteAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minuteAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "andSeconds": "hodiny: {hourCount}, sekundy: {secondCount}",
-              "andSecond": "hodiny: {hourCount}, sekundy: {secondCount}"
+              "andMinutes": "{hourCount} h a {minuteCount} min",
+              "andMinute": "{hourCount} h a {minuteCount} min",
+              "minutesAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minutesAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "andSeconds": "{hourCount} h a {secondCount} s",
+              "andSecond": "{hourCount} h a {secondCount} s"
             },
             "one": {
               "only": "{hourCount} h",
-              "andMinutes": "hodiny: {hourCount}, minuty: {minuteCount}",
-              "andMinute": "hodiny: {hourCount}, minuty: {minuteCount}",
-              "minutesAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minutesAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minuteAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "minuteAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
-              "andSeconds": "hodiny: {hourCount}, sekundy: {secondCount}",
-              "andSecond": "hodiny: {hourCount}, sekundy: {secondCount}"
+              "andMinutes": "{hourCount} h a {minuteCount} min",
+              "andMinute": "{hourCount} h a {minuteCount} min",
+              "minutesAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minutesAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "andSeconds": "{hourCount} h a {secondCount} s",
+              "andSecond": "{hourCount} h a {secondCount} s"
             }
           },
           "minutes": {
             "other": {
               "only": "{minuteCount} min",
-              "andSeconds": "minuty: {minuteCount}, sekundy: {secondCount}",
-              "andSecond": "minuty: {minuteCount}, sekundy: {secondCount}"
+              "andSeconds": "{minuteCount} min a {secondCount} s",
+              "andSecond": "{minuteCount} min a {secondCount} s"
             },
             "one": {
               "only": "{minuteCount} min",
-              "andSeconds": "minuty: {minuteCount}, sekundy: {secondCount}",
-              "andSecond": "minuty: {minuteCount}, sekundy: {secondCount}"
+              "andSeconds": "{minuteCount} min a {secondCount} s",
+              "andSecond": "{minuteCount} min a {secondCount} s"
             }
           },
           "seconds": {
@@ -273,7 +273,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Položka",
       "defaultItemPlural": "Položky",
-      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
+      "allItemsSelected": "Bylo vybráno vše typu {resourceNamePlural} ({itemsLength} a více).",
       "selected": "Vybráno: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
@@ -282,13 +282,13 @@
     },
     "IndexTable": {
       "emptySearchTitle": "Nepovedlo se najít: {resourceNamePlural}",
-      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný výraz",
-      "onboardingBadgeText": "Nové",
+      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný termín",
+      "onboardingBadgeText": "Novinka",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
       "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
       "selected": "Vybráno: {selectedItemsCount}",
       "undo": "Vrátit zpět",
-      "selectAllItems": "Vybrat všechno zboží typu {resourceNamePlural} ({itemsLength} a více)",
+      "selectAllItems": "Vybrat vše typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat"
     },

@@ -10,7 +10,7 @@
     },
     "Badge": {
       "PROGRESS_LABELS": {
-        "incomplete": "Ei valmis",
+        "incomplete": "Keskeneräinen",
         "partiallyComplete": "Osittain valmis",
         "complete": "Valmis"
       },
@@ -30,13 +30,13 @@
     },
     "Common": {
       "checkbox": "valintaruutu",
-      "undo": "Kumoa",
+      "undo": "Peru",
       "cancel": "Peruuta",
       "newWindowAccessibilityHint": "(avaa uuden ikkunan)",
       "clear": "Tyhjennä",
       "close": "Sulje",
       "submit": "Lähetä",
-      "more": "Lisää"
+      "more": "Enemmän"
     },
     "ContextualSaveBar": {
       "save": "Tallenna",
@@ -76,11 +76,11 @@
         "sunday": "Su"
       },
       "days": {
-        "monday": "Maanantai",
-        "tuesday": "Tiistai",
-        "wednesday": "Keskiviikko",
-        "thursday": "Torstai",
-        "friday": "Perjantai",
+        "monday": "maanantai",
+        "tuesday": "tiistai",
+        "wednesday": "keskiviikko",
+        "thursday": "torstai",
+        "friday": "perjantai",
         "saturday": "Lauantai",
         "sunday": "Sunnuntai"
       },
@@ -97,8 +97,8 @@
       "errorOverlayTextFile": "Tiedostotyyppi ei kelpaa",
       "errorOverlayTextImage": "Kuvan tyyppi ei kelpaa",
       "single": {
-        "overlayTextFile": "Pudota tiedosto ladattavaksi",
-        "overlayTextImage": "Pudota kuva ladattavaksi",
+        "overlayTextFile": "Pudota ladattava tiedosto",
+        "overlayTextImage": "Lataa kuva pudottamalla",
         "actionTitleFile": "Lisää tiedosto",
         "actionTitleImage": "Lisää kuva",
         "actionHintFile": "tai pudota tiedosto ladattavaksi",
@@ -112,7 +112,7 @@
         "actionTitleFile": "Lisää tiedostoja",
         "actionTitleImage": "Lisää kuvia",
         "actionHintFile": "tai pudota ladattavat tiedostot",
-        "actionHintImage": "tai pudota ladattavat kuvat",
+        "actionHintImage": "tai lataa kuvat pudottamalla",
         "labelFile": "Lataa tiedostoja",
         "labelImage": "Lataa kuvia"
       }
@@ -129,7 +129,7 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Näytä toiminnot"
+        "rollupButton": "Tarkastele toimintoja"
       },
       "Actions": {
         "moreActions": "Lisää toimintoja"
@@ -137,7 +137,7 @@
     },
     "Filters": {
       "moreFilters": "Lisää suodattimia",
-      "filter": "{resourceName}-suodatin",
+      "filter": "Suodata {resourceName}",
       "noFiltersApplied": "Suodattimia ei ole käytetty",
       "cancel": "Peruuta",
       "done": "Valmis",
@@ -160,23 +160,23 @@
       "exceedWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla suurempia kuin 100. Asetetaan {progress} arvoon 100."
     },
     "ResourceList": {
-      "sortingLabel": "Lajittele:",
+      "sortingLabel": "Lajitteluperuste",
       "defaultItemSingular": "tuote",
-      "defaultItemPlural": "tuotteet",
+      "defaultItemPlural": "tuotetta",
       "showing": "Näytetään {itemsCount} {resource}",
       "loading": "Ladataan {resource}",
       "selected": "{selectedItemsCount} valittu",
-      "allItemsSelected": "Kaikki {itemsLength}+ {resourceNamePlural} kaupassasi on valittu.",
-      "selectAllItems": "Valitse kaikki {itemsLength}+ {resourceNamePlural} kaupassasi",
+      "allItemsSelected": "Kaikki {itemsLength} ja {resourceNamePlural} kaupassasi on valittu.",
+      "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural} kaupassasi",
       "emptySearchResultTitle": "{resourceNamePlural} ei löytynyt",
-      "emptySearchResultDescription": "Yritä vaihtaa suodattimia tai hakuehtoa",
+      "emptySearchResultDescription": "Yritä vaihtaa suodattimia tai hakusanaa",
       "selectButtonText": "Valitse",
-      "a11yCheckboxDeselectAllSingle": "Poista valinta {resourceNameSingular}",
+      "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Poista kaikki valitut {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} tuote",
-      "ariaLivePlural": "{itemsLength} tuotteet",
+      "ariaLivePlural": "{itemsLength} tuotetta",
       "Item": {
         "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
         "actionsDropdown": "Toiminnat-pudotusvalikko",
@@ -188,8 +188,8 @@
         "warningMessage": "Paremman käyttäjäkokemuksen tarjoamiseksi. Mainostettavia toimintoja saa olla enintään {maxPromotedActions}."
       },
       "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural} on valittu.",
-      "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural}"
+      "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength} ja {resourceNamePlural} on valittu.",
+      "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength} ja {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
@@ -202,7 +202,7 @@
     },
     "TextField": {
       "characterCount": "{count} merkkiä",
-      "characterCountWithMaxLength": "{count} / {limit} merkistä käytetty"
+      "characterCountWithMaxLength": "{count}/{limit} merkkiä käytetty"
     },
     "TopBar": {
       "toggleMenuLabel": "Vaihda valikkoa",
@@ -273,14 +273,14 @@
       "defaultItemPlural": "Tuotteet",
       "allItemsSelected": "Kaikki {itemsLength} ja {resourceNamePlural} on valittu.",
       "selected": "{selectedItemsCount} valittu",
-      "a11yCheckboxDeselectAllSingle": "Poista valinta {resourceNameSingular}",
+      "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Poista kaikki valitut {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
       "emptySearchTitle": "{resourceNamePlural} ei löytynyt",
-      "emptySearchDescription": "Yritä vaihtaa suodattimia tai hakuehtoa",
+      "emptySearchDescription": "Yritä vaihtaa suodattimia tai hakusanaa",
       "onboardingBadgeText": "Uusi",
       "resourceLoadingAccessibilityLabel": "Ladataan {resourceNamePlural}…",
       "selectAllLabel": "Valitse kaikki {resourceNamePlural}",
@@ -292,7 +292,7 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Näytä nimikettä {title} koskevat toiminnot"
+        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja"
       }
     }
   }
