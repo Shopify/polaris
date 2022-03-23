@@ -27,4 +27,4 @@ components:
     scheme: react
     audience: merchant
     paths:
-      - locales/{{language}}.json
+      - polaris-react/locales/{{language}}.json

@@ -1,0 +1,5 @@
+out
+dist
+.vscode-test/
+*.vsix
+src/data/

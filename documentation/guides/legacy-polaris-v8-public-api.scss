@@ -1,6 +1,8 @@
 // Deprecated scss functions and mixins
 
-/* Polaris Tokens: colors.color-map */
+//
+// Polaris Tokens: colors.color-map
+//
 
 $polaris-colors: (
   'purple': (
@@ -87,7 +89,9 @@ $polaris-colors: (
   ),
 );
 
-/* Polaris Tokens: color-filters.color-map */
+//
+// Polaris Tokens: color-filters.color-map
+//
 
 $polaris-color-filters: (
   'purple': (
@@ -238,7 +242,9 @@ $polaris-color-filters: (
   ),
 );
 
-/* Polaris Tokens: duration.map */
+//
+// Polaris Tokens: duration.map
+//
 
 $polaris-duration-map: (
   'duration-none': (
@@ -261,7 +267,9 @@ $polaris-duration-map: (
   ),
 );
 
-/* Polaris Tokens: spacing.spacing-map */
+//
+// Polaris Tokens: spacing.spacing-map
+//
 
 $polaris-spacing: (
   'none': 0,
@@ -273,7 +281,9 @@ $polaris-spacing: (
   'extra-loose': 32px,
 );
 
-/* FOUNDATION: accessibility */
+//
+// FOUNDATION: accessibility
+//
 
 @mixin high-contrast-outline($border-width: border-width()) {
   outline: $border-width solid transparent;
@@ -285,7 +295,9 @@ $polaris-spacing: (
   @content;
 }
 
-/* FOUNDATION: utilities */
+//
+// FOUNDATION: utilities
+//
 
 $default-browser-font-size: 16px;
 $base-font-size: 16px;
@@ -408,7 +420,9 @@ $base-font-size: 16px;
   @return $map;
 }
 
-/* FOUNDATION: colors */
+//
+// FOUNDATION: colors
+//
 
 ///
 /// Color data
@@ -528,7 +542,9 @@ $ms-high-contrast-color-data: (
   }
 }
 
-/* FOUNDATION: filters */
+//
+// FOUNDATION: filters
+//
 
 ///
 /// Color filter data
@@ -562,7 +578,9 @@ $color-filter-palette-data: $polaris-color-filters;
   }
 }
 
-/* FOUNDATION: spacing */
+//
+// FOUNDATION: spacing
+//
 
 $spacing-data: $polaris-spacing;
 
@@ -581,7 +599,9 @@ $spacing-data: $polaris-spacing;
   }
 }
 
-/* FOUNDATION: border-width */
+//
+// FOUNDATION: border-width
+//
 
 $border-width-data: (
   base: rem(1px),
@@ -603,7 +623,9 @@ $border-width-data: (
   }
 }
 
-/* FOUNDATION: borders */
+//
+// FOUNDATION: borders
+//
 
 $borders-data: (
   base: border-width() solid var(--p-border-subdued),
@@ -626,7 +648,9 @@ $borders-data: (
   }
 }
 
-/* FOUNDATION: border-radius */
+//
+// FOUNDATION: border-radius
+//
 
 $border-radius-data: (
   base: 3px,
@@ -641,7 +665,9 @@ $border-radius-data: (
   @return map-get($border-radius-data, $size);
 }
 
-/* FOUNDATION: duration */
+//
+// FOUNDATION: duration
+//
 
 $duration-data: $polaris-duration-map;
 
@@ -661,7 +687,9 @@ $duration-data: $polaris-duration-map;
   }
 }
 
-/* FOUNDATION: easing */
+//
+// FOUNDATION: easing
+//
 
 $easing-data: (
   base: cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -687,7 +715,9 @@ $easing-data: (
   }
 }
 
-/* FOUNDATION: layout */
+//
+// FOUNDATION: layout
+//
 
 $navigation-width: 240px !default;
 
@@ -758,7 +788,9 @@ $dismiss-icon-size: 32px;
   @return rem(769px);
 }
 
-/* FOUNDATION: shadows */
+//
+// FOUNDATION: shadows
+//
 
 // Shadows are intentionally very subtle gradiations.
 $shadows-data: (
@@ -794,7 +826,9 @@ $shadows-data: (
   }
 }
 
-/* FOUNDATION: typography */
+//
+// FOUNDATION: typography
+//
 
 $typography-condensed: em(640px);
 
@@ -950,7 +984,9 @@ $font-size-data: (
   }
 }
 
-/* FOUNDATION: z-index */
+//
+// FOUNDATION: z-index
+//
 
 $global-elements: (
   content: 100,
@@ -988,7 +1024,9 @@ $fixed-element-stacking-order: (
   }
 }
 
-/* FOUNDATION: focus-ring */
+//
+// FOUNDATION: focus-ring
+//
 
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
@@ -1044,7 +1082,9 @@ $fixed-element-stacking-order: (
   }
 }
 
-/* SHARED: accessibility */
+//
+// SHARED: accessibility
+//
 
 /// Used to hide an element visually, but keeping it accessible for
 /// accessibility tools.
@@ -1066,7 +1106,9 @@ $fixed-element-stacking-order: (
   // stylelint-enable declaration-no-important
 }
 
-/* SHARED: breakpoints */
+//
+// SHARED: breakpoints
+//
 
 $page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
   layout-width(inner-spacing);
@@ -1262,7 +1304,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: buttons */
+//
+// SHARED: buttons
+//
 
 @mixin high-contrast-button-outline($outline: 2px dotted) {
   @media (-ms-high-contrast: active) {
@@ -1344,16 +1388,16 @@ $nav-min-window: em(layout-width(page-with-nav));
 
 @mixin button-filled() {
   @include focus-ring($border-width: 0);
-  background: var(--p-button-color);
+  background: var(--pc-button-color);
   border-width: 0;
   border-color: transparent;
   box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
-  color: var(--p-button-text);
+  color: var(--pc-button-text);
 
   &:hover {
-    background: var(--p-button-color-hover);
+    background: var(--pc-button-color-hover);
     border-color: transparent;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &:focus {
@@ -1362,20 +1406,20 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 
   &:active {
-    background: var(--p-button-color-active);
+    background: var(--pc-button-color-active);
     border-color: transparent;
     box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
   }
 
   &.pressed {
-    color: var(--p-button-text);
-    background: var(--p-button-color-depressed);
+    color: var(--pc-button-text);
+    background: var(--pc-button-color-depressed);
     border-color: transparent;
     box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
 
     &:hover,
     &:focus {
-      background: var(--p-button-color-depressed);
+      background: var(--pc-button-color-depressed);
       box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
     }
   }
@@ -1414,7 +1458,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     background: var(--p-action-secondary-pressed);
     border: border-width() solid var(--p-border);
     box-shadow: none;
-    color: var(--p-button-text);
+    color: var(--pc-button-text);
   }
 
   &.disabled {
@@ -1493,7 +1537,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: controls */
+//
+// SHARED: controls
+//
 
 @function control-height() {
   @return rem(36px);
@@ -1573,7 +1619,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: forms */
+//
+// SHARED: forms
+//
 
 @mixin unstyled-input {
   margin: 0;
@@ -1620,7 +1668,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: icons */
+//
+// SHARED: icons
+//
 
 @function icon-size() {
   @return rem(20px);
@@ -1651,7 +1701,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: layout */
+//
+// SHARED: layout
+//
 
 /// To be used on flex items. Resolves some common layout issues, such as
 /// text truncation not respecting padding or breaking out of container.
@@ -1685,7 +1737,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: links */
+//
+// SHARED: links
+//
 
 @mixin unstyled-link() {
   color: inherit;
@@ -1696,7 +1750,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/* SHARED: lists */
+//
+// SHARED: lists
+//
 
 @mixin unstyled-list {
   margin: 0;
@@ -1704,7 +1760,9 @@ $nav-min-window: em(layout-width(page-with-nav));
   list-style: none;
 }
 
-/* SHARED: page */
+//
+// SHARED: page
+//
 
 $actions-vertical-spacing: spacing(tight);
 
@@ -1789,7 +1847,9 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-/* SHARED: typography */
+//
+// SHARED: typography
+//
 
 $typography-condensed: em(640px);
 
@@ -1966,7 +2026,9 @@ $typography-condensed: em(640px);
   }
 }
 
-/* SHARED: skeleton */
+//
+// SHARED: skeleton
+//
 
 /// Used to create the shimmer effect of skeleton components
 $skeleton-shimmer-duration: duration(slower) * 2;
@@ -2031,7 +2093,9 @@ $thumbnail-sizes: (
   padding-bottom: spacing(tight);
 }
 
-/* SHARED: interaction-state */
+//
+// SHARED: interaction-state
+//
 
 /// Sets the background-image and box-shadow for single or multiple given
 /// interaction states.
@@ -2073,7 +2137,9 @@ $thumbnail-sizes: (
   border-bottom-right-radius: var(--p-border-radius-1);
 }
 
-/* SHARED: printing */
+//
+// SHARED: printing
+//
 
 @mixin when-printing {
   @media print {

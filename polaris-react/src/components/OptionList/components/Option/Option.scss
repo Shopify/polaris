@@ -1,0 +1,110 @@
+@import '../../../../styles/common';
+@import '../../../../styles/shared/typography';
+
+$min-height: control-height();
+$control-vertical-adjustment: 2px;
+
+.Option {
+  @include unstyled-button;
+  width: 100%;
+  min-height: $min-height;
+  text-align: left;
+  text-decoration: none;
+  border-radius: var(--p-border-radius-1);
+  margin-top: var(--p-space-1);
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.SingleSelectOption {
+  @include unstyled-button;
+  text-align: left;
+  @include focus-ring;
+
+  &.focused:not(:active) {
+    @include focus-ring($style: 'focused');
+  }
+
+  &.active {
+    background: var(--p-surface-selected);
+  }
+
+  &.active::before,
+  &.select::before {
+    @include list-selected-indicator;
+  }
+
+  &:not(.disabled) {
+    color: inherit;
+  }
+
+  .Media {
+    padding: 0 var(--p-space-2) 0 0;
+  }
+}
+
+.Label,
+.SingleSelectOption {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--p-border-radius-1);
+  padding: var(--p-space-2);
+  @include text-breakword;
+
+  &:hover:not(.disabled) {
+    background: var(--p-surface-hovered);
+    outline: var(--p-border-width-1) solid transparent;
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  &.select,
+  &.select:hover:not(.disabled),
+  &:active:not(.disabled) {
+    background: var(--p-surface-selected);
+    outline: var(--p-border-width-1) solid transparent;
+  }
+
+  &.disabled {
+    background: var(--p-surface-disabled);
+    cursor: default;
+    color: var(--p-text-disabled);
+  }
+}
+
+.Checkbox {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  width: var(--p-choice-size);
+  height: var(--p-choice-size);
+  margin-right: var(--p-space-2);
+  margin-left: calc(-1 * var(--p-choice-margin));
+}
+
+.disabled {
+  .Media {
+    @include recolor-icon(var(--p-icon-disabled));
+  }
+}
+
+.Media {
+  @include recolor-icon(var(--p-icon));
+  padding: 0 var(--p-space-2);
+}
+
+.verticalAlignTop {
+  align-items: flex-start;
+}
+
+.verticalAlignCenter {
+  align-items: center;
+}
+
+.verticalAlignBottom {
+  align-items: flex-end;
+}
