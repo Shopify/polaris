@@ -6,7 +6,9 @@
   },
   "workspaces": [
     "polaris-react",
-    "secretpolaris.shopify.com"
+    "secretpolaris.shopify.com",
+    "custom-properties-allowed-list",
+    "polaris-for-stylelint"
   ],
   "scripts": {
     "build": "yarn workspaces run build",

@@ -100,6 +100,7 @@
     "@shopify/loom-plugin-eslint": "^2.0.0",
     "@shopify/loom-plugin-prettier": "^2.0.0",
     "@shopify/loom-plugin-stylelint": "^2.0.0",
+    "@shopify/custom-properties-allowed-list": "0.0.0",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/react-testing": "^3.2.4",

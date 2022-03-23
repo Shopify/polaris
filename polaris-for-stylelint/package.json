@@ -1,0 +1,44 @@
+{
+  "name": "@shopify/polaris-for-stylelint",
+  "description": "Polaris Design System Stylelint tooling",
+  "version": "0.0.0",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "shopify",
+    "polaris",
+    "stylelint"
+  ],
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=16.13.0"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "prepublishOnly": "npm run type-check"
+  },
+  "peerDependencies": {
+    "stylelint": "^14.1.0"
+  },
+  "dependencies": {
+    "@shopify/custom-properties-allowed-list": "0.0.0"
+  },
+  "devDependencies": {
+    "@shopify/prettier-config": "^1.1.2",
+    "@shopify/typescript-configs": "^5.0.0",
+    "typescript": "^4.6.2"
+  },
+  "prettier": "@shopify/prettier-config"
+}
