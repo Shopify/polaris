@@ -5,7 +5,7 @@
       "labelWithInitials": "Avatar com as iniciais {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Carregar",
+      "spinnerAccessibilityLabel": "A carregar",
       "ellipsis": "{content}..."
     },
     "Badge": {
@@ -25,7 +25,7 @@
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregar",
+      "spinnerAccessibilityLabel": "A carregar",
       "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
     },
     "Common": {
@@ -35,12 +35,12 @@
       "newWindowAccessibilityHint": "(abre uma nova janela)",
       "clear": "Limpar",
       "close": "Fechar",
-      "submit": "Enviar",
+      "submit": "Submeter",
       "more": "Mais"
     },
     "ContextualSaveBar": {
       "save": "Guardar",
-      "discard": "Descartar"
+      "discard": "Eliminar"
     },
     "DataTable": {
       "sortAccessibilityLabel": "ordenar {direction} por",
@@ -88,9 +88,9 @@
       "end": "Fim do intervalo"
     },
     "DiscardConfirmationModal": {
-      "title": "Descartar todas as alterações não guardadas",
-      "message": "Se descartar as alterações, vai eliminar quaisquer edições feitas desde que guardou pela última vez.",
-      "primaryAction": "Descartar alterações",
+      "title": "Eliminar todas as alterações não guardadas",
+      "message": "Se eliminar as alterações, vai eliminar quaisquer edições feitas desde que guardou pela última vez.",
+      "primaryAction": "Eliminar alterações",
       "secondaryAction": "Continuar a editar"
     },
     "DropZone": {
@@ -101,14 +101,14 @@
         "overlayTextImage": "Solte a imagem para carregar",
         "actionTitleFile": "Adicionar ficheiro",
         "actionTitleImage": "Adicionar imagem",
-        "actionHintFile": "ou solte os ficheiros para carregar",
-        "actionHintImage": "ou solte as imagens para carregar",
+        "actionHintFile": "ou solte o ficheiro para carregar",
+        "actionHintImage": "ou solte a imagem para carregar",
         "labelFile": "Carregar ficheiro",
         "labelImage": "Carregar imagem"
       },
       "allowMultiple": {
         "overlayTextFile": "Solte os ficheiros para carregar",
-        "overlayTextImage": "Solte a imagem para carregar",
+        "overlayTextImage": "Solte as imagens para carregar",
         "actionTitleFile": "Adicionar ficheiros",
         "actionTitleImage": "Adicionar imagens",
         "actionHintFile": "ou solte os ficheiros para carregar",
@@ -129,7 +129,7 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "Visualizar ações"
+        "rollupButton": "Ver ações"
       },
       "Actions": {
         "moreActions": "Mais ações"
@@ -164,8 +164,8 @@
       "defaultItemSingular": "item",
       "defaultItemPlural": "itens",
       "showing": "A mostrar {itemsCount} {resource}",
-      "loading": "Carregar {resource}",
-      "selected": "{selectedItemsCount} selecionado",
+      "loading": "A carregar {resource}",
+      "selected": "{selectedItemsCount} selecionada",
       "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
       "selectAllItems": "Selecione todos os {itemsLength}+ {resourceNamePlural} da sua loja",
       "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
@@ -173,9 +173,9 @@
       "selectButtonText": "Selecionar",
       "a11yCheckboxDeselectAllSingle": "Desselecionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo em {resourceNamePlural} de {itemsLength}",
-      "a11yCheckboxSelectAllMultiple": "Selecionar tudo em {resourceNamePlural} de {itemsLength}",
-      "ariaLiveSingular": "Item de {itemsLength}",
+      "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar tudo {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} item",
       "ariaLivePlural": "{itemsLength} itens",
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
@@ -202,7 +202,7 @@
     },
     "TextField": {
       "characterCount": "{count} caracteres",
-      "characterCountWithMaxLength": "{count} de {limit} caracteres usados"
+      "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
     },
     "TopBar": {
       "toggleMenuLabel": "Alternar menu",
@@ -216,7 +216,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "Reprodução de vídeo",
+        "default": "Reproduzir o vídeo",
         "defaultWithDuration": "Reproduzir vídeo de {duration}",
         "duration": {
           "hours": {
@@ -272,19 +272,19 @@
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Itens",
       "allItemsSelected": "Todos os itens de {resourceNamePlural} de {itemsLength}+ foram selecionados.",
-      "selected": "{selectedItemsCount} selecionado",
-      "a11yCheckboxDeselectAllSingle": "Anular seleção {resourceNameSingular}",
+      "selected": "{selectedItemsCount} selecionada",
+      "a11yCheckboxDeselectAllSingle": "Desselecionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Anular seleção de tudo em {resourceNamePlural} de {itemsLength}",
-      "a11yCheckboxSelectAllMultiple": "Selecionar tudo em {resourceNamePlural} de {itemsLength}"
+      "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar tudo {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
       "emptySearchTitle": "Nenhum {resourceNamePlural} encontrado",
       "emptySearchDescription": "Tente alterar os filtros ou o termo de pesquisa",
       "onboardingBadgeText": "Novo",
       "resourceLoadingAccessibilityLabel": "A carregar {resourceNamePlural}",
-      "selectAllLabel": "Selecionar tudo em {resourceNamePlural}",
-      "selected": "{selectedItemsCount} selecionado",
+      "selectAllLabel": "Selecionar tudo {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selecionada",
       "undo": "Anular",
       "selectAllItems": "Selecionar todos os itens de {resourceNamePlural} de {itemsLength}+",
       "selectItem": "Selecionar {resourceName}",
