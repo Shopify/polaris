@@ -7,9 +7,9 @@ const {
   isCustomProperty,
   isRegExp,
   isString,
-} = require('./utils');
+} = require('../utils');
 
-let ruleName = '@shopify/custom-properties-allowed-list';
+let ruleName = 'stylelint-polaris/custom-properties-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
