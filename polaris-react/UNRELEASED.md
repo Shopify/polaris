@@ -17,6 +17,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
+- Bumped marked from 0.7.0 to 4.0.10 ([#4898](https://github.com/Shopify/polaris/pull/4898))
+
 ### Code quality
 
 - Replace `calc()` with space token equivalent ([#5295](https://github.com/Shopify/polaris-react/pull/5295))
