@@ -6,7 +6,7 @@
   },
   "workspaces": [
     "polaris-react",
-    "secretpolaris.shopify.com"
+    "polaris.shopify.com"
   ],
   "scripts": {
     "build": "yarn workspaces run build",
