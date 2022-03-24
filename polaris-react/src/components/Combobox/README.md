@@ -35,7 +35,7 @@ The input field for `Combobox` should follow the [content guidelines](https://po
 
 ## Examples
 
-### Basic autocomplete
+### Single select autocomplete
 
 Use to help merchants complete text input quickly from a list of options.
 
@@ -127,7 +127,7 @@ function ComboboxExample() {
 }
 ```
 
-### Multiple tags autocomplete
+### Multi-select autocomplete
 
 Use to help merchants select multiple options from a list curated by the text input.
 

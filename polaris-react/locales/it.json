@@ -5,35 +5,35 @@
       "labelWithInitials": "Avatar con iniziali {initials}"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "Caricamento",
+      "spinnerAccessibilityLabel": "Caricamento in corso",
       "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
         "incomplete": "Incompleto",
-        "partiallyComplete": "Parzialmente completato",
-        "complete": "Completare"
+        "partiallyComplete": "Parzialmente completo",
+        "complete": "Completo"
       },
       "STATUS_LABELS": {
         "info": "Info",
         "success": "Avvenuto",
         "warning": "Avvertimento",
         "attention": "Attenzione",
-        "new": "Nuovi",
+        "new": "Novità",
         "critical": "Critico"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Caricamento",
+      "spinnerAccessibilityLabel": "Caricamento in corso",
       "connectedDisclosureAccessibilityLabel": "Azioni correlate"
     },
     "Common": {
       "checkbox": "casella di spunta",
       "undo": "Annulla",
-      "cancel": "Annulla",
+      "cancel": "Chiudi",
       "newWindowAccessibilityHint": "(apre una nuova finestra)",
-      "clear": "Cancella",
+      "clear": "Rimuovi",
       "close": "Chiudi",
       "submit": "Invia",
       "more": "Altro"
@@ -43,10 +43,10 @@
       "discard": "Rimuovi"
     },
     "DataTable": {
-      "sortAccessibilityLabel": "ordina per {direction}",
-      "navAccessibilityLabel": "Scorri la tabella {direction} una colonna",
+      "sortAccessibilityLabel": "ordina {direction} per",
+      "navAccessibilityLabel": "Scorri la tabella {direction} di una colonna",
       "totalsRowHeading": "Totali",
-      "totalRowHeading": "totale"
+      "totalRowHeading": "Totale"
     },
     "DatePicker": {
       "previousMonth": "Mostra il mese precedente, {previousMonthName} {showPreviousYear}",
@@ -57,7 +57,7 @@
         "february": "Febbraio",
         "march": "Marzo",
         "april": "Aprile",
-        "may": "Mag",
+        "may": "Maggio",
         "june": "Giugno",
         "july": "Luglio",
         "august": "Agosto",
@@ -89,8 +89,8 @@
     },
     "DiscardConfirmationModal": {
       "title": "Rimuovi tutte le modifiche non salvate",
-      "message": "Rimuovendo le modifiche, eliminerai tutte le modifiche apportate dopo l'ultimo salvataggio.",
-      "primaryAction": "Rimuovi le modifiche",
+      "message": "Rimuovendo le modifiche, eliminerai tutte quelle apportate dopo l'ultimo salvataggio.",
+      "primaryAction": "Rimuovi modifiche",
       "secondaryAction": "Continua a modificare"
     },
     "DropZone": {
@@ -114,11 +114,11 @@
         "actionHintFile": "o rilascia i file per caricarli",
         "actionHintImage": "o rilascia le immagini per caricarle",
         "labelFile": "Carica file",
-        "labelImage": "Carica delle immagini"
+        "labelImage": "Carica immagini"
       }
     },
     "EmptySearchResult": {
-      "altText": "Risultati della ricerca assenti"
+      "altText": "Risultati di ricerca assenti"
     },
     "Frame": {
       "skipToContent": "Vai direttamente al contenuto",
@@ -139,11 +139,11 @@
       "moreFilters": "Più filtri",
       "filter": "Filtra {resourceName}",
       "noFiltersApplied": "Nessun filtro applicato",
-      "cancel": "Annulla",
+      "cancel": "Chiudi",
       "done": "Fatto",
-      "clearAllFilters": "Cancella tutti i filtri",
-      "clear": "Cancella",
-      "clearLabel": "Cancella {filterName}",
+      "clearAllFilters": "Rimuovi tutti i filtri",
+      "clear": "Rimuovi",
+      "clearLabel": "Rimuovi {filterName}",
       "moreFiltersWithCount": "Altri filtri ({count})"
     },
     "Modal": {
@@ -166,20 +166,20 @@
       "showing": "Visualizzazione di {itemsCount} {resource}",
       "loading": "Caricamento {resource}",
       "selected": "{selectedItemsCount} selezionati",
-      "allItemsSelected": "Tutti {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati.",
-      "selectAllItems": "Seleziona tutti {itemsLength}+ {resourceNamePlural} nel tuo negozio",
-      "emptySearchResultTitle": "Non trovati {resourceNamePlural}",
-      "emptySearchResultDescription": "Prova a modificare i filtri o il termine di ricerca",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati.",
+      "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio",
+      "emptySearchResultTitle": "Impossibile trovare {resourceNamePlural}",
+      "emptySearchResultDescription": "Prova a cambiare i filtri o il termine di ricerca",
       "selectButtonText": "Seleziona",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutto {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Seleziona tutto {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutto: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleziona tutto: {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} articolo",
       "ariaLivePlural": "{itemsLength} articoli",
       "Item": {
         "actionsDropdownLabel": "Azioni per {accessibilityLabel}",
-        "actionsDropdown": "Menu a discesa delle azioni",
+        "actionsDropdown": "Menu a discesa azioni",
         "viewItem": "Visualizza dettagli di {itemName}"
       },
       "BulkActions": {
@@ -187,7 +187,7 @@
         "moreActionsActivatorLabel": "Altre azioni",
         "warningMessage": "Per offrire una migliore User Experience. È previsto solo un massimo di {maxPromotedActions} azioni promosse."
       },
-      "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount}{resource}",
+      "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Tutti i {resourceNamePlural} {itemsLength}+ in questo filtro sono selezionati.",
       "selectAllFilteredItems": "Seleziona tutti i {resourceNamePlural} {itemsLength}+ in questo filtro"
     },
@@ -202,12 +202,12 @@
     },
     "TextField": {
       "characterCount": "{count} caratteri",
-      "characterCountWithMaxLength": "Usati {count} caratteri di {limit}"
+      "characterCountWithMaxLength": "{count} caratteri utilizzati su {limit}"
     },
     "TopBar": {
       "toggleMenuLabel": "Menu di attivazione/disattivazione",
       "SearchField": {
-        "clearButtonLabel": "Cancella",
+        "clearButtonLabel": "Rimuovi",
         "search": "Cerca"
       }
     },
@@ -216,7 +216,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "Play video",
+        "default": "Riproduci video",
         "defaultWithDuration": "Riproduci video della lunghezza di {duration}",
         "duration": {
           "hours": {
@@ -275,15 +275,15 @@
       "selected": "{selectedItemsCount} selezionati",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutti i {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Seleziona tutti i {itemsLength} {resourceNamePlural}"
+      "a11yCheckboxDeselectAllMultiple": "Deseleziona tutto: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleziona tutto: {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
-      "emptySearchTitle": "Impossibile trovare gli {resourceNamePlural}",
-      "emptySearchDescription": "Prova a modificare i filtri o il termine di ricerca",
-      "onboardingBadgeText": "Nuovo",
+      "emptySearchTitle": "Impossibile trovare {resourceNamePlural}",
+      "emptySearchDescription": "Prova a cambiare i filtri o il termine di ricerca",
+      "onboardingBadgeText": "Novità",
       "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
-      "selectAllLabel": "Seleziona tutti gli {resourceNamePlural}",
+      "selectAllLabel": "Seleziona tutto: {resourceNamePlural}",
       "selected": "{selectedItemsCount} selezionati",
       "undo": "Annulla",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",

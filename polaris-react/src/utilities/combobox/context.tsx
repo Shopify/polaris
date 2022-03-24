@@ -11,11 +11,11 @@ export interface ComboboxTextFieldType {
   setTextFieldLabelId?(id: string): void;
   // Sets a boolean to enable/disable keyboard control for the Listbox
   setTextFieldFocused?(value: boolean): void;
-  // Callback when TextField is focused
+  // Callback fired when TextField is focused
   onTextFieldFocus?(): void;
-  // Callback when TextField is blured
+  // Callback fired when TextField is blurred
   onTextFieldBlur?(): void;
-  // Callback when TextField is changed
+  // Callback fired when TextField value changes
   onTextFieldChange?(): void;
 }
 
@@ -24,12 +24,12 @@ export interface ComboboxListboxType {
   textFieldLabelId?: string;
   // Enables/disables keyboard control
   textFieldFocused?: boolean;
+  // Value of listboxId to avoid calling setListboxId
+  listboxId?: string;
   // Sets the value for the TextFields aria-activedescendant.
   setActiveOptionId?(id: string): void;
   // Sets the value of the listboxId use for the Combobox aria-owns and TextField aria-control
   setListboxId?(id: string): void;
-  // Value of listboxId to avoid calling setListboxId
-  listboxId?: string;
   // Handler used in Combobox to brings to manage popover state and focus based on multi or single select
   onOptionSelected?(): void;
   // Callback to onScrolledToBottom when using keyboard navigation navigates to the last item
