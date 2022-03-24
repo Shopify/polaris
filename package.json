@@ -6,7 +6,7 @@
   },
   "workspaces": [
     "polaris-react",
-    "polaris-for-stylelint",
+    "stylelint-polaris",
     "polaris.shopify.com"
   ],
   "scripts": {
