@@ -12,7 +12,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
-- Fixed accessibility issues and logic to set active descendant on `Listbox` ([#5297](https://github.com/Shopify/polaris-react/pull/5297))
+- Fixed accessibility issues on focus and option create in `Combobox` and `Listbox` ([#5298](https://github.com/Shopify/polaris-react/pull/5298))
+- Fixed accessibility issues and logic to set active descendant in `Listbox` ([#5297](https://github.com/Shopify/polaris-react/pull/5297))
 
 ### Documentation
 
