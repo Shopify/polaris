@@ -71,7 +71,7 @@
     "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^4.17.0",
+    "@shopify/polaris-icons": "^4.18.2",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-transition-group": "^4.4.2",
