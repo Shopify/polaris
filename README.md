@@ -9,7 +9,7 @@ polaris/
 ├── documentation               # Documentation for working in the monorepo
 ├── polaris-for-vscode          # VSCode plugin for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
-└── secretpolaris-shopify-com   # Documentation website
+└── polaris-shopify-com   # Documentation website
 ```
 
 ## Getting Started (One time)
@@ -28,7 +28,7 @@ yarn build
 
 ## Local development
 
-Develop `secretpolaris.shopify.com` in watch mode:
+Develop `polaris.shopify.com` in watch mode:
 
 ```sh
 yarn dev
