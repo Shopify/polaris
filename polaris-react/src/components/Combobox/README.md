@@ -34,42 +34,16 @@ A combobox is made up of the following:
 
 The `Combobox` component should:
 
-- Be clearly labeled so it’s noticeable to the merchant what type of options will be available
+- Be clearly labeled so the merchant knows what type of options will be available
 - Not be used within a popover
 - Indicate a loading state to the merchant while option data is being populated
+- Order items in an intentional way so it’s easy for the merchant to find a specific value
 
 ---
 
 ## Content guidelines
 
 The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
-
----
-
-## Sorting and filtering
-
-### Sorting
-
-Item order should be intentional. Order them so it’s easy for the merchant to find a specific value. Some ways you can do this:
-
-- Sort options in alphabetical order
-- Display options based on how frequently the merchant selects an option
-
-If multiple options can be selected, move selected items to the top of the list. If this doesn’t work for your context, you can override this behavior.
-
-### Filtering
-
-- By default, menu items are filtered based on whether or not they match the value of the textfield.
-- Filters are **not** case-sensitive by default.
-- You can apply custom filtering logic if the default behavior doesn’t make sense for your use case.
-
----
-
-## Patterns
-
-### Tags autocomplete
-
-The tag multiselect allows merchants to select, create and browse from a long list of options.
 
 ---
 
