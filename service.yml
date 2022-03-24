@@ -1,0 +1,4 @@
+classification: tier3
+url: https://secretpolaris.shopifycloud.com
+bugs_url: https://app.bugsnag.com/shopify/polaris
+deploy_url: https://shipit.shopify.io/shopify/polaris/production

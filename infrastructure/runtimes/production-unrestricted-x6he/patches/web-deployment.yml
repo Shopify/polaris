@@ -1,0 +1,8 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: web
+          readinessProbe:
+            httpGet:
+              path: /ping/
