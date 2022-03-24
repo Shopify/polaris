@@ -1,7 +1,0 @@
-ci:
-  require:
-    - krate/lockfile-upload
-production_platform:
-  application: polaris-shopify-com
-  runtime_ids:
-    - production-unrestricted-x6he
