@@ -4,9 +4,9 @@ apiVersion: platform.shopify.io/v1alpha1
 metadata:
   name: production-unrestricted-x6he
 runtimeInfo:
-  appName: polaris.shopify.com
+  appName: polaris-shopify-com
   env: production
-  appImage: gcr.io/shopify-docker-images/apps/production/polaris.shopify.com
+  appImage: gcr.io/shopify-docker-images/apps/production/polaris-shopify-com
   domains:
     - secretpolaris.shopifycloud.com
 defaultBaseSource: github:Shopify/k8s_base/components
@@ -18,3 +18,5 @@ components:
       - base: certificate.yaml
       - base: service.yaml
       - base: deployment.yaml
+        patches:
+          - production-unrestricted-x6he/patches/web-deployment.yml

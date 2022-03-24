@@ -6,7 +6,7 @@ metadata:
   labels:
     name: web
     env: production
-    app: polaris
+    app: polaris-shopify-com
     runtime-component: web
   annotations:
     platform.shopify.io/app-containers: web
@@ -21,14 +21,14 @@ spec:
       labels:
         name: web
         env: production
-        app: polaris
+        app: polaris-shopify-com
       annotations:
         seccomp.security.alpha.kubernetes.io/pod: runtime/default
     spec:
       automountServiceAccountToken: true
       containers:
       - name: web
-        image: gcr.io/shopify-docker-images/apps/production/polaris
+        image: gcr.io/shopify-docker-images/apps/production/polaris-shopify-com
         args:
         - web
         ports:
@@ -114,7 +114,7 @@ spec:
             httpHeaders:
             - name: X-Forwarded-Proto
               value: https
-            path: /services/ping
+            path: /ping/
           initialDelaySeconds: 20
           timeoutSeconds: 3
         securityContext:
@@ -150,7 +150,7 @@ metadata:
   labels:
     name: web
     env: production
-    app: polaris
+    app: polaris-shopify-com
     runtime-component: web
   annotations:
     ingress.shopify.io/tls-secretbuddy: "false"
@@ -159,7 +159,7 @@ metadata:
     security.shopify.io/auth: oauth2
 spec:
   rules:
-  - host: polaris.shopifycloud.com
+  - host: secretpolaris.shopifycloud.com
     http:
       paths:
       - backend:
@@ -170,8 +170,8 @@ spec:
         pathType: ImplementationSpecific
   tls:
   - hosts:
-    - polaris.shopifycloud.com
-    secretName: polaris-shopifycloud-com
+    - secretpolaris.shopifycloud.com
+    secretName: secretpolaris-shopifycloud-com
 ---
 apiVersion: stable.shopify.io/v1
 kind: Certificate
@@ -179,12 +179,12 @@ metadata:
   name: web
   labels:
     env: production
-    app: polaris
+    app: polaris-shopify-com
     runtime-component: web
 spec:
   dnsNames:
-  - polaris.shopifycloud.com
-  secretName: polaris-shopifycloud-com
+  - secretpolaris.shopifycloud.com
+  secretName: secretpolaris-shopifycloud-com
 ---
 apiVersion: v1
 kind: Service
@@ -193,13 +193,13 @@ metadata:
   labels:
     name: web
     env: production
-    app: polaris
+    app: polaris-shopify-com
     runtime-component: web
 spec:
   selector:
     name: web
     env: production
-    app: polaris
+    app: polaris-shopify-com
   ports:
   - name: http
     port: 80
