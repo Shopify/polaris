@@ -11,7 +11,7 @@ $context-control-expand-after: 1400px;
   height: top-bar-height();
   box-shadow: var(--p-shadow-top-bar);
   background-color: var(--p-surface);
-  transition: var(--p-duration-200) background-color ease-in-out;
+  transition: var(--p-duration-200) background-color var(--p-ease-in-out);
 
   &::after {
     content: '';
