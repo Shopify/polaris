@@ -4,17 +4,25 @@
 
 ```
 stylelint-polaris/
-  plugins/
-    custom-properties-allowed-list.js
-    color-no-rgba.js
-    index.js /* Public facing plugin (optional/included in root index.js by default) - consumes custom-properties-allowed-list.js */
-  configs/
-    coverage.js   /* consumes color-no-rgba.js */
-    shared.js     /* inherits coverage.js */
-    internal.js   /* inherits shared.js / consumes custom-properties-allowed-list.js */
-
-  // Public facing config:
-  index.js        /* inherits configs/shared.js and plugins/recommended.js  */
+├─ plugins/
+│  ├─ custom-properties-allowed-list.js
+|  | # (Optional) Public facing plugins for advanced configurations
+|  | # (See advanced config example below)
+|  ├─ index.js
+|  |
+├─ configs/
+|  | # Common rules for `polaris-react` and Polaris consumers
+|  ├─ shared.js
+|  |
+|  | # Applied in `polaris-react` containing:
+|  | # - shared.js
+|  | # - specific `custom-properties-allowed-list` rules
+│  ├─ internal.js
+|
+| # Public facing config containing:
+| # - shared.js
+| # - specific `custom-properties-allowed-list` rules for Polaris consumers
+├─ index.js
 ```
 
 ### Polaris react usage
