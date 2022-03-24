@@ -6,9 +6,9 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://polaris.shopify.com/components",
-  "repository": "https://github.com/Shopify/polaris-react",
+  "repository": "https://github.com/Shopify/polaris",
   "bugs": {
-    "url": "https://github.com/Shopify/polaris-react/issues"
+    "url": "https://github.com/Shopify/polaris/issues"
   },
   "publishConfig": {
     "access": "public",
