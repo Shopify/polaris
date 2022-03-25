@@ -7,6 +7,7 @@ import {useSection, listboxWithinSectionDataSelector} from '../Section';
 import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
+import {ActionContext} from '../../../../utilities/listbox/context';
 
 import styles from './Option.scss';
 
@@ -34,6 +35,7 @@ export const Option = memo(function Option({
   divider,
 }: OptionProps) {
   const {onOptionSelect} = useListbox();
+  const isAction = useContext(ActionContext);
   const {role, url, external, onAction, destructive} =
     useContext(MappedActionContext);
 
@@ -89,6 +91,7 @@ export const Option = memo(function Option({
   return (
     <li
       {...sectionAttributes}
+      data-listbox-option-action={isAction}
       data-listbox-option
       data-listbox-option-value={value}
       data-listbox-option-destructive={destructive}

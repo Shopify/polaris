@@ -2,6 +2,7 @@ import React, {
   useState,
   useRef,
   useEffect,
+  useLayoutEffect,
   useCallback,
   ReactNode,
   useMemo,
@@ -12,13 +13,12 @@ import debounce from 'lodash/debounce';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComboboxListbox} from '../../utilities/combobox';
-import {closestParentMatch} from '../../utilities/closest-parent-match';
-import {scrollIntoView} from '../../utilities/scroll-into-view';
 import {ListboxContext, WithinListboxContext} from '../../utilities/listbox';
 import type {NavigableOption} from '../../utilities/listbox';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 import {VisuallyHidden} from '../VisuallyHidden';
+import {scrollable} from '../shared';
 
 import {
   Option,
@@ -27,7 +27,6 @@ import {
   Action,
   Loading,
   TextOption,
-  listboxSectionDataSelector,
 } from './components';
 import styles from './Listbox.scss';
 
@@ -46,13 +45,9 @@ export interface ListboxProps {
 
 export type ArrowKeys = 'up' | 'down';
 
-export const scrollable = {
-  props: {'data-polaris-scrollable': true},
-  selector: '[data-polaris-scrollable]',
-};
-
 const LISTBOX_OPTION_SELECTOR = '[data-listbox-option]';
 const LISTBOX_OPTION_VALUE_ATTRIBUTE = 'data-listbox-option-value';
+const LISTBOX_OPTION_ACTION_ATTRIBUTE = 'data-listbox-option-action';
 
 const DATA_ATTRIBUTE = 'data-focused';
 
@@ -65,8 +60,8 @@ export function Listbox({
 }: ListboxProps) {
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
-  const [listLength, setListLength] = useState(0);
-  const [reset, setReset] = useState(false);
+  const [resetActiveOption, setResetActiveOption] = useState(false);
+  const [options, setOptions] = useState<HTMLElement[]>([]);
 
   const {
     value: keyboardEventsEnabled,
@@ -112,13 +107,12 @@ export function Listbox({
   };
 
   const getFirstNavigableOption = useCallback(() => {
-    const navItems = getNavigableOptions();
-    const hasSelectedOptions = navItems.some(
+    const hasSelectedOptions = options.some(
       (option) => option.getAttribute('aria-selected') === 'true',
     );
 
     let elementIndex = 0;
-    const element = navItems.find((option, index) => {
+    const element = options.find((option, index) => {
       const isInteractable = option.getAttribute('aria-disabled') !== 'true';
       let isFirstNavigableOption;
 
@@ -137,62 +131,43 @@ export function Listbox({
     if (!element) return;
 
     return {element, index: elementIndex};
+  }, [options]);
+
+  const handleScrollIntoView = useCallback((option: NavigableOption) => {
+    if (scrollableRef.current) {
+      const {element} = option;
+      element.scrollIntoView({block: 'nearest'});
+    }
   }, []);
 
-  const handleScrollIntoView = useCallback(
-    (option: NavigableOption, first: boolean) => {
-      if (scrollableRef.current && listboxRef.current) {
-        const {element} = option;
-        const focusTarget = first
-          ? closestParentMatch(element, listboxSectionDataSelector.selector) ||
-            element
-          : element;
-
-        const elementTop = element.offsetTop;
-        const elementBottom = elementTop + element.clientHeight;
-        const viewportTop = scrollableRef.current.scrollTop;
-        const viewportBottom = viewportTop + scrollableRef.current.clientHeight;
-
-        let direction: boolean | undefined;
-        if (elementBottom > viewportBottom) {
-          direction = false;
-        } else if (elementTop < viewportTop) {
-          direction = true;
-        }
-
-        // only scroll into view if the element is outside the scrollable ref window
-        if (typeof direction === 'boolean') {
-          scrollIntoView(focusTarget, scrollableRef.current);
-        }
-      }
-    },
-    [],
-  );
-
-  const handleScrollIntoViewDebounced = debounce(handleScrollIntoView, 15);
+  const handleScrollIntoViewDebounced = debounce(handleScrollIntoView, 50);
 
   const handleChangeActiveOption = useCallback(
     (nextOption?: NavigableOption) => {
-      if (activeOption && activeOption.domId !== nextOption?.domId) {
-        activeOption.element.removeAttribute(DATA_ATTRIBUTE);
-      }
+      if (!nextOption) return;
+      if (activeOption?.domId === nextOption?.domId) return;
 
-      if (nextOption) {
-        if (scrollableRef.current) {
-          const first =
-            getNavigableOptions().findIndex(
-              (element) => element.id === nextOption.element.id,
-            ) === 0;
+      activeOption?.element.removeAttribute(DATA_ATTRIBUTE);
+      nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
+      setActiveOption(nextOption);
 
-          handleScrollIntoViewDebounced(nextOption, first);
+      if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
+      if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
+
+      if (scrollableRef.current) {
+        const visibleListTop = scrollableRef.current.scrollTop;
+        const visibleListBottom =
+          visibleListTop + scrollableRef.current.clientHeight;
+
+        const optionBottom =
+          nextOption.element.offsetTop + nextOption.element.offsetHeight;
+
+        const isVisible =
+          optionBottom > visibleListTop && optionBottom <= visibleListBottom;
+
+        if (!isVisible) {
+          handleScrollIntoViewDebounced(nextOption);
         }
-
-        nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
-
-        setActiveOption(nextOption);
-
-        if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
-        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
       }
     },
     [
@@ -217,72 +192,61 @@ export function Listbox({
   );
 
   useEffect(() => {
-    if (children) {
-      let reset = false;
-      setListLength((length) => {
-        const nextListLength = Children.count(children);
+    if (children && Children.count(children) > 0) {
+      const nextOptions = getNavigableOptions();
+      const activeOptionIsAction = activeOption?.element.getAttribute(
+        LISTBOX_OPTION_ACTION_ATTRIBUTE,
+      );
 
-        // check if active option is for creating new listbox option
-        const activeOptionLabel =
-          activeOption?.element &&
-          activeOption?.element.getAttribute('aria-label');
-        const activeOptionCreate = activeOptionLabel?.includes('Add: ');
+      const currentValues = options.map((option) =>
+        option.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE),
+      );
 
-        // reset when active option is to create a new listbox option.
-        // without this conditional check, then reset will only be set
-        // to true when you type the first char of the new option and
-        // not be subsequently called as you continue typing the new
-        // option value
-        if (activeOptionCreate && nextListLength === length) {
-          reset = true;
-        }
+      const nextValues = nextOptions.map((option) =>
+        option.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE),
+      );
 
-        // reset when number of listbox children change
-        if (nextListLength !== length) {
-          reset = true;
+      const listIsLazyLoading =
+        onKeyToBottom && nextOptions.length === options.length + 1;
 
-          // do not reset if onKeyToBottom passed in and navItems updating
-          const navItems = getNavigableOptions();
-          if (onKeyToBottom && navItems.length === length + 1) {
-            reset = false;
-          }
-
-          setReset(reset);
-          return nextListLength;
-        }
-
-        return length;
+      const listIsUnchanged = nextValues.every((value, index) => {
+        return currentValues[index] === value;
       });
 
-      if (reset) {
-        setReset(reset);
-      }
+      if (listIsUnchanged) return;
+
+      setOptions(nextOptions);
+
+      if (listIsLazyLoading) return;
+
+      setResetActiveOption(true);
     }
   }, [
     children,
-    listLength,
-    getFirstNavigableOption,
+    options,
     activeOption,
+    resetActiveOption,
+    getFirstNavigableOption,
     onKeyToBottom,
   ]);
 
-  useEffect(() => {
-    if (loading || listLength <= 1) return;
+  useLayoutEffect(() => {
+    if (loading || options.length === 0) return;
 
-    if (reset) {
+    if (resetActiveOption) {
       const nextActiveOption = getFirstNavigableOption();
 
       if (nextActiveOption) {
         const {element, index} = nextActiveOption;
         const option = getFormattedOption(element, index);
         handleChangeActiveOption(option);
-        setReset(false);
+        setResetActiveOption(false);
       }
     }
   }, [
-    listLength,
+    options,
     loading,
-    reset,
+    resetActiveOption,
     getFormattedOption,
     getFirstNavigableOption,
     handleChangeActiveOption,
@@ -314,28 +278,19 @@ export function Listbox({
 
   const getNextValidOption = useCallback(
     (key: ArrowKeys) => {
-      const navItems = getNavigableOptions();
-      const lastIndex = navItems.length - 1;
-      const navItem = navItems.find((item) => item.id === activeOption?.domId);
-      let currentIndex;
-
-      if (activeOption && !activeOption.index && navItem) {
-        currentIndex = navItems.indexOf(navItem);
-      } else {
-        currentIndex = activeOption?.index || 0;
-      }
-
+      const options = getNavigableOptions();
+      const lastIndex = options.length - 1;
+      let currentIndex = activeOption?.index || 0;
       let nextIndex = 0;
       let element = activeOption?.element;
       let totalOptions = -1;
 
-      const disabledItems = navItems.filter(
+      const disabledItems = options.filter(
         (item) => item?.getAttribute('aria-disabled') === 'true',
       );
-      const allNavItemsDisabled = disabledItems.length === navItems.length;
 
-      // when all nav options are disabled and there is no onScrollToBottom,
-      // don't set any enabled options
+      const allNavItemsDisabled = disabledItems.length === options.length;
+
       if (allNavItemsDisabled && !onKeyToBottom) {
         return {element: undefined, nextIndex: -1};
       }
@@ -349,26 +304,21 @@ export function Listbox({
           nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
         }
 
-        // when current nav options are all disabled but there is an onScrollToBottom,
-        // set nextIndex to either one before current index or one after last index
+        /* when current nav options are all disabled but there is an onScrollToBottom, set nextIndex to either one before current index or one after last index */
         if (allNavItemsDisabled) {
           nextIndex = key === 'down' ? lastIndex + 1 : nextIndex - 1;
         }
 
-        // when the activeOption is the last nav item,
-        // set nextIndex to either one before current index
-        // or reset back to beginning of nav options
-        if (currentIndex === lastIndex) {
-          nextIndex = key === 'down' ? 0 : lastIndex - 1;
-        }
+        // // when the activeOption is the last nav item,
+        // // set nextIndex to either one before current index
+        // // or resetActiveOption back to beginning of nav options
+        // if (currentIndex === lastIndex) {
+        //   nextIndex = key === 'down' ? 0 : lastIndex - 1;
+        // }
 
-        element = navItems[nextIndex];
+        element = options[nextIndex];
 
-        // check if the next option is disabled
         if (element?.getAttribute('aria-disabled') === 'true') {
-          // when keying down, set currentIndex either to one after
-          // or reset back to beginning of nav options.
-          // when keying up, set currentIndex to one before activeOption index.
           if (key === 'down') {
             currentIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
           } else {
