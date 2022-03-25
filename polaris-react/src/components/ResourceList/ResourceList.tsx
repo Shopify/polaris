@@ -35,7 +35,7 @@ import {CheckableButton} from '../CheckableButton';
 import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
-const SMALL_SPINNER_HEIGHT = 28;
+const SMALL_SPINNER_HEIGHT = 280;
 const LARGE_SPINNER_HEIGHT = 45;
 
 function getAllItemsOnPage<TItemType>(
