@@ -13,7 +13,7 @@ keywords:
 
 # Combobox
 
-Combobox uses an enahnced text field that allows merchants to filter through a list of options to pick one or more values. The list of options is displayed when a merchant focuses on the field.
+Combobox uses an enhanced text field that allows merchants to filter through a list of options to pick one or more values. The list of options is displayed when a merchant focuses on the field.
 
 ---
 
