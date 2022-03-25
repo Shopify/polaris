@@ -163,7 +163,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   }));
-  const listRef: React.RefObject<HTMLUListElement> = useRef(null);
+  const listRef: React.MutableRefObject<HTMLUListElement | null> =
+    useRef<HTMLUListElement | null>(null);
 
   const handleSelectMode = (selectMode: boolean) => {
     setSelectMode(selectMode);
@@ -708,6 +709,10 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       {Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
+
+  if (!itemsExist) {
+    listRef.current = null;
+  }
 
   // This is probably a legit error but I don't have the time to refactor this
   // eslint-disable-next-line react/jsx-no-constructed-context-values
