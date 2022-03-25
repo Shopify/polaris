@@ -134,6 +134,12 @@ export function isDateBefore(date: Date, dateToCompare: Date) {
   return date.getTime() < dateToCompare.getTime();
 }
 
+export function isDateDisabled(date: Date, datesToCompare: Date[]) {
+  return datesToCompare.some((dateToCompare) => {
+    return date.getTime() === dateToCompare.getTime();
+  });
+}
+
 const WEEKDAYS: number[] = [0, 1, 2, 3, 4, 5, 6];
 
 export function getOrderedWeekdays(weekStartsOn: number): number[] {
