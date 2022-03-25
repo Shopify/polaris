@@ -1,3 +1,4 @@
+---
 ci:
   require:
     - krate/lockfile-upload
@@ -5,7 +6,7 @@ ci:
 production_platform:
   application: polaris
   runtime_ids:
-    - production-unrestricted-x6he
+    - production-unrestricted-7j3k
 
 dependencies:
   override:

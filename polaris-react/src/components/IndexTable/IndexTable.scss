@@ -22,8 +22,8 @@ $breakpoint-small: 458px;
 
 .LoadingContainer-enter-active {
   opacity: 1;
-  transition: opacity var(--p-duration-100) ease-out,
-    transform var(--p-duration-100) ease-out;
+  transition: opacity var(--p-duration-100) var(--p-ease-out),
+    transform var(--p-duration-100) var(--p-ease-out);
   transform: translateY(0);
 }
 
@@ -35,8 +35,8 @@ $breakpoint-small: 458px;
 .LoadingContainer-exit-active {
   opacity: 0;
   transform: translateY(-100%);
-  transition: opacity var(--p-duration-100) ease-in,
-    transform var(--p-duration-100) ease-in;
+  transition: opacity var(--p-duration-100) var(--p-ease-in),
+    transform var(--p-duration-100) var(--p-ease-in);
 }
 
 $loading-panel-height: 53px;
@@ -455,7 +455,7 @@ $scroll-bar-size: var(--p-space-2);
 .ScrollBar::-webkit-scrollbar-thumb {
   border-radius: var(--p-border-radius-1);
   background-color: var(--p-border-neutral-subdued);
-  transition: background-color var(--p-duration-100) ease-out;
+  transition: background-color var(--p-duration-100) var(--p-ease-out);
 }
 
 .ScrollBar:hover::-webkit-scrollbar-thumb {

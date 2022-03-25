@@ -9,7 +9,7 @@ polaris/
 ├── documentation               # Documentation for working in the monorepo
 ├── polaris-for-vscode          # VSCode plugin for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
-└── polaris-shopify-com   # Documentation website
+└── polaris-shopify-com         # Documentation website
 ```
 
 ## Getting Started (One time)

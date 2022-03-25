@@ -70,7 +70,7 @@ $breakpoint: 768px;
   padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color var(--p-duration-200) var(--p-ease-in-out);
 }
 
 .Cell-firstColumn {
