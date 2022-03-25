@@ -70,7 +70,7 @@ If multiple options can be selected, move selected items to the top of the list.
 
 ### Tags autocomplete
 
-The tag multiselect allows merchants to select, create and browse from a long list of options.
+The tag multiselect allows merchants to select, create, and browse from a long list of options.
 
 ---
 
