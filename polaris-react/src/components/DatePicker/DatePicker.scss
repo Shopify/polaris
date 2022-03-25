@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$font-size: 12px;
-
 .DatePicker {
   --pc-date-picker-range-end-border-radius: var(--p-border-radius-6);
   position: relative;
@@ -56,7 +54,7 @@ $font-size: 12px;
   border: none;
   border-radius: var(--p-border-radius-1);
   outline: none;
-  font-size: $font-size;
+  font-size: var(--p-font-size-1);
   text-align: center;
   color: var(--p-text);
   cursor: pointer;
@@ -145,7 +143,7 @@ $font-size: 12px;
 .Weekday {
   padding: var(--p-space-2);
   background: transparent;
-  font-size: $font-size;
+  font-size: var(--p-font-size-1);
   font-weight: var(--p-font-weight-regular);
   color: var(--p-text-subdued);
   text-align: center;

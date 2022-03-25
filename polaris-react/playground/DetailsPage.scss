@@ -11,7 +11,7 @@ $top-bar-height: 56px;
 .ShopName {
   margin-left: 8px;
   font-weight: var(--p-font-weight-semibold);
-  font-size: 14px;
+  font-size: var(--p-font-size-3);
   color: var(--p-text);
 
   @media only screen and (min-width: $nav-collapsed) {
