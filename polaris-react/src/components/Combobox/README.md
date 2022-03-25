@@ -13,7 +13,20 @@ keywords:
 
 # Combobox
 
-The `Combobox` component implements part of the [Aria 1.2 combobox](https://www.w3.org/TR/wai-aria-practices-1.2/#combobox) specs on a TextField and a popover containing a Listbox. Like `Autocomplete`, `Combobox` allows merchants to quickly search through and select from large collections of options.
+Combobox uses an enhanced text field that allows merchants to filter through a list of options to pick one or more values. The list of options is displayed when a merchant focuses on the field.
+
+---
+
+## Anatomy
+
+![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/public_images/components/Combobox/combobox-anatomy.png)
+
+A combobox is made up of the following:
+
+1. **Text field**: The field people click in to activate the popover and filter through the options they can choose from. Once selected, the option will be shown in the text input.
+2. **Popover**: Renders to contain the Listbox.
+3. **Listbox**: Contains the list of all selectable items.
+4. **Listbox** options: The individual options that merchants can select. For context on ways the Listbox can be composed with various content, check out the [listbox documentation](https://polaris.shopify.com/components/forms/listbox).
 
 ---
 
@@ -21,9 +34,10 @@ The `Combobox` component implements part of the [Aria 1.2 combobox](https://www.
 
 The `Combobox` component should:
 
-- Be clearly labeled so it’s noticeable to the merchant what type of options will be available
+- Be clearly labeled so the merchant knows what type of options will be available
 - Not be used within a popover
 - Indicate a loading state to the merchant while option data is being populated
+- Order items in an intentional way so it’s easy for the merchant to find a specific value
 
 ---
 
@@ -33,11 +47,38 @@ The input field for `Combobox` should follow the [content guidelines](https://po
 
 ---
 
+## Sorting and filtering
+
+### Sorting
+
+Item order should be intentional. Order them so it’s easy for the merchant to find a specific value. Some ways you can do this:
+
+- Sort options in alphabetical order
+- Display options based on how frequently the merchant selects an option
+
+If multiple options can be selected, move selected items to the top of the list. If this doesn’t work for your context, you can override this behavior.
+
+### Filtering
+
+- By default, menu items are filtered based on whether or not they match the value of the textfield.
+- Filters are **not** case-sensitive by default.
+- You can apply custom filtering logic if the default behavior doesn’t make sense for your use case.
+
+---
+
+## Patterns
+
+### Tags autocomplete
+
+The tag multiselect allows merchants to select, create, and browse from a long list of options.
+
+---
+
 ## Examples
 
 ### Single select autocomplete
 
-Use to help merchants complete text input quickly from a list of options.
+Allows merchants to select from a predefined list of options. It’s typically used when there are a large number of options to choose from.
 
 ```jsx
 function ComboboxExample() {
@@ -129,7 +170,7 @@ function ComboboxExample() {
 
 ### Multi-select autocomplete
 
-Use to help merchants select multiple options from a list curated by the text input.
+Allows the merchant to select multiple options from a pre-defined list of options.
 
 ```jsx
 function MultiComboboxExample() {
@@ -369,7 +410,6 @@ function LoadingAutocompleteExample() {
 
 - For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
 - For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/lists-and-tables/listbox)
-- [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete) can be used as a convenience wrapper in lieu of `Combobox` and `Listbox`.
 
 ---
 
