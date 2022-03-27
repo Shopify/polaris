@@ -24,15 +24,17 @@ export interface ComboboxListboxType {
   textFieldLabelId?: string;
   // Enables/disables keyboard control
   textFieldFocused?: boolean;
-  // Value of listboxId to avoid calling setListboxId
+  // Unique ID to set on the listbox. Used to set the Combobox aria-owns and TextField aria-controls attributes.
   listboxId?: string;
-  // Sets the value for the TextFields aria-activedescendant.
+  // Whethor or not more options are available to lazy load. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
+  willLoadMoreOptions?: boolean;
+  // Sets the value for the TextField aria-activedescendant attribute.
   setActiveOptionId?(id: string): void;
-  // Sets the value of the listboxId use for the Combobox aria-owns and TextField aria-control
+  // Callback to set a generated listbox ID.
   setListboxId?(id: string): void;
-  // Handler used in Combobox to brings to manage popover state and focus based on multi or single select
+  // Callback fired when an option is selected.
   onOptionSelected?(): void;
-  // Callback to onScrolledToBottom when using keyboard navigation navigates to the last item
+  // Callback fired when using keyboard navigates to the last item. Use to lazy load when listbox option data is paginated.
   onKeyToBottom?(): void;
 }
 

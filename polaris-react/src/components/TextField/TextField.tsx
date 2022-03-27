@@ -76,7 +76,7 @@ interface NonMutuallyExclusiveProps {
   clearButton?: boolean;
   /** Indicates whether or not the entire value should be selected on focus. */
   selectTextOnFocus?: boolean;
-  /** Inline textahead value based on input */
+  /** An inline autocomplete suggestion containing the input value. The characters that complete the input value are selected for ease of deletion on input change or keypress of Backspace/Delete. The selected substring is visually highlighted with subdued styling. */
   suggestion?: string;
   /** Disable editing of the input */
   readOnly?: boolean;
@@ -159,7 +159,7 @@ export function TextField({
   prefix,
   suffix,
   placeholder,
-  value,
+  value = '',
   helpText,
   label,
   labelAction,
@@ -224,13 +224,13 @@ export function TextField({
   }, [focused]);
 
   useEffect(() => {
-    if (!value || !suggestion) return;
-
-    setSelection({
-      start: value.length,
-      end: suggestion.length,
-    });
-  }, [value, suggestion]);
+    if (suggestion && suggestion.includes(value)) {
+      setSelection({
+        start: value.length,
+        end: suggestion.length,
+      });
+    }
+  }, [value, suggestion, setSelection]);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -253,16 +253,10 @@ export function TextField({
     input.setSelectionRange(start, end);
   }, [selection, type]);
 
-  let normalizedValue = '';
-  const typeaheadValue =
-    value && suggestion?.includes(value) && suggestion !== value;
-  if (typeaheadValue) {
+  let normalizedValue = value;
+
+  if (suggestion && selection) {
     normalizedValue = suggestion;
-  } else {
-    // Use a typeof check here as Typescript mostly protects us from non-stringy
-    // values but overzealous usage of `any` in consuming apps means people have
-    // been known to pass a number in, so make it clear that doesn't work.
-    normalizedValue = typeof value === 'string' ? value : '';
   }
 
   const normalizedStep = step != null ? step : 1;
@@ -476,13 +470,9 @@ export function TextField({
     autoFocus,
     value: normalizedValue,
     placeholder,
-    onFocus: handleOnFocus,
-    onBlur,
-    onKeyPress: handleKeyPress,
     style,
     autoComplete,
     className: inputClassName,
-    onChange: handleChange,
     ref: multiline ? textAreaRef : inputRef,
     min,
     max,
@@ -504,6 +494,11 @@ export function TextField({
     'aria-expanded': ariaExpanded,
     'aria-required': requiredIndicator,
     ...normalizeAriaMultiline(multiline),
+    onFocus: handleOnFocus,
+    onBlur,
+    onKeyPress: handleKeyPress,
+    onChange: !suggestion ? handleChange : undefined,
+    onInput: suggestion ? handleChange : undefined,
   });
 
   const backdropClassName = classNames(

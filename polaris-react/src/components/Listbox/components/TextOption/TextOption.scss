@@ -63,10 +63,15 @@ li:first-of-type > .TextOption {
 [data-focused] .TextOption {
   outline: none;
   background-color: var(--p-surface-selected);
+  transition: background-color var(--p-duration-100) ease-in;
+  will-change: background-color;
 }
 
 [data-focused]:not(:focus) .TextOption {
   @include focus-ring($style: 'focused');
+  transition: box-shadow var(--p-duration-100) ease-in,
+    outline var(--p-duration-100) ease-in;
+  will-change: box-shadow, outline;
 }
 
 .Content {

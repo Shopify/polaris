@@ -25,7 +25,9 @@ export interface ComboboxProps {
   children?: React.ReactElement<ListboxProps> | null;
   /** The preferred direction to open the popover */
   preferredPosition?: PopoverProps['preferredPosition'];
-  /** Callback fired when the bottom of the popover content is reached */
+  /** Whethor or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
+  willLoadMoreOptions?: boolean;
+  /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
 }
 
@@ -34,6 +36,7 @@ export function Combobox({
   allowMultiple,
   children,
   preferredPosition = 'below',
+  willLoadMoreOptions,
   onScrolledToBottom,
 }: ComboboxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
@@ -125,6 +128,7 @@ export function Combobox({
       listboxId,
       textFieldLabelId,
       textFieldFocused,
+      willLoadMoreOptions,
       onOptionSelected,
       setActiveOptionId,
       setListboxId,
@@ -134,6 +138,7 @@ export function Combobox({
       listboxId,
       textFieldLabelId,
       textFieldFocused,
+      willLoadMoreOptions,
       onOptionSelected,
       setActiveOptionId,
       setListboxId,

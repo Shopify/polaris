@@ -61,6 +61,7 @@ export function Listbox({
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
   const [resetActiveOption, setResetActiveOption] = useState(false);
+  const [lazyLoading, setLazyLoading] = useState(false);
   const [options, setOptions] = useState<HTMLElement[]>([]);
 
   const {
@@ -78,6 +79,7 @@ export function Listbox({
     listboxId,
     textFieldLabelId,
     textFieldFocused,
+    willLoadMoreOptions,
     setActiveOptionId,
     setListboxId,
     onOptionSelected,
@@ -142,6 +144,13 @@ export function Listbox({
 
   const handleScrollIntoViewDebounced = debounce(handleScrollIntoView, 50);
 
+  const handleKeyToBottom = useCallback(() => {
+    if (onKeyToBottom) {
+      setLazyLoading(true);
+      return Promise.resolve(onKeyToBottom());
+    }
+  }, [onKeyToBottom]);
+
   const handleChangeActiveOption = useCallback(
     (nextOption?: NavigableOption) => {
       if (!nextOption) return;
@@ -149,10 +158,6 @@ export function Listbox({
 
       activeOption?.element.removeAttribute(DATA_ATTRIBUTE);
       nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
-      setActiveOption(nextOption);
-
-      if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
-      if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
 
       if (scrollableRef.current) {
         const visibleListTop = scrollableRef.current.scrollTop;
@@ -168,6 +173,11 @@ export function Listbox({
         if (!isVisible) {
           handleScrollIntoViewDebounced(nextOption);
         }
+
+        setActiveOption(nextOption);
+
+        if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
+        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
       }
     },
     [
@@ -206,32 +216,43 @@ export function Listbox({
         option.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE),
       );
 
-      const listIsLazyLoading =
-        onKeyToBottom && nextOptions.length === options.length + 1;
-
       const listIsUnchanged = nextValues.every((value, index) => {
         return currentValues[index] === value;
       });
 
-      if (listIsUnchanged) return;
+      if (listIsUnchanged) {
+        return;
+      }
 
       setOptions(nextOptions);
 
-      if (listIsLazyLoading) return;
+      if (lazyLoading) {
+        setLazyLoading(false);
+        return;
+      }
 
       setResetActiveOption(true);
     }
   }, [
     children,
+    lazyLoading,
     options,
     activeOption,
     resetActiveOption,
+    willLoadMoreOptions,
     getFirstNavigableOption,
     onKeyToBottom,
   ]);
 
   useLayoutEffect(() => {
     if (loading || options.length === 0) return;
+
+    // console.log(`active option ${activeOption && activeOption?.index}`);
+
+    // console.log(`lazy loading is ${lazyLoading} in reset useEffect hook`);
+    // console.log(
+    //   `reset active option is ${resetActiveOption} in the reset useEffect hook`,
+    // );
 
     if (resetActiveOption) {
       const nextActiveOption = getFirstNavigableOption();
@@ -244,12 +265,15 @@ export function Listbox({
       }
     }
   }, [
+    activeOption,
+    lazyLoading,
     options,
     loading,
     resetActiveOption,
     getFormattedOption,
     getFirstNavigableOption,
     handleChangeActiveOption,
+    handleKeyToBottom,
   ]);
 
   useEffect(() => {
@@ -276,74 +300,66 @@ export function Listbox({
     [handleChangeActiveOption, onSelect, onOptionSelected],
   );
 
+  const getNextIndex = useCallback(
+    (currentIndex: number, lastIndex: number, direction: string) => {
+      let nextIndex;
+
+      if (direction === 'down') {
+        if (currentIndex === lastIndex) {
+          nextIndex = willLoadMoreOptions ? currentIndex + 1 : 0;
+        } else {
+          nextIndex = currentIndex + 1;
+        }
+      } else {
+        nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
+      }
+
+      return nextIndex;
+    },
+    [willLoadMoreOptions],
+  );
+
   const getNextValidOption = useCallback(
-    (key: ArrowKeys) => {
-      const options = getNavigableOptions();
+    async (key: ArrowKeys) => {
       const lastIndex = options.length - 1;
       let currentIndex = activeOption?.index || 0;
       let nextIndex = 0;
       let element = activeOption?.element;
       let totalOptions = -1;
 
-      const disabledItems = options.filter(
-        (item) => item?.getAttribute('aria-disabled') === 'true',
-      );
-
-      const allNavItemsDisabled = disabledItems.length === options.length;
-
-      if (allNavItemsDisabled && !onKeyToBottom) {
-        return {element: undefined, nextIndex: -1};
-      }
-
-      // exit if we've cycled through all nav options
       while (totalOptions++ < lastIndex) {
-        // increment nextIndex to able to find next option
-        if (key === 'down') {
-          nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
-        } else {
-          nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
-        }
-
-        /* when current nav options are all disabled but there is an onScrollToBottom, set nextIndex to either one before current index or one after last index */
-        if (allNavItemsDisabled) {
-          nextIndex = key === 'down' ? lastIndex + 1 : nextIndex - 1;
-        }
-
-        // // when the activeOption is the last nav item,
-        // // set nextIndex to either one before current index
-        // // or resetActiveOption back to beginning of nav options
-        // if (currentIndex === lastIndex) {
-        //   nextIndex = key === 'down' ? 0 : lastIndex - 1;
-        // }
-
+        nextIndex = getNextIndex(currentIndex, lastIndex, key);
         element = options[nextIndex];
+        const triggerLazyLoad = nextIndex >= lastIndex;
+        const isDisabled = element?.getAttribute('aria-disabled') === 'true';
 
-        if (element?.getAttribute('aria-disabled') === 'true') {
-          if (key === 'down') {
-            currentIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
-          } else {
-            currentIndex =
-              nextIndex === lastIndex ? nextIndex : currentIndex - 1;
-          }
+        if (triggerLazyLoad && willLoadMoreOptions) {
+          await handleKeyToBottom();
+        }
 
-          // restart while loop to find next valid option
+        if (isDisabled) {
+          currentIndex = getNextIndex(nextIndex, lastIndex, key);
           continue;
         }
-      }
 
-      if (onKeyToBottom && nextIndex >= lastIndex) {
-        onKeyToBottom();
+        break;
       }
 
       return {element, nextIndex};
     },
-    [activeOption, onKeyToBottom],
+    [
+      options,
+      activeOption,
+      willLoadMoreOptions,
+      getNextIndex,
+      handleKeyToBottom,
+    ],
   );
 
   const handleArrow = useCallback(
-    (type: ArrowKeys, event: KeyboardEvent) => {
-      event.preventDefault();
-      const {element, nextIndex} = getNextValidOption(type);
+    async (type: ArrowKeys, event: KeyboardEvent) => {
+      // event.preventDefault();
+      const {element, nextIndex} = await getNextValidOption(type);
       if (!element) return;
       const nextOption = getFormattedOption(element, nextIndex);
       handleChangeActiveOption(nextOption);
