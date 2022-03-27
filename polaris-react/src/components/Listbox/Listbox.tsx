@@ -154,7 +154,12 @@ export function Listbox({
   const handleChangeActiveOption = useCallback(
     (nextOption?: NavigableOption) => {
       if (!nextOption) return;
-      if (activeOption?.domId === nextOption?.domId) return;
+
+      if (activeOption?.domId === nextOption?.domId) {
+        setActiveOption(nextOption);
+        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
+        return;
+      }
 
       activeOption?.element.removeAttribute(DATA_ATTRIBUTE);
       nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
@@ -202,7 +207,7 @@ export function Listbox({
   );
 
   useEffect(() => {
-    if (children && Children.count(children) > 0) {
+    if (!loading && children && Children.count(children) > 0) {
       const nextOptions = getNavigableOptions();
       const activeOptionIsAction = activeOption?.element.getAttribute(
         LISTBOX_OPTION_ACTION_ATTRIBUTE,
@@ -221,6 +226,13 @@ export function Listbox({
       });
 
       if (listIsUnchanged) {
+        if (
+          activeOptionIsAction &&
+          options.length === 1 &&
+          activeOption?.value !== nextValues[0]
+        ) {
+          setResetActiveOption(true);
+        }
         return;
       }
 
@@ -235,6 +247,7 @@ export function Listbox({
     }
   }, [
     children,
+    loading,
     lazyLoading,
     options,
     activeOption,
@@ -245,15 +258,6 @@ export function Listbox({
   ]);
 
   useLayoutEffect(() => {
-    if (loading || options.length === 0) return;
-
-    // console.log(`active option ${activeOption && activeOption?.index}`);
-
-    // console.log(`lazy loading is ${lazyLoading} in reset useEffect hook`);
-    // console.log(
-    //   `reset active option is ${resetActiveOption} in the reset useEffect hook`,
-    // );
-
     if (resetActiveOption) {
       const nextActiveOption = getFirstNavigableOption();
 
@@ -265,10 +269,6 @@ export function Listbox({
       }
     }
   }, [
-    activeOption,
-    lazyLoading,
-    options,
-    loading,
     resetActiveOption,
     getFormattedOption,
     getFirstNavigableOption,
@@ -295,6 +295,7 @@ export function Listbox({
       if (onOptionSelected) {
         onOptionSelected();
       }
+
       if (onSelect) onSelect(option.value);
     },
     [handleChangeActiveOption, onSelect, onOptionSelected],

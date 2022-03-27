@@ -105,7 +105,7 @@ export const Option = memo(function Option({
       aria-selected={selected}
       aria-disabled={disabled}
       onClick={disabled ? undefined : handleOptionSelect}
-      onKeyUp={disabled ? undefined : handleOptionSelect}
+      onKeyDown={disabled ? undefined : handleOptionSelect}
       onMouseDown={handleMouseDown}
     >
       {contentMarkup}
