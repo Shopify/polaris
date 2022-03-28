@@ -1,6 +1,5 @@
 @import '../../styles/common';
 
-$dropzone-padding: var(--p-space-4);
 $dropzone-border-style: dashed;
 $dropzone-min-height-large: 120px;
 $dropzone-min-height-medium: 100px;
@@ -138,7 +137,7 @@ $dropzone-stacking-order: (
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $dropzone-padding;
+  padding: var(--p-space-4);
   border: var(--p-border-width-1) $dropzone-border-style var(--p-interactive);
   text-align: center;
   color: var(--p-interactive);
