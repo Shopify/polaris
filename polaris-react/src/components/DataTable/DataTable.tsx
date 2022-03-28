@@ -14,6 +14,11 @@ import styles from './DataTable.scss';
 
 export type {SortDirection};
 
+export enum RowType {
+  Totals = 'TOTALS',
+  Footer = 'FOOTER',
+}
+
 export type TableRow =
   | DataTableProps['headings']
   | DataTableProps['rows']
@@ -146,6 +151,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const className = classNames(
       styles.DataTable,
       condensed && styles.condensed,
+      !showTotalsInFooter && styles.ShowTotalsInFooter,
     );
 
     const wrapperClassName = classNames(
@@ -153,16 +159,24 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
     );
 
-    const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
+    const headingMarkup = (
+      <tr className={styles.Stripe}>{headings.map(this.renderHeadings)}</tr>
+    );
 
     const totalsMarkup = totals ? (
-      <tr>{totals.map(this.renderTotals)}</tr>
+      <tr className={this.addStripe(RowType.Totals)}>
+        {totals.map(this.renderTotals)}
+      </tr>
     ) : null;
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
 
     const footerMarkup = footerContent ? (
-      <div className={styles.Footer}>{footerContent}</div>
+      <div
+        className={classNames(styles.Footer, this.addStripe(RowType.Footer))}
+      >
+        {footerContent}
+      </div>
     ) : null;
 
     const headerTotalsMarkup = !showTotalsInFooter ? totalsMarkup : null;
@@ -404,6 +418,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const className = classNames(
       styles.TableRow,
       hoverable && styles.hoverable,
+      this.addStripe(index),
     );
 
     return (
@@ -468,6 +483,30 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     return handleSort;
   };
+
+  private addStripe(row: number | RowType = 0) {
+    const {showTotalsInFooter, totals, rows} = this.props;
+
+    if (row === RowType.Totals) {
+      return showTotalsInFooter && rows.length % 2 !== 0 ? styles.Stripe : '';
+    }
+
+    if (row === RowType.Footer) {
+      return totals && !showTotalsInFooter && rows.length % 2 === 0
+        ? styles.Stripe
+        : '';
+    }
+
+    if (typeof row === 'number') {
+      if (totals && !showTotalsInFooter) {
+        return row % 2 === 0 ? styles.Stripe : '';
+      }
+
+      return row % 2 !== 0 ? styles.Stripe : '';
+    }
+
+    return '';
+  }
 }
 
 export function DataTable(props: DataTableProps) {
