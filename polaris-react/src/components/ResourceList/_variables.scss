@@ -11,7 +11,6 @@ $resource-list-variables: (
   overlay-stacking-order: 3,
   header-overlay-stacking-order: 4,
   spinner-stacking-order: 4,
-  overlay-background: var(--p-overlay),
 );
 
 @function resource-list($variable) {
