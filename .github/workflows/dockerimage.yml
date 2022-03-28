@@ -12,9 +12,9 @@ jobs:
       - name: List files in the repository
         run: ls
       - name: Build the latest Docker image
-        run: echo "docker build . --file Dockerfile --tag shopify/polaris-shopify-com:latest"
+        run: docker build . --file Dockerfile --tag shopify/polaris-shopify-com:latest
       - name: Push the latest Docker image
         run: echo "docker push shopify/polaris-shopify-com:latest"
 defaults:
   run:
-    working-directory: ./polaris-react
+    working-directory: ./polaris.shopify.com
