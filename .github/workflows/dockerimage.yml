@@ -9,11 +9,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Move into polaris-react directory
-        run: cd ${{ github.workspace }}/polaris-react
       - name: List files in the repository
         run: ls
       - name: Build the latest Docker image
         run: echo "docker build . --file Dockerfile --tag shopify/polaris-shopify-com:latest"
       - name: Push the latest Docker image
         run: echo "docker push shopify/polaris-shopify-com:latest"
+defaults:
+  run:
+    working-directory: polaris-react
