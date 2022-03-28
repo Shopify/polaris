@@ -17,4 +17,4 @@ jobs:
         run: echo "docker push shopify/polaris-shopify-com:latest"
 defaults:
   run:
-    working-directory: polaris-react
+    working-directory: ./polaris-react
