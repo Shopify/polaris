@@ -27,7 +27,10 @@ const polarisTokenCustomProperties = Array.from(
 const polarisComponentCustomProperties = /--pc-.+/;
 
 module.exports = {
-  extends: ['@shopify/stylelint-plugin/prettier'],
+  extends: [
+    '@shopify/stylelint-plugin/prettier',
+    './stylelint/plugins/coverage/configs',
+  ],
   plugins: [
     path.join(__dirname, './stylelint/plugins/custom-properties-allowed-list'),
   ],

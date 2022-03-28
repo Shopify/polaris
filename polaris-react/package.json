@@ -45,7 +45,9 @@
     }
   },
   "scripts": {
-    "lint": "loom lint",
+    "lint": "yarn run lint:loom && yarn run lint:styles",
+    "lint:loom": "loom lint",
+    "lint:styles": "stylelint '**/*.scss'",
     "format": "loom lint --fix",
     "type-check": "loom type-check",
     "a11y-check": "node ./scripts/accessibility-check.js",
