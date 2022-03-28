@@ -206,8 +206,8 @@
 }
 
 @mixin plain-button-backdrop {
-  padding: 2px 5px;
-  margin: -2px -5px;
+  padding: var(--p-space-05) 5px;
+  margin: calc(-1 * var(--p-space-05)) -5px;
   background: var(--p-action-secondary-hovered);
   border-radius: var(--p-border-radius-base);
 }
