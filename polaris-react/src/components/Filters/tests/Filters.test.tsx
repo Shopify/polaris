@@ -430,6 +430,37 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
 
+    it('focuses filter toggle when clear button is clicked', () => {
+      const spy = jest.fn();
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
+
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} appliedFilters={appliedFilters} />,
+      );
+
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+
+      const collapsible = resourceFilters.find(Collapsible, {
+        id: 'filterOneCollapsible',
+      });
+      const buttons = collapsible!.findAll(Button);
+
+      // last button
+      const clearButton = buttons.at(-1);
+
+      clearButton!.trigger('onClick');
+
+      expect(document.activeElement).toBe(
+        resourceFilters.find('button', {id: 'filterOneToggleButton'})!.domNode,
+      );
+    });
+
     it('renders a clear button when clearButton is not provided', () => {
       const filters = [
         {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},

@@ -1,4 +1,4 @@
-import React, {Component, createRef} from 'react';
+import React, {Component, createRef, RefObject} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -22,7 +22,6 @@ import {TextField} from '../TextField';
 import {Tag} from '../Tag';
 import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
-import {Focus} from '../Focus';
 // eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
@@ -145,7 +144,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const {resourceName} = this.context;
-    const {open, readyForFocus} = this.state;
+    const {open} = this.state;
 
     const backdropMarkup = open ? (
       <>
@@ -177,6 +176,8 @@ class FiltersInner extends Component<CombinedProps, State> {
 
       const buttonClassName = classNames(styles.FilterTrigger);
 
+      const filterToggleRef = createRef<HTMLButtonElement>();
+
       return (
         <div key={filter.key} className={className}>
           <button
@@ -186,6 +187,7 @@ class FiltersInner extends Component<CombinedProps, State> {
             type="button"
             aria-controls={collapsibleID}
             aria-expanded={filterIsOpen}
+            ref={filterToggleRef}
           >
             <div className={styles.FilterTriggerLabelContainer}>
               <h3 className={styles.FilterTriggerTitle}>
@@ -207,12 +209,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           </button>
           <Collapsible id={collapsibleID} open={filterIsOpen}>
             <div className={styles.FilterNodeContainer}>
-              <Focus
-                disabled={!filterIsOpen || !readyForFocus || !open}
-                root={this.focusNode}
-              >
-                {this.generateFilterMarkup(filter)}
-              </Focus>
+              {this.generateFilterMarkup(filter, filterToggleRef)}
             </div>
           </Collapsible>
         </div>
@@ -549,7 +546,10 @@ class FiltersInner extends Component<CombinedProps, State> {
     return transformedActions;
   }
 
-  private generateFilterMarkup(filter: FilterInterface) {
+  private generateFilterMarkup(
+    filter: FilterInterface,
+    collapsibleButtonRef?: RefObject<HTMLButtonElement>,
+  ) {
     const i18n = this.props.i18n;
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
@@ -557,6 +557,9 @@ class FiltersInner extends Component<CombinedProps, State> {
         ? undefined
         : () => {
             removeCallback(filter.key);
+
+            collapsibleButtonRef?.current &&
+              focusFirstFocusableNode(collapsibleButtonRef.current, false);
           };
 
     const clearButtonMarkup = !filter.hideClearButton && (
