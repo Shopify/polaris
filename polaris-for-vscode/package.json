@@ -1,9 +1,22 @@
 {
   "name": "polaris-for-vscode",
   "displayName": "polaris-for-vscode",
-  "description": "Polaris Design System vscode tooling",
-  "repository": "https://github.com/Shopify/polaris-react",
+  "publisher": "Shopify",
+  "description": "Polaris Design System VSCode extension",
+  "icon": "polaris-for-vscode/docs/polaris-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/polaris"
+  },
+  "homepage": "https://github.com/Shopify/polaris/tree/main/polaris-for-vscode",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
   "version": "0.0.1",
+  "keywords": [
+    "polaris",
+    "shopify"
+  ],
   "engines": {
     "vscode": "^1.64.0"
   },
