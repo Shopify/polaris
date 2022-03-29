@@ -13,6 +13,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced hard coded `transition` values with tokens ([5340](https://github.com/Shopify/polaris/pull/5340/))
 - Replaced hard coded `font-size` and `line-height` values with tokens ([5355](https://github.com/Shopify/polaris/pull/5355/))
 - Replaced hard coded spacing values with tokens ([5364](https://github.com/Shopify/polaris/pull/5364/))
+- Simplified usage of color tokens ([5360](https://github.com/Shopify/polaris/pull/5360/))
 
 ### Bug fixes
 

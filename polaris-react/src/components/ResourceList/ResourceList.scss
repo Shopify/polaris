@@ -47,7 +47,7 @@ $item-wrapper-loading-height: 64px;
 .HeaderWrapper-overlay {
   @include resource-list-overlay;
   z-index: resource-list(header-overlay-stacking-order);
-  background-color: resource-list(overlay-background);
+  background-color: var(--p-overlay);
 }
 
 .FiltersWrapper + .HeaderOuterWrapper {
@@ -231,7 +231,7 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(overlay-stacking-order);
   display: flex;
   justify-content: center;
-  background-color: resource-list(overlay-background);
+  background-color: var(--p-overlay);
 }
 
 .DisabledPointerEvents {

@@ -28,9 +28,8 @@ $Backdrop-opacity: 0.88;
 }
 
 .error {
-  $error-color: var(--p-text-on-critical);
   background: var(--p-action-critical);
-  color: $error-color;
+  color: var(--p-text-on-critical);
 
   .CloseButton {
     fill: var(--p-icon-on-critical);
