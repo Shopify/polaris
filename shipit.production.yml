@@ -7,8 +7,3 @@ production_platform:
   application: polaris
   runtime_ids:
     - production-unrestricted-7j3k
-
-dependencies:
-  override:
-    - yarn install
-    - yarn build

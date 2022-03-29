@@ -43,7 +43,7 @@
       "discard": "Descartar"
     },
     "DataTable": {
-      "sortAccessibilityLabel": "classificar {direction} por",
+      "sortAccessibilityLabel": "ordenar {direction} por",
       "navAccessibilityLabel": "Rolar a tabela uma coluna {direction}",
       "totalsRowHeading": "Totais",
       "totalRowHeading": "Total"

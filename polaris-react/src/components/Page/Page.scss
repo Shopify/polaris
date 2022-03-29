@@ -19,7 +19,6 @@ body {
   // Ensure bottom margins of any children are contained
   &::after {
     content: '';
-    // stylelint-disable-next-line declaration-property-value-disallowed-list
     display: table;
   }
 }

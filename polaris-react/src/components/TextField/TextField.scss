@@ -1,10 +1,7 @@
 @import '../../styles/common';
 
 $textfield-backdrop-offset: calc(-1 * var(--p-border-width-2));
-$backdrop-horizontal-spacing: calc(var(--p-space-2) * 1.5);
-$addon-horizontal-spacing: 0.25em;
 $spinner-icon-size: 12px;
-$prefix-horizontal-spacing: var(--p-space-2);
 
 .TextField {
   --pc-text-field-contents: 20;
@@ -27,8 +24,8 @@ $prefix-horizontal-spacing: var(--p-space-2);
 
   > .Input {
     overflow: auto;
-    padding-left: $backdrop-horizontal-spacing;
-    padding-right: $backdrop-horizontal-spacing;
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
     resize: none;
   }
 }
@@ -50,7 +47,6 @@ $prefix-horizontal-spacing: var(--p-space-2);
 .error {
   .Input::placeholder {
     // This is the only place this color is used.
-    // stylelint-disable-next-line color-no-hex
     color: #9c9798;
   }
 
@@ -94,7 +90,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   min-width: 0;
   min-height: control-height();
   margin: 0;
-  padding: control-vertical-padding() $backdrop-horizontal-spacing;
+  padding: control-vertical-padding() var(--p-space-3);
   background: none;
   border: var(--p-border-transparent);
   font-family: var(--p-font-family-sans);
@@ -189,19 +185,19 @@ $prefix-horizontal-spacing: var(--p-space-2);
 }
 
 .Prefix {
-  margin-left: $backdrop-horizontal-spacing;
-  margin-right: $prefix-horizontal-spacing;
+  margin-left: var(--p-space-3);
+  margin-right: var(--p-space-2);
 }
 
 .Suffix {
-  margin-left: $addon-horizontal-spacing;
-  margin-right: $backdrop-horizontal-spacing;
+  margin-left: var(--p-space-1);
+  margin-right: var(--p-space-3);
 }
 
 .CharacterCount {
   @include text-emphasis-subdued;
   z-index: var(--pc-text-field-contents);
-  margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
+  margin: 0 var(--p-space-3) 0 var(--p-space-1);
   pointer-events: none;
   text-align: right;
 }
@@ -216,7 +212,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
   @include focus-ring;
   @include unstyled-button;
   z-index: var(--pc-text-field-contents);
-  margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
+  margin: 0 var(--p-space-3) 0 var(--p-space-1);
 
   &:focus:enabled {
     @include focus-ring($style: 'focused');
@@ -262,7 +258,7 @@ $prefix-horizontal-spacing: var(--p-space-2);
 
 .DummyInput {
   @include text-style-input;
-  padding: control-vertical-padding() $backdrop-horizontal-spacing;
+  padding: control-vertical-padding() var(--p-space-3);
 
   // We need the following properties in order to have long, unbroken
   // strings wrap in the same way they do in textareas.
