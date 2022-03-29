@@ -7,7 +7,7 @@ const {
   isCustomProperty,
   isRegExp,
   isString,
-} = require('../utils');
+} = require('../../utils');
 
 let ruleName = 'stylelint-polaris/custom-properties-allowed-list';
 
@@ -35,8 +35,8 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 
 /**
  * @typedef {Object} PrimaryOptions
- * @property {AllowedPatterns} allowedProperties
- * @property {{[property: string]: AllowedPatterns}} allowedValues
+ * @property {AllowedPatterns} [allowedProperties]
+ * @property {{[property: string]: AllowedPatterns}} [allowedValues]
  */
 
 module.exports = stylelint.createPlugin(
@@ -95,7 +95,7 @@ module.exports = stylelint.createPlugin(
 );
 
 /**
- * @param {PrimaryOptions['allowedProperties']} allowedProperties
+ * @param {NonNullable<PrimaryOptions['allowedProperties']>} allowedProperties
  * @param {string} prop
  */
 function validateCustomProperties(allowedProperties, prop) {
@@ -111,7 +111,7 @@ function validateCustomProperties(allowedProperties, prop) {
 }
 
 /**
- * @param {PrimaryOptions['allowedValues']} allowedValues
+ * @param {NonNullable<PrimaryOptions['allowedValues']>} allowedValues
  * @param {string} prop
  * @param {string} value
  */
