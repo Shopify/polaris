@@ -61,11 +61,9 @@ module.exports = {
   extends: ['@shopify/stylelint-polaris'],
   plugins: ['@shopify/stylelint-polaris/plugins'],
   rules: {
-    'stylelint-polaris': {
-      // Basically extending `custom-properties-allowed-list` to allow consumers to add their own custom property naming conventions
-      allowedCustomPropertyNames: [],
-      allowedCustomPropertyValues: [],
-      // etc.
+    'stylelint-polaris/custom-properties-allowed-list': {
+      // Extending the allowed Polaris custom properties
+      allowedProperties: [/--my-app-.+/],
     },
   },
 };
