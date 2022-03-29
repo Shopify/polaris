@@ -1,4 +1,4 @@
-const prefix = '@shopify/coverage';
+const prefix = 'stylelint-polaris/coverage';
 
 function namespace(ruleName) {
   return `${prefix}/${ruleName}`;

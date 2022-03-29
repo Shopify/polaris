@@ -165,8 +165,7 @@
   "prettier": "@shopify/prettier-config",
   "stylelint": {
     "extends": [
-      "../stylelint-polaris/configs/internal",
-      "./stylelint/plugins/coverage/configs"
+      "../stylelint-polaris/configs/internal"
     ]
   },
   "size-limit": [

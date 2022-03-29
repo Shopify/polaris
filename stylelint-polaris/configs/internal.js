@@ -15,7 +15,10 @@ const polarisCustomPropertyNames = require('../data/polaris-custom-property-name
 const polarisComponentCustomProperties = /--pc-.+/;
 
 module.exports = {
-  extends: ['@shopify/stylelint-plugin/prettier'],
+  extends: [
+    '@shopify/stylelint-plugin/prettier',
+    '../plugins/coverage/configs',
+  ],
   plugins: ['../plugins/custom-properties-allowed-list'],
   rules: {
     [customPropertiesAllowedListRuleName]: {

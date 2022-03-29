@@ -59,7 +59,7 @@ module.exports = {
       {severity: 'warning'},
     ],
     'scss/function-color-relative': [true, {severity: 'warning'}],
-    '@shopify/coverage/global-disallowed-list': [
+    'stylelint-polaris/coverage/global-disallowed-list': [
       [
         // Custom properties not --p-
         /var\(--(?!pc?-).*/,
