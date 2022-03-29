@@ -39,55 +39,44 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
  * @property {{[property: string]: AllowedPatterns}} allowedValues
  */
 
-/**
- * @typedef {Object} InvalidOptions
- * @property {string[]} invalidProperties
- * @property {string[]} invalidValues
- */
-
 module.exports = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primary */
   (primary) => {
     return (root, result) => {
-      /** @type {InvalidOptions} */
-      const invalidOptions = {
-        invalidProperties: [],
-        invalidValues: [],
-      };
-
       const validOptions = stylelint.utils.validateOptions(
         result,
         ruleName,
         {
           actual: primary.allowedProperties,
-          possible: (options) =>
-            validateAllowedPropertiesOption(options, invalidOptions),
+          possible: isAllowedPatterns,
+          optional: true,
         },
         {
           actual: primary.allowedValues,
-          possible: (options) =>
-            validateAllowedValuesOption(options, invalidOptions),
+          possible: validateAllowedValuesOption,
+          optional: true,
         },
       );
 
       if (!validOptions) {
         throw new Error(
-          `Invalid options were provided to the [${ruleName}] stylelint plugin.\n${JSON.stringify(
-            invalidOptions,
-            null,
-            2,
-          )}\n`,
+          `Invalid options were provided to the [${ruleName}] stylelint plugin.\n`,
         );
       }
+
+      const {allowedProperties = [], allowedValues = {}} = primary;
 
       root.walkDecls((decl) => {
         const prop = decl.prop;
         const value = decl.value;
 
-        const invalidProperty = validateCustomProperties(primary, prop);
+        const invalidProperty = validateCustomProperties(
+          allowedProperties,
+          prop,
+        );
         const invalidValues = validateCustomPropertyValues(
-          primary,
+          allowedValues,
           prop,
           value,
         );
@@ -106,13 +95,13 @@ module.exports = stylelint.createPlugin(
 );
 
 /**
- * @param {PrimaryOptions} primary
+ * @param {PrimaryOptions['allowedProperties']} allowedProperties
  * @param {string} prop
  */
-function validateCustomProperties(primary, prop) {
+function validateCustomProperties(allowedProperties, prop) {
   if (!isCustomProperty(prop)) return;
 
-  const isValid = primary.allowedProperties.some((allowedProperty) => {
+  const isValid = allowedProperties.some((allowedProperty) => {
     return matchesStringOrRegExp(prop, allowedProperty);
   });
 
@@ -122,32 +111,32 @@ function validateCustomProperties(primary, prop) {
 }
 
 /**
- * @param {PrimaryOptions} primary
+ * @param {PrimaryOptions['allowedValues']} allowedValues
  * @param {string} prop
  * @param {string} value
  */
-function validateCustomPropertyValues(primary, prop, value) {
+function validateCustomPropertyValues(allowedValues, prop, value) {
   /** @type {string[]} */
   const invalidValues = [];
 
   const unprefixedProp = vendorUnprefixed(prop);
 
   /** Property key for the allowed values option */
-  const propKey = Object.keys(primary.allowedValues).find((propIdentifier) =>
+  const propKey = Object.keys(allowedValues).find((propIdentifier) =>
     matchesStringOrRegExp(unprefixedProp, propIdentifier),
   );
 
   if (!propKey) return;
 
-  const allowedValues = primary.allowedValues[propKey];
+  const allowedPatterns = allowedValues[propKey];
 
-  if (!allowedValues.length) return;
+  if (!allowedPatterns.length) return;
 
   valueParser(value).walk((node) => {
     if (
       node.type === 'word' &&
       isCustomProperty(node.value) &&
-      !matchesStringOrRegExp(node.value, allowedValues)
+      !matchesStringOrRegExp(node.value, allowedPatterns)
     ) {
       invalidValues.push(node.value);
     }
@@ -162,69 +151,31 @@ module.exports.ruleName = ruleName;
 module.exports.messages = messages;
 
 /**
- * @param {unknown} value
- * @returns {value is string | RegExp}
+ * Validates the input is an array of String or RegExp.
+ * @param {unknown} allowedPatterns
+ * @returns {allowedPatterns is AllowedPatterns}
  */
-function isStringOrRegExp(value) {
-  return isString(value) || isRegExp(value);
+function isAllowedPatterns(allowedPatterns) {
+  if (!Array.isArray(allowedPatterns)) return false;
+
+  for (const pattern of allowedPatterns) {
+    if (!(isString(pattern) || isRegExp(pattern))) return false;
+  }
+
+  return true;
 }
 
 /**
- * @param {AllowedPatterns} allowedArray
+ * @param {unknown} option - `primary.allowedValues` option.
  */
-function validateAllowedOptions(allowedArray) {
-  /** @type {string[]} */
-  const invalidPatterns = [];
+function validateAllowedValuesOption(option) {
+  if (typeof option !== 'object' || option === null) return false;
 
-  let isValid = true;
+  for (const [property, allowedPatterns] of Object.entries(option)) {
+    if (!(isString(property) && isAllowedPatterns(allowedPatterns))) {
+      return false;
+    }
+  }
 
-  allowedArray.forEach((pattern) => {
-    if (isStringOrRegExp(pattern)) return;
-
-    invalidPatterns.push(pattern);
-
-    isValid = false;
-  });
-
-  return /** @type {[boolean, string[]]} */ ([isValid, invalidPatterns]);
-}
-
-/**
- * @param {unknown} option
- * @param {InvalidOptions} invalidOptions
- */
-function validateAllowedPropertiesOption(option, invalidOptions) {
-  const allowedProperties = /** @type {PrimaryOptions['allowedProperties']} */ (
-    option
-  );
-
-  const [isValid, invalidPatterns] = validateAllowedOptions(allowedProperties);
-
-  invalidOptions.invalidProperties = invalidPatterns;
-
-  return isValid;
-}
-
-/**
- * @param {unknown} option
- * @param {InvalidOptions} invalidOptions
- */
-function validateAllowedValuesOption(option, invalidOptions) {
-  const allowedValues = /** @type {PrimaryOptions['allowedValues']} */ (option);
-
-  let isValid = true;
-
-  Object.entries(allowedValues).forEach(([property, values]) => {
-    const [isValidValues, invalidPatterns] = validateAllowedOptions(values);
-
-    if (isString(property) && isValidValues) return;
-
-    invalidOptions.invalidValues.push(
-      `${property}: [${invalidPatterns.join(', ')}]`,
-    );
-
-    isValid = false;
-  });
-
-  return isValid;
+  return true;
 }
