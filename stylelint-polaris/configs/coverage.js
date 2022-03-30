@@ -68,8 +68,6 @@ module.exports = {
     'scss/function-color-relative': [true, {severity: 'warning'}],
     'stylelint-polaris/global-disallowed-list': [
       [
-        // Custom properties not --p-
-        /var\(--(?!pc?-).*/,
         // Legacy Sass API
         'color(',
         'filter(',
