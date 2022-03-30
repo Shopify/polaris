@@ -25,9 +25,9 @@ module.exports = {
   rules: {
     /**
      * Custom property constraints:
-     * - Allow any user defined custom properties.
-     * - Allow `--p-*` Polaris custom properties as values and property overrides.
-     * - Disallow `--pc-` Polaris component custom properties as values and property overrides.
+     * - Allow any user defined custom properties
+     * - Allow `--p-*` Polaris custom properties as values and property overrides
+     * - Disallow `--pc-` Polaris component custom properties as values and property overrides
      */
     [customPropertiesAllowedListRuleName]: [
       {
