@@ -1,3 +1,7 @@
+/**
+ * Internal Stylelint config for @shopify/polaris
+ */
+
 const {
   ruleName: customPropertiesAllowedListRuleName,
 } = require('../plugins/custom-properties-allowed-list');
@@ -14,11 +18,11 @@ const polarisCustomPropertyNames = require('../data/polaris-custom-property-name
  */
 const polarisComponentCustomProperties = /--pc-.+/;
 
+/**
+ * @type {import('stylelint').Config}
+ */
 module.exports = {
-  extends: [
-    '@shopify/stylelint-plugin/prettier',
-    '../plugins/coverage/configs',
-  ],
+  extends: ['./shared'],
   plugins: ['../plugins/custom-properties-allowed-list'],
   rules: {
     [customPropertiesAllowedListRuleName]: {
