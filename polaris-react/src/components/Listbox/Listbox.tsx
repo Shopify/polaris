@@ -196,10 +196,10 @@ export function Listbox({
   const getFormattedOption = useCallback(
     (element: HTMLElement, index: number) => {
       return {
+        element,
         index,
         domId: element.id,
         value: element.getAttribute(LISTBOX_OPTION_VALUE_ATTRIBUTE) || '',
-        element,
         disabled: element.getAttribute('aria-disabled') === 'true',
       };
     },
@@ -339,7 +339,9 @@ export function Listbox({
         }
 
         if (isDisabled) {
-          currentIndex = getNextIndex(nextIndex, lastIndex, key);
+          // currentIndex = getNextIndex(nextIndex, lastIndex, key);
+          currentIndex = nextIndex;
+          element = undefined;
           continue;
         }
 
@@ -359,7 +361,7 @@ export function Listbox({
 
   const handleArrow = useCallback(
     async (type: ArrowKeys, event: KeyboardEvent) => {
-      // event.preventDefault();
+      event.preventDefault();
       const {element, nextIndex} = await getNextValidOption(type);
       if (!element) return;
       const nextOption = getFormattedOption(element, nextIndex);

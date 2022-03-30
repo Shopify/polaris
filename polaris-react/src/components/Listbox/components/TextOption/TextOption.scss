@@ -31,12 +31,6 @@
     background-color: var(--p-surface-pressed);
   }
 
-  &.disabled {
-    background-color: var(--p-surface-disabled);
-    color: var(--p-text-disabled);
-    cursor: default;
-  }
-
   &.selected {
     background-color: var(--p-surface-selected);
   }
@@ -54,20 +48,26 @@
     border-bottom-right-radius: var(--p-border-radius-1);
     transform: translateX(-100%);
   }
+
+  &.disabled {
+    background-color: var(--p-surface-disabled);
+    color: var(--p-text-disabled);
+    cursor: default;
+  }
 }
 
 li:first-of-type > .TextOption {
   margin-top: 0;
 }
 
-[data-focused] .TextOption {
+[data-focused] .TextOption:not(.disabled) {
   outline: none;
   background-color: var(--p-surface-selected);
   transition: background-color var(--p-duration-100) ease-in;
   will-change: background-color;
 }
 
-[data-focused]:not(:focus) .TextOption {
+[data-focused]:not(:focus) .TextOption:not(.disabled) {
   @include focus-ring($style: 'focused');
   transition: box-shadow var(--p-duration-100) ease-in,
     outline var(--p-duration-100) ease-in;

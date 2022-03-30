@@ -111,14 +111,15 @@ const tags = [
 ].sort();
 
 export function Playground() {
-  const [query, setQuery] = useState<string>('');
-  const [suggestion, setSuggestion] = useState<string>('');
+  const [disableAll, setDisableAll] = useState(true)
+  const [query, setQuery] = useState('');
+  const [suggestion, setSuggestion] = useState('');
   const [selectedTags, setSelectedTags] = useState(tags.slice(3, 7));
-  const [filteredTags, setFilteredTags] = useState<string[]>(tags.slice(3, 7));
+  const [filteredTags, setFilteredTags] = useState(tags.slice(3, 7));
 
   const handleSuggestion = useCallback(
     (activeOption) => {
-      if (query) setSuggestion(activeOption);
+      if (query && !activeOption.disabled) setSuggestion(activeOption);
     },
     [query],
   );
@@ -197,6 +198,10 @@ export function Playground() {
     [query],
   );
 
+  const handleDisableAll = useCallback(() => {
+    setDisableAll(disabled => !disabled )
+  }, [disableAll])
+
   const input = (
     <Combobox.TextField
       labelHidden
@@ -229,10 +234,10 @@ export function Playground() {
 
   const optionMarkup =
     filteredTags.length > 0
-      ? filteredTags.map((option) => {
+      ? filteredTags.map((option, index) => {
           return (
-            <Listbox.Option key={option} value={option}>
-              <Listbox.TextOption selected={selectedTags.includes(option)}>
+            <Listbox.Option key={option} value={option} disabled={disableAll || index % 2 === 0}>
+              <Listbox.TextOption selected={selectedTags.includes(option)} disabled={disableAll || index % 2 === 0}>
                 {formatOption(option)}
               </Listbox.TextOption>
             </Listbox.Option>
@@ -254,7 +259,7 @@ export function Playground() {
     ) : null;
 
   return (
-    <Page title="Playground">
+    <Page title="Playground" primaryAction={{content: `Disable all options ${disableAll ? 'on' : 'off'}`, onAction: handleDisableAll}}>
       <Combobox activator={input} allowMultiple>
         {listboxMarkup}
       </Combobox>
