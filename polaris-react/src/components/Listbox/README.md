@@ -10,7 +10,19 @@ keywords:
 
 # Listbox
 
-The `Listbox` component is a list component that implements part of the [Aria 1.2 Listbox specs](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox). It presents a list of options and allows users to select one or more of them. If you need more structure than the standard component offers, use composition to customize the presentation of these lists by using headers or custom elements.
+A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
+
+---
+
+## Anatomy
+
+![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/public_images/components/Listbox/listbox-anatomy.png)
+
+A listbox can be composed of:
+
+1. **Options:** The individual options inside the Listbox that merchants can select or deselect.
+2. **Dividers:** Placed between items and are useful in complex lists when there’s a lot of information for the merchant to parse.
+3. **Section headers:** Used at the begining of a section when it’s necessary to call out the content being displayed. In most cases, the surrounding context should be enough for the merchant to understand the information in the list.
 
 ---
 
@@ -41,6 +53,10 @@ Each item in a `Listbox` should be clear and descriptive.
 - Source
 
 <!-- end -->
+
+## Patterns that use `Listbox`
+
+Location picker
 
 ---
 
@@ -87,11 +103,16 @@ Implementation of a control element used to let merchants take an action
 function ListboxWithActionExample() {
   return (
     <Listbox accessibilityLabel="Listbox with Action example">
-      <Listbox.Action value="ActionValue" divider>
-        <div>Add item</div>
-      </Listbox.Action>
       <Listbox.Option value="UniqueValue-1">Item 1</Listbox.Option>
-      <Listbox.Option value="UniqueValue-2">Item 2</Listbox.Option>
+      <Listbox.Option value="UniqueValue-2" divider>
+        Item 2
+      </Listbox.Option>
+      <Listbox.Action value="ActionValue">
+        <Stack spacing="tight">
+          <Icon source={CirclePlusMinor} color="base" />
+          <div>Add item</div>
+        </Stack>
+      </Listbox.Action>
     </Listbox>
   );
 }
