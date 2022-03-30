@@ -36,8 +36,8 @@
 }
 
 .statusAttention {
-  --pc-badge-component-badge-pip-color: rgb(138, 97, 22);
-  background-color: rgb(255, 234, 138);
+  --pc-badge-component-badge-pip-color: var(--p-icon-attention);
+  background-color: var(--p-surface-attention);
   color: var(--p-text);
 }
 
