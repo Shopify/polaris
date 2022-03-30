@@ -35,6 +35,7 @@ $spinner-icon-size: 12px;
 }
 
 .focus > .Input,
+.focus > .VerticalContent,
 .Input:focus {
   outline: none;
 
@@ -199,6 +200,26 @@ $spinner-icon-size: 12px;
 .Suffix {
   margin-left: var(--p-space-1);
   margin-right: var(--p-space-3);
+}
+
+.VerticalContent {
+  position: relative;
+  z-index: var(--pc-text-field-contents);
+  color: var(--p-text-subdued);
+  user-select: none;
+  padding: var(--p-space-2) var(--p-space-3) var(--p-space-2) var(--p-space-2);
+  max-height: 140px;
+  overflow: scroll;
+  border: 1px solid transparent;
+
+  > .Input {
+    padding-left: var(--p-space-0);
+    padding-bottom: var(--p-space-0);
+  }
+
+  @include breakpoint-after(490px) {
+    max-height: 328px;
+  }
 }
 
 .CharacterCount {

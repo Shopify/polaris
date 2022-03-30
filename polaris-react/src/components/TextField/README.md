@@ -482,6 +482,42 @@ function PrefixExample() {
 
 <!-- /content-for -->
 
+### Text field with vertical content
+
+Use to include custom vertical content above the input value, like selected tags.
+
+```jsx
+function VerticalContent() {
+  const tags = ['Rustic', 'Antique', 'Vinyl', 'Refurbished'];
+  const [textFieldValue, setTextFieldValue] = useState('');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const verticalContentMarkup =
+    tags.length > 0 ? (
+      <Stack spacing="extraTight" alignment="center">
+        {tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </Stack>
+    ) : null;
+
+  return (
+    <TextField
+      label="Tags"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      placeholder="Search tags"
+      autoComplete="off"
+      verticalContent={verticalContentMarkup}
+    />
+  );
+}
+```
+
 ### Text field with connected fields
 
 Use when a text field and several related fields make up a logical unit.

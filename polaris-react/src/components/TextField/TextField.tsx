@@ -52,6 +52,8 @@ interface NonMutuallyExclusiveProps {
   prefix?: React.ReactNode;
   /** Text to display after value */
   suffix?: React.ReactNode;
+  /** Content to vertically display above the input value */
+  verticalContent?: React.ReactNode;
   /** Hint text to display */
   placeholder?: string;
   /** Initial value for the input */
@@ -157,6 +159,7 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
 export function TextField({
   prefix,
   suffix,
+  verticalContent,
   placeholder,
   value = '',
   helpText,
@@ -213,6 +216,7 @@ export function TextField({
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
+  const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
 
   useEffect(() => {
@@ -407,7 +411,7 @@ export function TextField({
     describedBy.push(helpTextID(id));
   }
   if (showCharacterCount) {
-    describedBy.push(`${id}CharacterCounter`);
+    describedBy.push(`${id}-CharacterCounter`);
   }
 
   const labelledBy: string[] = [];
@@ -418,6 +422,10 @@ export function TextField({
 
   if (suffix) {
     labelledBy.push(`${id}-Suffix`);
+  }
+
+  if (verticalContent) {
+    labelledBy.push(`${id}-VerticalContent`);
   }
 
   labelledBy.unshift(labelID(id));
@@ -482,6 +490,19 @@ export function TextField({
     onInput: suggestion ? handleChange : undefined,
   });
 
+  const inputWithVerticalContentMarkup = verticalContent ? (
+    <div
+      className={styles.VerticalContent}
+      id={`${id}-VerticalContent`}
+      ref={verticalContentRef}
+    >
+      {verticalContent}
+      {input}
+    </div>
+  ) : null;
+
+  const inputMarkup = verticalContent ? inputWithVerticalContentMarkup : input;
+
   const backdropClassName = classNames(
     styles.Backdrop,
     connectedLeft && styles['Backdrop-connectedLeft'],
@@ -506,7 +527,7 @@ export function TextField({
           onClick={handleClick}
         >
           {prefixMarkup}
-          {input}
+          {inputMarkup}
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
