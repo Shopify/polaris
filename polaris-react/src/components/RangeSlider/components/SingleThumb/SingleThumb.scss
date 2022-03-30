@@ -164,9 +164,8 @@ $range-output-translate-x: calc(
   -50% + var(--pc-range-slider-output-factor) * var(--pc-range-slider-thumb-size)
 );
 
-$range-output-spacing: var(--p-space-4);
-
 .Output {
+  --pc-range-slider-output-spacing: var(--p-space-4);
   position: absolute;
   z-index: var(--pc-range-slider-output);
   bottom: var(--pc-range-slider-thumb-size);
@@ -208,10 +207,10 @@ $range-output-spacing: var(--p-space-4);
   .Input:hover + .Output &,
   .Input:active + .Output &,
   .Input:focus + .Output & {
-    transform: translateY(-$range-output-spacing);
+    transform: translateY(calc(-1 * var(--pc-range-slider-output-spacing)));
 
     @include page-content-when-not-partially-condensed {
-      transform: translateY(-($range-output-spacing * 0.5));
+      transform: translateY(calc(-1 * (var(--pc-range-slider-output-spacing) * 0.4)));
     }
   }
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
