@@ -191,7 +191,8 @@ $action-menu-rollup-computed-width: 40px;
   display: flex;
   align-content: flex-end;
   flex: 1 1 auto;
-  align-items: baseline;
+  align-items: center;
+  align-self: flex-start;
   justify-content: flex-end;
   margin-left: var(--p-space-4);
   // Necessary for flex to realize this container doesn't want to wrap
