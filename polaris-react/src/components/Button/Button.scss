@@ -467,7 +467,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 1px currentColor;
+      box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
       @include focus-ring($style: 'focused');
     }
 
