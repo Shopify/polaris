@@ -3,7 +3,7 @@
   "description": "Polaris Design System Stylelint tooling",
   "version": "0.0.0",
   "private": false,
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
   "repository": "https://github.com/Shopify/polaris",
   "bugs": {
