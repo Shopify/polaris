@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import 'focus-visible/dist/focus-visible';
 
 import {
   CustomProperties,

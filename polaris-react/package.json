@@ -74,7 +74,6 @@
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-transition-group": "^4.4.2",
-    "focus-visible": "^5.2.0",
     "lodash": "^4.17.4",
     "react-transition-group": "^4.4.2"
   },
