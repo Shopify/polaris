@@ -1,5 +1,12 @@
+/**
+ * Stylelint config to ensure compliance with Polaris and improve coverage.
+ */
+
+/**
+ * @type {import('stylelint').Config}
+ */
 module.exports = {
-  plugins: ['stylelint-scss', '../'],
+  plugins: ['stylelint-scss', '../plugins/global-disallowed-list'],
   rules: {
     'at-rule-disallowed-list': [['keyframes'], {severity: 'warning'}],
     'color-named': ['never', {severity: 'warning'}],
@@ -59,7 +66,7 @@ module.exports = {
       {severity: 'warning'},
     ],
     'scss/function-color-relative': [true, {severity: 'warning'}],
-    '@shopify/coverage/global-disallowed-list': [
+    'stylelint-polaris/global-disallowed-list': [
       [
         // Custom properties not --p-
         /var\(--(?!pc?-).*/,

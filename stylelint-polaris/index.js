@@ -1,1 +1,6 @@
-module.exports = {};
+/**
+ * @type {import('stylelint').Config}
+ */
+module.exports = {
+  extends: ['./configs/shared'],
+};
