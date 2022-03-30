@@ -1,1 +1,1 @@
-modules.exports = {};
+module.exports = {};
