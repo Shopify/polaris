@@ -6,7 +6,7 @@
   "icon": "polaris-for-vscode/docs/polaris-icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Shopify/polaris"
+    "url": "https://github.com/Shopify/polaris.git"
   },
   "homepage": "https://github.com/Shopify/polaris/tree/main/polaris-for-vscode",
   "bugs": {
