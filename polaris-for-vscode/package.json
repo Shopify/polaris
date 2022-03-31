@@ -3,7 +3,7 @@
   "displayName": "polaris-for-vscode",
   "publisher": "Shopify",
   "description": "Polaris Design System VSCode extension",
-  "icon": "polaris-for-vscode/docs/polaris-icon.png",
+  "icon": "docs/polaris-icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Shopify/polaris.git"
