@@ -59,10 +59,26 @@ $breakpoint: 768px;
   }
 }
 
-// stylelint-disable selector-max-class, selector-max-combinators
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
 .TableRow + .TableRow {
   .Cell {
     border-top: var(--p-border-divider);
+  }
+}
+
+.TableRow:last-of-type {
+  .Cell:first-child {
+    border-bottom-left-radius: var(--p-border-radius-2);
+  }
+
+  .Cell:last-child {
+    border-bottom-right-radius: var(--p-border-radius-2);
+  }
+
+  .HasFooter & .Cell,
+  .ShowTotalsInFooter & .Cell {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -100,6 +116,14 @@ $breakpoint: 768px;
   border-top: 0;
   font-weight: var(--p-font-weight-medium);
   font-size: var(--p-font-size-1);
+
+  &:first-of-type {
+    border-top-left-radius: var(--p-border-radius-2);
+  }
+
+  &:last-of-type {
+    border-top-right-radius: var(--p-border-radius-2);
+  }
 }
 
 .Cell-sortable {
@@ -178,8 +202,14 @@ $breakpoint: 768px;
 .Cell-total-footer {
   border-top: var(--p-border-divider);
   border-bottom: none;
-  border-bottom-left-radius: var(--p-border-radius-1);
-  border-bottom-right-radius: var(--p-border-radius-1);
+
+  &:first-child {
+    border-bottom-left-radius: var(--p-border-radius-2);
+  }
+
+  &:last-child {
+    border-bottom-right-radius: var(--p-border-radius-2);
+  }
 }
 
 .Footer {
@@ -187,8 +217,8 @@ $breakpoint: 768px;
   color: var(--p-text-subdued);
   text-align: center;
   border-top: var(--p-border-divider);
-  border-bottom-left-radius: var(--p-border-radius-1);
-  border-bottom-right-radius: var(--p-border-radius-1);
+  border-bottom-left-radius: var(--p-border-radius-2);
+  border-bottom-right-radius: var(--p-border-radius-2);
 
   &.Stripe {
     background: var(--p-surface-subdued);

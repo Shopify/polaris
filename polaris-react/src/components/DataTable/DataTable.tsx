@@ -151,7 +151,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const className = classNames(
       styles.DataTable,
       condensed && styles.condensed,
-      !showTotalsInFooter && styles.ShowTotalsInFooter,
+      showTotalsInFooter && styles.ShowTotalsInFooter,
+      footerContent && styles.HasFooter,
     );
 
     const wrapperClassName = classNames(
