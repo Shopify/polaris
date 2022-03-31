@@ -1,0 +1,7 @@
+dependencies:
+  override:
+    - yarn install
+
+deploy:
+  override:
+    - npm publish stylelint-polaris --tag latest
