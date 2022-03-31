@@ -13,6 +13,13 @@
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
   },
+  "files": [
+    "index.js",
+    "configs/",
+    "data/",
+    "plugins/",
+    "utils/"
+  ],
   "keywords": [
     "shopify",
     "polaris",
