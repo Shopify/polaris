@@ -6,7 +6,7 @@ $off-white-border: rgb(235, 238, 240);
   display: flex;
   height: top-bar-height();
   background: var(--p-surface);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--p-hint-from-direct-light);
 
   .LogoContainer {
     border-right: none;
