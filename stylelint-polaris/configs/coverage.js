@@ -12,20 +12,18 @@ module.exports = {
     'color-named': ['never', {severity: 'warning'}],
     'color-no-hex': [true, {severity: 'warning'}],
     'declaration-property-value-disallowed-list': [
-      [
-        {
-          display: ['grid', 'flex'],
-          top: [/\$.+/],
-          bottom: [/\$.+/],
-          left: [/\$.+/],
-          right: [/\$.+/],
-          width: [/\$.+/],
-          height: [/\$.+/],
-          opacity: [/(?!0|1)\d|[\d.]{2,}/],
-          'z-index': [/(\$.*|-?[0-9]+)/],
-          'font-weight': [/(\$.*|[0-9]+)/],
-        },
-      ],
+      {
+        display: ['grid', 'flex'],
+        top: [/\$.+/],
+        bottom: [/\$.+/],
+        left: [/\$.+/],
+        right: [/\$.+/],
+        width: [/\$.+/],
+        height: [/\$.+/],
+        opacity: [/(?!0|1)\d|[\d.]{2,}/],
+        'z-index': [/(\$.*|-?[0-9]+)/],
+        'font-weight': [/(\$.*|[0-9]+)/],
+      },
       {severity: 'warning'},
     ],
     'function-disallowed-list': [
@@ -68,8 +66,6 @@ module.exports = {
     'scss/function-color-relative': [true, {severity: 'warning'}],
     'stylelint-polaris/global-disallowed-list': [
       [
-        // Custom properties not --p-
-        /var\(--(?!pc?-).*/,
         // Legacy Sass API
         'color(',
         'filter(',
