@@ -88,5 +88,5 @@ yarn workspace @shopify/stylelint-polaris gen-polaris-var
 3. Run `stylelint` on `polaris-react`
 
 ```sh
-yarn workspace @shopify/polaris-react lint:styles
+yarn workspace @shopify/polaris lint:styles
 ```
