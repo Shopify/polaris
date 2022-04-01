@@ -13,7 +13,6 @@ keywords:
   - drop-down menu
   - menu
   - form
-  - combobox
   - combo box
   - choice list
   - choicelist
