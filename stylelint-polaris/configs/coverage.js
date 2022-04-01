@@ -1,24 +1,29 @@
+/**
+ * Stylelint config to ensure compliance with Polaris and improve coverage.
+ */
+
+/**
+ * @type {import('stylelint').Config}
+ */
 module.exports = {
-  plugins: ['stylelint-scss', '../'],
+  plugins: ['stylelint-scss', '../plugins/global-disallowed-list'],
   rules: {
     'at-rule-disallowed-list': [['keyframes'], {severity: 'warning'}],
     'color-named': ['never', {severity: 'warning'}],
     'color-no-hex': [true, {severity: 'warning'}],
     'declaration-property-value-disallowed-list': [
-      [
-        {
-          display: ['grid', 'flex'],
-          top: [/\$.+/],
-          bottom: [/\$.+/],
-          left: [/\$.+/],
-          right: [/\$.+/],
-          width: [/\$.+/],
-          height: [/\$.+/],
-          opacity: [/(?!0|1)\d|[\d.]{2,}/],
-          'z-index': [/(\$.*|-?[0-9]+)/],
-          'font-weight': [/(\$.*|[0-9]+)/],
-        },
-      ],
+      {
+        display: ['grid', 'flex'],
+        top: [/\$.+/],
+        bottom: [/\$.+/],
+        left: [/\$.+/],
+        right: [/\$.+/],
+        width: [/\$.+/],
+        height: [/\$.+/],
+        opacity: [/(?!0|1)\d|[\d.]{2,}/],
+        'z-index': [/(\$.*|-?[0-9]+)/],
+        'font-weight': [/(\$.*|[0-9]+)/],
+      },
       {severity: 'warning'},
     ],
     'function-disallowed-list': [
@@ -59,10 +64,8 @@ module.exports = {
       {severity: 'warning'},
     ],
     'scss/function-color-relative': [true, {severity: 'warning'}],
-    '@shopify/coverage/global-disallowed-list': [
+    'stylelint-polaris/global-disallowed-list': [
       [
-        // Custom properties not --p-
-        /var\(--(?!pc?-).*/,
         // Legacy Sass API
         'color(',
         'filter(',

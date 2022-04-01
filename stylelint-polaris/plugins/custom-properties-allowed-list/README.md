@@ -17,12 +17,12 @@ interface PrimaryOptions {
    * A list of regular expressions or string literals that match custom properties
    * that are allowed to be used.
    */
-  allowedProperties: (string | RegExp)[];
+  allowedProperties?: (string | RegExp)[];
   /**
    * A map of properties and their allowed custom properties represented as a list
    * of regular expressions or string literals.
    */
-  allowedValues: {[property: string]: (string | RegExp)[]};
+  allowedValues?: {[property: string]: (string | RegExp)[]};
 }
 ```
 
@@ -31,7 +31,7 @@ interface PrimaryOptions {
 ```js
 const stylelintConfig = {
   rules: {
-    '@shopify/custom-properties-allowed-list': {
+    'stylelint-polaris/custom-properties-allowed-list': {
       allowedProperties: ['/--pc-.+/'],
       allowedValues: {
         width: ['--p-space-0', '--p-space-1' /* etc... */],

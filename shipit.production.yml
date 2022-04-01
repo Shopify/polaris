@@ -1,9 +1,0 @@
----
-ci:
-  require:
-    - krate/lockfile-upload
-
-production_platform:
-  application: polaris
-  runtime_ids:
-    - production-unrestricted-7j3k

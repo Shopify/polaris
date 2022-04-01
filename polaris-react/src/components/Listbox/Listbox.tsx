@@ -141,14 +141,29 @@ export function Listbox({
 
   const handleScrollIntoView = useCallback(
     (option: NavigableOption, first: boolean) => {
-      if (scrollableRef.current) {
+      if (scrollableRef.current && listboxRef.current) {
         const {element} = option;
         const focusTarget = first
           ? closestParentMatch(element, listboxSectionDataSelector.selector) ||
             element
           : element;
 
-        scrollIntoView(focusTarget, scrollableRef.current);
+        const elementTop = element.offsetTop;
+        const elementBottom = elementTop + element.clientHeight;
+        const viewportTop = scrollableRef.current.scrollTop;
+        const viewportBottom = viewportTop + scrollableRef.current.clientHeight;
+
+        let direction: boolean | undefined;
+        if (elementBottom > viewportBottom) {
+          direction = false;
+        } else if (elementTop < viewportTop) {
+          direction = true;
+        }
+
+        // only scroll into view if the element is outside the scrollable ref window
+        if (typeof direction === 'boolean') {
+          scrollIntoView(focusTarget, scrollableRef.current);
+        }
       }
     },
     [],
@@ -301,7 +316,15 @@ export function Listbox({
     (key: ArrowKeys) => {
       const navItems = getNavigableOptions();
       const lastIndex = navItems.length - 1;
-      let currentIndex = activeOption?.index || 0;
+      const navItem = navItems.find((item) => item.id === activeOption?.domId);
+      let currentIndex;
+
+      if (activeOption && !activeOption.index && navItem) {
+        currentIndex = navItems.indexOf(navItem);
+      } else {
+        currentIndex = activeOption?.index || 0;
+      }
+
       let nextIndex = 0;
       let element = activeOption?.element;
       let totalOptions = -1;
