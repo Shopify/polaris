@@ -7,8 +7,6 @@ on:
     paths:
       - 'polaris-react/**'
   pull_request:
-    branches:
-      - '**'
     paths:
       - 'polaris-react/**'
 
