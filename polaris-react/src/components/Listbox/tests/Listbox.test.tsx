@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {animationFrame, timer} from '@shopify/jest-dom-mocks';
+import {timer} from '@shopify/jest-dom-mocks';
 import {
   mountWithComboboxListContext,
   mountWithListboxProvider,
@@ -485,28 +485,29 @@ describe('<Listbox>', () => {
     });
 
     describe('up arrow', () => {
-      it('scrolls selected option into view when outside scrollable view', () => {
-        animationFrame.mock();
+      it('does not trigger the scroll function when the active option is visible in the scrollable area', () => {
         const scrollBySpy = jest.fn();
         const wrapper = mountWithApp(<MockComponent />);
-        const option3 = wrapper.findAll(Listbox.Option)[2]!;
+        const options = wrapper.findAll(Listbox.Option);
 
-        const scrollable = option3.domNode?.closest(
+        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+
+        const scrollable = options[0].domNode?.closest(
           '[data-polaris-scrollable]',
         )!;
         scrollable.scrollBy = scrollBySpy;
 
         triggerUp(wrapper);
 
-        expect(option3.domNode!.getAttribute('data-focused')).toBe('true');
+        expect(
+          options[options.length - 1].domNode!.getAttribute('data-focused'),
+        ).toBe('true');
+        expect(scrollBySpy).not.toHaveBeenCalled();
 
-        timer.runAllTimers();
+        triggerUp(wrapper);
 
-        animationFrame.runFrame();
-
-        expect(scrollBySpy).toHaveBeenCalled();
-
-        animationFrame.restore();
+        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(scrollBySpy).not.toHaveBeenCalled();
       });
 
       it('moves the data-focused attribute to true of the selected list item', () => {
