@@ -68,3 +68,25 @@ module.exports = {
   },
 };
 ```
+
+## Local development - Polaris react
+
+> Open your terminal to the root of the `polaris` monorepo:
+
+1. Install and symlink dependencies
+
+```sh
+yarn install
+```
+
+2. Generate Polaris custom property names
+
+```sh
+yarn workspace @shopify/stylelint-polaris gen-polaris-var
+```
+
+3. Run `stylelint` on `polaris-react`
+
+```sh
+yarn workspace @shopify/polaris-react lint:styles
+```
