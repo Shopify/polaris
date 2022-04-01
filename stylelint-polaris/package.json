@@ -36,6 +36,7 @@
     "prepublishOnly": "yarn gen-polaris-vars && yarn type-check"
   },
   "dependencies": {
+    "@shopify/stylelint-plugin": "^11.0.0",
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
