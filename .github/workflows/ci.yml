@@ -4,9 +4,6 @@ on:
   push:
     paths:
       - 'polaris-react/**'
-  pull_request:
-    paths:
-      - 'polaris-react/**'
 
 jobs:
   test:
