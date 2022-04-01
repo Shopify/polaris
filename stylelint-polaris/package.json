@@ -31,9 +31,9 @@
   },
   "scripts": {
     "gen-polaris-vars": "node ./scripts/gen-polaris-vars.js",
-    "build": "echo '@shopify/stylelint-polaris does not have a build script.'",
+    "build": "yarn gen-polaris-vars",
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "prepublishOnly": "yarn gen-polaris-vars && yarn type-check"
+    "prepublishOnly": "yarn build && yarn type-check"
   },
   "dependencies": {
     "@shopify/stylelint-plugin": "^11.0.0",
