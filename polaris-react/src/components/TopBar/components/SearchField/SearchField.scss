@@ -81,7 +81,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
   &::placeholder {
     color: var(--p-text);
-    transition: var(--p-duration-150) color var(--p-ease) 33ms;
+    transition: var(--p-duration-150) color var(--p-ease) var(--p-duration-50));
   }
 
   &::-webkit-search-decoration,
@@ -102,7 +102,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   transform: translateY(-50%);
 
   svg {
-    transition: var(--p-duration-150) fill var(--p-ease) 33ms;
+    transition: var(--p-duration-150) fill var(--p-ease) var(--p-duration-50));
   }
 }
 
