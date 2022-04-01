@@ -1,7 +1,7 @@
-ci:
-  require:
-    - 'Test (16.13.0)'
-    - 'Accessibility test'
+# ci:
+#   require:
+#     - 'Test (16.13.0)'
+#     - 'Accessibility test'
 
 merge:
   require:
