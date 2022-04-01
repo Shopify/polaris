@@ -1,4 +1,4 @@
-# Stylelint Polaris (WIP)
+# Stylelint Polaris! (WIP)
 
 ## Experimental package structure
 
