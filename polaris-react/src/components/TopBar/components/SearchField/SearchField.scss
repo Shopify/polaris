@@ -38,7 +38,6 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 .Input:focus {
   ~ .Backdrop {
     @include focus-ring($style: 'focused');
-    background-color: var(--p-surface-search-field);
   }
 
   ~ .BackdropShowFocusBorder {
@@ -51,10 +50,6 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 }
 
 .focused {
-  .Backdrop {
-    background-color: var(--p-surface-search-field);
-  }
-
   .BackdropShowFocusBorder {
     border: 1px solid var(--pc-top-bar-border);
   }
@@ -139,11 +134,6 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(
-    --p-surface-search-field,
-    var(--pc-top-bar-background-lighter)
-  );
-  will-change: background-color;
-  transition: background-color var(--p-duration-200) var(--p-ease);
+  background-color: var(--p-surface-search-field);
   border-radius: var(--p-border-radius-1);
 }
