@@ -66,29 +66,29 @@ $breakpoint: 768px;
   }
 }
 
-.TableRow:last-of-type {
-  .Cell:first-child {
-    border-bottom-left-radius: var(--p-border-radius-2);
-  }
-
-  .Cell:last-child {
-    border-bottom-right-radius: var(--p-border-radius-2);
-  }
-
-  .HasFooter & .Cell,
-  .ShowTotalsInFooter & .Cell {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
-
 .Cell {
-  padding: var(--p-space-2) var(--p-space-4);
+  padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
   transition: background-color var(--p-duration-200) var(--p-ease-in-out);
 
-  .Stripe & {
+  .IncreasedTableDensity & {
+    padding: var(--p-space-2) var(--p-space-4);
+  }
+}
+
+.ZebraStripingOnData {
+  .TableRow:nth-child(2n + 1) .Cell,
+  &.RowCountIsEven .TableRow:nth-child(2n) .Cell,
+  &.ShowTotalsInFooter .TableRow:nth-child(2n) .Cell,
+  &.ShowTotalsInFooter.RowCountIsEven .TableRow:nth-child(2n + 1) .Cell {
+    background: none;
+  }
+
+  .TableRow:nth-child(2n) .Cell,
+  &.RowCountIsEven .TableRow:nth-child(2n + 1) .Cell,
+  &.ShowTotalsInFooter .TableRow:nth-child(2n + 1) .Cell,
+  &.ShowTotalsInFooter.RowCountIsEven .TableRow:nth-child(2n) .Cell {
     background: var(--p-surface-subdued);
   }
 }
@@ -114,21 +114,19 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   border-bottom: var(--p-border-divider);
   border-top: 0;
-  font-weight: var(--p-font-weight-medium);
-  font-size: var(--p-font-size-1);
 
-  &:first-of-type {
-    border-top-left-radius: var(--p-border-radius-2);
-  }
-
-  &:last-of-type {
-    border-top-right-radius: var(--p-border-radius-2);
+  .IncreasedTableDensity & {
+    font-weight: var(--p-font-weight-medium);
+    font-size: var(--p-font-size-1);
   }
 }
 
 .Cell-sortable {
-  padding: var(--p-space-2) var(--p-space-4);
-  margin: var(--p-space-2);
+  padding: 0;
+
+  .IncreasedTableDensity & {
+    padding: var(--p-space-2) var(--p-space-4);
+  }
 }
 
 .Cell-verticalAlignTop {
@@ -163,11 +161,18 @@ $breakpoint: 768px;
   justify-content: flex-end;
   align-items: baseline;
   @include recolor-icon(var(--p-icon));
-  font-weight: var(--p-font-weight-medium);
-  font-size: var(--p-font-size-1);
   color: var(--p-text);
   transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
+  padding: var(--p-space-2);
+  margin: var(--p-space-2);
+
+  .IncreasedTableDensity & {
+    font-weight: var(--p-font-weight-medium);
+    font-size: var(--p-font-size-1);
+    padding: 0;
+    margin: 0;
+  }
 
   &:hover {
     @include recolor-icon(var(--p-interactive-hovered));
@@ -196,7 +201,17 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
+  background: var(--p-surface-subdued);
   border-bottom: var(--p-border-divider);
+
+  .ZebraStripingOnData.ShowTotals & {
+    background: var(--p-surface-subdued);
+  }
+
+  .ZebraStripingOnData.ShowTotals.RowCountIsEven &,
+  .ZebraStripingOnData.ShowTotalsInFooter & {
+    background: none;
+  }
 }
 
 .Cell-total-footer {
@@ -214,13 +229,14 @@ $breakpoint: 768px;
 
 .Footer {
   padding: var(--p-space-4);
+  background: var(--p-surface-subdued);
   color: var(--p-text-subdued);
   text-align: center;
   border-top: var(--p-border-divider);
   border-bottom-left-radius: var(--p-border-radius-2);
   border-bottom-right-radius: var(--p-border-radius-2);
 
-  &.Stripe {
-    background: var(--p-surface-subdued);
+  .ZebraStripingOnData & {
+    background: none;
   }
 }

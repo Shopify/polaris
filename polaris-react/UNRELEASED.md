@@ -19,6 +19,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Increased token coverage by replacing hard coded `border-width` values with tokens, replaced sass var with css custom property, removed unused sass vars, and updated `Banner` Secondary action styles ([5389](https://github.com/Shopify/polaris/pull/5389))
 - Created `icon-attention` and `surface-attention` color tokens ([5389](https://github.com/Shopify/polaris/pull/5389))
 - Increased token coverage by removing unnecessary `transitions` and `animations` with hard coded duration values ([5405](https://github.com/Shopify/polaris/pull/5405/))
+- Added optional visual density updates and zebra striping to `DataTable` ([5365](https://github.com/Shopify/polaris/pull/5365/))
 
 ### Bug fixes
 
