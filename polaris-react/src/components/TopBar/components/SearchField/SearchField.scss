@@ -100,10 +100,6 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   height: $icon-size;
   pointer-events: none;
   transform: translateY(-50%);
-
-  svg {
-    transition: var(--p-duration-150) fill var(--p-ease) var(--p-duration-50);
-  }
 }
 
 .Clear {
