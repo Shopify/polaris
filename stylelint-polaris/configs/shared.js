@@ -6,5 +6,5 @@
  * @type {import('stylelint').Config}
  */
 module.exports = {
-  extends: ['@shopify/stylelint-plugin/prettier', './coverage'],
+  extends: ['./coverage'],
 };
