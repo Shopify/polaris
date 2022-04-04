@@ -17,6 +17,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced hard coded spacing values with tokens ([5364](https://github.com/Shopify/polaris/pull/5364/))
 - Simplified usage of color tokens ([5360](https://github.com/Shopify/polaris/pull/5360/))
 - Increased token coverage by replacing hard coded `border-width` values with tokens, replaced sass var with css custom property, removed unused sass vars, and updated `Banner` Secondary action styles ([5389](https://github.com/Shopify/polaris/pull/5389))
+- Created `icon-attention` color tokens ([5389](https://github.com/Shopify/polaris/pull/5389))
 ### Bug fixes
 
 - Fixed accessibility issues on focus and option create in `Combobox` and `Listbox` ([#5298](https://github.com/Shopify/polaris-react/pull/5298))
