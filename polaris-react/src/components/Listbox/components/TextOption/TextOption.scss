@@ -60,18 +60,18 @@ li:first-of-type > .TextOption {
   margin-top: 0;
 }
 
+// Focused by click
 [data-focused] .TextOption:not(.disabled) {
   outline: none;
   background-color: var(--p-surface-selected);
-  transition: background-color var(--p-duration-100) ease-in;
-  will-change: background-color;
+  transition: background-color var(--p-duration-100) var(--p-ease);
 }
 
+// Focused by keyboard
 [data-focused]:not(:focus) .TextOption:not(.disabled) {
   @include focus-ring($style: 'focused');
-  transition: box-shadow var(--p-duration-100) ease-in,
-    outline var(--p-duration-100) ease-in;
-  will-change: box-shadow, outline;
+  transition: box-shadow var(--p-duration-100) var(--p-ease),
+    outline var(--p-duration-100) var(--p-ease);
 }
 
 .Content {

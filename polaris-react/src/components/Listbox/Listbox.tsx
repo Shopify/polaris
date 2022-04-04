@@ -136,9 +136,33 @@ export function Listbox({
   }, [options]);
 
   const handleScrollIntoView = useCallback((option: NavigableOption) => {
-    if (scrollableRef.current) {
-      const {element} = option;
-      element.scrollIntoView({block: 'nearest'});
+    const {current: scrollable} = scrollableRef;
+
+    if (scrollable) {
+      const listTop = scrollable.scrollTop;
+      const listBottom = listTop + scrollable.clientHeight;
+      const {offsetHeight: optionHeight} = option.element;
+      const {offsetTop: optionTop} = option.element;
+      const optionBottom = optionTop + optionHeight;
+      const isVisible = optionTop > listTop && optionBottom < listBottom;
+
+      if (!isVisible) {
+        if (optionBottom > listBottom) {
+          requestAnimationFrame(() => {
+            scrollable.scrollBy({
+              top: optionBottom + optionHeight * 0.85 - listBottom,
+              behavior: 'smooth',
+            });
+          });
+        } else if (optionTop < listTop) {
+          requestAnimationFrame(() => {
+            scrollable.scrollBy({
+              top: optionTop - optionHeight * 0.15 - listTop,
+              behavior: 'smooth',
+            });
+          });
+        }
+      }
     }
   }, []);
 
@@ -163,27 +187,11 @@ export function Listbox({
 
       activeOption?.element.removeAttribute(DATA_ATTRIBUTE);
       nextOption.element.setAttribute(DATA_ATTRIBUTE, 'true');
+      handleScrollIntoViewDebounced(nextOption);
+      setActiveOption(nextOption);
 
-      if (scrollableRef.current) {
-        const visibleListTop = scrollableRef.current.scrollTop;
-        const visibleListBottom =
-          visibleListTop + scrollableRef.current.clientHeight;
-
-        const optionBottom =
-          nextOption.element.offsetTop + nextOption.element.offsetHeight;
-
-        const isVisible =
-          optionBottom > visibleListTop && optionBottom <= visibleListBottom;
-
-        if (!isVisible) {
-          handleScrollIntoViewDebounced(nextOption);
-        }
-
-        setActiveOption(nextOption);
-
-        if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
-        if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
-      }
+      if (setActiveOptionId) setActiveOptionId(nextOption?.domId);
+      if (onActiveOptionChange) onActiveOptionChange(nextOption.value);
     },
     [
       activeOption,
@@ -292,10 +300,7 @@ export function Listbox({
     (option: NavigableOption) => {
       handleChangeActiveOption(option);
 
-      if (onOptionSelected) {
-        onOptionSelected();
-      }
-
+      if (onOptionSelected) onOptionSelected();
       if (onSelect) onSelect(option.value);
     },
     [handleChangeActiveOption, onSelect, onOptionSelected],
@@ -421,17 +426,17 @@ export function Listbox({
     keyboardEventsEnabled || textFieldFocused ? (
       <>
         <KeypressListener
-          keyEvent="keydown"
+          keyEvent="keyup"
           keyCode={Key.DownArrow}
           handler={handleDownArrow}
         />
         <KeypressListener
-          keyEvent="keydown"
+          keyEvent="keyup"
           keyCode={Key.UpArrow}
           handler={handleUpArrow}
         />
         <KeypressListener
-          keyEvent="keydown"
+          keyEvent="keyup"
           keyCode={Key.Enter}
           handler={handleEnter}
         />
