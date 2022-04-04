@@ -10,6 +10,7 @@ import {
   rollupPlugins,
 } from '@shopify/loom-plugin-build-library';
 import {eslint} from '@shopify/loom-plugin-eslint';
+import {stylelint} from '@shopify/loom-plugin-stylelint';
 import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
@@ -37,7 +38,9 @@ export default createPackage((pkg) => {
     }),
     buildLibraryWorkspace(),
     eslint(),
+    stylelint({files: '**/*.scss'}),
     prettier({files: '**/*.{md,json,yaml,yml}'}),
+    stylelintAdjustmentsPlugin(),
     rollupAdjustPluginsPlugin(),
     rollupAdjustOutputPlugin(),
     jestAdjustmentsPlugin(),
@@ -68,6 +71,20 @@ function jestAdjustmentsPlugin() {
           ...transforms,
           '\\.s?css$': require.resolve('./config/jest-transform-style'),
           '\\.svg$': require.resolve('./config/jest-transform-image'),
+        }));
+      });
+    });
+  });
+}
+
+function stylelintAdjustmentsPlugin() {
+  return createWorkspacePlugin('Polaris.Stylelint', ({tasks: {lint}}) => {
+    lint.hook(({hooks}) => {
+      hooks.configure.hook((configure) => {
+        // Modify the maximum number of allowed warnings from the default of 0
+        configure.stylelintFlags?.hook((flags) => ({
+          ...flags,
+          maxWarnings: Infinity,
         }));
       });
     });
