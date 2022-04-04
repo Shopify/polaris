@@ -47,12 +47,6 @@ type InputMode =
   | 'email'
   | 'url';
 
-interface Selection {
-  start: number;
-  end: number;
-  direction?: 'forward' | 'backward' | 'none';
-}
-
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
@@ -148,12 +142,17 @@ interface NonMutuallyExclusiveProps {
   onBlur?(): void;
 }
 
+export type MutuallyExclusiveSelectionProps =
+  | {suggestion?: string; selectTextOnFocus?: undefined}
+  | {suggestion?: undefined; selectTextOnFocus?: true};
+
 export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
     | {onChange(value: string, id: string): void}
-  );
+  ) &
+  MutuallyExclusiveSelectionProps;
 
 export function TextField({
   prefix,
@@ -173,7 +172,7 @@ export function TextField({
   error,
   connectedRight,
   connectedLeft,
-  type,
+  type = 'text',
   name,
   id: idProp,
   role,
@@ -197,7 +196,7 @@ export function TextField({
   requiredIndicator,
   monospaced,
   selectTextOnFocus,
-  suggestion = '',
+  suggestion,
   onClearButtonClick,
   onChange,
   onFocus,
@@ -206,7 +205,6 @@ export function TextField({
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
-  const [selection, setSelection] = useState<Selection | null>(null);
   const isAfterInitial = useIsAfterInitialMount();
 
   const id = useUniqueId('TextField', idProp);
@@ -224,15 +222,6 @@ export function TextField({
   }, [focused]);
 
   useEffect(() => {
-    if (suggestion && suggestion.includes(value)) {
-      setSelection({
-        start: value.length,
-        end: suggestion.length,
-      });
-    }
-  }, [value, suggestion, setSelection]);
-
-  useEffect(() => {
     const input = inputRef.current;
     const isSupportedInputType =
       type === 'text' ||
@@ -241,24 +230,14 @@ export function TextField({
       type === 'url' ||
       type === 'password';
 
-    if (
-      !input ||
-      !isSupportedInputType ||
-      selection === null ||
-      selection === undefined
-    )
+    if (!input || !isSupportedInputType || !suggestion) {
       return;
+    }
 
-    const {start, end} = selection;
-    input.setSelectionRange(start, end);
-  }, [selection, type]);
+    input.setSelectionRange(value.length, suggestion.length);
+  }, [focus, value, type, suggestion]);
 
-  let normalizedValue = value;
-
-  if (suggestion && selection) {
-    normalizedValue = suggestion;
-  }
-
+  const normalizedValue = suggestion ? suggestion : value;
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
@@ -434,11 +413,11 @@ export function TextField({
   const labelledBy: string[] = [];
 
   if (prefix) {
-    labelledBy.push(`${id}Prefix`);
+    labelledBy.push(`${id}-Prefix`);
   }
 
   if (suffix) {
-    labelledBy.push(`${id}Suffix`);
+    labelledBy.push(`${id}-Suffix`);
   }
 
   labelledBy.unshift(labelID(id));
@@ -453,9 +432,11 @@ export function TextField({
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (selectTextOnFocus) {
-      inputRef.current?.select();
+    if (selectTextOnFocus && !suggestion) {
+      const input = multiline ? textAreaRef.current : inputRef.current;
+      input?.select();
     }
+
     if (onFocus) {
       onFocus(event);
     }

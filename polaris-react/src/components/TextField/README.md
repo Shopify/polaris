@@ -789,7 +789,7 @@ function TextFieldWithMonospacedFontExample() {
 }
 ```
 
-### Text field with the ability to select all text on focus
+### Text field with value selected on focus
 
 <!-- example-for: web -->
 
@@ -810,6 +810,54 @@ function TextFieldWithSelectTextOnFocusExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       selectTextOnFocus
+    />
+  );
+}
+```
+
+### Text field with the suggestion
+
+<!-- example-for: web -->
+
+Use to provide an autocomplete suggestion inline with the input value.
+
+```jsx
+function TextFieldWithSuggestionExample() {
+  const [value, setValue] = useState('');
+  const [suggestion, setSuggestion] = useState('');
+
+  const suggestions = [
+    'Ethel',
+    'Lucy',
+    'Ricky',
+    'Fred',
+  ]
+
+  const handleSuggestion = useCallback((nextValue) => {
+    const nextSuggestion = suggestions.find((suggestion) => {
+      return suggestion.toLowerCase().startsWith(nextValue.toLowerCase())
+    })
+
+    if (nextSuggestion) setSuggestion(nextSuggestion)
+  },[])
+
+  useEffect(() => {
+    if (value !== suggestion) handleSuggestion(value);
+  },[value]);
+
+  const handleChange = useCallback((value) => {
+    setValue(value);
+    setSuggestion('');
+  },[]);
+
+  return (
+    <TextField
+      focused
+      type="text"
+      label="Customer"
+      value={value}
+      onChange={handleChange}
+      suggestion={suggestion}
     />
   );
 }

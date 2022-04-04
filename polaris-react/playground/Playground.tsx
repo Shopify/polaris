@@ -50,9 +50,11 @@ function ComboboxNoOptionsDisabled() {
 
   const handleSuggestion = useCallback(
     (activeOption) => {
-      if (query && !activeOption.disabled) setSuggestion(activeOption);
+      if (query && !selectedTags.includes(activeOption)) {
+        setSuggestion(activeOption);
+      }
     },
-    [query],
+    [query, selectedTags],
   );
 
   const handleFilterOptions = useCallback(
@@ -86,9 +88,12 @@ function ComboboxNoOptionsDisabled() {
     handleFilterOptions(query);
   }, [query, handleFilterOptions]);
 
-  const handleActiveOptionChange = useCallback((option) => {
-    setSuggestion(option);
-  }, []);
+  const handleActiveOptionChange = useCallback(
+    (option) => {
+      handleSuggestion(option);
+    },
+    [handleSuggestion],
+  );
 
   const handleSelect = useCallback(
     (selected) => {
@@ -215,9 +220,11 @@ function ComboboxSomeOptionsDisabled() {
 
   const handleSuggestion = useCallback(
     (activeOption) => {
-      if (query && !activeOption.disabled) setSuggestion(activeOption);
+      if (query && !selectedTags.includes(activeOption)) {
+        setSuggestion(activeOption);
+      }
     },
-    [query],
+    [query, selectedTags],
   );
 
   const handleFilterOptions = useCallback(
@@ -251,9 +258,12 @@ function ComboboxSomeOptionsDisabled() {
     handleFilterOptions(query);
   }, [query, handleFilterOptions]);
 
-  const handleActiveOptionChange = useCallback((option) => {
-    setSuggestion(option);
-  }, []);
+  const handleActiveOptionChange = useCallback(
+    (option) => {
+      handleSuggestion(option);
+    },
+    [handleSuggestion],
+  );
 
   const handleSelect = useCallback(
     (selected) => {
@@ -387,9 +397,11 @@ function ComboboxAllOptionsDisabled() {
 
   const handleSuggestion = useCallback(
     (activeOption) => {
-      if (query && !activeOption.disabled) setSuggestion(activeOption);
+      if (query && !selectedTags.includes(activeOption)) {
+        setSuggestion(activeOption);
+      }
     },
-    [query],
+    [query, selectedTags],
   );
 
   const handleFilterOptions = useCallback(
@@ -423,9 +435,12 @@ function ComboboxAllOptionsDisabled() {
     handleFilterOptions(query);
   }, [query, handleFilterOptions]);
 
-  const handleActiveOptionChange = useCallback((option) => {
-    setSuggestion(option);
-  }, []);
+  const handleActiveOptionChange = useCallback(
+    (option) => {
+      handleSuggestion(option);
+    },
+    [handleSuggestion],
+  );
 
   const handleSelect = useCallback(
     (selected) => {

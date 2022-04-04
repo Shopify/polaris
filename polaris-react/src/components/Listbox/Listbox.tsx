@@ -147,21 +147,16 @@ export function Listbox({
       const isVisible = optionTop > listTop && optionBottom < listBottom;
 
       if (!isVisible) {
+        let top = 0;
         if (optionBottom > listBottom) {
-          requestAnimationFrame(() => {
-            scrollable.scrollBy({
-              top: optionBottom + optionHeight * 0.85 - listBottom,
-              behavior: 'smooth',
-            });
-          });
+          top = optionBottom + optionHeight * 0.85 - listBottom;
         } else if (optionTop < listTop) {
-          requestAnimationFrame(() => {
-            scrollable.scrollBy({
-              top: optionTop - optionHeight * 0.15 - listTop,
-              behavior: 'smooth',
-            });
-          });
+          top = optionTop - optionHeight * 0.15 - listTop;
         }
+
+        requestAnimationFrame(() => {
+          scrollable.scrollBy({top, behavior: 'smooth'});
+        });
       }
     }
   }, []);
@@ -426,17 +421,17 @@ export function Listbox({
     keyboardEventsEnabled || textFieldFocused ? (
       <>
         <KeypressListener
-          keyEvent="keyup"
+          keyEvent="keydown"
           keyCode={Key.DownArrow}
           handler={handleDownArrow}
         />
         <KeypressListener
-          keyEvent="keyup"
+          keyEvent="keydown"
           keyCode={Key.UpArrow}
           handler={handleUpArrow}
         />
         <KeypressListener
-          keyEvent="keyup"
+          keyEvent="keydown"
           keyCode={Key.Enter}
           handler={handleEnter}
         />
