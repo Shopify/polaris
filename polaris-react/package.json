@@ -148,7 +148,6 @@
     "last 1 firefoxandroid versions",
     "ios >= 13.4"
   ],
-  "prettier": "@shopify/prettier-config",
   "size-limit": [
     {
       "name": "cjs",
