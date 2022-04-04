@@ -2,6 +2,11 @@ name: CI
 
 on:
   push:
+    branches:
+      - 'main'
+    paths:
+      - 'polaris-react/**'
+  pull_request:
     paths:
       - 'polaris-react/**'
 

@@ -1,7 +1,7 @@
 {
   "name": "@shopify/stylelint-polaris",
   "description": "Polaris Design System Stylelint tooling",
-  "version": "0.0.0-alpha.3",
+  "version": "0.0.0-alpha.4",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -31,11 +31,12 @@
   },
   "scripts": {
     "gen-polaris-vars": "node ./scripts/gen-polaris-vars.js",
-    "build": "echo '@shopify/stylelint-polaris does not have a build script.'",
+    "build": "yarn gen-polaris-vars",
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "prepublishOnly": "yarn gen-polaris-vars && yarn type-check"
+    "prepublishOnly": "yarn build && yarn type-check"
   },
   "dependencies": {
+    "@shopify/stylelint-plugin": "^11.0.0",
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
