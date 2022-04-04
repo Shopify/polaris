@@ -2051,13 +2051,6 @@
     common-ancestor-path "^1.0.1"
     rollup-plugin-node-externals "^2.2.0"
 
-"@shopify/loom-plugin-eslint@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-eslint/-/loom-plugin-eslint-2.0.0.tgz#135a30fded12d6e7f325529dfeba5e09d08ff272"
-  integrity sha512-8Uf3pyS1iGIMEh4xjQOBlwVAnV+0FOUPvlLEe2dITCqi1zO0VzfRj0pT1lsQwkwyhUebqNXEPho2ARsybwCp7Q==
-  dependencies:
-    "@shopify/loom" "^1.0.1"
-
 "@shopify/loom-plugin-jest@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-jest/-/loom-plugin-jest-1.0.0.tgz#58b0b003ff50d0fa79420ae878dee02577358989"
@@ -2068,13 +2061,6 @@
     jest "^27.2.4"
     jest-watch-typeahead "^1.0.0"
 
-"@shopify/loom-plugin-prettier@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-prettier/-/loom-plugin-prettier-2.0.0.tgz#fc13bdd6b5c69735517f9fac3fa132516bc9ef2f"
-  integrity sha512-zs+bShodNV9Qx8IyVPLbMtvO3uXhh8ARWGGbAQQQX51Brp4q5SgtUQ1hZWVfsUiMjh++YMMiFtt0+Xcx/Rp41g==
-  dependencies:
-    "@shopify/loom" "^1.0.1"
-
 "@shopify/loom-plugin-rollup@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-rollup/-/loom-plugin-rollup-1.0.0.tgz#25cce3f102514530272d008682374ec37861149e"
@@ -2082,13 +2068,6 @@
   dependencies:
     "@shopify/loom" "^1.0.0"
     rollup "^2.48.0"
-
-"@shopify/loom-plugin-stylelint@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/loom-plugin-stylelint/-/loom-plugin-stylelint-2.0.0.tgz#8716daca516473ef3ee965d64b6afba9a013493c"
-  integrity sha512-LSaIlZAM8hucqt5B6Q559Myq0wuWkOmTNvFr0ESrWTQcEXNHbxfJx99QwqZitNB1XyVpR8BJsDOw3VAlFm2uzA==
-  dependencies:
-    "@shopify/loom" "^1.0.1"
 
 "@shopify/loom-plugin-typescript@^1.0.0":
   version "1.0.0"
@@ -2098,7 +2077,7 @@
     "@shopify/loom" "^1.0.0"
     typescript "^4.3.5"
 
-"@shopify/loom@^1.0.0", "@shopify/loom@^1.0.1":
+"@shopify/loom@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/loom/-/loom-1.0.1.tgz#d56a50570f3e445ac40ad1962a6f0a5a67b28a12"
   integrity sha512-FpL77FrqlYYXUbx04ELQQmXWN4+hZ9aYwmxCVWcH0CR9bOuLSizYiiAjNhp1/fB6IJjOGctofT+NJ6xEQ/DYlQ==
