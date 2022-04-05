@@ -7,7 +7,7 @@ import {
   OSColorSchemes,
 } from '../../tokens';
 
-const defaultCustomProperties = `
+const defaultRules = `
   ${getColorSchemeDeclarations('light', tokens, osColorSchemes)}
   ${getStaticCustomProperties(tokens)}
 `;
@@ -47,7 +47,10 @@ export function getColorSchemeRules(
  */
 export function getStaticCustomProperties(tokens: Tokens) {
   return Object.entries(tokens)
-    .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
+    .filter(
+      ([tokenGroup]) =>
+        !(tokenGroup === 'colorSchemes' || tokenGroup === 'keyframes'),
+    )
     .map(([_, tokens]) => getCustomProperties(tokens))
     .join('');
 }
@@ -76,9 +79,23 @@ export function getCustomProperties(tokens: TokenGroup) {
 }
 
 /**
+ * Concatenates the `keyframes` token-group into a single string.
+ */
+export function getKeyframes(tokens: Tokens) {
+  const [, keyframes] = Object.entries(tokens).find((token) => {
+    const [tokenGroup] = token as [keyof Tokens, Tokens[keyof Tokens]];
+
+    return tokenGroup === 'keyframes';
+  }) as [string, TokenGroup];
+
+  return Object.values(keyframes).join('');
+}
+
+/**
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
  */
 export const styles = `
-  :root{${defaultCustomProperties}}
+  :root{${defaultRules}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
+  ${getKeyframes(tokens)}
 `;

@@ -1,0 +1,3 @@
+{
+  "fade-in": "@keyframes p-fade-in { to { opacity: 1 } }"
+}
