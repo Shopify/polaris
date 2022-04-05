@@ -11,12 +11,6 @@
   @return map-get($data, $height);
 }
 
-@keyframes fillup {
-  0% {
-    width: 0;
-  }
-}
-
 .ProgressBar {
   overflow: hidden;
   width: 100%;
@@ -72,7 +66,7 @@
 
 .Animated {
   will-change: width;
-  animation: fillup var(--p-duration-500) var(--p-ease);
+  animation: p-fill-up var(--p-duration-500) var(--p-ease);
   transition: width var(--p-duration-500) var(--p-ease);
 }
 

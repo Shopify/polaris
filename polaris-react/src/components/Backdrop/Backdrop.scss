@@ -9,7 +9,7 @@ $entry-iterations: 1;
   left: 0;
   display: block;
   background-color: var(--p-backdrop);
-  animation: fade-in var(--p-duration-200) $entry-iterations forwards;
+  animation: p-fade-in var(--p-duration-200) $entry-iterations forwards;
   opacity: 1;
   will-change: opacity;
 }
@@ -20,14 +20,4 @@ $entry-iterations: 1;
 
 .belowNavigation {
   z-index: var(--p-z-7);
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
