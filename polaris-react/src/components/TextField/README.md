@@ -68,7 +68,7 @@ Text fields should:
 
 The autocomplete attribute in an `input` field controls two types of browser behavior:
 
-1.  **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
+1. **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
 
 - Autofill is an important feature for our users. Google has found that ["users complete forms up to 30% faster"](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en) when using autofill.
 - The WHATWG has a list of supported autofill values for the `autocomplete` attribute. [Review the section "4.10.18.7 Autofill"](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for all the input types and their corresponding autocomplete attribute values.
@@ -819,36 +819,31 @@ function TextFieldWithSelectTextOnFocusExample() {
 
 <!-- example-for: web -->
 
-Use to provide an autocomplete suggestion inline with the input value.
+Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
 
 ```jsx
 function TextFieldWithSuggestionExample() {
+  const suggestions = ['Ethel', 'Lucy', 'Ricky', 'Fred'];
+
   const [value, setValue] = useState('');
   const [suggestion, setSuggestion] = useState('');
 
-  const suggestions = [
-    'Ethel',
-    'Lucy',
-    'Ricky',
-    'Fred',
-  ]
-
   const handleSuggestion = useCallback((nextValue) => {
-    const nextSuggestion = suggestions.find((suggestion) => {
-      return suggestion.toLowerCase().startsWith(nextValue.toLowerCase())
-    })
+    const nextSuggestion = suggestions.find((suggestion) =>
+      suggestion.toLowerCase().startsWith(nextValue.toLowerCase()),
+    );
 
-    if (nextSuggestion) setSuggestion(nextSuggestion)
-  },[])
+    if (nextSuggestion) setSuggestion(nextSuggestion);
+  }, []);
 
   useEffect(() => {
     if (value !== suggestion) handleSuggestion(value);
-  },[value]);
+  }, [value]);
 
   const handleChange = useCallback((value) => {
     setValue(value);
     setSuggestion('');
-  },[]);
+  }, []);
 
   return (
     <TextField
