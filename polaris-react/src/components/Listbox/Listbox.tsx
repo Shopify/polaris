@@ -409,12 +409,7 @@ export function Listbox({
       if (enableKeyboardControl) return;
       disableKeyboardEvents();
     },
-    [
-      enableKeyboardControl,
-      keyboardEventsEnabled,
-      disableKeyboardEvents,
-      handleChangeActiveOption,
-    ],
+    [enableKeyboardControl, keyboardEventsEnabled, disableKeyboardEvents],
   );
 
   const listeners =

@@ -231,7 +231,7 @@ describe('<Listbox>', () => {
         );
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
@@ -417,7 +417,7 @@ describe('<Listbox>', () => {
         );
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
@@ -433,7 +433,7 @@ describe('<Listbox>', () => {
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
@@ -447,19 +447,19 @@ describe('<Listbox>', () => {
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
@@ -479,8 +479,8 @@ describe('<Listbox>', () => {
         expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
-          triggerEnter(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
+          await Promise.resolve(triggerEnter(wrapper));
         });
 
         expect(options[1].domNode!.getAttribute('data-focused')).toBeNull();
@@ -500,7 +500,7 @@ describe('<Listbox>', () => {
         );
 
         await wrapper.act(async () => {
-          triggerDown(wrapper);
+          await Promise.resolve(triggerDown(wrapper));
         });
 
         expect(setActiveOptionIdSpy).not.toHaveBeenCalled();
@@ -521,7 +521,7 @@ describe('<Listbox>', () => {
         window.HTMLElement.prototype.scrollBy = scrollSpy;
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         timer.runAllTimers();
@@ -545,13 +545,13 @@ describe('<Listbox>', () => {
         expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
@@ -564,7 +564,7 @@ describe('<Listbox>', () => {
         const options = wrapper.findAll(Listbox.Option);
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
@@ -572,7 +572,7 @@ describe('<Listbox>', () => {
         );
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
@@ -587,10 +587,10 @@ describe('<Listbox>', () => {
         expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
-          triggerUp(wrapper);
-          triggerUp(wrapper);
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
+          await Promise.resolve(triggerUp(wrapper));
+          await Promise.resolve(triggerUp(wrapper));
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
@@ -608,13 +608,13 @@ describe('<Listbox>', () => {
         const options = wrapper.findAll(Listbox.Option);
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
-          triggerUp(wrapper);
+          await Promise.resolve(triggerUp(wrapper));
         });
 
         expect(options[1].domNode!.getAttribute('data-focused')).toBeNull();
@@ -628,7 +628,7 @@ describe('<Listbox>', () => {
         const options = wrapper.findAll(Listbox.Option);
 
         await wrapper.act(async () => {
-          triggerEnter(wrapper);
+          await Promise.resolve(triggerEnter(wrapper));
         });
 
         expect(onSelect).toHaveBeenCalledWith(
@@ -647,7 +647,7 @@ describe('<Listbox>', () => {
 
       const option = wrapper.find(Listbox.Option);
       await wrapper.act(async () => {
-        triggerDown(wrapper);
+        await Promise.resolve(triggerDown(wrapper));
       });
 
       expect(setActiveOptionIdSpy).toHaveBeenCalledWith(option!.domNode!.id);
@@ -660,7 +660,7 @@ describe('<Listbox>', () => {
       });
 
       await wrapper.act(async () => {
-        triggerEnter(wrapper);
+        await Promise.resolve(triggerEnter(wrapper));
       });
 
       expect(onOptionSelectedSpy).toHaveBeenCalled();
@@ -681,7 +681,7 @@ describe('<Listbox>', () => {
       expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
 
       await wrapper.act(async () => {
-        triggerUp(wrapper);
+        await Promise.resolve(triggerUp(wrapper));
       });
 
       expect(onKeyToBottomSpy).toHaveBeenCalled();
