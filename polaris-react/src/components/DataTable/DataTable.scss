@@ -181,8 +181,9 @@ $breakpoint: 768px;
 
     .Icon {
       opacity: 1;
+
       svg {
-        fill: var(--p-text-subdued);
+        fill: var(--p-icon-disabled);
       }
     }
   }
@@ -192,8 +193,9 @@ $breakpoint: 768px;
 
     .Icon {
       opacity: 1;
+
       svg {
-        fill: var(--p-text-subdued);
+        fill: var(--p-icon-disabled);
       }
     }
   }
@@ -207,14 +209,11 @@ $breakpoint: 768px;
 .Cell-sorted {
   .Icon {
     opacity: 1;
-
   }
 
   .Heading:focus:not(:active) {
-    .Icon {
-      svg {
-        fill: var(--p-icon);
-      }
+    svg {
+      fill: var(--p-icon);
     }
   }
 }
