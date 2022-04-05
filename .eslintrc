@@ -10,6 +10,9 @@
   "settings": {
     "react": {
       "version": "16.8"
+    },
+    "next": {
+      "rootDir": "polaris.shopify.com"
     }
   },
   "rules": {
@@ -95,6 +98,13 @@
         "react/react-in-jsx-scope": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
         "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": ["polaris.shopify.com/next-env.d.ts"],
+      "rules": {
+        "@typescript-eslint/triple-slash-reference": "off",
+        "spaced-comment": "off"
       }
     }
   ]
