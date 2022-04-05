@@ -1,3 +1,7 @@
 {
-  "fade-in": "@keyframes p-fade-in { to { opacity: 1 } }"
+  "fade-in": "@keyframes p-fade-in { to { opacity: 1; } }",
+  "spin": "@keyframes p-spin { to { transform: rotate(1turn); } }",
+  "fillup": "@keyframes p-fillup { 0% { width: 0; } }",
+  "bounce": "@keyframes p-bounce { from, 65%, 85% { transform: scale(1); } 75% { transform: scale(0.85); } 82.5% { transform: scale(1.05); } }",
+  "pulse": "@keyframes pulse { from, 75% { transform: scale(0.85); opacity: 1; } to { transform: scale(2.5); opacity: 0; } }"
 }
