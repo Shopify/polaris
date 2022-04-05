@@ -110,6 +110,8 @@
   "surface-success-subdued-hovered": "rgba(31, 58, 48, 1)",
   "surface-success-subdued-pressed": "rgba(35, 65, 54, 1)",
   "text-success": "rgba(88, 173, 142, 1)",
+  "icon-attention": "rgba(138, 97, 22)",
+  "surface-attention": "rgba(255, 234, 138)",
   "decorative-one-icon": "rgba(255, 186, 67, 1)",
   "decorative-one-surface": "rgba(142, 102, 9, 1)",
   "decorative-one-text": "rgba(255, 255, 255, 1)",

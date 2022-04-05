@@ -16,7 +16,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  border: 1px solid transparent;
+  border: var(--p-border-transparent);
   width: 100%;
   max-width: $search-max-width;
 }
@@ -42,7 +42,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   ~ .BackdropShowFocusBorder {
-    border: 1px solid var(--pc-top-bar-border);
+    border: var(--p-border-width-1) solid var(--pc-top-bar-border);
   }
 
   ~ .Icon {
@@ -56,7 +56,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   .BackdropShowFocusBorder {
-    border: 1px solid var(--pc-top-bar-border);
+    border: var(--p-border-width-1) solid var(--pc-top-bar-border);
   }
 
   .Icon {
