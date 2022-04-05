@@ -1,5 +1,4 @@
 import React from 'react';
-import {act} from 'react-dom/test-utils';
 import {mountWithApp} from 'tests/utilities';
 import {animationFrame, timer} from '@shopify/jest-dom-mocks';
 import {
