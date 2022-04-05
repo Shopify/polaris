@@ -404,7 +404,8 @@ export function Listbox({
     (event: React.FocusEvent) => {
       event.stopPropagation();
       if (keyboardEventsEnabled) {
-        handleChangeActiveOption();
+        // handleChangeActiveOption();
+        setResetActiveOption(true);
       }
       if (enableKeyboardControl) return;
       disableKeyboardEvents();
