@@ -16,11 +16,20 @@
     "build:react": "yarn workspace @shopify/polaris build",
     "dev:site": "yarn workspace polaris-shopify-com dev",
     "start:site": "yarn workspace polaris-shopify-com start",
-    "build:site": "yarn workspace polaris-shopify-com build"
+    "build:site": "yarn workspace polaris-shopify-com build",
+    "lint": "yarn run lint:eslint && yarn run lint:stylelint && yarn run lint:prettier",
+    "lint:eslint": "eslint . --max-warnings 0 --cache --cache-location '.loom/cache/eslint'",
+    "lint:stylelint": "yarn workspace '@shopify/stylelint-polaris' run gen-polaris-vars && stylelint '**/*.scss'",
+    "lint:prettier": "prettier '**/*.{md,json,yaml,yml}' --check"
   },
   "devDependencies": {
+    "@shopify/eslint-plugin": "^41.0.1",
     "@shopify/prettier-config": "^1.1.2",
+    "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
+    "eslint": "^8.3.0",
+    "prettier": "^2.5.0",
+    "stylelint": "^14.1.0",
     "typescript": ">=3.0.0"
   },
   "prettier": "@shopify/prettier-config"

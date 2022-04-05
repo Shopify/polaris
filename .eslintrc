@@ -59,10 +59,10 @@
   },
   "overrides": [
     {
-      "files": ["src/**/*.{ts,tsx}"],
+      "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./polaris-react/tsconfig.json"
       },
       "rules": {
         "@typescript-eslint/prefer-readonly": "off",
@@ -81,7 +81,7 @@
       }
     },
     {
-      "files": ["playground/*.tsx"],
+      "files": ["polaris-react/playground/*.tsx"],
       "rules": {
         "react/prefer-stateless-function": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
