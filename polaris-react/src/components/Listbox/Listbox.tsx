@@ -403,13 +403,18 @@ export function Listbox({
   const handleBlur = useCallback(
     (event: React.FocusEvent) => {
       event.stopPropagation();
-      if (keyboardEventsEnabled) {
+      if (keyboardEventsEnabled && !resetActiveOption) {
         setResetActiveOption(true);
       }
       if (enableKeyboardControl) return;
       disableKeyboardEvents();
     },
-    [enableKeyboardControl, keyboardEventsEnabled, disableKeyboardEvents],
+    [
+      resetActiveOption,
+      enableKeyboardControl,
+      keyboardEventsEnabled,
+      disableKeyboardEvents,
+    ],
   );
 
   const listeners =
