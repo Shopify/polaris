@@ -156,9 +156,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
       totals && styles.ShowTotals,
       showTotalsInFooter && styles.ShowTotalsInFooter,
-      rowCountIsEven && styles.RowCountIsEven,
       increasedTableDensity && styles.IncreasedTableDensity,
       hasZebraStripingOnData && styles.ZebraStripingOnData,
+      hasZebraStripingOnData && rowCountIsEven && styles.RowCountIsEven,
     );
 
     const wrapperClassName = classNames(

@@ -171,7 +171,7 @@ $breakpoint: 768px;
     font-weight: var(--p-font-weight-medium);
     font-size: var(--p-font-size-1);
     padding: 0;
-    padding-left: var(--p-space-1);
+    padding-right: var(--p-space-1);
     margin: 0;
   }
 
@@ -181,17 +181,19 @@ $breakpoint: 768px;
 
     .Icon {
       opacity: 1;
+      svg {
+        fill: var(--p-text-subdued);
+      }
     }
   }
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
-    color: var(--p-interactive-hovered);
 
     .Icon {
       opacity: 1;
       svg {
-        fill: var(--p-surface-subdued);
+        fill: var(--p-text-subdued);
       }
     }
   }
@@ -205,6 +207,15 @@ $breakpoint: 768px;
 .Cell-sorted {
   .Icon {
     opacity: 1;
+
+  }
+
+  .Heading:focus:not(:active) {
+    .Icon {
+      svg {
+        fill: var(--p-icon);
+      }
+    }
   }
 }
 
