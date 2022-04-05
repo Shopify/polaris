@@ -1,5 +1,5 @@
-import React from "react";
-import type { NextPage } from "next";
+import React from 'react';
+import type {NextPage} from 'next';
 import {
   AppProvider,
   Page,
@@ -8,8 +8,8 @@ import {
   Layout,
   Link,
   Thumbnail,
-} from "@shopify/polaris";
-import en from "@shopify/polaris/locales/en.json";
+} from '@shopify/polaris';
+import en from '@shopify/polaris/locales/en.json';
 
 const Home: NextPage = () => {
   return (
@@ -19,17 +19,17 @@ const Home: NextPage = () => {
           <Layout.Section>
             <Banner
               action={{
-                content: "Review risk analysis",
-                url: "https://www.shopify.com/",
+                content: 'Review risk analysis',
+                url: 'https://www.shopify.com/',
               }}
               title="High risk of fraud detected"
               status="critical"
             >
               <p>
-                Before fulfilling this order or capturing payment, please{" "}
+                Before fulfilling this order or capturing payment, please{' '}
                 <Link url="https://www.shopify.com/">
                   review the Risk Analysis
-                </Link>{" "}
+                </Link>{' '}
                 and determine if this order is fradulent.
               </p>
             </Banner>
@@ -38,9 +38,9 @@ const Home: NextPage = () => {
             <Card
               title="Order details"
               secondaryFooterActions={[
-                { content: "Cancel shipment", destructive: true },
+                {content: 'Cancel shipment', destructive: true},
               ]}
-              primaryFooterAction={{ content: "Add tracking number" }}
+              primaryFooterAction={{content: 'Add tracking number'}}
             >
               <Card.Section title="Unfulfilled">
                 <Thumbnail
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
                 />
                 <p>Black choker</p>
               </Card.Section>
-              <Card.Section></Card.Section>
+              <Card.Section />
             </Card>
           </Layout.Section>
           <Layout.Section secondary>

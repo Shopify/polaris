@@ -23,6 +23,7 @@
     "lint:prettier": "prettier '**/*.{md,json,yaml,yml}' --check"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.4",
     "@shopify/eslint-plugin": "^41.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",

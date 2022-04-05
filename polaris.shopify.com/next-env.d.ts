@@ -1,3 +1,5 @@
+/* eslint-disable spaced-comment, @typescript-eslint/triple-slash-reference */
+
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
 
