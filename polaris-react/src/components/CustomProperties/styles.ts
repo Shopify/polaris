@@ -81,14 +81,10 @@ export function getCustomProperties(tokens: TokenGroup) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-export function getKeyframes(tokens: Tokens) {
-  const [, keyframes] = Object.entries(tokens).find((token) => {
-    const [tokenGroup] = token as [keyof Tokens, Tokens[keyof Tokens]];
-
-    return tokenGroup === 'keyframes';
-  }) as [string, TokenGroup];
-
-  return Object.values(keyframes).join('');
+export function getKeyframes(keyframes: TokenGroup) {
+  return Object.entries(keyframes)
+    .map(([name, value]) => `@keyframes p-${name}${value}`)
+    .join('');
 }
 
 /**
@@ -97,5 +93,5 @@ export function getKeyframes(tokens: Tokens) {
 export const styles = `
   :root{${defaultRules}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
-  ${getKeyframes(tokens)}
+  ${getKeyframes(tokens.keyframes)}
 `;

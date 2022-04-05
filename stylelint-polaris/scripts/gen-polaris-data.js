@@ -2,12 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const getCustomPropertyNames = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
+const getKeyframeNames = require('../../polaris-react/scripts/utilities/getKeyframeNames');
 
 const dirPath = path.join(__dirname, '../data');
-const outFile = 'polaris-custom-property-names.js';
-const filePath = path.join(dirPath, outFile);
 
 const polarisCustomPropertyNames = getCustomPropertyNames();
+const polarisKeyframeNames = getKeyframeNames();
 
 try {
   if (!fs.existsSync(dirPath)) {
@@ -15,8 +15,13 @@ try {
   }
 
   fs.writeFileSync(
-    filePath,
+    path.join(dirPath, 'polaris-custom-property-names.js'),
     `module.exports = ${JSON.stringify(polarisCustomPropertyNames)};`,
+  );
+
+  fs.writeFileSync(
+    path.join(dirPath, 'polaris-keyframe-names.js'),
+    `module.exports = ${JSON.stringify(polarisKeyframeNames)};`,
   );
 } catch (err) {
   throw new Error(
