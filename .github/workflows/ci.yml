@@ -1,6 +1,14 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'polaris-react/**'
+  pull_request:
+    paths:
+      - 'polaris-react/**'
 
 jobs:
   test:
