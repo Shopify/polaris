@@ -65,7 +65,7 @@ function ComboboxNoOptionsDisabled() {
       }
 
       const nextFilteredTags = tags.filter((option) =>
-        option.startsWith(query),
+        option.toLowerCase().startsWith(query.toLowerCase()),
       );
 
       setFilteredTags(nextFilteredTags);
@@ -235,7 +235,7 @@ function ComboboxSomeOptionsDisabled() {
       }
 
       const nextFilteredTags = tags.filter((option) =>
-        option.startsWith(query),
+        option.toLowerCase().startsWith(query.toLowerCase()),
       );
 
       setFilteredTags(nextFilteredTags);
@@ -413,7 +413,7 @@ function ComboboxAllOptionsDisabled() {
       }
 
       const nextFilteredTags = tags.filter((option) =>
-        option.startsWith(query),
+        option.toLowerCase().startsWith(query.toLowerCase()),
       );
 
       setFilteredTags(nextFilteredTags);

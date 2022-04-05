@@ -815,7 +815,7 @@ function TextFieldWithSelectTextOnFocusExample() {
 }
 ```
 
-### Text field with the suggestion
+### Text field with inline suggestion
 
 <!-- example-for: web -->
 
