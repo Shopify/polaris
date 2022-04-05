@@ -1,5 +1,3 @@
-/* Multiselect playground */
-
 import React, {useState, useCallback, useEffect} from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
@@ -312,6 +310,7 @@ function ComboboxSomeOptionsDisabled() {
       type="text"
       autoComplete="on"
       ariaAutocomplete="list"
+      helpText="Note this example is only here to demonstrate that disabled options are not be navigable and skipped when navigable options are present"
       onChange={handleInputChange}
     />
   );
@@ -489,6 +488,7 @@ function ComboboxAllOptionsDisabled() {
       type="text"
       autoComplete="on"
       ariaAutocomplete="list"
+      helpText="Note this example is only here to demonstrate that disabled options are not be navigable"
       onChange={handleInputChange}
     />
   );
