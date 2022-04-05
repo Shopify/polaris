@@ -50,13 +50,18 @@ describe('useIndexResourceState', () => {
     });
 
     it('accepts initial selected resources', () => {
-      const initialResources = ['1'];
+      const selectedId = '1';
+      const resources = [{id: selectedId}];
+      const initialSelectedResources = [selectedId];
       const mockComponent = mountWithApp(
-        <MockComponent options={{selectedResources: initialResources}} />,
+        <MockComponent
+          resources={resources}
+          options={{selectedResources: initialSelectedResources}}
+        />,
       );
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
-        selectedResources: initialResources,
+        selectedResources: initialSelectedResources,
       });
     });
 
@@ -215,6 +220,24 @@ describe('useIndexResourceState', () => {
           selectedResources: [],
         });
       });
+
+      it('deselects resources that are removed from resource list', () => {
+        const id = '1';
+        const resources = [{id}];
+        const mockComponent = mountWithApp(
+          <MockComponent resources={resources} />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Single, true, id);
+
+        mockComponent.setProps({resources: []});
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [],
+        });
+      });
     });
 
     describe('SelectionType.All', () => {
@@ -297,9 +320,13 @@ describe('useIndexResourceState', () => {
 
     describe('SelectionType.Multi', () => {
       it('has no effect is selection is undefined', () => {
-        const selectedResources = ['1', '2'];
+        const idOne = '1';
+        const idTwo = '2';
+        const idThree = '3';
+        const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+        const selectedResources = [idOne, idTwo];
         const mockComponent = mountWithApp(
-          <MockComponent options={{selectedResources}} />,
+          <MockComponent resources={resources} options={{selectedResources}} />,
         );
 
         mockComponent

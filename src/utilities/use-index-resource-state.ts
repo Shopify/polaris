@@ -1,4 +1,4 @@
-import {useState, useCallback} from 'react';
+import {useState, useCallback, useEffect} from 'react';
 
 export enum SelectionType {
   All = 'all',
@@ -94,6 +94,13 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     },
     [allResourcesSelected, resources, resourceIDResolver],
   );
+
+  useEffect(() => {
+    const resourceIds = resources.map((resource) => resource.id);
+    setSelectedResources((oldSelectedResources) =>
+      oldSelectedResources.filter((item) => resourceIds.includes(item)),
+    );
+  }, [resources.length]);
 
   return {selectedResources, allResourcesSelected, handleSelectionChange};
 }
