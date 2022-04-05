@@ -68,6 +68,7 @@ li:first-of-type > .TextOption {
 }
 
 // Focused by keyboard
+// stylelint-disable-next-line selector-max-specificity
 [data-focused]:not(:focus) .TextOption:not(.disabled) {
   @include focus-ring($style: 'focused');
   transition: box-shadow var(--p-duration-100) var(--p-ease),
