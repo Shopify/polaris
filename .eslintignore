@@ -4,7 +4,3 @@ node_modules
 /polaris-react/build-internal
 /polaris.shopify.com/.next
 /stylelint-polaris/data
-
-
-# These folders should pass linting, remove these lines and fix the errors
-/polaris.shopify.com
