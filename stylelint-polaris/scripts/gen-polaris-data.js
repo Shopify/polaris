@@ -24,5 +24,5 @@ try {
     `module.exports = ${JSON.stringify(polarisKeyframeNames)};`,
   );
 } catch (err) {
-  throw new Error(`Could not create custom properties file ${err}`);
+  throw new Error(`Failed to generate Polaris data: ${err}`);
 }
