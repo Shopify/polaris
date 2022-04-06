@@ -29,8 +29,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ### Bug fixes
 
-- Fixed accessibility issues on focus and option create in `Combobox` and `Listbox` ([#5298](https://github.com/Shopify/polaris-react/pull/5298))
-- Fixed accessibility issues and logic to set active descendant in `Listbox` ([#5297](https://github.com/Shopify/polaris-react/pull/5297))
+- Fixed accessibility issues on focus and option create in `Combobox` and `Listbox` ([#5298](https://github.com/Shopify/polaris/pull/5298))
+- Fixed accessibility issues and logic to set active descendant in `Listbox` ([#5297](https://github.com/Shopify/polaris/pull/5297))
 - Fixed alignment of right-hand side of `Header` in `Page` ([#5390](https://github.com/Shopify/polaris/pull/5390))
 - Fixed `disabled` `Listbox.TextOption` not setting `disabled` on the `Checkbox` rendered when `allowMultiple` is `true` ([#5428](https://github.com/Shopify/polaris/pull/5428))
 
