@@ -8,15 +8,7 @@
     "sourceMap": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    ".vscode-test"
-  ],
-  "references": [
-    { "path": "./client" },
-    { "path": "./server" }
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", ".vscode-test"],
+  "references": [{"path": "./client"}, {"path": "./server"}]
 }
