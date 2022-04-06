@@ -10,6 +10,9 @@
   "settings": {
     "react": {
       "version": "16.8"
+    },
+    "next": {
+      "rootDir": "polaris.shopify.com"
     }
   },
   "rules": {
@@ -59,10 +62,10 @@
   },
   "overrides": [
     {
-      "files": ["src/**/*.{ts,tsx}"],
+      "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./polaris-react/tsconfig.json"
       },
       "rules": {
         "@typescript-eslint/prefer-readonly": "off",
@@ -81,11 +84,27 @@
       }
     },
     {
-      "files": ["playground/*.tsx"],
+      "files": ["polaris-react/playground/*.tsx"],
       "rules": {
         "react/prefer-stateless-function": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
         "@shopify/react-initialize-state": "off"
+      }
+    },
+    {
+      "files": ["polaris.shopify.com/**/*"],
+      "extends": "plugin:@next/eslint-plugin-next/recommended",
+      "rules": {
+        "react/react-in-jsx-scope": "off",
+        "@shopify/jsx-no-hardcoded-content": "off",
+        "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": ["polaris.shopify.com/next-env.d.ts"],
+      "rules": {
+        "@typescript-eslint/triple-slash-reference": "off",
+        "spaced-comment": "off"
       }
     }
   ]

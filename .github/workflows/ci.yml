@@ -1,14 +1,10 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'polaris-react/**'
   pull_request:
-    paths:
-      - 'polaris-react/**'
+    branches: ['**']
+  push:
+    branches: [main, polaris-release]
 
 jobs:
   test:
@@ -24,10 +20,22 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
 
+      - uses: actions/cache@v2
+        name: Restore build cache
+        with:
+          path: |
+            .loom
+            polaris-react/.loom
+            polaris-react/build/ts/latest
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
+
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run validate-tokens
-      - run: yarn workspace @shopify/polaris run type-check && yarn run build
-      - run: yarn workspace @shopify/polaris run lint
+      - run: yarn run build
+      - run: yarn run lint
       - run: yarn workspace @shopify/polaris run test
 
   accessibility_test:
@@ -39,6 +47,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
+
+      - uses: actions/cache@v2
+        name: Restore build cache
+        with:
+          path: |
+            polaris-react/build-internal/cache
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-accessibility-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node-version }}-accessibility-test-v1-
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
@@ -57,6 +74,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
+
+      - uses: actions/cache@v2
+        name: Restore build cache
+        with:
+          path: |
+            polaris-react/build-internal/cache
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-visual-regression-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node-version }}-visual-regression-test-v1-
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
