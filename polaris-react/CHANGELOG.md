@@ -41,7 +41,7 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ### Code quality
 
-- Replace `calc()` with space token equivalent ([#5295](https://github.com/Shopify/polaris-react/pull/5295))
+- Replace `calc()` with space token equivalent ([#5295](https://github.com/Shopify/polaris/pull/5295))
 
 ## 9.2.3 - 2022-03-22
 
