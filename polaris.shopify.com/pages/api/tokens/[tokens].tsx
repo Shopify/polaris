@@ -1,24 +1,26 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import fetch from "node-fetch";
+import type {NextApiRequest, NextApiResponse} from 'next';
+import fetch from 'node-fetch';
 
-type TokenObject = { [key: string]: string };
+interface TokenObject {
+  [key: string]: string;
+}
 
 /**
  * List of token groups
  */
-export const colorSchemeMap: { [key: string]: string } = {
-  light: "color.light",
-  dark: "color.dark",
+export const colorSchemeMap: {[key: string]: string} = {
+  light: 'color.light',
+  dark: 'color.dark',
 };
 
 export const nonColorSchemeTokenGroups = [
-  "depth",
-  "legacy-tokens",
-  "motion",
-  "shape",
-  "spacing",
-  "typography",
-  "z-index",
+  'depth',
+  'legacy-tokens',
+  'motion',
+  'shape',
+  'spacing',
+  'typography',
+  'z-index',
 ];
 
 /**
@@ -26,7 +28,7 @@ export const nonColorSchemeTokenGroups = [
  */
 export const getGithubUrl = (
   tokenGroup: string,
-  isRaw: boolean
+  isRaw: boolean,
 ): string | null => {
   const tokenGroupIsValid =
     nonColorSchemeTokenGroups.includes(tokenGroup) ||
@@ -37,8 +39,8 @@ export const getGithubUrl = (
   }
 
   const fileName = `${tokenGroup}.json`;
-  const githubUrl = "https://github.com/Shopify/polaris/blob";
-  const rawUrl = "https://raw.githubusercontent.com/Shopify/polaris";
+  const githubUrl = 'https://github.com/Shopify/polaris/blob';
+  const rawUrl = 'https://raw.githubusercontent.com/Shopify/polaris';
 
   if (isRaw)
     return `${rawUrl}/v9.0.0-major/src/tokens/token-groups/${fileName}`;
@@ -50,10 +52,10 @@ export const getGithubUrl = (
  * Format the token data into: css or json
  */
 const formatTokenGroup = (
-  data: { [tokenName: string]: string },
-  format: string
+  data: {[tokenName: string]: string},
+  format: string,
 ) => {
-  if (format === "css") {
+  if (format === 'css') {
     return Object.keys(data)
       .reduce((result: string[], key: string) => {
         const cssVariable = `--${key}: ${data[key]};`;
@@ -62,27 +64,27 @@ const formatTokenGroup = (
 
         return result;
       }, [])
-      .join("\n");
+      .join('\n');
   }
 
   return data;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const formatParam = req.query.format || "json";
-  const schemeParam = req.query.scheme || "light";
+  const formatParam = req.query.format || 'json';
+  const schemeParam = req.query.scheme || 'light';
 
-  if (typeof formatParam === "string" && typeof schemeParam === "string") {
+  if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
     const colorSchemeTokenGroup = colorSchemeMap[schemeParam];
-    let tokenGroupParam: any = req.query.tokens || "";
+    const tokenGroupParam: any = req.query.tokens || '';
     let tokenGroups: string[] = [];
 
     // Determine which list(s) we are querying for based on the token param
-    if (tokenGroupParam === "all") {
+    if (tokenGroupParam === 'all') {
       tokenGroups = tokenGroups.concat(nonColorSchemeTokenGroups);
     }
 
-    if (tokenGroupParam === "all" || tokenGroupParam === "colors") {
+    if (tokenGroupParam === 'all' || tokenGroupParam === 'colors') {
       tokenGroups.push(colorSchemeTokenGroup);
     }
 
@@ -92,7 +94,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (tokenGroups.length === 0) {
       res.status(400);
-      res.json({ error: true, status: 400 });
+      res.json({error: true, status: 400});
       return;
     }
 
@@ -103,7 +105,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const url = getGithubUrl(tokenFile, true);
 
         if (url === null) {
-          throw new Error("Could not fetch tokens");
+          throw new Error('Could not fetch tokens');
         }
 
         return fetch(url).then((res) => {
@@ -113,7 +115,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     } catch (error) {
       res.status(400);
-      res.json({ error: true, status: 400 });
+      res.json({error: true, status: 400});
       return;
     }
 
@@ -122,20 +124,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // Combine all of the token data into a single object
     let tokenData: TokenObject = {};
     responses.forEach((response) => {
-      tokenData = { ...tokenData, ...response };
+      tokenData = {...tokenData, ...response};
     });
 
     const formattedTokenData = formatTokenGroup(tokenData, formatParam);
 
-    if (formatParam === "css") {
-      res.setHeader("content-type", "text/css");
+    if (formatParam === 'css') {
+      res.setHeader('content-type', 'text/css');
       res.send(formattedTokenData);
     } else {
       res.json(formattedTokenData);
     }
   }
-
-  return;
 };
 
 export default handler;

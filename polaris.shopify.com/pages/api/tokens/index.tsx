@@ -1,9 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type {NextApiRequest, NextApiResponse} from 'next';
+
 import {
   colorSchemeMap,
   getGithubUrl,
   nonColorSchemeTokenGroups,
-} from "./[tokens]";
+} from './[tokens]';
 
 const html = `
 <!DOCTYPE>
@@ -78,13 +79,13 @@ const html = `
                         <td>
                             <a href="${getGithubUrl(
                               tokenGroup,
-                              false
+                              false,
                             )}">File</a>
                         </td>
                     </tr>
                 `;
               })
-              .join("\n")}
+              .join('\n')}
             ${nonColorSchemeTokenGroups
               .map((tokenGroup) => {
                 const url = `/api/v0/tokens/${tokenGroup}`;
@@ -102,13 +103,13 @@ const html = `
                         <td>
                             <a href="${getGithubUrl(
                               tokenGroup,
-                              false
+                              false,
                             )}">File</a>
                         </td>
                     </tr>
                 `;
               })
-              .join("\n")}
+              .join('\n')}
             </tbody>
         </table>
     </body>
@@ -116,7 +117,7 @@ const html = `
 `;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  res.setHeader("content-type", "text/html");
+  res.setHeader('content-type', 'text/html');
   res.send(html);
 };
 
