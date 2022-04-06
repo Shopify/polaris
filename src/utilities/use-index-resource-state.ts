@@ -100,6 +100,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     setSelectedResources((oldSelectedResources) =>
       oldSelectedResources.filter((item) => resourceIds.includes(item)),
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resources.length]);
 
   return {selectedResources, allResourcesSelected, handleSelectionChange};
