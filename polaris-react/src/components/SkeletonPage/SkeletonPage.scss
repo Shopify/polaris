@@ -34,10 +34,6 @@ $skeleton-display-text-max-width: 120px;
 
 .TitleAndPrimaryAction {
   display: flex;
-
-  @include page-content-when-partially-condensed {
-    display: block;
-  }
 }
 
 .TitleWrapper {
@@ -66,24 +62,6 @@ $skeleton-display-text-max-width: 120px;
   > * {
     height: $primary-action-button-height;
     min-width: $primary-action-button-width;
-  }
-
-  @include page-content-when-layout-stacked {
-    margin-top: var(--p-space-4);
-    margin-bottom: calc(-1 * var(--p-space-2));
-  }
-
-  @include page-content-when-not-fully-condensed {
-    margin-top: $actions-vertical-spacing;
-    margin-bottom: calc(-1 * var(--p-space-2));
-  }
-
-  @include page-content-when-not-partially-condensed {
-    margin-top: 0;
-  }
-
-  @include page-content-when-layout-not-stacked {
-    margin-top: 0;
   }
 }
 
