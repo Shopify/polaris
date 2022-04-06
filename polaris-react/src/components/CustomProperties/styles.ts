@@ -7,7 +7,7 @@ import {
   OSColorSchemes,
 } from '../../tokens';
 
-const defaultRules = `
+const defaultDeclarations = `
   ${getColorSchemeDeclarations('light', tokens, osColorSchemes)}
   ${getStaticCustomProperties(tokens)}
 `;
@@ -91,7 +91,7 @@ export function getKeyframes(keyframes: TokenGroup) {
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
  */
 export const styles = `
-  :root{${defaultRules}}
+  :root{${defaultDeclarations}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
   ${getKeyframes(tokens.keyframes)}
 `;
