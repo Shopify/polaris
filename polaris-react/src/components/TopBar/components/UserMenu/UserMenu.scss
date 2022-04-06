@@ -21,7 +21,7 @@
 .Detail {
   @include text-style-caption;
   @include truncate;
-  opacity: 0.7;
+  opacity: var(--p-opacity-14);
   color: var(--p-text);
   text-align: left;
 }

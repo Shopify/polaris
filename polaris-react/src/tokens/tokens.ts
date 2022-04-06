@@ -1,8 +1,9 @@
-import depth from './token-groups/depth.json';
-import legacyTokens from './token-groups/legacy-tokens.json';
 import darkColorScheme from './token-groups/color.dark.json';
 import lightColorScheme from './token-groups/color.light.json';
+import depth from './token-groups/depth.json';
+import legacyTokens from './token-groups/legacy-tokens.json';
 import motion from './token-groups/motion.json';
+import opacity from './token-groups/opacity.json';
 import shape from './token-groups/shape.json';
 import spacing from './token-groups/spacing.json';
 import typography from './token-groups/typography.json';
@@ -47,10 +48,11 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
-  depth: TokenGroup;
   colorSchemes: ColorSchemes;
+  depth: TokenGroup;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
+  opacity: TokenGroup;
   shape: TokenGroup;
   spacing: TokenGroup;
   typography: TokenGroup;
@@ -62,6 +64,7 @@ export const tokens: Tokens = {
   depth,
   legacyTokens: tokensToRems(legacyTokens),
   motion,
+  opacity,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
   typography: tokensToRems(typography),

@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $breakpoint: 640px;
-$Backdrop-opacity: 0.88;
+$Backdrop-opacity: var(--p-opacity-18);
 
 .Toast {
   @include text-style-display-small;

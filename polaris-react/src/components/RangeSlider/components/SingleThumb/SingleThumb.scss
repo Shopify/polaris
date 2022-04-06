@@ -6,7 +6,7 @@
   align-items: center;
 
   &.disabled {
-    opacity: 0.8;
+    opacity: var(--p-opacity-16);
   }
 }
 

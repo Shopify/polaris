@@ -36,6 +36,7 @@ const mockTokens: Tokens = {
   // Note: We don't need to assign mock values to the remaining static tokens.
   depth: {},
   legacyTokens: {},
+  opacity: {},
   shape: {},
   spacing: {},
   typography: {},

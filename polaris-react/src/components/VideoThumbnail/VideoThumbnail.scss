@@ -33,7 +33,7 @@ $progress-bar-height: 6px;
   padding: 0;
   border: none;
   background: transparent;
-  opacity: 0.8;
+  opacity: var(--p-opacity-16);
   transition: opacity var(--p-duration-200) var(--p-ease-in);
   cursor: pointer;
 
@@ -71,7 +71,7 @@ $progress-bar-height: 6px;
   border-radius: var(--p-border-radius-1);
   color: var(--p-text);
   background-color: var(--p-surface);
-  opacity: 0.8;
+  opacity: var(--p-opacity-16);
   text-align: center;
 }
 

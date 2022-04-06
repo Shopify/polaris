@@ -20,7 +20,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
   cursor: pointer;
 
   &.disabled {
-    opacity: 0.8;
+    opacity: var(--p-opacity-16);
     cursor: not-allowed;
   }
 }

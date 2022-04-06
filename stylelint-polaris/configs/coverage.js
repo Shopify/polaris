@@ -20,7 +20,7 @@ module.exports = {
         right: [/\$.+/],
         width: [/\$.+/],
         height: [/\$.+/],
-        opacity: [/(?!0|1)\d|[\d.]{2,}/],
+        opacity: [/^(?!0|1)\d|^[\d.]{2,}/],
         'z-index': [/(\$.*|-?[0-9]+)/],
         'font-weight': [/(\$.*|[0-9]+)/],
       },

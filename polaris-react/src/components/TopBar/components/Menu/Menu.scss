@@ -1,15 +1,8 @@
 @import '../../../../styles/common';
 
-$activator-variables: (
-  min-width: 36px,
-  focus-opacity: 0.85,
-);
-
-@function menu($variable) {
-  @return map-get($activator-variables, $variable);
-}
-
 .ActivatorWrapper {
+  --pc-menu-activator-min-width: 36px;
+  --pc-menu-activator-focus-opacity: var(--p-opacity-17);
   height: top-bar-height();
   display: flex;
   align-items: center;
@@ -23,7 +16,7 @@ $activator-variables: (
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: menu(min-width);
+  min-width: var(--pc-menu-activator-min-width);
   padding: var(--p-space-1) var(--p-space-2);
   border: 0;
   cursor: pointer;
@@ -66,7 +59,7 @@ $activator-variables: (
     &:active,
     &[aria-expanded='true'] {
       background-color: transparent;
-      opacity: menu(focus-opacity);
+      opacity: var(--pc-menu-activator-focus-opacity);
     }
   }
 }
