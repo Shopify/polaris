@@ -1,8 +1,9 @@
+import betaTokens from './token-groups/beta-tokens.json';
 import darkColorScheme from './token-groups/color.dark.json';
-import lightColorScheme from './token-groups/color.light.json';
 import depth from './token-groups/depth.json';
 import keyframes from './token-groups/keyframes.json';
 import legacyTokens from './token-groups/legacy-tokens.json';
+import lightColorScheme from './token-groups/color.light.json';
 import motion from './token-groups/motion.json';
 import shape from './token-groups/shape.json';
 import spacing from './token-groups/spacing.json';
@@ -48,6 +49,7 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
+  betaTokens: TokenGroup;
   colorSchemes: ColorSchemes;
   depth: TokenGroup;
   keyframes: TokenGroup;
@@ -60,6 +62,7 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
+  betaTokens,
   colorSchemes,
   depth,
   keyframes,

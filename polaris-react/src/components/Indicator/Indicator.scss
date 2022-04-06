@@ -18,7 +18,7 @@
 
 .pulseIndicator::before {
   z-index: 1;
-  animation: p-bounce 5s ease infinite;
+  animation: var(--p-animation-name-bounce) 5s ease infinite;
 }
 
 .pulseIndicator::after {
