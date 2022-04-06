@@ -13,6 +13,7 @@ import {
   getColorSchemeDeclarations,
   getColorSchemeRules,
   getCustomProperties,
+  getKeyframes,
   getStaticCustomProperties,
 } from '../styles';
 
@@ -33,10 +34,10 @@ const mockColorSchemes: ColorSchemes = {
 const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   motion: mockTokenGroup,
+  keyframes: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
   betaTokens: {},
   depth: {},
-  keyframes: {},
   legacyTokens: {},
   shape: {},
   spacing: {},
@@ -52,6 +53,9 @@ const expectedColorSchemeDeclarations = (colorScheme: ColorScheme) =>
 
 const expectedColorSchemeRules = (colorScheme: ColorScheme) =>
   `${expectedColorSchemeDeclarations(colorScheme)}${expectedCustomProperties}`;
+
+const expectedKeyframes =
+  '@keyframes p-design-token-1valueA@keyframes p-design-token-2valueB';
 
 describe('<CustomProperties />', () => {
   it('renders its children', () => {
@@ -188,6 +192,14 @@ describe('<CustomProperties />', () => {
         .join('');
 
       expect(rules).toBe(expectedRules);
+    });
+  });
+
+  describe('getKeyframes', () => {
+    it('creates a string of keyframes at-rules', () => {
+      const keyframes = getKeyframes(mockTokenGroup);
+
+      expect(keyframes).toBe(expectedKeyframes);
     });
   });
 
