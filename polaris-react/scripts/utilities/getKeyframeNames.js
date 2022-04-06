@@ -11,4 +11,5 @@ const getKeyframeNames = () =>
   Object.keys(require(path.join(tokenGroupsDir, 'keyframes'))).map(
     (name) => `p-${name}`,
   );
+
 module.exports = getKeyframeNames;
