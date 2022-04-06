@@ -3,7 +3,8 @@ import type {NextApiRequest, NextApiResponse} from 'next';
 import {
   colorSchemeMap,
   getGithubUrl,
-  nonColorSchemeTokenGroups,
+  staticTokenGroupKeys,
+  Scheme,
 } from './[tokens]';
 
 const html = `
@@ -63,9 +64,10 @@ const html = `
             <tbody>
             ${Object.keys(colorSchemeMap)
               .map((colorScheme) => {
-                const url = `/api/v0/tokens/colors?scheme=${colorScheme}`;
+                const scheme = colorScheme as Scheme;
+                const url = `/api/v0/tokens/colors?scheme=${scheme}`;
                 const cssUrl = `${url}&format=css`;
-                const tokenGroup = colorSchemeMap[colorScheme];
+                const tokenGroup = colorSchemeMap[scheme];
 
                 return `
                     <tr>
@@ -86,7 +88,7 @@ const html = `
                 `;
               })
               .join('\n')}
-            ${nonColorSchemeTokenGroups
+            ${staticTokenGroupKeys
               .map((tokenGroup) => {
                 const url = `/api/v0/tokens/${tokenGroup}`;
                 const cssUrl = `${url}?format=css`;

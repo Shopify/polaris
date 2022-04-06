@@ -1,19 +1,21 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import fetch from 'node-fetch';
 
-interface TokenObject {
-  [key: string]: string;
+interface TokenGroup {
+  [token: string]: string;
 }
 
 /**
- * List of token groups
+ * Colors token groups
  */
-export const colorSchemeMap: {[key: string]: string} = {
-  light: 'color.light',
-  dark: 'color.dark',
-};
+export const colorTokenGroupKeys = ['color.light', 'color.dark'] as const;
 
-export const nonColorSchemeTokenGroups = [
+type ColorTokenGroupKey = typeof colorTokenGroupKeys[number];
+
+/**
+ * Color scheme independent token groups
+ */
+export const staticTokenGroupKeys = [
   'depth',
   'legacy-tokens',
   'motion',
@@ -21,44 +23,72 @@ export const nonColorSchemeTokenGroups = [
   'spacing',
   'typography',
   'z-index',
-];
+] as const;
+
+type StaticTokenGroupKey = typeof staticTokenGroupKeys[number];
+
+function isStaticTokenGroup(
+  tokenGroupKey: unknown,
+): tokenGroupKey is StaticTokenGroupKey {
+  return staticTokenGroupKeys.includes(tokenGroupKey as StaticTokenGroupKey);
+}
+
+const tokenGroupKeys = ['all', 'colors', ...staticTokenGroupKeys] as const;
+
+type TokenGroupKey = typeof tokenGroupKeys[number];
+
+function isTokenGroupKey(
+  tokenGroupKey: unknown,
+): tokenGroupKey is TokenGroupKey {
+  return tokenGroupKeys.includes(tokenGroupKey as TokenGroupKey);
+}
+
+const schemes = ['light', 'dark'] as const;
+
+export type Scheme = typeof schemes[number];
+
+function isScheme(scheme: unknown): scheme is Scheme {
+  return schemes.includes(scheme as Scheme);
+}
+
+/**
+ * Mapping of color schemes to color token group keys
+ */
+export const colorSchemeMap: {[C in Scheme]: ColorTokenGroupKey} = {
+  light: 'color.light',
+  dark: 'color.dark',
+};
+
+const formats = ['json', 'css'] as const;
+
+type Format = typeof formats[number];
+
+function isFormat(format: unknown): format is Format {
+  return formats.includes(format as Format);
+}
 
 /**
  * Create the valid github url for a token file.
  */
-export const getGithubUrl = (
-  tokenGroup: string,
-  isRaw: boolean,
-): string | null => {
-  const tokenGroupIsValid =
-    nonColorSchemeTokenGroups.includes(tokenGroup) ||
-    Object.values(colorSchemeMap).includes(tokenGroup);
-
-  if (!tokenGroupIsValid) {
-    return null;
-  }
-
-  const fileName = `${tokenGroup}.json`;
+export const getGithubUrl = (file: string, isRaw: boolean) => {
+  const fileName = `${file}.json`;
   const githubUrl = 'https://github.com/Shopify/polaris/blob';
   const rawUrl = 'https://raw.githubusercontent.com/Shopify/polaris';
+  const filePath = `/main/polaris-react/src/tokens/token-groups/${fileName}`;
 
-  if (isRaw)
-    return `${rawUrl}/v9.0.0-major/src/tokens/token-groups/${fileName}`;
+  if (isRaw) return `${rawUrl}${filePath}`;
 
-  return `${githubUrl}/v9.0.0-major/src/tokens/token-groups/${fileName}`;
+  return `${githubUrl}${filePath}`;
 };
 
 /**
  * Format the token data into: css or json
  */
-const formatTokenGroup = (
-  data: {[tokenName: string]: string},
-  format: string,
-) => {
+const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
   if (format === 'css') {
-    return Object.keys(data)
-      .reduce((result: string[], key: string) => {
-        const cssVariable = `--${key}: ${data[key]};`;
+    return Object.keys(tokenGroup)
+      .reduce<string[]>((result, token) => {
+        const cssVariable = `--${token}: ${tokenGroup[token]};`;
 
         result.push(cssVariable);
 
@@ -67,12 +97,12 @@ const formatTokenGroup = (
       .join('\n');
   }
 
-  return data;
+  return tokenGroup;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const formatParam = req.query.format || 'json';
-  const schemeParam = req.query.scheme || 'light';
+  const formatParam = (req.query.format || 'json') as Format;
+  const schemeParam = (req.query.scheme || 'light') as Scheme;
 
   if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
     const colorSchemeTokenGroup = colorSchemeMap[schemeParam];
@@ -81,14 +111,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // Determine which list(s) we are querying for based on the token param
     if (tokenGroupParam === 'all') {
-      tokenGroups = tokenGroups.concat(nonColorSchemeTokenGroups);
+      tokenGroups = tokenGroups.concat(staticTokenGroupKeys);
     }
 
     if (tokenGroupParam === 'all' || tokenGroupParam === 'colors') {
       tokenGroups.push(colorSchemeTokenGroup);
     }
 
-    if (nonColorSchemeTokenGroups.includes(tokenGroupParam)) {
+    if (staticTokenGroupKeys.includes(tokenGroupParam)) {
       tokenGroups.push(tokenGroupParam);
     }
 
@@ -99,7 +129,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Convert the list of urls to a group of requests
-    let requests: Promise<TokenObject>[] = [];
+    let requests: Promise<TokenGroup>[] = [];
     try {
       requests = tokenGroups.map((tokenFile) => {
         const url = getGithubUrl(tokenFile, true);
@@ -110,7 +140,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         return fetch(url).then((res) => {
           const json = res.json() as unknown;
-          return json as TokenObject;
+
+          return json as TokenGroup;
         });
       });
     } catch (error) {
@@ -122,7 +153,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const responses = await Promise.all(requests);
 
     // Combine all of the token data into a single object
-    let tokenData: TokenObject = {};
+    let tokenData: TokenGroup = {};
     responses.forEach((response) => {
       tokenData = {...tokenData, ...response};
     });
