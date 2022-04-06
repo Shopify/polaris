@@ -16,11 +16,7 @@ const getCustomPropertyNames = () => {
         .map((file) => {
           const tokenGroup = require(path.join(tokenGroupsDir, file));
 
-          return Object.keys(tokenGroup).map((token) =>
-            token.startsWith('keyframes')
-              ? `--p-${token}-name`
-              : `--p-${token}`,
-          );
+          return Object.keys(tokenGroup).map((token) => `--p-${token}`);
         })
         .flat(),
     ),

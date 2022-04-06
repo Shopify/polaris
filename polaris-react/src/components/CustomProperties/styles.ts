@@ -73,7 +73,7 @@ export function getCustomProperties(tokens: TokenGroup) {
   return Object.entries(tokens)
     .map(([token, value]) =>
       token.startsWith('keyframes')
-        ? `--p-${token}-name:${token}`
+        ? `--p-${token}:p-${token};`
         : `--p-${token}:${value};`,
     )
     .join('');
