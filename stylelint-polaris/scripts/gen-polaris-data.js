@@ -5,6 +5,7 @@ const getCustomPropertyNames = require('../../polaris-react/scripts/utilities/ge
 const getKeyframeNames = require('../../polaris-react/scripts/utilities/getKeyframeNames');
 
 const dirPath = path.join(__dirname, '../data');
+const filePath = path.join(dirPath, outFile);
 
 const polarisCustomPropertyNames = getCustomPropertyNames();
 const polarisKeyframeNames = getKeyframeNames();
