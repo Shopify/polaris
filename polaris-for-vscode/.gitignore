@@ -2,4 +2,4 @@ out
 dist
 .vscode-test/
 *.vsix
-src/data/
+server/src/data/

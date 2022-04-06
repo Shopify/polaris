@@ -5,4 +5,4 @@ node_modules
 /polaris.shopify.com/.next
 /stylelint-polaris/data
 
-/polaris-react/documentation/guides/legacy-polaris-v8-public-api.scss
+/documentation/guides/legacy-polaris-v8-public-api.scss
