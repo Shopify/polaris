@@ -25,4 +25,21 @@ const getCustomPropertyNames = () => {
   return polarisTokenCustomProperties;
 };
 
-module.exports = getCustomPropertyNames;
+const getCategorizedCustomProperties = () => {
+  const categorizedTokens = {};
+  fs.readdirSync(tokenGroupsDir).map((file) => {
+    const tokenGroup = require(path.join(tokenGroupsDir, file));
+    const tokenGroupCustomProperties = {};
+
+    Object.keys(tokenGroup).map((token) => {
+      tokenGroupCustomProperties[`--p-${token}`] = tokenGroup[token];
+    });
+
+    categorizedTokens[file.replace('.json', '')] = tokenGroupCustomProperties;
+  });
+
+  console.log(categorizedTokens);
+  return categorizedTokens;
+};
+
+module.exports = getCategorizedCustomProperties;
