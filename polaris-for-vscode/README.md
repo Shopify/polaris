@@ -14,9 +14,10 @@ VSCode features to support developing with the Polaris Design System.
 yarn run generateCustomPropertyNames
 ```
 
-4. Press `F5` to run the `watch` script using the [VSCode debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension). This will open up a new `Extension Development Host` window
-5. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
-6. Start typing the extension trigger characters `--p` to bring up the Polaris custom properties autocomplete
+4. Run the build command with `cmd + shift + B`. This will start the server in watch mode.
+5. Press `F5` to run the client using the [VSCode debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension). This will open up a new `Extension Development Host` window
+6. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
+7. Start typing the extension trigger characters `--p` to bring up the Polaris custom properties autocomplete
 
 ## Installation
 
