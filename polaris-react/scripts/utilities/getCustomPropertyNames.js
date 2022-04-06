@@ -13,11 +13,14 @@ const getCustomPropertyNames = () => {
     new Set(
       fs
         .readdirSync(tokenGroupsDir)
-        .filter((file) => !file.includes('keyframes'))
         .map((file) => {
           const tokenGroup = require(path.join(tokenGroupsDir, file));
 
-          return Object.keys(tokenGroup).map((token) => `--p-${token}`);
+          return Object.keys(tokenGroup).map((token) =>
+            token.startsWith('keyframes')
+              ? `--p-${token}-name`
+              : `--p-${token}`,
+          );
         })
         .flat(),
     ),

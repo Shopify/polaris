@@ -66,7 +66,7 @@
 
 .Animated {
   will-change: width;
-  animation: var(--p-animation-name-fill-up) var(--p-duration-500) var(--p-ease);
+  animation: var(--p-keyframes-fill-up-name) var(--p-duration-500) var(--p-ease);
   transition: width var(--p-duration-500) var(--p-ease);
 }
 
