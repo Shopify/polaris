@@ -9,8 +9,6 @@ import {
   buildLibraryWorkspace,
   rollupPlugins,
 } from '@shopify/loom-plugin-build-library';
-import {eslint} from '@shopify/loom-plugin-eslint';
-import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
@@ -36,8 +34,6 @@ export default createPackage((pkg) => {
       esnext: true,
     }),
     buildLibraryWorkspace(),
-    eslint(),
-    prettier({files: '**/*.{md,json,yaml,yml}'}),
     rollupAdjustPluginsPlugin(),
     rollupAdjustOutputPlugin(),
     jestAdjustmentsPlugin(),

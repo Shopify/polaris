@@ -31,7 +31,7 @@
     "Common": {
       "checkbox": "casella di spunta",
       "undo": "Annulla",
-      "cancel": "Chiudi",
+      "cancel": "Annulla",
       "newWindowAccessibilityHint": "(apre una nuova finestra)",
       "clear": "Rimuovi",
       "close": "Chiudi",
@@ -139,7 +139,7 @@
       "moreFilters": "Più filtri",
       "filter": "Filtra {resourceName}",
       "noFiltersApplied": "Nessun filtro applicato",
-      "cancel": "Chiudi",
+      "cancel": "Annulla",
       "done": "Fatto",
       "clearAllFilters": "Rimuovi tutti i filtri",
       "clear": "Rimuovi",
