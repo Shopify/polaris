@@ -1,7 +1,6 @@
 const {
   ruleName: customPropertiesAllowedListRuleName,
 } = require('./plugins/custom-properties-allowed-list');
-
 /**
  * Allowed Polaris token custom properties.
  *
