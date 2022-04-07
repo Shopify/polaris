@@ -34,9 +34,7 @@ const mockColorSchemes: ColorSchemes = {
 const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   motion: mockTokenGroup,
-  keyframes: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
-  betaTokens: {},
   depth: {},
   legacyTokens: {},
   shape: {},
