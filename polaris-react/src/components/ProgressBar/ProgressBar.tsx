@@ -59,7 +59,7 @@ export function ProgressBar({
       <progress className={styles.Progress} value={parsedProgress} max="100" />
       <div
         className={classNames(styles.Indicator, animated && styles.Animated)}
-        style={{transform: `scaleX(${parsedProgress})`}}
+        style={{transform: `scaleX(${parsedProgress * 0.01})`}}
       >
         <span className={styles.Label}>{parsedProgress}%</span>
       </div>

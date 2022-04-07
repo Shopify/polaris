@@ -64,8 +64,7 @@
 }
 
 .Animated {
-  left: -50%;
-  position: relative;
+  transform-origin: left;
   transform: scaleX(0);
   transition: transform var(--p-duration-500) var(--p-ease);
 }
