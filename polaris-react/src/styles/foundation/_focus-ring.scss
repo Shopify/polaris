@@ -2,6 +2,7 @@
 /// @param {String} $size - The size of the border radius on the focus ring.
 /// @param {String} $style - Focus ring state.
 /// @param {Number} $border-width - The border width of your element in rems.
+/// @param {Number} $delay - The transition delay in milliseconds.
 ///
 
 @mixin focus-ring($size: 'base', $border-width: 0, $style: 'base') {
@@ -32,11 +33,13 @@
       box-shadow: 0 0 0 $negative-offset var(--p-focused);
       transition: box-shadow var(--p-duration-100) var(--p-ease);
       border-radius: calc(#{$border-radius} + 1px);
+      @content;
     }
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-focused);
       outline: var(--p-border-width-1) solid transparent;
+      @content;
     }
   }
 }

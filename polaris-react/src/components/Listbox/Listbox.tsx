@@ -153,7 +153,7 @@ export function Listbox({
         }
 
         requestAnimationFrame(() => {
-          scrollable.scrollBy({top});
+          scrollable.scrollBy({top, behavior: 'auto'});
         });
       }
     }
