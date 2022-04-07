@@ -823,7 +823,65 @@ Use to provide an autocomplete suggestion inline with the input value. See the c
 
 ```jsx
 function TextFieldWithSuggestionExample() {
-  const suggestions = ['Ethel', 'Lucy', 'Ricky', 'Fred'];
+  const suggestions = [
+    'Alabama',
+    'Alaska',
+    'American Samoa',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'District of Columbia',
+    'Florida',
+    'Georgia',
+    'Guam',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Minor Outlying Islands',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Northern Mariana Islands',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Puerto Rico',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'U.S. Virgin Islands',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming',
+  ];
 
   const [value, setValue] = useState('');
   const [suggestion, setSuggestion] = useState('');
@@ -845,16 +903,22 @@ function TextFieldWithSuggestionExample() {
     setSuggestion('');
   }, []);
 
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter') {
+      handleChange(suggestion);
+    }
+  }, [suggestion, handleChange])
+
   return (
-    <TextField
-      focused
-      type="text"
-      label="Customer"
-      value={value}
-      onChange={handleChange}
-      suggestion={suggestion}
-      helpText="Available customer suggestions are: Ethel, Lucy, Ricky, and Fred"
-    />
+    <div onKeyDown={handleKeyDown}>
+      <TextField
+        type="text"
+        label="State"
+        value={value}
+        onChange={handleChange}
+        suggestion={suggestion}
+      />
+    </div>
   );
 }
 ```
