@@ -1,12 +1,16 @@
 import React from 'react';
+import {CSSTransition} from 'react-transition-group';
 
 import {classNames, variationName} from '../../utilities/css';
+import {tokens} from '../../tokens';
 import {useI18n} from '../../utilities/i18n';
 
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
 type Color = 'highlight' | 'primary' | 'success' | 'critical';
+
+const progressBarDuration = tokens.motion['duration-500'];
 
 export interface ProgressBarProps {
   /**
@@ -35,7 +39,7 @@ export function ProgressBar({
   progress = 0,
   size = 'medium',
   color = 'highlight',
-  animated = true,
+  animated: hasAppearAnimation = true,
 }: ProgressBarProps) {
   const i18n = useI18n();
 
@@ -57,12 +61,30 @@ export function ProgressBar({
   return (
     <div className={className}>
       <progress className={styles.Progress} value={parsedProgress} max="100" />
-      <div
-        className={classNames(styles.Indicator, animated && styles.Animated)}
-        style={{transform: `scaleX(${parsedProgress * 0.01})`}}
+      <CSSTransition
+        in
+        appear
+        timeout={hasAppearAnimation ? parseInt(progressBarDuration, 10) : 0}
+        classNames={{
+          appearActive: styles.IndicatorAppearActive,
+          appearDone: styles.IndicatorAppearDone,
+        }}
       >
-        <span className={styles.Label}>{parsedProgress}%</span>
-      </div>
+        <div
+          className={classNames(
+            styles.Indicator,
+            hasAppearAnimation && styles.hasAppearAnimation,
+          )}
+          style={
+            {
+              '--pc-progress-bar-duration': progressBarDuration,
+              '--pc-progress-bar-percent': parsedProgress / 100,
+            } as React.CSSProperties
+          }
+        >
+          <span className={styles.Label}>{parsedProgress}%</span>
+        </div>
+      </CSSTransition>
     </div>
     /* eslint-enable @shopify/jsx-no-hardcoded-content */
   );
