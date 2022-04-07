@@ -29,10 +29,8 @@ const getGroupedCustomPropertyNames = () => {
   const groupedTokens = {};
   fs.readdirSync(tokenGroupsDir).map((file) => {
     const tokenGroup = require(path.join(tokenGroupsDir, file));
-    console.log(file.includes('color'));
 
     if (file.includes('color')) {
-      console.log('is color');
       file = 'color';
     }
 
