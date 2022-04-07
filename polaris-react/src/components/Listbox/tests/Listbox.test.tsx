@@ -196,7 +196,7 @@ describe('<Listbox>', () => {
           <Listbox enableKeyboardControl>Child</Listbox>,
         );
 
-        listbox.find('ul')!.trigger('onFocus');
+        listbox.find('ul')?.trigger('onFocus');
 
         expect(listbox).toContainReactComponentTimes(KeypressListener, 3);
       });
@@ -226,22 +226,28 @@ describe('<Listbox>', () => {
         const listbox = wrapper.find('ul', {role: 'listbox'})!;
         const options = wrapper.findAll('li', {role: 'option'});
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[0].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[0].domNode?.id,
         );
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[1].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[1].domNode?.id,
         );
 
-        listbox!.trigger('onBlur', {stopPropagation: () => {}});
+        await wrapper.act(async () => {
+          await Promise.resolve(
+            wrapper
+              .find('ul', {role: 'listbox'})!
+              .trigger('onBlur', {stopPropagation: () => {}}),
+          );
+        });
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[0].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[0].domNode?.id,
         );
       });
     });
@@ -359,7 +365,7 @@ describe('<Listbox>', () => {
 
         expect(wrapper).not.toContainReactComponent(KeypressListener);
 
-        wrapper.find('ul', {role: 'listbox'})!.trigger('onFocus');
+        wrapper.find('ul', {role: 'listbox'})?.trigger('onFocus');
 
         const listenners = wrapper.findAll(KeypressListener);
 
@@ -378,7 +384,7 @@ describe('<Listbox>', () => {
 
         expect(wrapper).not.toContainReactComponent(KeypressListener);
 
-        wrapper.find('ul', {role: 'listbox'})!.trigger('onFocus');
+        wrapper.find('ul', {role: 'listbox'})?.trigger('onFocus');
 
         const listenners = wrapper.findAll(KeypressListener);
 
@@ -412,16 +418,16 @@ describe('<Listbox>', () => {
         const listbox = wrapper.find('ul', {role: 'listbox'})!;
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[0].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[0].domNode?.id,
         );
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[1].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[1].domNode?.id,
         );
       });
 
@@ -430,39 +436,39 @@ describe('<Listbox>', () => {
 
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBeNull();
-        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBeNull();
+        expect(options[1].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
       it('moves the focus back to the first option when the bottom of the list is reached', async () => {
         const wrapper = mountWithApp(<MockComponent />);
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[1].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
         });
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
       it('skips disabled options', async () => {
@@ -476,15 +482,15 @@ describe('<Listbox>', () => {
 
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerDown(wrapper));
           await Promise.resolve(triggerEnter(wrapper));
         });
 
-        expect(options[1].domNode!.getAttribute('data-focused')).toBeNull();
-        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[1].domNode?.getAttribute('data-focused')).toBeNull();
+        expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
       it('does not focus any element when all elements are disabled', async () => {
@@ -516,7 +522,7 @@ describe('<Listbox>', () => {
         const options = wrapper.findAll('li', {role: 'option'});
         const lastOption = options[options.length - 1].domNode;
 
-        expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
 
         window.HTMLElement.prototype.scrollBy = scrollSpy;
 
@@ -530,8 +536,8 @@ describe('<Listbox>', () => {
 
         expect(scrollSpy).toHaveBeenCalled();
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          lastOption!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          lastOption?.id,
         );
 
         animationFrame.restore();
@@ -542,20 +548,20 @@ describe('<Listbox>', () => {
 
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
+        expect(options[2].domNode?.getAttribute('data-focused')).toBeNull();
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
-        expect(options[1].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[2].domNode?.getAttribute('data-focused')).toBeNull();
+        expect(options[1].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
       it('sets the aria-activedescendant attribute to the id of the focused element', async () => {
@@ -567,16 +573,16 @@ describe('<Listbox>', () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[2].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[2].domNode?.id,
         );
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(listbox.domNode!.getAttribute('aria-activedescendant')).toBe(
-          options[1].domNode!.id,
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[1].domNode?.id,
         );
       });
 
@@ -584,7 +590,7 @@ describe('<Listbox>', () => {
         const wrapper = mountWithApp(<MockComponent />);
         const options = wrapper.findAll(Listbox.Option);
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBeNull();
+        expect(options[2].domNode?.getAttribute('data-focused')).toBeNull();
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerUp(wrapper));
@@ -593,7 +599,7 @@ describe('<Listbox>', () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
       it('skips disabled options', async () => {
@@ -611,13 +617,13 @@ describe('<Listbox>', () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(options[2].domNode!.getAttribute('data-focused')).toBe('true');
+        expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
 
         await wrapper.act(async () => {
           await Promise.resolve(triggerUp(wrapper));
         });
 
-        expect(options[1].domNode!.getAttribute('data-focused')).toBeNull();
+        expect(options[1].domNode?.getAttribute('data-focused')).toBeNull();
       });
     });
 
@@ -632,7 +638,7 @@ describe('<Listbox>', () => {
         });
 
         expect(onSelect).toHaveBeenCalledWith(
-          options[0]!.domNode!.getAttribute('data-listbox-option-value'),
+          options[0]?.domNode?.getAttribute('data-listbox-option-value'),
         );
       });
     });
@@ -650,7 +656,7 @@ describe('<Listbox>', () => {
         await Promise.resolve(triggerDown(wrapper));
       });
 
-      expect(setActiveOptionIdSpy).toHaveBeenCalledWith(option!.domNode!.id);
+      expect(setActiveOptionIdSpy).toHaveBeenCalledWith(option?.domNode?.id);
     });
 
     it('calls onOptionSelected on the combobox context when an option is focused and enter is pressed', async () => {
@@ -678,7 +684,7 @@ describe('<Listbox>', () => {
 
       const options = wrapper.findAll(Listbox.Option);
 
-      expect(options[0].domNode!.getAttribute('data-focused')).toBe('true');
+      expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
 
       await wrapper.act(async () => {
         await Promise.resolve(triggerUp(wrapper));

@@ -260,7 +260,6 @@ export function Listbox({
     lazyLoading,
     currentOptions,
     activeOption,
-    setCurrentOptions,
     getFirstNavigableOption,
     getNavigableOptions,
     getFormattedOption,
@@ -271,7 +270,7 @@ export function Listbox({
     if (!loading && children && Children.count(children) > 0) {
       resetActiveOption();
     }
-  }, [children, loading, resetActiveOption]);
+  }, [children, activeOption, loading, resetActiveOption]);
 
   useEffect(() => {
     if (listboxRef.current) {
@@ -396,15 +395,24 @@ export function Listbox({
     (event: React.FocusEvent) => {
       event.stopPropagation();
       if (keyboardEventsEnabled) {
-        handleChangeActiveOption();
+        const nextActiveOption = getFirstNavigableOption(currentOptions);
+
+        if (nextActiveOption) {
+          const {element, index} = nextActiveOption;
+          const nextOption = getFormattedOption(element, index);
+          handleChangeActiveOption(nextOption);
+        }
       }
       if (enableKeyboardControl) return;
       disableKeyboardEvents();
     },
     [
       enableKeyboardControl,
+      currentOptions,
       keyboardEventsEnabled,
       disableKeyboardEvents,
+      getFirstNavigableOption,
+      getFormattedOption,
       handleChangeActiveOption,
     ],
   );
