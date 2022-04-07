@@ -35,7 +35,7 @@ type TokenArray = {
 
 allTokens as TokenArray
 
-let tokenCategories: TokenGroup = {
+let tokenGroups: TokenGroup = {
   color: /color/,
   spacing: /margin|padding/,
   typography: /font|line-height/,
@@ -68,17 +68,18 @@ connection.onCompletion(
   (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
     const doc = documents.get(textDocumentPosition.textDocument.uri)
 
+    // if the doc can't be found, return nothing
     if (!doc) {
       return []
     }
 
     const currentText = doc.getText({ start: { line: textDocumentPosition.position.line, character: 0 }, end: { line: textDocumentPosition.position.line, character: 1000}})
 
-    // iterate through
-    for (const tokenCategory in tokenCategories) {
-      const category = tokenCategory as keyof typeof tokenCategories;
+    // iterate through token groups and find matches for css attributes
+    for (const tokenGroup in tokenGroups) {
+      const category = tokenGroup as keyof typeof tokenGroups;
 
-      if(tokenCategories[category].test(currentText)) {
+      if(tokenGroups[category].test(currentText)) {
         return groupedTokens[category].map((token: string): CompletionItem => {
           return {
             label: `var(${token})`,
@@ -88,7 +89,8 @@ connection.onCompletion(
       }
     }
 
-    // iterate through all tokens and create completion items array
+    // if no mateches above, iterate through all tokens and create completion
+    // items array
     return allTokens.map((token: string): CompletionItem => {
       return {
         label: `var(${token})`,
