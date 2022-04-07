@@ -26,6 +26,12 @@ const mockTokenGroup: TokenGroup = {
   'design-token-2': 'valueB',
 };
 
+const mockMotionTokenGroup: TokenGroup = {
+  ...mockTokenGroup,
+  'keyframes-token-1': 'valueA',
+  'keyframes-token-2': 'valueB',
+};
+
 const mockColorSchemes: ColorSchemes = {
   light: mockTokenGroup,
   dark: mockTokenGroup,
@@ -33,9 +39,9 @@ const mockColorSchemes: ColorSchemes = {
 
 const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
-  motion: mockTokenGroup,
+  depth: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
-  depth: {},
+  motion: {},
   legacyTokens: {},
   shape: {},
   spacing: {},
@@ -53,7 +59,10 @@ const expectedColorSchemeRules = (colorScheme: ColorScheme) =>
   `${expectedColorSchemeDeclarations(colorScheme)}${expectedCustomProperties}`;
 
 const expectedKeyframes =
-  '@keyframes p-design-token-1valueA@keyframes p-design-token-2valueB';
+  '@keyframes p-keyframes-token-1valueA@keyframes p-keyframes-token-2valueB';
+
+const expectedKeyframesCustomProperties =
+  '--p-keyframes-token-1:p-keyframes-token-1;--p-keyframes-token-2:p-keyframes-token-2;';
 
 describe('<CustomProperties />', () => {
   it('renders its children', () => {
@@ -162,6 +171,14 @@ describe('<CustomProperties />', () => {
 
       expect(customProperties).toBe(expectedCustomProperties);
     });
+
+    it('creates a string of CSS custom properties and keyframes at-rules from motion tokens', () => {
+      const customProperties = getCustomProperties(mockMotionTokenGroup);
+
+      expect(customProperties).toBe(
+        `${expectedCustomProperties}${expectedKeyframesCustomProperties}`,
+      );
+    });
   });
 
   describe('getColorSchemeDeclarations', () => {
@@ -195,7 +212,7 @@ describe('<CustomProperties />', () => {
 
   describe('getKeyframes', () => {
     it('creates a string of keyframes at-rules', () => {
-      const keyframes = getKeyframes(mockTokenGroup);
+      const keyframes = getKeyframes(mockMotionTokenGroup);
 
       expect(keyframes).toBe(expectedKeyframes);
     });
