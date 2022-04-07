@@ -10,8 +10,6 @@ import styles from './ProgressBar.scss';
 type Size = 'small' | 'medium' | 'large';
 type Color = 'highlight' | 'primary' | 'success' | 'critical';
 
-const progressBarDuration = tokens.motion['duration-500'];
-
 export interface ProgressBarProps {
   /**
    * The progression of certain tasks
@@ -55,7 +53,12 @@ export function ProgressBar({
       : 'Polaris.ProgressBar.exceedWarningMessage',
     {progress},
   );
+
   const parsedProgress = parseProgress(progress, warningMessage);
+
+  const progressBarDuration = hasAppearAnimation
+    ? tokens.motion['duration-500']
+    : tokens.motion['duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
@@ -64,17 +67,14 @@ export function ProgressBar({
       <CSSTransition
         in
         appear
-        timeout={hasAppearAnimation ? parseInt(progressBarDuration, 10) : 0}
+        timeout={parseInt(progressBarDuration, 10)}
         classNames={{
           appearActive: styles.IndicatorAppearActive,
           appearDone: styles.IndicatorAppearDone,
         }}
       >
         <div
-          className={classNames(
-            styles.Indicator,
-            hasAppearAnimation && styles.hasAppearAnimation,
-          )}
+          className={classNames(styles.Indicator)}
           style={
             {
               '--pc-progress-bar-duration': progressBarDuration,
