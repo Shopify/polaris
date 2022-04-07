@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
+import {Button} from '../../Button';
 
 describe('<SettingToggle />', () => {
   function getComponentProps(node: React.ReactNode) {
@@ -60,15 +61,15 @@ describe('<SettingToggle />', () => {
   describe('accessibility', () => {
     it('renders as a switch widget', () => {
       const toggle = mountWithApp(<SettingToggle enabled />);
-      expect(toggle).toContainReactComponent('button', {role: 'switch'});
+      expect(toggle).toContainReactComponent(Button, {role: 'switch'});
     });
 
     describe('when enabled', () => {
       it('updates `aria-checked`', () => {
         const toggle = mountWithApp(<SettingToggle enabled />);
-        expect(toggle).toContainReactComponent('button', {
+        expect(toggle).toContainReactComponent(Button, {
           role: 'switch',
-          'aria-checked': 'true',
+          ariaChecked: 'true',
         });
       });
     });
@@ -76,9 +77,9 @@ describe('<SettingToggle />', () => {
     describe('when disabled', () => {
       it('updates `aria-checked`', () => {
         const toggle = mountWithApp(<SettingToggle enabled={false} />);
-        expect(toggle).toContainReactComponent('button', {
+        expect(toggle).toContainReactComponent(Button, {
           role: 'switch',
-          'aria-checked': 'false',
+          ariaChecked: 'false',
         });
       });
     });
