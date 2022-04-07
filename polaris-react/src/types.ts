@@ -68,6 +68,8 @@ export interface BaseButton {
   ariaExpanded?: boolean;
   /** Indicates the ID of the element that describes the button */
   ariaDescribedBy?: string;
+  /** Indicates the current checked state of the button when acting as a toggle or switch */
+  ariaChecked?: 'false' | 'mixed' | 'true';
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */
