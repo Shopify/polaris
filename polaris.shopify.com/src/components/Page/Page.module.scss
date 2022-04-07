@@ -1,0 +1,87 @@
+.Page {
+  iframe {
+    border: none;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid;
+    cursor: pointer;
+  }
+
+  button[aria-current="true"] {
+    box-shadow: 0 0 0 3px black;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 1.2rem 0;
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
+
+  h1 {
+    font-size: 4em;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 1.6em;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid #333;
+  border-radius: 0 0 4px 4px;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-size: 1.15em;
+  font-weight: 500;
+
+  p {
+    margin: 0;
+  }
+}
+
+.Nav {
+  display: flex;
+  font-weight: 500;
+
+  a {
+    padding: 1.35em 0.5em;
+  }
+
+  li[aria-current="page"] a {
+    border-bottom: 4px solid black;
+  }
+}

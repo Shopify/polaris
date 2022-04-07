@@ -1,0 +1,75 @@
+.GlobalSearch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+
+  input {
+    background: white;
+    color: black;
+    appearance: none;
+    border: none;
+    outline: none;
+    border: 1px solid black;
+    padding: 0.75em 1em;
+    border-radius: 2px;
+    width: 100%;
+
+    &::placeholder {
+      color: #555;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+
+    &:focus-within {
+      // box-shadow: 0 0 0 2px black;
+    }
+  }
+}
+
+.Results {
+  position: absolute;
+  z-index: 2;
+  border-radius: 2px;
+  background: white;
+  width: 100%;
+  animation: search-results-enter 0.3s cubic-bezier(0.25, 1, 0.5, 1) both;
+  overflow: auto;
+  max-height: 70vh;
+  border: 1px solid;
+
+  li {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 1em 1.25em;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+@keyframes search-results-enter {
+  from {
+    transform: scale(0.98) translateY(4px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(4px);
+    opacity: 1;
+  }
+}

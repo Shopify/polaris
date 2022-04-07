@@ -1,0 +1,18 @@
+export type Result = {
+  title: string;
+  excerpt: string;
+  url: string;
+  meta: {
+    colorToken?: { value: string };
+    componentPreview?: { src: string };
+    icon?: { fileName: string };
+  };
+};
+
+export type LineConfig = {
+  iframeSelector?: string;
+  elementSelector: string;
+  offset?: number;
+  fromOrigin?: "center" | "edge" | "left" | "right";
+  toOrigin?: "center" | "edge" | "left" | "right";
+};

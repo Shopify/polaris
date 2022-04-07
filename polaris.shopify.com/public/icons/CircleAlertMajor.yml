@@ -1,0 +1,17 @@
+name: circle alert
+set: major
+description: Used to give merchants more information about something they should be aware of.
+keywords:
+  - attention
+  - alert
+  - warning
+  - exclamation
+  - bang
+  - circle
+  - round
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-21
+date_modified: 2019-02-21
+exclusive_use:

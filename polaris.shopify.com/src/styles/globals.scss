@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--light.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--extrabold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--black.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  appearance: none;
+}
+
+body {
+  font-family: ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  background-color: #fff;
+  color: #000;
+}
+
+.lede {
+  margin-bottom: 3rem !important;
+  font-size: 1.5rem;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -20px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  margin-bottom: 20px;
+}
+
+.usage-list {
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 2em;
+
+  .usage-list-part {
+    flex: 1;
+    background: white;
+    padding: 0.5em 2em;
+    border-radius: 4px;
+  }
+
+  .usage-list-part:first-child {
+    border-top: 3px solid green;
+  }
+
+  .usage-list-part:last-child {
+    border-top: 3px solid red;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

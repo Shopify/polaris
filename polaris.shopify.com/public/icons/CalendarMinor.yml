@@ -1,0 +1,16 @@
+name: calendar
+set: minor
+description: Used to denote the action of opening a date picker.
+keywords:
+  - calendar
+  - date
+  - time
+  - month
+  - year
+  - day
+authors:
+  - Adam Whitcroft
+date_added: 2018-11-14
+date_modified: 2018-11-14
+version: 1
+exclusive_use:

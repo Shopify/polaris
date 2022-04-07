@@ -1,0 +1,113 @@
+.TokenSection {
+  margin: 1em 0;
+  width: 100%;
+}
+
+.SectionContent {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+@keyframes animate-preview {
+  0%,
+  25% {
+    transform: translateZ(0px) rotateY(0deg);
+  }
+  80%,
+  100% {
+    transform: translateZ(10px) rotateY(36deg) rotateX(0) scale(1);
+  }
+}
+
+.ColorList {
+  flex: 1;
+}
+
+.TokenPreview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+
+  p {
+    margin: 0;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    font-size: 14px;
+  }
+}
+
+.TokenTabs [role="tablist"] {
+  margin-bottom: 32px;
+  display: flex;
+  gap: 4px;
+
+  button {
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+
+    &[aria-selected="true"] {
+      background: white;
+      color: black;
+    }
+  }
+}
+
+// Element Previews
+.PreviewBadge {
+  display: inline-block;
+  margin-bottom: 40px;
+  color: black;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.PreviewCard {
+  display: flex;
+  color: black;
+  padding: 16px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  position: relative;
+  gap: 12px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.PreviewCardIcon {
+  min-width: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  border-radius: 100px;
+}
+
+.PreviewCardHeading {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.PreviewTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.PreviewTextPrimary {
+  font-size: 1.4em;
+  font-weight: 500;
+  display: flex;
+  gap: 1em;
+}
+
+.PreviewAction {
+  padding: 1em 1.25em;
+  border-radius: 6px;
+}
