@@ -13,6 +13,9 @@ const filePath = path.join(dirPath, outFile);
 const groupedTokens = getGroupedCustomPropertyNames();
 const tokens = getCustomPropertyNames();
 
+// we don't need legacy tokens
+delete groupedTokens['legacy-tokens'];
+
 try {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath);

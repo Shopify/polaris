@@ -12,7 +12,7 @@ import {
 
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-import { allTokens, groupedTokens } from './data/allTokens';
+import {allTokens, groupedTokens} from './data/allTokens';
 
 type GroupedTokens = typeof groupedTokens;
 
@@ -26,25 +26,24 @@ const connection = createConnection(ProposedFeatures.all);
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
 type TokenGroup = {
-  [T in GroupedTokensKey]: RegExp
+  [T in GroupedTokensKey]: RegExp;
 };
 
 type TokenArray = {
-  [key: string]: any
-}
+  [key: string]: any;
+};
 
-allTokens as TokenArray
+allTokens as TokenArray;
 
 let tokenGroups: TokenGroup = {
-  color: /color/,
-  spacing: /margin|padding/,
+  color:
+    /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
+  spacing: /margin|padding|gap|top|left|right|bottom/,
   typography: /font|line-height/,
   'z-index': /z-index/,
   shape: /border/,
   depth: /shadow/,
-  motion: /something/,
-  "legacy-tokens": /\*/
-  // need to add depth, motion
+  motion: /animation/,
 };
 
 connection.onInitialize((params: InitializeParams) => {
@@ -66,20 +65,23 @@ connection.onInitialize((params: InitializeParams) => {
 // This handler provides the list of token completion items.
 connection.onCompletion(
   (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-    const doc = documents.get(textDocumentPosition.textDocument.uri)
+    const doc = documents.get(textDocumentPosition.textDocument.uri);
 
     // if the doc can't be found, return nothing
     if (!doc) {
-      return []
+      return [];
     }
 
-    const currentText = doc.getText({ start: { line: textDocumentPosition.position.line, character: 0 }, end: { line: textDocumentPosition.position.line, character: 1000}})
+    const currentText = doc.getText({
+      start: {line: textDocumentPosition.position.line, character: 0},
+      end: {line: textDocumentPosition.position.line, character: 1000},
+    });
 
     // iterate through token groups and find matches for css attributes
     for (const tokenGroup in tokenGroups) {
       const category = tokenGroup as keyof typeof tokenGroups;
 
-      if(tokenGroups[category].test(currentText)) {
+      if (tokenGroups[category].test(currentText)) {
         return groupedTokens[category].map((token: string): CompletionItem => {
           return {
             label: `var(${token})`,
