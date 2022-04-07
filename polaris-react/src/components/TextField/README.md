@@ -903,11 +903,14 @@ function TextFieldWithSuggestionExample() {
     setSuggestion('');
   }, []);
 
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Enter') {
-      handleChange(suggestion);
-    }
-  }, [suggestion, handleChange])
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Enter') {
+        handleChange(suggestion);
+      }
+    },
+    [suggestion, handleChange],
+  );
 
   return (
     <div onKeyDown={handleKeyDown}>
