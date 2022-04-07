@@ -853,6 +853,7 @@ function TextFieldWithSuggestionExample() {
       value={value}
       onChange={handleChange}
       suggestion={suggestion}
+      helpText="Available customer suggestions are: Ethel, Lucy, Ricky, and Fred"
     />
   );
 }
