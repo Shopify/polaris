@@ -56,6 +56,33 @@ describe('<SettingToggle />', () => {
       expect(toggle).toContainReactComponent('div', {id: 'someId'});
     });
   });
+
+  describe('accessibility', () => {
+    it('renders as a switch widget', () => {
+      const toggle = mountWithApp(<SettingToggle enabled />);
+      expect(toggle).toContainReactComponent('button', {role: 'switch'});
+    });
+
+    describe('when enabled', () => {
+      it('updates `aria-checked`', () => {
+        const toggle = mountWithApp(<SettingToggle enabled />);
+        expect(toggle).toContainReactComponent('button', {
+          role: 'switch',
+          'aria-checked': 'true',
+        });
+      });
+    });
+
+    describe('when disabled', () => {
+      it('updates `aria-checked`', () => {
+        const toggle = mountWithApp(<SettingToggle enabled={false} />);
+        expect(toggle).toContainReactComponent('button', {
+          role: 'switch',
+          'aria-checked': 'false',
+        });
+      });
+    });
+  });
 });
 
 function noop() {}
