@@ -47,10 +47,7 @@ export function getColorSchemeRules(
  */
 export function getStaticCustomProperties(tokens: Tokens) {
   return Object.entries(tokens)
-    .filter(
-      ([tokenGroup]) =>
-        !(tokenGroup === 'colorSchemes' || tokenGroup === 'keyframes'),
-    )
+    .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
     .map(([_, tokens]) => getCustomProperties(tokens))
     .join('');
 }
@@ -74,16 +71,21 @@ export function getColorSchemeDeclarations(
  */
 export function getCustomProperties(tokens: TokenGroup) {
   return Object.entries(tokens)
-    .map(([name, value]) => `--p-${name}:${value};`)
+    .map(([token, value]) =>
+      token.startsWith('keyframes')
+        ? `--p-${token}:p-${token};`
+        : `--p-${token}:${value};`,
+    )
     .join('');
 }
 
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-export function getKeyframes(keyframes: TokenGroup) {
-  return Object.entries(keyframes)
-    .map(([name, value]) => `@keyframes p-${name}${value}`)
+export function getKeyframes(motion: TokenGroup) {
+  return Object.entries(motion)
+    .filter(([token]) => token.startsWith('keyframes'))
+    .map(([token, value]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
@@ -93,5 +95,5 @@ export function getKeyframes(keyframes: TokenGroup) {
 export const styles = `
   :root{${defaultDeclarations}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
-  ${getKeyframes(tokens.keyframes)}
+  ${getKeyframes(tokens.motion)}
 `;

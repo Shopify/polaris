@@ -7,7 +7,7 @@
   left: 0;
   display: block;
   background-color: var(--p-backdrop);
-  animation: var(--p-animation-name-fade-in) var(--p-duration-200) 1 forwards;
+  animation: var(--p-keyframes-fade-in) var(--p-duration-200) 1 forwards;
   opacity: 0;
   will-change: opacity;
 }
