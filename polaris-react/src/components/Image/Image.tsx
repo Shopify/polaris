@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
+
+import {classNames} from '../../utilities/css';
+
+import styles from './Image.scss';
 
 interface SourceSet {
   source: string;
@@ -6,6 +10,7 @@ interface SourceSet {
 }
 
 type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
+type Status = 'loading' | 'loaded' | 'error';
 
 export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   alt: string;
@@ -16,23 +21,44 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   onError?(): void;
 }
 
-export function Image({sourceSet, source, crossOrigin, ...rest}: ImageProps) {
+export function Image({
+  alt,
+  sourceSet,
+  source,
+  crossOrigin,
+  onLoad,
+  className,
+  ...rest
+}: ImageProps) {
+  const [status, setStatus] = React.useState<Status>('loading');
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)
         .join(',')
     : null;
 
-  return finalSourceSet ? (
-    // eslint-disable-next-line jsx-a11y/alt-text
+  useEffect(() => setStatus('loading'), [status]);
+
+  const handleLoad = useCallback(() => {
+    if (onLoad) onLoad();
+    setStatus('loaded');
+  }, [onLoad]);
+
+  const imageClassName = classNames(
+    styles.Image,
+    status === 'loaded' && styles.hasLoaded,
+    className,
+  );
+
+  return (
     <img
+      alt={alt}
       src={source}
-      srcSet={finalSourceSet}
       crossOrigin={crossOrigin}
+      className={imageClassName}
+      onLoad={handleLoad}
+      {...(finalSourceSet ? {srcSet: finalSourceSet} : {})}
       {...rest}
     />
-  ) : (
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <img src={source} {...rest} crossOrigin={crossOrigin} />
   );
 }
