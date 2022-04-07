@@ -22,6 +22,48 @@ describe('<SettingToggle />', () => {
       );
       expect(children).toBe('Click me!');
     });
+
+    describe('accessibility', () => {
+      it('renders as a switch widget', () => {
+        const toggle = mountWithApp(
+          <SettingToggle
+            action={{content: 'Deactivate', onAction: () => {}}}
+            enabled
+          />,
+        );
+        expect(toggle).toContainReactComponent(Button, {role: 'switch'});
+      });
+
+      describe('when enabled', () => {
+        it('updates `aria-checked`', () => {
+          const toggle = mountWithApp(
+            <SettingToggle
+              action={{content: 'Deactivate', onAction: () => {}}}
+              enabled
+            />,
+          );
+          expect(toggle).toContainReactComponent('button', {
+            role: 'switch',
+            'aria-checked': 'true',
+          });
+        });
+      });
+
+      describe('when enabled=false', () => {
+        it('updates `aria-checked`', () => {
+          const toggle = mountWithApp(
+            <SettingToggle
+              action={{content: 'Activate', onAction: () => {}}}
+              enabled={false}
+            />,
+          );
+          expect(toggle).toContainReactComponent('button', {
+            role: 'switch',
+            'aria-checked': 'false',
+          });
+        });
+      });
+    });
   });
 
   describe('enabled', () => {
@@ -55,33 +97,6 @@ describe('<SettingToggle />', () => {
       const children = <div id="someId" />;
       const toggle = mountWithApp(<SettingToggle>{children}</SettingToggle>);
       expect(toggle).toContainReactComponent('div', {id: 'someId'});
-    });
-  });
-
-  describe('accessibility', () => {
-    it('renders as a switch widget', () => {
-      const toggle = mountWithApp(<SettingToggle enabled />);
-      expect(toggle).toContainReactComponent(Button, {role: 'switch'});
-    });
-
-    describe('when enabled', () => {
-      it('updates `aria-checked`', () => {
-        const toggle = mountWithApp(<SettingToggle enabled />);
-        expect(toggle).toContainReactComponent(Button, {
-          role: 'switch',
-          ariaChecked: 'true',
-        });
-      });
-    });
-
-    describe('when disabled', () => {
-      it('updates `aria-checked`', () => {
-        const toggle = mountWithApp(<SettingToggle enabled={false} />);
-        expect(toggle).toContainReactComponent(Button, {
-          role: 'switch',
-          ariaChecked: 'false',
-        });
-      });
     });
   });
 });
