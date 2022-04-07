@@ -91,8 +91,8 @@ export const Option = memo(function Option({
   return (
     <li
       {...sectionAttributes}
-      data-listbox-option-action={isAction}
       data-listbox-option
+      data-listbox-option-action={isAction}
       data-listbox-option-value={value}
       data-listbox-option-destructive={destructive}
       data-within-section={isWithinSection}
