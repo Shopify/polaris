@@ -21,7 +21,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Fixed automatic selection of first navigable `Listbox.Option` not resetting in `Listbox` ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Fixed subdued styles not applying to `Listbox.TextOption` when `disabled` ([5303](https://github.com/Shopify/polaris/pull/5303))
-- Fixed active `Listbox.Option` flashing when scrolled into view ([5303](https://github.com/Shopify/polaris/pull/5303))
 
 ### Documentation
 
