@@ -56,7 +56,6 @@
 
 .Indicator {
   height: inherit;
-  width: 0;
   background-color: var(--pc-progress-bar-indicator);
 
   @media screen and (-ms-high-contrast: active) {
@@ -65,9 +64,10 @@
 }
 
 .Animated {
-  will-change: width;
-  animation: var(--p-keyframes-fill-up) var(--p-duration-500) var(--p-ease);
-  transition: width var(--p-duration-500) var(--p-ease);
+  left: -50%;
+  position: relative;
+  transform: scaleX(0);
+  transition: transform var(--p-duration-500) var(--p-ease);
 }
 
 .Progress,
