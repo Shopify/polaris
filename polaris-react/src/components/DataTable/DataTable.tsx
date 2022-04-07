@@ -32,8 +32,8 @@ export interface DataTableProps {
   totals?: TableData[];
   /** Custom totals row heading */
   totalsName?: {
-    singular: string;
-    plural: string;
+    singular: React.ReactNode;
+    plural: React.ReactNode;
   };
   /** Placement of totals row within table */
   showTotalsInFooter?: boolean;
