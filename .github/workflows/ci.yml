@@ -25,6 +25,7 @@ jobs:
         with:
           path: |
             .loom
+            *.tsbuildinfo
             polaris-react/.loom
             polaris-react/build/ts/latest
             polaris.shopify.com/.next/cache
@@ -36,6 +37,7 @@ jobs:
       - run: yarn workspace @shopify/polaris run validate-tokens
       - run: yarn run build
       - run: yarn run lint
+      - run: yarn type-check
       - run: yarn workspace @shopify/polaris run test
 
   accessibility_test:

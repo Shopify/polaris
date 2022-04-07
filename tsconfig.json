@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    {"path": "./polaris-for-vscode"},
+    {"path": "./polaris-react"},
+    {"path": "./polaris.shopify.com"}
+  ]
+}

@@ -5,6 +5,7 @@
     "node": ">=16.13.0"
   },
   "workspaces": [
+    "polaris-for-vscode",
     "polaris-react",
     "stylelint-polaris",
     "polaris.shopify.com"
@@ -20,7 +21,8 @@
     "lint": "yarn run lint:eslint && yarn run lint:stylelint && yarn run lint:prettier",
     "lint:eslint": "eslint . --max-warnings 0 --cache --cache-location '.loom/cache/eslint'",
     "lint:stylelint": "yarn workspace '@shopify/stylelint-polaris' run gen-polaris-data && stylelint '**/*.scss'",
-    "lint:prettier": "prettier '**/*.{md,json,yaml,yml}' --check"
+    "lint:prettier": "prettier '**/*.{md,json,yaml,yml}' --check",
+    "type-check": "tsc --build"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.4",
