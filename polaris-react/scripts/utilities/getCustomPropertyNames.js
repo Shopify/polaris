@@ -27,18 +27,19 @@ const getCustomPropertyNames = () => {
 
 const getGroupedCustomPropertyNames = () => {
   const groupedTokens = {};
-  fs.readdirSync(tokenGroupsDir).map((file) => {
+  fs.readdirSync(tokenGroupsDir).forEach((file) => {
     const tokenGroup = require(path.join(tokenGroupsDir, file));
+    let filename = file;
 
     if (file.includes('color')) {
-      file = 'color';
+      filename = 'color';
     }
 
-    let tokenGroupCustomProperties = Object.keys(tokenGroup).map(
+    const tokenGroupCustomProperties = Object.keys(tokenGroup).map(
       (token) => `--p-${token}`,
     );
 
-    groupedTokens[file.replace('.json', '')] = tokenGroupCustomProperties;
+    groupedTokens[filename.replace('.json', '')] = tokenGroupCustomProperties;
   });
 
   return groupedTokens;
