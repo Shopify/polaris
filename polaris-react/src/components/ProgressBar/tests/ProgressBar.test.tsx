@@ -1,4 +1,5 @@
 import React from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ProgressBar} from '../ProgressBar';
@@ -24,20 +25,34 @@ describe('<ProgressBar />', () => {
     expect(progress).toContainReactComponent('progress', {value: 0});
   });
 
+  it('renders a CSSTransition component', () => {
+    const progress = mountWithApp(<ProgressBar />);
+
+    expect(progress).toContainReactComponent(CSSTransition, {
+      in: true,
+      appear: true,
+      timeout: 500,
+      classNames: {
+        appearActive: 'IndicatorAppearActive',
+        appearDone: 'IndicatorAppearDone',
+      },
+    });
+  });
+
   describe('animated prop', () => {
-    it('sets the progress bar to include the Animated class by default', () => {
+    it('sets the progress bar CSSTransition to have a non-zero timeout value by default', () => {
       const progress = mountWithApp(<ProgressBar progress={20} />);
-      expect(progress).toContainReactComponent('div', {
-        className: 'Indicator Animated',
+      expect(progress).toContainReactComponent(CSSTransition, {
+        timeout: 500,
       });
     });
 
-    it('sets the progress bar to exclude the Animated class when animated is false', () => {
+    it('sets the progress bar CSSTransition to have timeout of zero when animated is false', () => {
       const progress = mountWithApp(
         <ProgressBar animated={false} progress={20} />,
       );
-      expect(progress).toContainReactComponent('div', {
-        className: 'Indicator',
+      expect(progress).toContainReactComponent(CSSTransition, {
+        timeout: 0,
       });
     });
   });
