@@ -32,6 +32,7 @@
   "scripts": {
     "gen-polaris-vars": "node ./scripts/gen-polaris-vars.js",
     "build": "yarn gen-polaris-vars",
+    "test": "node tests/index.js",
     "type-check": "tsc --noEmit -p tsconfig.json",
     "prepublishOnly": "yarn build && yarn type-check"
   },

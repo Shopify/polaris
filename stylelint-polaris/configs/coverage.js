@@ -14,14 +14,18 @@ module.exports = {
     'declaration-property-value-disallowed-list': [
       {
         display: ['grid', 'flex'],
+        // No numeric values
         top: [/\$.+/],
         bottom: [/\$.+/],
         left: [/\$.+/],
         right: [/\$.+/],
         width: [/\$.+/],
         height: [/\$.+/],
+        // zero and one only, no numeric values or additions
         opacity: [/(?!0|1)\d|[\d.]{2,}/],
+        // polaris custom properties only
         'z-index': [/(\$.*|-?[0-9]+)/],
+        // polaris custom properties only
         'font-weight': [/(\$.*|[0-9]+)/],
       },
       {severity: 'warning'},
@@ -45,6 +49,11 @@ module.exports = {
         'position',
         'grid',
         'flex',
+        'flex-grow',
+        'flex-shrink',
+        'flex-basis',
+        'justify-content',
+        'align-items',
         'grid-row',
         'grid-row-start',
         'grid-row-end',
@@ -56,6 +65,7 @@ module.exports = {
         'grid-template-rows',
         'grid-template-columns',
         'grid-area',
+        'display',
       ],
       {severity: 'warning'},
     ],
