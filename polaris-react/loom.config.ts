@@ -1,6 +1,5 @@
 import {
   createPackage,
-  createWorkspacePlugin,
   createProjectPlugin,
   DiagnosticError,
 } from '@shopify/loom';
@@ -71,34 +70,41 @@ function jestAdjustmentsPlugin() {
 }
 
 function preAndPostBuildPlugin() {
-  return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
+  return createProjectPlugin('Polaris.BuildExtra', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
-      hooks.post.hook((steps) => [
-        ...steps,
-        api.createStep(
-          {id: 'PolarisBuild.Post', label: 'polaris post-build'},
-          async (step) => {
-            try {
-              await step.exec(
-                'node_modules/.bin/downlevel-dts',
-                ['build/ts/latest', 'build/ts/3.4'],
-                {all: true},
-              );
+      hooks.target.hook(({target, hooks}) => {
+        const isDefaultBuild = Object.keys(target.options).length === 0;
+        if (!isDefaultBuild) {
+          return;
+        }
 
-              await step.exec(
-                'node_modules/.bin/copyfiles',
-                ['./src/**/*.md', './build/docs', '--up=1'],
-                {all: true},
-              );
-            } catch (error) {
-              throw new DiagnosticError({
-                title: 'Error runing postbuild steps',
-                content: error.all,
-              });
-            }
-          },
-        ),
-      ]);
+        hooks.steps.hook((steps) => [
+          ...steps,
+          api.createStep(
+            {id: 'PolarisBuild.Extra', label: 'polaris build extra'},
+            async (step) => {
+              try {
+                await step.exec(
+                  'node_modules/.bin/downlevel-dts',
+                  ['build/ts/latest', 'build/ts/3.4'],
+                  {all: true},
+                );
+
+                await step.exec(
+                  'node_modules/.bin/copyfiles',
+                  ['./src/**/*.md', './build/docs', '--up=1'],
+                  {all: true},
+                );
+              } catch (error) {
+                throw new DiagnosticError({
+                  title: 'Error runing polaris build extra steps',
+                  content: error.all,
+                });
+              }
+            },
+          ),
+        ]);
+      });
     });
   });
 }
