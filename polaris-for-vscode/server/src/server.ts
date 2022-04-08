@@ -29,7 +29,7 @@ type TokenGroupPatterns = {
   [T in GroupedTokensKey]: RegExp;
 };
 
-let tokenGroups: TokenGroupPatterns = {
+let tokenGroupPatterns: TokenGroupPatterns = {
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
