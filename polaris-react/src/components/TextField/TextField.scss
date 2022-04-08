@@ -210,7 +210,8 @@ $spinner-icon-size: 12px;
   padding: var(--p-space-2) var(--p-space-3) var(--p-space-2) var(--p-space-2);
   max-height: 140px;
   overflow: scroll;
-  border: 1px solid transparent;
+  border: var(--p-border);
+  width: 100%;
 
   > .Input {
     padding-left: var(--p-space-0);
