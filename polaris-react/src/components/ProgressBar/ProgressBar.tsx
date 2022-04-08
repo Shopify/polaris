@@ -74,7 +74,7 @@ export function ProgressBar({
         }}
       >
         <div
-          className={classNames(styles.Indicator)}
+          className={styles.Indicator}
           style={
             {
               '--pc-progress-bar-duration': progressBarDuration,
