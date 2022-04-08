@@ -12,8 +12,7 @@ import {
 
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-import {allTokens, groupedTokens} from './data/allTokens';
-import { match } from 'assert';
+import { groupedTokens} from './data/allTokens';
 
 type GroupedTokens = typeof groupedTokens;
 
