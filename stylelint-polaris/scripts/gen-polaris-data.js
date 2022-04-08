@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const getCustomPropertyNames = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
+const {
+  getCustomPropertyNames,
+} = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
 const getKeyframeNames = require('../../polaris-react/scripts/utilities/getKeyframeNames');
 
 const dirPath = path.join(__dirname, '../data');
