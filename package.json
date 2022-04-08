@@ -1,6 +1,7 @@
 {
   "name": "polaris",
   "private": true,
+  "version": "9.3.0",
   "engines": {
     "node": ">=16.13.0"
   },
