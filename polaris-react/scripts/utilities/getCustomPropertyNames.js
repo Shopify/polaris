@@ -26,23 +26,20 @@ const getCustomPropertyNames = () => {
 };
 
 const getGroupedCustomPropertyNames = () => {
-  const groupedTokens = {};
-  fs.readdirSync(tokenGroupsDir).forEach((file) => {
-    const tokenGroup = require(path.join(tokenGroupsDir, file));
-    let filename = file;
+  return Object.fromEntries(
+    fs.readdirSync(tokenGroupsDir).map((fileName) => {
+      const tokenGroup = require(path.join(tokenGroupsDir, fileName));
 
-    if (file.includes('color')) {
-      filename = 'color';
-    }
-
-    const tokenGroupCustomProperties = Object.keys(tokenGroup).map(
-      (token) => `--p-${token}`,
-    );
-
-    groupedTokens[filename.replace('.json', '')] = tokenGroupCustomProperties;
-  });
-
-  return groupedTokens;
+      let tokenGroupName = path.basename(fileName, '.json');
+      if (fileName.startsWith('color.')) {
+        tokenGroupName = 'color';
+      }
+      const customPropertyNames = Object.keys(tokenGroup).map(
+        (token) => `--p-${token}`,
+      );
+      return [tokenGroupName, customPropertyNames];
+    }),
+  );
 };
 
 module.exports = {getGroupedCustomPropertyNames, getCustomPropertyNames};
