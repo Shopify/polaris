@@ -129,6 +129,12 @@ $breakpoint: 768px;
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2);
+    &:first-child {
+      padding-left: var(--p-space-4);
+    }
+    &:last-child {
+      padding-right: var(--p-space-4);
+    }
   }
 }
 
