@@ -13,6 +13,7 @@ export interface NavigationProps {
   isScrolledFarthestRight?: boolean;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
+  increasedTableDensity: boolean;
 }
 
 export function Navigation({
@@ -21,6 +22,7 @@ export function Navigation({
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
+  increasedTableDensity,
 }: NavigationProps) {
   const i18n = useI18n();
 
@@ -43,8 +45,15 @@ export function Navigation({
     {direction: 'right'},
   );
 
+  console.log(increasedTableDensity);
+
   return (
-    <div className={styles.Navigation}>
+    <div
+      className={classNames(
+        styles.Navigation,
+        increasedTableDensity && styles.IncreasedTableDensity,
+      )}
+    >
       <Button
         plain
         icon={ChevronLeftMinor}
