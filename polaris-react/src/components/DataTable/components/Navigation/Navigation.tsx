@@ -45,8 +45,6 @@ export function Navigation({
     {direction: 'right'},
   );
 
-  console.log(increasedTableDensity);
-
   return (
     <div
       className={classNames(
