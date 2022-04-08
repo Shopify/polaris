@@ -139,7 +139,7 @@ function ComboboxNoOptionsDisabled() {
       value={query}
       type="text"
       autoComplete="on"
-      ariaAutocomplete="list"
+      ariaAutocomplete="both"
       onChange={handleInputChange}
     />
   );

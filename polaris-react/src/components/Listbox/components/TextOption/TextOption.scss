@@ -71,6 +71,7 @@ li:first-of-type > .TextOption {
 // stylelint-disable-next-line selector-max-specificity
 [data-focused]:not(:focus) .TextOption:not(.disabled) {
   @include focus-ring($style: 'focused') {
+    // overriding the transition here prevents the flashing of an option's focus ring when focus is removed while scrolling the listbox with keyboard
     transition: box-shadow var(--p-duration-200) var(--p-ease-in);
   }
 }

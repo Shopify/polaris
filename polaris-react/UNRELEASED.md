@@ -11,6 +11,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Added support for setting a ReactNode on `DataTable` `totalsName` prop ([#5454](https://github.com/Shopify/polaris/pull/5365/))
 - Added a `suggestion` prop on `TextField` to support inline autocomplete ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Added support for setting `ariaAutocomplete` to `both` on `Combobox.TextField` ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Added a `willLoadMoreOptions` prop to `Combobox` that's passed to `Listbox` through context so that `onKeyToBottom` is only called if `willLoadMoreOptions` is `true` ([5303](https://github.com/Shopify/polaris/pull/5303))
@@ -21,6 +22,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Fixed automatic selection of first navigable `Listbox.Option` not resetting in `Listbox` ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Fixed subdued styles not applying to `Listbox.TextOption` when `disabled` ([5303](https://github.com/Shopify/polaris/pull/5303))
+- Fixed `Listbox.TextOption` keyboard focus ring flashing when focus moves to an option being scrolled into view ([5303](https://github.com/Shopify/polaris/pull/5303))
 
 ### Documentation
 
