@@ -30,8 +30,8 @@
     "node": ">=16.13.0"
   },
   "scripts": {
-    "gen-polaris-vars": "node ./scripts/gen-polaris-vars.js",
-    "build": "yarn gen-polaris-vars",
+    "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
+    "build": "yarn gen-polaris-data",
     "type-check": "tsc --noEmit -p tsconfig.json",
     "prepublishOnly": "yarn build && yarn type-check"
   },

@@ -1,7 +1,9 @@
 import React from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ProgressBar} from '../ProgressBar';
+import styles from '../ProgressBar.scss';
 
 describe('<ProgressBar />', () => {
   it('sets the progress element to 80 when the progress is 80', () => {
@@ -25,20 +27,39 @@ describe('<ProgressBar />', () => {
   });
 
   describe('animated prop', () => {
-    it('sets the progress bar to include the Animated class by default', () => {
+    it('sets the progress bar CSSTransition to have a non-zero timeout value by default', () => {
       const progress = mountWithApp(<ProgressBar progress={20} />);
-      expect(progress).toContainReactComponent('div', {
-        className: 'Indicator Animated',
+      const cssTransition = progress.find(CSSTransition);
+      const indicator = progress.find('div', {
+        className: styles.Indicator,
       });
+
+      const indicatorDuration =
+        indicator?.props.style![
+          '--pc-progress-bar-duration' as keyof React.CSSProperties
+        ];
+
+      expect(indicatorDuration).not.toBe('0ms');
+      expect(cssTransition!.props.timeout).toBeGreaterThan(0);
     });
 
-    it('sets the progress bar to exclude the Animated class when animated is false', () => {
+    it('sets the progress bar CSSTransition to have timeout of zero when animated is false', () => {
       const progress = mountWithApp(
         <ProgressBar animated={false} progress={20} />,
       );
-      expect(progress).toContainReactComponent('div', {
-        className: 'Indicator',
+
+      const cssTransition = progress.find(CSSTransition);
+      const indicator = progress.find('div', {
+        className: styles.Indicator,
       });
+
+      const indicatorDuration =
+        indicator?.props.style![
+          '--pc-progress-bar-duration' as keyof React.CSSProperties
+        ];
+
+      expect(indicatorDuration).toBe('0ms');
+      expect(cssTransition!.props.timeout).toBe(0);
     });
   });
 

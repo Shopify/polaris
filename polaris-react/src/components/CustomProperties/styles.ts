@@ -7,7 +7,7 @@ import {
   OSColorSchemes,
 } from '../../tokens';
 
-const defaultCustomProperties = `
+const defaultDeclarations = `
   ${getColorSchemeDeclarations('light', tokens, osColorSchemes)}
   ${getStaticCustomProperties(tokens)}
 `;
@@ -71,7 +71,21 @@ export function getColorSchemeDeclarations(
  */
 export function getCustomProperties(tokens: TokenGroup) {
   return Object.entries(tokens)
-    .map(([name, value]) => `--p-${name}:${value};`)
+    .map(([token, value]) =>
+      token.startsWith('keyframes')
+        ? `--p-${token}:p-${token};`
+        : `--p-${token}:${value};`,
+    )
+    .join('');
+}
+
+/**
+ * Concatenates the `keyframes` token-group into a single string.
+ */
+export function getKeyframes(motion: TokenGroup) {
+  return Object.entries(motion)
+    .filter(([token]) => token.startsWith('keyframes'))
+    .map(([token, value]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
@@ -79,6 +93,7 @@ export function getCustomProperties(tokens: TokenGroup) {
  * Adapted from: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
  */
 export const styles = `
-  :root{${defaultCustomProperties}}
+  :root{${defaultDeclarations}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
+  ${getKeyframes(tokens.motion)}
 `;
