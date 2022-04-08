@@ -72,10 +72,10 @@ connection.onCompletion(
     });
 
     // iterate through token groups and find matches for css attributes
-    for (const tokenGroup in tokenGroups) {
-      const category = tokenGroup as keyof typeof tokenGroups;
+    for (const tokenGroup in tokenGroupPatterns) {
+      const category = tokenGroup as keyof typeof tokenGroupPatterns;
 
-      if (tokenGroups[category].test(currentText)) {
+      if (tokenGroupPatterns[category].test(currentText)) {
         return groupedTokens[category].map((token: string): CompletionItem => {
           return {
             label: `var(${token})`,
