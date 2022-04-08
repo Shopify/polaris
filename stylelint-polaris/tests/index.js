@@ -1,31 +1,47 @@
 /* eslint-disable no-console */
-const fs = require('fs');
 const path = require('path');
 
 const stylelint = require('stylelint');
 
-const fixturePath = path.join(__dirname, 'fixture.css');
-const fileContent = fs.readFileSync(fixturePath, 'utf-8');
+const configs = {
+  external: {
+    path: path.join(__dirname, '../index.js'),
+    files: ['./external-fixture.scss', './coverage-fixture.scss'],
+    expectedFailures: 29,
+  },
+  internal: {
+    path: path.join(__dirname, '../configs/internal.js'),
+    files: ['./internal-fixture.scss', './coverage-fixture.scss'],
+    expectedFailures: 28,
+  },
+};
 
 (async () => {
-  const {results} = await stylelint.lint({
-    config: {
-      extends: '../index.js',
-      customSyntax: 'postcss-scss',
-    },
-    code: fileContent,
-  });
+  for (const [configName, config] of Object.entries(configs)) {
+    const {results} = await stylelint.lint({
+      config: {
+        extends: config.path,
+        customSyntax: 'postcss-scss',
+      },
+      files: config.files,
+      globbyOptions: {
+        cwd: __dirname,
+      },
+    });
 
-  const foundFailues = results[0].warnings.length;
-  const totalFailures = 26;
+    const foundFailues = results.reduce(
+      (warnings, result) => warnings + result.warnings.length,
+      0,
+    );
 
-  if (foundFailues === totalFailures) {
-    console.log(
-      `✅ stylelint-polaris found ${totalFailures} errors in fixture.css`,
-    );
-  } else {
-    throw Error(
-      `❌ stylelint-polaris found ${foundFailues} errors. Failed to find ${totalFailures} errors in fixture.css`,
-    );
+    if (foundFailues === config.expectedFailures) {
+      console.log(
+        `✅ stylelint-polaris found ${config.expectedFailures} errors in ${configName} config test`,
+      );
+    } else {
+      throw Error(
+        `❌ stylelint-polaris found ${foundFailues} errors. Failed to find ${config.expectedFailures} errors in the ${configName} config test`,
+      );
+    }
   }
 })();

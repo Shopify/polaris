@@ -1,16 +1,17 @@
-:root {
-  --pc-omg: orange;
-  --junk: brown;
+// 24 Errors
+
+.valid {
+  text-shadow: var(--p-space-025) var(--junk);
+  transition: ease-in-out var(--p-duration-100) opacity;
 }
 
-a {
+.invalid {
   background: red;
   color: #fff;
   border: solid var(--p-space-025) rgba(255, 255, 255);
-  box-shadow: 0 0 3px 3px var(--p-action-primary);
+  box-shadow: 0 0 3px var(--p-action-primary);
   font-family: var(--p-button-font);
   outline: solid var(--p-space-025) var(--pc-omg);
-  text-shadow: var(--p-space-025) var(--junk);
   font-weight: 400;
   top: 10px;
   display: grid;
@@ -24,14 +25,11 @@ p {
   z-index: calc(var(--p-z-1) + 10);
   display: flex;
   opacity: 90%;
-  transition: ease-in-out var(--p-duration-100)) opacity;
 }
 
 @media only screen and (max-width: 600px) {
   div {
-    border: var(--p-border);
     opacity: 0;
-    transition: var(--p-ease) var(--p-duration-100)) opacity;
   }
 }
 
@@ -48,6 +46,5 @@ p {
 @media only screen and (min-width: 50rem) {
   div {
     animation-duration: 3s;
-    animation-name: slidein;
   }
 }
