@@ -25,17 +25,11 @@ const connection = createConnection(ProposedFeatures.all);
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-type TokenGroup = {
+type TokenGroupPatterns = {
   [T in GroupedTokensKey]: RegExp;
 };
 
-type TokenArray = {
-  [key: string]: any;
-};
-
-allTokens as TokenArray;
-
-let tokenGroups: TokenGroup = {
+let tokenGroupPatterns: TokenGroupPatterns = {
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
