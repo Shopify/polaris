@@ -60,6 +60,7 @@ connection.onInitialize((params: InitializeParams) => {
 connection.onCompletion(
   (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
     const doc = documents.get(textDocumentPosition.textDocument.uri);
+    let completionItems: CompletionItem[] = [];
 
     // if the doc can't be found, return nothing
     if (!doc) {
@@ -72,17 +73,24 @@ connection.onCompletion(
     });
 
     // iterate through token groups and find matches for css attributes
-    for (const tokenGroup in tokenGroups) {
-      const category = tokenGroup as keyof typeof tokenGroups;
+    for (const tokenGroup in tokenGroupPatterns) {
+      const category = tokenGroup as keyof typeof tokenGroupPatterns;
 
-      if (tokenGroups[category].test(currentText)) {
-        return groupedTokens[category].map((token: string): CompletionItem => {
-          return {
-            label: `var(${token})`,
-            kind: CompletionItemKind.Variable,
-          };
-        });
+      if (tokenGroupPatterns[category].test(currentText)) {
+        completionItems = completionItems.concat(
+          groupedTokens[category].map((token: string): CompletionItem => {
+            return {
+              label: `var(${token})`,
+              kind: CompletionItemKind.Variable,
+            };
+          })
+        );
       }
+    }
+
+    // if we had matches, return the completion items
+    if (completionItems.length > 0) {
+      return completionItems;
     }
 
     // if no mateches above, iterate through all tokens and create completion
