@@ -8,7 +8,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Increased token coverage by creating `@keyframes` tokens and replacing hardcoded instances ([5427](https://github.com/Shopify/polaris/pull/5427/))
 - Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
-- Added a `verticalContent` prop to `TextField` to support rendering markup abouve the input value ([#5392](https://github.com/Shopify/polaris/pull/5392/))
+- Added a `verticalContent` prop to `TextField` to support rendering markup above the input value ([#5392](https://github.com/Shopify/polaris/pull/5392/))
 
 ### Bug fixes
 
