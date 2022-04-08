@@ -4,7 +4,7 @@ const path = require('path');
 
 const stylelint = require('stylelint');
 
-const fixturePath = path.join(process.cwd(), 'tests/fixture.css');
+const fixturePath = path.join(__dirname, 'fixture.css');
 const fileContent = fs.readFileSync(fixturePath, 'utf-8');
 
 (async () => {
