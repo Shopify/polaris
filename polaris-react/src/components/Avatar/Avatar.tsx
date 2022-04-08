@@ -95,7 +95,7 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     !customer && styles[variationName('style', styleClass(nameString))],
-    hasImage && status === Status.Loaded && styles.imageIsLoaded,
+    hasImage && status === Status.Loaded && styles.imageHasLoaded,
   );
 
   const imageClassName = classNames(

@@ -10,13 +10,14 @@ interface SourceSet {
 }
 
 type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
-type Status = 'loading' | 'loaded' | 'error';
+type Status = 'loading' | 'loaded';
 
 export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   alt: string;
   source: string;
   crossOrigin?: CrossOrigin;
   sourceSet?: SourceSet[];
+  noPlaceholder?: boolean;
   onLoad?(): void;
   onError?(): void;
 }
@@ -26,8 +27,9 @@ export function Image({
   sourceSet,
   source,
   crossOrigin,
+  noPlaceholder,
   onLoad,
-  className,
+  className: classNameProp,
   ...rest
 }: ImageProps) {
   const [status, setStatus] = React.useState<Status>('loading');
@@ -37,17 +39,17 @@ export function Image({
         .join(',')
     : null;
 
-  useEffect(() => setStatus('loading'), [status]);
+  useEffect(() => setStatus('loading'), [source, sourceSet]);
 
   const handleLoad = useCallback(() => {
     if (onLoad) onLoad();
     setStatus('loaded');
   }, [onLoad]);
 
-  const imageClassName = classNames(
+  const className = classNames(
     styles.Image,
-    status === 'loaded' && styles.hasLoaded,
-    className,
+    !noPlaceholder && status === 'loading' && styles.isLoading,
+    classNameProp,
   );
 
   return (
@@ -55,7 +57,7 @@ export function Image({
       alt={alt}
       src={source}
       crossOrigin={crossOrigin}
-      className={imageClassName}
+      className={className}
       onLoad={handleLoad}
       {...(finalSourceSet ? {srcSet: finalSourceSet} : {})}
       {...rest}

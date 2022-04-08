@@ -1,7 +1,7 @@
 .Image {
-  background-color: var(--p-surface-neutral);
+  background-color: transparent;
 }
 
-.hasLoaded {
-  background-color: transparent;
+.isLoading {
+  background-color: var(--p-surface-neutral);
 }
