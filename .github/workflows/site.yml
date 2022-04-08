@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'polaris.shopify.com/**'
+
+jobs:
+  site:
+    name: 'Deploy site'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      BUILDKITE_BUILD_URL: ${{ secrets.BUILDKITE_BUILD_URL }}
+      BUILDKITE_BUILD_TOKEN: ${{ secrets.BUILDKITE_BUILD_TOKEN }}
+    steps:
+      - run: |
+          git clone --no-tags --prune --depth=1 https://github.com/Shopify/polaris-site-container-builder.git
+          cd polaris-site-container-builder
+          curl --location --request POST "$BUILDKITE_BUILD_URL" \
+            --header "Authorization: Bearer $BUILDKITE_BUILD_TOKEN" \
+            --header "Content-Type: application/json" \
+            --data-raw "{\"commit\": \"$(git rev-parse HEAD)\",\"branch\": \"main\",\"message\": \":rocket: Update from Shopify/polaris\"}"
