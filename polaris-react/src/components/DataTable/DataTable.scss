@@ -77,6 +77,14 @@ $breakpoint: 768px;
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-4);
+    // padding: var(--p-space-2);
+    &:first-child {
+      padding-left: var(--p-space-4);
+    }
+    &:last-child {
+      padding-right: var(--p-space-4);
+    }
+
   }
 }
 
@@ -128,12 +136,16 @@ $breakpoint: 768px;
   padding: 0;
 
   .IncreasedTableDensity & {
-    padding: var(--p-space-2);
+    padding: var(--p-space-2) var(--p-space-3);
     &:first-child {
-      padding-left: var(--p-space-4);
+      padding-left: var(--p-space-3);
+      button {
+          padding-right: 0;
+          padding-left: var(--p-space-1);
+      }
     }
     &:last-child {
-      padding-right: var(--p-space-4);
+      padding-right: var(--p-space-3);
     }
   }
 }
