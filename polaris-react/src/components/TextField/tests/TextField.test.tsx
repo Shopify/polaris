@@ -375,19 +375,19 @@ describe('<TextField />', () => {
         .find('input')!
         .prop('aria-labelledby')!
         .split(' ');
+
       expect(labels).toHaveLength(2);
 
-      expect(
-        textField.find('label', {
-          id: `${labels[0]}`,
-        }),
-      )!.toContainReactText('TextField');
+      const label = textField.find('label', {
+        id: labels[0],
+      });
 
-      expect(
-        textField.find('div', {
-          id: `${labels[1]}`,
-        }),
-      )!.toContainReactText('$');
+      const prefix = textField.find('div', {
+        id: labels[1],
+      });
+
+      expect(label?.text()).toBe('TextField');
+      expect(prefix?.text()).toBe('$');
     });
 
     it('connects the input to the prefix, suffix, and label', () => {
@@ -400,29 +400,29 @@ describe('<TextField />', () => {
           autoComplete="off"
         />,
       );
+
       const labels = textField
         .find('input')!
         .prop('aria-labelledby')!
         .split(' ');
+
       expect(labels).toHaveLength(3);
 
-      expect(
-        textField.find('label', {
-          id: `${labels[0]}`,
-        }),
-      )!.toContainReactText('TextField');
+      const label = textField.find('label', {
+        id: labels[0],
+      });
 
-      expect(
-        textField.find('div', {
-          id: `${labels[1]}`,
-        }),
-      )!.toContainReactText('$');
+      const prefix = textField.find('div', {
+        id: labels[1],
+      });
 
-      expect(
-        textField.find('div', {
-          id: `${labels[2]}`,
-        }),
-      )!.toContainReactText('.00');
+      const suffix = textField.find('div', {
+        id: labels[2],
+      });
+
+      expect(label?.text()).toBe('TextField');
+      expect(prefix?.text()).toBe('$');
+      expect(suffix?.text()).toBe('.00');
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `prefix`', () => {
@@ -562,7 +562,7 @@ describe('<TextField />', () => {
 
       expect(
         textField.find('div', {
-          id: 'MyFieldCharacterCounter',
+          id: 'MyField-CharacterCounter',
         }),
       ).toContainReactText('4');
     });
@@ -582,7 +582,7 @@ describe('<TextField />', () => {
 
       expect(
         textField.find('div', {
-          id: 'MyFieldCharacterCounter',
+          id: 'MyField-CharacterCounter',
         }),
       ).toContainReactText('4/10');
     });
@@ -600,7 +600,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('div', {
-        id: 'MyFieldCharacterCounter',
+        id: 'MyField-CharacterCounter',
         'aria-live': 'off',
       });
 
@@ -611,7 +611,7 @@ describe('<TextField />', () => {
       textFieldDiv.trigger('onClick', {target: textFieldDiv.domNode!});
 
       expect(textField).toContainReactComponent('div', {
-        id: 'MyFieldCharacterCounter',
+        id: 'MyField-CharacterCounter',
         'aria-live': 'polite',
       });
     });
@@ -1460,6 +1460,58 @@ describe('<TextField />', () => {
       };
 
       expect(currentSelection).toStrictEqual(selection);
+    });
+  });
+
+  describe('suggestion', () => {
+    it('selects entire input when suggestion is set but value is empty', () => {
+      const value = '';
+      const suggestion = 'test';
+      const element = mountWithApp(
+        <TextField
+          value={value}
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+        />,
+      );
+
+      element.setProps({suggestion});
+
+      const input = element.find('input')!.domNode as HTMLInputElement;
+      const expectedSelection = {start: value.length, end: suggestion.length};
+      const currentSelection = {
+        start: input.selectionStart,
+        end: input.selectionEnd,
+      };
+
+      expect(currentSelection).toStrictEqual(expectedSelection);
+    });
+
+    it('selects the suggestion text not matching the value', () => {
+      const value = 't';
+      const suggestion = 'test';
+      const element = mountWithApp(
+        <TextField
+          focused
+          value=""
+          suggestion=""
+          label="TextField"
+          onChange={jest.fn()}
+          autoComplete="off"
+        />,
+      );
+
+      element.setProps({value, suggestion});
+
+      const expectedSelection = {start: value.length, end: suggestion.length};
+      const input = element.find('input')!.domNode as HTMLInputElement;
+      const currentSelection = {
+        start: input.selectionStart,
+        end: input.selectionEnd,
+      };
+
+      expect(currentSelection).toStrictEqual(expectedSelection);
     });
   });
 });

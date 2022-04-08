@@ -176,6 +176,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       allowMultiple={allowMultiple}
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
+      willLoadMoreOptions={willLoadMoreResults}
     >
       {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
         <Listbox onSelect={updateSelection}>
