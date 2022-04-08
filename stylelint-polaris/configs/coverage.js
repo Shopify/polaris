@@ -14,18 +14,15 @@ module.exports = {
     'declaration-property-value-disallowed-list': [
       {
         display: ['grid', 'flex'],
-        // No numeric values
-        top: [/\$.+/],
-        bottom: [/\$.+/],
-        left: [/\$.+/],
-        right: [/\$.+/],
-        width: [/\$.+/],
-        height: [/\$.+/],
-        // zero and one only, no numeric values or additions
-        opacity: [/(?!0|1)\d|[\d.]{2,}/],
         // polaris custom properties only
-        'z-index': [/(\$.*|-?[0-9]+)/],
-        // polaris custom properties only
+        top: [/^(?!var\(--p-.+\)$)/],
+        bottom: [/^(?!var\(--p-.+\)$)/],
+        left: [/^(?!var\(--p-.+\)$)/],
+        right: [/^(?!var\(--p-.+\)$)/],
+        width: [/^(?!var\(--p-.+\)$)/],
+        height: [/^(?!var\(--p-.+\)$)/],
+        opacity: [/^(?!var\(--p-.+\)$)/],
+        'z-index': [/^(?!var\(--p-.+\)$)/],
         'font-weight': [/(\$.*|[0-9]+)/],
       },
       {severity: 'warning'},
