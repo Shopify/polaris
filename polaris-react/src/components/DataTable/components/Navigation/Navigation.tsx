@@ -13,7 +13,7 @@ export interface NavigationProps {
   isScrolledFarthestRight?: boolean;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
-  increasedTableDensity: boolean;
+  increasedTableDensity?: boolean;
 }
 
 export function Navigation({
@@ -22,7 +22,7 @@ export function Navigation({
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
-  increasedTableDensity,
+  increasedTableDensity = false,
 }: NavigationProps) {
   const i18n = useI18n();
 
