@@ -10,7 +10,7 @@ const fileContent = fs.readFileSync(fixturePath, 'utf-8');
 (async () => {
   const {results} = await stylelint.lint({
     config: {
-      extends: '../index.js',
+      extends: path.join(__dirname, '../index.js'),
       customSyntax: 'postcss-scss',
     },
     code: fileContent,
