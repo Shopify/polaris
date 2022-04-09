@@ -47,6 +47,26 @@ type InputMode =
   | 'email'
   | 'url';
 
+interface SelectSuggestion {
+  suggestion?: string;
+}
+
+interface SelectTextOnFocus {
+  selectTextOnFocus?: true;
+}
+
+interface Readonly {
+  readonly?: true;
+}
+
+interface Disabled {
+  disabled?: true;
+}
+
+interface Interactive {
+  onChange(value: string, id: string): void;
+}
+
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
@@ -145,15 +165,16 @@ interface NonMutuallyExclusiveProps {
 }
 
 export type MutuallyExclusiveSelectionProps =
-  | {suggestion?: string; selectTextOnFocus?: undefined}
-  | {suggestion?: undefined; selectTextOnFocus?: true};
+  | SelectSuggestion
+  | SelectTextOnFocus;
+
+export type MutuallyExclusiveInteractionProps =
+  | Interactive
+  | Readonly
+  | Disabled;
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
-  (
-    | {readOnly: true}
-    | {disabled: true}
-    | {onChange(value: string, id: string): void}
-  ) &
+  MutuallyExclusiveInteractionProps &
   MutuallyExclusiveSelectionProps;
 
 export function TextField({
