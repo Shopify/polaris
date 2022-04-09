@@ -12,8 +12,12 @@ import debounce from 'lodash/debounce';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComboboxListbox} from '../../utilities/combobox';
-import {ListboxContext, WithinListboxContext} from '../../utilities/listbox';
-import type {NavigableOption} from '../../utilities/listbox';
+import {
+  ListboxContext,
+  WithinListboxContext,
+  NavigableOption,
+  scrollOptionIntoView,
+} from '../../utilities/listbox';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 import {VisuallyHidden} from '../VisuallyHidden';
@@ -137,25 +141,7 @@ export function Listbox({
     const {current: scrollable} = scrollableRef;
 
     if (scrollable) {
-      const listTop = scrollable.scrollTop;
-      const listBottom = listTop + scrollable.clientHeight;
-      const {offsetHeight: optionHeight} = option.element;
-      const {offsetTop: optionTop} = option.element;
-      const optionBottom = optionTop + optionHeight;
-      const isVisible = optionTop > listTop && optionBottom < listBottom;
-
-      if (!isVisible) {
-        let top = 0;
-        if (optionBottom > listBottom) {
-          top = optionBottom + optionHeight * 0.85 - listBottom;
-        } else if (optionTop < listTop) {
-          top = optionTop - optionHeight * 0.15 - listTop;
-        }
-
-        requestAnimationFrame(() => {
-          scrollable.scrollBy({top, behavior: 'auto'});
-        });
-      }
+      scrollOptionIntoView(option.element, scrollable);
     }
   }, []);
 
