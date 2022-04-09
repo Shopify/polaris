@@ -13,9 +13,8 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 ### Enhancements
 
 - Increased token coverage by creating `@keyframes` tokens and replacing hardcoded instances ([5427](https://github.com/Shopify/polaris/pull/5427/))
-- Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
-- Added a `verticalContent` prop to `TextField` to support rendering markup above the input value ([#5392](https://github.com/Shopify/polaris/pull/5392/))
 - Added support for setting a ReactNode on `DataTable` `totalsName` prop ([#5454](https://github.com/Shopify/polaris/pull/5365/))
+- Added a `verticalContent` prop to `TextField` to support rendering markup above the input value ([#5392](https://github.com/Shopify/polaris/pull/5392/))
 - Added a `suggestion` prop on `TextField` to support inline autocomplete ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Added support for setting `ariaAutocomplete` to `both` on `Combobox.TextField` ([5303](https://github.com/Shopify/polaris/pull/5303))
 - Added a `willLoadMoreOptions` prop to `Combobox` that's passed to `Listbox` through context so that `onKeyToBottom` is only called if `willLoadMoreOptions` is `true` ([5303](https://github.com/Shopify/polaris/pull/5303))
