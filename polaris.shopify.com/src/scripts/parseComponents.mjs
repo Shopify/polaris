@@ -39,33 +39,34 @@ export function parseMarkdown(inputMarkdown) {
     "/images-from-old-styleguide"
   );
 
+  // Add some custom HTML to <!-- usagelist --> and <!-- usageblock --> tags
+  const usageListRegex = /<!-- (usagelist|usageblock) -->(.*?)<!-- end -->/gis;
+  if (markdown.match(usageListRegex)) {
+    markdown = markdown.replaceAll(usageListRegex, (match) => {
+      const matchWithoutComments = match
+        .replace(/^<!-- usagelist -->/, "")
+        .replace(/^<!-- usageblock -->/, "")
+        .replace(/<!-- end -->$/, "");
+
+      let i = 0;
+      const matchWithColumns = matchWithoutComments.replaceAll(
+        /####/g,
+        (match) => {
+          if (i === 1) {
+            return `</div><div class="usage-list-part">\n\n####`;
+          }
+          i++;
+          return match;
+        }
+      );
+      console.log(matchWithColumns);
+
+      return `<div class="usage-list"><div class="usage-list-part">${matchWithColumns}</div></div>`;
+    });
+  }
+
   // Covert to HTML
   let html = marked(markdown);
-
-  // Add some custom HTML to <!-- usagelist --> tags
-  if (html.match("<!-- usagelist -->")) {
-    html = html
-      .split("<!-- usagelist -->")
-      .map((usagePart) => {
-        if (usagePart.match("<!-- end -->")) {
-          const subParts = usagePart.split("<!-- end -->");
-          let listContent = subParts[0];
-          listContent =
-            '<div class="usage-list-part">' +
-            listContent.replace(
-              '<h4 id="dont',
-              '</div><div class="usage-list-part"><h4 id="dont'
-            ) +
-            "</div>";
-          const otherContent = subParts.slice(1);
-          const newHTML = `<div class="usage-list">${listContent}</div>${otherContent}`;
-          return newHTML;
-        } else {
-          return usagePart;
-        }
-      })
-      .join("");
-  }
 
   const out = {
     ...meta,
