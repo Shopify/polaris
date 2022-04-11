@@ -40,6 +40,8 @@ export interface ListboxProps {
   enableKeyboardControl?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Whethor or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
+  willLoadMoreOptions?: boolean;
   /** Callback fired when an option is selected */
   onSelect?(value: string): void;
   /** Callback fired when an option becomes active */
@@ -57,6 +59,7 @@ export function Listbox({
   children,
   enableKeyboardControl,
   accessibilityLabel,
+  willLoadMoreOptions,
   onSelect,
   onActiveOptionChange,
 }: ListboxProps) {
@@ -80,7 +83,6 @@ export function Listbox({
     listboxId,
     textFieldLabelId,
     textFieldFocused,
-    willLoadMoreOptions,
     setActiveOptionId,
     setListboxId,
     onOptionSelected,

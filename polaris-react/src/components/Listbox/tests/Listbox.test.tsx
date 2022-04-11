@@ -675,9 +675,8 @@ describe('<Listbox>', () => {
     it('calls onKeyToBottom when the last item is focused', async () => {
       const onKeyToBottomSpy = jest.fn();
       const wrapper = mountWithComboboxListContext(
-        <MockComponent optionCount={50} />,
+        <MockComponent optionCount={50} willLoadMoreOptions={true} />,
         {
-          willLoadMoreOptions: true,
           onKeyToBottom: onKeyToBottomSpy,
         },
       );
@@ -691,6 +690,27 @@ describe('<Listbox>', () => {
       });
 
       expect(onKeyToBottomSpy).toHaveBeenCalled();
+    });
+
+    it('does not call onKeyToBottom when the last item is focused and willLoadMoreOptions is false', async () => {
+      const onKeyToBottomSpy = jest.fn();
+      const wrapper = mountWithComboboxListContext(
+        <MockComponent optionCount={50} />,
+        {
+          willLoadMoreOptions: false,
+          onKeyToBottom: onKeyToBottomSpy,
+        },
+      );
+
+      const options = wrapper.findAll(Listbox.Option);
+
+      expect(options[0].domNode?.getAttribute('data-focused')).toBe('true');
+
+      await wrapper.act(async () => {
+        await Promise.resolve(triggerUp(wrapper));
+      });
+
+      expect(onKeyToBottomSpy).not.toHaveBeenCalled();
     });
 
     it('enables keyboard controls when enableKeyboardControl prop changes from false to true', () => {
