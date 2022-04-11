@@ -25,7 +25,7 @@ jobs:
         with:
           path: |
             .loom
-            *.tsbuildinfo
+            **/*.tsbuildinfo
             polaris-react/.loom
             polaris-react/build/ts/latest
             polaris.shopify.com/.next/cache
