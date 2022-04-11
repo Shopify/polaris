@@ -6,6 +6,8 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
 import {EventListener} from '../EventListener';
+import {AfterInitialMount} from '../AfterInitialMount';
+import {Sticky} from '../Sticky';
 
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
@@ -90,6 +92,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private dataTable = createRef<HTMLDivElement>();
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
+
+  private tableHeadingWidths: any[] = [];
 
   private handleResize = debounce(() => {
     const {
@@ -193,10 +197,93 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       />
     );
 
+    const stickyHeaderMarkup = (
+      <AfterInitialMount>
+        <div className={styles.StickyTable} role="presentation">
+          <Sticky boundingElement={this.dataTable.current}>
+            {(isSticky: boolean) => {
+              const stickyHeaderClassNames = classNames(
+                styles.StickyTableHeader,
+                isSticky && styles['StickyTableHeader-isSticky'],
+              );
+
+              return (
+                <div className={stickyHeaderClassNames}>
+                  {/* {loadingMarkup} */}
+                  <div className={styles.StickyTableHeadings}>
+                    {headings.map((heading, index) => {
+                      const {
+                        sortable,
+                        truncate = false,
+                        columnContentTypes,
+                        defaultSortDirection,
+                        initialSortColumnIndex = 0,
+                        verticalAlign,
+                      } = this.props;
+
+                      const {
+                        sortDirection = defaultSortDirection,
+                        sortedColumnIndex = initialSortColumnIndex,
+                      } = this.state;
+
+                      const id = `heading-cell-${index}`;
+                      let sortableHeadingProps;
+
+                      if (sortable) {
+                        const isSortable = sortable[index];
+                        const isSorted =
+                          isSortable && sortedColumnIndex === index;
+                        const direction = isSorted ? sortDirection : 'none';
+
+                        sortableHeadingProps = {
+                          defaultSortDirection,
+                          sorted: isSorted,
+                          sortable: isSortable,
+                          sortDirection: direction,
+                          onSort: this.defaultOnSort(index),
+                        };
+                      }
+
+                      const stickyHeaderContentCell = (
+                        <Cell
+                          stickyHeadingCell
+                          setRef={(ref) => this.setCellRef(ref, index)}
+                          header
+                          content={heading}
+                          contentType={columnContentTypes[index]}
+                          firstColumn={index === 0}
+                          truncate={truncate}
+                          {...sortableHeadingProps}
+                          verticalAlign={verticalAlign}
+                        />
+                      );
+
+                      return (
+                        <div
+                          style={{
+                            width: this.tableHeadingWidths[index],
+                          }}
+                          key={id}
+                          data-index-table-sticky-heading
+                        >
+                          {stickyHeaderContentCell}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }}
+          </Sticky>
+        </div>
+      </AfterInitialMount>
+    );
+
     return (
       <div className={wrapperClassName}>
         {navigationMarkup}
         <div className={className} ref={this.dataTable}>
+          {stickyHeaderMarkup}
           <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
@@ -218,6 +305,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       </div>
     );
   }
+
+  private setCellRef = (ref: HTMLTableCellElement | null, index: number) => {
+    if (ref == null) {
+      return;
+    }
+    this.tableHeadingWidths[index] = ref.offsetWidth;
+  };
 
   private calculateColumnVisibilityData = (condensed: boolean) => {
     const {
@@ -333,6 +427,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     return (
       <Cell
+        setRef={(ref) => this.setCellRef(ref, headingIndex)}
         header
         key={id}
         content={heading}

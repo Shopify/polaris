@@ -175,6 +175,7 @@ $breakpoint: 768px;
   @include unstyled-button;
   @include focus-ring;
   position: relative;
+  background-color: lightblue;
   display: inline-flex;
   justify-content: flex-end;
   align-items: baseline;
@@ -191,6 +192,11 @@ $breakpoint: 768px;
     padding: 0;
     padding-right: var(--p-space-1);
     margin: 0;
+  }
+
+  .StickyTable & {
+    background-color: lightgoldenrodyellow;
+    position: relative;
   }
 
   &:hover {
@@ -276,4 +282,47 @@ $breakpoint: 768px;
   .ZebraStripingOnData & {
     background: none;
   }
+}
+
+.StickyTable {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  z-index: var(--pc-index-table-loading-panel);
+}
+
+.StickyTableHeader {
+  position: absolute;
+  display: flex;
+  width: 100%;
+
+  &:not(.StickyTableHeader-isSticky) {
+    top: -1000px;
+    left: -1000px;
+  }
+}
+
+.StickyTableColumnHeader-isScrolling {
+  box-shadow: 1px 1px 0 0 var(--p-border-divider),
+    1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
+}
+
+.StickyTableHeadings {
+  overflow: hidden;
+  flex: 1 1 auto;
+  display: flex;
+  background-color: var(--p-surface);
+  justify-content: space-between;
+
+  .Cell {
+    flex-grow: 1;
+  }
+}
+
+.StickyTableHeader-isSticky {
+  visibility: visible;
+  background-color: var(--p-surface);
+  box-shadow: var(--p-shadow-base);
 }

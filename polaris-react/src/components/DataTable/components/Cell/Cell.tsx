@@ -23,6 +23,8 @@ export interface CellProps {
   verticalAlign?: VerticalAlign;
   onSort?(): void;
   colSpan?: number;
+  setRef?: (ref: HTMLTableCellElement | null) => void;
+  stickyHeadingCell?: boolean;
 }
 
 export function Cell({
@@ -40,6 +42,8 @@ export function Cell({
   defaultSortDirection = 'ascending',
   onSort,
   colSpan,
+  setRef = () => {},
+  stickyHeadingCell = false,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -90,10 +94,22 @@ export function Cell({
 
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
+  const stickyHeading = (
+    <div
+      {...headerCell.props}
+      {...colSpanProp}
+      className={className}
+      aria-sort={sortDirection}
+    >
+      {columnHeadingContent}
+    </div>
+  );
+
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
       {...colSpanProp}
+      ref={setRef}
       className={className}
       scope="col"
       aria-sort={sortDirection}
@@ -115,5 +131,5 @@ export function Cell({
       </td>
     );
 
-  return cellMarkup;
+  return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
