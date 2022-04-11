@@ -45,7 +45,6 @@
     }
   },
   "scripts": {
-    "type-check": "loom type-check",
     "a11y-check": "node ./scripts/accessibility-check.js",
     "test": "loom test",
     "check": "npm-run-all lint type-check test",
