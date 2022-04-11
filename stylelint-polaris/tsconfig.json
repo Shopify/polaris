@@ -6,7 +6,10 @@
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
-    "noEmit": true
+    "composite": true,
+    "incremental": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "scripts"]
 }
