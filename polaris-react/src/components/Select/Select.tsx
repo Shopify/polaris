@@ -4,6 +4,7 @@ import {SelectMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
 
@@ -163,23 +164,25 @@ export function Select({
       requiredIndicator={requiredIndicator}
     >
       <div className={className}>
-        <select
-          id={id}
-          name={name}
-          value={value}
-          className={styles.Input}
-          disabled={disabled}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onChange={handleChange}
-          aria-invalid={Boolean(error)}
-          aria-describedby={
-            describedBy.length ? describedBy.join(' ') : undefined
-          }
-          aria-required={requiredIndicator}
-        >
-          {optionsMarkup}
-        </select>
+        <VisuallyHidden>
+          <select
+            id={id}
+            name={name}
+            value={value}
+            className={styles.Input}
+            disabled={disabled}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onChange={handleChange}
+            aria-invalid={Boolean(error)}
+            aria-describedby={
+              describedBy.length ? describedBy.join(' ') : undefined
+            }
+            aria-required={requiredIndicator}
+          >
+            {optionsMarkup}
+          </select>
+        </VisuallyHidden>
         {contentMarkup}
         <div className={styles.Backdrop} />
       </div>
