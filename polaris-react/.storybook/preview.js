@@ -1,5 +1,5 @@
 import React from 'react';
-import {addParameters, addDecorator} from '@storybook/react';
+import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -39,4 +39,8 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [StrictModeDecorator, AppProviderDecorator];
+export const decorators = [
+  StrictModeDecorator,
+  AppProviderDecorator,
+  withPerformance,
+];

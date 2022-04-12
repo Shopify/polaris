@@ -1,6 +1,6 @@
+import darkColorScheme from './token-groups/color.dark.json';
 import depth from './token-groups/depth.json';
 import legacyTokens from './token-groups/legacy-tokens.json';
-import darkColorScheme from './token-groups/color.dark.json';
 import lightColorScheme from './token-groups/color.light.json';
 import motion from './token-groups/motion.json';
 import shape from './token-groups/shape.json';
@@ -47,8 +47,8 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
-  depth: TokenGroup;
   colorSchemes: ColorSchemes;
+  depth: TokenGroup;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
   shape: TokenGroup;

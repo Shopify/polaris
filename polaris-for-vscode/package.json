@@ -29,8 +29,9 @@
   ],
   "main": "./client/out/extension.js",
   "scripts": {
-    "vscode:prepublish": "yarn run generateCustomPropertyNames && yarn run compile",
+    "vscode:prepublish": "yarn run build",
     "generateCustomPropertyNames": "node ./scripts/prepublish.js",
+    "build": "yarn run generateCustomPropertyNames && yarn run compile",
     "compile": "tsc -b",
     "watch": "tsc -b -w",
     "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",

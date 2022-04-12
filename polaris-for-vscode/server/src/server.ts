@@ -60,6 +60,7 @@ connection.onInitialize((params: InitializeParams) => {
 connection.onCompletion(
   (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
     const doc = documents.get(textDocumentPosition.textDocument.uri);
+    let completionItems: CompletionItem[] = [];
 
     // if the doc can't be found, return nothing
     if (!doc) {
@@ -76,13 +77,20 @@ connection.onCompletion(
       const category = tokenGroup as keyof typeof tokenGroupPatterns;
 
       if (tokenGroupPatterns[category].test(currentText)) {
-        return groupedTokens[category].map((token: string): CompletionItem => {
-          return {
-            label: `var(${token})`,
-            kind: CompletionItemKind.Variable,
-          };
-        });
+        completionItems = completionItems.concat(
+          groupedTokens[category].map((token: string): CompletionItem => {
+            return {
+              label: `var(${token})`,
+              kind: CompletionItemKind.Variable,
+            };
+          })
+        );
       }
+    }
+
+    // if we had matches, return the completion items
+    if (completionItems.length > 0) {
+      return completionItems;
     }
 
     // if no mateches above, iterate through all tokens and create completion

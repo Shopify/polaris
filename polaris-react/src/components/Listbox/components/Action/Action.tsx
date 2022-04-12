@@ -25,15 +25,15 @@ export function Action(props: ActionProps) {
   const className = classNames(styles.Action, divider && styles.ActionDivider);
 
   return (
-    <Option {...props}>
-      <ActionContext.Provider value>
+    <ActionContext.Provider value>
+      <Option {...props}>
         <div className={className}>
           <TextOption selected={selected} disabled={disabled}>
             {iconMarkup}
             {children}
           </TextOption>
         </div>
-      </ActionContext.Provider>
-    </Option>
+      </Option>
+    </ActionContext.Provider>
   );
 }
