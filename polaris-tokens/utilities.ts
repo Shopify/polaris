@@ -12,6 +12,9 @@ function rem(value: string) {
 
 export function tokensToRems(tokenGroup: TokenGroup): TokenGroup {
   return Object.fromEntries(
-    Object.entries(tokenGroup).map(([token, value]) => [token, rem(value)]),
+    Object.entries(tokenGroup).map(([token, values]) => [
+      token,
+      {...values, value: rem(values.value)},
+    ]),
   );
 }

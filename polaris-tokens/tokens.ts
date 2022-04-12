@@ -1,7 +1,7 @@
 import depth from './token-groups/depth.json';
-import legacyTokens from './token-groups/legacy-tokens.json';
+import legacyTokens from './token-groups/legacy.json';
 import darkColorScheme from './token-groups/color.dark.json';
-import lightColorScheme from './token-groups/color.light.json';
+import lightColorScheme from './token-groups/color.json';
 import motion from './token-groups/motion.json';
 import shape from './token-groups/shape.json';
 import spacing from './token-groups/spacing.json';
@@ -13,8 +13,14 @@ import {tokensToRems} from './utilities';
  * Values to convert to CSS custom properties.
  * @example {background: '#000'} // --p-background: #000;
  */
+export interface TokenValues {
+  description: string;
+  figmaName: string;
+  value: string;
+}
+
 export interface TokenGroup {
-  [token: string]: string;
+  [token: string]: TokenValues;
 }
 
 export type ColorScheme = 'light' | 'dark';
@@ -47,8 +53,8 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
+  color: TokenGroup;
   depth: TokenGroup;
-  colorSchemes: ColorSchemes;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
   shape: TokenGroup;
@@ -58,7 +64,7 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  colorSchemes,
+  color: lightColorScheme,
   depth,
   legacyTokens: tokensToRems(legacyTokens),
   motion,
