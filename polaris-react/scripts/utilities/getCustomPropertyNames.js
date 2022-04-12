@@ -54,7 +54,7 @@ const getGroupedCustomPropertyCompletionItems = () => {
             value: tokenGroup[token],
           };
         });
-        return [tokenGroupName, customPropertyNames];
+        return [tokenGroupName, customPropertyCompletionItems];
       }),
   );
 };
