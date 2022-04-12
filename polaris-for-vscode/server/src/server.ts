@@ -41,10 +41,10 @@ let tokenGroupPatterns: TokenGroupPatterns = {
 };
 
 type GroupedCompletionItem = {
-  [T in GroupedTokensKey]: CompletionItem[];
+  [T in GroupedTokensKey]?: CompletionItem[];
 };
 
-let groupedCompletionItems: Partial<GroupedCompletionItem> = {};
+let groupedCompletionItems: GroupedCompletionItem = {};
 
 let allCompletionItems: CompletionItem[] = [];
 
