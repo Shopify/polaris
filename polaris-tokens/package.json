@@ -1,0 +1,25 @@
+{
+  "name": "@shopify/polaris-tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run validate-tokens",
+    "validate-tokens": "ajv validate -s schemas/token-group.json -d 'token-groups/*.json'"
+  },
+  "devDependencies": {
+    "ajv-cli": "^5.0.0"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  }
+}
