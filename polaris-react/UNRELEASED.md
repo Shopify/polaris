@@ -4,7 +4,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
-- Removed `space-20` and `space-28` spacing tokens ([#](https://github.com/Shopify/polaris/pull/))
+- Removed `space-20` and `space-28` spacing tokens ([#5517](https://github.com/Shopify/polaris/pull/5517))
 
 ### Enhancements
 
