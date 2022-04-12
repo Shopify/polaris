@@ -13,10 +13,6 @@ const filePath = path.join(dirPath, outFile);
 const groupedTokens = getGroupedCustomPropertyCompletionItems();
 const tokens = getCustomPropertyNames();
 
-// we don't need legacy or color.dark tokens
-delete groupedTokens['legacy-tokens'];
-delete groupedTokens['color.dark'];
-
 try {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath);
