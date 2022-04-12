@@ -31,12 +31,17 @@ const getGroupedCustomPropertyNames = () => {
       const tokenGroup = require(path.join(tokenGroupsDir, fileName));
 
       let tokenGroupName = path.basename(fileName, '.json');
-      if (fileName.startsWith('color.')) {
+      // rename the color.light tokens
+      if (fileName.includes('.light')) {
         tokenGroupName = 'color';
       }
-      const customPropertyNames = Object.keys(tokenGroup).map(
-        (token) => `--p-${token}`,
-      );
+      const customPropertyNames = Object.keys(tokenGroup).map((token) => {
+        return {
+          label: token,
+          insertText: `var(--p-${token})`,
+          value: tokenGroup[token],
+        };
+      });
       return [tokenGroupName, customPropertyNames];
     }),
   );
