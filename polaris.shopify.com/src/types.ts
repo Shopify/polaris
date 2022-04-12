@@ -2,6 +2,7 @@ export type Result = {
   title: string;
   excerpt: string;
   url: string;
+  keywords: string[];
   meta: {
     colorToken?: { value: string };
     componentPreview?: { src: string };

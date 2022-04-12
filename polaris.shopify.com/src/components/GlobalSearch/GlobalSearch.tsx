@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { search } from "../../utils/search";
-import ComponentPreview from "../ComponentPreview";
 import { Result } from "../../types";
 import styles from "./GlobalSearch.module.scss";
 import { useCombobox } from "downshift";
@@ -23,6 +22,7 @@ function GlobalSearch({}: Props) {
     highlightedIndex,
     getItemProps,
   } = useCombobox({
+    id: "global-search",
     items: searchResults,
     onInputValueChange: ({ inputValue }) => {
       const results = search(inputValue || "");
@@ -59,10 +59,10 @@ function GlobalSearch({}: Props) {
               <li
                 style={
                   highlightedIndex === index
-                    ? { backgroundColor: "#ededed" }
+                    ? { backgroundColor: "rgba(0,0,0,.5)" }
                     : {}
                 }
-                key={`${item.url}${index}`}
+                key={`${item.url}`}
                 {...getItemProps({ item, index })}
               >
                 <Link href={item.url} passHref>
@@ -81,7 +81,7 @@ function GlobalSearch({}: Props) {
                     {item.meta.icon?.fileName && (
                       <div
                         style={{
-                          filter: `brightness(-500%)`,
+                          filter: `brightness(200%)`,
                           width: 32,
                           height: 32,
                           display: "flex",
@@ -124,13 +124,9 @@ function GlobalSearch({}: Props) {
                           minWidth: 100 * 2,
                           height: 65.25 * 2,
                           marginLeft: "auto",
+                          background: "#333",
                         }}
-                      >
-                        <ComponentPreview
-                          src={item.meta.componentPreview.src}
-                          id={item.url}
-                        />
-                      </div>
+                      ></div>
                     )}
                   </a>
                 </Link>

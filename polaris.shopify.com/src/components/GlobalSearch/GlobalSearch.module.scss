@@ -1,23 +1,17 @@
 .GlobalSearch {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 500px;
-
+  position: relative;
   input {
-    background: white;
-    color: black;
+    background: #111;
+    color: white;
     appearance: none;
     border: none;
     outline: none;
-    border: 1px solid black;
-    padding: 0.75em 1em;
-    border-radius: 2px;
+    padding: 0.75em 1.25em;
+    border-radius: 100px;
     width: 100%;
 
     &::placeholder {
-      color: #555;
+      color: #ddd;
     }
 
     &::-webkit-search-decoration,
@@ -36,16 +30,19 @@
 .Results {
   position: absolute;
   z-index: 2;
-  border-radius: 2px;
-  background: white;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.925);
+  color: white;
   width: 100%;
   animation: search-results-enter 0.3s cubic-bezier(0.25, 1, 0.5, 1) both;
   overflow: auto;
   max-height: 70vh;
-  border: 1px solid;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1),
+    0 100px 200px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 
   li {
-    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
     &:last-child {
       border-bottom: none;
     }
@@ -65,7 +62,7 @@
 
 @keyframes search-results-enter {
   from {
-    transform: scale(0.98) translateY(4px);
+    transform: scale(0.99) translateY(4px);
     opacity: 0;
   }
   to {

@@ -1,0 +1,73 @@
+.ComponentsNav {
+  --preview-width: 180px;
+  --preview-ratio: 1.33;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &[data-layout="tight"] {
+    --preview-width: 40px;
+  }
+
+  ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  li {
+    border-bottom: 1px solid #eaeaea;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 1em;
+      gap: 1em;
+    }
+
+    h4 {
+      margin-bottom: 0.33rem;
+    }
+
+    p {
+      margin-top: 0.33rem;
+      font-size: 0.8em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .Preview {
+    min-width: var(--preview-width);
+    max-width: var(--preview-width);
+    min-height: calc(var(--preview-width) / var(--preview-ratio));
+    max-height: calc(var(--preview-width) / var(--preview-ratio));
+    border-radius: 2px;
+    background: #ededed;
+    transition: all 0.25s ease;
+  }
+}
+
+.Filters {
+  padding: 1em;
+  border-bottom: 1px solid #eaeaea;
+
+  input {
+    margin-bottom: 12px;
+    padding: 0.66em 0.66em 0.66em 2.75em;
+    width: 100%;
+    outline: none;
+    border-radius: 4px;
+    background: #fff url(./FilterMajor.svg) no-repeat 1em center;
+    background-size: 16px auto;
+    border: 1px solid #ddd;
+    border-top-color: #aaa;
+  }
+  button {
+    margin: 0 2px 2px 0;
+  }
+}

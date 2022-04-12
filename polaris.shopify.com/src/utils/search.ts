@@ -1,21 +1,22 @@
 import { Result } from "../types";
 import colorLight from "../../../polaris-react/src/tokens/token-groups/color.light.json";
-import { components } from "../data/components";
+import components from "../data/components.json";
 import icons from "../data/icons.json";
 import Fuse from "fuse.js";
+import { stripMarkdownLinks } from "./various";
 
 let allPages: Result[] = [];
 
 // Add components
-Object.entries(components).forEach(([name, meta]) => {
+components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   allPages.push({
     title: name,
-    excerpt:
-      "This component is a great way to lorem ipsum dolor et amet consecteur.",
-    url: `/components/${meta.category}/${name}`,
+    excerpt: stripMarkdownLinks(intro),
+    url: `/components/${category}/${name}`,
+    keywords,
     meta: {
       componentPreview: {
-        src: `/previews/components/${meta.previewId || "card"}`,
+        src: `/previews/components/card`,
       },
     },
   });
@@ -27,6 +28,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
     title: `--p-${tokenName}`,
     excerpt: "",
     url: `/tokens/colors#${tokenName}`,
+    keywords: [],
     meta: {
       colorToken: { value: tokenValue },
     },
@@ -34,13 +36,14 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 });
 
 // Add icons
-icons.forEach((icon) => {
+icons.forEach(({ name, set, description, keywords, fileName }) => {
   allPages.push({
-    title: `${icon.name} (${icon.set})`,
-    excerpt: icon.description,
-    url: `/icons#${icon.name}-${icon.set}`,
+    title: `${name} (${set})`,
+    excerpt: description,
+    url: `/icons#${name}-${set}`,
+    keywords,
     meta: {
-      icon: { fileName: icon.fileName },
+      icon: { fileName },
     },
   });
 });
@@ -48,7 +51,7 @@ icons.forEach((icon) => {
 export function search(query: string): Result[] {
   if (query.length > 0) {
     const fuse = new Fuse(allPages, {
-      keys: [{ name: "title", weight: 2 }, "excerpt", "url"],
+      keys: [{ name: "title", weight: 2 }, "excerpt", "url", "keywords"],
     });
     const fuseResults = fuse.search(query);
     return fuseResults.map((result) => result.item).slice(0, 10);

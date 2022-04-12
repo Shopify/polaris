@@ -3,16 +3,6 @@
     border: none;
   }
 
-  button {
-    background: transparent;
-    border: 1px solid;
-    cursor: pointer;
-  }
-
-  button[aria-current="true"] {
-    box-shadow: 0 0 0 3px black;
-  }
-
   h1,
   h2,
   h3,
@@ -26,7 +16,7 @@
   }
 
   h1 {
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -39,33 +29,37 @@
   }
 
   h3 {
-    font-size: 1.6em;
-    font-weight: 500;
+    font-size: 1.25em;
+    font-weight: 600;
     line-height: 1.2;
   }
 
   h4 {
     font-size: 1.2em;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
   }
 }
 
 .Header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: 2em;
-  padding: 1.25rem 2rem;
-  border-bottom: 1px solid #333;
-  border-radius: 0 0 4px 4px;
+  padding: 0 2rem;
+  height: var(--header-height);
+  background: white;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .Logo {
   display: flex;
   align-items: center;
   gap: 0.75em;
-  font-size: 1.15em;
   font-weight: 500;
 
   p {
@@ -75,13 +69,59 @@
 
 .Nav {
   display: flex;
-  font-weight: 500;
+  font-weight: 400;
 
   a {
-    padding: 1.35em 0.5em;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 0.75em;
   }
 
   li[aria-current="page"] a {
-    border-bottom: 4px solid black;
+    box-shadow: inset 0 -3px currentColor;
+  }
+}
+
+.SearchWrapper {
+  margin-left: auto;
+  width: 16em;
+  align-self: center;
+  transition: width 0.25s ease;
+  &:focus-within {
+    width: 30em;
+  }
+}
+
+.Content {
+  margin: 2em auto;
+  display: flex;
+  max-width: 72em;
+}
+
+.MainContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.MainContentInner {
+  max-width: 40em;
+}
+
+.Sidebar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  width: 32em;
+  display: flex;
+
+  &.left {
+    border-right: 1px solid #eaeaea;
+  }
+  &.right {
+    border-left: 1px solid #eaeaea;
   }
 }
