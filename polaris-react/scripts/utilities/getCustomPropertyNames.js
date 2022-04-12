@@ -25,7 +25,7 @@ const getCustomPropertyNames = () => {
   return polarisTokenCustomProperties;
 };
 
-const getGroupedCustomPropertyNames = () => {
+const getGroupedCustomPropertyCompletionItems = () => {
   return Object.fromEntries(
     fs.readdirSync(tokenGroupsDir).map((fileName) => {
       const tokenGroup = require(path.join(tokenGroupsDir, fileName));
@@ -47,4 +47,7 @@ const getGroupedCustomPropertyNames = () => {
   );
 };
 
-module.exports = {getGroupedCustomPropertyNames, getCustomPropertyNames};
+module.exports = {
+  getGroupedCustomPropertyCompletionItems,
+  getCustomPropertyNames,
+};
