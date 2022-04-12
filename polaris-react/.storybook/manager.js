@@ -42,7 +42,7 @@ addons.setConfig({
     // Form colors
     inputBg: colors.background,
     inputBorder: colors.background,
-    inputTextColor: colors.surface,
+    inputTextColor: colors.text,
     inputBorderRadius: 4,
   }),
 });

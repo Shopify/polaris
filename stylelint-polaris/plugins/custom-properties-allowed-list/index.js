@@ -39,7 +39,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
  * @property {{[property: string]: AllowedPatterns}} [allowedValues]
  */
 
-module.exports = stylelint.createPlugin(
+const {rule} = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primary */
   (primary) => {
@@ -147,8 +147,11 @@ function validateCustomPropertyValues(allowedValues, prop, value) {
   return invalidValues;
 }
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+module.exports = {
+  rule,
+  ruleName,
+  messages,
+};
 
 /**
  * Validates the input is an array of String or RegExp.
