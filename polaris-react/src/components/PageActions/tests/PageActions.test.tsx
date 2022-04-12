@@ -87,5 +87,14 @@ describe('<PageActions />', () => {
       const pageActions = mountWithApp(<PageActions />);
       expect(pageActions.findAll(ButtonGroup)).toHaveLength(0);
     });
+
+    it('renders <CustomSecondaryActions /> if `ReactNode` is provided as `secondaryActions`', () => {
+      const CustomSecondaryActions = () => null;
+      const pageActions = mountWithApp(
+        <PageActions secondaryActions={<CustomSecondaryActions />} />,
+      );
+
+      expect(pageActions).toContainReactComponent(CustomSecondaryActions);
+    });
   });
 });
