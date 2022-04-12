@@ -47,7 +47,7 @@ const getGroupedCustomPropertyCompletionItems = () => {
         if (fileName.includes('.light')) {
           tokenGroupName = 'color';
         }
-        const customPropertyNames = Object.keys(tokenGroup).map((token) => {
+        const customPropertyCompletionItems = Object.keys(tokenGroup).map((token) => {
           return {
             label: token,
             insertText: `var(--p-${token})`,
