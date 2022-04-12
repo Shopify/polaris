@@ -175,7 +175,6 @@ $breakpoint: 768px;
   @include unstyled-button;
   @include focus-ring;
   position: relative;
-  background-color: lightblue;
   display: inline-flex;
   justify-content: flex-end;
   align-items: baseline;
@@ -192,11 +191,6 @@ $breakpoint: 768px;
     padding: 0;
     padding-right: var(--p-space-1);
     margin: 0;
-  }
-
-  .StickyTable & {
-    background-color: lightgoldenrodyellow;
-    position: relative;
   }
 
   &:hover {

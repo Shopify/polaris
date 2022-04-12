@@ -209,7 +209,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
               return (
                 <div className={stickyHeaderClassNames}>
-                  {/* {loadingMarkup} */}
                   <div className={styles.StickyTableHeadings}>
                     {headings.map((heading, index) => {
                       const {
