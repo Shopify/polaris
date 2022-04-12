@@ -2122,19 +2122,6 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.18.2.tgz#71af7bb9c001275fd7723c5853110ae80a7acd95"
   integrity sha512-Anl4Q59isVI29tcp/yG1jKQ+ndzsC0kHSAiVpdw4/3rGUCZrJwVq/BvKpKqtHMrYrypHCsAhzmVM1xOtzmPkxg==
 
-"@shopify/polaris@npm:@shopify/polaris":
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-9.4.0.tgz#6ca506437941ea1f9106b7b7f2a91350baa81c98"
-  integrity sha512-CwEET32Cx3IQL2MYXvkt+e+WBNmxxW3vJuHKK4gsuK0e2968JEA4RNbQeEXaloOqB6v8QJhJMPpT6K1w5G0ZzQ==
-  dependencies:
-    "@shopify/polaris-icons" "^4.18.2"
-    "@types/react" "^17.0.19"
-    "@types/react-dom" "^17.0.9"
-    "@types/react-transition-group" "^4.4.2"
-    focus-visible "^5.2.0"
-    lodash "^4.17.4"
-    react-transition-group "^4.4.2"
-
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz#2926cc11ef5ca456b8ac6586810c0f284136fc17"

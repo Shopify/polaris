@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
-    "@shopify/polaris": "npm:@shopify/polaris",
-    "@shopify/polaris-icons": "^4.18.2",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
     "next": "12.1.0",
