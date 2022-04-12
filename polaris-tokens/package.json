@@ -26,9 +26,6 @@
     "clean": "rm -rf .turbo node_modules dist"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^13.2.1",

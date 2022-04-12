@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {parse, traverse} from '@babel/core';
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
@@ -264,6 +265,7 @@ const config = {
       },
     }),
     babel({
+      configFile: '../babel.config.js',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       envName: 'production',
