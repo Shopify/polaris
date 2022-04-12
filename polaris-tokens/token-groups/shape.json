@@ -1,19 +1,87 @@
 {
-  "border-radius-05": "2px",
-  "border-radius-1": "4px",
-  "border-radius-2": "8px",
-  "border-radius-3": "12px",
-  "border-radius-4": "16px",
-  "border-radius-5": "20px",
-  "border-radius-6": "30px",
-  "border-radius-base": "3px",
-  "border-radius-large": "6px",
-  "border-radius-half": "50%",
-  "border-width-1": "1px",
-  "border-width-2": "2px",
-  "border-width-3": "3px",
-  "border-base": "var(--p-border-width-1) solid var(--p-border-subdued)",
-  "border-dark": "var(--p-border-width-1) solid var(--p-border)",
-  "border-transparent": "var(--p-border-width-1) solid transparent",
-  "border-divider": "var(--p-border-width-1) solid var(--p-divider)"
+  "border-radius-05": {
+    "value": "2px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-1": {
+    "value": "4px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-2": {
+    "value": "8px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-3": {
+    "value": "12px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-4": {
+    "value": "16px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-5": {
+    "value": "20px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-6": {
+    "value": "30px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-base": {
+    "value": "3px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-large": {
+    "value": "6px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-radius-half": {
+    "value": "50%",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-width-1": {
+    "value": "1px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-width-2": {
+    "value": "2px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-width-3": {
+    "value": "3px",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-base": {
+    "value": "var(--p-border-width-1) solid var(--p-border-subdued)",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-dark": {
+    "value": "var(--p-border-width-1) solid var(--p-border)",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-transparent": {
+    "value": "var(--p-border-width-1) solid transparent",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-divider": {
+    "value": "var(--p-border-width-1) solid var(--p-divider)",
+    "description": "",
+    "figmaName": ""
+  }
 }

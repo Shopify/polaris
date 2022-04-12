@@ -1,14 +1,62 @@
 {
-  "z-1": "100",
-  "z-2": "400",
-  "z-3": "510",
-  "z-4": "512",
-  "z-5": "513",
-  "z-6": "514",
-  "z-7": "515",
-  "z-8": "516",
-  "z-9": "517",
-  "z-10": "518",
-  "z-11": "519",
-  "z-12": "520"
+  "z-1": {
+    "value": "100",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-2": {
+    "value": "400",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-3": {
+    "value": "510",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-4": {
+    "value": "512",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-5": {
+    "value": "513",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-6": {
+    "value": "514",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-7": {
+    "value": "515",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-8": {
+    "value": "516",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-9": {
+    "value": "517",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-10": {
+    "value": "518",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-11": {
+    "value": "519",
+    "description": "",
+    "figmaName": ""
+  },
+  "z-12": {
+    "value": "520",
+    "description": "",
+    "figmaName": ""
+  }
 }

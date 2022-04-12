@@ -1,81 +1,81 @@
 {
   "background": {
-    "value": "rgba(11, 12, 13, 1)",
+    "value": "rgba(246, 246, 247, 1)",
     "description": "",
     "figmaName": ""
   },
   "background-hovered": {
-    "value": "rgba(11, 12, 13, 1)",
+    "value": "rgba(241, 242, 243, 1)",
     "description": "",
     "figmaName": ""
   },
   "background-pressed": {
-    "value": "rgba(11, 12, 13, 1)",
+    "value": "rgba(237, 238, 239, 1)",
     "description": "",
     "figmaName": ""
   },
   "background-selected": {
-    "value": "rgba(11, 12, 13, 1)",
+    "value": "rgba(237, 238, 239, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface": {
-    "value": "rgba(32, 33, 35, 1)",
+    "value": "rgba(255, 255, 255, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-neutral": {
-    "value": "rgba(49, 51, 53, 1)",
+    "value": "rgba(228, 229, 231, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-neutral-hovered": {
-    "value": "rgba(49, 51, 53, 1)",
+    "value": "rgba(219, 221, 223, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-neutral-pressed": {
-    "value": "rgba(49, 51, 53, 1)",
+    "value": "rgba(201, 204, 208, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-neutral-disabled": {
-    "value": "rgba(49, 51, 53, 1)",
+    "value": "rgba(241, 242, 243, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-neutral-subdued": {
-    "value": "rgba(68, 71, 74, 1)",
+    "value": "rgba(246, 246, 247, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-subdued": {
-    "value": "rgba(26, 28, 29, 1)",
+    "value": "rgba(250, 251, 251, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-disabled": {
-    "value": "rgba(26, 28, 29, 1)",
+    "value": "rgba(250, 251, 251, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-hovered": {
-    "value": "rgba(47, 49, 51, 1)",
+    "value": "rgba(246, 246, 247, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-pressed": {
-    "value": "rgba(62, 64, 67, 1)",
+    "value": "rgba(241, 242, 243, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-depressed": {
-    "value": "rgba(80, 83, 86, 1)",
+    "value": "rgba(237, 238, 239, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-search-field": {
-    "value": "rgba(47, 49, 51, 1)",
+    "value": "rgba(241, 242, 243, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -85,147 +85,147 @@
     "figmaName": ""
   },
   "overlay": {
-    "value": "rgba(33, 33, 33, 0.5)",
+    "value": "rgba(255, 255, 255, 0.5)",
     "description": "",
     "figmaName": ""
   },
   "shadow-color-picker": {
-    "value": "rgba(0, 0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0.5)",
     "description": "",
     "figmaName": ""
   },
   "shadow-color-picker-dragger": {
-    "value": "rgba(0, 0, 0, 0)",
+    "value": "rgba(33, 43, 54, 0.32)",
     "description": "",
     "figmaName": ""
   },
   "hint-from-direct-light": {
-    "value": "rgba(185, 185, 185, 0.2)",
+    "value": "rgba(0, 0, 0, 0.15)",
     "description": "",
     "figmaName": ""
   },
   "border": {
-    "value": "rgba(80, 83, 86, 1)",
+    "value": "rgba(140, 145, 150, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-neutral-subdued": {
-    "value": "rgba(130, 135, 139, 1)",
+    "value": "rgba(186, 191, 195, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-hovered": {
-    "value": "rgba(80, 83, 86, 1)",
+    "value": "rgba(153, 158, 164, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-disabled": {
-    "value": "rgba(103, 107, 111, 1)",
+    "value": "rgba(210, 213, 216, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-subdued": {
-    "value": "rgba(130, 135, 139, 1)",
+    "value": "rgba(201, 204, 207, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-depressed": {
-    "value": "rgba(142, 145, 145, 1)",
+    "value": "rgba(87, 89, 89, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-shadow": {
-    "value": "rgba(91, 95, 98, 1)",
+    "value": "rgba(174, 180, 185, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-shadow-subdued": {
-    "value": "rgba(130, 135, 139, 1)",
+    "value": "rgba(186, 191, 196, 1)",
     "description": "",
     "figmaName": ""
   },
   "divider": {
-    "value": "rgba(69, 71, 73, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "icon": {
-    "value": "rgba(166, 172, 178, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "icon-hovered": {
     "value": "rgba(225, 227, 229, 1)",
     "description": "",
     "figmaName": ""
   },
+  "icon": {
+    "value": "rgba(92, 95, 98, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "icon-hovered": {
+    "value": "rgba(26, 28, 29, 1)",
+    "description": "",
+    "figmaName": ""
+  },
   "icon-pressed": {
-    "value": "rgba(166, 172, 178, 1)",
+    "value": "rgba(68, 71, 74, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-disabled": {
-    "value": "rgba(84, 87, 90, 1)",
+    "value": "rgba(186, 190, 195, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-subdued": {
-    "value": "rgba(120, 125, 129, 1)",
+    "value": "rgba(140, 145, 150, 1)",
     "description": "",
     "figmaName": ""
   },
   "text": {
-    "value": "rgba(227, 229, 231, 1)",
+    "value": "rgba(32, 34, 35, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-disabled": {
-    "value": "rgba(111, 115, 119, 1)",
+    "value": "rgba(140, 145, 150, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-subdued": {
-    "value": "rgba(153, 159, 164, 1)",
+    "value": "rgba(109, 113, 117, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive": {
-    "value": "rgba(54, 163, 255, 1)",
+    "value": "rgba(44, 110, 203, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-disabled": {
-    "value": "rgba(38, 98, 182, 1)",
+    "value": "rgba(189, 193, 204, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-hovered": {
-    "value": "rgba(103, 175, 255, 1)",
+    "value": "rgba(31, 81, 153, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-pressed": {
-    "value": "rgba(136, 188, 255, 1)",
+    "value": "rgba(16, 50, 98, 1)",
     "description": "",
     "figmaName": ""
   },
   "focused": {
-    "value": "rgba(38, 98, 182, 1)",
+    "value": "rgba(69, 143, 255, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-selected": {
-    "value": "rgba(2, 14, 35, 1)",
+    "value": "rgba(242, 247, 254, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-selected-hovered": {
-    "value": "rgba(7, 29, 61, 1)",
+    "value": "rgba(237, 244, 254, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-selected-pressed": {
-    "value": "rgba(13, 43, 86, 1)",
+    "value": "rgba(229, 239, 253, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -240,27 +240,27 @@
     "figmaName": ""
   },
   "action-secondary": {
-    "value": "rgba(77, 80, 83, 1)",
+    "value": "rgba(255, 255, 255, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-secondary-disabled": {
-    "value": "rgba(32, 34, 35, 1)",
+    "value": "rgba(255, 255, 255, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-secondary-hovered": {
-    "value": "rgba(84, 87, 91, 1)",
+    "value": "rgba(246, 246, 247, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-secondary-pressed": {
-    "value": "rgba(96, 100, 103, 1)",
+    "value": "rgba(241, 242, 243, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-secondary-depressed": {
-    "value": "rgba(123, 127, 132, 1)",
+    "value": "rgba(109, 113, 117, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -270,27 +270,27 @@
     "figmaName": ""
   },
   "action-primary-disabled": {
-    "value": "rgba(0, 86, 64, 1)",
+    "value": "rgba(241, 241, 241, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-primary-hovered": {
-    "value": "rgba(0, 150, 113, 1)",
+    "value": "rgba(0, 110, 82, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-primary-pressed": {
-    "value": "rgba(0, 164, 124, 1)",
+    "value": "rgba(0, 94, 70, 1)",
     "description": "",
     "figmaName": ""
   },
   "action-primary-depressed": {
-    "value": "rgba(0, 179, 136, 1)",
+    "value": "rgba(0, 61, 44, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-on-primary": {
-    "value": "rgba(230, 255, 244, 1)",
+    "value": "rgba(255, 255, 255, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -300,112 +300,112 @@
     "figmaName": ""
   },
   "text-primary": {
-    "value": "rgba(0, 141, 106, 1)",
+    "value": "rgba(0, 123, 92, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-primary-hovered": {
-    "value": "rgba(0, 158, 120, 1)",
+    "value": "rgba(0, 108, 80, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-primary-pressed": {
-    "value": "rgba(0, 176, 133, 1)",
+    "value": "rgba(0, 92, 68, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-primary-selected": {
-    "value": "rgba(12, 18, 16, 1)",
+    "value": "rgba(241, 248, 245, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-primary-selected-hovered": {
-    "value": "rgba(40, 48, 44, 1)",
+    "value": "rgba(179, 208, 195, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-primary-selected-pressed": {
-    "value": "rgba(54, 64, 59, 1)",
+    "value": "rgba(162, 188, 176, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-critical": {
-    "value": "rgba(227, 47, 14, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "border-critical-subdued": {
-    "value": "rgba(227, 47, 14, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "border-critical-disabled": {
-    "value": "rgba(131, 23, 4, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "icon-critical": {
-    "value": "rgba(218, 45, 13, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "surface-critical": {
-    "value": "rgba(69, 7, 1, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "surface-critical-subdued": {
-    "value": "rgba(69, 7, 1, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "surface-critical-subdued-hovered": {
-    "value": "rgba(68, 23, 20, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "surface-critical-subdued-pressed": {
-    "value": "rgba(107, 16, 3, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "surface-critical-subdued-depressed": {
-    "value": "rgba(135, 24, 5, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "text-critical": {
-    "value": "rgba(233, 128, 122, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "action-critical": {
-    "value": "rgba(205, 41, 12, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "action-critical-disabled": {
-    "value": "rgba(187, 37, 10, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "action-critical-hovered": {
-    "value": "rgba(227, 47, 14, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "action-critical-pressed": {
-    "value": "rgba(250, 53, 17, 1)",
-    "description": "",
-    "figmaName": ""
-  },
-  "action-critical-depressed": {
     "value": "rgba(253, 87, 73, 1)",
     "description": "",
     "figmaName": ""
   },
+  "border-critical-subdued": {
+    "value": "rgba(224, 179, 178, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "border-critical-disabled": {
+    "value": "rgba(255, 167, 163, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "icon-critical": {
+    "value": "rgba(215, 44, 13, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "surface-critical": {
+    "value": "rgba(254, 211, 209, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "surface-critical-subdued": {
+    "value": "rgba(255, 244, 244, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "surface-critical-subdued-hovered": {
+    "value": "rgba(255, 240, 240, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "surface-critical-subdued-pressed": {
+    "value": "rgba(255, 233, 232, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "surface-critical-subdued-depressed": {
+    "value": "rgba(254, 188, 185, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "text-critical": {
+    "value": "rgba(215, 44, 13, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "action-critical": {
+    "value": "rgba(216, 44, 13, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "action-critical-disabled": {
+    "value": "rgba(241, 241, 241, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "action-critical-hovered": {
+    "value": "rgba(188, 34, 0, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "action-critical-pressed": {
+    "value": "rgba(162, 27, 0, 1)",
+    "description": "",
+    "figmaName": ""
+  },
+  "action-critical-depressed": {
+    "value": "rgba(108, 15, 0, 1)",
+    "description": "",
+    "figmaName": ""
+  },
   "icon-on-critical": {
-    "value": "rgba(255, 248, 247, 1)",
+    "value": "rgba(255, 255, 255, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -415,62 +415,62 @@
     "figmaName": ""
   },
   "interactive-critical": {
-    "value": "rgba(253, 114, 106, 1)",
+    "value": "rgba(216, 44, 13, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-critical-disabled": {
-    "value": "rgba(254, 172, 168, 1)",
+    "value": "rgba(253, 147, 141, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-critical-hovered": {
-    "value": "rgba(253, 138, 132, 1)",
+    "value": "rgba(205, 41, 12, 1)",
     "description": "",
     "figmaName": ""
   },
   "interactive-critical-pressed": {
-    "value": "rgba(253, 159, 155, 1)",
+    "value": "rgba(103, 15, 3, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-warning": {
-    "value": "rgba(153, 112, 0, 1)",
+    "value": "rgba(185, 137, 0, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-warning-subdued": {
-    "value": "rgba(153, 112, 0, 1)",
+    "value": "rgba(225, 184, 120, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-warning": {
-    "value": "rgba(104, 75, 0, 1)",
+    "value": "rgba(185, 137, 0, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-warning": {
-    "value": "rgba(153, 112, 0, 1)",
+    "value": "rgba(255, 215, 157, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-warning-subdued": {
-    "value": "rgba(77, 59, 29, 1)",
+    "value": "rgba(255, 245, 234, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-warning-subdued-hovered": {
-    "value": "rgba(82, 63, 32, 1)",
+    "value": "rgba(255, 242, 226, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-warning-subdued-pressed": {
-    "value": "rgba(87, 67, 34, 1)",
+    "value": "rgba(255, 235, 211, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-warning": {
-    "value": "rgba(202, 149, 0, 1)",
+    "value": "rgba(145, 106, 0, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -480,77 +480,77 @@
     "figmaName": ""
   },
   "border-highlight-subdued": {
-    "value": "rgba(68, 157, 167, 1)",
+    "value": "rgba(152, 198, 205, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-highlight": {
-    "value": "rgba(44, 108, 115, 1)",
+    "value": "rgba(0, 160, 172, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-highlight": {
-    "value": "rgba(0, 105, 113, 1)",
+    "value": "rgba(164, 232, 242, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-highlight-subdued": {
-    "value": "rgba(18, 53, 57, 1)",
+    "value": "rgba(235, 249, 252, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-highlight-subdued-hovered": {
-    "value": "rgba(20, 58, 62, 1)",
+    "value": "rgba(228, 247, 250, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-highlight-subdued-pressed": {
-    "value": "rgba(24, 65, 70, 1)",
+    "value": "rgba(213, 243, 248, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-highlight": {
-    "value": "rgba(162, 239, 250, 1)",
+    "value": "rgba(52, 124, 132, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-success": {
-    "value": "rgba(0, 135, 102, 1)",
+    "value": "rgba(0, 164, 124, 1)",
     "description": "",
     "figmaName": ""
   },
   "border-success-subdued": {
-    "value": "rgba(0, 135, 102, 1)",
+    "value": "rgba(149, 201, 180, 1)",
     "description": "",
     "figmaName": ""
   },
   "icon-success": {
-    "value": "rgba(0, 94, 70, 1)",
+    "value": "rgba(0, 127, 95, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-success": {
-    "value": "rgba(0, 94, 70, 1)",
+    "value": "rgba(174, 233, 209, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-success-subdued": {
-    "value": "rgba(28, 53, 44, 1)",
+    "value": "rgba(241, 248, 245, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-success-subdued-hovered": {
-    "value": "rgba(31, 58, 48, 1)",
+    "value": "rgba(236, 246, 241, 1)",
     "description": "",
     "figmaName": ""
   },
   "surface-success-subdued-pressed": {
-    "value": "rgba(35, 65, 54, 1)",
+    "value": "rgba(226, 241, 234, 1)",
     "description": "",
     "figmaName": ""
   },
   "text-success": {
-    "value": "rgba(88, 173, 142, 1)",
+    "value": "rgba(0, 128, 96, 1)",
     "description": "",
     "figmaName": ""
   },
@@ -565,77 +565,77 @@
     "figmaName": ""
   },
   "decorative-one-icon": {
-    "value": "rgba(255, 186, 67, 1)",
+    "value": "rgba(126, 87, 0, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-one-surface": {
-    "value": "rgba(142, 102, 9, 1)",
+    "value": "rgba(255, 201, 107, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-one-text": {
-    "value": "rgba(255, 255, 255, 1)",
+    "value": "rgba(61, 40, 0, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-two-icon": {
-    "value": "rgba(245, 182, 192, 1)",
+    "value": "rgba(175, 41, 78, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-two-surface": {
-    "value": "rgba(206, 88, 20, 1)",
+    "value": "rgba(255, 196, 176, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-two-text": {
-    "value": "rgba(255, 255, 255, 1)",
+    "value": "rgba(73, 11, 28, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-three-icon": {
-    "value": "rgba(0, 227, 141, 1)",
+    "value": "rgba(0, 109, 65, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-three-surface": {
-    "value": "rgba(0, 124, 90, 1)",
+    "value": "rgba(146, 230, 181, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-three-text": {
-    "value": "rgba(255, 255, 255, 1)",
+    "value": "rgba(0, 47, 25, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-four-icon": {
-    "value": "rgba(0, 221, 218, 1)",
+    "value": "rgba(0, 106, 104, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-four-surface": {
-    "value": "rgba(22, 124, 121, 1)",
+    "value": "rgba(145, 224, 214, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-four-text": {
-    "value": "rgba(255, 255, 255, 1)",
+    "value": "rgba(0, 45, 45, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-five-icon": {
-    "value": "rgba(244, 183, 191, 1)",
+    "value": "rgba(174, 43, 76, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-five-surface": {
-    "value": "rgba(194, 51, 86, 1)",
+    "value": "rgba(253, 201, 208, 1)",
     "description": "",
     "figmaName": ""
   },
   "decorative-five-text": {
-    "value": "rgba(255, 255, 255, 1)",
+    "value": "rgba(79, 14, 31, 1)",
     "description": "",
     "figmaName": ""
   }

@@ -1,31 +1,132 @@
 {
-  "font-family-sans": "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-  "font-family-mono": "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
-
-  "font-size-1": "12px",
-  "font-size-2": "13px",
-  "font-size-3": "14px",
-  "font-size-4": "15px",
-  "font-size-5": "16px",
-  "font-size-6": "17px",
-  "font-size-7": "20px",
-  "font-size-8": "21px",
-  "font-size-9": "24px",
-  "font-size-10": "26px",
-  "font-size-11": "27px",
-  "font-size-12": "28px",
-  "font-size-13": "42px",
-
-  "font-weight-regular": "400",
-  "font-weight-medium": "500",
-  "font-weight-semibold": "600",
-  "font-weight-bold": "700",
-
-  "line-height-1": "16px",
-  "line-height-2": "20px",
-  "line-height-3": "24px",
-  "line-height-4": "28px",
-  "line-height-5": "32px",
-  "line-height-6": "36px",
-  "line-height-7": "44px"
+  "font-family-sans": {
+    "value": "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-family-mono": {
+    "value": "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-1": {
+    "value": "12px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-2": {
+    "value": "13px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-3": {
+    "value": "14px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-4": {
+    "value": "15px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-5": {
+    "value": "16px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-6": {
+    "value": "17px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-7": {
+    "value": "20px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-8": {
+    "value": "21px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-9": {
+    "value": "24px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-10": {
+    "value": "26px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-11": {
+    "value": "27px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-12": {
+    "value": "28px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-size-13": {
+    "value": "42px",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-weight-regular": {
+    "value": "400",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-weight-medium": {
+    "value": "500",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-weight-semibold": {
+    "value": "600",
+    "description": "",
+    "figmaName": ""
+  },
+  "font-weight-bold": {
+    "value": "700",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-1": {
+    "value": "16px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-2": {
+    "value": "20px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-3": {
+    "value": "24px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-4": {
+    "value": "28px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-5": {
+    "value": "32px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-6": {
+    "value": "36px",
+    "description": "",
+    "figmaName": ""
+  },
+  "line-height-7": {
+    "value": "44px",
+    "description": "",
+    "figmaName": ""
+  }
 }
