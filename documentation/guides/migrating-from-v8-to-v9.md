@@ -1,6 +1,6 @@
 # Migrating from v8 to v9
 
-Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
+Polaris v9.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v9.0.0)) features removal of the public scss api and removal of scss functions and mixins.
 
 ## Table of Contents
 
@@ -204,9 +204,9 @@ Use `console.log()` to get the function output and hard code the value you need.
 
 Otherwise, you can copy the function definition and use it locally.
 
-| Deprecated Function | Source                                                                                                                                                                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `available-names()` | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L354-L386) |
+| Deprecated Function | Source                                                                                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `available-names()` | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L354-L386) |
 
 #### `border()`
 
@@ -234,7 +234,7 @@ Otherwise, you can copy the function definition and use it locally.
 
 #### `color()`
 
-Reference our [new color token file](https://github.com/Shopify/polaris-react/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) and search for a token with an applicable semantic name. These tokens get mapped to css custom properties, if you use them make sure to prefix them with `--p-`. If you can't find a suitable token replacement hard code the color value you need.
+Reference our [new color token file](https://github.com/Shopify/polaris/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) and search for a token with an applicable semantic name. These tokens get mapped to css custom properties, if you use them make sure to prefix them with `--p-`. If you can't find a suitable token replacement hard code the color value you need.
 
 #### `color-icon()`
 
@@ -273,9 +273,9 @@ Use your browser developer tools to inspect the output color value of the functi
 
 Otherwise, you can copy the function definition and use it locally.
 
-| Deprecated Function | Source                                                                                                                                                                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `color-multiply()`  | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L479-L500) |
+| Deprecated Function | Source                                                                                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color-multiply()`  | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L479-L500) |
 
 #### `duration()`
 
@@ -292,9 +292,9 @@ Otherwise, you can copy the function definition and use it locally.
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Deprecated Function | Source                                                                                                                                                                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `em()`              | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
+| Deprecated Function | Source                                                                                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `em()`              | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L333-L352) |
 
 #### `easing()`
 
@@ -309,7 +309,7 @@ This function has been deprecated, but the definition can be copied and used loc
 
 #### `filter()`
 
-We replaced a few of the following filter function instances with our [new color tokens](https://github.com/Shopify/polaris-react/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well. If you decide to use the new color tokens make sure to prefix them with `--p-` (they get mapped to css custom properties).
+We replaced a few of the following filter function instances with our [new color tokens](https://github.com/Shopify/polaris/blob/20dba92b5b226347d4e5220246a7165319a07836/src/tokens/token-groups/color.light.json) instead of their exact replacement values. However, this can break intended behavior so be careful if you take this approach as well. If you decide to use the new color tokens make sure to prefix them with `--p-` (they get mapped to css custom properties).
 
 <details>
 <summary>Table of Replacement Values</summary>
@@ -420,7 +420,7 @@ We replaced a few of the following filter function instances with our [new color
 
 For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
 
-For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
 #### `high-contrast-outline()`
 
@@ -431,7 +431,7 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 
 For `<border-width>` instances that are functions, see the [`border-width()`](#border-width) section for replacing it.
 
-For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris-react/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
+For `<border-width>` instances that are hard coded values, see if you can replace it with one of our [new border-width tokens](https://github.com/Shopify/polaris/blob/77e8669595a4964ff5ce399967661a7621ea2a4d/src/tokens/token-groups/shape.json), otherwise leave it hardcoded.
 
 #### `icon-size()`
 
@@ -443,9 +443,9 @@ For `<border-width>` instances that are hard coded values, see if you can replac
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Deprecated Function | Source                                                                                                                                                                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `map-extend()`      | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L388-L409) |
+| Deprecated Function | Source                                                                                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map-extend()`      | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L388-L409) |
 
 #### `ms-high-contrast-color()`
 
@@ -488,17 +488,17 @@ This function has been deprecated, but the definition can be copied and used loc
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Deprecated Function | Source                                                                                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `px()`              | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
+| Deprecated Function | Source                                                                                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `px()`              | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss##L313-L331) |
 
 #### `rem()`
 
 This function has been deprecated, but the definition can be copied and used locally.
 
-| Deprecated Function | Source                                                                                                                                                                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rem()`             | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293-L311) |
+| Deprecated Function | Source                                                                                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rem()`             | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L293-L311) |
 
 #### `shadow()`
 
@@ -728,9 +728,9 @@ For `@include state(<interaction-state>)` instances that have multiple `<interac
 
 If replacement is too complicated, you can copy the function definition and use it locally.
 
-| Deprecated Mixin | Source                                                                                                                                                                  |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `state()`        | [definition](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L2049-L2076) |
+| Deprecated Mixin | Source                                                                                                                                                            |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `state()`        | [definition](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss#L2049-L2076) |
 
 #### `unstyled-link()`
 
@@ -819,17 +819,17 @@ list-style: none;
 
 Any functions that were being consumed from `build/styles/_public-api.scss` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
 
-[Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris-react/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
+[Legacy Polaris V8 public scss api](https://github.com/Shopify/polaris/blob/b443d114d447df15d9e72914c8ca5058439a175e/documentation/guides/legacy-polaris-v8-public-api.scss)
 
 ## Sass global variables
 
 The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
 
-| Deprecated Variable                          | Value                                                                                                                                                                 |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$color-palette-data`<br/>`$polaris-colors`  | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L5-L88)    |
-| `$duration-data`<br/>`$polaris-duration-map` | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L243-L262) |
-| `$easing-data`                               | [definition](https://github.com/Shopify/polaris-react/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L678-L685) |
+| Deprecated Variable                          | Value                                                                                                                                                           |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$color-palette-data`<br/>`$polaris-colors`  | [definition](https://github.com/Shopify/polaris/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L5-L88)    |
+| `$duration-data`<br/>`$polaris-duration-map` | [definition](https://github.com/Shopify/polaris/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L243-L262) |
+| `$easing-data`                               | [definition](https://github.com/Shopify/polaris/blob/5267a30b845a0c07bec4036d723fb11c2cb24100/documentation/guides/legacy-polaris-v8-public-api.scss#L678-L685) |
 
 ## `@shopify/polaris-tokens`
 
