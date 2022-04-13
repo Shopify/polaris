@@ -717,10 +717,10 @@ export function MobilePrototype() {
             <ChoiceList
               title="Expiration"
               choices={[
-                {label: 'Gift cards never expire', value: 'none'},
+                {label: 'Gift cards never expire', value: 'none', helpText: 'Help text goes here'},
                 {
                   label: 'Gift cards expire',
-                  value: 'gift_card_expiration',
+                  value: 'gift_card_expiration', helpText: 'Help text goes here',
                   renderChildren,
                 },
               ]}
