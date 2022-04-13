@@ -1,9 +1,9 @@
 {
   "override-loading-z-index": "514",
-  "choice-size": "20px",
+  "choice-size": "24px",
   "icon-size-small": "10px",
   "icon-size-medium": "20px",
-  "choice-margin": "1px",
+  "choice-margin": "2px",
   "control-border-width": "2px",
   "banner-border-default": "inset 0 1px 0 0 var(--p-border-neutral-subdued), inset 0 0 0 1px var(--p-border-neutral-subdued)",
   "banner-border-success": "inset 0 1px 0 0 var(--p-border-success-subdued), inset 0 0 0 1px var(--p-border-success-subdued)",
