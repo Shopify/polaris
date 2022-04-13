@@ -7,9 +7,17 @@
   }
   a {
     color: #666;
+    display: inline-block;
+    &:hover {
+      color: inherit;
+    }
     &:before {
       content: "• ";
       margin-right: 0.25em;
+    }
+    &[aria-current="page"] {
+      font-weight: 500;
+      color: inherit;
     }
   }
   ul {

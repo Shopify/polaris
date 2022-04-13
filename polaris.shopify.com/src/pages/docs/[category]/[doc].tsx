@@ -50,11 +50,11 @@ export const navItems: NavItem[] = [
         children: [
           {
             title: "Designing apps for Shopify",
-            url: "/docs/foundations/experience-values",
+            url: "/docs/foundations/designing-apps",
           },
           {
             title: "Designing onboarding flows",
-            url: "/docs/foundations/experience-values",
+            url: "/docs/foundations/designing-onboarding-flows",
           },
         ],
       },

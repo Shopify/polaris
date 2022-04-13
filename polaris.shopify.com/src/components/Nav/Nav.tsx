@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
 
 export type NavItem = {
@@ -12,29 +13,49 @@ interface Props {
 }
 
 function Nav({ navItems }: Props) {
+  const router = useRouter();
+  const currentPath = router.asPath;
   return (
     <div className={styles.Nav}>
       <ul>
         {navItems.map((navItem) => (
-          <NavItem key={`${navItem.url}-${navItem.title}`} navItem={navItem} />
+          <NavItem
+            key={`${navItem.url}-${navItem.title}`}
+            navItem={navItem}
+            currentPath={currentPath}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function NavItem({ navItem }: { navItem: NavItem }) {
+function NavItem({
+  navItem,
+  currentPath,
+}: {
+  navItem: NavItem;
+  currentPath: string;
+}) {
   return (
     <li className={styles.NavItem}>
       {navItem.url ? (
-        <Link href={navItem.url}>{navItem.title}</Link>
+        <Link href={navItem.url} passHref>
+          <a aria-current={navItem.url === currentPath ? "page" : "false"}>
+            {navItem.title}
+          </a>
+        </Link>
       ) : (
         <span>{navItem.title}</span>
       )}
       {navItem.children && (
         <ul>
           {navItem.children.map((child) => (
-            <NavItem key={`${child.url}-${child.title}`} navItem={child} />
+            <NavItem
+              key={`${child.url}-${child.title}`}
+              navItem={child}
+              currentPath={currentPath}
+            />
           ))}
         </ul>
       )}

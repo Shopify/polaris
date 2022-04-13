@@ -26,6 +26,11 @@
       padding: 0.5em 1em;
       gap: 1em;
       color: inherit;
+
+      &[aria-current="page"],
+      &:hover {
+        background: #fafafa;
+      }
     }
 
     h4 {

@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import components from "../../data/components.json";
 import {
@@ -24,6 +27,9 @@ function ComponentsNav({}: Props) {
   const [filterText, setFilterText] = useState("");
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [layout, setLayout] = useState<LayoutOption>("default");
+
+  const router = useRouter();
+  const currentPath = router.asPath;
 
   return (
     <div className={styles.ComponentsNav} data-layout={layout}>
@@ -88,7 +94,7 @@ function ComponentsNav({}: Props) {
             return (
               <li key={name}>
                 <Link href={url} passHref>
-                  <a>
+                  <a aria-current={currentPath === url ? "page" : "false"}>
                     <div className={styles.Preview}></div>
                     <div>
                       <h4>{name}</h4>
