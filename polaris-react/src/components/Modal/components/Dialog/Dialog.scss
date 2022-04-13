@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $top-offset-slide-in-start: 200px;
-$vertical-spacing: 60px;
+$vertical-spacing: var(--p-space-16);
 $height-limit: 600px;
 $xsmall-width: 380px;
 $small-width: 620px;

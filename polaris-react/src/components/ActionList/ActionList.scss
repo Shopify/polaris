@@ -61,7 +61,7 @@
   &:hover {
     background-color: var(--p-surface-hovered);
     text-decoration: none;
-    outline: var(--p-border-width-3) solid transparent;
+    outline: var(--p-outline-width-3) solid transparent;
   }
 
   &:active {
@@ -71,7 +71,7 @@
 
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
-    outline: var(--p-border-width-3) solid transparent;
+    outline: var(--p-outline-width-3) solid transparent;
   }
 
   &:visited {

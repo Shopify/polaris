@@ -7,7 +7,7 @@ $breakpoint: 768px;
   // stylelint-disable declaration-no-important
   a,
   button {
-    @include focus-ring($border-width: 1px);
+    @include focus-ring($border-width: var(--p-border-width-1));
     background: transparent !important;
     box-shadow: none !important;
     border-radius: var(--p-border-radius-1) !important;

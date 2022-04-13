@@ -32,7 +32,7 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
-  --pc-resource-item-offset: calc(48px - 12px + var(--p-space-1));
+  --pc-resource-item-offset: var(--p-space-10);
   position: relative;
   outline: none;
   cursor: pointer;
@@ -256,7 +256,7 @@ $resource-list-item-variables: (
 
 .ListItem {
   position: relative;
-  @include focus-ring($border-width: -1px);
+  @include focus-ring($border-width: calc(-1 * var(--p-border-width-1)));
 
   .ListItem + & {
     border-top: var(--p-border-divider);

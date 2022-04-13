@@ -10,7 +10,7 @@
   position: relative;
 
   &:focus {
-    outline: 2px solid var(--p-focused);
+    outline: var(--p-outline-width-2) solid var(--p-focused);
     outline-offset: 2px;
   }
 }

@@ -15,7 +15,7 @@
   font-weight: var(--p-font-weight-regular);
 
   @media print {
-    border: solid 0.1px var(--p-border);
+    border: solid var(--p-border-width-1) var(--p-border);
   }
 }
 

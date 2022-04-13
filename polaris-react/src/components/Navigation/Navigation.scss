@@ -93,7 +93,7 @@ $disabled-fade: 0.6;
   font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
   background-color: var(--p-background-selected);
-  outline: var(--p-border-width-1) solid transparent;
+  outline: var(--p-outline-width-1) solid transparent;
 
   &::before {
     content: '';
@@ -174,7 +174,7 @@ $disabled-fade: 0.6;
 
   &:not(:first-child) {
     .Item {
-      border-top: 1px solid var(--p-background);
+      border-top: var(--p-border-width-1) solid var(--p-background);
     }
   }
 }

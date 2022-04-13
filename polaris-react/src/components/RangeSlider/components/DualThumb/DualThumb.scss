@@ -2,7 +2,6 @@
 @import '../../RangeSlider';
 
 $range-wrapper: 28px;
-$range-thumb-border-error: 2px solid var(--p-border-critical);
 
 .DualThumb {
   position: relative;
@@ -111,7 +110,7 @@ $range-thumb-border-error: 2px solid var(--p-border-critical);
 }
 
 $range-output-size: 32px;
-$range-output-spacing: 16px;
+$range-output-spacing: var(--p-space-4);
 
 .Prefix {
   flex: 0 0 auto;

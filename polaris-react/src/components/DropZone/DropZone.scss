@@ -21,9 +21,7 @@ $dropzone-stacking-order: (
 }
 
 @mixin set-border-radius {
-  border-radius: calc(
-    var(--p-border-radius-1) + #{var(--p-border-width-1)} + 1px
-  );
+  border-radius: var(--p-border-radius-large);
 }
 
 .DropZone {
@@ -55,7 +53,7 @@ $dropzone-stacking-order: (
   }
 
   &:hover {
-    outline: var(--p-border-width-1) solid transparent;
+    outline: var(--p-outline-width-1) solid transparent;
   }
 }
 

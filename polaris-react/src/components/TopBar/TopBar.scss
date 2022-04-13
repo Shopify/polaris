@@ -18,7 +18,7 @@ $context-control-expand-after: 1400px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    border-bottom: 1px solid transparent;
+    border-bottom: var(--p-border-width-1) solid transparent;
   }
 }
 
@@ -91,7 +91,7 @@ $context-control-expand-after: 1400px;
   }
 
   .IconWrapper {
-    @include focus-ring($border-width: 6px);
+    @include focus-ring($border-width: var(--p-border-width-6));
   }
 
   // stylelint-disable selector-max-specificity
