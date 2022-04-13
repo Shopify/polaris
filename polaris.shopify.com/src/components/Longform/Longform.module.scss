@@ -1,6 +1,5 @@
 .Longform {
   border-radius: 4px;
-  overflow: hidden;
 
   img {
     border-radius: 2px;
@@ -16,10 +15,18 @@
 
   h1 {
     margin-bottom: 2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    margin-top: 2rem;
   }
 
   h3 {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
 
   h4 {

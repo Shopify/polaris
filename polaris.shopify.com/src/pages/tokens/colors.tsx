@@ -3,14 +3,15 @@ import Head from "next/head";
 import React, { Fragment } from "react";
 import Page from "../../components/Page";
 import colors from "../../../../polaris-react/src/tokens/token-groups/color.light.json";
-import styles from "../../styles/tokens.module.scss";
 import Longform from "../../components/Longform";
+import { navItems } from "./nav";
+import Token from "../../components/Token";
 
 const Components: NextPage = () => {
   return (
-    <Page>
+    <Page navItems={navItems}>
       <Head>
-        <title>Tokens</title>
+        <title>Color tokens</title>
       </Head>
 
       <Longform>
@@ -70,31 +71,32 @@ function ColorPreview({ name }: { name: keyof typeof colors }) {
   const value = colors[name];
 
   return (
-    <div className={styles.ColorPreview}>
-      <div
-        style={{
-          minWidth: fullSize,
-          maxWidth: fullSize,
-          height: size,
-          display: "flex",
-          justifyContent: "right",
-        }}
-      >
+    <Token
+      name={name}
+      description=""
+      value={value}
+      renderPreview={() => (
         <div
           style={{
-            minWidth: size,
-            maxWidth: size,
+            minWidth: fullSize,
+            maxWidth: fullSize,
             height: size,
-            borderRadius: 100,
-            background: value,
+            display: "flex",
+            justifyContent: "right",
           }}
-        ></div>
-      </div>
-      <p>
-        <span style={{ opacity: 0.4 }}>--p-</span>
-        {name}
-      </p>
-    </div>
+        >
+          <div
+            style={{
+              minWidth: size,
+              maxWidth: size,
+              height: size,
+              borderRadius: 100,
+              background: value,
+            }}
+          ></div>
+        </div>
+      )}
+    />
   );
 }
 

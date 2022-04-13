@@ -1,3 +1,4 @@
+import { NavItem } from "../components/Nav/Nav";
 import components from "../data/components.json";
 
 export const getComponentCategories = (): string[] => {
@@ -21,4 +22,19 @@ export const stripMarkdownLinks = (markdown: string): string => {
   return markdown.replaceAll(linkRegex, (_, linkText) => {
     return linkText;
   });
+};
+
+export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
+  let urls: string[] = [];
+
+  navItems.forEach((navItem) => {
+    if (navItem.url) {
+      urls.push(navItem.url);
+    }
+    if (navItem.children) {
+      urls = [...urls, ...getUrlsFromNavItems(navItem.children)];
+    }
+  });
+
+  return urls;
 };

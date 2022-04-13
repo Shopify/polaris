@@ -1,0 +1,50 @@
+.Token {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 -10px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  gap: 10px;
+
+  &.bigGap {
+    gap: 20px;
+  }
+
+  &:hover {
+    .Name {
+      background: #f4ddf4;
+    }
+    .CopyInfo {
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+
+    &.didJustCopy {
+      .CopyInfo {
+        opacity: 1;
+      }
+    }
+  }
+
+  .Name {
+    margin: 0;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    font-size: 14px;
+    background: #fdf0fd;
+    color: #6e006e;
+    padding: 0.25em 0.75em;
+    border-radius: 2px;
+  }
+}
+
+.CopyInfo {
+  opacity: 0;
+  margin-right: 0.25em;
+  font-size: 0.85em;
+  color: #666;
+}

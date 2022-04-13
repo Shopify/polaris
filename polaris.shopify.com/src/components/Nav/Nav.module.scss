@@ -1,0 +1,27 @@
+.Nav {
+  padding: 0.25em 2em 2em;
+  align-self: flex-start;
+  font-size: 0.95em;
+  span {
+    font-weight: 500;
+  }
+  a {
+    color: #666;
+    &:before {
+      content: "• ";
+      margin-right: 0.25em;
+    }
+  }
+  ul {
+    margin-bottom: 0.75rem;
+  }
+  > ul > li {
+    margin-bottom: 1.25rem;
+    > span {
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      font-size: 1.25em;
+      font-weight: 400;
+    }
+  }
+}

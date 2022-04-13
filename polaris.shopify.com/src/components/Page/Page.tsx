@@ -5,22 +5,24 @@ import polarisLogo from "../../../public/polaris-logo.svg";
 import styles from "./Page.module.scss";
 import { useRouter } from "next/router";
 import GlobalSearch from "../GlobalSearch";
+import Nav from "../Nav";
+import { NavItem } from "../Nav/Nav";
 
 interface Props {
-  nav?: () => React.ReactNode;
+  navItems?: NavItem[];
   sidebarLeft?: () => React.ReactNode;
   sidebarRight?: () => React.ReactNode;
   children: React.ReactNode;
 }
 
-const navItems: { url: string; label: string }[] = [
+const headerNavItems: { url: string; label: string }[] = [
   { url: "/docs/foundations/experience-values", label: "Guidelines" },
   { url: "/components/actions/account-connection", label: "Components" },
   { url: "/tokens/colors", label: "Tokens" },
   { url: "/icons", label: "Icons" },
 ];
 
-function Page({ nav, sidebarLeft, sidebarRight, children }: Props) {
+function Page({ navItems, sidebarLeft, sidebarRight, children }: Props) {
   const router = useRouter();
 
   return (
@@ -34,9 +36,10 @@ function Page({ nav, sidebarLeft, sidebarRight, children }: Props) {
         </Link>
 
         <ul className={styles.Nav}>
-          {navItems.map(({ url, label }) => {
+          {headerNavItems.map(({ url, label }) => {
             const section = router.asPath.split("/").slice(0, 2).join("/");
-            const isCurrent = url.startsWith(section) ? "page" : false;
+            const isCurrent =
+              section !== "/" && url.startsWith(section) ? "page" : false;
             return (
               <li key={url} aria-current={isCurrent}>
                 <Link href={url}>{label}</Link>
@@ -57,7 +60,7 @@ function Page({ nav, sidebarLeft, sidebarRight, children }: Props) {
           </div>
         )}
 
-        {nav && <div className={[styles.Nav].join(" ")}>{nav()}</div>}
+        {navItems && <Nav navItems={navItems} />}
 
         <div className={styles.MainContent}>
           <div className={styles.MainContentInner}>{children}</div>

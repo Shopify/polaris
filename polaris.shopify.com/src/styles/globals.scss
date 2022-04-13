@@ -28,44 +28,45 @@ body {
   color: #222;
 }
 
+a {
+  color: #2c6ecb;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 1.2rem 0;
+}
+
+h1 {
+  font-size: 3.5em;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1.2em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
 .lede {
   font-size: 1.5rem;
-}
-
-.my-masonry-grid {
-  display: flex;
-  margin-left: -20px; /* gutter size offset */
-  width: auto;
-}
-.my-masonry-grid_column {
-  padding-left: 20px; /* gutter size */
-  background-clip: padding-box;
-}
-
-/* Style your items */
-.my-masonry-grid_column > div {
-  margin-bottom: 20px;
-}
-
-.usage-list {
-  margin: 1.5rem 0;
-  display: flex;
-  gap: 2em;
-
-  .usage-list-part {
-    flex: 1;
-    background: #fafafa;
-    padding: 0.5em 2em;
-    border-radius: 4px;
-  }
-
-  .usage-list-part:first-child {
-    border-top: 3px solid green;
-  }
-
-  .usage-list-part:last-child {
-    border-top: 3px solid red;
-  }
 }
 
 .sr-only {
@@ -77,4 +78,30 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+// Legacy CSS from old site (used in markdown files)
+.usage-list {
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 2em;
+
+  .usage-list-part {
+    flex: 1;
+    background: #f6f6f7;
+    padding: 1px 1.5rem 1rem;
+    border-radius: 4px;
+  }
+
+  .usage-list-part:first-child {
+    border-top: 3px solid #00a47c;
+  }
+
+  .usage-list-part:last-child {
+    border-top: 3px solid #fc5749;
+  }
+}
+
+.twoColumnsItem img {
+  display: none;
 }
