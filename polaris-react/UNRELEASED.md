@@ -12,6 +12,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Added support for NodeJS v14 ([#5551](https://github.com/Shopify/polaris/pull/5551))
 
+- Made `Pip` a sub-component of `Badge` and exposed it to outside ([#5520](https://github.com/Shopify/polaris/pull/5520))
+
 ### Bug fixes
 
 ### Documentation
