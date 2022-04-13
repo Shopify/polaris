@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import components from "../../data/components.json";
 import {
