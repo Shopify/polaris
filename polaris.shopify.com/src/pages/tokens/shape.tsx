@@ -6,7 +6,7 @@ import shape from "../../../../polaris-react/src/tokens/token-groups/shape.json"
 import color from "../../../../polaris-react/src/tokens/token-groups/color.light.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
-import { navItems } from "./nav";
+import { navItems } from "../../data/tokensNav";
 import { CSSProperties } from "react";
 
 const untypedShape = shape as { [key: string]: string };

@@ -5,7 +5,7 @@ import Page from "../../components/Page";
 import typography from "../../../../polaris-react/src/tokens/token-groups/typography.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
-import { navItems } from "./nav";
+import { navItems } from "../../data/tokensNav";
 
 const Components: NextPage = () => {
   return (

@@ -5,7 +5,7 @@ import Page from "../../components/Page";
 import motion from "../../../../polaris-react/src/tokens/token-groups/motion.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
-import { navItems } from "./nav";
+import { navItems } from "../../data/tokensNav";
 import { useState } from "react";
 import Button from "../../components/Button";
 import { useEffect } from "react";

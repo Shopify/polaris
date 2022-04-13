@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import Page from "../../components/Page";
 import colors from "../../../../polaris-react/src/tokens/token-groups/color.light.json";
 import Longform from "../../components/Longform";
-import { navItems } from "./nav";
+import { navItems } from "../../data/tokensNav";
 import Token from "../../components/Token";
 
 const Components: NextPage = () => {
