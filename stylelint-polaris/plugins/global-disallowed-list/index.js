@@ -2,13 +2,13 @@ const stylelint = require('stylelint');
 
 const {isRegExp, isString, matchesStringOrRegExp} = require('../../utils');
 
-let ruleName = 'stylelint-polaris/global-disallowed-list';
+const ruleName = 'stylelint-polaris/global-disallowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: (value) => `Unexpected disallowed value "${value}"`,
 });
 
-module.exports = stylelint.createPlugin(
+const {rule} = stylelint.createPlugin(
   ruleName,
   /** @param {(string | RegExp)[]} primary */
   (primary) => {
@@ -55,6 +55,10 @@ module.exports = stylelint.createPlugin(
   },
 );
 
-module.exports.rule.primaryOptionArray = true;
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+rule.primaryOptionArray = true;
+
+module.exports = {
+  rule,
+  ruleName,
+  messages,
+};

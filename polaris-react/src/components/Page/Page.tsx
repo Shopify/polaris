@@ -1,10 +1,11 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {isInterface} from '../../utilities/is-interface';
+import {isReactElement} from '../../utilities/is-react-element';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
-import {isInterface, isReactElement} from './utilities';
 
 export interface PageProps extends HeaderProps {
   /** The contents of the page */

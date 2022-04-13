@@ -20,7 +20,9 @@ module.exports = {
         right: [/\$.+/],
         width: [/\$.+/],
         height: [/\$.+/],
-        opacity: [/(?!0|1)\d|[\d.]{2,}/],
+        // Allow `0`, `1`, values between 0 and 1 (limit 2 decimal places), and custom properties
+        // https://regex101.com/r/kIlVrQ/1
+        opacity: [/^(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
         'z-index': [/(\$.*|-?[0-9]+)/],
         'font-weight': [/(\$.*|[0-9]+)/],
       },

@@ -1,10 +1,8 @@
 name: polaris
 up:
   - node:
-      yarn: v1.13.0
+      yarn: v1.22.18
       version: v16.13.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml
-  - git_hooks:
-      pre-commit: pre-commit
 
 commands:
   server: yarn dev:react

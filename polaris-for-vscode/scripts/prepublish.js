@@ -1,12 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
-const getCustomPropertyNames = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
+const {
+  getCustomPropertyNames,
+  getGroupedCustomPropertyCompletionItems,
+} = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
 
-const dirPath = path.join(__dirname, '../src/data');
+const dirPath = path.join(__dirname, '../server/src/data');
 const outFile = 'allTokens.ts';
 const filePath = path.join(dirPath, outFile);
 
+const groupedTokens = getGroupedCustomPropertyCompletionItems();
 const tokens = getCustomPropertyNames();
 
 try {
@@ -16,7 +20,11 @@ try {
 
   fs.writeFileSync(
     filePath,
-    `export const allTokens = ${JSON.stringify(tokens)};`,
+    `
+    export const allTokens = ${JSON.stringify(tokens)};
+
+    export const groupedTokens = ${JSON.stringify(groupedTokens)};
+    `,
   );
 } catch (err) {
   throw new Error(

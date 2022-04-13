@@ -1,4 +1,6 @@
 *.log
+*.tsbuildinfo
 node_modules
 .DS_Store
+.loom
 .shadowenv.d
