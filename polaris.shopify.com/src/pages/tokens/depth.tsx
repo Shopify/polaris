@@ -26,7 +26,7 @@ const Components: NextPage = () => {
 
         {Object.entries(depth).map(([name]) => {
           const typedName = name as keyof typeof depth;
-          return <DepthPreview name={typedName} />;
+          return <DepthPreview key={name} name={typedName} />;
         })}
       </Longform>
     </Page>

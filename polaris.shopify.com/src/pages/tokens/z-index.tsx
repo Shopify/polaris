@@ -26,7 +26,7 @@ const Components: NextPage = () => {
 
         {Object.entries(zIndex).map(([name]) => {
           const typedName = name as keyof typeof zIndex;
-          return <ZIndexPreview name={typedName} />;
+          return <ZIndexPreview key={name} name={typedName} />;
         })}
       </Longform>
     </Page>

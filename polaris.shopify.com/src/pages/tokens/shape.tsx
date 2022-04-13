@@ -35,6 +35,7 @@ const Components: NextPage = () => {
           .map(([name, value]) => {
             return (
               <Token
+                key={name}
                 name={name}
                 description=""
                 value={value}
@@ -92,6 +93,7 @@ const Components: NextPage = () => {
 
             return (
               <Token
+                key={name}
                 name={name}
                 description=""
                 value={value}

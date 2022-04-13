@@ -26,7 +26,7 @@ const Components: NextPage = () => {
 
         {Object.entries(spacing).map(([name]) => {
           const typedName = name as keyof typeof spacing;
-          return <SpacingPreview name={typedName} />;
+          return <SpacingPreview key={name} name={typedName} />;
         })}
       </Longform>
     </Page>

@@ -29,7 +29,7 @@ const Components: NextPage = () => {
           .filter(([name]) => name.includes("family"))
           .map(([name]) => {
             const typedName = name as keyof typeof typography;
-            return <TypePreview type="family" name={typedName} />;
+            return <TypePreview key={name} type="family" name={typedName} />;
           })}
 
         <h2>Font sizes</h2>
@@ -37,7 +37,7 @@ const Components: NextPage = () => {
           .filter(([name]) => name.includes("size"))
           .map(([name]) => {
             const typedName = name as keyof typeof typography;
-            return <TypePreview type="size" name={typedName} />;
+            return <TypePreview key={name} type="size" name={typedName} />;
           })}
 
         <h2>Line heights</h2>
@@ -45,7 +45,7 @@ const Components: NextPage = () => {
           .filter(([name]) => name.includes("line"))
           .map(([name]) => {
             const typedName = name as keyof typeof typography;
-            return <TypePreview type="line" name={typedName} />;
+            return <TypePreview key={name} type="line" name={typedName} />;
           })}
 
         <h2>Font weights</h2>
@@ -53,7 +53,7 @@ const Components: NextPage = () => {
           .filter(([name]) => name.includes("weight"))
           .map(([name]) => {
             const typedName = name as keyof typeof typography;
-            return <TypePreview type="weight" name={typedName} />;
+            return <TypePreview key={name} type="weight" name={typedName} />;
           })}
       </Longform>
     </Page>
