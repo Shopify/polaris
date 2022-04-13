@@ -11,7 +11,6 @@ interface Props {
 function Markdown({ text }: Props) {
   return (
     <ReactMarkdown
-      children={text}
       rehypePlugins={[rehypeRaw]}
       components={{
         code: ({ node, inline, className, children, ...props }) => (
@@ -26,7 +25,9 @@ function Markdown({ text }: Props) {
           ></span>
         ),
       }}
-    />
+    >
+      {text}
+    </ReactMarkdown>
   );
 }
 
