@@ -12,6 +12,7 @@ const Components: NextPage = () => {
 
   return (
     <Page
+      noLayout
       sidebarRight={() => (
         <div
           style={{

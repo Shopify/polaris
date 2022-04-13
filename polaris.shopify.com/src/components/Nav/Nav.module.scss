@@ -1,10 +1,13 @@
 .Nav {
-  padding: 0.25em 2em 2em;
+  padding: 0.25em 4em 2em 0;
   align-self: flex-start;
   font-size: 0.95em;
+  min-width: 16em;
+
   span {
     font-weight: 500;
   }
+
   a {
     color: #666;
     display: inline-block;
@@ -20,9 +23,11 @@
       color: inherit;
     }
   }
+
   ul {
     margin-bottom: 0.75rem;
   }
+
   > ul > li {
     margin-bottom: 1.25rem;
     > span {

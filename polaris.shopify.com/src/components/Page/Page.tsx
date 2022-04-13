@@ -12,6 +12,7 @@ interface Props {
   navItems?: NavItem[];
   sidebarLeft?: () => React.ReactNode;
   sidebarRight?: () => React.ReactNode;
+  noLayout?: boolean;
   children: React.ReactNode;
 }
 
@@ -22,11 +23,27 @@ const headerNavItems: { url: string; label: string }[] = [
   { url: "/icons", label: "Icons" },
 ];
 
-function Page({ navItems, sidebarLeft, sidebarRight, children }: Props) {
+function Page({
+  navItems,
+  sidebarLeft,
+  sidebarRight,
+  noLayout = false,
+  children,
+}: Props) {
   const router = useRouter();
 
+  if (noLayout === true && navItems) {
+    throw new Error(
+      `Page component: noLayout must be 'false' when navItems are passed`
+    );
+  }
+
   return (
-    <div className={styles.Page}>
+    <div
+      className={[styles.Page, noLayout ? styles.noLayout : null].join(" ")}
+      data-has-sidebar-left={!!sidebarLeft}
+      data-has-sidebar-right={!!sidebarRight}
+    >
       <div className={styles.Header}>
         <Link href="/">
           <a className={styles.Logo}>
@@ -35,7 +52,7 @@ function Page({ navItems, sidebarLeft, sidebarRight, children }: Props) {
           </a>
         </Link>
 
-        <ul className={styles.Nav}>
+        <ul className={styles.HeaderNav}>
           {headerNavItems.map(({ url, label }) => {
             const section = router.asPath.split("/").slice(0, 2).join("/");
             const isCurrent =
@@ -53,25 +70,30 @@ function Page({ navItems, sidebarLeft, sidebarRight, children }: Props) {
         </div>
       </div>
 
-      <div className={styles.Content}>
-        {sidebarLeft && (
-          <div className={[styles.Sidebar, styles.left].join(" ")}>
-            {sidebarLeft()}
-          </div>
-        )}
-
-        {navItems && <Nav navItems={navItems} />}
-
-        <div className={styles.MainContent}>
-          <div className={styles.MainContentInner}>{children}</div>
+      {sidebarLeft && (
+        <div className={[styles.Sidebar, styles.left].join(" ")}>
+          {sidebarLeft()}
         </div>
+      )}
 
-        {sidebarRight && (
-          <div className={[styles.Sidebar, styles.right].join(" ")}>
-            {sidebarRight()}
-          </div>
+      <div className={styles.Content}>
+        {noLayout ? (
+          <>{children}</>
+        ) : (
+          <>
+            {navItems && <Nav navItems={navItems} />}
+            <div className={styles.MainContent}>
+              <div className={styles.MainContentInner}>{children}</div>
+            </div>
+          </>
         )}
       </div>
+
+      {sidebarRight && (
+        <div className={[styles.Sidebar, styles.right].join(" ")}>
+          {sidebarRight()}
+        </div>
+      )}
     </div>
   );
 }
