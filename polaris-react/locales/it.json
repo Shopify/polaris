@@ -257,7 +257,8 @@
           },
           "seconds": {
             "other": "{secondCount} secondi",
-            "one": "{secondCount} secondo"
+            "one": "{secondCount} secondo",
+            "many": "{secondCount} secondi"
           }
         }
       }
