@@ -1,12 +1,14 @@
 @import '../../../../styles/common';
 
 $top-offset-slide-in-start: 200px;
-$vertical-spacing: var(--p-space-16);
+// Question
+$vertical-spacing: 60px;
 $height-limit: 600px;
 $xsmall-width: 380px;
 $small-width: 620px;
 $large-width: 980px;
 // @TODO simplify media queries so this isn't needed
+// Question
 $dangerous-magic-space-16: 64px;
 
 .Container {
@@ -57,7 +59,7 @@ $dangerous-magic-space-16: 64px;
     margin: 0 auto;
     border-radius: var(--p-border-radius-2);
   }
-
+  // Question
   &.limitHeight {
     @include breakpoint-after(layout-width(page-with-nav)) {
       @media (min-height: $height-limit + $vertical-spacing) {
@@ -70,7 +72,7 @@ $dangerous-magic-space-16: 64px;
     @include breakpoint-after(layout-width(page-with-nav)) {
       max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
     }
-
+    // Question
     @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
       max-width: $xsmall-width;
     }
