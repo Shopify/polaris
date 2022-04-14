@@ -20,5 +20,7 @@
   "border-divider": "var(--p-border-width-1) solid var(--p-divider)",
   "outline-width-1": "1px",
   "outline-width-2": "2px",
-  "outline-width-3": "3px"
+  "outline-width-3": "3px",
+  "outline-width-4": "4px",
+  "outline-width-5": "5px"
 }
