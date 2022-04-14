@@ -1,5 +1,5 @@
 .ComponentsNav {
-  --preview-width: 180px;
+  --preview-width: 280px;
   --preview-ratio: 1.33;
   --sidebar-top: calc(var(--header-height) + 3.5rem);
 
@@ -10,10 +10,9 @@
   top: var(--sidebar-top);
   align-self: flex-start;
   max-height: calc(100vh - var(--sidebar-top) - 2rem);
-  width: 32em;
+  width: 38em;
   display: flex;
-  border-radius: 16px;
-  box-shadow: 0 0 0 1px #ddd;
+  border-right: 1px solid #ededed;
 
   &[data-layout="tight"] {
     --preview-width: 40px;
@@ -25,7 +24,7 @@
     flex-direction: column;
     overflow: auto;
     overscroll-behavior: contain;
-    padding: 0.5rem 0;
+    padding: 0.5rem 2rem 0.5rem 0;
   }
 
   li {
@@ -33,7 +32,6 @@
       display: flex;
       align-items: center;
       margin: 0.5rem 0;
-      padding: 0 1.5rem 0 1rem;
       gap: 1em;
       color: inherit;
 
@@ -42,7 +40,6 @@
       }
 
       &[aria-current="page"] {
-        box-shadow: inset 3px 0 #008060;
       }
     }
 
@@ -53,6 +50,7 @@
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      color: #555;
     }
   }
 
@@ -61,16 +59,15 @@
     max-width: var(--preview-width);
     min-height: calc(var(--preview-width) / var(--preview-ratio));
     max-height: calc(var(--preview-width) / var(--preview-ratio));
-    border-radius: 3px;
+    border-radius: 8px;
     background: #f8f8f8;
     transition: all 0.25s ease;
   }
 }
 
 .Filters {
-  padding: 1rem;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.1);
   position: relative;
+  padding-right: 2rem;
 
   input {
     margin-bottom: 12px;
@@ -84,6 +81,6 @@
   }
 
   button {
-    margin: 0 2px 2px 0;
+    margin: 0 2px 3px 0;
   }
 }
