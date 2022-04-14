@@ -93,7 +93,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
 
-  private tableHeadingWidths: any[] = [];
+  private tableHeadingWidths: number[] = [];
 
   private handleResize = debounce(() => {
     const {
