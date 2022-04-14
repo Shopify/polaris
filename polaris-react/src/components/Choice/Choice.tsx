@@ -44,6 +44,20 @@ export function Choice({
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
+    disabled && styles.disabled,
+  );
+
+  const labelMarkup = (
+    <label
+      className={className}
+      htmlFor={id}
+      onClick={onClick}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+    >
+      <span className={styles.Control}>{children}</span>
+      <span className={styles.Label}>{label}</span>
+    </label>
   );
 
   const helpTextMarkup = helpText ? (
@@ -66,24 +80,14 @@ export function Choice({
       </div>
     ) : null;
 
-  const labelMarkup = (
-    <label
-      className={classNames(styles.Wrapper, disabled && styles.disabled)}
-      htmlFor={id}
-      onClick={onClick}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
-    >
-      <div className={className}>
-        <span className={styles.Control}>{children}</span>
-        <span className={styles.Label}>{label}</span>
-      </div>
-
-      {descriptionMarkup && descriptionMarkup}
-    </label>
+  return descriptionMarkup ? (
+    <div>
+      {labelMarkup}
+      {descriptionMarkup}
+    </div>
+  ) : (
+    labelMarkup
   );
-
-  return labelMarkup;
 }
 
 export function helpTextID(id: string) {

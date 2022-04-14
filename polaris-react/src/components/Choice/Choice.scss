@@ -1,15 +1,10 @@
 @import '../../styles/common';
 
-.Wrapper {
-  display: block;
-  padding: var(--p-space-3) 0;
-  cursor: pointer;
-}
-
 .Choice {
-  display: flex;
-  align-items: center;
+  display: inline-flex;
   justify-content: flex-start;
+  padding-top: var(--p-space-1);
+  cursor: pointer;
 }
 
 .labelHidden {
@@ -28,14 +23,16 @@
 .disabled {
   cursor: default;
 
-  color: var(--p-text-disabled);
+  > .Label {
+    color: var(--p-text-disabled);
 
-  &:hover {
-    cursor: default;
-  }
+    &:hover {
+      cursor: default;
+    }
 
-  @media (-ms-high-contrast: active) {
-    color: grayText;
+    @media (-ms-high-contrast: active) {
+      color: grayText;
+    }
   }
 }
 
@@ -45,7 +42,7 @@
   align-items: stretch;
   width: var(--p-choice-size);
   height: var(--p-choice-size);
-  margin-right: var(--p-space-2);
+  margin-right: var(--p-space-4);
 
   > * {
     width: 100%;
@@ -53,21 +50,33 @@
 }
 
 .Label {
-  font-size: var(--p-font-size-5);
+  font-size: var(--p-font-size-4);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-line-height-3);
+  line-height: var(--p-line-height-2);
 
   @include when-typography-not-condensed {
     font-size: var(--p-font-size-3);
   }
+
   -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .Descriptions {
-  padding-left: calc(var(--p-space-2) + var(--p-choice-size));
+  padding-left: calc(var(--p-space-4) + var(--p-choice-size));
 }
 
 .HelpText {
-  @include text-style-body;
+  font-size: var(--p-font-size-4);
+  line-height: var(--p-line-height-2);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-3);
+  }
+
   @include text-emphasis-subdued;
+  margin-bottom: var(--p-space-1);
 }

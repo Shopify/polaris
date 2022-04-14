@@ -16,6 +16,11 @@
   list-style: none;
 }
 
+.ChoiceItem {
+  padding-top: var(--p-space-2);
+  padding-bottom: var(--p-space-2);
+}
+
 .ChoiceChildren {
   margin-bottom: var(--p-space-3);
   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
