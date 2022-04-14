@@ -5,6 +5,7 @@ import React, {
   FocusEventHandler,
 } from 'react';
 import isEqual from 'react-fast-compare';
+import {Sticky} from '@shopify/polaris';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
