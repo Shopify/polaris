@@ -5,7 +5,7 @@
   "main": "out/index.js",
   "scripts": {
     "build": "tsc -b",
-    "test": "npm run validate-tokens",
+    "test": "yarn validate-tokens",
     "validate-tokens": "ajv validate -s schemas/token-group.json -d 'token-groups/*.json'"
   },
   "devDependencies": {
