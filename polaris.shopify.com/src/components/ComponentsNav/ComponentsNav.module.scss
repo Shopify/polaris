@@ -87,10 +87,11 @@
     font-size: 0.9rem;
     padding: 0.6rem 0.6rem 0.6rem 2.75rem;
     width: 100%;
-    outline: none;
-    border-radius: 6px;
-    background: #f8f8f8 url(./FilterMajor.svg) no-repeat 1em center;
+    border-radius: 4px;
+    background: #fff url(./FilterMajor.svg) no-repeat 1em center;
     background-size: 16px auto;
+    border: 1px solid #ddd;
+    border-top: 1px solid #aaa;
   }
 
   button {
