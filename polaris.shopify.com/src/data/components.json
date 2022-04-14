@@ -17,7 +17,7 @@
         "social media"
       ]
     },
-    "intro": "The account connection component is used so merchants can connect or disconnect"
+    "intro": "The account connection component is used so merchants can connect or disconnect\ntheir store to various accounts. For example, if merchants want to use the\nFacebook sales channel, they need to connect their Facebook\naccount to their Shopify store."
   },
   {
     "frontMatter": {
@@ -102,7 +102,7 @@
         "android"
       ]
     },
-    "intro": "Avatars are used to show a thumbnail representation of an individual or"
+    "intro": "Avatars are used to show a thumbnail representation of an individual or\nbusiness in the interface."
   },
   {
     "frontMatter": {
@@ -257,7 +257,7 @@
         "illustration card"
       ]
     },
-    "intro": "Callout cards are used to encourage merchants to take an action related to a"
+    "intro": "Callout cards are used to encourage merchants to take an action related to a\nnew feature or opportunity. They are most commonly displayed in the\nsales channels section of Shopify."
   },
   {
     "frontMatter": {
@@ -316,7 +316,7 @@
         "call out"
       ]
     },
-    "intro": "Cards are used to group similar concepts and tasks together to make Shopify"
+    "intro": "Cards are used to group similar concepts and tasks together to make Shopify\neasier for merchants to scan, read, and get things done."
   },
   {
     "frontMatter": {
@@ -370,7 +370,7 @@
         "single-choice list"
       ]
     },
-    "intro": "A choice list lets you create a list of grouped radio buttons or checkboxes."
+    "intro": "A choice list lets you create a list of grouped radio buttons or checkboxes.\nUse this component if you need to group together a related list of interactive\nchoices."
   },
   {
     "frontMatter": {
@@ -422,7 +422,7 @@
         "alpha value selector"
       ]
     },
-    "intro": "The color picker is used to let merchants select a color visually. For"
+    "intro": "The color picker is used to let merchants select a color visually. For\nexample, merchants use the color picker to customize the accent color of the\nemail templates for their shop."
   },
   {
     "frontMatter": {
@@ -510,7 +510,7 @@
         "date range selector"
       ]
     },
-    "intro": "Date pickers let merchants choose dates from a visual calendar that’s"
+    "intro": "Date pickers let merchants choose dates from a visual calendar that’s\nconsistently applied wherever dates need to be selected across Shopify."
   },
   {
     "frontMatter": {
@@ -535,7 +535,7 @@
         "ios"
       ]
     },
-    "intro": "Description lists are a way to organize and explain related information."
+    "intro": "Description lists are a way to organize and explain related information.\nThey’re particularly useful when you need to list and define terms such as in a\nglossary."
   },
   {
     "frontMatter": {
@@ -571,7 +571,7 @@
         "ios"
       ]
     },
-    "intro": "Display styles make a bold visual statement. Use them to create impact when the"
+    "intro": "Display styles make a bold visual statement. Use them to create impact when the\nmain goal is visual storytelling. For example, use display text to convince or\nreassure merchants such as in marketing content or to capture attention during onboarding."
   },
   {
     "frontMatter": {
@@ -1073,7 +1073,7 @@
         "list selection"
       ]
     },
-    "intro": "The option list component lets you create a list of grouped items that"
+    "intro": "The option list component lets you create a list of grouped items that\nmerchants can pick from. This can include single selection or multiple selection\nof options. Option list usually appears in a popover, and sometimes in a modal\nor a sidebar. Option lists are styled differently than\n[choice lists](https://polaris.shopify.com/components/forms/choice-list) and should not be used within a form, but as a standalone menu."
   },
   {
     "frontMatter": {
@@ -1227,7 +1227,7 @@
         "switch"
       ]
     },
-    "intro": "Use radio buttons to present each item in a list of options where merchants must"
+    "intro": "Use radio buttons to present each item in a list of options where merchants must\nmake a single selection."
   },
   {
     "frontMatter": {
@@ -1404,7 +1404,7 @@
         "adjuster"
       ]
     },
-    "intro": "Use to give merchants control over a feature or option that can be turned"
+    "intro": "Use to give merchants control over a feature or option that can be turned\non or off."
   },
   {
     "frontMatter": {
@@ -1540,7 +1540,7 @@
         "layout"
       ]
     },
-    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical"
+    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical\ncentering. A stack is made of flexible items that wrap each of the stack’s\nchildren. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
   },
   {
     "frontMatter": {
@@ -1704,7 +1704,7 @@
         "android"
       ]
     },
-    "intro": "A text field is an input field that merchants can type into. It has a range of"
+    "intro": "A text field is an input field that merchants can type into. It has a range of\noptions and supports several text formats including numbers."
   },
   {
     "frontMatter": {
@@ -1804,7 +1804,7 @@
         "tap"
       ]
     },
-    "intro": "Tooltips are floating labels that briefly explain the function of a user"
+    "intro": "Tooltips are floating labels that briefly explain the function of a user\ninterface element. They can be triggered when merchants hover, focus, tap, or\nclick."
   },
   {
     "frontMatter": {

@@ -50,4 +50,3 @@ const readmeFilePath = path.join(__dirname, "../data/components.readme.json");
 fs.writeFileSync(readmeFilePath, JSON.stringify(readmes, null, 2));
 
 console.log("Done!");
-export default {};

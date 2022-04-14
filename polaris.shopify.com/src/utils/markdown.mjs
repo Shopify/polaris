@@ -9,11 +9,13 @@ export const parseMarkdown = (inputMarkdown) => {
   const frontMatter = yaml.load(frontMatterSection);
 
   // Extract the content of the first paragraph
-  const intro = readmeSection.split("\n").find((row) => {
-    const rowContent = row.trim();
-    const isNonEmptyNonHeading =
-      rowContent !== "" && rowContent.length > 0 && rowContent[0] !== "#";
-    return isNonEmptyNonHeading;
+
+  const intro = readmeSection.split("\n\n").find((paragraph) => {
+    const content = paragraph.trim().split("\n").join(" ");
+    if (content.length > 0 && content[0] !== "#") {
+      return content;
+    }
+    return false;
   });
 
   // Replace image paths
