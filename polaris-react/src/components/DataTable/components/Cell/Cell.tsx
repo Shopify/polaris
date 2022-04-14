@@ -96,6 +96,7 @@ export function Cell({
 
   const stickyHeading = (
     <div
+      ref={setRef}
       {...headerCell.props}
       {...colSpanProp}
       className={className}

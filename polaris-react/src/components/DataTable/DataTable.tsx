@@ -93,6 +93,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
 
+  private tableHeadings: HTMLTableCellElement[] = [];
+  private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
 
   private handleResize = debounce(() => {
@@ -197,10 +199,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       />
     );
 
+    const onStickChangeHandler = () => {
+      this.changeHeadingFocus();
+    };
+
     const stickyHeaderMarkup = (
       <AfterInitialMount>
         <div className={styles.StickyTable} role="presentation">
-          <Sticky boundingElement={this.dataTable.current}>
+          <Sticky
+            boundingElement={this.dataTable.current}
+            onStickChange={onStickChangeHandler}
+          >
             {(isSticky: boolean) => {
               const stickyHeaderClassNames = classNames(
                 styles.StickyTableHeader,
@@ -246,7 +255,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                       const stickyHeaderContentCell = (
                         <Cell
                           stickyHeadingCell
-                          setRef={(ref) => this.setCellRef(ref, index)}
+                          setRef={(ref) =>
+                            this.setCellRef({
+                              ref,
+                              index,
+                              inStickyHeader: true,
+                            })
+                          }
                           header
                           content={heading}
                           contentType={columnContentTypes[index]}
@@ -256,7 +271,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                           verticalAlign={verticalAlign}
                         />
                       );
-
                       return (
                         <div
                           style={{
@@ -305,11 +319,57 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
   }
 
-  private setCellRef = (ref: HTMLTableCellElement | null, index: number) => {
+  private setCellRef = ({
+    ref,
+    index,
+    inStickyHeader,
+  }: {
+    ref: HTMLTableCellElement | null;
+    index: number;
+    inStickyHeader: boolean;
+  }) => {
     if (ref == null) {
       return;
     }
-    this.tableHeadingWidths[index] = ref.offsetWidth;
+
+    if (inStickyHeader) {
+      this.stickyHeadings[index] = ref;
+    } else {
+      this.tableHeadings[index] = ref;
+      this.tableHeadingWidths[index] = ref.offsetWidth;
+    }
+  };
+
+  private changeHeadingFocus = () => {
+    const {tableHeadings, stickyHeadings} = this;
+
+    const stickyFocusedItemIndex = stickyHeadings.findIndex(
+      (item) => item === document.activeElement?.parentElement,
+    );
+
+    const tableFocusedItemIndex = tableHeadings.findIndex(
+      (item) => item === document.activeElement?.parentElement,
+    );
+
+    if (stickyFocusedItemIndex < 0 && tableFocusedItemIndex < 0) {
+      return null;
+    }
+
+    let button;
+
+    if (stickyFocusedItemIndex >= 0) {
+      button = tableHeadings[stickyFocusedItemIndex].querySelector('button');
+    } else if (tableFocusedItemIndex >= 0) {
+      button = stickyHeadings[tableFocusedItemIndex].querySelector('button');
+    }
+
+    if (button == null) {
+      return null;
+    }
+
+    button.style.visibility = 'visible';
+    button.focus();
+    button.removeAttribute('style');
   };
 
   private calculateColumnVisibilityData = (condensed: boolean) => {
@@ -426,7 +486,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     return (
       <Cell
-        setRef={(ref) => this.setCellRef(ref, headingIndex)}
+        setRef={(ref) =>
+          this.setCellRef({ref, index: headingIndex, inStickyHeader: false})
+        }
         header
         key={id}
         content={heading}
