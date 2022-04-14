@@ -256,7 +256,7 @@ $resource-list-item-variables: (
 
 .ListItem {
   position: relative;
-  @include focus-ring($border-width: calc(-1 * var(--p-border-width-1)));
+  @include focus-ring($border-width: -1px);
 
   .ListItem + & {
     border-top: var(--p-border-divider);
