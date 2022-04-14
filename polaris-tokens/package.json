@@ -2,7 +2,7 @@
   "name": "@shopify/polaris-tokens",
   "version": "5.0.0-rc.1",
   "description": "",
-  "main": "out/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc -b",
     "test": "yarn validate-tokens",
