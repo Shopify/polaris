@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import isEqual from 'react-fast-compare';
+import {Sticky} from '@shopify/polaris';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -78,6 +79,8 @@ export interface DataTableProps {
   hasZebraStripingOnData?: boolean;
   /** Header becomes sticky and pins to top of table when scrolling  */
   stickyHeader?: boolean;
+  /** Add a fixed first column on horizonal scroll. */
+  hasFixedFirstColumn?: boolean;
 }
 
 type CombinedProps = DataTableProps & {
@@ -152,6 +155,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       increasedTableDensity = false,
       hasZebraStripingOnData = false,
       stickyHeader = false,
+      hasFixedFirstColumn = false,
     } = this.props;
     const {
       condensed,
@@ -183,6 +187,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const totalsMarkup = totals ? (
       <tr>{totals.map(this.renderTotals)}</tr>
     ) : null;
+
+    const firstColumn = rows.map((row) => row.slice(0, 1));
+    const firstHeading = headings.slice(0, 1);
+    const fixedFirstColumn = condensed &&
+      !isScrolledFarthestLeft &&
+      hasFixedFirstColumn && (
+        <table className={styles.FixedFirstColumn}>
+          {firstHeading.map(this.renderHeadings)}
+          {firstColumn.map(this.defaultRenderRow)}
+        </table>
+      );
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
 
@@ -305,6 +320,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               event="scroll"
               handler={this.scrollListener}
             />
+            {fixedFirstColumn}
             <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
