@@ -42,7 +42,6 @@ function ComponentsNav({}: Props) {
         <Button
           onClick={() => setFilterCategory("all")}
           aria-pressed={filterCategory === "all"}
-          small
           pill
         >
           All
@@ -54,7 +53,6 @@ function ComponentsNav({}: Props) {
               key={category}
               onClick={() => setFilterCategory(category)}
               aria-pressed={category === filterCategory}
-              small
               pill
             >
               {category}

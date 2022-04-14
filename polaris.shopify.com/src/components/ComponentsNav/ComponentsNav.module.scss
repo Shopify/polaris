@@ -1,6 +1,6 @@
 .ComponentsNav {
-  --preview-width: 280px;
-  --preview-ratio: 1.33;
+  --preview-width: 220px;
+  --preview-ratio: 1.75;
   --sidebar-top: calc(var(--header-height) + 3.5rem);
 
   display: flex;
@@ -10,7 +10,7 @@
   top: var(--sidebar-top);
   align-self: flex-start;
   max-height: calc(100vh - var(--sidebar-top) - 2rem);
-  width: 38em;
+  width: 32em;
   display: flex;
   border-right: 1px solid #ededed;
 
@@ -31,9 +31,10 @@
     a {
       display: flex;
       align-items: center;
-      margin: 0.5rem 0;
+      padding: 0.5rem 0;
       gap: 1em;
       color: inherit;
+      border-top: 1px solid #ededed;
 
       &:hover {
         box-shadow: inset 3px 0 #ddd;
@@ -41,6 +42,15 @@
 
       &[aria-current="page"] {
       }
+
+      &:last-child a {
+        border-bottom: 1px solid #ededed;
+      }
+    }
+
+    h4 {
+      font-size: 1.05em;
+      font-weight: 600;
     }
 
     p {
@@ -68,6 +78,7 @@
 .Filters {
   position: relative;
   padding-right: 2rem;
+  padding-bottom: 0.5em;
 
   input {
     margin-bottom: 12px;
