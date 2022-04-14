@@ -15,7 +15,6 @@ import {tokensToRems} from './utilities';
  */
 export interface TokenProperties {
   description: string;
-  figmaName: string;
   value: string;
 }
 

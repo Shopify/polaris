@@ -1,82 +1,66 @@
 {
   "duration-0": {
     "value": "0ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-50": {
     "value": "50ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-100": {
     "value": "100ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-150": {
     "value": "150ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-200": {
     "value": "200ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-250": {
     "value": "250ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-300": {
     "value": "300ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-350": {
     "value": "350ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-400": {
     "value": "400ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-450": {
     "value": "450ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "duration-500": {
     "value": "500ms",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "ease": {
     "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "ease-in": {
     "value": "cubic-bezier(0.42, 0, 1, 1)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "ease-out": {
     "value": "cubic-bezier(0, 0, 0.58, 1)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "ease-in-out": {
     "value": "cubic-bezier(0.42, 0, 0.58, 1)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "linear": {
     "value": "cubic-bezier(0, 0, 1, 1)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   }
 }

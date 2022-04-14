@@ -1,92 +1,74 @@
 {
   "override-loading-z-index": {
     "value": "514",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "choice-size": {
     "value": "20px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "icon-size-small": {
     "value": "10px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "icon-size-medium": {
     "value": "20px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "choice-margin": {
     "value": "1px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "control-border-width": {
     "value": "2px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "banner-border-default": {
     "value": "inset 0 1px 0 0 var(--p-border-neutral-subdued), inset 0 0 0 1px var(--p-border-neutral-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "banner-border-success": {
     "value": "inset 0 1px 0 0 var(--p-border-success-subdued), inset 0 0 0 1px var(--p-border-success-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "banner-border-highlight": {
     "value": "inset 0 1px 0 0 var(--p-border-highlight-subdued), inset 0 0 0 1px var(--p-border-highlight-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "banner-border-warning": {
     "value": "inset 0 1px 0 0 var(--p-border-warning-subdued), inset 0 0 0 1px var(--p-border-warning-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "banner-border-critical": {
     "value": "inset 0 1px 0 0 var(--p-border-critical-subdued), inset 0 0 0 1px var(--p-border-critical-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "thin-border-subdued": {
     "value": "1px solid var(--p-border-subdued)",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "text-field-spinner-offset": {
     "value": "2px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "text-field-focus-ring-offset": {
     "value": "-4px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "button-group-item-spacing": {
     "value": "-1px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "range-slider-thumb-size-base": {
     "value": "16px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "range-slider-thumb-size-active": {
     "value": "24px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "frame-offset": {
     "value": "0px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   }
 }

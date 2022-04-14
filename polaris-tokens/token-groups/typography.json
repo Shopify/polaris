@@ -1,132 +1,106 @@
 {
   "font-family-sans": {
     "value": "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-family-mono": {
     "value": "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-1": {
     "value": "12px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-2": {
     "value": "13px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-3": {
     "value": "14px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-4": {
     "value": "15px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-5": {
     "value": "16px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-6": {
     "value": "17px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-7": {
     "value": "20px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-8": {
     "value": "21px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-9": {
     "value": "24px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-10": {
     "value": "26px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-11": {
     "value": "27px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-12": {
     "value": "28px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-size-13": {
     "value": "42px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-weight-regular": {
     "value": "400",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-weight-medium": {
     "value": "500",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-weight-semibold": {
     "value": "600",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "font-weight-bold": {
     "value": "700",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-1": {
     "value": "16px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-2": {
     "value": "20px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-3": {
     "value": "24px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-4": {
     "value": "28px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-5": {
     "value": "32px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-6": {
     "value": "36px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "line-height-7": {
     "value": "44px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   }
 }

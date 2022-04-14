@@ -1,87 +1,70 @@
 {
   "space-0": {
     "value": "0",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-025": {
     "value": "1px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-05": {
     "value": "2px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-1": {
     "value": "4px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-2": {
     "value": "8px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-3": {
     "value": "12px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-4": {
     "value": "16px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-5": {
     "value": "20px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-6": {
     "value": "24px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-8": {
     "value": "32px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-10": {
     "value": "40px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-12": {
     "value": "48px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-16": {
     "value": "64px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-20": {
     "value": "80px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-24": {
     "value": "96px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-28": {
     "value": "112px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   },
   "space-32": {
     "value": "128px",
-    "description": "",
-    "figmaName": ""
+    "description": ""
   }
 }
