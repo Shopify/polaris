@@ -13,14 +13,14 @@ import {tokensToRems} from './utilities';
  * Values to convert to CSS custom properties.
  * @example {background: '#000'} // --p-background: #000;
  */
-export interface TokenValues {
+export interface TokenProperties {
   description: string;
   figmaName: string;
   value: string;
 }
 
 export interface TokenGroup {
-  [token: string]: TokenValues;
+  [token: string]: TokenProperties;
 }
 
 export type ColorScheme = 'light' | 'dark';
