@@ -9,9 +9,7 @@ import Nav from "../Nav";
 import { NavItem } from "../Nav/Nav";
 
 interface Props {
-  navItems?: NavItem[];
-  sidebarLeft?: () => React.ReactNode;
-  sidebarRight?: () => React.ReactNode;
+  renderNav?: () => React.ReactNode;
   noLayout?: boolean;
   children: React.ReactNode;
 }
@@ -23,27 +21,11 @@ const headerNavItems: { url: string; label: string }[] = [
   { url: "/icons", label: "Icons" },
 ];
 
-function Page({
-  navItems,
-  sidebarLeft,
-  sidebarRight,
-  noLayout = false,
-  children,
-}: Props) {
+function Page({ renderNav, noLayout = false, children }: Props) {
   const router = useRouter();
 
-  if (noLayout === true && navItems) {
-    throw new Error(
-      `Page component: noLayout must be 'false' when navItems are passed`
-    );
-  }
-
   return (
-    <div
-      className={[styles.Page, noLayout ? styles.noLayout : null].join(" ")}
-      data-has-sidebar-left={!!sidebarLeft}
-      data-has-sidebar-right={!!sidebarRight}
-    >
+    <div className={[styles.Page, noLayout ? styles.noLayout : null].join(" ")}>
       <div className={styles.Header}>
         <Link href="/">
           <a className={styles.Logo}>
@@ -70,30 +52,19 @@ function Page({
         </div>
       </div>
 
-      {sidebarLeft && (
-        <div className={[styles.Sidebar, styles.left].join(" ")}>
-          {sidebarLeft()}
-        </div>
-      )}
-
       <div className={styles.Content}>
         {noLayout ? (
           <>{children}</>
         ) : (
           <>
-            {navItems && <Nav navItems={navItems} />}
+            {renderNav && renderNav()}
+
             <div className={styles.MainContent}>
               <div className={styles.MainContentInner}>{children}</div>
             </div>
           </>
         )}
       </div>
-
-      {sidebarRight && (
-        <div className={[styles.Sidebar, styles.right].join(" ")}>
-          {sidebarRight()}
-        </div>
-      )}
     </div>
   );
 }

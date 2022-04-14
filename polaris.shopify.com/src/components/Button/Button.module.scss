@@ -1,14 +1,14 @@
 .Button {
   appearance: none;
-  background: #ededed;
-  padding: 0.25em 0.5em 0.35em;
+  background: #f8f8f8;
+  padding: 0.3em 0.5em 0.35em;
   border: none;
   font-weight: 400;
   border-radius: 0.25em;
   cursor: pointer;
 
   &:hover {
-    background: #ddd;
+    background: #ededed;
   }
 
   &.small {
@@ -23,7 +23,7 @@
 
   &[aria-pressed="true"],
   &[aria-selected="true"] {
-    background: #3169ea;
+    background: #008060;
     color: white;
     box-shadow: none;
   }

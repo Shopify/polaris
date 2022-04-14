@@ -6,10 +6,11 @@ import colors from "../../../../polaris-react/src/tokens/token-groups/color.ligh
 import Longform from "../../components/Longform";
 import { navItems } from "../../data/tokensNav";
 import Token from "../../components/Token";
+import Nav from "../../components/Nav";
 
 const Components: NextPage = () => {
   return (
-    <Page navItems={navItems}>
+    <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
         <title>Color tokens</title>
       </Head>

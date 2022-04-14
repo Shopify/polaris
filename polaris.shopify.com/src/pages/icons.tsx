@@ -44,6 +44,7 @@ const Components: NextPage = () => {
         style={{
           display: "flex",
           flexWrap: "wrap",
+          padding: 100,
         }}
       >
         {icons.map((icon) => (
@@ -56,11 +57,9 @@ const Components: NextPage = () => {
               width: "100%",
               minWidth: 200,
               flex: 1,
-              padding: `35px 0 30px`,
+              padding: `45px 0 40px`,
               gap: 15,
               textAlign: "center",
-              borderBottom: "1px solid #eaeaea",
-              borderRight: "1px solid #eaeaea",
               cursor: "pointer",
             }}
             onClick={() => setSelectedIconName(icon.name)}

@@ -6,10 +6,11 @@ import zIndex from "../../../../polaris-react/src/tokens/token-groups/z-index.js
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
+import Nav from "../../components/Nav";
 
 const Components: NextPage = () => {
   return (
-    <Page navItems={navItems}>
+    <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
         <title>Tokens</title>
       </Head>

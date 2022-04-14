@@ -6,17 +6,18 @@
   }
 
   input {
-    background: #111;
-    color: white;
+    background: #f8f8f8 url(./SearchMajor.svg) no-repeat 1em center;
+    background-size: 16px auto;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
     appearance: none;
     border: none;
     outline: none;
-    padding: 0.75em 1.25em;
     border-radius: 100px;
+    font-size: 0.9rem;
     width: 100%;
 
     &::placeholder {
-      color: #ddd;
+      color: #444;
     }
 
     &::-webkit-search-decoration,
@@ -36,7 +37,6 @@
   position: absolute;
   z-index: 2;
   border-radius: 8px;
-  background: rgba(20, 20, 20, 0.925);
   color: white;
   width: 100%;
   animation: search-results-enter 0.3s cubic-bezier(0.25, 1, 0.5, 1) both;
@@ -44,7 +44,8 @@
   max-height: 70vh;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1),
     0 100px 200px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 
   li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.075);

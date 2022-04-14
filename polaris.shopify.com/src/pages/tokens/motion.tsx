@@ -9,6 +9,7 @@ import { navItems } from "../../data/tokensNav";
 import { useState } from "react";
 import Button from "../../components/Button";
 import { useEffect } from "react";
+import Nav from "../../components/Nav";
 
 const Components: NextPage = () => {
   const [easeExamplesAreResetting, setEaseExamplesAreResetting] =
@@ -31,7 +32,7 @@ const Components: NextPage = () => {
   );
 
   return (
-    <Page navItems={navItems}>
+    <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
         <title>Tokens</title>
       </Head>

@@ -1,8 +1,8 @@
 .Nav {
-  padding: 0.25em 4em 2em 0;
+  padding: 0.25em 0 2em;
   align-self: flex-start;
   font-size: 0.95em;
-  min-width: 16em;
+  min-width: 12em;
 
   span {
     font-weight: 500;
@@ -19,12 +19,13 @@
       margin-right: 0.25em;
     }
     &[aria-current="page"] {
+      color: #008060;
       font-weight: 500;
-      color: inherit;
     }
   }
 
   ul {
+    margin-top: 0.25rem;
     margin-bottom: 0.75rem;
   }
 

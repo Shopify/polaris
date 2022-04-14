@@ -10,10 +10,15 @@
   cursor: pointer;
   gap: 10px;
 
+  &:target {
+    animation: search-highlight 2s ease both;
+  }
+
   &.bigGap {
     gap: 20px;
   }
 
+  &:focus,
   &:hover {
     .Name {
       background: #f4ddf4;
@@ -22,7 +27,6 @@
       opacity: 1;
       transition-delay: 0.5s;
     }
-
     &.didJustCopy {
       .CopyInfo {
         opacity: 1;
@@ -47,4 +51,23 @@
   margin-right: 0.25em;
   font-size: 0.85em;
   color: #666;
+}
+
+@keyframes search-highlight {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.25);
+    background: white;
+  }
+  80% {
+    transform: scale(1.2);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.25);
+    background: white;
+  }
+  100% {
+    background-color: transparent;
+  }
 }

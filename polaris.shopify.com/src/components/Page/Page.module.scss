@@ -10,7 +10,6 @@
   padding: 0 2rem;
   height: var(--header-height);
   background: white;
-  border-bottom: 1px solid #eaeaea;
 }
 
 .Logo {
@@ -27,8 +26,14 @@
 
 .HeaderNav {
   display: flex;
-  font-weight: 400;
-
+  font-weight: 500;
+  position: absolute;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: var(--header-height);
+  z-index: -1;
   a {
     display: flex;
     align-items: center;
@@ -38,11 +43,11 @@
   }
 
   li a:hover {
-    box-shadow: inset 0 -3px #ededed;
+    color: #666;
   }
 
   li[aria-current="page"] a {
-    box-shadow: inset 0 -3px currentColor;
+    color: #008060;
   }
 }
 
@@ -56,27 +61,12 @@
   }
 }
 
-.Page {
-  --sidebar-width: 32em;
-
-  &[data-has-sidebar-right="left"] {
-    .Content {
-      padding-left: var(--sidebar-width);
-    }
-  }
-
-  &[data-has-sidebar-right="true"] {
-    .Content {
-      padding-right: var(--sidebar-width);
-    }
-  }
-}
-
 .Content {
   margin: 3rem 0;
   display: flex;
   width: 100%;
   justify-content: center;
+  gap: 4em;
 
   .Page.noLayout & {
     margin: 0;
@@ -89,23 +79,4 @@
 
 .MainContentInner {
   max-width: 40em;
-}
-
-.Sidebar {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  top: var(--header-height);
-  height: calc(100vh - var(--header-height));
-  width: var(--sidebar-width);
-  display: flex;
-
-  &.left {
-    border-right: 1px solid #eaeaea;
-  }
-  &.right {
-    left: auto;
-    right: 0;
-    border-left: 1px solid #eaeaea;
-  }
 }

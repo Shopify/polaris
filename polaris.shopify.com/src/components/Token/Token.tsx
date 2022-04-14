@@ -16,10 +16,17 @@ function Token({ name, description, value, bigGap, renderPreview }: Props) {
     <button
       className={[
         styles.Token,
-        didJustCopy ? styles.didJustCopy : null,
-        bigGap ? styles.bigGap : null,
+        didJustCopy && styles.didJustCopy,
+        bigGap && styles.bigGap,
       ].join(" ")}
       onClick={copy}
+      onKeyUp={(evt) => {
+        if (evt.code === "Enter" || evt.code === "Space") {
+          copy();
+          evt.preventDefault();
+        }
+      }}
+      id={name}
     >
       {renderPreview()}
       <p className={styles.Name}>

@@ -1,9 +1,19 @@
 .ComponentsNav {
   --preview-width: 180px;
   --preview-ratio: 1.33;
-  flex: 1;
+  --sidebar-top: calc(var(--header-height) + 3.5rem);
+
   display: flex;
   flex-direction: column;
+  position: sticky;
+  left: 2rem;
+  top: var(--sidebar-top);
+  align-self: flex-start;
+  max-height: calc(100vh - var(--sidebar-top) - 2rem);
+  width: 32em;
+  display: flex;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px #ddd;
 
   &[data-layout="tight"] {
     --preview-width: 40px;
@@ -15,33 +25,32 @@
     flex-direction: column;
     overflow: auto;
     overscroll-behavior: contain;
+    padding: 0.5rem 0;
   }
 
   li {
-    border-bottom: 1px solid #eaeaea;
-
     a {
       display: flex;
       align-items: center;
-      padding: 0.5em 1em;
+      margin: 0.5rem 0;
+      padding: 0 1.5rem 0 1rem;
       gap: 1em;
       color: inherit;
 
-      &[aria-current="page"],
       &:hover {
-        background: #fafafa;
+        box-shadow: inset 3px 0 #ddd;
       }
-    }
 
-    h4 {
-      margin-bottom: 0.33rem;
+      &[aria-current="page"] {
+        box-shadow: inset 3px 0 #008060;
+      }
     }
 
     p {
       margin-top: 0.33rem;
       font-size: 0.8em;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -52,27 +61,28 @@
     max-width: var(--preview-width);
     min-height: calc(var(--preview-width) / var(--preview-ratio));
     max-height: calc(var(--preview-width) / var(--preview-ratio));
-    border-radius: 2px;
-    background: #ededed;
+    border-radius: 3px;
+    background: #f8f8f8;
     transition: all 0.25s ease;
   }
 }
 
 .Filters {
-  padding: 1em;
-  border-bottom: 1px solid #eaeaea;
+  padding: 1rem;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  position: relative;
 
   input {
     margin-bottom: 12px;
-    padding: 0.66em 0.66em 0.66em 2.75em;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.6rem 0.6rem 2.75rem;
     width: 100%;
     outline: none;
-    border-radius: 4px;
-    background: #fff url(./FilterMajor.svg) no-repeat 1em center;
+    border-radius: 6px;
+    background: #f8f8f8 url(./FilterMajor.svg) no-repeat 1em center;
     background-size: 16px auto;
-    border: 1px solid #ddd;
-    border-top-color: #aaa;
   }
+
   button {
     margin: 0 2px 2px 0;
   }

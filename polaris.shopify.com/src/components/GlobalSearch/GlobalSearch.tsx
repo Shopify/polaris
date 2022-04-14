@@ -73,7 +73,7 @@ function GlobalSearch({}: Props) {
                           width: 32,
                           height: 32,
                           background: item.meta.colorToken?.value,
-                          borderRadius: 4,
+                          borderRadius: 100,
                         }}
                       ></div>
                     )}
@@ -94,7 +94,7 @@ function GlobalSearch({}: Props) {
                             width={32}
                             height={32}
                             layout="fixed"
-                            alt={""}
+                            alt=""
                           />
                         </div>
                       </div>
