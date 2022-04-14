@@ -21,6 +21,7 @@ $dropzone-stacking-order: (
 }
 
 @mixin set-border-radius {
+  // border-radius-1 + border-width 1 + 1px
   border-radius: var(--p-border-radius-large);
 }
 
@@ -58,7 +59,7 @@ $dropzone-stacking-order: (
 }
 
 .hasOutline {
-  padding: var(--p-border-width-1);
+  padding: var(--p-space-025);
 
   &::after {
     border-color: var(--p-border-neutral-subdued);
