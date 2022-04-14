@@ -6,7 +6,8 @@
   line-height: var(--p-line-height-4);
 
   @include when-typography-not-condensed {
-    font-size: var(--p-font-size-5);
+    font-size: 18px;
+    line-height: var(--p-line-height-3);
   }
   margin: 0;
 

@@ -44,6 +44,10 @@
   height: var(--p-choice-size);
   margin-right: var(--p-space-4);
 
+  @include when-typography-not-condensed {
+    margin-right: var(--p-space-2);
+  }
+
   > * {
     width: 100%;
   }
@@ -67,6 +71,10 @@
 
 .Descriptions {
   padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+
+  @include when-typography-not-condensed {
+   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
+  }
 }
 
 .HelpText {
