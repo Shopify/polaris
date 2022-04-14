@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -91,7 +92,14 @@ function ComponentsNav({}: Props) {
               <li key={name}>
                 <Link href={url} passHref>
                   <a aria-current={currentPath === url ? "page" : "false"}>
-                    <div className={styles.Preview}></div>
+                    <div className={styles.Preview}>
+                      <Image
+                        src={`/component-previews/${slugify(name)}.png`}
+                        width={525}
+                        height={300}
+                        alt=""
+                      />
+                    </div>
                     <div>
                       <h4>{name}</h4>
                       <p>{stripMarkdownLinks(intro)}</p>

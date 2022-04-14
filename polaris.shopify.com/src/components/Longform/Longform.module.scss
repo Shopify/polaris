@@ -73,4 +73,8 @@
   > div > h1 + p {
     font-size: 1.5em;
   }
+
+  > p:first-of-type {
+    font-size: 1.4em;
+  }
 }

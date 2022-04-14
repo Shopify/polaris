@@ -5,8 +5,6 @@ import polarisLogo from "../../../public/polaris-logo.svg";
 import styles from "./Page.module.scss";
 import { useRouter } from "next/router";
 import GlobalSearch from "../GlobalSearch";
-import Nav from "../Nav";
-import { NavItem } from "../Nav/Nav";
 
 interface Props {
   renderNav?: () => React.ReactNode;

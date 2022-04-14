@@ -31,13 +31,13 @@
     a {
       display: flex;
       align-items: center;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
       gap: 1em;
       color: inherit;
       border-top: 1px solid #ededed;
 
       &:hover {
-        box-shadow: inset 3px 0 #ddd;
+        // box-shadow: inset 3px 0 #ddd;
       }
 
       &[aria-current="page"] {
@@ -72,6 +72,8 @@
     border-radius: 8px;
     background: #f8f8f8;
     transition: all 0.25s ease;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
   }
 }
 
