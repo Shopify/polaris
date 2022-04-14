@@ -53,7 +53,6 @@ const colorSchemes: ColorSchemes = {
 
 export interface Tokens {
   colorSchemes: ColorSchemes;
-  color: TokenGroup;
   depth: TokenGroup;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
@@ -64,7 +63,6 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  color: lightColorScheme,
   colorSchemes,
   depth,
   legacyTokens: tokensToRems(legacyTokens),
