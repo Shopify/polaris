@@ -10,6 +10,7 @@ polaris/
 ├── polaris-for-vscode          # VS Code plugin for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
 ├── polaris-shopify-com         # Documentation website
+├── polaris-tokens              # Design tokens for Polaris
 └── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
 
