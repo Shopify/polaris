@@ -9,6 +9,8 @@ import styles from '../../Popover.scss';
 export interface PaneProps {
   /** Fix the pane to the top of the popover */
   fixed?: boolean;
+  /** Max-height to set on the Scrollable Popover.Pane */
+  maxHeight?: string;
   /** Automatically wrap children in padded sections */
   sectioned?: boolean;
   /** The pane content */
@@ -19,6 +21,7 @@ export interface PaneProps {
 
 export function Pane({
   fixed,
+  maxHeight,
   sectioned,
   children,
   onScrolledToBottom,
@@ -28,12 +31,15 @@ export function Pane({
     ? wrapWithComponent(children, Section, {})
     : children;
 
+  const style = maxHeight ? {maxHeight} : undefined;
+
   return fixed ? (
     <div className={className}>{content}</div>
   ) : (
     <Scrollable
       shadow
       className={className}
+      style={style}
       onScrolledToBottom={onScrolledToBottom}
     >
       {content}

@@ -17,6 +17,8 @@ import styles from './Combobox.scss';
 import {TextField} from './components';
 
 export interface ComboboxProps {
+  /** Max-height to set on the Scrollable Popover.Pane */
+  maxHeight?: string;
   /** The text field component to activate the Popover */
   activator: React.ReactElement<TextFieldProps>;
   /** Allows more than one option to be selected */
@@ -29,15 +31,19 @@ export interface ComboboxProps {
   willLoadMoreOptions?: boolean;
   /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
+  /** Callback fired when the Popover closes. */
+  onClose?(): void;
 }
 
 export function Combobox({
+  maxHeight,
   activator,
   allowMultiple,
   children,
   preferredPosition = 'below',
   willLoadMoreOptions,
   onScrolledToBottom,
+  onClose,
 }: ComboboxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
@@ -52,10 +58,11 @@ export function Combobox({
     // only deactive popover if not creating a new option
     if (!disableCloseOnSelect) {
       setPopoverActive(false);
+      onClose?.();
     }
 
     setActiveOptionId(undefined);
-  }, [disableCloseOnSelect]);
+  }, [onClose, disableCloseOnSelect]);
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
@@ -150,7 +157,6 @@ export function Combobox({
     <Popover
       ref={ref}
       active={popoverActive}
-      onClose={handleClose}
       activator={
         <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
           {activator}
@@ -161,9 +167,13 @@ export function Combobox({
       fullWidth
       preferInputActivator={false}
       preferredPosition={preferredPosition}
+      onClose={handleClose}
     >
-      <Popover.Pane onScrolledToBottom={onScrolledToBottom}>
-        {Children.count(children) > 0 ? (
+      {Children.count(children) > 0 ? (
+        <Popover.Pane
+          maxHeight={maxHeight}
+          onScrolledToBottom={onScrolledToBottom}
+        >
           <ComboboxListboxContext.Provider value={listboxContextValue}>
             <ComboboxListboxOptionContext.Provider
               value={listboxOptionContextValue}
@@ -171,8 +181,8 @@ export function Combobox({
               <div className={styles.Listbox}>{children}</div>
             </ComboboxListboxOptionContext.Provider>
           </ComboboxListboxContext.Provider>
-        ) : null}
-      </Popover.Pane>
+        </Popover.Pane>
+      ) : null}
     </Popover>
   );
 }

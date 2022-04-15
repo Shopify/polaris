@@ -1,4 +1,5 @@
 .Scrollable {
+  --pc-scrollable-max-height: none;
   --pc-scrollable-shadow-size: var(--p-space-5);
   --pc-scrollable-shadow-bottom: inset 0
     calc(-1 * var(--pc-scrollable-shadow-size)) var(--pc-scrollable-shadow-size)
@@ -8,6 +9,7 @@
     var(--p-hint-from-direct-light);
   -webkit-overflow-scrolling: touch;
   position: relative;
+  max-height: var(--pc-scrollable-max-height);
 
   &:focus {
     outline: 2px solid var(--p-focused);
