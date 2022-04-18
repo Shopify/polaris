@@ -1,6 +1,6 @@
-# Polaris for VSCode
+# Polaris for VS Code
 
-Official VSCode extension for building with the Shopify [Polaris Design System](https://polaris.shopify.com/).
+Official VS Code extension for building with the Shopify [Polaris Design System](https://polaris.shopify.com/).
 
 ![Demo of Polaris for figma autocompleting token code](https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/docs/polaris-for-vscode-preview.gif?raw=true)
 
@@ -17,7 +17,7 @@ Get code autocomplete suggestions for the [Polaris Design Tokens](https://polari
 
 ## How to use
 
-Once installed and enabled, the Polaris for VSCode extension will automatically run in any CSS and Sass files.
+Once installed and enabled, the Polaris for VS Code extension will automatically run in any CSS and Sass files.
 
 To trigger tokens automcomplete feature:
 

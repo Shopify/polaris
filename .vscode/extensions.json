@@ -8,6 +8,6 @@
     "esbenp.prettier-vscode",
     "mrmlnc.vscode-scss",
     "orta.vscode-jest",
-    "stylelint.vscode-stylelint"
+    "Shopify.polaris-for-vscode"
   ]
 }

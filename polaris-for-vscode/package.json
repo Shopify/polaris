@@ -1,9 +1,9 @@
 {
   "name": "polaris-for-vscode",
-  "displayName": "Polaris for VSCode",
+  "displayName": "Polaris for VS Code",
   "publisher": "Shopify",
   "license": "SEE LICENSE IN LICENSE.md",
-  "description": "Polaris Design System VSCode extension",
+  "description": "Polaris Design System VS Code extension",
   "icon": "docs/polaris-icon.png",
   "repository": {
     "type": "git",
