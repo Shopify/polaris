@@ -190,7 +190,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const firstColumn = rows.map((row) => row.slice(0, 1));
     const firstHeading = headings.slice(0, 1);
-    const navHeight = this.navigation.current?.clientHeight;
+
     const fixedFirstColumn = condensed &&
       !isScrolledFarthestLeft &&
       hasFixedFirstColumn && (
@@ -199,14 +199,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           aria-hidden
           role="presentation"
         >
-          <th
-            className={styles.ColumnExtension}
-            style={{
-              height: `${navHeight}px`,
-              top: `${navHeight && navHeight * -1}px`,
-              right: '-0.5px',
-            }}
-          />
           {firstHeading.map(this.renderHeadings)}
           {firstColumn.map(this.defaultRenderRow)}
         </table>
@@ -230,7 +222,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         isScrolledFarthestRight={isScrolledFarthestRight}
         navigateTableLeft={this.navigateTable('left')}
         navigateTableRight={this.navigateTable('right')}
-        ref={this.navigation}
       />
     );
 

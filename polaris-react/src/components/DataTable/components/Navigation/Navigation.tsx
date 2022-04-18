@@ -16,16 +16,13 @@ export interface NavigationProps {
 }
 
 export const Navigation = React.forwardRef(
-  (
-    {
-      columnVisibilityData,
-      isScrolledFarthestLeft,
-      isScrolledFarthestRight,
-      navigateTableLeft,
-      navigateTableRight,
-    }: NavigationProps,
-    ref,
-  ) => {
+  ({
+    columnVisibilityData,
+    isScrolledFarthestLeft,
+    isScrolledFarthestRight,
+    navigateTableLeft,
+    navigateTableRight,
+  }: NavigationProps) => {
     const i18n = useI18n();
 
     const pipMarkup = columnVisibilityData.map((column, index) => {
@@ -48,7 +45,7 @@ export const Navigation = React.forwardRef(
     );
 
     return (
-      <div ref={ref} className={styles.Navigation}>
+      <div className={styles.Navigation}>
         <Button
           plain
           icon={ChevronLeftMinor}
