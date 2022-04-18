@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'react-fast-compare';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
