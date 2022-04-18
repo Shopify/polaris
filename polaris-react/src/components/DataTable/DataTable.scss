@@ -160,6 +160,13 @@
 .Cell-verticalAlignBaseline {
   vertical-align: baseline;
 }
+.hoverable {
+  .Cell-hovered {
+    @include breakpoint-after($breakpoint) {
+      background: var(--p-surface-hovered);
+    }
+  }
+}
 
 .Icon {
   display: flex;
@@ -355,10 +362,4 @@
   > th:first-child {
     padding-top: calc(var(--p-space-4) * 3 + var(--p-line-height-2));
   }
-}
-.ColumnExtension {
-  border-right: var(--p-border-divider);
-  position: absolute;
-  border-collapse: separate;
-  box-sizing: border-box;
 }

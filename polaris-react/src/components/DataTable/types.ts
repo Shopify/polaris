@@ -16,4 +16,5 @@ export interface DataTableState {
   sortDirection?: SortDirection;
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
+  rowHovered: number | undefined;
 }

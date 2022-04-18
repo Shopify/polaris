@@ -93,6 +93,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     columnVisibilityData: [],
     isScrolledFarthestLeft: true,
     isScrolledFarthestRight: false,
+    rowHovered: undefined,
   };
 
   private dataTable = createRef<HTMLDivElement>();
@@ -198,6 +199,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           className={styles.FixedFirstColumn}
           aria-hidden
           role="presentation"
+          style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
         >
           {firstHeading.map(this.renderHeadings)}
           {firstColumn.map(this.defaultRenderRow)}
@@ -495,6 +497,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       this.stickyHeaderScrolling();
     }
   };
+  private onHover = (row: number) => {
+    this.setState({rowHovered: row});
+  };
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
@@ -647,8 +652,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
 
     return (
-      <tr key={`row-${index}`} className={className}>
+      <tr
+        key={`row-${index}`}
+        className={className}
+        onMouseEnter={() => this.onHover(index)}
+        onMouseLeave={() => this.setState({rowHovered: undefined})}
+      >
         {row.map((content: CellProps['content'], cellIndex: number) => {
+          const hovered = index === this.state.rowHovered;
           const id = `cell-${cellIndex}-row-${index}`;
           const colSpan = this.getColSpan(
             row.length,
@@ -666,6 +677,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}
+              hovered={hovered}
             />
           );
         })}
