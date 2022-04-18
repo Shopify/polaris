@@ -79,7 +79,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (tokenGroupParam === 'all' || tokenGroupParam === 'colors') {
       const colorSchemeTokenGroup: TokenGroup =
-        tokens.colorSchemes[colorScheme] || {};
+        tokens.colorSchemes[schemeParam] || {};
 
       tokenData = {...tokenData, ...colorSchemeTokenGroup};
     }
