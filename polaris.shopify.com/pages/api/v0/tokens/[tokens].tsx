@@ -3,6 +3,7 @@ import {
   ColorScheme,
   osColorSchemes,
   tokens,
+  TokenProperties,
 } from '@shopify/polaris-tokens';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
@@ -37,14 +38,13 @@ function isFormat(format: unknown): format is Format {
  * Format the token data into: css or json
  */
 const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
-  const tokenValues: TokenGroup = Object.keys(tokenGroup).reduce(
-    (result: TokenGroup, key: TokenGroupKey) => {
-      result[key] = tokenGroup[key].value;
+  const tokenValues = Object.fromEntries(
+    Object.entries(tokenGroup).map((entry) => {
+      const [key, tokenProps] = entry as [TokenGroupKey, TokenProperties];
 
-      return result;
-    },
-    {},
-  ) as TokenGroup;
+      return [key, tokenProps.value];
+    }),
+  );
 
   if (format === 'css') {
     return Object.keys(tokenValues)
@@ -72,7 +72,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // Determine which list(s) we are querying for based on the token param
     if (tokenGroupParam === 'all') {
-      staticTokenGroupKeys.forEach((group: TokenGroupKey) => {
+      staticTokenGroupKeys.forEach((group) => {
         const tokenGroup: TokenGroup = tokens[group] || {};
 
         tokenData = {...tokenData, ...tokenGroup};
@@ -87,7 +87,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     if (staticTokenGroupKeys.includes(tokenGroupParam as StaticTokenGroupKey)) {
-      const tokenGroup: TokenGroup = tokens[tokenGroupParam] || {};
+      const tokenGroupName = tokenGroupParam as StaticTokenGroupKey;
+      const tokenGroup: TokenGroup = tokens[tokenGroupName] || {};
 
       tokenData = {...tokenData, ...tokenGroup};
     }
