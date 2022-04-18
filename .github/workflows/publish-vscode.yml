@@ -1,10 +1,7 @@
 name: Release Polaris for VS Code
 
 # on: [release]
-on:
-  push:
-    branches:
-      - vscode-publish-workflow
+on: push
 
 jobs:
   release:
