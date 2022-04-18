@@ -65,7 +65,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const schemeParam = isScheme(req.query.scheme) ? req.query.scheme : 'light';
 
   if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
-    const colorScheme = osColorSchemes[schemeParam] as ColorScheme;
     const tokenGroupParam = (req.query.tokens || '') as TokenGroupKey;
     let tokenData: TokenGroup = {};
 
