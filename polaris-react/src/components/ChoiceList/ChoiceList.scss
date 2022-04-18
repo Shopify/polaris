@@ -17,8 +17,7 @@
 }
 
 .ChoiceItem {
-  padding-top: var(--p-space-2);
-  padding-bottom: var(--p-space-2);
+  padding-bottom: var(--p-space-5);
 }
 
 .ChoiceChildren {
@@ -34,6 +33,6 @@
 .Title {
   @include text-style-body;
   display: block;
-  margin: 0 0 var(--p-space-1);
+  margin-bottom: var(--p-space-5);
   padding: 0;
 }
