@@ -1,6 +1,10 @@
 name: Release Polaris for VS Code
 
-on: [push]
+# TODO: switch to this condition before merging
+# on: [release]
+on:
+  push:
+    branch: vscode-publish-workflow
 
 jobs:
   release:
