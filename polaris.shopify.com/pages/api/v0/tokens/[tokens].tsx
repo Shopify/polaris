@@ -1,9 +1,8 @@
 import {
   TokenGroup,
   ColorScheme,
-  osColorSchemes,
+  createVar,
   tokens,
-  TokenProperties,
 } from '@shopify/polaris-tokens';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
@@ -34,6 +33,10 @@ function isFormat(format: unknown): format is Format {
   return formats.includes(format as Format);
 }
 
+function isScheme(scheme: unknown): scheme is ColorScheme {
+  return Object.keys(tokens.colorSchemes).includes(scheme as ColorScheme);
+}
+
 /**
  * Format the token data into: css or json
  */
@@ -48,7 +51,7 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
   if (format === 'css') {
     return Object.keys(tokenValues)
       .reduce<string[]>((result, token) => {
-        const cssVariable = `--${token}: ${tokenValues[token]};`;
+        const cssVariable = `${createVar(token)}: ${tokenValues[token]};`;
 
         result.push(cssVariable);
 

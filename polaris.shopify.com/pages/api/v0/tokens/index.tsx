@@ -1,4 +1,4 @@
-import {osColorSchemes} from '@shopify/polaris-tokens';
+import {tokens} from '@shopify/polaris-tokens';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
 import {staticTokenGroupKeys} from './[tokens]';
@@ -66,7 +66,7 @@ const html = `
                 </tr>
             </thead>
             <tbody>
-            ${Object.keys(osColorSchemes)
+            ${Object.keys(tokens.colorSchemes)
               .map((scheme) => {
                 const url = `/api/v0/tokens/colors?scheme=${scheme}`;
                 const cssUrl = `${url}&format=css`;
