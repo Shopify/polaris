@@ -188,8 +188,8 @@
     }
 
     &.pressed {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
-      box-shadow: 1px solid var(--p-border-critical);
       color: var(--p-interactive-critical);
     }
   }
