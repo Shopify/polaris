@@ -39,11 +39,10 @@ function isFormat(format: unknown): format is Format {
  */
 const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
   const tokenValues = Object.fromEntries(
-    Object.entries(tokenGroup).map((entry) => {
-      const [key, tokenProps] = entry as [TokenGroupKey, TokenProperties];
-
-      return [key, tokenProps.value];
-    }),
+    Object.entries(tokenGroup).map(([token, tokenProps]) => [
+      token,
+      tokenProps.value,
+    ]),
   );
 
   if (format === 'css') {
