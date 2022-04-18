@@ -346,10 +346,9 @@
   z-index: var(--p-z-3);
   border-collapse: collapse;
 }
-.ShadowDiv {
-  width: 10px;
+.ColumnExtension {
+  border-right: var(--p-border-divider);
   position: absolute;
-  top: 0;
-  box-shadow: inset 9px 0 6px -6px #212b361a;
-  backface-visibility: hidden;
+  border-collapse: separate;
+  box-sizing: border-box;
 }
