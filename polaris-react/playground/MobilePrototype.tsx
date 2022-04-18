@@ -723,6 +723,7 @@ export function MobilePrototype() {
                     <Card sectioned>
             <ChoiceList
               title="Expiration"
+              titleHidden={true}
               choices={[
                 {
                   label: 'Gift cards never expire',
