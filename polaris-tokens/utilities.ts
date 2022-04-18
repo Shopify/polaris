@@ -18,3 +18,7 @@ export function tokensToRems(tokenGroup: TokenGroup): TokenGroup {
     ]),
   );
 }
+
+export function getVar(key, value) {
+  return `--p-${key}: ${value};`;
+}
