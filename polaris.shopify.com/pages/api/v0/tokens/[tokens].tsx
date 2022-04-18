@@ -62,7 +62,7 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const formatParam = isFormat(req.query.format) ? req.query.format : 'json';
-  const schemeParam = (req.query.scheme || 'light') as ColorScheme;
+  const schemeParam = isScheme(req.query.scheme) ? req.query.scheme : 'light';
 
   if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
     const colorScheme = osColorSchemes[schemeParam] as ColorScheme;
