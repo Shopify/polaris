@@ -19,6 +19,6 @@ export function tokensToRems(tokenGroup: TokenGroup): TokenGroup {
   );
 }
 
-export function getVar(key, value) {
+export function getCSSVariable(key, value) {
   return `--p-${key}: ${value};`;
 }
