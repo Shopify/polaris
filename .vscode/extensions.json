@@ -7,6 +7,7 @@
     "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
-    "mrmlnc.vscode-scss"
+    "mrmlnc.vscode-scss",
+    "Shopify.polaris-for-vscode"
   ]
 }
