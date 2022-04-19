@@ -33,6 +33,9 @@ jobs:
             polaris-react/.loom
             polaris-react/build/ts/latest
             polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
       - run: yarn --frozen-lockfile
       - run: yarn build
