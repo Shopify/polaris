@@ -1,12 +1,12 @@
 ci:
   require:
-    - 'Test (16.13.0)'
-    - 'Accessibility test'
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
 
 merge:
   require:
-    - 'Test (16.13.0)'
-    - 'Accessibility test'
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
 
 dependencies:
   override:
