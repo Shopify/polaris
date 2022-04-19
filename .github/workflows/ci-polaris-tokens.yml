@@ -29,6 +29,9 @@ jobs:
           path: |
             .loom
             **/*.tsbuildinfo
+            polaris-react/.loom
+            polaris-react/build/ts/latest
+            polaris.shopify.com/.next/cache
 
       - run: yarn --frozen-lockfile
       - run: yarn build
