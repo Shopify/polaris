@@ -9,6 +9,8 @@ import {useComboboxTextField} from '../../../../utilities/combobox';
 export function TextField({
   value,
   id: idProp,
+  type = 'text',
+  ariaAutocomplete = 'list',
   onFocus,
   onBlur,
   onChange,
@@ -54,7 +56,7 @@ export function TextField({
   const handleChange = useCallback(
     (value: string, id: string) => {
       if (onChange) onChange(value, id);
-      if (onTextFieldChange) onTextFieldChange();
+      if (onTextFieldChange) onTextFieldChange(value);
     },
     [onChange, onTextFieldChange],
   );
@@ -64,15 +66,16 @@ export function TextField({
       {...rest}
       value={value}
       id={textFieldId}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      ariaAutocomplete="list"
+      type={type}
+      ariaAutocomplete={ariaAutocomplete}
       aria-haspopup="listbox"
       ariaActiveDescendant={activeOptionId}
       ariaControls={listboxId}
       role="combobox"
       ariaExpanded={expanded}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChange={handleChange}
     />
   );
 }

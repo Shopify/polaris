@@ -115,3 +115,13 @@
 .withinFilter {
   border-radius: var(--p-border-radius-1);
 }
+
+.Icon {
+  // This compensates for the typical icon used in badges being inset within
+  // its bounding box.
+  margin-left: calc(-1 * (var(--p-space-1)));
+
+  + *:not(.Icon) {
+    margin-left: var(--p-space-1);
+  }
+}

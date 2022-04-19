@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {GlobeMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../../VisuallyHidden';
+import {Icon} from '../../Icon';
 import {Badge} from '../Badge';
 
 describe('<Badge />', () => {
@@ -42,6 +44,35 @@ describe('<Badge />', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
 
     expect(badge).toContainReactComponent('span', {
+      className: 'Pip',
+    });
+  });
+
+  it('does not render an icon when icon is not provided', () => {
+    const badge = mountWithApp(<Badge status="attention" />);
+
+    expect(badge).not.toContainReactComponent(Icon);
+  });
+
+  it('renders an icon when icon is provided', () => {
+    const badge = mountWithApp(<Badge icon={GlobeMinor} />);
+
+    expect(badge).toContainReactComponent(Icon, {
+      source: GlobeMinor,
+    });
+  });
+
+  it('prefers the icon to pip styles when both progress and icon are provided', () => {
+    const badge = mountWithApp(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      <Badge progress="incomplete" icon={GlobeMinor} />,
+    );
+
+    expect(badge).toContainReactComponent(Icon, {
+      source: GlobeMinor,
+    });
+    expect(badge).not.toContainReactComponent('span', {
       className: 'Pip',
     });
   });

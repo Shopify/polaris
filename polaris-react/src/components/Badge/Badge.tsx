@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 
+import type {IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {VisuallyHidden} from '../VisuallyHidden';
+import {Icon} from '../Icon';
 
 import styles from './Badge.scss';
 
@@ -11,13 +13,15 @@ type Status = 'info' | 'success' | 'attention' | 'warning' | 'critical' | 'new';
 type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 type Size = 'small' | 'medium';
 
-export interface BadgeProps {
+interface NonMutuallyExclusiveProps {
   /** The content to display inside the badge. */
   children?: string;
   /** Colors and labels the badge with the given status. */
   status?: Status;
   /** Render a pip showing the progress of a given task. */
   progress?: Progress;
+  /** Icon to display to the left of the badge’s content. */
+  icon?: IconSource;
   /**
    * Medium or small size.
    * @default 'medium'
@@ -26,6 +30,12 @@ export interface BadgeProps {
   /** Pass a custom accessibilityLabel */
   statusAndProgressLabelOverride?: string;
 }
+
+export type BadgeProps = NonMutuallyExclusiveProps &
+  (
+    | {progress?: Progress; icon?: undefined}
+    | {icon?: IconSource; progress?: undefined}
+  );
 
 const PROGRESS_LABELS: {[key in Progress]: Progress} = {
   incomplete: 'incomplete',
@@ -48,6 +58,7 @@ export function Badge({
   children,
   status,
   progress,
+  icon,
   size = DEFAULT_SIZE,
   statusAndProgressLabelOverride,
 }: BadgeProps) {
@@ -58,6 +69,7 @@ export function Badge({
     styles.Badge,
     status && styles[variationName('status', status)],
     progress && styles[variationName('progress', progress)],
+    icon && styles.icon,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     withinFilter && styles.withinFilter,
   );
@@ -115,7 +127,7 @@ export function Badge({
     <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
   );
 
-  if (progressLabel) {
+  if (progressLabel && !icon) {
     accessibilityMarkup = (
       <span className={styles.Pip}>{accessibilityMarkup}</span>
     );
@@ -124,7 +136,12 @@ export function Badge({
   return (
     <span className={className}>
       {accessibilityMarkup}
-      {children}
+      {icon && (
+        <span className={styles.Icon}>
+          <Icon source={icon} />
+        </span>
+      )}
+      {children && <span>{children}</span>}
     </span>
   );
 }

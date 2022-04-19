@@ -437,7 +437,7 @@ function FullDataTableExample() {
 }
 ```
 
-### Data table with all of its elements, increased density, and zebra striping on data
+### Data table with increased density and zebra striping
 
 Use as a broad example that includes most props available to data table.
 

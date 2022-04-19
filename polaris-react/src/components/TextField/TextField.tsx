@@ -47,11 +47,33 @@ type InputMode =
   | 'email'
   | 'url';
 
+interface SelectSuggestion {
+  suggestion?: string;
+}
+
+interface SelectTextOnFocus {
+  selectTextOnFocus?: true;
+}
+
+interface Readonly {
+  readonly?: true;
+}
+
+interface Disabled {
+  disabled?: true;
+}
+
+interface Interactive {
+  onChange(value: string, id: string): void;
+}
+
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
   /** Text to display after value */
   suffix?: React.ReactNode;
+  /** Content to vertically display above the input value */
+  verticalContent?: React.ReactNode;
   /** Hint text to display */
   placeholder?: string;
   /** Initial value for the input */
@@ -68,6 +90,10 @@ interface NonMutuallyExclusiveProps {
   disabled?: boolean;
   /** Show a clear text button in the input */
   clearButton?: boolean;
+  /** Indicates whether or not the entire value should be selected on focus. */
+  selectTextOnFocus?: boolean;
+  /** An inline autocomplete suggestion containing the input value. The characters that complete the input value are selected for ease of deletion on input change or keypress of Backspace/Delete. The selected substring is visually highlighted with subdued styling. */
+  suggestion?: string;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -124,34 +150,39 @@ interface NonMutuallyExclusiveProps {
   showCharacterCount?: boolean;
   /** Determines the alignment of the text in the input */
   align?: Alignment;
-  /** Callback when clear button is clicked */
-  onClearButtonClick?(id: string): void;
-  /** Callback when value is changed */
-  onChange?(value: string, id: string): void;
-  /** Callback when input is focused */
-  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
-  /** Callback when focus is removed */
-  onBlur?(): void;
   /** Visual required indicator, adds an asterisk to label */
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
-  /** Indicates whether or not the entire input/text area text should be selected on focus */
-  selectTextOnFocus?: boolean;
+  /** Callback fired when clear button is clicked */
+  onClearButtonClick?(id: string): void;
+  /** Callback fired when value is changed */
+  onChange?(value: string, id: string): void;
+  /** Callback fired when input is focused */
+  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
+  /** Callback fired when focus is removed */
+  onBlur?(): void;
 }
 
+export type MutuallyExclusiveSelectionProps =
+  | SelectSuggestion
+  | SelectTextOnFocus;
+
+export type MutuallyExclusiveInteractionProps =
+  | Interactive
+  | Readonly
+  | Disabled;
+
 export type TextFieldProps = NonMutuallyExclusiveProps &
-  (
-    | {readOnly: true}
-    | {disabled: true}
-    | {onChange(value: string, id: string): void}
-  );
+  MutuallyExclusiveInteractionProps &
+  MutuallyExclusiveSelectionProps;
 
 export function TextField({
   prefix,
   suffix,
+  verticalContent,
   placeholder,
-  value,
+  value = '',
   helpText,
   label,
   labelAction,
@@ -165,7 +196,7 @@ export function TextField({
   error,
   connectedRight,
   connectedLeft,
-  type,
+  type = 'text',
   name,
   id: idProp,
   role,
@@ -186,13 +217,14 @@ export function TextField({
   ariaAutocomplete,
   showCharacterCount,
   align,
+  requiredIndicator,
+  monospaced,
+  selectTextOnFocus,
+  suggestion,
   onClearButtonClick,
   onChange,
   onFocus,
   onBlur,
-  requiredIndicator,
-  monospaced,
-  selectTextOnFocus,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -201,9 +233,11 @@ export function TextField({
 
   const id = useUniqueId('TextField', idProp);
 
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
+  const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
 
   useEffect(() => {
@@ -212,11 +246,23 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  // Use a typeof check here as Typescript mostly protects us from non-stringy
-  // values but overzealous usage of `any` in consuming apps means people have
-  // been known to pass a number in, so make it clear that doesn't work.
-  const normalizedValue = typeof value === 'string' ? value : '';
+  useEffect(() => {
+    const input = inputRef.current;
+    const isSupportedInputType =
+      type === 'text' ||
+      type === 'tel' ||
+      type === 'search' ||
+      type === 'url' ||
+      type === 'password';
 
+    if (!input || !isSupportedInputType || !suggestion) {
+      return;
+    }
+
+    input.setSelectionRange(value.length, suggestion.length);
+  }, [focus, value, type, suggestion]);
+
+  const normalizedValue = suggestion ? suggestion : value;
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
@@ -234,13 +280,13 @@ export function TextField({
   const inputType = type === 'currency' ? 'text' : type;
 
   const prefixMarkup = prefix ? (
-    <div className={styles.Prefix} id={`${id}Prefix`} ref={prefixRef}>
+    <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
       {prefix}
     </div>
   ) : null;
 
   const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}Suffix`} ref={suffixRef}>
+    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
       {suffix}
     </div>
   ) : null;
@@ -268,7 +314,7 @@ export function TextField({
 
     characterCountMarkup = (
       <div
-        id={`${id}CharacterCounter`}
+        id={`${id}-CharacterCounter`}
         className={characterCountClassName}
         aria-label={characterCountLabel}
         aria-live={focus ? 'polite' : 'off'}
@@ -386,17 +432,21 @@ export function TextField({
     describedBy.push(helpTextID(id));
   }
   if (showCharacterCount) {
-    describedBy.push(`${id}CharacterCounter`);
+    describedBy.push(`${id}-CharacterCounter`);
   }
 
   const labelledBy: string[] = [];
 
   if (prefix) {
-    labelledBy.push(`${id}Prefix`);
+    labelledBy.push(`${id}-Prefix`);
   }
 
   if (suffix) {
-    labelledBy.push(`${id}Suffix`);
+    labelledBy.push(`${id}-Suffix`);
+  }
+
+  if (verticalContent) {
+    labelledBy.push(`${id}-VerticalContent`);
   }
 
   labelledBy.unshift(labelID(id));
@@ -407,12 +457,15 @@ export function TextField({
     suffix && styles['Input-suffixed'],
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
+    suggestion && styles.suggestion,
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (selectTextOnFocus) {
-      inputRef.current?.select();
+    if (selectTextOnFocus && !suggestion) {
+      const input = multiline ? textAreaRef.current : inputRef.current;
+      input?.select();
     }
+
     if (onFocus) {
       onFocus(event);
     }
@@ -427,14 +480,10 @@ export function TextField({
     autoFocus,
     value: normalizedValue,
     placeholder,
-    onFocus: handleOnFocus,
-    onBlur,
-    onKeyPress: handleKeyPress,
     style,
     autoComplete,
     className: inputClassName,
-    onChange: handleChange,
-    ref: inputRef,
+    ref: multiline ? textAreaRef : inputRef,
     min,
     max,
     step,
@@ -455,7 +504,25 @@ export function TextField({
     'aria-expanded': ariaExpanded,
     'aria-required': requiredIndicator,
     ...normalizeAriaMultiline(multiline),
+    onFocus: handleOnFocus,
+    onBlur,
+    onKeyPress: handleKeyPress,
+    onChange: !suggestion ? handleChange : undefined,
+    onInput: suggestion ? handleChange : undefined,
   });
+
+  const inputWithVerticalContentMarkup = verticalContent ? (
+    <div
+      className={styles.VerticalContent}
+      id={`${id}-VerticalContent`}
+      ref={verticalContentRef}
+    >
+      {verticalContent}
+      {input}
+    </div>
+  ) : null;
+
+  const inputMarkup = verticalContent ? inputWithVerticalContentMarkup : input;
 
   const backdropClassName = classNames(
     styles.Backdrop,
@@ -481,7 +548,7 @@ export function TextField({
           onClick={handleClick}
         >
           {prefixMarkup}
-          {input}
+          {inputMarkup}
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
@@ -503,6 +570,7 @@ export function TextField({
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
+
     event.preventDefault();
   }
 
