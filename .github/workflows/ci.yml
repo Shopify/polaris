@@ -8,11 +8,11 @@ on:
 
 jobs:
   test:
-    name: 'Test'
+    name: Test ${{ matrix.node }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.13.0']
+        node-version: ['14.13.1', '16']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
