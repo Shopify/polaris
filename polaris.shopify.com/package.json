@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "parse-components": "node src/scripts/parseComponents.mjs"
+    "parse-components": "node src/scripts/parseComponents.mjs",
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",

@@ -8,6 +8,7 @@ import typography from "../../../polaris-react/src/tokens/token-groups/typograph
 import zIndex from "../../../polaris-react/src/tokens/token-groups/z-index.json";
 import components from "../data/components.json";
 import icons from "../data/icons.json";
+import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 
@@ -19,7 +20,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
     type: "component",
     title: name,
     excerpt: stripMarkdownLinks(intro),
-    url: `/components/${category}/${name}`,
+    url: `/components/${slugify(category)}/${slugify(name)}`,
     keywords,
     meta: {},
   });
@@ -66,6 +67,33 @@ icons.forEach(({ name, set, description, keywords, fileName }) => {
       icon: { fileName },
     },
   });
+});
+
+// Add guidelines
+guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
+  const parts = name.split("/");
+  if (parts.length >= 2) {
+    const sectionSlug = slugify(parts[0]);
+
+    const allowedSections = ["patterns", "foundations", "design", "content"];
+    if (allowedSections.includes(sectionSlug)) {
+      const title = parts[parts.length - 1];
+
+      const url =
+        sectionSlug === "patterns"
+          ? `/patterns/${sectionSlug}/${slug}`
+          : `/docs/${sectionSlug}/${slug}`;
+
+      allPages.push({
+        type: "guidelines",
+        title,
+        excerpt: intro,
+        url,
+        keywords: keywords as string[],
+        meta: {},
+      });
+    }
+  }
 });
 
 export function search(query: string): Result[] {

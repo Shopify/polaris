@@ -100,6 +100,9 @@ function GlobalSearch({}: Props) {
                     <div>
                       <p className={styles.Title}>{item.title}</p>
                       <p className={styles.Excerpt}>{item.excerpt}</p>
+                      <p className={styles.Url}>
+                        {item.url.replace(/\#.*$/, "")}
+                      </p>
                     </div>
 
                     {item.type === "component" && (
