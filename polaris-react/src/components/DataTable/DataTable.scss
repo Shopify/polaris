@@ -346,20 +346,10 @@
 }
 .FixedFirstColumn {
   position: absolute;
-  top: calc((var(--p-space-4) * 2 + var(--p-line-height-2)) * -1);
 
   background: white;
 
   border-right: var(--p-border-divider);
   z-index: var(--p-z-3);
   border-collapse: collapse;
-  .IncreasedTableDensity & {
-    top: calc(((var(--p-space-2) * 3 + var(--p-line-height-2)) * -1));
-    > thead th {
-      padding-top: calc(var(--p-space-2) * 3 + var(--p-line-height-2));
-    }
-  }
-  > thead th {
-    padding-top: calc(var(--p-space-4) * 3 + var(--p-line-height-2));
-  }
 }
