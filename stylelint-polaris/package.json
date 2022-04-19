@@ -29,6 +29,7 @@
   "scripts": {
     "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
     "build": "yarn gen-polaris-data",
+    "test": "node tests/index.js",
     "type-check": "tsc --noEmit -p tsconfig.json",
     "prepublishOnly": "yarn build && yarn type-check"
   },
