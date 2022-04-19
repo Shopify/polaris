@@ -1,0 +1,103 @@
+@import '../src/styles/public';
+
+.mediaConditions {
+  & div {
+    height: 20px;
+  }
+}
+
+.breakpoints-xs-up {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xs-up} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-xs-down {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xs-down} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-xs-only {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xs-only} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-sm-up {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-sm-up} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-sm-down {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-sm-down} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-sm-only {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-sm-only} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-md-up {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-md-up} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-md-down {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-md-down} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-md-only {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-md-only} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-lg-up {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-lg-up} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-lg-down {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-lg-down} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-lg-only {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-lg-only} {
+    background-color: var(--p-action-primary);
+  }
+}
