@@ -689,14 +689,31 @@ export function MobilePrototype() {
     [],
   );
 
+  const [selectValue, setSelectValue] = useState('Years');
+
+  const handleConnectedSelectChange = useCallback(
+    (value) => setSelectValue(value),
+    [],
+  );
+
   const renderChildren = useCallback(
     () => (
       <TextField
-        label="Minimum Quantity"
-        labelHidden
-        onChange={handleTextFieldChange}
+        label="Gift cards expiration"
+        labelHidden={true}
+        type="number"
         value={textFieldValue}
+        onChange={handleTextFieldChange}
         autoComplete="off"
+        connectedRight={
+          <Select
+            value={selectValue}
+            label="Time period"
+            onChange={handleConnectedSelectChange}
+            labelHidden
+            options={['Years', 'Months']}
+          />
+        }
       />
     ),
     [handleTextFieldChange, textFieldValue],
@@ -705,6 +722,13 @@ export function MobilePrototype() {
   const [checkedCheckbox, setCheckedCheckbox] = useState(false);
   const handleCheckboxChange = useCallback(
     (newChecked) => setCheckedCheckbox(newChecked),
+    [],
+  );
+
+  const [selectedMultiChoice, setSelectedMultiChoice] = useState(['hidden']);
+
+  const handleMultiChoiceChange = useCallback(
+    (value) => setSelectedMultiChoice(value),
     [],
   );
 
@@ -742,57 +766,10 @@ export function MobilePrototype() {
                 selected={selectedGiftCardExpiration}
                 onChange={handleChoiceListChange}
               />
-              <p>
+              <Caption>
                 Countries have different laws for gift card expiry dates. Check
                 the laws for your country before changing this date.
-              </p>
-            </Card>
-            <Card sectioned>
-              <p>
-                Show error message state as well as checkbox with and without
-                label. Checkbox size also updated along with Radio button.
-              </p>
-              <ChoiceList
-                title="Variants"
-                titleHidden={true}
-                choices={[
-                  {
-                    label: 'Gift cards never expire',
-                    value: 'none',
-                    helpText: 'Help text goes here',
-                    describedByError: true,
-                  },
-                  {
-                    label: 'Gift cards expire',
-                    value: 'gift_card_expiration',
-                    // renderChildren,
-                  },
-                ]}
-                selected={selectedGiftCardExpiration}
-                onChange={handleChoiceListChange}
-                error="There is an error on this field"
-              />
-              <Checkbox
-                label="Basic checkbox"
-                checked={checkedCheckbox}
-                onChange={handleCheckboxChange}
-                labelHidden={false}
-              />{' '}
-              <br />
-              <Checkbox
-                label="Basic checkbox disabled"
-                checked={checkedCheckbox}
-                onChange={handleCheckboxChange}
-                labelHidden={false}
-                disabled={true}
-              />{' '}
-              <br />
-              <Checkbox
-                label="Basic checkbox label hidden"
-                checked={checkedCheckbox}
-                onChange={handleCheckboxChange}
-                labelHidden={true}
-              />
+              </Caption>
             </Card>
           </Layout.AnnotatedSection>
           <Layout.AnnotatedSection
@@ -807,7 +784,29 @@ export function MobilePrototype() {
                 </Link>{' '}
               </>
             }
-          ></Layout.AnnotatedSection>
+          >
+            <Card sectioned>
+              <ChoiceList
+                allowMultiple
+                title="Apple Wallet"
+                titleHidden={true}
+                choices={[
+                  {
+                    label: 'Enable Apple Wallet Passes',
+                    value: 'shipping',
+                    helpText: 'Help text goes here',
+                  },
+                  {
+                    label: 'Label',
+                    value: 'confirmation',
+                    helpText: 'Help text goes here',
+                  },
+                ]}
+                selected={selectedMultiChoice}
+                onChange={handleMultiChoiceChange}
+              />
+            </Card>
+          </Layout.AnnotatedSection>
         </Scrollable>
         <Image
           source="https://user-images.githubusercontent.com/3474483/164063402-bbf4ba88-1279-4f7a-a16c-0c2b9e420b40.png"
