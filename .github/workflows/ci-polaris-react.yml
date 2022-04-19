@@ -1,4 +1,4 @@
-name: @shopify/polaris CI
+name: '@shopify/polaris CI'
 
 on:
   pull_request:

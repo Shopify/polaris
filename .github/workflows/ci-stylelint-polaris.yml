@@ -1,4 +1,4 @@
-name: @shopify/stylelint-polaris CI
+name: '@shopify/stylelint-polaris CI'
 
 on:
   pull_request:
