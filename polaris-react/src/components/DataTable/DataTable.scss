@@ -355,11 +355,11 @@
   border-collapse: collapse;
   .IncreasedTableDensity & {
     top: calc(((var(--p-space-2) * 3 + var(--p-line-height-2)) * -1));
-    > th:first-child {
+    > thead th {
       padding-top: calc(var(--p-space-2) * 3 + var(--p-line-height-2));
     }
   }
-  > th:first-child {
+  > thead th {
     padding-top: calc(var(--p-space-4) * 3 + var(--p-line-height-2));
   }
 }

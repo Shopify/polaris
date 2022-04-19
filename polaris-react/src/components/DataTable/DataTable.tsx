@@ -201,8 +201,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           role="presentation"
           style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
         >
-          {firstHeading.map(this.renderHeadings)}
-          {firstColumn.map(this.defaultRenderRow)}
+          <thead>
+            <tr>{firstHeading.map(this.renderHeadings)}</tr>
+          </thead>
+          <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
         </table>
       );
 
