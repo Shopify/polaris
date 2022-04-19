@@ -40,7 +40,7 @@ v16.13.0
 
 The `shipit.yml` files. This should point towards the GitHub actions the packages require to pass before publishing.
 
-```
+```yml
 ci:
   require:
     - 'Test with node v14.17.0'
