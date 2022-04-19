@@ -20,17 +20,18 @@ import {
   Checkbox,
   ChoiceList,
   ContextualSaveBar,
-  DisplayText,
   DropZone,
   DropZoneProps,
   FormLayout,
   Frame,
-  Heading,
+  Image,
   Layout,
+  Link,
   Loading,
   Modal,
   Navigation,
   Page,
+  Scrollable,
   Select,
   SkeletonBodyText,
   SkeletonDisplayText,
@@ -708,101 +709,120 @@ export function MobilePrototype() {
   );
 
   const giftCardsMarkup = (
-    <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
-      title="Gift cards"
-      compactTitle
-      primaryAction={{content: 'Save', disabled: true}}
-    >
-      <Layout>
-        <Layout.AnnotatedSection
-          id="giftCards"
-          title="Auto-expiration"
-          description="Set your gift cards to expire a certain amount of time after they've been purchased."
-        >
-                    <Card sectioned>
-            <ChoiceList
-              title="Expiration"
-              titleHidden={true}
-              choices={[
-                {
-                  label: 'Gift cards never expire',
-                  value: 'none',
-                  helpText: 'Help text goes here',
-                },
-                {
-                  label: 'Gift cards expire',
-                  value: 'gift_card_expiration',
-                  helpText: 'Help text goes here',
-                  renderChildren,
-                },
-              ]}
-              selected={selectedGiftCardExpiration}
-              onChange={handleChoiceListChange}
-            />
-            <p>
-            Countries have different laws for gift card expiry dates. Check the
-            laws for your country before changing this date.
-            </p>
-          </Card>
-          <Card sectioned>
-          <p>
-            Show error message state as well as checkbox with and without label. Checkbox size also updated along with Radio button.
-            </p>
-            <ChoiceList
-              title="Variants"
-              titleHidden={true}
-              choices={[
-                {
-                  label: 'Gift cards never expire',
-                  value: 'none',
-                  helpText: 'Help text goes here',
-                  describedByError: true,
-                },
-                {
-                  label: 'Gift cards expire',
-                  value: 'gift_card_expiration',
-                  // renderChildren,
-                },
-              ]}
-              selected={selectedGiftCardExpiration}
-              onChange={handleChoiceListChange}
-              error="There is an error on this field"
-            />
+    <Page>
 
-            <Checkbox
-              label="Basic checkbox"
-              checked={checkedCheckbox}
-              onChange={handleCheckboxChange}
-              labelHidden={false}
-              disabled={true}
-            /> <br />
-            <Checkbox
-              label="Basic checkbox label hidden"
-              checked={checkedCheckbox}
-              onChange={handleCheckboxChange}
-              labelHidden={true}
-            />
-          </Card>
-        </Layout.AnnotatedSection>
+      <Layout>
+      <Image
+      source="https://user-images.githubusercontent.com/3474483/164063378-671b89dc-5c3e-47e1-8622-ab39e938de54.png"
+      alt="scrappy mobile static banner"
+      style={{width: '375px', height: '88px', position: 'relative', left: '10px'}}
+    />
+        <Scrollable style={{height: '641px'}}>
+          <Layout.AnnotatedSection
+            id="giftCards"
+            title="Auto-expiration"
+            description="Set your gift cards to expire a certain amount of time after they've been purchased."
+          >
+            <Card sectioned>
+              <ChoiceList
+                title="Expiration"
+                titleHidden={true}
+                choices={[
+                  {
+                    label: 'Gift cards never expire',
+                    value: 'none',
+                    helpText: 'Help text goes here',
+                  },
+                  {
+                    label: 'Gift cards expire',
+                    value: 'gift_card_expiration',
+                    helpText: 'Help text goes here',
+                    renderChildren,
+                  },
+                ]}
+                selected={selectedGiftCardExpiration}
+                onChange={handleChoiceListChange}
+              />
+              <p>
+                Countries have different laws for gift card expiry dates. Check
+                the laws for your country before changing this date.
+              </p>
+            </Card>
+            <Card sectioned>
+              <p>
+                Show error message state as well as checkbox with and without
+                label. Checkbox size also updated along with Radio button.
+              </p>
+              <ChoiceList
+                title="Variants"
+                titleHidden={true}
+                choices={[
+                  {
+                    label: 'Gift cards never expire',
+                    value: 'none',
+                    helpText: 'Help text goes here',
+                    describedByError: true,
+                  },
+                  {
+                    label: 'Gift cards expire',
+                    value: 'gift_card_expiration',
+                    // renderChildren,
+                  },
+                ]}
+                selected={selectedGiftCardExpiration}
+                onChange={handleChoiceListChange}
+                error="There is an error on this field"
+              />
+              <Checkbox
+                label="Basic checkbox"
+                checked={checkedCheckbox}
+                onChange={handleCheckboxChange}
+                labelHidden={false}
+              />{' '}
+              <br />
+              <Checkbox
+                label="Basic checkbox disabled"
+                checked={checkedCheckbox}
+                onChange={handleCheckboxChange}
+                labelHidden={false}
+                disabled={true}
+              />{' '}
+              <br />
+              <Checkbox
+                label="Basic checkbox label hidden"
+                checked={checkedCheckbox}
+                onChange={handleCheckboxChange}
+                labelHidden={true}
+              />
+            </Card>
+          </Layout.AnnotatedSection>
+          <Layout.AnnotatedSection
+            id="appleWallet"
+            title="Apple Wallet"
+            description={
+              <>
+                Give your customers a digital gift card to use online or in your
+                retail stores.{' '}
+                <Link url="#" external>
+                  Learn more about Apple Wallet Passes
+                </Link>{' '}
+              </>
+            }
+          ></Layout.AnnotatedSection>
+        </Scrollable>
+        <Image
+      source="https://user-images.githubusercontent.com/3474483/164063402-bbf4ba88-1279-4f7a-a16c-0c2b9e420b40.png"
+      alt="scrappy mobile static footer"
+      style={{width: '375px', height: '83px', position: 'relative', left: '10px'}}
+    />
       </Layout>
     </Page>
   );
 
   return (
-    <Frame
-      topBar={topBarMarkup}
-      navigation={navigationMarkup}
-      showMobileNavigation={mobileNavigationActive}
-      onNavigationDismiss={toggleMobileNavigationActive}
-      skipToContentTarget={skipToContentRef}
-    >
-      {contextualSaveBarMarkup}
-      {loadingMarkup}
-      {/* {pageMarkup} */}
+    <Frame>
+
       {giftCardsMarkup}
-      {toastMarkup}
-      {modalMarkup}
     </Frame>
   );
 }
