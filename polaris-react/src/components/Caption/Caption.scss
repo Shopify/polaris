@@ -1,6 +1,9 @@
 @import '../../styles/common';
 
 .Caption {
+@include when-typography-condensed {
+  color: var(--p-text-subdued);
+}
   @include text-style-caption;
   margin: 0;
 }
