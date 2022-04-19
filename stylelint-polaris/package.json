@@ -26,6 +26,7 @@
     "stylelint"
   ],
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
     "build": "yarn gen-polaris-data",
@@ -37,6 +38,5 @@
   },
   "peerDependencies": {
     "stylelint": "^14.1.0"
-  },
-  "types": "dist/index.d.ts"
+  }
 }
