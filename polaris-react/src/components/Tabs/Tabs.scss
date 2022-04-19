@@ -105,7 +105,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   @include text-emphasis-normal;
 
   &:focus .Title {
-    outline: var(--p-outline-width-3) solid transparent;
+    outline: var(--p-line-width-3) solid transparent;
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -113,7 +113,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   }
 
   .Title {
-    outline: var(--p-outline-width-3) solid transparent;
+    outline: var(--p-line-width-3) solid transparent;
     color: var(--p-text);
 
     &::before {
@@ -136,7 +136,7 @@ $item-vertical-padding: $item-min-height * 0.5;
     bottom: calc(-1 * var(--p-space-2));
     left: 0;
     right: 0;
-    height: var(--p-border-width-3);
+    height: var(--p-line-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
   }

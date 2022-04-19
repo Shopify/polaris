@@ -19,7 +19,7 @@
   }
 
   &:focus:not(:active) {
-    outline: var(--p-focused) auto var(--p-outline-width-1);
+    outline: var(--p-focused) auto var(--p-line-width-1);
   }
 
   &:active {

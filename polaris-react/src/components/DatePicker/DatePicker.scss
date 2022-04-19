@@ -62,7 +62,7 @@
   &:hover {
     background: var(--p-interactive-hovered);
     color: var(--p-text-on-interactive);
-    outline: var(--p-outline-width-1) solid transparent;
+    outline: var(--p-line-width-1) solid transparent;
   }
 
   @include focus-ring;
@@ -88,7 +88,7 @@
     &:hover {
       background-color: HighlightText;
       color: Highlight;
-      outline: var(--p-outline-width-2) solid Highlight;
+      outline: var(--p-line-width-2) solid Highlight;
     }
   }
 }
@@ -105,7 +105,7 @@
     &:hover {
       background-color: HighlightText;
       color: Highlight;
-      outline: var(--p-outline-width-2) solid Highlight;
+      outline: var(--p-line-width-2) solid Highlight;
     }
   }
 }

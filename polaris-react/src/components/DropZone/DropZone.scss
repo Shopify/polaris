@@ -17,7 +17,7 @@ $dropzone-stacking-order: (
   bottom: 0;
   opacity: 1;
   transform: scale(1);
-  border: var(--p-border-width-1) $dropzone-border-style transparent;
+  border: var(--p-line-width-1) $dropzone-border-style transparent;
 }
 
 @mixin set-border-radius {
@@ -41,7 +41,7 @@ $dropzone-stacking-order: (
     right: 0;
     bottom: 0;
     left: 0;
-    border: var(--p-border-width-1) $dropzone-border-style transparent;
+    border: var(--p-line-width-1) $dropzone-border-style transparent;
     border-radius: var(--p-border-radius-1);
     pointer-events: none;
   }
@@ -53,7 +53,7 @@ $dropzone-stacking-order: (
   }
 
   &:hover {
-    outline: var(--p-outline-width-1) solid transparent;
+    outline: var(--p-line-width-1) solid transparent;
   }
 }
 
@@ -136,7 +136,7 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: var(--p-space-4);
-  border: var(--p-border-width-1) $dropzone-border-style var(--p-interactive);
+  border: var(--p-line-width-1) $dropzone-border-style var(--p-interactive);
   text-align: center;
   color: var(--p-interactive);
   background-color: var(--p-surface-selected);

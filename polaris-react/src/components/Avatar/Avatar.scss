@@ -14,7 +14,7 @@
   user-select: none;
 
   @media (forced-colors: active) {
-    border: var(--p-border-width-1) solid transparent;
+    border: var(--p-line-width-1) solid transparent;
   }
 
   &::after {

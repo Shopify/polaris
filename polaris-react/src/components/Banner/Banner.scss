@@ -6,7 +6,7 @@
   transition: box-shadow var(--p-duration-200) var(--p-ease);
   transition-delay: var(--p-duration-100);
   box-shadow: var(--pc-banner-border);
-  outline: var(--p-outline-width-1) solid transparent;
+  outline: var(--p-line-width-1) solid transparent;
 
   @if $in-page {
     @include focus-ring('wide');
