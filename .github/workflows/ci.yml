@@ -8,16 +8,16 @@ on:
 
 jobs:
   test:
-    name: 'Test'
+    name: Test with node v${{ matrix.node_version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.13.0']
+        node_version: ['14.17.0', '16.13.0']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node_version: ${{ matrix.node_version }}
           cache: yarn
 
       - uses: actions/cache@v2
@@ -29,9 +29,9 @@ jobs:
             polaris-react/.loom
             polaris-react/build/ts/latest
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
+            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run validate-tokens
