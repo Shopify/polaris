@@ -59,10 +59,8 @@ function GlobalSearch({}: Props) {
               <li
                 key={`${item.url}`}
                 {...getItemProps({ item, index })}
-                className={[
-                  styles.Result,
-                  highlightedIndex === index ? "active" : null,
-                ].join(" ")}
+                className={styles.Result}
+                data-is-active={highlightedIndex === index}
               >
                 <Link href={item.url} passHref>
                   <a>

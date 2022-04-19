@@ -50,7 +50,7 @@
 .Result {
   border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 
-  &.active {
+  &[data-is-active="true"] {
     background: #fafafa;
   }
 
