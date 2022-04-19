@@ -26,12 +26,12 @@
     "stylelint"
   ],
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
     "build": "yarn gen-polaris-data",
-    "test": "node tests/index.js",
-    "type-check": "tsc --noEmit -p tsconfig.json",
-    "prepublishOnly": "yarn build && yarn type-check"
+    "test": "yarn build && node tests/index.js",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"

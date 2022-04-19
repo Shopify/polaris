@@ -1,10 +1,13 @@
-name: CI
+name: '@shopify/polaris CI'
 
 on:
   pull_request:
-    branches: ['**']
+    paths:
+      - 'polaris-react/**'
   push:
     branches: [main, polaris-release]
+    paths:
+      - 'polaris-react/**'
 
 jobs:
   test:
@@ -35,7 +38,6 @@ jobs:
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run validate-tokens
-      - run: yarn workspace @shopify/polaris-tokens run test
       - run: yarn run build
       - run: yarn run lint
       - run: yarn type-check
