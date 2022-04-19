@@ -70,7 +70,7 @@ $range-wrapper: 28px;
 }
 
 .Thumbs {
-  @include focus-ring($size: 'wide', $border-width: var(--p-line-width-1));
+  @include focus-ring($size: 'wide', $border-width: 1px);
   position: absolute;
   z-index: var(--pc-range-slider-input);
   padding: 0;
