@@ -3,6 +3,16 @@ const path = require('path');
 
 const stylelint = require('stylelint');
 
+/**
+ * @typedef {Object} Config
+ * @property {string} path
+ * @property {string[]} files
+ * @property {number} expectedFailures
+ */
+
+/**
+ * @type {{ [configName: string]: Config }}
+ */
 const configs = {
   external: {
     path: path.join(__dirname, '../index.js'),
@@ -16,6 +26,10 @@ const configs = {
   },
 };
 
+/**
+ * @param {string} configName
+ * @param {Config} config
+ */
 const testFile = async (configName, config) => {
   const {results} = await stylelint.lint({
     config: {
