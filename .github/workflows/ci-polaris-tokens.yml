@@ -23,6 +23,14 @@ jobs:
           node_version: ${{ matrix.node_version }}
           cache: yarn
 
+      - uses: actions/cache@v2
+        name: Restore build cache
+        with:
+          path: |
+            .loom
+            **/*.tsbuildinfo
+
       - run: yarn --frozen-lockfile
+      - run: yarn build
       - run: yarn type-check
       - run: yarn workspace @shopify/polaris-tokens run test
