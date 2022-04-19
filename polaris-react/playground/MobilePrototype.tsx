@@ -717,7 +717,7 @@ export function MobilePrototype() {
       alt="scrappy mobile static banner"
       style={{width: '375px', height: '88px', position: 'relative', left: '10px'}}
     />
-        <Scrollable style={{height: '648px'}}>
+        <Scrollable style={{height: '641px'}}>
           <Layout.AnnotatedSection
             id="giftCards"
             title="Auto-expiration"
