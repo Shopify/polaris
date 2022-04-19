@@ -7,12 +7,12 @@ const configs = {
   external: {
     path: path.join(__dirname, '../index.js'),
     files: ['./external-fixture.scss', './coverage-fixture.scss'],
-    expectedFailures: 29,
+    expectedFailures: 27,
   },
   internal: {
     path: path.join(__dirname, '../configs/internal.js'),
     files: ['./internal-fixture.scss', './coverage-fixture.scss'],
-    expectedFailures: 28,
+    expectedFailures: 26,
   },
 };
 
