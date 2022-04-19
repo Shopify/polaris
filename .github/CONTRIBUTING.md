@@ -98,6 +98,42 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can 
 
 We recommend running `yarn test` (or its variations above), as well as trying your build of Polaris React in a real project, to make sure you don’t introduce any regressions as you work on your change.
 
+You can test your changes in another project locally using [`yalc`](https://github.com/wclr/yalc).
+
+```
+# Build all packages
+yarn build
+
+# Change into the package directory to test
+cd polaris-react
+
+# Publish changes to the local yalc registry
+yalc publish
+```
+
+In the external project, add the locally published package.
+
+```
+yalc add @shopify/polaris
+```
+
+Run the project as usual to tophat local changes. If you need to make updates, push new package changes from the package to test.
+
+```
+# /polaris/polaris-react
+# Push new package changes to the local yalc registry
+yalc push
+```
+
+Then, update the external project with the latest updates.
+
+```
+# /my-project
+yalc update @shopify/polaris
+```
+
+See the [`yalc` documentation](https://github.com/wclr/yalc#usage) for a full list of commands or details on [how `yalc` works](https://github.com/wclr/yalc#what).
+
 ### Code style
 
 We use an automatic code formatter called [Prettier](https://prettier.io/). Run `yarn format` after making any changes to the code.
