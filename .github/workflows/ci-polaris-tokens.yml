@@ -3,11 +3,11 @@ name: @shopify/polaris-tokens CI
 on:
   pull_request:
     paths:
-      - 'polaris-tokens'
+      - 'polaris-tokens/**'
   push:
     branches: main
     paths:
-      - 'polaris-tokens'
+      - 'polaris-tokens/**'
 
 jobs:
   test:
