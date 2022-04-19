@@ -28,6 +28,6 @@ jobs:
 
       - name: Publish extension in the marketplace
         # run: yarn vsce package
-        run: cd polaris-for-vscode && yarn vsce package
+        run: cd polaris-for-vscode && yarn vsce package --yarn
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
