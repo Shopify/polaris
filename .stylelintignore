@@ -7,4 +7,5 @@ out
 /polaris-react/build-internal
 /polaris.shopify.com/.next
 /stylelint-polaris/data
+/stylelint-polaris/tests
 /documentation/guides/legacy-polaris-v8-public-api.scss
