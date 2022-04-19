@@ -160,6 +160,7 @@
 .Cell-verticalAlignBaseline {
   vertical-align: baseline;
 }
+
 .hoverable {
   .Cell-hovered {
     @include breakpoint-after($breakpoint) {
