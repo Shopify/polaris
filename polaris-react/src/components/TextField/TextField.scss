@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$textfield-backdrop-offset: calc(-1 * var(--p-line-width-2));
+$textfield-backdrop-offset: calc(-1 * var(--p-space-05));
 $spinner-icon-size: 12px;
 
 .TextField {
