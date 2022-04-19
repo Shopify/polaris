@@ -2,9 +2,8 @@ name: Release Polaris for VS Code
 
 on:
   push:
-    branch: vscode-publish-workflow
-    # tags:
-    #   - 'vscode*' # Push events to matching vscode*
+    tags:
+      - 'vscode*' # Push events to matching vscode*
 
 jobs:
   release:
