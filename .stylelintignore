@@ -8,3 +8,4 @@ out
 /polaris.shopify.com/.next
 /stylelint-polaris/data
 /documentation/guides/legacy-polaris-v8-public-api.scss
+/stylelint-polaris/tests
