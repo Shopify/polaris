@@ -27,7 +27,7 @@ const getCustomPropertyNames = () => {
 
 /**
  * Used by the prepublish script in polaris-for-vscode to create an object of
- * grouped custom properties as VSCode CompletionItems
+ * grouped custom properties as VS Code CompletionItems
  */
 const getGroupedCustomPropertyCompletionItems = () => {
   return Object.fromEntries(
