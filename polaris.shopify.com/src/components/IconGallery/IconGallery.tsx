@@ -7,6 +7,15 @@ import styles from "./IconGallery.module.scss";
 
 interface Props {}
 
+const fuse = new Fuse(icons, {
+  threshold: 0.25,
+  keys: [
+    { name: "title", weight: 3 },
+    "description",
+    { name: "keywords", weight: 2 },
+  ],
+});
+
 function IconGallery({}: Props) {
   const [selectedIconName, setSelectedIconName] = useState<string>();
   const [filterString, setFilterString] = useState("");
@@ -15,14 +24,6 @@ function IconGallery({}: Props) {
 
   let filteredIcons = icons;
   if (filterString) {
-    const fuse = new Fuse(icons, {
-      threshold: 0.25,
-      keys: [
-        { name: "title", weight: 3 },
-        "description",
-        { name: "keywords", weight: 2 },
-      ],
-    });
     const fuseResults = fuse.search(filterString);
     filteredIcons = fuseResults.map((result) => result.item);
   }
