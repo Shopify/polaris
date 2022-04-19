@@ -4,12 +4,14 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
+- Renamed `border-width` tokens to `line-width` [#5528](https://github.com/Shopify/polaris/pull/5528))
+
 ### Enhancements
 
-- Added `outline-width` tokens and replaced hardcoded and `border-width` token instances inside of `outline` properties ([#5528](https://github.com/Shopify/polaris/pull/5528))
-- Added `border-width-4` and `border-width-5` tokens and replaced hardcoded values ([#5528](https://github.com/Shopify/polaris/pull/5528))
-- Replaced any hardcoded `padding` or `margin` values with spacing tokens ([#5528](https://github.com/Shopify/polaris/pull/5528))
-- Removed any `border-width` tokens inside `box-shadow` and `drop-shadow` ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Replaced hardcoded `padding` or `margin` values with spacing tokens ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Added `line-width-4` and `line-width-5` tokens and replaced hardcoded values ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Replaced any hardcoded `outline-width` with `line-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Removed any `line-width` tokens inside `width`, `height`, offsets, `padding`, `margin`, `box-shadow`, and `drop-shadow` ([#5528](https://github.com/Shopify/polaris/pull/5528))
 
 ### Bug fixes
 
