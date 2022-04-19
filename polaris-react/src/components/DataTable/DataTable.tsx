@@ -92,7 +92,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private dataTable = createRef<HTMLDivElement>();
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
-
+  private stickyTableHeadingsRow = createRef<HTMLDivElement>();
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
@@ -199,16 +199,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       />
     );
 
-    const onStickChangeHandler = () => {
-      this.changeHeadingFocus();
-    };
-
     const stickyHeaderMarkup = (
       <AfterInitialMount>
         <div className={styles.StickyTable} role="presentation">
           <Sticky
             boundingElement={this.dataTable.current}
-            onStickChange={onStickChangeHandler}
+            onStickChange={this.changeHeadingFocus}
           >
             {(isSticky: boolean) => {
               const stickyHeaderClassNames = classNames(
@@ -218,7 +214,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
               return (
                 <div className={stickyHeaderClassNames}>
-                  <div className={styles.StickyTableHeadings}>
+                  <div>{navigationMarkup}</div>
+                  <div
+                    className={styles.StickyTableHeadingsRow}
+                    ref={this.stickyTableHeadingsRow}
+                  >
                     {headings.map((heading, index) => {
                       const {
                         sortable,
@@ -273,6 +273,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                       );
                       return (
                         <div
+                          className={styles.StickyHeaderCell}
                           style={{
                             width: this.tableHeadingWidths[index],
                           }}
@@ -419,15 +420,37 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     };
   };
 
-  private scrollListener = () => {
+  private stickyHeaderScrolling = (event: Event) => {
+    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
+    const {current: scrollContainer} = this.scrollContainer;
+    const targetIsStickyHeader = event.target === stickyTableHeadingsRow;
+
+    if (stickyTableHeadingsRow == null || scrollContainer == null) {
+      return;
+    }
+
+    const {scrollLeft: stickyScrollLeft} = stickyTableHeadingsRow;
+    const {scrollLeft: scrollContainerScrollLeft} = scrollContainer;
+
+    if (targetIsStickyHeader) {
+      scrollContainer.scrollLeft = stickyScrollLeft;
+    } else {
+      stickyTableHeadingsRow.scrollLeft = scrollContainerScrollLeft;
+    }
+  };
+
+  private scrollListener = (event: Event) => {
     this.setState((prevState) => ({
       ...this.calculateColumnVisibilityData(prevState.condensed),
     }));
+
+    this.stickyHeaderScrolling(event);
   };
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
     const {current: scrollContainer} = this.scrollContainer;
+    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
 
     const handleScroll = () => {
       if (!currentColumn || !previousColumn) {
@@ -439,6 +462,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           direction === 'right'
             ? currentColumn.rightEdge
             : previousColumn.leftEdge;
+
+        if (stickyTableHeadingsRow) {
+          stickyTableHeadingsRow.scrollLeft =
+            direction === 'right'
+              ? currentColumn.rightEdge
+              : previousColumn.leftEdge;
+        }
 
         requestAnimationFrame(() => {
           this.setState((prevState) => ({

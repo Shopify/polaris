@@ -292,13 +292,15 @@ $breakpoint: 768px;
   left: 0;
   right: 0;
   visibility: hidden;
-  z-index: var(--pc-index-table-loading-panel);
+  z-index: var(--p-z-1);
 }
 
 .StickyTableHeader {
   position: absolute;
   display: flex;
+  flex-direction: column;
   width: 100%;
+  overflow: hidden;
 
   &:not(.StickyTableHeader-isSticky) {
     top: -1000px;
@@ -306,20 +308,27 @@ $breakpoint: 768px;
   }
 }
 
+.StickyHeaderCell {
+  flex-shrink: 0;
+}
+
 .StickyTableColumnHeader-isScrolling {
   box-shadow: 1px 1px 0 0 var(--p-border-divider),
     1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
 }
 
-.StickyTableHeadings {
-  overflow: hidden;
+.StickyTableHeadingsRow {
   flex: 1 1 auto;
   display: flex;
+  overflow-x: auto;
   background-color: var(--p-surface);
   justify-content: space-between;
+  scrollbar-width: none;
 
-  .Cell {
-    flex-grow: 1;
+  &::-webkit-scrollbar {
+    appearance: none;
+    height: 0;
+    width: 0;
   }
 }
 
