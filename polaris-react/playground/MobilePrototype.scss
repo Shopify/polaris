@@ -1,0 +1,12 @@
+$typography-condensed: 640px;
+
+.MobileNativeStatic {
+  width: 100%;
+  height: auto;
+  position: relative;
+  left: 10px;
+
+  @media only screen and (min-width: $typography-condensed) {
+    display: none;
+  }
+}
