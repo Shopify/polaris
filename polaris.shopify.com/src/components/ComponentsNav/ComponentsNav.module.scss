@@ -14,10 +14,6 @@
   display: flex;
   border-right: 1px solid #ededed;
 
-  &[data-layout="tight"] {
-    --preview-width: 40px;
-  }
-
   ul {
     flex: 1;
     display: flex;

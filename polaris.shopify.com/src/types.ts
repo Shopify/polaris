@@ -1,4 +1,5 @@
 export type Result = {
+  type: "component" | "token" | "icon";
   title: string;
   excerpt: string;
   url: string;

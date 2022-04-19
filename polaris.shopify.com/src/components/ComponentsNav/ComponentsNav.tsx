@@ -14,25 +14,15 @@ import styles from "./ComponentsNav.module.scss";
 
 const componentCategories = getComponentCategories();
 
-interface Props {}
-
-const layoutOptions = {
-  tight: "Tight",
-  default: "Default",
-};
-
-type LayoutOption = keyof typeof layoutOptions;
-
-function ComponentsNav({}: Props) {
+function ComponentsNav() {
   const [filterText, setFilterText] = useState("");
   const [filterCategory, setFilterCategory] = useState<string>("all");
-  const [layout, setLayout] = useState<LayoutOption>("default");
 
   const router = useRouter();
   const currentPath = router.asPath;
 
   return (
-    <div className={styles.ComponentsNav} data-layout={layout}>
+    <div className={styles.ComponentsNav}>
       <div className={styles.Filters}>
         <div className={styles.TextField}>
           <TextField
@@ -62,16 +52,6 @@ function ComponentsNav({}: Props) {
               {category}
             </Button>
           ))}
-
-        {/* {Object.entries(layoutOptions).map(([key, label]) => (
-          <Button
-            key={key}
-            onClick={() => setLayout(key as LayoutOption)}
-            small
-          >
-            {label}
-          </Button>
-        ))} */}
       </div>
 
       <ul>

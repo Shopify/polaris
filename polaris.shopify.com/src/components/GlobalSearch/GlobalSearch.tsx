@@ -5,6 +5,7 @@ import { search } from "../../utils/search";
 import { Result } from "../../types";
 import styles from "./GlobalSearch.module.scss";
 import { useCombobox } from "downshift";
+import { slugify } from "../../utils/various";
 
 interface Props {}
 
@@ -13,7 +14,6 @@ function GlobalSearch({}: Props) {
 
   const {
     isOpen,
-    selectedItem,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
@@ -57,13 +57,12 @@ function GlobalSearch({}: Props) {
           {isOpen &&
             searchResults.map((item, index) => (
               <li
-                style={
-                  highlightedIndex === index
-                    ? { backgroundColor: "rgba(0,0,0,.5)" }
-                    : {}
-                }
                 key={`${item.url}`}
                 {...getItemProps({ item, index })}
+                className={[
+                  styles.Result,
+                  highlightedIndex === index ? "active" : null,
+                ].join(" ")}
               >
                 <Link href={item.url} passHref>
                   <a>
@@ -81,7 +80,7 @@ function GlobalSearch({}: Props) {
                     {item.meta.icon?.fileName && (
                       <div
                         style={{
-                          filter: `brightness(200%)`,
+                          filter: `brightness(100%) saturation(0%)`,
                           width: 32,
                           height: 32,
                           display: "flex",
@@ -101,32 +100,19 @@ function GlobalSearch({}: Props) {
                     )}
 
                     <div>
-                      <p
-                        style={{
-                          margin: 0,
-                          fontWeight: 500,
-                        }}
-                      >
-                        {item.title}
-                      </p>
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: 14,
-                        }}
-                      >
-                        {item.excerpt}
-                      </p>
+                      <p className={styles.Title}>{item.title}</p>
+                      <p className={styles.Excerpt}>{item.excerpt}</p>
                     </div>
-                    {item.meta.componentPreview && (
-                      <div
-                        style={{
-                          minWidth: 100 * 2,
-                          height: 65.25 * 2,
-                          marginLeft: "auto",
-                          background: "#333",
-                        }}
-                      ></div>
+
+                    {item.type === "component" && (
+                      <div className={styles.ComponentPreview}>
+                        <Image
+                          src={`/component-previews/${slugify(item.title)}.png`}
+                          width={525}
+                          height={300}
+                          alt=""
+                        />
+                      </div>
                     )}
                   </a>
                 </Link>

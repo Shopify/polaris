@@ -10,21 +10,19 @@ let allPages: Result[] = [];
 // Add components
 components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   allPages.push({
+    type: "component",
     title: name,
     excerpt: stripMarkdownLinks(intro),
     url: `/components/${category}/${name}`,
     keywords,
-    meta: {
-      componentPreview: {
-        src: `/previews/components/card`,
-      },
-    },
+    meta: {},
   });
 });
 
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   allPages.push({
+    type: "token",
     title: `--p-${tokenName}`,
     excerpt: "",
     url: `/tokens/colors#${tokenName}`,
@@ -38,6 +36,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 // Add icons
 icons.forEach(({ name, set, description, keywords, fileName }) => {
   allPages.push({
+    type: "icon",
     title: `${name} (${set})`,
     excerpt: description,
     url: `/icons#${name}-${set}`,
