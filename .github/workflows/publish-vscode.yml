@@ -24,9 +24,9 @@ jobs:
         run: yarn
 
       - name: cd into dir
-        run: cd polaris-for-vscode && cat package.json
+        run: cd polaris-for-vscode && cat package.json && ls
 
       - name: Publish extension in the marketplace
-        run: yarn vsce show
+        run: yarn vsce package
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
