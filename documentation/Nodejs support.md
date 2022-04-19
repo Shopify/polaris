@@ -1,6 +1,6 @@
 # NodeJS support
 
-`@shopify/polaris` supports node's long term suppport (LTS) versions that are in the active or maintenance stages of their [lifecycle](https://nodejs.org/en/about/releases/).
+`@shopify/polaris` supports node's long term suppport (LTS) versions that are in the active or maintenance stages of their [lifecycle](https://nodejs.org/en/about/releases/). We should also ensure support for critical repositories at Shopify like `shopify/web`, 1st party applications and `shopify/cli`.
 
 ## Local development
 
