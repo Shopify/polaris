@@ -20,7 +20,6 @@ The `package.json` engines. This should match the `.github/workflows/ci.yml` and
 },
 ```
 
-
 The GitHub actions `.github/workflows/ci.yml` file. This should match the `package.json` and list all supported versions.
 
 ```yml
@@ -33,8 +32,8 @@ The `dev.yml` file which creates a local development environment. This should ma
 version: v16.13.0
 ```
 
-
 The `.nvmrc` file for local development. This should match the `dev.yml` file.
+
 ```
 v16.13.0
 ```
