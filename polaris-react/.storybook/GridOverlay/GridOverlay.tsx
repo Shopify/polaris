@@ -1,22 +1,36 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import debounce from 'lodash/debounce';
 import {EventListener} from '../../src';
+import {classNames} from '../../src/utilities/css';
 
 import styles from './GridOverlay.scss';
 
 const COLUMNS_SMALL = 4;
 const COLUMNS_LARGE = 12;
+const BREAKPOINT = 769;
 
-export function GridOverlay() {
-  const [columns, setColumns] = useState(12);
+interface Props {
+  inset?: boolean;
+  inFrame?: boolean;
+}
 
-  const handleResize = debounce(
-    () => setColumns(window.innerWidth < 769 ? COLUMNS_SMALL : COLUMNS_LARGE),
-    50,
+export function GridOverlay({inset, inFrame}: Props) {
+  const [columns, setColumns] = useState(
+    window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
+  );
+
+  const handleResize = debounce(() => {
+    setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
+  }, 50);
+
+  const className = classNames(
+    styles.GridOverlay,
+    inset && styles.inset,
+    inFrame && styles.inFrame,
   );
 
   return (
-    <div className={styles.GridOverlay}>
+    <div className={className}>
       {[...Array(columns).keys()].map((key) => (
         <div key={key} className={styles.Cell} />
       ))}

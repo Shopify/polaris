@@ -2,14 +2,17 @@ import React from 'react';
 import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
-import {GridOverlay} from './GridOverlay/GridOverlay';
 import enTranslations from '../locales/en.json';
+import {GridOverlay} from './GridOverlay';
 
 function StrictModeDecorator(Story, context) {
-  const gridOverlay = context.globals.grid === 'true' ? <GridOverlay /> : null;
-  const Wrapper =
-    context.globals.strictMode === 'true' ? React.StrictMode : React.Fragment;
-
+  const {strictMode, grid} = context.globals;
+  const Wrapper = strictMode === 'true' ? React.StrictMode : React.Fragment;
+  const gridOverlay =
+    grid === 'true' || grid === 'inset' || grid === 'inFrame' ? (
+      <GridOverlay inset={grid === 'inset'} inFrame={grid === 'inFrame'} />
+    ) : null;
+  console.log({grid});
   return (
     <Wrapper>
       {gridOverlay}
@@ -46,7 +49,9 @@ export const globalTypes = {
     toolbar: {
       items: [
         {title: 'Hide', value: 'false'},
-        {title: 'Show', value: 'true'},
+        {title: 'Full width', value: 'true'},
+        {title: 'Inset', value: 'inset'},
+        {title: 'Within Frame', value: 'inFrame'},
       ],
       showName: true,
     },
