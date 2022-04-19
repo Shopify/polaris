@@ -16,6 +16,17 @@ const configs = {
   },
 };
 
+/**
+ * @typedef {Object} Config
+ * @property {string} path
+ * @property {string[]} files
+ * @property {number} expectedFailures
+ */
+
+/**
+ * @param {string} configName
+ * @param {Config} config
+ */
 const testFile = async (configName, config) => {
   const {results} = await stylelint.lint({
     config: {
