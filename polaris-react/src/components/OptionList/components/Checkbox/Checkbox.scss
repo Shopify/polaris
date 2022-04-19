@@ -3,7 +3,10 @@
 .Checkbox {
   position: relative;
   width: 100%;
-  margin: var(--p-choice-margin);
+
+  @include when-typography-not-condensed {
+    margin: var(--p-choice-margin);
+  }
 
   // stylelint-disable-next-line selector-max-class
   &.active .Backdrop {
