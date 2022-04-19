@@ -3,5 +3,6 @@ export interface NavigableOption {
   value: string;
   element: HTMLElement;
   disabled: boolean;
+  isAction?: boolean;
   index?: number;
 }

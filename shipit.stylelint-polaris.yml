@@ -5,3 +5,4 @@ dependencies:
 deploy:
   override:
     - npm publish stylelint-polaris --tag latest
+  max_commits: false

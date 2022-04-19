@@ -3,18 +3,15 @@ const path = require('path');
 
 const {
   getCustomPropertyNames,
-  getGroupedCustomPropertyNames,
+  getGroupedCustomPropertyCompletionItems,
 } = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
 
 const dirPath = path.join(__dirname, '../server/src/data');
 const outFile = 'allTokens.ts';
 const filePath = path.join(dirPath, outFile);
 
-const groupedTokens = getGroupedCustomPropertyNames();
+const groupedTokens = getGroupedCustomPropertyCompletionItems();
 const tokens = getCustomPropertyNames();
-
-// we don't need legacy tokens
-delete groupedTokens['legacy-tokens'];
 
 try {
   if (!fs.existsSync(dirPath)) {

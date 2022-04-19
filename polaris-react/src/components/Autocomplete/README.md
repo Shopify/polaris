@@ -120,7 +120,7 @@ function MultiAutocompleteExample() {
     {value: 'vintage', label: 'Vintage'},
     {value: 'refurbished', label: 'Refurbished'},
   ];
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -155,16 +155,21 @@ function MultiAutocompleteExample() {
     [selectedOptions],
   );
 
-  const tagsMarkup = selectedOptions.map((option) => {
-    let tagLabel = '';
-    tagLabel = option.replace('_', ' ');
-    tagLabel = titleCase(tagLabel);
-    return (
-      <Tag key={`option${option}`} onRemove={removeTag(option)}>
-        {tagLabel}
-      </Tag>
-    );
-  });
+  const verticalContentMarkup =
+    selectedOptions.length > 0 ? (
+      <Stack spacing="extraTight" alignment="center">
+        {selectedOptions.map((option) => {
+          let tagLabel = '';
+          tagLabel = option.replace('_', ' ');
+          tagLabel = titleCase(tagLabel);
+          return (
+            <Tag key={`option${option}`} onRemove={removeTag(option)}>
+              {tagLabel}
+            </Tag>
+          );
+        })}
+      </Stack>
+    ) : null;
 
   const textField = (
     <Autocomplete.TextField
@@ -172,15 +177,12 @@ function MultiAutocompleteExample() {
       label="Tags"
       value={inputValue}
       placeholder="Vintage, cotton, summer"
+      verticalContent={verticalContentMarkup}
     />
   );
 
   return (
     <div style={{height: '325px'}}>
-      <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
-      </TextContainer>
-      <br />
       <Autocomplete
         allowMultiple
         options={options}

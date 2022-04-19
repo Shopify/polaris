@@ -1,8 +1,9 @@
 {
   "name": "polaris-for-vscode",
-  "displayName": "Polaris for VSCode",
+  "displayName": "Polaris for VS Code",
   "publisher": "Shopify",
-  "description": "Polaris Design System VSCode extension",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "description": "Polaris Design System VS Code extension",
   "icon": "docs/polaris-icon.png",
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [
     "polaris",
     "shopify"
@@ -29,8 +30,9 @@
   ],
   "main": "./client/out/extension.js",
   "scripts": {
-    "vscode:prepublish": "yarn run generateCustomPropertyNames && yarn run compile",
+    "vscode:prepublish": "yarn run build",
     "generateCustomPropertyNames": "node ./scripts/prepublish.js",
+    "build": "yarn run generateCustomPropertyNames && yarn run compile",
     "compile": "tsc -b",
     "watch": "tsc -b -w",
     "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",

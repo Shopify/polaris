@@ -7,9 +7,10 @@ Polaris is our design system that helps us work together to build a great experi
 ```sh
 polaris/
 ├── documentation               # Documentation for working in the monorepo
-├── polaris-for-vscode          # VSCode plugin for Polaris
+├── polaris-for-vscode          # VS Code plugin for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
 ├── polaris-shopify-com         # Documentation website
+├── polaris-tokens              # Design tokens for Polaris
 └── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
 

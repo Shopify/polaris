@@ -14,7 +14,7 @@ import en from '@shopify/polaris/locales/en.json';
 const Home: NextPage = () => {
   return (
     <AppProvider i18n={en}>
-      <Page title="Order #1085">
+      <Page title="Order #1086">
         <Layout>
           <Layout.Section>
             <Banner
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
                 <Link url="https://www.shopify.com/">
                   review the Risk Analysis
                 </Link>{' '}
-                and determine if this order is fradulent.
+                and determine if this order is fraudulent.
               </p>
             </Banner>
           </Layout.Section>

@@ -20,7 +20,8 @@ import type {
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 import {Pagination, PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
-import {isInterface, isReactElement} from '../../utilities';
+import {isInterface} from '../../../../utilities/is-interface';
+import {isReactElement} from '../../../../utilities/is-react-element';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';

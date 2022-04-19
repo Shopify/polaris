@@ -14,14 +14,15 @@ module.exports = {
     'declaration-property-value-disallowed-list': [
       {
         display: ['grid', 'flex'],
-        // polaris custom properties only
         top: [/^(?!var\(--p-).+$/],
         bottom: [/^(?!var\(--p-).+$/],
         left: [/^(?!var\(--p-).+$/],
         right: [/^(?!var\(--p-).+$/],
         width: [/^(?!var\(--p-).+$/],
         height: [/^(?!var\(--p-).+$/],
-        opacity: [/^(?!var\(--p-).+$/],
+        // Allow `0`, `1`, values between 0 and 1 (limit 2 decimal places), and custom properties
+        // https://regex101.com/r/kIlVrQ/1
+        opacity: [/^(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
         'z-index': [/^(?!var\(--p-).+$/],
         'font-weight': [/(\$.*|[0-9]+)/],
       },
