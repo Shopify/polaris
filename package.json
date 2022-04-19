@@ -2,7 +2,7 @@
   "name": "polaris",
   "private": true,
   "engines": {
-    "node": "^14.13.1 || ^16.13.0"
+    "node": "^14.17.0 || ^16.13.0"
   },
   "workspaces": [
     "polaris-for-vscode",
