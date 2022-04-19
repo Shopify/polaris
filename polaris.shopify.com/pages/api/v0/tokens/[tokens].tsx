@@ -1,4 +1,5 @@
 import {
+  Tokens,
   TokenGroup,
   ColorScheme,
   createVar,
@@ -9,17 +10,11 @@ import type {NextApiRequest, NextApiResponse} from 'next';
 /**
  * Color scheme independent token groups
  */
-export const staticTokenGroupKeys = [
-  'depth',
-  'legacyTokens',
-  'motion',
-  'shape',
-  'spacing',
-  'typography',
-  'zIndex',
-] as const;
+type StaticTokenGroupKey = Exclude<keyof Tokens, 'colorSchemes'>;
 
-type StaticTokenGroupKey = typeof staticTokenGroupKeys[number];
+const staticTokenGroupKeys = Object.keys(tokens).filter(
+  (token) => token !== 'colorSchemes',
+) as StaticTokenGroupKey[];
 
 const tokenGroupKeys = ['all', 'colors', ...staticTokenGroupKeys] as const;
 
@@ -35,6 +30,11 @@ function isFormat(format: unknown): format is Format {
 
 function isScheme(scheme: unknown): scheme is ColorScheme {
   return Object.keys(tokens.colorSchemes).includes(scheme as ColorScheme);
+}
+
+function isStaticTokenGroupKey(key: unknown): key is StaticTokenGroupKey {
+  // return Object.keys(tokens.colorSchemes).includes(scheme as ColorScheme);
+  return staticTokenGroupKeys.includes(key as StaticTokenGroupKey);
 }
 
 /**
@@ -68,28 +68,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const schemeParam = isScheme(req.query.scheme) ? req.query.scheme : 'light';
 
   if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
-    const tokenGroupParam = (req.query.tokens || '') as TokenGroupKey;
+    const tokenGroupParam = req.query.tokens || '';
     let tokenData: TokenGroup = {};
 
     // Determine which list(s) we are querying for based on the token param
     if (tokenGroupParam === 'all') {
       staticTokenGroupKeys.forEach((group) => {
-        const tokenGroup: TokenGroup = tokens[group] || {};
+        const tokenGroup = tokens[group];
 
         tokenData = {...tokenData, ...tokenGroup};
       });
     }
 
     if (tokenGroupParam === 'all' || tokenGroupParam === 'colors') {
-      const colorSchemeTokenGroup: TokenGroup =
-        tokens.colorSchemes[schemeParam] || {};
+      const colorSchemeTokenGroup = tokens.colorSchemes[schemeParam];
 
       tokenData = {...tokenData, ...colorSchemeTokenGroup};
     }
 
-    if (staticTokenGroupKeys.includes(tokenGroupParam as StaticTokenGroupKey)) {
-      const tokenGroupName = tokenGroupParam as StaticTokenGroupKey;
-      const tokenGroup: TokenGroup = tokens[tokenGroupName] || {};
+    if (isStaticTokenGroupKey(tokenGroupParam)) {
+      const tokenGroup: TokenGroup = tokens[tokenGroupParam];
 
       tokenData = {...tokenData, ...tokenGroup};
     }
