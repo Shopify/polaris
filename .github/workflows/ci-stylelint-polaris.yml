@@ -3,11 +3,13 @@ name: @shopify/stylelint-polaris CI
 on:
   pull_request:
     paths:
-      - 'stylelint-polaris/**'
+      - 'stylelint-polaris'
+      - 'polaris-react/src/tokens/token-groups'
   push:
     branches: main
     paths:
-      - 'stylelint-polaris/**'
+      - 'stylelint-polaris'
+      - 'polaris-react/src/tokens/token-groups'
 
 jobs:
   test:
@@ -24,4 +26,5 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
+      - run: yarn type-check
       - run: yarn workspace @shopify/stylelint-polaris test

@@ -3,11 +3,11 @@ name: @shopify/polaris-tokens CI
 on:
   pull_request:
     paths:
-      - 'polaris-tokens/**'
+      - 'polaris-tokens'
   push:
     branches: main
     paths:
-      - 'polaris-tokens/**'
+      - 'polaris-tokens'
 
 jobs:
   test:
@@ -24,4 +24,5 @@ jobs:
           cache: yarn
 
       - run: yarn --frozen-lockfile
+      - run: yarn type-check
       - run: yarn workspace @shopify/polaris-tokens run test

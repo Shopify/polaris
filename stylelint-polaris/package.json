@@ -29,8 +29,8 @@
   "scripts": {
     "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
     "build": "yarn gen-polaris-data",
-    "test": "tsc && yarn build && node tests/index.js",
-    "prepublishOnly": "yarn build && tsc"
+    "test": "yarn build && node tests/index.js",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
