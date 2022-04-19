@@ -26,9 +26,6 @@
     "stylelint"
   ],
   "main": "index.js",
-  "engines": {
-    "node": ">=16.13.0"
-  },
   "scripts": {
     "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
     "build": "yarn gen-polaris-data",
