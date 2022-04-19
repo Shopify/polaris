@@ -3,8 +3,7 @@ const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
-const startCase = require('lodash.startcase');
-const camelCase = require('lodash.camelcase');
+const lodash = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
@@ -409,5 +408,5 @@ function wrapExample(code) {
 }
 
 function toPascalCase(str) {
-  return startCase(camelCase(str)).replace(/ /g, '');
+  return lodash.startCase(lodash.camelCase(str)).replace(/ /g, '');
 }
