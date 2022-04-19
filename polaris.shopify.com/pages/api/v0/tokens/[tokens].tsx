@@ -12,7 +12,7 @@ import type {NextApiRequest, NextApiResponse} from 'next';
  */
 type StaticTokenGroupKey = Exclude<keyof Tokens, 'colorSchemes'>;
 
-const staticTokenGroupKeys = Object.keys(tokens).filter(
+export const staticTokenGroupKeys = Object.keys(tokens).filter(
   (token) => token !== 'colorSchemes',
 ) as StaticTokenGroupKey[];
 
