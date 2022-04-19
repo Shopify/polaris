@@ -1,6 +1,6 @@
 # NodeJS support
 
-`@shopify/polaris` supports the [last two long term support (LTS) versions](https://nodejs.org/en/about/releases/) of NodeJS. This matches our approach for the [Shopify CLI](https://github.com/Shopify/shopify-cli) a tool used by developers to quickly create applications that uses Polaris.
+`@shopify/polaris` supports node's long term suppport (LTS) versions that are in the active or maintenance stages of their [lifecycle](https://nodejs.org/en/about/releases/).
 
 ## Local development
 
