@@ -4,9 +4,9 @@ export const navItems: NavItem[] = [
   {
     title: "About tokens",
     children: [
-      { title: "Getting started", url: "/tokens" },
-      { title: "Tokens in Figma", url: "/tokens" },
-      { title: "Tokens in code", url: "/tokens" },
+      { title: "Getting started", url: "/tokens/getting-started" },
+      { title: "Tokens in Figma", url: "/tokens/tokens-in-figma" },
+      { title: "Tokens in code", url: "/tokens/tokens-in-code" },
     ],
   },
   {
