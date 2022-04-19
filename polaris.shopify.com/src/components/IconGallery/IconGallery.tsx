@@ -11,16 +11,13 @@ const fuse = new Fuse(icons, {
   threshold: 0.25,
   keys: [
     { name: "title", weight: 3 },
-    "description",
+    { name: "description", weight: 1 },
     { name: "keywords", weight: 2 },
   ],
 });
 
 function IconGallery({}: Props) {
-  const [selectedIconName, setSelectedIconName] = useState<string>();
   const [filterString, setFilterString] = useState("");
-
-  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
 
   let filteredIcons = icons;
   if (filterString) {
