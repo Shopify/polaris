@@ -22,16 +22,15 @@ file.write(`/* stylelint-disable length-zero-no-unit */\n\n`);
 file.write(`/* Breakpoints - Aliases */\n`);
 
 breakpointEntries.forEach(([bpAlias, breakpoint]) => {
-  // Write PX breakpoint alias
+  // PX breakpoints alias
   file.write(`${bpAlias}: ${breakpoint};\n`);
 
-  // Write EM breakpoint alias
+  // EM breakpoints alias
   file.write(`${toEmAlias(bpAlias)}: ${toEm(breakpoint)};\n\n`);
 });
 
 file.write(`/* Breakpoints - Media conditions */\n`);
 
-// Write breakpoint SCSS utils
 breakpointEntries.forEach(([bpAlias, breakpoint], index) => {
   const isLastBreakpoint = index === breakpointEntries.length - 1;
 
@@ -54,7 +53,7 @@ breakpointEntries.forEach(([bpAlias, breakpoint], index) => {
   // Scss variable/media condition for only the current breakpoint
   file.write(`${bpAlias}-only: '${onlyMediaCondition}';\n`);
 
-  !isLastBreakpoint && file.write('\n');
+  if (!isLastBreakpoint) file.write('\n');
 });
 
 file.end();

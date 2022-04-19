@@ -1,7 +1,7 @@
 /* stylelint-disable unit-disallowed-list */
 /* stylelint-disable length-zero-no-unit */
 
-/* Breakpoint aliases */
+/* Breakpoints - Aliases */
 $p-breakpoints-xs: 0px;
 $p-breakpoints-xs-em: 0em;
 
@@ -14,7 +14,7 @@ $p-breakpoints-md-em: 48em;
 $p-breakpoints-lg: 1008px;
 $p-breakpoints-lg-em: 63em;
 
-/* Breakpoint media conditions */
+/* Breakpoints - Media conditions */
 $p-breakpoints-xs-up: '(min-width: 0em)';
 $p-breakpoints-xs-down: '(max-width: 0em)';
 $p-breakpoints-xs-only: '(min-width: 0em) and (max-width: 30em)';
