@@ -23,13 +23,16 @@ The `package.json` engines.
 The `dev.yml` file which creates a local development environment.
 
 ```yml
-up:
-  - node:
-      yarn: v1.22.18
+version: v16.13.0
 ```
 
 The GitHub actions `.github/workflows/ci.yml` file:
 
 ```yml
 node_version: ['14.17.0', '16']
+```
+
+The `.nvmrc` file:
+```
+v16.13.0
 ```
