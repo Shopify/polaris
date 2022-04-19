@@ -1,11 +1,13 @@
 ci:
   require:
-    - 'Test (16.13.0)'
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
     - 'Accessibility test'
 
 merge:
   require:
-    - 'Test (16.13.0)'
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
     - 'Accessibility test'
 
 dependencies:
