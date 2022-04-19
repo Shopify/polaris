@@ -6,8 +6,7 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
-    "mrmlnc.vscode-scss",
-    "orta.vscode-jest",
-    "Shopify.polaris-for-vscode"
+    "stylelint.vscode-stylelint",
+    "mrmlnc.vscode-scss"
   ]
 }

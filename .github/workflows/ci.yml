@@ -35,7 +35,6 @@ jobs:
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run validate-tokens
-      - run: yarn workspace @shopify/polaris-tokens run test
       - run: yarn run build
       - run: yarn run lint
       - run: yarn type-check

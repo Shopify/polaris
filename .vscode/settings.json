@@ -7,8 +7,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "javascript.validate.enable": false,
-  "jest.autoRun": "off",
+  "jest.autoEnable": false,
   "scss.validate": false,
-  "stylelint.validate": ["scss", "css"],
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "stylelint.validate": ["scss", "css"]
 }
