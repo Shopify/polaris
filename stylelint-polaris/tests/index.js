@@ -4,6 +4,13 @@ const path = require('path');
 const stylelint = require('stylelint');
 
 /**
+ * @typedef {Object} Config
+ * @property {string} path
+ * @property {string[]} files
+ * @property {number} expectedFailures
+ */
+
+/**
  * @type {{ [configName: string]: Config }}
  */
 const configs = {
@@ -18,13 +25,6 @@ const configs = {
     expectedFailures: 26,
   },
 };
-
-/**
- * @typedef {Object} Config
- * @property {string} path
- * @property {string[]} files
- * @property {number} expectedFailures
- */
 
 /**
  * @param {string} configName
