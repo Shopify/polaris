@@ -10,6 +10,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Added support for setting a `ReactNode` on the `PageActions` `secondaryActions` prop ([#5495](https://github.com/Shopify/polaris/pull/5495))
 
+- Added support for NodeJS v14 ([#5551](https://github.com/Shopify/polaris/pull/5551))
+
 ### Bug fixes
 
 ### Documentation
