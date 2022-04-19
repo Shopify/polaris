@@ -1,3 +1,5 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+
 import {Playground} from './Playground';
 import {KitchenSink} from './KitchenSink';
 import {DetailsPage} from './DetailsPage';
@@ -9,6 +11,9 @@ export default {
   parameters: {
     layout: 'fullscreen',
     chromatic: {disable: true},
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+    }
   },
 };
 
