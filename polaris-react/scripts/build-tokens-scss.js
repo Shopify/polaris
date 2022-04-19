@@ -5,9 +5,7 @@ const polarisReactDir = path.join(__dirname, '..');
 const tokenGroupsDir = path.join(polarisReactDir, 'src/tokens/token-groups');
 const stylesDir = path.join(polarisReactDir, 'src/styles');
 
-const publicScssFile = fs.createWriteStream(
-  path.join(stylesDir, '_public.scss'),
-);
+const file = fs.createWriteStream(path.join(stylesDir, '_tokens.scss'));
 
 const breakpointsTokenGroup = require(path.join(
   tokenGroupsDir,
@@ -18,20 +16,20 @@ const breakpointEntries = Object.entries(breakpointsTokenGroup).map(
   ([token, breakpoint]) => [`$p-${token}`, breakpoint],
 );
 
-publicScssFile.write(`/* stylelint-disable unit-disallowed-list */\n`);
-publicScssFile.write(`/* stylelint-disable length-zero-no-unit */\n\n`);
+file.write(`/* stylelint-disable unit-disallowed-list */\n`);
+file.write(`/* stylelint-disable length-zero-no-unit */\n\n`);
 
-publicScssFile.write(`/* Breakpoint aliases */\n`);
+file.write(`/* Breakpoints - Aliases */\n`);
 
 breakpointEntries.forEach(([bpAlias, breakpoint]) => {
   // Write PX breakpoint alias
-  publicScssFile.write(`${bpAlias}: ${breakpoint};\n`);
+  file.write(`${bpAlias}: ${breakpoint};\n`);
 
   // Write EM breakpoint alias
-  publicScssFile.write(`${toEmAlias(bpAlias)}: ${toEm(breakpoint)};\n\n`);
+  file.write(`${toEmAlias(bpAlias)}: ${toEm(breakpoint)};\n\n`);
 });
 
-publicScssFile.write(`/* Breakpoint media conditions */\n`);
+file.write(`/* Breakpoints - Media conditions */\n`);
 
 // Write breakpoint SCSS utils
 breakpointEntries.forEach(([bpAlias, breakpoint], index) => {
@@ -48,18 +46,18 @@ breakpointEntries.forEach(([bpAlias, breakpoint], index) => {
     : `${upMediaCondition} and ${getDownMediaCondition(nextBreakpoint)}`;
 
   // Scss variable/media condition for the current breakpoint and up
-  publicScssFile.write(`${bpAlias}-up: '${upMediaCondition}';\n`);
+  file.write(`${bpAlias}-up: '${upMediaCondition}';\n`);
 
   // Scss variable/media condition for current breakpoint and down
-  publicScssFile.write(`${bpAlias}-down: '${downMediaCondition}';\n`);
+  file.write(`${bpAlias}-down: '${downMediaCondition}';\n`);
 
   // Scss variable/media condition for only the current breakpoint
-  publicScssFile.write(`${bpAlias}-only: '${onlyMediaCondition}';\n`);
+  file.write(`${bpAlias}-only: '${onlyMediaCondition}';\n`);
 
-  !isLastBreakpoint && publicScssFile.write('\n');
+  !isLastBreakpoint && file.write('\n');
 });
 
-publicScssFile.end();
+file.end();
 
 function getUpMediaCondition(breakpoint) {
   return `(min-width: ${toEm(breakpoint)})`;
