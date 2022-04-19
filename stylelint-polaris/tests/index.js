@@ -3,6 +3,9 @@ const path = require('path');
 
 const stylelint = require('stylelint');
 
+/**
+ * @type {{ [configName: string]: Config }}
+ */
 const configs = {
   external: {
     path: path.join(__dirname, '../index.js'),
