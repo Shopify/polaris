@@ -207,17 +207,10 @@ $spinner-icon-size: 12px;
   z-index: var(--pc-text-field-contents);
   color: var(--p-text-subdued);
   user-select: none;
-  padding: var(--p-space-2);
-  padding-bottom: 0;
   max-height: 140px;
   overflow: scroll;
   border: var(--p-border);
   width: 100%;
-
-  > .Input {
-    padding-left: var(--p-space-0);
-    padding-bottom: var(--p-space-0);
-  }
 
   @include breakpoint-after(490px) {
     max-height: 328px;
