@@ -24,27 +24,44 @@
     flex-direction: column;
     overflow: auto;
     overscroll-behavior: contain;
-    padding: 0.5rem 2rem 0.5rem 0;
+    margin-left: -1rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
   }
 
   li {
     a {
+      position: relative;
       display: flex;
       align-items: center;
       padding: 1rem 0;
       gap: 1em;
       color: inherit;
-      border-top: 1px solid #ededed;
+
+      &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 1rem;
+        left: -1rem;
+        bottom: 1rem;
+        width: 4px;
+        background: #ddd;
+        border-radius: 2px;
+        opacity: 0;
+      }
 
       &:hover {
         // box-shadow: inset 3px 0 #ddd;
+        &:after {
+          opacity: 1;
+        }
       }
 
       &[aria-current="page"] {
-      }
-
-      &:last-child a {
-        border-bottom: 1px solid #ededed;
+        &:after {
+          opacity: 1;
+          background: #008060;
+        }
       }
     }
 
@@ -82,16 +99,8 @@
   padding-right: 2rem;
   padding-bottom: 0.5em;
 
-  input {
+  .TextField {
     margin-bottom: 12px;
-    font-size: 0.9rem;
-    padding: 0.6rem 0.6rem 0.6rem 2.75rem;
-    width: 100%;
-    border-radius: 4px;
-    background: #fff url(./FilterMajor.svg) no-repeat 1em center;
-    background-size: 16px auto;
-    border: 1px solid #ddd;
-    border-top: 1px solid #aaa;
   }
 
   button {

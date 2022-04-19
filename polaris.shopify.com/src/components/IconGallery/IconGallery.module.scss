@@ -1,0 +1,47 @@
+.IconGallery {
+  padding: 50px 100px;
+}
+
+.Filter {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.IconGrids {
+  display: flex;
+  gap: 40px;
+
+  > div {
+    flex: 1;
+  }
+}
+
+.IconGrid {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  flex: 1;
+}
+
+.Icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 160px;
+  flex: 1;
+  gap: 10px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 6px;
+  padding-top: 5px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.025);
+  aspect-ratio: 5 / 4;
+
+  &:hover {
+    position: relative;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+}

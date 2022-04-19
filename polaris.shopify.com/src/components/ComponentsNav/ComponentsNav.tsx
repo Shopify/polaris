@@ -9,6 +9,7 @@ import {
   slugify,
 } from "../../utils/various";
 import Button from "../Button";
+import TextField from "../TextField";
 import styles from "./ComponentsNav.module.scss";
 
 const componentCategories = getComponentCategories();
@@ -33,12 +34,14 @@ function ComponentsNav({}: Props) {
   return (
     <div className={styles.ComponentsNav} data-layout={layout}>
       <div className={styles.Filters}>
-        <input
-          type="text"
-          value={filterText}
-          onChange={(evt) => setFilterText(evt.target.value)}
-          placeholder="Filter components"
-        />
+        <div className={styles.TextField}>
+          <TextField
+            type="text"
+            value={filterText}
+            onChange={(value) => setFilterText(value)}
+            placeholder="Filter components"
+          />
+        </div>
 
         <Button
           onClick={() => setFilterCategory("all")}

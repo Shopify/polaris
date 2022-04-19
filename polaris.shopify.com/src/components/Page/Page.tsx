@@ -50,19 +50,17 @@ function Page({ renderNav, noLayout = false, children }: Props) {
         </div>
       </div>
 
-      <div className={styles.Content}>
-        {noLayout ? (
-          <>{children}</>
-        ) : (
-          <>
-            {renderNav && renderNav()}
+      {noLayout ? (
+        <>{children}</>
+      ) : (
+        <div className={styles.Content}>
+          {renderNav && renderNav()}
 
-            <div className={styles.MainContent}>
-              <div className={styles.MainContentInner}>{children}</div>
-            </div>
-          </>
-        )}
-      </div>
+          <div className={styles.MainContent}>
+            <div className={styles.MainContentInner}>{children}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
