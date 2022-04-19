@@ -14,7 +14,14 @@ export const getComponentCategories = (): string[] => {
 };
 
 export const slugify = (str: string) => {
-  return str.toLowerCase().replace(/[^a-z0-9]/gi, "-");
+  return (
+    str
+      // Camel to hyphen case
+      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      // Replace spaces with hyphens
+      .replace(/[^a-z0-9]/gi, "-")
+      .toLowerCase()
+  );
 };
 
 export const stripMarkdownLinks = (markdown: string): string => {
