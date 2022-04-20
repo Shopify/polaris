@@ -13,7 +13,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        e following images couldn’t be uploaded:
+        The following images couldn’t be uploaded:
 
 * “keep-it-real.png” is too large. Try a file size less than 20MB.
 * “realer-than-real.zip” is not supported. File type must be .gif, .jpg, .png or .svg.

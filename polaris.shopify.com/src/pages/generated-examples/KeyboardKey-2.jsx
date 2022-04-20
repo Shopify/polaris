@@ -14,7 +14,8 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        Press the <KeyboardKey>Ctrl</KeyboardKey> key.
+        JSX
+Press the <KeyboardKey>Ctrl</KeyboardKey> key.
       </div>
     </AppProvider>
   );

@@ -1,3 +1,4 @@
+import { AppProvider, TextStyle } from "@shopify/polaris";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 
@@ -13,7 +14,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        extStyle variation="positive">Orders</TextStyle>
+        <TextStyle variation="positive">Orders</TextStyle>
       </div>
     </AppProvider>
   );

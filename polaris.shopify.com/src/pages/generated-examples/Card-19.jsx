@@ -1,4 +1,4 @@
-import { AppProvider, List } from "@shopify/polaris";
+import { AppProvider, Card,List } from "@shopify/polaris";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 
@@ -14,7 +14,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        ard title="Staff accounts" sectioned subdued>
+        <Card title="Staff accounts" sectioned subdued>
   <List>
     <List.Item>Felix Crafford</List.Item>
     <List.Item>Ezequiel Manno</List.Item>

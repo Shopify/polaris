@@ -1,4 +1,4 @@
-import { AppProvider, Layout,Card,FormLayout,TextField } from "@shopify/polaris";
+import { AppProvider, Page,Layout,Card,FormLayout,TextField } from "@shopify/polaris";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 
@@ -14,25 +14,31 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <Layout>
-  <Layout.AnnotatedSection
-    id="storeDetails"
-    title="Store details"
-    description="Shopify and your customers will use this information to contact you."
-  >
-    <Card sectioned>
-      <FormLayout>
-        <TextField label="Store name" onChange={() => {}} autoComplete="off" />
-        <TextField
-          type="email"
-          label="Account email"
-          onChange={() => {}}
-          autoComplete="email"
-        />
-      </FormLayout>
-    </Card>
-  </Layout.AnnotatedSection>
-</Layout>
+        <Page fullWidth>
+  <Layout>
+    <Layout.AnnotatedSection
+      id="storeDetails"
+      title="Store details"
+      description="Shopify and your customers will use this information to contact you."
+    >
+      <Card sectioned>
+        <FormLayout>
+          <TextField
+            label="Store name"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+          <TextField
+            type="email"
+            label="Account email"
+            onChange={() => {}}
+            autoComplete="email"
+          />
+        </FormLayout>
+      </Card>
+    </Layout.AnnotatedSection>
+  </Layout>
+</Page>
       </div>
     </AppProvider>
   );

@@ -1,4 +1,4 @@
-import { AppProvider, Layout,Card } from "@shopify/polaris";
+import { AppProvider, Page,Layout,Card } from "@shopify/polaris";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 
@@ -14,13 +14,15 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <Layout>
-  <Layout.Section>
-    <Card title="Online store dashboard" sectioned>
-      <p>View a summary of your online store’s performance.</p>
-    </Card>
-  </Layout.Section>
-</Layout>
+        <Page fullWidth>
+  <Layout>
+    <Layout.Section>
+      <Card title="Online store dashboard" sectioned>
+        <p>View a summary of your online store’s performance.</p>
+      </Card>
+    </Layout.Section>
+  </Layout>
+</Page>
       </div>
     </AppProvider>
   );

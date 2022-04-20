@@ -47,10 +47,20 @@ for (let i = 0; i < componentDirectories.length; i++) {
         .replace(/```/g, "🔥")
         // Extract any content (=code) between emojis
         .replaceAll(/🔥[^🔥]+🔥/gim, (match) => {
+          let renderExample = true;
           // If the code contains custom imports (like react-router)
-          // or something, we actually don't want to render it, so
-          // we just undo the above and return the code as it was.
+          // we actually don't want to render it
           if (match.includes("import")) {
+            renderExample = false;
+          }
+
+          // If it's a scss file, we don't want to render it
+          if (match.includes("scss")) {
+            renderExample = false;
+          }
+
+          if (!renderExample) {
+            // Return the code as it was
             return match.replace(/🔥/g, "```");
           }
 
@@ -59,7 +69,11 @@ for (let i = 0; i < componentDirectories.length; i++) {
           i++;
 
           // Remove some content from the beginning and end of the example
-          let code = match.slice(4).slice(1, -2).trim();
+          let code = match
+            .replace(/^🔥/, "")
+            .replace(/^jsx/, "")
+            .replace(/🔥$/, "")
+            .trim();
 
           // Create a list of all the components in the code.
           let componentsInCode = {};
@@ -172,7 +186,7 @@ function decorateExample(code) {
     justifyContent: "center",
     alignItems: "center",
     padding: "0 50px",
-  `.replace(/\n\t/g, "");
+  `;
 
   // Some examples only contain a component function. Add some code
   // that actually renders that component.
