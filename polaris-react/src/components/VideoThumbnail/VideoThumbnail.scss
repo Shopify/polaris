@@ -34,7 +34,7 @@ $progress-bar-height: 6px;
   border: none;
   background: transparent;
   opacity: 0.8;
-  transition: opacity 0.2s ease-in;
+  transition: opacity var(--p-duration-200) var(--p-ease-in);
   cursor: pointer;
 
   &:hover,

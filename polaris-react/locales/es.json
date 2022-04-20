@@ -10,13 +10,13 @@
     },
     "Badge": {
       "PROGRESS_LABELS": {
-        "incomplete": "Incompleto",
-        "partiallyComplete": "Parcialmente completo",
-        "complete": "Completar"
+        "incomplete": "Sin completar",
+        "partiallyComplete": "Parcialmente completado",
+        "complete": "Completado"
       },
       "STATUS_LABELS": {
         "info": "Información",
-        "success": "Éxito",
+        "success": "Correcto",
         "warning": "Advertencia",
         "attention": "Atención",
         "new": "Nuevo",
@@ -44,13 +44,13 @@
     },
     "DataTable": {
       "sortAccessibilityLabel": "ordenar {direction} por",
-      "navAccessibilityLabel": "Desplaza la tabla una columna {direction}",
+      "navAccessibilityLabel": "Desplázate en la tabla una columna {direction}",
       "totalsRowHeading": "Totales",
-      "totalRowHeading": "total"
+      "totalRowHeading": "Total"
     },
     "DatePicker": {
       "previousMonth": "Mostrar el mes anterior, {previousMonthName} {showPreviousYear}",
-      "nextMonth": "Mostrar el mes próximo, {nextMonth} {nextYear}",
+      "nextMonth": "Mostrar el mes siguiente, {nextMonth} {nextYear}",
       "today": "Hoy ",
       "months": {
         "january": "enero",
@@ -89,32 +89,32 @@
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todos los cambios no guardados",
-      "message": "Si descartas los cambios, eliminarás cualquier edición que hayas realizado desde la última vez que guardaste.",
+      "message": "Si descartas los cambios, se eliminará cualquier edición que hayas realizado desde la última vez que guardaste.",
       "primaryAction": "Descartar los cambios",
       "secondaryAction": "Continuar editando"
     },
     "DropZone": {
       "errorOverlayTextFile": "El tipo de archivo no es válido",
-      "errorOverlayTextImage": "El tipo de imagen no es válida",
+      "errorOverlayTextImage": "El tipo de imagen no es válido",
       "single": {
-        "overlayTextFile": "Arrastra y suelta el archivo que deseas subir",
-        "overlayTextImage": "Arrastra y suelta la imagen que deseas subir",
+        "overlayTextFile": "Suelta el archivo que quieres cargar",
+        "overlayTextImage": "Suelta la imagen que quieres cargar",
         "actionTitleFile": "Agregar archivo",
         "actionTitleImage": "Agregar imagen",
-        "actionHintFile": "o suelta el archivo que deseas subir",
-        "actionHintImage": "o arrastra y suelta la imagen que deseas subir",
-        "labelFile": "Subir archivo",
-        "labelImage": "Subir imagen"
+        "actionHintFile": "o suelta el archivo que quieres cargar",
+        "actionHintImage": "o suelta la imagen que quieres cargar",
+        "labelFile": "Cargar archivo",
+        "labelImage": "Cargar imagen"
       },
       "allowMultiple": {
-        "overlayTextFile": "Arrastra y suelta los archivos que deseas subir",
-        "overlayTextImage": "Arrastra y suelta las imágenes que deseas subir",
+        "overlayTextFile": "Suelta los archivos que quieres cargar",
+        "overlayTextImage": "Suelta las imágenes que quieres cargar",
         "actionTitleFile": "Agregar archivos",
         "actionTitleImage": "Agregar imágenes",
-        "actionHintFile": "o arrastra y suelta los archivos que deseas subir",
-        "actionHintImage": "o arrastra y suelta las imágenes que deseas subir",
-        "labelFile": "Subir archivos",
-        "labelImage": "Subir imágenes"
+        "actionHintFile": "o suelta los archivos que quieres cargar",
+        "actionHintImage": "o suelta las imágenes que quieres cargar",
+        "labelFile": "Cargar archivos",
+        "labelImage": "Cargar imágenes"
       }
     },
     "EmptySearchResult": {
@@ -138,7 +138,7 @@
     "Filters": {
       "moreFilters": "Más filtros",
       "filter": "Filtrar {resourceName}",
-      "noFiltersApplied": "No se aplicaron filtros",
+      "noFiltersApplied": "No hay filtros aplicados",
       "cancel": "Cancelar",
       "done": "Listo",
       "clearAllFilters": "Borrar todos los filtros",
@@ -147,8 +147,8 @@
       "moreFiltersWithCount": "Más filtros ({count})"
     },
     "Modal": {
-      "iFrameTitle": "etiqueta body",
-      "modalWarning": "Estas propiedades necesarias faltan en Modal: {missingProps}"
+      "iFrameTitle": "marcado body",
+      "modalWarning": "Faltan estas propiedades necesarias en Modal: {missingProps}"
     },
     "Pagination": {
       "previous": "Anterior",
@@ -156,25 +156,25 @@
       "pagination": "Paginación"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Los valores pasados a la propiedad de progreso no pueden ser negativos. Reiniciar {progress} a 0",
-      "exceedWarningMessage": "Los valores pasados a la propiedad de progreso no deben superar 100. Configurar {progress} a 100."
+      "negativeWarningMessage": "Los valores pasados a la propiedad de progreso no pueden ser negativos. Restableciendo {progress} a 0",
+      "exceedWarningMessage": "Los valores pasados a la propiedad de progreso no deben ser superiores a 100. Configurar {progress} en 100."
     },
     "ResourceList": {
       "sortingLabel": "Ordenar por",
       "defaultItemSingular": "artículo",
       "defaultItemPlural": "artículos",
-      "showing": "Mostrar {itemsCount} {resource}",
+      "showing": "Se muestran {itemsCount} {resource}",
       "loading": "Cargando {resource}",
-      "selected": "{selectedItemsCount} seleccionado(s)",
-      "allItemsSelected": "Todos {itemsLength}+ {resourceNamePlural} en tu tienda están seleccionados.",
-      "selectAllItems": "Seleccionar todos {itemsLength}+ {resourceNamePlural} en tu tienda",
-      "emptySearchResultTitle": "No se encontraron {resourceNamePlural}",
-      "emptySearchResultDescription": "Intenta cambiar los filtros o el término de búsqueda",
+      "selected": "Seleccionados: {selectedItemsCount}",
+      "allItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} de la tienda están seleccionados.",
+      "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural} de la tienda",
+      "emptySearchResultTitle": "No se encontró ningún recurso de {resourceNamePlural}",
+      "emptySearchResultDescription": "Prueba a cambiar los filtros o el término de búsqueda",
       "selectButtonText": "Seleccionar",
       "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Deseleccionar todo {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Seleccionar todo {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Deseleccionar {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleccionar {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} artículo",
       "ariaLivePlural": "{itemsLength} artículos",
       "Item": {
@@ -185,11 +185,11 @@
       "BulkActions": {
         "actionsActivatorLabel": "Acciones",
         "moreActionsActivatorLabel": "Más acciones",
-        "warningMessage": "Para ofrecer una mejor experiencia de usuario, solo debe haber un máximo de {maxPromotedActions} acciones promocionadas."
+        "warningMessage": "Para ofrecer una mejor experiencia de usuario. Solo debe haber un máximo de {maxPromotedActions} acciones promocionadas."
       },
-      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Los {itemsLength}+ {resourceNamePlural} en este filtro están seleccionados.",
-      "selectAllFilteredItems": "Seleccionar los {itemsLength}+ {resourceNamePlural} en este filtro"
+      "showingTotalCount": "Se muestran {itemsCount} de {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} de este filtro están seleccionados.",
+      "selectAllFilteredItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural} de este filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
@@ -208,7 +208,7 @@
       "toggleMenuLabel": "Activar menú",
       "SearchField": {
         "clearButtonLabel": "Borrar",
-        "search": "Búsqueda"
+        "search": "Buscar"
       }
     },
     "MediaCard": {
@@ -263,7 +263,7 @@
       }
     },
     "Loading": {
-      "label": "Barra de \"cargando página\""
+      "label": "Barra de carga de la página"
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Descripción emergente: {label}"
@@ -271,22 +271,22 @@
     "IndexProvider": {
       "defaultItemSingular": "Artículo",
       "defaultItemPlural": "Artículos",
-      "allItemsSelected": "Todos los {itemsLength}+ {resourceNamePlural} están seleccionados.",
-      "selected": "{selectedItemsCount} seleccionados",
+      "allItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} están seleccionados.",
+      "selected": "Seleccionados: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Deseleccionar todos los {itemsLength} {resourceNamePlural}",
-      "a11yCheckboxSelectAllMultiple": "Seleccionar todos los {itemsLength} {resourceNamePlural}"
+      "a11yCheckboxDeselectAllMultiple": "Deseleccionar {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Seleccionar {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
-      "emptySearchTitle": "No se encontraron los {resourceNamePlural}",
-      "emptySearchDescription": "Intenta cambiar los filtros o el término de búsqueda",
+      "emptySearchTitle": "No se encontró ningún recurso de {resourceNamePlural}",
+      "emptySearchDescription": "Prueba a cambiar los filtros o el término de búsqueda",
       "onboardingBadgeText": "Nuevo",
       "resourceLoadingAccessibilityLabel": "Cargando {resourceNamePlural}...",
-      "selectAllLabel": "Seleccionar todos los {resourceNamePlural}",
-      "selected": "{selectedItemsCount} seleccionados",
+      "selectAllLabel": "Seleccionar los recursos de {resourceNamePlural}",
+      "selected": "Seleccionados: {selectedItemsCount}",
       "undo": "Deshacer",
-      "selectAllItems": "Seleccionar todos los {itemsLength}+{resourceNamePlural}",
+      "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
       "selectButtonText": "Seleccionar"
     },

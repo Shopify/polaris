@@ -32,8 +32,8 @@ export interface DataTableProps {
   totals?: TableData[];
   /** Custom totals row heading */
   totalsName?: {
-    singular: string;
-    plural: string;
+    singular: React.ReactNode;
+    plural: React.ReactNode;
   };
   /** Placement of totals row within table */
   showTotalsInFooter?: boolean;
@@ -69,6 +69,10 @@ export interface DataTableProps {
   initialSortColumnIndex?: number;
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: SortDirection): void;
+  /** Increased density */
+  increasedTableDensity?: boolean;
+  /** Add zebra striping to data rows */
+  hasZebraStripingOnData?: boolean;
 }
 
 type CombinedProps = DataTableProps & {
@@ -135,6 +139,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       rows,
       footerContent,
       hideScrollIndicator = false,
+      increasedTableDensity = false,
+      hasZebraStripingOnData = false,
     } = this.props;
     const {
       condensed,
@@ -143,9 +149,16 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       isScrolledFarthestRight,
     } = this.state;
 
+    const rowCountIsEven = rows.length % 2 === 0;
+
     const className = classNames(
       styles.DataTable,
       condensed && styles.condensed,
+      totals && styles.ShowTotals,
+      showTotalsInFooter && styles.ShowTotalsInFooter,
+      increasedTableDensity && styles.IncreasedTableDensity,
+      hasZebraStripingOnData && styles.ZebraStripingOnData,
+      hasZebraStripingOnData && rowCountIsEven && styles.RowCountIsEven,
     );
 
     const wrapperClassName = classNames(

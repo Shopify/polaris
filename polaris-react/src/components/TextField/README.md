@@ -68,7 +68,7 @@ Text fields should:
 
 The autocomplete attribute in an `input` field controls two types of browser behavior:
 
-1.  **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
+1. **Browser autofill**: a feature that automatically populates form fields with previously-saved information, such as passwords, addresses, and credit card data.
 
 - Autofill is an important feature for our users. Google has found that ["users complete forms up to 30% faster"](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en) when using autofill.
 - The WHATWG has a list of supported autofill values for the `autocomplete` attribute. [Review the section "4.10.18.7 Autofill"](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for all the input types and their corresponding autocomplete attribute values.
@@ -482,6 +482,42 @@ function PrefixExample() {
 
 <!-- /content-for -->
 
+### Text field with vertical content
+
+Use to include custom vertical content above the input value, like selected tags.
+
+```jsx
+function VerticalContent() {
+  const tags = ['Rustic', 'Antique', 'Vinyl', 'Refurbished'];
+  const [textFieldValue, setTextFieldValue] = useState('');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const verticalContentMarkup =
+    tags.length > 0 ? (
+      <Stack spacing="extraTight" alignment="center">
+        {tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </Stack>
+    ) : null;
+
+  return (
+    <TextField
+      label="Tags"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      placeholder="Search tags"
+      autoComplete="off"
+      verticalContent={verticalContentMarkup}
+    />
+  );
+}
+```
+
 ### Text field with connected fields
 
 Use when a text field and several related fields make up a logical unit.
@@ -789,7 +825,7 @@ function TextFieldWithMonospacedFontExample() {
 }
 ```
 
-### Text field with the ability to select all text on focus
+### Text field with value selected on focus
 
 <!-- example-for: web -->
 
@@ -811,6 +847,117 @@ function TextFieldWithSelectTextOnFocusExample() {
       onChange={handleTextFieldChange}
       selectTextOnFocus
     />
+  );
+}
+```
+
+### Text field with inline suggestion
+
+<!-- example-for: web -->
+
+Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
+
+```jsx
+function TextFieldWithSuggestionExample() {
+  const suggestions = [
+    'Alabama',
+    'Alaska',
+    'American Samoa',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'District of Columbia',
+    'Florida',
+    'Georgia',
+    'Guam',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Minor Outlying Islands',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Northern Mariana Islands',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Puerto Rico',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'U.S. Virgin Islands',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming',
+  ];
+
+  const [value, setValue] = useState('');
+  const [suggestion, setSuggestion] = useState('');
+
+  const handleSuggestion = useCallback((nextValue) => {
+    const nextSuggestion = suggestions.find((suggestion) =>
+      suggestion.toLowerCase().startsWith(nextValue.toLowerCase()),
+    );
+
+    if (nextSuggestion) setSuggestion(nextSuggestion);
+  }, []);
+
+  useEffect(() => {
+    if (value !== suggestion) handleSuggestion(value);
+  }, [value]);
+
+  const handleChange = useCallback((value) => {
+    setValue(value);
+    setSuggestion('');
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Enter') {
+        handleChange(suggestion);
+      }
+    },
+    [suggestion, handleChange],
+  );
+
+  return (
+    <div onKeyDown={handleKeyDown}>
+      <TextField
+        type="text"
+        label="State"
+        value={value}
+        onChange={handleChange}
+        suggestion={suggestion}
+      />
+    </div>
   );
 }
 ```

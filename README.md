@@ -7,9 +7,11 @@ Polaris is our design system that helps us work together to build a great experi
 ```sh
 polaris/
 ├── documentation               # Documentation for working in the monorepo
-├── polaris-for-vscode          # VSCode plugin for Polaris
+├── polaris-for-vscode          # VS Code plugin for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
-└── secretpolaris-shopify-com   # Documentation website
+├── polaris-shopify-com         # Documentation website
+├── polaris-tokens              # Design tokens for Polaris
+└── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
 
 ## Getting Started (One time)
@@ -28,7 +30,7 @@ yarn build
 
 ## Local development
 
-Develop `secretpolaris.shopify.com` in watch mode:
+Develop `polaris.shopify.com` in watch mode:
 
 ```sh
 yarn dev
@@ -42,9 +44,9 @@ yarn dev:react
 
 ## Contributing
 
-Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris-react/blob/main/.github/CONTRIBUTING.md) for more information.
+Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md) for more information.
 
 ## Licenses
 
-- Source code is under a [custom license](https://github.com/Shopify/polaris-react/blob/main/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
+- Source code is under a [custom license](https://github.com/Shopify/polaris/blob/main/LICENSE.md) based on MIT. The license restricts Polaris usage to applications that integrate or interoperate with Shopify software or services, with additional restrictions for external, stand-alone applications.
 - All icons and images are licensed under the [Polaris Design Guidelines License Agreement](https://polaris.shopify.com/legal/license)

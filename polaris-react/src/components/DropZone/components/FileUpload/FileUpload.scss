@@ -32,8 +32,8 @@
   text-decoration: none;
   color: var(--p-interactive-hovered);
   background: var(--p-surface-selected-pressed);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--p-font-size-1);
+  font-weight: var(--p-font-weight-semibold);
   line-height: 1;
   cursor: pointer;
   text-align: center;

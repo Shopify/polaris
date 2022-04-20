@@ -4,7 +4,7 @@ Polaris React is Shopify’s most active open source project. It’s the only pr
 
 ## Code of conduct
 
-We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-react/blob/main/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
+We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris/blob/main/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
 
 ## Open development
 
@@ -12,37 +12,37 @@ All work on Polaris React happens directly on GitHub. Both team members and exte
 
 ## Semantic versioning
 
-Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
+Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
 
 We tag every pull request with a label marking whether the change should go in the next patch, minor, or a major version. We release new patch versions most weeks, minor versions every couple weeks, and major versions one or two times a year.
 
-Every significant change is documented in the [CHANGELOG](https://github.com/Shopify/polaris-react/blob/main/CHANGELOG.md). We have a Probot 🤖 to remind you to include a CHANGELOG entry.
+Every significant change is documented in the [CHANGELOG](https://github.com/Shopify/polaris/blob/main/CHANGELOG.md). We have a Probot 🤖 to remind you to include a CHANGELOG entry.
 
 ## Branch organization
 
-We do our best to keep `main` releasable at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `main`. Otherwise, if you send a pull request please do it against the `main` branch. Continue reading for more about pull requests and breaking changes.
+We do our best to keep `main` releasable at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `main`. Otherwise, if you send a pull request please do it against the `main` branch. Continue reading for more about pull requests and breaking changes.
 
 ## Bugs
 
 ### Where to find known issues
 
-We track all of our issues in GitHub and [bugs](https://github.com/Shopify/polaris-react/labels/Bug) are labeled accordingly. If you are planning to work on an issue, avoid ones which already have an assignee, where someone has commented within the last two weeks they are working on it, or the issue is labeled with [fix in progress](https://github.com/Shopify/polaris-react/labels/fix%20in%20progress). We will do our best to communicate when an issue is being worked on internally.
+We track all of our issues in GitHub and [bugs](https://github.com/Shopify/polaris/labels/Bug) are labeled accordingly. If you are planning to work on an issue, avoid ones which already have an assignee or where someone has commented within the last two weeks they are working on it. We will do our best to communicate when an issue is being worked on internally.
 
 ### Reporting new issues
 
-To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris-react/issues/new?template=ISSUE.md), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
+To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris/issues/new?template=ISSUE.md), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
 
 ## Feature requests
 
-Before requesting a feature, search the [existing feature requests](https://github.com/Shopify/polaris-react/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22feature+request%22+sort%3Areactions-%2B1-desc). You can [👍 upvote](https://help.github.com/articles/about-conversations-on-github/) feature requests to help the Polaris team set priorities. If a feature request is closed, you can still upvote! A closed feature request means it’s not something we’re currently working on, but we take all your input into account when planning what to work on next.
+Before requesting a feature, search the [existing feature requests](https://github.com/Shopify/polaris/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22feature+request%22+sort%3Areactions-%2B1-desc). You can [👍 upvote](https://help.github.com/articles/about-conversations-on-github/) feature requests to help the Polaris team set priorities. If a feature request is closed, you can still upvote! A closed feature request means it’s not something we’re currently working on, but we take all your input into account when planning what to work on next.
 
-Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md).
+Otherwise, [request a feature](https://github.com/Shopify/polaris/issues/new?template=FEATURE_REQUEST.md).
 
 ## Proposing a change
 
-If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.
+If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris/issues/new?template=FEATURE_REQUEST.md). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.
 
-Please use this [template for proposing new components or changes to existing components](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md).
+Please use this [template for proposing new components or changes to existing components](https://github.com/Shopify/polaris/issues/new?template=NEW_COMPONENT.md).
 
 If you’re only fixing a bug, it’s okay to submit a pull request right away but we still recommend you file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
@@ -50,9 +50,9 @@ If you’re only fixing a bug, it’s okay to submit a pull request right away b
 
 Working on your first pull request? You can learn how from this free video series:
 
-[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
-To help you get familiar with our contribution process, we have a list of [good first issues](https://github.com/Shopify/polaris-react/labels/good%20first%20issue) that contain bugs with limited scope. This is a great place to get started.
+To help you get familiar with our contribution process, we have a list of [good first issues](https://github.com/Shopify/polaris/labels/good%20first%20issue) that contain bugs with limited scope. This is a great place to get started.
 
 If you decide to fix an issue, please check the comment thread in case somebody is already working on a fix. If nobody is working on it, leave a comment stating that you intend to work on it.
 
@@ -67,11 +67,11 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. Fork the repository and create your branch from `main`
 1. Run `yarn` in the repository root
 1. If you’ve fixed a bug or added code, make sure to add tests
-1. Ensure the test suite passes with `yarn test` (protip: `yarn test TestName` is helpful in development)
+1. Ensure the test suite passes with `yarn workspace @shopify/polaris test` (protip: `yarn workspace @shopify/polaris test TestName` is helpful in development)
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn type-check`
-1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/main/documentation/Tophatting.md) your changes locally with `yarn dev`
+1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally with `yarn workspace @shopify/polaris dev`
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Contributor License Agreement (CLA)
@@ -80,33 +80,76 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Contribution prerequisites
 
-- You have Node installed at v10.13.0+ and Yarn at v1.10.1+
+- You have Node installed at v16.13.0+ and Yarn at v1.22.18+
 
 ### Best practices
 
-Use the [documentation directory](https://github.com/Shopify/polaris-react/tree/main/documentation) for guidance on: [accessibility testing](https://github.com/Shopify/polaris-react/blob/main/documentation/Accessibility%20testing.md) and [adding to the change log](https://github.com/Shopify/polaris-react/blob/main/documentation/Versioning%20and%20changelog.md). For code style best practices, take a look at existing components.
+Use the [documentation directory](https://github.com/Shopify/polaris/tree/main/documentation) for guidance on: [accessibility testing](https://github.com/Shopify/polaris/blob/main/documentation/Accessibility%20testing.md) and [adding to the changelog](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md). For code style best practices, take a look at existing components.
 
 Making sure the voice and tone is consistent across Polaris is important to us, for more information visit the [voice and tone guidelines](https://polaris.shopify.com/content/voice-and-tone).
 
 ### Development workflow
 
-After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can run several commands:
+After cloning Polaris, run `yarn` to fetch its dependencies. Then you can run several commands:
 
-- `yarn dev` runs a Storybook server which includes a playground editable at `playground/Playground.tsx`
-- `yarn test` runs the complete test suite
-- `yarn test <pattern>` runs tests with matching filenames
-- `yarn tophat` runs a local development server and mounts all of the component examples
+- `yarn lint`
+- `yarn format`
 
-We recommend running `yarn test` (or its variations above), as well as trying your build of Polaris React in a real project, to make sure you don’t introduce any regressions as you work on your change.
+Run commands from a selected workspace using the `yarn workspace` command:
 
-Run `yarn run build-consumer <project>` where `<project>` is the directory the build will be copied. **The `<project>` directory must be a sibling of the `polaris-react` directory**.
+- `yarn workspace <workspace_name> <command>`
 
-```sh
-# Example
-yarn run build-consumer polaris-styleguide
+For example, run commands in the `@shopify/polaris` workspace:
+
+- `yarn workspace @shopify/polaris dev` runs a Storybook server which includes a playground editable at `playground/Playground.tsx`
+- `yarn workspace @shopify/polaris test` runs the complete test suite
+- `yarn workspace @shopify/polaris test <pattern>` runs tests with matching filenames
+
+Run a command in all workspaces with the `yarn workspaces` command:
+
+- `yarn workspaces run <command>` run the chosen Yarn command in each workspace
+
+This can be helpful for executing scripts across all packages in the monorepo:
+
+- `yarn workspaces run build` will build all packages
+
+We recommend running tests as well as trying your build of a package in a real project, to make sure you don’t introduce any regressions as you work on your change.
+
+You can test your changes in another project locally using [`yalc`](https://github.com/wclr/yalc).
+
+```
+# Build all packages
+yarn build
+
+# Change into the package directory to test
+cd polaris-react
+
+# Publish changes to the local yalc registry
+yalc publish
 ```
 
-In the example above, the build is copied to `polaris-styleguide/node_modules/@shopify/polaris`. And in this case, a rebuild of `polaris-styleguide` is required after copying the `polaris-react` build, but may not be the case for all consuming projects.
+In the external project, add the locally published package.
+
+```
+yalc add @shopify/polaris
+```
+
+Run the project as usual to tophat local changes. If you need to make updates, push new package changes from the package to test.
+
+```
+# /polaris/polaris-react
+# Push new package changes to the local yalc registry
+yalc push
+```
+
+Then, update the external project with the latest updates.
+
+```
+# /my-project
+yalc update @shopify/polaris
+```
+
+See the [`yalc` documentation](https://github.com/wclr/yalc#usage) for a full list of commands or details on [how `yalc` works](https://github.com/wclr/yalc#what).
 
 ### Code style
 
@@ -120,4 +163,4 @@ However, there are still some styles that the linter cannot pick up. If you are 
 
 ## Breaking changes
 
-If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `main` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `main` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris-react/blob/main/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.
+If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `main` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `main` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris/blob/main/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.

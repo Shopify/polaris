@@ -1,6 +1,5 @@
 import {
   createPackage,
-  createWorkspacePlugin,
   createProjectPlugin,
   DiagnosticError,
 } from '@shopify/loom';
@@ -9,9 +8,6 @@ import {
   buildLibraryWorkspace,
   rollupPlugins,
 } from '@shopify/loom-plugin-build-library';
-import {eslint} from '@shopify/loom-plugin-eslint';
-import {stylelint} from '@shopify/loom-plugin-stylelint';
-import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
@@ -37,9 +33,6 @@ export default createPackage((pkg) => {
       esnext: true,
     }),
     buildLibraryWorkspace(),
-    eslint(),
-    stylelint({files: '**/*.scss'}),
-    prettier({files: '**/*.{md,json,yaml,yml}'}),
     rollupAdjustPluginsPlugin(),
     rollupAdjustOutputPlugin(),
     jestAdjustmentsPlugin(),
@@ -77,34 +70,41 @@ function jestAdjustmentsPlugin() {
 }
 
 function preAndPostBuildPlugin() {
-  return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
+  return createProjectPlugin('Polaris.BuildExtra', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
-      hooks.post.hook((steps) => [
-        ...steps,
-        api.createStep(
-          {id: 'PolarisBuild.Post', label: 'polaris post-build'},
-          async (step) => {
-            try {
-              await step.exec(
-                'node_modules/.bin/downlevel-dts',
-                ['build/ts/latest', 'build/ts/3.4'],
-                {all: true},
-              );
+      hooks.target.hook(({target, hooks}) => {
+        const isDefaultBuild = Object.keys(target.options).length === 0;
+        if (!isDefaultBuild) {
+          return;
+        }
 
-              await step.exec(
-                'node_modules/.bin/copyfiles',
-                ['./src/**/*.md', './build/docs', '--up=1'],
-                {all: true},
-              );
-            } catch (error) {
-              throw new DiagnosticError({
-                title: 'Error runing postbuild steps',
-                content: error.all,
-              });
-            }
-          },
-        ),
-      ]);
+        hooks.steps.hook((steps) => [
+          ...steps,
+          api.createStep(
+            {id: 'PolarisBuild.Extra', label: 'polaris build extra'},
+            async (step) => {
+              try {
+                await step.exec(
+                  'node_modules/.bin/downlevel-dts',
+                  ['build/ts/latest', 'build/ts/3.4'],
+                  {all: true},
+                );
+
+                await step.exec(
+                  'node_modules/.bin/copyfiles',
+                  ['./src/**/*.md', './build/docs', '--up=1'],
+                  {all: true},
+                );
+              } catch (error) {
+                throw new DiagnosticError({
+                  title: 'Error runing polaris build extra steps',
+                  content: error.all,
+                });
+              }
+            },
+          ),
+        ]);
+      });
     });
   });
 }

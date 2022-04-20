@@ -5,18 +5,18 @@
       "labelWithInitials": "頭文字が{initials}のアバター"
     },
     "Autocomplete": {
-      "spinnerAccessibilityLabel": "読み込んでいます",
+      "spinnerAccessibilityLabel": "読み込み中",
       "ellipsis": "{content}..."
     },
     "Badge": {
       "PROGRESS_LABELS": {
         "incomplete": "未完了",
-        "partiallyComplete": "一部完了済",
+        "partiallyComplete": "一部完了済み",
         "complete": "完了"
       },
       "STATUS_LABELS": {
         "info": "情報",
-        "success": "成功",
+        "success": "成功しました",
         "warning": "警告",
         "attention": "注意",
         "new": "新規",
@@ -25,22 +25,22 @@
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "読み込んでいます",
+      "spinnerAccessibilityLabel": "読み込み中",
       "connectedDisclosureAccessibilityLabel": "関連したアクション"
     },
     "Common": {
       "checkbox": "チェックボックス",
       "undo": "元に戻す",
-      "cancel": "キャンセルする",
+      "cancel": "キャンセル",
       "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
       "clear": "クリア",
       "close": "閉じる",
-      "submit": "送信する",
-      "more": "さらに"
+      "submit": "送信",
+      "more": "その他"
     },
     "ContextualSaveBar": {
-      "save": "保存する",
-      "discard": "破棄する"
+      "save": "保存",
+      "discard": "破棄"
     },
     "DataTable": {
       "sortAccessibilityLabel": "で{direction}を並び替える",
@@ -49,8 +49,8 @@
       "totalRowHeading": "合計"
     },
     "DatePicker": {
-      "previousMonth": "先月{showPreviousYear}{previousMonthName}を表示する",
-      "nextMonth": "来月{nextYear}{nextMonth}を表示する",
+      "previousMonth": "先月 ({showPreviousYear}{previousMonthName}) を表示",
+      "nextMonth": "来月 ({nextYear}{nextMonth}) を表示",
       "today": "今日 ",
       "months": {
         "january": "1月",
@@ -67,13 +67,13 @@
         "december": "12月"
       },
       "daysAbbreviated": {
-        "monday": "月",
-        "tuesday": "火",
-        "wednesday": "水",
-        "thursday": "木",
-        "friday": "金",
-        "saturday": "土",
-        "sunday": "日"
+        "monday": "月曜日",
+        "tuesday": "火曜日",
+        "wednesday": "水曜日",
+        "thursday": "木曜日",
+        "friday": "金曜日",
+        "saturday": "土曜日",
+        "sunday": "日曜日"
       },
       "days": {
         "monday": "月曜日",
@@ -88,9 +88,9 @@
       "end": "範囲の終了"
     },
     "DiscardConfirmationModal": {
-      "title": "すべての保存されていない変更を破棄する",
-      "message": "変更を破棄すると、最後に保存した時以降のすべての編集が削除されます。",
-      "primaryAction": "変更を破棄する",
+      "title": "保存されていないすべての変更を破棄",
+      "message": "変更を破棄すると、最後に保存した後に編集した内容が削除されます。",
+      "primaryAction": "変更を破棄",
       "secondaryAction": "編集を続ける"
     },
     "DropZone": {
@@ -109,9 +109,9 @@
       "allowMultiple": {
         "overlayTextFile": "ファイルをドロップしてアップロード",
         "overlayTextImage": "画像をドロップしてアップロード",
-        "actionTitleFile": "ファイルを追加",
+        "actionTitleFile": "ファイルを追加する",
         "actionTitleImage": "画像を追加",
-        "actionHintFile": "または、ファイルをドロップしてアップロード",
+        "actionHintFile": "または、ファイルをドロップしてアップロードする",
         "actionHintImage": "または、画像をドロップしてアップロード",
         "labelFile": "ファイルをアップロード",
         "labelImage": "画像をアップロード"
@@ -121,7 +121,7 @@
       "altText": "空の検索結果"
     },
     "Frame": {
-      "skipToContent": "コンテンツにスキップする",
+      "skipToContent": "コンテンツにスキップ",
       "Navigation": {
         "closeMobileNavigationLabel": "メニューを閉じる"
       },
@@ -129,7 +129,7 @@
     },
     "ActionMenu": {
       "RollupActions": {
-        "rollupButton": "アクションを表示する"
+        "rollupButton": "アクションを表示"
       },
       "Actions": {
         "moreActions": "その他の操作"
@@ -139,7 +139,7 @@
       "moreFilters": "詳細な絞り込み",
       "filter": "フィルター{resourceName}",
       "noFiltersApplied": "絞り込みが適用されていません",
-      "cancel": "キャンセルする",
+      "cancel": "キャンセル",
       "done": "完了",
       "clearAllFilters": "すべての絞り込みをクリアする",
       "clear": "クリア",
@@ -156,27 +156,27 @@
       "pagination": "ページネーション"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "進行中のプロパティに渡される値にマイナスは使用できません。{progress}を0にリセットする。",
+      "negativeWarningMessage": "進行中のプロパティに渡される値に負数は使用できません。{progress}を0にリセットする。",
       "exceedWarningMessage": "進行中のプロパティに渡される値は100を超えることはできません。{progress}を100に設定する。"
     },
     "ResourceList": {
       "sortingLabel": "並び替え",
-      "defaultItemSingular": "アイテム",
+      "defaultItemSingular": "個",
       "defaultItemPlural": "アイテム",
-      "showing": "{itemsCount}個の{resource}を表示しています",
+      "showing": "{itemsCount}個の{resource}を表示中",
       "loading": "{resource}を読み込んでいます",
-      "selected": "{selectedItemsCount}個を選択済",
+      "selected": "{selectedItemsCount}を選択済み",
       "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
       "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
       "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
-      "emptySearchResultDescription": "絞り込みや検索語を変更してください",
-      "selectButtonText": "選択する",
+      "emptySearchResultDescription": "絞り込みや検索ワードを変更してみてください",
+      "selectButtonText": "選択",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
-      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}{resourceNamePlural}の選択を解除する",
-      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}{resourceNamePlural}を選択する",
-      "ariaLiveSingular": "{itemsLength}個のアイテム",
-      "ariaLivePlural": "{itemsLength}個のアイテム",
+      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
+      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する",
+      "ariaLiveSingular": "アイテム数: {itemsLength}",
+      "ariaLivePlural": "アイテム数: {itemsLength}",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel}のアクション",
         "actionsDropdown": "アクションドロップダウン",
@@ -185,24 +185,24 @@
       "BulkActions": {
         "actionsActivatorLabel": "アクション",
         "moreActionsActivatorLabel": "その他の操作",
-        "warningMessage": "さらによいユーザーエクスペリエンスのために。宣伝のアクションは最大で{maxPromotedActions}回までです。"
+        "warningMessage": "さらに優れたユーザーエクスペリエンスのために。プロモートアクションは最大で{maxPromotedActions}回までです。"
       },
-      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中",
-      "allFilteredItemsSelected": "この絞り込みの{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "showingTotalCount": "{totalItemsCount}の{itemsCount}、{resource}を表示中",
+      "allFilteredItemsSelected": "この絞り込み内の{itemsLength}と{resourceNamePlural}がすべて選択されます。",
       "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
-      "loadingLabel": "ページの読み込み中"
+      "loadingLabel": "ページを読み込み中"
     },
     "Tabs": {
       "toggleTabsLabel": "その他のタブ"
     },
     "Tag": {
-      "ariaLabel": "{children}を削除する"
+      "ariaLabel": "{children}を削除"
     },
     "TextField": {
       "characterCount": "{count}文字",
-      "characterCountWithMaxLength": "{count}/{limit}文字使用"
+      "characterCountWithMaxLength": "{limit}中{count}の文字を使用"
     },
     "TopBar": {
       "toggleMenuLabel": "メニューを切り替える",
@@ -216,7 +216,7 @@
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
-        "default": "ビデオを見る",
+        "default": "ビデオを再生",
         "defaultWithDuration": "長さ{duration}の動画を再生する",
         "duration": {
           "hours": {
@@ -280,7 +280,7 @@
     },
     "IndexTable": {
       "emptySearchTitle": "{resourceNamePlural}が見つかりませんでした",
-      "emptySearchDescription": "絞り込みや検索ワードを変更してください",
+      "emptySearchDescription": "絞り込みや検索ワードを変更してみてください",
       "onboardingBadgeText": "新規",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます...",
       "selectAllLabel": "すべての{resourceNamePlural}を選択する",

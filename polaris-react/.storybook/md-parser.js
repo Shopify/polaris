@@ -1,4 +1,4 @@
-const marked = require('marked');
+const {marked} = require('marked');
 
 function addNavigationHashToURL(href) {
   const isExternalLink =

@@ -16,7 +16,7 @@
       },
       "STATUS_LABELS": {
         "info": "Info",
-        "success": "Genomfört",
+        "success": "Lyckades",
         "warning": "Varning",
         "attention": "Observera",
         "new": "Ny",
@@ -40,7 +40,7 @@
     },
     "ContextualSaveBar": {
       "save": "Spara",
-      "discard": "Radera"
+      "discard": "Avfärda"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sortera {direction} efter",
@@ -88,8 +88,8 @@
       "end": "Intervallets slut"
     },
     "DiscardConfirmationModal": {
-      "title": "Ignorera alla ändringar som inte sparats",
-      "message": "Om du ignorerar ändringar så raderar du alla ändringar som du har gjort efter det att du sparade senast.",
+      "title": "Ignorera alla ändringar som inte har sparats",
+      "message": "Om du ignorerar ändringar så raderar du alla ändringar som du har gjort efter att du sparade senast.",
       "primaryAction": "Ignorera ändringar",
       "secondaryAction": "Fortsätt redigera"
     },
@@ -113,7 +113,7 @@
         "actionTitleImage": "Lägg till bilder",
         "actionHintFile": "eller släpp filer för uppladdning",
         "actionHintImage": "eller släpp bilder för uppladdning",
-        "labelFile": "Ladda upp fil",
+        "labelFile": "Ladda upp filer",
         "labelImage": "Ladda upp bilder"
       }
     },
@@ -156,8 +156,8 @@
       "pagination": "Paginering"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Värden som skickas till \"progress prop\" bör inte vara negativa. Återställer {progress} till 0.",
-      "exceedWarningMessage": "Värden som skickas till \"progress prop\" bör inte överstiga 100. Ställ in {progress} till 100."
+      "negativeWarningMessage": "Värden som skickas till framstegspropagering bör inte vara negativa. Återställning {progress} till 0.",
+      "exceedWarningMessage": "Värden som skickas till framsteget ska inte överstiga 100. Ställer in {progress} till 100."
     },
     "ResourceList": {
       "sortingLabel": "Sortera efter",
@@ -172,7 +172,7 @@
       "emptySearchResultDescription": "Prova att byta filter eller sökord",
       "selectButtonText": "Välj",
       "a11yCheckboxDeselectAllSingle": "Avmarkera {resourceNameSingular}",
-      "a11yCheckboxSelectAllSingle": "Markera {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Välj {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Avmarkera alla {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Markera alla {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} artikel",
@@ -180,12 +180,12 @@
       "Item": {
         "actionsDropdownLabel": "Åtgärder för {accessibilityLabel}",
         "actionsDropdown": "Åtgärdsmeny",
-        "viewItem": "Visa detaljer för {itemName}"
+        "viewItem": "Visa mer information om {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Åtgärder",
         "moreActionsActivatorLabel": "Fler åtgärder",
-        "warningMessage": "För att tillhandahålla en bättre användarupplevelse bör det vara maximalt {maxPromotedActions} föredragna åtgärder."
+        "warningMessage": "För att ge en bättre användarupplevelse. Det får bara vara maximalt {maxPromotedActions} främjande åtgärder."
       },
       "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter är valda.",

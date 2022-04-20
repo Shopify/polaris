@@ -36,11 +36,11 @@
       "clear": "Xóa",
       "close": "Đóng",
       "submit": "Gửi",
-      "more": "Thêm"
+      "more": "Thao tác khác"
     },
     "ContextualSaveBar": {
       "save": "Lưu",
-      "discard": "Bỏ"
+      "discard": "Hủy"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sắp xếp {direction} theo",
@@ -84,13 +84,13 @@
         "saturday": "T7",
         "sunday": "CN"
       },
-      "start": "Bắt đầu phạm vi",
-      "end": "Kết thúc phạm vi"
+      "start": "Khoảng bắt đầu",
+      "end": "Khoảng kết thúc"
     },
     "DiscardConfirmationModal": {
-      "title": "Bỏ tất cả thay đổi chưa lưu",
-      "message": "Nếu bạn bỏ thay đổi, bạn sẽ xóa tất cả chỉnh sửa đã thực hiện kể từ lần lưu trước.",
-      "primaryAction": "Bỏ thay đổi",
+      "title": "Hủy tất cả thay đổi chưa lưu",
+      "message": "Nếu hủy thay đổi, bạn sẽ xóa tất cả chỉnh sửa đã thực hiện kể từ lần lưu trước.",
+      "primaryAction": "Hủy thay đổi",
       "secondaryAction": "Tiếp tục chỉnh sửa"
     },
     "DropZone": {
@@ -141,14 +141,14 @@
       "filter": "Bộ lọc {resourceName}",
       "noFiltersApplied": "Không áp dụng bộ lọc nào",
       "cancel": "Hủy",
-      "done": "Đã xong",
+      "done": "Xong",
       "clearAllFilters": "Xóa tất cả bộ lọc",
       "clear": "Xóa",
       "clearLabel": "Xóa {filterName}"
     },
     "Modal": {
       "iFrameTitle": "điểm đánh dấu nội dung",
-      "modalWarning": "Những thuộc tính bắt buộc này bị thiếu trong Hộp tương tác: {missingProps}"
+      "modalWarning": "Không có những thuộc tính bắt buộc trong Hộp tương tác: {missingProps}"
     },
     "Pagination": {
       "previous": "Trước",
@@ -162,7 +162,7 @@
     "ResourceList": {
       "sortingLabel": "Sắp xếp theo",
       "defaultItemSingular": "mặt hàng",
-      "defaultItemPlural": "các mặt hàng",
+      "defaultItemPlural": "mặt hàng",
       "showing": "Đang hiển thị {itemsCount} {resource}",
       "showingTotalCount": "Đang hiển thị {itemsCount}/{totalItemsCount} {resource}",
       "loading": "Đang tải {resource}",
@@ -172,7 +172,7 @@
       "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural} trong cửa hàng của bạn",
       "selectAllFilteredItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural} trong bộ lọc này",
       "emptySearchResultTitle": "Không tìm thấy {resourceNamePlural} nào",
-      "emptySearchResultDescription": "Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm",
+      "emptySearchResultDescription": "Hãy thử thay đổi bộ lọc hoặc cụm từ tìm kiếm",
       "selectButtonText": "Chọn",
       "a11yCheckboxDeselectAllSingle": "Bỏ chọn {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Chọn {resourceNameSingular}",
@@ -182,7 +182,7 @@
       "ariaLivePlural": "{itemsLength} mặt hàng",
       "Item": {
         "actionsDropdownLabel": "Thao tác đối với {accessibilityLabel}",
-        "actionsDropdown": "Danh sách thả xuống các thao tác",
+        "actionsDropdown": "Menu thả xuống các thao tác",
         "viewItem": "Xem chi tiết {itemName}"
       },
       "BulkActions": {
@@ -202,7 +202,7 @@
     },
     "TextField": {
       "characterCount": "{count} ký tự",
-      "characterCountWithMaxLength": "Đã sử dụng {count} trong số {limit} ký tự"
+      "characterCountWithMaxLength": "Đã sử dụng {count}/{limit} ký tự"
     },
     "TopBar": {
       "toggleMenuLabel": "Bật/tắt menu",
@@ -217,17 +217,17 @@
     "VideoThumbnail": {
       "playButtonA11yLabel": {
         "default": "Phát video",
-        "defaultWithDuration": "Phát video có độ dài {duration}",
+        "defaultWithDuration": "Phát video có thời lượng {duration}",
         "duration": {
           "hours": {
             "other": {
               "only": "{hourCount} giờ",
               "andMinutes": "{hourCount} giờ {minuteCount} phút",
               "andMinute": "{hourCount} giờ {minuteCount} phút",
-              "minutesAndSeconds": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minutesAndSecond": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minuteAndSeconds": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minuteAndSecond": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
+              "minutesAndSeconds": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minutesAndSecond": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minuteAndSeconds": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minuteAndSecond": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
               "andSeconds": "{hourCount} giờ {secondCount} giây",
               "andSecond": "{hourCount} giờ {secondCount} giây"
             },
@@ -235,10 +235,10 @@
               "only": "{hourCount} giờ",
               "andMinutes": "{hourCount} giờ {minuteCount} phút",
               "andMinute": "{hourCount} giờ {minuteCount} phút",
-              "minutesAndSeconds": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minutesAndSecond": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minuteAndSeconds": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
-              "minuteAndSecond": "{hourCount} giờ, {minuteCount} phút, {secondCount} giây",
+              "minutesAndSeconds": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minutesAndSecond": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minuteAndSeconds": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
+              "minuteAndSecond": "{hourCount} giờ {minuteCount} phút {secondCount} giây",
               "andSeconds": "{hourCount} giờ {secondCount} giây",
               "andSecond": "{hourCount} giờ {secondCount} giây"
             }
@@ -270,7 +270,7 @@
     },
     "IndexProvider": {
       "defaultItemSingular": "Mặt hàng",
-      "defaultItemPlural": "Các mặt hàng",
+      "defaultItemPlural": "Mặt hàng",
       "allItemsSelected": "Đã chọn tất cả {itemsLength}+ {resourceNamePlural}.",
       "selected": "Đã chọn {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Bỏ chọn {resourceNameSingular}",
@@ -280,9 +280,9 @@
     },
     "IndexTable": {
       "emptySearchTitle": "Không tìm thấy {resourceNamePlural} nào",
-      "emptySearchDescription": "Thử thay đổi bộ lọc hoặc cụm từ tìm kiếm",
+      "emptySearchDescription": "Hãy thử thay đổi bộ lọc hoặc cụm từ tìm kiếm",
       "onboardingBadgeText": "Mới",
-      "resourceLoadingAccessibilityLabel": "Đang tải {resourceNamePlural}...",
+      "resourceLoadingAccessibilityLabel": "Đang tải {resourceNamePlural}…",
       "selectAllLabel": "Chọn tất cả {resourceNamePlural}",
       "selected": "Đã chọn {selectedItemsCount}",
       "undo": "Hoàn tác",

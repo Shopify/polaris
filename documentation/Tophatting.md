@@ -46,7 +46,7 @@ Giving someone a thorough 🎩 builds trust and trains your attention to detail.
 
 ## Cross browser testing
 
-We support the [following browsers](https://help.shopify.com/manual/intro-to-shopify/shopify-admin/supported-browsers). Here is a checklist for browser tophatting. Please feel free to use it in your PRs:
+We support the [following browsers](https://help.shopify.com/en/manual/shopify-admin/supported-browsers). Here is a checklist for browser tophatting. Please feel free to use it in your PRs:
 
 ```md
 I’ve tophatted these changes in the following browsers:

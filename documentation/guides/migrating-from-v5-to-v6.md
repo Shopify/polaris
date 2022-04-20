@@ -1,6 +1,6 @@
 # Migrating from v5 to v6
 
-Polaris v6.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v6.0.0)) removes deprecated features in past releases. This file describes all code updates required to stay up to date.
+Polaris v6.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v6.0.0)) removes deprecated features in past releases. This file describes all code updates required to stay up to date.
 
 ## New Design Language
 

@@ -6,7 +6,7 @@
     },
     "Autocomplete": {
       "spinnerAccessibilityLabel": "Indlæser",
-      "ellipsis": "{content} …"
+      "ellipsis": "{content}…"
     },
     "Badge": {
       "PROGRESS_LABELS": {
@@ -19,7 +19,7 @@
         "success": "Succes",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nye",
+        "new": "Nyhed",
         "critical": "Kritisk"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
@@ -35,12 +35,12 @@
       "newWindowAccessibilityHint": "(åbner et nyt vindue)",
       "clear": "Ryd",
       "close": "Luk",
-      "submit": "Indsend",
+      "submit": "Send",
       "more": "Mere"
     },
     "ContextualSaveBar": {
       "save": "Gem",
-      "discard": "Kassér"
+      "discard": "Fortryd"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sortér {direction} efter",
@@ -121,7 +121,7 @@
       "altText": "Tøm søgeresultater"
     },
     "Frame": {
-      "skipToContent": "Skip til indhold",
+      "skipToContent": "Gå til indhold",
       "Navigation": {
         "closeMobileNavigationLabel": "Luk navigation"
       },
@@ -156,8 +156,8 @@
       "pagination": "Sideinddeling"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Angiver {progress} til 0.",
-      "exceedWarningMessage": "Værdier, der overføres til statusegenskab, må ikke overstige 100. Indstiller {progress} til 100."
+      "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Nulstilling af {progress} til 0.",
+      "exceedWarningMessage": "Værdier, der overføres til statusegenskab, må ikke overstige 100. Indstilling af {progress} til 100."
     },
     "ResourceList": {
       "sortingLabel": "Sortér efter",
@@ -166,10 +166,10 @@
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Indlæser {resource}",
       "selected": "{selectedItemsCount} valgt",
-      "allItemsSelected": "Al {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i din butik er valgt.",
       "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
       "emptySearchResultTitle": "Ingen {resourceNamePlural} blev fundet",
-      "emptySearchResultDescription": "Prøv et andet filter eller søgeord",
+      "emptySearchResultDescription": "Prøv at ændre filtrene eller søgeordet",
       "selectButtonText": "Vælg",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
@@ -280,9 +280,9 @@
     },
     "IndexTable": {
       "emptySearchTitle": "Ingen {resourceNamePlural} blev fundet",
-      "emptySearchDescription": "Prøv et andet filter eller søgeord",
-      "onboardingBadgeText": "Ny",
-      "resourceLoadingAccessibilityLabel": "Indlæser {resourceNamePlural} …",
+      "emptySearchDescription": "Prøv at ændre filtrene eller søgeordet",
+      "onboardingBadgeText": "Nyhed",
+      "resourceLoadingAccessibilityLabel": "Indlæser {resourceNamePlural}…",
       "selectAllLabel": "Vælg alle {resourceNamePlural}",
       "selected": "{selectedItemsCount} valgt",
       "undo": "Fortryd",
