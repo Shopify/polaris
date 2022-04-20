@@ -13,6 +13,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed focus and hover style for removable tag with link ([#5567](https://github.com/Shopify/polaris/pull/5567))
+
 ### Documentation
 
 ### Development workflow
