@@ -1,5 +1,4 @@
-import { AppProvider, EmptySearchResult,IndexTable,TextStyle,Card } from "@shopify/polaris";
-import { useIndex } from "react";
+import { AppProvider, EmptySearchResult,IndexTable,TextStyle,Card,useIndexResourceState } from "@shopify/polaris";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function IndexTableWithCustomEmptyStateExample() {

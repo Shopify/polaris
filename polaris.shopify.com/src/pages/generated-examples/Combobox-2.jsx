@@ -1,6 +1,6 @@
 import { AppProvider, Tag,Listbox,Combobox,Icon,TextContainer,Stack } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import { useMemo,useState,useCallback } from "react";
+import { useState,useCallback,useMemo } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function MultiComboboxExample() {

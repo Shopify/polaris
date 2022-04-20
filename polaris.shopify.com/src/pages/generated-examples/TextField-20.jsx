@@ -1,5 +1,5 @@
 import { AppProvider, TextField } from "@shopify/polaris";
-import { useState,useCallback,useEffect } from "react";
+import { useState,useEffect,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function TextFieldWithSuggestionExample() {

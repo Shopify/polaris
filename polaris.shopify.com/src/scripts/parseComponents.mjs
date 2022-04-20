@@ -76,27 +76,40 @@ for (let i = 0; i < componentDirectories.length; i++) {
             .trim();
 
           // Create a list of all the components in the code.
-          let componentsInCode = {};
+          let polarisImports = {};
           const componentsRegex = /<([A-Z][A-Za-z]+)/g;
           while ((match = componentsRegex.exec(code)) !== null) {
             if (match[1] !== "AppProvider") {
-              componentsInCode[match[1]] = true;
+              polarisImports[match[1]] = true;
             }
           }
 
+          // Special case polaris imports
+          if (code.includes("useIndexResourceState")) {
+            polarisImports["useIndexResourceState"] = true;
+          }
+
           // Create a list of all the polaris icons in the code.
-          let iconsInCode = {};
+          let polarisIconImports = {};
           const iconsRegex = /[A-Za-z]+(Minor|Major)/g;
           while ((match = iconsRegex.exec(code)) !== null) {
-            iconsInCode[match[0]] = true;
+            polarisIconImports[match[0]] = true;
           }
 
           // Create a list of all the react hooks in the code.
-          let reactHooksInCode = {};
-          const callbacksRegex = / use[A-Z][a-z]+/g;
-          while ((match = callbacksRegex.exec(code)) !== null) {
-            reactHooksInCode[match[0].trim()] = true;
-          }
+          let reactHookImports = {};
+          const validHooks = [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useMemo",
+            "useRef",
+          ];
+          validHooks.forEach((hook) => {
+            if (code.includes(hook)) {
+              reactHookImports[hook] = true;
+            }
+          });
 
           // Before we continue, add wrapper elements around the
           // code so that it works correctly.
@@ -106,25 +119,25 @@ for (let i = 0; i < componentDirectories.length; i++) {
           if (!code.includes("import ")) {
             const importStatements = [];
 
-            if (Object.keys(componentsInCode).length > 0) {
+            if (Object.keys(polarisImports).length > 0) {
               importStatements.push(
                 `import { AppProvider, ${Object.keys(
-                  componentsInCode
+                  polarisImports
                 )} } from "@shopify/polaris";`
               );
             }
 
-            if (Object.keys(iconsInCode).length > 0) {
+            if (Object.keys(polarisIconImports).length > 0) {
               importStatements.push(
                 `import { ${Object.keys(
-                  iconsInCode
+                  polarisIconImports
                 )} } from "@shopify/polaris-icons";`
               );
             }
 
-            if (Object.keys(reactHooksInCode).length > 0) {
+            if (Object.keys(reactHookImports).length > 0) {
               importStatements.push(
-                `import { ${Object.keys(reactHooksInCode)} } from "react";`
+                `import { ${Object.keys(reactHookImports)} } from "react";`
               );
             }
 

@@ -1,5 +1,5 @@
 import { AppProvider, Stack,Tag,Listbox,Combobox } from "@shopify/polaris";
-import { useMemo,useState,useCallback } from "react";
+import { useState,useCallback,useMemo } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function MultiVerticalContentComboboxExample() {

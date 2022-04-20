@@ -1,5 +1,5 @@
 import { AppProvider, Banner } from "@shopify/polaris";
-import { useRef,useEffect } from "react";
+import { useEffect,useRef } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function BannerWithFocusExample() {
