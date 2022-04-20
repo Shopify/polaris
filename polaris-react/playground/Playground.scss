@@ -1,6 +1,7 @@
 @import '../src/styles/tokens';
 
 .mediaConditions {
+  /* stylelint-disable-next-line scss/selector-no-redundant-nesting-selector */
   & div {
     height: 20px;
   }
