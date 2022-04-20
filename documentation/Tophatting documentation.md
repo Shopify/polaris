@@ -18,8 +18,9 @@ Check the location, appearance, and readability of the content you add to the st
 
 ## How to 🎩 documentation
 
-1. Check out the `master` branch from [`polaris-styleguide`](https://github.com/Shopify/polaris-styleguide)
+1. Check out the `main` branch from [`polaris-styleguide`](https://github.com/Shopify/polaris-styleguide)
 1. In a separate tab if preferred, check out the updated `polaris-react` branch
-1. In the `polaris-react` directory, run `yarn run build-consumer polaris-styleguide`
-1. In the `polaris-styleguide` directory, run `dev up && dev server`
+1. Install `yalc` globally with `npm i -g yalc` if not already installed
+1. In the `polaris-react` directory, run `yalc publish`
+1. In the `polaris-styleguide` directory, run `yalc add @shopify/polaris && dev up && dev server`
 1. View documentation changes in the browser
