@@ -79,23 +79,33 @@ h4 {
 
 // Legacy CSS from old site (used in markdown files)
 .usage-list {
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
+  font-size: 0.9em;
   display: flex;
-  gap: 2em;
+  flex-direction: column;
+  gap: 1em;
 
   .usage-list-part {
     flex: 1;
-    background: #f6f6f7;
-    padding: 1px 1.5rem 1rem;
-    border-radius: 4px;
+    background: #fafafa;
+    padding: 1px 1.25rem 1px;
+    border-radius: 2px;
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0.5em;
+    }
   }
 
   .usage-list-part:first-child {
-    border-top: 3px solid #00a47c;
+    border-left: 3px solid #00a47c;
   }
 
   .usage-list-part:last-child {
-    border-top: 3px solid #fc5749;
+    border-left: 3px solid #fc5749;
   }
 }
 

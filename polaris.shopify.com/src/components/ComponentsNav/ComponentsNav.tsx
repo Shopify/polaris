@@ -82,8 +82,8 @@ function ComponentsNav() {
                       <Image
                         src={`/component-previews/${slugify(name)}.png`}
                         layout="responsive"
-                        width={525}
-                        height={300}
+                        width={525 * 2}
+                        height={300 * 2}
                         alt=""
                       />
                     </div>

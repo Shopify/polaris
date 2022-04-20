@@ -6,7 +6,6 @@ import Fuse from "fuse.js";
 import { Dialog } from "@headlessui/react";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
-import Button from "../Button";
 
 interface Props {}
 
