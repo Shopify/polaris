@@ -1,6 +1,7 @@
 const Breakpoints = {
   navigationBarCollapsed: '768px',
   stackedContent: '1043px',
+  typographyCondensed: '640px',
 };
 
 const noWindowMatches: MediaQueryList = {
@@ -26,4 +27,10 @@ export function stackedContent() {
   return typeof window === 'undefined'
     ? noWindowMatches
     : window.matchMedia(`(max-width: ${Breakpoints.stackedContent})`);
+}
+
+export function typographyCondensed() {
+  return typeof window === 'undefined'
+  ? noWindowMatches
+  : window.matchMedia(`(min-width: ${Breakpoints.typographyCondensed})`);
 }

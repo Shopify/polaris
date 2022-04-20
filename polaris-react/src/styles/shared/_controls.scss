@@ -19,9 +19,13 @@
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-control-border-width) solid var(--p-border);
+    border: var(--p-control-border-width) solid var(--p-border-subdued);
     background-color: var(--p-surface);
     border-radius: var(--p-border-radius-1);
+
+    @include when-typography-not-condensed {
+      border-color: var(--p-border);
+    }
 
     &::before {
       content: '';

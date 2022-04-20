@@ -1,5 +1,11 @@
+@import '../../styles/common';
+
 @mixin text-container-spacing {
-  --pc-text-container-spacing: var(--p-space-4);
+  --pc-text-container-spacing: var(--p-space-1);
+
+  @include when-typography-not-condensed {
+    --pc-text-container-spacing: var(--p-space-4);
+  }
 
   > *:not(:first-child) {
     margin-top: var(--pc-text-container-spacing);

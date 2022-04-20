@@ -5,7 +5,7 @@ import React, {
   useState,
   useContext,
 } from 'react';
-import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
+import {MinusMinor, TickMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
@@ -17,6 +17,7 @@ import {Error, CheckboxHandles, Key} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
+import { typographyCondensed } from '../../utilities/breakpoints';
 
 export interface CheckboxProps {
   /** Indicates the ID of the element that is controlled by the checkbox*/
@@ -137,7 +138,8 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
       : {'aria-checked': isChecked};
 
-    const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
+    const tickIcon = typographyCondensed().matches ? TickSmallMinor : TickMinor;
+    const iconSource = isIndeterminate ? MinusMinor : tickIcon;
 
     const inputClassName = classNames(
       styles.Input,

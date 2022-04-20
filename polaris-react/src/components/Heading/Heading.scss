@@ -1,7 +1,14 @@
 @import '../../styles/common';
 
 .Heading {
-  @include text-style-heading;
+  font-size: var(--p-font-size-7);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-4);
+
+  @include when-typography-not-condensed {
+    font-size: 18px;
+    line-height: var(--p-line-height-3);
+  }
   margin: 0;
 
   @media print {
