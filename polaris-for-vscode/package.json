@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "polaris",
     "shopify"
@@ -36,7 +36,8 @@
     "compile": "tsc -b",
     "watch": "tsc -b -w",
     "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
-    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx"
+    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+    "test": "yarn lint"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -46,6 +47,7 @@
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^8.6.0",
     "glob": "^7.2.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "vsce": "^2.7.0"
   }
 }

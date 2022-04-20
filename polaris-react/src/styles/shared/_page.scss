@@ -1,24 +1,10 @@
-$actions-vertical-spacing: var(--p-space-2);
-
-@mixin page-padding-not-fully-condensed {
-  padding: 0 var(--p-space-5);
-}
-
-@mixin page-padding-not-partially-condensed {
-  padding: 0 var(--p-space-8);
-}
-
 @mixin page-layout {
   margin: 0 auto;
   padding: 0;
   max-width: $page-max-width;
 
   @include page-content-when-not-fully-condensed {
-    @include page-padding-not-fully-condensed;
-  }
-
-  @include page-content-when-not-partially-condensed {
-    @include page-padding-not-partially-condensed;
+    padding: 0 var(--p-space-6);
   }
 }
 
@@ -74,9 +60,9 @@ $actions-vertical-spacing: var(--p-space-2);
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 2 * $actions-vertical-spacing;
+  margin-top: var(--p-space-4);
 
   @include page-content-when-not-fully-condensed {
-    margin-top: $actions-vertical-spacing;
+    margin-top: var(--p-space-2);
   }
 }

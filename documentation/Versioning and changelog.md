@@ -1,8 +1,8 @@
 # Versioning and changelog
 
-The changelog is prepared manually immediately before a release, by moving changelog entries from `UNRELEASED.md` to `CHANGELOG.md`, under a new heading for the version number.
+The changelog is prepared manually immediately before a release, by moving changelog entries from `polaris-react/UNRELEASED.md` to `polaris-react/CHANGELOG.md`, under a new heading for the version number.
 
-**Use the `Skip Changelog` label to ignore a failing changelog check** in your pull request if you feel the code changes do not warrant a changelog entry.
+**Use the [`🤖Skip Changelog`](https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%A4%96Skip+Changelog%22) label to ignore a failing changelog check** in your pull request if you feel the code changes do not warrant a changelog entry.
 
 ### How to write a changelog entry:
 
@@ -31,11 +31,11 @@ Change log entry descriptions should be brief but descriptive and follow this st
 
 ### Breaking changes
 
-- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris-react/pull/100))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100))
 
 Contributed from the community:
 
-- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris-react/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
 ```
 
 The possible groups in which to categorize changes are:
@@ -62,15 +62,15 @@ Generally, changes related to these topics can be omitted:
 
 ## Unreleased changes
 
-Unreleased changes must go under in the `UNRELEASED.md` file:
+Unreleased changes must go under in the `polaris-react/UNRELEASED.md` file:
 
 ```md
 ### Bug fixes
 
-- Fixed something ([#100](https://github.com/shopify/polaris-react/pull/100))
+- Fixed something ([#100](https://github.com/shopify/polaris/pull/100))
 ```
 
-Entries must be moved from `UNRELEASED.md` to `CHANGELOG.md` at each release.
+Entries must be moved from `polaris-react/UNRELEASED.md` to `polaris-react/CHANGELOG.md` at each release.
 
 ## Versioning scheme
 
@@ -112,7 +112,7 @@ Follow the following steps to deploy a new version of Polaris:
 
    `git checkout -b polaris-release`
 
-1. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris-react/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
+1. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
 
 1. Commit changelog updates
 
@@ -140,6 +140,6 @@ Follow the following steps to deploy a new version of Polaris:
 
    a. Copy release notes from `CHANGELOG.md`
 
-   b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris-react/releases) section, click `Edit tag`, and paste the release notes into the release description
+   b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris/releases) section, click `Edit tag`, and paste the release notes into the release description
 
    c. Push the `Publish Release` button
