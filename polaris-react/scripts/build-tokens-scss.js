@@ -22,14 +22,10 @@ file.write(`/* stylelint-disable length-zero-no-unit */\n\n`);
 file.write(`/* Breakpoints - Aliases */\n`);
 
 breakpointEntries.forEach(([bpAlias, breakpoint]) => {
-  // PX breakpoints alias
-  file.write(`${bpAlias}: ${breakpoint};\n`);
-
-  // EM breakpoints alias
-  file.write(`${toEmAlias(bpAlias)}: ${toEm(breakpoint)};\n\n`);
+  file.write(`${bpAlias}: ${toEm(breakpoint)};\n`);
 });
 
-file.write(`/* Breakpoints - Media conditions */\n`);
+file.write(`\n/* Breakpoints - Media conditions */\n`);
 
 breakpointEntries.forEach(([bpAlias, breakpoint], index) => {
   const isLastBreakpoint = index === breakpointEntries.length - 1;
@@ -64,10 +60,6 @@ function getUpMediaCondition(breakpoint) {
 
 function getDownMediaCondition(breakpoint) {
   return `(max-width: ${toEm(breakpoint)})`;
-}
-
-function toEmAlias(bpAlias) {
-  return `${bpAlias}-em`;
 }
 
 function toEm(value) {

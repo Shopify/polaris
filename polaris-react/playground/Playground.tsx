@@ -13,17 +13,16 @@ export function Playground() {
       <br />
       {Object.entries(breakpoints).map(([token, breakpoint]) => (
         <div key={token}>
-          $p-{token}: {breakpoint};
-          <br />
-          $p-{token}-em: {parseInt(breakpoint, 10) / 16}em;
-          <br />
+          $p-{token}: {parseInt(breakpoint, 10) / 16}em;
           <br />
         </div>
       ))}
 
+      <br />
       <hr />
       <hr />
 
+      <br />
       <h2>Scss variables / media conditions:</h2>
       <br />
 
