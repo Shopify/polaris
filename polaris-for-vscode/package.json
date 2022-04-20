@@ -1,7 +1,6 @@
 {
   "name": "polaris-for-vscode",
   "private": true,
-  "displayName": "polaris-for-vscode",
   "displayName": "Polaris for VS Code",
   "publisher": "Shopify",
   "license": "SEE LICENSE IN LICENSE.md",
