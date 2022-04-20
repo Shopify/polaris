@@ -5,6 +5,8 @@ $typography-condensed: 640px;
   height: auto;
   position: relative;
   left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media only screen and (min-width: $typography-condensed) {
     display: none;
