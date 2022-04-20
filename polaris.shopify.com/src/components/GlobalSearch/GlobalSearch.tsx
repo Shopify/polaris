@@ -6,12 +6,14 @@ import { SearchResult } from "../../types";
 import styles from "./GlobalSearch.module.scss";
 import { useCombobox } from "downshift";
 import { slugify } from "../../utils/various";
+import { useRouter } from "next/router";
 
 interface Props {}
 
 function GlobalSearch({}: Props) {
   const [searchResults, setSearchResults] = useState<SearchResult>([]);
-  const [inputValue, setInputValue] = useState("");
+
+  const router = useRouter();
 
   const {
     isOpen,
@@ -28,16 +30,14 @@ function GlobalSearch({}: Props) {
     onInputValueChange: ({ inputValue }) => {
       const results = search(inputValue || "");
       setSearchResults(results);
-      setInputValue(inputValue || "");
     },
     onSelectedItemChange: (item) => {
       const url = item.selectedItem?.url;
       if (url) {
-        window.location.href = url;
+        router.push(url);
       }
-      setInputValue("foo");
     },
-    inputValue,
+    itemToString: (item) => item?.title || "",
   });
 
   return (
