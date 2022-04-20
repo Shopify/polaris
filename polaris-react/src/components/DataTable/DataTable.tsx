@@ -306,6 +306,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               event="scroll"
               handler={this.scrollListener}
             />
+            <EventListener
+                capture
+                passive
+                event="scroll"
+                handler={this.stickyHeaderScrolling}
+            />
             <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
@@ -338,7 +344,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       this.stickyHeadings[index] = ref;
     } else {
       this.tableHeadings[index] = ref;
-      this.tableHeadingWidths[index] = ref.offsetWidth;
+      this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
     }
   };
 
@@ -423,30 +429,33 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
   private stickyHeaderScrolling = (event: Event) => {
     const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
+    const {current: table} = this.table;
     const {current: scrollContainer} = this.scrollContainer;
     const targetIsStickyHeader = event.target === stickyTableHeadingsRow;
 
-    if (stickyTableHeadingsRow == null || scrollContainer == null) {
+    if (stickyTableHeadingsRow == null || scrollContainer == null || table == null) {
       return;
     }
 
     const {scrollLeft: stickyScrollLeft} = stickyTableHeadingsRow;
     const {scrollLeft: scrollContainerScrollLeft} = scrollContainer;
 
+
     if (targetIsStickyHeader) {
-      scrollContainer.scrollLeft = stickyScrollLeft;
+      table.style.transform = `translateX(-${stickyScrollLeft}px)`
+
     } else {
-      stickyTableHeadingsRow.scrollLeft = scrollContainerScrollLeft;
+      this.stickyHeadings.map(heading => {
+        heading.style.transform = `translateX(-${scrollContainerScrollLeft}px)`
+      })
     }
   };
 
-  private scrollListener = (event: Event) => {
+  private scrollListener = debounce(() => {
     this.setState((prevState) => ({
       ...this.calculateColumnVisibilityData(prevState.condensed),
     }));
-
-    this.stickyHeaderScrolling(event);
-  };
+  }, 500);
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
