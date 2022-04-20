@@ -119,7 +119,7 @@ function GlobalSearch({}: Props) {
                         </p>
                       </div>
 
-                      {item.type === "component" && (
+                      {item.category === "Components" && (
                         <div className={styles.ComponentPreview}>
                           <Image
                             src={`/component-previews/${slugify(

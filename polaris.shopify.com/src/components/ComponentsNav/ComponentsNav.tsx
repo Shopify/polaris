@@ -40,6 +40,7 @@ function ComponentsNav() {
         >
           All
         </Button>
+
         {componentCategories
           .filter((category) => category !== "other")
           .map((category) => (
@@ -78,6 +79,7 @@ function ComponentsNav() {
                     <div className={styles.Preview}>
                       <Image
                         src={`/component-previews/${slugify(name)}.png`}
+                        layout="responsive"
                         width={525}
                         height={300}
                         alt=""

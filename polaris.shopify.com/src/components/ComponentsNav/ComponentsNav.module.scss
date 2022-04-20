@@ -1,89 +1,56 @@
 .ComponentsNav {
-  --preview-width: 220px;
-  --preview-ratio: 1.75;
-  --sidebar-top: calc(var(--header-height) + 3.5rem);
-
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  left: 2rem;
-  top: var(--sidebar-top);
-  align-self: flex-start;
-  max-height: calc(100vh - var(--sidebar-top) - 2rem);
-  width: 32em;
-  display: flex;
-  border-right: 1px solid #ededed;
+  padding: 3em;
 
   ul {
     flex: 1;
-    display: flex;
+    display: grid;
     flex-direction: column;
     overflow: auto;
     overscroll-behavior: contain;
-    margin-left: -1rem;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    margin: 0 -1em;
+    grid-template-columns: repeat(6, 1fr);
+
+    @media screen and (max-width: 2400px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media screen and (max-width: 1800px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   li {
+    display: flex;
+
     a {
-      position: relative;
       display: flex;
-      align-items: center;
-      padding: 1rem 0;
-      gap: 1em;
+      flex-direction: column;
+      gap: 0.75em;
+      padding: 1em;
+      border-radius: 12px;
+      position: relative;
       color: inherit;
-
-      &:after {
-        display: block;
-        content: "";
-        position: absolute;
-        top: 1rem;
-        left: -1rem;
-        bottom: 1rem;
-        width: 4px;
-        background: #ddd;
-        border-radius: 2px;
-        opacity: 0;
-      }
-
+      transition: background-color 0.05s linear;
       &:hover {
-        // box-shadow: inset 3px 0 #ddd;
-        &:after {
-          opacity: 1;
-        }
+        background: #f1f1f1;
       }
-
-      &[aria-current="page"] {
-        &:after {
-          opacity: 1;
-          background: #008060;
-        }
-      }
-    }
-
-    h4 {
-      font-size: 1.05em;
-      font-weight: 600;
     }
 
     p {
-      margin-top: 0.33rem;
-      font-size: 0.8em;
+      font-size: 0.9em;
       display: -webkit-box;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      color: #555;
     }
   }
 
   .Preview {
-    min-width: var(--preview-width);
-    max-width: var(--preview-width);
-    min-height: calc(var(--preview-width) / var(--preview-ratio));
-    max-height: calc(var(--preview-width) / var(--preview-ratio));
     border-radius: 8px;
-    background: #f8f8f8;
     transition: all 0.25s ease;
     overflow: hidden;
     border: 1px solid #eaeaea;
