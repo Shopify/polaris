@@ -1,5 +1,5 @@
-export type Result = {
-  type: "component" | "token" | "icon" | "guidelines";
+export type SearchResult = {
+  category: "Components" | "Tokens" | "Icons" | "Guidelines";
   title: string;
   excerpt: string;
   url: string;
@@ -9,7 +9,7 @@ export type Result = {
     componentPreview?: { src: string };
     icon?: { fileName: string };
   };
-};
+}[];
 
 export type LineConfig = {
   iframeSelector?: string;

@@ -30,25 +30,40 @@
   font-weight: 500;
   position: absolute;
   justify-content: center;
+  top: 6px;
   left: 0;
   right: 0;
   margin: 0 auto;
-  height: var(--header-height);
+  height: calc(var(--header-height) - 12px);
   z-index: -1;
+
   a {
     display: flex;
     align-items: center;
     height: 100%;
     padding: 0 0.75em;
     color: inherit;
+    position: relative;
   }
 
-  li a:hover {
-    color: #666;
-  }
-
-  li[aria-current="page"] a {
-    color: #008060;
+  // This is a bit convoluted, but...
+  // We want: the hover cursor to be uninterrupted
+  // as you move through the nav. We also want a small
+  // visual gap between the current/hover highlights.
+  // By using a psudo element for the highlights, the
+  // links themselves can have 0 gap (which gives us
+  // the uninterrupted cursor state) but maintain a
+  // small visual gap between the highlights.
+  li a:hover:before,
+  li[aria-current="page"] a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0.5px;
+    bottom: 0;
+    left: 0.5px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 

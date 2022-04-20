@@ -1,4 +1,4 @@
-import { Result } from "../types";
+import { SearchResult } from "../types";
 import colorLight from "../../../polaris-react/src/tokens/token-groups/color.light.json";
 import depth from "../../../polaris-react/src/tokens/token-groups/depth.json";
 import motion from "../../../polaris-react/src/tokens/token-groups/motion.json";
@@ -12,12 +12,12 @@ import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 
-let allPages: Result[] = [];
+let results: SearchResult = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
-  allPages.push({
-    type: "component",
+  results.push({
+    category: "Components",
     title: name,
     excerpt: stripMarkdownLinks(intro),
     url: `/components/${slugify(category)}/${slugify(name)}`,
@@ -28,8 +28,8 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
 
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
-  allPages.push({
-    type: "token",
+  results.push({
+    category: "Tokens",
     title: `--p-${tokenName}`,
     excerpt: "",
     url: `/tokens/colors#${tokenName}`,
@@ -44,8 +44,8 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
-    allPages.push({
-      type: "token",
+    results.push({
+      category: "Tokens",
       title: `--p-${tokenName}`,
       excerpt: "",
       url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
@@ -57,8 +57,8 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 
 // Add icons
 icons.forEach(({ name, set, description, keywords, fileName }) => {
-  allPages.push({
-    type: "icon",
+  results.push({
+    category: "Icons",
     title: `${name} (${set})`,
     excerpt: description,
     url: `/icons#${name}-${set}`,
@@ -84,8 +84,8 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
           ? `/patterns/${sectionSlug}/${slug}`
           : `/docs/${sectionSlug}/${slug}`;
 
-      allPages.push({
-        type: "guidelines",
+      results.push({
+        category: "Guidelines",
         title,
         excerpt: intro,
         url,
@@ -96,13 +96,43 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
   }
 });
 
-export function search(query: string): Result[] {
+const fuse = new Fuse(results, {
+  keys: [{ name: "title", weight: 50 }, "excerpt", "url", "keywords"],
+  includeScore: true,
+  threshold: 0.1,
+});
+
+export function search(query: string): SearchResult {
+  let topScores: {
+    [key in SearchResult[number]["category"]]: number;
+  } = {
+    Components: 0,
+    Guidelines: 0,
+    Icons: 0,
+    Tokens: 0,
+  };
+
   if (query.length > 0) {
-    const fuse = new Fuse(allPages, {
-      keys: [{ name: "title", weight: 2 }, "excerpt", "url", "keywords"],
-    });
     const fuseResults = fuse.search(query);
-    return fuseResults.map((result) => result.item).slice(0, 10);
+
+    fuseResults.forEach((result) => {
+      const category = result.item.category;
+      if (
+        result.score &&
+        (topScores[category] === null || topScores[category] < result.score)
+      ) {
+        topScores[category] = result.score;
+      }
+    });
+
+    const groupedResults = fuseResults
+      .map((item) => item.item)
+      .sort((a, b) => {
+        return topScores[a.category] - topScores[b.category];
+      })
+      .slice(0, 20);
+
+    return groupedResults;
   }
 
   return [];

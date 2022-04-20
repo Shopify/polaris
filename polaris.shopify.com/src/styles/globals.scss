@@ -41,20 +41,21 @@ p {
 }
 
 h1 {
-  font-size: 3.5em;
+  font-size: 4em;
   font-weight: 600;
   line-height: 1.1;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 h2 {
   font-size: 2em;
   font-weight: 400;
   line-height: 1.2;
+  letter-spacing: -0.0125em;
 }
 
 h3 {
-  font-size: 1.25em;
+  font-size: 1.33em;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -63,10 +64,6 @@ h4 {
   font-size: 1.2em;
   font-weight: 500;
   line-height: 1.2;
-}
-
-.lede {
-  font-size: 1.5rem;
 }
 
 .sr-only {

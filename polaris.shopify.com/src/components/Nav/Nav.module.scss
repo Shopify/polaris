@@ -1,26 +1,43 @@
 .Nav {
-  padding: 0.25em 0 2em;
   align-self: flex-start;
   font-size: 0.95em;
-  min-width: 12em;
+  min-width: 16em;
 
   span {
     font-weight: 500;
   }
 
   a {
+    padding: 1px 0;
     color: #666;
     display: inline-block;
+    position: relative;
+    padding-left: 1em;
     &:hover {
       color: inherit;
+      &:before {
+        background: #ddd;
+      }
     }
     &:before {
-      content: "• ";
-      margin-right: 0.25em;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      margin: auto;
+      background: #ededed;
+      border-radius: 1.5px;
     }
     &[aria-current="page"] {
       color: #008060;
       font-weight: 500;
+      &:before {
+        background: #008060;
+      }
     }
   }
 

@@ -30,7 +30,7 @@
   }
 
   h2 {
-    margin-top: 2rem;
+    margin-top: 2.25rem;
   }
 
   h3 {
@@ -70,11 +70,9 @@
 }
 
 .Content {
-  > div > h1 + p {
-    font-size: 1.5em;
-  }
-
   > p:first-of-type {
-    font-size: 1.4em;
+    font-size: 1.2em;
+    letter-spacing: -0.01em;
+    font-weight: 500;
   }
 }
