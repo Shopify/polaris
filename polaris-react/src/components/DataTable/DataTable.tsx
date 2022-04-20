@@ -191,22 +191,28 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const firstColumn = rows.map((row) => row.slice(0, 1));
     const firstHeading = headings.slice(0, 1);
+    const firstTotal = totals?.slice(0, 1);
 
-    const fixedFirstColumn = condensed &&
-      !isScrolledFarthestLeft &&
-      hasFixedFirstColumn && (
-        <table
-          className={styles.FixedFirstColumn}
-          aria-hidden
-          role="presentation"
-          style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
-        >
-          <thead>
-            <tr>{firstHeading.map(this.renderHeadings)}</tr>
-          </thead>
-          <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
-        </table>
-      );
+    const fixedFirstColumn = condensed && hasFixedFirstColumn && (
+      <table
+        className={classNames(
+          styles.FixedFirstColumn,
+          !isScrolledFarthestLeft && styles.Visible,
+        )}
+        aria-hidden
+        role="presentation"
+        style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
+      >
+        <thead>
+          <tr>{firstHeading.map(this.renderHeadings)}</tr>
+        </thead>
+        {totals && !showTotalsInFooter && firstTotal?.map(this.renderTotals)}
+        <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
+        {totals && showTotalsInFooter && (
+          <tfoot>{firstTotal?.map(this.renderTotals)}</tfoot>
+        )}
+      </table>
+    );
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
 
