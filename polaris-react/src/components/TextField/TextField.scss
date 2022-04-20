@@ -83,6 +83,9 @@ $spinner-icon-size: 12px;
 
 .Input {
   @include text-style-input;
+  @include when-typography-not-condensed {
+    padding: control-vertical-padding() var(--p-space-3);
+  }
   position: relative;
   z-index: var(--pc-text-field-contents);
   display: block;
@@ -91,7 +94,8 @@ $spinner-icon-size: 12px;
   min-width: 0;
   min-height: control-height();
   margin: 0;
-  padding: control-vertical-padding() var(--p-space-3);
+  padding: var(--p-space-3);
+
   background: none;
   border: var(--p-border-transparent);
   font-family: var(--p-font-family-sans);
@@ -169,7 +173,11 @@ $spinner-icon-size: 12px;
 }
 
 .Backdrop {
-  @include focus-ring($border-width: var(--p-border-width-1));
+  @include when-typography-not-condensed {
+    border-radius: var(--p-border-radius-1);
+    @include focus-ring($border-width: var(--p-border-width-1));
+    position: absolute;
+  }
   position: absolute;
   z-index: var(--pc-text-field-backdrop);
   top: 0;
@@ -177,9 +185,9 @@ $spinner-icon-size: 12px;
   bottom: 0;
   left: 0;
   background-color: var(--p-surface);
-  border: 1px solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-top-color: var(--p-border-shadow);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-3);
   pointer-events: none;
 }
 
@@ -257,13 +265,17 @@ $spinner-icon-size: 12px;
 }
 
 .Spinner {
+  display: none;
+  @include when-typography-not-condensed {
+    display: flex;
+  }
+
   --pc-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + var(--p-border-width-1)
   );
   z-index: var(--pc-text-field-contents);
   margin: var(--pc-text-field-spinner-offset-large);
   color: var(--p-icon);
-  display: flex;
   align-self: stretch;
   flex-direction: column;
   width: 22px;

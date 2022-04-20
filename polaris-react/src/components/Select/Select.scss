@@ -46,8 +46,13 @@
   align-items: center;
   width: 100%;
   min-height: control-height();
-  padding: control-vertical-padding() var(--p-space-2)
-    control-vertical-padding() var(--p-space-3);
+  padding: var(--p-space-3);
+  border: var(--p-border-width-1) solid transparent;
+
+  @include when-typography-not-condensed {
+    padding: control-vertical-padding() var(--p-space-2)
+      control-vertical-padding() var(--p-space-3);
+  }
 }
 
 .InlineLabel {
@@ -96,10 +101,15 @@
   left: 0;
   border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-3);
   background-color: var(--p-surface);
   box-shadow: var(--p-shadow-button);
-  @include focus-ring($border-width: 1px);
+  @include when-typography-not-condensed {
+    border-radius: var(--p-border-radius-1);
+    @include focus-ring($border-width: 1px);
+    position: absolute;
+  }
+
   // 'position' needs to sit below focus-ring since it will be overwritten
   // with relative when the focus ring style is 'base'
   // stylelint-disable-next-line order/properties-order
