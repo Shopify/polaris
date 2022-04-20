@@ -3,23 +3,27 @@ import React from 'react';
 import {Heading} from '../../../Heading';
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
+import {Section} from '../Section';
 
 export interface AnnotatedSectionProps {
-  children?: React.ReactNode;
+  id?: string;
   title?: React.ReactNode;
   description?: React.ReactNode;
-  id?: string;
+  children?: React.ReactNode;
 }
 
-export function AnnotatedSection(props: AnnotatedSectionProps) {
-  const {children, title, description, id} = props;
-
+export function AnnotatedSection({
+  children,
+  title,
+  description,
+  id,
+}: AnnotatedSectionProps) {
   const descriptionMarkup =
     typeof description === 'string' ? <p>{description}</p> : description;
 
   return (
-    <div className={styles.AnnotatedSection}>
-      <div className={styles.AnnotationWrapper}>
+    <>
+      <Section secondary>
         <div className={styles.Annotation}>
           <TextContainer>
             <Heading id={id}>{title}</Heading>
@@ -30,9 +34,9 @@ export function AnnotatedSection(props: AnnotatedSectionProps) {
             )}
           </TextContainer>
         </div>
+      </Section>
 
-        <div className={styles.AnnotationContent}>{children}</div>
-      </div>
-    </div>
+      <Section>{children}</Section>
+    </>
   );
 }

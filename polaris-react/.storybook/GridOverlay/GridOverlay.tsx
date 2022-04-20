@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import debounce from 'lodash/debounce';
+import React, {useCallback, useState} from 'react';
 import {EventListener} from '../../src';
 import {classNames} from '../../src/utilities/css';
 
@@ -22,9 +21,9 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
     window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
   );
 
-  const handleResize = debounce(() => {
+  const handleResize = useCallback(() => {
     setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
-  }, 50);
+  }, []);
 
   const className = classNames(styles.GridOverlay, inFrame && styles.inFrame);
 

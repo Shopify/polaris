@@ -70,7 +70,7 @@ Use to have a single section on its own in a full-width container. Use for simpl
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section>
+    <Layout.Section fullWidth>
       <Card title="Online store dashboard" sectioned>
         <p>View a summary of your online store’s performance.</p>
       </Card>
@@ -456,7 +456,7 @@ Use for settings pages that need a banner or other content at the top.
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section>
+    <Layout.Section fullWidth>
       <Banner title="Order archived" onDismiss={() => {}}>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </Banner>

@@ -567,7 +567,6 @@ export function DetailsPage() {
       }}
     >
       <Layout>
-        {skipToContentTarget}
         <Layout.Section>
           <Card sectioned>
             <FormLayout>
@@ -675,6 +674,7 @@ export function DetailsPage() {
       onNavigationDismiss={toggleMobileNavigationActive}
       skipToContentTarget={skipToContentRef}
     >
+      {skipToContentTarget}
       {contextualSaveBarMarkup}
       {loadingMarkup}
       {pageMarkup}
