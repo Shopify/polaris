@@ -70,7 +70,7 @@
 }
 
 .Content {
-  > p:first-of-type {
+  h1 + p:first-of-type {
     font-size: 1.2em;
     letter-spacing: -0.01em;
     font-weight: 500;

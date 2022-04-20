@@ -2,7 +2,6 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Page from "../../../components/Page";
 import Longform from "../../../components/Longform";
-import ComponentsNav from "../../../components/ComponentsNav";
 import Markdown from "../../../components/Markdown";
 import components from "../../../data/components.json";
 import { slugify } from "../../../utils/various";
