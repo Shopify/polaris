@@ -1,3 +1,16 @@
+.Filters {
+  position: relative;
+  margin-bottom: 1rem;
+  .TextField {
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    margin: 0 3px 3px 0;
+  }
+}
+
 .ComponentsNav {
   padding: 3em;
 
@@ -54,19 +67,5 @@
     transition: all 0.25s ease;
     overflow: hidden;
     border: 1px solid #eaeaea;
-  }
-}
-
-.Filters {
-  position: relative;
-  padding-right: 2rem;
-  padding-bottom: 0.5em;
-
-  .TextField {
-    margin-bottom: 12px;
-  }
-
-  button {
-    margin: 0 2px 3px 0;
   }
 }

@@ -163,6 +163,40 @@ export const navItems: NavItem[] = [
       },
     ],
   },
+
+  {
+    title: "Patterns",
+    children: [
+      {
+        title: "Page layouts",
+        url: "/docs/patterns/layout",
+      },
+      {
+        title: "Mobile patterns",
+        url: "/docs/patterns/mobile-patterns",
+      },
+      {
+        title: "Home cards",
+        url: "/docs/patterns/home-card-guidelines",
+      },
+      {
+        title: "Error messages",
+        url: "/docs/patterns/error-messages",
+      },
+      {
+        title: "Text fields",
+        url: "/docs/patterns/text-fields",
+      },
+      {
+        title: "Help content",
+        url: "/docs/patterns/help-content",
+      },
+      {
+        title: "Locations",
+        url: "/docs/patterns/locations",
+      },
+    ],
+  },
 ];
 interface Props {
   category: string;

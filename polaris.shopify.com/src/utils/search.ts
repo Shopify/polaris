@@ -79,10 +79,7 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
     if (allowedSections.includes(sectionSlug)) {
       const title = parts[parts.length - 1];
 
-      const url =
-        sectionSlug === "patterns"
-          ? `/patterns/${sectionSlug}/${slug}`
-          : `/docs/${sectionSlug}/${slug}`;
+      const url = `/docs/${sectionSlug}/${slug}`;
 
       results.push({
         category: "Guidelines",

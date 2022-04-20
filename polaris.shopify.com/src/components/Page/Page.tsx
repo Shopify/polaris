@@ -14,7 +14,6 @@ interface Props {
 
 const headerNavItems: { url: string; label: string }[] = [
   { url: "/docs/foundations/experience-values", label: "Guidelines" },
-  { url: "/patterns/layout", label: "Patterns" },
   { url: "/components", label: "Components" },
   { url: "/tokens/getting-started", label: "Tokens" },
   { url: "/icons", label: "Icons" },

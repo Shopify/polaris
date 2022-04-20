@@ -41,11 +41,14 @@ function IconGallery({}: Props) {
   return (
     <div className={styles.IconGallery}>
       <div className={styles.Filter}>
-        <TextField
-          value={filterString}
-          onChange={(value) => setFilterString(value)}
-          placeholder="Filter icons"
-        />
+        <h2>Icons</h2>
+        <div className={styles.TextField}>
+          <TextField
+            value={filterString}
+            onChange={(value) => setFilterString(value)}
+            placeholder="Filter icons"
+          />
+        </div>
       </div>
 
       <div className={styles.IconGrids}>

@@ -24,6 +24,8 @@ function ComponentsNav() {
   return (
     <div className={styles.ComponentsNav}>
       <div className={styles.Filters}>
+        <h2>Components</h2>
+
         <div className={styles.TextField}>
           <TextField
             type="text"
