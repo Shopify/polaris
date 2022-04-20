@@ -59,6 +59,11 @@ for (let i = 0; i < componentDirectories.length; i++) {
             renderExample = false;
           }
 
+          // Text only code blocks (see DropZone server error messages)
+          if (!match.includes("<")) {
+            renderExample = false;
+          }
+
           if (!renderExample) {
             // Return the code as it was
             return match.replace(/🔥/g, "```");
@@ -79,7 +84,7 @@ for (let i = 0; i < componentDirectories.length; i++) {
           let polarisImports = {};
           const componentsRegex = /<([A-Z][A-Za-z]+)/g;
           while ((match = componentsRegex.exec(code)) !== null) {
-            if (match[1] !== "AppProvider") {
+            if (match[1] !== "AppProvider" && match[1] !== "React") {
               polarisImports[match[1]] = true;
             }
           }
@@ -96,8 +101,8 @@ for (let i = 0; i < componentDirectories.length; i++) {
             polarisIconImports[match[0]] = true;
           }
 
-          // Create a list of all the react hooks in the code.
-          let reactHookImports = {};
+          // Create a list of all the react stuff in the code.
+          let reactImports = {};
           const validHooks = [
             "useState",
             "useEffect",
@@ -107,9 +112,14 @@ for (let i = 0; i < componentDirectories.length; i++) {
           ];
           validHooks.forEach((hook) => {
             if (code.includes(hook)) {
-              reactHookImports[hook] = true;
+              reactImports[hook] = true;
             }
           });
+
+          let importMainReactPackage = false;
+          if (code.includes("React.Fragment")) {
+            importMainReactPackage = true;
+          }
 
           // Before we continue, add wrapper elements around the
           // code so that it works correctly.
@@ -135,9 +145,11 @@ for (let i = 0; i < componentDirectories.length; i++) {
               );
             }
 
-            if (Object.keys(reactHookImports).length > 0) {
+            if (Object.keys(reactImports).length > 0) {
               importStatements.push(
-                `import { ${Object.keys(reactHookImports)} } from "react";`
+                `import ${
+                  importMainReactPackage ? "React, " : ""
+                }{ ${Object.keys(reactImports)} } from "react";`
               );
             }
 

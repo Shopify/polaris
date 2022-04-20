@@ -14,7 +14,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <div style={{width: 114, height: 114}}>
+        <div style={{width: 50, height: 50}}>
   <DropZone>
     <DropZone.FileUpload />
   </DropZone>

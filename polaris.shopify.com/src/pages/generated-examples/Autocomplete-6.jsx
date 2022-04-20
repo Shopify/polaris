@@ -1,6 +1,6 @@
-import { AppProvider, Autocomplete,Icon,React,TextContainer } from "@shopify/polaris";
+import { AppProvider, Autocomplete,Icon,TextContainer } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
+import React, { useState,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 function AutocompleteExample() {

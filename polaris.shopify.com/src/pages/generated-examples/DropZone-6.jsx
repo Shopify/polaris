@@ -1,18 +1,19 @@
-import { AppProvider, Stack,Thumbnail,Caption,DropZone,Page } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
+import { AppProvider, Stack,Thumbnail,Caption,Banner,List,DropZone } from "@shopify/polaris";
 import { useState,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
-function DropZoneWithDropOnPageExample() {
+function DropZoneAcceptingSVGFilesExample() {
   const [files, setFiles] = useState([]);
+  const [rejectedFiles, setRejectedFiles] = useState([]);
+  const hasError = rejectedFiles.length > 0;
 
   const handleDropZoneDrop = useCallback(
-    (dropFiles, _acceptedFiles, _rejectedFiles) =>
-      setFiles((files) => [...files, ...dropFiles]),
+    (_dropFiles, acceptedFiles, rejectedFiles) => {
+      setFiles((files) => [...files, ...acceptedFiles]);
+      setRejectedFiles(rejectedFiles);
+    },
     [],
   );
-
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
@@ -21,11 +22,7 @@ function DropZoneWithDropOnPageExample() {
           <Thumbnail
             size="small"
             alt={file.name}
-            source={
-              validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
-                : NoteMinor
-            }
+            source={window.URL.createObjectURL(file)}
           />
           <div>
             {file.name} <Caption>{file.size} bytes</Caption>
@@ -35,27 +32,33 @@ function DropZoneWithDropOnPageExample() {
     </Stack>
   );
 
-  const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
+  const errorMessage = hasError && (
+    <Banner
+      title="The following images couldn’t be uploaded:"
+      status="critical"
+    >
+      <List type="bullet">
+        {rejectedFiles.map((file, index) => (
+          <List.Item key={index}>
+            {`"${file.name}" is not supported. File type must be .svg.`}
+          </List.Item>
+        ))}
+      </List>
+    </Banner>
+  );
 
   return (
-    <Page
-      breadcrumbs={[{content: 'Products'}]}
-      title="Jar With Lock-Lid"
-      primaryAction={{content: 'Save', disabled: true}}
-      secondaryActions={[
-        {content: 'Duplicate'},
-        {content: 'View on your store'},
-      ]}
-      pagination={{
-        hasPrevious: true,
-        hasNext: true,
-      }}
-    >
-      <DropZone dropOnPage onDrop={handleDropZoneDrop}>
+    <Stack vertical>
+      {errorMessage}
+      <DropZone
+        accept="image/svg+xml"
+        type="image"
+        errorOverlayText="File type must be .svg"
+        onDrop={handleDropZoneDrop}
+      >
         {uploadedFiles}
-        {uploadMessage}
       </DropZone>
-    </Page>
+    </Stack>
   );
 }
 
@@ -71,7 +74,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <DropZoneWithDropOnPageExample />
+        <DropZoneAcceptingSVGFilesExample />
       </div>
     </AppProvider>
   );

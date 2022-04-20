@@ -1,20 +1,20 @@
-import { AppProvider, Stack,Thumbnail,Caption,Banner,List,DropZone } from "@shopify/polaris";
+import { AppProvider, DropZone,Stack,Thumbnail,Caption,Card } from "@shopify/polaris";
+import { NoteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
-function DropZoneAcceptingSVGFilesExample() {
+function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
-  const [rejectedFiles, setRejectedFiles] = useState([]);
-  const hasError = rejectedFiles.length > 0;
 
-  const handleDropZoneDrop = useCallback(
-    (_dropFiles, acceptedFiles, rejectedFiles) => {
-      setFiles((files) => [...files, ...acceptedFiles]);
-      setRejectedFiles(rejectedFiles);
-    },
-    [],
-  );
+  const handleDrop = useCallback((dropFiles) => {
+    setFiles((files) => [...files, dropFiles]);
+  }, []);
 
+  const handleDropZoneClick = useCallback(() => {}, []);
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
       {files.map((file, index) => (
@@ -22,7 +22,11 @@ function DropZoneAcceptingSVGFilesExample() {
           <Thumbnail
             size="small"
             alt={file.name}
-            source={window.URL.createObjectURL(file)}
+            source={
+              validImageTypes.includes(file.type)
+                ? window.URL.createObjectURL(file)
+                : NoteMinor
+            }
           />
           <div>
             {file.name} <Caption>{file.size} bytes</Caption>
@@ -32,33 +36,15 @@ function DropZoneAcceptingSVGFilesExample() {
     </Stack>
   );
 
-  const errorMessage = hasError && (
-    <Banner
-      title="The following images couldn’t be uploaded:"
-      status="critical"
-    >
-      <List type="bullet">
-        {rejectedFiles.map((file, index) => (
-          <List.Item key={index}>
-            {`"${file.name}" is not supported. File type must be .svg.`}
-          </List.Item>
-        ))}
-      </List>
-    </Banner>
-  );
-
   return (
-    <Stack vertical>
-      {errorMessage}
-      <DropZone
-        accept="image/svg+xml"
-        type="image"
-        errorOverlayText="File type must be .svg"
-        onDrop={handleDropZoneDrop}
-      >
-        {uploadedFiles}
-      </DropZone>
-    </Stack>
+    <DropZone outline={false} onDrop={handleDrop}>
+      <Card sectioned>
+        <DropZone onClick={handleDropZoneClick}>
+          {uploadedFiles}
+          {fileUpload}
+        </DropZone>
+      </Card>
+    </DropZone>
   );
 }
 
@@ -74,7 +60,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <DropZoneAcceptingSVGFilesExample />
+        <NestedDropZoneExample />
       </div>
     </AppProvider>
   );

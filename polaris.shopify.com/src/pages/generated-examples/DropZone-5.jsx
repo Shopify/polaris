@@ -1,42 +1,61 @@
-import { AppProvider, DropZone,Stack,Thumbnail,Caption } from "@shopify/polaris";
+import { AppProvider, Stack,Thumbnail,Caption,DropZone,Page } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
-function DropZoneExample() {
-  const [file, setFile] = useState();
+function DropZoneWithDropOnPageExample() {
+  const [files, setFiles] = useState([]);
 
   const handleDropZoneDrop = useCallback(
-    (_dropFiles, acceptedFiles, _rejectedFiles) =>
-      setFile((file) => acceptedFiles[0]),
+    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+      setFiles((files) => [...files, ...dropFiles]),
     [],
   );
 
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-  const fileUpload = !file && <DropZone.FileUpload />;
-  const uploadedFile = file && (
-    <Stack>
-      <Thumbnail
-        size="small"
-        alt={file.name}
-        source={
-          validImageTypes.includes(file.type)
-            ? window.URL.createObjectURL(file)
-            : NoteMinor
-        }
-      />
-      <div>
-        {file.name} <Caption>{file.size} bytes</Caption>
-      </div>
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.includes(file.type)
+                ? window.URL.createObjectURL(file)
+                : NoteMinor
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
     </Stack>
   );
 
+  const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
+
   return (
-    <DropZone allowMultiple={false} onDrop={handleDropZoneDrop}>
-      {uploadedFile}
-      {fileUpload}
-    </DropZone>
+    <Page
+      breadcrumbs={[{content: 'Products'}]}
+      title="Jar With Lock-Lid"
+      primaryAction={{content: 'Save', disabled: true}}
+      secondaryActions={[
+        {content: 'Duplicate'},
+        {content: 'View on your store'},
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <DropZone dropOnPage onDrop={handleDropZoneDrop}>
+        {uploadedFiles}
+        {uploadMessage}
+      </DropZone>
+    </Page>
   );
 }
 
@@ -52,7 +71,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <DropZoneExample />
+        <DropZoneWithDropOnPageExample />
       </div>
     </AppProvider>
   );

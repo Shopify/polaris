@@ -1,61 +1,42 @@
-import { AppProvider, DropZone,Stack,Thumbnail,Caption,Banner,List } from "@shopify/polaris";
+import { AppProvider, DropZone,Stack,Thumbnail,Caption } from "@shopify/polaris";
+import { NoteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
 import '@shopify/polaris/build/esm/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
-function DropZoneWithImageFileUpload() {
-  const [files, setFiles] = useState([]);
-  const [rejectedFiles, setRejectedFiles] = useState([]);
-  const hasError = rejectedFiles.length > 0;
+function DropZoneExample() {
+  const [file, setFile] = useState();
 
-  const handleDrop = useCallback(
-    (_droppedFiles, acceptedFiles, rejectedFiles) => {
-      setFiles((files) => [...files, ...acceptedFiles]);
-      setRejectedFiles(rejectedFiles);
-    },
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFile((file) => acceptedFiles[0]),
     [],
   );
 
-  const fileUpload = !files.length && <DropZone.FileUpload />;
-  const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
-      {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
-          <Thumbnail
-            size="small"
-            alt={file.name}
-            source={window.URL.createObjectURL(file)}
-          />
-          <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
-          </div>
-        </Stack>
-      ))}
-    </Stack>
-  );
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-  const errorMessage = hasError && (
-    <Banner
-      title="The following images couldn’t be uploaded:"
-      status="critical"
-    >
-      <List type="bullet">
-        {rejectedFiles.map((file, index) => (
-          <List.Item key={index}>
-            {`"${file.name}" is not supported. File type must be .gif, .jpg, .png or .svg.`}
-          </List.Item>
-        ))}
-      </List>
-    </Banner>
+  const fileUpload = !file && <DropZone.FileUpload />;
+  const uploadedFile = file && (
+    <Stack>
+      <Thumbnail
+        size="small"
+        alt={file.name}
+        source={
+          validImageTypes.includes(file.type)
+            ? window.URL.createObjectURL(file)
+            : NoteMinor
+        }
+      />
+      <div>
+        {file.name} <Caption>{file.size} bytes</Caption>
+      </div>
+    </Stack>
   );
 
   return (
-    <Stack vertical>
-      {errorMessage}
-      <DropZone accept="image/*" type="image" onDrop={handleDrop}>
-        {uploadedFiles}
-        {fileUpload}
-      </DropZone>
-    </Stack>
+    <DropZone allowMultiple={false} onDrop={handleDropZoneDrop}>
+      {uploadedFile}
+      {fileUpload}
+    </DropZone>
   );
 }
 
@@ -71,7 +52,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <DropZoneWithImageFileUpload />
+        <DropZoneExample />
       </div>
     </AppProvider>
   );
