@@ -13,7 +13,7 @@ const Components: NextPage = () => {
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
-        <title>{getTitleForTitleTag('Typography tokens')</title>
+        <title>{getTitleForTitleTag("Typography tokens")}</title>
       </Head>
 
       <Longform>

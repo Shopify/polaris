@@ -2,20 +2,28 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 0 -10px;
-  padding: 2px 10px;
-  border-radius: 4px;
-  background: transparent;
-  text-align: left;
-  cursor: pointer;
-  gap: 10px;
+  gap: 1em;
+  margin-bottom: 1em;
 
-  &:target {
-    animation: search-highlight 2s ease both;
+  &:last-child {
+    margin-bottom: 0;
   }
 
-  &.bigGap {
+  button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    flex: 1;
+    gap: 10px;
+  }
+
+  &.bigGap button {
     gap: 20px;
+  }
+
+  &:target {
+    background: rgb(255, 255, 237);
   }
 
   &:focus,
@@ -33,41 +41,22 @@
       }
     }
   }
-
-  .Name {
-    margin: 0;
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
-    font-size: 14px;
-    background: #fdf0fd;
-    color: #6e006e;
-    padding: 0.25em 0.75em;
-    border-radius: 2px;
-  }
 }
 
-.CopyInfo {
-  opacity: 0;
-  margin-right: 0.25em;
-  font-size: 0.85em;
-  color: #666;
+.Token .Name {
+  margin: 0;
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+    Menlo, Consolas, monospace;
+  font-size: 14px;
+  background: #fdf0fd;
+  color: #6e006e;
+  padding: 0.25em 0.75em;
+  border-radius: 2px;
+  text-align: left;
 }
 
-@keyframes search-highlight {
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.2);
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.25);
-    background: white;
-  }
-  80% {
-    transform: scale(1.2);
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.25);
-    background: white;
-  }
-  100% {
-    background-color: transparent;
-  }
+.Token .Description {
+  margin: 0;
+  width: 50%;
+  font-size: 0.8em;
 }
