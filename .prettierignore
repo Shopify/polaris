@@ -1,10 +1,9 @@
-node_modules
-.loom
-.vscode-test
+.next
 dist
-out
+node_modules
+tmp-tokens
 /polaris-react/build
 /polaris-react/build-internal
-/polaris.shopify.com/.next
-/stylelint-polaris/data
-/polaris-react/package.json
+
+# temp ignore polaris.shopify.com
+/polaris.shopify.com

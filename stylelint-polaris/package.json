@@ -16,7 +16,7 @@
   "files": [
     "index.js",
     "configs/",
-    "data/",
+    "tmp-tokens/",
     "plugins/",
     "utils/"
   ],
@@ -28,10 +28,9 @@
   "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
-    "build": "yarn gen-polaris-data",
-    "test": "yarn build && node tests/index.js",
-    "prepublishOnly": "yarn build"
+    "build": "node ./scripts/gen-polaris-data.js",
+    "prepublishOnly": "yarn build",
+    "test": "yarn build && node tests/index.js"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"

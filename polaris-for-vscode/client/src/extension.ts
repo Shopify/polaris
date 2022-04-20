@@ -1,41 +1,46 @@
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
 
+import {workspace, ExtensionContext} from 'vscode';
 import {
   LanguageClient,
   LanguageClientOptions,
   ServerOptions,
-  TransportKind
+  TransportKind,
 } from 'vscode-languageclient/node';
 
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
   // The server is implemented in node
-  let serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
+  const serverModule = context.asAbsolutePath(
+    path.join('server', 'dist', 'server.js'),
+  );
   // The debug options for the server
   // --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
-  let debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
+  const debugOptions = {execArgv: ['--nolazy', '--inspect=6009']};
 
   // If the extension is launched in debug mode then the debug server options are used
   // Otherwise the run options are used
-  let serverOptions: ServerOptions = {
-    run: { module: serverModule, transport: TransportKind.ipc },
+  const serverOptions: ServerOptions = {
+    run: {module: serverModule, transport: TransportKind.ipc},
     debug: {
       module: serverModule,
       transport: TransportKind.ipc,
-      options: debugOptions
-    }
+      options: debugOptions,
+    },
   };
 
   // Options to control the language client
-  let clientOptions: LanguageClientOptions = {
+  const clientOptions: LanguageClientOptions = {
     // Register the server for plain text documents
-    documentSelector: [{ scheme: 'file', language: 'css' }, { scheme: 'file', language: 'scss' }],
+    documentSelector: [
+      {scheme: 'file', language: 'css'},
+      {scheme: 'file', language: 'scss'},
+    ],
     synchronize: {
       // Notify the server about file changes to '.clientrc files contained in the workspace
-      fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
-    }
+      fileEvents: workspace.createFileSystemWatcher('**/.clientrc'),
+    },
   };
 
   // Create the language client and start the client.
@@ -43,7 +48,7 @@ export function activate(context: ExtensionContext) {
     'polarisForVSCode',
     'Polaris For VS Code',
     serverOptions,
-    clientOptions
+    clientOptions,
   );
 
   // Start the client. This will also launch the server
