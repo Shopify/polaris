@@ -1,3 +1,9 @@
+export type MarkdownFile = {
+  frontMatter: any;
+  intro: string;
+  readme: string;
+};
+
 export type SearchResult = {
   category: "Components" | "Tokens" | "Icons" | "Guidelines";
   title: string;

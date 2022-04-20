@@ -7,12 +7,13 @@ import Longform from "../../components/Longform";
 import { navItems } from "../../data/tokensNav";
 import Token from "../../components/Token";
 import Nav from "../../components/Nav";
+import { getTitleForTitleTag } from "../../utils/various";
 
 const Components: NextPage = () => {
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
-        <title>Color tokens</title>
+        <title>{getTitleForTitleTag("Color tokens")}</title>
       </Head>
 
       <Longform>

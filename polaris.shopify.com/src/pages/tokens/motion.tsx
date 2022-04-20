@@ -10,6 +10,7 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import { useEffect } from "react";
 import Nav from "../../components/Nav";
+import { getTitleForTitleTag } from "../../utils/various";
 
 const Components: NextPage = () => {
   const [easeExamplesAreResetting, setEaseExamplesAreResetting] =
@@ -34,7 +35,7 @@ const Components: NextPage = () => {
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
-        <title>Tokens</title>
+        <title>{getTitleForTitleTag("Motion tokens")}</title>
       </Head>
 
       <Longform>

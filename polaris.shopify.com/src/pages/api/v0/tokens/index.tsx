@@ -1,11 +1,12 @@
-import {tokens} from '@shopify/polaris-tokens';
-import type {NextApiRequest, NextApiResponse} from 'next';
+import { tokens } from "@shopify/polaris-tokens";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { getTitleForTitleTag } from "../../../../utils/various";
 
-import {staticTokenGroupKeys} from './[tokens]';
+import { staticTokenGroupKeys } from "./[tokens]";
 
 const getGithubUrl = (file: string, isRaw: boolean) => {
   const fileName = `${file}.json`;
-  const githubUrl = 'https://github.com/Shopify/polaris/blob';
+  const githubUrl = "https://github.com/Shopify/polaris/blob";
   const filePath = `/main/polaris-tokens/token-groups/${fileName}`;
 
   return `${githubUrl}${filePath}`;
@@ -15,7 +16,7 @@ const html = `
 <!DOCTYPE>
 <html>
     <head>
-        <title>Admin Design Systems Token API</title>
+        <title>${getTitleForTitleTag("API")}</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;
@@ -83,13 +84,13 @@ const html = `
                         <td>
                             <a href="${getGithubUrl(
                               `color.${scheme}`,
-                              false,
+                              false
                             )}">File</a>
                         </td>
                     </tr>
                 `;
               })
-              .join('\n')}
+              .join("\n")}
             ${staticTokenGroupKeys
               .map((tokenGroup) => {
                 const url = `/api/v0/tokens/${tokenGroup}`;
@@ -107,13 +108,13 @@ const html = `
                         <td>
                             <a href="${getGithubUrl(
                               tokenGroup,
-                              false,
+                              false
                             )}">File</a>
                         </td>
                     </tr>
                 `;
               })
-              .join('\n')}
+              .join("\n")}
             </tbody>
         </table>
     </body>
@@ -121,7 +122,7 @@ const html = `
 `;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  res.setHeader('content-type', 'text/html');
+  res.setHeader("content-type", "text/html");
   res.send(html);
 };
 

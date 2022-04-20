@@ -45,3 +45,11 @@ export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
 
   return urls;
 };
+
+export const getTitleForTitleTag = (title?: string) => {
+  const siteName = "Shopify Polaris";
+  if (title) {
+    return `${title} — ${siteName}`;
+  }
+  return siteName;
+};

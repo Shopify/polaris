@@ -9,6 +9,7 @@ import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
 import { CSSProperties } from "react";
 import Nav from "../../components/Nav";
+import { getTitleForTitleTag } from "../../utils/various";
 
 const untypedShape = shape as { [key: string]: string };
 const untypedColor = color as { [key: string]: string };
@@ -17,7 +18,7 @@ const Components: NextPage = () => {
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
-        <title>Tokens</title>
+        <title>{getTitleForTitleTag("Shape tokens")}</title>
       </Head>
 
       <Longform>
