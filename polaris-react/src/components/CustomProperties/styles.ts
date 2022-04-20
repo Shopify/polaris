@@ -34,11 +34,9 @@ export function getColorSchemeRules(
         osColorSchemes,
       );
 
-      const tokenString = `${selector}{${colorCustomProperties}${getStaticCustomProperties(
+      return `${selector}{${colorCustomProperties}${getStaticCustomProperties(
         tokens,
       )}}`;
-
-      return tokenString;
     })
     .join('');
 }
