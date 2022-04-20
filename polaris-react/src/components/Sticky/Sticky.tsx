@@ -16,7 +16,7 @@ export type StickyProps = {
   /** Should the element remain in a fixed position when the layout is stacked (smaller screens)  */
   disableWhenStacked?: boolean;
   /** Callback run when sticky header is added or removed  */
-  onStickChange?: (isSticky: boolean) => void;
+  onStickyChange?: (isSticky: boolean) => void;
 } & (
   | {children: React.ReactNode}
   | {children(isSticky: boolean): React.ReactNode}
@@ -98,11 +98,11 @@ class StickyInner extends Component<CombinedProps, State> {
     if ((stick && !isSticky) || (!stick && isSticky)) {
       this.adjustPlaceHolderNode(stick);
       this.setState({isSticky: !isSticky}, () => {
-        if (this.props.onStickChange == null) {
+        if (this.props.onStickyChange == null) {
           return null;
         }
 
-        this.props.onStickChange(!isSticky);
+        this.props.onStickyChange(!isSticky);
 
         if (this.props.boundingElement == null) {
           return null;

@@ -204,7 +204,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         <div className={styles.StickyTable} role="presentation">
           <Sticky
             boundingElement={this.dataTable.current}
-            onStickChange={this.changeHeadingFocus}
+            onStickyChange={this.changeHeadingFocus}
           >
             {(isSticky: boolean) => {
               const stickyHeaderClassNames = classNames(
@@ -302,6 +302,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
               capture
+              passive
               event="scroll"
               handler={this.scrollListener}
             />
@@ -370,7 +371,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     button.style.visibility = 'visible';
     button.focus();
-    button.removeAttribute('style');
+    button.style.removeProperty('visibility');
   };
 
   private calculateColumnVisibilityData = (condensed: boolean) => {

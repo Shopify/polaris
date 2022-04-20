@@ -303,8 +303,8 @@ $breakpoint: 768px;
   overflow: hidden;
 
   &:not(.StickyTableHeader-isSticky) {
-    top: -1000px;
-    left: -1000px;
+    top: -9999px;
+    left: -9999px;
   }
 }
 
