@@ -1,0 +1,16 @@
+name: tick small
+set: minor
+description: Used to denote the action of checking a Polaris checkbox.
+keywords:
+  - checkmark
+  - 'yes'
+  - ok
+  - good
+  - passed
+  - tick
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use: Checkbox
