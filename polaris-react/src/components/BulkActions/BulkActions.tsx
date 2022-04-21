@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from 'react';
-import debounce from 'lodash/debounce';
 import {CSSTransition, Transition} from 'react-transition-group';
 
+import {debounce} from '../../utilities/debounce';
 import {tokens} from '../../tokens';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';

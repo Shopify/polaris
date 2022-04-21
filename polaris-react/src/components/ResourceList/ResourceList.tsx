@@ -7,9 +7,9 @@ import React, {
   useState,
   Children,
 } from 'react';
-import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
+import {debounce} from '../../utilities/debounce';
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';

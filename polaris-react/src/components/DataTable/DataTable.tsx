@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from 'react';
-import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'react-fast-compare';
 
+import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
