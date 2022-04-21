@@ -6,6 +6,7 @@ import Fuse from "fuse.js";
 import { Dialog } from "@headlessui/react";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
+import { Tab } from "@headlessui/react";
 
 interface Props {}
 
@@ -61,6 +62,7 @@ function IconGallery({}: Props) {
             </div>
             <IconGrid
               filteredIcons={majorIcons}
+              selectedIconName={selectedIconName}
               onClick={(iconName) => setSelectedIconName(iconName)}
             />
           </>
@@ -76,6 +78,7 @@ function IconGallery({}: Props) {
             </div>
             <IconGrid
               filteredIcons={minorIcons}
+              selectedIconName={selectedIconName}
               onClick={(iconName) => setSelectedIconName(iconName)}
             />
           </>
@@ -97,7 +100,10 @@ function IconGallery({}: Props) {
               className={styles.CloseDialog}
             ></button>
 
-            <div className={styles.Preview}>
+            <div
+              className={styles.Preview}
+              style={{ filter: "brightness(-500%)" }}
+            >
               <Image
                 src={`/icons/${selectedIcon.fileName}.svg`}
                 alt={selectedIcon.description}
@@ -113,26 +119,53 @@ function IconGallery({}: Props) {
               </Dialog.Description>
             </div>
 
-            <Longform>
-              <h4>React</h4>
-              <pre>{`import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
+            <Tab.Group>
+              <Tab.List className={styles.Tabs}>
+                <Tab className={styles.Tab}>React instructions</Tab>
+                <Tab className={styles.Tab}>Figma instructions</Tab>
+                <Tab className={styles.Tab}>Download SVG</Tab>
+              </Tab.List>
+
+              <Tab.Panels>
+                <Tab.Panel>
+                  <Longform>
+                    <p>Install the dependencies:</p>
+                    <pre>{`yarn add polaris polaris-icons`}</pre>
+
+                    <p>
+                      Import the Icon component and the {selectedIcon.name}{" "}
+                      icon:
+                    </p>
+                    <pre>{`import { Icon } from "@shopify/polaris";
+import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
 
 <Icon source={${selectedIcon.fileName}} color="base" />`}</pre>
+                  </Longform>
+                </Tab.Panel>
 
-              <h4>Figma</h4>
-              <p>
-                From inside Figma, enable{" "}
-                <a href="https://www.figma.com/community/file/930503928500000754">
-                  the Polaris icon library
-                </a>
-                . The add the file from the assets pane.
-              </p>
-            </Longform>
+                <Tab.Panel>
+                  <Longform>
+                    <p>
+                      From inside Figma, enable{" "}
+                      <a href="https://www.figma.com/community/file/930503928500000754">
+                        the Polaris icon library
+                      </a>
+                      . The add the file from the assets pane.
+                    </p>
+                  </Longform>
+                </Tab.Panel>
 
-            <h4>Download</h4>
-            <a href={`/icons/${selectedIcon.fileName}.svg`} download>
-              {selectedIcon.fileName}.svg
-            </a>
+                <Tab.Panel>
+                  <Longform>
+                    <p>
+                      <a href={`/icons/${selectedIcon.fileName}.svg`} download>
+                        {selectedIcon.fileName}.svg
+                      </a>
+                    </p>
+                  </Longform>
+                </Tab.Panel>
+              </Tab.Panels>
+            </Tab.Group>
           </div>
         </Dialog>
       )}
@@ -142,15 +175,23 @@ function IconGallery({}: Props) {
 
 function IconGrid({
   filteredIcons,
+  selectedIconName,
   onClick,
 }: {
   filteredIcons: typeof icons;
+  selectedIconName: string | undefined;
   onClick: (iconName: string) => void;
 }) {
   return (
     <ul className={styles.IconGrid}>
       {filteredIcons.map((icon) => (
-        <li key={`${icon.name}+${icon.set}`} className={styles.Icon}>
+        <li
+          key={`${icon.name}+${icon.set}`}
+          className={[
+            styles.Icon,
+            selectedIconName === icon.name ? styles.current : null,
+          ].join(" ")}
+        >
           <button onClick={() => onClick(icon.name)}>
             <div style={{ filter: "brightness(-500%)" }}>
               <Image

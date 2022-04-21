@@ -18,6 +18,11 @@
   -webkit-font-smoothing: antialiased;
   border: none;
   appearance: none;
+  outline: none;
+}
+
+*:focus-visible {
+  box-shadow: 0 0 0 2px black;
 }
 
 body {
