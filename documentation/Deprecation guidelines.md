@@ -14,3 +14,15 @@
 ## Examples
 
 - [Deprecation of `Navigation.UserMenu`](https://github.com/Shopify/polaris/pull/849).
+
+# Deprecation console message guidelines
+
+Use `warn` for messages `Deprecation` messages.
+
+```js
+console.warn(
+  'Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead.',
+);
+```
+
+Use `Deprecation` prefix for messages that warn developers when component APIs are in the process of being replaced. It’s important to notify developers of breaking changes ahead of their release.
