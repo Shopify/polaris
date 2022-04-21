@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from 'react';
-import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'react-fast-compare';
 
+import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
@@ -156,7 +156,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
       totals && styles.ShowTotals,
       showTotalsInFooter && styles.ShowTotalsInFooter,
-      increasedTableDensity && styles.IncreasedTableDensity,
       hasZebraStripingOnData && styles.ZebraStripingOnData,
       hasZebraStripingOnData && rowCountIsEven && styles.RowCountIsEven,
     );
@@ -164,6 +163,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const wrapperClassName = classNames(
       styles.TableWrapper,
       condensed && styles.condensed,
+      increasedTableDensity && styles.IncreasedTableDensity,
     );
 
     const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;

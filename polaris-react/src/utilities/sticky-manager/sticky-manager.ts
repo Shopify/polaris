@@ -1,5 +1,4 @@
-import debounce from 'lodash/debounce';
-
+import {debounce} from '../debounce';
 import {tokens} from '../../tokens';
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
