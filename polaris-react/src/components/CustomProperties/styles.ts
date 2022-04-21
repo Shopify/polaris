@@ -8,7 +8,11 @@ import {
 } from '../../tokens';
 
 const staticCustomProperties = getStaticCustomProperties(tokens);
-const colorSchemeDeclarations = getColorSchemeDeclarations('light', tokens, osColorSchemes);
+const colorSchemeDeclarations = getColorSchemeDeclarations(
+  'light',
+  tokens,
+  osColorSchemes,
+);
 
 const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}`;
 
