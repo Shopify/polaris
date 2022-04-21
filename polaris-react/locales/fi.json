@@ -104,7 +104,11 @@
         "actionHintFile": "tai pudota tiedosto ladattavaksi",
         "actionHintImage": "tai pudota kuva ladattavaksi",
         "labelFile": "Lataa tiedosto",
-        "labelImage": "Lataa kuva"
+        "labelImage": "Lataa kuva",
+        "overlayTextVideo": "Pudota ladattava video",
+        "actionTitleVideo": "Lisää video",
+        "actionHintVideo": "tai pudota ladattava video",
+        "labelVideo": "Lataa videoita laitteeltasi"
       },
       "allowMultiple": {
         "overlayTextFile": "Pudota ladattavat tiedostot",
@@ -114,8 +118,13 @@
         "actionHintFile": "tai pudota ladattavat tiedostot",
         "actionHintImage": "tai lataa kuvat pudottamalla",
         "labelFile": "Lataa tiedostoja",
-        "labelImage": "Lataa kuvia"
-      }
+        "labelImage": "Lataa kuvia",
+        "overlayTextVideo": "Lataa video pudottamalla",
+        "actionTitleVideo": "Lisää videoita",
+        "actionHintVideo": "tai pudota ladattavat videot",
+        "labelVideo": "Lataa videoita laitteeltasi"
+      },
+      "errorOverlayTextVideo": "Videon tiedostotyyppi ei kelpaa"
     },
     "EmptySearchResult": {
       "altText": "Tyhjennä hakutulokset"
