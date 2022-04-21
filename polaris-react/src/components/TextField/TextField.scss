@@ -177,7 +177,7 @@ $spinner-icon-size: 12px;
   bottom: 0;
   left: 0;
   background-color: var(--p-surface);
-  border: var(--p-line-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-top-color: var(--p-border-shadow);
   border-radius: var(--p-border-radius-1);
   pointer-events: none;
@@ -258,7 +258,7 @@ $spinner-icon-size: 12px;
 
 .Spinner {
   --pc-text-field-spinner-offset-large: calc(
-    var(--p-text-field-spinner-offset) + var(--p-line-width-1)
+    var(--p-text-field-spinner-offset) + var(--p-border-width-1)
   );
   z-index: var(--pc-text-field-contents);
   margin: var(--pc-text-field-spinner-offset-large);

@@ -15,7 +15,7 @@
   font-weight: var(--p-font-weight-regular);
 
   @media print {
-    border: solid var(--p-line-width-1) var(--p-border);
+    border: solid var(--p-border-width-1) var(--p-border);
   }
 }
 
@@ -68,7 +68,7 @@
   margin-left: calc(
     var(--pc-badge-vertical-padding) - var(--pc-badge-pip-spacing)
   );
-  border: var(--p-line-width-2) solid currentColor;
+  border: var(--p-border-width-2) solid currentColor;
   border-radius: var(--p-border-radius-half);
   flex-shrink: 0;
 }

@@ -39,32 +39,32 @@
     "value": "50%",
     "description": ""
   },
-  "line-width-1": {
+  "border-width-1": {
     "value": "1px",
     "description": ""
   },
-  "line-width-2": {
+  "border-width-2": {
     "value": "2px",
     "description": ""
   },
-  "line-width-3": {
+  "border-width-3": {
     "value": "3px",
     "description": ""
   },
   "border-base": {
-    "value": "var(--p-line-width-1) solid var(--p-border-subdued)",
+    "value": "var(--p-border-width-1) solid var(--p-border-subdued)",
     "description": ""
   },
   "border-dark": {
-    "value": "var(--p-line-width-1) solid var(--p-border)",
+    "value": "var(--p-border-width-1) solid var(--p-border)",
     "description": ""
   },
   "border-transparent": {
-    "value": "var(--p-line-width-1) solid transparent",
+    "value": "var(--p-border-width-1) solid transparent",
     "description": ""
   },
   "border-divider": {
-    "value": "var(--p-line-width-1) solid var(--p-divider)",
+    "value": "var(--p-border-width-1) solid var(--p-divider)",
     "description": ""
   }
 }

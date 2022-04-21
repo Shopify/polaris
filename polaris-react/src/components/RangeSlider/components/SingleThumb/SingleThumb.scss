@@ -127,7 +127,7 @@
   }
 
   &:focus {
-    outline: var(--p-line-width-1) solid transparent;
+    outline: var(--p-border-width-1) solid transparent;
     @include range-thumb-selectors {
       border-color: var(--p-surface);
       box-shadow: 0 0 0 2px var(--p-focused);
@@ -201,7 +201,7 @@ $range-output-translate-x: calc(
   transition-property: transform;
   transition-duration: var(--p-duration-200);
   transition-timing-function: var(--p-ease);
-  outline: var(--p-line-width-1) solid transparent;
+  outline: var(--p-border-width-1) solid transparent;
 
   // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Input:hover + .Output &,

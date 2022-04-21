@@ -105,7 +105,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   @include text-emphasis-normal;
 
   &:focus .Title {
-    outline: var(--p-line-width-3) solid transparent;
+    outline: var(--p-border-width-3) solid transparent;
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -113,7 +113,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   }
 
   .Title {
-    outline: var(--p-line-width-3) solid transparent;
+    outline: var(--p-border-width-3) solid transparent;
     color: var(--p-text);
 
     &::before {

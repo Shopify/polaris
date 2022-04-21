@@ -15,7 +15,7 @@
   margin: 0;
   padding: var(--p-space-05);
   border-radius: var(--p-border-radius-1);
-  border: var(--p-line-width-1) solid var(--p-border-neutral-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
   @include focus-ring($border-width: 1px);
 
   &:hover {
