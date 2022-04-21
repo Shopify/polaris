@@ -102,3 +102,27 @@
     background-color: var(--p-action-primary);
   }
 }
+
+.breakpoints-xl-up {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xl-up} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-xl-down {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xl-down} {
+    background-color: var(--p-action-primary);
+  }
+}
+
+.breakpoints-xl-only {
+  background-color: var(--p-action-critical);
+
+  @media #{$p-breakpoints-xl-only} {
+    background-color: var(--p-action-primary);
+  }
+}
