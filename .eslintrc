@@ -92,12 +92,6 @@
       }
     },
     {
-      "files": ["polaris-tokens/**/*"],
-      "rules": {
-        "import/no-default-export": "off"
-      }
-    },
-    {
       "files": ["polaris.shopify.com/**/*"],
       "extends": "plugin:@next/eslint-plugin-next/recommended",
       "rules": {

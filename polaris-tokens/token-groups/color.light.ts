@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   background: {
     value: 'rgba(246, 246, 247, 1)',
     description:
@@ -588,5 +588,3 @@ const colors = {
       'For use as a decorative text color that is applied on a decorative surface.',
   },
 };
-
-export default colors;

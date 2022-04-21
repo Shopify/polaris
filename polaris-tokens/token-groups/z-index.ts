@@ -1,4 +1,4 @@
-const zIndex = {
+export const zIndex = {
   'z-1': {
     value: '100',
     description: '',
@@ -48,5 +48,3 @@ const zIndex = {
     description: '',
   },
 };
-
-export default zIndex;

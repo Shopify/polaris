@@ -1,4 +1,4 @@
-const shape = {
+export const shape = {
   'border-radius-05': {
     value: '2px',
     description: '',
@@ -68,5 +68,3 @@ const shape = {
     description: '',
   },
 };
-
-export default shape;

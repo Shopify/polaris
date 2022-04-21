@@ -1,4 +1,4 @@
-const motion = {
+export const motion = {
   'duration-0': {
     value: '0ms',
     description: '',
@@ -64,5 +64,3 @@ const motion = {
     description: '',
   },
 };
-
-export default motion;

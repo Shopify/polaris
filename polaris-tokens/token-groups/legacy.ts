@@ -1,4 +1,4 @@
-const legacy = {
+export const legacy = {
   'override-loading-z-index': {
     value: '514',
     description: '',
@@ -77,5 +77,3 @@ const legacy = {
     description: '',
   },
 };
-
-export default legacy;

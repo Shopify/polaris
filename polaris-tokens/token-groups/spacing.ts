@@ -1,4 +1,4 @@
-const spacing = {
+export const spacing = {
   'space-0': {
     value: '0',
     description: '',
@@ -68,5 +68,3 @@ const spacing = {
     description: '',
   },
 };
-
-export default spacing;

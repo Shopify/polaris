@@ -1,4 +1,4 @@
-const depth = {
+export const depth = {
   'shadow-transparent': {
     value: '0 0 0 0 transparent',
     description: '',
@@ -50,5 +50,3 @@ const depth = {
     description: '',
   },
 };
-
-export default depth;

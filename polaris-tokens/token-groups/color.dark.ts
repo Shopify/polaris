@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   background: {
     value: 'rgba(11, 12, 13, 1)',
     description: '',
@@ -512,5 +512,3 @@ const colors = {
     description: '',
   },
 };
-
-export default colors;
