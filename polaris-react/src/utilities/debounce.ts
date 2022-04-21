@@ -27,7 +27,7 @@ export function debounce<T extends (this: unknown, ...args: any[]) => any>(
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
-  const wait = Number(waitArg) || 0;
+  const wait = waitArg || 0;
   if (typeof options === 'object') {
     leading = Boolean(options.leading);
     maxing = 'maxWait' in options;
@@ -39,8 +39,8 @@ export function debounce<T extends (this: unknown, ...args: any[]) => any>(
     const args = lastArgs;
     const thisArg = lastThis;
 
-    // eslint-disable-next-line no-multi-assign
-    lastArgs = lastThis = undefined;
+    lastArgs = undefined;
+    lastThis = undefined;
     lastInvokeTime = time;
     result = func.apply(thisArg, args);
     return result;
