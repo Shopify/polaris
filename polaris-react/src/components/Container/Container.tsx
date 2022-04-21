@@ -17,7 +17,7 @@ export interface ContainerProps {
   /**
    * Determine the max-width of the container. The container width grows with
    * the size of the screen. Set to false to disable maxWidth.
-   * @default 'lg'
+   * @default 'xl'
    */
   maxWidth?: Breakpoints | false;
   /**
@@ -30,7 +30,7 @@ export interface ContainerProps {
 export function Container(props: ContainerProps) {
   const {
     className,
-    maxWidth = 'lg',
+    maxWidth = 'xl',
     disableGutters = false,
     ...restProps
   } = props;
