@@ -13,6 +13,8 @@ export interface PaneProps {
   sectioned?: boolean;
   /** The pane content */
   children?: React.ReactNode;
+  /** Maximum height to set on the popover pane */
+  maxHeight?: string;
   /** Callback when the bottom of the popover is reached by mouse or keyboard  */
   onScrolledToBottom?(): void;
 }
@@ -21,12 +23,14 @@ export function Pane({
   fixed,
   sectioned,
   children,
+  maxHeight,
   onScrolledToBottom,
 }: PaneProps) {
   const className = classNames(styles.Pane, fixed && styles['Pane-fixed']);
   const content = sectioned
     ? wrapWithComponent(children, Section, {})
     : children;
+  const style = maxHeight ? {maxHeight} : undefined;
 
   return fixed ? (
     <div className={className}>{content}</div>
@@ -34,6 +38,7 @@ export function Pane({
     <Scrollable
       shadow
       className={className}
+      style={style}
       onScrolledToBottom={onScrolledToBottom}
     >
       {content}
