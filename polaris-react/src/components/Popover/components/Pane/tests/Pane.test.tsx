@@ -127,4 +127,25 @@ describe('<Pane />', () => {
       expect(onScrolledToBottom).toHaveBeenCalled();
     });
   });
+
+  describe('maxHeight', () => {
+    it('sets the max height on Scrollable', () => {
+      const maxHeight = '100px';
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane maxHeight={maxHeight}>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane).toContainReactComponent(Scrollable, {
+        style: {maxHeight},
+      });
+    });
+  });
 });
