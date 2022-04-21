@@ -3,36 +3,6 @@ const path = require('path');
 
 const {osColorSchemes, tokens} = require('../dist/index');
 
-function writeDistFile(fileName, content) {
-  const filePath = path.join(process.cwd(), 'dist', fileName);
-
-  fs.writeFileSync(filePath, content);
-}
-
-/**
- ******************************
- * Create json token group files
- ******************************
- */
-Object.entries(tokens).forEach(([tokenGroup, tokenProps]) => {
-  if (tokenGroup === 'colorSchemes') {
-    Object.entries(tokenProps).forEach(([colorTokenGroup, colorTokenProps]) => {
-      const fileName = `colors.${colorTokenGroup}.json`;
-
-      writeDistFile(fileName, JSON.stringify(colorTokenProps));
-    });
-  } else {
-    const fileName = `${tokenGroup}.json`;
-
-    writeDistFile(fileName, JSON.stringify(tokenProps));
-  }
-});
-
-/**
- ******************************
- * Create CSS file
- ******************************
- */
 const staticCustomProperties = getStaticCustomProperties(tokens);
 const colorSchemeDeclarations = getColorSchemeDeclarations(
   'light',
@@ -116,4 +86,7 @@ const styles = `
   ${getKeyframes(tokens.motion)}
 `;
 
-writeDistFile('styles.css', styles);
+const fileName = 'styles.css';
+const filePath = path.join(process.cwd(), 'dist', fileName);
+
+fs.writeFileSync(filePath, styles);
