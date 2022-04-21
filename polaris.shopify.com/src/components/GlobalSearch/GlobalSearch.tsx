@@ -92,7 +92,7 @@ function GlobalSearch({}: Props) {
                       {item.meta.icon?.fileName && (
                         <div
                           style={{
-                            filter: `brightness(100%) saturation(0%)`,
+                            filter: `brightness(0%) saturation(0%)`,
                             width: 32,
                             height: 32,
                             display: "flex",
@@ -114,9 +114,6 @@ function GlobalSearch({}: Props) {
                       <div>
                         <p className={styles.Title}>{item.title}</p>
                         <p className={styles.Excerpt}>{item.excerpt}</p>
-                        <p className={styles.Url}>
-                          {item.url.replace(/\#.*$/, "")}
-                        </p>
                       </div>
 
                       {item.category === "Components" && (

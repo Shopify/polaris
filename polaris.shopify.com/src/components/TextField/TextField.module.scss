@@ -1,10 +1,13 @@
 .TextField {
   font-size: 0.9rem;
-  padding: 0.6rem 0.6rem 0.6rem 2.75rem;
+  padding: 0.75rem 0.6rem 0.75rem 2.75rem;
   width: 100%;
   border-radius: 4px;
-  background: #fff url(./FilterMajor.svg) no-repeat 1em center;
+  background: url(./FilterMajor.svg) no-repeat 1em center;
   background-size: 16px auto;
   border: 1px solid #ddd;
-  border-top: 1px solid #aaa;
+  border-top-color: #aaa;
+  &:focus-within {
+    border-color: transparent;
+  }
 }

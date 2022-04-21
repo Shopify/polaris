@@ -3,6 +3,7 @@
 :root {
   --header-height: 66px;
   --narrow-content-width: 720px;
+  --focus-outline: 0 0 0 2px black;
 }
 
 * {
@@ -22,7 +23,7 @@
 }
 
 *:focus-visible {
-  box-shadow: 0 0 0 2px black;
+  box-shadow: var(--focus-outline);
 }
 
 body {

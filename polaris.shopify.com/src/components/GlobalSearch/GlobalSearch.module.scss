@@ -15,10 +15,6 @@
     border-radius: 4px;
     font-size: 0.9rem;
     width: 100%;
-    font-weight: 500;
-
-    &::placeholder {
-    }
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -39,9 +35,8 @@
   max-height: 70vh;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 0 20px rgba(0, 0, 0, 0.05),
     0 50px 100px rgba(0, 0, 0, 0.2);
-  background: rgba(245, 245, 245, 0.9);
   background: white;
-  backdrop-filter: blur(15px);
+  padding: 1.5rem 0 1rem;
 
   &:empty {
     display: none;
@@ -49,8 +44,6 @@
 }
 
 .Result {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-
   &[data-is-active="true"] {
     background: #fafafa;
   }
@@ -63,23 +56,25 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 1rem 1.25rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 
 .ResultCategory {
-  margin: 0;
-  font-size: 0.7em;
-  padding: 0.3rem 1.25rem 0.3rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-  text-transform: uppercase;
-  font-weight: 500;
+  margin: 2rem 0 0;
+  padding: 0 1.5rem;
+  font-size: 1.5em;
+  letter-spacing: -0.0125em;
+  font-weight: 400;
+  .Result:first-child & {
+    margin-top: 0;
+  }
 }
 
 .Title {
   margin: 0;
+  font-size: 1em;
   font-weight: 500;
-  font-size: 15px;
 }
 
 .Excerpt {
@@ -93,13 +88,6 @@
   font-weight: 300;
 }
 
-.Url {
-  margin: 4px 0 0;
-  font-size: 0.7em;
-  line-height: 1.25;
-  color: #999;
-}
-
 .ComponentPreview {
   flex: 1;
   display: flex;
@@ -110,7 +98,6 @@
   border-radius: 6px;
   box-shadow: inset;
   overflow: hidden;
-  box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.075);
 
   img {
     margin: 0;
