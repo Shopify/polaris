@@ -7,10 +7,10 @@ import {
   OSColorSchemes,
 } from '../../tokens';
 
-const tokenValues = getStaticCustomProperties(tokens);
-const declaration = getColorSchemeDeclarations('light', tokens, osColorSchemes);
+const staticCustomProperties = getStaticCustomProperties(tokens);
+const colorSchemeDeclarations = getColorSchemeDeclarations('light', tokens, osColorSchemes);
 
-const defaultDeclarations = `${declaration}${tokenValues}`;
+const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}`;
 
 /**
  * Creates CSS Rules for each color-scheme.
