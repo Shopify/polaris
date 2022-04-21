@@ -18,7 +18,7 @@ console.warn(
 );
 ```
 
-Use `Deprecation` prefix for messages that warn developers when component APIs are in the process of being replaced. It’s important to notify developers of breaking changes ahead of their release.
+Deprecation messages warn developers when component APIs are in the process of being replaced. It’s important to notify developers of breaking changes ahead of their release.
 
 ## Examples
 
