@@ -10,7 +10,7 @@
 
 ## Deprecation console message guidelines
 
-Use `warn` for messages `Deprecation` messages.
+Use `warn` for `Deprecation` messages.
 
 ```js
 console.warn(
