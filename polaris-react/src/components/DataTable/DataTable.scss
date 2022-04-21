@@ -64,7 +64,7 @@ $breakpoint: 768px;
   }
 }
 
-// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
 .TableRow + .TableRow {
   .Cell {
     border-top: var(--p-border-divider);
@@ -185,11 +185,11 @@ $breakpoint: 768px;
   padding: var(--p-space-2);
   margin: var(--p-space-2);
 
-  [data-sticky-active] & {
+  .StickyHeaderEnabled [data-sticky-active] & {
     visibility: hidden;
   }
 
-  [data-sticky-active] .StickyTable & {
+  .StickyHeaderEnabled [data-sticky-active] .StickyTable & {
     visibility: visible;
   }
 
@@ -286,54 +286,56 @@ $breakpoint: 768px;
   }
 }
 
-.StickyTable {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  visibility: hidden;
-  z-index: var(--p-z-1);
-}
-
-.StickyTableHeader {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-
-  &:not(.StickyTableHeader-isSticky) {
-    top: -9999px;
-    left: -9999px;
+.StickyHeaderEnabled {
+  .StickyTable {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    z-index: var(--p-z-1);
   }
-}
 
-.StickyHeaderCell {
-  flex-shrink: 0;
-}
+  .StickyTableHeader {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
 
-.StickyTableColumnHeader-isScrolling {
-  box-shadow: 1px 1px 0 0 var(--p-border-divider),
-    1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
-}
-
-.StickyTableHeadingsRow {
-  flex: 1 1 auto;
-  display: flex;
-  overflow-x: auto;
-  background-color: var(--p-surface);
-  justify-content: space-between;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    appearance: none;
-    height: 0;
-    width: 0;
+    &:not(.StickyTableHeader-isSticky) {
+      top: -9999px;
+      left: -9999px;
+    }
   }
-}
 
-.StickyTableHeader-isSticky {
-  visibility: visible;
-  background-color: var(--p-surface);
-  box-shadow: var(--p-shadow-base);
+  .StickyHeaderCell {
+    flex-shrink: 0;
+  }
+
+  .StickyTableColumnHeader-isScrolling {
+    box-shadow: 1px 1px 0 0 var(--p-border-divider),
+      1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  }
+
+  .StickyTableHeadingsRow {
+    flex: 1 1 auto;
+    display: flex;
+    overflow-x: auto;
+    background-color: var(--p-surface);
+    justify-content: space-between;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      appearance: none;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  .StickyTableHeader-isSticky {
+    visibility: visible;
+    background-color: var(--p-surface);
+    box-shadow: var(--p-shadow-base);
+  }
 }

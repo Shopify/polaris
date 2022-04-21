@@ -75,6 +75,8 @@ export interface DataTableProps {
   increasedTableDensity?: boolean;
   /** Add zebra striping to data rows */
   hasZebraStripingOnData?: boolean;
+  /** Header becomes sticky and pins to top of table when scrolling  */
+  stickyHeader?: boolean;
 }
 
 type CombinedProps = DataTableProps & {
@@ -147,6 +149,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       hideScrollIndicator = false,
       increasedTableDensity = false,
       hasZebraStripingOnData = false,
+      stickyHeader = false,
     } = this.props;
     const {
       condensed,
@@ -170,6 +173,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       styles.TableWrapper,
       condensed && styles.condensed,
       increasedTableDensity && styles.IncreasedTableDensity,
+      stickyHeader && styles.StickyHeaderEnabled,
     );
 
     const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
@@ -199,7 +203,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       />
     );
 
-    const stickyHeaderMarkup = (
+    const stickyHeaderMarkup = stickyHeader ? (
       <AfterInitialMount>
         <div className={styles.StickyTable} role="presentation">
           <Sticky
@@ -291,7 +295,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           </Sticky>
         </div>
       </AfterInitialMount>
-    );
+    ) : null;
 
     return (
       <div className={wrapperClassName}>
@@ -305,12 +309,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               passive
               event="scroll"
               handler={this.scrollListener}
-            />
-            <EventListener
-                capture
-                passive
-                event="scroll"
-                handler={this.stickyHeaderScrolling}
             />
             <table className={styles.Table} ref={this.table}>
               <thead>
@@ -433,29 +431,35 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const {current: scrollContainer} = this.scrollContainer;
     const targetIsStickyHeader = event.target === stickyTableHeadingsRow;
 
-    if (stickyTableHeadingsRow == null || scrollContainer == null || table == null) {
+    if (
+      stickyTableHeadingsRow == null ||
+      scrollContainer == null ||
+      table == null
+    ) {
       return;
     }
 
     const {scrollLeft: stickyScrollLeft} = stickyTableHeadingsRow;
     const {scrollLeft: scrollContainerScrollLeft} = scrollContainer;
 
-
     if (targetIsStickyHeader) {
-      table.style.transform = `translateX(-${stickyScrollLeft}px)`
-
+      table.style.transform = `translateX(-${stickyScrollLeft}px)`;
     } else {
-      this.stickyHeadings.map(heading => {
-        heading.style.transform = `translateX(-${scrollContainerScrollLeft}px)`
-      })
+      this.stickyHeadings.map((heading) => {
+        heading.style.transform = `translateX(-${scrollContainerScrollLeft}px)`;
+      });
     }
   };
 
-  private scrollListener = debounce(() => {
-    this.setState((prevState) => ({
-      ...this.calculateColumnVisibilityData(prevState.condensed),
-    }));
-  }, 500);
+  private scrollListener = (event: Event) => {
+    debounce(() => {
+      this.setState((prevState) => ({
+        ...this.calculateColumnVisibilityData(prevState.condensed),
+      }));
+    }, 500);
+
+    this.stickyHeaderScrolling(event);
+  };
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
