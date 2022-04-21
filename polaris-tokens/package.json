@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -b && node scripts/build",
     "test": "yarn validate-tokens",
-    "validate-tokens": "ajv validate -s schemas/token-group.json -d 'token-groups/*.json'"
+    "validate-tokens": "ajv validate -s schemas/token-group.json -d 'dist/*.json'"
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0"
