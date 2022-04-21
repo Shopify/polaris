@@ -1,4 +1,6 @@
-import {useState, useCallback, useEffect} from 'react';
+import {useState, useCallback} from 'react';
+
+import {useDeepEffect} from './use-deep-effect';
 
 export enum SelectionType {
   All = 'all',
@@ -95,13 +97,12 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     [allResourcesSelected, resources, resourceIDResolver],
   );
 
-  useEffect(() => {
+  useDeepEffect(() => {
     const resourceIds = resources.map((resource) => resource.id);
     setSelectedResources((oldSelectedResources) =>
       oldSelectedResources.filter((item) => resourceIds.includes(item)),
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resources.length]);
+  }, [resources]);
 
   return {selectedResources, allResourcesSelected, handleSelectionChange};
 }
