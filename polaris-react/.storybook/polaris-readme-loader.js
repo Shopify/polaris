@@ -25,9 +25,12 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
-    readme.name,
-  );
+  const hasFullscreenLayout = [
+    'App provider',
+    'Frame',
+    'Navigation',
+    'Container',
+  ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
     return `
@@ -70,6 +73,7 @@ import {
   ButtonGroup,
   CalloutCard,
   Caption,
+  Container,
   Card,
   Checkbox,
   ChoiceList,

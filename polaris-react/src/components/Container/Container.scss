@@ -1,0 +1,29 @@
+@import '../../styles/tokens';
+
+.root {
+  margin: 0 auto;
+}
+
+.gutters {
+  padding: 0 var(--p-space-2);
+
+  @media #{$p-breakpoints-md-up} {
+    padding: 0 var(--p-space-8);
+  }
+}
+
+.max-width-xs {
+  max-width: var(--p-breakpoints-xs);
+}
+
+.max-width-sm {
+  max-width: var(--p-breakpoints-sm);
+}
+
+.max-width-md {
+  max-width: var(--p-breakpoints-md);
+}
+
+.max-width-lg {
+  max-width: var(--p-breakpoints-lg);
+}

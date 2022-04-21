@@ -80,6 +80,9 @@ export type {CalloutCardProps} from './components/CalloutCard';
 export {Caption} from './components/Caption';
 export type {CaptionProps} from './components/Caption';
 
+export {Container} from './components/Container';
+export type {ContainerProps} from './components/Container';
+
 export {Card} from './components/Card';
 export type {
   CardProps,
