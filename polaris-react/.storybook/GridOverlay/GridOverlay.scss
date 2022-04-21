@@ -1,5 +1,8 @@
 .GridOverlay {
-  position: absolute;
+  --pc-page-max-width: 998px;
+  --pc-top-bar-height: 56px;
+  --pc-nav-width: 240px;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -20,4 +23,17 @@
 .Cell {
   height: 100%;
   background-color: var(--p-surface);
+}
+
+.inset {
+  max-width: var(--pc-page-max-width);
+  margin: 0 auto;
+}
+
+.inFrame {
+  top: var(--pc-top-bar-height);
+
+  @media screen and (min-width: 769px) {
+    left: var(--pc-nav-width);
+  }
 }

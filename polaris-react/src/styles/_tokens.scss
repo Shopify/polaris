@@ -3,18 +3,19 @@
 
 /* Breakpoints - Aliases */
 $p-breakpoints-xs: 0em;
-$p-breakpoints-sm: 30em;
+$p-breakpoints-sm: 35em;
 $p-breakpoints-md: 48em;
 $p-breakpoints-lg: 63em;
+$p-breakpoints-xl: 111em;
 
 /* Breakpoints - Media conditions */
 $p-breakpoints-xs-up: '(min-width: 0em)';
 $p-breakpoints-xs-down: '(max-width: 0em)';
-$p-breakpoints-xs-only: '(min-width: 0em) and (max-width: 30em)';
+$p-breakpoints-xs-only: '(min-width: 0em) and (max-width: 35em)';
 
-$p-breakpoints-sm-up: '(min-width: 30em)';
-$p-breakpoints-sm-down: '(max-width: 30em)';
-$p-breakpoints-sm-only: '(min-width: 30em) and (max-width: 48em)';
+$p-breakpoints-sm-up: '(min-width: 35em)';
+$p-breakpoints-sm-down: '(max-width: 35em)';
+$p-breakpoints-sm-only: '(min-width: 35em) and (max-width: 48em)';
 
 $p-breakpoints-md-up: '(min-width: 48em)';
 $p-breakpoints-md-down: '(max-width: 48em)';
@@ -22,4 +23,8 @@ $p-breakpoints-md-only: '(min-width: 48em) and (max-width: 63em)';
 
 $p-breakpoints-lg-up: '(min-width: 63em)';
 $p-breakpoints-lg-down: '(max-width: 63em)';
-$p-breakpoints-lg-only: '(min-width: 63em)';
+$p-breakpoints-lg-only: '(min-width: 63em) and (max-width: 111em)';
+
+$p-breakpoints-xl-up: '(min-width: 111em)';
+$p-breakpoints-xl-down: '(max-width: 111em)';
+$p-breakpoints-xl-only: '(min-width: 111em)';

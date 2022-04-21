@@ -1,6 +1,6 @@
 # NodeJS support
 
-`@shopify/polaris` supports the [last two long term support (LTS) versions](https://nodejs.org/en/about/releases/) of NodeJS. This matches our approach for the [Shopify CLI](https://github.com/Shopify/shopify-cli) a tool used by developers to quickly create applications that uses Polaris.
+`@shopify/polaris` supports node's long term suppport (LTS) versions that are in the active or maintenance stages of their [lifecycle](https://nodejs.org/en/about/releases/). We should also ensure support for critical repositories at Shopify like `shopify/web`, 1st party applications and `shopify/cli`.
 
 ## Local development
 
@@ -36,4 +36,18 @@ The `.nvmrc` file for local development. This should match the `dev.yml` file.
 
 ```
 v16.13.0
+```
+
+The `shipit.yml` files. This should point towards the GitHub actions the packages require to pass before publishing.
+
+```yml
+ci:
+  require:
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
+
+merge:
+  require:
+    - 'Test with node v14.17.0'
+    - 'Test with node v16.13.0'
 ```
