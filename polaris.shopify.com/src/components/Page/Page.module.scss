@@ -1,98 +1,62 @@
+.Page {
+  display: flex;
+}
+
 .Header {
   position: sticky;
-  z-index: 1;
+  z-index: 2;
   top: 0;
-  width: 100%;
   display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 2em;
-  padding: 0 2rem;
-  height: var(--header-height);
-  background: white;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.025), 0 1px 2px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+  height: 100vh;
 }
 
 .Logo {
   display: flex;
   align-items: center;
-  gap: 0.75em;
-  font-weight: 500;
+  font-weight: var(--font-weight-500);
   color: inherit;
+  gap: 1em;
+  margin: 1em 1em 1.75em;
 
   p {
     margin: 0;
   }
 }
 
-.HeaderNav {
-  display: flex;
-  font-weight: 500;
-  position: absolute;
-  justify-content: center;
-  top: 6px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  height: calc(var(--header-height) - 12px);
-  z-index: -1;
+.HeaderMain {
+  padding: 1em 2em 1em 1em;
+  width: 16em;
+  background: #fafafa;
 
-  a {
+  li a {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 0.75em;
+    padding: 0.66em 1rem;
     color: inherit;
-    position: relative;
+    gap: 1em;
+    font-weight: var(--font-weight-500);
   }
+}
 
-  // This is a bit convoluted, but...
-  // We want: the hover cursor to be uninterrupted
-  // as you move through the nav. We also want a small
-  // visual gap between the current/hover highlights.
-  // By using a psudo element for the highlights, the
-  // links themselves can have 0 gap (which gives us
-  // the uninterrupted cursor state) but maintain a
-  // small visual gap between the highlights.
-  li a:hover:before,
-  li[aria-current="page"] a:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0.5px;
-    bottom: 0;
-    left: 0.5px;
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.05);
-  }
+.HeaderSub {
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
 }
 
 .SearchWrapper {
-  margin-left: auto;
-  width: 16em;
-  align-self: center;
-  transition: width 0.25s ease;
-  &:focus-within {
-    width: 30em;
-  }
+  margin: 1rem 0;
 }
 
 .Content {
-  margin: 3rem 0;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  gap: 4em;
-
-  .Page.noLayout & {
-    margin: 0;
-  }
+  flex: 1;
 }
 
 .MainContent {
-  display: flex;
-}
-
-.MainContentInner {
+  margin: 4em auto;
   max-width: 42em;
 }

@@ -1,10 +1,10 @@
 .Button {
   appearance: none;
-  background: #f2f2f2;
+  background: #fbfbfb;
   padding: 0.3em 0.5em 0.35em;
   border: none;
-  font-weight: 400;
-  border-radius: 0.25em;
+  font-weight: var(--font-weight-400);
+  border-radius: var(--border-radius-200);
   cursor: pointer;
 
   &:hover {
@@ -12,7 +12,7 @@
   }
 
   &.small {
-    font-size: 0.85em;
+    font-size: var(--font-size-200);
   }
 
   &.pill {

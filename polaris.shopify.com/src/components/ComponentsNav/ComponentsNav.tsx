@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import components from "../../data/components.json";
 import {
@@ -9,17 +9,41 @@ import {
   slugify,
 } from "../../utils/various";
 import Button from "../Button";
+import Image from "../Image/Image";
 import TextField from "../TextField";
 import styles from "./ComponentsNav.module.scss";
 
 const componentCategories = getComponentCategories();
 
-function ComponentsNav() {
-  const [filterText, setFilterText] = useState("");
-  const [filterCategory, setFilterCategory] = useState<string>("all");
+interface Props {
+  category: string;
+}
 
+function ComponentsNav({ category }: Props) {
   const router = useRouter();
   const currentPath = router.asPath;
+  let searchParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : new URLSearchParams("");
+
+  const q = searchParams.get("q");
+  const [filterText, setFilterText] = useState(q || "");
+
+  useEffect(() => {
+    if (q) {
+      setFilterText(q);
+    }
+  }, [q]);
+
+  function getUrl(category: string, filter: string | null): string {
+    const queryParam = filter ? `?q=${filter}` : "";
+    if (category === "all") {
+      return `/components${queryParam}`;
+    } else {
+      return `/components/${slugify(category)}${queryParam}`;
+    }
+  }
 
   return (
     <div className={styles.ComponentsNav}>
@@ -30,41 +54,41 @@ function ComponentsNav() {
           <TextField
             type="text"
             value={filterText}
-            onChange={(value) => setFilterText(value)}
+            onChange={(value) => {
+              setFilterText(value);
+              router.replace(getUrl(category, value));
+            }}
             placeholder="Filter components"
           />
         </div>
 
         <Button
-          onClick={() => setFilterCategory("all")}
-          aria-pressed={filterCategory === "all"}
+          onClick={() => router.replace(getUrl("all", filterText))}
+          aria-pressed={category === "all"}
           pill
         >
           All
         </Button>
 
-        {componentCategories
-          .filter((category) => category !== "other")
-          .map((category) => (
-            <Button
-              key={category}
-              onClick={() => setFilterCategory(category)}
-              aria-pressed={category === filterCategory}
-              pill
-            >
-              {category}
-            </Button>
-          ))}
+        {componentCategories.map((thisCategory) => (
+          <Button
+            key={thisCategory}
+            onClick={() => router.replace(getUrl(thisCategory, filterText))}
+            aria-pressed={category === thisCategory}
+            pill
+          >
+            {thisCategory}
+          </Button>
+        ))}
       </div>
 
       <ul>
         {components
-          .filter(({ frontMatter }) => frontMatter.category !== "other")
           .filter(({ frontMatter }) => {
-            if (filterCategory === "all") {
+            if (category === "all") {
               return true;
             }
-            return frontMatter.category === filterCategory;
+            return frontMatter.category === category;
           })
           .filter(({ frontMatter }) =>
             frontMatter.name.toLowerCase().includes(filterText.toLowerCase())

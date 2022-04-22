@@ -1,42 +1,32 @@
 .GlobalSearch {
-  position: relative;
-
-  a {
-    color: inherit;
-  }
-
+  padding-left: 1rem;
   input {
-    background: #f8f8f8 url(./SearchMajor.svg) no-repeat 1em center;
+    background: #ffffff url(./SearchMajor.svg) no-repeat 1em center;
     background-size: 16px auto;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    appearance: none;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    width: 100%;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
     &::-webkit-search-results-decoration {
-      -webkit-appearance: none;
+      appearance: none;
     }
   }
 }
 
 .Results {
   position: absolute;
-  z-index: 2;
-  border-radius: 8px;
-  width: 100%;
+  z-index: 1;
+  border-radius: var(--border-radius-500);
+  width: 30em;
   animation: search-results-enter 0.3s cubic-bezier(0.25, 1, 0.5, 1) both;
+  transform-origin: 0 0;
   overflow: auto;
+  overscroll-behavior: contain;
   max-height: 70vh;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 0 20px rgba(0, 0, 0, 0.05),
-    0 50px 100px rgba(0, 0, 0, 0.2);
-  background: white;
-  padding: 1.5rem 0 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.025), 0 0 20px rgba(0, 0, 0, 0.025),
+    0 50px 100px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 1.75rem 0.5em 1.25rem;
 
   &:empty {
     display: none;
@@ -44,10 +34,6 @@
 }
 
 .Result {
-  &[data-is-active="true"] {
-    background: #fafafa;
-  }
-
   &:last-child {
     border-bottom: none;
   }
@@ -57,30 +43,37 @@
     align-items: center;
     gap: 16px;
     padding: 0.5rem 1.5rem;
+    border-radius: var(--border-radius-400);
+    color: inherit;
+  }
+
+  &[data-is-active="true"] a {
+    background: var(--primary);
+    color: white;
   }
 }
 
 .ResultCategory {
   margin: 2rem 0 0;
-  padding: 0 1.5rem;
-  font-size: 1.5em;
-  letter-spacing: -0.0125em;
-  font-weight: 400;
-  .Result:first-child & {
+  padding: 0 1rem;
+  font-size: var(--font-size-700);
+  letter-spacing: var(--letter-spacing-200);
+  font-weight: var(--font-weight-400);
+
+  &:first-child {
     margin-top: 0;
   }
 }
 
 .Title {
   margin: 0;
-  font-size: 1em;
-  font-weight: 500;
+  font-weight: var(--font-weight-500);
 }
 
 .Excerpt {
   margin: 0;
   font-size: 0.8em;
-  display: -webkit-box;
+  display: flex;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -95,7 +88,7 @@
   min-width: 200px;
   max-width: 200px;
   height: auto;
-  border-radius: 6px;
+  border-radius: var(--border-radius-400);
   box-shadow: inset;
   overflow: hidden;
 
@@ -106,9 +99,10 @@
 
 @keyframes search-results-enter {
   from {
-    transform: scale(0.99) translateY(4px);
+    transform: scale(0.925) translateY(4px);
     opacity: 0;
   }
+
   to {
     transform: scale(1) translateY(4px);
     opacity: 1;

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import polarisLogo from "../../../public/polaris-logo.svg";
+import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import { useRouter } from "next/router";
 import GlobalSearch from "../GlobalSearch";
@@ -12,11 +12,23 @@ interface Props {
   children: React.ReactNode;
 }
 
-const headerNavItems: { url: string; label: string }[] = [
-  { url: "/docs/foundations/experience-values", label: "Guidelines" },
-  { url: "/components", label: "Components" },
-  { url: "/tokens/getting-started", label: "Tokens" },
-  { url: "/icons", label: "Icons" },
+const headerNavItems: {
+  url: string;
+  label: string;
+  icon: string;
+}[] = [
+  {
+    url: "/docs/foundations/experience-values",
+    label: "Guidelines",
+    icon: "/file-text.svg",
+  },
+  { url: "/components", label: "Components", icon: "/package.svg" },
+  {
+    url: "/tokens/getting-started",
+    label: "Tokens",
+    icon: "/layers.svg",
+  },
+  { url: "/icons", label: "Icons", icon: "/grid.svg" },
 ];
 
 function Page({ renderNav, noLayout = false, children }: Props) {
@@ -25,42 +37,58 @@ function Page({ renderNav, noLayout = false, children }: Props) {
   return (
     <div className={[styles.Page, noLayout ? styles.noLayout : null].join(" ")}>
       <div className={styles.Header}>
-        <Link href="/">
-          <a className={styles.Logo}>
-            <Image src={polarisLogo} width={32} height={32} alt="" />
-            Polaris
-          </a>
-        </Link>
+        <div className={styles.HeaderMain}>
+          <Link href="/">
+            <a className={styles.Logo}>
+              <Image
+                src={shopifyLogo}
+                width={32}
+                height={32}
+                alt="Shopify logo"
+              />
+              Polaris
+            </a>
+          </Link>
 
-        <ul className={styles.HeaderNav}>
-          {headerNavItems.map(({ url, label }) => {
-            const section = router.asPath.split("/").slice(0, 2).join("/");
-            const isCurrent =
-              section !== "/" && url.startsWith(section) ? "page" : false;
-            return (
-              <li key={url} aria-current={isCurrent}>
-                <Link href={url}>{label}</Link>
-              </li>
-            );
-          })}
-        </ul>
+          <div className={styles.SearchWrapper}>
+            <GlobalSearch />
+          </div>
 
-        <div className={styles.SearchWrapper}>
-          <GlobalSearch />
+          <ul className={styles.HeaderNav}>
+            {headerNavItems.map(({ url, label, icon }) => {
+              const section = router.asPath.split("/").slice(0, 2).join("/");
+              const isCurrent =
+                section !== "/" && url.startsWith(section) ? "page" : false;
+              return (
+                <li key={url} aria-current={isCurrent}>
+                  <Link href={url}>
+                    <a>
+                      <Image
+                        src={icon}
+                        width={24}
+                        height={24}
+                        layout="fixed"
+                        alt=""
+                      />
+                      {label}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
+
+        <div className={styles.HeaderSub}>{renderNav && renderNav()}</div>
       </div>
 
-      {noLayout ? (
-        <>{children}</>
-      ) : (
-        <div className={styles.Content}>
-          {renderNav && renderNav()}
-
-          <div className={styles.MainContent}>
-            <div className={styles.MainContentInner}>{children}</div>
-          </div>
-        </div>
-      )}
+      <div className={styles.Content}>
+        {noLayout ? (
+          <>{children}</>
+        ) : (
+          <div className={styles.MainContent}>{children}</div>
+        )}
+      </div>
     </div>
   );
 }

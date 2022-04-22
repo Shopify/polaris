@@ -94,7 +94,6 @@ const Components: NextPage = () => {
           {Object.entries(motion)
             .filter(([name]) => name.includes("duration"))
             .map(([name, value]) => {
-              console.log(value);
               return (
                 <Token
                   key={value}

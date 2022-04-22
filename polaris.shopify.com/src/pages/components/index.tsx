@@ -13,7 +13,7 @@ const Components: NextPage<Props> = () => {
         <title>{getTitleForTitleTag("Components")}</title>
       </Head>
 
-      <ComponentsNav />
+      <ComponentsNav category="all" />
     </Page>
   );
 };

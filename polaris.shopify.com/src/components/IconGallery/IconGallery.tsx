@@ -1,9 +1,8 @@
-import Image from "next/image";
+import Image from "../Image";
 import { useState } from "react";
 import TextField from "../TextField";
 import icons from "../../data/icons.json";
 import Fuse from "fuse.js";
-import { Dialog } from "@headlessui/react";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
@@ -40,66 +39,56 @@ function IconGallery({}: Props) {
 
   return (
     <div className={styles.IconGallery}>
-      <div className={styles.Filter}>
-        <h2>Icons</h2>
-        <div className={styles.TextField}>
-          <TextField
-            value={filterString}
-            onChange={(value) => setFilterString(value)}
-            placeholder="Filter icons"
-          />
+      <div style={{ flex: 1 }}>
+        <div className={styles.Filter}>
+          <h2>Icons</h2>
+          <div className={styles.TextField}>
+            <TextField
+              value={filterString}
+              onChange={(value) => setFilterString(value)}
+              placeholder="Filter icons"
+            />
+          </div>
+        </div>
+
+        <div className={styles.IconGrids}>
+          {majorIcons.length > 0 && (
+            <>
+              <div className={styles.SectionHeading}>
+                <p>
+                  <b>Major icons.</b> Used for things like lorem ipsum dolor et
+                  amet consecteur
+                </p>
+              </div>
+              <IconGrid
+                filteredIcons={majorIcons}
+                selectedIconName={selectedIconName}
+                onClick={(iconName) => setSelectedIconName(iconName)}
+              />
+            </>
+          )}
+
+          {minorIcons.length > 0 && (
+            <>
+              <div className={styles.SectionHeading}>
+                <p>
+                  <b>Minor icons.</b> Used for things like lorem ipsum dolor et
+                  amet consecteur
+                </p>
+              </div>
+              <IconGrid
+                filteredIcons={minorIcons}
+                selectedIconName={selectedIconName}
+                onClick={(iconName) => setSelectedIconName(iconName)}
+              />
+            </>
+          )}
         </div>
       </div>
 
-      <div className={styles.IconGrids}>
-        {majorIcons.length > 0 && (
-          <>
-            <div className={styles.SectionHeading}>
-              <p>
-                <b>Major icons.</b> Used for things like lorem ipsum dolor et
-                amet consecteur
-              </p>
-            </div>
-            <IconGrid
-              filteredIcons={majorIcons}
-              selectedIconName={selectedIconName}
-              onClick={(iconName) => setSelectedIconName(iconName)}
-            />
-          </>
-        )}
-
-        {minorIcons.length > 0 && (
-          <>
-            <div className={styles.SectionHeading}>
-              <p>
-                <b>Minor icons.</b> Used for things like lorem ipsum dolor et
-                amet consecteur
-              </p>
-            </div>
-            <IconGrid
-              filteredIcons={minorIcons}
-              selectedIconName={selectedIconName}
-              onClick={(iconName) => setSelectedIconName(iconName)}
-            />
-          </>
-        )}
-      </div>
-
-      {selectedIconName && selectedIcon && (
-        <Dialog
-          open={!!selectedIconName}
-          onClose={() => setSelectedIconName(undefined)}
-          className={styles.Dialog}
-        >
-          <Dialog.Overlay className={styles.Overlay} />
-
-          <div className={styles.DialogContent}>
-            <button
-              onClick={() => setSelectedIconName(undefined)}
-              aria-label="Close dialog"
-              className={styles.CloseDialog}
-            ></button>
-
+      {selectedIcon && (
+        <div className={styles.Sidebar}>
+          <div className={styles.SidebarInner}>
             <div
               className={styles.Preview}
               style={{ filter: "brightness(-500%)" }}
@@ -113,17 +102,15 @@ function IconGallery({}: Props) {
             </div>
 
             <div className={styles.IconMeta}>
-              <Dialog.Title>{selectedIcon.fileName}</Dialog.Title>
-              <Dialog.Description>
-                {selectedIcon.description}
-              </Dialog.Description>
+              {selectedIcon.fileName}
+              {selectedIcon.description}
             </div>
 
             <Tab.Group>
               <Tab.List className={styles.Tabs}>
-                <Tab className={styles.Tab}>React instructions</Tab>
-                <Tab className={styles.Tab}>Figma instructions</Tab>
-                <Tab className={styles.Tab}>Download SVG</Tab>
+                <Tab className={styles.Tab}>React</Tab>
+                <Tab className={styles.Tab}>Figma</Tab>
+                <Tab className={styles.Tab}>Download</Tab>
               </Tab.List>
 
               <Tab.Panels>
@@ -167,7 +154,7 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
               </Tab.Panels>
             </Tab.Group>
           </div>
-        </Dialog>
+        </div>
       )}
     </div>
   );

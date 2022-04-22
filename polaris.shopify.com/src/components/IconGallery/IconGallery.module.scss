@@ -1,5 +1,9 @@
+.IconGallery {
+  display: flex;
+}
+
 .Filter {
-  padding: 3em 3em 2em;
+  padding: 2em;
 
   .TextField {
     margin-top: 1.75rem;
@@ -8,9 +12,10 @@
 
 .SectionHeading {
   padding: 0 3rem;
-  font-size: 0.9em;
+  font-size: var(--font-size-300);
+
   b {
-    font-weight: 500;
+    font-weight: var(--font-weight-500);
   }
 }
 
@@ -18,9 +23,42 @@
   display: grid;
   margin-top: 20px;
   margin-bottom: 3em;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   flex: 1;
   gap: 2px;
+  padding: 0 0 0 2px;
+
+  /*
+  This is a bit ugly, but the point is to avoid grid reflow
+  when the sidebar appears/disappears. If the grid reflows,
+  the user has to reorient themselves in the grid. With this
+  solution, the number of items in the grid stays the same
+  at any resolution.
+  */
+  grid-template-columns: repeat(9, 1fr);
+  @media screen and (max-width: 2400px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media screen and (max-width: 2200px) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  @media screen and (max-width: 2000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media screen and (max-width: 1800px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media screen and (max-width: 1600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .Icon {
@@ -35,51 +73,17 @@
     width: 100%;
     gap: 10px;
     cursor: pointer;
-    background: #fff;
+    background: #ffffff;
     padding-top: 5px;
     aspect-ratio: 5 / 4;
     background: #fafafa;
-    border-radius: 2px;
+    border-radius: var(--border-radius-200);
     transition: background-color 0.05s linear;
 
     &:hover {
       background: #ededed;
     }
   }
-}
-
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  animation: overlay-in 0.15s linear both;
-}
-
-.Dialog {
-  position: fixed;
-  display: flex;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
-.DialogContent {
-  position: relative;
-  background: white;
-  border-radius: 4px;
-  width: 100%;
-  padding: 2em;
-  max-width: 40em;
-  min-height: 50em;
-  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.125);
-  animation: dialog-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .Preview {
@@ -94,35 +98,27 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 3em;
+
   p {
     max-width: 60%;
     text-align: center;
   }
 }
 
-.CloseDialog {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  background: url(./CancelSmallMinor.svg) no-repeat center center;
-  background-size: 26px auto;
-  opacity: 0.5;
-  cursor: pointer;
-  z-index: 1;
+.Sidebar {
+  width: 28em;
+  animation: sidebar-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
+.SidebarInner {
+  animation: sidebar-inner-enter 0.3s 0.3s linear both;
+  padding: 2em;
 }
 
 .Tabs {
   display: flex;
   margin-bottom: 1em;
-  box-shadow: inset 0 -1px #ddd;
+  box-shadow: inset 0 -1px #dddddd;
 }
 
 .Tab {
@@ -132,20 +128,21 @@
   cursor: pointer;
   background: transparent;
   transition: background-color 0.1s linear;
-  color: #666;
+  color: var(--text-subdued);
 
   &[aria-selected="true"] {
     color: black;
-    &:after {
+
+    &::after {
       content: "";
-      display: block;
       position: absolute;
-      left: 0;
       bottom: 0;
+      left: 0;
+      display: block;
       width: 100%;
       height: 3px;
-      background: green;
-      border-radius: 4px 4px 0 0;
+      border-radius: var(--border-radius-300) var(--border-radius-300) 0 0;
+      background: var(--primary);
     }
   }
 
@@ -154,33 +151,22 @@
   }
 }
 
-@keyframes overlay-in {
-  from {
-    opacity: 0;
+@keyframes sidebar-enter {
+  0% {
+    width: 0;
   }
-  to {
-    opacity: 1;
+
+  100% {
+    width: 28em;
   }
 }
 
-@keyframes dialog-in {
-  from {
+@keyframes sidebar-inner-enter {
+  0% {
     opacity: 0;
-    transform: scale(0.95);
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
-@keyframes icon-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }

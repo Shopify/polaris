@@ -1,42 +1,49 @@
 .Nav {
-  align-self: flex-start;
-  font-size: 0.95em;
+  flex: 1;
+  font-size: var(--font-size-300);
+  padding: 2em;
   min-width: 16em;
+  border-right: 1px solid #ededed;
 
   span {
-    font-weight: 500;
+    font-weight: var(--font-weight-500);
   }
 
   a {
-    padding: 1px 0;
-    color: #666;
-    display: inline-block;
     position: relative;
-    padding-left: 1em;
+    display: inline-block;
+    padding: 1px 0;
+    padding-left: 1.2em;
+    color: var(--text-subdued);
+
     &:hover {
       color: inherit;
-      &:before {
-        background: #ddd;
+
+      &::before {
+        background: #dddddd;
       }
     }
-    &:before {
+
+    &::before {
       content: "";
-      display: block;
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
-      width: 6px;
-      height: 6px;
+      display: block;
+      width: 9px;
+      height: 9px;
       margin: auto;
+      border-radius: 3.5px;
       background: #ededed;
-      border-radius: 1.5px;
     }
+
     &[aria-current="page"] {
-      color: #008060;
-      font-weight: 500;
-      &:before {
-        background: #008060;
+      color: var(--primary);
+      font-weight: var(--font-weight-500);
+
+      &::before {
+        background: var(--primary);
       }
     }
   }
@@ -48,11 +55,12 @@
 
   > ul > li {
     margin-bottom: 1.25rem;
+
     > span {
       display: inline-block;
       margin-bottom: 0.25rem;
-      font-size: 1.35em;
-      font-weight: 400;
+      font-size: var(--font-size-700);
+      font-weight: var(--font-weight-400);
     }
   }
 }

@@ -3,11 +3,10 @@ import Head from "next/head";
 import React from "react";
 import Page from "../../components/Page";
 import Longform from "../../components/Longform";
-import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
 import Nav from "../../components/Nav";
 import YoutubeVideo from "../../components/YoutubeVideo";
-import Image from "next/image";
+import Image from "../../components/Image";
 import { getTitleForTitleTag } from "../../utils/various";
 
 const Components: NextPage = () => {

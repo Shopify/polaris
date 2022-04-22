@@ -1,8 +1,8 @@
 .Longform {
-  border-radius: 4px;
+  border-radius: var(--border-radius-300);
 
   img {
-    border-radius: 2px;
+    border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
     background: white;
@@ -49,11 +49,11 @@
   pre {
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
-    font-size: 0.875em;
+    font-size: var(--font-size-300);
     padding: 1em;
-    background: #111;
-    color: #fff;
-    border-radius: 2px;
+    background: var(--text);
+    color: var(--surface);
+    border-radius: var(--border-radius-200);
     overflow: auto;
 
     p {
@@ -62,18 +62,10 @@
   }
 }
 
-.TopBar {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em 1.25em;
-  background: black;
-  color: white;
-}
-
 .Content {
   h1 + p:first-of-type {
-    font-size: 1.2em;
-    letter-spacing: -0.01em;
-    font-weight: 500;
+    font-size: var(--font-size-600);
+    letter-spacing: var(--letter-spacing-300);
+    font-weight: var(--font-weight-500);
   }
 }

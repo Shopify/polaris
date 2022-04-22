@@ -17,4 +17,12 @@ function TextField({ onChange, ...props }: Props) {
   );
 }
 
+interface WrappedTextFieldProps {
+  renderTextField: (className: string) => React.ReactNode;
+}
+
+export function WrappedTextField({ renderTextField }: WrappedTextFieldProps) {
+  return <>{renderTextField(styles.TextField)}</>;
+}
+
 export default TextField;

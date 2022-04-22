@@ -48,7 +48,6 @@ function ColorPreview({ name }: { name: keyof typeof colors }) {
   const value = colors[name];
   const descriptions = colorDescriptions as { [key: string]: string };
   let description: string = descriptions[name] || "";
-  console.log(descriptions, name);
 
   return (
     <Token
