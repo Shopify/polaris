@@ -84,6 +84,31 @@ describe('<Month />', () => {
       expect(month).toContainReactComponent(Day, {weekday: expect.any(String)});
     });
 
+    describe('disableSpecificDates', () => {
+      it('is disabled if is one of disableSpecificDates', () => {
+        const date = new Date('01 Jan 2018 00:00:00');
+        const month = mountWithApp(
+          <Month {...defaultProps} disableSpecificDates={[date]} />,
+        );
+
+        expect(month).toContainReactComponent(Day, {day: date, disabled: true});
+      });
+
+      it('is not disabled if is not one of disableSpecificDates', () => {
+        const disabledDate = new Date('01 Jan 2018 00:00:00');
+        const availableDate = new Date('02 Jan 2018 00:00:00');
+
+        const month = mountWithApp(
+          <Month {...defaultProps} disableSpecificDates={[disabledDate]} />,
+        );
+
+        expect(month).toContainReactComponent(Day, {
+          day: availableDate,
+          disabled: false,
+        });
+      });
+    });
+
     describe('selectedAccessibilityLabelPrefix', () => {
       it('passes the first accessibility label prefix to day when allowRange & isFirstSelectedDay are true', () => {
         const selected = {
