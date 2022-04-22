@@ -9,6 +9,9 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "babel-jest": "^27.5.1",
     "jest": "^27.5.1"
   },
   "license": "SEE LICENSE IN LICENSE.md",

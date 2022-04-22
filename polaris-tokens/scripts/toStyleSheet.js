@@ -18,7 +18,7 @@ const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}
  * [p-color-scheme="dark"] {...}
  * [p-color-scheme="dim"] {...}
  */
-function getColorSchemeRules(tokenHash, colorSchemes) {
+export function getColorSchemeRules(tokenHash, colorSchemes) {
   return Object.keys(tokenHash.colorSchemes)
     .map((key) => {
       const colorScheme = key;
@@ -40,7 +40,7 @@ function getColorSchemeRules(tokenHash, colorSchemes) {
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-function getStaticCustomProperties(tokenHash) {
+export function getStaticCustomProperties(tokenHash) {
   return Object.entries(tokenHash)
     .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
     .map(([, filteredTokens]) => getCustomProperties(filteredTokens))
@@ -50,7 +50,11 @@ function getStaticCustomProperties(tokenHash) {
 /**
  * Creates CSS declarations for a given color-scheme.
  */
-function getColorSchemeDeclarations(colorScheme, tokenHash, colorSchemes) {
+export function getColorSchemeDeclarations(
+  colorScheme,
+  tokenHash,
+  colorSchemes,
+) {
   return [
     `color-scheme:${colorSchemes[colorScheme]};`,
     getCustomProperties(tokenHash.colorSchemes[colorScheme]),
@@ -60,7 +64,7 @@ function getColorSchemeDeclarations(colorScheme, tokenHash, colorSchemes) {
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-function getCustomProperties(tokenHash) {
+export function getCustomProperties(tokenHash) {
   return Object.entries(tokenHash)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
@@ -73,7 +77,7 @@ function getCustomProperties(tokenHash) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-function getKeyframes(motion) {
+export function getKeyframes(motion) {
   return Object.entries(motion)
     .filter(([token]) => token.startsWith('keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
