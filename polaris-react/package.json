@@ -49,8 +49,7 @@
     "test": "loom test",
     "check": "npm-run-all lint type-check test",
     "clean": "rimraf build build-internal",
-    "gen-tokens-scss": "node ./scripts/build-tokens-scss.js",
-    "prebuild": "yarn gen-tokens-scss",
+    "gen-media-queries": "node ./scripts/gen-media-queries.js",
     "build": "node ./scripts/build.js",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
@@ -62,10 +61,8 @@
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
-    "prestorybook": "yarn gen-tokens-scss",
-    "storybook": "start-storybook -p 6006 --quiet",
-    "prestorybook:build": "yarn gen-tokens-scss",
-    "storybook:build": "build-storybook -o build-internal/storybook/static",
+    "storybook": "yarn gen-media-queries && start-storybook -p 6006 --quiet",
+    "storybook:build": "yarn gen-media-queries && build-storybook -o build-internal/storybook/static",
     "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'"
   },
   "dependencies": {

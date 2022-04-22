@@ -5,7 +5,7 @@ const polarisReactDir = path.join(__dirname, '..');
 const tokenGroupsDir = path.join(polarisReactDir, 'src/tokens/token-groups');
 const stylesDir = path.join(polarisReactDir, 'src/styles');
 
-const file = fs.createWriteStream(path.join(stylesDir, '_tokens.scss'));
+const file = fs.createWriteStream(path.join(stylesDir, '_media-queries.scss'));
 
 const breakpointsTokenGroup = require(path.join(
   tokenGroupsDir,
