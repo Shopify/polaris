@@ -4,8 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b && yarn build-tokens",
-    "build-tokens": "node scripts/toJSON && node scripts/toStyleSheet",
+    "build": "tsc -b && node scripts",
     "test": "jest"
   },
   "devDependencies": {
