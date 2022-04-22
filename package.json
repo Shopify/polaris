@@ -7,7 +7,6 @@
   "workspaces": [
     "polaris-for-vscode",
     "polaris-react",
-    "polaris-tokens",
     "stylelint-polaris",
     "polaris.shopify.com"
   ],
