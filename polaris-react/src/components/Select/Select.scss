@@ -27,6 +27,11 @@
 
   .Backdrop {
     border-color: var(--p-border-disabled);
+    background-color: var(--p-surface-disabled);
+
+    @include when-typography-not-condensed {
+      background-color: var(--p-surface);
+    }
 
     &::before {
       background-color: var(--p-action-secondary-disabled);

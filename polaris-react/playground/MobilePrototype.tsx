@@ -54,7 +54,7 @@ export function MobilePrototype() {
   );
 
   const renderChildren = useCallback(
-    () => (
+    (selectedGiftCardExpiration) => (
       <TextField
         label="Gift cards expiration"
         labelHidden={true}
@@ -62,8 +62,10 @@ export function MobilePrototype() {
         value={textFieldValue}
         onChange={handleTextFieldChange}
         autoComplete="off"
+        disabled={!selectedGiftCardExpiration}
         connectedRight={
           <Select
+            disabled={!selectedGiftCardExpiration}
             value={selectValue}
             label="Time period"
             onChange={handleConnectedSelectChange}
@@ -75,7 +77,6 @@ export function MobilePrototype() {
     ),
     [handleTextFieldChange, textFieldValue],
   );
-
 
   const [selectedMultiChoice, setSelectedMultiChoice] = useState(['hidden']);
 
