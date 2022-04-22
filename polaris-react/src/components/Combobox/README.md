@@ -122,7 +122,7 @@ function ComboboxExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue(matchedOption?.label || '');
     },
     [options],
   );
@@ -220,7 +220,8 @@ function MultiComboboxExample() {
       const matchedOption = options.find((option) => {
         return option.value.match(selected);
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -234,16 +235,11 @@ function MultiComboboxExample() {
     [selectedOptions],
   );
 
-  const tagsMarkup = selectedOptions.map((option) => {
-    let tagLabel = '';
-    tagLabel = option.replace('_', ' ');
-    tagLabel = titleCase(tagLabel);
-    return (
-      <Tag key={`option${option}`} onRemove={removeTag(option)}>
-        {tagLabel}
-      </Tag>
-    );
-  });
+  const tagsMarkup = selectedOptions.map((option) => (
+    <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+      {option}
+    </Tag>
+  ));
 
   const optionsMarkup =
     options.length > 0
@@ -287,35 +283,24 @@ function MultiComboboxExample() {
       </TextContainer>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 ```
 
 ### Multi-select autocomplete with vertical content
 
-Allows the merchant to select multiple options from a pre-defined list of options. Selected options are displayed as inline vertical content in the TextField.
+Use to display selected options above the input value.
 
 ```jsx
-function MultiVerticalContentComboboxExample() {
-  const deselectedOptions = useMemo(
-    () => [
-      {value: 'rustic', label: 'Rustic'},
-      {value: 'antique', label: 'Antique'},
-      {value: 'vinyl', label: 'Vinyl'},
-      {value: 'vintage', label: 'Vintage'},
-      {value: 'refurbished', label: 'Refurbished'},
-    ],
-    [],
-  );
+function MultiselectTagComboboxExample() {
+  const deselectedOptions = [
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Vintage',
+    'Refurbished',
+  ];
 
-  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
+  const [selectedOptions, setSelectedOptions] = useState(['Rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -330,7 +315,7 @@ function MultiVerticalContentComboboxExample() {
 
       const filterRegex = new RegExp(value, 'i');
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.match(filterRegex),
       );
       setOptions(resultOptions);
     },
@@ -348,9 +333,10 @@ function MultiVerticalContentComboboxExample() {
       }
 
       const matchedOption = options.find((option) => {
-        return option.value.match(selected);
+        return option === selected;
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -367,32 +353,25 @@ function MultiVerticalContentComboboxExample() {
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
       <Stack spacing="extraTight" alignment="center">
-        {selectedOptions.map((option) => {
-          let tagLabel = '';
-          tagLabel = option.replace('_', ' ');
-          tagLabel = titleCase(tagLabel);
-          return (
-            <Tag key={`option${option}`} onRemove={removeTag(option)}>
-              {tagLabel}
-            </Tag>
-          );
-        })}
+        {selectedOptions.map((option) => (
+          <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+            {option}
+          </Tag>
+        ))}
       </Stack>
     ) : null;
 
   const optionsMarkup =
     options.length > 0
       ? options.map((option) => {
-          const {label, value} = option;
-
           return (
             <Listbox.Option
-              key={`${value}`}
-              value={value}
-              selected={selectedOptions.includes(value)}
-              accessibilityLabel={label}
+              key={option}
+              value={option}
+              selected={selectedOptions.includes(option)}
+              accessibilityLabel={option}
             >
-              {label}
+              {option}
             </Listbox.Option>
           );
         })
@@ -419,20 +398,12 @@ function MultiVerticalContentComboboxExample() {
       </Combobox>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 ```
 
 ### Autocomplete with loading
 
-Use to indicate loading state to merchants while option data is processing.
+Use to indicate to merchants that the list data is being fetched.
 
 ```jsx
 function LoadingAutocompleteExample() {
@@ -484,7 +455,7 @@ function LoadingAutocompleteExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue(matchedOption?.label || '');
     },
     [options],
   );
