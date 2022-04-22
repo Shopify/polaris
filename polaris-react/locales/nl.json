@@ -104,7 +104,11 @@
         "actionHintFile": "of zet een bestand neer om het te uploaden",
         "actionHintImage": "of zet een afbeelding neer om deze te uploaden",
         "labelFile": "Bestand uploaden",
-        "labelImage": "Afbeelding uploaden"
+        "labelImage": "Afbeelding uploaden",
+        "overlayTextVideo": "Zet video neer om deze te uploaden",
+        "actionTitleVideo": "Voeg de video toe",
+        "actionHintVideo": "of zet de video neer om deze te uploaden",
+        "labelVideo": "Video uploaden"
       },
       "allowMultiple": {
         "overlayTextFile": "Zet bestanden neer om ze te uploaden",
@@ -114,8 +118,13 @@
         "actionHintFile": "of zet bestanden neer om ze te uploaden",
         "actionHintImage": "of zet afbeeldingen neer om ze te uploaden",
         "labelFile": "Bestanden uploaden",
-        "labelImage": "Afbeeldingen uploaden"
-      }
+        "labelImage": "Afbeeldingen uploaden",
+        "overlayTextVideo": "Zet video's neer om ze te uploaden",
+        "actionTitleVideo": "Voeg de video's toe",
+        "actionHintVideo": "of zet ze neer om ze te uploaden",
+        "labelVideo": "Video's uploaden"
+      },
+      "errorOverlayTextVideo": "Ongeldig videotype"
     },
     "EmptySearchResult": {
       "altText": "Geen zoekresultaten"

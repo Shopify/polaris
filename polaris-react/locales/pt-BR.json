@@ -104,7 +104,11 @@
         "actionHintFile": "ou soltar arquivo para fazer upload",
         "actionHintImage": "ou soltar imagem para fazer upload",
         "labelFile": "Fazer upload de arquivo",
-        "labelImage": "Fazer upload de imagem"
+        "labelImage": "Fazer upload de imagem",
+        "overlayTextVideo": "Soltar vídeo para fazer upload",
+        "actionTitleVideo": "Adicionar vídeo",
+        "actionHintVideo": "ou soltar vídeo para fazer upload",
+        "labelVideo": "Fazer upload de vídeo"
       },
       "allowMultiple": {
         "overlayTextFile": "Soltar arquivos para fazer upload",
@@ -114,8 +118,13 @@
         "actionHintFile": "ou soltar arquivos para fazer upload",
         "actionHintImage": "ou soltar as imagens para fazer upload",
         "labelFile": "Fazer upload de arquivos",
-        "labelImage": "Fazer upload de imagens"
-      }
+        "labelImage": "Fazer upload de imagens",
+        "overlayTextVideo": "Soltar vídeos para fazer upload",
+        "actionTitleVideo": "Adicionar vídeos",
+        "actionHintVideo": "ou soltar vídeos para fazer upload",
+        "labelVideo": "Fazer upload de vídeos"
+      },
+      "errorOverlayTextVideo": "O tipo de vídeo é inválido"
     },
     "EmptySearchResult": {
       "altText": "Resultados de pesquisa vazios"
@@ -257,7 +266,8 @@
           },
           "seconds": {
             "other": "{secondCount} segundos",
-            "one": "{secondCount} segundo"
+            "one": "{secondCount} segundo",
+            "many": "{secondCount} segundos"
           }
         }
       }
