@@ -326,10 +326,10 @@ describe('<Combobox />', () => {
     });
 
     it('passes the maxHeight', () => {
-      const maxHeight = '100px';
+      const height = '100px';
 
       const combobox = mountWithApp(
-        <Combobox activator={activator} maxHeight={maxHeight}>
+        <Combobox activator={activator} height={height}>
           {listbox}
         </Combobox>,
       );
@@ -337,7 +337,7 @@ describe('<Combobox />', () => {
       triggerFocus(combobox);
 
       expect(combobox).toContainReactComponent(Popover.Pane, {
-        maxHeight,
+        height,
       });
     });
 

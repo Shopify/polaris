@@ -4,12 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b",
-    "test": "yarn validate-tokens",
-    "validate-tokens": "ajv validate -s schemas/token-group.json -d 'token-groups/*.json'"
+    "build": "tsc -b && yarn build-tokens",
+    "build-tokens": "node scripts/toJSON && node scripts/toStyleSheet",
+    "test": "jest"
   },
   "devDependencies": {
-    "ajv-cli": "^5.0.0"
+    "jest": "^27.5.1"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",

@@ -104,7 +104,11 @@
         "actionHintFile": "ou solte o ficheiro para carregar",
         "actionHintImage": "ou solte a imagem para carregar",
         "labelFile": "Carregar ficheiro",
-        "labelImage": "Carregar imagem"
+        "labelImage": "Carregar imagem",
+        "overlayTextVideo": "Largar vídeo para carregar",
+        "actionTitleVideo": "Adicionar vídeo",
+        "actionHintVideo": "ou largar para carregar",
+        "labelVideo": "Carregar vídeo"
       },
       "allowMultiple": {
         "overlayTextFile": "Solte os ficheiros para carregar",
@@ -114,8 +118,13 @@
         "actionHintFile": "ou solte os ficheiros para carregar",
         "actionHintImage": "ou solte as imagens para carregar",
         "labelFile": "Carregar ficheiros",
-        "labelImage": "Carregar imagens"
-      }
+        "labelImage": "Carregar imagens",
+        "overlayTextVideo": "Largar vídeos para carregar",
+        "actionTitleVideo": "Adicionar vídeos",
+        "actionHintVideo": "ou largar para carregar",
+        "labelVideo": "Carregar vídeos"
+      },
+      "errorOverlayTextVideo": "O tipo de vídeo não é válido"
     },
     "EmptySearchResult": {
       "altText": "Resultados de pesquisa vazios"
@@ -257,7 +266,8 @@
           },
           "seconds": {
             "other": "{secondCount} segundos",
-            "one": "{secondCount} segundo"
+            "one": "{secondCount} segundo",
+            "many": "{secondCount} segundos"
           }
         }
       }

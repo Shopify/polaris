@@ -104,7 +104,11 @@
         "actionHintFile": "veya yüklenecek dosyayı sürükleyip bırakın",
         "actionHintImage": "veya yüklenecek görseli sürükleyip bırakın",
         "labelFile": "Dosya yükle",
-        "labelImage": "Görsel yükle"
+        "labelImage": "Görsel yükle",
+        "overlayTextVideo": "Yüklemek için videoyu sürükleyip bırakın",
+        "actionTitleVideo": "Video ekle",
+        "actionHintVideo": "veya yüklemek için videoyu sürükleyip bırakın",
+        "labelVideo": "Video yükle"
       },
       "allowMultiple": {
         "overlayTextFile": "Yüklenecek dosyaları sürükleyip bırakın",
@@ -114,8 +118,13 @@
         "actionHintFile": "veya yüklenecek dosyaları sürükleyip bırakın",
         "actionHintImage": "veya yüklenecek görselleri sürükleyip bırakın",
         "labelFile": "Dosya yükle",
-        "labelImage": "Görsel yükle"
-      }
+        "labelImage": "Görsel yükle",
+        "overlayTextVideo": "Yüklemek için videoları sürükleyip bırakın",
+        "actionTitleVideo": "Video ekle",
+        "actionHintVideo": "veya yüklemek için videoları sürükleyip bırakın",
+        "labelVideo": "Video yükle"
+      },
+      "errorOverlayTextVideo": "Video türü geçerli değil"
     },
     "EmptySearchResult": {
       "altText": "Boş arama sonuçları"

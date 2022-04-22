@@ -104,7 +104,11 @@
         "actionHintFile": "oder Datei zum Hochladen ablegen",
         "actionHintImage": "oder Bild zum Hochladen ablegen",
         "labelFile": "Datei hochladen",
-        "labelImage": "Bild hochladen"
+        "labelImage": "Bild hochladen",
+        "overlayTextVideo": "Video zum Hochladen ablegen",
+        "actionTitleVideo": "Video hinzufügen",
+        "actionHintVideo": "oder Video zum Hochladen ablegen",
+        "labelVideo": "Video hochladen"
       },
       "allowMultiple": {
         "overlayTextFile": "Dateien zum Hochladen ablegen",
@@ -114,8 +118,13 @@
         "actionHintFile": "oder Dateien zum Hochladen ablegen",
         "actionHintImage": "oder Bilder zum Hochladen ablegen",
         "labelFile": "Dateien hochladen",
-        "labelImage": "Bilder hochladen"
-      }
+        "labelImage": "Bilder hochladen",
+        "overlayTextVideo": "Videos zum Hochladen ablegen",
+        "actionTitleVideo": "Videos hinzufügen",
+        "actionHintVideo": "oder Videos zum Hochladen ablegen",
+        "labelVideo": "Videos hochladen"
+      },
+      "errorOverlayTextVideo": "Der Videotyp ist nicht gültig"
     },
     "EmptySearchResult": {
       "altText": "Leere Suchergebnisse"

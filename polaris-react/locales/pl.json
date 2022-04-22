@@ -104,7 +104,11 @@
         "actionHintFile": "lub upuść plik do załadowania",
         "actionHintImage": "lub upuść zdjęcie do załadowania",
         "labelFile": "Prześlij plik",
-        "labelImage": "Prześlij obraz"
+        "labelImage": "Prześlij obraz",
+        "overlayTextVideo": "Upuść film do załadowania",
+        "actionTitleVideo": "Dodaj film",
+        "actionHintVideo": "lub upuść film do załadowania",
+        "labelVideo": "Załaduj film"
       },
       "allowMultiple": {
         "overlayTextFile": "Upuść pliki, aby je załadować",
@@ -114,8 +118,13 @@
         "actionHintFile": "lub upuść pliki, aby je załadować",
         "actionHintImage": "lub upuść zdjęcia, aby załadować",
         "labelFile": "Załaduj pliki",
-        "labelImage": "Prześlij zdjęcia"
-      }
+        "labelImage": "Prześlij zdjęcia",
+        "overlayTextVideo": "Upuść filmy do załadowania",
+        "actionTitleVideo": "Dodaj filmy",
+        "actionHintVideo": "lub upuść filmy do załadowania",
+        "labelVideo": "Załaduj filmy"
+      },
+      "errorOverlayTextVideo": "Nieprawidłowy typ filmu"
     },
     "EmptySearchResult": {
       "altText": "Wyczyść wyniki wyszukiwania"

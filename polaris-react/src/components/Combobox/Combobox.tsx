@@ -27,8 +27,8 @@ export interface ComboboxProps {
   preferredPosition?: PopoverProps['preferredPosition'];
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
-  /** Maximum height to set on the popover pane */
-  maxHeight?: string;
+  /** Height to set on the Popover Pane. */
+  height?: string;
   /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
@@ -41,7 +41,7 @@ export function Combobox({
   children,
   preferredPosition = 'below',
   willLoadMoreOptions,
-  maxHeight,
+  height,
   onScrolledToBottom,
   onClose,
 }: ComboboxProps) {
@@ -72,10 +72,10 @@ export function Combobox({
   const onOptionSelected = useCallback(() => {
     if (!allowMultiple) {
       handleClose();
+      setActiveOptionId(undefined);
       return;
     } else {
       setDisableCloseOnSelect(true);
-      setActiveOptionId(undefined);
     }
 
     ref.current?.forceUpdatePosition();
@@ -170,10 +170,7 @@ export function Combobox({
       onClose={handleClose}
     >
       {Children.count(children) > 0 ? (
-        <Popover.Pane
-          onScrolledToBottom={onScrolledToBottom}
-          maxHeight={maxHeight}
-        >
+        <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>
           <ComboboxListboxContext.Provider value={listboxContextValue}>
             <ComboboxListboxOptionContext.Provider
               value={listboxOptionContextValue}
