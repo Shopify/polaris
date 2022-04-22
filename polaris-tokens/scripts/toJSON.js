@@ -1,22 +1,26 @@
 const fs = require('fs');
 const path = require('path');
 
-const {tokens} = require('../dist/index');
-
 function getFileName(fileName) {
   return path.join(__dirname, '../dist', fileName);
 }
 
-Object.entries(tokens).forEach(([tokenGroup, tokenProps]) => {
-  if (tokenGroup === 'colorSchemes') {
-    Object.entries(tokenProps).forEach(([colorTokenGroup, colorTokenProps]) => {
-      const fileName = getFileName(`colors.${colorTokenGroup}.json`);
+async function toJSON(tokens) {
+  for (const [tokenGroup, tokenProps] of Object.entries(tokens)) {
+    if (tokenGroup === 'colorSchemes') {
+      for (const [colorTokenGroup, colorTokenProps] of Object.entries(
+        tokenProps,
+      )) {
+        const fileName = getFileName(`colors.${colorTokenGroup}.json`);
 
-      fs.writeFileSync(fileName, JSON.stringify(colorTokenProps));
-    });
-  } else {
-    const fileName = getFileName(`${tokenGroup}.json`);
+        await fs.promises.writeFile(fileName, JSON.stringify(colorTokenProps));
+      }
+    } else {
+      const fileName = getFileName(`${tokenGroup}.json`);
 
-    fs.writeFileSync(fileName, JSON.stringify(tokenProps));
+      await fs.promises.writeFile(fileName, JSON.stringify(tokenProps));
+    }
   }
-});
+}
+
+module.exports = {toJSON};
