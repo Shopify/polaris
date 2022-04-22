@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/85783/39013335-ebf76f5e-43cb-11e8-81f2-706259125897.png" alt="" align="center" />
+
 # Polaris
 
 Polaris is our design system that helps us work together to build a great experience for all of Shopify’s merchants. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
