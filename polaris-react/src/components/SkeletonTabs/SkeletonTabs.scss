@@ -18,7 +18,7 @@
     bottom: -1px;
     left: var(--p-space-3);
     right: var(--p-space-3);
-    height: 3px;
+    height: var(--p-border-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
   }

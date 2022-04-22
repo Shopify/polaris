@@ -136,7 +136,7 @@ $item-vertical-padding: $item-min-height * 0.5;
     bottom: calc(-1 * var(--p-space-2));
     left: 0;
     right: 0;
-    height: 3px;
+    height: var(--p-border-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
   }
