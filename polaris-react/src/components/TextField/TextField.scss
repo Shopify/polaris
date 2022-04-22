@@ -233,10 +233,25 @@ $spinner-icon-size: 12px;
 
 .CharacterCount {
   @include text-emphasis-subdued;
+  position: absolute;
+  top: 100%;
+  font-size: var(--p-font-size-2);
+  line-height: var(--p-line-height-2);
+
+  @include when-typography-not-condensed {
+    top: initial;
+    position: relative;
+    text-align: right;
+    @include text-style-input;
+    margin: 0 var(--p-space-3) 0 var(--p-space-1);
+  }
   z-index: var(--pc-text-field-contents);
-  margin: 0 var(--p-space-3) 0 var(--p-space-1);
+
   pointer-events: none;
-  text-align: right;
+}
+
+.MobileCharCount {
+  margin-bottom: var(--p-space-5);
 }
 
 .AlignFieldBottom {

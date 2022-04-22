@@ -33,7 +33,7 @@ export function MobilePrototypeTextInput() {
   const preferencesMarkup = (
     <>
       <Image
-        source="https://user-images.githubusercontent.com/3474483/164063378-671b89dc-5c3e-47e1-8622-ab39e938de54.png"
+        source="https://user-images.githubusercontent.com/3474483/164800800-fa54cbbc-02b3-4c4b-b3ca-d613c1b9b392.png"
         alt="scrappy mobile static banner"
         className={styles.MobileNativeStatic}
       />
@@ -53,7 +53,7 @@ export function MobilePrototypeTextInput() {
               description="The title and meta description help define how your store shows up on search engines."
             >
               <Card sectioned>
-                <Stack spacing="extraLoose" vertical={true}>
+                <Stack spacing="loose" vertical={true}>
               <TextField
       label="Store name"
       value={textFieldValue}
