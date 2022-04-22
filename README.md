@@ -1,10 +1,18 @@
 <img src="https://github.com/Shopify/polaris/blob/9659e7c89332c1d41f91d5bc1ff5c7d2c86e9b0e/documentation/readme.jpg?raw=true" alt="" align="center" />
 
+[![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://storybook.polaris.shopify.com) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
+
 # Polaris
 
-Polaris is our design system that helps us work together to build a great experience for all of Shopify’s merchants. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
+> Shopify’s design system to help us work together to build a great experience for all of Shopify’s merchants.
 
-## Folder
+| Status | Owner            | Help                                                       |
+| ------ | ---------------- | ---------------------------------------------------------- |
+| Active | @shopify/polaris | [New issue](https://github.com/Shopify/polaris/issues/new) |
+
+## About this repo
+
+Polaris is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, Figma plugins and websites.
 
 ```sh
 polaris/
@@ -16,35 +24,35 @@ polaris/
 └── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
 
-## Getting Started (One time)
+## Commands
 
-1. Initialize the repository by installing external dependencies and symlinking internal packages.
+**1. Install dependencies**
 
 ```sh
-yarn install
+yarn
 ```
 
-2. Build every package in the monorepo.
+**2. Build the packages**
 
 ```sh
 yarn build
 ```
 
-## Local development
+**3. Start a local development environment**
 
-Develop `polaris.shopify.com` in watch mode:
-
-```sh
-yarn dev
-```
-
-Develop `polaris-react` in watch mode:
+Start a **storybook** server for the polaris-react components
 
 ```sh
-yarn dev:react
+yarn workspace @shopify/polaris dev
 ```
 
-## Contributing
+Start a **NextJS** server for polaris.shopify.com
+
+```sh
+yarn workspace polaris-shopify-com dev
+```
+
+## Contribute to this repo
 
 Pull requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md) for more information.
 
