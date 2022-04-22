@@ -1,5 +1,5 @@
 import { AppProvider, Page } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AppProviderLinkExample() {
   const CustomLinkComponent = ({children, url, ...rest}) => {
@@ -61,4 +61,3 @@ function Example() {
 }
 
 export default Example;
-    

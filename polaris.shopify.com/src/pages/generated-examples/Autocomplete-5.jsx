@@ -1,6 +1,6 @@
 import { AppProvider, Autocomplete,Tag,Stack } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AutoCompleteLazyLoadExample() {
   const paginationInterval = 25;
@@ -146,4 +146,3 @@ function Example() {
 }
 
 export default Example;
-    

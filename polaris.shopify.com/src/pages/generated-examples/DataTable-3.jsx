@@ -1,5 +1,5 @@
 import { AppProvider, Page,Card,DataTable } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DataTableFooterExample() {
   const rows = [
@@ -60,4 +60,3 @@ function Example() {
 }
 
 export default Example;
-    

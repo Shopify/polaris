@@ -1,6 +1,6 @@
 import { AppProvider, ChoiceList,TextField,RangeSlider,Card,ResourceList,Filters,Avatar,TextStyle } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListFiltersExample() {
   const [accountStatus, setAccountStatus] = useState(null);
@@ -216,4 +216,3 @@ function Example() {
 }
 
 export default Example;
-    

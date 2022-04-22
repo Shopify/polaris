@@ -1,6 +1,6 @@
 import { AppProvider, Button,Modal,TextContainer,Banner } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function BannerInModalExample() {
   const [active, setActive] = useState(false);
@@ -63,4 +63,3 @@ function Example() {
 }
 
 export default Example;
-    

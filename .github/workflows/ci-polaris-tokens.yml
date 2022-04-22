@@ -24,14 +24,11 @@ jobs:
           cache: yarn
 
       - uses: actions/cache@v2
-        name: Restore build cache
+        name: Restore cache
         with:
           path: |
-            .loom
+            .eslintcache
             **/*.tsbuildinfo
-            polaris-react/.loom
-            polaris-react/build/ts/latest
-            polaris.shopify.com/.next/cache
           key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-

@@ -1,6 +1,6 @@
 import { AppProvider, Card,OptionList } from "@shopify/polaris";
 import { useState } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function MultipleOptionListExample() {
   const [selected, setSelected] = useState([]);

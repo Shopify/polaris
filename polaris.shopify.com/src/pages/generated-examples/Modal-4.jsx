@@ -1,6 +1,6 @@
 import { AppProvider, Button,Modal,Stack,ChoiceList } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ModalWithPrimaryAndSecondaryActionsExample() {
   const CURRENT_PAGE = 'current_page';
@@ -106,4 +106,3 @@ function Example() {
 }
 
 export default Example;
-    

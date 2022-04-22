@@ -1,7 +1,7 @@
 import { AppProvider, Button,Popover,ActionList,Icon } from "@shopify/polaris";
 import { ImportMinor,TickSmallMinor,ExportMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ActionListWithSuffixExample() {
   const [active, setActive] = useState(true);
@@ -58,4 +58,3 @@ function Example() {
 }
 
 export default Example;
-    

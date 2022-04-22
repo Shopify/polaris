@@ -1,6 +1,6 @@
 import { AppProvider, Checkbox } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function CheckboxExample() {
   const [checked, setChecked] = useState(false);
@@ -34,4 +34,3 @@ function Example() {
 }
 
 export default Example;
-    

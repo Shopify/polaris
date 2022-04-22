@@ -1,7 +1,7 @@
 import { AppProvider, Stack,FormLayout,Select,TextField,InlineError,Button,Card } from "@shopify/polaris";
 import { DeleteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function SeparateValidationErrorExample() {
   const [textFieldValue, setTextFieldValue] = useState('');
@@ -102,4 +102,3 @@ function Example() {
 }
 
 export default Example;
-    

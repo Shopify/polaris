@@ -1,6 +1,6 @@
 import { AppProvider, Frame,Navigation } from "@shopify/polaris";
 import { HomeMinor,OrdersMinor,ProductsMinor,OnlineStoreMinor,CirclePlusOutlineMinor } from "@shopify/polaris-icons";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -59,4 +59,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
 import { AppProvider, Spinner,Form,FormLayout,TextField,Button,Card,Tabs } from "@shopify/polaris";
 import { useState,useEffect,useCallback,useRef } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function SpinnerWithFocusManagement() {
   const tabs = useRef([
@@ -90,4 +90,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,5 +1,5 @@
 import { AppProvider, Icon } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function IconWithReactChild() {
   const iconContent = () => {
@@ -34,4 +34,3 @@ function Example() {
 }
 
 export default Example;
-    

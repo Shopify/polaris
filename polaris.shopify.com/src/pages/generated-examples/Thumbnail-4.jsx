@@ -1,6 +1,6 @@
 import { AppProvider, Thumbnail } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -22,4 +22,3 @@ function Example() {
 }
 
 export default Example;
-    

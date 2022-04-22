@@ -24,22 +24,20 @@ jobs:
           cache: yarn
 
       - uses: actions/cache@v2
-        name: Restore build cache
+        name: Restore cache
         with:
           path: |
-            .loom
+            .eslintcache
             **/*.tsbuildinfo
             polaris-react/.loom
-            polaris-react/build/ts/latest
-            polaris.shopify.com/.next/cache
           key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
       - run: yarn --frozen-lockfile
       - run: yarn workspace @shopify/polaris run validate-tokens
-      - run: yarn run build
-      - run: yarn run lint
+      - run: yarn build
+      - run: yarn lint
       - run: yarn type-check
       - run: yarn workspace @shopify/polaris run test
 
@@ -54,7 +52,7 @@ jobs:
           cache: yarn
 
       - uses: actions/cache@v2
-        name: Restore build cache
+        name: Restore internal build cache
         with:
           path: |
             polaris-react/build-internal/cache
@@ -81,7 +79,7 @@ jobs:
           cache: yarn
 
       - uses: actions/cache@v2
-        name: Restore build cache
+        name: Restore internal build cache
         with:
           path: |
             polaris-react/build-internal/cache

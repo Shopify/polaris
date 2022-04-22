@@ -1,6 +1,6 @@
 import { AppProvider, Link,AccountConnection } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AccountConnectionExample() {
   const [connected, setConnected] = useState(false);
@@ -54,4 +54,3 @@ function Example() {
 }
 
 export default Example;
-    

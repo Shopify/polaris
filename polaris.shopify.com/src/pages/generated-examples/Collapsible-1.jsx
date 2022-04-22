@@ -1,6 +1,6 @@
 import { AppProvider, Card,Stack,Button,Collapsible,TextContainer,Link } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function CollapsibleExample() {
   const [open, setOpen] = useState(true);
@@ -58,4 +58,3 @@ function Example() {
 }
 
 export default Example;
-    
