@@ -18,6 +18,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Add sticky header to `DataTable` ([#5454](https://github.com/Shopify/polaris/pull/5494))
 
 - Made `Pip` a sub-component of `Badge` and exposed it to outside ([#5520](https://github.com/Shopify/polaris/pull/5520))
+- Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
 
 ### Bug fixes
 
