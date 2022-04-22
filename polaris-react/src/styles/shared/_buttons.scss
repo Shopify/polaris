@@ -1,4 +1,4 @@
-@mixin high-contrast-button-outline($outline: 2px dotted) {
+@mixin high-contrast-button-outline($outline: var(--p-border-width-2) dotted) {
   @media (-ms-high-contrast: active) {
     outline: $outline;
   }
@@ -23,7 +23,7 @@
   box-shadow: var(--p-shadow-button);
   border-radius: var(--p-border-radius-1);
   color: var(--p-text);
-  border: 1px solid var(--p-border-neutral-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
   border-top-color: var(--p-border-subdued);
   border-bottom-color: var(--p-border-shadow-subdued);
   line-height: 1;
@@ -64,7 +64,7 @@
   }
 
   @media (-ms-high-contrast: active) {
-    border: 1px solid windowText;
+    border: var(--p-border-width-1) solid windowText;
   }
 }
 
@@ -121,7 +121,7 @@
   border: var(--p-border-width-1) solid var(--p-border);
   box-shadow: none;
   color: var(--p-text);
-  @include focus-ring($border-width: var(--p-border-width-1));
+  @include focus-ring($border-width: 1px);
 
   &:hover {
     border: var(--p-border-width-1) solid var(--p-border);
@@ -188,8 +188,8 @@
     }
 
     &.pressed {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
       background: var(--p-surface-critical-subdued);
-      box-shadow: var(--p-border-width-1) solid var(--p-border-critical);
       color: var(--p-interactive-critical);
     }
   }
@@ -206,8 +206,8 @@
 }
 
 @mixin plain-button-backdrop {
-  padding: var(--p-space-05) 5px;
-  margin: calc(-1 * var(--p-space-05)) -5px;
+  padding: var(--p-space-05) var(--p-space-1);
+  margin: calc(-1 * var(--p-space-05)) calc(-1 * var(--p-space-1));
   background: var(--p-action-secondary-hovered);
   border-radius: var(--p-border-radius-base);
 }

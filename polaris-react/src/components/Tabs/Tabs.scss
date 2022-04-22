@@ -51,8 +51,8 @@ $item-vertical-padding: $item-min-height * 0.5;
   justify-content: center;
   width: 100%;
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
-  margin-top: 1px;
-  margin-bottom: -1px;
+  margin-top: var(--p-space-025);
+  margin-bottom: calc(-1 * var(--p-space-025));
   padding: var(--p-space-2) var(--p-space-1);
   outline: none;
   text-align: center;
@@ -213,7 +213,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   cursor: pointer;
   border: none;
   outline: none;
-  margin: 1px 1px -1px 0;
+  margin: var(--p-space-025) var(--p-space-025) calc(-1 * var(--p-space-025)) 0;
 
   &:hover,
   &:focus {

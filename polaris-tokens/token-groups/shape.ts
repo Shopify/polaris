@@ -51,6 +51,14 @@ export const shape = {
     value: '3px',
     description: '',
   },
+  'border-width-4': {
+    value: '4px',
+    description: '',
+  },
+  'border-width-5': {
+    value: '5px',
+    description: '',
+  },
   'border-base': {
     value: 'var(--p-border-width-1) solid var(--p-border-subdued)',
     description: '',

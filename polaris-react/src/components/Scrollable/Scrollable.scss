@@ -12,7 +12,7 @@
   max-height: var(--pc-scrollable-max-height);
 
   &:focus {
-    outline: 2px solid var(--p-focused);
+    outline: var(--p-border-width-2) solid var(--p-focused);
     outline-offset: 2px;
   }
 }

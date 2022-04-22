@@ -10,6 +10,7 @@ import {
   dateIsSelected,
   getNewRange,
   getOrderedWeekdays,
+  isDateDisabled,
 } from '../../../../utilities/dates';
 import type {Range} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
@@ -26,6 +27,7 @@ export interface MonthProps {
   year: number;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
+  disableSpecificDates?: Date[];
   allowRange?: boolean;
   weekStartsOn: number;
   accessibilityLabelPrefixes: [string | undefined, string];
@@ -40,6 +42,7 @@ export function Month({
   hoverDate,
   disableDatesBefore,
   disableDatesAfter,
+  disableSpecificDates,
   allowRange,
   onChange = noop,
   onHover = noop,
@@ -91,10 +94,10 @@ export function Month({
         <Day key={dayIndex} onHover={onHover} lastDayOfMonth={lastDayOfMonth} />
       );
     }
-
     const disabled =
       (disableDatesBefore && isDateBefore(day, disableDatesBefore)) ||
-      (disableDatesAfter && isDateAfter(day, disableDatesAfter));
+      (disableDatesAfter && isDateAfter(day, disableDatesAfter)) ||
+      (disableSpecificDates && isDateDisabled(day, disableSpecificDates));
 
     const isFirstSelectedDay =
       allowRange && selected && isDateStart(day, selected);

@@ -1,11 +1,10 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.0.0-rc.2",
+  "version": "5.0.0-rc.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b && yarn build-tokens",
-    "build-tokens": "node scripts/toJSON && node scripts/toStyleSheet",
+    "build": "tsc -b && node scripts",
     "test": "jest"
   },
   "devDependencies": {
