@@ -18,19 +18,19 @@ const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}
  * [p-color-scheme="dark"] {...}
  * [p-color-scheme="dim"] {...}
  */
-function getColorSchemeRules(tokens, osColorSchemes) {
-  return Object.keys(tokens.colorSchemes)
+function getColorSchemeRules(tokenHash, colorSchemes) {
+  return Object.keys(tokenHash.colorSchemes)
     .map((key) => {
       const colorScheme = key;
       const selector = `[p-color-scheme="${colorScheme}"]`;
       const colorCustomProperties = getColorSchemeDeclarations(
         colorScheme,
-        tokens,
-        osColorSchemes,
+        tokenHash,
+        colorSchemes,
       );
 
       return `${selector}{${colorCustomProperties}${getStaticCustomProperties(
-        tokens,
+        tokenHash,
       )}}`;
     })
     .join('');
@@ -40,28 +40,28 @@ function getColorSchemeRules(tokens, osColorSchemes) {
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-function getStaticCustomProperties(tokens) {
-  return Object.entries(tokens)
+function getStaticCustomProperties(tokenHash) {
+  return Object.entries(tokenHash)
     .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
-    .map(([_, tokens]) => getCustomProperties(tokens))
+    .map(([, filteredTokens]) => getCustomProperties(filteredTokens))
     .join('');
 }
 
 /**
  * Creates CSS declarations for a given color-scheme.
  */
-function getColorSchemeDeclarations(colorScheme, tokens, osColorSchemes) {
+function getColorSchemeDeclarations(colorScheme, tokenHash, colorSchemes) {
   return [
-    `color-scheme:${osColorSchemes[colorScheme]};`,
-    getCustomProperties(tokens.colorSchemes[colorScheme]),
+    `color-scheme:${colorSchemes[colorScheme]};`,
+    getCustomProperties(tokenHash.colorSchemes[colorScheme]),
   ].join('');
 }
 
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-function getCustomProperties(tokens) {
-  return Object.entries(tokens)
+function getCustomProperties(tokenHash) {
+  return Object.entries(tokenHash)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
         ? `--p-${token}:p-${token};`
