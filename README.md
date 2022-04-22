@@ -1,4 +1,4 @@
-<img src="https://github.com/Shopify/polaris/blob/9659e7c89332c1d41f91d5bc1ff5c7d2c86e9b0e/documentation/readme.jpg?raw=true" alt="" align="center" />
+<img src="https://github.com/Shopify/polaris/blob/b44d9f7075203748b7784bd61e88cba1e2d7acde/documentation/readme.jpg?raw=true" alt="" align="center" />
 
 [![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://storybook.polaris.shopify.com) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
