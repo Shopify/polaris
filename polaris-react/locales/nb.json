@@ -104,7 +104,11 @@
         "actionHintFile": "eller slipp filen for å laste den opp",
         "actionHintImage": "eller slipp bildet for å laste opp",
         "labelFile": "Last opp fil",
-        "labelImage": "Last opp bilde"
+        "labelImage": "Last opp bilde",
+        "overlayTextVideo": "Slipp video for å laste opp",
+        "actionTitleVideo": "Legg til video",
+        "actionHintVideo": "eller slipp video for å laste opp",
+        "labelVideo": "Last opp video"
       },
       "allowMultiple": {
         "overlayTextFile": "Slipp filer for å laste opp",
@@ -114,8 +118,13 @@
         "actionHintFile": "eller slipp filer for å laste opp",
         "actionHintImage": "eller slipp bilder for å laste opp",
         "labelFile": "Last opp filer",
-        "labelImage": "Laste opp bilder"
-      }
+        "labelImage": "Laste opp bilder",
+        "overlayTextVideo": "Slipp videoer for å laste opp",
+        "actionTitleVideo": "Legg til videoer",
+        "actionHintVideo": "eller slipp videoer for å laste opp",
+        "labelVideo": "Last opp videoer"
+      },
+      "errorOverlayTextVideo": "Videotypen er ugyldig"
     },
     "EmptySearchResult": {
       "altText": "Tøm søkeresultater"

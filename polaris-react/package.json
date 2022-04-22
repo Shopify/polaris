@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -67,11 +67,11 @@
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.18.2",
-    "@types/react": "^17.0.19",
-    "@types/react-dom": "^17.0.9",
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
     "focus-visible": "^5.2.0",
-    "lodash": "^4.17.4",
+    "react-fast-compare": "^3.2.0",
     "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
@@ -81,6 +81,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@luigiminardim/storybook-addon-globals-controls": "^0.1.3",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^2.3.3",
@@ -101,8 +102,9 @@
     "@storybook/builder-webpack5": "^6.4.19",
     "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/react": "^6.4.19",
-    "@types/lodash": "^4.14.138",
     "@types/node": "^16.11.11",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
     "ajv-cli": "^5.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
@@ -115,6 +117,7 @@
     "fs-extra": "^7.0.1",
     "glob": "^7.1.4",
     "gray-matter": "^4.0.2",
+    "lodash": "^4.17.21",
     "marked": "^4.0.10",
     "node-cmd": "^3.0.0",
     "node-sass": "^7.0.1",

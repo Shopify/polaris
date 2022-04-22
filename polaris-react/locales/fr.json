@@ -104,7 +104,11 @@
         "actionHintFile": "ou déposer le fichier à importer",
         "actionHintImage": "ou déposer l’image à importer",
         "labelFile": "Importer un fichier",
-        "labelImage": "Importer une image"
+        "labelImage": "Importer une image",
+        "overlayTextVideo": "Déposer la vidéo à mettre en ligne",
+        "actionTitleVideo": "Ajouter la vidéo",
+        "actionHintVideo": "ou déposer la vidéo à mettre en ligne",
+        "labelVideo": "Mettre en ligne la vidéo"
       },
       "allowMultiple": {
         "overlayTextFile": "Déposer les fichiers à importer",
@@ -114,8 +118,13 @@
         "actionHintFile": "ou déposer les fichiers à importer",
         "actionHintImage": "ou déposer les images à importer",
         "labelFile": "Importer des fichiers",
-        "labelImage": "Importer des images"
-      }
+        "labelImage": "Importer des images",
+        "overlayTextVideo": "Déposer les vidéos à mettre en ligne",
+        "actionTitleVideo": "Ajouter des vidéos",
+        "actionHintVideo": "ou déposer les vidéos à mettre en ligne",
+        "labelVideo": "Mettre en ligne les vidéos"
+      },
+      "errorOverlayTextVideo": "Le type de vidéo n’est pas valide"
     },
     "EmptySearchResult": {
       "altText": "Résultats de recherche vides"
@@ -257,7 +266,8 @@
           },
           "seconds": {
             "other": "{secondCount} secondes",
-            "one": "{secondCount} seconde"
+            "one": "{secondCount} seconde",
+            "many": "{secondCount} secondes"
           }
         }
       }

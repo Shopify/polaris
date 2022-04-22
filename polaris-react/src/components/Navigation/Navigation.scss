@@ -174,7 +174,7 @@ $disabled-fade: 0.6;
 
   &:not(:first-child) {
     .Item {
-      border-top: 1px solid var(--p-background);
+      border-top: var(--p-border-width-1) solid var(--p-background);
     }
   }
 }

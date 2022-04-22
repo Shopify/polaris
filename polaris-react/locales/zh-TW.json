@@ -104,7 +104,11 @@
         "actionHintFile": "或拖放檔案即可上傳",
         "actionHintImage": "或拖放圖像即可上傳",
         "labelFile": "上傳檔案",
-        "labelImage": "上傳圖片"
+        "labelImage": "上傳圖片",
+        "overlayTextVideo": "拖放影片以上傳",
+        "actionTitleVideo": "新增影片",
+        "actionHintVideo": "或拖放影片即可上傳",
+        "labelVideo": "上傳影片"
       },
       "allowMultiple": {
         "overlayTextFile": "拖放檔案以上傳",
@@ -114,8 +118,13 @@
         "actionHintFile": "或拖放檔案以上傳",
         "actionHintImage": "或拖放圖像即可上傳",
         "labelFile": "上傳檔案",
-        "labelImage": "上傳圖片"
-      }
+        "labelImage": "上傳圖片",
+        "overlayTextVideo": "拖放影片以上傳",
+        "actionTitleVideo": "新增影片",
+        "actionHintVideo": "或拖放影片以上傳",
+        "labelVideo": "上傳影片"
+      },
+      "errorOverlayTextVideo": "影片類型無效"
     },
     "EmptySearchResult": {
       "altText": "清空搜尋結果"

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';

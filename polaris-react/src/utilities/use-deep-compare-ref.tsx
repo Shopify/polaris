@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'react-fast-compare';
 
 type DependencyList = readonly unknown[];
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;

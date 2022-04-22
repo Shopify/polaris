@@ -1,8 +1,8 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
 
+import {debounce} from '../../utilities/debounce';
 import {tokens} from '../../tokens';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
