@@ -14,7 +14,7 @@
 
 ## About this repo
 
-Polaris is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, Figma plugins and websites.
+The shopify/polaris repository is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, Figma plugins and websites.
 
 ```sh
 polaris/
