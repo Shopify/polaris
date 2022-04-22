@@ -120,11 +120,6 @@ $breakpoint: 490px;
 
   &.segmented {
     margin-left: calc(-1 * var(--p-space-1));
-
-    &::after {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
   }
 }
 
@@ -164,13 +159,12 @@ $breakpoint: 490px;
   }
 
   &.segmented {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    &:hover {
+      background: none;
+    }
 
     &::after {
       margin-right: var(--p-space-1);
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
 }

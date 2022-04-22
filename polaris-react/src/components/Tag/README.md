@@ -103,6 +103,38 @@ Use when a tag needs to be visually distinguished from others, like when it's ad
 </Tag>
 ```
 
+### Removable tag with link
+
+A removable attribute to an object that allows merchants to navigate to a resource.
+
+```jsx
+function RemovableTagWithLinkExample() {
+  const [selectedTags, setSelectedTags] = useState([
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Refurbished',
+  ]);
+
+  const removeTag = useCallback(
+    (tag) => () => {
+      setSelectedTags((previousTags) =>
+        previousTags.filter((previousTag) => previousTag !== tag),
+      );
+    },
+    [],
+  );
+
+  const tagMarkup = selectedTags.map((option) => (
+    <Tag key={option} onRemove={removeTag(option)} url="/collections/wholesale">
+      {option}
+    </Tag>
+  ));
+
+  return <Stack spacing="tight">{tagMarkup}</Stack>;
+}
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)

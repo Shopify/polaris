@@ -105,25 +105,34 @@
       "single": {
         "overlayTextFile": "Drop file to upload",
         "overlayTextImage": "Drop image to upload",
+        "overlayTextVideo": "Drop video to upload",
         "actionTitleFile": "Add file",
         "actionTitleImage": "Add image",
+        "actionTitleVideo": "Add video",
         "actionHintFile": "or drop file to upload",
         "actionHintImage": "or drop image to upload",
+        "actionHintVideo": "or drop video to upload",
         "labelFile": "Upload file",
-        "labelImage": "Upload image"
+        "labelImage": "Upload image",
+        "labelVideo": "Upload video"
       },
       "allowMultiple": {
         "overlayTextFile": "Drop files to upload",
         "overlayTextImage": "Drop images to upload",
+        "overlayTextVideo": "Drop videos to upload",
         "actionTitleFile": "Add files",
         "actionTitleImage": "Add images",
+        "actionTitleVideo": "Add videos",
         "actionHintFile": "or drop files to upload",
         "actionHintImage": "or drop images to upload",
+        "actionHintVideo": "or drop videos to upload",
         "labelFile": "Upload files",
-        "labelImage": "Upload images"
+        "labelImage": "Upload images",
+        "labelVideo": "Upload videos"
       },
       "errorOverlayTextFile": "File type is not valid",
-      "errorOverlayTextImage": "Image type is not valid"
+      "errorOverlayTextImage": "Image type is not valid",
+      "errorOverlayTextVideo": "Video type is not valid"
     },
     "EmptySearchResult": {
       "altText": "Empty search results"

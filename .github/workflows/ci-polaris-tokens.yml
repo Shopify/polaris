@@ -5,7 +5,7 @@ on:
     paths:
       - 'polaris-tokens/**'
   push:
-    branches: main
+    branches: [main, polaris-tokens-release]
     paths:
       - 'polaris-tokens/**'
 

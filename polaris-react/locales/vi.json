@@ -104,7 +104,11 @@
         "actionHintFile": "hoặc thả tệp để tải lên",
         "actionHintImage": "hoặc thả ảnh để tải lên",
         "labelFile": "Tải lên tệp",
-        "labelImage": "Tải lên hình ảnh"
+        "labelImage": "Tải lên hình ảnh",
+        "overlayTextVideo": "Thả video để tải lên",
+        "actionTitleVideo": "Thêm video",
+        "actionHintVideo": "hoặc thả video để tải lên",
+        "labelVideo": "Tải lên video"
       },
       "allowMultiple": {
         "overlayTextFile": "Thả tệp để tải lên",
@@ -114,8 +118,13 @@
         "actionHintFile": "hoặc thả tệp để tải lên",
         "actionHintImage": "hoặc thả ảnh để tải lên",
         "labelFile": "Tải lên tệp",
-        "labelImage": "Tải lên hình ảnh"
-      }
+        "labelImage": "Tải lên hình ảnh",
+        "overlayTextVideo": "Thả video để tải lên",
+        "actionTitleVideo": "Thêm video",
+        "actionHintVideo": "hoặc thả video để tải lên",
+        "labelVideo": "Tải lên video"
+      },
+      "errorOverlayTextVideo": "Loại video không hợp lệ"
     },
     "EmptySearchResult": {
       "altText": "Kết quả tìm kiếm trống"

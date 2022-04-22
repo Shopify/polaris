@@ -104,7 +104,11 @@
         "actionHintFile": "nebo ho nahrajte přetažením",
         "actionHintImage": "nebo ho nahrajte přetažením",
         "labelFile": "Nahrát soubor",
-        "labelImage": "Nahrát obrázek"
+        "labelImage": "Nahrát obrázek",
+        "overlayTextVideo": "Video nahrajete přetažením",
+        "actionTitleVideo": "Přidejte video",
+        "actionHintVideo": "nebo ho nahrajte přetažením",
+        "labelVideo": "Nahrát video"
       },
       "allowMultiple": {
         "overlayTextFile": "Soubory nahrajete přetažením",
@@ -114,8 +118,13 @@
         "actionHintFile": "nebo je nahrajte přetažením",
         "actionHintImage": "nebo je nahrajte přetažením",
         "labelFile": "Nahrát soubory",
-        "labelImage": "Nahrát obrázky"
-      }
+        "labelImage": "Nahrát obrázky",
+        "overlayTextVideo": "Nahrajte videa přetažením",
+        "actionTitleVideo": "Přidejte videa",
+        "actionHintVideo": "nebo je nahrajte přetažením",
+        "labelVideo": "Nahrát videa"
+      },
+      "errorOverlayTextVideo": "Typ videa není platný"
     },
     "EmptySearchResult": {
       "altText": "Žádné výsledky hledání"

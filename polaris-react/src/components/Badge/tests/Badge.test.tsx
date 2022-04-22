@@ -44,7 +44,7 @@ describe('<Badge />', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
 
     expect(badge).toContainReactComponent('span', {
-      className: 'Pip',
+      className: 'Pip statusInfo progressIncomplete',
     });
   });
 
@@ -104,6 +104,62 @@ describe('<Badge />', () => {
 
     expect(badge).not.toContainReactComponent(VisuallyHidden, {
       children: 'Attention Incomplete',
+    });
+  });
+
+  it('renders default accessibility label when `statusAndProgressLabelOverride` is not provided', () => {
+    let badge = mountWithApp(
+      <Badge status="attention" progress="incomplete" />,
+    );
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Attention Incomplete',
+    });
+
+    badge = mountWithApp(<Badge progress="incomplete" />);
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: ' Incomplete',
+    });
+
+    badge = mountWithApp(<Badge status="attention" />);
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Attention ',
+    });
+
+    badge = mountWithApp(<Badge />);
+
+    expect(badge).not.toContainReactComponent(VisuallyHidden);
+  });
+});
+
+describe('<Badge.Pip />', () => {
+  it('renders default accessibility label when `statusAndProgressLabelOverride` is not provided', () => {
+    let badge = mountWithApp(
+      <Badge.Pip status="attention" progress="incomplete" />,
+    );
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Attention Incomplete',
+    });
+
+    badge = mountWithApp(<Badge.Pip progress="partiallyComplete" />);
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Info Partially complete',
+    });
+
+    badge = mountWithApp(<Badge.Pip status="attention" />);
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Attention Complete',
+    });
+
+    badge = mountWithApp(<Badge.Pip />);
+
+    expect(badge).toContainReactComponent(VisuallyHidden, {
+      children: 'Info Complete',
     });
   });
 });

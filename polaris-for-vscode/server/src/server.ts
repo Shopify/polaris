@@ -67,11 +67,13 @@ connection.onInitialize((params: InitializeParams) => {
     const tokensArray = groupedTokens[category];
 
     const completionItems = tokensArray.map((token): CompletionItem => {
+      const tokenName = `--p-${token.label}`;
+
       return {
-        label: token.label,
+        label: tokenName,
         insertText: token.insertText,
         detail: token.value,
-        filterText: `--p-${token.label}`,
+        filterText: tokenName,
         kind:
           category === 'color'
             ? CompletionItemKind.Color
