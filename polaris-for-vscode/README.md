@@ -19,7 +19,7 @@ Get code autocomplete suggestions for the [Polaris Design Tokens](https://polari
 
 Once installed and enabled, the Polaris for VS Code extension will automatically run in any CSS and Sass files.
 
-To trigger tokens automcomplete feature:
+To trigger tokens autocomplete feature:
 
 1. Open a CSS or Sass file from your project
 2. Start typing the CSS property you want to set ex. `color: `
