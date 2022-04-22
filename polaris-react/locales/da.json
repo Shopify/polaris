@@ -104,7 +104,11 @@
         "actionHintFile": "eller slip filen for at uploade",
         "actionHintImage": "eller slip billedet for at uploade",
         "labelFile": "Upload fil",
-        "labelImage": "Upload billede"
+        "labelImage": "Upload billede",
+        "overlayTextVideo": "Slip video for at uploade",
+        "actionTitleVideo": "Tilføj video",
+        "actionHintVideo": "eller slip videoen for at uploade",
+        "labelVideo": "Upload video"
       },
       "allowMultiple": {
         "overlayTextFile": "Slip filer for at uploade",
@@ -114,8 +118,13 @@
         "actionHintFile": "eller slip filer for at uploade",
         "actionHintImage": "eller slip billeder for at uploade",
         "labelFile": "Upload filer",
-        "labelImage": "Upload billeder"
-      }
+        "labelImage": "Upload billeder",
+        "overlayTextVideo": "Slip videoer for at uploade",
+        "actionTitleVideo": "Tilføj videoer",
+        "actionHintVideo": "eller slip videoerne for at uploade",
+        "labelVideo": "Upload videoer"
+      },
+      "errorOverlayTextVideo": "Videotypen er ikke gyldig"
     },
     "EmptySearchResult": {
       "altText": "Tøm søgeresultater"
