@@ -1,19 +1,6 @@
 @import '../../styles/common';
 
-// translate-offset equals handle-width - padding
-$resource-list-item-variables: (
-  min-height: 44px,
-  handle-width: 48px,
-  disclosure-width: 48px,
-  clickable-stacking-order: 1,
-  content-stacking-order: 2,
-  actions-height: 56px,
-  breakpoint-small: 458px,
-);
-
-@function resource-list-item($variable) {
-  @return map-get($resource-list-item-variables, $variable);
-}
+$breakpoint-small: 458px;
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -32,7 +19,12 @@ $resource-list-item-variables: (
 }
 
 .ResourceItem {
-  --pc-resource-item-offset: calc(48px - 12px + var(--p-space-1));
+  --pc-resource-item-min-height: 44px;
+  --pc-resource-item-disclosure-width: 48px;
+  // Offset equals handle width + handle margin-left + handle margin-right
+  --pc-resource-item-offset: 40px;
+  --pc-resource-item-clickable-stacking-order: 1;
+  --pc-resource-item-content-stacking-order: 2;
   position: relative;
   outline: none;
   cursor: pointer;
@@ -79,7 +71,7 @@ $resource-list-item-variables: (
 .Link,
 .Button {
   position: absolute;
-  z-index: resource-list-item(clickable-stacking-order);
+  z-index: var(--pc-resource-item-clickable-stacking-order);
   top: 0;
   left: 0;
   height: 100%;
@@ -95,13 +87,13 @@ $resource-list-item-variables: (
 // Item inner container
 .Container {
   position: relative;
-  z-index: resource-list-item(content-stacking-order);
+  z-index: var(--pc-resource-item-content-stacking-order);
   padding: var(--p-space-3) var(--p-space-4);
-  min-height: resource-list-item(min-height);
+  min-height: var(--pc-resource-item-min-height);
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after(resource-list-item(breakpoint-small)) {
+  @include breakpoint-after($breakpoint-small) {
     padding: var(--p-space-3) var(--p-space-5);
   }
 }
@@ -136,15 +128,15 @@ $resource-list-item-variables: (
 
 // Item handle
 .Handle {
-  width: resource-list-item(handle-width);
-  min-height: resource-list-item(min-height);
+  width: 48px;
+  min-height: var(--pc-resource-item-min-height);
   justify-content: center;
   align-items: center;
   margin: calc(-1 * var(--p-space-3)) var(--p-space-1)
     calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
-  @include breakpoint-before(resource-list-item(breakpoint-small), false) {
+  @include breakpoint-before($breakpoint-small, false) {
     visibility: hidden;
 
     .selectMode & {
@@ -163,7 +155,7 @@ $resource-list-item-variables: (
     transform: translateX(0);
   }
 
-  @include breakpoint-after(resource-list-item(breakpoint-small)) {
+  @include breakpoint-after($breakpoint-small) {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;
@@ -190,7 +182,7 @@ $resource-list-item-variables: (
   display: flex;
   pointer-events: initial;
   height: 100%;
-  max-height: resource-list-item(actions-height);
+  max-height: 56px;
 
   @include action-hide;
 
@@ -226,8 +218,8 @@ $resource-list-item-variables: (
   top: calc(-1 * var(--p-space-3));
   right: calc(-1 * var(--p-space-4));
   display: none;
-  width: resource-list-item(disclosure-width);
-  min-height: resource-list-item(min-height);
+  width: var(--pc-resource-item-disclosure-width);
+  min-height: var(--pc-resource-item-min-height);
   pointer-events: initial;
 
   .selectMode & {
@@ -236,7 +228,7 @@ $resource-list-item-variables: (
 
   @include page-content-when-partially-condensed {
     display: flex;
-    flex: 0 0 resource-list-item(disclosure-width);
+    flex: 0 0 var(--pc-resource-item-disclosure-width);
     justify-content: center;
     align-items: center;
   }
@@ -284,7 +276,7 @@ $resource-list-item-variables: (
 
   &.focused {
     @include focus-ring($style: 'focused');
-    z-index: resource-list-item(clickable-stacking-order);
+    z-index: var(--pc-resource-item-clickable-stacking-order);
   }
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-combinators

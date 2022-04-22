@@ -70,7 +70,7 @@
       transform var(--p-duration-100) var(--p-ease);
 
     @media (forced-colors: active) {
-      border: 5px solid transparent;
+      border: var(--p-border-width-5) solid transparent;
     }
   }
 
