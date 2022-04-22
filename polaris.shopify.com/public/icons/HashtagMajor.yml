@@ -3,7 +3,7 @@ set: major
 description: Used to represent a hashtag.
 keywords:
   - pound
-  - '#'
+  - "#"
   - sharp
   - num
 authors:

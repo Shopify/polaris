@@ -13,7 +13,7 @@ keywords:
 
 # Combobox
 
-Combobox uses an enhanced text field that allows merchants to filter through a list of options to pick one or more values. The list of options is displayed when a merchant focuses on the field.
+Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
 
 ---
 
@@ -23,10 +23,10 @@ Combobox uses an enhanced text field that allows merchants to filter through a l
 
 A combobox is made up of the following:
 
-1. **Text field**: The field people click in to activate the popover and filter through the options they can choose from. Once selected, the option will be shown in the text input.
-2. **Popover**: Renders to contain the Listbox.
-3. **Listbox**: Contains the list of all selectable items.
-4. **Listbox** options: The individual options that merchants can select. For context on ways the Listbox can be composed with various content, check out the [listbox documentation](https://polaris.shopify.com/components/forms/listbox).
+1. **TextField**: A text input that activates a popover displaying a list of options. As merchants type in the text field, the list of options is filtered by the input value. Options replace or add to the input value when selected.
+2. **Popover**: An overlay containing a list of options.
+3. **Listbox**: A list of options to filter and select or deselect.
+4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/forms/listbox) to learn how to compose it with various content.
 
 ---
 
@@ -34,7 +34,7 @@ A combobox is made up of the following:
 
 The `Combobox` component should:
 
-- Be clearly labeled so the merchant knows what type of options will be available
+- Be clearly labeled so the merchant knows what kind of options will be available
 - Not be used within a popover
 - Indicate a loading state to the merchant while option data is being populated
 - Order items in an intentional way so it’s easy for the merchant to find a specific value
@@ -70,7 +70,7 @@ If multiple options can be selected, move selected items to the top of the list.
 
 ### Tags autocomplete
 
-The tag multiselect allows merchants to select, create, and browse from a long list of options.
+The tag multi-select input enables merchants to efficiently add or remove tags from a resource, like a product or an order. It uses the inline autocomplete combobox pattern to present merchants with an editable list of tags to browse and select from.
 
 ---
 
@@ -78,7 +78,7 @@ The tag multiselect allows merchants to select, create, and browse from a long l
 
 ### Single select autocomplete
 
-Allows merchants to select from a predefined list of options. It’s typically used when there are a large number of options to choose from.
+Use when merchants can select one option from a predefined or editable list.
 
 ```jsx
 function ComboboxExample() {
@@ -122,7 +122,7 @@ function ComboboxExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue(matchedOption?.label || '');
     },
     [options],
   );
@@ -170,7 +170,7 @@ function ComboboxExample() {
 
 ### Multi-select autocomplete
 
-Allows the merchant to select multiple options from a pre-defined list of options.
+Use when merchants can select one or more options from a predefined or editable list.
 
 ```jsx
 function MultiComboboxExample() {
@@ -220,7 +220,8 @@ function MultiComboboxExample() {
       const matchedOption = options.find((option) => {
         return option.value.match(selected);
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -234,16 +235,11 @@ function MultiComboboxExample() {
     [selectedOptions],
   );
 
-  const tagsMarkup = selectedOptions.map((option) => {
-    let tagLabel = '';
-    tagLabel = option.replace('_', ' ');
-    tagLabel = titleCase(tagLabel);
-    return (
-      <Tag key={`option${option}`} onRemove={removeTag(option)}>
-        {tagLabel}
-      </Tag>
-    );
-  });
+  const tagsMarkup = selectedOptions.map((option) => (
+    <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+      {option}
+    </Tag>
+  ));
 
   const optionsMarkup =
     options.length > 0
@@ -287,35 +283,24 @@ function MultiComboboxExample() {
       </TextContainer>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 ```
 
 ### Multi-select autocomplete with vertical content
 
-Allows the merchant to select multiple options from a pre-defined list of options. Selected options are displayed as inline vertical content in the TextField.
+Use to display selected options above the input value.
 
 ```jsx
-function MultiVerticalContentComboboxExample() {
-  const deselectedOptions = useMemo(
-    () => [
-      {value: 'rustic', label: 'Rustic'},
-      {value: 'antique', label: 'Antique'},
-      {value: 'vinyl', label: 'Vinyl'},
-      {value: 'vintage', label: 'Vintage'},
-      {value: 'refurbished', label: 'Refurbished'},
-    ],
-    [],
-  );
+function MultiselectTagComboboxExample() {
+  const deselectedOptions = [
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Vintage',
+    'Refurbished',
+  ];
 
-  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
+  const [selectedOptions, setSelectedOptions] = useState(['Rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -330,7 +315,7 @@ function MultiVerticalContentComboboxExample() {
 
       const filterRegex = new RegExp(value, 'i');
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.match(filterRegex),
       );
       setOptions(resultOptions);
     },
@@ -348,9 +333,10 @@ function MultiVerticalContentComboboxExample() {
       }
 
       const matchedOption = options.find((option) => {
-        return option.value.match(selected);
+        return option === selected;
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -367,32 +353,25 @@ function MultiVerticalContentComboboxExample() {
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
       <Stack spacing="extraTight" alignment="center">
-        {selectedOptions.map((option) => {
-          let tagLabel = '';
-          tagLabel = option.replace('_', ' ');
-          tagLabel = titleCase(tagLabel);
-          return (
-            <Tag key={`option${option}`} onRemove={removeTag(option)}>
-              {tagLabel}
-            </Tag>
-          );
-        })}
+        {selectedOptions.map((option) => (
+          <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+            {option}
+          </Tag>
+        ))}
       </Stack>
     ) : null;
 
   const optionsMarkup =
     options.length > 0
       ? options.map((option) => {
-          const {label, value} = option;
-
           return (
             <Listbox.Option
-              key={`${value}`}
-              value={value}
-              selected={selectedOptions.includes(value)}
-              accessibilityLabel={label}
+              key={option}
+              value={option}
+              selected={selectedOptions.includes(option)}
+              accessibilityLabel={option}
             >
-              {label}
+              {option}
             </Listbox.Option>
           );
         })
@@ -419,20 +398,12 @@ function MultiVerticalContentComboboxExample() {
       </Combobox>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 ```
 
 ### Autocomplete with loading
 
-Use to indicate loading state to merchants while option data is processing.
+Use to indicate to merchants that the list data is being fetched.
 
 ```jsx
 function LoadingAutocompleteExample() {
@@ -484,7 +455,7 @@ function LoadingAutocompleteExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue(matchedOption?.label || '');
     },
     [options],
   );

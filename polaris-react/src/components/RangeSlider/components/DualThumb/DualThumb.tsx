@@ -1,7 +1,6 @@
 import React, {Component, createRef} from 'react';
-import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
 
+import {debounce} from '../../../../utilities/debounce';
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import type {RangeSliderProps, DualValue} from '../../types';
@@ -43,13 +42,13 @@ export class DualThumb extends Component<DualThumbProps, State> {
     const {min, step, max, value, onChange, id} = props;
     const {prevValue} = state;
 
-    if (isEqual(prevValue, value)) {
+    if (isTupleEqual(prevValue, value)) {
       return null;
     }
 
     const sanitizedValue = sanitizeValue(value, min, max, step);
 
-    if (!isEqual(value, sanitizedValue)) {
+    if (!isTupleEqual(value, sanitizedValue)) {
       onChange(sanitizedValue, id);
     }
 
@@ -451,7 +450,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     } = this;
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
-    if (isEqual(sanitizedValue, value) === false) {
+    if (isTupleEqual(sanitizedValue, value) === false) {
       this.setState(
         {
           value: sanitizedValue,
@@ -596,4 +595,13 @@ function sanitizeValue(
   function roundedToStep(value: number) {
     return Math.round(value / step) * step;
   }
+}
+
+// eslint-disable-next-line id-length
+function isTupleEqual(a?: DualValue, b?: DualValue) {
+  if (a == null || b == null) {
+    return false;
+  }
+
+  return a[0] === b[0] && a[1] === b[1];
 }

@@ -1,9 +1,6 @@
 .Badge {
   --pc-badge-horizontal-padding: var(--p-space-2);
   --pc-badge-vertical-padding: var(--p-space-05);
-  --pc-badge-pip-size: var(--p-space-2);
-  --pc-badge-pip-spacing: var(--p-space-1);
-  --pc-badge-component-badge-pip-color: var(--p-icon);
   display: inline-flex;
   align-items: center;
   padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
@@ -15,7 +12,7 @@
   font-weight: var(--p-font-weight-regular);
 
   @media print {
-    border: solid 0.1px var(--p-border);
+    border: solid var(--p-border-width-1) var(--p-border);
   }
 }
 
@@ -24,92 +21,34 @@
 }
 
 .statusSuccess {
-  --pc-badge-component-badge-pip-color: var(--p-icon-success);
   background-color: var(--p-surface-success);
   color: var(--p-text);
 }
 
 .statusInfo {
-  --pc-badge-component-badge-pip-color: var(--p-icon-highlight);
   background-color: var(--p-surface-highlight);
   color: var(--p-text);
 }
 
 .statusAttention {
-  --pc-badge-component-badge-pip-color: var(--p-icon-attention);
   background-color: var(--p-surface-attention);
   color: var(--p-text);
 }
 
 .statusWarning {
-  --pc-badge-component-badge-pip-color: var(--p-icon-warning);
   background-color: var(--p-surface-warning);
   color: var(--p-text);
 }
 
 .statusCritical {
-  --pc-badge-component-badge-pip-color: var(--p-icon-critical);
   background-color: var(--p-surface-critical);
   color: var(--p-text);
 }
 
 .statusNew {
-  background-color: var(--p-surface-neutral);
   color: var(--p-text);
   font-weight: var(--p-font-weight-medium);
   border: none;
-}
-
-.Pip {
-  color: var(--pc-badge-component-badge-pip-color);
-  height: var(--pc-badge-pip-size);
-  width: var(--pc-badge-pip-size);
-  margin-right: var(--pc-badge-pip-spacing);
-  margin-left: calc(
-    var(--pc-badge-vertical-padding) - var(--pc-badge-pip-spacing)
-  );
-  border: var(--p-border-width-2) solid currentColor;
-  border-radius: var(--p-border-radius-half);
-  flex-shrink: 0;
-}
-
-.progressIncomplete .Pip {
-  background: transparent;
-}
-
-.progressPartiallyComplete .Pip {
-  background: linear-gradient(
-    to top,
-    currentColor,
-    currentColor 50%,
-    transparent 50%,
-    transparent
-  );
-
-  // Background colors may be stripped when printing, but box-shadow is not.
-  // We don't want to use box-shadow as the screen style as it gives a very
-  // slight halo effect
-  @media print {
-    background: none;
-    // 100px is an arbitrarily large number so that you can't see the curvature
-    // of the box shadow. y-offset is 2px larger than the spread to make it look
-    // like it is half-way down the pip (which is 4px tall)
-    box-shadow: 0 -102px 0 -100px currentColor inset;
-  }
-}
-
-.progressComplete .Pip {
-  background: currentColor;
-
-  // Background colors may be stripped when printing, but box-shadow is not.
-  // We don't want to use box-shadow as the screen style as it gives a very
-  // slight halo effect
-  @media print {
-    background: none;
-    // 100px is an arbitrarily large number so that you can't see the curvature
-    // of the box shadow.
-    box-shadow: 0 0 0 100px currentColor inset;
-  }
 }
 
 .withinFilter {
@@ -124,4 +63,11 @@
   + *:not(.Icon) {
     margin-left: var(--p-space-1);
   }
+}
+
+.PipContainer {
+  display: grid;
+  align-items: center;
+  margin-left: calc(-1 * var(--p-space-05));
+  margin-right: var(--p-space-1);
 }

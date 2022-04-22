@@ -1,0 +1,71 @@
+.Longform {
+  border-radius: var(--border-radius-300);
+
+  img {
+    border-radius: var(--border-radius-200);
+    width: 100%;
+    height: auto;
+    background: white;
+  }
+
+  li {
+    list-style-type: disc;
+    margin-left: 1.1em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul {
+    margin: 1.25rem 0;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    margin-top: 2.25rem;
+  }
+
+  h3 {
+    margin-top: 1.75rem;
+  }
+
+  h4 {
+    margin-top: 1.5em;
+  }
+
+  hr {
+    display: none;
+  }
+
+  pre {
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    font-size: var(--font-size-300);
+    padding: 1em;
+    background: var(--text);
+    color: var(--surface);
+    border-radius: var(--border-radius-200);
+    overflow: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.Content {
+  h1 + p:first-of-type {
+    font-size: var(--font-size-600);
+    letter-spacing: var(--letter-spacing-300);
+    font-weight: var(--font-weight-500);
+  }
+}

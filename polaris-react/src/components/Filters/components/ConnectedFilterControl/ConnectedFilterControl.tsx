@@ -1,6 +1,6 @@
 import React, {Component, createRef} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../../../utilities/debounce';
 import {classNames} from '../../../../utilities/css';
 import type {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';

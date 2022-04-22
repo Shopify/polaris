@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$textfield-backdrop-offset: calc(-1 * var(--p-border-width-2));
+$textfield-backdrop-offset: calc(-1 * var(--p-space-05));
 $spinner-icon-size: 12px;
 
 .TextField {
@@ -169,7 +169,7 @@ $spinner-icon-size: 12px;
 }
 
 .Backdrop {
-  @include focus-ring($border-width: var(--p-border-width-1));
+  @include focus-ring($border-width: 1px);
   position: absolute;
   z-index: var(--pc-text-field-backdrop);
   top: 0;
@@ -177,7 +177,7 @@ $spinner-icon-size: 12px;
   bottom: 0;
   left: 0;
   background-color: var(--p-surface);
-  border: 1px solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border-top-color: var(--p-border-shadow);
   border-radius: var(--p-border-radius-1);
   pointer-events: none;
@@ -207,15 +207,15 @@ $spinner-icon-size: 12px;
   z-index: var(--pc-text-field-contents);
   color: var(--p-text-subdued);
   user-select: none;
-  padding: var(--p-space-2) var(--p-space-3) var(--p-space-2) var(--p-space-2);
+  padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
   max-height: 140px;
   overflow: scroll;
-  border: var(--p-border);
+  border: var(--p-border-transparent);
   width: 100%;
 
   > .Input {
     padding-left: var(--p-space-0);
-    padding-bottom: var(--p-space-0);
+    padding-right: var(--p-space-0);
   }
 
   @include breakpoint-after(490px) {

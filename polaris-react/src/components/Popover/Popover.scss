@@ -63,7 +63,7 @@ $vertical-motion-offset: -5px;
   overflow: hidden;
   background-color: var(--p-surface);
   border-radius: var(--p-border-radius-2);
-  outline: 1px solid transparent;
+  outline: var(--p-border-width-1) solid transparent;
 }
 
 .Content {

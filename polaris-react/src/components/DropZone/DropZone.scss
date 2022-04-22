@@ -21,9 +21,7 @@ $dropzone-stacking-order: (
 }
 
 @mixin set-border-radius {
-  border-radius: calc(
-    var(--p-border-radius-1) + #{var(--p-border-width-1)} + 1px
-  );
+  border-radius: var(--p-border-radius-large);
 }
 
 .DropZone {
@@ -60,7 +58,7 @@ $dropzone-stacking-order: (
 }
 
 .hasOutline {
-  padding: var(--p-border-width-1);
+  padding: var(--p-space-025);
 
   &::after {
     border-color: var(--p-border-neutral-subdued);
@@ -122,7 +120,7 @@ $dropzone-stacking-order: (
 }
 
 .Container {
-  @include focus-ring($border-width: var(--p-border-width-1));
+  @include focus-ring($border-width: 1px);
   flex: 1;
 }
 

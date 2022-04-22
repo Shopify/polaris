@@ -1,0 +1,62 @@
+.Page {
+  display: flex;
+}
+
+.Header {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  align-self: flex-start;
+  height: 100vh;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  font-weight: var(--font-weight-500);
+  color: inherit;
+  gap: 1em;
+  margin: 1em 1em 1.75em;
+
+  p {
+    margin: 0;
+  }
+}
+
+.HeaderMain {
+  padding: 1em 2em 1em 1em;
+  width: 16em;
+  background: #fafafa;
+
+  li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0.66em 1rem;
+    color: inherit;
+    gap: 1em;
+    font-weight: var(--font-weight-500);
+  }
+}
+
+.HeaderSub {
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+}
+
+.SearchWrapper {
+  margin: 1rem 0;
+}
+
+.Content {
+  flex: 1;
+}
+
+.MainContent {
+  margin: 4em auto;
+  max-width: 42em;
+}

@@ -1,15 +1,14 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.0.0-rc.2",
+  "version": "5.0.0-rc.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b",
-    "test": "yarn validate-tokens",
-    "validate-tokens": "ajv validate -s schemas/token-group.json -d 'token-groups/*.json'"
+    "build": "tsc -b && node scripts",
+    "test": "jest"
   },
   "devDependencies": {
-    "ajv-cli": "^5.0.0"
+    "jest": "^27.5.1"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",

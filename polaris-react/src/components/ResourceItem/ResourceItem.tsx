@@ -1,6 +1,6 @@
 import React, {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'react-fast-compare';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';

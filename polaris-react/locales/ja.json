@@ -104,7 +104,11 @@
         "actionHintFile": "またはファイルをドロップしてアップロード",
         "actionHintImage": "または、画像をドロップしてアップロード",
         "labelFile": "ファイルをアップロード",
-        "labelImage": "画像をアップロード"
+        "labelImage": "画像をアップロード",
+        "overlayTextVideo": "ビデオをドロップしてアップロードする",
+        "actionTitleVideo": "ビデオを追加する",
+        "actionHintVideo": "または、ビデオをドロップしてアップロードする",
+        "labelVideo": "ビデオをアップロード"
       },
       "allowMultiple": {
         "overlayTextFile": "ファイルをドロップしてアップロード",
@@ -114,8 +118,13 @@
         "actionHintFile": "または、ファイルをドロップしてアップロードする",
         "actionHintImage": "または、画像をドロップしてアップロード",
         "labelFile": "ファイルをアップロード",
-        "labelImage": "画像をアップロード"
-      }
+        "labelImage": "画像をアップロード",
+        "overlayTextVideo": "ビデオをドロップしてアップロードする",
+        "actionTitleVideo": "ビデオを追加する",
+        "actionHintVideo": "または、ビデオをドロップしてアップロードする",
+        "labelVideo": "ビデオをアップロード"
+      },
+      "errorOverlayTextVideo": "ビデオタイプが有効ではありません"
     },
     "EmptySearchResult": {
       "altText": "空の検索結果"

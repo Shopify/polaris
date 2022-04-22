@@ -52,7 +52,11 @@ export type {AvatarProps} from './components/Avatar';
 export {Backdrop} from './components/Backdrop';
 export type {BackdropProps} from './components/Backdrop';
 
-export {Badge} from './components/Badge';
+export {
+  Badge,
+  StatusValue as BadgeStatusValue,
+  ProgressValue as BadgeProgressValue,
+} from './components/Badge';
 export type {BadgeProps} from './components/Badge';
 
 export {Banner} from './components/Banner';

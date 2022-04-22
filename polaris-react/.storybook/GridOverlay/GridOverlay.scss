@@ -1,5 +1,4 @@
 .GridOverlay {
-  --pc-page-max-width: 998px;
   --pc-top-bar-height: 56px;
   --pc-nav-width: 240px;
   position: fixed;
@@ -10,13 +9,15 @@
   display: grid;
   gap: var(--p-space-3);
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 var(--p-space-6);
+  padding: 0 var(--p-space-3);
+  margin: 0 auto;
   background-color: var(--p-action-critical);
   opacity: 0.25;
   pointer-events: none;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: repeat(12, 1fr);
+    padding: 0 var(--p-space-8);
   }
 }
 
@@ -25,15 +26,10 @@
   background-color: var(--p-surface);
 }
 
-.inset {
-  max-width: var(--pc-page-max-width);
-  margin: 0 auto;
-}
-
 .inFrame {
   top: var(--pc-top-bar-height);
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     left: var(--pc-nav-width);
   }
 }
