@@ -12,12 +12,12 @@
       "PROGRESS_LABELS": {
         "incomplete": "Unvollständig",
         "partiallyComplete": "Teilweise abgeschlossen",
-        "complete": "Vollständig"
+        "complete": "Abgeschlossen"
       },
       "STATUS_LABELS": {
         "info": "Info",
         "success": "Erfolg",
-        "warning": "Achtung",
+        "warning": "Warnung",
         "attention": "Prüfung erforderlich",
         "new": "Neu",
         "critical": "Kritisch"
@@ -31,11 +31,11 @@
     "Common": {
       "checkbox": "Kontrollkästchen",
       "undo": "Rückgängig machen",
-      "cancel": "Stornieren",
+      "cancel": "Abbrechen",
       "newWindowAccessibilityHint": "(öffnet ein neues Fenster)",
       "clear": "Löschen",
       "close": "Schließen",
-      "submit": "Eingabe",
+      "submit": "Senden",
       "more": "Mehr"
     },
     "ContextualSaveBar": {
@@ -88,7 +88,7 @@
       "end": "Ende des Bereichs"
     },
     "DiscardConfirmationModal": {
-      "title": "Verwirf alle nicht gespeicherten Änderungen",
+      "title": "Alle nicht gespeicherten Änderungen verwerfen",
       "message": "Wenn du Änderungen verwirfst, werden alle Änderungen gelöscht, die du seit dem letzten Speichern vorgenommen hast.",
       "primaryAction": "Änderungen verwerfen",
       "secondaryAction": "Weiter bearbeiten"
@@ -104,7 +104,11 @@
         "actionHintFile": "oder Datei zum Hochladen ablegen",
         "actionHintImage": "oder Bild zum Hochladen ablegen",
         "labelFile": "Datei hochladen",
-        "labelImage": "Bild hochladen"
+        "labelImage": "Bild hochladen",
+        "overlayTextVideo": "Video zum Hochladen ablegen",
+        "actionTitleVideo": "Video hinzufügen",
+        "actionHintVideo": "oder Video zum Hochladen ablegen",
+        "labelVideo": "Video hochladen"
       },
       "allowMultiple": {
         "overlayTextFile": "Dateien zum Hochladen ablegen",
@@ -114,14 +118,19 @@
         "actionHintFile": "oder Dateien zum Hochladen ablegen",
         "actionHintImage": "oder Bilder zum Hochladen ablegen",
         "labelFile": "Dateien hochladen",
-        "labelImage": "Bilder hochladen"
-      }
+        "labelImage": "Bilder hochladen",
+        "overlayTextVideo": "Videos zum Hochladen ablegen",
+        "actionTitleVideo": "Videos hinzufügen",
+        "actionHintVideo": "oder Videos zum Hochladen ablegen",
+        "labelVideo": "Videos hochladen"
+      },
+      "errorOverlayTextVideo": "Der Videotyp ist nicht gültig"
     },
     "EmptySearchResult": {
       "altText": "Leere Suchergebnisse"
     },
     "Frame": {
-      "skipToContent": "\"Zum Inhalt gehen\"",
+      "skipToContent": "Direkt zum Inhalt",
       "Navigation": {
         "closeMobileNavigationLabel": "Navigation schließen"
       },
@@ -139,7 +148,7 @@
       "moreFilters": "Weitere Filter",
       "filter": "{resourceName} filtern",
       "noFiltersApplied": "Keine Filter angewendet",
-      "cancel": "Stornieren",
+      "cancel": "Abbrechen",
       "done": "Fertig",
       "clearAllFilters": "Alle Filter löschen",
       "clear": "Löschen",
@@ -152,7 +161,7 @@
     },
     "Pagination": {
       "previous": "Zurück",
-      "next": "Nächste",
+      "next": "Weiter",
       "pagination": "Seitennummerierung"
     },
     "ProgressBar": {
@@ -167,7 +176,7 @@
       "loading": "{resource} wird geladen",
       "selected": "{selectedItemsCount} ausgewählt",
       "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop sind ausgewählt.",
-      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop auswählen",
+      "selectAllItems": "Wähle alle {itemsLength}+ {resourceNamePlural} in deinem Shop aus",
       "emptySearchResultTitle": "Keine {resourceNamePlural} gefunden",
       "emptySearchResultDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
       "selectButtonText": "Auswählen",
@@ -176,11 +185,11 @@
       "a11yCheckboxDeselectAllMultiple": "Auswahl für alle {itemsLength} {resourceNamePlural} aufheben",
       "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} auswählen",
       "ariaLiveSingular": "{itemsLength} Artikel",
-      "ariaLivePlural": "{itemsLength} Produkte",
+      "ariaLivePlural": "{itemsLength} Artikel",
       "Item": {
         "actionsDropdownLabel": "Aktionen für {accessibilityLabel}",
         "actionsDropdown": "Dropdown-Liste mit Aktionen",
-        "viewItem": "Details anzeigen für {itemName}"
+        "viewItem": "Details für {itemName} anzeigen"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Aktionen",
@@ -202,7 +211,7 @@
     },
     "TextField": {
       "characterCount": "{count} Zeichen",
-      "characterCountWithMaxLength": "{count} von {limit} verwendete Zeichen"
+      "characterCountWithMaxLength": "{count} von {limit} Zeichen verwendet"
     },
     "TopBar": {
       "toggleMenuLabel": "Menü wechseln",
@@ -282,7 +291,7 @@
       "emptySearchTitle": "Keine {resourceNamePlural} gefunden",
       "emptySearchDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
       "onboardingBadgeText": "Neu",
-      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} wird geladen",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} werden geladen ...",
       "selectAllLabel": "Alle {resourceNamePlural} auswählen",
       "selected": "{selectedItemsCount} ausgewählt",
       "undo": "Rückgängig machen",

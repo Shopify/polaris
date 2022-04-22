@@ -45,7 +45,7 @@ It’s recommended to link your footer help component to [help documentation](ht
 
 By default, footer help should link to information in the Shopify Help Center and should follow this content pattern:
 
-- Learn more about {X}.
+- Learn more about {X}
 
 Links should be:
 
@@ -53,15 +53,15 @@ Clearly labeled: Merchants shouldn’t need to guess where they’ll end up if t
 
 For Shopify app developers linking to contact information, footer help should follow this content pattern:
 
-- Option 1: {Contact us} about [X].
-- Option 2: Reach out to us at {contact info}.
+- Option 1: {Contact us} about [X]
+- Option 2: Reach out to us at {contact info}
 
 <!-- usagelist -->
 
 #### Do
 
-- Learn more about [shipping zones].
-- [Contact us] about email marketing.
+- Learn more about [shipping zones]
+- [Contact us] about email marketing
 
 #### Don’t
 

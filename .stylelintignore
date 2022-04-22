@@ -1,0 +1,12 @@
+node_modules
+.loom
+.vscode-test
+dist
+out
+/polaris-react/build
+/polaris-react/build-internal
+/polaris.shopify.com/.next
+/stylelint-polaris/data
+/stylelint-polaris/tests
+/documentation/guides/legacy-polaris-v8-public-api.scss
+/stylelint-polaris/tests

@@ -104,7 +104,11 @@
         "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
         "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
         "labelFile": "อัปโหลดไฟล์",
-        "labelImage": "อัปโหลดรูปภาพ"
+        "labelImage": "อัปโหลดรูปภาพ",
+        "overlayTextVideo": "วางวิดีโอเพื่ออัปโหลด",
+        "actionTitleVideo": "เพิ่มวิดีโอ",
+        "actionHintVideo": "หรือวางวิดีโอเพื่ออัปโหลด",
+        "labelVideo": "อัปโหลดวิดีโอ"
       },
       "allowMultiple": {
         "overlayTextFile": "วางไฟล์เพื่ออัปโหลด",
@@ -114,8 +118,13 @@
         "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
         "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
         "labelFile": "อัปโหลดไฟล์",
-        "labelImage": "อัปโหลดรูปภาพ"
-      }
+        "labelImage": "อัปโหลดรูปภาพ",
+        "overlayTextVideo": "วางวิดีโอเพื่ออัปโหลด",
+        "actionTitleVideo": "เพิ่มวิดีโอ",
+        "actionHintVideo": "หรือวางวิดีโอเพื่ออัปโหลด",
+        "labelVideo": "อัปโหลดวิดีโอ"
+      },
+      "errorOverlayTextVideo": "ประเภทวิดีโอไม่ถูกต้อง"
     },
     "EmptySearchResult": {
       "altText": "ล้างผลลัพธ์การค้นหา"

@@ -8,9 +8,9 @@ import React, {
   useEffect,
   Component,
 } from 'react';
-import debounce from 'lodash/debounce';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
+import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
@@ -35,7 +35,7 @@ import {
 } from './utils';
 import styles from './DropZone.scss';
 
-export type DropZoneFileType = 'file' | 'image';
+export type DropZoneFileType = 'file' | 'image' | 'video';
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -482,6 +482,7 @@ class DropZoneInput extends Component<DropZoneInputProps, never> {
 
   render() {
     const {openFileDialog, onFileDialogClose, ...inputProps} = this.props;
+
     return (
       <input {...inputProps} ref={this.fileInputNode} autoComplete="off" />
     );

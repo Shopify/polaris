@@ -16,8 +16,7 @@ $item-wrapper-loading-height: 64px;
 }
 
 .FiltersWrapper {
-  padding: resource-list(header-padding-small)
-    resource-list(header-padding-small) var(--p-space-4);
+  padding: var(--p-space-3) var(--p-space-3) var(--p-space-4);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: var(--p-space-4);
@@ -48,7 +47,7 @@ $item-wrapper-loading-height: 64px;
 .HeaderWrapper-overlay {
   @include resource-list-overlay;
   z-index: resource-list(header-overlay-stacking-order);
-  background-color: resource-list(overlay-background);
+  background-color: var(--p-overlay);
 }
 
 .FiltersWrapper + .HeaderOuterWrapper {
@@ -76,8 +75,8 @@ $item-wrapper-loading-height: 64px;
 .HeaderContentWrapper {
   position: absolute;
   z-index: resource-list(content-wrapper-stacking-order);
-  right: resource-list(header-padding-small);
-  left: resource-list(header-padding-small);
+  right: var(--p-space-3);
+  left: var(--p-space-3);
   display: flex;
   min-height: resource-list(header-content-min-height);
   opacity: 1;
@@ -232,7 +231,7 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(overlay-stacking-order);
   display: flex;
   justify-content: center;
-  background-color: resource-list(overlay-background);
+  background-color: var(--p-overlay);
 }
 
 .DisabledPointerEvents {

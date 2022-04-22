@@ -17,60 +17,88 @@ import styles from './Combobox.scss';
 import {TextField} from './components';
 
 export interface ComboboxProps {
-  children?: React.ReactElement<ListboxProps> | null;
+  /** The text field component to activate the Popover */
   activator: React.ReactElement<TextFieldProps>;
+  /** Allows more than one option to be selected */
   allowMultiple?: boolean;
-  onScrolledToBottom?(): void;
+  /** The content to display inside the popover */
+  children?: React.ReactElement<ListboxProps> | null;
+  /** The preferred direction to open the popover */
   preferredPosition?: PopoverProps['preferredPosition'];
+  /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
+  willLoadMoreOptions?: boolean;
+  /** Height to set on the Popover Pane. */
+  height?: string;
+  /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
+  onScrolledToBottom?(): void;
+  /** Callback fired when the popover closes */
+  onClose?(): void;
 }
 
 export function Combobox({
-  children,
   activator,
   allowMultiple,
-  onScrolledToBottom,
+  children,
   preferredPosition = 'below',
+  willLoadMoreOptions,
+  height,
+  onScrolledToBottom,
+  onClose,
 }: ComboboxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
+  const [disableCloseOnSelect, setDisableCloseOnSelect] = useState(false);
   const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
   const ref = useRef<PopoverPublicAPI | null>(null);
 
-  const onOptionSelected = useCallback(() => {
-    if (!allowMultiple) {
-      setPopoverActive(false);
-      setActiveOptionId(undefined);
-      return;
-    }
-    ref.current?.forceUpdatePosition();
-  }, [allowMultiple]);
-
   const handleClose = useCallback(() => {
-    setPopoverActive(false);
+    // only deactive popover if not creating a new option
+    if (!disableCloseOnSelect) {
+      setPopoverActive(false);
+      onClose?.();
+    }
+
+    setActiveOptionId(undefined);
+  }, [disableCloseOnSelect, onClose]);
+
+  const handleOpen = useCallback(() => {
+    setPopoverActive(true);
     setActiveOptionId(undefined);
   }, []);
 
+  const onOptionSelected = useCallback(() => {
+    if (!allowMultiple) {
+      handleClose();
+      setActiveOptionId(undefined);
+      return;
+    } else {
+      setDisableCloseOnSelect(true);
+    }
+
+    ref.current?.forceUpdatePosition();
+  }, [allowMultiple, handleClose, setDisableCloseOnSelect]);
+
   const handleFocus = useCallback(() => {
     if (shouldOpen) {
-      setPopoverActive(true);
+      handleOpen();
     }
-  }, [shouldOpen]);
+  }, [shouldOpen, handleOpen]);
 
   const handleChange = useCallback(() => {
     if (shouldOpen) {
-      setPopoverActive(true);
+      handleOpen();
     }
-  }, [shouldOpen]);
+  }, [shouldOpen, handleOpen]);
 
   const handleBlur = useCallback(() => {
+    setDisableCloseOnSelect(false);
     if (popoverActive) {
-      setPopoverActive(false);
-      setActiveOptionId(undefined);
+      handleClose();
     }
-  }, [popoverActive]);
+  }, [popoverActive, handleClose, setDisableCloseOnSelect]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
@@ -104,21 +132,23 @@ export function Combobox({
 
   const listboxContextValue: ComboboxListboxType = useMemo(
     () => ({
-      setActiveOptionId,
-      setListboxId,
       listboxId,
       textFieldLabelId,
-      onOptionSelected,
       textFieldFocused,
+      willLoadMoreOptions,
+      onOptionSelected,
+      setActiveOptionId,
+      setListboxId,
       onKeyToBottom: onScrolledToBottom,
     }),
     [
-      setActiveOptionId,
-      setListboxId,
       listboxId,
       textFieldLabelId,
-      onOptionSelected,
       textFieldFocused,
+      willLoadMoreOptions,
+      onOptionSelected,
+      setActiveOptionId,
+      setListboxId,
       onScrolledToBottom,
     ],
   );
@@ -127,7 +157,6 @@ export function Combobox({
     <Popover
       ref={ref}
       active={popoverActive}
-      onClose={handleClose}
       activator={
         <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
           {activator}
@@ -138,9 +167,10 @@ export function Combobox({
       fullWidth
       preferInputActivator={false}
       preferredPosition={preferredPosition}
+      onClose={handleClose}
     >
-      <Popover.Pane onScrolledToBottom={onScrolledToBottom}>
-        {Children.count(children) > 0 ? (
+      {Children.count(children) > 0 ? (
+        <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>
           <ComboboxListboxContext.Provider value={listboxContextValue}>
             <ComboboxListboxOptionContext.Provider
               value={listboxOptionContextValue}
@@ -148,8 +178,8 @@ export function Combobox({
               <div className={styles.Listbox}>{children}</div>
             </ComboboxListboxOptionContext.Provider>
           </ComboboxListboxContext.Provider>
-        ) : null}
-      </Popover.Pane>
+        </Popover.Pane>
+      ) : null}
     </Popover>
   );
 }

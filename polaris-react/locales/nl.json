@@ -12,7 +12,7 @@
       "PROGRESS_LABELS": {
         "incomplete": "Onvolledig",
         "partiallyComplete": "Gedeeltelijk voltooid",
-        "complete": "Compleet"
+        "complete": "Voltooid"
       },
       "STATUS_LABELS": {
         "info": "Info",
@@ -88,8 +88,8 @@
       "end": "Einde van reeks"
     },
     "DiscardConfirmationModal": {
-      "title": "Verwijder alle niet-opgeslagen wijzigingen",
-      "message": "Als je de wijzigingen niet opslaat, verlies je alle bewerkingen die je hebt aangebracht sinds je voor het laatst opsloeg.",
+      "title": "Alle niet-opgeslagen wijzigingen verwijderen",
+      "message": "Als je alle niet-opgeslagen wijzigingen verwijdert, wis je alle bewerkingen die je aanbracht sinds je voor het laatst opsloeg.",
       "primaryAction": "Wijzigingen verwijderen",
       "secondaryAction": "Doorgaan met bewerken"
     },
@@ -97,25 +97,34 @@
       "errorOverlayTextFile": "Ongeldig bestandstype",
       "errorOverlayTextImage": "Ongeldig afbeeldingsbestand",
       "single": {
-        "overlayTextFile": "Sleep bestand om te uploaden",
-        "overlayTextImage": "Sleep afbeelding om te uploaden",
+        "overlayTextFile": "Zet een bestand neer om het te uploaden",
+        "overlayTextImage": "Zet een afbeelding neer om deze te uploaden",
         "actionTitleFile": "Bestand toevoegen",
         "actionTitleImage": "Afbeelding toevoegen",
-        "actionHintFile": "of sleep bestand om te uploaden",
-        "actionHintImage": "of sleep afbeelding om te uploaden",
+        "actionHintFile": "of zet een bestand neer om het te uploaden",
+        "actionHintImage": "of zet een afbeelding neer om deze te uploaden",
         "labelFile": "Bestand uploaden",
-        "labelImage": "Afbeelding uploaden"
+        "labelImage": "Afbeelding uploaden",
+        "overlayTextVideo": "Zet video neer om deze te uploaden",
+        "actionTitleVideo": "Voeg de video toe",
+        "actionHintVideo": "of zet de video neer om deze te uploaden",
+        "labelVideo": "Video uploaden"
       },
       "allowMultiple": {
-        "overlayTextFile": "Zet bestanden neer om te uploaden",
-        "overlayTextImage": "Sleep afbeeldingen om te uploaden",
+        "overlayTextFile": "Zet bestanden neer om ze te uploaden",
+        "overlayTextImage": "Zet afbeeldingen neer om ze te uploaden",
         "actionTitleFile": "Bestanden toevoegen",
         "actionTitleImage": "Afbeeldingen toevoegen",
-        "actionHintFile": "of sleep bestanden om te uploaden",
-        "actionHintImage": "of sleep afbeeldingen om te uploaden",
+        "actionHintFile": "of zet bestanden neer om ze te uploaden",
+        "actionHintImage": "of zet afbeeldingen neer om ze te uploaden",
         "labelFile": "Bestanden uploaden",
-        "labelImage": "Afbeeldingen uploaden"
-      }
+        "labelImage": "Afbeeldingen uploaden",
+        "overlayTextVideo": "Zet video's neer om ze te uploaden",
+        "actionTitleVideo": "Voeg de video's toe",
+        "actionHintVideo": "of zet ze neer om ze te uploaden",
+        "labelVideo": "Video's uploaden"
+      },
+      "errorOverlayTextVideo": "Ongeldig videotype"
     },
     "EmptySearchResult": {
       "altText": "Geen zoekresultaten"
@@ -148,7 +157,7 @@
     },
     "Modal": {
       "iFrameTitle": "opmaak hoofdtekst",
-      "modalWarning": "Deze verplichte onderdelen ontbreken ophet modale venster: {missingProps}"
+      "modalWarning": "Deze verplichte onderdelen ontbreken in het modale venster: {missingProps}"
     },
     "Pagination": {
       "previous": "Vorige",
@@ -156,14 +165,14 @@
       "pagination": "Paginering"
     },
     "ProgressBar": {
-      "negativeWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet negatief zijn {progress} opnieuw instellen op 0.",
+      "negativeWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet negatief zijn. {progress} opnieuw instellen op 0.",
       "exceedWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet de 100 overschrijden. {progress} instellen op 100."
     },
     "ResourceList": {
-      "sortingLabel": "Sorteer op",
+      "sortingLabel": "Sorteren op",
       "defaultItemSingular": "artikel",
       "defaultItemPlural": "artikelen",
-      "showing": "Weergave {itemsCount} {resource}",
+      "showing": "Weergave van {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
       "selected": "{selectedItemsCount} geselecteerd",
       "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
@@ -171,10 +180,10 @@
       "emptySearchResultTitle": "Geen {resourceNamePlural} gevonden",
       "emptySearchResultDescription": "Probeer de filters of zoekterm te wijzigen",
       "selectButtonText": "Selecteren",
-      "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
-      "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Alle selecties {itemsLength} {resourceNamePlural} opheffen",
-      "a11yCheckboxSelectAllMultiple": "Selecteer alle {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
+      "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren",
       "ariaLiveSingular": "{itemsLength} artikel",
       "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
@@ -185,9 +194,9 @@
       "BulkActions": {
         "actionsActivatorLabel": "Acties",
         "moreActionsActivatorLabel": "Meer acties",
-        "warningMessage": "Voor een betere gebruikerservaring. Er een maximum van {maxPromotedActions} gepromote acties."
+        "warningMessage": "Om een betere gebruikerservaring te bieden, zouden er maximaal {maxPromotedActions} gepromote acties moeten zijn."
       },
-      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}",
+      "showingTotalCount": "{itemsCount} van {totalItemsCount} {resource} zichtbaar",
       "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
       "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
     },
@@ -273,21 +282,21 @@
       "defaultItemPlural": "Artikelen",
       "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd.",
       "selected": "{selectedItemsCount} geselecteerd",
-      "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
-      "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Alle selecties {itemsLength} {resourceNamePlural} opheffen",
-      "a11yCheckboxSelectAllMultiple": "Selecteer alle {itemsLength} {resourceNamePlural}"
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
+      "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren"
     },
     "IndexTable": {
       "emptySearchTitle": "Geen {resourceNamePlural} gevonden",
       "emptySearchDescription": "Probeer de filters of zoekterm te wijzigen",
       "onboardingBadgeText": "Nieuw",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laden...",
-      "selectAllLabel": "Selecteer alle {resourceNamePlural}",
+      "selectAllLabel": "Alle {resourceNamePlural} selecteren",
       "selected": "{selectedItemsCount} geselecteerd",
       "undo": "Ongedaan maken",
-      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural}",
-      "selectItem": "Selecteer {resourceName}",
+      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} selecteren",
+      "selectItem": "{resourceName} selecteren",
       "selectButtonText": "Selecteren"
     },
     "Page": {

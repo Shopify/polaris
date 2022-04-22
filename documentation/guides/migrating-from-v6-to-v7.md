@@ -1,6 +1,6 @@
 # Migrating from v6 to v7
 
-Polaris v7.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v7.0.0)) features a rebuild of the `Autocomplete` component, build changes, . This file describes all code updates required to stay up to date.
+Polaris v7.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v7.0.0)) features a rebuild of the `Autocomplete` component, build changes, . This file describes all code updates required to stay up to date.
 
 ## Build output changes - general consumers
 
@@ -52,8 +52,8 @@ The `Autocomplete` component has been rebuilt using the new `Combobox` and `List
 
 Alternatively, reference or extend `Autocomplete.TextField` to create custom `Autocomplete` text fields.
 
-The internal `ComboBox` which was previously exported as `Autocomplete.ComboBox` has been removed. Since it was an internal component there is no direct replacement as exported. Refer to the [`Combobox documentation`](https://github.com/Shopify/polaris-react/blob/main/src/components/Combobox/README.md) for more information on how to use the new component.
+The internal `ComboBox` which was previously exported as `Autocomplete.ComboBox` has been removed. Since it was an internal component there is no direct replacement as exported. Refer to the [`Combobox documentation`](https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Combobox/README.md) for more information on how to use the new component.
 
 ### TextField
 
-The `autoComplete` prop on `TextField` is now required to help enforce accessibility. Refer to the [`TextField autocomplete documentation`](https://github.com/Shopify/polaris-react/blob/main/src/components/TextField/README.md#autocomplete) for more information and recommendations on which values to use under different circumstances.
+The `autoComplete` prop on `TextField` is now required to help enforce accessibility. Refer to the [`TextField autocomplete documentation`](https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/TextField/README.md#autocomplete) for more information and recommendations on which values to use under different circumstances.

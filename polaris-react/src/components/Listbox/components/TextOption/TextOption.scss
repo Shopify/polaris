@@ -31,12 +31,6 @@
     background-color: var(--p-surface-pressed);
   }
 
-  &.disabled {
-    background-color: var(--p-surface-disabled);
-    color: var(--p-text-disabled);
-    cursor: default;
-  }
-
   &.selected {
     background-color: var(--p-surface-selected);
   }
@@ -54,19 +48,32 @@
     border-bottom-right-radius: var(--p-border-radius-1);
     transform: translateX(-100%);
   }
+
+  &.disabled {
+    background-color: var(--p-surface-disabled);
+    color: var(--p-text-disabled);
+    cursor: default;
+  }
 }
 
 li:first-of-type > .TextOption {
   margin-top: 0;
 }
 
-[data-focused] .TextOption {
+// Focused by click
+[data-focused] .TextOption:not(.disabled) {
   outline: none;
   background-color: var(--p-surface-selected);
+  transition: background-color var(--p-duration-400);
 }
 
-[data-focused]:not(:focus) .TextOption {
-  @include focus-ring($style: 'focused');
+// Focused by keyboard
+// stylelint-disable-next-line selector-max-specificity
+[data-focused]:not(:focus) .TextOption:not(.disabled) {
+  @include focus-ring($style: 'focused') {
+    // overriding the transition here prevents the flashing of an option's focus ring when focus is removed while scrolling the listbox with keyboard
+    transition: box-shadow var(--p-duration-200) var(--p-ease-in);
+  }
 }
 
 .Content {

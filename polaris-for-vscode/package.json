@@ -1,9 +1,23 @@
 {
   "name": "polaris-for-vscode",
-  "displayName": "polaris-for-vscode",
-  "description": "Polaris Design System vscode tooling",
-  "repository": "https://github.com/Shopify/polaris-react",
-  "version": "0.0.1",
+  "displayName": "Polaris for VS Code",
+  "publisher": "Shopify",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "description": "Polaris Design System VS Code extension",
+  "icon": "docs/polaris-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/polaris.git"
+  },
+  "homepage": "https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/README.md",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "version": "0.1.1",
+  "keywords": [
+    "polaris",
+    "shopify"
+  ],
   "engines": {
     "vscode": "^1.64.0"
   },
@@ -14,27 +28,26 @@
     "onLanguage:css",
     "onLanguage:scss"
   ],
-  "main": "./out/extension.js",
+  "main": "./client/out/extension.js",
   "scripts": {
-    "vscode:prepublish": "yarn run generateCustomPropertyNames && yarn run compile",
+    "vscode:prepublish": "yarn run build",
     "generateCustomPropertyNames": "node ./scripts/prepublish.js",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "build": "yarn run generateCustomPropertyNames && yarn run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+    "test": "yarn lint"
   },
   "devDependencies": {
-    "@types/vscode": "^1.64.0",
     "@types/glob": "^7.2.0",
-    "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
+    "@types/vscode": "^1.64.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^8.6.0",
     "glob": "^7.2.0",
-    "mocha": "^9.1.3",
     "typescript": "^4.5.4",
-    "@vscode/test-electron": "^2.0.3"
+    "vsce": "^2.7.0"
   }
 }

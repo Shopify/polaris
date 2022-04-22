@@ -245,7 +245,6 @@ $disabled-fade: 0.6;
 }
 
 // Secondary styles
-$secondary-item-font-size: 15px;
 
 .SecondaryNavigation {
   flex-basis: 100%;
@@ -263,7 +262,7 @@ $secondary-item-font-size: 15px;
   }
 
   .Item {
-    font-size: $secondary-item-font-size;
+    font-size: var(--p-font-size-4);
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
@@ -290,7 +289,7 @@ $secondary-item-font-size: 15px;
     }
 
     @include breakpoint-after(nav-min-window-corrected()) {
-      font-size: $item-font-size-small;
+      font-size: var(--p-font-size-3);
       line-height: 1;
       padding-left: var(--p-space-10);
     }

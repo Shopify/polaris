@@ -104,7 +104,11 @@
         "actionHintFile": "eller släpp fil för uppladdning",
         "actionHintImage": "eller släpp bild för att ladda upp",
         "labelFile": "Ladda upp fil",
-        "labelImage": "Ladda upp bild"
+        "labelImage": "Ladda upp bild",
+        "overlayTextVideo": "Släpp video för uppladdning",
+        "actionTitleVideo": "Lägg till video",
+        "actionHintVideo": "eller släpp video för uppladdning",
+        "labelVideo": "Ladda upp video"
       },
       "allowMultiple": {
         "overlayTextFile": "Släpp filer för uppladdning",
@@ -114,8 +118,13 @@
         "actionHintFile": "eller släpp filer för uppladdning",
         "actionHintImage": "eller släpp bilder för uppladdning",
         "labelFile": "Ladda upp filer",
-        "labelImage": "Ladda upp bilder"
-      }
+        "labelImage": "Ladda upp bilder",
+        "overlayTextVideo": "Släpp videor för uppladdning",
+        "actionTitleVideo": "Lägg till videor",
+        "actionHintVideo": "eller släpp videor för uppladdning",
+        "labelVideo": "Ladda upp videor"
+      },
+      "errorOverlayTextVideo": "Videotyp är inte giltig"
     },
     "EmptySearchResult": {
       "altText": "Tomma sökresultat"

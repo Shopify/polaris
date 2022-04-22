@@ -19,7 +19,7 @@
         "success": "Udało się",
         "warning": "Ostrzeżenie",
         "attention": "Uwaga",
-        "new": "Nowe",
+        "new": "Nowy",
         "critical": "Krytyczny"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
@@ -35,7 +35,7 @@
       "newWindowAccessibilityHint": "(otwiera nowe okno)",
       "clear": "Wyczyść",
       "close": "Zamknij",
-      "submit": "Zatwierdź",
+      "submit": "Prześlij",
       "more": "Więcej"
     },
     "ContextualSaveBar": {
@@ -51,7 +51,7 @@
     "DatePicker": {
       "previousMonth": "Pokaż poprzedni miesiąc, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Pokaż następny miesiąc, {nextMonth} {nextYear}",
-      "today": "Dzisiaj ",
+      "today": "Dziś ",
       "months": {
         "january": "Styczeń",
         "february": "Luty",
@@ -89,7 +89,7 @@
     },
     "DiscardConfirmationModal": {
       "title": "Odrzuć wszystkie niezapisane zmiany",
-      "message": "Jeśli odrzucisz zmiany, usuniesz wszelkie zmiany wprowadzone od czasu ostatniego zapisania.",
+      "message": "Jeśli odrzucisz zmiany, usuniesz wszelkie modyfikacje dokonane od ostatniego zapisu.",
       "primaryAction": "Odrzuć zmiany",
       "secondaryAction": "Kontynuuj edycję"
     },
@@ -97,25 +97,34 @@
       "errorOverlayTextFile": "Nieprawidłowy typ pliku",
       "errorOverlayTextImage": "Nieprawidłowy typ obrazu",
       "single": {
-        "overlayTextFile": "Upuść plik do załadowania",
-        "overlayTextImage": "Upuść obraz do załadowania",
+        "overlayTextFile": "Upuść plik, aby załadować",
+        "overlayTextImage": "Upuść zdjęcie, aby załadować",
         "actionTitleFile": "Dodaj plik",
         "actionTitleImage": "Dodaj obraz",
         "actionHintFile": "lub upuść plik do załadowania",
         "actionHintImage": "lub upuść zdjęcie do załadowania",
-        "labelFile": "Załaduj plik",
-        "labelImage": "Załaduj obraz"
+        "labelFile": "Prześlij plik",
+        "labelImage": "Prześlij obraz",
+        "overlayTextVideo": "Upuść film do załadowania",
+        "actionTitleVideo": "Dodaj film",
+        "actionHintVideo": "lub upuść film do załadowania",
+        "labelVideo": "Załaduj film"
       },
       "allowMultiple": {
-        "overlayTextFile": "Upuść pliki do załadowania",
+        "overlayTextFile": "Upuść pliki, aby je załadować",
         "overlayTextImage": "Upuść obrazy do załadowania",
         "actionTitleFile": "Dodaj pliki",
-        "actionTitleImage": "Dodaj zdjęcia",
-        "actionHintFile": "lub upuść pliki do załadowania",
-        "actionHintImage": "lub upuść zdjęcia do załadowania",
+        "actionTitleImage": "Dodaj obrazy",
+        "actionHintFile": "lub upuść pliki, aby je załadować",
+        "actionHintImage": "lub upuść zdjęcia, aby załadować",
         "labelFile": "Załaduj pliki",
-        "labelImage": "Załaduj zdjęcia"
-      }
+        "labelImage": "Prześlij zdjęcia",
+        "overlayTextVideo": "Upuść filmy do załadowania",
+        "actionTitleVideo": "Dodaj filmy",
+        "actionHintVideo": "lub upuść filmy do załadowania",
+        "labelVideo": "Załaduj filmy"
+      },
+      "errorOverlayTextVideo": "Nieprawidłowy typ filmu"
     },
     "EmptySearchResult": {
       "altText": "Wyczyść wyniki wyszukiwania"
@@ -151,8 +160,8 @@
       "modalWarning": "W oknie modalnym brakuje tych wymaganych właściwości: {missingProps}"
     },
     "Pagination": {
-      "previous": "Poprzedni",
-      "next": "Kolejny",
+      "previous": "Powrót",
+      "next": "Dalej",
       "pagination": "Paginacja"
     },
     "ProgressBar": {
@@ -161,19 +170,19 @@
     },
     "ResourceList": {
       "sortingLabel": "Sortuj wg",
-      "defaultItemSingular": "pozycji",
-      "defaultItemPlural": "pozycji",
+      "defaultItemSingular": "pozycję",
+      "defaultItemPlural": "pozycje",
       "showing": "Wyświetlanie {itemsCount} {resource}",
       "loading": "Ładowanie {resource}",
       "selected": "Wybrano {selectedItemsCount}",
       "allItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie są zaznaczone.",
-      "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie",
+      "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w swoim sklepie",
       "emptySearchResultTitle": "Nie znaleziono {resourceNamePlural}",
       "emptySearchResultDescription": "Spróbuj zmienić filtry lub szukany termin",
       "selectButtonText": "Wybierz",
       "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Usuń wybór wszystkich {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} pozycja",
       "ariaLivePlural": "{itemsLength} pozycje(-i)",
@@ -202,7 +211,7 @@
     },
     "TextField": {
       "characterCount": "{count} znaki(-ów)",
-      "characterCountWithMaxLength": "Wykorzystano {count} z {limit} znaków"
+      "characterCountWithMaxLength": "Użyto {count} z {limit} znaków"
     },
     "TopBar": {
       "toggleMenuLabel": "Przełącz menu",
@@ -221,7 +230,7 @@
         "duration": {
           "hours": {
             "other": {
-              "only": "Liczba godzin: {hourCount}",
+              "only": "{hourCount} godz.",
               "andMinutes": "{hourCount} godz. i {minuteCount} min.",
               "andMinute": "{hourCount} godz. i {minuteCount} min.",
               "minutesAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
@@ -232,7 +241,7 @@
               "andSecond": "{hourCount} godz. i {secondCount} sek."
             },
             "one": {
-              "only": "{hourCount} godzina",
+              "only": "{hourCount} godz.",
               "andMinutes": "{hourCount} godz. i {minuteCount} min.",
               "andMinute": "{hourCount} godz. i {minuteCount} min.",
               "minutesAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
@@ -245,21 +254,21 @@
           },
           "minutes": {
             "other": {
-              "only": "Liczba minut: {minuteCount}",
+              "only": "{minuteCount} min.",
               "andSeconds": "{minuteCount} min. i {secondCount} sek.",
               "andSecond": "{minuteCount} min. i {secondCount} sek."
             },
             "one": {
-              "only": "{minuteCount} minuta",
+              "only": "{minuteCount} min.",
               "andSeconds": "{minuteCount} min. i {secondCount} sek.",
               "andSecond": "{minuteCount} min. i {secondCount} sek."
             }
           },
           "seconds": {
-            "other": "Liczba sekund: {secondCount}",
+            "other": "{secondCount} sek.",
             "one": "{secondCount} sekunda",
-            "few": "Liczba sekund: {secondCount}",
-            "many": "Liczba sekund: {secondCount}"
+            "few": "{secondCount} sek.",
+            "many": "{secondCount} sek."
           }
         }
       }
@@ -283,7 +292,7 @@
     "IndexTable": {
       "emptySearchTitle": "Nie znaleziono {resourceNamePlural}",
       "emptySearchDescription": "Spróbuj zmienić filtry lub szukany termin",
-      "onboardingBadgeText": "Nowe",
+      "onboardingBadgeText": "Nowy",
       "resourceLoadingAccessibilityLabel": "Ładowanie {resourceNamePlural}...",
       "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
       "selected": "Wybrano {selectedItemsCount}",

@@ -1,37 +1,26 @@
-# `polaris-for-vscode` Extension
+# Polaris for VS Code
 
-:warning: This extension is still an experimental prototype
+Official VS Code extension for building with the Shopify [Polaris Design System](https://polaris.shopify.com/).
 
-VSCode features to support developing with the Polaris Design System.
+![Demo of Polaris for figma autocompleting token code](https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/docs/polaris-for-vscode-preview.gif?raw=true)
 
-## Development instructions
+## Features
 
-1. Download the `polaris-react` project
-2. Open the `polaris-react/polaris-for-vscode` directory in a VSCode window
-3. Run the `generateCustomPropertyNames` script to create the tokens file
+### Design Token Autocomplete
 
-```bash
-yarn run generateCustomPropertyNames
-```
+Get code autocomplete suggestions for the [Polaris Design Tokens](https://polaris.shopify.com/tokens/all-tokens#navigation)
 
-4. Press `F5` to run the `watch` script using the [VSCode debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension). This will open up a new `Extension Development Host` window
-5. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
-6. Start typing the extension trigger characters `--p` to bring up the Polaris custom properties autocomplete
+- 🗄️ Automatically works for CSS and Sass files
+- 🔍 Preview design token values in autocomplete description
+- 🎨 Color previews for all `color` tokens
+- 🥇 Relevant code completions based on current line of code
 
-## Installation
+## How to use
 
-We don't want to publish this extension to the VSCode Extensions Marketplace yet, so we have to install the package directly from the compiled `.vsix` file.
+Once installed and enabled, the Polaris for VS Code extension will automatically run in any CSS and Sass files.
 
-1. (Install the `vsce` package)[https://code.visualstudio.com/api/working-with-extensions/publishing-extension#vsce]
-2. `cd` to the `polaris-for-vscode` directory in the project.
-3. From the `polaris-for-vscode` directory run the (`vsce package`)[https://code.visualstudio.com/api/working-with-extensions/publishing-extension#packaging-extensions] command in your terminal. After running you should have a new `.vsix` file in the directory (ex. `polaris-for-vscode-0.0.1.vsix`)
-4. To install the extension run `code --install-extension EXTENSION_FILENAME.vsix`
+To trigger tokens automcomplete feature:
 
-```bash
-# example of running install command
-code --install-extension shopify-dev-intellisense-0.0.1.vsix
-```
-
-![Success message of installed package in the terminal](docs/sample-install.png)
-3.After running the code command you should see a success message. To ensure the extension was installed, open your VSCode Extension manager from the sidebase and search `@installed shopify-dev-intellisense`.
-![Installed extension from the VSCode extensions menu](docs/install-extension.png)
+1. Open a CSS or Sass file from your project
+2. Start typing the CSS property you want to set ex. `color: `
+3. Type the extension trigger characters `--`. This will bring up the relevant autocomplete tokens associated with the CSS property typed.
