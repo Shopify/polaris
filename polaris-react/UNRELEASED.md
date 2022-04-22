@@ -14,6 +14,9 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Add `video` as DropZoneFileType option on the `DropZone` component ([#5349](https://github.com/Shopify/polaris/pull/5349))
 - Removed whitespace from CustomProperties output ([#5570](https://github.com/Shopify/polaris/pull/5570))
 - Added a `height` prop to `Combobox` and `Popover.Pane` to support setting a fixed `height` and `man-height` on the `Scrollable` ([#5571](https://github.com/Shopify/polaris/pull/5571))
+- Added support for `maxHeight` prop on `Combobox` and `Popover` ([#5571](https://github.com/Shopify/polaris/pull/5571))
+- Add sticky header to `DataTable` ([#5454](https://github.com/Shopify/polaris/pull/5494))
+
 - Made `Pip` a sub-component of `Badge` and exposed it to outside ([#5520](https://github.com/Shopify/polaris/pull/5520))
 
 ### Bug fixes
