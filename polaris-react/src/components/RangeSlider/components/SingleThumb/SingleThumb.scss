@@ -130,7 +130,7 @@
     outline: var(--p-border-width-1) solid transparent;
     @include range-thumb-selectors {
       border-color: var(--p-surface);
-      box-shadow: 0 0 0 2px var(--p-focused);
+      box-shadow: 0 0 0 var(--p-border-width-2) var(--p-focused);
     }
   }
 
