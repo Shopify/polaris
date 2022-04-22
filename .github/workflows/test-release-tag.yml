@@ -1,0 +1,13 @@
+name: Release Polaris for VS Code
+
+on:
+  push:
+    tags:
+      - 'vscode*' # Push events to matching vscode*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: 'echo "hello mello"'
