@@ -12,8 +12,14 @@
   @include text-style-body;
   display: block;
   flex: 1 1 auto;
-  color: currentColor;
+  
   -webkit-tap-highlight-color: transparent;
+
+  color: var(--p-text-subdued);
+
+  @include when-typography-not-condensed {
+    color: currentColor;
+  }
 }
 
 .RequiredIndicator::after {
