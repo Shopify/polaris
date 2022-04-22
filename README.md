@@ -1,4 +1,4 @@
-<img src="https://github.com/Shopify/polaris/blob/f30f480b112a8c2cfe914417597a68af557f3442/documentation/readme.jpg?raw=true" alt="" align="center" />
+<img src="https://github.com/Shopify/polaris/blob/9659e7c89332c1d41f91d5bc1ff5c7d2c86e9b0e/documentation/readme.jpg?raw=true" alt="" align="center" />
 
 # Polaris
 
