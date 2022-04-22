@@ -4,7 +4,7 @@
 
 # Polaris
 
-> Polaris is our design system that helps us work together to build a great experience for all of Shopify’s merchants.
+> Shopify’s design system to help us work together to build a great experience for all of Shopify’s merchants.
 
 | Status | Owner            | Help                                                       |
 | ------ | ---------------- | ---------------------------------------------------------- |
