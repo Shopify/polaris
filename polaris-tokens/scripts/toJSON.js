@@ -4,7 +4,7 @@ const path = require('path');
 const {tokens} = require('../dist/index');
 
 function getFileName(fileName) {
-  return path.join(process.cwd(), 'dist', fileName);
+  return path.join(__dirname, '../dist', fileName);
 }
 
 Object.entries(tokens).forEach(([tokenGroup, tokenProps]) => {
