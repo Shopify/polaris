@@ -49,7 +49,7 @@ Example for default callout card:
 >
 > Use to let merchants know about a feature or opportunity where there is a clear, single action they need to take to move to the next step.
 
-Example for Callout card with secondary action:
+Example for callout card with secondary action:
 
 > ### Callout card with secondary action
 >

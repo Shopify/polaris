@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../../../utilities/debounce';
 import {
   ScrollContext,
   ScrollContextType,

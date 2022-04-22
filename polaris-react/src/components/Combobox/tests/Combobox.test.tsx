@@ -324,6 +324,31 @@ describe('<Combobox />', () => {
         preferredPosition,
       });
     });
+
+    it('passes the maxHeight', () => {
+      const maxHeight = '100px';
+
+      const combobox = mountWithApp(
+        <Combobox activator={activator} maxHeight={maxHeight}>
+          {listbox}
+        </Combobox>,
+      );
+
+      triggerFocus(combobox);
+
+      expect(combobox).toContainReactComponent(Popover.Pane, {
+        maxHeight,
+      });
+    });
+
+    it('does not render the Popover.Pane if no children are passed in', () => {
+      const combobox = mountWithApp(<Combobox activator={activator} />);
+
+      triggerFocus(combobox);
+
+      expect(combobox).toContainReactComponent(Popover);
+      expect(combobox).not.toContainReactComponent(Popover.Pane);
+    });
   });
 
   describe('Context', () => {

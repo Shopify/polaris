@@ -1,0 +1,14 @@
+name: plus
+set: minor
+description: Used to denote the action of adding an item and zooming into a map.
+keywords:
+  - plus
+  - addition
+  - add
+  - math
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:
