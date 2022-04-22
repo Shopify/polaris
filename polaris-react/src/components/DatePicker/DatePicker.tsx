@@ -10,6 +10,7 @@ import {
   getNextDisplayMonth,
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
+  isDateDisabled,
 } from '../../utilities/dates';
 import type {Range} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
@@ -35,6 +36,8 @@ export interface DatePickerProps {
   disableDatesBefore?: Date;
   /** Disable selecting dates after this. */
   disableDatesAfter?: Date;
+  /** Disable specific dates. */
+  disableSpecificDates?: Date[];
   /** The selection can span multiple months */
   multiMonth?: boolean;
   /**
@@ -59,6 +62,7 @@ export function DatePicker({
   multiMonth,
   disableDatesBefore,
   disableDatesAfter,
+  disableSpecificDates,
   weekStartsOn = 0,
   dayAccessibilityLabelPrefix,
   onMonthChange,
@@ -129,7 +133,10 @@ export function DatePicker({
         previousWeek.setDate(focusedDate.getDate() - 7);
         if (
           !(
-            disableDatesBefore && isDateBefore(previousWeek, disableDatesBefore)
+            (disableDatesBefore &&
+              isDateBefore(previousWeek, disableDatesBefore)) ||
+            (disableSpecificDates &&
+              isDateDisabled(previousWeek, disableSpecificDates))
           )
         ) {
           setFocusDateAndHandleMonthChange(previousWeek);
@@ -139,7 +146,13 @@ export function DatePicker({
       if (key === 'ArrowDown') {
         const nextWeek = new Date(focusedDate);
         nextWeek.setDate(focusedDate.getDate() + 7);
-        if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
+        if (
+          !(
+            (disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter)) ||
+            (disableSpecificDates &&
+              isDateDisabled(nextWeek, disableSpecificDates))
+          )
+        ) {
           setFocusDateAndHandleMonthChange(nextWeek);
         }
       }
@@ -147,7 +160,13 @@ export function DatePicker({
       if (key === 'ArrowRight') {
         const tomorrow = new Date(focusedDate);
         tomorrow.setDate(focusedDate.getDate() + 1);
-        if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
+        if (
+          !(
+            (disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter)) ||
+            (disableSpecificDates &&
+              isDateDisabled(tomorrow, disableSpecificDates))
+          )
+        ) {
           setFocusDateAndHandleMonthChange(tomorrow);
         }
       }
@@ -156,7 +175,12 @@ export function DatePicker({
         const yesterday = new Date(focusedDate);
         yesterday.setDate(focusedDate.getDate() - 1);
         if (
-          !(disableDatesBefore && isDateBefore(yesterday, disableDatesBefore))
+          !(
+            (disableDatesBefore &&
+              isDateBefore(yesterday, disableDatesBefore)) ||
+            (disableSpecificDates &&
+              isDateDisabled(yesterday, disableSpecificDates))
+          )
         ) {
           setFocusDateAndHandleMonthChange(yesterday);
         }
@@ -165,6 +189,7 @@ export function DatePicker({
     [
       disableDatesAfter,
       disableDatesBefore,
+      disableSpecificDates,
       focusDate,
       selected,
       setFocusDateAndHandleMonthChange,
@@ -216,6 +241,7 @@ export function DatePicker({
       onHover={handleHover}
       disableDatesBefore={disableDatesBefore}
       disableDatesAfter={disableDatesAfter}
+      disableSpecificDates={disableSpecificDates}
       allowRange={allowRange}
       weekStartsOn={weekStartsOn}
       accessibilityLabelPrefixes={accessibilityLabelPrefixes}
@@ -268,6 +294,7 @@ export function DatePicker({
           onHover={handleHover}
           disableDatesBefore={disableDatesBefore}
           disableDatesAfter={disableDatesAfter}
+          disableSpecificDates={disableSpecificDates}
           allowRange={allowRange}
           weekStartsOn={weekStartsOn}
           accessibilityLabelPrefixes={accessibilityLabelPrefixes}
