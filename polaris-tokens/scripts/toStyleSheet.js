@@ -87,6 +87,6 @@ const styles = `
 `;
 
 const fileName = 'styles.css';
-const filePath = path.join(process.cwd(), 'dist', fileName);
+const filePath = path.join(__dirname, '../dist', fileName);
 
 fs.writeFileSync(filePath, styles);

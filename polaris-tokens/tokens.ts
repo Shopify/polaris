@@ -6,7 +6,7 @@ import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
 import {typography} from './token-groups/typography';
-import {zIndex} from './token-groups/z-index';
+import {zIndex} from './token-groups/zIndex';
 import {tokensToRems} from './utilities';
 
 /**
