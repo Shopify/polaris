@@ -10,7 +10,7 @@
   );
 
   @include recolor-icon(var(--p-icon));
-  @include focus-ring($border-width: 1px);
+  @include focus-ring($border-width: var(--p-border-width-1));
   position: relative;
   display: inline-flex;
   align-items: center;
