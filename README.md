@@ -26,19 +26,19 @@ polaris/
 
 ## Commands
 
-1. Initialize the monorepo by installing external dependencies and symlinking internal packages.
+**1. Install dependencies**
 
 ```sh
 yarn
 ```
 
-2. Build the packages for interconnected dependencies
+**2. Build the packages**
 
 ```sh
 yarn build
 ```
 
-3. Start a local development environment
+**3. Start a local development environment**
 
 Start a **storybook** server for the polaris-react components
 
