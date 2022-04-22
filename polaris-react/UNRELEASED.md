@@ -15,6 +15,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed whitespace from CustomProperties output ([#5570](https://github.com/Shopify/polaris/pull/5570))
 - Added support for `maxHeight` prop on `Combobox` and `Popover` ([#5571](https://github.com/Shopify/polaris/pull/5571))
 
+- Made `Pip` a sub-component of `Badge` and exposed it to outside ([#5520](https://github.com/Shopify/polaris/pull/5520))
+
 ### Bug fixes
 
 - Fixed focus and hover style on `Tag` for removable tag with link ([#5567](https://github.com/Shopify/polaris/pull/5567))
