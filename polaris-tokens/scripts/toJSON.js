@@ -5,22 +5,22 @@ function getFileName(fileName) {
   return path.join(__dirname, '../dist', fileName);
 }
 
-function toJSON(tokens) {
-  Object.entries(tokens).forEach(([tokenGroup, tokenProps]) => {
+async function toJSON(tokens) {
+  for (const [tokenGroup, tokenProps] of Object.entries(tokens)) {
     if (tokenGroup === 'colorSchemes') {
-      Object.entries(tokenProps).forEach(
-        ([colorTokenGroup, colorTokenProps]) => {
-          const fileName = getFileName(`colors.${colorTokenGroup}.json`);
+      for (const [colorTokenGroup, colorTokenProps] of Object.entries(
+        tokenProps,
+      )) {
+        const fileName = getFileName(`colors.${colorTokenGroup}.json`);
 
-          fs.writeFileSync(fileName, JSON.stringify(colorTokenProps));
-        },
-      );
+        await fs.promises.writeFile(fileName, JSON.stringify(colorTokenProps));
+      }
     } else {
       const fileName = getFileName(`${tokenGroup}.json`);
 
-      fs.writeFileSync(fileName, JSON.stringify(tokenProps));
+      await fs.promises.writeFile(fileName, JSON.stringify(tokenProps));
     }
-  });
+  }
 }
 
 module.exports = {toJSON};

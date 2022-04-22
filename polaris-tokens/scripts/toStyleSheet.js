@@ -70,7 +70,7 @@ function getKeyframes(motion) {
     .join('');
 }
 
-function toStyleSheet(tokens, osColorSchemes) {
+async function toStyleSheet(tokens, osColorSchemes) {
   const staticCustomProperties = getStaticCustomProperties(tokens);
   const colorSchemeDeclarations = getColorSchemeDeclarations(
     'light',
@@ -87,7 +87,7 @@ function toStyleSheet(tokens, osColorSchemes) {
   const fileName = 'styles.css';
   const filePath = path.join(__dirname, '../dist', fileName);
 
-  fs.writeFileSync(filePath, styles);
+  await fs.promises.writeFile(filePath, styles);
 }
 
 module.exports = {toStyleSheet};
