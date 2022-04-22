@@ -8,9 +8,9 @@ import React, {
   useEffect,
   Component,
 } from 'react';
+import debounce from 'lodash/debounce';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
-import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
