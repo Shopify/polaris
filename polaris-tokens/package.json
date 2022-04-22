@@ -6,7 +6,6 @@
   "scripts": {
     "build": "tsc -b && yarn build-tokens",
     "build-tokens": "node scripts/toJSON && node scripts/toStyleSheet",
-    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
