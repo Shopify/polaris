@@ -72,10 +72,10 @@ export function Combobox({
   const onOptionSelected = useCallback(() => {
     if (!allowMultiple) {
       handleClose();
+      setActiveOptionId(undefined);
       return;
     } else {
       setDisableCloseOnSelect(true);
-      setActiveOptionId(undefined);
     }
 
     ref.current?.forceUpdatePosition();
