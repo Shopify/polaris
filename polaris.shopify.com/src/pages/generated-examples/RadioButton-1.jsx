@@ -1,6 +1,6 @@
 import { AppProvider, Stack,RadioButton } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function RadioButtonExample() {
   const [value, setValue] = useState('disabled');
@@ -51,4 +51,3 @@ function Example() {
 }
 
 export default Example;
-    

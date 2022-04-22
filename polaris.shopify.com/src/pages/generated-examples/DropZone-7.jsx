@@ -1,7 +1,7 @@
 import { AppProvider, DropZone,Stack,Thumbnail,Caption,Card } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
@@ -67,4 +67,3 @@ function Example() {
 }
 
 export default Example;
-    

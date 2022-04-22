@@ -1,7 +1,7 @@
 import { AppProvider, List,Button,Page,Card,Sheet,Heading,Scrollable,ChoiceList } from "@shopify/polaris";
 import { MobileCancelMajor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function SheetExample() {
   const [sheetActive, setSheetActive] = useState(true);
@@ -156,4 +156,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
 import { AppProvider, Card,RangeSlider,Stack,TextField } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DualThumbRangeSliderExample() {
   const initialValue = [900, 1000];
@@ -133,4 +133,3 @@ function Example() {
 }
 
 export default Example;
-    

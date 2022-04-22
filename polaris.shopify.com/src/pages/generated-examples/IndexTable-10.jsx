@@ -1,5 +1,5 @@
 import { AppProvider, IndexTable,TextStyle,Card,useIndexResourceState } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function StickyLastCellIndexTableExample() {
   const customers = [
@@ -88,4 +88,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
 import { AppProvider, ColorPicker } from "@shopify/polaris";
 import { useState } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ColorPickerExample() {
   const [color, setColor] = useState({
@@ -31,4 +31,3 @@ function Example() {
 }
 
 export default Example;
-    

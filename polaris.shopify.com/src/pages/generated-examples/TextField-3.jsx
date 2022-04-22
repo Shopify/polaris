@@ -1,6 +1,6 @@
 import { AppProvider, TextField } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function EmailFieldExample() {
   const [value, setValue] = useState('bernadette.lapresse@jadedpixel.com');
@@ -37,4 +37,3 @@ function Example() {
 }
 
 export default Example;
-    

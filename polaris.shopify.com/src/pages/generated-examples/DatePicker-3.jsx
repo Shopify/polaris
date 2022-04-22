@@ -1,6 +1,6 @@
 import { AppProvider, DatePicker } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DatePickerExample() {
   const [{month, year}, setDate] = useState({month: 1, year: 2018});
@@ -46,4 +46,3 @@ function Example() {
 }
 
 export default Example;
-    

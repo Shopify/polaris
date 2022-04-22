@@ -1,6 +1,6 @@
 import { AppProvider, Link,Page,Card,DataTable } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function FullDataTableExample() {
   const [sortedRows, setSortedRows] = useState(null);
@@ -112,4 +112,3 @@ function Example() {
 }
 
 export default Example;
-    

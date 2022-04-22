@@ -1,6 +1,6 @@
 import { AppProvider, ChoiceList,TextField,Card,Filters,DataTable } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DataTableFiltersExample() {
   const [availability, setAvailability] = useState(null);
@@ -205,4 +205,3 @@ function Example() {
 }
 
 export default Example;
-    

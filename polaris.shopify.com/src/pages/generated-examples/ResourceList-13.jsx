@@ -1,6 +1,6 @@
 import { AppProvider, Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
 import { useState } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListExample() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -130,4 +130,3 @@ function Example() {
 }
 
 export default Example;
-    

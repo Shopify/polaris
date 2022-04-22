@@ -1,6 +1,6 @@
 import { AppProvider, Stack,FormLayout,TextField,Select,InlineError,Card,TextStyle,Link } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function SeparateValidationErrorExample() {
   const [weight, setWeight] = useState('12');
@@ -82,4 +82,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
 import { AppProvider, Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
 import { useState } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListWithSortingExample() {
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
@@ -83,4 +83,3 @@ function Example() {
 }
 
 export default Example;
-    

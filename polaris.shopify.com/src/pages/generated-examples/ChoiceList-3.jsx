@@ -1,6 +1,6 @@
 import { AppProvider, ChoiceList } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function MultiChoiceListExample() {
   const [selected, setSelected] = useState(['hidden']);
@@ -50,4 +50,3 @@ function Example() {
 }
 
 export default Example;
-    

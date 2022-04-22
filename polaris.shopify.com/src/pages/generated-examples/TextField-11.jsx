@@ -1,6 +1,6 @@
 import { AppProvider, Stack,Tag,TextField } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function VerticalContent() {
   const tags = ['Rustic', 'Antique', 'Vinyl', 'Refurbished'];
@@ -51,4 +51,3 @@ function Example() {
 }
 
 export default Example;
-    

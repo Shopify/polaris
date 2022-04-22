@@ -1,7 +1,7 @@
 import { AppProvider, Tag,Listbox,Combobox,Icon,TextContainer,Stack } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useMemo } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function MultiComboboxExample() {
   const deselectedOptions = useMemo(
@@ -146,4 +146,3 @@ function Example() {
 }
 
 export default Example;
-    

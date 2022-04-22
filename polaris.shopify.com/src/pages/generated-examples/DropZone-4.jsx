@@ -1,7 +1,7 @@
 import { AppProvider, DropZone,Stack,Thumbnail,Caption } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DropZoneExample() {
   const [file, setFile] = useState();
@@ -59,4 +59,3 @@ function Example() {
 }
 
 export default Example;
-    

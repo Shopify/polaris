@@ -1,5 +1,5 @@
 import { AppProvider, Listbox } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ListboxWithCustomElementExample() {
   return (
@@ -40,4 +40,3 @@ function Example() {
 }
 
 export default Example;
-    

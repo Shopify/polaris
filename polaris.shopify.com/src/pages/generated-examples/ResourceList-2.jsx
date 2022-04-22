@@ -1,5 +1,5 @@
 import { AppProvider, Filters,EmptyState,Page,Layout,Card,ResourceList } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListWithEmptyStateExample() {
   const items = [];
@@ -67,4 +67,3 @@ function Example() {
 }
 
 export default Example;
-    

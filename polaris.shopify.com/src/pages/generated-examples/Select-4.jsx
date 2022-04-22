@@ -1,7 +1,7 @@
 import { AppProvider, Icon,Select } from "@shopify/polaris";
 import { CaretUpMinor,CaretDownMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function PrefixExample() {
   const [selected, setSelected] = useState('enabled');
@@ -50,4 +50,3 @@ function Example() {
 }
 
 export default Example;
-    

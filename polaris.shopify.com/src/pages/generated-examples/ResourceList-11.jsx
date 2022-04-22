@@ -1,5 +1,5 @@
 import { AppProvider, Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -69,4 +69,3 @@ function Example() {
 }
 
 export default Example;
-    
