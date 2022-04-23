@@ -11,7 +11,7 @@ function getFileName(fileName: string) {
 
 export async function toJSON(tokens: Tokens) {
   if (!fs.existsSync(outputDir)) {
-    await fs.promises.mkdir(outputDir);
+    await fs.promises.mkdir(outputDir, {recursive: true});
   }
 
   for (const entry of Object.entries(tokens)) {

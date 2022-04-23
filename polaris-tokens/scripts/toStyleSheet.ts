@@ -88,7 +88,7 @@ export async function toStyleSheet(
   osColorSchemes: OSColorSchemes,
 ) {
   if (!fs.existsSync(outputDir)) {
-    await fs.promises.mkdir(outputDir);
+    await fs.promises.mkdir(outputDir, {recursive: true});
   }
 
   const staticCustomProperties = getStaticCustomProperties(tokens);
