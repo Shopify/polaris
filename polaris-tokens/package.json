@@ -2,13 +2,35 @@
   "name": "@shopify/polaris-tokens",
   "version": "5.0.0-rc.3",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/browser/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "scripts": {
-    "build": "tsc -b && node scripts",
+    "build": "yarn build:types && yarn build:js && yarn build:assets",
+    "build:js": "rollup -c",
+    "build:assets": "ts-node --skip-project scripts/index.ts",
+    "build:types": "tsc --emitDeclarationOnly",
     "test": "jest"
   },
   "devDependencies": {
-    "jest": "^27.5.1"
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@shopify/browserslist-config": "^3.0.0",
+    "jest": "^27.5.1",
+    "rollup": "^2.70.2",
+    "ts-node": "^10.7.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -20,5 +42,8 @@
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
-  }
+  },
+  "browserslist": [
+    "extends @shopify/browserslist-config"
+  ]
 }
