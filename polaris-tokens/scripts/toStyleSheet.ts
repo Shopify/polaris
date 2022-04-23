@@ -1,5 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+import {Tokens, ColorScheme, TokenGroup, OSColorSchemes} from '../src';
+
+const outputDir = path.join(__dirname, '../dist/css');
+const outputPath = path.join(outputDir, 'styles.css');
 
 /**
  * Creates CSS Rules for each color-scheme.
@@ -8,19 +13,23 @@ const path = require('path');
  * [p-color-scheme="dark"] {...}
  * [p-color-scheme="dim"] {...}
  */
-function getColorSchemeRules(tokenHash, colorSchemes) {
-  return Object.keys(tokenHash.colorSchemes)
+export function getColorSchemeRules(
+  tokens: Tokens,
+  osColorSchemes: OSColorSchemes,
+) {
+  return Object.keys(tokens.colorSchemes)
     .map((key) => {
-      const colorScheme = key;
+      const colorScheme = key as ColorScheme;
+
       const selector = `[p-color-scheme="${colorScheme}"]`;
       const colorCustomProperties = getColorSchemeDeclarations(
         colorScheme,
-        tokenHash,
-        colorSchemes,
+        tokens,
+        osColorSchemes,
       );
 
       return `${selector}{${colorCustomProperties}${getStaticCustomProperties(
-        tokenHash,
+        tokens,
       )}}`;
     })
     .join('');
@@ -30,28 +39,32 @@ function getColorSchemeRules(tokenHash, colorSchemes) {
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-function getStaticCustomProperties(tokenHash) {
-  return Object.entries(tokenHash)
-    .filter(([tokenGroup]) => tokenGroup !== 'colorSchemes')
-    .map(([, filteredTokens]) => getCustomProperties(filteredTokens))
+export function getStaticCustomProperties(tokens: Tokens) {
+  return Object.entries(tokens)
+    .filter(([tokenGroupName]) => tokenGroupName !== 'colorSchemes')
+    .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
     .join('');
 }
 
 /**
  * Creates CSS declarations for a given color-scheme.
  */
-function getColorSchemeDeclarations(colorScheme, tokenHash, colorSchemes) {
+export function getColorSchemeDeclarations(
+  colorScheme: ColorScheme,
+  tokens: Tokens,
+  osColorSchemes: OSColorSchemes,
+) {
   return [
-    `color-scheme:${colorSchemes[colorScheme]};`,
-    getCustomProperties(tokenHash.colorSchemes[colorScheme]),
+    `color-scheme:${osColorSchemes[colorScheme]};`,
+    getCustomProperties(tokens.colorSchemes[colorScheme]),
   ].join('');
 }
 
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-function getCustomProperties(tokenHash) {
-  return Object.entries(tokenHash)
+function getCustomProperties(tokenGroup: TokenGroup) {
+  return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
         ? `--p-${token}:p-${token};`
@@ -63,14 +76,21 @@ function getCustomProperties(tokenHash) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-function getKeyframes(motion) {
+function getKeyframes(motion: TokenGroup) {
   return Object.entries(motion)
     .filter(([token]) => token.startsWith('keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
-async function toStyleSheet(tokens, osColorSchemes) {
+export async function toStyleSheet(
+  tokens: Tokens,
+  osColorSchemes: OSColorSchemes,
+) {
+  if (!fs.existsSync(outputDir)) {
+    await fs.promises.mkdir(outputDir);
+  }
+
   const staticCustomProperties = getStaticCustomProperties(tokens);
   const colorSchemeDeclarations = getColorSchemeDeclarations(
     'light',
@@ -84,10 +104,5 @@ async function toStyleSheet(tokens, osColorSchemes) {
   ${getKeyframes(tokens.motion)}
 `;
 
-  const fileName = 'styles.css';
-  const filePath = path.join(__dirname, '../dist', fileName);
-
-  await fs.promises.writeFile(filePath, styles);
+  await fs.promises.writeFile(outputPath, styles);
 }
-
-module.exports = {toStyleSheet};
