@@ -506,7 +506,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     }
   };
 
-  private onHover = (row: number) => {
+  private handleHover = (row?: number) => () => {
     this.setState({rowHovered: row});
   };
 
@@ -664,8 +664,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <tr
         key={`row-${index}`}
         className={className}
-        onMouseEnter={() => this.onHover(index)}
-        onMouseLeave={() => this.setState({rowHovered: undefined})}
+        onMouseEnter={this.handleHover(index)}
+        onMouseLeave={this.handleHover()}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const hovered = index === this.state.rowHovered;
