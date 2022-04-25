@@ -9,10 +9,9 @@ import {
   TextDocumentSyncKind,
   InitializeResult,
 } from 'vscode-languageserver/node';
-
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-import { groupedTokens} from './data/allTokens';
+import {groupedTokens} from './tmp-tokens/allTokens';
 
 type GroupedTokens = typeof groupedTokens;
 
@@ -29,7 +28,7 @@ type TokenGroupPatterns = {
   [T in GroupedTokensKey]: RegExp;
 };
 
-let tokenGroupPatterns: TokenGroupPatterns = {
+const tokenGroupPatterns: TokenGroupPatterns = {
   breakpoints: /width/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
@@ -45,7 +44,7 @@ type GroupedCompletionItem = {
   [T in GroupedTokensKey]?: CompletionItem[];
 };
 
-let groupedCompletionItems: GroupedCompletionItem = {};
+const groupedCompletionItems: GroupedCompletionItem = {};
 
 let allCompletionItems: CompletionItem[] = [];
 
@@ -63,30 +62,29 @@ connection.onInitialize((params: InitializeParams) => {
   };
 
   // initialize grouped completionItems
-  for(const tokenGroup in groupedTokens) {
-    const category = tokenGroup as keyof typeof tokenGroupPatterns;
-    const tokensArray = groupedTokens[category];
+  for (const tokenGroup in groupedTokens) {
+    if (Object.prototype.hasOwnProperty.call(groupedTokens, tokenGroup)) {
+      const category = tokenGroup as keyof typeof tokenGroupPatterns;
+      const tokensArray = groupedTokens[category];
 
-    const completionItems = tokensArray.map((token): CompletionItem => {
-      const tokenName = `--p-${token.label}`;
+      const completionItems = tokensArray.map((token): CompletionItem => {
+        return {
+          label: token.label,
+          insertText: token.insertText,
+          detail: token.value,
+          filterText: `--p-${token.label}`,
+          kind:
+            category === 'color'
+              ? CompletionItemKind.Color
+              : CompletionItemKind.Variable,
+        };
+      });
 
-      return {
-        label: tokenName,
-        insertText: token.insertText,
-        detail: token.value,
-        filterText: tokenName,
-        kind:
-          category === 'color'
-            ? CompletionItemKind.Color
-            : CompletionItemKind.Variable,
-      };
-    });
+      groupedCompletionItems[category] = completionItems;
 
-    groupedCompletionItems[category] = completionItems;
-
-    allCompletionItems = allCompletionItems.concat(completionItems);
+      allCompletionItems = allCompletionItems.concat(completionItems);
+    }
   }
-
   return result;
 });
 
@@ -107,12 +105,18 @@ connection.onCompletion(
     });
 
     for (const tokenGroup in tokenGroupPatterns) {
-      const category = tokenGroup as keyof typeof tokenGroupPatterns;
+      if (
+        Object.prototype.hasOwnProperty.call(tokenGroupPatterns, tokenGroup)
+      ) {
+        const category = tokenGroup as keyof typeof tokenGroupPatterns;
 
-      if (tokenGroupPatterns[category].test(currentText)) {
-        const currentCompletionItems = groupedCompletionItems[category];
-        if (currentCompletionItems) {
-          matchedCompletionItems = matchedCompletionItems.concat(currentCompletionItems);
+        if (tokenGroupPatterns[category].test(currentText)) {
+          const currentCompletionItems = groupedCompletionItems[category];
+          if (currentCompletionItems) {
+            matchedCompletionItems = matchedCompletionItems.concat(
+              currentCompletionItems,
+            );
+          }
         }
       }
     }

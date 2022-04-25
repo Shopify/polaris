@@ -1,4 +1,0 @@
-build
-build-internal
-*.scss.d.ts
-src/styles/_media-queries.scss

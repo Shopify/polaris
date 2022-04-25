@@ -1,6 +1,6 @@
 import { AppProvider, Button,Modal,Stack,TextContainer,TextField } from "@shopify/polaris";
 import { useState,useCallback,useRef } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ModalWithPrimaryActionExample() {
   const DISCOUNT_LINK = 'https://polaris.shopify.com/';
@@ -88,4 +88,3 @@ function Example() {
 }
 
 export default Example;
-    

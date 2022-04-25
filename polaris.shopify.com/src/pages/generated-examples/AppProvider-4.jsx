@@ -1,6 +1,6 @@
 import { AppProvider, Page,Layout,SettingToggle,TextStyle,ContextualSaveBar } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AppProviderThemeExample() {
   const [isDirty, setIsDirty] = useState(false);
@@ -96,4 +96,3 @@ function Example() {
 }
 
 export default Example;
-    

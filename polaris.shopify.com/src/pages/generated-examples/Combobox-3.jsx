@@ -1,6 +1,6 @@
 import { AppProvider, Stack,Tag,Listbox,Combobox } from "@shopify/polaris";
 import { useState,useCallback,useMemo } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function MultiVerticalContentComboboxExample() {
   const deselectedOptions = useMemo(
@@ -147,4 +147,3 @@ function Example() {
 }
 
 export default Example;
-    

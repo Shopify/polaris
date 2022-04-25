@@ -1,7 +1,7 @@
 import { AppProvider, Autocomplete,Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useMemo } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AutocompleteExample() {
   const deselectedOptions = useMemo(
@@ -120,4 +120,3 @@ function Example() {
 }
 
 export default Example;
-    

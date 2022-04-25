@@ -1,6 +1,6 @@
 import { AppProvider, TextField,Card,ResourceList,Filters,Button,Avatar,TextStyle } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function DisableAllFiltersExample() {
   const [taggedWith, setTaggedWith] = useState(null);
@@ -148,4 +148,3 @@ function Example() {
 }
 
 export default Example;
-    

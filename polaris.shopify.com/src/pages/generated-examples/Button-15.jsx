@@ -1,6 +1,6 @@
 import { AppProvider, Button } from "@shopify/polaris";
 import { useState } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function RightAlignedDisclosureButton() {
   const [expanded, setExpanded] = useState(false);
@@ -38,4 +38,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,5 +1,0 @@
-out
-dist
-.vscode-test/
-*.vsix
-server/src/data/

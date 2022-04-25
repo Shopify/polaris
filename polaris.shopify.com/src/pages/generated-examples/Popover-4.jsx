@@ -1,6 +1,6 @@
 import { AppProvider, Button,Card,Popover,ResourceList,Avatar } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function PopoverLazyLoadExample() {
   const [popoverActive, setPopoverActive] = useState(true);

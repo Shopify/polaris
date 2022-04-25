@@ -1,6 +1,6 @@
 import { AppProvider, Select } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ValidationErrorExample() {
   const [selected, setSelected] = useState('');
@@ -37,4 +37,3 @@ function Example() {
 }
 
 export default Example;
-    

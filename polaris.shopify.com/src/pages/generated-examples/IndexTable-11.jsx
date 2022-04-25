@@ -1,5 +1,5 @@
 import { AppProvider, IndexTable,TextStyle,Card } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function IndexTableWithoutCheckboxesExample() {
   const customers = [
@@ -76,4 +76,3 @@ function Example() {
 }
 
 export default Example;
-    

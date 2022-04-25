@@ -1,7 +1,7 @@
 import { AppProvider, TopBar,ActionList,Icon,VisuallyHidden,Frame } from "@shopify/polaris";
 import { ArrowLeftMinor,QuestionMarkMajor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function TopBarExample() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -132,4 +132,3 @@ function Example() {
 }
 
 export default Example;
-    

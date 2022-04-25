@@ -1,6 +1,6 @@
 import { AppProvider, FormLayout,ChoiceList,TextField,Select } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function HiddenLabelExample() {
   const [value, setValue] = useState('12');
@@ -63,4 +63,3 @@ function Example() {
 }
 
 export default Example;
-    

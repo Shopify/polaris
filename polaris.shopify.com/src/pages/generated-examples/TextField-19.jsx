@@ -1,6 +1,6 @@
 import { AppProvider, TextField } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function TextFieldWithSelectTextOnFocusExample() {
   const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
@@ -39,4 +39,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
 import { AppProvider, Button,Modal,TextContainer } from "@shopify/polaris";
 import { useState,useCallback,useRef } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ModalExample() {
   const [active, setActive] = useState(true);
@@ -68,4 +68,3 @@ function Example() {
 }
 
 export default Example;
-    

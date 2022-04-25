@@ -1,6 +1,6 @@
 import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function PopoverWithActionListExample() {
   const [popoverActive, setPopoverActive] = useState(true);
@@ -52,4 +52,3 @@ function Example() {
 }
 
 export default Example;
-    

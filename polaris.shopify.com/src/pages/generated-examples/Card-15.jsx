@@ -1,6 +1,6 @@
 import { AppProvider, Card,Stack,Icon,Subheading,List } from "@shopify/polaris";
 import { ProductsMajor } from "@shopify/polaris-icons";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -36,4 +36,3 @@ function Example() {
 }
 
 export default Example;
-    

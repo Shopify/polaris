@@ -1,7 +1,7 @@
 import { AppProvider, Autocomplete,Icon } from "@shopify/polaris";
 import { SearchMinor,DeleteMinor } from "@shopify/polaris-icons";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function AutocompleteActionBeforeExample() {
   const deselectedOptions = [
@@ -104,4 +104,3 @@ function Example() {
 }
 
 export default Example;
-    
