@@ -33,7 +33,6 @@ export default {
     // Compile TypeScript/JavaScript files
     babel({
       extensions,
-      babelHelpers: 'bundled',
       include: ['src/**/*'],
     }),
   ],
