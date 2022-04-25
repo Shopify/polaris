@@ -25,10 +25,11 @@ export function MobilePrototypeTextInput() {
     [],
   );
 
-  const [value, setValue] = useState('Gummy world strives for zero waste and zero sugar. Meet our curated collections of gummies!');
+  const [value, setValue] = useState(
+    'Gummy world strives for zero waste and zero sugar. Meet our curated collections of gummies!',
+  );
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
-
 
   const preferencesMarkup = (
     <>
@@ -44,6 +45,7 @@ export function MobilePrototypeTextInput() {
             content: 'Save',
             // eslint-disable-next-line no-console
             onAction: () => console.log('save'),
+            disabled: true,
           }}
         >
           <Layout>
@@ -54,29 +56,27 @@ export function MobilePrototypeTextInput() {
             >
               <Card sectioned>
                 <Stack spacing="loose" vertical={true}>
-              <TextField
-      label="Store name"
-      value={textFieldValue}
-      onChange={handleTextFieldChange}
-      maxLength={35}
-      autoComplete="off"
-      showCharacterCount
-    />
+                  <TextField
+                    label="Store name"
+                    value={textFieldValue}
+                    onChange={handleTextFieldChange}
+                    maxLength={35}
+                    autoComplete="off"
+                    showCharacterCount
+                  />
 
-<TextField
-      label="Homepage meta description"
-      value={value}
-      onChange={handleChange}
-      multiline={4}
-      autoComplete="off"
-      showCharacterCount
-      maxLength={150}
-    />
-</Stack>
-
+                  <TextField
+                    label="Homepage meta description"
+                    value={value}
+                    onChange={handleChange}
+                    multiline={4}
+                    autoComplete="off"
+                    showCharacterCount
+                    maxLength={150}
+                  />
+                </Stack>
               </Card>
             </Layout.AnnotatedSection>
-
           </Layout>
         </Page>
       </Scrollable>
