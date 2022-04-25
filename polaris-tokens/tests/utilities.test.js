@@ -1,4 +1,4 @@
-import {createVar, tokensToRems} from '../utilities';
+import {createVar, tokensToRems} from '../src/utilities';
 
 describe('createVar', () => {
   it('converts the token into a polaris css variable name', () => {

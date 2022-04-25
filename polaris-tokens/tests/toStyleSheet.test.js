@@ -1,4 +1,4 @@
-import {osColorSchemes} from '../tokens';
+import {osColorSchemes} from '../src/tokens';
 import {
   getColorSchemeDeclarations,
   getColorSchemeRules,
@@ -6,16 +6,25 @@ import {
   getKeyframes,
   getStaticCustomProperties,
 } from '../scripts/toStyleSheet';
+import * as funcs from '../scripts/toStyleSheet';
 
 const mockTokenGroup = {
-  'design-token-1': 'valueA',
-  'design-token-2': 'valueB',
+  'design-token-1': {
+    value: 'valueA',
+  },
+  'design-token-2': {
+    value: 'valueB',
+  },
 };
 
 const mockMotionTokenGroup = {
   ...mockTokenGroup,
-  'keyframes-token-1': 'valueA',
-  'keyframes-token-2': 'valueB',
+  'keyframes-token-1': {
+    value: 'valueA',
+  },
+  'keyframes-token-2': {
+    value: 'valueB',
+  },
 };
 
 const mockColorSchemes = {
