@@ -6,8 +6,6 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 
-const name = 'PolarisTokens';
-
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /**
@@ -25,14 +23,6 @@ export default {
       format: /** @type {const} */ ('es'),
       dir: path.dirname(pkg.module),
       preserveModules: true,
-    },
-    {
-      format: /** @type {const} */ ('iife'),
-      file: pkg.browser,
-      name,
-
-      // https://rollupjs.org/guide/en/#outputglobals
-      // globals: {},
     },
   ],
   plugins: [
