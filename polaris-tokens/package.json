@@ -13,10 +13,10 @@
     }
   },
   "scripts": {
-    "build": "yarn build:types && yarn build:js && yarn build:assets",
+    "build": "run-s build:*",
     "build:js": "rollup -c",
     "build:assets": "ts-node --skip-project scripts/index.ts",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc",
     "test": "jest"
   },
   "devDependencies": {
