@@ -30,6 +30,8 @@ jobs:
           path: |
             .eslintcache
             **/*.tsbuildinfo
+            **/dist/types
+            polaris-react/build/ts
           key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-

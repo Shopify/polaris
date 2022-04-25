@@ -3,6 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
+    "declarationDir": "dist/types",
+    "declaration": true,
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
