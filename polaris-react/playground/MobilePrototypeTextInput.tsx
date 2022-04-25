@@ -1,16 +1,12 @@
 import React, {useCallback, useState} from 'react';
 
 import {
-  Caption,
   Card,
-  ChoiceList,
   Frame,
   Image,
   Layout,
-  Link,
   Page,
   Scrollable,
-  Select,
   Stack,
   TextField,
 } from '../src';
@@ -45,7 +41,6 @@ export function MobilePrototypeTextInput() {
             content: 'Save',
             // eslint-disable-next-line no-console
             onAction: () => console.log('save'),
-            disabled: true,
           }}
         >
           <Layout>
