@@ -8,7 +8,6 @@ import React, {
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {typographyCondensed} from '../../utilities/breakpoints';
-
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -18,8 +17,8 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
-import {Resizer, Spinner, SpinnerProps} from './components';
 
+import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
