@@ -6,7 +6,6 @@ import {
   getKeyframes,
   getStaticCustomProperties,
 } from '../scripts/toStyleSheet';
-import * as funcs from '../scripts/toStyleSheet';
 
 const mockTokenGroup = {
   'design-token-1': {
