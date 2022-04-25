@@ -1,16 +1,4 @@
 import React, {useCallback, useState} from 'react';
-import {
-  AnalyticsMajor,
-  AppsMajor,
-  CirclePlusMinor,
-  CustomersMajor,
-  DiscountsMajor,
-  HomeMajor,
-  MarketingMajor,
-  OrdersMajor,
-  ProductsMajor,
-  SettingsMajor,
-} from '@shopify/polaris-icons';
 
 import {
   Caption,
