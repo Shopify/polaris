@@ -47,10 +47,11 @@
   "scripts": {
     "build": "node ./scripts/build.js",
     "dev": "yarn run storybook",
+    "gen-media-queries": "node ./scripts/gen-media-queries.js",
     "prepublishOnly": "yarn run build",
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
-    "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "build-storybook -o build-internal/storybook/static",
+    "storybook": "yarn gen-media-queries && start-storybook -p 6006 --quiet",
+    "storybook:build": "yarn gen-media-queries && build-storybook -o build-internal/storybook/static",
     "test": "loom test",
     "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'",
     "version": "node ./scripts/readme-update-version"

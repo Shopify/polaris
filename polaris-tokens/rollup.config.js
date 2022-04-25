@@ -1,17 +1,17 @@
 import path from 'path';
 
-import pkg from './package.json';
-
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
+
+import pkg from './package.json';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /**
  * @type {import('rollup').RollupOptions}
  */
-export default {
+const rollupOptions = {
   input: 'src/index.ts',
   output: [
     {
@@ -41,3 +41,6 @@ export default {
     ...Object.keys(pkg.peerDependencies ?? {}),
   ],
 };
+
+// eslint-disable-next-line import/no-default-export
+export default rollupOptions;
