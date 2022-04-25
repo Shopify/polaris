@@ -63,7 +63,7 @@ export function getColorSchemeDeclarations(
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-function getCustomProperties(tokenGroup: TokenGroup) {
+export function getCustomProperties(tokenGroup: TokenGroup) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
@@ -76,7 +76,7 @@ function getCustomProperties(tokenGroup: TokenGroup) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-function getKeyframes(motion: TokenGroup) {
+export function getKeyframes(motion: TokenGroup) {
   return Object.entries(motion)
     .filter(([token]) => token.startsWith('keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
