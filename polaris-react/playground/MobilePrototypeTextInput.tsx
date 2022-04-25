@@ -50,7 +50,7 @@ export function MobilePrototypeTextInput() {
               description="The title and meta description help define how your store shows up on search engines."
             >
               <Card sectioned>
-                <Stack spacing="loose" vertical={true}>
+                <Stack spacing="loose" vertical>
                   <TextField
                     label="Store name"
                     value={textFieldValue}

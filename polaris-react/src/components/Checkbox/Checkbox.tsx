@@ -17,7 +17,7 @@ import {Error, CheckboxHandles, Key} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
-import { typographyCondensed } from '../../utilities/breakpoints';
+import {typographyCondensed} from '../../utilities/breakpoints';
 
 export interface CheckboxProps {
   /** Indicates the ID of the element that is controlled by the checkbox*/

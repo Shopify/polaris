@@ -45,7 +45,7 @@ export function MobilePrototype() {
     (selectedGiftCardExpiration) => (
       <TextField
         label="Gift cards expiration"
-        labelHidden={true}
+        labelHidden
         type="number"
         inputMode="numeric"
         value={textFieldValue}
@@ -64,7 +64,12 @@ export function MobilePrototype() {
         }
       />
     ),
-    [handleTextFieldChange, textFieldValue],
+    [
+      handleTextFieldChange,
+      textFieldValue,
+      handleConnectedSelectChange,
+      selectValue,
+    ],
   );
 
   const [selectedMultiChoice, setSelectedMultiChoice] = useState(['hidden']);
@@ -91,7 +96,7 @@ export function MobilePrototype() {
             <Card sectioned>
               <ChoiceList
                 title="Expiration"
-                titleHidden={true}
+                titleHidden
                 choices={[
                   {
                     label: 'Gift cards never expire',
@@ -131,7 +136,7 @@ export function MobilePrototype() {
               <ChoiceList
                 allowMultiple
                 title="Apple Wallet"
-                titleHidden={true}
+                titleHidden
                 choices={[
                   {
                     label: 'Enable Apple Wallet Passes',

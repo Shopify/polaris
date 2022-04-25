@@ -1,4 +1,4 @@
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import {INITIAL_VIEWPORTS} from '@storybook/addon-viewport';
 
 import {Playground} from './Playground';
 import {KitchenSink} from './KitchenSink';
@@ -14,8 +14,14 @@ export default {
     chromatic: {disable: true},
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-    }
+    },
   },
 };
 
-export {Playground, KitchenSink, DetailsPage, MobilePrototype, MobilePrototypeTextInput};
+export {
+  Playground,
+  KitchenSink,
+  DetailsPage,
+  MobilePrototype,
+  MobilePrototypeTextInput,
+};

@@ -19,7 +19,7 @@ import {Icon} from '../Icon';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
-import { typographyCondensed } from '../../utilities/breakpoints';
+import {typographyCondensed} from '../../utilities/breakpoints';
 
 type Type =
   | 'text'
@@ -276,7 +276,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    showCharacterCount && styles.MobileCharCount
+    showCharacterCount && styles.MobileCharCount,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -314,7 +314,9 @@ export function TextField({
       ? characterCount
       : `${characterCount}/${maxLength}`;
 
-      const characterCountMobileText = !maxLength ? characterCount : `${characterCount} of ${maxLength} characters used`;
+    const characterCountMobileText = !maxLength
+      ? characterCount
+      : `${characterCount} of ${maxLength} characters used`;
 
     characterCountMarkup = (
       <div
@@ -324,7 +326,9 @@ export function TextField({
         aria-live={focus ? 'polite' : 'off'}
         aria-atomic="true"
       >
-        {typographyCondensed().matches ? characterCountText : characterCountMobileText}
+        {typographyCondensed().matches
+          ? characterCountText
+          : characterCountMobileText}
       </div>
     );
   }
