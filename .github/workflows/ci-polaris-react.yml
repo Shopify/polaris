@@ -28,7 +28,6 @@ jobs:
         with:
           path: |
             .eslintcache
-            **/*.tsbuildinfo
             polaris-react/.loom
           key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |
