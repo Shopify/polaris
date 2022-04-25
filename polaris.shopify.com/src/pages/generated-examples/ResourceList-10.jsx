@@ -1,6 +1,6 @@
 import { AppProvider, TextField,Filters,Button,Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListWithFilteringExample() {
   const [taggedWith, setTaggedWith] = useState('VIP');
@@ -132,4 +132,3 @@ function Example() {
 }
 
 export default Example;
-    

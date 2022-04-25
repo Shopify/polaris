@@ -1,6 +1,6 @@
 import { AppProvider, ActionList,Thumbnail,Icon,Avatar } from "@shopify/polaris";
 import { ChevronRightMinor } from "@shopify/polaris-icons";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function ActionListWithPrefixSuffixExample() {
   return (
@@ -49,4 +49,3 @@ function Example() {
 }
 
 export default Example;
-    

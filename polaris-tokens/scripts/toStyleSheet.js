@@ -1,16 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const {osColorSchemes, tokens} = require('../dist/index');
-
-const staticCustomProperties = getStaticCustomProperties(tokens);
-const colorSchemeDeclarations = getColorSchemeDeclarations(
-  'light',
-  tokens,
-  osColorSchemes,
-);
-const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}`;
-
 /**
  * Creates CSS Rules for each color-scheme.
  * @example:
@@ -84,13 +74,24 @@ export function getKeyframes(motion) {
     .join('');
 }
 
-const styles = `
+async function toStyleSheet(tokens, osColorSchemes) {
+  const staticCustomProperties = getStaticCustomProperties(tokens);
+  const colorSchemeDeclarations = getColorSchemeDeclarations(
+    'light',
+    tokens,
+    osColorSchemes,
+  );
+  const defaultDeclarations = `${colorSchemeDeclarations}${staticCustomProperties}`;
+  const styles = `
   :root{${defaultDeclarations}}
   ${getColorSchemeRules(tokens, osColorSchemes)}
   ${getKeyframes(tokens.motion)}
 `;
 
-const fileName = 'styles.css';
-const filePath = path.join(__dirname, '../dist', fileName);
+  const fileName = 'styles.css';
+  const filePath = path.join(__dirname, '../dist', fileName);
 
-fs.writeFileSync(filePath, styles);
+  await fs.promises.writeFile(filePath, styles);
+}
+
+module.exports = {toStyleSheet};

@@ -1,6 +1,6 @@
 import { AppProvider, TextField,ChoiceList } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
   const [selected, setSelected] = useState(['none']);
@@ -66,4 +66,3 @@ function Example() {
 }
 
 export default Example;
-    

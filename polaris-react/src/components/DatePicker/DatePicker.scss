@@ -88,7 +88,7 @@
     &:hover {
       background-color: HighlightText;
       color: Highlight;
-      outline: 2px solid Highlight;
+      outline: var(--p-border-width-2) solid Highlight;
     }
   }
 }
@@ -105,7 +105,7 @@
     &:hover {
       background-color: HighlightText;
       color: Highlight;
-      outline: 2px solid Highlight;
+      outline: var(--p-border-width-2) solid Highlight;
     }
   }
 }

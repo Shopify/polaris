@@ -6,7 +6,7 @@ const {
  *
  * @example ['--p-text', '--p-background']
  */
-const polarisCustomPropertyNames = require('./data/polaris-custom-property-names');
+const polarisCustomPropertyNames = require('./tmp-tokens/polaris-custom-property-names');
 
 /**
  * User defined custom property names.

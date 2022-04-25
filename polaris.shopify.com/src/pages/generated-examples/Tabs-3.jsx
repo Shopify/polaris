@@ -1,6 +1,6 @@
 import { AppProvider, Badge,Card,Tabs } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function TabsWithBadgeExample() {
   const [selected, setSelected] = useState(0);
@@ -62,4 +62,3 @@ function Example() {
 }
 
 export default Example;
-    

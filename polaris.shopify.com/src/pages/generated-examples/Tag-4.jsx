@@ -1,5 +1,5 @@
 import { AppProvider, Tag } from "@shopify/polaris";
-import '@shopify/polaris/build/esm/styles.css';
+
 import translations from '@shopify/polaris/locales/en.json';
 function URLTagExample() {
   return <Tag url="/collections/wholesale">Wholesale</Tag>;
@@ -24,4 +24,3 @@ function Example() {
 }
 
 export default Example;
-    

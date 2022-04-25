@@ -10,7 +10,7 @@ const {
  *
  * Result: ['--p-background', '--p-text', etc...]
  */
-const polarisCustomPropertyNames = require('../data/polaris-custom-property-names');
+const polarisCustomPropertyNames = require('../tmp-tokens/polaris-custom-property-names');
 
 /**
  * Allowed custom property names in Polaris component styles.
