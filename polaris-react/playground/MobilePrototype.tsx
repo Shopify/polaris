@@ -59,6 +59,7 @@ export function MobilePrototype() {
         label="Gift cards expiration"
         labelHidden={true}
         type="number"
+        inputMode="numeric"
         value={textFieldValue}
         onChange={handleTextFieldChange}
         autoComplete="off"
