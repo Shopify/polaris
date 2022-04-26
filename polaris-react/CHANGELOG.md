@@ -8,12 +8,24 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.5.2 - 2022-04-26
+
+### Bug fixes
+
+- Fixed documentation example for `ComboBox` ([#5622](https://github.com/Shopify/polaris/pull/5622))
+
+## 9.5.1 - 2022-04-26
+
+### Bug fixes
+
+- Fixed default `Pip` color in `Badge` ([#5616](https://github.com/Shopify/polaris/pull/5616))
+
 ## 9.5.0 - 2022-04-22
 
 ### Enhancements
 
 - Added `icon` prop to the `Badge` component ([#5292](https://github.com/Shopify/polaris/pull/5292))
-- Improved styling for the `DataTable` component when the `increaseTableDensity` prop is set to `true` ([#5480]https://github.com/Shopify/polaris/pull/5480)
+- Improved styling for the `DataTable` component when the `increaseTableDensity` prop is set to `true` ([#5480](https://github.com/Shopify/polaris/pull/5480))
 - Added support for setting a `ReactNode` on the `PageActions` `secondaryActions` prop ([#5495](https://github.com/Shopify/polaris/pull/5495))
 - Added support for NodeJS v14 ([#5551](https://github.com/Shopify/polaris/pull/5551))
 - Add `video` as DropZoneFileType option on the `DropZone` component ([#5349](https://github.com/Shopify/polaris/pull/5349))

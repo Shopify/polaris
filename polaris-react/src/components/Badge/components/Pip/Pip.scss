@@ -10,11 +10,15 @@
   flex-shrink: 0;
 }
 
+.statusInfo {
+  --pc-pip-color: var(--p-icon);
+}
+
 .statusSuccess {
   --pc-pip-color: var(--p-icon-success);
 }
 
-.statusInfo {
+.statusNew {
   --pc-pip-color: var(--p-icon-highlight);
 }
 
