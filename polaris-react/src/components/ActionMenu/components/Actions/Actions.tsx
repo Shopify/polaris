@@ -10,15 +10,19 @@ import type {
 import {ButtonGroup} from '../../../ButtonGroup';
 import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
-import {SecondaryAction} from '../SecondaryAction';
+import {SecondaryAction, SecondaryActionWrapper} from '../SecondaryAction';
 
 import styles from './Actions.scss';
 
 interface Props {
   /** Collection of page-level secondary actions */
   actions?: MenuActionDescriptor[];
+  /** Collection of page-level custom actions */
+  customActions?: React.ReactNode[];
   /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
+  /** Roll up all actions into a Popover > ActionList */
+  rollup?: boolean;
 }
 
 interface MeasuredActions {
@@ -28,7 +32,12 @@ interface MeasuredActions {
 
 const ACTION_SPACING = 8;
 
-export function Actions({actions = [], groups = []}: Props) {
+export function Actions({
+  actions = [],
+  customActions = [],
+  groups = [],
+  rollup,
+}: Props) {
   const i18n = useI18n();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
@@ -36,6 +45,7 @@ export function Actions({actions = [], groups = []}: Props) {
   const actionsAndGroupsLengthRef = useRef<number>(0);
   const timesMeasured = useRef(0);
   const actionWidthsRef = useRef<number[]>([]);
+  const customActionsTotalWidthRef = useRef(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -49,6 +59,10 @@ export function Actions({actions = [], groups = []}: Props) {
   };
   const lastMenuGroup = [...groups].pop();
   const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
+
+  const handleCustomActionsTotalWidth = useCallback((width: number) => {
+    customActionsTotalWidthRef.current += width;
+  }, []);
 
   const handleActionsOffsetWidth = useCallback((width: number) => {
     actionWidthsRef.current = [...actionWidthsRef.current, width];
@@ -85,10 +99,11 @@ export function Actions({actions = [], groups = []}: Props) {
   }, [actions, groups, measuredActions.showable.length]);
 
   const measureActions = useCallback(() => {
-    if (
-      actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0
-    ) {
+    let currentAvailableWidth = Math.max(
+      availableWidthRef.current - customActionsTotalWidthRef.current,
+      0,
+    );
+    if (actionWidthsRef.current.length === 0 || currentAvailableWidth === 0) {
       return;
     }
 
@@ -99,7 +114,6 @@ export function Actions({actions = [], groups = []}: Props) {
       return;
     }
 
-    let currentAvailableWidth = availableWidthRef.current;
     let newShowableActions: MenuActionDescriptor[] = [];
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
 
@@ -186,6 +200,15 @@ export function Actions({actions = [], groups = []}: Props) {
       </SecondaryAction>
     );
   });
+
+  const customActionsMarkup = customActions.map((action, index) => (
+    <SecondaryActionWrapper
+      key={`ct-act-${index}`}
+      getOffsetWidth={handleCustomActionsTotalWidth}
+    >
+      {action}
+    </SecondaryActionWrapper>
+  ));
 
   const rollUppableActionsMarkup =
     measuredActions.showable.length > 0
@@ -277,14 +300,19 @@ export function Actions({actions = [], groups = []}: Props) {
   const groupedActionsMarkup = (
     <ButtonGroup spacing="extraTight">
       {rollUppableActionsMarkup}
+      {customActionsMarkup}
       {actionsMarkup}
       {groupsMarkup}
     </ButtonGroup>
   );
 
+  const groupedCustomActionsMarkup = (
+    <ButtonGroup spacing="extraTight">{customActionsMarkup}</ButtonGroup>
+  );
+
   return (
     <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
-      {groupedActionsMarkup}
+      {rollup ? groupedCustomActionsMarkup : groupedActionsMarkup}
       <EventListener event="resize" handler={handleResize} />
     </div>
   );

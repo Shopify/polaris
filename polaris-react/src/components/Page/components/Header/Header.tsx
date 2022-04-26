@@ -48,6 +48,8 @@ export interface HeaderProps extends TitleProps {
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
+  /** Collection of custom page-level actions */
+  customActions?: React.ReactNode[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
   /** @deprecated Additional navigation markup */
@@ -71,6 +73,7 @@ export function Header({
   additionalNavigation,
   breadcrumbs = [],
   secondaryActions = [],
+  customActions = [],
   actionGroups = [],
   compactTitle = false,
 }: HeaderProps) {
@@ -138,11 +141,14 @@ export function Header({
   let actionMenuMarkup: MaybeJSX = null;
   if (
     isInterface(secondaryActions) &&
-    (secondaryActions.length > 0 || hasGroupsWithActions(actionGroups))
+    (secondaryActions.length > 0 ||
+      hasGroupsWithActions(actionGroups) ||
+      customActions.length > 0)
   ) {
     actionMenuMarkup = (
       <ActionMenu
         actions={secondaryActions}
+        customActions={customActions}
         groups={actionGroups}
         rollup={isNavigationCollapsed}
         rollupActionsLabel={

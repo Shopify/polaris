@@ -344,6 +344,6 @@ describe('<Header />', () => {
         mediaQuery: {isNavigationCollapsed: true},
       },
     );
-    expect(header.findAll(ButtonGroup)).toHaveLength(0);
+    expect(header.findAll(ButtonGroup)[0].findAll(Button)).toHaveLength(0);
   });
 });

@@ -13,6 +13,8 @@ import styles from './ActionMenu.scss';
 export interface ActionMenuProps {
   /** Collection of page-level secondary actions */
   actions?: MenuActionDescriptor[];
+  /** Collection of page-level custom actions */
+  customActions?: React.ReactNode[];
   /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
   /** Roll up all actions into a Popover > ActionList */
@@ -23,6 +25,7 @@ export interface ActionMenuProps {
 
 export function ActionMenu({
   actions = [],
+  customActions = [],
   groups = [],
   rollup,
   rollupActionsLabel,
@@ -40,14 +43,18 @@ export function ActionMenu({
 
   return (
     <div className={actionMenuClassNames}>
-      {rollup ? (
+      <Actions
+        actions={actions}
+        customActions={customActions}
+        groups={groups}
+        rollup={rollup}
+      />
+      {rollup && (
         <RollupActions
           accessibilityLabel={rollupActionsLabel}
           items={actions}
           sections={rollupSections}
         />
-      ) : (
-        <Actions actions={actions} groups={groups} />
       )}
     </div>
   );

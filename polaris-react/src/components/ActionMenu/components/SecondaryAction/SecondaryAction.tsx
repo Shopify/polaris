@@ -18,25 +18,39 @@ export function SecondaryAction({
   getOffsetWidth,
   ...rest
 }: SecondaryAction) {
-  const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+  return (
+    <SecondaryActionWrapper
+      destructive={destructive}
+      getOffsetWidth={getOffsetWidth}
+    >
+      <Button onClick={onAction} {...rest}>
+        {children}
+      </Button>
+    </SecondaryActionWrapper>
+  );
+}
+
+export function SecondaryActionWrapper({
+  children,
+  destructive,
+  getOffsetWidth,
+}: any) {
+  const secondaryActionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!getOffsetWidth || !secondaryActionsRef.current) return;
-
     getOffsetWidth(secondaryActionsRef.current?.offsetWidth);
   }, [getOffsetWidth]);
 
   return (
-    <span
+    <div
       className={classNames(
         styles.SecondaryAction,
         destructive && styles.destructive,
       )}
       ref={secondaryActionsRef}
     >
-      <Button onClick={onAction} {...rest}>
-        {children}
-      </Button>
-    </span>
+      {children}
+    </div>
   );
 }
