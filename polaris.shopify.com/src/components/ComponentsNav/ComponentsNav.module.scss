@@ -1,0 +1,70 @@
+.Filters {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .TextField {
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    margin: 0 3px 3px 0;
+  }
+}
+
+.ComponentsNav {
+  padding: 2em;
+
+  ul {
+    flex: 1;
+    display: grid;
+    margin: 0 -1em;
+    grid-template-columns: repeat(5, 1fr);
+
+    @media screen and (max-width: 2400px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width: 1800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 1400px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  li {
+    display: flex;
+
+    a {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      border-radius: var(--border-radius-700);
+      gap: 0.75em;
+      color: inherit;
+      transition: background-color 0.05s linear;
+
+      &:hover {
+        background: #f1f1f1;
+      }
+    }
+
+    p {
+      font-size: var(--font-size-300);
+      display: flex;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: var(--text-subdued);
+    }
+  }
+
+  .Preview {
+    border-radius: var(--border-radius-500);
+    transition: all 0.25s ease;
+    overflow: hidden;
+  }
+}

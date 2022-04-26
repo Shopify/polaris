@@ -1,0 +1,66 @@
+.Nav {
+  flex: 1;
+  font-size: var(--font-size-300);
+  padding: 2em;
+  min-width: 16em;
+  border-right: 1px solid #ededed;
+
+  span {
+    font-weight: var(--font-weight-500);
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+    padding: 1px 0;
+    padding-left: 1.2em;
+    color: var(--text-subdued);
+
+    &:hover {
+      color: inherit;
+
+      &::before {
+        background: #dddddd;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 9px;
+      height: 9px;
+      margin: auto;
+      border-radius: 3.5px;
+      background: #ededed;
+    }
+
+    &[aria-current="page"] {
+      color: var(--primary);
+      font-weight: var(--font-weight-500);
+
+      &::before {
+        background: var(--primary);
+      }
+    }
+  }
+
+  ul {
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  > ul > li {
+    margin-bottom: 1.25rem;
+
+    > span {
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      font-size: var(--font-size-700);
+      font-weight: var(--font-weight-400);
+    }
+  }
+}

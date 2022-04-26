@@ -10,25 +10,40 @@ Design tokens originated at Salesforce, and the best way to describe them is to 
 
 ## Installation
 
-Run the following command using [npm](https://www.npmjs.com/):
-
 ```bash
 npm install @shopify/polaris-tokens
 ```
 
-If you prefer [Yarn](https://yarnpkg.com/en/), use the following command instead:
-
-```bash
-yarn add @shopify/polaris-tokens
-```
-
 ## Usage
+
+#### Javascript
+
+Accessing all of the available token groups
 
 ```js
 import {tokens} from '@shopify/polaris-tokens';
 
-// Access all of the available token groups
-console.log(tokens);
+console.log(tokens.motion);
+```
+
+#### CSS
+
+Importing all of the css variables. CSS variables are prefixed with `--p` to signal that these variables
+
+```js
+import '@shopify/polaris-tokens/css/styles.css';
+
+div {
+  background: var(--p-background);
+}
+```
+
+#### JSON
+
+Accessing a specific token group file via the dist folder
+
+```js
+const spacing = require('@shopify/polaris-tokens/json/spacing.json');
 ```
 
 ## Contributing

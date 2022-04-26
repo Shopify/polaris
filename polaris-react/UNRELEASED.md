@@ -14,22 +14,23 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed whitespace from CustomProperties output ([#5570](https://github.com/Shopify/polaris/pull/5570))
 - Added a `height` prop to `Combobox` and `Popover.Pane` to support setting a fixed `height` and `man-height` on the `Scrollable` ([#5571](https://github.com/Shopify/polaris/pull/5571))
 - Made `Pip` a sub-component of `Badge` and exposed it to outside ([#5520](https://github.com/Shopify/polaris/pull/5520))
+- Replaced hardcoded `padding` or `margin` values with spacing tokens ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Added `border-width-4` and `border-width-5` tokens and replaced hardcoded values ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Replaced any hardcoded `outline-width` with `border-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
+
+- Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
 
 ### Bug fixes
 
-- Fixed focus and hover style on `Tag` for removable tag with link ([#5567](https://github.com/Shopify/polaris/pull/5567))
-- Fixed border size on vertical content on `TextField` ([#5571](https://github.com/Shopify/polaris/pull/5571))
-- Fixed `aria-activedescendent` being unset in `Combobox` on option select when `allowMultiple` is `true` ([#5584](https://github.com/Shopify/polaris/pull/5584))
-
 ### Documentation
-
-- Fixed `Combobox` multi-select examples not resetting the input value and list on option select ([#5584](https://github.com/Shopify/polaris/pull/5584))
 
 ### Development workflow
 
 ### Dependency upgrades
 
 - Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
+- Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
 
 ### Code quality
 

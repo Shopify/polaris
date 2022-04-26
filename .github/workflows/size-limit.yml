@@ -2,8 +2,8 @@ name: Size limit
 
 on:
   pull_request:
-    branches:
-      - '**'
+    paths:
+      - 'polaris-react/**'
 
 jobs:
   size:

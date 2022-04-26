@@ -1,12 +1,12 @@
-node_modules
+.next
 .loom
-.vscode-test
+node_modules
 dist
-out
+tmp-tokens
+/documentation/guides/legacy-polaris-v8-public-api.scss
 /polaris-react/build
 /polaris-react/build-internal
-/polaris.shopify.com/.next
-/stylelint-polaris/data
 /stylelint-polaris/tests
-/documentation/guides/legacy-polaris-v8-public-api.scss
-/stylelint-polaris/tests
+
+# temp ignore polaris.shopify.com
+/polaris.shopify.com

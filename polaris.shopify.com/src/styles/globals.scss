@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --nav-width: 18em;
+  --narrow-content-width: 720px;
+  --focus-outline: 0 0 0 2px black;
+
+  --text: #222222;
+  --text-subdued: #666666;
+  --text-link: #2c6ecb;
+  --text-token: #6e006e;
+
+  --surface: #ffffff;
+  --surface-subdued: #fafafa;
+  --surface-token: #fdf0fd;
+  --primary: #008060;
+
+  --font-size-100: 0.75em;
+  --font-size-200: 0.8em;
+  --font-size-300: 0.95em;
+  --font-size-400: 1em;
+  --font-size-500: 1.1em;
+  --font-size-600: 1.2em;
+  --font-size-700: 1.33em;
+  --font-size-800: 2em;
+  --font-size-900: 4em;
+  --font-size-1000: 7em;
+
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+
+  --letter-spacing-100: -0.03em;
+  --letter-spacing-200: -0.02em;
+  --letter-spacing-300: -0.01em;
+  --letter-spacing-400: 0;
+
+  --border-radius-100: 0;
+  --border-radius-200: 2px;
+  --border-radius-300: 4px;
+  --border-radius-400: 6px;
+  --border-radius-500: 8px;
+  --border-radius-600: 10px;
+  --border-radius-700: 12px;
+  --border-radius-round: 1000px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+*:focus-visible {
+  box-shadow: var(--focus-outline);
+}
+
+body {
+  font-family: inter, ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+a {
+  color: var(--text-link);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0.25rem 0;
+}
+
+h1 {
+  font-size: var(--font-size-900);
+  font-weight: var(--font-weight-600);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--font-size-800);
+  font-weight: var(--font-weight-400);
+  line-height: 1.2;
+  letter-spacing: -0.0125em;
+}
+
+h3 {
+  font-size: var(--font-size-700);
+  font-weight: var(--font-weight-600);
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-500);
+  line-height: 1.2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// Legacy CSS from old site (used in markdown files)
+.usage-list {
+  margin: 1.25rem 0;
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .usage-list-part {
+    flex: 1;
+    background: #fafafa;
+    padding: 1px 1.25rem;
+    border-radius: var(--border-radius-100);
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0.5em;
+    }
+  }
+
+  .usage-list-part:first-child {
+    border-left: 3px solid #00a47c;
+  }
+
+  .usage-list-part:last-child {
+    border-left: 3px solid #fc5749;
+  }
+}
+
+.twoColumnsItem img {
+  display: none;
+}

@@ -1,0 +1,14 @@
+.TextField {
+  font-size: var(--font-size-300);
+  padding: 0.75rem 0.6rem 0.75rem 2.75rem;
+  width: 100%;
+  border-radius: var(--border-radius-300);
+  background: url(./FilterMajor.svg) no-repeat 1em center;
+  background-size: 16px auto;
+  border: 1px solid #dddddd;
+  border-top-color: #aaaaaa;
+
+  &:focus-within {
+    border-color: transparent;
+  }
+}

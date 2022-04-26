@@ -1,0 +1,29 @@
+.Button {
+  appearance: none;
+  background: #fbfbfb;
+  padding: 0.3em 0.5em 0.35em;
+  border: none;
+  font-weight: var(--font-weight-400);
+  border-radius: var(--border-radius-200);
+  cursor: pointer;
+
+  &:hover {
+    background: #ededed;
+  }
+
+  &.small {
+    font-size: var(--font-size-200);
+  }
+
+  &.pill {
+    border-radius: 100px;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+  }
+
+  &[aria-pressed="true"],
+  &[aria-selected="true"] {
+    background: #008060;
+    color: white;
+  }
+}

@@ -72,7 +72,7 @@
   }
 
   @media (-ms-high-contrast: active) {
-    outline: 1px solid windowText;
+    outline: var(--p-border-width-1) solid windowText;
   }
 }
 
@@ -125,7 +125,7 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   }
 
   @media (-ms-high-contrast: active) {
-    outline: 1px solid windowText;
+    outline: var(--p-border-width-1) solid windowText;
   }
 }
 
