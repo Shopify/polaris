@@ -150,7 +150,7 @@ function ComboboxExample() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -265,7 +265,7 @@ function MultiComboboxExample() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -492,7 +492,7 @@ function LoadingAutocompleteExample() {
     <Combobox
       activator={
         <Combobox.TextField
-          prefix={<Icon source={SearchMinor} color="inkLighter" />}
+          prefix={<Icon source={SearchMinor} />}
           onChange={updateText}
           label="Search tags"
           labelHidden
