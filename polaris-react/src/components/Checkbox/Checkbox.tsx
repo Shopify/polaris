@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {MinusMinor, TickMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
+import {typographyCondensed} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -17,7 +18,6 @@ import {Error, CheckboxHandles, Key} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
-import { typographyCondensed } from '../../utilities/breakpoints';
 
 export interface CheckboxProps {
   /** Indicates the ID of the element that is controlled by the checkbox*/

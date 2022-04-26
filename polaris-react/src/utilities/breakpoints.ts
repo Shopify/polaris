@@ -31,6 +31,6 @@ export function stackedContent() {
 
 export function typographyCondensed() {
   return typeof window === 'undefined'
-  ? noWindowMatches
-  : window.matchMedia(`(min-width: ${Breakpoints.typographyCondensed})`);
+    ? noWindowMatches
+    : window.matchMedia(`(min-width: ${Breakpoints.typographyCondensed})`);
 }

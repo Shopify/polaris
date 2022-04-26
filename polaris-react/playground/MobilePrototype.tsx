@@ -1,16 +1,4 @@
 import React, {useCallback, useState} from 'react';
-import {
-  AnalyticsMajor,
-  AppsMajor,
-  CirclePlusMinor,
-  CustomersMajor,
-  DiscountsMajor,
-  HomeMajor,
-  MarketingMajor,
-  OrdersMajor,
-  ProductsMajor,
-  SettingsMajor,
-} from '@shopify/polaris-icons';
 
 import {
   Caption,
@@ -54,16 +42,19 @@ export function MobilePrototype() {
   );
 
   const renderChildren = useCallback(
-    () => (
+    (selectedGiftCardExpiration) => (
       <TextField
         label="Gift cards expiration"
-        labelHidden={true}
+        labelHidden
         type="number"
+        inputMode="numeric"
         value={textFieldValue}
         onChange={handleTextFieldChange}
         autoComplete="off"
+        disabled={!selectedGiftCardExpiration}
         connectedRight={
           <Select
+            disabled={!selectedGiftCardExpiration}
             value={selectValue}
             label="Time period"
             onChange={handleConnectedSelectChange}
@@ -73,9 +64,13 @@ export function MobilePrototype() {
         }
       />
     ),
-    [handleTextFieldChange, textFieldValue],
+    [
+      handleTextFieldChange,
+      textFieldValue,
+      handleConnectedSelectChange,
+      selectValue,
+    ],
   );
-
 
   const [selectedMultiChoice, setSelectedMultiChoice] = useState(['hidden']);
 
@@ -101,7 +96,7 @@ export function MobilePrototype() {
             <Card sectioned>
               <ChoiceList
                 title="Expiration"
-                titleHidden={true}
+                titleHidden
                 choices={[
                   {
                     label: 'Gift cards never expire',
@@ -141,7 +136,7 @@ export function MobilePrototype() {
               <ChoiceList
                 allowMultiple
                 title="Apple Wallet"
-                titleHidden={true}
+                titleHidden
                 choices={[
                   {
                     label: 'Enable Apple Wallet Passes',

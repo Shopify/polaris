@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 .Connected {
   --pc-connected-item: 10;
   --pc-connected-primary: 20;
@@ -9,10 +11,18 @@
 .Item {
   position: relative;
   z-index: var(--pc-connected-item);
-  flex: 0 0 auto;
+  flex: 0 1 100%;
+
+  @include when-typography-not-condensed {
+    flex: 0 0 auto;
+  }
 
   &:not(:first-child) {
-    margin-left: var(--p-space-1);
+    margin-left: var(--p-space-4);
+    
+    @include when-typography-not-condensed {
+      margin-left: var(--p-space-1);
+    }
   }
 }
 
@@ -21,7 +31,11 @@
 // TextField.scss has a dependency due to this override.
 .Item-primary {
   z-index: var(--pc-connected-primary);
-  flex: 1 1 auto;
+  flex: 0 1 100%;
+
+  @include when-typography-not-condensed {
+    flex: 1 1 auto;
+  }
 }
 
 .Item-focused {
