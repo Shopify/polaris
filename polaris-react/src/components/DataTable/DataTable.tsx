@@ -1,6 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
 import isEqual from 'react-fast-compare';
-import {Sticky} from '@shopify/polaris';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -183,7 +182,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       stickyHeader && styles.StickyHeaderEnabled,
     );
 
-    const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
+    const headingMarkup = (
+      <tr>
+        {headings.map((heading, index) =>
+          this.renderHeadings(heading, index, false),
+        )}
+      </tr>
+    );
 
     const totalsMarkup = totals ? (
       <tr>{totals.map(this.renderTotals)}</tr>
@@ -204,7 +209,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
       >
         <thead>
-          <tr>{firstHeading.map(this.renderHeadings)}</tr>
+          <tr>
+            {/* {console.log(firstHeading)} */}
+            {firstHeading.map((heading, index) =>
+              this.renderHeadings(heading, index, true),
+            )}
+          </tr>
         </thead>
         {totals && !showTotalsInFooter && firstTotal?.map(this.renderTotals)}
         <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
@@ -510,6 +520,24 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     this.setState({rowHovered: row});
   };
 
+  private handleFocus = (event: Event) => {
+    if (this.scrollContainer.current == null || event.target == null) {
+      return;
+    }
+    const button = event.target as HTMLButtonElement;
+    const cell = button.parentNode as HTMLTableCellElement;
+    const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
+    const columnLeftEdge = cell.offsetLeft;
+    const isHiddenByFixedFirstColumn =
+      this.scrollContainer.current.scrollLeft >
+      columnLeftEdge - firstColumnWidth;
+
+    if (isHiddenByFixedFirstColumn) {
+      this.scrollContainer.current.scrollLeft =
+        columnLeftEdge - firstColumnWidth;
+    }
+  };
+
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
     const {current: scrollContainer} = this.scrollContainer;
@@ -537,7 +565,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderHeadings = (heading: string, headingIndex: number) => {
+  private renderHeadings = (
+    heading: string,
+    headingIndex: number,
+    insideFixedFirstColumn: boolean,
+  ) => {
     const {
       sortable,
       truncate = false,
@@ -567,16 +599,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
         isFixedFirstColumn:
-          this.props.hasFixedFirstColumn && headingIndex === 0,
+          this.props.hasFixedFirstColumn && insideFixedFirstColumn,
       };
     }
 
-    const scrollPosition =
-      this.state.columnVisibilityData[headingIndex]?.leftEdge -
-      this.state.columnVisibilityData[0]?.rightEdge;
+    console.log({insideFixedFirstColumn});
 
-    const visibility =
-      this.scrollContainer.current?.scrollLeft < scrollPosition;
     return (
       <Cell
         setRef={(ref) =>
@@ -590,10 +618,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         truncate={truncate}
         {...sortableHeadingProps}
         verticalAlign={verticalAlign}
-        firstColWidth={this.state.columnVisibilityData[0]?.rightEdge}
-        visibility={visibility}
         scrollContainer={this.scrollContainer}
         colLeftEdge={this.state.columnVisibilityData[headingIndex]?.leftEdge}
+        handleFocus={this.handleFocus}
       />
     );
   };
