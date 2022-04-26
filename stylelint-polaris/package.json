@@ -16,7 +16,6 @@
   "files": [
     "index.js",
     "configs/",
-    "tmp-tokens/",
     "plugins/",
     "utils/"
   ],
@@ -28,7 +27,6 @@
   "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ./scripts/gen-polaris-data.js",
     "prepublishOnly": "yarn build",
     "test": "yarn build && node tests/index.js"
   },
@@ -36,6 +34,7 @@
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
-    "stylelint": "^14.1.0"
+    "stylelint": "^14.1.0",
+    "@shopify/polaris-tokens": "^5.0.0-rc.5"
   }
 }
