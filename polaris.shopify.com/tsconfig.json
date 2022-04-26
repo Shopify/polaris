@@ -24,8 +24,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mjs",
-    "**/*.json",
-    "../polaris-react/src/tokens/token-groups/*.json"
+    "**/*.json"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,13 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
-import depth from "../../../../polaris-react/src/tokens/token-groups/depth.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
 import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
+
+const { depth } = tokens;
 
 const Components: NextPage = () => {
   return (
@@ -36,7 +38,7 @@ const Components: NextPage = () => {
 };
 
 function DepthPreview({ name }: { name: keyof typeof depth }) {
-  const value = depth[name];
+  const { value } = depth[name];
 
   return (
     <Token
