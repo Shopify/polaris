@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const {
-  getCustomPropertyNames,
-  getGroupedCustomPropertyCompletionItems,
-} = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
+const getCustomPropertyNames = require('../../polaris-tokens/scripts/getCustomPropertyNames');
+
+const getGroupedCustomPropertyCompletionItems = require('./getGroupedCustomPropertyCompletionItems');
 
 const dirPath = path.join(__dirname, '../server/src/tmp-tokens');
 const outFile = 'allTokens.ts';

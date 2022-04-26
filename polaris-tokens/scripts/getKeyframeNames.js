@@ -1,6 +1,6 @@
 const path = require('path');
 
-const tokenGroupsDir = path.join(__dirname, '../../src/tokens/token-groups');
+const tokenGroupsDir = path.join(__dirname, '../src/token-groups');
 
 /**
  * Allowed Polaris keyframes.

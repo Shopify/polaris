@@ -1,29 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const tokenGroupsDir = path.join(__dirname, '../../src/tokens/token-groups');
-
-/**
- * Allowed Polaris token custom properties.
- *
- * Result: ['--p-background', '--p-text', etc...]
- */
-const getCustomPropertyNames = () => {
-  const polarisTokenCustomProperties = Array.from(
-    new Set(
-      fs
-        .readdirSync(tokenGroupsDir)
-        .map((file) => {
-          const tokenGroup = require(path.join(tokenGroupsDir, file));
-
-          return Object.keys(tokenGroup).map((token) => `--p-${token}`);
-        })
-        .flat(),
-    ),
-  );
-
-  return polarisTokenCustomProperties;
-};
+const tokenGroupsDir = path.join(
+  __dirname,
+  '../../polaris-tokens/src/token-groups',
+);
 
 /**
  * Used by the prepublish script in polaris-for-vscode to create an object of
@@ -61,7 +42,4 @@ const getGroupedCustomPropertyCompletionItems = () => {
   );
 };
 
-module.exports = {
-  getGroupedCustomPropertyCompletionItems,
-  getCustomPropertyNames,
-};
+module.exports = getGroupedCustomPropertyCompletionItems;

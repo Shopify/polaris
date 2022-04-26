@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const {
-  getCustomPropertyNames,
-} = require('../../polaris-react/scripts/utilities/getCustomPropertyNames');
-const getKeyframeNames = require('../../polaris-react/scripts/utilities/getKeyframeNames');
+const getCustomPropertyNames = require('../../polaris-tokens/scripts/getCustomPropertyNames');
+const getKeyframeNames = require('../../polaris-tokens/scripts/getKeyframeNames');
 
 const dirPath = path.join(__dirname, '../tmp-tokens');
 
