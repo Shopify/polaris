@@ -1,0 +1,35 @@
+import { AppProvider, Listbox } from "@shopify/polaris";
+import React from "react";
+import '@shopify/polaris/build/esm/styles.css';
+import translations from '@shopify/polaris/locales/en.json';
+
+function ListboxWithCustomElementExample() {
+  return (
+    <Listbox accessibilityLabel="Listbox with custom element example">
+      <Listbox.Action value="ActionValue" divider>
+        Add item
+      </Listbox.Action>
+      <Listbox.Option value="UniqueValue-1">
+        <div>Item 1</div>
+      </Listbox.Option>
+      <Listbox.Option value="UniqueValue-2">
+        <div>Item 2</div>
+      </Listbox.Option>
+      <Listbox.Option value="UniqueValue-3">
+        <div>Item 3</div>
+      </Listbox.Option>
+      <Listbox.Loading accessibilityLabel="items are loading" />
+    </Listbox>
+  );
+}
+
+function Example() {
+  return (
+    <AppProvider i18n={translations}>
+      <ListboxWithCustomElementExample />
+    </AppProvider>
+  );
+}
+
+export default Example;
+    

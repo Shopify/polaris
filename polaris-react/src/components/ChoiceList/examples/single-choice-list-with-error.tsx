@@ -1,0 +1,35 @@
+import { AppProvider, ChoiceList } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import '@shopify/polaris/build/esm/styles.css';
+import translations from '@shopify/polaris/locales/en.json';
+
+function ChoiceListWithErrorExample() {
+  const [selected, setSelected] = useState('hidden');
+
+  const handleChange = useCallback((value) => setSelected(value), []);
+
+  return (
+    <ChoiceList
+      title="Company name"
+      choices={[
+        {label: 'Hidden', value: 'hidden', describedByError: true},
+        {label: 'Optional', value: 'optional'},
+        {label: 'Required', value: 'required'},
+      ]}
+      selected={selected}
+      onChange={handleChange}
+      error="Company name cannot be hidden at this time"
+    />
+  );
+}
+
+function Example() {
+  return (
+    <AppProvider i18n={translations}>
+      <ChoiceListWithErrorExample />
+    </AppProvider>
+  );
+}
+
+export default Example;
+    
