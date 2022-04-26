@@ -5,7 +5,6 @@ import React, {
   FocusEventHandler,
 } from 'react';
 import isEqual from 'react-fast-compare';
-import {Sticky} from '@shopify/polaris';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -541,10 +540,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       this.scrollContainer.current.scrollLeft =
         columnLeftEdge - firstColumnWidth;
     }
-  };
-
-  private handleHover = (row?: number) => () => {
-    this.setState({rowHovered: row});
   };
 
   private navigateTable = (direction: string) => {
