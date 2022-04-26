@@ -85,11 +85,9 @@ export const colors = {
   },
   'shadow-color-picker': {
     value: 'rgba(0, 0, 0, 0.5)',
-    description: '',
   },
   'shadow-color-picker-dragger': {
     value: 'rgba(33, 43, 54, 0.32)',
-    description: '',
   },
   'hint-from-direct-light': {
     value: 'rgba(0, 0, 0, 0.15)',
@@ -511,11 +509,9 @@ export const colors = {
   },
   'icon-attention': {
     value: 'rgba(138, 97, 22)',
-    description: '',
   },
   'surface-attention': {
     value: 'rgba(255, 234, 138)',
-    description: '',
   },
   'decorative-one-icon': {
     value: 'rgba(126, 87, 0, 1)',

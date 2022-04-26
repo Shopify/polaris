@@ -1,3 +1,4 @@
+import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
 import {colors as darkColorScheme} from './token-groups/color.dark';
@@ -14,7 +15,7 @@ import {tokensToRems} from './utilities';
  * @example {background: '#000'} // --p-background: #000;
  */
 export interface TokenProperties {
-  description: string;
+  description?: string;
   value: string;
 }
 
@@ -52,6 +53,7 @@ const colorSchemes: ColorSchemes = {
 };
 
 export interface Tokens {
+  breakpoints: TokenGroup;
   colorSchemes: ColorSchemes;
   depth: TokenGroup;
   legacyTokens: TokenGroup;
@@ -63,6 +65,7 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
+  breakpoints: tokensToRems(breakpoints),
   colorSchemes,
   depth,
   legacyTokens: tokensToRems(legacyTokens),
