@@ -32,6 +32,9 @@ export const motion = {
   'duration-500': {
     value: '500ms',
   },
+  'duration-5000': {
+    value: '5000ms',
+  },
   ease: {
     value: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
   },
@@ -46,5 +49,19 @@ export const motion = {
   },
   linear: {
     value: 'cubic-bezier(0, 0, 1, 1)',
+  },
+  'keyframes-bounce': {
+    value:
+      '{ from, 65%, 85% { transform: scale(1) } 75% { transform: scale(0.85) } 82.5% { transform: scale(1.05) } }',
+  },
+  'keyframes-fade-in': {
+    value: '{ to { opacity: 1 } }',
+  },
+  'keyframes-pulse': {
+    value:
+      '{ from, 75% { transform: scale(0.85); opacity: 1; } to { transform: scale(2.5); opacity: 0; } }',
+  },
+  'keyframes-spin': {
+    value: '{ to { transform: rotate(1turn) } }',
   },
 };
