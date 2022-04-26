@@ -15,7 +15,7 @@ import {tokensToRems} from './utilities';
  * @example {background: '#000'} // --p-background: #000;
  */
 export interface TokenProperties {
-  description: string;
+  description?: string;
   value: string;
 }
 
