@@ -1,4 +1,9 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {
+  PureComponent,
+  createRef,
+  ReactNode,
+  FocusEventHandler,
+} from 'react';
 import isEqual from 'react-fast-compare';
 
 import {debounce} from '../../utilities/debounce';
@@ -210,7 +215,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       >
         <thead>
           <tr>
-            {/* {console.log(firstHeading)} */}
             {firstHeading.map((heading, index) =>
               this.renderHeadings(heading, index, true),
             )}
@@ -509,7 +513,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       this.setState((prevState) => ({
         ...this.calculateColumnVisibilityData(prevState.condensed),
       }));
-    }, 500);
+    }, 100)();
 
     if (this.props.stickyHeader && this.stickyHeaderActive) {
       this.stickyHeaderScrolling();
@@ -520,7 +524,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     this.setState({rowHovered: row});
   };
 
-  private handleFocus = (event: Event) => {
+  private handleFocus: FocusEventHandler = (event) => {
     if (this.scrollContainer.current == null || event.target == null) {
       return;
     }
@@ -566,7 +570,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderHeadings = (
-    heading: string,
+    heading: string | ReactNode,
     headingIndex: number,
     insideFixedFirstColumn: boolean,
   ) => {
@@ -598,12 +602,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortable: isSortable,
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
+        hasFixedFirstColumn: this.props.hasFixedFirstColumn,
         isFixedFirstColumn:
           this.props.hasFixedFirstColumn && insideFixedFirstColumn,
       };
     }
-
-    console.log({insideFixedFirstColumn});
 
     return (
       <Cell
@@ -618,8 +621,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         truncate={truncate}
         {...sortableHeadingProps}
         verticalAlign={verticalAlign}
-        scrollContainer={this.scrollContainer}
-        colLeftEdge={this.state.columnVisibilityData[headingIndex]?.leftEdge}
         handleFocus={this.handleFocus}
       />
     );
