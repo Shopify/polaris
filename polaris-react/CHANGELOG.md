@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.5.1 - 2022-04-26
+
+### Bug fixes
+
+- Fixed default `Pip` color in `Badge` ([#5616](https://github.com/Shopify/polaris/pull/5616))
+
 ## 9.5.0 - 2022-04-22
 
 ### Enhancements
