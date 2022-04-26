@@ -1,0 +1,34 @@
+import { AppProvider, TextField } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import '@shopify/polaris/build/esm/styles.css';
+import translations from '@shopify/polaris/locales/en.json';
+
+function ValidationErrorExample() {
+  const [textFieldValue, setTextFieldValue] = useState('');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      error="Store name is required"
+      autoComplete="off"
+    />
+  );
+}
+
+function Example() {
+  return (
+    <AppProvider i18n={translations}>
+      <ValidationErrorExample />
+    </AppProvider>
+  );
+}
+
+export default Example;
+    

@@ -1,0 +1,35 @@
+import { AppProvider, Banner } from "@shopify/polaris";
+import { useEffect, useRef } from "react";
+import '@shopify/polaris/build/esm/styles.css';
+import translations from '@shopify/polaris/locales/en.json';
+
+function BannerWithFocusExample() {
+  const banner = useRef();
+
+  useEffect(() => banner.current.focus(), []);
+
+  return (
+    <Banner
+      title="High risk of fraud detected"
+      onDismiss={() => {}}
+      status="critical"
+      ref={banner}
+    >
+      <p>
+        Before fulfilling this order or capturing payment, please review the
+        fraud analysis and determine if this order is fraudulent
+      </p>
+    </Banner>
+  );
+}
+
+function Example() {
+  return (
+    <AppProvider i18n={translations}>
+      <BannerWithFocusExample />
+    </AppProvider>
+  );
+}
+
+export default Example;
+    

@@ -1,0 +1,22 @@
+[
+  {
+    "fileName": "single-select-autocomplete.tsx",
+    "title": "Single select autocomplete",
+    "description": "Allows merchants to select from a predefined list of options. It’s typically used when there are a large number of options to choose from."
+  },
+  {
+    "fileName": "multi-select-autocomplete.tsx",
+    "title": "Multi-select autocomplete",
+    "description": "Allows the merchant to select multiple options from a pre-defined list of options."
+  },
+  {
+    "fileName": "multi-select-autocomplete-with-vertical-content.tsx",
+    "title": "Multi-select autocomplete with vertical content",
+    "description": "Allows the merchant to select multiple options from a pre-defined list of options. Selected options are displayed as inline vertical content in the TextField."
+  },
+  {
+    "fileName": "autocomplete-with-loading.tsx",
+    "title": "Autocomplete with loading",
+    "description": "Use to indicate loading state to merchants while option data is processing."
+  }
+]

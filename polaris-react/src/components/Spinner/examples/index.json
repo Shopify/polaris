@@ -1,0 +1,17 @@
+[
+  {
+    "fileName": "default-spinner.tsx",
+    "title": "Default spinner",
+    "description": "Use to notify merchants that their requested action is being processed.undefinedundefined"
+  },
+  {
+    "fileName": "small-spinner.tsx",
+    "title": "Small spinner",
+    "description": "Smaller than the default spinner."
+  },
+  {
+    "fileName": "spinner-with-focus-management.tsx",
+    "title": "Spinner with focus management",
+    "description": "Use to direct the focus state from the control to the spinner, to the content."
+  }
+]
