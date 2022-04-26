@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
-import motion from "../../../../polaris-react/src/tokens/token-groups/motion.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
@@ -11,6 +11,8 @@ import Button from "../../components/Button";
 import { useEffect } from "react";
 import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
+
+const { motion } = tokens;
 
 const Components: NextPage = () => {
   const [easeExamplesAreResetting, setEaseExamplesAreResetting] =
@@ -54,7 +56,7 @@ const Components: NextPage = () => {
         <div style={{ marginTop: 20 }}>
           {Object.entries(motion)
             .filter(([name]) => name.includes("ease"))
-            .map(([name, value]) => {
+            .map(([name, {value}]) => {
               return (
                 <Token
                   key={value}
@@ -93,7 +95,7 @@ const Components: NextPage = () => {
         <div style={{ marginTop: 20 }}>
           {Object.entries(motion)
             .filter(([name]) => name.includes("duration"))
-            .map(([name, value]) => {
+            .map(([name, {value}]) => {
               return (
                 <Token
                   key={value}

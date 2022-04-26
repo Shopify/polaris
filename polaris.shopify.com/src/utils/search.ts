@@ -1,16 +1,20 @@
 import { SearchResult } from "../types";
-import colorLight from "../../../polaris-react/src/tokens/token-groups/color.light.json";
-import depth from "../../../polaris-react/src/tokens/token-groups/depth.json";
-import motion from "../../../polaris-react/src/tokens/token-groups/motion.json";
-import shape from "../../../polaris-react/src/tokens/token-groups/shape.json";
-import spacing from "../../../polaris-react/src/tokens/token-groups/spacing.json";
-import typography from "../../../polaris-react/src/tokens/token-groups/typography.json";
-import zIndex from "../../../polaris-react/src/tokens/token-groups/z-index.json";
+import { createVar, tokens } from "@shopify/polaris-tokens";
 import components from "../data/components.json";
 import icons from "../data/icons.json";
 import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
+
+const {
+  colorSchemes: { light: colorLight },
+  depth,
+  motion,
+  shape,
+  spacing,
+  typography,
+  zIndex
+} = tokens;
 
 let results: SearchResult = [];
 
@@ -46,7 +50,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
     results.push({
       category: "Tokens",
-      title: `--p-${tokenName}`,
+      title: createVar(tokenName),
       excerpt: "",
       url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
       keywords: [],

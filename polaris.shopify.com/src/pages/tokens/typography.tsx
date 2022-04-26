@@ -1,13 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
-import typography from "../../../../polaris-react/src/tokens/token-groups/typography.json";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
 import { navItems } from "../../data/tokensNav";
 import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
+
+const { typography } = tokens;
 
 const Components: NextPage = () => {
   return (
@@ -69,7 +71,7 @@ function TypePreview({
   name: keyof typeof typography;
   type: "family" | "size" | "line" | "weight";
 }) {
-  const value = typography[name];
+  const { value } = typography[name];
 
   switch (type) {
     case "family":

@@ -1,3 +1,4 @@
+import { createVar } from "@shopify/polaris-tokens";
 import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./Token.module.scss";
 
@@ -10,7 +11,8 @@ interface Props {
 }
 
 function Token({ name, description, value, bigGap, renderPreview }: Props) {
-  const [copy, didJustCopy] = useCopyToClipboard(`var(--p-${name})`);
+  const variableName = createVar(name);
+  const [copy, didJustCopy] = useCopyToClipboard(`var(${variableName})`);
 
   return (
     <div
