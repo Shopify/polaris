@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { Tokens, tokens } from "@shopify/polaris-tokens";
+import { tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
