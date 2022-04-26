@@ -28,6 +28,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Removed usage of deprecated and removed in v18 React types ([#5704](https://github.com/Shopify/polaris/pull/5704))
 - Fixed `plain-button-backdrop` background color on colored backgrounds ([#5687](https://github.com/Shopify/polaris/pull/5687))
 - Fixed scrolling bug in DataTable sticky header ([#5700](https://github.com/Shopify/polaris/pull/5700))
+- Updated border radius on `IndexTable` scroll container ([#5242](https://github.com/Shopify/polaris/pull/5242))
 
 ### Documentation
 
