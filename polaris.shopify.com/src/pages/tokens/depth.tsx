@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { tokens } from "@shopify/polaris-tokens";
+import { Tokens, tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
@@ -29,15 +29,14 @@ const Components: NextPage = () => {
         </p>
 
         {Object.entries(depth).map(([name]) => {
-          const typedName = name as keyof typeof depth;
-          return <DepthPreview key={name} name={typedName} />;
+          return <DepthPreview key={name} name={name} />;
         })}
       </Longform>
     </Page>
   );
 };
 
-function DepthPreview({ name }: { name: keyof typeof depth }) {
+function DepthPreview({ name }: { name: string }) {
   const { value } = depth[name];
 
   return (

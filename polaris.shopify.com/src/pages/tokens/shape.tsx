@@ -10,9 +10,7 @@ import { CSSProperties } from "react";
 import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
 
-const { colorSchemes: { light: color }, shape } = tokens;
-const untypedShape = shape as { [key: string]: string };
-const untypedColor = color as { [key: string]: string };
+const { shape } = tokens;
 
 const Components: NextPage = () => {
   return (
@@ -34,7 +32,7 @@ const Components: NextPage = () => {
         <h2>Border radius</h2>
         {Object.entries(shape)
           .filter(([name]) => name.includes("radius"))
-          .map(([name, {value}]) => {
+          .map(([name, { value }]) => {
             return (
               <Token
                 key={name}
@@ -59,7 +57,7 @@ const Components: NextPage = () => {
         <h2>Border types</h2>
         {Object.entries(shape)
           .filter(([name]) => !name.includes("radius"))
-          .map(([name, {value}]) => {
+          .map(([name, { value }]) => {
             let styles: CSSProperties = {};
 
             if (name.includes("width")) {

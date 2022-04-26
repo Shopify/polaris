@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { tokens } from "@shopify/polaris-tokens";
+import { Tokens, tokens } from "@shopify/polaris-tokens";
 import Page from "../../components/Page";
 import Longform from "../../components/Longform";
 import { navItems } from "../../data/tokensNav";
@@ -10,10 +10,13 @@ import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
 import Link from "next/link";
 
-const { colorSchemes: { light: colors } } = tokens;
+const {
+  colorSchemes: { light: colors },
+} = tokens;
 
+const foo = " ";
 const Components: NextPage = () => {
-  const colorNames = Object.keys(colors) as (keyof typeof colors)[];
+  const colorNames = Object.keys(colors);
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
@@ -35,7 +38,7 @@ const Components: NextPage = () => {
   );
 };
 
-function ColorPreview({ name }: { name: keyof typeof colors }) {
+function ColorPreview({ name }: { name: string }) {
   const isStateful =
     name.includes("hovered") ||
     name.includes("pressed") ||
