@@ -29,15 +29,14 @@ const Components: NextPage = () => {
         </p>
 
         {Object.entries(spacing).map(([name]) => {
-          const typedName = name as keyof typeof spacing;
-          return <SpacingPreview key={name} name={typedName} />;
+          return <SpacingPreview key={name} name={name} />;
         })}
       </Longform>
     </Page>
   );
 };
 
-function SpacingPreview({ name }: { name: keyof typeof spacing }) {
+function SpacingPreview({ name }: { name: string }) {
   const { value } = spacing[name];
 
   return (

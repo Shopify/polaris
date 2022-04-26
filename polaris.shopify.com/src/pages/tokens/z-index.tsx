@@ -29,15 +29,14 @@ const Components: NextPage = () => {
         </p>
 
         {Object.entries(zIndex).map(([name]) => {
-          const typedName = name as keyof typeof zIndex;
-          return <ZIndexPreview key={name} name={typedName} />;
+          return <ZIndexPreview key={name} name={name} />;
         })}
       </Longform>
     </Page>
   );
 };
 
-function ZIndexPreview({ name }: { name: keyof typeof zIndex }) {
+function ZIndexPreview({ name }: { name: string }) {
   const { value } = zIndex[name];
   const size = 50;
 
