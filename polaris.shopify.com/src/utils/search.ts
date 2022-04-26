@@ -31,7 +31,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
 });
 
 // Add color tokens
-Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
+Object.entries(colorLight).forEach(([tokenName, {value}]) => {
   results.push({
     category: "Tokens",
     title: `--p-${tokenName}`,
@@ -39,7 +39,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
     url: `/tokens/colors#${tokenName}`,
     keywords: [],
     meta: {
-      colorToken: { value: tokenValue },
+      colorToken: { value },
     },
   });
 });

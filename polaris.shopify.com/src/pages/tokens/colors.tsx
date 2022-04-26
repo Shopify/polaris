@@ -13,7 +13,7 @@ import Link from "next/link";
 const { colorSchemes: { light: colors } } = tokens;
 
 const Components: NextPage = () => {
-  const colorNames = Object.keys(colors) as (keyof typeof colors)[];
+  const colorNames = Object.keys(colors);
   return (
     <Page renderNav={() => <Nav navItems={navItems} />}>
       <Head>
@@ -35,7 +35,7 @@ const Components: NextPage = () => {
   );
 };
 
-function ColorPreview({ name }: { name: keyof typeof colors }) {
+function ColorPreview({ name }: { name: string }) {
   const isStateful =
     name.includes("hovered") ||
     name.includes("pressed") ||

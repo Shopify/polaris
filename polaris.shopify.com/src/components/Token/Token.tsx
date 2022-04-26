@@ -4,7 +4,7 @@ import styles from "./Token.module.scss";
 
 interface Props {
   name: string;
-  description: string;
+  description?: string;
   value: string;
   bigGap?: boolean;
   renderPreview: () => React.ReactNode;

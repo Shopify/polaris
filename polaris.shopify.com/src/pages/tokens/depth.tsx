@@ -29,15 +29,14 @@ const Components: NextPage = () => {
         </p>
 
         {Object.entries(depth).map(([name]) => {
-          const typedName = name as keyof typeof depth;
-          return <DepthPreview key={name} name={typedName} />;
+          return <DepthPreview key={name} name={name} />;
         })}
       </Longform>
     </Page>
   );
 };
 
-function DepthPreview({ name }: { name: keyof typeof depth }) {
+function DepthPreview({ name }: { name: string }) {
   const { value } = depth[name];
 
   return (

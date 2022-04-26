@@ -10,9 +10,7 @@ import { CSSProperties } from "react";
 import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
 
-const { colorSchemes: { light: color }, shape } = tokens;
-const untypedShape = shape as { [key: string]: string };
-const untypedColor = color as { [key: string]: string };
+const { shape } = tokens;
 
 const Components: NextPage = () => {
   return (

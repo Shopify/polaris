@@ -32,32 +32,28 @@ const Components: NextPage = () => {
         {Object.entries(typography)
           .filter(([name]) => name.includes("family"))
           .map(([name]) => {
-            const typedName = name as keyof typeof typography;
-            return <TypePreview key={name} type="family" name={typedName} />;
+            return <TypePreview key={name} type="family" name={name} />;
           })}
 
         <h2>Font sizes</h2>
         {Object.entries(typography)
           .filter(([name]) => name.includes("size"))
           .map(([name]) => {
-            const typedName = name as keyof typeof typography;
-            return <TypePreview key={name} type="size" name={typedName} />;
+            return <TypePreview key={name} type="size" name={name} />;
           })}
 
         <h2>Line heights</h2>
         {Object.entries(typography)
           .filter(([name]) => name.includes("line"))
           .map(([name]) => {
-            const typedName = name as keyof typeof typography;
-            return <TypePreview key={name} type="line" name={typedName} />;
+            return <TypePreview key={name} type="line" name={name} />;
           })}
 
         <h2>Font weights</h2>
         {Object.entries(typography)
           .filter(([name]) => name.includes("weight"))
           .map(([name]) => {
-            const typedName = name as keyof typeof typography;
-            return <TypePreview key={name} type="weight" name={typedName} />;
+            return <TypePreview key={name} type="weight" name={name} />;
           })}
       </Longform>
     </Page>
@@ -68,7 +64,7 @@ function TypePreview({
   name,
   type,
 }: {
-  name: keyof typeof typography;
+  name: string;
   type: "family" | "size" | "line" | "weight";
 }) {
   const { value } = typography[name];
