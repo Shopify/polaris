@@ -671,7 +671,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
@@ -764,7 +764,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
@@ -859,7 +859,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
