@@ -35,6 +35,6 @@
   },
   "peerDependencies": {
     "stylelint": "^14.1.0",
-    "@shopify/polaris-tokens": "^5.0.0-rc.5"
+    "@shopify/polaris-tokens": "^5.0.0-rc.6"
   }
 }
