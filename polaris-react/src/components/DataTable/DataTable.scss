@@ -1,6 +1,5 @@
 @import '../../styles/common';
-
-$breakpoint: 768px;
+@import '../../styles/media-queries';
 
 .DataTable {
   --pc-data-table-first-column-width: 145px;
@@ -16,7 +15,7 @@ $breakpoint: 768px;
     width: 100%;
     padding: var(--p-space-4) var(--p-space-2);
 
-    @include breakpoint-after($breakpoint, inclusive) {
+    @media #{$p-breakpoints-md-up} {
       justify-content: flex-end;
     }
   }
@@ -58,7 +57,7 @@ $breakpoint: 768px;
 
 .hoverable {
   &:hover .Cell {
-    @include breakpoint-after($breakpoint) {
+    @media #{$p-breakpoints-md-up} {
       background: var(--p-surface-hovered);
     }
   }
