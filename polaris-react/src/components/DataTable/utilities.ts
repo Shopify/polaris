@@ -20,7 +20,7 @@ export function measureColumn(tableData: TableMeasurements) {
     const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
     const isVisible = isVisibleLeft || isVisibleRight;
 
-    if (index !== 0 && isVisible) {
+    if (isVisible) {
       tableData.firstVisibleColumnIndex = Math.min(
         firstVisibleColumnIndex,
         index,

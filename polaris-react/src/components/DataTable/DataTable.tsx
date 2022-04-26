@@ -528,17 +528,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     if (this.scrollContainer.current == null || event.target == null) {
       return;
     }
-    const button = event.target as HTMLButtonElement;
-    const cell = button.parentNode as HTMLTableCellElement;
+    const currentCell = event.target.parentNode as HTMLTableCellElement;
     const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
-    const columnLeftEdge = cell.offsetLeft;
-    const isHiddenByFixedFirstColumn =
-      this.scrollContainer.current.scrollLeft >
-      columnLeftEdge - firstColumnWidth;
+    const currentColumnLeftEdge = currentCell.offsetLeft;
+    const desiredScrollLeft = currentColumnLeftEdge - firstColumnWidth;
 
-    if (isHiddenByFixedFirstColumn) {
-      this.scrollContainer.current.scrollLeft =
-        columnLeftEdge - firstColumnWidth;
+    if (this.scrollContainer.current.scrollLeft > desiredScrollLeft) {
+      this.scrollContainer.current.scrollLeft = desiredScrollLeft;
     }
   };
 
@@ -572,7 +568,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private renderHeadings = (
     heading: string | ReactNode,
     headingIndex: number,
-    insideFixedFirstColumn: boolean,
+    renderingFixedFirstColumn: boolean,
   ) => {
     const {
       sortable,
@@ -604,7 +600,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         onSort: this.defaultOnSort(headingIndex),
         hasFixedFirstColumn: this.props.hasFixedFirstColumn,
         isFixedFirstColumn:
-          this.props.hasFixedFirstColumn && insideFixedFirstColumn,
+          this.props.hasFixedFirstColumn && renderingFixedFirstColumn,
       };
     }
 
