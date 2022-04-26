@@ -1,14 +1,16 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {EventListener} from '../../src';
+import {tokens} from '../../src/tokens';
 import {classNames} from '../../src/utilities/css';
 
 import styles from './GridOverlay.scss';
 
-const COLUMNS_SMALL = 4;
+const COLUMNS_SMALL = 2;
+const COLUMNS_MEDIUM = 4;
 const COLUMNS_LARGE = 12;
-const BREAKPOINT = 768;
 
 type Layer = 'above' | 'below';
+
 interface Props {
   inFrame?: boolean;
   maxWidth?: string;
@@ -17,20 +19,15 @@ interface Props {
 }
 
 export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
-  const [columns, setColumns] = useState(
-    window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
-  );
-
-  const handleResize = useCallback(() => {
-    setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
-  }, []);
+  const [columns, setColumns] = useState(getColumns());
+  const handleResize = () => setColumns(getColumns());
 
   const className = classNames(styles.GridOverlay, inFrame && styles.inFrame);
 
   const style = {
     maxWidth,
     zIndex: layer === 'above' || inFrame ? 1 : -1,
-  } as unknown as React.CSSProperties;
+  } as React.CSSProperties;
 
   return (
     <div className={className} style={style}>
@@ -41,4 +38,24 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
       <EventListener event="resize" handler={handleResize} />
     </div>
   );
+}
+
+function getColumns() {
+  const medium = window.matchMedia(
+    `(min-width: ${tokens.breakpoints['breakpoints-md']})`,
+  ).matches;
+  const small = window.matchMedia(
+    `(min-width: ${tokens.breakpoints['breakpoints-sm']})`,
+  ).matches;
+
+  switch (true) {
+    case medium:
+      return COLUMNS_LARGE;
+
+    case small:
+      return COLUMNS_MEDIUM;
+
+    default:
+      return COLUMNS_SMALL;
+  }
 }

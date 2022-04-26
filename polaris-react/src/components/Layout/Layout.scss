@@ -1,12 +1,12 @@
 @import '../../styles/common';
+@import '../../styles/media-queries';
 
 .Layout {
   display: grid;
   gap: var(--p-space-4);
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-flow: row;
 
-  @include breakpoint-after(768px) {
+  @media #{$p-breakpoints-md-up} {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
@@ -14,7 +14,7 @@
 .Section {
   grid-column-end: span 4;
 
-  @include breakpoint-after(768px) {
+  @media #{$p-breakpoints-md-up} {
     grid-column-end: span 8;
   }
 }
@@ -26,7 +26,7 @@
 }
 
 @for $i from 1 through 12 {
-  @include breakpoint-after(768px) {
+  @media #{$p-breakpoints-md-up} {
     .grid-#{$i}-large-column {
       grid-column-end: span #{$i};
     }
@@ -41,7 +41,7 @@
 .oneHalf {
   grid-column-end: span 4;
 
-  @include breakpoint-after(768px) {
+  @media #{$p-breakpoints-md-up} {
     grid-column-end: span 6;
   }
 }
@@ -49,7 +49,7 @@
 .fullWidth {
   grid-column-end: span 4;
 
-  @include breakpoint-after(768px) {
+  @media #{$p-breakpoints-md-up} {
     grid-column-end: span 12;
   }
 }
