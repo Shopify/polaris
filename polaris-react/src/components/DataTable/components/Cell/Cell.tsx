@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -28,6 +28,8 @@ export interface CellProps {
   stickyCellWidth?: number;
   key?: string;
   hovered?: boolean;
+  firstColWidth?: number;
+  visibility?: boolean;
 }
 
 export function Cell({
@@ -41,6 +43,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
+  isFixedFirstColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -50,9 +53,22 @@ export function Cell({
   stickyCellWidth,
   key,
   hovered = false,
+  firstColWidth,
+  visibility,
+  scrollContainer,
+  colLeftEdge,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
+  const cellRef = useRef(null);
+  const handleFocus = () => {
+    if (!visibility) {
+      // scrollContainer.current.scrollLeft = colLeftEdge - firstColWidth;
+      scrollContainer.current.clientWidth < colLeftEdge
+        ? colLeftEdge - firstColWidth
+        : (scrollContainer.current.scrollLeft = 0);
+    }
+  };
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
@@ -92,7 +108,13 @@ export function Cell({
   );
 
   const sortableHeadingContent = (
-    <button className={headerClassName} onClick={onSort}>
+    <button
+      className={headerClassName}
+      onClick={onSort}
+      onFocus={handleFocus}
+      ref={cellRef}
+      tabIndex={isFixedFirstColumn ? -1 : 0}
+    >
       {iconMarkup}
       {content}
     </button>

@@ -566,9 +566,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortable: isSortable,
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
+        isFixedFirstColumn:
+          this.props.hasFixedFirstColumn && headingIndex === 0,
       };
     }
 
+    const scrollPosition =
+      this.state.columnVisibilityData[headingIndex]?.leftEdge -
+      this.state.columnVisibilityData[0]?.rightEdge;
+
+    const visibility =
+      this.scrollContainer.current?.scrollLeft < scrollPosition;
     return (
       <Cell
         setRef={(ref) =>
@@ -582,6 +590,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         truncate={truncate}
         {...sortableHeadingProps}
         verticalAlign={verticalAlign}
+        firstColWidth={this.state.columnVisibilityData[0]?.rightEdge}
+        visibility={visibility}
+        scrollContainer={this.scrollContainer}
+        colLeftEdge={this.state.columnVisibilityData[headingIndex]?.leftEdge}
       />
     );
   };
