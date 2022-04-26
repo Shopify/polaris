@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.0.0-rc.3",
+  "version": "5.0.0-rc.4",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
