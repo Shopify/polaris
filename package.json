@@ -13,7 +13,6 @@
   ],
   "scripts": {
     "build": "yarn workspaces run build",
-    "dev:react": "yarn workspace @shopify/polaris dev",
     "format": "prettier . --write",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --cache",
