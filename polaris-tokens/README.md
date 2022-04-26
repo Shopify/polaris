@@ -31,7 +31,7 @@ console.log(tokens.motion);
 Importing all of the css variables. CSS variables are prefixed with `--p` to signal that these variables
 
 ```js
-import '@shopify/polaris-tokens/dist/css/styles.css';
+import '@shopify/polaris-tokens/css/styles.css';
 
 div {
   background: var(--p-background);
@@ -43,7 +43,7 @@ div {
 Accessing a specific token group file via the dist folder
 
 ```js
-const spacing = require('@shopify/polaris-tokens/dist/json/spacing.json');
+const spacing = require('@shopify/polaris-tokens/json/spacing.json');
 ```
 
 ## Contributing
