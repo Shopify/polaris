@@ -26,13 +26,13 @@ export function Pip({
     progress && styles[variationName('progress', progress)],
   );
 
+  const accessibilityLabel = accessibilityLabelOverride
+    ? accessibilityLabelOverride
+    : getDefaultAccessibilityLabel(i18n, progress, status);
+
   return (
     <span className={className}>
-      <VisuallyHidden>
-        {accessibilityLabelOverride
-          ? accessibilityLabelOverride
-          : getDefaultAccessibilityLabel(i18n, progress, status)}
-      </VisuallyHidden>
+      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
     </span>
   );
 }
