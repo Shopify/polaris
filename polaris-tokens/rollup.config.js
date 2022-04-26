@@ -34,7 +34,7 @@ const rollupOptions = {
     babel({
       extensions,
       include: ['src/**/*'],
-      babelHelpers: 'bundled'
+      babelHelpers: 'bundled',
     }),
   ],
   external: [
