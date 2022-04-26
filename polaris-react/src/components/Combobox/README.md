@@ -122,7 +122,7 @@ function ComboboxExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue(matchedOption?.label || '');
+      setInputValue((matchedOption && matchedOption.label) || '');
     },
     [options],
   );
@@ -455,7 +455,7 @@ function LoadingAutocompleteExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue(matchedOption?.label || '');
+      setInputValue((matchedOption && matchedOption.label) || '');
     },
     [options],
   );
