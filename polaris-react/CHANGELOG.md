@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.5.2 - 2022-04-26
+
+### Bug fixes
+
+- Fixed documentation example for `ComboBox` ([#5622](https://github.com/Shopify/polaris/pull/5622))
+
 ## 9.5.1 - 2022-04-26
 
 ### Bug fixes
