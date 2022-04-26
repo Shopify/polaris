@@ -1,0 +1,24 @@
+name: Check for non committable changes
+
+on:
+  pull_request:
+    paths:
+      - 'polaris-react/**'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            playground:
+              - 'polaris-react/playground/Playground.tsx'
+
+      - name: Check for changes to Playground.tsx
+        if: steps.filter.outputs.playground == 'true'
+        run: |
+          echo "Please remove changes from Playground.tsx before committing"
+          exit 1
