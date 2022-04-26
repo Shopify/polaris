@@ -101,48 +101,6 @@ Terms descriptions should be:
 
 ---
 
-## Examples
-
-### Default description list
-
-Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
-
-```jsx
-<DescriptionList
-  items={[
-    {
-      term: 'Logistics',
-      description:
-        'The management of products or other resources as they travel between a point of origin and a destination.',
-    },
-    {
-      term: 'Sole proprietorship',
-      description:
-        'A business structure where a single individual both owns and runs the company.',
-    },
-    {
-      term: 'Discount code',
-      description:
-        'A series of numbers and/or letters that an online shopper may enter at checkout to get a discount or special offer.',
-    },
-  ]}
-/>
-```
-
-<!-- content-for: android -->
-
-![Description list for Android](/public_images/components/DescriptionList/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Description list for iOS](/public_images/components/DescriptionList/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To create a list of actions or navigation, [use the action list component](https://polaris.shopify.com/components/actions/action-list).

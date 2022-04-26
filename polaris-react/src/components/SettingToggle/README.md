@@ -74,37 +74,6 @@ say “Activate” to allow merchants to turn it on.
 
 ---
 
-## Examples
-
-### Default setting toggle
-
-Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
-
-```jsx
-function SettingToggleExample() {
-  const [active, setActive] = useState(false);
-
-  const handleToggle = useCallback(() => setActive((active) => !active), []);
-
-  const contentStatus = active ? 'Deactivate' : 'Activate';
-  const textStatus = active ? 'activated' : 'deactivated';
-
-  return (
-    <SettingToggle
-      action={{
-        content: contentStatus,
-        onAction: handleToggle,
-      }}
-      enabled={active}
-    >
-      This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
-    </SettingToggle>
-  );
-}
-```
-
----
-
 ## Related components
 
 - To let merchants connect or disconnect third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/actions/account-connection)

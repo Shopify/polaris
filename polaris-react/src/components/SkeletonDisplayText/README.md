@@ -60,34 +60,6 @@ Show skeleton display text for dynamic page titles.
 
 ---
 
-## Examples
-
-### Medium and large display text
-
-Use this component to represent medium and large display text such as large metrics on the reports list page, or for page titles.
-
-```jsx
-<SkeletonDisplayText size="medium" />
-```
-
-### Extra large display text
-
-Use this component to represent extra large display text.
-
-```jsx
-<SkeletonDisplayText size="extraLarge" />
-```
-
-### Small display text
-
-Use this component to represent small display text such as content headings.
-
-```jsx
-<SkeletonDisplayText size="small" />
-```
-
----
-
 ## Related components
 
 - Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.

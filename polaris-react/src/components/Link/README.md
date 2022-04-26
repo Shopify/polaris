@@ -55,49 +55,6 @@ The link component should follow the content guidelines for [links](https://pola
 
 ---
 
-## Examples
-
-### Default links
-
-Use for text links in larger spans of text.
-
-```jsx
-<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
-```
-
-### Monochrome link
-
-Use for text links that are the same color as the surrounding text.
-
-```jsx
-<Link monochrome url="https://help.shopify.com/manual">
-  fulfilling orders
-</Link>
-```
-
-### Monochrome link in a banner
-
-Monochrome styles will be applied to links rendered within a `Banner`.
-
-```jsx
-<Banner>
-  Learn more about{' '}
-  <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
-</Banner>
-```
-
-### External link
-
-Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
-
-```jsx
-<Link url="https://help.shopify.com/manual" external>
-  Shopify Help Center
-</Link>
-```
-
----
-
 ## Related components
 
 - For actions that don’t appear within or directly following a sentence, use the [button component](https://polaris.shopify.com/components/actions/button)

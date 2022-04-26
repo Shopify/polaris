@@ -41,6 +41,17 @@ for (let i = 0; i < componentDirectories.length; i++) {
       // Parse the file's markdown content
       const readmeFileContent = fs.readFileSync(readmePath, "utf-8");
 
+      const readmeSansExamples = readmeFileContent
+      .split('\n## ')
+      .filter(section => {
+        if (section.startsWith('Examples')) {
+          return false;
+        }
+        return true;
+      }).join('\n## ');
+
+      fs.writeFileSync(readmePath, readmeSansExamples);
+
       let outTree;
 
       function extractExamples() {

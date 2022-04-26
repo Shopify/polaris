@@ -59,46 +59,6 @@ Avoid abbreviating values (10k, 1m), instead, make the text smaller to fit the s
 
 ---
 
-## Examples
-
-### Default stepper
-
-<!-- example-for: android, ios -->
-
-The stepper has two buttons, a minus and a plus button. It’s possible to tap into the text field as well.
-
-<!-- content-for: android -->
-
-![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Disabled stepper
-
-<!-- example-for: android, ios -->
-
-If you reach the bottom or top value, the appropriate button becomes disabled.
-
-<!-- content-for: android -->
-
-![Disabled stepper](/public_images/components/Stepper/android/disabled@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Disabled stepper](/public_images/components/Stepper/ios/disabled@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - If values need to change dramatically, use [text field with number field](https://polaris.shopify.com/components/forms/text-field)

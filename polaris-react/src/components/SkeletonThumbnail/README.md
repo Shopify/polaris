@@ -23,34 +23,6 @@ Skeleton thumbnail component should:
 
 ---
 
-## Examples
-
-### Medium thumbnail
-
-Use this component to represent medium thumbnails.
-
-```jsx
-<SkeletonThumbnail size="medium" />
-```
-
-### Large thumbnail
-
-Use this component to represent large thumbnails.
-
-```jsx
-<SkeletonThumbnail size="large" />
-```
-
-### Small thumbnail
-
-Use this component to represent small thumbnails.
-
-```jsx
-<SkeletonThumbnail size="small" />
-```
-
----
-
 ## Related components
 
 - Use this component with [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) to represent the content of a card while it’s loading.

@@ -61,37 +61,6 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 
 ---
 
-## Examples
-
-### Default caption
-
-Use to provide details in situations where content is compact and space is tight.
-
-```jsx
-<List>
-  <List.Item>
-    Order #1001 <Caption>Received April 21, 2017</Caption>
-  </List.Item>
-  <List.Item>
-    Order #1002 <Caption>Received April 22, 2017</Caption>
-  </List.Item>
-</List>
-```
-
-<!-- content-for: android -->
-
-![Default caption](/public_images/components/Caption/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default caption](/public_images/components/Caption/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Accessibility
 
 <!-- content-for: android -->

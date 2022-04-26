@@ -60,30 +60,6 @@ Inline error messages should:
 
 ---
 
-## Examples
-
-### Basic inline error
-
-Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
-
-```jsx
-<InlineError message="Store name is required" fieldID="myFieldID" />
-```
-
-<!-- content-for: android -->
-
-![Inline error for Android](/public_images/components/InlineError/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Inline error for iOS](/public_images/components/InlineError/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/lists-and-tables/exception-list)

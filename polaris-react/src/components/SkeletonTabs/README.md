@@ -23,24 +23,6 @@ Skeleton tabs component should:
 
 ---
 
-## Examples
-
-### Simple skeleton tabs
-
-```jsx
-<Card>
-  <SkeletonTabs />
-</Card>
-```
-
-### Skeleton tabs with a custom count
-
-```jsx
-<Card>
-  <SkeletonTabs count={4} />
-</Card>
-```
-
 ## Related components
 
 - Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.

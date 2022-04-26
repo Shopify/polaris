@@ -14,22 +14,6 @@ The loading component is used to indicate to merchants that a page is loading or
 
 ---
 
-## Examples
-
-### Default loading
-
-Use to indicate that the page is loading.
-
-```jsx
-<div style={{height: '100px'}}>
-  <Frame>
-    <Loading />
-  </Frame>
-</div>
-```
-
----
-
 ## Required components
 
 The loading component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.

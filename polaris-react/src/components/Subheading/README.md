@@ -39,30 +39,6 @@ Subheadings should follow the content guidelines for [headings and subheadings](
 
 ---
 
-## Examples
-
-### Typographic subheading
-
-Used for the title of any sub-sections in top-level page sections.
-
-```jsx
-<Subheading>Accounts</Subheading>
-```
-
-<!-- content-for: android -->
-
-![typographic subheading](/public_images/components/Subheading/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![typographic subheading](/public_images/components/Subheading/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To break up major sections of a page with a title, [use the heading component](https://polaris.shopify.com/components/titles-and-text/heading)

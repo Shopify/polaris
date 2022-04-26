@@ -47,26 +47,6 @@ Use skeleton body text for static content or use placeholder content for dynamic
 
 ---
 
-## Examples
-
-### Default paragraph
-
-Use this component to represent a block of content being loaded. For example, you could use it to represent an entire product description card on the product page.
-
-```jsx
-<SkeletonBodyText />
-```
-
-### Single line content
-
-Use this component to represent a short, single line of text, like a timestamp.
-
-```jsx
-<SkeletonBodyText lines={1} />
-```
-
----
-
 ## Related components
 
 - Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) to represent the content of a page while it’s loading.

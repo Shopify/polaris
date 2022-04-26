@@ -45,18 +45,6 @@ The shortcut description should describe what action is taken when merchants tap
 
 ---
 
-## Examples
-
-### List of keyboard shortcuts
-
-Use to list a related set of keyboard shortcuts.
-
-```jsx
-<KeyboardKey>Ctrl</KeyboardKey>
-```
-
----
-
 ## Related components
 
 - To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](https://polaris.shopify.com/components/tooltip)

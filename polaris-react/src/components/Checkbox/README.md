@@ -101,41 +101,6 @@ You agree to the Terms of Service
 
 ---
 
-## Examples
-
-### Default checkboxes
-
-Use in forms to toggle the state of something on or off. Default checkboxes can appear in two states: selected and disabled, or unselected.
-
-```jsx
-function CheckboxExample() {
-  const [checked, setChecked] = useState(false);
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
-
-  return (
-    <Checkbox
-      label="Basic checkbox"
-      checked={checked}
-      onChange={handleChange}
-    />
-  );
-}
-```
-
-<!-- content-for: android -->
-
-![Default checkbox on Android](/public_images/components/Checkbox/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default checkbox on iOS](/public_images/components/Checkbox/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To present a list of options where merchants can only make a single choice, [use the radio button component](https://polaris.shopify.com/components/forms/radio-button)

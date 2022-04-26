@@ -70,34 +70,6 @@ Read more about [dates and numbers](https://polaris.shopify.com/content/grammar-
 
 ---
 
-## Examples
-
-### Default
-
-Use to group related content together, for example orders received on the same day.
-
-<!-- content-for: android -->
-
-![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Fixed
-
-<!-- example-for: ios -->
-
-Use if your list section could be longer than the height of the screen. For example you may need fixed section headers for a list of orders, because merchants may receive many orders in one day.
-
-![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/ios/fixed@2x.png)
-
----
-
 ## Related components
 
 - Use section headers if you want to organize [resource list items](https://polaris.shopify.com/components/lists-and-tables/resource-list) into groups.

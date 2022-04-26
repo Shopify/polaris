@@ -31,46 +31,6 @@ Keyboard accessories should:
 
 ---
 
-## Examples
-
-### Keyboard accessories with actions
-
-<!-- example-for: ios, android -->
-
-Use the action accessories to add actions that are relevant to what merchants are entering on the screen.
-
-<!-- content-for: android -->
-
-![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/android/toolbar@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/ios/toolbar@2x.png)
-
-<!-- /content-for -->
-
-### Keyboard accessories with text field
-
-<!-- example-for: ios, android -->
-
-Use to make message entry easier in messaging and chat-based products.
-
-<!-- content-for: android -->
-
-![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/android/text-field@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/ios/text-field@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To make more actions visible in keyboard accessories, use [the icon component](https://polaris.shopify.com/components/images-and-icons/icon) for action labels

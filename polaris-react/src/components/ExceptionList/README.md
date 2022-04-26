@@ -65,25 +65,6 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 ---
 
-## Examples
-
-### Exception list with icon
-
-Use icons to add clarity or assist in visualizing the meaning
-
-```jsx
-<ExceptionList
-  items={[
-    {
-      icon: NoteMinor,
-      description: 'This customer is awesome. Make sure to treat them right!',
-    },
-  ]}
-/>
-```
-
----
-
 ## Related components
 
 <!-- remove comment and adjust link when component is built -->

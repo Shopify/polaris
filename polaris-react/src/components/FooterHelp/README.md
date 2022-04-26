@@ -72,23 +72,6 @@ For Shopify app developers linking to contact information, footer help should fo
 
 ---
 
-## Examples
-
-### Footer help box
-
-Use to direct merchants to more information related to the product or feature they’re working on.
-
-```jsx
-<FooterHelp>
-  Learn more about{' '}
-  <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
-    fulfilling orders
-  </Link>
-</FooterHelp>
-```
-
----
-
 ## Related components and documentation
 
 - To learn how to embed a link in a piece of text, [use the link component](https://polaris.shopify.com/components/link)

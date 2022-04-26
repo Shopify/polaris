@@ -43,30 +43,6 @@ Headings should follow the content guidelines for [headings and subheadings](htt
 
 ---
 
-## Examples
-
-### Typographic heading
-
-Use for the title of each top-level page section.
-
-```jsx
-<Heading>Online store dashboard</Heading>
-```
-
-<!-- content-for: android -->
-
-![Typographic heading](/public_images/components/Heading/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Typographic heading](/public_images/components/Heading/ios/default@2x.png)
-
-<!-- /content-for -->
-
----
-
 ## Related components
 
 - To break up a section with a heading into sub-sections, [use the subheading component](https://polaris.shopify.com/components/subheading)
