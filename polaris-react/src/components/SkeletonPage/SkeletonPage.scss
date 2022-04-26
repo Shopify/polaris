@@ -55,9 +55,16 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .SkeletonTitle {
-  @include skeleton-content;
+  display: flex;
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-base);
+
   max-width: $skeleton-display-text-max-width;
   height: 28px;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
 }
 
 .PrimaryAction {
