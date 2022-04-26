@@ -164,7 +164,17 @@ describe('<Listbox>', () => {
       });
     });
 
-    it('renders with id', () => {
+    it('renders with passed id', () => {
+      const listbox = mountWithApp(
+        <Listbox customListId="some-custom-id">Child</Listbox>,
+      );
+
+      expect(listbox).toContainReactComponent('ul', {
+        id: 'some-custom-id',
+      });
+    });
+
+    it('renders with fallback id when none is passed', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
       expect(listbox).toContainReactComponent('ul', {
