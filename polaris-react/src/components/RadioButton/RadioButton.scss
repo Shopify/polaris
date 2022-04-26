@@ -2,6 +2,10 @@
 
 .RadioButton {
   position: relative;
+
+  @include when-typography-not-condensed {
+    margin: var(--p-choice-margin);
+  }
 }
 
 .Input {

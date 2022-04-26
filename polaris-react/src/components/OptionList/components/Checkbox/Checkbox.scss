@@ -4,6 +4,8 @@
   position: relative;
   width: 100%;
 
+  margin: var(--p-space-05);
+
   @include when-typography-not-condensed {
     margin: var(--p-choice-margin);
   }

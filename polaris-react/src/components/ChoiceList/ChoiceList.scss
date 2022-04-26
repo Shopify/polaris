@@ -18,6 +18,10 @@
 
 .ChoiceItem {
   padding-bottom: var(--p-space-5);
+
+  @include when-typography-not-condensed {
+    padding-bottom: initial;
+  }
 }
 
 .ChoiceChildren {
@@ -40,4 +44,8 @@
   display: block;
   margin-bottom: var(--p-space-5);
   padding: 0;
+
+  @include when-typography-not-condensed {
+    margin-bottom: var(--p-space-1);
+  }
 }
