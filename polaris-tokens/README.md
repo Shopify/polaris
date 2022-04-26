@@ -43,9 +43,7 @@ div {
 Accessing a specific token group file via the dist folder
 
 ```js
-const spacing = fs.readFile(
-  'node_modules/@shopify/polaris-tokens/dist/json/spacing.json',
-);
+const spacing = require('@shopify/polaris-tokens/dist/json/spacing.json');
 ```
 
 ## Contributing
