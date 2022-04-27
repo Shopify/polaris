@@ -1,6 +1,5 @@
 import { AppProvider, TextField,Select,Button } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ConnectedFieldsExample() {
   const [textFieldValue, setTextFieldValue] = useState('10.6');
@@ -37,6 +36,10 @@ function ConnectedFieldsExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -53,3 +56,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -1,5 +1,4 @@
 import { AppProvider, Page,Card,DataTable } from "@shopify/polaris";
-
 import translations from '@shopify/polaris/locales/en.json';
 function DataTableExample() {
   const rows = [
@@ -43,6 +42,10 @@ function DataTableExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",

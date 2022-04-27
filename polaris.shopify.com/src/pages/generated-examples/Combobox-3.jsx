@@ -1,20 +1,16 @@
 import { AppProvider, Stack,Tag,Listbox,Combobox } from "@shopify/polaris";
-import { useState,useCallback,useMemo } from "react";
-
+import { useState,useCallback } from "react";
 import translations from '@shopify/polaris/locales/en.json';
-function MultiVerticalContentComboboxExample() {
-  const deselectedOptions = useMemo(
-    () => [
-      {value: 'rustic', label: 'Rustic'},
-      {value: 'antique', label: 'Antique'},
-      {value: 'vinyl', label: 'Vinyl'},
-      {value: 'vintage', label: 'Vintage'},
-      {value: 'refurbished', label: 'Refurbished'},
-    ],
-    [],
-  );
+function MultiselectTagComboboxExample() {
+  const deselectedOptions = [
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Vintage',
+    'Refurbished',
+  ];
 
-  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
+  const [selectedOptions, setSelectedOptions] = useState(['Rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -29,7 +25,7 @@ function MultiVerticalContentComboboxExample() {
 
       const filterRegex = new RegExp(value, 'i');
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.match(filterRegex),
       );
       setOptions(resultOptions);
     },
@@ -47,9 +43,10 @@ function MultiVerticalContentComboboxExample() {
       }
 
       const matchedOption = options.find((option) => {
-        return option.value.match(selected);
+        return option === selected;
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -66,32 +63,25 @@ function MultiVerticalContentComboboxExample() {
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
       <Stack spacing="extraTight" alignment="center">
-        {selectedOptions.map((option) => {
-          let tagLabel = '';
-          tagLabel = option.replace('_', ' ');
-          tagLabel = titleCase(tagLabel);
-          return (
-            <Tag key={`option${option}`} onRemove={removeTag(option)}>
-              {tagLabel}
-            </Tag>
-          );
-        })}
+        {selectedOptions.map((option) => (
+          <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+            {option}
+          </Tag>
+        ))}
       </Stack>
     ) : null;
 
   const optionsMarkup =
     options.length > 0
       ? options.map((option) => {
-          const {label, value} = option;
-
           return (
             <Listbox.Option
-              key={`${value}`}
-              value={value}
-              selected={selectedOptions.includes(value)}
-              accessibilityLabel={label}
+              key={option}
+              value={option}
+              selected={selectedOptions.includes(option)}
+              accessibilityLabel={option}
             >
-              {label}
+              {option}
             </Listbox.Option>
           );
         })
@@ -118,19 +108,15 @@ function MultiVerticalContentComboboxExample() {
       </Combobox>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -140,10 +126,11 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <MultiVerticalContentComboboxExample />
+        <MultiselectTagComboboxExample />
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
+    

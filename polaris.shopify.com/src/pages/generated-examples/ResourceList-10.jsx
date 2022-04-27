@@ -1,6 +1,5 @@
 import { AppProvider, TextField,Filters,Button,Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListWithFilteringExample() {
   const [taggedWith, setTaggedWith] = useState('VIP');
@@ -116,6 +115,10 @@ function ResourceListWithFilteringExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -132,3 +135,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -1,5 +1,4 @@
 import { AppProvider, IndexTable,TextStyle,Card } from "@shopify/polaris";
-
 import translations from '@shopify/polaris/locales/en.json';
 function IndexTableWithoutCheckboxesExample() {
   const customers = [
@@ -60,6 +59,10 @@ function IndexTableWithoutCheckboxesExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -76,3 +79,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -77,7 +77,11 @@
     "frontMatter": {
       "name": "Avatar",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "photo",
         "profile",
@@ -104,7 +108,11 @@
     "frontMatter": {
       "name": "Badge",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "pills",
         "status indicators",
@@ -127,7 +135,11 @@
     "frontMatter": {
       "name": "Banner",
       "category": "Feedback indicators",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "inform",
         "update",
@@ -158,7 +170,11 @@
     "frontMatter": {
       "name": "Button",
       "category": "Actions",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "CTA",
         "call to action",
@@ -188,7 +204,11 @@
     "frontMatter": {
       "name": "Button group",
       "category": "Actions",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "ButtonGroup",
         "choices",
@@ -243,7 +263,11 @@
     "frontMatter": {
       "name": "Caption",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "labels",
         "text",
@@ -267,7 +291,11 @@
     "frontMatter": {
       "name": "Card",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "layout",
         "container",
@@ -294,7 +322,11 @@
     "frontMatter": {
       "name": "Checkbox",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "accept",
         "decline",
@@ -315,7 +347,11 @@
     "frontMatter": {
       "name": "Choice list",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "ChoiceList",
         "form",
@@ -340,7 +376,11 @@
     "frontMatter": {
       "name": "Collapsible",
       "category": "Behavior",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "hide",
         "show",
@@ -398,7 +438,7 @@
         "list box"
       ]
     },
-    "intro": "Combobox uses an enhanced text field that allows merchants to filter through a list of options to pick one or more values. The list of options is displayed when a merchant focuses on the field."
+    "intro": "Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values."
   },
   {
     "frontMatter": {
@@ -435,7 +475,13 @@
     "frontMatter": {
       "name": "Data table",
       "category": "Lists and tables",
-      "keywords": ["DataTable", "data", "table", "tabular", "index"]
+      "keywords": [
+        "DataTable",
+        "data",
+        "table",
+        "tabular",
+        "index"
+      ]
     },
     "intro": "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data."
   },
@@ -443,7 +489,11 @@
     "frontMatter": {
       "name": "Date picker",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "DatePicker",
         "month",
@@ -466,7 +516,11 @@
     "frontMatter": {
       "name": "Description list",
       "category": "Lists and tables",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "DescriptionList",
         "glossary",
@@ -487,7 +541,11 @@
     "frontMatter": {
       "name": "Display text",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "DisplayText",
         "announcement text",
@@ -538,7 +596,11 @@
     "frontMatter": {
       "name": "Empty state",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "EmptyState",
         "lander",
@@ -566,7 +628,12 @@
     "frontMatter": {
       "name": "Exception list",
       "category": "Lists and tables",
-      "keywords": ["exception list", "exceptions", "list", "list exceptions"]
+      "keywords": [
+        "exception list",
+        "exceptions",
+        "list",
+        "list exceptions"
+      ]
     },
     "intro": "Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front."
   },
@@ -628,7 +695,11 @@
     "frontMatter": {
       "name": "Form layout",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "FormLayout",
         "Group",
@@ -688,7 +759,11 @@
     "frontMatter": {
       "name": "Heading",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "titles",
         "text",
@@ -764,7 +839,11 @@
     "frontMatter": {
       "name": "Inline error",
       "category": "Forms",
-      "platforms": ["web", "android", "ios"],
+      "platforms": [
+        "web",
+        "android",
+        "ios"
+      ],
       "keywords": [
         "InlineError",
         "error message",
@@ -779,8 +858,17 @@
     "frontMatter": {
       "name": "Keyboard accessories",
       "category": "Forms",
-      "platforms": ["android", "ios"],
-      "keywords": ["keyboard", "soft", "virtual", "ios", "android"]
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "keywords": [
+        "keyboard",
+        "soft",
+        "virtual",
+        "ios",
+        "android"
+      ]
     },
     "intro": "On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when merchants are updating a description and need controls for bolding, italicizing, and underlining."
   },
@@ -852,7 +940,11 @@
     "frontMatter": {
       "name": "List",
       "category": "Lists and tables",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "bulleted lists",
         "numbered lists",
@@ -870,7 +962,12 @@
     "frontMatter": {
       "name": "Listbox",
       "category": "Lists and tables",
-      "keywords": ["list", "listbox", "list box", "interactive list"]
+      "keywords": [
+        "list",
+        "listbox",
+        "list box",
+        "interactive list"
+      ]
     },
     "intro": "A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements."
   },
@@ -878,7 +975,12 @@
     "frontMatter": {
       "name": "Loading",
       "category": "Feedback indicators",
-      "keywords": ["spinner", "loader", "loading", "loading bar"]
+      "keywords": [
+        "spinner",
+        "loader",
+        "loading",
+        "loading bar"
+      ]
     },
     "intro": "The loading component is used to indicate to merchants that a page is loading or an upload is processing."
   },
@@ -904,7 +1006,11 @@
     "frontMatter": {
       "name": "Modal",
       "category": "Overlays",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "modal",
         "src",
@@ -973,7 +1079,11 @@
     "frontMatter": {
       "name": "Page",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "page",
         "breadcrumbs",
@@ -1019,7 +1129,11 @@
     "frontMatter": {
       "name": "Pagination",
       "category": "Navigation",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "lists",
         "detail",
@@ -1047,7 +1161,11 @@
     "frontMatter": {
       "name": "Popover",
       "category": "Overlays",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "interactive",
         "container",
@@ -1090,7 +1208,11 @@
     "frontMatter": {
       "name": "Radio button",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "RadioButton",
         "selection",
@@ -1111,7 +1233,11 @@
     "frontMatter": {
       "name": "Range slider",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "RangeSlider",
         "input",
@@ -1207,7 +1333,10 @@
     "frontMatter": {
       "name": "Section header",
       "category": "Lists and tables",
-      "platforms": ["android", "ios"],
+      "platforms": [
+        "android",
+        "ios"
+      ],
       "keywords": [
         "SectionHeader",
         "section header",
@@ -1227,7 +1356,11 @@
     "frontMatter": {
       "name": "Select",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "on off",
         "switch",
@@ -1277,7 +1410,9 @@
     "frontMatter": {
       "name": "Sheet",
       "category": "Overlays",
-      "platforms": ["web"],
+      "platforms": [
+        "web"
+      ],
       "keywords": [
         "sheet",
         "modal",
@@ -1298,7 +1433,12 @@
       "name": "Skeleton body text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": ["SkeletonBodyText", "skeleton", "loading", "page"]
+      "keywords": [
+        "SkeletonBodyText",
+        "skeleton",
+        "loading",
+        "page"
+      ]
     },
     "intro": "Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1307,7 +1447,12 @@
       "name": "Skeleton display text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": ["SkeletonDisplayText", "skeleton", "loading", "page"]
+      "keywords": [
+        "SkeletonDisplayText",
+        "skeleton",
+        "loading",
+        "page"
+      ]
     },
     "intro": "Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1316,7 +1461,12 @@
       "name": "Skeleton page",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": ["SkeletonPage", "skeleton", "loading", "page"]
+      "keywords": [
+        "SkeletonPage",
+        "skeleton",
+        "loading",
+        "page"
+      ]
     },
     "intro": "Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants."
   },
@@ -1325,7 +1475,12 @@
       "name": "Skeleton tabs",
       "category": "Feedback indicators",
       "releasedIn": 9,
-      "keywords": ["SkeletonTabs", "skeleton", "loading", "page"]
+      "keywords": [
+        "SkeletonTabs",
+        "skeleton",
+        "loading",
+        "page"
+      ]
     },
     "intro": "Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1334,7 +1489,12 @@
       "name": "Skeleton thumbnail",
       "category": "Feedback indicators",
       "releasedIn": "3.7.2",
-      "keywords": ["SkeletonThumbnail", "skeleton", "loading", "page"]
+      "keywords": [
+        "SkeletonThumbnail",
+        "skeleton",
+        "loading",
+        "page"
+      ]
     },
     "intro": "Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card."
   },
@@ -1343,7 +1503,11 @@
       "name": "Spinner",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "spinner",
         "loader",
@@ -1382,7 +1546,10 @@
     "frontMatter": {
       "name": "Stepper",
       "category": "Forms",
-      "platforms": ["android", "ios"],
+      "platforms": [
+        "android",
+        "ios"
+      ],
       "keywords": [
         "stepper",
         "counter",
@@ -1399,7 +1566,11 @@
     "frontMatter": {
       "name": "Subheading",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "title bar",
         "top-level",
@@ -1418,7 +1589,11 @@
     "frontMatter": {
       "name": "Tabs",
       "category": "Navigation",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "layout",
         "navigate",
@@ -1436,7 +1611,11 @@
     "frontMatter": {
       "name": "Tag",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "indicator",
         "label",
@@ -1453,7 +1632,11 @@
     "frontMatter": {
       "name": "Text container",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "releasedIn": "1.9.0",
       "keywords": [
         "spacing",
@@ -1473,7 +1656,11 @@
     "frontMatter": {
       "name": "Text field",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "TextField",
         "input",
@@ -1523,7 +1710,11 @@
     "frontMatter": {
       "name": "Text style",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "TextStyle",
         "typographic",
@@ -1551,7 +1742,11 @@
     "frontMatter": {
       "name": "Thumbnail",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "photo",
         "picture",
@@ -1570,7 +1765,11 @@
     "frontMatter": {
       "name": "Toast",
       "category": "Feedback indicators",
-      "platforms": ["android", "ios", "web"],
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
       "keywords": [
         "toast",
         "flash message",
