@@ -1,6 +1,5 @@
 import { AppProvider, Banner } from "@shopify/polaris";
 import { useEffect,useRef } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function BannerWithFocusExample() {
   const banner = useRef();
@@ -25,6 +24,10 @@ function BannerWithFocusExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -41,3 +44,4 @@ function Example() {
 }
 
 export default Example;
+    

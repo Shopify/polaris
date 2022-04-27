@@ -1,6 +1,5 @@
 import { AppProvider, Card,OptionList } from "@shopify/polaris";
 import { useState } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function OptionListWithSectionsExample() {
   const [selected, setSelected] = useState([]);
@@ -35,6 +34,10 @@ function OptionListWithSectionsExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",

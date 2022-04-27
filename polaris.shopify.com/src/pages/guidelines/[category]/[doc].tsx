@@ -23,7 +23,7 @@ export const navItems: NavItem[] = [
         children: [
           {
             title: "Shopify experience values",
-            url: "/docs/foundations/experience-values",
+            url: "/guidelines/foundations/experience-values",
           },
         ],
       },
@@ -33,19 +33,19 @@ export const navItems: NavItem[] = [
         children: [
           {
             title: "Accessibility",
-            url: "/docs/foundations/accessibility",
+            url: "/guidelines/foundations/accessibility",
           },
           {
             title: "Internationalization",
-            url: "/docs/foundations/internationalization",
+            url: "/guidelines/foundations/internationalization",
           },
           {
             title: "Information architecture",
-            url: "/docs/foundations/information-architecture",
+            url: "/guidelines/foundations/information-architecture",
           },
           {
             title: "Mobile",
-            url: "/docs/foundations/mobile",
+            url: "/guidelines/foundations/mobile",
           },
         ],
       },
@@ -55,11 +55,11 @@ export const navItems: NavItem[] = [
         children: [
           {
             title: "Designing apps for Shopify",
-            url: "/docs/foundations/designing-apps",
+            url: "/guidelines/foundations/designing-apps",
           },
           {
             title: "Designing onboarding flows",
-            url: "/docs/foundations/designing-onboarding-flows",
+            url: "/guidelines/foundations/designing-onboarding-flows",
           },
         ],
       },
@@ -69,7 +69,7 @@ export const navItems: NavItem[] = [
         children: [
           {
             title: "Formatting localized currency",
-            url: "/docs/foundations/formatting-localized-currency",
+            url: "/guidelines/foundations/formatting-localized-currency",
           },
         ],
       },
@@ -81,39 +81,39 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Design",
-        url: "/docs/design/design",
+        url: "/guidelines/design/design",
       },
       {
         title: "Colors",
-        url: "/docs/design/colors",
+        url: "/guidelines/design/colors",
       },
       {
         title: "Typography",
-        url: "/docs/design/typography",
+        url: "/guidelines/design/typography",
       },
       {
         title: "Illustrations",
-        url: "/docs/design/illustrations",
+        url: "/guidelines/design/illustrations",
       },
       {
         title: "Sounds",
-        url: "/docs/design/sounds",
+        url: "/guidelines/design/sounds",
       },
       {
         title: "Icons",
-        url: "/docs/design/icons",
+        url: "/guidelines/design/icons",
       },
       {
         title: "Interaction states",
-        url: "/docs/design/interaction-states",
+        url: "/guidelines/design/interaction-states",
       },
       {
         title: "Spacing",
-        url: "/docs/design/spacing",
+        url: "/guidelines/design/spacing",
       },
       {
         title: "Data visualizations",
-        url: "/docs/design/data-visualizations",
+        url: "/guidelines/design/data-visualizations",
       },
     ],
   },
@@ -123,47 +123,47 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Voice and tone",
-        url: "/docs/content/voice-and-tone",
+        url: "/guidelines/content/voice-and-tone",
       },
       {
         title: "Accessible and inclusive language",
-        url: "/docs/content/accessible-and-inclusive-language",
+        url: "/guidelines/content/accessible-and-inclusive-language",
       },
       {
         title: "Grammar and mechanics",
-        url: "/docs/content/grammar-and-mechanics",
+        url: "/guidelines/content/grammar-and-mechanics",
       },
       {
         title: "Naming",
-        url: "/docs/content/naming",
+        url: "/guidelines/content/naming",
       },
       {
         title: "Actionable language",
-        url: "/docs/content/actionable-language",
+        url: "/guidelines/content/actionable-language",
       },
       {
         title: "Product content",
-        url: "/docs/content/product-content",
+        url: "/guidelines/content/product-content",
       },
       {
         title: "Help documentation",
-        url: "/docs/content/help-documentation",
+        url: "/guidelines/content/help-documentation",
       },
       {
         title: "Merchant-to-customer content",
-        url: "/docs/content/merchant-to-customer",
+        url: "/guidelines/content/merchant-to-customer",
       },
       {
         title: "App release notes",
-        url: "/docs/content/release-notes",
+        url: "/guidelines/content/release-notes",
       },
       {
         title: "Vocabulary",
-        url: "/docs/content/vocabulary",
+        url: "/guidelines/content/vocabulary",
       },
       {
         title: "Alternative text",
-        url: "/docs/content/alternative-text",
+        url: "/guidelines/content/alternative-text",
       },
     ],
   },
@@ -173,31 +173,31 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Page layouts",
-        url: "/docs/patterns/layout",
+        url: "/guidelines/patterns/layout",
       },
       {
         title: "Mobile patterns",
-        url: "/docs/patterns/mobile-patterns",
+        url: "/guidelines/patterns/mobile-patterns",
       },
       {
         title: "Home cards",
-        url: "/docs/patterns/home-card-guidelines",
+        url: "/guidelines/patterns/home-card-guidelines",
       },
       {
         title: "Error messages",
-        url: "/docs/patterns/error-messages",
+        url: "/guidelines/patterns/error-messages",
       },
       {
         title: "Text fields",
-        url: "/docs/patterns/text-fields",
+        url: "/guidelines/patterns/text-fields",
       },
       {
         title: "Help content",
-        url: "/docs/patterns/help-content",
+        url: "/guidelines/patterns/help-content",
       },
       {
         title: "Locations",
-        url: "/docs/patterns/locations",
+        url: "/guidelines/patterns/locations",
       },
     ],
   },

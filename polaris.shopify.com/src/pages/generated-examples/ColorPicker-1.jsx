@@ -1,6 +1,5 @@
 import { AppProvider, ColorPicker } from "@shopify/polaris";
 import { useState } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ColorPickerExample() {
   const [color, setColor] = useState({
@@ -15,6 +14,10 @@ function ColorPickerExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -31,3 +34,4 @@ function Example() {
 }
 
 export default Example;
+    

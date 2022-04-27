@@ -1,8 +1,8 @@
 .Nav {
   flex: 1;
   font-size: var(--font-size-300);
-  padding: 2em;
-  min-width: 16em;
+  padding: 2rem;
+  min-width: 16rem;
   border-right: 1px solid #ededed;
 
   span {
@@ -13,7 +13,7 @@
     position: relative;
     display: inline-block;
     padding: 1px 0;
-    padding-left: 1.2em;
+    padding-left: 1.2rem;
     color: var(--text-subdued);
 
     &:hover {

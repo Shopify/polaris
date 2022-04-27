@@ -13,12 +13,12 @@
 }
 
 .ComponentsNav {
-  padding: 2em;
+  padding: 2rem;
 
   ul {
     flex: 1;
     display: grid;
-    margin: 0 -1em;
+    margin: 0 -1rem;
     grid-template-columns: repeat(5, 1fr);
 
     @media screen and (max-width: 2400px) {
@@ -41,9 +41,9 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      padding: 1em;
+      padding: 1rem;
       border-radius: var(--border-radius-700);
-      gap: 0.75em;
+      gap: 0.75rem;
       color: inherit;
       transition: background-color 0.05s linear;
 

@@ -489,20 +489,22 @@ function LoadingAutocompleteExample() {
     ) : null;
 
   return (
-    <Combobox
-      activator={
-        <Combobox.TextField
-          prefix={<Icon source={SearchMinor} />}
-          onChange={updateText}
-          label="Search tags"
-          labelHidden
-          value={inputValue}
-          placeholder="Search tags"
-        />
-      }
-    >
-      {listboxMarkup}
-    </Combobox>
+    <div style={{height: '225px'}}>
+      <Combobox
+        activator={
+          <Combobox.TextField
+            prefix={<Icon source={SearchMinor} />}
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+          />
+        }
+      >
+        {listboxMarkup}
+      </Combobox>
+    </div>
   );
 }
 ```

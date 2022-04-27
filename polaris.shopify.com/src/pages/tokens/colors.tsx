@@ -10,7 +10,9 @@ import Nav from "../../components/Nav";
 import { getTitleForTitleTag } from "../../utils/various";
 import Link from "next/link";
 
-const { colorSchemes: { light: colors } } = tokens;
+const {
+  colorSchemes: { light: colors },
+} = tokens;
 
 const Components: NextPage = () => {
   const colorNames = Object.keys(colors);
@@ -25,7 +27,7 @@ const Components: NextPage = () => {
         <p></p>
         <p>
           Learn more about{" "}
-          <Link href="/docs/design/colors">our color system</Link>.
+          <Link href="/guidelines/design/colors">our color system</Link>.
         </p>
         {colorNames.map((colorName) => (
           <ColorPreview key={colorName} name={colorName} />
