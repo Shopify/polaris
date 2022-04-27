@@ -18,7 +18,7 @@ const headerNavItems: {
   icon: string;
 }[] = [
   {
-    url: "/docs/foundations/experience-values",
+    url: "/guidelines/foundations/experience-values",
     label: "Guidelines",
     icon: "/file-text.svg",
   },
