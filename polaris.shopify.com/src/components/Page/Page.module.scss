@@ -16,8 +16,8 @@
   align-items: center;
   font-weight: var(--font-weight-500);
   color: inherit;
-  gap: 1em;
-  margin: 1em 1em 1.75em;
+  gap: 1rem;
+  margin: 1rem 1rem 1.75rem;
 
   p {
     margin: 0;
@@ -25,8 +25,8 @@
 }
 
 .HeaderMain {
-  padding: 1em 2em 1em 1em;
-  width: 16em;
+  padding: 1rem 2rem 1rem 1rem;
+  width: 16rem;
   background: #fafafa;
 
   li a {
@@ -34,9 +34,9 @@
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0.66em 1rem;
+    padding: 0.66rem 1rem;
     color: inherit;
-    gap: 1em;
+    gap: 1rem;
     font-weight: var(--font-weight-500);
   }
 }
@@ -57,6 +57,6 @@
 }
 
 .MainContent {
-  margin: 4em auto;
-  max-width: 42em;
+  margin: 4rem auto;
+  max-width: 42rem;
 }

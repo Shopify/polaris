@@ -10,7 +10,7 @@
 
   li {
     list-style-type: disc;
-    margin-left: 1.1em;
+    margin-left: 1.1rem;
   }
 
   h1,
@@ -39,7 +39,7 @@
   }
 
   h4 {
-    margin-top: 1.5em;
+    margin-top: 1.5rem;
   }
 
   hr {
@@ -50,7 +50,7 @@
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
     font-size: var(--font-size-300);
-    padding: 1em;
+    padding: 1rem;
     background: var(--text);
     color: var(--surface);
     border-radius: var(--border-radius-200);

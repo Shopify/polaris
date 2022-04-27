@@ -1,7 +1,7 @@
 .Button {
   appearance: none;
   background: #fbfbfb;
-  padding: 0.3em 0.5em 0.35em;
+  padding: 0.3rem 0.5rem 0.35rem;
   border: none;
   font-weight: var(--font-weight-400);
   border-radius: var(--border-radius-200);
@@ -17,8 +17,8 @@
 
   &.pill {
     border-radius: 100px;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   &[aria-pressed="true"],
