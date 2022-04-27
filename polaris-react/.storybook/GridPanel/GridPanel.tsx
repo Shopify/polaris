@@ -30,7 +30,7 @@ export function GridPanel(props: PanelProps) {
           gridWidth: {
             name: 'Grid width',
             description: 'Set a max width for the grid overlay',
-            default: '1080',
+            default: '100%',
             control: {type: 'select'},
             options: ['560px', '768px', '1008px', '100%'],
           },
