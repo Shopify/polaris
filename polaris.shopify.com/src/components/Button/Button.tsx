@@ -7,7 +7,7 @@ interface Props {
   pill?: boolean;
 }
 
-interface NativeButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
+interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
 interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
 
 function Button({ small, pill, children, ...rest }: NativeButtonProps) {
