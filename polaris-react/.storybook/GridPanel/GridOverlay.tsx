@@ -22,12 +22,10 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
     window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
   );
 
-  const handleResize = debounce(() => {
+  const handleResize = () =>
     setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
-  }, 50);
 
   const className = classNames(styles.GridOverlay, inFrame && styles.inFrame);
-
   const style = {
     maxWidth,
     zIndex: layer === 'above' || inFrame ? 1 : -1,

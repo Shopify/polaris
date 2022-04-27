@@ -1,10 +1,9 @@
 import React from 'react';
 import {withPerformance} from 'storybook-addon-performance';
-import {withGlobals} from '@luigiminardim/storybook-addon-globals-controls';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
-import {GridOverlay} from './GridOverlay';
+import {GridOverlay} from './GridPanel';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -54,37 +53,11 @@ export const globalTypes = {
       showName: true,
     },
   },
-  showGrid: {
-    name: 'Show grid overlay',
-    description: 'Show or hide a 4 / 12 column grid, overlaying components',
-    defaultValue: false,
-    control: {type: 'boolean'},
-  },
-  gridInFrame: {
-    name: 'Grid in frame',
-    description: 'Show grid within app frame context',
-    defaultValue: false,
-    control: {type: 'boolean'},
-  },
-  gridWidth: {
-    name: 'Grid width',
-    description: 'Set a max width for the grid overlay',
-    default: '1080',
-    control: {type: 'select'},
-    options: ['560px', '768px', '1008px', '100%'],
-  },
-  gridLayer: {
-    name: 'Grid layer',
-    description: 'Set the grid layer above or below content',
-    default: 'below',
-    control: {type: 'select'},
-    options: ['above', 'below'],
-  },
 };
 
 export const decorators = [
+  GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
   withPerformance,
-  GridOverlayDecorator,
 ];

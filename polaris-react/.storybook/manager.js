@@ -1,5 +1,6 @@
-import {addons} from '@storybook/addons';
+import {addons, types} from '@storybook/addons';
 import {create} from '@storybook/theming';
+import {GridPanel} from './GridPanel';
 
 const colors = {
   primary: '#008060',
@@ -45,4 +46,13 @@ addons.setConfig({
     inputTextColor: colors.text,
     inputBorderRadius: 4,
   }),
+});
+
+addons.register('polaris/global-controls', () => {
+  addons.add('grid/panel', {
+    type: types.PANEL,
+    title: 'Grid',
+    match: ({viewMode}) => viewMode === 'story',
+    render: GridPanel,
+  });
 });
