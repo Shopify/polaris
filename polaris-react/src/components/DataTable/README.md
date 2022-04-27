@@ -437,6 +437,116 @@ function FullDataTableExample() {
 }
 ```
 
+### Data table with fixed first column
+
+Use when the table contains many columns and it would benefit the merchant to see the first column when scrolling to the right.
+
+```jsx
+function DataTableFixedFirstColumnExample() {
+  const [sortedRows, setSortedRows] = useState(null);
+
+  const initiallySortedRows = [
+    [
+      'Emerald Silk Gown',
+      'The Avocado Boutique',
+      'Formal wear',
+      '$875.00',
+      '$87.50',
+      '$5.26',
+      124689,
+      140,
+      '$122,500.00',
+    ],
+    [
+      'Mauve Cashmere Scarf',
+      'The Avocado Boutique',
+      'Accessories',
+      '$230.00',
+      '$23.00',
+      '$0',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      'The Avocado Boutique',
+      'Casual Ensembles',
+      '$445.00',
+      '$44.50',
+      '$65.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
+
+  const rows = sortedRows ? sortedRows : initiallySortedRows;
+  const handleSort = useCallback(
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    [rows],
+  );
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'text',
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Product Vendor',
+            'Product Type',
+            'Price',
+            'Tax',
+            'Discounts',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', '', '', '', '', 255, '$155,830.00']}
+          sortable={[
+            false,
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            true,
+          ]}
+          defaultSortDirection="descending"
+          initialSortColumnIndex={4}
+          onSort={handleSort}
+          footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          hasFixedFirstColumn
+        />
+      </Card>
+    </Page>
+  );
+
+  function sortCurrency(rows, index, direction) {
+    return [...rows].sort((rowA, rowB) => {
+      const amountA = parseFloat(rowA[index].substring(1));
+      const amountB = parseFloat(rowB[index].substring(1));
+
+      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+    });
+  }
+}
+```
+
 ### Data table with increased density and zebra striping
 
 Use as a broad example that includes most props available to data table.
