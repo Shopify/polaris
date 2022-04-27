@@ -48,7 +48,7 @@ function Example() {
     <AppProvider i18n={translations}>
       <link
         rel="stylesheet"
-        href="https://unpkg.com/@shopify/polaris@9.5.2/build/esm/styles.css"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
       />
       <div
         style={{
