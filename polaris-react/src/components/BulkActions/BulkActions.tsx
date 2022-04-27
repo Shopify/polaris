@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef} from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import {tokens} from '../../tokens';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {clamp} from '../../utilities/clamp';

@@ -5,7 +5,7 @@ import {
   ColorScheme,
   TokenGroup,
   OSColorSchemes,
-} from '../../tokens';
+} from '@shopify/polaris-tokens';
 
 const staticCustomProperties = getStaticCustomProperties(tokens);
 const colorSchemeDeclarations = getColorSchemeDeclarations(

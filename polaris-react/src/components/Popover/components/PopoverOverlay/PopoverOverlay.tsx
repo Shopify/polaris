@@ -1,6 +1,6 @@
 import React, {PureComponent, Children, createRef} from 'react';
+import {tokens} from '@shopify/polaris-tokens';
 
-import {tokens} from '../../../../tokens';
 import {
   CustomProperties,
   CustomPropertiesProps,

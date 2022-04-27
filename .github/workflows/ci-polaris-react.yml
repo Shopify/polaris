@@ -34,7 +34,6 @@ jobs:
             ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
       - run: yarn --frozen-lockfile
-      - run: yarn workspace @shopify/polaris run validate-tokens
       - run: yarn build
       - run: yarn lint
       - run: yarn type-check

@@ -1,13 +1,13 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-
 import {
   osColorSchemes,
   ColorScheme,
   ColorSchemes,
   Tokens,
   TokenGroup,
-} from '../../../tokens';
+} from '@shopify/polaris-tokens';
+
 import {CustomProperties, DEFAULT_COLOR_SCHEME} from '../CustomProperties';
 import {
   getColorSchemeDeclarations,

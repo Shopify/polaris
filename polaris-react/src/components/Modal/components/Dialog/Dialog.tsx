@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
-import {tokens} from '../../../../tokens';
 import {classNames} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {Key} from '../../../../types';

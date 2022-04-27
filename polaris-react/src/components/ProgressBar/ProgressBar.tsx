@@ -1,8 +1,8 @@
 import React from 'react';
 import {CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
-import {tokens} from '../../tokens';
 import {useI18n} from '../../utilities/i18n';
 
 import styles from './ProgressBar.scss';

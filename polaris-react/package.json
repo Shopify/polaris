@@ -53,11 +53,11 @@
     "storybook": "yarn gen-media-queries && start-storybook -p 6006 --quiet",
     "storybook:build": "yarn gen-media-queries && build-storybook -o build-internal/storybook/static",
     "test": "loom test",
-    "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'",
     "version": "node ./scripts/readme-update-version"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.18.2",
+    "@shopify/polaris-tokens": "^5.0.0-rc.5",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
