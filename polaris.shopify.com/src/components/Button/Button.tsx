@@ -10,7 +10,7 @@ interface Props {
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
 interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
 
-function Button({ small, pill, children, ...rest }: NativeButtonProps) {
+function Button({ small, pill, children, ...rest }: ButtonProps) {
   return (
     <button
       className={[
