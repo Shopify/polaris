@@ -1,7 +1,6 @@
 import { AppProvider, Toast,ContextualSaveBar,TopBar,ActionList,Navigation,Loading,Page,Layout,Card,FormLayout,TextField,SkeletonPage,TextContainer,SkeletonDisplayText,SkeletonBodyText,Modal,Frame } from "@shopify/polaris";
 import { ArrowLeftMinor,HomeMajor,OrdersMajor,ConversationMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useRef } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function FrameExample() {
   const defaultState = useRef({
@@ -336,6 +335,10 @@ function FrameExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -352,3 +355,4 @@ function Example() {
 }
 
 export default Example;
+    

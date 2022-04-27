@@ -1,7 +1,6 @@
 import { AppProvider, Listbox,Combobox,Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useMemo } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function LoadingAutocompleteExample() {
   const deselectedOptions = useMemo(
@@ -86,26 +85,32 @@ function LoadingAutocompleteExample() {
     ) : null;
 
   return (
-    <Combobox
-      activator={
-        <Combobox.TextField
-          prefix={<Icon source={SearchMinor} color="inkLighter" />}
-          onChange={updateText}
-          label="Search tags"
-          labelHidden
-          value={inputValue}
-          placeholder="Search tags"
-        />
-      }
-    >
-      {listboxMarkup}
-    </Combobox>
+    <div style={{height: '225px'}}>
+      <Combobox
+        activator={
+          <Combobox.TextField
+            prefix={<Icon source={SearchMinor} />}
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+          />
+        }
+      >
+        {listboxMarkup}
+      </Combobox>
+    </div>
   );
 }
 
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -122,3 +127,4 @@ function Example() {
 }
 
 export default Example;
+    

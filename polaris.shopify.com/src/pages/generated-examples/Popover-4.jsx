@@ -1,6 +1,5 @@
 import { AppProvider, Button,Card,Popover,ResourceList,Avatar } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function PopoverLazyLoadExample() {
   const [popoverActive, setPopoverActive] = useState(true);
@@ -97,6 +96,10 @@ function PopoverLazyLoadExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",

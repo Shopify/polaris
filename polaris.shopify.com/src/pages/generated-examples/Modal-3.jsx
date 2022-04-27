@@ -1,6 +1,5 @@
 import { AppProvider, Button,Modal,Stack,TextContainer,TextField } from "@shopify/polaris";
 import { useState,useCallback,useRef } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ModalWithPrimaryActionExample() {
   const DISCOUNT_LINK = 'https://polaris.shopify.com/';
@@ -72,6 +71,10 @@ function ModalWithPrimaryActionExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -88,3 +91,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -1,7 +1,6 @@
 import { AppProvider, Tag,Listbox,Combobox,Icon,TextContainer,Stack } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useMemo } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function MultiComboboxExample() {
   const deselectedOptions = useMemo(
@@ -50,7 +49,8 @@ function MultiComboboxExample() {
       const matchedOption = options.find((option) => {
         return option.value.match(selected);
       });
-      setInputValue((matchedOption && matchedOption.label) || '');
+
+      updateText('');
     },
     [options, selectedOptions],
   );
@@ -64,16 +64,11 @@ function MultiComboboxExample() {
     [selectedOptions],
   );
 
-  const tagsMarkup = selectedOptions.map((option) => {
-    let tagLabel = '';
-    tagLabel = option.replace('_', ' ');
-    tagLabel = titleCase(tagLabel);
-    return (
-      <Tag key={`option${option}`} onRemove={removeTag(option)}>
-        {tagLabel}
-      </Tag>
-    );
-  });
+  const tagsMarkup = selectedOptions.map((option) => (
+    <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+      {option}
+    </Tag>
+  ));
 
   const optionsMarkup =
     options.length > 0
@@ -99,7 +94,7 @@ function MultiComboboxExample() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -117,19 +112,15 @@ function MultiComboboxExample() {
       </TextContainer>
     </div>
   );
-
-  function titleCase(string) {
-    return string
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
-  }
 }
 
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -146,3 +137,4 @@ function Example() {
 }
 
 export default Example;
+    

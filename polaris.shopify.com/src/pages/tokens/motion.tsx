@@ -56,7 +56,7 @@ const Components: NextPage = () => {
         <div style={{ marginTop: 20 }}>
           {Object.entries(motion)
             .filter(([name]) => name.includes("ease"))
-            .map(([name, {value}]) => {
+            .map(([name, { value }]) => {
               return (
                 <Token
                   key={value}
@@ -95,7 +95,7 @@ const Components: NextPage = () => {
         <div style={{ marginTop: 20 }}>
           {Object.entries(motion)
             .filter(([name]) => name.includes("duration"))
-            .map(([name, {value}]) => {
+            .map(([name, { value }]) => {
               return (
                 <Token
                   key={value}

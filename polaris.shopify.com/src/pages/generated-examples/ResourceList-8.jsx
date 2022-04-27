@@ -1,5 +1,4 @@
 import { AppProvider, Card,ResourceList,Button,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ResourceListWithAlternateToolExample() {
   const resourceName = {
@@ -56,6 +55,10 @@ function ResourceListWithAlternateToolExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -72,3 +75,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --nav-width: 18em;
+  --nav-width: 18rem;
   --narrow-content-width: 720px;
   --focus-outline: 0 0 0 2px black;
 
@@ -15,24 +15,24 @@
   --surface-token: #fdf0fd;
   --primary: #008060;
 
-  --font-size-100: 0.75em;
-  --font-size-200: 0.8em;
-  --font-size-300: 0.95em;
-  --font-size-400: 1em;
-  --font-size-500: 1.1em;
-  --font-size-600: 1.2em;
-  --font-size-700: 1.33em;
-  --font-size-800: 2em;
-  --font-size-900: 4em;
-  --font-size-1000: 7em;
+  --font-size-100: 0.75rem;
+  --font-size-200: 0.8rem;
+  --font-size-300: 0.95rem;
+  --font-size-400: 1rem;
+  --font-size-500: 1.1rem;
+  --font-size-600: 1.2rem;
+  --font-size-700: 1.33rem;
+  --font-size-800: 2rem;
+  --font-size-900: 4rem;
+  --font-size-1000: 7rem;
 
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
 
-  --letter-spacing-100: -0.03em;
-  --letter-spacing-200: -0.02em;
-  --letter-spacing-300: -0.01em;
+  --letter-spacing-100: -0.03rem;
+  --letter-spacing-200: -0.02rem;
+  --letter-spacing-300: -0.01rem;
   --letter-spacing-400: 0;
 
   --border-radius-100: 0;
@@ -89,14 +89,14 @@ h1 {
   font-size: var(--font-size-900);
   font-weight: var(--font-weight-600);
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.03rem;
 }
 
 h2 {
   font-size: var(--font-size-800);
   font-weight: var(--font-weight-400);
   line-height: 1.2;
-  letter-spacing: -0.0125em;
+  letter-spacing: -0.0125rem;
 }
 
 h3 {
@@ -125,10 +125,10 @@ h4 {
 // Legacy CSS from old site (used in markdown files)
 .usage-list {
   margin: 1.25rem 0;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1rem;
 
   .usage-list-part {
     flex: 1;
@@ -141,7 +141,7 @@ h4 {
     }
 
     p {
-      margin-top: 0.5em;
+      margin-top: 0.5rem;
     }
   }
 

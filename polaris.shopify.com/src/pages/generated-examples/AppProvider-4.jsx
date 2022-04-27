@@ -1,6 +1,5 @@
 import { AppProvider, Page,Layout,SettingToggle,TextStyle,ContextualSaveBar } from "@shopify/polaris";
 import { useState,useCallback } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function AppProviderThemeExample() {
   const [isDirty, setIsDirty] = useState(false);
@@ -80,6 +79,10 @@ function AppProviderThemeExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -96,3 +99,4 @@ function Example() {
 }
 
 export default Example;
+    

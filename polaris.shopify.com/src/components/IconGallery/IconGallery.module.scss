@@ -3,7 +3,7 @@
 }
 
 .Filter {
-  padding: 2em;
+  padding: 2rem;
 
   .TextField {
     margin-top: 1.75rem;
@@ -22,7 +22,7 @@
 .IconGrid {
   display: grid;
   margin-top: 20px;
-  margin-bottom: 3em;
+  margin-bottom: 3rem;
   flex: 1;
   gap: 2px;
   padding: 0 0 0 2px;
@@ -35,6 +35,7 @@
   at any resolution.
   */
   grid-template-columns: repeat(9, 1fr);
+
   @media screen and (max-width: 2400px) {
     grid-template-columns: repeat(8, 1fr);
   }
@@ -89,7 +90,7 @@
 .Preview {
   display: flex;
   justify-content: center;
-  padding: 3em 0;
+  padding: 3rem 0;
   animation: icon-in 0.25s 0.05s ease both;
 }
 
@@ -97,7 +98,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3em;
+  padding-bottom: 3rem;
 
   p {
     max-width: 60%;
@@ -106,24 +107,24 @@
 }
 
 .Sidebar {
-  width: 28em;
+  width: 28rem;
   animation: sidebar-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .SidebarInner {
   animation: sidebar-inner-enter 0.3s 0.3s linear both;
-  padding: 2em;
+  padding: 2rem;
 }
 
 .Tabs {
   display: flex;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   box-shadow: inset 0 -1px #dddddd;
 }
 
 .Tab {
   position: relative;
-  padding: 1.25em 1em;
+  padding: 1.25rem 1rem;
   flex: 1;
   cursor: pointer;
   background: transparent;
@@ -157,7 +158,7 @@
   }
 
   100% {
-    width: 28em;
+    width: 28rem;
   }
 }
 

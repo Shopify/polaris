@@ -13,7 +13,7 @@ const {
   shape,
   spacing,
   typography,
-  zIndex
+  zIndex,
 } = tokens;
 
 let results: SearchResult = [];
@@ -39,7 +39,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
     url: `/tokens/colors#${tokenName}`,
     keywords: [],
     meta: {
-      colorToken: { value: tokenValue },
+      colorToken: { value: tokenValue.value },
     },
   });
 });
@@ -83,7 +83,7 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
     if (allowedSections.includes(sectionSlug)) {
       const title = parts[parts.length - 1];
 
-      const url = `/docs/${sectionSlug}/${slug}`;
+      const url = `/guidelines/${sectionSlug}/${slug}`;
 
       results.push({
         category: "Guidelines",
