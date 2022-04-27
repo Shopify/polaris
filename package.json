@@ -6,6 +6,7 @@
   },
   "workspaces": [
     "polaris-for-vscode",
+    "polaris-icons",
     "polaris-react",
     "polaris-tokens",
     "stylelint-polaris",
