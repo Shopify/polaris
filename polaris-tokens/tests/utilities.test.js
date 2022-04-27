@@ -1,4 +1,10 @@
-import {createVar, tokensToRems} from '../src/utilities';
+import {tokens} from '../src/tokens';
+import {
+  createVar,
+  getCustomPropertyNames,
+  getKeyframeNames,
+  tokensToRems,
+} from '../src/utilities';
 
 describe('createVar', () => {
   it('converts the token into a polaris css variable name', () => {
@@ -6,6 +12,18 @@ describe('createVar', () => {
     const result = createVar(token);
 
     expect(result).toBe(`--p-${token}`);
+  });
+});
+
+describe('getCustomPropertyNames', () => {
+  it('extracts the token names', () => {
+    expect(getCustomPropertyNames(tokens)).toHaveLength(258);
+  });
+});
+
+describe('getKeyframeNames', () => {
+  it('extracts the keyframe tokens from the motion', () => {
+    expect(getKeyframeNames(tokens.motion)).toHaveLength(4);
   });
 });
 
