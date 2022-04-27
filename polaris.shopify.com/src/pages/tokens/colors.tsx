@@ -28,7 +28,7 @@ const Components: NextPage = () => {
         <p></p>
         <p>
           Learn more about{" "}
-          <Link href="/docs/design/colors">our color system</Link>.
+          <Link href="/guidelines/design/colors">our color system</Link>.
         </p>
         {colorNames.map((colorName) => (
           <ColorPreview key={colorName} name={colorName} />
