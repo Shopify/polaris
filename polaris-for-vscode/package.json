@@ -30,9 +30,7 @@
   ],
   "main": "./client/dist/extension.js",
   "scripts": {
-    "build": "run-s build:*",
-    "build:data": "node ./scripts/prepublish.js",
-    "build:tsc": "tsc -b",
+    "build": "tsc -b",
     "dev": "tsc -b -w",
     "vscode:prepublish": "yarn build"
   },

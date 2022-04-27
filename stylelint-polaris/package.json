@@ -27,8 +27,8 @@
   "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "yarn build",
-    "test": "yarn build && node tests/index.js"
+    "build": "echo no build script",
+    "test": "node tests/index.js"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"

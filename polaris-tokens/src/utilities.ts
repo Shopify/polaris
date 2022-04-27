@@ -28,9 +28,9 @@ export function createVar(token: string) {
  *
  * Result: ['p-keyframes-fade-in', 'p-keyframes-spin', etc...]
  */
-export function getKeyframeNames(motionTokens: TokenGroup) {
-  return Object.keys(motionTokens)
-    .map((name) => (name.startsWith('keyframes') ? `p-${name}` : null))
+export function getKeyframeNames(motionTokenGroup: TokenGroup) {
+  return Object.keys(motionTokenGroup)
+    .map((token) => (token.startsWith('keyframes') ? `p-${token}` : null))
     .filter(Boolean);
 }
 
@@ -40,17 +40,15 @@ export function getKeyframeNames(motionTokens: TokenGroup) {
  * Result: ['--p-background', '--p-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
-  const {colorSchemes, ...restOfGroups} = tokens;
-  const propertiesNames = [
+  const {colorSchemes, ...restTokenGroups} = tokens;
+  const customPropertyNames = [
     ...Object.keys(colorSchemes.light).map((token) => createVar(token)),
-    ...Object.entries(restOfGroups)
-      .map((entry: [string, TokenGroup]) => {
-        const tokenGroup = entry[1];
-
-        return Object.keys(tokenGroup).map((token) => createVar(token));
-      })
+    ...Object.entries(restTokenGroups)
+      .map(([_, tokenGroup]: [string, TokenGroup]) =>
+        Object.keys(tokenGroup).map((token) => createVar(token)),
+      )
       .flat(),
   ];
 
-  return propertiesNames;
+  return customPropertyNames;
 }
