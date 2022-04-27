@@ -1,7 +1,6 @@
 import { AppProvider, Listbox,Combobox,Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState,useCallback,useMemo } from "react";
-
 import translations from '@shopify/polaris/locales/en.json';
 function ComboboxExample() {
   const deselectedOptions = useMemo(
@@ -72,7 +71,7 @@ function ComboboxExample() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -92,6 +91,10 @@ function ComboboxExample() {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{
     minHeight: "100vh",
@@ -108,3 +111,4 @@ function Example() {
 }
 
 export default Example;
+    

@@ -154,10 +154,6 @@ for (let i = 0; i < componentDirectories.length; i++) {
             }
 
             importStatements.push(
-              `import '@shopify/polaris/build/esm/styles.css';`
-            );
-
-            importStatements.push(
               `import translations from '@shopify/polaris/locales/en.json';`
             );
 
@@ -221,6 +217,10 @@ function decorateExample(code) {
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{${styles}}}
       >
@@ -240,6 +240,10 @@ export default Example;
 function Example() {
   return (
     <AppProvider i18n={translations}>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css"
+      />
       <div
         style={{${styles}}}
       >
