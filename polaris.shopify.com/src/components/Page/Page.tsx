@@ -5,6 +5,12 @@ import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import { useRouter } from "next/router";
 import GlobalSearch from "../GlobalSearch";
+import {
+  FileTextIcon,
+  GridIcon,
+  LayersIcon,
+  PackageIcon,
+} from "./PageNavIcons";
 
 interface Props {
   renderNav?: () => React.ReactNode;
@@ -15,20 +21,20 @@ interface Props {
 const headerNavItems: {
   url: string;
   label: string;
-  icon: string;
+  icon: React.ReactNode;
 }[] = [
   {
     url: "/guidelines/foundations/experience-values",
     label: "Guidelines",
-    icon: "/file-text.svg",
+    icon: <FileTextIcon />,
   },
-  { url: "/components", label: "Components", icon: "/package.svg" },
+  { url: "/components", label: "Components", icon: <PackageIcon /> },
   {
     url: "/tokens/getting-started",
     label: "Tokens",
-    icon: "/layers.svg",
+    icon: <LayersIcon />,
   },
-  { url: "/icons", label: "Icons", icon: "/grid.svg" },
+  { url: "/icons", label: "Icons", icon: <GridIcon /> },
 ];
 
 function Page({ renderNav, noLayout = false, children }: Props) {
@@ -60,16 +66,10 @@ function Page({ renderNav, noLayout = false, children }: Props) {
               const isCurrent =
                 section !== "/" && url.startsWith(section) ? "page" : false;
               return (
-                <li key={url} aria-current={isCurrent}>
+                <li key={url}>
                   <Link href={url}>
-                    <a>
-                      <Image
-                        src={icon}
-                        width={24}
-                        height={24}
-                        layout="fixed"
-                        alt=""
-                      />
+                    <a aria-current={isCurrent}>
+                      {icon}
                       {label}
                     </a>
                   </Link>
