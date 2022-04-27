@@ -1,13 +1,16 @@
-import { HTMLProps } from "react";
+import Link, { LinkProps } from "next/link";
+import { HTMLProps, PropsWithChildren } from "react";
 import styles from "./Button.module.scss";
 
-interface Props extends HTMLProps<HTMLButtonElement> {
+interface Props {
   small?: boolean;
   pill?: boolean;
-  children: React.ReactNode;
 }
 
-function Button({ small, pill, children, ...rest }: Props) {
+interface NativeButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+
+function Button({ small, pill, children, ...rest }: NativeButtonProps) {
   return (
     <button
       className={[
@@ -20,6 +23,29 @@ function Button({ small, pill, children, ...rest }: Props) {
     >
       {children}
     </button>
+  );
+}
+
+export function LinkButton({
+  small,
+  pill,
+  href,
+  children,
+  ...rest
+}: LinkButtonProps) {
+  return (
+    <Link href={href} passHref>
+      <a
+        className={[
+          styles.Button,
+          small ? styles.small : null,
+          pill ? styles.pill : null,
+        ].join(" ")}
+        {...rest}
+      >
+        {children}
+      </a>
+    </Link>
   );
 }
 
