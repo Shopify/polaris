@@ -2,17 +2,18 @@
 import fs from 'fs';
 import path from 'path';
 
+import {parse, traverse} from '@babel/core';
+import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
 import glob from 'glob';
 import jsYaml from 'js-yaml';
-
-import customTypes from '../../config/rollup/plugins/customTypes';
-import svgBuild from '../../config/rollup/plugins/svgBuild';
+import convert from '@svgr/core';
+import {optimize} from 'svgo';
 
 const WHITE_REGEX = /^#fff(?:fff)?$/i;
 
-const iconBasePath = path.resolve(__dirname, '../../icons');
+const iconBasePath = path.resolve(__dirname, 'icons');
 
 const entrypointContent = glob
   .sync('*.yml', {cwd: iconBasePath})
@@ -23,8 +24,197 @@ const entrypointContent = glob
 // we get to shave off some unneeded interop code
 const interop = (id) => (id === 'react' ? 'defaultOnly' : 'auto');
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+function generateTypesFile(iconExports) {
+  return iconExports
+    .map(
+      (exportName) =>
+        `export declare const ${exportName}: React.SFC<React.SVGProps<SVGSVGElement>>;`,
+    )
+    .join('\n');
+}
+
+function customTypes(options = {}) {
+  const filter = createFilter(options.include, options.exclude, {
+    resolve: false,
+  });
+  const iconExports = [];
+  const virtualPrefix = '\u0000virtual:';
+
+  return {
+    name: 'shopify-icon',
+
+    transform(source, id) {
+      const nonVirtualId = id.startsWith(virtualPrefix)
+        ? id.replace(virtualPrefix, '')
+        : id;
+
+      if (filter(nonVirtualId)) {
+        const ast = parse(source, {filename: nonVirtualId});
+
+        traverse(ast, {
+          ExportNamedDeclaration(filePath) {
+            const exportDeclarationName = filePath.node.specifiers
+              .filter((obj) => obj.local.name === 'default')
+              .map((obj) => obj.exported.name);
+            iconExports.push(...exportDeclarationName);
+          },
+        });
+      }
+
+      return null;
+    },
+    buildEnd() {
+      if (iconExports.length === 0) {
+        this.warn('Found no exports when processing types');
+      }
+
+      this.emitFile({
+        type: 'asset',
+        fileName: `index.d.ts`,
+        source: generateTypesFile(iconExports),
+      });
+    },
+  };
+}
+
+/**
+ * A rollup plugin that acts upon SVG files. It will:
+ *
+ * - Run our SVGO optimization config over the SVG contents
+ * - Write the SVG to the specified `outputFolder`, for people that wish to use
+ *   the raw icons
+ * - Pass the optimized SVG into SVGR and return the result so that rollup can
+ *   inline the result into JavaScript output, for people who wish to import
+ *   React components from the index file
+ */
+function svgBuild(options = {}) {
+  const filter = createFilter(options.include || '**/*.svg', options.exclude);
+
+  /** @type {import('svgo').OptimizeOptions} */
+  const svgoConfig = {
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            /**
+             * viewBox is needed in order to produce 20px by 20px containers
+             * with smaller (minor) icons inside.
+             */
+            removeViewBox: false,
+
+            /**
+             * The following 2 settings are disabled to reduce rendering inconsistency
+             * on Android. Android uses a subset of the SVG spec called SVG Tiny:
+             * https://developer.android.com/studio/write/vector-asset-studio#svg-support
+             */
+
+            /**
+             * Merging mutliple detached paths into a single path can lead to
+             * rendering issues on some platforms where detatched paths are joined
+             * by hairlines. Not merging paths results in greater compatibility
+             * with minimal additional overhead.
+             */
+            mergePaths: false,
+
+            convertPathData: {
+              /**
+               * Mixing absolute and relative path commands can lead to rendering
+               * issues on some platforms. This disables converting some path data to
+               * absolute if it is shorter, keeping all path data relative. Using
+               * relative paths means that data points are relative  to the current
+               * point at the start of the path command, which does not greatly
+               * increase the quantity of path data.
+               */
+              utilizeAbsolute: false,
+            },
+          },
+        },
+      },
+    ],
+  };
+
+  if (options.replaceFill) {
+    svgoConfig.plugins.push({
+      ...replaceFillAttributeSvgoPlugin(options.replaceFill),
+    });
+  }
+
+  const optimizedSvgs = [];
+
+  return {
+    name: 'svgBuild',
+    async transform(source, id) {
+      if (!filter(id) || id.slice(-4) !== '.svg') {
+        return null;
+      }
+
+      const rawSvg = fs.readFileSync(id, 'utf8');
+      const {data: optimizedSvg} = await optimize(rawSvg, {
+        ...svgoConfig,
+        path: id,
+      });
+
+      optimizedSvgs.push({id, optimizedSvg});
+
+      const svgrState = {filePath: id, caller: {name: 'svgBuild'}};
+      const jsCode = await convert(optimizedSvg, {}, svgrState);
+
+      return {
+        code: jsCode,
+        ast: {
+          type: 'Program',
+          sourceType: 'module',
+          start: 0,
+          end: null,
+          body: [],
+        },
+        map: {mappings: ''},
+      };
+    },
+    buildEnd() {
+      optimizedSvgs.forEach(({id, optimizedSvg}) => {
+        this.emitFile({
+          type: 'asset',
+          fileName: `svg/${path.basename(id)}`,
+          source: optimizedSvg,
+        });
+      });
+    },
+  };
+}
+
+/**
+ * An SVGO plugin that applies a transform function to every fill attribute
+ * in an SVG. This lets you replace fill colors or remove them entirely.
+ */
+function replaceFillAttributeSvgoPlugin(options) {
+  return {
+    type: 'perItem',
+    name: 'replaceFillAttibute',
+    description: 'replaces fill attributes using a user-defined function',
+    params: options,
+    fn(item, {transform}) {
+      if (!item.isElem()) {
+        return;
+      }
+
+      const fillAttr = item.attr('fill');
+      if (!fillAttr) {
+        return;
+      }
+
+      const transformedFill = transform(fillAttr.value);
+      if (transformedFill === '') {
+        item.removeAttr('fill');
+      } else {
+        fillAttr.value = transformedFill;
+      }
+    },
+  };
+}
+
+const config = {
   input: 'src/index.ts',
   output: [
     {
@@ -47,9 +237,8 @@ export default {
     // This allows consuming apps to split up the icons into multiple subchunks
     // containing a few icons each instead of always having to put every icon
     // into a single shared chunk
-    const iconsSrcPath = `${path.resolve(__dirname, '../../icons')}/`;
-    if (id.startsWith(iconsSrcPath)) {
-      return id.replace(iconsSrcPath, 'icons/');
+    if (id.startsWith(iconBasePath)) {
+      return id.replace(iconBasePath, 'icons/');
     }
   },
   external: ['react'],
@@ -69,7 +258,7 @@ export default {
       'src/index.ts': entrypointContent,
     }),
     svgBuild({
-      include: '../../icons/*.svg',
+      include: `${iconBasePath}/*.svg`,
       replaceFill: {
         transform: (fill) => (WHITE_REGEX.test(fill) ? 'currentColor' : ''),
       },
@@ -85,6 +274,9 @@ export default {
     }),
   ],
 };
+
+// eslint-disable-next-line import/no-default-export
+export default config;
 
 function exportsForMetadata(filename) {
   const metadata = jsYaml.load(
@@ -147,5 +339,5 @@ function exportString(exportedName, svgFilename, replaceWith) {
       ? ''
       : `/** @deprecated ${exportedName} will be removed in the next major version.${replaceWithSuffix} */\n`;
 
-  return `${deprecatedNotice}export {default as ${exportedName}} from '../../../icons/${svgFilename}';`;
+  return `${deprecatedNotice}export {default as ${exportedName}} from '../icons/${svgFilename}';`;
 }

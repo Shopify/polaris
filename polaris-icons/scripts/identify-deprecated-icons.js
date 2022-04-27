@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const jsYaml = require('js-yaml');
 
-const iconBasePath = path.resolve(__dirname, '../../../icons');
+const iconBasePath = path.resolve(__dirname, '../icons');
 
 const allDeprecationsString = glob
   .sync('*.yml', {cwd: iconBasePath})

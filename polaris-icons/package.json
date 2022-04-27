@@ -9,9 +9,7 @@
   "scripts": {
     "metadata": "node ./scripts/metadata-json.js",
     "identify-deprecated-icons": "node ./scripts/identify-deprecated-icons.js",
-    "prebuild": "yarn run clean",
-    "build": "yarn run rollup -c",
-    "clean": "rimraf build dist"
+    "build": "yarn run rollup -c"
   },
   "publishConfig": {
     "access": "public",
@@ -33,6 +31,15 @@
   },
   "homepage": "https://polaris-icons.shopify.com/",
   "devDependencies": {
-    "rollup": "^2.28.1"
+    "@babel/core": "^7.13.14",
+    "@shopify/babel-preset": "^23.4.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-virtual": "^2.0.3",
+    "@rollup/pluginutils": "^4.1.0",
+    "@svgr/core": "^4.3.3",
+    "glob": "^7.1.6",
+    "js-yaml": "^4.0.0",
+    "rollup": "^2.28.1",
+    "svgo": "^2.3.0"
   }
 }

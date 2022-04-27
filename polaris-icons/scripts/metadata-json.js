@@ -4,11 +4,8 @@ const path = require('path');
 const glob = require('glob');
 const yaml = require('js-yaml');
 
-const FILEPATH = path.join(process.cwd(), 'metadata.json');
-
-const allIconMetadataFiles = glob.sync(
-  path.resolve(__dirname, '../../../icons/*.yml'),
-);
+const FILEPATH = path.join(__dirname, '../metadata.json');
+const allIconMetadataFiles = glob.sync(path.join(__dirname, '../icons/*.yml'));
 
 const metadata = allIconMetadataFiles.map((iconMetadataFile) =>
   yaml.load(fs.readFileSync(iconMetadataFile), {
