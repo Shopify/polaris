@@ -1,6 +1,4 @@
-import {useState, useCallback} from 'react';
-
-import {useDeepEffect} from './use-deep-effect';
+import {useState, useCallback, useEffect} from 'react';
 
 export enum SelectionType {
   All = 'all',
@@ -97,12 +95,16 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     [allResourcesSelected, resources, resourceIDResolver],
   );
 
-  useDeepEffect(() => {
-    const resourceIds = resources.map((resource) => resource.id);
-    setSelectedResources((oldSelectedResources) =>
-      oldSelectedResources.filter((item) => resourceIds.includes(item)),
+  useEffect(() => {
+    const resourceIds = resources.map(resourceIDResolver);
+    const selectedAvailableResources = selectedResources.filter((item) =>
+      resourceIds.includes(item),
     );
-  }, [resources]);
+
+    if (selectedAvailableResources.length !== selectedResources.length) {
+      setSelectedResources(selectedAvailableResources);
+    }
+  }, [resources, selectedResources, resourceIDResolver]);
 
   return {selectedResources, allResourcesSelected, handleSelectionChange};
 }
