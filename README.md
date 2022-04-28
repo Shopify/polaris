@@ -22,8 +22,8 @@ polaris/
 ├── polaris-for-vscode          # VS Code extension for Polaris
 ├── polaris-icons               # Icons for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
-├── polaris.shopify.com         # Documentation website
 ├── polaris-tokens              # Design tokens for Polaris
+├── polaris.shopify.com         # Documentation website
 └── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
 
