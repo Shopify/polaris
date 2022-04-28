@@ -18,10 +18,10 @@
   min-height: var(--p-line-height-6);
   min-width: var(--p-line-height-6);
   margin: 0;
-  padding: $vertical-padding var(--p-space-4);
+  padding: $vertical-padding var(--p-space-6);
   background: var(--p-surface);
   box-shadow: var(--p-shadow-button);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-3);
   color: var(--p-text);
   border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
   border-top-color: var(--p-border-subdued);
@@ -32,6 +32,11 @@
   user-select: none;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
+
+  @include when-typography-not-condensed {
+    border-radius: var(--p-border-radius-1);
+    padding: $vertical-padding var(--p-space-4);
+  }
 
   &:hover {
     background: var(--p-action-secondary-hovered);
