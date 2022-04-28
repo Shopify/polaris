@@ -67,7 +67,7 @@ export function ProgressBar({
       <CSSTransition
         in
         appear
-        timeout={parseInt(progressBarDuration, 10)}
+        timeout={parseInt(progressBarDuration.value, 10)}
         classNames={{
           appearActive: styles.IndicatorAppearActive,
           appearDone: styles.IndicatorAppearDone,

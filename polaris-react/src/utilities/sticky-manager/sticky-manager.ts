@@ -134,7 +134,7 @@ export class StickyManager {
     }
 
     const stickyOffset = offset
-      ? this.getOffset(stickyNode) + parseInt(tokens.spacing['5'], 10)
+      ? this.getOffset(stickyNode) + parseInt(tokens.spacing['5'].value, 10)
       : this.getOffset(stickyNode);
 
     const scrollPosition = scrollTop + stickyOffset;

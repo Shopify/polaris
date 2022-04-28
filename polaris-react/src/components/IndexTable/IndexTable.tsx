@@ -403,7 +403,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(tokens.motion['duration-100'], 10)}
+      timeout={parseInt(tokens.motion['duration-100'].value, 10)}
       appear
       unmountOnExit
     >

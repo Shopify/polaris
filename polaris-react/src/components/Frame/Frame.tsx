@@ -135,7 +135,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
-          timeout={parseInt(tokens.motion['duration-300'], 10)}
+          timeout={parseInt(tokens.motion['duration-300'].value, 10)}
           classNames={navTransitionClasses}
         >
           <div

@@ -424,7 +424,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                   <CSSTransition
                     nodeRef={this.checkableWrapperNode}
                     in={selectMode}
-                    timeout={parseInt(tokens.motion['duration-200'], 10)}
+                    timeout={parseInt(tokens.motion['duration-200'].value, 10)}
                     classNames={slideClasses}
                     appear={!selectMode}
                   >
