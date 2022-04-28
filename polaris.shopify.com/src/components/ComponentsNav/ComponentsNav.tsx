@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import components from "../../data/components.json";
 import {
@@ -8,7 +8,7 @@ import {
   stripMarkdownLinks,
   slugify,
 } from "../../utils/various";
-import Button from "../Button";
+import { LinkButton } from "../Button/Button";
 import Image from "../Image/Image";
 import TextField from "../TextField";
 import styles from "./ComponentsNav.module.scss";
@@ -62,23 +62,19 @@ function ComponentsNav({ category }: Props) {
           />
         </div>
 
-        <Button
-          onClick={() => router.replace(getUrl("all", filterText))}
-          aria-pressed={category === "all"}
-          pill
-        >
+        <LinkButton pill href={`/components`} aria-current={category === "all"}>
           All
-        </Button>
+        </LinkButton>
 
         {componentCategories.map((thisCategory) => (
-          <Button
+          <LinkButton
             key={thisCategory}
-            onClick={() => router.replace(getUrl(thisCategory, filterText))}
-            aria-pressed={category === thisCategory}
             pill
+            href={`/components/${slugify(thisCategory)}`}
+            aria-current={category === thisCategory}
           >
             {thisCategory}
-          </Button>
+          </LinkButton>
         ))}
       </div>
 
