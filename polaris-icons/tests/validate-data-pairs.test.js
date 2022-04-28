@@ -16,6 +16,12 @@ const allYMLs = glob
   })
   .map((filename) => path.basename(filename));
 
+console.log(
+  allYMLs
+    .map((yml) => yml.replace(/yml$/, 'svg'))
+    .filter((file) => !allSVGs.includes(file)),
+);
+
 describe(`Each SVG file`, () => {
   it(`must have a corresponding YML file`, () => {
     expect(

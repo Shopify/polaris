@@ -7,9 +7,8 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "metadata": "node ./scripts/metadata-json.js",
-    "identify-deprecated-icons": "node ./scripts/identify-deprecated-icons.js",
-    "build": "yarn run rollup -c"
+    "build": "yarn run rollup -c",
+    "test": "jest"
   },
   "publishConfig": {
     "access": "public",
@@ -38,8 +37,12 @@
     "@rollup/pluginutils": "^4.1.0",
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",
+    "hast-util-select": "^3.0.0",
     "js-yaml": "^4.0.0",
+    "rehype-parse": "^7.0.1",
     "rollup": "^2.28.1",
-    "svgo": "^2.3.0"
+    "svgo": "^2.3.0",
+    "unified": "^9.2.1",
+    "jest": "^27.5.1"
   }
 }
