@@ -59,6 +59,7 @@ jobs:
             ${{ runner.os }}-node${{ matrix.node-version }}-accessibility-test-v1-
 
       - run: yarn --frozen-lockfile
+      - run: yarn build
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
       - run: node ./polaris-react/scripts/accessibility-check.js
         env:
@@ -86,6 +87,7 @@ jobs:
             ${{ runner.os }}-node${{ matrix.node-version }}-visual-regression-test-v1-
 
       - run: yarn --frozen-lockfile
+      - run: yarn build
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
 
       - uses: chromaui/action@v1

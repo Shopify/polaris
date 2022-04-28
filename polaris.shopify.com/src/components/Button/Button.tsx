@@ -1,25 +1,52 @@
-import { HTMLProps } from "react";
+import Link, { LinkProps } from "next/link";
+import { HTMLProps, PropsWithChildren } from "react";
+import { className } from "../../utils/various";
 import styles from "./Button.module.scss";
 
-interface Props extends HTMLProps<HTMLButtonElement> {
+interface Props {
   small?: boolean;
   pill?: boolean;
-  children: React.ReactNode;
 }
 
-function Button({ small, pill, children, ...rest }: Props) {
+interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+
+function Button({ small, pill, children, ...rest }: ButtonProps) {
   return (
     <button
-      className={[
+      className={className(
         styles.Button,
-        small ? styles.small : null,
-        pill ? styles.pill : null,
-      ].join(" ")}
+        small && styles.small,
+        pill && styles.pill
+      )}
       {...rest}
       type="button"
     >
       {children}
     </button>
+  );
+}
+
+export function LinkButton({
+  small,
+  pill,
+  href,
+  children,
+  ...rest
+}: LinkButtonProps) {
+  return (
+    <Link href={href} passHref>
+      <a
+        className={className(
+          styles.Button,
+          small && styles.small,
+          pill && styles.pill
+        )}
+        {...rest}
+      >
+        {children}
+      </a>
+    </Link>
   );
 }
 

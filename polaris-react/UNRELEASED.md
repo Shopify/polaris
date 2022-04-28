@@ -10,7 +10,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added `border-width-4` and `border-width-5` tokens and replaced hardcoded values ([#5528](https://github.com/Shopify/polaris/pull/5528))
 - Replaced any hardcoded `outline-width` with `border-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
 - Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
-
 - Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
 
 ### Bug fixes
@@ -28,5 +27,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Integrated `@shopify/polaris-tokens` ([#5659](https://github.com/Shopify/polaris/pull/5659))
 
 ### Code quality
+
+- Replaced `skeleton-content` and `thumbnail-size` mixins with css values ([#5630](https://github.com/Shopify/polaris/pull/5630))
 
 ### Deprecations

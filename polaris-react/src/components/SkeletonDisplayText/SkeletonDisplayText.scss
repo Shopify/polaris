@@ -15,7 +15,13 @@ $skeleton-display-text-max-width: 120px;
   --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-2);
   max-width: $skeleton-display-text-max-width;
 
-  @include skeleton-content;
+  display: flex;
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-base);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
 }
 
 .sizeSmall {
