@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "4.19.0",
+  "version": "4.20.0-rc.1",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
@@ -31,18 +31,18 @@
   "homepage": "https://polaris-icons.shopify.com/",
   "devDependencies": {
     "@babel/core": "^7.13.14",
-    "@shopify/babel-preset": "^23.4.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-virtual": "^2.0.3",
     "@rollup/pluginutils": "^4.1.0",
+    "@shopify/babel-preset": "^23.4.0",
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",
     "hast-util-select": "^3.0.0",
+    "jest": "^27.5.1",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
     "rollup": "^2.28.1",
     "svgo": "^2.3.0",
-    "unified": "^9.2.1",
-    "jest": "^27.5.1"
+    "unified": "^9.2.1"
   }
 }
