@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$textfield-backdrop-offset: calc(-1 * var(--p-border-width-2));
+$textfield-backdrop-offset: calc(-1 * var(--p-space-05));
 $spinner-icon-size: 12px;
 
 .TextField {
@@ -215,15 +215,15 @@ $spinner-icon-size: 12px;
   z-index: var(--pc-text-field-contents);
   color: var(--p-text-subdued);
   user-select: none;
-  padding: var(--p-space-2) var(--p-space-3) var(--p-space-2) var(--p-space-2);
+  padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
   max-height: 140px;
   overflow: scroll;
-  border: var(--p-border);
+  border: var(--p-border-transparent);
   width: 100%;
 
   > .Input {
     padding-left: var(--p-space-0);
-    padding-bottom: var(--p-space-0);
+    padding-right: var(--p-space-0);
   }
 
   @include breakpoint-after(490px) {

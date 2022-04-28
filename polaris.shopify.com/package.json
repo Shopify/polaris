@@ -3,21 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
     "start": "next start",
-    "lint": "next lint"
+    "create-component": "generact --root src/components src/components/Template/Template.tsx",
+    "parse-components": "node src/scripts/parseComponents.mjs",
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
   },
   "dependencies": {
-    "@shopify/polaris": "^9.0.0",
+    "@headlessui/react": "^1.5.0",
+    "@shopify/polaris": "^9.5.0-rc.1 ",
+    "@shopify/polaris-tokens": "5.0.0-rc.6",
+    "downshift": "^6.1.7",
+    "fuse.js": "^6.5.3",
     "next": "12.1.0",
-    "node-fetch": "^3.2.0",
+    "prismjs": "^1.27.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-markdown": "^8.0.2",
+    "rehype-raw": "^6.1.1",
+    "sass": "^1.49.9"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
     "@types/node": "17.0.21",
+    "@types/prismjs": "^1.26.0",
     "@types/react": "17.0.39",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
+    "generact": "^0.4.0",
+    "js-yaml": "^4.1.0",
     "typescript": "4.5.5"
   }
 }

@@ -24,6 +24,10 @@ $breakpoint: 768px;
 
 .Navigation {
   display: none;
+
+  .IncreasedTableDensity & {
+    padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
+  }
 }
 
 .Pip {
@@ -44,6 +48,7 @@ $breakpoint: 768px;
 .ScrollContainer {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 .Table {
@@ -59,7 +64,7 @@ $breakpoint: 768px;
   }
 }
 
-// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
 .TableRow + .TableRow {
   .Cell {
     border-top: var(--p-border-divider);
@@ -125,7 +130,20 @@ $breakpoint: 768px;
   padding: 0;
 
   .IncreasedTableDensity & {
-    padding: var(--p-space-2);
+    padding: var(--p-space-2) var(--p-space-3);
+
+    &:first-child {
+      padding-left: var(--p-space-3);
+
+      button {
+        padding-right: 0;
+        padding-left: var(--p-space-1);
+      }
+    }
+
+    &:last-child {
+      padding-right: var(--p-space-3);
+    }
   }
 }
 
@@ -166,6 +184,14 @@ $breakpoint: 768px;
   cursor: pointer;
   padding: var(--p-space-2);
   margin: var(--p-space-2);
+
+  .StickyHeaderEnabled [data-sticky-active] & {
+    visibility: hidden;
+  }
+
+  .StickyHeaderEnabled [data-sticky-active] .StickyTable & {
+    visibility: visible;
+  }
 
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
@@ -257,5 +283,59 @@ $breakpoint: 768px;
 
   .ZebraStripingOnData & {
     background: none;
+  }
+}
+
+.StickyHeaderEnabled {
+  .StickyTable {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    z-index: var(--p-z-1);
+  }
+
+  .StickyTableHeader {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+
+    &:not(.StickyTableHeader-isSticky) {
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+
+  .StickyHeaderCell {
+    flex-shrink: 0;
+  }
+
+  .StickyTableColumnHeader-isScrolling {
+    box-shadow: 1px 1px 0 0 var(--p-border-divider),
+      1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  }
+
+  .StickyTableHeadingsRow {
+    flex: 1 1 auto;
+    display: flex;
+    overflow-x: auto;
+    background-color: var(--p-surface);
+    justify-content: space-between;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      appearance: none;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  .StickyTableHeader-isSticky {
+    visibility: visible;
+    background-color: var(--p-surface);
+    box-shadow: var(--p-shadow-base);
   }
 }

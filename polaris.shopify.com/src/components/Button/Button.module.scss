@@ -1,0 +1,32 @@
+.Button {
+  display: inline-block;
+  appearance: none;
+  background: #fbfbfb;
+  padding: 0.3rem 0.5rem 0.35rem;
+  border: none;
+  font-weight: var(--font-weight-400);
+  border-radius: var(--border-radius-200);
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    background: #ededed;
+  }
+
+  &.small {
+    font-size: var(--font-size-200);
+  }
+
+  &.pill {
+    border-radius: 100px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  &[aria-pressed="true"],
+  &[aria-selected="true"],
+  &[aria-current="true"] {
+    background: var(--primary);
+    color: white;
+  }
+}

@@ -1,3 +1,4 @@
+import {tokens, createVar} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
@@ -9,14 +10,50 @@ import {
   TextDocumentSyncKind,
   InitializeResult,
 } from 'vscode-languageserver/node';
-
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-import { groupedTokens} from './data/allTokens';
+const {colorSchemes, legacyTokens, ...restTokenGroups} = tokens;
 
-type GroupedTokens = typeof groupedTokens;
+const groupedCompletionItemTokenGroups = {
+  color: colorSchemes.light,
+  ...restTokenGroups,
+};
 
-type GroupedTokensKey = keyof GroupedTokens;
+type GroupedCompletionItemsKey = keyof typeof groupedCompletionItemTokenGroups;
+
+type GroupedCompletionItems = {
+  [K in GroupedCompletionItemsKey]: CompletionItem[];
+};
+
+/**
+ * Grouped VS Code `CompletionItem`s for Polaris custom properties
+ */
+const groupedCompletionItems = Object.fromEntries(
+  Object.entries(groupedCompletionItemTokenGroups).map(
+    ([groupedCompletionItemsKey, tokenGroup]) => {
+      const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
+        tokenGroup,
+      ).map(
+        ([token, {value}]): CompletionItem => ({
+          label: token,
+          insertText: `var(${createVar(token)})`,
+          detail: value,
+          filterText: createVar(token),
+          kind:
+            groupedCompletionItemsKey === 'color'
+              ? CompletionItemKind.Color
+              : CompletionItemKind.Variable,
+        }),
+      );
+
+      return [groupedCompletionItemsKey, groupedCompletionItemProperties];
+    },
+  ),
+) as unknown as GroupedCompletionItems;
+
+const allGroupedCompletionItems: CompletionItem[] = Object.values(
+  groupedCompletionItems,
+).flat();
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -25,28 +62,21 @@ const connection = createConnection(ProposedFeatures.all);
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-type TokenGroupPatterns = {
-  [T in GroupedTokensKey]: RegExp;
+type GroupedCompletionItemPatterns = {
+  [T in GroupedCompletionItemsKey]: RegExp;
 };
 
-let tokenGroupPatterns: TokenGroupPatterns = {
+const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
+  breakpoints: /width/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
   typography: /font|line-height/,
-  'z-index': /z-index/,
+  zIndex: /z-index/,
   shape: /border/,
   depth: /shadow/,
   motion: /animation/,
 };
-
-type GroupedCompletionItem = {
-  [T in GroupedTokensKey]?: CompletionItem[];
-};
-
-let groupedCompletionItems: GroupedCompletionItem = {};
-
-let allCompletionItems: CompletionItem[] = [];
 
 connection.onInitialize((params: InitializeParams) => {
   const capabilities = params.capabilities;
@@ -60,29 +90,6 @@ connection.onInitialize((params: InitializeParams) => {
       },
     },
   };
-
-  // initialize grouped completionItems
-  for(const tokenGroup in groupedTokens) {
-    const category = tokenGroup as keyof typeof tokenGroupPatterns;
-    const tokensArray = groupedTokens[category];
-
-    const completionItems = tokensArray.map((token): CompletionItem => {
-      return {
-        label: token.label,
-        insertText: token.insertText,
-        detail: token.value,
-        filterText: `--p-${token.label}`,
-        kind:
-          category === 'color'
-            ? CompletionItemKind.Color
-            : CompletionItemKind.Variable,
-      };
-    });
-
-    groupedCompletionItems[category] = completionItems;
-
-    allCompletionItems = allCompletionItems.concat(completionItems);
-  }
 
   return result;
 });
@@ -103,13 +110,23 @@ connection.onCompletion(
       end: {line: textDocumentPosition.position.line, character: 1000},
     });
 
-    for (const tokenGroup in tokenGroupPatterns) {
-      const category = tokenGroup as keyof typeof tokenGroupPatterns;
+    for (const tokenGroup in groupedCompletionItemPatterns) {
+      if (
+        Object.prototype.hasOwnProperty.call(
+          groupedCompletionItemPatterns,
+          tokenGroup,
+        )
+      ) {
+        const category =
+          tokenGroup as keyof typeof groupedCompletionItemPatterns;
 
-      if (tokenGroupPatterns[category].test(currentText)) {
-        const currentCompletionItems = groupedCompletionItems[category];
-        if (currentCompletionItems) {
-          matchedCompletionItems = matchedCompletionItems.concat(currentCompletionItems);
+        if (groupedCompletionItemPatterns[category].test(currentText)) {
+          const currentCompletionItems = groupedCompletionItems[category];
+          if (currentCompletionItems) {
+            matchedCompletionItems = matchedCompletionItems.concat(
+              currentCompletionItems,
+            );
+          }
         }
       }
     }
@@ -120,7 +137,7 @@ connection.onCompletion(
     }
 
     // if there were no matches, send everything
-    return allCompletionItems;
+    return allGroupedCompletionItems;
   },
 );
 

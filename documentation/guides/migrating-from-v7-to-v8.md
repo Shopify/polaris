@@ -1,6 +1,6 @@
 # Migrating from v7 to v8
 
-Polaris v8.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v8.0.0)) features a change to the required node version and root font size.
+Polaris v8.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v8.0.0)) features a change to the required node version and root font size.
 
 ## Node support
 

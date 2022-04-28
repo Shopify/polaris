@@ -6,22 +6,17 @@ We love receiving pull requests! Please read the `polaris` contributing docs for
 
 The development workflow for a VS Code Extension is built right into the VS Code Editor. Check out the [VS Code API Docs](https://code.visualstudio.com/api/get-started/your-first-extension#developing-the-extension) for more guidnace on the VS Code extension development workflow. To get started with this project:
 
-1. Download the [`polaris` project](https://github.com/Shopify/polaris)
-2. Open the `polaris-react/polaris-for-vscode` directory in a dedicated VS Code window
-3. Install all dependencies
+1. Clone the [`polaris` repo](https://github.com/Shopify/polaris)
+1. Install all dependencies and build packages
 
-```bash
-yarn
-```
+   ```sh
+   yarn install
+   yarn build
+   ```
 
-4. Run the `generateCustomPropertyNames` script to create the tokens file
-
-```bash
-yarn run generateCustomPropertyNames
-```
-
-5. Run the `build` command with `cmd + shift + B`. This will start the server in watch mode.
-6. Press `F5` to run the client using the [VS Code debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension). This will open up a new `Extension Development Host` window
-7. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
-8. Start typing the extension trigger characters `--` to bring up the Polaris custom properties autocomplete
-9. You're ready to make changes to `polaris-for-vscode` 🎉
+1. Open the [VS Code debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) (<kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>D</kbd>)
+1. Select `polaris-for-vscode: debug` and press <kbd>F5</kbd>) to start debugging
+1. This will open up a new `Extension Development Host` window
+1. Open a `.css` or `.scss` file of your choosing in the `Extensions Development Host` window
+1. Start typing the extension trigger characters `--` to bring up the Polaris custom properties autocomplete
+1. You're ready to make changes to `polaris-for-vscode` 🎉

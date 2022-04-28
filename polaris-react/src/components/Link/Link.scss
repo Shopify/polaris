@@ -19,7 +19,7 @@
   }
 
   &:focus:not(:active) {
-    outline: var(--p-focused) auto 1px;
+    outline: var(--p-focused) auto var(--p-border-width-1);
   }
 
   &:active {

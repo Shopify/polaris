@@ -1,0 +1,14 @@
+{
+  "extends": "@shopify/typescript-configs/node-library.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declarationDir": "dist/types",
+    "composite": true,
+    "incremental": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

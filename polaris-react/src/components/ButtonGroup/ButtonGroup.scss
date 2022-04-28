@@ -37,7 +37,7 @@
     line-height: normal;
 
     &:not(:first-child) {
-      margin-left: calc(-1 * var(--p-border-width-1));
+      margin-left: calc(-1 * var(--p-space-025));
     }
   }
 

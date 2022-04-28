@@ -425,7 +425,7 @@
     border-color: currentColor;
     // stylelint-disable selector-max-class
     box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
-    @include focus-ring($border-width: var(--p-border-width-2));
+    @include focus-ring($border-width: 2px);
 
     &::before {
       content: '';
@@ -486,7 +486,7 @@
 
 .ConnectedDisclosure {
   z-index: var(--pc-button-segment);
-  margin-left: calc(-1 * var(--p-border-width-1));
+  margin-left: calc(-1 * var(--p-space-025));
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   height: 100%;

@@ -12,6 +12,8 @@
   "border-width-1": "1px",
   "border-width-2": "2px",
   "border-width-3": "3px",
+  "border-width-4": "4px",
+  "border-width-5": "5px",
   "border-base": "var(--p-border-width-1) solid var(--p-border-subdued)",
   "border-dark": "var(--p-border-width-1) solid var(--p-border)",
   "border-transparent": "var(--p-border-width-1) solid transparent",

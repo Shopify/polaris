@@ -104,7 +104,11 @@
         "actionHintFile": "或拖放上传文件",
         "actionHintImage": "或拖放上传图片",
         "labelFile": "上传文件",
-        "labelImage": "上传图片"
+        "labelImage": "上传图片",
+        "overlayTextVideo": "拖放上传视频",
+        "actionTitleVideo": "添加视频",
+        "actionHintVideo": "或拖放上传视频",
+        "labelVideo": "上传视频"
       },
       "allowMultiple": {
         "overlayTextFile": "拖放上传文件",
@@ -114,8 +118,13 @@
         "actionHintFile": "或拖放上传文件",
         "actionHintImage": "或拖放上传图片",
         "labelFile": "上传文件",
-        "labelImage": "上传图片"
-      }
+        "labelImage": "上传图片",
+        "overlayTextVideo": "拖放上传视频",
+        "actionTitleVideo": "添加视频",
+        "actionHintVideo": "或拖放上传视频",
+        "labelVideo": "上传视频"
+      },
+      "errorOverlayTextVideo": "视频类型无效"
     },
     "EmptySearchResult": {
       "altText": "没有搜索结果"

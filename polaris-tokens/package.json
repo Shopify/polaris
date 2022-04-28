@@ -1,0 +1,50 @@
+{
+  "name": "@shopify/polaris-tokens",
+  "version": "5.0.0-rc.6",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./json/*": "./dist/json/*",
+    "./css/*": "./dist/css/*"
+  },
+  "scripts": {
+    "build": "run-s build:*",
+    "build:js": "rollup -c",
+    "build:assets": "ts-node --skip-project scripts/index.ts",
+    "build:types": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@shopify/browserslist-config": "^3.0.0",
+    "jest": "^27.5.1",
+    "rollup": "^2.70.2",
+    "ts-node": "^10.7.0"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "browserslist": [
+    "extends @shopify/browserslist-config"
+  ]
+}
