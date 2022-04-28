@@ -20,6 +20,7 @@ The shopify/polaris repository is an [intergalactic](https://www.youtube.com/wat
 polaris/
 ├── documentation               # Documentation for working in the monorepo
 ├── polaris-for-vscode          # VS Code extension for Polaris
+├── polaris-icons               # Icons for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
 ├── polaris-shopify-com         # Documentation website
 ├── polaris-tokens              # Design tokens for Polaris
