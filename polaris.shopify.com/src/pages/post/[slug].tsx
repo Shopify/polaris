@@ -25,7 +25,7 @@ interface Props {
 }
 
 function loadDynamically(path: string) {
-  return dynamic(() => import(`../../posts/${path}.tsx`), {});
+  return dynamic(() => import(`../../posts/${path}.tsx`));
 }
 
 export default function Example({ blocks }: Props) {
