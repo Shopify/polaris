@@ -7,11 +7,13 @@ All notable changes to this project will be documented in this file.
 ## 4.19.1 - 2022-04-21
 
 ### New icons
+
 - `MergeMinor` ([#1476](https://github.com/Shopify/polaris-icons/pull/1477))
 
 ## 4.19.0 - 2022-04-12
 
 ### Updated icons
+
 - `FinancesMinor` ([#1464](https://github.com/Shopify/polaris-icons/issues/1464))
 
 ## 4.18.4 - 2022-04-01
