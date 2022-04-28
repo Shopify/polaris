@@ -25,6 +25,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
 - Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
+- Integrated `@shopify/polaris-tokens` ([#5659](https://github.com/Shopify/polaris/pull/5659))
 
 ### Code quality
 
