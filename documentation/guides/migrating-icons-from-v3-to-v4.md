@@ -1,4 +1,4 @@
-# Migrating from v3 to v4
+# Migrating @shopify/polaris-icons from v3 to v4
 
 Polaris Icons v4.0.0 ([full release notes](https://github.com/Shopify/polaris-icons/releases/tag/v4.0.0)) updates icon styles across the board. It replaces monotone, twotone and filled major icon variants with a single style and icons that previously lived in the `@shopify/polaris-icons-internal` package are now part of the public `@shopify/polaris-icons` package. This document describes all code updates required to stay up to date.
 

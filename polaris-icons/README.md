@@ -98,7 +98,7 @@ Suggested CSS and markup for projects that aren’t using the Polaris HTML and C
 
 ## Contributing 🙌
 
-To add, remove, or rename icons, follow the [contributing guide](https://github.com/Shopify/polaris-icons/blob/main/CONTRIBUTING.md) (restricted to Shopify employees). 👀
+To add, remove, or rename icons, follow the [contributing guide](https://github.com/Shopify/polaris/blob/main/polaris-icons/CONTRIBUTING.md).
 
 ## Licenses 📝
 

@@ -35,4 +35,5 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn build
       - run: yarn type-check
+      - run: yarn lint
       - run: yarn workspace @shopify/polaris-icons test
