@@ -1,3 +1,5 @@
+const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+
 /**
  * Internal Stylelint config for @shopify/polaris
  */
@@ -10,7 +12,7 @@ const {
  *
  * Result: ['--p-background', '--p-text', etc...]
  */
-const polarisCustomPropertyNames = require('../tmp-tokens/polaris-custom-property-names');
+const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 
 /**
  * Allowed custom property names in Polaris component styles.
