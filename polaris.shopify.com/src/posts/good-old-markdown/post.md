@@ -1,3 +1,3 @@
-# From markdown
+# This is the post
 
-This will be rendered just as you'd expect
+It's written using regular markdown. It works out of the box.

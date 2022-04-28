@@ -1,3 +1,3 @@
-# Blog post
+# Mixed post
 
-Let me show you something interesting...
+This post starts out with some markdown.
