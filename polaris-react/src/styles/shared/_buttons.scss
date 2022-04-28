@@ -9,6 +9,10 @@
     (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
   );
 
+  $vertical-padding-mobile: calc(
+    (var(--p-line-height-7) - var(--p-line-height-2)) / 2
+  );
+
   @include recolor-icon(var(--p-icon));
   @include focus-ring($border-width: var(--p-border-width-1));
   position: relative;
@@ -18,7 +22,7 @@
   min-height: var(--p-line-height-6);
   min-width: var(--p-line-height-6);
   margin: 0;
-  padding: $vertical-padding var(--p-space-6);
+  padding: $vertical-padding-mobile var(--p-space-6);
   background: var(--p-surface);
   box-shadow: var(--p-shadow-button);
   border-radius: var(--p-border-radius-3);
