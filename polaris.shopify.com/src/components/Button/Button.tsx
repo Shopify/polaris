@@ -1,5 +1,6 @@
 import Link, { LinkProps } from "next/link";
 import { HTMLProps, PropsWithChildren } from "react";
+import { className } from "../../utils/various";
 import styles from "./Button.module.scss";
 
 interface Props {
@@ -13,11 +14,11 @@ interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
 function Button({ small, pill, children, ...rest }: ButtonProps) {
   return (
     <button
-      className={[
+      className={className(
         styles.Button,
-        small ? styles.small : null,
-        pill ? styles.pill : null,
-      ].join(" ")}
+        small && styles.small,
+        pill && styles.pill
+      )}
       {...rest}
       type="button"
     >
@@ -36,11 +37,11 @@ export function LinkButton({
   return (
     <Link href={href} passHref>
       <a
-        className={[
+        className={className(
           styles.Button,
-          small ? styles.small : null,
-          pill ? styles.pill : null,
-        ].join(" ")}
+          small && styles.small,
+          pill && styles.pill
+        )}
         {...rest}
       >
         {children}

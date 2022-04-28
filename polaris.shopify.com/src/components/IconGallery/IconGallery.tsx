@@ -6,6 +6,7 @@ import Fuse from "fuse.js";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
+import { className } from "../../utils/various";
 
 interface Props {}
 
@@ -174,10 +175,10 @@ function IconGrid({
       {filteredIcons.map((icon) => (
         <li
           key={`${icon.name}+${icon.set}`}
-          className={[
+          className={className(
             styles.Icon,
-            selectedIconName === icon.name ? styles.current : null,
-          ].join(" ")}
+            selectedIconName === icon.name && styles.current
+          )}
         >
           <button onClick={() => onClick(icon.name)}>
             <div style={{ filter: "brightness(-500%)" }}>

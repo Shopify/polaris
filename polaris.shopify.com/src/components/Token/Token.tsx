@@ -1,5 +1,6 @@
 import { createVar } from "@shopify/polaris-tokens";
 import { useCopyToClipboard } from "../../utils/hooks";
+import { className } from "../../utils/various";
 import styles from "./Token.module.scss";
 
 interface Props {
@@ -10,17 +11,17 @@ interface Props {
   renderPreview: () => React.ReactNode;
 }
 
-function Token({ name, description, value, bigGap, renderPreview }: Props) {
+function Token({ name, description, bigGap, renderPreview }: Props) {
   const variableName = createVar(name);
   const [copy, didJustCopy] = useCopyToClipboard(`var(${variableName})`);
 
   return (
     <div
-      className={[
+      className={className(
         styles.Token,
         didJustCopy && styles.didJustCopy,
-        bigGap && styles.bigGap,
-      ].join(" ")}
+        bigGap && styles.bigGap
+      )}
       id={name}
     >
       <button

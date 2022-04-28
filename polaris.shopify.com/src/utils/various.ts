@@ -53,3 +53,9 @@ export const getTitleForTitleTag = (title?: string) => {
   }
   return siteName;
 };
+
+export const className = (
+  ...classNames: (string | undefined | boolean | null)[]
+): string => {
+  return classNames.filter((className) => Boolean(className)).join(" ");
+};

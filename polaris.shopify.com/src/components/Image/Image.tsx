@@ -1,6 +1,7 @@
 import NextJSImage from "next/image";
 import { ImageProps } from "next/image";
 import { useState } from "react";
+import { className } from "../../utils/various";
 import styles from "./Image.module.scss";
 
 interface Props extends ImageProps {}
@@ -10,7 +11,7 @@ function Image({ ...rest }: Props) {
 
   return (
     <NextJSImage
-      className={[styles.Image, hasLoaded ? styles.hasLoaded : null].join(" ")}
+      className={className(styles.Image, hasLoaded && styles.hasLoaded)}
       alt=""
       onLoad={() => setHasLoaded(true)}
       {...rest}
