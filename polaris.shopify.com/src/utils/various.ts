@@ -55,7 +55,7 @@ export const getTitleForTitleTag = (title?: string) => {
 };
 
 export const className = (
-  ...classNames: (string | undefined | boolean | null)[]
+  ...classNames: (string | boolean | null | undefined)[]
 ): string => {
   return classNames.filter((className) => Boolean(className)).join(" ");
 };
