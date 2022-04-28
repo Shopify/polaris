@@ -1,3 +1,5 @@
+const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+
 const {
   ruleName: customPropertiesAllowedListRuleName,
 } = require('./plugins/custom-properties-allowed-list');
@@ -6,7 +8,7 @@ const {
  *
  * @example ['--p-text', '--p-background']
  */
-const polarisCustomPropertyNames = require('./tmp-tokens/polaris-custom-property-names');
+const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 
 /**
  * User defined custom property names.

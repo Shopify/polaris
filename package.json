@@ -5,9 +5,9 @@
     "node": "^14.17.0 || ^16.13.0"
   },
   "workspaces": [
+    "polaris-tokens",
     "polaris-for-vscode",
     "polaris-react",
-    "polaris-tokens",
     "stylelint-polaris",
     "polaris.shopify.com"
   ],
