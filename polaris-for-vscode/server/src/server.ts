@@ -1,5 +1,4 @@
 import {tokens, createVar} from '@shopify/polaris-tokens';
-
 import {
   createConnection,
   TextDocuments,
