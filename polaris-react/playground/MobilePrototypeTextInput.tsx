@@ -58,6 +58,7 @@ export function MobilePrototypeTextInput() {
                     maxLength={35}
                     autoComplete="off"
                     showCharacterCount
+                    labelAction={{content: 'Action'}}
                   />
 
                   <TextField
