@@ -1,6 +1,7 @@
 import React from 'react';
 import type {ColorScheme} from '@shopify/polaris-tokens';
-import '@shopify/polaris-tokens/css/styles.css';
+
+import './CustomProperties.scss';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
