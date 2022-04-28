@@ -46,7 +46,7 @@ allIconFiles.forEach(
 
       it(`has an xml namespace`, () => {
         const xmlns = select(':root', iconAst).properties.xmlns;
-        expect(xmlns).toStrictEqual('http://www.w3.org/2000/svg');
+        expect(xmlns).toBe('http://www.w3.org/2000/svg');
       });
 
       it(`has a viewbox of "${expectedViewbox}"`, () => {
