@@ -8,7 +8,7 @@ const stylesDir = path.join(polarisReactDir, 'src/styles');
 
 const file = fs.createWriteStream(path.join(stylesDir, '_media-queries.scss'));
 
-const breakpointEntries = Object.entries(tokens.motion).map(
+const breakpointEntries = Object.entries(tokens.breakpoints).map(
   ([token, breakpoint]) => [`$p-${token}`, breakpoint],
 );
 

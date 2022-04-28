@@ -4,12 +4,10 @@ on:
   pull_request:
     paths:
       - 'stylelint-polaris/**'
-      - 'polaris-tokens/src/token-groups/**'
   push:
     branches: main
     paths:
       - 'stylelint-polaris/**'
-      - 'polaris-tokens/src/token-groups/**'
 
 jobs:
   test:
