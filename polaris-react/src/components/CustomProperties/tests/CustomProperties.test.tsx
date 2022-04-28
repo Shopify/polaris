@@ -76,36 +76,4 @@ describe('<CustomProperties />', () => {
       ).toBe('dark');
     });
   });
-
-  describe('style tag', () => {
-    it('inlines a style tag above the root container', () => {
-      const customProperties = mountWithApp(<CustomProperties />);
-
-      const styleProps: any = {
-        'data-polaris-custom-properties': '',
-      };
-
-      const styleTag = customProperties.find('style', styleProps)!;
-
-      expect(styleTag.domNode?.nextSibling?.nodeName).toBe('DIV');
-    });
-
-    // Skipping until we can figure out how to optimally apply the style tag once.
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('inlines a style tag one time', () => {
-      const customProperties = mountWithApp(
-        <CustomProperties>
-          <CustomProperties>
-            <CustomProperties />
-          </CustomProperties>
-        </CustomProperties>,
-      );
-
-      const styleSheets = customProperties
-        .html()
-        .match(new RegExp(`<style data-polaris-custom-properties`, 'g'));
-
-      expect(styleSheets).toHaveLength(1);
-    });
-  });
 });

@@ -57,8 +57,8 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? tokens.motion['duration-500']
-    : tokens.motion['duration-0'];
+    ? tokens.motion['duration-500'].value
+    : tokens.motion['duration-0'].value;
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
@@ -67,7 +67,7 @@ export function ProgressBar({
       <CSSTransition
         in
         appear
-        timeout={parseInt(progressBarDuration.value, 10)}
+        timeout={parseInt(progressBarDuration, 10)}
         classNames={{
           appearActive: styles.IndicatorAppearActive,
           appearDone: styles.IndicatorAppearDone,
