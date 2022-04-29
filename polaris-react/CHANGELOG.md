@@ -10,6 +10,9 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ## 9.6.0 - 2022-04-29
 
+- Added an `autoSelection` prop to `Listbox` to support always defaulting the initial active option to the first option ([#5667](https://github.com/Shopify/polaris/pull/5667))
+- Added `autoSelection` `AutoSelection.First` to `Autocomplete` `Listbox` when `actionBefore` is set ([#5667](https://github.com/Shopify/polaris/pull/5667))
+
 ### Enhancements
 
 ## 9.5.2 - 2022-04-26
