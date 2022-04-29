@@ -1,11 +1,18 @@
 import fs from "fs";
+import path from "path";
 import yaml from "js-yaml";
+import rimraf from "rimraf";
 
-const iconsDir = "./public/icons";
+const iconsDir = "../../polaris-icons/icons";
 
 let icons = [];
 
 const files = fs.readdirSync(iconsDir, "utf-8");
+
+try {
+  rimraf.sync("./public/icons");
+} catch (error) {}
+fs.mkdirSync("./public/icons");
 
 for (let i = 0; i < files.length; i++) {
   const file = files[i];
@@ -15,6 +22,15 @@ for (let i = 0; i < files.length; i++) {
         fs.readFileSync(`${iconsDir}/${file}`, "utf8")
       );
       meta.fileName = file.replace(".yml", "");
+
+      fs.copyFile(
+        path.join(iconsDir, file.replace(".yml", ".svg")),
+        `./public/icons/${meta.fileName}.svg`,
+        (err) => {
+          if (err) throw err;
+        }
+      );
+
       icons.push(meta);
     } catch (e) {
       console.log(e);
