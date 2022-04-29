@@ -19,7 +19,8 @@
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier '**/*.{md,json,yml}' --check",
     "lint:stylelint": "stylelint '**/*.scss'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "version": "echo no"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.4",
@@ -33,5 +34,6 @@
     "stylelint": "^14.1.0",
     "typescript": ">=3.0.0"
   },
-  "prettier": "@shopify/prettier-config"
+  "prettier": "@shopify/prettier-config",
+  "version": "0.0.0"
 }
