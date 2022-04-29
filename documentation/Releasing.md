@@ -34,4 +34,5 @@ The process for releasing the monorepo's contents is in active development. This
 
 ### [stylelint-polaris](/stylelint-polaris)
 
-* Steps tk
+* Go to ship-it (our internal tool)
+* Release the package to NPM
