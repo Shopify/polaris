@@ -37,5 +37,5 @@
     "typescript": ">=3.0.0"
   },
   "prettier": "@shopify/prettier-config",
-  "version": "9.6.0-rc.2"
+  "version": "0.0.0"
 }
