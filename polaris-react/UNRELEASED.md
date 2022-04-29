@@ -20,8 +20,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
 
 - Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
-- Added an `autoSelection` prop to `Listbox` to support always defaulting the initial active option to the first option ([#5667](https://github.com/Shopify/polaris/pull/5667))
-- Added `autoSelection` `AutoSelection.First` to `Autocomplete` `Listbox` when `actionBefore` is set ([#5667](https://github.com/Shopify/polaris/pull/5667))
 
 ### Bug fixes
 
