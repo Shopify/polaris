@@ -232,6 +232,37 @@ describe('useIndexResourceState', () => {
           .find(TypedChild)!
           .trigger('onClick', SelectionType.Single, true, id);
 
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [id],
+        });
+
+        mockComponent.setProps({resources: []});
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [],
+        });
+      });
+
+      it('deselects resources that are removed from resource list using a custom id resolver', () => {
+        const selectedID = '1';
+        const resources = [{node: {id: selectedID}}];
+        const customIDResolver = (resource: {node: {id: string}}) =>
+          resource.node.id;
+        const mockComponent = mountWithApp(
+          <MockComponent
+            resources={resources}
+            options={{resourceIDResolver: customIDResolver}}
+          />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Page, true);
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [selectedID],
+        });
+
         mockComponent.setProps({resources: []});
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
