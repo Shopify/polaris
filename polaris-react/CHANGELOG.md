@@ -8,6 +8,10 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
+## 9.6.0 - 2022-04-29
+
+### Enhancements
+
 ## 9.5.2 - 2022-04-26
 
 ### Bug fixes
