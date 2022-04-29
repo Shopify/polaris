@@ -46,5 +46,10 @@
   },
   "browserslist": [
     "extends @shopify/browserslist-config"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
   ]
 }
