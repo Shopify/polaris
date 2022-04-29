@@ -16,6 +16,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Used prop-provided `selectable` value in `IndexTable` ([#5661](https://github.com/Shopify/polaris/pull/5661))
 - Fixed passing inline styles to the root element of the `CustomProperties` component ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Replaced incorrect usage of `aria-expanded` on `Collapsible` with `aria-hidden` ([#5661](https://github.com/Shopify/polaris/pull/5661))
 
 ### Documentation
 
