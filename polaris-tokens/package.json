@@ -46,5 +46,8 @@
   },
   "browserslist": [
     "extends @shopify/browserslist-config"
+  ],
+  "files": [
+    "dist"
   ]
 }
