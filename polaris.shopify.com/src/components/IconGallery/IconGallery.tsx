@@ -43,8 +43,6 @@ function IconGallery({}: Props) {
     throw new Error(`Could not find icon ${selectedIconName}`);
   }
 
-  const svgs = importedSvgs.keys();
-
   return (
     <div className={styles.IconGallery}>
       <div style={{ flex: 1 }}>
