@@ -1,20 +1,26 @@
 .Nav {
   flex: 1;
   font-size: var(--font-size-300);
-  padding: 2rem;
+  padding: 2.75rem 3rem 3rem;
   min-width: 16rem;
-  border-right: 1px solid #ededed;
+  display: flex;
+  border-right: 0.5px solid #ddd;
+
+  > ul {
+    flex: 1;
+  }
 
   span {
     font-weight: var(--font-weight-500);
+    font-size: var(--font-size-200);
   }
 
   a {
     position: relative;
     display: inline-block;
     padding: 1px 0;
-    padding-left: 1.2rem;
-    color: var(--text-subdued);
+    padding-left: 1.25rem;
+    color: var(--text-strong);
 
     &:hover {
       color: inherit;
@@ -40,7 +46,6 @@
 
     &[aria-current="page"] {
       color: var(--primary);
-      font-weight: var(--font-weight-500);
 
       &::before {
         background: var(--primary);
@@ -54,13 +59,21 @@
   }
 
   > ul > li {
-    margin-bottom: 1.25rem;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+      ul {
+        margin-bottom: 0;
+      }
+    }
 
     > span {
       display: inline-block;
       margin-bottom: 0.25rem;
-      font-size: var(--font-size-700);
-      font-weight: var(--font-weight-400);
+      font-size: var(--font-size-600);
+      font-weight: var(--font-weight-600);
+      color: var(--text-strong);
     }
   }
 }

@@ -5,12 +5,7 @@ import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import { useRouter } from "next/router";
 import GlobalSearch from "../GlobalSearch";
-import {
-  FileTextIcon,
-  GridIcon,
-  LayersIcon,
-  PackageIcon,
-} from "./PageNavIcons";
+import { className } from "../../utils/various";
 
 interface Props {
   renderNav?: () => React.ReactNode;
@@ -21,68 +16,64 @@ interface Props {
 const headerNavItems: {
   url: string;
   label: string;
-  icon: React.ReactNode;
 }[] = [
+  {
+    url: "#resources",
+    label: "Resources",
+  },
   {
     url: "/guidelines/foundations/experience-values",
     label: "Guidelines",
-    icon: <FileTextIcon />,
   },
-  { url: "/components", label: "Components", icon: <PackageIcon /> },
+  { url: "/components", label: "Components" },
+  { url: "/icons", label: "Icons" },
   {
     url: "/tokens/getting-started",
     label: "Tokens",
-    icon: <LayersIcon />,
   },
-  { url: "/icons", label: "Icons", icon: <GridIcon /> },
 ];
 
 function Page({ renderNav, noLayout = false, children }: Props) {
   const router = useRouter();
 
   return (
-    <div className={[styles.Page, noLayout ? styles.noLayout : null].join(" ")}>
+    <div className={className(styles.Page, noLayout && styles.noLayout)}>
       <div className={styles.Header}>
-        <div className={styles.HeaderMain}>
-          <Link href="/">
-            <a className={styles.Logo}>
-              <Image
-                src={shopifyLogo}
-                width={32}
-                height={32}
-                alt="Shopify logo"
-              />
-              Polaris
-            </a>
-          </Link>
+        <Link href="/">
+          <a className={styles.Logo}>
+            <Image
+              src={shopifyLogo}
+              width={24}
+              height={24}
+              alt="Shopify logo"
+            />
+            Polaris
+          </a>
+        </Link>
 
-          <div className={styles.SearchWrapper}>
-            <GlobalSearch />
-          </div>
+        <ul className={styles.Nav}>
+          {headerNavItems.map(({ url, label }) => {
+            const section = router.asPath.split("/").slice(0, 2).join("/");
+            const isCurrent =
+              section !== "/" && url.startsWith(section) ? "page" : false;
+            return (
+              <li key={url}>
+                <Link href={url} passHref>
+                  <a aria-current={isCurrent}>{label}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
-          <ul className={styles.HeaderNav}>
-            {headerNavItems.map(({ url, label, icon }) => {
-              const section = router.asPath.split("/").slice(0, 2).join("/");
-              const isCurrent =
-                section !== "/" && url.startsWith(section) ? "page" : false;
-              return (
-                <li key={url}>
-                  <Link href={url}>
-                    <a aria-current={isCurrent}>
-                      {icon}
-                      {label}
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+        <div className={styles.SearchWrapper}>
+          <GlobalSearch />
         </div>
-
-        <div className={styles.HeaderSub}>{renderNav && renderNav()}</div>
       </div>
 
       <div className={styles.Content}>
+        <div className={styles.Sidebar}>{renderNav && renderNav()}</div>
+
         {noLayout ? (
           <>{children}</>
         ) : (

@@ -48,7 +48,7 @@ function ComponentsNav({ category }: Props) {
   return (
     <div className={styles.ComponentsNav}>
       <div className={styles.Filters}>
-        <h2>Components</h2>
+        <h1>Components</h1>
 
         <div className={styles.TextField}>
           <TextField
@@ -108,7 +108,7 @@ function ComponentsNav({ category }: Props) {
                       />
                     </div>
                     <div>
-                      <h4>{name}</h4>
+                      <h2>{name}</h2>
                       <p>{stripMarkdownLinks(intro)}</p>
                     </div>
                   </a>

@@ -42,7 +42,7 @@ function IconGallery({}: Props) {
     <div className={styles.IconGallery}>
       <div style={{ flex: 1 }}>
         <div className={styles.Filter}>
-          <h2>Icons</h2>
+          <h1>Icons</h1>
           <div className={styles.TextField}>
             <TextField
               value={filterString}

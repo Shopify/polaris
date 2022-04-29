@@ -1,7 +1,7 @@
 .GlobalSearch {
-  padding-left: 1rem;
+  position: relative;
   input {
-    background: #ffffff url(./SearchMajor.svg) no-repeat 1rem center;
+    background: transparent url(./SearchMajor.svg) no-repeat 1rem center;
     background-size: 16px auto;
 
     &::-webkit-search-decoration,
@@ -16,10 +16,11 @@
 .Results {
   position: absolute;
   z-index: 1;
-  border-radius: var(--border-radius-500);
+  border-radius: var(--border-radius-600);
   width: 30rem;
-  animation: search-results-enter 0.3s cubic-bezier(0.25, 1, 0.5, 1) both;
-  transform-origin: 0 0;
+  right: 0;
+  animation: search-results-enter 0.2s cubic-bezier(0.25, 1, 0.5, 1) both;
+  transform-origin: 100% 0;
   overflow: auto;
   overscroll-behavior: contain;
   max-height: 70vh;
@@ -42,7 +43,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--border-radius-400);
     color: inherit;
   }
@@ -54,11 +55,8 @@
 }
 
 .ResultCategory {
-  margin: 2rem 0 0;
+  margin: 2rem 0 0.75rem;
   padding: 0 1rem;
-  font-size: var(--font-size-700);
-  letter-spacing: var(--letter-spacing-200);
-  font-weight: var(--font-weight-400);
 
   &:first-child {
     margin-top: 0;
@@ -67,18 +65,14 @@
 
 .Title {
   margin: 0;
-  font-weight: var(--font-weight-500);
 }
 
 .Excerpt {
-  margin: 0;
-  font-size: 0.8rem;
   display: flex;
-  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   overflow: hidden;
-  opacity: 0.75;
-  font-weight: 300;
+  font-size: var(--font-size-100);
 }
 
 .ComponentPreview {
@@ -99,12 +93,12 @@
 
 @keyframes search-results-enter {
   from {
-    transform: scale(0.925) translateY(4px);
+    transform: scale(0.95) translateY(4px);
     opacity: 0;
   }
 
   to {
-    transform: scale(1) translateY(4px);
+    transform: scale(1) translateY(8px);
     opacity: 1;
   }
 }
