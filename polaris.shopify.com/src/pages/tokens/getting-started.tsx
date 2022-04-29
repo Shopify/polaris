@@ -17,7 +17,7 @@ const Components: NextPage = () => {
       </Head>
 
       <Longform>
-        <h1>Getting started</h1>
+        <h1>Tokens</h1>
         <p>
           Design tokens allow us to ship design decisions with consistency and
           scale.

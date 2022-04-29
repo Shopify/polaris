@@ -79,7 +79,7 @@ function GlobalSearch({}: Props) {
             return (
               <Fragment key={`${item.url}`}>
                 {shouldShowCategory && (
-                  <p className={styles.ResultCategory}>{item.category}</p>
+                  <h2 className={styles.ResultCategory}>{item.category}</h2>
                 )}
                 <li
                   {...getItemProps({ item, index })}
@@ -122,7 +122,7 @@ function GlobalSearch({}: Props) {
                       )}
 
                       <div>
-                        <p className={styles.Title}>{item.title}</p>
+                        <h4 className={styles.Title}>{item.title}</h4>
                         <p className={styles.Excerpt}>{item.excerpt}</p>
                       </div>
 

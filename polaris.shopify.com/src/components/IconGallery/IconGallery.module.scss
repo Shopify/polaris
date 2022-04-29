@@ -1,12 +1,17 @@
 .IconGallery {
   display: flex;
+  flex: 1;
+
+  h1 {
+    margin-top: 0;
+  }
 }
 
 .Filter {
-  padding: 2rem;
+  padding: 2.5rem 3rem;
 
   .TextField {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
   }
 }
 
@@ -25,7 +30,7 @@
   margin-bottom: 3rem;
   flex: 1;
   gap: 2px;
-  padding: 0 0 0 2px;
+  padding: 0 3rem;
 
   /*
   This is a bit ugly, but the point is to avoid grid reflow
@@ -109,6 +114,7 @@
 .Sidebar {
   width: 28rem;
   animation: sidebar-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-left: 0.5px solid #ddd;
 }
 
 .SidebarInner {

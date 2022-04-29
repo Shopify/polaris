@@ -2,12 +2,13 @@
   display: inline-block;
   appearance: none;
   background: #fbfbfb;
-  padding: 0.3rem 0.5rem 0.35rem;
+  padding: 0.2rem 0.5rem;
   border: none;
   font-weight: var(--font-weight-400);
   border-radius: var(--border-radius-200);
   cursor: pointer;
   color: inherit;
+  user-select: none;
 
   &:hover {
     background: #ededed;
@@ -18,7 +19,7 @@
   }
 
   &.pill {
-    border-radius: 100px;
+    border-radius: var(--border-radius-round);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
