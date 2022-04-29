@@ -14,6 +14,9 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Used prop-provided `selectable` value in `IndexTable` ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Fixed passing inline styles to the root element of the `CustomProperties` component ([#5661](https://github.com/Shopify/polaris/pull/5661))
+
 ### Documentation
 
 - Added wrapper with height on `Combobox` example for autocomplete with loading ([#5624](https://github.com/Shopify/polaris/pull/5624))
