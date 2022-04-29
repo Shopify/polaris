@@ -36,6 +36,5 @@
     "stylelint": "^14.1.0",
     "typescript": ">=3.0.0"
   },
-  "prettier": "@shopify/prettier-config",
-  "version": "0.0.0"
+  "prettier": "@shopify/prettier-config"
 }
