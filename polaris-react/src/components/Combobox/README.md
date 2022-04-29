@@ -292,90 +292,139 @@ Use to display selected options above the input value.
 
 ```jsx
 function MultiselectTagComboboxExample() {
-  const deselectedOptions = [
-    'Rustic',
-    'Antique',
-    'Vinyl',
-    'Vintage',
-    'Refurbished',
-  ];
+  const [selectedTags, setSelectedTags] = useState(['Rustic']);
+  const [value, setValue] = useState('');
+  const [suggestion, setSuggestion] = useState('');
 
-  const [selectedOptions, setSelectedOptions] = useState(['Rustic']);
-  const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState(deselectedOptions);
+  const handleActiveOptionChange = useCallback(
+    (activeOption) => {
+      const activeOptionIsAction = activeOption === value;
 
-  const updateText = useCallback(
-    (value) => {
-      setInputValue(value);
-
-      if (value === '') {
-        setOptions(deselectedOptions);
-        return;
+      if (!activeOptionIsAction && !selectedTags.includes(activeOption)) {
+        setSuggestion(activeOption);
+      } else {
+        setSuggestion('');
       }
-
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = deselectedOptions.filter((option) =>
-        option.match(filterRegex),
-      );
-      setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [value, selectedTags],
   );
-
   const updateSelection = useCallback(
     (selected) => {
-      if (selectedOptions.includes(selected)) {
-        setSelectedOptions(
-          selectedOptions.filter((option) => option !== selected),
-        );
+      const nextSelectedTags = new Set([...selectedTags]);
+
+      if (nextSelectedTags.has(selected)) {
+        nextSelectedTags.delete(selected);
       } else {
-        setSelectedOptions([...selectedOptions, selected]);
+        nextSelectedTags.add(selected);
       }
-
-      const matchedOption = options.find((option) => {
-        return option === selected;
-      });
-
-      updateText('');
+      setSelectedTags([...nextSelectedTags]);
+      setValue('');
+      setSuggestion('');
     },
-    [options, selectedOptions],
+    [selectedTags],
   );
 
   const removeTag = useCallback(
     (tag) => () => {
-      const options = [...selectedOptions];
-      options.splice(options.indexOf(tag), 1);
-      setSelectedOptions(options);
+      updateSelection(tag);
     },
-    [selectedOptions],
+    [updateSelection],
   );
 
+  const getAllTags = useCallback(() => {
+    const savedTags = ['Rustic', 'Antique', 'Vinyl', 'Vintage', 'Refurbished'];
+    return [...new Set([...savedTags, ...selectedTags].sort())];
+  }, [selectedTags]);
+
+  const formatOptionText = useCallback(
+    (option) => {
+      const trimValue = value.trim().toLocaleLowerCase();
+      const matchIndex = option.toLocaleLowerCase().indexOf(trimValue);
+
+      if (!value || matchIndex === -1) return option;
+
+      const start = option.slice(0, matchIndex);
+      const highlight = option.slice(matchIndex, matchIndex + trimValue.length);
+      const end = option.slice(matchIndex + trimValue.length, option.length);
+
+      return (
+        <p>
+          {start}
+          <TextStyle variation="strong">{highlight}</TextStyle>
+          {end}
+        </p>
+      );
+    },
+    [value],
+  );
+
+  const options = useMemo(() => {
+    let list;
+    const allTags = getAllTags();
+    const filterRegex = new RegExp(value, 'i');
+
+    if (value) {
+      list = allTags.filter((tag) => tag.match(filterRegex));
+    } else {
+      list = allTags;
+    }
+
+    return [...list];
+  }, [value, getAllTags]);
+
   const verticalContentMarkup =
-    selectedOptions.length > 0 ? (
+    selectedTags.length > 0 ? (
       <Stack spacing="extraTight" alignment="center">
-        {selectedOptions.map((option) => (
-          <Tag key={`option-${option}`} onRemove={removeTag(option)}>
-            {option}
+        {selectedTags.map((tag) => (
+          <Tag key={`option-${tag}`} onRemove={removeTag(tag)}>
+            {tag}
           </Tag>
         ))}
       </Stack>
     ) : null;
 
-  const optionsMarkup =
+  const optionMarkup =
     options.length > 0
       ? options.map((option) => {
           return (
             <Listbox.Option
               key={option}
               value={option}
-              selected={selectedOptions.includes(option)}
+              selected={selectedTags.includes(option)}
               accessibilityLabel={option}
             >
-              {option}
+              <Listbox.TextOption selected={selectedTags.includes(option)}>
+                {formatOptionText(option)}
+              </Listbox.TextOption>
             </Listbox.Option>
           );
         })
       : null;
+
+  const noResults = value && !getAllTags().includes(value);
+
+  const actionMarkup = noResults ? (
+    <Listbox.Action value={value}>{`Add "${value}"`}</Listbox.Action>
+  ) : null;
+
+  const emptyStateMarkup = optionMarkup ? null : (
+    <EmptySearchResult
+      title=""
+      description={`No tags found matching "${value}"`}
+    />
+  );
+
+  const listboxMarkup =
+    optionMarkup || actionMarkup || emptyStateMarkup ? (
+      <Listbox
+        autoSelection="FIRST"
+        onSelect={updateSelection}
+        onActiveOptionChange={handleActiveOptionChange}
+      >
+        {actionMarkup}
+        {optionMarkup}
+      </Listbox>
+    ) : null;
 
   return (
     <div style={{height: '225px'}}>
@@ -383,18 +432,18 @@ function MultiselectTagComboboxExample() {
         allowMultiple
         activator={
           <Combobox.TextField
-            onChange={updateText}
+            autoComplete="off"
             label="Search tags"
             labelHidden
-            value={inputValue}
+            value={value}
+            suggestion={suggestion}
             placeholder="Search tags"
             verticalContent={verticalContentMarkup}
+            onChange={setValue}
           />
         }
       >
-        {optionsMarkup ? (
-          <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
-        ) : null}
+        {listboxMarkup}
       </Combobox>
     </div>
   );

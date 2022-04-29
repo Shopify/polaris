@@ -217,7 +217,7 @@ export type {LinkProps} from './components/Link';
 export {List} from './components/List';
 export type {ListProps} from './components/List';
 
-export {Listbox} from './components/Listbox';
+export {Listbox, AutoSelection} from './components/Listbox';
 export type {ListboxProps} from './components/Listbox';
 
 export {Loading} from './components/Loading';
