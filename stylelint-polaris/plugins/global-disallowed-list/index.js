@@ -40,7 +40,7 @@ const {rule} = stylelint.createPlugin(
         found.forEach((test) => {
           const invalidValue = isString(test)
             ? test
-            : decl.value.match(test)?.[0];
+            : /** @type {string} */ (decl.value.match(test)?.[0]);
 
           stylelint.utils.report({
             ruleName,
