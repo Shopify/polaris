@@ -15,7 +15,6 @@ for (let i = 0; i < files.length; i++) {
         fs.readFileSync(`${iconsDir}/${file}`, "utf8")
       );
       meta.fileName = file.replace(".yml", "");
-
       icons.push(meta);
     } catch (e) {
       console.log(e);
