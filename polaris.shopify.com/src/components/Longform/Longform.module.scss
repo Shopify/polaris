@@ -8,9 +8,12 @@
     background: white;
   }
 
-  li {
+  ul li {
     list-style-type: disc;
-    margin-left: 1.1rem;
+  }
+
+  ol li {
+    list-style-type: decimal;
   }
 
   h1,
@@ -18,24 +21,40 @@
   h3,
   h4,
   p,
-  ul {
+  ul,
+  .usage-list {
     margin: 1.25rem 0;
   }
 
-  h1 {
-    margin-bottom: 2rem;
+  ul,
+  ol {
+    margin-left: 1.1em;
+    ul,
+    ol {
+      margin-left: 1.75em;
+    }
+  }
 
+  li {
+    margin: 0.5em 0;
+  }
+
+  h1 {
+    max-width: 80%;
     &:first-child {
       margin-top: 0;
     }
   }
 
   h2 {
-    margin-top: 2.25rem;
+    margin-top: 3rem;
   }
 
   h3 {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
+    + p {
+      margin-top: -0.5rem;
+    }
   }
 
   h4 {
@@ -60,12 +79,18 @@
       margin: 0;
     }
   }
+
+  .usage-list {
+    + h3 {
+      margin-top: 2.5rem !important;
+    }
+  }
 }
 
 .Content {
   h1 + p:first-of-type {
-    font-size: var(--font-size-600);
-    letter-spacing: var(--letter-spacing-300);
-    font-weight: var(--font-weight-500);
+    margin-bottom: 2rem;
+    font-size: var(--font-size-700);
+    color: var(--text-strong);
   }
 }

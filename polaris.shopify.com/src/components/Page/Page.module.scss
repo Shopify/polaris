@@ -1,62 +1,60 @@
-.Page {
-  display: flex;
-}
-
 .Header {
   position: sticky;
   z-index: 2;
   top: 0;
   display: flex;
-  align-self: flex-start;
-  height: 100vh;
+  background: white;
+  height: var(--header-height);
+  padding: 0 3rem;
+  gap: 3rem;
+  border-bottom: 0.5px solid #ddd;
 }
 
 .Logo {
   display: flex;
   align-items: center;
-  font-weight: var(--font-weight-500);
-  color: inherit;
-  gap: 1rem;
-  margin: 1rem 1rem 1.75rem;
+  color: var(--text-subdued);
+  font-size: var(--font-size-500);
+  gap: 0.7rem;
+  font-weight: 450;
 
   p {
     margin: 0;
   }
-}
 
-.HeaderMain {
-  padding: 1rem 2rem 1rem 1rem;
-  width: 16rem;
-  background: #fafafa;
-
-  li a {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0.66rem 1rem;
-    color: inherit;
-    gap: 1rem;
-    font-weight: var(--font-weight-500);
+  span {
+    transform: translate3d(0, -1px, 0);
   }
 }
 
-.HeaderSub {
-  overflow: auto;
-  overscroll-behavior: contain;
+.Nav {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  li a {
+    color: var(--text-strong);
+    font-weight: 450;
+
+    &[aria-current="page"] {
+      color: var(--primary);
+    }
+  }
 }
 
 .SearchWrapper {
-  margin: 1rem 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .Content {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .MainContent {
-  margin: 4rem auto;
-  max-width: 42rem;
+  margin: 2.5rem 3rem;
+  max-width: 48rem;
 }
