@@ -13,16 +13,15 @@ const ruleName = 'stylelint-polaris/custom-properties-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
-   * @param {string} invalidProperty
-   * @param {string[]} invalidValues
+   * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (invalidProperty = '', invalidValues = []) => {
+  rejected: (invalidProperty, invalidValues) => {
     const invalidPropertyMessage = invalidProperty
       ? `Unexpected custom property [${invalidProperty}].`
       : null;
 
-    const invalidValuesMessage = invalidValues.length
-      ? `Invalid custom properties [${invalidValues.join(', ')}].`
+    const invalidValuesMessage = invalidValues
+      ? `Invalid custom properties [${invalidValues}].`
       : null;
 
     return [invalidPropertyMessage, invalidValuesMessage]
@@ -84,7 +83,10 @@ const {rule} = stylelint.createPlugin(
         if (!invalidValues && !invalidProperty) return;
 
         stylelint.utils.report({
-          message: messages.rejected(invalidProperty, invalidValues),
+          message: messages.rejected(
+            /** @type {string} */ (invalidProperty),
+            /** @type {string} */ (invalidValues?.join(', ')),
+          ),
           node: decl,
           result,
           ruleName,
