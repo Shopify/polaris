@@ -3336,11 +3336,6 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
 
-"@shopify/polaris-icons@^4.18.2":
-  version "4.19.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.19.0.tgz#e936909b32c1023c983b6e8e938a268852ef50cb"
-  integrity sha512-iUDwcCAIvRd95HdCLwO6QhJBz6gSVVpaRcD5ESVEimazrKTtcD1q6Uw3VR5YCez9Tw2VZCSTX5p/HZwQbpsOPA==
-
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz#2926cc11ef5ca456b8ac6586810c0f284136fc17"
