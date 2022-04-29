@@ -7,11 +7,6 @@ let icons = [];
 
 const files = fs.readdirSync(iconsDir, "utf-8");
 
-try {
-  rimraf.sync(publicDir);
-} catch (error) {}
-fs.mkdirSync(publicDir);
-
 for (let i = 0; i < files.length; i++) {
   const file = files[i];
   if (file.endsWith("yml")) {
