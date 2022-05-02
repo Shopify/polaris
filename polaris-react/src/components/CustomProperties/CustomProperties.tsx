@@ -24,13 +24,14 @@ export function CustomProperties(props: CustomPropertiesProps) {
     children,
     className,
     colorScheme = DEFAULT_COLOR_SCHEME,
+    style,
   } = props;
 
   return (
     <Component
       p-color-scheme={colorScheme}
       className={className}
-      style={{color: 'var(--p-text)'}}
+      style={{color: 'var(--p-text)', ...style}}
     >
       {children}
     </Component>

@@ -1,5 +1,6 @@
 {
   "name": "polaris",
+  "version": "0.0.0",
   "private": true,
   "engines": {
     "node": "^14.17.0 || ^16.13.0"
@@ -19,7 +20,8 @@
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier '**/*.{md,json,yml}' --check",
     "lint:stylelint": "stylelint '**/*.scss'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "preversion": "echo \"Error: do not run yarn version from root\" && exit 1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.4",

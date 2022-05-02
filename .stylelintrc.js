@@ -3,7 +3,10 @@ module.exports = {
   // Disabling @shopify/stylelint-plugin/configs/core no-unknown-animations as styelint
   // is not aware of global Polaris keyframes
   // TODO: create custom plugin to ensure animation-names match Polaris keyframe names
-  rules: {'no-unknown-animations': undefined},
+  rules: {
+    'no-unknown-animations': undefined,
+    'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
+  },
   overrides: [
     {
       files: ['polaris-react/**/*.scss'],

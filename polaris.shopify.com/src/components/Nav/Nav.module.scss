@@ -19,7 +19,7 @@
     position: relative;
     display: inline-block;
     padding: 1px 0;
-    padding-left: 1.25rem;
+    padding-left: 1.15rem;
     color: var(--text-strong);
 
     &:hover {
@@ -37,11 +37,11 @@
       bottom: 0;
       left: 0;
       display: block;
-      width: 9px;
-      height: 9px;
+      width: 7px;
+      height: 7px;
       margin: auto;
       border-radius: 3.5px;
-      background: #ededed;
+      background: #ccc;
     }
 
     &[aria-current="page"] {
