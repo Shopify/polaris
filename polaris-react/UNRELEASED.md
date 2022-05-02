@@ -14,6 +14,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed `plain-button-backdrop` background color on colored backgrounds ([#](https://github.com/Shopify/polaris/pull/))
+
 ### Documentation
 
 - Added wrapper with height on `Combobox` example for autocomplete with loading ([#5624](https://github.com/Shopify/polaris/pull/5624))
