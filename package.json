@@ -14,12 +14,12 @@
     "polaris.shopify.com"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --parallel --continue --filter=@shopify/polaris",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier . --write",
-    "lint": "run-s lint:*",
-    "lint:eslint": "eslint . --cache",
-    "lint:prettier": "prettier '**/*.{md,json,yml}' --check",
-    "lint:stylelint": "stylelint '**/*.scss'",
     "type-check": "tsc --build",
     "preversion": "echo \"Error: do not run yarn version from root\" && exit 1"
   },
@@ -33,6 +33,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
     "stylelint": "^14.1.0",
+    "turbo": "^1.2.6",
     "typescript": ">=3.0.0"
   },
   "prettier": "@shopify/prettier-config"

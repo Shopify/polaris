@@ -7,8 +7,10 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn run rollup -c",
-    "test": "jest"
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "publishConfig": {
     "access": "public",
