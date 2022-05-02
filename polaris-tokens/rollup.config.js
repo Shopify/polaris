@@ -16,11 +16,13 @@ const rollupOptions = {
   output: [
     {
       format: /** @type {const} */ ('cjs'),
+      entryFileNames: '[name][assetExtname].js',
       dir: path.dirname(pkg.main),
       preserveModules: true,
     },
     {
       format: /** @type {const} */ ('es'),
+      entryFileNames: '[name][assetExtname].mjs',
       dir: path.dirname(pkg.module),
       preserveModules: true,
     },
