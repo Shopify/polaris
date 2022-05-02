@@ -1,7 +1,7 @@
 import fs from "fs";
 import yaml from "js-yaml";
 
-const iconsDir = "./public/icons";
+const iconsDir = "../../polaris-icons/icons";
 
 let icons = [];
 

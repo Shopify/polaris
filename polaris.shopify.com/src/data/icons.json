@@ -3,8 +3,14 @@
     "name": "abandoned cart",
     "set": "major",
     "description": "Used to represent a prospective purchase that a buyer didn’t complete.",
-    "keywords": ["orders", "sales", "funnel"],
-    "authors": ["N/A"],
+    "keywords": [
+      "orders",
+      "sales",
+      "funnel"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -24,7 +30,9 @@
       "universal design",
       "eye"
     ],
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -35,8 +43,16 @@
     "name": "activities",
     "set": "major",
     "description": "Used as a navigation item in our emoji picker for the activities category.",
-    "keywords": ["emoji", "navigation", "football", "ball", "activity"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "emoji",
+      "navigation",
+      "football",
+      "ball",
+      "activity"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -47,8 +63,12 @@
     "name": "add code",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -59,8 +79,12 @@
     "name": "add image",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -71,8 +95,14 @@
     "name": "add",
     "set": "major",
     "description": "Used as an action to add a new content block or layout component.",
-    "keywords": ["add", "new", "block"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "new",
+      "block"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -83,8 +113,12 @@
     "name": "add note",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -95,8 +129,14 @@
     "name": "add product",
     "set": "major",
     "description": "Used as an action to add a new product.",
-    "keywords": ["add", "product", "price tag"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "product",
+      "price tag"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -107,8 +147,17 @@
     "name": "adjust",
     "set": "minor",
     "description": "Used to denote that an adjustment can be made.",
-    "keywords": ["adjust", "adjustment", "controls", "dials"],
-    "authors": ["James Findlater", "Chris Poirier", "Lauren Mayers"],
+    "keywords": [
+      "adjust",
+      "adjustment",
+      "controls",
+      "dials"
+    ],
+    "authors": [
+      "James Findlater",
+      "Chris Poirier",
+      "Lauren Mayers"
+    ],
     "version": 1,
     "date_added": "2022-02-02T00:00:00.000Z",
     "date_modified": "2022-02-02T00:00:00.000Z",
@@ -118,9 +167,13 @@
   {
     "name": "affiliate",
     "set": "major",
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "description": "N/A",
-    "keywords": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -131,8 +184,16 @@
     "name": "alert",
     "set": "minor",
     "description": "Used to give merchants more information about something they should be aware of.",
-    "keywords": ["attention", "alert", "warning", "exclamation", "bang"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "attention",
+      "alert",
+      "warning",
+      "exclamation",
+      "bang"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -143,8 +204,15 @@
     "name": "analytics",
     "set": "major",
     "description": "Used to represent analytics or data.",
-    "keywords": ["analytics", "data", "graph", "reports"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "analytics",
+      "data",
+      "graph",
+      "reports"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -155,8 +223,15 @@
     "name": "analytics",
     "set": "minor",
     "description": "Used to represent analytics or data.",
-    "keywords": ["analytics", "data", "graph", "reports"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "analytics",
+      "data",
+      "graph",
+      "reports"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -167,8 +242,12 @@
     "name": "app extension",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -187,7 +266,9 @@
       "embedded",
       "extensions"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -206,7 +287,9 @@
       "embedded",
       "extensions"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 2,
     "date_added": "2022-01-19T00:00:00.000Z",
     "date_modified": "2022-01-20T00:00:00.000Z",
@@ -217,8 +300,13 @@
     "name": "archive",
     "set": "major",
     "description": "Used to represent archiving an item or resource.",
-    "keywords": ["archive", "box"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "archive",
+      "box"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -228,9 +316,14 @@
   {
     "name": "archive",
     "set": "minor",
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "description": "Used to denote the action of archiving an item or resource.",
-    "keywords": ["archive", "box"],
+    "keywords": [
+      "archive",
+      "box"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -241,8 +334,13 @@
     "name": "arrow down",
     "set": "minor",
     "description": "Used to represent a negative trend when looking at analytical information.",
-    "keywords": ["arrow", "down"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "arrow",
+      "down"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
     "version": 1,
@@ -252,9 +350,15 @@
   {
     "name": "arrow left",
     "set": "minor",
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "description": "Used to indicate that merchants will be directed to the previous page.",
-    "keywords": ["arrow", "left", "previous"],
+    "keywords": [
+      "arrow",
+      "left",
+      "previous"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -264,9 +368,15 @@
   {
     "name": "arrow right",
     "set": "minor",
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "description": "Used to indicate that merchants will be directed to the next page.",
-    "keywords": ["arrow", "right", "next"],
+    "keywords": [
+      "arrow",
+      "right",
+      "next"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -276,9 +386,14 @@
   {
     "name": "arrow up",
     "set": "minor",
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "description": "Used to represent a positive trend when looking at analytical information.",
-    "keywords": ["arrow", "up"],
+    "keywords": [
+      "arrow",
+      "up"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -289,8 +404,14 @@
     "name": "attachment",
     "set": "major",
     "description": "Used to represent an attachment.",
-    "keywords": ["attachment", "paper clip", "files"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "attachment",
+      "paper clip",
+      "files"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2021-04-14T00:00:00.000Z",
@@ -300,9 +421,16 @@
   {
     "name": "automation",
     "set": "major",
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "description": "Used to represent automation, or a task that can be automated.",
-    "keywords": ["automation", "cog", "automated", "gear"],
+    "keywords": [
+      "automation",
+      "cog",
+      "automated",
+      "gear"
+    ],
     "version": 1,
     "date_added": "2019-10-07T00:00:00.000Z",
     "date_modified": "2019-10-07T00:00:00.000Z",
@@ -313,8 +441,14 @@
     "name": "backspace",
     "set": "major",
     "description": "Used to represent backspace on a mobile keyboard.",
-    "keywords": ["backspace", "x", "delete"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "backspace",
+      "x",
+      "delete"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -325,8 +459,16 @@
     "name": "balance",
     "set": "major",
     "description": "The account’s current balance. This amount is comprised of any transaction not yet included in a payout.",
-    "keywords": ["balance", "wallet", "money", "transaction", "payout"],
-    "authors": ["Brian Potstra"],
+    "keywords": [
+      "balance",
+      "wallet",
+      "money",
+      "transaction",
+      "payout"
+    ],
+    "authors": [
+      "Brian Potstra"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -337,8 +479,12 @@
     "name": "bank",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -349,8 +495,13 @@
     "name": "barcode",
     "set": "major",
     "description": "Used to represent a barcode.",
-    "keywords": ["barcode", "scanner"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "barcode",
+      "scanner"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -361,8 +512,13 @@
     "name": "behavior",
     "set": "major",
     "description": "Used to represent a user clicking, or interacting with something.",
-    "keywords": ["click", "cursor"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "click",
+      "cursor"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -373,8 +529,12 @@
     "name": "billing statement (dollar)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -385,8 +545,12 @@
     "name": "billing statement (euro)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -397,8 +561,12 @@
     "name": "billing statement (pound)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -409,8 +577,12 @@
     "name": "billing statement (rupee)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -421,8 +593,12 @@
     "name": "billing statement (yen)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -433,8 +609,16 @@
     "name": "block",
     "set": "minor",
     "description": "Used to represent a content block as a sub-element of a section, page or layout.",
-    "keywords": ["block", "element", "item", "layout", "content"],
-    "authors": ["Rozina Szogyenyi"],
+    "keywords": [
+      "block",
+      "element",
+      "item",
+      "layout",
+      "content"
+    ],
+    "authors": [
+      "Rozina Szogyenyi"
+    ],
     "version": 1,
     "date_added": "2021-08-18T00:00:00.000Z",
     "date_modified": "2021-08-18T00:00:00.000Z",
@@ -455,7 +639,9 @@
       "writing",
       "content"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -466,8 +652,15 @@
     "name": "blog",
     "set": "major",
     "description": "Used to represent a blog post, or something being written.",
-    "keywords": ["author", "blog", "pen", "pencil"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "author",
+      "blog",
+      "pen",
+      "pencil"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -478,8 +671,13 @@
     "name": "bug",
     "set": "major",
     "description": "Used to represent a bug in code.",
-    "keywords": ["bug", "insect"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "bug",
+      "insect"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -490,8 +688,16 @@
     "name": "button corner pill",
     "set": "major",
     "description": "Used to represent the corner shape of a button.",
-    "keywords": ["button radius", "button corner", "pill", "email", "editor"],
-    "authors": ["Laura Forbes"],
+    "keywords": [
+      "button radius",
+      "button corner",
+      "pill",
+      "email",
+      "editor"
+    ],
+    "authors": [
+      "Laura Forbes"
+    ],
     "version": 1,
     "date_added": "2021-02-09T00:00:00.000Z",
     "date_modified": "2021-02-09T00:00:00.000Z",
@@ -509,7 +715,9 @@
       "email",
       "editor"
     ],
-    "authors": ["Laura Forbes"],
+    "authors": [
+      "Laura Forbes"
+    ],
     "version": 1,
     "date_added": "2021-02-09T00:00:00.000Z",
     "date_modified": "2021-02-09T00:00:00.000Z",
@@ -520,8 +728,16 @@
     "name": "button corner square",
     "set": "major",
     "description": "Used to represent the corner shape of a button.",
-    "keywords": ["button radius", "button corner", "square", "email", "editor"],
-    "authors": ["Laura Forbes"],
+    "keywords": [
+      "button radius",
+      "button corner",
+      "square",
+      "email",
+      "editor"
+    ],
+    "authors": [
+      "Laura Forbes"
+    ],
     "version": 1,
     "date_added": "2021-02-09T00:00:00.000Z",
     "date_modified": "2021-02-09T00:00:00.000Z",
@@ -532,8 +748,16 @@
     "name": "button",
     "set": "minor",
     "description": "Used to represent a button block appearing as a sub-element of a section, page or layout.",
-    "keywords": ["button", "press", "click", "buy button", "block"],
-    "authors": ["Rozina Szogyenyi"],
+    "keywords": [
+      "button",
+      "press",
+      "click",
+      "buy button",
+      "block"
+    ],
+    "authors": [
+      "Rozina Szogyenyi"
+    ],
     "version": 1,
     "date_added": "2021-08-18T00:00:00.000Z",
     "date_modified": "2021-08-18T00:00:00.000Z",
@@ -544,8 +768,13 @@
     "name": "buy button button layout",
     "set": "major",
     "description": "Used to represent a centered layout for our Buy Button.",
-    "keywords": ["center", "layout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "center",
+      "layout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -556,8 +785,14 @@
     "name": "buy button horizontal layout",
     "set": "major",
     "description": "Used to represent a horizontal layout for our Buy Button.",
-    "keywords": ["button", "buy button", "layout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "button",
+      "buy button",
+      "layout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -568,8 +803,14 @@
     "name": "buy button",
     "set": "major",
     "description": "Used to represent our Buy Button.",
-    "keywords": ["button", "buy button", "press"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "button",
+      "buy button",
+      "press"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -580,8 +821,14 @@
     "name": "buy button vertical layout",
     "set": "major",
     "description": "Used to represent a vertical layout for our Buy Button.",
-    "keywords": ["button", "buy button", "layout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "button",
+      "buy button",
+      "layout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -592,8 +839,12 @@
     "name": "calendar",
     "set": "major",
     "description": "Used to represent a calendar.",
-    "keywords": ["calendar"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "calendar"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -604,8 +855,17 @@
     "name": "calendar",
     "set": "minor",
     "description": "Used to denote the action of opening a date picker.",
-    "keywords": ["calendar", "date", "time", "month", "year", "day"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "calendar",
+      "date",
+      "time",
+      "month",
+      "year",
+      "day"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
     "version": 1,
@@ -616,8 +876,12 @@
     "name": "calendar tick",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -628,8 +892,13 @@
     "name": "camera",
     "set": "major",
     "description": "Used to represent a camera.",
-    "keywords": ["camera", "photo"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "camera",
+      "photo"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -640,8 +909,16 @@
     "name": "cancel small",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["cancel", "stop", "undo", "remove", "x"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cancel",
+      "stop",
+      "undo",
+      "remove",
+      "x"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2022-3-21",
@@ -652,8 +929,14 @@
     "name": "capital",
     "set": "major",
     "description": "Used to help direct merchants to the Capital page",
-    "keywords": ["capital", "flower", "plant"],
-    "authors": ["Mo Mozafarian"],
+    "keywords": [
+      "capital",
+      "flower",
+      "plant"
+    ],
+    "authors": [
+      "Mo Mozafarian"
+    ],
     "version": 1,
     "date_added": "2019-09-03T00:00:00.000Z",
     "date_modified": "2019-09-03T00:00:00.000Z",
@@ -664,8 +947,12 @@
     "name": "capture payment",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -676,8 +963,13 @@
     "name": "card reader chip",
     "set": "major",
     "description": "Used to represent a card chip reader.",
-    "keywords": ["credit card", "payment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "credit card",
+      "payment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -688,8 +980,14 @@
     "name": "card reader",
     "set": "major",
     "description": "Used to represent the Shopify Tap and Chip reader.",
-    "keywords": ["chip and swipe", "card reader", "POS"],
-    "authors": ["N/A"],
+    "keywords": [
+      "chip and swipe",
+      "card reader",
+      "POS"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -700,8 +998,14 @@
     "name": "card reader tap",
     "set": "major",
     "description": "Used to represent the Shopify Tap and Chip reader.",
-    "keywords": ["tap and chip", "card reader", "POS"],
-    "authors": ["N/A"],
+    "keywords": [
+      "tap and chip",
+      "card reader",
+      "POS"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -712,8 +1016,15 @@
     "name": "caret down",
     "set": "minor",
     "description": "Used to denote the action of expanding a section to reveal more content, like a popover or an accordion. Also used to represent sorting order.",
-    "keywords": ["caret", "down", "open"],
-    "authors": ["Adam Whitcroft", "Jordan Ouellette"],
+    "keywords": [
+      "caret",
+      "down",
+      "open"
+    ],
+    "authors": [
+      "Adam Whitcroft",
+      "Jordan Ouellette"
+    ],
     "version": 2,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2021-11-02T00:00:00.000Z",
@@ -724,8 +1035,15 @@
     "name": "caret up",
     "set": "minor",
     "description": "Used to denote the action of contracting a section to hide additional content, like an accordion. Also used to represent sorting order.",
-    "keywords": ["caret", "up", "close"],
-    "authors": ["Adam Whitcroft", "Jordan Ouellette"],
+    "keywords": [
+      "caret",
+      "up",
+      "close"
+    ],
+    "authors": [
+      "Adam Whitcroft",
+      "Jordan Ouellette"
+    ],
     "version": 2,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2021-11-02T00:00:00.000Z",
@@ -736,8 +1054,13 @@
     "name": "cart down",
     "set": "major",
     "description": "Used to represent saving the contents of a shopping cart.",
-    "keywords": ["cart", "checkout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cart",
+      "checkout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -748,8 +1071,14 @@
     "name": "cart",
     "set": "major",
     "description": "Used to represent a shopping cart.",
-    "keywords": ["cart", "checkout", "shopping"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cart",
+      "checkout",
+      "shopping"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -760,8 +1089,13 @@
     "name": "cart up",
     "set": "major",
     "description": "Used to represent retrieving the contents of saved shopping cart.",
-    "keywords": ["cart", "checkout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cart",
+      "checkout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -772,8 +1106,13 @@
     "name": "cash (dollar)",
     "set": "major",
     "description": "Used to represent Dollar currency.",
-    "keywords": ["currency", "money"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "currency",
+      "money"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -784,8 +1123,13 @@
     "name": "cash (euro)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["currency", "money"],
-    "authors": ["N/A"],
+    "keywords": [
+      "currency",
+      "money"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -796,8 +1140,13 @@
     "name": "cash (pound)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["currency", "money"],
-    "authors": ["N/A"],
+    "keywords": [
+      "currency",
+      "money"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -808,8 +1157,13 @@
     "name": "cash (rupee)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["currency", "money"],
-    "authors": ["N/A"],
+    "keywords": [
+      "currency",
+      "money"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -820,8 +1174,13 @@
     "name": "cash (yen)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["currency", "money"],
-    "authors": ["N/A"],
+    "keywords": [
+      "currency",
+      "money"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -832,8 +1191,13 @@
     "name": "categories",
     "set": "major",
     "description": "Used to represent either list of categories or files.",
-    "keywords": ["categories", "files"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "categories",
+      "files"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -844,8 +1208,16 @@
     "name": "channels",
     "set": "major",
     "description": "Used to represent channels, or items connected by a common root.",
-    "keywords": ["channels", "connect", "connected", "path", "related"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "channels",
+      "connect",
+      "connected",
+      "path",
+      "related"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -856,8 +1228,15 @@
     "name": "chat",
     "set": "major",
     "description": "Used to represent a conversation, or verbal communication.",
-    "keywords": ["chat", "speech bubble", "message", "talk"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chat",
+      "speech bubble",
+      "message",
+      "talk"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -868,8 +1247,13 @@
     "name": "checklist alternate",
     "set": "major",
     "description": "Used to represent a checklist.",
-    "keywords": ["checklist", "list"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "checklist",
+      "list"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -880,8 +1264,13 @@
     "name": "checklist",
     "set": "major",
     "description": "Used to represent a completed checklist.",
-    "keywords": ["checklist", "complete"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "checklist",
+      "complete"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -892,8 +1281,14 @@
     "name": "checkout",
     "set": "major",
     "description": "Used to represent a shopping cart.",
-    "keywords": ["checkout", "cart", "shopping"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "checkout",
+      "cart",
+      "shopping"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -904,8 +1299,13 @@
     "name": "chevron down",
     "set": "minor",
     "description": "Used to denote the action of expanding a section to reveal more content.",
-    "keywords": ["chevron", "down"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "down"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -916,8 +1316,13 @@
     "name": "chevron left",
     "set": "minor",
     "description": "Used to indicate that merchants will be directed to their previous location or to navigate to a previous item.",
-    "keywords": ["chevron", "left"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "left"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -928,8 +1333,13 @@
     "name": "chevron right",
     "set": "minor",
     "description": "Used to indicate that merchants will be directed to the next item.",
-    "keywords": ["chevron", "right"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "right"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -940,8 +1350,13 @@
     "name": "chevron up",
     "set": "minor",
     "description": "Used to denote the action of contracting a section to hide additional content.",
-    "keywords": ["chevron", "up"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "up"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -961,7 +1376,9 @@
       "circle",
       "round"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-21T00:00:00.000Z",
     "date_modified": "2019-02-21T00:00:00.000Z",
@@ -972,8 +1389,16 @@
     "name": "circle cancel",
     "set": "major",
     "description": "Used to represent an action to cancel or remove an item or resource.",
-    "keywords": ["cancel", "delete", "stop", "remove", "x"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cancel",
+      "delete",
+      "stop",
+      "remove",
+      "x"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -984,8 +1409,16 @@
     "name": "circle cancel",
     "set": "minor",
     "description": "Used to represent an action to cancel or remove an item or resource.",
-    "keywords": ["cancel", "delete", "stop", "remove", "x"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cancel",
+      "delete",
+      "stop",
+      "remove",
+      "x"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -996,8 +1429,15 @@
     "name": "circle chevron down",
     "set": "minor",
     "description": "Used to represent a collapsible section, or an action to navigate down.",
-    "keywords": ["chevron", "down", "circle", "outline"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "down",
+      "circle",
+      "outline"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1008,8 +1448,16 @@
     "name": "circle chevron left",
     "set": "minor",
     "description": "Used to represent an action to navigate back.",
-    "keywords": ["back", "chevron", "left", "circle", "outline"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "back",
+      "chevron",
+      "left",
+      "circle",
+      "outline"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1020,8 +1468,15 @@
     "name": "circle chevron right",
     "set": "minor",
     "description": "Used to help direct merchants from a item’s name in a list to the item’s show page.",
-    "keywords": ["chevron", "right", "circle", "outline"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "right",
+      "circle",
+      "outline"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1032,8 +1487,15 @@
     "name": "circle chevron up",
     "set": "minor",
     "description": "Used to represent a collapsible section, or an action to navigate up.",
-    "keywords": ["chevron", "up", "circle", "outline"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chevron",
+      "up",
+      "circle",
+      "outline"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1055,7 +1517,9 @@
       "disabled",
       "barred"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1066,8 +1530,13 @@
     "name": "circle disabled",
     "set": "major",
     "description": "Used to represent an item or resource that is disabled, or an action that is not allowed.",
-    "keywords": ["blocked", "disabled"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "blocked",
+      "disabled"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1078,8 +1547,14 @@
     "name": "circle dots",
     "set": "major",
     "description": "Used to represent an action to reveal a menu, or more options.",
-    "keywords": ["ellipsis", "options", "overflow"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "ellipsis",
+      "options",
+      "overflow"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1090,8 +1565,13 @@
     "name": "circle down",
     "set": "major",
     "description": "Used to represent downwards navigation, or that something is below it.",
-    "keywords": ["arrow", "down"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "arrow",
+      "down"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -1102,8 +1582,14 @@
     "name": "circle information",
     "set": "major",
     "description": "Used to represent a hint, or draw attention to a piece of information.",
-    "keywords": ["info", "information", "hint"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "info",
+      "information",
+      "hint"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1114,8 +1600,13 @@
     "name": "circle left",
     "set": "major",
     "description": "Used to represent backwards naviagation, or that something is before it.",
-    "keywords": ["arrow", "back"],
-    "authors": ["N/A"],
+    "keywords": [
+      "arrow",
+      "back"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1126,8 +1617,14 @@
     "name": "circle minus",
     "set": "major",
     "description": "Used to represent an action to remove an item or resource, or decrease the quantity of an item or resource.",
-    "keywords": ["less", "minus", "remove"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "less",
+      "minus",
+      "remove"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1138,8 +1635,14 @@
     "name": "circle minus",
     "set": "minor",
     "description": "Used to represent an action to remove an item or resource, or decrease the quantity of an item or resource.",
-    "keywords": ["less", "minus", "remove"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "less",
+      "minus",
+      "remove"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1150,8 +1653,14 @@
     "name": "circle minus outline",
     "set": "minor",
     "description": "Used to represent an action to remove an item or resource, or decrease the quantity of an item or resource.",
-    "keywords": ["less", "minus", "remove"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "less",
+      "minus",
+      "remove"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1162,8 +1671,15 @@
     "name": "circle plus",
     "set": "major",
     "description": "Similar to the plus icons, used to indicate adding something.",
-    "keywords": ["add", "plus", "circle", "resource"],
-    "authors": ["N/A"],
+    "keywords": [
+      "add",
+      "plus",
+      "circle",
+      "resource"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -1174,8 +1690,14 @@
     "name": "circle plus",
     "set": "minor",
     "description": "Used to represent an action to add an item or resource, or increase the quantity of an item or resource.",
-    "keywords": ["add", "more", "plus"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "more",
+      "plus"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1186,8 +1708,15 @@
     "name": "circle plus outline",
     "set": "minor",
     "description": "Used to denote the action of adding new content, like adding a new variant option name in the mobile app.",
-    "keywords": ["plus", "circle", "outline", "+"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "plus",
+      "circle",
+      "outline",
+      "+"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1198,8 +1727,13 @@
     "name": "circle right",
     "set": "major",
     "description": "Used to represent forwards naviagation, or that something is after it.",
-    "keywords": ["arrow", "forward"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "arrow",
+      "forward"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1210,8 +1744,17 @@
     "name": "circle tick",
     "set": "major",
     "description": "Used to represent an action to approve or confirm.",
-    "keywords": ["good", "positive", "checkmark", "circle", "round", "approve"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "good",
+      "positive",
+      "checkmark",
+      "circle",
+      "round",
+      "approve"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -1222,8 +1765,17 @@
     "name": "circle tick",
     "set": "minor",
     "description": "Used to represent an action to approve or confirm.",
-    "keywords": ["good", "positive", "checkmark", "circle", "round", "approve"],
-    "authors": ["Anne Michel"],
+    "keywords": [
+      "good",
+      "positive",
+      "checkmark",
+      "circle",
+      "round",
+      "approve"
+    ],
+    "authors": [
+      "Anne Michel"
+    ],
     "version": 1,
     "date_added": "2021-11-11T00:00:00.000Z",
     "date_modified": "2021-11-11T00:00:00.000Z",
@@ -1234,8 +1786,17 @@
     "name": "circle tick outline",
     "set": "minor",
     "description": "Used to represent an action to approve or confirm.",
-    "keywords": ["good", "positive", "checkmark", "circle", "round", "approve"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "good",
+      "positive",
+      "checkmark",
+      "circle",
+      "round",
+      "approve"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1246,8 +1807,13 @@
     "name": "circle up",
     "set": "major",
     "description": "Used to represent upwards naviagation, or that something is above it.",
-    "keywords": ["arrow", "up"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "arrow",
+      "up"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1258,8 +1824,13 @@
     "name": "clipboard",
     "set": "minor",
     "description": "Used to represent a clipboard, usually accompanying a copy action.",
-    "keywords": ["clipboard", "copy"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "clipboard",
+      "copy"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1280,7 +1851,9 @@
       "stopwatch",
       "circle"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -1301,7 +1874,9 @@
       "stopwatch",
       "circle"
     ],
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -1312,8 +1887,16 @@
     "name": "code",
     "set": "major",
     "description": "Used to represent programming.",
-    "keywords": ["code", "block", "liquid", "script", "syntax"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "code",
+      "block",
+      "liquid",
+      "script",
+      "syntax"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -1324,8 +1907,15 @@
     "name": "collections",
     "set": "major",
     "description": "Used to represent a collection of products.",
-    "keywords": ["collection", "tag", "tags", "swing"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "collection",
+      "tag",
+      "tags",
+      "swing"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1346,7 +1936,9 @@
       "no",
       "crossed"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -1357,8 +1949,14 @@
     "name": "colors",
     "set": "major",
     "description": "Used to represent a color swatch, or palette of colors.",
-    "keywords": ["color", "palette", "swatch"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "color",
+      "palette",
+      "swatch"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2022-03-08T00:00:00.000Z",
@@ -1369,8 +1967,15 @@
     "name": "column 1",
     "set": "major",
     "description": "Used to represent a 1 column layout.",
-    "keywords": ["single column", "column", "layout", "email"],
-    "authors": ["Laura Forbes"],
+    "keywords": [
+      "single column",
+      "column",
+      "layout",
+      "email"
+    ],
+    "authors": [
+      "Laura Forbes"
+    ],
     "exclusive_use": "Shopify Email",
     "date_added": "2021-01-12T00:00:00.000Z",
     "date_modified": "2021-01-12T00:00:00.000Z",
@@ -1395,7 +2000,9 @@
       "writing",
       "copy"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -1406,8 +2013,15 @@
     "name": "columns 2",
     "set": "major",
     "description": "Used to represent a 2 column layout.",
-    "keywords": ["two columns", "column", "layout", "email"],
-    "authors": ["Laura Forbes"],
+    "keywords": [
+      "two columns",
+      "column",
+      "layout",
+      "email"
+    ],
+    "authors": [
+      "Laura Forbes"
+    ],
     "exclusive_use": "Shopify Email",
     "date_added": "2021-01-12T00:00:00.000Z",
     "date_modified": "2021-01-12T00:00:00.000Z",
@@ -1418,8 +2032,15 @@
     "name": "columns 3",
     "set": "major",
     "description": "Used to represent a 3 column layout.",
-    "keywords": ["three columns", "column", "layout", "email"],
-    "authors": ["Laura Forbes"],
+    "keywords": [
+      "three columns",
+      "column",
+      "layout",
+      "email"
+    ],
+    "authors": [
+      "Laura Forbes"
+    ],
     "exclusive_use": "Shopify Email",
     "date_added": "2021-01-12T00:00:00.000Z",
     "date_modified": "2021-01-12T00:00:00.000Z",
@@ -1430,8 +2051,15 @@
     "name": "columns 3",
     "set": "minor",
     "description": "Used to represent a 3 column layout or an action to hide or show columns",
-    "keywords": ["three columns", "column", "options", "layout"],
-    "authors": ["Andrea Crouch"],
+    "keywords": [
+      "three columns",
+      "column",
+      "options",
+      "layout"
+    ],
+    "authors": [
+      "Andrea Crouch"
+    ],
     "version": 2,
     "date_added": "2022-01-05T00:00:00.000Z",
     "date_modified": "2022-01-14T00:00:00.000Z",
@@ -1442,8 +2070,17 @@
     "name": "compose",
     "set": "major",
     "description": "Used to denote the action of composing a new message.",
-    "keywords": ["compose", "message", "write", "pencil", "pen"],
-    "authors": ["Anthony Menecola", "Jesse Bennett-Chamberlain"],
+    "keywords": [
+      "compose",
+      "message",
+      "write",
+      "pencil",
+      "pen"
+    ],
+    "authors": [
+      "Anthony Menecola",
+      "Jesse Bennett-Chamberlain"
+    ],
     "version": 1,
     "date_added": "2020-07-13T00:00:00.000Z",
     "date_modified": "2020-07-13T00:00:00.000Z",
@@ -1454,8 +2091,14 @@
     "name": "confetti",
     "set": "major",
     "description": "Used to represent a moment of celebration, or to call attention to something fun or new.",
-    "keywords": ["celebrate", "confetti", "tada"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "celebrate",
+      "confetti",
+      "tada"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1466,8 +2109,16 @@
     "name": "connect",
     "set": "minor",
     "description": "Used to represent a connection between two items or resources.",
-    "keywords": ["connect", "connected", "path", "join", "related"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "connect",
+      "connected",
+      "path",
+      "join",
+      "related"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1478,8 +2129,17 @@
     "name": "conversation",
     "set": "minor",
     "description": "Used to give merchants an indication of comments attached to an order.",
-    "keywords": ["speech", "bubble", "conversation", "talk", "chat", "comment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "speech",
+      "bubble",
+      "conversation",
+      "talk",
+      "chat",
+      "comment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1490,8 +2150,14 @@
     "name": "credit card",
     "set": "major",
     "description": "Used to represent a credit card.",
-    "keywords": ["card", "credit card", "payment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "card",
+      "credit card",
+      "payment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1502,8 +2168,15 @@
     "name": "credit card percent",
     "set": "major",
     "description": "Used to represent a credit card interest.",
-    "keywords": ["card", "credit card", "interest", "payment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "card",
+      "credit card",
+      "interest",
+      "payment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1514,8 +2187,15 @@
     "name": "credit card secure",
     "set": "major",
     "description": "Used to represent a secured credit card.",
-    "keywords": ["card", "credit card", "payment", "secure"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "card",
+      "credit card",
+      "payment",
+      "secure"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1526,8 +2206,14 @@
     "name": "currency convert",
     "set": "minor",
     "description": "Used to represent currency conversion.",
-    "keywords": ["currency", "exchange", "forex"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "currency",
+      "exchange",
+      "forex"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -1538,8 +2224,13 @@
     "name": "customer minus",
     "set": "major",
     "description": "Used to represent removing a customer, or user.",
-    "keywords": ["remove", "user"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "remove",
+      "user"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1550,8 +2241,13 @@
     "name": "customer plus",
     "set": "major",
     "description": "Used to represent adding a customer, or user.",
-    "keywords": ["add", "user"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "user"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1562,8 +2258,13 @@
     "name": "customers",
     "set": "major",
     "description": "Used to represent a customer, or user.",
-    "keywords": ["customer", "user"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "customer",
+      "user"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1574,8 +2275,13 @@
     "name": "customers",
     "set": "minor",
     "description": "Used to represent a customer, or user.",
-    "keywords": ["customer", "user"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "customer",
+      "user"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-11-19T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -1586,8 +2292,13 @@
     "name": "data visualization",
     "set": "major",
     "description": "Used to represent a presentation or graph.",
-    "keywords": ["graph", "presentation"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "graph",
+      "presentation"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1598,8 +2309,14 @@
     "name": "delete",
     "set": "major",
     "description": "Used to represent a trash can, or an action to remove or delete an item or resource.",
-    "keywords": ["delete", "remove", "trash"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "delete",
+      "remove",
+      "trash"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1610,8 +2327,16 @@
     "name": "delete",
     "set": "minor",
     "description": "Used to denote a destructive action to delete an item.",
-    "keywords": ["delete", "remove", "trash", "garbage", "get rid of"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "delete",
+      "remove",
+      "trash",
+      "garbage",
+      "get rid of"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1622,8 +2347,13 @@
     "name": "desktop",
     "set": "major",
     "description": "Used to represent a large screen or desktop computer.",
-    "keywords": ["desktop", "screen"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "desktop",
+      "screen"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1634,8 +2364,14 @@
     "name": "detailed pop up",
     "set": "major",
     "description": "Used to represent the option to popup the content.",
-    "keywords": ["popup", "window", "overlay"],
-    "authors": ["Alex Page"],
+    "keywords": [
+      "popup",
+      "window",
+      "overlay"
+    ],
+    "authors": [
+      "Alex Page"
+    ],
     "version": 2,
     "date_added": "2020-09-21T00:00:00.000Z",
     "date_modified": "2020-09-21T00:00:00.000Z",
@@ -1646,8 +2382,14 @@
     "name": "diamond alert",
     "set": "major",
     "description": "Used to alert merchants on information they should be aware of.",
-    "keywords": ["alert", "attention", "critical"],
-    "authors": ["Jesse Bennett-Chamberlain"],
+    "keywords": [
+      "alert",
+      "attention",
+      "critical"
+    ],
+    "authors": [
+      "Jesse Bennett-Chamberlain"
+    ],
     "version": 1,
     "date_added": "2020-10-19T00:00:00.000Z",
     "date_modified": "2020-10-19T00:00:00.000Z",
@@ -1658,8 +2400,14 @@
     "name": "digital media receiver",
     "set": "major",
     "description": "Used to represent a digital receiver or wireless network device.",
-    "keywords": ["receiver", "wifi", "wireless"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "receiver",
+      "wifi",
+      "wireless"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1670,8 +2418,12 @@
     "name": "discount automatic",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1682,8 +2434,13 @@
     "name": "discount code",
     "set": "major",
     "description": "Used to represent a discount code or coupon.",
-    "keywords": ["coupon", "discount"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "coupon",
+      "discount"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1694,8 +2451,12 @@
     "name": "discounts",
     "set": "major",
     "description": "Used to represent a discount.",
-    "keywords": ["discount"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "discount"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -1706,8 +2467,12 @@
     "name": "discounts",
     "set": "minor",
     "description": "Used to represent a discount.",
-    "keywords": ["discount"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "discount"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -1718,8 +2483,13 @@
     "name": "dispute",
     "set": "minor",
     "description": "Used to represent a dispute or important conversation or notification.",
-    "keywords": ["dispute", "claim"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "dispute",
+      "claim"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1730,8 +2500,12 @@
     "name": "dns settings",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1742,8 +2516,12 @@
     "name": "domain new",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1754,8 +2532,13 @@
     "name": "domain redirect",
     "set": "minor",
     "description": "Used to represent a redirect domain.",
-    "keywords": ["domain", "redirect"],
-    "authors": ["Kyryll Odobetskiy"],
+    "keywords": [
+      "domain",
+      "redirect"
+    ],
+    "authors": [
+      "Kyryll Odobetskiy"
+    ],
     "version": 1,
     "date_added": "2022-02-23T00:00:00.000Z",
     "date_modified": "2022-02-23T00:00:00.000Z",
@@ -1766,8 +2549,12 @@
     "name": "domains",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -1778,8 +2565,14 @@
     "name": "draft orders",
     "set": "major",
     "description": "Used to represent an order that is in a Draft state.",
-    "keywords": ["draft", "order", "pending"],
-    "authors": ["N/A"],
+    "keywords": [
+      "draft",
+      "order",
+      "pending"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2022-03-08T00:00:00.000Z",
@@ -1790,8 +2583,15 @@
     "name": "drag drop",
     "set": "major",
     "description": "Used to represent drag and drop.",
-    "keywords": ["drag", "drop", "files", "copy"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "drag",
+      "drop",
+      "files",
+      "copy"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-21T00:00:00.000Z",
     "date_modified": "2019-02-21T00:00:00.000Z",
@@ -1802,8 +2602,15 @@
     "name": "drag handle",
     "set": "minor",
     "description": "Used to represent drag handles.",
-    "keywords": ["drag", "draggable", "grab", "reposition"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "drag",
+      "draggable",
+      "grab",
+      "reposition"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1814,8 +2621,13 @@
     "name": "dropdown",
     "set": "minor",
     "description": "Used to represent there is dropdown content",
-    "keywords": ["dropdown", "select"],
-    "authors": ["Jordan Ouellette"],
+    "keywords": [
+      "dropdown",
+      "select"
+    ],
+    "authors": [
+      "Jordan Ouellette"
+    ],
     "version": 3,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2021-11-03T00:00:00.000Z",
@@ -1826,8 +2638,16 @@
     "name": "duplicate",
     "set": "minor",
     "description": "Used to denote the action of duplicating orders, to save as (reports), and to copy content to clipboard like an address.",
-    "keywords": ["duplicate", "copy", "make another one", "two", "duo"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "duplicate",
+      "copy",
+      "make another one",
+      "two",
+      "duo"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1838,8 +2658,15 @@
     "name": "edit",
     "set": "major",
     "description": "Used to represent an action to edit an item or resource.",
-    "keywords": ["edit", "pen", "pencil", "write"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "edit",
+      "pen",
+      "pencil",
+      "write"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1850,8 +2677,17 @@
     "name": "edit",
     "set": "minor",
     "description": "Used to represent the action of editing or modifying information.",
-    "keywords": ["pencil", "pen", "paper", "edit", "page", "change"],
-    "authors": ["N/A"],
+    "keywords": [
+      "pencil",
+      "pen",
+      "paper",
+      "edit",
+      "page",
+      "change"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -1862,8 +2698,16 @@
     "name": "email",
     "set": "major",
     "description": "N/A",
-    "keywords": ["email", "letter", "mail", "rectangle", "invite"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "email",
+      "letter",
+      "mail",
+      "rectangle",
+      "invite"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1874,8 +2718,15 @@
     "name": "email newsletter",
     "set": "major",
     "description": "Used to represent an opened email or letter.",
-    "keywords": ["email", "letter", "opened", "read"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "email",
+      "letter",
+      "opened",
+      "read"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1886,8 +2737,15 @@
     "name": "embed",
     "set": "minor",
     "description": "Used to represent an object embedded from a web resource.",
-    "keywords": ["embed", "web resource", "web", "iframe"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "embed",
+      "web resource",
+      "web",
+      "iframe"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1898,8 +2756,13 @@
     "name": "enable selection",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["checkmark", "select"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "checkmark",
+      "select"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-21T00:00:00.000Z",
     "date_modified": "2019-02-21T00:00:00.000Z",
@@ -1910,8 +2773,14 @@
     "name": "envelope",
     "set": "major",
     "description": "Used to represent an envelope that merchants can use to ship orders to their customers.",
-    "keywords": ["shipping", "packaging", "envelope"],
-    "authors": ["N/A"],
+    "keywords": [
+      "shipping",
+      "packaging",
+      "envelope"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1922,8 +2791,12 @@
     "name": "exchange",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1934,8 +2807,12 @@
     "name": "existing inventory",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1946,8 +2823,15 @@
     "name": "exit",
     "set": "major",
     "description": "Used to denote the action of exiting an app, channel, or workflow.",
-    "keywords": ["exit", "quit", "leave", "out"],
-    "authors": ["Jose Torre"],
+    "keywords": [
+      "exit",
+      "quit",
+      "leave",
+      "out"
+    ],
+    "authors": [
+      "Jose Torre"
+    ],
     "version": 1,
     "date_added": "2021-05-11T00:00:00.000Z",
     "date_modified": "2021-05-11T00:00:00.000Z",
@@ -1958,8 +2842,14 @@
     "name": "export",
     "set": "minor",
     "description": "Used to denote the action of exporting content.",
-    "keywords": ["export", "take out", "resource"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "export",
+      "take out",
+      "resource"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1970,8 +2860,14 @@
     "name": "external",
     "set": "minor",
     "description": "Used to denote the action of navigating to an external resource.",
-    "keywords": ["external", "outside", "not here"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "external",
+      "outside",
+      "not here"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -1982,8 +2878,12 @@
     "name": "external small",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -1994,8 +2894,14 @@
     "name": "favicon",
     "set": "major",
     "description": "Used to represent a favicon.",
-    "keywords": ["favicon", "ico", "icon"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "favicon",
+      "ico",
+      "icon"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2006,8 +2912,16 @@
     "name": "favorite",
     "set": "major",
     "description": "Used to represent an action to favorite or save an item or resource.",
-    "keywords": ["favorite", "favourite", "save", "star", "starred"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "favorite",
+      "favourite",
+      "save",
+      "star",
+      "starred"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 2,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-11-05T00:00:00.000Z",
@@ -2018,8 +2932,15 @@
     "name": "featured collection",
     "set": "major",
     "description": "Used to represent a featured or favorite collection.",
-    "keywords": ["collection", "favorite", "favourite", "featured"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "collection",
+      "favorite",
+      "favourite",
+      "featured"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2030,8 +2951,14 @@
     "name": "featured content",
     "set": "major",
     "description": "Used to represent a featured or favorite page or content item.",
-    "keywords": ["favourite", "favorite", "feature"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "favourite",
+      "favorite",
+      "feature"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2042,8 +2969,13 @@
     "name": "filter",
     "set": "major",
     "description": "Used to represent an action to filter a list of items or resources.",
-    "keywords": ["filter", "options"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "filter",
+      "options"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2054,8 +2986,16 @@
     "name": "finances",
     "set": "major",
     "description": "Used to represent the Finances section.",
-    "keywords": ["balance", "billing", "finances", "money", "payout"],
-    "authors": ["N/A"],
+    "keywords": [
+      "balance",
+      "billing",
+      "finances",
+      "money",
+      "payout"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2021-11-25T00:00:00.000Z",
     "date_modified": "2021-11-25T00:00:00.000Z",
@@ -2066,8 +3006,16 @@
     "name": "finances",
     "set": "minor",
     "description": "Used to represent the Finances section.",
-    "keywords": ["balance", "billing", "finances", "money", "payout"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "balance",
+      "billing",
+      "finances",
+      "money",
+      "payout"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 2,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-19T00:00:00.000Z",
@@ -2078,8 +3026,15 @@
     "name": "first order",
     "set": "major",
     "description": "Used to represent a first order.",
-    "keywords": ["celebrate", "first", "milestone", "order"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "celebrate",
+      "first",
+      "milestone",
+      "order"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2090,8 +3045,14 @@
     "name": "first visit",
     "set": "major",
     "description": "Used to represent a first view or visitor.",
-    "keywords": ["first", "view", "visitor"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "first",
+      "view",
+      "visitor"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2102,8 +3063,12 @@
     "name": "flag",
     "set": "major",
     "description": "Used to represent a flag.",
-    "keywords": ["flag"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "flag"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2114,8 +3079,14 @@
     "name": "flip camera",
     "set": "major",
     "description": "Used to represent an action to flip a mobile phone camera.",
-    "keywords": ["camera", "flip", "selfie"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "camera",
+      "flip",
+      "selfie"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2126,8 +3097,13 @@
     "name": "folder down",
     "set": "major",
     "description": "Used to represent an action to download a folder.",
-    "keywords": ["download", "folder"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "download",
+      "folder"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2138,8 +3114,12 @@
     "name": "folder",
     "set": "major",
     "description": "Used to represent a folder.",
-    "keywords": ["folder"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "folder"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2150,8 +3130,14 @@
     "name": "folder minus",
     "set": "major",
     "description": "Used to represent an action to remove a folder.",
-    "keywords": ["folder", "minus", "remove"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "folder",
+      "minus",
+      "remove"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2162,8 +3148,14 @@
     "name": "folder plus",
     "set": "major",
     "description": "Used to represent an action to add a folder.",
-    "keywords": ["add", "folder", "plus"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "folder",
+      "plus"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2174,8 +3166,13 @@
     "name": "folder up",
     "set": "major",
     "description": "Used to represent an action to upload a folder.",
-    "keywords": ["folder", "upload"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "folder",
+      "upload"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2186,8 +3183,12 @@
     "name": "follow up email",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2198,8 +3199,15 @@
     "name": "food",
     "set": "major",
     "description": "Used as a navigation item in our emoji picker for the food category.",
-    "keywords": ["emoji", "navigation", "coffee", "food"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "emoji",
+      "navigation",
+      "coffee",
+      "food"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2210,8 +3218,17 @@
     "name": "footer",
     "set": "major",
     "description": "Used to represent the footer section of a component, page or layout.",
-    "keywords": ["layout", "footer", "content", "dashed", "bottom", "section"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "layout",
+      "footer",
+      "content",
+      "dashed",
+      "bottom",
+      "section"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2222,8 +3239,14 @@
     "name": "forms",
     "set": "major",
     "description": "Used to represent a text input for a form.",
-    "keywords": ["form", "input", "text"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "form",
+      "input",
+      "text"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2234,8 +3257,15 @@
     "name": "fraud protect",
     "set": "major",
     "description": "Used to represent that an order is protected by Fraud Protect from chargebacks due to fraud.",
-    "keywords": ["fraud protect", "protected", "risk", "fraud"],
-    "authors": ["Money UX team"],
+    "keywords": [
+      "fraud protect",
+      "protected",
+      "risk",
+      "fraud"
+    ],
+    "authors": [
+      "Money UX team"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2246,8 +3276,12 @@
     "name": "fraud protect",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2258,8 +3292,16 @@
     "name": "fraud protect pending",
     "set": "major",
     "description": "Used to represent that the Fraud Protect status is pending.",
-    "keywords": ["fraud protect", "pending", "chargebacks", "risk", "fraud"],
-    "authors": ["Money UX team"],
+    "keywords": [
+      "fraud protect",
+      "pending",
+      "chargebacks",
+      "risk",
+      "fraud"
+    ],
+    "authors": [
+      "Money UX team"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2270,8 +3312,12 @@
     "name": "fraud protect pending",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2290,7 +3336,9 @@
       "risk",
       "fraud"
     ],
-    "authors": ["Money UX team"],
+    "authors": [
+      "Money UX team"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2301,8 +3349,12 @@
     "name": "fraud protect unprotected",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2313,8 +3365,14 @@
     "name": "games console",
     "set": "major",
     "description": "Used to represent a console controller.",
-    "keywords": ["console", "controller", "games"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "console",
+      "controller",
+      "games"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2325,8 +3383,14 @@
     "name": "gift card",
     "set": "major",
     "description": "Used to represent a gift card or present.",
-    "keywords": ["gift", "gift card", "present"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "gift",
+      "gift card",
+      "present"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2337,8 +3401,14 @@
     "name": "gift card",
     "set": "minor",
     "description": "Used to represent a gift card or present.",
-    "keywords": ["gift", "gift card", "present"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "gift",
+      "gift card",
+      "present"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2349,8 +3419,12 @@
     "name": "globe",
     "set": "major",
     "description": "Used to represent a globe.",
-    "keywords": ["globe"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "globe"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2361,8 +3435,12 @@
     "name": "globe",
     "set": "minor",
     "description": "Used to represent a globe.",
-    "keywords": ["globe"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "globe"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2373,8 +3451,14 @@
     "name": "grammar",
     "set": "major",
     "description": "Used to represent correct grammar or a spell check.",
-    "keywords": ["grammar", "spell check", "spelling"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "grammar",
+      "spell check",
+      "spelling"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2385,8 +3469,15 @@
     "name": "hashtag",
     "set": "major",
     "description": "Used to represent a hashtag.",
-    "keywords": ["pound", "#", "sharp", "num"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "pound",
+      "#",
+      "sharp",
+      "num"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2397,8 +3488,16 @@
     "name": "header",
     "set": "major",
     "description": "Used to represent the header section of a component, page or layout.",
-    "keywords": ["layout", "header", "content", "dashed", "section"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "layout",
+      "header",
+      "content",
+      "dashed",
+      "section"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2409,8 +3508,13 @@
     "name": "heart",
     "set": "major",
     "description": "Used to represent a heart or an action to love or like something.",
-    "keywords": ["heart", "love"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "heart",
+      "love"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2421,8 +3525,13 @@
     "name": "hide keyboard",
     "set": "major",
     "description": "Used to represent an action to hide the keyboard on a mobile device.",
-    "keywords": ["hide keyboard", "keyboard"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "hide keyboard",
+      "keyboard"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2433,8 +3542,16 @@
     "name": "hide",
     "set": "minor",
     "description": "Used to represent an action to hide something, or to represent a hidden item or resource.",
-    "keywords": ["section", "conceal", "eye", "see", "show"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "section",
+      "conceal",
+      "eye",
+      "see",
+      "show"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2445,8 +3562,14 @@
     "name": "hint",
     "set": "major",
     "description": "Used to represent a hint or idea.",
-    "keywords": ["hint", "idea", "light bulb"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "hint",
+      "idea",
+      "light bulb"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -2457,8 +3580,16 @@
     "name": "home",
     "set": "major",
     "description": "Used to help direct merchants back to the admin home page.",
-    "keywords": ["home page", "home", "base", "main page", "start"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "home page",
+      "home",
+      "base",
+      "main page",
+      "start"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -2469,8 +3600,16 @@
     "name": "home",
     "set": "minor",
     "description": "Used to help direct merchants back to the admin home page.",
-    "keywords": ["home page", "home", "base", "main page", "start"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "home page",
+      "home",
+      "base",
+      "main page",
+      "start"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -2481,8 +3620,16 @@
     "name": "horizontal dots",
     "set": "minor",
     "description": "Used to represent additional actions in areas where three or more actions are used.",
-    "keywords": ["menu", "ellipsis", "three dots", "dots", "overflow"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "menu",
+      "ellipsis",
+      "three dots",
+      "dots",
+      "overflow"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -2493,8 +3640,13 @@
     "name": "icons",
     "set": "major",
     "description": "Used to represent icons or shapes.",
-    "keywords": ["icons", "shapes"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "icons",
+      "shapes"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2505,8 +3657,14 @@
     "name": "illustration",
     "set": "major",
     "description": "Used to represent an illustration, painting or brush.",
-    "keywords": ["brush", "illustration", "paint"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "brush",
+      "illustration",
+      "paint"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2517,8 +3675,12 @@
     "name": "image alt",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -2529,8 +3691,13 @@
     "name": "image alt",
     "set": "minor",
     "description": "Used to represent the alt text attribute used to describe the appearance and function of an image on a page.",
-    "keywords": ["accessibility", "alt text"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "accessibility",
+      "alt text"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2541,8 +3708,13 @@
     "name": "image",
     "set": "major",
     "description": "Used to represent an image or placeholder.",
-    "keywords": ["image", "placeholder"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "image",
+      "placeholder"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2562,7 +3734,9 @@
       "content",
       "section"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2583,7 +3757,9 @@
       "layout",
       "section"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2594,8 +3770,13 @@
     "name": "images",
     "set": "major",
     "description": "Used to represent multiple images.",
-    "keywords": ["images", "gallery"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "images",
+      "gallery"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2606,8 +3787,15 @@
     "name": "import",
     "set": "minor",
     "description": "Used to denote the action of importing content.",
-    "keywords": ["import", "external", "export", "bringin"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "import",
+      "external",
+      "export",
+      "bringin"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -2618,8 +3806,12 @@
     "name": "import store",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-19T00:00:00.000Z",
@@ -2630,8 +3822,14 @@
     "name": "incoming",
     "set": "major",
     "description": "Used to represent an incoming item or resource, or importing an item or resource.",
-    "keywords": ["import", "inbox", "incoming"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "import",
+      "inbox",
+      "incoming"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2642,8 +3840,14 @@
     "name": "info",
     "set": "minor",
     "description": "Used to represent a hint, or draw attention to a piece of information.",
-    "keywords": ["info", "information", "hint"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "info",
+      "information",
+      "hint"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2654,8 +3858,12 @@
     "name": "install",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2666,8 +3874,13 @@
     "name": "inventory",
     "set": "major",
     "description": "Used to represent inventory or a warehouse.",
-    "keywords": ["inventory", "warehouse"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "inventory",
+      "warehouse"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2678,8 +3891,14 @@
     "name": "invite",
     "set": "minor",
     "description": "Used to represent an email or letter.",
-    "keywords": ["email", "invite", "letter"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "email",
+      "invite",
+      "letter"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2690,8 +3909,12 @@
     "name": "iq",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2702,8 +3925,12 @@
     "name": "jobs",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2714,8 +3941,16 @@
     "name": "key",
     "set": "major",
     "description": "Used to represent a key or security.",
-    "keywords": ["key", "lock", "secure", "security", "unlock"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "key",
+      "lock",
+      "secure",
+      "security",
+      "unlock"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2726,8 +3961,17 @@
     "name": "label printer",
     "set": "major",
     "description": "Used to represent a label printer (a special printer that prints 4x6 shipping labels on thermal sticker paper).",
-    "keywords": ["label", "printer", "4x6", "shipping", "print", "thermal"],
-    "authors": ["N/A"],
+    "keywords": [
+      "label",
+      "printer",
+      "4x6",
+      "shipping",
+      "print",
+      "thermal"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2738,8 +3982,14 @@
     "name": "landing page",
     "set": "major",
     "description": "Used to represent a landing page or adding an item or resource to a page.",
-    "keywords": ["landing", "landing page", "incoming"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "landing",
+      "landing page",
+      "incoming"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2750,8 +4000,13 @@
     "name": "language",
     "set": "minor",
     "description": "Used to represent internationalization or multiple language options.",
-    "keywords": ["language", "international"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "language",
+      "international"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2022-03-08T00:00:00.000Z",
@@ -2762,8 +4017,15 @@
     "name": "legal",
     "set": "major",
     "description": "N/A",
-    "keywords": ["legal", "page", "scroll", "paper"],
-    "authors": ["N/A"],
+    "keywords": [
+      "legal",
+      "page",
+      "scroll",
+      "paper"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2774,8 +4036,13 @@
     "name": "link",
     "set": "minor",
     "description": "Used to represent a link.",
-    "keywords": ["chain", "link"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "chain",
+      "link"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -2786,8 +4053,15 @@
     "name": "list",
     "set": "major",
     "description": "Used to represent a list of items or resources, or a bulleted list.",
-    "keywords": ["bulleted list", "list", "keywords", "todo"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "bulleted list",
+      "list",
+      "keywords",
+      "todo"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2798,8 +4072,12 @@
     "name": "live view",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2810,8 +4088,13 @@
     "name": "location",
     "set": "major",
     "description": "Used to represent a location.",
-    "keywords": ["location", "pin"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "location",
+      "pin"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2822,8 +4105,12 @@
     "name": "locations",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -2834,8 +4121,13 @@
     "name": "lock",
     "set": "major",
     "description": "Used to represent a lock, a secure item or resource or that an option or setting is currently locked.",
-    "keywords": ["lock", "secure"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "lock",
+      "secure"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2846,8 +4138,13 @@
     "name": "lock",
     "set": "minor",
     "description": "Used to represent a lock, a secure item or resource or that an option or setting is currently locked.",
-    "keywords": ["lock", "secure"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "lock",
+      "secure"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2868,7 +4165,9 @@
       "exit",
       "quit"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -2879,8 +4178,17 @@
     "name": "logo block",
     "set": "major",
     "description": "Used to represent a layout option of one or more logos.",
-    "keywords": ["logo", "list", "layout", "section", "circle", "dotted"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "logo",
+      "list",
+      "layout",
+      "section",
+      "circle",
+      "dotted"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -2891,8 +4199,14 @@
     "name": "managed store",
     "set": "major",
     "description": "Used to represent a managed or approved store.",
-    "keywords": ["approved", "managed", "store"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "approved",
+      "managed",
+      "store"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2903,8 +4217,12 @@
     "name": "mark fulfilled",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2915,8 +4233,12 @@
     "name": "mark paid",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2927,8 +4249,12 @@
     "name": "marketing",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -2939,8 +4265,12 @@
     "name": "marketing",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -2951,8 +4281,15 @@
     "name": "markets",
     "set": "major",
     "description": "Used to represent Markets, Shopify's international commerce product.",
-    "keywords": ["markets", "international", "commerce", "global"],
-    "authors": ["Justina Chua"],
+    "keywords": [
+      "markets",
+      "international",
+      "commerce",
+      "global"
+    ],
+    "authors": [
+      "Justina Chua"
+    ],
     "version": 1,
     "date_added": "2022-03-09T00:00:00.000Z",
     "date_modified": "2022-03-09T00:00:00.000Z",
@@ -2963,8 +4300,14 @@
     "name": "maximize",
     "set": "major",
     "description": "Used to represent an action to make an item, resource or view larger.",
-    "keywords": ["expand", "full screen", "maximise"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "expand",
+      "full screen",
+      "maximise"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2975,8 +4318,14 @@
     "name": "maximize",
     "set": "minor",
     "description": "Used to represent an action to make an item, resource or view larger.",
-    "keywords": ["expand", "full screen", "maximise"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "expand",
+      "full screen",
+      "maximise"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2987,8 +4336,13 @@
     "name": "mention",
     "set": "major",
     "description": "Used to represent an action to mention someone.",
-    "keywords": ["at", "mention"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "at",
+      "mention"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -2999,8 +4353,13 @@
     "name": "microphone",
     "set": "major",
     "description": "Used to represent a microphone.",
-    "keywords": ["mic", "microphone"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "mic",
+      "microphone"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3011,8 +4370,12 @@
     "name": "minimize",
     "set": "major",
     "description": "Used to represent an action to make an item, resource or view smaller.",
-    "keywords": ["minimise"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "minimise"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3023,8 +4386,12 @@
     "name": "minimize",
     "set": "minor",
     "description": "Used to represent an action to make an item, resource or view smaller.",
-    "keywords": ["minimise"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "minimise"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3045,7 +4412,9 @@
       "substract",
       "less"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3056,8 +4425,15 @@
     "name": "mobile accept",
     "set": "major",
     "description": "Used to represent a confirm action. Most commonly used in the toolbar in an _edit_ context.",
-    "keywords": ["accept", "save", "confirm", "check"],
-    "authors": ["N/A"],
+    "keywords": [
+      "accept",
+      "save",
+      "confirm",
+      "check"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3068,8 +4444,13 @@
     "name": "mobile back arrow",
     "set": "major",
     "description": "Used to represent backwards navigation.",
-    "keywords": ["back", "navigation"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "back",
+      "navigation"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3080,8 +4461,18 @@
     "name": "mobile cancel",
     "set": "major",
     "description": "Used to denote the action of cancelling a task or action and to close an overlay modal or bottom sheet.",
-    "keywords": ["cancel", "delete", "stop", "remove", "undo", "x", "close"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cancel",
+      "delete",
+      "stop",
+      "remove",
+      "undo",
+      "x",
+      "close"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3092,8 +4483,14 @@
     "name": "mobile chevron",
     "set": "major",
     "description": "Used to represent the back action commonly found in iOS.",
-    "keywords": ["back", "ios", "navigation"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "back",
+      "ios",
+      "navigation"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3104,8 +4501,14 @@
     "name": "mobile hamburger",
     "set": "major",
     "description": "Used to help direct merchants to navigation on mobile.",
-    "keywords": ["hamburger", "menu", "burger"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "hamburger",
+      "menu",
+      "burger"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3116,8 +4519,17 @@
     "name": "mobile horizontal dots",
     "set": "major",
     "description": "Used to represent an action to reveal a menu or more options.",
-    "keywords": ["dots", "ellipsis", "menu", "options", "overflow", "..."],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "dots",
+      "ellipsis",
+      "menu",
+      "options",
+      "overflow",
+      "..."
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3128,8 +4540,13 @@
     "name": "mobile",
     "set": "major",
     "description": "Used to represent a mobile phone.",
-    "keywords": ["mobile", "phone"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "mobile",
+      "phone"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3140,8 +4557,14 @@
     "name": "mobile plus",
     "set": "major",
     "description": "Used to represent an action to add an item or resource, or increase the quantity of an item or resource.",
-    "keywords": ["add", "plus", "increase"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "add",
+      "plus",
+      "increase"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3152,8 +4575,15 @@
     "name": "mobile vertical dots",
     "set": "major",
     "description": "Used to represent an action to reveal a menu or more options.",
-    "keywords": ["dots", "menu", "options", "overflow"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "dots",
+      "menu",
+      "options",
+      "overflow"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3164,8 +4594,14 @@
     "name": "moneris",
     "set": "major",
     "description": "Used to represent a handheld credit card reader.",
-    "keywords": ["credit card", "moneris", "payment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "credit card",
+      "moneris",
+      "payment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3176,8 +4612,12 @@
     "name": "nature",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3188,8 +4628,13 @@
     "name": "navigation",
     "set": "major",
     "description": "Used to represent a compass or navigation.",
-    "keywords": ["compass", "navigation"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "compass",
+      "navigation"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3209,7 +4654,9 @@
       "paper",
       "tags"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -3229,7 +4676,9 @@
       "paper",
       "tags"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3240,8 +4689,14 @@
     "name": "notification",
     "set": "major",
     "description": "Used to represent a notification or alert.",
-    "keywords": ["notifications", "alerts", "bell"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "notifications",
+      "alerts",
+      "bell"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3252,8 +4707,13 @@
     "name": "online store",
     "set": "major",
     "description": "Used to represent an online store.",
-    "keywords": ["online store", "store"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "online store",
+      "store"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3264,8 +4724,13 @@
     "name": "online store",
     "set": "minor",
     "description": "Used to represent an online store.",
-    "keywords": ["online store", "store"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "online store",
+      "store"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -3276,8 +4741,15 @@
     "name": "order status",
     "set": "minor",
     "description": "Used to represent the activity of an inbox.",
-    "keywords": ["activity", "inbox", "status", "orders"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "activity",
+      "inbox",
+      "status",
+      "orders"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3288,8 +4760,13 @@
     "name": "orders",
     "set": "major",
     "description": "Used to represent an inbox or an item or resource arriving in an inbox.",
-    "keywords": ["inbox", "orders"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "inbox",
+      "orders"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3300,8 +4777,13 @@
     "name": "orders",
     "set": "minor",
     "description": "Used to represent an inbox or an item or resource arriving in an inbox.",
-    "keywords": ["inbox", "orders"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "inbox",
+      "orders"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -3312,8 +4794,14 @@
     "name": "outgoing",
     "set": "major",
     "description": "Used to represent an outgoing item or resource, or exporting an item or resource.",
-    "keywords": ["export", "outbox", "outgoing"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "export",
+      "outbox",
+      "outgoing"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3324,8 +4812,15 @@
     "name": "package",
     "set": "major",
     "description": "Used to represent a package or box that merchants can ship their products in.",
-    "keywords": ["shipping", "box", "package", "cardboard"],
-    "authors": ["N/A"],
+    "keywords": [
+      "shipping",
+      "box",
+      "package",
+      "cardboard"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3336,8 +4831,15 @@
     "name": "page down",
     "set": "major",
     "description": "Used to represent an action to download a page or document.",
-    "keywords": ["document", "download", "page", "paper"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "document",
+      "download",
+      "page",
+      "paper"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3348,8 +4850,15 @@
     "name": "page",
     "set": "major",
     "description": "Used to represent a blank page or document.",
-    "keywords": ["blank", "document", "page", "paper"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "blank",
+      "document",
+      "page",
+      "paper"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3360,8 +4869,16 @@
     "name": "page minus",
     "set": "major",
     "description": "Used to represent an action to remove a page or document.",
-    "keywords": ["document", "minus", "page", "paper", "remove"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "document",
+      "minus",
+      "page",
+      "paper",
+      "remove"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3372,8 +4889,15 @@
     "name": "page plus",
     "set": "major",
     "description": "Used to represent an action to add a page or document.",
-    "keywords": ["add", "document", "page", "paper"],
-    "authors": ["N/A"],
+    "keywords": [
+      "add",
+      "document",
+      "page",
+      "paper"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3384,8 +4908,15 @@
     "name": "page up",
     "set": "major",
     "description": "Used to represent an action to upload a page or document.",
-    "keywords": ["document", "page", "paper", "upload"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "document",
+      "page",
+      "paper",
+      "upload"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3396,8 +4927,12 @@
     "name": "pagination end",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3408,8 +4943,12 @@
     "name": "pagination start",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3420,8 +4959,14 @@
     "name": "paint brush",
     "set": "major",
     "description": "Used to represent a paintbrush or an action to customize an item or resource.",
-    "keywords": ["brush", "customize", "paintbrush"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "brush",
+      "customize",
+      "paintbrush"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3432,8 +4977,17 @@
     "name": "pause circle",
     "set": "major",
     "description": "Used to represent an action to pause something.",
-    "keywords": ["pause", "media", "video", "motion", "animation", "film"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "pause",
+      "media",
+      "video",
+      "motion",
+      "animation",
+      "film"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3444,8 +4998,12 @@
     "name": "pause",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3456,8 +5014,12 @@
     "name": "pause",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3468,8 +5030,16 @@
     "name": "payments",
     "set": "major",
     "description": "Used to represent a payment made by credit or debit card.",
-    "keywords": ["credit", "credit card", "debit", "debit card", "payment"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "credit",
+      "credit card",
+      "debit",
+      "debit card",
+      "payment"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3480,8 +5050,14 @@
     "name": "phone in",
     "set": "major",
     "description": "Used to represent an incoming phone call.",
-    "keywords": ["call", "incoming", "phone"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "call",
+      "incoming",
+      "phone"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3492,8 +5068,13 @@
     "name": "phone",
     "set": "major",
     "description": "Used to represent a phone or phone call.",
-    "keywords": ["call", "phone"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "call",
+      "phone"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -3504,8 +5085,14 @@
     "name": "phone out",
     "set": "major",
     "description": "Used to represent an outgoing phone call.",
-    "keywords": ["call", "outgoing", "phone"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "call",
+      "outgoing",
+      "phone"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3516,8 +5103,13 @@
     "name": "pin",
     "set": "major",
     "description": "Used to represent a pin or an action to pin or save something.",
-    "keywords": ["pin", "save"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "pin",
+      "save"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3528,8 +5120,12 @@
     "name": "pin",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3550,7 +5146,9 @@
       "film",
       "circle"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -3561,8 +5159,12 @@
     "name": "play",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3573,8 +5175,12 @@
     "name": "play",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3585,8 +5191,15 @@
     "name": "plus",
     "set": "minor",
     "description": "Used to denote the action of adding an item and zooming into a map.",
-    "keywords": ["plus", "addition", "add", "math"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "plus",
+      "addition",
+      "add",
+      "math"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3597,8 +5210,15 @@
     "name": "point of sale",
     "set": "major",
     "description": "Used to represent a point of sale or sales register.",
-    "keywords": ["point of sale", "POS", "terminal", "register"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "point of sale",
+      "POS",
+      "terminal",
+      "register"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3609,8 +5229,14 @@
     "name": "popular",
     "set": "major",
     "description": "Used to represent activity or something increasing in popularity.",
-    "keywords": ["activity", "graph", "popular"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "activity",
+      "graph",
+      "popular"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3621,8 +5247,12 @@
     "name": "price lookup",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3633,8 +5263,14 @@
     "name": "print",
     "set": "major",
     "description": "Used to represent a printer or an action to print something.",
-    "keywords": ["desktop", "label", "printer"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "desktop",
+      "label",
+      "printer"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3645,8 +5281,14 @@
     "name": "print",
     "set": "minor",
     "description": "Used to denote the action of printing.",
-    "keywords": ["print", "printing", "printer"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "print",
+      "printing",
+      "printer"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3657,8 +5299,15 @@
     "name": "product returns",
     "set": "minor",
     "description": "Used to help direct merchants to returns page.",
-    "keywords": ["return", "product return", "return page", "arrow"],
-    "authors": ["Clara Petit"],
+    "keywords": [
+      "return",
+      "product return",
+      "return page",
+      "arrow"
+    ],
+    "authors": [
+      "Clara Petit"
+    ],
     "version": 1,
     "date_added": "2020-07-08T00:00:00.000Z",
     "date_modified": "2020-07-08T00:00:00.000Z",
@@ -3669,8 +5318,14 @@
     "name": "products",
     "set": "major",
     "description": "Used to represent products or a price tag.",
-    "keywords": ["tag", "products", "price"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "tag",
+      "products",
+      "price"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3681,8 +5336,14 @@
     "name": "products",
     "set": "minor",
     "description": "Used to represent products or a price tag.",
-    "keywords": ["tag", "products", "price"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "tag",
+      "products",
+      "price"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2022-01-17T00:00:00.000Z",
     "date_modified": "2022-01-17T00:00:00.000Z",
@@ -3693,8 +5354,17 @@
     "name": "profile",
     "set": "major",
     "description": "Used to represent a staff member.",
-    "keywords": ["avatar", "user", "profile", "me", "portrait", "staff"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "avatar",
+      "user",
+      "profile",
+      "me",
+      "portrait",
+      "staff"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -3705,8 +5375,17 @@
     "name": "profile",
     "set": "minor",
     "description": "Used to represent a staff member.",
-    "keywords": ["avatar", "user", "profile", "me", "portrait", "staff"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "avatar",
+      "user",
+      "profile",
+      "me",
+      "portrait",
+      "staff"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3717,8 +5396,13 @@
     "name": "promote",
     "set": "minor",
     "description": "Used to represent an action to open an external resource, or promote an item or resource.",
-    "keywords": ["external", "promote"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "external",
+      "promote"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3737,7 +5421,9 @@
       "learn more",
       "circle"
     ],
-    "authors": ["Liz Khoo"],
+    "authors": [
+      "Liz Khoo"
+    ],
     "version": 1,
     "date_added": "2021-07-14T00:00:00.000Z",
     "date_modified": "2021-07-14T00:00:00.000Z",
@@ -3756,7 +5442,9 @@
       "learn more",
       "circle"
     ],
-    "authors": ["Liz Khoo"],
+    "authors": [
+      "Liz Khoo"
+    ],
     "version": 1,
     "date_added": "2021-07-14T00:00:00.000Z",
     "date_modified": "2021-07-14T00:00:00.000Z",
@@ -3775,7 +5463,9 @@
       "learn more",
       "circle"
     ],
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3786,8 +5476,15 @@
     "name": "question mark",
     "set": "minor",
     "description": "Used to represent help, information or as an action to reveal more information about an item or resource.",
-    "keywords": ["help", "hint", "info", "question"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "help",
+      "hint",
+      "info",
+      "question"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3798,8 +5495,15 @@
     "name": "quick sale",
     "set": "major",
     "description": "Used to represent a quick checkout process or quick sale.",
-    "keywords": ["cart", "checkout", "quick", "sale"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "cart",
+      "checkout",
+      "quick",
+      "sale"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3810,8 +5514,12 @@
     "name": "read time",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3822,8 +5530,14 @@
     "name": "receipt",
     "set": "major",
     "description": "Used to represent a sales receipt or invoice.",
-    "keywords": ["invoice", "receipt", "sale"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "invoice",
+      "receipt",
+      "sale"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3834,8 +5548,15 @@
     "name": "recent searches",
     "set": "major",
     "description": "Used to represent recent searches or search history.",
-    "keywords": ["history", "recent", "recent search", "search history"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "history",
+      "recent",
+      "recent search",
+      "search history"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3846,8 +5567,15 @@
     "name": "redo",
     "set": "major",
     "description": "Used to indicate redoing an action after undoing it.",
-    "keywords": ["redo", "undo", "rollback", "return"],
-    "authors": ["N/A"],
+    "keywords": [
+      "redo",
+      "undo",
+      "rollback",
+      "return"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -3858,8 +5586,14 @@
     "name": "referral code",
     "set": "major",
     "description": "Used to represent a referral code’s usage status.",
-    "keywords": ["referral", "code", "coupon"],
-    "authors": ["N/A"],
+    "keywords": [
+      "referral",
+      "code",
+      "coupon"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-11-05T00:00:00.000Z",
     "date_modified": "2019-11-05T00:00:00.000Z",
@@ -3870,8 +5604,14 @@
     "name": "referral",
     "set": "major",
     "description": "Used to represent the source of a referral.",
-    "keywords": ["referral", "code", "coupon"],
-    "authors": ["N/A"],
+    "keywords": [
+      "referral",
+      "code",
+      "coupon"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-11-05T00:00:00.000Z",
     "date_modified": "2019-11-05T00:00:00.000Z",
@@ -3882,8 +5622,14 @@
     "name": "refresh",
     "set": "major",
     "description": "Used to represent an action to refresh or sync an item or resource.",
-    "keywords": ["refresh", "reload", "sync"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "refresh",
+      "reload",
+      "sync"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3894,8 +5640,14 @@
     "name": "refresh",
     "set": "minor",
     "description": "Used to denote the action of resetting a customer’s account password on their customer page.",
-    "keywords": ["refresh", "reload", "sync"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "refresh",
+      "reload",
+      "sync"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -3906,8 +5658,12 @@
     "name": "refund",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -3918,8 +5674,12 @@
     "name": "refund",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3930,8 +5690,14 @@
     "name": "remove product",
     "set": "major",
     "description": "Used to represent an action to remove a product.",
-    "keywords": ["remove", "minus", "product"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "remove",
+      "minus",
+      "product"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3942,8 +5708,12 @@
     "name": "repeat order",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3965,7 +5735,9 @@
       "arrows",
       "square"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -3976,8 +5748,13 @@
     "name": "replay",
     "set": "minor",
     "description": "Used to represent an action to replay or restart something.",
-    "keywords": ["replay", "restart"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "replay",
+      "restart"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -3988,8 +5765,14 @@
     "name": "report",
     "set": "minor",
     "description": "Used to represent analytics or a report.",
-    "keywords": ["analytics", "report", "reporting"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "analytics",
+      "report",
+      "reporting"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-12T00:00:00.000Z",
     "date_modified": "2019-03-12T00:00:00.000Z",
@@ -4000,8 +5783,12 @@
     "name": "reports",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4012,8 +5799,13 @@
     "name": "reset",
     "set": "minor",
     "description": "Used to represent an action to reset or restart something.",
-    "keywords": ["reset", "restart"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "reset",
+      "restart"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4024,8 +5816,15 @@
     "name": "resources",
     "set": "major",
     "description": "Used to represent resources to learn more about a topic or feature.",
-    "keywords": ["resources", "learn more", "glasses", "research"],
-    "authors": ["N/A"],
+    "keywords": [
+      "resources",
+      "learn more",
+      "glasses",
+      "research"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4036,8 +5835,13 @@
     "name": "return",
     "set": "minor",
     "description": "Used to represent an action to create a new line, sometimes referred to as a carriage return.",
-    "keywords": ["enter", "return"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "enter",
+      "return"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4048,8 +5852,13 @@
     "name": "risk",
     "set": "major",
     "description": "Used to represent elevated risk on a payment or order, usually the risk of credit card fraud.",
-    "keywords": ["risk", "fraud"],
-    "authors": ["N/A"],
+    "keywords": [
+      "risk",
+      "fraud"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4060,8 +5869,15 @@
     "name": "risk",
     "set": "minor",
     "description": "Used to represent risk associated with orders.",
-    "keywords": ["risk", "warning", "triangle", "alert"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "risk",
+      "warning",
+      "triangle",
+      "alert"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -4080,7 +5896,9 @@
       "development",
       "testing"
     ],
-    "authors": ["Brian Potstra"],
+    "authors": [
+      "Brian Potstra"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4091,8 +5909,14 @@
     "name": "save",
     "set": "minor",
     "description": "Used to denote the action of saving.",
-    "keywords": ["save", "saving", "store"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "save",
+      "saving",
+      "store"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -4103,8 +5927,15 @@
     "name": "search",
     "set": "major",
     "description": "Used to represent search or an action to search for an item or resource.",
-    "keywords": ["find", "look up", "magnifying glass", "search"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "find",
+      "look up",
+      "magnifying glass",
+      "search"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4115,8 +5946,14 @@
     "name": "search",
     "set": "minor",
     "description": "Used to denote the action of searching throughout the admin.",
-    "keywords": ["search", "find", "glass"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "search",
+      "find",
+      "glass"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -4127,8 +5964,16 @@
     "name": "section",
     "set": "major",
     "description": "Used to represent the middle section of a component, page or layout.",
-    "keywords": ["layout", "middle", "content", "dashed", "section"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "layout",
+      "middle",
+      "content",
+      "dashed",
+      "section"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4139,8 +5984,15 @@
     "name": "secure",
     "set": "major",
     "description": "Used to represent a secure or protected item or resource, or than an item or resource can be trusted.",
-    "keywords": ["protected", "secure", "trust", "verified"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "protected",
+      "secure",
+      "trust",
+      "verified"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4151,8 +6003,18 @@
     "name": "select",
     "set": "minor",
     "description": "Used to denote the action opening a select.",
-    "keywords": ["caret", "arrow", "up", "down", "select", "open"],
-    "authors": ["Adam Whitcroft", "Jordan Ouellette"],
+    "keywords": [
+      "caret",
+      "arrow",
+      "up",
+      "down",
+      "select",
+      "open"
+    ],
+    "authors": [
+      "Adam Whitcroft",
+      "Jordan Ouellette"
+    ],
     "version": 2,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2021-11-03T00:00:00.000Z",
@@ -4163,8 +6025,16 @@
     "name": "send",
     "set": "major",
     "description": "Used to represent an action to send a message, commonly used in a chat UI.",
-    "keywords": ["send", "mail", "plane", "message", "chat"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "send",
+      "mail",
+      "plane",
+      "message",
+      "chat"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4175,8 +6045,14 @@
     "name": "settings",
     "set": "major",
     "description": "Used to represent settings or a configuration option.",
-    "keywords": ["configure", "settings", "cog"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "configure",
+      "settings",
+      "cog"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4187,8 +6063,14 @@
     "name": "settings",
     "set": "minor",
     "description": "Used to represent settings or a configuration option.",
-    "keywords": ["configure", "settings", "cog"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "configure",
+      "settings",
+      "cog"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4199,8 +6081,12 @@
     "name": "share ios",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4211,8 +6097,12 @@
     "name": "share",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4234,7 +6124,9 @@
       "tracking",
       "truck"
     ],
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -4245,8 +6137,12 @@
     "name": "shopcodes",
     "set": "major",
     "description": "Used to represent a QR code.",
-    "keywords": ["qr code"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "qr code"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4257,8 +6153,16 @@
     "name": "sidebar left",
     "set": "major",
     "description": "Used to represent the left section of a component, page or layout.",
-    "keywords": ["sidebar", "layout", "section", "left", "content"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "sidebar",
+      "layout",
+      "section",
+      "left",
+      "content"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4269,8 +6173,16 @@
     "name": "sidebar right",
     "set": "major",
     "description": "Used to represent the right section of a component, page or layout.",
-    "keywords": ["sidebar", "layout", "section", "right", "content"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "sidebar",
+      "layout",
+      "section",
+      "right",
+      "content"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4291,7 +6203,9 @@
       "dots",
       "swipe"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -4302,8 +6216,14 @@
     "name": "smiley happy",
     "set": "major",
     "description": "Used to represent a happy customer or user, a smiling face or a smiley emoji.",
-    "keywords": ["smiley", "happy", "emoji"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "smiley",
+      "happy",
+      "emoji"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4314,8 +6234,15 @@
     "name": "smiley joy",
     "set": "major",
     "description": "Used to represent a very happy customer or user, a smiling face or a smiley emoji.",
-    "keywords": ["smiley", "happy", "ecstatic", "emoji"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "smiley",
+      "happy",
+      "ecstatic",
+      "emoji"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4326,8 +6253,13 @@
     "name": "smiley neutral",
     "set": "major",
     "description": "Used to represent a neutral customer or user, a neutral face or a neutral emoji.",
-    "keywords": ["neutral", "emoji"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "neutral",
+      "emoji"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4338,8 +6270,13 @@
     "name": "smiley sad",
     "set": "major",
     "description": "Used to represent a sad customer or user, a sad face or a sad emoji.",
-    "keywords": ["sad", "emoji"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "sad",
+      "emoji"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4350,8 +6287,12 @@
     "name": "social ad",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -4362,8 +6303,12 @@
     "name": "social post",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4383,7 +6328,9 @@
       "bubblewrap",
       "padded"
     ],
-    "authors": ["N/A"],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -4394,8 +6341,14 @@
     "name": "sort ascending",
     "set": "major",
     "description": "Used to indicate that a list of items or resources has been sorted by ascending order.",
-    "keywords": ["ascending", "sort", "order"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "ascending",
+      "sort",
+      "order"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4406,8 +6359,14 @@
     "name": "sort descending",
     "set": "major",
     "description": "Used to indicate that a list of items or resources has been sorted by descending order.",
-    "keywords": ["descending", "sort", "order"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "descending",
+      "sort",
+      "order"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4418,8 +6377,12 @@
     "name": "sort",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4430,8 +6393,12 @@
     "name": "sound",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4442,8 +6409,15 @@
     "name": "star filled",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["star", "starred", "favourite", "favorite"],
-    "authors": ["Sara Hill"],
+    "keywords": [
+      "star",
+      "starred",
+      "favourite",
+      "favorite"
+    ],
+    "authors": [
+      "Sara Hill"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -4454,8 +6428,15 @@
     "name": "star outline",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["favorite", "favourite", "starred", "star"],
-    "authors": ["Sara Hill"],
+    "keywords": [
+      "favorite",
+      "favourite",
+      "starred",
+      "star"
+    ],
+    "authors": [
+      "Sara Hill"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -4466,8 +6447,13 @@
     "name": "store",
     "set": "major",
     "description": "Used to represent a store or shop.",
-    "keywords": ["store", "shop"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "store",
+      "shop"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4478,8 +6464,14 @@
     "name": "store",
     "set": "minor",
     "description": "Used to represent a store or shop.",
-    "keywords": ["store", "shop"],
-    "authors": ["Dan Ross", "Adam Whitcroft"],
+    "keywords": [
+      "store",
+      "shop"
+    ],
+    "authors": [
+      "Dan Ross",
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2021-02-22T00:00:00.000Z",
     "date_modified": "2021-02-22T00:00:00.000Z",
@@ -4490,8 +6482,13 @@
     "name": "store status",
     "set": "major",
     "description": "Used to represent the activity of a shop or store.",
-    "keywords": ["status", "activity"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "status",
+      "activity"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4502,8 +6499,13 @@
     "name": "tablet",
     "set": "major",
     "description": "Used to represent a tablet.",
-    "keywords": ["tablet", "ipad"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "tablet",
+      "ipad"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4514,8 +6516,12 @@
     "name": "tap chip",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4526,8 +6532,14 @@
     "name": "tax",
     "set": "major",
     "description": "Used to represent sales tax or a tax receipt.",
-    "keywords": ["sales tax", "tax reciept", "tax"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "sales tax",
+      "tax reciept",
+      "tax"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4538,8 +6550,16 @@
     "name": "team",
     "set": "major",
     "description": "N/A",
-    "keywords": ["connect", "connected", "path", "team", "related"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "connect",
+      "connected",
+      "path",
+      "team",
+      "related"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4550,8 +6570,16 @@
     "name": "template",
     "set": "major",
     "description": "Used to represent a Shopify Theme Template.",
-    "keywords": ["template", "theme", "section", "editor", "online store"],
-    "authors": ["Rozina Szogyenyi"],
+    "keywords": [
+      "template",
+      "theme",
+      "section",
+      "editor",
+      "online store"
+    ],
+    "authors": [
+      "Rozina Szogyenyi"
+    ],
     "version": 1,
     "date_added": "2021-02-03T00:00:00.000Z",
     "date_modified": "2021-02-03T00:00:00.000Z",
@@ -4562,8 +6590,16 @@
     "name": "text alignment center",
     "set": "major",
     "description": "Icon indicating alignment of text at the center",
-    "keywords": ["align", "alignment", "center", "rte", "text"],
-    "authors": ["Arthur Gouveia"],
+    "keywords": [
+      "align",
+      "alignment",
+      "center",
+      "rte",
+      "text"
+    ],
+    "authors": [
+      "Arthur Gouveia"
+    ],
     "version": 1,
     "date_added": "2019-08-07T00:00:00.000Z",
     "date_modified": "2019-08-07T00:00:00.000Z",
@@ -4574,8 +6610,16 @@
     "name": "text alignment left",
     "set": "major",
     "description": "Icon indicating alignment of text on the left side",
-    "keywords": ["align", "alignment", "left", "rte", "text"],
-    "authors": ["Arthur Gouveia"],
+    "keywords": [
+      "align",
+      "alignment",
+      "left",
+      "rte",
+      "text"
+    ],
+    "authors": [
+      "Arthur Gouveia"
+    ],
     "version": 1,
     "date_added": "2019-08-07T00:00:00.000Z",
     "date_modified": "2019-08-07T00:00:00.000Z",
@@ -4586,8 +6630,16 @@
     "name": "text alignment right",
     "set": "major",
     "description": "Icon indicating alignment of text on the right side",
-    "keywords": ["align", "alignment", "right", "rte", "text"],
-    "authors": ["Arthur Gouveia"],
+    "keywords": [
+      "align",
+      "alignment",
+      "right",
+      "rte",
+      "text"
+    ],
+    "authors": [
+      "Arthur Gouveia"
+    ],
     "version": 1,
     "date_added": "2019-08-07T00:00:00.000Z",
     "date_modified": "2019-08-07T00:00:00.000Z",
@@ -4598,8 +6650,13 @@
     "name": "text block",
     "set": "major",
     "description": "Used to represent a paragraph or block of text.",
-    "keywords": ["text", "paragraph"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "text",
+      "paragraph"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4610,8 +6667,12 @@
     "name": "text",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4622,8 +6683,12 @@
     "name": "theme edit",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4634,8 +6699,15 @@
     "name": "theme store",
     "set": "major",
     "description": "Used to represent the Shopify theme store.",
-    "keywords": ["theme", "store", "shop", "customize"],
-    "authors": ["N/A"],
+    "keywords": [
+      "theme",
+      "store",
+      "shop",
+      "customize"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -4646,8 +6718,14 @@
     "name": "themes",
     "set": "major",
     "description": "Used to indicate free themes in the Shopify theme store.",
-    "keywords": ["theme", "free", "customize"],
-    "authors": ["N/A"],
+    "keywords": [
+      "theme",
+      "free",
+      "customize"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -4668,7 +6746,9 @@
       "social",
       "dislike"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4689,7 +6769,9 @@
       "negative",
       "social"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4710,7 +6792,9 @@
       "yes",
       "upvote"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -4731,7 +6815,9 @@
       "yes",
       "upvote"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4742,8 +6828,16 @@
     "name": "tick",
     "set": "minor",
     "description": "N/A",
-    "keywords": ["checkmark", "yes", "ok", "good", "tick"],
-    "authors": ["N/A"],
+    "keywords": [
+      "checkmark",
+      "yes",
+      "ok",
+      "good",
+      "tick"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4754,8 +6848,17 @@
     "name": "tick small",
     "set": "minor",
     "description": "Used to denote the action of checking a Polaris checkbox.",
-    "keywords": ["checkmark", "yes", "ok", "good", "passed", "tick"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "checkmark",
+      "yes",
+      "ok",
+      "good",
+      "passed",
+      "tick"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -4766,8 +6869,15 @@
     "name": "timeline attachment",
     "set": "major",
     "description": "This icon denotes an attachment of any file to a timeline.",
-    "keywords": ["timeline", "attachment", "generic", "file"],
-    "authors": ["Brian Potstra"],
+    "keywords": [
+      "timeline",
+      "attachment",
+      "generic",
+      "file"
+    ],
+    "authors": [
+      "Brian Potstra"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4778,8 +6888,12 @@
     "name": "tips",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4790,8 +6904,16 @@
     "name": "title",
     "set": "minor",
     "description": "Used to represent a title or heading block appearing as a sub-element of a section, page or layout.",
-    "keywords": ["title", "heading", "subheading", "content", "block"],
-    "authors": ["Rozina Szogyenyi"],
+    "keywords": [
+      "title",
+      "heading",
+      "subheading",
+      "content",
+      "block"
+    ],
+    "authors": [
+      "Rozina Szogyenyi"
+    ],
     "version": 1,
     "date_added": "2021-08-18T00:00:00.000Z",
     "date_modified": "2021-08-18T00:00:00.000Z",
@@ -4812,7 +6934,9 @@
       "pencil",
       "ruler"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4823,8 +6947,12 @@
     "name": "transaction fee (dollar)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4835,8 +6963,12 @@
     "name": "transaction fee (euro)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4847,8 +6979,12 @@
     "name": "transaction fee (pound)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4859,8 +6995,12 @@
     "name": "transaction fee (rupee)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4871,8 +7011,12 @@
     "name": "transaction fee (yen)",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4883,8 +7027,16 @@
     "name": "transaction",
     "set": "major",
     "description": "Used to represent an action to customize an item or resource.",
-    "keywords": ["tools", "options", "settings", "customize", "configure"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "tools",
+      "options",
+      "settings",
+      "customize",
+      "configure"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4895,8 +7047,12 @@
     "name": "transfer in",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4907,8 +7063,12 @@
     "name": "transfer",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4919,8 +7079,12 @@
     "name": "transfer out",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4931,8 +7095,12 @@
     "name": "transfer within shopify",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4943,8 +7111,16 @@
     "name": "transport",
     "set": "major",
     "description": "Used as a navigation item in our emoji picker for the transport category.",
-    "keywords": ["transport", "plane", "airplane", "emoji", "navigation"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "transport",
+      "plane",
+      "airplane",
+      "emoji",
+      "navigation"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4955,8 +7131,15 @@
     "name": "troubleshoot",
     "set": "major",
     "description": "Used to represent an action to troubleshoot or view troubleshooting information.",
-    "keywords": ["tools", "spanner", "wrench", "troubleshoot"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "tools",
+      "spanner",
+      "wrench",
+      "troubleshoot"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -4967,8 +7150,17 @@
     "name": "type",
     "set": "major",
     "description": "Used to represent a typeface or an action to change the properties of a typeface or body of text.",
-    "keywords": ["typography", "font", "typeface", "type", "letter", "text"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "typography",
+      "font",
+      "typeface",
+      "type",
+      "letter",
+      "text"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -4979,8 +7171,15 @@
     "name": "undo",
     "set": "major",
     "description": "Used to indicate undoing an action in an editor context.",
-    "keywords": ["redo", "undo", "return", "cancel"],
-    "authors": ["N/A"],
+    "keywords": [
+      "redo",
+      "undo",
+      "return",
+      "cancel"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-11T00:00:00.000Z",
     "date_modified": "2019-03-11T00:00:00.000Z",
@@ -4991,8 +7190,13 @@
     "name": "unfulfilled",
     "set": "major",
     "description": "Used to represent an empty inbox.",
-    "keywords": ["inbox", "unfulilled"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "inbox",
+      "unfulilled"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5003,8 +7207,13 @@
     "name": "unknown device",
     "set": "major",
     "description": "Used to represent an unknown device, item or resource.",
-    "keywords": ["unknown", "device"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "unknown",
+      "device"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5015,8 +7224,15 @@
     "name": "update inventory",
     "set": "major",
     "description": "Used to represent updated inventory at a warehouse.",
-    "keywords": ["warehouse", "inventory", "manage", "update"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "warehouse",
+      "inventory",
+      "manage",
+      "update"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5027,8 +7243,15 @@
     "name": "upload",
     "set": "major",
     "description": "Used to represent the ability to upload a file",
-    "keywords": ["upload", "file", "arrow", "up"],
-    "authors": ["Alex Page"],
+    "keywords": [
+      "upload",
+      "file",
+      "arrow",
+      "up"
+    ],
+    "authors": [
+      "Alex Page"
+    ],
     "version": 2,
     "date_added": "2020-09-21T00:00:00.000Z",
     "date_modified": "2020-09-21T00:00:00.000Z",
@@ -5039,8 +7262,12 @@
     "name": "variant",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5061,7 +7288,9 @@
       "show",
       "reveal"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -5082,7 +7311,9 @@
       "show",
       "reveal"
     ],
-    "authors": ["Adam Whitcroft"],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2018-11-14T00:00:00.000Z",
     "date_modified": "2018-11-14T00:00:00.000Z",
@@ -5093,8 +7324,17 @@
     "name": "viewport narrow",
     "set": "major",
     "description": "Used to represent an action to make a viewport, item or resource narrower.",
-    "keywords": ["viewport", "narrow", "arrows", "horizontal", "left", "right"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "viewport",
+      "narrow",
+      "arrows",
+      "horizontal",
+      "left",
+      "right"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5105,8 +7345,17 @@
     "name": "viewport wide",
     "set": "major",
     "description": "Used to represent an action to make a viewport, item or resource wider.",
-    "keywords": ["viewport", "wide", "arrows", "horizontal", "left", "right"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "viewport",
+      "wide",
+      "arrows",
+      "horizontal",
+      "left",
+      "right"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-02-25T00:00:00.000Z",
     "date_modified": "2019-02-25T00:00:00.000Z",
@@ -5117,8 +7366,14 @@
     "name": "vocabulary",
     "set": "major",
     "description": "Used to represent a book, dictionary or thesaurus.",
-    "keywords": ["book", "thesaurus", "dictionary"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "book",
+      "thesaurus",
+      "dictionary"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-01T00:00:00.000Z",
     "date_modified": "2019-03-01T00:00:00.000Z",
@@ -5129,8 +7384,14 @@
     "name": "wand",
     "set": "major",
     "description": "Used to represent an action to perform an automatic process or series of processes.",
-    "keywords": ["magic", "wand", "automatic"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "magic",
+      "wand",
+      "automatic"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5141,8 +7402,14 @@
     "name": "wand",
     "set": "minor",
     "description": "Used to represent an action to perform an automatic process or series of processes.",
-    "keywords": ["magic", "wand", "automatic"],
-    "authors": ["Jordan Ouellette"],
+    "keywords": [
+      "magic",
+      "wand",
+      "automatic"
+    ],
+    "authors": [
+      "Jordan Ouellette"
+    ],
     "version": 1,
     "date_added": "2021-12-13T00:00:00.000Z",
     "date_modified": "2021-12-13T00:00:00.000Z",
@@ -5153,8 +7420,14 @@
     "name": "wearable",
     "set": "major",
     "description": "Used to represent a wearable device or wristwatch.",
-    "keywords": ["wearable", "watch", "wristwatch"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "wearable",
+      "watch",
+      "wristwatch"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5165,8 +7438,15 @@
     "name": "wholesale",
     "set": "major",
     "description": "Used to represent a forklift or equipment used in a warehouse.",
-    "keywords": ["forklift", "lift", "delivery", "warehouse"],
-    "authors": ["Adam Whitcroft"],
+    "keywords": [
+      "forklift",
+      "lift",
+      "delivery",
+      "warehouse"
+    ],
+    "authors": [
+      "Adam Whitcroft"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
@@ -5177,8 +7457,12 @@
     "name": "wifi",
     "set": "major",
     "description": "N/A",
-    "keywords": ["N/A"],
-    "authors": ["N/A"],
+    "keywords": [
+      "N/A"
+    ],
+    "authors": [
+      "N/A"
+    ],
     "version": 1,
     "date_added": "2019-03-15T00:00:00.000Z",
     "date_modified": "2019-03-15T00:00:00.000Z",
