@@ -12,7 +12,7 @@ describe('<Collapsible />', () => {
     );
 
     expect(collapsible).toContainReactComponent('div', {
-      'aria-expanded': false,
+      'aria-hidden': true,
     });
   });
 
@@ -24,7 +24,7 @@ describe('<Collapsible />', () => {
     );
 
     expect(collapsible).not.toContainReactComponent('div', {
-      'aria-expanded': false,
+      'aria-hidden': true,
     });
 
     expect(collapsible).toContainReactText('content');
@@ -106,7 +106,7 @@ describe('<Collapsible />', () => {
       expect(
         collapsibleWithToggle.find('div', {
           id,
-          'aria-expanded': false,
+          'aria-hidden': true,
           className: 'Collapsible isFullyClosed',
         }),
       ).not.toBeNull();
@@ -126,7 +126,7 @@ describe('<Collapsible />', () => {
       expect(
         collapsibleWithToggle.find('div', {
           id,
-          'aria-expanded': false,
+          'aria-hidden': true,
           className: 'Collapsible',
         }),
       ).not.toBeNull();

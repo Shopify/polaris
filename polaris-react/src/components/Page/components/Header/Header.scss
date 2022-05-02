@@ -1,7 +1,6 @@
 @import '../../../../styles/common';
 
 $mobile-layout: 468px;
-$button-style-breakpoint: 768px;
 $medium-layout: 860px;
 $desktop-layout: 1080px;
 $action-menu-rollup-computed-width: 40px;
@@ -123,7 +122,7 @@ $action-menu-rollup-computed-width: 40px;
   margin-top: 0;
   margin-left: var(--p-space-1);
 
-  @include breakpoint-after($button-style-breakpoint) {
+  @media #{$p-breakpoints-md-up} {
     margin-left: var(--p-space-4);
   }
 
