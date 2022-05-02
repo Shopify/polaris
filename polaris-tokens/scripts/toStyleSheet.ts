@@ -5,6 +5,7 @@ import {Tokens, ColorScheme, TokenGroup, OSColorSchemes} from '../src';
 
 const outputDir = path.join(__dirname, '../dist/css');
 const outputPath = path.join(outputDir, 'styles.css');
+const sassOutputPath = path.join(outputDir, 'styles.scss');
 
 /**
  * Creates CSS Rules for each color-scheme.
@@ -105,4 +106,5 @@ export async function toStyleSheet(
 `;
 
   await fs.promises.writeFile(outputPath, styles);
+  await fs.promises.writeFile(sassOutputPath, styles);
 }
