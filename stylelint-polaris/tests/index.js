@@ -42,18 +42,18 @@ const testFile = async (configName, config) => {
     },
   });
 
-  const foundFailues = results.reduce(
+  const foundFailures = results.reduce(
     (warnings, result) => warnings + result.warnings.length,
     0,
   );
 
-  if (foundFailues === config.expectedFailures) {
+  if (foundFailures === config.expectedFailures) {
     console.log(
-      `✅ stylelint-polaris found the expected ${foundFailues}/${config.expectedFailures} errors in ${configName}`,
+      `✅ stylelint-polaris found the expected ${foundFailures}/${config.expectedFailures} errors in ${configName}`,
     );
   } else {
     throw Error(
-      `❌ stylelint-polaris did not find ${foundFailues}/${config.expectedFailures} errors in the ${configName} test`,
+      `❌ stylelint-polaris did not find ${foundFailures}/${config.expectedFailures} errors in the ${configName} test`,
     );
   }
 };
