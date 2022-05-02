@@ -21,6 +21,7 @@ const rollupOptions = {
     },
     {
       format: /** @type {const} */ ('es'),
+      entryFileNames: '[name].mjs',
       dir: path.dirname(pkg.module),
       preserveModules: true,
     },
