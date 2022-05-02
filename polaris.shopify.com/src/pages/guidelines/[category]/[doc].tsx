@@ -77,7 +77,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Design guidelines",
+    title: "Design",
     children: [
       {
         title: "Design",
@@ -119,7 +119,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Content guidelines",
+    title: "Content",
     children: [
       {
         title: "Voice and tone",

@@ -7,6 +7,7 @@ import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
+import MaxPageWidthDiv from "../MaxPageWidthDiv";
 
 interface Props {}
 
@@ -39,7 +40,7 @@ function IconGallery({}: Props) {
   }
 
   return (
-    <div className={styles.IconGallery}>
+    <MaxPageWidthDiv className={styles.IconGallery}>
       <div style={{ flex: 1 }}>
         <div className={styles.Filter}>
           <h1>Icons</h1>
@@ -157,7 +158,7 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
           </div>
         </div>
       )}
-    </div>
+    </MaxPageWidthDiv>
   );
 }
 

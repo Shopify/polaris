@@ -10,6 +10,7 @@ import {
 } from "../../utils/various";
 import { LinkButton } from "../Button/Button";
 import Image from "../Image/Image";
+import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import TextField from "../TextField";
 import styles from "./ComponentsNav.module.scss";
 
@@ -46,7 +47,7 @@ function ComponentsNav({ category }: Props) {
   }
 
   return (
-    <div className={styles.ComponentsNav}>
+    <MaxPageWidthDiv className={styles.ComponentsNav}>
       <div className={styles.Filters}>
         <h1>Components</h1>
 
@@ -117,7 +118,7 @@ function ComponentsNav({ category }: Props) {
             );
           })}
       </ul>
-    </div>
+    </MaxPageWidthDiv>
   );
 }
 

@@ -1,0 +1,131 @@
+@import "../../styles/variables.scss";
+
+.MainPackages {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2.75rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+.Description {
+  margin: 1rem 1rem 1rem 0;
+  // font-size: var(--font-size-600);
+  // letter-spacing: var(--letter-spacing-300);
+}
+
+.PolarisForVSCode {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  color: #ddd;
+  border-radius: var(--border-radius-200);
+  overflow: hidden;
+
+  @media screen and (max-width: $pageMaxWidth) {
+    border-radius: 0;
+  }
+
+  .Text {
+    transform: translateY(-1.5rem);
+    padding-left: 5rem;
+  }
+
+  .Video {
+    flex: 1;
+    min-width: 65.5%;
+  }
+
+  h2 {
+    color: white;
+  }
+
+  .Icon {
+    display: block;
+    margin-bottom: 2.75rem;
+    svg {
+      transform: scale(2);
+      transform-origin: 0 0;
+    }
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    filter: contrast(1.5);
+  }
+
+  .Links a {
+    color: #f3ce97;
+  }
+}
+
+.Links {
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+  font-size: var(--font-size-600);
+
+  svg {
+    height: 1.25rem;
+    // filter: brightness(100%) saturate(0) contrast(1);
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: inherit;
+  }
+
+  a[data-icon="github"] {
+    gap: 0.5rem;
+    svg {
+      transform: translateY(-1px);
+      color: var(--text);
+    }
+  }
+}
+
+.QuickStartToggle {
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-500);
+  color: var(--text-strong);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  background: var(--p-surface-success);
+  color: var(--p-text-success);
+
+  svg {
+    transition: transform 0.1s ease;
+  }
+
+  &[aria-expanded="true"] {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.QuickStart {
+  position: relative;
+  padding-left: 2rem;
+  margin-left: 3px;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: var(--text);
+    border-radius: var(--border-radius-round);
+  }
+}

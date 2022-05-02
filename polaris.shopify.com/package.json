@@ -13,6 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@shopify/polaris": "^9.5.0-rc.1 ",
+    "@shopify/polaris-icons": "npm@4.19.0",
     "@shopify/polaris-tokens": "^5.0.0",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",

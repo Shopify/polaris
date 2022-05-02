@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;450;500;550;600;700&display=swap");
+@import "variables.scss";
 
 :root {
+  --page-max-width: $pageMaxWidth;
   --header-height: 80px;
-  --nav-width: 18rem;
   --narrow-content-width: 720px;
   --focus-outline: 0 0 0 2px black;
 
@@ -17,6 +18,9 @@
   --surface-token: #fdf0fd;
   --primary: #008060;
 
+  --border-color: #ddd;
+  --border: 0.5px solid var(--border-color);
+
   --font-size-100: 0.8rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
@@ -26,7 +30,7 @@
   --font-size-700: 1.35rem;
   --font-size-800: 1.8rem;
   --font-size-900: 3.25rem;
-  --font-size-1000: 7rem;
+  --font-size-1000: 5rem;
 
   --font-weight-400: 400;
   --font-weight-500: 550;
@@ -47,6 +51,21 @@
   --border-radius-700: 12px;
   --border-radius-800: 14px;
   --border-radius-round: 1000px;
+
+  // Dark mode
+
+  // --text: #b4b4ba;
+  // --text-strong: #eeeef0;
+  // --text-subdued: #94949e;
+  // --text-link: #4d92f4;
+  // --text-token: #6e006e;
+
+  // --surface: #1b1b1e;
+  // --surface-subdued: #313136;
+  // --surface-token: #fdf0fd;
+  // --primary: #12b58d;
+
+  // --border-color: #ddd;
 }
 
 * {
@@ -65,6 +84,10 @@
   outline: none;
 }
 
+video {
+  display: block;
+}
+
 *:focus-visible {
   box-shadow: var(--focus-outline);
 }
@@ -74,6 +97,7 @@ html {
 }
 
 body {
+  background: var(--surface);
   font-family: inter, ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
@@ -141,13 +165,13 @@ h4 {
   margin: 1.25rem 0;
   font-size: 0.9rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  display: flex;
 
   .usage-list-part {
     flex: 1;
-    background: #fafafa;
-    padding: 1px 1.25rem;
+    background: var(--surface-subdued);
+    padding: 1px 2rem;
     border-radius: var(--border-radius-300);
 
     h4 {
@@ -165,18 +189,35 @@ h4 {
   }
 
   .usage-list-part:first-child {
-    background-color: #f1f9f7;
     border-left: 3px solid #00a47c;
   }
 
   .usage-list-part:last-child {
-    background-color: #fbf4f8;
     border-left: 3px solid #fc5749;
   }
 }
 
-.twoColumnsItem img {
-  display: none;
+.twoColumnsItem {
+  position: relative;
+  padding-left: 80px;
+  margin: 0.5rem 0;
+  padding: 1rem 2rem 2rem 120px;
+  border-radius: var(--border-radius-300);
+  background: #111;
+  color: #bcbcbc;
+
+  h3 {
+    color: #ededed;
+  }
+}
+
+.twoColumnsResponsive div img {
+  position: absolute;
+  left: 2rem;
+  width: 50px;
+  mix-blend-mode: lighten;
+  filter: invert(1);
+  transform: translateY(0.7rem);
 }
 
 .NextPage {

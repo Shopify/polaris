@@ -1,10 +1,5 @@
 .Nav {
-  flex: 1;
-  font-size: var(--font-size-300);
-  padding: 2.75rem 3rem 3rem;
-  min-width: 16rem;
-  display: flex;
-  border-right: 0.5px solid #ddd;
+  font-size: var(--font-size-200);
 
   > ul {
     flex: 1;
@@ -18,31 +13,32 @@
   a {
     position: relative;
     display: inline-block;
-    padding: 1px 0;
-    padding-left: 1.15rem;
-    color: var(--text-strong);
+    padding: 1.5px 0;
+    // padding-left: 1.15rem;
+    color: var(--text-subdued);
+    font-weight: 435;
 
     &:hover {
-      color: inherit;
+      color: var(--text-strong);
 
       &::before {
-        background: #dddddd;
+        background: var(--primary);
       }
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 7px;
-      height: 7px;
-      margin: auto;
-      border-radius: 3.5px;
-      background: #ccc;
-    }
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   display: block;
+    //   width: 7px;
+    //   height: 7px;
+    //   margin: auto;
+    //   border-radius: 3.5px;
+    //   background: var(--text-subdued);
+    // }
 
     &[aria-current="page"] {
       color: var(--primary);
@@ -71,9 +67,8 @@
     > span {
       display: inline-block;
       margin-bottom: 0.25rem;
-      font-size: var(--font-size-600);
-      font-weight: var(--font-weight-600);
-      color: var(--text-strong);
+      font-size: var(--font-size-700);
+      font-weight: 435;
     }
   }
 }

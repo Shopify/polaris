@@ -1,7 +1,7 @@
 .Button {
   display: inline-block;
   appearance: none;
-  background: #fbfbfb;
+  background: var(--surface);
   padding: 0.2rem 0.5rem;
   border: none;
   font-weight: var(--font-weight-400);
@@ -11,7 +11,7 @@
   user-select: none;
 
   &:hover {
-    background: #ededed;
+    background: var(--surface-subdued);
   }
 
   &.small {
@@ -28,6 +28,6 @@
   &[aria-selected="true"],
   &[aria-current="true"] {
     background: var(--primary);
-    color: white;
+    color: var(--surface);
   }
 }

@@ -1,8 +1,10 @@
 .GlobalSearch {
   position: relative;
   input {
-    background: transparent url(./SearchMajor.svg) no-repeat 1rem center;
+    background: var(--surface-subdued) url(./SearchMajor.svg) no-repeat 1rem
+      center;
     background-size: 16px auto;
+    border: none;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -26,7 +28,7 @@
   max-height: 70vh;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.025), 0 0 20px rgba(0, 0, 0, 0.025),
     0 50px 100px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+  background: var(--surface);
   padding: 1.75rem 0.5rem 1.25rem;
 
   &:empty {

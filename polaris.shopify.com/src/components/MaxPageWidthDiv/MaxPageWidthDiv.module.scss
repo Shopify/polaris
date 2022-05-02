@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.MaxPageWidthDiv {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $pageMaxWidth;
+
+  &.padding {
+    @media screen and (max-width: $pageMaxWidth) {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
