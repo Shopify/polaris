@@ -11,6 +11,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced any hardcoded `outline-width` with `border-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
 - Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
 - Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
+- Integrated the `@shopify/polaris-tokens` CSS stylesheet in the `CustomProperties` component ([#5659](https://github.com/Shopify/polaris/pull/5659))
 
 ### Bug fixes
 
@@ -28,7 +29,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 - Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
 - Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
-- Integrated the `@shopify/polaris-tokens` CSS stylesheet in the `CustomProperties` component ([#5659](https://github.com/Shopify/polaris/pull/5659))
+- Upgraded @shopify/polaris-tokens to [v5.0.0](https://www.npmjs.com/package/@shopify/polaris-tokens) ([#5659](https://github.com/Shopify/polaris/pull/5659))
 
 ### Code quality
 

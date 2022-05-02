@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.18.2",
-    "@shopify/polaris-tokens": "5.0.0-rc.6",
+    "@shopify/polaris-tokens": "^5.0.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
