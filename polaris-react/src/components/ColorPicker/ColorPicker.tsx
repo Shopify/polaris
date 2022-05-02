@@ -171,9 +171,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     onChange({hue, saturation, brightness, alpha});
   };
 
-  private handlePickerDrag = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+  private handlePickerDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     // prevents external elements from being selected
     event.preventDefault();
   };

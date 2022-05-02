@@ -139,7 +139,7 @@ export function debounce<T extends (this: unknown, ...args: any[]) => any>(
     const isInvoking = shouldInvoke(time);
 
     lastArgs = args;
-    // eslint-disable-next-line consistent-this
+    // eslint-disable-next-line consistent-this, @typescript-eslint/no-this-alias
     lastThis = this;
     lastCallTime = time;
 

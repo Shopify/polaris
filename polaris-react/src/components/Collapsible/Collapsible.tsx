@@ -104,7 +104,7 @@ export function Collapsible({
       ref={collapsibleContainer}
       className={wrapperClassName}
       onTransitionEnd={handleCompleteAnimation}
-      aria-expanded={open}
+      aria-hidden={!open}
     >
       {content}
     </div>

@@ -11,9 +11,14 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced any hardcoded `outline-width` with `border-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
 - Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
 - Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
-- Adjusted a hardcoded `padding` value for `FileUpload` in order to replace it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
+- Replaced `768px` breakpoint mixins and variables with custom media conditions ([#5629](https://github.com/Shopify/polaris/pull/5629))
+- Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
 
 ### Bug fixes
+
+- Used prop-provided `selectable` value in `IndexTable` ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Fixed passing inline styles to the root element of the `CustomProperties` component ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Replaced incorrect usage of `aria-expanded` on `Collapsible` with `aria-hidden` ([#5661](https://github.com/Shopify/polaris/pull/5661))
 
 ### Documentation
 
