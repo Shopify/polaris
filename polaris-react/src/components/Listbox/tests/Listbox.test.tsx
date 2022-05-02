@@ -503,6 +503,27 @@ describe('<Listbox>', () => {
         expect(options[2].domNode?.getAttribute('data-focused')).toBe('true');
       });
 
+      it('passes value and domId to onActiveOptionChange', async () => {
+        const spy = jest.fn();
+        const wrapper = mountWithApp(
+          <Listbox enableKeyboardControl onActiveOptionChange={spy}>
+            <Listbox.Option value="valueOne" />
+            <Listbox.Option value="valueTwo" />
+            <Listbox.Option value="valueThree" />
+          </Listbox>,
+        );
+
+        const options = wrapper.findAll(Listbox.Option);
+
+        expect(spy).toHaveBeenCalledWith('valueOne', options[0].domNode?.id);
+
+        await wrapper.act(async () => {
+          await Promise.resolve(triggerDown(wrapper));
+        });
+
+        expect(spy).toHaveBeenCalledWith('valueTwo', options[1].domNode?.id);
+      });
+
       it('does not focus any element when all elements are disabled', async () => {
         const setActiveOptionIdSpy = jest.fn();
         const wrapper = mountWithComboboxListContext(
@@ -634,6 +655,27 @@ describe('<Listbox>', () => {
         });
 
         expect(options[1].domNode?.getAttribute('data-focused')).toBeNull();
+      });
+
+      it('passes value and domId to onActiveOptionChange', async () => {
+        const spy = jest.fn();
+        const wrapper = mountWithApp(
+          <Listbox enableKeyboardControl onActiveOptionChange={spy}>
+            <Listbox.Option value="valueOne" />
+            <Listbox.Option value="valueTwo" />
+            <Listbox.Option value="valueThree" />
+          </Listbox>,
+        );
+
+        const options = wrapper.findAll(Listbox.Option);
+
+        expect(spy).toHaveBeenCalledWith('valueOne', options[0].domNode?.id);
+
+        await wrapper.act(async () => {
+          await Promise.resolve(triggerUp(wrapper));
+        });
+
+        expect(spy).toHaveBeenCalledWith('valueThree', options[2].domNode?.id);
       });
     });
 

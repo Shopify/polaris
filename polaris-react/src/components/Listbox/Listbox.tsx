@@ -45,7 +45,7 @@ export interface ListboxProps {
   /** Callback fired when an option is selected */
   onSelect?(value: string): void;
   /** Callback fired when an option becomes active */
-  onActiveOptionChange?(value: string): void;
+  onActiveOptionChange?(value: string, domId: string): void;
 }
 
 export type ArrowKeys = 'up' | 'down';
@@ -167,7 +167,7 @@ export function Listbox({
       handleScrollIntoViewDebounced(nextOption);
       setActiveOption(nextOption);
       setActiveOptionId?.(nextOption.domId);
-      onActiveOptionChange?.(nextOption.value);
+      onActiveOptionChange?.(nextOption.value, nextOption.domId);
     },
     [
       activeOption,
