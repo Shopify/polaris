@@ -21,6 +21,5 @@
     "./locales/**/*.json",
     "./tests",
     "./playground"
-  ],
-  "references": [{"path": "../polaris-tokens"}]
+  ]
 }
