@@ -12,7 +12,8 @@
       "require": "./dist/cjs/index.js"
     },
     "./json/*": "./dist/json/*",
-    "./css/*": "./dist/css/*"
+    "./css/*": "./dist/css/*",
+    "./scss/*": "./dist/scss/*"
   },
   "scripts": {
     "build": "run-s build:*",
