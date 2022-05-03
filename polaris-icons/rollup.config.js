@@ -265,7 +265,6 @@ const config = {
       },
     }),
     babel({
-      configFile: '../babel.config.js',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       envName: 'production',

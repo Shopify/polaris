@@ -32,10 +32,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              configFile: path.resolve(__dirname, '../../babel.config.js'),
               cacheDirectory: path.resolve(
-                __dirname,
-                '../build-internal/cache/storybook/markdown',
+                'build-internal/cache/storybook/markdown',
               ),
             },
           },
