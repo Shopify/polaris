@@ -6,6 +6,7 @@
 .loom
 .next
 .shadowenv.d
+.turbo
 dist
 node_modules
 /polaris-react/build
