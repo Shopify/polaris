@@ -1,3 +1,6 @@
+/**
+ * @type {import('@babel/core').TransformOptions}
+ */
 module.exports = {
-  extends: '../babel.config.js',
+  presets: [['@shopify/babel-preset', {typescript: true}]],
 };

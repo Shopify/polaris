@@ -265,6 +265,7 @@ const config = {
       },
     }),
     babel({
+      rootMode: 'upward',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       envName: 'production',
