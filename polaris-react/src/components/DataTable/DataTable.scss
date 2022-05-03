@@ -161,6 +161,14 @@
   vertical-align: baseline;
 }
 
+.hoverable {
+  .Cell-hovered {
+    @include breakpoint-after($breakpoint) {
+      background: var(--p-surface-hovered);
+    }
+  }
+}
+
 .Icon {
   display: flex;
   align-self: flex-end;
@@ -342,8 +350,11 @@
   position: absolute;
 
   background: white;
+  @include breakpoint-before($breakpoint) {
+    z-index: 1;
+  }
 
-  z-index: 1;
+  z-index: 3;
   border-collapse: collapse;
 
   &.Visible {
