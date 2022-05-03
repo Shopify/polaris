@@ -67,7 +67,7 @@
       "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
-        "project": "./polaris-react/tsconfig.json"
+        "project": "./tsconfig.json"
       },
       "rules": {
         "@typescript-eslint/prefer-readonly": "off",

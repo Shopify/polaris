@@ -32,7 +32,7 @@
   "scripts": {
     "build": "tsc -b",
     "dev": "tsc -b -w",
-    "lint": "TIMING=1 eslint server client",
+    "lint": "TIMING=1 eslint --cache server client",
     "clean": "rm -rf .turbo node_modules client/dist server/dist",
     "vscode:prepublish": "yarn build"
   },

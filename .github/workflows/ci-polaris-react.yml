@@ -10,36 +10,6 @@ on:
       - 'polaris-react/**'
 
 jobs:
-  test:
-    name: Test with node v${{ matrix.node_version }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node_version: ['14.17.0', '16.13.0']
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node_version: ${{ matrix.node_version }}
-          cache: yarn
-
-      - uses: actions/cache@v2
-        name: Restore cache
-        with:
-          path: |
-            .eslintcache
-            polaris-react/.loom
-          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
-
-      - run: yarn --frozen-lockfile
-      - run: yarn workspace @shopify/polaris run validate-tokens
-      - run: yarn build
-      - run: yarn lint
-      - run: yarn type-check
-      - run: yarn workspace @shopify/polaris run test
-
   accessibility_test:
     name: 'Accessibility test'
     runs-on: ubuntu-latest
@@ -54,13 +24,15 @@ jobs:
         name: Restore internal build cache
         with:
           path: |
+            **/.turbo
+            node_modules/.cache/turbo
             polaris-react/build-internal/cache
           key: ${{ runner.os }}-node${{ matrix.node-version }}-accessibility-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node-version }}-accessibility-test-v1-
 
       - run: yarn --frozen-lockfile
-      - run: yarn build
+      - run: yarn turbo run build --filter=@shopify/polaris
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
       - run: node ./polaris-react/scripts/accessibility-check.js
         env:
@@ -82,13 +54,15 @@ jobs:
         name: Restore internal build cache
         with:
           path: |
+            **/.turbo
+            node_modules/.cache/turbo
             polaris-react/build-internal/cache
           key: ${{ runner.os }}-node${{ matrix.node-version }}-visual-regression-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node-version }}-visual-regression-test-v1-
 
       - run: yarn --frozen-lockfile
-      - run: yarn build
+      - run: yarn turbo run build --filter=@shopify/polaris
       - run: yarn workspace @shopify/polaris run storybook:build --quiet
 
       - uses: chromaui/action@v1

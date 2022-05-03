@@ -27,7 +27,7 @@
   "main": "src/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "TIMING=1 eslint src",
+    "lint": "TIMING=1 eslint --cache src",
     "test": "node tests/index.js",
     "clean": "rm -rf .turbo node_modules dist"
   },
