@@ -32,6 +32,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              rootMode: 'upward',
               cacheDirectory: path.resolve(
                 'build-internal/cache/storybook/markdown',
               ),
