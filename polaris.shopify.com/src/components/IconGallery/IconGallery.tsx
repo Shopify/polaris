@@ -7,6 +7,11 @@ import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
+const importedSvgs = require.context(
+  "../../../../polaris-icons/icons",
+  true,
+  /\.svg$/
+);
 
 interface Props {}
 
@@ -95,7 +100,7 @@ function IconGallery({}: Props) {
               style={{ filter: "brightness(-500%)" }}
             >
               <Image
-                src={`/icons/${selectedIcon.fileName}.svg`}
+                src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
                 alt={selectedIcon.description}
                 width={48}
                 height={48}
@@ -183,7 +188,7 @@ function IconGrid({
           <button onClick={() => onClick(icon.name)}>
             <div style={{ filter: "brightness(-500%)" }}>
               <Image
-                src={`/icons/${icon.fileName}.svg`}
+                src={importedSvgs(`./${icon.fileName}.svg`)}
                 alt={icon.description}
                 width={16}
                 height={16}
