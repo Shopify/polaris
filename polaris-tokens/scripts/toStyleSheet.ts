@@ -6,7 +6,7 @@ import {Tokens, ColorScheme, TokenGroup, OSColorSchemes} from '../src';
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
-const sassOutputPath = path.join(sassOutputDir, 'styles.css');
+const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
 /**
  * Creates CSS Rules for each color-scheme.
