@@ -1,3 +1,4 @@
+/* eslint-disable @shopify/jsx-no-hardcoded-content */
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
@@ -54,6 +55,7 @@ export function Title({
 
   return (
     <>
+      <span>TIT</span>
       {wrappedTitleMarkup}
       {subtitleMarkup}
     </>
