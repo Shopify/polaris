@@ -29,7 +29,7 @@ function generateTypesFile(iconExports) {
   return iconExports
     .map(
       (exportName) =>
-        `export declare const ${exportName}: React.SFC<React.SVGProps<SVGSVGElement>>;`,
+        `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
     )
     .join('\n');
 }
