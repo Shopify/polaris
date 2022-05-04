@@ -1,0 +1,16 @@
+#!/bin/bash
+exec 1>>~/mylog
+exec 2>>~/mylog
+
+# Install dependencies
+yarn install --no-progress --frozen-lockfile --ignore-engines
+
+if [ "$POLARIS4SPIN" ]; then
+  cd polaris-tokens && yarn build && cd -
+  cd polaris-icons && yarn build && cd -
+  cd polaris-react && npx yalc publish && cd -
+
+  cd ../web
+  npx yalc link @shopify/polaris
+  update
+fi
