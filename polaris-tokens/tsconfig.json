@@ -1,5 +1,5 @@
 {
-  "extends": "@shopify/typescript-configs/node-library.json",
+  "extends": "@shopify/typescript-configs/node-library",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",

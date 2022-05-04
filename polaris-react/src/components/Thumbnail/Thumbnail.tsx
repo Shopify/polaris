@@ -15,7 +15,7 @@ export interface ThumbnailProps {
    */
   size?: Size;
   /** URL for the image */
-  source: string | React.SFC<React.SVGProps<SVGSVGElement>>;
+  source: string | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   /** Alt text for the thumbnail image */
   alt: string;
   /** Transparent background */

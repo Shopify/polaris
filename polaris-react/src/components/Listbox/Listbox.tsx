@@ -40,10 +40,12 @@ export interface ListboxProps {
   enableKeyboardControl?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Provide a custom ID for the list element */
+  customListId?: string;
   /** Callback fired when an option is selected */
   onSelect?(value: string): void;
   /** Callback fired when an option becomes active */
-  onActiveOptionChange?(value: string): void;
+  onActiveOptionChange?(value: string, domId: string): void;
 }
 
 export type ArrowKeys = 'up' | 'down';
@@ -57,6 +59,7 @@ export function Listbox({
   children,
   enableKeyboardControl,
   accessibilityLabel,
+  customListId,
   onSelect,
   onActiveOptionChange,
 }: ListboxProps) {
@@ -71,7 +74,8 @@ export function Listbox({
     setFalse: disableKeyboardEvents,
   } = useToggle(Boolean(enableKeyboardControl));
 
-  const listId = useUniqueId('Listbox');
+  const uniqueId = useUniqueId('Listbox');
+  const listId = customListId || uniqueId;
 
   const scrollableRef = useRef<HTMLElement | null>(null);
   const listboxRef = useRef<HTMLUListElement>(null);
@@ -163,7 +167,7 @@ export function Listbox({
       handleScrollIntoViewDebounced(nextOption);
       setActiveOption(nextOption);
       setActiveOptionId?.(nextOption.domId);
-      onActiveOptionChange?.(nextOption.value);
+      onActiveOptionChange?.(nextOption.value, nextOption.domId);
     },
     [
       activeOption,

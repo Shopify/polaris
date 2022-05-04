@@ -1,6 +1,0 @@
-{
-  "presets": [
-    ["@shopify/babel-preset/web", {"modules": "auto", "typescript": true}],
-    ["@shopify/babel-preset/react"]
-  ]
-}

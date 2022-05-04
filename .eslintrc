@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "plugin:@shopify/typescript",
     "plugin:@shopify/react",
