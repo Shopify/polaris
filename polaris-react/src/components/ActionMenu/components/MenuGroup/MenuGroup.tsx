@@ -27,6 +27,7 @@ export function MenuGroup({
   details,
   title,
   icon,
+  disabled,
   onClose,
   onOpen,
   getOffsetWidth,
@@ -50,6 +51,7 @@ export function MenuGroup({
   const popoverActivator = (
     <SecondaryAction
       disclosure
+      disabled={disabled}
       icon={icon}
       accessibilityLabel={accessibilityLabel}
       onClick={handleOpen}
