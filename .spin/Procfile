@@ -1,0 +1,2 @@
+server: yarn workspace polaris-shopify-com run dev
+storybook: yarn workspace @shopify/polaris run storybook
