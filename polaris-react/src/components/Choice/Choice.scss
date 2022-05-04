@@ -50,7 +50,16 @@
 }
 
 .Label {
-  @include text-style-body;
+  font-size: var(--p-font-size-4);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-2);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-3);
+  }
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
