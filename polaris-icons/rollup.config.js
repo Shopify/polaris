@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {parse, traverse} from '@babel/core';
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
@@ -28,7 +29,7 @@ function generateTypesFile(iconExports) {
   return iconExports
     .map(
       (exportName) =>
-        `export declare const ${exportName}: React.SFC<React.SVGProps<SVGSVGElement>>;`,
+        `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
     )
     .join('\n');
 }
@@ -264,6 +265,7 @@ const config = {
       },
     }),
     babel({
+      rootMode: 'upward',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       envName: 'production',
