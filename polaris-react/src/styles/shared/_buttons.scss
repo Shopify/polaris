@@ -210,7 +210,7 @@
 @mixin plain-button-backdrop {
   padding: var(--p-space-05) var(--p-space-1);
   margin: calc(-1 * var(--p-space-05)) calc(-1 * var(--p-space-1));
-  background: none;
+  background: transparent;
   border-radius: var(--p-border-radius-base);
 }
 
