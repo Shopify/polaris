@@ -295,7 +295,7 @@ describe('<Banner />', () => {
 
   describe('context', () => {
     it('passes the within banner context', () => {
-      const Child: React.SFC = (_props) => {
+      const Child: React.FunctionComponent = (_props) => {
         return (
           <BannerContext.Consumer>
             {(BannerContext) => {
