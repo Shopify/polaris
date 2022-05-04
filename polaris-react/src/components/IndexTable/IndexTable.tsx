@@ -415,7 +415,7 @@ function IndexTableBase({
             {i18n.translate(
               'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
               {
-                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+                resourceNamePlural: resourceName.plural,
               },
             )}
           </span>
