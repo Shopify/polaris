@@ -306,7 +306,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
               capture
-              passive
               event="scroll"
               handler={this.scrollListener}
             />
@@ -425,46 +424,31 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     };
   };
 
-  private stickyHeaderScrolling = (event: Event) => {
+  private stickyHeaderScrolling = () => {
     const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
-    const {current: table} = this.table;
     const {current: scrollContainer} = this.scrollContainer;
-    const targetIsStickyHeader = event.target === stickyTableHeadingsRow;
 
-    if (
-      stickyTableHeadingsRow == null ||
-      scrollContainer == null ||
-      table == null
-    ) {
+    if (stickyTableHeadingsRow == null || scrollContainer == null) {
       return;
     }
 
-    const {scrollLeft: stickyScrollLeft} = stickyTableHeadingsRow;
-    const {scrollLeft: scrollContainerScrollLeft} = scrollContainer;
+    stickyTableHeadingsRow.scrollLeft = scrollContainer.scrollLeft;
 
-    if (targetIsStickyHeader) {
-      table.style.transform = `translateX(-${stickyScrollLeft}px)`;
-    } else {
-      this.stickyHeadings.map((heading) => {
-        heading.style.transform = `translateX(-${scrollContainerScrollLeft}px)`;
-      });
-    }
   };
 
-  private scrollListener = (event: Event) => {
+  private scrollListener = () => {
     debounce(() => {
       this.setState((prevState) => ({
         ...this.calculateColumnVisibilityData(prevState.condensed),
       }));
     }, 500);
 
-    this.stickyHeaderScrolling(event);
+    this.stickyHeaderScrolling();
   };
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
     const {current: scrollContainer} = this.scrollContainer;
-    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
 
     const handleScroll = () => {
       if (!currentColumn || !previousColumn) {
@@ -476,13 +460,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           direction === 'right'
             ? currentColumn.rightEdge
             : previousColumn.leftEdge;
-
-        if (stickyTableHeadingsRow) {
-          stickyTableHeadingsRow.scrollLeft =
-            direction === 'right'
-              ? currentColumn.rightEdge
-              : previousColumn.leftEdge;
-        }
 
         requestAnimationFrame(() => {
           this.setState((prevState) => ({
