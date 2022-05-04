@@ -35,6 +35,7 @@ const rollupOptions = {
     // Compile TypeScript/JavaScript files
     babel({
       extensions,
+      rootMode: 'upward',
       include: ['src/**/*'],
       babelHelpers: 'bundled',
     }),

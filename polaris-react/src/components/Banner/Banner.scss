@@ -243,7 +243,6 @@
     @include high-contrast-button-outline;
     @include focus-ring($style: 'focused');
     box-shadow: none;
-    background-color: transparent;
     text-decoration: underline;
   }
 
