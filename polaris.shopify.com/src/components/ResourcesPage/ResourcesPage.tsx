@@ -1,17 +1,11 @@
-import Page from "../Page";
 import styles from "./ResourcesPage.module.scss";
 import {
-  ArrowIcon,
   FigmaIcon,
   GitHubIcon,
   InstallIcon,
   LinkIcon,
-  ReactIcon,
   VSCodeIcon,
 } from "./icons";
-import CodeExample from "../CodeExample";
-import { Disclosure } from "@headlessui/react";
-import Nav from "../Nav";
 import Image from "../Image";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 
@@ -19,23 +13,22 @@ interface Props {}
 
 function ResourcesPage({}: Props) {
   return (
-    <Page noLayout renderAbove={() => <h1>Resources</h1>} showTOC={false}>
+    <>
+      <MaxPageWidthDiv>
+        <h1>Resources</h1>
+      </MaxPageWidthDiv>
       <MaxPageWidthDiv className={styles.MainPackages}>
         <div className={styles.Package}>
-          <div
-            style={{
-              height: 240,
-              background: "#ededed",
-              marginBottom: "1.5rem",
-              borderRadius: "var(--border-radius-300)",
-            }}
-          ></div>
           <h2>Components</h2>
           <p className={styles.Description}>
-            The main Polaris library that give you access to everything you need
-            to start building with Polaris. The main Polaris library that give
-            you access to everything you need to start building with Polaris.
+            The main Polaris library that give you access to everything.
           </p>
+          <Image
+            src="/images/package-components.png"
+            alt=""
+            width={800}
+            height={400}
+          />
           <Links
             links={[
               {
@@ -58,20 +51,16 @@ function ResourcesPage({}: Props) {
         </div>
 
         <div className={styles.Package}>
-          <div
-            style={{
-              height: 240,
-              background: "#ededed",
-              marginBottom: "1.5rem",
-              borderRadius: "var(--border-radius-300)",
-            }}
-          ></div>
           <h2>Icons</h2>
           <p className={styles.Description}>
-            The main Polaris library that give you access to everything you need
-            to start building with Polaris. The main Polaris library that give
-            you access to everything you need to start building with Polaris.
+            The main Polaris library that give you access to everything.
           </p>
+          <Image
+            src="/images/package-icons.png"
+            alt=""
+            width={800}
+            height={400}
+          />
           <Links
             links={[
               {
@@ -94,20 +83,16 @@ function ResourcesPage({}: Props) {
         </div>
 
         <div className={styles.Package}>
-          <div
-            style={{
-              height: 240,
-              background: "#ededed",
-              marginBottom: "1.5rem",
-              borderRadius: "var(--border-radius-300)",
-            }}
-          ></div>
           <h2>Tokens</h2>
           <p className={styles.Description}>
-            The main Polaris library that give you access to everything you need
-            to start building with Polaris. The main Polaris library that give
-            you access to everything you need to start building with Polaris.
+            The main Polaris library that give you access to everything.
           </p>
+          <Image
+            src="/images/package-tokens.png"
+            alt=""
+            width={800}
+            height={400}
+          />
           <Links
             links={[
               {
@@ -161,7 +146,7 @@ function ResourcesPage({}: Props) {
           </div>
         </div>
       </MaxPageWidthDiv>
-    </Page>
+    </>
   );
 }
 

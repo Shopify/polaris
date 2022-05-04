@@ -2,16 +2,39 @@
 
 .MainPackages {
   display: flex;
-  margin-top: 2rem;
-  margin-bottom: 2.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+
+  > div {
+    flex: 1;
+    display: flex;
+    background: var(--surface-subdued);
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    // > * {
+    //   color: #fff;
+    // }
+  }
+
+  h2 {
+  }
+
+  .Description {
+    font-size: var(--font-size-500);
+    margin-bottom: 1.75rem;
+  }
+
+  .Links {
+    margin-top: 2rem;
+  }
 }
 
 .Description {
-  margin: 1rem 1rem 1rem 0;
-  // font-size: var(--font-size-600);
-  // letter-spacing: var(--letter-spacing-300);
+  margin: 0.5rem 1rem 1rem 0;
 }
 
 .PolarisForVSCode {
@@ -66,8 +89,8 @@
 .Links {
   display: flex;
   align-items: center;
-  gap: 1.1em;
-  font-size: var(--font-size-600);
+  gap: 1.33em;
+  font-weight: 435;
 
   svg {
     height: 1.25rem;

@@ -7,14 +7,16 @@ import styles from "./GlobalSearch.module.scss";
 import { useCombobox } from "downshift";
 import { slugify } from "../../utils/various";
 import { useRouter } from "next/router";
-import { useRef } from "react";
 import { WrappedTextField } from "../TextField/TextField";
-
+const importedSvgs = require.context(
+  "../../../../polaris-icons/icons",
+  true,
+  /\.svg$/
+);
 interface Props {}
 
 function GlobalSearch({}: Props) {
   const [searchResults, setSearchResults] = useState<SearchResult>([]);
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const router = useRouter();
 
@@ -111,7 +113,9 @@ function GlobalSearch({}: Props) {
                         >
                           <div>
                             <Image
-                              src={`/icons/${item.meta.icon.fileName}.svg`}
+                              src={importedSvgs(
+                                `./${item.meta.icon.fileName}.svg`
+                              )}
                               width={32}
                               height={32}
                               layout="fixed"

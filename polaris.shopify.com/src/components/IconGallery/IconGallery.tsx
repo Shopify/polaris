@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "../Image";
 import { useState } from "react";
 import TextField from "../TextField";
@@ -13,6 +14,7 @@ const importedSvgs = require.context(
   true,
   /\.svg$/
 );
+import { getTitleTagValue } from "../../utils/various";
 
 interface Props {}
 
@@ -46,51 +48,53 @@ function IconGallery({}: Props) {
 
   return (
     <MaxPageWidthDiv className={styles.IconGallery}>
-      <div style={{ flex: 1 }}>
-        <div className={styles.Filter}>
-          <h1>Icons</h1>
-          <div className={styles.TextField}>
-            <TextField
-              value={filterString}
-              onChange={(value) => setFilterString(value)}
-              placeholder="Filter icons"
+      <Head>
+        <title>{getTitleTagValue("Icons")}</title>
+      </Head>
+
+      <div className={styles.Filter}>
+        <h1>Icons</h1>
+        <div className={styles.TextField}>
+          <TextField
+            value={filterString}
+            onChange={(value) => setFilterString(value)}
+            placeholder="Filter icons"
+          />
+        </div>
+      </div>
+
+      <div className={styles.IconGrids}>
+        {majorIcons.length > 0 && (
+          <>
+            <div className={styles.SectionHeading}>
+              <p>
+                <b>Major icons.</b> Used for things like lorem ipsum dolor et
+                amet consecteur
+              </p>
+            </div>
+            <IconGrid
+              filteredIcons={majorIcons}
+              selectedIconName={selectedIconName}
+              onClick={(iconName) => setSelectedIconName(iconName)}
             />
-          </div>
-        </div>
+          </>
+        )}
 
-        <div className={styles.IconGrids}>
-          {majorIcons.length > 0 && (
-            <>
-              <div className={styles.SectionHeading}>
-                <p>
-                  <b>Major icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
-                </p>
-              </div>
-              <IconGrid
-                filteredIcons={majorIcons}
-                selectedIconName={selectedIconName}
-                onClick={(iconName) => setSelectedIconName(iconName)}
-              />
-            </>
-          )}
-
-          {minorIcons.length > 0 && (
-            <>
-              <div className={styles.SectionHeading}>
-                <p>
-                  <b>Minor icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
-                </p>
-              </div>
-              <IconGrid
-                filteredIcons={minorIcons}
-                selectedIconName={selectedIconName}
-                onClick={(iconName) => setSelectedIconName(iconName)}
-              />
-            </>
-          )}
-        </div>
+        {minorIcons.length > 0 && (
+          <>
+            <div className={styles.SectionHeading}>
+              <p>
+                <b>Minor icons.</b> Used for things like lorem ipsum dolor et
+                amet consecteur
+              </p>
+            </div>
+            <IconGrid
+              filteredIcons={minorIcons}
+              selectedIconName={selectedIconName}
+              onClick={(iconName) => setSelectedIconName(iconName)}
+            />
+          </>
+        )}
       </div>
 
       {selectedIcon && (
@@ -151,8 +155,17 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
 
                 <Tab.Panel>
                   <Longform>
+                    {console.log(
+                      importedSvgs(`./${selectedIcon.fileName}.svg`).default.src
+                    )}
                     <p>
-                      <a href={`/icons/${selectedIcon.fileName}.svg`} download>
+                      <a
+                        href={
+                          importedSvgs(`./${selectedIcon.fileName}.svg`).default
+                            .src
+                        }
+                        download
+                      >
                         {selectedIcon.fileName}.svg
                       </a>
                     </p>
@@ -191,8 +204,8 @@ function IconGrid({
               <Image
                 src={importedSvgs(`./${icon.fileName}.svg`)}
                 alt={icon.description}
-                width={16}
-                height={16}
+                width={24}
+                height={24}
               />
             </div>
             <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>

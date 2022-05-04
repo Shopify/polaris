@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -13,6 +14,7 @@ import Image from "../Image/Image";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import TextField from "../TextField";
 import styles from "./ComponentsNav.module.scss";
+import { getTitleTagValue } from "../../utils/various";
 
 const componentCategories = getComponentCategories();
 
@@ -48,6 +50,10 @@ function ComponentsNav({ category }: Props) {
 
   return (
     <MaxPageWidthDiv className={styles.ComponentsNav}>
+      <Head>
+        <title>{getTitleTagValue("Components")}</title>
+      </Head>
+
       <div className={styles.Filters}>
         <h1>Components</h1>
 
@@ -109,7 +115,7 @@ function ComponentsNav({ category }: Props) {
                       />
                     </div>
                     <div>
-                      <h2>{name}</h2>
+                      <h3>{name}</h3>
                       <p>{stripMarkdownLinks(intro)}</p>
                     </div>
                   </a>

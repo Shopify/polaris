@@ -13,7 +13,7 @@
 }
 
 .ComponentsNav {
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
 
   ul {
     flex: 1;
@@ -54,7 +54,7 @@
 
     p {
       margin-top: 0.75rem;
-      font-size: var(--font-size-300);
+      font-size: var(--font-size-400);
       display: flex;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
@@ -63,9 +63,9 @@
   }
 
   .Preview {
-    border-radius: var(--border-radius-300);
+    border-radius: var(--border-radius-500);
     transition: all 0.25s ease;
     overflow: hidden;
-    filter: brightness(0.98) contrast(1.1) brightness(0.97);
+    filter: brightness(0.98) contrast(1.1) brightness(0.98);
   }
 }

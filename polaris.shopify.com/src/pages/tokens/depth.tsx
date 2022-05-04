@@ -2,20 +2,17 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { tokens } from "@shopify/polaris-tokens";
-import Page from "../../components/Page";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
-import { navItems } from "../../data/tokensNav";
-import Nav from "../../components/Nav";
-import { getTitleForTitleTag } from "../../utils/various";
+import { getTitleTagValue } from "../../utils/various";
 
 const { depth } = tokens;
 
 const Components: NextPage = () => {
   return (
-    <Page renderNav={() => <Nav navItems={navItems} />}>
+    <>
       <Head>
-        <title>{getTitleForTitleTag("Depth tokens")}</title>
+        <title>{getTitleTagValue("Depth tokens")}</title>
       </Head>
 
       <Longform>
@@ -32,7 +29,7 @@ const Components: NextPage = () => {
           return <DepthPreview key={name} name={name} />;
         })}
       </Longform>
-    </Page>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./Nav.module.scss";
 
 export type NavItem = {
-  title?: string;
+  title: string;
   url?: string;
   children?: NavItem[];
 };
@@ -15,6 +15,7 @@ interface Props {
 function Nav({ navItems }: Props) {
   const router = useRouter();
   const currentPath = router.asPath;
+
   return (
     <div className={styles.Nav}>
       <ul>

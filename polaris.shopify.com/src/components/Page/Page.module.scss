@@ -3,7 +3,6 @@
   z-index: 2;
   top: 0;
   border-bottom: var(--border);
-  border-bottom: var(--border);
   backdrop-filter: blur(10px);
 
   // Add a token based background. Use a pseudo
@@ -17,7 +16,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: var(--surface);
+    background: var(--surface-subdued);
     opacity: 0.8;
     z-index: -1;
   }
@@ -33,9 +32,10 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-subdued);
+  color: var(--text-inherit);
   gap: 0.7rem;
-  font-weight: 450;
+  font-weight: 435;
+  font-size: var(--font-size-300);
 
   p {
     margin: 0;
@@ -50,14 +50,15 @@
   display: flex;
   align-items: center;
   margin-right: auto;
-  gap: 1.5rem;
+  gap: 1rem;
+  font-size: var(--font-size-300);
+  font-weight: 435;
 
   li {
     a {
       color: var(--text-strong);
-      font-weight: 450;
       border-left: var(--border);
-      padding: 1em 0 1em 1.5em;
+      padding: 1em 0 1em 1em;
 
       &[aria-current="page"] {
         color: var(--primary);
@@ -74,97 +75,11 @@
 .SearchWrapper {
   display: flex;
   align-items: center;
-  width: 30em;
+  width: 20em;
 
   > * {
     flex: 1;
   }
-}
-
-.Content {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin: 3rem 0;
-}
-
-.Title {
-  margin: 0 auto;
-  border-bottom: var(--border);
-  padding: 1.5rem 0;
-}
-
-.Sidebar {
-  min-width: 22%;
-}
-
-.TOC {
-  margin-top: -3rem;
-  padding-top: 3rem;
-  padding-left: 3rem;
-  position: sticky;
-  top: var(--header-height);
-  height: calc(100vh - var(--header-height));
-  border-left: var(--border);
-  margin-left: 2rem;
-  min-width: 16%;
-  max-width: 16%;
-  color: var(--text-subdued);
-  align-self: flex-start;
-
-  h4 {
-    margin-bottom: 1rem;
-  }
-
-  > ul > li > a {
-    font-size: var(--font-size-200);
-    font-weight: var(--font-weight-500);
-  }
-
-  ul ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0.75rem;
-    font-size: var(--font-size-200);
-  }
-
-  li {
-    margin-top: 0.05rem;
-  }
-
-  ul ul a {
-    position: relative;
-    padding-left: 1.1rem;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 5px;
-      height: 5px;
-      margin: auto;
-      border-radius: 3.5px;
-      background: #ccc;
-    }
-  }
-
-  a {
-    display: block;
-    color: inherit;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.NoLayoutContent {
-  flex: 1;
-}
-
-.MainContent {
-  flex: 1;
-  max-width: 54rem;
 }
 
 .Footer {

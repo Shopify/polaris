@@ -2,20 +2,17 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { tokens } from "@shopify/polaris-tokens";
-import Page from "../../components/Page";
 import Longform from "../../components/Longform";
 import Token from "../../components/Token";
-import { navItems } from "../../data/tokensNav";
-import Nav from "../../components/Nav";
-import { getTitleForTitleTag } from "../../utils/various";
+import { getTitleTagValue } from "../../utils/various";
 
 const { typography } = tokens;
 
 const Components: NextPage = () => {
   return (
-    <Page renderNav={() => <Nav navItems={navItems} />}>
+    <>
       <Head>
-        <title>{getTitleForTitleTag("Typography tokens")}</title>
+        <title>{getTitleTagValue("Typography tokens")}</title>
       </Head>
 
       <Longform>
@@ -56,7 +53,7 @@ const Components: NextPage = () => {
             return <TypePreview key={name} type="weight" name={name} />;
           })}
       </Longform>
-    </Page>
+    </>
   );
 };
 

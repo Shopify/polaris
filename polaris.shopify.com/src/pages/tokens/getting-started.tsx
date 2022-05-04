@@ -1,19 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import Page from "../../components/Page";
 import Longform from "../../components/Longform";
-import { navItems } from "../../data/tokensNav";
-import Nav from "../../components/Nav";
 import YoutubeVideo from "../../components/YoutubeVideo";
 import Image from "../../components/Image";
-import { getTitleForTitleTag } from "../../utils/various";
+import { getTitleTagValue } from "../../utils/various";
 
 const Components: NextPage = () => {
   return (
-    <Page renderNav={() => <Nav navItems={navItems} />}>
+    <>
       <Head>
-        <title>{getTitleForTitleTag("Getting started with tokens")}</title>
+        <title>{getTitleTagValue("Getting started with tokens")}</title>
       </Head>
 
       <Longform>
@@ -73,7 +70,7 @@ const Components: NextPage = () => {
           having to manually update several individual hard-coded values.
         </p>
       </Longform>
-    </Page>
+    </>
   );
 };
 

@@ -2,12 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { tokens } from "@shopify/polaris-tokens";
-import Page from "../../components/Page";
 import Longform from "../../components/Longform";
-import { navItems } from "../../data/tokensNav";
 import Token from "../../components/Token";
-import Nav from "../../components/Nav";
-import { getTitleForTitleTag } from "../../utils/various";
+import { getTitleTagValue } from "../../utils/various";
 import Link from "next/link";
 
 const {
@@ -17,9 +14,9 @@ const {
 const Components: NextPage = () => {
   const colorNames = Object.keys(colors);
   return (
-    <Page renderNav={() => <Nav navItems={navItems} />}>
+    <>
       <Head>
-        <title>{getTitleForTitleTag("Color tokens")}</title>
+        <title>{getTitleTagValue("Color tokens")}</title>
       </Head>
 
       <Longform>
@@ -33,7 +30,7 @@ const Components: NextPage = () => {
           <ColorPreview key={colorName} name={colorName} />
         ))}
       </Longform>
-    </Page>
+    </>
   );
 };
 

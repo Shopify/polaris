@@ -1,7 +1,5 @@
 .IconGallery {
-  display: flex;
-  flex: 1;
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
 }
 
 .Filter {
@@ -49,7 +47,7 @@
     grid-template-columns: repeat(5, 1fr);
   }
   @media screen and (max-width: 1600px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(7, 1fr);
   }
   @media screen and (max-width: 1400px) {
     grid-template-columns: repeat(3, 1fr);

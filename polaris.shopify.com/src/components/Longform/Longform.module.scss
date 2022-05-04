@@ -1,6 +1,10 @@
 .Longform {
   border-radius: var(--border-radius-300);
 
+  a {
+    font-weight: 435;
+  }
+
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
@@ -40,15 +44,14 @@
   }
 
   h1 {
-    max-width: 80%;
     &:first-child {
       margin-top: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
   }
 
   h2 {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
   }
 
   h3 {
@@ -63,7 +66,11 @@
   }
 
   hr {
-    display: none;
+    width: 100px;
+    height: 3px;
+    margin: 5rem auto;
+    background: var(--text);
+    border-radius: var(--border-radius-200);
   }
 
   pre {
@@ -91,7 +98,9 @@
 .Content {
   h1 + p:first-of-type {
     margin-bottom: 2rem;
-    font-size: var(--font-size-700);
+    font-size: var(--font-size-500);
+    letter-spacing: -0.01em;
+    font-weight: 550;
     color: var(--text-strong);
   }
 }
