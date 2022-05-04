@@ -306,6 +306,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
               capture
+              passive
               event="scroll"
               handler={this.scrollListener}
             />
