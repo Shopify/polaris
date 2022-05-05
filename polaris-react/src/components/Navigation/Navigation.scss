@@ -10,7 +10,7 @@ $nav-max-width: 360px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: mobile-nav-width();
+  width: $mobile-nav-width;
   min-width: $layout-width-nav-base;
   max-width: $nav-max-width;
   height: 100%;
@@ -36,7 +36,7 @@ $nav-max-width: 360px;
 }
 
 .ContextControl {
-  min-height: top-bar-height();
+  min-height: $top-bar-height;
 
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
@@ -67,11 +67,11 @@ $nav-max-width: 360px;
     $inclusive: false
   ) {
     display: flex;
-    flex: 0 0 top-bar-height();
+    flex: 0 0 $top-bar-height;
     align-items: center;
-    height: top-bar-height();
+    height: $top-bar-height;
     padding: 0 var(--p-space-2) 0 var(--p-space-4);
-    @include safe-area-for(flex-basis, top-bar-height(), left);
+    @include safe-area-for(flex-basis, $top-bar-height, left);
     @include safe-area-for(padding-left, var(--p-space-4), left);
   }
 }

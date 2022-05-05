@@ -27,9 +27,9 @@ $dismiss-icon-size: 32px;
 
 $top-bar-height: 56px;
 
-@function mobile-nav-width() {
-  @return calc(100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8}));
-}
+$mobile-nav-width: calc(
+  100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8})
+);
 
 @function nav-min-window-corrected() {
   @return 769px;
