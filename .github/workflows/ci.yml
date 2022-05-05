@@ -34,11 +34,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
-      - name: Install dependencies
+      - name: Install dependencies and build packages
         run: yarn --frozen-lockfile
-
-      - name: Build packages
-        run: yarn build
 
       - name: Lint
         run: yarn lint

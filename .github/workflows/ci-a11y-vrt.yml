@@ -36,11 +36,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-accessibility-test-v1-
 
-      - name: Install dependencies
+      - name: Install dependencies and build packages
         run: yarn --frozen-lockfile
-
-      - name: Build packages
-        run: yarn turbo run build --filter=@shopify/polaris
 
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet
