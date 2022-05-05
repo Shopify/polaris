@@ -1,7 +1,7 @@
 import { AppProvider, Button } from "@shopify/polaris";
 import { useState } from "react";
 import translations from '@shopify/polaris/locales/en.json';
-function DisclosureButtion() {
+function DisclosureButton() {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -33,11 +33,10 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <DisclosureButtion />
+        <DisclosureButton />
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    
