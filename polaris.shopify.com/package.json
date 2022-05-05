@@ -6,7 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start ",
-    "lint": "TIMING=1 eslint --cache src",
+    "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",

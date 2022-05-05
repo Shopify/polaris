@@ -47,7 +47,7 @@
   "scripts": {
     "build": "node ./scripts/build.js",
     "dev": "yarn run storybook",
-    "lint": "TIMING=1 eslint --cache src",
+    "lint": "TIMING=1 eslint --cache .",
     "test": "loom test --no-watch",
     "clean": "rm -rf .turbo node_modules build build-internal",
     "gen-media-queries": "node ./scripts/gen-media-queries.js",
