@@ -26,7 +26,6 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            **/*.tsbuildinfo
             **/.eslintcache
             **/.turbo
             node_modules/.cache/turbo
