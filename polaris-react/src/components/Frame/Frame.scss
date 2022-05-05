@@ -169,11 +169,11 @@
 
   @include frame-when-nav-displayed {
     .hasNav & {
-      padding-left: layout-width(nav);
+      padding-left: $layout-width-nav-base;
       @media print {
         padding-left: 0;
       }
-      @include safe-area-for(padding-left, layout-width(nav), left);
+      @include safe-area-for(padding-left, $layout-width-nav-base, left);
     }
   }
 
@@ -202,13 +202,13 @@
     left: var(--pc-frame-offset);
 
     .hasNav & {
-      left: calc(#{layout-width(nav)} + var(--pc-frame-offset));
+      left: calc(#{$layout-width-nav-base} + var(--pc-frame-offset));
       @include safe-area-for(
         left,
-        calc(#{layout-width(nav)} + var(--pc-frame-offset)),
+        calc(#{$layout-width-nav-base} + var(--pc-frame-offset)),
         left
       );
-      width: calc(100% - #{layout-width(nav)} - var(--pc-frame-offset));
+      width: calc(100% - #{$layout-width-nav-base} - var(--pc-frame-offset));
     }
   }
 }
