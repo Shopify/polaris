@@ -11,6 +11,19 @@
   @include when-typography-not-condensed {
     margin-bottom: var(--p-space-2);
   }
+
+  [class^="Choice-Label"] {
+    font-weight: var(--p-font-weight-medium);
+    font-size: var(--p-font-size-3);
+  }
+  
+  [class^="Choice-Control"] {
+    margin-right: var(--p-space-4);
+  }
+
+  [class^="Choice-Descriptions"] {
+    padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+  }
 }
 
 .titleHidden > .Title {
@@ -34,8 +47,14 @@
 }
 
 .Title {
-  @include text-style-body;
+  font-size: var(--p-font-size-3);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-1);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
   display: block;
-  margin: 0 0 var(--p-space-1);
+  margin: 0 0 var(--p-space-5);
   padding: 0;
 }
