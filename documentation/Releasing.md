@@ -2,6 +2,14 @@
 
 The process for releasing the monorepo's contents is in active development. This document captures the current process for each piece.
 
+### [polaris-for-figma](/polaris-for-figma)
+
+You will need to have admin privileges in Figma to release the plugin.
+
+- Run the build step
+- In Figma navigate to the plugins menu
+- Click "Publish new release"
+
 ### [polaris-for-vscode](/polaris-for-vscode)
 
 - [Draft a new release](https://github.com/Shopify/polaris/releases)
