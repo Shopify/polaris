@@ -5,9 +5,9 @@ import { getTitleForTitleTag } from "../../../../utils/various";
 import { staticTokenGroupKeys } from "./[tokens]";
 
 const getGithubUrl = (file: string, isRaw: boolean) => {
-  const fileName = `${file}.json`;
+  const fileName = `${file}.ts`;
   const githubUrl = "https://github.com/Shopify/polaris/blob";
-  const filePath = `/main/polaris-tokens/token-groups/${fileName}`;
+  const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
 
   return `${githubUrl}${filePath}`;
 };
