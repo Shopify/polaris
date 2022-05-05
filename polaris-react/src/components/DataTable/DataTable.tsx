@@ -98,6 +98,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
+  private stickyHeaderActive: boolean =  false;
 
   private handleResize = debounce(() => {
     const {
@@ -208,7 +209,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         <div className={styles.StickyTable} role="presentation">
           <Sticky
             boundingElement={this.dataTable.current}
-            onStickyChange={this.changeHeadingFocus}
+            onStickyChange={(isSticky) => {
+              this.changeHeadingFocus();
+              this.stickyHeaderActive = isSticky;
+            }}
           >
             {(isSticky: boolean) => {
               const stickyHeaderClassNames = classNames(
@@ -340,6 +344,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (inStickyHeader) {
       this.stickyHeadings[index] = ref;
+      const button = ref.querySelector('button');
+      if (button == null) {
+        return
+      }
+      button.addEventListener('focus', this.focusListener);
     } else {
       this.tableHeadings[index] = ref;
       this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
@@ -425,7 +434,36 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     };
   };
 
+  private focusListener = (event: Event) => {
+    this.stickyHeaderFocusStateChangeOnScroll(event);
+  }
+
+  private stickyHeaderFocusStateChangeOnScroll = (event: Event) => {
+    if (this.scrollContainer.current == null || event.target == null) {
+      return;
+    }
+
+    const target = event.target as HTMLElement;
+    const currentCell = target.parentNode as HTMLTableCellElement;
+
+    const tableScrollLeft = this.scrollContainer.current.scrollLeft;
+    const tableViewableWidth = this.scrollContainer.current.offsetWidth;
+    const tableRightEdge =  tableScrollLeft + tableViewableWidth;
+    const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
+    const currentColumnLeftEdge = currentCell.offsetLeft;
+    const currentColumnRightEdge = currentCell.offsetLeft + currentCell.offsetWidth;
+
+    if (tableScrollLeft > currentColumnLeftEdge - firstColumnWidth) {
+      this.scrollContainer.current.scrollLeft = currentColumnLeftEdge - firstColumnWidth;
+    }
+
+    if (currentColumnRightEdge > tableRightEdge) {
+      this.scrollContainer.current.scrollLeft = currentColumnRightEdge - tableViewableWidth;
+    }
+  }
+
   private stickyHeaderScrolling = () => {
+
     const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
     const {current: scrollContainer} = this.scrollContainer;
 
@@ -444,7 +482,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       }));
     }, 500);
 
-    this.stickyHeaderScrolling();
+    if (this.props.stickyHeader && this.stickyHeaderActive) {
+      this.stickyHeaderScrolling();
+    }
   };
 
   private navigateTable = (direction: string) => {
