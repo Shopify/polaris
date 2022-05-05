@@ -10,7 +10,7 @@ $activator-variables: (
 }
 
 .ActivatorWrapper {
-  height: top-bar-height();
+  height: $top-bar-height;
   display: flex;
   align-items: center;
 }

@@ -2,7 +2,7 @@
 
 .ContextualSaveBar {
   display: flex;
-  height: top-bar-height();
+  height: $top-bar-height;
   background: var(--p-surface);
   box-shadow: 0 2px 4px var(--p-hint-from-direct-light);
 

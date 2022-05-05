@@ -25,9 +25,7 @@ $layout-width-outer-spacing-max: $dangerous-magic-space-8;
 
 $dismiss-icon-size: 32px;
 
-@function top-bar-height() {
-  @return 56px;
-}
+$top-bar-height: 56px;
 
 @function mobile-nav-width() {
   @return calc(100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8}));
