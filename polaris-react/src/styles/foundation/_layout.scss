@@ -31,6 +31,4 @@ $mobile-nav-width: calc(
   100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8})
 );
 
-@function nav-min-window-corrected() {
-  @return 769px;
-}
+$nav-min-window-corrected: 769px;

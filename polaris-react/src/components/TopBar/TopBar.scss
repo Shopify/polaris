@@ -24,7 +24,7 @@ $context-control-expand-after: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: flex;
   }
 }
@@ -49,7 +49,7 @@ $context-control-expand-after: 1400px;
 
 .ContextControl {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     width: $layout-width-nav-base;
     display: block;
   }
@@ -86,7 +86,7 @@ $context-control-expand-after: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: none;
   }
 
