@@ -30,19 +30,13 @@ polaris/
 
 ## Commands
 
-**1. Install dependencies**
+**1. Install dependencies and build packages**
 
 ```sh
 yarn
 ```
 
-**2. Build the packages**
-
-```sh
-yarn build
-```
-
-**3. Start a local development environment**
+**2. Start a local development environment**
 
 Start a **storybook** server for the polaris-react components
 
