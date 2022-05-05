@@ -1,18 +1,8 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2020",
-    "lib": ["es2020"],
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "composite": true,
-    "incremental": true,
-    "declaration": true,
-    "declarationMap": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "references": [{"path": "./client"}, {"path": "./server"}]
+  "files": [],
+  "references": [
+    {"path": "./client"},
+    {"path": "./server"},
+    {"path": "../polaris-tokens"}
+  ]
 }

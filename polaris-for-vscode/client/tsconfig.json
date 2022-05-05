@@ -1,12 +1,9 @@
 {
+  "extends": "../../config/ts/node",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2020",
-    "lib": ["es2020"],
+    "emitDeclarationOnly": false,
     "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "skipLibCheck": true
+    "rootDir": "src"
   },
   "include": ["src"]
 }

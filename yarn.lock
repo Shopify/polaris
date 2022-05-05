@@ -2759,11 +2759,6 @@
     stylelint-prettier "^2.0.0"
     stylelint-scss "^4.0.0"
 
-"@shopify/typescript-configs@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz#f6e8fdd3291bf0a406578b2c6eb21f8c542d3c0a"
-  integrity sha512-RywGBTR+nQyJLxcrUcihPkHPIG3pIQI6i0YwMrM5rs9nWJ0+9A5HKEcboyGPLH+8V08EXGfFQ6H820O9ajyk4A==
-
 "@shopify/useful-types@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-3.0.4.tgz#6b1f0908f60487550542c75acebea1a4f4eff968"
