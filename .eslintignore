@@ -1,9 +1,0 @@
-.loom
-.next
-dist
-node_modules
-/polaris-react/build
-/polaris-react/build-internal
-
-# temp ignore polaris.shopify.com
-/polaris.shopify.com
