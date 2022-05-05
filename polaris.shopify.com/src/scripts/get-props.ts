@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import * as fs from "fs";
 import path from "path";
-import globby from "globby";
+import { globby } from "globby";
 import { PropsForComponent } from "../types";
 
 function getProps(fileNames: string[], options: ts.CompilerOptions): void {

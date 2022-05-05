@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import type {DeepPartial, ThenType} from '@shopify/useful-types';
+import type {DeepPartial} from '@shopify/useful-types';
 
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
@@ -365,7 +365,7 @@ describe('<Row />', () => {
 });
 
 function triggerOnClick(
-  row: ThenType<ReturnType<typeof mountWithTable>>,
+  row: Awaited<ReturnType<typeof mountWithTable>>,
   times = 1,
   event: DeepPartial<React.MouseEvent>,
 ) {

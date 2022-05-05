@@ -7,13 +7,13 @@ Official Figma plugin for building with the Shopify [Polaris Design System](http
 Install dependencies
 
 ```sh
-yarn
+pnpm
 ```
 
 Start the development server
 
 ```sh
-yarn run watch
+pnpm run watch
 ```
 
 Open the Figma desktop app

@@ -293,8 +293,8 @@ type Link = AppProviderProps['linkComponent'];
 The peer dependencies on `react` and `react-dom` have been increased to 16.8.6 to allow us to use hooks internally. Use `yarn` or `npm` to install a recent version of React.
 
 ```bash
-# yarn
-yarn add react react-dom
+# pnpm
+pnpm add react react-dom
 
 # npm
 npm install react react-dom

@@ -76,11 +76,11 @@ module.exports = {
 1. Install and symlink dependencies
 
 ```sh
-yarn install
+pnpm install
 ```
 
 2. Run `stylelint` on `polaris-react`
 
 ```sh
-yarn lint:stylelint
+pnpm lint:stylelint
 ```

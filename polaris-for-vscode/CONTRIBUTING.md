@@ -10,7 +10,7 @@ The development workflow for a VS Code Extension is built right into the VS Code
 1. Install all dependencies and build packages
 
    ```sh
-   yarn install
+   pnpm install
    yarn build
    ```
 

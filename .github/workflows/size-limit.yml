@@ -13,10 +13,15 @@ jobs:
       CI_JOB_NUMBER: 1
     steps:
       - uses: actions/checkout@v2
+        uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 7.0.0
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm turbo run build --filter=@shopify/polaris
       - uses: andresz1/size-limit-action@v1.7.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

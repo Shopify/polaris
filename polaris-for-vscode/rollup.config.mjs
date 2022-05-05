@@ -27,10 +27,5 @@ export default {
       babelHelpers: 'bundled',
     }),
   ],
-  external: [
-    'vscode',
-    'vscode-languageclient/node',
-    'vscode-languageserver/node',
-    'vscode-languageserver-textdocument',
-  ],
+  external: ['vscode'],
 };

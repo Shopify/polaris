@@ -708,7 +708,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} />,
       );
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Tab,
       };
 
@@ -728,7 +728,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} url="https://shopify.com" />,
       );
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Tab,
       };
 

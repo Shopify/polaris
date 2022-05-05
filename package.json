@@ -3,26 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^14.17.0 || ^16.13.0"
-  },
-  "workspaces": {
-    "packages": [
-      "polaris-tokens",
-      "polaris-for-figma",
-      "polaris-for-vscode",
-      "polaris-icons",
-      "polaris-react",
-      "stylelint-polaris",
-      "polaris.shopify.com"
-    ],
-    "nohoist": [
-      "**/vscode-languageclient",
-      "**/vscode-languageclient/**",
-      "**/vscode-languageserver",
-      "**/vscode-languageserver/**",
-      "**/vscode-languageserver-textdocument",
-      "**/vscode-languageserver-textdocument/**"
-    ]
+    "node": "^14.17.0 || ^16.13.0",
+    "pnpm": "^7.0.0"
   },
   "scripts": {
     "build": "turbo run build",
