@@ -1,7 +1,7 @@
 {
-  "extends": "../../config/ts/node",
+  "extends": "@shopify/typescript-configs/node-base",
   "compilerOptions": {
-    "emitDeclarationOnly": false,
+    "composite": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "outDir": "dist",

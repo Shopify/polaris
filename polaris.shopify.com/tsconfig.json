@@ -1,23 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Next.js",
-  "extends": "../config/ts/base",
   "compilerOptions": {
-    "target": "ES5",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "emitDeclarationOnly": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "module": "ESNext",
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "rootDir": "./",
-    "incremental": true
+    "composite": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": [
     "src",

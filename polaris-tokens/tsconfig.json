@@ -1,7 +1,9 @@
 {
-  "extends": "../config/ts/node",
+  "extends": "@shopify/typescript-configs/node-library",
   "compilerOptions": {
+    "composite": true,
     "declarationDir": "dist/types",
+    "emitDeclarationOnly": true,
     "outDir": "dist",
     "rootDir": "src"
   },

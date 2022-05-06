@@ -1,6 +1,8 @@
 {
-  "extends": "../config/ts/react",
+  "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": true,
     "importsNotUsedAsValues": "error",
     "outDir": "build/ts/latest",
     "rootDir": "./",
