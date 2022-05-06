@@ -21,7 +21,7 @@
     "build:assets": "ts-node --skip-project scripts/index.ts",
     "build:types": "tsc --emitDeclarationOnly",
     "dev": "rollup -cw",
-    "lint": "TIMING=1 eslint src",
+    "lint": "TIMING=1 eslint --cache .",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
   },

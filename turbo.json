@@ -11,7 +11,7 @@
       "dependsOn": []
     },
     "lint": {
-      "outputs": []
+      "outputs": [".eslintcache"]
     },
     "dev": {
       "cache": false
