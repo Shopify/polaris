@@ -7,6 +7,7 @@ import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
+import {Tooltip} from '../../../Tooltip';
 
 export interface CellProps {
   content?: React.ReactNode;
@@ -31,6 +32,7 @@ export interface CellProps {
   handleFocus?: FocusEventHandler;
   isFixedFirstColumn?: boolean;
   hasFixedFirstColumn?: boolean;
+  showTooltip?: boolean;
 }
 
 export function Cell({
@@ -56,6 +58,7 @@ export function Cell({
   hovered = false,
   handleFocus = () => {},
   hasFixedFirstColumn = false,
+  showTooltip = false,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -143,8 +146,14 @@ export function Cell({
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" {...colSpanProp}>
-      {content}
+    <th className={className} scope="row" {...colSpanProp} ref={setRef}>
+      {showTooltip ? (
+        <Tooltip content={content}>
+          <span>{content}</span>
+        </Tooltip>
+      ) : (
+        content
+      )}
     </th>
   );
 

@@ -721,6 +721,18 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         onMouseLeave={this.handleHover()}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
+          const isFirstColumn = cellIndex === 0;
+
+          let showTooltip = false;
+
+          if (isFirstColumn) {
+            this.tableHeadings.map((heading, headingIndex) => {
+              if (heading.scrollWidth > heading.offsetWidth) {
+                showTooltip = index === headingIndex;
+              }
+            });
+          }
+
           const hovered = index === this.state.rowHovered;
           const id = `cell-${cellIndex}-row-${index}`;
           const colSpan = this.getColSpan(
@@ -732,14 +744,18 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
           return (
             <Cell
+              setRef={(ref) =>
+                this.setCellRef({ref, index, inStickyHeader: false})
+              }
               key={id}
               content={content}
               contentType={columnContentTypes[cellIndex]}
-              firstColumn={cellIndex === 0}
+              firstColumn={isFirstColumn}
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}
               hovered={hovered}
+              showTooltip={showTooltip}
             />
           );
         })}
