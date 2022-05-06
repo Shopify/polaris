@@ -468,9 +468,13 @@ class FiltersInner extends Component<CombinedProps, State> {
       return undefined;
     }
 
-    const filter = appliedFilters.find((filter) => filter.key === key);
-
-    return filter == null ? undefined : filter.onRemove;
+    return (key: string) => {
+      for (const filter of appliedFilters) {
+        if (filter.key === key) {
+          filter.onRemove(key);
+        }
+      }
+    };
   }
 
   private openFilters() {
