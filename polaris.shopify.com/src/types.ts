@@ -25,7 +25,7 @@ export type LineConfig = {
   toOrigin?: "center" | "edge" | "left" | "right";
 };
 
-export interface Icon {
+interface Icon {
   name: string;
   set: 'major' | 'minor';
   description: string;
