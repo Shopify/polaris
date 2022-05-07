@@ -1,10 +1,13 @@
 import { SearchResult } from "../types";
 import { createVar, tokens } from "@shopify/polaris-tokens";
-import components from "../data/components.json";
-import icons from "../data/icons.json";
-import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
+
+import components from "../data/components.json";
+import guidelines from "../data/guidelines.json";
+import {Icons} from '../types';
+
+const icons: Icons = require('@shopify/polaris-icons/metadata');
 
 const {
   colorSchemes: { light: colorLight },
@@ -60,13 +63,13 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 });
 
 // Add icons
-icons.forEach(({ name, set, description, keywords, fileName }) => {
+Object.keys(icons).forEach(fileName => {
   results.push({
     category: "Icons",
-    title: `${name} (${set})`,
-    excerpt: description,
-    url: `/icons#${name}-${set}`,
-    keywords,
+    title: `${icons[fileName].name} (${icons[fileName].set})`,
+    excerpt: icons[fileName].description,
+    url: `/icons#${fileName}`,
+    keywords: icons[fileName].keywords,
     meta: {
       icon: { fileName },
     },

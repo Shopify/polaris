@@ -1,5 +1,5 @@
 {
-  "name": "polaris-shopify-com",
+  "name": "polaris.shopify.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,13 +10,13 @@
     "clean": "rm -rf .turbo node_modules .next",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
-    "parse-icons": "node src/scripts/parseIcons.mjs"
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
+    "@shopify/polaris-icons": "*",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
     "next": "12.1.0",
