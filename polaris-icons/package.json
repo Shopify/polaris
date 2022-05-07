@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "4.19.1",
+  "version": "4.20.0-rc.1",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
