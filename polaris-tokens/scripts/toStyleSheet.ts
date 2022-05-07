@@ -3,9 +3,10 @@ import path from 'path';
 
 import {Tokens, ColorScheme, TokenGroup, OSColorSchemes} from '../src';
 
-const outputDir = path.join(__dirname, '../dist/css');
-const outputPath = path.join(outputDir, 'styles.css');
-const sassOutputPath = path.join(outputDir, 'styles.scss');
+const cssOutputDir = path.join(__dirname, '../dist/css');
+const sassOutputDir = path.join(__dirname, '../dist/scss');
+const cssOutputPath = path.join(cssOutputDir, 'styles.css');
+const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
 /**
  * Creates CSS Rules for each color-scheme.
@@ -88,8 +89,11 @@ export async function toStyleSheet(
   tokens: Tokens,
   osColorSchemes: OSColorSchemes,
 ) {
-  if (!fs.existsSync(outputDir)) {
-    await fs.promises.mkdir(outputDir, {recursive: true});
+  if (!fs.existsSync(cssOutputDir)) {
+    await fs.promises.mkdir(cssOutputDir, {recursive: true});
+  }
+  if (!fs.existsSync(sassOutputDir)) {
+    await fs.promises.mkdir(sassOutputDir, {recursive: true});
   }
 
   const staticCustomProperties = getStaticCustomProperties(tokens);
@@ -105,6 +109,6 @@ export async function toStyleSheet(
   ${getKeyframes(tokens.motion)}
 `;
 
-  await fs.promises.writeFile(outputPath, styles);
+  await fs.promises.writeFile(cssOutputPath, styles);
   await fs.promises.writeFile(sassOutputPath, styles);
 }

@@ -1,0 +1,770 @@
+[
+  {
+    "name": "background",
+    "value": {"r": 246, "g": 246, "b": 247, "a": 1},
+    "figmaName": "Background/Default",
+    "id": "45b46a5df28a61105d5fc50a01adeb7beffffe71"
+  },
+  {
+    "name": "backgroundHovered",
+    "value": {"r": 241, "g": 242, "b": 243, "a": 1},
+    "figmaName": "Background/Hovered",
+    "id": "8294c0b53bc476f5999398fecf3638cc6b795d04"
+  },
+  {
+    "name": "backgroundPressed",
+    "value": {"r": 237, "g": 238, "b": 239, "a": 1},
+    "figmaName": "Background/Pressed",
+    "id": "bca814cce3dd9fb535e837471824ad0e84b23271"
+  },
+  {
+    "name": "backgroundSelected",
+    "value": {"r": 237, "g": 238, "b": 239, "a": 1},
+    "figmaName": "Background/Selected",
+    "id": "a5e1a9b1f650ee521160783e5944a75919c96d27"
+  },
+  {
+    "name": "surface",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Surface/Default",
+    "id": "538e1a781d75b225b5ab692021a0254a6daf9189"
+  },
+  {
+    "name": "surfaceNeutral",
+    "value": {"r": 228, "g": 229, "b": 231, "a": 1},
+    "figmaName": "Surface Neutral/Default",
+    "id": "bb57a79130276c188ce82eb73e18516b13a2981a"
+  },
+  {
+    "name": "surfaceNeutralHovered",
+    "value": {"r": 219, "g": 221, "b": 223, "a": 1},
+    "figmaName": "Surface Neutral/Hovered",
+    "id": "04ba02a1fddbb46b25593384119421ffcdf7f127"
+  },
+  {
+    "name": "surfaceNeutralPressed",
+    "value": {"r": 201, "g": 204, "b": 208, "a": 1},
+    "figmaName": "Surface Neutral/Pressed",
+    "id": "e549343f3ba3fd7f68cab103b41dfa7003cb5785"
+  },
+  {
+    "name": "surfaceNeutralDisabled",
+    "value": {"r": 241, "g": 242, "b": 243, "a": 1},
+    "figmaName": "Surface Neutral/Disabled",
+    "id": "46e44ee955a14ae9cd162a68c9d661946806c878"
+  },
+  {
+    "name": "surfaceNeutralSubdued",
+    "value": {"r": 246, "g": 246, "b": 247, "a": 1},
+    "figmaName": "Surface Neutral/Subdued",
+    "id": "4a00d3244a5e80cc1c1cf04aee62a069456e3e5c"
+  },
+  {
+    "name": "surfaceSubdued",
+    "value": {"r": 250, "g": 251, "b": 251, "a": 1},
+    "figmaName": "Surface/Subdued",
+    "id": "919da75860b38903218ae96a7b398e72e634abd7"
+  },
+  {
+    "name": "surfaceDisabled",
+    "value": {"r": 250, "g": 251, "b": 251, "a": 1},
+    "figmaName": "Surface/Disabled",
+    "id": "45e6f7343256407b2aec1758d9e110905e5e4073"
+  },
+  {
+    "name": "surfaceHovered",
+    "value": {"r": 246, "g": 246, "b": 247, "a": 1},
+    "figmaName": "Surface/Hovered",
+    "id": "ff5efab5f76cc9ecce88fa76a064072ceafc8c4a"
+  },
+  {
+    "name": "surfacePressed",
+    "value": {"r": 241, "g": 242, "b": 243, "a": 1},
+    "figmaName": "Surface/Pressed",
+    "id": "53156c0bd7370a31dc73f17334f22ceaf7552e9e"
+  },
+  {
+    "name": "surfaceDepressed",
+    "value": {"r": 237, "g": 238, "b": 239, "a": 1},
+    "figmaName": "Surface/Depressed",
+    "id": "5b8d144d4716c444465315a109cc25da3b7bbc2a"
+  },
+  {
+    "name": "surfaceSearchField",
+    "value": {"r": 241, "g": 242, "b": 243, "a": 1},
+    "figmaName": "Surface/SearchField",
+    "id": "bf45880ee8b9483698a943de91bdc17cfa383e1e"
+  },
+  {
+    "name": "backdrop",
+    "value": {"r": 0, "g": 0, "b": 0, "a": 0.5},
+    "figmaName": "Backdrop",
+    "id": "72295319cfa7d9afe1017930b38bf2656f2a0232"
+  },
+  {
+    "name": "overlay",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 0.5},
+    "figmaName": "Overlay",
+    "id": "a0c84ae7cb7bc29d0349a5c9c213b9aba6abf277"
+  },
+  {
+    "name": "shadowFromDimLight",
+    "value": {"r": 0, "g": 0, "b": 0, "a": 0.2},
+    "figmaName": "Shadow/From dim light",
+    "id": "9c8ff5ec87f42ba1ca80ba3d7ce704c390bca83a"
+  },
+  {
+    "name": "shadowFromAmbientLight",
+    "value": {"r": 23, "g": 24, "b": 24, "a": 0.05},
+    "figmaName": "Shadow/From ambient light",
+    "id": "0493b0070128b57eddf60f752be25ce7c915fccc"
+  },
+  {
+    "name": "shadowFromDirectLight",
+    "value": {"r": 0, "g": 0, "b": 0, "a": 0.15},
+    "figmaName": "Shadow/From direct light",
+    "id": "3390cc8bfd66a6aa5bb660cda0b8500ae247f0ae"
+  },
+  {
+    "name": "hintFromDirectLight",
+    "value": {"r": 0, "g": 0, "b": 0, "a": 0.15},
+    "figmaName": "Hint/From direct light",
+    "id": "f52f1e878a7fe6f8d12d8c8f43a4647f437c0662"
+  },
+  {
+    "name": "border",
+    "value": {"r": 140, "g": 145, "b": 150, "a": 1},
+    "figmaName": "Border/Default",
+    "id": "3fdce6f07e3fe62cb01905e6a0383d63137c28ba"
+  },
+  {
+    "name": "borderNeutralSubdued",
+    "value": {"r": 186, "g": 191, "b": 195, "a": 1},
+    "figmaName": "Border Neutral/Subdued",
+    "id": "d6dc5242d02eb91a08f159985b27f5284415613f"
+  },
+  {
+    "name": "borderHovered",
+    "value": {"r": 153, "g": 158, "b": 164, "a": 1},
+    "figmaName": "Border/Hovered",
+    "id": "35850dd9c210698ed98cd801134035d61baa3763"
+  },
+  {
+    "name": "borderDisabled",
+    "value": {"r": 210, "g": 213, "b": 216, "a": 1},
+    "figmaName": "Border/Disabled",
+    "id": "24f6f0ebb7541c8e98a7c6e4dd0f17895b7534ad"
+  },
+  {
+    "name": "borderSubdued",
+    "value": {"r": 201, "g": 204, "b": 207, "a": 1},
+    "figmaName": "Border/Subdued",
+    "id": "57fd0b1efd53f651de0da963ee94a0907b722c72"
+  },
+  {
+    "name": "borderDepressed",
+    "value": {"r": 87, "g": 89, "b": 89, "a": 1},
+    "figmaName": "Border/Depressed",
+    "id": "33b0a859903b15f6e39b13800a460481cd4c939c"
+  },
+  {
+    "name": "borderShadow",
+    "value": {"r": 174, "g": 180, "b": 185, "a": 1},
+    "figmaName": "BorderShadow",
+    "id": "bbf7684cca4de41eab44fea3e9ca31e02c6cd874"
+  },
+  {
+    "name": "borderShadowSubdued",
+    "value": {"r": 186, "g": 191, "b": 196, "a": 1},
+    "figmaName": "BorderShadow/Subdued",
+    "id": "967387d9af75cd8a30c14175a9baa3a6b81c78a8"
+  },
+  {
+    "name": "divider",
+    "value": {"r": 225, "g": 227, "b": 229, "a": 1},
+    "figmaName": "Divider",
+    "id": "5fb57f7e108c6feea67e5a2e5259fd8010a797d5"
+  },
+  {
+    "name": "icon",
+    "value": {"r": 92, "g": 95, "b": 98, "a": 1},
+    "figmaName": "Icon/Default",
+    "id": "8c96e1a9cee4123bba25247a18e0bcbbdfb12eaf"
+  },
+  {
+    "name": "iconHovered",
+    "value": {"r": 26, "g": 28, "b": 29, "a": 1},
+    "figmaName": "Icon/Hovered",
+    "id": "22ee6786d8ec927f80e9471e646d4b7d4b2448b9"
+  },
+  {
+    "name": "iconPressed",
+    "value": {"r": 68, "g": 71, "b": 74, "a": 1},
+    "figmaName": "Icon/Pressed",
+    "id": "89d0f4c417209808197cb9efe493b43acdc78d3f"
+  },
+  {
+    "name": "iconDisabled",
+    "value": {"r": 186, "g": 190, "b": 195, "a": 1},
+    "figmaName": "Icon/Disabled",
+    "id": "15aef02e2cca34e87d9f89672ec840e16687190c"
+  },
+  {
+    "name": "iconSubdued",
+    "value": {"r": 140, "g": 145, "b": 150, "a": 1},
+    "figmaName": "Icon/Subdued",
+    "id": "7e3a59b1ad0219a26801ed36364ad71440876691"
+  },
+  {
+    "name": "text",
+    "value": {"r": 32, "g": 34, "b": 35, "a": 1},
+    "figmaName": "Text/Default",
+    "id": "fd4feb744d32289d2523dc5ab618e01decacd3be"
+  },
+  {
+    "name": "textDisabled",
+    "value": {"r": 140, "g": 145, "b": 150, "a": 1},
+    "figmaName": "Text/Disabled",
+    "id": "4ceb22be2cf160d350344fa6fc8943dd19abf9fa"
+  },
+  {
+    "name": "textSubdued",
+    "value": {"r": 109, "g": 113, "b": 117, "a": 1},
+    "figmaName": "Text/Subdued",
+    "id": "2e2abfb357e0203de963b2d875e0daee24616609"
+  },
+  {
+    "name": "interactive",
+    "value": {"r": 44, "g": 110, "b": 203, "a": 1},
+    "figmaName": "Interactive/Default",
+    "id": "1bd7fabbc72cda3229545a66d67ce67e72af2b07"
+  },
+  {
+    "name": "interactiveDisabled",
+    "value": {"r": 189, "g": 193, "b": 204, "a": 1},
+    "figmaName": "Interactive/Disabled",
+    "id": "d87c044a2186ede5417276cc245e231c6a3963d7"
+  },
+  {
+    "name": "interactiveHovered",
+    "value": {"r": 31, "g": 81, "b": 153, "a": 1},
+    "figmaName": "Interactive/Hovered",
+    "id": "4bed68c31a9d4a4acc6b160bd230f422ac73e3ad"
+  },
+  {
+    "name": "interactivePressed",
+    "value": {"r": 16, "g": 50, "b": 98, "a": 1},
+    "figmaName": "Interactive/Pressed",
+    "id": "952b57dffae6bef1605361e4623f38f4bcb0fa4e"
+  },
+  {
+    "name": "iconInteractive",
+    "value": {"r": 44, "g": 110, "b": 203, "a": 1},
+    "figmaName": "Icon/Interactive",
+    "id": "fae58178e6a7451fdd732214f97e5be2b213fe1c"
+  },
+  {
+    "name": "focused",
+    "value": {"r": 69, "g": 143, "b": 255, "a": 1},
+    "figmaName": "Focused/Default",
+    "id": "dfae869abfdf7b35653b67f60730a7f6cf6d6680"
+  },
+  {
+    "name": "surfaceSelected",
+    "value": {"r": 242, "g": 247, "b": 254, "a": 1},
+    "figmaName": "Surface Selected/Default",
+    "id": "5bf4ca366725788249b66a10dcf27777ab77625c"
+  },
+  {
+    "name": "surfaceSelectedHovered",
+    "value": {"r": 237, "g": 244, "b": 254, "a": 1},
+    "figmaName": "Surface Selected/Hovered",
+    "id": "649a5ba4753fa50999952d3475fa266c8facc9c7"
+  },
+  {
+    "name": "surfaceSelectedPressed",
+    "value": {"r": 229, "g": 239, "b": 253, "a": 1},
+    "figmaName": "Surface Selected/Pressed",
+    "id": "892132e8e9fc406bd19a415c5a4a1fdb74be3ff0"
+  },
+  {
+    "name": "iconOnInteractive",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Icon On/Interactive",
+    "id": "2db9090e5e9b10de0ea26b1b755c0b80cfbb4e2b"
+  },
+  {
+    "name": "textOnInteractive",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Text On/Interactive",
+    "id": "a1fc77f460e3a7866954553e561f18e73f1c5560"
+  },
+  {
+    "name": "actionSecondary",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Action Secondary/Default",
+    "id": "0bf69fca7be900507ff2ef8f029859dd3c0a566c"
+  },
+  {
+    "name": "actionSecondaryDisabled",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Action Secondary/Disabled",
+    "id": "b6c14389f86d9c075996b1b3fe13ec288917f48e"
+  },
+  {
+    "name": "actionSecondaryHovered",
+    "value": {"r": 246, "g": 246, "b": 247, "a": 1},
+    "figmaName": "Action Secondary/Hovered",
+    "id": "44bf09edbee421841648486b1dc4991cb7fae8c4"
+  },
+  {
+    "name": "actionSecondaryPressed",
+    "value": {"r": 241, "g": 242, "b": 243, "a": 1},
+    "figmaName": "Action Secondary/Pressed",
+    "id": "0aec1b55b779d8bf35dc2684b0e1f0e21b2596d7"
+  },
+  {
+    "name": "actionSecondaryDepressed",
+    "value": {"r": 109, "g": 113, "b": 117, "a": 1},
+    "figmaName": "Action Secondary/Depressed",
+    "id": "69287d7ecefe78c65837729d84a00a634463fc15"
+  },
+  {
+    "name": "actionPrimary",
+    "value": {"r": 0, "g": 128, "b": 96, "a": 1},
+    "figmaName": "Action Primary/Default",
+    "id": "f3521aed6c97127fcd3275a7135dd35250919098"
+  },
+  {
+    "name": "actionPrimaryDisabled",
+    "value": {"r": 241, "g": 241, "b": 241, "a": 1},
+    "figmaName": "Action Primary/Disabled",
+    "id": "84593169eb8de06d7b9863f80d8f0d2dd444a632"
+  },
+  {
+    "name": "actionPrimaryHovered",
+    "value": {"r": 0, "g": 110, "b": 82, "a": 1},
+    "figmaName": "Action Primary/Hovered",
+    "id": "a781e862bf1c6bfd68bd0a28785a37e8d5e9c7bc"
+  },
+  {
+    "name": "actionPrimaryPressed",
+    "value": {"r": 0, "g": 94, "b": 70, "a": 1},
+    "figmaName": "Action Primary/Pressed",
+    "id": "9ac328990c9415e7b8abe7a0f4772b6e0af74e58"
+  },
+  {
+    "name": "actionPrimaryDepressed",
+    "value": {"r": 0, "g": 61, "b": 44, "a": 1},
+    "figmaName": "Action Primary/Depressed",
+    "id": "56cba27067164945f7e3219cd60e2b9ae6e736cf"
+  },
+  {
+    "name": "iconOnPrimary",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Icon On/Primary",
+    "id": "4d39af63658f536d2704ab87cfbc46ab69511fef"
+  },
+  {
+    "name": "textOnPrimary",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Text On/Primary",
+    "id": "38ef351343e4f94f5339422380d93de46bcad3e2"
+  },
+  {
+    "name": "textPrimary",
+    "value": {"r": 0, "g": 123, "b": 92, "a": 1},
+    "figmaName": "Text Primary/Default",
+    "id": "1af72cd8c01edfbb20265e7d1a30d294fdf32c6e"
+  },
+  {
+    "name": "textPrimaryHovered",
+    "value": {"r": 0, "g": 108, "b": 80, "a": 1},
+    "figmaName": "Text Primary/hover",
+    "id": "bd856e075fc4571d13ea11a8da9f0457e0c47ebe"
+  },
+  {
+    "name": "textPrimaryPressed",
+    "value": {"r": 0, "g": 92, "b": 68, "a": 1},
+    "figmaName": "Text Primary/Pressed",
+    "id": "8efd53a8781ed16100d167b49b3ccb51901c64b5"
+  },
+  {
+    "name": "surfacePrimarySelected",
+    "value": {"r": 241, "g": 248, "b": 245, "a": 1},
+    "figmaName": "Surface Primary/Selected",
+    "id": "fc731d1e84ce9e406d0ab34a9e9f435eb669ed84"
+  },
+  {
+    "name": "surfacePrimarySelectedHovered",
+    "value": {"r": 179, "g": 208, "b": 195, "a": 1},
+    "figmaName": "Surface Primary/Selected Hovered",
+    "id": "f60bf25de0aae60a374bee6549ec7f357c22516a"
+  },
+  {
+    "name": "surfacePrimarySelectedPressed",
+    "value": {"r": 162, "g": 188, "b": 176, "a": 1},
+    "figmaName": "Surface Primary/Selected Pressed",
+    "id": "e130d82ac4072c32390bd810ee59da38b6c30973"
+  },
+  {
+    "name": "borderCritical",
+    "value": {"r": 253, "g": 87, "b": 73, "a": 1},
+    "figmaName": "Border Critical/Default",
+    "id": "11847bf8951fe9da3b4f0f962ef11ebd0357a7be"
+  },
+  {
+    "name": "borderCriticalSubdued",
+    "value": {"r": 224, "g": 179, "b": 178, "a": 1},
+    "figmaName": "Border Critical/Subdued",
+    "id": "c746de562ecc40b6ffe9e81b3e29f72ef48ea541"
+  },
+  {
+    "name": "borderCriticalDisabled",
+    "value": {"r": 255, "g": 167, "b": 163, "a": 1},
+    "figmaName": "Border Critical/Disabled",
+    "id": "222d58e7dbf48595fec7ca17cdee410cf05a320f"
+  },
+  {
+    "name": "iconCritical",
+    "value": {"r": 215, "g": 44, "b": 13, "a": 1},
+    "figmaName": "Icon/Critical",
+    "id": "d5504ee4d97741a88fa97f27c7f8875403dd5912"
+  },
+  {
+    "name": "surfaceCritical",
+    "value": {"r": 254, "g": 211, "b": 209, "a": 1},
+    "figmaName": "Surface Critical/Default",
+    "id": "3b211a65d564bdc3c32055727cc20e0914194b8d"
+  },
+  {
+    "name": "surfaceCriticalSubdued",
+    "value": {"r": 255, "g": 244, "b": 244, "a": 1},
+    "figmaName": "Surface Critical/Subdued",
+    "id": "1f18ebb806ed0302ac94cc87cd9515b3f18f5059"
+  },
+  {
+    "name": "surfaceCriticalSubduedHovered",
+    "value": {"r": 255, "g": 240, "b": 240, "a": 1},
+    "figmaName": "Surface Critical/Subdued Hovered",
+    "id": "d81276a46c1f6481d41beca98358283c08456a02"
+  },
+  {
+    "name": "surfaceCriticalSubduedPressed",
+    "value": {"r": 255, "g": 233, "b": 232, "a": 1},
+    "figmaName": "Surface Critical/Subdued Pressed",
+    "id": "2a67d888a7f2b7dc2fd7e5de8dda4ee47751ed32"
+  },
+  {
+    "name": "surfaceCriticalSubduedDepressed",
+    "value": {"r": 254, "g": 188, "b": 185, "a": 1},
+    "figmaName": "Surface Critical/Subdued Depressed",
+    "id": "dd95ae0591f2847f970715647e0bc8ea0d4d1276"
+  },
+  {
+    "name": "textCritical",
+    "value": {"r": 215, "g": 44, "b": 13, "a": 1},
+    "figmaName": "Text/Critical",
+    "id": "942c775d0c30677b083441bf216d5224127503d5"
+  },
+  {
+    "name": "actionCritical",
+    "value": {"r": 216, "g": 44, "b": 13, "a": 1},
+    "figmaName": "Action Critical/Default",
+    "id": "f4e2db5c887d58a66bd242d4170d3dbaada8e5cd"
+  },
+  {
+    "name": "actionCriticalDisabled",
+    "value": {"r": 241, "g": 241, "b": 241, "a": 1},
+    "figmaName": "Action Critical/Disabled",
+    "id": "bbec7a0c07b5b6a9a6fb87319a6bd30f2eadeeef"
+  },
+  {
+    "name": "actionCriticalHovered",
+    "value": {"r": 188, "g": 34, "b": 0, "a": 1},
+    "figmaName": "Action Critical/Hovered",
+    "id": "02902255fe87dfc1f9a851bb52a5c7c97dd6eb03"
+  },
+  {
+    "name": "actionCriticalPressed",
+    "value": {"r": 162, "g": 27, "b": 0, "a": 1},
+    "figmaName": "Action Critical/Pressed",
+    "id": "4f34f32765fd97fe9abddccd5dbe5903e132141f"
+  },
+  {
+    "name": "actionCriticalDepressed",
+    "value": {"r": 108, "g": 15, "b": 0, "a": 1},
+    "figmaName": "Action Critical/Depressed",
+    "id": "a90ab07a1d9aa51ed38ff0fcf85de598be945110"
+  },
+  {
+    "name": "iconOnCritical",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Icon On/Critical",
+    "id": "1060f60ec428fa68d6d834b00842cbfb3ae49c02"
+  },
+  {
+    "name": "textOnCritical",
+    "value": {"r": 255, "g": 255, "b": 255, "a": 1},
+    "figmaName": "Text On/Critical",
+    "id": "c7ba3c176761a0e214b475a0863b531b42dc4e36"
+  },
+  {
+    "name": "interactiveCritical",
+    "value": {"r": 216, "g": 44, "b": 13, "a": 1},
+    "figmaName": "Interactive/Critical",
+    "id": "ad868ea173eda388859a7f4270613159b240401d"
+  },
+  {
+    "name": "interactiveCriticalDisabled",
+    "value": {"r": 253, "g": 147, "b": 141, "a": 1},
+    "figmaName": "Interactive/Critical Disabled",
+    "id": "9fe5c09a2eba70d655fc5b50ddca51dd0a9c9c81"
+  },
+  {
+    "name": "interactiveCriticalHovered",
+    "value": {"r": 205, "g": 41, "b": 12, "a": 1},
+    "figmaName": "Interactive/Critical Hovered",
+    "id": "22b6e475ff907ad36de0135ae95820985a3ea9af"
+  },
+  {
+    "name": "interactiveCriticalPressed",
+    "value": {"r": 103, "g": 15, "b": 3, "a": 1},
+    "figmaName": "Interactive/Critical Pressed",
+    "id": "aeea6e483ecd2d2e3f9ca46ece0fa0aa775b63a1"
+  },
+  {
+    "name": "borderWarning",
+    "value": {"r": 185, "g": 137, "b": 0, "a": 1},
+    "figmaName": "Border Warning/Default",
+    "id": "e17cf7321443ed63742eaa7444dd257bde9a53ca"
+  },
+  {
+    "name": "borderWarningSubdued",
+    "value": {"r": 225, "g": 184, "b": 120, "a": 1},
+    "figmaName": "Border Warning/Subdued",
+    "id": "a8875a4324b34f5dabfa3bc7e6b5fd6e7acb9edb"
+  },
+  {
+    "name": "iconWarning",
+    "value": {"r": 185, "g": 137, "b": 0, "a": 1},
+    "figmaName": "Icon/Warning",
+    "id": "3097d82158b95ed7d2ff31339bc857425866a16e"
+  },
+  {
+    "name": "surfaceWarning",
+    "value": {"r": 255, "g": 215, "b": 157, "a": 1},
+    "figmaName": "Surface Warning/Default",
+    "id": "f3bec158b9831f7ecba3e2a099b1b83ddd365b88"
+  },
+  {
+    "name": "surfaceWarningSubdued",
+    "value": {"r": 255, "g": 245, "b": 234, "a": 1},
+    "figmaName": "Surface Warning/Subdued",
+    "id": "49b343d667ab49929fde260825b7dc8cb7434dfb"
+  },
+  {
+    "name": "surfaceWarningSubduedHovered",
+    "value": {"r": 255, "g": 242, "b": 226, "a": 1},
+    "figmaName": "Surface Warning/Subdued Hovered",
+    "id": "ecac33919924b6db00e8b7995ac468d9fcfea21b"
+  },
+  {
+    "name": "surfaceWarningSubduedPressed",
+    "value": {"r": 255, "g": 235, "b": 211, "a": 1},
+    "figmaName": "Surface Warning/Subdued Pressed",
+    "id": "23af03cd690b037751f03ccfc8dda7cc1acc5cc2"
+  },
+  {
+    "name": "textWarning",
+    "value": {"r": 145, "g": 106, "b": 0, "a": 1},
+    "figmaName": "Text/Warning",
+    "id": "06cc545b203e7ed0a33957604a9de0a62de9dd91"
+  },
+  {
+    "name": "borderHighlight",
+    "value": {"r": 68, "g": 157, "b": 167, "a": 1},
+    "figmaName": "Border Highlight/Default",
+    "id": "1ddd68930eaa5d4638913b19097e12616e7ffd40"
+  },
+  {
+    "name": "borderHighlightSubdued",
+    "value": {"r": 152, "g": 198, "b": 205, "a": 1},
+    "figmaName": "Border Highlight/Subdued",
+    "id": "19fca4a5748c8c2804143c672171764c05c033b8"
+  },
+  {
+    "name": "iconHighlight",
+    "value": {"r": 0, "g": 160, "b": 172, "a": 1},
+    "figmaName": "Icon/Highlight",
+    "id": "c4782157678d1ae0200daa62b626105848baed66"
+  },
+  {
+    "name": "surfaceHighlight",
+    "value": {"r": 164, "g": 232, "b": 242, "a": 1},
+    "figmaName": "Surface Highlight/Default",
+    "id": "932c65ff514e4b13ed9d8637c7dbad3c26bce57b"
+  },
+  {
+    "name": "surfaceHighlightSubdued",
+    "value": {"r": 235, "g": 249, "b": 252, "a": 1},
+    "figmaName": "Surface Highlight/Subdued",
+    "id": "4f0e5b21b97198639c3a9ac3a6efeeb0e23c09bb"
+  },
+  {
+    "name": "surfaceHighlightSubduedHovered",
+    "value": {"r": 228, "g": 247, "b": 250, "a": 1},
+    "figmaName": "Surface Highlight/Subdued Hovered",
+    "id": "dc311f28f535a817cca8b91601b73192eb6d8115"
+  },
+  {
+    "name": "surfaceHighlightSubduedPressed",
+    "value": {"r": 213, "g": 243, "b": 248, "a": 1},
+    "figmaName": "Surface Highlight/Subdued Pressed",
+    "id": "54eef46fc56186f1092041e86ff7c31b63f8b047"
+  },
+  {
+    "name": "textHighlight",
+    "value": {"r": 52, "g": 124, "b": 132, "a": 1},
+    "figmaName": "Text/Highlight",
+    "id": "0d210cbc34d4d62fc90334e0d2354fd5ed3c11a2"
+  },
+  {
+    "name": "borderSuccess",
+    "value": {"r": 0, "g": 164, "b": 124, "a": 1},
+    "figmaName": "Border Success/Default",
+    "id": "f208a2cc79657d6df3dc47ebfca3f793b26f6966"
+  },
+  {
+    "name": "borderSuccessSubdued",
+    "value": {"r": 149, "g": 201, "b": 180, "a": 1},
+    "figmaName": "Border Success/Subdued",
+    "id": "0ae2bd690e3d7feb6e3862070832253a8f773f26"
+  },
+  {
+    "name": "iconSuccess",
+    "value": {"r": 0, "g": 127, "b": 95, "a": 1},
+    "figmaName": "Icon/Success",
+    "id": "ae37ddf6a536e234b1878555bfb1aad857e863cd"
+  },
+  {
+    "name": "surfaceSuccess",
+    "value": {"r": 174, "g": 233, "b": 209, "a": 1},
+    "figmaName": "Surface Success/Default",
+    "id": "e3b404e021be76f50e58b49fea268366e78021fb"
+  },
+  {
+    "name": "surfaceSuccessSubdued",
+    "value": {"r": 241, "g": 248, "b": 245, "a": 1},
+    "figmaName": "Surface Success/Subdued",
+    "id": "85cfb68f447f72fedb954056ddc16eef06446e5e"
+  },
+  {
+    "name": "surfaceSuccessSubduedHovered",
+    "value": {"r": 236, "g": 246, "b": 241, "a": 1},
+    "figmaName": "Surface Success/Subdued Hovered",
+    "id": "4d6acfd2ddfbfa7baeb32ed99c19fc7c565cb963"
+  },
+  {
+    "name": "surfaceSuccessSubduedPressed",
+    "value": {"r": 226, "g": 241, "b": 234, "a": 1},
+    "figmaName": "Surface Success/Subdued Pressed",
+    "id": "4a4ac5c1693c4338973a6991f232ec3d7668e341"
+  },
+  {
+    "name": "textSuccess",
+    "value": {"r": 0, "g": 128, "b": 96, "a": 1},
+    "figmaName": "Text/Success",
+    "id": "9c8a6653bda2bbd1bd6ec34f0844995ffbce0ab9"
+  },
+  {
+    "name": "decorativeOneIcon",
+    "value": {"r": 126, "g": 87, "b": 0, "a": 1},
+    "figmaName": "Decorative/Icon/One",
+    "id": "c1490e29eabab438a0d85bfdfd9d5190a1fa58a1"
+  },
+  {
+    "name": "decorativeOneSurface",
+    "value": {"r": 255, "g": 201, "b": 107, "a": 1},
+    "figmaName": "Decorative/Surface/One",
+    "id": "044fbb6ae8519b1a7b4be3d24d437ff68d183807"
+  },
+  {
+    "name": "decorativeOneText",
+    "value": {"r": 61, "g": 40, "b": 0, "a": 1},
+    "figmaName": "Decorative/Text/One",
+    "id": "03bffcf89693d010b26c071757aae479e41ccc1f"
+  },
+  {
+    "name": "decorativeTwoIcon",
+    "value": {"r": 175, "g": 41, "b": 78, "a": 1},
+    "figmaName": "Decorative/Icon/Two",
+    "id": "73a3714ba7cc6aa83fe38ba8b7660fb0c8b6613b"
+  },
+  {
+    "name": "decorativeTwoSurface",
+    "value": {"r": 255, "g": 196, "b": 176, "a": 1},
+    "figmaName": "Decorative/Surface/Two",
+    "id": "ec1c0e8eea89302ae75d8178db9807ffe460075d"
+  },
+  {
+    "name": "decorativeTwoText",
+    "value": {"r": 73, "g": 11, "b": 28, "a": 1},
+    "figmaName": "Decorative/Text/Two",
+    "id": "4871852cee6bd6e6ed1e3b26ab4c257ffcf04e10"
+  },
+  {
+    "name": "decorativeThreeIcon",
+    "value": {"r": 0, "g": 109, "b": 65, "a": 1},
+    "figmaName": "Decorative/Icon/Three",
+    "id": "d264a6a2db954e796892385fb68418f874f2bc2a"
+  },
+  {
+    "name": "decorativeThreeSurface",
+    "value": {"r": 146, "g": 230, "b": 181, "a": 1},
+    "figmaName": "Decorative/Surface/Three",
+    "id": "03aaacf1bf0bcec27c6c5a066ad58c6ab54b59aa"
+  },
+  {
+    "name": "decorativeThreeText",
+    "value": {"r": 0, "g": 47, "b": 25, "a": 1},
+    "figmaName": "Decorative/Text/Three",
+    "id": "fbfd3bbe389d07b8d3a266245383b5823f3928c4"
+  },
+  {
+    "name": "decorativeFourIcon",
+    "value": {"r": 0, "g": 106, "b": 104, "a": 1},
+    "figmaName": "Decorative/Icon/Four",
+    "id": "79751c15627bc53abe365484442d13713b160e59"
+  },
+  {
+    "name": "decorativeFourSurface",
+    "value": {"r": 145, "g": 224, "b": 214, "a": 1},
+    "figmaName": "Decorative/Surface/Four",
+    "id": "0bed1fb4d47f2da72c6aaeacdfb09432e0c62e2d"
+  },
+  {
+    "name": "decorativeFourText",
+    "value": {"r": 0, "g": 45, "b": 45, "a": 1},
+    "figmaName": "Decorative/Text/Four",
+    "id": "dc0796302b529b104a87d03cab9ed6b4aea7f311"
+  },
+  {
+    "name": "decorativeFiveIcon",
+    "value": {"r": 174, "g": 43, "b": 76, "a": 1},
+    "figmaName": "Decorative/Icon/Five",
+    "id": "34b44947f8f7ca720a4a53758852036c0f166139"
+  },
+  {
+    "name": "decorativeFiveSurface",
+    "value": {"r": 253, "g": 201, "b": 208, "a": 1},
+    "figmaName": "Decorative/Surface/Five",
+    "id": "d9ea1e648bc5cbe303bbc4ec8e31344053d00b73"
+  },
+  {
+    "name": "decorativeFiveText",
+    "value": {"r": 79, "g": 14, "b": 31, "a": 1},
+    "figmaName": "Decorative/Text/Five",
+    "id": "53af932bd7df79772d2823681099e1cc37def8dc"
+  }
+]

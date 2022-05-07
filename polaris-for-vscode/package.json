@@ -32,10 +32,12 @@
   "scripts": {
     "build": "tsc -b",
     "dev": "tsc -b -w",
+    "lint": "TIMING=1 eslint --cache .",
+    "clean": "rm -rf .turbo node_modules client/dist server/dist",
     "vscode:prepublish": "yarn build"
   },
   "dependencies": {
-    "@shopify/polaris-tokens": "^5.0.0",
+    "@shopify/polaris-tokens": "*",
     "vscode-languageclient": "^7.0.0",
     "vscode-languageserver": "^7.0.0",
     "vscode-languageserver-textdocument": "^1.0.4"

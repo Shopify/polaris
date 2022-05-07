@@ -24,11 +24,12 @@
     "polaris",
     "stylelint"
   ],
-  "main": "index.js",
+  "main": "src/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "echo no build script",
-    "test": "node tests/index.js"
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "node tests/index.js",
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
