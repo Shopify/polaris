@@ -4,8 +4,9 @@
   height: 0;
   overflow: hidden;
   max-width: 100%;
-  border-radius: var(--border-radius-300);
+  border-radius: var(--border-radius-200);
 
+  img,
   iframe,
   object,
   embed {
@@ -14,5 +15,47 @@
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  img {
+    // Remove letterboxing artifact from thumbnails
+    transform: scale(1.01);
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(
+      45deg,
+      hsl(208deg 100% 29%),
+      rgba(5, 100, 74, 0.83)
+    );
+    background: #353535;
+    mix-blend-mode: lighten;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(
+      45deg,
+      hsl(208deg 100% 29%),
+      rgba(5, 100, 74, 0.83)
+    );
+    background: var(--primary);
+    mix-blend-mode: exclusion;
+    opacity: 0.5;
   }
 }

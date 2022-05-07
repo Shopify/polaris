@@ -5,101 +5,37 @@ export const navItems: NavItem[] = [
     title: "Foundations",
     children: [
       {
-        title: "Experience values",
-        children: [
-          {
-            title: "Shopify experience values",
-            url: "/guidelines/foundations/experience-values",
-          },
-        ],
+        title: "Shopify experience values",
+        url: "/guidelines/foundations/experience-values",
       },
 
       {
-        title: "Key considerations",
-        children: [
-          {
-            title: "Accessibility",
-            url: "/guidelines/foundations/accessibility",
-          },
-          {
-            title: "Internationalization",
-            url: "/guidelines/foundations/internationalization",
-          },
-          {
-            title: "Information architecture",
-            url: "/guidelines/foundations/information-architecture",
-          },
-          {
-            title: "Mobile",
-            url: "/guidelines/foundations/mobile",
-          },
-        ],
-      },
-
-      {
-        title: "Crafting user interfaces",
-        children: [
-          {
-            title: "Designing apps for Shopify",
-            url: "/guidelines/foundations/designing-apps",
-          },
-          {
-            title: "Designing onboarding flows",
-            url: "/guidelines/foundations/designing-onboarding-flows",
-          },
-        ],
-      },
-
-      {
-        title: "Patterns",
-        children: [
-          {
-            title: "Formatting localized currency",
-            url: "/guidelines/foundations/formatting-localized-currency",
-          },
-        ],
-      },
-    ],
-  },
-
-  {
-    title: "Design",
-    children: [
-      {
-        title: "Design",
-        url: "/guidelines/design/design",
+        title: "Accessibility",
+        url: "/guidelines/foundations/accessibility",
       },
       {
-        title: "Colors",
-        url: "/guidelines/design/colors",
+        title: "Internationalization",
+        url: "/guidelines/foundations/internationalization",
       },
       {
-        title: "Typography",
-        url: "/guidelines/design/typography",
+        title: "Information architecture",
+        url: "/guidelines/foundations/information-architecture",
       },
       {
-        title: "Illustrations",
-        url: "/guidelines/design/illustrations",
+        title: "Mobile",
+        url: "/guidelines/foundations/mobile",
       },
       {
-        title: "Sounds",
-        url: "/guidelines/design/sounds",
+        title: "Designing apps for Shopify",
+        url: "/guidelines/foundations/designing-apps",
       },
       {
-        title: "Icons",
-        url: "/guidelines/design/icons",
+        title: "Designing onboarding flows",
+        url: "/guidelines/foundations/designing-onboarding-flows",
       },
       {
-        title: "Interaction states",
-        url: "/guidelines/design/interaction-states",
-      },
-      {
-        title: "Spacing",
-        url: "/guidelines/design/spacing",
-      },
-      {
-        title: "Data visualizations",
-        url: "/guidelines/design/data-visualizations",
+        title: "Formatting localized currency",
+        url: "/guidelines/foundations/formatting-localized-currency",
       },
     ],
   },
@@ -150,6 +86,48 @@ export const navItems: NavItem[] = [
       {
         title: "Alternative text",
         url: "/guidelines/content/alternative-text",
+      },
+    ],
+  },
+
+  {
+    title: "Design",
+    children: [
+      {
+        title: "Design",
+        url: "/guidelines/design/design",
+      },
+      {
+        title: "Colors",
+        url: "/guidelines/design/colors",
+      },
+      {
+        title: "Typography",
+        url: "/guidelines/design/typography",
+      },
+      {
+        title: "Illustrations",
+        url: "/guidelines/design/illustrations",
+      },
+      {
+        title: "Sounds",
+        url: "/guidelines/design/sounds",
+      },
+      {
+        title: "Icons",
+        url: "/guidelines/design/icons",
+      },
+      {
+        title: "Interaction states",
+        url: "/guidelines/design/interaction-states",
+      },
+      {
+        title: "Spacing",
+        url: "/guidelines/design/spacing",
+      },
+      {
+        title: "Data visualizations",
+        url: "/guidelines/design/data-visualizations",
       },
     ],
   },

@@ -1,35 +1,60 @@
 @import "../../styles/variables.scss";
 
+.ResourcesPage {
+  margin-top: var(--header-margin);
+
+  h1 + p {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: var(--font-size-500);
+  }
+}
+
 .MainPackages {
   display: flex;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
-  align-items: center;
-  gap: 1rem;
+  gap: 1px;
+  border-radius: 16px;
 
   > div {
     flex: 1;
     display: flex;
-    background: var(--surface-subdued);
     flex-direction: column;
-    justify-content: space-between;
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    // > * {
-    //   color: #fff;
-    // }
+    border-radius: var(--border-radius-300);
+    padding: 4rem 2rem 4rem 0;
+    margin-right: 2rem;
+    background: var(--surface);
+    border-right: var(--border);
+
+    &:first-child {
+      border-radius: 16px 0 0 16px;
+    }
+
+    &:last-child {
+      border-radius: 0 16px 16px 0;
+    }
+
+    img {
+      display: none !important;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h2 {
+      font-size: var(--font-size-600);
+      color: var(--primary);
+    }
   }
 
-  h2 {
+  img {
+    // filter: brightness(0) saturate(0);
   }
 
   .Description {
-    font-size: var(--font-size-500);
-    margin-bottom: 1.75rem;
-  }
-
-  .Links {
-    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -37,48 +62,42 @@
   margin: 0.5rem 1rem 1rem 0;
 }
 
+.PolarisForVSCodeWrapper {
+  background: var(--surface-subdued);
+}
+
 .PolarisForVSCode {
-  background: #000;
   display: flex;
   justify-content: center;
   display: flex;
   align-items: center;
   gap: 5rem;
-  color: #ddd;
-  border-radius: var(--border-radius-200);
+  border-radius: var(--border-radius-300);
   overflow: hidden;
-
-  @media screen and (max-width: $pageMaxWidth) {
-    border-radius: 0;
-  }
 
   .Text {
     transform: translateY(-1.5rem);
-    padding-left: 5rem;
   }
 
   .Video {
     flex: 1;
-    min-width: 65.5%;
+    min-width: 69.66%;
+    mix-blend-mode: darken;
   }
 
-  h2 {
-    color: white;
+  video {
+    width: 100%;
+    height: auto;
+    filter: invert(1) contrast(1.5);
   }
 
-  .Icon {
+  .VSCodeIcon {
     display: block;
     margin-bottom: 2.75rem;
     svg {
       transform: scale(2);
       transform-origin: 0 0;
     }
-  }
-
-  video {
-    width: 100%;
-    height: auto;
-    filter: contrast(1.5);
   }
 
   .Links a {
@@ -88,67 +107,45 @@
 
 .Links {
   display: flex;
-  align-items: center;
-  gap: 1.33em;
-  font-weight: 435;
-
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: var(--font-size-500);
   svg {
     height: 1.25rem;
-    // filter: brightness(100%) saturate(0) contrast(1);
   }
 
   a {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    color: inherit;
+    gap: 0.75rem;
+
+    .Icon {
+      display: flex;
+      align-items: center;
+      min-width: 1em;
+      width: 1em;
+    }
   }
 
   a[data-icon="github"] {
-    gap: 0.5rem;
     svg {
-      transform: translateY(-1px);
-      color: var(--text);
+      color: inherit;
     }
   }
 }
 
-.QuickStartToggle {
-  font-size: var(--font-size-400);
-  font-weight: var(--font-weight-500);
-  color: var(--text-strong);
+.Plugins {
   display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  cursor: pointer;
-  background: var(--p-surface-success);
-  color: var(--p-text-success);
+  gap: 2px;
 
-  svg {
-    transition: transform 0.1s ease;
+  .Plugin {
+    background: var(--surface-subdued);
+    padding: 3rem;
   }
 
-  &[aria-expanded="true"] {
-    svg {
-      transform: rotate(90deg);
-    }
-  }
-}
-
-.QuickStart {
-  position: relative;
-  padding-left: 2rem;
-  margin-left: 3px;
-
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 2px;
-    background: var(--text);
-    border-radius: var(--border-radius-round);
+  video {
+    max-width: 100%;
+    height: auto;
+    display: none;
   }
 }

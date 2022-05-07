@@ -5,13 +5,15 @@
   --page-max-width: #{$pageMaxWidth};
   --header-height: 84px;
   --narrow-content-width: 720px;
+  --header-margin: 2.75rem;
 
   --focus-outline: 0 0 0 2px black;
 
   --text: #353535;
-  --text-strong: #111;
-  --text-subdued: #666666;
-  --text-link: #1064c8;
+  --text-strong: #222;
+  --text-subdued: #777;
+  --text-light: #999;
+  --text-link: #2949c1;
   --text-token: #6e006e;
 
   --surface: #ffffff;
@@ -115,14 +117,6 @@ body {
 
 a {
   color: var(--text-link);
-}
-
-h1,
-h2,
-h3,
-h4,
-p {
-  margin: 0.33rem 0;
 }
 
 h1 {

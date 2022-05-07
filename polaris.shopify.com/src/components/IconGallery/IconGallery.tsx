@@ -21,7 +21,9 @@ interface Props {}
 const fuse = new Fuse(icons, {
   threshold: 0.25,
   keys: [
-    { name: "title", weight: 3 },
+    { name: "name", weight: 3 },
+    { name: "set", weight: 1 },
+    { name: "fileName", weight: 1 },
     { name: "description", weight: 1 },
     { name: "keywords", weight: 2 },
   ],

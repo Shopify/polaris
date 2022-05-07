@@ -1,0 +1,113 @@
+.TokensPage {
+  h1 {
+    margin-top: var(--header-margin);
+  }
+}
+
+.IntroBanner {
+  text-align: center;
+
+  .Video {
+    min-width: 57%;
+  }
+
+  .Text {
+    padding: 0 3rem 0 0;
+  }
+
+  p {
+    margin: 1rem auto;
+    font-size: var(--font-size-500);
+    max-width: 50rem;
+  }
+}
+
+.TableSection {
+  margin-top: 2rem;
+}
+
+.Filters {
+  input {
+    margin-bottom: 1rem;
+  }
+}
+
+.TokenTable {
+  h3 {
+    margin: 3rem 0 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: 0.5rem 0;
+    }
+
+    tr:nth-of-type(2n) {
+      background: var(--surface-subdued);
+    }
+
+    td:nth-child(1) {
+      width: 120px;
+      padding: 0.1rem 0;
+    }
+
+    td:nth-child(2) {
+      width: 20em;
+      font-weight: 435;
+      font-size: var(--font-size-300);
+    }
+
+    td:nth-child(3) {
+      font-size: var(--font-size-300);
+    }
+
+    td:nth-child(4) {
+      text-align: right;
+      padding-right: 1rem;
+      font-size: var(--font-size-100);
+      color: var(--text-subdued);
+      width: 15em;
+    }
+  }
+}
+
+.TokenGrid {
+  .Grid {
+    display: grid;
+    gap: 4px;
+    justify-content: flex-start;
+    grid-template-columns: repeat(20, 1fr);
+  }
+
+  .Token {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    p {
+      font-size: var(--font-size-200);
+    }
+  }
+}
+
+.Popover {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  width: 500px;
+  background: white;
+  padding: 40px;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+}
+
+.TokenName {
+  background: var(--surface-token);
+  padding: 0.33rem 0.66rem;
+  border-radius: var(--border-radius-400);
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+    Menlo, Consolas, monospace;
+  font-size: var(--font-size-100);
+}

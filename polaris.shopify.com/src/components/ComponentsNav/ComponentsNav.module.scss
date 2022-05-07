@@ -1,25 +1,11 @@
-.Filters {
-  position: relative;
-  margin-bottom: 1rem;
-
-  .TextField {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  a {
-    margin: 0 3px 3px 0;
-  }
-}
-
 .ComponentsNav {
-  padding-top: 2.5rem;
+  padding-top: var(--header-margin);
 
   ul {
     flex: 1;
     display: grid;
     margin: 0 -1rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     @media screen and (max-width: 2400px) {
       grid-template-columns: repeat(4, 1fr);
@@ -61,11 +47,25 @@
       overflow: hidden;
     }
   }
+}
 
-  .Preview {
-    border-radius: var(--border-radius-500);
-    transition: all 0.25s ease;
-    overflow: hidden;
-    filter: brightness(0.98) contrast(1.1) brightness(0.98);
+.Preview {
+  border-radius: var(--border-radius-500);
+  transition: all 0.25s ease;
+  overflow: hidden;
+  filter: brightness(0.98) contrast(1.1) brightness(0.98);
+}
+
+.Filters {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .TextField {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    margin: 0 0 3px 0;
   }
 }

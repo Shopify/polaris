@@ -1,7 +1,7 @@
 .GlobalSearch {
   position: relative;
   input {
-    background: url(./SearchMajor.svg) no-repeat 1rem center;
+    background: var(--surface) url(./SearchMajor.svg) no-repeat 14px center;
     background-size: 16px auto;
 
     &::-webkit-search-decoration,

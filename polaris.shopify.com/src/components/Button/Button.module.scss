@@ -9,6 +9,7 @@
   cursor: pointer;
   color: inherit;
   user-select: none;
+  font-weight: 435;
 
   &:hover {
     background: var(--surface-subdued);
@@ -20,8 +21,8 @@
 
   &.pill {
     border-radius: var(--border-radius-round);
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 0.66rem;
+    padding-right: 0.66rem;
   }
 
   &[aria-pressed="true"],

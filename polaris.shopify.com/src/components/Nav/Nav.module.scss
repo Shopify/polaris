@@ -3,8 +3,39 @@
 .Nav {
   > ul {
     display: flex;
-    justify-content: center;
-    gap: 7.1em;
+    justify-content: flex-start;
+    gap: 1px;
+    margin: 0 -2rem;
+    > li {
+      flex: 1;
+      // background: var(--surface-subdued);
+      padding: 2rem 2rem 1rem;
+      border-right: var(--border);
+
+      &:first-child {
+        border-radius: 16px 0 0 16px;
+      }
+
+      &:last-child {
+        border-radius: 0 16px 16px 0;
+        border-right: none;
+      }
+
+      &:last-child {
+        ul {
+          margin-bottom: 0;
+        }
+      }
+
+      > span {
+        @include heading-2;
+        font-size: var(--font-size-600);
+        color: var(--primary);
+        // color: var(--text-subdued);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+    }
   }
 
   span {
@@ -16,9 +47,23 @@
   a {
     position: relative;
     display: inline-block;
-    padding: 2px 0;
+    padding: 0.33em 0;
     font-weight: 435;
     color: inherit;
+    line-height: 1.25;
+
+    // &:before {
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   top: 13px;
+    //   right: 0;
+    //   left: 0;
+    //   width: 6px;
+    //   height: 6px;
+    //   border-radius: 100px;
+    //   background: var(--text);
+    // }
 
     &:hover {
       color: var(--text-strong);
@@ -40,23 +85,5 @@
   ul {
     margin-top: 0.25rem;
     margin-bottom: 0.75rem;
-  }
-
-  > ul > li {
-    margin-bottom: 2rem;
-
-    &:last-child {
-      margin-bottom: 0;
-      ul {
-        margin-bottom: 0;
-      }
-    }
-
-    > span {
-      @include heading-2;
-      margin-bottom: 0.25rem;
-      display: inline-block;
-      color: var(--text);
-    }
   }
 }

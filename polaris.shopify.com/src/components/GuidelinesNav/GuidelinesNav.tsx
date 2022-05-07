@@ -7,6 +7,7 @@ import styles from "./GuidelinesNav.module.scss";
 import { navItems } from "./navItems";
 import { className } from "../../utils/various";
 import { NavItem } from "../Nav/Nav";
+import Image from "../Image";
 
 interface Props {}
 
@@ -29,7 +30,7 @@ function find(fragment: string, tree: NavItem[]): NavItem[] {
   }, []);
 }
 
-function getBreadcrumbs(navItems: NavItem[], path: string): string {
+function getBreadcrumbs(navItems: NavItem[], path: string): string[] {
   const fragments = path.split("/");
   const fragment = fragments[fragments.length - 1];
   const filteredNavItems = find(fragment, [...navItems]);
@@ -46,7 +47,7 @@ function getBreadcrumbs(navItems: NavItem[], path: string): string {
     }
   }
 
-  return crumbs.join(" -> ");
+  return crumbs;
 }
 
 function GuidelinesNav({}: Props) {
@@ -58,7 +59,7 @@ function GuidelinesNav({}: Props) {
   const [shouldRenderIntro, setShouldRenderIntro] = useState(isGuidelinesHome);
   const [isExpanded, setisExpanded] = useState(isGuidelinesHome);
 
-  const menuButtonText = getBreadcrumbs(navItems, router.asPath);
+  const breadcrumbs = getBreadcrumbs(navItems, router.asPath);
 
   useEffect(() => {
     if (isGuidelinesHome) {
@@ -102,7 +103,9 @@ function GuidelinesNav({}: Props) {
               className={styles.MenuButton}
               onClick={() => setisExpanded(!isExpanded)}
             >
-              {menuButtonText}
+              {breadcrumbs.map((crumb) => (
+                <span key={crumb}>{crumb}</span>
+              ))}
             </button>
           </MaxPageWidthDiv>
         </div>
@@ -112,10 +115,17 @@ function GuidelinesNav({}: Props) {
         <div className={styles.Inner}>
           {shouldRenderIntro ? (
             <div className={styles.Intro}>
-              <h1>Build with Polaris</h1>
+              {/* <h1>
+                <span>Guidelines</span>
+                <span>
+                  Building accessbile and <br />
+                  inclusive experiences
+                </span>
+              </h1> */}
+              <h1>Guidelines</h1>
               <p>
-                Learn how to build inclusive and accessible experiences with
-                Polaris
+                Learn how to use Polaris to build accessible and inclusive
+                experiences.
               </p>
             </div>
           ) : (
@@ -125,6 +135,29 @@ function GuidelinesNav({}: Props) {
           )}
           <Nav navItems={navItems} />
         </div>
+      </div>
+
+      <div className={styles.FeaturedArticle}>
+        <MaxPageWidthDiv>
+          <Image
+            src="/images/editorial-content-example.svg"
+            alt=""
+            width={300 * 1}
+            height={125 * 1}
+          />
+          <h2>
+            <span>Featured article</span>
+            <span>Learn the difference between voice and tone</span>
+          </h2>
+          <p>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt.
+          </p>
+        </MaxPageWidthDiv>
       </div>
     </div>
   );

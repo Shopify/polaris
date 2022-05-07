@@ -1,9 +1,9 @@
-$pageMaxWidth: 1520px;
+$pageMaxWidth: 1220px;
 
 @mixin heading {
   color: var(--text-strong);
   font-weight: 550;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 @mixin heading-1 {

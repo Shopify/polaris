@@ -65,7 +65,13 @@
     margin-top: 1.5rem;
   }
 
+  img {
+    width: calc(100% + 200px);
+    margin: 0 -100px;
+  }
+
   hr {
+    display: none;
     width: 100px;
     height: 3px;
     margin: 5rem auto;

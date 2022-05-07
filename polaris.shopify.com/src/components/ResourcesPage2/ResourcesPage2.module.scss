@@ -1,0 +1,43 @@
+.ResourcesPage2 {
+  h2 {
+    margin: 1rem 0 1rem;
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-100);
+    color: var(--text-subdued);
+  }
+}
+
+.MainPackages {
+  display: flex;
+  gap: 0.25em;
+  > div {
+    flex: 1;
+  }
+}
+
+.Resource {
+  position: relative;
+  margin-bottom: 0.25em;
+  padding: 2rem 2rem 2rem 120px;
+  background: var(--surface-subdued);
+  color: var(--text-subdued);
+  border-radius: var(--border-radius-300);
+  background: white;
+  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.08);
+
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: var(--font-size-600);
+    a {
+      color: inherit;
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: 2rem;
+    width: 60px;
+    height: auto;
+    color: var(--text-strong);
+  }
+}

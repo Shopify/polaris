@@ -80,7 +80,7 @@ function ComponentsNav({ category }: Props) {
             href={`/components/${slugify(thisCategory)}`}
             aria-current={category === thisCategory}
           >
-            {thisCategory}
+            {thisCategory.replace("Titles and text", "Text")}
           </LinkButton>
         ))}
       </div>

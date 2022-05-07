@@ -84,7 +84,7 @@ function Page({ children }: Props) {
       <div className={styles.Content}>{children}</div>
 
       <div className={styles.Footer}>
-        <Image src={shopifyLogo} width={24} height={24} alt="Shopify logo" />
+        <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
       </div>
     </div>
   );

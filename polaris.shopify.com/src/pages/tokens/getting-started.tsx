@@ -5,6 +5,8 @@ import Longform from "../../components/Longform";
 import YoutubeVideo from "../../components/YoutubeVideo";
 import Image from "../../components/Image";
 import { getTitleTagValue } from "../../utils/various";
+import MaxPageWidthDiv from "../../components/MaxPageWidthDiv";
+import TokensPage from "../../components/TokensPage";
 
 const Components: NextPage = () => {
   return (
@@ -13,8 +15,11 @@ const Components: NextPage = () => {
         <title>{getTitleTagValue("Getting started with tokens")}</title>
       </Head>
 
-      <Longform>
+      <TokensPage />
+
+      <MaxPageWidthDiv>
         <h1>Tokens</h1>
+
         <p>
           Design tokens allow us to ship design decisions with consistency and
           scale.
@@ -69,7 +74,7 @@ const Components: NextPage = () => {
           pushed to every element that references that token, instead of you
           having to manually update several individual hard-coded values.
         </p>
-      </Longform>
+      </MaxPageWidthDiv>
     </>
   );
 };
