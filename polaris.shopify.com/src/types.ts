@@ -30,11 +30,6 @@ interface Icon {
   set: 'major' | 'minor';
   description: string;
   keywords: string[];
-  authors: string[];
-  version: number;
-  date_added: string;
-  date_modified: string;
-  exclusive_use?: null | string;
 }
 
 export interface Icons {
