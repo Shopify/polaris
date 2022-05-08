@@ -98,7 +98,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
-  private stickyHeaderActive: boolean =  false;
+  private stickyHeaderActive = false;
 
   private handleResize = debounce(() => {
     const {
@@ -260,7 +260,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                         };
                       }
 
-                      const stickyHeaderContentCell = (
+                      return (
                         <Cell
                           stickyHeadingCell
                           setRef={(ref) =>
@@ -277,19 +277,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                           truncate={truncate}
                           {...sortableHeadingProps}
                           verticalAlign={verticalAlign}
-                        />
-                      );
-                      return (
-                        <div
-                          className={styles.StickyHeaderCell}
-                          style={{
-                            width: this.tableHeadingWidths[index],
-                          }}
+                          stickyCellWidth={this.tableHeadingWidths[index]}
                           key={id}
-                          data-index-table-sticky-heading
-                        >
-                          {stickyHeaderContentCell}
-                        </div>
+                        />
                       );
                     })}
                   </div>
@@ -346,9 +336,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       this.stickyHeadings[index] = ref;
       const button = ref.querySelector('button');
       if (button == null) {
-        return
+        return;
       }
-      button.addEventListener('focus', this.focusListener);
+      button.addEventListener('focus', this.handleHeaderButtonFocus);
     } else {
       this.tableHeadings[index] = ref;
       this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
@@ -434,11 +424,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     };
   };
 
-  private focusListener = (event: Event) => {
-    this.stickyHeaderFocusStateChangeOnScroll(event);
-  }
-
-  private stickyHeaderFocusStateChangeOnScroll = (event: Event) => {
+  private handleHeaderButtonFocus = (event: Event) => {
     if (this.scrollContainer.current == null || event.target == null) {
       return;
     }
@@ -448,22 +434,24 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const tableScrollLeft = this.scrollContainer.current.scrollLeft;
     const tableViewableWidth = this.scrollContainer.current.offsetWidth;
-    const tableRightEdge =  tableScrollLeft + tableViewableWidth;
+    const tableRightEdge = tableScrollLeft + tableViewableWidth;
     const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
     const currentColumnLeftEdge = currentCell.offsetLeft;
-    const currentColumnRightEdge = currentCell.offsetLeft + currentCell.offsetWidth;
+    const currentColumnRightEdge =
+      currentCell.offsetLeft + currentCell.offsetWidth;
 
     if (tableScrollLeft > currentColumnLeftEdge - firstColumnWidth) {
-      this.scrollContainer.current.scrollLeft = currentColumnLeftEdge - firstColumnWidth;
+      this.scrollContainer.current.scrollLeft =
+        currentColumnLeftEdge - firstColumnWidth;
     }
 
     if (currentColumnRightEdge > tableRightEdge) {
-      this.scrollContainer.current.scrollLeft = currentColumnRightEdge - tableViewableWidth;
+      this.scrollContainer.current.scrollLeft =
+        currentColumnRightEdge - tableViewableWidth;
     }
-  }
+  };
 
   private stickyHeaderScrolling = () => {
-
     const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
     const {current: scrollContainer} = this.scrollContainer;
 
@@ -472,7 +460,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     }
 
     stickyTableHeadingsRow.scrollLeft = scrollContainer.scrollLeft;
-
   };
 
   private scrollListener = () => {
