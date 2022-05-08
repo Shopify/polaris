@@ -3,9 +3,10 @@ import React, {PureComponent} from 'react';
 import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
-import {hsbToRgb} from '../../utilities/color-transformers';
+import {hsbToRgb, rgbToHsb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 import {EventListener} from '../EventListener';
+import {tokens} from '../../tokens';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
@@ -35,6 +36,37 @@ export interface ColorPickerProps {
   onChange(color: HSBAColor): void;
 }
 
+const rgbaRe = /^rgba\((\d+), (\d+), (\d+), 1\)$/;
+const schemeColors: HSBColor[] = [];
+
+for (const [_name, rgbaStr] of Object.entries(tokens.colorSchemes.light)) {
+  const matches = rgbaRe.exec(rgbaStr);
+
+  if (matches) {
+    const [red, green, blue] = matches.slice(1).map(Number);
+    schemeColors.push(rgbToHsb({red, green, blue}));
+  }
+}
+
+function findClosestHsb(color: HSBColor): HSBColor | null {
+  let closestDistance = Infinity;
+  let closestHsb: HSBColor | null = null;
+
+  for (const comparison of schemeColors) {
+    const distance = Math.hypot(
+      color.hue - comparison.hue,
+      color.saturation - comparison.saturation,
+      color.brightness - comparison.brightness,
+    );
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestHsb = comparison;
+    }
+  }
+
+  return closestHsb;
+}
+
 const RESIZE_DEBOUNCE_TIME_MS = 200;
 export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   state: State = {
@@ -45,14 +77,67 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   };
 
   private colorNode: HTMLElement | null = null;
+  private gamutNode: HTMLCanvasElement | null = null;
+
+  private renderGamut() {
+    const {gamutNode} = this;
+
+    if (gamutNode == null) {
+      console.log('nope');
+      return;
+    }
+
+    const {color, allowAlpha} = this.props;
+    const {hue, alpha: providedAlpha} = color;
+
+    const alpha = providedAlpha != null && allowAlpha ? providedAlpha : 1;
+
+    const {width, height} = gamutNode;
+
+    const ctx = gamutNode.getContext('2d')!;
+    const imageData = new ImageData(width, height);
+    const {data} = imageData;
+
+    let offset = 0;
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const currentSaturation = x / width;
+        const currentBrightness = 1 - y / height;
+
+        const mappedHsb = findClosestHsb({
+          hue,
+          saturation: currentSaturation,
+          brightness: currentBrightness,
+        });
+        const {red, green, blue} = mappedHsb
+          ? hsbToRgb(mappedHsb)
+          : {
+              red: 255,
+              green: 255,
+              blue: 255,
+            };
+
+        data[offset++] = red;
+        data[offset++] = green;
+        data[offset++] = blue;
+        data[offset++] = alpha * 255;
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  }
 
   private handleResize = debounce(
     () => {
-      const {colorNode} = this;
+      const {colorNode, gamutNode} = this;
 
-      if (colorNode == null) {
+      if (colorNode == null || gamutNode == null) {
         return;
       }
+
+      gamutNode.width = gamutNode.clientWidth;
+      gamutNode.height = gamutNode.clientHeight;
 
       this.setState({
         pickerSize: {
@@ -66,10 +151,13 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   );
 
   componentDidMount() {
-    const {colorNode} = this;
-    if (colorNode == null) {
+    const {colorNode, gamutNode} = this;
+    if (colorNode == null || gamutNode == null) {
       return;
     }
+
+    gamutNode.width = gamutNode.clientWidth;
+    gamutNode.height = gamutNode.clientHeight;
 
     this.setState({
       pickerSize: {
@@ -88,6 +176,10 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
         });
       }, 0);
     }
+  }
+
+  componentDidUpdate() {
+    this.renderGamut();
   }
 
   render() {
@@ -125,6 +217,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
             className={styles.ColorLayer}
             style={{backgroundColor: colorString}}
           />
+          <canvas ref={this.setGamutNode} className={styles.Gamut}></canvas>
           <Slidable
             onChange={this.handleDraggerMove}
             draggerX={draggerX}
@@ -140,6 +233,10 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
 
   private setColorNode = (node: HTMLElement | null) => {
     this.colorNode = node;
+  };
+
+  private setGamutNode = (node: HTMLCanvasElement | null) => {
+    this.gamutNode = node;
   };
 
   private handleHueChange = (hue: number) => {
