@@ -32,7 +32,7 @@ allIconMetadataFiles.forEach((iconMetadataFile) => {
 
   iconMetadata[iconName] = iconData;
   iconExports.push(
-    `export {default as ${iconName}} from './icons/${iconName}.svg';`,
+    `export {default as ${iconName}} from '../icons/${iconName}.svg';`,
   );
   iconTypes.push(
     `export declare const ${iconName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
@@ -57,4 +57,4 @@ ${iconExports.join('\n')}
 ${iconTypes.join('\n')}
 `;
 
-fs.writeFileSync(path.join(__dirname, '../index.ts'), fileContent, 'utf8');
+fs.writeFileSync(path.join(__dirname, './index.ts'), fileContent, 'utf8');

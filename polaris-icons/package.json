@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node generate-index.js && rollup -c",
+    "build": "node ./src/generate-index.js && rollup -c",
     "dev": "rollup -cw",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"

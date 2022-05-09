@@ -8,4 +8,4 @@ node_modules
 /polaris.shopify.com
 
 # Ignore generated icons file
-/polaris-icons/index.ts
+/polaris-icons/src/index.ts

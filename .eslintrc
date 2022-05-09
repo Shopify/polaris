@@ -21,7 +21,7 @@
     "dist",
     "polaris-react/build",
     "polaris-react/build-internal",
-    "polaris-icons/index.ts"
+    "polaris-icons/src/index.ts"
   ],
   "rules": {
     "func-style": "off",

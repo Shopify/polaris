@@ -15,4 +15,4 @@ node_modules
 /polaris-react/src/styles/_media-queries.scss
 
 # Generated file for icons build
-/polaris-icons/index.ts
+/polaris-icons/src/index.ts

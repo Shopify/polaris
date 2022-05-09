@@ -153,7 +153,7 @@ function replaceFillAttributeSvgoPlugin(options) {
 }
 
 const config = {
-  input: 'index.ts',
+  input: 'src/index.ts',
   output: [
     {
       dir: 'dist',
