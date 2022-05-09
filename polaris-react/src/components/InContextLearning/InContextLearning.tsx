@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styles from './InContextLearning.scss';
 import {Header, Step} from "./components"
 import {Button} from '../Button';
+import styles from './InContextLearning.scss';
 
 interface Props {
     children?: React.ReactElement[];
