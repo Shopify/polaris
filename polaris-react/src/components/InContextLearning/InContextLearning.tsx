@@ -12,8 +12,7 @@ import {Key} from '../../types';
 import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
-
-import {styles} from '../CustomProperties/styles';
+import styles from './InContextLearning.scss';
 interface Props {
   onDismiss(): void;
 }
@@ -21,9 +20,11 @@ interface Props {
 export function InContextLearning({onDismiss}: Props) {
   const i18n = useI18n();
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(null);
+  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
+    null,
+  );
 
-  const { steps } = useContext(InContextLearningContext);
+  const {steps} = useContext(InContextLearningContext);
 
   const totalSteps = steps.length;
   const hasMultipleSteps = totalSteps > 1;
@@ -94,6 +95,7 @@ export function InContextLearning({onDismiss}: Props) {
           return (
             <>
               <div
+                className={styles.InContextLearning}
                 style={{
                   padding: '1em',
                   backgroundColor: '#fff',
