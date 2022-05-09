@@ -20,5 +20,15 @@ Lorem ipsum dolor
 Lorem ipsum dolor.
 
 ```jsx
-<InContextLearning/>
+<InContextLearning>
+  <InContextLearning.Step>
+    First Step
+  </InContextLearning.Step>
+  <InContextLearning.Step>
+    Middle Step
+  </InContextLearning.Step>
+  <InContextLearning.Step>
+    Last Step
+  </InContextLearning.Step>
+</InContextLearning>
 ```
