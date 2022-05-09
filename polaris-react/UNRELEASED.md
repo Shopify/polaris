@@ -16,6 +16,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Pass `domId` as an argument to `onActiveOptionChange` prop on `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
 - Adding min-height to `Popover.Pane` when the `Popover` contains a `height` prop ([#5685](https://github.com/Shopify/polaris/pull/5685))
 - Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
+- Added disable property for the action groups in header [#5702](https://github.com/Shopify/polaris/pull/5702)
 
 ### Bug fixes
 
