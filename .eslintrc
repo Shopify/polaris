@@ -16,6 +16,12 @@
       "rootDir": "polaris.shopify.com"
     }
   },
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "polaris-react/build",
+    "polaris-react/build-internal"
+  ],
   "rules": {
     "func-style": "off",
     "no-process-env": "off",
@@ -67,7 +73,7 @@
       "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
-        "project": "./polaris-react/tsconfig.json"
+        "project": "./tsconfig.json"
       },
       "rules": {
         "@typescript-eslint/prefer-readonly": "off",
