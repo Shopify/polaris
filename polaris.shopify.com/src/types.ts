@@ -24,14 +24,3 @@ export type LineConfig = {
   fromOrigin?: "center" | "edge" | "left" | "right";
   toOrigin?: "center" | "edge" | "left" | "right";
 };
-
-interface Icon {
-  name: string;
-  set: 'major' | 'minor';
-  description: string;
-  keywords: string[];
-}
-
-export interface Icons {
-  [key: string]: Icon;
-}

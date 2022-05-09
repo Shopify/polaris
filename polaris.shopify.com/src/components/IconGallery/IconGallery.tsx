@@ -2,23 +2,21 @@ import Image from "../Image";
 import { useState } from "react";
 import Fuse from "fuse.js";
 import { Tab } from "@headlessui/react";
+import {metadata} from '@shopify/polaris-icons';
 
-import {Icons} from '../../types';
 import TextField from "../TextField";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { className } from "../../utils/various";
 
 
-
-const icons: Icons = require('@shopify/polaris-icons/metadata');
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
   true,
   /\.svg$/
 );
 
-const fuse = new Fuse(Object.keys(icons), {
+const fuse = new Fuse(Object.keys(metadata), {
   threshold: 0.25,
   keys: [
     { name: "title", weight: 3 },
@@ -31,7 +29,7 @@ function IconGallery() {
   const [filterString, setFilterString] = useState("");
   const [selectedIconName, setSelectedIconName] = useState<string>();
 
-  let filteredIcons = Object.keys(icons);
+  let filteredIcons = Object.keys(metadata);
   if (filterString) {
     const fuseResults = fuse.search(filterString);
     filteredIcons = fuseResults.map((result) => result.item);
@@ -103,7 +101,7 @@ function IconGallery() {
             >
               <Image
                 src={importedSvgs(`./${selectedIcon}.svg`)}
-                alt={icons[selectedIcon].description}
+                alt={metadata[selectedIcon].description}
                 width={48}
                 height={48}
               />
@@ -111,7 +109,7 @@ function IconGallery() {
 
             <div className={styles.IconMeta}>
               {selectedIcon}
-              {icons[selectedIcon].description}
+              {metadata[selectedIcon].description}
             </div>
 
             <Tab.Group>
@@ -128,7 +126,7 @@ function IconGallery() {
                     <pre>{`yarn add polaris polaris-icons`}</pre>
 
                     <p>
-                      Import the Icon component and the {icons[selectedIcon].name}{" "}
+                      Import the Icon component and the {metadata[selectedIcon].name}{" "}
                       icon:
                     </p>
                     <pre>{`import { Icon } from "@shopify/polaris";
@@ -191,12 +189,12 @@ function IconGrid({
           <div style={{ filter: "brightness(-500%)" }}>
             <Image
               src={importedSvgs(`./${iconName}.svg`)}
-              alt={icons[iconName].description}
+              alt={metadata[iconName].description}
               width={16}
               height={16}
             />
           </div>
-          <span style={{ fontSize: 12, color: "#aaa" }}>{icons[iconName].name}</span>
+          <span style={{ fontSize: 12, color: "#aaa" }}>{metadata[iconName].name}</span>
         </button>
       </li>
       ))}

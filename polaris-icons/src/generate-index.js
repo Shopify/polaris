@@ -6,6 +6,7 @@ const glob = require('glob');
 const yaml = require('js-yaml');
 
 const iconBasePath = path.resolve(__dirname, '../icons');
+const distDir = path.join(__dirname, '../dist');
 const allIconMetadataFiles = glob.sync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
@@ -39,22 +40,41 @@ allIconMetadataFiles.forEach((iconMetadataFile) => {
   );
 });
 
-const fileContent = `type Icon = {
+const indexContent = `interface IconMetadata {
   name: string;
   set: 'major' | 'minor';
   description: string;
   keywords: string[];
-};
+}
 
-type Icons = {
-  [key: string]: Icon;
-};
+export interface Metadata {
+  [key: string]: IconMetadata;
+}
 
-export const iconMetadata: Icons = ${util.inspect(iconMetadata)};
+export const metadata: Metadata = ${util.inspect(iconMetadata)};
 
 ${iconExports.join('\n')}
+`;
+
+const typesContent = `interface IconMetadata {
+  name: string;
+  set: 'major' | 'minor';
+  description: string;
+  keywords: string[];
+}
+
+export interface Metadata {
+  [key: string]: IconMetadata;
+}
+
+export declare const metadata: Metadata;
 
 ${iconTypes.join('\n')}
 `;
 
-fs.writeFileSync(path.join(__dirname, './index.ts'), fileContent, 'utf8');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir);
+}
+
+fs.writeFileSync(path.join(__dirname, './index.ts'), indexContent, 'utf8');
+fs.writeFileSync(path.join(distDir, 'index.d.ts'), typesContent, 'utf8');
