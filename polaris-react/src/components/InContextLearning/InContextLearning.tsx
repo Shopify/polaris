@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function InContextLearning({children}: Props) {
-    const hasMultipleSteps = children ? children.length > 0 : false;
+    const hasMultipleSteps = !!children?.length;
     const [currentStep, setCurrentStep] = useState(0);
 
     const showPrev = hasMultipleSteps && currentStep > 0;
