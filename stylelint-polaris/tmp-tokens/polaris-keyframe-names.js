@@ -1,0 +1,1 @@
+module.exports = ["p-keyframes-bounce","p-keyframes-fade-in","p-keyframes-pulse","p-keyframes-spin"];
