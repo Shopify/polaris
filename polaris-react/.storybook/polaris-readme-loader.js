@@ -97,6 +97,7 @@ import {
   Heading,
   Icon,
   Image,
+  InContextLearning,
   IndexTable,
   Indicator,
   InlineError,
