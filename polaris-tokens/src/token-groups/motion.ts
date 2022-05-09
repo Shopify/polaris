@@ -35,19 +35,19 @@ export const motion = {
   'duration-5000': {
     value: '5000ms',
   },
-  ease: {
+  'easing-ease': {
     value: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
   },
-  'ease-in': {
+  'easing-ease-in': {
     value: 'cubic-bezier(0.42, 0, 1, 1)',
   },
-  'ease-out': {
+  'easing-ease-out': {
     value: 'cubic-bezier(0, 0, 0.58, 1)',
   },
-  'ease-in-out': {
+  'easing-ease-in-out': {
     value: 'cubic-bezier(0.42, 0, 0.58, 1)',
   },
-  linear: {
+  'easing-linear': {
     value: 'cubic-bezier(0, 0, 1, 1)',
   },
   'keyframes-bounce': {
