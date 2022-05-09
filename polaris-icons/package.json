@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c && node scripts/metadata-to-json.js",
+    "build": "node generate-index.js && rollup -c",
     "dev": "rollup -cw",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
@@ -19,14 +19,6 @@
   "files": [
     "dist/*"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./metadata": "./dist/metadata.json"
-  },
   "sideEffects": [
     "*.svg"
   ],
@@ -41,7 +33,6 @@
   "homepage": "https://polaris-icons.shopify.com/",
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-virtual": "^2.0.3",
     "@rollup/pluginutils": "^4.1.0",
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",

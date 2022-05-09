@@ -2431,11 +2431,6 @@
     "@rollup/pluginutils" "^3.1.0"
     magic-string "^0.25.7"
 
-"@rollup/plugin-virtual@^2.0.3":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-virtual/-/plugin-virtual-2.1.0.tgz#a77bfd0dff74f0203401c75287ff4d1a1cfbc816"
-  integrity sha512-CPPAtlKT53HFqC8jFHb/V5WErpU8Hrq2TyCR0A7kPQMlF2wNUf0o1xuAc+Qxj8NCZM0Z3Yvl+FbUXfJjVWqDwA==
-
 "@rollup/pluginutils@^3.0.8", "@rollup/pluginutils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"
@@ -2612,6 +2607,11 @@
     change-case "^4.1.0"
     fs-extra "^9.0.0"
     glob "^7.1.6"
+
+"@shopify/polaris-icons@*":
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.19.1.tgz#63188e55a6b160f7f81dec61c3db76077c63dda4"
+  integrity sha512-bAUpln+ZkGWFKBN+S3wdQBeI680gIvqwKOd2+3Crk4FXCqzD0Yy0ORYZpXQY55mcUkjgqN9nS9fGj7kKcpmCTQ==
 
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"

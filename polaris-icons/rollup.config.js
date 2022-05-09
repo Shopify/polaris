@@ -2,13 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {parse, traverse} from '@babel/core';
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
-import virtual from '@rollup/plugin-virtual';
-import glob from 'glob';
-import jsYaml from 'js-yaml';
 import convert from '@svgr/core';
 import {optimize} from 'svgo';
 
@@ -16,67 +11,9 @@ const WHITE_REGEX = /^#fff(?:fff)?$/i;
 
 const iconBasePath = path.resolve(__dirname, 'icons');
 
-const entrypointContent = glob
-  .sync('*.yml', {cwd: iconBasePath})
-  .map(exportsForMetadata)
-  .join('\n\n');
-
 // We know react only ships cjs with a default export. By being explicit here,
 // we get to shave off some unneeded interop code
 const interop = (id) => (id === 'react' ? 'defaultOnly' : 'auto');
-
-function generateTypesFile(iconExports) {
-  return iconExports
-    .map(
-      (exportName) =>
-        `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
-    )
-    .join('\n');
-}
-
-function customTypes(options = {}) {
-  const filter = createFilter(options.include, options.exclude, {
-    resolve: false,
-  });
-  const iconExports = [];
-  const virtualPrefix = '\u0000virtual:';
-
-  return {
-    name: 'shopify-icon',
-
-    transform(source, id) {
-      const nonVirtualId = id.startsWith(virtualPrefix)
-        ? id.replace(virtualPrefix, '')
-        : id;
-
-      if (filter(nonVirtualId)) {
-        const ast = parse(source, {filename: nonVirtualId});
-
-        traverse(ast, {
-          ExportNamedDeclaration(filePath) {
-            const exportDeclarationName = filePath.node.specifiers
-              .filter((obj) => obj.local.name === 'default')
-              .map((obj) => obj.exported.name);
-            iconExports.push(...exportDeclarationName);
-          },
-        });
-      }
-
-      return null;
-    },
-    buildEnd() {
-      if (iconExports.length === 0) {
-        this.warn('Found no exports when processing types');
-      }
-
-      this.emitFile({
-        type: 'asset',
-        fileName: `index.d.ts`,
-        source: generateTypesFile(iconExports),
-      });
-    },
-  };
-}
 
 /**
  * A rollup plugin that acts upon SVG files. It will:
@@ -216,7 +153,7 @@ function replaceFillAttributeSvgoPlugin(options) {
 }
 
 const config = {
-  input: 'src/index.ts',
+  input: 'index.ts',
   output: [
     {
       dir: 'dist',
@@ -255,9 +192,6 @@ const config = {
     warn(warning);
   },
   plugins: [
-    virtual({
-      'src/index.ts': entrypointContent,
-    }),
     svgBuild({
       include: `${iconBasePath}/*.svg`,
       replaceFill: {
@@ -271,75 +205,8 @@ const config = {
       envName: 'production',
       babelHelpers: 'bundled',
     }),
-    customTypes({
-      include: 'src/index.ts',
-    }),
   ],
 };
 
 // eslint-disable-next-line import/no-default-export
 export default config;
-
-function exportsForMetadata(filename) {
-  const metadata = jsYaml.load(
-    fs.readFileSync(`${iconBasePath}/${filename}`, 'utf8'),
-  );
-  const exportName = filenameToExportName(filename);
-  const exportFile = filename.replace(/yml$/, 'svg');
-
-  let deprecatedExportStrings = [];
-  if (metadata.deprecated_aliases) {
-    deprecatedExportStrings = (metadata.deprecated_aliases || []).map(
-      (deprecatedBaseName) =>
-        aliasExportString(exportName, exportFile, deprecatedBaseName),
-    );
-  }
-
-  return [
-    mainExportString(exportName, exportFile, metadata.deprecated),
-    ...deprecatedExportStrings,
-  ].join('\n\n');
-}
-
-function mainExportString(exportName, exportFile, isDeprecated) {
-  return exportString(exportName, exportFile, isDeprecated ? '' : undefined);
-}
-
-function aliasExportString(exportName, exportFile, deprecatedBaseName) {
-  return exportString(
-    filenameToExportName(deprecatedBaseName),
-    exportFile,
-    exportName,
-  );
-}
-
-/**
- * Capitalizes the first letter and any letter following a hyphen or underscore
- * and removes hyphens and underscores
- *
- * E.g. viewport-wide_major becomes ViewportWideMajor.
- */
-function filenameToExportName(filename) {
-  return path
-    .basename(filename, path.extname(filename))
-    .replace(/(?:^|[-_])([a-z])/g, (match, letter) => letter.toUpperCase());
-}
-
-/**
- *
- * @param {*} exportedName
- * @param {*} svgFilename
- * @param {undefined|string} replaceWith
- *   If undefined then the current export is not deprecated.
- *   If an empty string then the current export is deprected with no replacement.
- *   If a non-empty string then the current export is deprecated with a replacement.
- */
-function exportString(exportedName, svgFilename, replaceWith) {
-  const replaceWithSuffix = replaceWith ? ` Use ${replaceWith} instead.` : '';
-  const deprecatedNotice =
-    replaceWith === undefined
-      ? ''
-      : `/** @deprecated ${exportedName} will be removed in the next major version.${replaceWithSuffix} */\n`;
-
-  return `${deprecatedNotice}export {default as ${exportedName}} from '../icons/${svgFilename}';`;
-}
