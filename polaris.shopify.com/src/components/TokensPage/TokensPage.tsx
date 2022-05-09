@@ -8,7 +8,8 @@ import TextField from "../TextField";
 import { useState } from "react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import { LinkButton } from "../Button/Button";
-import { Popover } from "@headlessui/react";
+import Tooltip from "../Tooltip";
+import { ReactIcon, FigmaIcon, SassIcon } from "./icons";
 
 interface Props {}
 
@@ -31,6 +32,8 @@ function tokensToFilteredArray(
 
 function TokensPage({}: Props) {
   const [filter, setFilter] = useState("");
+
+  const [durationFilter, setDurationFilter] = useState(0);
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
@@ -90,22 +93,127 @@ function TokensPage({}: Props) {
               </LinkButton>
             ))}
           </div>
+        </MaxPageWidthDiv>
 
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <TokenGroup
+              title="Colors"
+              layout="grid"
+              gridItemsPerRow={19}
+              tokens={tokens.colors}
+              showName={false}
+            />
+          </MaxPageWidthDiv>
+        </div>
+
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <TokenGroup
+              title="Breakpoints"
+              layout="grid"
+              tokens={tokens.breakpoints}
+              gridItemsPerRow={tokens.breakpoints.length}
+            />
+          </MaxPageWidthDiv>
+        </div>
+
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <TokenGroup
+              title="Depth"
+              layout="grid"
+              gridItemsPerRow={6}
+              tokens={tokens.depth}
+            />
+          </MaxPageWidthDiv>
+        </div>
+
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <div>
+              <input
+                type="range"
+                min="0"
+                max={
+                  tokens.motion.filter((token) =>
+                    token.name.startsWith("duration")
+                  ).length
+                }
+                value={durationFilter}
+                onChange={(evt) =>
+                  setDurationFilter(parseInt(evt.target.value))
+                }
+              />
+              <TokenGroup
+                title="Motion"
+                layout="grid"
+                gridItemsPerRow={12}
+                tokens={tokens.motion}
+              />
+            </div>
+          </MaxPageWidthDiv>
+        </div>
+
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <TokenGroup
+              title="Shape"
+              layout="grid"
+              gridItemsPerRow={10}
+              tokens={tokens.shape}
+            />
+          </MaxPageWidthDiv>
+        </div>
+
+        <div className={styles.Group}>
+          <MaxPageWidthDiv>
+            <div className={styles.GroupColumns}>
+              <div className={styles.GroupColumn}>
+                <TokenGroup
+                  title="Font size"
+                  layout="table"
+                  tokens={tokens.typography.filter((token) =>
+                    token.name.startsWith("font-size")
+                  )}
+                />
+              </div>
+              <div className={styles.GroupColumn}>
+                <TokenGroup
+                  title="Line height"
+                  layout="table"
+                  tokens={tokens.typography.filter((token) =>
+                    token.name.startsWith("line-height")
+                  )}
+                />
+              </div>
+              <div className={styles.GroupColumn}>
+                <TokenGroup
+                  title="Weight"
+                  layout="table"
+                  tokens={tokens.typography.filter((token) =>
+                    token.name.startsWith("font-weight")
+                  )}
+                />
+                <TokenGroup
+                  title="Family"
+                  layout="table"
+                  tokens={tokens.typography.filter((token) =>
+                    token.name.startsWith("font-family")
+                  )}
+                />
+              </div>
+            </div>
+          </MaxPageWidthDiv>
+        </div>
+
+        <MaxPageWidthDiv>
           <TokenGroup
-            title="Breakpoints"
+            title="Z-index"
             layout="grid"
-            tokens={tokens.breakpoints}
+            gridItemsPerRow={12}
+            tokens={tokens.zIndex}
           />
-          <TokenGroup title="Colors" layout="grid" tokens={tokens.colors} />
-          <TokenGroup title="Depth" layout="table" tokens={tokens.depth} />
-          <TokenGroup title="Motion" layout="table" tokens={tokens.motion} />
-          <TokenGroup title="Shape" layout="table" tokens={tokens.shape} />
-          <TokenGroup
-            title="Typography"
-            layout="table"
-            tokens={tokens.typography}
-          />
-          <TokenGroup title="Z-index" layout="table" tokens={tokens.zIndex} />
         </MaxPageWidthDiv>
       </div>
       <style jsx>
@@ -129,9 +237,17 @@ interface TokenGroupProps {
   title: string;
   layout: "table" | "grid";
   tokens: TokenPropertiesWithName[];
+  gridItemsPerRow?: number;
+  showName?: boolean;
 }
 
-function TokenGroup({ title, layout = "table", tokens }: TokenGroupProps) {
+function TokenGroup({
+  title,
+  layout = "table",
+  tokens,
+  gridItemsPerRow = 10,
+  showName = true,
+}: TokenGroupProps) {
   if (tokens.length === 0) {
     return null;
   }
@@ -146,10 +262,10 @@ function TokenGroup({ title, layout = "table", tokens }: TokenGroupProps) {
                 <TokenPreview name={name} value={value} />
               </td>
               <td>
-                <span className={styles.TokenName}>--p-{name}</span>
+                <span className={styles.TokenName}>{name}</span>
               </td>
               <td>{description}</td>
-              <td>{value}</td>
+              {/* <td>{value}</td> */}
             </tr>
           ))}
         </table>
@@ -159,20 +275,61 @@ function TokenGroup({ title, layout = "table", tokens }: TokenGroupProps) {
     return (
       <div className={styles.TokenGrid}>
         <h3>{title}</h3>
-        <div className={styles.Grid}>
+        <div
+          className={styles.Grid}
+          style={{
+            gridTemplateColumns: `repeat(${gridItemsPerRow}, 1fr)`,
+          }}
+        >
           {tokens.map(({ name, value, description }) => (
-            <Popover className={styles.Token} key={name}>
-              <Popover.Button>
-                <TokenPreview name={name} value={value} />
-              </Popover.Button>
+            <div className={styles.Token} key={name}>
+              <Tooltip
+                placement="top"
+                ariaLabel={`${name}. ${description ? `${description}.` : ""}`}
+                renderContent={() => {
+                  let figmaValue = name;
+                  if (value.endsWith("rem")) {
+                    const px = (
+                      16 * parseFloat(value.replace("rem", ""))
+                    ).toString();
+                    figmaValue = `${px}px`;
+                  }
+                  if (name.startsWith("z-")) {
+                    figmaValue = "Not applicable";
+                  }
+                  return (
+                    <>
+                      {/* <div style={{ width: 200 }}>
+                      <TokenPreview name={name} value={value} />
+                    </div> */}
+                      <div className={styles.TokenTooltipContent}>
+                        <span className={styles.TokenName}>{name}</span>
+                        {description && <p>{description}</p>}
 
-              <Popover.Panel className={styles.Popover}>
-                <TokenPreview name={name} value={value} />
-                <span className={styles.TokenName}>--p-{name}</span>
-                {description}
-                {value}
-              </Popover.Panel>
-            </Popover>
+                        <span className={styles.FigmaName}>
+                          <div className={styles.Icon}>
+                            <FigmaIcon />
+                          </div>
+                          Figma: {figmaValue}
+                        </span>
+
+                        <span className={styles.CSSName}>
+                          <div className={styles.Icon}>
+                            <SassIcon />
+                          </div>
+                          Code: var(--p-{name});
+                        </span>
+                      </div>
+                    </>
+                  );
+                }}
+              >
+                <button>
+                  <TokenPreview name={name} value={value} />
+                  {showName && <span className={styles.TokenName}>{name}</span>}
+                </button>
+              </Tooltip>
+            </div>
           ))}
         </div>
       </div>
@@ -187,10 +344,8 @@ interface TokenPreviewProps {
 
 function TokenPreview({ name, value }: TokenPreviewProps) {
   const wrapperStyles = {
-    paddingBottom: "100%",
-    backgroundColor: "#555",
-    color: "white",
-    borderRadius: 2,
+    aspectRatio: "1/1",
+    background: "#fff",
   };
 
   // Colors
@@ -212,6 +367,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           borderRadius: value,
+          background: "var(--primary)",
         }}
       ></div>
     );
@@ -220,12 +376,15 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   // Border width
   else if (name.includes("border-width")) {
     return (
-      <div
-        style={{
-          ...wrapperStyles,
-          height: value,
-        }}
-      ></div>
+      <div style={{ ...wrapperStyles, display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            height: value,
+            background: "var(--primary)",
+            flex: 1,
+          }}
+        ></div>
+      </div>
     );
   }
 
@@ -235,10 +394,19 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           ...wrapperStyles,
-          height: 0,
-          borderTop: value,
+          display: "flex",
+          alignItems: "center",
+          background: "var(--surface-subdued)",
         }}
-      ></div>
+      >
+        <div
+          style={{
+            height: 0,
+            borderTop: value,
+            flex: 1,
+          }}
+        ></div>
+      </div>
     );
   }
 
@@ -252,6 +420,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontFamily: value,
+          background: "var(--surface-subdued)",
         }}
       >
         Commerce
@@ -269,6 +438,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontSize: value,
+          background: "var(--surface-subdued)",
         }}
       >
         Aa
@@ -286,6 +456,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontWeight: value,
+          background: "var(--surface-subdued)",
         }}
       >
         Aa
@@ -303,6 +474,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           lineHeight: value,
+          background: "var(--surface-subdued)",
         }}
       >
         Hello
@@ -314,7 +486,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
 
   // Breakpoints
   else if (name.includes("breakpoints")) {
-    const relativeWidth = (parseInt(value.replace("rem", "")) / 111) * 100;
+    const relativeWidth = (parseInt(value.replace("rem", "")) / 140) * 100;
     return (
       <div
         style={{
@@ -327,8 +499,12 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         <div
           style={{
             width: `${relativeWidth}%`,
+            minWidth: 4,
             height: `50%`,
+            boxShadow:
+              "inset 0 0 0 3px #333, inset 0 -10px #333, 0 30px 30px rgba(0,0,0,.2)",
             background: "white",
+            borderRadius: 4,
           }}
         ></div>
       </div>
@@ -373,7 +549,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             height: "50%",
             width: "50%",
-            background: "white",
+            background: "var(--primary)",
             animation: `spin ${value} infinite both linear`,
           }}
         ></div>
@@ -396,7 +572,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             height: "50%",
             width: "50%",
-            background: "white",
+            background: "var(--primary)",
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
           }}
@@ -420,7 +596,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             height: "50%",
             width: "50%",
-            background: "white",
+            background: "var(--primary)",
             boxShadow: value,
             animation: `${name} 1s infinite both`,
           }}
@@ -442,6 +618,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           gap: 1,
           ...wrapperStyles,
+          background: "var(--primary)",
         }}
       >
         {[...Array(layerCount)].map((_, n) => (
@@ -450,7 +627,10 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             style={{
               height: `${100 / 12 / 2}%`,
               width: "80%",
-              background: n + 1 === number ? "#aaa" : "white",
+              background:
+                n + 1 === number
+                  ? "rgba(255,255,255,1)"
+                  : "rgba(255,255,255,.2)",
               boxShadow: value,
               animation: `${name} 1s infinite both`,
             }}

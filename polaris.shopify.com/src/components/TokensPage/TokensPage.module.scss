@@ -24,19 +24,49 @@
 
 .TableSection {
   margin-top: 2rem;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    > div {
+      flex: 1;
+      min-width: 50%;
+    }
+  }
 }
 
 .Filters {
+  margin-bottom: 4rem;
   input {
     margin-bottom: 1rem;
   }
 }
 
-.TokenTable {
+.Group {
+  padding: 3rem 0;
+  border-top: var(--border);
   h3 {
-    margin: 3rem 0 1rem;
+    margin: 0 0 2rem;
+    // text-align: center;
+    // color: #aaa;
   }
+  &:nth-of-type(2n) {
+    // background: #ededed;
+  }
+}
 
+.GroupColumns {
+  display: flex;
+
+  .GroupColumn {
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
+.TokenTable {
   table {
     width: 100%;
     border-collapse: collapse;
@@ -46,17 +76,18 @@
     }
 
     tr:nth-of-type(2n) {
-      background: var(--surface-subdued);
+      // background: var(--surface-subdued);
     }
 
     td:nth-child(1) {
-      width: 120px;
+      width: 100px;
       padding: 0.1rem 0;
     }
 
     td:nth-child(2) {
       width: 20em;
       font-weight: 435;
+      padding-left: 1rem;
       font-size: var(--font-size-300);
     }
 
@@ -77,9 +108,9 @@
 .TokenGrid {
   .Grid {
     display: grid;
-    gap: 4px;
     justify-content: flex-start;
-    grid-template-columns: repeat(20, 1fr);
+    overflow: hidden;
+    border-radius: var(--border-radius-800);
   }
 
   .Token {
@@ -87,27 +118,77 @@
     flex-direction: column;
     gap: 1em;
 
+    button {
+      cursor: pointer;
+      background: transparent;
+
+      span {
+        display: block;
+        // background: #ededed;
+        border-radius: 0;
+        padding-bottom: 2rem;
+        color: #aaa;
+      }
+
+      > div {
+        transition: 0.1s ease;
+      }
+
+      &:hover > div {
+        position: relative;
+        z-index: 1;
+        // transform: scale(1.1);
+        // box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+    }
+
     p {
-      font-size: var(--font-size-200);
+      margin: 0.25rem 0;
+      font-size: 12px;
     }
   }
 }
 
-.Popover {
-  position: fixed;
-  right: 100px;
-  bottom: 100px;
-  width: 500px;
-  background: white;
-  padding: 40px;
-  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+.TokenTooltipContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 1);
+
+  p {
+    font-size: var(--font-size-200);
+  }
+
+  pre {
+    font-size: var(--font-size-100);
+    color: var(--text-subdued);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+    width: 100%;
+  }
+
+  .Icon {
+    max-width: 1em;
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .CSSName {
+  }
 }
 
 .TokenName {
-  background: var(--surface-token);
-  padding: 0.33rem 0.66rem;
+  // background: var(--surface-token);
+  // padding: 0.33rem 0.66rem;
   border-radius: var(--border-radius-400);
-  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-    Menlo, Consolas, monospace;
+  // font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+  //   Menlo, Consolas, monospace;
   font-size: var(--font-size-100);
+  font-size: 13px;
+  font-weight: 435;
 }

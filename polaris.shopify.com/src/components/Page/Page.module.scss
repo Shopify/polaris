@@ -2,7 +2,7 @@
   position: sticky;
   z-index: 2;
   top: 0;
-  // border-bottom: var(--border);
+  border-bottom: var(--border);
   backdrop-filter: blur(10px);
 
   // Add a token based background. Use a pseudo
@@ -50,14 +50,14 @@
   display: flex;
   align-items: center;
   margin-right: auto;
-  font-size: var(--font-size-300);
+  font-size: var(--font-size-200);
   font-weight: 500;
 
   li {
     a {
       color: var(--text-strong);
       border-left: var(--border);
-      padding: 1em;
+      padding: 0.5rem 1rem;
 
       &:focus-within {
         position: relative;

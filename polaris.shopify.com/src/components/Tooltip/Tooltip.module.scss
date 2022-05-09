@@ -1,0 +1,25 @@
+.Tooltip {
+  pointer-events: none;
+  max-width: 300px;
+  z-index: 2;
+
+  .Content {
+    overflow: hidden;
+    border-radius: var(--border-radius-500);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    background: white;
+    transform: rotate(45deg);
+  }
+}

@@ -15,6 +15,7 @@ const importedSvgs = require.context(
   /\.svg$/
 );
 import { getTitleTagValue } from "../../utils/various";
+import Tooltip from "../Tooltip";
 
 interface Props {}
 
@@ -201,17 +202,27 @@ function IconGrid({
             selectedIconName === icon.name && styles.current
           )}
         >
-          <button onClick={() => onClick(icon.name)}>
-            <div style={{ filter: "brightness(-500%)" }}>
-              <Image
-                src={importedSvgs(`./${icon.fileName}.svg`)}
-                alt={icon.description}
-                width={24}
-                height={24}
-              />
-            </div>
-            <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
-          </button>
+          <Tooltip
+            ariaLabel={icon.description}
+            placement="top"
+            renderContent={() => (
+              <div>
+                <p>{icon.description}</p>
+              </div>
+            )}
+          >
+            <button onClick={() => onClick(icon.name)}>
+              <div style={{ filter: "brightness(-500%)" }}>
+                <Image
+                  src={importedSvgs(`./${icon.fileName}.svg`)}
+                  alt={icon.description}
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
+            </button>
+          </Tooltip>
         </li>
       ))}
     </ul>
