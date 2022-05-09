@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import styles from './InContextLearning.scss';
 import {Header, Step} from "./components"
 import {Button} from '../Button';
-import styles from './InContextLearning.scss';
 
 interface Props {
     children?: React.ReactElement[];
@@ -26,16 +25,16 @@ export function InContextLearning({children}: Props) {
     }
 
     return (
-        <>
-          {children && children[currentStep]}
-          <div className={styles.InContextLearning}>
-            <div>
-              <Header onClose={() => {}}>Placeholder title</Header>
-            </div>
+      <>
+        <div className={styles.InContextLearning}>
+          <div>
+            <Header onClose={() => {}}>Placeholder title</Header>
           </div>
-          {showPrev && <Button onClick={handlePrev}>Prev</Button>}
-          {showNext && <Button onClick={handleNext}>Next</Button>}
-        </>
+        </div>
+        {children && children[currentStep]}
+        {showPrev && <Button onClick={handlePrev}>Prev</Button>}
+        {showNext && <Button onClick={handleNext}>Next</Button>}
+      </>
     );
 }
 
