@@ -40,7 +40,7 @@ allIconMetadataFiles.forEach((iconMetadataFile) => {
   );
 });
 
-const indexContent = `interface IconMetadata {
+const metadataTypes = `interface IconMetadata {
   name: string;
   set: 'major' | 'minor';
   description: string;
@@ -49,32 +49,22 @@ const indexContent = `interface IconMetadata {
 
 export interface Metadata {
   [key: string]: IconMetadata;
-}
+}`;
+
+const indexContent = `${metadataTypes}
 
 export const metadata: Metadata = ${util.inspect(iconMetadata)};
 
 ${iconExports.join('\n')}
 `;
 
-const typesContent = `interface IconMetadata {
-  name: string;
-  set: 'major' | 'minor';
-  description: string;
-  keywords: string[];
-}
-
-export interface Metadata {
-  [key: string]: IconMetadata;
-}
+const typesContent = `${metadataTypes}
 
 export declare const metadata: Metadata;
 
 ${iconTypes.join('\n')}
 `;
 
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir);
-}
-
+if (!fs.existsSync(distDir)) fs.mkdirSync(distDir);
 fs.writeFileSync(path.join(__dirname, './index.ts'), indexContent, 'utf8');
 fs.writeFileSync(path.join(distDir, 'index.d.ts'), typesContent, 'utf8');
