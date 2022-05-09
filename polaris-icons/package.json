@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ./src/generate-index.js && rollup -c",
+    "build": "rollup -c",
     "dev": "rollup -cw",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
@@ -33,6 +33,7 @@
   "homepage": "https://polaris-icons.shopify.com/",
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-virtual": "^2.0.3",
     "@rollup/pluginutils": "^4.1.0",
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",

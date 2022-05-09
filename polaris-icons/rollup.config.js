@@ -1,19 +1,95 @@
 // rollup.config.js
 import fs from 'fs';
 import path from 'path';
+import util from 'util';
 
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
+import virtual from '@rollup/plugin-virtual';
+import glob from 'glob';
+import jsYaml from 'js-yaml';
 import convert from '@svgr/core';
 import {optimize} from 'svgo';
 
-const WHITE_REGEX = /^#fff(?:fff)?$/i;
-
 const iconBasePath = path.resolve(__dirname, 'icons');
+
+const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
+
+const iconExports = [];
+const iconTypes = [];
+const iconMetadata = {};
+const ommitedKeys = [
+  'version',
+  'exclusive_use',
+  'authors',
+  'date_modified',
+  'date_added',
+];
+
+const metadataTypes = `interface IconMetadata {
+  name: string;
+  set: 'major' | 'minor';
+  description: string;
+  keywords: string[];
+}
+
+export interface Metadata {
+  [key: string]: IconMetadata;
+}`;
+
+iconPaths.forEach((filename) => {
+  const iconData = jsYaml.load(fs.readFileSync(filename), {
+    schema: jsYaml.JSON_SCHEMA,
+  });
+
+  ommitedKeys.forEach((key) => delete iconData[key]);
+
+  const exportName = filename
+    .replace(`${iconBasePath}/`, '')
+    .replace('.yml', '');
+
+  iconMetadata[exportName] = iconData;
+  iconExports.push(
+    `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
+  );
+  iconTypes.push(
+    `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
+  );
+});
+
+const entrypointContent = `export const metadata = ${util.inspect(
+  iconMetadata,
+)};
+
+${iconExports.join('\n')}`;
+
+const typesContent = `${metadataTypes}
+
+export declare const metadata: Metadata;
+
+${iconTypes.join('\n')}
+`;
 
 // We know react only ships cjs with a default export. By being explicit here,
 // we get to shave off some unneeded interop code
 const interop = (id) => (id === 'react' ? 'defaultOnly' : 'auto');
+
+function customTypes() {
+  return {
+    name: 'shopify-icon',
+    buildEnd() {
+      if (iconTypes.length === 0) {
+        this.warn('Found no exports when processing types');
+      }
+
+      this.emitFile({
+        type: 'asset',
+        fileName: `index.d.ts`,
+        source: typesContent,
+      });
+    },
+  };
+}
 
 /**
  * A rollup plugin that acts upon SVG files. It will:
@@ -72,11 +148,9 @@ function svgBuild(options = {}) {
     ],
   };
 
-  if (options.replaceFill) {
-    svgoConfig.plugins.push({
-      ...replaceFillAttributeSvgoPlugin(options.replaceFill),
-    });
-  }
+  svgoConfig.plugins.push({
+    ...replaceFillAttributeSvgoPlugin(),
+  });
 
   const optimizedSvgs = [];
 
@@ -126,34 +200,23 @@ function svgBuild(options = {}) {
  * An SVGO plugin that applies a transform function to every fill attribute
  * in an SVG. This lets you replace fill colors or remove them entirely.
  */
-function replaceFillAttributeSvgoPlugin(options) {
+function replaceFillAttributeSvgoPlugin() {
   return {
     type: 'perItem',
     name: 'replaceFillAttibute',
     description: 'replaces fill attributes using a user-defined function',
-    params: options,
-    fn(item, {transform}) {
-      if (!item.isElem()) {
+    fn(item) {
+      if (!item.isElem() || !item.attr('fill')) {
         return;
       }
 
-      const fillAttr = item.attr('fill');
-      if (!fillAttr) {
-        return;
-      }
-
-      const transformedFill = transform(fillAttr.value);
-      if (transformedFill === '') {
-        item.removeAttr('fill');
-      } else {
-        fillAttr.value = transformedFill;
-      }
+      item.removeAttr('fill');
     },
   };
 }
 
 const config = {
-  input: 'src/index.ts',
+  input: ['src/index.ts'],
   output: [
     {
       dir: 'dist',
@@ -192,18 +255,19 @@ const config = {
     warn(warning);
   },
   plugins: [
-    svgBuild({
-      include: `${iconBasePath}/*.svg`,
-      replaceFill: {
-        transform: (fill) => (WHITE_REGEX.test(fill) ? 'currentColor' : ''),
-      },
+    virtual({
+      'src/index.ts': entrypointContent,
     }),
+    svgBuild({include: `${iconBasePath}/*.svg`}),
     babel({
       rootMode: 'upward',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       envName: 'production',
       babelHelpers: 'bundled',
+    }),
+    customTypes({
+      include: 'src/index.ts',
     }),
   ],
 };

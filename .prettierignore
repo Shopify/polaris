@@ -6,6 +6,3 @@ node_modules
 
 # temp ignore polaris.shopify.com
 /polaris.shopify.com
-
-# Ignore generated icons file
-/polaris-icons/src/index.ts
