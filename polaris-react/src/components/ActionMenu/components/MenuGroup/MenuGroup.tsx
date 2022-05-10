@@ -12,6 +12,8 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   accessibilityLabel?: string;
   /** Whether or not the menu is open */
   active?: boolean;
+  /** Callback when the menu is clicked */
+  onClick?(openActions: () => void): void;
   /** Callback for opening the MenuGroup by title */
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
@@ -28,6 +30,7 @@ export function MenuGroup({
   title,
   icon,
   disabled,
+  onClick,
   onClose,
   onOpen,
   getOffsetWidth,
@@ -39,6 +42,14 @@ export function MenuGroup({
   const handleOpen = useCallback(() => {
     onOpen(title);
   }, [onOpen, title]);
+
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick(handleOpen);
+    } else {
+      handleOpen();
+    }
+  }, [onClick, handleOpen]);
 
   const handleOffsetWidth = useCallback(
     (width: number) => {
@@ -54,7 +65,7 @@ export function MenuGroup({
       disabled={disabled}
       icon={icon}
       accessibilityLabel={accessibilityLabel}
-      onClick={handleOpen}
+      onClick={handleClick}
       getOffsetWidth={handleOffsetWidth}
     >
       {title}
