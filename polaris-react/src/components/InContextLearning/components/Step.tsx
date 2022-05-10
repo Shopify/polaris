@@ -3,18 +3,29 @@ import { InContextLearningContext } from './InContextLearningContext';
 
 interface Props {
   children?:React.ReactNode;
+  direction?:
+    | 'top-left'
+    | 'top-right'
+    | 'right-top'
+    | 'right-bottom'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'left-top'
+    | 'left-bottom'
+    | 'none';
   stepIndex: Number;
 }
 
 export function Step({
   children,
+  direction,
   stepIndex
 }: Props) {
   const stepRef = useRef(null);
-  const {setRef} = useContext(InContextLearningContext); 
+  const {registerStep} = useContext(InContextLearningContext); 
   
   useEffect(() => {
-    setRef(stepIndex, stepRef.current);
+    registerStep(stepIndex, direction, stepRef.current);
   }, []);
 
   return (

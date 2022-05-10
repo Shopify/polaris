@@ -41,9 +41,8 @@ function LearnerApp() {
               <Card.Section title="Items">
                 <List>
                   <List.Item>
-                    <InContextLearning.Step stepIndex={0}>
+                    <InContextLearning.Step direction="top-left" stepIndex={0}>
                       <span>1 × Oasis Glass, 4-Pack</span>
-                      <p>FOOOOOO</p>
                     </InContextLearning.Step>
                   </List.Item>
                   <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
@@ -52,7 +51,7 @@ function LearnerApp() {
             </Card>
             <Card>
               <Card.Section title="Collections">
-                <InContextLearning.Step stepIndex={1}>
+                <InContextLearning.Step direction="top-right" stepIndex={1}>
                   <span>another piece of content</span>
                 </InContextLearning.Step>
               </Card.Section>
@@ -60,7 +59,7 @@ function LearnerApp() {
             </Card>
 
             <Stack distribution="trailing">
-              <InContextLearning.Step stepIndex={2}>
+              <InContextLearning.Step direction="none" stepIndex={2}>
                 <span data-learning-step-three>
                   Yet another piece of content!
                 </span>
