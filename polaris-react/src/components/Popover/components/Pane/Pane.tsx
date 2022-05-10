@@ -30,7 +30,9 @@ export function Pane({
   const content = sectioned
     ? wrapWithComponent(children, Section, {})
     : children;
-  const style = height ? {height, maxHeight: height} : undefined;
+  const style = height
+    ? {height, maxHeight: height, minHeight: height}
+    : undefined;
 
   return fixed ? (
     <div style={style} className={className}>

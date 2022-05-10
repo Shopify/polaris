@@ -1,0 +1,97 @@
+.Longform {
+  border-radius: var(--border-radius-300);
+
+  img {
+    border-radius: var(--border-radius-200);
+    width: 100%;
+    height: auto;
+    background: white;
+  }
+
+  ul li {
+    list-style-type: disc;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  .usage-list {
+    margin: 1.25rem 0;
+  }
+
+  ul,
+  ol {
+    margin-left: 1.1em;
+    ul,
+    ol {
+      margin-left: 1.75em;
+    }
+  }
+
+  li {
+    margin: 0.5em 0;
+  }
+
+  h1 {
+    max-width: 80%;
+    &:first-child {
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    + p {
+      margin-top: -0.5rem;
+    }
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+  }
+
+  hr {
+    display: none;
+  }
+
+  pre {
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    font-size: var(--font-size-300);
+    padding: 1rem;
+    background: var(--text);
+    color: var(--surface);
+    border-radius: var(--border-radius-200);
+    overflow: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .usage-list {
+    + h3 {
+      margin-top: 2.5rem !important;
+    }
+  }
+}
+
+.Content {
+  h1 + p:first-of-type {
+    margin-bottom: 2rem;
+    font-size: var(--font-size-700);
+    color: var(--text-strong);
+  }
+}

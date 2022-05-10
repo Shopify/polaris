@@ -5,7 +5,7 @@
   display: block;
   overflow: hidden;
   background: var(--p-surface);
-  min-width: thumbnail-size(small);
+  min-width: 40px;
   max-width: 100%;
   border-radius: var(--p-border-radius-1);
   border: var(--p-border-divider);
@@ -18,15 +18,15 @@
 }
 
 .sizeSmall {
-  width: thumbnail-size(small);
+  width: 40px;
 }
 
 .sizeMedium {
-  width: thumbnail-size(medium);
+  width: 60px;
 }
 
 .sizeLarge {
-  width: thumbnail-size(large);
+  width: 80px;
 }
 
 .transparent {

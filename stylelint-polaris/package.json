@@ -16,7 +16,6 @@
   "files": [
     "index.js",
     "configs/",
-    "data/",
     "plugins/",
     "utils/"
   ],
@@ -25,18 +24,18 @@
     "polaris",
     "stylelint"
   ],
-  "main": "index.js",
+  "main": "src/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "gen-polaris-data": "node ./scripts/gen-polaris-data.js",
-    "build": "yarn gen-polaris-data",
-    "test": "yarn build && node tests/index.js",
-    "prepublishOnly": "yarn build"
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "node tests/index.js",
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
-    "stylelint": "^14.1.0"
+    "stylelint": "^14.1.0",
+    "@shopify/polaris-tokens": "^5.0.0"
   }
 }

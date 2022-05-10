@@ -67,14 +67,15 @@ function IndexTableBase({
   emptyState,
   sort,
   lastColumnSticky = false,
+  ...restProps
 }: IndexTableBaseProps) {
   const {
     loading,
     bulkSelectState,
     resourceName,
     bulkActionsAccessibilityLabel,
-    selectable,
     selectMode,
+    selectable = restProps.selectable,
     paginatedSelectAllText,
     itemCount,
     hasMoreItems,

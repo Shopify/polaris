@@ -41,6 +41,7 @@ const mockTokens: Tokens = {
   colorSchemes: mockColorSchemes,
   depth: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
+  breakpoints: {},
   motion: {},
   legacyTokens: {},
   shape: {},

@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "plugin:@shopify/typescript",
     "plugin:@shopify/react",
@@ -15,6 +16,12 @@
       "rootDir": "polaris.shopify.com"
     }
   },
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "polaris-react/build",
+    "polaris-react/build-internal"
+  ],
   "rules": {
     "func-style": "off",
     "no-process-env": "off",
@@ -41,7 +48,8 @@
     "@shopify/jsx-prefer-fragment-wrappers": "off",
     "@shopify/no-ancestor-directory-import": "error",
     "@shopify/react-prefer-private-members": "off",
-    "@typescript-eslint/array-type": ["error", {"defaultOption": "array"}],
+    "@typescript-eslint/array-type": ["error", {"default": "array"}],
+    "@typescript-eslint/naming-convention": "off",
     "jsx-a11y/label-has-for": [
       2,
       {
@@ -65,7 +73,7 @@
       "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
-        "project": "./polaris-react/tsconfig.json"
+        "project": "./tsconfig.json"
       },
       "rules": {
         "@typescript-eslint/prefer-readonly": "off",
@@ -89,6 +97,12 @@
         "react/prefer-stateless-function": "off",
         "@shopify/jsx-no-hardcoded-content": "off",
         "@shopify/react-initialize-state": "off"
+      }
+    },
+    {
+      "files": ["polaris-tokens/**/*"],
+      "rules": {
+        "node/no-unsupported-features/node-builtins": "off"
       }
     },
     {

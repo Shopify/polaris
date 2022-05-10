@@ -28,7 +28,7 @@ class MdParser {
 
   getCustomRenderer() {
     const customRenderer = new marked.Renderer();
-    customRenderer.link = function(href, title, text) {
+    customRenderer.link = function (href, title, text) {
       // Add #navigation to them unless they already point to an anchor.
       // It's a trick: adding #navigation at the end of a URL forces a scroll back to the top of the page
       const outHref = addNavigationHashToURL(href);

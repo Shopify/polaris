@@ -50,7 +50,7 @@
       opacity: 1;
       transform: scale(1);
       @media (-ms-high-contrast: active) {
-        border: 2px solid windowText;
+        border: var(--p-border-width-2) solid windowText;
       }
     }
   } @else if $style == disabled {

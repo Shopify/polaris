@@ -43,7 +43,12 @@ export default createPackage((pkg) => {
 function jestAdjustmentsPlugin() {
   return createProjectPlugin('Polaris.Jest', ({tasks: {test}}) => {
     test.hook(({hooks}) => {
-      hooks.configure.hook((configuration) => {
+      hooks.configure.hook(async (configuration) => {
+        configuration.babelConfig?.hook((config) => ({
+          ...config,
+          rootMode: 'upward',
+        }));
+
         // Aliases for root-level imports, which are used in test files
         // `tests/*` as an alias for test-only utilities is acceptable, but
         // avoid others as paths working in jest but not in rollup is confusing
@@ -165,6 +170,11 @@ function rollupAdjustOutputPlugin() {
         }
 
         hooks.configure.hook(async (configuration) => {
+          configuration.babelConfig?.hook((config) => ({
+            ...config,
+            rootMode: 'upward',
+          }));
+
           configuration.rollupOutputs?.hook((outputs) => {
             for (const output of outputs) {
               if (typeof output.entryFileNames === 'string') {

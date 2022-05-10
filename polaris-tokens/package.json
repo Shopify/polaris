@@ -1,15 +1,39 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.0.0-rc.2",
+  "version": "5.0.1",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.js"
+    },
+    "./json/*": "./dist/json/*",
+    "./css/*": "./dist/css/*",
+    "./scss/*": "./dist/scss/*"
+  },
   "scripts": {
-    "build": "tsc -b && yarn build-tokens",
-    "build-tokens": "node scripts/toJSON && node scripts/toStyleSheet",
-    "test": "jest"
+    "build": "run-s build:*",
+    "build:js": "rollup -c",
+    "build:assets": "ts-node --skip-project scripts/index.ts",
+    "build:types": "tsc --emitDeclarationOnly",
+    "dev": "rollup -cw",
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "devDependencies": {
-    "jest": "^27.5.1"
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@shopify/browserslist-config": "^3.0.0",
+    "babel-jest": "^24.9.0",
+    "jest": "^27.5.1",
+    "rollup": "^2.70.2",
+    "ts-node": "^10.7.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -21,5 +45,11 @@
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
-  }
+  },
+  "browserslist": [
+    "extends @shopify/browserslist-config"
+  ],
+  "files": [
+    "dist"
+  ]
 }
