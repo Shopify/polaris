@@ -11,9 +11,6 @@ import {Key} from '../../types';
 import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
-
-import {styles} from '../CustomProperties/styles';
-
 interface InContextLearningStep {
   selector: string;
   content: React.ReactNode;
@@ -81,6 +78,7 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
       />
     </div>
   );
+
   const showArrow = steps[currentStep].direction != 'none';
 
   const counterMarkup = hasMultipleSteps ? (
@@ -99,7 +97,15 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
       <PositionedOverlay
         active={true}
         activator={currentActivator}
-        render={() => {
+        render={(state) => {
+          const isAbove = state.positioning === 'above';
+          const verticalMargin = isAbove
+            ? {marginBottom: '.75rem'}
+            : {marginTop: '.75rem'};
+          const arrowStyles = isAbove
+            ? {bottom: '-1rem', borderColor: '#fff transparent transparent'}
+            : {top: '-1rem', borderColor: 'transparent transparent #fff'};
+
           return (
             <>
               <div
@@ -108,12 +114,12 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
                   backgroundColor: '#fff',
                   filter:
                     'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
+                  ...verticalMargin,
                 }}
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 {dismissButton}
                 {steps[currentStep].content}
-
                 <Stack
                   alignment="center"
                   wrap={false}
@@ -144,11 +150,11 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
                 <div
                   style={{
                     position: 'absolute',
-                    top: '-1rem',
-                    left: '50%',
+                    left: 'calc(25% - 1rem)',
                     borderWidth: '.5rem',
                     borderStyle: 'solid',
-                    borderColor: 'transparent transparent #fff transparent',
+                    ...verticalMargin,
+                    ...arrowStyles,
                   }}
                 />
               )}
