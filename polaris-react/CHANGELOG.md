@@ -10,10 +10,6 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ## 9.7.0 - 2022-05-10
 
-# Unreleased changes
-
-Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) to format new entries. 💜
-
 ### Enhancements
 
 - Replaced hardcoded `padding` or `margin` values with spacing tokens ([#5528](https://github.com/Shopify/polaris/pull/5528))
