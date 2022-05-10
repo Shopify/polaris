@@ -29,8 +29,8 @@ export function Step({
   }, []);
 
   return (
-    <div ref={stepRef}>
+    <span ref={stepRef}>
       {children}
-    </div>
+    </span>
   );
 }
