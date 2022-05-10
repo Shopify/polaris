@@ -98,6 +98,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
+  private stickyHeaderActive = false;
 
   private handleResize = debounce(() => {
     const {
@@ -208,7 +209,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         <div className={styles.StickyTable} role="presentation">
           <Sticky
             boundingElement={this.dataTable.current}
-            onStickyChange={this.changeHeadingFocus}
+            onStickyChange={(isSticky) => {
+              this.changeHeadingFocus();
+              this.stickyHeaderActive = isSticky;
+            }}
           >
             {(isSticky: boolean) => {
               const stickyHeaderClassNames = classNames(
@@ -256,7 +260,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                         };
                       }
 
-                      const stickyHeaderContentCell = (
+                      return (
                         <Cell
                           stickyHeadingCell
                           setRef={(ref) =>
@@ -273,19 +277,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                           truncate={truncate}
                           {...sortableHeadingProps}
                           verticalAlign={verticalAlign}
-                        />
-                      );
-                      return (
-                        <div
-                          className={styles.StickyHeaderCell}
-                          style={{
-                            width: this.tableHeadingWidths[index],
-                          }}
+                          stickyCellWidth={this.tableHeadingWidths[index]}
                           key={id}
-                          data-index-table-sticky-heading
-                        >
-                          {stickyHeaderContentCell}
-                        </div>
+                        />
                       );
                     })}
                   </div>
@@ -340,6 +334,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (inStickyHeader) {
       this.stickyHeadings[index] = ref;
+      const button = ref.querySelector('button');
+      if (button == null) {
+        return;
+      }
+      button.addEventListener('focus', this.handleHeaderButtonFocus);
     } else {
       this.tableHeadings[index] = ref;
       this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
@@ -425,46 +424,59 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     };
   };
 
-  private stickyHeaderScrolling = (event: Event) => {
-    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
-    const {current: table} = this.table;
-    const {current: scrollContainer} = this.scrollContainer;
-    const targetIsStickyHeader = event.target === stickyTableHeadingsRow;
-
-    if (
-      stickyTableHeadingsRow == null ||
-      scrollContainer == null ||
-      table == null
-    ) {
+  private handleHeaderButtonFocus = (event: Event) => {
+    if (this.scrollContainer.current == null || event.target == null) {
       return;
     }
 
-    const {scrollLeft: stickyScrollLeft} = stickyTableHeadingsRow;
-    const {scrollLeft: scrollContainerScrollLeft} = scrollContainer;
+    const target = event.target as HTMLElement;
+    const currentCell = target.parentNode as HTMLTableCellElement;
 
-    if (targetIsStickyHeader) {
-      table.style.transform = `translateX(-${stickyScrollLeft}px)`;
-    } else {
-      this.stickyHeadings.map((heading) => {
-        heading.style.transform = `translateX(-${scrollContainerScrollLeft}px)`;
-      });
+    const tableScrollLeft = this.scrollContainer.current.scrollLeft;
+    const tableViewableWidth = this.scrollContainer.current.offsetWidth;
+    const tableRightEdge = tableScrollLeft + tableViewableWidth;
+    const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
+    const currentColumnLeftEdge = currentCell.offsetLeft;
+    const currentColumnRightEdge =
+      currentCell.offsetLeft + currentCell.offsetWidth;
+
+    if (tableScrollLeft > currentColumnLeftEdge - firstColumnWidth) {
+      this.scrollContainer.current.scrollLeft =
+        currentColumnLeftEdge - firstColumnWidth;
+    }
+
+    if (currentColumnRightEdge > tableRightEdge) {
+      this.scrollContainer.current.scrollLeft =
+        currentColumnRightEdge - tableViewableWidth;
     }
   };
 
-  private scrollListener = (event: Event) => {
+  private stickyHeaderScrolling = () => {
+    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
+    const {current: scrollContainer} = this.scrollContainer;
+
+    if (stickyTableHeadingsRow == null || scrollContainer == null) {
+      return;
+    }
+
+    stickyTableHeadingsRow.scrollLeft = scrollContainer.scrollLeft;
+  };
+
+  private scrollListener = () => {
     debounce(() => {
       this.setState((prevState) => ({
         ...this.calculateColumnVisibilityData(prevState.condensed),
       }));
     }, 500);
 
-    this.stickyHeaderScrolling(event);
+    if (this.props.stickyHeader && this.stickyHeaderActive) {
+      this.stickyHeaderScrolling();
+    }
   };
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
     const {current: scrollContainer} = this.scrollContainer;
-    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
 
     const handleScroll = () => {
       if (!currentColumn || !previousColumn) {
@@ -476,13 +488,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           direction === 'right'
             ? currentColumn.rightEdge
             : previousColumn.leftEdge;
-
-        if (stickyTableHeadingsRow) {
-          stickyTableHeadingsRow.scrollLeft =
-            direction === 'right'
-              ? currentColumn.rightEdge
-              : previousColumn.leftEdge;
-        }
 
         requestAnimationFrame(() => {
           this.setState((prevState) => ({
