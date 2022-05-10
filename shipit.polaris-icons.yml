@@ -15,4 +15,4 @@ dependencies:
 deploy:
   override:
     - yarn turbo run build --filter=@shopify/polaris-icons
-    - npm publish polaris-tokens --tag latest
+    - npm publish polaris-icons --tag latest

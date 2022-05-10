@@ -412,12 +412,25 @@ Use action groups for sets of actions that relate to one another, particularly w
   title="Products"
   actionGroups={[
     {
+      title: 'Copy',
+      onClick: (openActions) => {
+        alert('Copy action');
+        openActions();
+      },
+      actions: [{content: 'Copy to clipboard'}],
+    },
+    {
       title: 'Promote',
+      disabled: true,
+      actions: [{content: 'Share on Facebook'}],
+    },
+    {
+      title: 'More actions',
       actions: [
-        {
-          content: 'Share on Facebook',
-          onAction: () => {},
-        },
+        {content: 'Duplicate'},
+        {content: 'Print'},
+        {content: 'Unarchive'},
+        {content: 'Cancel order'},
       ],
     },
   ]}

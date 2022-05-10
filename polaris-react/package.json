@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.5.2",
+  "version": "9.6.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -104,7 +104,7 @@
     "create-file-webpack": "^1.0.2",
     "downlevel-dts": "^0.6.0",
     "fs-extra": "^7.0.1",
-    "glob": "^7.1.4",
+    "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "lodash": "^4.17.21",
     "marked": "^4.0.10",

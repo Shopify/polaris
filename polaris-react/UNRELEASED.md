@@ -14,7 +14,10 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Replaced `768px` breakpoint mixins and variables with custom media conditions ([#5629](https://github.com/Shopify/polaris/pull/5629))
 - Added `customListId` prop to `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
 - Pass `domId` as an argument to `onActiveOptionChange` prop on `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
+- Adding min-height to `Popover.Pane` when the `Popover` contains a `height` prop ([#5685](https://github.com/Shopify/polaris/pull/5685))
 - Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
+- Added `disable` prop to the action groups title of the Page header ([#5702](https://github.com/Shopify/polaris/pull/5702))
+- Added `onClick` prop to the action groups title of the Page header ([#5751](https://github.com/Shopify/polaris/pull/5751))
 
 ### Bug fixes
 

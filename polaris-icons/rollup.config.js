@@ -2,8 +2,6 @@
 import fs from 'fs';
 import path from 'path';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {parse, traverse} from '@babel/core';
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
@@ -12,68 +10,71 @@ import jsYaml from 'js-yaml';
 import convert from '@svgr/core';
 import {optimize} from 'svgo';
 
-const WHITE_REGEX = /^#fff(?:fff)?$/i;
-
 const iconBasePath = path.resolve(__dirname, 'icons');
+const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
 
-const entrypointContent = glob
-  .sync('*.yml', {cwd: iconBasePath})
-  .map(exportsForMetadata)
-  .join('\n\n');
+const iconExports = [];
+const iconTypes = [];
+const iconMetadata = {};
+const ommitedKeys = [
+  'version',
+  'exclusive_use',
+  'authors',
+  'date_modified',
+  'date_added',
+];
+
+iconPaths.forEach((filename) => {
+  const iconData = jsYaml.load(fs.readFileSync(filename), {
+    schema: jsYaml.JSON_SCHEMA,
+  });
+
+  ommitedKeys.forEach((key) => delete iconData[key]);
+
+  const exportName = filename
+    .replace(`${iconBasePath}/`, '')
+    .replace('.yml', '');
+
+  iconMetadata[exportName] = iconData;
+  iconExports.push(
+    `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
+  );
+  iconTypes.push(
+    `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
+  );
+});
+
+const entrypointContent = iconExports.join('\n');
+const entrypointTypes = iconTypes.join('\n');
+
+const metadataContent = `
+const metadata = ${JSON.stringify(iconMetadata, null, 2)};
+export default metadata;
+`.trim();
+const metadataTypes = `declare const metadata: {
+  [key: string]: {
+    name: string;
+    set: 'major' | 'minor';
+    description: string;
+    keywords: string[];
+  };
+};
+export default metadata;
+`.trim();
 
 // We know react only ships cjs with a default export. By being explicit here,
 // we get to shave off some unneeded interop code
 const interop = (id) => (id === 'react' ? 'defaultOnly' : 'auto');
 
-function generateTypesFile(iconExports) {
-  return iconExports
-    .map(
-      (exportName) =>
-        `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
-    )
-    .join('\n');
-}
-
-function customTypes(options = {}) {
-  const filter = createFilter(options.include, options.exclude, {
-    resolve: false,
-  });
-  const iconExports = [];
-  const virtualPrefix = '\u0000virtual:';
-
+function customTypes({fileName, source}) {
   return {
-    name: 'shopify-icon',
-
-    transform(source, id) {
-      const nonVirtualId = id.startsWith(virtualPrefix)
-        ? id.replace(virtualPrefix, '')
-        : id;
-
-      if (filter(nonVirtualId)) {
-        const ast = parse(source, {filename: nonVirtualId});
-
-        traverse(ast, {
-          ExportNamedDeclaration(filePath) {
-            const exportDeclarationName = filePath.node.specifiers
-              .filter((obj) => obj.local.name === 'default')
-              .map((obj) => obj.exported.name);
-            iconExports.push(...exportDeclarationName);
-          },
-        });
-      }
-
-      return null;
-    },
+    name: 'custom-types',
     buildEnd() {
-      if (iconExports.length === 0) {
-        this.warn('Found no exports when processing types');
+      if (source.length === 0) {
+        this.warn('source content is empty');
       }
 
-      this.emitFile({
-        type: 'asset',
-        fileName: `index.d.ts`,
-        source: generateTypesFile(iconExports),
-      });
+      this.emitFile({type: 'asset', fileName, source});
     },
   };
 }
@@ -135,11 +136,9 @@ function svgBuild(options = {}) {
     ],
   };
 
-  if (options.replaceFill) {
-    svgoConfig.plugins.push({
-      ...replaceFillAttributeSvgoPlugin(options.replaceFill),
-    });
-  }
+  svgoConfig.plugins.push({
+    ...replaceFillAttributeSvgoPlugin(),
+  });
 
   const optimizedSvgs = [];
 
@@ -189,157 +188,94 @@ function svgBuild(options = {}) {
  * An SVGO plugin that applies a transform function to every fill attribute
  * in an SVG. This lets you replace fill colors or remove them entirely.
  */
-function replaceFillAttributeSvgoPlugin(options) {
+function replaceFillAttributeSvgoPlugin() {
   return {
     type: 'perItem',
     name: 'replaceFillAttibute',
     description: 'replaces fill attributes using a user-defined function',
-    params: options,
-    fn(item, {transform}) {
-      if (!item.isElem()) {
+    fn(item) {
+      if (!item.isElem() || !item.attr('fill')) {
         return;
       }
 
-      const fillAttr = item.attr('fill');
-      if (!fillAttr) {
-        return;
-      }
-
-      const transformedFill = transform(fillAttr.value);
-      if (transformedFill === '') {
-        item.removeAttr('fill');
-      } else {
-        fillAttr.value = transformedFill;
-      }
+      item.removeAttr('fill');
     },
   };
 }
 
-const config = {
-  input: 'src/index.ts',
-  output: [
-    {
-      dir: 'dist',
-      format: 'cjs',
-      interop,
-      entryFileNames: '[name].js',
-      chunkFileNames: '[name].js',
-    },
-    {
-      dir: 'dist',
-      format: 'esm',
-      interop,
-      entryFileNames: '[name].mjs',
-      chunkFileNames: '[name].mjs',
-    },
-  ],
-  manualChunks: (id) => {
-    // Generate distinct chunks for each icon
-    // This allows consuming apps to split up the icons into multiple subchunks
-    // containing a few icons each instead of always having to put every icon
-    // into a single shared chunk
-    if (id.startsWith(iconBasePath)) {
-      return id.replace(iconBasePath, 'icons/');
-    }
-  },
-  external: ['react'],
-  onwarn: (warning, warn) => {
-    // Unresolved imports means Rollup couldn't find an import, possibly because
-    // we made a typo in the file name. Fail the build in that case so we know
-    // when the library is no longer self-contained or we have bad imports
-    if (warning.code === 'UNRESOLVED_IMPORT') {
-      throw new Error(warning.message);
-    }
-
-    // Use default for everything else
-    warn(warning);
-  },
-  plugins: [
-    virtual({
-      'src/index.ts': entrypointContent,
-    }),
-    svgBuild({
-      include: `${iconBasePath}/*.svg`,
-      replaceFill: {
-        transform: (fill) => (WHITE_REGEX.test(fill) ? 'currentColor' : ''),
+const config = [
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        interop,
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
       },
-    }),
-    babel({
-      rootMode: 'upward',
-      exclude: 'node_modules/**',
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
-      envName: 'production',
-      babelHelpers: 'bundled',
-    }),
-    customTypes({
-      include: 'src/index.ts',
-    }),
-  ],
-};
+      {
+        dir: 'dist',
+        format: 'esm',
+        interop,
+        entryFileNames: '[name].mjs',
+        chunkFileNames: '[name].mjs',
+      },
+    ],
+    manualChunks: (id) => {
+      // Generate distinct chunks for each icon
+      // This allows consuming apps to split up the icons into multiple subchunks
+      // containing a few icons each instead of always having to put every icon
+      // into a single shared chunk
+      if (id.startsWith(iconBasePath)) {
+        return id.replace(iconBasePath, 'icons/');
+      }
+    },
+    external: ['react'],
+    onwarn: (warning, warn) => {
+      // Unresolved imports means Rollup couldn't find an import, possibly because
+      // we made a typo in the file name. Fail the build in that case so we know
+      // when the library is no longer self-contained or we have bad imports
+      if (warning.code === 'UNRESOLVED_IMPORT') {
+        throw new Error(warning.message);
+      }
+
+      // Use default for everything else
+      warn(warning);
+    },
+    plugins: [
+      virtual({
+        'src/index.ts': entrypointContent,
+      }),
+      svgBuild({include: `${iconBasePath}/*.svg`}),
+      babel({
+        rootMode: 'upward',
+        exclude: 'node_modules/**',
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
+        envName: 'production',
+        babelHelpers: 'bundled',
+      }),
+      customTypes({fileName: `index.d.ts`, source: entrypointTypes}),
+    ],
+  },
+  {
+    input: 'src/metadata.ts',
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        entryFileNames: '[name].js',
+        exports: 'default',
+      },
+    ],
+    plugins: [
+      virtual({
+        'src/metadata.ts': metadataContent,
+      }),
+      customTypes({fileName: `metadata.d.ts`, source: metadataTypes}),
+    ],
+  },
+];
 
 // eslint-disable-next-line import/no-default-export
 export default config;
-
-function exportsForMetadata(filename) {
-  const metadata = jsYaml.load(
-    fs.readFileSync(`${iconBasePath}/${filename}`, 'utf8'),
-  );
-  const exportName = filenameToExportName(filename);
-  const exportFile = filename.replace(/yml$/, 'svg');
-
-  let deprecatedExportStrings = [];
-  if (metadata.deprecated_aliases) {
-    deprecatedExportStrings = (metadata.deprecated_aliases || []).map(
-      (deprecatedBaseName) =>
-        aliasExportString(exportName, exportFile, deprecatedBaseName),
-    );
-  }
-
-  return [
-    mainExportString(exportName, exportFile, metadata.deprecated),
-    ...deprecatedExportStrings,
-  ].join('\n\n');
-}
-
-function mainExportString(exportName, exportFile, isDeprecated) {
-  return exportString(exportName, exportFile, isDeprecated ? '' : undefined);
-}
-
-function aliasExportString(exportName, exportFile, deprecatedBaseName) {
-  return exportString(
-    filenameToExportName(deprecatedBaseName),
-    exportFile,
-    exportName,
-  );
-}
-
-/**
- * Capitalizes the first letter and any letter following a hyphen or underscore
- * and removes hyphens and underscores
- *
- * E.g. viewport-wide_major becomes ViewportWideMajor.
- */
-function filenameToExportName(filename) {
-  return path
-    .basename(filename, path.extname(filename))
-    .replace(/(?:^|[-_])([a-z])/g, (match, letter) => letter.toUpperCase());
-}
-
-/**
- *
- * @param {*} exportedName
- * @param {*} svgFilename
- * @param {undefined|string} replaceWith
- *   If undefined then the current export is not deprecated.
- *   If an empty string then the current export is deprected with no replacement.
- *   If a non-empty string then the current export is deprecated with a replacement.
- */
-function exportString(exportedName, svgFilename, replaceWith) {
-  const replaceWithSuffix = replaceWith ? ` Use ${replaceWith} instead.` : '';
-  const deprecatedNotice =
-    replaceWith === undefined
-      ? ''
-      : `/** @deprecated ${exportedName} will be removed in the next major version.${replaceWithSuffix} */\n`;
-
-  return `${deprecatedNotice}export {default as ${exportedName}} from '../icons/${svgFilename}';`;
-}
