@@ -225,6 +225,8 @@ export interface MenuGroupDescriptor extends BadgeAction {
   index?: number;
   /** Callback when any action takes place */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Callback when the menu is clicked */
+  onClick?(openActions: () => void): void;
 }
 
 export interface ConnectedDisclosure {
