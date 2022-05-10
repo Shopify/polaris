@@ -11,7 +11,6 @@ import convert from '@svgr/core';
 import {optimize} from 'svgo';
 
 const iconBasePath = path.resolve(__dirname, 'icons');
-
 const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
@@ -48,14 +47,10 @@ iconPaths.forEach((filename) => {
 const entrypointContent = iconExports.join('\n');
 const entrypointTypes = iconTypes.join('\n');
 
-const metadataContent = `const metadata = ${JSON.stringify(
-  iconMetadata,
-  null,
-  2,
-)};
-
-export default metadata;`;
-
+const metadataContent = `
+const metadata = ${JSON.stringify(iconMetadata, null, 2)};
+export default metadata;
+`.trim();
 const metadataTypes = `declare const metadata: {
   [key: string]: {
     name: string;
@@ -64,7 +59,8 @@ const metadataTypes = `declare const metadata: {
     keywords: string[];
   };
 };
-export default metadata;`;
+export default metadata;
+`.trim();
 
 // We know react only ships cjs with a default export. By being explicit here,
 // we get to shave off some unneeded interop code
