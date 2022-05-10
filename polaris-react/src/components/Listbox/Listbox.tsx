@@ -33,9 +33,20 @@ import {
 } from './components';
 import styles from './Listbox.scss';
 
+export enum AutoSelection {
+  /** Default active option is the first selected option. If no options are selected, defaults to first interactive option. */
+  FirstSelected = 'FIRST_SELECTED',
+  /** Default active option is always the first interactive option. */
+  First = 'FIRST',
+}
+
 export interface ListboxProps {
   /** Inner content of the listbox */
   children: ReactNode;
+  /** Indicates the default active option in the list. Patterns that support option creation should default the active option to the first option.
+   * @default AutoSelection.FirstSelected
+   */
+  autoSelection?: AutoSelection;
   /** Explicitly enable keyboard control */
   enableKeyboardControl?: boolean;
   /** Visually hidden text for screen readers */
@@ -57,6 +68,7 @@ const OPTION_FOCUS_ATTRIBUTE = 'data-focused';
 
 export function Listbox({
   children,
+  autoSelection = AutoSelection.FirstSelected,
   enableKeyboardControl,
   accessibilityLabel,
   customListId,
@@ -122,7 +134,10 @@ export function Listbox({
         const isInteractable = option.getAttribute('aria-disabled') !== 'true';
         let isFirstNavigableOption;
 
-        if (hasSelectedOptions) {
+        if (
+          hasSelectedOptions &&
+          autoSelection === AutoSelection.FirstSelected
+        ) {
           const isSelected = option.getAttribute('aria-selected') === 'true';
           isFirstNavigableOption = isSelected && isInteractable;
         } else {
@@ -138,7 +153,7 @@ export function Listbox({
 
       return {element, index: elementIndex};
     },
-    [],
+    [autoSelection],
   );
 
   const handleScrollIntoView = useCallback((option: NavigableOption) => {

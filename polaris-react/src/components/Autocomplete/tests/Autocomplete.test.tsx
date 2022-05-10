@@ -9,7 +9,7 @@ import {Autocomplete} from '../Autocomplete';
 import {Combobox} from '../../Combobox';
 import type {ComboboxProps} from '../../Combobox';
 import {KeypressListener} from '../../KeypressListener';
-import {Listbox} from '../../Listbox';
+import {AutoSelection, Listbox} from '../../Listbox';
 
 describe('<Autocomplete/>', () => {
   const options = [
@@ -232,6 +232,35 @@ describe('<Autocomplete/>', () => {
           triggerFocus(autocomplete.find(Combobox));
 
           expect(autocomplete).toContainReactComponent(MappedAction);
+        });
+
+        it('sets default active option to first option', () => {
+          const actionBefore = {
+            accessibilityLabel: 'label',
+            helpText: 'help text',
+            image: '',
+            prefix: null,
+            suffix: null,
+            ellipsis: false,
+            active: false,
+            role: 'option',
+            icon: 'icon',
+            disabled: false,
+            destructive: true,
+            badge: {
+              status: 'new' as const,
+              content: 'new',
+            },
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionBefore={actionBefore} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          expect(autocomplete).toContainReactComponent(Listbox, {
+            autoSelection: AutoSelection.First,
+          });
         });
       });
 
