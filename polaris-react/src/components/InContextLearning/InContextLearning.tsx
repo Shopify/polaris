@@ -12,6 +12,16 @@ import {Key} from '../../types';
 interface InContextLearningStep {
   selector: string;
   content: React.ReactNode;
+  direction?:
+    | 'top-left'
+    | 'top-right'
+    | 'right-top'
+    | 'right-bottom'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'left-top'
+    | 'left-bottom'
+    | 'none';
 }
 
 interface Position {
@@ -62,6 +72,7 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
       />
     </div>
   );
+  const showArrow = steps[currentStep].direction != 'none';
 
   return (
     <div
@@ -71,15 +82,29 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
         position: 'absolute',
         padding: '1em',
         backgroundColor: '#fff',
-        border: '1px solid #ccc',
+        filter:
+          'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
       }}
-      ref={wrapperRef}
     >
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      {dismissButton}
-      {steps[currentStep].content}
-      {showPrev && <Button onClick={handlePrev}>Prev</Button>}
-      {showNext && <Button onClick={handleNext}>Next</Button>}
+      <div ref={wrapperRef}>
+        {dismissButton}
+        {steps[currentStep].content}
+        {showPrev && <Button onClick={handlePrev}>Prev</Button>}
+        {showNext && <Button onClick={handleNext}>Next</Button>}
+      </div>
+      {showArrow && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '-1rem',
+            left: '50%',
+            borderWidth: '.5rem',
+            borderStyle: 'solid',
+            borderColor: 'transparent transparent #fff transparent',
+          }}
+        />
+      )}
     </div>
   );
 }
