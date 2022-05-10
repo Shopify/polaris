@@ -25,6 +25,8 @@ export interface CellProps {
   colSpan?: number;
   setRef?: (ref: HTMLTableCellElement | null) => void;
   stickyHeadingCell?: boolean;
+  stickyCellWidth?: number;
+  key?: string;
 }
 
 export function Cell({
@@ -44,6 +46,8 @@ export function Cell({
   colSpan,
   setRef = () => {},
   stickyHeadingCell = false,
+  stickyCellWidth,
+  key,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -58,6 +62,7 @@ export function Cell({
     numeric && styles['Cell-numeric'],
     sortable && styles['Cell-sortable'],
     sorted && styles['Cell-sorted'],
+    stickyHeadingCell && styles.StickyHeaderCell,
   );
 
   const headerClassName = classNames(
@@ -101,6 +106,11 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
+      style={{
+        width: stickyCellWidth,
+      }}
+      data-index-table-sticky-heading
+      key={key}
     >
       {columnHeadingContent}
     </div>
