@@ -1,14 +1,14 @@
-import React, {useEffect, useState, useLayoutEffect} from 'react';
+import React from 'react';
 import {Layout, Page, Card, List, InContextLearning} from '../src';
 import styles from './Learner.scss';
 
 const LEARNING_STEPS = [
   {
-    className: '.learning-step-one',
+    selector: '[data-learning-step-one]',
     content: <span>Step 1: Testing React</span>,
   },
   {
-    className: '.learning-step-two',
+    selector: '[data-learning-step-two]',
     content: <span>Step 2: Testing React</span>,
   },
 ];
@@ -19,7 +19,7 @@ export function Learner() {
       <Page narrowWidth>
         <Layout>
           <Layout.Section>
-            <InContextLearning steps={LEARNING_STEPS} />
+            <InContextLearning steps={LEARNING_STEPS} onDismiss={() => {}} />
             <Card
               title="Shipment 1234"
               secondaryFooterActions={[
@@ -30,9 +30,7 @@ export function Learner() {
               <Card.Section title="Items">
                 <List>
                   <List.Item>
-                    <span className="learning-step-one">
-                      1 × Oasis Glass, 4-Pack
-                    </span>
+                    <span data-learning-step-one>1 × Oasis Glass, 4-Pack</span>
                   </List.Item>
                   <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
                 </List>
@@ -40,9 +38,7 @@ export function Learner() {
             </Card>
             <Card>
               <Card.Section title="Collections">
-                <span className="learning-step-two">
-                  another piece of content
-                </span>
+                <span data-learning-step-two>another piece of content</span>
               </Card.Section>
               <Card.Section title="Tags" />
             </Card>
@@ -51,14 +47,4 @@ export function Learner() {
       </Page>
     </div>
   );
-}
-
-function getPreviousStep(currentStep: number, steps: any[]) {
-  if (currentStep === 0) {
-    return steps.length - 1;
-  }
-  if (currentStep === steps.length - 1) {
-    return 0;
-  }
-  return currentStep - 1;
 }

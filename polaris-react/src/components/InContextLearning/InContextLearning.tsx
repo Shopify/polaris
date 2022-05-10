@@ -5,10 +5,9 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
 import {Step} from './components';
-import {styles} from '../CustomProperties/styles';
 
 interface InContextLearningStep {
-  className: string;
+  selector: string;
   content: React.ReactNode;
 }
 
@@ -18,8 +17,8 @@ interface Position {
 }
 
 interface Props {
-  children?: React.ReactElement[];
   steps: InContextLearningStep[];
+  children?: React.ReactElement[];
   onDismiss(): void;
 }
 
@@ -28,11 +27,12 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
   const hasMultipleSteps = steps.length > 0;
   const [currentStep, setCurrentStep] = useState(0);
   const [currentPosition, setCurrentPosition] = useState<Position | null>(null);
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLInputElement>(null);
+  const wrapperRefHeight = wrapperRef.current?.getBoundingClientRect().height;
 
   useEffect(() => {
-    setCurrentPosition(updatePosition(steps[currentStep]));
-  }, []);
+    setCurrentPosition(updatePosition(steps[currentStep], wrapperRefHeight));
+  }, [currentStep, steps]);
 
   const showPrev = hasMultipleSteps && currentStep > 0;
   const showNext = hasMultipleSteps && currentStep < steps.length - 1;
@@ -60,14 +60,6 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
     </div>
   );
 
-  useEffect(() => {
-    if (!wrapperRef.current) {
-      return;
-    }
-    const {height} = wrapperRef.current.getBoundingClientRect();
-    setCurrentPosition(updatePosition(steps[currentStep], height));
-  }, [currentStep, steps]);
-
   return (
     <div
       style={{
@@ -88,10 +80,10 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
   );
 }
 
-function updatePosition(step: InContextLearningStep, wrapperHeight: number) {
-  const {className} = step;
-  const offsetHeight = wrapperHeight / 2;
-  const domElement = document.querySelector(className);
+function updatePosition(step: InContextLearningStep, wrapperHeight?: number) {
+  const {selector} = step;
+  const offsetHeight = wrapperHeight ? wrapperHeight / 2 : 0;
+  const domElement = document.querySelector(selector);
   if (!domElement) {
     return {top: 0 + offsetHeight, left: 0};
   }
