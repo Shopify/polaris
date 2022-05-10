@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
   Layout,
@@ -13,7 +13,14 @@ import {
 import styles from './Learner.scss';
 
 function StepOne() {
-  return <span>Step 1: Testing React</span>;
+  const [count, setCount] = useState(0);
+  return (
+    <span>
+      <button onClick={() => setCount(count + 1)}>Plus</button>
+      <p>Step 1: Testing React</p>
+      {count}
+    </span>
+  );
 }
 
 function StepTwo() {
@@ -75,7 +82,11 @@ function LearnerApp() {
 export function Learner() {
   return (
     <InContextLearningContextProvider
-      stepComponents={[StepOne, StepTwo, StepThree]}
+      stepComponents={[
+        <StepOne key={0} />,
+        <StepTwo key={1} />,
+        <StepThree key={2} />,
+      ]}
     >
       <LearnerApp />
     </InContextLearningContextProvider>

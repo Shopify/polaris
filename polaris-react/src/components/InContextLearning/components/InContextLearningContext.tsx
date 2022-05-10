@@ -24,7 +24,7 @@ export interface InContextLearningContextProviderStepType {
 
 export interface InContextLearningContextProviderPropsType {
   children?: React.ReactNode;
-  stepComponents: React.FunctionComponent[];
+  stepComponents: React.ReactNode[];
 }
 
 export function InContextLearningContextProvider({

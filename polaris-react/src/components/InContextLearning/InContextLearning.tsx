@@ -94,7 +94,7 @@ export function InContextLearning({onDismiss}: Props) {
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 {dismissButton}
-                {steps[currentStep].component()}
+                {steps[currentStep].component}
 
                 <Stack
                   alignment="center"
