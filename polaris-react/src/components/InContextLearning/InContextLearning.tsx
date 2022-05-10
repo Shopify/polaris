@@ -8,6 +8,11 @@ import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
 import {Key} from '../../types';
+import {TextStyle} from '../TextStyle';
+import {Stack} from '../Stack';
+import {Step} from './components';
+
+import {styles} from '../CustomProperties/styles';
 
 interface InContextLearningStep {
   selector: string;
@@ -32,7 +37,8 @@ interface Props {
 
 export function InContextLearning({children, steps, onDismiss}: Props) {
   const i18n = useI18n();
-  const hasMultipleSteps = steps.length > 0;
+  const totalSteps = steps.length;
+  const hasMultipleSteps = totalSteps > 1;
   const [currentStep, setCurrentStep] = useState(0);
   const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
     null,
@@ -44,17 +50,23 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
     );
   }, [currentStep, steps]);
 
-  const showPrev = hasMultipleSteps && currentStep > 0;
-  const showNext = hasMultipleSteps && currentStep < steps.length - 1;
+  const showBack = hasMultipleSteps && currentStep > 0;
+  const showNext = hasMultipleSteps && currentStep + 1 < totalSteps;
+  const showClose = !showNext;
 
   const handleNext = () => {
     setCurrentStep((currentStep) => currentStep + 1);
     console.warn('Next clicked');
   };
 
-  const handlePrev = () => {
+  const handleBack = () => {
     setCurrentStep((currentStep) => currentStep - 1);
-    console.warn('Prev clicked');
+    console.warn('Back clicked');
+  };
+
+  const handleClose = () => {
+    console.warn('Close popover');
+    onDismiss?.();
   };
 
   const dismissButton = (
@@ -70,6 +82,13 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
     </div>
   );
   const showArrow = steps[currentStep].direction != 'none';
+
+  const counterMarkup = hasMultipleSteps ? (
+    <p style={{textAlign: 'center'}}>
+      {currentStep + 1}
+      <TextStyle variation="subdued">/{totalSteps}</TextStyle>
+    </p>
+  ) : null;
 
   if (!currentActivator) {
     return null;
@@ -94,8 +113,32 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 {dismissButton}
                 {steps[currentStep].content}
-                {showPrev && <Button onClick={handlePrev}>Prev</Button>}
-                {showNext && <Button onClick={handleNext}>Next</Button>}
+
+                <Stack
+                  alignment="center"
+                  wrap={false}
+                  distribution="fillEvenly"
+                >
+                  <Stack.Item>
+                    {showNext && (
+                      <Button primary onClick={handleNext}>
+                        Next
+                      </Button>
+                    )}
+
+                    {showClose && (
+                      <Button primary onClick={handleClose}>
+                        Got it
+                      </Button>
+                    )}
+                  </Stack.Item>
+
+                  <Stack.Item>{counterMarkup}</Stack.Item>
+
+                  <div style={{textAlign: 'right'}}>
+                    {showBack && <Button onClick={handleBack}>Back</Button>}
+                  </div>
+                </Stack>
               </div>
               {showArrow && (
                 <div

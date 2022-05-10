@@ -1,5 +1,7 @@
 import React from 'react';
-import {Layout, Page, Card, List, InContextLearning} from '../src';
+
+import {Layout, Page, Card, List, InContextLearning, Stack} from '../src';
+
 import styles from './Learner.scss';
 
 const LEARNING_STEPS = [
@@ -10,6 +12,10 @@ const LEARNING_STEPS = [
   {
     selector: '[data-learning-step-two]',
     content: <span>Step 2: Testing React</span>,
+  },
+  {
+    selector: '[data-learning-step-three]',
+    content: <span>Step 3: Testing React</span>,
   },
 ];
 
@@ -42,6 +48,12 @@ export function Learner() {
               </Card.Section>
               <Card.Section title="Tags" />
             </Card>
+
+            <Stack distribution="trailing">
+              <span data-learning-step-three>
+                Yet another piece of content!
+              </span>
+            </Stack>
           </Layout.Section>
         </Layout>
       </Page>
