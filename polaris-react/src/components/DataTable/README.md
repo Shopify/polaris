@@ -537,6 +537,7 @@ function FullDataTableExample() {
 ```
 
 ### Data table with sticky header enabled
+
 Use as a broad example that includes most props available to data table.
 
 ```jsx
@@ -583,7 +584,7 @@ function FullDataTableExample() {
       32,
       '$14,240.00',
     ],
-      [
+    [
       <Link
         removeUnderline
         url="https://www.example.com"
@@ -622,7 +623,7 @@ function FullDataTableExample() {
       32,
       '$14,240.00',
     ],
-      [
+    [
       <Link
         removeUnderline
         url="https://www.example.com"
@@ -661,7 +662,7 @@ function FullDataTableExample() {
       32,
       '$14,240.00',
     ],
-      [
+    [
       <Link
         removeUnderline
         url="https://www.example.com"
@@ -700,7 +701,7 @@ function FullDataTableExample() {
       32,
       '$14,240.00',
     ],
-      [
+    [
       <Link
         removeUnderline
         url="https://www.example.com"
@@ -739,7 +740,7 @@ function FullDataTableExample() {
       32,
       '$14,240.00',
     ],
-      [
+    [
       <Link
         removeUnderline
         url="https://www.example.com"
@@ -829,7 +830,6 @@ function FullDataTableExample() {
   }
 }
 ```
-
 
 ---
 
