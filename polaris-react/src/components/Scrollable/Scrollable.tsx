@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {
   StickyManager,

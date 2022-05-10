@@ -7,8 +7,8 @@ import React, {
   useMemo,
   Children,
 } from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComboboxListbox} from '../../utilities/combobox';
