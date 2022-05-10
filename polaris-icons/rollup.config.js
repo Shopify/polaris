@@ -1,7 +1,6 @@
 // rollup.config.js
 import fs from 'fs';
 import path from 'path';
-import util from 'util';
 
 import {createFilter} from '@rollup/pluginutils';
 import babel from '@rollup/plugin-babel';
@@ -26,17 +25,6 @@ const ommitedKeys = [
   'date_added',
 ];
 
-const metadataTypes = `interface IconMetadata {
-  name: string;
-  set: 'major' | 'minor';
-  description: string;
-  keywords: string[];
-}
-
-export interface Metadata {
-  [key: string]: IconMetadata;
-}`;
-
 iconPaths.forEach((filename) => {
   const iconData = jsYaml.load(fs.readFileSync(filename), {
     schema: jsYaml.JSON_SCHEMA,
@@ -57,36 +45,40 @@ iconPaths.forEach((filename) => {
   );
 });
 
-const entrypointContent = `export const metadata = ${util.inspect(
+const entrypointContent = iconExports.join('\n');
+const entrypointTypes = iconTypes.join('\n');
+
+const metadataContent = `const metadata = ${JSON.stringify(
   iconMetadata,
+  null,
+  2,
 )};
 
-${iconExports.join('\n')}`;
+export default metadata;`;
 
-const typesContent = `${metadataTypes}
-
-export declare const metadata: Metadata;
-
-${iconTypes.join('\n')}
-`;
+const metadataTypes = `declare const metadata: {
+  [key: string]: {
+    name: string;
+    set: 'major' | 'minor';
+    description: string;
+    keywords: string[];
+  };
+};
+export default metadata;`;
 
 // We know react only ships cjs with a default export. By being explicit here,
 // we get to shave off some unneeded interop code
 const interop = (id) => (id === 'react' ? 'defaultOnly' : 'auto');
 
-function customTypes() {
+function customTypes({fileName, source}) {
   return {
-    name: 'shopify-icon',
+    name: 'custom-types',
     buildEnd() {
-      if (iconTypes.length === 0) {
-        this.warn('Found no exports when processing types');
+      if (source.length === 0) {
+        this.warn('source content is empty');
       }
 
-      this.emitFile({
-        type: 'asset',
-        fileName: `index.d.ts`,
-        source: typesContent,
-      });
+      this.emitFile({type: 'asset', fileName, source});
     },
   };
 }
@@ -215,62 +207,79 @@ function replaceFillAttributeSvgoPlugin() {
   };
 }
 
-const config = {
-  input: ['src/index.ts'],
-  output: [
-    {
-      dir: 'dist',
-      format: 'cjs',
-      interop,
-      entryFileNames: '[name].js',
-      chunkFileNames: '[name].js',
+const config = [
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        interop,
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+      },
+      {
+        dir: 'dist',
+        format: 'esm',
+        interop,
+        entryFileNames: '[name].mjs',
+        chunkFileNames: '[name].mjs',
+      },
+    ],
+    manualChunks: (id) => {
+      // Generate distinct chunks for each icon
+      // This allows consuming apps to split up the icons into multiple subchunks
+      // containing a few icons each instead of always having to put every icon
+      // into a single shared chunk
+      if (id.startsWith(iconBasePath)) {
+        return id.replace(iconBasePath, 'icons/');
+      }
     },
-    {
-      dir: 'dist',
-      format: 'esm',
-      interop,
-      entryFileNames: '[name].mjs',
-      chunkFileNames: '[name].mjs',
-    },
-  ],
-  manualChunks: (id) => {
-    // Generate distinct chunks for each icon
-    // This allows consuming apps to split up the icons into multiple subchunks
-    // containing a few icons each instead of always having to put every icon
-    // into a single shared chunk
-    if (id.startsWith(iconBasePath)) {
-      return id.replace(iconBasePath, 'icons/');
-    }
-  },
-  external: ['react'],
-  onwarn: (warning, warn) => {
-    // Unresolved imports means Rollup couldn't find an import, possibly because
-    // we made a typo in the file name. Fail the build in that case so we know
-    // when the library is no longer self-contained or we have bad imports
-    if (warning.code === 'UNRESOLVED_IMPORT') {
-      throw new Error(warning.message);
-    }
+    external: ['react'],
+    onwarn: (warning, warn) => {
+      // Unresolved imports means Rollup couldn't find an import, possibly because
+      // we made a typo in the file name. Fail the build in that case so we know
+      // when the library is no longer self-contained or we have bad imports
+      if (warning.code === 'UNRESOLVED_IMPORT') {
+        throw new Error(warning.message);
+      }
 
-    // Use default for everything else
-    warn(warning);
+      // Use default for everything else
+      warn(warning);
+    },
+    plugins: [
+      virtual({
+        'src/index.ts': entrypointContent,
+      }),
+      svgBuild({include: `${iconBasePath}/*.svg`}),
+      babel({
+        rootMode: 'upward',
+        exclude: 'node_modules/**',
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
+        envName: 'production',
+        babelHelpers: 'bundled',
+      }),
+      customTypes({fileName: `index.d.ts`, source: entrypointTypes}),
+    ],
   },
-  plugins: [
-    virtual({
-      'src/index.ts': entrypointContent,
-    }),
-    svgBuild({include: `${iconBasePath}/*.svg`}),
-    babel({
-      rootMode: 'upward',
-      exclude: 'node_modules/**',
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
-      envName: 'production',
-      babelHelpers: 'bundled',
-    }),
-    customTypes({
-      include: 'src/index.ts',
-    }),
-  ],
-};
+  {
+    input: 'src/metadata.ts',
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        entryFileNames: '[name].js',
+        exports: 'default',
+      },
+    ],
+    plugins: [
+      virtual({
+        'src/metadata.ts': metadataContent,
+      }),
+      customTypes({fileName: `metadata.d.ts`, source: metadataTypes}),
+    ],
+  },
+];
 
 // eslint-disable-next-line import/no-default-export
 export default config;

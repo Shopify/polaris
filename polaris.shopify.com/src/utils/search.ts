@@ -2,7 +2,7 @@ import { SearchResult } from "../types";
 import { createVar, tokens } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
-import {metadata} from '@shopify/polaris-icons';
+import metadata from '@shopify/polaris-icons/metadata';
 
 import components from "../data/components.json";
 import guidelines from "../data/guidelines.json";

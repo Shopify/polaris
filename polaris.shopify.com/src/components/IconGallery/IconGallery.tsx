@@ -2,13 +2,12 @@ import Image from "../Image";
 import { useState } from "react";
 import Fuse from "fuse.js";
 import { Tab } from "@headlessui/react";
-import {metadata} from '@shopify/polaris-icons';
+import metadata from '@shopify/polaris-icons/metadata';
 
 import TextField from "../TextField";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
 import { className } from "../../utils/various";
-
 
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
