@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
+import {InContextLearningContext} from './components';
 import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
@@ -18,35 +19,38 @@ interface InContextLearningStep {
   selector: string;
   content: React.ReactNode;
   direction?:
-    | 'top-left'
-    | 'top-right'
-    | 'right-top'
-    | 'right-bottom'
-    | 'bottom-right'
-    | 'bottom-left'
-    | 'left-top'
-    | 'left-bottom'
-    | 'none';
+  | 'top-left'
+  | 'top-right'
+  | 'right-top'
+  | 'right-bottom'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'left-top'
+  | 'left-bottom'
+  | 'none';
 }
-
 interface Props {
   steps: InContextLearningStep[];
   children?: React.ReactElement[];
   onDismiss(): void;
+  ref?: HTMLElement;
 }
 
-export function InContextLearning({children, steps, onDismiss}: Props) {
+export function InContextLearning({onDismiss}: Props) {
   const i18n = useI18n();
-  const totalSteps = steps.length;
-  const hasMultipleSteps = totalSteps > 1;
   const [currentStep, setCurrentStep] = useState(0);
   const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
     null,
   );
 
+  const { steps } = useContext(InContextLearningContext);
+
+  const totalSteps = steps.length;
+  const hasMultipleSteps = totalSteps > 1;
+
   useEffect(() => {
     setCurrentActivator(
-      document.querySelector<HTMLElement>(steps[currentStep].selector) ?? null,
+     steps[currentStep] ?? null,
     );
   }, [currentStep, steps]);
 
@@ -112,7 +116,7 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 {dismissButton}
-                {steps[currentStep].content}
+                {steps[currentStep].component()}
 
                 <Stack
                   alignment="center"
@@ -159,3 +163,5 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
     </Portal>
   );
 }
+
+InContextLearning.Step = Step;
