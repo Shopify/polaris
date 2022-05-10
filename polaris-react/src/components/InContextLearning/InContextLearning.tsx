@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
-import {Step} from './components';
-
+import {Portal} from '../Portal';
+import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
 import {Key} from '../../types';
 
@@ -24,11 +24,6 @@ interface InContextLearningStep {
     | 'none';
 }
 
-interface Position {
-  top: number;
-  left: number;
-}
-
 interface Props {
   steps: InContextLearningStep[];
   children?: React.ReactElement[];
@@ -39,12 +34,14 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
   const i18n = useI18n();
   const hasMultipleSteps = steps.length > 0;
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentPosition, setCurrentPosition] = useState<Position | null>(null);
-  const wrapperRef = useRef<HTMLInputElement>(null);
-  const wrapperRefHeight = wrapperRef.current?.getBoundingClientRect().height;
+  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
+    null,
+  );
 
   useEffect(() => {
-    setCurrentPosition(updatePosition(steps[currentStep], wrapperRefHeight));
+    setCurrentActivator(
+      document.querySelector<HTMLElement>(steps[currentStep].selector) ?? null,
+    );
   }, [currentStep, steps]);
 
   const showPrev = hasMultipleSteps && currentStep > 0;
@@ -74,50 +71,48 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
   );
   const showArrow = steps[currentStep].direction != 'none';
 
+  if (!currentActivator) {
+    return null;
+  }
+
   return (
-    <div
-      style={{
-        top: `${currentPosition?.top}px`,
-        left: `${currentPosition?.left}px,`,
-        position: 'absolute',
-        padding: '1em',
-        backgroundColor: '#fff',
-        filter:
-          'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
-      }}
-    >
-      <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      <div ref={wrapperRef}>
-        {dismissButton}
-        {steps[currentStep].content}
-        {showPrev && <Button onClick={handlePrev}>Prev</Button>}
-        {showNext && <Button onClick={handleNext}>Next</Button>}
-      </div>
-      {showArrow && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '-1rem',
-            left: '50%',
-            borderWidth: '.5rem',
-            borderStyle: 'solid',
-            borderColor: 'transparent transparent #fff transparent',
-          }}
-        />
-      )}
-    </div>
+    <Portal>
+      <PositionedOverlay
+        active={true}
+        activator={currentActivator}
+        render={() => {
+          return (
+            <>
+              <div
+                style={{
+                  padding: '1em',
+                  backgroundColor: '#fff',
+                  filter:
+                    'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
+                }}
+              >
+                <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
+                {dismissButton}
+                {steps[currentStep].content}
+                {showPrev && <Button onClick={handlePrev}>Prev</Button>}
+                {showNext && <Button onClick={handleNext}>Next</Button>}
+              </div>
+              {showArrow && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '-1rem',
+                    left: '50%',
+                    borderWidth: '.5rem',
+                    borderStyle: 'solid',
+                    borderColor: 'transparent transparent #fff transparent',
+                  }}
+                />
+              )}
+            </>
+          );
+        }}
+      />
+    </Portal>
   );
 }
-
-function updatePosition(step: InContextLearningStep, wrapperHeight?: number) {
-  const {selector} = step;
-  const offsetHeight = wrapperHeight ? wrapperHeight / 2 : 0;
-  const domElement = document.querySelector(selector);
-  if (!domElement) {
-    return {top: 0 + offsetHeight, left: 0};
-  }
-  const rect = domElement.getBoundingClientRect();
-  return {top: rect.top + offsetHeight, left: rect.left};
-}
-
-InContextLearning.Step = Step;
