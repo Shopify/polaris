@@ -1,16 +1,35 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "4.19.0",
+  "version": "4.20.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "metadata": [
+        "./dist/metadata.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./metadata": {
+      "types": "./dist/metadata.d.ts",
+      "default": "./dist/metadata.js"
+    },
+    "./dist/svg/*.svg": "./dist/svg/*.svg"
   },
   "publishConfig": {
     "access": "public",

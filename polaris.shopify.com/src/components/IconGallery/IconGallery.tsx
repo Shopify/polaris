@@ -1,21 +1,21 @@
 import Image from "../Image";
 import { useState } from "react";
-import TextField from "../TextField";
-import icons from "../../data/icons.json";
 import Fuse from "fuse.js";
+import { Tab } from "@headlessui/react";
+import metadata from '@shopify/polaris-icons/metadata';
+
+import TextField from "../TextField";
 import styles from "./IconGallery.module.scss";
 import Longform from "../Longform";
-import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
+
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
   true,
   /\.svg$/
 );
 
-interface Props {}
-
-const fuse = new Fuse(icons, {
+const fuse = new Fuse(Object.keys(metadata), {
   threshold: 0.25,
   keys: [
     { name: "title", weight: 3 },
@@ -24,20 +24,19 @@ const fuse = new Fuse(icons, {
   ],
 });
 
-function IconGallery({}: Props) {
+function IconGallery() {
   const [filterString, setFilterString] = useState("");
   const [selectedIconName, setSelectedIconName] = useState<string>();
 
-  let filteredIcons = icons;
+  let filteredIcons = Object.keys(metadata);
   if (filterString) {
     const fuseResults = fuse.search(filterString);
     filteredIcons = fuseResults.map((result) => result.item);
   }
+  const majorIcons = filteredIcons.filter((iconName: string) => iconName.includes('Major'));
+  const minorIcons = filteredIcons.filter((iconName: string) => iconName.includes('Minor'));
 
-  const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
-  const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
-
-  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
+  const selectedIcon = filteredIcons.find((iconName: string) => iconName === selectedIconName);
 
   if (selectedIconName && !selectedIcon) {
     throw new Error(`Could not find icon ${selectedIconName}`);
@@ -67,7 +66,7 @@ function IconGallery({}: Props) {
                 </p>
               </div>
               <IconGrid
-                filteredIcons={majorIcons}
+                iconNames={majorIcons}
                 selectedIconName={selectedIconName}
                 onClick={(iconName) => setSelectedIconName(iconName)}
               />
@@ -83,7 +82,7 @@ function IconGallery({}: Props) {
                 </p>
               </div>
               <IconGrid
-                filteredIcons={minorIcons}
+                iconNames={minorIcons}
                 selectedIconName={selectedIconName}
                 onClick={(iconName) => setSelectedIconName(iconName)}
               />
@@ -100,16 +99,16 @@ function IconGallery({}: Props) {
               style={{ filter: "brightness(-500%)" }}
             >
               <Image
-                src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
-                alt={selectedIcon.description}
+                src={importedSvgs(`./${selectedIcon}.svg`)}
+                alt={metadata[selectedIcon].description}
                 width={48}
                 height={48}
               />
             </div>
 
             <div className={styles.IconMeta}>
-              {selectedIcon.fileName}
-              {selectedIcon.description}
+              {selectedIcon}
+              {metadata[selectedIcon].description}
             </div>
 
             <Tab.Group>
@@ -126,13 +125,13 @@ function IconGallery({}: Props) {
                     <pre>{`yarn add polaris polaris-icons`}</pre>
 
                     <p>
-                      Import the Icon component and the {selectedIcon.name}{" "}
+                      Import the Icon component and the {metadata[selectedIcon].name}{" "}
                       icon:
                     </p>
                     <pre>{`import { Icon } from "@shopify/polaris";
-import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
+import { ${selectedIcon} } from "@shopify/polaris-icons";
 
-<Icon source={${selectedIcon.fileName}} color="base" />`}</pre>
+<Icon source={${selectedIcon}} color="base" />`}</pre>
                   </Longform>
                 </Tab.Panel>
 
@@ -151,8 +150,8 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
                 <Tab.Panel>
                   <Longform>
                     <p>
-                      <a href={`/icons/${selectedIcon.fileName}.svg`} download>
-                        {selectedIcon.fileName}.svg
+                      <a href={`/icons/${selectedIcon}.svg`} download>
+                        {selectedIcon}.svg
                       </a>
                     </p>
                   </Longform>
@@ -167,36 +166,36 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
 }
 
 function IconGrid({
-  filteredIcons,
+  iconNames,
   selectedIconName,
   onClick,
 }: {
-  filteredIcons: typeof icons;
+  iconNames: string[];
   selectedIconName: string | undefined;
   onClick: (iconName: string) => void;
 }) {
   return (
     <ul className={styles.IconGrid}>
-      {filteredIcons.map((icon) => (
+      {iconNames.map((iconName) => (
         <li
-          key={`${icon.name}+${icon.set}`}
+          key={`${iconName}`}
           className={className(
             styles.Icon,
-            selectedIconName === icon.name && styles.current
+            selectedIconName === iconName && styles.current
           )}
         >
-          <button onClick={() => onClick(icon.name)}>
-            <div style={{ filter: "brightness(-500%)" }}>
-              <Image
-                src={importedSvgs(`./${icon.fileName}.svg`)}
-                alt={icon.description}
-                width={16}
-                height={16}
-              />
-            </div>
-            <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
-          </button>
-        </li>
+        <button onClick={() => onClick(iconName)}>
+          <div style={{ filter: "brightness(-500%)" }}>
+            <Image
+              src={importedSvgs(`./${iconName}.svg`)}
+              alt={metadata[iconName].description}
+              width={16}
+              height={16}
+            />
+          </div>
+          <span style={{ fontSize: 12, color: "#aaa" }}>{metadata[iconName].name}</span>
+        </button>
+      </li>
       ))}
     </ul>
   );
