@@ -6,6 +6,9 @@ import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
 import {Step} from './components';
 
+import {KeypressListener} from '../KeypressListener';
+import {Key} from '../../types';
+
 interface InContextLearningStep {
   selector: string;
   content: React.ReactNode;
@@ -72,6 +75,7 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
       }}
       ref={wrapperRef}
     >
+      <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {dismissButton}
       {steps[currentStep].content}
       {showPrev && <Button onClick={handlePrev}>Prev</Button>}
