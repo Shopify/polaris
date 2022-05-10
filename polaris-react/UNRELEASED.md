@@ -18,6 +18,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
 - Added `disable` prop to the action groups title of the Page header ([#5702](https://github.com/Shopify/polaris/pull/5702))
 - Added `onClick` prop to the action groups title of the Page header ([#5751](https://github.com/Shopify/polaris/pull/5751))
+- Added `extraSmall` to the available sizes of the `Thumbnail` ([TODO]())
 
 ### Bug fixes
 
