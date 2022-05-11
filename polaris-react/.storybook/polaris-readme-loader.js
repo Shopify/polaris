@@ -98,6 +98,8 @@ import {
   Icon,
   Image,
   InContextLearning,
+  InContextLearningContext,
+  InContextLearningContextProvider,
   IndexTable,
   Indicator,
   InlineError,

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
+import {InContextLearningContext} from './components';
 import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
@@ -11,40 +12,24 @@ import {Key} from '../../types';
 import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
-interface InContextLearningStep {
-  selector: string;
-  content: React.ReactNode;
-  direction?:
-    | 'top-left'
-    | 'top-right'
-    | 'right-top'
-    | 'right-bottom'
-    | 'bottom-right'
-    | 'bottom-left'
-    | 'left-top'
-    | 'left-bottom'
-    | 'none';
-}
 
+import {styles} from '../CustomProperties/styles';
 interface Props {
-  steps: InContextLearningStep[];
-  children?: React.ReactElement[];
   onDismiss(): void;
 }
 
-export function InContextLearning({children, steps, onDismiss}: Props) {
+export function InContextLearning({onDismiss}: Props) {
   const i18n = useI18n();
+  const [currentStep, setCurrentStep] = useState(0);
+  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(null);
+
+  const { steps } = useContext(InContextLearningContext);
+
   const totalSteps = steps.length;
   const hasMultipleSteps = totalSteps > 1;
-  const [currentStep, setCurrentStep] = useState(0);
-  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
-    null,
-  );
 
   useEffect(() => {
-    setCurrentActivator(
-      document.querySelector<HTMLElement>(steps[currentStep].selector) ?? null,
-    );
+    setCurrentActivator(steps[currentStep].ref ?? null);
   }, [currentStep, steps]);
 
   const showBack = hasMultipleSteps && currentStep > 0;
@@ -119,7 +104,8 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 {dismissButton}
-                {steps[currentStep].content}
+                {steps[currentStep].component}
+
                 <Stack
                   alignment="center"
                   wrap={false}
@@ -165,3 +151,5 @@ export function InContextLearning({children, steps, onDismiss}: Props) {
     </Portal>
   );
 }
+
+InContextLearning.Step = Step;

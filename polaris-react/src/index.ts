@@ -184,7 +184,11 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
-export {InContextLearning} from './components/InContextLearning';
+export {
+  InContextLearning,
+  InContextLearningContext,
+  InContextLearningContextProvider
+} from './components/InContextLearning';
 
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
