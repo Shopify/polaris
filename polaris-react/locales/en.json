@@ -44,7 +44,9 @@
       "clear": "Clear",
       "close": "Close",
       "submit": "Submit",
-      "more": "More"
+      "more": "More",
+      "back": "Back",
+      "next": "Next"
     },
     "ContextualSaveBar": {
       "save": "Save",
@@ -156,7 +158,9 @@
       "clearLabel": "Clear {filterName}"
     },
     "InContextLearning": {
-      "accessibilityLabel": "Close {tutorialName} tutorial"
+      "accessibilityLabel": "Close {tutorialName} tutorial",
+      "gotIt": "Got it",
+      "multipleSteps": "{currentStep} of {totalSteps}"
     },
     "IndexProvider": {
       "defaultItemSingular": "Item",
