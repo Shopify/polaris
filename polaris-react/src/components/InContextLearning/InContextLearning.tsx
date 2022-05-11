@@ -83,41 +83,44 @@ export function InContextLearning({onDismiss, title}: Props) {
               <div
                 className={styles.InContextLearning}
                 style={{
-                  padding: '1em',
-                  backgroundColor: '#fff',
-                  filter:
-                    'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
                   ...verticalMargin,
                 }}
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 <Header title={title} onDismiss={onDismiss} />
-                {steps[currentStep].component}
-                <Stack
-                  alignment="center"
-                  wrap={false}
-                  distribution="fillEvenly"
-                >
-                  <Stack.Item>
+                <div className={styles.TutorialContent}>
+                  {steps[currentStep].component}
+                </div>
+                <div className={styles.TutorialFooter}>
+                  <Stack
+                    alignment="center"
+                    wrap={false}
+                    distribution="fillEvenly"
+                  >
+                    <Stack.Item>{counterMarkup}</Stack.Item>
                     {showNext && (
-                      <Button primary onClick={handleNext}>
-                        Next
-                      </Button>
+                      <Stack.Item>
+                        <Button primary onClick={handleNext}>
+                          Next
+                        </Button>
+                      </Stack.Item>
                     )}
 
                     {showClose && (
-                      <Button primary onClick={handleClose}>
-                        Got it
-                      </Button>
+                      <Stack.Item>
+                        <Button primary onClick={handleClose}>
+                          Got it
+                        </Button>
+                      </Stack.Item>
                     )}
-                  </Stack.Item>
 
-                  <Stack.Item>{counterMarkup}</Stack.Item>
-
-                  <div style={{textAlign: 'right'}}>
-                    {showBack && <Button onClick={handleBack}>Back</Button>}
-                  </div>
-                </Stack>
+                    {showBack && (
+                      <Stack.Item>
+                        <Button onClick={handleBack}>Back</Button>
+                      </Stack.Item>
+                    )}
+                  </Stack>
+                </div>
               </div>
               {showArrow && (
                 <div
