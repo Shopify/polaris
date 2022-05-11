@@ -71,6 +71,7 @@ export function InContextLearning({onDismiss, title}: Props) {
         activator={currentActivator}
         render={(state) => {
           const isAbove = state.positioning === 'above';
+          const horizontalMargin = {marginLeft: '.5rem', marginRight: '0.5rem'};
           const verticalMargin = isAbove
             ? {marginBottom: '.75rem'}
             : {marginTop: '.75rem'};
@@ -83,6 +84,7 @@ export function InContextLearning({onDismiss, title}: Props) {
               <div
                 className={styles.InContextLearning}
                 style={{
+                  ...horizontalMargin,
                   ...verticalMargin,
                 }}
               >
