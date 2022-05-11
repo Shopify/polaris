@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import {
   Layout,
   Page,
@@ -9,6 +10,7 @@ import {
   Stack,
   Image,
 } from '../src';
+
 import ImageOne from './learner-assets/5.png';
 import ImageTwo from './learner-assets/Rectangle2464.png';
 import styles from './Learner.scss';
@@ -65,7 +67,7 @@ function LearnerApp() {
               <Card.Section title="Items">
                 <List>
                   <List.Item>
-                    <InContextLearning.Step direction="top-left" stepIndex={0}>
+                    <InContextLearning.Step stepIndex={0}>
                       <span>1 × Oasis Glass, 4-Pack</span>
                     </InContextLearning.Step>
                   </List.Item>
@@ -75,7 +77,7 @@ function LearnerApp() {
             </Card>
             <Card>
               <Card.Section title="Collections">
-                <InContextLearning.Step direction="top-right" stepIndex={1}>
+                <InContextLearning.Step stepIndex={1}>
                   <span>another piece of content</span>
                 </InContextLearning.Step>
               </Card.Section>
@@ -83,7 +85,7 @@ function LearnerApp() {
             </Card>
 
             <Stack distribution="trailing">
-              <InContextLearning.Step direction="none" stepIndex={2}>
+              <InContextLearning.Step stepIndex={2}>
                 <span data-learning-step-three>
                   Yet another piece of content!
                 </span>
