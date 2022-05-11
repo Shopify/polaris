@@ -2,22 +2,12 @@
 
 .Header {
   display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-
-.titleHidden {
-  position: absolute;
-  right: var(--p-space-2);
-  z-index: 1;
-
-  .Title {
-    display: none;
-  }
+  align-items: center;
+  margin-bottom: var(--p-space-3);
 }
 
 .Title {
   @include text-breakword;
   flex: 1;
-  margin-top: var(--p-space-1);
+  margin-right: var(--p-space-2);
 }

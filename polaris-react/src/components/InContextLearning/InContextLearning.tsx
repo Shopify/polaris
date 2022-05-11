@@ -1,10 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import {CancelSmallMinor} from '@shopify/polaris-icons';
-
 import {useI18n} from '../../utilities/i18n';
-import {Button} from '../Button';
-import {InContextLearningContext} from './components';
+import {Header, InContextLearningContext} from './components';
 import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
@@ -13,11 +10,13 @@ import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
 import styles from './InContextLearning.scss';
+import {Button} from '../Button';
 interface Props {
   onDismiss(): void;
+  title?: string;
 }
 
-export function InContextLearning({onDismiss}: Props) {
+export function InContextLearning({onDismiss, title}: Props) {
   const i18n = useI18n();
   const [currentStep, setCurrentStep] = useState(0);
   const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
@@ -51,19 +50,6 @@ export function InContextLearning({onDismiss}: Props) {
     console.warn('Close popover');
     onDismiss?.();
   };
-
-  const dismissButton = (
-    <div>
-      <Button
-        plain
-        icon={CancelSmallMinor}
-        onClick={onDismiss}
-        accessibilityLabel={i18n.translate(
-          'Polaris.InContextLearning.accessibilityLabel',
-        )}
-      />
-    </div>
-  );
 
   const showArrow = steps[currentStep].direction != 'none';
 
@@ -105,9 +91,8 @@ export function InContextLearning({onDismiss}: Props) {
                 }}
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-                {dismissButton}
+                <Header title={title} onDismiss={onDismiss} />
                 {steps[currentStep].component}
-
                 <Stack
                   alignment="center"
                   wrap={false}

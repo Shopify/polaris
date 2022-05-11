@@ -156,7 +156,7 @@
       "clearLabel": "Clear {filterName}"
     },
     "InContextLearning": {
-      "accessibilityLabel": "Close tutorial"
+      "accessibilityLabel": "Close {tutorialName} tutorial"
     },
     "IndexProvider": {
       "defaultItemSingular": "Item",

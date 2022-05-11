@@ -37,7 +37,7 @@ function LearnerApp() {
       <Page narrowWidth>
         <Layout>
           <Layout.Section>
-            <InContextLearning onDismiss={() => {}} />
+            <InContextLearning onDismiss={() => {}} title="Shipping Tracking" />
             <Card
               title="Shipment 1234"
               secondaryFooterActions={[
