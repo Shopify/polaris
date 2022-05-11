@@ -1,10 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import {CancelSmallMinor} from '@shopify/polaris-icons';
-
 import {useI18n} from '../../utilities/i18n';
-import {Button} from '../Button';
-import {InContextLearningContext} from './components';
+import {Header, InContextLearningContext} from './components';
 import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
 import {KeypressListener} from '../KeypressListener';
@@ -12,18 +9,21 @@ import {Key} from '../../types';
 import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
-
-import {styles} from '../CustomProperties/styles';
+import styles from './InContextLearning.scss';
+import {Button} from '../Button';
 interface Props {
   onDismiss(): void;
+  title?: string;
 }
 
-export function InContextLearning({onDismiss}: Props) {
+export function InContextLearning({onDismiss, title}: Props) {
   const i18n = useI18n();
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(null);
+  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
+    null,
+  );
 
-  const { steps } = useContext(InContextLearningContext);
+  const {steps} = useContext(InContextLearningContext);
 
   const totalSteps = steps.length;
   const hasMultipleSteps = totalSteps > 1;
@@ -50,19 +50,6 @@ export function InContextLearning({onDismiss}: Props) {
     console.warn('Close popover');
     onDismiss?.();
   };
-
-  const dismissButton = (
-    <div>
-      <Button
-        plain
-        icon={CancelSmallMinor}
-        onClick={onDismiss}
-        accessibilityLabel={i18n.translate(
-          'Polaris.InContextLearning.accessibilityLabel',
-        )}
-      />
-    </div>
-  );
 
   const showArrow = steps[currentStep].direction != 'none';
 
@@ -94,43 +81,51 @@ export function InContextLearning({onDismiss}: Props) {
           return (
             <>
               <div
+                className={styles.InContextLearning}
                 style={{
-                  padding: '1em',
-                  backgroundColor: '#fff',
-                  filter:
-                    'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
                   ...verticalMargin,
                 }}
               >
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-                {dismissButton}
-                {steps[currentStep].component}
-
-                <Stack
-                  alignment="center"
-                  wrap={false}
-                  distribution="fillEvenly"
-                >
-                  <Stack.Item>
-                    {showNext && (
-                      <Button primary onClick={handleNext}>
-                        Next
-                      </Button>
-                    )}
-
-                    {showClose && (
-                      <Button primary onClick={handleClose}>
-                        Got it
-                      </Button>
-                    )}
-                  </Stack.Item>
-
-                  <Stack.Item>{counterMarkup}</Stack.Item>
-
-                  <div style={{textAlign: 'right'}}>
-                    {showBack && <Button onClick={handleBack}>Back</Button>}
-                  </div>
-                </Stack>
+                <Header title={title} onDismiss={onDismiss} />
+                <div className={styles.TutorialContent}>
+                  {steps[currentStep].component}
+                </div>
+                <div className={styles.TutorialFooter}>
+                  <Stack
+                    alignment="center"
+                    wrap={false}
+                    distribution="fillEvenly"
+                  >
+                    <Stack.Item>
+                      {hasMultipleSteps && (
+                        <TextStyle variation="subdued">
+                          {currentStep + 1} of {totalSteps}
+                        </TextStyle>
+                      )}
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Stack
+                        alignment="center"
+                        wrap={false}
+                        spacing="tight"
+                        distribution="trailing"
+                      >
+                        {showBack && <Button onClick={handleBack}>Back</Button>}
+                        {showNext && (
+                          <Button primary onClick={handleNext}>
+                            Next
+                          </Button>
+                        )}
+                        {showClose && (
+                          <Button primary onClick={handleClose}>
+                            Got it
+                          </Button>
+                        )}
+                      </Stack>
+                    </Stack.Item>
+                  </Stack>
+                </div>
               </div>
               {showArrow && (
                 <div

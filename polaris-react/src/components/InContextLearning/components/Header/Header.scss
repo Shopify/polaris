@@ -1,0 +1,13 @@
+@import '../../../../styles/common';
+
+.Header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--p-space-3);
+}
+
+.Title {
+  @include text-breakword;
+  flex: 1;
+  margin-right: var(--p-space-2);
+}
