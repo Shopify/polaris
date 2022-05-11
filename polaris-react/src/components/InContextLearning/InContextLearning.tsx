@@ -63,10 +63,6 @@ export function InContextLearning({onDismiss, title}: Props) {
             styles.InContextLearning,
             state.positioning === 'above' ? styles.above : styles.below,
           );
-          const arrowClassName = classNames(
-            styles.Arrow,
-            state.positioning === 'above' ? styles.above : styles.below,
-          );
 
           return (
             <>
@@ -119,7 +115,6 @@ export function InContextLearning({onDismiss, title}: Props) {
                   </Stack>
                 </div>
               </div>
-              <div className={arrowClassName} />
             </>
           );
         }}
