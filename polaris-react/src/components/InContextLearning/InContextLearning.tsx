@@ -13,7 +13,6 @@ import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
 
-import {styles} from '../CustomProperties/styles';
 interface Props {
   onDismiss(): void;
 }
