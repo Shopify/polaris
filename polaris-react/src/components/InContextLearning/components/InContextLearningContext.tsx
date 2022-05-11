@@ -1,20 +1,8 @@
-import React, { useState } from 'react';
-
-export type DirectionType = 
-  | 'top-left'
-  | 'top-right'
-  | 'right-top'
-  | 'right-bottom'
-  | 'bottom-right'
-  | 'bottom-left'
-  | 'left-top'
-  | 'left-bottom'
-  | 'none';
+import React, {useState} from 'react';
 
 export interface InContextLearningContextProviderStepType {
   component: React.ReactNode;
-  direction?: DirectionType,
-  ref:HTMLElement | null;
+  ref: HTMLElement | null;
 }
 
 export interface InContextLearningContextProviderPropsType {
@@ -22,31 +10,41 @@ export interface InContextLearningContextProviderPropsType {
   stepComponents: React.ReactNode[];
 }
 
-export type registerStepType = (stepIndex: number, ref: HTMLElement | null, direction?: DirectionType) => void;
+export type registerStepType = (
+  stepIndex: number,
+  ref: HTMLElement | null,
+) => void;
 
 export interface InContextLearningContextType {
   registerStep: registerStepType;
   steps: InContextLearningContextProviderStepType[];
 }
 
-export const InContextLearningContext = React.createContext<InContextLearningContextType>({
-  registerStep: ()=> {},
-  steps: [],
-});
+export const InContextLearningContext =
+  React.createContext<InContextLearningContextType>({
+    registerStep: () => {},
+    steps: [],
+  });
 
 export function InContextLearningContextProvider({
   children,
-  stepComponents
+  stepComponents,
 }: InContextLearningContextProviderPropsType) {
-  const [steps, setSteps] = useState(stepComponents.map((component):InContextLearningContextProviderStepType => ({ component, ref: null })));
+  const [steps, setSteps] = useState(
+    stepComponents.map(
+      (component): InContextLearningContextProviderStepType => ({
+        component,
+        ref: null,
+      }),
+    ),
+  );
 
-  const registerStep:registerStepType = (stepIndex, ref, direction) => {
+  const registerStep: registerStepType = (stepIndex, ref) => {
     steps[stepIndex] = {
       ...steps[stepIndex],
-      direction,
-      ref
+      ref,
     };
-    
+
     setSteps([...steps]);
   };
 

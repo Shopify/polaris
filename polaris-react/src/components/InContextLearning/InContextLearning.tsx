@@ -1,16 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import {useI18n} from '../../utilities/i18n';
 import {Header, InContextLearningContext} from './components';
+import {Button} from '../Button';
+import {KeypressListener} from '../KeypressListener';
 import {Portal} from '../Portal';
 import {PositionedOverlay} from '../PositionedOverlay';
-import {KeypressListener} from '../KeypressListener';
-import {Key} from '../../types';
-import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
+import {TextStyle} from '../TextStyle';
+import {useI18n} from '../../utilities/i18n';
+import {classNames} from '../../utilities/css';
+import {Key} from '../../types';
 import {Step} from './components';
 import styles from './InContextLearning.scss';
-import {Button} from '../Button';
 interface Props {
   onDismiss(): void;
   title?: string;
@@ -38,27 +39,15 @@ export function InContextLearning({onDismiss, title}: Props) {
 
   const handleNext = () => {
     setCurrentStep((currentStep) => currentStep + 1);
-    console.warn('Next clicked');
   };
 
   const handleBack = () => {
     setCurrentStep((currentStep) => currentStep - 1);
-    console.warn('Back clicked');
   };
 
   const handleClose = () => {
-    console.warn('Close popover');
     onDismiss?.();
   };
-
-  const showArrow = steps[currentStep].direction != 'none';
-
-  const counterMarkup = hasMultipleSteps ? (
-    <p style={{textAlign: 'center'}}>
-      {currentStep + 1}
-      <TextStyle variation="subdued">/{totalSteps}</TextStyle>
-    </p>
-  ) : null;
 
   if (!currentActivator) {
     return null;
@@ -70,24 +59,14 @@ export function InContextLearning({onDismiss, title}: Props) {
         active={true}
         activator={currentActivator}
         render={(state) => {
-          const isAbove = state.positioning === 'above';
-          const horizontalMargin = {marginLeft: '.5rem', marginRight: '0.5rem'};
-          const verticalMargin = isAbove
-            ? {marginBottom: '.75rem'}
-            : {marginTop: '.75rem'};
-          const arrowStyles = isAbove
-            ? {bottom: '-1rem', borderColor: '#fff transparent transparent'}
-            : {top: '-1rem', borderColor: 'transparent transparent #fff'};
+          const containerClassName = classNames(
+            styles.InContextLearning,
+            state.positioning === 'above' ? styles.above : styles.below,
+          );
 
           return (
             <>
-              <div
-                className={styles.InContextLearning}
-                style={{
-                  ...horizontalMargin,
-                  ...verticalMargin,
-                }}
-              >
+              <div className={containerClassName}>
                 <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
                 <Header title={title} onDismiss={onDismiss} />
                 <div className={styles.TutorialContent}>
@@ -102,7 +81,10 @@ export function InContextLearning({onDismiss, title}: Props) {
                     <Stack.Item>
                       {hasMultipleSteps && (
                         <TextStyle variation="subdued">
-                          {currentStep + 1} of {totalSteps}
+                          {i18n.translate(
+                            'Polaris.InContextLearning.multipleSteps',
+                            {currentStep: currentStep + 1, totalSteps},
+                          )}
                         </TextStyle>
                       )}
                     </Stack.Item>
@@ -113,15 +95,19 @@ export function InContextLearning({onDismiss, title}: Props) {
                         spacing="tight"
                         distribution="trailing"
                       >
-                        {showBack && <Button onClick={handleBack}>Back</Button>}
+                        {showBack && (
+                          <Button onClick={handleBack}>
+                            {i18n.translate('Polaris.Common.back')}
+                          </Button>
+                        )}
                         {showNext && (
                           <Button primary onClick={handleNext}>
-                            Next
+                            {i18n.translate('Polaris.Common.next')}
                           </Button>
                         )}
                         {showClose && (
                           <Button primary onClick={handleClose}>
-                            Got it
+                            {i18n.translate('Polaris.InContextLearning.gotIt')}
                           </Button>
                         )}
                       </Stack>
@@ -129,18 +115,6 @@ export function InContextLearning({onDismiss, title}: Props) {
                   </Stack>
                 </div>
               </div>
-              {showArrow && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 'calc(25% - 1rem)',
-                    borderWidth: '.5rem',
-                    borderStyle: 'solid',
-                    ...verticalMargin,
-                    ...arrowStyles,
-                  }}
-                />
-              )}
             </>
           );
         }}
