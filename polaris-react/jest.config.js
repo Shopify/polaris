@@ -6,7 +6,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/tests/setup/tests.ts'],
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(m?js|tsx?)$': [
+    '\\.(js|tsx?)$': [
       'babel-jest',
       {targets: 'current node', envName: 'test', rootMode: 'upward'},
     ],
