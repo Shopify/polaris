@@ -97,28 +97,33 @@ export function InContextLearning({onDismiss, title}: Props) {
                     wrap={false}
                     distribution="fillEvenly"
                   >
-                    <Stack.Item>{counterMarkup}</Stack.Item>
-                    {showNext && (
-                      <Stack.Item>
-                        <Button primary onClick={handleNext}>
-                          Next
-                        </Button>
-                      </Stack.Item>
-                    )}
-
-                    {showClose && (
-                      <Stack.Item>
-                        <Button primary onClick={handleClose}>
-                          Got it
-                        </Button>
-                      </Stack.Item>
-                    )}
-
-                    {showBack && (
-                      <Stack.Item>
-                        <Button onClick={handleBack}>Back</Button>
-                      </Stack.Item>
-                    )}
+                    <Stack.Item>
+                      {hasMultipleSteps && (
+                        <TextStyle variation="subdued">
+                          {currentStep + 1} of {totalSteps}
+                        </TextStyle>
+                      )}
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Stack
+                        alignment="center"
+                        wrap={false}
+                        spacing="tight"
+                        distribution="trailing"
+                      >
+                        {showBack && <Button onClick={handleBack}>Back</Button>}
+                        {showNext && (
+                          <Button primary onClick={handleNext}>
+                            Next
+                          </Button>
+                        )}
+                        {showClose && (
+                          <Button primary onClick={handleClose}>
+                            Got it
+                          </Button>
+                        )}
+                      </Stack>
+                    </Stack.Item>
                   </Stack>
                 </div>
               </div>
