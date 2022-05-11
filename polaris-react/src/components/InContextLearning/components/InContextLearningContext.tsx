@@ -14,7 +14,7 @@ export type DirectionType =
 export interface InContextLearningContextProviderStepType {
   component: React.ReactNode;
   direction?: DirectionType,
-  ref?:HTMLElement;
+  ref:HTMLElement | null;
 }
 
 export interface InContextLearningContextProviderPropsType {
@@ -22,8 +22,10 @@ export interface InContextLearningContextProviderPropsType {
   stepComponents: React.ReactNode[];
 }
 
+export type registerStepType = (stepIndex: number, ref: HTMLElement | null, direction?: DirectionType) => void;
+
 export interface InContextLearningContextType {
-  registerStep: (stepIndex: number, direction?: DirectionType, ref?: HTMLElement) => void;
+  registerStep: registerStepType;
   steps: InContextLearningContextProviderStepType[];
 }
 
@@ -36,9 +38,9 @@ export function InContextLearningContextProvider({
   children,
   stepComponents
 }: InContextLearningContextProviderPropsType) {
-  const [steps, setSteps] = useState(stepComponents.map((component):InContextLearningContextProviderStepType => ({ component })));
+  const [steps, setSteps] = useState(stepComponents.map((component):InContextLearningContextProviderStepType => ({ component, ref: null })));
 
-  const registerStep = (stepIndex: number, direction: DirectionType, ref: HTMLElement):void => {
+  const registerStep:registerStepType = (stepIndex, ref, direction) => {
     steps[stepIndex] = {
       ...steps[stepIndex],
       direction,

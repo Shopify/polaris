@@ -25,7 +25,7 @@ export function Step({
   const {registerStep} = useContext(InContextLearningContext); 
   
   useEffect(() => {
-    registerStep(stepIndex, direction, stepRef.current ?? undefined);
+    registerStep(stepIndex, stepRef.current, direction);
   }, []);
 
   return (
