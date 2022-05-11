@@ -1,0 +1,24 @@
+.Frames {
+  width: 600px;
+  height: 120px;
+  border: 1px solid black;
+  padding: 40px;
+}
+
+.Frame {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.IsPlaying {
+  .Frame {
+    background-color: rgba(0,0,0,0.5);
+  }
+}
