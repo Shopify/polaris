@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 export const InContextLearningContext = React.createContext({
-  registerStep: ()=> {},
+  registerStep: () => {},
   steps: [],
 });
 
-export type DirectionType = 
+export type DirectionType =
   | 'top-left'
   | 'top-right'
   | 'right-top'
@@ -18,8 +18,8 @@ export type DirectionType =
 
 export interface InContextLearningContextProviderStepType {
   component: React.FunctionComponent[];
-  direction?: DirectionType,
-  ref?:HTMLElement;
+  direction?: DirectionType;
+  ref?: HTMLElement;
 }
 
 export interface InContextLearningContextProviderPropsType {
@@ -29,17 +29,25 @@ export interface InContextLearningContextProviderPropsType {
 
 export function InContextLearningContextProvider({
   children,
-  stepComponents
+  stepComponents,
 }: InContextLearningContextProviderPropsType) {
-  const [steps, setSteps] = useState(stepComponents.map(component => ({ component })));
+  const [steps, setSteps] = useState(
+    stepComponents.map((component) => ({component})),
+  );
 
-  const registerStep = (stepIndex: number, direction: DirectionType, ref: HTMLElement):void => {
+  const registerStep = (
+    stepIndex: number,
+    direction: DirectionType,
+    ref: HTMLElement,
+    title: string,
+  ): void => {
     steps[stepIndex] = {
       ...steps[stepIndex],
       direction,
-      ref
+      ref,
+      title,
     };
-    
+
     setSteps([...steps]);
   };
 

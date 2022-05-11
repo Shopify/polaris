@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import { InContextLearningContext } from './InContextLearningContext';
+import {InContextLearningContext} from './InContextLearningContext';
 
 interface Props {
-  children?:React.ReactNode;
+  children?: React.ReactNode;
   direction?:
     | 'top-left'
     | 'top-right'
@@ -14,23 +14,16 @@ interface Props {
     | 'left-bottom'
     | 'none';
   stepIndex: Number;
+  title?: React.ReactNode;
 }
 
-export function Step({
-  children,
-  direction,
-  stepIndex
-}: Props) {
+export function Step({children, direction, stepIndex, title}: Props) {
   const stepRef = useRef(null);
-  const {registerStep} = useContext(InContextLearningContext); 
-  
+  const {registerStep} = useContext(InContextLearningContext);
+
   useEffect(() => {
-    registerStep(stepIndex, direction, stepRef.current);
+    registerStep(stepIndex, direction, stepRef.current, title);
   }, []);
 
-  return (
-    <span ref={stepRef}>
-      {children}
-    </span>
-  );
+  return <span ref={stepRef}>{children}</span>;
 }

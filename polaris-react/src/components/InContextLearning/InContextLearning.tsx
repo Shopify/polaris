@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import {CancelSmallMinor} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
 import {Button} from '../Button';
@@ -12,30 +12,40 @@ import {Key} from '../../types';
 import {TextStyle} from '../TextStyle';
 import {Stack} from '../Stack';
 import {Step} from './components';
+import {classNames} from '../../utilities/css';
 
-import {styles} from '../CustomProperties/styles';
+import styles from './InContextLearning.scss';
+
 interface Props {
-  onDismiss(): void;
+  onDismiss?(): void;
 }
 
 export function InContextLearning({onDismiss}: Props) {
   const i18n = useI18n();
+  const [visible, setVisible] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(null);
+  const [currentActivator, setCurrentActivator] = useState<HTMLElement | null>(
+    null,
+  );
 
-  const { steps } = useContext(InContextLearningContext);
+  const {steps} = useContext(InContextLearningContext);
+  const {title, component, ref: currentStepRef, direction} = steps[currentStep];
 
   const totalSteps = steps.length;
   const hasMultipleSteps = totalSteps > 1;
 
   useEffect(() => {
-    setCurrentActivator(steps[currentStep].ref ?? null);
+    setCurrentActivator(currentStepRef ?? null);
   }, [currentStep, steps]);
 
   const showBack = hasMultipleSteps && currentStep > 0;
   const showNext = hasMultipleSteps && currentStep + 1 < totalSteps;
   const showClose = !showNext;
 
+  const handleDismiss = () => {
+    onDismiss?.();
+    setVisible(false);
+  };
   const handleNext = () => {
     setCurrentStep((currentStep) => currentStep + 1);
     console.warn('Next clicked');
@@ -48,31 +58,24 @@ export function InContextLearning({onDismiss}: Props) {
 
   const handleClose = () => {
     console.warn('Close popover');
-    onDismiss?.();
+    handleDismiss;
   };
 
   const dismissButton = (
     <div>
       <Button
         plain
-        icon={CancelSmallMinor}
-        onClick={onDismiss}
+        icon={MobileCancelMajor}
+        onClick={handleDismiss}
         accessibilityLabel={i18n.translate(
           'Polaris.InContextLearning.accessibilityLabel',
         )}
       />
     </div>
   );
-  const showArrow = steps[currentStep].direction != 'none';
+  const showArrow = direction != 'none';
 
-  const counterMarkup = hasMultipleSteps ? (
-    <p style={{textAlign: 'center'}}>
-      {currentStep + 1}
-      <TextStyle variation="subdued">/{totalSteps}</TextStyle>
-    </p>
-  ) : null;
-
-  if (!currentActivator) {
+  if (!currentActivator || !visible) {
     return null;
   }
 
@@ -85,55 +88,56 @@ export function InContextLearning({onDismiss}: Props) {
           return (
             <>
               <div
-                style={{
-                  padding: '1em',
-                  backgroundColor: '#fff',
-                  filter:
-                    'drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15))',
-                }}
+                className={classNames(
+                  styles.InContextLearningWrapper,
+                  showArrow && styles.withArrow,
+                )}
               >
-                <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-                {dismissButton}
-                {steps[currentStep].component}
-
-                <Stack
-                  alignment="center"
-                  wrap={false}
-                  distribution="fillEvenly"
-                >
-                  <Stack.Item>
-                    {showNext && (
-                      <Button primary onClick={handleNext}>
-                        Next
-                      </Button>
-                    )}
-
-                    {showClose && (
-                      <Button primary onClick={handleClose}>
-                        Got it
-                      </Button>
-                    )}
-                  </Stack.Item>
-
-                  <Stack.Item>{counterMarkup}</Stack.Item>
-
-                  <div style={{textAlign: 'right'}}>
-                    {showBack && <Button onClick={handleBack}>Back</Button>}
+                <KeypressListener
+                  keyCode={Key.Escape}
+                  handler={handleDismiss}
+                />
+                <Stack vertical spacing="baseTight">
+                  <div className={styles['InContextLearning-header']}>
+                    <TextStyle variation="strong">{title}</TextStyle>
+                    {dismissButton}
                   </div>
+                  {component}
+                  <Stack
+                    alignment="center"
+                    wrap={false}
+                    distribution="fillEvenly"
+                  >
+                    <Stack.Item>
+                      {hasMultipleSteps && (
+                        <TextStyle variation="subdued">
+                          {currentStep + 1} of {totalSteps}
+                        </TextStyle>
+                      )}
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Stack
+                        alignment="center"
+                        wrap={false}
+                        spacing="tight"
+                        distribution="trailing"
+                      >
+                        {showBack && <Button onClick={handleBack}>Back</Button>}
+                        {showNext && (
+                          <Button primary onClick={handleNext}>
+                            Next
+                          </Button>
+                        )}
+                        {showClose && (
+                          <Button primary onClick={handleClose}>
+                            Got it
+                          </Button>
+                        )}
+                      </Stack>
+                    </Stack.Item>
+                  </Stack>
                 </Stack>
               </div>
-              {showArrow && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '-1rem',
-                    left: '50%',
-                    borderWidth: '.5rem',
-                    borderStyle: 'solid',
-                    borderColor: 'transparent transparent #fff transparent',
-                  }}
-                />
-              )}
             </>
           );
         }}

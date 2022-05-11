@@ -13,12 +13,12 @@ import {
 import styles from './Learner.scss';
 
 function StepOne() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   return (
     <span>
-      <button onClick={() => setCount(count + 1)}>Plus</button>
+      {/* <button onClick={() => setCount(count + 1)}>Plus</button> */}
       <p>Step 1: Testing React</p>
-      {count}
+      {/* {count} */}
     </span>
   );
 }
@@ -48,7 +48,11 @@ function LearnerApp() {
               <Card.Section title="Items">
                 <List>
                   <List.Item>
-                    <InContextLearning.Step direction="top-left" stepIndex={0}>
+                    <InContextLearning.Step
+                      direction="top-left"
+                      stepIndex={0}
+                      title="Title step 1"
+                    >
                       <span>1 × Oasis Glass, 4-Pack</span>
                     </InContextLearning.Step>
                   </List.Item>
@@ -58,7 +62,11 @@ function LearnerApp() {
             </Card>
             <Card>
               <Card.Section title="Collections">
-                <InContextLearning.Step direction="top-right" stepIndex={1}>
+                <InContextLearning.Step
+                  direction="top-right"
+                  stepIndex={1}
+                  title="Title step 2"
+                >
                   <span>another piece of content</span>
                 </InContextLearning.Step>
               </Card.Section>

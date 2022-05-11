@@ -1,0 +1,23 @@
+.InContextLearningWrapper {
+  padding: var(--p-space-5);
+  background-color: var(--p-surface);
+  box-shadow: var(--p-shadow-popover);
+  width: max(300px, 100%);
+  border-radius: var(--p-border-radius-2);
+  border-radius: 0.75em;
+}
+
+.withArrow::before {
+  content: ' ';
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+.InContextLearning-header {
+  display: flex;
+  justify-content: space-between;
+}
