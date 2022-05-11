@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-
+import React from 'react';
 import {
   Layout,
   Page,
@@ -8,27 +7,38 @@ import {
   InContextLearning,
   InContextLearningContextProvider,
   Stack,
+  Image,
 } from '../src';
-
+import ImageOne from './learner-assets/5.png';
+import ImageTwo from './learner-assets/Rectangle2464.png';
 import styles from './Learner.scss';
 
 function StepOne() {
-  const [count, setCount] = useState(0);
   return (
-    <span>
-      <button onClick={() => setCount(count + 1)}>Plus</button>
-      <p>Step 1: Testing React</p>
-      {count}
-    </span>
+    <div style={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
+      <p>
+        Body of rich tooltip, where the text can be longer to explain content of
+        a specific feature where the tooltip is pointing at. Learn more.
+      </p>
+      <Image source={ImageOne} alt="image one" />
+    </div>
   );
 }
 
 function StepTwo() {
-  return <span>Step 2: Testing React</span>;
+  return (
+    <div style={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
+      <Image source={ImageTwo} alt="image one" />
+      <p>
+        Body of rich tooltip, where the text can be longer to explain content of
+        a specific feature where the tooltip is pointing at. Learn more.
+      </p>
+    </div>
+  );
 }
 
 function StepThree() {
-  return <span>Step 3: Testing React</span>;
+  return 'Body of rich tooltip, where the text can be longer to explain content of a  specific feature where the tooltip is pointing at. Learn more.';
 }
 
 function LearnerApp() {

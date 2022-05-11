@@ -1,6 +1,6 @@
 .InContextLearning {
   position: relative;
-  min-width: 250px;
+  width: 250px;
   border-radius: var(--p-border-radius-2);
   padding: var(--p-space-5);
   background-color: var(--p-surface);
@@ -9,6 +9,10 @@
 }
 .TutorialContent {
   margin: var(--p-space-3) 0;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 .TutorialFooter {
   margin-top: var(--p-space-3);
