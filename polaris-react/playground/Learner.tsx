@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Layout,
   Page,
@@ -42,12 +42,19 @@ function StepThree() {
 }
 
 function LearnerApp() {
+  const [inContextLearningVisible, setInContextLearningVisible] =
+    useState(true);
   return (
     <div className={styles.Root}>
       <Page narrowWidth>
         <Layout>
           <Layout.Section>
-            <InContextLearning onDismiss={() => {}} title="Shipping Tracking" />
+            {inContextLearningVisible && (
+              <InContextLearning
+                onDismiss={() => setInContextLearningVisible(false)}
+                title="Shipping Tracking"
+              />
+            )}
             <Card
               title="Shipment 1234"
               secondaryFooterActions={[
