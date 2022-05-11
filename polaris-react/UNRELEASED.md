@@ -10,6 +10,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Bug fixes
 
+- Fixed vertical scroll on small screens in `EmptyState` ([#5779](https://github.com/Shopify/polaris/pull/5779))
+
 ### Documentation
 
 ### Development workflow
