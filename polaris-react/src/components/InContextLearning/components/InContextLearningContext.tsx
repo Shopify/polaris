@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 
-export const InContextLearningContext = React.createContext({
-  registerStep: ()=> {},
-  steps: [],
-});
-
 export type DirectionType = 
   | 'top-left'
   | 'top-right'
@@ -17,9 +12,9 @@ export type DirectionType =
   | 'none';
 
 export interface InContextLearningContextProviderStepType {
-  component: React.FunctionComponent[];
+  component: React.ReactNode;
   direction?: DirectionType,
-  ref?:HTMLElement;
+  ref:HTMLElement | null;
 }
 
 export interface InContextLearningContextProviderPropsType {
@@ -27,13 +22,25 @@ export interface InContextLearningContextProviderPropsType {
   stepComponents: React.ReactNode[];
 }
 
+export type registerStepType = (stepIndex: number, ref: HTMLElement | null, direction?: DirectionType) => void;
+
+export interface InContextLearningContextType {
+  registerStep: registerStepType;
+  steps: InContextLearningContextProviderStepType[];
+}
+
+export const InContextLearningContext = React.createContext<InContextLearningContextType>({
+  registerStep: ()=> {},
+  steps: [],
+});
+
 export function InContextLearningContextProvider({
   children,
   stepComponents
 }: InContextLearningContextProviderPropsType) {
-  const [steps, setSteps] = useState(stepComponents.map(component => ({ component })));
+  const [steps, setSteps] = useState(stepComponents.map((component):InContextLearningContextProviderStepType => ({ component, ref: null })));
 
-  const registerStep = (stepIndex: number, direction: DirectionType, ref: HTMLElement):void => {
+  const registerStep:registerStepType = (stepIndex, ref, direction) => {
     steps[stepIndex] = {
       ...steps[stepIndex],
       direction,

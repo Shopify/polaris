@@ -13,7 +13,7 @@ interface Props {
     | 'left-top'
     | 'left-bottom'
     | 'none';
-  stepIndex: Number;
+  stepIndex: number;
 }
 
 export function Step({
@@ -25,7 +25,7 @@ export function Step({
   const {registerStep} = useContext(InContextLearningContext); 
   
   useEffect(() => {
-    registerStep(stepIndex, direction, stepRef.current);
+    registerStep(stepIndex, stepRef.current, direction);
   }, []);
 
   return (
