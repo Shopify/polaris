@@ -1,4 +1,5 @@
 const path = require('path');
+
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -39,7 +40,7 @@ module.exports = (env, argv) => ({
   resolve: {extensions: ['.tsx', '.ts', '.jsx', '.js']},
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new HtmlWebpackPlugin({
