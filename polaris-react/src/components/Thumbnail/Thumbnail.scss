@@ -1,11 +1,15 @@
 @import '../../styles/common';
 
 .Thumbnail {
+  --pc-thumbnail-extra-small-size: 24px;
+  --pc-thumbnail-small-size: 40px;
+  --pc-thumbnail-medium-size: 60px;
+  --pc-thumbnail-large-size: 80px;
   position: relative;
   display: block;
   overflow: hidden;
   background: var(--p-surface);
-  min-width: 40px;
+  min-width: var(--pc-thumbnail-extra-small-size);
   max-width: 100%;
   border-radius: var(--p-border-radius-1);
   border: var(--p-border-divider);
@@ -17,16 +21,20 @@
   }
 }
 
+.sizeExtraSmall {
+  width: var(--pc-thumbnail-extra-small-size);
+}
+
 .sizeSmall {
-  width: 40px;
+  width: var(--pc-thumbnail-small-size);
 }
 
 .sizeMedium {
-  width: 60px;
+  width: var(--pc-thumbnail-medium-size);
 }
 
 .sizeLarge {
-  width: 80px;
+  width: var(--pc-thumbnail-large-size);
 }
 
 .transparent {
