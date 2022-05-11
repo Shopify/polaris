@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import {Token} from './types';
 import apiColorTokens from './tokens/apiTokenColors.json';
 
@@ -34,10 +35,7 @@ export const solidPaintToRgba = (solidPaint: SolidPaint): RGBA => {
 
 export function rgbaDistance(a: RGBA, b: RGBA): number {
   return Math.sqrt(
-    Math.pow(a.r - b.r, 2) +
-      Math.pow(a.g - b.g, 2) +
-      Math.pow(a.b - b.b, 2) +
-      Math.pow(a.a - b.a, 2),
+    (a.r - b.r) ** 2 + (a.g - b.g) ** 2 + (a.b - b.b) ** 2 + (a.a - b.a) ** 2,
   );
 }
 
@@ -114,7 +112,7 @@ function getRelevantTokens(
     if (layerType && strokeTypes.includes(layerType)) {
       return [...borderTokens, ...dividerTokens];
     }
-    if (layerType === 'VECTOR' || 'LINE') {
+    if (layerType === 'VECTOR' || layerType === 'LINE') {
       return [
         ...backgroundTokens,
         ...surfaceTokens,

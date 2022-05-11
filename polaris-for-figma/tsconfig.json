@@ -1,4 +1,5 @@
 {
+  "extends": "@shopify/typescript-configs/node-base",
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es2017",
