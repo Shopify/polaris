@@ -6,13 +6,13 @@ Official Figma plugin for building with the Shopify [Polaris Design System](http
 
 Install dependencies
 
-```bash
+```sh
 yarn
 ```
 
 Start the development server
 
-```bash
+```sh
 yarn run watch
 ```
 
