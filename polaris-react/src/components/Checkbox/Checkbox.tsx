@@ -27,6 +27,8 @@ export interface CheckboxProps {
   label: React.ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
+  /** Alternate label styles */
+  labelBold?: boolean;
   /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
   checked?: boolean | 'indeterminate';
   /** Additional text to aide in use */
@@ -56,6 +58,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ariaDescribedBy: ariaDescribedByProp,
       label,
       labelHidden,
+      labelBold,
       checked = false,
       helpText,
       disabled,
@@ -150,6 +153,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         id={id}
         label={label}
         labelHidden={labelHidden}
+        labelBold={labelBold}
         helpText={helpText}
         error={error}
         disabled={disabled}

@@ -74,3 +74,16 @@
   @include text-emphasis-subdued;
   margin-bottom: var(--p-space-1);
 }
+
+.LabelBold {
+  font-weight: var(--p-font-weight-medium);
+  font-size: var(--p-font-size-3);
+}
+
+.ControlBold {
+  margin-right: var(--p-space-4);
+}
+
+.DescriptionsBold {
+  padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+}

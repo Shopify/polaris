@@ -106,6 +106,7 @@ export function ChoiceList({
           checked={choiceIsSelected(choice, selected)}
           helpText={helpText}
           onChange={handleChange}
+          labelBold
           ariaDescribedBy={
             error && describedByError ? errorTextID(finalName) : null
           }

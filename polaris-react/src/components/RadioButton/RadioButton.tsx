@@ -14,6 +14,8 @@ export interface RadioButtonProps {
   label: React.ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
+  /** Alternate label styles */
+  labelBold?: boolean;
   /** Radio button is selected */
   checked?: boolean;
   /** Additional text to aid in use */
@@ -38,6 +40,7 @@ export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
   label,
   labelHidden,
+  labelBold,
   helpText,
   checked,
   disabled,
@@ -97,6 +100,7 @@ export function RadioButton({
     <Choice
       label={label}
       labelHidden={labelHidden}
+      labelBold={labelBold}
       disabled={disabled}
       id={id}
       helpText={helpText}
