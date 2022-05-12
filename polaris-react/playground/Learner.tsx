@@ -40,7 +40,12 @@ function StepTwo() {
 }
 
 function StepThree() {
-  return 'Body of rich tooltip, where the text can be longer to explain content of a  specific feature where the tooltip is pointing at. Learn more.';
+  return (
+    <span>
+      Body of rich tooltip, where the text can be longer to explain content of a
+      specific feature where the tooltip is pointing at. Learn more.
+    </span>
+  );
 }
 
 function LearnerApp() {

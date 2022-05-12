@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import {InContextLearningContext} from './InContextLearningContext';
+import {InContextLearningContext} from '../InContextLearningContext';
 
 interface Props {
   children?: React.ReactNode;
