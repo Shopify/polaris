@@ -1,15 +1,17 @@
-export type Token = {
+import '@figma/plugin-typings';
+
+export interface Token {
   id: string;
   name: string;
   figmaName: string;
   value: RGBA;
-};
+}
 
-type LintedLayerColorInfo = {
+interface LintedLayerColorInfo {
   isToken?: boolean;
   color: RGBA;
   closestToken?: Token;
-};
+}
 export interface LintedLayer {
   id: string;
   name: string;
@@ -51,26 +53,26 @@ export interface UIMessagePayload {
   pluginMessage: UIMessage;
 }
 
-type TokenMapPluginMessage = {
+interface TokenMapPluginMessage {
   type: 'linted-layer-list';
   data: {
     lintedLayers: LintedLayer[];
   };
-};
+}
 
-type TotalLayerCountPluginMessage = {
+interface TotalLayerCountPluginMessage {
   type: 'total-layer-count';
   data: {
     totalLayerCount: number;
   };
-};
+}
 
-type LayerCountPluginMessage = {
+interface LayerCountPluginMessage {
   type: 'linted-layer-count';
   data: {
     layerCount: number;
   };
-};
+}
 
 export type PluginMessage =
   | TokenMapPluginMessage

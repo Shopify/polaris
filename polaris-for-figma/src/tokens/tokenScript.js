@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const apiColorTokens = require('./apiTokenColors.json');
 const colorStyles = require('./colorStyles.json');
 
