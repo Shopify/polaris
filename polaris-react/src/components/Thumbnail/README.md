@@ -27,7 +27,8 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 
 On web, thumbnails should:
 
-- Be one of 3 sizes:
+- Be one of 4 sizes:
+  - Extra small (24 x 24 px): use in tightly condensed layouts
   - Small (40 × 40 px): use when the medium size is too large for the layout, or when the thumbnail has less importance.
   - Medium (60 × 60 px): use as the default size.
   - Large (80 × 80 px): use when an thumbnail is a major focal point. Avoid this size in lists of like items.
@@ -77,6 +78,20 @@ Use as the default size.
 ![Default thumbnail](/public_images/components/Thumbnail/ios/default@2x.png)
 
 <!-- /content-for -->
+
+### Extra small thumbnail
+
+<!-- example-for: web -->
+
+Use to present a thumbnail in a condensed layout, such as a data table cell or an action list item.
+
+```jsx
+<Thumbnail
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  size="extraSmall"
+  alt="Black choker necklace"
+/>
+```
 
 ### Small thumbnail
 

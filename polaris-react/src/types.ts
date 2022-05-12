@@ -219,10 +219,14 @@ export interface MenuGroupDescriptor extends BadgeAction {
   icon?: IconableAction['icon'];
   /** Action details */
   details?: React.ReactNode;
+  /** Disables action button */
+  disabled?: boolean;
   /** Zero-indexed numerical position. Overrides the group's order in the menu. */
   index?: number;
   /** Callback when any action takes place */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Callback when the menu is clicked */
+  onClick?(openActions: () => void): void;
 }
 
 export interface ConnectedDisclosure {

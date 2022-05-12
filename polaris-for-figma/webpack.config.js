@@ -31,7 +31,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader'],
       },
       {test: /\.(png|jpg|gif|webp|svg)$/, loader: [{loader: 'url-loader'}]},
     ],
@@ -51,6 +51,6 @@ module.exports = (env, argv) => ({
     new HtmlWebpackInlineSourcePlugin(),
   ],
   node: {
-    fs: "empty"
-  }
+    fs: 'empty',
+  },
 });

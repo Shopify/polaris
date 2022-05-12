@@ -35,8 +35,8 @@ const groupedCompletionItems = Object.fromEntries(
         tokenGroup,
       ).map(
         ([token, {value}]): CompletionItem => ({
-          label: token,
-          insertText: `var(${createVar(token)})`,
+          label: createVar(token),
+          insertText: `${createVar(token)}`,
           detail: value,
           filterText: createVar(token),
           kind:
