@@ -120,6 +120,7 @@ export function Cell({
 
   const stickyHeading = (
     <div
+      key={key}
       ref={setRef}
       {...headerCell.props}
       {...colSpanProp}

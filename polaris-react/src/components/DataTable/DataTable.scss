@@ -54,13 +54,13 @@
   border-spacing: 0;
 }
 
-.hoverable {
-  &:hover .Cell {
-    @media #{$p-breakpoints-md-up} {
-      background: var(--p-surface-hovered);
-    }
-  }
-}
+// .hoverable {
+//   &:hover .Cell {
+//     @media #{$p-breakpoints-md-up} {
+//       background: var(--p-surface-hovered);
+//     }
+//   }
+// }
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
 .TableRow + .TableRow {
@@ -163,7 +163,7 @@
 
 .hoverable {
   .Cell-hovered {
-    @include breakpoint-after($breakpoint) {
+    @media #{$p-breakpoints-md-up} {
       background: var(--p-surface-hovered);
     }
   }
@@ -350,7 +350,7 @@
   position: absolute;
 
   background: white;
-  @include breakpoint-before($breakpoint) {
+  @media #{$p-breakpoints-md-down} {
     z-index: 1;
   }
 
