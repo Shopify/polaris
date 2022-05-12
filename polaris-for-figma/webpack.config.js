@@ -2,6 +2,7 @@ const path = require('path');
 
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -22,7 +23,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.m?js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -50,6 +51,11 @@ module.exports = (env, argv) => ({
       chunks: ['ui'],
     }),
     new HtmlWebpackInlineSourcePlugin(),
+  ],
+  externals: [
+    nodeExternals({
+      modulesDir: path.resolve(__dirname, '../node_modules'),
+    }),
   ],
   node: {
     fs: 'empty',

@@ -134,7 +134,7 @@ function App() {
               />
 
               <div>
-                {lintedLayers.map((layer, i) => (
+                {lintedLayers.map((layer) => (
                   <div className="layer" key={layer.id}>
                     <div
                       className="layerNameWrapper"

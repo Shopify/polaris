@@ -1,3 +1,5 @@
+import '@figma/plugin-typings';
+
 export interface Token {
   id: string;
   name: string;

@@ -1,4 +1,5 @@
 /* eslint-disable id-length */
+import '@figma/plugin-typings';
 import {Token} from './types';
 import apiColorTokens from './tokens/apiTokenColors.json';
 
@@ -46,12 +47,12 @@ const backgroundTokens: Token[] = tokensArray.filter(({figmaName}) =>
 const surfaceTokens: Token[] = tokensArray.filter(({figmaName}) =>
   figmaName.startsWith('Surface'),
 );
-const shadowTokens: Token[] = tokensArray.filter(({figmaName}) =>
-  figmaName.startsWith('Shadow'),
-);
-const hintTokens: Token[] = tokensArray.filter(({figmaName}) =>
-  figmaName.startsWith('Hint'),
-);
+// const shadowTokens: Token[] = tokensArray.filter(({figmaName}) =>
+//   figmaName.startsWith('Shadow'),
+// );
+// const hintTokens: Token[] = tokensArray.filter(({figmaName}) =>
+//   figmaName.startsWith('Hint'),
+// );
 const textTokens: Token[] = tokensArray.filter(({figmaName}) =>
   figmaName.startsWith('Text'),
 );
