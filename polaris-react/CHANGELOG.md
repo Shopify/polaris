@@ -40,7 +40,6 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ### Dependency upgrades
 
-- Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
 - Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
 
 ### Code quality
