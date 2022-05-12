@@ -7,7 +7,7 @@
       "group": "build",
       "problemMatcher": [],
       "label": "npm: build",
-      "detail": "yarn workspaces run build"
+      "detail": "yarn build"
     },
     {
       "label": "polaris-for-vscode: start-dev",

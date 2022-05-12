@@ -67,11 +67,11 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. Fork the repository and create your branch from `main`
 1. Run `yarn` in the repository root
 1. If you’ve fixed a bug or added code, make sure to add tests
-1. Ensure the test suite passes with `yarn workspace @shopify/polaris test` (protip: `yarn workspace @shopify/polaris test TestName` is helpful in development)
+1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn type-check`
-1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally with `yarn workspace @shopify/polaris dev`
+1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally in Storybook with `yarn dev`
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Contributor License Agreement (CLA)
@@ -95,25 +95,30 @@ After cloning Polaris, run `yarn` to fetch its dependencies. Then you can run se
 - `yarn lint`
 - `yarn format`
 
-Run commands from a selected workspace using the `yarn workspace` command:
+Run a command in all workspaces with the [`turbo run` command](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task):
 
-- `yarn workspace <workspace_name> <command>`
-
-For example, run commands in the `@shopify/polaris` workspace:
-
-- `yarn workspace @shopify/polaris dev` runs a Storybook server which includes a playground editable at `playground/Playground.tsx`
-- `yarn workspace @shopify/polaris test` runs the complete test suite
-- `yarn workspace @shopify/polaris test <pattern>` runs tests with matching filenames
-
-Run a command in all workspaces with the `yarn workspaces` command:
-
-- `yarn workspaces run <command>` run the chosen Yarn command in each workspace
+- `yarn turbo run <task>` will run the chosen Yarn command in each workspace
 
 This can be helpful for executing scripts across all packages in the monorepo:
 
-- `yarn workspaces run build` will build all packages
+- `yarn turbo run build` will build all packages
+- `yarn turbo run lint` will run the lint task for all packages
+
+Run commands from a selected workspace using the Turborepo [`--filter` flag](https://turborepo.org/docs/core-concepts/filtering):
+
+- `yarn turbo run <task> --filter=<workspace_name>`
+
+You can filter packages by name, directory, include dependents/dependencies, and by changes in git history.
+
+For example, run commands in the `@shopify/polaris` workspace:
+
+- `yarn turbo run dev --filter=@shopify/polaris...` runs a Storybook server and all dependencies in watch mode
+- `yarn turbo run test --filter=@shopify/polaris` runs the complete test suite for only `@shopify/polaris`
 
 We recommend running tests as well as trying your build of a package in a real project, to make sure you don’t introduce any regressions as you work on your change.
+
+- `yarn test` will run tests for all packages
+- `yarn turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
 
 You can test your changes in another project locally using [`yalc`](https://github.com/wclr/yalc).
 
