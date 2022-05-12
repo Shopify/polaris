@@ -27,9 +27,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "references": [
-    {"path": "../polaris-react"},
-    {"path": "../polaris-tokens"}
   ]
 }
