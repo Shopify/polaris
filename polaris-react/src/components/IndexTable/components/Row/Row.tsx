@@ -21,6 +21,7 @@ export interface RowProps {
   subdued?: boolean;
   status?: RowStatus;
   onNavigation?(id: string): void;
+  customClickHandler?(): void;
 }
 
 export const Row = memo(function Row({
@@ -31,6 +32,7 @@ export const Row = memo(function Row({
   subdued,
   status,
   onNavigation,
+  customClickHandler,
 }: RowProps) {
   const {selectable, selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
@@ -100,6 +102,11 @@ export const Row = memo(function Row({
       }
       event.stopPropagation();
       event.preventDefault();
+
+      if (customClickHandler) {
+        customClickHandler();
+        return;
+      }
 
       if (primaryLinkElement.current && !selectMode) {
         isNavigating.current = true;

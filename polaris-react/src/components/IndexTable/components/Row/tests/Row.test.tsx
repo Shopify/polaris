@@ -220,6 +220,23 @@ describe('<Row />', () => {
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
 
+  it('calls customClickHandler when clicked', () => {
+    const customClickHandlerSpy = jest.fn();
+    const row = mountWithTable(
+      <Row {...defaultProps} customClickHandler={customClickHandlerSpy}>
+        <th>
+          <a href="/" data-primary-link>
+            Child
+          </a>
+        </th>
+      </Row>,
+    );
+
+    triggerOnClick(row, 1, defaultEvent);
+
+    expect(customClickHandlerSpy).toHaveBeenCalledTimes(1);
+  });
+
   it('calls handleInteraction when clicked and no primary link child present', () => {
     const onSelectionChangeSpy = jest.fn();
     const row = mountWithTable(
