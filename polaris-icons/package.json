@@ -57,7 +57,6 @@
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",
     "hast-util-select": "^3.0.0",
-    "jest": "^27.5.1",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
     "rollup": "^2.28.1",
