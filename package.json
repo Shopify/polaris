@@ -33,6 +33,7 @@
     "@shopify/eslint-plugin": "^41.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",
+    "@shopify/stylelint-polaris": "*",
     "@shopify/typescript-configs": "^5.1.0",
     "eslint": "^8.3.0",
     "jest": "^27.5.1",

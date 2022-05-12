@@ -2759,6 +2759,13 @@
     stylelint-prettier "^2.0.0"
     stylelint-scss "^4.0.0"
 
+"@shopify/stylelint-polaris@*":
+  version "0.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@shopify/stylelint-polaris/-/stylelint-polaris-0.0.0-alpha.6.tgz#177bf4a6ed45fd0e3cb46f619a37a5696ab2ca9e"
+  integrity sha512-KE84eR3vCB5sDQG/o3rQetqVF9152/SaBjWsg/c3fKI3IkfCnPymkaKVtPuTS5lXLiUUrCWXMgo1fnBW9192zQ==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+
 "@shopify/typescript-configs@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz#f6e8fdd3291bf0a406578b2c6eb21f8c542d3c0a"
