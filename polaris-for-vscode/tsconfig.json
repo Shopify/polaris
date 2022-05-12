@@ -1,8 +1,11 @@
 {
-  "files": [],
-  "references": [
-    {"path": "./client"},
-    {"path": "./server"},
-    {"path": "../polaris-tokens"}
-  ]
+  "extends": "@shopify/typescript-configs/node-base",
+  "compilerOptions": {
+    "composite": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"]
 }

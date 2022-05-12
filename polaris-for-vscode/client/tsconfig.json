@@ -1,9 +1,0 @@
-{
-  "extends": "@shopify/typescript-configs/node-base",
-  "compilerOptions": {
-    "composite": true,
-    "outDir": "dist",
-    "rootDir": "src"
-  },
-  "include": ["src"]
-}
