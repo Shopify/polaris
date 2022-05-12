@@ -28,13 +28,12 @@
     "onLanguage:css",
     "onLanguage:scss"
   ],
-  "main": "./client/dist/extension.js",
+  "main": "./dist/client.js",
   "scripts": {
     "build": "tsc -b",
     "dev": "tsc -b -w",
     "lint": "TIMING=1 eslint --cache .",
-    "clean": "rm -rf .turbo node_modules client/dist server/dist",
-    "vscode:prepublish": "yarn build"
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
     "@shopify/polaris-tokens": "*",
