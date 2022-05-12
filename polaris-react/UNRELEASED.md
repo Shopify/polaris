@@ -16,8 +16,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Dependency upgrades
 
-- Removed `lodash` ([#](https://github.com/Shopify/polaris/pull/))
-
 ### Code quality
 
 ### Deprecations
