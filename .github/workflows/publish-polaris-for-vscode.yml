@@ -23,7 +23,7 @@ jobs:
         run: yarn
 
       - name: Run Tests
-        run: yarn test
+        run: yarn turbo run test --filter=@shopify/polaris-for-vscode
 
       - name: Publish extension in the marketplace
         run: yarn workspace polaris-for-vscode vsce publish --yarn
