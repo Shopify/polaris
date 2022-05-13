@@ -1,6 +1,10 @@
 {
   "name": "polaris-migrator",
   "version": "1.0.0",
-  "main": "index.mjs",
-  "license": "MIT"
+  "main": "src/index.mjs",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "glob": "^8.0.2",
+    "meow": "^10.1.2"
+  }
 }
