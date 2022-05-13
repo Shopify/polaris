@@ -5,8 +5,6 @@
 **/*.ts
 *.vsix
 CONTRIBUTING.md
-docs
-!docs/polaris-icon.png
 scripts
 src
 node_modules
