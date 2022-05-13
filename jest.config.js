@@ -5,6 +5,7 @@ module.exports = {
     '<rootDir>/polaris-icons',
     '<rootDir>/polaris-react',
     '<rootDir>/polaris-tokens',
+    '<rootDir>/polaris-migrator',
     // '<rootDir>/polaris.shopify.com',
     // '<rootDir>/stylelint-polaris',
   ],
