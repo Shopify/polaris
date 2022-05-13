@@ -5,7 +5,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "."
   },
   "include": ["src"]
 }

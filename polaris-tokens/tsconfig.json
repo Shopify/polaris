@@ -4,8 +4,8 @@
     "composite": true,
     "declarationDir": "dist/types",
     "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    "outDir": "dist/types",
+    "rootDir": "."
   },
   "include": ["src"]
 }

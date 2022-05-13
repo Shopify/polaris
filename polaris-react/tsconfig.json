@@ -5,7 +5,7 @@
     "emitDeclarationOnly": true,
     "importsNotUsedAsValues": "error",
     "outDir": "build/ts/latest",
-    "rootDir": "./",
+    "rootDir": ".",
     "strictFunctionTypes": false,
     "paths": {
       "tests/*": ["./tests/*"]
