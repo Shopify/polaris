@@ -9,7 +9,7 @@
       "args": [
         "--extensionDevelopmentPath=${workspaceRoot}/polaris-for-vscode"
       ],
-      "outFiles": ["${workspaceRoot}/polaris-for-vscode/client/dist/**/*.js"],
+      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"],
       "preLaunchTask": "polaris-for-vscode: start-dev",
       "postDebugTask": "polaris-for-vscode: stop-dev"
     },
@@ -19,7 +19,7 @@
       "request": "attach",
       "port": 6009,
       "restart": true,
-      "outFiles": ["${workspaceRoot}/polaris-for-vscode/server/dist/**/*.js"]
+      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"]
     }
   ],
   "compounds": [

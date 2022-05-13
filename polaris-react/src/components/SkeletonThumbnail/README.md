@@ -49,6 +49,14 @@ Use this component to represent small thumbnails.
 <SkeletonThumbnail size="small" />
 ```
 
+### Extra small thumbnail
+
+Use this component to represent extra small thumbnails.
+
+```jsx
+<SkeletonThumbnail size="extraSmall" />
+```
+
 ---
 
 ## Related components

@@ -1,3 +1,5 @@
+const path = require('path');
+
 const fs = require('fs-extra');
 
 const {semverRegExp, readmes} = require('../scripts/utilities');
@@ -5,7 +7,10 @@ const {semverRegExp, readmes} = require('../scripts/utilities');
 describe('readme-update-version', () => {
   it('matches 4 semver numbers in READMEs', () => {
     const occurrences = readmes.reduce((accumulator, readmePath) => {
-      const readme = fs.readFileSync(readmePath, 'utf8');
+      const readme = fs.readFileSync(
+        path.join(__dirname, '..', readmePath),
+        'utf8',
+      );
       return accumulator + (readme.match(semverRegExp) || []).length;
     }, 0);
 

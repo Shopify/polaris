@@ -13,6 +13,7 @@ describe('<MenuGroup />', () => {
     active: undefined,
     onOpen: noop,
     onClose: noop,
+    onClick: undefined,
   };
 
   describe('<Popover />', () => {
@@ -52,6 +53,40 @@ describe('<MenuGroup />', () => {
       expect(popoverContents).toContainReactComponent(ActionList, {
         items: mockActions,
       });
+    });
+
+    it('triggers `onOpen` when `onClick` is not defined', () => {
+      const onOpenSpy = jest.fn();
+      const wrapper = mountWithApp(
+        <MenuGroup {...mockProps} onOpen={onOpenSpy} />,
+      );
+
+      wrapper.find(Button)!.trigger('onClick');
+      expect(onOpenSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('triggers `onClick` and triggers onOpen when the callback has called', () => {
+      const onClickSpy = jest.fn((x) => x());
+      const onOpenSpy = jest.fn();
+      const wrapper = mountWithApp(
+        <MenuGroup {...mockProps} onClick={onClickSpy} onOpen={onOpenSpy} />,
+      );
+
+      wrapper.find(Button)!.trigger('onClick');
+      expect(onClickSpy).toHaveBeenCalledTimes(1);
+      expect(onOpenSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('triggers `onClick` when the callback has not called', () => {
+      const onClickSpy = jest.fn();
+      const onOpenSpy = jest.fn();
+      const wrapper = mountWithApp(
+        <MenuGroup {...mockProps} onClick={onClickSpy} onOpen={onOpenSpy} />,
+      );
+
+      wrapper.find(Button)!.trigger('onClick');
+      expect(onClickSpy).toHaveBeenCalledTimes(1);
+      expect(onOpenSpy).not.toHaveBeenCalledTimes(1);
     });
 
     it('triggers `onClose` after the <Popover /> closes', () => {

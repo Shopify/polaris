@@ -15,12 +15,12 @@ const stylelint = require('stylelint');
  */
 const configs = {
   external: {
-    path: path.join(__dirname, '../src/index.js'),
+    path: path.join(__dirname, '../index.js'),
     files: ['./external-fixture.scss', './coverage-fixture.scss'],
     expectedFailures: 27,
   },
   internal: {
-    path: path.join(__dirname, '../src/configs/internal.js'),
+    path: path.join(__dirname, '../configs/internal.js'),
     files: ['./internal-fixture.scss', './coverage-fixture.scss'],
     expectedFailures: 26,
   },

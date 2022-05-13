@@ -1,12 +1,12 @@
 ci:
   require:
-    - 'Test with node v14.17.0'
-    - 'Test with node v16.13.0'
+    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v16.13.0'
 
 merge:
   require:
-    - 'Test with node v14.17.0'
-    - 'Test with node v16.13.0'
+    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v16.13.0'
 
 dependencies:
   override:
@@ -14,5 +14,5 @@ dependencies:
 
 deploy:
   override:
-    - yarn workspace @shopify/polaris-tokens build
+    - yarn turbo run build --filter=@shopify/polaris-tokens
     - npm publish polaris-tokens --tag latest

@@ -19,6 +19,7 @@ The shopify/polaris repository is an [intergalactic](https://www.youtube.com/wat
 ```sh
 polaris/
 ├── documentation               # Documentation for working in the monorepo
+├── polaris-for-figma           # Figma plugin for Polaris
 ├── polaris-for-vscode          # VS Code extension for Polaris
 ├── polaris-icons               # Icons for Polaris
 ├── polaris-react               # Components for @shopify/polaris package
@@ -46,13 +47,13 @@ yarn build
 Start a **storybook** server for the polaris-react components
 
 ```sh
-yarn workspace @shopify/polaris dev
+yarn turbo run dev --filter=@shopify/polaris...
 ```
 
-Start a **NextJS** server for polaris.shopify.com
+Start a **Next.js** server for polaris.shopify.com
 
 ```sh
-yarn workspace polaris-shopify-com dev
+yarn turbo run dev --filter=polaris.shopify.com...
 ```
 
 ## Contribute to this repo
