@@ -10,7 +10,7 @@ $activator-variables: (
 }
 
 .ActivatorWrapper {
-  height: top-bar-height();
+  height: $top-bar-height;
   display: flex;
   align-items: center;
 }
@@ -58,7 +58,7 @@ $activator-variables: (
     }
   }
 
-  @include breakpoint-before(layout-width(page-with-nav), false) {
+  @include breakpoint-before($layout-width-page-with-nav-base, false) {
     margin: 0;
 
     &:focus,
