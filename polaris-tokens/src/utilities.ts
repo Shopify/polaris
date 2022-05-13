@@ -1,3 +1,4 @@
+import type {Exact} from './types';
 import type {Tokens, TokenGroup} from './tokens';
 
 const BASE_FONT_SIZE = 16;
@@ -10,13 +11,13 @@ function rem(value: string) {
   );
 }
 
-export function tokensToRems(tokenGroup: TokenGroup): TokenGroup {
+export function tokensToRems<T>(tokenGroup: Exact<T, TokenGroup>) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, values]) => [
       token,
       {...values, value: rem(values.value)},
     ]),
-  );
+  ) as Exact<T, TokenGroup>;
 }
 
 export function createVar(token: string) {
