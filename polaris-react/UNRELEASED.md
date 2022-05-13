@@ -7,6 +7,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Enhancements
 
 - Added `extraSmall` to the available sizes of the `Thumbnail` and `SkeletonThumbnail` ([#5770](https://github.com/Shopify/polaris/pull/5770))
+- Updated experimental breakpoint values ([#5804](https://github.com/Shopify/polaris/pull/5804))
 
 ### Bug fixes
 
