@@ -6,11 +6,11 @@ The format is based on [these versioning and changelog guidelines](/documentatio
 
 ---
 
-## `v0.2.0` 2022-05-12
+## `v0.2.0` - 2022-05-13
 
 - Removed `var()` autocomplete and added `--p-` prefix to completion item label ([#5764](https://github.com/Shopify/polaris/pull/5764))
 - Added token documentation to completion items ([#5789](https://github.com/Shopify/polaris/pull/5789))
 
-## `v0.1.0` 2022-04-12
+## `v0.1.0` - 2022-04-12
 
 - Initial release
