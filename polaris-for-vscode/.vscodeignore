@@ -1,5 +1,4 @@
 .turbo
-../**
 **/tsconfig.json
 **/*.map
 **/*.ts

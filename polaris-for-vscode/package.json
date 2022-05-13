@@ -30,8 +30,8 @@
   ],
   "main": "./dist/client.js",
   "scripts": {
-    "build": "tsc -b",
-    "dev": "tsc -b -w",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
