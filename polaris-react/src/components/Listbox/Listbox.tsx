@@ -238,13 +238,14 @@ export function Listbox({
       option.getAttribute(OPTION_VALUE_ATTRIBUTE),
     );
 
-    const listIsUnchanged =
-      nextValues.length === currentValues.length &&
-      nextValues.every((value, index) => {
-        return currentValues[index] === value;
+    const listIsUnchangedOrAppended =
+      currentValues.length !== 0 &&
+      nextValues.length >= currentValues.length &&
+      currentValues.every((value, index) => {
+        return nextValues[index] === value;
       });
 
-    if (listIsUnchanged) {
+    if (listIsUnchangedOrAppended) {
       if (optionIsAlreadyActive && actionContentHasUpdated) {
         setCurrentOptions(nextOptions);
         handleChangeActiveOption(nextOption);
