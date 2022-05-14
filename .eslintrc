@@ -70,6 +70,12 @@
   },
   "overrides": [
     {
+      "files": ["polaris-for-figma/src/**/*.{ts,tsx}"],
+      "rules": {
+        "@shopify/jsx-no-hardcoded-content": "off"
+      }
+    },
+    {
       "files": ["polaris-react/src/**/*.{ts,tsx}"],
       "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
