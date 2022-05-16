@@ -448,40 +448,51 @@ function DataTableFixedFirstColumnExample() {
   const initiallySortedRows = [
     [
       'Emerald Silk Gown',
-      'The Avocado Boutique',
-      'Formal wear',
+      'Formalwear',
+      "Jill's formal",
+      10,
       '$875.00',
-      '$87.50',
-      '$5.26',
       124689,
       140,
+      '$426.00',
       '$122,500.00',
     ],
     [
       'Mauve Cashmere Scarf',
-      'The Avocado Boutique',
       'Accessories',
+      "Jack's Accessories",
+      253,
       '$230.00',
-      '$23.00',
-      '$0',
       124533,
       83,
+      '$620.00',
       '$19,090.00',
     ],
     [
       'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-      'The Avocado Boutique',
-      'Casual Ensembles',
+      'Ensembles',
+      'Avocado Fashions',
+      23,
       '$445.00',
-      '$44.50',
-      '$65.00',
       124518,
       32,
+      '$353.00',
       '$14,240.00',
     ],
+    [
+      'Socks',
+      'Essentials',
+      'Avocado Fashions',
+      465,
+      '$4.00',
+      124518,
+      32,
+      '$3.00',
+      '$140.00',
+    ],
   ];
-
   const rows = sortedRows ? sortedRows : initiallySortedRows;
+
   const handleSort = useCallback(
     (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
     [rows],
@@ -504,33 +515,23 @@ function DataTableFixedFirstColumnExample() {
           ]}
           headings={[
             'Product',
-            'Product Vendor',
-            'Product Type',
+            'Category',
+            'Vendor',
+            'Orders',
             'Price',
-            'Tax',
-            'Discounts',
             'SKU Number',
             'Net quantity',
+            'Shipping',
             'Net sales',
           ]}
           rows={rows}
-          totals={['', '', '', '', '', '', '', 255, '$155,830.00']}
-          sortable={[
-            false,
-            true,
-            false,
-            false,
-            false,
-            true,
-            false,
-            false,
-            true,
-          ]}
+          totals={['', '', '', '', '', '', 255, '$1399', '$155,830.00']}
+          sortable={[true, true, true, true, true, true, true, true, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          footerContent={`Showing ${rows.length} of ${rows.length} results`}
           hasFixedFirstColumn
+          truncate
         />
       </Card>
     </Page>
@@ -538,10 +539,36 @@ function DataTableFixedFirstColumnExample() {
 
   function sortCurrency(rows, index, direction) {
     return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
+      let type;
+      if (rowA[index].length > 1) {
+        type = !isNaN(parseFloat(rowA[index]))
+          ? 'number'
+          : !isNaN(parseFloat(rowA[index].substring(1)))
+          ? 'currency'
+          : 'string';
+      } else {
+        type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
+      }
 
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+      const itemA =
+        type === 'number'
+          ? parseInt(rowA[index])
+          : type === 'currency'
+          ? parseFloat(rowA[index].substring(1))
+          : rowA[index];
+      const itemB =
+        type === 'number'
+          ? parseInt(rowB[index])
+          : type === 'currency'
+          ? parseFloat(rowB[index].substring(1))
+          : rowB[index];
+
+      if (type === 'string') {
+        const result = itemA > itemB ? 1 : itemB > itemA ? -1 : 0;
+        return direction === 'descending' ? result * -1 : result;
+      }
+
+      return direction === 'descending' ? itemB - itemA : itemA - itemB;
     });
   }
 }

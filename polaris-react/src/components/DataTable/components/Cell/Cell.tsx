@@ -138,7 +138,6 @@ export function Cell({
       {columnHeadingContent}
     </div>
   );
-
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
