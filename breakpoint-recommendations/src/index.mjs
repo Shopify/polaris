@@ -127,10 +127,10 @@ await pAll(files, updateDeviceSizeMediaConditions, {
   concurrency: os.cpus().length,
 });
 
-const [, xsHalfInPx] = getBreakpointInPx('xs', 'sm');
-const [smInPx, smHalfInPx] = getBreakpointInPx('sm', 'md');
-const [mdInPx, mdHalfInPx] = getBreakpointInPx('md', 'lg');
-const [lgInPx, lgHalfInPx] = getBreakpointInPx('lg', 'xl');
+const [, xsMiddleInPx] = getBreakpointInPx('xs', 'sm');
+const [smInPx, smMiddleInPx] = getBreakpointInPx('sm', 'md');
+const [mdInPx, mdMiddleInPx] = getBreakpointInPx('md', 'lg');
+const [lgInPx, lgMiddleInPx] = getBreakpointInPx('lg', 'xl');
 const [xlInPx] = getBreakpointInPx('xl');
 
 const migrationGuide = `
@@ -180,7 +180,7 @@ function categorizeMediaConditions(mediaConditions) {
       const isUpCondition = mediaCondition.mediaCondition.includes('min-width');
 
       if (sizeInPx < smInPx) {
-        if (sizeInPx < xsHalfInPx) {
+        if (sizeInPx < xsMiddleInPx) {
           mediaCondition.recommend = isUpCondition
             ? `$p-breakpoints-xs-up`
             : `$p-breakpoints-sm-down`;
@@ -191,7 +191,7 @@ function categorizeMediaConditions(mediaConditions) {
             : `$p-breakpoints-sm-down`;
         }
       } else if (sizeInPx < mdInPx) {
-        if (sizeInPx < smHalfInPx) {
+        if (sizeInPx < smMiddleInPx) {
           mediaCondition.recommend = isUpCondition
             ? `$p-breakpoints-sm-up`
             : `$p-breakpoints-sm-down`;
@@ -202,7 +202,7 @@ function categorizeMediaConditions(mediaConditions) {
             : `$p-breakpoints-md-down`;
         }
       } else if (sizeInPx < lgInPx) {
-        if (sizeInPx < mdHalfInPx) {
+        if (sizeInPx < mdMiddleInPx) {
           mediaCondition.recommend = isUpCondition
             ? `$p-breakpoints-md-up`
             : `$p-breakpoints-md-down`;
@@ -213,7 +213,7 @@ function categorizeMediaConditions(mediaConditions) {
             : `$p-breakpoints-lg-down`;
         }
       } else if (sizeInPx < xlInPx) {
-        if (sizeInPx < lgHalfInPx) {
+        if (sizeInPx < lgMiddleInPx) {
           mediaCondition.recommend = isUpCondition
             ? `$p-breakpoints-lg-up`
             : `$p-breakpoints-lg-down`;
@@ -234,16 +234,18 @@ function categorizeMediaConditions(mediaConditions) {
     });
 }
 
-function getBreakpointInPx(breakpoint, nextBreakpoint) {
-  const inPx =
-    parseFloat(tokens.breakpoints[`breakpoints-${breakpoint}`].value) * 16;
+function getBreakpointInPx(targetBreakpoint, nextBreakpoint) {
+  const targetBreakpointInPx =
+    parseFloat(tokens.breakpoints[`breakpoints-${targetBreakpoint}`].value) *
+    16;
 
-  if (!nextBreakpoint) return [inPx];
+  if (!nextBreakpoint) return [targetBreakpointInPx];
 
-  const nextInPx =
+  const nextBreakpointInPx =
     parseFloat(tokens.breakpoints[`breakpoints-${nextBreakpoint}`].value) * 16;
 
-  const halfInPx = (nextInPx - inPx) / 2;
+  const middleOfTargetBreakpointInPx =
+    (nextBreakpointInPx - targetBreakpointInPx) / 2 + targetBreakpointInPx;
 
-  return [inPx, halfInPx];
+  return [targetBreakpointInPx, middleOfTargetBreakpointInPx];
 }

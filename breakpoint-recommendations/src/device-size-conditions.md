@@ -760,7 +760,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .DescriptionList`
 - **Line**: `98`
@@ -769,7 +769,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(min-width: 36.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.DescriptionList`
 - **Line**: `104`
@@ -778,7 +778,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Description + [data-has-navigation] .Term + .Description`
 - **Line**: `98`
@@ -787,7 +787,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(min-width: 36.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Description + .Term + .Description`
 - **Line**: `104`
@@ -796,7 +796,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Description + .Term + .Description`
 - **Line**: `98`
@@ -805,7 +805,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(min-width: 36.875em)`
 - **Size in pixels**: `590px`
-- **Recommended update**: `$p-breakpoints-md-up`
+- **Recommended update**: `$p-breakpoints-sm-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Description + .Term + .Description`
 - **Line**: `104`
@@ -814,7 +814,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ResourceList/ResourceList.scss`
 - **Media condition**: `(min-height: 37.5em)`
 - **Size in pixels**: `600px`
-- **Recommended update**: `$p-breakpoints-md-down`
+- **Recommended update**: `$p-breakpoints-sm-down`
 - **Target file**: `../../polaris-react/src/components/ResourceList/ResourceList.scss`
 - **Selectors**: `.EmptySearchResultWrapper`
 - **Line**: `189`
@@ -1225,6 +1225,15 @@ new breakpoint tokens and utilities.
 - **Line**: `123`
 - **Column**: `2`
 ---
+### **Source file**: `TopBar/components/SearchField/SearchField.scss`
+- **Media condition**: `(min-width: 40em)`
+- **Size in pixels**: `640px`
+- **Recommended update**: `$p-breakpoints-md-up`
+- **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
+- **Selectors**: `.Input`
+- **Line**: `123`
+- **Column**: `2`
+---
 ### **Source file**: `TopBar/components/UserMenu/UserMenu.scss`
 - **Media condition**: `(min-width: 40em)`
 - **Size in pixels**: `640px`
@@ -1240,15 +1249,6 @@ new breakpoint tokens and utilities.
 - **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Detail`
-- **Line**: `123`
-- **Column**: `2`
----
-### **Source file**: `TopBar/components/SearchField/SearchField.scss`
-- **Media condition**: `(min-width: 40em)`
-- **Size in pixels**: `640px`
-- **Recommended update**: `$p-breakpoints-md-up`
-- **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
-- **Selectors**: `.Input`
 - **Line**: `123`
 - **Column**: `2`
 ---
@@ -1837,7 +1837,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DataTable/DataTable.scss`
 - **Media condition**: `(min-width: 48em)`
 - **Size in pixels**: `768px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/DataTable/DataTable.scss`
 - **Selectors**: `.condensed .Navigation`
 - **Line**: `17`
@@ -1846,7 +1846,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DataTable/DataTable.scss`
 - **Media condition**: `(min-width: 48em)`
 - **Size in pixels**: `768px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/DataTable/DataTable.scss`
 - **Selectors**: `.hoverable:hover .Cell`
 - **Line**: `59`
@@ -1855,7 +1855,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ActionMenu/components/SecondaryAction/SecondaryAction.scss`
 - **Media condition**: `(min-width: 48em)`
 - **Size in pixels**: `768px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/ActionMenu/components/SecondaryAction/SecondaryAction.scss`
 - **Selectors**: `.SecondaryAction a::after, .SecondaryAction button::after`
 - **Line**: `23`
@@ -1864,7 +1864,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(min-width: 48em)`
 - **Size in pixels**: `768px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/Page/components/Header/Header.scss`
 - **Selectors**: `.PrimaryActionWrapper`
 - **Line**: `125`
@@ -1873,7 +1873,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(max-width: 48.0525em)`
 - **Size in pixels**: `768.84px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.LogoContainer`
 - **Line**: `129`
@@ -1882,7 +1882,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(max-width: 48.0525em)`
 - **Size in pixels**: `768.84px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Modal`
 - **Line**: `129`
@@ -1891,7 +1891,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/components/Menu/Menu.scss`
 - **Media condition**: `(max-width: 48.0525em)`
 - **Size in pixels**: `768.84px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Activator:focus, .Activator:hover, .Activator:active, .Activator[aria-expanded='true']`
 - **Line**: `129`
@@ -1900,7 +1900,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/components/UserMenu/UserMenu.scss`
 - **Media condition**: `(max-width: 48.0525em)`
 - **Size in pixels**: `768.84px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Details`
 - **Line**: `129`
@@ -1909,7 +1909,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `CalloutCard/CalloutCard.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Image`
 - **Line**: `98`
@@ -1918,7 +1918,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Card`
 - **Line**: `98`
@@ -1927,7 +1927,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `98`
@@ -1936,7 +1936,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `print and (max-width: 48.0625em) and (min-width: 30.625em), print and (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `98`
@@ -1945,7 +1945,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section`
 - **Line**: `98`
@@ -1954,7 +1954,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section-fullWidth`
 - **Line**: `98`
@@ -1963,7 +1963,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section-flush`
 - **Line**: `98`
@@ -1972,7 +1972,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section-fullWidth .SectionHeader`
 - **Line**: `98`
@@ -1981,7 +1981,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Card/Card.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Footer`
 - **Line**: `98`
@@ -1990,7 +1990,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .DescriptionList`
 - **Line**: `98`
@@ -1999,7 +1999,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Description + [data-has-navigation] .Term + .Description`
 - **Line**: `98`
@@ -2008,7 +2008,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Description + .Term + .Description`
 - **Line**: `98`
@@ -2017,7 +2017,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `EmptyState/EmptyState.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section`
 - **Line**: `110`
@@ -2026,7 +2026,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `EmptyState/EmptyState.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Details`
 - **Line**: `98`
@@ -2035,7 +2035,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `EmptyState/EmptyState.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .ImageContainer, [data-has-navigation]
     .DetailsContainer`
@@ -2045,7 +2045,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `EmptyState/EmptyState.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .withinContentContainer .Details`
 - **Line**: `98`
@@ -2054,7 +2054,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `EmptyState/EmptyState.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .imageContained .Image`
 - **Line**: `110`
@@ -2063,7 +2063,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `FooterHelp/FooterHelp.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .FooterHelp`
 - **Line**: `98`
@@ -2072,7 +2072,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Frame`
 - **Line**: `123`
@@ -2081,7 +2081,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.hasTopBar .Navigation`
 - **Line**: `123`
@@ -2090,7 +2090,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.NavigationDismiss`
 - **Line**: `123`
@@ -2099,7 +2099,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.TopBar`
 - **Line**: `123`
@@ -2108,7 +2108,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ContextualSaveBar`
 - **Line**: `123`
@@ -2117,7 +2117,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.hasNav .Main`
 - **Line**: `123`
@@ -2126,7 +2126,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `print and (min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/Frame/Frame.scss`
 - **Selectors**: `.hasNav .Main`
 - **Line**: `173`
@@ -2135,7 +2135,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.hasNav .GlobalRibbonContainer`
 - **Line**: `123`
@@ -2144,7 +2144,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/Frame.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.hasTopBar .LoadingBar`
 - **Line**: `123`
@@ -2153,7 +2153,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Section + .AnnotatedSection, [data-has-navigation]
     .AnnotatedSection + .AnnotatedSection`
@@ -2163,7 +2163,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Annotation`
 - **Line**: `98`
@@ -2172,7 +2172,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Annotation`
 - **Line**: `110`
@@ -2181,7 +2181,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/Modal.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.IFrame`
 - **Line**: `123`
@@ -2190,7 +2190,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Navigation`
 - **Line**: `123`
@@ -2199,7 +2199,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ContextControl`
 - **Line**: `123`
@@ -2208,7 +2208,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.PrimaryNavigation`
 - **Line**: `123`
@@ -2217,7 +2217,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Item`
 - **Line**: `123`
@@ -2226,7 +2226,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Item-selected`
 - **Line**: `123`
@@ -2235,7 +2235,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Badge`
 - **Line**: `123`
@@ -2244,7 +2244,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Icon`
 - **Line**: `123`
@@ -2253,7 +2253,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ExternalIcon`
 - **Line**: `123`
@@ -2262,7 +2262,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Text`
 - **Line**: `123`
@@ -2271,7 +2271,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(max-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Text`
 - **Line**: `129`
@@ -2280,7 +2280,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.SecondaryAction`
 - **Line**: `123`
@@ -2289,7 +2289,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.SecondaryNavigation .Item`
 - **Line**: `123`
@@ -2298,7 +2298,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Navigation/Navigation.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.SectionHeading .Action svg, .SectionHeading .Action img`
 - **Line**: `123`
@@ -2307,7 +2307,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/Page.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Page`
 - **Line**: `98`
@@ -2316,7 +2316,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/Page.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Content`
 - **Line**: `110`
@@ -2325,7 +2325,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `PageActions/PageActions.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PageActions`
 - **Line**: `98`
@@ -2334,7 +2334,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ResourceItem/ResourceItem.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .ResourceItem:hover:not(.persistActions) .Actions`
 - **Line**: `68`
@@ -2343,7 +2343,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ResourceItem/ResourceItem.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Actions`
 - **Line**: `68`
@@ -2352,7 +2352,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ResourceItem/ResourceItem.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .persistActions .Actions`
 - **Line**: `68`
@@ -2361,7 +2361,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `ResourceItem/ResourceItem.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Disclosure`
 - **Line**: `68`
@@ -2370,7 +2370,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Sheet/Sheet.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Sheet`
 - **Line**: `123`
@@ -2379,7 +2379,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Sheet/Sheet.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Container`
 - **Line**: `123`
@@ -2388,7 +2388,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Page`
 - **Line**: `98`
@@ -2397,7 +2397,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Content`
 - **Line**: `110`
@@ -2406,7 +2406,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `98`
@@ -2415,7 +2415,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `110`
@@ -2424,7 +2424,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .TitleAndPrimaryAction`
 - **Line**: `68`
@@ -2433,7 +2433,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em), (min-width: 48.0625em) and (max-width: 65em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `68`
@@ -2442,7 +2442,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em), (min-width: 48.0625em) and (max-width: 65em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `68`
@@ -2451,7 +2451,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `98`
@@ -2460,7 +2460,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `110`
@@ -2469,7 +2469,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `110`
@@ -2478,7 +2478,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Action:not(:last-child)`
 - **Line**: `68`
@@ -2487,7 +2487,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/TopBar.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.LogoDisplayControl`
 - **Line**: `123`
@@ -2496,7 +2496,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/TopBar.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ContextControl`
 - **Line**: `123`
@@ -2505,7 +2505,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/TopBar.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.NavigationIcon`
 - **Line**: `123`
@@ -2514,7 +2514,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/TopBar.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .SearchField`
 - **Line**: `98`
@@ -2523,7 +2523,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/components/ContextualSaveBar/ContextualSaveBar.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.LogoContainer`
 - **Line**: `123`
@@ -2532,7 +2532,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/components/ContextualSaveBar/ContextualSaveBar.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Contents`
 - **Line**: `98`
@@ -2541,7 +2541,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/components/ContextualSaveBar/ContextualSaveBar.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Contents`
 - **Line**: `110`
@@ -2550,7 +2550,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Frame/components/ContextualSaveBar/ContextualSaveBar.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ContextControl`
 - **Line**: `123`
@@ -2559,7 +2559,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Container`
 - **Line**: `123`
@@ -2568,7 +2568,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Modal`
 - **Line**: `123`
@@ -2577,7 +2577,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 48.0625em) and (min-height: 660px)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/components/Modal/components/Dialog/Dialog.scss`
 - **Selectors**: `.Modal.limitHeight`
 - **Line**: `63`
@@ -2586,7 +2586,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Modal.sizeSmall`
 - **Line**: `123`
@@ -2595,7 +2595,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Modal.sizeLarge`
 - **Line**: `123`
@@ -2604,7 +2604,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `98`
@@ -2613,7 +2613,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Header`
 - **Line**: `110`
@@ -2622,7 +2622,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .mobileView .ActionMenuWrapper`
 - **Line**: `98`
@@ -2631,7 +2631,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.mediumTitle.noBreadcrumbs .RightAlign`
 - **Line**: `123`
@@ -2640,7 +2640,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(min-width: 48.0625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.mediumTitle.noBreadcrumbs .Row`
 - **Line**: `123`
@@ -2649,7 +2649,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `RangeSlider/components/DualThumb/DualThumb.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Thumbs:hover + .Output .OutputBubble, [data-has-navigation]
       .Thumbs:active + .Output .OutputBubble, [data-has-navigation]
@@ -2660,7 +2660,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `RangeSlider/components/SingleThumb/SingleThumb.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Input:hover + .Output .OutputBubble, [data-has-navigation]
       .Input:active + .Output .OutputBubble, [data-has-navigation]
@@ -2671,7 +2671,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/components/Search/Search.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Search`
 - **Line**: `98`
@@ -2680,7 +2680,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/components/Search/Search.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Search`
 - **Line**: `110`
@@ -2689,7 +2689,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `TopBar/components/Search/Search.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em)`
 - **Size in pixels**: `769px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Results`
 - **Line**: `98`
@@ -2698,7 +2698,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `800px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Annotation`
 - **Line**: `110`
@@ -2707,7 +2707,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(min-width: 50em)`
 - **Size in pixels**: `800px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Annotation`
 - **Line**: `116`
@@ -2716,7 +2716,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 50em)`
 - **Size in pixels**: `800px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.PrimaryAction`
 - **Line**: `74`
@@ -2725,7 +2725,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `800px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `110`
@@ -2734,7 +2734,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(min-width: 50em)`
 - **Size in pixels**: `800px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.PrimaryAction`
 - **Line**: `116`
@@ -2743,7 +2743,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `MediaCard/MediaCard.scss`
 - **Media condition**: `(max-width: 50.25em)`
 - **Size in pixels**: `804px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.MediaCard`
 - **Line**: `129`
@@ -2752,7 +2752,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `MediaCard/MediaCard.scss`
 - **Media condition**: `(min-width: 50.25em)`
 - **Size in pixels**: `804px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.MediaContainer:not(.portrait)`
 - **Line**: `123`
@@ -2761,7 +2761,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `MediaCard/MediaCard.scss`
 - **Media condition**: `(max-width: 50.25em)`
 - **Size in pixels**: `804px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.ActionContainer`
 - **Line**: `129`
@@ -2770,7 +2770,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `830px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .DescriptionList`
 - **Line**: `98`
@@ -2779,7 +2779,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `830px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Description + [data-has-navigation] .Term + .Description`
 - **Line**: `98`
@@ -2788,7 +2788,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `DescriptionList/DescriptionList.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 36.875em), (min-width: 51.875em)`
 - **Size in pixels**: `830px`
-- **Recommended update**: `$p-breakpoints-lg-up`
+- **Recommended update**: `$p-breakpoints-md-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Description + .Term + .Description`
 - **Line**: `98`
@@ -2797,7 +2797,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(max-width: 53.75em)`
 - **Size in pixels**: `860px`
-- **Recommended update**: `$p-breakpoints-lg-down`
+- **Recommended update**: `$p-breakpoints-md-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.mediumTitle:not(.noBreadcrumbs) .Row + .Row`
 - **Line**: `129`
@@ -2973,7 +2973,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Layout/Layout.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `1040px`
-- **Recommended update**: `$p-breakpoints-xl-up`
+- **Recommended update**: `$p-breakpoints-lg-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .Annotation`
 - **Line**: `110`
@@ -2982,7 +2982,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em), (min-width: 48.0625em) and (max-width: 65em)`
 - **Size in pixels**: `1040px`
-- **Recommended update**: `$p-breakpoints-xl-up`
+- **Recommended update**: `$p-breakpoints-lg-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `68`
@@ -2991,7 +2991,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `SkeletonPage/SkeletonPage.scss`
 - **Media condition**: `(max-width: 48.0625em) and (min-width: 50em), (min-width: 65em)`
 - **Size in pixels**: `1040px`
-- **Recommended update**: `$p-breakpoints-xl-up`
+- **Recommended update**: `$p-breakpoints-lg-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `[data-has-navigation] .PrimaryAction`
 - **Line**: `110`
@@ -3000,7 +3000,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Modal/components/Dialog/Dialog.scss`
 - **Media condition**: `(min-width: 65.25em)`
 - **Size in pixels**: `1044px`
-- **Recommended update**: `$p-breakpoints-xl-up`
+- **Recommended update**: `$p-breakpoints-lg-up`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.Modal.sizeLarge`
 - **Line**: `123`
@@ -3009,7 +3009,7 @@ new breakpoint tokens and utilities.
 ### **Source file**: `Page/components/Header/Header.scss`
 - **Media condition**: `(max-width: 67.5em)`
 - **Size in pixels**: `1080px`
-- **Recommended update**: `$p-breakpoints-xl-down`
+- **Recommended update**: `$p-breakpoints-lg-down`
 - **Target file**: `../../polaris-react/src/styles/shared/_breakpoints.scss`
 - **Selectors**: `.longTitle .Row + .Row`
 - **Line**: `129`
