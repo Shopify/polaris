@@ -15,6 +15,7 @@ import {
   IndexRowContext,
   IndexSelectionChangeContext,
 } from './context';
+import {capitalize} from '../capitalize';
 
 export function useIndexSelectionChange() {
   const onSelectionChange = useContext(IndexSelectionChangeContext);
@@ -91,10 +92,12 @@ export function useBulkSelectionData({
     }
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.IndexProvider.allItemsSelected', {
-        itemsLength: itemCount,
-        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-      });
+      return capitalize(
+        i18n.translate('Polaris.IndexProvider.allItemsSelected', {
+          itemsLength: itemCount,
+          resourceNamePlural: resourceName.plural,
+        }),
+      );
     }
   }
 
@@ -114,34 +117,33 @@ export function useBulkSelectionData({
     const allSelected = selectedItemsCount === totalItemsCount;
 
     if (totalItemsCount === 1 && allSelected) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxDeselectAllSingle',
-        {
+      return capitalize(
+        i18n.translate('Polaris.IndexProvider.a11yCheckboxDeselectAllSingle', {
           resourceNameSingular: resourceName.singular,
-        },
+        }),
       );
     } else if (totalItemsCount === 1) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxSelectAllSingle',
-        {
+      return capitalize(
+        i18n.translate('Polaris.IndexProvider.a11yCheckboxSelectAllSingle', {
           resourceNameSingular: resourceName.singular,
-        },
+        }),
       );
     } else if (allSelected) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxDeselectAllMultiple',
-        {
-          itemsLength: itemCount,
-          resourceNamePlural: resourceName.plural,
-        },
+      return capitalize(
+        i18n.translate(
+          'Polaris.IndexProvider.a11yCheckboxDeselectAllMultiple',
+          {
+            itemsLength: itemCount,
+            resourceNamePlural: resourceName.plural,
+          },
+        ),
       );
     } else {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxSelectAllMultiple',
-        {
+      return capitalize(
+        i18n.translate('Polaris.IndexProvider.a11yCheckboxSelectAllMultiple', {
           itemsLength: itemCount,
           resourceNamePlural: resourceName.plural,
-        },
+        }),
       );
     }
   }

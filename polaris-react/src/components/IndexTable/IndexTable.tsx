@@ -31,6 +31,7 @@ import type {NonEmptyArray} from '../../types';
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
+import {capitalize} from '../../utilities/capitalize';
 
 export interface IndexTableHeading {
   title: string;
@@ -412,11 +413,13 @@ function IndexTableBase({
         <div className={styles.LoadingPanelRow}>
           <Spinner size="small" />
           <span className={styles.LoadingPanelText}>
-            {i18n.translate(
-              'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
-              {
-                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-              },
+            {capitalize(
+              i18n.translate(
+                'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
+                {
+                  resourceNamePlural: resourceName.plural,
+                },
+              ),
             )}
           </span>
         </div>
@@ -565,9 +568,11 @@ function IndexTableBase({
     emptyState
   ) : (
     <EmptySearchResult
-      title={i18n.translate('Polaris.IndexTable.emptySearchTitle', {
-        resourceNamePlural: resourceName.plural,
-      })}
+      title={capitalize(
+        i18n.translate('Polaris.IndexTable.emptySearchTitle', {
+          resourceNamePlural: resourceName.plural,
+        }),
+      )}
       description={i18n.translate('Polaris.IndexTable.emptySearchDescription')}
       withIllustration
     />
@@ -679,9 +684,11 @@ function IndexTableBase({
     return (
       <div className={styles.ColumnHeaderCheckboxWrapper}>
         <PolarisCheckbox
-          label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
-            resourceNamePlural: resourceName.plural,
-          })}
+          label={capitalize(
+            i18n.translate('Polaris.IndexTable.selectAllLabel', {
+              resourceNamePlural: resourceName.plural,
+            }),
+          )}
           labelHidden
           onChange={handleSelectPage}
           checked={bulkSelectState}
@@ -748,10 +755,12 @@ function IndexTableBase({
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.IndexTable.undo')
-        : i18n.translate('Polaris.IndexTable.selectAllItems', {
-            itemsLength: itemCount,
-            resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-          });
+        : capitalize(
+            i18n.translate('Polaris.IndexTable.selectAllItems', {
+              itemsLength: itemCount,
+              resourceNamePlural: resourceName.plural,
+            }),
+          );
 
     return {
       content: actionText,

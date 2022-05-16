@@ -4,6 +4,7 @@ import isEqual from 'react-fast-compare';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {capitalize} from '../../utilities/capitalize';
 import type {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -287,9 +288,11 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     const ariaLabel =
       accessibilityLabel ||
-      i18n.translate('Polaris.ResourceList.Item.viewItem', {
-        itemName: name || (resourceName && resourceName.singular) || '',
-      });
+      capitalize(
+        i18n.translate('Polaris.ResourceList.Item.viewItem', {
+          itemName: name || (resourceName && resourceName.singular) || '',
+        }),
+      );
 
     const accessibleMarkup = url ? (
       <UnstyledLink

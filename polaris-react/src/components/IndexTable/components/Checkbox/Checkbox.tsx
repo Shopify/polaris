@@ -14,6 +14,7 @@ import {RowContext} from '../../../../utilities/index-table';
 import {useIndexValue} from '../../../../utilities/index-provider';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 import {setRootProperty} from '../../../../utilities/set-root-property';
+import {capitalize} from '../../../../utilities/capitalize';
 import sharedStyles from '../../IndexTable.scss';
 
 import styles from './Checkbox.scss';
@@ -40,9 +41,11 @@ export const Checkbox = memo(function Checkbox() {
         >
           <PolarisCheckbox
             id={itemId}
-            label={i18n.translate('Polaris.IndexTable.selectItem', {
-              resourceName: resourceName.singular,
-            })}
+            label={capitalize(
+              i18n.translate('Polaris.IndexTable.selectItem', {
+                resourceName: resourceName.singular,
+              }),
+            )}
             labelHidden
             checked={selected}
           />

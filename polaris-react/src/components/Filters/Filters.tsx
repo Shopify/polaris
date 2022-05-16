@@ -12,6 +12,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
+import {capitalize} from '../../utilities/capitalize';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -242,6 +243,14 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const transformedFilters = this.transformFilters(filters);
 
+    const textFieldPlaceholder =
+      queryPlaceholder ||
+      capitalize(
+        i18n.translate('Polaris.Filters.filter', {
+          resourceName: filterResourceName.plural,
+        }),
+      );
+
     const filtersControlMarkup = (
       <ConnectedFilterControl
         rightPopoverableActions={transformedFilters}
@@ -253,23 +262,13 @@ class FiltersInner extends Component<CombinedProps, State> {
       >
         {hideQueryField ? null : (
           <TextField
-            placeholder={
-              queryPlaceholder ||
-              i18n.translate('Polaris.Filters.filter', {
-                resourceName: filterResourceName.plural,
-              })
-            }
+            placeholder={textFieldPlaceholder}
             onChange={onQueryChange}
             onBlur={onQueryBlur}
             onFocus={onQueryFocus}
             value={queryValue}
             focused={focused}
-            label={
-              queryPlaceholder ||
-              i18n.translate('Polaris.Filters.filter', {
-                resourceName: filterResourceName.plural,
-              })
-            }
+            label={textFieldPlaceholder}
             labelHidden
             prefix={
               <span className={styles.SearchIcon}>

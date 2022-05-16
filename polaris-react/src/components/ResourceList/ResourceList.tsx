@@ -29,6 +29,7 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {capitalize} from '../../utilities/capitalize';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {CheckableButton} from '../CheckableButton';
 
@@ -227,18 +228,24 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         : resourceName.plural;
 
     if (loading) {
-      return i18n.translate('Polaris.ResourceList.loading', {resource});
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.loading', {resource}),
+      );
     } else if (totalItemsCount) {
-      return i18n.translate('Polaris.ResourceList.showingTotalCount', {
-        itemsCount,
-        totalItemsCount,
-        resource,
-      });
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.showingTotalCount', {
+          itemsCount,
+          totalItemsCount,
+          resource,
+        }),
+      );
     } else {
-      return i18n.translate('Polaris.ResourceList.showing', {
-        itemsCount,
-        resource,
-      });
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.showing', {
+          itemsCount,
+          resource,
+        }),
+      );
     }
   };
 
@@ -248,9 +255,11 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         ? `${items.length}+`
         : selectedItems.length;
 
-    return i18n.translate('Polaris.ResourceList.selected', {
-      selectedItemsCount,
-    });
+    return capitalize(
+      i18n.translate('Polaris.ResourceList.selected', {
+        selectedItemsCount,
+      }),
+    );
   };
 
   const bulkActionsAccessibilityLabel = () => {
@@ -259,34 +268,30 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     const allSelected = selectedItemsCount === totalItemsCount;
 
     if (totalItemsCount === 1 && allSelected) {
-      return i18n.translate(
-        'Polaris.ResourceList.a11yCheckboxDeselectAllSingle',
-        {
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.a11yCheckboxDeselectAllSingle', {
           resourceNameSingular: resourceName.singular,
-        },
+        }),
       );
     } else if (totalItemsCount === 1) {
-      return i18n.translate(
-        'Polaris.ResourceList.a11yCheckboxSelectAllSingle',
-        {
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.a11yCheckboxSelectAllSingle', {
           resourceNameSingular: resourceName.singular,
-        },
+        }),
       );
     } else if (allSelected) {
-      return i18n.translate(
-        'Polaris.ResourceList.a11yCheckboxDeselectAllMultiple',
-        {
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.a11yCheckboxDeselectAllMultiple', {
           itemsLength: items.length,
           resourceNamePlural: resourceName.plural,
-        },
+        }),
       );
     } else {
-      return i18n.translate(
-        'Polaris.ResourceList.a11yCheckboxSelectAllMultiple',
-        {
+      return capitalize(
+        i18n.translate('Polaris.ResourceList.a11yCheckboxSelectAllMultiple', {
           itemsLength: items.length,
           resourceNamePlural: resourceName.plural,
-        },
+        }),
       );
     }
   };
@@ -297,14 +302,16 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return i18n.translate(
-        isFiltered
-          ? 'Polaris.ResourceList.allFilteredItemsSelected'
-          : 'Polaris.ResourceList.allItemsSelected',
-        {
-          itemsLength: items.length,
-          resourceNamePlural: resourceName.plural,
-        },
+      return capitalize(
+        i18n.translate(
+          isFiltered
+            ? 'Polaris.ResourceList.allFilteredItemsSelected'
+            : 'Polaris.ResourceList.allItemsSelected',
+          {
+            itemsLength: items.length,
+            resourceNamePlural: resourceName.plural,
+          },
+        ),
       );
     }
   };
@@ -317,14 +324,16 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     const actionText =
       selectedItems === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.Common.undo')
-        : i18n.translate(
-            isFiltered
-              ? 'Polaris.ResourceList.selectAllFilteredItems'
-              : 'Polaris.ResourceList.selectAllItems',
-            {
-              itemsLength: items.length,
-              resourceNamePlural: resourceName.plural,
-            },
+        : capitalize(
+            i18n.translate(
+              isFiltered
+                ? 'Polaris.ResourceList.selectAllFilteredItems'
+                : 'Polaris.ResourceList.selectAllItems',
+              {
+                itemsLength: items.length,
+                resourceNamePlural: resourceName.plural,
+              },
+            ),
           );
 
     return {
@@ -334,9 +343,11 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   };
 
   const emptySearchResultText = {
-    title: i18n.translate('Polaris.ResourceList.emptySearchResultTitle', {
-      resourceNamePlural: resourceName.plural,
-    }),
+    title: capitalize(
+      i18n.translate('Polaris.ResourceList.emptySearchResultTitle', {
+        resourceNamePlural: resourceName.plural,
+      }),
+    ),
     description: i18n.translate(
       'Polaris.ResourceList.emptySearchResultDescription',
     ),
