@@ -1,0 +1,21 @@
+{
+  "name": "breakpoint-recommendations",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shopify",
+  "dependencies": {
+    "@shopify/polaris-tokens": "*",
+    "globby": "^13.1.1",
+    "meow": "^10.1.2",
+    "node-sass": "^7.0.1",
+    "p-all": "^4.0.0",
+    "p-map": "^5.3.0",
+    "postcss": "^8.4.13",
+    "postcss-scss": "^4.0.4",
+    "source-map": "^0.7.3"
+  }
+}
