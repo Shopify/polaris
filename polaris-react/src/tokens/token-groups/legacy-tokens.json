@@ -1,7 +1,7 @@
 {
   "override-loading-z-index": "514",
-  "choice-size": "20px",
-  "icon-size-small": "10px",
+  "choice-size": "18px",
+  "icon-size-small": "8px",
   "icon-size-medium": "20px",
   "choice-margin": "0px",
   "control-border-width": "2px",
