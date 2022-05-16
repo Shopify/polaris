@@ -81,14 +81,18 @@
   margin-bottom: var(--p-space-1);
 }
 
-.ControlMobileSpacing {
-  @include when-typography-condensed {
-    margin-right: var(--p-space-4);
+.ControlMoreSpacing {
+  margin-right: var(--p-space-4);
+
+  @include when-typography-not-condensed {
+    margin-right: var(--p-space-2);
   }
 }
 
-.DescriptionsMobileSpacing {
-  @include when-typography-condensed {
-    padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+.DescriptionsMoreSpacing {
+  padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+
+  @include when-typography-not-condensed {
+    padding-left: calc(var(--p-space-2) + var(--p-choice-size));
   }
 }

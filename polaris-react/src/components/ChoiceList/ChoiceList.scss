@@ -8,9 +8,6 @@
 
 .ChoiceItem {
   margin-bottom: var(--p-space-4);
-  @include when-typography-not-condensed {
-    margin-bottom: var(--p-space-2);
-  }
 }
 
 .titleHidden > .Title {

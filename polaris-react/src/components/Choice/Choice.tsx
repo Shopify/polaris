@@ -18,7 +18,7 @@ export interface ChoiceProps {
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Alternate label styles */
-  labelMobileSpacing?: boolean;
+  labelMoreSpace?: boolean;
   /**  Content to display inside the choice */
   children?: React.ReactNode;
   /** Additional text to aide in use */
@@ -38,7 +38,7 @@ export function Choice({
   error,
   children,
   labelHidden,
-  labelMobileSpacing,
+  labelMoreSpace,
   helpText,
   onClick,
   onMouseOut,
@@ -53,7 +53,7 @@ export function Choice({
   const labelStyles = classNames(styles.Label);
   const controlStyles = classNames(
     styles.Control,
-    labelMobileSpacing && styles.ControlMobileSpacing,
+    labelMoreSpace && styles.ControlMoreSpacing,
   );
 
   const labelMarkup = (
@@ -85,9 +85,7 @@ export function Choice({
     helpTextMarkup || errorMarkup ? (
       <div
         className={
-          labelMobileSpacing
-            ? styles.DescriptionsMobileSpacing
-            : styles.Descriptions
+          labelMoreSpace ? styles.DescriptionsMoreSpacing : styles.Descriptions
         }
       >
         {errorMarkup}
