@@ -1,11 +1,9 @@
-/* eslint-disable node/no-unsupported-features/node-builtins */
-/* eslint-disable no-console */
 /**
  * Usage:
- * node src/index.mjs ../../polaris-react/src/components
+ * node src/index.mjs --target ../polaris-react/src/components
  */
-import os from 'os';
-import fs from 'fs';
+import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import url from 'node:url';
 
@@ -128,8 +126,6 @@ async function updateDeviceSizeMediaConditions(file) {
 await pAll(files, updateDeviceSizeMediaConditions, {
   concurrency: os.cpus().length,
 });
-
-console.log('deviceSizeMediaConditions: ', deviceSizeMediaConditions.length);
 
 const [, xsHalfInPx] = getBreakpointInPx('xs', 'sm');
 const [smInPx, smHalfInPx] = getBreakpointInPx('sm', 'md');
