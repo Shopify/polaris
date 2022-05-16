@@ -96,14 +96,14 @@ testRule({
       endColumn: 21,
     },
     {
-      code: '.a { color: var(--p-absent); }',
+      code: '.a { color: var(--p-unknown); }',
       description:
         'Using --p- prefixed tokens that do not exist in polaris-tokens is disallowed',
-      message: messages.rejected(undefined, '--p-absent'),
+      message: messages.rejected(undefined, '--p-unknown'),
       line: 1,
       column: 6,
       endLine: 1,
-      endColumn: 29,
+      endColumn: 30,
     },
     {
       code: '.a { color: var(--pc-test); }',
