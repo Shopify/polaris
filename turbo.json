@@ -7,7 +7,7 @@
       "dependsOn": ["^build"]
     },
     "test": {
-      "outputs": [".loom/**"],
+      "outputs": [],
       "dependsOn": []
     },
     "lint": {

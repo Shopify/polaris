@@ -7,6 +7,7 @@
   },
   "workspaces": [
     "polaris-tokens",
+    "polaris-for-figma",
     "polaris-for-vscode",
     "polaris-icons",
     "polaris-react",
@@ -15,9 +16,10 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue --filter=@shopify/polaris",
+    "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:watch": "jest --watch",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier . --write",
     "type-check": "tsc --build",
@@ -33,10 +35,12 @@
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
     "eslint": "^8.3.0",
+    "jest": "^27.5.1",
+    "jest-watch-typeahead": "^1.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
     "stylelint": "^14.1.0",
-    "turbo": "^1.2.6",
+    "turbo": "^1.2.8",
     "typescript": ">=3.0.0"
   },
   "prettier": "@shopify/prettier-config"

@@ -19,8 +19,8 @@
     "build": "run-s build:*",
     "build:js": "rollup -c",
     "build:assets": "ts-node --skip-project scripts/index.ts",
-    "build:types": "tsc --emitDeclarationOnly",
-    "dev": "rollup -cw",
+    "build:types": "tsc -b",
+    "dev": "rollup -c -w",
     "lint": "TIMING=1 eslint --cache .",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
@@ -30,8 +30,6 @@
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^13.2.1",
     "@shopify/browserslist-config": "^3.0.0",
-    "babel-jest": "^24.9.0",
-    "jest": "^27.5.1",
     "rollup": "^2.70.2",
     "ts-node": "^10.7.0"
   },

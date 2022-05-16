@@ -24,7 +24,7 @@
     "polaris",
     "stylelint"
   ],
-  "main": "src/index.js",
+  "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "TIMING=1 eslint --cache .",
