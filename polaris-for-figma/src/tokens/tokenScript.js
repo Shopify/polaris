@@ -21,6 +21,7 @@ function addPaintStyleIDtoTokens() {
     JSON.stringify(apiColorTokens),
     (err) => {
       if (err) throw err;
+      // eslint-disable-next-line no-console
       console.log('Data written to file');
     },
   );

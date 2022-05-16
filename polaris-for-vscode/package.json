@@ -33,7 +33,7 @@
     "build": "tsc -b",
     "dev": "tsc -b -w",
     "lint": "TIMING=1 eslint --cache .",
-    "clean": "rm -rf .turbo node_modules dist"
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
   "dependencies": {
     "@shopify/polaris-tokens": "*",
