@@ -1,4 +1,4 @@
-import React, {FocusEventHandler} from 'react';
+import React, {FocusEventHandler, useState} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -31,7 +31,6 @@ export interface CellProps {
   handleFocus?: FocusEventHandler;
   inFixedFirstColumn?: boolean;
   hasFixedFirstColumn?: boolean;
-  showTooltip?: boolean;
   fixedCellVisible?: boolean;
 }
 
@@ -57,11 +56,23 @@ export function Cell({
   hovered = false,
   handleFocus = () => {},
   hasFixedFirstColumn = false,
-  showTooltip = false,
   fixedCellVisible = false,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
+
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  function setTooltip(ref: HTMLElement | null) {
+    if (!ref) {
+      setShowTooltip(false);
+      return;
+    }
+    if (ref.scrollWidth > ref.offsetWidth) {
+      setShowTooltip(true);
+    }
+  }
+
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
@@ -150,7 +161,15 @@ export function Cell({
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" {...colSpanProp} ref={setRef}>
+    <th
+      className={className}
+      scope="row"
+      {...colSpanProp}
+      ref={(ref) => {
+        setTooltip(ref);
+        setRef(ref);
+      }}
+    >
       {showTooltip ? (
         <Tooltip content={content}>
           <span>{content}</span>

@@ -421,6 +421,9 @@ function FullDataTableExample() {
           initialSortColumnIndex={4}
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          stickyHeader
+          hasFixedFirstColumn
+          truncate
         />
       </Card>
     </Page>
