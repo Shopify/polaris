@@ -1,9 +1,10 @@
+.turbo
+../**
 **/tsconfig.json
 **/*.map
 **/*.ts
 *.vsix
 CONTRIBUTING.md
-docs
 scripts
 src
 node_modules
