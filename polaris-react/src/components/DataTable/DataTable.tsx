@@ -83,7 +83,7 @@ export interface DataTableProps {
   hasZebraStripingOnData?: boolean;
   /** Header becomes sticky and pins to top of table when scrolling  */
   stickyHeader?: boolean;
-  /** Add a fixed first column on horizonal scroll. */
+  /** Add a fixed first column on horizontal scroll. */
   hasFixedFirstColumn?: boolean;
 }
 
@@ -214,8 +214,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           styles.FixedFirstColumn,
           !isScrolledFarthestLeft && styles.Visible,
         )}
-        aria-hidden
-        role="presentation"
         style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
       >
         <thead>
@@ -353,7 +351,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (
       ref == null ||
-      (hasFixedFirstColumn && !inFixedFirstColumn && index == 0)
+      (hasFixedFirstColumn && !inFixedFirstColumn && index === 0)
     ) {
       return;
     }
@@ -707,8 +705,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         onMouseLeave={this.handleHover()}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
-          const isFirstColumn = cellIndex === 0;
-
           const hovered = index === this.state.rowHovered;
           const id = `cell-${cellIndex}-row-${index}`;
           const colSpan = this.getColSpan(
@@ -723,7 +719,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               key={id}
               content={content}
               contentType={columnContentTypes[cellIndex]}
-              firstColumn={isFirstColumn}
+              firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}

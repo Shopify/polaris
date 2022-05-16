@@ -497,7 +497,7 @@ function DataTableFixedFirstColumnExample() {
   const rows = sortedRows ? sortedRows : initiallySortedRows;
 
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
     [rows],
   );
 
@@ -540,7 +540,7 @@ function DataTableFixedFirstColumnExample() {
     </Page>
   );
 
-  function sortCurrency(rows, index, direction) {
+  function sortRows(rows, index, direction) {
     return [...rows].sort((rowA, rowB) => {
       let type;
       if (rowA[index].length > 1) {
