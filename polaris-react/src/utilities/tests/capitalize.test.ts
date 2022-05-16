@@ -6,7 +6,8 @@ describe('capitalize', () => {
   });
 
   it('gives a word proper casing', () => {
-    expect(capitalize('HELLO')).toBe('Hello');
+    expect(capitalize('heLLo')).toBe('HeLLo');
+    expect(capitalize('heLLo', true)).toBe('Hello');
   });
 
   it('capitalizes single letter words', () => {

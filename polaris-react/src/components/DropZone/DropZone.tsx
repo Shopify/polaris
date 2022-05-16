@@ -318,7 +318,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   });
 
   const id = useUniqueId('DropZone', idProp);
-  const typeSuffix = capitalize(type);
+  const typeSuffix = capitalize(type, true);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
 
   const overlayTextWithDefault =

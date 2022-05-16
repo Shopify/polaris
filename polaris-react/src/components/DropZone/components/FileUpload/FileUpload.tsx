@@ -22,7 +22,7 @@ export function FileUpload(props: FileUploadProps) {
   const {size, measuring, type, disabled, allowMultiple} =
     useContext(DropZoneContext);
 
-  const typeSuffix = capitalize(type);
+  const typeSuffix = capitalize(type, true);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
 
   const {
