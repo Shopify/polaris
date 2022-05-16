@@ -30,3 +30,5 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 ### Code quality
 
 ### Deprecations
+
+- Deprecated `EventListener` in favor of `useEventListener` hook ([#5810](https://github.com/Shopify/polaris/pull/5810))
