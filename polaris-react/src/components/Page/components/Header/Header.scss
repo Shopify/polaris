@@ -266,14 +266,14 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       margin-bottom: 0;
     }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
     flex-wrap: wrap-reverse;
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       flex-wrap: nowrap;
     }
   }
