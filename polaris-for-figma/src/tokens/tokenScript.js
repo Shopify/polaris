@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const apiColorTokens = require('./apiTokenColors.json');
 const colorStyles = require('./colorStyles.json');
 
@@ -20,6 +21,7 @@ function addPaintStyleIDtoTokens() {
     JSON.stringify(apiColorTokens),
     (err) => {
       if (err) throw err;
+      // eslint-disable-next-line no-console
       console.log('Data written to file');
     },
   );

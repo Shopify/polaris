@@ -16,28 +16,21 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Pass `domId` as an argument to `onActiveOptionChange` prop on `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
 - Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
 - Updated experimental breakpoint values ([#5736](https://github.com/Shopify/polaris/pull/5736))
+- Ported internal breakpoint and layout functions to SCSS variables ([#5722](https://github.com/Shopify/polaris/pull/5722))
+- Added `extraSmall` to the available sizes of the `Thumbnail` and `SkeletonThumbnail` ([#5770](https://github.com/Shopify/polaris/pull/5770))
+- Updated experimental breakpoint values ([#5804](https://github.com/Shopify/polaris/pull/5804))
+- Added support for tooltips on Navigation items ([#5750](https://github.com/Shopify/polaris/pull/5750))
 
 ### Bug fixes
 
-- Used prop-provided `selectable` value in `IndexTable` ([#5661](https://github.com/Shopify/polaris/pull/5661))
-- Fixed passing inline styles to the root element of the `CustomProperties` component ([#5661](https://github.com/Shopify/polaris/pull/5661))
-- Replaced incorrect usage of `aria-expanded` on `Collapsible` with `aria-hidden` ([#5661](https://github.com/Shopify/polaris/pull/5661))
-- Removed usage of deprecated and removed in v18 React types ([#5704](https://github.com/Shopify/polaris/pull/5704))
-- Fixed `plain-button-backdrop` background color on colored backgrounds ([#5687](https://github.com/Shopify/polaris/pull/5687))
+- Fixed vertical scroll on small screens in `EmptyState` ([#5779](https://github.com/Shopify/polaris/pull/5779))
 
 ### Documentation
-
-- Added wrapper with height on `Combobox` example for autocomplete with loading ([#5624](https://github.com/Shopify/polaris/pull/5624))
 
 ### Development workflow
 
 ### Dependency upgrades
 
-- Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
-- Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
-
 ### Code quality
-
-- Replaced `skeleton-content` and `thumbnail-size` mixins with css values ([#5630](https://github.com/Shopify/polaris/pull/5630))
 
 ### Deprecations

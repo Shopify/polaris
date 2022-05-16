@@ -9,4 +9,4 @@ up:
       meet: 'true'
 
 commands:
-  server: yarn workspace @shopify/polaris dev
+  server: yarn dev
