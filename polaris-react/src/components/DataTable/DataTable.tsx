@@ -190,7 +190,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const headingMarkup = (
       <tr>
         {headings.map((heading, index) =>
-          this.renderHeadings(heading, index, false),
+          this.renderHeading({
+            heading,
+            headingIndex: index,
+            inFixedFirstColumn: false,
+            inStickyHeader: false,
+          }),
         )}
       </tr>
     );
@@ -216,7 +221,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         <thead>
           <tr>
             {firstHeading.map((heading, index) =>
-              this.renderHeadings(heading, index, true),
+              this.renderHeading({
+                heading,
+                headingIndex: index,
+                inFixedFirstColumn: true,
+                inStickyHeader: false,
+              }),
             )}
           </tr>
         </thead>
@@ -264,22 +274,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                 styles.StickyTableHeader,
                 isSticky && styles['StickyTableHeader-isSticky'],
               );
-              const stickyHeaderFixedFirstColumn = (
-                <table
-                  className={classNames(
-                    styles.FixedFirstColumn,
-                    !isScrolledFarthestLeft && styles.Visible,
-                  )}
-                >
-                  <thead>
-                    <tr>
-                      {firstHeading.map((heading, index) =>
-                        this.renderHeadings(heading, index, true),
-                      )}
-                    </tr>
-                  </thead>
-                </table>
-              );
+
+              const fixedFirstStickyHeading = hasFixedFirstColumn
+                ? this.renderHeading({
+                    heading: headings[0],
+                    headingIndex: 0,
+                    inFixedFirstColumn: true,
+                    inStickyHeader: true,
+                  })
+                : null;
 
               return (
                 <div className={stickyHeaderClassNames}>
@@ -288,61 +291,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                     className={styles.StickyTableHeadingsRow}
                     ref={this.stickyTableHeadingsRow}
                   >
-                    {stickyHeaderFixedFirstColumn}
+                    {fixedFirstStickyHeading}
                     {headings.map((heading, index) => {
-                      const {
-                        sortable,
-                        truncate = false,
-                        columnContentTypes,
-                        defaultSortDirection,
-                        initialSortColumnIndex = 0,
-                        verticalAlign,
-                      } = this.props;
-
-                      const {
-                        sortDirection = defaultSortDirection,
-                        sortedColumnIndex = initialSortColumnIndex,
-                      } = this.state;
-
-                      const id = `heading-cell-${index}`;
-                      let sortableHeadingProps;
-
-                      if (sortable) {
-                        const isSortable = sortable[index];
-                        const isSorted =
-                          isSortable && sortedColumnIndex === index;
-                        const direction = isSorted ? sortDirection : 'none';
-
-                        sortableHeadingProps = {
-                          defaultSortDirection,
-                          sorted: isSorted,
-                          sortable: isSortable,
-                          sortDirection: direction,
-                          onSort: this.defaultOnSort(index),
-                        };
-                      }
-
-                      return (
-                        <Cell
-                          key={id}
-                          stickyHeadingCell
-                          setRef={(ref) =>
-                            this.setCellRef({
-                              ref,
-                              index,
-                              inStickyHeader: true,
-                            })
-                          }
-                          header
-                          content={heading}
-                          contentType={columnContentTypes[index]}
-                          firstColumn={index === 0}
-                          truncate={truncate}
-                          {...sortableHeadingProps}
-                          verticalAlign={verticalAlign}
-                          stickyCellWidth={this.tableHeadingWidths[index]}
-                        />
-                      );
+                      return this.renderHeading({
+                        heading,
+                        headingIndex: index,
+                        inFixedFirstColumn: false,
+                        inStickyHeader: true,
+                      });
                     })}
                   </div>
                 </div>
@@ -386,12 +342,19 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     ref,
     index,
     inStickyHeader,
+    inFixedFirstColumn,
   }: {
     ref: HTMLTableCellElement | null;
     index: number;
     inStickyHeader: boolean;
+    inFixedFirstColumn: boolean;
   }) => {
-    if (ref == null) {
+    const {hasFixedFirstColumn} = this.props;
+
+    if (
+      ref == null ||
+      (hasFixedFirstColumn && !inFixedFirstColumn && index == 0)
+    ) {
       return;
     }
 
@@ -582,11 +545,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderHeadings = (
-    heading: string | ReactNode,
-    headingIndex: number,
-    renderingFixedFirstColumn: boolean,
-  ) => {
+  private renderHeading = ({
+    heading,
+    headingIndex,
+    inFixedFirstColumn,
+    inStickyHeader,
+  }: {
+    heading: string | ReactNode;
+    headingIndex: number;
+    inFixedFirstColumn: boolean;
+    inStickyHeader: boolean;
+  }) => {
     const {
       sortable,
       truncate = false,
@@ -599,10 +568,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const {
       sortDirection = defaultSortDirection,
       sortedColumnIndex = initialSortColumnIndex,
+      isScrolledFarthestLeft,
     } = this.state;
 
     let sortableHeadingProps;
-    const id = `heading-cell-${headingIndex}`;
+    const headingCellId = `heading-cell-${headingIndex}`;
+    const stickyHeaderId = `stickyheader-${headingIndex}`;
+    const id = inStickyHeader ? stickyHeaderId : headingCellId;
 
     if (sortable) {
       const isSortable = sortable[headingIndex];
@@ -616,17 +588,29 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
         hasFixedFirstColumn: this.props.hasFixedFirstColumn,
-        isFixedFirstColumn:
-          this.props.hasFixedFirstColumn && renderingFixedFirstColumn,
+        inFixedFirstColumn:
+          this.props.hasFixedFirstColumn && inFixedFirstColumn,
       };
+    }
+
+    let stickyCellWidth;
+
+    if (inStickyHeader) {
+      stickyCellWidth = this.tableHeadingWidths[headingIndex];
     }
 
     return (
       <Cell
-        setRef={(ref) =>
-          this.setCellRef({ref, index: headingIndex, inStickyHeader: false})
-        }
+        setRef={(ref) => {
+          this.setCellRef({
+            ref,
+            index: headingIndex,
+            inStickyHeader,
+            inFixedFirstColumn,
+          });
+        }}
         header
+        stickyHeadingCell={inStickyHeader}
         key={id}
         content={heading}
         contentType={columnContentTypes[headingIndex]}
@@ -635,6 +619,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         {...sortableHeadingProps}
         verticalAlign={verticalAlign}
         handleFocus={this.handleFocus}
+        stickyCellWidth={stickyCellWidth}
+        fixedCellVisible={!isScrolledFarthestLeft}
       />
     );
   };
@@ -744,9 +730,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
           return (
             <Cell
-              setRef={(ref) =>
-                this.setCellRef({ref, index, inStickyHeader: false})
-              }
               key={id}
               content={content}
               contentType={columnContentTypes[cellIndex]}

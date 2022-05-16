@@ -27,12 +27,12 @@ export interface CellProps {
   setRef?: (ref: HTMLTableCellElement | null) => void;
   stickyHeadingCell?: boolean;
   stickyCellWidth?: number;
-  key?: string;
   hovered?: boolean;
   handleFocus?: FocusEventHandler;
-  isFixedFirstColumn?: boolean;
+  inFixedFirstColumn?: boolean;
   hasFixedFirstColumn?: boolean;
   showTooltip?: boolean;
+  fixedCellVisible?: boolean;
 }
 
 export function Cell({
@@ -46,7 +46,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
-  isFixedFirstColumn,
+  inFixedFirstColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -54,11 +54,11 @@ export function Cell({
   setRef = () => {},
   stickyHeadingCell = false,
   stickyCellWidth,
-  key,
   hovered = false,
   handleFocus = () => {},
   hasFixedFirstColumn = false,
   showTooltip = false,
+  fixedCellVisible = false,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -75,6 +75,11 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
+    fixedCellVisible && styles.Visible,
+    firstColumn &&
+      inFixedFirstColumn &&
+      stickyHeadingCell &&
+      styles.FixedFirstColumn,
   );
 
   const headerClassName = classNames(
@@ -100,7 +105,7 @@ export function Cell({
     </span>
   );
 
-  const focusable = isFixedFirstColumn || !firstColumn || !hasFixedFirstColumn;
+  const focusable = inFixedFirstColumn || !(hasFixedFirstColumn && firstColumn);
 
   const sortableHeadingContent = (
     <button
@@ -120,7 +125,6 @@ export function Cell({
 
   const stickyHeading = (
     <div
-      key={key}
       ref={setRef}
       {...headerCell.props}
       {...colSpanProp}
