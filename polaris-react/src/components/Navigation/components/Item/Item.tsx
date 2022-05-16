@@ -19,6 +19,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
+import {Tooltip, TooltipProps} from '../../../Tooltip';
 
 import {Secondary} from './components';
 
@@ -44,6 +45,7 @@ interface SecondaryAction {
   accessibilityLabel: string;
   icon: IconProps['source'];
   onClick?(): void;
+  tooltip?: TooltipProps;
 }
 
 export interface ItemProps extends ItemURLDetails {
@@ -213,7 +215,7 @@ export function Item({
     );
   }
 
-  const secondaryActionMarkup = secondaryAction && (
+  const secondaryActionLinkMarkup = secondaryAction && (
     <UnstyledLink
       external
       url={secondaryAction.url}
@@ -226,6 +228,16 @@ export function Item({
       <Icon source={secondaryAction.icon} />
     </UnstyledLink>
   );
+
+  const secondaryActionMarkup =
+    secondaryAction &&
+    (secondaryAction.tooltip ? (
+      <Tooltip {...secondaryAction.tooltip}>
+        {secondaryActionLinkMarkup}
+      </Tooltip>
+    ) : (
+      secondaryActionLinkMarkup
+    ));
 
   const matchState = matchStateForItem(
     {url, matches, exactMatch, matchPaths, excludePaths},

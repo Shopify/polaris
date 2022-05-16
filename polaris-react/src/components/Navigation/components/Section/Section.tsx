@@ -9,6 +9,7 @@ import {Collapsible} from '../../../Collapsible';
 import {Icon, IconProps} from '../../../Icon';
 import {Item, ItemProps} from '../Item';
 import styles from '../../Navigation.scss';
+import {Tooltip, TooltipProps} from '../../../Tooltip';
 
 export interface SectionProps {
   items: ItemProps[];
@@ -25,6 +26,7 @@ export interface SectionProps {
     icon: IconProps['source'];
     accessibilityLabel: string;
     onClick(): void;
+    tooltip?: TooltipProps;
   };
   separator?: boolean;
 }
@@ -77,7 +79,7 @@ export function Section({
     fill && styles['Section-fill'],
   );
 
-  const actionMarkup = action && (
+  const buttonMarkup = action && (
     <button
       type="button"
       className={styles.Action}
@@ -87,6 +89,14 @@ export function Section({
       <Icon source={action.icon} />
     </button>
   );
+
+  const actionMarkup =
+    action &&
+    (action.tooltip ? (
+      <Tooltip {...action.tooltip}>{buttonMarkup}</Tooltip>
+    ) : (
+      buttonMarkup
+    ));
 
   const sectionHeadingMarkup = title && (
     <li className={styles.SectionHeading}>
