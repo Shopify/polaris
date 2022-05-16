@@ -67,11 +67,11 @@ testRule({
         "Defining custom-properties that don't start with --p- or --pc-",
     },
     {
-      code: '.a { color: --p-text; }',
+      code: '.a { color: var(--p-text); }',
       description: 'Using custom-properties from polaris-tokens',
     },
     {
-      code: '.a { --test: red; color: --test; }',
+      code: '.a { --test: red; color: var(--test); }',
       description: 'Using other custom-properties',
     },
   ],
@@ -98,23 +98,23 @@ testRule({
       endColumn: 21,
     },
     {
-      code: '.a { color: --p-absent; }',
+      code: '.a { color: var(--p-absent); }',
       description:
         'Using --p- prefixed tokens that do not exist in polaris-tokens is disallowed',
       message: messages.rejected(undefined, '--p-absent'),
       line: 1,
       column: 6,
       endLine: 1,
-      endColumn: 24,
+      endColumn: 29,
     },
     {
-      code: '.a { color: --pc-test; }',
+      code: '.a { color: var(--pc-test); }',
       description: 'Using --pc- prefixed tokens is disallowed',
       message: messages.rejected(undefined, '--pc-test'),
       line: 1,
       column: 6,
       endLine: 1,
-      endColumn: 23,
+      endColumn: 28,
     },
   ],
 });
@@ -129,11 +129,11 @@ testRule({
       description: 'Defining custom-properties that start with --pc-',
     },
     {
-      code: '.a { color: --p-text; }',
+      code: '.a { color: var(--p-text); }',
       description: 'Using custom-properties from polaris-tokens',
     },
     {
-      code: '.a { color: --pc-my-value; }',
+      code: '.a { color: var(--pc-my-value); }',
       description: 'Using custom-properties that start with --pc-',
     },
   ],
@@ -159,13 +159,13 @@ testRule({
       endColumn: 18,
     },
     {
-      code: '.a { color: --test; }',
+      code: '.a { color: var(--test); }',
       description: 'Using other custom-properties',
       message: messages.rejected(undefined, '--test'),
       line: 1,
       column: 6,
       endLine: 1,
-      endColumn: 20,
+      endColumn: 25,
     },
   ],
 });

@@ -2,7 +2,7 @@
 
 const {messages, ruleName} = require('.');
 
-const config = ['--p-button-font'];
+const config = [[/rem\(/, /--p-button-font/]];
 
 testRule({
   ruleName,
@@ -11,20 +11,29 @@ testRule({
   customSyntax: 'postcss-scss',
   accept: [
     {
-      code: '.valid { color: red; }',
+      code: '.a { color: red; }',
       description: 'Uses nothing on the banned list',
     },
   ],
 
   reject: [
     {
-      code: '.invalid { color: --p-button-font; }',
+      code: '.a { font-size: rem(20px); }',
+      description: 'Uses something on the banned list',
+      message: messages.rejected('rem('),
+      line: 1,
+      column: 17,
+      endLine: 1,
+      endColumn: 21,
+    },
+    {
+      code: '.a { color: var(--p-button-font); }',
       description: 'Uses something on the banned list',
       message: messages.rejected('--p-button-font'),
       line: 1,
-      column: 19,
+      column: 17,
       endLine: 1,
-      endColumn: 34,
+      endColumn: 32,
     },
   ],
 });
