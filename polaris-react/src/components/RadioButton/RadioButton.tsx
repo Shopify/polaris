@@ -15,7 +15,7 @@ export interface RadioButtonProps {
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Alternate label styles */
-  labelBold?: boolean;
+  labelMobileSpacing?: boolean;
   /** Radio button is selected */
   checked?: boolean;
   /** Additional text to aid in use */
@@ -40,7 +40,7 @@ export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
   label,
   labelHidden,
-  labelBold,
+  labelMobileSpacing,
   helpText,
   checked,
   disabled,
@@ -100,7 +100,7 @@ export function RadioButton({
     <Choice
       label={label}
       labelHidden={labelHidden}
-      labelBold={labelBold}
+      labelMobileSpacing={labelMobileSpacing}
       disabled={disabled}
       id={id}
       helpText={helpText}

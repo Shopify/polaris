@@ -81,15 +81,14 @@
   margin-bottom: var(--p-space-1);
 }
 
-.LabelBold {
-  font-weight: var(--p-font-weight-medium);
-  font-size: var(--p-font-size-3);
+.ControlMobileSpacing {
+  @include when-typography-condensed {
+    margin-right: var(--p-space-4);
+  }
 }
 
-.ControlBold {
-  margin-right: var(--p-space-4);
-}
-
-.DescriptionsBold {
-  padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+.DescriptionsMobileSpacing {
+  @include when-typography-condensed {
+    padding-left: calc(var(--p-space-4) + var(--p-choice-size));
+  }
 }
