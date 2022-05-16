@@ -95,15 +95,15 @@ A navigation section groups together related navigation items. Navigation sectio
 
 ### Section properties
 
-| Prop      | Type                     | Description                                                                                   |
-| --------- | ------------------------ | --------------------------------------------------------------------------------------------- |
-| items     | [Item[]](#type-item)     | A collection of navigation items to be rendered inside the section                            |
-| icon      | IconProps['source']      | An icon to be displayed next to the section title                                             |
-| title     | string                   | A string property providing a title for the navigation section                                |
-| fill      | boolean                  | A boolean property indicating whether the section should take up all vertical space available |
-| rollup    | [Rollup[]](#type-rollup) | An object determining the collapsing behavior of the navigation section                       |
-| action    | [Action[]](#type-action) | Renders an icon-only action as a supplementary action next to the section title               |
-| separator | boolean                  | A boolean property indicating whether the section should have a visual separator              |
+| Prop      | Type                   | Description                                                                                   |
+| --------- | ---------------------- | --------------------------------------------------------------------------------------------- |
+| items     | [Item[]](#type-item)   | A collection of navigation items to be rendered inside the section                            |
+| icon      | IconProps['source']    | An icon to be displayed next to the section title                                             |
+| title     | string                 | A string property providing a title for the navigation section                                |
+| fill      | boolean                | A boolean property indicating whether the section should take up all vertical space available |
+| rollup    | [Rollup](#type-rollup) | An object determining the collapsing behavior of the navigation section                       |
+| action    | [Action](#type-action) | Renders an icon-only action as a supplementary action next to the section title               |
+| separator | boolean                | A boolean property indicating whether the section should have a visual separator              |
 
 <a name="type-item"></a>
 
@@ -113,24 +113,63 @@ The content of the navigation component consists of navigation items. Each item 
 
 #### Item properties
 
-| Prop               | Type                | Description                                                                                                                                             |
-| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url                | string              | A location for the navigation item to navigate to when clicked                                                                                          |
-| matches            | boolean             | A boolean property indicating whether the navigation item should respond to a closely matching location property                                        |
-| exactMatch         | boolean             | A boolean property indicating whether the navigation item should respond to an exactly matching location property                                       |
-| matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                                      |
-| excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to                                                   |
-| icon               | IconProps['source'] | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
-| badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                                                               |
-| label              | string              | A string property allowing content to be displayed as link text in the navigation item                                                                  |
-| disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                                   |
-| new                | boolean             | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop)              |
-| accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
-| selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                                                                |
-| shouldResizeIcon   | boolean             | Will allow for major icons to be displayed at the same size as minor icons                                                                              |
-| subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                                                          |
-| secondaryAction    | SecondaryAction     | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
-| onClick()          | function            | A callback function to handle clicking on a navigation item                                                                                             |
+| Prop               | Type                                        | Description                                                                                                                                             |
+| ------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                | string                                      | A location for the navigation item to navigate to when clicked                                                                                          |
+| matches            | boolean                                     | A boolean property indicating whether the navigation item should respond to a closely matching location property                                        |
+| exactMatch         | boolean                                     | A boolean property indicating whether the navigation item should respond to an exactly matching location property                                       |
+| matchPaths         | string[]                                    | A string property providing a collection of additional paths for the navigation item to respond to                                                      |
+| excludePaths       | string[]                                    | A string property providing an explicit collection of paths the navigation item should not respond to                                                   |
+| icon               | IconProps['source']                         | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
+| badge              | string \| null                              | A string property allowing content to be displayed in a badge next to the navigation item                                                               |
+| label              | string                                      | A string property allowing content to be displayed as link text in the navigation item                                                                  |
+| disabled           | boolean                                     | A boolean property indicating whether the navigation item is disabled                                                                                   |
+| new                | boolean                                     | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop)              |
+| accessibilityLabel | string                                      | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
+| selected           | boolean                                     | A boolean property indicating whether the navigation item is the currently-selected item                                                                |
+| shouldResizeIcon   | boolean                                     | Will allow for major icons to be displayed at the same size as minor icons                                                                              |
+| subNavigationItems | [SubNavigationItem[]](#sub-navigation-item) | A collection of navigation items rendered as nested secondary navigation items                                                                          |
+| secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
+| onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
+
+
+<a name="sub-navigation-item"></a>
+
+### SubNavigationItem
+
+#### Properties
+
+| Prop         | Type     | Description                                                                                                                                |
+| ------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| url          | string   | A location for the navigation item to navigate to when clicked                                                                             |
+| matches      | boolean  | A boolean property indicating whether the navigation item should respond to a closely matching location property                           |
+| exactMatch   | boolean  | A boolean property indicating whether the navigation item should respond to an exactly matching location property                          |
+| matchPaths   | string[] | A string property providing a collection of additional paths for the navigation item to respond to                                         |
+| excludePaths | string[] | A string property providing an explicit collection of paths the navigation item should not respond to                                      |
+| external     | boolean  | Indicates whether this is an external link. If it is, an external link icon will be shown next to the label                                |
+| label        | string   | A string property allowing content to be displayed as link text in the navigation item                                                     |
+| disabled     | boolean  | A boolean property indicating whether the navigation item is disabled                                                                      |
+| new          | boolean  | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
+| onClick()    | function | A callback function to handle clicking on a navigation item                                                                                |
+
+
+<a name="secondary-action"></a>
+
+### SecondaryAction
+
+#### Properties
+
+| Prop               | Type                                                                               | Description                                                                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                | string                                                                             | A location for the navigation item to navigate to when clicked                                                                                          |
+| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
+| icon               | IconProps['source']                                                                | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
+| onClick()          | function                                                                           | A callback function to handle clicking on a navigation item                                                                                             |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
+
+
+<a name="type-action"></a>
+
 
 <a name="type-rollup"></a>
 
@@ -155,11 +194,12 @@ Action allows a complementary icon-only action to render next to the section tit
 
 #### Action properties
 
-| Prop               | Type                | Description                                                                        |
-| ------------------ | ------------------- | ---------------------------------------------------------------------------------- |
-| icon               | IconProps['source'] | An icon to be displayed as the content of the action                               |
-| accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of the action |
-| onClick()          | function            | A callback function to handle clicking on the action                               |
+| Prop               | Type                                                                               | Description                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| icon               | IconProps['source']                                                                | An icon to be displayed as the content of the action                               |
+| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of the action |
+| onClick()          | function                                                                           | A callback function to handle clicking on the action                               |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button             |
 
 ---
 
@@ -387,6 +427,9 @@ Use to add a different action for an item than the main action, like to view or 
             url: '/admin/orders/add',
             accessibilityLabel: 'Add an order',
             icon: CirclePlusOutlineMinor,
+            tooltip: {
+              content: 'Add an order',
+            }
           },
         },
         {
@@ -530,6 +573,9 @@ This example showcases the many elements that can compose a navigation, especial
             url: '/admin/orders/add',
             accessibilityLabel: 'Add an order',
             icon: CirclePlusOutlineMinor,
+            tooltip: {
+              content: 'Add an order'
+            },
           },
         },
         {
@@ -601,6 +647,9 @@ This example showcases the many elements that can compose a navigation, especial
             url: '/path/to/place/view',
             accessibilityLabel: 'View your online store',
             icon: ViewMinor,
+            tooltip: {
+              content: 'View your online store',
+            },
           },
         },
       ]}
