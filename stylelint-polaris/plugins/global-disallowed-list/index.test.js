@@ -1,5 +1,3 @@
-/* global testRule */
-
 const {messages, ruleName} = require('.');
 
 const config = [[/rem\(/, /--p-button-font/]];

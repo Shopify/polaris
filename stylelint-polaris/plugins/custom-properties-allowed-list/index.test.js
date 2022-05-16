@@ -1,5 +1,3 @@
-/* global testRule */
-
 const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 
 const {messages, ruleName} = require('.');
