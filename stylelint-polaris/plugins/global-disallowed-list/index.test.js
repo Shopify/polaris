@@ -12,14 +12,14 @@ testRule({
   accept: [
     {
       code: '.a { color: red; }',
-      description: 'Uses nothing on the banned list',
+      description: 'Uses nothing on the disallowed list',
     },
   ],
 
   reject: [
     {
       code: '.a { font-size: rem(20px); }',
-      description: 'Uses something on the banned list',
+      description: 'Uses something on the disallowed list',
       message: messages.rejected('rem('),
       line: 1,
       column: 17,
@@ -28,7 +28,7 @@ testRule({
     },
     {
       code: '.a { color: var(--p-button-font); }',
-      description: 'Uses something on the banned list',
+      description: 'Uses something on the disallowed list',
       message: messages.rejected('--p-button-font'),
       line: 1,
       column: 17,
