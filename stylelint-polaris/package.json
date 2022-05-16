@@ -28,7 +28,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "TIMING=1 eslint --cache .",
-    "test": "node tests/index.js",
+    "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
@@ -37,5 +37,8 @@
   "peerDependencies": {
     "stylelint": "^14.1.0",
     "@shopify/polaris-tokens": "^5.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-stylelint"
   }
 }

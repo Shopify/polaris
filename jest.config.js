@@ -6,7 +6,7 @@ module.exports = {
     '<rootDir>/polaris-react',
     '<rootDir>/polaris-tokens',
     // '<rootDir>/polaris.shopify.com',
-    // '<rootDir>/stylelint-polaris',
+    '<rootDir>/stylelint-polaris',
   ],
   watchPlugins: [
     'jest-watch-typeahead/filename',

@@ -126,6 +126,12 @@
         "@typescript-eslint/triple-slash-reference": "off",
         "spaced-comment": "off"
       }
+    },
+    {
+      "files": ["stylelint-polaris/**/*.test.js"],
+      "globals": {
+        "testRule": "readonly"
+      }
     }
   ]
 }
