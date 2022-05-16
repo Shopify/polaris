@@ -5,7 +5,7 @@ import React, {
   useState,
   useContext,
 } from 'react';
-import {MinusMinor, TickMinor} from '@shopify/polaris-icons';
+import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
@@ -140,7 +140,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
       : {'aria-checked': isChecked};
 
-    const iconSource = isIndeterminate ? MinusMinor : TickMinor;
+    const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
 
     const inputClassName = classNames(
       styles.Input,
