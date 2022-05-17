@@ -11,7 +11,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Updated experimental breakpoint values ([#5804](https://github.com/Shopify/polaris/pull/5804))
 - Added support for tooltips on Navigation items ([#5750](https://github.com/Shopify/polaris/pull/5750))
 - Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
-- Implemented accessibility role and attributes in `SettingToggle` [#5470](https://github.com/Shopify/polaris/pull/5470)
+- Implemented accessibility role and attributes in `SettingToggle` ([#5470](https://github.com/Shopify/polaris/pull/5470))
 
 ### Bug fixes
 
