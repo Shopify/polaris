@@ -2264,6 +2264,19 @@
   resolved "https://registry.yarnpkg.com/@luigiminardim/storybook-addon-globals-controls/-/storybook-addon-globals-controls-0.1.3.tgz#8be7f1d8f25a51dd94eab8dae27c73f67c7abdd2"
   integrity sha512-gRwZue2pzGKkdliOnpnByG/fZh2bmhQ9DY9O62Ppk9nJSgHsQbhsv87yjjldqayd88ZYkg2u5jHv5VgYRubI8A==
 
+"@markdoc/markdoc@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@markdoc/markdoc/-/markdoc-0.1.1.tgz#40823d242a5e4ee07471d64edd15c203b6290dc7"
+  integrity sha512-ak7lacwM9fY99U+b9+IQ02qkcdc8Of0OPIWUdWNHW8zdmWam0fNRYoKWVR1B5OvdWDauYN3u0+ZbR9cds3oChw==
+
+"@markdoc/next.js@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@markdoc/next.js/-/next.js-0.1.2.tgz#640d607acfe04d8e669a695449fcea4a74eb2984"
+  integrity sha512-MkcJ0VG7WVQHF11fYPN4ZLoFHTaM7bjUZut32PP8k87Lyv/Mcp7EXtLwFdmJ4pwNXNDbiRoAHP0F2J1GAfgMzQ==
+  dependencies:
+    "@markdoc/markdoc" "0.1.1"
+    js-yaml "^4.1.0"
+
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.22.tgz#d9e8fe7f8185ff13c9c8639c048b123e30d322c4"

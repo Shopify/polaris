@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
+    "@markdoc/next.js": "^0.1.2",
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",

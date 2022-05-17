@@ -1,7 +1,9 @@
 /* eslint-disable require-await */
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+const withMarkdoc = require('@markdoc/next.js');
+
+const nextConfig = withMarkdoc({ mode: 'server' })({
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -29,6 +31,7 @@ const nextConfig = {
       },
     ];
   },
-};
+  pageExtensions: ['tsx', 'md']
+});
 
 module.exports = nextConfig;
