@@ -6,8 +6,8 @@
   border: none;
 }
 
-.ChoiceItem {
-  margin-bottom: var(--p-space-4);
+.ChoiceItem:not(:last-child) {
+  margin-bottom: var(--p-space-2);
 }
 
 .titleHidden > .Title {
