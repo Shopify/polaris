@@ -91,41 +91,7 @@ Making sure the voice and tone is consistent across Polaris is important to us, 
 
 ### Development workflow
 
-After cloning Polaris, run `yarn` to fetch its dependencies. Then you can run several commands:
-
-#### Common tasks
-
-| Task              | Description |
-| ----------------- | ----------- |
-| `yarn build`      | ...         |
-| `yarn dev`        | ...         |
-| `yarn lint`       | ...         |
-| `yarn test`       | ...         |
-| `yarn test:watch` | ...         |
-| `yarn clean`      | ...         |
-| `yarn format`     | ...         |
-| `yarn type-check` | ...         |
-| `yarn changeset`  | ...         |
-
-#### Workspace tasks
-
-Use [`turbo run` command](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task) to run tasks in all or a subset of workspaces
-
-| Task                                         | Description                                                                                                            |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `yarn turbo run <task>`                      | Run the chosen Yarn command in each workspace                                                                          |
-| `yarn turbo run <task> --filter=<workspace>` | Run commands from a selected workspace using the [`--filter` flag](https://turborepo.org/docs/core-concepts/filtering) |
-
-You can filter packages by name, directory, include dependents/dependencies, and by changes in git history.
-
-#### Script examples
-
-Here are some commonly run tasks for the `@shopify/polaris` workspace:
-
-| Task                                              | Description                                      |
-| ------------------------------------------------- | ------------------------------------------------ |
-| `yarn turbo run dev --filter=@shopify/polaris...` | Run Storybook and all dependencies in watch mode |
-| `yarn turbo run test --filter=@shopify/polaris`   | Run the all tests for only `@shopify/polaris`    |
+See the [README.md file](https://github.com/Shopify/polaris/blob/main/README.md#commands) for documentation on the development workflow.
 
 #### Testing
 
