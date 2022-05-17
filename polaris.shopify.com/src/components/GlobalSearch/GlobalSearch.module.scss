@@ -1,8 +1,15 @@
 .GlobalSearch {
   position: relative;
   input {
-    background: var(--surface) url(./SearchMajor.svg) no-repeat 14px center;
+    background: #fff url(./SearchMajor.svg) no-repeat 14px center;
     background-size: 16px auto;
+    border: 1px solid #ddd;
+    font-weight: 435;
+    font-size: var(--font-size-100);
+
+    &::placeholder {
+      color: inherit;
+    }
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -39,6 +46,10 @@
     border-bottom: none;
   }
 
+  h4 {
+    font-size: var(--font-size-200);
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -50,7 +61,10 @@
 
   &[data-is-active="true"] a {
     background: var(--primary);
-    color: white;
+    &,
+    h4 {
+      color: white;
+    }
   }
 }
 
@@ -68,6 +82,7 @@
 }
 
 .Excerpt {
+  margin-top: 0.25rem;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -93,7 +108,7 @@
 
 @keyframes search-results-enter {
   from {
-    transform: scale(0.95) translateY(4px);
+    transform: scale(0.98) translateY(4px);
     opacity: 0;
   }
 

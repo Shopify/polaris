@@ -127,7 +127,9 @@ function GlobalSearch({}: Props) {
 
                       <div>
                         <h4 className={styles.Title}>{item.title}</h4>
-                        <p className={styles.Excerpt}>{item.excerpt}</p>
+                        {item.excerpt.length > 0 && (
+                          <p className={styles.Excerpt}>{item.excerpt}</p>
+                        )}
                       </div>
 
                       {item.category === "Components" && (
