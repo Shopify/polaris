@@ -567,6 +567,38 @@ describe('<Filters />', () => {
     });
   });
 
+  describe('disableQueryField', () => {
+    it.skip('defaults to false', () => {
+      const { disableQueryField, ...propsWithoutDisableQueryField}: FiltersProps = mockProps;
+
+      const resourceFilters = mountWithApp(
+        <Filters {...propsWithoutDisableQueryField} />
+      );
+
+      expect(resourceFilters.props.disableQueryField).toBe(false);
+    });
+
+    it.skip('does not disable the search field when false', () => {
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} disableQueryField={false} />
+      );
+
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: false,
+      });
+    });
+
+    it.skip('disables the search field when true', () => {
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} disableQueryField={true} />
+      );
+
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: true,
+      });
+    });
+  });
+
   describe('disabled', () => {
     it('disables the search field when true', () => {
       const resourceFilters = mountWithApp(
