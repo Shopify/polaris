@@ -30,31 +30,34 @@ polaris/
 
 ## Commands
 
-**1. Install dependencies**
+### Install dependencies and build workspaces
 
 ```sh
-yarn
+yarn && yarn build
 ```
 
-**2. Build the packages**
+### Run a command
 
-```sh
-yarn build
-```
+**One workspace**
 
-**3. Start a local development environment**
+Run commands from a selected workspace using [`turbo run <command> --filter=<workspace>...`](https://turborepo.org/docs/core-concepts/filtering) flag.
 
-Start a **storybook** server for the polaris-react components
+| Command                                              | Runs                                 |
+| ---------------------------------------------------- | ------------------------------------ |
+| `yarn turbo run dev --filter=@shopify/polaris...`    | Open the react component storybook   |
+| `yarn turbo run dev --filter=polaris.shopify.com...` | Open polaris.shopify.com NextJS site |
 
-```sh
-yarn turbo run dev --filter=@shopify/polaris...
-```
+**All workspaces**
 
-Start a **Next.js** server for polaris.shopify.com
+Run commands across all workspaces. This uses [`turbo run <command>`](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task).
 
-```sh
-yarn turbo run dev --filter=polaris.shopify.com...
-```
+| Command           | Runs                                  |
+| ----------------- | ------------------------------------- |
+| `yarn lint`       | Lints all workspaces                  |
+| `yarn test`       | Tests all workspaces                  |
+| `yarn type-check` | Build types and check for type errors |
+| `yarn clean`      | Remove generated files                |
+| `yarn format`     | Format files with prettier            |
 
 ## Contribute to this repo
 
