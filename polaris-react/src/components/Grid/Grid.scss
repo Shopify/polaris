@@ -2,18 +2,27 @@
 
 .Grid {
   display: grid;
-  gap: var(--p-space-4);
-  grid-template-columns: repeat(var(--pc-grid-columns-small), minmax(0, 1fr));
+  gap: var(--pc-grid-gap-xs);
+  grid-template-columns: repeat(var(--pc-grid-columns-xs), minmax(0, 1fr));
 
   @media #{$p-breakpoints-sm-up} {
-    grid-template-columns: repeat(
-      var(--pc-grid-columns-medium),
-      minmax(0, 1fr)
-    );
+    gap: var(--pc-grid-gap-sm);
+    grid-template-columns: repeat(var(--pc-grid-columns-sm), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-md-up} {
-    grid-template-columns: repeat(var(--pc-grid-columns-large), minmax(0, 1fr));
+    gap: var(--pc-grid-gap-md);
+    grid-template-columns: repeat(var(--pc-grid-columns-md), minmax(0, 1fr));
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    gap: var(--pc-grid-gap-lg);
+    grid-template-columns: repeat(var(--pc-grid-columns-lg), minmax(0, 1fr));
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    gap: var(--pc-grid-gap-xl);
+    grid-template-columns: repeat(var(--pc-grid-columns-xl), minmax(0, 1fr));
   }
 }
 
@@ -22,13 +31,21 @@
 }
 
 @for $i from 1 through 2 {
-  .grid-#{$i}-column {
+  .grid-#{$i}-column-xs {
     grid-column-end: span #{$i};
   }
 }
 
 @for $i from 1 through 4 {
   @media #{$p-breakpoints-sm-up} {
+    .grid-#{$i}-column-sm {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@for $i from 1 through 6 {
+  @media #{$p-breakpoints-md-up} {
     .grid-#{$i}-column-md {
       grid-column-end: span #{$i};
     }
@@ -36,8 +53,16 @@
 }
 
 @for $i from 1 through 12 {
-  @media #{$p-breakpoints-md-up} {
+  @media #{$p-breakpoints-lg-up} {
     .grid-#{$i}-column-lg {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  @media #{$p-breakpoints-xl-up} {
+    .grid-#{$i}-column-xl {
       grid-column-end: span #{$i};
     }
   }

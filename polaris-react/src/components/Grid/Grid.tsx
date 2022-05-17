@@ -1,27 +1,33 @@
 import React, {useState, useMemo} from 'react';
-
 import {tokens} from '../../tokens';
+
+import type breakpoints from '../../tokens/token-groups/breakpoints.json';
 import {debounce} from '../../utilities/debounce';
 import {EventListener} from '../EventListener';
 
 import {Column} from './components';
 import styles from './Grid.scss';
 
-interface Columns {
-  small?: number;
-  medium?: number;
-  large?: number;
-}
+type Breakpoints =
+  keyof typeof breakpoints extends `breakpoints-${infer Breakpoint}`
+    ? Breakpoint
+    : never;
 
-interface Areas {
-  small: string[];
-  medium: string[];
-  large: string[];
-}
+type Columns = {
+  [Breakpoint in Breakpoints]: number;
+};
+
+type Areas = {
+  [Breakpoint in Breakpoints]: string[];
+};
+
+type Gap = {
+  [Breakpoint in Breakpoints]: string;
+};
 
 export interface GridProps {
   /* Grid gap */
-  gap?: string;
+  gap?: Gap;
   /* Set grid-template-areas */
   areas?: Areas;
   /* Must be less than 12 to work with the grid system */
@@ -32,17 +38,29 @@ export interface GridProps {
 export const Grid: React.FunctionComponent<GridProps> & {
   Column: typeof Column;
 } = function Grid({
-  gap = 'var(--p-space-4)',
+  gap = {
+    xs: 'var(--p-space-4)',
+    sm: 'var(--p-space-4)',
+    md: 'var(--p-space-4)',
+    lg: 'var(--p-space-4)',
+    xl: 'var(--p-space-4)',
+  },
   areas,
   children,
-  columns = {small: 2, medium: 4, large: 12},
+  columns = {xs: 2, sm: 4, md: 6, lg: 12, xl: 12},
 }: GridProps) {
   const [gridTemplateAreas, setGridTemplateAreas] = useState(getAreas(areas));
   const style = {
-    '--pc-grid-columns-small': columns?.small,
-    '--pc-grid-columns-medium': columns?.medium,
-    '--pc-grid-columns-large': columns?.large,
-    gap,
+    '--pc-grid-gap-xs': gap?.xs,
+    '--pc-grid-gap-sm': gap?.sm,
+    '--pc-grid-gap-md': gap?.md,
+    '--pc-grid-gap-lg': gap?.lg,
+    '--pc-grid-gap-xl': gap?.xl,
+    '--pc-grid-columns-xs': columns?.xs,
+    '--pc-grid-columns-sm': columns?.sm,
+    '--pc-grid-columns-md': columns?.md,
+    '--pc-grid-columns-lg': columns?.lg,
+    '--pc-grid-columns-xl': columns?.xl,
     gridTemplateAreas,
   };
 
@@ -65,28 +83,42 @@ export const Grid: React.FunctionComponent<GridProps> & {
 function getAreas(areas?: Areas) {
   if (areas === undefined) return;
 
-  const large = window.matchMedia(
+  const xl = window.matchMedia(
+    `(min-width: ${tokens.breakpoints['breakpoints-xl']})`,
+  ).matches;
+
+  const lg = window.matchMedia(
+    `(min-width: ${tokens.breakpoints['breakpoints-lg']})`,
+  ).matches;
+
+  const md = window.matchMedia(
     `(min-width: ${tokens.breakpoints['breakpoints-md']})`,
   ).matches;
 
-  const medium = window.matchMedia(
+  const sm = window.matchMedia(
     `(min-width: ${tokens.breakpoints['breakpoints-sm']})`,
   ).matches;
 
   switch (true) {
-    case large:
-      return formatAreas(areas.large);
+    case xl:
+      return formatAreas(areas.xl);
 
-    case medium:
-      return formatAreas(areas.medium);
+    case lg:
+      return formatAreas(areas.lg);
+
+    case md:
+      return formatAreas(areas.md);
+
+    case sm:
+      return formatAreas(areas.sm);
 
     default:
-      return formatAreas(areas.small);
+      return formatAreas(areas.xs);
   }
 }
-
-Grid.Column = Column;
 
 export function formatAreas(areas: string[]) {
   return `'${areas.join(`' '`)}'`;
 }
+
+Grid.Column = Column;

@@ -21,11 +21,12 @@ describe('<Column />', () => {
 
   it('applies classes when columns are passed in', () => {
     const column = mountWithApp(
-      <Column columns={{small: 1, medium: 2, large: 6}} />,
+      <Column columns={{xs: 2, sm: 4, md: 6, lg: 12, xl: 12}} />,
     );
 
     expect(column).toContainReactComponent('div', {
-      className: 'Column grid-1-column grid-2-column-md grid-6-column-lg',
+      className:
+        'Column grid-2-column-xs grid-4-column-sm grid-6-column-md grid-12-column-lg grid-12-column-xl',
     });
   });
 });
