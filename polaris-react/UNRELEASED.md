@@ -10,7 +10,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added `extraSmall` to the available sizes of the `Thumbnail` and `SkeletonThumbnail` ([#5770](https://github.com/Shopify/polaris/pull/5770))
 - Updated experimental breakpoint values ([#5804](https://github.com/Shopify/polaris/pull/5804))
 - Added support for tooltips on Navigation items ([#5750](https://github.com/Shopify/polaris/pull/5750))
-- Updated `TopBar` to use Polaris XL media conditions ([5818](https://github.com/Shopify/polaris/pull/5818))
 
 ### Bug fixes
 
