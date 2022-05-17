@@ -53,7 +53,7 @@ $page-left-alignment-breakpoint-max: 1238px;
     display: block;
   }
 
-  @media (min-width: 1400px) {
+  @media #{$p-breakpoints-xl-up} {
     width: $layout-width-nav-base;
   }
 }
