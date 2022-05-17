@@ -3,6 +3,7 @@
 
 $icon-size: 20px;
 $page-left-alignment-breakpoint-max: 1238px;
+$context-control-expand-after: 1400px;
 
 .TopBar {
   position: relative;
@@ -53,7 +54,7 @@ $page-left-alignment-breakpoint-max: 1238px;
     display: block;
   }
 
-  @media #{$p-breakpoints-xl-up} {
+  @include breakpoint-after($context-control-expand-after) {
     width: $layout-width-nav-base;
   }
 }
