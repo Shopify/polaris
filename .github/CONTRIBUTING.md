@@ -72,6 +72,7 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn type-check`
 1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally in Storybook with `yarn dev`
+1. Create a changeset by running yarn changeset. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md#i-am-in-a-multi-package-repository-a-mono-repo).
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Contributor License Agreement (CLA)
@@ -92,28 +93,41 @@ Making sure the voice and tone is consistent across Polaris is important to us, 
 
 After cloning Polaris, run `yarn` to fetch its dependencies. Then you can run several commands:
 
-- `yarn lint`
-- `yarn format`
+#### Common tasks
 
-Run a command in all workspaces with the [`turbo run` command](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task):
+| Task              | Description |
+| ----------------- | ----------- |
+| `yarn build`      | ...         |
+| `yarn dev`        | ...         |
+| `yarn lint`       | ...         |
+| `yarn test`       | ...         |
+| `yarn test:watch` | ...         |
+| `yarn clean`      | ...         |
+| `yarn format`     | ...         |
+| `yarn type-check` | ...         |
+| `yarn changeset`  | ...         |
 
-- `yarn turbo run <task>` will run the chosen Yarn command in each workspace
+#### Workspace tasks
 
-This can be helpful for executing scripts across all packages in the monorepo:
+Use [`turbo run` command](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task) to run tasks in all or a subset of workspaces
 
-- `yarn turbo run build` will build all packages
-- `yarn turbo run lint` will run the lint task for all packages
-
-Run commands from a selected workspace using the Turborepo [`--filter` flag](https://turborepo.org/docs/core-concepts/filtering):
-
-- `yarn turbo run <task> --filter=<workspace_name>`
+| Task                                         | Description                                                                                                            |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `yarn turbo run <task>`                      | Run the chosen Yarn command in each workspace                                                                          |
+| `yarn turbo run <task> --filter=<workspace>` | Run commands from a selected workspace using the [`--filter` flag](https://turborepo.org/docs/core-concepts/filtering) |
 
 You can filter packages by name, directory, include dependents/dependencies, and by changes in git history.
 
-For example, run commands in the `@shopify/polaris` workspace:
+#### Script examples
 
-- `yarn turbo run dev --filter=@shopify/polaris...` runs a Storybook server and all dependencies in watch mode
-- `yarn turbo run test --filter=@shopify/polaris` runs the complete test suite for only `@shopify/polaris`
+Here are some commonly run tasks for the `@shopify/polaris` workspace:
+
+| Task                                              | Description                                      |
+| ------------------------------------------------- | ------------------------------------------------ |
+| `yarn turbo run dev --filter=@shopify/polaris...` | Run Storybook and all dependencies in watch mode |
+| `yarn turbo run test --filter=@shopify/polaris`   | Run the all tests for only `@shopify/polaris`    |
+
+#### Testing
 
 We recommend running tests as well as trying your build of a package in a real project, to make sure you don’t introduce any regressions as you work on your change.
 
@@ -122,7 +136,7 @@ We recommend running tests as well as trying your build of a package in a real p
 
 You can test your changes in another project locally using [`yalc`](https://github.com/wclr/yalc).
 
-```
+```sh
 # Build all packages
 yarn build
 
@@ -135,13 +149,13 @@ yalc publish
 
 In the external project, add the locally published package.
 
-```
+```sh
 yalc add @shopify/polaris
 ```
 
 Run the project as usual to tophat local changes. If you need to make updates, push new package changes from the package to test.
 
-```
+```sh
 # /polaris/polaris-react
 # Push new package changes to the local yalc registry
 yalc push
@@ -149,7 +163,7 @@ yalc push
 
 Then, update the external project with the latest updates.
 
-```
+```sh
 # /my-project
 yalc update @shopify/polaris
 ```

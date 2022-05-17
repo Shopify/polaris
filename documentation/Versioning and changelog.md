@@ -1,10 +1,10 @@
 # Versioning and changelog
 
-The changelog is prepared manually immediately before a release, by moving changelog entries from `polaris-react/UNRELEASED.md` to `polaris-react/CHANGELOG.md`, under a new heading for the version number.
-
-**Use the [`🤖Skip Changelog`](https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%A4%96Skip+Changelog%22) label to ignore a failing changelog check** in your pull request if you feel the code changes do not warrant a changelog entry.
+The changelog is prepared using [Changesets](https://github.com/changesets/changesets). You need to add a changeset by running `yarn changeset` which contains what packages should be bumped, their associated semver bump types and some markdown which will be inserted into changelogs.
 
 ### How to write a changelog entry:
+
+After running `yarn changeset`, your final prompt will be to provide a message to go alongside the changeset. This will be written into the changelog when the next release occurs. Keep the following in mind when authoring your entry:
 
 - Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)
 - Avoid redundancy when possible (try to phrase a bug fix entry without the word “bug”)
@@ -40,16 +40,9 @@ Contributed from the community:
 
 The possible groups in which to categorize changes are:
 
-- Breaking changes
-- New components
-- Enhancements (new variations, accessibility improvements, etc.)
-- Design updates (non-breaking design changes implemented in code)
-- Bug fixes
-- Documentation
-- Dependency upgrades
-- Development workflow (new yarn commands or changes to existing commands)
-- Code quality (non-trivial changes to code which effect the private API)
-- Deprecations
+- Major Changes
+- Minor Changes
+- Patch Changes
 
 ## Out of scope for `CHANGELOG.md`
 
@@ -59,18 +52,6 @@ Generally, changes related to these topics can be omitted:
 - UI Kit (unless noteworthy)
 - Dev dependencies upgrades
 - Chores (infrastructure, release process…)
-
-## Unreleased changes
-
-Unreleased changes must go under in the `polaris-react/UNRELEASED.md` file:
-
-```md
-### Bug fixes
-
-- Fixed something ([#100](https://github.com/shopify/polaris/pull/100))
-```
-
-Entries must be moved from `polaris-react/UNRELEASED.md` to `polaris-react/CHANGELOG.md` at each release.
 
 ## Versioning scheme
 
@@ -97,49 +78,3 @@ Because we expose both React components (for which the markup, including class n
 - Changes that do not impact public APIs
 - Non-breaking changes to minimum version of dependencies
 - Breaking changes to private Sass variables, functions, and mixins
-
-## Creating a new release
-
-> This action can only be performed by a @Shopify member. Reach out to someone in @Shopify if you need assistance.
-
-Follow the following steps to deploy a new version of Polaris:
-
-1. Checkout the `main` branch and pull the latest commits
-
-   `git checkout main && git pull`
-
-1. Create a new `polaris-release` branch from `main`
-
-   `git checkout -b polaris-release`
-
-1. Migrate all entries from `UNRELEASED.md` to `CHANGELOG.md` ([see example](https://github.com/Shopify/polaris/pull/5254/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4ed))
-
-1. Commit changelog updates
-
-   `git add . && git commit -m "Polaris vX.X.X release"`
-
-1. Version and tag the new release
-
-   `yarn version`
-
-1. Verify the new tag was created and is linked to the last commit in the last release
-
-1. Push the `polaris-release` branch to the remote repository with tags
-
-   `git push origin polaris-release --follow-tags`
-
-1. Create a new PR to merge `polaris-release` into `main` in GitHub
-
-1. Deploy the tagged commit in shipit
-
-1. Once successfully deployed, merge the release PR into `main`
-
-   Use the **Rebase and merge** option when merging. Squashing your commits can lead to loosing the tagged commit.
-
-1. Add release notes to the new release
-
-   a. Copy release notes from `CHANGELOG.md`
-
-   b. Select the latest tag from the [Releases](https://github.com/Shopify/polaris/releases) section, click `Edit tag`, and paste the release notes into the release description
-
-   c. Push the `Publish Release` button
