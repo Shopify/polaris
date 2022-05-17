@@ -81,14 +81,6 @@
   margin-bottom: var(--p-space-1);
 }
 
-.ControlMoreSpacing {
-  margin-right: var(--p-space-4);
-
-  @include when-typography-not-condensed {
-    margin-right: var(--p-space-2);
-  }
-}
-
 .DescriptionsMoreSpacing {
   padding-left: calc(var(--p-space-4) + var(--p-choice-size));
 

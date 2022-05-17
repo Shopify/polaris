@@ -51,10 +51,6 @@ export function Choice({
   );
 
   const labelStyles = classNames(styles.Label);
-  const controlStyles = classNames(
-    styles.Control,
-    labelMoreSpace && styles.ControlMoreSpacing,
-  );
 
   const labelMarkup = (
     <label
@@ -64,7 +60,7 @@ export function Choice({
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
     >
-      <span className={controlStyles}>{children}</span>
+      <span className={styles.Control}>{children}</span>
       <span className={labelStyles}>{label}</span>
     </label>
   );
