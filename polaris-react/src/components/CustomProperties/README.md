@@ -101,7 +101,7 @@ Custom properties can be nested within the custom properties rendered by the app
 
 ## Consuming custom properties colors in a component
 
-The CustomProperties component uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) to share color values with components. For a full list of available CSS custom properties, see the [Polaris tokens docs](https://github.com/Shopify/polaris-react/blob/main/documentation/Color%20system.md).
+The CustomProperties component uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) to share color values with components. For a full list of available CSS custom properties, see the [Polaris tokens docs](https://github.com/Shopify/polaris/tree/main/polaris-tokens#readme).
 
 ```scss
 .Card {
