@@ -179,13 +179,13 @@ The root query for this API returns data about both components and pages
 
 ### Fields
 
-#### componentQuery([object Object]): <a href="#section-componentquery">ComponentQuery!</a>
+#### componentQuery([object Object]): <a href="#componentquery">ComponentQuery!</a>
 
 | Name | Type   | Description                                          |
 | ---- | ------ | ---------------------------------------------------- |
 | slug | String | The url slug that refers to an individual component. |
 
-#### pages(slug : String, categorySlug : String): <a href="#section-page">[Page!]!</a>
+#### pages(slug : String, categorySlug : String): <a href="#page">[Page!]!</a>
 
 | Name         | Type   | Description                                                     |
 | ------------ | ------ | --------------------------------------------------------------- |
@@ -204,7 +204,7 @@ The format of the query that returns components.
 
 List of errors returned by a failing query
 
-#### components: <a href="#section-component">[Component!]!</a>
+#### components: <a href="#component">[Component!]!</a>
 
 List of components that match the given query.
 
@@ -236,7 +236,7 @@ The order of the component.
 
 The intro content of the component.
 
-#### sections: <a href="#section-section">[Section!]!</a>
+#### sections: <a href="#section">[Section!]!</a>
 
 The sections of the component.
 
@@ -248,15 +248,15 @@ The content of the component.
 
 The component’s examples availability for each platform.
 
-#### web: <a href="#section-webcontent">WebContent!</a>
+#### web: <a href="#webcontent">WebContent!</a>
 
 The component’s content for the web platform.
 
-#### ios: <a href="#section-mobilecontent">MobileContent!</a>
+#### ios: <a href="#mobilecontent">MobileContent!</a>
 
 The component’s examples for the iOS platform.
 
-#### android: <a href="#section-mobilecontent">MobileContent!</a>
+#### android: <a href="#mobilecontent">MobileContent!</a>
 
 The component’s examples for the Android platform.
 
@@ -267,6 +267,10 @@ The keywords of the component.
 #### deprecationNotice: String
 
 A deprecation notice for the component if it exists.
+
+#### notice: <a href="#noticecontent">NoticeContent!</a>
+
+A notice for the component if it exists.
 
 ---
 
@@ -308,11 +312,11 @@ Web-specific component fields.
 
 ### Fields
 
-#### examples: <a href="#section-example">[Example!]!</a>
+#### examples: <a href="#example">[Example!]!</a>
 
 The examples for the component.
 
-#### properties: <a href="#section-property">[Property!]!</a>
+#### properties: <a href="#property">[Property!]!</a>
 
 The properties for the component.
 
@@ -396,11 +400,11 @@ The default value for the property.
 
 Whether the prop is for embedded apps only or not.
 
-#### tags: <a href="#section-tag">[Tag!]</a>
+#### tags: <a href="#tag">[Tag!]</a>
 
 A list of all tags associated with a property.
 
-#### returnType: <a href="#section-property">Property</a>
+#### returnType: <a href="#property">Property</a>
 
 The return type of the method.
 
@@ -412,7 +416,7 @@ Whether the prop has to be provided or not.
 
 The description of the property.
 
-#### types: <a href="#section-property">[Property!]</a>
+#### types: <a href="#property">[Property!]</a>
 
 The nested types for the property.
 
@@ -440,7 +444,7 @@ Mobile-specific component fields.
 
 ### Fields
 
-#### examples: <a href="#section-example">[Example!]!</a>
+#### examples: <a href="#example">[Example!]!</a>
 
 The mobile examples for the component.
 
@@ -476,7 +480,7 @@ The intro of the page.
 
 The subtype of the page.
 
-#### sections: <a href="#section-section">[Section!]!</a>
+#### sections: <a href="#section">[Section!]!</a>
 
 The sections of the page.
 
