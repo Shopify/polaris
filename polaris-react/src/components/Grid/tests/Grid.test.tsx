@@ -2,9 +2,9 @@ import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {tokens} from '../../../tokens';
 import {formatAreas, Grid} from '../Grid';
 import {EventListener} from '../../EventListener';
+import breakpoints from '../../../tokens/token-groups/breakpoints.json';
 
 const defaultProps = {
   '--pc-grid-columns-xs': 2,
@@ -35,7 +35,7 @@ describe('<Grid />', () => {
   const xlAreas = ['xl1', 'xl2', 'xl3'];
 
   it('applies small grid-template-areas as inline style when screenwidth is less than breakpoints-sm', () => {
-    setMediaWidth(tokens.breakpoints['breakpoints-xs']);
+    setMediaWidth(breakpoints['breakpoints-xs']);
 
     const grid = mountWithApp(
       <Grid
@@ -58,7 +58,7 @@ describe('<Grid />', () => {
   });
 
   it('applies medium grid-template-areas as inline style when screenwidth is less than breakpoints-md', () => {
-    setMediaWidth(tokens.breakpoints['breakpoints-sm']);
+    setMediaWidth(breakpoints['breakpoints-sm']);
 
     const grid = mountWithApp(
       <Grid
@@ -81,7 +81,7 @@ describe('<Grid />', () => {
   });
 
   it('applies large grid-template-areas as inline style when screenwidth is less than breakpoints-lg', () => {
-    setMediaWidth(tokens.breakpoints['breakpoints-md']);
+    setMediaWidth(breakpoints['breakpoints-md']);
 
     const grid = mountWithApp(
       <Grid

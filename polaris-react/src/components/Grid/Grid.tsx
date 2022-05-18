@@ -1,11 +1,10 @@
 import React, {useState, useMemo} from 'react';
-import {tokens} from '../../tokens';
 
-import type breakpoints from '../../tokens/token-groups/breakpoints.json';
 import {debounce} from '../../utilities/debounce';
 import {EventListener} from '../EventListener';
+import breakpoints from '../../tokens/token-groups/breakpoints.json';
 
-import {Column} from './components';
+import {Cell} from './components';
 import styles from './Grid.scss';
 
 type Breakpoints =
@@ -36,7 +35,7 @@ export interface GridProps {
 }
 
 export const Grid: React.FunctionComponent<GridProps> & {
-  Column: typeof Column;
+  Cell: typeof Cell;
 } = function Grid({
   gap = {
     xs: 'var(--p-space-4)',
@@ -84,19 +83,19 @@ function getAreas(areas?: Areas) {
   if (areas === undefined) return;
 
   const xl = window.matchMedia(
-    `(min-width: ${tokens.breakpoints['breakpoints-xl']})`,
+    `(min-width: ${breakpoints['breakpoints-xl']})`,
   ).matches;
 
   const lg = window.matchMedia(
-    `(min-width: ${tokens.breakpoints['breakpoints-lg']})`,
+    `(min-width: ${breakpoints['breakpoints-lg']})`,
   ).matches;
 
   const md = window.matchMedia(
-    `(min-width: ${tokens.breakpoints['breakpoints-md']})`,
+    `(min-width: ${breakpoints['breakpoints-md']})`,
   ).matches;
 
   const sm = window.matchMedia(
-    `(min-width: ${tokens.breakpoints['breakpoints-sm']})`,
+    `(min-width: ${breakpoints['breakpoints-sm']})`,
   ).matches;
 
   switch (true) {
@@ -121,4 +120,4 @@ export function formatAreas(areas: string[]) {
   return `'${areas.join(`' '`)}'`;
 }
 
-Grid.Column = Column;
+Grid.Cell = Cell;

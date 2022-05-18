@@ -19,10 +19,16 @@ interface Columns {
 export interface ColumnProps {
   columns?: Columns;
   area?: string;
+  row?: string;
   children?: React.ReactNode;
 }
 
-export function Column({area: gridArea, children, columns}: ColumnProps) {
+export function Cell({
+  area: gridArea,
+  row: gridRow,
+  columns,
+  children,
+}: ColumnProps) {
   const className = classNames(
     styles.Column,
     columns?.xs && styles[`grid-${columns?.xs}-column-xs`],
@@ -32,7 +38,7 @@ export function Column({area: gridArea, children, columns}: ColumnProps) {
     columns?.xl && styles[`grid-${columns?.xl}-column-xl`],
   );
   return (
-    <div className={className} style={{gridArea}}>
+    <div className={className} style={{gridArea, gridRow}}>
       {children}
     </div>
   );
