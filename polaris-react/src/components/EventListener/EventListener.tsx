@@ -10,7 +10,7 @@ export interface EventListenerProps extends BaseEventProps {
   passive?: boolean;
 }
 
-/** @deprecated Use the useEventHandler hook instead. */
+/** @deprecated Use the useEventListener hook instead. */
 export class EventListener extends PureComponent<EventListenerProps, never> {
   componentDidMount() {
     this.attachListener();
