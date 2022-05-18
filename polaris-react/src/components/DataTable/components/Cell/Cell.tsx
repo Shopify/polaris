@@ -32,6 +32,7 @@ export interface CellProps {
   inFixedFirstColumn?: boolean;
   hasFixedFirstColumn?: boolean;
   fixedCellVisible?: boolean;
+  firstColumnMinWidth?: string;
 }
 
 export function Cell({
@@ -57,6 +58,7 @@ export function Cell({
   handleFocus = () => {},
   hasFixedFirstColumn = false,
   fixedCellVisible = false,
+  firstColumnMinWidth,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -157,11 +159,13 @@ export function Cell({
       className={className}
       scope="col"
       aria-sort={sortDirection}
+      style={firstColumn ? {minWidth: firstColumnMinWidth} : {}}
     >
       {columnHeadingContent}
     </th>
   ) : (
     <th
+      style={{minWidth: firstColumnMinWidth}}
       className={className}
       scope="row"
       {...colSpanProp}
