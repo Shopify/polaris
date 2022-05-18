@@ -15,7 +15,7 @@ export interface PipProps {
 }
 
 export function Pip({
-  status,
+  status = 'info',
   progress = 'complete',
   accessibilityLabelOverride,
 }: PipProps) {
