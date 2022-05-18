@@ -227,11 +227,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               }),
             )}
           </tr>
+          {totals && !showTotalsInFooter && (
+            <tr>{firstTotal?.map(this.renderTotals)}</tr>
+          )}
         </thead>
-        {totals && !showTotalsInFooter && firstTotal?.map(this.renderTotals)}
         <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
         {totals && showTotalsInFooter && (
-          <tfoot>{firstTotal?.map(this.renderTotals)}</tfoot>
+          <tfoot>
+            <tr>{firstTotal?.map(this.renderTotals)}</tr>
+          </tfoot>
         )}
       </table>
     );
@@ -365,7 +369,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       button.addEventListener('focus', this.handleHeaderButtonFocus);
     } else {
       this.tableHeadings[index] = ref;
-      this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
+      this.tableHeadingWidths[index] = Math.ceil(
+        ref.getBoundingClientRect().width,
+      );
     }
   };
 
