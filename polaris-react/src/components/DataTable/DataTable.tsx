@@ -5,6 +5,7 @@ import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {Sticky} from '../Sticky';

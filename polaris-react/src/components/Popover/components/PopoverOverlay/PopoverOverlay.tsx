@@ -13,6 +13,7 @@ import {
 } from '../../../../utilities/components';
 import {Key} from '../../../../types';
 import {overlay} from '../../../shared';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
 import {

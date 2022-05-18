@@ -390,11 +390,10 @@ export {
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useEventListener} from './utilities/event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
-
-export {useEventListener} from './utilities/event-listener';

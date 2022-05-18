@@ -1,27 +1,21 @@
 import {useEffect, useRef} from 'react';
 
-export interface Props {
-  element?: HTMLElement | Window | Document;
-  event: string;
-  capture?: boolean;
-  passive?: boolean;
-  handler(event: Event): void;
-}
+export type ElementType = Window | Document | HTMLElement;
 
-export function useEventListener({
-  element = window,
-  event,
-  capture,
-  passive,
-  handler,
-}: Props) {
+export function useEventListener(
+  event: string,
+  handler: () => void,
+  element: ElementType = window,
+  options?: AddEventListenerOptions,
+) {
   const handlerRef = useRef(handler);
 
   useEffect(() => {
-    element.addEventListener(event, handlerRef.current, {capture, passive});
+    const handler = handlerRef.current;
+    element.addEventListener(event, handlerRef.current, options);
 
     return () => {
-      element.removeEventListener(event, handlerRef.current, capture);
+      element.removeEventListener(event, handler, options?.capture);
     };
-  }, [event, element]);
+  }, [event, element, options]);
 }
