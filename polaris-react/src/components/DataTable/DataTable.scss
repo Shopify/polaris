@@ -52,7 +52,6 @@
 .Table {
   width: 100%;
   border-spacing: 0;
-  border-collapse: collapse;
 }
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
@@ -348,7 +347,7 @@
   }
 
   z-index: 3;
-  border-collapse: collapse;
+  border-spacing: 0;
 
   &.Visible {
     border-right: var(--p-border-divider);
