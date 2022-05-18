@@ -51,13 +51,14 @@ Run commands from a selected workspace using [`turbo run <command> --filter=<wor
 
 Run commands across all workspaces. This uses [`turbo run <command>`](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task).
 
-| Command           | Runs                                  |
-| ----------------- | ------------------------------------- |
-| `yarn lint`       | Lints all workspaces                  |
-| `yarn test`       | Tests all workspaces                  |
-| `yarn type-check` | Build types and check for type errors |
-| `yarn clean`      | Remove generated files                |
-| `yarn format`     | Format files with prettier            |
+| Command           | Runs                                                                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `yarn changeset`  | Adds a new [changelog entry](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset) |
+| `yarn lint`       | Lints all workspaces                                                                                                  |
+| `yarn test`       | Tests all workspaces                                                                                                  |
+| `yarn type-check` | Build types and check for type errors                                                                                 |
+| `yarn clean`      | Remove generated files                                                                                                |
+| `yarn format`     | Format files with prettier                                                                                            |
 
 ## Contribute to this repo
 
