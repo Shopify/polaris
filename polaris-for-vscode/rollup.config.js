@@ -32,10 +32,10 @@ const rollupOptions = {
     }),
   ],
   external: [
-    'vscode', 
-    'vscode-languageclient/node', 
-    'vscode-languageserver/node', 
-    'vscode-languageserver-textdocument'
+    'vscode',
+    'vscode-languageclient/node',
+    'vscode-languageserver/node',
+    'vscode-languageserver-textdocument',
   ],
 };
 
