@@ -2,8 +2,6 @@ name: Release
 
 on:
   push:
-    paths:
-      - '.changeset/**'
     branches:
       - main
 
