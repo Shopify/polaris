@@ -309,6 +309,7 @@
 
   .StickyHeaderCell {
     flex-shrink: 0;
+    box-sizing: content-box;
   }
 
   .StickyTableColumnHeader-isScrolling {
