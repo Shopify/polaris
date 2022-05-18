@@ -4,8 +4,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Breaking changes
 
-- Removed `info` status as default prop value for `Badge.Pip`. The default color is `--p-icon` ([#5798](https://github.com/Shopify/polaris/pull/5798))
-
 ### Enhancements
 
 - Ported internal breakpoint and layout functions to SCSS variables ([#5722](https://github.com/Shopify/polaris/pull/5722))
@@ -20,7 +18,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Fixed vertical scroll on small screens in `EmptyState` ([#5779](https://github.com/Shopify/polaris/pull/5779))
 - Fixed broken links in documentation ([#5824](https://github.com/Shopify/polaris/pull/5824))
 - Fixed key prop error introduced in [sticky header](https://github.com/Shopify/polaris/pull/5494) ([#5826](https://github.com/Shopify/polaris/pull/5826))
-- Fixed `Badge` and `Pip` having different background colors for `new` and `info` status ([#5798](https://github.com/Shopify/polaris/pull/5798))
 
 ### Documentation
 
