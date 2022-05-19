@@ -97,7 +97,7 @@ We’ll review your pull request and either merge it, request changes to it, or 
 
 ### Changelog
 
-The changelog is prepared using [Changesets](https://github.com/changesets/changesets). You need to add a changeset by running `yarn changeset` which contains what packages should be bumped, their associated semver bump types and some markdown which will be inserted into changelogs.
+The changelog is created with [Changesets](https://github.com/changesets/changesets).
 
 #### Adding a changeset
 
@@ -127,8 +127,7 @@ Keep the following in mind when authoring your changelog entry (final prompt aft
 
 Generally, changes related to these topics can be omitted:
 
-- Style guide
-- UI Kit (unless noteworthy)
+- polaris.shopify.com
 - Dev dependencies upgrades
 - Chores (infrastructure, release process…)
 

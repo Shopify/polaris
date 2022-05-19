@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -22,6 +22,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
+      - name: Enter prerelease mode
+        run: yarn changeset pre enter next
 
       - name: Create release Pull Request or publish to NPM
         id: changesets
