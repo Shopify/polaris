@@ -17,7 +17,6 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   source: string;
   crossOrigin?: CrossOrigin;
   sourceSet?: SourceSet[];
-  noPlaceholder?: boolean;
   onLoad?(): void;
   onError?(): void;
 }
@@ -27,7 +26,6 @@ export function Image({
   sourceSet,
   source,
   crossOrigin,
-  noPlaceholder,
   onLoad,
   className: classNameProp,
   ...rest
@@ -48,7 +46,7 @@ export function Image({
 
   const className = classNames(
     styles.Image,
-    !noPlaceholder && status === 'loading' && styles.isLoading,
+    status === 'loading' && styles.isLoading,
     classNameProp,
   );
 
