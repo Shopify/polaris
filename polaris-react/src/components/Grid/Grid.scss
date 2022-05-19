@@ -2,27 +2,33 @@
 
 .Grid {
   display: grid;
-  gap: var(--pc-grid-gap-xs);
-  grid-template-columns: repeat(var(--pc-grid-columns-xs), minmax(0, 1fr));
+  gap: var(--pc-grid-gap-xs, var(--p-space-4));
+  grid-template-columns: repeat(var(--pc-grid-columns-xs, 2), minmax(0, 1fr));
 
   @media #{$p-breakpoints-sm-up} {
-    gap: var(--pc-grid-gap-sm);
-    grid-template-columns: repeat(var(--pc-grid-columns-sm), minmax(0, 1fr));
+    gap: var(--pc-grid-gap-sm, var(--p-space-4));
+    grid-template-columns: repeat(var(--pc-grid-columns-sm, 4), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-md-up} {
-    gap: var(--pc-grid-gap-md);
-    grid-template-columns: repeat(var(--pc-grid-columns-md), minmax(0, 1fr));
+    gap: var(--pc-grid-gap-md, var(--p-space-4));
+    grid-template-columns: repeat(var(--pc-grid-columns-md, 6), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-lg-up} {
-    gap: var(--pc-grid-gap-lg);
-    grid-template-columns: repeat(var(--pc-grid-columns-lg), minmax(0, 1fr));
+    gap: var(--pc-grid-gap-lg, var(--p-space-4));
+    grid-template-columns: repeat(
+      var(--pc-grid-columns-lg, 12),
+      minmax(0, 1fr)
+    );
   }
 
   @media #{$p-breakpoints-xl-up} {
-    gap: var(--pc-grid-gap-xl);
-    grid-template-columns: repeat(var(--pc-grid-columns-xl), minmax(0, 1fr));
+    gap: var(--pc-grid-gap-xl, var(--p-space-4));
+    grid-template-columns: repeat(
+      var(--pc-grid-columns-xl, 12),
+      minmax(0, 1fr)
+    );
   }
 }
 

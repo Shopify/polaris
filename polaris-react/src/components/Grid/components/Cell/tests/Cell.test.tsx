@@ -26,7 +26,7 @@ describe('<Cell />', () => {
 
     expect(cell).toContainReactComponent('div', {
       className:
-        'Column grid-2-column-xs grid-4-column-sm grid-6-column-md grid-12-column-lg grid-12-column-xl',
+        'Cell grid-2-column-xs grid-4-column-sm grid-6-column-md grid-12-column-lg grid-12-column-xl',
     });
   });
 

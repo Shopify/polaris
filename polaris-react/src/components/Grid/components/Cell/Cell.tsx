@@ -23,22 +23,23 @@ export interface ColumnProps {
   children?: React.ReactNode;
 }
 
-export function Cell({
-  area: gridArea,
-  row: gridRow,
-  columns,
-  children,
-}: ColumnProps) {
+export function Cell({area, row, columns, children}: ColumnProps) {
   const className = classNames(
-    styles.Column,
+    styles.Cell,
     columns?.xs && styles[`grid-${columns?.xs}-column-xs`],
     columns?.sm && styles[`grid-${columns?.sm}-column-sm`],
     columns?.md && styles[`grid-${columns?.md}-column-md`],
     columns?.lg && styles[`grid-${columns?.lg}-column-lg`],
     columns?.xl && styles[`grid-${columns?.xl}-column-xl`],
   );
+
+  const style = {
+    ...(area ? {gridArea: area} : {}),
+    ...(row ? {gridRow: row} : {}),
+  };
+
   return (
-    <div className={className} style={{gridArea, gridRow}}>
+    <div className={className} style={style}>
       {children}
     </div>
   );

@@ -13,15 +13,15 @@ type Breakpoints =
     : never;
 
 type Columns = {
-  [Breakpoint in Breakpoints]: number;
+  [Breakpoint in Breakpoints]?: number;
 };
 
 type Areas = {
-  [Breakpoint in Breakpoints]: string[];
+  [Breakpoint in Breakpoints]?: string[];
 };
 
 type Gap = {
-  [Breakpoint in Breakpoints]: string;
+  [Breakpoint in Breakpoints]?: string;
 };
 
 export interface GridProps {
@@ -33,21 +33,10 @@ export interface GridProps {
   columns?: Columns;
   children?: React.ReactNode;
 }
-
+/** **Experimental!** This component is in alpha. Use with caution. */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
-} = function Grid({
-  gap = {
-    xs: 'var(--p-space-4)',
-    sm: 'var(--p-space-4)',
-    md: 'var(--p-space-4)',
-    lg: 'var(--p-space-4)',
-    xl: 'var(--p-space-4)',
-  },
-  areas,
-  children,
-  columns = {xs: 2, sm: 4, md: 6, lg: 12, xl: 12},
-}: GridProps) {
+} = function Grid({gap, areas, children, columns}: GridProps) {
   const [gridTemplateAreas, setGridTemplateAreas] = useState(getAreas(areas));
   const style = {
     '--pc-grid-gap-xs': gap?.xs,
@@ -116,8 +105,8 @@ function getAreas(areas?: Areas) {
   }
 }
 
-export function formatAreas(areas: string[]) {
-  return `'${areas.join(`' '`)}'`;
+export function formatAreas(areas?: string[]) {
+  return `'${areas?.join(`' '`)}'`;
 }
 
 Grid.Cell = Cell;

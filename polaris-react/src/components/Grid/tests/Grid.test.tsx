@@ -6,19 +6,6 @@ import {formatAreas, Grid} from '../Grid';
 import {EventListener} from '../../EventListener';
 import breakpoints from '../../../tokens/token-groups/breakpoints.json';
 
-const defaultProps = {
-  '--pc-grid-columns-xs': 2,
-  '--pc-grid-columns-sm': 4,
-  '--pc-grid-columns-md': 6,
-  '--pc-grid-columns-lg': 12,
-  '--pc-grid-columns-xl': 12,
-  '--pc-grid-gap-xs': 'var(--p-space-4)',
-  '--pc-grid-gap-sm': 'var(--p-space-4)',
-  '--pc-grid-gap-md': 'var(--p-space-4)',
-  '--pc-grid-gap-lg': 'var(--p-space-4)',
-  '--pc-grid-gap-xl': 'var(--p-space-4)',
-};
-
 describe('<Grid />', () => {
   beforeEach(() => {
     matchMedia.mock();
@@ -50,10 +37,7 @@ describe('<Grid />', () => {
     );
 
     expect(grid).toContainReactComponent('div', {
-      style: {
-        ...defaultProps,
-        gridTemplateAreas: formatAreas(xsAreas),
-      },
+      style: {gridTemplateAreas: formatAreas(xsAreas)},
     });
   });
 
@@ -73,10 +57,7 @@ describe('<Grid />', () => {
     );
 
     expect(grid).toContainReactComponent('div', {
-      style: {
-        ...defaultProps,
-        gridTemplateAreas: formatAreas(smAreas),
-      },
+      style: {gridTemplateAreas: formatAreas(smAreas)},
     });
   });
 
@@ -96,10 +77,7 @@ describe('<Grid />', () => {
     );
 
     expect(grid).toContainReactComponent('div', {
-      style: {
-        ...defaultProps,
-        gridTemplateAreas: formatAreas(mdAreas),
-      },
+      style: {gridTemplateAreas: formatAreas(mdAreas)},
     });
   });
 
@@ -118,7 +96,6 @@ describe('<Grid />', () => {
 
     expect(grid).toContainReactComponent('div', {
       style: {
-        ...defaultProps,
         '--pc-grid-columns-xs': 1,
         '--pc-grid-columns-sm': 3,
         '--pc-grid-columns-md': 7,
@@ -143,7 +120,6 @@ describe('<Grid />', () => {
 
     expect(grid).toContainReactComponent('div', {
       style: {
-        ...defaultProps,
         '--pc-grid-gap-xs': 'var(--p-space-1)',
         '--pc-grid-gap-sm': 'var(--p-space-1)',
         '--pc-grid-gap-md': 'var(--p-space-2)',
