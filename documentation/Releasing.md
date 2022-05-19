@@ -7,6 +7,15 @@ We have a [GitHub](https://github.com/changesets/action) action that
 - creates a `version` PR, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
 - optionally allows you to do releases when changes are merged to the `main` branch.
 
+## Prereleases
+
+To create a new prerelease:
+
+1. Branch of the `next` branch
+1. Create changesets with your changes
+1. Set your target merge branch to `next`
+1. The GitHub release workflow will generated a PR for your prerelease branch 🎉
+
 ### [polaris-for-figma](/polaris-for-figma)
 
 You will need to have admin privileges in Figma to release the plugin.
