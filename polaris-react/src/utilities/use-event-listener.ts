@@ -24,7 +24,7 @@ export function useEventListener(
     const handler = handlerRef.current;
     const options = optionsRef.current;
 
-    target.addEventListener(event, handlerRef.current, options);
+    target.addEventListener(event, handler, options);
 
     return () => target.removeEventListener(event, handler, options);
   }, [event, element]);
