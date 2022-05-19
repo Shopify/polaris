@@ -41,21 +41,12 @@ describe('<Link />', () => {
 
   describe('external link', () => {
     it('has a trailing icon', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           Shopify Help Center
         </Link>,
       );
       expect(link).toContainReactComponent(Icon);
-    });
-
-    it('has a trailing icon when the content is a number', () => {
-      const link = mountWithAppProvider(
-        <Link url="https://help.shopify.com/" external>
-          {3}
-        </Link>,
-      );
-      expect(link.children().last().find(Icon).exists()).toBe(true);
     });
 
     it('informs screen readers that it opens in a new window', () => {
@@ -72,7 +63,7 @@ describe('<Link />', () => {
     });
 
     it('doesn’t have a trailing icon for react children', () => {
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           <span>Shopify Help Center</span>
         </Link>,
