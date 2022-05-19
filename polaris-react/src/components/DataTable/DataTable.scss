@@ -174,9 +174,7 @@
   @include focus-ring;
   position: relative;
   display: inline-flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  @include recolor-icon(var(--p-icon));
+  align-items: center;
   color: var(--p-text);
   transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
@@ -200,15 +198,8 @@
   }
 
   &:hover {
-    @include recolor-icon(var(--p-interactive-hovered));
-    color: var(--p-interactive-hovered);
-
     .Icon {
       opacity: 1;
-
-      svg {
-        fill: var(--p-icon-disabled);
-      }
     }
   }
 
@@ -217,10 +208,6 @@
 
     .Icon {
       opacity: 1;
-
-      svg {
-        fill: var(--p-icon-disabled);
-      }
     }
   }
 }
@@ -233,12 +220,6 @@
 .Cell-sorted {
   .Icon {
     opacity: 1;
-  }
-
-  .Heading:focus:not(:active) {
-    svg {
-      fill: var(--p-icon);
-    }
   }
 }
 

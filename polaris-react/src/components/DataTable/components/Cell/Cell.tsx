@@ -7,6 +7,7 @@ import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
+import {SortIcon} from '../../../SortIcon';
 
 export interface CellProps {
   content?: React.ReactNode;
@@ -82,7 +83,7 @@ export function Cell({
 
   const iconMarkup = (
     <span className={iconClassName}>
-      <Icon source={source} accessibilityLabel={sortAccessibilityLabel} />
+      <SortIcon sortDirection={sortDirection} />
     </span>
   );
 

@@ -1,0 +1,18 @@
+@import '../../styles/common';
+
+.SortIcon {
+  height: 20px;
+}
+.Icon {
+  @include recolor-icon(var(--p-icon-subdued));
+  position: relative;
+  &:first-of-type {
+    top: -3.5px;
+  }
+  &:last-of-type {
+    top: -16.5px;
+  }
+}
+.Active {
+  @include recolor-icon(var(--p-icon));
+}
