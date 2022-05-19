@@ -12,7 +12,7 @@
   box-shadow: var(--p-shadow-modal);
   overflow: hidden;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
@@ -41,7 +41,7 @@
   max-height: calc(100vh - #{$top-bar-height});
   margin: 0;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     max-height: 60vh;
   }
 }
