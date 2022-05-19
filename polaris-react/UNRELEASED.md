@@ -21,6 +21,8 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 
 ### Documentation
 
+- Replaced `deprecationNotice` with `notice` object ([#5841](https://github.com/Shopify/polaris/pull/5841))
+
 ### Development workflow
 
 ### Dependency upgrades
