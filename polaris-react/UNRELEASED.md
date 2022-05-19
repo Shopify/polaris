@@ -1,6 +1,6 @@
 # Unreleased changes
 
-Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) to format new entries. 💜
+Use [the changelog guidelines](/.github/CONTRIBUTING.md#changelog) to format new entries. 💜
 
 ### Breaking changes
 
