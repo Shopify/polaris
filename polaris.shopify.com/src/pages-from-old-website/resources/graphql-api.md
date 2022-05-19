@@ -264,9 +264,9 @@ The component’s examples for the Android platform.
 
 The keywords of the component.
 
-#### deprecationNotice: String
+#### notice: <a href="#section-noticecontent">NoticeContent!</a>
 
-A deprecation notice for the component if it exists.
+A notice for the component if it exists.
 
 ---
 
@@ -447,6 +447,22 @@ The mobile examples for the component.
 #### accessibility: String
 
 The mobile accessibility content for the component.
+
+---
+
+## NoticeContent
+
+Notice fields.
+
+### Fields
+
+#### status: String
+
+Status determines the banner style. Status examples: 'deprecated' | 'alpha'
+
+#### message: String
+
+The banner content.
 
 ---
 
