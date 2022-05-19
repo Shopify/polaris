@@ -247,6 +247,7 @@ describe('<PositionedOverlay />', () => {
       const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
+      // eslint-disable-next-line import/no-deprecated
       expect(positionedOverlay).toContainReactComponent(EventListener, {
         event: 'resize',
       });
