@@ -14,6 +14,7 @@
     "url": "https://github.com/Shopify/polaris/issues"
   },
   "version": "0.2.0",
+  "private": true,
   "keywords": [
     "polaris",
     "shopify"

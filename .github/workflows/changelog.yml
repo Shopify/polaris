@@ -13,7 +13,6 @@ jobs:
   check:
     if: ${{ !contains(github.event.pull_request.labels.*.name, '🤖Skip Changelog') }}
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Checkout branch
