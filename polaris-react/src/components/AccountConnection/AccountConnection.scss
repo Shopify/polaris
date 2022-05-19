@@ -1,0 +1,10 @@
+.TermsOfService {
+  margin-top: var(--p-space-5);
+}
+
+.Content {
+  // stylelint-disable-next-line selector-max-combinators
+  > * + * {
+    margin-top: var(--p-space-2);
+  }
+}

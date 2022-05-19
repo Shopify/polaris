@@ -1,0 +1,26 @@
+.RangeSlider {
+  --pc-range-slider-input: 10;
+  --pc-range-slider-output: 20;
+  --pc-range-slider-track-height: 4px;
+  --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
+  --pc-track-dashed-border-radius: var(--p-border-radius-1);
+}
+
+@mixin track-dashed {
+  $dashedTrackColor: var(--p-border);
+  content: '';
+  position: absolute;
+  height: var(--pc-range-slider-track-height);
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    $dashedTrackColor,
+    $dashedTrackColor 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: var(--pc-range-slider-track-height)
+    var(--pc-range-slider-track-height);
+  border-radius: var(--pc-track-dashed-border-radius);
+  border-right: var(--pc-track-dashed-border-radius) $dashedTrackColor solid;
+}

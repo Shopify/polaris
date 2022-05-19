@@ -1,0 +1,237 @@
+@import '../../styles/common';
+
+$item-min-height: 16px;
+$item-min-width: 50px;
+$item-vertical-padding: $item-min-height * 0.5;
+
+.Tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Wrapper {
+  border-bottom: var(--p-border-divider);
+  padding: 0 var(--p-space-2);
+}
+
+.fitted {
+  flex-wrap: nowrap;
+
+  .TabContainer {
+    flex: 1 1 100%;
+  }
+
+  .Title {
+    width: 100%;
+    padding: var(--p-space-2) var(--p-space-4);
+  }
+}
+
+.fillSpace {
+  .TabContainer {
+    flex: 1 1 auto;
+  }
+}
+
+.TabContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.Tab {
+  @include unstyled-button;
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  color: var(--p-text);
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  min-width: 100%; // IE11 fix for overflowing flex items from parent container
+  margin-top: var(--p-space-025);
+  margin-bottom: calc(-1 * var(--p-space-025));
+  padding: var(--p-space-2) var(--p-space-1);
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+
+    .Title {
+      @include text-emphasis-normal;
+      background-color: transparent;
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background-color: var(--p-border-hovered);
+      }
+    }
+  }
+
+  &:active {
+    .Title {
+      background-color: transparent;
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background: var(--p-surface-primary-selected-pressed);
+      }
+    }
+  }
+
+  &:focus {
+    .Title {
+      @include text-emphasis-normal;
+    }
+
+    &:not(:active) {
+      // stylelint-disable-next-line selector-max-specificity
+      .Title {
+        @include focus-ring($style: 'focused');
+      }
+    }
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.Tab-selected {
+  @include text-emphasis-normal;
+
+  &:focus .Title {
+    outline: var(--p-border-width-3) solid transparent;
+    // stylelint-disable-next-line  selector-max-specificity
+    &::before {
+      background: var(--p-action-primary);
+    }
+  }
+
+  .Title {
+    outline: var(--p-border-width-3) solid transparent;
+    color: var(--p-text);
+
+    &::before {
+      background: var(--p-action-primary);
+    }
+  }
+}
+
+.Title {
+  @include focus-ring;
+  border-radius: var(--p-border-radius-1);
+  display: block;
+  padding: var(--p-space-2) var(--p-space-4);
+  min-width: $item-min-width;
+  color: var(--p-text-subdued);
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--p-space-2));
+    left: 0;
+    right: 0;
+    height: var(--p-border-width-3);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-top-right-radius: var(--p-border-radius-1);
+  }
+}
+
+.titleWithIcon {
+  display: flex;
+}
+
+.Panel {
+  display: block;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Panel-hidden {
+  display: none;
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  padding: var(--p-space-2);
+}
+
+.Item {
+  @include unstyled-button;
+  @include focus-ring;
+  display: block;
+  width: 100%;
+  min-height: $item-min-height;
+  padding: $item-vertical-padding var(--p-space-4);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--p-border-radius-1);
+  color: inherit;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  &:hover {
+    background-color: var(--p-surface-hovered);
+  }
+
+  &:active {
+    background-color: var(--p-surface-primary-selected-pressed);
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.DisclosureTab {
+  display: none;
+}
+
+.DisclosureTab-visible {
+  display: flex;
+}
+
+.DisclosureActivator {
+  @include focus-ring;
+  height: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin: var(--p-space-025) var(--p-space-025) calc(-1 * var(--p-space-025)) 0;
+
+  &:hover,
+  &:focus {
+    @include recolor-icon(var(--p-icon));
+  }
+
+  &:focus .Title {
+    @include focus-ring($style: 'focused');
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  &:hover .Title::before {
+    background-color: var(--p-border-hovered);
+  }
+}
+
+.TabMeasurer {
+  display: flex;
+  visibility: hidden;
+  height: 0;
+}

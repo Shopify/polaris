@@ -1,0 +1,51 @@
+@import '../../../../styles/common';
+
+$content-max-width: 200px;
+
+.TooltipOverlay {
+  --pc-tooltip-overlay-offset: var(--p-space-1);
+  margin: var(--pc-tooltip-overlay-offset) var(--p-space-4) var(--p-space-4);
+  opacity: 1;
+  box-shadow: var(--p-shadow-popover);
+  border-radius: var(--p-border-radius-1);
+  pointer-events: none;
+  will-change: opacity, left, top;
+  transition: opacity var(--p-duration-200) var(--p-ease-in)
+    var(--p-duration-100);
+
+  @media screen and (-ms-high-contrast: active) {
+    border: var(--p-border-width-2) solid windowText;
+  }
+}
+
+.measuring {
+  opacity: 0;
+}
+
+.positionedAbove {
+  margin: var(--p-space-4) var(--p-space-4) var(--pc-tooltip-overlay-offset);
+}
+
+.Content {
+  position: relative;
+  border-radius: var(--p-border-radius-base);
+  background-color: var(--p-surface);
+  color: var(--p-text);
+  max-width: $content-max-width;
+  padding: var(--p-space-1) var(--p-space-2);
+  word-break: break-word;
+}
+
+[data-polaris-tooltip-activator] {
+  outline: 0;
+  @include focus-ring;
+
+  &:focus-visible {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+// stylelint-disable-next-line selector-max-attribute
+[data-polaris-tooltip-activator][data-focus-visible-added] {
+  @include focus-ring($style: 'focused');
+}

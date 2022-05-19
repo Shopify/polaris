@@ -1,0 +1,41 @@
+@import '../../../../styles/common';
+
+:root {
+  // Sass does not allow arbitrary Sass function calls in custom properties.
+  // They must be interpolated
+  // See https://github.com/sass/libsass/issues/2585
+  --pc-toast-manager-translate-y-out: 150px;
+  --pc-toast-manager-translate-y-in: 0;
+}
+
+.ToastManager {
+  position: fixed;
+  z-index: var(--p-z-12);
+  right: 0;
+  left: 0;
+  text-align: center;
+  bottom: var(--pc-frame-global-ribbon-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ToastWrapper {
+  position: absolute;
+  display: inline-flex;
+  opacity: 0;
+  transition: transform var(--p-duration-400) ease,
+    opacity var(--p-duration-400) ease;
+  transform: translateY(var(--pc-toast-manager-translate-y-out));
+}
+
+.ToastWrapper-enter,
+.ToastWrapper-exit {
+  transform: translateY(var(--pc-toast-manager-translate-y-out));
+  opacity: 0;
+}
+
+.ToastWrapper-enter-done {
+  transform: translateY(var(--pc-toast-manager-translate-y-in));
+  opacity: 1;
+}

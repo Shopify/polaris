@@ -1,0 +1,17 @@
+@import '../../styles/common';
+
+.FooterHelp {
+  display: flex;
+  justify-content: center;
+  margin: var(--p-space-5) 0;
+  width: 100%;
+
+  @include page-content-when-not-fully-condensed {
+    margin: var(--p-space-5);
+    width: auto;
+  }
+}
+
+.Text {
+  @include text-style-input;
+}

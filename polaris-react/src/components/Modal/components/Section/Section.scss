@@ -1,0 +1,18 @@
+@import '../../../../styles/common';
+
+.Section {
+  flex: 0 0 auto;
+  padding: var(--p-space-5);
+
+  &:not(:last-of-type) {
+    border-bottom: var(--p-border-divider);
+  }
+
+  &.subdued {
+    background: var(--p-surface-subdued);
+  }
+
+  &.flush {
+    padding: 0;
+  }
+}

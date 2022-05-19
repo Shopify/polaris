@@ -1,0 +1,20 @@
+$small-size: 20px;
+$large-size: 44px;
+
+@mixin spinnerSize($size) {
+  height: $size;
+  width: $size;
+}
+
+.Spinner svg {
+  animation: var(--p-keyframes-spin) var(--p-duration-500) linear infinite;
+  fill: var(--p-border-highlight);
+}
+
+.sizeSmall svg {
+  @include spinnerSize($small-size);
+}
+
+.sizeLarge svg {
+  @include spinnerSize($large-size);
+}

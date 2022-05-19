@@ -4,7 +4,7 @@ about: Ask a question or report a problem with Polaris or the documentation
 labels: 🐛Bug
 ---
 
-<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?labels=Feature+request&template=FEATURE_REQUEST.md -->
+<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.md -->
 
 ## Issue summary
 
@@ -36,9 +36,8 @@ If you include an animated gif showing your issue, wrapping it in a details tag 
 
 ## Steps to reproduce the problem
 
-1.
-1.
-1.
+1. First step
+1. Second step
 
 ## Reduced test case
 

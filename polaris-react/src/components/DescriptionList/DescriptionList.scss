@@ -1,0 +1,65 @@
+@import '../../styles/common';
+
+$breakpoint: 550px;
+
+.DescriptionList {
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+
+  @include page-content-breakpoint-after($breakpoint) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+}
+
+.Term {
+  @include text-emphasis-strong;
+  padding: var(--p-space-4) 0 var(--p-space-2);
+
+  .spacingTight & {
+    padding: var(--p-space-2) 0 var(--p-space-1);
+  }
+
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 0 1 25%;
+    padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
+
+    .spacingTight & {
+      padding: var(--p-space-2) var(--p-space-2) var(--p-space-2) 0;
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .Description + & + .Description {
+      border-top: var(--p-border-divider);
+    }
+  }
+}
+
+.Description {
+  margin-left: 0;
+  padding: 0 0 var(--p-space-4);
+
+  .spacingTight & {
+    padding: 0 0 var(--p-space-2);
+  }
+
+  + .Term {
+    border-top: var(--p-border-divider);
+  }
+
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 1 1 51%;
+    padding: var(--p-space-4) 0;
+
+    .spacingTight & {
+      padding: var(--p-space-2) 0;
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    + .Term + .Description {
+      border-top: var(--p-border-divider);
+    }
+  }
+}

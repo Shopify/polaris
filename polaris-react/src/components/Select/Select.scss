@@ -1,0 +1,185 @@
+@import '../../styles/common';
+
+.Select {
+  --pc-select-backdrop: 10;
+  --pc-select-content: 20;
+  --pc-select-input: 30;
+  position: relative;
+
+  // IE 11 fix to remove default dropdown arrow
+  select::-ms-expand {
+    display: none;
+  }
+}
+
+.disabled {
+  .Content {
+    color: var(--p-text-disabled);
+  }
+
+  .InlineLabel {
+    color: inherit;
+  }
+
+  .Icon {
+    @include recolor-icon(var(--p-icon-disabled));
+  }
+
+  .Backdrop {
+    border-color: var(--p-border-disabled);
+
+    &::before {
+      background-color: var(--p-action-secondary-disabled);
+    }
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+.Content {
+  @include text-style-input;
+  position: relative;
+  z-index: var(--pc-select-content);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: control-height();
+  padding: control-vertical-padding() var(--p-space-2)
+    control-vertical-padding() var(--p-space-3);
+}
+
+.InlineLabel {
+  @include text-emphasis-subdued;
+  margin-right: var(--p-space-1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.SelectedOption {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Prefix {
+  padding-right: var(--p-space-2);
+}
+
+.Icon {
+  @include recolor-icon(var(--p-icon));
+}
+
+.Input {
+  // Even though the input is invisible, text styles apply to the options menu
+  @include text-style-input;
+  position: absolute;
+  // Required to solve a bug causing Safari 13 to crash https://bugs.webkit.org/show_bug.cgi?id=202055
+  text-rendering: auto;
+  top: 0;
+  left: 0;
+  z-index: var(--pc-select-input);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  appearance: none;
+}
+
+.Backdrop {
+  z-index: var(--pc-select-backdrop);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border-bottom-color: var(--p-border-shadow-subdued);
+  border-radius: var(--p-border-radius-1);
+  background-color: var(--p-surface);
+  box-shadow: var(--p-shadow-button);
+  @include focus-ring($border-width: 1px);
+  // 'position' needs to sit below focus-ring since it will be overwritten
+  // with relative when the focus ring style is 'base'
+  // stylelint-disable-next-line order/properties-order
+  position: absolute;
+}
+
+.error {
+  .Backdrop {
+    border-color: var(--p-border-critical);
+    background-color: var(--p-surface-critical-subdued);
+    // stylelint-disable-next-line selector-max-class
+    &.hover,
+    &:hover {
+      border-color: var(--p-border-critical);
+    }
+  }
+
+  // Need to override the higher specificity of the sibling selector
+  // so that errors still have red borders.
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
+  .Input:focus ~ .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.Input:focus {
+  ~ .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+@media (-ms-high-contrast: active) {
+  .Content {
+    color: windowText;
+    -ms-high-contrast-adjust: none;
+  }
+
+  .InlineLabel {
+    color: inherit;
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  .SelectedOption {
+    color: inherit;
+  }
+
+  .Icon {
+    @include recolor-icon(buttonText);
+  }
+
+  .Backdrop {
+    &::after {
+      // Remove the dotted focus outline from the control-backdrop mixin.
+      display: none;
+    }
+  }
+
+  .Input:focus {
+    ~ .Content {
+      color: highlightText;
+    }
+
+    ~ .Backdrop {
+      // Align with the native styling for this element, which differs from
+      // what the control-backdrop mixin provides.
+      background-color: highlight;
+    }
+  }
+
+  .disabled {
+    .Content {
+      color: grayText;
+    }
+
+    .Icon {
+      @include recolor-icon(grayText);
+      opacity: 1;
+    }
+  }
+}

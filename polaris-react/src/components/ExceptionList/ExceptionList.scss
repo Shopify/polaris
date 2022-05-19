@@ -1,0 +1,74 @@
+@import '../../styles/common';
+
+.ExceptionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Item {
+  position: relative;
+  padding-left: var(--p-space-6);
+  color: var(--p-text-subdued);
+
+  + .Item {
+    margin-top: var(--p-space-1);
+  }
+}
+
+.Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--p-space-5);
+  height: var(--p-space-5);
+  margin-right: var(--p-space-1);
+
+  @include recolor-icon(var(--p-icon-subdued));
+
+  .statusWarning & {
+    @include recolor-icon(var(--p-icon-warning));
+  }
+
+  .statusCritical & {
+    @include recolor-icon(var(--p-icon-critical));
+  }
+}
+
+.Bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--p-border-radius-half);
+  background-color: var(--p-icon-subdued);
+
+  .statusWarning & {
+    background-color: var(--p-icon-warning);
+  }
+
+  .statusCritical & {
+    background-color: var(--p-icon-critical);
+  }
+}
+
+.Title {
+  + .Description::before {
+    content: '–';
+    margin: 0 var(--p-space-1);
+  }
+
+  .statusWarning &,
+  .statusCritical & {
+    font-weight: var(--p-font-weight-medium);
+  }
+
+  .statusWarning & {
+    color: var(--p-text-warning);
+  }
+
+  .statusCritical & {
+    color: var(--p-text-critical);
+  }
+}

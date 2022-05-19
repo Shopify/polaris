@@ -1,15 +1,10 @@
 {
-  "extends": "@shopify/typescript-configs/library",
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "./",
-    "noEmit": true,
-    "incremental": true,
-    "outDir": "dist/types/latest",
-    "declarationMap": false,
-    "isolatedModules": true,
-    "importsNotUsedAsValues": "error",
-    "strictFunctionTypes": false
-  },
-  "include": ["./config/typescript", "./src", "./tests", "./playground"]
+  "files": [],
+  "references": [
+    {"path": "./polaris-for-vscode"},
+    {"path": "./polaris-react"},
+    {"path": "./polaris-tokens"},
+    {"path": "./polaris.shopify.com"},
+    {"path": "./stylelint-polaris"}
+  ]
 }

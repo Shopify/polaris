@@ -1,0 +1,138 @@
+@import '../../../../styles/common';
+@import '../../variables';
+
+$icon-size: 20px;
+$input-height: 34px;
+$new-input-height: 36px;
+$search-icon-width: calc(#{$icon-size} + var(--p-space-4));
+
+.SearchField {
+  --pc-search-field-backdrop: 1;
+  --pc-search-field-input: 2;
+  --pc-search-field-icon: 3;
+  --pc-search-field-action: 3;
+  z-index: var(--p-z-11);
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  border: var(--p-border-transparent);
+  width: 100%;
+  max-width: $search-max-width;
+}
+// We have both a focused class and a focus pseudo selector here
+// because we allow "faked" focus for when the search is still
+// active, but is not actually the focused element in the DOM
+// (for example, while selecting a value from a filter in the
+// search this input controls)
+.focused .Input,
+.Input:focus {
+  border: none;
+  color: var(--p-text);
+
+  &::placeholder {
+    color: var(--p-text-subdued);
+  }
+}
+
+.Input:focus {
+  ~ .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
+
+  ~ .BackdropShowFocusBorder {
+    border: var(--p-border-width-1) solid var(--pc-top-bar-border);
+  }
+
+  ~ .Icon {
+    @include recolor-icon(var(--p-icon));
+  }
+}
+
+.focused {
+  .BackdropShowFocusBorder {
+    border: var(--p-border-width-1) solid var(--pc-top-bar-border);
+  }
+
+  .Icon {
+    @include recolor-icon(var(--p-icon));
+  }
+}
+
+.Input {
+  @include text-style-input;
+  z-index: var(--pc-search-field-input);
+  height: $new-input-height;
+  width: 100%;
+  padding: 0 0 0 $search-icon-width;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: var(--p-text);
+  will-change: fill, color;
+  transition: fill var(--p-duration-200) var(--p-ease),
+    color var(--p-duration-200) var(--p-ease);
+  appearance: textfield;
+
+  &::placeholder {
+    color: var(--p-text);
+  }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+.Icon {
+  @include recolor-icon(var(--p-icon));
+  position: absolute;
+  z-index: var(--pc-search-field-icon);
+  top: 50%;
+  left: var(--p-space-2);
+  display: flex;
+  height: $icon-size;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.Clear {
+  @include recolor-icon(var(--p-icon));
+  @include focus-ring($size: 'wide');
+  position: relative;
+  z-index: var(--pc-search-field-action);
+  border: none;
+  appearance: none;
+  background: transparent;
+  padding: var(--p-space-2);
+
+  &:focus,
+  &:hover {
+    @include recolor-icon(var(--p-icon-hovered));
+    outline: none;
+  }
+
+  &:focus {
+    @include focus-ring($size: 'wide', $style: 'focused');
+  }
+
+  &:active {
+    @include recolor-icon(var(--p-icon-pressed));
+
+    &::after {
+      border: none;
+    }
+  }
+}
+
+.Backdrop {
+  @include focus-ring;
+  position: absolute;
+  z-index: var(--pc-search-field-backdrop);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--p-surface-search-field);
+  border-radius: var(--p-border-radius-1);
+}

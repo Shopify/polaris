@@ -1,0 +1,21 @@
+.Backdrop {
+  position: fixed;
+  z-index: var(--p-z-10);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background-color: var(--p-backdrop);
+  animation: var(--p-keyframes-fade-in) var(--p-duration-200) 1 forwards;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.belowNavigation {
+  z-index: var(--p-z-7);
+}

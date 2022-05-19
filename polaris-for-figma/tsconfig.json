@@ -1,0 +1,3 @@
+{
+  "extends": "@shopify/typescript-configs/dom"
+}

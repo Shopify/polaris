@@ -1,0 +1,29 @@
+.Connected {
+  --pc-connected-item: 10;
+  --pc-connected-primary: 20;
+  --pc-connected-focused: 30;
+  position: relative;
+  display: flex;
+}
+
+.Item {
+  position: relative;
+  z-index: var(--pc-connected-item);
+  flex: 0 0 auto;
+
+  &:not(:first-child) {
+    margin-left: var(--p-space-1);
+  }
+}
+
+// This is a violation of our component model, but it’s the cleanest
+// way to remove the border radii on connected elements.
+// TextField.scss has a dependency due to this override.
+.Item-primary {
+  z-index: var(--pc-connected-primary);
+  flex: 1 1 auto;
+}
+
+.Item-focused {
+  z-index: var(--pc-connected-focused);
+}

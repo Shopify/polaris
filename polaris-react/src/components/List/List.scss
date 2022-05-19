@@ -1,0 +1,27 @@
+.List {
+  padding-left: var(--p-space-5);
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: disc outside none;
+
+  + .List {
+    margin-top: var(--p-space-4);
+  }
+}
+
+.typeNumber {
+  padding-left: var(--p-space-8);
+  list-style: decimal outside none;
+}
+
+.Item {
+  margin-bottom: var(--p-space-2);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .List:first-child {
+    margin-top: var(--p-space-2);
+  }
+}

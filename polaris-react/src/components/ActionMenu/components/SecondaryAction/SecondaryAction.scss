@@ -1,0 +1,46 @@
+@import '../../../../styles/common';
+
+.SecondaryAction {
+  --pc-secondary-action-button-spacing: var(--p-space-3);
+  // stylelint-disable declaration-no-important
+  a,
+  button {
+    @include focus-ring($border-width: 1px);
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: var(--p-border-radius-1) !important;
+    padding-left: var(--pc-secondary-action-button-spacing);
+    padding-right: var(--pc-secondary-action-button-spacing);
+
+    &:hover {
+      background: var(--p-background-hovered) !important;
+    }
+
+    &:active {
+      background: var(--p-background-pressed) !important;
+    }
+
+    @media #{$p-breakpoints-md-up} {
+      border: none !important;
+      @include focus-ring($border-width: 0);
+    }
+  }
+
+  &.destructive {
+    a,
+    button {
+      @include recolor-icon(var(--p-icon-critical));
+      color: var(--p-interactive-critical);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:hover {
+        background-color: var(--p-surface-critical-subdued-hovered) !important;
+      }
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:active {
+        background-color: var(--p-surface-critical-subdued-pressed) !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.RollupActivator {
+  text-align: right;
+  // Override `.iconOnly` negative margins
+  // stylelint-disable-next-line selector-no-qualifying-type
+  button[type='button'] {
+    margin: 0;
+    border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+    // stylelint-disable-next-line selector-max-specificity
+    &:hover,
+    &:active,
+    &:focus {
+      border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+    }
+  }
+}

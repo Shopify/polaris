@@ -1,0 +1,22 @@
+@import '../../styles/common';
+
+$body-text-last-line-width: 80%;
+
+.SkeletonBodyText {
+  height: var(--p-space-2);
+  display: flex;
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-base);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
+
+  &:last-child:not(:first-child) {
+    width: $body-text-last-line-width;
+  }
+
+  + .SkeletonBodyText {
+    margin-top: var(--p-space-3);
+  }
+}

@@ -1,0 +1,19 @@
+@mixin text-container-spacing {
+  --pc-text-container-spacing: var(--p-space-4);
+
+  > *:not(:first-child) {
+    margin-top: var(--pc-text-container-spacing);
+  }
+}
+
+.TextContainer {
+  @include text-container-spacing;
+}
+
+.spacingTight {
+  --pc-text-container-spacing: var(--p-space-2);
+}
+
+.spacingLoose {
+  --pc-text-container-spacing: var(--p-space-5);
+}

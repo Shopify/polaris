@@ -1,0 +1,55 @@
+@import '../../styles/common';
+
+.Thumbnail {
+  --pc-thumbnail-extra-small-size: 24px;
+  --pc-thumbnail-small-size: 40px;
+  --pc-thumbnail-medium-size: 60px;
+  --pc-thumbnail-large-size: 80px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--p-surface);
+  min-width: var(--pc-thumbnail-extra-small-size);
+  max-width: 100%;
+  border-radius: var(--p-border-radius-1);
+  border: var(--p-border-divider);
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.sizeExtraSmall {
+  width: var(--pc-thumbnail-extra-small-size);
+}
+
+.sizeSmall {
+  width: var(--pc-thumbnail-small-size);
+}
+
+.sizeMedium {
+  width: var(--pc-thumbnail-medium-size);
+}
+
+.sizeLarge {
+  width: var(--pc-thumbnail-large-size);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.Thumbnail > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  @include recolor-icon(currentColor);
+  color: var(--p-icon-subdued);
+}

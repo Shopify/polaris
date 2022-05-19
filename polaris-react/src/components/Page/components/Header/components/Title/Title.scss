@@ -1,0 +1,46 @@
+@import '../../../../../../styles/common';
+
+.Title {
+  @include text-breakword;
+  @include text-emphasis-strong;
+  font-size: var(--p-font-size-9);
+  line-height: var(--p-line-height-4);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-7);
+  }
+}
+
+.TitleWithSubtitle {
+  margin-top: var(--p-space-1);
+}
+
+.SubTitle {
+  margin-top: var(--p-space-1);
+  color: var(--p-text-subdued);
+
+  &.SubtitleCompact {
+    margin-top: 0;
+  }
+}
+
+.TitleWithMetadataWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .Title {
+    display: inline;
+    margin-right: var(--p-space-2);
+
+    // stylelint-disable-next-line selector-max-combinators
+    > * {
+      display: inline;
+    }
+  }
+
+  .TitleMetadata {
+    margin-top: 0;
+    vertical-align: bottom;
+  }
+}

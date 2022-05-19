@@ -7,11 +7,9 @@ target_languages:
     es,
     fi,
     fr,
-    hi,
     it,
     ja,
     ko,
-    ms,
     nb,
     nl,
     pl,
@@ -29,4 +27,4 @@ components:
     scheme: react
     audience: merchant
     paths:
-      - locales/{{language}}.json
+      - polaris-react/locales/{{language}}.json
