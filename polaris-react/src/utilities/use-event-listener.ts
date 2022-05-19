@@ -1,6 +1,6 @@
-import {useEffect, useRef} from 'react';
+import {RefObject, useEffect, useRef} from 'react';
 
-type ElementType = Window | Document | HTMLElement;
+type ElementType = Window | Document | HTMLElement | RefObject<HTMLElement>;
 
 export function useEventListener(
   event: string,
@@ -17,10 +17,15 @@ export function useEventListener(
   }, [handler, options]);
 
   useEffect(() => {
+    const target = 'current' in element ? element.current : element;
+
+    if (!target) return;
+
     const handler = handlerRef.current;
     const options = optionsRef.current;
-    element.addEventListener(event, handlerRef.current, options);
 
-    return () => element.removeEventListener(event, handler, options);
+    target.addEventListener(event, handlerRef.current, options);
+
+    return () => target.removeEventListener(event, handler, options);
   }, [event, element]);
 }

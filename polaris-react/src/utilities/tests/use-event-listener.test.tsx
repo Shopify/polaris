@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'tests/utilities';
 
-import {useEventListener} from '../hooks';
+import {useEventListener} from '../use-event-listener';
 
 describe('useEventListener', () => {
   it('calls handler when the resize event is fired', () => {
