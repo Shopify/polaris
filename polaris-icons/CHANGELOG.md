@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Updated icons
+
+- `TickSmallMinor` ([#5836](https://github.com/Shopify/polaris-icons/issues/5836))
+- `PlusMinor` ([5726](https://github.com/Shopify/polaris/pull/5726))
+
 ## 4.20.0 - 2022-05-09
 
 ### Enhancements
