@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines](/.github/CONTRIBUTING.md#changelog).
 
-<!-- Unreleased changes should go to UNRELEASED.md -->
-
 ---
 
 ## 9.8.0 - 2022-05-19
