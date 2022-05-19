@@ -8,6 +8,8 @@ on:
       - opened
       - synchronize
       - reopened
+    branches-ignore:
+      - 'changeset-release/**'
 
 jobs:
   check:
