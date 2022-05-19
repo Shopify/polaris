@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'tests/utilities';
 
-import {useEventListener, ElementType} from '../hooks';
+import {useEventListener} from '../hooks';
 
 describe('useEventListener', () => {
   it('calls handler when the resize event is fired', () => {
@@ -59,7 +59,7 @@ function MockComponent({
 }: {
   event: string;
   handler: () => void;
-  element?: ElementType;
+  element?: Window | Document;
 }) {
   useEventListener(event, handler, element);
   return null;
