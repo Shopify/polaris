@@ -179,10 +179,7 @@ export {FullscreenBar} from './components/FullscreenBar';
 export type {FullscreenBarProps} from './components/FullscreenBar';
 
 export {Grid} from './components/Grid';
-export type {
-  GridProps,
-  CellProps as GridCellProps,
-} from './components/Grid';
+export type {GridProps, CellProps as GridCellProps} from './components/Grid';
 
 export {Heading} from './components/Heading';
 export type {HeadingProps} from './components/Heading';

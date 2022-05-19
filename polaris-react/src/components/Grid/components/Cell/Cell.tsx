@@ -16,7 +16,7 @@ interface Columns {
   xl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 }
 
-export interface ColumnProps {
+export interface CellProps {
   area?: string;
   column?: string;
   row?: string;
@@ -24,7 +24,7 @@ export interface ColumnProps {
   children?: React.ReactNode;
 }
 
-export function Cell({area, row, column, columnSpan, children}: ColumnProps) {
+export function Cell({area, row, column, columnSpan, children}: CellProps) {
   const className = classNames(
     styles.Cell,
     columnSpan?.xs && styles[`grid-${columnSpan?.xs}-column-xs`],
