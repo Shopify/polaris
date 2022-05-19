@@ -1,0 +1,12 @@
+name: hydrogen
+set: major
+description: Used to represent Hydrogen
+keywords:
+  - hydrogen
+  - oxygen
+authors:
+  - Kyryll Odobetskiy
+version: 1
+date_added: 2022-05-19
+date_modified: 2022-05-19
+exclusive_use:
