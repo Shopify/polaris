@@ -3,7 +3,7 @@
   padding: 0;
   max-width: $page-max-width;
 
-  @media #{$p-breakpoints-sm-up} {
+  @include page-content-when-not-fully-condensed {
     padding: 0 var(--p-space-6);
   }
 }
@@ -34,7 +34,7 @@
 @mixin page-header-layout {
   padding: var(--p-space-4);
 
-  @media #{$p-breakpoints-sm-up} {
+  @include page-content-when-not-fully-condensed {
     padding-left: 0;
     padding-right: 0;
   }
