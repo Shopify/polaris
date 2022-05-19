@@ -114,6 +114,8 @@ export function Avatar({
         onError={handleError}
       />
     ) : null;
+  // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
+  const verticalOffset = '0.35em';
 
   const avatarBody =
     customer || !initials ? (
@@ -125,7 +127,7 @@ export function Avatar({
       <text
         x="50%"
         y="50%"
-        dominantBaseline="central"
+        dy={verticalOffset}
         fill="currentColor"
         fontSize="20"
         textAnchor="middle"
