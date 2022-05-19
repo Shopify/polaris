@@ -21,7 +21,7 @@ describe('<Cell />', () => {
 
   it('applies classes when columns are passed in', () => {
     const cell = mountWithApp(
-      <Cell columns={{xs: 2, sm: 4, md: 6, lg: 12, xl: 12}} />,
+      <Cell columnSpan={{xs: 2, sm: 4, md: 6, lg: 12, xl: 12}} />,
     );
 
     expect(cell).toContainReactComponent('div', {

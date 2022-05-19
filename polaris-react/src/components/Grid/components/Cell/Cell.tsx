@@ -17,25 +17,27 @@ interface Columns {
 }
 
 export interface ColumnProps {
-  columns?: Columns;
   area?: string;
+  column?: string;
   row?: string;
+  columnSpan?: Columns;
   children?: React.ReactNode;
 }
 
-export function Cell({area, row, columns, children}: ColumnProps) {
+export function Cell({area, row, column, columnSpan, children}: ColumnProps) {
   const className = classNames(
     styles.Cell,
-    columns?.xs && styles[`grid-${columns?.xs}-column-xs`],
-    columns?.sm && styles[`grid-${columns?.sm}-column-sm`],
-    columns?.md && styles[`grid-${columns?.md}-column-md`],
-    columns?.lg && styles[`grid-${columns?.lg}-column-lg`],
-    columns?.xl && styles[`grid-${columns?.xl}-column-xl`],
+    columnSpan?.xs && styles[`grid-${columnSpan?.xs}-column-xs`],
+    columnSpan?.sm && styles[`grid-${columnSpan?.sm}-column-sm`],
+    columnSpan?.md && styles[`grid-${columnSpan?.md}-column-md`],
+    columnSpan?.lg && styles[`grid-${columnSpan?.lg}-column-lg`],
+    columnSpan?.xl && styles[`grid-${columnSpan?.xl}-column-xl`],
   );
 
   const style = {
     ...(area ? {gridArea: area} : {}),
     ...(row ? {gridRow: row} : {}),
+    ...(column ? {gridColumn: column} : {}),
   };
 
   return (
