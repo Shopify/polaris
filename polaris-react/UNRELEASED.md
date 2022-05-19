@@ -13,6 +13,7 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
 - Implemented accessibility role and attributes in `SettingToggle` ([#5470](https://github.com/Shopify/polaris/pull/5470))
 - Added background color to `Image` and `Avatar` while media is loading ([#5473](https://github.com/Shopify/polaris/pull/5473))
+- Added `noPlaceholder` prop to `Image` to prevent placeholder from rendering on load ([#5473](https://github.com/Shopify/polaris/pull/5473))
 
 ### Bug fixes
 
