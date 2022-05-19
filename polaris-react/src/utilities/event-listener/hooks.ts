@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 
-export type ElementType = Window | Document | HTMLElement;
+type ElementType = Window | Document | HTMLElement;
 
 export function useEventListener(
   event: string,
