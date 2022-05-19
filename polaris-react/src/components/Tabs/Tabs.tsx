@@ -5,6 +5,7 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -378,6 +379,7 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 }
 
 export function Tabs(props: TabsProps) {
+  usePerformanceBenchmark('Tabs');
   const i18n = useI18n();
 
   return <TabsInner {...props} i18n={i18n} />;

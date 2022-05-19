@@ -20,6 +20,7 @@ import {ButtonGroup} from '../ButtonGroup';
 import {CheckableButton} from '../CheckableButton';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {BulkActionButton, BulkActionMenu} from './components';
 import styles from './BulkActions.scss';
@@ -492,10 +493,12 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     );
 
     return (
-      <div ref={this.setContainerNode}>
-        {smallScreenGroup}
-        {largeScreenGroup}
-      </div>
+      <PerformanceBenchmark name="BulkActions">
+        <div ref={this.setContainerNode}>
+          {smallScreenGroup}
+          {largeScreenGroup}
+        </div>
+      </PerformanceBenchmark>
     );
   }
 

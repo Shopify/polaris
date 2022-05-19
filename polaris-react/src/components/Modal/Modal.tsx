@@ -10,6 +10,7 @@ import {Backdrop} from '../Backdrop';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Dialog, Footer, FooterProps, Header, Section} from './components';
 import styles from './Modal.scss';
@@ -89,6 +90,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   noScroll,
   fullScreen,
 }: ModalProps) {
+  usePerformanceBenchmark('Modal');
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
   const headerId = useUniqueId('modal-header');

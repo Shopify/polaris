@@ -7,6 +7,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {scrollable} from '../shared';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
@@ -127,20 +128,22 @@ export class Scrollable extends Component<ScrollableProps, State> {
     );
 
     return (
-      <ScrollableContext.Provider value={this.scrollToPosition}>
-        <StickyManagerContext.Provider value={this.stickyManager}>
-          <div
-            className={finalClassName}
-            {...scrollable.props}
-            {...rest}
-            ref={this.setScrollArea}
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={focusable ? 0 : undefined}
-          >
-            {children}
-          </div>
-        </StickyManagerContext.Provider>
-      </ScrollableContext.Provider>
+      <PerformanceBenchmark name="Scrollable">
+        <ScrollableContext.Provider value={this.scrollToPosition}>
+          <StickyManagerContext.Provider value={this.stickyManager}>
+            <div
+              className={finalClassName}
+              {...scrollable.props}
+              {...rest}
+              ref={this.setScrollArea}
+              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+              tabIndex={focusable ? 0 : undefined}
+            >
+              {children}
+            </div>
+          </StickyManagerContext.Provider>
+        </ScrollableContext.Provider>
+      </PerformanceBenchmark>
     );
   }
 

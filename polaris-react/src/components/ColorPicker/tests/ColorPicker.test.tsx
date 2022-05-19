@@ -88,7 +88,7 @@ describe('<ColorPicker />', () => {
       const colorPicker = mountWithApp(
         <ColorPicker id={id} color={red} onChange={jest.fn()} />,
       );
-      expect(colorPicker.children[0]).toHaveReactProps({id});
+      expect(colorPicker).toContainReactComponent('div', {id});
     });
   });
 

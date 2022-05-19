@@ -6,6 +6,7 @@ import type {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Actions, RollupActions} from './components';
 import styles from './ActionMenu.scss';
@@ -30,6 +31,7 @@ export function ActionMenu({
   rollupActionsLabel,
   onActionRollup,
 }: ActionMenuProps) {
+  usePerformanceBenchmark('ActionMenu');
   if (actions.length === 0 && groups.length === 0) {
     return null;
   }

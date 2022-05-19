@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import {Key} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface KonamiCodeProps {
   handler(event: KeyboardEvent): void;
@@ -20,6 +21,7 @@ export const KONAMI_CODE = [
 ];
 
 export function KonamiCode({handler}: KonamiCodeProps) {
+  usePerformanceBenchmark('KonamiCode');
   const keyEvent = 'keydown';
   const [position, setPosition] = useState(0);
 

@@ -21,7 +21,10 @@ function AppProviderDecorator(Story, context) {
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
-    <AppProvider i18n={enTranslations}>
+    <AppProvider
+      i18n={enTranslations}
+      features={{enablePerformanceBenchmarking: true}}
+    >
       <Story {...context} />
     </AppProvider>
   );

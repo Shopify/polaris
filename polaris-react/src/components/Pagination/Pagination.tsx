@@ -4,6 +4,7 @@ import React, {createRef} from 'react';
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {KeypressListener} from '../KeypressListener';
@@ -59,6 +60,7 @@ export function Pagination({
   accessibilityLabels,
   label,
 }: PaginationProps) {
+  usePerformanceBenchmark('Pagination');
   const i18n = useI18n();
 
   const node: React.RefObject<HTMLElement> = createRef();

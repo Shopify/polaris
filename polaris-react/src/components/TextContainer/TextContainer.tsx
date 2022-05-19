@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './TextContainer.scss';
 
@@ -14,6 +15,7 @@ export interface TextContainerProps {
 }
 
 export function TextContainer({spacing, children}: TextContainerProps) {
+  usePerformanceBenchmark('TextContainer');
   const className = classNames(
     styles.TextContainer,
     spacing && styles[variationName('spacing', spacing)],

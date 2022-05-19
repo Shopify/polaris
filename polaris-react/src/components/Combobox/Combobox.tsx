@@ -12,6 +12,7 @@ import {
   ComboboxListboxOptionType,
   ComboboxListboxOptionContext,
 } from '../../utilities/combobox';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Combobox.scss';
 import {TextField} from './components';
@@ -45,6 +46,7 @@ export function Combobox({
   onScrolledToBottom,
   onClose,
 }: ComboboxProps) {
+  usePerformanceBenchmark('Combobox');
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();

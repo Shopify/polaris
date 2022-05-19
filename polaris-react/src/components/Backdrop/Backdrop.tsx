@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {ScrollLock} from '../ScrollLock';
 
 import styles from './Backdrop.scss';
@@ -13,6 +14,7 @@ export interface BackdropProps {
 }
 
 export function Backdrop(props: BackdropProps) {
+  usePerformanceBenchmark('Backdrop');
   const {onClick, onTouchStart, belowNavigation, transparent} = props;
 
   const className = classNames(

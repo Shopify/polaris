@@ -10,6 +10,7 @@ import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
 import {Combobox} from '../Combobox';
 import {Listbox, AutoSelection} from '../Listbox';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {MappedAction, MappedOption} from './components';
 import styles from './Autocomplete.scss';
@@ -67,6 +68,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   onSelect,
   onLoadMoreResults,
 }: AutocompleteProps) {
+  usePerformanceBenchmark('Autocomplete');
   const i18n = useI18n();
 
   const buildMappedOptionFromOption = useCallback(

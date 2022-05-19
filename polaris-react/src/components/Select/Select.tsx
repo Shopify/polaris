@@ -6,6 +6,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Select.scss';
 
@@ -93,6 +94,7 @@ export function Select({
   onBlur,
   requiredIndicator,
 }: SelectProps) {
+  usePerformanceBenchmark('Select');
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
 

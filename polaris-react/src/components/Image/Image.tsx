@@ -1,5 +1,7 @@
 import React, {useCallback} from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 interface SourceSet {
   source: string;
   descriptor?: string;
@@ -25,6 +27,7 @@ export function Image({
   className,
   ...rest
 }: ImageProps) {
+  usePerformanceBenchmark('Image');
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)

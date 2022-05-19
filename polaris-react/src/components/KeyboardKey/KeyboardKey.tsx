@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import styles from './KeyboardKey.scss';
 
 export interface KeyboardKeyProps {
@@ -8,6 +10,7 @@ export interface KeyboardKeyProps {
 }
 
 export function KeyboardKey({children}: KeyboardKeyProps) {
+  usePerformanceBenchmark('KeyboardKey');
   let key = children || '';
   key = key.length > 1 ? key.toLowerCase() : key.toUpperCase();
 

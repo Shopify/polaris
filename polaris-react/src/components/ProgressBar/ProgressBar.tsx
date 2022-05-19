@@ -4,6 +4,7 @@ import {tokens} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './ProgressBar.scss';
 
@@ -39,6 +40,7 @@ export function ProgressBar({
   color = 'highlight',
   animated: hasAppearAnimation = true,
 }: ProgressBarProps) {
+  usePerformanceBenchmark('ProgressBar');
   const i18n = useI18n();
 
   const className = classNames(

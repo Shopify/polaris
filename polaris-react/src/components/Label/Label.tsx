@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Label.scss';
 
@@ -20,6 +21,7 @@ export function labelID(id: string) {
 }
 
 export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
+  usePerformanceBenchmark('Label');
   const className = classNames(styles.Label, hidden && styles.hidden);
 
   return (

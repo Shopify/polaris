@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useI18n} from '../../utilities/i18n';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 type Enctype =
   | 'application/x-www-form-urlencoded'
@@ -53,6 +54,7 @@ export function Form({
   target,
   onSubmit,
 }: FormProps) {
+  usePerformanceBenchmark('Form');
   const i18n = useI18n();
 
   const handleSubmit = useCallback(

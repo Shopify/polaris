@@ -15,6 +15,7 @@ import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, CheckboxHandles, Key} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Checkbox.scss';
 
@@ -69,6 +70,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     }: CheckboxProps,
     ref,
   ) {
+    usePerformanceBenchmark('Checkbox');
     const inputNode = useRef<HTMLInputElement>(null);
     const id = useUniqueId('Checkbox', idProp);
     const {

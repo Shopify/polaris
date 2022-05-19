@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {Image} from '../Image';
 import {Icon} from '../Icon';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Thumbnail.scss';
 
@@ -28,6 +29,7 @@ export function Thumbnail({
   size = 'medium',
   transparent,
 }: ThumbnailProps) {
+  usePerformanceBenchmark('Thumbnail');
   const className = classNames(
     styles.Thumbnail,
     size && styles[variationName('size', size)],

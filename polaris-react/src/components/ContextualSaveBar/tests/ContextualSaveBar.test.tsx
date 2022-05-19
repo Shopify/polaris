@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, mountWithApp} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
 
@@ -72,28 +72,6 @@ describe('<ContextualSaveBar />', () => {
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
     contextualSaveBar.setProps({...props});
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
-  });
-
-  describe('frame errors', () => {
-    let consoleErrorSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      consoleErrorSpy = jest
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
-    });
-
-    afterEach(() => {
-      consoleErrorSpy.mockRestore();
-    });
-
-    it('throws when no Frame or appBridge is provided', () => {
-      expect(() => {
-        mount(<ContextualSaveBar {...props} />);
-      }).toThrow(
-        'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
-      );
-    });
   });
 });
 

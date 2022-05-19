@@ -16,6 +16,7 @@ import {
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {
   PopoverCloseSource,
@@ -107,6 +108,7 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     },
     ref,
   ) {
+    usePerformanceBenchmark('Popover');
     const [activatorNode, setActivatorNode] = useState<HTMLElement>();
 
     const overlayRef = useRef<PopoverOverlay>(null);

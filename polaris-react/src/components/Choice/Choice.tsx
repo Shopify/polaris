@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Choice.scss';
 
@@ -41,6 +42,7 @@ export function Choice({
   onMouseOut,
   onMouseOver,
 }: ChoiceProps) {
+  usePerformanceBenchmark('Choice');
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,

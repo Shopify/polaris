@@ -19,6 +19,7 @@ import {
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './ResourceItem.scss';
 
@@ -459,6 +460,7 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 }
 
 export function ResourceItem(props: ResourceItemProps) {
+  usePerformanceBenchmark('ResourceItem');
   return (
     <BaseResourceItem
       {...props}

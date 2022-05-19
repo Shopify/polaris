@@ -2,6 +2,7 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import type {HeadingTagName} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './DisplayText.scss';
 
@@ -27,6 +28,7 @@ export function DisplayText({
   children,
   size = 'medium',
 }: DisplayTextProps) {
+  usePerformanceBenchmark('DisplayText');
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],

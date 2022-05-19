@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
 import {useUniqueId} from '../../utilities/unique-id';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -15,6 +16,7 @@ export function Portal({
   idPrefix = '',
   onPortalCreated = noop,
 }: PortalProps) {
+  usePerformanceBenchmark('Portal');
   const {container} = usePortalsManager();
 
   const uniqueId = useUniqueId('portal');

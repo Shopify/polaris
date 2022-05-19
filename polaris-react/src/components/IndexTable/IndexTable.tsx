@@ -28,6 +28,7 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -808,6 +809,7 @@ export function IndexTable({
   onSelectionChange,
   ...indexTableBaseProps
 }: IndexTableProps) {
+  usePerformanceBenchmark('IndexTable');
   return (
     <IndexProvider
       selectable={selectable}

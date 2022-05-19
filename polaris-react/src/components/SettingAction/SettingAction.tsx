@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import styles from './SettingAction.scss';
 
 export interface SettingActionProps {
@@ -8,6 +10,7 @@ export interface SettingActionProps {
 }
 
 export function SettingAction({action, children}: SettingActionProps) {
+  usePerformanceBenchmark('SettingAction');
   return (
     <div className={styles.SettingAction}>
       <div className={styles.Setting}>{children}</div>

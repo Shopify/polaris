@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
@@ -25,6 +26,7 @@ export function Page({
   divider,
   ...rest
 }: PageProps) {
+  usePerformanceBenchmark('Page');
   const pageClassName = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,

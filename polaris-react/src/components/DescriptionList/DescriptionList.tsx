@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './DescriptionList.scss';
 
@@ -22,6 +23,7 @@ export function DescriptionList({
   items,
   spacing = 'loose',
 }: DescriptionListProps) {
+  usePerformanceBenchmark('DescriptionList');
   // There's no good key to give React so using the index is a last resport.
   // we can't use the term/description value as it may be a react component
   // which can't be stringified

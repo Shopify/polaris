@@ -2,6 +2,7 @@ import React, {memo, NamedExoticComponent} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Item} from './components';
 import styles from './Stack.scss';
@@ -47,6 +48,7 @@ export const Stack = memo(function Stack({
   alignment,
   wrap,
 }: StackProps) {
+  usePerformanceBenchmark('Stack');
   const className = classNames(
     styles.Stack,
     vertical && styles.vertical,

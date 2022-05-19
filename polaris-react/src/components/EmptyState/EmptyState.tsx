@@ -8,6 +8,7 @@ import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
 import {TextContainer} from '../TextContainer';
 import {DisplayText} from '../DisplayText';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './EmptyState.scss';
 
@@ -46,6 +47,7 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
+  usePerformanceBenchmark('EmptyState');
   const withinContentContainer = useContext(WithinContentContext);
   const className = classNames(
     styles.EmptyState,

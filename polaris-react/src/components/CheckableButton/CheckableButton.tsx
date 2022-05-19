@@ -7,6 +7,7 @@ import {
   ResourceListContext,
   CheckableButtonKey,
 } from '../../utilities/resource-list';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './CheckableButton.scss';
 
@@ -33,6 +34,7 @@ export function CheckableButton({
   disabled,
   smallScreen,
 }: CheckableButtonProps) {
+  usePerformanceBenchmark('CheckableButton');
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
   const {registerCheckableButtons} = useContext(ResourceListContext);

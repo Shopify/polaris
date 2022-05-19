@@ -2,6 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Item} from './components';
 import styles from './ButtonGroup.scss';
@@ -28,6 +29,7 @@ export function ButtonGroup({
   fullWidth,
   connectedTop,
 }: ButtonGroupProps) {
+  usePerformanceBenchmark('ButtonGroup');
   const className = classNames(
     styles.ButtonGroup,
     spacing && styles[spacing],

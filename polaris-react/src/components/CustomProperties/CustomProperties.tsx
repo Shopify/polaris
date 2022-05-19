@@ -1,6 +1,8 @@
 import React from 'react';
 import type {ColorScheme} from '@shopify/polaris-tokens';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import './CustomProperties.scss';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
@@ -26,6 +28,7 @@ export interface CustomPropertiesProps {
  * https://polaris.shopify.com/tokens
  */
 export function CustomProperties(props: CustomPropertiesProps) {
+  usePerformanceBenchmark('CustomProperties');
   const {
     as: Component = 'div',
     children,

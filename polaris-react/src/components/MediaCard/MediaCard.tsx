@@ -12,6 +12,7 @@ import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {Stack} from '../Stack';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './MediaCard.scss';
 
@@ -50,6 +51,7 @@ export function MediaCard({
   portrait = false,
   size = 'medium',
 }: MediaCardProps) {
+  usePerformanceBenchmark('MediaCard');
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
 

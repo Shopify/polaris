@@ -1,6 +1,7 @@
 import React, {memo, Children, NamedExoticComponent} from 'react';
 
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Group, Item} from './components';
 import styles from './FormLayout.scss';
@@ -13,6 +14,7 @@ export interface FormLayoutProps {
 export const FormLayout = memo(function FormLayout({
   children,
 }: FormLayoutProps) {
+  usePerformanceBenchmark('FormLayout');
   return (
     <div className={styles.FormLayout}>
       {Children.map(children, wrapChildren)}

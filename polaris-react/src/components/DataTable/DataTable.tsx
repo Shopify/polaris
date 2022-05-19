@@ -14,6 +14,7 @@ import {headerCell} from '../shared';
 import {EventListener} from '../EventListener';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {Sticky} from '../Sticky';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
@@ -334,31 +335,33 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     ) : null;
 
     return (
-      <div className={wrapperClassName}>
-        {navigationMarkup}
-        <div className={className} ref={this.dataTable}>
-          {stickyHeaderMarkup}
-          <div className={styles.ScrollContainer} ref={this.scrollContainer}>
-            <EventListener event="resize" handler={this.handleResize} />
-            <EventListener
-              capture
-              passive
-              event="scroll"
-              handler={this.scrollListener}
-            />
-            {fixedFirstColumn}
-            <table className={styles.Table} ref={this.table}>
-              <thead>
-                {headingMarkup}
-                {headerTotalsMarkup}
-              </thead>
-              <tbody>{bodyMarkup}</tbody>
-              {footerTotalsMarkup}
-            </table>
+      <PerformanceBenchmark name="DataTable">
+        <div className={wrapperClassName}>
+          {navigationMarkup}
+          <div className={className} ref={this.dataTable}>
+            {stickyHeaderMarkup}
+            <div className={styles.ScrollContainer} ref={this.scrollContainer}>
+              <EventListener event="resize" handler={this.handleResize} />
+              <EventListener
+                capture
+                passive
+                event="scroll"
+                handler={this.scrollListener}
+              />
+              {fixedFirstColumn}
+              <table className={styles.Table} ref={this.table}>
+                <thead>
+                  {headingMarkup}
+                  {headerTotalsMarkup}
+                </thead>
+                <tbody>{bodyMarkup}</tbody>
+                {footerTotalsMarkup}
+              </table>
+            </div>
           </div>
           {footerMarkup}
         </div>
-      </div>
+      </PerformanceBenchmark>
     );
   }
 

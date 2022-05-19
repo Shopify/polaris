@@ -5,6 +5,7 @@ import {DisplayText} from '../DisplayText';
 import {TextStyle} from '../TextStyle';
 import {Image} from '../Image';
 import {Stack} from '../Stack';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {emptySearch} from './illustrations';
 
@@ -19,6 +20,7 @@ export function EmptySearchResult({
   description,
   withIllustration,
 }: EmptySearchResultProps) {
+  usePerformanceBenchmark('EmptySearchResult');
   const i18n = useI18n();
   const altText = i18n.translate('Polaris.EmptySearchResult.altText');
 

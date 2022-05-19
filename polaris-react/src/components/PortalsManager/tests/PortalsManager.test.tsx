@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp, mount} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {usePortalsManager} from '../../../utilities/portals';
 import {PortalsManager} from '../PortalsManager';
@@ -23,16 +23,5 @@ describe('<PortalsManager />', () => {
       </PortalsManager>,
     );
     expect(manager.text()).toBe('PolarisPortalsContainer');
-  });
-
-  it('acccepts a container prop and shares through context', () => {
-    const element = document.createElement('div');
-    element.id = 'CustomContainer';
-    const manager = mount(
-      <PortalsManager container={element}>
-        <TestConsumer />
-      </PortalsManager>,
-    );
-    expect(manager.text()).toBe('CustomContainer');
   });
 });

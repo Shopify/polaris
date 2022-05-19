@@ -7,6 +7,7 @@ import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
@@ -120,22 +121,24 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     );
 
     return (
-      <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
-        <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
-            style={{backgroundColor: colorString}}
-          />
-          <Slidable
-            onChange={this.handleDraggerMove}
-            draggerX={draggerX}
-            draggerY={draggerY}
-          />
+      <PerformanceBenchmark name="ColorPicker">
+        <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
+          <div ref={this.setColorNode} className={styles.MainColor}>
+            <div
+              className={styles.ColorLayer}
+              style={{backgroundColor: colorString}}
+            />
+            <Slidable
+              onChange={this.handleDraggerMove}
+              draggerX={draggerX}
+              draggerY={draggerY}
+            />
+          </div>
+          <HuePicker hue={hue} onChange={this.handleHueChange} />
+          {alphaSliderMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
         </div>
-        <HuePicker hue={hue} onChange={this.handleHueChange} />
-        {alphaSliderMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
-      </div>
+      </PerformanceBenchmark>
     );
   }
 

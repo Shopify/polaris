@@ -2,6 +2,7 @@ import React from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {UnstyledLink} from '../UnstyledLink';
 
 export interface UnstyledButtonProps extends BaseButton {
@@ -39,6 +40,7 @@ export function UnstyledButton({
   onTouchStart,
   ...rest
 }: UnstyledButtonProps) {
+  usePerformanceBenchmark('UnstyledButton');
   let buttonMarkup;
 
   const commonProps = {

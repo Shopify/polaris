@@ -2,6 +2,7 @@ import React, {memo, forwardRef} from 'react';
 
 import {unstyled} from '../shared';
 import {useLink, LinkLikeComponentProps} from '../../utilities/link';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
@@ -15,6 +16,7 @@ export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 // eslint-disable-next-line react/display-name
 export const UnstyledLink = memo(
   forwardRef<unknown, UnstyledLinkProps>(function UnstyledLink(props, _ref) {
+    usePerformanceBenchmark('UnstyledLink');
     const LinkComponent = useLink();
     if (LinkComponent) {
       return <LinkComponent {...unstyled.props} {...props} />;

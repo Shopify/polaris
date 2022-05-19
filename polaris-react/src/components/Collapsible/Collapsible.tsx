@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Collapsible.scss';
 
@@ -36,6 +37,7 @@ export function Collapsible({
   preventMeasuringOnChildrenUpdate,
   children,
 }: CollapsibleProps) {
+  usePerformanceBenchmark('Collapsible');
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
   const [animationState, setAnimationState] = useState<AnimationState>('idle');

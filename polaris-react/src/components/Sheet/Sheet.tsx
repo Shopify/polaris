@@ -11,6 +11,7 @@ import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
 import {Portal} from '../Portal';
 import {KeypressListener} from '../KeypressListener';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Sheet.scss';
 
@@ -55,6 +56,7 @@ export function Sheet({
   accessibilityLabel,
   activator,
 }: SheetProps) {
+  usePerformanceBenchmark('Sheet');
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
   const activatorRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,7 @@
 import React, {memo, useEffect} from 'react';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface FocusProps {
   children?: React.ReactNode;
@@ -13,6 +14,7 @@ export const Focus = memo(function Focus({
   disabled,
   root,
 }: FocusProps) {
+  usePerformanceBenchmark('Focus');
   useEffect(() => {
     if (disabled || !root) {
       return;

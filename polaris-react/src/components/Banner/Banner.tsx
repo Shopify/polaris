@@ -26,6 +26,7 @@ import {UnstyledLink} from '../UnstyledLink';
 import {Spinner} from '../Spinner';
 import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Banner.scss';
 
@@ -63,6 +64,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   }: BannerProps,
   bannerRef,
 ) {
+  usePerformanceBenchmark('Banner');
   const withinContentContainer = useContext(WithinContentContext);
   const id = useUniqueId('Banner');
   const i18n = useI18n();

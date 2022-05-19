@@ -22,6 +22,7 @@ import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {scrollable} from '../shared';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {
   Option,
@@ -77,6 +78,7 @@ export function Listbox({
   onSelect,
   onActiveOptionChange,
 }: ListboxProps) {
+  usePerformanceBenchmark('Listbox');
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
   const [lazyLoading, setLazyLoading] = useState(false);

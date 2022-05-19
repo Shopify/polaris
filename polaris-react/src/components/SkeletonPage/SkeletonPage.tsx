@@ -4,6 +4,7 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './SkeletonPage.scss';
 
@@ -30,6 +31,7 @@ export function SkeletonPage({
   title = '',
   breadcrumbs,
 }: SkeletonPageProps) {
+  usePerformanceBenchmark('SkeletonPage');
   const i18n = useI18n();
   const className = classNames(
     styles.Page,

@@ -5,6 +5,7 @@ import type {Action, Error} from '../../types';
 import {buttonFrom} from '../Button';
 import {Label, LabelProps, labelID} from '../Label';
 import {InlineError} from '../InlineError';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Labelled.scss';
 
@@ -40,6 +41,7 @@ export function Labelled({
   requiredIndicator,
   ...rest
 }: LabelledProps) {
+  usePerformanceBenchmark('Labelled');
   const className = classNames(labelHidden && styles.hidden);
 
   const actionMarkup = action ? (

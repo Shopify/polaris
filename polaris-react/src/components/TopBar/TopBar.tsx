@@ -9,6 +9,7 @@ import {useFrame} from '../../utilities/frame';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {SearchField, UserMenu, Search, Menu} from './components';
 import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
@@ -63,6 +64,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   contextControl,
   logoSuffix,
 }: TopBarProps) {
+  usePerformanceBenchmark('TopBar');
   const i18n = useI18n();
   const {logo} = useFrame();
 

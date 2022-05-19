@@ -6,6 +6,7 @@ import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {VisuallyHidden} from '../VisuallyHidden';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Breadcrumbs.scss';
 
@@ -15,6 +16,7 @@ export interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
+  usePerformanceBenchmark('Breadcrumbs');
   const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
   if (breadcrumb == null) {
     return null;

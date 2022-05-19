@@ -3,6 +3,7 @@ import React from 'react';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Icon.scss';
 
@@ -36,6 +37,7 @@ export interface IconProps {
 }
 
 export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
+  usePerformanceBenchmark('Icon');
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';

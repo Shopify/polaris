@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 
 import styles from './SkeletonTabs.scss';
@@ -10,6 +11,7 @@ export interface Props {
 }
 
 export function SkeletonTabs({count = 2}: Props) {
+  usePerformanceBenchmark('SkeletonTabs');
   return (
     <div className={styles.Tabs}>
       {[...Array(count).keys()].map((key) => {

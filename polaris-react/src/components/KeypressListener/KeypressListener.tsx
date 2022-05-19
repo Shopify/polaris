@@ -2,6 +2,7 @@ import {useCallback, useEffect, useRef} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import type {Key} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface NonMutuallyExclusiveProps {
   keyCode: Key;
@@ -24,6 +25,7 @@ export function KeypressListener({
   options,
   useCapture,
 }: KeypressListenerProps) {
+  usePerformanceBenchmark('KeypressListener');
   const tracked = useRef({handler, keyCode});
 
   useIsomorphicLayoutEffect(() => {

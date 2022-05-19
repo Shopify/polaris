@@ -16,6 +16,7 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
@@ -226,6 +227,7 @@ export function TextField({
   onFocus,
   onBlur,
 }: TextFieldProps) {
+  usePerformanceBenchmark('TextField');
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
