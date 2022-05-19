@@ -6,6 +6,7 @@ import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 import {getWidth} from '../../utilities/get-width';
 import {useFrame} from '../../utilities/frame';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
@@ -30,6 +31,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
   ariaLabelledBy,
 }: NavigationProps) {
+  usePerformanceBenchmark('Navigation');
   const {logo} = useFrame();
   const width = getWidth(logo, 104);
 

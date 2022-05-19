@@ -7,6 +7,7 @@ import {Card} from '../Card';
 import {Stack} from '../Stack';
 import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './AccountConnection.scss';
 
@@ -36,6 +37,7 @@ export function AccountConnection({
   details,
   termsOfService,
 }: AccountConnectionProps) {
+  usePerformanceBenchmark('AccountConnection');
   const initials = accountName
     ? accountName
         .split(/\s+/)

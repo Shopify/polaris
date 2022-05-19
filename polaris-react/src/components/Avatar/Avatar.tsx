@@ -3,6 +3,7 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
@@ -46,6 +47,7 @@ export function Avatar({
   size = 'medium',
   accessibilityLabel,
 }: AvatarProps) {
+  usePerformanceBenchmark('Avatar');
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 

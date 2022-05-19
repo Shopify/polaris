@@ -10,6 +10,7 @@ import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './PageActions.scss';
 
@@ -26,6 +27,7 @@ export function PageActions({
   primaryAction,
   secondaryActions,
 }: PageActionsProps) {
+  usePerformanceBenchmark('PageActions');
   const primaryActionMarkup = primaryAction
     ? buttonsFrom(primaryAction, {primary: true})
     : null;

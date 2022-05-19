@@ -6,6 +6,7 @@ import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Badge.scss';
 import type {Progress, Size, Status} from './types';
@@ -45,6 +46,7 @@ export function Badge({
   size = DEFAULT_SIZE,
   statusAndProgressLabelOverride,
 }: BadgeProps) {
+  usePerformanceBenchmark('Badge');
   const i18n = useI18n();
   const withinFilter = useContext(WithinFilterContext);
 

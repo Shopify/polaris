@@ -20,6 +20,7 @@ import {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {
   ToastManager,
@@ -263,30 +264,32 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     };
 
     return (
-      <FrameContext.Provider value={context}>
-        <div
-          className={frameClassName}
-          {...layer.props}
-          {...navigationAttributes}
-        >
-          {skipMarkup}
-          {topBarMarkup}
-          {navigationMarkup}
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {navigationOverlayMarkup}
-          <main
-            className={styles.Main}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
+      <PerformanceBenchmark name="Frame">
+        <FrameContext.Provider value={context}>
+          <div
+            className={frameClassName}
+            {...layer.props}
+            {...navigationAttributes}
           >
-            <div className={styles.Content}>{children}</div>
-          </main>
-          <ToastManager toastMessages={toastMessages} />
-          {globalRibbonMarkup}
-          <EventListener event="resize" handler={this.handleResize} />
-        </div>
-      </FrameContext.Provider>
+            {skipMarkup}
+            {topBarMarkup}
+            {navigationMarkup}
+            {contextualSaveBarMarkup}
+            {loadingMarkup}
+            {navigationOverlayMarkup}
+            <main
+              className={styles.Main}
+              id={APP_FRAME_MAIN}
+              data-has-global-ribbon={Boolean(globalRibbon)}
+            >
+              <div className={styles.Content}>{children}</div>
+            </main>
+            <ToastManager toastMessages={toastMessages} />
+            {globalRibbonMarkup}
+            <EventListener event="resize" handler={this.handleResize} />
+          </div>
+        </FrameContext.Provider>
+      </PerformanceBenchmark>
     );
   }
 

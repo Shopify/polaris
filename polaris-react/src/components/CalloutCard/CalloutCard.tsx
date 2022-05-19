@@ -9,6 +9,7 @@ import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
 import {Heading} from '../Heading';
 import {Image} from '../Image';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './CalloutCard.scss';
 
@@ -35,6 +36,7 @@ export function CalloutCard({
   secondaryAction,
   onDismiss,
 }: CalloutCardProps) {
+  usePerformanceBenchmark('CalloutCard');
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {plain: true})

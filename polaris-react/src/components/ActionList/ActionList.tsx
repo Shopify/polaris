@@ -7,6 +7,7 @@ import {
 import {KeypressListener} from '../KeypressListener';
 import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
 import {classNames} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Section} from './components';
 import styles from './ActionList.scss';
@@ -28,6 +29,7 @@ export function ActionList({
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
+  usePerformanceBenchmark('ActionList');
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
 

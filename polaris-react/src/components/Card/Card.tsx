@@ -9,6 +9,7 @@ import type {DisableableAction, ComplexAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
@@ -63,6 +64,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   secondaryFooterActionsDisclosureText,
   footerActionAlignment = 'right',
 }: CardProps) {
+  usePerformanceBenchmark('Card');
   const i18n = useI18n();
   const {
     value: secondaryActionsPopoverOpen,
