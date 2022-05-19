@@ -34,7 +34,7 @@
 @mixin page-header-layout {
   padding: var(--p-space-4);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding-left: 0;
     padding-right: 0;
   }
