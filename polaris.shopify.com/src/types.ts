@@ -10,11 +10,14 @@ export interface TokenPropertiesWithName extends TokenProperties {
   name: string;
 }
 
-export type SearchResultCategory =
-  | "Components"
-  | "Tokens"
-  | "Icons"
-  | "Guidelines";
+export const searchResultCategories = [
+  "Guidelines",
+  "Components",
+  "Tokens",
+  "Icons",
+] as const;
+
+export type SearchResultCategory = typeof searchResultCategories[number];
 
 interface BaseSearchResult {
   url: string;
@@ -37,7 +40,7 @@ export interface ComponentsSearchResult extends BaseSearchResult {
   };
 }
 
-export interface TokensSearchSearchResult extends BaseSearchResult {
+export interface TokensSearchResult extends BaseSearchResult {
   category: "Tokens";
   meta: {
     token: TokenPropertiesWithName;
@@ -52,10 +55,17 @@ export interface IconsSearchResult extends BaseSearchResult {
 export type SearchResult =
   | GuidelinesSearchResult
   | ComponentsSearchResult
-  | TokensSearchSearchResult
+  | TokensSearchResult
   | IconsSearchResult;
 
 export type SearchResults = SearchResult[];
+
+export type GroupedSearchResults = {
+  Guidelines: { results: GuidelinesSearchResult[]; maxScore: number };
+  Components: { results: ComponentsSearchResult[]; maxScore: number };
+  Tokens: { results: TokensSearchResult[]; maxScore: number };
+  Icons: { results: IconsSearchResult[]; maxScore: number };
+};
 
 export type Icon = {
   fileName: string;

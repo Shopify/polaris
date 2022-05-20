@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { search } from "../../utils/search";
 import {
-  ComponentsSearchResult,
-  GuidelinesSearchResult,
-  IconsSearchResult,
+  GroupedSearchResults,
   SearchResult,
   SearchResultCategory,
   SearchResults,
-  TokensSearchSearchResult,
 } from "../../types";
 import styles from "./GlobalSearch.module.scss";
 import { useCombobox } from "downshift";
@@ -22,70 +19,6 @@ import { className, stripMarkdownLinks } from "../../utils/various";
 import Image from "../Image";
 
 interface Props {}
-
-const MAX_RESULTS: { [key: string]: number } = {
-  Guidelines: 5,
-  Components: 4,
-  Tokens: 8,
-  Icons: 18,
-};
-
-function groupResults(searchResults: SearchResults) {
-  const groupedResults: {
-    Guidelines: { results: GuidelinesSearchResult[]; maxScore: number };
-    Components: { results: ComponentsSearchResult[]; maxScore: number };
-    Tokens: { results: TokensSearchSearchResult[]; maxScore: number };
-    Icons: { results: IconsSearchResult[]; maxScore: number };
-  } = {
-    Guidelines: { results: [], maxScore: 0 },
-    Components: { results: [], maxScore: 0 },
-    Tokens: { results: [], maxScore: 0 },
-    Icons: { results: [], maxScore: 0 },
-  };
-
-  searchResults.forEach((result) => {
-    switch (result.category) {
-      case "Guidelines":
-        groupedResults["Guidelines"].results.push(result);
-        break;
-
-      case "Components":
-        groupedResults["Components"].results.push(result);
-        break;
-
-      case "Tokens":
-        groupedResults["Tokens"].results.push(result);
-        break;
-
-      case "Icons":
-        groupedResults["Icons"].results.push(result);
-        break;
-    }
-  });
-
-  const categories: SearchResultCategory[] = [
-    "Guidelines",
-    "Components",
-    "Tokens",
-    "Icons",
-  ];
-
-  // Cap number of results. Sort by score.
-  categories.forEach((category) => {
-    groupedResults[category].results = groupedResults[category].results
-      .slice(0, MAX_RESULTS[category])
-      .sort((a, b) => a.score - b.score);
-  });
-
-  // Extract max score
-  categories.forEach((category) => {
-    groupedResults[category].maxScore =
-      [...groupedResults[category].results].sort((a, b) => b.score - a.score)[0]
-        ?.score || 0;
-  });
-
-  return groupedResults;
-}
 
 function getSearchResultAsString(result: SearchResult | null): string {
   switch (result?.category) {
@@ -102,15 +35,17 @@ function getSearchResultAsString(result: SearchResult | null): string {
 }
 
 function GlobalSearch({}: Props) {
-  const [searchResults, setSearchResults] = useState<SearchResults>([]);
+  const [searchResults, setSearchResults] = useState<GroupedSearchResults>();
   const router = useRouter();
 
-  const groupedResults = groupResults(searchResults);
-
   let resultsInRenderedOrder: SearchResults = [];
-  Object.values(groupedResults).forEach((group) => {
-    resultsInRenderedOrder = [...resultsInRenderedOrder, ...group.results];
-  });
+  if (searchResults) {
+    Object.values(searchResults)
+      .sort((a, b) => a.maxScore - b.maxScore)
+      .forEach((group) => {
+        resultsInRenderedOrder = [...resultsInRenderedOrder, ...group.results];
+      });
+  }
 
   const {
     isOpen,
@@ -174,14 +109,15 @@ function GlobalSearch({}: Props) {
         )}
 
         {isOpen &&
-          Object.entries(groupedResults)
-            .sort(([, a], [, b]) => a.maxScore - b.maxScore)
+          searchResults &&
+          Object.entries(searchResults)
+            .sort((a, b) => a[1].maxScore - b[1].maxScore)
             .map(([category]) => {
               const typedCategory = category as SearchResultCategory;
 
               switch (typedCategory) {
                 case "Guidelines":
-                  const results = groupedResults[typedCategory].results;
+                  const results = searchResults[typedCategory].results;
                   if (results.length === 0) return null;
                   return (
                     <ResultsGroup title={category}>
@@ -222,7 +158,7 @@ function GlobalSearch({}: Props) {
                   );
 
                 case "Components": {
-                  const results = groupedResults[typedCategory].results;
+                  const results = searchResults[typedCategory].results;
                   if (results.length === 0) return null;
                   return (
                     <ResultsGroup title={category}>
@@ -251,7 +187,7 @@ function GlobalSearch({}: Props) {
                 }
 
                 case "Tokens": {
-                  const results = groupedResults[typedCategory].results;
+                  const results = searchResults[typedCategory].results;
                   if (results.length === 0) return null;
                   return (
                     <ResultsGroup title={category}>
@@ -278,7 +214,7 @@ function GlobalSearch({}: Props) {
                 }
 
                 case "Icons": {
-                  const results = groupedResults[typedCategory].results;
+                  const results = searchResults[typedCategory].results;
                   if (results.length === 0) return null;
                   return (
                     <ResultsGroup title={category}>

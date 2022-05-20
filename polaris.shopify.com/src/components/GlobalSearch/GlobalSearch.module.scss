@@ -51,8 +51,8 @@
   transform-origin: 100% 0;
   overflow: auto;
   overscroll-behavior: contain;
-  min-height: 60vh;
-  max-height: 60vh;
+  min-height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.025), 0 100px 200px rgba(0, 0, 0, 0.1),
     0 0 0 2000px rgba(0, 0, 0, 0.5);
   background: var(--surface);

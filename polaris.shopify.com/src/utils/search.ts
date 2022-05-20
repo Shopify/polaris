@@ -1,10 +1,26 @@
-import { SearchResults } from "../types";
+import {
+  SearchResultCategory,
+  SearchResults,
+  ComponentsSearchResult,
+  GuidelinesSearchResult,
+  IconsSearchResult,
+  TokensSearchResult,
+  GroupedSearchResults,
+  SearchResult,
+} from "../types";
 import { tokens } from "@shopify/polaris-tokens";
 import components from "../data/components.json";
 import icons from "../data/icons.json";
 import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
+
+const MAX_RESULTS: { [key: string]: number } = {
+  Guidelines: 5,
+  Components: 4,
+  Tokens: 8,
+  Icons: 18,
+};
 
 const {
   colorSchemes: { light: colorLight },
@@ -105,24 +121,74 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
 
 const fuse = new Fuse(results, {
   keys: [
-    { name: "meta.title", weight: 50 },
-    { name: "meta.name", weight: 50 },
+    { name: "meta.title", weight: 100 },
+    { name: "meta.name", weight: 100 },
     { name: "meta.description", weight: 50 },
     { name: "meta.excerpt", weight: 50 },
+    { name: "meta.token.name", weight: 200 },
+    // { name: "meta.token.description", weight: 50 },
+    { name: "meta.token.value", weight: 50 },
+    { name: "meta.icon.fileName", weight: 50 },
+    { name: "meta.icon.keywords", weight: 20 },
+    { name: "meta.icon.set", weight: 20 },
+    // { name: "meta.icon.description", weight: 50 },
   ],
   includeScore: true,
   threshold: 0.5,
+  shouldSort: true,
+  ignoreLocation: true,
 });
 
-export function search(query: string): SearchResults {
+export function search(query: string): GroupedSearchResults {
+  const groupedResults: GroupedSearchResults = {
+    Guidelines: { results: [], maxScore: 0 },
+    Components: { results: [], maxScore: 0 },
+    Tokens: { results: [], maxScore: 0 },
+    Icons: { results: [], maxScore: 0 },
+  };
+
   if (query.length > 0) {
     const fuseResults = fuse.search(query);
 
-    return fuseResults.map((result) => ({
+    const scoredResults: SearchResults = fuseResults.map((result) => ({
       ...result.item,
       score: result.score || 0,
     }));
+
+    groupedResults["Guidelines"].results = scoredResults
+      .filter((result) => result.category === "Guidelines")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      })) as GuidelinesSearchResult[];
+
+    groupedResults["Components"].results = scoredResults
+      .filter((result) => result.category === "Components")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      })) as ComponentsSearchResult[];
+
+    groupedResults["Tokens"].results = scoredResults
+      .filter((result) => result.category === "Tokens")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      })) as TokensSearchResult[];
+
+    groupedResults["Icons"].results = scoredResults
+      .filter((result) => result.category === "Icons")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      })) as IconsSearchResult[];
+
+    Object.keys(groupedResults).forEach((category) => {
+      const typedCategory = category as SearchResultCategory;
+      groupedResults[typedCategory].maxScore =
+        groupedResults[typedCategory].results[0]?.score || 0;
+    });
   }
 
-  return [];
+  return groupedResults;
 }
