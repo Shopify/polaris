@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../../EventListener';
 import {TextContainer} from '../../../../TextContainer';
 import {TextField} from '../../../../TextField';
@@ -244,7 +245,7 @@ describe('<PopoverOverlay />', () => {
     );
 
     const target = popoverOverlay.find(TextField)!.find('input')!.domNode;
-
+    // eslint-disable-next-line import/no-deprecated
     const clickEventListener = popoverOverlay.find(EventListener, {
       event: 'click',
     })!;
@@ -277,7 +278,7 @@ describe('<PopoverOverlay />', () => {
     );
 
     const target = popoverOverlay.find(TextField)!.find('svg')!.domNode;
-
+    // eslint-disable-next-line import/no-deprecated
     const clickEventListener = popoverOverlay.find(EventListener, {
       event: 'click',
     })!;

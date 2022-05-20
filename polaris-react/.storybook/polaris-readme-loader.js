@@ -94,6 +94,7 @@ import {
   Form,
   FormLayout,
   Frame,
+  FullscreenBar,
   Heading,
   Icon,
   Image,
