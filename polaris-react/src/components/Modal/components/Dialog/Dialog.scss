@@ -19,10 +19,17 @@ $dangerous-magic-space-16: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  // Allow passthrough of click events to dismiss modal on backdrop click
+  pointer-events: none;
 
   @include breakpoint-after($layout-width-page-with-nav-base) {
     justify-content: center;
   }
+}
+
+.Dialog {
+  // Resume pointer events
+  pointer-events: initial;
 }
 
 .Dialog:focus {
