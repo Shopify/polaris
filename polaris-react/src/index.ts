@@ -175,6 +175,9 @@ export {
 } from './components/Frame';
 export type {FrameProps} from './components/Frame';
 
+export {FullscreenBar} from './components/FullscreenBar';
+export type {FullscreenBarProps} from './components/FullscreenBar';
+
 export {Heading} from './components/Heading';
 export type {HeadingProps} from './components/Heading';
 
