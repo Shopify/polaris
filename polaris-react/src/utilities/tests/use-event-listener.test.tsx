@@ -5,24 +5,39 @@ import {useEventListener} from '../use-event-listener';
 
 describe('useEventListener', () => {
   it('calls handler when the resize event is fired', () => {
+    function MockComponent() {
+      useEventListener('resize', spy);
+      return null;
+    }
+
     const spy = jest.fn();
-    mount(<MockComponent event="resize" handler={spy} />);
+    mount(<MockComponent />);
 
     window.dispatchEvent(new Event('resize'));
     expect(spy).toHaveBeenCalled();
   });
 
   it('does not call handler when a different event is fired', () => {
+    function MockComponent() {
+      useEventListener('click', spy);
+      return null;
+    }
+
     const spy = jest.fn();
-    mount(<MockComponent event="click" handler={spy} />);
+    mount(<MockComponent />);
 
     window.dispatchEvent(new Event('resize'));
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('removes listener when event changes', () => {
+    function MockComponent({event}: {event: keyof WindowEventMap}) {
+      useEventListener(event, spy);
+      return null;
+    }
+
     const spy = jest.fn();
-    const eventListener = mount(<MockComponent event="resize" handler={spy} />);
+    const eventListener = mount(<MockComponent event="resize" />);
 
     eventListener.setProps({event: 'scroll', handler: noop});
 
@@ -31,16 +46,26 @@ describe('useEventListener', () => {
   });
 
   it('removes listener when unmounted', () => {
+    function MockComponent() {
+      useEventListener('resize', spy);
+      return null;
+    }
+
     const spy = jest.fn();
-    mount(<MockComponent event="resize" handler={spy} />).unmount();
+    mount(<MockComponent />).unmount();
 
     window.dispatchEvent(new Event('resize'));
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('adds a listener to a custom element', () => {
+    function MockComponent() {
+      useEventListener('click', spy, document);
+      return null;
+    }
+
     const spy = jest.fn();
-    mount(<MockComponent event="click" handler={spy} element={document} />);
+    mount(<MockComponent />);
 
     window.dispatchEvent(new Event('click'));
     expect(spy).not.toHaveBeenCalled();
@@ -51,16 +76,3 @@ describe('useEventListener', () => {
 });
 
 function noop() {}
-
-function MockComponent({
-  event,
-  handler,
-  element = window,
-}: {
-  event: string;
-  handler: () => void;
-  element?: Window | Document;
-}) {
-  useEventListener(event, handler, element);
-  return null;
-}
