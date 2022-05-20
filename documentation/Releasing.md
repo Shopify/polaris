@@ -1,20 +1,22 @@
 # Releasing
 
-Polaris uses Changsets to handle releasing the npm packages in repository.
+Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository.
 
 We have a [GitHub](https://github.com/changesets/action) action that
 
-- creates a `version` PR, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
-- optionally allows you to do releases when changes are merged to the `main` branch.
+- creates a `version` PR called "Version Packages", then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
+- performs a releases when changes are merged to the `main` branch.
+
+To perform a release, merge in the "Version Packages" PR.
 
 ## Prereleases
 
-To create a new prerelease:
+Prereleases are created the same way as releases, but are merged into the `next` branch. To create a prerelease:
 
-1. Branch of the `next` branch
-1. Create changesets with your changes
-1. Set your target merge branch to `next`
-1. The GitHub release workflow will generated a PR for your prerelease branch 🎉
+1. Create a `next` branch from `main` if it doesn't already exist
+1. Push the `next` branch to GitHub
+1. The GitHub prerelease workflow will generated a PR for your prerelease branch 🎉
+1. Merge in the newly created "Version Packages (next)" PR to release the prerelease versions
 
 ### [polaris-for-figma](/polaris-for-figma)
 

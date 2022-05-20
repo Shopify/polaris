@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
 import {layer, dataPolarisTopBar} from '../shared';

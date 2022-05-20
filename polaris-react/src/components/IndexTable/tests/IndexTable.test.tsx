@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
@@ -231,7 +232,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-
+      // eslint-disable-next-line import/no-deprecated
       index.find(EventListener)!.trigger('handler');
 
       expect(spy).not.toHaveBeenCalled();
