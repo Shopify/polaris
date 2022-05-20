@@ -56,7 +56,7 @@ $centered-illustration-width: 226px;
   flex-direction: column;
   align-items: center;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     max-width: $detail-width;
   }
 }
@@ -95,7 +95,7 @@ $centered-illustration-width: 226px;
     flex-direction: column;
     align-items: center;
 
-    @include page-content-when-not-fully-condensed {
+    @media #{$p-breakpoints-sm-up} {
       max-width: $detail-width;
     }
   }
