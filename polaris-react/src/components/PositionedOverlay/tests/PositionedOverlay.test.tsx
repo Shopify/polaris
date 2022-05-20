@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
@@ -246,6 +247,7 @@ describe('<PositionedOverlay />', () => {
       const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
+      // eslint-disable-next-line import/no-deprecated
       expect(positionedOverlay).toContainReactComponent(EventListener, {
         event: 'resize',
       });

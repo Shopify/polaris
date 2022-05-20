@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Focus} from '../../Focus';
 import {TextContainer} from '../../TextContainer';
@@ -54,6 +55,7 @@ describe('<TrapFocus />', () => {
     expect(trapFocus).toContainReactComponent(Focus);
 
     // Renders an event listener
+    // eslint-disable-next-line import/no-deprecated
     expect(trapFocus).toContainReactComponent(EventListener, {
       event: 'focusin',
     });
@@ -101,6 +103,7 @@ describe('<TrapFocus />', () => {
     const focusableButton = trapFocus.find('button', {id})?.domNode;
     focusableButton?.focus();
     trapFocus
+      // eslint-disable-next-line import/no-deprecated
       .find(EventListener, {event: 'focusin'})
       ?.trigger('handler', {target: focusableButton});
 
@@ -177,7 +180,7 @@ describe('<TrapFocus />', () => {
         relatedTarget: externalDomNode,
       });
       Object.assign(event, {preventDefault: jest.fn()});
-
+      // eslint-disable-next-line import/no-deprecated
       trapFocus.find(EventListener)!.trigger('handler', event);
       expect(event.preventDefault).not.toHaveBeenCalled();
     });
@@ -201,7 +204,7 @@ describe('<TrapFocus />', () => {
         relatedTarget: internalDomNode,
       });
       Object.assign(event, {preventDefault: jest.fn()});
-
+      // eslint-disable-next-line import/no-deprecated
       trapFocus.find(EventListener)!.trigger('handler', event);
       expect(event.preventDefault).not.toHaveBeenCalled();
     });
@@ -219,6 +222,7 @@ describe('<TrapFocus />', () => {
         target: document.createElement('div'),
         preventDefault: () => {},
       };
+      // eslint-disable-next-line import/no-deprecated
       trapFocus.find(EventListener)!.trigger('handler', event);
 
       expect(focusFirstFocusableNodeSpy).toHaveBeenCalledWith(
