@@ -5,15 +5,25 @@
   "engines": {
     "node": "^14.17.0 || ^16.13.0"
   },
-  "workspaces": [
-    "polaris-tokens",
-    "polaris-for-figma",
-    "polaris-for-vscode",
-    "polaris-icons",
-    "polaris-react",
-    "stylelint-polaris",
-    "polaris.shopify.com"
-  ],
+  "workspaces": {
+    "packages": [
+      "polaris-tokens",
+      "polaris-for-figma",
+      "polaris-for-vscode",
+      "polaris-icons",
+      "polaris-react",
+      "stylelint-polaris",
+      "polaris.shopify.com"
+    ],
+    "nohoist": [
+      "**/vscode-languageclient",
+      "**/vscode-languageclient/**",
+      "**/vscode-languageserver",
+      "**/vscode-languageserver/**",
+      "**/vscode-languageserver-textdocument",
+      "**/vscode-languageserver-textdocument/**"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --filter=@shopify/polaris... --parallel",

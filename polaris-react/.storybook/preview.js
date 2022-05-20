@@ -3,7 +3,7 @@ import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
-import {GridOverlay} from './GridPanel';
+import {GridOverlay} from './GridOverlay';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
