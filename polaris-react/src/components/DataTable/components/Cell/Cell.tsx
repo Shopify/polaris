@@ -143,9 +143,11 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={{
-        width: stickyCellWidth,
-      }}
+      style={
+        firstColumn && firstColumnMinWidth
+          ? {minWidth: firstColumnMinWidth}
+          : {width: stickyCellWidth}
+      }
       data-index-table-sticky-heading
     >
       {columnHeadingContent}

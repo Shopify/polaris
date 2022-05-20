@@ -371,9 +371,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       button.addEventListener('focus', this.handleHeaderButtonFocus);
     } else {
       this.tableHeadings[index] = ref;
-      this.tableHeadingWidths[index] = Math.ceil(
-        ref.getBoundingClientRect().width,
-      );
+      this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
     }
   };
 
