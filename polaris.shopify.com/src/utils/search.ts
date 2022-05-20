@@ -6,7 +6,6 @@ import {
   IconsSearchResult,
   TokensSearchResult,
   GroupedSearchResults,
-  SearchResult,
 } from "../types";
 import { tokens } from "@shopify/polaris-tokens";
 import components from "../data/components.json";
@@ -19,7 +18,7 @@ const MAX_RESULTS: { [key: string]: number } = {
   Guidelines: 5,
   Components: 4,
   Tokens: 8,
-  Icons: 18,
+  Icons: 14,
 };
 
 const {
@@ -160,28 +159,32 @@ export function search(query: string): GroupedSearchResults {
       .map((result) => ({
         ...result,
         score: result.score || 0,
-      })) as GuidelinesSearchResult[];
+      }))
+      .slice(0, MAX_RESULTS["Guidelines"]) as GuidelinesSearchResult[];
 
     groupedResults["Components"].results = scoredResults
       .filter((result) => result.category === "Components")
       .map((result) => ({
         ...result,
         score: result.score || 0,
-      })) as ComponentsSearchResult[];
+      }))
+      .slice(0, MAX_RESULTS["Components"]) as ComponentsSearchResult[];
 
     groupedResults["Tokens"].results = scoredResults
       .filter((result) => result.category === "Tokens")
       .map((result) => ({
         ...result,
         score: result.score || 0,
-      })) as TokensSearchResult[];
+      }))
+      .slice(0, MAX_RESULTS["Tokens"]) as TokensSearchResult[];
 
     groupedResults["Icons"].results = scoredResults
       .filter((result) => result.category === "Icons")
       .map((result) => ({
         ...result,
         score: result.score || 0,
-      })) as IconsSearchResult[];
+      }))
+      .slice(0, MAX_RESULTS["Icons"]) as IconsSearchResult[];
 
     Object.keys(groupedResults).forEach((category) => {
       const typedCategory = category as SearchResultCategory;
