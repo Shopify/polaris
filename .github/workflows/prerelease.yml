@@ -23,7 +23,14 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Check if Prerelease is enabled
+        id: is_pre_enabled
+        uses: andstor/file-existence-action@v1
+        with:
+          files: '.changeset/pre.json'
+
       - name: Enter prerelease mode
+        if: steps.is_pre_enabled.outputs.files_exists == 'true'
         run: yarn changeset pre enter next
 
       - name: Create release Pull Request or publish to NPM
