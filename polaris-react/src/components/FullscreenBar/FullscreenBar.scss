@@ -3,7 +3,7 @@
 .FullscreenBar {
   position: relative;
   display: flex;
-  height: top-bar-height();
+  height: $top-bar-height;
   box-shadow: var(--p-shadow-top-bar);
   background-color: var(--p-surface);
 }
