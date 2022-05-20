@@ -35,10 +35,10 @@
 .Title {
   @include text-style-subheading;
   padding: var(--p-space-1) var(--p-space-4) var(--p-space-3) var(--p-space-4);
+}
 
-  &.firstSectionWithTitle {
-    padding-top: var(--p-space-3);
-  }
+.Section:first-child .Title {
+  padding-top: var(--p-space-3);
 }
 
 .Item {
