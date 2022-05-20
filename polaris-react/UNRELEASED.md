@@ -12,7 +12,6 @@ Use [the changelog guidelines](/documentation/Versioning%20and%20changelog.md) t
 - Added support for tooltips on Navigation items ([#5750](https://github.com/Shopify/polaris/pull/5750))
 - Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
 - Implemented accessibility role and attributes in `SettingToggle` ([#5470](https://github.com/Shopify/polaris/pull/5470))
-- Added `disableQueryField` to `Filters` component ([#5832](https://github.com/Shopify/polaris/pull/5832))
 
 ### Bug fixes
 
