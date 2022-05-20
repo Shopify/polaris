@@ -32,12 +32,12 @@ Use to create a two column layout that wraps at a breakpoint and aligns to a twe
 ```jsx
 <Page fullWidth>
   <Grid>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 3, lg: 6, xl: 6}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 3, lg: 6, xl: 6}}>
       <Card title="Sales" sectioned>
         <p>View a summary of your online store’s sales.</p>
       </Card>
     </Grid.Cell>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 3, lg: 6, xl: 6}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 3, lg: 6, xl: 6}}>
       <Card title="Orders" sectioned>
         <p>View a summary of your online store’s orders.</p>
       </Card>
@@ -53,12 +53,12 @@ Use to create a two-thirds, one-third column layout that wraps at a breakpoint a
 ```jsx
 <Page fullWidth>
   <Grid columns={{sm: 3}}>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 4, lg: 8, xl: 8}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 4, lg: 8, xl: 8}}>
       <Card title="Sales" sectioned>
         <p>View a summary of your online store’s sales.</p>
       </Card>
     </Grid.Cell>
-    <Grid.Cell columns={{xs: 2, sm: 1, md: 2, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 1, md: 2, lg: 4, xl: 4}}>
       <Card title="Orders" sectioned>
         <p>View a summary of your online store’s orders.</p>
       </Card>
@@ -74,17 +74,17 @@ Use to create a three column layout that wrap at a breakpoint and aligns to a tw
 ```jsx
 <Page fullWidth>
   <Grid columns={{sm: 6}}>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
       <Card title="Sales" sectioned>
         <p>View a summary of your online store’s sales.</p>
       </Card>
     </Grid.Cell>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
       <Card title="Orders" sectioned>
         <p>View a summary of your online store’s orders.</p>
       </Card>
     </Grid.Cell>
-    <Grid.Cell columns={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 2, sm: 2, md: 2, lg: 4, xl: 4}}>
       <Card title="Orders" sectioned>
         <p>View a summary of your online store’s orders.</p>
       </Card>
