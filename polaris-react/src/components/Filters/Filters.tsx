@@ -94,6 +94,8 @@ export interface FiltersProps {
   hideTags?: boolean;
   /** Hide the query field */
   hideQueryField?: boolean;
+  /** Disable the query field */
+  disableQueryField?: boolean;
 }
 
 type CombinedProps = FiltersProps & {
@@ -141,6 +143,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       helpText,
       hideTags,
       hideQueryField,
+      disableQueryField = false,
       i18n,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
@@ -278,7 +281,7 @@ class FiltersInner extends Component<CombinedProps, State> {
             }
             clearButton
             onClearButtonClick={onQueryClear}
-            disabled={disabled}
+            disabled={disabled || disableQueryField}
             autoComplete="off"
           />
         )}
