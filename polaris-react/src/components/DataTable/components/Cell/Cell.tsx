@@ -83,7 +83,10 @@ export function Cell({
 
   const iconMarkup = (
     <span className={iconClassName}>
-      <SortIcon sortDirection={sortDirection} />
+      <SortIcon
+        sortDirection={sortDirection}
+        accessibilityLabel={sortAccessibilityLabel}
+      />
     </span>
   );
 

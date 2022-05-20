@@ -9,9 +9,10 @@ import styles from './SortIcon.scss';
 
 interface SortIconProps {
   sortDirection: SortDirection | undefined;
+  accessibilityLabel: string;
 }
 
-export function SortIcon({sortDirection}: SortIconProps) {
+export function SortIcon({sortDirection, accessibilityLabel}: SortIconProps) {
   return (
     <div className={styles.SortIcon}>
       <div
@@ -20,7 +21,7 @@ export function SortIcon({sortDirection}: SortIconProps) {
           sortDirection === 'ascending' && styles.Active,
         )}
       >
-        <Icon source={CaretUpMinor} />
+        <Icon source={CaretUpMinor} accessibilityLabel={accessibilityLabel} />
       </div>
       <div
         className={classNames(
