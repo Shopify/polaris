@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [these versioning and changelog guidelines](/documentation/Versioning%20and%20changelog.md).
+The format is based on [these versioning and changelog guidelines](/.github/CONTRIBUTING.md#changelog).
 
 ---
 
