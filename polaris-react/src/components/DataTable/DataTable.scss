@@ -300,16 +300,12 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    border-spacing: 0;
 
     &:not(.StickyTableHeader-isSticky) {
       top: -9999px;
       left: -9999px;
     }
-  }
-
-  .StickyHeaderCell {
-    flex-shrink: 0;
-    box-sizing: content-box;
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -318,11 +314,8 @@
   }
 
   .StickyTableHeadingsRow {
-    flex: 1 1 auto;
-    display: flex;
     overflow-x: auto;
     background-color: var(--p-surface);
-    justify-content: space-between;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -350,7 +343,7 @@
   z-index: 3;
   border-spacing: 0;
 
-  &.Visible {
+  &.Visible th {
     border-right: var(--p-border-divider);
   }
 }

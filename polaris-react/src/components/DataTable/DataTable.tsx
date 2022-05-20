@@ -105,7 +105,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private dataTable = createRef<HTMLDivElement>();
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
-  private stickyTableHeadingsRow = createRef<HTMLDivElement>();
+  private stickyTableHeadingsRow = createRef<HTMLTableRowElement>();
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
@@ -277,21 +277,29 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               const stickyHeaderClassNames = classNames(
                 styles.StickyTableHeader,
                 isSticky && styles['StickyTableHeader-isSticky'],
+                !isScrolledFarthestLeft && styles.Visible,
               );
 
-              const fixedFirstStickyHeading = hasFixedFirstColumn
-                ? this.renderHeading({
+              const fixedFirstStickyHeading = hasFixedFirstColumn ? (
+                <table
+                  className={classNames(
+                    !isScrolledFarthestLeft && styles.Visible,
+                    styles.FixedFirstColumn,
+                  )}
+                >
+                  {this.renderHeading({
                     heading: headings[0],
                     headingIndex: 0,
                     inFixedFirstColumn: true,
                     inStickyHeader: true,
-                  })
-                : null;
+                  })}
+                </table>
+              ) : null;
 
               return (
-                <div className={stickyHeaderClassNames}>
+                <table className={stickyHeaderClassNames}>
                   <div>{navigationMarkup}</div>
-                  <div
+                  <tr
                     className={styles.StickyTableHeadingsRow}
                     ref={this.stickyTableHeadingsRow}
                   >
@@ -304,8 +312,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                         inStickyHeader: true,
                       });
                     })}
-                  </div>
-                </div>
+                  </tr>
+                </table>
               );
             }}
           </Sticky>

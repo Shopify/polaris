@@ -137,7 +137,7 @@ export function Cell({
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
   const stickyHeading = (
-    <div
+    <th
       ref={setRef}
       {...headerCell.props}
       {...colSpanProp}
@@ -146,12 +146,12 @@ export function Cell({
       style={
         firstColumn && firstColumnMinWidth
           ? {minWidth: firstColumnMinWidth}
-          : {width: stickyCellWidth}
+          : {minWidth: stickyCellWidth}
       }
       data-index-table-sticky-heading
     >
       {columnHeadingContent}
-    </div>
+    </th>
   );
   const headingMarkup = header ? (
     <th
