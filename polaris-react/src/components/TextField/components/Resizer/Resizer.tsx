@@ -1,5 +1,6 @@
 import React, {useRef, useEffect, useCallback, useLayoutEffect} from 'react';
 
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import styles from '../../TextField.scss';
 
