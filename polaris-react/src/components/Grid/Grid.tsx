@@ -1,8 +1,8 @@
 import React, {useState, useMemo} from 'react';
 
 import {debounce} from '../../utilities/debounce';
-import {EventListener} from '../EventListener';
 import breakpoints from '../../tokens/token-groups/breakpoints.json';
+import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Cell} from './components';
 import styles from './Grid.scss';
@@ -53,17 +53,15 @@ export const Grid: React.FunctionComponent<GridProps> & {
   };
 
   const handleResize = useMemo(
-    () =>
-      debounce(() => {
-        setGridTemplateAreas(getAreas(areas));
-      }, 50),
+    () => debounce(() => setGridTemplateAreas(getAreas(areas)), 50),
     [areas],
   );
+
+  useEventListener('resize', handleResize);
 
   return (
     <div className={styles.Grid} style={style}>
       {children}
-      <EventListener event="resize" handler={handleResize} />
     </div>
   );
 };

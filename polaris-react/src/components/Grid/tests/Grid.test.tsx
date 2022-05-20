@@ -1,18 +1,20 @@
 import React from 'react';
-import {matchMedia} from '@shopify/jest-dom-mocks';
+import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {act} from 'react-dom/test-utils';
 
 import {formatAreas, Grid} from '../Grid';
-import {EventListener} from '../../EventListener';
 import breakpoints from '../../../tokens/token-groups/breakpoints.json';
 
 describe('<Grid />', () => {
   beforeEach(() => {
     matchMedia.mock();
+    timer.mock();
   });
 
   afterEach(() => {
     matchMedia.restore();
+    timer.restore();
   });
 
   const xsAreas = ['xs1 xs2 xs3'];
@@ -81,11 +83,24 @@ describe('<Grid />', () => {
     });
   });
 
-  it('renders an EventListener that handles resize', () => {
-    const grid = mountWithApp(<Grid />);
+  it('re-renders grid-template-areas on resize', () => {
+    setMediaWidth(breakpoints['breakpoints-xs']);
+    const grid = mountWithApp(<Grid areas={{xs: xsAreas, sm: smAreas}} />);
 
-    expect(grid).toContainReactComponent(EventListener, {
-      event: 'resize',
+    expect(grid).toContainReactComponent('div', {
+      style: {gridTemplateAreas: formatAreas(xsAreas)},
+    });
+
+    act(() => {
+      setMediaWidth(breakpoints['breakpoints-sm']);
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+    });
+
+    grid.forceUpdate();
+
+    expect(grid).toContainReactComponent('div', {
+      style: {gridTemplateAreas: formatAreas(smAreas)},
     });
   });
 
