@@ -1,0 +1,19 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "polaris-for-figma": "0.0.1",
+    "polaris-for-vscode": "0.2.0",
+    "@shopify/polaris-icons": "4.21.0",
+    "@shopify/polaris": "9.8.0",
+    "@shopify/polaris-tokens": "5.0.1",
+    "polaris.shopify.com": "0.1.0",
+    "@shopify/stylelint-polaris": "0.0.0-alpha.6"
+  },
+  "changesets": [
+    "cuddly-chefs-cheat",
+    "fast-dots-notice",
+    "gold-donkeys-work",
+    "modern-moons-build"
+  ]
+}
