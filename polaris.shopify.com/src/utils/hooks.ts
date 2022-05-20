@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { slugify } from "./various";
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 
@@ -29,7 +30,7 @@ type TOCNode = {
   children: TOCNode[];
 };
 
-const useTOC = (children: React.ReactNode) => {
+export const useTOC = (children: React.ReactNode) => {
   const [toc, setToc] = useState<TOCNode[]>([]);
 
   useEffect(() => {
@@ -76,6 +77,9 @@ const useTOC = (children: React.ReactNode) => {
         }
       }
     });
+
     setToc(tocNodes);
   }, [children]);
+
+  return [toc];
 };

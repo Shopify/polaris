@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import ComponentsNav from "../../components/ComponentsNav";
+import ComponentsPage from "../../components/ComponentsPage";
 
 interface Props {}
 
-const Components: NextPage<Props> = () => <ComponentsNav category="all" />;
+const Components: NextPage<Props> = () => <ComponentsPage category="all" />;
 
 export default Components;

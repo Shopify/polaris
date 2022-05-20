@@ -15,16 +15,24 @@ interface Props {
 function Nav({ navItems }: Props) {
   const router = useRouter();
   const currentPath = router.asPath;
-
   return (
     <div className={styles.Nav}>
       <ul>
         {navItems.map((navItem) => (
-          <NavItem
-            key={`${navItem.url}-${navItem.title}`}
-            navItem={navItem}
-            currentPath={currentPath}
-          />
+          <li key={navItem.title}>
+            <span>{navItem.title}</span>
+            {navItem.children && (
+              <ul>
+                {navItem.children.map((child) => (
+                  <NavItem
+                    key={`${child.url}-${child.title}`}
+                    navItem={child}
+                    currentPath={currentPath}
+                  />
+                ))}
+              </ul>
+            )}
+          </li>
         ))}
       </ul>
     </div>
@@ -49,6 +57,7 @@ function NavItem({
       ) : (
         <span>{navItem.title}</span>
       )}
+
       {navItem.children && (
         <ul>
           {navItem.children.map((child) => (

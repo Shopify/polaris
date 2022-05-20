@@ -1,8 +1,8 @@
-$pageMaxWidth: 1220px;
+$pageMaxWidth: 1320px;
 
 @mixin heading {
   color: var(--text-strong);
-  font-weight: 550;
+  font-weight: 650;
   line-height: 1.1;
 }
 
@@ -21,13 +21,11 @@ $pageMaxWidth: 1220px;
 @mixin heading-3 {
   @include heading;
   font-size: var(--font-size-500);
-  font-weight: 550;
   letter-spacing: var(--letter-spacing-300);
 }
 
 @mixin heading-4 {
   @include heading;
   font-size: var(--font-size-400);
-  font-weight: 550;
   letter-spacing: var(--letter-spacing-300);
 }

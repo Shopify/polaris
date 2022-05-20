@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import IconGallery from "../components/IconGallery";
+import IconsPage from "../components/IconsPage";
 
-const Components: NextPage = () => <IconGallery />;
+const Components: NextPage = () => <IconsPage />;
 
 export default Components;

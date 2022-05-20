@@ -1,5 +1,5 @@
-import { SearchResult } from "../types";
-import { createVar, tokens } from "@shopify/polaris-tokens";
+import { SearchResults } from "../types";
+import { tokens } from "@shopify/polaris-tokens";
 import components from "../data/components.json";
 import icons from "../data/icons.json";
 import guidelines from "../data/guidelines.json";
@@ -16,17 +16,18 @@ const {
   zIndex,
 } = tokens;
 
-let results: SearchResult = [];
+let results: SearchResults = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   results.push({
     category: "Components",
-    title: name,
-    excerpt: stripMarkdownLinks(intro),
+    score: 0,
     url: `/components/${slugify(category)}/${slugify(name)}`,
-    keywords,
-    meta: {},
+    meta: {
+      name,
+      description: stripMarkdownLinks(intro),
+    },
   });
 });
 
@@ -34,12 +35,14 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
     category: "Tokens",
-    title: `--p-${tokenName}`,
-    excerpt: "",
+    score: 0,
     url: `/tokens/colors#${tokenName}`,
-    keywords: [],
     meta: {
-      colorToken: { value: tokenValue.value },
+      token: {
+        name: tokenName,
+        description: tokenValue.description || "",
+        value: tokenValue.value,
+      },
     },
   });
 });
@@ -50,11 +53,15 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
     results.push({
       category: "Tokens",
-      title: createVar(tokenName),
-      excerpt: "",
+      score: 0,
       url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
-      keywords: [],
-      meta: {},
+      meta: {
+        token: {
+          name: tokenName,
+          description: tokenValue.description || "",
+          value: tokenValue.value,
+        },
+      },
     });
   });
 });
@@ -63,12 +70,10 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 icons.forEach(({ name, set, description, keywords, fileName }) => {
   results.push({
     category: "Icons",
-    title: `${name} (${set})`,
-    excerpt: description,
+    score: 0,
     url: `/icons#${name}-${set}`,
-    keywords,
     meta: {
-      icon: { fileName },
+      icon: { fileName, keywords, name, description, set },
     },
   });
 });
@@ -87,53 +92,36 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
 
       results.push({
         category: "Guidelines",
-        title,
-        excerpt: intro,
+        score: 0,
         url,
-        keywords: keywords as string[],
-        meta: {},
+        meta: {
+          title,
+          excerpt: intro,
+        },
       });
     }
   }
 });
 
 const fuse = new Fuse(results, {
-  keys: [{ name: "title", weight: 50 }, "excerpt", "url", "keywords"],
+  keys: [
+    { name: "meta.title", weight: 50 },
+    { name: "meta.name", weight: 50 },
+    { name: "meta.description", weight: 50 },
+    { name: "meta.excerpt", weight: 50 },
+  ],
   includeScore: true,
-  threshold: 0.1,
+  threshold: 0.5,
 });
 
-export function search(query: string): SearchResult {
-  let topScores: {
-    [key in SearchResult[number]["category"]]: number;
-  } = {
-    Components: 0,
-    Guidelines: 0,
-    Icons: 0,
-    Tokens: 0,
-  };
-
+export function search(query: string): SearchResults {
   if (query.length > 0) {
     const fuseResults = fuse.search(query);
 
-    fuseResults.forEach((result) => {
-      const category = result.item.category;
-      if (
-        result.score &&
-        (topScores[category] === null || topScores[category] < result.score)
-      ) {
-        topScores[category] = result.score;
-      }
-    });
-
-    const groupedResults = fuseResults
-      .map((item) => item.item)
-      .sort((a, b) => {
-        return topScores[a.category] - topScores[b.category];
-      })
-      .slice(0, 20);
-
-    return groupedResults;
+    return fuseResults.map((result) => ({
+      ...result.item,
+      score: result.score || 0,
+    }));
   }
 
   return [];

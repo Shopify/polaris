@@ -1,6 +1,4 @@
 .Longform {
-  border-radius: var(--border-radius-300);
-
   a {
     font-weight: 435;
   }
@@ -65,17 +63,19 @@
     margin-top: 1.5rem;
   }
 
-  img {
-    width: calc(100% + 200px);
-    margin: 0 -100px;
+  h1,
+  h2,
+  h3,
+  h4 {
+    &:target {
+      background: #d5ffe1;
+    }
   }
 
   hr {
-    display: none;
-    width: 100px;
-    height: 3px;
-    margin: 5rem auto;
-    background: var(--text);
+    height: 0.5px;
+    margin: 3rem 0;
+    background: var(--border-color);
     border-radius: var(--border-radius-200);
   }
 

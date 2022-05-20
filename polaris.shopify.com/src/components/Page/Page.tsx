@@ -5,9 +5,8 @@ import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import GlobalSearch from "../GlobalSearch";
 import { className } from "../../utils/various";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import GuidelinesNav from "../GuidelinesNav";
 import { useRouter } from "next/router";
+import MaxPageWidthDiv from "../MaxPageWidthDiv";
 
 interface Props {
   children: React.ReactNode;
@@ -18,33 +17,35 @@ const headerNavItems: {
   url: string;
 }[] = [
   {
-    label: "Resources",
+    label: "Getting started",
     url: "/resources",
   },
   {
     label: "Guidelines",
-    url: "/guidelines",
+    url: "/guidelines/foundations/experience-values",
   },
   {
     label: "Components",
     url: "/components",
   },
   {
-    label: "Icons",
-    url: "/icons",
+    label: "Tokens",
+    url: "/tokens",
   },
   {
-    label: "Tokens",
-    url: "/tokens/getting-started",
+    label: "Icons",
+    url: "/icons",
   },
 ];
 
 function Page({ children }: Props) {
   const router = useRouter();
 
+  const hasBorder = router.asPath.startsWith("/guidelines");
+
   return (
     <div className={className(styles.Page)}>
-      <div className={styles.Header}>
+      <div className={className(styles.Header, hasBorder && styles.withBorder)}>
         <MaxPageWidthDiv className={styles.HeaderInner}>
           <Link href="/">
             <a className={styles.Logo}>
@@ -78,8 +79,6 @@ function Page({ children }: Props) {
           </div>
         </MaxPageWidthDiv>
       </div>
-
-      <GuidelinesNav />
 
       <div className={styles.Content}>{children}</div>
 

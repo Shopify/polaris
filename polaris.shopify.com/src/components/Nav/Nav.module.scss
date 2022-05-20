@@ -1,89 +1,77 @@
 @import "../../styles/variables.scss";
 
 .Nav {
-  > ul {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1px;
-    margin: 0 -2rem;
-    > li {
-      flex: 1;
-      // background: var(--surface-subdued);
-      padding: 2rem 2rem 1rem;
-      border-right: var(--border);
-
-      &:first-child {
-        border-radius: 16px 0 0 16px;
-      }
-
-      &:last-child {
-        border-radius: 0 16px 16px 0;
-        border-right: none;
-      }
-
-      &:last-child {
-        ul {
-          margin-bottom: 0;
-        }
-      }
-
-      > span {
-        @include heading-2;
-        font-size: var(--font-size-600);
-        color: var(--primary);
-        // color: var(--text-subdued);
-        margin-bottom: 0.5rem;
-        display: inline-block;
-      }
-    }
+  ul {
+    margin-bottom: 1rem;
   }
 
   span {
+    display: inline-block;
     font-weight: var(--font-weight-500);
-    font-size: var(--font-size-100);
-    color: var(--text-subdued);
+    color: var(--text-strong);
+    font-size: var(--font-size-400);
+    margin-bottom: 0.25rem;
   }
 
   a {
-    position: relative;
     display: inline-block;
-    padding: 0.33em 0;
-    font-weight: 435;
+    position: relative;
+    padding: 0.1rem 0 0.1rem 0.75rem;
     color: inherit;
-    line-height: 1.25;
+    font-size: var(--font-size-200);
 
-    // &:before {
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   top: 13px;
-    //   right: 0;
-    //   left: 0;
-    //   width: 6px;
-    //   height: 6px;
-    //   border-radius: 100px;
-    //   background: var(--text);
-    // }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      left: 0;
+      width: 2px;
+      border-radius: var(--border-radius-200);
+      animation: nav-item-out 0.25s 1 ease-out both;
+      transition: background-color 0.2s linear;
+      background: #ededed;
+    }
 
     &:hover {
       color: var(--text-strong);
 
-      &::before {
-        background: var(--primary);
+      &:after {
+        animation: nav-item-in 0.25s 1 linear both;
       }
     }
 
     &[aria-current="page"] {
-      background: var(--primary);
-      border-radius: var(--border-radius-300);
-      padding: 2px 7px;
-      margin-left: -7px;
-      color: white;
+      color: var(--text-strong);
+
+      &:after {
+        background: var(--text-strong);
+        transform: translateX(0px);
+        animation: nav-item-in 0.25s 1 linear both;
+      }
     }
   }
+}
 
-  ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0.75rem;
+@keyframes nav-item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-2px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes nav-item-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
   }
 }

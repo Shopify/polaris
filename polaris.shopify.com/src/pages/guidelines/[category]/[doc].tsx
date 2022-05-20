@@ -1,43 +1,19 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import Longform from "../../../components/Longform";
 import fs from "fs";
 import path from "path";
 import { parseMarkdown } from "../../../utils/markdown.mjs";
-import Markdown from "../../../components/Markdown";
-import { getTitleTagValue, getUrlsFromNavItems } from "../../../utils/various";
+import { getUrlsFromNavItems } from "../../../utils/various";
 import { MarkdownFile } from "../../../types";
-import MaxPageWidthDiv from "../../../components/MaxPageWidthDiv";
-import { navItems } from "../../../components/GuidelinesNav";
+import { navItems } from "../../../data/navItems";
+import GuidelinesPage from "../../../components/GuidelinesPage";
 
 interface Props {
   category: string;
-  markdown: MarkdownFile;
+  markdownFile: MarkdownFile;
 }
 
-const Components: NextPage<Props> = ({ markdown: { readme, frontMatter } }) => {
-  let title = frontMatter?.name || "";
-
-  if (title.includes("/")) {
-    const parts = title.split("/");
-    title = parts[parts.length - 1];
-  }
-
-  return (
-    <>
-      <Head>
-        <title>{getTitleTagValue(title)}</title>
-      </Head>
-
-      <MaxPageWidthDiv>
-        <div style={{ maxWidth: 800, margin: "3rem auto" }}>
-          <Longform>
-            <Markdown text={readme} />
-          </Longform>
-        </div>
-      </MaxPageWidthDiv>
-    </>
-  );
+const Guidelines: NextPage<Props> = ({ markdownFile }) => {
+  return <GuidelinesPage markdownFile={markdownFile} />;
 };
 
 const postsDirectory = path.join(process.cwd(), "src/pages-from-old-website");
@@ -55,12 +31,12 @@ export const getStaticProps: GetStaticProps<
 
   let content = fs.readFileSync(fullPath, "utf-8");
 
-  const markdown = parseMarkdown(content);
+  const markdownFile = parseMarkdown(content);
 
   if (content) {
     const props: Props = {
       category: context.params?.category || "",
-      markdown,
+      markdownFile,
     };
 
     return { props };
@@ -82,4 +58,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Components;
+export default Guidelines;
