@@ -1,5 +1,20 @@
 # Changelog
 
+## 9.9.0-next.0
+
+### Minor Changes
+
+- [#5832](https://github.com/Shopify/polaris/pull/5832) [`d810f8e73`](https://github.com/Shopify/polaris/commit/d810f8e73009a10a4feb06bb728f030b510662fe) Thanks [@Stivaros](https://github.com/Stivaros)! - Added `disableQueryField` to `Filters` component
+
+* [#5810](https://github.com/Shopify/polaris/pull/5810) [`da6fce76b`](https://github.com/Shopify/polaris/commit/da6fce76bfa34b48832b4781a5ead8ef2558a046) Thanks [@kyledurand](https://github.com/kyledurand)! - add useEventListenerHook
+
+### Patch Changes
+
+- [#5848](https://github.com/Shopify/polaris/pull/5848) [`b1b970c30`](https://github.com/Shopify/polaris/commit/b1b970c3092cfae6b0e7f9933bd7a6e98b990c6a) Thanks [@samrose3](https://github.com/samrose3)! - Use [Changesets](https://github.com/changesets/changesets) to control versioning and changelog
+
+- Updated dependencies [[`b1b970c30`](https://github.com/Shopify/polaris/commit/b1b970c3092cfae6b0e7f9933bd7a6e98b990c6a)]:
+  - @shopify/polaris-icons@4.21.1-next.0
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines](/.github/CONTRIBUTING.md#changelog).
@@ -493,7 +508,7 @@ For instructions on updating from v7 to v8, see our [migration guide](https://gi
 
 ### Code quality
 
-- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Cleaned up Button styling and \$button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 - Removed filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
 - Removed all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
 

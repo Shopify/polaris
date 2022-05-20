@@ -1,6 +1,6 @@
 {
   "name": "polaris-for-figma",
-  "version": "0.0.1",
+  "version": "0.0.2-next.0",
   "private": true,
   "scripts": {
     "build": "webpack --mode=production",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@shopify/polaris": "*",
+    "@shopify/polaris": "9.9.0-next.0",
     "antd": "^4.20.4",
     "lodash": "^4.17.15",
     "react": "^16.0.0",
