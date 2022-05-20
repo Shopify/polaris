@@ -8,6 +8,7 @@ import type {
   MenuGroupDescriptor,
 } from '../../../../types';
 import {ButtonGroup} from '../../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
 import {SecondaryAction} from '../SecondaryAction';
