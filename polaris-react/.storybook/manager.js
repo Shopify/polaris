@@ -1,3 +1,4 @@
+import React from 'react';
 import {AddonPanel, ArgsTable} from '@storybook/components';
 import {addons, types} from '@storybook/addons';
 import {useGlobals} from '@storybook/api';
@@ -54,11 +55,11 @@ addons.register('polaris/global-controls', () => {
     type: types.PANEL,
     title: 'Grid',
     match: ({viewMode}) => viewMode === 'story',
-    render: GridPanel,
+    render: ({active, key}) => <GridPanel active={active} key={key} />,
   });
 });
 
-function GridPanel({active}) {
+function GridPanel(props) {
   const [globals, updateGlobals] = useGlobals();
 
   return (
