@@ -6,7 +6,11 @@
   .Content {
     overflow: hidden;
     border-radius: var(--border-radius-500);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4);
+    background: var(--text);
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    padding: 0.33rem 0.5rem;
   }
 
   &::after {
@@ -14,12 +18,13 @@
     display: block;
     position: absolute;
     right: 0;
-    bottom: -10px;
+    bottom: -5px;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     margin: 0 auto;
-    background: white;
+    background: var(--text);
     transform: rotate(45deg);
+    z-index: 0;
   }
 }

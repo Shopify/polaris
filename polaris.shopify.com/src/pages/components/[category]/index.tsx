@@ -1,5 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import ComponentsNav from "../../../components/ComponentsNav";
+import ComponentsPage from "../../../components/ComponentsPage";
 import { getComponentCategories, slugify } from "../../../utils/various";
 
 interface Props {
@@ -7,26 +7,28 @@ interface Props {
 }
 
 const Components: NextPage<Props> = ({ category }) => (
-  <ComponentsNav category={category} />
+  <ComponentsPage category={category} />
 );
 
-export const getStaticProps: GetStaticProps<Props, { category: string }> =
-  async (context) => {
-    if (context.params?.category) {
-      const matchingCategory = getComponentCategories().find(
-        (category) => slugify(category) === context.params?.category
-      );
+export const getStaticProps: GetStaticProps<
+  Props,
+  { category: string }
+> = async (context) => {
+  if (context.params?.category) {
+    const matchingCategory = getComponentCategories().find(
+      (category) => slugify(category) === context.params?.category
+    );
 
-      if (matchingCategory) {
-        const props: Props = {
-          category: matchingCategory,
-        };
+    if (matchingCategory) {
+      const props: Props = {
+        category: matchingCategory,
+      };
 
-        return { props };
-      }
+      return { props };
     }
-    throw new Error();
-  };
+  }
+  throw new Error();
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let categories: { category: string; url: string }[] =
