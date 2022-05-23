@@ -53,7 +53,9 @@ function IconGridItem({
         placement="top"
         renderContent={() => (
           <div>
-            <p>{icon.description}</p>
+            <p>
+              {icon.description === "N/A" ? "No description" : icon.description}
+            </p>
           </div>
         )}
       >
