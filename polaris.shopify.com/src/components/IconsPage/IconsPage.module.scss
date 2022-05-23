@@ -3,8 +3,6 @@
 }
 
 .Filter {
-  padding: 0 0 2.5rem 0;
-
   .TextField {
     margin-top: 1.5rem;
   }
@@ -12,6 +10,7 @@
 
 .SectionHeading {
   font-size: var(--font-size-300);
+  margin-top: 2rem;
   margin-bottom: 1rem;
 
   b {
