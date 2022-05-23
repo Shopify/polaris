@@ -812,3 +812,4 @@ export function IndexTable({
 
 IndexTable.Cell = Cell;
 IndexTable.Row = Row;
+IndexTable.ScrollContainer = ScrollContainer;
