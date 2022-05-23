@@ -20,7 +20,7 @@ const Components: NextPage<Props> = ({ name, readme }) => {
         <title>{getTitleTagValue(name)}</title>
       </Head>
 
-      <MaxPageWidthDiv style={{ maxWidth: "40rem" }}>
+      <MaxPageWidthDiv style={{ maxWidth: "40rem", marginTop: "4rem" }}>
         <Longform>
           <Markdown text={readme} />
         </Longform>

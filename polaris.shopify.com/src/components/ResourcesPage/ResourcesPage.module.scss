@@ -28,16 +28,12 @@
     text-align: center;
   }
 
-  h3 {
-    // font-size: var(--font-size-600);
-  }
-
   &::before {
     content: "";
     display: block;
-    width: 3px;
+    width: 2px;
     height: 50px;
-    background: var(--text-subdued);
+    background: #ddd;
     border-radius: 2px;
     margin: 2rem auto;
   }
@@ -66,8 +62,6 @@
     box-shadow: var(--card-shadow);
     border-radius: var(--border-radius-500);
     overflow: hidden;
-    // background: #393939;
-    // background: linear-gradient(45deg, #e6f7f3, transparent);
   }
 }
 
