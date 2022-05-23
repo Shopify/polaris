@@ -16,16 +16,19 @@ jobs:
       - uses: actions/setup-node@v2
         name: Use Node.js 16.x
         with:
-          node-version: '16'
-          cache: 'yarn'
+          node-version: 16
+          cache: yarn
 
       - name: Install dependencies
         run: yarn
 
+      - name: Build extension
+        run: yarn turbo run build --filter=polaris-for-vscode
+
       - name: Run Tests
-        run: yarn test
+        run: yarn turbo run test --filter=polaris-for-vscode
 
       - name: Publish extension in the marketplace
-        run: yarn workspace polaris-for-vscode vsce publish --yarn
+        run: yarn workspace polaris-for-vscode vsce publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}

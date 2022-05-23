@@ -8,6 +8,7 @@ import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 import type {Logo} from '../../utilities/frame/types';
 import {Icon} from '../Icon';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';

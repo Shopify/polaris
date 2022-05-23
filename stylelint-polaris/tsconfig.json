@@ -1,15 +1,14 @@
 {
-  "extends": "@shopify/typescript-configs/node-library.json",
+  "extends": "@shopify/typescript-configs/node-base",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
     "allowJs": true,
     "checkJs": true,
-    "skipLibCheck": true,
     "composite": true,
-    "incremental": true,
-    "noEmit": false,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "rootDir": "./"
   },
-  "exclude": ["node_modules", "dist"]
+  "files": ["./test-types.d.ts"],
+  "exclude": ["node_modules", "dist"],
+  "references": [{"path": "../polaris-tokens"}]
 }

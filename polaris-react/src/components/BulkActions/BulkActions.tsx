@@ -17,8 +17,9 @@ import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
-import {EventListener} from '../EventListener';
 import {CheckableButton} from '../CheckableButton';
+// eslint-disable-next-line import/no-deprecated
+import {EventListener} from '../EventListener';
 
 import {BulkActionButton, BulkActionMenu} from './components';
 import styles from './BulkActions.scss';

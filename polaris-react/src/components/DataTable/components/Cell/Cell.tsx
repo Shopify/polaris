@@ -26,7 +26,6 @@ export interface CellProps {
   setRef?: (ref: HTMLTableCellElement | null) => void;
   stickyHeadingCell?: boolean;
   stickyCellWidth?: number;
-  key?: string;
 }
 
 export function Cell({
@@ -47,7 +46,6 @@ export function Cell({
   setRef = () => {},
   stickyHeadingCell = false,
   stickyCellWidth,
-  key,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -110,7 +108,6 @@ export function Cell({
         width: stickyCellWidth,
       }}
       data-index-table-sticky-heading
-      key={key}
     >
       {columnHeadingContent}
     </div>

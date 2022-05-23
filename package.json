@@ -5,28 +5,44 @@
   "engines": {
     "node": "^14.17.0 || ^16.13.0"
   },
-  "workspaces": [
-    "polaris-tokens",
-    "polaris-for-vscode",
-    "polaris-icons",
-    "polaris-react",
-    "stylelint-polaris",
-    "polaris.shopify.com"
-  ],
+  "workspaces": {
+    "packages": [
+      "polaris-tokens",
+      "polaris-for-figma",
+      "polaris-for-vscode",
+      "polaris-icons",
+      "polaris-react",
+      "stylelint-polaris",
+      "polaris.shopify.com"
+    ],
+    "nohoist": [
+      "**/vscode-languageclient",
+      "**/vscode-languageclient/**",
+      "**/vscode-languageserver",
+      "**/vscode-languageserver/**",
+      "**/vscode-languageserver-textdocument",
+      "**/vscode-languageserver-textdocument/**"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue --filter=@shopify/polaris",
+    "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "jest --watch",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier . --write",
     "type-check": "tsc --build",
-    "preversion": "echo \"Error: do not run yarn version from root\" && exit 1"
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
+    "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@changesets/cli": "^2.22.0",
+    "@changesets/changelog-github": "^0.4.4",
     "@next/eslint-plugin-next": "^12.1.4",
     "@shopify/babel-preset": "^24.1.2",
     "@shopify/eslint-plugin": "^41.0.1",
@@ -35,11 +51,12 @@
     "@shopify/typescript-configs": "^5.1.0",
     "eslint": "^8.3.0",
     "jest": "^27.5.1",
+    "jest-preset-stylelint": "^5.0.3",
     "jest-watch-typeahead": "^1.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
     "stylelint": "^14.1.0",
-    "turbo": "^1.2.6",
+    "turbo": "^1.2.8",
     "typescript": ">=3.0.0"
   },
   "prettier": "@shopify/prettier-config"

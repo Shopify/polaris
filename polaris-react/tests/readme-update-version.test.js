@@ -1,6 +1,5 @@
 const path = require('path');
-
-const fs = require('fs-extra');
+const fs = require('fs');
 
 const {semverRegExp, readmes} = require('../scripts/utilities');
 

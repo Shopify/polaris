@@ -5,6 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';
 import sharedStyles from '../../RangeSlider.scss';
