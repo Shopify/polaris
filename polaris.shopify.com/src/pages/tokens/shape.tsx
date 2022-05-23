@@ -8,10 +8,10 @@ const Components: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{getTitleTagValue("Getting started with tokens")}</title>
+        <title>{getTitleTagValue("Shape")}</title>
       </Head>
 
-      <TokensPage />
+      <TokensPage tokenGroup={"shape"} />
     </>
   );
 };

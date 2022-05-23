@@ -4,6 +4,7 @@ import {
   TokenPropertiesWithName,
 } from "../../types";
 import { className } from "../../utils/various";
+import { FigmaIcon } from "../ResourcesPage/icons";
 
 interface TokenListProps {
   children: React.ReactNode;
@@ -36,7 +37,7 @@ function TokenListItem({
         <div className={styles.TokenName}>
           <h4>--p-{name}</h4>
         </div>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
       </div>
     </li>
   );
@@ -52,7 +53,7 @@ interface TokenPreviewProps {
 function TokenPreview({ name, value }: TokenPreviewProps) {
   const wrapperStyles = {
     aspectRatio: "4/1",
-    background: "#fff",
+    background: "#ededed",
     borderRadius: 2,
   };
 
@@ -78,10 +79,20 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           ...wrapperStyles,
-          borderRadius: value,
-          background: "var(--primary)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
-      ></div>
+      >
+        <div
+          style={{
+            width: "20%",
+            paddingBottom: "20%",
+            borderRadius: value,
+            background: "var(--primary)",
+          }}
+        ></div>
+      </div>
     );
   }
 
@@ -213,8 +224,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             width: `${relativeWidth}%`,
             minWidth: 4,
             height: `50%`,
-            boxShadow:
-              "inset 0 0 0 3px #333, inset 0 -10px #333, 0 30px 30px rgba(0,0,0,.2)",
+            boxShadow: "inset 0 0 0 3px #333, inset 0 -10px #333",
             background: "white",
             borderRadius: 4,
           }}
@@ -236,8 +246,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       >
         <div
           style={{
-            height: "50%",
-            width: "50%",
+            height: "0%",
+            width: "10%",
+            paddingBottom: "10%",
             background: "white",
             boxShadow: value,
           }}
@@ -259,8 +270,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       >
         <div
           style={{
-            height: "50%",
-            width: "50%",
+            height: "0%",
+            width: "10%",
+            paddingBottom: "10%",
             background: "var(--primary)",
             animation: `spin ${value} infinite both linear`,
           }}
@@ -282,8 +294,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       >
         <div
           style={{
-            height: "50%",
-            width: "50%",
+            height: "0%",
+            width: "10%",
+            paddingBottom: "10%",
             background: "var(--primary)",
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
@@ -306,8 +319,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       >
         <div
           style={{
-            height: "50%",
-            width: "50%",
+            height: "0%",
+            width: "10%",
+            paddingBottom: "10%",
             background: "var(--primary)",
             boxShadow: value,
             animation: `${name} 1s infinite both`,
@@ -328,9 +342,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           flexDirection: "column-reverse",
           justifyContent: "center",
           alignItems: "center",
-          gap: 1,
+          gap: 2,
           ...wrapperStyles,
-          background: "var(--primary)",
         }}
       >
         {[...Array(layerCount)].map((_, n) => (
@@ -338,11 +351,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             key={n}
             style={{
               height: `${100 / 12 / 2}%`,
-              width: "80%",
+              width: "20%",
               background:
-                n + 1 === number
-                  ? "rgba(255,255,255,1)"
-                  : "rgba(255,255,255,.2)",
+                n + 1 === number ? "rgba(0,0,0,.7)" : "rgba(0,0,0,.1)",
               boxShadow: value,
               animation: `${name} 1s infinite both`,
             }}

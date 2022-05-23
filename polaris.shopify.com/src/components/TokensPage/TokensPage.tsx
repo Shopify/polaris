@@ -8,7 +8,16 @@ import Link from "next/link";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
 
-interface Props {}
+interface Props {
+  tokenGroup:
+    | "breakpoints"
+    | "colors"
+    | "depth"
+    | "motion"
+    | "shape"
+    | "typography"
+    | "zIndex";
+}
 
 function tokensToFilteredArray(
   filter: string,
@@ -23,7 +32,7 @@ function tokensToFilteredArray(
     });
 }
 
-function TokensPage({}: Props) {
+function TokensPage({ tokenGroup }: Props) {
   const [filter, setFilter] = useState("");
 
   const tokens = {
@@ -48,9 +57,10 @@ function TokensPage({}: Props) {
           <div className={styles.Text}>
             <h1>Tokens</h1>
             <p>
-              Design tokens represent design decisions such as color, spacing,
-              and typography. Each token has a unique name that references a
-              specific value. The benefits of using tokens over hard-coded.
+              Tokens represent design decisions such as color, spacing, and
+              typography. By using tokens, you can build custom experiences on
+              top of Polaris that automatically updates when Polaris evolves.
+              Custom, but future proof.
             </p>
             <Link href="#">Learn more about tokens</Link>
           </div>
@@ -65,7 +75,7 @@ function TokensPage({}: Props) {
           {
             title: "Colors",
             url: `/tokens/colors`,
-            isCurrentIfPathStartsWith: `/tokens`,
+            isCurrentIfPathStartsWith: `/tokens/colors`,
           },
           {
             title: "Depth",
@@ -104,8 +114,8 @@ function TokensPage({}: Props) {
         <div className={styles.Group}>
           <MaxPageWidthDiv>
             <TokenList>
-              {tokens.colors.map((color) => (
-                <TokenList.Item key={color.name} token={color} />
+              {tokens[tokenGroup].map((token) => (
+                <TokenList.Item key={token.name} token={token} />
               ))}
             </TokenList>
           </MaxPageWidthDiv>

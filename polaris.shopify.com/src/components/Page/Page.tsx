@@ -30,7 +30,7 @@ const headerNavItems: {
   },
   {
     label: "Tokens",
-    url: "/tokens",
+    url: "/tokens/colors",
   },
   {
     label: "Icons",
