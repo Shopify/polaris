@@ -122,10 +122,7 @@ function ResourcesPage({}: Props) {
           <h2>Get the power ups</h2>
           <div className={styles.PolarisForVSCode}>
             <div className={styles.Text}>
-              <h3>
-                Polaris for <br />
-                VS Code
-              </h3>
+              <h3>Polaris for VS Code</h3>
               <p className={styles.Description}>
                 Automatic autocompletion for Polaris tokens, right inside your
                 favorite code editor.
