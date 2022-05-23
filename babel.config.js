@@ -10,5 +10,6 @@ module.exports = {
     './polaris-tokens',
     './polaris-icons',
     './polaris-react',
+    './polaris-for-figma',
   ],
 };

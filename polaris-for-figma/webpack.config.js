@@ -17,19 +17,18 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: ['babel-loader', {loader: 'ts-loader'}],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-shopify/web'],
+        test: /\.(js|jsx|ts|tsx)$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              // rootMode: 'upward',
+              presets: ['@shopify/babel-preset'],
+            },
           },
-        },
+          {loader: 'ts-loader'},
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
