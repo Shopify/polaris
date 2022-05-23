@@ -120,7 +120,8 @@
 .PolarisForVSCode {
   margin-top: 2rem;
   display: flex;
-  background: #1e1d1e;
+  background: #291a36;
+  background: linear-gradient(45deg, #3e0038, #039d76);
   border: var(--border);
   border-radius: var(--border-radius-500);
   overflow: hidden;
@@ -139,7 +140,7 @@
     }
 
     p {
-      color: #aaa;
+      color: #c2a5d9;
     }
 
     a {
@@ -150,6 +151,8 @@
   .Video {
     min-width: 63.5%;
     max-width: 63.5%;
+    filter: hue-rotate(-226deg);
+    mix-blend-mode: color-dodge;
 
     video {
       width: 100%;
