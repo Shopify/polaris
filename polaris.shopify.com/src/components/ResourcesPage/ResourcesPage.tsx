@@ -11,7 +11,7 @@ function ResourcesPage({}: Props) {
   return (
     <div className={styles.ResourcesPage}>
       <MaxPageWidthDiv>
-        <h1>Getting started with Polaris</h1>
+        <h1>Getting started</h1>
       </MaxPageWidthDiv>
 
       <MaxPageWidthDiv className={className(styles.Step, styles.FirstStep)}>
