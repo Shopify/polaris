@@ -13,7 +13,7 @@ To perform a release, merge in the **"Version Packages"** PR.
 
 Prereleases are created the same way as releases, but are merged into the `next` branch. To create a prerelease:
 
-1. If [`next`](https://github.com/Shopify/polaris/tree/next) **does not** already exist, create one from `main`:
+1. If [`next`](https://github.com/Shopify/polaris/tree/next) **does not** already exist, create one from `main`
 
    ```sh
    git checkout -b next origin/main
@@ -32,7 +32,24 @@ Prereleases are created the same way as releases, but are merged into the `next`
 3. After pushing `next` to GitHub, the [prerelease workflow](https://github.com/Shopify/polaris/blob/main/.github/workflows/prerelease.yml) will generate a PR 🎉
 4. Merge in the newly created **"Version Packages (next)"** PR to release the prerelease versions
 
-### [polaris-for-figma](/polaris-for-figma)
+### Adding changes to a prerelease
+
+If a prerelease has already been created but a fix needs to be added, you can do the following:
+
+1. Make the fix in a new branch (ex: `fix/branch`)
+2. Checkout `next` and pull in the fix
+
+   ```sh
+   git checkout next
+   git pull
+   git pull origin fix/branch
+   git push origin next
+   ```
+
+3. The **Version Packages (next)** PR will be updated with the added fix
+4. If the fix is successful, remember to contribute changes in the fix branch back to `main` by opening a PR
+
+## [polaris-for-figma](/polaris-for-figma)
 
 You will need to have admin privileges in Figma to release the plugin.
 
@@ -40,14 +57,14 @@ You will need to have admin privileges in Figma to release the plugin.
 - In Figma navigate to the plugins menu
 - Click "Publish new release"
 
-### [polaris-for-vscode](/polaris-for-vscode)
+## [polaris-for-vscode](/polaris-for-vscode)
 
 - [Draft a new release](https://github.com/Shopify/polaris/releases)
 - Target the commit that you want to release
 - Create a new tag with the prefix `vscode`
 - This will trigger the [publish-polaris-for-vscode.yml](https://github.com/Shopify/polaris/blob/main/.github/workflows/publish-polaris-for-vscode.yml) workflow
 
-### [polaris.shopify.com](/polaris.shopify.com)
+## [polaris.shopify.com](/polaris.shopify.com)
 
 - Go to the [polaris-site-container-builder](https://github.com/Shopify/polaris-site-container-builder) repo
 - Follow the steps in the `README.md`
