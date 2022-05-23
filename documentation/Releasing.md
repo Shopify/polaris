@@ -2,21 +2,35 @@
 
 Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository.
 
-We have a [GitHub](https://github.com/changesets/action) action that
+We have a [GitHub action](https://github.com/changesets/action) that
 
-- creates a `version` PR called "Version Packages", then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
+- creates a `version` PR called **"Version Packages"**, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
 - performs a releases when changes are merged to the `main` branch.
 
-To perform a release, merge in the "Version Packages" PR.
+To perform a release, merge in the **"Version Packages"** PR.
 
 ## Prereleases
 
 Prereleases are created the same way as releases, but are merged into the `next` branch. To create a prerelease:
 
-1. Create a `next` branch from `main` if it doesn't already exist
-1. Push the `next` branch to GitHub
-1. The GitHub prerelease workflow will generated a PR for your prerelease branch 🎉
-1. Merge in the newly created "Version Packages (next)" PR to release the prerelease versions
+1. If [`next`](https://github.com/Shopify/polaris/tree/next) **does not** already exist, create one from `main`:
+
+   ```sh
+   git checkout -b next origin/main
+   git push --set-upstream origin next
+   ```
+
+2. If [`next`](https://github.com/Shopify/polaris/tree/next) already exists, rebase it with `main`
+
+   ```sh
+   git checkout next
+   git pull
+   git rebase origin/main
+   git push --force
+   ```
+
+3. After pushing `next` to GitHub, the [prerelease workflow](https://github.com/Shopify/polaris/blob/main/.github/workflows/prerelease.yml) will generate a PR 🎉
+4. Merge in the newly created **"Version Packages (next)"** PR to release the prerelease versions
 
 ### [polaris-for-figma](/polaris-for-figma)
 
