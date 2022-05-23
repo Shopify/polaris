@@ -209,7 +209,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
 
   // Breakpoints
   else if (name.includes("breakpoints")) {
-    const relativeWidth = (parseInt(value.replace("rem", "")) / 140) * 100;
+    const relativeWidth = (parseInt(value.replace("rem", "")) / 450) * 100;
     return (
       <div
         style={{
