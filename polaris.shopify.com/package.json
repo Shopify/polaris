@@ -26,8 +26,7 @@
     "react-markdown": "^8.0.2",
     "react-tooltip": "^4.2.21",
     "rehype-raw": "^6.1.1",
-    "sass": "^1.49.9",
-    "@floating-ui/react-dom-interactions": "0.5.0"
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
