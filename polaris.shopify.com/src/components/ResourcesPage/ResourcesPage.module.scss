@@ -120,11 +120,12 @@
 .PolarisForVSCode {
   margin-top: 2rem;
   display: flex;
-  gap: 2rem;
   background: #1e1d1e;
   border: var(--border);
   border-radius: var(--border-radius-500);
   overflow: hidden;
+  max-width: 62rem;
+  margin: 2rem auto 0;
 
   .Text {
     padding: 3rem;
@@ -138,7 +139,7 @@
     }
 
     p {
-      color: #ccc;
+      color: #aaa;
     }
 
     a {
@@ -147,8 +148,8 @@
   }
 
   .Video {
-    min-width: 66%;
-    max-width: 66%;
+    min-width: 63.5%;
+    max-width: 63.5%;
 
     video {
       width: 100%;
