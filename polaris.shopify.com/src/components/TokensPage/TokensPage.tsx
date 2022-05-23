@@ -100,14 +100,14 @@ function TokensPage({ tokenGroup }: Props) {
             isCurrentIfPathStartsWith: `/tokens/depth`,
           },
           {
-            title: "Breakpoints",
-            url: `/tokens/breakpoints`,
-            isCurrentIfPathStartsWith: `/tokens/breakpoints`,
-          },
-          {
             title: "Motion",
             url: `/tokens/motion`,
             isCurrentIfPathStartsWith: `/tokens/motion`,
+          },
+          {
+            title: "Breakpoints",
+            url: `/tokens/breakpoints`,
+            isCurrentIfPathStartsWith: `/tokens/breakpoints`,
           },
           {
             title: "Z-Index",

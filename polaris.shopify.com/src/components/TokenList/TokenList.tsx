@@ -365,6 +365,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           justifyContent: "center",
           alignItems: "center",
           ...wrapperStyles,
+          background: "var(--decorative-1)",
         }}
       >
         <div
@@ -389,6 +390,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           justifyContent: "center",
           alignItems: "center",
           ...wrapperStyles,
+          background: "var(--decorative-2)",
         }}
       >
         <div
@@ -414,6 +416,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           justifyContent: "center",
           alignItems: "center",
           ...wrapperStyles,
+          background: "var(--decorative-3)",
         }}
       >
         <div
