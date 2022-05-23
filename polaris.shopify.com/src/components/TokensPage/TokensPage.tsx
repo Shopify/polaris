@@ -123,9 +123,15 @@ function TokensPage({ tokenGroup }: Props) {
             <TokenList
               layout={["colors"].includes(tokenGroup) ? "grid" : "list"}
             >
-              {tokens[tokenGroup].map((token) => (
-                <TokenList.Item key={token.name} token={token} />
-              ))}
+              {tokens[tokenGroup]
+                .sort((token) =>
+                  token.name.includes("ease") || token.name.includes("linear")
+                    ? -1
+                    : 1
+                )
+                .map((token) => (
+                  <TokenList.Item key={token.name} token={token} />
+                ))}
             </TokenList>
           </MaxPageWidthDiv>
         </div>
