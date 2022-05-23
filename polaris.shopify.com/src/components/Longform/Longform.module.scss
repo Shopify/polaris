@@ -78,9 +78,9 @@
   pre {
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
-    font-size: var(--font-size-300);
+    font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--text);
+    background: var(--text-strong);
     color: var(--surface);
     border-radius: var(--border-radius-200);
     overflow: auto;

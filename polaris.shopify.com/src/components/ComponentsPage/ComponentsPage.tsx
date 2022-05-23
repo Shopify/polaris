@@ -1,8 +1,6 @@
-import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import components from "../../data/components.json";
 import {
   getComponentCategories,
@@ -10,12 +8,10 @@ import {
   slugify,
 } from "../../utils/various";
 import { LinkButton } from "../Button/Button";
-import Image from "../Image/Image";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import TextField from "../TextField";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
-import Nav from "../Nav";
 import ComponentGrid from "../ComponentGrid";
 
 const componentCategories = getComponentCategories();

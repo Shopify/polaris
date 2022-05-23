@@ -15,6 +15,7 @@ interface Props {
     | "depth"
     | "motion"
     | "shape"
+    | "spacing"
     | "typography"
     | "zIndex";
 }
@@ -41,6 +42,7 @@ function TokensPage({ tokenGroup }: Props) {
     depth: tokensToFilteredArray(filter, allTokens.depth),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),
+    spacing: tokensToFilteredArray(filter, allTokens.spacing),
     typography: tokensToFilteredArray(filter, allTokens.typography),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
@@ -78,6 +80,21 @@ function TokensPage({ tokenGroup }: Props) {
             isCurrentIfPathStartsWith: `/tokens/colors`,
           },
           {
+            title: "Typography",
+            url: `/tokens/typography`,
+            isCurrentIfPathStartsWith: `/tokens/typography`,
+          },
+          {
+            title: "Shape",
+            url: `/tokens/shape`,
+            isCurrentIfPathStartsWith: `/tokens/shape`,
+          },
+          {
+            title: "Spacing",
+            url: `/tokens/spacing`,
+            isCurrentIfPathStartsWith: `/tokens/spacing`,
+          },
+          {
             title: "Depth",
             url: `/tokens/depth`,
             isCurrentIfPathStartsWith: `/tokens/depth`,
@@ -93,16 +110,6 @@ function TokensPage({ tokenGroup }: Props) {
             isCurrentIfPathStartsWith: `/tokens/motion`,
           },
           {
-            title: "Shape",
-            url: `/tokens/shape`,
-            isCurrentIfPathStartsWith: `/tokens/shape`,
-          },
-          {
-            title: "Typography",
-            url: `/tokens/typography`,
-            isCurrentIfPathStartsWith: `/tokens/typography`,
-          },
-          {
             title: "Z-Index",
             url: `/tokens/z-index`,
             isCurrentIfPathStartsWith: `/tokens/z-index`,
@@ -113,7 +120,9 @@ function TokensPage({ tokenGroup }: Props) {
       <div className={styles.TableSection}>
         <div className={styles.Group}>
           <MaxPageWidthDiv>
-            <TokenList>
+            <TokenList
+              layout={["colors"].includes(tokenGroup) ? "grid" : "list"}
+            >
               {tokens[tokenGroup].map((token) => (
                 <TokenList.Item key={token.name} token={token} />
               ))}
@@ -121,18 +130,6 @@ function TokensPage({ tokenGroup }: Props) {
           </MaxPageWidthDiv>
         </div>
       </div>
-      <style jsx>
-        {`
-          @keyframes spin {
-            from {
-              transform: rotate(0deg);
-            }
-            to {
-              transform: rotate(360deg);
-            }
-          }
-        `}
-      </style>
       <style jsx>{keyframeStyles}</style>
     </>
   );

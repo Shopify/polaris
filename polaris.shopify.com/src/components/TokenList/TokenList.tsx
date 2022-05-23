@@ -4,14 +4,69 @@ import {
   TokenPropertiesWithName,
 } from "../../types";
 import { className } from "../../utils/various";
-import { FigmaIcon } from "../ResourcesPage/icons";
 
 interface TokenListProps {
+  layout?: "grid" | "list";
   children: React.ReactNode;
 }
 
-function TokenList({ children }: TokenListProps) {
-  return <ul className={styles.TokenList}>{children}</ul>;
+function TokenList({ layout = "grid", children }: TokenListProps) {
+  return (
+    <>
+      <ul
+        className={className(
+          styles.TokenList,
+          layout === "list" && styles.list
+        )}
+      >
+        {children}
+      </ul>
+      <style jsx>
+        {`
+          @keyframes spin {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        `}
+      </style>
+    </>
+  );
+}
+
+function getFigmaRecommendationForToken(
+  name: string,
+  value: string
+): undefined | string {
+  let recommendation: string | undefined = undefined;
+
+  const REM = 16;
+
+  if (value.startsWith("rgba")) {
+    recommendation = "Use color Lorem/Ipsum/Dolor";
+  } else if (name.startsWith("shadow")) {
+    recommendation = "Use shadow Lorem/Ipsum dolor";
+  } else if (name.includes("breakpoint")) {
+    const artboardWidth = parseInt(value) * REM;
+    if (artboardWidth > 0) {
+      recommendation = `Set artboard width to ${artboardWidth}+ pixels`;
+    }
+  } else if (name.includes("border-radius-half")) {
+    recommendation = "Use a circle";
+  } else if (name.includes("radius")) {
+    const radius = parseFloat(value) * REM;
+    recommendation = `Use a radius of ${radius} pixels`;
+  } else if (name.includes("font") || name.includes("line-height")) {
+    recommendation = `Use font style Lorem/Ipsum/Dolor`;
+  } else if (name.includes("space")) {
+    const spacing = parseFloat(value) * REM;
+    recommendation = `Use a spacing of ${spacing} pixels`;
+  }
+
+  return recommendation;
 }
 
 interface TokenListItemProps extends HighlightableSearchResult {
@@ -22,6 +77,8 @@ function TokenListItem({
   token: { name, value, description },
   isHighlighted,
 }: TokenListItemProps) {
+  const figmaRecommendation = getFigmaRecommendationForToken(name, value);
+
   return (
     <li
       key={name}
@@ -38,6 +95,11 @@ function TokenListItem({
           <h4>--p-{name}</h4>
         </div>
         {description && <p>{description}</p>}
+        {figmaRecommendation && (
+          <div className={styles.FigmaRecommendation}>
+            {figmaRecommendation}
+          </div>
+        )}
       </div>
     </li>
   );
@@ -52,9 +114,7 @@ interface TokenPreviewProps {
 
 function TokenPreview({ name, value }: TokenPreviewProps) {
   const wrapperStyles = {
-    aspectRatio: "4/1",
-    background: "#ededed",
-    borderRadius: 2,
+    background: "var(--decorative-1)",
   };
 
   // Colors
@@ -133,6 +193,45 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
     );
   }
 
+  // Spacing
+  else if (name.includes("space")) {
+    return (
+      <div
+        style={{
+          ...wrapperStyles,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            aspectRatio: "1/1",
+            borderRadius: 100,
+            height: "30%",
+            background: "var(--primary)",
+          }}
+        ></div>
+        <div
+          style={{
+            width: value,
+            height: "30%",
+            background: "var(--primary)",
+            opacity: 0.2,
+          }}
+        ></div>
+        <div
+          style={{
+            aspectRatio: "1/1",
+            borderRadius: 100,
+            height: "30%",
+            background: "var(--primary)",
+          }}
+        ></div>
+      </div>
+    );
+  }
+
   // Font families
   else if (name.includes("font-family")) {
     return (
@@ -143,7 +242,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontFamily: value,
-          background: "var(--surface-subdued)",
+          background: "var(--decorative-1)",
         }}
       >
         Commerce
@@ -161,7 +260,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontSize: value,
-          background: "var(--surface-subdued)",
+          background: "var(--decorative-2)",
         }}
       >
         Aa
@@ -179,7 +278,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           fontWeight: value,
-          background: "var(--surface-subdued)",
+          background: "var(--decorative-3)",
         }}
       >
         Aa
@@ -197,7 +296,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           alignItems: "center",
           justifyContent: "center",
           lineHeight: value,
-          background: "var(--surface-subdued)",
+          background: "var(--decorative-4)",
         }}
       >
         Hello
@@ -354,7 +453,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
               width: "20%",
               background:
                 n + 1 === number ? "rgba(0,0,0,.7)" : "rgba(0,0,0,.1)",
-              boxShadow: value,
               animation: `${name} 1s infinite both`,
             }}
           ></div>

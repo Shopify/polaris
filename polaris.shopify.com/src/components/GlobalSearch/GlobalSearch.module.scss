@@ -46,16 +46,16 @@
   position: absolute;
   z-index: 1;
   border-radius: var(--border-radius-800);
-  width: var(--page-max-width);
+  width: calc(var(--page-max-width) * 0.66);
   right: 0;
   animation: search-results-enter 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
   transform-origin: 100% 0;
   overflow: auto;
   overscroll-behavior: contain;
-  min-height: calc(100vh - 100px);
-  max-height: calc(100vh - 100px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.025), 0 100px 200px rgba(0, 0, 0, 0.1),
-    0 0 0 2000px rgba(0, 0, 0, 0.5);
+  min-height: 50rem;
+  max-height: 50rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.025), 0 0 300px rgba(0, 0, 0, 0.15),
+    0 0 0 2000px rgba(0, 0, 0, 0);
   background: var(--surface);
   scroll-behavior: smooth;
 

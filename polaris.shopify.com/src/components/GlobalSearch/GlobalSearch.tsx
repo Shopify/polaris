@@ -191,7 +191,7 @@ function GlobalSearch({}: Props) {
                   if (results.length === 0) return null;
                   return (
                     <ResultsGroup title={category}>
-                      <TokenList>
+                      <TokenList layout="list">
                         {results.map((result) => {
                           resultIndex++;
                           return (

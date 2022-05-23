@@ -26,8 +26,12 @@
   --border: 0.5px solid var(--border-color);
   --card-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 
-  // Based on:
-  // https://type-scale.com/?size=16&scale=1.250
+  --decorative-1: #e9f1e2;
+  --decorative-2: #fdecd5;
+  --decorative-3: #e1f3f5;
+  --decorative-4: #f0edff;
+
+  // Based on: https://type-scale.com/?size=16&scale=1.250
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
@@ -134,7 +138,7 @@ h4 {
   border: 0;
 }
 
-// Legacy CSS from old site (used in markdown files)
+// Legacy CSS hacks to work with content from old site (used in markdown files)
 .usage-list {
   margin: 1.25rem 0;
   font-size: 0.9rem;
@@ -145,7 +149,7 @@ h4 {
   .usage-list-part {
     flex: 1;
     background: var(--surface-subdued);
-    padding: 1rem 2rem;
+    padding: 0.5rem 1.5rem;
     border-radius: var(--border-radius-300);
 
     h4 {
@@ -159,22 +163,6 @@ h4 {
     img {
       width: auto;
       max-width: 300px;
-    }
-  }
-
-  .usage-list-part:first-child {
-    background: #00513d;
-    &,
-    & > * {
-      color: white;
-    }
-  }
-
-  .usage-list-part:last-child {
-    background: #333;
-    &,
-    & > * {
-      color: white;
     }
   }
 }
