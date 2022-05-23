@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
 
   entry: {
     ui: './src/ui.tsx',
-    code: './src/plugin.ts',
+    plugin: './src/plugin.ts',
   },
 
   module: {
@@ -44,8 +44,8 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/ui.html',
-      filename: 'ui.html',
+      template: './src/index.html',
+      filename: 'index.html',
       inlineSource: '.(js)$',
       chunks: ['ui'],
     }),
