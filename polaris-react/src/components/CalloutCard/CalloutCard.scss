@@ -9,8 +9,11 @@
   display: none;
   flex: 0 0 auto;
   width: 100px;
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
 
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     display: block;
     margin-left: var(--p-space-5);
   }

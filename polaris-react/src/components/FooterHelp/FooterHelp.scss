@@ -5,8 +5,11 @@
   justify-content: center;
   margin: var(--p-space-5) 0;
   width: 100%;
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
 
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     margin: var(--p-space-5);
     width: auto;
   }

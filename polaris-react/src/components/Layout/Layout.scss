@@ -67,7 +67,10 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-left: var(--p-space-5);
 
   + .AnnotatedSection {
+    outline: var(--p-test-breakpoints-outline-inactive);
+    outline-offset: var(--p-test-breakpoints-outline-offset);
     @media #{$p-breakpoints-sm-up} {
+      outline: var(--p-test-breakpoints-outline-active);
       padding-top: var(--p-space-4);
       border-top: var(--p-border-divider);
     }
@@ -88,8 +91,10 @@ $relative-size: $primary-basis / $secondary-basis;
 .Annotation {
   flex: 1 1 $secondary-basis;
   padding: var(--p-space-4) var(--p-space-5) 0;
-
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     padding: var(--p-space-4) 0 0;
   }
 

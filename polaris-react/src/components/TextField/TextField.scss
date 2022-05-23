@@ -212,6 +212,8 @@ $spinner-icon-size: 12px;
   overflow: scroll;
   border: var(--p-border-transparent);
   width: 100%;
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
 
   > .Input {
     padding-left: var(--p-space-0);
@@ -219,6 +221,7 @@ $spinner-icon-size: 12px;
   }
 
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     max-height: 328px;
   }
 }

@@ -78,8 +78,10 @@ $skeleton-display-text-max-width: 120px;
     margin-top: var(--p-space-4);
     margin-bottom: calc(-1 * var(--p-space-2));
   }
-
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     margin-top: var(--p-space-2);
     margin-bottom: calc(-1 * var(--p-space-2));
   }

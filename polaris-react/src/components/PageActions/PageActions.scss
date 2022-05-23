@@ -4,8 +4,10 @@
   margin: 0 auto;
   padding: var(--p-space-5);
   border-top: var(--p-border-divider);
-
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     padding: var(--p-space-5) 0;
   }
 }

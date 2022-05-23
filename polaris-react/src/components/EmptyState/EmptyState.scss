@@ -55,8 +55,10 @@ $centered-illustration-width: 226px;
   text-align: center;
   flex-direction: column;
   align-items: center;
-
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     max-width: $detail-width;
   }
 }
@@ -94,8 +96,10 @@ $centered-illustration-width: 226px;
     text-align: center;
     flex-direction: column;
     align-items: center;
-
+    outline: var(--p-test-breakpoints-outline-inactive);
+    outline-offset: var(--p-test-breakpoints-outline-offset);
     @media #{$p-breakpoints-sm-up} {
+      outline: var(--p-test-breakpoints-outline-active);
       max-width: $detail-width;
     }
   }

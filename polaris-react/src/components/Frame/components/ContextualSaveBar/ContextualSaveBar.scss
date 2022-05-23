@@ -48,8 +48,11 @@
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--p-space-4);
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
 
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     padding: 0 var(--p-space-5);
   }
 

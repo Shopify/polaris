@@ -12,7 +12,10 @@
   box-shadow: var(--p-shadow-modal);
   overflow: hidden;
 
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
@@ -40,8 +43,11 @@
   flex-direction: column;
   max-height: calc(100vh - #{$top-bar-height});
   margin: 0;
+  outline: var(--p-test-breakpoints-outline-inactive);
+  outline-offset: var(--p-test-breakpoints-outline-offset);
 
   @media #{$p-breakpoints-sm-up} {
+    outline: var(--p-test-breakpoints-outline-active);
     max-height: 60vh;
   }
 }
