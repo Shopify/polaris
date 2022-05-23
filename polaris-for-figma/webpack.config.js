@@ -22,8 +22,7 @@ module.exports = (env, argv) => ({
           {
             loader: 'babel-loader',
             options: {
-              // rootMode: 'upward',
-              presets: ['@shopify/babel-preset'],
+              rootMode: 'upward',
             },
           },
           {loader: 'ts-loader'},
