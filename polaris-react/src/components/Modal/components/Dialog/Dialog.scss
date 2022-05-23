@@ -20,7 +20,7 @@ $dangerous-magic-space-16: 64px;
   flex-direction: column;
   justify-content: flex-end;
 
-  @include breakpoint-after(layout-width(page-with-nav)) {
+  @include breakpoint-after($layout-width-page-with-nav-base) {
     justify-content: center;
   }
 }
@@ -51,7 +51,7 @@ $dangerous-magic-space-16: 64px;
     max-height: 100%;
   }
 
-  @include breakpoint-after(layout-width(page-with-nav)) {
+  @include breakpoint-after($layout-width-page-with-nav-base) {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -59,7 +59,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       @media (min-height: $height-limit + $vertical-spacing) {
         max-height: $height-limit;
       }
@@ -67,7 +67,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeSmall {
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
     }
 
@@ -77,7 +77,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeLarge {
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
     }
 

@@ -8,6 +8,7 @@ import {Collapsible} from '../../../../Collapsible';
 import {NavigationContext} from '../../../context';
 import {Item} from '../../Item';
 import {Section} from '../Section';
+import {Tooltip} from '../../../../Tooltip';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
@@ -352,6 +353,35 @@ describe('<Navigation.Section />', () => {
     });
     expect(withSubNav.find(Item, {label: 'label c'})).toHaveReactProps({
       expanded: true,
+    });
+  });
+
+  it('shows a tooltip if specified in options', () => {
+    const mountedSection = mountWithNavigationProvider(
+      <Section
+        title="test"
+        fill
+        items={[
+          {
+            label: 'some label',
+            url: '/admin',
+            disabled: false,
+          },
+        ]}
+        action={{
+          icon: 'placeholder',
+          accessibilityLabel: 'This is a test section',
+          onClick: noop,
+          tooltip: {
+            content: 'Foo',
+          },
+        }}
+      />,
+      {...context},
+    );
+
+    expect(mountedSection).toContainReactComponent(Tooltip, {
+      content: 'Foo',
     });
   });
 });

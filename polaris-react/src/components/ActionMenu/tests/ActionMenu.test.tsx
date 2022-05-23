@@ -44,6 +44,14 @@ describe('<ActionMenu />', () => {
       },
     ];
 
+    const mockDisabledGroup = {
+      title: 'Disabled group',
+      disabled: true,
+      actions: [...mockActions],
+    };
+
+    const mockGroupsWithDisabledGroup = [...mockGroups, mockDisabledGroup];
+
     it('renders as <MenuGroup /> when `rollup` is `false`', () => {
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
@@ -52,12 +60,43 @@ describe('<ActionMenu />', () => {
       expect(wrapper.findAll(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
+    it('renders disabled groups when `rollup` is `false`', () => {
+      const wrapper = mountWithApp(
+        <ActionMenu {...mockProps} groups={mockGroupsWithDisabledGroup} />,
+      );
+
+      expect(wrapper.findAll(MenuGroup)).toHaveLength(
+        mockGroupsWithDisabledGroup.length,
+      );
+      expect(wrapper).toContainReactComponent(MenuGroup, {disabled: true});
+    });
+
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {
       const convertedSections = mockGroups.map((group) => {
         return {title: group.title, items: group.actions};
       });
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} rollup />,
+      );
+
+      expect(wrapper).toContainReactComponent(RollupActions, {
+        sections: convertedSections,
+      });
+    });
+
+    it('hides disabled action group items when `rollup` is `true`', () => {
+      const convertedSections = mockGroupsWithDisabledGroup.map((group) => {
+        return {
+          title: group.title,
+          items: group.disabled ? [] : group.actions,
+        };
+      });
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          groups={mockGroupsWithDisabledGroup}
+          rollup
+        />,
       );
 
       expect(wrapper).toContainReactComponent(RollupActions, {

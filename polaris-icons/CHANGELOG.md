@@ -2,13 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 4.21.0 - 2022-05-19
+
+### Updated icons
+
+- `TickSmallMinor` ([#5836](https://github.com/Shopify/polaris-icons/issues/5836))
+- `PlusMinor` ([5726](https://github.com/Shopify/polaris/pull/5726))
+
+## 4.20.0 - 2022-05-09
+
+### Enhancements
+
+- Added metadata for the icons
+
+### New icons
+
+- `MergeMinor` ([#1476](https://github.com/Shopify/polaris-icons/pull/1477))
 
 ### Changed
 
 - Types are now React 18 compatible ([#5704](https://github.com/Shopify/polaris/pull/5704))
 
-## 4.19.1 - 2022-04-21
+## 4.19.1 - 2022-05-03
 
 ### New icons
 

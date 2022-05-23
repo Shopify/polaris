@@ -78,6 +78,7 @@ type ActionButtonProps = Pick<
   | 'loading'
   | 'ariaControls'
   | 'ariaExpanded'
+  | 'ariaChecked'
   | 'pressed'
   | 'onKeyDown'
   | 'onKeyUp'
@@ -101,6 +102,7 @@ export function Button({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
+  ariaChecked,
   onClick,
   onFocus,
   onBlur,
@@ -226,6 +228,7 @@ export function Button({
         disabled={disabled}
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
+        aria-checked={ariaChecked}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
@@ -274,6 +277,7 @@ export function Button({
     loading,
     ariaControls,
     ariaExpanded,
+    ariaChecked,
     pressed,
     onKeyDown,
     onKeyUp,

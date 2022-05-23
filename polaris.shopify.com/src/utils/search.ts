@@ -8,11 +8,12 @@ import {
   GroupedSearchResults,
 } from "../types";
 import { tokens } from "@shopify/polaris-tokens";
-import components from "../data/components.json";
-import icons from "../data/icons.json";
-import guidelines from "../data/guidelines.json";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
+import metadata from "@shopify/polaris-icons/metadata";
+
+import components from "../data/components.json";
+import guidelines from "../data/guidelines.json";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Guidelines: 5,
@@ -82,11 +83,12 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 });
 
 // Add icons
-icons.forEach(({ name, set, description, keywords, fileName }) => {
+Object.keys(metadata).forEach((fileName) => {
+  const { name, set, description, keywords } = metadata[fileName];
   results.push({
     category: "Icons",
+    url: `/icons#${fileName}`,
     score: 0,
-    url: `/icons#${name}-${set}`,
     meta: {
       icon: { fileName, keywords, name, description, set },
     },

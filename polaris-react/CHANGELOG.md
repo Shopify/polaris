@@ -2,11 +2,76 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [these versioning and changelog guidelines](/documentation/Versioning%20and%20changelog.md).
-
-<!-- Unreleased changes should go to UNRELEASED.md -->
+The format is based on [these versioning and changelog guidelines](/.github/CONTRIBUTING.md#changelog).
 
 ---
+
+## 9.8.0 - 2022-05-19
+
+### Enhancements
+
+- Ported internal breakpoint and layout functions to SCSS variables ([#5722](https://github.com/Shopify/polaris/pull/5722))
+- Added `extraSmall` to the available sizes of the `Thumbnail` and `SkeletonThumbnail` ([#5770](https://github.com/Shopify/polaris/pull/5770))
+- Updated experimental breakpoint values ([#5804](https://github.com/Shopify/polaris/pull/5804), [#5830](https://github.com/Shopify/polaris/pull/5830))
+- Added support for tooltips on Navigation items ([#5750](https://github.com/Shopify/polaris/pull/5750))
+- Change types for DataTable `totalsName` prop to allow for ReactNode ([#5454](https://github.com/Shopify/polaris/pull/5365/))
+- Implemented accessibility role and attributes in `SettingToggle` ([#5470](https://github.com/Shopify/polaris/pull/5470))
+
+### Bug fixes
+
+- Fixed vertical scroll on small screens in `EmptyState` ([#5779](https://github.com/Shopify/polaris/pull/5779))
+- Fixed broken links in documentation ([#5824](https://github.com/Shopify/polaris/pull/5824))
+- Fixed key prop error introduced in [sticky header](https://github.com/Shopify/polaris/pull/5494) ([#5826](https://github.com/Shopify/polaris/pull/5826))
+
+### Documentation
+
+- Replaced `deprecationNotice` with `notice` object ([#5841](https://github.com/Shopify/polaris/pull/5841))
+
+## 9.7.0 - 2022-05-10
+
+### Enhancements
+
+- Replaced hardcoded `padding` or `margin` values with spacing tokens ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Added `border-width-4` and `border-width-5` tokens and replaced hardcoded values ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Replaced any hardcoded `outline-width` with `border-width` ([#5528](https://github.com/Shopify/polaris/pull/5528))
+- Added the ability to disable specific dates in the `DatePicker`, to go along with date ranges ([#5356](https://github.com/Shopify/polaris/pull/5356))
+- Added breakpoint CSS custom properties and SCSS media conditions ([#5558](https://github.com/Shopify/polaris/pull/5558))
+- Replaced `768px` breakpoint mixins and variables with custom media conditions ([#5629](https://github.com/Shopify/polaris/pull/5629))
+- Added `customListId` prop to `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
+- Pass `domId` as an argument to `onActiveOptionChange` prop on `Listbox` ([5627](https://github.com/Shopify/polaris/pull/5627))
+- Adding min-height to `Popover.Pane` when the `Popover` contains a `height` prop ([#5685](https://github.com/Shopify/polaris/pull/5685))
+- Adjusted a hardcoded `padding` value for `FileUpload` and replaced it with a spacing token ([#5675](https://github.com/Shopify/polaris/pull/5675))
+- Added `disable` prop to the action groups title of the Page header ([#5702](https://github.com/Shopify/polaris/pull/5702))
+- Added `onClick` prop to the action groups title of the Page header ([#5751](https://github.com/Shopify/polaris/pull/5751))
+
+### Bug fixes
+
+- Used prop-provided `selectable` value in `IndexTable` ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Fixed passing inline styles to the root element of the `CustomProperties` component ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Replaced incorrect usage of `aria-expanded` on `Collapsible` with `aria-hidden` ([#5661](https://github.com/Shopify/polaris/pull/5661))
+- Removed usage of deprecated and removed in v18 React types ([#5704](https://github.com/Shopify/polaris/pull/5704))
+- Fixed `plain-button-backdrop` background color on colored backgrounds ([#5687](https://github.com/Shopify/polaris/pull/5687))
+- Fixed scrolling bug in DataTable sticky header ([#5700](https://github.com/Shopify/polaris/pull/5700))
+
+### Documentation
+
+- Added wrapper with height on `Combobox` example for autocomplete with loading ([#5624](https://github.com/Shopify/polaris/pull/5624))
+
+### Dependency upgrades
+
+- Removed `lodash` ([#5544](https://github.com/Shopify/polaris/pull/5544))
+- Uses more permissive dependency for `@types/react` and `@types/react-dom` ([#5575](https://github.com/Shopify/polaris/pull/5575))
+
+### Code quality
+
+- Replaced `skeleton-content` and `thumbnail-size` mixins with css values ([#5630](https://github.com/Shopify/polaris/pull/5630))
+
+## 9.6.0 - 2022-04-29
+
+- Added an `autoSelection` prop to `Listbox` to support setting the first option as the default action option ([#5667](https://github.com/Shopify/polaris/pull/5667))
+- Added `autoSelection` `AutoSelection.First` to `Autocomplete` `Listbox` when `actionBefore` is set ([#5667](https://github.com/Shopify/polaris/pull/5667))
+
+### Enhancements
 
 ## 9.5.2 - 2022-04-26
 

@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
+import {Button} from '../../Button';
 
 describe('<SettingToggle />', () => {
   function getComponentProps(node: React.ReactNode) {
@@ -20,6 +21,48 @@ describe('<SettingToggle />', () => {
         toggle.find(SettingAction)!.prop('action'),
       );
       expect(children).toBe('Click me!');
+    });
+
+    describe('accessibility', () => {
+      it('renders as a switch widget', () => {
+        const toggle = mountWithApp(
+          <SettingToggle
+            action={{content: 'Deactivate', onAction: () => {}}}
+            enabled
+          />,
+        );
+        expect(toggle).toContainReactComponent(Button, {role: 'switch'});
+      });
+
+      describe('when enabled', () => {
+        it('updates `aria-checked`', () => {
+          const toggle = mountWithApp(
+            <SettingToggle
+              action={{content: 'Deactivate', onAction: () => {}}}
+              enabled
+            />,
+          );
+          expect(toggle).toContainReactComponent('button', {
+            role: 'switch',
+            'aria-checked': 'true',
+          });
+        });
+      });
+
+      describe('when enabled=false', () => {
+        it('updates `aria-checked`', () => {
+          const toggle = mountWithApp(
+            <SettingToggle
+              action={{content: 'Activate', onAction: () => {}}}
+              enabled={false}
+            />,
+          );
+          expect(toggle).toContainReactComponent('button', {
+            role: 'switch',
+            'aria-checked': 'false',
+          });
+        });
+      });
     });
   });
 

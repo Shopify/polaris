@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Image from "../Image";
 import { useState } from "react";
-import TextField from "../TextField";
-import icons from "../../data/icons.json";
 import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import metadata from "@shopify/polaris-icons/metadata";
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
   true,
@@ -15,10 +14,14 @@ const importedSvgs = require.context(
 );
 import { getTitleTagValue } from "../../utils/various";
 import IconGrid from "../IconGrid";
+import TextField from "../TextField";
 
-interface Props {}
+let icons = Object.entries(metadata).map(([fileName, icon]) => ({
+  ...icon,
+  fileName,
+}));
 
-const fuse = new Fuse(icons, {
+const fuse = new Fuse(Object.values(icons), {
   threshold: 0.25,
   keys: [
     { name: "name", weight: 3 },
@@ -29,20 +32,22 @@ const fuse = new Fuse(icons, {
   ],
 });
 
-function IconsPage({}: Props) {
+function IconsPage() {
   const [filterString, setFilterString] = useState("");
   const [selectedIconName, setSelectedIconName] = useState<string>();
 
-  let filteredIcons = icons;
+  let filteredIcons = [...icons];
+
   if (filterString) {
     const fuseResults = fuse.search(filterString);
     filteredIcons = fuseResults.map((result) => result.item);
   }
-
   const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
   const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
 
-  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
+  const selectedIcon = filteredIcons.find(
+    (icon) => icon.name === selectedIconName
+  );
 
   if (selectedIconName && !selectedIcon) {
     throw new Error(`Could not find icon ${selectedIconName}`);
@@ -120,15 +125,14 @@ function IconsPage({}: Props) {
             >
               <Image
                 src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
-                alt={selectedIcon.description}
+                alt={metadata[selectedIcon.fileName].description}
                 width={48}
                 height={48}
               />
             </div>
 
             <div className={styles.IconMeta}>
-              {selectedIcon.fileName}
-              {selectedIcon.description}
+              {metadata[selectedIcon.fileName].description}
             </div>
 
             <Tab.Group>
@@ -145,13 +149,13 @@ function IconsPage({}: Props) {
                     <pre>{`yarn add polaris polaris-icons`}</pre>
 
                     <p>
-                      Import the Icon component and the {selectedIcon.name}{" "}
-                      icon:
+                      Import the Icon component and the{" "}
+                      {metadata[selectedIcon.fileName].name} icon:
                     </p>
                     <pre>{`import { Icon } from "@shopify/polaris";
-import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
+import { ${selectedIcon} } from "@shopify/polaris-icons";
 
-<Icon source={${selectedIcon.fileName}} color="base" />`}</pre>
+<Icon source={${selectedIcon}} color="base" />`}</pre>
                   </Longform>
                 </Tab.Panel>
 
@@ -169,9 +173,6 @@ import { ${selectedIcon.fileName} } from "@shopify/polaris-icons";
 
                 <Tab.Panel>
                   <Longform>
-                    {console.log(
-                      importedSvgs(`./${selectedIcon.fileName}.svg`).default.src
-                    )}
                     <p>
                       <a
                         href={

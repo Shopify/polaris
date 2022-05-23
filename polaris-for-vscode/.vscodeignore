@@ -1,9 +1,11 @@
+.turbo
+.eslintcache
 **/tsconfig.json
 **/*.map
 **/*.ts
 *.vsix
 CONTRIBUTING.md
-docs
 scripts
 src
-node_modules
+rollup.config.js
+tsconfig.tsbuildinfo

@@ -175,6 +175,9 @@ export {
 } from './components/Frame';
 export type {FrameProps} from './components/Frame';
 
+export {FullscreenBar} from './components/FullscreenBar';
+export type {FullscreenBarProps} from './components/FullscreenBar';
+
 export {Heading} from './components/Heading';
 export type {HeadingProps} from './components/Heading';
 
@@ -217,7 +220,7 @@ export type {LinkProps} from './components/Link';
 export {List} from './components/List';
 export type {ListProps} from './components/List';
 
-export {Listbox} from './components/Listbox';
+export {Listbox, AutoSelection} from './components/Listbox';
 export type {ListboxProps} from './components/Listbox';
 
 export {Loading} from './components/Loading';
@@ -390,6 +393,7 @@ export {
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useEventListener} from './utilities/use-event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,

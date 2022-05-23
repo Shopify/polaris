@@ -1,13 +1,8 @@
 {
   "recommendations": [
-    "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense",
-    "codezombiech.gitignore",
     "dbaeumer.vscode-eslint",
     "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
-    "mrmlnc.vscode-scss",
-    "orta.vscode-jest",
     "Shopify.polaris-for-vscode"
   ]
 }
