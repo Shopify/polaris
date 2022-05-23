@@ -1,28 +1,14 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import Page from "../../../components/Page";
-import ComponentsNav from "../../../components/ComponentsNav";
-import {
-  getComponentCategories,
-  getTitleForTitleTag,
-  slugify,
-} from "../../../utils/various";
+import ComponentsPage from "../../../components/ComponentsPage";
+import { getComponentCategories, slugify } from "../../../utils/various";
 
 interface Props {
   category: string;
 }
 
-const Components: NextPage<Props> = ({ category }) => {
-  return (
-    <Page noLayout>
-      <Head>
-        <title>{getTitleForTitleTag("Components")}</title>
-      </Head>
-
-      <ComponentsNav category={category} />
-    </Page>
-  );
-};
+const Components: NextPage<Props> = ({ category }) => (
+  <ComponentsPage category={category} />
+);
 
 export const getStaticProps: GetStaticProps<
   Props,

@@ -1,79 +1,77 @@
-.Nav {
-  flex: 1;
-  font-size: var(--font-size-300);
-  padding: 2.75rem 3rem 3rem;
-  min-width: 16rem;
-  display: flex;
-  border-right: 0.5px solid #ddd;
+@import "../../styles/variables.scss";
 
-  > ul {
-    flex: 1;
+.Nav {
+  ul {
+    margin-bottom: 1rem;
   }
 
   span {
+    display: inline-block;
     font-weight: var(--font-weight-500);
-    font-size: var(--font-size-200);
+    color: var(--text-strong);
+    font-size: var(--font-size-400);
+    margin-bottom: 0.25rem;
   }
 
   a {
-    position: relative;
     display: inline-block;
-    padding: 1px 0;
-    padding-left: 1.15rem;
-    color: var(--text-strong);
+    position: relative;
+    padding: 0.1rem 0 0.1rem 0.75rem;
+    color: inherit;
+    font-size: var(--font-size-200);
 
-    &:hover {
-      color: inherit;
-
-      &::before {
-        background: #dddddd;
-      }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      left: 0;
+      width: 2px;
+      border-radius: var(--border-radius-200);
+      animation: nav-item-out 0.25s 1 ease-out both;
+      transition: background-color 0.2s linear;
+      background: #ededed;
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 7px;
-      height: 7px;
-      margin: auto;
-      border-radius: 3.5px;
-      background: #ccc;
+    &:hover {
+      color: var(--text-strong);
+
+      &:after {
+        animation: nav-item-in 0.25s 1 linear both;
+      }
     }
 
     &[aria-current="page"] {
-      color: var(--primary);
-
-      &::before {
-        background: var(--primary);
-      }
-    }
-  }
-
-  ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0.75rem;
-  }
-
-  > ul > li {
-    margin-bottom: 2rem;
-
-    &:last-child {
-      margin-bottom: 0;
-      ul {
-        margin-bottom: 0;
-      }
-    }
-
-    > span {
-      display: inline-block;
-      margin-bottom: 0.25rem;
-      font-size: var(--font-size-600);
-      font-weight: var(--font-weight-600);
       color: var(--text-strong);
+
+      &:after {
+        background: var(--text-strong);
+        transform: translateX(0px);
+        animation: nav-item-in 0.25s 1 linear both;
+      }
     }
+  }
+}
+
+@keyframes nav-item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-2px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes nav-item-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
   }
 }

@@ -1,0 +1,70 @@
+.Tabs {
+  margin-bottom: 2rem;
+  border-bottom: var(--border);
+
+  ul {
+    display: flex;
+  }
+
+  a {
+    display: block;
+    padding: 1rem 1.25rem;
+    color: var(--text-strong);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    .Icon {
+      opacity: 0.5;
+    }
+
+    &[aria-current="page"] {
+      color: var(--text-strong);
+      border-radius: 8px 8px 0 0;
+
+      .Icon {
+        filter: contrast(2);
+        opacity: 1;
+      }
+    }
+
+    &[aria-current="page"] {
+      position: relative;
+      color: var(--text-strong);
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        background: var(--primary);
+      }
+    }
+
+    &:hover {
+      position: relative;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        background: #ddd;
+      }
+    }
+  }
+
+  .Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+  }
+}

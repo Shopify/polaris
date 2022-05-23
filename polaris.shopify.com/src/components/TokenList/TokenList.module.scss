@@ -1,0 +1,40 @@
+.TokenList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.TokenListItem {
+  align-items: center;
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius-400);
+  overflow: hidden;
+
+  &.isHighlighted {
+    box-shadow: var(--focus-outline);
+  }
+}
+
+.TokenInfo {
+  padding: 1rem;
+  p {
+    margin-top: 0.5rem;
+    font-size: var(--font-size-100);
+  }
+}
+
+.TokenName {
+  h4 {
+    display: inline;
+    border-radius: var(--border-radius-400);
+    background: linear-gradient(to top, #ede8ff, #f4f2fb);
+    padding: 0.2rem 0.33rem;
+    font-weight: 500;
+    font-size: 14px;
+    color: #5b2f7f;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    box-shadow: inset 0 0 0 1px rgba(165, 123, 189, 0.058);
+  }
+}
