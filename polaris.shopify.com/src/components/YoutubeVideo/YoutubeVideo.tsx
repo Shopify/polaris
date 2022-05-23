@@ -7,12 +7,11 @@ interface Props {
 function YoutubeVideo({ id }: Props) {
   return (
     <div className={styles.YoutubeVideo}>
-      <img src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`} />
-      {/* <iframe
+      <iframe
         src={`https://www.youtube.com/embed/${id}`}
         frameBorder={0}
         allowFullScreen
-      ></iframe> */}
+      ></iframe>
     </div>
   );
 }

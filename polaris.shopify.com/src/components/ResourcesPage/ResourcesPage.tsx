@@ -123,10 +123,8 @@ function ResourcesPage({}: Props) {
           <div className={styles.PolarisForVSCode}>
             <div className={styles.Text}>
               <h3>
-                <div className={styles.VSCodeIcon}>
-                  <VSCodeIcon />
-                </div>{" "}
-                Polaris for VS Code
+                Polaris for <br />
+                VS Code
               </h3>
               <p className={styles.Description}>
                 Automatic autocompletion for Polaris tokens, right inside your

@@ -18,38 +18,33 @@
 }
 
 .Step {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-
   h2 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
     text-align: center;
-
-    &::before {
-      content: counter(step);
-      counter-increment: step;
-      justify-content: center;
-      font-weight: 435;
-      padding: 1rem 1rem 1rem;
-      font-size: var(--font-size-200);
-      display: flex;
-      align-items: center;
-      border-right: var(--border);
-    }
   }
 
   h3 {
-    font-size: var(--font-size-600);
+    // font-size: var(--font-size-600);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 50px;
+    background: var(--text-subdued);
+    border-radius: 2px;
+    margin: 2rem auto;
   }
 }
 
 .FirstStep {
   max-width: 40rem;
-  margin-bottom: 4rem;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -143,9 +138,13 @@
     flex-direction: column;
     justify-content: center;
 
-    &,
     h3 {
       color: white;
+      font-size: var(--font-size-800);
+    }
+
+    p {
+      color: #ccc;
     }
 
     a {
@@ -165,18 +164,5 @@
 
   h2 {
     color: white;
-  }
-
-  a {
-    color: white;
-  }
-
-  .VSCodeIcon {
-    height: 70px;
-    margin-bottom: 1rem;
-    svg {
-      transform: scale(2);
-      transform-origin: 0 0;
-    }
   }
 }

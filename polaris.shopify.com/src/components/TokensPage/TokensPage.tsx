@@ -51,7 +51,7 @@ function TokensPage({}: Props) {
               Design tokens represent design decisions such as color, spacing,
               and typography. Each token has a unique name that references a
               specific value. The benefits of using tokens over hard-coded
-              values include:
+              values include lorem ipsum dolor.
             </p>
             <Link href="#">Learn more about tokens</Link>
           </div>

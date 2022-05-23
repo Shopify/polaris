@@ -17,48 +17,4 @@
     width: 100%;
     height: 100%;
   }
-
-  img {
-    // Remove letterboxing artifact from thumbnails
-    transform: scale(1.01);
-    opacity: 0.5;
-  }
-
-  // &:before {
-  //   content: "";
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   z-index: 1;
-  //   background: linear-gradient(
-  //     45deg,
-  //     hsl(208deg 100% 29%),
-  //     rgba(5, 100, 74, 0.83)
-  //   );
-  //   background: #353535;
-  //   mix-blend-mode: lighten;
-  //   opacity: 0.5;
-  // }
-
-  // &:after {
-  //   content: "";
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   z-index: 1;
-  //   background: linear-gradient(
-  //     45deg,
-  //     hsl(208deg 100% 29%),
-  //     rgba(5, 100, 74, 0.83)
-  //   );
-  //   background: var(--primary);
-  //   mix-blend-mode: exclusion;
-  //   opacity: 0.25;
-  // }
 }
