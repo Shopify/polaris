@@ -46,9 +46,9 @@ function getFigmaRecommendationForToken(
   const REM = 16;
 
   if (value.startsWith("rgba")) {
-    recommendation = "Use color Lorem/Ipsum/Dolor";
+    recommendation = "Use color style Lorem/Ipsum/Dolor";
   } else if (name.startsWith("shadow")) {
-    recommendation = "Use shadow Lorem/Ipsum dolor";
+    recommendation = "Use shadow style Lorem/Ipsum dolor";
   } else if (name.includes("breakpoint")) {
     const artboardWidth = parseInt(value) * REM;
     if (artboardWidth > 0) {
