@@ -2,30 +2,77 @@
 
 .ResourcesPage {
   margin-top: var(--header-margin);
+  counter-reset: step;
+
+  h1 {
+    text-align: center;
+  }
 
   h1 + p {
-    margin-top: 0.75rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
-    font-size: var(--font-size-600);
+    font-size: var(--font-size-500);
     letter-spacing: var(--letter-spacing-200);
+    max-width: 50%;
+  }
+}
+
+.Step {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    &::before {
+      content: counter(step);
+      counter-increment: step;
+      justify-content: center;
+      font-weight: 435;
+      padding: 1rem 1rem 1rem;
+      font-size: var(--font-size-200);
+      display: flex;
+      align-items: center;
+      border-right: var(--border);
+    }
+  }
+
+  h3 {
+    font-size: var(--font-size-600);
+  }
+}
+
+.FirstStep {
+  max-width: 40rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  p {
+    margin-bottom: 1rem;
   }
 }
 
 .MainPackages {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 3rem 0;
-  gap: 4rem 3rem;
+  padding: 1rem 0;
+  gap: 0.75rem;
 
   > div {
-    img {
-      display: none !important;
-      filter: saturate(0) contrast(100) brightness(0%);
-    }
-  }
-
-  h2 {
-    margin-top: 1rem;
+    padding: 1.5rem;
+    border: var(--border);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--border-radius-500);
+    overflow: hidden;
+    // background: #393939;
+    // background: linear-gradient(45deg, #e6f7f3, transparent);
   }
 }
 
@@ -36,6 +83,7 @@
 .Version {
   margin: 0.33rem 0 0;
   font-size: var(--font-size-100);
+  display: none;
 }
 
 .Links {
@@ -46,13 +94,10 @@
     display: flex;
     align-items: center;
     gap: 0.33rem;
-    background: var(--p-surface-subdued);
-    padding: 0.33rem 0.66rem;
+    padding: 0.33rem 0.7rem;
     border-radius: var(--border-radius-400);
     font-weight: 400;
     font-size: var(--font-size-200);
-    box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.025),
-      inset 0 0 0 1px rgba(0, 0, 0, 0.1);
     color: var(--text-strong);
 
     .Icon {
@@ -66,6 +111,17 @@
     }
   }
 
+  li:first-child {
+    a {
+      background: #049d76;
+
+      &,
+      svg {
+        color: white;
+      }
+    }
+  }
+
   a[data-icon="github"],
   a[data-icon="install"] {
     gap: 0.4rem;
@@ -73,11 +129,12 @@
 }
 
 .PolarisForVSCode {
+  margin-top: 2rem;
   display: flex;
   gap: 2rem;
   background: #1e1d1e;
-  color: #aaa;
-  border-radius: var(--border-radius-400);
+  border: var(--border);
+  border-radius: var(--border-radius-500);
   overflow: hidden;
 
   .Text {
@@ -85,6 +142,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    &,
+    h3 {
+      color: white;
+    }
+
+    a {
+      box-shadow: none;
+    }
   }
 
   .Video {

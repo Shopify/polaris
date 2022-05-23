@@ -46,7 +46,7 @@ function TokensPage({}: Props) {
       <MaxPageWidthDiv className={styles.TokensPage}>
         <div className={styles.IntroBanner}>
           <div className={styles.Text}>
-            <h1>Extend Polaris using Tokens</h1>
+            <h1>Tokens</h1>
             <p>
               Design tokens represent design decisions such as color, spacing,
               and typography. Each token has a unique name that references a
