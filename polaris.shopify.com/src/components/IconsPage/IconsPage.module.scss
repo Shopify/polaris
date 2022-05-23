@@ -19,6 +19,21 @@
   }
 }
 
+.Modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 800px;
+  height: 500px;
+  margin: auto;
+  background: white;
+  border: 3px solid red;
+  padding: 2rem;
+  overflow: auto;
+}
+
 .Tabs {
   display: flex;
   margin-bottom: 1rem;

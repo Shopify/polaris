@@ -47,6 +47,7 @@ function IconsPage({}: Props) {
   if (selectedIconName && !selectedIcon) {
     throw new Error(`Could not find icon ${selectedIconName}`);
   }
+
   return (
     <MaxPageWidthDiv className={styles.IconsPage}>
       <Head>
@@ -78,7 +79,9 @@ function IconsPage({}: Props) {
                 <IconGrid.Item
                   key={icon.name}
                   icon={icon}
-                  onClick={() => {}}
+                  onClick={() => {
+                    setSelectedIconName(icon.name);
+                  }}
                   isHighlighted={false}
                 />
               ))}
@@ -109,8 +112,8 @@ function IconsPage({}: Props) {
       </div>
 
       {selectedIcon && (
-        <div className={styles.Sidebar}>
-          <div className={styles.SidebarInner}>
+        <div className={styles.Modal}>
+          <div className={styles.ModalInner}>
             <div
               className={styles.Preview}
               style={{ filter: "brightness(-500%)" }}
