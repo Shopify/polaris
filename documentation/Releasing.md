@@ -29,7 +29,7 @@ Prereleases are created the same way as releases, but are merged into the `next`
    git push --force
    ```
 
-3. After pushing `next` to GitHub, the [prerelease workflow](https://github.com/Shopify/polaris/blob/main/.github/workflows/prerelease.yml) will generated a PR 🎉
+3. After pushing `next` to GitHub, the [prerelease workflow](https://github.com/Shopify/polaris/blob/main/.github/workflows/prerelease.yml) will generate a PR 🎉
 4. Merge in the newly created **"Version Packages (next)"** PR to release the prerelease versions
 
 ### [polaris-for-figma](/polaris-for-figma)
