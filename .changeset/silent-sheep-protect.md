@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[ActionList.Item] Deprecate badge, icon and image props
+Deprecated `badge`, `icon` and `image` props in ActionList.Item as the `prefix` and `suffix` properties can replace them.
