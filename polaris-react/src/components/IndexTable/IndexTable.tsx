@@ -35,6 +35,7 @@ import styles from './IndexTable.scss';
 
 export interface IndexTableHeading {
   title: string;
+  flush?: boolean;
   new?: boolean;
   hidden?: boolean;
 }
@@ -635,6 +636,7 @@ function IndexTableBase({
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
       !selectable && styles['TableHeading-unselectable'],
+      heading.flush && styles['TableHeading-flush'],
     );
 
     const stickyPositioningStyle =
