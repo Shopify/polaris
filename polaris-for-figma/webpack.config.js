@@ -2,7 +2,6 @@ const path = require('path');
 
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -17,16 +16,8 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              rootMode: 'upward',
-            },
-          },
-          {loader: 'ts-loader'},
-        ],
+        test: /\.tsx?$/,
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
       },
       {
@@ -50,12 +41,4 @@ module.exports = (env, argv) => ({
     }),
     new HtmlWebpackInlineSourcePlugin(),
   ],
-  externals: [
-    nodeExternals({
-      modulesDir: path.resolve(__dirname, '../node_modules'),
-    }),
-  ],
-  node: {
-    fs: 'empty',
-  },
 });
