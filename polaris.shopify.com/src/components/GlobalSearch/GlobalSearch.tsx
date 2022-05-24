@@ -108,140 +108,142 @@ function GlobalSearch({}: Props) {
           </>
         )}
 
-        {isOpen &&
-          searchResults &&
-          Object.entries(searchResults)
-            .sort((a, b) => a[1].maxScore - b[1].maxScore)
-            .map(([category]) => {
-              const typedCategory = category as SearchResultCategory;
+        <div className={styles.ResultsInner}>
+          {isOpen &&
+            searchResults &&
+            Object.entries(searchResults)
+              .sort((a, b) => a[1].maxScore - b[1].maxScore)
+              .map(([category]) => {
+                const typedCategory = category as SearchResultCategory;
 
-              switch (typedCategory) {
-                case "Guidelines":
-                  const results = searchResults[typedCategory].results;
-                  if (results.length === 0) return null;
-                  return (
-                    <ResultsGroup title={category}>
-                      <h3>{category}</h3>
-                      <div className={styles.GuidelinesResults}>
-                        {results.map((result) => {
-                          resultIndex++;
-                          return (
-                            <li
-                              key={result.meta.title}
-                              className={className(
-                                styles.GuidelinesResult,
-                                highlightedIndex === resultIndex &&
-                                  styles.isHighlighted
-                              )}
-                            >
-                              <Link href={result.url} passHref>
-                                <a>
-                                  <div className={styles.Icon}>
-                                    <Image
-                                      src={pageIcon}
-                                      alt=""
-                                      width={16}
-                                      height={16}
-                                    />
-                                  </div>
-                                  <h4>{result.meta.title}</h4>
-                                  <p>
-                                    {stripMarkdownLinks(result.meta.excerpt)}
-                                  </p>
-                                </a>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </div>
-                    </ResultsGroup>
-                  );
+                switch (typedCategory) {
+                  case "Guidelines":
+                    const results = searchResults[typedCategory].results;
+                    if (results.length === 0) return null;
+                    return (
+                      <ResultsGroup title={category}>
+                        <h3>{category}</h3>
+                        <div className={styles.GuidelinesResults}>
+                          {results.map((result) => {
+                            resultIndex++;
+                            return (
+                              <li
+                                key={result.meta.title}
+                                className={className(
+                                  styles.GuidelinesResult,
+                                  highlightedIndex === resultIndex &&
+                                    styles.isHighlighted
+                                )}
+                              >
+                                <Link href={result.url} passHref>
+                                  <a>
+                                    <div className={styles.Icon}>
+                                      <Image
+                                        src={pageIcon}
+                                        alt=""
+                                        width={16}
+                                        height={16}
+                                      />
+                                    </div>
+                                    <h4>{result.meta.title}</h4>
+                                    <p>
+                                      {stripMarkdownLinks(result.meta.excerpt)}
+                                    </p>
+                                  </a>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </div>
+                      </ResultsGroup>
+                    );
 
-                case "Components": {
-                  const results = searchResults[typedCategory].results;
-                  if (results.length === 0) return null;
-                  return (
-                    <ResultsGroup title={category}>
-                      <ComponentGrid>
-                        {results.map((result) => {
-                          resultIndex++;
-                          return (
-                            <ComponentGrid.Item
-                              key={result.meta.name}
-                              url={""}
-                              description={result.meta.description}
-                              name={result.meta.name}
-                              getItemProps={() =>
-                                getItemProps({
-                                  item: result,
-                                  index: resultIndex,
-                                })
-                              }
-                              isHighlighted={highlightedIndex === resultIndex}
-                            />
-                          );
-                        })}
-                      </ComponentGrid>
-                    </ResultsGroup>
-                  );
+                  case "Components": {
+                    const results = searchResults[typedCategory].results;
+                    if (results.length === 0) return null;
+                    return (
+                      <ResultsGroup title={category}>
+                        <ComponentGrid>
+                          {results.map((result) => {
+                            resultIndex++;
+                            return (
+                              <ComponentGrid.Item
+                                key={result.meta.name}
+                                url={""}
+                                description={result.meta.description}
+                                name={result.meta.name}
+                                getItemProps={() =>
+                                  getItemProps({
+                                    item: result,
+                                    index: resultIndex,
+                                  })
+                                }
+                                isHighlighted={highlightedIndex === resultIndex}
+                              />
+                            );
+                          })}
+                        </ComponentGrid>
+                      </ResultsGroup>
+                    );
+                  }
+
+                  case "Tokens": {
+                    const results = searchResults[typedCategory].results;
+                    if (results.length === 0) return null;
+                    return (
+                      <ResultsGroup title={category}>
+                        <TokenList layout="list">
+                          {results.map((result) => {
+                            resultIndex++;
+                            return (
+                              <TokenList.Item
+                                key={result.meta.token.name}
+                                token={result.meta.token}
+                                getItemProps={() =>
+                                  getItemProps({
+                                    item: result,
+                                    index: resultIndex,
+                                  })
+                                }
+                                isHighlighted={highlightedIndex === resultIndex}
+                              />
+                            );
+                          })}
+                        </TokenList>
+                      </ResultsGroup>
+                    );
+                  }
+
+                  case "Icons": {
+                    const results = searchResults[typedCategory].results;
+                    if (results.length === 0) return null;
+                    return (
+                      <ResultsGroup title={category}>
+                        <IconGrid>
+                          {results.map((result) => {
+                            resultIndex++;
+                            return (
+                              <IconGrid.Item
+                                key={result.url}
+                                icon={result.meta.icon}
+                                onClick={() => undefined}
+                                getItemProps={() =>
+                                  getItemProps({
+                                    item: result,
+                                    index: resultIndex,
+                                  })
+                                }
+                                isHighlighted={highlightedIndex === resultIndex}
+                              />
+                            );
+                          })}
+                        </IconGrid>
+                      </ResultsGroup>
+                    );
+                  }
                 }
-
-                case "Tokens": {
-                  const results = searchResults[typedCategory].results;
-                  if (results.length === 0) return null;
-                  return (
-                    <ResultsGroup title={category}>
-                      <TokenList layout="list">
-                        {results.map((result) => {
-                          resultIndex++;
-                          return (
-                            <TokenList.Item
-                              key={result.meta.token.name}
-                              token={result.meta.token}
-                              getItemProps={() =>
-                                getItemProps({
-                                  item: result,
-                                  index: resultIndex,
-                                })
-                              }
-                              isHighlighted={highlightedIndex === resultIndex}
-                            />
-                          );
-                        })}
-                      </TokenList>
-                    </ResultsGroup>
-                  );
-                }
-
-                case "Icons": {
-                  const results = searchResults[typedCategory].results;
-                  if (results.length === 0) return null;
-                  return (
-                    <ResultsGroup title={category}>
-                      <IconGrid>
-                        {results.map((result) => {
-                          resultIndex++;
-                          return (
-                            <IconGrid.Item
-                              key={result.url}
-                              icon={result.meta.icon}
-                              onClick={() => undefined}
-                              getItemProps={() =>
-                                getItemProps({
-                                  item: result,
-                                  index: resultIndex,
-                                })
-                              }
-                              isHighlighted={highlightedIndex === resultIndex}
-                            />
-                          );
-                        })}
-                      </IconGrid>
-                    </ResultsGroup>
-                  );
-                }
-              }
-            })}
+              })}
+        </div>
       </div>
     </div>
   );
