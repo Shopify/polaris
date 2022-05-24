@@ -102,7 +102,7 @@ function GlobalSearch({}: Props) {
         {isOpen && (
           <>
             <div className={styles.Header}>
-              <h2>Search results</h2>
+              <h2>{resultsInRenderedOrder.length} results</h2>
               <p>Tip: Use command-K to open search</p>
             </div>
           </>
