@@ -31,14 +31,8 @@
 }
 
 .Title {
-  font-size: var(--p-font-size-3);
-  font-weight: var(--p-font-weight-semibold);
-  line-height: var(--p-line-height-1);
-
-  text-transform: initial;
-  letter-spacing: initial;
-
+  @include text-style-body;
   display: block;
-  margin: 0 0 var(--p-space-5);
+  margin: 0 0 var(--p-space-3);
   padding: 0;
 }
