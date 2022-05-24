@@ -3,19 +3,16 @@
 .Grid {
   display: grid;
   gap: var(--pc-grid-gap-xs, var(--p-space-4));
-  grid-template-columns: repeat(var(--pc-grid-columns-xs, 2), minmax(0, 1fr));
+  grid-template-columns: repeat(var(--pc-grid-columns-xs, 6), minmax(0, 1fr));
 
   @media #{$p-breakpoints-sm-up} {
     gap: var(--pc-grid-gap-sm, var(--p-space-4));
-    grid-template-columns: repeat(var(--pc-grid-columns-sm, 4), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--pc-grid-columns-sm, 6), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--pc-grid-gap-md, var(--p-space-4));
-    grid-template-columns: repeat(
-      var(--pc-grid-columns-md, 12),
-      minmax(0, 1fr)
-    );
+    grid-template-columns: repeat(var(--pc-grid-columns-md, 6), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-lg-up} {
