@@ -59,35 +59,6 @@ function ResourcesPage({}: Props) {
             </div>
 
             <div className={styles.Package}>
-              <h3>Icons</h3>
-              <p className={styles.Version}>Version 1.25 &bull; 235 icons</p>
-              <p className={styles.Description}>
-                The Polaris icon library contains 400+ carefully designed icons
-                focused on commerce and entrepreneurship. Lorem ipsum dolor et
-                amet.
-              </p>
-              <Links
-                links={[
-                  {
-                    icon: "link",
-                    label: "Browse icons",
-                    url: "/icons",
-                  },
-                  {
-                    icon: "github",
-                    label: "Repo",
-                    url: "https://github.com/Shopify/polaris/tree/main/polaris-icons",
-                  },
-                  {
-                    icon: "figma",
-                    label: "Library",
-                    url: "https://www.figma.com/community/file/930503928500000754",
-                  },
-                ]}
-              />
-            </div>
-
-            <div className={styles.Package}>
               <h3>Tokens</h3>
               <p className={styles.Version}>Version 1.25 &bull; 235 icons</p>
               <p className={styles.Description}>
@@ -111,6 +82,35 @@ function ResourcesPage({}: Props) {
                     icon: "figma",
                     label: "Library",
                     url: "https://www.figma.com/community/file/930504178610771955",
+                  },
+                ]}
+              />
+            </div>
+
+            <div className={styles.Package}>
+              <h3>Icons</h3>
+              <p className={styles.Version}>Version 1.25 &bull; 235 icons</p>
+              <p className={styles.Description}>
+                The Polaris icon library contains 400+ carefully designed icons
+                focused on commerce and entrepreneurship. Lorem ipsum dolor et
+                amet.
+              </p>
+              <Links
+                links={[
+                  {
+                    icon: "link",
+                    label: "Browse icons",
+                    url: "/icons",
+                  },
+                  {
+                    icon: "github",
+                    label: "Repo",
+                    url: "https://github.com/Shopify/polaris/tree/main/polaris-icons",
+                  },
+                  {
+                    icon: "figma",
+                    label: "Library",
+                    url: "https://www.figma.com/community/file/930503928500000754",
                   },
                 ]}
               />

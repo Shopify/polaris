@@ -98,7 +98,7 @@
 }
 
 .Content {
-  h1 + p:first-of-type {
+  p:first-of-type {
     margin-bottom: 2rem;
     font-size: var(--font-size-500);
     letter-spacing: -0.01em;

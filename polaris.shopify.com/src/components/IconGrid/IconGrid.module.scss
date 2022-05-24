@@ -24,11 +24,13 @@
     box-shadow: var(--card-shadow);
 
     &:hover {
-      background: #ededed;
+      background: var(--surface-subdued);
+      box-shadow: var(--card-shadow-hover);
     }
   }
 
-  &.isHighlighted button {
+  &.isHighlighted button,
+  button:focus {
     box-shadow: var(--focus-outline);
   }
 }

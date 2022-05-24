@@ -25,6 +25,8 @@
   --border-inset-color: #aaa;
   --border: 0.5px solid var(--border-color);
   --card-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.5px var(--border-color);
+  --card-shadow-hover: 0 2px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 0.5px var(--border-color);
 
   --decorative-1: #e9f1e2;
   --decorative-2: #fdecd5;
