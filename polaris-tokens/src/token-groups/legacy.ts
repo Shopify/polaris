@@ -3,7 +3,7 @@ export const legacy = {
     value: '514',
   },
   'choice-size': {
-    value: '20px',
+    value: '18px',
   },
   'icon-size-small': {
     value: '10px',
@@ -12,7 +12,7 @@ export const legacy = {
     value: '20px',
   },
   'choice-margin': {
-    value: '1px',
+    value: '0px',
   },
   'control-border-width': {
     value: '2px',
