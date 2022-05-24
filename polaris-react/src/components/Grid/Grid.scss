@@ -36,14 +36,14 @@
   min-width: 0;
 }
 
-@for $i from 1 through 2 {
+@for $i from 1 through 6 {
   .grid-#{$i}-column-xs {
     grid-column-end: span #{$i};
   }
 }
 
 @media #{$p-breakpoints-sm-up} {
-  @for $i from 1 through 4 {
+  @for $i from 1 through 6 {
     .grid-#{$i}-column-sm {
       grid-column-end: span #{$i};
     }
