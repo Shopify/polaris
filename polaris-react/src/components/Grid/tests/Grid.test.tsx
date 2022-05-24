@@ -2,9 +2,11 @@ import React from 'react';
 import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {act} from 'react-dom/test-utils';
-import breakpoints from '@shopify/polaris-tokens/dist/json/breakpoints.json';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {formatAreas, Grid} from '../Grid';
+
+const {breakpoints} = tokens;
 
 describe('<Grid />', () => {
   beforeEach(() => {

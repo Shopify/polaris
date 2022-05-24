@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import breakpoints from '@shopify/polaris-tokens/dist/json/breakpoints.json';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useEventListener} from '../../utilities/use-event-listener';
@@ -7,10 +7,9 @@ import {useEventListener} from '../../utilities/use-event-listener';
 import {Cell} from './components';
 import styles from './Grid.scss';
 
-type Breakpoints =
-  keyof typeof breakpoints extends `breakpoints-${infer Breakpoint}`
-    ? Breakpoint
-    : never;
+const {breakpoints} = tokens;
+
+type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 type Columns = {
   [Breakpoint in Breakpoints]?: number;
