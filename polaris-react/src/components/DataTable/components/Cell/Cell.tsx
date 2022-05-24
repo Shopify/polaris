@@ -1,10 +1,8 @@
 import React from 'react';
-import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {headerCell} from '../../../shared';
-import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
 import {SortIcon} from '../../../SortIcon';
@@ -72,7 +70,6 @@ export function Cell({
   const iconClassName = classNames(sortable && styles.Icon);
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
-  const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
@@ -84,7 +81,7 @@ export function Cell({
   const iconMarkup = (
     <span className={iconClassName}>
       <SortIcon
-        sortDirection={sortDirection}
+        sortDirection={sortDirection ? sortDirection : 'none'}
         accessibilityLabel={sortAccessibilityLabel}
       />
     </span>
