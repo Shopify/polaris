@@ -230,7 +230,8 @@ $loading-panel-height: 53px;
   position: sticky;
   left: 0;
   z-index: var(--pc-index-table-sticky-cell);
-  padding: 0;
+  padding: var(--p-space-2) 0;
+  vertical-align: middle;
 }
 
 .TableCell-first + .TableCell {
@@ -240,7 +241,6 @@ $loading-panel-height: 53px;
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
     z-index: var(--pc-index-table-sticky-cell);
-    padding: 0;
   }
 }
 
