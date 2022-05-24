@@ -11,9 +11,18 @@
     "@shopify/stylelint-polaris": "0.0.0-alpha.6"
   },
   "changesets": [
+    "chilly-bees-knock",
     "cuddly-chefs-cheat",
+    "eight-pumas-drive",
     "fast-dots-notice",
     "gold-donkeys-work",
-    "modern-moons-build"
+    "good-knives-taste",
+    "metal-bulldogs-lie",
+    "modern-moons-build",
+    "nice-coins-play",
+    "silent-sheep-protect",
+    "strange-ducks-return",
+    "swift-dryers-switch",
+    "wicked-toes-switch"
   ]
 }

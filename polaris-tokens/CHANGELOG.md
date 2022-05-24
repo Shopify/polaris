@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0-next.1
+
+### Minor Changes
+
+- [`07702ad51`](https://github.com/Shopify/polaris/commit/07702ad513bab12be071e30e121997ef2f7ae7d7) Thanks [@romellogoodman](https://github.com/romellogoodman)! - Expose the .scss css file under dist/scss
+
 ## 5.0.2-next.0
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # polaris-for-figma
 
+## 0.0.2-next.1
+
+### Patch Changes
+
+- Updated dependencies [[`82e081b18`](https://github.com/Shopify/polaris/commit/82e081b1876308aedf5f8fd24d4b06163f1f5b9c), [`68a647348`](https://github.com/Shopify/polaris/commit/68a64734828d058dcf4f4974f45183b26f67d8b5), [`affb94a8f`](https://github.com/Shopify/polaris/commit/affb94a8f58dea735ec9890ed71a97cff22c1c7a), [`42331f399`](https://github.com/Shopify/polaris/commit/42331f399ee071787b847366e2f8308948dedcde), [`81db203ed`](https://github.com/Shopify/polaris/commit/81db203edb83f4bd071338902251a74e4f357252)]:
+  - @shopify/polaris@9.9.0-next.1
+
 ## 0.0.2-next.0
 
 ### Patch Changes
