@@ -169,15 +169,20 @@ export interface PlainAction extends Action {
 }
 
 export interface ActionListItemDescriptor
-  extends IconableAction,
-    DisableableAction,
-    BadgeAction,
+  extends DisableableAction,
     DestructableAction {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** @deprecated Badge component */
+  badge?: {
+    status: 'new';
+    content: string;
+  };
   /** Additional hint text to display with item */
   helpText?: string;
-  /** Image source */
+  /** @deprecated Source of the icon */
+  icon?: IconSource;
+  /** @deprecated Image source */
   image?: string;
   /** Prefix source */
   prefix?: React.ReactNode;
