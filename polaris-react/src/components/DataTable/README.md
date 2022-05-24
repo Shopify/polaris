@@ -544,30 +544,37 @@ function DataTableFixedFirstColumnExample() {
     return [...rows].sort((rowA, rowB) => {
       let type;
       if (rowA[index].length > 1) {
-        type = !isNaN(parseFloat(rowA[index]))
-          ? 'number'
-          : !isNaN(parseFloat(rowA[index].substring(1)))
-          ? 'currency'
-          : 'string';
+        if (!isNaN(parseFloat(rowA[index]))) {
+          type = 'number';
+        } else if (!isNaN(parseFloat(rowA[index].substring(1)))) {
+          type = 'currency';
+        } else type = 'string';
       } else {
         type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
       }
 
-      const itemA =
-        type === 'number'
-          ? parseInt(rowA[index])
-          : type === 'currency'
-          ? parseFloat(rowA[index].substring(1))
-          : rowA[index];
-      const itemB =
-        type === 'number'
-          ? parseInt(rowB[index])
-          : type === 'currency'
-          ? parseFloat(rowB[index].substring(1))
-          : rowB[index];
-
+      let itemA;
+      let itemB;
+      if (type === 'number') {
+        itemA = parseInt(rowA[index], 10);
+      } else if (type === 'currency') {
+        itemA = parseFloat(rowA[index].substring(1));
+      } else {
+        itemA = rowA[index];
+      }
+      if (type === 'number') {
+        itemB = parseInt(rowB[index], 10);
+      } else if (type === 'currency') {
+        itemB = parseFloat(rowA[index].substring(1));
+      } else {
+        itemB = rowA[index];
+      }
       if (type === 'string') {
-        const result = itemA > itemB ? 1 : itemB > itemA ? -1 : 0;
+        let result;
+
+        if (itemA > itemB) result = 1;
+        else if (itemB > itemA) result = -1;
+        else result = 0;
         return direction === 'descending' ? result * -1 : result;
       }
 

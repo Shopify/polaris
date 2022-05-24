@@ -88,7 +88,7 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
-    fixedCellVisible && styles.Visible,
+    fixedCellVisible && styles.separate,
     firstColumn &&
       inFixedFirstColumn &&
       stickyHeadingCell &&

@@ -110,6 +110,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
   private stickyHeaderActive = false;
+  private scrollStopTimer: ReturnType<typeof setTimeout> | null = null;
 
   private handleResize = debounce(() => {
     const {
@@ -214,7 +215,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <table
         className={classNames(
           styles.FixedFirstColumn,
-          !isScrolledFarthestLeft && styles.Visible,
+          !isScrolledFarthestLeft && styles.separate,
         )}
         style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
       >
@@ -277,13 +278,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               const stickyHeaderClassNames = classNames(
                 styles.StickyTableHeader,
                 isSticky && styles['StickyTableHeader-isSticky'],
-                !isScrolledFarthestLeft && styles.Visible,
+                !isScrolledFarthestLeft && styles.separate,
               );
 
               const fixedFirstStickyHeading = hasFixedFirstColumn ? (
                 <table
                   className={classNames(
-                    !isScrolledFarthestLeft && styles.Visible,
+                    !isScrolledFarthestLeft && styles.separate,
                     styles.FixedFirstColumn,
                   )}
                 >
@@ -501,11 +502,18 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private scrollListener = () => {
-    debounce(() => {
+    if (this.scrollStopTimer) {
+      clearTimeout(this.scrollStopTimer);
+    }
+
+    this.scrollStopTimer = setTimeout(() => {
       this.setState((prevState) => ({
         ...this.calculateColumnVisibilityData(prevState.condensed),
       }));
-    }, 100)();
+    }, 100);
+    this.setState({
+      isScrolledFarthestLeft: this.scrollContainer.current?.scrollLeft === 0,
+    });
 
     if (this.props.stickyHeader && this.stickyHeaderActive) {
       this.stickyHeaderScrolling();
