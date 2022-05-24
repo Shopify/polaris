@@ -1,23 +1,22 @@
 .Header {
-  position: sticky;
-  z-index: 2;
-  top: 0;
+  &.withBorder {
+    border-bottom: var(--border);
+  }
+}
+
+.HeaderInner {
   display: flex;
-  background: white;
+  gap: 2em;
   height: var(--header-height);
-  padding: 0 3rem;
-  gap: 3rem;
-  border-bottom: 0.5px solid #ddd;
 }
 
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-subdued);
-  font-size: var(--font-size-500);
+  color: var(--text-inherit);
   gap: 0.7rem;
-  font-weight: 450;
-
+  font-weight: 500;
+  font-size: var(--font-size-200);
   p {
     margin: 0;
   }
@@ -30,31 +29,52 @@
 .Nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  font-size: var(--font-size-200);
+  font-weight: 500;
+  margin-right: auto;
 
-  li a {
-    color: var(--text-strong);
-    font-weight: 450;
+  li {
+    a {
+      color: inherit;
+      border-left: var(--border);
+      padding: 0.5rem 1rem;
 
-    &[aria-current="page"] {
-      color: var(--primary);
+      &:focus-within {
+        position: relative;
+        z-index: 1;
+        border-radius: var(--border-radius-200);
+      }
+
+      &:hover {
+        color: var(--text-strong);
+      }
+
+      &[aria-current="page"] {
+        color: var(--primary);
+      }
+    }
+
+    &:first-child a {
+      border-left: none;
     }
   }
 }
 
 .SearchWrapper {
-  margin-left: auto;
   display: flex;
   align-items: center;
+  width: 16rem;
+
+  .Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    border-radius: 100%;
+  }
 }
 
-.Content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.MainContent {
-  margin: 2.5rem 3rem;
-  max-width: 48rem;
+.Footer {
+  text-align: center;
+  padding: 3rem 0;
 }

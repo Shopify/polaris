@@ -1,0 +1,90 @@
+.IconsPage {
+  padding-top: var(--header-margin);
+}
+
+.Filter {
+  .TextField {
+    margin-top: 1.5rem;
+  }
+}
+
+.SectionHeading {
+  font-size: var(--font-size-300);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  b {
+    font-weight: var(--font-weight-500);
+  }
+}
+
+.Modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 800px;
+  height: 500px;
+  margin: auto;
+  background: white;
+  border: 3px solid red;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.Tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 -1px #dddddd;
+}
+
+.Tab {
+  position: relative;
+  padding: 1.25rem 1rem;
+  flex: 1;
+  cursor: pointer;
+  background: transparent;
+  transition: background-color 0.1s linear;
+  color: var(--text-subdued);
+
+  &[aria-selected="true"] {
+    color: black;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 3px;
+      border-radius: var(--border-radius-300) var(--border-radius-300) 0 0;
+      background: var(--primary);
+    }
+  }
+
+  &:hover {
+    color: black;
+  }
+}
+
+@keyframes sidebar-enter {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 28rem;
+  }
+}
+
+@keyframes sidebar-inner-enter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

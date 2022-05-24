@@ -2,12 +2,10 @@
 
 const {resolve} = require('path');
 const {execSync} = require('child_process');
-
-const {writeFileSync, readFileSync} = require('fs-extra');
+const {writeFileSync, readFileSync} = require('fs');
 
 const {version: newVersion} = require('../package.json');
-
-const {semverRegExp, readmes} = require('./utilities');
+const {semverRegExp, readmes} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
 

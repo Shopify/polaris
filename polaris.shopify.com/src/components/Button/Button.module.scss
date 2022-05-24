@@ -1,17 +1,18 @@
 .Button {
   display: inline-block;
   appearance: none;
-  background: #fbfbfb;
-  padding: 0.2rem 0.5rem;
+  background: var(--surface);
+  padding: 0.2rem 0.66rem 0.275rem;
   border: none;
+  font-size: var(--font-size-300);
   font-weight: var(--font-weight-400);
-  border-radius: var(--border-radius-200);
+  border-radius: var(--border-radius-500);
   cursor: pointer;
   color: inherit;
   user-select: none;
 
   &:hover {
-    background: #ededed;
+    background: var(--surface-subdued);
   }
 
   &.small {
@@ -20,14 +21,15 @@
 
   &.pill {
     border-radius: var(--border-radius-round);
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 0.66rem;
+    padding-right: 0.66rem;
   }
 
   &[aria-pressed="true"],
   &[aria-selected="true"],
-  &[aria-current="true"] {
-    background: var(--primary);
-    color: white;
+  &[aria-current="true"],
+  &.primary {
+    background: #049d76;
+    color: var(--surface);
   }
 }

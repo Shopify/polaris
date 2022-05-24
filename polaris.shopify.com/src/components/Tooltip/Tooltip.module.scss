@@ -1,0 +1,30 @@
+.Tooltip {
+  pointer-events: none;
+  max-width: 300px;
+  z-index: 2;
+
+  .Content {
+    overflow: hidden;
+    border-radius: var(--border-radius-500);
+    background: var(--text);
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    padding: 0.33rem 0.5rem;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    background: var(--text);
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+}

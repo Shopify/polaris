@@ -1,6 +1,4 @@
 .Longform {
-  border-radius: var(--border-radius-300);
-
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
@@ -40,15 +38,14 @@
   }
 
   h1 {
-    max-width: 80%;
     &:first-child {
       margin-top: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
   }
 
   h2 {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
   }
 
   h3 {
@@ -62,16 +59,28 @@
     margin-top: 1.5rem;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    &:target {
+      background: #d5ffe1;
+    }
+  }
+
   hr {
-    display: none;
+    height: 0.5px;
+    margin: 3rem 0;
+    background: var(--border-color);
+    border-radius: var(--border-radius-200);
   }
 
   pre {
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
-    font-size: var(--font-size-300);
+    font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--text);
+    background: var(--text-strong);
     color: var(--surface);
     border-radius: var(--border-radius-200);
     overflow: auto;
@@ -89,9 +98,11 @@
 }
 
 .Content {
-  h1 + p:first-of-type {
+  p:first-of-type {
     margin-bottom: 2rem;
-    font-size: var(--font-size-700);
+    font-size: var(--font-size-500);
+    letter-spacing: -0.01em;
+    font-weight: 550;
     color: var(--text-strong);
   }
 }

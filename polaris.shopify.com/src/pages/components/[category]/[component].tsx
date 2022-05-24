@@ -1,12 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Page from "../../../components/Page";
 import Longform from "../../../components/Longform";
 import Markdown from "../../../components/Markdown";
 import components from "../../../data/components.json";
-import { getTitleForTitleTag, slugify } from "../../../utils/various";
+import { getTitleTagValue, slugify } from "../../../utils/various";
 import fs from "fs";
 import path from "path";
+import MaxPageWidthDiv from "../../../components/MaxPageWidthDiv";
 
 interface Props {
   name: string;
@@ -15,15 +15,17 @@ interface Props {
 
 const Components: NextPage<Props> = ({ name, readme }) => {
   return (
-    <Page>
+    <>
       <Head>
-        <title>{getTitleForTitleTag(name)}</title>
+        <title>{getTitleTagValue(name)}</title>
       </Head>
 
-      <Longform>
-        <Markdown text={readme} />
-      </Longform>
-    </Page>
+      <MaxPageWidthDiv style={{ maxWidth: "40rem", marginTop: "4rem" }}>
+        <Longform>
+          <Markdown text={readme} />
+        </Longform>
+      </MaxPageWidthDiv>
+    </>
   );
 };
 

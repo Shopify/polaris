@@ -1,14 +1,15 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import {tokens} from '../../tokens';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
@@ -404,7 +405,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(tokens.motion['duration-100'], 10)}
+      timeout={parseInt(tokens.motion['duration-100'].value, 10)}
       appear
       unmountOnExit
     >
