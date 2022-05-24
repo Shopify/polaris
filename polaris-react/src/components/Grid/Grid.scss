@@ -12,7 +12,10 @@
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--pc-grid-gap-md, var(--p-space-4));
-    grid-template-columns: repeat(var(--pc-grid-columns-md, 6), minmax(0, 1fr));
+    grid-template-columns: repeat(
+      var(--pc-grid-columns-md, 12),
+      minmax(0, 1fr)
+    );
   }
 
   @media #{$p-breakpoints-lg-up} {
@@ -42,32 +45,32 @@
   }
 }
 
-@for $i from 1 through 4 {
-  @media #{$p-breakpoints-sm-up} {
+@media #{$p-breakpoints-sm-up} {
+  @for $i from 1 through 4 {
     .grid-#{$i}-column-sm {
       grid-column-end: span #{$i};
     }
   }
 }
 
-@for $i from 1 through 6 {
-  @media #{$p-breakpoints-md-up} {
+@media #{$p-breakpoints-md-up} {
+  @for $i from 1 through 6 {
     .grid-#{$i}-column-md {
       grid-column-end: span #{$i};
     }
   }
 }
 
-@for $i from 1 through 12 {
-  @media #{$p-breakpoints-lg-up} {
+@media #{$p-breakpoints-lg-up} {
+  @for $i from 1 through 12 {
     .grid-#{$i}-column-lg {
       grid-column-end: span #{$i};
     }
   }
 }
 
-@for $i from 1 through 12 {
-  @media #{$p-breakpoints-xl-up} {
+@media #{$p-breakpoints-xl-up} {
+  @for $i from 1 through 12 {
     .grid-#{$i}-column-xl {
       grid-column-end: span #{$i};
     }

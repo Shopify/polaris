@@ -9,7 +9,7 @@ interface Columns {
   /** Number of columns the section should span on small screens */
   sm?: 1 | 2 | 3 | 4;
   /** Number of columns the section should span on medium screens */
-  md?: 1 | 2 | 3 | 4 | 5 | 6;
+  md?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   /** Number of columns the section should span on large screens */
   lg?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   /** Number of columns the section should span on extra large screens */
@@ -18,13 +18,11 @@ interface Columns {
 
 export interface CellProps {
   area?: string;
-  column?: string;
-  row?: string;
   columnSpan?: Columns;
   children?: React.ReactNode;
 }
 
-export function Cell({area, row, column, columnSpan, children}: CellProps) {
+export function Cell({area: gridArea, columnSpan, children}: CellProps) {
   const className = classNames(
     styles.Cell,
     columnSpan?.xs && styles[`grid-${columnSpan?.xs}-column-xs`],
@@ -34,14 +32,8 @@ export function Cell({area, row, column, columnSpan, children}: CellProps) {
     columnSpan?.xl && styles[`grid-${columnSpan?.xl}-column-xl`],
   );
 
-  const style = {
-    ...(area ? {gridArea: area} : {}),
-    ...(row ? {gridRow: row} : {}),
-    ...(column ? {gridColumn: column} : {}),
-  };
-
   return (
-    <div className={className} style={style}>
+    <div className={className} style={{gridArea}}>
       {children}
     </div>
   );

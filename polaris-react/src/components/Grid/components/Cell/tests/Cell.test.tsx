@@ -29,12 +29,4 @@ describe('<Cell />', () => {
         'Cell grid-2-column-xs grid-4-column-sm grid-6-column-md grid-12-column-lg grid-12-column-xl',
     });
   });
-
-  it('applies inline styles when row is passed in', () => {
-    const column = mountWithApp(<Cell row="1 / 3" />);
-
-    expect(column).toContainReactComponent('div', {
-      style: {gridRow: '1 / 3'},
-    });
-  });
 });
