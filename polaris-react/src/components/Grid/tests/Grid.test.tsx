@@ -2,9 +2,9 @@ import React from 'react';
 import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {act} from 'react-dom/test-utils';
+import breakpoints from '@shopify/polaris-tokens/dist/json/breakpoints.json';
 
 import {formatAreas, Grid} from '../Grid';
-import breakpoints from '../../../tokens/token-groups/breakpoints.json';
 
 describe('<Grid />', () => {
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe('<Grid />', () => {
   const xlAreas = ['xl1', 'xl2', 'xl3'];
 
   it('applies small grid-template-areas as inline style when screenwidth is less than breakpoints-sm', () => {
-    setMediaWidth(breakpoints['breakpoints-xs']);
+    setMediaWidth(breakpoints['breakpoints-xs'].value);
 
     const grid = mountWithApp(
       <Grid
@@ -44,7 +44,7 @@ describe('<Grid />', () => {
   });
 
   it('applies medium grid-template-areas as inline style when screenwidth is less than breakpoints-md', () => {
-    setMediaWidth(breakpoints['breakpoints-sm']);
+    setMediaWidth(breakpoints['breakpoints-sm'].value);
 
     const grid = mountWithApp(
       <Grid
@@ -64,7 +64,7 @@ describe('<Grid />', () => {
   });
 
   it('applies large grid-template-areas as inline style when screenwidth is less than breakpoints-lg', () => {
-    setMediaWidth(breakpoints['breakpoints-md']);
+    setMediaWidth(breakpoints['breakpoints-md'].value);
 
     const grid = mountWithApp(
       <Grid
@@ -84,7 +84,7 @@ describe('<Grid />', () => {
   });
 
   it('re-renders grid-template-areas on resize', () => {
-    setMediaWidth(breakpoints['breakpoints-xs']);
+    setMediaWidth(breakpoints['breakpoints-xs'].value);
     const grid = mountWithApp(<Grid areas={{xs: xsAreas, sm: smAreas}} />);
 
     expect(grid).toContainReactComponent('div', {
@@ -92,7 +92,7 @@ describe('<Grid />', () => {
     });
 
     act(() => {
-      setMediaWidth(breakpoints['breakpoints-sm']);
+      setMediaWidth(breakpoints['breakpoints-sm'].value);
       window.dispatchEvent(new Event('resize'));
       timer.runAllTimers();
     });
