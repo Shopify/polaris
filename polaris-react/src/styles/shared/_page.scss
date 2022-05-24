@@ -4,7 +4,7 @@
   max-width: $page-max-width;
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 var(--p-space-6);
+    padding: 0 var(--p-space-6) var(--p-space-6);
   }
 }
 
