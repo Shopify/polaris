@@ -1,5 +1,25 @@
 # Changelog
 
+## 9.9.0-next.1
+
+### Minor Changes
+
+- [#5659](https://github.com/Shopify/polaris/pull/5659) [`82e081b18`](https://github.com/Shopify/polaris/commit/82e081b1876308aedf5f8fd24d4b06163f1f5b9c) Thanks [@romellogoodman](https://github.com/romellogoodman)! - Updated @shopify/polaris-tokens to v5 and integrated the SCSS stylesheet in the `CustomProperties` component
+
+* [#5865](https://github.com/Shopify/polaris/pull/5865) [`68a647348`](https://github.com/Shopify/polaris/commit/68a64734828d058dcf4f4974f45183b26f67d8b5) Thanks [@alex-page](https://github.com/alex-page)! - Added underline to Link on hover when removeUnderline property is used
+
+- [#5894](https://github.com/Shopify/polaris/pull/5894) [`affb94a8f`](https://github.com/Shopify/polaris/commit/affb94a8f58dea735ec9890ed71a97cff22c1c7a) Thanks [@alex-page](https://github.com/alex-page)! - Deprecated `badge`, `icon` and `image` props in ActionList.Item as the `prefix` and `suffix` properties can replace them.
+
+* [#5879](https://github.com/Shopify/polaris/pull/5879) [`42331f399`](https://github.com/Shopify/polaris/commit/42331f399ee071787b847366e2f8308948dedcde) Thanks [@rmleg](https://github.com/rmleg)! - Fixed spacing above action group titles when they are the first element in a Page's action list menu on mobile
+
+- [#5748](https://github.com/Shopify/polaris/pull/5748) [`81db203ed`](https://github.com/Shopify/polaris/commit/81db203edb83f4bd071338902251a74e4f357252) Thanks [@kyledurand](https://github.com/kyledurand)! - Add grid component
+
+### Patch Changes
+
+- Updated dependencies [[`07702ad51`](https://github.com/Shopify/polaris/commit/07702ad513bab12be071e30e121997ef2f7ae7d7), [`c7c6295a4`](https://github.com/Shopify/polaris/commit/c7c6295a4c6b75a01545dbbfa16aaebe3330f4ce)]:
+  - @shopify/polaris-tokens@5.1.0-next.1
+  - @shopify/polaris-icons@4.22.0-next.1
+
 ## 9.9.0-next.0
 
 ### Minor Changes
