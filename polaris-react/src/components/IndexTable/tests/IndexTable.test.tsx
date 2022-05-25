@@ -382,7 +382,7 @@ describe('<IndexTable>', () => {
       );
     });
 
-    it('renders a custom pagination string if present', () => {
+    it('renders a custom select all string if present', () => {
       const onSelectionChangeSpy = jest.fn();
       const customString = 'Foo bar baz';
       const index = mountWithApp(
