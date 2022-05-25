@@ -3,6 +3,6 @@ import ComponentsPage from "../../components/ComponentsPage";
 
 interface Props {}
 
-const Components: NextPage<Props> = () => <ComponentsPage category="all" />;
+const Components: NextPage<Props> = () => <ComponentsPage />;
 
 export default Components;
