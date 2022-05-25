@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0
+
+### Minor Changes
+
+- [`07702ad51`](https://github.com/Shopify/polaris/commit/07702ad513bab12be071e30e121997ef2f7ae7d7) Thanks [@romellogoodman](https://github.com/romellogoodman)! - Expose the .scss css file under dist/scss
+
 ## 5.0.1
 
 - Exposes .scss file [#5689](https://github.com/Shopify/polaris/pull/5689)

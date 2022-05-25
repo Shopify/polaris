@@ -1,5 +1,28 @@
 # Changelog
 
+## 9.9.0
+
+### Minor Changes
+
+- [#5832](https://github.com/Shopify/polaris/pull/5832) [`d810f8e73`](https://github.com/Shopify/polaris/commit/d810f8e73009a10a4feb06bb728f030b510662fe) Thanks [@Stivaros](https://github.com/Stivaros)! - Added `disableQueryField` to `Filters` component
+
+* [#5688](https://github.com/Shopify/polaris/pull/5688) [`c66352b03`](https://github.com/Shopify/polaris/commit/c66352b032ffab0ab9e11348c3491761a22b4521) Thanks [@camd](https://github.com/camd)! - Added new FullscreenBar component which provides a uniformly styled Back button to exit Fullscreen mode.
+
+- [#5865](https://github.com/Shopify/polaris/pull/5865) [`68a647348`](https://github.com/Shopify/polaris/commit/68a64734828d058dcf4f4974f45183b26f67d8b5) Thanks [@alex-page](https://github.com/alex-page)! - Added underline to Link on hover when removeUnderline property is used
+
+* [#5810](https://github.com/Shopify/polaris/pull/5810) [`da6fce76b`](https://github.com/Shopify/polaris/commit/da6fce76bfa34b48832b4781a5ead8ef2558a046) Thanks [@kyledurand](https://github.com/kyledurand)! - add useEventListenerHook
+
+- [#5894](https://github.com/Shopify/polaris/pull/5894) [`affb94a8f`](https://github.com/Shopify/polaris/commit/affb94a8f58dea735ec9890ed71a97cff22c1c7a) Thanks [@alex-page](https://github.com/alex-page)! - Deprecated `badge`, `icon` and `image` props in ActionList.Item as the `prefix` and `suffix` properties can replace them.
+
+* [#5391](https://github.com/Shopify/polaris/pull/5391) [`46e7db0d8`](https://github.com/Shopify/polaris/commit/46e7db0d82b40c7379fea0e4cbae27346c0ff594) Thanks [@alex-page](https://github.com/alex-page)! - Removed focus-visible polyfill as Safari 15.4 and 15.5 support this functionality
+
+- [#5879](https://github.com/Shopify/polaris/pull/5879) [`42331f399`](https://github.com/Shopify/polaris/commit/42331f399ee071787b847366e2f8308948dedcde) Thanks [@rmleg](https://github.com/rmleg)! - Fixed spacing above action group titles when they are the first element in a Page's action list menu on mobile
+
+### Patch Changes
+
+- Updated dependencies [[`c7c6295a4`](https://github.com/Shopify/polaris/commit/c7c6295a4c6b75a01545dbbfa16aaebe3330f4ce)]:
+  - @shopify/polaris-icons@4.22.0
+
 ## 9.8.0
 
 - Ported internal breakpoint and layout functions to SCSS variables ([#5722](https://github.com/Shopify/polaris/pull/5722))
@@ -335,7 +358,7 @@ For instructions on updating from v7 to v8, see our [migration guide](https://gi
 - Added an example for the `small` `size` variant of `Badge` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
 - Updated top bar description and keywords to include `header` ([#4672](https://github.com/Shopify/polaris-react/pull/4672))
 - Tightened up what absolute imports are allowed. Removed `baseUrl` from `tsconfig.json`. Attempting to do an absolute import from `src/X` or `components/X` now results in a error when type-checking. ([#4643](https://github.com/Shopify/polaris-react/pull/4643))
-- Cleaned up Button styling and $button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
+- Cleaned up Button styling and \$button-filled mixin([#4635](https://github.com/Shopify/polaris-react/pull/4635))
 - Removed filter functions ([#4650](https://github.com/Shopify/polaris-react/pull/4650))
 - Removed all color() invocations ([#4636](https://github.com/Shopify/polaris-react/pull/4636))
 - Deprecated passing `attention` to the `status` prop on `Badge` in favor of `warning` ([#4658](https://github.com/Shopify/polaris-react/pull/4658))
