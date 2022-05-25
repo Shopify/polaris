@@ -9,6 +9,7 @@
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
+    "parse-examples": "node src/scripts/parseExamples.mjs",
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
   },
