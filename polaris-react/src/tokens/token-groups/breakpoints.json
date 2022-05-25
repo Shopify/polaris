@@ -1,0 +1,7 @@
+{
+  "breakpoints-xs": "0px",
+  "breakpoints-sm": "490px",
+  "breakpoints-md": "768px",
+  "breakpoints-lg": "1040px",
+  "breakpoints-xl": "1440px"
+}
