@@ -291,6 +291,15 @@ describe('<Button />', () => {
     });
   });
 
+  describe('onPointerDown()', () => {
+    it('is called when the pointer is down', () => {
+      const onPointerDownSpy = jest.fn();
+      const button = mountWithApp(<Button onPointerDown={onPointerDownSpy} />);
+      button.find(UnstyledButton)!.trigger('onPointerDown');
+      expect(onPointerDownSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('onMouseEnter()', () => {
     it('is called when the mouse enters button', () => {
       const onMouseEnterSpy = jest.fn();
