@@ -12,7 +12,7 @@ jobs:
     name: Snapshot Release
     if: |
       github.event.issue.pull_request &&
-      github.event.comment.body == '/snapshot-release'
+      (github.event.comment.body == '/snapit' || github.event.comment.body == '/snapshot-release')
     runs-on: ubuntu-latest
     steps:
       - name: Enforce permission requirement
@@ -29,8 +29,9 @@ jobs:
       - name: Checkout default branch
         uses: actions/checkout@v2
 
+      # issue_comment requires us to checkout the branch
+      # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
       - name: Checkout pull request branch
-        # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
         run: hub pr checkout ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -77,8 +78,8 @@ jobs:
             if (newTags.length) {
               const multiple = newTags.length > 1
               const body = (
-                `**Thanks @${context.actor}! ` +
-                `Your snapshot${multiple ? 's have' : ' has'} been shipped. 🚢**\n` +
+                `🤌 ✨ **Thanks @${context.actor}! ` +
+                `Your snapshot${multiple ? 's have' : ' has'} been shipped.**\n\n` +
                 `Test the snapshot${multiple ? 's' : ''} by updating your \`package.json\` ` +
                 `with the newly published version${multiple ? 's' : ''}:\n` +
                 newTags.map(tag => (
