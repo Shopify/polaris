@@ -1,0 +1,35 @@
+.IntroBanner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .Video {
+    min-width: 37.5%;
+  }
+
+  .Text {
+    padding: 0 3rem var(--header-margin) 0;
+  }
+
+  h1 {
+    margin-top: var(--header-margin);
+  }
+
+  p {
+    margin: 1rem auto;
+    font-size: var(--font-size-500);
+    letter-spacing: var(--letter-spacing-200);
+  }
+
+  a {
+    font-weight: 435;
+    color: var(--primary);
+  }
+}
+
+.Filters {
+  margin-bottom: 4rem;
+  input {
+    margin-bottom: 1rem;
+  }
+}

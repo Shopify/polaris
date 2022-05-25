@@ -1,0 +1,108 @@
+.Longform {
+  img {
+    border-radius: var(--border-radius-200);
+    width: 100%;
+    height: auto;
+    background: white;
+  }
+
+  ul li {
+    list-style-type: disc;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  .usage-list {
+    margin: 1.25rem 0;
+  }
+
+  ul,
+  ol {
+    margin-left: 1.1em;
+    ul,
+    ol {
+      margin-left: 1.75em;
+    }
+  }
+
+  li {
+    margin: 0.5em 0;
+  }
+
+  h1 {
+    &:first-child {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    + p {
+      margin-top: -0.5rem;
+    }
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    &:target {
+      background: #d5ffe1;
+    }
+  }
+
+  hr {
+    height: 0.5px;
+    margin: 3rem 0;
+    background: var(--border-color);
+    border-radius: var(--border-radius-200);
+  }
+
+  pre {
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    font-size: var(--font-size-100);
+    padding: 1rem;
+    background: var(--text-strong);
+    color: var(--surface);
+    border-radius: var(--border-radius-200);
+    overflow: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .usage-list {
+    + h3 {
+      margin-top: 2.5rem !important;
+    }
+  }
+}
+
+.Content {
+  p:first-of-type {
+    margin-bottom: 2rem;
+    font-size: var(--font-size-500);
+    letter-spacing: -0.01em;
+    font-weight: 550;
+    color: var(--text-strong);
+  }
+}

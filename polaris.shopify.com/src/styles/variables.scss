@@ -1,0 +1,31 @@
+$pageMaxWidth: 1320px;
+
+@mixin heading {
+  color: var(--text-strong);
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+@mixin heading-1 {
+  @include heading;
+  font-size: var(--font-size-1000);
+  letter-spacing: var(--letter-spacing-100);
+}
+
+@mixin heading-2 {
+  @include heading;
+  font-size: var(--font-size-700);
+  letter-spacing: var(--letter-spacing-200);
+}
+
+@mixin heading-3 {
+  @include heading;
+  font-size: var(--font-size-500);
+  letter-spacing: var(--letter-spacing-300);
+}
+
+@mixin heading-4 {
+  @include heading;
+  font-size: var(--font-size-400);
+  letter-spacing: var(--letter-spacing-300);
+}

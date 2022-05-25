@@ -1,6 +1,5 @@
 import {
   createPackage,
-  createWorkspacePlugin,
   createProjectPlugin,
   DiagnosticError,
 } from '@shopify/loom';
@@ -9,8 +8,6 @@ import {
   buildLibraryWorkspace,
   rollupPlugins,
 } from '@shopify/loom-plugin-build-library';
-import {eslint} from '@shopify/loom-plugin-eslint';
-import {prettier} from '@shopify/loom-plugin-prettier';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
@@ -36,8 +33,6 @@ export default createPackage((pkg) => {
       esnext: true,
     }),
     buildLibraryWorkspace(),
-    eslint(),
-    prettier({files: '**/*.{md,json,yaml,yml}'}),
     rollupAdjustPluginsPlugin(),
     rollupAdjustOutputPlugin(),
     jestAdjustmentsPlugin(),
@@ -48,7 +43,12 @@ export default createPackage((pkg) => {
 function jestAdjustmentsPlugin() {
   return createProjectPlugin('Polaris.Jest', ({tasks: {test}}) => {
     test.hook(({hooks}) => {
-      hooks.configure.hook((configuration) => {
+      hooks.configure.hook(async (configuration) => {
+        configuration.babelConfig?.hook((config) => ({
+          ...config,
+          rootMode: 'upward',
+        }));
+
         // Aliases for root-level imports, which are used in test files
         // `tests/*` as an alias for test-only utilities is acceptable, but
         // avoid others as paths working in jest but not in rollup is confusing
@@ -75,34 +75,41 @@ function jestAdjustmentsPlugin() {
 }
 
 function preAndPostBuildPlugin() {
-  return createWorkspacePlugin('Polaris.PrePost', ({api, tasks: {build}}) => {
+  return createProjectPlugin('Polaris.BuildExtra', ({api, tasks: {build}}) => {
     build.hook(({hooks}) => {
-      hooks.post.hook((steps) => [
-        ...steps,
-        api.createStep(
-          {id: 'PolarisBuild.Post', label: 'polaris post-build'},
-          async (step) => {
-            try {
-              await step.exec(
-                'node_modules/.bin/downlevel-dts',
-                ['build/ts/latest', 'build/ts/3.4'],
-                {all: true},
-              );
+      hooks.target.hook(({target, hooks}) => {
+        const isDefaultBuild = Object.keys(target.options).length === 0;
+        if (!isDefaultBuild) {
+          return;
+        }
 
-              await step.exec(
-                'node_modules/.bin/copyfiles',
-                ['./src/**/*.md', './build/docs', '--up=1'],
-                {all: true},
-              );
-            } catch (error) {
-              throw new DiagnosticError({
-                title: 'Error runing postbuild steps',
-                content: error.all,
-              });
-            }
-          },
-        ),
-      ]);
+        hooks.steps.hook((steps) => [
+          ...steps,
+          api.createStep(
+            {id: 'PolarisBuild.Extra', label: 'polaris build extra'},
+            async (step) => {
+              try {
+                await step.exec(
+                  'node_modules/.bin/downlevel-dts',
+                  ['build/ts/latest', 'build/ts/3.4'],
+                  {all: true},
+                );
+
+                await step.exec(
+                  'node_modules/.bin/copyfiles',
+                  ['./src/**/*.md', './build/docs', '--up=1'],
+                  {all: true},
+                );
+              } catch (error) {
+                throw new DiagnosticError({
+                  title: 'Error runing polaris build extra steps',
+                  content: error.all,
+                });
+              }
+            },
+          ),
+        ]);
+      });
     });
   });
 }
@@ -163,6 +170,11 @@ function rollupAdjustOutputPlugin() {
         }
 
         hooks.configure.hook(async (configuration) => {
+          configuration.babelConfig?.hook((config) => ({
+            ...config,
+            rootMode: 'upward',
+          }));
+
           configuration.rollupOutputs?.hook((outputs) => {
             for (const output of outputs) {
               if (typeof output.entryFileNames === 'string') {

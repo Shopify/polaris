@@ -1,9 +1,24 @@
 {
   "name": "polaris-for-vscode",
-  "displayName": "polaris-for-vscode",
-  "description": "Polaris Design System vscode tooling",
-  "repository": "https://github.com/Shopify/polaris-react",
-  "version": "0.0.1",
+  "displayName": "Polaris for VS Code",
+  "publisher": "Shopify",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "description": "Polaris Design System VS Code extension",
+  "icon": "docs/polaris-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/polaris.git"
+  },
+  "homepage": "https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/README.md",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "version": "0.2.0",
+  "private": true,
+  "keywords": [
+    "polaris",
+    "shopify"
+  ],
   "engines": {
     "vscode": "^1.64.0"
   },
@@ -14,27 +29,29 @@
     "onLanguage:css",
     "onLanguage:scss"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/client.js",
   "scripts": {
-    "vscode:prepublish": "yarn run generateCustomPropertyNames && yarn run compile",
-    "generateCustomPropertyNames": "node ./scripts/prepublish.js",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "TIMING=1 eslint --cache .",
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^8.0.1",
+    "vscode-languageserver": "^8.0.1",
+    "vscode-languageserver-textdocument": "^1.0.4"
   },
   "devDependencies": {
-    "@types/vscode": "^1.64.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@shopify/polaris-tokens": "*",
     "@types/glob": "^7.2.0",
-    "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
-    "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
-    "eslint": "^8.6.0",
+    "@types/vscode": "^1.64.0",
+    "@vscode/test-electron": "^2.1.2",
     "glob": "^7.2.0",
-    "mocha": "^9.1.3",
-    "typescript": "^4.5.4",
-    "@vscode/test-electron": "^2.0.3"
+    "rollup": "^2.70.2",
+    "vsce": "^2.7.0"
   }
 }

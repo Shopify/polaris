@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
@@ -171,9 +172,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     onChange({hue, saturation, brightness, alpha});
   };
 
-  private handlePickerDrag = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+  private handlePickerDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     // prevents external elements from being selected
     event.preventDefault();
   };

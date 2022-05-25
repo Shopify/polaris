@@ -14,6 +14,7 @@ import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 import {Key} from '../../../../../types';
 import en from '../../../../../../locales/en.json';
+import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
   beforeEach(() => {
@@ -218,6 +219,30 @@ describe('<Nav.Item />', () => {
         url: 'bar',
         'aria-label': 'label',
         onClick: handler,
+      });
+    });
+
+    it('shows a tooltip for the secondary action if specified', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            url: 'bar',
+            icon: PlusMinor,
+            accessibilityLabel: 'label',
+            tooltip: {
+              content: 'This is tooltip text',
+            },
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(Tooltip, {
+        content: 'This is tooltip text',
       });
     });
   });

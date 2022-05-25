@@ -99,7 +99,7 @@ function hotReloadComponentCheck(
 ) {
   const componentName = AComponent.name;
   const anotherComponentName = (
-    AnotherComponent as React.StatelessComponent<any>
+    AnotherComponent as React.FunctionComponent<any>
   ).displayName;
 
   return (

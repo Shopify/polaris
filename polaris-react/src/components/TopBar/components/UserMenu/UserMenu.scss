@@ -4,7 +4,7 @@
   max-width: 160px;
   margin-left: var(--p-space-2);
 
-  @include breakpoint-before(layout-width(page-with-nav), false) {
+  @include breakpoint-before($layout-width-page-with-nav-base, false) {
     display: none;
   }
 }
@@ -24,9 +24,4 @@
   opacity: 0.7;
   color: var(--p-text);
   text-align: left;
-}
-
-.Name,
-.Detail {
-  transition: var(--p-duration-150) color var(--p-ease) 33ms;
 }

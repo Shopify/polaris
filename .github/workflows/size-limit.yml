@@ -2,8 +2,8 @@ name: Size limit
 
 on:
   pull_request:
-    branches:
-      - '**'
+    paths:
+      - 'polaris-react/**'
 
 jobs:
   size:
@@ -17,6 +17,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+      - run: yarn --frozen-lockfile
+      - run: yarn build
       - uses: andresz1/size-limit-action@v1.5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

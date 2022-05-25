@@ -2,17 +2,33 @@
   "version": "0.2.0",
   "configurations": [
     {
-      // this configuration relates to the orta.vscode-jest extension and allows
-      // vscode to launch jest through loom. A requirement of the
-      // extension is that the name of the launcher must be "vscode-jest-tests"
-      "type": "node",
-      "name": "vscode-jest-tests",
+      "name": "polaris-for-vscode: client",
+      "type": "extensionHost",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/loom",
-      "args": ["test", "--no-watch", "--debug"],
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "runtimeExecutable": "${execPath}/polaris-for-vscode",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceRoot}/polaris-for-vscode"
+      ],
+      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"],
+      "preLaunchTask": "polaris-for-vscode: start-dev",
+      "postDebugTask": "polaris-for-vscode: stop-dev"
+    },
+    {
+      "name": "polaris-for-vscode: server",
+      "type": "node",
+      "request": "attach",
+      "port": 6009,
+      "restart": true,
+      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "polaris-for-vscode: debug",
+      "configurations": [
+        "polaris-for-vscode: client",
+        "polaris-for-vscode: server"
+      ]
     }
   ]
 }

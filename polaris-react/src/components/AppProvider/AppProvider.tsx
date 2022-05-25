@@ -87,7 +87,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
       return;
     }
 
-    // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       link: linkComponent,
       intl: new I18n(i18n),

@@ -216,6 +216,8 @@ describe('<DropZone />', () => {
     [true, 'image', 'Drop images to upload', 'Upload images'],
     [false, 'file', 'Drop file to upload', 'Upload file'],
     [true, 'file', 'Drop files to upload', 'Upload files'],
+    [false, 'video', 'Drop video to upload', 'Upload video'],
+    [true, 'video', 'Drop videos to upload', 'Upload videos'],
   ])(
     'renders texts when allowMultiple is %s and type is %s',
     (allowMultiple, type, expectedTextStyle, expectedLabelText) => {

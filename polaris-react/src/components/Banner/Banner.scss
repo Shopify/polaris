@@ -49,7 +49,6 @@
 }
 
 .Banner {
-  --pc-banner-rgb-text: 33, 43, 54;
   --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
   --pc-banner-secondary-action-vertical-padding: calc(
     0.5 * (var(--p-line-height-6) - var(--p-line-height-2))
@@ -232,11 +231,11 @@
   padding-left: var(--p-space-2);
 
   &:hover > .Text {
-    box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.75) inset;
+    text-decoration: underline;
   }
 
   &:active > .Text {
-    box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0) inset;
+    text-decoration: underline;
   }
 
   &:focus > .Text {
@@ -244,7 +243,7 @@
     @include high-contrast-button-outline;
     @include focus-ring($style: 'focused');
     box-shadow: none;
-    background-color: transparent;
+    text-decoration: underline;
   }
 
   &:visited {
@@ -254,9 +253,6 @@
 
 .Text {
   @include focus-ring;
-  box-shadow: 0 -2px 0 0 rgba(var(--pc-banner-rgb-text), 0.25) inset;
-  will-change: box-shadow;
-  transition: box-shadow var(--p-duration-200) var(--p-ease);
 }
 
 .Button {

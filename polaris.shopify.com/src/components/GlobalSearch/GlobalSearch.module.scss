@@ -1,0 +1,124 @@
+.GlobalSearch {
+  position: relative;
+  width: 100%;
+  input {
+    background: #fff url(./SearchMajor.svg) no-repeat 14px center;
+    background-size: 16px auto;
+    border: var(--border);
+    font-weight: 435;
+    font-size: var(--font-size-100);
+
+    &:focus {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::placeholder {
+      color: inherit;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      appearance: none;
+    }
+  }
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 0;
+
+  h2 {
+    font-size: var(--font-size-200);
+  }
+
+  p {
+    font-size: var(--font-size-100);
+  }
+}
+
+.Results {
+  position: absolute;
+  z-index: 1;
+  border-radius: var(--border-radius-800);
+  width: calc(var(--page-max-width) * 0.66);
+  right: 0;
+  animation: search-results-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-origin: 100% 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  min-height: 50rem;
+  max-height: 50rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.025), 0 50px 300px rgba(0, 0, 0, 0.15),
+    0 0 0 2000px rgba(0, 0, 0, 0);
+  background: var(--surface);
+  scroll-behavior: smooth;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.ResultsGroup {
+  position: relative;
+  padding: 1.5rem 1.5rem 0 12rem;
+
+  h3 {
+    position: absolute;
+    left: 1.5rem;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-300);
+  }
+}
+
+.GuidelinesResults {
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius-400);
+}
+
+.GuidelinesResult {
+  position: relative;
+  border-bottom: var(--border);
+  padding: 1rem 1rem 0.85rem 50px;
+
+  .Icon {
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.isHighlighted {
+    box-shadow: var(--focus-outline);
+    border-radius: var(--border-radius-400);
+  }
+
+  a {
+    display: block;
+    color: inherit;
+  }
+
+  p {
+    margin-top: 0.25rem;
+    font-size: var(--font-size-200);
+  }
+}
+
+@keyframes search-results-enter {
+  from {
+    transform: scale(0.96) translateY(4px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(8px);
+    opacity: 1;
+  }
+}

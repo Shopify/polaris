@@ -9,7 +9,7 @@ import type {PopoverProps} from '../Popover';
 import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
 import {Combobox} from '../Combobox';
-import {Listbox} from '../Listbox';
+import {Listbox, AutoSelection} from '../Listbox';
 
 import {MappedAction, MappedOption} from './components';
 import styles from './Autocomplete.scss';
@@ -170,15 +170,18 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     <div role="status">{emptyState}</div>
   );
 
+  const autoSelection = actionBefore ? AutoSelection.First : undefined;
+
   return (
     <Combobox
       activator={textField}
       allowMultiple={allowMultiple}
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
+      willLoadMoreOptions={willLoadMoreResults}
     >
       {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
-        <Listbox onSelect={updateSelection}>
+        <Listbox autoSelection={autoSelection} onSelect={updateSelection}>
           {actionMarkup}
           {optionsMarkup && (!loading || willLoadMoreResults)
             ? optionsMarkup

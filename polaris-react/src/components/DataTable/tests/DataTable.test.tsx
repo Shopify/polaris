@@ -87,7 +87,10 @@ describe('<DataTable />', () => {
         />,
       );
 
-      const cells = dataTable.findAll(Cell);
+      const cells = dataTable
+        .findAll(Cell)
+        .filter((cell) => cell.prop('stickyHeadingCell') !== true);
+
       const firstColumnCells = cells.filter(
         (cell) => cell.prop('firstColumn') === true,
       );
@@ -403,7 +406,8 @@ describe('<DataTable />', () => {
 
       const sortableCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('sortable') === true);
+        .filter((cell) => cell.prop('sortable') === true)
+        .filter((cell) => cell.prop('stickyHeadingCell') !== true);
 
       expect(sortableCells).toHaveLength(2);
     });
@@ -416,7 +420,8 @@ describe('<DataTable />', () => {
 
       const nonSortableCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('sortable') === false);
+        .filter((cell) => cell.prop('sortable') === false)
+        .filter((cell) => cell.prop('stickyHeadingCell') !== true);
 
       expect(nonSortableCells).toHaveLength(3);
     });

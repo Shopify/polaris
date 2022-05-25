@@ -1,0 +1,75 @@
+@import '../../styles/common';
+
+.Grid {
+  display: grid;
+  gap: var(--pc-grid-gap-xs, var(--p-space-4));
+  grid-template-columns: repeat(var(--pc-grid-columns-xs, 6), minmax(0, 1fr));
+
+  @media #{$p-breakpoints-sm-up} {
+    gap: var(--pc-grid-gap-sm, var(--p-space-4));
+    grid-template-columns: repeat(var(--pc-grid-columns-sm, 6), minmax(0, 1fr));
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    gap: var(--pc-grid-gap-md, var(--p-space-4));
+    grid-template-columns: repeat(var(--pc-grid-columns-md, 6), minmax(0, 1fr));
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    gap: var(--pc-grid-gap-lg, var(--p-space-4));
+    grid-template-columns: repeat(
+      var(--pc-grid-columns-lg, 12),
+      minmax(0, 1fr)
+    );
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    gap: var(--pc-grid-gap-xl, var(--p-space-4));
+    grid-template-columns: repeat(
+      var(--pc-grid-columns-xl, 12),
+      minmax(0, 1fr)
+    );
+  }
+}
+
+.Cell {
+  min-width: 0;
+}
+
+@for $i from 1 through 6 {
+  .grid-#{$i}-column-xs {
+    grid-column-end: span #{$i};
+  }
+}
+
+@media #{$p-breakpoints-sm-up} {
+  @for $i from 1 through 6 {
+    .grid-#{$i}-column-sm {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-md-up} {
+  @for $i from 1 through 6 {
+    .grid-#{$i}-column-md {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-lg-up} {
+  @for $i from 1 through 12 {
+    .grid-#{$i}-column-lg {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-xl-up} {
+  @for $i from 1 through 12 {
+    .grid-#{$i}-column-xl {
+      grid-column-end: span #{$i};
+    }
+  }
+}

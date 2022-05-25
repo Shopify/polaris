@@ -19,6 +19,7 @@ module.exports = {
   addons: [
     {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
+    'storybook-addon-performance/register',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
@@ -30,9 +31,9 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              rootMode: 'upward',
               cacheDirectory: path.resolve(
-                __dirname,
-                '../build-internal/cache/storybook/markdown',
+                'build-internal/cache/storybook/markdown',
               ),
             },
           },

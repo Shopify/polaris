@@ -1,4 +1,6 @@
 import React from 'react';
+import {CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -35,7 +37,7 @@ export function ProgressBar({
   progress = 0,
   size = 'medium',
   color = 'highlight',
-  animated = true,
+  animated: hasAppearAnimation = true,
 }: ProgressBarProps) {
   const i18n = useI18n();
 
@@ -51,18 +53,38 @@ export function ProgressBar({
       : 'Polaris.ProgressBar.exceedWarningMessage',
     {progress},
   );
+
   const parsedProgress = parseProgress(progress, warningMessage);
+
+  const progressBarDuration = hasAppearAnimation
+    ? tokens.motion['duration-500'].value
+    : tokens.motion['duration-0'].value;
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
     <div className={className}>
       <progress className={styles.Progress} value={parsedProgress} max="100" />
-      <div
-        className={classNames(styles.Indicator, animated && styles.Animated)}
-        style={{width: `${parsedProgress}%`}}
+      <CSSTransition
+        in
+        appear
+        timeout={parseInt(progressBarDuration, 10)}
+        classNames={{
+          appearActive: styles.IndicatorAppearActive,
+          appearDone: styles.IndicatorAppearDone,
+        }}
       >
-        <span className={styles.Label}>{parsedProgress}%</span>
-      </div>
+        <div
+          className={styles.Indicator}
+          style={
+            {
+              '--pc-progress-bar-duration': progressBarDuration,
+              '--pc-progress-bar-percent': parsedProgress / 100,
+            } as React.CSSProperties
+          }
+        >
+          <span className={styles.Label}>{parsedProgress}%</span>
+        </div>
+      </CSSTransition>
     </div>
     /* eslint-enable @shopify/jsx-no-hardcoded-content */
   );

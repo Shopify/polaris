@@ -1,0 +1,80 @@
+.Header {
+  &.withBorder {
+    border-bottom: var(--border);
+  }
+}
+
+.HeaderInner {
+  display: flex;
+  gap: 2em;
+  height: var(--header-height);
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-inherit);
+  gap: 0.7rem;
+  font-weight: 500;
+  font-size: var(--font-size-200);
+  p {
+    margin: 0;
+  }
+
+  span {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+.Nav {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-200);
+  font-weight: 500;
+  margin-right: auto;
+
+  li {
+    a {
+      color: inherit;
+      border-left: var(--border);
+      padding: 0.5rem 1rem;
+
+      &:focus-within {
+        position: relative;
+        z-index: 1;
+        border-radius: var(--border-radius-200);
+      }
+
+      &:hover {
+        color: var(--text-strong);
+      }
+
+      &[aria-current="page"] {
+        color: var(--primary);
+      }
+    }
+
+    &:first-child a {
+      border-left: none;
+    }
+  }
+}
+
+.SearchWrapper {
+  display: flex;
+  align-items: center;
+  width: 16rem;
+
+  .Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    border-radius: 100%;
+  }
+}
+
+.Footer {
+  text-align: center;
+  padding: 3rem 0;
+}

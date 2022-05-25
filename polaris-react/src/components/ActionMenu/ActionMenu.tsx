@@ -62,6 +62,10 @@ export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {
 function convertGroupToSection({
   title,
   actions,
+  disabled,
 }: MenuGroupDescriptor): ActionListSection {
-  return {title, items: actions};
+  return {
+    title,
+    items: disabled ? [] : actions,
+  };
 }

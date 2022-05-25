@@ -7,13 +7,14 @@ import React, {
   useState,
   Children,
 } from 'react';
-import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
+import {debounce} from '../../utilities/debounce';
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';

@@ -1,7 +1,5 @@
 @import '../../../../styles/common';
 
-$breakpoint: 768px;
-
 .SecondaryAction {
   --pc-secondary-action-button-spacing: var(--p-space-3);
   // stylelint-disable declaration-no-important
@@ -22,7 +20,7 @@ $breakpoint: 768px;
       background: var(--p-background-pressed) !important;
     }
 
-    @include breakpoint-after($breakpoint) {
+    @media #{$p-breakpoints-md-up} {
       border: none !important;
       @include focus-ring($border-width: 0);
     }

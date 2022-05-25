@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import debounce from 'lodash/debounce';
 
+import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import type {
   ActionListItemDescriptor,
@@ -8,6 +8,7 @@ import type {
   MenuGroupDescriptor,
 } from '../../../../types';
 import {ButtonGroup} from '../../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
 import {SecondaryAction} from '../SecondaryAction';

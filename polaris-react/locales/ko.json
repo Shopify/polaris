@@ -104,7 +104,11 @@
         "actionHintFile": "또는 업로드할 파일 놓기",
         "actionHintImage": "또는 업로드할 이미지 놓기",
         "labelFile": "파일 업로드",
-        "labelImage": "이미지 업로드"
+        "labelImage": "이미지 업로드",
+        "overlayTextVideo": "업로드할 동영상 놓기",
+        "actionTitleVideo": "동영상 추가",
+        "actionHintVideo": "또는 업로드할 동영상 놓기",
+        "labelVideo": "동영상 업로드"
       },
       "allowMultiple": {
         "overlayTextFile": "업로드할 파일 놓기",
@@ -114,8 +118,13 @@
         "actionHintFile": "또는 업로드할 파일 놓기",
         "actionHintImage": "또는 업로드할 이미지 놓기",
         "labelFile": "파일 업로드",
-        "labelImage": "이미지 업로드"
-      }
+        "labelImage": "이미지 업로드",
+        "overlayTextVideo": "업로드할 동영상 놓기",
+        "actionTitleVideo": "동영상 추가",
+        "actionHintVideo": "또는 업로드할 동영상 놓기",
+        "labelVideo": "동영상 업로드"
+      },
+      "errorOverlayTextVideo": "동영상 형식이 유효하지 않음"
     },
     "EmptySearchResult": {
       "altText": "빈 검색 결과"

@@ -1,22 +1,35 @@
 @import '../../styles/common';
 
-@mixin skeleton-thumbnail-size($size) {
-  height: thumbnail-size($size);
-  width: thumbnail-size($size);
+.SkeletonThumbnail {
+  --pc-skeleton-thumbnail-extra-small-size: 24px;
+  --pc-skeleton-thumbnail-small-size: 40px;
+  --pc-skeleton-thumbnail-medium-size: 60px;
+  --pc-skeleton-thumbnail-large-size: 80px;
+  display: flex;
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-base);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
 }
 
-.SkeletonThumbnail {
-  @include skeleton-content;
+.sizeExtraSmall {
+  height: var(--pc-skeleton-thumbnail-extra-small-size);
+  width: var(--pc-skeleton-thumbnail-extra-small-size);
 }
 
 .sizeSmall {
-  @include skeleton-thumbnail-size(small);
+  height: var(--pc-skeleton-thumbnail-small-size);
+  width: var(--pc-skeleton-thumbnail-small-size);
 }
 
 .sizeMedium {
-  @include skeleton-thumbnail-size(medium);
+  height: var(--pc-skeleton-thumbnail-medium-size);
+  width: var(--pc-skeleton-thumbnail-medium-size);
 }
 
 .sizeLarge {
-  @include skeleton-thumbnail-size(large);
+  height: var(--pc-skeleton-thumbnail-large-size);
+  width: var(--pc-skeleton-thumbnail-large-size);
 }

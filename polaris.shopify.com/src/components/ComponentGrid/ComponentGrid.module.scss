@@ -1,0 +1,46 @@
+.ComponentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.75rem;
+}
+
+.Component {
+  display: flex;
+
+  a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-400);
+    color: inherit;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+  }
+
+  &.isHighlighted a {
+    box-shadow: var(--focus-outline);
+  }
+
+  .ComponentDescription {
+    padding: 1rem;
+    border-top: var(--border);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  p {
+    margin-top: 0.35rem;
+    font-size: var(--font-size-100);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.Preview {
+  filter: brightness(0.99);
+}

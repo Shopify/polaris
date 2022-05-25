@@ -1,12 +1,13 @@
 import React from 'react';
-import {addParameters, addDecorator} from '@storybook/react';
+import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
+import {GridOverlay} from './GridOverlay';
 
 function StrictModeDecorator(Story, context) {
-  const Wrapper =
-    context.globals.strictMode === 'true' ? React.StrictMode : React.Fragment;
+  const {strictMode} = context.globals;
+  const Wrapper = strictMode ? React.StrictMode : React.Fragment;
 
   return (
     <Wrapper>
@@ -25,10 +26,25 @@ function AppProviderDecorator(Story, context) {
   );
 }
 
+function GridOverlayDecorator(Story, context) {
+  const {showGrid, gridInFrame, gridWidth, gridLayer} = context.globals;
+
+  const gridOverlay = showGrid ? (
+    <GridOverlay inFrame={gridInFrame} maxWidth={gridWidth} layer={gridLayer} />
+  ) : null;
+
+  return (
+    <>
+      {gridOverlay}
+      <Story />
+    </>
+  );
+}
+
 export const globalTypes = {
   strictMode: {
     name: 'React.StrictMode',
-    defaultValue: 'false',
+    defaultValue: false,
     toolbar: {
       items: [
         {title: 'Disabled', value: 'false'},
@@ -39,4 +55,9 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [StrictModeDecorator, AppProviderDecorator];
+export const decorators = [
+  GridOverlayDecorator,
+  StrictModeDecorator,
+  AppProviderDecorator,
+  withPerformance,
+];

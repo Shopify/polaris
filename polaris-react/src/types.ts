@@ -68,6 +68,8 @@ export interface BaseButton {
   ariaExpanded?: boolean;
   /** Indicates the ID of the element that describes the button */
   ariaDescribedBy?: string;
+  /** Indicates the current checked state of the button when acting as a toggle or switch */
+  ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */
@@ -167,15 +169,20 @@ export interface PlainAction extends Action {
 }
 
 export interface ActionListItemDescriptor
-  extends IconableAction,
-    DisableableAction,
-    BadgeAction,
+  extends DisableableAction,
     DestructableAction {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** @deprecated Badge component */
+  badge?: {
+    status: 'new';
+    content: string;
+  };
   /** Additional hint text to display with item */
   helpText?: string;
-  /** Image source */
+  /** @deprecated Source of the icon */
+  icon?: IconSource;
+  /** @deprecated Image source */
   image?: string;
   /** Prefix source */
   prefix?: React.ReactNode;
@@ -219,10 +226,14 @@ export interface MenuGroupDescriptor extends BadgeAction {
   icon?: IconableAction['icon'];
   /** Action details */
   details?: React.ReactNode;
+  /** Disables action button */
+  disabled?: boolean;
   /** Zero-indexed numerical position. Overrides the group's order in the menu. */
   index?: number;
   /** Callback when any action takes place */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Callback when the menu is clicked */
+  onClick?(openActions: () => void): void;
 }
 
 export interface ConnectedDisclosure {
