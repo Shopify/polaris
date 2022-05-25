@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Adds the ability for the primaryAction in PageActions to take a ReactNode
+Adds support for setting a `ReactNode` on the `PageActions` `primaryActions` prop

@@ -125,7 +125,7 @@ Use to create a custom primary action.
       primary
       connectedDisclosure={{
         accessibilityLabel: 'Other save actions',
-        actions: [{content: 'Save as new'}],
+        actions: [{content: 'Save as draft'}],
       }}
     >
       Save
