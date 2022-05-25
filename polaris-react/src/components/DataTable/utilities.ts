@@ -1,4 +1,4 @@
-import type {DataTableState} from './types';
+import type {ColumnVisibilityData, DataTableState} from './types';
 
 interface TableMeasurements {
   firstVisibleColumnIndex: number;
@@ -7,7 +7,7 @@ interface TableMeasurements {
 }
 
 export function measureColumn(tableData: TableMeasurements) {
-  return function (column: HTMLElement, index: number) {
+  return function (column: HTMLElement, index: number): ColumnVisibilityData {
     const {
       firstVisibleColumnIndex,
       tableLeftVisibleEdge: tableStart,
@@ -19,6 +19,7 @@ export function measureColumn(tableData: TableMeasurements) {
     const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
     const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
     const isVisible = isVisibleLeft || isVisibleRight;
+    const width = column.offsetWidth;
 
     if (isVisible) {
       tableData.firstVisibleColumnIndex = Math.min(
@@ -26,8 +27,7 @@ export function measureColumn(tableData: TableMeasurements) {
         index,
       );
     }
-
-    return {leftEdge, rightEdge, isVisible};
+    return {leftEdge, rightEdge, isVisible, width, index};
   };
 }
 

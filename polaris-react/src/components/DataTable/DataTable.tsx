@@ -425,10 +425,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (condensed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(headerCell.selector);
+      const {hasFixedFirstColumn} = this.props;
+      const firstColumnWidth = hasFixedFirstColumn
+        ? headerCells[0].clientWidth
+        : 0;
 
       if (headerCells.length > 0) {
         const firstVisibleColumnIndex = headerCells.length - 1;
-        const tableLeftVisibleEdge = scrollContainer.scrollLeft;
+        const tableLeftVisibleEdge =
+          scrollContainer.scrollLeft + firstColumnWidth;
 
         const tableRightVisibleEdge =
           scrollContainer.scrollLeft + dataTable.offsetWidth;
@@ -446,10 +451,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         const lastColumn =
           columnVisibilityData[columnVisibilityData.length - 1];
 
+        const isScrolledFarthestLeft = hasFixedFirstColumn
+          ? tableLeftVisibleEdge === firstColumnWidth
+          : tableLeftVisibleEdge === 0;
+
         return {
           columnVisibilityData,
           ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
-          isScrolledFarthestLeft: tableLeftVisibleEdge === 0,
+          isScrolledFarthestLeft,
           isScrolledFarthestRight:
             lastColumn.rightEdge <= tableRightVisibleEdge,
         };
@@ -540,18 +549,34 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
   private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn} = this.state;
+    const firstColumnWidth = this.state.columnVisibilityData[0]?.rightEdge;
+    if (!currentColumn || !previousColumn) {
+      return;
+    }
+
+    let prevWidths = 0;
+    for (let index = 0; index < currentColumn.index; index++) {
+      prevWidths += this.state.columnVisibilityData[index].width;
+    }
+
     const {current: scrollContainer} = this.scrollContainer;
 
     const handleScroll = () => {
-      if (!currentColumn || !previousColumn) {
-        return;
-      }
-
-      if (scrollContainer) {
-        scrollContainer.scrollLeft =
+      let newScrollLeft = 0;
+      if (this.props.hasFixedFirstColumn) {
+        newScrollLeft =
+          direction === 'right'
+            ? prevWidths - firstColumnWidth + currentColumn.width
+            : prevWidths - previousColumn.width - firstColumnWidth;
+      } else {
+        newScrollLeft =
           direction === 'right'
             ? currentColumn.rightEdge
             : previousColumn.leftEdge;
+      }
+
+      if (scrollContainer) {
+        scrollContainer.scrollLeft = newScrollLeft;
 
         requestAnimationFrame(() => {
           this.setState((prevState) => ({
@@ -560,7 +585,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         });
       }
     };
-
     return handleScroll;
   };
 

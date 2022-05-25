@@ -5,6 +5,8 @@ export interface ColumnVisibilityData {
   leftEdge: number;
   rightEdge: number;
   isVisible?: boolean;
+  width: number;
+  index: number;
 }
 
 export interface DataTableState {
