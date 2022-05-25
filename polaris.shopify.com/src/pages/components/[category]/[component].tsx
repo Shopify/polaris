@@ -21,9 +21,10 @@ import NavContentTOCLayout from "../../../components/NavContentTOCLayout";
 interface Props {
   name: string;
   readme: string;
+  examples: any
 }
 
-const Components: NextPage<Props> = ({ name, readme }) => {
+const Components: NextPage<Props> = ({ examples, name, readme }) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
@@ -31,6 +32,18 @@ const Components: NextPage<Props> = ({ name, readme }) => {
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>
+
+      {examples?.map((example) => {
+        const {fileName} = example
+        const url = fileName.replace('.tsx', '');
+        const iframeUrl = `/examples/${url}`;
+
+        return (
+          <div key={fileName}>
+            <iframe src={iframeUrl}></iframe>
+          </div>
+        )
+      })}
 
       <NavContentTOCLayout
         navItems={navItems}
@@ -52,6 +65,12 @@ export const getStaticProps: GetStaticProps<Props, { component: string }> =
         "utf-8"
       )
     );
+    let examples = JSON.parse(
+      fs.readFileSync(
+        path.join(process.cwd(), "src/data/components.examples.json"),
+        "utf-8"
+      )
+    );
 
     if (componentParam) {
       const slug = slugify(componentParam);
@@ -68,6 +87,7 @@ export const getStaticProps: GetStaticProps<Props, { component: string }> =
           const props: Props = {
             name,
             readme: componentReadme,
+            examples: examples[name] || []
           };
 
           return { props };

@@ -5,14 +5,15 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isPolaris = router.asPath.startsWith("/generated-examples");
+  const isPolaris = router.asPath.startsWith("/examples") || router.asPath.startsWith("/generated-examples");
+
   return (
     <Page skipHeaderAndFooter={isPolaris}>
       <Component {...pageProps} />
-      {isPolaris && (
+      {false && isPolaris && (
         <link
           rel="stylesheet"
-          href="https://unpkg.com/@shopify/polaris@9.8.0/build/esm/styles.css"
+          href="https://unpkg.com/@shopify/polaris@9.9.0-next.1/build/esm/styles.css"
         />
       )}
     </Page>
