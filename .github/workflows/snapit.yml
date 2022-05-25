@@ -18,7 +18,7 @@ jobs:
       - name: Enforce permission requirement
         uses: prince-chrismc/check-actor-permissions-action@v1
         with:
-          permission: admin
+          permission: write
 
       - name: Add initial reaction
         uses: peter-evans/create-or-update-comment@v2
