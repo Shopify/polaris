@@ -244,7 +244,7 @@ export function TextField({
     const input = inputRef.current;
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
-  }, [focused]);
+  }, [focused, verticalContent]);
 
   useEffect(() => {
     const input = inputRef.current;
