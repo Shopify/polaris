@@ -1,9 +1,3 @@
-.Header {
-  &.withBorder {
-    box-shadow: 0 0.5px var(--border-color);
-  }
-}
-
 .HeaderInner {
   display: flex;
   gap: 2em;

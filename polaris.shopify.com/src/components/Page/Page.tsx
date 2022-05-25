@@ -42,17 +42,11 @@ const headerNavItems: {
 function Page({ skipHeaderAndFooter = false, children }: Props) {
   const router = useRouter();
 
-  const hasBorder =
-    router.asPath.startsWith("/guidelines") ||
-    router.asPath.startsWith("/components");
-
   return (
     <div className={className(styles.Page)}>
       {!skipHeaderAndFooter && (
         <>
-          <div
-            className={className(styles.Header, hasBorder && styles.withBorder)}
-          >
+          <div className={styles.Header}>
             <MaxPageWidthDiv className={styles.HeaderInner}>
               <Link href="/">
                 <a className={styles.Logo}>

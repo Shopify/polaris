@@ -4,18 +4,17 @@
 }
 
 .Nav {
-  min-width: 17rem;
-  max-width: 17rem;
+  min-width: 19rem;
+  max-width: 19rem;
   padding-top: 3rem;
-  box-shadow: 0.5px 0 var(--border-color);
+  // box-shadow: 0.5px 0 var(--border-color);
 }
 
 .Post {
   padding-top: 3rem;
-  padding-left: 3rem;
   position: relative;
   .NavContentTOCLayout.showTOC & {
-    max-width: 44rem;
+    max-width: 40rem;
   }
 }
 
@@ -24,13 +23,13 @@
   height: 100%;
   font-size: var(--font-size-100);
   width: var(--toc-max-width);
-  right: calc((var(--toc-max-width) + 3rem) * -1);
+  right: calc((var(--toc-max-width) + 2rem) * -1);
 
   > ul {
     position: sticky;
     top: 2rem;
     box-shadow: -0.5px 0 var(--border-color);
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
   }
 
   a {
