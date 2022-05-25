@@ -1,21 +1,29 @@
 name: Snapshot
 
 on:
-  repository_dispatch:
+  issue_comment:
     types:
-      - snapshot-release-command
+      - created
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   snapshot:
-    name: Release
+    name: Snapshot Release
+    if: |
+      github.event.issue.pull_request &&
+      github.event.comment.body == '/snapshot-release' &&
+      github.event.comment.author_association == 'MEMBER'
     runs-on: ubuntu-latest
     steps:
+      - name: Add initial reaction
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: github.event.comment.id
+          reactions: eyes
+
       - name: Checkout Repo
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.client_payload.pull_request.head.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -25,20 +33,18 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Checkout snapshot branch
-        run: |
-          git checkout -b snapshot
-          git reset --hard ${{ github.event.client_payload.pull_request.head.ref }}
-
       - name: Create release Pull Request or publish to NPM
-        run: echo "Creating release via Changesets..."
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: yarn version-packages --snapshot snapshot-release
+          publish: yarn release --no-git-tags --snapshot
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Create release Pull Request or publish to NPM
-      #   id: changesets
-      #   uses: changesets/action@v1
-      #   with:
-      #     version: yarn version-packages --snapshot snapshot
-      #     publish: yarn release --no-git-tags --snapshot
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add final reaction
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: github.event.comment.id
+          reactions: ship
