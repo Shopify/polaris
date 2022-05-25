@@ -8,14 +8,17 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  snapshot:
-    name: Snapshot Release
+  release:
     if: |
       github.event.issue.pull_request &&
-      github.event.comment.body == '/snapshot-release' &&
-      github.event.comment.author_association == 'MEMBER'
+      github.event.comment.body == '/snapshot-release'
     runs-on: ubuntu-latest
     steps:
+      - name: Enforce permission requirement
+        uses: prince-chrismc/check-actor-permissions-action@v1
+        with:
+          permission: admin
+
       - name: Add initial reaction
         uses: peter-evans/create-or-update-comment@v2
         with:
