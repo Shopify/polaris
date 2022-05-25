@@ -33,7 +33,8 @@ polaris/
 ### Install dependencies and build workspaces
 
 ```sh
-yarn && yarn build
+yarn
+yarn build
 ```
 
 ### Run a command
