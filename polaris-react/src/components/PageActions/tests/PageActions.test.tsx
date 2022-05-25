@@ -54,6 +54,15 @@ describe('<PageActions />', () => {
       mountWithApp(<PageActions primaryAction={mockAction} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
     });
+
+    it('renders <CustomPrimaryAction /> if `ReactNode` is provided as `primaryAction`', () => {
+      const CustomPrimaryAction = () => null;
+      const pageActions = mountWithApp(
+        <PageActions primaryAction={<CustomPrimaryAction />} />,
+      );
+
+      expect(pageActions).toContainReactComponent(CustomPrimaryAction);
+    });
   });
 
   describe('secondaryActions', () => {
