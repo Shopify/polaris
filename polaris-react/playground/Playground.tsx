@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Button, Page} from '../src';
+import {Page} from '../src';
 
 export function Playground() {
   return (
