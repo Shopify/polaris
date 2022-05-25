@@ -20,7 +20,7 @@ jobs:
           script: |
             const results = await github.rest.orgs.checkMembershipForUser({
               org: 'Shopify',
-              username: 'aaronccasanova',
+              username: context.actor,
             })
             
             console.log('results: ', results)
