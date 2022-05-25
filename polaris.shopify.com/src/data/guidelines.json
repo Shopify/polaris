@@ -7,7 +7,11 @@
       "categoryName": null,
       "categorySlug": null,
       "order": 2,
-      "keywords": ["upcoming", "new features", "updates"]
+      "keywords": [
+        "upcoming",
+        "new features",
+        "updates"
+      ]
     },
     "intro": "The latest component updates and changes. If you have a suggestion for a new\ncomponent not listed here,\n[create an issue on GitHub](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md)."
   },
@@ -308,7 +312,13 @@
       "name": "Content/App release notes",
       "slug": "app-release-notes",
       "icon": "IconNotes",
-      "keywords": ["release", "notes", "app", "updates", "fixes"]
+      "keywords": [
+        "release",
+        "notes",
+        "app",
+        "updates",
+        "fixes"
+      ]
     },
     "intro": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business."
   },
@@ -358,7 +368,11 @@
       "name": "Design/Colors",
       "slug": "colors",
       "icon": "IconColors",
-      "keywords": ["visual patterns", "color strategy", "color use"]
+      "keywords": [
+        "visual patterns",
+        "color strategy",
+        "color use"
+      ]
     },
     "intro": "Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable."
   },
@@ -367,7 +381,9 @@
       "name": "Design/Data visualizations",
       "slug": "data-visualizations",
       "icon": "IconDataVisualization",
-      "keywords": ["data viz"]
+      "keywords": [
+        "data viz"
+      ]
     },
     "intro": "Visualizations surface patterns in data, and provide immediate answers to a\nsingle, specific question."
   },
@@ -376,7 +392,11 @@
       "name": "Design/Design",
       "slug": "design",
       "icon": "IconConfetti",
-      "keywords": ["visual design", "design language", "design"]
+      "keywords": [
+        "visual design",
+        "design language",
+        "design"
+      ]
     },
     "intro": "<!-- keywords: design, new design, new polaris, changes, changing, update, design language -->"
   },
@@ -411,7 +431,10 @@
       "name": "Design/Illustrations",
       "slug": "illustrations",
       "icon": "IconIllustrations",
-      "keywords": ["drawings", "pictures"]
+      "keywords": [
+        "drawings",
+        "pictures"
+      ]
     },
     "intro": "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience."
   },
@@ -440,7 +463,11 @@
       "name": "Design/Sounds",
       "slug": "sounds",
       "icon": "IconSounds",
-      "keywords": ["audio", "sonic", "noise"]
+      "keywords": [
+        "audio",
+        "sonic",
+        "noise"
+      ]
     },
     "intro": "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable."
   },
@@ -466,7 +493,11 @@
       "name": "Design/Typography",
       "slug": "typography",
       "icon": "IconTitlesAndText",
-      "keywords": ["type styles", "font sizes", "fonts"]
+      "keywords": [
+        "type styles",
+        "font sizes",
+        "fonts"
+      ]
     },
     "intro": "Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what."
   },
@@ -673,7 +704,12 @@
       "name": "Legal/License",
       "slug": "license",
       "icon": "IconGetStarted",
-      "keywords": ["legal", "license", "agreement", "rules"]
+      "keywords": [
+        "legal",
+        "license",
+        "agreement",
+        "rules"
+      ]
     },
     "intro": "Thank you for being a part of the Shopify community."
   },
@@ -682,16 +718,41 @@
       "name": "Patterns/Error messages",
       "slug": "error-messages",
       "icon": "IconErrors",
-      "keywords": ["error states", "invalid", 500, 400, 404, "error pages"]
+      "keywords": [
+        "error states",
+        "invalid",
+        500,
+        400,
+        404,
+        "error pages"
+      ]
     },
     "intro": "Error messages can be scary. Make errors visible to merchants, easy to\nunderstand, and helpful."
+  },
+  {
+    "frontMatter": {
+      "name": "Patterns/Help content",
+      "slug": "help-content",
+      "icon": "IconCraftingAdmin",
+      "keywords": [
+        "help text",
+        "learn more",
+        "help center",
+        "help"
+      ]
+    },
+    "intro": "​\nHelp content is educational text that describes interactive elements or offers information about concepts in the UI."
   },
   {
     "frontMatter": {
       "name": "Patterns/Home cards",
       "slug": "home-cards",
       "icon": "CategoriesMajor",
-      "keywords": ["home cards", "insights", "milestones"]
+      "keywords": [
+        "home cards",
+        "insights",
+        "milestones"
+      ]
     },
     "intro": "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance."
   },
@@ -700,7 +761,14 @@
       "name": "Patterns/Page layouts",
       "slug": "layout",
       "icon": "IconStructure",
-      "keywords": ["layout", "page", "columns", "hierarchy", "spacing", "stack"]
+      "keywords": [
+        "layout",
+        "page",
+        "columns",
+        "hierarchy",
+        "spacing",
+        "stack"
+      ]
     },
     "intro": "Layout patterns provide common ways to arrange the content of a screen."
   },
@@ -739,7 +807,11 @@
       "name": "Patterns/Text fields",
       "slug": "text-fields",
       "icon": "IconCraftingAdmin",
-      "keywords": ["text fields", "search", "placeholder text"]
+      "keywords": [
+        "text fields",
+        "search",
+        "placeholder text"
+      ]
     },
     "intro": "Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more."
   },
@@ -764,7 +836,9 @@
       "name": "Tokens/All tokens",
       "slug": "all-tokens",
       "icon": "IconNotes",
-      "keywords": ["tokens"],
+      "keywords": [
+        "tokens"
+      ],
       "🔥🔥🔥 HEADS UP": "This file is automaticially generated. Don't edit it by hand since your changes will be overridden next time it is generated. To generate a new version, run `yarn generate-tokens-docs`"
     },
     "intro": "View all available tokens for Polaris projects."
@@ -774,7 +848,9 @@
       "name": "Tokens/Getting started with tokens",
       "slug": "getting-started-with-tokens",
       "icon": "IconNotes",
-      "keywords": ["tokens"]
+      "keywords": [
+        "tokens"
+      ]
     },
     "intro": "Design tokens allow us to ship design decisions with consistency and scale."
   },
@@ -783,7 +859,11 @@
       "name": "What’s new?/Roadmap",
       "slug": "roadmap",
       "icon": "IconShipment",
-      "keywords": ["upcoming", "new features", "updates"]
+      "keywords": [
+        "upcoming",
+        "new features",
+        "updates"
+      ]
     },
     "intro": "Here’s what the Polaris design system team is working on right now."
   },
@@ -792,7 +872,10 @@
       "name": "What’s new?/What’s new?",
       "slug": "whats-new",
       "icon": "IconConfetti",
-      "keywords": ["release notes", "updates"]
+      "keywords": [
+        "release notes",
+        "updates"
+      ]
     },
     "intro": "The latest news, updates, and changes to the Polaris design system."
   }

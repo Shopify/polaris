@@ -16,7 +16,7 @@ const Guidelines: NextPage<Props> = ({ markdownFile }) => {
   return <GuidelinesPage markdownFile={markdownFile} />;
 };
 
-const postsDirectory = path.join(process.cwd(), "src/pages-from-old-website");
+const postsDirectory = path.join(process.cwd(), "content");
 
 export const getStaticProps: GetStaticProps<
   Props,
