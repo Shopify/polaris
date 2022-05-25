@@ -7,20 +7,23 @@ on:
 jobs:
   check-org:
     name: Check org
-    if:
-      ${{ github.event.issue.pull_request && github.event.comment.body ==
+    if: ${{ github.event.issue.pull_request && github.event.comment.body ==
       '/check-org' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check org
+      - name: Get org status
         uses: actions/github-script@v6
+        id: get_org_status
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const results = await github.rest.orgs.checkMembershipForUser({
+            const { status } = await github.rest.orgs.checkMembershipForUser({
               org: 'Shopify',
               username: context.actor,
             })
-            
-            console.log('results: ', results)
+            return status === 204
+
+      - name: Check org status
+        if: steps.get_org_status.outputs.result === 'false'
+        run: exit 1
