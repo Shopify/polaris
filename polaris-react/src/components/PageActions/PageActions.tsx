@@ -32,9 +32,6 @@ export function PageActions({
   } else if (primaryAction) {
     primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
   }
-  // const primaryActionMarkup = primaryAction
-  //   ? buttonsFrom(primaryAction, {primary: true})
-  //   : null;
 
   let secondaryActionsMarkup: MaybeJSX = null;
   if (isInterface(secondaryActions) && secondaryActions.length > 0) {
