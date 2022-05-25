@@ -1,15 +1,19 @@
 const fs = require('node:fs');
 const path = require('path');
 
-const {tokens} = require('@shopify/polaris-tokens');
-
 const polarisReactDir = path.join(__dirname, '..');
+const tokenGroupsDir = path.join(polarisReactDir, 'src/tokens/token-groups');
 const stylesDir = path.join(polarisReactDir, 'src/styles');
 
 const file = fs.createWriteStream(path.join(stylesDir, '_media-queries.scss'));
 
-const breakpointEntries = Object.entries(tokens.breakpoints).map(
-  ([token, {value: breakpoint}]) => [`$p-${token}`, breakpoint],
+const breakpointsTokenGroup = require(path.join(
+  tokenGroupsDir,
+  'breakpoints.json',
+));
+
+const breakpointEntries = Object.entries(breakpointsTokenGroup).map(
+  ([token, breakpoint]) => [`$p-${token}`, breakpoint],
 );
 
 file.write(`/* stylelint-disable unit-disallowed-list */\n`);
