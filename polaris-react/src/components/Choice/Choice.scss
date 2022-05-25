@@ -70,21 +70,7 @@
 }
 
 .HelpText {
-  font-size: var(--p-font-size-3);
-  font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-line-height-2);
-
-  text-transform: initial;
-  letter-spacing: initial;
-
+  @include text-style-body;
   @include text-emphasis-subdued;
   margin-bottom: var(--p-space-1);
-}
-
-.DescriptionsMoreSpacing {
-  padding-left: calc(var(--p-space-4) + var(--p-choice-size));
-
-  @include when-typography-not-condensed {
-    padding-left: calc(var(--p-space-2) + var(--p-choice-size));
-  }
 }
