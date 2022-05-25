@@ -8,7 +8,7 @@ $pageMaxWidth: 1320px;
 
 @mixin heading-1 {
   @include heading;
-  font-size: var(--font-size-1000);
+  font-size: var(--font-size-900);
   letter-spacing: var(--letter-spacing-100);
 }
 

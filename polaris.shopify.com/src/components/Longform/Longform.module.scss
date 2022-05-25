@@ -45,11 +45,11 @@
   }
 
   h2 {
-    margin-top: 2.5rem;
+    margin-top: 3.25rem;
   }
 
   h3 {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     + p {
       margin-top: -0.5rem;
     }
@@ -69,10 +69,13 @@
   }
 
   hr {
-    height: 0.5px;
-    margin: 3rem 0;
-    background: var(--border-color);
+    height: 1px;
+    box-shadow: 0 0.5px var(--border-color);
+    margin: 1rem 0;
+    background: var(--surface);
     border-radius: var(--border-radius-200);
+    opacity: 0;
+    display: none;
   }
 
   pre {
@@ -98,11 +101,9 @@
 }
 
 .Content {
-  p:first-of-type {
+  > p:first-of-type {
     margin-bottom: 2rem;
     font-size: var(--font-size-500);
-    letter-spacing: -0.01em;
-    font-weight: 550;
     color: var(--text-strong);
   }
 }

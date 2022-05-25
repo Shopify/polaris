@@ -159,7 +159,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   // Border width
   else if (name.includes("border-width")) {
     return (
-      <div style={{ ...wrapperStyles, display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          ...wrapperStyles,
+          background: "var(--decorative-3)",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <div
           style={{
             height: value,

@@ -9,28 +9,12 @@ We have a [GitHub action](https://github.com/changesets/action) that
 
 To perform a release, merge in the **"Version Packages"** PR.
 
-## Prereleases
+## Snapshot Release
 
-Prereleases are created the same way as releases, but are merged into the `next` branch. To create a prerelease:
+[Snapshot releases](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) are a way to release your changes for testing without updating the versions. To create a snapshot release:
 
-1. If [`next`](https://github.com/Shopify/polaris/tree/next) **does not** already exist, create one from `main`:
-
-   ```sh
-   git checkout -b next origin/main
-   git push --set-upstream origin next
-   ```
-
-2. If [`next`](https://github.com/Shopify/polaris/tree/next) already exists, rebase it with `main`
-
-   ```sh
-   git checkout next
-   git pull
-   git rebase origin/main
-   git push --force
-   ```
-
-3. After pushing `next` to GitHub, the [prerelease workflow](https://github.com/Shopify/polaris/blob/main/.github/workflows/prerelease.yml) will generate a PR 🎉
-4. Merge in the newly created **"Version Packages (next)"** PR to release the prerelease versions
+1. Add a comment in your feature branch PR with the slash command "/snapshot-release"
+2. This will trigger the `snapshot.yml` workflow to create a new snapshot release
 
 ### [polaris-for-figma](/polaris-for-figma)
 
