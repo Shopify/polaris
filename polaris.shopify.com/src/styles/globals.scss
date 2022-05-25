@@ -146,7 +146,7 @@ h4 {
 // Legacy CSS hacks to work with content from old site (used in markdown files)
 .usage-list {
   margin: 1.5rem 0;
-  font-size: 0.9rem;
+  font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
