@@ -79,7 +79,7 @@ jobs:
               const multiple = newTags.length > 1
               const body = (
                 `🫰✨ **Thanks @${context.actor}! ` +
-                `Your snapshot${multiple ? 's have' : ' has'} been published to NPM.**\n\n` +
+                `Your snapshot${multiple ? 's have' : ' has'} been published to npm.**\n\n` +
                 `Test the snapshot${multiple ? 's' : ''} by updating your \`package.json\` ` +
                 `with the newly published version${multiple ? 's' : ''}:\n` +
                 newTags.map(tag => (
