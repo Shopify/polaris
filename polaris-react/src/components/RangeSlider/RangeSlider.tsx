@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {useUniqueId} from '../../utilities/unique-id';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import type {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 import {SingleThumb, DualThumb} from './components';
@@ -20,6 +21,7 @@ export function RangeSlider({
   value,
   ...rest
 }: Props) {
+  usePerformanceBenchmark('RangeSlider');
   const id = useUniqueId('RangeSlider');
 
   const sharedProps = {

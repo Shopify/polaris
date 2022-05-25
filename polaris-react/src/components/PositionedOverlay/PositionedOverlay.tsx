@@ -6,6 +6,7 @@ import {getRectForNode, Rect} from '../../utilities/geometry';
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
 import {layer, dataPolarisTopBar} from '../shared';
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 
 import {
   PreferredPosition,
@@ -153,10 +154,12 @@ export class PositionedOverlay extends PureComponent<
     );
 
     return (
-      <div className={className} style={style} ref={this.setOverlay}>
-        <EventListener event="resize" handler={this.handleMeasurement} />
-        {render(this.overlayDetails())}
-      </div>
+      <PerformanceBenchmark name="PositionedOverlay">
+        <div className={className} style={style} ref={this.setOverlay}>
+          <EventListener event="resize" handler={this.handleMeasurement} />
+          {render(this.overlayDetails())}
+        </div>
+      </PerformanceBenchmark>
     );
   }
 

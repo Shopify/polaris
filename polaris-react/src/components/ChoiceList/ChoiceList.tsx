@@ -6,6 +6,7 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './ChoiceList.scss';
 
@@ -56,6 +57,7 @@ export function ChoiceList({
   disabled = false,
   name: nameProp,
 }: ChoiceListProps) {
+  usePerformanceBenchmark('ChoiceList');
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;

@@ -14,6 +14,7 @@ import {
 } from '../../utilities/dates';
 import type {Range} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {monthName} from './utilities';
 import {Month} from './components';
@@ -68,6 +69,7 @@ export function DatePicker({
   onMonthChange,
   onChange = noop,
 }: DatePickerProps) {
+  usePerformanceBenchmark('DatePicker');
   const i18n = useI18n();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);

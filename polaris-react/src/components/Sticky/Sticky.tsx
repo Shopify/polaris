@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 interface State {
   isSticky: boolean;
@@ -139,6 +140,7 @@ function isFunction(arg: any): arg is Function {
 }
 
 export function Sticky(props: StickyProps) {
+  usePerformanceBenchmark('Sticky');
   const stickyManager = useStickyManager();
 
   return <StickyInner {...props} stickyManager={stickyManager} />;

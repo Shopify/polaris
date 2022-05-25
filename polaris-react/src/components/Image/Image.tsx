@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 interface SourceSet {
   source: string;
   descriptor?: string;
@@ -17,6 +19,7 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
 }
 
 export function Image({sourceSet, source, crossOrigin, ...rest}: ImageProps) {
+  usePerformanceBenchmark('Image');
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)

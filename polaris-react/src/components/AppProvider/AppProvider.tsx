@@ -24,7 +24,7 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
-
+import {PerformanceBenchmark} from '../PerformanceBenchmark';
 import './AppProvider.scss';
 
 interface State {
@@ -111,23 +111,25 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     return (
       <FeaturesContext.Provider value={features}>
-        <I18nContext.Provider value={intl}>
-          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-            <StickyManagerContext.Provider value={this.stickyManager}>
-              <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-                <LinkContext.Provider value={link}>
-                  <CustomProperties colorScheme={colorScheme}>
-                    <MediaQueryProvider>
-                      <PortalsManager>
-                        <FocusManager>{children}</FocusManager>
-                      </PortalsManager>
-                    </MediaQueryProvider>
-                  </CustomProperties>
-                </LinkContext.Provider>
-              </UniqueIdFactoryContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
+        <PerformanceBenchmark name="AppProvider">
+          <I18nContext.Provider value={intl}>
+            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+              <StickyManagerContext.Provider value={this.stickyManager}>
+                <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
+                  <LinkContext.Provider value={link}>
+                    <CustomProperties colorScheme={colorScheme}>
+                      <MediaQueryProvider>
+                        <PortalsManager>
+                          <FocusManager>{children}</FocusManager>
+                        </PortalsManager>
+                      </MediaQueryProvider>
+                    </CustomProperties>
+                  </LinkContext.Provider>
+                </UniqueIdFactoryContext.Provider>
+              </StickyManagerContext.Provider>
+            </ScrollLockManagerContext.Provider>
+          </I18nContext.Provider>
+        </PerformanceBenchmark>
       </FeaturesContext.Provider>
     );
   }

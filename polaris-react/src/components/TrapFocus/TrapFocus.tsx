@@ -14,6 +14,7 @@ import {
 } from '../../utilities/focus';
 import {useFocusManager} from '../../utilities/focus-manager';
 import {portal} from '../shared';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface TrapFocusProps {
   trapping?: boolean;
@@ -21,6 +22,7 @@ export interface TrapFocusProps {
 }
 
 export function TrapFocus({trapping = true, children}: TrapFocusProps) {
+  usePerformanceBenchmark('TrapFocus');
   const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
   const [disableFocus, setDisableFocus] = useState(true);

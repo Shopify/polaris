@@ -4,6 +4,7 @@ import {
   ContextualSaveBarProps as ContextualSaveBarProps1,
   useFrame,
 } from '../../utilities/frame';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
@@ -20,6 +21,7 @@ export const ContextualSaveBar = memo(function ContextualSaveBar({
   contextControl,
   secondaryMenu,
 }: ContextualSaveBarProps) {
+  usePerformanceBenchmark('ContextualSaveBar');
   const {setContextualSaveBar, removeContextualSaveBar} = useFrame();
 
   useEffect(() => {

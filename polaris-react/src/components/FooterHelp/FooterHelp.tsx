@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import styles from './FooterHelp.scss';
 
 export interface FooterHelpProps {
@@ -8,6 +10,7 @@ export interface FooterHelpProps {
 }
 
 export function FooterHelp({children}: FooterHelpProps) {
+  usePerformanceBenchmark('FooterHelp');
   return (
     <div className={styles.FooterHelp}>
       <div className={styles.Text}>{children}</div>

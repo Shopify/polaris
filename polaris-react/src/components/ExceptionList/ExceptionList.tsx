@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 import {Icon, IconProps} from '../Icon';
 import {Truncate} from '../Truncate';
 
@@ -30,6 +31,7 @@ export interface ExceptionListProps {
 }
 
 export function ExceptionList({items: itemsList}: ExceptionListProps) {
+  usePerformanceBenchmark('ExceptionList');
   const items = itemsList.map((item, index) => {
     const {status, icon, title, description, truncate = false} = item;
 

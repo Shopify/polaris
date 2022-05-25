@@ -9,6 +9,7 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Option} from './components';
 import styles from './OptionList.scss';
@@ -50,6 +51,7 @@ export function OptionList({
   onChange,
   id: idProp,
 }: OptionListProps) {
+  usePerformanceBenchmark('OptionList');
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );

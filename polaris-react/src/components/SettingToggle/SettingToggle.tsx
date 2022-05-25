@@ -5,6 +5,7 @@ import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export interface SettingToggleProps {
   /** Inner content of the card */
@@ -18,6 +19,7 @@ export interface SettingToggleProps {
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
 
 export function SettingToggle({enabled, action, children}: SettingToggleProps) {
+  usePerformanceBenchmark('SettingToggle');
   const id = useMemo(getUniqueSettingToggleId, []);
 
   const actionMarkup = action

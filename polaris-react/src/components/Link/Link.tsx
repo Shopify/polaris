@@ -6,6 +6,7 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Link.scss';
 
@@ -38,6 +39,7 @@ export function Link({
   removeUnderline,
   accessibilityLabel,
 }: LinkProps) {
+  usePerformanceBenchmark('Link');
   const i18n = useI18n();
   let childrenMarkup = children;
 

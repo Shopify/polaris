@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import {AnnotatedSection, Section} from './components';
 import styles from './Layout.scss';
 
@@ -14,6 +16,7 @@ export const Layout: React.FunctionComponent<LayoutProps> & {
   AnnotatedSection: typeof AnnotatedSection;
   Section: typeof Section;
 } = function Layout({sectioned, children}: LayoutProps) {
+  usePerformanceBenchmark('Layout');
   const content = sectioned ? <Section>{children}</Section> : children;
   return <div className={styles.Layout}>{content}</div>;
 };

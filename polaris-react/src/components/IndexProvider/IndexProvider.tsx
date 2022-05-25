@@ -8,6 +8,7 @@ import {
   useBulkSelectionData,
   useHandleBulkSelection,
 } from '../../utilities/index-provider';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 export function IndexProvider({
   children,
@@ -20,6 +21,7 @@ export function IndexProvider({
   condensed,
   selectable: isSelectableIndex = true,
 }: IndexProviderProps) {
+  usePerformanceBenchmark('IndexProvider');
   const {
     paginatedSelectAllText,
     bulkActionsLabel,

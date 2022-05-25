@@ -1,6 +1,7 @@
 import React, {useMemo, useState, useCallback, ContextType} from 'react';
 
 import {FocusManagerContext} from '../../utilities/focus-manager';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 interface Props {
   children?: React.ReactNode;
@@ -9,6 +10,7 @@ interface Props {
 type Context = NonNullable<ContextType<typeof FocusManagerContext>>;
 
 export function FocusManager({children}: Props) {
+  usePerformanceBenchmark('FocusManager');
   const [trapFocusList, setTrapFocusList] = useState<string[]>([]);
 
   const add = useCallback<Context['add']>((id) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type {HeadingTagName} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Subheading.scss';
 
@@ -18,6 +19,7 @@ export function Subheading({
   element: Element = 'h3',
   children,
 }: SubheadingProps) {
+  usePerformanceBenchmark('Subheading');
   const ariaLabel = typeof children === 'string' ? children : undefined;
   return (
     <Element aria-label={ariaLabel} className={styles.Subheading}>

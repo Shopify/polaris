@@ -4,6 +4,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './RadioButton.scss';
 
@@ -48,6 +49,7 @@ export function RadioButton({
   name: nameProp,
   value,
 }: RadioButtonProps) {
+  usePerformanceBenchmark('RadioButton');
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);

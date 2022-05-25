@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './TextStyle.scss';
 
@@ -29,6 +30,7 @@ export interface TextStyleProps {
 }
 
 export function TextStyle({variation, children}: TextStyleProps) {
+  usePerformanceBenchmark('TextStyle');
   const className = classNames(
     variation && styles[variationName('variation', variation)],
     variation === VariationValue.Code && styles.code,

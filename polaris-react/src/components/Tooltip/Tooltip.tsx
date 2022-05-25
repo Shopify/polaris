@@ -5,6 +5,7 @@ import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {Key} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
@@ -40,6 +41,7 @@ export function Tooltip({
   activatorWrapper = 'span',
   accessibilityLabel,
 }: TooltipProps) {
+  usePerformanceBenchmark('Tooltip');
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,

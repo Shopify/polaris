@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Spinner.scss';
 
@@ -25,6 +26,7 @@ export function Spinner({
   accessibilityLabel,
   hasFocusableParent,
 }: SpinnerProps) {
+  usePerformanceBenchmark('Spinner');
   const isAfterInitialMount = useIsAfterInitialMount();
 
   const className = classNames(

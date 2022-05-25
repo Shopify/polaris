@@ -3,6 +3,7 @@ import {AlertMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './InlineError.scss';
 
@@ -14,6 +15,7 @@ export interface InlineErrorProps {
 }
 
 export function InlineError({message, fieldID}: InlineErrorProps) {
+  usePerformanceBenchmark('InlineError');
   if (!message) {
     return null;
   }

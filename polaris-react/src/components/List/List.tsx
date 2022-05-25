@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {Item} from './components';
 import styles from './List.scss';
@@ -20,6 +21,7 @@ export interface ListProps {
 export const List: React.FunctionComponent<ListProps> & {
   Item: typeof Item;
 } = function List({children, type = 'bullet'}: ListProps) {
+  usePerformanceBenchmark('List');
   const className = classNames(
     styles.List,
     type && styles[variationName('type', type)],

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './SkeletonThumbnail.scss';
 
@@ -15,6 +16,7 @@ export interface SkeletonThumbnailProps {
 }
 
 export function SkeletonThumbnail({size = 'medium'}: SkeletonThumbnailProps) {
+  usePerformanceBenchmark('SkeletonThumbnail');
   const className = classNames(
     styles.SkeletonThumbnail,
     size && styles[variationName('size', size)],

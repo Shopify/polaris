@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type {HeadingTagName} from '../../types';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Heading.scss';
 
@@ -17,6 +18,7 @@ export interface HeadingProps {
 }
 
 export function Heading({element: Element = 'h2', children, id}: HeadingProps) {
+  usePerformanceBenchmark('Heading');
   return (
     <Element className={styles.Heading} id={id}>
       {children}

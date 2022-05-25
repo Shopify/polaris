@@ -32,6 +32,7 @@ import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {CheckableButton} from '../CheckableButton';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './ResourceList.scss';
 
@@ -144,6 +145,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   idForItem = defaultIdForItem,
   resolveItemId,
 }: ResourceListProps<TItemType>) {
+  usePerformanceBenchmark('ResourceList');
   const i18n = useI18n();
   const [selectMode, setSelectMode] = useState(
     Boolean(selectedItems && selectedItems.length > 0),

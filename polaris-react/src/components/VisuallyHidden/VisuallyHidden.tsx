@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import styles from './VisuallyHidden.scss';
 
 export interface VisuallyHiddenProps {
@@ -8,5 +10,6 @@ export interface VisuallyHiddenProps {
 }
 
 export function VisuallyHidden({children}: VisuallyHiddenProps) {
+  usePerformanceBenchmark('VisuallyHidden');
   return <span className={styles.VisuallyHidden}>{children}</span>;
 }

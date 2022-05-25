@@ -28,6 +28,7 @@ import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {
   ConnectedFilterControl,
@@ -601,6 +602,7 @@ function getShortcutFilters(filters: FilterInterface[]) {
 }
 
 export function Filters(props: FiltersProps) {
+  usePerformanceBenchmark('Filters');
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
 

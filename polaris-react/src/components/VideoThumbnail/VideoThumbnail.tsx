@@ -7,6 +7,7 @@ import {
   secondsToTimestamp,
   secondsToDurationTranslationKey,
 } from '../../utilities/duration';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {PlayIcon} from './illustrations';
 import styles from './VideoThumbnail.scss';
@@ -48,6 +49,7 @@ export function VideoThumbnail({
   onClick,
   onBeforeStartPlaying,
 }: VideoThumbnailProps) {
+  usePerformanceBenchmark('VideoThumbnail');
   const i18n = useI18n();
   let buttonLabel;
 

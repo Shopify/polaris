@@ -24,6 +24,7 @@ import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -142,6 +143,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
+  usePerformanceBenchmark('DropZone');
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 

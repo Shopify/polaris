@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type {ColorScheme} from '../../tokens';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {styles} from './styles';
 
@@ -20,6 +21,7 @@ export interface CustomPropertiesProps {
 }
 
 export function CustomProperties(props: CustomPropertiesProps) {
+  usePerformanceBenchmark('CustomProperties');
   const {
     as: Component = 'div',
     children,

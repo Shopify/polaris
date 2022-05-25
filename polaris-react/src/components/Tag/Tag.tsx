@@ -5,6 +5,7 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './Tag.scss';
 
@@ -37,6 +38,7 @@ export function Tag({
   accessibilityLabel,
   url,
 }: TagProps) {
+  usePerformanceBenchmark('Tag');
   const i18n = useI18n();
 
   const segmented = onRemove && url;

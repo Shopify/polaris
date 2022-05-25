@@ -5,6 +5,7 @@ import {MediaQueryContext} from '../../utilities/media-query';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 interface Props {
   children?: React.ReactNode;
@@ -13,6 +14,7 @@ interface Props {
 export const MediaQueryProvider = function MediaQueryProvider({
   children,
 }: Props) {
+  usePerformanceBenchmark('MediaQueryProvider');
   const [isNavigationCollapsed, setIsNavigationCollapsed] = useState(
     navigationBarCollapsed().matches,
   );

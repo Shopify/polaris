@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import styles from './SkeletonDisplayText.scss';
 
@@ -17,6 +18,7 @@ export interface SkeletonDisplayTextProps {
 export function SkeletonDisplayText({
   size = 'medium',
 }: SkeletonDisplayTextProps) {
+  usePerformanceBenchmark('SkeletonDisplayText');
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import {Item} from './components';
 import styles from './Connected.scss';
 
@@ -13,6 +15,7 @@ export interface ConnectedProps {
 }
 
 export function Connected({children, left, right}: ConnectedProps) {
+  usePerformanceBenchmark('Connected');
   const leftConnectionMarkup = left ? (
     <Item position="left">{left}</Item>
   ) : null;

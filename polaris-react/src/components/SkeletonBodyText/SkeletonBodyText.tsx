@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
+
 import styles from './SkeletonBodyText.scss';
 
 export interface SkeletonBodyTextProps {
@@ -11,6 +13,7 @@ export interface SkeletonBodyTextProps {
 }
 
 export function SkeletonBodyText({lines = 3}: SkeletonBodyTextProps) {
+  usePerformanceBenchmark('SkeletonBodyText');
   const bodyTextLines = [];
 
   for (let i = 0; i < lines; i++) {
