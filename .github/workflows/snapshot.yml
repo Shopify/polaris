@@ -26,13 +26,19 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
 
-      - name: Checkout Repo
+      - name: Checkout default branch
         uses: actions/checkout@v2
+
+      - name: Checkout pull request branch
+        # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
+        run: hub pr checkout ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: 16
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
@@ -45,27 +51,46 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Create snapshot versions
-        run: |
-          yarn version-packages --snapshot snapshot-release
+      - name: Create and publish snapshot release
+        uses: actions/github-script@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish snapshots
-        id: publish_snapshots
-        run: |
-          body=$(yarn release --no-git-tags --snapshot | grep "New tag:")
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
-          body="${body//$'tag'/'release'}"
-          echo "::set-output name=body::$body"
-
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v2
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: ${{ steps.publish_snapshots.outputs.body }}
+          script: |
+            const execa = require('execa')
+
+            const versionProcess = execa.command('npm run version-packages -- --snapshot snapshot-release')
+            versionProcess.stdout.pipe(process.stdout)
+            await versionProcess
+
+            const releaseProcess = execa.command('npm run release -- --no-git-tags --snapshot')
+            releaseProcess.stdout.pipe(process.stdout)
+
+            const {stdout} = await releaseProcess
+
+            const newTags = Array.from(
+              stdout.matchAll(/New tag:\s+([^\s\n]+)/g),
+            ).map(
+              ([_, tag]) => tag,
+            )
+
+            if (newTags.length) {
+              const body = (
+                `**Thanks @${context.actor} your snapshot has been shipped! 🚢**\n` +
+                `Test your changes with:\n` +
+                newTags.map(tag => (
+                  '```sh\n' +
+                  `npm i ${tag}\n` +
+                  '```'
+                )).join('\n')
+              )
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body,
+              })
+            }
 
       - name: Add final reaction
         uses: peter-evans/create-or-update-comment@v2
