@@ -35,6 +35,9 @@ function Example() {
             url: '/admin/orders/add',
             accessibilityLabel: 'Add an order',
             icon: CirclePlusOutlineMinor,
+            tooltip: {
+              content: 'Add an order',
+            }
           },
         },
         {

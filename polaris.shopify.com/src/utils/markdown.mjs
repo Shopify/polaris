@@ -35,17 +35,21 @@ export const parseMarkdown = (inputMarkdown) => {
 
       let i = 0;
       const matchWithColumns = matchWithoutComments.replaceAll(
-        /####/g,
-        (match) => {
+        /#### ([^\n]+)/g,
+        (match, captured) => {
           if (i === 1) {
-            return `</div><div class="usage-list-part">\n\n####`;
+            const type = match.startsWith("#### Don") ? "dont" : "do";
+
+            return `</div><div class="usage-list-part" data-type="${type}">\n\n#### ${captured}`;
           }
           i++;
           return match;
         }
       );
 
-      return `<div class="usage-list"><div class="usage-list-part">${matchWithColumns}</div></div>`;
+      const type = match.trim().startsWith("#### Don") ? "dont" : "do";
+
+      return `<div class="usage-list"><div class="usage-list-part" data-type="${type}">${matchWithColumns}</div></div>`;
     });
   }
 

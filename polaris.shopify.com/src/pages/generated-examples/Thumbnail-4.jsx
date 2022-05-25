@@ -1,5 +1,4 @@
 import { AppProvider, Thumbnail } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -18,7 +17,11 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <Thumbnail source={NoteMinor} size="large" alt="Small document" />
+        <Thumbnail
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  size="large"
+  alt="Black choker necklace"
+/>
       </div>
     </AppProvider>
   );

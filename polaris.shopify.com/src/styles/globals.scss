@@ -1,15 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;700&display=swap");
+@import "variables.scss";
 
 :root {
-  --header-height: 80px;
-  --nav-width: 18rem;
+  --page-max-width: #{$pageMaxWidth};
+  --header-height: 88px;
   --narrow-content-width: 720px;
+  --header-margin: 3rem;
+
   --focus-outline: 0 0 0 2px black;
 
-  --text: #353535;
-  --text-strong: #111;
-  --text-subdued: #666666;
-  --text-link: #2c6ecb;
+  --text: #4a4c4e;
+  --text-strong: #111212;
+  --text-subdued: #777;
+  --text-light: #999;
+  --text-link: #2949c1;
   --text-token: #6e006e;
 
   --surface: #ffffff;
@@ -17,16 +21,33 @@
   --surface-token: #fdf0fd;
   --primary: #008060;
 
-  --font-size-100: 0.8rem;
+  --border-color: #ccc;
+  --border-inset-color: #aaa;
+  --border: 0.5px solid var(--border-color);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(0, 0, 0, 0.13);
+  --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
+    0 0 0 0.5px var(--border-color);
+
+  --decorative-1: #e9f1e2;
+  --decorative-2: #fdecd5;
+  --decorative-3: #e1f3f5;
+  --decorative-4: #f0edff;
+
+  // Based on: https://type-scale.com/?size=16&scale=1.250
+  --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
-  // --font-size-500: 1.1rem;
-  --font-size-600: 1.15rem;
-  --font-size-700: 1.35rem;
-  --font-size-800: 1.8rem;
-  --font-size-900: 3.25rem;
-  --font-size-1000: 7rem;
+  --font-size-500: 1.25rem;
+  --font-size-500: 1.2rem; // Override
+  --font-size-600: 1.563rem;
+  --font-size-700: 1.953rem;
+  --font-size-700: 1.75rem; // Override
+  --font-size-800: 2.441rem;
+  --font-size-900: 3.052rem;
+  --font-size-1000: 3.815rem;
+  --font-size-1100: 4.768rem;
+  --font-size-1200: 5.96rem;
 
   --font-weight-400: 400;
   --font-weight-500: 550;
@@ -56,6 +77,7 @@
   font-family: inherit;
   font-weight: inherit;
   font-size: 100%;
+  line-height: inherit;
   text-decoration: none;
   box-sizing: border-box;
   list-style-type: none;
@@ -65,64 +87,49 @@
   outline: none;
 }
 
+video {
+  display: block;
+}
+
 *:focus-visible {
   box-shadow: var(--focus-outline);
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 body {
+  background: var(--surface);
   font-family: inter, ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text);
+  font-weight: 375;
 }
 
 a {
   color: var(--text-link);
 }
 
-h1,
-h2,
-h3,
-h4,
-p {
-  margin: 0.33rem 0;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  color: var(--text-strong);
+button {
+  cursor: pointer;
 }
 
 h1 {
-  font-size: var(--font-size-900);
-  font-weight: var(--font-weight-500);
-  line-height: 1.15;
-  letter-spacing: var(--letter-spacing-100);
+  @include heading-1;
 }
 
 h2 {
-  font-size: var(--font-size-800);
-  font-weight: var(--font-weight-400);
-  line-height: 1.2;
-  letter-spacing: var(--letter-spacing-300);
+  @include heading-2;
 }
 
 h3 {
-  font-size: var(--font-size-600);
-  font-weight: var(--font-weight-600);
-  line-height: 1.2;
+  @include heading-3;
 }
 
 h4 {
-  font-size: var(--font-size-400);
-  font-weight: var(--font-weight-500);
-  line-height: 1.2;
+  @include heading-4;
 }
 
 .sr-only {
@@ -136,26 +143,54 @@ h4 {
   border: 0;
 }
 
-// Legacy CSS from old site (used in markdown files)
+// Legacy CSS hacks to work with content from old site (used in markdown files)
 .usage-list {
-  margin: 1.25rem 0;
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin: 1.5rem 0;
+  font-size: var(--font-size-200);
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   .usage-list-part {
+    position: relative;
     flex: 1;
-    background: #fafafa;
-    padding: 1px 1.25rem;
-    border-radius: var(--border-radius-300);
+    background: var(--surface-subdued);
+    padding: 0.25rem 1.25rem;
+    border-radius: var(--border-radius-400);
 
-    h4 {
+    h4:first-child {
       margin-bottom: 0;
+      background-image: url(/images/icon-do.svg);
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 30px;
+      color: #087e5f;
     }
 
     p {
       margin-top: 0.5rem;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      border-radius: var(--border-radius-400) var(--border-radius-400) 0 0;
+      background: #13b288;
+    }
+
+    &[data-type="dont"] {
+      h4 {
+        background-image: url(/images/icon-dont.svg);
+        color: #c03926;
+      }
+      &::before {
+        background: #ea5945;
+      }
     }
 
     img {
@@ -163,25 +198,12 @@ h4 {
       max-width: 300px;
     }
   }
-
-  .usage-list-part:first-child {
-    background-color: #f1f9f7;
-    border-left: 3px solid #00a47c;
-  }
-
-  .usage-list-part:last-child {
-    background-color: #fbf4f8;
-    border-left: 3px solid #fc5749;
-  }
 }
 
-.twoColumnsItem img {
+.twoColumnsResponsive div img {
   display: none;
 }
 
 .NextPage {
-  margin-top: 2rem;
-  a {
-    font-size: var(--font-size-700);
-  }
+  display: none;
 }
