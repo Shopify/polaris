@@ -80,7 +80,7 @@ jobs:
                 `Test your changes with:\n` +
                 newTags.map(tag => (
                   '```sh\n' +
-                  `npm i ${tag}\n` +
+                  `yarn add ${tag}\n` +
                   '```'
                 )).join('\n')
               )
