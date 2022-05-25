@@ -757,6 +757,20 @@
   },
   {
     "frontMatter": {
+      "name": "Fullscreen bar",
+      "category": "Navigation",
+      "keywords": [
+        "topbar",
+        "top bar",
+        "header",
+        "bar",
+        "app"
+      ]
+    },
+    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure\na uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
+  },
+  {
+    "frontMatter": {
       "name": "Heading",
       "category": "Titles and text",
       "platforms": [

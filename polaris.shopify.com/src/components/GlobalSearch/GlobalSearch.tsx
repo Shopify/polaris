@@ -123,7 +123,9 @@ function GlobalSearch({}: Props) {
                       if (results.length === 0) return null;
                       return (
                         <ResultsGroup title={category}>
-                          <h3>{category}</h3>
+                          <h3 className={styles.ResultsGroupName}>
+                            {category}
+                          </h3>
                           <div className={styles.GuidelinesResults}>
                             {results.map((result) => {
                               resultIndex++;

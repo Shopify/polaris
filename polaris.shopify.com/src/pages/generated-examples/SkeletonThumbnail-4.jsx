@@ -1,4 +1,4 @@
-import { AppProvider, Thumbnail } from "@shopify/polaris";
+import { AppProvider, SkeletonThumbnail } from "@shopify/polaris";
 import translations from '@shopify/polaris/locales/en.json';
 
 function Example() {
@@ -17,11 +17,7 @@ function Example() {
     padding: "0 50px",
   }}
       >
-        <Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-  size="small"
-  alt="Black choker necklace"
-/>
+        <SkeletonThumbnail size="extraSmall" />
       </div>
     </AppProvider>
   );

@@ -1,6 +1,6 @@
 .Header {
   &.withBorder {
-    border-bottom: var(--border);
+    box-shadow: 0 0.5px var(--border-color);
   }
 }
 
