@@ -305,6 +305,10 @@
       "Header": {
         "rollupActionsLabel": "Zobrazte akce pro: {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Zpět",
+      "accessibilityLabel": "Ukončit režim celé obrazovky"
     }
   }
 }

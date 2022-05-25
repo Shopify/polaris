@@ -305,6 +305,10 @@
       "Header": {
         "rollupActionsLabel": "Wyświetl czynności dla {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Powrót",
+      "accessibilityLabel": "Zakończ tryb pełnoekranowy"
     }
   }
 }
