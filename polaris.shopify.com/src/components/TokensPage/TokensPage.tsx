@@ -54,22 +54,8 @@ function TokensPage({ tokenGroup }: Props) {
 
   return (
     <>
-      <MaxPageWidthDiv className={styles.TokensPage}>
-        <div className={styles.IntroBanner}>
-          <div className={styles.Text}>
-            <h1>Tokens</h1>
-            <p>
-              Tokens represent design decisions such as color, spacing, and
-              typography. By using tokens, you can build custom experiences on
-              top of Polaris that automatically updates when Polaris evolves.
-              Custom, but future proof.
-            </p>
-            <Link href="#">Learn more about tokens</Link>
-          </div>
-          <div className={styles.Video}>
-            <YoutubeVideo id="NvDY37tOn_o" />
-          </div>
-        </div>
+      <MaxPageWidthDiv className={styles.Intro}>
+        <h1>Tokens</h1>
       </MaxPageWidthDiv>
 
       <Tabs

@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 
 interface Props {
+  skipHeaderAndFooter?: boolean;
   children: React.ReactNode;
 }
 
@@ -38,53 +39,67 @@ const headerNavItems: {
   },
 ];
 
-function Page({ children }: Props) {
+function Page({ skipHeaderAndFooter = false, children }: Props) {
   const router = useRouter();
-
-  const hasBorder = router.asPath.startsWith("/guidelines");
 
   return (
     <div className={className(styles.Page)}>
-      <div className={className(styles.Header, hasBorder && styles.withBorder)}>
-        <MaxPageWidthDiv className={styles.HeaderInner}>
-          <Link href="/">
-            <a className={styles.Logo}>
-              <Image
-                src={shopifyLogo}
-                width={24}
-                height={24}
-                alt="Shopify logo"
-              />
-              Polaris
-            </a>
-          </Link>
+      {!skipHeaderAndFooter && (
+        <>
+          <div className={styles.Header}>
+            <MaxPageWidthDiv className={styles.HeaderInner}>
+              <Link href="/">
+                <a className={styles.Logo}>
+                  <Image
+                    src={shopifyLogo}
+                    width={24}
+                    height={24}
+                    alt="Shopify logo"
+                  />
+                  Polaris
+                </a>
+              </Link>
 
-          <ul className={styles.Nav}>
-            {headerNavItems.map(({ url, label }) => {
-              const section = router.asPath.split("/").slice(0, 2).join("/");
-              const isCurrent =
-                section !== "/" && url.startsWith(section) ? "page" : false;
-              return (
-                <li key={url}>
-                  <Link href={url} passHref>
-                    <a aria-current={isCurrent}>{label}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+              <ul className={styles.Nav}>
+                {headerNavItems.map(({ url, label }) => {
+                  const section = router.asPath
+                    .split("/")
+                    .slice(0, 2)
+                    .join("/");
+                  const isCurrent =
+                    section !== "/" && url.startsWith(section) ? "page" : false;
+                  return (
+                    <li key={url}>
+                      <Link href={url} passHref>
+                        <a aria-current={isCurrent}>{label}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
 
-          <div className={styles.SearchWrapper}>
-            <GlobalSearch />
+              <div className={styles.SearchWrapper}>
+                <GlobalSearch />
+              </div>
+            </MaxPageWidthDiv>
           </div>
-        </MaxPageWidthDiv>
-      </div>
+        </>
+      )}
 
       <div className={styles.Content}>{children}</div>
 
-      <div className={styles.Footer}>
-        <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
-      </div>
+      {!skipHeaderAndFooter && (
+        <>
+          <div className={styles.Footer}>
+            <Image
+              src={shopifyLogo}
+              width={36}
+              height={36}
+              alt="Shopify logo"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

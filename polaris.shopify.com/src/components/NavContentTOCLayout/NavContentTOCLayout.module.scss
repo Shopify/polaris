@@ -1,0 +1,64 @@
+.NavContentTOCLayout {
+  display: flex;
+  --toc-max-width: 15rem;
+}
+
+.Nav {
+  min-width: 19rem;
+  max-width: 19rem;
+  padding-top: 3rem;
+  // box-shadow: 0.5px 0 var(--border-color);
+}
+
+.Post {
+  padding-top: 3rem;
+  position: relative;
+  .NavContentTOCLayout.showTOC & {
+    max-width: 40rem;
+  }
+}
+
+.TOC {
+  position: absolute;
+  height: 100%;
+  font-size: var(--font-size-100);
+  width: var(--toc-max-width);
+  right: calc((var(--toc-max-width) + 2rem) * -1);
+
+  > ul {
+    position: sticky;
+    top: 2rem;
+    box-shadow: -0.5px 0 var(--border-color);
+    padding-left: 1.25rem;
+  }
+
+  a {
+    color: inherit;
+    display: inline-block;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+
+    &:hover {
+      color: var(--text-strong);
+    }
+  }
+
+  ul ul {
+    font-size: 14px;
+  }
+
+  > ul > li {
+    margin-bottom: 0.75rem;
+    &:last-child {
+      margin-bottom: none;
+    }
+  }
+
+  &.isNested {
+    > ul > li > a {
+      font-weight: 435;
+    }
+  }
+}

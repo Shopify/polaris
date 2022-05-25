@@ -67,6 +67,9 @@ function Example() {
             url: '/admin/orders/add',
             accessibilityLabel: 'Add an order',
             icon: CirclePlusOutlineMinor,
+            tooltip: {
+              content: 'Add an order'
+            },
           },
         },
         {
@@ -138,6 +141,9 @@ function Example() {
             url: '/path/to/place/view',
             accessibilityLabel: 'View your online store',
             icon: ViewMinor,
+            tooltip: {
+              content: 'View your online store',
+            },
           },
         },
       ]}

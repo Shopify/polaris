@@ -2,7 +2,7 @@
   display: inline-block;
   appearance: none;
   background: var(--surface);
-  padding: 0.2rem 0.66rem 0.275rem;
+  padding: 0.2rem 0.66rem 0.2rem;
   border: none;
   font-size: var(--font-size-300);
   font-weight: var(--font-weight-400);
@@ -27,9 +27,13 @@
 
   &[aria-pressed="true"],
   &[aria-selected="true"],
-  &[aria-current="true"],
+  &[aria-current="true"] {
+    background: var(--text);
+    color: var(--surface);
+  }
+
   &.primary {
-    background: #049d76;
+    background: var(--primary);
     color: var(--surface);
   }
 }
