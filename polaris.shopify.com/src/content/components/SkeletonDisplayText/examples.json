@@ -1,0 +1,17 @@
+[
+  {
+    "fileName": "medium-and-large-display-text.tsx",
+    "title": "Medium and large display text",
+    "description": "Use this component to represent medium and large display text such as large metrics on the reports list page, or for page titles."
+  },
+  {
+    "fileName": "extra-large-display-text.tsx",
+    "title": "Extra large display text",
+    "description": "Use this component to represent extra large display text."
+  },
+  {
+    "fileName": "small-display-text.tsx",
+    "title": "Small display text",
+    "description": "Use this component to represent small display text such as content headings."
+  }
+]

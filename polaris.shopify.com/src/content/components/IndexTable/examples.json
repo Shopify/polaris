@@ -1,0 +1,67 @@
+[
+  {
+    "fileName": "simple-index-table.tsx",
+    "title": "Simple index table",
+    "description": "A index table with simple items and no bulk actions, sorting, or filtering."
+  },
+  {
+    "fileName": "simple-small-screen-index-table.tsx",
+    "title": "Simple small screen index table",
+    "description": "A small screen index table with simple items and no bulk actions, sorting, or filtering."
+  },
+  {
+    "fileName": "index-table-with-empty-state.tsx",
+    "title": "IndexTable with empty state",
+    "description": "Use to explain the purpose of a index table when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist."
+  },
+  {
+    "fileName": "index-table-with-bulk-actions.tsx",
+    "title": "IndexTable with bulk actions",
+    "description": "Allows merchants to select items and perform an action on the selection."
+  },
+  {
+    "fileName": "index-table-with-multiple-promoted-bulk-actions.tsx",
+    "title": "IndexTable with multiple promoted bulk actions",
+    "description": "Allows merchants to select items and perform different actions on the selection."
+  },
+  {
+    "fileName": "index-table-with-bulk-actions-and-selection-across-pages.tsx",
+    "title": "IndexTable with bulk actions and selection across pages",
+    "description": "Allows merchants to select items, perform an action on the selection and select resources across pages."
+  },
+  {
+    "fileName": "index-table-with-loading-state.tsx",
+    "title": "IndexTable with loading state",
+    "description": "Notifies merchants that index table items are being processed."
+  },
+  {
+    "fileName": "index-table-with-filtering.tsx",
+    "title": "IndexTable with filtering",
+    "description": "Allows merchants to narrow the index table to a subset of the original items."
+  },
+  {
+    "fileName": "index-table-with-row-status.tsx",
+    "title": "Index table with row status",
+    "description": "An index table with rows differentiated by status."
+  },
+  {
+    "fileName": "index-table-with-sticky-last-column.tsx",
+    "title": "Index table with sticky last column",
+    "description": "An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden."
+  },
+  {
+    "fileName": "index-table-without-checkboxes.tsx",
+    "title": "Index table without checkboxes",
+    "description": "An index table without checkboxes and bulk actions."
+  },
+  {
+    "fileName": "index-table-with-all-of-its-elements.tsx",
+    "title": "IndexTable with all of its elements",
+    "description": "Use as a broad example that includes most of the elements and props available to index table."
+  },
+  {
+    "fileName": "small-screen-index-table-with-all-of-its-elements.tsx",
+    "title": "Small screen IndexTable with all of its elements",
+    "description": "Use as a broad example that includes most of the elements and props available to index table."
+  }
+]
