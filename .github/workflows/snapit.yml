@@ -12,7 +12,7 @@ jobs:
     name: Snapshot Release
     if: |
       github.event.issue.pull_request &&
-      github.event.comment.body == '/snapshot-release'
+      github.event.comment.body == '/snapit'
     runs-on: ubuntu-latest
     steps:
       - name: Enforce permission requirement
