@@ -76,7 +76,7 @@ jobs:
 
             if (newTags.length) {
               const body = (
-                `**Thanks @${context.actor} your snapshot has been shipped! 🚢**\n` +
+                `**Thanks @${context.actor}! Your snapshots have been shipped. 🚢**\n` +
                 `Test your changes with:\n` +
                 newTags.map(tag => (
                   '```sh\n' +
