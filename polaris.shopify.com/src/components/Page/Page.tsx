@@ -1,12 +1,16 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+import GlobalSearch from "../GlobalSearch";
+import MaxPageWidthDiv from "../MaxPageWidthDiv";
+
+import Header from "../Header";
+import { className } from "../../utils/various";
+
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
-import GlobalSearch from "../GlobalSearch";
-import { className } from "../../utils/various";
-import { useRouter } from "next/router";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
 
 interface Props {
   skipHeaderAndFooter?: boolean;
@@ -41,6 +45,9 @@ const headerNavItems: {
 
 function Page({ skipHeaderAndFooter = false, children }: Props) {
   const router = useRouter();
+
+  const match = router.asPath.match(/^\/\w+/);
+  const currentSection = match ? match[0] : "";
 
   return (
     <div className={className(styles.Page)}>
@@ -85,6 +92,8 @@ function Page({ skipHeaderAndFooter = false, children }: Props) {
           </div>
         </>
       )}
+
+      {/* {!skipHeaderAndFooter && <Header currentSection={currentSection} />} */}
 
       <div className={styles.Content}>{children}</div>
 
