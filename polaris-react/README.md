@@ -98,7 +98,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 ### Testing in a consuming project
 
-To test your changes in a consuming product you can run the `/snapit` command in your pull request to publish a snapshot NPM package for testing.
+The `/snapit` GitHub comment command in pull requests will publish a snapshot NPM package for testing.
 
 #### Manual visual regression testing
 
