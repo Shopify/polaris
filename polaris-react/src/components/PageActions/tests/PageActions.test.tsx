@@ -55,7 +55,7 @@ describe('<PageActions />', () => {
       expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
     });
 
-    it('renders <CustomPrimaryAction /> if `ReactNode` is provided as `primaryAction`', () => {
+    it('renders a `ReactNode`', () => {
       const CustomPrimaryAction = () => null;
       const pageActions = mountWithApp(
         <PageActions primaryAction={<CustomPrimaryAction />} />,
