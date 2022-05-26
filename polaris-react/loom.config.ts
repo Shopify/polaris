@@ -35,84 +35,8 @@ export default createPackage((pkg) => {
     buildLibraryWorkspace(),
     rollupAdjustPluginsPlugin(),
     rollupAdjustOutputPlugin(),
-    jestAdjustmentsPlugin(),
-    preAndPostBuildPlugin(),
   );
 });
-
-function jestAdjustmentsPlugin() {
-  return createProjectPlugin('Polaris.Jest', ({tasks: {test}}) => {
-    test.hook(({hooks}) => {
-      hooks.configure.hook(async (configuration) => {
-        configuration.babelConfig?.hook((config) => ({
-          ...config,
-          rootMode: 'upward',
-        }));
-
-        // Aliases for root-level imports, which are used in test files
-        // `tests/*` as an alias for test-only utilities is acceptable, but
-        // avoid others as paths working in jest but not in rollup is confusing
-        configuration.jestModuleNameMapper?.hook((moduleNameMapper) => ({
-          ...moduleNameMapper,
-          '^tests/(.*)': '<rootDir>/tests/$1',
-        }));
-
-        // Ignore tests in the node_modules folder
-        configuration.jestConfig?.hook((config) => ({
-          ...config,
-          testPathIgnorePatterns: ['/node_modules/'],
-        }));
-
-        // Novel file types - scss and images
-        configuration.jestTransform?.hook((transforms) => ({
-          ...transforms,
-          '\\.s?css$': require.resolve('./config/jest-transform-style'),
-          '\\.svg$': require.resolve('./config/jest-transform-image'),
-        }));
-      });
-    });
-  });
-}
-
-function preAndPostBuildPlugin() {
-  return createProjectPlugin('Polaris.BuildExtra', ({api, tasks: {build}}) => {
-    build.hook(({hooks}) => {
-      hooks.target.hook(({target, hooks}) => {
-        const isDefaultBuild = Object.keys(target.options).length === 0;
-        if (!isDefaultBuild) {
-          return;
-        }
-
-        hooks.steps.hook((steps) => [
-          ...steps,
-          api.createStep(
-            {id: 'PolarisBuild.Extra', label: 'polaris build extra'},
-            async (step) => {
-              try {
-                await step.exec(
-                  'node_modules/.bin/downlevel-dts',
-                  ['build/ts/latest', 'build/ts/3.4'],
-                  {all: true},
-                );
-
-                await step.exec(
-                  'node_modules/.bin/copyfiles',
-                  ['./src/**/*.md', './build/docs', '--up=1'],
-                  {all: true},
-                );
-              } catch (error) {
-                throw new DiagnosticError({
-                  title: 'Error runing polaris build extra steps',
-                  content: error.all,
-                });
-              }
-            },
-          ),
-        ]);
-      });
-    });
-  });
-}
 
 function rollupAdjustPluginsPlugin() {
   return rollupPlugins((target) => {
