@@ -11,7 +11,8 @@ function ResourcesPage({}: Props) {
   return (
     <div className={styles.ResourcesPage}>
       <MaxPageWidthDiv>
-        <h1>Getting started</h1>
+        <h1>Build something nobody else could dream of.</h1>
+        <p>{`Polaris makes it easy to design experiences that have the potential to change merchants' lives. What will you build?`}</p>
       </MaxPageWidthDiv>
 
       <MaxPageWidthDiv className={className(styles.Step, styles.FirstStep)}>

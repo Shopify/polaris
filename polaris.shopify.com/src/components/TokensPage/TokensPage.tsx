@@ -55,7 +55,14 @@ function TokensPage({ tokenGroup }: Props) {
   return (
     <>
       <MaxPageWidthDiv className={styles.Intro}>
-        <h1>Tokens</h1>
+        <h1>
+          Extend Polaris using <span>Tokens.</span>
+        </h1>
+        <p>
+          Build something exciting on top of Polaris. By using tokens, your
+          product is future proof. When Polaris evolves, your code automatically
+          evolves.
+        </p>
       </MaxPageWidthDiv>
 
       <Tabs
@@ -103,7 +110,7 @@ function TokensPage({ tokenGroup }: Props) {
         ]}
       />
 
-      <div className={styles.TableSection}>
+      <div className={styles.Tokens}>
         <div className={styles.Group}>
           <MaxPageWidthDiv>
             <TokenList

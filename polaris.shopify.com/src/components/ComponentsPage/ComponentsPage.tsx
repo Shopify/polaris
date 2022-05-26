@@ -1,6 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import components from "../../data/components.json";
 import {
   getComponentCategories,
@@ -9,7 +7,6 @@ import {
   getComponentNav,
 } from "../../utils/various";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import Nav from "../Nav";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
 import ComponentGrid from "../ComponentGrid";
@@ -31,7 +28,6 @@ function ComponentsPage({}: Props) {
 
       <NavContentTOCLayout
         navItems={navItems}
-        title="Components"
         showTOC={false}
         content={
           <>
