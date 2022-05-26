@@ -2,11 +2,9 @@ import React from 'react';
 import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {act} from 'react-dom/test-utils';
-import {tokens} from '@shopify/polaris-tokens';
 
+import breakpoints from '../../../tokens/token-groups/breakpoints.json';
 import {formatAreas, Grid} from '../Grid';
-
-const {breakpoints} = tokens;
 
 describe('<Grid />', () => {
   beforeEach(() => {
@@ -26,7 +24,7 @@ describe('<Grid />', () => {
   const xlAreas = ['xl1', 'xl2', 'xl3'];
 
   it('applies small grid-template-areas as inline style when screenwidth is less than breakpoints-sm', () => {
-    setMediaWidth(breakpoints['breakpoints-xs'].value);
+    setMediaWidth(breakpoints['breakpoints-xs']);
 
     const grid = mountWithApp(
       <Grid
@@ -46,7 +44,7 @@ describe('<Grid />', () => {
   });
 
   it('applies medium grid-template-areas as inline style when screenwidth is less than breakpoints-md', () => {
-    setMediaWidth(breakpoints['breakpoints-sm'].value);
+    setMediaWidth(breakpoints['breakpoints-sm']);
 
     const grid = mountWithApp(
       <Grid
@@ -66,7 +64,7 @@ describe('<Grid />', () => {
   });
 
   it('applies large grid-template-areas as inline style when screenwidth is less than breakpoints-lg', () => {
-    setMediaWidth(breakpoints['breakpoints-md'].value);
+    setMediaWidth(breakpoints['breakpoints-md']);
 
     const grid = mountWithApp(
       <Grid
@@ -86,7 +84,7 @@ describe('<Grid />', () => {
   });
 
   it('re-renders grid-template-areas on resize', () => {
-    setMediaWidth(breakpoints['breakpoints-xs'].value);
+    setMediaWidth(breakpoints['breakpoints-xs']);
     const grid = mountWithApp(<Grid areas={{xs: xsAreas, sm: smAreas}} />);
 
     expect(grid).toContainReactComponent('div', {
@@ -94,7 +92,7 @@ describe('<Grid />', () => {
     });
 
     act(() => {
-      setMediaWidth(breakpoints['breakpoints-sm'].value);
+      setMediaWidth(breakpoints['breakpoints-sm']);
       window.dispatchEvent(new Event('resize'));
       timer.runAllTimers();
     });

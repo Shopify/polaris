@@ -304,6 +304,10 @@
       "Header": {
         "rollupActionsLabel": "Ver acciones para {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Atrás",
+      "accessibilityLabel": "Salir del modo de pantalla completa"
     }
   }
 }

@@ -252,10 +252,6 @@ $spinner-icon-size: 12px;
   }
 }
 
-.Hidden {
-  visibility: hidden;
-}
-
 .Spinner {
   --pc-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + var(--p-border-width-1)
