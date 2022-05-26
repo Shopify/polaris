@@ -1,3 +1,5 @@
+@import '../../src/styles/common';
+
 .GridOverlay {
   --pc-top-bar-height: 56px;
   --pc-nav-width: 240px;
@@ -7,18 +9,23 @@
   bottom: 0;
   right: 0;
   display: grid;
-  gap: var(--p-space-3);
-  grid-template-columns: repeat(4, 1fr);
-  padding: 0 var(--p-space-3);
+  gap: var(--p-space-4);
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 var(--p-space-4);
   margin: 0 auto;
   background-color: var(--p-action-critical);
   opacity: 0.25;
   pointer-events: none;
-}
 
-@media screen and (min-width: 768px) {
-  .GridOverlay {
+  @media #{$p-breakpoints-md-up} {
+    padding: 0 var(--p-space-6);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
     grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
     padding: 0 var(--p-space-8);
   }
 }
