@@ -38,7 +38,7 @@
 
 .Control {
   @include when-typography-condensed {
-    --p-choice-size: 20px;
+    --p-choice-size: 22px;
   }
   display: flex;
   flex: 0 0 auto;
@@ -64,7 +64,7 @@
 
 .Descriptions {
   @include when-typography-condensed {
-    --p-choice-size: 20px;
+    --p-choice-size: 22px;
   }
   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
 }
