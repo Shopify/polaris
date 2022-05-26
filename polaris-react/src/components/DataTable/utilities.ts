@@ -16,8 +16,13 @@ export function measureColumn(tableData: TableMeasurements) {
 
     const leftEdge = column.offsetLeft;
     const rightEdge = leftEdge + column.offsetWidth;
-    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
-    const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
+    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd, 'left');
+    const isVisibleRight = isEdgeVisible(
+      rightEdge,
+      tableStart,
+      tableEnd,
+      'right',
+    );
     const isVisible = isVisibleLeft || isVisibleRight;
     const width = column.offsetWidth;
 
@@ -31,11 +36,17 @@ export function measureColumn(tableData: TableMeasurements) {
   };
 }
 
-export function isEdgeVisible(position: number, start: number, end: number) {
+export function isEdgeVisible(
+  position: number,
+  start: number,
+  end: number,
+  edgeType: string,
+) {
   const minVisiblePixels = 30;
 
   return (
-    position >= start + minVisiblePixels && position <= end - minVisiblePixels
+    position >= start + (edgeType === 'left' ? 0 : minVisiblePixels) &&
+    position <= end - minVisiblePixels
   );
 }
 
