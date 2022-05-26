@@ -114,6 +114,32 @@ Not all page actions require a secondary action.
 />
 ```
 
+### Page actions with custom primary action
+
+Use to create a custom primary action.
+
+```jsx
+<PageActions
+  primaryAction={
+    <Button
+      primary
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as draft'}],
+      }}
+    >
+      Save
+    </Button>
+  }
+  secondaryActions={[
+    {
+      content: 'Delete',
+      destructive: true,
+    },
+  ]}
+/>
+```
+
 ### Page actions with custom secondary action
 
 Use to create a custom secondary action.
