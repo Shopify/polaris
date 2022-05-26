@@ -146,6 +146,14 @@ function MultiAutocompleteExample() {
     [deselectedOptions],
   );
 
+  const handleSelect = useCallback(
+    (selected) => {
+      setSelectedOptions(selected);
+      updateText('');
+    },
+    []
+  );
+
   const removeTag = useCallback(
     (tag) => () => {
       const options = [...selectedOptions];
@@ -188,7 +196,7 @@ function MultiAutocompleteExample() {
         options={options}
         selected={selectedOptions}
         textField={textField}
-        onSelect={setSelectedOptions}
+        onSelect={handleSelect}
         listTitle="Suggested Tags"
       />
     </div>

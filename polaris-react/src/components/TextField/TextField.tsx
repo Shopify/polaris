@@ -591,7 +591,19 @@ export function TextField({
     setFocus(true);
   }
 
-  function handleBlur() {
+  function withinInput(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      verticalContentRef.current &&
+      verticalContentRef.current.contains(target)
+    );
+  }
+
+  function handleBlur({target}: React.FocusEvent) {
+    if (withinInput(target) && focus) {
+      return;
+    }
+
     setFocus(false);
   }
 
