@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.22.0
+
+### Minor Changes
+
+- [#5896](https://github.com/Shopify/polaris/pull/5896) [`c7c6295a4`](https://github.com/Shopify/polaris/commit/c7c6295a4c6b75a01545dbbfa16aaebe3330f4ce) Thanks [@aveline](https://github.com/aveline)! - Update `MinusMinor` icon
+
 ## 4.21.0
 
 - Updated icon `TickSmallMinor` ([#5836](https://github.com/Shopify/polaris-icons/issues/5836))

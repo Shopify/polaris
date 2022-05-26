@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-add useEventListenerHook
+Added `Grid` component

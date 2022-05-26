@@ -86,6 +86,8 @@ export interface BaseButton {
   onMouseEnter?(): void;
   /** Callback when element is touched */
   onTouchStart?(): void;
+  /** Callback when pointerdown event is being triggered */
+  onPointerDown?(): void;
 }
 
 export interface Action {
