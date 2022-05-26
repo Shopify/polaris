@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 
 import {useIsMountedRef} from './use-is-mounted-ref';
 import {useFeatures} from './features';
+import {isServer} from './target';
 
 export enum Mark {
   MountStart = 'MountStart',
@@ -16,7 +17,7 @@ export const PolarisEmoji = '🌌';
 
 export function usePerformanceBenchmark(name: string) {
   const {enablePerformanceBenchmarking} = useFeatures();
-  if (!enablePerformanceBenchmarking) {
+  if (isServer || !enablePerformanceBenchmarking) {
     return;
   }
 
