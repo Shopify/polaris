@@ -56,6 +56,10 @@
 }
 
 .TokenName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   h4 {
     display: inline;
     border-radius: var(--border-radius-400);
@@ -85,5 +89,24 @@
         display: flex;
       }
     }
+  }
+}
+
+.TokenToolTip {
+  p {
+    font-size: 14px;
+    margin-top: 0rem;
+  }
+}
+
+.TokenToolTipImage {
+  display: flex;
+  padding-left: 0.1rem;
+  min-width: 25px;
+  filter: brightness(1.25);
+
+  &:hover {
+    filter: brightness(0.5);
+    cursor: pointer;
   }
 }
