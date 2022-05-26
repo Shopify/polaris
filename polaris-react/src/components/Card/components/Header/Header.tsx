@@ -15,7 +15,9 @@ export interface CardHeaderProps {
 
 export function Header({children, title, actions}: CardHeaderProps) {
   const actionMarkup = actions ? (
-    <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
+    <ButtonGroup>
+      {buttonsFrom(actions, {plain: true, textAlign: 'right'})}
+    </ButtonGroup>
   ) : null;
 
   const titleMarkup = isValidElement(title) ? (
@@ -26,9 +28,11 @@ export function Header({children, title, actions}: CardHeaderProps) {
 
   const headingMarkup =
     actionMarkup || children ? (
-      <Stack alignment="baseline">
+      <Stack alignment="baseline" wrap={false}>
         <Stack.Item fill>{titleMarkup}</Stack.Item>
-        {actionMarkup}
+        <Stack.Item fill>
+          <div className={styles.Action}>{actionMarkup}</div>
+        </Stack.Item>
         {children}
       </Stack>
     ) : (

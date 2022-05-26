@@ -692,6 +692,27 @@ Use when you need further control over the spacing of your card sections.
 </Card>
 ```
 
+### Card with a long title and long action
+
+<!-- example-for: web -->
+
+Use when there is a long version of title and actions on card header.
+
+```jsx
+<Card
+  sectioned
+  title="Aperçu du résultat sur les moteurs de recherche"
+  actions={[{content: 'Modifier le référencement naturel de la page'}]}
+>
+  <Card.Section>
+    <TextContainer>
+      Add a description to see how this product might appear in a search engine
+      listing
+    </TextContainer>
+  </Card.Section>
+</Card>
+```
+
 ---
 
 ## Related components

@@ -37,6 +37,11 @@
 .Header {
   padding: var(--p-space-4) var(--p-space-4) 0;
 
+  .Action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   @include page-content-when-not-fully-condensed {
     padding: var(--p-space-5) var(--p-space-5) 0;
   }
