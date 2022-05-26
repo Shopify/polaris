@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../../Icon';
 import {Cell} from '../Cell';
+import {SortIcon} from '../../../../SortIcon';
 
 describe('<Cell />', () => {
   describe('content', () => {
@@ -126,29 +127,29 @@ describe('<Cell />', () => {
     });
 
     describe('when set to ascending', () => {
-      it('renders an up caret Icon when table is currently sorted by that column', () => {
+      it('renders a SortIcon with ascending direction indicated when table is currently sorted by that column', () => {
         const cell = mountWithTable(
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+        expect(cell).toContainReactComponent(SortIcon, {
+          sortDirection: 'ascending',
         });
       });
 
-      it('renders an Icon with an accessibility label indicating the next sort direction is descending', () => {
+      it('renders a SortIcon with an accessibility label indicating the next sort direction is descending', () => {
         const cell = mountWithTable(
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
+        expect(cell).toContainReactComponent(SortIcon, {
           accessibilityLabel: 'sort descending by',
         });
       });
     });
 
     describe('when set to descending', () => {
-      it('renders a down caret Icon when table is currently sorted by that column', () => {
+      it('renders SortIcon with descending direction indicated when table is currently sorted by that column', () => {
         const cell = mountWithTable(
           <Cell
             header
@@ -159,8 +160,8 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+        expect(cell).toContainReactComponent(SortIcon, {
+          sortDirection: 'descending',
         });
       });
 
@@ -175,7 +176,7 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
+        expect(cell).toContainReactComponent(SortIcon, {
           accessibilityLabel: 'sort ascending by',
         });
       });
@@ -184,7 +185,7 @@ describe('<Cell />', () => {
 
   describe('defaultSortDirection', () => {
     describe('when set to none', () => {
-      it('renders an up caret Icon when table is not currently sorted by that column', () => {
+      it('renders a SortIcon with no direction indicated when table is not currently sorted by that column', () => {
         const cell = mountWithTable(
           <Cell
             header
@@ -196,14 +197,14 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+        expect(cell).toContainReactComponent(SortIcon, {
+          sortDirection: 'none',
         });
       });
     });
 
     describe('when set to ascending', () => {
-      it('renders an up caret Icon when table is not currently sorted by that column', () => {
+      it('renders a SortIcon with no direction indicated when table is not currently sorted by that column', () => {
         const cell = mountWithTable(
           <Cell
             header
@@ -214,14 +215,14 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+        expect(cell).toContainReactComponent(SortIcon, {
+          sortDirection: 'none',
         });
       });
     });
 
     describe('when set to descending', () => {
-      it('renders a down caret Icon when table is not currently sorted by that column', () => {
+      it('renders a SortIcon with no direction indicated when table is not currently sorted by that column', () => {
         const cell = mountWithTable(
           <Cell
             header
@@ -232,8 +233,8 @@ describe('<Cell />', () => {
           />,
         );
 
-        expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+        expect(cell).toContainReactComponent(SortIcon, {
+          sortDirection: 'none',
         });
       });
     });
