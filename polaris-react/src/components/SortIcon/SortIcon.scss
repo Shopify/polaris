@@ -1,11 +1,15 @@
 @import '../../styles/common';
 
 .SortIcon {
-  height: 20px;
+  height: var(--p-space-5);
+  width: var(--p-space-5);
 }
 .Icon {
-  @include recolor-icon(var(--p-icon-subdued));
   position: relative;
+  pointer-events: none;
+  svg {
+    fill: var(--p-icon-subdued);
+  }
   &:first-of-type {
     top: -3.5px;
   }
@@ -14,5 +18,7 @@
   }
 }
 .Active {
-  @include recolor-icon(var(--p-icon));
+  svg {
+    fill: var(--p-icon);
+  }
 }
