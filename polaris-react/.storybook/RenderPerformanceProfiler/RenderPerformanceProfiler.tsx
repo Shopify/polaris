@@ -20,18 +20,16 @@ const trackRenderPerformance = (data: Data) => {
     ? process.env.STORYBOOK_GITHUB_SHA
     : 'localdev';
 
-  // TODO const body = JSON.stringify({...data, commitSha, version});
-  const body = {...data, commitSha, version};
+  const body = JSON.stringify({...data, commitSha, version});
 
   console.log(body);
 
-  // TODO: send to server
-  // fetch('//some-end-point', {
-  //   method: 'POST',
-  //   keepalive: true,
-  //   mode: 'cors',
-  //   body,
-  // });
+  fetch('//localhost:3000/api/test', {
+    method: 'POST',
+    keepalive: true,
+    mode: 'no-cors',
+    body,
+  });
 };
 
 const Profiler = ({id, kind, children}: PropsWithChildren<ProfileProps>) => {
