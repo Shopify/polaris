@@ -1,13 +1,14 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useRef} from 'react';
 
 import breakpoints from '../../tokens/token-groups/breakpoints.json';
 import {debounce} from '../../utilities/debounce';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Cell} from './components';
+import {GridContext} from './context';
 import styles from './Grid.scss';
 
-type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '';
 
 type Columns = {
   [Breakpoint in Breakpoints]?: number;
@@ -30,10 +31,12 @@ export interface GridProps {
   columns?: Columns;
   children?: React.ReactNode;
 }
+
 /** **Experimental!** This component is in alpha. Use with caution. */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {
+  const breakpointRef = useRef<Breakpoints>(getMedia());
   const [gridTemplateAreas, setGridTemplateAreas] = useState(getAreas(areas));
   const style = {
     '--pc-grid-gap-xs': gap?.xs,
@@ -57,15 +60,29 @@ export const Grid: React.FunctionComponent<GridProps> & {
   useEventListener('resize', handleResize);
 
   return (
-    <div className={styles.Grid} style={style}>
-      {children}
-    </div>
+    <GridContext.Provider value={breakpointRef.current}>
+      <div className={styles.Grid} style={style}>
+        {children}
+      </div>
+    </GridContext.Provider>
   );
+
+  function getAreas(areas?: Areas) {
+    if (areas === undefined) return;
+
+    const breakpoint = getMedia();
+    breakpointRef.current = breakpoint;
+    return formatAreas(areas[breakpoint]);
+  }
 };
 
-function getAreas(areas?: Areas) {
-  if (areas === undefined) return;
+export function formatAreas(areas?: string[]) {
+  return `'${areas?.join(`' '`)}'`;
+}
 
+Grid.Cell = Cell;
+
+function getMedia() {
   const xl = window.matchMedia(
     `(min-width: ${breakpoints['breakpoints-xl']})`,
   ).matches;
@@ -84,24 +101,18 @@ function getAreas(areas?: Areas) {
 
   switch (true) {
     case xl:
-      return formatAreas(areas.xl);
+      return 'xl';
 
     case lg:
-      return formatAreas(areas.lg);
+      return 'lg';
 
     case md:
-      return formatAreas(areas.md);
+      return 'md';
 
     case sm:
-      return formatAreas(areas.sm);
+      return 'sm';
 
     default:
-      return formatAreas(areas.xs);
+      return 'xs';
   }
 }
-
-export function formatAreas(areas?: string[]) {
-  return `'${areas?.join(`' '`)}'`;
-}
-
-Grid.Cell = Cell;

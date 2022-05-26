@@ -4,6 +4,7 @@
   display: grid;
   gap: var(--pc-grid-gap-xs, var(--p-space-4));
   grid-template-columns: repeat(var(--pc-grid-columns-xs, 6), minmax(0, 1fr));
+  background-color: lightcoral;
 
   @media #{$p-breakpoints-sm-up} {
     gap: var(--pc-grid-gap-sm, var(--p-space-4));
