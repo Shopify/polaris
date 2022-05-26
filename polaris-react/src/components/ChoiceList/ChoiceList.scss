@@ -8,7 +8,7 @@
 
 .ChoiceItem:not(:last-child) {
   @include when-typography-condensed {
-    margin-bottom: var(--p-space-2);
+    margin-bottom: var(--p-space-4);
   }
 }
 
