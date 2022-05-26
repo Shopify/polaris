@@ -121,7 +121,6 @@
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
     "semver": "^6.3.0",
-    "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "size-limit": "^5.0.3",
     "storybook-addon-performance": "^0.16.1",
