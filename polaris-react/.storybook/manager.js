@@ -69,8 +69,7 @@ function GridPanel(props) {
         rows={{
           showGrid: {
             name: 'Show grid overlay',
-            description:
-              'Show or hide a 4 / 12 column grid, overlaying components',
+            description: 'Show and hide a 6 or 12 column grid',
             defaultValue: false,
             control: {type: 'boolean'},
           },
