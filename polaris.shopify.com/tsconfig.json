@@ -26,7 +26,6 @@
     "next-env.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "src/content/components"
+    "node_modules"
   ]
 }

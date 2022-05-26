@@ -3,6 +3,6 @@ module.exports = {
   extends: ["next/core-web-vitals"],
   rules: {},
   ignorePatterns: [
-    'src/content/components',
+    'content/components',
   ],
 };
