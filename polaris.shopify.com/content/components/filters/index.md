@@ -9,6 +9,25 @@ keywords:
   - index
   - list filter
   - table
+examples:
+  - fileName: filtering-with-a-resource-list.tsx
+    title: Filtering with a resource list
+  - fileName: filtering-with-a-data-table.tsx
+    title: Filtering with a data table
+  - fileName: filters-with-children-content.tsx
+    title: Filters with children content
+  - fileName: all-filters-disabled.tsx
+    title: All filters disabled
+  - fileName: some-filters-disabled.tsx
+    title: Some filters disabled
+  - fileName: filters-without-clear-button.tsx
+    title: Filters without clear button
+  - fileName: filters-with-help-text.tsx
+    title: Filters with help text
+  - fileName: filters-with-query-field-hidden.tsx
+    title: Filters with query field hidden
+  - fileName: filters-with-query-field-disabled.tsx
+    title: Filters with query field disabled
 ---
 
 # Filters

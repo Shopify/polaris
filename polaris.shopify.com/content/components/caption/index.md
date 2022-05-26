@@ -20,6 +20,12 @@ keywords:
   - small text
   - android
   - ios
+examples:
+  - fileName: default-caption.tsx
+    title: Default caption
+    description: >-
+      Use to provide details in situations where content is compact and space is
+      tight.undefinedundefined
 ---
 
 # Caption

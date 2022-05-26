@@ -11,6 +11,13 @@ keywords:
   - text field
   - post
   - get
+examples:
+  - fileName: custom-on-submit.tsx
+    title: Custom onSubmit
+    description: Use onSubmit as a callback for when your form is submitted.
+  - fileName: form-without-native-validation.tsx
+    title: Form without native validation
+    description: Use in forms to toggle native form validation.
 ---
 
 # Form

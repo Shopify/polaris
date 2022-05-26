@@ -19,6 +19,68 @@ keywords:
   - alert
   - ios
   - android
+examples:
+  - fileName: default-badge.tsx
+    title: Default badge
+    description: >-
+      Use to give a non-critical status update on a piece of information or
+      action.undefinedundefined
+  - fileName: small-badge.tsx
+    title: Small badge
+  - fileName: informational-badge.tsx
+    title: Informational badge
+    description: >-
+      Use to call out an object or action as having an important attribute. For
+      example, marking an option as “Recommended” or marking a theme as
+      “Published”.undefinedundefined
+  - fileName: success-badge.tsx
+    title: Success badge
+    description: >-
+      Use to indicate a successful, completed, or desirable state when it’s
+      important to provide positive reinforcement to merchants. For example,
+      when merchants successfully dispute a chargeback, a success badge shows
+      that says “Funds recovered”.undefinedundefined
+  - fileName: attention-badge.tsx
+    title: Attention badge
+    description: >-
+      Use when something requires merchants’ attention but the issue isn’t
+      critical. For example, this badge would show next to an order that needs
+      to be reviewed by merchants.undefinedundefined
+  - fileName: warning-badge.tsx
+    title: Warning badge
+    description: >-
+      Use for critical and time-sensitive issues that require merchants’
+      attention and potential action. Warning events are often reversible.Keep
+      in mind that seeing this badge can feel stressful for merchants so it
+      should only be used when absolutely necessary.undefinedundefined
+  - fileName: critical-badge.tsx
+    title: Critical badge
+    description: >-
+      Use for critical and irreversible issues that require merchants’ attention
+      and potential action.Keep in mind that seeing this badge can feel
+      stressful for merchants so it should only be used when absolutely
+      necessary.undefinedundefined
+  - fileName: incomplete-badge.tsx
+    title: Incomplete badge
+    description: >-
+      Use to indicate when a given task has not yet been completed. For example,
+      when merchants haven’t fulfilled an order.undefinedundefined
+  - fileName: partially-complete-badge.tsx
+    title: Partially complete badge
+    description: >-
+      Use to indicate when a given task has been partially completed. For
+      example, when merchants have partially fulfilled an
+      order.undefinedundefined
+  - fileName: complete-badge.tsx
+    title: Complete badge
+    description: >-
+      Use to indicate when a given task has been completed. For example, when
+      merchants have fulfilled an order.
+  - fileName: badge-with-status-and-progress-label-override.tsx
+    title: Badge with statusAndProgressLabelOverride
+    description: >-
+      Use when the status and progress accessibilityLabels are not appropriate
+      to a given context.undefinedundefined
 ---
 
 # Badge

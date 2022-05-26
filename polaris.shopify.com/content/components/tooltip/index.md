@@ -10,6 +10,14 @@ keywords:
   - small popover
   - hover
   - tap
+examples:
+  - fileName: default-tooltip.tsx
+    title: Default tooltip
+    description: >-
+      Use only when necessary to provide an explanation for an interface
+      element.
+  - fileName: tooltip-visible-only-with-child-interaction.tsx
+    title: Tooltip visible only with child interaction
 ---
 
 # Tooltip

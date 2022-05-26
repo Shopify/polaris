@@ -9,6 +9,23 @@ keywords:
   - combo box
   - listbox
   - list box
+examples:
+  - fileName: single-select-autocomplete.tsx
+    title: Single select autocomplete
+    description: >-
+      Use when merchants can select one option from a predefined or editable
+      list.
+  - fileName: multi-select-autocomplete.tsx
+    title: Multi-select autocomplete
+    description: >-
+      Use when merchants can select one or more options from a predefined or
+      editable list.
+  - fileName: multi-select-autocomplete-with-vertical-content.tsx
+    title: Multi-select autocomplete with vertical content
+    description: Use to display selected options above the input value.
+  - fileName: autocomplete-with-loading.tsx
+    title: Autocomplete with loading
+    description: Use to indicate to merchants that the list data is being fetched.
 ---
 
 # Combobox

@@ -28,6 +28,27 @@ keywords:
   - visual statements
   - android
   - ios
+examples:
+  - fileName: extra-large.tsx
+    title: Extra large
+    description: >-
+      Use this size sparingly and never multiple times on the same
+      page.undefinedundefined
+  - fileName: large.tsx
+    title: Large
+    description: >-
+      Use for display text that’s more important than the medium size, but less
+      important than extra large.
+  - fileName: medium.tsx
+    title: Medium
+    description: >-
+      Use for display text that’s more important than the small size, but less
+      important than large.undefinedundefined
+  - fileName: small.tsx
+    title: Small
+    description: >-
+      Use for text that would otherwise use body text, but that needs to scale
+      with other display text.
 ---
 
 # Display text

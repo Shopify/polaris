@@ -16,6 +16,20 @@ keywords:
   - padding
   - android
   - ios
+examples:
+  - fileName: default-text-container.tsx
+    title: Default text container
+    description: Use this component for default vertical spacing.undefinedundefined
+  - fileName: tight-text-container.tsx
+    title: Tight text container
+    description: >-
+      Use the tight spacing option to relate content topics to each
+      other.undefinedundefined
+  - fileName: loose-text-container.tsx
+    title: Loose text container
+    description: >-
+      Use the loose spacing option to separate concepts that are independent of
+      each other.undefinedundefined
 ---
 
 # Text container

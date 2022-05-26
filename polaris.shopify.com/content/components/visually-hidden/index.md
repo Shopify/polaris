@@ -16,6 +16,16 @@ keywords:
   - accessibility
   - a11y
   - assistive technology
+examples:
+  - fileName: visually-hidden-heading.tsx
+    title: Visually hidden heading
+    description: >-
+      Always provide a heading for a major page section such as a card. In rare
+      cases the heading is visually redundant and the meaning is conveyed by
+      context. Rather than omit the heading, wrap the heading in the visually
+      hidden component.
+  - fileName: visually-hidden-table-headers.tsx
+    title: Visually hidden table headers
 ---
 
 # Visually hidden

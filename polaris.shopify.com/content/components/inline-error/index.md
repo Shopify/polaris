@@ -11,6 +11,13 @@ keywords:
   - form error
   - invalid input
   - form group
+examples:
+  - fileName: basic-inline-error.tsx
+    title: Basic inline error
+    description: >-
+      Use when the merchant has entered information that is not valid into
+      multiple fields inside of a form, or needs to be displayed in a
+      non-standard position in the form layout.undefinedundefined
 ---
 
 # Inline error

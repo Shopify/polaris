@@ -6,6 +6,10 @@ keywords:
   - exceptions
   - list
   - list exceptions
+examples:
+  - fileName: exception-list-with-icon.tsx
+    title: Exception list with icon
+    description: Use icons to add clarity or assist in visualizing the meaning
 ---
 
 # Exception list

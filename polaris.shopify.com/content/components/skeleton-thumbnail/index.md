@@ -7,6 +7,19 @@ keywords:
   - skeleton
   - loading
   - page
+examples:
+  - fileName: medium-thumbnail.tsx
+    title: Medium thumbnail
+    description: Use this component to represent medium thumbnails.
+  - fileName: large-thumbnail.tsx
+    title: Large thumbnail
+    description: Use this component to represent large thumbnails.
+  - fileName: small-thumbnail.tsx
+    title: Small thumbnail
+    description: Use this component to represent small thumbnails.
+  - fileName: extra-small-thumbnail.tsx
+    title: Extra small thumbnail
+    description: Use this component to represent extra small thumbnails.
 ---
 
 # Skeleton image

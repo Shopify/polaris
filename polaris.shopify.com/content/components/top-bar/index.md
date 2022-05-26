@@ -15,6 +15,11 @@ keywords:
   - user
   - menu
   - logo
+examples:
+  - fileName: top-bar-with-all-of-its-elements.tsx
+    title: Top bar with all of its elements
+  - fileName: top-bar-themed-with-color-scheme.tsx
+    title: Top bar themed with colorScheme
 ---
 
 # Top bar

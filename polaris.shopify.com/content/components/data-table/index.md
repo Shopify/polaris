@@ -7,6 +7,42 @@ keywords:
   - table
   - tabular
   - index
+examples:
+  - fileName: default-data-table.tsx
+    title: Default data table
+    description: Use to present small amounts of data for merchants to view statically.
+  - fileName: sortable-data-table.tsx
+    title: Sortable data table
+    description: >-
+      Use when clarity of the table’s content is needed. For example, to note
+      the number of rows currently shown in a data table with pagination.
+  - fileName: data-table-with-footer.tsx
+    title: Data table with footer
+    description: >-
+      Use when clarity of the table’s content is needed. For example, to note
+      the number of rows currently shown in a data table with pagination.
+  - fileName: data-table-with-custom-totals-heading.tsx
+    title: Data table with custom totals heading
+    description: Use to provide a custom heading for the totals row.
+  - fileName: data-table-with-totals-in-footer.tsx
+    title: Data table with totals in footer
+    description: >-
+      Use to reposition the totals row in a more appropriate location based on
+      the data stored in the
+
+      table for merchants to better understand its meaning.
+  - fileName: data-table-with-row-heading-links.tsx
+    title: Data table with row heading links
+    description: Use to help merchants find relevant, finer grained data sets.
+  - fileName: data-table-with-all-of-its-elements.tsx
+    title: Data table with all of its elements
+    description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-increased-density-and-zebra-striping.tsx
+    title: Data table with increased density and zebra striping
+    description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-sticky-header-enabled.tsx
+    title: Data table with sticky header enabled
+    description: Use as a broad example that includes most props available to data table.
 ---
 
 # Data table

@@ -10,6 +10,17 @@ keywords:
   - virtual
   - ios
   - android
+examples:
+  - fileName: keyboard-accessories-with-actions.tsx
+    title: Keyboard accessories with actions
+    description: >-
+      Use the action accessories to add actions that are relevant to what
+      merchants are entering on the screen.undefinedundefined
+  - fileName: keyboard-accessories-with-text-field.tsx
+    title: Keyboard accessories with text field
+    description: >-
+      Use to make message entry easier in messaging and chat-based
+      products.undefinedundefined
 ---
 
 # Keyboard accessories

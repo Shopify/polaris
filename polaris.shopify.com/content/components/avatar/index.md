@@ -23,6 +23,17 @@ keywords:
   - business thumbnail
   - ios
   - android
+examples:
+  - fileName: default-avatar.tsx
+    title: Default avatar
+    description: >-
+      Use to present an avatar for a merchant, customer, or
+      business.undefinedundefined
+  - fileName: extra-small-avatar.tsx
+    title: Extra small avatar
+    description: >-
+      Use to present an avatar in a condensed layout, such as a data table cell
+      or an action list item.
 ---
 
 # Avatar

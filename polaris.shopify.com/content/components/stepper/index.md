@@ -12,6 +12,17 @@ keywords:
   - picker
   - android
   - ios
+examples:
+  - fileName: default-stepper.tsx
+    title: Default stepper
+    description: >-
+      The stepper has two buttons, a minus and a plus button. It’s possible to
+      tap into the text field as well.undefinedundefined
+  - fileName: disabled-stepper.tsx
+    title: Disabled stepper
+    description: >-
+      If you reach the bottom or top value, the appropriate button becomes
+      disabled.undefinedundefined
 ---
 
 # Stepper

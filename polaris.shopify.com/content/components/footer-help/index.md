@@ -13,6 +13,12 @@ keywords:
   - educational opportunity
   - educating
   - teaching
+examples:
+  - fileName: footer-help-box.tsx
+    title: Footer help box
+    description: >-
+      Use to direct merchants to more information related to the product or
+      feature they’re working on.
 ---
 
 # Footer help

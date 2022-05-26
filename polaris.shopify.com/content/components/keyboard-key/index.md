@@ -9,6 +9,10 @@ keywords:
   - keyboard shortcuts
   - keyboard letter
   - hotkey combinations
+examples:
+  - fileName: list-of-keyboard-shortcuts.tsx
+    title: List of keyboard shortcuts
+    description: Use to list a related set of keyboard shortcuts.
 ---
 
 # Keyboard key

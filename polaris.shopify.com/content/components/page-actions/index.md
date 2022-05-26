@@ -11,6 +11,19 @@ keywords:
   - save delete actions
   - save actions
   - delete actions
+examples:
+  - fileName: default-page-actions.tsx
+    title: Default page actions
+    description: >-
+      Used on a resource page (such as an individual order or product page) to
+      let merchants take key actions at the bottom of the page. Usually, the
+      primary action is Save and the secondary action is Delete.
+  - fileName: primary-action-only.tsx
+    title: Primary action only
+    description: Not all page actions require a secondary action.
+  - fileName: page-actions-with-custom-secondary-action.tsx
+    title: Page actions with custom secondary action
+    description: Use to create a custom secondary action.
 ---
 
 # Page actions

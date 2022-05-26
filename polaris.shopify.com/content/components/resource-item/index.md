@@ -22,6 +22,21 @@ keywords:
   - list secondary actions
   - secondary actions in a list
   - list of resources
+examples:
+  - fileName: simple-resource-item.tsx
+    title: Simple resource item
+    description: A basic resource item with its details filled in at the point of use.
+  - fileName: item-with-media.tsx
+    title: Item with media
+  - fileName: item-with-shortcut-actions.tsx
+    title: Item with shortcut actions
+    description: >-
+      Shortcut actions present popular actions from the resource’s details page
+      for easy access. A shortcut action should be available on every item in
+      the list.
+  - fileName: item-with-vertical-alignment.tsx
+    title: Item with vertical alignment
+    description: Use to adjust the vertical alignment of item content.
 ---
 
 # Resource item

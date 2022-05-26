@@ -15,6 +15,28 @@ keywords:
   - image preview
   - android
   - ios
+examples:
+  - fileName: default-thumbnail.tsx
+    title: Default thumbnail
+    description: Use as the default size.undefinedundefined
+  - fileName: extra-small-thumbnail.tsx
+    title: Extra small thumbnail
+    description: >-
+      Use to present a thumbnail in a condensed layout, such as a data table
+      cell or an action list item.
+  - fileName: small-thumbnail.tsx
+    title: Small thumbnail
+    description: >-
+      Use when the default size is too large for the layout, or when the
+      thumbnail has less importance.
+  - fileName: large-thumbnail.tsx
+    title: Large thumbnail
+    description: >-
+      Use when a thumbnail is a major focal point. Avoid this size in lists of
+      like items.
+  - fileName: thumbnail-with-component-source.tsx
+    title: Thumbnail with component source
+    description: Use to render an icon inside of thumbnail.undefinedundefined
 ---
 
 # Thumbnail

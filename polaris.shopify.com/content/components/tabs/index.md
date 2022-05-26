@@ -14,6 +14,23 @@ keywords:
   - fitted tabs
   - segmented controls
   - scrollable
+examples:
+  - fileName: default-tabs.tsx
+    title: Default tabs
+    description: >-
+      Use for most cases, especially when the number of tabs may be more than
+      three.undefinedundefined
+  - fileName: fitted-tabs.tsx
+    title: Fitted tabs
+    description: >-
+      Use when tabs contain a few (2 or 3) items within a narrow
+      column.undefinedundefined
+  - fileName: tabs-with-badge-content.tsx
+    title: Tabs with badge content
+    description: Use to inform a piece of information about the tabs.
+  - fileName: tabs-with-custom-disclosure.tsx
+    title: Tabs with custom disclosure
+    description: Use to provide information about the popover contents
 ---
 
 # Tabs

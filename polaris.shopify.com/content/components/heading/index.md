@@ -19,6 +19,10 @@ keywords:
   - heading font
   - android
   - ios
+examples:
+  - fileName: typographic-heading.tsx
+    title: Typographic heading
+    description: Use for the title of each top-level page section.undefinedundefined
 ---
 
 # Heading
