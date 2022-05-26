@@ -11,6 +11,9 @@ export const legacy = {
   'icon-size-medium': {
     value: '20px',
   },
+  'choice-margin': {
+    value: '1px',
+  },
   'control-border-width': {
     value: '2px',
   },
