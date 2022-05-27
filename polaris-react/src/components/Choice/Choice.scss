@@ -37,6 +37,9 @@
 }
 
 .Control {
+  @include when-typography-condensed {
+    --p-choice-size: 22px;
+  }
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
@@ -51,6 +54,7 @@
 
 .Label {
   @include text-style-body;
+
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -59,6 +63,9 @@
 }
 
 .Descriptions {
+  @include when-typography-condensed {
+    --p-choice-size: 22px;
+  }
   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
 }
 

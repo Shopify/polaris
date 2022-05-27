@@ -83,6 +83,7 @@ type ActionButtonProps = Pick<
   | 'onKeyDown'
   | 'onKeyUp'
   | 'onKeyPress'
+  | 'onPointerDown'
 >;
 
 const DEFAULT_SIZE = 'medium';
@@ -111,6 +112,7 @@ export function Button({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
+  onPointerDown,
   icon,
   primary,
   outline,
@@ -282,6 +284,7 @@ export function Button({
     onKeyDown,
     onKeyUp,
     onKeyPress,
+    onPointerDown,
   };
 
   const buttonMarkup = (

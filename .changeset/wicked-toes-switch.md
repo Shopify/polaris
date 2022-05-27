@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added `Grid` component
+Added experimental `Grid` component

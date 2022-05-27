@@ -1,6 +1,21 @@
 .Intro {
   margin-top: var(--header-margin);
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+
+  h1 {
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-100);
+  }
+
+  p {
+    margin-top: 2rem;
+    font-size: var(--font-size-600);
+    font-weight: var(--font-weight-500);
+    letter-spacing: -0.02rem;
+    line-height: 1.4;
+    color: var(--text-subdued);
+    max-width: 36rem;
+  }
 }
 
 .Filters {
@@ -8,4 +23,31 @@
   input {
     margin-bottom: 1rem;
   }
+}
+
+.Tokens {
+  margin: 0 1rem;
+  border-radius: var(--border-radius-800);
+  background: var(--surface-subdued);
+  background: #d9d9d9;
+  padding: 2rem 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 174, 255, 0) 10%,
+      rgb(205, 205, 205) 90%
+    ),
+    linear-gradient(
+      45deg,
+      rgb(220, 230, 172),
+      rgb(79, 227, 145),
+      rgb(13, 192, 153),
+      rgb(82, 51, 222),
+      rgb(246, 67, 255),
+      rgb(220, 78, 92),
+      rgb(242, 154, 59),
+      rgb(255, 68, 105),
+      rgb(226, 171, 88),
+      rgb(67, 236, 126),
+      rgb(44, 199, 255)
+    );
 }
