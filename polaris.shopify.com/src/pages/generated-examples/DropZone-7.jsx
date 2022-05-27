@@ -1,7 +1,14 @@
-import { AppProvider, DropZone,Stack,Thumbnail,Caption,Card } from "@shopify/polaris";
+import {
+  AppProvider,
+  DropZone,
+  Stack,
+  Thumbnail,
+  Caption,
+  Card,
+} from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
 
@@ -11,7 +18,7 @@ function NestedDropZoneExample() {
 
   const handleDropZoneClick = useCallback(() => {}, []);
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
@@ -56,12 +63,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <NestedDropZoneExample />
       </div>
@@ -70,4 +77,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,5 +1,5 @@
 import { AppProvider, Icon } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function IconWithReactChild() {
   const iconContent = () => {
     return (
@@ -23,12 +23,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <IconWithReactChild />
       </div>
@@ -37,4 +37,3 @@ function Example() {
 }
 
 export default Example;
-    

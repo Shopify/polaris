@@ -1,6 +1,6 @@
 import { AppProvider, ColorPicker } from "@shopify/polaris";
 import { useState } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function ColorPickerExample() {
   const [color, setColor] = useState({
     hue: 120,
@@ -20,12 +20,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ColorPickerExample />
       </div>
@@ -34,4 +34,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,5 +1,5 @@
 import { AppProvider, Listbox } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function ListboxWithLoadingExample() {
   return (
     <Listbox accessibilityLabel="Listbox with loading example">
@@ -20,12 +20,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ListboxWithLoadingExample />
       </div>
@@ -34,4 +34,3 @@ function Example() {
 }
 
 export default Example;
-    

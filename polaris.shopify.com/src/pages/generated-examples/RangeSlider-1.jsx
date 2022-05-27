@@ -1,12 +1,12 @@
-import { AppProvider, Card,RangeSlider } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Card, RangeSlider } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function RangeSliderExample() {
   const [rangeValue, setRangeValue] = useState(32);
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
-    [],
+    []
   );
 
   return (
@@ -30,12 +30,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <RangeSliderExample />
       </div>
@@ -44,4 +44,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,7 +1,17 @@
-import { AppProvider, Button,Popover,ActionList,Icon } from "@shopify/polaris";
-import { ImportMinor,TickSmallMinor,ExportMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Button,
+  Popover,
+  ActionList,
+  Icon,
+} from "@shopify/polaris";
+import {
+  ImportMinor,
+  TickSmallMinor,
+  ExportMinor,
+} from "@shopify/polaris-icons";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListWithSuffixExample() {
   const [active, setActive] = useState(true);
 
@@ -14,7 +24,7 @@ function ActionListWithSuffixExample() {
   );
 
   return (
-    <div style={{height: '200px'}}>
+    <div style={{ height: "200px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -26,11 +36,11 @@ function ActionListWithSuffixExample() {
           items={[
             {
               active: true,
-              content: 'Import file',
+              content: "Import file",
               icon: ImportMinor,
               suffix: <Icon source={TickSmallMinor} />,
             },
-            {content: 'Export file', icon: ExportMinor},
+            { content: "Export file", icon: ExportMinor },
           ]}
         />
       </Popover>
@@ -47,12 +57,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListWithSuffixExample />
       </div>
@@ -61,4 +71,3 @@ function Example() {
 }
 
 export default Example;
-    

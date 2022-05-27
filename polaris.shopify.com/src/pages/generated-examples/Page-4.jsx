@@ -1,5 +1,5 @@
 import { AppProvider, Page } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,23 +10,22 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Page
-  title="General"
-  secondaryActions={[{content: 'Delete', destructive: true}]}
->
-  <p>Page content</p>
-</Page>
+          title="General"
+          secondaryActions={[{ content: "Delete", destructive: true }]}
+        >
+          <p>Page content</p>
+        </Page>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

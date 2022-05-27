@@ -1,5 +1,5 @@
 import { AppProvider, Button } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,12 +10,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Button fullWidth>Add customer</Button>
       </div>
@@ -24,4 +24,3 @@ function Example() {
 }
 
 export default Example;
-    

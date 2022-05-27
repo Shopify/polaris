@@ -1,30 +1,30 @@
-import { AppProvider, Stack,Tag,Autocomplete } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Stack, Tag, Autocomplete } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function MultiAutocompleteExample() {
   const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
+    { value: "rustic", label: "Rustic" },
+    { value: "antique", label: "Antique" },
+    { value: "vinyl", label: "Vinyl" },
+    { value: "vintage", label: "Vintage" },
+    { value: "refurbished", label: "Refurbished" },
   ];
-  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
-  const [inputValue, setInputValue] = useState('');
+  const [selectedOptions, setSelectedOptions] = useState(["rustic"]);
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
     (value) => {
       setInputValue(value);
 
-      if (value === '') {
+      if (value === "") {
         setOptions(deselectedOptions);
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
+      const filterRegex = new RegExp(value, "i");
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.label.match(filterRegex)
       );
       let endIndex = resultOptions.length - 1;
       if (resultOptions.length === 0) {
@@ -32,7 +32,7 @@ function MultiAutocompleteExample() {
       }
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions]
   );
 
   const removeTag = useCallback(
@@ -41,15 +41,15 @@ function MultiAutocompleteExample() {
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
     },
-    [selectedOptions],
+    [selectedOptions]
   );
 
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
       <Stack spacing="extraTight" alignment="center">
         {selectedOptions.map((option) => {
-          let tagLabel = '';
-          tagLabel = option.replace('_', ' ');
+          let tagLabel = "";
+          tagLabel = option.replace("_", " ");
           tagLabel = titleCase(tagLabel);
           return (
             <Tag key={`option${option}`} onRemove={removeTag(option)}>
@@ -71,7 +71,7 @@ function MultiAutocompleteExample() {
   );
 
   return (
-    <div style={{height: '325px'}}>
+    <div style={{ height: "325px" }}>
       <Autocomplete
         allowMultiple
         options={options}
@@ -86,9 +86,9 @@ function MultiAutocompleteExample() {
   function titleCase(string) {
     return string
       .toLowerCase()
-      .split(' ')
+      .split(" ")
       .map((word) => word.replace(word[0], word[0].toUpperCase()))
-      .join('');
+      .join("");
   }
 }
 
@@ -101,12 +101,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <MultiAutocompleteExample />
       </div>
@@ -115,4 +115,3 @@ function Example() {
 }
 
 export default Example;
-    

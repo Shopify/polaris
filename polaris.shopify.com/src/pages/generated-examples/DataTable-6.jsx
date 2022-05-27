@@ -1,5 +1,5 @@
-import { AppProvider, Link,Page,Card,DataTable } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Link, Page, Card, DataTable } from "@shopify/polaris";
+import translations from "@shopify/polaris/locales/en.json";
 function DataTableLinkExample() {
   const rows = [
     [
@@ -10,10 +10,10 @@ function DataTableLinkExample() {
       >
         Emerald Silk Gown
       </Link>,
-      '$875.00',
+      "$875.00",
       124689,
       140,
-      '$122,500.00',
+      "$122,500.00",
     ],
     [
       <Link
@@ -23,10 +23,10 @@ function DataTableLinkExample() {
       >
         Mauve Cashmere Scarf
       </Link>,
-      '$230.00',
+      "$230.00",
       124533,
       83,
-      '$19,090.00',
+      "$19,090.00",
     ],
     [
       <Link
@@ -36,10 +36,10 @@ function DataTableLinkExample() {
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
-      '$445.00',
+      "$445.00",
       124518,
       32,
-      '$14,240.00',
+      "$14,240.00",
     ],
   ];
 
@@ -48,15 +48,15 @@ function DataTableLinkExample() {
       <Card>
         <DataTable
           columnContentTypes={[
-            'text',
-            'numeric',
-            'numeric',
-            'numeric',
-            'numeric',
+            "text",
+            "numeric",
+            "numeric",
+            "numeric",
+            "numeric",
           ]}
-          headings={['Product', 'Price', 'SKU Number', 'Quantity', 'Net sales']}
+          headings={["Product", "Price", "SKU Number", "Quantity", "Net sales"]}
           rows={rows}
-          totals={['', '', '', 255, '$155,830.00']}
+          totals={["", "", "", 255, "$155,830.00"]}
         />
       </Card>
     </Page>
@@ -72,12 +72,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DataTableLinkExample />
       </div>
@@ -86,4 +86,3 @@ function Example() {
 }
 
 export default Example;
-    
