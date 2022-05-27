@@ -98,7 +98,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 ### Testing in a consuming project
 
-The `/snapit` GitHub comment command in pull requests will publish a snapshot NPM package for testing.
+The `/snapit` GitHub comment command in pull requests will publish a snapshot NPM package for testing. Read the [release documentation](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release) for more information.
 
 #### Manual visual regression testing
 
