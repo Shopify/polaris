@@ -1,8 +1,12 @@
 import React from 'react';
+import {isElementOfType} from 'react-dom/test-utils';
 
+import {elementChildren} from '../../utilities/components';
 import {classNames} from '../../utilities/css';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
+import {FooterHelp} from '../FooterHelp';
+import {PageActions} from '../PageActions';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
@@ -41,9 +45,18 @@ export function Page({
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
 
+  const hasFooterContent = elementChildren(children)
+    .map(
+      (child) =>
+        isElementOfType(child, PageActions) ||
+        isElementOfType(child, FooterHelp),
+    )
+    .at(-1);
+
   const contentClassName = classNames(
     !hasHeaderContent && styles.Content,
     divider && hasHeaderContent && styles.divider,
+    !hasFooterContent && styles.noFooter,
   );
 
   const headerMarkup = hasHeaderContent ? <Header {...rest} /> : null;
