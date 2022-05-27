@@ -1,7 +1,8 @@
 import React from 'react';
-import type {ColorScheme} from '@shopify/polaris-tokens';
 
-import './CustomProperties.scss';
+import type {ColorScheme} from '../../tokens';
+
+import {styles} from './styles';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
@@ -28,12 +29,19 @@ export function CustomProperties(props: CustomPropertiesProps) {
   } = props;
 
   return (
-    <Component
-      p-color-scheme={colorScheme}
-      className={className}
-      style={{color: 'var(--p-text)', ...style}}
-    >
-      {children}
-    </Component>
+    <>
+      <style
+        // Convenience attribute for locating the stylesheet in the DOM.
+        data-polaris-custom-properties=""
+        dangerouslySetInnerHTML={{__html: styles}}
+      />
+      <Component
+        p-color-scheme={colorScheme}
+        className={className}
+        style={{color: 'var(--p-text)', ...style}}
+      >
+        {children}
+      </Component>
+    </>
   );
 }

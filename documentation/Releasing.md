@@ -13,8 +13,10 @@ To perform a release, merge in the **"Version Packages"** PR.
 
 [Snapshot releases](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) are a way to release your changes for testing without updating the versions. To create a snapshot release:
 
-1. Add a comment in your feature branch PR with the slash command "/snapshot-release"
-2. This will trigger the `snapshot.yml` workflow to create a new snapshot release
+1. Add a comment in your feature branch PR with the slash command "/snapit"
+2. This will trigger the `snapit.yml` workflow to create a new snapshot release
+
+> Note: Your feature branch PR should have **at least one** changeset included. Otherwise, Changesets won't know which packages to create new snapshot releases.
 
 ### [polaris-for-figma](/polaris-for-figma)
 

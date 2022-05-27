@@ -1,13 +1,11 @@
 import React, {useState, useMemo} from 'react';
-import {tokens} from '@shopify/polaris-tokens';
 
+import breakpoints from '../../tokens/token-groups/breakpoints.json';
 import {debounce} from '../../utilities/debounce';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Cell} from './components';
 import styles from './Grid.scss';
-
-const {breakpoints} = tokens;
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -69,19 +67,19 @@ function getAreas(areas?: Areas) {
   if (areas === undefined) return;
 
   const xl = window.matchMedia(
-    `(min-width: ${breakpoints['breakpoints-xl'].value})`,
+    `(min-width: ${breakpoints['breakpoints-xl']})`,
   ).matches;
 
   const lg = window.matchMedia(
-    `(min-width: ${breakpoints['breakpoints-lg'].value})`,
+    `(min-width: ${breakpoints['breakpoints-lg']})`,
   ).matches;
 
   const md = window.matchMedia(
-    `(min-width: ${breakpoints['breakpoints-md'].value})`,
+    `(min-width: ${breakpoints['breakpoints-md']})`,
   ).matches;
 
   const sm = window.matchMedia(
-    `(min-width: ${breakpoints['breakpoints-sm'].value})`,
+    `(min-width: ${breakpoints['breakpoints-sm']})`,
   ).matches;
 
   switch (true) {
