@@ -1,7 +1,7 @@
 .ComponentGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 0.75rem;
+  gap: 2rem 1rem;
 }
 
 .Component {
@@ -11,15 +11,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: var(--border-radius-400);
     color: inherit;
-    background: var(--surface);
     box-shadow: var(--card-shadow);
-    overflow: hidden;
-
-    &:hover {
-      box-shadow: var(--card-shadow-hover);
-    }
   }
 
   &.isHighlighted a {
@@ -27,14 +20,12 @@
   }
 
   .ComponentDescription {
-    padding: 1rem;
-    border-top: var(--border);
-    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 1rem 0 0;
   }
 
   p {
     margin-top: 0.35rem;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-300);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -43,5 +34,7 @@
 }
 
 .Preview {
-  filter: brightness(0.99);
+  filter: brightness(0.91) contrast(1.15);
+  border-radius: var(--border-radius-800);
+  overflow: hidden;
 }

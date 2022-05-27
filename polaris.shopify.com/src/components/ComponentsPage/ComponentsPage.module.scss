@@ -1,3 +1,11 @@
+.ComponentsPage {
+  h1 {
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-100);
+    margin-bottom: 2.5rem;
+  }
+}
+
 .Filters {
   position: relative;
   margin-bottom: 1rem;
@@ -12,8 +20,15 @@
   }
 }
 
+.Category {
+  margin-bottom: 3.5rem;
+}
+
 .CategoryName {
-  margin-top: 2.5rem;
   margin-bottom: 1rem;
+  background: url(./BehaviorMajor.svg) no-repeat left 40%;
+  background-size: 20px auto;
+  padding-left: 28px;
   font-size: var(--font-size-500);
+  letter-spacing: var(--letter-spacing-200);
 }

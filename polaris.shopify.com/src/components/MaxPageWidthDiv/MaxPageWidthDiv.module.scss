@@ -5,10 +5,7 @@
   margin-right: auto;
   max-width: $pageMaxWidth;
 
-  &.padding {
-    @media screen and (max-width: $pageMaxWidth) {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
+  @media screen and (max-width: 1540px) {
+    max-width: 1300px;
   }
 }
