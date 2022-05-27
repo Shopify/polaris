@@ -53,13 +53,11 @@ function TokensPage({ tokenGroup }: Props) {
   return (
     <>
       <MaxPageWidthDiv className={styles.Intro}>
-        <h1>
-          Extend Polaris using <span>Tokens.</span>
-        </h1>
+        <h1>Tokens</h1>
         <p>
-          Build something exciting on top of Polaris. By using tokens, your
-          product is future proof. When Polaris evolves, your code automatically
-          evolves.
+          Build anything you want on top of Polaris. By using tokens, your
+          design becomes future proof. When Polaris evolves, your design
+          automatically updates with the latest values.
         </p>
       </MaxPageWidthDiv>
 
