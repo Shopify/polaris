@@ -7,7 +7,7 @@
 - [#5946](https://github.com/Shopify/polaris/pull/5946) [`3a5be82cb`](https://github.com/Shopify/polaris/commit/3a5be82cbc96fd05e64583425dee8f3fd8b58616) Thanks [@rmleg](https://github.com/rmleg)! - Added support for setting a `ReactNode` on the `PageActions` `primaryAction` prop
 
 * [#5712](https://github.com/Shopify/polaris/pull/5712) [`290b41c61`](https://github.com/Shopify/polaris/commit/290b41c61ce6a6319631ec1e960c7ac896138ad5) Thanks [@aveline](https://github.com/aveline)! - - Update checkbox and radio button styling
-  - Increase spacing between `ChoiceList` items on small screens only
+  - Increased spacing between `ChoiceList` items on small screens only
 
 - [#5931](https://github.com/Shopify/polaris/pull/5931) [`87b489073`](https://github.com/Shopify/polaris/commit/87b48907363f25c0f76d2c39126ce174c5a11d82) Thanks [@laurkim](https://github.com/laurkim)! - Fixed input focus loss in TextField on vertical content change
 
