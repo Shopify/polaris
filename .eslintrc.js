@@ -147,11 +147,7 @@ module.exports = {
 
 function noExtraneousDependenciesConfig(packageDir) {
   return {
-    files: [
-      `${packageDir}/rollup.config.*`,
-      `${packageDir}/loom.config.*`,
-      `${packageDir}/config/**/*`,
-    ],
+    files: [`${packageDir}/rollup.config.*`, `${packageDir}/config/**/*`],
     rules: {
       'import/no-extraneous-dependencies': [
         'error',
