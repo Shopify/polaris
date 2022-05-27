@@ -45,13 +45,12 @@ export function Page({
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
 
-  const hasFooterContent = elementChildren(children)
-    .map(
-      (child) =>
-        isElementOfType(child, PageActions) ||
-        isElementOfType(child, FooterHelp),
-    )
-    .at(-1);
+  const footerContent =
+    elementChildren(children)[elementChildren(children).length - 1];
+
+  const hasFooterContent =
+    isElementOfType(footerContent, PageActions) ||
+    isElementOfType(footerContent, FooterHelp);
 
   const contentClassName = classNames(
     !hasHeaderContent && styles.Content,
