@@ -1276,7 +1276,7 @@ function IndexTableWithAllElementsExample() {
 }
 ```
 
-### Small screen IndexTable with all of its elements
+### Small screen IndexTable with all of its elements.
 
 Use as a broad example that includes most of the elements and props available to index table.
 
