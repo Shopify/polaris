@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.11.0
+
+### Minor Changes
+
+- [#5952](https://github.com/Shopify/polaris/pull/5952) [`4a59bc57d`](https://github.com/Shopify/polaris/commit/4a59bc57d2385cc38099601bd8dacd182687a131) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated @shopify/polaris-tokens to v5 and integrated the SCSS stylesheet in the `CustomProperties` component
+
 ## 9.10.0
 
 ### Minor Changes
