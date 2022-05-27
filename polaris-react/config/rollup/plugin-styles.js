@@ -119,7 +119,6 @@ module.exports.styles = function styles({
     }
 
     // Regular css file
-
     rollup.emitFile({type: 'asset', fileName: output, source: css});
   }
 
