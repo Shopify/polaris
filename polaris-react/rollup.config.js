@@ -45,6 +45,9 @@ function generateConfig({output, targets, stylesConfig}) {
   };
 }
 
+/**
+ * @type {import('rollup').RollupOptions}
+ */
 const config = [
   generateConfig({
     targets: 'extends @shopify/browserslist-config, node 12.20',
