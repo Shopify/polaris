@@ -1,6 +1,13 @@
-import { AppProvider, Button,Modal,Stack,DropZone,Checkbox } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Button,
+  Modal,
+  Stack,
+  DropZone,
+  Checkbox,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function LargeModalExample() {
   const [active, setActive] = useState(true);
   const [checked, setChecked] = useState(false);
@@ -12,7 +19,7 @@ function LargeModalExample() {
   const activator = <Button onClick={toggleActive}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         large
         activator={activator}
@@ -20,12 +27,12 @@ function LargeModalExample() {
         onClose={toggleActive}
         title="Import customers by CSV"
         primaryAction={{
-          content: 'Import customers',
+          content: "Import customers",
           onAction: toggleActive,
         }}
         secondaryActions={[
           {
-            content: 'Cancel',
+            content: "Cancel",
             onAction: toggleActive,
           },
         ]}
@@ -61,12 +68,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <LargeModalExample />
       </div>
@@ -75,4 +82,3 @@ function Example() {
 }
 
 export default Example;
-    

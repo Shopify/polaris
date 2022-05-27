@@ -1,18 +1,25 @@
-import { AppProvider, Form,FormLayout,Checkbox,TextField,Button } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Form,
+  FormLayout,
+  Checkbox,
+  TextField,
+  Button,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function FormOnSubmitExample() {
   const [newsletter, setNewsletter] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubmit = useCallback((_event) => {
-    setEmail('');
+    setEmail("");
     setNewsletter(false);
   }, []);
 
   const handleNewsLetterChange = useCallback(
     (value) => setNewsletter(value),
-    [],
+    []
   );
 
   const handleEmailChange = useCallback((value) => setEmail(value), []);
@@ -55,12 +62,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <FormOnSubmitExample />
       </div>
@@ -69,4 +76,3 @@ function Example() {
 }
 
 export default Example;
-    

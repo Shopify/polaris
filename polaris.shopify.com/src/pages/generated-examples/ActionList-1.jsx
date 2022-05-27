@@ -1,19 +1,19 @@
-import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Popover, ActionList } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListInPopoverExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const handleImportedAction = useCallback(
-    () => console.log('Imported action'),
-    [],
+    () => console.log("Imported action"),
+    []
   );
 
   const handleExportedAction = useCallback(
-    () => console.log('Exported action'),
-    [],
+    () => console.log("Exported action"),
+    []
   );
 
   const activator = (
@@ -23,7 +23,7 @@ function ActionListInPopoverExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -34,11 +34,11 @@ function ActionListInPopoverExample() {
           actionRole="menuitem"
           items={[
             {
-              content: 'Import file',
+              content: "Import file",
               onAction: handleImportedAction,
             },
             {
-              content: 'Export file',
+              content: "Export file",
               onAction: handleExportedAction,
             },
           ]}
@@ -57,12 +57,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListInPopoverExample />
       </div>
@@ -71,4 +71,3 @@ function Example() {
 }
 
 export default Example;
-    

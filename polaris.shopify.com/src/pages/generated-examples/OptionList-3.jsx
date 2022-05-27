@@ -1,6 +1,6 @@
-import { AppProvider, Card,OptionList } from "@shopify/polaris";
+import { AppProvider, Card, OptionList } from "@shopify/polaris";
 import { useState } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function OptionListWithSectionsExample() {
   const [selected, setSelected] = useState([]);
 
@@ -11,16 +11,16 @@ function OptionListWithSectionsExample() {
         sections={[
           {
             options: [
-              {value: 'type', label: 'Sale item type'},
-              {value: 'kind', label: 'Sale kind'},
+              { value: "type", label: "Sale item type" },
+              { value: "kind", label: "Sale kind" },
             ],
           },
           {
-            title: 'Traffic',
+            title: "Traffic",
             options: [
-              {value: 'source', label: 'Traffic referrer source'},
-              {value: 'host', label: 'Traffic referrer host'},
-              {value: 'path', label: 'Traffic referrer path'},
+              { value: "source", label: "Traffic referrer source" },
+              { value: "host", label: "Traffic referrer host" },
+              { value: "path", label: "Traffic referrer path" },
             ],
           },
         ]}
@@ -40,12 +40,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <OptionListWithSectionsExample />
       </div>
@@ -54,4 +54,3 @@ function Example() {
 }
 
 export default Example;
-    

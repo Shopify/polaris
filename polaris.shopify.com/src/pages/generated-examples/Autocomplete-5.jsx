@@ -1,6 +1,6 @@
-import { AppProvider, Autocomplete,Tag,Stack } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Autocomplete, Tag, Stack } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function AutoCompleteLazyLoadExample() {
   const paginationInterval = 25;
   const deselectedOptions = Array.from(Array(100)).map((_, index) => ({
@@ -9,7 +9,7 @@ function AutoCompleteLazyLoadExample() {
   }));
 
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
   const [isLoading, setIsLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
@@ -43,21 +43,21 @@ function AutoCompleteLazyLoadExample() {
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
     },
-    [selectedOptions],
+    [selectedOptions]
   );
 
   const updateText = useCallback(
     (value) => {
       setInputValue(value);
 
-      if (value === '') {
+      if (value === "") {
         setOptions(deselectedOptions);
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
+      const filterRegex = new RegExp(value, "i");
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.label.match(filterRegex)
       );
 
       let endIndex = resultOptions.length - 1;
@@ -67,7 +67,7 @@ function AutoCompleteLazyLoadExample() {
       setOptions(resultOptions);
       setInputValue;
     },
-    [deselectedOptions, options],
+    [deselectedOptions, options]
   );
 
   const textField = (
@@ -83,8 +83,8 @@ function AutoCompleteLazyLoadExample() {
 
   const tagsMarkup = hasSelectedOptions
     ? selectedOptions.map((option) => {
-        let tagLabel = '';
-        tagLabel = option.replace('_', ' ');
+        let tagLabel = "";
+        tagLabel = option.replace("_", " ");
         tagLabel = titleCase(tagLabel);
         return (
           <Tag key={`option${option}`} onRemove={removeTag(option)}>
@@ -118,11 +118,11 @@ function AutoCompleteLazyLoadExample() {
   function titleCase(string) {
     return string
       .toLowerCase()
-      .split(' ')
+      .split(" ")
       .map((word) => {
         return word.replace(word[0], word[0].toUpperCase());
       })
-      .join(' ');
+      .join(" ");
   }
 }
 
@@ -135,12 +135,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <AutoCompleteLazyLoadExample />
       </div>
@@ -149,4 +149,3 @@ function Example() {
 }
 
 export default Example;
-    

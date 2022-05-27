@@ -1,15 +1,15 @@
-import { AppProvider, TextField,ChoiceList } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, TextField, ChoiceList } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
-  const [selected, setSelected] = useState(['none']);
-  const [textFieldValue, setTextFieldValue] = useState('');
+  const [selected, setSelected] = useState(["none"]);
+  const [textFieldValue, setTextFieldValue] = useState("");
 
   const handleChoiceListChange = useCallback((value) => setSelected(value), []);
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   const renderChildren = useCallback(
@@ -23,19 +23,19 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
           autoComplete="off"
         />
       ),
-    [handleTextFieldChange, textFieldValue],
+    [handleTextFieldChange, textFieldValue]
   );
 
   return (
-    <div style={{height: '150px'}}>
+    <div style={{ height: "150px" }}>
       <ChoiceList
         title="Discount minimum requirements"
         choices={[
-          {label: 'None', value: 'none'},
-          {label: 'Minimum purchase', value: 'minimum_purchase'},
+          { label: "None", value: "none" },
+          { label: "Minimum purchase", value: "minimum_purchase" },
           {
-            label: 'Minimum quantity',
-            value: 'minimum_quantity',
+            label: "Minimum quantity",
+            value: "minimum_quantity",
             renderChildren,
           },
         ]}
@@ -55,12 +55,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample />
       </div>
@@ -69,4 +69,3 @@ function Example() {
 }
 
 export default Example;
-    

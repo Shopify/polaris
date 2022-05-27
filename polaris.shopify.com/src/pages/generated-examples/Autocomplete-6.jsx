@@ -1,17 +1,22 @@
-import { AppProvider, Autocomplete,Icon,TextContainer } from "@shopify/polaris";
+import {
+  AppProvider,
+  Autocomplete,
+  Icon,
+  TextContainer,
+} from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import React, { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import React, { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function AutocompleteExample() {
   const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
+    { value: "rustic", label: "Rustic" },
+    { value: "antique", label: "Antique" },
+    { value: "vinyl", label: "Vinyl" },
+    { value: "vintage", label: "Vintage" },
+    { value: "refurbished", label: "Refurbished" },
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
@@ -24,20 +29,20 @@ function AutocompleteExample() {
       }
 
       setTimeout(() => {
-        if (value === '') {
+        if (value === "") {
           setOptions(deselectedOptions);
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, 'i');
+        const filterRegex = new RegExp(value, "i");
         const resultOptions = deselectedOptions.filter((option) =>
-          option.label.match(filterRegex),
+          option.label.match(filterRegex)
         );
         setOptions(resultOptions);
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading, options]
   );
 
   const updateSelection = useCallback(
@@ -51,7 +56,7 @@ function AutocompleteExample() {
       setSelectedOptions(selected);
       setInputValue(selectedText[0]);
     },
-    [options],
+    [options]
   );
 
   const textField = (
@@ -67,14 +72,14 @@ function AutocompleteExample() {
   const emptyState = (
     <React.Fragment>
       <Icon source={SearchMinor} />
-      <div style={{textAlign: 'center'}}>
+      <div style={{ textAlign: "center" }}>
         <TextContainer>Could not find any results</TextContainer>
       </div>
     </React.Fragment>
   );
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Autocomplete
         options={options}
         selected={selectedOptions}
@@ -96,12 +101,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <AutocompleteExample />
       </div>
@@ -110,4 +115,3 @@ function Example() {
 }
 
 export default Example;
-    

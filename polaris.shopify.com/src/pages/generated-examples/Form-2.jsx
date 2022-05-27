@@ -1,10 +1,16 @@
-import { AppProvider, Form,FormLayout,TextField,Button } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Form,
+  FormLayout,
+  TextField,
+  Button,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function FormWithoutNativeValidationExample() {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
-  const handleSubmit = useCallback((_event) => setUrl(''), []);
+  const handleSubmit = useCallback((_event) => setUrl(""), []);
 
   const handleUrlChange = useCallback((value) => setUrl(value), []);
 
@@ -34,12 +40,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <FormWithoutNativeValidationExample />
       </div>
@@ -48,4 +54,3 @@ function Example() {
 }
 
 export default Example;
-    

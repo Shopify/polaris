@@ -1,6 +1,11 @@
-import { AppProvider, Frame,Navigation } from "@shopify/polaris";
-import { HomeMajor,OrdersMajor,ProductsMajor,CustomersMajor } from "@shopify/polaris-icons";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Frame, Navigation } from "@shopify/polaris";
+import {
+  HomeMajor,
+  OrdersMajor,
+  ProductsMajor,
+  CustomersMajor,
+} from "@shopify/polaris-icons";
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -11,46 +16,45 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Frame>
-  <Navigation location="/">
-    <Navigation.Section
-      items={[
-        {
-          url: '/path/to/place',
-          label: 'Home',
-          icon: HomeMajor,
-        },
-        {
-          url: '/path/to/place',
-          label: 'Orders',
-          icon: OrdersMajor,
-          badge: '15',
-        },
-        {
-          url: '/path/to/place',
-          label: 'Products',
-          icon: ProductsMajor,
-        },
-        {
-          url: '/path/to/place',
-          label: 'Customers',
-          icon: CustomersMajor,
-        },
-      ]}
-    />
-  </Navigation>
-</Frame>
+          <Navigation location="/">
+            <Navigation.Section
+              items={[
+                {
+                  url: "/path/to/place",
+                  label: "Home",
+                  icon: HomeMajor,
+                },
+                {
+                  url: "/path/to/place",
+                  label: "Orders",
+                  icon: OrdersMajor,
+                  badge: "15",
+                },
+                {
+                  url: "/path/to/place",
+                  label: "Products",
+                  icon: ProductsMajor,
+                },
+                {
+                  url: "/path/to/place",
+                  label: "Customers",
+                  icon: CustomersMajor,
+                },
+              ]}
+            />
+          </Navigation>
+        </Frame>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

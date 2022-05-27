@@ -1,6 +1,6 @@
-import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Popover, ActionList } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListWithHelpTextExample() {
   const [active, setActive] = useState(true);
 
@@ -13,7 +13,7 @@ function ActionListWithHelpTextExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -26,12 +26,12 @@ function ActionListWithHelpTextExample() {
             {
               items: [
                 {
-                  content: 'Blog posts',
-                  helpText: 'Manage your blog articles',
+                  content: "Blog posts",
+                  helpText: "Manage your blog articles",
                 },
                 {
-                  content: 'Blogs',
-                  helpText: 'Manage blogs published to your Online Store',
+                  content: "Blogs",
+                  helpText: "Manage blogs published to your Online Store",
                 },
               ],
             },
@@ -51,12 +51,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListWithHelpTextExample />
       </div>
@@ -65,4 +65,3 @@ function Example() {
 }
 
 export default Example;
-    

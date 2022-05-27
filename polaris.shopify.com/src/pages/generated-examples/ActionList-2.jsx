@@ -1,7 +1,7 @@
-import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
-import { ImportMinor,ExportMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Popover, ActionList } from "@shopify/polaris";
+import { ImportMinor, ExportMinor } from "@shopify/polaris-icons";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListWithMediaExample() {
   const [active, setActive] = useState(true);
 
@@ -14,7 +14,7 @@ function ActionListWithMediaExample() {
   );
 
   return (
-    <div style={{height: '200px'}}>
+    <div style={{ height: "200px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -24,8 +24,8 @@ function ActionListWithMediaExample() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            { content: "Import file", icon: ImportMinor },
+            { content: "Export file", icon: ExportMinor },
           ]}
         />
       </Popover>
@@ -42,12 +42,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListWithMediaExample />
       </div>
@@ -56,4 +56,3 @@ function Example() {
 }
 
 export default Example;
-    

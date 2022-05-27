@@ -1,18 +1,18 @@
 import { AppProvider, Button } from "@shopify/polaris";
 import { useState } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function DisclosureButtion() {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <Button
       plain
-      disclosure={expanded ? 'up' : 'down'}
+      disclosure={expanded ? "up" : "down"}
       onClick={() => {
         setExpanded(!expanded);
       }}
     >
-      {expanded ? 'Show less' : 'Show more'}
+      {expanded ? "Show less" : "Show more"}
     </Button>
   );
 }
@@ -26,12 +26,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DisclosureButtion />
       </div>
@@ -40,4 +40,3 @@ function Example() {
 }
 
 export default Example;
-    
