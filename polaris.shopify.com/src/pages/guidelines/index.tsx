@@ -1,5 +1,7 @@
+import GuidelinesIndexPage from "../../components/GuidelinesIndexPage";
+
 const Resources = () => {
-  return <></>;
+  return <GuidelinesIndexPage />;
 };
 
 export default Resources;
