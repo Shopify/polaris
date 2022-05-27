@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Removed jestAdjustmentsPlugin as we have the root jest config file. Moved scripts to scripts/build.js.
+Removed jestAdjustmentsPlugin as we have `jest.config.js`. Moved scripts to scripts/build.js.
