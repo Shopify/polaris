@@ -24,21 +24,6 @@
       background-color: var(--text-strong);
       color: white;
     }
-
-    &:hover {
-      position: relative;
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 3px;
-        border-radius: 3px 3px 0 0;
-        background: #ddd;
-      }
-    }
   }
 
   .Icon {

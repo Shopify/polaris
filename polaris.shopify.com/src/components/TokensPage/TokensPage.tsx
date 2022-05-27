@@ -110,7 +110,7 @@ function TokensPage({ tokenGroup }: Props) {
         <div className={styles.Group}>
           <MaxPageWidthDiv>
             <TokenList
-              layout={["colors"].includes(tokenGroup) ? "grid" : "list"}
+              layout={["colors"].includes(tokenGroup) ? "list" : "list"}
             >
               {tokens[tokenGroup]
                 .sort((token) =>
