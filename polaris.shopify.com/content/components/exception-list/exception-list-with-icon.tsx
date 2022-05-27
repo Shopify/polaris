@@ -6,7 +6,7 @@ import React from "react";
   items={[
     {
       icon: NoteMinor,
-      description: 'This customer is awesome. Make sure to treat them right!',
+      description: "This customer is awesome. Make sure to treat them right!",
     },
   ]}
-/>
+/>;

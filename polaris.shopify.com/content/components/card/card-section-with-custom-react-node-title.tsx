@@ -16,4 +16,4 @@ import React from "react";
       <List.Item>Super Shoes</List.Item>
     </List>
   </Card.Section>
-</Card>
+</Card>;

@@ -8,10 +8,10 @@ function DropZoneExample() {
   const handleDropZoneDrop = useCallback(
     (_dropFiles, acceptedFiles, _rejectedFiles) =>
       setFile((file) => acceptedFiles[0]),
-    [],
+    []
   );
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (

@@ -8,4 +8,4 @@ import React from "react";
   <List.Item>
     Order #1002 <Caption>Received April 22, 2017</Caption>
   </List.Item>
-</List>
+</List>;

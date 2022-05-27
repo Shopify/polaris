@@ -4,7 +4,7 @@ import React from "react";
 <Card sectioned>
   <EmptyState
     heading="Upload a file to get started"
-    action={{content: 'Upload files'}}
+    action={{ content: "Upload files" }}
     image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
     fullWidth
   >
@@ -14,4 +14,4 @@ import React from "react";
       width.
     </p>
   </EmptyState>
-</Card>
+</Card>;

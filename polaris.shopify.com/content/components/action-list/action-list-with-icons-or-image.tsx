@@ -14,7 +14,7 @@ function ActionListWithMediaExample() {
   );
 
   return (
-    <div style={{height: '200px'}}>
+    <div style={{ height: "200px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -24,8 +24,8 @@ function ActionListWithMediaExample() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            { content: "Import file", icon: ImportMinor },
+            { content: "Export file", icon: ExportMinor },
           ]}
         />
       </Popover>

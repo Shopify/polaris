@@ -6,20 +6,20 @@ function FittedTabsExample() {
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
+    []
   );
 
   const tabs = [
     {
-      id: 'all-customers-fitted-2',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content-2',
+      id: "all-customers-fitted-2",
+      content: "All",
+      accessibilityLabel: "All customers",
+      panelID: "all-customers-fitted-content-2",
     },
     {
-      id: 'accepts-marketing-fitted-2',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-Ccontent-2',
+      id: "accepts-marketing-fitted-2",
+      content: "Accepts marketing",
+      panelID: "accepts-marketing-fitted-Ccontent-2",
     },
   ];
 

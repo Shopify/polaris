@@ -10,4 +10,4 @@ import React from "react";
   <Icon source={CirclePlusMinor} color="success" />
   <Icon source={CirclePlusMinor} color="warning" />
   <Icon source={CirclePlusMinor} color="critical" />
-</div>
+</div>;

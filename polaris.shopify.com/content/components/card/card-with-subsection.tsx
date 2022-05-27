@@ -26,4 +26,4 @@ import React from "react";
       A single subsection without a sibling has no visual appearance
     </Card.Subsection>
   </Card.Section>
-</Card>
+</Card>;

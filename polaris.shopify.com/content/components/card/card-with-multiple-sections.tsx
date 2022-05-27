@@ -12,4 +12,4 @@ import React from "react";
       visitors, top products, and referrals.
     </p>
   </Card.Section>
-</Card>
+</Card>;

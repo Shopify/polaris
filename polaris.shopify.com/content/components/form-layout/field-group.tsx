@@ -16,4 +16,4 @@ import React from "react";
       autoComplete="off"
     />
   </FormLayout.Group>
-</FormLayout>
+</FormLayout>;

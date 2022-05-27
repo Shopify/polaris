@@ -4,8 +4,8 @@ import React from "react";
 <AppProvider i18n={{}}>
   <Card
     title="Shipment 1234"
-    secondaryFooterActions={[{content: 'Edit shipment'}]}
-    primaryFooterAction={{content: 'Add tracking number'}}
+    secondaryFooterActions={[{ content: "Edit shipment" }]}
+    primaryFooterAction={{ content: "Add tracking number" }}
   >
     <Card.Section title="Items">
       <List>
@@ -14,4 +14,4 @@ import React from "react";
       </List>
     </Card.Section>
   </Card>
-</AppProvider>
+</AppProvider>;

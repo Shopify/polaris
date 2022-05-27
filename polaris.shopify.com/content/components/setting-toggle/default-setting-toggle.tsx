@@ -6,8 +6,8 @@ function SettingToggleExample() {
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? 'Deactivate' : 'Activate';
-  const textStatus = active ? 'activated' : 'deactivated';
+  const contentStatus = active ? "Deactivate" : "Activate";
+  const textStatus = active ? "activated" : "deactivated";
 
   return (
     <SettingToggle

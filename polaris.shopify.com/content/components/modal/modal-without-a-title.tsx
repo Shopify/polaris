@@ -9,7 +9,7 @@ function ModalWithoutTitleExample() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         title="Reach more shoppers with Instagram product tags"
         titleHidden
@@ -17,12 +17,12 @@ function ModalWithoutTitleExample() {
         open={active}
         onClose={handleChange}
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleChange,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleChange,
           },
         ]}

@@ -3,12 +3,12 @@ import React from "react";
 
 <Banner
   title="High risk of fraud detected"
-  action={{content: 'Review risk analysis'}}
+  action={{ content: "Review risk analysis" }}
   status="critical"
 >
   <p>
-    Before fulfilling this order or capturing payment, please{' '}
+    Before fulfilling this order or capturing payment, please{" "}
     <Link url="">review the Risk Analysis</Link> and determine if this order is
     fraudulent.
   </p>
-</Banner>
+</Banner>;

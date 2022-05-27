@@ -175,7 +175,6 @@ The content of the navigation component consists of navigation items. Each item 
 | secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
 | onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
 
-
 <a name="sub-navigation-item"></a>
 
 ### SubNavigationItem
@@ -195,7 +194,6 @@ The content of the navigation component consists of navigation items. Each item 
 | new          | boolean  | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
 | onClick()    | function | A callback function to handle clicking on a navigation item                                                                                |
 
-
 <a name="secondary-action"></a>
 
 ### SecondaryAction
@@ -210,9 +208,7 @@ The content of the navigation component consists of navigation items. Each item 
 | onClick()          | function                                                                           | A callback function to handle clicking on a navigation item                                                                                             |
 | tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
 
-
 <a name="type-action"></a>
-
 
 <a name="type-rollup"></a>
 

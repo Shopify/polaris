@@ -5,10 +5,10 @@ import React from "react";
   label="Results"
   hasPrevious
   onPrevious={() => {
-    console.log('Previous');
+    console.log("Previous");
   }}
   hasNext
   onNext={() => {
-    console.log('Next');
+    console.log("Next");
   }}
-/>
+/>;

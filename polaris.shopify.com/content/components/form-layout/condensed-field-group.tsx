@@ -8,4 +8,4 @@ import React from "react";
     <TextField label="Height" onChange={() => {}} autoComplete="off" />
     <TextField label="Unit" onChange={() => {}} autoComplete="off" />
   </FormLayout.Group>
-</FormLayout>
+</FormLayout>;

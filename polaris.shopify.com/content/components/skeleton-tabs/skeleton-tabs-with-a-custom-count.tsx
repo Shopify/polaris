@@ -3,4 +3,4 @@ import React from "react";
 
 <Card>
   <SkeletonTabs count={4} />
-</Card>
+</Card>;

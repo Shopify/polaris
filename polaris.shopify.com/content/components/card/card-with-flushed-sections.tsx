@@ -14,4 +14,4 @@ import React from "react";
       based on criteria such as sales over time, by channel, or by staff.
     </TextContainer>
   </Card.Section>
-</Card>
+</Card>;

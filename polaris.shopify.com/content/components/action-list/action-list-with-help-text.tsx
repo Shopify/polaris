@@ -13,7 +13,7 @@ function ActionListWithHelpTextExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -26,12 +26,12 @@ function ActionListWithHelpTextExample() {
             {
               items: [
                 {
-                  content: 'Blog posts',
-                  helpText: 'Manage your blog articles',
+                  content: "Blog posts",
+                  helpText: "Manage your blog articles",
                 },
                 {
-                  content: 'Blogs',
-                  helpText: 'Manage blogs published to your Online Store',
+                  content: "Blogs",
+                  helpText: "Manage blogs published to your Online Store",
                 },
               ],
             },

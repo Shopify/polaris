@@ -1,19 +1,19 @@
 import { Pagination } from "@shopify/polaris";
 import React from "react";
 
-<div style={{height: '100px'}}>
+<div style={{ height: "100px" }}>
   <Pagination
     hasPrevious
     previousKeys={[74]}
     previousTooltip="j"
     onPrevious={() => {
-      console.log('Previous');
+      console.log("Previous");
     }}
     hasNext
     nextKeys={[75]}
     nextTooltip="k"
     onNext={() => {
-      console.log('Next');
+      console.log("Next");
     }}
   />
-</div>
+</div>;

@@ -5,7 +5,7 @@ import React from "react";
   <Card.Section>
     <p>John Smith</p>
   </Card.Section>
-  <Card.Section title="Contact Information" actions={[{content: 'Edit'}]}>
+  <Card.Section title="Contact Information" actions={[{ content: "Edit" }]}>
     <p>john.smith@example.com</p>
   </Card.Section>
-</Card>
+</Card>;

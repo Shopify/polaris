@@ -1,4 +1,11 @@
-import { Page, Layout, Banner, Card, FormLayout, TextField } from "@shopify/polaris";
+import {
+  Page,
+  Layout,
+  Banner,
+  Card,
+  FormLayout,
+  TextField,
+} from "@shopify/polaris";
 import React from "react";
 
 <Page fullWidth>
@@ -30,4 +37,4 @@ import React from "react";
       </Card>
     </Layout.AnnotatedSection>
   </Layout>
-</Page>
+</Page>;

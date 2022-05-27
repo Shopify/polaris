@@ -2,12 +2,12 @@ import { Page, Card, Stack, Button } from "@shopify/polaris";
 import React from "react";
 
 <Page
-  breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+  breadcrumbs={[{ content: "Orders", url: "/orders" }]}
   title="#1085"
   secondaryActions={[
-    {content: 'Print'},
-    {content: 'Unarchive'},
-    {content: 'Cancel order'},
+    { content: "Print" },
+    { content: "Unarchive" },
+    { content: "Cancel order" },
   ]}
   pagination={{
     hasPrevious: true,
@@ -22,4 +22,4 @@ import React from "react";
       <Button primary>Continue</Button>
     </Stack>
   </Card>
-</Page>
+</Page>;

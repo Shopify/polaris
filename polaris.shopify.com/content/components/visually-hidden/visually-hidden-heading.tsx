@@ -1,4 +1,10 @@
-import { Card, VisuallyHidden, Heading, FormLayout, TextField } from "@shopify/polaris";
+import {
+  Card,
+  VisuallyHidden,
+  Heading,
+  FormLayout,
+  TextField,
+} from "@shopify/polaris";
 import React from "react";
 
 <Card sectioned>
@@ -19,4 +25,4 @@ import React from "react";
       autoComplete="off"
     />
   </FormLayout>
-</Card>
+</Card>;

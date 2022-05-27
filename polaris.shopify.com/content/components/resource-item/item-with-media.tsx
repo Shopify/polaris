@@ -1,21 +1,27 @@
-import { Card, ResourceList, ResourceItem, Avatar, TextStyle } from "@shopify/polaris";
+import {
+  Card,
+  ResourceList,
+  ResourceItem,
+  Avatar,
+  TextStyle,
+} from "@shopify/polaris";
 import React from "react";
 
 <Card>
   <ResourceList
-    resourceName={{singular: 'customer', plural: 'customers'}}
+    resourceName={{ singular: "customer", plural: "customers" }}
     items={[
       {
         id: 145,
-        url: 'customers/145',
+        url: "customers/145",
         avatarSource:
-          'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
-        name: 'Yi So-Yeon',
-        location: 'Gwangju, South Korea',
+          "https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746",
+        name: "Yi So-Yeon",
+        location: "Gwangju, South Korea",
       },
     ]}
     renderItem={(item) => {
-      const {id, url, avatarSource, name, location} = item;
+      const { id, url, avatarSource, name, location } = item;
 
       return (
         <ResourceItem
@@ -35,4 +41,4 @@ import React from "react";
       );
     }}
   />
-</Card>
+</Card>;

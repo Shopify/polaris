@@ -12,7 +12,7 @@ function SmallModalExample() {
   const activator = <Button onClick={toggleActive}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         small
         activator={activator}
@@ -20,12 +20,12 @@ function SmallModalExample() {
         onClose={toggleActive}
         title="Import customers by CSV"
         primaryAction={{
-          content: 'Import customers',
+          content: "Import customers",
           onAction: toggleActive,
         }}
         secondaryActions={[
           {
-            content: 'Cancel',
+            content: "Cancel",
             onAction: toggleActive,
           },
         ]}

@@ -6,7 +6,7 @@ function PopoverWithActionListExample() {
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+    []
   );
 
   const activator = (
@@ -16,7 +16,7 @@ function PopoverWithActionListExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -25,7 +25,7 @@ function PopoverWithActionListExample() {
       >
         <ActionList
           actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
+          items={[{ content: "Import" }, { content: "Export" }]}
         />
       </Popover>
     </div>

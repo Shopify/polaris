@@ -4,14 +4,14 @@ import { useState, useCallback } from "react";
 
 function AutocompleteExample() {
   const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
+    { value: "rustic", label: "Rustic" },
+    { value: "antique", label: "Antique" },
+    { value: "vinyl", label: "Vinyl" },
+    { value: "vintage", label: "Vintage" },
+    { value: "refurbished", label: "Refurbished" },
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
@@ -24,20 +24,20 @@ function AutocompleteExample() {
       }
 
       setTimeout(() => {
-        if (value === '') {
+        if (value === "") {
           setOptions(deselectedOptions);
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, 'i');
+        const filterRegex = new RegExp(value, "i");
         const resultOptions = deselectedOptions.filter((option) =>
-          option.label.match(filterRegex),
+          option.label.match(filterRegex)
         );
         setOptions(resultOptions);
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, options, loading],
+    [deselectedOptions, options, loading]
   );
 
   const updateSelection = useCallback(
@@ -51,7 +51,7 @@ function AutocompleteExample() {
       setSelectedOptions(selected);
       setInputValue(selectedText[0]);
     },
-    [options],
+    [options]
   );
 
   const textField = (
@@ -65,7 +65,7 @@ function AutocompleteExample() {
   );
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Autocomplete
         options={options}
         selected={selectedOptions}

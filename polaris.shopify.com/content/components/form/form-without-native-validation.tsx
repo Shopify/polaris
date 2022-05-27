@@ -2,9 +2,9 @@ import { Form, FormLayout, TextField, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function FormWithoutNativeValidationExample() {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
-  const handleSubmit = useCallback((_event) => setUrl(''), []);
+  const handleSubmit = useCallback((_event) => setUrl(""), []);
 
   const handleUrlChange = useCallback((value) => setUrl(value), []);
 

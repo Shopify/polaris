@@ -5,13 +5,13 @@ import React from "react";
   i18n={{
     Polaris: {
       Common: {
-        checkbox: 'case à cocher',
+        checkbox: "case à cocher",
       },
       ResourceList: {
-        sortingLabel: 'Trier par',
-        showing: '{itemsCount} {resource} affichés',
-        defaultItemPlural: 'articles',
-        defaultItemSingular: 'article',
+        sortingLabel: "Trier par",
+        showing: "{itemsCount} {resource} affichés",
+        defaultItemPlural: "articles",
+        defaultItemSingular: "article",
         Item: {
           viewItem: "Afficher les détails de l'{itemName}",
         },
@@ -26,19 +26,19 @@ import React from "react";
         items={[
           {
             id: 341,
-            url: 'customers/341',
-            name: 'Mae Jemison',
-            location: 'Decatur, USA',
+            url: "customers/341",
+            name: "Mae Jemison",
+            location: "Decatur, USA",
           },
           {
             id: 256,
-            url: 'customers/256',
-            name: 'Ellen Ochoa',
-            location: 'Los Angeles, USA',
+            url: "customers/256",
+            name: "Ellen Ochoa",
+            location: "Los Angeles, USA",
           },
         ]}
         renderItem={(item) => {
-          const {id, url, name, location} = item;
+          const { id, url, name, location } = item;
           const media = <Avatar customer size="medium" name={name} />;
 
           return (
@@ -53,4 +53,4 @@ import React from "react";
       />
     </Card>
   </Page>
-</AppProvider>
+</AppProvider>;

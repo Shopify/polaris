@@ -6,8 +6,8 @@ import React from "react";
   secondaryActions={
     <Button
       connectedDisclosure={{
-        accessibilityLabel: 'Other save actions',
-        actions: [{content: 'Save as new'}],
+        accessibilityLabel: "Other save actions",
+        actions: [{ content: "Save as new" }],
       }}
     >
       Save
@@ -15,4 +15,4 @@ import React from "react";
   }
 >
   <p>Page content</p>
-</Page>
+</Page>;

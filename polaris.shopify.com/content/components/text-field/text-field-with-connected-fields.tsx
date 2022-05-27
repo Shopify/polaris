@@ -2,12 +2,12 @@ import { TextField, Select, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function ConnectedFieldsExample() {
-  const [textFieldValue, setTextFieldValue] = useState('10.6');
-  const [selectValue, setSelectValue] = useState('kg');
+  const [textFieldValue, setTextFieldValue] = useState("10.6");
+  const [selectValue, setSelectValue] = useState("kg");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   const handleSelectChange = useCallback((value) => setSelectValue(value), []);
@@ -25,7 +25,7 @@ function ConnectedFieldsExample() {
           label="Weight unit"
           onChange={handleSelectChange}
           labelHidden
-          options={['kg', 'lb']}
+          options={["kg", "lb"]}
         />
       }
       connectedRight={<Button>Submit</Button>}

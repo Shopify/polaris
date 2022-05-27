@@ -3,12 +3,12 @@ import React from "react";
 
 <PageActions
   primaryAction={{
-    content: 'Save',
+    content: "Save",
   }}
   secondaryActions={[
     {
-      content: 'Delete',
+      content: "Delete",
       destructive: true,
     },
   ]}
-/>
+/>;

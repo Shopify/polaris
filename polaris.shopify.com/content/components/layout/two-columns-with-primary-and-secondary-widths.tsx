@@ -19,4 +19,4 @@ import React from "react";
       </Card>
     </Layout.Section>
   </Layout>
-</Page>
+</Page>;

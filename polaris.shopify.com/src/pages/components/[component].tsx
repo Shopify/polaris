@@ -3,17 +3,14 @@ import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import glob from "glob";
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkFrontmatter from 'remark-frontmatter'
-import remarkGfm from 'remark-gfm'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
 
-import {
-  getComponentNav,
-  getTitleTagValue,
-} from "../../utils/various";
+import { getComponentNav, getTitleTagValue } from "../../utils/various";
 import { NavItem } from "../../components/Nav/Nav";
 import NavContentTOCLayout from "../../components/NavContentTOCLayout";
 
@@ -41,60 +38,68 @@ const Components: NextPage<Props> = ({ name, readme }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props, { component: string }> =
-  async (context) => {
-    const componentSlug = context.params?.component;
-    const mdFilePath = path.join(process.cwd(), `content/components/${componentSlug}.md`);
+export const getStaticProps: GetStaticProps<
+  Props,
+  { component: string }
+> = async (context) => {
+  const componentSlug = context.params?.component;
+  const mdFilePath = path.join(
+    process.cwd(),
+    `content/components/${componentSlug}.md`
+  );
 
-    if(fs.existsSync(mdFilePath)){
-      const componentMarkdown =
-      fs.readFileSync(
-        path.join(process.cwd(), `content/components/${componentSlug}.md`),
-        "utf-8"
-      );
+  if (fs.existsSync(mdFilePath)) {
+    const componentMarkdown = fs.readFileSync(
+      path.join(process.cwd(), `content/components/${componentSlug}.md`),
+      "utf-8"
+    );
 
-      const file = await unified()
-        .use(remarkParse)
-        .use(remarkFrontmatter)
-        // .use(remarkGfm)
-        // .use(remarkRehype)
-        // .use(rehypeStringify)
-        .process('---\nlayout: home\n---\n\n# Hi ~~Mars~~Venus!')
-        // .use(remarkRehype)
-        // .use(rehypeStringify)
-        // .process(componentMarkdown)
+    const file = await unified()
+      .use(remarkParse)
+      .use(remarkFrontmatter)
+      // .use(remarkGfm)
+      // .use(remarkRehype)
+      // .use(rehypeStringify)
+      .process("---\nlayout: home\n---\n\n# Hi ~~Mars~~Venus!");
+    // .use(remarkRehype)
+    // .use(rehypeStringify)
+    // .process(componentMarkdown)
 
-      console.log(file);
+    console.log(file);
 
-      // const componentMeta = components.find(
-      //   ({ frontMatter }) => slugify(frontMatter.name) === slug
-      // );
+    // const componentMeta = components.find(
+    //   ({ frontMatter }) => slugify(frontMatter.name) === slug
+    // );
 
-      // if (componentMeta) {
-      //   const {
-      //     frontMatter: { name },
-      //   } = componentMeta;
-      //   const componentReadme = readmes[name];
-      //   if (componentReadme) {
-      //     const props: Props = {
-      //       name,
-      //       readme: componentReadme,
-      //     };
+    // if (componentMeta) {
+    //   const {
+    //     frontMatter: { name },
+    //   } = componentMeta;
+    //   const componentReadme = readmes[name];
+    //   if (componentReadme) {
+    //     const props: Props = {
+    //       name,
+    //       readme: componentReadme,
+    //     };
 
-      //     return { props };
-      //   }
-      // }
-    } else {
-      console.log('uh oh')
-      return { notFound: true };
-    }
-  };
+    //     return { props };
+    //   }
+    // }
+  } else {
+    console.log("uh oh");
+    return { notFound: true };
+  }
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const componentBasePath = path.resolve(process.cwd(), 'content/components');
-  const paths = glob.sync(path.join(componentBasePath, '*.md')).map(fileName => {
-    return fileName.replace(`${process.cwd()}/content`, "").replace('.md', '');
-  });
+  const componentBasePath = path.resolve(process.cwd(), "content/components");
+  const paths = glob
+    .sync(path.join(componentBasePath, "*.md"))
+    .map((fileName) => {
+      return fileName
+        .replace(`${process.cwd()}/content`, "")
+        .replace(".md", "");
+    });
 
   return {
     paths,

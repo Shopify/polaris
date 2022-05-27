@@ -26,4 +26,4 @@ import React from "react";
       <td>$184.13</td>
     </tr>
   </tbody>
-</table>
+</table>;

@@ -3,16 +3,16 @@ import React from "react";
 
 <PageActions
   primaryAction={{
-    content: 'Save',
+    content: "Save",
   }}
   secondaryActions={
     <Button
       connectedDisclosure={{
-        accessibilityLabel: 'Other save actions',
-        actions: [{content: 'Save as draft'}],
+        accessibilityLabel: "Other save actions",
+        actions: [{ content: "Save as draft" }],
       }}
     >
       Save
     </Button>
   }
-/>
+/>;

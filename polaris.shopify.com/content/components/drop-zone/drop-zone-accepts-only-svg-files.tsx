@@ -1,4 +1,11 @@
-import { Stack, Thumbnail, Caption, Banner, List, DropZone } from "@shopify/polaris";
+import {
+  Stack,
+  Thumbnail,
+  Caption,
+  Banner,
+  List,
+  DropZone,
+} from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function DropZoneAcceptingSVGFilesExample() {
@@ -11,7 +18,7 @@ function DropZoneAcceptingSVGFilesExample() {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },
-    [],
+    []
   );
 
   const uploadedFiles = files.length > 0 && (

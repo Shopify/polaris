@@ -7,4 +7,4 @@ import React from "react";
     <Icon source={WandMinor} />
     <span>Wholesale</span>
   </Stack>
-</Tag>
+</Tag>;

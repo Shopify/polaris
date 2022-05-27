@@ -11,9 +11,9 @@ function FullscreenBarExample() {
   const fullscreenBarMarkup = <FullscreenBar onAction={handleActionClick} />;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       {isFullscreen && fullscreenBarMarkup}
-      <div style={{padding: '1rem'}}>
+      <div style={{ padding: "1rem" }}>
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}

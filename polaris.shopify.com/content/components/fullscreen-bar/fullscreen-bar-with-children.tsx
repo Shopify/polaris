@@ -12,11 +12,11 @@ function FullscreenBarExample() {
     <FullscreenBar onAction={handleActionClick}>
       <div
         style={{
-          display: 'flex',
+          display: "flex",
           flexGrow: 1,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingLeft: '1rem',
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingLeft: "1rem",
         }}
       >
         <DisplayText>Content</DisplayText>
@@ -26,9 +26,9 @@ function FullscreenBarExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       {isFullscreen && fullscreenBarMarkup}
-      <div style={{padding: '1rem'}}>
+      <div style={{ padding: "1rem" }}>
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}

@@ -5,11 +5,11 @@ import React from "react";
   <TextContainer>
     <Banner onDismiss={() => {}}>
       <p>
-        Use your finance report to get detailed information about your business.{' '}
+        Use your finance report to get detailed information about your business.{" "}
         <Link url="">Let us know what you think</Link>
       </p>
     </Banner>
 
     <p>View a summary of your online store’s performance.</p>
   </TextContainer>
-</Card>
+</Card>;

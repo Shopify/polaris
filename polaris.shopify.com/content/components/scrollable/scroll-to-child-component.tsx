@@ -2,7 +2,7 @@ import { Card, Scrollable } from "@shopify/polaris";
 import React from "react";
 
 <Card title="Terms of service" sectioned>
-  <Scrollable shadow style={{height: '100px'}}>
+  <Scrollable shadow style={{ height: "100px" }}>
     <ol>
       <li>Account Terms</li>
     </ol>
@@ -107,17 +107,17 @@ import React from "react";
       Apple Pay Platform Web Merchant Terms and Conditions, as they may be
       amended by Apple from time to time. If Apple amends the Apple Pay Platform
       Web Merchant Terms and Conditions, the amended and restated version will
-      be posted here:{' '}
+      be posted here:{" "}
       <a href="https://www.shopify.com/legal/apple-pay">
         https://www.shopify.com/legal/apple-pay
       </a>
-      . Such amendments to the Apple Pay Platform Web Merchant Terms are effective
-      as of the date of posting. Your continued use of Apple Pay on your store after
-      the amended Apple Pay Platform Web Merchant Terms are posted constitutes your
-      agreement to, and acceptance of, the amended Apple Pay Platform Web Merchant
-      Terms. If you do not agree to any changes to the Apple Pay Platform Web Merchant
-      Terms, de-activate your Apple Pay account and do not continue to use Apple
-      Pay on your store.
+      . Such amendments to the Apple Pay Platform Web Merchant Terms are
+      effective as of the date of posting. Your continued use of Apple Pay on
+      your store after the amended Apple Pay Platform Web Merchant Terms are
+      posted constitutes your agreement to, and acceptance of, the amended Apple
+      Pay Platform Web Merchant Terms. If you do not agree to any changes to the
+      Apple Pay Platform Web Merchant Terms, de-activate your Apple Pay account
+      and do not continue to use Apple Pay on your store.
     </p>
     <p>2.4 Google Payment</p>
 
@@ -140,17 +140,17 @@ import React from "react";
       By using Google Payment on your store, you are agreeing to be bound by the
       Google Payment API Terms of Service, as they may be amended by Google from
       time to time. If Google amends the Google Payment API Terms of Service,
-      the amended and restated version will be posted here:{' '}
+      the amended and restated version will be posted here:{" "}
       <a href="https://payments.developers.google.com/terms/sellertos">
         https://payments.developers.google.com/terms/sellertos
       </a>
       . Such amendments to the Google Payment API Terms of Service are effective
-      as of the date of posting. Your continued use of Google Payment on your store
-      after the amended Google Payment API Terms of Service are posted constitutes
-      your agreement to, and acceptance of, the amended Google Payment API Terms
-      of Service. If you do not agree to any changes to the Google Payment API Terms
-      of Service, de-activate your Google Payment account and do not continue to
-      use Google Payment on your store.
+      as of the date of posting. Your continued use of Google Payment on your
+      store after the amended Google Payment API Terms of Service are posted
+      constitutes your agreement to, and acceptance of, the amended Google
+      Payment API Terms of Service. If you do not agree to any changes to the
+      Google Payment API Terms of Service, de-activate your Google Payment
+      account and do not continue to use Google Payment on your store.
     </p>
 
     <p>2.5 Domain Names</p>
@@ -205,10 +205,10 @@ import React from "react";
     <p>
       You acknowledge and agree that Shopify may amend these Terms of Service at
       any time by posting the relevant amended and restated Terms of Service on
-      Shopify’s website, available at{' '}
+      Shopify’s website, available at{" "}
       <a href="https://www.shopify.com/legal/terms">
         https://www.shopify.com/legal/terms
-      </a>{' '}
+      </a>{" "}
       and such amendments to the Terms of Service are effective as of the date
       of posting. Your continued use of the Services after the amended Terms of
       Service are posted to Shopify’s website constitutes your agreement to, and
@@ -234,7 +234,7 @@ import React from "react";
       and/or variations and misspellings thereof.
     </p>
     <p>
-      Questions about the Terms of Service should be sent to{' '}
+      Questions about the Terms of Service should be sent to{" "}
       <a href="mailto:support@shopify.com">support@shopify.com</a>.
     </p>
     <p>
@@ -247,7 +247,7 @@ import React from "react";
     <p>
       You acknowledge and agree that your use of the Service, including
       information transmitted to or stored by Shopify, is governed by its
-      privacy policy at{' '}
+      privacy policy at{" "}
       <a href="https://www.shopify.com/legal/privacy">
         https://www.shopify.com/legal/privacy
       </a>
@@ -256,10 +256,10 @@ import React from "react";
       The Terms of Service may be available in languages other than English. To
       the extent of any inconsistencies or conflicts between these English Terms
       of Service and Shopify’s Terms of Service available in another language,
-      the most current English version of the Terms of Service at{' '}
+      the most current English version of the Terms of Service at{" "}
       <a href="https://www.shopify.com/legal/terms">
         https://www.shopify.com/legal/terms
-      </a>{' '}
+      </a>{" "}
       will prevail.
     </p>
     <p>Which means</p>
@@ -278,4 +278,4 @@ import React from "react";
       credit card information is always encrypted.
     </p>
   </Scrollable>
-</Card>
+</Card>;

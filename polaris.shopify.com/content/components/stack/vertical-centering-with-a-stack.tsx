@@ -11,4 +11,4 @@ import React from "react";
   </Heading>
   <Badge>Paid</Badge>
   <Badge>Fulfilled</Badge>
-</Stack>
+</Stack>;

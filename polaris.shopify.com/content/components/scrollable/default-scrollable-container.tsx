@@ -2,7 +2,7 @@ import { Card, Scrollable } from "@shopify/polaris";
 import React from "react";
 
 <Card title="Terms of service" sectioned>
-  <Scrollable shadow style={{height: '100px'}} focusable>
+  <Scrollable shadow style={{ height: "100px" }} focusable>
     <p>
       By signing up for the Shopify service (“Service”) or any of the services
       of Shopify Inc. (“Shopify”) you are agreeing to be bound by the following
@@ -19,4 +19,4 @@ import React from "react";
       that may impact you.
     </p>
   </Scrollable>
-</Card>
+</Card>;

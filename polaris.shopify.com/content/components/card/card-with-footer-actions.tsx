@@ -3,8 +3,8 @@ import React from "react";
 
 <Card
   title="Shipment 1234"
-  secondaryFooterActions={[{content: 'Edit shipment'}]}
-  primaryFooterAction={{content: 'Add tracking number'}}
+  secondaryFooterActions={[{ content: "Edit shipment" }]}
+  primaryFooterAction={{ content: "Add tracking number" }}
 >
   <Card.Section title="Items">
     <List>
@@ -12,4 +12,4 @@ import React from "react";
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
-</Card>
+</Card>;

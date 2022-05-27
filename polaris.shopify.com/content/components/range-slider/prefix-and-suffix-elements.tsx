@@ -6,12 +6,12 @@ function RangeSliderWithPrefixAndSuffixExample() {
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
-    [],
+    []
   );
 
   const suffixStyles = {
-    minWidth: '24px',
-    textAlign: 'right',
+    minWidth: "24px",
+    textAlign: "right",
   };
 
   return (

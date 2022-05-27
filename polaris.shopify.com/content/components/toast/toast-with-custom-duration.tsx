@@ -11,7 +11,7 @@ function ToastWithCustomDurationExample() {
   ) : null;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Frame>
         <Page title="Toast example">
           <Button onClick={toggleActive}>Show Toast</Button>

@@ -6,30 +6,30 @@ function TabsExample() {
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
+    []
   );
 
   const tabs = [
     {
-      id: 'all-customers-1',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content-1',
+      id: "all-customers-1",
+      content: "All",
+      accessibilityLabel: "All customers",
+      panelID: "all-customers-content-1",
     },
     {
-      id: 'accepts-marketing-1',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content-1',
+      id: "accepts-marketing-1",
+      content: "Accepts marketing",
+      panelID: "accepts-marketing-content-1",
     },
     {
-      id: 'repeat-customers-1',
-      content: 'Repeat customers',
-      panelID: 'repeat-customers-content-1',
+      id: "repeat-customers-1",
+      content: "Repeat customers",
+      panelID: "repeat-customers-content-1",
     },
     {
-      id: 'prospects-1',
-      content: 'Prospects',
-      panelID: 'prospects-content-1',
+      id: "prospects-1",
+      content: "Prospects",
+      panelID: "prospects-content-1",
     },
   ];
 

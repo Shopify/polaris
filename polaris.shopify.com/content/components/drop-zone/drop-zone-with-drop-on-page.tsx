@@ -8,10 +8,10 @@ function DropZoneWithDropOnPageExample() {
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...dropFiles]),
-    [],
+    []
   );
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
@@ -38,12 +38,12 @@ function DropZoneWithDropOnPageExample() {
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      breadcrumbs={[{ content: "Products" }]}
       title="Jar With Lock-Lid"
-      primaryAction={{content: 'Save', disabled: true}}
+      primaryAction={{ content: "Save", disabled: true }}
       secondaryActions={[
-        {content: 'Duplicate'},
-        {content: 'View on your store'},
+        { content: "Duplicate" },
+        { content: "View on your store" },
       ]}
       pagination={{
         hasPrevious: true,

@@ -17,4 +17,4 @@ import React from "react";
       </Stack>
     </Stack>
   </Card.Section>
-</Card>
+</Card>;

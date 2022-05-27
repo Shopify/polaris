@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 
 function DualThumbRangeSliderExample() {
   const initialValue = [900, 1000];
-  const prefix = '$';
+  const prefix = "$";
   const min = 0;
   const max = 2000;
   const step = 10;
@@ -22,7 +22,7 @@ function DualThumbRangeSliderExample() {
       const upperValue = rangeValue[1];
       setIntermediateTextFieldValue([parseInt(value, 10), upperValue]);
     },
-    [rangeValue],
+    [rangeValue]
   );
 
   const handleUpperTextFieldChange = useCallback(
@@ -30,7 +30,7 @@ function DualThumbRangeSliderExample() {
       const lowerValue = rangeValue[0];
       setIntermediateTextFieldValue([lowerValue, parseInt(value, 10)]);
     },
-    [rangeValue],
+    [rangeValue]
   );
 
   const handleLowerTextFieldBlur = useCallback(() => {
@@ -56,7 +56,7 @@ function DualThumbRangeSliderExample() {
         setRangeValue(newValue);
       }
     },
-    [intermediateTextFieldValue, rangeValue],
+    [intermediateTextFieldValue, rangeValue]
   );
 
   const lowerTextFieldValue =

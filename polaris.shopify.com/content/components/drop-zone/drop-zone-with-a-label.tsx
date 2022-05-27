@@ -3,4 +3,4 @@ import React from "react";
 
 <DropZone label="Theme files">
   <DropZone.FileUpload />
-</DropZone>
+</DropZone>;

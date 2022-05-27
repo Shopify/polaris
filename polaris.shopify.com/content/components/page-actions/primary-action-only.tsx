@@ -3,6 +3,6 @@ import React from "react";
 
 <PageActions
   primaryAction={{
-    content: 'Save',
+    content: "Save",
   }}
-/>
+/>;

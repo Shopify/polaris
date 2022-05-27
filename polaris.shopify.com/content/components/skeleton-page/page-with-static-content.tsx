@@ -33,4 +33,4 @@ import React from "react";
       </Card>
     </Layout.Section>
   </Layout>
-</SkeletonPage>
+</SkeletonPage>;

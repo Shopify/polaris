@@ -2,11 +2,11 @@ import { Stack, TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function RightAlignExample() {
-  const [textFieldValue, setTextFieldValue] = useState('1');
+  const [textFieldValue, setTextFieldValue] = useState("1");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   return (

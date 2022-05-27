@@ -2,11 +2,11 @@ import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function PrefixExample() {
-  const [textFieldValue, setTextFieldValue] = useState('2.00');
+  const [textFieldValue, setTextFieldValue] = useState("2.00");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   return (

@@ -1,13 +1,19 @@
-import { Button, Popover, FormLayout, Select, TextField } from "@shopify/polaris";
+import {
+  Button,
+  Popover,
+  FormLayout,
+  Select,
+  TextField,
+} from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function PopoverFormExample() {
   const [popoverActive, setPopoverActive] = useState(true);
-  const [tagValue, setTagValue] = useState('');
+  const [tagValue, setTagValue] = useState("");
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+    []
   );
 
   const handleTagValueChange = useCallback((value) => setTagValue(value), []);
@@ -19,7 +25,7 @@ function PopoverFormExample() {
   );
 
   return (
-    <div style={{height: '280px'}}>
+    <div style={{ height: "280px" }}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -28,7 +34,7 @@ function PopoverFormExample() {
         sectioned
       >
         <FormLayout>
-          <Select label="Show all customers where:" options={['Tagged with']} />
+          <Select label="Show all customers where:" options={["Tagged with"]} />
           <TextField
             label="Tags"
             value={tagValue}

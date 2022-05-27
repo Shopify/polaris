@@ -3,12 +3,12 @@ import { useState, useCallback } from "react";
 
 function HelpTextExample() {
   const [textFieldValue, setTextFieldValue] = useState(
-    'bernadette.lapresse@jadedpixel.com',
+    "bernadette.lapresse@jadedpixel.com"
   );
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   return (

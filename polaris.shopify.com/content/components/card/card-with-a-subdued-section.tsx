@@ -15,4 +15,4 @@ import React from "react";
       <List.Item>Ezequiel Manno</List.Item>
     </List>
   </Card.Section>
-</Card>
+</Card>;

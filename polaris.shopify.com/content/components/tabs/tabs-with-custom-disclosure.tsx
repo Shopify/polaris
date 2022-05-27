@@ -6,30 +6,30 @@ function TabsWithCustomDisclosureExample() {
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
+    []
   );
 
   const tabs = [
     {
-      id: 'all-customers-4',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content-4',
+      id: "all-customers-4",
+      content: "All",
+      accessibilityLabel: "All customers",
+      panelID: "all-customers-content-4",
     },
     {
-      id: 'accepts-marketing-4',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content-4',
+      id: "accepts-marketing-4",
+      content: "Accepts marketing",
+      panelID: "accepts-marketing-content-4",
     },
     {
-      id: 'repeat-customers-4',
-      content: 'Repeat customers',
-      panelID: 'repeat-customers-content-4',
+      id: "repeat-customers-4",
+      content: "Repeat customers",
+      panelID: "repeat-customers-content-4",
     },
     {
-      id: 'prospects-4',
-      content: 'Prospects',
-      panelID: 'prospects-content-4',
+      id: "prospects-4",
+      content: "Prospects",
+      panelID: "prospects-content-4",
     },
   ];
 

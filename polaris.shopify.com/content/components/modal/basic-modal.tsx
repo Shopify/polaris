@@ -9,19 +9,19 @@ function ModalExample() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         activator={activator}
         open={active}
         onClose={handleChange}
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleChange,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleChange,
           },
         ]}

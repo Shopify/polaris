@@ -11,7 +11,7 @@ function NestedDropZoneExample() {
 
   const handleDropZoneClick = useCallback(() => {}, []);
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (

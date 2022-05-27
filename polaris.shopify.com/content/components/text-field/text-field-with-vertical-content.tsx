@@ -2,12 +2,12 @@ import { Stack, Tag, TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function VerticalContent() {
-  const tags = ['Rustic', 'Antique', 'Vinyl', 'Refurbished'];
-  const [textFieldValue, setTextFieldValue] = useState('');
+  const tags = ["Rustic", "Antique", "Vinyl", "Refurbished"];
+  const [textFieldValue, setTextFieldValue] = useState("");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   const verticalContentMarkup =

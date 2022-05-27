@@ -5,4 +5,4 @@ import React from "react";
   <Button outline>Bold</Button>
   <Button outline>Italic</Button>
   <Button outline>Underline</Button>
-</ButtonGroup>
+</ButtonGroup>;

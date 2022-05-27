@@ -12,7 +12,7 @@ import React from "react";
   <Button outline disabled>
     Buy shipping label
   </Button>
-  <span style={{color: '#bf0711'}}>
+  <span style={{ color: "#bf0711" }}>
     <Button outline monochrome disabled>
       Buy shipping label
     </Button>
@@ -23,4 +23,4 @@ import React from "react";
   <Button plain destructive disabled>
     Buy shipping label
   </Button>
-</ButtonGroup>
+</ButtonGroup>;

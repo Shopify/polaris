@@ -1,24 +1,31 @@
-import { Card, ResourceList, Button, Avatar, ResourceItem, TextStyle } from "@shopify/polaris";
+import {
+  Card,
+  ResourceList,
+  Button,
+  Avatar,
+  ResourceItem,
+  TextStyle,
+} from "@shopify/polaris";
 import React from "react";
 
 function ResourceListWithAlternateToolExample() {
   const resourceName = {
-    singular: 'Customer',
-    plural: 'Customers',
+    singular: "Customer",
+    plural: "Customers",
   };
 
   const items = [
     {
       id: 107,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
+      url: "customers/341",
+      name: "Mae Jemison",
+      location: "Decatur, USA",
     },
     {
       id: 207,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
+      url: "customers/256",
+      name: "Ellen Ochoa",
+      location: "Los Angeles, USA",
     },
   ];
 
@@ -34,7 +41,7 @@ function ResourceListWithAlternateToolExample() {
   );
 
   function renderItem(item) {
-    const {id, url, name, location} = item;
+    const { id, url, name, location } = item;
     const media = <Avatar customer size="medium" name={name} />;
 
     return (

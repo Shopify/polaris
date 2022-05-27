@@ -5,25 +5,25 @@ import React from "react";
   title="Products"
   actionGroups={[
     {
-      title: 'Copy',
+      title: "Copy",
       onClick: (openActions) => {
-        alert('Copy action');
+        alert("Copy action");
         openActions();
       },
-      actions: [{content: 'Copy to clipboard'}],
+      actions: [{ content: "Copy to clipboard" }],
     },
     {
-      title: 'Promote',
+      title: "Promote",
       disabled: true,
-      actions: [{content: 'Share on Facebook'}],
+      actions: [{ content: "Share on Facebook" }],
     },
     {
-      title: 'More actions',
+      title: "More actions",
       actions: [
-        {content: 'Duplicate'},
-        {content: 'Print'},
-        {content: 'Unarchive'},
-        {content: 'Cancel order'},
+        { content: "Duplicate" },
+        { content: "Print" },
+        { content: "Unarchive" },
+        { content: "Cancel order" },
       ],
     },
   ]}
@@ -31,4 +31,4 @@ import React from "react";
   <Card title="Credit card" sectioned>
     <p>Credit card information</p>
   </Card>
-</Page>
+</Page>;

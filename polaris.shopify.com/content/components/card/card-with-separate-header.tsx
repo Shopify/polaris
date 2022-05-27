@@ -5,7 +5,7 @@ import React from "react";
   <Card.Header
     actions={[
       {
-        content: 'Preview',
+        content: "Preview",
       },
     ]}
     title="Staff accounts"
@@ -19,7 +19,7 @@ import React from "react";
       }
       onClose={() => {}}
     >
-      <ActionList items={[{content: 'Member'}, {content: 'Admin'}]} />
+      <ActionList items={[{ content: "Member" }, { content: "Admin" }]} />
     </Popover>
   </Card.Header>
   <Card.Section>
@@ -28,4 +28,4 @@ import React from "react";
       <List.Item>Ezequiel Manno</List.Item>
     </List>
   </Card.Section>
-</Card>
+</Card>;

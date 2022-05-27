@@ -7,12 +7,12 @@ function MultipleToastExample() {
 
   const toggleActiveOne = useCallback(
     () => setActiveOne((activeOne) => !activeOne),
-    [],
+    []
   );
 
   const toggleActiveTwo = useCallback(
     () => setActiveTwo((activeTwo) => !activeTwo),
-    [],
+    []
   );
 
   const toastMarkup1 = activeOne ? (
@@ -24,7 +24,7 @@ function MultipleToastExample() {
   ) : null;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Frame>
         <Page title="Toast example">
           <ButtonGroup segmented>

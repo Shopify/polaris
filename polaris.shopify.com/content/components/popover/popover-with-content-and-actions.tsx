@@ -6,7 +6,7 @@ function PopoverContentExample() {
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+    []
   );
 
   const activator = (
@@ -16,7 +16,7 @@ function PopoverContentExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -32,9 +32,9 @@ function PopoverContentExample() {
           <ActionList
             actionRole="menuitem"
             items={[
-              {content: 'Online store'},
-              {content: 'Facebook'},
-              {content: 'Shopify POS'},
+              { content: "Online store" },
+              { content: "Facebook" },
+              { content: "Shopify POS" },
             ]}
           />
         </Popover.Pane>

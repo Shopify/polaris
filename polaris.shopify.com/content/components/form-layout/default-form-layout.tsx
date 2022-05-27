@@ -9,4 +9,4 @@ import React from "react";
     onChange={() => {}}
     autoComplete="email"
   />
-</FormLayout>
+</FormLayout>;

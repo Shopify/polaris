@@ -25,4 +25,4 @@ import React from "react";
       </Card>
     </Layout.AnnotatedSection>
   </Layout>
-</Page>
+</Page>;

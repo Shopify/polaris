@@ -6,4 +6,4 @@ import React from "react";
   <Badge>Processing</Badge>
   <Badge>Fulfilled</Badge>
   <Badge>Completed</Badge>
-</Stack>
+</Stack>;

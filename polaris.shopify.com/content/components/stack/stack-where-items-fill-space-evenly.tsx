@@ -5,4 +5,4 @@ import React from "react";
   <Heading>Order #1136</Heading>
   <Badge>Paid</Badge>
   <Badge>Fulfilled</Badge>
-</Stack>
+</Stack>;

@@ -10,7 +10,7 @@ function ToastWithActionExample() {
     <Toast
       content="Image deleted"
       action={{
-        content: 'Undo',
+        content: "Undo",
         onAction: () => {},
       }}
       duration={10000}
@@ -19,7 +19,7 @@ function ToastWithActionExample() {
   ) : null;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Frame>
         <Page title="Toast example">
           <Button onClick={toggleActive}>Show Toast</Button>

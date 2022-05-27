@@ -6,7 +6,7 @@ function RangeSliderExample() {
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
-    [],
+    []
   );
 
   return (

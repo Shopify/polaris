@@ -11,4 +11,4 @@ import React from "react";
     Mastercard, American Express, and Discover right from your smartphone or
     tablet.
   </p>
-</TextContainer>
+</TextContainer>;

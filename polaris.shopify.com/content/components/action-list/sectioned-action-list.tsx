@@ -1,5 +1,10 @@
 import { Button, Popover, ActionList } from "@shopify/polaris";
-import { ImportMinor, ExportMinor, EditMinor, DeleteMinor } from "@shopify/polaris-icons";
+import {
+  ImportMinor,
+  ExportMinor,
+  EditMinor,
+  DeleteMinor,
+} from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
 
 function SectionedActionListExample() {
@@ -14,7 +19,7 @@ function SectionedActionListExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -25,17 +30,17 @@ function SectionedActionListExample() {
           actionRole="menuitem"
           sections={[
             {
-              title: 'File options',
+              title: "File options",
               items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
+                { content: "Import file", icon: ImportMinor },
+                { content: "Export file", icon: ExportMinor },
               ],
             },
             {
-              title: 'Bulk actions',
+              title: "Bulk actions",
               items: [
-                {content: 'Edit', icon: EditMinor},
-                {content: 'Delete', icon: DeleteMinor},
+                { content: "Edit", icon: EditMinor },
+                { content: "Delete", icon: DeleteMinor },
               ],
             },
           ]}

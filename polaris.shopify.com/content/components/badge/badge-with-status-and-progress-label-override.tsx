@@ -7,4 +7,4 @@ import React from "react";
   statusAndProgressLabelOverride="Status: Published. Your online store is visible."
 >
   Published
-</Badge>
+</Badge>;

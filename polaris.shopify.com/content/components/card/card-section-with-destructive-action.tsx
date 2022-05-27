@@ -7,8 +7,8 @@ import React from "react";
   </Card.Section>
   <Card.Section
     title="Contact Information"
-    actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
+    actions={[{ content: "Delete", destructive: true }, { content: "Edit" }]}
   >
     <p>john.smith@example.com</p>
   </Card.Section>
-</Card>
+</Card>;

@@ -6,7 +6,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
-    [],
+    []
   );
 
   return (

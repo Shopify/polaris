@@ -1,4 +1,11 @@
-import { SkeletonPage, Layout, Card, SkeletonBodyText, TextContainer, SkeletonDisplayText } from "@shopify/polaris";
+import {
+  SkeletonPage,
+  Layout,
+  Card,
+  SkeletonBodyText,
+  TextContainer,
+  SkeletonDisplayText,
+} from "@shopify/polaris";
 import React from "react";
 
 <SkeletonPage primaryAction>
@@ -45,4 +52,4 @@ import React from "react";
       </Card>
     </Layout.Section>
   </Layout>
-</SkeletonPage>
+</SkeletonPage>;

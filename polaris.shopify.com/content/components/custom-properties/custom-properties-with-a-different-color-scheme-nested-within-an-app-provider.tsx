@@ -5,8 +5,8 @@ import React from "react";
   <TextContainer>
     <Card
       title="Shipment 1234"
-      secondaryFooterActions={[{content: 'Edit shipment'}]}
-      primaryFooterAction={{content: 'Add tracking number'}}
+      secondaryFooterActions={[{ content: "Edit shipment" }]}
+      primaryFooterAction={{ content: "Add tracking number" }}
     >
       <Card.Section title="Items">
         <List>
@@ -18,8 +18,8 @@ import React from "react";
     <CustomProperties colorScheme="dark">
       <Card
         title="Shipment 1234"
-        secondaryFooterActions={[{content: 'Edit shipment'}]}
-        primaryFooterAction={{content: 'Add tracking number'}}
+        secondaryFooterActions={[{ content: "Edit shipment" }]}
+        primaryFooterAction={{ content: "Add tracking number" }}
       >
         <Card.Section title="Items">
           <List>
@@ -30,4 +30,4 @@ import React from "react";
       </Card>
     </CustomProperties>
   </TextContainer>
-</AppProvider>
+</AppProvider>;

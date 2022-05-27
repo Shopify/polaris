@@ -4,14 +4,14 @@ import { useState, useCallback } from "react";
 
 function AutocompleteActionBeforeExample() {
   const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
+    { value: "rustic", label: "Rustic" },
+    { value: "antique", label: "Antique" },
+    { value: "vinyl", label: "Vinyl" },
+    { value: "vintage", label: "Vintage" },
+    { value: "refurbished", label: "Refurbished" },
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
@@ -24,20 +24,20 @@ function AutocompleteActionBeforeExample() {
       }
 
       setTimeout(() => {
-        if (value === '') {
+        if (value === "") {
           setOptions(deselectedOptions);
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, 'i');
+        const filterRegex = new RegExp(value, "i");
         const resultOptions = options.filter((option) =>
-          option.label.match(filterRegex),
+          option.label.match(filterRegex)
         );
         setOptions(resultOptions);
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading, options]
   );
 
   const updateSelection = useCallback(
@@ -51,7 +51,7 @@ function AutocompleteActionBeforeExample() {
       setSelectedOptions(selected);
       setInputValue(selectedText[0]);
     },
-    [options],
+    [options]
   );
 
   const textField = (
@@ -65,17 +65,17 @@ function AutocompleteActionBeforeExample() {
   );
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Autocomplete
         actionBefore={{
-          accessibilityLabel: 'Action label',
+          accessibilityLabel: "Action label",
           badge: {
-            status: 'new',
-            content: 'New!',
+            status: "new",
+            content: "New!",
           },
-          content: 'Action with long name',
+          content: "Action with long name",
           ellipsis: true,
-          helpText: 'Help text',
+          helpText: "Help text",
           icon: CirclePlusMinor,
         }}
         options={options}

@@ -7,27 +7,27 @@ import React from "react";
     <Navigation.Section
       items={[
         {
-          url: '/path/to/place',
-          label: 'Home',
+          url: "/path/to/place",
+          label: "Home",
           icon: HomeMinor,
         },
         {
-          url: '/path/to/place',
-          label: 'Orders',
+          url: "/path/to/place",
+          label: "Orders",
           icon: OrdersMinor,
         },
         {
-          url: '/path/to/place',
-          label: 'Products',
+          url: "/path/to/place",
+          label: "Products",
           icon: ProductsMinor,
         },
       ]}
       rollup={{
         after: 2,
-        view: 'view',
-        hide: 'hide',
-        activePath: '/',
+        view: "view",
+        hide: "hide",
+        activePath: "/",
       }}
     />
   </Navigation>
-</Frame>
+</Frame>;

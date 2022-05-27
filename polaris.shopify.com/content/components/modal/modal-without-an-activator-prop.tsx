@@ -10,11 +10,11 @@ function ModalExample() {
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() => button.current.querySelector('button').focus());
+    requestAnimationFrame(() => button.current.querySelector("button").focus());
   }, []);
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <div ref={button}>
         <Button onClick={handleOpen}>Open</Button>
       </div>
@@ -24,12 +24,12 @@ function ModalExample() {
         onClose={handleClose}
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleClose,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleClose,
           },
         ]}

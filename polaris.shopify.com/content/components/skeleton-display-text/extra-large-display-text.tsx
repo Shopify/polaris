@@ -1,4 +1,4 @@
 import { SkeletonDisplayText } from "@shopify/polaris";
 import React from "react";
 
-<SkeletonDisplayText size="extraLarge" />
+<SkeletonDisplayText size="extraLarge" />;

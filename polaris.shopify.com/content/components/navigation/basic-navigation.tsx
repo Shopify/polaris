@@ -7,22 +7,22 @@ import React from "react";
     <Navigation.Section
       items={[
         {
-          url: '/',
-          label: 'Home',
+          url: "/",
+          label: "Home",
           icon: HomeMinor,
         },
         {
-          url: '/path/to/place',
-          label: 'Orders',
+          url: "/path/to/place",
+          label: "Orders",
           icon: OrdersMinor,
-          badge: '15',
+          badge: "15",
         },
         {
-          url: '/path/to/place',
-          label: 'Products',
+          url: "/path/to/place",
+          label: "Products",
           icon: ProductsMinor,
         },
       ]}
     />
   </Navigation>
-</Frame>
+</Frame>;

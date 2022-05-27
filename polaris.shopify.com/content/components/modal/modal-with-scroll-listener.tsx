@@ -6,12 +6,12 @@ function ModalWithScrollListenerExample() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
+  const handleScrollBottom = useCallback(() => alert("Scrolled to bottom"), []);
 
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         activator={activator}
         open={active}
@@ -19,7 +19,7 @@ function ModalWithScrollListenerExample() {
         onClose={handleChange}
         onScrolledToBottom={handleScrollBottom}
       >
-        {Array.from({length: 50}, (_, index) => (
+        {Array.from({ length: 50 }, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
               <p>

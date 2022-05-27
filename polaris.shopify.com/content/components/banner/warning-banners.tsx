@@ -3,7 +3,7 @@ import React from "react";
 
 <Banner
   title="Before you can purchase a shipping label, this change needs to be made:"
-  action={{content: 'Edit address'}}
+  action={{ content: "Edit address" }}
   status="warning"
 >
   <List>
@@ -12,4 +12,4 @@ import React from "react";
       allowed. City name can only include spaces and hyphens.
     </List.Item>
   </List>
-</Banner>
+</Banner>;

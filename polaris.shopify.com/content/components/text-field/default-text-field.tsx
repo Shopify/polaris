@@ -2,7 +2,7 @@ import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 function TextFieldExample() {
-  const [value, setValue] = useState('Jaded Pixel');
+  const [value, setValue] = useState("Jaded Pixel");
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 

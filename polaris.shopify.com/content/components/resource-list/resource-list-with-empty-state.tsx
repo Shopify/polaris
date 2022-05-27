@@ -1,4 +1,11 @@
-import { Filters, EmptyState, Page, Layout, Card, ResourceList } from "@shopify/polaris";
+import {
+  Filters,
+  EmptyState,
+  Page,
+  Layout,
+  Card,
+  ResourceList,
+} from "@shopify/polaris";
 import React from "react";
 
 function ResourceListWithEmptyStateExample() {
@@ -19,7 +26,7 @@ function ResourceListWithEmptyStateExample() {
     !appliedFilters.length && !items.length ? (
       <EmptyState
         heading="Upload a file to get started"
-        action={{content: 'Upload files'}}
+        action={{ content: "Upload files" }}
         image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
       >
         <p>
@@ -39,7 +46,7 @@ function ResourceListWithEmptyStateExample() {
               items={items}
               renderItem={() => {}}
               filterControl={filterControl}
-              resourceName={{singular: 'file', plural: 'files'}}
+              resourceName={{ singular: "file", plural: "files" }}
             />
           </Card>
         </Layout.Section>

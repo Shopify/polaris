@@ -95,12 +95,12 @@ function EmbeddedAppModalExample() {
         open={modalOpen}
         title="Upgrade your Shopify POS with the Retail Package"
         primaryAction={{
-          content: 'Add Retail Package',
+          content: "Add Retail Package",
           onAction: handleModalClose,
         }}
         secondaryActions={[
           {
-            content: 'Cancel',
+            content: "Cancel",
             onAction: handleModalClose,
           },
         ]}

@@ -4,10 +4,10 @@ import React from "react";
 <Pagination
   hasPrevious
   onPrevious={() => {
-    console.log('Previous');
+    console.log("Previous");
   }}
   hasNext
   onNext={() => {
-    console.log('Next');
+    console.log("Next");
   }}
-/>
+/>;

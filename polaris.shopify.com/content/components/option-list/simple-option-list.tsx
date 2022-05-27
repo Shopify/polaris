@@ -10,11 +10,11 @@ function OptionListExample() {
         title="Inventory Location"
         onChange={setSelected}
         options={[
-          {value: 'byward_market', label: 'Byward Market'},
-          {value: 'centretown', label: 'Centretown'},
-          {value: 'hintonburg', label: 'Hintonburg'},
-          {value: 'westboro', label: 'Westboro'},
-          {value: 'downtown', label: 'Downtown'},
+          { value: "byward_market", label: "Byward Market" },
+          { value: "centretown", label: "Centretown" },
+          { value: "hintonburg", label: "Hintonburg" },
+          { value: "westboro", label: "Westboro" },
+          { value: "downtown", label: "Downtown" },
         ]}
         selected={selected}
       />

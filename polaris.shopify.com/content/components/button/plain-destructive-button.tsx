@@ -3,4 +3,4 @@ import React from "react";
 
 <Button plain destructive>
   Remove
-</Button>
+</Button>;

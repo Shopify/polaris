@@ -1,11 +1,11 @@
 <Card sectioned>
   <EmptyState
     heading="Manage your inventory transfers"
-    action={{content: 'Add transfer'}}
-    secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+    action={{ content: "Add transfer" }}
+    secondaryAction={{ content: "Learn more", url: "https://help.shopify.com" }}
     footerContent={
       <p>
-        If you don’t want to add a transfer, you can import your inventory from{' '}
+        If you don’t want to add a transfer, you can import your inventory from{" "}
         <Link monochrome url="/settings">
           settings
         </Link>
@@ -16,4 +16,4 @@
   >
     <p>Track and receive your incoming inventory from suppliers.</p>
   </EmptyState>
-</Card>
+</Card>;

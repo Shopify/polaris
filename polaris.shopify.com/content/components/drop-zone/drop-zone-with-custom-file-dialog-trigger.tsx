@@ -9,14 +9,14 @@ function DropZoneWithCustomFileDialogExample() {
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...dropFiles]),
-    [],
+    []
   );
   const toggleOpenFileDialog = useCallback(
     () => setOpenFileDialog((openFileDialog) => !openFileDialog),
-    [],
+    []
   );
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
@@ -45,7 +45,7 @@ function DropZoneWithCustomFileDialogExample() {
       title="Product Images"
       actions={[
         {
-          content: 'Upload Image',
+          content: "Upload Image",
           onAction: toggleOpenFileDialog,
         },
       ]}

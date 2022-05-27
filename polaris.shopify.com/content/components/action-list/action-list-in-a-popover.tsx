@@ -7,13 +7,13 @@ function ActionListInPopoverExample() {
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const handleImportedAction = useCallback(
-    () => console.log('Imported action'),
-    [],
+    () => console.log("Imported action"),
+    []
   );
 
   const handleExportedAction = useCallback(
-    () => console.log('Exported action'),
-    [],
+    () => console.log("Exported action"),
+    []
   );
 
   const activator = (
@@ -23,7 +23,7 @@ function ActionListInPopoverExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -34,11 +34,11 @@ function ActionListInPopoverExample() {
           actionRole="menuitem"
           items={[
             {
-              content: 'Import file',
+              content: "Import file",
               onAction: handleImportedAction,
             },
             {
-              content: 'Export file',
+              content: "Export file",
               onAction: handleExportedAction,
             },
           ]}

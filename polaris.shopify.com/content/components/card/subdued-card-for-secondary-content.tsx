@@ -6,4 +6,4 @@ import React from "react";
     <List.Item>Felix Crafford</List.Item>
     <List.Item>Ezequiel Manno</List.Item>
   </List>
-</Card>
+</Card>;
