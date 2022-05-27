@@ -17,7 +17,7 @@ import guidelines from "../data/guidelines.json";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Guidelines: 3,
-  Components: 4,
+  Components: 2,
   Tokens: 8,
   Icons: 14,
 };

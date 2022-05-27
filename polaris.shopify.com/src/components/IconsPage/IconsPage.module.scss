@@ -1,5 +1,11 @@
 .IconsPage {
   padding-top: var(--header-margin);
+
+  h1 {
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-100);
+    margin-bottom: 1rem;
+  }
 }
 
 .Filter {
@@ -12,6 +18,7 @@
   font-size: var(--font-size-300);
   margin-top: 2rem;
   margin-bottom: 1rem;
+  color: var(--text-strong);
 
   b {
     font-weight: var(--font-weight-500);

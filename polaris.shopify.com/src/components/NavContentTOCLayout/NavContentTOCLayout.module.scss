@@ -1,18 +1,19 @@
 .NavContentTOCLayout {
   display: flex;
+  margin-top: var(--header-margin);
   --toc-max-width: 15rem;
 }
 
 .Nav {
-  min-width: 19rem;
-  max-width: 19rem;
-  padding-top: 3rem;
-  // box-shadow: 0.5px 0 var(--border-color);
+  min-width: 15rem;
+  max-width: 15rem;
+  margin-right: 3rem;
+  align-self: flex-start;
 }
 
 .Post {
-  padding-top: 3rem;
   position: relative;
+  flex: 1;
   .NavContentTOCLayout.showTOC & {
     max-width: 40rem;
   }
@@ -20,16 +21,15 @@
 
 .TOC {
   position: absolute;
-  height: 100%;
   font-size: var(--font-size-100);
   width: var(--toc-max-width);
-  right: calc((var(--toc-max-width) + 2rem) * -1);
+  right: calc((var(--toc-max-width) + 5rem) * -1);
+  padding: 0 0 0 1.25rem;
+  border-left: var(--border);
 
   > ul {
     position: sticky;
     top: 2rem;
-    box-shadow: -0.5px 0 var(--border-color);
-    padding-left: 1.25rem;
   }
 
   a {
@@ -52,7 +52,7 @@
   > ul > li {
     margin-bottom: 0.75rem;
     &:last-child {
-      margin-bottom: none;
+      margin-bottom: 0;
     }
   }
 

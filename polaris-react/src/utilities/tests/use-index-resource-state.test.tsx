@@ -40,6 +40,25 @@ describe('useIndexResourceState', () => {
     );
   }
 
+  function MockClearComponent<T extends {[key: string]: unknown}>({
+    resources = [],
+    options,
+  }: {
+    resources?: T[];
+    options?: Parameters<typeof useIndexResourceState>[1];
+  }) {
+    const {selectedResources, allResourcesSelected, clearSelection} =
+      useIndexResourceState(resources, options);
+
+    return (
+      <TypedChild
+        onClick={clearSelection}
+        selectedResources={selectedResources}
+        allResourcesSelected={allResourcesSelected}
+      />
+    );
+  }
+
   describe('options', () => {
     it('defaults selected resources to an empty list', () => {
       const mockComponent = mountWithApp(<MockComponent />);
@@ -348,6 +367,27 @@ describe('useIndexResourceState', () => {
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idThree],
         });
+      });
+    });
+  });
+
+  describe('clearSelection', () => {
+    it('clears the selection correctly', () => {
+      const idOne = '1';
+      const idTwo = '2';
+      const idThree = '3';
+      const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+      const mockComponent = mountWithApp(
+        <MockClearComponent
+          resources={resources}
+          options={{selectedResources: [idOne, idTwo, idThree]}}
+        />,
+      );
+
+      mockComponent.find(TypedChild)!.trigger('onClick');
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [],
       });
     });
   });

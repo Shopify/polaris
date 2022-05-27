@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;675;700&display=swap");
 @import "variables.scss";
 
 :root {
   --page-max-width: #{$pageMaxWidth};
   --header-height: 88px;
   --narrow-content-width: 720px;
-  --header-margin: 3rem;
+  --header-margin: 4rem;
 
   --focus-outline: 0 0 0 2px black;
 
@@ -17,14 +17,14 @@
   --text-token: #6e006e;
 
   --surface: #ffffff;
-  --surface-subdued: #fafafa;
+  --surface-subdued: #f6f6f6;
   --surface-token: #fdf0fd;
   --primary: #008060;
 
-  --border-color: #ccc;
+  --border-color: #dedede;
   --border-inset-color: #aaa;
-  --border: 0.5px solid var(--border-color);
-  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(0, 0, 0, 0.13);
+  --border: 1px solid var(--border-color);
+  --card-shadow: none;
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
 
@@ -39,10 +39,10 @@
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
   --font-size-500: 1.25rem;
-  --font-size-500: 1.2rem; // Override
+  // --font-size-500: 1.2rem; // Override
   --font-size-600: 1.563rem;
   --font-size-700: 1.953rem;
-  --font-size-700: 1.75rem; // Override
+  // --font-size-700: 1.75rem; // Override
   --font-size-800: 2.441rem;
   --font-size-900: 3.052rem;
   --font-size-1000: 3.815rem;
@@ -103,7 +103,7 @@ body {
   background: var(--surface);
   font-family: inter, ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text);
   font-weight: 375;
 }

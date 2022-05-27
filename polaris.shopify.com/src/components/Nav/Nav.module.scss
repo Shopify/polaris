@@ -5,6 +5,14 @@
     margin-bottom: 1rem;
   }
 
+  > ul > li {
+    border-bottom: var(--border);
+    margin-bottom: 1rem;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
   span {
     display: inline-block;
     font-weight: var(--font-weight-500);
@@ -16,9 +24,8 @@
   a {
     display: inline-block;
     position: relative;
-    padding: 0.1rem 0 0.1rem 0.75rem;
     color: inherit;
-    font-size: var(--font-size-200);
+    font-size: var(--font-size-100);
 
     &:after {
       content: "";
@@ -47,7 +54,6 @@
 
       &:after {
         background: var(--text-strong);
-        transform: translateX(0px);
         animation: nav-item-in 0.25s 1 linear both;
       }
     }
@@ -57,11 +63,11 @@
 @keyframes nav-item-in {
   from {
     opacity: 0;
-    transform: translate3d(-2px, 0, 0);
+    transform: translate3d(-16px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-14px, 0, 0);
   }
 }
 
