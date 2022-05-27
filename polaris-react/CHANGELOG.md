@@ -19,7 +19,7 @@
 
 - [#5933](https://github.com/Shopify/polaris/pull/5933) [`9c1a868cb`](https://github.com/Shopify/polaris/commit/9c1a868cb76912a93004d5357e630d28c337283a) Thanks [@tal87](https://github.com/tal87)! - Add support for onPointerDown event handler on the button component
 
-* [#5876](https://github.com/Shopify/polaris/pull/5876) [`eb25cdaf4`](https://github.com/Shopify/polaris/commit/eb25cdaf40c5c08689521779f1176c6c34909507) Thanks [@aveline](https://github.com/aveline)! - Update `TextField` docs with examples of `inputMode` virtual keyboards
+* [#5876](https://github.com/Shopify/polaris/pull/5876) [`eb25cdaf4`](https://github.com/Shopify/polaris/commit/eb25cdaf40c5c08689521779f1176c6c34909507) Thanks [@aveline](https://github.com/aveline)! - Updated `TextField` docs with examples of `inputMode` virtual keyboards
 
 - [#5960](https://github.com/Shopify/polaris/pull/5960) [`837094ac6`](https://github.com/Shopify/polaris/commit/837094ac68b08965ac34a19c405ebefd901f6394) Thanks [@alex-page](https://github.com/alex-page)! - Removed jestAdjustmentsPlugin as we have `jest.config.js`. Moved scripts to scripts/build.js.
 
