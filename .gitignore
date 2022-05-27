@@ -3,7 +3,6 @@
 *.vsix
 .DS_Store
 .eslintcache
-.loom
 .next
 .shadowenv.d
 .turbo
