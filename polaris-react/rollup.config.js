@@ -1,3 +1,5 @@
+const path = require('path');
+
 const {babel} = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const {nodeResolve} = require('@rollup/plugin-node-resolve');
@@ -9,7 +11,7 @@ const json = require('@rollup/plugin-json');
 const {styles} = require('./config/rollup/plugin-styles');
 const {generateScopedName} = require('./config/rollup/namespaced-classname');
 const postcssPlugins = require('./config/postcss-plugins');
-const packageJSON = require('./package.json');
+const pkg = require('./package.json');
 
 function generateConfig({output, targets, stylesConfig}) {
   return {
@@ -30,7 +32,7 @@ function generateConfig({output, targets, stylesConfig}) {
         targets,
       }),
       replace({
-        '{{POLARIS_VERSION}}': packageJSON.version,
+        '{{POLARIS_VERSION}}': pkg.version,
         delimiters: ['', ''],
         preventAssignment: true,
       }),
@@ -61,14 +63,14 @@ const config = [
     output: [
       {
         format: 'cjs',
-        dir: 'build/cjs',
+        dir: path.dirname(pkg.main),
         preserveModules: true,
         entryFileNames: '[name][assetExtname].js',
         exports: 'named',
       },
       {
         format: 'esm',
-        dir: 'build/esm',
+        dir: path.dirname(pkg.module),
         preserveModules: true,
         entryFileNames: '[name][assetExtname].js',
       },
@@ -86,7 +88,7 @@ const config = [
     output: [
       {
         format: 'esm',
-        dir: 'build/esnext',
+        dir: path.dirname(pkg.esnext),
         preserveModules: true,
         entryFileNames: '[name][assetExtname].esnext',
       },
