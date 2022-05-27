@@ -4,7 +4,9 @@
 
 ### Minor Changes
 
-- [#5952](https://github.com/Shopify/polaris/pull/5952) [`4a59bc57d`](https://github.com/Shopify/polaris/commit/4a59bc57d2385cc38099601bd8dacd182687a131) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated @shopify/polaris-tokens to v5 and integrated the SCSS stylesheet in the `CustomProperties` component
+- [#5952](https://github.com/Shopify/polaris/pull/5952) [`4a59bc57d`](https://github.com/Shopify/polaris/commit/4a59bc57d2385cc38099601bd8dacd182687a131) Thanks [@romellogoodman](https://github.com/romellogoodman)! - Integrated `@shopify/polaris-tokens` v5 in `@shopify/polaris` and updated the `CustomProperties` component to use the `@shopify/polaris-tokens` SCSS stylesheet
+
+* [#5952](https://github.com/Shopify/polaris/pull/5952) [`4a59bc57d`](https://github.com/Shopify/polaris/commit/4a59bc57d2385cc38099601bd8dacd182687a131) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the `Grid` component to use breakpoint tokens from `@shopify/polaris-tokens`
 
 ## 9.10.0
 
