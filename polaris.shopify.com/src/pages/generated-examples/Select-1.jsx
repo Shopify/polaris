@@ -1,15 +1,15 @@
 import { AppProvider, Select } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SelectExample() {
-  const [selected, setSelected] = useState('today');
+  const [selected, setSelected] = useState("today");
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   const options = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+    { label: "Today", value: "today" },
+    { label: "Yesterday", value: "yesterday" },
+    { label: "Last 7 days", value: "lastWeek" },
   ];
 
   return (
@@ -31,12 +31,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SelectExample />
       </div>
@@ -45,4 +45,3 @@ function Example() {
 }
 
 export default Example;
-    

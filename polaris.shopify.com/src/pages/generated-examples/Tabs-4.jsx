@@ -1,35 +1,35 @@
-import { AppProvider, Card,Tabs } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Card, Tabs } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function TabsWithCustomDisclosureExample() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
+    []
   );
 
   const tabs = [
     {
-      id: 'all-customers-4',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content-4',
+      id: "all-customers-4",
+      content: "All",
+      accessibilityLabel: "All customers",
+      panelID: "all-customers-content-4",
     },
     {
-      id: 'accepts-marketing-4',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content-4',
+      id: "accepts-marketing-4",
+      content: "Accepts marketing",
+      panelID: "accepts-marketing-content-4",
     },
     {
-      id: 'repeat-customers-4',
-      content: 'Repeat customers',
-      panelID: 'repeat-customers-content-4',
+      id: "repeat-customers-4",
+      content: "Repeat customers",
+      panelID: "repeat-customers-content-4",
     },
     {
-      id: 'prospects-4',
-      content: 'Prospects',
-      panelID: 'prospects-content-4',
+      id: "prospects-4",
+      content: "Prospects",
+      panelID: "prospects-content-4",
     },
   ];
 
@@ -58,12 +58,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <TabsWithCustomDisclosureExample />
       </div>
@@ -72,4 +72,3 @@ function Example() {
 }
 
 export default Example;
-    

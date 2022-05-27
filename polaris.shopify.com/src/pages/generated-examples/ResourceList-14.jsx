@@ -1,19 +1,29 @@
-import { AppProvider, TextField,Filters,Button,Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  TextField,
+  Filters,
+  Button,
+  Card,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  TextStyle,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ResourceListExample() {
   const [selectedItems, setSelectedItems] = useState([]);
-  const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
-  const [taggedWith, setTaggedWith] = useState('VIP');
+  const [sortValue, setSortValue] = useState("DATE_MODIFIED_DESC");
+  const [taggedWith, setTaggedWith] = useState("VIP");
   const [queryValue, setQueryValue] = useState(null);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
-    [],
+    []
   );
   const handleQueryValueChange = useCallback(
     (value) => setQueryValue(value),
-    [],
+    []
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
@@ -23,53 +33,53 @@ function ResourceListExample() {
   }, [handleQueryValueRemove, handleTaggedWithRemove]);
 
   const resourceName = {
-    singular: 'customer',
-    plural: 'customers',
+    singular: "customer",
+    plural: "customers",
   };
 
   const items = [
     {
       id: 112,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      latestOrderUrl: 'orders/1456',
+      url: "customers/341",
+      name: "Mae Jemison",
+      location: "Decatur, USA",
+      latestOrderUrl: "orders/1456",
     },
     {
       id: 212,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      latestOrderUrl: 'orders/1457',
+      url: "customers/256",
+      name: "Ellen Ochoa",
+      location: "Los Angeles, USA",
+      latestOrderUrl: "orders/1457",
     },
   ];
 
   const promotedBulkActions = [
     {
-      content: 'Edit customers',
-      onAction: () => console.log('Todo: implement bulk edit'),
+      content: "Edit customers",
+      onAction: () => console.log("Todo: implement bulk edit"),
     },
   ];
 
   const bulkActions = [
     {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
+      content: "Add tags",
+      onAction: () => console.log("Todo: implement bulk add tags"),
     },
     {
-      content: 'Remove tags',
-      onAction: () => console.log('Todo: implement bulk remove tags'),
+      content: "Remove tags",
+      onAction: () => console.log("Todo: implement bulk remove tags"),
     },
     {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
+      content: "Delete customers",
+      onAction: () => console.log("Todo: implement bulk delete"),
     },
   ];
 
   const filters = [
     {
-      key: 'taggedWith3',
-      label: 'Tagged with',
+      key: "taggedWith3",
+      label: "Tagged with",
       filter: (
         <TextField
           label="Tagged with"
@@ -86,8 +96,8 @@ function ResourceListExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith3',
-          label: disambiguateLabel('taggedWith3', taggedWith),
+          key: "taggedWith3",
+          label: disambiguateLabel("taggedWith3", taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
@@ -102,8 +112,8 @@ function ResourceListExample() {
       onQueryClear={handleQueryValueRemove}
       onClearAll={handleClearAll}
     >
-      <div style={{paddingLeft: '8px'}}>
-        <Button onClick={() => console.log('New filter saved')}>Save</Button>
+      <div style={{ paddingLeft: "8px" }}>
+        <Button onClick={() => console.log("New filter saved")}>Save</Button>
       </div>
     </Filters>
   );
@@ -120,8 +130,8 @@ function ResourceListExample() {
         bulkActions={bulkActions}
         sortValue={sortValue}
         sortOptions={[
-          {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
-          {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
+          { label: "Newest update", value: "DATE_MODIFIED_DESC" },
+          { label: "Oldest update", value: "DATE_MODIFIED_ASC" },
         ]}
         onSortChange={(selected) => {
           setSortValue(selected);
@@ -133,10 +143,10 @@ function ResourceListExample() {
   );
 
   function renderItem(item) {
-    const {id, url, name, location, latestOrderUrl} = item;
+    const { id, url, name, location, latestOrderUrl } = item;
     const media = <Avatar customer size="medium" name={name} />;
     const shortcutActions = latestOrderUrl
-      ? [{content: 'View latest order', url: latestOrderUrl}]
+      ? [{ content: "View latest order", url: latestOrderUrl }]
       : null;
     return (
       <ResourceItem
@@ -157,7 +167,7 @@ function ResourceListExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case 'taggedWith3':
+      case "taggedWith3":
         return `Tagged with ${value}`;
       default:
         return value;
@@ -168,7 +178,7 @@ function ResourceListExample() {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
-      return value === '' || value == null;
+      return value === "" || value == null;
     }
   }
 }
@@ -182,12 +192,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ResourceListExample />
       </div>
@@ -196,4 +206,3 @@ function Example() {
 }
 
 export default Example;
-    

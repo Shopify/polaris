@@ -1,13 +1,20 @@
-import { AppProvider, Button,Popover,FormLayout,Select,TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Button,
+  Popover,
+  FormLayout,
+  Select,
+  TextField,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function PopoverFormExample() {
   const [popoverActive, setPopoverActive] = useState(true);
-  const [tagValue, setTagValue] = useState('');
+  const [tagValue, setTagValue] = useState("");
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+    []
   );
 
   const handleTagValueChange = useCallback((value) => setTagValue(value), []);
@@ -19,7 +26,7 @@ function PopoverFormExample() {
   );
 
   return (
-    <div style={{height: '280px'}}>
+    <div style={{ height: "280px" }}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -28,7 +35,7 @@ function PopoverFormExample() {
         sectioned
       >
         <FormLayout>
-          <Select label="Show all customers where:" options={['Tagged with']} />
+          <Select label="Show all customers where:" options={["Tagged with"]} />
           <TextField
             label="Tags"
             value={tagValue}
@@ -51,12 +58,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <PopoverFormExample />
       </div>
@@ -65,4 +72,3 @@ function Example() {
 }
 
 export default Example;
-    

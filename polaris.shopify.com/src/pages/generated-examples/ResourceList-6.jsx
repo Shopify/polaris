@@ -1,26 +1,33 @@
-import { AppProvider, Card,ResourceList,Avatar,ResourceItem,TextStyle } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Card,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  TextStyle,
+} from "@shopify/polaris";
+import translations from "@shopify/polaris/locales/en.json";
 function ResourceListWithTotalItemsCount() {
   return (
     <Card>
       <ResourceList
-        resourceName={{singular: 'customer', plural: 'customers'}}
+        resourceName={{ singular: "customer", plural: "customers" }}
         items={[
           {
             id: 105,
-            url: 'customers/341',
-            name: 'Mae Jemison',
-            location: 'Decatur, USA',
+            url: "customers/341",
+            name: "Mae Jemison",
+            location: "Decatur, USA",
           },
           {
             id: 205,
-            url: 'customers/256',
-            name: 'Ellen Ochoa',
-            location: 'Los Angeles, USA',
+            url: "customers/256",
+            name: "Ellen Ochoa",
+            location: "Los Angeles, USA",
           },
         ]}
         renderItem={(item) => {
-          const {id, url, name, location} = item;
+          const { id, url, name, location } = item;
           const media = <Avatar customer size="medium" name={name} />;
 
           return (
@@ -53,12 +60,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ResourceListWithTotalItemsCount />
       </div>
@@ -67,4 +74,3 @@ function Example() {
 }
 
 export default Example;
-    

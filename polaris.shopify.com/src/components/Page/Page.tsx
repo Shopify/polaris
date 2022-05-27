@@ -23,7 +23,7 @@ const headerNavItems: {
   },
   {
     label: "Guidelines",
-    url: "/guidelines/foundations/experience-values",
+    url: "/guidelines",
   },
   {
     label: "Components",

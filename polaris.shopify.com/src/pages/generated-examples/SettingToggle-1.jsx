@@ -1,13 +1,13 @@
-import { AppProvider, SettingToggle,TextStyle } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, SettingToggle, TextStyle } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SettingToggleExample() {
   const [active, setActive] = useState(false);
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? 'Deactivate' : 'Activate';
-  const textStatus = active ? 'activated' : 'deactivated';
+  const contentStatus = active ? "Deactivate" : "Activate";
+  const textStatus = active ? "activated" : "deactivated";
 
   return (
     <SettingToggle
@@ -31,12 +31,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SettingToggleExample />
       </div>
@@ -45,4 +45,3 @@ function Example() {
 }
 
 export default Example;
-    

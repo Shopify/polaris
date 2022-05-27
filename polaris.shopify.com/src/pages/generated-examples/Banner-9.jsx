@@ -1,6 +1,6 @@
 import { AppProvider, Banner } from "@shopify/polaris";
-import { useEffect,useRef } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useEffect, useRef } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function BannerWithFocusExample() {
   const banner = useRef();
 
@@ -30,12 +30,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <BannerWithFocusExample />
       </div>
@@ -44,4 +44,3 @@ function Example() {
 }
 
 export default Example;
-    

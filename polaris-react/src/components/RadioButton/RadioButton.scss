@@ -43,13 +43,18 @@
 
 .Backdrop {
   // ::before is the selected dot, ::after the focus-ring
+
+  @include when-typography-condensed {
+    --p-icon-size-small: 10px;
+  }
+
   position: relative;
   top: 0;
   left: 0;
   display: block;
   width: 100%;
   height: 100%;
-  border: var(--p-control-border-width) solid var(--p-border);
+  border: var(--p-control-border-width) solid var(--p-border-subdued);
   border-radius: var(--p-border-radius-half);
   background-color: var(--p-surface);
   transition: border-color var(--p-duration-100) var(--p-ease);

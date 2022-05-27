@@ -8,7 +8,7 @@ import styles from "./NavContentTOCLayout.module.scss";
 
 interface Props {
   navItems: NavItem[];
-  title: string;
+  title?: string;
   content: string | React.ReactNode;
   showTOC?: boolean;
 }
@@ -33,9 +33,11 @@ function NavContentTOCLayout({
       <article className={styles.Post}>
         {typeof content === "string" ? (
           <>
-            <Longform>
-              <h1>{title}</h1>
-            </Longform>
+            {title && (
+              <Longform>
+                <h1>{title}</h1>
+              </Longform>
+            )}
             {showTOC && <TOC rerenderOnChange={content} />}
             <Longform>
               <Markdown text={content} skipH1 />
@@ -43,7 +45,7 @@ function NavContentTOCLayout({
           </>
         ) : (
           <>
-            <h1>{title}</h1>
+            {title && <h1>{title}</h1>}
             {showTOC && <TOC rerenderOnChange={content} />}
             {content}
           </>

@@ -1,31 +1,38 @@
-import { AppProvider, Button,Card,Popover,ResourceList,Avatar } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Button,
+  Card,
+  Popover,
+  ResourceList,
+  Avatar,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function PopoverLazyLoadExample() {
   const [popoverActive, setPopoverActive] = useState(true);
   const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
   const staff = [
-    'Abbey Mayert',
-    'Abbi Senger',
-    'Abdul Goodwin',
-    'Abdullah Borer',
-    'Abe Nader',
-    'Abigayle Smith',
-    'Abner Torphy',
-    'Abraham Towne',
-    'Abraham Vik',
-    'Ada Fisher',
-    'Adah Pouros',
-    'Adam Waelchi',
-    'Adan Zemlak',
-    'Addie Wehner',
-    'Addison Wexler',
-    'Alex Hernandez',
+    "Abbey Mayert",
+    "Abbi Senger",
+    "Abdul Goodwin",
+    "Abdullah Borer",
+    "Abe Nader",
+    "Abigayle Smith",
+    "Abner Torphy",
+    "Abraham Towne",
+    "Abraham Vik",
+    "Ada Fisher",
+    "Adah Pouros",
+    "Adam Waelchi",
+    "Adan Zemlak",
+    "Addie Wehner",
+    "Addison Wexler",
+    "Alex Hernandez",
   ];
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+    []
   );
 
   const handleScrolledToBottom = useCallback(() => {
@@ -55,7 +62,7 @@ function PopoverLazyLoadExample() {
 
   return (
     <Card sectioned>
-      <div style={{height: '280px'}}>
+      <div style={{ height: "280px" }}>
         <Popover
           sectioned
           active={popoverActive}
@@ -71,7 +78,7 @@ function PopoverLazyLoadExample() {
     </Card>
   );
 
-  function renderItem({name, initials}) {
+  function renderItem({ name, initials }) {
     return (
       <ResourceList.Item
         id={name}
@@ -85,11 +92,11 @@ function PopoverLazyLoadExample() {
 
   function getInitials(name) {
     return name
-      .split(' ')
+      .split(" ")
       .map((surnameOrFamilyName) => {
         return surnameOrFamilyName.slice(0, 1);
       })
-      .join('');
+      .join("");
   }
 }
 
@@ -102,12 +109,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <PopoverLazyLoadExample />
       </div>
@@ -116,4 +123,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,158 +1,182 @@
 @import "../../styles/variables.scss";
 
 .ResourcesPage {
-  margin-top: var(--header-margin);
-  counter-reset: step;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
   h1 {
     text-align: center;
+    max-width: 40rem;
+    margin: 6rem auto 2rem;
+    color: var(--primary);
+    animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
   }
 
   h1 + p {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    font-size: var(--font-size-500);
+    font-size: var(--font-size-700);
     letter-spacing: var(--letter-spacing-200);
-    max-width: 50%;
+    max-width: 44rem;
+    text-align: center;
+    margin: 1rem auto 0;
+    font-weight: var(--font-weight-500);
+    line-height: 1.35;
+    animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
+    color: var(--text-strong);
+  }
+
+  h2 {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-900);
+    letter-spacing: var(--letter-spacing-100);
+    line-height: 1.1;
+  }
+
+  a {
+    color: #008362;
   }
 }
 
-.Step {
-  h2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
+.FadeIn {
+  animation: fade-in 0.5s 0.5s linear both;
+}
 
-  &::before {
-    content: "";
-    display: block;
-    width: 2px;
-    height: 50px;
-    background: #ddd;
-    border-radius: 2px;
-    margin: 2rem auto;
+.Line {
+  width: 3px;
+  height: 100px;
+  background: var(--text-strong);
+  border-radius: 2px;
+  margin: 2rem auto;
+
+  &.FirstLine {
+    animation: fade-up 0.75s 0.4s var(--ease-out-quart) both;
   }
 }
 
 .FirstStep {
-  max-width: 40rem;
-  text-align: center;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+  background: var(--surface-subdued);
+  border-radius: 32px;
+  padding: 8rem 14rem;
 
   p {
+    color: var(--text-strong);
     margin-bottom: 1rem;
   }
-}
 
-.MainPackages {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 1rem 0;
-  gap: 0.75rem;
-
-  > div {
-    padding: 1.5rem;
-    box-shadow: var(--card-shadow);
-    border-radius: var(--border-radius-500);
-    overflow: hidden;
+  a {
+    font-size: var(--font-size-500);
   }
 }
 
-.Description {
-  margin: 0.75rem 1rem 1rem 0;
-}
+.BuildingBlocks {
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
 
-.Version {
-  margin: 0.33rem 0 0;
-  font-size: var(--font-size-100);
-  display: none;
+  .Block {
+    margin: 0 auto 1rem;
+    max-width: 60rem;
+    padding: 6rem 3rem;
+    position: relative;
+    background: var(--surface-subdued);
+    border-radius: 32px;
+    padding-right: 40%;
+
+    h3 {
+      font-size: var(--font-size-800);
+      margin-bottom: 1rem;
+      letter-spacing: var(--letter-spacing-200);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-strong);
+    }
+  }
+
+  .Image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35rem;
+  }
 }
 
 .Links {
   display: flex;
-  gap: 0.25rem;
+  flex-direction: column;
 
   a {
     display: flex;
     align-items: center;
-    gap: 0.33rem;
-    padding: 0.33rem 0.7rem;
-    border-radius: var(--border-radius-400);
+    gap: 0.66rem;
+    padding: 0.33rem 0;
     font-weight: 400;
-    font-size: var(--font-size-200);
-    color: var(--text-strong);
+    font-size: var(--font-size-500);
 
     .Icon {
       display: flex;
       align-items: center;
       min-width: 0.95em;
       width: 0.95em;
-      svg {
-        color: var(--text-strong);
-      }
     }
   }
 
-  li:first-child {
-    a {
-      background: #049d76;
-
-      &,
-      svg {
-        color: white;
-      }
-    }
-  }
-
-  a[data-icon="github"],
-  a[data-icon="install"] {
-    gap: 0.4rem;
+  a[data-icon="github"] svg {
+    color: var(--text);
   }
 }
 
 .PolarisForVSCode {
+  position: relative;
+  max-width: 60rem;
   margin-top: 2rem;
   display: flex;
-  background: #291a36;
-  background: linear-gradient(45deg, #3e0038, #039d76);
-  border: var(--border);
-  border-radius: var(--border-radius-500);
-  overflow: hidden;
-  max-width: 62rem;
+  background: #222;
+  border-radius: 32px;
   margin: 2rem auto 0;
 
   .Text {
-    padding: 3rem;
+    padding: 12rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 50%;
 
     h3 {
+      margin-bottom: 1rem;
       color: white;
-      font-size: var(--font-size-600);
+      font-size: var(--font-size-700);
     }
 
     p {
-      color: #c2a5d9;
+      margin-bottom: 1rem;
+      color: #ccc;
     }
 
     a {
-      box-shadow: none;
+      color: white;
     }
   }
 
   .Video {
-    min-width: 63.5%;
-    max-width: 63.5%;
-    filter: hue-rotate(-226deg);
-    mix-blend-mode: color-dodge;
-
+    position: absolute;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 60%;
+    left: 50%;
+    margin-right: -10rem;
+    min-width: 65.5;
+    max-width: 65.5%;
+    filter: hue-rotate(-396deg) contrast(1.1) saturate(2);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
     video {
       width: 100%;
       height: auto;
@@ -161,5 +185,25 @@
 
   h2 {
     color: white;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

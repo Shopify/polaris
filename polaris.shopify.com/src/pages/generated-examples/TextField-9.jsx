@@ -1,14 +1,14 @@
 import { AppProvider, TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function HelpTextExample() {
   const [textFieldValue, setTextFieldValue] = useState(
-    'bernadette.lapresse@jadedpixel.com',
+    "bernadette.lapresse@jadedpixel.com"
   );
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   return (
@@ -32,12 +32,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <HelpTextExample />
       </div>
@@ -46,4 +46,3 @@ function Example() {
 }
 
 export default Example;
-    
