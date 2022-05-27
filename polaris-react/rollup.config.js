@@ -38,7 +38,6 @@ function generateConfig({output, targets, stylesConfig}) {
       json({
         compact: true,
       }),
-
       styles(stylesConfig),
     ],
     output,
