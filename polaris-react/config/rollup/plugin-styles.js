@@ -76,7 +76,7 @@ module.exports.styles = function styles({
     // that twice - once for the commonjs build (the cjs folder), once for
     // the esm build (the esm folder). We only want to do perform this logic
     // once in the esm build
-    if (!generateOptions.dir.endsWith('/build/esm')) {
+    if (generateOptions.dir !== 'build/esm') {
       return;
     }
 
@@ -119,6 +119,7 @@ module.exports.styles = function styles({
     }
 
     // Regular css file
+
     rollup.emitFile({type: 'asset', fileName: output, source: css});
   }
 
@@ -126,7 +127,7 @@ module.exports.styles = function styles({
     name: 'styles',
 
     buildStart({input}) {
-      inputRoot = path.dirname(input[0]);
+      inputRoot = path.resolve(__dirname, '..', '..', path.dirname(input[0]));
     },
 
     // Treat CSS files as external - don't try and resolve them within Rollup
