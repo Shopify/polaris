@@ -12,6 +12,13 @@
 - [#5931](https://github.com/Shopify/polaris/pull/5931) [`87b489073`](https://github.com/Shopify/polaris/commit/87b48907363f25c0f76d2c39126ce174c5a11d82) Thanks [@laurkim](https://github.com/laurkim)! - Fixed input focus loss in TextField on vertical content change
 
 * [#5785](https://github.com/Shopify/polaris/pull/5785) [`56b8ca790`](https://github.com/Shopify/polaris/commit/56b8ca790b458f050f00be5a80ed58e7bc08ef9a) Thanks [@mrcthms](https://github.com/mrcthms)! - Upstream changes from polaris-next IndexTable
+  - Added a className prop to a IndexTable.Cell
+  - Added a customClickHandler prop to a IndexTable.Row
+  - Added a paginatedSelectAllActionText to the IndexTable
+  - Exported a clearSelection method from the use-index-resource-state hook
+  - Updated the styling of the ScrollBarContainer
+  - Updated styling for TableCell to fix unpadded cell bug.
+  - Added a 20px width to the TableHeading-first to fix the width of the checkbox column
 
 - [#5945](https://github.com/Shopify/polaris/pull/5945) [`54d15c3c1`](https://github.com/Shopify/polaris/commit/54d15c3c1df0f78d39ec68d528b0c732c2651db1) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added experimental `Grid` component
 
