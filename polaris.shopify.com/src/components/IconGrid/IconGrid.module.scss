@@ -1,6 +1,6 @@
 .IconGrid {
   display: grid;
-  gap: 2px;
+  gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
 }
 
@@ -19,7 +19,7 @@
     background: var(--surface-subdued);
     padding-top: 5px;
     aspect-ratio: 5 / 4;
-    border-radius: var(--border-radius-100);
+    border-radius: var(--border-radius-800);
     transition: background-color 0.05s linear;
     box-shadow: var(--card-shadow);
 

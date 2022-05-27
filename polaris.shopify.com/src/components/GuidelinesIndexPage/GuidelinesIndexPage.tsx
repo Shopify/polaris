@@ -16,7 +16,7 @@ function GuidelinesIndexPage({}: Props) {
       <NavContentTOCLayout
         navItems={navItems}
         showTOC={false}
-        // title="Guidelines"
+        title="Guidelines"
         content={
           <>
             <div className={styles.Features}>

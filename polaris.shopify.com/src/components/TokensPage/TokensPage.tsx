@@ -3,8 +3,6 @@ import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
 import { useState } from "react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Tabs from "../Tabs";
-import YoutubeVideo from "../YoutubeVideo";
-import Link from "next/link";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
 

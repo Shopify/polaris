@@ -29,6 +29,7 @@ function ComponentsPage({}: Props) {
       <NavContentTOCLayout
         navItems={navItems}
         showTOC={false}
+        title="Components"
         content={
           <>
             {componentCategories.map((category) => {

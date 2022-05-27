@@ -1,6 +1,14 @@
+.GuidelinesIndexPage {
+  h1 {
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-100);
+    margin-bottom: 2rem;
+  }
+}
+
 .Features {
   display: grid;
-  gap: 4px;
+  gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 26rem);
 }

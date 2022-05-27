@@ -6,9 +6,9 @@
   max-width: $pageMaxWidth;
 
   &.padding {
-    @media screen and (max-width: $pageMaxWidth) {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
+    // @media screen and (max-width: $pageMaxWidth) {
+    //   padding-left: 3rem;
+    //   padding-right: 3rem;
+    // }
   }
 }
