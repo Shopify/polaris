@@ -4,11 +4,13 @@
   --focus-outline: 0 0 0 2px #222, 0 0 0 4px #fff;
 
   input {
-    background: #fff url(./SearchMajor.svg) no-repeat 14px center;
+    background: #ededed url(./SearchMajor.svg) no-repeat 14px center;
+    border: none;
+    padding: 0.66rem 0.66rem 0.66rem 40px;
     background-size: 16px auto;
-    border: var(--border);
     font-weight: 435;
     font-size: var(--font-size-100);
+    border-radius: 16px;
 
     &:focus {
       position: relative;
@@ -66,7 +68,7 @@
   min-height: 50rem;
   max-height: 50rem;
   box-shadow: 0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: var(--surface);
+  background: var(--surface-subdued);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;

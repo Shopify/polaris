@@ -1,7 +1,12 @@
-import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
-import { ImportMinor,ExportMinor,EditMinor,DeleteMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Popover, ActionList } from "@shopify/polaris";
+import {
+  ImportMinor,
+  ExportMinor,
+  EditMinor,
+  DeleteMinor,
+} from "@shopify/polaris-icons";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SectionedActionListExample() {
   const [active, setActive] = useState(true);
 
@@ -14,7 +19,7 @@ function SectionedActionListExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -25,17 +30,17 @@ function SectionedActionListExample() {
           actionRole="menuitem"
           sections={[
             {
-              title: 'File options',
+              title: "File options",
               items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
+                { content: "Import file", icon: ImportMinor },
+                { content: "Export file", icon: ExportMinor },
               ],
             },
             {
-              title: 'Bulk actions',
+              title: "Bulk actions",
               items: [
-                {content: 'Edit', icon: EditMinor},
-                {content: 'Delete', icon: DeleteMinor},
+                { content: "Edit", icon: EditMinor },
+                { content: "Delete", icon: DeleteMinor },
               ],
             },
           ]}
@@ -54,12 +59,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SectionedActionListExample />
       </div>
@@ -68,4 +73,3 @@ function Example() {
 }
 
 export default Example;
-    

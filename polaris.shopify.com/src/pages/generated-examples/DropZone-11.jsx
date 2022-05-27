@@ -1,7 +1,14 @@
-import { AppProvider, Stack,Thumbnail,Caption,Card,DropZone } from "@shopify/polaris";
+import {
+  AppProvider,
+  Stack,
+  Thumbnail,
+  Caption,
+  Card,
+  DropZone,
+} from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function DropZoneWithCustomFileDialogExample() {
   const [files, setFiles] = useState([]);
   const [openFileDialog, setOpenFileDialog] = useState(false);
@@ -9,14 +16,14 @@ function DropZoneWithCustomFileDialogExample() {
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...dropFiles]),
-    [],
+    []
   );
   const toggleOpenFileDialog = useCallback(
     () => setOpenFileDialog((openFileDialog) => !openFileDialog),
-    [],
+    []
   );
 
-  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
@@ -45,7 +52,7 @@ function DropZoneWithCustomFileDialogExample() {
       title="Product Images"
       actions={[
         {
-          content: 'Upload Image',
+          content: "Upload Image",
           onAction: toggleOpenFileDialog,
         },
       ]}
@@ -70,12 +77,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DropZoneWithCustomFileDialogExample />
       </div>
@@ -84,4 +91,3 @@ function Example() {
 }
 
 export default Example;
-    

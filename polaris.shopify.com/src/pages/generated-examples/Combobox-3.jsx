@@ -1,10 +1,18 @@
-import { AppProvider, TextStyle,Stack,Tag,Listbox,EmptySearchResult,Combobox } from "@shopify/polaris";
-import { useState,useCallback,useMemo } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  TextStyle,
+  Stack,
+  Tag,
+  Listbox,
+  EmptySearchResult,
+  Combobox,
+} from "@shopify/polaris";
+import { useState, useCallback, useMemo } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function MultiselectTagComboboxExample() {
-  const [selectedTags, setSelectedTags] = useState(['Rustic']);
-  const [value, setValue] = useState('');
-  const [suggestion, setSuggestion] = useState('');
+  const [selectedTags, setSelectedTags] = useState(["Rustic"]);
+  const [value, setValue] = useState("");
+  const [suggestion, setSuggestion] = useState("");
 
   const handleActiveOptionChange = useCallback(
     (activeOption) => {
@@ -13,10 +21,10 @@ function MultiselectTagComboboxExample() {
       if (!activeOptionIsAction && !selectedTags.includes(activeOption)) {
         setSuggestion(activeOption);
       } else {
-        setSuggestion('');
+        setSuggestion("");
       }
     },
-    [value, selectedTags],
+    [value, selectedTags]
   );
   const updateSelection = useCallback(
     (selected) => {
@@ -28,21 +36,21 @@ function MultiselectTagComboboxExample() {
         nextSelectedTags.add(selected);
       }
       setSelectedTags([...nextSelectedTags]);
-      setValue('');
-      setSuggestion('');
+      setValue("");
+      setSuggestion("");
     },
-    [selectedTags],
+    [selectedTags]
   );
 
   const removeTag = useCallback(
     (tag) => () => {
       updateSelection(tag);
     },
-    [updateSelection],
+    [updateSelection]
   );
 
   const getAllTags = useCallback(() => {
-    const savedTags = ['Rustic', 'Antique', 'Vinyl', 'Vintage', 'Refurbished'];
+    const savedTags = ["Rustic", "Antique", "Vinyl", "Vintage", "Refurbished"];
     return [...new Set([...savedTags, ...selectedTags].sort())];
   }, [selectedTags]);
 
@@ -65,13 +73,13 @@ function MultiselectTagComboboxExample() {
         </p>
       );
     },
-    [value],
+    [value]
   );
 
   const options = useMemo(() => {
     let list;
     const allTags = getAllTags();
-    const filterRegex = new RegExp(value, 'i');
+    const filterRegex = new RegExp(value, "i");
 
     if (value) {
       list = allTags.filter((tag) => tag.match(filterRegex));
@@ -137,7 +145,7 @@ function MultiselectTagComboboxExample() {
     ) : null;
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Combobox
         allowMultiple
         activator={
@@ -168,12 +176,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <MultiselectTagComboboxExample />
       </div>
@@ -182,4 +190,3 @@ function Example() {
 }
 
 export default Example;
-    

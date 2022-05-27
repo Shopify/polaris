@@ -3,8 +3,6 @@ import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
 import { useState } from "react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Tabs from "../Tabs";
-import YoutubeVideo from "../YoutubeVideo";
-import Link from "next/link";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
 
@@ -56,6 +54,11 @@ function TokensPage({ tokenGroup }: Props) {
     <>
       <MaxPageWidthDiv className={styles.Intro}>
         <h1>Tokens</h1>
+        <p>
+          Build anything you want on top of Polaris. By using tokens, your
+          design becomes future proof. When Polaris evolves, your design
+          automatically updates with the latest values.
+        </p>
       </MaxPageWidthDiv>
 
       <Tabs
@@ -103,11 +106,11 @@ function TokensPage({ tokenGroup }: Props) {
         ]}
       />
 
-      <div className={styles.TableSection}>
+      <div className={styles.Tokens}>
         <div className={styles.Group}>
           <MaxPageWidthDiv>
             <TokenList
-              layout={["colors"].includes(tokenGroup) ? "grid" : "list"}
+              layout={["colors"].includes(tokenGroup) ? "list" : "list"}
             >
               {tokens[tokenGroup]
                 .sort((token) =>

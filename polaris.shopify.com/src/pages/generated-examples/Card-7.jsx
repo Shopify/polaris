@@ -1,5 +1,5 @@
 import { AppProvider, Card } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,29 +10,28 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Card title="Online store dashboard">
-  <Card.Section>
-    <p>View a summary of your online store’s performance.</p>
-  </Card.Section>
+          <Card.Section>
+            <p>View a summary of your online store’s performance.</p>
+          </Card.Section>
 
-  <Card.Section>
-    <p>
-      View a summary of your online store’s performance, including sales,
-      visitors, top products, and referrals.
-    </p>
-  </Card.Section>
-</Card>
+          <Card.Section>
+            <p>
+              View a summary of your online store’s performance, including
+              sales, visitors, top products, and referrals.
+            </p>
+          </Card.Section>
+        </Card>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

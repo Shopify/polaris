@@ -1,9 +1,15 @@
-import { AppProvider, Card,RangeSlider,Stack,TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Card,
+  RangeSlider,
+  Stack,
+  TextField,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function DualThumbRangeSliderExample() {
   const initialValue = [900, 1000];
-  const prefix = '$';
+  const prefix = "$";
   const min = 0;
   const max = 2000;
   const step = 10;
@@ -22,7 +28,7 @@ function DualThumbRangeSliderExample() {
       const upperValue = rangeValue[1];
       setIntermediateTextFieldValue([parseInt(value, 10), upperValue]);
     },
-    [rangeValue],
+    [rangeValue]
   );
 
   const handleUpperTextFieldChange = useCallback(
@@ -30,7 +36,7 @@ function DualThumbRangeSliderExample() {
       const lowerValue = rangeValue[0];
       setIntermediateTextFieldValue([lowerValue, parseInt(value, 10)]);
     },
-    [rangeValue],
+    [rangeValue]
   );
 
   const handleLowerTextFieldBlur = useCallback(() => {
@@ -56,7 +62,7 @@ function DualThumbRangeSliderExample() {
         setRangeValue(newValue);
       }
     },
-    [intermediateTextFieldValue, rangeValue],
+    [intermediateTextFieldValue, rangeValue]
   );
 
   const lowerTextFieldValue =
@@ -122,12 +128,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DualThumbRangeSliderExample />
       </div>
@@ -136,4 +142,3 @@ function Example() {
 }
 
 export default Example;
-    

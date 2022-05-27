@@ -1,32 +1,38 @@
-import { AppProvider, Button,Modal,TextContainer,Banner } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Button,
+  Modal,
+  TextContainer,
+  Banner,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function BannerInModalExample() {
   const [active, setActive] = useState(false);
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Button onClick={handleChange}>Open</Button>
       <Modal
         open={active}
         onClose={handleChange}
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleChange,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleChange,
           },
         ]}
       >
         <Modal.Section>
           <TextContainer>
-            <Banner action={{content: 'Connect account'}} status="warning">
+            <Banner action={{ content: "Connect account" }} status="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
               </p>
@@ -52,12 +58,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <BannerInModalExample />
       </div>
@@ -66,4 +72,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,8 +1,8 @@
 import { AppProvider, TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function TextFieldExample() {
-  const [value, setValue] = useState('Jaded Pixel');
+  const [value, setValue] = useState("Jaded Pixel");
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
@@ -25,12 +25,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <TextFieldExample />
       </div>
@@ -39,4 +39,3 @@ function Example() {
 }
 
 export default Example;
-    

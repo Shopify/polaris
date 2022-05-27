@@ -1,6 +1,10 @@
+.Header {
+  border-bottom: var(--border);
+}
+
 .HeaderInner {
   display: flex;
-  gap: 2em;
+  gap: 3em;
   height: var(--header-height);
 }
 
@@ -10,7 +14,7 @@
   color: var(--text-inherit);
   gap: 0.7rem;
   font-weight: 500;
-  font-size: var(--font-size-200);
+  font-size: var(--font-size-100);
   p {
     margin: 0;
   }
@@ -23,20 +27,19 @@
 .Nav {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-200);
+  font-size: var(--font-size-100);
   font-weight: 500;
   margin-right: auto;
 
   li {
     a {
       color: inherit;
-      border-left: var(--border);
-      padding: 0.5rem 1rem;
+      padding: 0.85rem 1rem;
 
       &:focus-within {
         position: relative;
         z-index: 1;
-        border-radius: var(--border-radius-200);
+        border-radius: var(--border-radius-800);
       }
 
       &:hover {
@@ -44,7 +47,8 @@
       }
 
       &[aria-current="page"] {
-        color: var(--primary);
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: var(--border-radius-800);
       }
     }
 
@@ -57,7 +61,7 @@
 .SearchWrapper {
   display: flex;
   align-items: center;
-  width: 16rem;
+  width: 18.25rem; // Align with TOC on guidelines pages
 
   .Icon {
     display: flex;

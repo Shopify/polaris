@@ -1,6 +1,6 @@
-import { AppProvider, Listbox,Stack,Icon } from "@shopify/polaris";
+import { AppProvider, Listbox, Stack, Icon } from "@shopify/polaris";
 import { CirclePlusMinor } from "@shopify/polaris-icons";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function ListboxWithActionExample() {
   return (
     <Listbox accessibilityLabel="Listbox with Action example">
@@ -27,12 +27,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ListboxWithActionExample />
       </div>
@@ -41,4 +41,3 @@ function Example() {
 }
 
 export default Example;
-    

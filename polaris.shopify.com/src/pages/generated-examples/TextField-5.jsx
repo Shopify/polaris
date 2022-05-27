@@ -1,15 +1,21 @@
-import { AppProvider, FormLayout,ChoiceList,TextField,Select } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  FormLayout,
+  ChoiceList,
+  TextField,
+  Select,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function HiddenLabelExample() {
-  const [value, setValue] = useState('12');
-  const [selected, setSelected] = useState('yes');
+  const [value, setValue] = useState("12");
+  const [selected, setSelected] = useState("yes");
 
   const handleTextChange = useCallback((newValue) => setValue(newValue), []);
 
   const handleChoiceChange = useCallback(
     (selections) => setSelected(selections[0]),
-    [],
+    []
   );
 
   return (
@@ -17,8 +23,8 @@ function HiddenLabelExample() {
       <ChoiceList
         title="Gift card auto-expiration"
         choices={[
-          {label: 'Gift cards never expire', value: 'no'},
-          {label: 'Gift cards expire', value: 'yes'},
+          { label: "Gift cards never expire", value: "no" },
+          { label: "Gift cards expire", value: "yes" },
         ]}
         selected={[selected]}
         onChange={handleChoiceChange}
@@ -28,14 +34,14 @@ function HiddenLabelExample() {
         type="number"
         labelHidden
         value={value}
-        disabled={selected === 'no'}
+        disabled={selected === "no"}
         onChange={handleTextChange}
         autoComplete="off"
         connectedRight={
           <Select
             label="Unit of time"
             labelHidden
-            options={['months after purchase']}
+            options={["months after purchase"]}
           />
         }
       />
@@ -52,12 +58,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <HiddenLabelExample />
       </div>
@@ -66,4 +72,3 @@ function Example() {
 }
 
 export default Example;
-    

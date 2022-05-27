@@ -1,18 +1,25 @@
-import { AppProvider, Toast,Frame,Page,ButtonGroup,Button } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Toast,
+  Frame,
+  Page,
+  ButtonGroup,
+  Button,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function MultipleToastExample() {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
 
   const toggleActiveOne = useCallback(
     () => setActiveOne((activeOne) => !activeOne),
-    [],
+    []
   );
 
   const toggleActiveTwo = useCallback(
     () => setActiveTwo((activeTwo) => !activeTwo),
-    [],
+    []
   );
 
   const toastMarkup1 = activeOne ? (
@@ -24,7 +31,7 @@ function MultipleToastExample() {
   ) : null;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Frame>
         <Page title="Toast example">
           <ButtonGroup segmented>
@@ -48,12 +55,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <MultipleToastExample />
       </div>
@@ -62,4 +69,3 @@ function Example() {
 }
 
 export default Example;
-    

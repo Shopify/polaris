@@ -1,6 +1,6 @@
-import { AppProvider, Card,OptionList } from "@shopify/polaris";
+import { AppProvider, Card, OptionList } from "@shopify/polaris";
 import { useState } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function MultipleOptionListExample() {
   const [selected, setSelected] = useState([]);
 
@@ -10,11 +10,11 @@ function MultipleOptionListExample() {
         title="Manage sales channels availability"
         onChange={setSelected}
         options={[
-          {value: 'online_store', label: 'Online Store'},
-          {value: 'messenger', label: 'Messenger'},
-          {value: 'facebook', label: 'Facebook'},
-          {value: 'wholesale', label: 'Wholesale'},
-          {value: 'buzzfeed', label: 'BuzzFeed'},
+          { value: "online_store", label: "Online Store" },
+          { value: "messenger", label: "Messenger" },
+          { value: "facebook", label: "Facebook" },
+          { value: "wholesale", label: "Wholesale" },
+          { value: "buzzfeed", label: "BuzzFeed" },
         ]}
         selected={selected}
         allowMultiple
@@ -32,12 +32,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <MultipleOptionListExample />
       </div>
@@ -46,4 +46,3 @@ function Example() {
 }
 
 export default Example;
-    
