@@ -27,17 +27,14 @@ $dangerous-magic-space-16: 64px;
   }
 }
 
-.Dialog {
-  // Resume pointer events
-  pointer-events: initial;
-}
-
 .Dialog:focus {
   outline: 0;
 }
 
 .Modal {
   --pc-dialog-horizontal-spacing: var(--p-space-16);
+  // Resume pointer events
+  pointer-events: initial;
   position: fixed;
   right: 0;
   bottom: 0;
