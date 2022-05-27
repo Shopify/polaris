@@ -1,6 +1,6 @@
-import { AppProvider, Button,Modal,TextContainer } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Modal, TextContainer } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ModalWithoutTitleExample() {
   const [active, setActive] = useState(true);
 
@@ -9,7 +9,7 @@ function ModalWithoutTitleExample() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       <Modal
         title="Reach more shoppers with Instagram product tags"
         titleHidden
@@ -17,12 +17,12 @@ function ModalWithoutTitleExample() {
         open={active}
         onClose={handleChange}
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleChange,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleChange,
           },
         ]}
@@ -50,12 +50,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ModalWithoutTitleExample />
       </div>
@@ -64,4 +64,3 @@ function Example() {
 }
 
 export default Example;
-    

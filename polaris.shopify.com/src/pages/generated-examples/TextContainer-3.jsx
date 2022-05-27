@@ -1,5 +1,5 @@
 import { AppProvider, TextContainer } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,28 +10,28 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <TextContainer spacing="loose">
-  <p>
-    Manage your Shopify store on-the-go with real-time notifications, access to
-    your dashboard, and order management, all from your smartphone.
-  </p>
-  <p>
-    Shopify POS is the fastest and easiest way to start accepting Visa,
-    Mastercard, American Express, and Discover right from your smartphone or
-    tablet.
-  </p>
-</TextContainer>
+          <p>
+            Manage your Shopify store on-the-go with real-time notifications,
+            access to your dashboard, and order management, all from your
+            smartphone.
+          </p>
+          <p>
+            Shopify POS is the fastest and easiest way to start accepting Visa,
+            Mastercard, American Express, and Discover right from your
+            smartphone or tablet.
+          </p>
+        </TextContainer>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

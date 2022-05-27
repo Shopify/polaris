@@ -1,5 +1,5 @@
 import { AppProvider, Button } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,22 +10,21 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Button plain textAlign="left">
-  This is a really long string of text that overflows onto the next line we need
-  to put in a lot of words now you can see the alignment. It is very long but a
-  customer could potentially name something this long.
-</Button>
+          This is a really long string of text that overflows onto the next line
+          we need to put in a lot of words now you can see the alignment. It is
+          very long but a customer could potentially name something this long.
+        </Button>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

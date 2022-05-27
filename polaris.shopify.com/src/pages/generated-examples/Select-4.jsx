@@ -1,21 +1,21 @@
-import { AppProvider, Icon,Select } from "@shopify/polaris";
-import { CaretUpMinor,CaretDownMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Icon, Select } from "@shopify/polaris";
+import { CaretUpMinor, CaretDownMinor } from "@shopify/polaris-icons";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function PrefixExample() {
-  const [selected, setSelected] = useState('enabled');
+  const [selected, setSelected] = useState("enabled");
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   const options = [
     {
-      label: 'Increase',
-      value: 'Increase',
+      label: "Increase",
+      value: "Increase",
       prefix: <Icon source={CaretUpMinor} />,
     },
     {
-      label: 'Decrease',
-      value: 'Decrease',
+      label: "Decrease",
+      value: "Decrease",
       prefix: <Icon source={CaretDownMinor} />,
     },
   ];
@@ -39,12 +39,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <PrefixExample />
       </div>
@@ -53,4 +53,3 @@ function Example() {
 }
 
 export default Example;
-    

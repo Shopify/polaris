@@ -1,8 +1,8 @@
 import { AppProvider, TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function MultilineFieldExample() {
-  const [value, setValue] = useState('1776 Barnes Street\nOrlando, FL 32801');
+  const [value, setValue] = useState("1776 Barnes Street\nOrlando, FL 32801");
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
@@ -26,12 +26,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <MultilineFieldExample />
       </div>
@@ -40,4 +40,3 @@ function Example() {
 }
 
 export default Example;
-    

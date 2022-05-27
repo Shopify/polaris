@@ -1,6 +1,14 @@
-import { AppProvider, Stack,Thumbnail,Caption,Banner,List,DropZone } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Stack,
+  Thumbnail,
+  Caption,
+  Banner,
+  List,
+  DropZone,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function DropZoneAcceptingSVGFilesExample() {
   const [files, setFiles] = useState([]);
   const [rejectedFiles, setRejectedFiles] = useState([]);
@@ -11,7 +19,7 @@ function DropZoneAcceptingSVGFilesExample() {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },
-    [],
+    []
   );
 
   const uploadedFiles = files.length > 0 && (
@@ -70,12 +78,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DropZoneAcceptingSVGFilesExample />
       </div>
@@ -84,4 +92,3 @@ function Example() {
 }
 
 export default Example;
-    

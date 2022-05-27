@@ -1,6 +1,6 @@
 import { AppProvider, Checkbox } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function CheckboxExample() {
   const [checked, setChecked] = useState(false);
   const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
@@ -23,12 +23,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <CheckboxExample />
       </div>
@@ -37,4 +37,3 @@ function Example() {
 }
 
 export default Example;
-    

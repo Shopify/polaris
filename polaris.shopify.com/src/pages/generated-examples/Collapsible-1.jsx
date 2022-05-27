@@ -1,13 +1,21 @@
-import { AppProvider, Card,Stack,Button,Collapsible,TextContainer,Link } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Card,
+  Stack,
+  Button,
+  Collapsible,
+  TextContainer,
+  Link,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function CollapsibleExample() {
   const [open, setOpen] = useState(true);
 
   const handleToggle = useCallback(() => setOpen((open) => !open), []);
 
   return (
-    <div style={{height: '200px'}}>
+    <div style={{ height: "200px" }}>
       <Card sectioned>
         <Stack vertical>
           <Button
@@ -20,7 +28,7 @@ function CollapsibleExample() {
           <Collapsible
             open={open}
             id="basic-collapsible"
-            transition={{duration: '500ms', timingFunction: 'ease-in-out'}}
+            transition={{ duration: "500ms", timingFunction: "ease-in-out" }}
             expandOnPrint
           >
             <TextContainer>
@@ -47,12 +55,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <CollapsibleExample />
       </div>
@@ -61,4 +69,3 @@ function Example() {
 }
 
 export default Example;
-    
