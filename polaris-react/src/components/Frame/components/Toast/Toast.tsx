@@ -7,7 +7,6 @@ import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
-import {CustomProperties} from '../../../CustomProperties';
 
 import styles from './Toast.scss';
 
@@ -64,13 +63,11 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <CustomProperties colorScheme="dark">
-      <div className={className}>
-        <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-        {content}
-        {actionMarkup}
-        {dismissMarkup}
-      </div>
-    </CustomProperties>
+    <div className={className}>
+      <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
+      {content}
+      {actionMarkup}
+      {dismissMarkup}
+    </div>
   );
 }

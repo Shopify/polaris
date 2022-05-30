@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 
-import {
-  CustomProperties,
-  CustomPropertiesProps,
-  DEFAULT_COLOR_SCHEME,
-} from '../CustomProperties';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -41,8 +36,6 @@ export interface AppProviderProps {
   features?: FeaturesConfig;
   /** Inner content of the application */
   children?: React.ReactNode;
-  /** Determines what color scheme is applied to child content. */
-  colorScheme?: CustomPropertiesProps['colorScheme'];
 }
 
 export class AppProvider extends Component<AppProviderProps, State> {
@@ -73,15 +66,10 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   componentDidUpdate({
-    colorScheme: prevColorScheme,
     i18n: prevI18n,
     linkComponent: prevLinkComponent,
   }: AppProviderProps) {
-    const {colorScheme, i18n, linkComponent} = this.props;
-
-    if (colorScheme !== prevColorScheme) {
-      this.setBodyStyles();
-    }
+    const {i18n, linkComponent} = this.props;
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -94,18 +82,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    // Inlining the following custom properties to maintain backward
-    // compatibility with the legacy ThemeProvider implementation.
-    document.body.setAttribute(
-      'p-color-scheme',
-      this.props.colorScheme || DEFAULT_COLOR_SCHEME,
-    );
     document.body.style.backgroundColor = 'var(--p-background)';
     document.body.style.color = 'var(--p-text)';
   };
 
   render() {
-    const {children, features = {}, colorScheme} = this.props;
+    const {children, features = {}} = this.props;
 
     const {intl, link} = this.state;
 
@@ -116,13 +98,11 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <CustomProperties colorScheme={colorScheme}>
-                    <MediaQueryProvider>
-                      <PortalsManager>
-                        <FocusManager>{children}</FocusManager>
-                      </PortalsManager>
-                    </MediaQueryProvider>
-                  </CustomProperties>
+                  <MediaQueryProvider>
+                    <PortalsManager>
+                      <FocusManager>{children}</FocusManager>
+                    </PortalsManager>
+                  </MediaQueryProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>

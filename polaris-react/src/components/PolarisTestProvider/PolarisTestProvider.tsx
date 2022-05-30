@@ -4,7 +4,6 @@ import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
-import {CustomProperties, CustomPropertiesProps} from '../CustomProperties';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
@@ -37,7 +36,6 @@ export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
   i18n?: ConstructorParameters<typeof I18n>[0];
   link?: LinkLikeComponent;
-  colorScheme?: CustomPropertiesProps['colorScheme'];
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: FeaturesConfig;
   // Contexts provided by Frame
@@ -59,7 +57,6 @@ export function PolarisTestProvider({
   children,
   i18n,
   link,
-  colorScheme = 'light',
   mediaQuery,
   features = {},
   frame,
@@ -87,17 +84,15 @@ export function PolarisTestProvider({
             <StickyManagerContext.Provider value={stickyManager}>
               <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <CustomProperties colorScheme={colorScheme}>
-                    <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <PortalsManager>
-                        <FocusManager>
-                          <FrameContext.Provider value={mergedFrame}>
-                            {children}
-                          </FrameContext.Provider>
-                        </FocusManager>
-                      </PortalsManager>
-                    </MediaQueryContext.Provider>
-                  </CustomProperties>
+                  <MediaQueryContext.Provider value={mergedMediaQuery}>
+                    <PortalsManager>
+                      <FocusManager>
+                        <FrameContext.Provider value={mergedFrame}>
+                          {children}
+                        </FrameContext.Provider>
+                      </FocusManager>
+                    </PortalsManager>
+                  </MediaQueryContext.Provider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>

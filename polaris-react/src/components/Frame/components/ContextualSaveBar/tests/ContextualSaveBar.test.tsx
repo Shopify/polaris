@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
 import {Image} from '../../../../Image';
-import {CustomProperties} from '../../../../CustomProperties';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
@@ -292,13 +291,6 @@ describe('<ContextualSaveBar />', () => {
     );
 
     expect(contextualSaveBar).toContainReactText(expectedContent);
-  });
-
-  it('renders a CustomProperties with a dark color scheme', () => {
-    const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
-    expect(contextualSaveBar).toContainReactComponent(CustomProperties, {
-      colorScheme: 'dark',
-    });
   });
 });
 
