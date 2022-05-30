@@ -6,11 +6,7 @@ import {
 import { className } from "../../utils/various";
 import Tooltip from "../Tooltip";
 import { useCopyToClipboard } from "../../utils/hooks";
-const importedSvgs = require.context(
-  "../../../../polaris-icons/icons",
-  true,
-  /\.svg$/
-);
+import iconClipboard from "../../../public/icon-clipboard.svg"
 import Image from "../Image";
 
 interface TokenListProps {
@@ -86,7 +82,8 @@ function TokenListItem({
   isHighlighted,
 }: TokenListItemProps) {
   const figmaRecommendation = getFigmaRecommendationForToken(name, value);
-  const [copy, didJustCopy] = useCopyToClipboard(`--p-${name}`);
+  const tokenNameWithPrefix = `--p-${name}`
+  const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   return (
     <li
@@ -101,7 +98,7 @@ function TokenListItem({
       </div>
       <div className={styles.TokenInfo}>
         <div className={styles.TokenName}>
-          <h4>--p-{name}</h4>
+          <h4>{tokenNameWithPrefix}</h4>
           <Tooltip 
             ariaLabel="Copy to clipboard"
             placement="top"
@@ -113,9 +110,9 @@ function TokenListItem({
               </div>
             )}
           >
-            <div className={styles.TokenToolTipImage} onClick={()=>copy()}>
+            <div className={styles.TokenToolTipImage} onClick={copy}>
               <Image
-                src={importedSvgs(`./ClipboardMinor.svg`)}
+                src={iconClipboard}
                 alt={"Copy"}
                 width={19}
                 height={19}
