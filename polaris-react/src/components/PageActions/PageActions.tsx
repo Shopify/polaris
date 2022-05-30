@@ -27,10 +27,11 @@ export function PageActions({
   secondaryActions,
 }: PageActionsProps) {
   let primaryActionMarkup: MaybeJSX = null;
-  if (isReactElement(primaryAction)) {
-    primaryActionMarkup = <>{primaryAction}</>;
-  } else if (primaryAction) {
+
+  if (isInterface(primaryAction)) {
     primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
+  } else if (isReactElement(secondaryActions)) {
+    primaryActionMarkup = <>{primaryAction}</>;
   }
 
   let secondaryActionsMarkup: MaybeJSX = null;
