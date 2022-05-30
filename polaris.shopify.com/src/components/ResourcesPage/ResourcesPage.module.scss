@@ -118,17 +118,11 @@
     padding: 0.33rem 0;
     font-weight: 400;
     font-size: var(--font-size-500);
-
-    .Icon {
-      display: flex;
-      align-items: center;
-      min-width: 0.95em;
-      width: 0.95em;
-    }
   }
 
-  a[data-icon="github"] svg {
-    color: var(--text);
+  svg {
+    width: 1.2rem;
+    height: auto;
   }
 }
 
