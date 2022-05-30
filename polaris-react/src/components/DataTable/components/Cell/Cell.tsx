@@ -65,12 +65,11 @@ export function Cell({
 
   const [showTooltip, setShowTooltip] = useState(false);
 
-  function setTooltip(ref: HTMLElement | null) {
+  function setTooltip(ref: HTMLTableCellElement | null) {
     if (!ref) {
-      setShowTooltip(false);
       return;
     }
-    if (ref.scrollWidth > ref.offsetWidth) {
+    if (ref.scrollWidth > ref.offsetWidth && inFixedFirstColumn) {
       setShowTooltip(true);
     }
   }
@@ -178,7 +177,7 @@ export function Cell({
     >
       {showTooltip ? (
         <Tooltip content={content}>
-          <span>{content}</span>
+          <span className={styles.TooltipContent}>{content}</span>
         </Tooltip>
       ) : (
         content

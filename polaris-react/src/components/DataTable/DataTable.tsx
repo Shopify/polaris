@@ -234,7 +234,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             <tr>{firstTotal?.map(this.renderTotals)}</tr>
           )}
         </thead>
-        <tbody>{firstColumn.map(this.defaultRenderRow)}</tbody>
+        <tbody>
+          {firstColumn.map((row, index) =>
+            this.defaultRenderRow({row, index, inFixedFirstColumn: true}),
+          )}
+        </tbody>
         {totals && showTotalsInFooter && (
           <tfoot>
             <tr>{firstTotal?.map(this.renderTotals)}</tr>
@@ -243,7 +247,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       </table>
     );
 
-    const bodyMarkup = rows.map(this.defaultRenderRow);
+    const bodyMarkup = rows.map((row, index) =>
+      this.defaultRenderRow({row, index, inFixedFirstColumn: false}),
+    );
 
     const footerMarkup = footerContent ? (
       <div className={styles.Footer}>{footerContent}</div>
@@ -363,7 +369,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     inFixedFirstColumn: boolean;
   }) => {
     const {hasFixedFirstColumn} = this.props;
-
     if (
       ref == null ||
       (hasFixedFirstColumn && !inFixedFirstColumn && index === 0)
@@ -643,7 +648,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     if (inStickyHeader) {
       stickyCellWidth = this.tableHeadingWidths[headingIndex];
     }
-
     return (
       <Cell
         setRef={(ref) => {
@@ -667,6 +671,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         stickyCellWidth={stickyCellWidth}
         fixedCellVisible={!isScrolledFarthestLeft}
         firstColumnMinWidth={firstColumnMinWidth}
+        inFixedFirstColumn={inFixedFirstColumn}
       />
     );
   };
@@ -732,7 +737,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     return cellIndex === 0 ? colSpan + remainder : colSpan;
   };
 
-  private defaultRenderRow = (row: TableData[], index: number) => {
+  private defaultRenderRow = ({
+    row,
+    index,
+    inFixedFirstColumn,
+  }: {
+    row: TableData[];
+    index: number;
+    inFixedFirstColumn: boolean;
+  }) => {
     const {
       columnContentTypes,
       truncate = false,
@@ -772,6 +785,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               verticalAlign={verticalAlign}
               colSpan={colSpan}
               hovered={hovered}
+              inFixedFirstColumn={inFixedFirstColumn}
             />
           );
         })}
