@@ -7,6 +7,8 @@ import {Badge} from '../../Badge';
 import {Card} from '../../Card';
 import {Page, PageProps} from '../Page';
 import {Header} from '../components';
+import {PageActions} from '../../PageActions';
+import {FooterHelp} from '../../FooterHelp';
 
 window.matchMedia =
   window.matchMedia ||
@@ -22,6 +24,8 @@ describe('<Page />', () => {
   const mockProps: PageProps = {
     title: 'Test',
   };
+  const footerAction = <PageActions />;
+  const footerHelp = <FooterHelp />;
 
   beforeEach(() => {
     animationFrame.mock();
@@ -260,14 +264,18 @@ describe('<Page />', () => {
 
   describe('divider', () => {
     it('renders border when divider is true and header props exist', () => {
-      const wrapper = mountWithApp(<Page {...mockProps} divider />);
+      const wrapper = mountWithApp(
+        <Page {...mockProps} divider>
+          {footerAction}
+        </Page>,
+      );
       expect(wrapper).toContainReactComponent('div', {
         className: 'divider',
       });
     });
 
     it('does not render border when divider is true and no header props exist', () => {
-      const wrapper = mountWithApp(<Page divider />);
+      const wrapper = mountWithApp(<Page divider>{footerAction}</Page>);
       expect(wrapper).not.toContainReactComponent('div', {
         className: 'Content divider',
       });
@@ -288,6 +296,22 @@ describe('<Page />', () => {
     it('is not rendered when there is no header content', () => {
       const page = mountWithApp(<Page title="" />);
       expect(page).not.toContainReactComponent(Header);
+    });
+  });
+
+  describe('footer or pageactions', () => {
+    it('renders some spacing at the bottom when there is no FooterHelp or PageAction component', () => {
+      const wrapper = mountWithApp(<Page {...mockProps} />);
+      expect(wrapper).toContainReactComponent('div', {
+        className: 'noFooter',
+      });
+    });
+
+    it('does not render spacing at the bottom when there is a Pageaction or FooterHelp component', () => {
+      const wrapper = mountWithApp(<Page>{footerHelp}</Page>);
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: 'noFooter',
+      });
     });
   });
 });
