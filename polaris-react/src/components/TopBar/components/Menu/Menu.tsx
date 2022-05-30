@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ActionList, ActionListProps} from '../../../ActionList';
-import {Popover, PopoverProps} from '../../../Popover';
+import {Popover} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
