@@ -298,7 +298,6 @@ function TopBarExample() {
       surface: '#FFFFFF',
       onsurface: '#212B36',
     },
-    colorScheme: isDarkTheme ? 'dark' : 'light',
   };
 
   const logo = {

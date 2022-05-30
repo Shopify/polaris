@@ -21,8 +21,6 @@ export interface MenuProps {
   onClose(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
-  /** Accepts a color scheme for the contents of the menu */
-  colorScheme?: PopoverProps['colorScheme'];
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
 }
@@ -35,7 +33,6 @@ export function Menu(props: MenuProps) {
     open,
     activatorContent,
     message,
-    colorScheme,
     accessibilityLabel,
   } = props;
 
@@ -78,7 +75,6 @@ export function Menu(props: MenuProps) {
       fixed
       fullHeight={isFullHeight}
       preferredAlignment="right"
-      colorScheme={colorScheme}
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />
       {messageMarkup}

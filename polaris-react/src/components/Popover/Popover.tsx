@@ -71,8 +71,6 @@ export interface PopoverProps {
   hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
-  /** Accepts a color scheme for the contents of the popover */
-  colorScheme?: PopoverOverlayProps['colorScheme'];
   /**
    * The preferred auto focus target defaulting to the popover container
    * @default 'container'
@@ -101,7 +99,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       fixed,
       ariaHaspopup,
       preferInputActivator = true,
-      colorScheme,
       zIndexOverride,
       ...rest
     },
@@ -206,7 +203,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
           onClose={handleClose}
           active={active}
           fixed={fixed}
-          colorScheme={colorScheme}
           zIndexOverride={zIndexOverride}
           {...rest}
         >
