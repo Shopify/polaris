@@ -30,7 +30,7 @@ export function PageActions({
 
   if (isInterface(primaryAction)) {
     primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
-  } else if (isReactElement(secondaryActions)) {
+  } else if (isReactElement(primaryAction)) {
     primaryActionMarkup = <>{primaryAction}</>;
   }
 
