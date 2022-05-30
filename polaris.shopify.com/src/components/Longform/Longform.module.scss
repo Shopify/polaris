@@ -76,6 +76,10 @@
     }
   }
 
+  strong {
+    font-weight: var(--font-weight-600);
+  }
+
   hr {
     height: 1px;
     box-shadow: 0 0.5px var(--border-color);
