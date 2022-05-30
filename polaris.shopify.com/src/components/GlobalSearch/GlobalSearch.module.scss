@@ -1,5 +1,4 @@
 .GlobalSearch {
-  position: relative;
   width: 100%;
   --focus-outline: 0 0 0 2px #222, 0 0 0 4px #fff;
 
@@ -59,16 +58,20 @@
 .Results {
   position: absolute;
   z-index: 1;
-  border-radius: var(--border-radius-800);
+  border-radius: 16px;
   width: calc(var(--page-max-width) * 0.66);
-  right: -1px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
   overflow: hidden;
   animation: search-results-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   transform-origin: 100% 0;
-  min-height: 50rem;
-  max-height: 50rem;
-  box-shadow: 0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: var(--surface-subdued);
+  height: 35rem;
+  height: 35rem;
+  box-shadow: 0 0 0 2000px rgba(50, 50, 50, 0.25);
+  background: var(--surface);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;

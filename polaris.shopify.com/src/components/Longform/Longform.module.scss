@@ -26,7 +26,7 @@
 
   ul,
   ol {
-    margin-left: 1.1em;
+    margin-left: 0.95em;
     ul,
     ol {
       margin-left: 1.75em;
@@ -47,13 +47,16 @@
   }
 
   h2 {
-    margin-top: 3.25rem;
+    margin-top: 2.25rem;
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-200);
   }
 
   h3 {
-    margin-top: 1.75rem;
+    font-weight: 600;
+
     + p {
-      margin-top: -0.5rem;
+      margin-top: -0.66rem;
     }
   }
 
@@ -110,7 +113,9 @@
 
 .Content {
   > p:first-of-type {
-    margin-bottom: 2rem;
-    font-size: var(--font-size-500);
+    // margin-bottom: 2rem;
+    font-size: 1.33rem;
+    color: var(--text-strong);
+    letter-spacing: var(--letter-spacing-300);
   }
 }
