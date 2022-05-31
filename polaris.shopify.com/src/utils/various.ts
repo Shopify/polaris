@@ -29,6 +29,7 @@ export const getComponentNav = (): NavItem[] => {
         })),
     })),
   ];
+
   return navItems;
 };
 

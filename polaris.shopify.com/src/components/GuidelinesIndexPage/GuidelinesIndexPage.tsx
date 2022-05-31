@@ -1,10 +1,9 @@
 import Head from "next/head";
 import { navItems } from "../../data/navItems";
 import { getTitleTagValue, slugify } from "../../utils/various";
-
 import styles from "./GuidelinesIndexPage.module.scss";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Link from "next/link";
+import NavContentTOCLayout from "../NavContentTOCLayout";
 
 interface Props {}
 
@@ -15,26 +14,26 @@ function GuidelinesIndexPage({}: Props) {
         <title>{getTitleTagValue("Guidelines")}</title>
       </Head>
 
-      <MaxPageWidthDiv>
-        <div className={styles.Categories}>
-          {navItems.map((category) => (
-            <div key={category.title} className={styles.Category}>
-              <div className={styles.Text}>
-                <h2>{category.title}</h2>
-
-                <ul>
-                  {category.children &&
-                    category.children.map((page) => (
-                      <li key={page.title}>
-                        <Link href={page.url || ""}>{page.title}</Link>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </MaxPageWidthDiv>
+      <NavContentTOCLayout
+        title="Guidelines"
+        navItems={navItems}
+        showTOC={false}
+        content={
+          <div className={styles.Categories}>
+            {navItems.map((category) => {
+              const url = category.children && category.children[0].url;
+              if (!url) return null;
+              return (
+                <Link key={category.title} href={url}>
+                  <a className={styles.Category}>
+                    <h2>{category.title}</h2>
+                  </a>
+                </Link>
+              );
+            })}
+          </div>
+        }
+      />
     </div>
   );
 }

@@ -1,8 +1,13 @@
+@import "../../styles//variables.scss";
+
 .ComponentsPage {
   h1 {
-    font-size: var(--font-size-800);
-    letter-spacing: var(--letter-spacing-100);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    @include heading-1;
+  }
+
+  h2 {
+    font-size: var(--font-size-700);
   }
 }
 
@@ -29,6 +34,5 @@
   background: url(./BehaviorMajor.svg) no-repeat left 40%;
   background-size: 20px auto;
   padding-left: 28px;
-  font-size: var(--font-size-500);
-  letter-spacing: var(--letter-spacing-200);
+  @include heading-2;
 }

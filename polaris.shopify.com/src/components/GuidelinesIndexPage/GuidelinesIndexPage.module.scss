@@ -1,54 +1,55 @@
-.GuidelinesIndexPage {
-  position: relative;
-  max-width: var(--page-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 1px;
+@import "../../styles/variables.scss";
 
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 18rem;
-    left: 0;
-    background: #ddd
-      url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png)
-      no-repeat no-repeat center center;
-    background-size: cover;
-    z-index: -1;
-    border-radius: 16px;
+.GuidelinesIndexPage {
+  h1 {
+    @include heading-1;
+    margin-bottom: 2rem;
   }
 }
 
 .Categories {
-  margin: 28rem 3rem 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-radius: 32px;
-  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.025);
-  background: rgba(255, 255, 255, 1);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 .Category {
+  display: block;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  min-height: 20rem;
+  background: #ddd
+    url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png) no-repeat
+    no-repeat center center;
+  background-size: auto 101%;
+  border-radius: 32px;
   overflow: hidden;
-  padding: 2rem 0 2rem 2rem;
-  border-right: var(--border);
+
+  &:nth-of-type(2) {
+    background-image: url(https://miro.medium.com/max/1400/1*5nji7OgUrjFXq4zUyDzcJQ.png);
+  }
+
+  &:nth-of-type(3) {
+    background-image: url(https://miro.medium.com/max/1400/1*HysY5Slm7hFaZn7aUkg45w.jpeg);
+  }
+
+  &:nth-of-type(4) {
+    background-image: url(https://miro.medium.com/max/1400/1*UQSSs6d-OMotUphfYIkLsA.jpeg);
+  }
 
   &:last-child {
     border-right: none;
   }
 
   h2 {
-    position: relative;
-    margin-bottom: 1rem;
-    font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-100);
+    position: absolute;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(100px);
+    padding: 0.75rem 1.25rem;
+    @include heading-2;
+    font-size: var(--font-size-600);
+    top: 1rem;
+    left: 1rem;
+    border-radius: 100px;
   }
 
   p {

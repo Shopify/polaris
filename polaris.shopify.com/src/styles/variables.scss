@@ -3,34 +3,35 @@ $pageMaxWidth: 1500px;
 
 @mixin heading {
   color: var(--text-strong);
-  font-weight: 675;
-  line-height: 1.1;
 }
 
 @mixin heading-1 {
-  @include heading;
-  font-size: var(--font-size-1100);
-  letter-spacing: var(--letter-spacing-100);
-  letter-spacing: -0.175rem;
+  color: var(--text-strong);
+  font-size: var(--font-size-1400);
+  font-weight: var(--font-weight-800);
+  letter-spacing: var(--letter-spacing-900);
+  line-height: 1.15;
 }
 
 @mixin heading-2 {
-  @include heading;
-  font-size: var(--font-size-700);
-  letter-spacing: var(--letter-spacing-200);
+  color: var(--text-strong);
+  font-size: var(--font-size-900);
+  letter-spacing: var(--letter-spacing-500);
+  font-weight: var(--font-weight-400);
   line-height: 1.25;
 }
 
 @mixin heading-3 {
-  @include heading;
-  font-size: var(--font-size-500);
+  color: var(--text-strong);
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-900);
   letter-spacing: var(--letter-spacing-300);
   line-height: 1.25;
 }
 
 @mixin heading-4 {
-  @include heading;
-  font-size: var(--font-size-400);
-  letter-spacing: var(--letter-spacing-300);
-  font-weight: 600;
+  color: var(--text-strong);
+  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-200);
 }
