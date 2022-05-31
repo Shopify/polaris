@@ -174,7 +174,8 @@
   @include focus-ring;
   position: relative;
   display: inline-flex;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: baseline;
   color: var(--p-text);
   transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
