@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import GlobalSearch from "../GlobalSearch";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import { className } from "../../utils/various";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 
 import styles from "./Header.module.scss";
@@ -42,7 +41,7 @@ function Header({ currentSection }: Props) {
   const hasBorder = currentSection === "/guidelines";
 
   return (
-    <div className={className(styles.Header, hasBorder && styles.withBorder)}>
+    <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
         <Link href="/">
           <a className={styles.Logo}>
