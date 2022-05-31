@@ -294,12 +294,16 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                     styles.FixedFirstColumn,
                   )}
                 >
-                  {this.renderHeading({
-                    heading: headings[0],
-                    headingIndex: 0,
-                    inFixedFirstColumn: true,
-                    inStickyHeader: true,
-                  })}
+                  <thead>
+                    <tr>
+                      {this.renderHeading({
+                        heading: headings[0],
+                        headingIndex: 0,
+                        inFixedFirstColumn: true,
+                        inStickyHeader: true,
+                      })}
+                    </tr>
+                  </thead>
                 </table>
               ) : null;
 

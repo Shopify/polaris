@@ -7,9 +7,9 @@ import {Navigation} from '../Navigation';
 describe('<Navigation />', () => {
   it('renders two buttons', () => {
     const columnVisibilityData = [
-      {leftEdge: 145, rightEdge: 236, isVisible: true},
-      {leftEdge: 236, rightEdge: 357, isVisible: true},
-      {leftEdge: 357, rightEdge: 474, isVisible: true},
+      {leftEdge: 145, rightEdge: 236, isVisible: true, width: 91, index: 0},
+      {leftEdge: 236, rightEdge: 357, isVisible: true, width: 121, index: 1},
+      {leftEdge: 357, rightEdge: 474, isVisible: true, width: 117, index: 2},
     ];
 
     const navigation = mountWithApp(
