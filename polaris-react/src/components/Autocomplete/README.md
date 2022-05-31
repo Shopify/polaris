@@ -146,16 +146,14 @@ function MultiAutocompleteExample() {
     [deselectedOptions],
   );
 
-  const handleSelect = useCallback(
-    (selected) => {
-      setSelectedOptions(selected);
-      updateText('');
-    },
-    []
-  );
+  const handleSelect = useCallback((selected) => {
+    setSelectedOptions(selected);
+    updateText('');
+  }, []);
 
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag) => (event) => {
+      event.stopPropagation();
       const options = [...selectedOptions];
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
