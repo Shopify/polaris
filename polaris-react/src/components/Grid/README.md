@@ -114,7 +114,7 @@ Use to create a layout that can be customized at specific breakpoints.
         <div
           style={{
             height: '60px',
-            background: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+            background: 'aquamarine',
           }}
         />
       </Grid.Cell>
@@ -122,7 +122,7 @@ Use to create a layout that can be customized at specific breakpoints.
         <div
           style={{
             height: '60px',
-            background: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+            background: 'aquamarine',
           }}
         />
       </Grid.Cell>
@@ -130,7 +130,7 @@ Use to create a layout that can be customized at specific breakpoints.
         <div
           style={{
             height: '60px',
-            background: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+            background: 'aquamarine',
           }}
         />
       </Grid.Cell>
