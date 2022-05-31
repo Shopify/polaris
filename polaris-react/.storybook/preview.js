@@ -44,7 +44,7 @@ function GridOverlayDecorator(Story, context) {
 export const globalTypes = {
   strictMode: {
     name: 'React.StrictMode',
-    defaultValue: false,
+    defaultValue: 'true',
     toolbar: {
       items: [
         {title: 'Disabled', value: 'false'},
