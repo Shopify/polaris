@@ -2,9 +2,20 @@ import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
 import { useState } from "react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import Tabs from "../Tabs";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
+import { NavItem } from "../Nav/Nav";
+import Link from "next/link";
+import {
+  BreakpointsIcon,
+  ColorsIcon,
+  DepthIcon,
+  MotionIcon,
+  ShapeIcon,
+  SpacingIcon,
+  TypographyIcon,
+  ZIndexIcon,
+} from "./icons";
 
 interface Props {
   tokenGroup:
@@ -17,6 +28,53 @@ interface Props {
     | "typography"
     | "zIndex";
 }
+
+interface NavItemWithIcon extends NavItem {
+  icon: React.ReactNode;
+}
+
+const navItems: NavItemWithIcon[] = [
+  {
+    title: "Colors",
+    url: `/tokens/colors`,
+    icon: ColorsIcon,
+  },
+  {
+    title: "Typography",
+    url: `/tokens/typography`,
+    icon: TypographyIcon,
+  },
+  {
+    title: "Shape",
+    url: `/tokens/shape`,
+    icon: ShapeIcon,
+  },
+  {
+    title: "Spacing",
+    url: `/tokens/spacing`,
+    icon: SpacingIcon,
+  },
+  {
+    title: "Depth",
+    url: `/tokens/depth`,
+    icon: DepthIcon,
+  },
+  {
+    title: "Motion",
+    url: `/tokens/motion`,
+    icon: MotionIcon,
+  },
+  {
+    title: "Breakpoints",
+    url: `/tokens/breakpoints`,
+    icon: BreakpointsIcon,
+  },
+  {
+    title: "Z-Index",
+    url: `/tokens/z-index`,
+    icon: ZIndexIcon,
+  },
+];
 
 function tokensToFilteredArray(
   filter: string,
@@ -51,66 +109,39 @@ function TokensPage({ tokenGroup }: Props) {
     .join("\n");
 
   return (
-    <>
-      <MaxPageWidthDiv className={styles.Intro}>
-        <h1>Tokens</h1>
-        <p>
-          Build anything you want on top of Polaris. By using tokens, your
-          design becomes future proof. When Polaris evolves, your design
-          automatically updates with the latest values.
-        </p>
-      </MaxPageWidthDiv>
+    <MaxPageWidthDiv>
+      <div className={styles.TokensPage}>
+        <div className={styles.Banner}>
+          <h1>Build with Tokens</h1>
+          <p>
+            Build anything you want on top of Polaris. By using tokens, your
+            design becomes future proof. When Polaris evolves, your design
+            automatically updates with the latest values.
+          </p>
+        </div>
 
-      <Tabs
-        items={[
-          {
-            title: "Colors",
-            url: `/tokens/colors`,
-            isCurrentIfPathStartsWith: `/tokens/colors`,
-          },
-          {
-            title: "Typography",
-            url: `/tokens/typography`,
-            isCurrentIfPathStartsWith: `/tokens/typography`,
-          },
-          {
-            title: "Shape",
-            url: `/tokens/shape`,
-            isCurrentIfPathStartsWith: `/tokens/shape`,
-          },
-          {
-            title: "Spacing",
-            url: `/tokens/spacing`,
-            isCurrentIfPathStartsWith: `/tokens/spacing`,
-          },
-          {
-            title: "Depth",
-            url: `/tokens/depth`,
-            isCurrentIfPathStartsWith: `/tokens/depth`,
-          },
-          {
-            title: "Motion",
-            url: `/tokens/motion`,
-            isCurrentIfPathStartsWith: `/tokens/motion`,
-          },
-          {
-            title: "Breakpoints",
-            url: `/tokens/breakpoints`,
-            isCurrentIfPathStartsWith: `/tokens/breakpoints`,
-          },
-          {
-            title: "Z-Index",
-            url: `/tokens/z-index`,
-            isCurrentIfPathStartsWith: `/tokens/z-index`,
-          },
-        ]}
-      />
+        <nav className={styles.TokensNav}>
+          <ul>
+            {navItems.map((item) => {
+              if (!item.url) return null;
+              return (
+                <li key={item.title}>
+                  <Link href={item.url} passHref>
+                    <a>
+                      {item.icon}
+                      {item.title}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className={styles.Tokens}>
-        <div className={styles.Group}>
-          <MaxPageWidthDiv>
+        <div className={styles.Tokens}>
+          <div className={styles.Group}>
             <TokenList
-              layout={["colors"].includes(tokenGroup) ? "grid" : "list"}
+              layout={["colors"].includes(tokenGroup) ? "list" : "list"}
             >
               {tokens[tokenGroup]
                 .sort((token) =>
@@ -122,11 +153,14 @@ function TokensPage({ tokenGroup }: Props) {
                   <TokenList.Item key={token.name} token={token} />
                 ))}
             </TokenList>
-          </MaxPageWidthDiv>
+          </div>
+
+          <p>Temporary: Icons from FeatherIcons (https://feathericons.com/).</p>
         </div>
+
+        <style jsx>{keyframeStyles}</style>
       </div>
-      <style jsx>{keyframeStyles}</style>
-    </>
+    </MaxPageWidthDiv>
   );
 }
 

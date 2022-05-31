@@ -12,15 +12,21 @@ interface TokenListProps {
 
 function TokenList({ layout = "grid", children }: TokenListProps) {
   return (
-    <>
-      <ul
-        className={className(
-          styles.TokenList,
-          layout === "list" && styles.list
-        )}
-      >
-        {children}
-      </ul>
+    <div
+      className={className(styles.TokenList, layout === "list" && styles.list)}
+    >
+      <table>
+        <thead>
+          <tr>
+            <th>Preview</th>
+            <th>Token name</th>
+            <th>Value</th>
+            <th>Figma recommendation</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>{children}</tbody>
+      </table>
       <style jsx>
         {`
           @keyframes spin {
@@ -33,7 +39,7 @@ function TokenList({ layout = "grid", children }: TokenListProps) {
           }
         `}
       </style>
-    </>
+    </div>
   );
 }
 
@@ -41,18 +47,18 @@ function getFigmaRecommendationForToken(
   name: string,
   value: string
 ): undefined | string {
-  let recommendation: string | undefined = undefined;
+  let recommendation = "—";
 
   const REM = 16;
 
   if (value.startsWith("rgba")) {
-    recommendation = "Use color style Lorem/Ipsum/Dolor";
+    recommendation = "Lorem/Ipsum/Dolor";
   } else if (name.startsWith("shadow")) {
-    recommendation = "Use shadow style Lorem/Ipsum dolor";
+    recommendation = "Lorem/Ipsum dolor";
   } else if (name.includes("breakpoint")) {
     const artboardWidth = parseInt(value) * REM;
     if (artboardWidth > 0) {
-      recommendation = `Set artboard width to ${artboardWidth}+ pixels`;
+      recommendation = `Frame width: ${artboardWidth}+ pixels`;
     }
   } else if (name.includes("border-radius-half")) {
     recommendation = "Use a circle";
@@ -80,28 +86,37 @@ function TokenListItem({
   const figmaRecommendation = getFigmaRecommendationForToken(name, value);
 
   return (
-    <li
+    <tr
       key={name}
       className={className(
         styles.TokenListItem,
         isHighlighted && styles.isHighlighted
       )}
     >
-      <div className={styles.Preview}>
-        <TokenPreview name={name} value={value} />
-      </div>
-      <div className={styles.TokenInfo}>
-        <div className={styles.TokenName}>
-          <h4>--p-{name}</h4>
+      <td>
+        <div className={styles.Preview}>
+          <TokenPreview name={name} value={value} />
         </div>
-        {description && <p>{description}</p>}
+      </td>
+      <td className={styles.Cell}>
+        <span className={styles.TokenName}>--p-{name}</span>
+      </td>
+      <td className={styles.Cell}>{value && <p>{value}</p>}</td>
+      <td className={styles.Cell}>
         {figmaRecommendation && (
           <div className={styles.FigmaRecommendation}>
-            {figmaRecommendation}
+            <span className={styles.Overflow}>{figmaRecommendation}</span>
           </div>
         )}
-      </div>
-    </li>
+      </td>
+      <td className={styles.Cell}>
+        <div className={styles.TokenDescription}>
+          <p>
+            <span className={styles.Overflow}>{description || "—"}</span>
+          </p>
+        </div>
+      </td>
+    </tr>
   );
 }
 
@@ -113,9 +128,7 @@ interface TokenPreviewProps {
 }
 
 function TokenPreview({ name, value }: TokenPreviewProps) {
-  const wrapperStyles = {
-    background: "var(--decorative-1)",
-  };
+  const wrapperStyles = {};
 
   // Colors
   if (value.startsWith("rgba")) {
@@ -124,10 +137,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           background: value,
-          boxShadow:
-            value === "rgba(255, 255, 255, 1)"
-              ? "inset 0 0 0 1px rgba(0,0,0,.05)"
-              : undefined,
+          width: "100%",
+          height: 50,
+          borderRadius: 8,
         }}
       ></div>
     );
@@ -140,8 +152,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
@@ -149,7 +159,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             width: "20%",
             paddingBottom: "20%",
             borderRadius: value,
-            background: "var(--primary)",
+            background: "var(--text-strong)",
           }}
         ></div>
       </div>
@@ -162,15 +172,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           ...wrapperStyles,
-          background: "var(--decorative-3)",
+          background: "transparent",
           display: "flex",
-          alignItems: "center",
         }}
       >
         <div
           style={{
             height: value,
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             flex: 1,
           }}
         ></div>
@@ -185,7 +194,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
           background: "var(--surface-subdued)",
         }}
       >
@@ -207,8 +215,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
@@ -216,14 +222,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             aspectRatio: "1/1",
             borderRadius: 100,
             height: "30%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
           }}
         ></div>
         <div
           style={{
             width: value,
             height: "30%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             opacity: 0.2,
           }}
         ></div>
@@ -232,7 +238,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             aspectRatio: "1/1",
             borderRadius: 100,
             height: "30%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
           }}
         ></div>
       </div>
@@ -246,10 +252,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontFamily: value,
-          background: "var(--decorative-1)",
+          background: "transparent",
         }}
       >
         Commerce
@@ -264,10 +268,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontSize: value,
-          background: "var(--decorative-2)",
+          background: "transparent",
         }}
       >
         Aa
@@ -282,10 +284,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontWeight: value,
-          background: "var(--decorative-3)",
+          background: "transparent",
         }}
       >
         Aa
@@ -300,10 +300,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           lineHeight: value,
-          background: "var(--decorative-4)",
+          background: "transparent",
         }}
       >
         Hello
@@ -320,8 +318,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
         }}
       >
@@ -345,8 +341,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
         }}
       >
@@ -369,10 +363,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-1)",
+          background: "transparent",
         }}
       >
         <div
@@ -380,7 +372,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             animation: `spin ${value} infinite both linear`,
           }}
         ></div>
@@ -394,10 +386,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-2)",
+          background: "transparent",
         }}
       >
         <div
@@ -405,7 +395,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
           }}
@@ -420,10 +410,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-3)",
+          background: "transparent",
         }}
       >
         <div
@@ -431,7 +419,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             boxShadow: value,
             animation: `${name} 1s infinite both`,
           }}
@@ -449,8 +437,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           display: "flex",
           flexDirection: "column-reverse",
-          justifyContent: "center",
-          alignItems: "center",
           gap: 2,
           ...wrapperStyles,
         }}
