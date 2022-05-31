@@ -15,24 +15,26 @@ interface SortIconProps {
 
 export function SortIcon({sortDirection, accessibilityLabel}: SortIconProps) {
   return (
-    <div className={styles.SortIcon}>
+    <span className={styles.SortIcon}>
       <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-      <div
+      <span
         className={classNames(
           styles.Icon,
+          styles.Up,
           sortDirection === 'ascending' && styles.Active,
         )}
       >
         <Icon source={CaretUpMinor} />
-      </div>
-      <div
+      </span>
+      <span
         className={classNames(
           styles.Icon,
+          styles.Down,
           sortDirection === 'descending' && styles.Active,
         )}
       >
         <Icon source={CaretDownMinor} />
-      </div>
-    </div>
+      </span>
+    </span>
   );
 }

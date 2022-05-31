@@ -10,12 +10,12 @@
   svg {
     fill: var(--p-icon-subdued);
   }
-  &:first-of-type {
-    top: -3.5px;
-  }
-  &:last-of-type {
-    top: -16.5px;
-  }
+}
+.Up {
+  top: -3.5px;
+}
+.Down {
+  top: -16.5px;
 }
 .Active {
   svg {
