@@ -44,7 +44,7 @@ function ComponentsPage({}: Props) {
                       )
                       .map(({ frontMatter, intro }) => {
                         const { name, category } = frontMatter;
-                        const url = `/components/${slugify(category)}/${slugify(
+                        const url = `/components/${slugify(
                           name.toLowerCase()
                         )}`;
                         return (
