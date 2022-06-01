@@ -1,6 +1,14 @@
-import { AppProvider, DropZone,Stack,Thumbnail,Caption,Banner,List } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  DropZone,
+  Stack,
+  Thumbnail,
+  Caption,
+  Banner,
+  List,
+} from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function DropZoneWithImageFileUpload() {
   const [files, setFiles] = useState([]);
   const [rejectedFiles, setRejectedFiles] = useState([]);
@@ -11,7 +19,7 @@ function DropZoneWithImageFileUpload() {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },
-    [],
+    []
   );
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
@@ -67,12 +75,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <DropZoneWithImageFileUpload />
       </div>
@@ -81,4 +89,3 @@ function Example() {
 }
 
 export default Example;
-    

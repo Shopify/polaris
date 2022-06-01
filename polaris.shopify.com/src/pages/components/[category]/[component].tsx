@@ -42,40 +42,42 @@ const Components: NextPage<Props> = ({ name, readme }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props, { component: string }> =
-  async (context) => {
-    const componentParam = context.params?.component;
+export const getStaticProps: GetStaticProps<
+  Props,
+  { component: string }
+> = async (context) => {
+  const componentParam = context.params?.component;
 
-    let readmes = JSON.parse(
-      fs.readFileSync(
-        path.join(process.cwd(), "src/data/components.readme.json"),
-        "utf-8"
-      )
+  let readmes = JSON.parse(
+    fs.readFileSync(
+      path.join(process.cwd(), "src/data/components.readme.json"),
+      "utf-8"
+    )
+  );
+
+  if (componentParam) {
+    const slug = slugify(componentParam);
+    const componentMeta = components.find(
+      ({ frontMatter }) => slugify(frontMatter.name) === slug
     );
 
-    if (componentParam) {
-      const slug = slugify(componentParam);
-      const componentMeta = components.find(
-        ({ frontMatter }) => slugify(frontMatter.name) === slug
-      );
+    if (componentMeta) {
+      const {
+        frontMatter: { name },
+      } = componentMeta;
+      const componentReadme = readmes[name];
+      if (componentReadme) {
+        const props: Props = {
+          name,
+          readme: componentReadme,
+        };
 
-      if (componentMeta) {
-        const {
-          frontMatter: { name },
-        } = componentMeta;
-        const componentReadme = readmes[name];
-        if (componentReadme) {
-          const props: Props = {
-            name,
-            readme: componentReadme,
-          };
-
-          return { props };
-        }
+        return { props };
       }
     }
-    return { notFound: true };
-  };
+  }
+  return { notFound: true };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = components.map(({ frontMatter: { name, category } }) => {

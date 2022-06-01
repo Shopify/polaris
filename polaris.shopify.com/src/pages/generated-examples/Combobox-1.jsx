@@ -1,39 +1,39 @@
-import { AppProvider, Listbox,Combobox,Icon } from "@shopify/polaris";
+import { AppProvider, Listbox, Combobox, Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import { useState,useCallback,useMemo } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback, useMemo } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ComboboxExample() {
   const deselectedOptions = useMemo(
     () => [
-      {value: 'rustic', label: 'Rustic'},
-      {value: 'antique', label: 'Antique'},
-      {value: 'vinyl', label: 'Vinyl'},
-      {value: 'vintage', label: 'Vintage'},
-      {value: 'refurbished', label: 'Refurbished'},
+      { value: "rustic", label: "Rustic" },
+      { value: "antique", label: "Antique" },
+      { value: "vinyl", label: "Vinyl" },
+      { value: "vintage", label: "Vintage" },
+      { value: "refurbished", label: "Refurbished" },
     ],
-    [],
+    []
   );
 
   const [selectedOption, setSelectedOption] = useState();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
     (value) => {
       setInputValue(value);
 
-      if (value === '') {
+      if (value === "") {
         setOptions(deselectedOptions);
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
+      const filterRegex = new RegExp(value, "i");
       const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
+        option.label.match(filterRegex)
       );
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions]
   );
 
   const updateSelection = useCallback(
@@ -43,15 +43,15 @@ function ComboboxExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue((matchedOption && matchedOption.label) || "");
     },
-    [options],
+    [options]
   );
 
   const optionsMarkup =
     options.length > 0
       ? options.map((option) => {
-          const {label, value} = option;
+          const { label, value } = option;
 
           return (
             <Listbox.Option
@@ -67,7 +67,7 @@ function ComboboxExample() {
       : null;
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Combobox
         activator={
           <Combobox.TextField
@@ -97,12 +97,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ComboboxExample />
       </div>
@@ -111,4 +111,3 @@ function Example() {
 }
 
 export default Example;
-    

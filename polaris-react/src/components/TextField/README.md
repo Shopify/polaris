@@ -103,6 +103,12 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 - Turning off **browser autocomplete** (previously submitted values) in Chrome
   - If you don't have `name` attribute and the field is not a typical autofill input (address, email, etc), use `autocomplete=off`.
 
+### Virtual keyboard
+
+![Examples of different number keyboards set with inputMode](/public_images/components/TextField/virtual-keyboards.png)
+
+The `inputMode` property should be set to select the appropriate virtual keyboard for the type of data expected to be entered by the user. Above are examples of different number keyboards set with `inputMode`.
+
 ---
 
 ## Content guidelines

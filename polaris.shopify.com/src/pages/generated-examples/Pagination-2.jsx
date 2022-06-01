@@ -1,5 +1,5 @@
 import { AppProvider, Pagination } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,33 +10,32 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
-        <div style={{height: '100px'}}>
-  <Pagination
-    hasPrevious
-    previousKeys={[74]}
-    previousTooltip="j"
-    onPrevious={() => {
-      console.log('Previous');
-    }}
-    hasNext
-    nextKeys={[75]}
-    nextTooltip="k"
-    onNext={() => {
-      console.log('Next');
-    }}
-  />
-</div>
+        <div style={{ height: "100px" }}>
+          <Pagination
+            hasPrevious
+            previousKeys={[74]}
+            previousTooltip="j"
+            onPrevious={() => {
+              console.log("Previous");
+            }}
+            hasNext
+            nextKeys={[75]}
+            nextTooltip="k"
+            onNext={() => {
+              console.log("Next");
+            }}
+          />
+        </div>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

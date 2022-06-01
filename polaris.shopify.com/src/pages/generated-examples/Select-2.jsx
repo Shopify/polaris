@@ -1,18 +1,18 @@
 import { AppProvider, Select } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function InlineLabelExample() {
-  const [selected, setSelected] = useState('newestUpdate');
+  const [selected, setSelected] = useState("newestUpdate");
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   const options = [
-    {label: 'Newest update', value: 'newestUpdate'},
-    {label: 'Oldest update', value: 'oldestUpdate'},
-    {label: 'Most spent', value: 'mostSpent'},
-    {label: 'Most orders', value: 'mostOrders'},
-    {label: 'Last name A–Z', value: 'lastNameAlpha'},
-    {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+    { label: "Newest update", value: "newestUpdate" },
+    { label: "Oldest update", value: "oldestUpdate" },
+    { label: "Most spent", value: "mostSpent" },
+    { label: "Most orders", value: "mostOrders" },
+    { label: "Last name A–Z", value: "lastNameAlpha" },
+    { label: "Last name Z–A", value: "lastNameReverseAlpha" },
   ];
 
   return (
@@ -35,12 +35,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <InlineLabelExample />
       </div>
@@ -49,4 +49,3 @@ function Example() {
 }
 
 export default Example;
-    

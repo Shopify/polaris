@@ -1,6 +1,6 @@
 import { AppProvider, Modal } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function EmbeddedAppModalExample() {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -13,12 +13,12 @@ function EmbeddedAppModalExample() {
         open={modalOpen}
         title="Upgrade your Shopify POS with the Retail Package"
         primaryAction={{
-          content: 'Add Retail Package',
+          content: "Add Retail Package",
           onAction: handleModalClose,
         }}
         secondaryActions={[
           {
-            content: 'Cancel',
+            content: "Cancel",
             onAction: handleModalClose,
           },
         ]}
@@ -37,12 +37,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <EmbeddedAppModalExample />
       </div>
@@ -51,4 +51,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,6 +1,6 @@
-import { AppProvider, Button,Modal,TextContainer } from "@shopify/polaris";
-import { useState,useCallback,useRef } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Modal, TextContainer } from "@shopify/polaris";
+import { useState, useCallback, useRef } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ModalExample() {
   const [active, setActive] = useState(true);
 
@@ -19,7 +19,7 @@ function ModalExample() {
   );
 
   return (
-    <div style={{height: '500px'}}>
+    <div style={{ height: "500px" }}>
       {activator}
       <Modal
         activator={buttonRef}
@@ -27,12 +27,12 @@ function ModalExample() {
         onClose={handleClose}
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
-          content: 'Add Instagram',
+          content: "Add Instagram",
           onAction: handleClose,
         }}
         secondaryActions={[
           {
-            content: 'Learn more',
+            content: "Learn more",
             onAction: handleClose,
           },
         ]}
@@ -60,12 +60,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ModalExample />
       </div>
@@ -74,4 +74,3 @@ function Example() {
 }
 
 export default Example;
-    

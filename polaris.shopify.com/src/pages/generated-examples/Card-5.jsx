@@ -1,5 +1,11 @@
-import { AppProvider, Card,Stack,ButtonGroup,Button } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Card,
+  Stack,
+  ButtonGroup,
+  Button,
+} from "@shopify/polaris";
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,34 +16,33 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <Card title="Secure your account with 2-step authentication">
-  <Card.Section>
-    <Stack spacing="loose" vertical>
-      <p>
-        Two-step authentication adds an extra layer of security when logging in
-        to your account. A special code will be required each time you log in,
-        ensuring only you can access your account.
-      </p>
-      <Stack distribution="trailing">
-        <ButtonGroup>
-          <Button>Enable two-step authentication</Button>
-          <Button plain>Learn more</Button>
-        </ButtonGroup>
-      </Stack>
-    </Stack>
-  </Card.Section>
-</Card>
+          <Card.Section>
+            <Stack spacing="loose" vertical>
+              <p>
+                Two-step authentication adds an extra layer of security when
+                logging in to your account. A special code will be required each
+                time you log in, ensuring only you can access your account.
+              </p>
+              <Stack distribution="trailing">
+                <ButtonGroup>
+                  <Button>Enable two-step authentication</Button>
+                  <Button plain>Learn more</Button>
+                </ButtonGroup>
+              </Stack>
+            </Stack>
+          </Card.Section>
+        </Card>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

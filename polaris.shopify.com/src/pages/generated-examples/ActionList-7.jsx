@@ -1,14 +1,20 @@
-import { AppProvider, ActionList,Thumbnail,Icon,Avatar } from "@shopify/polaris";
+import {
+  AppProvider,
+  ActionList,
+  Thumbnail,
+  Icon,
+  Avatar,
+} from "@shopify/polaris";
 import { ChevronRightMinor } from "@shopify/polaris-icons";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListWithPrefixSuffixExample() {
   return (
-    <div style={{height: '250px', maxWidth: '350px'}}>
+    <div style={{ height: "250px", maxWidth: "350px" }}>
       <ActionList
         actionRole="menuitem"
         items={[
           {
-            content: 'Go here',
+            content: "Go here",
             prefix: (
               <Thumbnail
                 source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
@@ -19,7 +25,7 @@ function ActionListWithPrefixSuffixExample() {
             suffix: <Icon source={ChevronRightMinor} />,
           },
           {
-            content: 'Or there',
+            content: "Or there",
             prefix: <Avatar customer name="Farrah" size="small" />,
             suffix: <Icon source={ChevronRightMinor} />,
           },
@@ -38,12 +44,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListWithPrefixSuffixExample />
       </div>
@@ -52,4 +58,3 @@ function Example() {
 }
 
 export default Example;
-    

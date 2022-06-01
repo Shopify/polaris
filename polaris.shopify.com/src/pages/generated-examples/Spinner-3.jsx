@@ -1,24 +1,33 @@
-import { AppProvider, Spinner,Form,FormLayout,TextField,Button,Card,Tabs } from "@shopify/polaris";
-import { useState,useEffect,useCallback,useRef } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Spinner,
+  Form,
+  FormLayout,
+  TextField,
+  Button,
+  Card,
+  Tabs,
+} from "@shopify/polaris";
+import { useState, useEffect, useCallback, useRef } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SpinnerWithFocusManagement() {
   const tabs = useRef([
     {
-      id: 'all-customers',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      id: "all-customers",
+      content: "All",
+      accessibilityLabel: "All customers",
+      panelID: "all-customers-content",
     },
     {
-      id: 'accepts-marketing',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      id: "accepts-marketing",
+      content: "Accepts marketing",
+      panelID: "accepts-marketing-content",
     },
   ]);
 
   const [selected, setSelected] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [textFieldFocused, setTextFieldFocused] = useState(false);
 
   useEffect(() => {
@@ -29,16 +38,16 @@ function SpinnerWithFocusManagement() {
     setLoading(true);
     setSelected(selectedTab);
     setTimeout(() => {
-      setValue('');
+      setValue("");
       return setLoading(false);
     }, 1500);
   }, []);
 
   const handleUrlChange = useCallback((value) => setValue(value), []);
 
-  const handleSubmit = useCallback((_event) => setValue(''), []);
+  const handleSubmit = useCallback((_event) => setValue(""), []);
 
-  const label = selected ? 'Marketing' : 'Customers';
+  const label = selected ? "Marketing" : "Customers";
   const sectionMarkup = loading ? (
     <Spinner
       accessibilityLabel="Loading form field"
@@ -79,12 +88,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SpinnerWithFocusManagement />
       </div>
@@ -93,4 +102,3 @@ function Example() {
 }
 
 export default Example;
-    

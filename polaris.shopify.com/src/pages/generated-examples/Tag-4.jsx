@@ -1,5 +1,5 @@
 import { AppProvider, Tag } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 function URLTagExample() {
   return <Tag url="/collections/wholesale">Wholesale</Tag>;
 }
@@ -13,12 +13,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <URLTagExample />
       </div>
@@ -27,4 +27,3 @@ function Example() {
 }
 
 export default Example;
-    

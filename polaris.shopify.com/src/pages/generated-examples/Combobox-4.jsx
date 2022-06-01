@@ -1,21 +1,21 @@
-import { AppProvider, Listbox,Combobox,Icon } from "@shopify/polaris";
+import { AppProvider, Listbox, Combobox, Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import { useState,useCallback,useMemo } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback, useMemo } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function LoadingAutocompleteExample() {
   const deselectedOptions = useMemo(
     () => [
-      {value: 'rustic', label: 'Rustic'},
-      {value: 'antique', label: 'Antique'},
-      {value: 'vinyl', label: 'Vinyl'},
-      {value: 'vintage', label: 'Vintage'},
-      {value: 'refurbished', label: 'Refurbished'},
+      { value: "rustic", label: "Rustic" },
+      { value: "antique", label: "Antique" },
+      { value: "vinyl", label: "Vinyl" },
+      { value: "vintage", label: "Vintage" },
+      { value: "refurbished", label: "Refurbished" },
     ],
-    [],
+    []
   );
 
   const [selectedOption, setSelectedOption] = useState();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
@@ -28,20 +28,20 @@ function LoadingAutocompleteExample() {
       }
 
       setTimeout(() => {
-        if (value === '') {
+        if (value === "") {
           setOptions(deselectedOptions);
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, 'i');
+        const filterRegex = new RegExp(value, "i");
         const resultOptions = options.filter((option) =>
-          option.label.match(filterRegex),
+          option.label.match(filterRegex)
         );
         setOptions(resultOptions);
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading, options]
   );
 
   const updateSelection = useCallback(
@@ -51,15 +51,15 @@ function LoadingAutocompleteExample() {
       });
 
       setSelectedOption(selected);
-      setInputValue((matchedOption && matchedOption.label) || '');
+      setInputValue((matchedOption && matchedOption.label) || "");
     },
-    [options],
+    [options]
   );
 
   const optionsMarkup =
     options.length > 0
       ? options.map((option) => {
-          const {label, value} = option;
+          const { label, value } = option;
 
           return (
             <Listbox.Option
@@ -85,7 +85,7 @@ function LoadingAutocompleteExample() {
     ) : null;
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Combobox
         activator={
           <Combobox.TextField
@@ -113,12 +113,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <LoadingAutocompleteExample />
       </div>
@@ -127,4 +127,3 @@ function Example() {
 }
 
 export default Example;
-    

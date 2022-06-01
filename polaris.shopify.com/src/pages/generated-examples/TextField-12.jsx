@@ -1,13 +1,13 @@
-import { AppProvider, TextField,Select,Button } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, TextField, Select, Button } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ConnectedFieldsExample() {
-  const [textFieldValue, setTextFieldValue] = useState('10.6');
-  const [selectValue, setSelectValue] = useState('kg');
+  const [textFieldValue, setTextFieldValue] = useState("10.6");
+  const [selectValue, setSelectValue] = useState("kg");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   const handleSelectChange = useCallback((value) => setSelectValue(value), []);
@@ -25,7 +25,7 @@ function ConnectedFieldsExample() {
           label="Weight unit"
           onChange={handleSelectChange}
           labelHidden
-          options={['kg', 'lb']}
+          options={["kg", "lb"]}
         />
       }
       connectedRight={<Button>Submit</Button>}
@@ -42,12 +42,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ConnectedFieldsExample />
       </div>
@@ -56,4 +56,3 @@ function Example() {
 }
 
 export default Example;
-    

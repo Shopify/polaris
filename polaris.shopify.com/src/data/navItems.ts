@@ -136,6 +136,10 @@ export const navItems: NavItem[] = [
     title: "Patterns",
     children: [
       {
+        title: "Loading",
+        url: "/guidelines/patterns/loading",
+      },
+      {
         title: "Page layouts",
         url: "/guidelines/patterns/layout",
       },

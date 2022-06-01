@@ -1,12 +1,12 @@
 import { AppProvider, TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function TextFieldWithCharacterCountExample() {
-  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+  const [textFieldValue, setTextFieldValue] = useState("Jaded Pixel");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   return (
@@ -30,12 +30,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <TextFieldWithCharacterCountExample />
       </div>
@@ -44,4 +44,3 @@ function Example() {
 }
 
 export default Example;
-    

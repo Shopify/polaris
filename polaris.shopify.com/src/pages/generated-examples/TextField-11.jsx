@@ -1,13 +1,13 @@
-import { AppProvider, Stack,Tag,TextField } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Stack, Tag, TextField } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function VerticalContent() {
-  const tags = ['Rustic', 'Antique', 'Vinyl', 'Refurbished'];
-  const [textFieldValue, setTextFieldValue] = useState('');
+  const tags = ["Rustic", "Antique", "Vinyl", "Refurbished"];
+  const [textFieldValue, setTextFieldValue] = useState("");
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    [],
+    []
   );
 
   const verticalContentMarkup =
@@ -40,12 +40,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <VerticalContent />
       </div>
@@ -54,4 +54,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -1,5 +1,5 @@
 import { AppProvider, ProgressBar } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,22 +10,21 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <div>
-  <ProgressBar progress={70} color="primary" />
-  <br />
-  <ProgressBar progress={30} color="success" />
-</div>
+          <ProgressBar progress={70} color="primary" />
+          <br />
+          <ProgressBar progress={30} color="success" />
+        </div>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

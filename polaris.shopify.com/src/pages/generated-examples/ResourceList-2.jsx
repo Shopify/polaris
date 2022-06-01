@@ -1,5 +1,13 @@
-import { AppProvider, Filters,EmptyState,Page,Layout,Card,ResourceList } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import {
+  AppProvider,
+  Filters,
+  EmptyState,
+  Page,
+  Layout,
+  Card,
+  ResourceList,
+} from "@shopify/polaris";
+import translations from "@shopify/polaris/locales/en.json";
 function ResourceListWithEmptyStateExample() {
   const items = [];
   const appliedFilters = [];
@@ -18,7 +26,7 @@ function ResourceListWithEmptyStateExample() {
     !appliedFilters.length && !items.length ? (
       <EmptyState
         heading="Upload a file to get started"
-        action={{content: 'Upload files'}}
+        action={{ content: "Upload files" }}
         image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
       >
         <p>
@@ -38,7 +46,7 @@ function ResourceListWithEmptyStateExample() {
               items={items}
               renderItem={() => {}}
               filterControl={filterControl}
-              resourceName={{singular: 'file', plural: 'files'}}
+              resourceName={{ singular: "file", plural: "files" }}
             />
           </Card>
         </Layout.Section>
@@ -56,12 +64,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ResourceListWithEmptyStateExample />
       </div>
@@ -70,4 +78,3 @@ function Example() {
 }
 
 export default Example;
-    
