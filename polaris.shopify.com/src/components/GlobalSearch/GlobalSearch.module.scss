@@ -58,7 +58,7 @@
 
 .Results {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   border-radius: var(--border-radius-800);
   width: calc(var(--page-max-width) * 0.66);
   right: -1px;
@@ -68,8 +68,7 @@
   min-height: 50rem;
   max-height: 50rem;
   box-shadow: 0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: var(--surface-subdued);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   display: flex;
   flex-direction: column;
 
@@ -107,7 +106,7 @@
   padding: 1.5rem 1.5rem 0 12rem;
 
   + .ResultsGroup {
-    padding-top: 0.75rem;
+    padding-top: 1.5rem;
   }
 
   &:last-child {
@@ -123,25 +122,13 @@
 }
 
 .GuidelinesResults {
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-400);
-  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .GuidelinesResult {
   position: relative;
-  border-bottom: var(--border);
-  padding: 1rem 1rem 0.85rem 50px;
-
-  .Icon {
-    position: absolute;
-    left: 1rem;
-    top: 0.8rem;
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   &.isHighlighted {
     box-shadow: var(--focus-outline);
@@ -153,8 +140,14 @@
     color: inherit;
   }
 
+  h4 {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-500);
+    color: var(--text-strong);
+  }
+
   p {
-    margin-top: 0.25rem;
+    margin-top: 0.1rem;
     font-size: var(--font-size-200);
   }
 }

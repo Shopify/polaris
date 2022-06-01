@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
 
 .Nav {
   ul {
@@ -6,7 +6,6 @@
   }
 
   > ul > li {
-    border-bottom: var(--border);
     margin-bottom: 1rem;
     &:last-child {
       border-bottom: none;
@@ -15,17 +14,18 @@
 
   span {
     display: inline-block;
-    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-300);
+    letter-spacing: var(--letter-spacing-100);
+    margin-bottom: 0.125rem;
     color: var(--text-strong);
-    font-size: var(--font-size-400);
-    margin-bottom: 0.25rem;
   }
 
   a {
     display: inline-block;
     position: relative;
     color: inherit;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-200);
 
     &:after {
       content: "";

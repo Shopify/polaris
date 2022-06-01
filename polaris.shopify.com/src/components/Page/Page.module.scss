@@ -1,5 +1,5 @@
 .Header {
-  border-bottom: var(--border);
+  box-shadow: 0 1px rgba(0, 0, 0, 0.11);
 }
 
 .HeaderInner {
@@ -11,10 +11,11 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-inherit);
+  color: var(--text);
   gap: 0.7rem;
-  font-weight: 500;
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-500);
+
   p {
     margin: 0;
   }
@@ -27,14 +28,14 @@
 .Nav {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-100);
-  font-weight: 500;
+  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-500);
   margin-right: auto;
 
   li {
     a {
-      color: inherit;
-      padding: 0.85rem 1rem;
+      color: var(--text-strong);
+      padding: 0.85rem 0.85rem;
 
       &:focus-within {
         position: relative;
@@ -47,8 +48,9 @@
       }
 
       &[aria-current="page"] {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(0, 0, 0, 0.045);
         border-radius: var(--border-radius-800);
+        color: var(--text-strong);
       }
     }
 

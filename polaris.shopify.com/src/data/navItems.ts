@@ -41,7 +41,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Visual design",
+    title: "Design",
     children: [
       {
         title: "Design",
@@ -83,7 +83,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Content design",
+    title: "Content",
     children: [
       {
         title: "Voice and tone",

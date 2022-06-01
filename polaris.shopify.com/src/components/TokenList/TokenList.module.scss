@@ -1,101 +1,111 @@
 .TokenList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 0.33rem;
-}
+  --table-border-color: #f1f1f1;
+  color: var(--text-strong);
+  font-size: var(--font-size-100);
 
-.TokenListItem {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-600);
-  overflow: hidden;
-  position: relative;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    // box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
-    border-radius: var(--border-radius-600);
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
   }
 
-  .Preview {
-    display: flex;
-    min-height: 4rem;
-    color: var(--text-strong);
-
-    > div {
-      flex: 1;
+  thead {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    th {
+      box-shadow: inset 0 -1px 0 var(--table-border-color);
     }
   }
 
-  &.isHighlighted {
-    box-shadow: var(--focus-outline);
+  th {
+    padding: 0.75rem 1rem;
   }
-}
 
-.TokenInfo {
-  padding: 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  p {
-    margin-top: 0.5rem;
-    font-size: 14px;
+  td {
+    padding: 0.33rem 1rem;
   }
-}
 
-.FigmaRecommendation {
-  padding-top: 0.75rem;
-  margin-top: auto;
-  font-size: var(--font-size-100);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  width: 100%;
-  background: url(/images/figma.svg) no-repeat left 0.875rem;
-  background-size: 15px auto;
-  padding-left: 20px;
-  font-size: 13px;
+  th,
+  td {
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  th {
+    text-align: left;
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-400);
+    white-space: pre;
+  }
+
+  td {
+    width: 20%;
+    border-bottom: 1px solid var(--table-border-color);
+    height: 4.5rem;
+    vertical-align: middle;
+  }
+
+  tr {
+    &.isHighlighted {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--focus-outline);
+      border-radius: var(--border-radius-400);
+    }
+  }
+
+  tr td.Value,
+  tr td.FigmaUsage {
+    white-space: pre;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50px;
+      background: linear-gradient(to right, transparent, white);
+    }
+  }
 }
 
 .TokenName {
-  h4 {
-    display: inline;
-    border-radius: var(--border-radius-400);
-    background: #eaeeff;
-    padding: 0.25rem 0.33rem;
-    font-weight: 500;
-    font-size: 14px;
-    color: #402f7f;
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
+  display: block;
+  float: left;
+  padding: 0.33rem 1rem;
+  background: #fff0df;
+  border-radius: var(--border-radius-round);
+  font-size: var(--font-size-400);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  max-width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    position: relative;
+    max-width: unset;
+    z-index: 1;
   }
 }
 
-.TokenList {
-  &.list {
-    display: flex;
-    flex-direction: column;
+.TokenDescription {
+  line-height: 1.45;
+}
 
-    .TokenListItem {
-      flex-direction: row;
-
-      .Preview {
-        min-width: 35%;
-        max-width: 35%;
-        aspect-ratio: 4 / 1;
-        display: flex;
-      }
-    }
-  }
+.Preview {
+  min-height: 50px;
 }
