@@ -115,9 +115,7 @@ function TokensPage({ tokenGroup }: Props) {
 
         <div className={styles.Tokens}>
           <div className={styles.Group}>
-            <TokenList
-              layout={["colors"].includes(tokenGroup) ? "list" : "list"}
-            >
+            <TokenList>
               {tokens[tokenGroup]
                 .sort((token) =>
                   token.name.includes("ease") || token.name.includes("linear")
