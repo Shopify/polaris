@@ -57,6 +57,8 @@ function Header({ currentSection }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleCloseMenu = () => setShowMenu(false);
+
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
@@ -94,8 +96,11 @@ function Header({ currentSection }: Props) {
           <GlobalSearch />
         </div>
 
-        <SideMenu showMenu={showMenu} handleShowMenu={setShowMenu}>
-          <NavItems currentSection={currentSection} />
+        <SideMenu showMenu={showMenu} handleCloseMenu={handleCloseMenu}>
+          <NavItems
+            currentSection={currentSection}
+            handleCloseMenu={handleCloseMenu}
+          />
         </SideMenu>
       </MaxPageWidthDiv>
     </div>
@@ -104,9 +109,10 @@ function Header({ currentSection }: Props) {
 
 interface NavItemsProps {
   currentSection: Props["currentSection"];
+  handleCloseMenu?: () => void;
 }
 
-function NavItems({ currentSection }: NavItemsProps) {
+function NavItems({ currentSection, handleCloseMenu }: NavItemsProps) {
   return (
     <nav>
       <ul>
@@ -117,7 +123,9 @@ function NavItems({ currentSection }: NavItemsProps) {
           return (
             <li key={url}>
               <Link href={url} passHref>
-                <a aria-current={isCurrent}>{label}</a>
+                <a aria-current={isCurrent} onClick={handleCloseMenu}>
+                  {label}
+                </a>
               </Link>
             </li>
           );

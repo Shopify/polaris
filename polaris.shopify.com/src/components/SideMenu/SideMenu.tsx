@@ -9,10 +9,10 @@ import styles from "./SideMenu.module.scss";
 interface Props {
   children?: React.ReactNode;
   showMenu?: boolean;
-  handleShowMenu: (value: boolean) => void;
+  handleCloseMenu: () => void;
 }
 
-function SideMenu({ children, showMenu = false, handleShowMenu }: Props) {
+function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
   return (
     <>
       <div className={className(styles.SideMenu, showMenu && styles.show)}>
@@ -31,19 +31,13 @@ function SideMenu({ children, showMenu = false, handleShowMenu }: Props) {
 
         {children}
 
-        <button
-          className={styles.CloseButton}
-          onClick={() => handleShowMenu(false)}
-        >
+        <button className={styles.CloseButton} onClick={handleCloseMenu}>
           <CloseIcon />
         </button>
       </div>
 
       {showMenu && (
-        <div
-          className={styles.Backdrop}
-          onClick={() => handleShowMenu(false)}
-        />
+        <div className={styles.Backdrop} onClick={handleCloseMenu} />
       )}
     </>
   );
