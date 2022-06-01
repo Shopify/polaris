@@ -1,11 +1,64 @@
 @import "../../styles/fonts.scss";
 
 .HomePage {
+  margin-top: var(--header-margin);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.Intro {
   h1 {
-    @include heading-1;
+    font-size: var(--font-size-2000);
+    letter-spacing: var(--letter-spacing-1000);
+    color: var(--text-strong);
+    font-weight: var(--font-weight-800);
+    line-height: 1.1;
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto;
   }
 
-  h2 {
-    @include heading-2;
+  p {
+    max-width: 42rem;
+    text-align: center;
+    margin: 0.75rem auto 0;
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-200);
+    font-weight: var(--font-weight-400);
+    color: var(--text-strong);
+  }
+}
+
+.HeroGraphic {
+  margin-top: 3rem;
+  .Components {
+    display: flex;
+    height: 500px;
+    gap: 0.5rem;
+  }
+
+  .Component {
+    flex: 1;
+    background: #ddd;
+    border-radius: 16px;
+    animation: fade-in 0.75s 0.4s var(--ease-out-quart) both;
+
+    @for $i from 1 through 30 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i / 10}s;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: scale(1.15);
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
   }
 }
