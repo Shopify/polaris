@@ -9,7 +9,9 @@
       "args": [
         "--extensionDevelopmentPath=${workspaceRoot}/polaris-for-vscode"
       ],
-      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"],
+      "outFiles": [
+        "${workspaceRoot}/polaris-for-vscode/dist/**/*.js"
+      ],
       "preLaunchTask": "polaris-for-vscode: start-dev",
       "postDebugTask": "polaris-for-vscode: stop-dev"
     },
@@ -19,7 +21,33 @@
       "request": "attach",
       "port": 6009,
       "restart": true,
-      "outFiles": ["${workspaceRoot}/polaris-for-vscode/dist/**/*.js"]
+      "outFiles": [
+        "${workspaceRoot}/polaris-for-vscode/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn workspace polaris.shopify.com run dev"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn workspace polaris.shopify.com run dev",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
     }
   ],
   "compounds": [

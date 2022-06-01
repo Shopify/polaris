@@ -3,7 +3,11 @@
   "display": "Next.js",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,7 +22,8 @@
     "jsx": "preserve",
     "composite": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "sourceMap": true
   },
   "include": [
     "src",
