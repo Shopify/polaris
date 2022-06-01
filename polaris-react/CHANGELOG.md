@@ -10,11 +10,7 @@
 
 ### Patch Changes
 
-- [#5984](https://github.com/Shopify/polaris/pull/5984) [`c3e7f2ef7`](https://github.com/Shopify/polaris/commit/c3e7f2ef7fb63eb632e81b52541229a2d1731be9) Thanks [@zakwarsame](https://github.com/zakwarsame)! - changes divider padding on page component
-
-* [#5957](https://github.com/Shopify/polaris/pull/5957) [`e51901656`](https://github.com/Shopify/polaris/commit/e519016562c8caa70ae4e9e5210b660a0b9a112c) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `TextField` blocking text selection within `verticalContent`
-
-- [#6006](https://github.com/Shopify/polaris/pull/6006) [`92ca0e5b2`](https://github.com/Shopify/polaris/commit/92ca0e5b2731529085822633c688aeda60ac16dd) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where keyframes weren't being properly added to builds
+- [#5957](https://github.com/Shopify/polaris/pull/5957) [`e51901656`](https://github.com/Shopify/polaris/commit/e519016562c8caa70ae4e9e5210b660a0b9a112c) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `TextField` blocking text selection within `verticalContent`
 
 * [#5874](https://github.com/Shopify/polaris/pull/5874) [`814bef39e`](https://github.com/Shopify/polaris/commit/814bef39e376c921557f535967315d7491694bbf) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed an accessibility bug in modal where clicking or tapping the backdrop would not close the modal
 
