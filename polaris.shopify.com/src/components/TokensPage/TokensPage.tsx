@@ -6,16 +6,6 @@ import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
 import { NavItem } from "../Nav/Nav";
 import Link from "next/link";
-import {
-  BreakpointsIcon,
-  ColorsIcon,
-  DepthIcon,
-  MotionIcon,
-  ShapeIcon,
-  SpacingIcon,
-  TypographyIcon,
-  ZIndexIcon,
-} from "./icons";
 
 interface Props {
   tokenGroup:
@@ -29,50 +19,38 @@ interface Props {
     | "zIndex";
 }
 
-interface NavItemWithIcon extends NavItem {
-  icon: React.ReactNode;
-}
-
-const navItems: NavItemWithIcon[] = [
+const navItems: NavItem[] = [
   {
     title: "Colors",
     url: `/tokens/colors`,
-    icon: ColorsIcon,
   },
   {
     title: "Typography",
     url: `/tokens/typography`,
-    icon: TypographyIcon,
   },
   {
     title: "Shape",
     url: `/tokens/shape`,
-    icon: ShapeIcon,
   },
   {
     title: "Spacing",
     url: `/tokens/spacing`,
-    icon: SpacingIcon,
   },
   {
     title: "Depth",
     url: `/tokens/depth`,
-    icon: DepthIcon,
   },
   {
     title: "Motion",
     url: `/tokens/motion`,
-    icon: MotionIcon,
   },
   {
     title: "Breakpoints",
     url: `/tokens/breakpoints`,
-    icon: BreakpointsIcon,
   },
   {
     title: "Z-Index",
     url: `/tokens/z-index`,
-    icon: ZIndexIcon,
   },
 ];
 
@@ -127,10 +105,7 @@ function TokensPage({ tokenGroup }: Props) {
               return (
                 <li key={item.title}>
                   <Link href={item.url} passHref>
-                    <a>
-                      {item.icon}
-                      {item.title}
-                    </a>
+                    <a>{item.title}</a>
                   </Link>
                 </li>
               );

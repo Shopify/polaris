@@ -42,7 +42,7 @@
 
   th {
     text-align: left;
-    font-size: var(--font-size-600);
+    font-size: var(--font-size-700);
     font-weight: var(--font-weight-400);
     white-space: pre;
   }
@@ -54,27 +54,17 @@
     vertical-align: middle;
   }
 
-  // tr {
-  //   th,
-  //   td {
-  //     &:nth-child(1) {
-  //       width: 10%;
-  //     }
-
-  //     &:nth-child(2) {
-  //       width: 30%;
-  //     }
-
-  //     width: 20%;
-  //   }
-  // }
-
-  tr td:nth-child(2) {
-    white-space: pre;
-    width: 30%;
+  tr {
+    &.isHighlighted {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--focus-outline);
+      border-radius: var(--border-radius-400);
+    }
   }
 
-  tr td:nth-child(3) {
+  tr td.Value,
+  tr td.FigmaUsage {
     white-space: pre;
     overflow: hidden;
     position: relative;
@@ -114,4 +104,8 @@
 
 .TokenDescription {
   line-height: 1.45;
+}
+
+.Preview {
+  min-height: 50px;
 }

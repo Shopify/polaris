@@ -1,78 +1,106 @@
-import styles from "./TokenList.module.scss";
 import {
   HighlightableSearchResult,
   TokenPropertiesWithName,
 } from "../../types";
+import { createContext } from "react";
 import { className } from "../../utils/various";
+import styles from "./TokenList.module.scss";
+
+interface ColumnsConfig {
+  preview: boolean;
+  name: boolean;
+  value: boolean;
+  figmaUsage: boolean;
+  description: boolean;
+}
+
+const defaultColumnsConfig: ColumnsConfig = {
+  preview: true,
+  name: true,
+  value: true,
+  figmaUsage: true,
+  description: true,
+};
 
 interface TokenListProps {
-  layout?: "grid" | "list";
+  showTableHeading?: boolean;
+  columns?: ColumnsConfig;
   children: React.ReactNode;
 }
 
-function TokenList({ layout = "grid", children }: TokenListProps) {
+const TokenListContext = createContext<{
+  columns: ColumnsConfig;
+}>({ columns: defaultColumnsConfig });
+
+function TokenList({
+  showTableHeading = true,
+  columns = defaultColumnsConfig,
+  children,
+}: TokenListProps) {
   return (
-    <div
-      className={className(styles.TokenList, layout === "list" && styles.list)}
-    >
-      <table>
-        <thead>
-          <tr>
-            <th>Preview</th>
-            <th>Token name</th>
-            <th>Value</th>
-            <th>Figma recommendation</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>{children}</tbody>
-      </table>
-      <style jsx>
-        {`
-          @keyframes spin {
-            from {
-              transform: rotate(0deg);
+    <TokenListContext.Provider value={{ columns }}>
+      <div className={styles.TokenList}>
+        <table>
+          {showTableHeading && (
+            <thead>
+              <tr>
+                {columns.preview && <th>Preview</th>}
+                {columns.name && <th>Token name</th>}
+                {columns.value && <th>Current value</th>}
+                {columns.figmaUsage && <th>Figma usage</th>}
+                {columns.description && <th>Description</th>}
+              </tr>
+            </thead>
+          )}
+          <tbody>{children}</tbody>
+        </table>
+        <style jsx>
+          {`
+            @keyframes spin {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg);
+              }
             }
-            to {
-              transform: rotate(360deg);
-            }
-          }
-        `}
-      </style>
-    </div>
+          `}
+        </style>
+      </div>
+    </TokenListContext.Provider>
   );
 }
 
-function getFigmaRecommendationForToken(
+function getFigmaUsageForToken(
   name: string,
   value: string
 ): undefined | string {
-  let recommendation = "—";
+  let usage = "—";
 
   const REM = 16;
 
   if (value.startsWith("rgba")) {
-    recommendation = "Lorem/Ipsum/Dolor";
+    usage = "Lorem/Ipsum/Dolor";
   } else if (name.startsWith("shadow")) {
-    recommendation = "Lorem/Ipsum dolor";
+    usage = "Lorem/Ipsum dolor";
   } else if (name.includes("breakpoint")) {
     const artboardWidth = parseInt(value) * REM;
     if (artboardWidth > 0) {
-      recommendation = `Frame width: ${artboardWidth}+ pixels`;
+      usage = `Frame width: ${artboardWidth}+ pixels`;
     }
   } else if (name.includes("border-radius-half")) {
-    recommendation = "Use a circle";
+    usage = "Use a circle";
   } else if (name.includes("radius")) {
     const radius = parseFloat(value) * REM;
-    recommendation = `Use a radius of ${radius} pixels`;
+    usage = `Use a radius of ${radius} pixels`;
   } else if (name.includes("font") || name.includes("line-height")) {
-    recommendation = `Use font style Lorem/Ipsum/Dolor`;
+    usage = `Use font style Lorem/Ipsum/Dolor`;
   } else if (name.includes("space")) {
     const spacing = parseFloat(value) * REM;
-    recommendation = `Use a spacing of ${spacing} pixels`;
+    usage = `Use a spacing of ${spacing} pixels`;
   }
 
-  return recommendation;
+  return usage;
 }
 
 interface TokenListItemProps extends HighlightableSearchResult {
@@ -83,40 +111,38 @@ function TokenListItem({
   token: { name, value, description },
   isHighlighted,
 }: TokenListItemProps) {
-  const figmaRecommendation = getFigmaRecommendationForToken(name, value);
+  const figmaUsage = getFigmaUsageForToken(name, value);
 
   return (
-    <tr
-      key={name}
-      className={className(
-        styles.TokenListItem,
-        isHighlighted && styles.isHighlighted
+    <TokenListContext.Consumer>
+      {({ columns }) => (
+        <tr
+          key={name}
+          className={className(
+            styles.TokenListItem,
+            isHighlighted && styles.isHighlighted
+          )}
+        >
+          {columns.preview && (
+            <td className={styles.Preview}>
+              <TokenPreview name={name} value={value} />
+            </td>
+          )}
+          {columns.name && (
+            <td>
+              <span className={styles.TokenName}>--p-{name}</span>
+            </td>
+          )}
+          {columns.value && <td className={styles.Value}>{value}</td>}
+          {columns.figmaUsage && (
+            <td className={styles.FigmaUsage}>{figmaUsage || "—"}</td>
+          )}
+          {columns.description && (
+            <td className={styles.TokenDescription}>{description || "—"}</td>
+          )}
+        </tr>
       )}
-    >
-      <td>
-        <div className={styles.Preview}>
-          <TokenPreview name={name} value={value} />
-        </div>
-      </td>
-      <td className={styles.Cell}>
-        <span className={styles.TokenName}>--p-{name}</span>
-      </td>
-      <td className={styles.Cell}>{value && <p>{value}</p>}</td>
-      <td className={styles.Cell}>
-        {figmaRecommendation && (
-          <div className={styles.FigmaRecommendation}>
-            <span className={styles.Overflow}>{figmaRecommendation}</span>
-          </div>
-        )}
-      </td>
-      <td className={styles.Cell}>
-        <div className={styles.TokenDescription}>
-          <p>
-            <span className={styles.Overflow}>{description || "—"}</span>
-          </p>
-        </div>
-      </td>
-    </tr>
+    </TokenListContext.Consumer>
   );
 }
 
@@ -215,20 +241,21 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
+          alignItems: "center",
         }}
       >
         <div
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "30%",
+            height: "10px",
             background: "var(--text-strong)",
           }}
         ></div>
         <div
           style={{
             width: value,
-            height: "30%",
+            height: "30px",
             background: "var(--text-strong)",
             opacity: 0.2,
           }}
@@ -237,7 +264,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "30%",
+            height: "10px",
             background: "var(--text-strong)",
           }}
         ></div>
