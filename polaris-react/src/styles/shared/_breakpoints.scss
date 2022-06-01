@@ -1,3 +1,8 @@
+@mixin breakpoints-outline($color) {
+  @include breakpoints-outline($color);
+  outline-offset: -2px;
+}
+
 @function breakpoint($value) {
   $value-unit: unit($value);
 
@@ -81,39 +86,49 @@ $nav-min-window: breakpoint($layout-width-page-with-nav-base);
   $size: breakpoint($size);
 
   @if $size < $partially-condensed-content {
+    @include breakpoints-outline(orange);
+
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{$nav-min-window}) and (min-width: #{$size}),
         (min-width: #{$nav-size + $size}) {
+          @include breakpoints-outline(cyan);
           @content;
       }
     }
 
     @media (min-width: #{$size}) {
+      @include breakpoints-outline(cyan);
       @content;
     }
   } @else if $size < $not-condensed-content {
+    @include breakpoints-outline(red);
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
         (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+          @include breakpoints-outline(green);
           @content;
       }
     }
 
     @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
+      @include breakpoints-outline(green);
       @content;
     }
   } @else {
+    @include breakpoints-outline(yellow);
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
         (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+      @include breakpoints-outline(purple);
           @content;
       }
     }
 
     @media (min-width: #{$size + $not-condensed-outer-spacing}) {
+      @include breakpoints-outline(purple);
       @content;
     }
   }
