@@ -72,7 +72,7 @@ function Header({ currentSection }: Props) {
               layout="fixed"
               width={24}
               height={24}
-              alt="Hamburguer icon"
+              alt="Hamburger icon"
             />
           </Button>
         </div>
