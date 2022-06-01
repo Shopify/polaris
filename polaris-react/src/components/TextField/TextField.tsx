@@ -319,6 +319,7 @@ export function TextField({
         aria-label={characterCountLabel}
         aria-live={focus ? 'polite' : 'off'}
         aria-atomic="true"
+        onClick={handleClickChild}
       >
         {characterCountText}
       </div>
@@ -400,6 +401,7 @@ export function TextField({
   const spinnerMarkup =
     type === 'number' && step !== 0 && !disabled && !readOnly ? (
       <Spinner
+        onClick={handleClickChild}
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
@@ -459,6 +461,8 @@ export function TextField({
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+    setFocus(true);
+
     if (selectTextOnFocus && !suggestion) {
       const input = multiline ? textAreaRef.current : inputRef.current;
       input?.select();
@@ -466,6 +470,14 @@ export function TextField({
 
     if (onFocus) {
       onFocus(event);
+    }
+  };
+
+  const handleOnBlur = () => {
+    setFocus(false);
+
+    if (onBlur) {
+      onBlur();
     }
   };
 
@@ -503,7 +515,8 @@ export function TextField({
     'aria-required': requiredIndicator,
     ...normalizeAriaMultiline(multiline),
     onFocus: handleOnFocus,
-    onBlur,
+    onBlur: handleOnBlur,
+    onClick: handleClickChild,
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
@@ -514,6 +527,7 @@ export function TextField({
       className={styles.VerticalContent}
       id={`${id}-VerticalContent`}
       ref={verticalContentRef}
+      onClick={handleClickChild}
     >
       {verticalContent}
       {input}
@@ -522,10 +536,14 @@ export function TextField({
 
   const inputMarkup = verticalContent ? inputWithVerticalContentMarkup : input;
 
-  const backdropClassName = classNames(
-    styles.Backdrop,
-    connectedLeft && styles['Backdrop-connectedLeft'],
-    connectedRight && styles['Backdrop-connectedRight'],
+  const backdropMarkup = (
+    <div
+      className={classNames(
+        styles.Backdrop,
+        connectedLeft && styles['Backdrop-connectedLeft'],
+        connectedRight && styles['Backdrop-connectedRight'],
+      )}
+    />
   );
 
   return (
@@ -539,19 +557,14 @@ export function TextField({
       requiredIndicator={requiredIndicator}
     >
       <Connected left={connectedLeft} right={connectedRight}>
-        <div
-          className={className}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onClick={handleClick}
-        >
+        <div className={className} onClick={handleClick}>
           {prefixMarkup}
           {inputMarkup}
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
-          <div className={backdropClassName} />
+          {backdropMarkup}
           {resizer}
         </div>
       </Connected>
@@ -572,7 +585,7 @@ export function TextField({
     event.preventDefault();
   }
 
-  function containsAffix(target: HTMLElement | EventTarget) {
+  function isPrefixOrSuffix(target: HTMLElement | EventTarget) {
     return (
       target instanceof HTMLElement &&
       ((prefixRef.current && prefixRef.current.contains(target)) ||
@@ -580,26 +593,54 @@ export function TextField({
     );
   }
 
+  function isVerticalContent(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      verticalContentRef.current &&
+      (verticalContentRef.current.contains(target) ||
+        verticalContentRef.current.contains(document.activeElement))
+    );
+  }
+
+  function isInput(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      inputRef.current &&
+      (inputRef.current.contains(target) ||
+        inputRef.current.contains(document.activeElement))
+    );
+  }
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(event.currentTarget.value, id);
   }
 
-  function handleFocus({target}: React.FocusEvent) {
-    if (containsAffix(target)) {
-      return;
-    }
-    setFocus(true);
-  }
-
-  function handleBlur() {
-    setFocus(false);
-  }
-
   function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target) || focus) {
+    if (
+      isPrefixOrSuffix(target) ||
+      isVerticalContent(target) ||
+      isInput(target) ||
+      focus
+    ) {
       return;
     }
+
     inputRef.current?.focus();
+  }
+
+  function handleClickChild(event: React.MouseEvent) {
+    event.stopPropagation();
+
+    if (
+      isPrefixOrSuffix(event.target) ||
+      isVerticalContent(event.target) ||
+      isInput(event.target) ||
+      focus
+    ) {
+      return;
+    }
+
+    setFocus(true);
   }
 }
 
