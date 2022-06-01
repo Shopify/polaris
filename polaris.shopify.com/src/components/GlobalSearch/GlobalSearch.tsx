@@ -14,7 +14,6 @@ import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
 import Link from "next/link";
-import pageIcn from "./PageMajor.svg";
 import { className, stripMarkdownLinks } from "../../utils/various";
 
 interface Props {}
