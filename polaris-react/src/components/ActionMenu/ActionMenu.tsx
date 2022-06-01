@@ -66,6 +66,9 @@ function convertGroupToSection({
 }: MenuGroupDescriptor): ActionListSection {
   return {
     title,
-    items: disabled ? [] : actions,
+    items: actions.map((action) => ({
+      ...action,
+      disabled: disabled || action.disabled,
+    })),
   };
 }
