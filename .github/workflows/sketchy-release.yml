@@ -23,7 +23,7 @@ jobs:
       - name: Run build
         run: yarn build
 
-      # - name: Publish to NPM
-      #   run: turbo run publish --filter=@shopify/polaris
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPM
+        run: turbo run publish --filter=@shopify/polaris
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
