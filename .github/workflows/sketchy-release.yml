@@ -24,6 +24,6 @@ jobs:
         run: yarn build
 
       - name: Publish to NPM
-        run: yarn turbo run publish --filter=@shopify/polaris
+        run: cd polaris-react && yarn publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
