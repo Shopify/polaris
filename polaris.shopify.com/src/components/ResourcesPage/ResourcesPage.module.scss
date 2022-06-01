@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
 
 .ResourcesPage {
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -6,29 +6,42 @@
   h1 {
     text-align: center;
     max-width: 40rem;
-    margin: 6rem auto 2rem;
+    margin: 6rem auto 1.5rem;
     color: var(--primary);
     animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
+    font-size: var(--font-size-2000);
+    letter-spacing: var(--letter-spacing-1000);
+    font-weight: var(--font-weight-800);
+    line-height: 1.1;
   }
 
   h1 + p {
-    font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-200);
-    max-width: 44rem;
+    max-width: 42rem;
     text-align: center;
-    margin: 1rem auto 0;
-    font-weight: var(--font-weight-500);
-    line-height: 1.35;
-    animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
+    margin: 0.5rem auto 0;
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-200);
+    font-weight: var(--font-weight-400);
     color: var(--text-strong);
+    animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
   }
 
   h2 {
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    font-size: var(--font-size-900);
-    letter-spacing: var(--letter-spacing-100);
-    line-height: 1.1;
+    margin-bottom: 1.75rem;
+    font-size: var(--font-size-1400);
+    font-weight: var(--font-weight-800);
+    letter-spacing: var(--letter-spacing-800);
+    color: var(--text-strong);
+    line-height: 1.15;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: var(--font-size-1100);
+    font-weight: var(--font-weight-800);
+    letter-spacing: var(--letter-spacing-400);
+    color: var(--text-strong);
+    line-height: 1.15;
   }
 
   a {
@@ -42,10 +55,10 @@
 
 .Line {
   width: 3px;
-  height: 100px;
+  height: 120px;
   background: var(--text-strong);
   border-radius: 2px;
-  margin: 2rem auto;
+  margin: 3rem auto;
 
   &.FirstLine {
     animation: fade-up 0.75s 0.4s var(--ease-out-quart) both;
@@ -53,21 +66,24 @@
 }
 
 .FirstStep {
-  max-width: 60rem;
+  max-width: 37rem;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 100%;
+  font-size: var(--font-size-600);
+  letter-spacing: var(--letter-spacing-300);
+  font-weight: var(--font-weight-500);
   text-align: center;
-  background: var(--surface-subdued);
-  border-radius: 32px;
-  padding: 8rem 14rem;
 
   p {
+    font-size: var(--font-size-600);
     color: var(--text-strong);
     margin-bottom: 1rem;
   }
 
   a {
-    font-size: var(--font-size-500);
+    font-size: var(--font-size-800);
+    font-weight: var(--font-weight-400);
   }
 }
 
@@ -87,9 +103,7 @@
     padding-right: 40%;
 
     h3 {
-      font-size: var(--font-size-800);
       margin-bottom: 1rem;
-      letter-spacing: var(--letter-spacing-200);
     }
 
     p {
@@ -118,17 +132,11 @@
     padding: 0.33rem 0;
     font-weight: 400;
     font-size: var(--font-size-500);
-
-    .Icon {
-      display: flex;
-      align-items: center;
-      min-width: 0.95em;
-      width: 0.95em;
-    }
   }
 
-  a[data-icon="github"] svg {
-    color: var(--text);
+  svg {
+    width: 1.2rem;
+    height: auto;
   }
 }
 
@@ -151,7 +159,6 @@
     h3 {
       margin-bottom: 1rem;
       color: white;
-      font-size: var(--font-size-700);
     }
 
     p {

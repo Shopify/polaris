@@ -1,9 +1,79 @@
+@import "../../styles/fonts.scss";
+
 .Longform {
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
     background: white;
+  }
+
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol,
+  .usage-list {
+    margin: 1rem 0;
+  }
+
+  h1 {
+    @include heading-1;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    @include heading-2;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    @include heading-3;
+    margin-top: 1.5rem;
+  }
+
+  h4 {
+    @include heading-4;
+  }
+
+  h3,
+  h4 {
+    + p,
+    + ul,
+    + ol {
+      margin-top: -0.5rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    &:target {
+      background: #d5ffe1;
+    }
+  }
+
+  ul {
+    margin-left: 0.95em;
+  }
+
+  ol {
+    margin-left: 1.15em;
+  }
+
+  ul,
+  ol {
+    ul,
+    ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   ul li {
@@ -14,66 +84,20 @@
     list-style-type: decimal;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  ul,
-  .usage-list {
-    margin: 1.15rem 0;
-  }
-
-  ul,
-  ol {
-    margin-left: 1.1em;
-    ul,
-    ol {
-      margin-left: 1.75em;
-    }
-  }
-
   li {
-    margin: 0.5em 0;
-  }
+    margin-bottom: 0.5em;
 
-  h1 {
-    &:first-child {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: var(--font-size-900);
-      letter-spacing: var(--letter-spacing-100);
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-top: 0.5rem;
     }
   }
 
-  h2 {
-    margin-top: 3.25rem;
-  }
-
-  h3 {
-    margin-top: 1.75rem;
-    + p {
-      margin-top: -0.5rem;
-    }
-  }
-
-  h4 {
-    + p {
-      margin-top: -0.75rem;
-    }
-  }
-
-  h4 {
-    margin-top: 1.5rem;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    &:target {
-      background: #d5ffe1;
-    }
+  strong {
+    font-weight: var(--font-weight-600);
   }
 
   hr {
@@ -111,6 +135,8 @@
 .Content {
   > p:first-of-type {
     margin-bottom: 2rem;
-    font-size: var(--font-size-500);
+    font-size: var(--font-size-700);
+    color: var(--text-strong);
+    letter-spacing: var(--letter-spacing-300);
   }
 }

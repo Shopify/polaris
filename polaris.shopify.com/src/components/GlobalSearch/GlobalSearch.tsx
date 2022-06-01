@@ -14,9 +14,7 @@ import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
 import Link from "next/link";
-import pageIcon from "./PageMajor.svg";
 import { className, stripMarkdownLinks } from "../../utils/various";
-import Image from "../Image";
 
 interface Props {}
 
@@ -140,14 +138,6 @@ function GlobalSearch({}: Props) {
                                 >
                                   <Link href={result.url} passHref>
                                     <a>
-                                      <div className={styles.Icon}>
-                                        <Image
-                                          src={pageIcon}
-                                          alt=""
-                                          width={16}
-                                          height={16}
-                                        />
-                                      </div>
                                       <h4>{result.meta.title}</h4>
                                       <p>
                                         {stripMarkdownLinks(
@@ -199,7 +189,16 @@ function GlobalSearch({}: Props) {
                       if (results.length === 0) return null;
                       return (
                         <ResultsGroup title={category}>
-                          <TokenList layout="list">
+                          <TokenList
+                            showTableHeading={false}
+                            columns={{
+                              preview: true,
+                              name: true,
+                              figmaUsage: false,
+                              value: false,
+                              description: true,
+                            }}
+                          >
                             {results.map((result) => {
                               resultIndex++;
                               return (

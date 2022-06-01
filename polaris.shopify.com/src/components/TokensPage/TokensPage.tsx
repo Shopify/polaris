@@ -2,9 +2,10 @@ import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
 import { useState } from "react";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import Tabs from "../Tabs";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
+import { NavItem } from "../Nav/Nav";
+import Link from "next/link";
 
 interface Props {
   tokenGroup:
@@ -17,6 +18,41 @@ interface Props {
     | "typography"
     | "zIndex";
 }
+
+const navItems: NavItem[] = [
+  {
+    title: "Colors",
+    url: `/tokens/colors`,
+  },
+  {
+    title: "Typography",
+    url: `/tokens/typography`,
+  },
+  {
+    title: "Shape",
+    url: `/tokens/shape`,
+  },
+  {
+    title: "Spacing",
+    url: `/tokens/spacing`,
+  },
+  {
+    title: "Depth",
+    url: `/tokens/depth`,
+  },
+  {
+    title: "Motion",
+    url: `/tokens/motion`,
+  },
+  {
+    title: "Breakpoints",
+    url: `/tokens/breakpoints`,
+  },
+  {
+    title: "Z-Index",
+    url: `/tokens/z-index`,
+  },
+];
 
 function tokensToFilteredArray(
   filter: string,
@@ -51,67 +87,35 @@ function TokensPage({ tokenGroup }: Props) {
     .join("\n");
 
   return (
-    <>
-      <MaxPageWidthDiv className={styles.Intro}>
-        <h1>Tokens</h1>
-        <p>
-          Build anything you want on top of Polaris. By using tokens, your
-          design becomes future proof. When Polaris evolves, your design
-          automatically updates with the latest values.
-        </p>
-      </MaxPageWidthDiv>
+    <MaxPageWidthDiv>
+      <div className={styles.TokensPage}>
+        <div className={styles.Banner}>
+          <h1>Build with Tokens</h1>
+          <p>
+            Build anything you want on top of Polaris. By using tokens, your
+            design becomes future proof. When Polaris evolves, your design
+            automatically updates with the latest values.
+          </p>
+        </div>
 
-      <Tabs
-        items={[
-          {
-            title: "Colors",
-            url: `/tokens/colors`,
-            isCurrentIfPathStartsWith: `/tokens/colors`,
-          },
-          {
-            title: "Typography",
-            url: `/tokens/typography`,
-            isCurrentIfPathStartsWith: `/tokens/typography`,
-          },
-          {
-            title: "Shape",
-            url: `/tokens/shape`,
-            isCurrentIfPathStartsWith: `/tokens/shape`,
-          },
-          {
-            title: "Spacing",
-            url: `/tokens/spacing`,
-            isCurrentIfPathStartsWith: `/tokens/spacing`,
-          },
-          {
-            title: "Depth",
-            url: `/tokens/depth`,
-            isCurrentIfPathStartsWith: `/tokens/depth`,
-          },
-          {
-            title: "Motion",
-            url: `/tokens/motion`,
-            isCurrentIfPathStartsWith: `/tokens/motion`,
-          },
-          {
-            title: "Breakpoints",
-            url: `/tokens/breakpoints`,
-            isCurrentIfPathStartsWith: `/tokens/breakpoints`,
-          },
-          {
-            title: "Z-Index",
-            url: `/tokens/z-index`,
-            isCurrentIfPathStartsWith: `/tokens/z-index`,
-          },
-        ]}
-      />
+        <nav className={styles.TokensNav}>
+          <ul>
+            {navItems.map((item) => {
+              if (!item.url) return null;
+              return (
+                <li key={item.title}>
+                  <Link href={item.url} passHref>
+                    <a>{item.title}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className={styles.Tokens}>
-        <div className={styles.Group}>
-          <MaxPageWidthDiv>
-            <TokenList
-              layout={["colors"].includes(tokenGroup) ? "list" : "list"}
-            >
+        <div className={styles.Tokens}>
+          <div className={styles.Group}>
+            <TokenList>
               {tokens[tokenGroup]
                 .sort((token) =>
                   token.name.includes("ease") || token.name.includes("linear")
@@ -122,11 +126,14 @@ function TokensPage({ tokenGroup }: Props) {
                   <TokenList.Item key={token.name} token={token} />
                 ))}
             </TokenList>
-          </MaxPageWidthDiv>
+          </div>
+
+          <p>Temporary: Icons from FeatherIcons (https://feathericons.com/).</p>
         </div>
+
+        <style jsx>{keyframeStyles}</style>
       </div>
-      <style jsx>{keyframeStyles}</style>
-    </>
+    </MaxPageWidthDiv>
   );
 }
 

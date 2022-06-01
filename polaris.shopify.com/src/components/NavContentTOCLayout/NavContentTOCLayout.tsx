@@ -7,9 +7,10 @@ import Nav, { NavItem } from "../Nav/Nav";
 import styles from "./NavContentTOCLayout.module.scss";
 
 interface Props {
-  navItems: NavItem[];
-  title?: string;
   content: string | React.ReactNode;
+  navItems?: NavItem[];
+  title?: string;
+  customNav?: React.ReactNode;
   showTOC?: boolean;
 }
 
@@ -17,6 +18,7 @@ function NavContentTOCLayout({
   navItems,
   title,
   content,
+  customNav,
   showTOC = true,
 }: Props) {
   return (
@@ -27,7 +29,8 @@ function NavContentTOCLayout({
       )}
     >
       <div className={styles.Nav}>
-        <Nav navItems={navItems} />
+        {customNav}
+        {navItems && <Nav navItems={navItems} />}
       </div>
 
       <article className={styles.Post}>

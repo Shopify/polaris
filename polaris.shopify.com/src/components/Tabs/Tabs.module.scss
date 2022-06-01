@@ -3,7 +3,7 @@
 
   ul {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.33rem;
   }
 
   a {
@@ -11,26 +11,15 @@
     display: flex;
     align-items: flex-end;
     padding: 0.75rem 1.25rem;
-    font-weight: var(--font-weight-500);
+    font-weight: var(--font-weight-600);
     gap: 0.6rem;
     background: var(--surface-subdued);
     border-radius: var(--border-radius-800);
     color: var(--text);
-    .Icon {
-      opacity: 0.5;
-    }
 
     &[aria-current="page"] {
       background-color: var(--text-strong);
       color: white;
     }
-  }
-
-  .Icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 14px;
-    height: 14px;
   }
 }

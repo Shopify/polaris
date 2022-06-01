@@ -201,23 +201,11 @@ export const Links = ({ links }: ResourceListItemProps) => {
         <li key={link.url}>
           <Link href={link.url}>
             <a data-icon={link.icon}>
-              {link.icon === "github" && (
-                <span className={styles.Icon}>
-                  <GitHubIcon />
-                </span>
-              )}
+              {link.icon === "github" && <GitHubIcon />}
 
-              {link.icon === "figma" && (
-                <span className={styles.Icon}>
-                  <FigmaIcon />{" "}
-                </span>
-              )}
+              {link.icon === "figma" && <FigmaIcon />}
 
-              {link.icon === "install" && (
-                <span className={styles.Icon}>
-                  <InstallIcon />
-                </span>
-              )}
+              {link.icon === "install" && <InstallIcon />}
 
               {link.label}
             </a>

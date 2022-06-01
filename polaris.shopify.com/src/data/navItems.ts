@@ -41,7 +41,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Visual design",
+    title: "Design",
     children: [
       {
         title: "Design",
@@ -83,7 +83,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Content design",
+    title: "Content",
     children: [
       {
         title: "Voice and tone",
@@ -132,37 +132,41 @@ export const navItems: NavItem[] = [
     ],
   },
 
-  // {
-  //   title: "Patterns",
-  //   children: [
-  //     {
-  //       title: "Page layouts",
-  //       url: "/guidelines/patterns/layout",
-  //     },
-  //     {
-  //       title: "Mobile patterns",
-  //       url: "/guidelines/patterns/mobile-patterns",
-  //     },
-  //     {
-  //       title: "Home cards",
-  //       url: "/guidelines/patterns/home-card-guidelines",
-  //     },
-  //     {
-  //       title: "Error messages",
-  //       url: "/guidelines/patterns/error-messages",
-  //     },
-  //     {
-  //       title: "Text fields",
-  //       url: "/guidelines/patterns/text-fields",
-  //     },
-  //     {
-  //       title: "Help content",
-  //       url: "/guidelines/patterns/help-content",
-  //     },
-  //     {
-  //       title: "Locations",
-  //       url: "/guidelines/patterns/locations",
-  //     },
-  //   ],
-  // },
+  {
+    title: "Patterns",
+    children: [
+      {
+        title: "Loading",
+        url: "/guidelines/patterns/loading",
+      },
+      {
+        title: "Page layouts",
+        url: "/guidelines/patterns/layout",
+      },
+      {
+        title: "Mobile patterns",
+        url: "/guidelines/patterns/mobile-patterns",
+      },
+      {
+        title: "Home cards",
+        url: "/guidelines/patterns/home-card-guidelines",
+      },
+      {
+        title: "Error messages",
+        url: "/guidelines/patterns/error-messages",
+      },
+      {
+        title: "Text fields",
+        url: "/guidelines/patterns/text-fields",
+      },
+      {
+        title: "Help content",
+        url: "/guidelines/patterns/help-content",
+      },
+      {
+        title: "Locations",
+        url: "/guidelines/patterns/locations",
+      },
+    ],
+  },
 ];
