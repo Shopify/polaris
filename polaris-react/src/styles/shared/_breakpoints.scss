@@ -1,5 +1,5 @@
 @mixin breakpoints-outline($color) {
-  @include breakpoints-outline($color);
+  outline: 2px solid $color;
   outline-offset: -2px;
 }
 
