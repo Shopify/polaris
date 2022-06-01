@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;675;700&display=swap");
 @import "variables.scss";
+@import "fonts.scss";
 
 :root {
   --page-max-width: #{$pageMaxWidth};
