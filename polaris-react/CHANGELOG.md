@@ -1,5 +1,13 @@
 # Changelog
 
+## 9.12.1
+
+### Patch Changes
+
+- [#5984](https://github.com/Shopify/polaris/pull/5984) [`c3e7f2ef7`](https://github.com/Shopify/polaris/commit/c3e7f2ef7fb63eb632e81b52541229a2d1731be9) Thanks [@zakwarsame](https://github.com/zakwarsame)! - changes divider padding on page component
+
+* [#6006](https://github.com/Shopify/polaris/pull/6006) [`92ca0e5b2`](https://github.com/Shopify/polaris/commit/92ca0e5b2731529085822633c688aeda60ac16dd) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where keyframes weren't being properly added to builds
+
 ## 9.12.0
 
 ### Minor Changes
