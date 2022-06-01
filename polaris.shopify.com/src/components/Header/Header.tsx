@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { className } from "../../utils/various";
 import GlobalSearch from "../GlobalSearch";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Button from "../Button";
+import SideMenu from "../SideMenu";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
@@ -46,8 +46,7 @@ function Header({ currentSection }: Props) {
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth > 1024 && showMenu) {
-        console.log("close menu");
+      if (window.innerWidth > 768 && showMenu) {
         setShowMenu(false);
       }
     }
@@ -89,51 +88,42 @@ function Header({ currentSection }: Props) {
           </a>
         </Link>
 
-        <nav className={className(styles.Nav, showMenu && styles.show)}>
-          <ul>
-            {headerNavItems.map(({ url, label }) => {
-              const isCurrent =
-                currentSection && url.startsWith(currentSection)
-                  ? "page"
-                  : false;
-
-              return (
-                <li key={url}>
-                  <Link href={url} passHref>
-                    <a aria-current={isCurrent}>{label}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          {showMenu && (
-            <button
-              className={styles.CloseButton}
-              onClick={() => setShowMenu(false)}
-            >
-              <CloseIcon />
-            </button>
-          )}
-        </nav>
+        <NavItems currentSection={currentSection} />
 
         <div className={styles.SearchWrapper}>
           <GlobalSearch />
         </div>
 
-        {showMenu && (
-          <div className={styles.Backdrop} onClick={() => setShowMenu(false)} />
-        )}
+        <SideMenu showMenu={showMenu} handleShowMenu={setShowMenu}>
+          <NavItems currentSection={currentSection} />
+        </SideMenu>
       </MaxPageWidthDiv>
     </div>
   );
 }
 
-function CloseIcon() {
+interface NavItemsProps {
+  currentSection: Props["currentSection"];
+}
+
+function NavItems({ currentSection }: NavItemsProps) {
   return (
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z" />
-    </svg>
+    <nav>
+      <ul>
+        {headerNavItems.map(({ url, label }) => {
+          const isCurrent =
+            currentSection && url.startsWith(currentSection) ? "page" : false;
+
+          return (
+            <li key={url}>
+              <Link href={url} passHref>
+                <a aria-current={isCurrent}>{label}</a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
 

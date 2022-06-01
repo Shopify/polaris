@@ -9,6 +9,48 @@
   gap: 3em;
   height: var(--header-height);
 
+  > nav {
+    display: flex;
+
+    ul {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-size-100);
+      font-weight: 500;
+      margin-right: auto;
+
+      li {
+        a {
+          color: inherit;
+          padding: 0.85rem 1rem;
+
+          &:focus-within {
+            position: relative;
+            z-index: 1;
+            border-radius: var(--border-radius-800);
+          }
+
+          &:hover {
+            color: var(--text-strong);
+          }
+
+          &[aria-current="page"] {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius-800);
+          }
+        }
+
+        &:first-child a {
+          border-left: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: $smallBreakpoint) {
+      display: none;
+    }
+  }
+
   @media screen and (max-width: $smallBreakpoint) {
     gap: 0.5rem;
     padding: 0 0.5rem;
@@ -22,6 +64,7 @@
   gap: 0.7rem;
   font-weight: 500;
   font-size: var(--font-size-100);
+
   p {
     margin: 0;
   }
@@ -32,83 +75,6 @@
 
   @media screen and (max-width: $smallBreakpoint) {
     display: none;
-  }
-}
-
-.Nav {
-  display: flex;
-
-  ul {
-    display: flex;
-    align-items: center;
-    font-size: var(--font-size-100);
-    font-weight: 500;
-    margin-right: auto;
-
-    li {
-      a {
-        color: inherit;
-        padding: 0.85rem 1rem;
-
-        &:focus-within {
-          position: relative;
-          z-index: 1;
-          border-radius: var(--border-radius-800);
-        }
-
-        &:hover {
-          color: var(--text-strong);
-        }
-
-        &[aria-current="page"] {
-          background: rgba(0, 0, 0, 0.05);
-          border-radius: var(--border-radius-800);
-        }
-      }
-
-      &:first-child a {
-        border-left: none;
-      }
-    }
-  }
-
-  @media screen and (max-width: $smallBreakpoint) {
-    align-items: flex-start;
-    position: fixed;
-    background: var(--surface);
-    height: 100%;
-    width: calc(100vw - 4rem);
-    top: 0;
-    left: 0;
-    max-width: 22.5rem;
-    min-width: 15rem;
-    z-index: 2;
-    transform: translateX(-22.5rem);
-
-    &.show {
-      transform: translateX(0);
-      transition: transform var(--duration-200) var(--ease-in-out);
-    }
-
-    ul {
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-
-      li {
-        display: flex;
-        width: 100%;
-
-        a {
-          display: block;
-          width: 100%;
-
-          &[aria-current="page"] {
-            border-radius: 0;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -135,22 +101,94 @@
   }
 }
 
-.CloseButton {
-  display: flex;
-  margin-right: calc(-24px - 1rem); // 24px is the width of the Close Icon
-  margin-top: 1rem;
-  background-color: transparent;
+.SideMenu {
+  display: none;
+  align-items: flex-start;
+  flex-direction: column;
+  position: fixed;
+  background: var(--surface);
+  height: 100%;
+  width: calc(100vw - 4rem);
+  top: 0;
+  left: 0;
+  max-width: 22.5rem;
+  min-width: 15rem;
+  z-index: 2;
+  transform: translateX(-22.5rem);
 
-  svg {
-    width: 24px;
-    fill: var(--surface);
+  &.show {
+    transform: translateX(0);
+    transition: transform var(--duration-200) var(--ease-in-out);
+
+    .CloseButton {
+      position: absolute;
+      display: flex;
+      top: 1rem;
+      right: calc(-24px - 1rem); // 24px is the width of the Close Icon
+      background-color: transparent;
+
+      svg {
+        width: 24px;
+        fill: var(--surface);
+      }
+    }
+  }
+
+  .Logo {
+    display: flex;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    height: var(--header-height);
+    border-bottom: var(--border);
+  }
+
+  nav {
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      font-size: var(--font-size-100);
+      font-weight: 500;
+
+      li {
+        display: flex;
+        width: 100%;
+
+        a {
+          width: 100%;
+          color: inherit;
+          padding: 0.85rem 1rem;
+
+          &:focus-within {
+            position: relative;
+            z-index: 1;
+            border-radius: var(--border-radius-800);
+          }
+
+          &:hover {
+            color: var(--text-strong);
+          }
+
+          &[aria-current="page"] {
+            background: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $smallBreakpoint) {
+    display: flex;
   }
 }
 
 .Backdrop {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--backdrop);
   opacity: 0;
   animation-name: FadeIn;
