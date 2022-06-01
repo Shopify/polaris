@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <Page skipHeaderAndFooter={isPolaris}>
       <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
       <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>

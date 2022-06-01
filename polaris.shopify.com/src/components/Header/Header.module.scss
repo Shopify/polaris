@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .Header {
   border-bottom: var(--border);
 }
@@ -6,6 +8,11 @@
   display: flex;
   gap: 3em;
   height: var(--header-height);
+
+  @media screen and (max-width: $smallBreakpoint) {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .Logo {
@@ -21,6 +28,10 @@
 
   span {
     transform: translate3d(0, -1px, 0);
+  }
+
+  @media screen and (max-width: $smallBreakpoint) {
+    display: none;
   }
 }
 
@@ -60,6 +71,45 @@
       }
     }
   }
+
+  @media screen and (max-width: $smallBreakpoint) {
+    align-items: flex-start;
+    position: fixed;
+    background: var(--surface);
+    height: 100%;
+    width: calc(100vw - 4rem);
+    top: 0;
+    left: 0;
+    max-width: 22.5rem;
+    min-width: 15rem;
+    z-index: 2;
+    transform: translateX(-22.5rem);
+
+    &.show {
+      transform: translateX(0);
+      transition: transform var(--duration-200) var(--ease-in-out);
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+
+      li {
+        display: flex;
+        width: 100%;
+
+        a {
+          display: block;
+          width: 100%;
+
+          &[aria-current="page"] {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 .SearchWrapper {
@@ -73,5 +123,47 @@
     align-items: center;
     width: 1.25rem;
     border-radius: 100%;
+  }
+}
+
+.HamburgerButton {
+  display: none;
+
+  @media screen and (max-width: $smallBreakpoint) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.CloseButton {
+  display: flex;
+  margin-right: calc(-24px - 1rem); // 24px is the width of the Close Icon
+  margin-top: 1rem;
+  background-color: transparent;
+
+  svg {
+    width: 24px;
+    fill: var(--surface);
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--backdrop);
+  opacity: 0;
+  animation-name: FadeIn;
+  animation-duration: var(--duration-200);
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
