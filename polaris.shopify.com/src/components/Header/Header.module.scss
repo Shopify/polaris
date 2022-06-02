@@ -9,7 +9,7 @@
   gap: 3em;
   height: var(--header-height);
 
-  > nav {
+  .Nav {
     display: flex;
 
     ul {
@@ -100,90 +100,6 @@
     visibility: visible;
     display: flex;
     align-items: center;
-  }
-}
-
-.SideMenu {
-  display: none;
-  align-items: flex-start;
-  flex-direction: column;
-  position: fixed;
-  background: var(--surface);
-  height: 100%;
-  width: calc(100vw - 4rem);
-  top: 0;
-  left: 0;
-  max-width: 22.5rem;
-  min-width: 15rem;
-  z-index: 2;
-  transform: translateX(-22.5rem);
-
-  &.show {
-    transform: translateX(0);
-    transition: transform var(--duration-200) var(--ease-in-out);
-
-    .CloseButton {
-      position: absolute;
-      display: flex;
-      top: 1rem;
-      right: calc(-24px - 1rem); // 24px is the width of the Close Icon
-      background-color: transparent;
-
-      svg {
-        width: 24px;
-        fill: var(--surface);
-      }
-    }
-  }
-
-  .Logo {
-    display: flex;
-    width: 100%;
-    padding: 0.85rem 1rem;
-    height: var(--header-height);
-    border-bottom: var(--border);
-  }
-
-  nav {
-    width: 100%;
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-      font-size: var(--font-size-100);
-      font-weight: 500;
-
-      li {
-        display: flex;
-        width: 100%;
-
-        a {
-          width: 100%;
-          color: inherit;
-          padding: 0.85rem 1rem;
-
-          &:focus-within {
-            position: relative;
-            z-index: 1;
-            border-radius: var(--border-radius-800);
-          }
-
-          &:hover {
-            color: var(--text-strong);
-          }
-
-          &[aria-current="page"] {
-            background: rgba(0, 0, 0, 0.05);
-          }
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: $smallBreakpoint) {
-    display: flex;
   }
 }
 

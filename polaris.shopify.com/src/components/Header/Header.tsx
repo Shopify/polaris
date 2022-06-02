@@ -67,12 +67,13 @@ function Header({ currentSection }: Props) {
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
-        <div className={styles.HamburgerButton}>
+        {/* TODO: make this DIV a NAV */}
+        <nav className={styles.HamburgerButton}>
           <Button
             id="menu-button"
-            aria-label="Main menu button"
+            aria-label="Open menu"
             aria-controls="side-menu"
-            aria-haspopup="true"
+            aria-expanded={showMenu}
             onClick={() => setShowMenu(true)}
           >
             <Image
@@ -83,7 +84,13 @@ function Header({ currentSection }: Props) {
               alt="Hamburger icon"
             />
           </Button>
-        </div>
+
+          <SideMenu
+            currentSection={currentSection}
+            showMenu={showMenu}
+            handleCloseMenu={handleCloseMenu}
+          />
+        </nav>
 
         <Link href="/">
           <a className={styles.Logo}>
@@ -98,48 +105,36 @@ function Header({ currentSection }: Props) {
           </a>
         </Link>
 
-        <NavItems currentSection={currentSection} />
+        <nav className={styles.Nav}>
+          <ul>
+            {headerNavItems.map(({ url, label }) => {
+              const isCurrent =
+                currentSection && url.startsWith(currentSection)
+                  ? "page"
+                  : false;
+
+              return (
+                <li key={url}>
+                  <Link href={url} passHref>
+                    <a aria-current={isCurrent} onClick={handleCloseMenu}>
+                      {label}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
         <div className={styles.SearchWrapper}>
           <GlobalSearch />
         </div>
 
-        <SideMenu showMenu={showMenu} handleCloseMenu={handleCloseMenu}>
-          <NavItems
-            currentSection={currentSection}
-            handleCloseMenu={handleCloseMenu}
-          />
-        </SideMenu>
+        {showMenu && (
+          <div className={styles.Backdrop} onClick={handleCloseMenu} />
+        )}
       </MaxPageWidthDiv>
     </div>
-  );
-}
-
-interface NavItemsProps {
-  currentSection: Props["currentSection"];
-  handleCloseMenu?: () => void;
-}
-
-function NavItems({ currentSection, handleCloseMenu }: NavItemsProps) {
-  return (
-    <nav aria-label="Main menu">
-      <ul>
-        {headerNavItems.map(({ url, label }) => {
-          const isCurrent =
-            currentSection && url.startsWith(currentSection) ? "page" : false;
-
-          return (
-            <li key={url}>
-              <Link href={url} passHref>
-                <a aria-current={isCurrent} onClick={handleCloseMenu}>
-                  {label}
-                </a>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
   );
 }
 

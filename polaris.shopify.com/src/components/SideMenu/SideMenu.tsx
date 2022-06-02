@@ -7,39 +7,70 @@ import { className } from "../../utils/various";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./SideMenu.module.scss";
 
+const headerNavItems: {
+  label: string;
+  url: string;
+}[] = [
+  {
+    label: "Getting started",
+    url: "/resources",
+  },
+  {
+    label: "Guidelines",
+    url: "/guidelines/foundations/experience-values",
+  },
+  {
+    label: "Components",
+    url: "/components",
+  },
+  {
+    label: "Tokens",
+    url: "/tokens/colors",
+  },
+  {
+    label: "Icons",
+    url: "/icons",
+  },
+];
+
 interface Props {
-  children?: React.ReactNode;
+  currentSection?: string;
   showMenu?: boolean;
   handleCloseMenu: () => void;
 }
 
-function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
-  const menuRef = useRef<HTMLDivElement>(null);
+function SideMenu({
+  currentSection = "",
+  showMenu = false,
+  handleCloseMenu,
+}: Props) {
+  const menuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const firstElement = menuRef.current?.firstElementChild;
+    const firstLink = menuRef.current?.querySelector("a");
 
-    if (showMenu && firstElement instanceof HTMLElement) {
-      firstElement.focus();
+    if (showMenu && firstLink instanceof HTMLElement) {
+      firstLink.focus();
     }
   }, [showMenu]);
 
   return (
-    <>
-      <div
-        id="side-menu"
-        className={className(styles.SideMenu, showMenu && styles.show)}
-        ref={menuRef}
-      >
-        <Link href="/">
+    <ul
+      id="side-menu"
+      className={className(styles.SideMenu, showMenu && styles.show)}
+      ref={menuRef}
+    >
+      <li>
+        <Link href="/" passHref>
           <a
             className={styles.Logo}
+            onClick={handleCloseMenu}
             onKeyDown={(e) => {
               // this is the last child of the menu, if users press SHIFT + TAB it will return focus to the last element of the menu
               if (e.key === "Tab" && e.shiftKey) {
                 e.preventDefault();
-                const lastElement = menuRef.current?.lastElementChild;
-                lastElement instanceof HTMLElement && lastElement.focus();
+                const lastLink = menuRef.current?.lastElementChild?.children[0];
+                lastLink instanceof HTMLElement && lastLink.focus();
               }
             }}
           >
@@ -53,29 +84,41 @@ function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
             Polaris
           </a>
         </Link>
+      </li>
 
-        {children}
+      {headerNavItems.map(({ url, label }) => {
+        const isCurrent =
+          currentSection && url.startsWith(currentSection) ? "page" : false;
 
+        return (
+          <li key={url}>
+            <Link href={url} passHref>
+              <a aria-current={isCurrent} onClick={handleCloseMenu}>
+                {label}
+              </a>
+            </Link>
+          </li>
+        );
+      })}
+
+      <li>
         <button
+          aria-label="Close menu"
           className={styles.CloseButton}
           onClick={handleCloseMenu}
           onKeyDown={(e) => {
             // this is the last child of the menu, if users press TAB it will return focus to the first element of the menu
             if (e.key === "Tab" && !e.shiftKey) {
               e.preventDefault();
-              const firstElement = menuRef.current?.firstElementChild;
-              firstElement instanceof HTMLElement && firstElement.focus();
+              const firstLink = menuRef.current?.firstElementChild?.children[0];
+              firstLink instanceof HTMLElement && firstLink.focus();
             }
           }}
         >
           <CloseIcon />
         </button>
-      </div>
-
-      {showMenu && (
-        <div className={styles.Backdrop} onClick={handleCloseMenu} />
-      )}
-    </>
+      </li>
+    </ul>
   );
 }
 

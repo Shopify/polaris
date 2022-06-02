@@ -6,13 +6,15 @@
   align-items: flex-start;
   flex-direction: column;
   position: fixed;
-  background: var(--surface);
-  height: 100%;
-  width: calc(100vw - 4rem);
   top: 0;
   left: 0;
+  height: 100%;
+  width: calc(100vw - 4rem);
   max-width: 22.5rem;
   min-width: 15rem;
+  background: var(--surface);
+  font-size: var(--font-size-100);
+  font-weight: 500;
   z-index: 2;
   transform: translateX(-22.5rem);
 
@@ -39,41 +41,28 @@
     }
   }
 
-  > nav {
+  li {
+    display: flex;
     width: 100%;
 
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    a {
       width: 100%;
-      font-size: var(--font-size-100);
-      font-weight: 500;
+      color: inherit;
+      padding: 0.85rem 1rem;
 
-      li {
-        display: flex;
-        width: 100%;
+      &:focus-within {
+        position: relative;
+        z-index: 1;
+        border-radius: var(--border-radius-800);
+      }
 
-        a {
-          width: 100%;
-          color: inherit;
-          padding: 0.85rem 1rem;
+      &:hover {
+        color: var(--text-strong);
+      }
 
-          &:focus-within {
-            position: relative;
-            z-index: 1;
-            border-radius: var(--border-radius-800);
-          }
-
-          &:hover {
-            color: var(--text-strong);
-          }
-
-          &[aria-current="page"] {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 0;
-          }
-        }
+      &[aria-current="page"] {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 0;
       }
     }
   }
@@ -98,16 +87,6 @@
   span {
     transform: translate3d(0, -1px, 0);
   }
-}
-
-.Backdrop {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--backdrop);
-  opacity: 0;
-  animation: FadeIn var(--duration-200) forwards;
-  z-index: 1;
 }
 
 @keyframes FadeIn {
