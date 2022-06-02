@@ -67,10 +67,7 @@ function Header({ currentSection }: Props) {
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
-        <div
-          className={styles.HamburgerButton}
-          onClick={() => setShowMenu(true)}
-        >
+        <div className={styles.HamburgerButton}>
           <Button
             id="menu-button"
             aria-label="Main menu button"
