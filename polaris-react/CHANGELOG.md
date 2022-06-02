@@ -1,5 +1,14 @@
 # Changelog
 
+## 9.12.2
+
+### Patch Changes
+
+- [#6012](https://github.com/Shopify/polaris/pull/6012) [`c71d26cff`](https://github.com/Shopify/polaris/commit/c71d26cffcb21f663b8a58d7b64d8957d555cb67) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed breakpoint tokens
+
+- Updated dependencies [[`c71d26cff`](https://github.com/Shopify/polaris/commit/c71d26cffcb21f663b8a58d7b64d8957d555cb67)]:
+  - @shopify/polaris-tokens@5.1.1
+
 ## 9.12.1
 
 ### Patch Changes
