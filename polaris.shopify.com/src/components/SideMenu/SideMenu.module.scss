@@ -1,7 +1,8 @@
 @import "../../styles/variables.scss";
 
 .SideMenu {
-  display: none;
+  display: flex;
+  visibility: hidden;
   align-items: flex-start;
   flex-direction: column;
   position: fixed;
@@ -16,6 +17,7 @@
   transform: translateX(-22.5rem);
 
   &.show {
+    visibility: visible;
     transform: translateX(0);
     transition: transform var(--duration-200) var(--ease-in-out);
 
@@ -74,10 +76,6 @@
         }
       }
     }
-  }
-
-  @media screen and (max-width: $smallBreakpoint) {
-    display: flex;
   }
 }
 
