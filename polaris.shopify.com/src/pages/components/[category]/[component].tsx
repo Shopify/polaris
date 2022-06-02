@@ -24,7 +24,7 @@ interface Props {
 const navItems: NavItem[] = getComponentNav();
 
 
-type NextPageWithLayout = NextPage & Props & {
+type NextPageWithLayout = NextPage<Props> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
