@@ -41,6 +41,9 @@ jobs:
           git branch --show-current
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Temporary log to validate checkout_pr outputs
+        run: echo "${{ steps.checkout_pr.outputs.branch }}"
 
       # Because changeset entries are consumed and removed on the
       # 'changeset-release/main' branch, we need to reset the files
