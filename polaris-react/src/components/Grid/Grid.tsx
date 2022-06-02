@@ -18,10 +18,7 @@ type Gap = {
 };
 
 export interface GridProps {
-  /** Set grid-template-areas.
-   * 6 column default for xs, sm, and md.
-   * 12 columns lg, and xl.
-   */
+  /* Set grid-template-areas */
   areas?: Areas;
   /* Number of columns */
   columns?: Columns;
