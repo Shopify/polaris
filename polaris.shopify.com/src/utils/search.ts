@@ -39,7 +39,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   results.push({
     category: "Components",
     score: 0,
-    url: `/components/${slugify(category)}/${slugify(name)}`,
+    url: `/components/${slugify(name)}`,
     meta: {
       name,
       description: stripMarkdownLinks(intro),
