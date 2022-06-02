@@ -5,7 +5,7 @@ import type {
   MenuGroupDescriptor,
   ActionListItemDescriptor,
 } from '../../../types';
-import {MenuGroup, RollupActions} from '../components';
+import {MenuGroup, RollupActions, Actions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
@@ -195,6 +195,21 @@ describe('<ActionMenu />', () => {
     wrapper.find(Button)!.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders <Actions /> passing `onActionRollup` as prop if it exists', () => {
+    const onActionRollup = jest.fn();
+    const wrapper = mountWithApp(
+      <ActionMenu
+        {...mockProps}
+        actions={[{content: 'mock'}]}
+        onActionRollup={onActionRollup}
+      />,
+    );
+
+    expect(wrapper).toContainReactComponent(Actions, {
+      onActionRollup,
+    });
   });
 });
 
