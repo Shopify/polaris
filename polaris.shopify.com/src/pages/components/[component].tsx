@@ -3,13 +3,17 @@ import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import glob from "glob";
-import frontmatter from "frontmatter";
 import { marked } from "marked";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 
 import { getComponentNav, getTitleTagValue } from "../../utils/various";
 import { NavItem } from "../../components/Nav/Nav";
 import NavContentTOCLayout from "../../components/NavContentTOCLayout";
+
+interface MarkdownData {
+  frontMatter: any;
+  readme: string;
+}
 
 interface Props {
   name: string;
@@ -48,7 +52,7 @@ export const getStaticProps: GetStaticProps<
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
-    const data = parseMarkdown(componentMarkdown);
+    const data: MarkdownData = parseMarkdown(componentMarkdown);
     const readme = marked(data.readme);
     const props: Props = { ...data.frontMatter, readme };
 
