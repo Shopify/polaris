@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Item} from '../Item';
+import {ActionButton} from '../../../ActionButton';
 import type {
   ActionListItemDescriptor,
   ActionListSection,
@@ -37,14 +37,18 @@ export function Section({
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
       return (
-        <Item
+        <li
           key={`${content}-${index}`}
-          content={content}
-          helpText={helpText}
-          role={actionRole}
-          onAction={handleAction(onAction)}
-          {...item}
-        />
+          role={actionRole === 'menuitem' ? 'presentation' : undefined}
+        >
+          <ActionButton
+            content={content}
+            helpText={helpText}
+            onAction={handleAction(onAction)}
+            role={actionRole}
+            {...item}
+          />
+        </li>
       );
     },
   );

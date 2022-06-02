@@ -4,9 +4,10 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
-import {Item, Section} from '../components';
+import {Section} from '../components';
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
+import {ActionButton} from '../../ActionButton';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -67,7 +68,7 @@ describe('<ActionList />', () => {
     ];
 
     const actionList = mountWithApp(<ActionList items={items} />);
-    actionList.findAll(Item).forEach((item, index) => {
+    actionList.findAll(ActionButton).forEach((item, index) => {
       expect(item).toHaveReactProps({
         content: `${items[index].content}`,
       });

@@ -40,6 +40,9 @@ export type {AccountConnectionProps} from './components/AccountConnection';
 export {ActionList} from './components/ActionList';
 export type {ActionListProps} from './components/ActionList';
 
+export {ActionButton} from './components/ActionButton';
+export type {ActionButtonProps} from './components/ActionButton';
+
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 

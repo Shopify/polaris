@@ -1,18 +1,19 @@
 import React from 'react';
 
-import {classNames} from '../../../../utilities/css';
-import type {ActionListItemDescriptor} from '../../../../types';
-import {Scrollable} from '../../../Scrollable';
-import {Icon} from '../../../Icon';
-import {UnstyledLink} from '../../../UnstyledLink';
-import {Badge} from '../../../Badge';
-import {TextStyle} from '../../../TextStyle';
-import styles from '../../ActionList.scss';
-import {handleMouseUpByBlurring} from '../../../../utilities/focus';
+import {classNames} from '../../utilities/css';
+import type {ActionListItemDescriptor} from '../../types';
+import {Scrollable} from '../Scrollable';
+import {Icon} from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Badge} from '../Badge';
+import {TextStyle} from '../TextStyle';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 
-export type ItemProps = ActionListItemDescriptor;
+import styles from './ActionButton.scss';
 
-export function Item({
+export type ActionButtonProps = ActionListItemDescriptor;
+
+export function ActionButton({
   id,
   badge,
   content,
@@ -30,9 +31,9 @@ export function Item({
   ellipsis,
   active,
   role,
-}: ItemProps) {
+}: ActionButtonProps) {
   const className = classNames(
-    styles.Item,
+    styles.ActionButton,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
@@ -120,9 +121,9 @@ export function Item({
   );
 
   return (
-    <li role={role === 'menuitem' ? 'presentation' : undefined}>
+    <>
       {scrollMarkup}
       {control}
-    </li>
+    </>
   );
 }

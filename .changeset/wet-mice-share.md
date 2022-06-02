@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': patch
+'@shopify/polaris': minor
 ---
 
-[ActionList] Includes variable for ActionList padding
+[ActionButton] Exposes ActionButton component

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Item} from '../../Item';
+import {ActionButton} from '../../../../ActionButton';
 import {Section} from '../Section';
 
 describe('<Section />', () => {
@@ -18,7 +18,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section).toContainReactComponentTimes(Item, 2);
+    expect(section).toContainReactComponentTimes(ActionButton, 2);
   });
 
   it('renders items as li when hasMultipleSections is false', () => {
@@ -53,7 +53,7 @@ describe('<Section />', () => {
     expect(section).toContainReactComponentTimes('li', 3);
   });
 
-  it('passes content to Item', () => {
+  it('passes content to ActionButton', () => {
     const callback = () => {};
     const section = mountWithApp(
       <Section
@@ -68,12 +68,12 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.findAll(Item)[0]).toHaveReactProps({
+    expect(section.findAll(ActionButton)[0]).toHaveReactProps({
       content: 'Import file',
     });
   });
 
-  it('passes helpText to Item', () => {
+  it('passes helpText to ActionButton', () => {
     const section = mountWithApp(
       <Section
         hasMultipleSections
@@ -86,12 +86,12 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.findAll(Item)[0]).toHaveReactProps({
+    expect(section.findAll(ActionButton)[0]).toHaveReactProps({
       helpText: 'Foo',
     });
   });
 
-  it('passes the onActionAnyItem callback to Item', () => {
+  it('passes the onActionAnyActionButton callback to ActionButton', () => {
     const spy = jest.fn();
     const section = mountWithApp(
       <Section
@@ -106,7 +106,7 @@ describe('<Section />', () => {
       />,
     );
 
-    section.findAll(Item)[0].findAll('button')[0].trigger('onClick');
+    section.findAll(ActionButton)[0].findAll('button')[0].trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

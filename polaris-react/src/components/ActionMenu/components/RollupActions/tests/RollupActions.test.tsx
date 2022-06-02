@@ -4,11 +4,9 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
 import {Popover} from '../../../../Popover';
+import {ActionButton} from '../../../../ActionButton';
 // eslint-disable-next-line @shopify/strict-component-boundaries
-import {
-  Item as ActionListItem,
-  Section as ActionListSection,
-} from '../../../../ActionList/components';
+import {Section as ActionListSection} from '../../../../ActionList/components';
 import {RollupActions} from '../RollupActions';
 
 describe('<RollupActions />', () => {
@@ -53,7 +51,7 @@ describe('<RollupActions />', () => {
 
       wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
 
-      expect(wrapper.findAll(ActionListItem)).toHaveLength(mockItems.length);
+      expect(wrapper.findAll(ActionButton)).toHaveLength(mockItems.length);
     });
 
     it('<ActionList /> closes the <Popover /> when `onActionAnyItem` is called', () => {
@@ -68,8 +66,8 @@ describe('<RollupActions />', () => {
         active: true,
       });
 
-      const firstActionListItem = wrapper.findAll(ActionListItem)[0];
-      firstActionListItem.trigger('onAction');
+      const firstActionButton = wrapper.findAll(ActionButton)[0];
+      firstActionButton.trigger('onAction');
 
       popoverComponent = wrapper.find(Popover);
       expect(popoverComponent!).toHaveReactProps({
