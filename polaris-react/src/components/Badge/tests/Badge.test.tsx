@@ -44,7 +44,7 @@ describe('<Badge />', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
 
     expect(badge).toContainReactComponent('span', {
-      className: 'Pip statusInfo progressIncomplete',
+      className: 'Pip progressIncomplete',
     });
   });
 
@@ -147,7 +147,7 @@ describe('<Badge.Pip />', () => {
     badge = mountWithApp(<Badge.Pip progress="partiallyComplete" />);
 
     expect(badge).toContainReactComponent(VisuallyHidden, {
-      children: 'Info Partially complete',
+      children: ' Partially complete',
     });
 
     badge = mountWithApp(<Badge.Pip status="attention" />);
@@ -159,7 +159,7 @@ describe('<Badge.Pip />', () => {
     badge = mountWithApp(<Badge.Pip />);
 
     expect(badge).toContainReactComponent(VisuallyHidden, {
-      children: 'Info Complete',
+      children: ' Complete',
     });
   });
 });
