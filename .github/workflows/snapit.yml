@@ -50,7 +50,7 @@ jobs:
       # so the following 'changeset version --snapshot' command will
       # regenerate the package version bumps with the snapshot releases
       - name: Reset changeset entries on changeset-release/main branch
-        if: steps.checkout_pr.outputs.branch == 'changeset-release/main'
+        if: ${{ steps.checkout_pr.outputs.branch == 'changeset-release/main' }}
         run: git checkout origin/main -- .changeset
 
       - name: Setup Node.js
