@@ -65,10 +65,10 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
-  legacyTokens: tokensToRems(legacyTokens),
-  breakpoints,
+  breakpoints: tokensToRems(breakpoints),
   colorSchemes,
   depth,
+  legacyTokens: tokensToRems(legacyTokens),
   motion,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
