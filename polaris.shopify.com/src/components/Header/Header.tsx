@@ -45,6 +45,7 @@ function Header({ currentSection }: Props) {
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
+    // it ensures that the menu is closed after the screen is resized
     function handleResize() {
       if (window.innerWidth > 768 && showMenu) {
         setShowMenu(false);
@@ -57,7 +58,11 @@ function Header({ currentSection }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCloseMenu = () => setShowMenu(false);
+  const handleCloseMenu = () => {
+    setShowMenu(false);
+    // it focus back to the menu button after the user closes the menu
+    document.getElementById("menu-button")?.focus();
+  };
 
   return (
     <div className={styles.Header}>
@@ -66,7 +71,13 @@ function Header({ currentSection }: Props) {
           className={styles.HamburgerButton}
           onClick={() => setShowMenu(true)}
         >
-          <Button onClick={() => setShowMenu(true)}>
+          <Button
+            id="menu-button"
+            aria-label="Main menu button"
+            aria-controls="side-menu"
+            aria-haspopup="true"
+            onClick={() => setShowMenu(true)}
+          >
             <Image
               src={hamburguerIcon}
               layout="fixed"
@@ -114,7 +125,7 @@ interface NavItemsProps {
 
 function NavItems({ currentSection, handleCloseMenu }: NavItemsProps) {
   return (
-    <nav>
+    <nav aria-label="Main menu">
       <ul>
         {headerNavItems.map(({ url, label }) => {
           const isCurrent =

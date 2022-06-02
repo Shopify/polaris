@@ -17,8 +17,10 @@ function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (showMenu && menuRef.current !== null) {
-      (menuRef.current.firstElementChild as HTMLElement)?.focus();
+    const firstElement = menuRef.current?.firstElementChild;
+
+    if (showMenu && firstElement instanceof HTMLElement) {
+      firstElement.focus();
     }
   }, [showMenu]);
 
@@ -30,7 +32,17 @@ function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
         ref={menuRef}
       >
         <Link href="/">
-          <a className={styles.Logo}>
+          <a
+            className={styles.Logo}
+            onKeyDown={(e) => {
+              // this is the last child of the menu, if users press SHIFT + TAB it will return focus to the last element of the menu
+              if (e.key === "Tab" && e.shiftKey) {
+                e.preventDefault();
+                const lastElement = menuRef.current?.lastElementChild;
+                lastElement instanceof HTMLElement && lastElement.focus();
+              }
+            }}
+          >
             <Image
               src={shopifyLogo}
               layout="fixed"
@@ -44,7 +56,18 @@ function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
 
         {children}
 
-        <button className={styles.CloseButton} onClick={handleCloseMenu}>
+        <button
+          className={styles.CloseButton}
+          onClick={handleCloseMenu}
+          onKeyDown={(e) => {
+            // this is the last child of the menu, if users press TAB it will return focus to the first element of the menu
+            if (e.key === "Tab" && !e.shiftKey) {
+              e.preventDefault();
+              const firstElement = menuRef.current?.firstElementChild;
+              firstElement instanceof HTMLElement && firstElement.focus();
+            }
+          }}
+        >
           <CloseIcon />
         </button>
       </div>
