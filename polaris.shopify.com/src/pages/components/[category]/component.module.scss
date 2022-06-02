@@ -1,9 +1,0 @@
-.Post {
-  position: relative;
-  flex: 1;
-  .NavContentTOCLayout.showTOC & {
-    max-width: calc(
-      100% - var(--nav-width) - var(--gap) - var(--gap) - var(--toc-width)
-    );
-  }
-}

@@ -12,13 +12,8 @@ import {
 } from "../../../utils/various";
 import fs from "fs";
 import path from "path";
-import MaxPageWidthDiv from "../../../components/MaxPageWidthDiv";
-import ComponentsPage from "../../../components/ComponentsPage";
-import Nav from "../../../components/Nav";
-import componentsMeta from "../../../data/components.json";
 import { NavItem } from "../../../components/Nav/Nav";
 import NavContentTOCLayout from "../../../components/NavContentTOCLayout";
-import styles from './component.module.scss'
 import LeftNavWithTOCLayout from '../../../components/LeftNavWithTOCLayout'
 
 interface Props {
