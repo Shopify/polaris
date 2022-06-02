@@ -1,8 +1,6 @@
 import React from "react";
 import { useTOC } from "../../utils/hooks";
 import { className, slugify } from "../../utils/various";
-import Longform from "../Longform";
-import Markdown from "../Markdown";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Nav, { NavItem } from "../Nav/Nav";
 import styles from "./LeftNavLayout.module.scss";
