@@ -4,19 +4,27 @@
   height: var(--p-space-5);
   width: var(--p-space-5);
 }
+
 .Icon {
+  /* stylelint-disable-next-line property-disallowed-list */
   position: relative;
   pointer-events: none;
+
   svg {
     fill: var(--p-icon-subdued);
   }
 }
+
 .Up {
+  /* stylelint-disable-next-line unit-disallowed-list, declaration-property-value-disallowed-list */
   top: -3.5px;
 }
+
 .Down {
+  /* stylelint-disable-next-line unit-disallowed-list, declaration-property-value-disallowed-list */
   top: -16.5px;
 }
+
 .Active {
   svg {
     fill: var(--p-icon);

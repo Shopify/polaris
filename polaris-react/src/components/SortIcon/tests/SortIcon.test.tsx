@@ -21,13 +21,13 @@ describe('<SortIcon/>', () => {
       <SortIcon sortDirection="ascending" accessibilityLabel="test" />,
     );
 
-    const iconWrapper = icon.find('div');
+    const iconWrapper = icon.find('span');
 
-    const firstIconWrapper = iconWrapper?.findAll('div')[0];
-    const secondIconWrapper = iconWrapper?.findAll('div')[1];
+    const firstIconWrapper = iconWrapper?.findAll('span')[1];
+    const secondIconWrapper = iconWrapper?.findAll('span')[4];
 
-    expect(firstIconWrapper).toHaveReactProps({className: 'Icon Active'});
-    expect(secondIconWrapper).not.toHaveReactProps({className: 'Icon Active'});
+    expect(firstIconWrapper).toHaveReactProps({className: 'Icon Up Active'});
+    expect(secondIconWrapper).toHaveReactProps({className: 'Icon Down'});
   });
 
   it('sets the active class on the down icon when the sortDirection is set to descending', () => {
@@ -35,15 +35,15 @@ describe('<SortIcon/>', () => {
       <SortIcon sortDirection="descending" accessibilityLabel="test" />,
     );
 
-    const iconWrapper = icon.find('div');
+    const iconWrapper = icon.find('span', {className: 'SortIcon'});
 
-    const firstIconWrapper = iconWrapper?.findAll('div')[0];
-    const secondIconWrapper = iconWrapper?.findAll('div')[1];
+    const firstIconWrapper = iconWrapper?.findAll('span')[1];
+    const secondIconWrapper = iconWrapper?.findAll('span')[4];
 
-    expect(firstIconWrapper).not.toHaveReactProps({
-      className: 'Icon Active',
+    expect(firstIconWrapper).toHaveReactProps({
+      className: 'Icon Up',
     });
-    expect(secondIconWrapper).toHaveReactProps({className: 'Icon Active'});
+    expect(secondIconWrapper).toHaveReactProps({className: 'Icon Down Active'});
   });
 
   it('sets no active class on the down icon when the sortDirection is set to none', () => {
@@ -51,14 +51,16 @@ describe('<SortIcon/>', () => {
       <SortIcon sortDirection="none" accessibilityLabel="test" />,
     );
 
-    const iconWrapper = icon.find('div');
+    const iconWrapper = icon.find('span');
 
-    const firstIconWrapper = iconWrapper?.findAll('div')[0];
-    const secondIconWrapper = iconWrapper?.findAll('div')[1];
+    const firstIconWrapper = iconWrapper?.findAll('span')[1];
+    const secondIconWrapper = iconWrapper?.findAll('span')[4];
 
-    expect(firstIconWrapper).not.toHaveReactProps({
-      className: 'Icon Active',
+    expect(firstIconWrapper).toHaveReactProps({
+      className: 'Icon Up',
     });
-    expect(secondIconWrapper).not.toHaveReactProps({className: 'Icon Active'});
+    expect(secondIconWrapper).toHaveReactProps({
+      className: 'Icon Down',
+    });
   });
 });
