@@ -8,19 +8,25 @@
 
   @media #{$p-breakpoints-sm-up} {
     gap: var(--pc-grid-gap-sm, var(--p-space-4));
-    grid-template-areas: var(--pc-grid-areas-sm);
+    grid-template-areas: var(--pc-grid-areas-sm, var(--pc-grid-areas-xs));
     grid-template-columns: repeat(var(--pc-grid-columns-sm, 6), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--pc-grid-gap-md, var(--p-space-4));
-    grid-template-areas: var(--pc-grid-areas-md);
+    grid-template-areas: var(
+      --pc-grid-areas-md,
+      var(--pc-grid-areas-sm, var(--pc-grid-areas-xs))
+    );
     grid-template-columns: repeat(var(--pc-grid-columns-md, 6), minmax(0, 1fr));
   }
 
   @media #{$p-breakpoints-lg-up} {
     gap: var(--pc-grid-gap-lg, var(--p-space-4));
-    grid-template-areas: var(--pc-grid-areas-lg);
+    grid-template-areas: var(
+      --pc-grid-areas-lg,
+      var(--pc-grid-areas-md, var(--pc-grid-areas-sm, var(--pc-grid-areas-xs)))
+    );
     grid-template-columns: repeat(
       var(--pc-grid-columns-lg, 12),
       minmax(0, 1fr)
@@ -29,7 +35,16 @@
 
   @media #{$p-breakpoints-xl-up} {
     gap: var(--pc-grid-gap-xl, var(--p-space-4));
-    grid-template-areas: var(--pc-grid-areas-xl);
+    grid-template-areas: var(
+      --pc-grid-areas-xl,
+      var(
+        --pc-grid-areas-lg,
+        var(
+          --pc-grid-areas-md,
+          var(--pc-grid-areas-sm, var(--pc-grid-areas-xs))
+        )
+      )
+    );
     grid-template-columns: repeat(
       var(--pc-grid-columns-xl, 12),
       minmax(0, 1fr)
