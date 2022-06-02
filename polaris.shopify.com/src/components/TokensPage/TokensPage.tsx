@@ -127,8 +127,6 @@ function TokensPage({ tokenGroup }: Props) {
                 ))}
             </TokenList>
           </div>
-
-          <p>Temporary: Icons from FeatherIcons (https://feathericons.com/).</p>
         </div>
 
         <style jsx>{keyframeStyles}</style>

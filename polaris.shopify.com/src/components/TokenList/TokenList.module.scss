@@ -85,10 +85,12 @@
 .TokenName {
   display: block;
   float: left;
-  padding: 0.33rem 1rem;
-  background: #fff0df;
-  border-radius: var(--border-radius-round);
-  font-size: var(--font-size-400);
+  padding: 0.25rem 0.5rem;
+  background: #ffe5ab;
+  border-radius: var(--border-radius-400);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-500);
+  letter-spacing: var(--letter-spacing-200);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre;
