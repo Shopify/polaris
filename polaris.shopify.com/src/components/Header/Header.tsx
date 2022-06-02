@@ -6,36 +6,11 @@ import GlobalSearch from "../GlobalSearch";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Button from "../Button";
 import SideMenu from "../SideMenu";
+import NavItems from "../NavItems";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
 import styles from "./Header.module.scss";
-
-const headerNavItems: {
-  label: string;
-  url: string;
-}[] = [
-  {
-    label: "Getting started",
-    url: "/resources",
-  },
-  {
-    label: "Guidelines",
-    url: "/guidelines/foundations/experience-values",
-  },
-  {
-    label: "Components",
-    url: "/components",
-  },
-  {
-    label: "Tokens",
-    url: "/tokens/colors",
-  },
-  {
-    label: "Icons",
-    url: "/icons",
-  },
-];
 
 interface Props {
   currentSection?: string;
@@ -67,7 +42,6 @@ function Header({ currentSection }: Props) {
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
-        {/* TODO: make this DIV a NAV */}
         <nav className={styles.HamburgerButton}>
           <Button
             id="menu-button"
@@ -107,22 +81,7 @@ function Header({ currentSection }: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            {headerNavItems.map(({ url, label }) => {
-              const isCurrent =
-                currentSection && url.startsWith(currentSection)
-                  ? "page"
-                  : false;
-
-              return (
-                <li key={url}>
-                  <Link href={url} passHref>
-                    <a aria-current={isCurrent} onClick={handleCloseMenu}>
-                      {label}
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
+            <NavItems currentSection={currentSection} />
           </ul>
         </nav>
 
