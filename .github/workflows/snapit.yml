@@ -32,9 +32,20 @@ jobs:
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
       - name: Checkout pull request branch
-        run: hub pr checkout ${{ github.event.issue.number }}
+        id: checkout_pr
+        run: |
+          hub pr checkout ${{ github.event.issue.number }}
+          echo '::set-output name=branch::$(git branch --show-current)'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Because changeset entries are consumed and removed on the
+      # 'changeset-release/main' branch, we need to reset the files
+      # so the following 'changeset version --snapshot' command will
+      # regenerate the package version bumps with the snapshot releases
+      - name: Reset changeset entries on changeset-release/main branch
+        if: steps.checkout_pr.outputs.branch == 'changeset-release/main'
+        run: git checkout origin/main -- .changeset
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
