@@ -35,7 +35,10 @@ jobs:
         id: checkout_pr
         run: |
           hub pr checkout ${{ github.event.issue.number }}
+          echo '::echo::on'
           echo '::set-output name=branch::$(git branch --show-current)'
+          echo '::echo::off'
+          git branch --show-current
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
