@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,9 +14,21 @@ interface Props {
 }
 
 function SideMenu({ children, showMenu = false, handleCloseMenu }: Props) {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showMenu && menuRef.current !== null) {
+      (menuRef.current.firstElementChild as HTMLElement)?.focus();
+    }
+  }, [showMenu]);
+
   return (
     <>
-      <div className={className(styles.SideMenu, showMenu && styles.show)}>
+      <div
+        id="side-menu"
+        className={className(styles.SideMenu, showMenu && styles.show)}
+        ref={menuRef}
+      >
         <Link href="/">
           <a className={styles.Logo}>
             <Image

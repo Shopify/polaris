@@ -93,9 +93,11 @@
 }
 
 .HamburgerButton {
+  visibility: hidden;
   display: none;
 
   @media screen and (max-width: $smallBreakpoint) {
+    visibility: visible;
     display: flex;
     align-items: center;
   }
