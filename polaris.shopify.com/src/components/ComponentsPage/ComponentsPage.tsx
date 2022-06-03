@@ -1,29 +1,30 @@
-
 import Head from "next/head";
 import components from "../../data/components.json";
 import {
   getComponentCategories,
   stripMarkdownLinks,
   slugify,
+  getComponentNav,
 } from "../../utils/various";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
 import ComponentGrid from "../ComponentGrid";
+import Layout from "../Layout";
 
 const componentCategories = getComponentCategories();
+const componentNav = getComponentNav();
 
 interface Props {}
 
 export default function ComponentsPage({}: Props) {
-  
   return (
     <MaxPageWidthDiv className={styles.ComponentsPage}>
       <Head>
         <title>{getTitleTagValue("Components")}</title>
       </Head>
-      <h1>Components</h1>
-      <article className={styles.Post}>
+
+      <Layout navItems={componentNav} showTOC={false}>
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>
@@ -31,8 +32,7 @@ export default function ComponentsPage({}: Props) {
               <ComponentGrid>
                 {components
                   .filter(
-                    (component) =>
-                      component.frontMatter.category === category
+                    (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
                     const { name, category } = frontMatter;
@@ -52,7 +52,7 @@ export default function ComponentsPage({}: Props) {
             </div>
           );
         })}
-      </article>
+      </Layout>
     </MaxPageWidthDiv>
   );
 }

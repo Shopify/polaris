@@ -1,11 +1,7 @@
-import type { ReactElement, ReactNode } from 'react'
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Longform from "../../../components/Longform";
-import Markdown from "../../../components/Markdown";
 import components from "../../../data/components.json";
 import {
-  getComponentCategories,
   getComponentNav,
   getTitleTagValue,
   slugify,
@@ -13,53 +9,12 @@ import {
 import fs from "fs";
 import path from "path";
 import { NavItem } from "../../../components/Nav/Nav";
-import NavContentTOCLayout from "../../../components/NavContentTOCLayout";
-import LeftNavWithTOCLayout from '../../../components/LeftNavWithTOCLayout'
+import Layout from "../../../components/Layout";
 
 interface Props {
   name: string;
   readme: string;
 }
-
-const navItems: NavItem[] = getComponentNav();
-
-
-type NextPageWithLayout = NextPage<Props> & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
-
-const ComponentsTwo: NextPageWithLayout = ({ name, readme }) => {
-  const navItems: NavItem[] = getComponentNav();
-
-  return (
-    <>
-      <Head>
-        <title>{getTitleTagValue(name)}</title>
-      </Head>
-
-      {name && (
-          <Longform>
-            <h1>{name}</h1>
-          </Longform>
-        )}
-        <Longform>
-          <Markdown text={readme} skipH1 />
-        </Longform>
-    </>
-  );
-};
-
-
-
-ComponentsTwo.getLayout = function getLayout(page: ReactElement) {
-  const { readme } = page.props
-  return (
-    <LeftNavWithTOCLayout navItems={navItems} content={readme}>
-      {page}
-    </LeftNavWithTOCLayout>
-  )
-}
-
 
 const Components: NextPage<Props> = ({ name, readme }) => {
   const navItems: NavItem[] = getComponentNav();
@@ -70,12 +25,9 @@ const Components: NextPage<Props> = ({ name, readme }) => {
         <title>{getTitleTagValue(name)}</title>
       </Head>
 
-      <NavContentTOCLayout
-        navItems={navItems}
-        title={name}
-        showTOC={true}
-        content={readme}
-      />
+      <Layout navItems={navItems} title={name} showTOC={true}>
+        {readme}
+      </Layout>
     </>
   );
 };
@@ -130,4 +82,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default ComponentsTwo;
+export default Components;

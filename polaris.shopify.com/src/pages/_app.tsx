@@ -1,30 +1,21 @@
-import type { ReactElement, ReactNode } from 'react'
-import type { NextPage } from 'next'
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 // import "@shopify/polaris/build/esm/styles.css";
 import "../styles/globals.scss";
 import Page from "../components/Page";
 import { useRouter } from "next/router";
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isPolaris = router.asPath.startsWith("/generated-examples");
-  const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-      <Page skipHeaderAndFooter={isPolaris}>
-        <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-          {getLayout(<Component {...pageProps} />)}
-        </div>
-      </Page>
+    <Page skipHeaderAndFooter={isPolaris}>
+      <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+        <Component {...pageProps} />
+      </div>
+    </Page>
   );
 }
 

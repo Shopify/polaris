@@ -1,4 +1,4 @@
-.LeftNavWithTOCLayout {
+.Layout {
   --gap: 7rem;
   --nav-width: 12rem;
   --toc-width: 12rem;
@@ -16,7 +16,7 @@
 .Post {
   position: relative;
   flex: 1;
-  .LeftNavWithTOCLayout.showTOC & {
+  .Layout.showTOC & {
     max-width: calc(
       100% - var(--nav-width) - var(--gap) - var(--gap) - var(--toc-width)
     );
