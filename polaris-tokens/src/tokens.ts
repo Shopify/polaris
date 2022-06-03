@@ -81,6 +81,6 @@ export const tokens = createTokens({
  * Identity function that simply returns the provided tokens, but additionally
  * validates the input matches the `Tokens` type exactly and infers all members.
  */
-function createTokens<T>(tokens: Exact<T, Tokens>): Exact<T, Tokens> {
+function createTokens<T extends Exact<Tokens, T>>(tokens: T) {
   return tokens;
 }

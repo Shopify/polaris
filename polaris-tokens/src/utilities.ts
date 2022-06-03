@@ -11,13 +11,16 @@ function rem(value: string) {
   );
 }
 
-export function tokensToRems<T>(tokenGroup: Exact<T, TokenGroup>) {
+export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, values]) => [
       token,
       {...values, value: rem(values.value)},
     ]),
-  ) as Exact<T, TokenGroup>;
+    // We loose the `tokenGroup` inference after transforming the object with
+    // `Object.fromEntries()` and `Object.entries()`. Thus, we cast the result
+    // back to `T` since we are simply converting the `value` from px to rem.
+  ) as T;
 }
 
 export function createVar(token: string) {
