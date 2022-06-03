@@ -13,9 +13,9 @@ function rem(value: string) {
 
 export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
   return Object.fromEntries(
-    Object.entries(tokenGroup).map(([token, values]) => [
+    Object.entries(tokenGroup).map(([token, properties]) => [
       token,
-      {...values, value: rem(values.value)},
+      {...properties, value: rem(properties.value)},
     ]),
     // We loose the `tokenGroup` inference after transforming the object with
     // `Object.fromEntries()` and `Object.entries()`. Thus, we cast the result
