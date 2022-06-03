@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,6 +19,7 @@ interface Props {
 
 function Header({ currentSection }: Props) {
   const [showMenu, setShowMenu] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function hideSideMenuOnResize() {
@@ -35,8 +36,7 @@ function Header({ currentSection }: Props) {
 
   const handleCloseMenu = () => {
     setShowMenu(false);
-    // it focus back to the menu button after the user closes the menu
-    document.getElementById("menu-button")?.focus();
+    menuButtonRef.current?.focus();
   };
 
   return (
@@ -49,13 +49,14 @@ function Header({ currentSection }: Props) {
             aria-controls="side-menu"
             aria-expanded={showMenu}
             onClick={() => setShowMenu(true)}
+            ref={menuButtonRef}
           >
             <Image
               src={hamburguerIcon}
               layout="fixed"
               width={24}
               height={24}
-              alt="Hamburger icon"
+              alt=""
             />
           </Button>
 
