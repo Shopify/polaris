@@ -21,5 +21,5 @@ jobs:
       - uses: andresz1/size-limit-action@v1.5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directory: polaris-react/
-          build_script: turbo run build --cwd=".." --filter=@shopify/polaris...
+          build_script: yarn build -- --filter=@shopify/polaris...
+          script: cd polaris-react && yarn run size-limit --json
