@@ -8,6 +8,7 @@ import styles from "./TokenList.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
 import iconClipboard from "../../../public/icon-clipboard.svg";
 import Image from "../Image";
+import Tooltip from "../Tooltip";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -115,7 +116,7 @@ function TokenListItem({
   isHighlighted,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
-  const tokenNameWithPrefix = `--p-${name}`
+  const tokenNameWithPrefix = `--p-${name}`;
   const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   return (
@@ -135,22 +136,31 @@ function TokenListItem({
           )}
           {columns.name && (
             <td>
-              {didJustCopy ? 
-                <span className={styles.TokenNameCopied}>Copied!</span> : 
-                <span>
-                  <div className={styles.TokenName} onClick={copy}>
-                    <span className={styles.Clipboard}>
+              <span className={styles.TokenContainer}>
+                <div className={styles.TokenName}>
+                  <span>{tokenNameWithPrefix}</span>
+                </div>
+                <div className={styles.TokenClipboard}>
+                  <Tooltip
+                    ariaLabel="Copy to clipboard"
+                    placement="top"
+                    renderContent={() => (
+                      <div className={styles.TokenToolTip}>
+                        <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
+                      </div>
+                    )}
+                  >
+                    <button onClick={copy}>
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}
                         width={19}
                         height={19}
                       />
-                    </span>
-                    <span>{tokenNameWithPrefix}</span>
-                  </div>
-                </span>
-              }
+                    </button>
+                  </Tooltip>
+                </div>
+              </span>
             </td>
           )}
           {columns.value && <td className={styles.Value}>{value}</td>}

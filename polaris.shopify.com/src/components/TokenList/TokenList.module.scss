@@ -82,49 +82,35 @@
   }
 }
 
-.TokenName {
-  display: block;
-  float: left;
-  padding: 0.33rem 1rem;
+.TokenContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.33rem 0.5rem;
   background: #fff0df;
-  border-radius: var(--border-radius-round);
-  font-size: var(--font-size-400);
+  border-radius: var(--border-radius-400);
+  font-size: var(--font-size-200);
+  gap: 0.1rem;
+}
+
+.TokenName {
+  white-space: pre;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: pre;
-  max-width: 100%;
-  cursor: pointer;
+}
 
-  &:hover {
+.TokenClipboard {
+  min-width: 19px;
+
+  button {
     position: relative;
-    max-width: unset;
-    z-index: 1;
-    width: max-content;
+    top: 0.15rem;
+    background-color: transparent;
 
-    .Clipboard {
+    &:hover {
       filter: brightness(0.2);
     }
   }
-}
-
-.TokenNameCopied {
-  display: block;
-  float: left;
-  padding: 0.33rem 1rem;
-  color: var(--primary);
-  background: #fff0df;
-  border-radius: var(--border-radius-round);
-  font-size: var(--font-size-400);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  max-width: 100%;
-}
-
-.Clipboard {
-  position: relative;
-  top: 0.15rem;
-  padding-right: 0.2rem;
 }
 
 .TokenDescription {
