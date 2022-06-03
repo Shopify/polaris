@@ -139,6 +139,33 @@ Use to create a layout that can be customized at specific breakpoints.
 </Page>
 ```
 
+### Using spacing tokens for grid gap
+
+```jsx
+<Page fullWidth>
+  <Grid
+    gap={{
+      xs: 'space-2',
+      sm: 'space-4',
+      md: 'space-5',
+      lg: 'space-6',
+      xl: 'space-6',
+    }}
+  >
+    <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
+      <Card title="Sales" sectioned>
+        <p>View a summary of your online store’s sales.</p>
+      </Card>
+    </Grid.Cell>
+    <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
+      <Card title="Orders" sectioned>
+        <p>View a summary of your online store’s orders.</p>
+      </Card>
+    </Grid.Cell>
+  </Grid>
+</Page>
+```
+
 ---
 
 ## Related components

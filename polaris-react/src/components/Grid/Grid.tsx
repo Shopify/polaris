@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {tokens} from '@shopify/polaris-tokens';
+import {tokens, SpacingTokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useEventListener} from '../../utilities/use-event-listener';
@@ -7,7 +7,7 @@ import {useEventListener} from '../../utilities/use-event-listener';
 import {Cell} from './components';
 import styles from './Grid.scss';
 
-const {breakpoints} = tokens;
+const {breakpoints, spacing} = tokens;
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -19,8 +19,10 @@ type Areas = {
   [Breakpoint in Breakpoints]?: string[];
 };
 
+type GapValue = SpacingTokens | string;
+
 type Gap = {
-  [Breakpoint in Breakpoints]?: string;
+  [Breakpoint in Breakpoints]?: GapValue;
 };
 
 export interface GridProps {
@@ -32,17 +34,24 @@ export interface GridProps {
   columns?: Columns;
   children?: React.ReactNode;
 }
+
+const tokenToVariable = (value: GapValue) =>
+  spacing[value] ? `var(--p-${value})` : value;
+
+const getSpacingValue = (value: GapValue | undefined) =>
+  value ? tokenToVariable(value) : undefined;
+
 /** **Experimental!** This component is in alpha. Use with caution. */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {
   const [gridTemplateAreas, setGridTemplateAreas] = useState(getAreas(areas));
   const style = {
-    '--pc-grid-gap-xs': gap?.xs,
-    '--pc-grid-gap-sm': gap?.sm,
-    '--pc-grid-gap-md': gap?.md,
-    '--pc-grid-gap-lg': gap?.lg,
-    '--pc-grid-gap-xl': gap?.xl,
+    '--pc-grid-gap-xs': getSpacingValue(gap?.xs),
+    '--pc-grid-gap-sm': getSpacingValue(gap?.sm),
+    '--pc-grid-gap-md': getSpacingValue(gap?.md),
+    '--pc-grid-gap-lg': getSpacingValue(gap?.lg),
+    '--pc-grid-gap-xl': getSpacingValue(gap?.xl),
     '--pc-grid-columns-xs': columns?.xs,
     '--pc-grid-columns-sm': columns?.sm,
     '--pc-grid-columns-md': columns?.md,

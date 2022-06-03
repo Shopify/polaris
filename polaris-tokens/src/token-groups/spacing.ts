@@ -51,3 +51,5 @@ export const spacing = {
     value: '128px',
   },
 };
+
+export type SpacingTokens = keyof typeof spacing;

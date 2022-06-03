@@ -10,6 +10,8 @@ import {typography} from './token-groups/typography';
 import {zIndex} from './token-groups/zIndex';
 import {tokensToRems} from './utilities';
 
+export type {SpacingTokens} from './token-groups/spacing';
+
 /**
  * Values to convert to CSS custom properties.
  * @example {background: '#000'} // --p-background: #000;
