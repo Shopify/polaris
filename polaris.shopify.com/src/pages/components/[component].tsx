@@ -1,14 +1,22 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import fs from "fs";
-import path from "path";
 import glob from "glob";
 import { marked } from "marked";
-import { parseMarkdown } from "../../utils/markdown.mjs";
-
-import { getComponentNav, getTitleTagValue } from "../../utils/various";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import path from "path";
+import type { ReactElement, ReactNode } from "react";
+import Longform from "../../components/Longform";
+import Markdown from "../../components/Markdown";
 import { NavItem } from "../../components/Nav/Nav";
 import NavContentTOCLayout from "../../components/NavContentTOCLayout";
+import LeftNavWithTOCLayout from "../../components/LeftNavWithTOCLayout";
+import { parseMarkdown } from "../../utils/markdown.mjs";
+import {
+  getComponentCategories,
+  getComponentNav,
+  getTitleTagValue,
+  slugify,
+} from "../../utils/various";
 
 interface MarkdownData {
   frontMatter: any;
@@ -20,8 +28,43 @@ interface Props {
   readme: string;
 }
 
-const Components: NextPage<Props> = (props) => {
-  const { name, readme } = props;
+const navItems: NavItem[] = getComponentNav();
+
+type NextPageWithLayout = NextPage<Props> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+const ComponentsTwo: NextPageWithLayout = ({ name, readme }) => {
+  const navItems: NavItem[] = getComponentNav();
+
+  return (
+    <>
+      <Head>
+        <title>{getTitleTagValue(name)}</title>
+      </Head>
+
+      {name && (
+        <Longform>
+          <h1>{name}</h1>
+        </Longform>
+      )}
+      <Longform>
+        <Markdown text={readme} skipH1 />
+      </Longform>
+    </>
+  );
+};
+
+ComponentsTwo.getLayout = function getLayout(page: ReactElement) {
+  const { readme } = page.props;
+  return (
+    <LeftNavWithTOCLayout navItems={navItems} content={readme}>
+      {page}
+    </LeftNavWithTOCLayout>
+  );
+};
+
+const Components: NextPage<Props> = ({ name, readme }) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
@@ -66,7 +109,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const componentBasePath = path.resolve(process.cwd(), "content/components");
   const paths = glob
     .sync(path.join(componentBasePath, "**/index.md"))
-    .map((fileName) => {
+    .map((fileName: string) => {
       return fileName
         .replace(`${process.cwd()}/content`, "")
         .replace("/index.md", "");
@@ -78,4 +121,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Components;
+export default ComponentsTwo;
