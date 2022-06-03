@@ -7,7 +7,7 @@ import {
   TokensSearchResult,
   GroupedSearchResults,
 } from "../types";
-import { tokens } from "@shopify/polaris-tokens";
+import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 import metadata from "@shopify/polaris-icons/metadata";
@@ -66,20 +66,22 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 // Add other tokens
 const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
-  Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
-    results.push({
-      category: "Tokens",
-      score: 0,
-      url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
-      meta: {
-        token: {
-          name: tokenName,
-          description: tokenValue.description || "",
-          value: tokenValue.value,
+  Object.entries(tokenGroup).forEach(
+    ([tokenName, tokenValue]: [string, TokenProperties]) => {
+      results.push({
+        category: "Tokens",
+        score: 0,
+        url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
+        meta: {
+          token: {
+            name: tokenName,
+            description: tokenValue?.description || "",
+            value: tokenValue.value,
+          },
         },
-      },
-    });
-  });
+      });
+    }
+  );
 });
 
 // Add icons
