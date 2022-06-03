@@ -19,10 +19,8 @@ type Areas = {
   [Breakpoint in Breakpoints]?: string[];
 };
 
-type GapValue = SpacingTokens | string;
-
 type Gap = {
-  [Breakpoint in Breakpoints]?: GapValue;
+  [Breakpoint in Breakpoints]?: SpacingTokens;
 };
 
 export interface GridProps {
@@ -35,10 +33,9 @@ export interface GridProps {
   children?: React.ReactNode;
 }
 
-const tokenToVariable = (value: GapValue) =>
-  spacing[value] ? `var(--p-${value})` : value;
+const tokenToVariable = (value: SpacingTokens) => `var(--p-${value})`;
 
-const getSpacingValue = (value: GapValue | undefined) =>
+const getSpacingValue = (value: SpacingTokens | undefined) =>
   value ? tokenToVariable(value) : undefined;
 
 /** **Experimental!** This component is in alpha. Use with caution. */

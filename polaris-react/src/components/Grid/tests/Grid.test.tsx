@@ -146,6 +146,30 @@ describe('<Grid />', () => {
     });
   });
 
+  it('allows you to use token aliases as gap values', () => {
+    const grid = mountWithApp(
+      <Grid
+        gap={{
+          xs: 'space-0',
+          sm: 'space-1',
+          md: 'space-2',
+          lg: 'space-4',
+          xl: 'space-6',
+        }}
+      />,
+    );
+
+    expect(grid).toContainReactComponent('div', {
+      style: {
+        '--pc-grid-gap-xs': 'var(--p-space-0)',
+        '--pc-grid-gap-sm': 'var(--p-space-1)',
+        '--pc-grid-gap-md': 'var(--p-space-2)',
+        '--pc-grid-gap-lg': 'var(--p-space-4)',
+        '--pc-grid-gap-xl': 'var(--p-space-6)',
+      } as React.CSSProperties,
+    });
+  });
+
   describe('formatAreas', () => {
     it('formats a single area', () => {
       const areas = ['area1'];
