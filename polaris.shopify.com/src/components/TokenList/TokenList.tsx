@@ -5,6 +5,9 @@ import {
 import { createContext } from "react";
 import { className } from "../../utils/various";
 import styles from "./TokenList.module.scss";
+import { useCopyToClipboard } from "../../utils/hooks";
+import iconClipboard from "../../../public/icon-clipboard.svg";
+import Image from "../Image";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -112,6 +115,8 @@ function TokenListItem({
   isHighlighted,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
+  const tokenNameWithPrefix = `--p-${name}`
+  const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   return (
     <TokenListContext.Consumer>
@@ -130,7 +135,22 @@ function TokenListItem({
           )}
           {columns.name && (
             <td>
-              <span className={styles.TokenName}>--p-{name}</span>
+              {didJustCopy ? 
+                <span className={styles.TokenNameCopied}>Copied!</span> : 
+                <span>
+                  <div className={styles.TokenName} onClick={copy}>
+                    <span className={styles.Clipboard}>
+                      <Image
+                        src={iconClipboard}
+                        alt={"Copy"}
+                        width={19}
+                        height={19}
+                      />
+                    </span>
+                    <span>{tokenNameWithPrefix}</span>
+                  </div>
+                </span>
+              }
             </td>
           )}
           {columns.value && <td className={styles.Value}>{value}</td>}
