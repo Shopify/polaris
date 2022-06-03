@@ -34,4 +34,6 @@ export type Exact<
   ? ParameterType
   : {
       [Key in keyof ParameterType]: Exact<ParameterType[Key], InputType[Key]>;
-    } & Record<Exclude<keyof InputType, KeysOfUnion<ParameterType>>, never>;
+    } & {
+      [Key in Exclude<keyof InputType, KeysOfUnion<ParameterType>>]: never;
+    };
