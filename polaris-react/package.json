@@ -133,27 +133,5 @@
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
     "ios >= 13.4"
-  ],
-  "size-limit": [
-    {
-      "name": "cjs",
-      "path": "build/cjs/index.js",
-      "limit": "180 kB"
-    },
-    {
-      "name": "esm",
-      "path": "build/esm/index.js",
-      "limit": "105 kB"
-    },
-    {
-      "name": "esnext",
-      "path": "build/esnext/index.esnext",
-      "limit": "160 kB"
-    },
-    {
-      "name": "css",
-      "path": "build/esm/styles.css",
-      "limit": "45 kB"
-    }
   ]
 }
