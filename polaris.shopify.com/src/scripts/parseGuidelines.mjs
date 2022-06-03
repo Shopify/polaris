@@ -5,7 +5,7 @@ import { parseMarkdown } from "../utils/markdown.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const guidelinesDir = path.join(__dirname, "../pages-from-old-website");
+const guidelinesDir = path.join(__dirname, "../../content");
 
 let guidelines = [];
 
