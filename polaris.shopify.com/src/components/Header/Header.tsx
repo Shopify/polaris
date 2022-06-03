@@ -6,7 +6,7 @@ import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Button from "../Button";
-import SideMenu from "../SideMenu";
+import SideNav from "../SideNav";
 import NavItems from "../NavItems";
 
 import styles from "./Header.module.scss";
@@ -22,15 +22,15 @@ function Header({ currentSection }: Props) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    function hideSideMenuOnResize() {
+    function hideSideNavOnResize() {
       if (window.innerWidth > Breakpoints.SMALL && showMenu) {
         setShowMenu(false);
       }
     }
 
-    window.addEventListener("resize", hideSideMenuOnResize);
+    window.addEventListener("resize", hideSideNavOnResize);
 
-    return () => window.removeEventListener("resize", hideSideMenuOnResize);
+    return () => window.removeEventListener("resize", hideSideNavOnResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,7 +42,7 @@ function Header({ currentSection }: Props) {
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
-        <nav className={styles.SideMenuNav}>
+        <nav className={styles.SideNavContainer}>
           <Button
             id="menu-button"
             aria-label="Open menu"
@@ -60,7 +60,7 @@ function Header({ currentSection }: Props) {
             />
           </Button>
 
-          <SideMenu
+          <SideNav
             currentSection={currentSection}
             showMenu={showMenu}
             handleCloseMenu={handleCloseMenu}

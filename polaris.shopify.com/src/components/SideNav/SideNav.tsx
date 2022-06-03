@@ -6,7 +6,7 @@ import { className } from "../../utils/various";
 import NavItems from "../NavItems";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
-import styles from "./SideMenu.module.scss";
+import styles from "./SideNav.module.scss";
 
 interface Props {
   currentSection?: string;
@@ -14,7 +14,7 @@ interface Props {
   handleCloseMenu: () => void;
 }
 
-function SideMenu({
+function SideNav({
   currentSection = "",
   showMenu = false,
   handleCloseMenu,
@@ -32,7 +32,7 @@ function SideMenu({
   return (
     <ul
       id="side-menu"
-      className={className(styles.SideMenu, showMenu && styles.show)}
+      className={className(styles.SideNav, showMenu && styles.show)}
       ref={menuRef}
     >
       <li>
@@ -95,4 +95,4 @@ function CloseIcon() {
   );
 }
 
-export default SideMenu;
+export default SideNav;
