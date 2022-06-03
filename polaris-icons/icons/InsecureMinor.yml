@@ -1,0 +1,15 @@
+name: insecure
+set: minor
+description: Used to represent a insecure or unprotected item or resource, or than an item or resource can't be trusted.
+keywords:
+  - unprotected
+  - insecure
+  - risk
+  - danger
+  - unverified
+authors:
+  - Luke Ngakane
+version: 1
+date_added: 2022-06-03
+date_modified: 2022-06-03
+exclusive_use:
