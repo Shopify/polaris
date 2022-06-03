@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import components from "../../data/components.json";
 import {
@@ -16,7 +15,6 @@ const componentCategories = getComponentCategories();
 interface Props {}
 
 export default function ComponentsPage({}: Props) {
-  
   return (
     <MaxPageWidthDiv className={styles.ComponentsPage}>
       <Head>
@@ -31,14 +29,11 @@ export default function ComponentsPage({}: Props) {
               <ComponentGrid>
                 {components
                   .filter(
-                    (component) =>
-                      component.frontMatter.category === category
+                    (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
-                    const { name, category } = frontMatter;
-                    const url = `/components/${slugify(category)}/${slugify(
-                      name.toLowerCase()
-                    )}`;
+                    const { name } = frontMatter;
+                    const url = `/components/${slugify(name.toLowerCase())}`;
                     return (
                       <ComponentGrid.Item
                         key={name}

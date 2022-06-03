@@ -16,15 +16,15 @@ const Guidelines: NextPage<Props> = ({ markdownFile }) => {
   return <GuidelinesPage markdownFile={markdownFile} />;
 };
 
-const postsDirectory = path.join(process.cwd(), "src/pages-from-old-website");
+const guidelinesDirectory = path.join(process.cwd(), "content/guidelines");
 
 export const getStaticProps: GetStaticProps<
   Props,
   { category: string; doc: string }
 > = async (context) => {
-  // TODO: Sanitize params?
+  // TODO: Markdown frontmatter typesafety
   const fullPath = path.join(
-    postsDirectory,
+    guidelinesDirectory,
     context.params?.category || "",
     `${context.params?.doc}.md`
   );
