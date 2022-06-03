@@ -1,0 +1,127 @@
+@import "../../styles/variables.scss";
+
+.Header {
+  border-bottom: var(--border);
+}
+
+.HeaderInner {
+  display: flex;
+  gap: 3em;
+  height: var(--header-height);
+
+  .Nav {
+    display: flex;
+
+    ul {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-size-100);
+      font-weight: 500;
+      margin-right: auto;
+
+      li {
+        a {
+          color: inherit;
+          padding: 0.85rem 1rem;
+
+          &:focus-within {
+            position: relative;
+            z-index: 1;
+            border-radius: var(--border-radius-800);
+          }
+
+          &:hover {
+            color: var(--text-strong);
+          }
+
+          &[aria-current="page"] {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius-800);
+          }
+        }
+
+        &:first-child a {
+          border-left: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: $smallBreakpoint) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $smallBreakpoint) {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    justify-content: space-between;
+  }
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-inherit);
+  gap: 0.7rem;
+  font-weight: 500;
+  font-size: var(--font-size-100);
+
+  p {
+    margin: 0;
+  }
+
+  span {
+    transform: translate3d(0, -1px, 0);
+  }
+
+  @media screen and (max-width: $smallBreakpoint) {
+    display: none;
+  }
+}
+
+.SearchWrapper {
+  display: flex;
+  align-items: center;
+  width: 18.25rem; // Align with TOC on guidelines pages
+  margin-left: auto;
+
+  .Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    border-radius: 100%;
+  }
+}
+
+.SideNavContainer {
+  visibility: hidden;
+  display: none;
+
+  @media screen and (max-width: $smallBreakpoint) {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop);
+  opacity: 0;
+  animation-name: FadeIn;
+  animation-duration: var(--duration-200);
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

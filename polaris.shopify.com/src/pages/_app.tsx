@@ -1,11 +1,11 @@
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
-import Head from "next/head";
 import type { AppProps } from "next/app";
-// import "@shopify/polaris/build/esm/styles.css";
+import { useRouter } from "next/router";
+import Head from "next/head";
+
 import "../styles/globals.scss";
 import Page from "../components/Page";
-import { useRouter } from "next/router";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,8 +23,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
+
       <Page skipHeaderAndFooter={isPolaris}>
         <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
           {getLayout(<Component {...pageProps} />)}
