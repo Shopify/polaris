@@ -42,7 +42,7 @@ function Header({ currentSection }: Props) {
   return (
     <div className={styles.Header}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
-        <nav className={styles.HamburgerButton}>
+        <nav className={styles.SideMenuNav}>
           <Button
             id="menu-button"
             aria-label="Open menu"

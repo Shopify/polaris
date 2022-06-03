@@ -54,6 +54,7 @@
   @media screen and (max-width: $smallBreakpoint) {
     gap: 0.5rem;
     padding: 0 0.5rem;
+    justify-content: space-between;
   }
 }
 
@@ -92,7 +93,7 @@
   }
 }
 
-.HamburgerButton {
+.SideMenuNav {
   visibility: hidden;
   display: none;
 
