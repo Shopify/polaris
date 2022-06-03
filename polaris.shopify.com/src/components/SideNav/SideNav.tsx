@@ -41,7 +41,6 @@ function SideNav({
             className={styles.Logo}
             onClick={handleCloseMenu}
             onKeyDown={(e) => {
-              // this is the last child of the menu, if users press SHIFT + TAB it will return focus to the last element of the menu
               if (e.key === "Tab" && e.shiftKey) {
                 e.preventDefault();
                 const lastLink = menuRef.current?.lastElementChild?.children[0];
@@ -72,7 +71,6 @@ function SideNav({
           className={styles.CloseButton}
           onClick={handleCloseMenu}
           onKeyDown={(e) => {
-            // this is the last child of the menu, if users press TAB it will return focus to the first element of the menu
             if (e.key === "Tab" && !e.shiftKey) {
               e.preventDefault();
               const firstLink = menuRef.current?.firstElementChild?.children[0];
