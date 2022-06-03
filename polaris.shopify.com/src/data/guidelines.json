@@ -688,6 +688,15 @@
   },
   {
     "frontMatter": {
+      "name": "Patterns/Help content",
+      "slug": "help-content",
+      "icon": "IconCraftingAdmin",
+      "keywords": ["help text", "learn more", "help center", "help"]
+    },
+    "intro": "​\nHelp content is educational text that describes interactive elements or offers information about concepts in the UI."
+  },
+  {
+    "frontMatter": {
       "name": "Patterns/Home cards",
       "slug": "home-cards",
       "icon": "CategoriesMajor",

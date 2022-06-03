@@ -1,7 +1,7 @@
-import { AppProvider, Button,Popover,ActionList } from "@shopify/polaris";
-import { ImportMinor,ExportMinor,DeleteMinor } from "@shopify/polaris-icons";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Button, Popover, ActionList } from "@shopify/polaris";
+import { ImportMinor, ExportMinor, DeleteMinor } from "@shopify/polaris-icons";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ActionListWithDestructiveItemExample() {
   const [active, setActive] = useState(true);
 
@@ -14,7 +14,7 @@ function ActionListWithDestructiveItemExample() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{ height: "250px" }}>
       <Popover
         active={active}
         activator={activator}
@@ -25,17 +25,17 @@ function ActionListWithDestructiveItemExample() {
           actionRole="menuitem"
           sections={[
             {
-              title: 'File options',
+              title: "File options",
               items: [
                 {
                   active: true,
-                  content: 'Import file',
+                  content: "Import file",
                   icon: ImportMinor,
                 },
-                {content: 'Export file', icon: ExportMinor},
+                { content: "Export file", icon: ExportMinor },
                 {
                   destructive: true,
-                  content: 'Delete file',
+                  content: "Delete file",
                   icon: DeleteMinor,
                 },
               ],
@@ -56,12 +56,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ActionListWithDestructiveItemExample />
       </div>
@@ -70,4 +70,3 @@ function Example() {
 }
 
 export default Example;
-    

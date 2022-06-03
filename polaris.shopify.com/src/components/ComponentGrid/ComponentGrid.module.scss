@@ -1,0 +1,48 @@
+@import "../../styles/fonts.scss";
+
+.ComponentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2rem 1rem;
+}
+
+.Component {
+  display: flex;
+
+  a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    box-shadow: var(--card-shadow);
+  }
+
+  &.isHighlighted a {
+    box-shadow: var(--focus-outline);
+  }
+
+  .ComponentDescription {
+    padding: 1rem 1rem 0 0;
+  }
+
+  h4 {
+    margin-bottom: 0.1rem;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+  }
+
+  p {
+    font-size: var(--font-size-300);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.Preview {
+  filter: brightness(0.91) contrast(1.15);
+  border-radius: var(--border-radius-800);
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 import { AppProvider, Tag } from "@shopify/polaris";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -10,18 +10,17 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
-        <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
+        <Tag onClick={() => console.log("Clicked")}>Wholesale</Tag>
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "{title} 작업 보기"
       }
+    },
+    "FullscreenBar": {
+      "back": "뒤로",
+      "accessibilityLabel": "전체 화면 모드 종료"
     }
   }
 }

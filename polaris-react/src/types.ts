@@ -68,6 +68,8 @@ export interface BaseButton {
   ariaExpanded?: boolean;
   /** Indicates the ID of the element that describes the button */
   ariaDescribedBy?: string;
+  /** Indicates the current checked state of the button when acting as a toggle or switch */
+  ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */
@@ -84,6 +86,8 @@ export interface BaseButton {
   onMouseEnter?(): void;
   /** Callback when element is touched */
   onTouchStart?(): void;
+  /** Callback when pointerdown event is being triggered */
+  onPointerDown?(): void;
 }
 
 export interface Action {
@@ -167,15 +171,20 @@ export interface PlainAction extends Action {
 }
 
 export interface ActionListItemDescriptor
-  extends IconableAction,
-    DisableableAction,
-    BadgeAction,
+  extends DisableableAction,
     DestructableAction {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** @deprecated Badge component */
+  badge?: {
+    status: 'new';
+    content: string;
+  };
   /** Additional hint text to display with item */
   helpText?: string;
-  /** Image source */
+  /** @deprecated Source of the icon */
+  icon?: IconSource;
+  /** @deprecated Image source */
   image?: string;
   /** Prefix source */
   prefix?: React.ReactNode;

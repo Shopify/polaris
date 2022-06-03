@@ -1,6 +1,5 @@
 import { AppProvider, Thumbnail } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
-import translations from '@shopify/polaris/locales/en.json';
+import translations from "@shopify/polaris/locales/en.json";
 
 function Example() {
   return (
@@ -11,18 +10,21 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
-        <Thumbnail source={NoteMinor} size="large" alt="Small document" />
+        <Thumbnail
+          source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+          size="large"
+          alt="Black choker necklace"
+        />
       </div>
     </AppProvider>
   );
 }
 
 export default Example;
-    

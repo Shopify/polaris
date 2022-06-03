@@ -1,15 +1,15 @@
 import { AppProvider, Select } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function ValidationErrorExample() {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   return (
     <Select
       label="Province"
-      options={['Alberta']}
+      options={["Alberta"]}
       value={selected}
       onChange={handleSelectChange}
       error="Province is required"
@@ -26,12 +26,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <ValidationErrorExample />
       </div>
@@ -40,4 +40,3 @@ function Example() {
 }
 
 export default Example;
-    

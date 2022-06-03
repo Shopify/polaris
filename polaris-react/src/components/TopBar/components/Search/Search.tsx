@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line import/no-deprecated
 import {CustomProperties} from '../../../CustomProperties';
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';

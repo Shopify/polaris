@@ -29,6 +29,6 @@ jobs:
         run: yarn turbo run test --filter=polaris-for-vscode
 
       - name: Publish extension in the marketplace
-        run: yarn workspace polaris-for-vscode vsce publish --yarn
+        run: yarn workspace polaris-for-vscode vsce publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}

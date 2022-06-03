@@ -2,7 +2,9 @@ name: Accessibility and Visual Regression Tests
 
 on:
   push:
-    branches: [main, polaris-release]
+    branches:
+      - main
+      - next
     paths:
       - 'polaris-react/src/**'
       - 'polaris-tokens/src/**'

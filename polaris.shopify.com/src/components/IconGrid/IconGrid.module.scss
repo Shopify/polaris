@@ -1,0 +1,55 @@
+.IconGrid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.Icon {
+  transition: all 0.2s ease;
+
+  button {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    cursor: pointer;
+    background: var(--surface-subdued);
+    padding-top: 5px;
+    aspect-ratio: 5 / 4;
+    border-radius: var(--border-radius-800);
+    transition: background-color 0.05s linear;
+    box-shadow: var(--card-shadow);
+
+    &:hover {
+      background: var(--surface-subdued);
+      box-shadow: var(--card-shadow-hover);
+    }
+  }
+
+  &.isHighlighted button,
+  button:focus {
+    box-shadow: var(--focus-outline);
+  }
+}
+
+.Preview {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+  animation: icon-in 0.25s 0.05s ease both;
+}
+
+.IconMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+
+  p {
+    max-width: 60%;
+    text-align: center;
+  }
+}

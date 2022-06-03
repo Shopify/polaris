@@ -1,25 +1,25 @@
-import { AppProvider, Page,Card,DataTable } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, Page, Card, DataTable } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function SortableDataTableExample() {
   const [sortedRows, setSortedRows] = useState(null);
 
   const initiallySortedRows = [
-    ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
-    ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+    ["Emerald Silk Gown", "$875.00", 124689, 140, "$122,500.00"],
+    ["Mauve Cashmere Scarf", "$230.00", 124533, 83, "$19,090.00"],
     [
-      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-      '$445.00',
+      "Navy Merino Wool Blazer with khaki chinos and yellow belt",
+      "$445.00",
       124518,
       32,
-      '$14,240.00',
+      "$14,240.00",
     ],
   ];
   const rows = sortedRows ? sortedRows : initiallySortedRows;
 
   const handleSort = useCallback(
     (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
-    [rows],
+    [rows]
   );
 
   return (
@@ -27,21 +27,21 @@ function SortableDataTableExample() {
       <Card>
         <DataTable
           columnContentTypes={[
-            'text',
-            'numeric',
-            'numeric',
-            'numeric',
-            'numeric',
+            "text",
+            "numeric",
+            "numeric",
+            "numeric",
+            "numeric",
           ]}
           headings={[
-            'Product',
-            'Price',
-            'SKU Number',
-            'Net quantity',
-            'Net sales',
+            "Product",
+            "Price",
+            "SKU Number",
+            "Net quantity",
+            "Net sales",
           ]}
           rows={rows}
-          totals={['', '', '', 255, '$155,830.00']}
+          totals={["", "", "", 255, "$155,830.00"]}
           sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
@@ -56,7 +56,7 @@ function SortableDataTableExample() {
       const amountA = parseFloat(rowA[index].substring(1));
       const amountB = parseFloat(rowB[index].substring(1));
 
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+      return direction === "descending" ? amountB - amountA : amountA - amountB;
     });
   }
 }
@@ -70,12 +70,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <SortableDataTableExample />
       </div>
@@ -84,4 +84,3 @@ function Example() {
 }
 
 export default Example;
-    

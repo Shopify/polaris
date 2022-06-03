@@ -1,6 +1,6 @@
-import { AppProvider, ButtonGroup,Button } from "@shopify/polaris";
-import { useState,useCallback } from "react";
-import translations from '@shopify/polaris/locales/en.json';
+import { AppProvider, ButtonGroup, Button } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import translations from "@shopify/polaris/locales/en.json";
 function PressedButton() {
   const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
 
@@ -35,12 +35,12 @@ function Example() {
       />
       <div
         style={{
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0 50px",
-  }}
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
       >
         <PressedButton />
       </div>
@@ -49,4 +49,3 @@ function Example() {
 }
 
 export default Example;
-    

@@ -8,7 +8,6 @@ interface Props extends ImageProps {}
 
 function Image({ ...rest }: Props) {
   const [hasLoaded, setHasLoaded] = useState(false);
-
   return (
     <NextJSImage
       className={className(styles.Image, hasLoaded && styles.hasLoaded)}

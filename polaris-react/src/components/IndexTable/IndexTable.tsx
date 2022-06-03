@@ -1,14 +1,15 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import {tokens} from '../../tokens';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
@@ -34,6 +35,7 @@ import styles from './IndexTable.scss';
 
 export interface IndexTableHeading {
   title: string;
+  flush?: boolean;
   new?: boolean;
   hidden?: boolean;
 }
@@ -45,6 +47,7 @@ export interface IndexTableBaseProps {
   children?: React.ReactNode;
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
+  paginatedSelectAllActionText?: string;
   lastColumnSticky?: boolean;
   selectable?: boolean;
 }
@@ -66,6 +69,7 @@ function IndexTableBase({
   children,
   emptyState,
   sort,
+  paginatedSelectAllActionText,
   lastColumnSticky = false,
   ...restProps
 }: IndexTableBaseProps) {
@@ -404,7 +408,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(tokens.motion['duration-100'], 10)}
+      timeout={parseInt(tokens.motion['duration-100'].value, 10)}
       appear
       unmountOnExit
     >
@@ -632,6 +636,7 @@ function IndexTableBase({
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
       !selectable && styles['TableHeading-unselectable'],
+      heading.flush && styles['TableHeading-flush'],
     );
 
     const stickyPositioningStyle =
@@ -745,13 +750,17 @@ function IndexTableBase({
       return;
     }
 
+    const customActionText =
+      paginatedSelectAllActionText ??
+      i18n.translate('Polaris.IndexTable.selectAllItems', {
+        itemsLength: itemCount,
+        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+      });
+
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.IndexTable.undo')
-        : i18n.translate('Polaris.IndexTable.selectAllItems', {
-            itemsLength: itemCount,
-            resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-          });
+        : customActionText;
 
     return {
       content: actionText,

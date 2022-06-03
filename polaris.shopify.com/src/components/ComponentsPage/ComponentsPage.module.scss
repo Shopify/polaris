@@ -1,0 +1,43 @@
+@import "../../styles/fonts.scss";
+
+.ComponentsPage {
+  h1 {
+    margin-bottom: 2rem;
+    @include heading-1;
+  }
+
+  h2 {
+    font-size: var(--font-size-700);
+  }
+}
+
+.Post {
+  position: relative;
+  flex: 1;
+}
+
+.Filters {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .TextField {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    margin: 0 0 3px 0;
+  }
+}
+
+.Category {
+  margin-bottom: 3.5rem;
+}
+
+.CategoryName {
+  margin-bottom: 1rem;
+  background: url(./BehaviorMajor.svg) no-repeat left 40%;
+  background-size: 20px auto;
+  padding-left: 28px;
+  @include heading-2;
+}

@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
@@ -231,7 +232,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-
+      // eslint-disable-next-line import/no-deprecated
       index.find(EventListener)!.trigger('handler');
 
       expect(spy).not.toHaveBeenCalled();
@@ -379,6 +380,26 @@ describe('<IndexTable>', () => {
         SelectionType.All,
         true,
       );
+    });
+
+    it('renders a custom select all string if present', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const customString = 'Foo bar baz';
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={[{content: 'promoted action'}]}
+          onSelectionChange={onSelectionChangeSpy}
+          paginatedSelectAllActionText={customString}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {

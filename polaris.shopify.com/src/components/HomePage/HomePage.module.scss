@@ -1,0 +1,11 @@
+@import "../../styles/fonts.scss";
+
+.HomePage {
+  h1 {
+    @include heading-1;
+  }
+
+  h2 {
+    @include heading-2;
+  }
+}

@@ -2,7 +2,7 @@
 
 .ContextualSaveBar {
   display: flex;
-  height: top-bar-height();
+  height: $top-bar-height;
   background: var(--p-surface);
   box-shadow: 0 2px 4px var(--p-hint-from-direct-light);
 
@@ -27,9 +27,9 @@
 .LogoContainer {
   display: none;
 
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: flex;
-    flex: 0 0 layout-width(nav);
+    flex: 0 0 $layout-width-nav-base;
     align-items: center;
     height: 100%;
     padding: 0 var(--p-space-4);
@@ -43,8 +43,8 @@
   align-items: center;
   justify-content: space-between;
   min-width: 1px;
-  max-width: layout-width(primary, max) + layout-width(secondary, max) +
-    layout-width(inner-spacing);
+  max-width: $layout-width-primary-max + $layout-width-secondary-max +
+    $layout-width-inner-spacing-base;
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--p-space-4);
@@ -80,8 +80,8 @@
 .ContextControl {
   display: none;
 
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: block;
-    width: layout-width(nav);
+    width: $layout-width-nav-base;
   }
 }
