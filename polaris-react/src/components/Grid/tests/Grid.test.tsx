@@ -1,12 +1,8 @@
 import React from 'react';
 import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {act} from 'react-dom/test-utils';
-import {tokens} from '@shopify/polaris-tokens';
 
 import {formatAreas, Grid} from '../Grid';
-
-const {breakpoints} = tokens;
 
 describe('<Grid />', () => {
   beforeEach(() => {
@@ -25,9 +21,7 @@ describe('<Grid />', () => {
   const lgAreas = ['lg1', 'lg2', 'lg3'];
   const xlAreas = ['xl1', 'xl2', 'xl3'];
 
-  it('applies small grid-template-areas as inline style when screenwidth is less than breakpoints-sm', () => {
-    setMediaWidth(breakpoints['breakpoints-xs'].value);
-
+  it('applies grid-template-areas as custom properties', () => {
     const grid = mountWithApp(
       <Grid
         areas={{
@@ -41,68 +35,13 @@ describe('<Grid />', () => {
     );
 
     expect(grid).toContainReactComponent('div', {
-      style: {gridTemplateAreas: formatAreas(xsAreas)},
-    });
-  });
-
-  it('applies medium grid-template-areas as inline style when screenwidth is less than breakpoints-md', () => {
-    setMediaWidth(breakpoints['breakpoints-sm'].value);
-
-    const grid = mountWithApp(
-      <Grid
-        areas={{
-          xs: xsAreas,
-          sm: smAreas,
-          md: mdAreas,
-          lg: lgAreas,
-          xl: xlAreas,
-        }}
-      />,
-    );
-
-    expect(grid).toContainReactComponent('div', {
-      style: {gridTemplateAreas: formatAreas(smAreas)},
-    });
-  });
-
-  it('applies large grid-template-areas as inline style when screenwidth is less than breakpoints-lg', () => {
-    setMediaWidth(breakpoints['breakpoints-md'].value);
-
-    const grid = mountWithApp(
-      <Grid
-        areas={{
-          xs: xsAreas,
-          sm: smAreas,
-          md: mdAreas,
-          lg: lgAreas,
-          xl: xlAreas,
-        }}
-      />,
-    );
-
-    expect(grid).toContainReactComponent('div', {
-      style: {gridTemplateAreas: formatAreas(mdAreas)},
-    });
-  });
-
-  it('re-renders grid-template-areas on resize', () => {
-    setMediaWidth(breakpoints['breakpoints-xs'].value);
-    const grid = mountWithApp(<Grid areas={{xs: xsAreas, sm: smAreas}} />);
-
-    expect(grid).toContainReactComponent('div', {
-      style: {gridTemplateAreas: formatAreas(xsAreas)},
-    });
-
-    act(() => {
-      setMediaWidth(breakpoints['breakpoints-sm'].value);
-      window.dispatchEvent(new Event('resize'));
-      timer.runAllTimers();
-    });
-
-    grid.forceUpdate();
-
-    expect(grid).toContainReactComponent('div', {
-      style: {gridTemplateAreas: formatAreas(smAreas)},
+      style: {
+        '--pc-grid-areas-xs': formatAreas(xsAreas),
+        '--pc-grid-areas-sm': formatAreas(smAreas),
+        '--pc-grid-areas-md': formatAreas(mdAreas),
+        '--pc-grid-areas-lg': formatAreas(lgAreas),
+        '--pc-grid-areas-xl': formatAreas(xlAreas),
+      } as React.CSSProperties,
     });
   });
 
@@ -165,16 +104,3 @@ describe('<Grid />', () => {
     });
   });
 });
-
-function setMediaWidth(width: string) {
-  jest.spyOn(window, 'matchMedia').mockImplementation((query) => ({
-    matches: query === `(min-width: ${width})`,
-    media: '',
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  }));
-}
