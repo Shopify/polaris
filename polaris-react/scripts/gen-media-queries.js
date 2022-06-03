@@ -59,5 +59,5 @@ function getDownMediaCondition(breakpoint) {
 }
 
 function toEm(value) {
-  return `${parseInt(value, 10) / 16}em`;
+  return `${parseInt(value, 10)}em`;
 }
