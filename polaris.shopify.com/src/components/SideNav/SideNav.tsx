@@ -22,12 +22,24 @@ function SideNav({
   const menuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
+    const handleOnKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleCloseMenu();
+      }
+    };
+
+    if (showMenu) {
+      document.addEventListener("keydown", handleOnKeyDown);
+    }
+
     const firstLink = menuRef.current?.querySelector("a");
 
     if (showMenu && firstLink instanceof HTMLElement) {
       firstLink.focus();
     }
-  }, [showMenu]);
+
+    return () => document.removeEventListener("keydown", handleOnKeyDown);
+  }, [showMenu, handleCloseMenu]);
 
   return (
     <ul
