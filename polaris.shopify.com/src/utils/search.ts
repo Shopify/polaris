@@ -67,7 +67,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
-    ([tokenName, tokenValue]: [string, TokenProperties]) => {
+    ([tokenName, tokenProperties]: [string, TokenProperties]) => {
       results.push({
         category: "Tokens",
         score: 0,
@@ -75,8 +75,8 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
         meta: {
           token: {
             name: tokenName,
-            description: tokenValue?.description || "",
-            value: tokenValue.value,
+            description: tokenProperties.description || "",
+            value: tokenProperties.value,
           },
         },
       });
