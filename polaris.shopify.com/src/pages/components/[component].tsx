@@ -11,12 +11,7 @@ import { NavItem } from "../../components/Nav/Nav";
 import NavContentTOCLayout from "../../components/NavContentTOCLayout";
 import LeftNavWithTOCLayout from "../../components/LeftNavWithTOCLayout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import {
-  getComponentCategories,
-  getComponentNav,
-  getTitleTagValue,
-  slugify,
-} from "../../utils/various";
+import { getComponentNav, getTitleTagValue } from "../../utils/various";
 
 interface MarkdownData {
   frontMatter: any;
