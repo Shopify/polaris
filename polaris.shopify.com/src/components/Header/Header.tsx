@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Button from "../Button";
 import SideMenu from "../SideMenu";
 import NavItems from "../NavItems";
 
+import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
-import styles from "./Header.module.scss";
 
 interface Props {
   currentSection?: string;
@@ -20,16 +21,15 @@ function Header({ currentSection }: Props) {
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
-    // it ensures that the menu is closed after the screen is resized
-    function handleResize() {
-      if (window.innerWidth > 768 && showMenu) {
+    function hideSideMenuOnResize() {
+      if (window.innerWidth > Breakpoints.SMALL && showMenu) {
         setShowMenu(false);
       }
     }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", hideSideMenuOnResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", hideSideMenuOnResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
