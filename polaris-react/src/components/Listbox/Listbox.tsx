@@ -238,19 +238,30 @@ export function Listbox({
       option.getAttribute(OPTION_VALUE_ATTRIBUTE),
     );
 
-    const listIsUnchangedOrAppended =
+    const listIsUnchanged =
+      nextValues.length === currentValues.length &&
+      nextValues.every((value, index) => {
+        return currentValues[index] === value;
+      });
+
+    const listIsAppended =
       currentValues.length !== 0 &&
-      nextValues.length >= currentValues.length &&
+      nextValues.length > currentValues.length &&
       currentValues.every((value, index) => {
         return nextValues[index] === value;
       });
 
-    if (listIsUnchangedOrAppended) {
+    if (listIsUnchanged) {
       if (optionIsAlreadyActive && actionContentHasUpdated) {
         setCurrentOptions(nextOptions);
         handleChangeActiveOption(nextOption);
       }
 
+      return;
+    }
+
+    if (listIsAppended) {
+      setCurrentOptions(nextOptions);
       return;
     }
 
