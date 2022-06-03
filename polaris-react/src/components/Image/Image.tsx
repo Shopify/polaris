@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 
 import styles from './Image.scss';
 
@@ -30,6 +31,7 @@ export function Image({
   className: classNameProp,
   ...rest
 }: ImageProps) {
+  const isAfterInitialMount = useIsAfterInitialMount();
   const [status, setStatus] = React.useState<Status>('loading');
   const finalSourceSet = sourceSet
     ? sourceSet
@@ -50,7 +52,7 @@ export function Image({
     classNameProp,
   );
 
-  return (
+  return isAfterInitialMount ? (
     <img
       alt={alt}
       src={source}
@@ -60,5 +62,5 @@ export function Image({
       {...(finalSourceSet ? {srcSet: finalSourceSet} : {})}
       {...rest}
     />
-  );
+  ) : null;
 }
