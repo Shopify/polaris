@@ -12,12 +12,14 @@ import NavItems from "../NavItems";
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
+import { className } from "../../utils/various";
 
 interface Props {
+  hasShadow?: boolean;
   currentSection?: string;
 }
 
-function Header({ currentSection }: Props) {
+function Header({ hasShadow, currentSection }: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -40,7 +42,7 @@ function Header({ currentSection }: Props) {
   };
 
   return (
-    <div className={styles.Header}>
+    <div className={className(styles.Header, hasShadow && styles.hasShadow)}>
       <MaxPageWidthDiv className={styles.HeaderInner}>
         <nav className={styles.SideNavContainer}>
           <Button
