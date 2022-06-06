@@ -48,11 +48,11 @@ export function Image({
 
   const className = classNames(
     styles.Image,
-    status === 'loading' && styles.isLoading,
+    isAfterInitialMount && status === 'loading' && styles.isLoading,
     classNameProp,
   );
 
-  return isAfterInitialMount ? (
+  return (
     <img
       alt={alt}
       src={source}
@@ -62,5 +62,5 @@ export function Image({
       {...(finalSourceSet ? {srcSet: finalSourceSet} : {})}
       {...rest}
     />
-  ) : null;
+  );
 }
