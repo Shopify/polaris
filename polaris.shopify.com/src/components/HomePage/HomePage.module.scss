@@ -1,11 +1,22 @@
 @import "../../styles/fonts.scss";
 
 .HomePage {
-  margin-top: var(--header-margin);
+  padding-top: 6rem;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  background: #ededed;
+  margin: 0 50px;
+  min-height: calc(100vh - var(--header-height) - 50px);
+  border-radius: 32px;
 }
 
 .Intro {
+  .IntroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   h1 {
     font-size: var(--font-size-2000);
     letter-spacing: var(--letter-spacing-1000);
@@ -17,146 +28,24 @@
     margin: 0 auto;
   }
 
-  p {
-    max-width: 42rem;
-    text-align: center;
-    margin: 0.75rem auto 0;
-    font-size: var(--font-size-800);
-    letter-spacing: var(--letter-spacing-200);
-    font-weight: var(--font-weight-400);
+  a {
+    display: inline-block;
+    border-radius: 12px;
+    padding-right: 38px;
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-400);
     color: var(--text-strong);
+    background: url(./arrow.svg) no-repeat right center;
+    background-size: auto 100%;
+    line-height: 1.25;
   }
 }
 
-.HeroGraphic {
-  position: relative;
-  margin-top: 3rem;
-  aspect-ratio: 4 / 1;
-  display: flex;
-
-  .Set {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-  }
-
-  .Components {
-    flex: 1;
-    gap: 0.5rem;
-  }
-
-  .Component {
-    flex: 1;
-    animation: components-animation 4s var(--ease-out-quart) both;
-    display: flex;
-    flex-direction: column;
-
-    @for $i from 1 through 30 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i / 10}s;
-      }
-    }
-  }
-
-  .Tokens {
-    flex: 1;
-    flex-wrap: wrap;
-  }
-
-  .Token {
-    width: 5%;
-    height: 20%;
-    aspect-ratio: 1 / 1;
-    border-radius: 16px;
-    animation: tokens-animation 4s var(--ease-out-quart) both;
-
-    @for $i from 1 through 200 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{4 + $i / 75}s;
-      }
-    }
-  }
-}
-
-@keyframes components-animation {
-  0% {
-    transform: scale(1.15);
-    filter: blur(10px);
-    opacity: 0;
-  }
-  15% {
-    transform: scale(1);
-    filter: blur(0px);
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-    filter: blur(0px);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes tokens-animation {
-  0% {
-    transform: scale(1.15);
-    filter: blur(5px);
-    opacity: 0;
-  }
-  20% {
-    transform: scale(0.9);
-    filter: blur(0px);
-    opacity: 1;
-    border-radius: 200px;
-  }
-  30% {
-    transform: scale(0.9);
-    filter: blur(0px);
-    opacity: 1;
-    border-radius: 200px;
-  }
-  35% {
-    border-radius: 2px;
-    transform: scale(0.95);
-  }
-  90% {
-    opacity: 1;
-    border-radius: 2px;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 0;
-    border-radius: 2px;
-    transform: scale(0);
-  }
-}
-
-// Polaris components
-.PolarisCard {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 15px 30px rgba(0, 0, 0, 0.1);
-  background: white;
-  border-radius: 8px;
-}
-
-.PolarisCardSection {
-  padding: 10px 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.PolarisButton {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  border-radius: 6px;
-  font-size: var(--font-size-200);
-  font-weight: var(--font-weight-600);
-  padding: 0.5rem 0.75rem;
-  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
+.Hero {
+  margin-top: 4rem;
+  background: url(./hero.jpg) no-repeat center top;
+  background-size: 2206px auto;
+  min-height: 570px;
+  mix-blend-mode: multiply;
 }

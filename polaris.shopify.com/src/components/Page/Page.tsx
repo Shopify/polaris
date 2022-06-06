@@ -41,12 +41,15 @@ const headerNavItems: {
 
 function Page({ skipHeaderAndFooter = false, children }: Props) {
   const router = useRouter();
+  const hasShadow = router.asPath !== "/";
 
   return (
     <div className={className(styles.Page)}>
       {!skipHeaderAndFooter && (
         <>
-          <div className={styles.Header}>
+          <div
+            className={className(styles.Header, hasShadow && styles.hasShadow)}
+          >
             <MaxPageWidthDiv className={styles.HeaderInner}>
               <Link href="/">
                 <a className={styles.Logo}>
