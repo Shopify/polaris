@@ -19,9 +19,7 @@ export const getComponentNav = (): NavItem[] => {
       title: "All",
       children: components.map((component) => ({
         title: component.frontMatter.name,
-        url: `/components/${slugify(component.frontMatter.category)}/${slugify(
-          component.frontMatter.name
-        )}`,
+        url: `/components/${slugify(component.frontMatter.name)}`,
       })),
     },
   ];

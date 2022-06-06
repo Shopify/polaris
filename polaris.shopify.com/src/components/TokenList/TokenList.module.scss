@@ -82,25 +82,34 @@
   }
 }
 
-.TokenName {
-  display: block;
-  float: left;
-  padding: 0.25rem 0.5rem;
-  background: #ffe5ab;
+.TokenContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.33rem 0.5rem;
+  background: #fff0df;
   border-radius: var(--border-radius-400);
-  font-size: var(--font-size-100);
-  font-weight: var(--font-weight-500);
-  letter-spacing: var(--letter-spacing-200);
+  font-size: var(--font-size-200);
+  gap: 0.1rem;
+}
+
+.TokenName {
+  white-space: pre;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: pre;
-  max-width: 100%;
-  cursor: pointer;
+}
 
-  &:hover {
+.TokenClipboard {
+  min-width: 19px;
+
+  button {
     position: relative;
-    max-width: unset;
-    z-index: 1;
+    top: 0.15rem;
+    background-color: transparent;
+
+    &:hover {
+      filter: brightness(0.2);
+    }
   }
 }
 

@@ -3,7 +3,6 @@ import { FigmaIcon, GitHubIcon, InstallIcon, VSCodeIcon } from "./icons";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Link from "next/link";
 import { className } from "../../utils/various";
-import { LinkButton } from "../Button/Button";
 import componentsImage from "./components.png";
 import tokensImage from "./tokens.png";
 import iconsImage from "./icons.png";

@@ -79,3 +79,7 @@ export interface HighlightableSearchResult {
   getItemProps?: any;
   isHighlighted?: boolean;
 }
+
+export enum Breakpoints {
+  SMALL = 768,
+}
