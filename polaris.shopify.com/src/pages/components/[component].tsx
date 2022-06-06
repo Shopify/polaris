@@ -1,34 +1,44 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import fs from "fs";
+import glob from "glob";
+import { marked } from "marked";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import components from "../../data/components.json";
+import path from "path";
+import Longform from "../../components/Longform";
+import Markdown from "../../components/Markdown";
+import { NavItem } from "../../components/Nav/Nav";
+import Layout from "../../components/Layout";
+import { parseMarkdown } from "../../utils/markdown.mjs";
 import {
+  getComponentCategories,
   getComponentNav,
   getTitleTagValue,
   slugify,
 } from "../../utils/various";
-import fs from "fs";
-import path from "path";
-import { NavItem } from "../../components/Nav/Nav";
-import Layout from "../../components/Layout";
+
+interface MarkdownData {
+  frontMatter: any;
+  readme: string;
+}
 
 interface Props {
   name: string;
   readme: string;
 }
 
-const Components: NextPage<Props> = ({ name, readme }) => {
+const Components = ({ name, readme }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
-    <>
+    <Layout title={name} navItems={navItems}>
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>
 
-      <Layout navItems={navItems} title={name} showTOC={true}>
-        {readme}
-      </Layout>
-    </>
+      <Longform>
+        <Markdown text={readme} skipH1 />
+      </Longform>
+    </Layout>
   );
 };
 
@@ -36,49 +46,37 @@ export const getStaticProps: GetStaticProps<
   Props,
   { component: string }
 > = async (context) => {
-  const componentParam = context.params?.component;
-
-  let readmes = JSON.parse(
-    fs.readFileSync(
-      path.join(process.cwd(), "src/data/components.readme.json"),
-      "utf-8"
-    )
+  const componentSlug = context.params?.component;
+  const mdFilePath = path.join(
+    process.cwd(),
+    `content/components/${componentSlug}/index.md`
   );
 
-  if (componentParam) {
-    const slug = slugify(componentParam);
-    const componentMeta = components.find(
-      ({ frontMatter }) => slugify(frontMatter.name) === slug
-    );
+  if (fs.existsSync(mdFilePath)) {
+    const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
+    const data: MarkdownData = parseMarkdown(componentMarkdown);
+    const readme = marked(data.readme);
+    const props: Props = { ...data.frontMatter, readme };
 
-    if (componentMeta) {
-      const {
-        frontMatter: { name },
-      } = componentMeta;
-      const componentReadme = readmes[name];
-      if (componentReadme) {
-        const props: Props = {
-          name,
-          readme: componentReadme,
-        };
-
-        return { props };
-      }
-    }
+    return { props };
+  } else {
+    return { notFound: true };
   }
-  return { notFound: true };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = components.map(({ frontMatter: { name, category } }) => {
-    return {
-      params: { category: slugify(category), component: slugify(name) },
-    };
-  });
+  const componentBasePath = path.resolve(process.cwd(), "content/components");
+  const paths = glob
+    .sync(path.join(componentBasePath, "**/index.md"))
+    .map((fileName: string) => {
+      return fileName
+        .replace(`${process.cwd()}/content`, "")
+        .replace("/index.md", "");
+    });
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

@@ -13,7 +13,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function Layout({ navItems, title, showTOC, children }: Props) {
+function Layout({ navItems, title, showTOC = true, children }: Props) {
   const [tocItems] = useTOC(children);
 
   return (
