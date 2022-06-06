@@ -1,8 +1,6 @@
 @import "../../styles/variables.scss";
 
 .Header {
-  border-bottom: var(--border);
-
   &.hasShadow {
     box-shadow: 0 1px rgba(0, 0, 0, 0.11);
   }
