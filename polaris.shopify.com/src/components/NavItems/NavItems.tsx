@@ -9,8 +9,8 @@ const headerNavItems: {
     url: "/resources",
   },
   {
-    label: "Guidelines",
-    url: "/guidelines",
+    label: "Foundations",
+    url: "/foundations",
   },
   {
     label: "Components",

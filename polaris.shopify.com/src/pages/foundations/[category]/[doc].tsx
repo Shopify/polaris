@@ -5,18 +5,18 @@ import { parseMarkdown } from "../../../utils/markdown.mjs";
 import { getUrlsFromNavItems } from "../../../utils/various";
 import { MarkdownFile } from "../../../types";
 import { navItems } from "../../../data/navItems";
-import GuidelinesPage from "../../../components/GuidelinesPage";
+import FoundationsPage from "../../../components/FoundationsPage";
 
 interface Props {
   category: string;
   markdownFile: MarkdownFile;
 }
 
-const Guidelines: NextPage<Props> = ({ markdownFile }) => {
-  return <GuidelinesPage markdownFile={markdownFile} />;
+const Foundations: NextPage<Props> = ({ markdownFile }) => {
+  return <FoundationsPage markdownFile={markdownFile} />;
 };
 
-const guidelinesDirectory = path.join(process.cwd(), "content/guidelines");
+const foundationsDirectory = path.join(process.cwd(), "content/foundations");
 
 export const getStaticProps: GetStaticProps<
   Props,
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<
 > = async (context) => {
   // TODO: Markdown frontmatter typesafety
   const fullPath = path.join(
-    guidelinesDirectory,
+    foundationsDirectory,
     context.params?.category || "",
     `${context.params?.doc}.md`
   );
@@ -58,4 +58,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Guidelines;
+export default Foundations;

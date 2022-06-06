@@ -121,13 +121,13 @@
   }
 }
 
-.GuidelinesResults {
+.FoundationsResults {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.GuidelinesResult {
+.FoundationsResult {
   position: relative;
 
   &.isHighlighted {

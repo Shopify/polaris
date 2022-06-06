@@ -1,21 +1,21 @@
 import Head from "next/head";
 import { navItems } from "../../data/navItems";
 import { getTitleTagValue, slugify } from "../../utils/various";
-import styles from "./GuidelinesIndexPage.module.scss";
+import styles from "./FoundationsIndexPage.module.scss";
 import Link from "next/link";
 import NavContentTOCLayout from "../NavContentTOCLayout";
 
 interface Props {}
 
-function GuidelinesIndexPage({}: Props) {
+function FoundationsIndexPage({}: Props) {
   return (
-    <div className={styles.GuidelinesIndexPage}>
+    <div className={styles.FoundationsIndexPage}>
       <Head>
-        <title>{getTitleTagValue("Guidelines")}</title>
+        <title>{getTitleTagValue("Foundations")}</title>
       </Head>
 
       <NavContentTOCLayout
-        title="Guidelines"
+        title="Foundations"
         navItems={navItems}
         showTOC={false}
         content={
@@ -38,4 +38,4 @@ function GuidelinesIndexPage({}: Props) {
   );
 }
 
-export default GuidelinesIndexPage;
+export default FoundationsIndexPage;
