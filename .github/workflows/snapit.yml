@@ -26,8 +26,6 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
 
-      # issue_comment requires us to checkout the branch
-      # https://github.com/actions/checkout/issues/331#issuecomment-707103442
       - name: Validate and get pull request data
         uses: actions/github-script@v6
         id: pr_data
