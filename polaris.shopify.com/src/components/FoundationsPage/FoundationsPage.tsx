@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { MarkdownFile } from "../../types";
 import { navItems } from "../../data/navItems";
-import NavContentTOCLayout from "../NavContentTOCLayout";
+import Layout from "../Layout";
 import { getTitleTagValue } from "../../utils/various";
+import Longform from "../Longform";
+import Markdown from "../Markdown";
 
 interface Props {
   markdownFile: MarkdownFile;
@@ -22,7 +24,11 @@ function FoundationsPage({ markdownFile: { readme, frontMatter } }: Props) {
         <title>{getTitleTagValue(title)}</title>
       </Head>
 
-      <NavContentTOCLayout navItems={navItems} title={title} content={readme} />
+      <Layout navItems={navItems} title={title}>
+        <Longform>
+          <Markdown text={readme} skipH1 />
+        </Longform>
+      </Layout>
     </>
   );
 }

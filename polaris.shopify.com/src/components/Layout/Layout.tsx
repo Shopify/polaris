@@ -30,8 +30,10 @@ function Layout({ navItems, title, showTOC = true, children }: Props) {
             <h1>{title}</h1>
           </Longform>
         )}
-        {children}
-        {showTOC && <TOC items={tocItems} />}
+        <div className={styles.ContentWrapper}>
+          {showTOC && <TOC items={tocItems} />}
+          {children}
+        </div>
       </article>
     </MaxPageWidthDiv>
   );

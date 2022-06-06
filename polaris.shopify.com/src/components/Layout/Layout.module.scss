@@ -23,6 +23,10 @@
   }
 }
 
+.ContentWrapper {
+  position: relative;
+}
+
 .TOC {
   position: absolute;
   font-size: var(--font-size-100);
