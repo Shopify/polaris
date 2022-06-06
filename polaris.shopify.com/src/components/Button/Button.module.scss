@@ -1,5 +1,6 @@
 .Button {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   appearance: none;
   background: var(--surface);
   padding: 0.2rem 0.66rem 0.2rem;

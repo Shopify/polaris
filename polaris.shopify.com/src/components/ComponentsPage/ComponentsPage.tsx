@@ -35,10 +35,8 @@ export default function ComponentsPage({}: Props) {
                     (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
-                    const { name, category } = frontMatter;
-                    const url = `/components/${slugify(category)}/${slugify(
-                      name.toLowerCase()
-                    )}`;
+                    const { name } = frontMatter;
+                    const url = `/components/${slugify(name.toLowerCase())}`;
                     return (
                       <ComponentGrid.Item
                         key={name}

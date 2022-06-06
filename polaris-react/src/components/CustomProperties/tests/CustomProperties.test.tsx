@@ -2,6 +2,7 @@ import type {ColorScheme} from '@shopify/polaris-tokens';
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {CustomProperties, DEFAULT_COLOR_SCHEME} from '../CustomProperties';
 
 interface ColorSchemeAttribute {

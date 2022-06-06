@@ -54,7 +54,7 @@ function ComponentGridItem({
               layout="responsive"
               width={525 * 2}
               height={300 * 2}
-              alt=""
+              alt={`Screenshot of the ${name} component`}
             />
           </div>
           <div className={styles.ComponentDescription}>

@@ -1,11 +1,50 @@
 @import "../../styles/fonts.scss";
 
 .HomePage {
-  h1 {
-    @include heading-1;
+  padding-top: 6rem;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  background: #ededed;
+  margin: 0 50px;
+  min-height: calc(100vh - var(--header-height) - 50px);
+  border-radius: 32px;
+}
+
+.Intro {
+  .IntroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
 
-  h2 {
-    @include heading-2;
+  h1 {
+    font-size: var(--font-size-2000);
+    letter-spacing: var(--letter-spacing-1000);
+    color: var(--text-strong);
+    font-weight: var(--font-weight-800);
+    line-height: 1.1;
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto;
   }
+
+  a {
+    display: inline-block;
+    border-radius: 12px;
+    padding-right: 38px;
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-400);
+    color: var(--text-strong);
+    background: url(./arrow.svg) no-repeat right center;
+    background-size: auto 100%;
+    line-height: 1.25;
+  }
+}
+
+.Hero {
+  margin-top: 4rem;
+  background: url(./hero.jpg) no-repeat center top;
+  background-size: 2206px auto;
+  min-height: 570px;
 }

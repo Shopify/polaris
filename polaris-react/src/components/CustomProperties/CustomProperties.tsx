@@ -18,6 +18,13 @@ export interface CustomPropertiesProps {
   as?: React.ElementType;
 }
 
+/**
+ * @deprecated The CustomProperties component will be removed in the next
+ * major version. See the Polaris token documentation for replacing
+ * colors relying on dark color scheme values.
+ *
+ * https://polaris.shopify.com/tokens/all-tokens
+ */
 export function CustomProperties(props: CustomPropertiesProps) {
   const {
     as: Component = 'div',
@@ -26,6 +33,13 @@ export function CustomProperties(props: CustomPropertiesProps) {
     colorScheme = DEFAULT_COLOR_SCHEME,
     style,
   } = props;
+
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `CustomProperties` component has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
+    );
+  }
 
   return (
     <Component
