@@ -284,7 +284,7 @@
       "selected": "{selectedItemsCount} valittu",
       "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Poista kaikkien valinta: {itemsLength} x {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
