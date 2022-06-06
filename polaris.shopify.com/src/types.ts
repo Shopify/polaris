@@ -11,7 +11,7 @@ export interface TokenPropertiesWithName extends TokenProperties {
 }
 
 export const searchResultCategories = [
-  "Guidelines",
+  "Foundations",
   "Components",
   "Tokens",
   "Icons",
@@ -24,8 +24,8 @@ interface BaseSearchResult {
   score: number;
 }
 
-export interface GuidelinesSearchResult extends BaseSearchResult {
-  category: "Guidelines";
+export interface FoundationsSearchResult extends BaseSearchResult {
+  category: "Foundations";
   meta: {
     title: string;
     excerpt: string;
@@ -53,7 +53,7 @@ export interface IconsSearchResult extends BaseSearchResult {
 }
 
 export type SearchResult =
-  | GuidelinesSearchResult
+  | FoundationsSearchResult
   | ComponentsSearchResult
   | TokensSearchResult
   | IconsSearchResult;
@@ -61,7 +61,7 @@ export type SearchResult =
 export type SearchResults = SearchResult[];
 
 export type GroupedSearchResults = {
-  Guidelines: { results: GuidelinesSearchResult[]; maxScore: number };
+  Foundations: { results: FoundationsSearchResult[]; maxScore: number };
   Components: { results: ComponentsSearchResult[]; maxScore: number };
   Tokens: { results: TokensSearchResult[]; maxScore: number };
   Icons: { results: IconsSearchResult[]; maxScore: number };

@@ -8,7 +8,7 @@ interface Props {
   markdownFile: MarkdownFile;
 }
 
-function GuidelinesPage({ markdownFile: { readme, frontMatter } }: Props) {
+function FoundationsPage({ markdownFile: { readme, frontMatter } }: Props) {
   let title = frontMatter?.name || "";
 
   if (title.includes("/")) {
@@ -27,4 +27,4 @@ function GuidelinesPage({ markdownFile: { readme, frontMatter } }: Props) {
   );
 }
 
-export default GuidelinesPage;
+export default FoundationsPage;

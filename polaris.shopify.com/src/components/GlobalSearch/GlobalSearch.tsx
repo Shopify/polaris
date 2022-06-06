@@ -20,7 +20,7 @@ interface Props {}
 
 function getSearchResultAsString(result: SearchResult | null): string {
   switch (result?.category) {
-    case "Guidelines":
+    case "Foundations":
       return result.meta.title;
     case "Components":
       return result.meta.name;
@@ -116,7 +116,7 @@ function GlobalSearch({}: Props) {
                   const typedCategory = category as SearchResultCategory;
 
                   switch (typedCategory) {
-                    case "Guidelines":
+                    case "Foundations":
                       const results = searchResults[typedCategory].results;
                       if (results.length === 0) return null;
                       return (
@@ -124,14 +124,14 @@ function GlobalSearch({}: Props) {
                           <h3 className={styles.ResultsGroupName}>
                             {category}
                           </h3>
-                          <div className={styles.GuidelinesResults}>
+                          <div className={styles.FoundationsResults}>
                             {results.map((result) => {
                               resultIndex++;
                               return (
                                 <li
                                   key={result.meta.title}
                                   className={className(
-                                    styles.GuidelinesResult,
+                                    styles.FoundationsResult,
                                     highlightedIndex === resultIndex &&
                                       styles.isHighlighted
                                   )}

@@ -1,7 +1,9 @@
 @import "../../styles/variables.scss";
 
 .Header {
-  border-bottom: var(--border);
+  &.hasShadow {
+    box-shadow: 0 1px rgba(0, 0, 0, 0.11);
+  }
 }
 
 .HeaderInner {
@@ -82,7 +84,7 @@
 .SearchWrapper {
   display: flex;
   align-items: center;
-  width: 18.25rem; // Align with TOC on guidelines pages
+  width: 18.25rem; // Align with TOC on foundations pages
   margin-left: auto;
 
   .Icon {

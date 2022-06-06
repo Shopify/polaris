@@ -20,7 +20,7 @@
     text-align: center;
     margin: 0.5rem auto 0;
     font-size: var(--font-size-800);
-    letter-spacing: var(--letter-spacing-200);
+    letter-spacing: var(--letter-spacing-300);
     font-weight: var(--font-weight-400);
     color: var(--text-strong);
     animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
@@ -66,7 +66,7 @@
 }
 
 .FirstStep {
-  max-width: 37rem;
+  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 100%;
@@ -82,8 +82,17 @@
   }
 
   a {
-    font-size: var(--font-size-800);
-    font-weight: var(--font-weight-400);
+    display: inline-block;
+    border-radius: 12px;
+    padding-right: 38px;
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-400);
+    color: var(--text-strong);
+    background: url(./arrow.svg) no-repeat right center;
+    background-size: auto 100%;
+    line-height: 1.25;
+    color: var(--primary);
   }
 }
 
