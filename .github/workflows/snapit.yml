@@ -28,29 +28,47 @@ jobs:
 
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-707103442
-      - name: Get pull request data
-        uses: actions/github-script@v3
+      - name: Validate and get pull request data
+        uses: actions/github-script@v6
         id: pr_data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const request = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            }
-            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
             try {
-              const result = await github.pulls.get(request)
-              return result.data
+              const pullRequest = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              })
+              
+              // Pull request from fork
+              if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
+                const errorMessage = '`/snapit` is not supported on pull requests from forked repositories.'
+
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: errorMessage,
+                })
+
+                core.setFailed(errorMessage)
+                return
+              }
+              core.setOutput('repoFullName', pullRequest.data.head.repo.full_name)
+              core.setOutput('headSha', pullRequest.data.head.sha)
             } catch (err) {
               core.setFailed(`Request failed with error ${err}`)
             }
 
+      # issue_comment requires us to checkout the pull request branch
+      # https://github.com/actions/checkout/issues/331#issuecomment-707103442
       - name: Checkout pull request branch
         uses: actions/checkout@v2
         with:
-          repository: ${{ fromJSON(steps.pr_data.outputs.result).head.repo.full_name }}
-          ref: ${{ fromJSON(steps.pr_data.outputs.result).head.sha }}
+          repository: ${{ steps.pr_data.outputs.repoFullName }}
+          ref: ${{ steps.pr_data.outputs.headSha }}
 
       # Because changeset entries are consumed and removed on the
       # 'changeset-release/main' branch, we need to reset the files
