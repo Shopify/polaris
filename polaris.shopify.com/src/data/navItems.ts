@@ -149,7 +149,7 @@ export const navItems: NavItem[] = [
       },
       {
         title: "Home cards",
-        url: "/foundations/patterns/home-card-foundations",
+        url: "/foundations/patterns/home-card-guidelines",
       },
       {
         title: "Error messages",
