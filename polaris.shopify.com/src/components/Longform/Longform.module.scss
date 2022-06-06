@@ -3,7 +3,6 @@
     border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
-    background: white;
   }
 
   ul li {
@@ -95,9 +94,9 @@
       Menlo, Consolas, monospace;
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--text-strong);
-    color: var(--surface);
-    border-radius: var(--border-radius-200);
+    background: var(--surface-subdued);
+    color: var(--text-strong);
+    border-radius: var(--border-radius-500);
     overflow: auto;
 
     p {

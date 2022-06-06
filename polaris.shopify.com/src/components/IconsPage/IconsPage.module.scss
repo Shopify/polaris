@@ -25,6 +25,39 @@
   }
 }
 
+.ModalContainer {
+  h3 {
+    font-size: var(--font-size-600);
+  }
+
+  h5 {
+    font-size: var(--font-size-500);
+    color: var(--text-strong);
+    font-weight: var(--font-weight-400);
+  }
+
+  div {
+    font-size: var(--font-size-100);
+  }
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(109, 105, 105, 0.622);
+    border-radius: 20px;
+    border: 3px solid white;
+    background-clip: content-box;
+
+    &:hover {
+      background-color: rgba(7, 7, 7, 0.5);
+    }
+  }
+}
+
 .Modal {
   position: fixed;
   top: 0;
@@ -35,44 +68,105 @@
   height: 500px;
   margin: auto;
   background: white;
-  border: 3px solid red;
+  border-radius: 25px 10px 10px 25px;
+  box-shadow: 0px 0px 100px -10px grey;
   padding: 2rem;
   overflow: auto;
 }
 
-.Tabs {
+.ModalHeader {
   display: flex;
-  margin-bottom: 1rem;
-  box-shadow: inset 0 -1px #dddddd;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.Tab {
-  position: relative;
-  padding: 1.25rem 1rem;
-  flex: 1;
-  cursor: pointer;
-  background: transparent;
-  transition: background-color 0.1s linear;
-  color: var(--text-subdued);
+.ModalHeaderLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-  &[aria-selected="true"] {
-    color: black;
+.IconTitle {
+  padding-left: 1rem;
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 3px;
-      border-radius: var(--border-radius-300) var(--border-radius-300) 0 0;
-      background: var(--primary);
-    }
+.IconDescription {
+  padding-top: 0.6rem;
+}
+
+.CancelButton {
+  background-color: transparent;
+}
+
+.Break {
+  border-bottom: 2px solid var(--surface-subdued);
+  padding-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.SnippetHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.7rem;
+  padding-top: 0.7rem;
+}
+
+.ModalFooter {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+
+  a {
+    font-size: var(--font-size-200);
+    padding-bottom: 0.5rem;
   }
+}
 
-  &:hover {
-    color: black;
+.KeywordsButtonGroup {
+  button {
+    font-size: var(--font-size-100);
+    border-radius: var(--border-radius-500);
+    margin: 0.25rem 0 0.25rem 0.7rem;
+    padding: 0.2rem 0.7rem;
+  }
+}
+
+.Keywords {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ActionButtons {
+  button {
+    color: var(--surface);
+    font-weight: var(--font-weight-500);
+    background-color: var(--text-strong);
+    border-radius: var(--border-radius-500);
+    margin-top: 1rem;
+    margin-right: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+.CodeSnippet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.IconClipboard {
+  min-width: 19px;
+
+  button {
+    background-color: transparent;
+
+    &:hover {
+      filter: brightness(0.2);
+    }
   }
 }
 
