@@ -24,7 +24,7 @@ export default function ComponentsPage({}: Props) {
         <title>{getTitleTagValue("Components")}</title>
       </Head>
 
-      <Layout navItems={componentNav} showTOC={false}>
+      <Layout navItems={componentNav} showTOC={false} title="Components">
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>
