@@ -90,7 +90,9 @@
   background: #fff0df;
   border-radius: var(--border-radius-400);
   font-size: var(--font-size-200);
-  gap: 0.1rem;
+  gap: 0.15rem;
+  float: left;
+  max-width: 100%;
 }
 
 .TokenName {
