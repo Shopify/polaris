@@ -25,167 +25,59 @@
   }
 }
 
-.ModalContainer {
-  h3 {
+.SelectedIcon {
+  .IconName {
     font-size: var(--font-size-600);
-  }
-
-  h5 {
-    font-size: var(--font-size-500);
-    color: var(--text-strong);
-    font-weight: var(--font-weight-400);
-  }
-
-  div {
-    font-size: var(--font-size-100);
-  }
-
-  ::-webkit-scrollbar {
-    width: 15px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(109, 105, 105, 0.622);
-    border-radius: 20px;
-    border: 3px solid white;
-    background-clip: content-box;
-
-    &:hover {
-      background-color: rgba(7, 7, 7, 0.5);
-    }
-  }
-}
-
-.Modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  max-width: 800px;
-  height: 500px;
-  margin: auto;
-  background: white;
-  border-radius: 25px 10px 10px 25px;
-  box-shadow: 0px 0px 100px -10px grey;
-  padding: 2rem;
-  overflow: auto;
-}
-
-.ModalHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ModalHeaderLeft {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.IconTitle {
-  padding-left: 1rem;
-}
-
-.IconDescription {
-  padding-top: 0.6rem;
-}
-
-.CancelButton {
-  background-color: transparent;
-}
-
-.Break {
-  border-bottom: 2px solid var(--surface-subdued);
-  padding-top: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-.SnippetHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.7rem;
-  padding-top: 0.7rem;
-}
-
-.ModalFooter {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1rem;
-
-  a {
-    font-size: var(--font-size-200);
-    padding-bottom: 0.5rem;
-  }
-}
-
-.KeywordsButtonGroup {
-  button {
-    font-size: var(--font-size-100);
-    border-radius: var(--border-radius-500);
-    margin: 0.25rem 0 0.25rem 0.7rem;
-    padding: 0.2rem 0.7rem;
-  }
-}
-
-.Keywords {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.ActionButtons {
-  button {
-    color: var(--surface);
     font-weight: var(--font-weight-500);
-    background-color: var(--text-strong);
-    border-radius: var(--border-radius-500);
-    margin-top: 1rem;
-    margin-right: 1rem;
-    padding: 0.7rem 1.5rem;
-  }
-}
 
-.CodeSnippet {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.IconClipboard {
-  min-width: 19px;
-
-  button {
-    background-color: transparent;
-
-    &:hover {
-      filter: brightness(0.2);
+    span {
+      color: var(--text-subdued);
     }
   }
+
+  .ActionButtons {
+    margin-top: 1rem;
+  }
+
+  .IconDescription {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .Keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+    font-size: var(--font-size-100);
+    color: var(--text-subdued);
+  }
+
+  h3 {
+    margin: 2rem 0 0.5rem;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-500);
+  }
 }
 
-@keyframes sidebar-enter {
-  0% {
-    width: 0;
+.SplitLayout {
+  display: flex;
+  gap: 3rem;
+
+  .IconGrids {
+    flex: 1;
   }
 
-  100% {
-    width: 28rem;
+  .Sidebar {
+    align-self: flex-start;
+    position: sticky;
+    top: 2rem;
+    width: 25%;
   }
 }
 
-@keyframes sidebar-inner-enter {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.ProposeChangeLink {
+  margin-top: 1rem;
+  display: inline-block;
+  color: var(--text-subdued);
+  font-size: var(--font-size-100);
 }
