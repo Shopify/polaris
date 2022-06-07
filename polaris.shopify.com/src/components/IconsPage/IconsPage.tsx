@@ -119,7 +119,7 @@ function IconsPage() {
           )}
         </div>
 
-        <div>
+        <div className={styles.Sidebar}>
           {selectedIcon && (
             <div className={styles.SelectedIcon}>
               {/* <div className={styles.Preview}>

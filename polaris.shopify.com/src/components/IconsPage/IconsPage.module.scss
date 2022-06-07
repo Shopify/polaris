@@ -63,11 +63,11 @@
   display: flex;
   gap: 3rem;
 
-  > div:nth-child(1) {
+  .IconGrids {
     flex: 1;
   }
 
-  > div:nth-child(2) {
+  .Sidebar {
     align-self: flex-start;
     position: sticky;
     top: 2rem;
