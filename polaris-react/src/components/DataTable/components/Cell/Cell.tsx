@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FocusEventHandler, useState} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -7,6 +7,7 @@ import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
+import {Tooltip} from '../../../Tooltip';
 
 export interface CellProps {
   content?: React.ReactNode;
@@ -26,6 +27,12 @@ export interface CellProps {
   setRef?: (ref: HTMLTableCellElement | null) => void;
   stickyHeadingCell?: boolean;
   stickyCellWidth?: number;
+  hovered?: boolean;
+  handleFocus?: FocusEventHandler;
+  inFixedFirstColumn?: boolean;
+  hasFixedFirstColumn?: boolean;
+  fixedCellVisible?: boolean;
+  firstColumnMinWidth?: string;
 }
 
 export function Cell({
@@ -39,6 +46,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
+  inFixedFirstColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -46,9 +54,26 @@ export function Cell({
   setRef = () => {},
   stickyHeadingCell = false,
   stickyCellWidth,
+  hovered = false,
+  handleFocus = () => {},
+  hasFixedFirstColumn = false,
+  fixedCellVisible = false,
+  firstColumnMinWidth,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
+
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  function setTooltip(ref: HTMLTableCellElement | null) {
+    if (!ref) {
+      return;
+    }
+    if (ref.scrollWidth > ref.offsetWidth && inFixedFirstColumn) {
+      setShowTooltip(true);
+    }
+  }
+
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
@@ -61,6 +86,12 @@ export function Cell({
     sortable && styles['Cell-sortable'],
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
+    hovered && styles['Cell-hovered'],
+    fixedCellVisible && styles.separate,
+    firstColumn &&
+      inFixedFirstColumn &&
+      stickyHeadingCell &&
+      styles.FixedFirstColumn,
   );
 
   const headerClassName = classNames(
@@ -86,8 +117,15 @@ export function Cell({
     </span>
   );
 
+  const focusable = inFixedFirstColumn || !(hasFixedFirstColumn && firstColumn);
+
   const sortableHeadingContent = (
-    <button className={headerClassName} onClick={onSort}>
+    <button
+      className={headerClassName}
+      onClick={onSort}
+      onFocus={handleFocus}
+      tabIndex={focusable ? 0 : -1}
+    >
       {iconMarkup}
       {content}
     </button>
@@ -98,21 +136,22 @@ export function Cell({
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
   const stickyHeading = (
-    <div
+    <th
       ref={setRef}
       {...headerCell.props}
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={{
-        width: stickyCellWidth,
-      }}
+      style={
+        firstColumn && firstColumnMinWidth
+          ? {minWidth: firstColumnMinWidth}
+          : {minWidth: stickyCellWidth}
+      }
       data-index-table-sticky-heading
     >
       {columnHeadingContent}
-    </div>
+    </th>
   );
-
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
@@ -121,12 +160,28 @@ export function Cell({
       className={className}
       scope="col"
       aria-sort={sortDirection}
+      style={firstColumn ? {minWidth: firstColumnMinWidth} : {}}
     >
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" {...colSpanProp}>
-      {content}
+    <th
+      style={{minWidth: firstColumnMinWidth}}
+      className={className}
+      scope="row"
+      {...colSpanProp}
+      ref={(ref) => {
+        setTooltip(ref);
+        setRef(ref);
+      }}
+    >
+      {showTooltip ? (
+        <Tooltip content={content}>
+          <span className={styles.TooltipContent}>{content}</span>
+        </Tooltip>
+      ) : (
+        content
+      )}
     </th>
   );
 
