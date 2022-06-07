@@ -10,7 +10,9 @@ interface Props {
 }
 
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
-interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
+  download?: boolean;
+}
 
 function Button({ small, pill, primary, children, ...rest }: ButtonProps) {
   return (
@@ -34,6 +36,7 @@ export function LinkButton({
   pill,
   href,
   primary,
+  download,
   children,
   ...rest
 }: LinkButtonProps) {
@@ -46,6 +49,7 @@ export function LinkButton({
           pill && styles.pill,
           primary && styles.primary
         )}
+        download={download}
         {...rest}
       >
         {children}
