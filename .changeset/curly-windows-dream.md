@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Remove image background fallback
+Removed image background fallback
