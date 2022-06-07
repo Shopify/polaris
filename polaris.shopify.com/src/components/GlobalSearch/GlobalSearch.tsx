@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
@@ -54,6 +54,7 @@ function GlobalSearch({}: Props) {
     getComboboxProps,
     highlightedIndex,
     getItemProps,
+    openMenu,
   } = useCombobox({
     id: "global-search",
     items: resultsInRenderedOrder,
@@ -72,6 +73,21 @@ function GlobalSearch({}: Props) {
 
   let resultIndex = -1;
 
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      const searchbar = document.getElementById("searchbar");
+      let isKKey = event.key === "k" || event.key === "K";
+      let isMetaKey = event.metaKey;
+      if (isMetaKey && isKKey) {
+        event.preventDefault();
+        openMenu();
+        if (searchbar !== null) {
+          searchbar.focus();
+        }
+      }
+    });
+  });
+
   return (
     <div className={styles.GlobalSearch}>
       <label {...getLabelProps()} className="sr-only">
@@ -81,7 +97,7 @@ function GlobalSearch({}: Props) {
         <WrappedTextField
           renderTextField={(className) => (
             <input
-              {...getInputProps({})}
+              {...getInputProps({ id: "searchbar" })}
               placeholder="Search"
               className={className}
             />
