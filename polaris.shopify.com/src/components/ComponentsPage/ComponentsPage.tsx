@@ -6,7 +6,6 @@ import {
   slugify,
   getComponentNav,
 } from "../../utils/various";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
 import ComponentGrid from "../ComponentGrid";
@@ -19,7 +18,7 @@ interface Props {}
 
 export default function ComponentsPage({}: Props) {
   return (
-    <MaxPageWidthDiv className={styles.ComponentsPage}>
+    <div className={styles.ComponentsPage}>
       <Head>
         <title>{getTitleTagValue("Components")}</title>
       </Head>
@@ -51,6 +50,6 @@ export default function ComponentsPage({}: Props) {
           );
         })}
       </Layout>
-    </MaxPageWidthDiv>
+    </div>
   );
 }

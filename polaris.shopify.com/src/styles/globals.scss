@@ -8,6 +8,11 @@
   --narrow-content-width: 720px;
   --header-margin: 4rem;
 
+  @media screen and (max-width: $breakpointMobile) {
+    --header-height: 60px;
+    --header-margin: 2rem;
+  }
+
   --focus-outline: 0 0 0 2px black;
 
   --text: #4a4c4e;
@@ -60,6 +65,29 @@
   --font-size-1800: 4.624rem;
   --font-size-1900: 5.202rem;
   --font-size-2000: 5.852rem;
+
+  @media screen and (max-width: $breakpointMobile) {
+    --font-size-100: 0.85rem;
+    --font-size-200: 0.9rem;
+    --font-size-300: 0.95rem;
+    --font-size-400: 1rem;
+    --font-size-500: 1.067rem;
+    --font-size-600: 1.138rem;
+    --font-size-700: 1.215rem;
+    --font-size-800: 1.296rem;
+    --font-size-900: 1.383rem;
+    --font-size-1000: 1.476rem;
+    --font-size-1100: 1.575rem;
+    --font-size-1200: 1.68rem;
+    --font-size-1300: 1.793rem;
+    --font-size-1400: 1.913rem;
+    --font-size-1500: 2.041rem;
+    --font-size-1600: 2.178rem;
+    --font-size-1700: 2.323rem;
+    --font-size-1800: 2.479rem;
+    --font-size-1900: 2.645rem;
+    --font-size-2000: 2.822rem;
+  }
 
   --font-weight-400: 375;
   --font-weight-500: 400;
@@ -118,6 +146,10 @@ video {
 
 html {
   font-size: 18px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -155,6 +187,12 @@ button {
   gap: 1rem 0.25rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   .usage-list-part {
     position: relative;

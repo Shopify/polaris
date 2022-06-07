@@ -1,4 +1,5 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
 
 .Longform {
   img {
@@ -21,6 +22,10 @@
   h1 {
     @include heading-1;
     margin-bottom: 3rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   h2 {

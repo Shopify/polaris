@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .TokenList {
   --table-border-color: #f1f1f1;
   color: var(--text-strong);
@@ -78,6 +80,34 @@
       bottom: 0;
       width: 50px;
       background: linear-gradient(to right, transparent, white);
+    }
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    &,
+    tr,
+    td,
+    th {
+      display: block;
+      width: auto;
+      height: auto;
+      border: none;
+      padding: 0;
+    }
+
+    th {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .TokenContainer {
+      float: none;
     }
   }
 }

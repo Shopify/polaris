@@ -25,6 +25,7 @@
         a {
           color: inherit;
           padding: 0.85rem 1rem;
+          white-space: pre;
 
           &:focus-within {
             position: relative;
@@ -48,14 +49,13 @@
       }
     }
 
-    @media screen and (max-width: $smallBreakpoint) {
+    @media screen and (max-width: $breakpointDesktop) {
       display: none;
     }
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointDesktop) {
     gap: 0.5rem;
-    padding: 0 0.5rem;
     justify-content: space-between;
   }
 }
@@ -76,7 +76,7 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
 }
@@ -86,6 +86,10 @@
   align-items: center;
   width: 18.25rem; // Align with TOC on foundations pages
   margin-left: auto;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    width: 100%;
+  }
 
   .Icon {
     display: flex;
@@ -100,7 +104,7 @@
   visibility: hidden;
   display: none;
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointDesktop) {
     visibility: visible;
     display: flex;
     align-items: center;

@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .GlobalSearch {
   position: relative;
   width: 100%;
@@ -71,6 +73,11 @@
   background: var(--surface);
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: $breakpointMobile) {
+    right: 0;
+    width: calc(100vw - 2.5rem);
+  }
 
   &:before {
     position: fixed;
