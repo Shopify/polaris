@@ -77,6 +77,7 @@ jobs:
           if [[ $(git branch --show-current) == 'changeset-release/main' ]]; then
             git checkout origin/main -- .changeset
           fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -86,12 +87,12 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create an .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cat << EOF > "$HOME/.npmrc"
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create and publish snapshot release
         uses: actions/github-script@v6
@@ -100,17 +101,21 @@ jobs:
         with:
           script: |
             const execa = require('execa')
+
             await execa.command('yarn version-packages -- --snapshot snapshot-release', { stdio: 'inherit' })
+
             const releaseProcess = execa.command('yarn release -- --no-git-tags --snapshot --tag snapshot-release')
             releaseProcess.stdout.pipe(process.stdout)
+
             const {stdout} = await releaseProcess
-            const newTags = Array.from(
-              stdout.matchAll(/New tag:\s+([^\s\n]+)/g),
-            ).map(
-              ([_, tag]) => tag,
-            )
+
+            const newTags = Array
+              .from(stdout.matchAll(/New tag:\s+([^\s\n]+)/g))
+              .map(([_, tag]) => tag)
+
             if (newTags.length) {
               const multiple = newTags.length > 1
+
               const body = (
                 `🫰✨ **Thanks @${context.actor}! ` +
                 `Your snapshot${multiple ? 's have' : ' has'} been published to npm.**\n\n` +
@@ -129,6 +134,7 @@ jobs:
                 body,
               })
             }
+
       - name: Add final reaction
         uses: peter-evans/create-or-update-comment@v2
         with:
