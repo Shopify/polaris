@@ -1,32 +1,38 @@
 @import '../../../../styles/common';
 
 .Cell {
+  --pc-row-xs: initial;
+  --pc-row-sm: var(--pc-row-xs);
+  --pc-row-md: var(--pc-row-sm);
+  --pc-row-lg: var(--pc-row-md);
+  --pc-row-xl: var(--pc-row-lg);
+  --pc-column-xs: initial;
+  --pc-column-sm: var(--pc-column-xs);
+  --pc-column-md: var(--pc-column-sm);
+  --pc-column-lg: var(--pc-column-md);
+  --pc-column-xl: var(--pc-column-lg);
   min-width: 0;
   grid-row: var(--pc-row-xs);
   grid-column: var(--pc-column-xs);
 
   @media #{$p-breakpoints-sm-up} {
-    grid-row: var(--pc-row-sm, var(--pc-row-xs));
-    grid-column: var(--pc-column-sm, var(--pc-column-xs));
+    grid-row: var(--pc-row-sm);
+    grid-column: var(--pc-column-sm);
   }
 
   @media #{$p-breakpoints-md-up} {
-    grid-row: var(--pc-row-md, var(--pc-row-sm, var(--pc-row-xs)));
-    grid-column: var(--pc-column-md, var(--pc-column-sm, var(--pc-column-xs)));
+    grid-row: var(--pc-row-md);
+    grid-column: var(--pc-column-md);
   }
 
   @media #{$p-breakpoints-lg-up} {
-    // prettier-ignore
-    grid-row: var(--pc-row-lg, var(--pc-row-md, var(--pc-row-sm, var(--pc-row-xs))));
-    // prettier-ignore
-    grid-column: var(--pc-column-lg, var(--pc-column-md, var(--pc-column-sm, var(--pc-column-xs))));
+    grid-row: var(--pc-row-lg);
+    grid-column: var(--pc-column-lg);
   }
 
   @media #{$p-breakpoints-xl-up} {
-    // prettier-ignore
-    grid-row: var(--pc-row-xl, var(--pc-row-lg, var(--pc-row-md, var(--pc-row-sm, var(--pc-row-xs)))));
-    // prettier-ignore
-    grid-column: var(--pc-column-xl, var(--pc-column-lg, var(--pc-column-md, var(--pc-column-sm, var(--pc-column-xs)))));
+    grid-row: var(--pc-row-xl);
+    grid-column: var(--pc-column-xl);
   }
 }
 
