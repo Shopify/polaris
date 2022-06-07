@@ -1,7 +1,7 @@
 import { Link, AccountConnection } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
-function AccountConnectionExample() {
+function Example() {
   const [connected, setConnected] = useState(false);
   const accountName = connected ? "Jane Appleseed" : "";
 

@@ -17,7 +17,9 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter();
-  const isPolaris = router.asPath.startsWith("/generated-examples");
+  const isPolaris =
+    router.asPath.startsWith("/examples") ||
+    router.asPath.startsWith("/generated-examples");
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
