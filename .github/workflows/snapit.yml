@@ -26,15 +26,47 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
 
-      - name: Checkout default branch
-        uses: actions/checkout@v2
-
-      # issue_comment requires us to checkout the branch
-      # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
-      - name: Checkout pull request branch
-        run: hub pr checkout ${{ github.event.issue.number }}
+      - name: Validate and get pull request data
+        uses: actions/github-script@v6
+        id: pr_data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            try {
+              const pullRequest = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              })
+              
+              // Pull request from fork
+              if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
+                const errorMessage = '`/snapit` is not supported on pull requests from forked repositories.'
+
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: errorMessage,
+                })
+
+                core.setFailed(errorMessage)
+                return
+              }
+              core.setOutput('repoFullName', pullRequest.data.head.repo.full_name)
+              core.setOutput('headSha', pullRequest.data.head.sha)
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
+
+      # issue_comment requires us to checkout the pull request branch
+      # https://github.com/actions/checkout/issues/331#issuecomment-707103442
+      - name: Checkout pull request branch
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ steps.pr_data.outputs.repoFullName }}
+          ref: ${{ steps.pr_data.outputs.headSha }}
 
       # Because changeset entries are consumed and removed on the
       # 'changeset-release/main' branch, we need to reset the files
@@ -55,12 +87,12 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create an .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cat << EOF > "$HOME/.npmrc"
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create and publish snapshot release
         uses: actions/github-script@v6
@@ -77,14 +109,13 @@ jobs:
 
             const {stdout} = await releaseProcess
 
-            const newTags = Array.from(
-              stdout.matchAll(/New tag:\s+([^\s\n]+)/g),
-            ).map(
-              ([_, tag]) => tag,
-            )
+            const newTags = Array
+              .from(stdout.matchAll(/New tag:\s+([^\s\n]+)/g))
+              .map(([_, tag]) => tag)
 
             if (newTags.length) {
               const multiple = newTags.length > 1
+
               const body = (
                 `🫰✨ **Thanks @${context.actor}! ` +
                 `Your snapshot${multiple ? 's have' : ' has'} been published to npm.**\n\n` +
