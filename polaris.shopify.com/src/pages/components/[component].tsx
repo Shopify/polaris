@@ -51,13 +51,6 @@ export const getStaticProps: GetStaticProps<
     process.cwd(),
     `content/components/${componentSlug}.md`
   );
-  const examplePaths = glob
-    .sync(path.resolve(process.cwd(), `src/pages/examples/${componentSlug}*`))
-    .map((fileName: string) => {
-      return fileName
-        .replace(`${process.cwd()}/src/pages`, "")
-        .replace(".tsx", "");
-    });
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
@@ -65,7 +58,6 @@ export const getStaticProps: GetStaticProps<
     const readme = marked(data.readme);
     const props: Props = {
       ...data.frontMatter,
-      examples: examplePaths,
       readme,
     };
 
