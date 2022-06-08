@@ -84,11 +84,16 @@ describe('<ActionMenu />', () => {
       });
     });
 
-    it('hides disabled action group items when `rollup` is `true`', () => {
+    it('shows action group items as disabled when `rollup` is `true` and action group is disabled', () => {
       const convertedSections = mockGroupsWithDisabledGroup.map((group) => {
         return {
           title: group.title,
-          items: group.disabled ? [] : group.actions,
+          items: group.disabled
+            ? group.actions.map((action) => ({
+                ...action,
+                disabled: group.disabled,
+              }))
+            : group.actions,
         };
       });
       const wrapper = mountWithApp(

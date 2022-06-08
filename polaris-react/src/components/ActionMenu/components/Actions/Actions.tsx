@@ -4,6 +4,7 @@ import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import type {
   ActionListItemDescriptor,
+  ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
@@ -218,14 +219,25 @@ export function Actions({actions = [], groups = []}: Props) {
     const {title, actions: groupActions, ...rest} = group;
     const isDefaultGroup = group === defaultRollupGroup;
     const isLastMenuGroup = group === lastMenuGroup;
-    const finalRolledUpActions = measuredActions.rolledUp.reduce(
-      (memo, action) => {
-        memo.push(...(isMenuGroup(action) ? action.actions : [action]));
+    const [finalRolledUpActions, finalRolledUpSectionGroups] =
+      measuredActions.rolledUp.reduce(
+        ([actions, sections], action) => {
+          if (isMenuGroup(action)) {
+            sections.push({
+              title: action.title,
+              items: action.actions.map((sectionAction) => ({
+                ...sectionAction,
+                disabled: action.disabled || sectionAction.disabled,
+              })),
+            });
+          } else {
+            actions.push(action);
+          }
 
-        return memo;
-      },
-      [] as ActionListItemDescriptor[],
-    );
+          return [actions, sections];
+        },
+        [[] as ActionListItemDescriptor[], [] as ActionListSection[]],
+      );
     if (!isDefaultGroup && !isLastMenuGroup) {
       // Render a normal MenuGroup with just its actions
       return (
@@ -241,13 +253,14 @@ export function Actions({actions = [], groups = []}: Props) {
         />
       );
     } else if (!isDefaultGroup && isLastMenuGroup) {
-      // render the last, rollup group with its actions and finalRolledupActions
+      // render the last, rollup group with its actions and finalRolledUpActions
       return (
         <MenuGroup
           key={title}
           title={title}
           active={title === activeMenuGroup}
           actions={[...finalRolledUpActions, ...groupActions]}
+          sections={finalRolledUpSectionGroups}
           {...rest}
           onOpen={handleMenuGroupToggle}
           onClose={handleMenuGroupClose}
@@ -266,6 +279,7 @@ export function Actions({actions = [], groups = []}: Props) {
           title={title}
           active={title === activeMenuGroup}
           actions={finalRolledUpActions}
+          sections={finalRolledUpSectionGroups}
           {...rest}
           onOpen={handleMenuGroupToggle}
           onClose={handleMenuGroupClose}
