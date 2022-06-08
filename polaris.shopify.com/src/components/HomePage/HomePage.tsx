@@ -26,7 +26,7 @@ function HomePage({}: Props) {
               </mask>
               <path
                 d="M0 71H718V69H0V71Z"
-                fill="#E0E0E0"
+                fill="rgba(0,0,0,.1)"
                 mask="url(#path-1-inside-1_34_1756)"
               />
               <mask id="path-3-inside-2_34_1756" fill="white">
@@ -34,7 +34,7 @@ function HomePage({}: Props) {
               </mask>
               <path
                 d="M0 127H718V125H0V127Z"
-                fill="#E0E0E0"
+                fill="rgba(0,0,0,.1)"
                 mask="url(#path-3-inside-2_34_1756)"
               />
               <mask id="path-5-inside-3_34_1756" fill="white">
@@ -42,7 +42,7 @@ function HomePage({}: Props) {
               </mask>
               <path
                 d="M0 368H718V366H0V368Z"
-                fill="#E0E0E0"
+                fill="rgba(0,0,0,.1)"
                 mask="url(#path-5-inside-3_34_1756)"
               />
               <mask id="path-7-inside-4_34_1756" fill="white">
@@ -50,7 +50,7 @@ function HomePage({}: Props) {
               </mask>
               <path
                 d="M110 440L110 -2.55758e-08L108 2.55758e-08L108 440L110 440Z"
-                fill="#E0E0E0"
+                fill="rgba(0,0,0,.1)"
                 mask="url(#path-7-inside-4_34_1756)"
               />
               <mask id="path-9-inside-5_34_1756" fill="white">
@@ -58,7 +58,7 @@ function HomePage({}: Props) {
               </mask>
               <path
                 d="M609 440L609 -2.55758e-08L607 2.55758e-08L607 440L609 440Z"
-                fill="#E0E0E0"
+                fill="rgba(0,0,0,.1)"
                 mask="url(#path-9-inside-5_34_1756)"
               />
               <rect

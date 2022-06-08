@@ -10,7 +10,6 @@
 
   h1 {
     @include heading-1;
-    font-size: var(--font-size-1700);
   }
 
   p {
@@ -46,12 +45,11 @@
     align-items: center;
     gap: 0.25rem;
     justify-content: center;
-    padding: 1.25rem;
+    padding: 1.25rem 1.25rem 1.4rem;
     color: var(--text-strong);
-    font-size: var(--font-size-400);
-    font-weight: var(--font-weight-500);
-    letter-spacing: var(--letter-spacing-300);
+    font-weight: var(--font-weight-400);
     border-right: 1px solid var(--border-color-light);
+    white-space: pre;
   }
 
   svg {

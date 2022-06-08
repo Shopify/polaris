@@ -7,7 +7,6 @@
   justify-content: center;
   align-items: center;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  background: var(--surface-subdued);
   min-height: calc(100vh - var(--header-height));
   padding: 6rem 0;
 
@@ -42,7 +41,7 @@
     font-size: var(--font-size-2000);
     letter-spacing: var(--letter-spacing-1000);
     color: var(--text-strong);
-    font-weight: var(--font-weight-800);
+    font-weight: var(--font-weight-600);
     line-height: 1.1;
     text-align: center;
     max-width: 50rem;
@@ -53,7 +52,7 @@
     display: inline-block;
     border-radius: 12px;
     padding-right: 38px;
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-size: var(--font-size-700);
     letter-spacing: var(--letter-spacing-400);
     color: var(--text-strong);
