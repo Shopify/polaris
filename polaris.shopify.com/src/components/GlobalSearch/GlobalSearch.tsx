@@ -85,7 +85,6 @@ function GlobalSearch({}: Props) {
           searchbar.focus();
         }
       }
-      console.log("a");
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
