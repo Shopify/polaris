@@ -1,5 +1,4 @@
 import React from 'react';
-import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -68,6 +67,5 @@ export const decorators = [
   GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
-  // withPerformance,
   RenderPerformanceProfilerDecorator,
 ];

@@ -120,7 +120,6 @@
     "semver": "^6.3.0",
     "shx": "^0.3.2",
     "size-limit": "^5.0.3",
-    "storybook-addon-performance": "^0.16.1",
     "svgo": "^2.8.0",
     "typescript": "~4.3.5",
     "webpack": "5"
