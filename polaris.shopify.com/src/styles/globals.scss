@@ -220,7 +220,8 @@ button {
     flex: 1;
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
-    border-radius: var(--border-radius-300);
+    border-radius: var(--border-radius-400);
+    overflow: hidden;
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
@@ -228,8 +229,8 @@ button {
       background-position: left center;
       padding-left: 34px;
       background-size: auto 1.25rem;
-      font-size: var(--font-size-700);
-      font-weight: var(--font-weight-400);
+      font-size: var(--font-size-400);
+      font-weight: var(--font-weight-500);
       letter-spacing: var(--letter-spacing-200);
     }
 
@@ -241,7 +242,6 @@ button {
       right: 0;
       left: 0;
       height: 2px;
-      border-radius: var(--border-radius-400) var(--border-radius-400) 0 0;
       background: #13b288;
     }
 

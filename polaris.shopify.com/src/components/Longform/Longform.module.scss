@@ -1,4 +1,5 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
 .Longform {
@@ -66,7 +67,7 @@
   ul {
     li {
       margin-left: 0.95em;
-      padding-left: 0.33rem;
+      padding-left: 0.05rem;
     }
   }
 
@@ -92,8 +93,11 @@
   ul li {
     position: relative;
     &::marker {
-      color: var(--text-subdued);
-      opacity: 0.5;
+      color: #aaa;
+
+      @include dark-mode {
+        color: #555;
+      }
     }
   }
 
