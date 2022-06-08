@@ -12,10 +12,6 @@
     list-style-type: disc;
   }
 
-  ol li {
-    list-style-type: decimal;
-  }
-
   h2,
   h3,
   h4,
@@ -69,13 +65,14 @@
 
   ul {
     li {
-      padding-left: 0.95em;
+      margin-left: 0.95em;
+      padding-left: 0.33rem;
     }
   }
 
   ol {
     li {
-      padding-left: 1.35em;
+      margin-left: 1.35em;
     }
   }
 
@@ -94,16 +91,8 @@
 
   ul li {
     position: relative;
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0.625em;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      background: var(--text-subdued);
-      border-radius: var(--border-radius-round);
+    &::marker {
+      color: var(--text-subdued);
       opacity: 0.5;
     }
   }
