@@ -1,11 +1,5 @@
 @import "../../styles/variables.scss";
 
-.Header {
-  &.hasShadow {
-    box-shadow: 0 1px rgba(0, 0, 0, 0.11);
-  }
-}
-
 .HeaderInner {
   display: flex;
   gap: 3em;
@@ -18,13 +12,14 @@
       display: flex;
       align-items: center;
       font-size: var(--font-size-100);
-      font-weight: 500;
+      font-weight: var(--font-weight-600);
       margin-right: auto;
 
       li {
         a {
           color: inherit;
-          padding: 0.85rem 1rem;
+          padding: 0.75rem 0.8rem;
+          white-space: pre;
 
           &:focus-within {
             position: relative;
@@ -39,6 +34,7 @@
           &[aria-current="page"] {
             background: rgba(0, 0, 0, 0.05);
             border-radius: var(--border-radius-800);
+            color: var(--text-strong);
           }
         }
 
@@ -48,14 +44,13 @@
       }
     }
 
-    @media screen and (max-width: $smallBreakpoint) {
+    @media screen and (max-width: $breakpointDesktop) {
       display: none;
     }
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointDesktop) {
     gap: 0.5rem;
-    padding: 0 0.5rem;
     justify-content: space-between;
   }
 }
@@ -76,16 +71,27 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
+}
+
+.DarkModeToggle {
+  background: transparent;
+  width: 3rem;
+  margin: 0.5rem 0 0.5rem auto;
+  border-radius: var(--border-radius-800);
+  margin-right: -1rem;
 }
 
 .SearchWrapper {
   display: flex;
   align-items: center;
-  width: 18.25rem; // Align with TOC on foundations pages
-  margin-left: auto;
+  width: 18.25rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    width: 100%;
+  }
 
   .Icon {
     display: flex;
@@ -99,8 +105,14 @@
 .SideNavContainer {
   visibility: hidden;
   display: none;
+  fill: var(--text-strong);
 
-  @media screen and (max-width: $smallBreakpoint) {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
     visibility: visible;
     display: flex;
     align-items: center;

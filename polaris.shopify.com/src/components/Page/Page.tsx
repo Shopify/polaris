@@ -15,16 +15,13 @@ interface Props {
 
 function Page({ skipHeaderAndFooter = false, children }: Props) {
   const router = useRouter();
-  const hasShadow = router.asPath !== "/";
 
   const match = router.asPath.match(/^\/\w+/);
   const currentSection = match ? match[0] : "";
 
   return (
     <div className={className(styles.Page)}>
-      {!skipHeaderAndFooter && (
-        <Header currentSection={currentSection} hasShadow={hasShadow} />
-      )}
+      {!skipHeaderAndFooter && <Header currentSection={currentSection} />}
 
       <div className={styles.Content}>{children}</div>
 

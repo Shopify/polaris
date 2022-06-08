@@ -1,40 +1,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;675;700&display=swap");
 @import "variables.scss";
 @import "fonts.scss";
+@import "mixins.scss";
 
-:root {
+// Place CSS variables on body so that we can
+// utilize the .dark-mode class to flip the colors
+body {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 88px;
+  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4rem;
+  --header-margin: 4.5rem;
 
-  --focus-outline: 0 0 0 2px black;
+  @media screen and (max-width: $breakpointDesktop) {
+    --header-height: 60px;
+    --header-margin: 2rem;
+  }
+
+  --focus-outline: 0 0 0 2px var(--text-strong);
 
   --text: #4a4c4e;
   --text-strong: #111212;
   --text-subdued: #777;
   --text-light: #999;
   --text-link: #2e5dba;
-  --text-token: #6e006e;
-
   --surface: #ffffff;
   --surface-subdued: #f6f6f6;
-  --surface-token: #fdf0fd;
   --primary: #008060;
-
   --border-color: #dedede;
+  --border-color-light: #ededed;
   --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
   --card-shadow: none;
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
-
   --decorative-1: #e9f1e2;
   --decorative-2: #fdecd5;
   --decorative-3: #e1f3f5;
   --decorative-4: #f0edff;
-
   --backdrop: rgba(0, 0, 0, 0.5);
+
+  &.dark-mode {
+    --text: #aaa;
+    --text-strong: #e7e7e7;
+    --text-subdued: #777;
+    --text-light: #999;
+    --text-link: #6995ee;
+    --surface: #202021;
+    --surface-subdued: #2e2e30;
+    --primary: #1aab87;
+    --border-color: #555;
+    --border-color-light: #2a2a2a;
+    --border-inset-color: #555;
+    --border: 1px solid var(--border-color);
+    --card-shadow: none;
+    --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
+      0 0 0 0.5px var(--border-color);
+    --decorative-1: #204400;
+    --decorative-2: #472a00;
+    --decorative-3: #004a54;
+    --decorative-4: #110065;
+    --backdrop: rgba(0, 0, 0, 0.5);
+  }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
@@ -60,6 +86,29 @@
   --font-size-1800: 4.624rem;
   --font-size-1900: 5.202rem;
   --font-size-2000: 5.852rem;
+
+  @media screen and (max-width: $breakpointMobile) {
+    --font-size-100: 0.85rem;
+    --font-size-200: 0.9rem;
+    --font-size-300: 0.95rem;
+    --font-size-400: 1rem;
+    --font-size-500: 1.067rem;
+    --font-size-600: 1.138rem;
+    --font-size-700: 1.215rem;
+    --font-size-800: 1.296rem;
+    --font-size-900: 1.383rem;
+    --font-size-1000: 1.476rem;
+    --font-size-1100: 1.575rem;
+    --font-size-1200: 1.68rem;
+    --font-size-1300: 1.793rem;
+    --font-size-1400: 1.913rem;
+    --font-size-1500: 2.041rem;
+    --font-size-1600: 2.178rem;
+    --font-size-1700: 2.323rem;
+    --font-size-1800: 2.479rem;
+    --font-size-1900: 2.645rem;
+    --font-size-2000: 2.822rem;
+  }
 
   --font-weight-400: 375;
   --font-weight-500: 400;
@@ -118,6 +167,10 @@ video {
 
 html {
   font-size: 18px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -152,9 +205,15 @@ button {
 .usage-list {
   margin: 1.25rem 0;
   font-size: var(--font-size-200);
-  gap: 1rem 0.25rem;
+  gap: 1rem 0.75rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   .usage-list-part {
     position: relative;
@@ -162,14 +221,17 @@ button {
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
+    overflow: hidden;
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
       background-repeat: no-repeat;
       background-position: left center;
-      padding-left: 28px;
-      background-size: auto 1rem;
-      font-weight: var(--font-weight-800);
+      padding-left: 34px;
+      background-size: auto 1.25rem;
+      font-size: var(--font-size-400);
+      font-weight: var(--font-weight-500);
+      letter-spacing: var(--letter-spacing-200);
     }
 
     &::before {
@@ -179,8 +241,7 @@ button {
       top: 0;
       right: 0;
       left: 0;
-      height: 3px;
-      border-radius: var(--border-radius-400) var(--border-radius-400) 0 0;
+      height: 2px;
       background: #13b288;
     }
 
