@@ -75,7 +75,7 @@ function TokensPage({ tokenGroup }: Props) {
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    colors: tokensToFilteredArray(filter, allTokens.colorSchemes.light),
+    colors: tokensToFilteredArray(filter, allTokens.colors),
     depth: tokensToFilteredArray(filter, allTokens.depth),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),

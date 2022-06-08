@@ -2,8 +2,7 @@ import type {Exact} from './types';
 import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
-import {colors as darkColorScheme} from './token-groups/color.dark';
-import {colors as lightColorScheme} from './token-groups/color.light';
+import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
@@ -23,39 +22,9 @@ export interface TokenProperties {
 export interface TokenGroup {
   [token: string]: TokenProperties;
 }
-
-export type ColorScheme = 'light' | 'dark';
-
-/**
- * Mapping of Polaris color schemes to operating system color schemes.
- *
- * Note: The associated OS value will be set for the CSS `color-scheme` declaration.
- * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
- */
-export type OSColorSchemes = {
-  [C in ColorScheme]: 'light' | 'dark' | 'normal';
-};
-
-export const osColorSchemes: OSColorSchemes = {
-  light: 'light',
-  dark: 'dark',
-};
-
-/**
- * Polaris color schemes and their associated color tokens.
- */
-export type ColorSchemes = {
-  [C in ColorScheme]: TokenGroup;
-};
-
-const colorSchemes: ColorSchemes = {
-  light: lightColorScheme,
-  dark: darkColorScheme,
-};
-
 export interface Tokens {
   breakpoints: TokenGroup;
-  colorSchemes: ColorSchemes;
+  colors: TokenGroup;
   depth: TokenGroup;
   legacyTokens: TokenGroup;
   motion: TokenGroup;
@@ -67,7 +36,7 @@ export interface Tokens {
 
 export const tokens = createTokens({
   breakpoints: tokensToRems(breakpoints),
-  colorSchemes,
+  colors,
   depth,
   legacyTokens: tokensToRems(legacyTokens),
   motion,

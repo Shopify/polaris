@@ -12,12 +12,9 @@ import {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {colorSchemes, legacyTokens, ...restTokenGroups} = tokens;
+const {legacyTokens, ...restTokenGroups} = tokens;
 
-const groupedCompletionItemTokenGroups = {
-  color: colorSchemes.light,
-  ...restTokenGroups,
-};
+const groupedCompletionItemTokenGroups = restTokenGroups;
 
 type GroupedCompletionItemsKey = keyof typeof groupedCompletionItemTokenGroups;
 

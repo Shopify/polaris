@@ -109,15 +109,9 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  * Result: ['--p-background', '--p-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
-  const {colorSchemes, ...restTokenGroups} = tokens;
-  const customPropertyNames = [
-    ...Object.keys(colorSchemes.light).map((token) => createVar(token)),
-    ...Object.entries(restTokenGroups)
-      .map(([_, tokenGroup]: [string, TokenGroup]) =>
-        Object.keys(tokenGroup).map((token) => createVar(token)),
-      )
-      .flat(),
-  ];
-
-  return customPropertyNames;
+  return Object.entries(tokens)
+    .map(([_, tokenGroup]: [string, TokenGroup]) =>
+      Object.keys(tokenGroup).map((token) => createVar(token)),
+    )
+    .flat();
 }
