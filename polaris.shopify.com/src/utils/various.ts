@@ -14,21 +14,16 @@ export const getComponentCategories = (): string[] => {
 };
 
 export const getComponentNav = (): NavItem[] => {
-  const categories = getComponentCategories();
-
   const navItems: NavItem[] = [
-    ...categories.map((category) => ({
-      title: category,
-      children: components
-        .filter((component) => component.frontMatter.category === category)
-        .map((component) => ({
-          title: component.frontMatter.name,
-          url: `/components/${slugify(category)}/${slugify(
-            component.frontMatter.name
-          )}`,
-        })),
-    })),
+    {
+      title: "All",
+      children: components.map((component) => ({
+        title: component.frontMatter.name,
+        url: `/components/${slugify(component.frontMatter.name)}`,
+      })),
+    },
   ];
+
   return navItems;
 };
 

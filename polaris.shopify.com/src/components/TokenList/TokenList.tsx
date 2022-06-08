@@ -1,72 +1,110 @@
-import styles from "./TokenList.module.scss";
 import {
   HighlightableSearchResult,
   TokenPropertiesWithName,
 } from "../../types";
+import { createContext } from "react";
 import { className } from "../../utils/various";
+import styles from "./TokenList.module.scss";
+import { useCopyToClipboard } from "../../utils/hooks";
+import iconClipboard from "../../../public/icon-clipboard.svg";
+import Image from "../Image";
+import Tooltip from "../Tooltip";
+
+interface ColumnsConfig {
+  preview: boolean;
+  name: boolean;
+  value: boolean;
+  figmaUsage: boolean;
+  description: boolean;
+}
+
+const defaultColumnsConfig: ColumnsConfig = {
+  preview: true,
+  name: true,
+  value: true,
+  figmaUsage: true,
+  description: true,
+};
 
 interface TokenListProps {
-  layout?: "grid" | "list";
+  showTableHeading?: boolean;
+  columns?: ColumnsConfig;
   children: React.ReactNode;
 }
 
-function TokenList({ layout = "grid", children }: TokenListProps) {
+const TokenListContext = createContext<{
+  columns: ColumnsConfig;
+}>({ columns: defaultColumnsConfig });
+
+function TokenList({
+  showTableHeading = true,
+  columns = defaultColumnsConfig,
+  children,
+}: TokenListProps) {
   return (
-    <>
-      <ul
-        className={className(
-          styles.TokenList,
-          layout === "list" && styles.list
-        )}
-      >
-        {children}
-      </ul>
-      <style jsx>
-        {`
-          @keyframes spin {
-            from {
-              transform: rotate(0deg);
+    <TokenListContext.Provider value={{ columns }}>
+      <div className={styles.TokenList}>
+        <table>
+          {showTableHeading && (
+            <thead>
+              <tr>
+                {columns.preview && <th>Preview</th>}
+                {columns.name && <th>Token name</th>}
+                {columns.value && <th>Current value</th>}
+                {columns.figmaUsage && <th>Figma usage</th>}
+                {columns.description && <th>Description</th>}
+              </tr>
+            </thead>
+          )}
+          <tbody>{children}</tbody>
+        </table>
+        <style jsx>
+          {`
+            @keyframes spin {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg);
+              }
             }
-            to {
-              transform: rotate(360deg);
-            }
-          }
-        `}
-      </style>
-    </>
+          `}
+        </style>
+      </div>
+    </TokenListContext.Provider>
   );
 }
 
-function getFigmaRecommendationForToken(
+function getFigmaUsageForToken(
   name: string,
   value: string
 ): undefined | string {
-  let recommendation: string | undefined = undefined;
+  let usage = "—";
 
   const REM = 16;
 
   if (value.startsWith("rgba")) {
-    recommendation = "Use color style Lorem/Ipsum/Dolor";
+    usage = "Lorem/Ipsum/Dolor";
   } else if (name.startsWith("shadow")) {
-    recommendation = "Use shadow style Lorem/Ipsum dolor";
+    usage = "Lorem/Ipsum dolor";
   } else if (name.includes("breakpoint")) {
     const artboardWidth = parseInt(value) * REM;
     if (artboardWidth > 0) {
-      recommendation = `Set artboard width to ${artboardWidth}+ pixels`;
+      usage = `Frame width: ${artboardWidth}+ pixels`;
     }
   } else if (name.includes("border-radius-half")) {
-    recommendation = "Use a circle";
+    usage = "Use a circle";
   } else if (name.includes("radius")) {
     const radius = parseFloat(value) * REM;
-    recommendation = `Use a radius of ${radius} pixels`;
+    usage = `Use a radius of ${radius} pixels`;
   } else if (name.includes("font") || name.includes("line-height")) {
-    recommendation = `Use font style Lorem/Ipsum/Dolor`;
+    usage = `Use font style Lorem/Ipsum/Dolor`;
   } else if (name.includes("space")) {
     const spacing = parseFloat(value) * REM;
-    recommendation = `Use a spacing of ${spacing} pixels`;
+    usage = `Use a spacing of ${spacing} pixels`;
   }
 
-  return recommendation;
+  return usage;
 }
 
 interface TokenListItemProps extends HighlightableSearchResult {
@@ -77,31 +115,64 @@ function TokenListItem({
   token: { name, value, description },
   isHighlighted,
 }: TokenListItemProps) {
-  const figmaRecommendation = getFigmaRecommendationForToken(name, value);
+  const figmaUsage = getFigmaUsageForToken(name, value);
+  const tokenNameWithPrefix = `--p-${name}`;
+  const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   return (
-    <li
-      key={name}
-      className={className(
-        styles.TokenListItem,
-        isHighlighted && styles.isHighlighted
+    <TokenListContext.Consumer>
+      {({ columns }) => (
+        <tr
+          key={name}
+          className={className(
+            styles.TokenListItem,
+            isHighlighted && styles.isHighlighted
+          )}
+        >
+          {columns.preview && (
+            <td className={styles.Preview}>
+              <TokenPreview name={name} value={value} />
+            </td>
+          )}
+          {columns.name && (
+            <td>
+              <span className={styles.TokenContainer}>
+                <div className={styles.TokenName}>
+                  <span>{tokenNameWithPrefix}</span>
+                </div>
+                <div className={styles.TokenClipboard}>
+                  <Tooltip
+                    ariaLabel="Copy to clipboard"
+                    placement="top"
+                    renderContent={() => (
+                      <div className={styles.TokenToolTip}>
+                        <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
+                      </div>
+                    )}
+                  >
+                    <button onClick={copy}>
+                      <Image
+                        src={iconClipboard}
+                        alt={"Copy"}
+                        width={19}
+                        height={19}
+                      />
+                    </button>
+                  </Tooltip>
+                </div>
+              </span>
+            </td>
+          )}
+          {columns.value && <td className={styles.Value}>{value}</td>}
+          {columns.figmaUsage && (
+            <td className={styles.FigmaUsage}>{figmaUsage || "—"}</td>
+          )}
+          {columns.description && (
+            <td className={styles.TokenDescription}>{description || "—"}</td>
+          )}
+        </tr>
       )}
-    >
-      <div className={styles.Preview}>
-        <TokenPreview name={name} value={value} />
-      </div>
-      <div className={styles.TokenInfo}>
-        <div className={styles.TokenName}>
-          <h4>--p-{name}</h4>
-        </div>
-        {description && <p>{description}</p>}
-        {figmaRecommendation && (
-          <div className={styles.FigmaRecommendation}>
-            {figmaRecommendation}
-          </div>
-        )}
-      </div>
-    </li>
+    </TokenListContext.Consumer>
   );
 }
 
@@ -113,9 +184,7 @@ interface TokenPreviewProps {
 }
 
 function TokenPreview({ name, value }: TokenPreviewProps) {
-  const wrapperStyles = {
-    background: "var(--decorative-1)",
-  };
+  const wrapperStyles = {};
 
   // Colors
   if (value.startsWith("rgba")) {
@@ -124,10 +193,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           background: value,
-          boxShadow:
-            value === "rgba(255, 255, 255, 1)"
-              ? "inset 0 0 0 1px rgba(0,0,0,.05)"
-              : undefined,
+          width: "100%",
+          height: 50,
+          borderRadius: 8,
         }}
       ></div>
     );
@@ -140,8 +208,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
@@ -149,7 +215,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             width: "20%",
             paddingBottom: "20%",
             borderRadius: value,
-            background: "var(--primary)",
+            background: "var(--text-strong)",
           }}
         ></div>
       </div>
@@ -162,15 +228,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           ...wrapperStyles,
-          background: "var(--decorative-3)",
+          background: "transparent",
           display: "flex",
-          alignItems: "center",
         }}
       >
         <div
           style={{
             height: value,
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             flex: 1,
           }}
         ></div>
@@ -185,7 +250,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
           background: "var(--surface-subdued)",
         }}
       >
@@ -208,22 +272,21 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           ...wrapperStyles,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "30%",
-            background: "var(--primary)",
+            height: "10px",
+            background: "var(--text-strong)",
           }}
         ></div>
         <div
           style={{
             width: value,
-            height: "30%",
-            background: "var(--primary)",
+            height: "30px",
+            background: "var(--text-strong)",
             opacity: 0.2,
           }}
         ></div>
@@ -231,8 +294,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "30%",
-            background: "var(--primary)",
+            height: "10px",
+            background: "var(--text-strong)",
           }}
         ></div>
       </div>
@@ -246,10 +309,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontFamily: value,
-          background: "var(--decorative-1)",
+          background: "transparent",
         }}
       >
         Commerce
@@ -264,10 +325,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontSize: value,
-          background: "var(--decorative-2)",
+          background: "transparent",
         }}
       >
         Aa
@@ -282,10 +341,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           fontWeight: value,
-          background: "var(--decorative-3)",
+          background: "transparent",
         }}
       >
         Aa
@@ -300,10 +357,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           lineHeight: value,
-          background: "var(--decorative-4)",
+          background: "transparent",
         }}
       >
         Hello
@@ -320,8 +375,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
         }}
       >
@@ -345,8 +398,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
         }}
       >
@@ -369,10 +420,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-1)",
+          background: "transparent",
         }}
       >
         <div
@@ -380,7 +429,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             animation: `spin ${value} infinite both linear`,
           }}
         ></div>
@@ -394,10 +443,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-2)",
+          background: "transparent",
         }}
       >
         <div
@@ -405,7 +452,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
           }}
@@ -420,10 +467,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           ...wrapperStyles,
-          background: "var(--decorative-3)",
+          background: "transparent",
         }}
       >
         <div
@@ -431,7 +476,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             height: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--primary)",
+            background: "var(--text-strong)",
             boxShadow: value,
             animation: `${name} 1s infinite both`,
           }}
@@ -449,8 +494,6 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           display: "flex",
           flexDirection: "column-reverse",
-          justifyContent: "center",
-          alignItems: "center",
           gap: 2,
           ...wrapperStyles,
         }}

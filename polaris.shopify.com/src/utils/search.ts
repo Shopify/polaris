@@ -2,7 +2,7 @@ import {
   SearchResultCategory,
   SearchResults,
   ComponentsSearchResult,
-  GuidelinesSearchResult,
+  FoundationsSearchResult,
   IconsSearchResult,
   TokensSearchResult,
   GroupedSearchResults,
@@ -13,10 +13,10 @@ import { slugify, stripMarkdownLinks } from "./various";
 import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
-import guidelines from "../data/guidelines.json";
+import foundations from "../data/foundations.json";
 
 const MAX_RESULTS: { [key: string]: number } = {
-  Guidelines: 3,
+  Foundations: 3,
   Components: 2,
   Tokens: 8,
   Icons: 14,
@@ -39,7 +39,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   results.push({
     category: "Components",
     score: 0,
-    url: `/components/${slugify(category)}/${slugify(name)}`,
+    url: `/components/${slugify(name)}`,
     meta: {
       name,
       description: stripMarkdownLinks(intro),
@@ -95,8 +95,8 @@ Object.keys(metadata).forEach((fileName) => {
   });
 });
 
-// Add guidelines
-guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
+// Add foundations
+foundations.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
   const parts = name.split("/");
   if (parts.length >= 2) {
     const sectionSlug = slugify(parts[0]);
@@ -105,10 +105,10 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
     if (allowedSections.includes(sectionSlug)) {
       const title = parts[parts.length - 1];
 
-      const url = `/guidelines/${sectionSlug}/${slug}`;
+      const url = `/foundations/${sectionSlug}/${slug}`;
 
       results.push({
-        category: "Guidelines",
+        category: "Foundations",
         score: 0,
         url,
         meta: {
@@ -142,7 +142,7 @@ const fuse = new Fuse(results, {
 
 export function search(query: string): GroupedSearchResults {
   const groupedResults: GroupedSearchResults = {
-    Guidelines: { results: [], maxScore: 0 },
+    Foundations: { results: [], maxScore: 0 },
     Components: { results: [], maxScore: 0 },
     Tokens: { results: [], maxScore: 0 },
     Icons: { results: [], maxScore: 0 },
@@ -156,13 +156,13 @@ export function search(query: string): GroupedSearchResults {
       score: result.score || 0,
     }));
 
-    groupedResults["Guidelines"].results = scoredResults
-      .filter((result) => result.category === "Guidelines")
+    groupedResults["Foundations"].results = scoredResults
+      .filter((result) => result.category === "Foundations")
       .map((result) => ({
         ...result,
         score: result.score || 0,
       }))
-      .slice(0, MAX_RESULTS["Guidelines"]) as GuidelinesSearchResult[];
+      .slice(0, MAX_RESULTS["Foundations"]) as FoundationsSearchResult[];
 
     groupedResults["Components"].results = scoredResults
       .filter((result) => result.category === "Components")

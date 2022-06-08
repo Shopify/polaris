@@ -95,16 +95,18 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     !customer && styles[variationName('style', styleClass(nameString))],
-    (hasImage || (initials && initials.length === 0)) &&
-      status !== Status.Loaded &&
-      styles.hidden,
-    hasImage && styles.hasImage,
+    hasImage && status === Status.Loaded && styles.imageHasLoaded,
+  );
+
+  const imageClassName = classNames(
+    styles.Image,
+    status !== Status.Loaded && styles.hidden,
   );
 
   const imageMarkUp =
     source && isAfterInitialMount && status !== Status.Errored ? (
       <Image
-        className={styles.Image}
+        className={imageClassName}
         source={source}
         alt=""
         role="presentation"
@@ -112,7 +114,6 @@ export function Avatar({
         onError={handleError}
       />
     ) : null;
-
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
@@ -135,13 +136,13 @@ export function Avatar({
       </text>
     );
 
-  const svgMarkup = !hasImage ? (
+  const svgMarkup = hasImage ? null : (
     <span className={styles.Initials}>
       <svg className={styles.Svg} viewBox="0 0 40 40">
         {avatarBody}
       </svg>
     </span>
-  ) : null;
+  );
 
   return (
     <span aria-label={label} role="img" className={className}>

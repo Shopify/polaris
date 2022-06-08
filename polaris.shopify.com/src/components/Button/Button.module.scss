@@ -1,5 +1,6 @@
 .Button {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   appearance: none;
   background: var(--surface-subdued);
   color: var(--text-strong);

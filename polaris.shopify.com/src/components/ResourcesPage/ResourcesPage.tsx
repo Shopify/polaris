@@ -3,7 +3,6 @@ import { FigmaIcon, GitHubIcon, InstallIcon, VSCodeIcon } from "./icons";
 import MaxPageWidthDiv from "../MaxPageWidthDiv";
 import Link from "next/link";
 import { className } from "../../utils/various";
-import { LinkButton } from "../Button/Button";
 import componentsImage from "./components.png";
 import tokensImage from "./tokens.png";
 import iconsImage from "./icons.png";
@@ -26,11 +25,11 @@ function ResourcesPage({}: Props) {
 
       <div className={styles.FadeIn}>
         <MaxPageWidthDiv className={className(styles.Step, styles.FirstStep)}>
-          <h2>Explore the guidelines</h2>
+          <h2>Explore the foundations</h2>
           <p
             className={styles.CenteredTextBlock}
           >{`Polaris is not just a set of components. Instead, it's a carefully crafted design system built to solve very specific problems. By learning how the system works, you'll be able to design the best possible solutions for all merchants.`}</p>
-          <Link href="/guidelines">Start learning</Link>
+          <Link href="/foundations">Start learning</Link>
         </MaxPageWidthDiv>
         <div className={styles.Line}></div>
 
@@ -201,23 +200,11 @@ export const Links = ({ links }: ResourceListItemProps) => {
         <li key={link.url}>
           <Link href={link.url}>
             <a data-icon={link.icon}>
-              {link.icon === "github" && (
-                <span className={styles.Icon}>
-                  <GitHubIcon />
-                </span>
-              )}
+              {link.icon === "github" && <GitHubIcon />}
 
-              {link.icon === "figma" && (
-                <span className={styles.Icon}>
-                  <FigmaIcon />{" "}
-                </span>
-              )}
+              {link.icon === "figma" && <FigmaIcon />}
 
-              {link.icon === "install" && (
-                <span className={styles.Icon}>
-                  <InstallIcon />
-                </span>
-              )}
+              {link.icon === "install" && <InstallIcon />}
 
               {link.label}
             </a>

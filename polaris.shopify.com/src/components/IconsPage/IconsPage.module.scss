@@ -1,9 +1,10 @@
+@import "../../styles/fonts.scss";
+
 .IconsPage {
   padding-top: var(--header-margin);
 
   h1 {
-    font-size: var(--font-size-800);
-    letter-spacing: var(--letter-spacing-100);
+    @include heading-1;
     margin-bottom: 1rem;
   }
 }

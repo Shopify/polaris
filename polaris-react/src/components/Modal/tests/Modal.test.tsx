@@ -7,6 +7,7 @@ import {Button} from '../../Button';
 import {Scrollable} from '../../Scrollable';
 import {Spinner} from '../../Spinner';
 import {Portal} from '../../Portal';
+import {Backdrop} from '../../Backdrop';
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -262,6 +263,14 @@ describe('<Modal>', () => {
       );
 
       expect(modal).not.toContainReactComponent(Badge);
+    });
+
+    it('closes the modal when backdrop is clicked', () => {
+      const spy = jest.fn();
+      const modal = mountWithApp(<Modal title="foo" open onClose={spy} />);
+
+      modal.find(Backdrop)!.trigger('onClick');
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 

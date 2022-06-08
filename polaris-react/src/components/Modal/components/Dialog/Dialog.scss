@@ -19,6 +19,9 @@ $dangerous-magic-space-16: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  // Allow passthrough of click events to dismiss modal on backdrop click
+  // Resume pointer-events on .Modal below
+  pointer-events: none;
 
   @include breakpoint-after($layout-width-page-with-nav-base) {
     justify-content: center;
@@ -30,7 +33,7 @@ $dangerous-magic-space-16: 64px;
 }
 
 .Modal {
-  --pc-dialog-horizontal-spacing: var(--p-space-16);
+  pointer-events: initial;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -68,7 +71,7 @@ $dangerous-magic-space-16: 64px;
 
   &.sizeSmall {
     @include breakpoint-after($layout-width-page-with-nav-base) {
-      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
+      max-width: calc(100% - var(--p-space-16));
     }
 
     @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
@@ -78,7 +81,7 @@ $dangerous-magic-space-16: 64px;
 
   &.sizeLarge {
     @include breakpoint-after($layout-width-page-with-nav-base) {
-      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
+      max-width: calc(100% - var(--p-space-16));
     }
 
     @include breakpoint-after($large-width + $dangerous-magic-space-16) {

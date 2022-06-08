@@ -16,6 +16,7 @@ const html = `
 <!DOCTYPE>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>${getTitleTagValue("API")}</title>
         <style>
             td, th {
@@ -30,7 +31,7 @@ const html = `
         </style>
     </head>
     <body>
-        <h1>Admin Design Systems Token API v0</h1>
+        <h1>Polaris Token API</h1>
         <p>
             This API allows users to query for and build applications with the <a href="https://polaris.shopify.com/tokens/getting-started-with-tokens">Polaris Tokens</a>.
         </p>

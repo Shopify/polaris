@@ -1,3 +1,4 @@
+import React from "react";
 import Link, { LinkProps } from "next/link";
 import { HTMLProps, PropsWithChildren } from "react";
 import { className } from "../../utils/various";
@@ -30,6 +31,27 @@ function Button({ small, pill, primary, children, ...rest }: ButtonProps) {
     </button>
   );
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ small, pill, primary, children, ...rest }, ref) => {
+    return (
+      <button
+        className={className(
+          styles.Button,
+          small && styles.small,
+          pill && styles.pill,
+          primary && styles.primary
+        )}
+        {...rest}
+        type="button"
+        ref={ref}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+Button.displayName = "Button";
 
 export function LinkButton({
   small,

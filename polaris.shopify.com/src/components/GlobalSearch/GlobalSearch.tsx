@@ -14,15 +14,13 @@ import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
 import Link from "next/link";
-import pageIcon from "./PageMajor.svg";
 import { className, stripMarkdownLinks } from "../../utils/various";
-import Image from "../Image";
 
 interface Props {}
 
 function getSearchResultAsString(result: SearchResult | null): string {
   switch (result?.category) {
-    case "Guidelines":
+    case "Foundations":
       return result.meta.title;
     case "Components":
       return result.meta.name;
@@ -118,7 +116,7 @@ function GlobalSearch({}: Props) {
                   const typedCategory = category as SearchResultCategory;
 
                   switch (typedCategory) {
-                    case "Guidelines":
+                    case "Foundations":
                       const results = searchResults[typedCategory].results;
                       if (results.length === 0) return null;
                       return (
@@ -126,28 +124,20 @@ function GlobalSearch({}: Props) {
                           <h3 className={styles.ResultsGroupName}>
                             {category}
                           </h3>
-                          <div className={styles.GuidelinesResults}>
+                          <div className={styles.FoundationsResults}>
                             {results.map((result) => {
                               resultIndex++;
                               return (
                                 <li
                                   key={result.meta.title}
                                   className={className(
-                                    styles.GuidelinesResult,
+                                    styles.FoundationsResult,
                                     highlightedIndex === resultIndex &&
                                       styles.isHighlighted
                                   )}
                                 >
                                   <Link href={result.url} passHref>
                                     <a>
-                                      <div className={styles.Icon}>
-                                        <Image
-                                          src={pageIcon}
-                                          alt=""
-                                          width={16}
-                                          height={16}
-                                        />
-                                      </div>
                                       <h4>{result.meta.title}</h4>
                                       <p>
                                         {stripMarkdownLinks(
@@ -199,7 +189,16 @@ function GlobalSearch({}: Props) {
                       if (results.length === 0) return null;
                       return (
                         <ResultsGroup title={category}>
-                          <TokenList layout="list">
+                          <TokenList
+                            showTableHeading={false}
+                            columns={{
+                              preview: true,
+                              name: true,
+                              figmaUsage: false,
+                              value: false,
+                              description: true,
+                            }}
+                          >
                             {results.map((result) => {
                               resultIndex++;
                               return (
