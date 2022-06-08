@@ -36,7 +36,9 @@ const fuse = new Fuse(Object.values(icons), {
 
 function IconsPage() {
   const [filterString, setFilterString] = useState("");
-  const [selectedIconName, setSelectedIconName] = useState<string>();
+  const [selectedIconName, setSelectedIconName] = useState<string>(
+    icons[0].name
+  );
 
   let filteredIcons = [...icons];
 
@@ -47,9 +49,7 @@ function IconsPage() {
   const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
   const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
 
-  const selectedIcon = filteredIcons.find(
-    (icon) => icon.name === selectedIconName
-  );
+  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
 
   if (selectedIconName && !selectedIcon) {
     throw new Error(`Could not find icon ${selectedIconName}`);

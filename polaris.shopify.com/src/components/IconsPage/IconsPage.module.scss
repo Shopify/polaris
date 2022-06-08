@@ -28,8 +28,7 @@
 
 .SelectedIcon {
   .IconName {
-    font-size: var(--font-size-600);
-    font-weight: var(--font-weight-500);
+    @include heading-2;
 
     span {
       color: var(--text-subdued);
@@ -55,8 +54,7 @@
 
   h3 {
     margin: 2rem 0 0.5rem;
-    font-size: var(--font-size-500);
-    font-weight: var(--font-weight-500);
+    @include heading-3;
   }
 }
 
