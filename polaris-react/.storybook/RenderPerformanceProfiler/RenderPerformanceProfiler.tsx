@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-// import isChromatic from 'chromatic/isChromatic';
+import isChromatic from 'chromatic/isChromatic';
 import {version} from '../../package.json';
 
 interface Data {
@@ -22,9 +22,12 @@ const trackRenderPerformance = (data: Data) => {
 
   const body = JSON.stringify({...data, commitSha, version});
 
-  console.log(body);
+  const target =
+    process.env.NODE_ENV === 'development'
+      ? '//localhost:3000/api/profiler'
+      : 'https://polaris-coverage.shopifycloud.com/api/profiler';
 
-  fetch('//localhost:3000/api/test', {
+  fetch(target, {
     method: 'POST',
     keepalive: true,
     mode: 'no-cors',
@@ -52,11 +55,6 @@ const Profiler = ({id, kind, children}: PropsWithChildren<ProfileProps>) => {
   );
 };
 
-// TODO const IdentityComponent = ({children}: PropsWithChildren<{}>) => <>{children}</>;
+const Children = ({children}: PropsWithChildren<{}>) => <>{children}</>;
 
-// TODO only run in Chromatic
-// export const RenderPerformanceProfiler = isChromatic()
-//   ? Profiler
-//   : IdentityComponent;
-
-export const RenderPerformanceProfiler = Profiler;
+export const RenderPerformanceProfiler = isChromatic() ? Profiler : Children;
