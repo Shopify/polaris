@@ -47,16 +47,19 @@ export const getStaticProps: GetStaticProps<
   { component: string }
 > = async (context) => {
   const componentSlug = context.params?.component;
-  const mdFilePath = path.join(
+  const mdFilePath = path.resolve(
     process.cwd(),
-    `content/components/${componentSlug}/index.md`
+    `content/components/${componentSlug}.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
     const readme = marked(data.readme);
-    const props: Props = { ...data.frontMatter, readme };
+    const props: Props = {
+      ...data.frontMatter,
+      readme,
+    };
 
     return { props };
   } else {
@@ -67,11 +70,11 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths: GetStaticPaths = async () => {
   const componentBasePath = path.resolve(process.cwd(), "content/components");
   const paths = glob
-    .sync(path.join(componentBasePath, "**/index.md"))
+    .sync(path.join(componentBasePath, "*.md"))
     .map((fileName: string) => {
       return fileName
         .replace(`${process.cwd()}/content`, "")
-        .replace("/index.md", "");
+        .replace(".md", "");
     });
 
   return {

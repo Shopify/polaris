@@ -1,3 +1,5 @@
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -7,9 +9,7 @@ import Page from "../components/Page";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isPolaris =
-    router.asPath.startsWith("/examples") ||
-    router.asPath.startsWith("/generated-examples");
+  const isPolaris = router.asPath.startsWith("/examples");
 
   return (
     <Page skipHeaderAndFooter={isPolaris}>
