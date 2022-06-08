@@ -39,31 +39,33 @@ function ResourcesPage({}: Props) {
 
             <div className={styles.Blocks}>
               <div className={styles.Block}>
-                <h3>Components</h3>
-                <p className={styles.Description}>
-                  The core library that give you access to components, styles
-                  and everything else you need to build a great app with
-                  Polaris. Lorem ipsum dolor et amet.
-                </p>
-                <Links
-                  links={[
-                    {
-                      icon: "link",
-                      label: "Documentation",
-                      url: "/components",
-                    },
-                    {
-                      icon: "github",
-                      label: "Repo",
-                      url: "https://github.com/Shopify/polaris/tree/main/polaris-react",
-                    },
-                    {
-                      icon: "figma",
-                      label: "Library",
-                      url: "https://www.figma.com/community/file/930504625460155381",
-                    },
-                  ]}
-                />
+                <div className={styles.Text}>
+                  <h3>Components</h3>
+                  <p className={styles.Description}>
+                    The core library that give you access to components, styles
+                    and everything else you need to build a great app with
+                    Polaris. Lorem ipsum dolor et amet.
+                  </p>
+                  <Links
+                    links={[
+                      {
+                        icon: "link",
+                        label: "Documentation",
+                        url: "/components",
+                      },
+                      {
+                        icon: "github",
+                        label: "Repo",
+                        url: "https://github.com/Shopify/polaris/tree/main/polaris-react",
+                      },
+                      {
+                        icon: "figma",
+                        label: "Library",
+                        url: "https://www.figma.com/community/file/930504625460155381",
+                      },
+                    ]}
+                  />
+                </div>
                 <div className={styles.Image}>
                   <Image
                     src={componentsImage}
@@ -75,31 +77,34 @@ function ResourcesPage({}: Props) {
               </div>
 
               <div className={styles.Block}>
-                <h3>Tokens</h3>
-                <p className={styles.Description}>
-                  Tokens are the building blocks for extending Polaris. Combine
-                  colors, spacing, typography and more into entierly new
-                  experiences.
-                </p>
-                <Links
-                  links={[
-                    {
-                      icon: "link",
-                      label: "Browse tokens",
-                      url: "/tokens",
-                    },
-                    {
-                      icon: "github",
-                      label: "Repo",
-                      url: "https://github.com/Shopify/polaris/tree/main/polaris-tokens",
-                    },
-                    {
-                      icon: "figma",
-                      label: "Library",
-                      url: "https://www.figma.com/community/file/930504178610771955",
-                    },
-                  ]}
-                />
+                <div className={styles.Text}>
+                  <h3>Tokens</h3>
+                  <p className={styles.Description}>
+                    Tokens are the building blocks for extending Polaris.
+                    Combine colors, spacing, typography and more into entierly
+                    new experiences.
+                  </p>
+                  <Links
+                    links={[
+                      {
+                        icon: "link",
+                        label: "Browse tokens",
+                        url: "/tokens",
+                      },
+                      {
+                        icon: "github",
+                        label: "Repo",
+                        url: "https://github.com/Shopify/polaris/tree/main/polaris-tokens",
+                      },
+                      {
+                        icon: "figma",
+                        label: "Library",
+                        url: "https://www.figma.com/community/file/930504178610771955",
+                      },
+                    ]}
+                  />
+                </div>
+
                 <div className={styles.Image}>
                   <Image
                     src={tokensImage}
@@ -111,12 +116,15 @@ function ResourcesPage({}: Props) {
               </div>
 
               <div className={styles.Block}>
-                <h3>Icons</h3>
-                <p className={styles.Description}>
-                  The Polaris icon library contains 400+ carefully designed
-                  icons focused on commerce and entrepreneurship. Lorem ipsum
-                  dolor et amet.
-                </p>
+                <div className={styles.Text}>
+                  <h3>Icons</h3>
+                  <p className={styles.Description}>
+                    The Polaris icon library contains 400+ carefully designed
+                    icons focused on commerce and entrepreneurship. Lorem ipsum
+                    dolor et amet.
+                  </p>
+                </div>
+
                 <Links
                   links={[
                     {
