@@ -10,7 +10,6 @@
 
   h1 {
     @include heading-1;
-    font-size: var(--font-size-1700);
   }
 
   p {
