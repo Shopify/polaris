@@ -7,34 +7,23 @@ import Head from "next/head";
 import "../styles/globals.scss";
 import Page from "../components/Page";
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isPolaris =
     router.asPath.startsWith("/examples") ||
     router.asPath.startsWith("/generated-examples");
-  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <>
+    <Page skipHeaderAndFooter={isPolaris}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
 
-      <Page skipHeaderAndFooter={isPolaris}>
-        <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-          {getLayout(<Component {...pageProps} />)}
-        </div>
-      </Page>
-    </>
+      <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+        <Component {...pageProps} />
+      </div>
+    </Page>
   );
 }
 

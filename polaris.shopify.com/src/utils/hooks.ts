@@ -24,18 +24,18 @@ export const useCopyToClipboard = (stringToCopy: string) => {
   return [copy, didJustCopy] as const;
 };
 
-type TOCNode = {
+export type TOCItem = {
   name: string;
   element: "H2" | "H3";
-  children: TOCNode[];
+  children: TOCItem[];
 };
 
 export const useTOC = (children: React.ReactNode) => {
-  const [toc, setToc] = useState<TOCNode[]>([]);
+  const [toc, setToc] = useState<TOCItem[]>([]);
 
   useEffect(() => {
-    let tocNodes: TOCNode[] = [];
-    let currentNode: TOCNode | null = null;
+    let tocNodes: TOCItem[] = [];
+    let currentNode: TOCItem | null = null;
 
     const headings = document.querySelectorAll<HTMLHeadingElement>("h2,h3");
     headings.forEach((el, i) => {
