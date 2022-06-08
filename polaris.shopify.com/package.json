@@ -28,7 +28,7 @@
     "react-tooltip": "^4.2.21",
     "sass": "^1.49.9",
     "@floating-ui/react-dom-interactions": "^0.6.1",
-    "use-dark-mode": "^2.3.2"
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
