@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
@@ -35,6 +35,7 @@ function getSearchResultAsString(result: SearchResult | null): string {
 function GlobalSearch({}: Props) {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>();
   const router = useRouter();
+  const globalSearchID = "global-search";
 
   let resultsInRenderedOrder: SearchResults = [];
   if (searchResults) {
@@ -54,8 +55,9 @@ function GlobalSearch({}: Props) {
     getComboboxProps,
     highlightedIndex,
     getItemProps,
+    openMenu,
   } = useCombobox({
-    id: "global-search",
+    id: globalSearchID,
     items: resultsInRenderedOrder,
     onInputValueChange: ({ inputValue }) => {
       const results = search(inputValue || "");
@@ -72,6 +74,20 @@ function GlobalSearch({}: Props) {
 
   let resultIndex = -1;
 
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      const searchbar = document.getElementById(globalSearchID);
+      let isKKey = "/";
+      if (isKKey) {
+        event.preventDefault();
+        openMenu();
+        if (searchbar !== null) {
+          searchbar.focus();
+        }
+      }
+    });
+  });
+
   return (
     <div className={styles.GlobalSearch}>
       <label {...getLabelProps()} className="sr-only">
@@ -81,7 +97,7 @@ function GlobalSearch({}: Props) {
         <WrappedTextField
           renderTextField={(className) => (
             <input
-              {...getInputProps({})}
+              {...getInputProps({ id: globalSearchID })}
               placeholder="Search"
               className={className}
             />
@@ -102,7 +118,7 @@ function GlobalSearch({}: Props) {
           <>
             <div className={styles.Header}>
               <h2>{resultsInRenderedOrder.length} results</h2>
-              <p>Tip: Use command-K to open search</p>
+              <p>Tip: Use / to open search</p>
             </div>
           </>
         )}
