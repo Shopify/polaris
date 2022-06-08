@@ -30,7 +30,7 @@ const Components = ({ name, readme }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
-    <Layout title={name} navItems={navItems}>
+    <Layout width="narrow" title={name} navItems={navItems}>
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>

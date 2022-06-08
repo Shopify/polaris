@@ -8,27 +8,13 @@ const importedSvgs = require.context(
 );
 import styles from "./IconGrid.module.scss";
 import { Icon, HighlightableSearchResult } from "../../types";
-import { Children } from "react";
-
-const COLUMN_COUNT = 8;
 
 interface IconGridProps {
   children: React.ReactNode;
 }
 
 function IconGrid({ children }: IconGridProps) {
-  const childCount = Children.count(children);
-  const extraElements =
-    childCount < COLUMN_COUNT ? COLUMN_COUNT - childCount : 0;
-
-  return (
-    <ul className={styles.IconGrid}>
-      {children}
-      {[...Array(extraElements)].map((i) => (
-        <li key={i}></li>
-      ))}
-    </ul>
-  );
+  return <ul className={styles.IconGrid}>{children}</ul>;
 }
 
 interface IconGridItemProps extends HighlightableSearchResult {
@@ -60,7 +46,7 @@ function IconGridItem({
         )}
       >
         <button onClick={() => onClick(icon.name)}>
-          <div style={{ filter: "brightness(-500%)" }}>
+          <div className={styles.SVGWrapper}>
             <Image
               src={importedSvgs(`./${icon.fileName}.svg`)}
               alt={icon.description}

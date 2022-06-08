@@ -2,7 +2,9 @@ import Head from "next/head";
 import { useState } from "react";
 import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Longform from "../Longform";
+import { Tab } from "@headlessui/react";
+import Container from "../Container";
 import metadata from "@shopify/polaris-icons/metadata";
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
@@ -34,7 +36,9 @@ const fuse = new Fuse(Object.values(icons), {
 
 function IconsPage() {
   const [filterString, setFilterString] = useState("");
-  const [selectedIconName, setSelectedIconName] = useState<string>();
+  const [selectedIconName, setSelectedIconName] = useState<string>(
+    icons[0].name
+  );
 
   let filteredIcons = [...icons];
 
@@ -45,9 +49,7 @@ function IconsPage() {
   const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
   const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
 
-  const selectedIcon = filteredIcons.find(
-    (icon) => icon.name === selectedIconName
-  );
+  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
 
   if (selectedIconName && !selectedIcon) {
     throw new Error(`Could not find icon ${selectedIconName}`);
@@ -56,7 +58,7 @@ function IconsPage() {
   const updateURL = `https://github.com/Shopify/polaris-icons/issues/new?assignees=@shopify/icon-guild&labels=Update,Proposal&template=propose-updates-to-existing-icons.md&title=%5BProposal%5D%20Update%20${selectedIconName}`;
 
   return (
-    <MaxPageWidthDiv className={styles.IconsPage}>
+    <Container className={styles.IconsPage}>
       <Head>
         <title>{getTitleTagValue("Icons")}</title>
       </Head>
@@ -215,7 +217,7 @@ function IconsPage() {
           )}
         </div>
       </div>
-    </MaxPageWidthDiv>
+    </Container>
   );
 }
 

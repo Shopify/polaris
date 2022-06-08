@@ -109,7 +109,10 @@
     position: relative;
     background: var(--surface-subdued);
     border-radius: 32px;
-    padding-right: 40%;
+
+    .Text {
+      max-width: 50%;
+    }
 
     h3 {
       margin-bottom: 1rem;

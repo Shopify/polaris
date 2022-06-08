@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .Tooltip {
   pointer-events: none;
   max-width: 300px;
@@ -27,5 +29,16 @@
     background: var(--surface);
     transform: rotate(45deg);
     z-index: 0;
+  }
+
+  @include dark-mode {
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.25));
+  }
+
+  .Content,
+  &::after {
+    @include dark-mode {
+      background: var(--surface-subdued);
+    }
   }
 }

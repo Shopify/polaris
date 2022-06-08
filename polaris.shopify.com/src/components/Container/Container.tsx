@@ -1,17 +1,17 @@
 import { HTMLProps } from "react";
 import { className as classNameHelper } from "../../utils/various";
-import styles from "./MaxPageWidthDiv.module.scss";
+import styles from "./Container.module.scss";
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  padding?: boolean;
+  width?: "wide" | "medium";
 }
 
-function MaxPageWidthDiv({ padding = true, className, ...rest }: Props) {
+function Container({ width = "wide", className, ...rest }: Props) {
   return (
     <div
       className={classNameHelper(
-        styles.MaxPageWidthDiv,
-        padding && styles.padding,
+        styles.Container,
+        width === "medium" && styles.medium,
         className
       )}
       {...rest}
@@ -19,4 +19,4 @@ function MaxPageWidthDiv({ padding = true, className, ...rest }: Props) {
   );
 }
 
-export default MaxPageWidthDiv;
+export default Container;
