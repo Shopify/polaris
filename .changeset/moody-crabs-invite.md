@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Created PolarisExamplePage and pages/examples
+Workflow and script for hosting examples
