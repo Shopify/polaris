@@ -1,5 +1,6 @@
 import { Link, AccountConnection } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function AccountConnectionExample() {
   const [connected, setConnected] = useState(false);
@@ -33,3 +34,5 @@ function AccountConnectionExample() {
     />
   );
 }
+
+export default withPolarisExample(AccountConnectionExample);
