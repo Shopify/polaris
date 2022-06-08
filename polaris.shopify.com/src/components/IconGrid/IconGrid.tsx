@@ -52,6 +52,7 @@ function IconGridItem({
               alt={icon.description}
               width={24}
               height={24}
+              fadeIn={false}
             />
           </div>
           <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>

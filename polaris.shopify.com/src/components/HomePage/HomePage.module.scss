@@ -1,13 +1,15 @@
 @import "../../styles/fonts.scss";
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .HomePage {
-  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   background: var(--surface-subdued);
-  margin: 0 50px;
-  min-height: calc(100vh - var(--header-height) - 50px);
-  border-radius: 32px;
+  min-height: calc(100vh - var(--header-height));
+  padding: 6rem 0;
 
   @media screen and (max-width: $breakpointMobile) {
     margin: 0;
@@ -15,7 +17,20 @@
   }
 }
 
+@keyframes dash {
+  from {
+    stroke-dashoffset: 2;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .Intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   .IntroContent {
     display: flex;
     flex-direction: column;
@@ -49,8 +64,25 @@
 }
 
 .Hero {
-  margin-top: 4rem;
-  background: url(./hero.png) no-repeat center top;
-  background-size: 2206px auto;
-  min-height: 570px;
+  margin-top: -3rem;
+  pointer-events: none;
+
+  rect,
+  line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: dash 16s linear infinite;
+
+    &:nth-of-type(3n) {
+      animation-delay: -4s;
+    }
+
+    &:nth-of-type(3n - 1) {
+      animation-delay: -8s;
+    }
+  }
+
+  @include dark-mode {
+    filter: invert(1);
+  }
 }
