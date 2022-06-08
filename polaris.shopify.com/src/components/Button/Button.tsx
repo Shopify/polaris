@@ -1,3 +1,4 @@
+import React from "react";
 import Link, { LinkProps } from "next/link";
 import { HTMLProps, PropsWithChildren } from "react";
 import { className } from "../../utils/various";
@@ -10,7 +11,9 @@ interface Props {
 }
 
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
-interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
+  download?: boolean;
+}
 
 function Button({ small, pill, primary, children, ...rest }: ButtonProps) {
   return (
@@ -34,6 +37,7 @@ export function LinkButton({
   pill,
   href,
   primary,
+  download,
   children,
   ...rest
 }: LinkButtonProps) {
@@ -46,6 +50,7 @@ export function LinkButton({
           pill && styles.pill,
           primary && styles.primary
         )}
+        download={download}
         {...rest}
       >
         {children}

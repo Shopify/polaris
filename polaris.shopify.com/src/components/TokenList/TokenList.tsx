@@ -5,6 +5,10 @@ import {
 import { createContext } from "react";
 import { className } from "../../utils/various";
 import styles from "./TokenList.module.scss";
+import { useCopyToClipboard } from "../../utils/hooks";
+import iconClipboard from "../../../public/icon-clipboard.svg";
+import Image from "../Image";
+import Tooltip from "../Tooltip";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -112,6 +116,8 @@ function TokenListItem({
   isHighlighted,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
+  const tokenNameWithPrefix = `--p-${name}`;
+  const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   return (
     <TokenListContext.Consumer>
@@ -130,7 +136,32 @@ function TokenListItem({
           )}
           {columns.name && (
             <td>
-              <span className={styles.TokenName}>--p-{name}</span>
+              <span className={styles.TokenContainer}>
+                <div className={styles.TokenName}>
+                  <span>{tokenNameWithPrefix}</span>
+                </div>
+                <div className={styles.TokenClipboard}>
+                  <Tooltip
+                    ariaLabel="Copy to clipboard"
+                    placement="top"
+                    renderContent={() => (
+                      <div className={styles.TokenToolTip}>
+                        <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
+                      </div>
+                    )}
+                  >
+                    <button onClick={copy}>
+                      <Image
+                        src={iconClipboard}
+                        alt={"Copy"}
+                        width={19}
+                        height={19}
+                        fadeIn={false}
+                      />
+                    </button>
+                  </Tooltip>
+                </div>
+              </span>
             </td>
           )}
           {columns.value && <td className={styles.Value}>{value}</td>}

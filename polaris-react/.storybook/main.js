@@ -54,6 +54,9 @@ module.exports = {
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
+                auto: (resourcePath) => {
+                  return !resourcePath.includes('CustomProperties');
+                },
               },
             },
           },

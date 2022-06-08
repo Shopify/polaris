@@ -44,6 +44,7 @@ function rollupAdjustPluginsPlugin() {
       ? {
           mode: 'esnext',
           modules: {
+            globalModulePaths: [/CustomProperties\.scss$/],
             generateScopedName: generateScopedName({includeHash: true}),
           },
           plugins: postcssPlugins,
@@ -52,6 +53,7 @@ function rollupAdjustPluginsPlugin() {
           mode: 'standalone',
           output: 'styles.css',
           modules: {
+            globalModulePaths: [/CustomProperties\.scss$/],
             generateScopedName: generateScopedName({includeHash: false}),
           },
           plugins: postcssPlugins,

@@ -2,6 +2,7 @@ import React, {PureComponent, Children, createRef} from 'react';
 import {tokens} from '@shopify/polaris-tokens';
 
 import {
+  // eslint-disable-next-line import/no-deprecated
   CustomProperties,
   CustomPropertiesProps,
 } from '../../../CustomProperties';

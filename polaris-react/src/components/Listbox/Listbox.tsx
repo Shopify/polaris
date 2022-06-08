@@ -244,12 +244,24 @@ export function Listbox({
         return currentValues[index] === value;
       });
 
+    const listIsAppended =
+      currentValues.length !== 0 &&
+      nextValues.length > currentValues.length &&
+      currentValues.every((value, index) => {
+        return nextValues[index] === value;
+      });
+
     if (listIsUnchanged) {
       if (optionIsAlreadyActive && actionContentHasUpdated) {
         setCurrentOptions(nextOptions);
         handleChangeActiveOption(nextOption);
       }
 
+      return;
+    }
+
+    if (listIsAppended) {
+      setCurrentOptions(nextOptions);
       return;
     }
 
