@@ -19,17 +19,15 @@ function FoundationsPage({ markdownFile: { readme, frontMatter } }: Props) {
   }
 
   return (
-    <>
+    <Layout width="narrow" navItems={navItems} title={title}>
       <Head>
         <title>{getTitleTagValue(title)}</title>
       </Head>
 
-      <Layout navItems={navItems} title={title}>
-        <Longform>
-          <Markdown text={readme} skipH1 />
-        </Longform>
-      </Layout>
-    </>
+      <Longform>
+        <Markdown text={readme} skipH1 />
+      </Longform>
+    </Layout>
   );
 }
 

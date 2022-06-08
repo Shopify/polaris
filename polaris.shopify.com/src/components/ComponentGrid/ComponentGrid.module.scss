@@ -2,7 +2,7 @@
 
 .ComponentGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 2rem 1rem;
 }
 
@@ -45,4 +45,13 @@
   filter: brightness(0.91) contrast(1.15);
   border-radius: var(--border-radius-800);
   overflow: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.8;
+    transition: opacity 0.05s linear;
+
+    .Component:hover & {
+      opacity: 1;
+    }
+  }
 }

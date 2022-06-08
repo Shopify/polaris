@@ -1,7 +1,7 @@
 import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
 import { useState } from "react";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
 import { NavItem } from "../Nav/Nav";
@@ -87,7 +87,7 @@ function TokensPage({ tokenGroup }: Props) {
     .join("\n");
 
   return (
-    <MaxPageWidthDiv>
+    <Container width="medium">
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Build with Tokens</h1>
@@ -131,7 +131,7 @@ function TokensPage({ tokenGroup }: Props) {
 
         <style jsx>{keyframeStyles}</style>
       </div>
-    </MaxPageWidthDiv>
+    </Container>
   );
 }
 

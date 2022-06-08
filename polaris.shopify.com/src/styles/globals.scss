@@ -4,42 +4,60 @@
 
 :root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 88px;
+  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4rem;
+  --header-margin: 4.5rem;
 
-  @media screen and (max-width: $breakpointMobile) {
+  @media screen and (max-width: $breakpointDesktop) {
     --header-height: 60px;
     --header-margin: 2rem;
   }
 
-  --focus-outline: 0 0 0 2px black;
+  --focus-outline: 0 0 0 2px var(--text-strong);
 
   --text: #4a4c4e;
   --text-strong: #111212;
   --text-subdued: #777;
   --text-light: #999;
   --text-link: #2e5dba;
-  --text-token: #6e006e;
-
   --surface: #ffffff;
   --surface-subdued: #f6f6f6;
-  --surface-token: #fdf0fd;
   --primary: #008060;
-
   --border-color: #dedede;
+  --border-color-light: #ededed;
   --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
   --card-shadow: none;
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
-
   --decorative-1: #e9f1e2;
   --decorative-2: #fdecd5;
   --decorative-3: #e1f3f5;
   --decorative-4: #f0edff;
-
   --backdrop: rgba(0, 0, 0, 0.5);
+
+  @media (prefers-color-scheme: dark) {
+    --text: #aaa;
+    --text-strong: #e7e7e7;
+    --text-subdued: #777;
+    --text-light: #999;
+    --text-link: #6995ee;
+    --surface: #181818;
+    --surface-subdued: #242424;
+    --primary: #1aab87;
+    --border-color: #555;
+    --border-color-light: #2a2a2a;
+    --border-inset-color: #555;
+    --border: 1px solid var(--border-color);
+    --card-shadow: none;
+    --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
+      0 0 0 0.5px var(--border-color);
+    --decorative-1: #204400;
+    --decorative-2: #472a00;
+    --decorative-3: #004a54;
+    --decorative-4: #110065;
+    --backdrop: rgba(0, 0, 0, 0.5);
+  }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);

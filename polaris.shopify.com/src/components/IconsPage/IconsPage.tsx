@@ -5,7 +5,7 @@ import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
 import Longform from "../Longform";
 import { Tab } from "@headlessui/react";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import MaxPageWidthDiv from "../Container";
 import metadata from "@shopify/polaris-icons/metadata";
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",

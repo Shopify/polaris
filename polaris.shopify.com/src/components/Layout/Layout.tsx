@@ -2,40 +2,53 @@ import React from "react";
 import { TOCItem, useTOC } from "../../utils/hooks";
 import { className, slugify } from "../../utils/various";
 import Longform from "../Longform";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Container from "../Container";
 import Nav, { NavItem } from "../Nav/Nav";
 import styles from "./Layout.module.scss";
 
 interface Props {
+  width?: "full" | "narrow";
   navItems?: NavItem[];
   title?: string;
   showTOC?: boolean;
   children: React.ReactNode;
 }
 
-function Layout({ navItems, title, showTOC = true, children }: Props) {
+function Layout({
+  width = "full",
+  navItems,
+  title,
+  showTOC = true,
+  children,
+}: Props) {
   const [tocItems] = useTOC(children);
 
   return (
-    <MaxPageWidthDiv
-      className={className(styles.Layout, showTOC && styles.showTOC)}
+    <Container
+      className={className(
+        styles.Layout,
+        showTOC && styles.showTOC,
+        width === "narrow" && styles.narrow
+      )}
     >
       <div className={styles.Nav}>
         {navItems && <Nav navItems={navItems} />}
       </div>
 
-      <article className={styles.Post}>
-        {title && (
-          <Longform>
-            <h1>{title}</h1>
-          </Longform>
-        )}
-        <div className={styles.ContentWrapper}>
-          {showTOC && <TOC items={tocItems} />}
-          {children}
+      <article className={styles.Main}>
+        <div className={styles.CenteredMainContent}>
+          {title && (
+            <Longform>
+              <h1>{title}</h1>
+            </Longform>
+          )}
+          <div className={styles.Post}>
+            {showTOC && <TOC items={tocItems} />}
+            <div className={styles.PostContent}>{children}</div>
+          </div>
         </div>
       </article>
-    </MaxPageWidthDiv>
+    </Container>
   );
 }
 

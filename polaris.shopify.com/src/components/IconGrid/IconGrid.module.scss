@@ -5,8 +5,6 @@
 }
 
 .Icon {
-  transition: all 0.2s ease;
-
   button {
     appearance: none;
     display: flex;
@@ -20,7 +18,6 @@
     padding-top: 5px;
     aspect-ratio: 5 / 4;
     border-radius: var(--border-radius-800);
-    transition: background-color 0.05s linear;
     box-shadow: var(--card-shadow);
 
     &:hover {
@@ -35,11 +32,12 @@
   }
 }
 
-.Preview {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 0;
-  animation: icon-in 0.25s 0.05s ease both;
+.SVGWrapper {
+  filter: brightness(0);
+
+  @media (prefers-color-scheme: dark) {
+    filter: brightness(0) contrast(1) invert(1);
+  }
 }
 
 .IconMeta {

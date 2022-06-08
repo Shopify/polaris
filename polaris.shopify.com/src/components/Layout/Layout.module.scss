@@ -4,6 +4,8 @@
   --gap: 7rem;
   --nav-width: 12rem;
   --toc-width: 12rem;
+  --max-content-width: 72rem;
+  --toc-gap: 5rem;
   margin-top: var(--header-margin);
   display: flex;
   gap: var(--gap);
@@ -27,44 +29,53 @@
   }
 }
 
-.Post {
+.Main {
   position: relative;
   flex: 1;
+  display: flex;
+  justify-content: center;
 
-  .Layout.showTOC & {
-    max-width: calc(
-      100% - var(--nav-width) - var(--gap) - var(--gap) - var(--toc-width)
-    );
+  .CenteredMainContent {
+    flex: 1;
 
-    @media screen and (max-width: $breakpointDesktop) {
-      max-width: 100%;
+    .Layout.narrow & {
+      padding-right: var(--gap);
+      max-width: var(--max-content-width);
+
+      @media screen and (max-width: $breakpointDesktop) {
+        padding-right: 0;
+      }
     }
   }
 }
 
-.ContentWrapper {
+.Post {
   position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: var(--toc-gap);
+
+  .PostContent {
+    flex: 1;
+  }
 }
 
 .TOC {
-  position: absolute;
-  font-size: var(--font-size-100);
+  --toc-sticky-top-margin: 2rem;
+  position: sticky;
+  top: 2rem;
+  margin-top: 1.25rem;
   width: var(--toc-width);
-  right: calc((var(--toc-width) + 5rem) * -1);
+  right: calc((var(--toc-width) + 6rem) * -1);
+  font-size: var(--font-size-200);
   height: 100%;
-  top: 0;
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
 
-  > ul {
-    position: sticky;
-    top: 2rem;
-  }
-
   > ul > li:not(:first-child) {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   a {
@@ -82,24 +93,24 @@
 
   &.isNested {
     ul ul {
+      position: relative;
+      margin-top: 0.5rem;
+      font-size: var(--font-size-100);
+      padding-left: 0.75rem;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0.4rem;
+        bottom: 0.4rem;
+        width: 1px;
+        left: 0;
+        background: var(--border-color);
+      }
+
       a {
-        position: relative;
-        padding-left: 0.66rem;
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          min-width: 4px;
-          max-width: 4px;
-          min-height: 4px;
-          max-height: 4px;
-          border-radius: var(--border-radius-round);
-          background: var(--text);
-        }
+        padding: 0.125rem 0;
       }
     }
   }

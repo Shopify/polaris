@@ -22,8 +22,8 @@
 .Category {
   display: block;
   position: relative;
-  min-height: 20rem;
-  background: #ddd
+  min-height: 25rem;
+  background: var(--surface-subdued)
     url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png) no-repeat
     no-repeat center center;
   background-size: auto 101%;
@@ -48,7 +48,8 @@
 
   h2 {
     position: absolute;
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--surface-subdued);
+    color: var(--text-strong);
     backdrop-filter: blur(100px);
     padding: 0.75rem 1.25rem;
     @include heading-2;
@@ -56,14 +57,6 @@
     top: 1rem;
     left: 1rem;
     border-radius: 100px;
-  }
-
-  p {
-    position: relative;
-    margin-top: 0.35rem;
-    margin-bottom: 1rem;
-    line-height: 1.35;
-    font-weight: 435;
   }
 
   ul {

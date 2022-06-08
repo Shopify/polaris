@@ -30,7 +30,7 @@
 
   h2 {
     @include heading-2;
-    margin-top: 2rem;
+    margin-top: 2.25rem;
   }
 
   h3 {
@@ -103,6 +103,7 @@
 
   strong {
     font-weight: var(--font-weight-600);
+    color: var(--text-strong);
   }
 
   hr {
@@ -124,6 +125,8 @@
     color: var(--surface);
     border-radius: var(--border-radius-200);
     overflow: auto;
+    white-space: pre-wrap;
+    min-width: 0;
 
     p {
       margin: 0;
@@ -142,6 +145,6 @@
     margin-bottom: 2rem;
     font-size: var(--font-size-700);
     color: var(--text-strong);
-    letter-spacing: var(--letter-spacing-300);
+    letter-spacing: var(--letter-spacing-100);
   }
 }

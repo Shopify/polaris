@@ -60,7 +60,7 @@ function IconGridItem({
         )}
       >
         <button onClick={() => onClick(icon.name)}>
-          <div style={{ filter: "brightness(-500%)" }}>
+          <div className={styles.SVGWrapper}>
             <Image
               src={importedSvgs(`./${icon.fileName}.svg`)}
               alt={icon.description}

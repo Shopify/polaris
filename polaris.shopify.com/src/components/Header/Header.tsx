@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Container from "../Container";
 import Button from "../Button";
 import SideNav from "../SideNav";
 import NavItems from "../NavItems";
@@ -43,7 +43,7 @@ function Header({ hasShadow, currentSection }: Props) {
 
   return (
     <div className={className(styles.Header, hasShadow && styles.hasShadow)}>
-      <MaxPageWidthDiv className={styles.HeaderInner}>
+      <Container className={styles.HeaderInner}>
         <nav className={styles.SideNavContainer}>
           <Button
             id="menu-button"
@@ -95,7 +95,7 @@ function Header({ hasShadow, currentSection }: Props) {
         {showMenu && (
           <div className={styles.Backdrop} onClick={handleCloseMenu} />
         )}
-      </MaxPageWidthDiv>
+      </Container>
     </div>
   );
 }

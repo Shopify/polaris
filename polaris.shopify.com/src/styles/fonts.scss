@@ -6,14 +6,14 @@
   color: var(--text-strong);
   font-size: var(--font-size-1300);
   font-weight: var(--font-weight-800);
-  letter-spacing: var(--letter-spacing-900);
+  letter-spacing: var(--letter-spacing-600);
   line-height: 1.15;
 }
 
 @mixin heading-2 {
   color: var(--text-strong);
   font-size: var(--font-size-900);
-  letter-spacing: var(--letter-spacing-500);
+  letter-spacing: var(--letter-spacing-300);
   font-weight: var(--font-weight-400);
   line-height: 1.25;
 }
@@ -22,7 +22,7 @@
   color: var(--text-strong);
   font-size: var(--font-size-600);
   font-weight: var(--font-weight-900);
-  letter-spacing: var(--letter-spacing-300);
+  letter-spacing: var(--letter-spacing-100);
   line-height: 1.25;
 }
 

@@ -4,7 +4,7 @@
 .HomePage {
   padding-top: 6rem;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  background: #ededed;
+  background: var(--surface-subdued);
   margin: 0 50px;
   min-height: calc(100vh - var(--header-height) - 50px);
   border-radius: 32px;
