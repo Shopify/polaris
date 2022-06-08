@@ -7,6 +7,14 @@
     height: auto;
   }
 
+  ul li {
+    list-style-type: disc;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+
   h2,
   h3,
   h4,
