@@ -13,7 +13,7 @@
 @mixin heading-2 {
   color: var(--text-strong);
   font-size: var(--font-size-900);
-  letter-spacing: var(--letter-spacing-300);
+  letter-spacing: var(--letter-spacing-400);
   font-weight: var(--font-weight-400);
   line-height: 1.25;
 }
@@ -28,7 +28,7 @@
 
 @mixin heading-4 {
   color: var(--text-strong);
-  font-size: var(--font-size-200);
-  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-800);
   letter-spacing: var(--letter-spacing-200);
 }

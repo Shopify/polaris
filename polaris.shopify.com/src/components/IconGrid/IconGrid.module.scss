@@ -1,7 +1,10 @@
+@import "../../styles/mixins.scss";
+
 .IconGrid {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
+  grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
 }
 
 .Icon {
@@ -35,7 +38,7 @@
 .SVGWrapper {
   filter: brightness(0);
 
-  @media (prefers-color-scheme: dark) {
+  @include dark-mode {
     filter: brightness(0) contrast(1) invert(1);
   }
 }

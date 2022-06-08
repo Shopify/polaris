@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .GlobalSearch {
   position: relative;
@@ -74,7 +75,7 @@
   display: flex;
   flex-direction: column;
 
-  @media (prefers-color-scheme: dark) {
+  @include dark-mode {
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
   }

@@ -1,12 +1,5 @@
 @import "../../styles/variables.scss";
 
-.Header {
-  // background: #fafafa;
-  // &.hasShadow {
-  //   box-shadow: 0 1px rgba(0, 0, 0, 0.05);
-  // }
-}
-
 .HeaderInner {
   display: flex;
   gap: 3em;
@@ -83,11 +76,18 @@
   }
 }
 
+.DarkModeToggle {
+  background: transparent;
+  width: 3rem;
+  margin: 0.5rem 0 0.5rem auto;
+  border-radius: var(--border-radius-800);
+  margin-right: -1rem;
+}
+
 .SearchWrapper {
   display: flex;
   align-items: center;
-  width: 18.25rem; // Align with TOC on foundations pages
-  margin-left: auto;
+  width: 18.25rem;
 
   @media screen and (max-width: $breakpointDesktop) {
     width: 100%;
@@ -105,6 +105,12 @@
 .SideNavContainer {
   visibility: hidden;
   display: none;
+  fill: var(--text-strong);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 
   @media screen and (max-width: $breakpointDesktop) {
     visibility: visible;

@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { className } from "../../utils/various";
-import { LinkButton } from "../Button/Button";
 import Container from "../Container";
 import styles from "./HomePage.module.scss";
 

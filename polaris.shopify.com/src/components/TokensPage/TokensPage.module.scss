@@ -1,4 +1,5 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
 
 .Banner {
   margin-top: var(--header-margin);
@@ -34,7 +35,7 @@
     padding: 0 1rem;
     background: var(--surface);
 
-    @media (prefers-color-scheme: dark) {
+    @include dark-mode {
       box-shadow: none;
       border: 1px solid var(--border-color-light);
     }

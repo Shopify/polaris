@@ -18,7 +18,7 @@ import foundations from "../data/foundations.json";
 const MAX_RESULTS: { [key: string]: number } = {
   Foundations: 3,
   Components: 2,
-  Tokens: 8,
+  Tokens: 5,
   Icons: 14,
 };
 

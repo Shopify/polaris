@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useDarkMode from "use-dark-mode";
 
 import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
@@ -11,17 +12,16 @@ import NavItems from "../NavItems";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
-import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
 import { className } from "../../utils/various";
 
 interface Props {
-  hasShadow?: boolean;
   currentSection?: string;
 }
 
-function Header({ hasShadow, currentSection }: Props) {
+function Header({ currentSection }: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const darkMode = useDarkMode(false);
 
   useEffect(() => {
     function hideSideNavOnResize() {
@@ -42,7 +42,7 @@ function Header({ hasShadow, currentSection }: Props) {
   };
 
   return (
-    <div className={className(styles.Header, hasShadow && styles.hasShadow)}>
+    <div className={styles.Header}>
       <Container className={styles.HeaderInner}>
         <nav className={styles.SideNavContainer}>
           <Button
@@ -53,13 +53,9 @@ function Header({ hasShadow, currentSection }: Props) {
             onClick={() => setShowMenu(true)}
             ref={menuButtonRef}
           >
-            <Image
-              src={hamburguerIcon}
-              layout="fixed"
-              width={24}
-              height={24}
-              alt=""
-            />
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 11h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0-7h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0 14h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z" />
+            </svg>
           </Button>
 
           <SideNav
@@ -87,6 +83,10 @@ function Header({ hasShadow, currentSection }: Props) {
             <NavItems currentSection={currentSection} />
           </ul>
         </nav>
+
+        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+          {darkMode.value ? "💡" : "🌙"}
+        </button>
 
         <div className={styles.SearchWrapper}>
           <GlobalSearch />

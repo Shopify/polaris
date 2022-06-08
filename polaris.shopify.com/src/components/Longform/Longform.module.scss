@@ -21,7 +21,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;
@@ -30,7 +30,7 @@
 
   h2 {
     @include heading-2;
-    margin-top: 2.25rem;
+    margin-top: 3.25rem;
   }
 
   h3 {
@@ -61,11 +61,15 @@
   }
 
   ul {
-    margin-left: 0.95em;
+    li {
+      padding-left: 0.95em;
+    }
   }
 
   ol {
-    margin-left: 1.15em;
+    li {
+      padding-left: 1.35em;
+    }
   }
 
   ul,
@@ -82,11 +86,35 @@
   }
 
   ul li {
-    list-style-type: disc;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0.625em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--text-subdued);
+      border-radius: var(--border-radius-round);
+      opacity: 0.5;
+    }
   }
 
-  ol li {
-    list-style-type: decimal;
+  ol {
+    counter-reset: list;
+    li {
+      position: relative;
+      counter-increment: list;
+      &::before {
+        content: counter(list) ".";
+        display: block;
+        position: absolute;
+        left: 0;
+        border-radius: var(--border-radius-round);
+        opacity: 0.75;
+      }
+    }
   }
 
   li {
