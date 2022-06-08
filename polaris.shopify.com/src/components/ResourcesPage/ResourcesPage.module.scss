@@ -10,13 +10,13 @@
     color: var(--primary);
     animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
     font-size: var(--font-size-2000);
-    letter-spacing: var(--letter-spacing-1000);
-    font-weight: var(--font-weight-800);
+    letter-spacing: var(--letter-spacing-900);
+    font-weight: var(--font-weight-300);
     line-height: 1.1;
   }
 
   h1 + p {
-    max-width: 42rem;
+    max-width: 38rem;
     text-align: center;
     margin: 0.5rem auto 0;
     font-size: var(--font-size-800);
@@ -29,8 +29,8 @@
   h2 {
     margin-bottom: 1.75rem;
     font-size: var(--font-size-1400);
-    font-weight: var(--font-weight-800);
-    letter-spacing: var(--letter-spacing-800);
+    font-weight: var(--font-weight-600);
+    letter-spacing: var(--letter-spacing-600);
     color: var(--text-strong);
     line-height: 1.15;
   }
@@ -38,7 +38,7 @@
   h3 {
     margin-bottom: 1rem;
     font-size: var(--font-size-1100);
-    font-weight: var(--font-weight-800);
+    font-weight: var(--font-weight-600);
     letter-spacing: var(--letter-spacing-400);
     color: var(--text-strong);
     line-height: 1.15;
@@ -66,17 +66,15 @@
 }
 
 .FirstStep {
-  max-width: 40rem;
+  max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 100%;
-  font-size: var(--font-size-600);
-  letter-spacing: var(--letter-spacing-300);
-  font-weight: var(--font-weight-500);
   text-align: center;
 
   p {
     font-size: var(--font-size-600);
+    letter-spacing: var(--letter-spacing-300);
     color: var(--text-strong);
     margin-bottom: 1rem;
   }
@@ -85,12 +83,12 @@
     display: inline-block;
     border-radius: 12px;
     padding-right: 38px;
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-400);
     font-size: var(--font-size-700);
     letter-spacing: var(--letter-spacing-400);
     color: var(--text-strong);
     background: url(./arrow.svg) no-repeat right center;
-    background-size: auto 100%;
+    background-size: auto 75%;
     line-height: 1.25;
     color: var(--primary);
   }
@@ -105,7 +103,7 @@
   .Block {
     margin: 0 auto 1rem;
     max-width: 60rem;
-    padding: 6rem 3rem;
+    padding: 8rem 3rem;
     position: relative;
     background: var(--surface-subdued);
     border-radius: 32px;

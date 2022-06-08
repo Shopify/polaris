@@ -1,12 +1,52 @@
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--light.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShopifySans";
+  src: url("/fonts/ShopifySans--extrabold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
 @mixin heading {
   color: var(--text-strong);
 }
 
 @mixin heading-1 {
   color: var(--text-strong);
-  font-size: var(--font-size-1300);
-  font-weight: var(--font-weight-800);
-  letter-spacing: var(--letter-spacing-600);
+  font-size: var(--font-size-1400);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--letter-spacing-700);
   line-height: 1.15;
 }
 
@@ -21,7 +61,7 @@
 @mixin heading-3 {
   color: var(--text-strong);
   font-size: var(--font-size-600);
-  font-weight: var(--font-weight-900);
+  font-weight: var(--font-weight-600);
   letter-spacing: var(--letter-spacing-100);
   line-height: 1.25;
 }
@@ -29,6 +69,6 @@
 @mixin heading-4 {
   color: var(--text-strong);
   font-size: var(--font-size-300);
-  font-weight: var(--font-weight-800);
+  font-weight: var(--font-weight-600);
   letter-spacing: var(--letter-spacing-200);
 }

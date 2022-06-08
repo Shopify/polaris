@@ -4,7 +4,7 @@
 .ComponentGrid {
   display: grid;
   // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
-  grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
   gap: 2rem 1rem;
 }
 
@@ -35,7 +35,6 @@
   }
 
   p {
-    font-size: var(--font-size-300);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
