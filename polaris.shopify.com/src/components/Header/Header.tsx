@@ -12,7 +12,6 @@ import NavItems from "../NavItems";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
-import { className } from "../../utils/various";
 
 interface Props {
   currentSection?: string;
