@@ -35,6 +35,7 @@ function getSearchResultAsString(result: SearchResult | null): string {
 function GlobalSearch({}: Props) {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>();
   const router = useRouter();
+  const globalSearchID = "global-search";
 
   let resultsInRenderedOrder: SearchResults = [];
   if (searchResults) {
@@ -56,7 +57,7 @@ function GlobalSearch({}: Props) {
     getItemProps,
     openMenu,
   } = useCombobox({
-    id: "global-search",
+    id: globalSearchID,
     items: resultsInRenderedOrder,
     onInputValueChange: ({ inputValue }) => {
       const results = search(inputValue || "");
@@ -75,10 +76,9 @@ function GlobalSearch({}: Props) {
 
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
-      const searchbar = document.getElementById("searchbar");
-      let isKKey = event.key === "k" || event.key === "K";
-      let isMetaKey = event.metaKey;
-      if (isMetaKey && isKKey) {
+      const searchbar = document.getElementById(globalSearchID);
+      let isKKey = "/";
+      if (isKKey) {
         event.preventDefault();
         openMenu();
         if (searchbar !== null) {
@@ -97,7 +97,7 @@ function GlobalSearch({}: Props) {
         <WrappedTextField
           renderTextField={(className) => (
             <input
-              {...getInputProps({ id: "searchbar" })}
+              {...getInputProps({ id: globalSearchID })}
               placeholder="Search"
               className={className}
             />
@@ -118,7 +118,7 @@ function GlobalSearch({}: Props) {
           <>
             <div className={styles.Header}>
               <h2>{resultsInRenderedOrder.length} results</h2>
-              <p>Tip: Use command-K to open search</p>
+              <p>Tip: Use / to open search</p>
             </div>
           </>
         )}
