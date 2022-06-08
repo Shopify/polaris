@@ -45,35 +45,35 @@ $nav-min-window: breakpoint($layout-width-page-with-nav-base);
 
   @if $size < $partially-condensed-content {
     // size < 450px
-    @include breakpoints-outline(orange);
+    @include breakpoints-outline(firebrick);
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{min($nav-min-window, $size)}),
         (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
-          @include breakpoints-outline(cyan);
+          @include breakpoints-outline(pink);
           @content;
       }
     }
 
     @media (max-width: #{$size}) {
-      @include breakpoints-outline(cyan);
+      @include breakpoints-outline(pink);
       @content;
     }
   } @else if $size < $not-condensed-content {
     // size < 680px
-    @include breakpoints-outline(red);
+    @include breakpoints-outline(saddlebrown);
 
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
         (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-          @include breakpoints-outline(green);
+          @include breakpoints-outline(orange);
           @content;
       }
     }
 
     @media (max-width: #{$size + $partially-condensed-outer-spacing}) {
-      @include breakpoints-outline(green);
+      @include breakpoints-outline(orange);
       @content;
     }
   } @else {
@@ -84,13 +84,13 @@ $nav-min-window: breakpoint($layout-width-page-with-nav-base);
     [data-has-navigation] #{if(&, "&", "*")} {
       @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
         (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-          @include breakpoints-outline(purple);
+          @include breakpoints-outline(khaki);
           @content;
       }
     }
 
     @media (max-width: #{$size + $not-condensed-outer-spacing}) {
-      @include breakpoints-outline(purple);
+      @include breakpoints-outline(khaki);
       @content;
     }
   }
@@ -101,26 +101,54 @@ $nav-min-window: breakpoint($layout-width-page-with-nav-base);
 
   @if $size < $partially-condensed-content {
     // size < 450px
-    // @include breakpoints-outline(orange);
+    @include breakpoints-outline(dodgerblue);
+
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size}),
+        (min-width: #{$nav-size + $size}) {
+          @include breakpoints-outline(cyan);
+          @content;
+      }
+    }
 
     @media (min-width: #{$size}) {
-      // @include breakpoints-outline(cyan);
+      @include breakpoints-outline(cyan);
       @content;
     }
   } @else if $size < $not-condensed-content {
     // size < 680px
-    // @include breakpoints-outline(red);
+    @include breakpoints-outline(forestgreen);
+
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
+      (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+        @include breakpoints-outline(chartreuse);
+        @content;
+      }
+    }
 
     @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
-      // @include breakpoints-outline(green);
+      @include breakpoints-outline(chartreuse);
+      @include breakpoints-outline(chart);
       @content;
     }
   } @else {
     // size <= 680px
-    // @include breakpoints-outline(yellow);
+    @include breakpoints-outline(indigo);
+
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
+      (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+        @include breakpoints-outline(blueviolet);
+        @content;
+      }
+    }
 
     @media (min-width: #{$size + $not-condensed-outer-spacing}) {
-      // @include breakpoints-outline(purple);
+      @include breakpoints-outline(blueviolet);
       @content;
     }
   }
