@@ -26,7 +26,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
 
-      - name: Validate and get pull request data
+      - name: Validate pull request
         uses: actions/github-script@v6
         id: pr_data
         env:
@@ -52,21 +52,20 @@ jobs:
                 })
 
                 core.setFailed(errorMessage)
-                return
               }
-              core.setOutput('repoFullName', pullRequest.data.head.repo.full_name)
-              core.setOutput('headSha', pullRequest.data.head.sha)
             } catch (err) {
               core.setFailed(`Request failed with error ${err}`)
             }
 
-      # issue_comment requires us to checkout the pull request branch
-      # https://github.com/actions/checkout/issues/331#issuecomment-707103442
-      - name: Checkout pull request branch
+      - name: Checkout default branch
         uses: actions/checkout@v2
-        with:
-          repository: ${{ steps.pr_data.outputs.repoFullName }}
-          ref: ${{ steps.pr_data.outputs.headSha }}
+
+      # issue_comment requires us to checkout the branch
+      # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
+      - name: Checkout pull request branch
+        run: hub pr checkout ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Because changeset entries are consumed and removed on the
       # 'changeset-release/main' branch, we need to reset the files
