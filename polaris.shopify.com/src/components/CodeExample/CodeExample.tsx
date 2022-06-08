@@ -1,6 +1,5 @@
-import Image from "next/image";
+import Image from "../Image";
 import Tooltip from "../Tooltip";
-import iconCancel from "../../../public/icon-cancel.svg";
 import iconClipboard from "../../../public/icon-clipboard.svg";
 import styles from "./CodeExample.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
@@ -29,7 +28,13 @@ function CodeExample({ title, children }: Props) {
           )}
         >
           <button type="button" onClick={copy} className={styles.CopyButton}>
-            <Image src={iconClipboard} alt="Copy" width={19} height={19} />
+            <Image
+              src={iconClipboard}
+              alt="Copy"
+              width={19}
+              height={19}
+              fadeIn={false}
+            />
           </button>
         </Tooltip>
       </div>

@@ -156,6 +156,7 @@ function TokenListItem({
                         alt={"Copy"}
                         width={19}
                         height={19}
+                        fadeIn={false}
                       />
                     </button>
                   </Tooltip>
