@@ -21,6 +21,8 @@ interface Props {
   actions?: MenuActionDescriptor[];
   /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
+  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
+  onActionRollup?(hasRolledUp: boolean): void;
 }
 
 interface MeasuredActions {
@@ -30,7 +32,7 @@ interface MeasuredActions {
 
 const ACTION_SPACING = 8;
 
-export function Actions({actions = [], groups = []}: Props) {
+export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const i18n = useI18n();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
@@ -38,6 +40,7 @@ export function Actions({actions = [], groups = []}: Props) {
   const actionsAndGroupsLengthRef = useRef<number>(0);
   const timesMeasured = useRef(0);
   const actionWidthsRef = useRef<number[]>([]);
+  const rollupActiveRef = useRef<boolean | null>(null);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -125,6 +128,17 @@ export function Actions({actions = [], groups = []}: Props) {
       }
     });
 
+    if (onActionRollup) {
+      // Note: Do not include last group actions since we are skipping `lastMenuGroup` above
+      // as it is always rendered with its own actions
+      const isRollupActive =
+        newShowableActions.length < actionsAndGroups.length - 1;
+      if (rollupActiveRef.current !== isRollupActive) {
+        onActionRollup(isRollupActive);
+        rollupActiveRef.current = isRollupActive;
+      }
+    }
+
     setMeasuredActions({
       showable: newShowableActions,
       rolledUp: newRolledUpActions,
@@ -132,7 +146,7 @@ export function Actions({actions = [], groups = []}: Props) {
 
     timesMeasured.current += 1;
     actionsAndGroupsLengthRef.current = actionsAndGroups.length;
-  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth]);
+  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, onActionRollup]);
 
   const handleResize = useMemo(
     () =>
