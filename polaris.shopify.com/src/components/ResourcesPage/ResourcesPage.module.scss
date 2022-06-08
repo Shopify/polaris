@@ -6,10 +6,10 @@
   h1 {
     text-align: center;
     max-width: 40rem;
-    margin: 6rem auto 1.5rem;
+    margin: var(--header-margin) auto 1.75rem;
     color: var(--primary);
     animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
-    font-size: var(--font-size-2000);
+    font-size: var(--font-size-1900);
     letter-spacing: var(--letter-spacing-900);
     font-weight: var(--font-weight-300);
     line-height: 1.1;
