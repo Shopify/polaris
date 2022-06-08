@@ -77,8 +77,8 @@ function GlobalSearch({}: Props) {
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
       const searchbar = document.getElementById(globalSearchID);
-      let isKKey = "/";
-      if (isKKey) {
+      let isSlashKey = event.key === "/";
+      if (isSlashKey) {
         event.preventDefault();
         openMenu();
         if (searchbar !== null) {
@@ -86,7 +86,8 @@ function GlobalSearch({}: Props) {
         }
       }
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.GlobalSearch}>
