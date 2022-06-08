@@ -1,6 +1,6 @@
 import { AppProvider, CustomProperties } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
-import { useEffect } from "react";
+import { ComponentType, useEffect } from "react";
 
 interface ExampleProps {
   children: JSX.Element;
@@ -9,7 +9,7 @@ interface ExampleProps {
 const stylesheetHref =
   "https://unpkg.com/@shopify/polaris@9.9.0-next.1/build/esm/styles.css";
 
-function PolarisExample(props: ExampleProps) {
+function PolarisExamplePage(props: ExampleProps) {
   // Alternative way of linking the sheet
   // useEffect(() => {
   //   let stylesheetElement = document.createElement("link");
@@ -22,10 +22,7 @@ function PolarisExample(props: ExampleProps) {
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/@shopify/polaris@9.9.0-next.1/build/esm/styles.css"
-      />
+      <link rel="stylesheet" href={stylesheetHref} />
       <AppProvider i18n={translations}>
         <CustomProperties>{props.children}</CustomProperties>
       </AppProvider>
@@ -33,4 +30,20 @@ function PolarisExample(props: ExampleProps) {
   );
 }
 
-export default PolarisExample;
+export default PolarisExamplePage;
+
+export const withPolarisExample = (Component: ComponentType) => {
+  const PolarisHOC = (props: any) => {
+    return (
+      <PolarisExamplePage>
+        <Component {...props} />
+      </PolarisExamplePage>
+    );
+  };
+
+  if (Component.displayName) {
+    PolarisHOC.displayName = `PolarisExample${Component.displayName}`;
+  }
+
+  return PolarisHOC;
+};

@@ -1,7 +1,8 @@
 import { Link, AccountConnection } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
-function Example() {
+function AccountConnectionExample() {
   const [connected, setConnected] = useState(false);
   const accountName = connected ? "Jane Appleseed" : "";
 
@@ -33,3 +34,5 @@ function Example() {
     />
   );
 }
+
+export default withPolarisExample(AccountConnectionExample);

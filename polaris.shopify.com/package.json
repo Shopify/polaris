@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm run generate-examples && next build",
-    "dev": "npm run generate-examples && next dev",
+    "build": "next build",
+    "dev": "next dev",
     "start": "next start ",
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "generate-examples": "node src/scripts/generateExamples.mjs",
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
   },
