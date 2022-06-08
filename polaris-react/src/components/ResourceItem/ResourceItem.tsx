@@ -213,7 +213,24 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     let actionsMarkup: React.ReactNode | null = null;
-    let disclosureMarkup: React.ReactNode | null = null;
+    let disclosureMarkup: React.ReactNode | null = (
+      <div className={styles.Disclosure} onClick={stopPropagation}>
+        <Popover
+          activator={
+            <Button
+              accessibilityLabel="hey"
+              onClick={this.handleActionsClick}
+              plain
+              icon={HorizontalDotsMinor}
+            />
+          }
+          onClose={this.handleCloseRequest}
+          active={actionsMenuVisible}
+        >
+          <ActionList items={shortcutActions} />
+        </Popover>
+      </div>
+    );
 
     if (shortcutActions && !loading) {
       if (persistActions) {

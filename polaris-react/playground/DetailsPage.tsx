@@ -26,6 +26,7 @@ import {
   DropZoneProps,
   FormLayout,
   Frame,
+  Heading,
   Layout,
   Loading,
   Modal,
@@ -43,6 +44,7 @@ import {
   TopBar,
 } from '../src';
 
+import {Playground} from './Playground';
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
@@ -710,11 +712,22 @@ export function DetailsPage() {
       onNavigationDismiss={toggleMobileNavigationActive}
       skipToContentTarget={skipToContentRef}
     >
-      {contextualSaveBarMarkup}
-      {loadingMarkup}
-      {pageMarkup}
-      {toastMarkup}
-      {modalMarkup}
+      <hr />
+      <Heading>IFrame content</Heading>
+      <hr />
+      <iframe
+        title="breakpoints-app"
+        src="http://localhost:6006/iframe.html?id=playground-playground--playground&args=&viewMode=story"
+        width="100%"
+        height="290px"
+        frameBorder="0"
+      />
+      <hr />
+      <Heading>Page content</Heading>
+      <hr />
+      <div style={{height: 290, overflow: 'scroll'}}>
+        <Playground />
+      </div>
     </Frame>
   );
 }

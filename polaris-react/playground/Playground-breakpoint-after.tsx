@@ -19,16 +19,6 @@ import {
 export function Playground() {
   return (
     <Page title="Playground" fullWidth>
-      <Heading>page-content-when-partially-condensed</Heading>
-      <br />
-      <ResourceItemz />
-      <br />
-      <br />
-      <Heading>page-content-when-layout-stacked</Heading>
-      <br />
-      <SkeletonPagez />
-      <br />
-      <br />
       <Heading>page-content-when-not-fully-condensed</Heading>
       <br />
       <Card title="Online store dashboard" sectioned>
@@ -49,6 +39,16 @@ export function Playground() {
       <Heading>page-content-breakpoint-after(679px or before)</Heading>
       <br />
       <DescriptionListz />
+      <br />
+      <br />
+      <Heading>page-content-when-partially-condensed</Heading>
+      <br />
+      <ResourceItemz />
+      <br />
+      <br />
+      <Heading>page-content-when-layout-stacked</Heading>
+      <br />
+      <SkeletonPagez />
       <br />
       <br />
     </Page>
