@@ -58,8 +58,8 @@ Titles should:
 
 App icons should:
 
-- Provide their app icon
-- Only be provided for pages that are part of a Shopify app
+- Provide their app icon.
+- Only be provided for pages that are part of a Shopify app.
 
 ### Breadcrumbs
 
