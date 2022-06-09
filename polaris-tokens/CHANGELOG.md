@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.2.1
+
+### Patch Changes
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add keyboard shortcut
+
 ## 5.2.0
 
 ### Minor Changes

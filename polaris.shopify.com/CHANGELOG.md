@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.2.1
+
+### Patch Changes
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add keyboard shortcut
+
+* [#6084](https://github.com/Shopify/polaris/pull/6084) [`013c22e26`](https://github.com/Shopify/polaris/commit/013c22e2617f306361b6ba68b03fb1ea57803226) Thanks [@chazdean](https://github.com/chazdean)! - fix minor icon select
+
+* Updated dependencies [[`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0), [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0), [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0), [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0), [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0), [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0)]:
+  - @shopify/polaris@9.14.0
+  - @shopify/polaris-tokens@5.2.1
+
 ## 0.2.0
 
 ### Minor Changes

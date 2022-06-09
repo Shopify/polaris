@@ -1,5 +1,27 @@
 # Changelog
 
+## 9.14.0
+
+### Minor Changes
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added 'onActionRollup' prop to Page component.
+
+* [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add TopBar `logoSuffix` prop
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added row and column props to Grid.Cell
+
+### Patch Changes
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed `Listbox` to preserve scroll position when lazy-loading additional items
+
+* [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Fixed rolled up action groups to include section title.
+  - Fixed action items inside action groups to be disabled if the action group is disabled.
+
+- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add keyboard shortcut
+
+- Updated dependencies [[`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0)]:
+  - @shopify/polaris-tokens@5.2.1
+
 ## 9.13.0
 
 ### Minor Changes
