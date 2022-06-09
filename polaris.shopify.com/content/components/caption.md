@@ -21,11 +21,11 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: default-caption.tsx
+  - fileName: caption-default.tsx
     title: Default caption
     description: >-
       Use to provide details in situations where content is compact and space is
-      tight.undefinedundefined
+      tight.
 ---
 
 # Caption

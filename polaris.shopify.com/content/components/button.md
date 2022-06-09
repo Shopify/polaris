@@ -27,98 +27,98 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: basic-button.tsx
+  - fileName: button-basic.tsx
     title: Basic button
     description: >-
       Used most in the interface. Only use another style if a button requires
-      more or less visual weight.undefinedundefined
-  - fileName: outline-button.tsx
+      more or less visual weight.
+  - fileName: button-outline.tsx
     title: Outline button
     description: >-
       Use against shaded or colorful backgrounds. An outline button will
       maintain the appropriate visual weight and won’t clash with the background
       color.
-  - fileName: outline-monochrome-button.tsx
+  - fileName: button-outline-monochrome.tsx
     title: Outline monochrome button
     description: >-
       Use against shaded or colorful backgrounds where matching the current text
       colors is more appropriate than the current outline theme.
-  - fileName: plain-button.tsx
+  - fileName: button-plain.tsx
     title: Plain button
     description: >-
       Use for less important or less commonly used actions since they’re less
       prominent. For example, plain buttons are used as actions in
-      cards.undefinedundefined
-  - fileName: plain-monochrome-button.tsx
+      cards.
+  - fileName: button-plain-monochrome.tsx
     title: Plain monochrome button
     description: >-
       Use for less important or less commonly used actions where matching the
       current text color is desired. For example in the InlineError component.
-  - fileName: plain-destructive-button.tsx
+  - fileName: button-plain-destructive.tsx
     title: Plain destructive button
     description: >-
       Use for actions that will delete merchant data or be otherwise difficult
       to recover from. Since they’re less prominent, use for less important or
       less commonly used destructive actions. For example, plain buttons are
-      used as actions in cards.undefinedundefined
-  - fileName: primary-button.tsx
+      used as actions in cards.
+  - fileName: button-primary.tsx
     title: Primary button
     description: >-
       Use to highlight the most important actions in any experience. Don’t use
       more than one primary button in a section or screen to avoid overwhelming
-      merchants.undefinedundefined
-  - fileName: destructive-button.tsx
+      merchants.
+  - fileName: button-destructive.tsx
     title: Destructive button
     description: >-
       Use when the action will delete merchant data or be otherwise difficult to
       recover from. Destructive buttons should trigger a confirmation dialog
       before the action is completed. Be thoughtful about using destructive
-      buttons because they can feel stressful for merchants.undefinedundefined
-  - fileName: slim-button.tsx
+      buttons because they can feel stressful for merchants.
+  - fileName: button-slim.tsx
     title: Slim button
     description: >-
       Use when a table or list has a set of actions on each item to avoid making
       items taller than they need to be. Don’t use slim buttons for primary
       actions.
-  - fileName: large-button.tsx
+  - fileName: button-large.tsx
     title: Large button
     description: >-
       Use for the main call to action in empty states or for calls to action
       shown with large illustrations.
-  - fileName: full-width-button.tsx
+  - fileName: button-full-width.tsx
     title: Full-width button
     description: "Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320\_px wide."
-  - fileName: text-aligned-button.tsx
+  - fileName: button-text-aligned.tsx
     title: Text-aligned button
     description: >-
       Use for plain or monochrome buttons that could have a long length and
       should be aligned when they potentially overflow onto the next line.
-  - fileName: pressed-button.tsx
+  - fileName: button-pressed.tsx
     title: Pressed button
     description: >-
       Buttons are sometimes used as a toggle for other parts of the user
       interface.
-  - fileName: plain-disclosure-button.tsx
+  - fileName: button-plain-disclosure.tsx
     title: Plain disclosure button
     description: >-
       Use to indicate that more content can be disclosed on click, like text in
       a collapsible.
-  - fileName: right-aligned-disclosure.tsx
+  - fileName: button-right-aligned-disclosure.tsx
     title: Right-aligned disclosure
-  - fileName: select-disclosure-button.tsx
+  - fileName: button-select-disclosure.tsx
     title: Select disclosure button
-  - fileName: split-button.tsx
+  - fileName: button-split.tsx
     title: Split button
     description: >-
       Use when there is only one primary action but other related actions can be
       taken.
-  - fileName: disabled-state.tsx
+  - fileName: button-disabled-state.tsx
     title: Disabled state
     description: >-
       Use for actions that aren’t currently available. The surrounding interface
       should make it clear why the button is disabled and what needs to be done
-      to enable it.undefinedundefined
-  - fileName: loading-state.tsx
+      to enable it.
+  - fileName: button-loading-state.tsx
     title: Loading state
     description: >-
       Use when a button has been pressed and the associated action is in

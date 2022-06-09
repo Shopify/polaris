@@ -14,14 +14,14 @@ keywords:
   - below the fold
   - above the fold
 examples:
-  - fileName: default-scrollable-container.tsx
+  - fileName: scrollable-default-container.tsx
     title: Default scrollable container
     description: >-
       Use when you need to make a region within the page independently
       scrollable. It’s often used in modals and other panes where it’s helpful
       to provide an extra visual cue that content exists below or above the
       fold.
-  - fileName: scroll-to-child-component.tsx
+  - fileName: scrollable-scroll-to-child-component.tsx
     title: Scroll to child component
     description: >-
       Use when you need to programmatically scroll a child component into view

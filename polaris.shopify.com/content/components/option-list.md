@@ -12,12 +12,12 @@ keywords:
   - collection lists
   - list selection
 examples:
-  - fileName: simple-option-list.tsx
+  - fileName: option-list-simple.tsx
     title: Simple option list
     description: >-
       Use for a group of similar selectable items when only one should be
       selectable at once.
-  - fileName: multiple-option-list.tsx
+  - fileName: option-list-multiple.tsx
     title: Multiple option list
     description: >-
       Use when you have a group of similar selectable items and more than one

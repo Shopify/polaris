@@ -25,7 +25,7 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: default-pagination.tsx
+  - fileName: pagination-default.tsx
     title: Default pagination
     description: Use for pagination at the bottom of lists.
   - fileName: pagination-with-keyboard-navigation.tsx
@@ -36,11 +36,11 @@ examples:
     description: >-
       Add a label between navigation buttons to provide more context of the
       content being viewed by the user.
-  - fileName: infinite-scroll.tsx
+  - fileName: pagination-infinite-scroll.tsx
     title: Infinite scroll
     description: >-
       Use for lists longer than 25 items. In mobile apps it’s natural to scroll
-      to the bottom of the screen to load more items.undefinedundefined
+      to the bottom of the screen to load more items.
 ---
 
 # Pagination

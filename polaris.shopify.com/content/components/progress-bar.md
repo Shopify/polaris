@@ -8,23 +8,23 @@ keywords:
   - progress bar
   - loading
 examples:
-  - fileName: default.tsx
+  - fileName: progress-bar-default.tsx
     title: Default
     description: >-
       Use this component to visually represent the completion of a task or
       operation.
-  - fileName: small-progress-bar.tsx
+  - fileName: progress-bar-small.tsx
     title: Small progress bar
     description: >-
       Use the size option when you need to increase or decrease the visual
       weight of the progress bar.
-  - fileName: colored-progress-bars.tsx
+  - fileName: progress-bar-colored.tsx
     title: Colored progress bars
     description: >-
       Use the color option when you need to blend the progress bar in a context
       that calls for it, such as a progress toward success or where it’s the
       primary focus.
-  - fileName: non-animated-progress-bar.tsx
+  - fileName: progress-bar-non-animated.tsx
     title: Non-animated progress bar
     description: Use the animated prop when you want to show a static progress bar.
 ---

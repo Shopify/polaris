@@ -47,29 +47,29 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: default-text-field.tsx
+  - fileName: text-field-default.tsx
     title: Default text field
     description: >-
       Use to allow merchants to provide text input when the expected input is
       short. For longer input, use the auto grow or multiline
-      options.undefinedundefined
-  - fileName: number-field.tsx
+      options.
+  - fileName: text-field-number-field.tsx
     title: Number field
     description: >-
       Use when input text should be a number.This will display the right
       keyboard on mobile devices.undefinedThis will display the right keyboard
       on mobile devices.undefined
-  - fileName: email-field.tsx
+  - fileName: text-field-email-field.tsx
     title: Email field
     description: >-
       Use when the text input should be an email address.This will display the
       right keyboard on mobile devices.undefinedThis will display the right
       keyboard on mobile devices.undefined
-  - fileName: multiline-text-field.tsx
+  - fileName: text-field-multiline.tsx
     title: Multiline text field
     description: >-
       Use when the expected input could be more than one line. The field will
-      automatically grow to accommodate additional text.undefinedundefined
+      automatically grow to accommodate additional text.
   - fileName: text-field-with-hidden-label.tsx
     title: Text field with hidden label
     description: >-
@@ -90,7 +90,7 @@ examples:
     description: >-
       Use to provide a short, non-essential hint about the expected input.
       Placeholder text is low-contrast, so don’t rely on it for important
-      information.undefinedundefined
+      information.
   - fileName: text-field-with-help-text.tsx
     title: Text field with help text
     description: >-
@@ -98,13 +98,13 @@ examples:
       works to help merchants understand how to fix errors that result from
       incorrect formatting (such as dates or passwords with specific character
       requirements). If more explanation is needed, link to the Shopify Help
-      Center.undefinedundefined
+      Center.
   - fileName: text-field-with-prefix-or-suffix.tsx
     title: Text field with prefix or suffix
     description: >-
       Use as a special form of help text that works best inline.Use a prefix for
       things like currency symbols (“$”, “¥”, “£”).Use suffix for things like
-      units of measure (“in”, “cm”).undefinedundefined
+      units of measure (“in”, “cm”).
   - fileName: text-field-with-vertical-content.tsx
     title: Text field with vertical content
     description: >-
@@ -124,7 +124,7 @@ examples:
     description: >-
       Use to let merchants take an action within the text field.For example, tap
       on a barcode icon to launch the camera and scan barcode for the barcode
-      field. This helps merchants simplify their input.undefinedundefined
+      field. This helps merchants simplify their input.
   - fileName: text-field-with-validation-error.tsx
     title: Text field with validation error
     description: >-
@@ -132,14 +132,14 @@ examples:
       Whenever possible, validate input as soon as merchants have finished
       interacting with a field (but not before). If a field already has an
       error, validate and remove errors as merchants type so they can
-      immediately see when an error has been fixed.undefinedundefined
+      immediately see when an error has been fixed.
   - fileName: text-field-with-separate-validation-error.tsx
     title: Text field with separate validation error
     description: >-
       Use to let merchants know when their text field input is invalid in the
       context of a group of form inputs that the text field depends on.To render
       an invalid text field and its validation error separately:
-  - fileName: disabled-text-field.tsx
+  - fileName: text-field-disabled.tsx
     title: Disabled text field
     description: >-
       Use to show that a textfield is not available for interaction. Most often

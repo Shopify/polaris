@@ -16,12 +16,12 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: default.tsx
+  - fileName: section-header-default.tsx
     title: Default
     description: >-
       Use to group related content together, for example orders received on the
-      same day.undefinedundefined
-  - fileName: fixed.tsx
+      same day.
+  - fileName: section-header-fixed.tsx
     title: Fixed
     description: >-
       Use if your list section could be longer than the height of the screen.
