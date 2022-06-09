@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import type {
+  ActionListSection,
   ActionListItemDescriptor,
   MenuActionDescriptor,
   MenuGroupDescriptor,
@@ -32,8 +33,8 @@ const ACTION_SPACING = 8;
 export function Actions({actions = [], groups = []}: Props) {
   const i18n = useI18n();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
-  const menuGroupWidthRef = useRef<number>(0);
   const availableWidthRef = useRef<number>(0);
+  const moreActionsWidthRef = useRef<HTMLDivElement>(null);
   const actionsAndGroupsLengthRef = useRef<number>(0);
   const timesMeasured = useRef(0);
   const actionWidthsRef = useRef<number[]>([]);
@@ -44,12 +45,19 @@ export function Actions({actions = [], groups = []}: Props) {
     showable: [],
     rolledUp: [],
   });
-  const defaultRollupGroup: MenuGroupDescriptor = {
-    title: i18n.translate('Polaris.ActionMenu.Actions.moreActions'),
+
+  const moreActionsText = i18n.translate(
+    'Polaris.ActionMenu.Actions.moreActions',
+  );
+
+  const moreActionsRollupGroup = groups.find(
+    ({title}) => title === moreActionsText,
+  ) || {
+    title: moreActionsText,
     actions: [],
   };
-  const lastMenuGroup = [...groups].pop();
-  const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
+
+  const moreActionsRollupWidth = moreActionsWidthRef.current?.offsetWidth || 0;
 
   const handleActionsOffsetWidth = useCallback((width: number) => {
     actionWidthsRef.current = [...actionWidthsRef.current, width];
@@ -103,23 +111,26 @@ export function Actions({actions = [], groups = []}: Props) {
     let currentAvailableWidth = availableWidthRef.current;
     let newShowableActions: MenuActionDescriptor[] = [];
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
+    let showMoreActions = false;
 
     actionsAndGroups.forEach((action, index) => {
+      const {title, content} = action;
+      const currentActionWidth = actionWidthsRef.current[index];
       const canFitAction =
-        actionWidthsRef.current[index] +
-          menuGroupWidthRef.current +
-          ACTION_SPACING +
-          lastMenuGroupWidth <=
-        currentAvailableWidth;
-
+        currentActionWidth + ACTION_SPACING <= currentAvailableWidth;
+      console.log(content || title, canFitAction);
       if (canFitAction) {
-        currentAvailableWidth -=
-          actionWidthsRef.current[index] + ACTION_SPACING * 2;
+        currentAvailableWidth -= currentActionWidth + ACTION_SPACING * 2;
         newShowableActions = [...newShowableActions, action];
       } else {
+        if (
+          showMoreActions === false &&
+          moreActionsRollupWidth <= currentAvailableWidth
+        ) {
+          showMoreActions = true;
+        }
+
         currentAvailableWidth = 0;
-        // Find last group if it exists and always render it as a rolled up action below
-        if (action === lastMenuGroup) return;
         newRolledUpActions = [...newRolledUpActions, action];
       }
     });
@@ -131,7 +142,7 @@ export function Actions({actions = [], groups = []}: Props) {
 
     timesMeasured.current += 1;
     actionsAndGroupsLengthRef.current = actionsAndGroups.length;
-  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth]);
+  }, [actions, groups]);
 
   const handleResize = useMemo(
     () =>
@@ -204,76 +215,68 @@ export function Actions({actions = [], groups = []}: Props) {
         )
       : null;
 
-  const filteredGroups = [...groups, defaultRollupGroup].filter((group) => {
-    return groups.length === 0
-      ? group
-      : group === lastMenuGroup ||
-          !measuredActions.rolledUp.some(
-            (rolledUpGroup) =>
-              isMenuGroup(rolledUpGroup) && rolledUpGroup.title === group.title,
-          );
-  });
-
-  const groupsMarkup = filteredGroups.map((group) => {
-    const {title, actions: groupActions, ...rest} = group;
-    const isDefaultGroup = group === defaultRollupGroup;
-    const isLastMenuGroup = group === lastMenuGroup;
-    const finalRolledUpActions = measuredActions.rolledUp.reduce(
-      (memo, action) => {
-        memo.push(...(isMenuGroup(action) ? action.actions : [action]));
-
-        return memo;
-      },
-      [] as ActionListItemDescriptor[],
+  const filteredGroups = groups.filter((group) => {
+    const isRolledUp = !measuredActions.rolledUp.some(
+      (rolledUpGroup) =>
+        isMenuGroup(rolledUpGroup) && rolledUpGroup.title === group.title,
     );
-    if (!isDefaultGroup && !isLastMenuGroup) {
-      // Render a normal MenuGroup with just its actions
-      return (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={groupActions}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      );
-    } else if (!isDefaultGroup && isLastMenuGroup) {
-      // render the last, rollup group with its actions and finalRolledupActions
-      return (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={[...finalRolledUpActions, ...groupActions]}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      );
-    } else if (
-      isDefaultGroup &&
-      groups.length === 0 &&
-      finalRolledUpActions.length
-    ) {
-      // Render the default group to rollup into if one does not exist
-      return (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={finalRolledUpActions}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      );
-    }
+
+    return !isRolledUp || group.title === moreActionsRollupGroup.title;
   });
+
+  const groupsMarkup = [...filteredGroups, moreActionsRollupGroup].map(
+    (group) => {
+      const {title, actions: groupActions, ...rest} = group;
+      const isDefaultGroup = group.title === moreActionsRollupGroup.title;
+      const finalRolledUpActions: ActionListItemDescriptor[] = [];
+      const finalRolledUpGroups: ActionListSection[] = [];
+
+      measuredActions.rolledUp.forEach((action) => {
+        isMenuGroup(action)
+          ? finalRolledUpGroups.push({
+              title: action.title,
+              items: action.actions,
+            })
+          : finalRolledUpActions.push(action);
+      });
+
+      console.log(
+        title,
+        isDefaultGroup,
+        finalRolledUpActions,
+        finalRolledUpGroups,
+      );
+
+      if (!isDefaultGroup) {
+        return (
+          <MenuGroup
+            key={title}
+            title={title}
+            active={title === activeMenuGroup}
+            actions={groupActions}
+            {...rest}
+            onOpen={handleMenuGroupToggle}
+            onClose={handleMenuGroupClose}
+            getOffsetWidth={handleActionsOffsetWidth}
+          />
+        );
+      } else if (isDefaultGroup && finalRolledUpActions.length > 0) {
+        return (
+          <MenuGroup
+            key={title}
+            title={title}
+            active={title === activeMenuGroup}
+            actions={finalRolledUpActions}
+            sections={finalRolledUpGroups}
+            {...rest}
+            onOpen={handleMenuGroupToggle}
+            onClose={handleMenuGroupClose}
+            getOffsetWidth={handleActionsOffsetWidth}
+          />
+        );
+      }
+    },
+  );
 
   const groupedActionsMarkup = (
     <ButtonGroup spacing="extraTight">
@@ -287,6 +290,17 @@ export function Actions({actions = [], groups = []}: Props) {
     <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
       {groupedActionsMarkup}
       <EventListener event="resize" handler={handleResize} />
+      <div
+        aria-hidden
+        className={styles.MoreActionsMeasurer}
+        ref={moreActionsWidthRef}
+      >
+        <MenuGroup
+          {...moreActionsRollupGroup}
+          onOpen={() => {}}
+          onClose={() => {}}
+        />
+      </div>
     </div>
   );
 }

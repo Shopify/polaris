@@ -26,6 +26,7 @@ export function MenuGroup({
   accessibilityLabel,
   active,
   actions,
+  sections,
   details,
   title,
   icon,
@@ -80,7 +81,11 @@ export function MenuGroup({
       onClose={handleClose}
       hideOnPrint
     >
-      <ActionList items={actions} onActionAnyItem={handleClose} />
+      <ActionList
+        items={actions}
+        sections={sections}
+        onActionAnyItem={handleClose}
+      />
       {details && <div className={styles.Details}>{details}</div>}
     </Popover>
   );

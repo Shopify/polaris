@@ -224,6 +224,8 @@ export interface MenuGroupDescriptor extends BadgeAction {
   title: string;
   /** List of actions */
   actions: ActionListItemDescriptor[];
+  /** List of sectioned actions */
+  sections?: ActionListSection[];
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** Action details */
