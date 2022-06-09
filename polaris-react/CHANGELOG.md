@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.14.1
+
+### Patch Changes
+
+- [#6083](https://github.com/Shopify/polaris/pull/6083) [`ead310cd8`](https://github.com/Shopify/polaris/commit/ead310cd88bb8aa98ad95249c06f179b866f30d1) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Badge` `status` and `progress` types and removed default `status` from `Pip`
+
 ## 9.14.0
 
 ### Minor Changes
