@@ -11,7 +11,7 @@
     ul {
       display: flex;
       align-items: center;
-      font-size: var(--font-size-100);
+      font-size: var(--font-size-400);
       font-weight: var(--font-weight-500);
       margin-right: auto;
 
@@ -60,8 +60,8 @@
   align-items: center;
   color: var(--text-inherit);
   gap: 0.7rem;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-600);
 
   p {
     margin: 0;

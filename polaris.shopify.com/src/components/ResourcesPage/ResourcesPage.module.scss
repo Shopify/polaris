@@ -5,42 +5,42 @@
 
   h1 {
     text-align: center;
-    max-width: 40rem;
+    max-width: 52rem;
     margin: var(--header-margin) auto 1.75rem;
     color: var(--primary);
     animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
-    font-size: var(--font-size-1900);
-    letter-spacing: var(--letter-spacing-900);
-    font-weight: var(--font-weight-300);
+    font-size: var(--font-size-1700);
+    font-weight: var(--font-weight-800);
+    letter-spacing: var(--letter-spacing-600);
     line-height: 1.1;
   }
 
   h1 + p {
-    max-width: 38rem;
+    max-width: 48rem;
     text-align: center;
     margin: 0.5rem auto 0;
-    font-size: var(--font-size-800);
-    letter-spacing: var(--letter-spacing-300);
+    font-size: var(--font-size-600);
     font-weight: var(--font-weight-400);
+    letter-spacing: var(--letter-spacing-100);
     color: var(--text-strong);
     animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
   }
 
   h2 {
     margin-bottom: 1.75rem;
-    font-size: var(--font-size-1400);
-    font-weight: var(--font-weight-600);
-    letter-spacing: var(--letter-spacing-600);
-    color: var(--text-strong);
+    font-size: var(--font-size-900);
+    font-weight: var(--font-weight-700);
+    letter-spacing: var(--letter-spacing-300);
+      color: var(--text-strong);
     line-height: 1.15;
   }
 
   h3 {
     margin-bottom: 1rem;
-    font-size: var(--font-size-1100);
+    font-size: var(--font-size-700);
     font-weight: var(--font-weight-600);
-    letter-spacing: var(--letter-spacing-400);
-    color: var(--text-strong);
+    letter-spacing: var(--letter-spacing-100);
+      color: var(--text-strong);
     line-height: 1.15;
   }
 
@@ -73,7 +73,7 @@
   text-align: center;
 
   p {
-    font-size: var(--font-size-600);
+    font-size: var(--font-size-500);
     letter-spacing: var(--letter-spacing-300);
     color: var(--text-strong);
     margin-bottom: 1rem;
@@ -82,10 +82,9 @@
   a {
     display: inline-block;
     border-radius: 12px;
-    padding-right: 38px;
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-400);
+    padding-right: 24px;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-600);
     color: var(--text-strong);
     background: url(./arrow.svg) no-repeat right center;
     background-size: auto 75%;
@@ -101,9 +100,9 @@
   }
 
   .Block {
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.75rem;
     max-width: 60rem;
-    padding: 8rem 3rem;
+    padding: 6rem 3rem;
     position: relative;
     background: var(--surface-subdued);
     border-radius: 32px;

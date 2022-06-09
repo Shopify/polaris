@@ -13,10 +13,9 @@
   }
 
   p {
-    max-width: 43rem;
-    font-size: var(--font-size-800);
+    max-width: 48rem;
+    font-size: var(--font-size-500);
     margin-top: 1rem;
-    letter-spacing: var(--letter-spacing-300);
     color: var(--text-strong);
   }
 }
@@ -24,7 +23,7 @@
 .TokensNav {
   display: flex;
   justify-content: center;
-  margin: 2rem 0 5rem;
+  margin: 2rem 0 4rem;
 
   ul {
     display: flex;
@@ -45,9 +44,9 @@
     align-items: center;
     gap: 0.25rem;
     justify-content: center;
-    padding: 1.25rem 1.25rem 1.4rem;
+    padding: .75rem 1.5rem;
     color: var(--text-strong);
-    font-weight: var(--font-weight-400);
+    font-weight: var(--font-weight-500);
     border-right: 1px solid var(--border-color-light);
     white-space: pre;
   }

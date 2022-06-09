@@ -64,27 +64,27 @@ body {
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
 
-  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
-  --font-size-100: 0.85rem;
-  --font-size-200: 0.9rem;
-  --font-size-300: 0.95rem;
+  // Based on: base size 16px, 1.125 modular scale rounded
+  --font-size-100: 0.625rem;
+  --font-size-200: 0.75rem;
+  --font-size-300: 0.875rem;
   --font-size-400: 1rem;
-  --font-size-500: 1.05rem;
-  --font-size-600: 1.125rem;
-  --font-size-700: 1.266rem;
-  --font-size-800: 1.424rem;
-  --font-size-900: 1.602rem;
-  --font-size-1000: 1.802rem;
-  --font-size-1100: 2.027rem;
-  --font-size-1200: 2.281rem;
-  --font-size-1300: 2.566rem;
-  --font-size-1400: 2.887rem;
-  --font-size-1500: 3.247rem;
-  --font-size-1600: 3.653rem;
-  --font-size-1700: 4.11rem;
-  --font-size-1800: 4.624rem;
-  --font-size-1900: 5.202rem;
-  --font-size-2000: 5.852rem;
+  --font-size-500: 1.125rem;
+  --font-size-600: 1.25rem;
+  --font-size-700: 1.5rem;
+  --font-size-800: 1.75rem;
+  --font-size-900: 2rem;
+  --font-size-1000: 2.25rem;
+  --font-size-1100: 2.5rem;
+  --font-size-1200: 2.75rem;
+  --font-size-1300: 3rem;
+  --font-size-1400: 3.25rem;
+  --font-size-1500: 3.5rem;
+  --font-size-1600: 3.75rem;
+  --font-size-1700: 4rem;
+  --font-size-1800: 4.25rem;
+  --font-size-1900: 4.5rem;
+  --font-size-2000: 4.75rem;
 
   @media screen and (max-width: $breakpointMobile) {
     --font-size-100: 0.85rem;
@@ -112,6 +112,8 @@ body {
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
 
   --letter-spacing-100: -0.0025em;
   --letter-spacing-200: -0.005em;
@@ -161,7 +163,7 @@ video {
 }
 
 html {
-  font-size: 19px;
+  font-size: 16px;
 
   @media screen and (max-width: $breakpointMobile) {
     font-size: 16px;

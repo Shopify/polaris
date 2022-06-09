@@ -3,7 +3,7 @@
 .TokenList {
   --table-border-color: var(--border-color-light);
   color: var(--text-strong);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-400);
 
   table {
     border-collapse: collapse;
@@ -27,7 +27,7 @@
   }
 
   td {
-    padding: 0.33rem 1rem;
+    padding: 0.25rem 1rem;
   }
 
   th,
@@ -43,15 +43,15 @@
 
   th {
     text-align: left;
-    font-size: var(--font-size-700);
-    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-600);
     white-space: pre;
   }
 
   td {
     width: 20%;
     border-bottom: 1px solid var(--table-border-color);
-    height: 4.5rem;
+    height: 4rem;
     vertical-align: middle;
   }
 
@@ -115,11 +115,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.33rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   background: var(--decorative-2);
   border-radius: var(--border-radius-400);
-  font-size: var(--font-size-200);
-  gap: 0.15rem;
+  font-size: var(--font-size-300);
+  gap: 0.25rem;
   float: left;
   max-width: 100%;
 }
@@ -131,7 +131,7 @@
 }
 
 .TokenClipboard {
-  min-width: 19px;
+  min-width: 20px;
 
   button {
     position: relative;
@@ -145,7 +145,7 @@
 }
 
 .TokenDescription {
-  line-height: 1.45;
+  line-height: 1.33;
 }
 
 .Preview {

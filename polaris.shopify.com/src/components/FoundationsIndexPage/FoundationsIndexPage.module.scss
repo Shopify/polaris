@@ -53,7 +53,8 @@
     backdrop-filter: blur(100px);
     padding: 0.75rem 1.25rem;
     @include heading-2;
-    font-size: var(--font-size-600);
+    font-size: var(--font-size-400);
+    font-weight: var(--font-weight-600);
     top: 1rem;
     left: 1rem;
     border-radius: 100px;

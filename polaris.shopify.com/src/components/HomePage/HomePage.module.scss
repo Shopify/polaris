@@ -38,10 +38,10 @@
   }
 
   h1 {
-    font-size: var(--font-size-2000);
-    letter-spacing: var(--letter-spacing-1000);
+    font-size: var(--font-size-1800);
+    font-weight: var(--font-weight-800);
+    letter-spacing: var(--letter-spacing-600);
     color: var(--text-strong);
-    font-weight: var(--font-weight-600);
     line-height: 1.1;
     text-align: center;
     max-width: 50rem;
@@ -52,9 +52,8 @@
     display: inline-block;
     border-radius: 12px;
     padding-right: 38px;
-    font-weight: var(--font-weight-500);
     font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-400);
+    font-weight: var(--font-weight-500);
     color: var(--text-strong);
     background: url(./arrow.svg) no-repeat right center;
     background-size: auto 100%;

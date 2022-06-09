@@ -67,7 +67,8 @@
   margin-top: 1.25rem;
   width: var(--toc-width);
   right: calc((var(--toc-width) + 6rem) * -1);
-  font-size: var(--font-size-200);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-500);
   height: 100%;
 
   @media screen and (max-width: $breakpointDesktop) {
@@ -75,7 +76,7 @@
   }
 
   > ul > li:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: .5rem;
   }
 
   a {
@@ -95,7 +96,8 @@
     ul ul {
       position: relative;
       margin-top: 0.5rem;
-      font-size: var(--font-size-100);
+      font-size: var(--font-size-400);
+      font-weight: var(--font-weight-400);
       padding-left: 0.75rem;
 
       &::before {

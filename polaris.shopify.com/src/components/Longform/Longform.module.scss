@@ -25,16 +25,16 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 2.5rem;
+    margin-bottom: .5rem;
 
     @media screen and (max-width: $breakpointMobile) {
-      margin-bottom: 1.5rem;
+      margin-bottom: .75rem;
     }
   }
 
   h2 {
     @include heading-2;
-    margin-top: 3.25rem;
+    margin-top: 3rem;
   }
 
   h3 {
@@ -147,7 +147,7 @@
   pre {
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-300);
     padding: 1rem;
     background: var(--surface-subdued);
     color: var(--text-strong);
@@ -172,7 +172,6 @@
   > p:first-of-type {
     margin-bottom: 2rem;
     color: var(--text-strong);
-    font-size: var(--font-size-900);
-    letter-spacing: var(--letter-spacing-400);
+    font-size: var(--font-size-600);
   }
 }
