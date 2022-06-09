@@ -17,6 +17,7 @@ import TextField from "../TextField";
 import CodeExample from "../CodeExample";
 import { LinkButton } from "../Button/Button";
 import Button from "../Button";
+import { Icon } from "../../types";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -36,9 +37,8 @@ const fuse = new Fuse(Object.values(icons), {
 
 function IconsPage() {
   const [filterString, setFilterString] = useState("");
-  const [selectedIconName, setSelectedIconName] = useState<string>(
-    icons[0].name
-  );
+  const [selectedIcon, setSelectedIcon] = useState<Icon>(icons[0]);
+  const selectedIconName = selectedIcon.name;
 
   let filteredIcons = [...icons];
 
@@ -46,14 +46,19 @@ function IconsPage() {
     const fuseResults = fuse.search(filterString);
     filteredIcons = fuseResults.map((result) => result.item);
   }
+
   const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
   const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
 
-  const selectedIcon = icons.find((icon) => icon.name === selectedIconName);
-
-  if (selectedIconName && !selectedIcon) {
-    throw new Error(`Could not find icon ${selectedIconName}`);
-  }
+  const getSelectedIcon = (iconParam: Icon) => {
+    const foundIcon = icons.find(
+      (icon) => icon.name === iconParam.name && icon.set === iconParam.set
+    );
+    if (!foundIcon) {
+      throw new Error(`Could not find icon ${iconParam.name}`);
+    }
+    setSelectedIcon(foundIcon);
+  };
 
   const updateURL = `https://github.com/Shopify/polaris-icons/issues/new?assignees=@shopify/icon-guild&labels=Update,Proposal&template=propose-updates-to-existing-icons.md&title=%5BProposal%5D%20Update%20${selectedIconName}`;
 
@@ -90,7 +95,7 @@ function IconsPage() {
                   <IconGrid.Item
                     key={icon.name}
                     icon={icon}
-                    onClick={() => setSelectedIconName(icon.name)}
+                    onClick={() => getSelectedIcon(icon)}
                     isHighlighted={false}
                   />
                 ))}
@@ -112,7 +117,7 @@ function IconsPage() {
                   <IconGrid.Item
                     key={icon.name}
                     icon={icon}
-                    onClick={() => {}}
+                    onClick={() => getSelectedIcon(icon)}
                     isHighlighted={false}
                   />
                 ))}
