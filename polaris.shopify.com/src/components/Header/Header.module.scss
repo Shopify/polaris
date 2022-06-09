@@ -76,6 +76,24 @@
   }
 }
 
+.SkipToContentLink {
+  left: 0%;
+  background-color: white;
+  border-radius: var(--border-radius-200);
+  color: var(--text-strong);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-100);
+  margin-top: 0.4rem;
+  margin-left: 0.5rem;
+  padding: 1rem;
+  position: absolute;
+  transform: translateY(-100%);
+
+  &:focus {
+    transform: translateY(0%);
+  }
+}
+
 .DarkModeToggle {
   background: transparent;
   width: 3rem;
