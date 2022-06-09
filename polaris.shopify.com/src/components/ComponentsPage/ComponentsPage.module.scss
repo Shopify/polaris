@@ -7,7 +7,7 @@
   }
 
   h2 {
-    font-size: var(--font-size-700);
+    @include heading-2;
   }
 }
 
@@ -30,13 +30,6 @@
 }
 
 .CategoryName {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   @include heading-2;
-  display: flex;
-  gap: 0.5rem;
-  svg {
-    min-width: 24px;
-    max-width: 24px;
-    height: auto;
-  }
 }

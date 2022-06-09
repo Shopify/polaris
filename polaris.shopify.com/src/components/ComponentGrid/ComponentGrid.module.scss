@@ -28,10 +28,8 @@
   }
 
   h4 {
-    margin-bottom: 0.1rem;
-    font-size: var(--font-size-500);
-    font-weight: var(--font-weight-500);
-    color: var(--text-strong);
+    margin-bottom: 0.25rem;
+    @include heading-3;
   }
 
   p {
