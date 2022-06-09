@@ -1,41 +1,48 @@
 # Changelog
 
-## 9.13.0
+## 9.14.0
 
 ### Minor Changes
 
 - [#6022](https://github.com/Shopify/polaris/pull/6022) [`78bb4f3d3`](https://github.com/Shopify/polaris/commit/78bb4f3d399f99d7c6dd762302d2c2875b7e1754) Thanks [@jorgenunezsiri](https://github.com/jorgenunezsiri)! - Added 'onActionRollup' prop to Page component.
 
-* [#6063](https://github.com/Shopify/polaris/pull/6063) [`594379006`](https://github.com/Shopify/polaris/commit/594379006c1d173c93df0080fc1f5ee5f26fd241) Thanks [@mateus](https://github.com/mateus)! - Add TopBar `logoSuffix` prop
+* [#6055](https://github.com/Shopify/polaris/pull/6055) [`4d4891bf0`](https://github.com/Shopify/polaris/commit/4d4891bf0c8561d74c67b2e7b7f8e3576d2deb78) Thanks [@kyledurand](https://github.com/kyledurand)! - Added row and column props to Grid.Cell
+
+### Patch Changes
+
+- [#5812](https://github.com/Shopify/polaris/pull/5812) [`7d13e95d0`](https://github.com/Shopify/polaris/commit/7d13e95d0ffbd207ce9a83c5960712fbc318e41e) Thanks [@developit](https://github.com/developit)! - Fixed `Listbox` to preserve scroll position when lazy-loading additional items
+
+* [#6039](https://github.com/Shopify/polaris/pull/6039) [`a1b5ce122`](https://github.com/Shopify/polaris/commit/a1b5ce1228270a0de7fc94547e0a90da884152e7) Thanks [@jorgenunezsiri](https://github.com/jorgenunezsiri)! - - Fixed rolled up action groups to include section title.
+  - Fixed action items inside action groups to be disabled if the action group is disabled.
+
+- [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
+
+* Updated dependencies [[`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0)]:
+  - @shopify/polaris-tokens@5.2.1
+
+## 9.13.0
+
+### Minor Changes
 
 - [#5539](https://github.com/Shopify/polaris/pull/5539) [`4366b2b52`](https://github.com/Shopify/polaris/commit/4366b2b52c1528e550a5c33ff6b191f5b4713a6f) Thanks [@JeremyLudwigDev](https://github.com/JeremyLudwigDev)! - Added `hasFixedFirstColumn` and `firstColumnMinWidth` props to `DataTable`
-
-* [#6055](https://github.com/Shopify/polaris/pull/6055) [`4d4891bf0`](https://github.com/Shopify/polaris/commit/4d4891bf0c8561d74c67b2e7b7f8e3576d2deb78) Thanks [@kyledurand](https://github.com/kyledurand)! - Added row and column props to Grid.Cell
 
 ### Patch Changes
 
 - [#6060](https://github.com/Shopify/polaris/pull/6060) [`7bacb9342`](https://github.com/Shopify/polaris/commit/7bacb9342c14580f268c14c8e37d735e71a338a1) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed image background fallback
 
-* [#5812](https://github.com/Shopify/polaris/pull/5812) [`7d13e95d0`](https://github.com/Shopify/polaris/commit/7d13e95d0ffbd207ce9a83c5960712fbc318e41e) Thanks [@developit](https://github.com/developit)! - Fixed `Listbox` to preserve scroll position when lazy-loading additional items
+* [#6054](https://github.com/Shopify/polaris/pull/6054) [`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6) Thanks [@chazdean](https://github.com/chazdean)! - Implement icons modal
 
-- [#6054](https://github.com/Shopify/polaris/pull/6054) [`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6) Thanks [@chazdean](https://github.com/chazdean)! - Implement icons modal
+- [#6027](https://github.com/Shopify/polaris/pull/6027) [`d08935693`](https://github.com/Shopify/polaris/commit/d08935693d01e712ba0d3df291ac4e8703bc25f9) Thanks [@samrose3](https://github.com/samrose3)! - The `CustomProperties` component and the `colorScheme` prop in all components have been deprecated. Please see the [v9 to v10 migration guide](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md) for upgrade options.
 
-* [#6027](https://github.com/Shopify/polaris/pull/6027) [`d08935693`](https://github.com/Shopify/polaris/commit/d08935693d01e712ba0d3df291ac4e8703bc25f9) Thanks [@samrose3](https://github.com/samrose3)! - The `CustomProperties` component and the `colorScheme` prop in all components have been deprecated. Please see the [v9 to v10 migration guide](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md) for upgrade options.
-
-- [#5966](https://github.com/Shopify/polaris/pull/5966) [`1185d7fed`](https://github.com/Shopify/polaris/commit/1185d7feddbe402b38b62457717d48d046afbc52) Thanks [@kyledurand](https://github.com/kyledurand)! - Simplified the Grid component and improved its performance
-
-* [#6039](https://github.com/Shopify/polaris/pull/6039) [`a1b5ce122`](https://github.com/Shopify/polaris/commit/a1b5ce1228270a0de7fc94547e0a90da884152e7) Thanks [@jorgenunezsiri](https://github.com/jorgenunezsiri)! - - Fixed rolled up action groups to include section title.
-  - Fixed action items inside action groups to be disabled if the action group is disabled.
+* [#5966](https://github.com/Shopify/polaris/pull/5966) [`1185d7fed`](https://github.com/Shopify/polaris/commit/1185d7feddbe402b38b62457717d48d046afbc52) Thanks [@kyledurand](https://github.com/kyledurand)! - Simplified the Grid component and improved its performance
 
 - [#6044](https://github.com/Shopify/polaris/pull/6044) [`dcdf862bb`](https://github.com/Shopify/polaris/commit/dcdf862bb75b10cefd6900514963559509494517) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the `sticky-manager` to use a valid spacing token
 
-* [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
+* [#5840](https://github.com/Shopify/polaris/pull/5840) [`04ce5c6a3`](https://github.com/Shopify/polaris/commit/04ce5c6a34b4165fe9f7f9d9b10bc5f5b453a18e) Thanks [@Berhell](https://github.com/Berhell)! - Fixed `Badge` and `Pip` having different background colors for `new` and `info` status ([#5840](https://github.com/Shopify/polaris/pull/5840))
 
-- [#5840](https://github.com/Shopify/polaris/pull/5840) [`04ce5c6a3`](https://github.com/Shopify/polaris/commit/04ce5c6a34b4165fe9f7f9d9b10bc5f5b453a18e) Thanks [@Berhell](https://github.com/Berhell)! - Fixed `Badge` and `Pip` having different background colors for `new` and `info` status ([#5840](https://github.com/Shopify/polaris/pull/5840))
+- [#6029](https://github.com/Shopify/polaris/pull/6029) [`c779008f8`](https://github.com/Shopify/polaris/commit/c779008f8edf7d9abc802e324b97eaeff05a407f) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug in Image where the loading class wasn't reliably getting removed on load due to server side rendering
 
-* [#6029](https://github.com/Shopify/polaris/pull/6029) [`c779008f8`](https://github.com/Shopify/polaris/commit/c779008f8edf7d9abc802e324b97eaeff05a407f) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug in Image where the loading class wasn't reliably getting removed on load due to server side rendering
-
-* Updated dependencies [[`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6), [`27a0fba87`](https://github.com/Shopify/polaris/commit/27a0fba877789a3becb10c6e60d78921d71e6887), [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f)]:
+* Updated dependencies [[`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6), [`27a0fba87`](https://github.com/Shopify/polaris/commit/27a0fba877789a3becb10c6e60d78921d71e6887)]:
   - @shopify/polaris-tokens@5.2.0
 
 ## 9.12.2
