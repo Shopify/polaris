@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Grid {
-  // Remap custom properties as mobile first fallbacks for grid areas and grid columns
+  // Remap custom properties as mobile first fallbacks for grid-template-areas and grid-teplate-columns
   --pc-grid-areas-xs: initial;
   --pc-grid-areas-sm: var(--pc-grid-areas-xs);
   --pc-grid-areas-md: var(--pc-grid-areas-sm);

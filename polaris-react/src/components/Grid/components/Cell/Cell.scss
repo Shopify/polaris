@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 .Cell {
+  // Remap custom properties as mobile first fallbacks for grid-row and grid-column
   --pc-row-xs: initial;
   --pc-row-sm: var(--pc-row-xs);
   --pc-row-md: var(--pc-row-sm);
