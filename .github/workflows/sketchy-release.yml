@@ -40,7 +40,7 @@ jobs:
 
       - name: Sketchy publish
         run: |
-          # cd polaris-react && echo "publish polaris"
-          # cd ../polaris-tokens && echo "publish polaris-tokens"
+          cd polaris-react && yarn publish
+          cd ../polaris-tokens && yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
