@@ -1,3 +1,5 @@
+// Reduce breakpoints
+
 @function breakpoint($value) {
   $value-unit: unit($value);
 
