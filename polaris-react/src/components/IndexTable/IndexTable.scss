@@ -437,6 +437,10 @@ $scroll-bar-size: var(--p-space-2);
   pointer-events: none;
 }
 
+.scrollBarContainerHidden {
+  display: none;
+}
+
 .ScrollBar {
   overflow-x: scroll;
   width: 100%;
