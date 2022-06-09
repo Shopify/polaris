@@ -6,16 +6,6 @@
     @include heading-1;
     margin-bottom: 2rem;
   }
-
-  .Intro {
-    font-size: var(--font-size-700);
-    margin-top: -1.5rem;
-    margin-bottom: 4rem;
-
-    @media screen and (max-width: $breakpointDesktop) {
-      margin-bottom: 2rem;
-    }
-  }
 }
 
 .Categories {
@@ -33,24 +23,36 @@
 }
 
 .Category {
+  position: relative;
   border-radius: var(--border-radius-800);
   color: inherit;
   padding: 22rem 0 0 0;
-  background: var(--text);
-  background: url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png)
-    no-repeat no-repeat center top;
-  background-size: auto 22em;
   overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--border-color);
 
-  &:nth-of-type(2) {
+  // Temporary image hack until we get the right illos in here
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 22em;
+    background: url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png)
+      no-repeat no-repeat center top;
+    background-size: cover;
+  }
+
+  &:nth-of-type(2):before {
     background-image: url(https://miro.medium.com/max/1400/1*5nji7OgUrjFXq4zUyDzcJQ.png);
   }
 
-  &:nth-of-type(3) {
+  &:nth-of-type(3):before {
     background-image: url(https://miro.medium.com/max/1400/1*HysY5Slm7hFaZn7aUkg45w.jpeg);
   }
 
-  &:nth-of-type(4) {
+  &:nth-of-type(4):before {
     background-image: url(https://miro.medium.com/max/1400/1*UQSSs6d-OMotUphfYIkLsA.jpeg);
   }
 
@@ -62,7 +64,6 @@
     position: relative;
     z-index: 1;
     padding: 2rem;
-    background: var(--surface-subdued);
 
     h2 {
       @include heading-2;

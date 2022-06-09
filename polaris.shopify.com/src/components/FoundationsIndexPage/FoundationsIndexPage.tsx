@@ -15,9 +15,6 @@ function FoundationsIndexPage({}: Props) {
       </Head>
 
       <Layout title="Foundations" navItems={navItems} showTOC={false}>
-        <p className={styles.Intro}>
-          Polaris is a collection of ideas and best practices.
-        </p>
         <div className={styles.Categories}>
           {navItems.map((category) => {
             const url = category.children && category.children[0].url;
