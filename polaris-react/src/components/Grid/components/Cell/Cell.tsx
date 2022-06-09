@@ -40,11 +40,11 @@ export function Cell({
 }: CellProps) {
   const className = classNames(
     styles.Cell,
-    columnSpan?.xs && styles[`Cell-${columnSpan?.xs}-column-xs`],
-    columnSpan?.sm && styles[`Cell-${columnSpan?.sm}-column-sm`],
-    columnSpan?.md && styles[`Cell-${columnSpan?.md}-column-md`],
-    columnSpan?.lg && styles[`Cell-${columnSpan?.lg}-column-lg`],
-    columnSpan?.xl && styles[`Cell-${columnSpan?.xl}-column-xl`],
+    columnSpan?.xs && styles[`Cell-${columnSpan.xs}-column-xs`],
+    columnSpan?.sm && styles[`Cell-${columnSpan.sm}-column-sm`],
+    columnSpan?.md && styles[`Cell-${columnSpan.md}-column-md`],
+    columnSpan?.lg && styles[`Cell-${columnSpan.lg}-column-lg`],
+    columnSpan?.xl && styles[`Cell-${columnSpan.xl}-column-xl`],
   );
 
   const style = {
