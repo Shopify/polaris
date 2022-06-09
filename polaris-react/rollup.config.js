@@ -3,7 +3,7 @@ const path = require('path');
 const {babel} = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const {nodeResolve} = require('@rollup/plugin-node-resolve');
-const externals = require('rollup-plugin-node-externals');
+const {externals} = require('rollup-plugin-node-externals');
 const replace = require('@rollup/plugin-replace');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
@@ -55,6 +55,7 @@ const config = [
       output: 'styles.css',
       modules: {
         generateScopedName: generateScopedName({includeHash: false}),
+        globalModulePaths: [/CustomProperties\.scss$/],
       },
       plugins: postcssPlugins,
     },
@@ -80,6 +81,7 @@ const config = [
       mode: 'esnext',
       modules: {
         generateScopedName: generateScopedName({includeHash: true}),
+        globalModulePaths: [/CustomProperties\.scss$/],
       },
       plugins: postcssPlugins,
     },
