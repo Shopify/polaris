@@ -6,7 +6,7 @@ import {mountWithApp} from 'tests/utilities';
 import {CustomProperties, DEFAULT_COLOR_SCHEME} from '../CustomProperties';
 
 interface ColorSchemeAttribute {
-  'p-color-scheme': ColorScheme;
+  'data-p-color-scheme': ColorScheme;
 }
 
 describe('<CustomProperties />', () => {
@@ -48,7 +48,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'p-color-scheme'
+          'data-p-color-scheme'
         ],
       ).toBe(DEFAULT_COLOR_SCHEME);
     });
@@ -60,7 +60,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'p-color-scheme'
+          'data-p-color-scheme'
         ],
       ).toBe('light');
     });
@@ -72,7 +72,7 @@ describe('<CustomProperties />', () => {
 
       expect(
         (customProperties.find('div')!.props as ColorSchemeAttribute)[
-          'p-color-scheme'
+          'data-p-color-scheme'
         ],
       ).toBe('dark');
     });

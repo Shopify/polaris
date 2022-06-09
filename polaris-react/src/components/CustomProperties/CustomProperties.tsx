@@ -43,7 +43,7 @@ export function CustomProperties(props: CustomPropertiesProps) {
 
   return (
     <Component
-      p-color-scheme={colorScheme}
+      data-p-color-scheme={colorScheme}
       className={className}
       style={{color: 'var(--p-text)', ...style}}
     >
