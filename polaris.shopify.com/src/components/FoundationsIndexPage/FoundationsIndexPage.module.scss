@@ -6,28 +6,40 @@
     @include heading-1;
     margin-bottom: 2rem;
   }
+
+  .Intro {
+    font-size: var(--font-size-700);
+    margin-top: -1.5rem;
+    margin-bottom: 4rem;
+
+    @media screen and (max-width: $breakpointDesktop) {
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .Categories {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    grid-template-columns: repeat(2, 2fr);
+  }
 
   @media screen and (max-width: $breakpointMobile) {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
 .Category {
-  display: block;
-  position: relative;
-  min-height: 25rem;
-  background: var(--surface-subdued)
-    url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png) no-repeat
-    no-repeat center center;
-  background-size: auto 101%;
-  border-radius: 32px;
+  border-radius: var(--border-radius-800);
+  color: inherit;
+  padding: 22rem 0 0 0;
+  background: var(--text);
+  background: url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png)
+    no-repeat no-repeat center top;
+  background-size: auto 22em;
   overflow: hidden;
 
   &:nth-of-type(2) {
@@ -46,26 +58,15 @@
     border-right: none;
   }
 
-  h2 {
-    position: absolute;
+  .Text {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
     background: var(--surface-subdued);
-    color: var(--text-strong);
-    backdrop-filter: blur(100px);
-    padding: 0.75rem 1.25rem;
-    @include heading-2;
-    font-size: var(--font-size-600);
-    top: 1rem;
-    left: 1rem;
-    border-radius: 100px;
-  }
 
-  ul {
-    font-size: var(--font-size-300);
-  }
-
-  a {
-    display: inline-block;
-    color: var(--text-strong);
-    padding: 0.025rem 0;
+    h2 {
+      @include heading-2;
+      margin-bottom: 1rem;
+    }
   }
 }
