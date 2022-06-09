@@ -4,22 +4,20 @@
 
 ### Minor Changes
 
-- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added 'onActionRollup' prop to Page component.
+- [#6022](https://github.com/Shopify/polaris/pull/6022) [`78bb4f3d3`](https://github.com/Shopify/polaris/commit/78bb4f3d399f99d7c6dd762302d2c2875b7e1754) Thanks [@jorgenunezsiri](https://github.com/jorgenunezsiri)! - Added 'onActionRollup' prop to Page component.
 
-* [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add TopBar `logoSuffix` prop
-
-- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added row and column props to Grid.Cell
+* [#6055](https://github.com/Shopify/polaris/pull/6055) [`4d4891bf0`](https://github.com/Shopify/polaris/commit/4d4891bf0c8561d74c67b2e7b7f8e3576d2deb78) Thanks [@kyledurand](https://github.com/kyledurand)! - Added row and column props to Grid.Cell
 
 ### Patch Changes
 
-- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed `Listbox` to preserve scroll position when lazy-loading additional items
+- [#5812](https://github.com/Shopify/polaris/pull/5812) [`7d13e95d0`](https://github.com/Shopify/polaris/commit/7d13e95d0ffbd207ce9a83c5960712fbc318e41e) Thanks [@developit](https://github.com/developit)! - Fixed `Listbox` to preserve scroll position when lazy-loading additional items
 
-* [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Fixed rolled up action groups to include section title.
+* [#6039](https://github.com/Shopify/polaris/pull/6039) [`a1b5ce122`](https://github.com/Shopify/polaris/commit/a1b5ce1228270a0de7fc94547e0a90da884152e7) Thanks [@jorgenunezsiri](https://github.com/jorgenunezsiri)! - - Fixed rolled up action groups to include section title.
   - Fixed action items inside action groups to be disabled if the action group is disabled.
 
-- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add keyboard shortcut
+- [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
 
-- Updated dependencies [[`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0)]:
+* Updated dependencies [[`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0)]:
   - @shopify/polaris-tokens@5.2.1
 
 ## 9.13.0

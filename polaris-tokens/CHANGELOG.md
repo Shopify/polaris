@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [#6086](https://github.com/Shopify/polaris/pull/6086) [`bb777601a`](https://github.com/Shopify/polaris/commit/bb777601af9abd276147c8251c800e6d878c08a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add keyboard shortcut
+- [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
 
 ## 5.2.0
 
