@@ -1,63 +1,128 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;375;400;450;500;550;600;675;700&display=swap");
 @import "variables.scss";
+@import "fonts.scss";
+@import "mixins.scss";
 
-:root {
+// Place CSS variables on body so that we can
+// utilize the .dark-mode class to flip the colors
+body {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 88px;
+  --header-height: 80px;
   --narrow-content-width: 720px;
-  --header-margin: 4rem;
+  --header-margin: 4.5rem;
 
-  --focus-outline: 0 0 0 2px black;
+  @media screen and (max-width: $breakpointDesktop) {
+    --header-height: 60px;
+    --header-margin: 2rem;
+  }
+
+  --focus-outline: 0 0 0 2px var(--text-strong);
 
   --text: #4a4c4e;
   --text-strong: #111212;
   --text-subdued: #777;
   --text-light: #999;
-  --text-link: #2949c1;
-  --text-token: #6e006e;
-
+  --text-link: #2e5dba;
   --surface: #ffffff;
   --surface-subdued: #f6f6f6;
-  --surface-token: #fdf0fd;
   --primary: #008060;
-
   --border-color: #dedede;
+  --border-color-light: #ededed;
   --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
   --card-shadow: none;
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
-
   --decorative-1: #e9f1e2;
   --decorative-2: #fdecd5;
   --decorative-3: #e1f3f5;
   --decorative-4: #f0edff;
+  --backdrop: rgba(0, 0, 0, 0.5);
 
-  // Based on: https://type-scale.com/?size=16&scale=1.250
+  &.dark-mode {
+    --text: #aaa;
+    --text-strong: #e7e7e7;
+    --text-subdued: #777;
+    --text-light: #999;
+    --text-link: #6995ee;
+    --surface: #202021;
+    --surface-subdued: #2e2e30;
+    --primary: #1aab87;
+    --border-color: #555;
+    --border-color-light: #2a2a2a;
+    --border-inset-color: #555;
+    --border: 1px solid var(--border-color);
+    --card-shadow: none;
+    --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
+      0 0 0 0.5px var(--border-color);
+    --decorative-1: #204400;
+    --decorative-2: #5d3701;
+    --decorative-3: #004a54;
+    --decorative-4: #110065;
+    --backdrop: rgba(0, 0, 0, 0.5);
+  }
+
+  --duration-200: 200ms;
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+
+  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
-  --font-size-500: 1.25rem;
-  // --font-size-500: 1.2rem; // Override
-  --font-size-600: 1.563rem;
-  --font-size-700: 1.953rem;
-  // --font-size-700: 1.75rem; // Override
-  --font-size-800: 2.441rem;
-  --font-size-900: 3.052rem;
-  --font-size-1000: 3.815rem;
-  --font-size-1100: 4.768rem;
-  --font-size-1200: 5.96rem;
+  --font-size-500: 1.05rem;
+  --font-size-600: 1.125rem;
+  --font-size-700: 1.266rem;
+  --font-size-800: 1.424rem;
+  --font-size-900: 1.602rem;
+  --font-size-1000: 1.802rem;
+  --font-size-1100: 2.027rem;
+  --font-size-1200: 2.281rem;
+  --font-size-1300: 2.566rem;
+  --font-size-1400: 2.887rem;
+  --font-size-1500: 3.247rem;
+  --font-size-1600: 3.653rem;
+  --font-size-1700: 4.11rem;
+  --font-size-1800: 4.624rem;
+  --font-size-1900: 5.202rem;
+  --font-size-2000: 5.852rem;
+
+  @media screen and (max-width: $breakpointMobile) {
+    --font-size-100: 0.85rem;
+    --font-size-200: 0.9rem;
+    --font-size-300: 0.95rem;
+    --font-size-400: 1rem;
+    --font-size-500: 1.067rem;
+    --font-size-600: 1.138rem;
+    --font-size-700: 1.215rem;
+    --font-size-800: 1.296rem;
+    --font-size-900: 1.383rem;
+    --font-size-1000: 1.476rem;
+    --font-size-1100: 1.575rem;
+    --font-size-1200: 1.68rem;
+    --font-size-1300: 1.793rem;
+    --font-size-1400: 1.913rem;
+    --font-size-1500: 2.041rem;
+    --font-size-1600: 2.178rem;
+    --font-size-1700: 2.323rem;
+    --font-size-1800: 2.479rem;
+    --font-size-1900: 2.645rem;
+    --font-size-2000: 2.822rem;
+  }
 
   --font-weight-400: 400;
-  --font-weight-500: 550;
-  --font-weight-600: 650;
-  --font-weight-700: 700;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
 
-  --letter-spacing-100: -0.03em;
-  --letter-spacing-200: -0.02em;
+  --letter-spacing-100: -0.0025em;
+  --letter-spacing-200: -0.005em;
   --letter-spacing-300: -0.01em;
-  --letter-spacing-400: 0;
+  --letter-spacing-400: -0.015em;
+  --letter-spacing-500: -0.02em;
+  --letter-spacing-600: -0.025em;
+  --letter-spacing-700: -0.03em;
+  --letter-spacing-800: -0.035em;
+  --letter-spacing-900: -0.04em;
+  --letter-spacing-1000: -0.045em;
 
   --border-radius-100: 0;
   --border-radius-200: 2px;
@@ -96,16 +161,23 @@ video {
 }
 
 html {
-  font-size: 18px;
+  font-size: 19px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    font-size: 16px;
+  }
 }
 
 body {
   background: var(--surface);
-  font-family: inter, ShopifySans, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.6;
+  font-family: ShopifySans, "shopify sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-variant-ligatures: common-ligatures contextual discretionary-ligatures;
+  font-feature-settings: "kern", "liga", "clig", "calt", "dlig";
+  line-height: 1.55;
   color: var(--text);
-  font-weight: 375;
+  font-weight: var(--font-weight-400);
 }
 
 a {
@@ -114,22 +186,6 @@ a {
 
 button {
   cursor: pointer;
-}
-
-h1 {
-  @include heading-1;
-}
-
-h2 {
-  @include heading-2;
-}
-
-h3 {
-  @include heading-3;
-}
-
-h4 {
-  @include heading-4;
 }
 
 .sr-only {
@@ -145,11 +201,17 @@ h4 {
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
 .usage-list {
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   font-size: var(--font-size-200);
-  gap: 1rem;
+  gap: 1rem 0.75rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   .usage-list-part {
     position: relative;
@@ -157,18 +219,17 @@ h4 {
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
+    overflow: hidden;
 
     h4:first-child {
-      margin-bottom: 0;
       background-image: url(/images/icon-do.svg);
       background-repeat: no-repeat;
       background-position: left center;
-      padding-left: 30px;
-      color: #087e5f;
-    }
-
-    p {
-      margin-top: 0.5rem;
+      padding-left: 34px;
+      background-size: auto 1.25rem;
+      font-size: var(--font-size-400);
+      font-weight: var(--font-weight-500);
+      letter-spacing: var(--letter-spacing-200);
     }
 
     &::before {
@@ -178,15 +239,13 @@ h4 {
       top: 0;
       right: 0;
       left: 0;
-      height: 4px;
-      border-radius: var(--border-radius-400) var(--border-radius-400) 0 0;
+      height: 2px;
       background: #13b288;
     }
 
     &[data-type="dont"] {
       h4 {
         background-image: url(/images/icon-dont.svg);
-        color: #c03926;
       }
       &::before {
         background: #ea5945;
@@ -196,6 +255,11 @@ h4 {
     img {
       width: auto;
       max-width: 300px;
+    }
+
+    h3 {
+      font-size: var(--font-size-300);
+      color: var(--text);
     }
   }
 }

@@ -5,6 +5,8 @@ export interface ColumnVisibilityData {
   leftEdge: number;
   rightEdge: number;
   isVisible?: boolean;
+  width: number;
+  index: number;
 }
 
 export interface DataTableState {
@@ -16,4 +18,5 @@ export interface DataTableState {
   sortDirection?: SortDirection;
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
+  rowHovered: number | undefined;
 }

@@ -21,7 +21,7 @@ export interface MenuProps {
   onClose(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
-  /** Accepts a color scheme for the contents of the menu */
+  /** @deprecated Accepts a color scheme for the contents of the menu */
   colorScheme?: PopoverProps['colorScheme'];
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
@@ -58,6 +58,13 @@ export function Menu(props: MenuProps) {
   );
 
   const isFullHeight = Boolean(message);
+
+  if (colorScheme && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `colorScheme` prop on the `Menu` component has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
+    );
+  }
 
   return (
     <Popover

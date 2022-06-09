@@ -1,0 +1,71 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
+
+.FoundationsIndexPage {
+  h1 {
+    @include heading-1;
+    margin-bottom: 2rem;
+  }
+}
+
+.Categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.Category {
+  display: block;
+  position: relative;
+  min-height: 25rem;
+  background: var(--surface-subdued)
+    url(https://miro.medium.com/max/2800/1*EO-MYRZSvAa196DdvgzWCw.png) no-repeat
+    no-repeat center center;
+  background-size: auto 101%;
+  border-radius: 32px;
+  overflow: hidden;
+
+  &:nth-of-type(2) {
+    background-image: url(https://miro.medium.com/max/1400/1*5nji7OgUrjFXq4zUyDzcJQ.png);
+  }
+
+  &:nth-of-type(3) {
+    background-image: url(https://miro.medium.com/max/1400/1*HysY5Slm7hFaZn7aUkg45w.jpeg);
+  }
+
+  &:nth-of-type(4) {
+    background-image: url(https://miro.medium.com/max/1400/1*UQSSs6d-OMotUphfYIkLsA.jpeg);
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  h2 {
+    position: absolute;
+    background: var(--surface-subdued);
+    color: var(--text-strong);
+    backdrop-filter: blur(100px);
+    padding: 0.75rem 1.25rem;
+    @include heading-2;
+    font-size: var(--font-size-600);
+    top: 1rem;
+    left: 1rem;
+    border-radius: 100px;
+  }
+
+  ul {
+    font-size: var(--font-size-300);
+  }
+
+  a {
+    display: inline-block;
+    color: var(--text-strong);
+    padding: 0.025rem 0;
+  }
+}

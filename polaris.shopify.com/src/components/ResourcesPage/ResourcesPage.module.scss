@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
 
 .ResourcesPage {
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -6,33 +6,46 @@
   h1 {
     text-align: center;
     max-width: 40rem;
-    margin: 6rem auto 2rem;
+    margin: var(--header-margin) auto 1.75rem;
     color: var(--primary);
     animation: fade-up 0.75s 0.3s var(--ease-out-quart) both;
-  }
-
-  h1 + p {
-    font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-200);
-    max-width: 44rem;
-    text-align: center;
-    margin: 1rem auto 0;
-    font-weight: var(--font-weight-500);
-    line-height: 1.35;
-    animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
-    color: var(--text-strong);
-  }
-
-  h2 {
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    font-size: var(--font-size-900);
-    letter-spacing: var(--letter-spacing-100);
+    font-size: var(--font-size-1900);
+    letter-spacing: var(--letter-spacing-900);
+    font-weight: var(--font-weight-300);
     line-height: 1.1;
   }
 
+  h1 + p {
+    max-width: 38rem;
+    text-align: center;
+    margin: 0.5rem auto 0;
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-300);
+    font-weight: var(--font-weight-400);
+    color: var(--text-strong);
+    animation: fade-up 0.75s 0.35s var(--ease-out-quart) both;
+  }
+
+  h2 {
+    margin-bottom: 1.75rem;
+    font-size: var(--font-size-1400);
+    font-weight: var(--font-weight-600);
+    letter-spacing: var(--letter-spacing-600);
+    color: var(--text-strong);
+    line-height: 1.15;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: var(--font-size-1100);
+    font-weight: var(--font-weight-600);
+    letter-spacing: var(--letter-spacing-400);
+    color: var(--text-strong);
+    line-height: 1.15;
+  }
+
   a {
-    color: #008362;
+    color: var(--primary);
   }
 }
 
@@ -42,10 +55,10 @@
 
 .Line {
   width: 3px;
-  height: 100px;
+  height: 120px;
   background: var(--text-strong);
   border-radius: 2px;
-  margin: 2rem auto;
+  margin: 3rem auto;
 
   &.FirstLine {
     animation: fade-up 0.75s 0.4s var(--ease-out-quart) both;
@@ -53,21 +66,31 @@
 }
 
 .FirstStep {
-  max-width: 60rem;
+  max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 100%;
   text-align: center;
-  background: var(--surface-subdued);
-  border-radius: 32px;
-  padding: 8rem 14rem;
 
   p {
+    font-size: var(--font-size-600);
+    letter-spacing: var(--letter-spacing-300);
     color: var(--text-strong);
     margin-bottom: 1rem;
   }
 
   a {
-    font-size: var(--font-size-500);
+    display: inline-block;
+    border-radius: 12px;
+    padding-right: 38px;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-400);
+    color: var(--text-strong);
+    background: url(./arrow.svg) no-repeat right center;
+    background-size: auto 75%;
+    line-height: 1.25;
+    color: var(--primary);
   }
 }
 
@@ -80,16 +103,17 @@
   .Block {
     margin: 0 auto 1rem;
     max-width: 60rem;
-    padding: 6rem 3rem;
+    padding: 8rem 3rem;
     position: relative;
     background: var(--surface-subdued);
     border-radius: 32px;
-    padding-right: 40%;
+
+    .Text {
+      max-width: 50%;
+    }
 
     h3 {
-      font-size: var(--font-size-800);
       margin-bottom: 1rem;
-      letter-spacing: var(--letter-spacing-200);
     }
 
     p {
@@ -118,17 +142,11 @@
     padding: 0.33rem 0;
     font-weight: 400;
     font-size: var(--font-size-500);
-
-    .Icon {
-      display: flex;
-      align-items: center;
-      min-width: 0.95em;
-      width: 0.95em;
-    }
   }
 
-  a[data-icon="github"] svg {
-    color: var(--text);
+  svg {
+    width: 1.2rem;
+    height: auto;
   }
 }
 
@@ -151,7 +169,6 @@
     h3 {
       margin-bottom: 1rem;
       color: white;
-      font-size: var(--font-size-700);
     }
 
     p {

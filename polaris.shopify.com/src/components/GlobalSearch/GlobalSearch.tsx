@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
@@ -14,15 +14,13 @@ import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
 import Link from "next/link";
-import pageIcon from "./PageMajor.svg";
 import { className, stripMarkdownLinks } from "../../utils/various";
-import Image from "../Image";
 
 interface Props {}
 
 function getSearchResultAsString(result: SearchResult | null): string {
   switch (result?.category) {
-    case "Guidelines":
+    case "Foundations":
       return result.meta.title;
     case "Components":
       return result.meta.name;
@@ -37,6 +35,7 @@ function getSearchResultAsString(result: SearchResult | null): string {
 function GlobalSearch({}: Props) {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>();
   const router = useRouter();
+  const globalSearchID = "global-search";
 
   let resultsInRenderedOrder: SearchResults = [];
   if (searchResults) {
@@ -56,8 +55,9 @@ function GlobalSearch({}: Props) {
     getComboboxProps,
     highlightedIndex,
     getItemProps,
+    openMenu,
   } = useCombobox({
-    id: "global-search",
+    id: globalSearchID,
     items: resultsInRenderedOrder,
     onInputValueChange: ({ inputValue }) => {
       const results = search(inputValue || "");
@@ -74,6 +74,21 @@ function GlobalSearch({}: Props) {
 
   let resultIndex = -1;
 
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      const searchbar = document.getElementById(globalSearchID);
+      let isSlashKey = event.key === "/";
+      if (isSlashKey) {
+        event.preventDefault();
+        openMenu();
+        if (searchbar !== null) {
+          searchbar.focus();
+        }
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.GlobalSearch}>
       <label {...getLabelProps()} className="sr-only">
@@ -83,7 +98,7 @@ function GlobalSearch({}: Props) {
         <WrappedTextField
           renderTextField={(className) => (
             <input
-              {...getInputProps({})}
+              {...getInputProps({ id: globalSearchID })}
               placeholder="Search"
               className={className}
             />
@@ -104,7 +119,7 @@ function GlobalSearch({}: Props) {
           <>
             <div className={styles.Header}>
               <h2>{resultsInRenderedOrder.length} results</h2>
-              <p>Tip: Use command-K to open search</p>
+              <p>Tip: Use / to open search</p>
             </div>
           </>
         )}
@@ -118,7 +133,7 @@ function GlobalSearch({}: Props) {
                   const typedCategory = category as SearchResultCategory;
 
                   switch (typedCategory) {
-                    case "Guidelines":
+                    case "Foundations":
                       const results = searchResults[typedCategory].results;
                       if (results.length === 0) return null;
                       return (
@@ -126,28 +141,20 @@ function GlobalSearch({}: Props) {
                           <h3 className={styles.ResultsGroupName}>
                             {category}
                           </h3>
-                          <div className={styles.GuidelinesResults}>
+                          <div className={styles.FoundationsResults}>
                             {results.map((result) => {
                               resultIndex++;
                               return (
                                 <li
                                   key={result.meta.title}
                                   className={className(
-                                    styles.GuidelinesResult,
+                                    styles.FoundationsResult,
                                     highlightedIndex === resultIndex &&
                                       styles.isHighlighted
                                   )}
                                 >
                                   <Link href={result.url} passHref>
                                     <a>
-                                      <div className={styles.Icon}>
-                                        <Image
-                                          src={pageIcon}
-                                          alt=""
-                                          width={16}
-                                          height={16}
-                                        />
-                                      </div>
                                       <h4>{result.meta.title}</h4>
                                       <p>
                                         {stripMarkdownLinks(
@@ -199,7 +206,16 @@ function GlobalSearch({}: Props) {
                       if (results.length === 0) return null;
                       return (
                         <ResultsGroup title={category}>
-                          <TokenList layout="list">
+                          <TokenList
+                            showTableHeading={false}
+                            columns={{
+                              preview: true,
+                              name: true,
+                              figmaUsage: false,
+                              value: false,
+                              description: true,
+                            }}
+                          >
                             {results.map((result) => {
                               resultIndex++;
                               return (

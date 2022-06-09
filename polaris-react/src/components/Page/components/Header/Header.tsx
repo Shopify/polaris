@@ -54,6 +54,8 @@ export interface HeaderProps extends TitleProps {
   additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
+  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
+  onActionRollup?(hasRolledUp: boolean): void;
 }
 
 const SHORT_TITLE = 20;
@@ -73,6 +75,7 @@ export function Header({
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
+  onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -150,6 +153,7 @@ export function Header({
             ? i18n.translate('Polaris.Page.Header.rollupActionsLabel', {title})
             : undefined
         }
+        onActionRollup={onActionRollup}
       />
     );
   } else if (isReactElement(secondaryActions)) {

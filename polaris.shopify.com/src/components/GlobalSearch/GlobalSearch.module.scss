@@ -1,10 +1,14 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
 .GlobalSearch {
   position: relative;
   width: 100%;
   --focus-outline: 0 0 0 2px #222, 0 0 0 4px #fff;
 
   input {
-    background: #ededed url(./SearchMajor.svg) no-repeat 14px center;
+    background: var(--surface-subdued) url(./SearchMajor.svg) no-repeat 14px
+      center;
     border: none;
     padding: 0.66rem 0.66rem 0.66rem 40px;
     background-size: 16px auto;
@@ -39,8 +43,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: var(--surface);
-  backdrop-filter: blur(20px);
+  background: var(--surface-subdued);
   z-index: 1;
   box-shadow: 0 0.5px rgba(0, 0, 0, 0.15);
 
@@ -58,7 +61,7 @@
 
 .Results {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   border-radius: var(--border-radius-800);
   width: calc(var(--page-max-width) * 0.66);
   right: -1px;
@@ -68,10 +71,19 @@
   min-height: 50rem;
   max-height: 50rem;
   box-shadow: 0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: var(--surface-subdued);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   display: flex;
   flex-direction: column;
+
+  @include dark-mode {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    right: 0;
+    width: calc(100vw - 2.5rem);
+  }
 
   &:before {
     position: fixed;
@@ -83,11 +95,7 @@
     left: 0;
     height: 100px;
     z-index: 1;
-    background: linear-gradient(
-      to top,
-      rgba(250, 250, 250, 1),
-      rgba(250, 250, 250, 0)
-    );
+    background: linear-gradient(to top, var(--surface), rgba(250, 250, 250, 0));
   }
 
   &:empty {
@@ -107,7 +115,7 @@
   padding: 1.5rem 1.5rem 0 12rem;
 
   + .ResultsGroup {
-    padding-top: 0.75rem;
+    padding-top: 1.5rem;
   }
 
   &:last-child {
@@ -118,30 +126,18 @@
     position: absolute;
     left: 1.5rem;
     font-size: var(--font-size-500);
-    font-weight: var(--font-weight-300);
+    font-weight: var(--font-weight-400);
   }
 }
 
-.GuidelinesResults {
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-400);
-  background: var(--surface);
+.FoundationsResults {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.GuidelinesResult {
+.FoundationsResult {
   position: relative;
-  border-bottom: var(--border);
-  padding: 1rem 1rem 0.85rem 50px;
-
-  .Icon {
-    position: absolute;
-    left: 1rem;
-    top: 0.8rem;
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   &.isHighlighted {
     box-shadow: var(--focus-outline);
@@ -153,8 +149,14 @@
     color: inherit;
   }
 
+  h4 {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-500);
+    color: var(--text-strong);
+  }
+
   p {
-    margin-top: 0.25rem;
+    margin-top: 0.1rem;
     font-size: var(--font-size-200);
   }
 }

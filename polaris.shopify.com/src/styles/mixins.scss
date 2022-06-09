@@ -1,0 +1,5 @@
+@mixin dark-mode {
+  :global(.dark-mode) & {
+    @content;
+  }
+}

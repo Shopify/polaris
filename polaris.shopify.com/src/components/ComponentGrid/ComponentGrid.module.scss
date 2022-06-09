@@ -1,6 +1,10 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+
 .ComponentGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
   gap: 2rem 1rem;
 }
 
@@ -23,9 +27,14 @@
     padding: 1rem 1rem 0 0;
   }
 
+  h4 {
+    margin-bottom: 0.1rem;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+  }
+
   p {
-    margin-top: 0.35rem;
-    font-size: var(--font-size-300);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -37,4 +46,13 @@
   filter: brightness(0.91) contrast(1.15);
   border-radius: var(--border-radius-800);
   overflow: hidden;
+
+  @include dark-mode {
+    opacity: 0.8;
+    transition: opacity 0.05s linear;
+
+    .Component:hover & {
+      opacity: 1;
+    }
+  }
 }
