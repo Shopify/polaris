@@ -1,5 +1,6 @@
 import { DatePicker } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DatePickerExample() {
   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
@@ -25,5 +26,4 @@ function DatePickerExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DatePickerExample);

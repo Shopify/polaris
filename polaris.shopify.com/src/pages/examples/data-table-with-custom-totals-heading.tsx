@@ -1,5 +1,6 @@
 import { Page, Card, DataTable } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DataTableExample() {
   const rows = [
@@ -45,5 +46,4 @@ function DataTableExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DataTableExample);

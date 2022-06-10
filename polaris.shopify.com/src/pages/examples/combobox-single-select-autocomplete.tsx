@@ -1,6 +1,7 @@
 import { Listbox, Combobox, Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 import { useState, useCallback, useMemo } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ComboboxExample() {
   const deselectedOptions = useMemo(
@@ -88,5 +89,4 @@ function ComboboxExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ComboboxExample);

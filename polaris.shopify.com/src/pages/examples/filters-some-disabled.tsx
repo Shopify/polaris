@@ -8,6 +8,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DisableSomeFiltersExample() {
   const [taggedWith, setTaggedWith] = useState(null);
@@ -155,5 +156,4 @@ function DisableSomeFiltersExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DisableSomeFiltersExample);

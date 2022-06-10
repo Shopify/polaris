@@ -1,12 +1,16 @@
 import { FooterHelp, Link } from "@shopify/polaris";
 import React from "react";
-
-<FooterHelp>
-  Learn more about{" "}
-  <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
-    fulfilling orders
-  </Link>
-</FooterHelp>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+
+function FooterHelpExample() {
+  return (
+    <FooterHelp>
+      Learn more about{" "}
+      <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+        fulfilling orders
+      </Link>
+    </FooterHelp>
+  );
+}
+
+export default withPolarisExample(FooterHelpExample);

@@ -1,5 +1,6 @@
 import { Link, Page, Card, DataTable } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function FullDataTableExample() {
   const [sortedRows, setSortedRows] = useState(null);
@@ -290,5 +291,4 @@ function FullDataTableExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(FullDataTableExample);

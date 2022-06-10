@@ -9,6 +9,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ResourceListFiltersExample() {
   const [accountStatus, setAccountStatus] = useState(null);
@@ -205,5 +206,4 @@ function ResourceListFiltersExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ResourceListFiltersExample);

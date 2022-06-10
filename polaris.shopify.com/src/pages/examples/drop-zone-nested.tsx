@@ -1,6 +1,7 @@
 import { DropZone, Stack, Thumbnail, Caption, Card } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
@@ -47,5 +48,4 @@ function NestedDropZoneExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(NestedDropZoneExample);

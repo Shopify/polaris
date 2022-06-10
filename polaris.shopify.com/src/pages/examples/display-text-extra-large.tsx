@@ -1,7 +1,9 @@
 import { DisplayText } from "@shopify/polaris";
 import React from "react";
-
-<DisplayText size="extraLarge">Good evening, Dominic.</DisplayText>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+
+function DisplayExample() {
+  return <DisplayText size="extraLarge">Good evening, Dominic.</DisplayText>;
+}
+
+export default withPolarisExample(DisplayExample);

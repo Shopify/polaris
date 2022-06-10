@@ -7,6 +7,7 @@ import {
   DropZone,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DropZoneAcceptingSVGFilesExample() {
   const [files, setFiles] = useState([]);
@@ -68,5 +69,4 @@ function DropZoneAcceptingSVGFilesExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DropZoneAcceptingSVGFilesExample);

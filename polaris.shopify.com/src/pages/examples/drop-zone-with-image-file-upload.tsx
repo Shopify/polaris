@@ -7,6 +7,7 @@ import {
   List,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DropZoneWithImageFileUpload() {
   const [files, setFiles] = useState([]);
@@ -65,5 +66,4 @@ function DropZoneWithImageFileUpload() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DropZoneWithImageFileUpload);

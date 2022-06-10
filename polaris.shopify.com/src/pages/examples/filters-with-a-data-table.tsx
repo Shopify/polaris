@@ -6,6 +6,7 @@ import {
   DataTable,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DataTableFiltersExample() {
   const [availability, setAvailability] = useState(null);
@@ -191,5 +192,4 @@ function DataTableFiltersExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DataTableFiltersExample);

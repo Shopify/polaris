@@ -1,6 +1,7 @@
 import { Stack, Thumbnail, Caption, Card, DropZone } from "@shopify/polaris";
 import { NoteMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function DropZoneWithCustomFileDialogExample() {
   const [files, setFiles] = useState([]);
@@ -61,5 +62,4 @@ function DropZoneWithCustomFileDialogExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(DropZoneWithCustomFileDialogExample);
