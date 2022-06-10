@@ -1,6 +1,7 @@
 import { AppProvider, CustomProperties } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
-import { ComponentType, useEffect } from "react";
+import { ComponentType } from "react";
+import styles from "./PolarisExamplePage.module.scss";
 
 interface ExampleProps {
   children: JSX.Element;
@@ -10,21 +11,13 @@ const stylesheetHref =
   "https://unpkg.com/@shopify/polaris@9.9.0-next.1/build/esm/styles.css";
 
 function PolarisExamplePage(props: ExampleProps) {
-  // Alternative way of linking the sheet
-  // useEffect(() => {
-  //   let stylesheetElement = document.createElement("link");
-
-  //   stylesheetElement.href = stylesheetHref;
-  //   stylesheetElement.rel = "stylesheet";
-
-  //   document.head.appendChild(stylesheetElement);
-  // }, []);
-
   return (
     <>
       <link rel="stylesheet" href={stylesheetHref} />
       <AppProvider i18n={translations}>
-        <CustomProperties>{props.children}</CustomProperties>
+        <CustomProperties>
+          <div className={styles.Container}>{props.children}</div>
+        </CustomProperties>
       </AppProvider>
     </>
   );
