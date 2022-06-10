@@ -74,6 +74,10 @@ $nav-max-width: 360px;
     @include safe-area-for(flex-basis, $top-bar-height, left);
     @include safe-area-for(padding-left, var(--p-space-4), left);
   }
+
+  &.hasLogoSuffix {
+    gap: var(--p-space-2);
+  }
 }
 
 .Logo,
