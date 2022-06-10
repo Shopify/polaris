@@ -13,7 +13,7 @@
     padding: 0.66rem 0.66rem 0.66rem 40px;
     background-size: 16px auto;
     font-weight: 435;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-300);
     border-radius: 16px;
 
     &:focus {
@@ -48,13 +48,13 @@
   box-shadow: 0 0.5px rgba(0, 0, 0, 0.15);
 
   h2 {
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-300);
     font-weight: var(--font-weight-400);
     color: var(--text-subdued);
   }
 
   p {
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-300);
     color: var(--text-subdued);
   }
 }
