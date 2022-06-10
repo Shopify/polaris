@@ -32,8 +32,11 @@ examples:
   - fileName: extra-small-avatar.tsx
     title: Extra small avatar
     description: >-
-      Use to present an avatar in a condensed layout, such as a data table cell
-      or an action list item.
+      Square shaped avatar
+  - fileName: square-avatar.tsx
+    title: Square avatar
+    description: >-
+      Used to present an avatar with a square shape, rather than round.
 ---
 
 # Avatar
