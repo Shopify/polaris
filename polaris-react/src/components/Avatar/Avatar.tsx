@@ -138,7 +138,8 @@ export function Avatar({
         y="50%"
         dy={verticalOffset}
         fill="currentColor"
-        fontSize="20"
+        fontSize={shape === 'square' ? '17' : '20'}
+        fontWeight={shape === 'square' ? '700' : '400'}
         textAnchor="middle"
       >
         {initials}
