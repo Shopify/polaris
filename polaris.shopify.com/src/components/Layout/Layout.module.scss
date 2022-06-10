@@ -1,0 +1,117 @@
+@import "../../styles/variables.scss";
+
+.Layout {
+  --gap: 7rem;
+  --nav-width: 12rem;
+  --toc-width: 12rem;
+  --max-content-width: 72rem;
+  --toc-gap: 5rem;
+  margin-top: var(--header-margin);
+  display: flex;
+  gap: var(--gap);
+
+  @media screen and (max-width: $breakpointDesktop) {
+    --gap: 2rem;
+  }
+
+  @media screen and (max-width: $breakpointTablet) {
+    display: block;
+  }
+}
+
+.Nav {
+  min-width: var(--nav-width);
+  max-width: var(--nav-width);
+  align-self: flex-start;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    display: none;
+  }
+}
+
+.Main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  .CenteredMainContent {
+    flex: 1;
+
+    .Layout.narrow & {
+      padding-right: var(--gap);
+      max-width: var(--max-content-width);
+
+      @media screen and (max-width: $breakpointDesktop) {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.Post {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: var(--toc-gap);
+
+  .PostContent {
+    flex: 1;
+  }
+}
+
+.TOC {
+  --toc-sticky-top-margin: 2rem;
+  position: sticky;
+  top: 2rem;
+  margin-top: 1.25rem;
+  width: var(--toc-width);
+  right: calc((var(--toc-width) + 6rem) * -1);
+  font-size: var(--font-size-200);
+  height: 100%;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    display: none;
+  }
+
+  > ul > li:not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  a {
+    color: inherit;
+    display: block;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: var(--toc-width);
+
+    &:hover {
+      color: var(--text-strong);
+    }
+  }
+
+  &.isNested {
+    ul ul {
+      position: relative;
+      margin-top: 0.5rem;
+      font-size: var(--font-size-100);
+      padding-left: 0.75rem;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0.4rem;
+        bottom: 0.4rem;
+        width: 1px;
+        left: 0;
+        background: var(--border-color);
+      }
+
+      a {
+        padding: 0.125rem 0;
+      }
+    }
+  }
+}

@@ -11,34 +11,33 @@ interface Props {
 }
 
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
-interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
+  download?: boolean;
+}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ small, pill, primary, children, ...rest }, ref) => {
-    return (
-      <button
-        className={className(
-          styles.Button,
-          small && styles.small,
-          pill && styles.pill,
-          primary && styles.primary
-        )}
-        {...rest}
-        type="button"
-        ref={ref}
-      >
-        {children}
-      </button>
-    );
-  }
-);
-Button.displayName = "Button";
+function Button({ small, pill, primary, children, ...rest }: ButtonProps) {
+  return (
+    <button
+      className={className(
+        styles.Button,
+        small && styles.small,
+        pill && styles.pill,
+        primary && styles.primary
+      )}
+      {...rest}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+}
 
 export function LinkButton({
   small,
   pill,
   href,
   primary,
+  download,
   children,
   ...rest
 }: LinkButtonProps) {
@@ -51,6 +50,7 @@ export function LinkButton({
           pill && styles.pill,
           primary && styles.primary
         )}
+        download={download}
         {...rest}
       >
         {children}

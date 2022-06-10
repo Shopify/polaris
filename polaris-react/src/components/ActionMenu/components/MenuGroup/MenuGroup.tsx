@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 
-import type {MenuGroupDescriptor} from '../../../../types';
+import type {ActionListSection, MenuGroupDescriptor} from '../../../../types';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {SecondaryAction} from '../SecondaryAction';
@@ -20,6 +20,8 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   onClose(title: string): void;
   /** Callback for getting the offsetWidth of the MenuGroup */
   getOffsetWidth?(width: number): void;
+  /** Collection of sectioned action items */
+  sections?: readonly ActionListSection[];
 }
 
 export function MenuGroup({
@@ -34,6 +36,7 @@ export function MenuGroup({
   onClose,
   onOpen,
   getOffsetWidth,
+  sections,
 }: MenuGroupProps) {
   const handleClose = useCallback(() => {
     onClose(title);
@@ -80,7 +83,11 @@ export function MenuGroup({
       onClose={handleClose}
       hideOnPrint
     >
-      <ActionList items={actions} onActionAnyItem={handleClose} />
+      <ActionList
+        items={actions}
+        sections={sections}
+        onActionAnyItem={handleClose}
+      />
       {details && <div className={styles.Details}>{details}</div>}
     </Popover>
   );

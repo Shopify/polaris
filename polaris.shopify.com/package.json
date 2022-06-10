@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -27,7 +27,8 @@
     "react-markdown": "^8.0.2",
     "react-tooltip": "^4.2.21",
     "sass": "^1.49.9",
-    "@floating-ui/react-dom-interactions": "^0.6.1"
+    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",

@@ -1,8 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
-
-import {classNames} from '../../utilities/css';
-
-import styles from './Image.scss';
+import React, {useCallback} from 'react';
 
 interface SourceSet {
   source: string;
@@ -10,7 +6,6 @@ interface SourceSet {
 }
 
 type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
-type Status = 'loading' | 'loaded';
 
 export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   alt: string;
@@ -27,28 +22,18 @@ export function Image({
   source,
   crossOrigin,
   onLoad,
-  className: classNameProp,
+  className,
   ...rest
 }: ImageProps) {
-  const [status, setStatus] = React.useState<Status>('loading');
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)
         .join(',')
     : null;
 
-  useEffect(() => setStatus('loading'), [source, sourceSet]);
-
   const handleLoad = useCallback(() => {
     if (onLoad) onLoad();
-    setStatus('loaded');
   }, [onLoad]);
-
-  const className = classNames(
-    styles.Image,
-    status === 'loading' && styles.isLoading,
-    classNameProp,
-  );
 
   return (
     <img

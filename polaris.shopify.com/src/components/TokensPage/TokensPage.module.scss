@@ -1,4 +1,5 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
 
 .Banner {
   margin-top: var(--header-margin);
@@ -9,7 +10,6 @@
 
   h1 {
     @include heading-1;
-    font-size: var(--font-size-1700);
   }
 
   p {
@@ -29,10 +29,15 @@
   ul {
     display: flex;
     justify-content: center;
-    box-shadow: 0 25px 75px rgb(0 0 0 / 7%);
+    box-shadow: 0 25px 75px rgb(0 0 0 / 5%);
     border-radius: 32px;
     padding: 0 1rem;
-    background: #fff;
+    background: var(--surface);
+
+    @include dark-mode {
+      box-shadow: none;
+      border: 1px solid var(--border-color-light);
+    }
   }
 
   a {
@@ -40,12 +45,11 @@
     align-items: center;
     gap: 0.25rem;
     justify-content: center;
-    padding: 1.25rem;
+    padding: 1.25rem 1.25rem 1.4rem;
     color: var(--text-strong);
-    font-size: var(--font-size-400);
-    font-weight: var(--font-weight-500);
-    letter-spacing: var(--letter-spacing-300);
-    border-right: 1px solid rgba(0, 0, 0, 0.066);
+    font-weight: var(--font-weight-400);
+    border-right: 1px solid var(--border-color-light);
+    white-space: pre;
   }
 
   svg {
@@ -56,7 +60,4 @@
   li:last-child a {
     border-right: none;
   }
-}
-
-.Tokens {
 }

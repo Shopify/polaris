@@ -38,6 +38,8 @@ export enum AutoSelection {
   FirstSelected = 'FIRST_SELECTED',
   /** Default active option is always the first interactive option. */
   First = 'FIRST',
+  /** Default to the manual selection pattern. */
+  None = 'NONE',
 }
 
 export interface ListboxProps {
@@ -244,12 +246,24 @@ export function Listbox({
         return currentValues[index] === value;
       });
 
+    const listIsAppended =
+      currentValues.length !== 0 &&
+      nextValues.length > currentValues.length &&
+      currentValues.every((value, index) => {
+        return nextValues[index] === value;
+      });
+
     if (listIsUnchanged) {
       if (optionIsAlreadyActive && actionContentHasUpdated) {
         setCurrentOptions(nextOptions);
         handleChangeActiveOption(nextOption);
       }
 
+      return;
+    }
+
+    if (listIsAppended) {
+      setCurrentOptions(nextOptions);
       return;
     }
 
@@ -272,10 +286,15 @@ export function Listbox({
   ]);
 
   useEffect(() => {
-    if (!loading && children && Children.count(children) > 0) {
+    if (
+      autoSelection !== AutoSelection.None &&
+      !loading &&
+      children &&
+      Children.count(children) > 0
+    ) {
       resetActiveOption();
     }
-  }, [children, activeOption, loading, resetActiveOption]);
+  }, [children, autoSelection, activeOption, loading, resetActiveOption]);
 
   useEffect(() => {
     if (listboxRef.current) {
@@ -326,6 +345,16 @@ export function Listbox({
       let element = activeOption?.element;
       let totalOptions = -1;
 
+      if (!activeOption && autoSelection === AutoSelection.None) {
+        const nextOptions = getNavigableOptions();
+        const nextActiveOption = getFirstNavigableOption(nextOptions);
+        setCurrentOptions(nextOptions);
+        return {
+          element: nextActiveOption?.element,
+          nextIndex: nextActiveOption?.index || 0,
+        };
+      }
+
       while (totalOptions++ < lastIndex) {
         nextIndex = getNextIndex(currentIndex, lastIndex, key);
         element = currentOptions[nextIndex];
@@ -347,11 +376,14 @@ export function Listbox({
       return {element, nextIndex};
     },
     [
+      autoSelection,
       currentOptions,
       activeOption,
       willLoadMoreOptions,
       getNextIndex,
       handleKeyToBottom,
+      getFirstNavigableOption,
+      getNavigableOptions,
     ],
   );
 

@@ -222,6 +222,14 @@ describe('<TopBar />', () => {
         style: {width: '104px'},
       });
     });
+
+    it('will render logo add-on when `logoSuffix` is provided', () => {
+      const LogoSuffix = () => <div>Add-on</div>;
+      const topBar = mountWithApp(<TopBar logoSuffix={<LogoSuffix />} />, {
+        frame: {logo: {topBarSource: './assets/shopify.svg'}},
+      });
+      expect(topBar).toContainReactComponent(LogoSuffix);
+    });
   });
 
   describe('contextControl', () => {

@@ -1,12 +1,13 @@
+@import "../../styles/mixins.scss";
+
 .IconGrid {
   display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 4px;
+  // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
+  grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
 }
 
 .Icon {
-  transition: all 0.2s ease;
-
   button {
     appearance: none;
     display: flex;
@@ -19,14 +20,7 @@
     background: var(--surface-subdued);
     padding-top: 5px;
     aspect-ratio: 5 / 4;
-    border-radius: var(--border-radius-800);
-    transition: background-color 0.05s linear;
-    box-shadow: var(--card-shadow);
-
-    &:hover {
-      background: var(--surface-subdued);
-      box-shadow: var(--card-shadow-hover);
-    }
+    border-radius: var(--border-radius-400);
   }
 
   &.isHighlighted button,
@@ -35,11 +29,12 @@
   }
 }
 
-.Preview {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 0;
-  animation: icon-in 0.25s 0.05s ease both;
+.SVGWrapper {
+  filter: brightness(0);
+
+  @include dark-mode {
+    filter: brightness(0) contrast(1) invert(1);
+  }
 }
 
 .IconMeta {

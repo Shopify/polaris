@@ -1,5 +1,3 @@
-import type { ReactElement, ReactNode } from "react";
-import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -7,32 +5,57 @@ import Head from "next/head";
 import "../styles/globals.scss";
 import Page from "../components/Page";
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isPolaris = router.asPath.startsWith("/generated-examples");
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const isPolaris = router.asPath.startsWith("/examples");
 
   return (
-    <>
+    <Page skipHeaderAndFooter={isPolaris}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
+
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+          href="/fonts/ShopifySans--light.woff2"
+        />
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+          href="/fonts/ShopifySans--regular.woff2"
+        />
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+          href="/fonts/ShopifySans--medium.woff2"
+        />
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+          href="fonts/ShopifySans--bold.woff2"
+        />
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+          href="/fonts/ShopifySans--extrabold.woff2"
+        />
       </Head>
 
-      <Page skipHeaderAndFooter={isPolaris}>
-        <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-          {getLayout(<Component {...pageProps} />)}
-        </div>
-      </Page>
-    </>
+      <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+        <Component {...pageProps} />
+      </div>
+    </Page>
   );
 }
 
