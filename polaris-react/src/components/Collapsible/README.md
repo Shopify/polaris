@@ -75,7 +75,10 @@ function CollapsibleExample() {
           <Collapsible
             open={open}
             id="basic-collapsible"
-            transition={{duration: '150ms', timingFunction: 'ease-in-out'}}
+            transition={{
+              duration: 'var(--p-duration-150)',
+              timingFunction: 'var(--p-ease-in-out)',
+            }}
             expandOnPrint
           >
             <TextContainer>
