@@ -5,6 +5,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import path from "path";
 import Examples from "../../components/Examples";
+import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
 import { NavItem } from "../../components/Nav/Nav";
@@ -20,12 +21,6 @@ import {
 interface MarkdownData {
   frontMatter: any;
   readme: string;
-}
-
-interface Example {
-  description: string;
-  fileName: string;
-  title: string;
 }
 
 interface Props {

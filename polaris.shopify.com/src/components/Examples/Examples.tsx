@@ -2,11 +2,12 @@ import { ChangeEvent, useState } from "react";
 import CodeExample from "../CodeExample";
 import styles from "./Examples.module.scss";
 
-interface Example {
+export type Example = {
+  code: string;
   description: string;
   fileName: string;
   title: string;
-}
+};
 
 interface Props {
   examples: [Example];
@@ -14,11 +15,13 @@ interface Props {
 
 const Examples = (props: Props) => {
   const { examples } = props;
-  const [currentIndex, setIndex] = useState("0");
+  const [currentIndex, setIndex] = useState(0);
   const { code, description, fileName } = examples[currentIndex];
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
-    setIndex((ev.target as HTMLInputElement).value);
+    const value = (ev.target as HTMLInputElement).value;
+
+    setIndex(parseInt(value, 10));
   };
 
   if (!examples?.length) return null;
