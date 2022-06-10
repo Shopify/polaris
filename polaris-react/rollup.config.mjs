@@ -1,17 +1,21 @@
-const path = require('path');
+import {readFileSync} from 'fs';
+import * as path from 'path';
 
-const {babel} = require('@rollup/plugin-babel');
-const commonjs = require('@rollup/plugin-commonjs');
-const {nodeResolve} = require('@rollup/plugin-node-resolve');
-const {externals} = require('rollup-plugin-node-externals');
-const replace = require('@rollup/plugin-replace');
-const image = require('@rollup/plugin-image');
-const json = require('@rollup/plugin-json');
+import {babel} from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import {externals} from 'rollup-plugin-node-externals';
+import replace from '@rollup/plugin-replace';
+import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 
-const {styles} = require('./config/rollup/plugin-styles');
-const {generateScopedName} = require('./config/rollup/namespaced-classname');
-const postcssPlugins = require('./config/postcss-plugins');
-const pkg = require('./package.json');
+import {styles} from './config/rollup/plugin-styles.js';
+import {generateScopedName} from './config/rollup/namespaced-classname.js';
+import postcssPlugins from './config/postcss-plugins.js';
+
+const pkg = JSON.parse(
+  readFileSync(new URL('./package.json', import.meta.url).pathname),
+);
 
 function generateConfig({output, targets, stylesConfig}) {
   return {
@@ -47,7 +51,7 @@ function generateConfig({output, targets, stylesConfig}) {
 }
 
 /** @type {import('rollup').RollupOptions} */
-const config = [
+export default [
   generateConfig({
     targets: 'extends @shopify/browserslist-config, node 12.20',
     stylesConfig: {
@@ -95,6 +99,3 @@ const config = [
     ],
   }),
 ];
-
-// eslint-disable-next-line import/no-default-export
-export default config;
