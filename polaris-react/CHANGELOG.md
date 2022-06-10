@@ -1,5 +1,19 @@
 # Changelog
 
+## 9.15.0
+
+### Minor Changes
+
+- [#6097](https://github.com/Shopify/polaris/pull/6097) [`671f4ab46`](https://github.com/Shopify/polaris/commit/671f4ab46b72637dc79523f2ef728a4e580919db) Thanks [@chloerice](https://github.com/chloerice)! - Added support for manual selection to `Listbox`
+
+* [#6099](https://github.com/Shopify/polaris/pull/6099) [`0dfaf1943`](https://github.com/Shopify/polaris/commit/0dfaf1943cb73e2bee16a57a8bfe7c93cb2eaecb) Thanks [@mateus](https://github.com/mateus)! - Add Navigation `logoSuffix` prop
+
+### Patch Changes
+
+- [#5829](https://github.com/Shopify/polaris/pull/5829) [`5e4f95ae6`](https://github.com/Shopify/polaris/commit/5e4f95ae65c5ba3ed271d10e57b83886a2155a89) Thanks [@tmlayton](https://github.com/tmlayton)! - Add React.Profiler tracking
+
+* [#6100](https://github.com/Shopify/polaris/pull/6100) [`8a87c879a`](https://github.com/Shopify/polaris/commit/8a87c879a2494b1e1f0e43ab0b3d201d50992120) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where `Collapsible` wouldn't update height when children change
+
 ## 9.14.1
 
 ### Patch Changes
