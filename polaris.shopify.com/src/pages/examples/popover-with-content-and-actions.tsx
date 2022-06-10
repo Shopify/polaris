@@ -1,47 +1,47 @@
-// import { Button, Popover, ActionList } from "@shopify/polaris";
-// import { useState, useCallback } from "react";
-// 
-// function PopoverContentExample() {
-//   const [popoverActive, setPopoverActive] = useState(true);
-// 
-//   const togglePopoverActive = useCallback(
-//     () => setPopoverActive((popoverActive) => !popoverActive),
-//     []
-//   );
-// 
-//   const activator = (
-//     <Button onClick={togglePopoverActive} disclosure>
-//       Sales channels
-//     </Button>
-//   );
-// 
-//   return (
-//     <div style={{ height: "250px" }}>
-//       <Popover
-//         active={popoverActive}
-//         activator={activator}
-//         autofocusTarget="first-node"
-//         onClose={togglePopoverActive}
-//       >
-//         <Popover.Pane fixed>
-//           <Popover.Section>
-//             <p>Available sales channels</p>
-//           </Popover.Section>
-//         </Popover.Pane>
-//         <Popover.Pane>
-//           <ActionList
-//             actionRole="menuitem"
-//             items={[
-//               { content: "Online store" },
-//               { content: "Facebook" },
-//               { content: "Shopify POS" },
-//             ]}
-//           />
-//         </Popover.Pane>
-//       </Popover>
-//     </div>
-//   );
-// }
-// 
+import { Button, Popover, ActionList } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+
+function PopoverContentExample() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    []
+  );
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Sales channels
+    </Button>
+  );
+
+  return (
+    <div style={{ height: "250px" }}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={togglePopoverActive}
+      >
+        <Popover.Pane fixed>
+          <Popover.Section>
+            <p>Available sales channels</p>
+          </Popover.Section>
+        </Popover.Pane>
+        <Popover.Pane>
+          <ActionList
+            actionRole="menuitem"
+            items={[
+              { content: "Online store" },
+              { content: "Facebook" },
+              { content: "Shopify POS" },
+            ]}
+          />
+        </Popover.Pane>
+      </Popover>
+    </div>
+  );
+}
+
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+export default withPolarisExample(() => <p>tk</p>);

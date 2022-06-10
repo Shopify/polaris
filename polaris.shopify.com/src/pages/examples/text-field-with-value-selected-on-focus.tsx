@@ -1,23 +1,23 @@
-// import { TextField } from "@shopify/polaris";
-// import { useState, useCallback } from "react";
-// 
-// function TextFieldWithSelectTextOnFocusExample() {
-//   const [textFieldValue, setTextFieldValue] = useState("Jaded Pixel");
-// 
-//   const handleTextFieldChange = useCallback(
-//     (value) => setTextFieldValue(value),
-//     []
-//   );
-// 
-//   return (
-//     <TextField
-//       label="Store name"
-//       value={textFieldValue}
-//       onChange={handleTextFieldChange}
-//       selectTextOnFocus
-//     />
-//   );
-// }
-// 
+import { TextField } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+
+function TextFieldWithSelectTextOnFocusExample() {
+  const [textFieldValue, setTextFieldValue] = useState("Jaded Pixel");
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    []
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      selectTextOnFocus
+    />
+  );
+}
+
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+export default withPolarisExample(() => <p>tk</p>);

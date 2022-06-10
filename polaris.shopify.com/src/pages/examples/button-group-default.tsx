@@ -1,10 +1,14 @@
-// import { ButtonGroup, Button } from "@shopify/polaris";
-// import React from "react";
-// 
-// <ButtonGroup>
-//   <Button>Cancel</Button>
-//   <Button primary>Save</Button>
-// </ButtonGroup>;
-// 
+import { ButtonGroup, Button } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ButtonGroupExample() {
+  return (
+    <ButtonGroup>
+      <Button>Cancel</Button>
+      <Button primary>Save</Button>
+    </ButtonGroup>
+  );
+}
+
+export default withPolarisExample(ButtonGroupExample);

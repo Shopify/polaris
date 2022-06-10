@@ -1,7 +1,9 @@
-// import { Badge } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Badge>Fulfilled</Badge>;
-// 
+import { Badge } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function BadgeExample() {
+  return <Badge>Fulfilled</Badge>;
+}
+
+export default withPolarisExample(BadgeExample);

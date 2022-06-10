@@ -1,7 +1,7 @@
-// import { KeyboardKey } from "@shopify/polaris";
-// import React from "react";
+import { KeyboardKey } from "@shopify/polaris";
+import React from "react";
 
-// <KeyboardKey>Ctrl</KeyboardKey>;
+<KeyboardKey>Ctrl</KeyboardKey>;
 //
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+export default withPolarisExample(() => <p>tk</p>);
