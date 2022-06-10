@@ -57,9 +57,9 @@ function getUpMediaCondition(breakpoint) {
 }
 
 function getDownMediaCondition(breakpoint) {
-  return `(max-width: ${toEm(breakpoint)})`;
+  return `(max-width: ${toEm(parseFloat(breakpoint) - 0.05)})`;
 }
 
 function toEm(value) {
-  return `${parseInt(value, 10)}em`;
+  return `${parseFloat(value)}em`;
 }
