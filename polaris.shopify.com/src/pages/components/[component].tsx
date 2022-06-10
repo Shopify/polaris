@@ -4,6 +4,8 @@ import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import path from "path";
+import Examples from "../../components/Examples";
+import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
 import { NavItem } from "../../components/Nav/Nav";
@@ -22,11 +24,12 @@ interface MarkdownData {
 }
 
 interface Props {
+  examples: [Example];
   name: string;
   readme: string;
 }
 
-const Components = ({ name, readme }: Props) => {
+const Components = ({ examples, name, readme }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
@@ -34,7 +37,7 @@ const Components = ({ name, readme }: Props) => {
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>
-
+      <Examples examples={examples} />
       <Longform>
         <Markdown text={readme} skipH1 />
       </Longform>
@@ -56,8 +59,22 @@ export const getStaticProps: GetStaticProps<
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
     const readme = marked(data.readme);
+    const examples = data?.frontMatter?.examples.map((example: Example) => {
+      const examplePath = path.resolve(
+        process.cwd(),
+        `src/pages/examples/${example.fileName}`
+      );
+      let code = "";
+
+      if (fs.existsSync(examplePath)) {
+        code = fs.readFileSync(examplePath, "utf-8");
+      }
+
+      return { ...example, code };
+    });
     const props: Props = {
       ...data.frontMatter,
+      examples,
       readme,
     };
 

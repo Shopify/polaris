@@ -14,23 +14,23 @@ keywords:
   - wayfinding
   - alert
 examples:
-  - fileName: default-icon.tsx
+  - fileName: icon-default.tsx
     title: Default icon
     description: >-
       Use to visually communicate core parts of the product and available
       actions.
-  - fileName: colored-icon.tsx
+  - fileName: icon-colored.tsx
     title: Colored icon
     description: Apply a color to the icon.
   - fileName: icon-with-backdrop.tsx
     title: Icon with backdrop
     description: Apply a backdrop to the icon.
-  - fileName: user-provided-icon.tsx
+  - fileName: icon-user-provided.tsx
     title: User provided icon
     description: >-
       Specify an SVG as a string to render it in an image tag, instead of an
       inline SVG to prevent script injection.
-  - fileName: user-provided-icon-with-color-and-current-color.tsx
+  - fileName: icon-user-provided-with-color-and-current-color.tsx
     title: User provided icon with color and currentColor
     description: >-
       When using changing color of an svg and it uses currentColor, the white

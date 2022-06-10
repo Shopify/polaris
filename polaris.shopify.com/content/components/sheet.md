@@ -17,7 +17,7 @@ notice:
   status: deprecated
   message: The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions.
 examples:
-  - fileName: basic-sheet.tsx
+  - fileName: sheet-basic.tsx
     title: Basic sheet
     description: Use as the default option for a sheet.
 ---

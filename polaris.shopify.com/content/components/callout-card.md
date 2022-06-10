@@ -22,7 +22,7 @@ keywords:
   - card with image
   - illustration card
 examples:
-  - fileName: default-callout-card.tsx
+  - fileName: callout-card-default.tsx
     title: Default callout card
     description: >-
       Use to let merchants know about a feature or opportunity where there is a
@@ -32,7 +32,7 @@ examples:
     description: >-
       Use to let merchants know about a feature or opportunity where there are
       two distinct actions they can take on the information.
-  - fileName: dismissable-callout-card.tsx
+  - fileName: callout-card-dismissable.tsx
     title: Dismissable callout card
     description: >-
       Make all callout cards dismissible so merchants can get rid of cards about

@@ -24,11 +24,11 @@ keywords:
   - callout
   - call out
 examples:
-  - fileName: default-card.tsx
+  - fileName: card-default.tsx
     title: Default card
     description: >-
       Use when you have a simple message to communicate to merchants that
-      doesn’t require any secondary steps.undefinedundefined
+      doesn’t require any secondary steps.
   - fileName: card-with-header-actions.tsx
     title: Card with header actions
     description: >-
@@ -62,7 +62,7 @@ examples:
     description: >-
       Use when you have two related but distinct pieces of information to
       communicate to merchants. Multiple sections can help break up complicated
-      concepts to make them easier to scan and understand.undefinedundefined
+      concepts to make them easier to scan and understand.
   - fileName: card-with-multiple-titled-sections.tsx
     title: Card with multiple titled sections
     description: >-
@@ -79,13 +79,13 @@ examples:
     title: Card section with destructive action
     description: >-
       Use when a card action applies only to one section and will delete
-      merchant data or be otherwise difficult to recover from.undefinedundefined
+      merchant data or be otherwise difficult to recover from.
   - fileName: card-with-a-subdued-section.tsx
     title: Card with a subdued section
     description: >-
       Use to indicate when one of the sections in your card contains inactive or
       disabled content.
-  - fileName: subdued-card-for-secondary-content.tsx
+  - fileName: card-subdued-for-secondary-content.tsx
     title: Subdued card for secondary content
     description: >-
       Use for content that you want to deprioritize. Subdued cards don’t stand
