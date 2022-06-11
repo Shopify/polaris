@@ -214,7 +214,7 @@
       "characterCountWithMaxLength": "{count} caratteri utilizzati su {limit}"
     },
     "TopBar": {
-      "toggleMenuLabel": "Menu di attivazione/disattivazione",
+      "toggleMenuLabel": "Apri/chiudi menu",
       "SearchField": {
         "clearButtonLabel": "Rimuovi",
         "search": "Cerca"
@@ -281,7 +281,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Articolo",
       "defaultItemPlural": "Articoli",
-      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati.",
+      "allItemsSelected": "Tutti gli oltre {itemsLength} {resourceNamePlural} sono selezionati.",
       "selected": "{selectedItemsCount} selezionati",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
