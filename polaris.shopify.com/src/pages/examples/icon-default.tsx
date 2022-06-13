@@ -1,8 +1,10 @@
-// import { Icon } from "@shopify/polaris";
-// import { CirclePlusMinor } from "@shopify/polaris-icons";
-// import React from "react";
-// 
-// <Icon source={CirclePlusMinor} />;
-// 
+import { Icon } from "@shopify/polaris";
+import { CirclePlusMinor } from "@shopify/polaris-icons";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function IconExample() {
+  return <Icon source={CirclePlusMinor} />;
+}
+
+export default withPolarisExample(IconExample);

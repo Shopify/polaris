@@ -1,11 +1,15 @@
-// import { List } from "@shopify/polaris";
-// import React from "react";
-// 
-// <List type="number">
-//   <List.Item>First item</List.Item>
-//   <List.Item>Second item</List.Item>
-//   <List.Item>Third Item</List.Item>
-// </List>;
-// 
+import { List } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ListExample() {
+  return (
+    <List type="number">
+      <List.Item>First item</List.Item>
+      <List.Item>Second item</List.Item>
+      <List.Item>Third Item</List.Item>
+    </List>
+  );
+}
+
+export default withPolarisExample(ListExample);

@@ -1,11 +1,15 @@
-// import { Stack, Heading, Badge } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Stack distribution="fill">
-//   <Heading>Order #1136</Heading>
-//   <Badge>Paid</Badge>
-//   <Badge>Fulfilled</Badge>
-// </Stack>;
-// 
+import { Stack, Heading, Badge } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function StackExample() {
+  return (
+    <Stack distribution="fill">
+      <Heading>Order #1136</Heading>
+      <Badge>Paid</Badge>
+      <Badge>Fulfilled</Badge>
+    </Stack>
+  );
+}
+
+export default withPolarisExample(StackExample);

@@ -1,7 +1,9 @@
-// import { Button } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Button loading>Save product</Button>;
-// 
+import { Button } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ButtonExample() {
+  return <Button loading>Save product</Button>;
+}
+
+export default withPolarisExample(ButtonExample);

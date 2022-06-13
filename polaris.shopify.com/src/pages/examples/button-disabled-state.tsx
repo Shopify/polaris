@@ -1,29 +1,33 @@
-// import { ButtonGroup, Button } from "@shopify/polaris";
-// import React from "react";
-// 
-// <ButtonGroup>
-//   <Button disabled>Buy shipping label</Button>
-//   <Button primary disabled>
-//     Buy shipping label
-//   </Button>
-//   <Button destructive disabled>
-//     Buy shipping label
-//   </Button>
-//   <Button outline disabled>
-//     Buy shipping label
-//   </Button>
-//   <span style={{ color: "#bf0711" }}>
-//     <Button outline monochrome disabled>
-//       Buy shipping label
-//     </Button>
-//   </span>
-//   <Button plain disabled>
-//     Buy shipping label
-//   </Button>
-//   <Button plain destructive disabled>
-//     Buy shipping label
-//   </Button>
-// </ButtonGroup>;
-// 
+import { ButtonGroup, Button } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ButtonExample() {
+  return (
+    <ButtonGroup>
+      <Button disabled>Buy shipping label</Button>
+      <Button primary disabled>
+        Buy shipping label
+      </Button>
+      <Button destructive disabled>
+        Buy shipping label
+      </Button>
+      <Button outline disabled>
+        Buy shipping label
+      </Button>
+      <span style={{ color: "#bf0711" }}>
+        <Button outline monochrome disabled>
+          Buy shipping label
+        </Button>
+      </span>
+      <Button plain disabled>
+        Buy shipping label
+      </Button>
+      <Button plain destructive disabled>
+        Buy shipping label
+      </Button>
+    </ButtonGroup>
+  );
+}
+
+export default withPolarisExample(ButtonExample);

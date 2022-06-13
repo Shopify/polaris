@@ -1,8 +1,10 @@
-// import { Thumbnail } from "@shopify/polaris";
-// import { NoteMinor } from "@shopify/polaris-icons";
-// import React from "react";
-// 
-// <Thumbnail source={NoteMinor} size="large" alt="Small document" />;
-// 
+import { Thumbnail } from "@shopify/polaris";
+import { NoteMinor } from "@shopify/polaris-icons";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ThumbnailExample() {
+  return <Thumbnail source={NoteMinor} size="large" alt="Small document" />;
+}
+
+export default withPolarisExample(ThumbnailExample);
