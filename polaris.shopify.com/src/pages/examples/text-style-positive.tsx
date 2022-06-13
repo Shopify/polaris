@@ -1,7 +1,9 @@
-// import { TextStyle } from "@shopify/polaris";
-// import React from "react";
-// 
-// <TextStyle variation="positive">Orders increased</TextStyle>;
-// 
+import { TextStyle } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function TextStyleExample() {
+  return <TextStyle variation="positive">Orders increased</TextStyle>;
+}
+
+export default withPolarisExample(TextStyleExample);

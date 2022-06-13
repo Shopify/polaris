@@ -1,7 +1,9 @@
-// import { Tag } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Tag onClick={() => console.log("Clicked")}>Wholesale</Tag>;
-// 
+import { Tag } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function TagExample() {
+  return <Tag onClick={() => console.log("Clicked")}>Wholesale</Tag>;
+}
+
+export default withPolarisExample(TagExample);

@@ -1,9 +1,13 @@
-// import { Card, SkeletonTabs } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Card>
-//   <SkeletonTabs count={4} />
-// </Card>;
-// 
+import { Card, SkeletonTabs } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function SkeletonExample() {
+  return (
+    <Card>
+      <SkeletonTabs count={4} />
+    </Card>
+  );
+}
+
+export default withPolarisExample(SkeletonExample);

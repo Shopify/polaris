@@ -16,7 +16,7 @@ interface Props {
 const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
-  const { code, description, fileName } = examples[currentIndex];
+  const { code, description, fileName, title } = examples[currentIndex];
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
@@ -45,7 +45,7 @@ const Examples = (props: Props) => {
         <iframe src={exampleUrl} height="400px" width="100%" />
       </div>
       {code ? (
-        <CodeExample language="typescript" title="title tk">
+        <CodeExample language="typescript" title={`${title} Example`}>
           {code}
         </CodeExample>
       ) : null}

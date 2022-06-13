@@ -1,7 +1,9 @@
-// import { Subheading } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Subheading>Accounts</Subheading>;
-// 
+import { Subheading } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function Example() {
+  return <Subheading>Accounts</Subheading>;
+}
+
+export default withPolarisExample(Example);
