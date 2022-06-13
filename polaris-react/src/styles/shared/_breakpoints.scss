@@ -15,18 +15,6 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
 
 $not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
 
-@mixin breakpoint-after($breakpoint, $inclusive: true) {
-  @media (min-width: #{breakpoint($breakpoint) + if($inclusive, 0, 0.01em)}) {
-    @content;
-  }
-}
-
-@mixin breakpoint-before($breakpoint, $inclusive: true) {
-  @media (max-width: #{breakpoint($breakpoint) + if($inclusive, 0, -0.01em)}) {
-    @content;
-  }
-}
-
 $p-frame-with-nav-when-not-max-width: '(max-width: 77.375em)'; // 1238px
 $p-page-when-not-max-width: '(max-width: 62.375em)'; // 998px
 $p-page-content-when-layout-stacked: '(max-width: 60em)'; // 1040px
