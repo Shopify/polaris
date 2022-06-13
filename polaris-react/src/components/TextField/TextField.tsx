@@ -585,17 +585,17 @@ export function TextField({
     event.preventDefault();
   }
 
-  function isPrefixOrSuffix(target: HTMLElement | EventTarget) {
+  function isPrefixOrSuffix(target: Element | EventTarget) {
     return (
-      target instanceof HTMLElement &&
+      target instanceof Element &&
       ((prefixRef.current && prefixRef.current.contains(target)) ||
         (suffixRef.current && suffixRef.current.contains(target)))
     );
   }
 
-  function isVerticalContent(target: HTMLElement | EventTarget) {
+  function isVerticalContent(target: Element | EventTarget) {
     return (
-      target instanceof HTMLElement &&
+      target instanceof Element &&
       verticalContentRef.current &&
       (verticalContentRef.current.contains(target) ||
         verticalContentRef.current.contains(document.activeElement))
