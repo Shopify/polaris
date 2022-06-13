@@ -17,7 +17,7 @@ describe('createVar', () => {
 
 describe('getCustomPropertyNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(tokens)).toHaveLength(271);
+    expect(getCustomPropertyNames(tokens)).toHaveLength(273);
   });
 });
 
