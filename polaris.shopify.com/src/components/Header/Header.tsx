@@ -84,7 +84,11 @@ function Header({ currentSection }: Props) {
         </nav>
 
         <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
-          {darkMode.value ? "💡" : "🌙"}
+          {darkMode.value ? (
+            <div className={styles.LightModeIcon}>💡</div>
+          ) : (
+            <div className={styles.DarkModeIcon}>🌙</div>
+          )}
         </button>
 
         <div className={styles.SearchWrapper}>
