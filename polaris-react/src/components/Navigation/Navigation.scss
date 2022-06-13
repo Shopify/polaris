@@ -25,7 +25,7 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     max-width: $layout-width-nav-base;
     @include safe-area-for(max-width, $layout-width-nav-base, left);
   }
@@ -38,7 +38,7 @@ $nav-max-width: 360px;
 .ContextControl {
   min-height: $top-bar-height;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     display: none;
   }
 }
@@ -55,17 +55,14 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     padding-top: var(--p-space-4);
   }
 }
 
 .LogoContainer {
   display: none;
-  @include breakpoint-before(
-    $breakpoint: $nav-min-window-corrected,
-    $inclusive: false
-  ) {
+  @media (max-width: $nav-min-window-corrected - 0.01em) {
     display: flex;
     flex: 0 0 $top-bar-height;
     align-items: center;
@@ -130,7 +127,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-background-pressed);
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     font-weight: var(--p-font-weight-medium);
   }
 }
@@ -153,7 +150,7 @@ $disabled-fade: 0.6;
   display: inline-flex;
   margin-top: var(--p-space-2);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     margin-top: var(--p-space-1);
   }
 }
@@ -168,7 +165,7 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     height: nav(desktop-height);
   }
 }
@@ -209,7 +206,7 @@ $disabled-fade: 0.6;
   padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     height: nav(desktop-height);
   }
 
@@ -292,7 +289,7 @@ $disabled-fade: 0.6;
       color: var(--p-text-primary);
     }
 
-    @include breakpoint-after($nav-min-window-corrected) {
+    @media (min-width: $nav-min-window-corrected) {
       font-size: var(--p-font-size-3);
       line-height: 1;
       padding-left: var(--p-space-10);
@@ -383,7 +380,7 @@ $disabled-fade: 0.6;
     padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-1);
 
-    @include breakpoint-after($nav-min-window-corrected) {
+    @media (min-width: $nav-min-window-corrected) {
       height: nav(desktop-nav-height);
 
       // stylelint-disable selector-max-combinators

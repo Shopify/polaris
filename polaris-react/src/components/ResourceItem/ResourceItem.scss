@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$breakpoint-small: 458px;
+$magic-breakpoint-small: 458px;
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -93,7 +93,7 @@ $breakpoint-small: 458px;
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after($breakpoint-small) {
+  @media (min-width: ($magic-breakpoint-small)) {
     padding: var(--p-space-3) var(--p-space-5);
   }
 }
@@ -136,7 +136,7 @@ $breakpoint-small: 458px;
     calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
-  @include breakpoint-before($breakpoint-small, false) {
+  @media (max-width: $magic-breakpoint-small - 0.01em) {
     visibility: hidden;
 
     .selectMode & {
@@ -155,7 +155,7 @@ $breakpoint-small: 458px;
     transform: translateX(0);
   }
 
-  @include breakpoint-after($breakpoint-small) {
+  @media (min-width: ($magic-breakpoint-small)) {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;

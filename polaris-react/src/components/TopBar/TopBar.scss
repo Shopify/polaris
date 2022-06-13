@@ -3,7 +3,7 @@
 
 $icon-size: 20px;
 $page-left-alignment-breakpoint-max: 1238px;
-$context-control-expand-after: 1400px;
+$breakpoint-context-control-expand: 1400px;
 
 .TopBar {
   position: relative;
@@ -24,7 +24,7 @@ $context-control-expand-after: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     display: flex;
   }
 }
@@ -53,12 +53,12 @@ $context-control-expand-after: 1400px;
 
 .ContextControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     width: $layout-width-nav-base;
     display: block;
   }
 
-  @include breakpoint-after($context-control-expand-after) {
+  @media (min-width: $breakpoint-context-control-expand) {
     width: $layout-width-nav-base;
   }
 }
@@ -90,7 +90,7 @@ $context-control-expand-after: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     display: none;
   }
 
@@ -115,7 +115,7 @@ $context-control-expand-after: 1400px;
   justify-content: flex-end;
   height: 100%;
 
-  @include breakpoint-after($not-condensed-content) {
+  @media (min-width: $not-condensed-content) {
     position: relative;
   }
 }

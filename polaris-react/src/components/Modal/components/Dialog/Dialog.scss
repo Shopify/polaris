@@ -23,7 +23,7 @@ $dangerous-magic-space-16: 64px;
   // Resume pointer-events on .Modal below
   pointer-events: none;
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media (min-width: $layout-width-page-with-nav-base) {
     justify-content: center;
   }
 }
@@ -54,7 +54,7 @@ $dangerous-magic-space-16: 64px;
     max-height: 100%;
   }
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media (min-width: $layout-width-page-with-nav-base) {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -62,7 +62,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media (min-width: $layout-width-page-with-nav-base) {
       @media (min-height: $height-limit + $vertical-spacing) {
         max-height: $height-limit;
       }
@@ -70,21 +70,21 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeSmall {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media (min-width: $layout-width-page-with-nav-base) {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
+    @media (min-width: ($xsmall-width + $dangerous-magic-space-16)) {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media (min-width: $layout-width-page-with-nav-base) {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
+    @media (min-width: ($large-width + $dangerous-magic-space-16)) {
       max-width: $large-width;
     }
   }

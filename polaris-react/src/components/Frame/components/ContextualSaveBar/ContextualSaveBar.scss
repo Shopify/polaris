@@ -27,7 +27,7 @@
 .LogoContainer {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -80,7 +80,7 @@
 .ContextControl {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media (min-width: $nav-min-window-corrected) {
     display: block;
     width: $layout-width-nav-base;
   }

@@ -1,13 +1,13 @@
-$typography-condensed: 640px;
+$breakpoint-typography-condensed: 640px;
 
 @mixin when-typography-not-condensed {
-  @include breakpoint-after($typography-condensed) {
+  @media (min-width: $breakpoint-typography-condensed) {
     @content;
   }
 }
 
 @mixin when-typography-condensed {
-  @include breakpoint-before($typography-condensed) {
+  @media (max-width: $breakpoint-typography-condensed) {
     @content;
   }
 }

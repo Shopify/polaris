@@ -17,13 +17,13 @@ $resource-list-variables: (
 }
 
 @mixin page-before-resource-list-small() {
-  @include breakpoint-before(resource-list(breakpoint-small)) {
+  @media (min-width: #{resource-list(breakpoint-small}) {
     @content;
   }
 }
 
 @mixin page-after-resource-list-small() {
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media (max-width: #{resource-list(breakpoint-small)}) {
     @content;
   }
 }
