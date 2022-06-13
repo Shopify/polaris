@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.12.2",
+  "version": "9.15.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -94,6 +94,7 @@
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
+    "chromatic": "^6.5.4",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
     "create-file-webpack": "^1.0.2",
@@ -117,7 +118,6 @@
     "sass-loader": "^12.4.0",
     "semver": "^6.3.0",
     "shx": "^0.3.2",
-    "storybook-addon-performance": "^0.16.1",
     "svgo": "^2.8.0",
     "typescript": "~4.3.5",
     "webpack": "5"

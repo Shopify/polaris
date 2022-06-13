@@ -1,6 +1,9 @@
 .Image {
-  transition: all 0.2s 0.1s linear;
   opacity: 0;
+
+  &.fadeIn {
+    transition: all 0.2s 0.1s linear;
+  }
 
   &.hasLoaded {
     opacity: 1;

@@ -6,36 +6,36 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Experience values",
-        url: "/guidelines/foundations/experience-values",
+        url: "/foundations/foundations/experience-values",
       },
 
       {
         title: "Accessibility",
-        url: "/guidelines/foundations/accessibility",
+        url: "/foundations/foundations/accessibility",
       },
       {
         title: "Internationalization",
-        url: "/guidelines/foundations/internationalization",
+        url: "/foundations/foundations/internationalization",
       },
       {
         title: "Information architecture",
-        url: "/guidelines/foundations/information-architecture",
+        url: "/foundations/foundations/information-architecture",
       },
       {
         title: "Mobile",
-        url: "/guidelines/foundations/mobile",
+        url: "/foundations/foundations/mobile",
       },
       // {
       //   title: "Designing apps for Shopify",
-      //   url: "/guidelines/foundations/designing-apps",
+      //   url: "/foundations/foundations/designing-apps",
       // },
       // {
       //   title: "Onboarding flows",
-      //   url: "/guidelines/foundations/designing-onboarding-flows",
+      //   url: "/foundations/foundations/designing-onboarding-flows",
       // },
       // {
       //   title: "Currency",
-      //   url: "/guidelines/foundations/formatting-localized-currency",
+      //   url: "/foundations/foundations/formatting-localized-currency",
       // },
     ],
   },
@@ -45,39 +45,39 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Design",
-        url: "/guidelines/design/design",
+        url: "/foundations/design/design",
       },
       {
         title: "Colors",
-        url: "/guidelines/design/colors",
+        url: "/foundations/design/colors",
       },
       {
         title: "Typography",
-        url: "/guidelines/design/typography",
+        url: "/foundations/design/typography",
       },
       {
         title: "Illustrations",
-        url: "/guidelines/design/illustrations",
+        url: "/foundations/design/illustrations",
       },
       {
         title: "Sounds",
-        url: "/guidelines/design/sounds",
+        url: "/foundations/design/sounds",
       },
       {
         title: "Icons",
-        url: "/guidelines/design/icons",
+        url: "/foundations/design/icons",
       },
       {
         title: "Interaction states",
-        url: "/guidelines/design/interaction-states",
+        url: "/foundations/design/interaction-states",
       },
       {
         title: "Spacing",
-        url: "/guidelines/design/spacing",
+        url: "/foundations/design/spacing",
       },
       {
         title: "Data visualizations",
-        url: "/guidelines/design/data-visualizations",
+        url: "/foundations/design/data-visualizations",
       },
     ],
   },
@@ -87,47 +87,47 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Voice and tone",
-        url: "/guidelines/content/voice-and-tone",
+        url: "/foundations/content/voice-and-tone",
       },
       {
         title: "Accessible and inclusive language",
-        url: "/guidelines/content/accessible-and-inclusive-language",
+        url: "/foundations/content/accessible-and-inclusive-language",
       },
       {
         title: "Grammar and mechanics",
-        url: "/guidelines/content/grammar-and-mechanics",
+        url: "/foundations/content/grammar-and-mechanics",
       },
       {
         title: "Naming",
-        url: "/guidelines/content/naming",
+        url: "/foundations/content/naming",
       },
       {
         title: "Actionable language",
-        url: "/guidelines/content/actionable-language",
+        url: "/foundations/content/actionable-language",
       },
       {
         title: "Product content",
-        url: "/guidelines/content/product-content",
+        url: "/foundations/content/product-content",
       },
       {
         title: "Help documentation",
-        url: "/guidelines/content/help-documentation",
+        url: "/foundations/content/help-documentation",
       },
       {
         title: "Merchant-to-customer content",
-        url: "/guidelines/content/merchant-to-customer",
+        url: "/foundations/content/merchant-to-customer",
       },
       // {
       //   title: "App release notes",
-      //   url: "/guidelines/content/release-notes",
+      //   url: "/foundations/content/release-notes",
       // },
       {
         title: "Vocabulary",
-        url: "/guidelines/content/vocabulary",
+        url: "/foundations/content/vocabulary",
       },
       {
         title: "Alternative text",
-        url: "/guidelines/content/alternative-text",
+        url: "/foundations/content/alternative-text",
       },
     ],
   },
@@ -137,35 +137,35 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Loading",
-        url: "/guidelines/patterns/loading",
+        url: "/foundations/patterns/loading",
       },
       {
         title: "Page layouts",
-        url: "/guidelines/patterns/layout",
+        url: "/foundations/patterns/layout",
       },
       {
         title: "Mobile patterns",
-        url: "/guidelines/patterns/mobile-patterns",
+        url: "/foundations/patterns/mobile-patterns",
       },
       {
         title: "Home cards",
-        url: "/guidelines/patterns/home-card-guidelines",
+        url: "/foundations/patterns/home-card-guidelines",
       },
       {
         title: "Error messages",
-        url: "/guidelines/patterns/error-messages",
+        url: "/foundations/patterns/error-messages",
       },
       {
         title: "Text fields",
-        url: "/guidelines/patterns/text-fields",
+        url: "/foundations/patterns/text-fields",
       },
       {
         title: "Help content",
-        url: "/guidelines/patterns/help-content",
+        url: "/foundations/patterns/help-content",
       },
       {
         title: "Locations",
-        url: "/guidelines/patterns/locations",
+        url: "/foundations/patterns/locations",
       },
     ],
   },

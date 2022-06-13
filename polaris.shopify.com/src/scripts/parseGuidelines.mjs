@@ -34,7 +34,7 @@ for (let i = 0; i < subfolders.length; i++) {
 }
 
 // Write meta file (can be included in next.js bundle)
-const metaFilePath = path.join(__dirname, "../data/guidelines.json");
+const metaFilePath = path.join(__dirname, "../data/foundations.json");
 fs.writeFileSync(
   metaFilePath,
   JSON.stringify(

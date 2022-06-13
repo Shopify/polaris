@@ -40,6 +40,10 @@ $context-control-expand-after: 1400px;
   padding: 0 var(--p-space-2) 0 var(--p-space-4);
   @include safe-area-for(flex-basis, $layout-width-nav-base, left);
   @include safe-area-for(padding-left, var(--p-space-4), left);
+
+  &.hasLogoSuffix {
+    gap: var(--p-space-2);
+  }
 }
 
 .Logo,

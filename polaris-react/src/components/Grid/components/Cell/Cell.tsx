@@ -1,7 +1,14 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../Grid.scss';
+
+import styles from './Cell.scss';
+
+type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+type Cell = {
+  [Breakpoint in Breakpoints]?: string;
+};
 
 interface Columns {
   /** Number of columns the section should span on extra small screens */
@@ -18,22 +25,44 @@ interface Columns {
 
 export interface CellProps {
   area?: string;
+  column?: Cell;
   columnSpan?: Columns;
+  row?: Cell;
   children?: React.ReactNode;
 }
 
-export function Cell({area: gridArea, columnSpan, children}: CellProps) {
+export function Cell({
+  area: gridArea,
+  column,
+  columnSpan,
+  row,
+  children,
+}: CellProps) {
   const className = classNames(
     styles.Cell,
-    columnSpan?.xs && styles[`grid-${columnSpan?.xs}-column-xs`],
-    columnSpan?.sm && styles[`grid-${columnSpan?.sm}-column-sm`],
-    columnSpan?.md && styles[`grid-${columnSpan?.md}-column-md`],
-    columnSpan?.lg && styles[`grid-${columnSpan?.lg}-column-lg`],
-    columnSpan?.xl && styles[`grid-${columnSpan?.xl}-column-xl`],
+    columnSpan?.xs && styles[`Cell-${columnSpan.xs}-column-xs`],
+    columnSpan?.sm && styles[`Cell-${columnSpan.sm}-column-sm`],
+    columnSpan?.md && styles[`Cell-${columnSpan.md}-column-md`],
+    columnSpan?.lg && styles[`Cell-${columnSpan.lg}-column-lg`],
+    columnSpan?.xl && styles[`Cell-${columnSpan.xl}-column-xl`],
   );
 
+  const style = {
+    gridArea,
+    '--pc-column-xs': column?.xs,
+    '--pc-column-sm': column?.sm,
+    '--pc-column-md': column?.md,
+    '--pc-column-lg': column?.lg,
+    '--pc-column-xl': column?.xl,
+    '--pc-row-xs': row?.xs,
+    '--pc-row-sm': row?.sm,
+    '--pc-row-md': row?.md,
+    '--pc-row-lg': row?.lg,
+    '--pc-row-xl': row?.xl,
+  };
+
   return (
-    <div className={className} style={{gridArea}}>
+    <div className={className} style={style}>
       {children}
     </div>
   );

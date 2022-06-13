@@ -1,11 +1,16 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .Longform {
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
-    background: white;
+  }
+
+  ul li {
+    list-style-type: disc;
   }
 
   h2,
@@ -20,12 +25,16 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   h2 {
     @include heading-2;
-    margin-top: 2rem;
+    margin-top: 3.25rem;
   }
 
   h3 {
@@ -56,11 +65,16 @@
   }
 
   ul {
-    margin-left: 0.95em;
+    li {
+      margin-left: 0.95em;
+      padding-left: 0.05rem;
+    }
   }
 
   ol {
-    margin-left: 1.15em;
+    li {
+      padding-left: 1.35em;
+    }
   }
 
   ul,
@@ -77,11 +91,30 @@
   }
 
   ul li {
-    list-style-type: disc;
+    position: relative;
+    &::marker {
+      color: #aaa;
+
+      @include dark-mode {
+        color: #555;
+      }
+    }
   }
 
-  ol li {
-    list-style-type: decimal;
+  ol {
+    counter-reset: list;
+    li {
+      position: relative;
+      counter-increment: list;
+      &::before {
+        content: counter(list) ".";
+        display: block;
+        position: absolute;
+        left: 0;
+        border-radius: var(--border-radius-round);
+        opacity: 0.75;
+      }
+    }
   }
 
   li {
@@ -98,6 +131,7 @@
 
   strong {
     font-weight: var(--font-weight-600);
+    color: var(--text-strong);
   }
 
   hr {
@@ -115,10 +149,12 @@
       Menlo, Consolas, monospace;
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--text-strong);
-    color: var(--surface);
-    border-radius: var(--border-radius-200);
+    background: var(--surface-subdued);
+    color: var(--text-strong);
+    border-radius: var(--border-radius-500);
     overflow: auto;
+    white-space: pre-wrap;
+    min-width: 0;
 
     p {
       margin: 0;
@@ -135,8 +171,8 @@
 .Content {
   > p:first-of-type {
     margin-bottom: 2rem;
-    font-size: var(--font-size-700);
     color: var(--text-strong);
-    letter-spacing: var(--letter-spacing-300);
+    font-size: var(--font-size-900);
+    letter-spacing: var(--letter-spacing-400);
   }
 }

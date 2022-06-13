@@ -11,11 +11,6 @@
   }
 }
 
-.Post {
-  position: relative;
-  flex: 1;
-}
-
 .Filters {
   position: relative;
   margin-bottom: 1rem;
@@ -36,8 +31,12 @@
 
 .CategoryName {
   margin-bottom: 1rem;
-  background: url(./BehaviorMajor.svg) no-repeat left 40%;
-  background-size: 20px auto;
-  padding-left: 28px;
   @include heading-2;
+  display: flex;
+  gap: 0.5rem;
+  svg {
+    min-width: 24px;
+    max-width: 24px;
+    height: auto;
+  }
 }

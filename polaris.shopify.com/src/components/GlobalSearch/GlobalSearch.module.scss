@@ -1,10 +1,14 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
 .GlobalSearch {
   position: relative;
   width: 100%;
   --focus-outline: 0 0 0 2px #222, 0 0 0 4px #fff;
 
   input {
-    background: #ededed url(./SearchMajor.svg) no-repeat 14px center;
+    background: var(--surface-subdued) url(./SearchMajor.svg) no-repeat 14px
+      center;
     border: none;
     padding: 0.66rem 0.66rem 0.66rem 40px;
     background-size: 16px auto;
@@ -39,8 +43,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: var(--surface);
-  backdrop-filter: blur(20px);
+  background: var(--surface-subdued);
   z-index: 1;
   box-shadow: 0 0.5px rgba(0, 0, 0, 0.15);
 
@@ -72,6 +75,16 @@
   display: flex;
   flex-direction: column;
 
+  @include dark-mode {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 250px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    right: 0;
+    width: calc(100vw - 2.5rem);
+  }
+
   &:before {
     position: fixed;
     content: "";
@@ -82,11 +95,7 @@
     left: 0;
     height: 100px;
     z-index: 1;
-    background: linear-gradient(
-      to top,
-      rgba(250, 250, 250, 1),
-      rgba(250, 250, 250, 0)
-    );
+    background: linear-gradient(to top, var(--surface), rgba(250, 250, 250, 0));
   }
 
   &:empty {
@@ -117,17 +126,17 @@
     position: absolute;
     left: 1.5rem;
     font-size: var(--font-size-500);
-    font-weight: var(--font-weight-300);
+    font-weight: var(--font-weight-400);
   }
 }
 
-.GuidelinesResults {
+.FoundationsResults {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.GuidelinesResult {
+.FoundationsResult {
   position: relative;
 
   &.isHighlighted {
