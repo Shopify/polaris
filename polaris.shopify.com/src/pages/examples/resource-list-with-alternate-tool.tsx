@@ -7,6 +7,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ResourceListWithAlternateToolExample() {
   const resourceName = {
@@ -60,5 +61,4 @@ function ResourceListWithAlternateToolExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(ResourceListWithAlternateToolExample);

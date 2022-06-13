@@ -5,6 +5,7 @@ import {
   useIndexResourceState,
 } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function StickyLastCellIndexTableExample() {
   const customers = [
@@ -74,5 +75,4 @@ function StickyLastCellIndexTableExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(StickyLastCellIndexTableExample);

@@ -6,38 +6,42 @@ import {
   ProductsMinor,
 } from "@shopify/polaris-icons";
 import React from "react";
-
-<Frame>
-  <Navigation location="/">
-    <Navigation.Section
-      items={[
-        {
-          url: "/path/to/place",
-          label: "Home",
-          icon: HomeMinor,
-        },
-        {
-          url: "/path/to/place",
-          label: "Orders",
-          icon: OrdersMinor,
-          secondaryAction: {
-            url: "/admin/orders/add",
-            accessibilityLabel: "Add an order",
-            icon: CirclePlusOutlineMinor,
-            tooltip: {
-              content: "Add an order",
-            },
-          },
-        },
-        {
-          url: "/path/to/place",
-          label: "Products",
-          icon: ProductsMinor,
-        },
-      ]}
-    />
-  </Navigation>
-</Frame>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+
+function NavigationExample() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: "/path/to/place",
+              label: "Home",
+              icon: HomeMinor,
+            },
+            {
+              url: "/path/to/place",
+              label: "Orders",
+              icon: OrdersMinor,
+              secondaryAction: {
+                url: "/admin/orders/add",
+                accessibilityLabel: "Add an order",
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: "Add an order",
+                },
+              },
+            },
+            {
+              url: "/path/to/place",
+              label: "Products",
+              icon: ProductsMinor,
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
+export default withPolarisExample(NavigationExample);

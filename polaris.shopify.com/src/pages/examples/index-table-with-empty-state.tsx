@@ -6,6 +6,7 @@ import {
   useIndexResourceState,
 } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function IndexTableWithCustomEmptyStateExample() {
   const customers = [];
@@ -66,5 +67,4 @@ function IndexTableWithCustomEmptyStateExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(IndexTableWithCustomEmptyStateExample);

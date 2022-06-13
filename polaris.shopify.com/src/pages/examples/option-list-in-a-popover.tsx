@@ -1,5 +1,6 @@
 import { Button, Popover, OptionList } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function OptionListInPopoverExample() {
   const [selected, setSelected] = useState([]);
@@ -48,5 +49,4 @@ function OptionListInPopoverExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(OptionListInPopoverExample);

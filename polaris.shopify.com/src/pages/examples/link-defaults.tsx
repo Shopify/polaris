@@ -1,7 +1,9 @@
 import { Link } from "@shopify/polaris";
 import React from "react";
-
-<Link url="https://help.shopify.com/manual">fulfilling orders</Link>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+
+function LinkExample() {
+  return <Link url="https://help.shopify.com/manual">fulfilling orders</Link>;
+}
+
+export default withPolarisExample(LinkExample);

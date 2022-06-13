@@ -1,5 +1,6 @@
 import { Card, OptionList } from "@shopify/polaris";
 import { useState } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function MultipleOptionListExample() {
   const [selected, setSelected] = useState([]);
@@ -23,5 +24,4 @@ function MultipleOptionListExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(MultipleOptionListExample);

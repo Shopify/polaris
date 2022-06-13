@@ -5,6 +5,7 @@ import {
   useIndexResourceState,
 } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function IndexTableWithBulkActionsExample() {
   const customers = [
@@ -96,5 +97,4 @@ function IndexTableWithBulkActionsExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(IndexTableWithBulkActionsExample);

@@ -6,6 +6,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import { useState } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ResourceListWithBulkActionsExample() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -86,5 +87,4 @@ function ResourceListWithBulkActionsExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(ResourceListWithBulkActionsExample);

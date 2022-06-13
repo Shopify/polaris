@@ -1,11 +1,15 @@
 import { PageActions } from "@shopify/polaris";
 import React from "react";
-
-<PageActions
-  primaryAction={{
-    content: "Save",
-  }}
-/>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+
+function PageExample() {
+  return (
+    <PageActions
+      primaryAction={{
+        content: "Save",
+      }}
+    />
+  );
+}
+
+export default withPolarisExample(PageExample);

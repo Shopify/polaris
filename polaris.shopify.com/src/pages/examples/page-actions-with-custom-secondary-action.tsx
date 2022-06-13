@@ -1,21 +1,25 @@
 import { PageActions, Button } from "@shopify/polaris";
 import React from "react";
-
-<PageActions
-  primaryAction={{
-    content: "Save",
-  }}
-  secondaryActions={
-    <Button
-      connectedDisclosure={{
-        accessibilityLabel: "Other save actions",
-        actions: [{ content: "Save as draft" }],
-      }}
-    >
-      Save
-    </Button>
-  }
-/>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+
+function PageExample() {
+  return (
+    <PageActions
+      primaryAction={{
+        content: "Save",
+      }}
+      secondaryActions={
+        <Button
+          connectedDisclosure={{
+            accessibilityLabel: "Other save actions",
+            actions: [{ content: "Save as draft" }],
+          }}
+        >
+          Save
+        </Button>
+      }
+    />
+  );
+}
+
+export default withPolarisExample(PageExample);

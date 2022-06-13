@@ -8,6 +8,7 @@ import {
   useIndexResourceState,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function IndexTableWithAllElementsExample() {
   const customers = [
@@ -187,5 +188,4 @@ function IndexTableWithAllElementsExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(IndexTableWithAllElementsExample);

@@ -1,5 +1,6 @@
 import { Button, Popover, ActionList } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function PopoverContentExample() {
   const [popoverActive, setPopoverActive] = useState(true);
@@ -43,5 +44,4 @@ function PopoverContentExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(PopoverContentExample);

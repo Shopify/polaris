@@ -1,5 +1,6 @@
 import { IndexTable, TextStyle, Card } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function IndexTableWithoutCheckboxesExample() {
   const customers = [
@@ -57,5 +58,4 @@ function IndexTableWithoutCheckboxesExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(IndexTableWithoutCheckboxesExample);

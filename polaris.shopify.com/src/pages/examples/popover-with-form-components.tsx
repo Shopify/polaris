@@ -6,6 +6,7 @@ import {
   TextField,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function PopoverFormExample() {
   const [popoverActive, setPopoverActive] = useState(true);
@@ -48,5 +49,4 @@ function PopoverFormExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(PopoverFormExample);

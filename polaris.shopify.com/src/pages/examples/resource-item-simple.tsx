@@ -1,5 +1,6 @@
 import { Card, ResourceList, ResourceItem, TextStyle } from "@shopify/polaris";
 import { useState } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ResourceItemExample() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -41,5 +42,4 @@ function ResourceItemExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(ResourceItemExample);

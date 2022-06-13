@@ -1,5 +1,6 @@
 import { Stack, RadioButton } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function RadioButtonExample() {
   const [value, setValue] = useState("disabled");
@@ -31,5 +32,4 @@ function RadioButtonExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(RadioButtonExample);

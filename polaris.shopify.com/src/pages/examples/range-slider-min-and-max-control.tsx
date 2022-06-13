@@ -1,5 +1,6 @@
 import { Card, RangeSlider } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function RangeSliderWithPreciseRangeControlExample() {
   const [rangeValue, setRangeValue] = useState(0);
@@ -23,5 +24,4 @@ function RangeSliderWithPreciseRangeControlExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(RangeSliderWithPreciseRangeControlExample);
