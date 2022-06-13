@@ -1,7 +1,9 @@
-// import { TextField } from "@shopify/polaris";
-// import React from "react";
-// 
-// <TextField label="Store name" disabled autoComplete="off" />;
-// 
+import { TextField } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function TextFieldExample() {
+  return <TextField label="Store name" disabled autoComplete="off" />;
+}
+
+export default withPolarisExample(TextFieldExample);

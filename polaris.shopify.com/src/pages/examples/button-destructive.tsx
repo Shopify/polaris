@@ -1,7 +1,9 @@
-// import { Button } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Button destructive>Delete theme</Button>;
-// 
+import { Button } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function ButtonExample() {
+  return <Button destructive>Delete theme</Button>;
+}
+
+export default withPolarisExample(ButtonExample);

@@ -68,6 +68,10 @@ export const getStaticProps: GetStaticProps<
 
       if (fs.existsSync(examplePath)) {
         code = fs.readFileSync(examplePath, "utf-8");
+        code = code
+          .split("\n")
+          .filter((line) => !line.includes("withPolarisExample"))
+          .join("\n");
       }
 
       return { ...example, code };

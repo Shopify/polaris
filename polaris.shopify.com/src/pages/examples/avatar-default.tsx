@@ -1,7 +1,9 @@
-// import { Avatar } from "@shopify/polaris";
-// import React from "react";
-// 
-// <Avatar customer name="Farrah" />;
-// 
+import { Avatar } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function AvatarExample() {
+  return <Avatar customer name="Farrah" />;
+}
+
+export default withPolarisExample(AvatarExample);

@@ -1,9 +1,13 @@
-// import { DropZone } from "@shopify/polaris";
-// import React from "react";
-// 
-// <DropZone label="Theme files">
-//   <DropZone.FileUpload />
-// </DropZone>;
-// 
+import { DropZone } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function DropZoneExample() {
+  return (
+    <DropZone label="Theme files">
+      <DropZone.FileUpload />
+    </DropZone>
+  );
+}
+
+export default withPolarisExample(DropZoneExample);

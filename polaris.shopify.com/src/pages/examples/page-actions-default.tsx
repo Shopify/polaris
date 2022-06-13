@@ -1,17 +1,21 @@
-// import { PageActions } from "@shopify/polaris";
-// import React from "react";
-// 
-// <PageActions
-//   primaryAction={{
-//     content: "Save",
-//   }}
-//   secondaryActions={[
-//     {
-//       content: "Delete",
-//       destructive: true,
-//     },
-//   ]}
-// />;
-// 
+import { PageActions } from "@shopify/polaris";
+import React from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>Polaris Example Tk</p>);
+
+function PageExample() {
+  return (
+    <PageActions
+      primaryAction={{
+        content: "Save",
+      }}
+      secondaryActions={[
+        {
+          content: "Delete",
+          destructive: true,
+        },
+      ]}
+    />
+  );
+}
+
+export default withPolarisExample(PageExample);
