@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('path');
 
-const {tokens} = require('@shopify/polaris-tokens');
+const {tokens, toEm, toPx} = require('@shopify/polaris-tokens');
 
 const polarisReactDir = path.join(__dirname, '..');
 const stylesDir = path.join(polarisReactDir, 'src/styles');
@@ -56,10 +56,12 @@ function getUpMediaCondition(breakpoint) {
   return `(min-width: ${toEm(breakpoint)})`;
 }
 
+/**
+ * Down media condition breakpoints are being substracted by 0.05px to prevent
+ * them from overwriting up media queries. We experimented with multiple offsets
+ * and felt that 0.05px would be the safest across different pixel densities.
+ */
 function getDownMediaCondition(breakpoint) {
-  return `(max-width: ${toEm(breakpoint)})`;
-}
-
-function toEm(value) {
-  return `${parseInt(value, 10)}em`;
+  const offsetBreakpoint = parseFloat(toPx(breakpoint)) - 0.05;
+  return `(max-width: ${toEm(`${offsetBreakpoint}px`)})`;
 }
