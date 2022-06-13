@@ -21,13 +21,13 @@ keywords:
   - android
   - web
 examples:
-  - fileName: basic-toast.tsx
+  - fileName: toast-basic.tsx
     title: Basic toast
     description: >-
       Use to convey general confirmation or actions that aren’t critical. For
       example, you might show a toast message to inform the merchant that their
       recent action was successful.
-  - fileName: multiple-toast-messages.tsx
+  - fileName: toast-multiple-messages.tsx
     title: Multiple toast messages
     description: Use multiple toast messages to inform the merchant about distinct actions.
   - fileName: toast-with-custom-duration.tsx
@@ -38,29 +38,29 @@ examples:
     description: >-
       Use when a merchant has the ability to act on the message. For example, to
       undo a change or retry an action.
-  - fileName: default-toast.tsx
+  - fileName: toast-default.tsx
     title: Default toast
     description: >-
       Use default toast for informative and neutral feedback.undefinedOn iOS,
       icons are available for cases where you want to re-inforce the
       message.undefined
-  - fileName: success-toast.tsx
+  - fileName: toast-success.tsx
     title: Success toast
     description: >-
       Use success toast to indicate that something was successful. For example,
       a product was successfully updated.undefinedOn iOS, icons are available
       for cases where you want to re-inforce the message.undefined
-  - fileName: error-toast.tsx
+  - fileName: toast-error.tsx
     title: Error toast
     description: >-
       undefinedOn iOS, icons are available for cases where you want to
       re-inforce the message.undefined
-  - fileName: with-action.tsx
+  - fileName: toast-with-action.tsx
     title: With action
     description: >-
       Use action when merchants have the ability to act on the message. For
       example, to undo a change or retry an action. Keep the action label short,
-      preferably 1 verb action.undefinedundefined
+      preferably 1 verb action.
 ---
 
 # Toast

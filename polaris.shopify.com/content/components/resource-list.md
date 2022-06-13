@@ -24,7 +24,7 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: simple-resource-list.tsx
+  - fileName: resource-list-simple.tsx
     title: Simple resource list
     description: >-
       A resource list with simple items and no bulk actions, sorting, or
@@ -44,7 +44,7 @@ examples:
   - fileName: resource-list-with-loading-state.tsx
     title: Resource list with loading state
     description: Notifies merchants that list items are being processed.
-  - fileName: resource-list-with-total-resource-count.tsx
+  - fileName: resource-list-with-total-count.tsx
     title: Resource list with total resource count
     description: >-
       Use to indicate that the number of resources shown is a subset of the

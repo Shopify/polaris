@@ -33,20 +33,20 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: default-form-layout.tsx
+  - fileName: form-layout-default.tsx
     title: Default form layout
     description: >-
       Use to stack form fields vertically, which makes them easier to scan and
-      complete.undefinedundefined
-  - fileName: field-group.tsx
+      complete.
+  - fileName: form-layout-field-group.tsx
     title: Field group
     description: >-
       Use field groups to arrange multiple fields in a row.Works best for
       familiar layouts such as a row of city, state, and zip code fields. Use
       caution when arranging unrelated fields next to each other as this makes
       fields easier to miss.Field groups will wrap automatically on smaller
-      screens.undefinedundefined
-  - fileName: condensed-field-group.tsx
+      screens.
+  - fileName: form-layout-condensed-field-group.tsx
     title: Condensed field group
     description: >-
       For very short inputs, the width of the inputs may be reduced in order to

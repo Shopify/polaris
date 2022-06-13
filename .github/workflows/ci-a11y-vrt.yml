@@ -96,3 +96,5 @@ jobs:
           storybookBuildDir: 'polaris-react/build-internal/storybook/static'
           exitZeroOnChanges: true
           exitOnceUploaded: true
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}

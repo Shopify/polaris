@@ -25,11 +25,11 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: default-collapsible-component.tsx
+  - fileName: collapsible-default.tsx
     title: Default collapsible component
     description: >-
       Use for a basic “show more” interaction when you need to display more
-      content.undefinedundefined
+      content.
 ---
 
 # Collapsible

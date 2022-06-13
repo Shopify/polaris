@@ -15,7 +15,7 @@ keywords:
   - switch
   - adjuster
 examples:
-  - fileName: default-setting-toggle.tsx
+  - fileName: setting-toggle-default.tsx
     title: Default setting toggle
     description: >-
       Use on settings pages to allow merchants to toggle a setting that has an

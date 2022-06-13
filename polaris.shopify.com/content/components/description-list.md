@@ -18,11 +18,11 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: default-description-list.tsx
+  - fileName: description-list-default.tsx
     title: Default description list
     description: >-
       Use when you need to present merchants with a list of items or terms
-      alongside descriptions and explanations.undefinedundefined
+      alongside descriptions and explanations.
 ---
 
 # Description list

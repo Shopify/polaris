@@ -28,14 +28,14 @@ keywords:
   - banner body text
   - full-width alert
 examples:
-  - fileName: default-banners.tsx
+  - fileName: banner-default.tsx
     title: Default banners
     description: >-
       Use to convey general information or actions that aren’t critical. For
       example, you might show a banner that asks for merchant feedback.Default
       banners contain lower priority information and should always be
-      dismissible.undefinedundefined
-  - fileName: dismissible-banner.tsx
+      dismissible.
+  - fileName: banner-dismissible.tsx
     title: Dismissible banner
     description: >-
       Make all banners dismissible, unless they contain critical information or
@@ -44,25 +44,25 @@ examples:
     title: Banner with footer call-to-action
     description: >-
       Use when you want merchants to take an action after reading the
-      banner.undefinedundefined
-  - fileName: informational-banners.tsx
+      banner.
+  - fileName: banner-informational.tsx
     title: Informational banners
     description: >-
       Use to update merchants about a change or give them
-      advice.undefinedundefined
-  - fileName: success-banner.tsx
+      advice.
+  - fileName: banner-success.tsx
     title: Success banner
     description: >-
       Default to using toasts for success messages, unless the feedback is
       delayed, persistent, or has a call to actionInclude next steps if
       applicableundefinedundefined
-  - fileName: warning-banners.tsx
+  - fileName: banner-warning.tsx
     title: Warning banners
     description: >-
       Use to display information that needs attention or that merchants need to
       take action onSeeing these banners can be stressful for merchants so be
       cautious about using themundefinedundefined
-  - fileName: critical-banners.tsx
+  - fileName: banner-critical.tsx
     title: Critical banners
     description: >-
       Use to communicate problems that have to be resolved immediately for

@@ -34,18 +34,18 @@ examples:
   - fileName: drop-zone-accepts-only-svg-files.tsx
     title: Drop zone accepts only SVG files
     description: Use to accept only SVG files.
-  - fileName: nested-drop-zone.tsx
+  - fileName: drop-zone-nested.tsx
     title: Nested drop zone
     description: >-
       Use to allow merchants to upload files in a wider area than the visible
       drop zone.
-  - fileName: medium-sized-drop-zone.tsx
+  - fileName: drop-zone-medium-sized.tsx
     title: Medium-sized drop zone
     description: >-
       Use for cases with limited space. To improve usability, nest medium-sized
       drop zone in a larger drop zone with no outline. See the nested dropzone
       example.
-  - fileName: small-sized-drop-zone.tsx
+  - fileName: drop-zone-small-sized.tsx
     title: Small-sized drop zone
     description: >-
       Use for cases with tight space constraints, such as variant thumbnails on

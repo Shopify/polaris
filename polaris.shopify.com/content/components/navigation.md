@@ -11,14 +11,14 @@ keywords:
   - sidebar
   - side bar
 examples:
-  - fileName: basic-navigation.tsx
+  - fileName: navigation-basic.tsx
     title: Basic navigation
   - fileName: navigation-with-multiple-secondary-navigations.tsx
     title: Navigation with multiple secondary navigations
     description: >-
       Use to present a secondary action, related to a section and to title the
       section.
-  - fileName: navigation-with-an-active-root-item-with-secondary-navigation-items.tsx
+  - fileName: navigation-with-an-active-root-item-with-secondary-items.tsx
     title: Navigation with an active root item with secondary navigation items
     description: >-
       Use to present a secondary action, related to a section and to title the

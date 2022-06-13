@@ -20,17 +20,17 @@ keywords:
   - date range picker
   - date range selector
 examples:
-  - fileName: default-date-picker.tsx
+  - fileName: date-picker-default.tsx
     title: Default date picker
     description: >-
       Use when merchants need to select a single day close to today (today is
-      the default starting position for the date picker).undefinedundefined
-  - fileName: ranged-date-picker.tsx
+      the default starting position for the date picker).
+  - fileName: date-picker-ranged.tsx
     title: Ranged date picker
     description: >-
       Use when merchants need to select a range of days close to today (today is
       the default starting position for the date picker).
-  - fileName: multi-month-ranged-date-picker.tsx
+  - fileName: date-picker-multi-month-ranged.tsx
     title: Multi-month ranged date picker
     description: Use multi-month mode to show two months at a time.
   - fileName: date-picker-with-disabled-date-ranges.tsx
