@@ -144,7 +144,7 @@ $breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoint($layo
     right: var(--p-space-5);
     margin-top: 0;
 
-    @include page-content-when-not-fully-condensed {
+    @media #{$p-page-content-when-not-fully-condensed} {
       right: calc(-1 * (var(--p-space-2)));
     }
   }

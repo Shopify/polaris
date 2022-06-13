@@ -52,7 +52,7 @@ $breakpoints-large-width-up: '(min-width: #{breakpoint($large-width + $dangerous
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @include frame-when-nav-hidden {
+  @media #{$p-frame-when-nav-hidden} {
     bottom: 0;
     max-height: 100%;
   }

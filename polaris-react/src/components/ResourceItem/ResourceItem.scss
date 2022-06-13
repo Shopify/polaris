@@ -45,7 +45,7 @@ $breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
         @include action-unhide;
 
         // stylelint-disable-next-line max-nesting-depth
-        @include page-content-when-partially-condensed {
+        @media #{$p-page-content-when-partially-condensed} {
           display: none;
         }
       }
@@ -191,7 +191,7 @@ $breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
     @include action-unhide;
   }
 
-  @include page-content-when-partially-condensed {
+  @media #{$p-page-content-when-partially-condensed} {
     display: none;
   }
 }
@@ -208,7 +208,7 @@ $breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
     pointer-events: initial;
     height: 100%;
 
-    @include page-content-when-partially-condensed {
+    @media #{$p-page-content-when-partially-condensed} {
       display: none;
     }
   }
@@ -227,7 +227,7 @@ $breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
     display: none;
   }
 
-  @include page-content-when-partially-condensed {
+  @media #{$p-page-content-when-partially-condensed} {
     display: flex;
     flex: 0 0 var(--pc-resource-item-disclosure-width);
     justify-content: center;

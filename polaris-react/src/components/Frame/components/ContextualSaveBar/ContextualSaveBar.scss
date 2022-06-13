@@ -51,11 +51,11 @@ $breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-win
   margin: 0 auto;
   padding: 0 var(--p-space-4);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-page-content-when-not-fully-condensed} {
     padding: 0 var(--p-space-5);
   }
 
-  @include page-content-when-not-partially-condensed {
+  @media #{$p-page-content-when-not-partially-condensed} {
     padding: 0 var(--p-space-8);
   }
 }
