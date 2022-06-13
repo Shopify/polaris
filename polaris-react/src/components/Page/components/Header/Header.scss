@@ -1,9 +1,11 @@
 @import '../../../../styles/common';
 
-$breakpoint-mobile-layout: 468px;
-$breakpoint-medium-layout: 860px;
-$breakpoint-desktop-layout: 1080px;
 $action-menu-rollup-computed-width: 40px;
+$breakpoints-mobile-layout-up: '(min-width: #{breakpoint(468px)})';
+$breakpoints-mobile-layout-down: '(max-width: #{breakpoint(468px)})';
+$breakpoints-medium-layout-down: '(max-width: #{breakpoint(860px)})';
+$breakpoints-desktop-layout-down: '(max-width: #{breakpoint(1080px)})';
+$breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoint($layout-width-page-with-nav-base)})';
 
 .Header {
   @include page-header-layout;
@@ -20,7 +22,7 @@ $action-menu-rollup-computed-width: 40px;
   align-self: center;
   flex: 1 1 auto;
 
-  @media (min-width: $breakpoint-mobile-layout) {
+  @media #{$breakpoints-mobile-layout-up} {
     margin-top: 0;
   }
 }
@@ -198,14 +200,14 @@ $action-menu-rollup-computed-width: 40px;
   white-space: nowrap;
 
   .noBreadcrumbs & {
-    @media (max-width: $breakpoint-mobile-layout) {
+    @media #{$breakpoints-mobile-layout-down} {
       margin-left: 0;
     }
   }
 }
 
 .AdditionalMetaData {
-  @media (min-width: $breakpoint-mobile-layout) {
+  @media #{$breakpoints-mobile-layout-up} {
     margin-left: calc(
       var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
     );
@@ -247,13 +249,13 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .longTitle {
-  @media (max-width: $breakpoint-desktop-layout) {
+  @media #{$breakpoints-desktop-layout-down} {
     @include condensed-layout;
   }
 }
 
 .mediumTitle:not(.noBreadcrumbs) {
-  @media (max-width: $breakpoint-medium-layout) {
+  @media #{$breakpoints-medium-layout-down} {
     @include condensed-layout;
   }
 }
@@ -266,14 +268,14 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
-    @media (min-width: $layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       margin-bottom: 0;
     }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
     flex-wrap: wrap-reverse;
-    @media (min-width: $layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       flex-wrap: nowrap;
     }
   }

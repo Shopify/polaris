@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
-$magic-breakpoint-small: 458px;
+$breakpoints-magic-up: '(min-width: #{breakpoint(458px)})';
+$breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -93,7 +94,7 @@ $magic-breakpoint-small: 458px;
   display: flex;
   align-items: flex-start;
 
-  @media (min-width: ($magic-breakpoint-small)) {
+  @media #{$breakpoints-magic-up} {
     padding: var(--p-space-3) var(--p-space-5);
   }
 }
@@ -136,7 +137,7 @@ $magic-breakpoint-small: 458px;
     calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
-  @media (max-width: $magic-breakpoint-small - 0.01em) {
+  @media #{$breakpoints-magic-down} {
     visibility: hidden;
 
     .selectMode & {
@@ -155,7 +156,7 @@ $magic-breakpoint-small: 458px;
     transform: translateX(0);
   }
 
-  @media (min-width: ($magic-breakpoint-small)) {
+  @media #{$breakpoints-magic-up} {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;

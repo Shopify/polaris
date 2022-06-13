@@ -8,6 +8,9 @@ $small-width: 620px;
 $large-width: 980px;
 // @TODO simplify media queries so this isn't needed
 $dangerous-magic-space-16: 64px;
+$breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoint($layout-width-page-with-nav-base)})';
+$breakpoints-xsmall-width-up: '(min-width: #{breakpoint($xsmall-width + $dangerous-magic-space-16)})';
+$breakpoints-large-width-up: '(min-width: #{breakpoint($large-width + $dangerous-magic-space-16)})';
 
 .Container {
   position: fixed;
@@ -23,7 +26,7 @@ $dangerous-magic-space-16: 64px;
   // Resume pointer-events on .Modal below
   pointer-events: none;
 
-  @media (min-width: $layout-width-page-with-nav-base) {
+  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
     justify-content: center;
   }
 }
@@ -54,7 +57,7 @@ $dangerous-magic-space-16: 64px;
     max-height: 100%;
   }
 
-  @media (min-width: $layout-width-page-with-nav-base) {
+  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -62,7 +65,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @media (min-width: $layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       @media (min-height: $height-limit + $vertical-spacing) {
         max-height: $height-limit;
       }
@@ -70,21 +73,21 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeSmall {
-    @media (min-width: $layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @media (min-width: ($xsmall-width + $dangerous-magic-space-16)) {
+    @media #{$breakpoints-xsmall-width-up} {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
-    @media (min-width: $layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @media (min-width: ($large-width + $dangerous-magic-space-16)) {
+    @media #{$breakpoints-large-width-up} {
       max-width: $large-width;
     }
   }

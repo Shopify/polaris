@@ -1,5 +1,7 @@
 @import '../../../../styles/common';
 
+$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-window-corrected)})';
+
 .ContextualSaveBar {
   display: flex;
   height: $top-bar-height;
@@ -27,7 +29,7 @@
 .LogoContainer {
   display: none;
 
-  @media (min-width: $nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -80,7 +82,7 @@
 .ContextControl {
   display: none;
 
-  @media (min-width: $nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: block;
     width: $layout-width-nav-base;
   }

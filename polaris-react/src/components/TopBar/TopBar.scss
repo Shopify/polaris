@@ -2,8 +2,11 @@
 @import './variables';
 
 $icon-size: 20px;
-$page-left-alignment-breakpoint-max: 1238px;
-$breakpoint-context-control-expand: 1400px;
+
+$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-window-corrected)})';
+$breakpoints-not-condensed-content-up: '(min-width: #{breakpoint($not-condensed-content)})';
+$breakpoints-context-control-expand-up: '(min-width: #{breakpoint(1400px)})';
+$breakpoints-page-left-alignment-down: '(max-width: #{breakpoint(1238px)})';
 
 .TopBar {
   position: relative;
@@ -24,7 +27,7 @@ $breakpoint-context-control-expand: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @media (min-width: $nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: flex;
   }
 }
@@ -53,12 +56,12 @@ $breakpoint-context-control-expand: 1400px;
 
 .ContextControl {
   display: none;
-  @media (min-width: $nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     width: $layout-width-nav-base;
     display: block;
   }
 
-  @media (min-width: $breakpoint-context-control-expand) {
+  @media #{$breakpoints-context-control-expand-up} {
     width: $layout-width-nav-base;
   }
 }
@@ -90,7 +93,7 @@ $breakpoint-context-control-expand: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @media (min-width: $nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: none;
   }
 
@@ -115,7 +118,7 @@ $breakpoint-context-control-expand: 1400px;
   justify-content: flex-end;
   height: 100%;
 
-  @media (min-width: $not-condensed-content) {
+  @media #{$breakpoints-not-condensed-content-up} {
     position: relative;
   }
 }
@@ -128,7 +131,7 @@ $breakpoint-context-control-expand: 1400px;
   max-width: none;
   margin-left: calc((100% - #{$page-max-width}) / 2);
 
-  @media (max-width: $page-left-alignment-breakpoint-max) {
+  @media #{$breakpoints-page-left-alignment-down} {
     margin-left: 0;
     margin-right: var(--p-space-1);
   }

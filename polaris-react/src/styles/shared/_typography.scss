@@ -1,13 +1,14 @@
-$breakpoint-typography-condensed: 640px;
+$breakpoints-typography-condensed-up: '(min-width: #{breakpoint(640px)})';
+$breakpoints-typography-condensed-down: '(max-width: #{breakpoint(640px)})';
 
 @mixin when-typography-not-condensed {
-  @media (min-width: $breakpoint-typography-condensed) {
+  @media #{$breakpoint-typography-condensed-up} {
     @content;
   }
 }
 
 @mixin when-typography-condensed {
-  @media (max-width: $breakpoint-typography-condensed) {
+  @media #{$breakpoint-typography-condensed-down} {
     @content;
   }
 }

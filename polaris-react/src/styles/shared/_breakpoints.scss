@@ -1,10 +1,10 @@
-@function breakpoint($value) {
+@function breakpoint($value, $inclusive: true) {
   $value-unit: unit($value);
 
   @if $value-unit == 'em' {
-    @return $value;
+    @return $value + if($inclusive, 0, -0.003125em); // -0.05px
   } @else if $value-unit == 'px' {
-    @return $value / 16px * 1em;
+    @return ($value / 16px * 1em) + if($inclusive, 0, -0.003125em); // -0.05px
   } @else {
     @error 'The $value passed into breakpoint() must be a pixel or em value. Got "#{$value}"';
   }

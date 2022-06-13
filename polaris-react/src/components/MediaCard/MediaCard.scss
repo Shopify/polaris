@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
-$portrait-breakpoint: 804px;
+$breakpoints-portrait-breakpoint-up: '(min-width: #{breakpoint(804px)})';
+$breakpoints-portrait-breakpoint-down: '(max-width: #{breakpoint(804px)})';
 
 .MediaCard {
   height: 100%;
@@ -12,7 +13,7 @@ $portrait-breakpoint: 804px;
     flex-flow: column nowrap;
   }
 
-  @media (max-width: $portrait-breakpoint) {
+  @media #{$breakpoints-portrait-breakpoint-down} {
     flex-flow: column nowrap;
   }
 }
@@ -32,7 +33,7 @@ $portrait-breakpoint: 804px;
     border-top-left-radius: var(--p-border-radius-2);
     border-top-right-radius: var(--p-border-radius-2);
   }
-  @media (min-width: $portrait-breakpoint) {
+  @media #{$breakpoints-portrait-breakpoint-up} {
     &:not(.portrait) {
       border-top-right-radius: 0;
       border-top-left-radius: var(--p-border-radius-2);
@@ -79,7 +80,7 @@ $portrait-breakpoint: 804px;
     padding-top: var(--p-space-8);
   }
 
-  @media (max-width: $portrait-breakpoint) {
+  @media #{$breakpoints-portrait-breakpoint-down} {
     padding-top: var(--p-space-8);
   }
 }
