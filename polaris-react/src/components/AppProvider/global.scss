@@ -1,0 +1,7 @@
+/* stylelint-disable scss/at-import-partial-extension-blacklist */
+
+// These are global styles that must be included by all apps that consume
+// polaris-react. Add any global styles that are not specific to a component here.
+// ex: polaris-tokens
+
+@import '../../../../node_modules/@shopify/polaris-tokens/dist/scss/styles.scss';

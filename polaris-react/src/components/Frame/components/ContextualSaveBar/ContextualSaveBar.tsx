@@ -8,8 +8,6 @@ import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-// eslint-disable-next-line import/no-deprecated
-import {CustomProperties} from '../../../CustomProperties';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -114,22 +112,20 @@ export function ContextualSaveBar({
 
   return (
     <>
-      <CustomProperties colorScheme="dark">
-        <div className={styles.ContextualSaveBar}>
-          {contextControlMarkup}
-          {logoMarkup}
-          <div className={contentsClassName}>
-            <h2 className={styles.Message}>{message}</h2>
-            <div className={styles.ActionContainer}>
-              <Stack spacing="tight" wrap={false}>
-                {secondaryMenu}
-                {discardActionMarkup}
-                {saveActionMarkup}
-              </Stack>
-            </div>
+      <div className={styles.ContextualSaveBar}>
+        {contextControlMarkup}
+        {logoMarkup}
+        <div className={contentsClassName}>
+          <h2 className={styles.Message}>{message}</h2>
+          <div className={styles.ActionContainer}>
+            <Stack spacing="tight" wrap={false}>
+              {secondaryMenu}
+              {discardActionMarkup}
+              {saveActionMarkup}
+            </Stack>
           </div>
         </div>
-      </CustomProperties>
+      </div>
       {discardConfirmationModalMarkup}
     </>
   );

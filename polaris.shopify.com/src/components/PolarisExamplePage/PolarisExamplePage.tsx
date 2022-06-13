@@ -1,4 +1,4 @@
-import { AppProvider, CustomProperties } from "@shopify/polaris";
+import { AppProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import { ComponentType } from "react";
 import styles from "./PolarisExamplePage.module.scss";
@@ -15,9 +15,7 @@ function PolarisExamplePage(props: ExampleProps) {
     <>
       <link rel="stylesheet" href={stylesheetHref} />
       <AppProvider i18n={translations}>
-        <CustomProperties>
-          <div className={styles.Container}>{props.children}</div>
-        </CustomProperties>
+        <div className={styles.Container}>{props.children}</div>
       </AppProvider>
     </>
   );
