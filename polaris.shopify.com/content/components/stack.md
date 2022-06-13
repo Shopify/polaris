@@ -17,28 +17,28 @@ keywords:
   - stack layout
   - layout
 examples:
-  - fileName: default-behavior.tsx
+  - fileName: stack-default-behavior.tsx
     title: Default behavior
     description: >-
       Use to quickly lay out a horizontal row of components and maintain their
       relative sizes. On small screens, children rows wrap down to additional
       rows as needed.
-  - fileName: non-wrapping-stacks.tsx
+  - fileName: stack-non-wrapping.tsx
     title: Non-wrapping Stacks
     description: >-
       Use to create a stack where the children will not wrap to new rows on
       small screens. As noted above, the wrap option defaults to true. This
       means you must explicitly set it to false to turn it off.
-  - fileName: spacing-options.tsx
+  - fileName: stack-spacing-options.tsx
     title: Spacing options
     description: >-
       Use to control spacing of items in a stack in standard increments. Use
       tight for less spacing, loose for more spacing, or none to remove normal
       spacing altogether.
-  - fileName: vertical-centering-with-a-stack.tsx
+  - fileName: stack-vertical-centering.tsx
     title: Vertical centering with a stack
     description: Use to vertically center a set of items that have different heights.
-  - fileName: fill-available-space-proportionally.tsx
+  - fileName: stack-fill-available-space-proportionally.tsx
     title: Fill available space proportionally
     description: >-
       Use to have the stack’s items fill the horizontal space in the container

@@ -12,7 +12,7 @@ keywords:
   - post
   - get
 examples:
-  - fileName: custom-on-submit.tsx
+  - fileName: form-custom-on-submit.tsx
     title: Custom onSubmit
     description: Use onSubmit as a callback for when your form is submitted.
   - fileName: form-without-native-validation.tsx

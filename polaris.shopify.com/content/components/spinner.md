@@ -14,12 +14,12 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: default-spinner.tsx
+  - fileName: spinner-default.tsx
     title: Default spinner
     description: >-
       Use to notify merchants that their requested action is being
-      processed.undefinedundefined
-  - fileName: small-spinner.tsx
+      processed.
+  - fileName: spinner-small.tsx
     title: Small spinner
     description: Smaller than the default spinner.
   - fileName: spinner-with-focus-management.tsx

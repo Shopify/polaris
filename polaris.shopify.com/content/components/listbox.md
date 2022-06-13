@@ -7,7 +7,7 @@ keywords:
   - list box
   - interactive list
 examples:
-  - fileName: basic-listbox.tsx
+  - fileName: listbox-basic.tsx
     title: Basic Listbox
     description: >-
       Basic implementation of a control element used to let merchants select

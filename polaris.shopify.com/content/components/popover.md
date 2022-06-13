@@ -30,14 +30,14 @@ examples:
     title: Popover with action list
     description: >-
       Use when presenting a set of actions in a disclosable
-      menu.undefinedundefined
+      menu.
   - fileName: popover-with-content-and-actions.tsx
     title: Popover with content and actions
     description: >-
       Use to present a combination of content, instructions, and actions in a
       panel for tasks that are of low or secondary importance to the current
       page. When used this way, popovers provide useful entry points to related
-      features without overwhelming merchants.undefinedundefined
+      features without overwhelming merchants.
   - fileName: popover-with-form-components.tsx
     title: Popover with form components
     description: Use to present secondary input tasks on demand.
@@ -46,7 +46,7 @@ examples:
     description: >-
       Use to present merchants with a list that dynamically loads more items on
       scroll or arrow down.
-  - fileName: action-sheet.tsx
+  - fileName: popover-action-sheet.tsx
     title: Action sheet
     description: >-
       Use when you have few actions that affects the whole page. Action sheets

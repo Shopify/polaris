@@ -14,25 +14,18 @@ keywords:
   - alpha value picker
   - alpha value selector
 examples:
-  - fileName: default-color-picker.tsx
+  - fileName: color-picker-default.tsx
     title: Default color picker
     description: |-
-      Use when merchants need to select a color to make the selection a visual
-      task rather than a technical one.
-  - fileName: colorpicker-with-transparent-value.tsx
+      Use when merchants need to select a color to make the selection a visual task rather than a technical one.
+  - fileName: color-pickerpicker-with-transparent-value.tsx
     title: Colorpicker with transparent value
     description: >-
-      Use when attached to a visual builder to allow the designated object to
-      have a
-
-      transparent background that allows underlying objects to show through.
-  - fileName: colorpicker-with-transparent-value-full-width.tsx
+      Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
+  - fileName: color-pickerpicker-with-transparent-value-full-width.tsx
     title: Colorpicker with transparent value full width
     description: >-
-      Use when attached to a visual builder to allow the designated object to
-      have a
-
-      transparent background that allows underlying objects to show through.
+      Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 ---
 
 # Color picker

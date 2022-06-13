@@ -26,7 +26,7 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: default-select.tsx
+  - fileName: select-default.tsx
     title: Default select
     description: >-
       Presents a classic dropdown menu or equivalent picker as determined by
@@ -38,12 +38,12 @@ examples:
     description: >-
       Use only for cases where the select must fit on a single line, such as in
       a toolbar.
-  - fileName: disabled-select.tsx
+  - fileName: select-disabled.tsx
     title: Disabled select
     description: >-
       Use for selections that aren’t currently available. The surrounding
       interface should make it clear why the select box is disabled and how to
-      activate it.undefinedundefined
+      activate it.
   - fileName: select-with-prefix.tsx
     title: Select with prefix
     description: >-

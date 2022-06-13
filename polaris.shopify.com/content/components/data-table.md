@@ -8,10 +8,10 @@ keywords:
   - tabular
   - index
 examples:
-  - fileName: default-data-table.tsx
+  - fileName: data-table-default.tsx
     title: Default data table
     description: Use to present small amounts of data for merchants to view statically.
-  - fileName: sortable-data-table.tsx
+  - fileName: data-table-sortable.tsx
     title: Sortable data table
     description: >-
       Use when clarity of the table’s content is needed. For example, to note

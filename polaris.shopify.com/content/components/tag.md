@@ -14,13 +14,13 @@ keywords:
   - categories
   - keywords
 examples:
-  - fileName: default-tag.tsx
+  - fileName: tag-default.tsx
     title: Default tag
     description: Use to signify the attributes of an object.
-  - fileName: removable-tag.tsx
+  - fileName: tag-removable.tsx
     title: Removable tag
     description: Use to allow merchants to remove attributes from an object.
-  - fileName: clickable-tag.tsx
+  - fileName: tag-clickable.tsx
     title: Clickable tag
     description: Use to allow merchants to add attributes to an object.
   - fileName: tag-with-link.tsx
@@ -33,11 +33,11 @@ examples:
     description: >-
       Use when a tag needs to be visually distinguished from others, like when
       it's added automatically.
-  - fileName: removable-tag-with-link.tsx
+  - fileName: tag-removable-with-link.tsx
     title: Removable tag with link
     description: >-
       A removable attribute to an object that allows merchants to navigate to a
-      resource.undefinedundefined
+      resource.
 ---
 
 # Tag

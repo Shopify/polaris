@@ -29,22 +29,22 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: extra-large.tsx
+  - fileName: display-text-extra-large.tsx
     title: Extra large
     description: >-
       Use this size sparingly and never multiple times on the same
-      page.undefinedundefined
-  - fileName: large.tsx
+      page.
+  - fileName: display-text-large.tsx
     title: Large
     description: >-
       Use for display text that’s more important than the medium size, but less
       important than extra large.
-  - fileName: medium.tsx
+  - fileName: display-text-medium.tsx
     title: Medium
     description: >-
       Use for display text that’s more important than the small size, but less
-      important than large.undefinedundefined
-  - fileName: small.tsx
+      important than large.
+  - fileName: display-text-small.tsx
     title: Small
     description: >-
       Use for text that would otherwise use body text, but that needs to scale
