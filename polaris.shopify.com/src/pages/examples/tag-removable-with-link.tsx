@@ -1,5 +1,6 @@
 import { Tag, Stack } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function RemovableTagWithLinkExample() {
   const [selectedTags, setSelectedTags] = useState([
@@ -27,5 +28,4 @@ function RemovableTagWithLinkExample() {
   return <Stack spacing="tight">{tagMarkup}</Stack>;
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(RemovableTagWithLinkExample);

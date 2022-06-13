@@ -9,6 +9,7 @@ import {
   Link,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function SeparateValidationErrorExample() {
   const [weight, setWeight] = useState("12");
@@ -71,5 +72,4 @@ function SeparateValidationErrorExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(SeparateValidationErrorExample);

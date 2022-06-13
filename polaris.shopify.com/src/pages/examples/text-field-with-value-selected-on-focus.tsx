@@ -1,5 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TextFieldWithSelectTextOnFocusExample() {
   const [textFieldValue, setTextFieldValue] = useState("Jaded Pixel");
@@ -19,5 +20,4 @@ function TextFieldWithSelectTextOnFocusExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TextFieldWithSelectTextOnFocusExample);

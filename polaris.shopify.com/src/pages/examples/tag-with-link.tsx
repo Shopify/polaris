@@ -1,9 +1,9 @@
 import { Tag } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
-function URLTagExample() {
+function TagExample() {
   return <Tag url="/collections/wholesale">Wholesale</Tag>;
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TagExample);

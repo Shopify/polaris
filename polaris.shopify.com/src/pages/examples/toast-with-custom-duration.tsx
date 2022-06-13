@@ -1,5 +1,6 @@
 import { Toast, Frame, Page, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ToastWithCustomDurationExample() {
   const [active, setActive] = useState(false);
@@ -22,5 +23,4 @@ function ToastWithCustomDurationExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ToastWithCustomDurationExample);

@@ -1,5 +1,6 @@
 import { Listbox } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ListboxWithCustomElementExample() {
   return (
@@ -21,5 +22,4 @@ function ListboxWithCustomElementExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ListboxWithCustomElementExample);

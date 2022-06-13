@@ -9,6 +9,7 @@ import {
 } from "@shopify/polaris";
 import { DeleteMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function SeparateValidationErrorExample() {
   const [textFieldValue, setTextFieldValue] = useState("");
@@ -90,5 +91,4 @@ function SeparateValidationErrorExample() {
   }
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(SeparateValidationErrorExample);

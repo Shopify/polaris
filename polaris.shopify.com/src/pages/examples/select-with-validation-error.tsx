@@ -1,5 +1,6 @@
 import { Select } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ValidationErrorExample() {
   const [selected, setSelected] = useState("");
@@ -17,5 +18,4 @@ function ValidationErrorExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ValidationErrorExample);

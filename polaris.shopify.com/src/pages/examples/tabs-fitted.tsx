@@ -1,5 +1,6 @@
 import { Card, Tabs } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function FittedTabsExample() {
   const [selected, setSelected] = useState(0);
@@ -34,5 +35,4 @@ function FittedTabsExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(FittedTabsExample);

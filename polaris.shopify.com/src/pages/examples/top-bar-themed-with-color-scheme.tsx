@@ -1,6 +1,7 @@
 import { TopBar, ActionList, Frame, Button } from "@shopify/polaris";
 import { ArrowLeftMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TopBarExample() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -108,5 +109,4 @@ function TopBarExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TopBarExample);

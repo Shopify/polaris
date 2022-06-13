@@ -1,5 +1,6 @@
 import { Card, Tabs } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TabsWithCustomDisclosureExample() {
   const [selected, setSelected] = useState(0);
@@ -49,5 +50,4 @@ function TabsWithCustomDisclosureExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TabsWithCustomDisclosureExample);

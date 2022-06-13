@@ -1,7 +1,8 @@
 import { Stack, Tag, TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
-function VerticalContent() {
+function VerticalContentExample() {
   const tags = ["Rustic", "Antique", "Vinyl", "Refurbished"];
   const [textFieldValue, setTextFieldValue] = useState("");
 
@@ -31,5 +32,4 @@ function VerticalContent() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(VerticalContentExample);

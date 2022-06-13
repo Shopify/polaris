@@ -1,5 +1,6 @@
 import { Select } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function SelectExample() {
   const [selected, setSelected] = useState("today");
@@ -22,5 +23,4 @@ function SelectExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(SelectExample);

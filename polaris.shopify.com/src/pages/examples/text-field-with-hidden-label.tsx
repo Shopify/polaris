@@ -1,5 +1,6 @@
 import { FormLayout, ChoiceList, TextField, Select } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function HiddenLabelExample() {
   const [value, setValue] = useState("12");
@@ -43,5 +44,4 @@ function HiddenLabelExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(HiddenLabelExample);

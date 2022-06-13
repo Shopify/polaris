@@ -1,21 +1,22 @@
 import {
-  Toast,
-  ContextualSaveBar,
-  TopBar,
   ActionList,
-  Navigation,
-  Loading,
-  Page,
-  Layout,
+  AppProvider,
   Card,
+  ContextualSaveBar,
   FormLayout,
-  TextField,
+  Frame,
+  Layout,
+  Loading,
+  Modal,
+  Navigation,
+  Page,
+  SkeletonBodyText,
+  SkeletonDisplayText,
   SkeletonPage,
   TextContainer,
-  SkeletonDisplayText,
-  SkeletonBodyText,
-  Modal,
-  Frame,
+  TextField,
+  Toast,
+  TopBar,
 } from "@shopify/polaris";
 import {
   ArrowLeftMinor,
@@ -24,6 +25,7 @@ import {
   ConversationMinor,
 } from "@shopify/polaris-icons";
 import { useState, useCallback, useRef } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function FrameExample() {
   const defaultState = useRef({
@@ -364,5 +366,4 @@ function FrameExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(FrameExample);

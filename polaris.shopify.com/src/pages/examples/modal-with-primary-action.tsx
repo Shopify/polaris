@@ -6,6 +6,7 @@ import {
   TextField,
 } from "@shopify/polaris";
 import { useState, useCallback, useRef } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ModalWithPrimaryActionExample() {
   const DISCOUNT_LINK = "https://polaris.shopify.com/";
@@ -74,5 +75,4 @@ function ModalWithPrimaryActionExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ModalWithPrimaryActionExample);

@@ -20,4 +20,4 @@ import React from "react";
 </div>;
 
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(() => <p />);

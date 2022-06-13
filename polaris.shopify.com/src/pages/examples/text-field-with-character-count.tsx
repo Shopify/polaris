@@ -1,5 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TextFieldWithCharacterCountExample() {
   const [textFieldValue, setTextFieldValue] = useState("Jaded Pixel");
@@ -21,5 +22,4 @@ function TextFieldWithCharacterCountExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TextFieldWithCharacterCountExample);

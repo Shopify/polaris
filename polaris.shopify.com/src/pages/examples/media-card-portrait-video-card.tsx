@@ -1,21 +1,25 @@
 import { MediaCard, VideoThumbnail } from "@shopify/polaris";
 import React from "react";
-
-<MediaCard
-  portrait
-  title="Turn your side-project into a business"
-  primaryAction={{
-    content: "Learn more",
-    onAction: () => {},
-  }}
-  description="In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business."
-  popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
->
-  <VideoThumbnail
-    videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
-  />
-</MediaCard>;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+
+function MediaCardExample() {
+  return (
+    <MediaCard
+      portrait
+      title="Turn your side-project into a business"
+      primaryAction={{
+        content: "Learn more",
+        onAction: () => {},
+      }}
+      description="In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business."
+      popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
+    >
+      <VideoThumbnail
+        videoLength={80}
+        thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+      />
+    </MediaCard>
+  );
+}
+
+export default withPolarisExample(MediaCardExample);

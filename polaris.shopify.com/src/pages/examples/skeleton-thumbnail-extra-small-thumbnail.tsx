@@ -1,7 +1,9 @@
 import { SkeletonThumbnail } from "@shopify/polaris";
 import React from "react";
-
-<SkeletonThumbnail size="extraSmall" />;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+
+function SkeletonExample() {
+  return <SkeletonThumbnail size="extraSmall" />;
+}
+
+export default withPolarisExample(SkeletonExample);

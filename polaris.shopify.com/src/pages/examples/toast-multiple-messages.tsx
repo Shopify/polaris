@@ -1,5 +1,6 @@
 import { Toast, Frame, Page, ButtonGroup, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function MultipleToastExample() {
   const [activeOne, setActiveOne] = useState(false);
@@ -39,5 +40,4 @@ function MultipleToastExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(MultipleToastExample);

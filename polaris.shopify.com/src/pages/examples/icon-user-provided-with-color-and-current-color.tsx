@@ -1,5 +1,6 @@
 import { Icon } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function IconWithReactChild() {
   const iconContent = () => {
@@ -15,5 +16,4 @@ function IconWithReactChild() {
   return <Icon source={iconContent} color="warning" />;
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(IconWithReactChild);

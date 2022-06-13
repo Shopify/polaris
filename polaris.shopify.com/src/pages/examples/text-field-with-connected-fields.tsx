@@ -1,5 +1,6 @@
 import { TextField, Select, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ConnectedFieldsExample() {
   const [textFieldValue, setTextFieldValue] = useState("10.6");
@@ -33,5 +34,4 @@ function ConnectedFieldsExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ConnectedFieldsExample);

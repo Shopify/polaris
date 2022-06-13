@@ -1,6 +1,7 @@
 import { Icon, Select } from "@shopify/polaris";
 import { CaretUpMinor, CaretDownMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function PrefixExample() {
   const [selected, setSelected] = useState("enabled");
@@ -30,5 +31,4 @@ function PrefixExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(PrefixExample);

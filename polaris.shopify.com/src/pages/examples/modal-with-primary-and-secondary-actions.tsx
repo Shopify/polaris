@@ -1,5 +1,6 @@
 import { Button, Modal, Stack, ChoiceList } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ModalWithPrimaryAndSecondaryActionsExample() {
   const CURRENT_PAGE = "current_page";
@@ -86,5 +87,4 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ModalWithPrimaryAndSecondaryActionsExample);

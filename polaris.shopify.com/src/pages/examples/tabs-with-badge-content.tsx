@@ -1,5 +1,6 @@
 import { Badge, Card, Tabs } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TabsWithBadgeExample() {
   const [selected, setSelected] = useState(0);
@@ -42,5 +43,4 @@ function TabsWithBadgeExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TabsWithBadgeExample);

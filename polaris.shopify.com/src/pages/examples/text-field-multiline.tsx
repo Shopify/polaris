@@ -1,5 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function MultilineFieldExample() {
   const [value, setValue] = useState("1776 Barnes Street\nOrlando, FL 32801");
@@ -17,5 +18,4 @@ function MultilineFieldExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(MultilineFieldExample);

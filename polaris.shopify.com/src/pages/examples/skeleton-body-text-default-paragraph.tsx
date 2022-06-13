@@ -1,7 +1,9 @@
 import { SkeletonBodyText } from "@shopify/polaris";
 import React from "react";
-
-<SkeletonBodyText />;
-
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+
+function SkeletonExample() {
+  return <SkeletonBodyText />;
+}
+
+export default withPolarisExample(SkeletonExample);

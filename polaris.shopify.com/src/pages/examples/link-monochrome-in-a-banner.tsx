@@ -7,4 +7,4 @@ import React from "react";
 </Banner>;
 
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(() => <p />);

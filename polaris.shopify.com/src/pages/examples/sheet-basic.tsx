@@ -10,6 +10,7 @@ import {
 } from "@shopify/polaris";
 import { MobileCancelMajor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function SheetExample() {
   const [sheetActive, setSheetActive] = useState(true);
@@ -145,5 +146,4 @@ function SheetExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(SheetExample);

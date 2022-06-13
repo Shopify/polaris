@@ -130,4 +130,4 @@ import React from "react";
 </Page>;
 
 import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(() => <p />);

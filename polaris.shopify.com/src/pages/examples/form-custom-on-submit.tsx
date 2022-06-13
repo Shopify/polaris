@@ -6,6 +6,7 @@ import {
   Button,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function FormOnSubmitExample() {
   const [newsletter, setNewsletter] = useState(false);
@@ -52,5 +53,4 @@ function FormOnSubmitExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(FormOnSubmitExample);

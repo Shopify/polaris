@@ -1,5 +1,6 @@
 import { Button, Modal, TextContainer } from "@shopify/polaris";
 import { useState, useCallback, useRef } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ModalExample() {
   const [active, setActive] = useState(true);
@@ -51,5 +52,4 @@ function ModalExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ModalExample);

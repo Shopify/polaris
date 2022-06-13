@@ -1,5 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useEffect, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TextFieldWithSuggestionExample() {
   const suggestions = [
@@ -104,5 +105,4 @@ function TextFieldWithSuggestionExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(TextFieldWithSuggestionExample);

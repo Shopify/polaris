@@ -1,5 +1,6 @@
 import { Select } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function InlineLabelExample() {
   const [selected, setSelected] = useState("newestUpdate");
@@ -26,5 +27,4 @@ function InlineLabelExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(InlineLabelExample);

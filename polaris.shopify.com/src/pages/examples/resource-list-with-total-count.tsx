@@ -6,6 +6,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import React from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function ResourceListWithTotalItemsCount() {
   return (
@@ -51,5 +52,4 @@ function ResourceListWithTotalItemsCount() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(ResourceListWithTotalItemsCount);

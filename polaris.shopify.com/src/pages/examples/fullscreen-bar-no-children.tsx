@@ -1,5 +1,6 @@
 import { FullscreenBar, Button, DisplayText } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function FullscreenBarExample() {
   const [isFullscreen, setFullscreen] = useState(true);
@@ -23,5 +24,4 @@ function FullscreenBarExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(FullscreenBarExample);

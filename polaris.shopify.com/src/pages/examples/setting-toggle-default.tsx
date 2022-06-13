@@ -1,5 +1,6 @@
 import { SettingToggle, TextStyle } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function SettingToggleExample() {
   const [active, setActive] = useState(false);
@@ -22,5 +23,4 @@ function SettingToggleExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
-export default withPolarisExample(() => <p>tk</p>);
+export default withPolarisExample(SettingToggleExample);
