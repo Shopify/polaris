@@ -1,13 +1,13 @@
 import type {Exact} from './types';
-import {breakpoints} from './token-groups/breakpoints';
-import {depth} from './token-groups/depth';
+import {breakpoints as breakpointsTokens} from './token-groups/breakpoints';
+import {depth as depthTokens} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
-import {colors} from './token-groups/colors';
-import {motion} from './token-groups/motion';
-import {shape} from './token-groups/shape';
-import {spacing} from './token-groups/spacing';
-import {typography} from './token-groups/typography';
-import {zIndex} from './token-groups/zIndex';
+import {colors as colorsTokens} from './token-groups/colors';
+import {motion as motionTokens} from './token-groups/motion';
+import {shape as shapeTokens} from './token-groups/shape';
+import {spacing as spacingTokens} from './token-groups/spacing';
+import {typography as typographyTokens} from './token-groups/typography';
+import {zIndex as zIndexTokens} from './token-groups/zIndex';
 import {tokensToRems} from './utilities';
 
 /**
@@ -26,7 +26,7 @@ export interface Tokens {
   breakpoints: TokenGroup;
   colors: TokenGroup;
   depth: TokenGroup;
-  legacyTokens: TokenGroup;
+  legacy: TokenGroup;
   motion: TokenGroup;
   shape: TokenGroup;
   spacing: TokenGroup;
@@ -34,15 +34,25 @@ export interface Tokens {
   zIndex: TokenGroup;
 }
 
+export const breakpoints: TokenGroup = tokensToRems(breakpointsTokens);
+export const colors: TokenGroup = colorsTokens;
+export const depth: TokenGroup = depthTokens;
+export const legacy: TokenGroup = tokensToRems(legacyTokens);
+export const motion: TokenGroup = tokensToRems(motionTokens);
+export const shape: TokenGroup = tokensToRems(shapeTokens);
+export const spacing: TokenGroup = tokensToRems(spacingTokens);
+export const typography: TokenGroup = tokensToRems(typographyTokens);
+export const zIndex: TokenGroup = zIndexTokens;
+
 export const tokens = createTokens({
-  breakpoints: tokensToRems(breakpoints),
+  breakpoints,
   colors,
   depth,
-  legacyTokens: tokensToRems(legacyTokens),
+  legacy,
   motion,
-  shape: tokensToRems(shape),
-  spacing: tokensToRems(spacing),
-  typography: tokensToRems(typography),
+  shape,
+  spacing,
+  typography,
   zIndex,
 });
 
