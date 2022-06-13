@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
-$breakpoints-magic-up: '(min-width: #{breakpoint(640px)})';
+$breakpoints-magic-up: breakpoints-up(640px);
 $Backdrop-opacity: 0.88;
 
 .Toast {

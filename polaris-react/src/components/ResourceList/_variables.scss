@@ -16,11 +16,14 @@ $resource-list-variables: (
   @return map-get($resource-list-variables, $variable);
 }
 
-@mixin page-before-resource-list-small() {
-  @media (min-width: #{resource-list(breakpoint-small}) {
-    @content;
-  }
-}
+$breakpoints-page-before-resource-list-small-up: breakpoints-down(
+  resource-list(breakpoint-small)
+);
+
+$breakpoints-page-before-resource-list-small-down: breakpoints-down(
+  resource-list(breakpoint-small),
+  $inclusive: true
+);
 
 @mixin page-after-resource-list-small() {
   @media (max-width: #{resource-list(breakpoint-small)}) {

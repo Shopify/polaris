@@ -1,11 +1,10 @@
 @import '../../../../styles/common';
 
 $action-menu-rollup-computed-width: 40px;
-$breakpoints-mobile-layout-up: '(min-width: #{breakpoint(468px)})';
-$breakpoints-mobile-layout-down: '(max-width: #{breakpoint(468px)})';
-$breakpoints-medium-layout-down: '(max-width: #{breakpoint(860px)})';
-$breakpoints-desktop-layout-down: '(max-width: #{breakpoint(1080px)})';
-$breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoint($layout-width-page-with-nav-base)})';
+$breakpoints-mobile-layout-up: breakpoints-up(468px);
+$breakpoints-mobile-layout-down: breakpoints-down(468px, $inclusive: true);
+$breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
+$breakpoints-desktop-layout-down: breakpoints-down(1080px, $inclusive: true);
 
 .Header {
   @include page-header-layout;

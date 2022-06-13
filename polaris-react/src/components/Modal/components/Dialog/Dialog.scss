@@ -8,9 +8,12 @@ $small-width: 620px;
 $large-width: 980px;
 // @TODO simplify media queries so this isn't needed
 $dangerous-magic-space-16: 64px;
-$breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoint($layout-width-page-with-nav-base)})';
-$breakpoints-xsmall-width-up: '(min-width: #{breakpoint($xsmall-width + $dangerous-magic-space-16)})';
-$breakpoints-large-width-up: '(min-width: #{breakpoint($large-width + $dangerous-magic-space-16)})';
+$breakpoints-xsmall-width-up: breakpoints-up(
+  $xsmall-width + $dangerous-magic-space-16
+);
+$breakpoints-large-width-up: breakpoints-up(
+  $large-width + $dangerous-magic-space-16
+);
 
 .Container {
   position: fixed;

@@ -1,7 +1,10 @@
 @import '../../styles/common';
 
-$breakpoints-portrait-breakpoint-up: '(min-width: #{breakpoint(804px)})';
-$breakpoints-portrait-breakpoint-down: '(max-width: #{breakpoint(804px)})';
+$breakpoints-portrait-breakpoint-up: breakpoints-up(804px);
+$breakpoints-portrait-breakpoint-down: breakpoints-down(
+  804px,
+  $inclusive: true
+);
 
 .MediaCard {
   height: 100%;

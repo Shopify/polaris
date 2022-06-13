@@ -1,7 +1,5 @@
 @import '../../../../styles/common';
 
-$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-window-corrected)})';
-
 .ContextualSaveBar {
   display: flex;
   height: $top-bar-height;

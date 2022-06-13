@@ -1,3 +1,5 @@
+/* stylelint-disable unit-disallowed-list */
+
 @function breakpoint($value, $inclusive: true) {
   $value-unit: unit($value);
 
@@ -10,18 +12,39 @@
   }
 }
 
-$page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
-  $layout-width-inner-spacing-base;
+@function breakpoints-up($value) {
+  @return '(min-width: #{breakpoint($value)})';
+}
+
+@function breakpoints-down($value, $inclusive: false) {
+  @return '(max-width: #{breakpoint($value, $inclusive)})';
+}
+
+$page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layout-width-inner-spacing-base;
 
 $not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
 
-$p-frame-with-nav-when-not-max-width: '(max-width: 77.375em)'; // 1238px
-$p-page-when-not-max-width: '(max-width: 62.375em)'; // 998px
-$p-page-content-when-layout-stacked: '(max-width: 60em)'; // 1040px
-$p-page-content-when-layout-not-stacked: '(min-width: 50em)'; // 800px
-$p-page-content-when-partially-condensed: '(max-width: 61.5em)'; // 984px
-$p-page-content-when-not-partially-condensed: '(min-width: 46.5em)'; // 744px
-$p-page-content-when-fully-condensed: '(max-width: 47.125em)'; // 754px
-$p-page-content-when-not-fully-condensed: '(min-width: 30.625em)'; // 490px
-$p-frame-when-nav-displayed: '(min-width: 48.0625em)'; // 769px
-$p-frame-when-nav-hidden: '(max-width: 48.0525em)'; // 768.84px
+$p-frame-with-nav-when-not-max-width: breakpoints-down(1238px, $inclusive: true);
+
+$p-page-when-not-max-width: breakpoints-down(998px, $inclusive: true);
+
+$p-page-content-when-layout-not-stacked: breakpoints-up(800px);
+$p-page-content-when-layout-stacked: breakpoints-down(1040px, $inclusive: true);
+
+$p-page-content-when-not-partially-condensed: breakpoints-up(744px);
+$p-page-content-when-partially-condensed: breakpoints-down(984px, $inclusive: true);
+
+$p-page-content-when-not-fully-condensed: breakpoints-up(490px);
+$p-page-content-when-fully-condensed: breakpoints-down(754px, $inclusive: true);
+
+$p-frame-when-nav-displayed: breakpoints-up(769px);
+$p-frame-when-nav-hidden: breakpoints-down(768.84px, $inclusive: true);
+
+$breakpoints-nav-min-window-corrected-up: breakpoints-up($nav-min-window-corrected);
+$breakpoints-nav-min-window-corrected-down: breakpoints-down($nav-min-window-corrected);
+$breakpoints-nav-min-window-corrected-down-inclusive: breakpoints-down($nav-min-window-corrected, $inclusive: true);
+
+$breakpoints-layout-width-page-with-nav-base-up: breakpoints-up($layout-width-page-with-nav-base);
+$breakpoints-layout-width-page-with-nav-base-down: breakpoints-down($layout-width-page-with-nav-base);
+
+$breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);

@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$breakpoints-magic-up: '(min-width: #{breakpoint(458px)})';
-$breakpoints-magic-down: '(max-width: #{breakpoint(458px, false)})';
+$breakpoints-magic-up: breakpoints-up(458px);
+$breakpoints-magic-down: breakpoints-down(458px);
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);

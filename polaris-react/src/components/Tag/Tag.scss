@@ -3,7 +3,7 @@
 $height: 20px;
 $button-size: 20px;
 
-$breakpoints-magic-up: '(min-width: #{breakpoint(490px)})';
+$breakpoints-magic-up: breakpoints-up(490px);
 
 .Tag {
   display: inline-flex;

@@ -5,9 +5,6 @@
 $active-indicator-width: 3px;
 $nav-max-width: 360px;
 
-$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-window-corrected)})';
-$breakpoints-nav-min-window-corrected-down: '(max-width: #{breakpoint($nav-min-window-corrected, false)})';
-
 .Navigation {
   --pc-navigation-icon-size: 20px;
   display: flex;

@@ -1,6 +1,3 @@
-$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoints($nav-min-window-corrected)})';
-$breakpoints-nav-min-window-corrected-down: '(max-width: #{breakpoints($nav-min-window-corrected)})';
-
 $nav-variables: (
   mobile-spacing: calc(var(--p-space-2) + var(--p-space-05)),
   desktop-spacing: calc(var(--p-space-1) + var(--p-space-05)),
@@ -172,7 +169,7 @@ $nav-animation-variables: (
     margin-bottom: var(--p-space-1);
   }
 
-  @media #{$breakpoints-nav-min-window-corrected-down} {
+  @media #{$breakpoints-nav-min-window-corrected-down-inclusive} {
     font-size: var(--p-font-size-4);
     line-height: var(--p-line-height-2);
   }

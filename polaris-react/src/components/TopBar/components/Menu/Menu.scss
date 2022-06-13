@@ -9,8 +9,6 @@ $activator-variables: (
   @return map-get($activator-variables, $variable);
 }
 
-$breakpoints-layout-width-page-with-nav-base-down: '(max-width: #{breakpoint($layout-width-page-with-nav-base, false)})';
-
 .ActivatorWrapper {
   height: $top-bar-height;
   display: flex;

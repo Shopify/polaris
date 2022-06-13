@@ -1,7 +1,5 @@
 @import '../../../../styles/common';
 
-$breakpoints-layout-width-page-with-nav-base-down: '(max-width: #{breakpoint($layout-width-page-with-nav-base, false)})';
-
 .Details {
   max-width: 160px;
   margin-left: var(--p-space-2);

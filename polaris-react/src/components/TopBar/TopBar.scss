@@ -3,10 +3,11 @@
 
 $icon-size: 20px;
 
-$breakpoints-nav-min-window-corrected-up: '(min-width: #{breakpoint($nav-min-window-corrected)})';
-$breakpoints-not-condensed-content-up: '(min-width: #{breakpoint($not-condensed-content)})';
-$breakpoints-context-control-expand-up: '(min-width: #{breakpoint(1400px)})';
-$breakpoints-page-left-alignment-down: '(max-width: #{breakpoint(1238px)})';
+$breakpoints-context-control-expand-up: breakpoints-up(1400px);
+$breakpoints-page-left-alignment-down: breakpoints-down(
+  1238px,
+  $inclusive: true
+);
 
 .TopBar {
   position: relative;
