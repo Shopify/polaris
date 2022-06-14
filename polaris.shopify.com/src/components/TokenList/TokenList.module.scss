@@ -5,8 +5,6 @@
   --table-border-color: var(--border-color-light);
   color: var(--text-strong);
   font-size: var(--font-size-100);
-  border: 1px solid var(--table-border-color);
-  border-radius: var(--border-radius-400);
 
   table {
     border-collapse: collapse;
@@ -37,7 +35,7 @@
   th {
     text-align: left;
     white-space: pre;
-    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-400);
   }
 
   td {
@@ -45,16 +43,11 @@
     vertical-align: middle;
   }
 
-  td,
-  th {
-    border-left: 1px solid var(--table-border-color);
-  }
-
   th,
   td {
     &:nth-child(1) {
       padding: 0.5rem;
-      border-left: none;
+      padding-left: 0;
       width: 200px;
       box-sizing: content-box;
     }
