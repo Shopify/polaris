@@ -47,8 +47,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 0 1rem;
     gap: 1rem;
+    margin-bottom: 2rem;
 
     .PreviewImage {
       transform: translateY(0.25rem);
@@ -65,12 +65,8 @@
   }
 
   .IconName {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    font-size: var(--font-size-1200);
-    letter-spacing: var(--letter-spacing-800);
+    font-size: var(--font-size-1000);
+    letter-spacing: var(--letter-spacing-700);
     font-weight: var(--font-weight-400);
     line-height: 1.25;
     color: var(--text-strong);
@@ -82,12 +78,12 @@
 
   .IconDescription {
     margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .SmallParagraph {
     margin-bottom: 1rem;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-200);
 
     &:last-child {
       margin-bottom: 0;
@@ -106,7 +102,8 @@
     display: flex;
     flex-wrap: wrap;
     font-size: var(--font-size-50);
-    gap: 0.33rem;
+    gap: 0.5rem;
+    line-height: 1;
 
     button {
       background: transparent;

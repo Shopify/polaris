@@ -24,9 +24,8 @@
 
   ul {
     display: flex;
-    letter-spacing: var(--letter-spacing-200);
     box-shadow: var(--card-shadow);
-    border-radius: var(--border-radius-round);
+    border-radius: var(--border-radius-600);
   }
 
   li {
@@ -39,6 +38,7 @@
     color: var(--text-strong);
     border-right: 1px solid var(--border-color-light);
     text-align: center;
+    font-weight: var(--font-weight-500);
   }
 
   li:last-child a {

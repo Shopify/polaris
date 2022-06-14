@@ -196,7 +196,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           ...wrapperStyles,
           background: value,
           width: 200,
-          height: 50,
+          height: 52,
           borderRadius: 2,
         }}
       ></div>

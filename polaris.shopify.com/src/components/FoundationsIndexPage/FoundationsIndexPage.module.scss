@@ -24,14 +24,20 @@
     display: flex;
     flex-wrap: wrap;
     display: grid;
+    gap: 0.75rem;
     // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
     grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));
-    gap: 0.75rem;
+
+    @media screen and (max-width: $breakpointDesktopLarge) {
+      // Foundations section currently has 5 articles. This avoids
+      // a 4 + 1 situation which looks horrible.
+      grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    }
   }
 
   a {
     position: relative;
-    padding: calc(1.5rem + 12px) 1.5rem 1.5rem;
+    padding: calc(1.5rem + 64px) 1.25rem 1rem;
     display: block;
     color: inherit;
     border-radius: var(--border-radius-800);
@@ -42,12 +48,24 @@
       display: block;
       position: absolute;
       top: 0;
-      // bottom: 0;
       left: 0;
       right: 0;
-      height: 12px;
+      height: 45px;
       margin: auto;
       border-radius: var(--border-radius-800) var(--border-radius-800) 0 0;
+      opacity: 0.25;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      height: 50px;
+      width: 50px;
+      margin: auto;
+      border-radius: var(--border-radius-800);
       box-shadow: var(--card-shadow);
     }
 
@@ -69,16 +87,20 @@
 
 .Categories {
   .Category {
-    &:nth-child(1) a:before {
+    &:nth-child(1) a:before,
+    &:nth-child(1) a:after {
       background: var(--decorative-1);
     }
-    &:nth-child(2) a:before {
+    &:nth-child(2) a:before,
+    &:nth-child(2) a:after {
       background: var(--decorative-2);
     }
-    &:nth-child(3) a:before {
+    &:nth-child(3) a:before,
+    &:nth-child(3) a:after {
       background: var(--decorative-3);
     }
-    &:nth-child(4) a:before {
+    &:nth-child(4) a:before,
+    &:nth-child(4) a:after {
       background: var(--decorative-4);
     }
   }

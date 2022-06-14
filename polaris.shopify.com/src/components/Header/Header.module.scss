@@ -17,14 +17,13 @@
       align-items: center;
       font-size: var(--font-size-100);
       font-weight: var(--font-weight-500);
-      margin-right: auto;
 
       li {
         a {
           color: inherit;
           white-space: pre;
           display: block;
-          padding: 0 0.5px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
+          padding: 0.5px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
 
           span {
             display: block;
@@ -95,7 +94,7 @@
   width: 3rem;
   margin: 0.5rem 0 0.5rem auto;
   border-radius: var(--border-radius-800);
-  margin-right: -1rem;
+  margin-right: -2rem;
 }
 
 .SearchWrapper {
