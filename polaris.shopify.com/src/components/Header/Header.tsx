@@ -77,6 +77,10 @@ function Header({ currentSection }: Props) {
           </a>
         </Link>
 
+        <a className={styles.SkipToContentLink} href="#main">
+          Skip to content
+        </a>
+
         <nav className={styles.Nav}>
           <ul>
             <NavItems currentSection={currentSection} />
