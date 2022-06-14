@@ -16,17 +16,18 @@ import postcssPlugins from './config/postcss-plugins.js';
 const pkg = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url).pathname),
 );
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 function generateConfig({output, targets, stylesConfig}) {
   return {
     input: './src/index.ts',
     plugins: [
       externals({deps: true, packagePath: './package.json'}),
-      nodeResolve({extensions: ['.js', '.jsx', '.ts', '.tsx']}),
+      nodeResolve({extensions}),
       commonjs(),
       babel({
         rootMode: 'upward',
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions,
         exclude: 'node_modules/**',
         babelHelpers: 'bundled',
         // Options that may be present on the `babelConfig` object but

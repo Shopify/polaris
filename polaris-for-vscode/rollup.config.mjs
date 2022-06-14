@@ -1,13 +1,11 @@
-import nodeResolve from '@rollup/plugin-node-resolve';
+import {babel} from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-/**
- * @type {import('rollup').RollupOptions}
- */
-const rollupOptions = {
+/** @type {import('rollup').RollupOptions} */
+export default {
   input: ['src/client.ts', 'src/server.ts'],
   output: [
     {
@@ -36,6 +34,3 @@ const rollupOptions = {
     'vscode-languageserver-textdocument',
   ],
 };
-
-// eslint-disable-next-line import/no-default-export
-export default rollupOptions;
