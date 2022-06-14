@@ -29,13 +29,13 @@ $not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
   }
 }
 
-$p-frame-with-nav-when-not-max-width: '(max-width: 77.375em)'; // 1238px
-$p-page-when-not-max-width: '(max-width: 62.375em)'; // 998px
-$p-page-content-when-layout-stacked: '(max-width: 60em)'; // 1040px
-$p-page-content-when-layout-not-stacked: '(min-width: 50em)'; // 800px
-$p-page-content-when-partially-condensed: '(max-width: 61.5em)'; // 984px
-$p-page-content-when-not-partially-condensed: '(min-width: 46.5em)'; // 744px
-$p-page-content-when-fully-condensed: '(max-width: 47.125em)'; // 754px
-$p-page-content-when-not-fully-condensed: '(min-width: 30.625em)'; // 490px
-$p-frame-when-nav-displayed: '(min-width: 48.0625em)'; // 769px
-$p-frame-when-nav-hidden: '(max-width: 48.0525em)'; // 768.84px
+$p-frame-with-nav-when-not-max-width-down: '(max-width: 77.375em)'; // 1238px
+$p-page-when-not-max-width-down: '(max-width: 62.375em)'; // 998px
+$p-page-content-when-layout-stacked-down: '(max-width: 60em)'; // 1040px
+$p-page-content-when-layout-not-stacked-up: '(min-width: 50em)'; // 800px
+$p-page-content-when-partially-condensed-down: '(max-width: 61.5em)'; // 984px
+$p-page-content-when-not-partially-condensed-up: '(min-width: 46.5em)'; // 744px
+$p-page-content-when-fully-condensed-down: '(max-width: 47.125em)'; // 754px
+$p-page-content-when-not-fully-condensed-up: '(min-width: 30.625em)'; // 490px
+$p-frame-when-nav-displayed-up: '(min-width: 48.0625em)'; // 769px
+$p-frame-when-nav-hidden-down: '(max-width: 48.0525em)'; // 768.84px

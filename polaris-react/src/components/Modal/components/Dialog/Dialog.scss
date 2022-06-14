@@ -49,7 +49,7 @@ $dangerous-magic-space-16: 64px;
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @media #{$p-frame-when-nav-hidden} {
+  @media #{$p-frame-when-nav-hidden-down} {
     bottom: 0;
     max-height: 100%;
   }
