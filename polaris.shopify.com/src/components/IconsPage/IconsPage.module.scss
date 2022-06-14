@@ -132,7 +132,7 @@
     top: 2rem;
     width: 22.5rem;
     border-radius: 32px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.08);
 
     @include dark-mode {
       box-shadow: var(--card-shadow);
