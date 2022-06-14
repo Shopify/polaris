@@ -45,7 +45,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
         @include action-unhide;
 
         // stylelint-disable-next-line max-nesting-depth
-        @media #{$p-page-content-when-partially-condensed} {
+        @media #{$breakpoints-page-content-when-partially-condensed} {
           display: none;
         }
       }
@@ -191,7 +191,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
     @include action-unhide;
   }
 
-  @media #{$p-page-content-when-partially-condensed} {
+  @media #{$breakpoints-page-content-when-partially-condensed} {
     display: none;
   }
 }
@@ -208,7 +208,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
     pointer-events: initial;
     height: 100%;
 
-    @media #{$p-page-content-when-partially-condensed} {
+    @media #{$breakpoints-page-content-when-partially-condensed} {
       display: none;
     }
   }
@@ -227,7 +227,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
     display: none;
   }
 
-  @media #{$p-page-content-when-partially-condensed} {
+  @media #{$breakpoints-page-content-when-partially-condensed} {
     display: flex;
     flex: 0 0 var(--pc-resource-item-disclosure-width);
     justify-content: center;

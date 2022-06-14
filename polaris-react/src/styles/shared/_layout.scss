@@ -23,9 +23,3 @@
   #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));
   #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
 }
-
-@mixin after-topbar-sheet {
-  @media (min-width: 450px) {
-    @content;
-  }
-}

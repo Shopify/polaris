@@ -1,12 +1,17 @@
 /* stylelint-disable unit-disallowed-list */
 
+
 @function breakpoint($value, $inclusive: true) {
   $value-unit: unit($value);
-
+  // Down media condition breakpoints are being subtracted by 0.05px to prevent
+  // them from overwriting up media queries. We experimented with multiple offsets
+  // and felt that 0.05px would be the safest across different pixel densities.
+  $offset: -0.003125em; // -0.05px
+  
   @if $value-unit == 'em' {
-    @return $value + if($inclusive, 0, -0.003125em); // -0.05px
+    @return $value + if($inclusive, 0, $offset);
   } @else if $value-unit == 'px' {
-    @return ($value / 16px * 1em) + if($inclusive, 0, -0.003125em); // -0.05px
+    @return ($value / 16px * 1em) + if($inclusive, 0, $offset);
   } @else {
     @error 'The $value passed into breakpoint() must be a pixel or em value. Got "#{$value}"';
   }
@@ -24,21 +29,21 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layo
 
 $not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
 
-$p-frame-with-nav-when-not-max-width: breakpoints-down(1238px, $inclusive: true);
+$breakpoints-frame-with-nav-when-not-max-width: breakpoints-down(1238px, $inclusive: true);
 
-$p-page-when-not-max-width: breakpoints-down(998px, $inclusive: true);
+$breakpoints-page-when-not-max-width: breakpoints-down(998px, $inclusive: true);
 
-$p-page-content-when-layout-not-stacked: breakpoints-up(800px);
-$p-page-content-when-layout-stacked: breakpoints-down(1040px, $inclusive: true);
+$breakpoints-page-content-when-layout-not-stacked: breakpoints-up(800px);
+$breakpoints-page-content-when-layout-stacked: breakpoints-down(1040px, $inclusive: true);
 
-$p-page-content-when-not-partially-condensed: breakpoints-up(744px);
-$p-page-content-when-partially-condensed: breakpoints-down(984px, $inclusive: true);
+$breakpoints-page-content-when-not-partially-condensed: breakpoints-up(744px);
+$breakpoints-page-content-when-partially-condensed: breakpoints-down(984px, $inclusive: true);
 
-$p-page-content-when-not-fully-condensed: breakpoints-up(490px);
-$p-page-content-when-fully-condensed: breakpoints-down(754px, $inclusive: true);
+$breakpoints-page-content-when-not-fully-condensed: breakpoints-up(490px);
+$breakpoints-page-content-when-fully-condensed: breakpoints-down(754px, $inclusive: true);
 
-$p-frame-when-nav-displayed: breakpoints-up(769px);
-$p-frame-when-nav-hidden: breakpoints-down(768.84px, $inclusive: true);
+$breakpoints-frame-when-nav-displayed: breakpoints-up(769px);
+$breakpoints-frame-when-nav-hidden: breakpoints-down(768.84px, $inclusive: true);
 
 $breakpoints-nav-min-window-corrected-up: breakpoints-up($nav-min-window-corrected);
 $breakpoints-nav-min-window-corrected-down: breakpoints-down($nav-min-window-corrected);

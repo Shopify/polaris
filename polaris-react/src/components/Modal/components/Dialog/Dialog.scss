@@ -11,9 +11,12 @@ $dangerous-magic-space-16: 64px;
 $breakpoints-xsmall-width-up: breakpoints-up(
   $xsmall-width + $dangerous-magic-space-16
 );
+
 $breakpoints-large-width-up: breakpoints-up(
   $large-width + $dangerous-magic-space-16
 );
+
+$breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertical-spacing)})';
 
 .Container {
   position: fixed;
@@ -55,7 +58,7 @@ $breakpoints-large-width-up: breakpoints-up(
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @media #{$p-frame-when-nav-hidden} {
+  @media #{$breakpoints-frame-when-nav-hidden} {
     bottom: 0;
     max-height: 100%;
   }
@@ -69,7 +72,7 @@ $breakpoints-large-width-up: breakpoints-up(
 
   &.limitHeight {
     @media #{$breakpoints-layout-width-page-with-nav-base-up} {
-      @media (min-height: $height-limit + $vertical-spacing) {
+      @media #{$breakpoints-height-limit-up} {
         max-height: $height-limit;
       }
     }
