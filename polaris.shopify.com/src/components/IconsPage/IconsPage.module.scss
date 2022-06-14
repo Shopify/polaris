@@ -1,4 +1,5 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
 
 .IconsPage {
   padding-top: var(--header-margin);
@@ -16,7 +17,7 @@
 }
 
 .SectionHeading {
-  font-size: var(--font-size-300);
+  font-size: var(--font-size-200);
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: var(--text-strong);
@@ -26,35 +27,94 @@
   }
 }
 
-.SelectedIcon {
-  .IconName {
-    @include heading-2;
+.Sidebar {
+  .SidebarSection {
+    padding: 1.75rem;
+    border-bottom: 1px solid var(--border-color-light);
 
-    span {
-      color: var(--text-subdued);
+    &:last-child {
+      border-bottom: none;
     }
   }
 
+  .IconInfo {
+    p {
+      font-size: var(--font-size-200);
+    }
+  }
+
+  .Preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .PreviewImage {
+      transform: translateY(0.25rem);
+    }
+  }
+
+  .IconSet {
+    display: inline-block;
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-400);
+    padding: 0 0.333rem;
+    background: var(--surface);
+    font-size: var(--font-size-50);
+  }
+
+  .IconName {
+    font-size: var(--font-size-1000);
+    letter-spacing: var(--letter-spacing-700);
+    font-weight: var(--font-weight-400);
+    line-height: 1.25;
+    color: var(--text-strong);
+  }
+
   .ActionButtons {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   .IconDescription {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .SmallParagraph {
     margin-bottom: 1rem;
+    font-size: var(--font-size-200);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .CodeExampleWrapper {
+    margin: 1rem 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .Keywords {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.1rem;
-    font-size: var(--font-size-100);
-    color: var(--text-subdued);
+    font-size: var(--font-size-50);
+    gap: 0.5rem;
+    line-height: 1;
+
+    button {
+      background: transparent;
+      color: var(--text-subdued);
+      border-radius: var(--border-radius-400);
+    }
   }
 
   h3 {
-    margin: 2rem 0 0.5rem;
-    @include heading-3;
+    @include heading-4;
+    margin: 0 0 0.125rem;
   }
 }
 
@@ -70,13 +130,22 @@
     align-self: flex-start;
     position: sticky;
     top: 2rem;
-    width: 20%;
+    width: 22.5rem;
+    border-radius: 32px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+    @include dark-mode {
+      box-shadow: var(--card-shadow);
+    }
   }
 }
 
-.ProposeChangeLink {
-  margin-top: 1rem;
-  display: inline-block;
-  color: var(--text-subdued);
-  font-size: var(--font-size-100);
+.ProposeChange {
+  display: flex;
+  justify-content: center;
+
+  a {
+    font-size: var(--font-size-100);
+    color: var(--text-subdued);
+  }
 }

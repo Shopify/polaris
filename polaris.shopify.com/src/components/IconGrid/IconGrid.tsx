@@ -50,8 +50,8 @@ function IconGridItem({
             <Image
               src={importedSvgs(`./${icon.fileName}.svg`)}
               alt={icon.description}
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               fadeIn={false}
             />
           </div>

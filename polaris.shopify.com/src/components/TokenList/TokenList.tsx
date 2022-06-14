@@ -48,7 +48,7 @@ function TokenList({
           {showTableHeading && (
             <thead>
               <tr>
-                {columns.preview && <th>Preview</th>}
+                {columns.preview && <th></th>}
                 {columns.name && <th>Token name</th>}
                 {columns.value && <th>Current value</th>}
                 {columns.figmaUsage && <th>Figma usage</th>}
@@ -154,9 +154,10 @@ function TokenListItem({
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}
-                        width={19}
-                        height={19}
+                        width={14}
+                        height={14}
                         fadeIn={false}
+                        icon
                       />
                     </button>
                   </Tooltip>
@@ -194,9 +195,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
         style={{
           ...wrapperStyles,
           background: value,
-          width: "100%",
-          height: 50,
-          borderRadius: 8,
+          width: 200,
+          height: 52,
+          borderRadius: 2,
         }}
       ></div>
     );
