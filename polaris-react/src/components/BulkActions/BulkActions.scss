@@ -64,7 +64,7 @@ $bulk-actions-button-stacking-order: (
   max-width: 100%;
 
   // We need the first item of button group on small screen to fill the space
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$breakpoints-page-before-resource-list-small-down} {
     // stylelint-disable-next-line, selector-max-combinators, selector-max-type
     > div > div:first-child {
       flex: 1 1 auto;
