@@ -87,46 +87,38 @@ function TokensPage({ tokenGroup }: Props) {
     .join("\n");
 
   return (
-    <Container width="medium">
+    <Container>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
-          <h1>Build with Tokens</h1>
-          <p>
-            Build anything you want on top of Polaris. By using tokens, your
-            design becomes future proof. When Polaris evolves, your design
-            automatically updates with the latest values.
-          </p>
+          <h1>Tokens</h1>
         </div>
 
-        <nav className={styles.TokensNav}>
-          <ul>
-            {navItems.map((item) => {
-              if (!item.url) return null;
-              return (
-                <li key={item.title}>
-                  <Link href={item.url} passHref>
-                    <a>{item.title}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
         <div className={styles.Tokens}>
-          <div className={styles.Group}>
-            <TokenList>
-              {tokens[tokenGroup]
-                .sort((token) =>
-                  token.name.includes("ease") || token.name.includes("linear")
-                    ? -1
-                    : 1
-                )
-                .map((token) => (
-                  <TokenList.Item key={token.name} token={token} />
-                ))}
-            </TokenList>
-          </div>
+          <nav className={styles.TokensNav}>
+            <ul>
+              {navItems.map((item) => {
+                if (!item.url) return null;
+                return (
+                  <li key={item.title}>
+                    <Link href={item.url} passHref>
+                      <a>{item.title}</a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <TokenList>
+            {tokens[tokenGroup]
+              .sort((token) =>
+                token.name.includes("ease") || token.name.includes("linear")
+                  ? -1
+                  : 1
+              )
+              .map((token) => (
+                <TokenList.Item key={token.name} token={token} />
+              ))}
+          </TokenList>
         </div>
 
         <style jsx>{keyframeStyles}</style>

@@ -1,10 +1,10 @@
 @import "../../styles/variables.scss";
 
 .Layout {
-  --gap: 4rem;
-  --nav-width: 15rem;
-  --toc-width: 15rem;
-  --max-content-width: 72rem;
+  --gap: 2rem;
+  --nav-width: 16rem;
+  --toc-width: 10rem;
+  --max-content-width: 64rem;
   --toc-gap: 5rem;
   margin-top: var(--header-margin);
   display: flex;
@@ -39,10 +39,10 @@
     flex: 1;
 
     .Layout.narrow & {
-      padding-right: var(--gap);
       max-width: var(--max-content-width);
+      padding-right: var(--gap);
 
-      @media screen and (max-width: $breakpointDesktop) {
+      @media screen and (max-width: $breakpointDesktopLarge) {
         padding-right: 0;
       }
     }
@@ -64,18 +64,18 @@
   --toc-sticky-top-margin: 2rem;
   position: sticky;
   top: 2rem;
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
   width: var(--toc-width);
   right: calc((var(--toc-width) + 6rem) * -1);
-  font-size: var(--font-size-200);
   height: 100%;
+  font-size: var(--font-size-50);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
 
   > ul > li:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   a {
@@ -94,8 +94,8 @@
   &.isNested {
     ul ul {
       position: relative;
-      margin-top: 0.5rem;
-      font-size: var(--font-size-100);
+      margin-top: 0.25rem;
+      font-size: var(--font-size-50);
       padding-left: 0.75rem;
 
       &::before {
@@ -110,7 +110,7 @@
       }
 
       a {
-        padding: 0.125rem 0;
+        padding: 0.1em 0;
       }
     }
   }

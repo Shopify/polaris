@@ -10,6 +10,7 @@ import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
 import ComponentGrid from "../ComponentGrid";
 import Layout from "../Layout";
+import Longform from "../Longform";
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();
@@ -23,7 +24,9 @@ export default function ComponentsPage({}: Props) {
         <title>{getTitleTagValue("Components")}</title>
       </Head>
 
-      <Layout navItems={componentNav} showTOC={false} title="Components">
+      <Layout navItems={componentNav} showTOC={false}>
+        <h1>Components</h1>
+
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>

@@ -8,7 +8,7 @@
   align-items: center;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   min-height: calc(100vh - var(--header-height));
-  padding: 6rem 0;
+  padding: var(--header-margin) 0 6rem;
 
   @media screen and (max-width: $breakpointMobile) {
     margin: 0;

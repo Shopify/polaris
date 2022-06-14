@@ -8,6 +8,7 @@ interface Props {
   small?: boolean;
   pill?: boolean;
   primary?: boolean;
+  fill?: boolean;
 }
 
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
@@ -15,14 +16,22 @@ interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
   download?: boolean;
 }
 
-function Button({ small, pill, primary, children, ...rest }: ButtonProps) {
+function Button({
+  small,
+  pill,
+  primary,
+  fill,
+  children,
+  ...rest
+}: ButtonProps) {
   return (
     <button
       className={className(
         styles.Button,
         small && styles.small,
         pill && styles.pill,
-        primary && styles.primary
+        primary && styles.primary,
+        fill && styles.fill
       )}
       {...rest}
       type="button"
@@ -38,6 +47,7 @@ export function LinkButton({
   href,
   primary,
   download,
+  fill,
   children,
   ...rest
 }: LinkButtonProps) {
@@ -48,7 +58,8 @@ export function LinkButton({
           styles.Button,
           small && styles.small,
           pill && styles.pill,
-          primary && styles.primary
+          primary && styles.primary,
+          fill && styles.fill
         )}
         download={download}
         {...rest}

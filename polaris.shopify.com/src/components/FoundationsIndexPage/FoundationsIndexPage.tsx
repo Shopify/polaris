@@ -20,17 +20,29 @@ function FoundationsIndexPage({}: Props) {
             const url = category.children && category.children[0].url;
             if (!url) return null;
             return (
-              <Link key={category.title} href={url}>
-                <a className={styles.Category}>
-                  <div className={styles.Text}>
-                    <h2>{category.title}</h2>
-                    <p>
-                      Lorem ipsum dolor et amet consecteur lorem ipsum dolor et
-                      amet. Lorem ipsum dolor et amet consecteur lorem ipsum.
-                    </p>
-                  </div>
-                </a>
-              </Link>
+              <div key={category.title} className={styles.Category}>
+                <div className={styles.Text}>
+                  <h2>{category.title}</h2>
+                  <ul>
+                    {category.children?.map((child) => {
+                      if (!child.url) return null;
+                      return (
+                        <li key={child.title}>
+                          <Link href={child.url} passHref>
+                            <a>
+                              <h4>{child.title}</h4>
+                              <p>
+                                Lorem ipsum dolor et amet consecteur lorem ipsum
+                                dolor et amet lorem ipsum dolor consecteur et.
+                              </p>
+                            </a>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
             );
           })}
         </div>
