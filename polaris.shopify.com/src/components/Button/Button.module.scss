@@ -4,10 +4,10 @@
   appearance: none;
   background: var(--surface-subdued);
   color: var(--text-strong);
-  padding: 0.5rem 0.66rem;
+  padding: 0.75rem 0.66rem;
   border: none;
-  font-size: var(--font-size-200);
-  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-500);
   border-radius: var(--border-radius-400);
   cursor: pointer;
   user-select: none;
@@ -28,6 +28,11 @@
     padding-right: 0.66rem;
   }
 
+  &.fill {
+    display: block;
+    text-align: center;
+  }
+
   &[aria-pressed="true"],
   &[aria-selected="true"],
   &[aria-current="true"] {
@@ -38,5 +43,6 @@
   &.primary {
     background: var(--primary);
     color: var(--surface);
+    box-shadow: inset 0 -2px rgba(0, 0, 0, 0.075);
   }
 }
