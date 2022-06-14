@@ -37,9 +37,9 @@ const Components = ({ examples, name, readme }: Props) => {
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>
-      <Examples examples={examples} />
       <Longform>
         <h1>{name}</h1>
+        <Examples examples={examples} />
         <Markdown text={readme} skipH1 />
       </Longform>
     </Layout>
