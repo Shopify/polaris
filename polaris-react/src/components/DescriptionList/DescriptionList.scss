@@ -1,13 +1,13 @@
 @import '../../styles/common';
 
-$magic-breakpoints-up: '(min-width: 36.875em)'; // 590px
+$breakpoints-legacy-up: '(min-width: 36.875em)'; // 590px
 
 .DescriptionList {
   margin: 0;
   padding: 0;
   word-break: break-word;
 
-  @media #{$magic-breakpoints-up} {
+  @media #{$breakpoints-legacy-up} {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -22,7 +22,7 @@ $magic-breakpoints-up: '(min-width: 36.875em)'; // 590px
     padding: var(--p-space-2) 0 var(--p-space-1);
   }
 
-  @media #{$magic-breakpoints-up} {
+  @media #{$breakpoints-legacy-up} {
     flex: 0 1 25%;
     padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
 
@@ -49,7 +49,7 @@ $magic-breakpoints-up: '(min-width: 36.875em)'; // 590px
     border-top: var(--p-border-divider);
   }
 
-  @media #{$magic-breakpoints-up} {
+  @media #{$breakpoints-legacy-up} {
     flex: 1 1 51%;
     padding: var(--p-space-4) 0;
 
