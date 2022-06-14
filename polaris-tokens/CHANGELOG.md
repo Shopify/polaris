@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.2.1
+
+### Patch Changes
+
+- [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
+
+## 5.2.0
+
+### Minor Changes
+
+- [#6004](https://github.com/Shopify/polaris/pull/6004) [`27a0fba87`](https://github.com/Shopify/polaris/commit/27a0fba877789a3becb10c6e60d78921d71e6887) Thanks [@samrose3](https://github.com/samrose3)! - Added dark variants for the light scheme color tokens
+
+### Patch Changes
+
+- [#6054](https://github.com/Shopify/polaris/pull/6054) [`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6) Thanks [@chazdean](https://github.com/chazdean)! - Implement icons modal
+
 ## 5.1.1
 
 ### Patch Changes

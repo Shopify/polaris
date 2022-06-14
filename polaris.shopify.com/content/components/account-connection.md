@@ -14,7 +14,7 @@ keywords:
   - facebook
   - social media
 examples:
-  - fileName: default-account-connection.tsx
+  - fileName: account-connection.tsx
     title: Default account connection
     description: >-
       Use to let merchants connect or disconnect their store to their

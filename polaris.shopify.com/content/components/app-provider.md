@@ -16,14 +16,14 @@ keywords:
   - sdk
 omitAppProvider: true
 examples:
-  - fileName: default.tsx
+  - fileName: app-provider-default.tsx
     title: Default
     description: AppProvider works by default without any additional options passed to it.
-  - fileName: with-i18n.tsx
+  - fileName: app-provider-with-i18n.tsx
     title: With i18n
-  - fileName: with-link-component.tsx
+  - fileName: app-provider-with-link-component.tsx
     title: With linkComponent
-  - fileName: with-color-scheme.tsx
+  - fileName: app-provider-with-color-scheme.tsx
     title: With color scheme
 ---
 

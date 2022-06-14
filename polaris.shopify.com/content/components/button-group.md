@@ -24,21 +24,21 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: default-button-group.tsx
+  - fileName: button-group-default.tsx
     title: Default button group
     description: >-
       Use when you have multiple buttons to space them out
-      evenly.undefinedundefined
+      evenly.
   - fileName: button-group-with-segmented-buttons.tsx
     title: Button group with segmented buttons
     description: >-
       Use to emphasize several buttons as a thematically-related set among other
       controls.
-  - fileName: outline-button-group-with-segmented-buttons.tsx
+  - fileName: button-group-outline-with-segmented-buttons.tsx
     title: Outline button group with segmented buttons
     description: >-
       Use to emphasize several buttons as a thematically-related set among other
-      controls.undefinedundefined
+      controls.
 ---
 
 # Button group

@@ -28,7 +28,7 @@ examples:
     description: >-
       Use when the items benefit from an associated action or image, such as a
       list of products.
-  - fileName: sectioned-action-list.tsx
+  - fileName: action-list-sectioned.tsx
     title: Sectioned action list
     description: Use when the items benefit from sections to help differentiate actions.
   - fileName: action-list-with-destructive-item.tsx

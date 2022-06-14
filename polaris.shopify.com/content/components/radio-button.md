@@ -18,16 +18,16 @@ keywords:
   - toggle
   - switch
 examples:
-  - fileName: default-radio-button.tsx
+  - fileName: radio-button-default.tsx
     title: Default radio button
     description: >-
       Use radio buttons where merchants must make a single
-      selection.undefinedundefined
-  - fileName: toggle.tsx
+      selection.
+  - fileName: radio-button-toggle.tsx
     title: Toggle
     description: >-
       Use toggles when merchants need to make a binary choice (on or
-      off).undefinedundefined
+      off).
 ---
 
 # Radio button

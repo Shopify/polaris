@@ -31,21 +31,21 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: basic-modal.tsx
+  - fileName: modal-basic.tsx
     title: Basic modal
     description: Use as the default option for a modal.
   - fileName: modal-with-primary-action.tsx
     title: Modal with primary action
-    description: Use to let merchants take a key action.undefinedundefined
+    description: Use to let merchants take a key action.
   - fileName: modal-with-primary-and-secondary-actions.tsx
     title: Modal with primary and secondary actions
     description: >-
       Use to let merchants take key actions at the bottom of the
-      modal.undefinedundefined
-  - fileName: large-modal.tsx
+      modal.
+  - fileName: modal-large.tsx
     title: Large modal
     description: Use when you need to increase the width of your modal.
-  - fileName: small-modal.tsx
+  - fileName: modal-small.tsx
     title: Small modal
     description: Use when you need to decrease the width of your modal.
   - fileName: modal-without-a-title.tsx
@@ -58,12 +58,12 @@ examples:
     title: Modal with activator ref
   - fileName: modal-without-an-activator-prop.tsx
     title: Modal without an activator prop
-  - fileName: warning-modal.tsx
+  - fileName: modal-warning.tsx
     title: Warning modal
     description: >-
       Use to make it clear to the merchant that the action is potentially
       dangerous. Only use this option when the merchant is about to perform an
-      action that can’t be undone or is difficult to undo.undefinedundefined
+      action that can’t be undone or is difficult to undo.
 ---
 
 # Modal

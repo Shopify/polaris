@@ -18,12 +18,12 @@ keywords:
   - form selections
   - multi-choice lists
 examples:
-  - fileName: default-checkboxes.tsx
+  - fileName: checkboxes-default.tsx
     title: Default checkboxes
     description: >-
       Use in forms to toggle the state of something on or off. Default
       checkboxes can appear in two states: selected and disabled, or
-      unselected.undefinedundefined
+      unselected.
 ---
 
 # Checkbox

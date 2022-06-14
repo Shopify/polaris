@@ -49,6 +49,7 @@
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
+    "@size-limit/preset-small-lib": "^5.0.3",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
     "jest": "^27.5.1",
@@ -57,6 +58,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
     "rollup": "^2.70.2",
+    "size-limit": "^5.0.3",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-image": "^2.0.5",
@@ -69,5 +71,27 @@
     "turbo": "^1.2.8",
     "typescript": ">=3.0.0"
   },
-  "prettier": "@shopify/prettier-config"
+  "prettier": "@shopify/prettier-config",
+  "size-limit": [
+    {
+      "name": "polaris-react-cjs",
+      "path": "polaris-react/build/cjs/index.js",
+      "limit": "180 kB"
+    },
+    {
+      "name": "polaris-react-esm",
+      "path": "polaris-react/build/esm/index.js",
+      "limit": "105 kB"
+    },
+    {
+      "name": "polaris-react-esnext",
+      "path": "polaris-react/build/esnext/index.esnext",
+      "limit": "160 kB"
+    },
+    {
+      "name": "polaris-react-css",
+      "path": "polaris-react/build/esm/styles.css",
+      "limit": "45 kB"
+    }
+  ]
 }

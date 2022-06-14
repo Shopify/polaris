@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Grid {
-  // Remap custom properties as mobile first fallbacks for grid areas and grid columns
+  // Remap custom properties as mobile first fallbacks for grid-template-areas and grid-teplate-columns
   --pc-grid-areas-xs: initial;
   --pc-grid-areas-sm: var(--pc-grid-areas-xs);
   --pc-grid-areas-md: var(--pc-grid-areas-sm);
@@ -39,47 +39,5 @@
     gap: var(--pc-grid-gap-xl, var(--p-space-4));
     grid-template-areas: var(--pc-grid-areas-xl);
     grid-template-columns: repeat(var(--pc-grid-columns-xl), minmax(0, 1fr));
-  }
-}
-
-.Cell {
-  min-width: 0;
-}
-
-@for $i from 1 through 6 {
-  .grid-#{$i}-column-xs {
-    grid-column-end: span #{$i};
-  }
-}
-
-@media #{$p-breakpoints-sm-up} {
-  @for $i from 1 through 6 {
-    .grid-#{$i}-column-sm {
-      grid-column-end: span #{$i};
-    }
-  }
-}
-
-@media #{$p-breakpoints-md-up} {
-  @for $i from 1 through 6 {
-    .grid-#{$i}-column-md {
-      grid-column-end: span #{$i};
-    }
-  }
-}
-
-@media #{$p-breakpoints-lg-up} {
-  @for $i from 1 through 12 {
-    .grid-#{$i}-column-lg {
-      grid-column-end: span #{$i};
-    }
-  }
-}
-
-@media #{$p-breakpoints-xl-up} {
-  @for $i from 1 through 12 {
-    .grid-#{$i}-column-xl {
-      grid-column-end: span #{$i};
-    }
   }
 }

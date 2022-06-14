@@ -16,30 +16,27 @@ interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
   download?: boolean;
 }
 
-function Button({
-  small,
-  pill,
-  primary,
-  fill,
-  children,
-  ...rest
-}: ButtonProps) {
-  return (
-    <button
-      className={className(
-        styles.Button,
-        small && styles.small,
-        pill && styles.pill,
-        primary && styles.primary,
-        fill && styles.fill
-      )}
-      {...rest}
-      type="button"
-    >
-      {children}
-    </button>
-  );
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ small, pill, primary, fill, children, ...rest }, ref) => {
+    return (
+      <button
+        className={className(
+          styles.Button,
+          small && styles.small,
+          pill && styles.pill,
+          primary && styles.primary,
+          fill && styles.fill
+        )}
+        {...rest}
+        type="button"
+        ref={ref}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+Button.displayName = "Button";
 
 export function LinkButton({
   small,

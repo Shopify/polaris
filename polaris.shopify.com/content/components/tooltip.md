@@ -11,7 +11,7 @@ keywords:
   - hover
   - tap
 examples:
-  - fileName: default-tooltip.tsx
+  - fileName: tooltip-default.tsx
     title: Default tooltip
     description: >-
       Use only when necessary to provide an explanation for an interface

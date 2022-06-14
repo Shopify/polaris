@@ -8,7 +8,7 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: simple-skeleton-tabs.tsx
+  - fileName: skeleton-tabs-simple.tsx
     title: Simple skeleton tabs
   - fileName: skeleton-tabs-with-a-custom-count.tsx
     title: Skeleton tabs with a custom count
