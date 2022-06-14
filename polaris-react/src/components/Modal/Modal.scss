@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 $small-width: 620px;
-$breakpoints-layout-width-page-with-nav-base-up: '(min-width: #{breakpoints($layout-width-page-with-nav-base)})';
 
 .BodyWrapper {
   display: flex;
