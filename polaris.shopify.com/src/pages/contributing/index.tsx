@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import Layout from "../../components/Layout";
+import ContributingPage from "../../components/ContributingPage";
 
 const navItems = [
   {
@@ -32,12 +32,8 @@ const navItems = [
   },
 ];
 
-const ContributingPage = () => {
-  return (
-    <Layout title="Contributing" navItems={navItems} showTOC={false}>
-      {/* PAGE CONTENT HERE */}
-    </Layout>
-  );
+const Resources = () => {
+  return <ContributingPage />;
 };
 
-export default ContributingPage;
+export default Resources;
