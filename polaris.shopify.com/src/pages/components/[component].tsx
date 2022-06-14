@@ -1,9 +1,10 @@
 import fs from "fs";
 import glob from "glob";
+import path from "path";
 import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import path from "path";
+
 import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
@@ -11,12 +12,7 @@ import Markdown from "../../components/Markdown";
 import { NavItem } from "../../components/Nav/Nav";
 import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import {
-  getComponentCategories,
-  getComponentNav,
-  getTitleTagValue,
-  slugify,
-} from "../../utils/various";
+import { getComponentNav, getTitleTagValue } from "../../utils/various";
 
 interface MarkdownData {
   frontMatter: any;

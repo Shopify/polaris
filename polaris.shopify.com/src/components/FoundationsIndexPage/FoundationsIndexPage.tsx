@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { navItems } from "../../data/navItems";
+import { foundationsNavItems } from "../../data/navItems";
 import { getTitleTagValue } from "../../utils/various";
 import styles from "./FoundationsIndexPage.module.scss";
 import Link from "next/link";
@@ -14,9 +14,13 @@ function FoundationsIndexPage({}: Props) {
         <title>{getTitleTagValue("Foundations")}</title>
       </Head>
 
-      <Layout title="Foundations" navItems={navItems} showTOC={false}>
+      <Layout
+        title="Foundations"
+        navItems={foundationsNavItems}
+        showTOC={false}
+      >
         <div className={styles.Categories}>
-          {navItems.map((category) => {
+          {foundationsNavItems.map((category) => {
             const url = category.children && category.children[0].url;
             if (!url) return null;
             return (
