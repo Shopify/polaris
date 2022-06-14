@@ -42,6 +42,7 @@
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "typescript": "4.5.5"
   }
 }
