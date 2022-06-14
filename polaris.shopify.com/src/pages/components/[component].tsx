@@ -33,12 +33,13 @@ const Components = ({ examples, name, readme }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
-    <Layout width="narrow" title={name} navItems={navItems}>
+    <Layout width="narrow" navItems={navItems}>
       <Head>
         <title>{getTitleTagValue(name)}</title>
       </Head>
       <Examples examples={examples} />
       <Longform>
+        <h1>{name}</h1>
         <Markdown text={readme} skipH1 />
       </Longform>
     </Layout>
