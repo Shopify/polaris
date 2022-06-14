@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$breakpoints-legacy-up: '(min-width: 36.875em)'; // 590px
+$breakpoints-legacy-up: breakpoints-up(590px);
 
 .DescriptionList {
   margin: 0;
