@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
-$breakpoints-magic-up: breakpoints-up(458px);
-$breakpoints-magic-down: breakpoints-down(458px);
+$breakpoints-legacy-up: breakpoints-up(458px);
+$breakpoints-legacy-down: breakpoints-down(458px);
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -94,7 +94,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
   display: flex;
   align-items: flex-start;
 
-  @media #{$breakpoints-magic-up} {
+  @media #{$breakpoints-legacy-up} {
     padding: var(--p-space-3) var(--p-space-5);
   }
 }
@@ -137,7 +137,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
     calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
-  @media #{$breakpoints-magic-down} {
+  @media #{$breakpoints-legacy-down} {
     visibility: hidden;
 
     .selectMode & {
@@ -156,7 +156,7 @@ $breakpoints-magic-down: breakpoints-down(458px);
     transform: translateX(0);
   }
 
-  @media #{$breakpoints-magic-up} {
+  @media #{$breakpoints-legacy-up} {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;

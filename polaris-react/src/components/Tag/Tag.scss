@@ -3,7 +3,7 @@
 $height: 20px;
 $button-size: 20px;
 
-$breakpoints-magic-up: breakpoints-up(490px);
+$breakpoints-legacy-up: breakpoints-up(490px);
 
 .Tag {
   display: inline-flex;
@@ -53,7 +53,7 @@ $breakpoints-magic-up: breakpoints-up(490px);
       color: var(--p-text-disabled);
     }
 
-    @media #{$breakpoints-magic-up} {
+    @media #{$breakpoints-legacy-up} {
       padding: var(--p-space-05) var(--p-space-2);
       font-size: var(--p-font-size-1);
     }
@@ -67,7 +67,7 @@ $breakpoints-magic-up: breakpoints-up(490px);
     padding: 0;
   }
 
-  @media #{$breakpoints-magic-up} {
+  @media #{$breakpoints-legacy-up} {
     min-height: 24px;
   }
 }
@@ -82,7 +82,7 @@ $breakpoints-magic-up: breakpoints-up(490px);
   white-space: nowrap;
   vertical-align: middle;
 
-  @media #{$breakpoints-magic-up} {
+  @media #{$breakpoints-legacy-up} {
     font-size: var(--p-font-size-1);
     padding: var(--p-space-05) 0;
   }
@@ -140,7 +140,7 @@ $breakpoints-magic-up: breakpoints-up(490px);
     padding-top: var(--p-space-1);
     padding-bottom: var(--p-space-1);
 
-    @media #{$breakpoints-magic-up} {
+    @media #{$breakpoints-legacy-up} {
       font-size: var(--p-font-size-1);
       padding-top: var(--p-space-05);
       padding-bottom: var(--p-space-05);
