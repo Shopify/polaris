@@ -16,7 +16,7 @@ $resource-list-variables: (
   @return map-get($resource-list-variables, $variable);
 }
 
-$breakpoints-page-before-resource-list-small-up: breakpoints-up(
+$breakpoints-page-after-resource-list-small-up: breakpoints-up(
   resource-list(breakpoint-small)
 );
 
@@ -24,9 +24,3 @@ $breakpoints-page-before-resource-list-small-down: breakpoints-down(
   resource-list(breakpoint-small),
   $inclusive: true
 );
-
-@mixin page-after-resource-list-small() {
-  @media #{$breakpoints-page-before-resource-list-small-down} {
-    @content;
-  }
-}

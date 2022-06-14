@@ -37,7 +37,7 @@ $bulk-actions-button-stacking-order: (
 }
 
 .Group-smallScreen {
-  @media #{$breakpoints-page-before-resource-list-small-up} {
+  @media #{$breakpoints-page-after-resource-list-small-up} {
     display: none;
   }
 }
@@ -45,7 +45,7 @@ $bulk-actions-button-stacking-order: (
 .Group-largeScreen {
   display: none;
 
-  @media #{$breakpoints-page-before-resource-list-small-up} {
+  @media #{$breakpoints-page-after-resource-list-small-up} {
     display: flex;
 
     &.Group-exiting {
@@ -64,14 +64,14 @@ $bulk-actions-button-stacking-order: (
   max-width: 100%;
 
   // We need the first item of button group on small screen to fill the space
-  @media #{$breakpoints-page-before-resource-list-small-up} {
+  @media #{$breakpoints-page-after-resource-list-small-up} {
     // stylelint-disable-next-line, selector-max-combinators, selector-max-type
     > div > div:first-child {
       flex: 1 1 auto;
     }
   }
 
-  @media #{$breakpoints-page-before-resource-list-small-up} {
+  @media #{$breakpoints-page-after-resource-list-small-up} {
     width: auto;
     justify-content: flex-start;
     margin-right: var(--p-space-2);
