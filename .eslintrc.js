@@ -97,6 +97,20 @@ module.exports = {
       },
     },
     {
+      files: ['*/rollup.config.mjs'],
+      rules: {
+        'import/extensions': 'off',
+        'import/no-default-export': 'off',
+        'import/no-anonymous-default-export': 'off',
+        // We could omit this if we set `engines` fields properly
+        // As we don't set them then eslint thinks we're using node 8
+        'node/no-unsupported-features/node-builtins': [
+          'error',
+          {version: '>=16.0.0'},
+        ],
+      },
+    },
+    {
       files: ['**/*.test.{ts,tsx}'],
       rules: {
         'jest/no-truthy-falsy': 'off',
@@ -147,11 +161,7 @@ module.exports = {
 
 function noExtraneousDependenciesConfig(packageDir) {
   return {
-    files: [
-      `${packageDir}/rollup.config.*`,
-      `${packageDir}/loom.config.*`,
-      `${packageDir}/config/**/*`,
-    ],
+    files: [`${packageDir}/rollup.config.*`, `${packageDir}/config/**/*`],
     rules: {
       'import/no-extraneous-dependencies': [
         'error',

@@ -203,6 +203,7 @@ function replaceFillAttributeSvgoPlugin() {
   };
 }
 
+/** @type {import('rollup').RollupOptions} */
 const config = [
   {
     input: 'src/index.ts',
