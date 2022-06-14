@@ -1,4 +1,4 @@
-import type {Exact} from './types';
+import type {Exact, MetaTokens} from './types';
 import {breakpoints as breakpointsTokens} from './token-groups/breakpoints';
 import {depth as depthTokens} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
@@ -8,41 +8,16 @@ import {shape as shapeTokens} from './token-groups/shape';
 import {spacing as spacingTokens} from './token-groups/spacing';
 import {typography as typographyTokens} from './token-groups/typography';
 import {zIndex as zIndexTokens} from './token-groups/zIndex';
-import {tokensToRems} from './utilities';
 
-/**
- * Values to convert to CSS custom properties.
- * @example {background: '#000'} // --p-background: #000;
- */
-export interface TokenProperties {
-  description?: string;
-  value: string;
-}
-
-export interface TokenGroup {
-  [token: string]: TokenProperties;
-}
-export interface Tokens {
-  breakpoints: TokenGroup;
-  colors: TokenGroup;
-  depth: TokenGroup;
-  legacy: TokenGroup;
-  motion: TokenGroup;
-  shape: TokenGroup;
-  spacing: TokenGroup;
-  typography: TokenGroup;
-  zIndex: TokenGroup;
-}
-
-export const breakpoints: TokenGroup = tokensToRems(breakpointsTokens);
-export const colors: TokenGroup = colorsTokens;
-export const depth: TokenGroup = depthTokens;
-export const legacy: TokenGroup = tokensToRems(legacyTokens);
-export const motion: TokenGroup = tokensToRems(motionTokens);
-export const shape: TokenGroup = tokensToRems(shapeTokens);
-export const spacing: TokenGroup = tokensToRems(spacingTokens);
-export const typography: TokenGroup = tokensToRems(typographyTokens);
-export const zIndex: TokenGroup = zIndexTokens;
+export const breakpoints = breakpointsTokens;
+export const colors = colorsTokens;
+export const depth = depthTokens;
+export const legacy = legacyTokens;
+export const motion = motionTokens;
+export const shape = shapeTokens;
+export const spacing = spacingTokens;
+export const typography = typographyTokens;
+export const zIndex = zIndexTokens;
 
 export const tokens = createTokens({
   breakpoints,
@@ -60,6 +35,6 @@ export const tokens = createTokens({
  * Identity function that simply returns the provided tokens, but additionally
  * validates the input matches the `Tokens` type exactly and infers all members.
  */
-function createTokens<T extends Exact<Tokens, T>>(tokens: T) {
+function createTokens<T extends Exact<MetaTokens, T>>(tokens: T) {
   return tokens;
 }

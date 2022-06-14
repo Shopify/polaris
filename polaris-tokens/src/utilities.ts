@@ -1,5 +1,4 @@
-import type {Exact} from './types';
-import type {Tokens, TokenGroup} from './tokens';
+import type {Exact, MetaTokenGroup, Tokens, TokenGroup} from './types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -69,14 +68,16 @@ export function toRem(value = '') {
   }
 }
 
-function rem(value: string) {
+export function rem(value: string) {
   return value.replace(
     new RegExp(`${DIGIT_REGEX.source}(${UNIT_PX})`, 'g'),
     (px: string) => toRem(px) ?? px,
   );
 }
 
-export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
+export function tokensToRems<T extends Exact<MetaTokenGroup, T>>(
+  tokenGroup: T,
+) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,

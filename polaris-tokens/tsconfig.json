@@ -5,7 +5,7 @@
     "declarationDir": "dist/types",
     "emitDeclarationOnly": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "build-internal"
   },
-  "include": ["src"]
+  "include": ["build-internal"]
 }

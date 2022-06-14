@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {Tokens, TokenGroup} from '../src';
+import {MetaTokens, MetaTokenGroup} from '../src';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -12,7 +12,7 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(tokens: Tokens) {
+export function getStaticCustomProperties(tokens: MetaTokens) {
   return Object.entries(tokens)
     .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
     .join('');
@@ -21,7 +21,7 @@ export function getStaticCustomProperties(tokens: Tokens) {
 /**
  * Creates CSS custom properties for a given tokens object.
  */
-export function getCustomProperties(tokenGroup: TokenGroup) {
+export function getCustomProperties(tokenGroup: MetaTokenGroup) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
@@ -34,14 +34,14 @@ export function getCustomProperties(tokenGroup: TokenGroup) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-export function getKeyframes(motion: TokenGroup) {
+export function getKeyframes(motion: MetaTokenGroup) {
   return Object.entries(motion)
     .filter(([token]) => token.startsWith('keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
-export async function toStyleSheet(tokens: Tokens) {
+export async function toStyleSheet(tokens: MetaTokens) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
