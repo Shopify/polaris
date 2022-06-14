@@ -14,25 +14,25 @@ keywords:
   - number
   - range form
 examples:
-  - fileName: default-range-slider.tsx
+  - fileName: range-slider-default.tsx
     title: Default range slider
     description: undefinedundefined
-  - fileName: min-and-max-range-control.tsx
+  - fileName: range-slider-min-and-max-control.tsx
     title: Min and max range control
     description: >-
       Use when a single value needs to be selected from a number range with a
       specific minimum and maximum.
-  - fileName: step-incremented-range-control.tsx
+  - fileName: range-slider-step-incremented-control.tsx
     title: Step incremented range control
     description: >-
       Use when a single value of a specific increment needs to be selected from
       a range of numbers.
-  - fileName: prefix-and-suffix-elements.tsx
+  - fileName: range-slider-prefix-and-suffix-elements.tsx
     title: Prefix and suffix elements
     description: >-
       Use when the start or end of the range input benefits from additional
       content.
-  - fileName: dual-thumb-range-slider.tsx
+  - fileName: range-slider-dual-thumb.tsx
     title: Dual thumb range slider
     description: Use when two values need to be selected from a range of numbers.
 ---

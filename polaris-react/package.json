@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.14.1",
+  "version": "9.15.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -82,7 +82,6 @@
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^3.2.4",
     "@shopify/storybook-a11y-test": "0.4.3",
-    "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.4.19",
@@ -97,6 +96,7 @@
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
+    "chromatic": "^6.5.4",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
     "create-file-webpack": "^1.0.2",
@@ -119,8 +119,6 @@
     "sass-loader": "^12.4.0",
     "semver": "^6.3.0",
     "shx": "^0.3.2",
-    "size-limit": "^5.0.3",
-    "storybook-addon-performance": "^0.16.1",
     "svgo": "^2.8.0",
     "webpack": "5"
   },
@@ -133,27 +131,5 @@
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
     "ios >= 13.4"
-  ],
-  "size-limit": [
-    {
-      "name": "cjs",
-      "path": "build/cjs/index.js",
-      "limit": "180 kB"
-    },
-    {
-      "name": "esm",
-      "path": "build/esm/index.js",
-      "limit": "105 kB"
-    },
-    {
-      "name": "esnext",
-      "path": "build/esnext/index.esnext",
-      "limit": "160 kB"
-    },
-    {
-      "name": "css",
-      "path": "build/esm/styles.css",
-      "limit": "45 kB"
-    }
   ]
 }

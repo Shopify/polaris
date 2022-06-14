@@ -15,17 +15,17 @@ keywords:
   - ios
   - android
 examples:
-  - fileName: bulleted-list.tsx
+  - fileName: list-bulleted.tsx
     title: Bulleted list
     description: >-
       Use for a text-only list of related items that don’t need to be in a
       specific order and don’t require an icon or other
-      indicator.undefinedundefined
-  - fileName: numbered-list.tsx
+      indicator.
+  - fileName: list-numbered.tsx
     title: Numbered list
     description: >-
       Use for a text-only list of related items when an inherent order,
-      priority, or sequence needs to be communicated.undefinedundefined
+      priority, or sequence needs to be communicated.
 ---
 
 # List

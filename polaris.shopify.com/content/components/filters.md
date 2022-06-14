@@ -10,15 +10,15 @@ keywords:
   - list filter
   - table
 examples:
-  - fileName: filtering-with-a-resource-list.tsx
+  - fileName: filters-with-a-resource-list.tsx
     title: Filtering with a resource list
-  - fileName: filtering-with-a-data-table.tsx
+  - fileName: filters-with-a-data-table.tsx
     title: Filtering with a data table
   - fileName: filters-with-children-content.tsx
     title: Filters with children content
-  - fileName: all-filters-disabled.tsx
+  - fileName: filters-all-disabled.tsx
     title: All filters disabled
-  - fileName: some-filters-disabled.tsx
+  - fileName: filters-some-disabled.tsx
     title: Some filters disabled
   - fileName: filters-without-clear-button.tsx
     title: Filters without clear button

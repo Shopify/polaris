@@ -25,11 +25,11 @@ keywords:
   - landing pages
   - landing layouts
 examples:
-  - fileName: default-empty-state.tsx
+  - fileName: empty-state-default.tsx
     title: Default empty state
     description: >-
       Use to explain a single feature before merchants have used
-      it.undefinedundefined
+      it.
   - fileName: empty-state-with-subdued-footer-context.tsx
     title: Empty state with subdued footer context
     description: >-

@@ -20,9 +20,9 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: typographic-heading.tsx
+  - fileName: heading-typographic.tsx
     title: Typographic heading
-    description: Use for the title of each top-level page section.undefinedundefined
+    description: Use for the title of each top-level page section.
 ---
 
 # Heading

@@ -67,7 +67,6 @@
   ul {
     li {
       margin-left: 0.95em;
-      padding-left: 0.05rem;
     }
   }
 
@@ -93,7 +92,7 @@
   ul li {
     position: relative;
     &::marker {
-      color: #aaa;
+      color: #999;
 
       @include dark-mode {
         color: #555;
@@ -130,7 +129,7 @@
   }
 
   strong {
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     color: var(--text-strong);
   }
 
@@ -170,9 +169,10 @@
 
 .Content {
   > p:first-of-type {
+    margin-top: 0;
     margin-bottom: 2rem;
     color: var(--text-strong);
-    font-size: var(--font-size-900);
-    letter-spacing: var(--letter-spacing-400);
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-300);
   }
 }

@@ -2,8 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
-import Longform from "../Longform";
-import { Tab } from "@headlessui/react";
 import Container from "../Container";
 import metadata from "@shopify/polaris-icons/metadata";
 const importedSvgs = require.context(
@@ -11,12 +9,12 @@ const importedSvgs = require.context(
   true,
   /\.svg$/
 );
-import { getTitleTagValue } from "../../utils/various";
+import { className, getTitleTagValue } from "../../utils/various";
 import IconGrid from "../IconGrid";
 import TextField from "../TextField";
 import CodeExample from "../CodeExample";
 import { LinkButton } from "../Button/Button";
-import Button from "../Button";
+import Image from "../Image";
 import { Icon } from "../../types";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
@@ -128,97 +126,113 @@ function IconsPage() {
 
         <div className={styles.Sidebar}>
           {selectedIcon && (
-            <div className={styles.SelectedIcon}>
-              {/* <div className={styles.Preview}>
-                <Image
-                  src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
-                  alt={metadata[selectedIcon.fileName].description}
-                  width={24}
-                  height={24}
-                />
-              </div> */}
+            <>
+              <div
+                className={className(styles.SidebarSection, styles.IconInfo)}
+              >
+                <div className={styles.Preview}>
+                  <div className={styles.PreviewImage}>
+                    <Image
+                      src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
+                      alt={metadata[selectedIcon.fileName].description}
+                      width={20}
+                      height={20}
+                      icon
+                    />
+                  </div>
+                  <div className={styles.IconSet}>{selectedIcon.set}</div>
+                </div>
 
-              <h2 className={styles.IconName}>
-                {selectedIcon.name} <span>{selectedIcon.set}</span>
-              </h2>
+                <h2 className={styles.IconName}>{selectedIcon.name}</h2>
 
-              {selectedIcon.description !== "N/A" && (
-                <p className={styles.IconDescription}>
-                  {selectedIcon.description}
-                </p>
-              )}
+                {selectedIcon.description !== "N/A" && (
+                  <p className={styles.IconDescription}>
+                    {selectedIcon.description}
+                  </p>
+                )}
 
-              <p className={styles.Keywords}>
-                {selectedIcon.keywords
-                  .filter((keyword) => keyword !== "N/A")
-                  .map((keyword) => {
-                    return (
-                      <Button
-                        type="button"
-                        key={keyword}
-                        onClick={() => setFilterString(`${keyword}`)}
-                        small
-                      >
-                        {keyword}
-                      </Button>
-                    );
-                  })}
-              </p>
+                <div className={styles.Keywords}>
+                  {selectedIcon.keywords
+                    .filter((keyword) => keyword !== "N/A")
+                    .map((keyword) => {
+                      return (
+                        <button
+                          type="button"
+                          key={keyword}
+                          onClick={() => setFilterString(`${keyword}`)}
+                        >
+                          {keyword}
+                        </button>
+                      );
+                    })}
+                </div>
 
-              <div className={styles.ActionButtons}>
-                <LinkButton
-                  href={
-                    importedSvgs(`./${selectedIcon.fileName}.svg`).default.src
-                  }
-                  download
-                  primary
-                >
-                  Download SVG
-                </LinkButton>
+                <div className={styles.ActionButtons}>
+                  <LinkButton
+                    href={
+                      importedSvgs(`./${selectedIcon.fileName}.svg`).default.src
+                    }
+                    download
+                    primary
+                    fill
+                  >
+                    Download SVG
+                  </LinkButton>
+                </div>
               </div>
 
-              <h3>Figma usage</h3>
-              <p>
-                Use the{" "}
-                <a href="https://www.figma.com/community/file/1110993965108325096">
-                  Polaris Icon Library
-                </a>{" "}
-                to access all icons right inside Figma.
-              </p>
+              <div className={styles.SidebarSection}>
+                <h3>Figma</h3>
+                <p className={styles.SmallParagraph}>
+                  Use the{" "}
+                  <a href="https://www.figma.com/community/file/1110993965108325096">
+                    Polaris Icon Library
+                  </a>{" "}
+                  to access all icons right inside Figma.
+                </p>
+              </div>
 
-              <h3>React usage</h3>
-              <p>
-                Import the icon from{" "}
-                <a href="https://www.npmjs.com/package/@shopify/polaris-icons#usage">
-                  polaris-icons
-                </a>
-                :
-              </p>
+              <div className={styles.SidebarSection}>
+                <h3>React</h3>
+                <p className={styles.SmallParagraph}>
+                  Import the icon from{" "}
+                  <a href="https://www.npmjs.com/package/@shopify/polaris-icons#usage">
+                    polaris-icons
+                  </a>
+                  :
+                </p>
 
-              <CodeExample title="Import" language="typescript">
-                {`import {
+                <div className={styles.CodeExampleWrapper}>
+                  <CodeExample language="typescript">
+                    {`import {
   ${selectedIcon.name}
 } from '@shopify/polaris-icons';`}
-              </CodeExample>
+                  </CodeExample>
+                </div>
 
-              <p>
-                Then render it using the{" "}
-                <a href="https://polaris.shopify.com/components/images-and-icons/icon">
-                  icon component
-                </a>
-                :
-              </p>
-              <CodeExample title="Component" language="typescript">
-                {`<Icon
+                <p className={styles.SmallParagraph}>
+                  Then render it using the{" "}
+                  <a href="https://polaris.shopify.com/components/images-and-icons/icon">
+                    icon component
+                  </a>
+                  :
+                </p>
+
+                <div className={styles.CodeExampleWrapper}>
+                  <CodeExample language="typescript">
+                    {`<Icon
   source={${selectedIcon.name}}
   color="base"
 />`}
-              </CodeExample>
-
-              <a className={styles.ProposeChangeLink} href={updateURL}>
-                Propose a change to this icon
-              </a>
-            </div>
+                  </CodeExample>
+                </div>
+              </div>
+              <div className={styles.SidebarSection}>
+                <div className={styles.ProposeChange}>
+                  <a href={updateURL}>Propose a change to this icon</a>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>

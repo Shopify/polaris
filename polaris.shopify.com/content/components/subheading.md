@@ -16,11 +16,11 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: typographic-subheading.tsx
+  - fileName: subheading-typographic.tsx
     title: Typographic subheading
     description: >-
       Used for the title of any sub-sections in top-level page
-      sections.undefinedundefined
+      sections.
 ---
 
 # Subheading

@@ -8,12 +8,12 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: page-with-dynamic-content.tsx
+  - fileName: skeleton-page-with-dynamic-content.tsx
     title: Page with dynamic content
     description: >-
       Use this component to compose a loading version of a page where the page
       title and header content are dynamic, meaning, the content changes.
-  - fileName: page-with-static-content.tsx
+  - fileName: skeleton-page-with-static-content.tsx
     title: Page with static content
     description: >-
       Use this component to compose a loading version of a page where the page

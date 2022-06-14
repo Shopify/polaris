@@ -61,12 +61,12 @@ examples:
     description: >-
       Use when the page doesn’t represent a list of objects or a detail view for
       an object.
-  - fileName: full-width-page.tsx
+  - fileName: page-full-width.tsx
     title: Full-width page
     description: >-
       Use for layouts that benefit from more screen width, such as wide tables
       or lists.
-  - fileName: narrow-width-page.tsx
+  - fileName: page-narrow-width.tsx
     title: Narrow width page
     description: >-
       Use a narrow width layout if the page supports a single unified task. When
@@ -80,7 +80,7 @@ examples:
       particularly when there are too many to display as secondary actions. Note
       that these groups will be further rolled up into a single action for
       smaller displays so that actions do not wrap or overflow the page bounds.
-  - fileName: page-with-content-after-title--title-metadata-.tsx
+  - fileName: page-with-content-after-title-title-metadata.tsx
     title: Page with content after title (title metadata)
     description: >-
       Title metadata appears immediately after the page’s title. Use it to

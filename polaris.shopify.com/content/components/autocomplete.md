@@ -8,15 +8,15 @@ keywords:
   - combobox
   - listbox
 examples:
-  - fileName: basic-autocomplete.tsx
+  - fileName: autocomplete-basic.tsx
     title: Basic autocomplete
     description: Use to help merchants complete text input quickly from a list of options.
-  - fileName: multiple-tags-autocomplete.tsx
+  - fileName: autocomplete-multiple-tags.tsx
     title: Multiple tags autocomplete
     description: >-
       Use to help merchants select multiple options from a list curated by the
       text input.
-  - fileName: multiple-sections-autocomplete.tsx
+  - fileName: autocomplete-multiple-sections.tsx
     title: Multiple sections autocomplete
     description: >-
       Use to help merchants complete text input quickly from a multiple sections

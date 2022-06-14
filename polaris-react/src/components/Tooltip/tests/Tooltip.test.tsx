@@ -121,21 +121,6 @@ describe('<Tooltip />', () => {
       accessibilityLabel,
     });
   });
-
-  it('invokes stopPropagation', () => {
-    const stopPropagationSpy = jest.fn();
-    const tooltip = mountWithApp(
-      <Tooltip content="Inner content">
-        <Link>link content</Link>
-      </Tooltip>,
-    );
-
-    tooltip
-      .find('span')!
-      .trigger('onClick', {stopPropagation: stopPropagationSpy});
-
-    expect(stopPropagationSpy).toHaveBeenCalled();
-  });
 });
 
 function findWrapperComponent(tooltip: any) {

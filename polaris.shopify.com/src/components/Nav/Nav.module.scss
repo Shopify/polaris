@@ -1,24 +1,26 @@
 @import "../../styles/fonts.scss";
 
 .Nav {
+  margin-top: 0.25rem;
+
   ul {
     margin-bottom: 1rem;
   }
 
   ul ul {
     position: relative;
-    padding-left: 0.75rem;
+    // padding-left: 0.75rem;
 
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0.4rem;
-      bottom: 0.4rem;
-      width: 1px;
-      left: 0;
-      background: var(--border-color);
-    }
+    // &::before {
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   top: 0.4rem;
+    //   bottom: 0.4rem;
+    //   width: 1px;
+    //   left: 0;
+    //   background: var(--border-color);
+    // }
   }
 
   > ul > li {
@@ -32,13 +34,13 @@
     display: inline-block;
     font-size: var(--font-size-300);
     font-weight: var(--font-weight-500);
-    letter-spacing: var(--letter-spacing-300);
     color: var(--text-strong);
     margin-bottom: 0.25rem;
   }
 
   a {
-    display: inline-block;
+    display: block;
+    padding: 1px 0;
     position: relative;
     color: inherit;
     font-size: var(--font-size-100);

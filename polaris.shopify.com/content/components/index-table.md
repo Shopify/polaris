@@ -27,12 +27,12 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: simple-index-table.tsx
+  - fileName: index-table-simple.tsx
     title: Simple index table
     description: >-
       A index table with simple items and no bulk actions, sorting, or
       filtering.
-  - fileName: simple-small-screen-index-table.tsx
+  - fileName: index-table-simple-small-screen.tsx
     title: Simple small screen index table
     description: >-
       A small screen index table with simple items and no bulk actions, sorting,
@@ -80,7 +80,7 @@ examples:
     description: >-
       Use as a broad example that includes most of the elements and props
       available to index table.
-  - fileName: small-screen-index-table-with-all-of-its-elements.tsx
+  - fileName: index-table-small-screen-with-all-of-its-elements.tsx
     title: Small screen IndexTable with all of its elements
     description: >-
       Use as a broad example that includes most of the elements and props

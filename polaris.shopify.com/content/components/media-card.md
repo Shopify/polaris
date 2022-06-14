@@ -12,10 +12,10 @@ keywords:
   - card with thumbnail
   - thumbnail card
 examples:
-  - fileName: basic-media-card.tsx
+  - fileName: media-card-basic.tsx
     title: Basic media card
     description: Use to surface educational information about a feature or opportunity.
-  - fileName: basic-media-card-with-small-visual.tsx
+  - fileName: media-card-basic-with-small-visual.tsx
     title: Basic media card with small visual
     description: >-
       Use when there are limited vertical space, or when the card should be less
@@ -28,12 +28,12 @@ examples:
   - fileName: media-card-with-no-actions.tsx
     title: Media card with no actions
     description: Use when media card does not require any actions.
-  - fileName: video-card.tsx
+  - fileName: media-card-video-card.tsx
     title: Video card
     description: >-
       Use to provide a consistent layout for contextual learning content. Use to
       wrap thumbnails of educational videos about Shopify features in context.
-  - fileName: portrait-video-card.tsx
+  - fileName: media-card-portrait-video-card.tsx
     title: Portrait video card
     description: >-
       Use when vertical screen space is not limited or when the video card is

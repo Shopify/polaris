@@ -7,7 +7,7 @@ keywords:
   - loading
   - loading bar
 examples:
-  - fileName: default-loading.tsx
+  - fileName: loading-default.tsx
     title: Default loading
     description: Use to indicate that the page is loading.
 ---
