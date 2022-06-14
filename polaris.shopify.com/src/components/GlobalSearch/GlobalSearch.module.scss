@@ -7,14 +7,13 @@
   --focus-outline: 0 0 0 2px #222, 0 0 0 4px #fff;
 
   input {
-    background: var(--surface-subdued) url(./SearchMajor.svg) no-repeat 14px
-      center;
+    background: var(--surface) url(./SearchMajor.svg) no-repeat 14px center;
     border: none;
     padding: 0.66rem 0.66rem 0.66rem 40px;
     background-size: 16px auto;
-    font-weight: 435;
     font-size: var(--font-size-100);
     border-radius: 16px;
+    box-shadow: inset 0 0 0 1px var(--border-color);
 
     &:focus {
       position: relative;
@@ -22,7 +21,7 @@
     }
 
     &::placeholder {
-      color: inherit;
+      color: var(--text-subdued);
     }
 
     &::-webkit-search-decoration,

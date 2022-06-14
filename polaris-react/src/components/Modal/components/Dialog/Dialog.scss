@@ -58,7 +58,7 @@ $breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertic
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @media #{$breakpoints-frame-when-nav-hidden} {
+  @media #{$breakpoints-frame-when-nav-hidden-down} {
     bottom: 0;
     max-height: 100%;
   }

@@ -2,13 +2,19 @@
 @import "fonts.scss";
 @import "mixins.scss";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 // Place CSS variables on body so that we can
 // utilize the .dark-mode class to flip the colors
 body {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 80px;
+  --header-height: 72px;
   --narrow-content-width: 720px;
   --header-margin: 4.5rem;
+
+  @media screen and (max-width: $breakpointDesktopLarge) {
+    --header-margin: 3rem;
+  }
 
   @media screen and (max-width: $breakpointDesktop) {
     --header-height: 60px;
@@ -16,42 +22,41 @@ body {
   }
 
   --focus-outline: 0 0 0 2px var(--text-strong);
-
-  --text: #4a4c4e;
+  --text: #333;
   --text-strong: #111212;
   --text-subdued: #777;
-  --text-light: #999;
   --text-link: #2e5dba;
-  --surface: #ffffff;
+  --surface: #fff;
   --surface-subdued: #f6f6f6;
+  --surface-subdued: #fbfbfb;
   --primary: #008060;
   --border-color: #dedede;
   --border-color-light: #ededed;
   --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
-  --card-shadow: none;
+  --card-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
-  --decorative-1: #e9f1e2;
-  --decorative-2: #fdecd5;
-  --decorative-3: #e1f3f5;
-  --decorative-4: #f0edff;
+  --decorative-1: #dfefd2;
+  --decorative-2: #ffe6cd;
+  --decorative-3: #f8dff1;
+  --decorative-4: #dce0f5;
   --backdrop: rgba(0, 0, 0, 0.5);
 
   &.dark-mode {
     --text: #aaa;
     --text-strong: #e7e7e7;
     --text-subdued: #777;
-    --text-light: #999;
     --text-link: #6995ee;
     --surface: #202021;
     --surface-subdued: #2e2e30;
     --primary: #1aab87;
     --border-color: #555;
-    --border-color-light: #2a2a2a;
+    --border-color-light: #343434;
     --border-inset-color: #555;
     --border: 1px solid var(--border-color);
-    --card-shadow: none;
+    --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%),
+      0 1px 2px rgb(255 255 255 / 4%);
     --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
       0 0 0 0.5px var(--border-color);
     --decorative-1: #204400;
@@ -65,6 +70,7 @@ body {
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
 
   // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
@@ -87,6 +93,7 @@ body {
   --font-size-2000: 5.852rem;
 
   @media screen and (max-width: $breakpointMobile) {
+    --font-size-100: 0.75rem;
     --font-size-100: 0.85rem;
     --font-size-200: 0.9rem;
     --font-size-300: 0.95rem;
@@ -161,7 +168,7 @@ video {
 }
 
 html {
-  font-size: 19px;
+  font-size: 17px;
 
   @media screen and (max-width: $breakpointMobile) {
     font-size: 16px;
@@ -170,12 +177,11 @@ html {
 
 body {
   background: var(--surface);
-  font-family: ShopifySans, "shopify sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-variant-ligatures: common-ligatures contextual discretionary-ligatures;
   font-feature-settings: "kern", "liga", "clig", "calt", "dlig";
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--text);
   font-weight: var(--font-weight-400);
 }

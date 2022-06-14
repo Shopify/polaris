@@ -42,7 +42,7 @@ function NavItems({ currentSection, handleCloseMenu }: Props) {
           <li key={url}>
             <Link href={url} passHref>
               <a aria-current={isCurrent} onClick={handleCloseMenu}>
-                {label}
+                <span>{label}</span>
               </a>
             </Link>
           </li>

@@ -14,42 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
-
-        <link
-          rel="preload"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-          href="/fonts/ShopifySans--light.woff2"
-        />
-        <link
-          rel="preload"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-          href="/fonts/ShopifySans--regular.woff2"
-        />
-        <link
-          rel="preload"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-          href="/fonts/ShopifySans--medium.woff2"
-        />
-        <link
-          rel="preload"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-          href="fonts/ShopifySans--bold.woff2"
-        />
-        <link
-          rel="preload"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-          href="/fonts/ShopifySans--extrabold.woff2"
-        />
       </Head>
 
       <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>

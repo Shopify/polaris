@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { navItems } from "../../data/navItems";
-import { getTitleTagValue, slugify } from "../../utils/various";
+import { getTitleTagValue } from "../../utils/various";
 import styles from "./FoundationsIndexPage.module.scss";
 import Link from "next/link";
 import Layout from "../Layout";
@@ -20,11 +20,29 @@ function FoundationsIndexPage({}: Props) {
             const url = category.children && category.children[0].url;
             if (!url) return null;
             return (
-              <Link key={category.title} href={url}>
-                <a className={styles.Category}>
+              <div key={category.title} className={styles.Category}>
+                <div className={styles.Text}>
                   <h2>{category.title}</h2>
-                </a>
-              </Link>
+                  <ul>
+                    {category.children?.map((child) => {
+                      if (!child.url) return null;
+                      return (
+                        <li key={child.title}>
+                          <Link href={child.url} passHref>
+                            <a>
+                              <h4>{child.title}</h4>
+                              <p>
+                                Lorem ipsum dolor et amet consecteur lorem ipsum
+                                dolor et amet lorem ipsum dolor consecteur et.
+                              </p>
+                            </a>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
             );
           })}
         </div>
