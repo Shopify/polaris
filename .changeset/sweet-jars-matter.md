@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added the ability to use "start" or "end" in the Button's textAlign property
+Added support for setting `start` and `end` on the `Button` `textAlign` prop
