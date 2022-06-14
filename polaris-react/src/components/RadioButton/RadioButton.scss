@@ -44,7 +44,7 @@
 .Backdrop {
   // ::before is the selected dot, ::after the focus-ring
 
-  @include when-typography-condensed {
+  @media #{$breakpoints-typography-not-condensed-down} {
     --p-icon-size-small: 10px;
   }
 
