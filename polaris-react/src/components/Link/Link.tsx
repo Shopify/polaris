@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {BannerContext} from '../../utilities/banner-context';
@@ -23,7 +23,7 @@ export interface LinkProps {
   /** Removes text decoration underline to the link*/
   removeUnderline?: boolean;
   /** Callback when a link is clicked */
-  onClick?(): void;
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
 }
