@@ -28,7 +28,7 @@ $portrait-breakpoint: 804px;
     }
   }
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-page-content-when-not-fully-condensed-up} {
     border-top-left-radius: var(--p-border-radius-2);
     border-top-right-radius: var(--p-border-radius-2);
   }
