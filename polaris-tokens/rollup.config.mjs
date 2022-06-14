@@ -1,17 +1,17 @@
-import path from 'path';
+import {readFileSync} from 'fs';
+import * as path from 'path';
 
-import nodeResolve from '@rollup/plugin-node-resolve';
+import {babel} from '@rollup/plugin-babel';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
 
-import pkg from './package.json';
-
+const pkg = JSON.parse(
+  readFileSync(new URL('./package.json', import.meta.url).pathname),
+);
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-/**
- * @type {import('rollup').RollupOptions}
- */
-const rollupOptions = {
+/** @type {import('rollup').RollupOptions} */
+export default {
   input: 'src/index.ts',
   output: [
     {
@@ -45,6 +45,3 @@ const rollupOptions = {
     ...Object.keys(pkg.peerDependencies ?? {}),
   ],
 };
-
-// eslint-disable-next-line import/no-default-export
-export default rollupOptions;
