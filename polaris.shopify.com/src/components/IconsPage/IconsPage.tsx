@@ -167,7 +167,6 @@ function IconsPage() {
                 </div>
 
                 <div className={styles.ActionButtons}>
-                  {console.log(selectedIcon.fileName)}
                   <a
                     className={styles.DownloadIconButton}
                     href={`/icons/${selectedIcon.fileName}.svg`}
