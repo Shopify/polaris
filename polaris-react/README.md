@@ -98,26 +98,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 ### Testing in a consuming project
 
-1. In your terminal, run `yarn run build-consumer PROJECT_DIRECTORY` from the polaris-react repo
-
-`PROJECT_DIRECTORY` is where the build will be copied, which must be a sibling of the `polaris-react` directory.
-
-```sh
-# Example
-yarn run build-consumer polaris-styleguide
-```
-
-2. In your terminal, open a second tab and run `dev up && dev run` from the `polaris-styleguide` repository (or `yarn install && yarn dev` in your consuming project)
-
-In the example above, the build is copied to `polaris-styleguide/node_modules/@shopify/polaris`. And in this case, a rebuild of `polaris-styleguide` is required after copying the `polaris-react` build, but may not be the case for all consuming projects.
-
-```sh
-# Example
-cd ../polaris-styleguide/
-yarn run build:development
-```
-
-Also, when running `yarn install`, copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
+The `/snapit` GitHub comment command in pull requests will publish a snapshot NPM package for testing. Read the [release documentation](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release) for more information.
 
 #### Manual visual regression testing
 

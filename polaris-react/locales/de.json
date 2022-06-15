@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Aktionen für {title} anzeigen"
       }
+    },
+    "FullscreenBar": {
+      "back": "Zurück",
+      "accessibilityLabel": "Vollbildmodus beenden"
     }
   }
 }

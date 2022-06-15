@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "{title} ile ilgili işlemleri görüntüle"
       }
+    },
+    "FullscreenBar": {
+      "back": "Geri",
+      "accessibilityLabel": "Tam ekran modundan çık"
     }
   }
 }

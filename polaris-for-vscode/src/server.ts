@@ -1,4 +1,4 @@
-import {tokens, createVar} from '@shopify/polaris-tokens';
+import {createVar, tokens, TokenProperties} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
@@ -34,12 +34,15 @@ const groupedCompletionItems = Object.fromEntries(
       const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
         tokenGroup,
       ).map(
-        ([token, {value, description}]): CompletionItem => ({
-          label: createVar(token),
-          insertText: `${createVar(token)}`,
-          detail: value,
-          documentation: description,
-          filterText: createVar(token),
+        ([tokenName, tokenProperties]: [
+          string,
+          TokenProperties,
+        ]): CompletionItem => ({
+          label: createVar(tokenName),
+          insertText: `${createVar(tokenName)}`,
+          detail: tokenProperties.value,
+          documentation: tokenProperties.description,
+          filterText: createVar(tokenName),
           kind:
             groupedCompletionItemsKey === 'color'
               ? CompletionItemKind.Color

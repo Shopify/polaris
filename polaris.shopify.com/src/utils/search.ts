@@ -1,11 +1,26 @@
-import { SearchResult } from "../types";
-import { createVar, tokens } from "@shopify/polaris-tokens";
+import {
+  SearchResultCategory,
+  SearchResults,
+  ComponentsSearchResult,
+  FoundationsSearchResult,
+  IconsSearchResult,
+  TokensSearchResult,
+  GroupedSearchResults,
+} from "../types";
+import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
-import metadata from '@shopify/polaris-icons/metadata';
+import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
-import guidelines from "../data/guidelines.json";
+import foundations from "../data/foundations.json";
+
+const MAX_RESULTS: { [key: string]: number } = {
+  Foundations: 3,
+  Components: 2,
+  Tokens: 5,
+  Icons: 14,
+};
 
 const {
   colorSchemes: { light: colorLight },
@@ -17,17 +32,18 @@ const {
   zIndex,
 } = tokens;
 
-let results: SearchResult = [];
+let results: SearchResults = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   results.push({
     category: "Components",
-    title: name,
-    excerpt: stripMarkdownLinks(intro),
-    url: `/components/${slugify(category)}/${slugify(name)}`,
-    keywords,
-    meta: {},
+    score: 0,
+    url: `/components/${slugify(name)}`,
+    meta: {
+      name,
+      description: stripMarkdownLinks(intro),
+    },
   });
 });
 
@@ -35,12 +51,14 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
     category: "Tokens",
-    title: `--p-${tokenName}`,
-    excerpt: "",
+    score: 0,
     url: `/tokens/colors#${tokenName}`,
-    keywords: [],
     meta: {
-      colorToken: { value: tokenValue.value },
+      token: {
+        name: tokenName,
+        description: tokenValue.description || "",
+        value: tokenValue.value,
+      },
     },
   });
 });
@@ -48,34 +66,39 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 // Add other tokens
 const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
-  Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
-    results.push({
-      category: "Tokens",
-      title: createVar(tokenName),
-      excerpt: "",
-      url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
-      keywords: [],
-      meta: {},
-    });
-  });
+  Object.entries(tokenGroup).forEach(
+    ([tokenName, tokenProperties]: [string, TokenProperties]) => {
+      results.push({
+        category: "Tokens",
+        score: 0,
+        url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
+        meta: {
+          token: {
+            name: tokenName,
+            description: tokenProperties.description || "",
+            value: tokenProperties.value,
+          },
+        },
+      });
+    }
+  );
 });
 
 // Add icons
-Object.keys(metadata).forEach(fileName => {
+Object.keys(metadata).forEach((fileName) => {
+  const { name, set, description, keywords } = metadata[fileName];
   results.push({
     category: "Icons",
-    title: `${metadata[fileName].name} (${metadata[fileName].set})`,
-    excerpt: metadata[fileName].description,
     url: `/icons#${fileName}`,
-    keywords: metadata[fileName].keywords,
+    score: 0,
     meta: {
-      icon: { fileName },
+      icon: { fileName, keywords, name, description, set },
     },
   });
 });
 
-// Add guidelines
-guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
+// Add foundations
+foundations.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
   const parts = name.split("/");
   if (parts.length >= 2) {
     const sectionSlug = slugify(parts[0]);
@@ -84,58 +107,95 @@ guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
     if (allowedSections.includes(sectionSlug)) {
       const title = parts[parts.length - 1];
 
-      const url = `/guidelines/${sectionSlug}/${slug}`;
+      const url = `/foundations/${sectionSlug}/${slug}`;
 
       results.push({
-        category: "Guidelines",
-        title,
-        excerpt: intro,
+        category: "Foundations",
+        score: 0,
         url,
-        keywords: keywords as string[],
-        meta: {},
+        meta: {
+          title,
+          excerpt: intro,
+        },
       });
     }
   }
 });
 
 const fuse = new Fuse(results, {
-  keys: [{ name: "title", weight: 50 }, "excerpt", "url", "keywords"],
+  keys: [
+    { name: "meta.title", weight: 100 },
+    { name: "meta.name", weight: 100 },
+    { name: "meta.description", weight: 50 },
+    { name: "meta.excerpt", weight: 50 },
+    { name: "meta.token.name", weight: 200 },
+    // { name: "meta.token.description", weight: 50 },
+    { name: "meta.token.value", weight: 50 },
+    { name: "meta.icon.fileName", weight: 50 },
+    { name: "meta.icon.keywords", weight: 20 },
+    { name: "meta.icon.set", weight: 20 },
+    // { name: "meta.icon.description", weight: 50 },
+  ],
   includeScore: true,
-  threshold: 0.1,
+  threshold: 0.5,
+  shouldSort: true,
+  ignoreLocation: true,
 });
 
-export function search(query: string): SearchResult {
-  let topScores: {
-    [key in SearchResult[number]["category"]]: number;
-  } = {
-    Components: 0,
-    Guidelines: 0,
-    Icons: 0,
-    Tokens: 0,
+export function search(query: string): GroupedSearchResults {
+  const groupedResults: GroupedSearchResults = {
+    Foundations: { results: [], maxScore: 0 },
+    Components: { results: [], maxScore: 0 },
+    Tokens: { results: [], maxScore: 0 },
+    Icons: { results: [], maxScore: 0 },
   };
 
   if (query.length > 0) {
     const fuseResults = fuse.search(query);
 
-    fuseResults.forEach((result) => {
-      const category = result.item.category;
-      if (
-        result.score &&
-        (topScores[category] === null || topScores[category] < result.score)
-      ) {
-        topScores[category] = result.score;
-      }
+    const scoredResults: SearchResults = fuseResults.map((result) => ({
+      ...result.item,
+      score: result.score || 0,
+    }));
+
+    groupedResults["Foundations"].results = scoredResults
+      .filter((result) => result.category === "Foundations")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      }))
+      .slice(0, MAX_RESULTS["Foundations"]) as FoundationsSearchResult[];
+
+    groupedResults["Components"].results = scoredResults
+      .filter((result) => result.category === "Components")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      }))
+      .slice(0, MAX_RESULTS["Components"]) as ComponentsSearchResult[];
+
+    groupedResults["Tokens"].results = scoredResults
+      .filter((result) => result.category === "Tokens")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      }))
+      .slice(0, MAX_RESULTS["Tokens"]) as TokensSearchResult[];
+
+    groupedResults["Icons"].results = scoredResults
+      .filter((result) => result.category === "Icons")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      }))
+      .slice(0, MAX_RESULTS["Icons"]) as IconsSearchResult[];
+
+    Object.keys(groupedResults).forEach((category) => {
+      const typedCategory = category as SearchResultCategory;
+      groupedResults[typedCategory].maxScore =
+        groupedResults[typedCategory].results[0]?.score || 0;
     });
-
-    const groupedResults = fuseResults
-      .map((item) => item.item)
-      .sort((a, b) => {
-        return topScores[a.category] - topScores[b.category];
-      })
-      .slice(0, 20);
-
-    return groupedResults;
   }
 
-  return [];
+  return groupedResults;
 }

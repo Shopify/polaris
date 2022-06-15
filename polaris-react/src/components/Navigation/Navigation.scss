@@ -25,7 +25,7 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     max-width: $layout-width-nav-base;
     @include safe-area-for(max-width, $layout-width-nav-base, left);
   }
@@ -38,7 +38,7 @@ $nav-max-width: 360px;
 .ContextControl {
   min-height: $top-bar-height;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: none;
   }
 }
@@ -55,17 +55,14 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     padding-top: var(--p-space-4);
   }
 }
 
 .LogoContainer {
   display: none;
-  @include breakpoint-before(
-    $breakpoint: $nav-min-window-corrected,
-    $inclusive: false
-  ) {
+  @media #{$breakpoints-nav-min-window-corrected-down} {
     display: flex;
     flex: 0 0 $top-bar-height;
     align-items: center;
@@ -73,6 +70,10 @@ $nav-max-width: 360px;
     padding: 0 var(--p-space-2) 0 var(--p-space-4);
     @include safe-area-for(flex-basis, $top-bar-height, left);
     @include safe-area-for(padding-left, var(--p-space-4), left);
+  }
+
+  &.hasLogoSuffix {
+    gap: var(--p-space-2);
   }
 }
 
@@ -126,7 +127,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-background-pressed);
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     font-weight: var(--p-font-weight-medium);
   }
 }
@@ -149,7 +150,7 @@ $disabled-fade: 0.6;
   display: inline-flex;
   margin-top: var(--p-space-2);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     margin-top: var(--p-space-1);
   }
 }
@@ -164,7 +165,7 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     height: nav(desktop-height);
   }
 }
@@ -205,7 +206,7 @@ $disabled-fade: 0.6;
   padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     height: nav(desktop-height);
   }
 
@@ -288,7 +289,7 @@ $disabled-fade: 0.6;
       color: var(--p-text-primary);
     }
 
-    @include breakpoint-after($nav-min-window-corrected) {
+    @media #{$breakpoints-nav-min-window-corrected-up} {
       font-size: var(--p-font-size-3);
       line-height: 1;
       padding-left: var(--p-space-10);
@@ -364,7 +365,7 @@ $disabled-fade: 0.6;
     font-size: var(--p-font-size-2);
     color: var(--p-text-subdued);
 
-    @include when-typography-not-condensed {
+    @media #{$breakpoints-typography-not-condensed-up} {
       font-size: var(--p-font-size-1);
     }
   }
@@ -379,7 +380,7 @@ $disabled-fade: 0.6;
     padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-1);
 
-    @include breakpoint-after($nav-min-window-corrected) {
+    @media #{$breakpoints-nav-min-window-corrected-up} {
       height: nav(desktop-nav-height);
 
       // stylelint-disable selector-max-combinators

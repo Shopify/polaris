@@ -95,5 +95,15 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     [allResourcesSelected, resources, resourceIDResolver],
   );
 
-  return {selectedResources, allResourcesSelected, handleSelectionChange};
+  const clearSelection = useCallback(() => {
+    setSelectedResources([]);
+    setAllResourcesSelected(false);
+  }, []);
+
+  return {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+    clearSelection,
+  };
 }

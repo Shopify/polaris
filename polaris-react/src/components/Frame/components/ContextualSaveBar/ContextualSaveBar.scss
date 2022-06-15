@@ -27,7 +27,7 @@
 .LogoContainer {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -53,7 +53,7 @@
     padding: 0 var(--p-space-5);
   }
 
-  @include page-content-when-not-partially-condensed {
+  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
     padding: 0 var(--p-space-8);
   }
 }
@@ -80,7 +80,7 @@
 .ContextControl {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: block;
     width: $layout-width-nav-base;
   }

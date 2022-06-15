@@ -1,9 +1,9 @@
 import React from 'react';
-import {withPerformance} from 'storybook-addon-performance';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
+import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -41,10 +41,18 @@ function GridOverlayDecorator(Story, context) {
   );
 }
 
+function RenderPerformanceProfilerDecorator(Story, context) {
+  return (
+    <RenderPerformanceProfiler id={context.id} kind={context.kind}>
+      <Story {...context} />
+    </RenderPerformanceProfiler>
+  );
+}
+
 export const globalTypes = {
   strictMode: {
     name: 'React.StrictMode',
-    defaultValue: false,
+    defaultValue: 'true',
     toolbar: {
       items: [
         {title: 'Disabled', value: 'false'},
@@ -59,5 +67,5 @@ export const decorators = [
   GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
-  withPerformance,
+  RenderPerformanceProfilerDecorator,
 ];
