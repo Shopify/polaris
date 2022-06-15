@@ -1,5 +1,7 @@
+import { getParameters } from "codesandbox/lib/api/define";
 import { ChangeEvent, useState } from "react";
 import styles from "./Examples.module.scss";
+import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
 import Image from "../Image";
 import iconChevronDown from "../../../public/chevron-down.svg";
@@ -14,10 +16,6 @@ export type Example = {
 interface Props {
   examples: [Example];
 }
-
-const openCodesandbox = () => {
-  console.log("openCodesandbox");
-};
 
 const Examples = (props: Props) => {
   const { examples } = props;
@@ -81,12 +79,7 @@ const Examples = (props: Props) => {
         >
           Code
         </button>
-        <button
-          className={`${styles.Button} ${styles.ButtonSelected}`}
-          onClick={openCodesandbox}
-        >
-          Edit in Codesandbox
-        </button>
+        <CodesandboxButton className={styles.SandboxButton} code={code} />
       </div>
       {showPreview ? (
         <div className={styles.ExampleFrame}>
