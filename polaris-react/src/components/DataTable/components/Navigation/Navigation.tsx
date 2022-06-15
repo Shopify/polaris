@@ -11,6 +11,7 @@ export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
+  fixedFirstColumn?: boolean;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
 }
@@ -21,10 +22,12 @@ export function Navigation({
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
+  fixedFirstColumn,
 }: NavigationProps) {
   const i18n = useI18n();
 
   const pipMarkup = columnVisibilityData.map((column, index) => {
+    if (fixedFirstColumn && index === 0) return;
     const className = classNames(
       styles.Pip,
       column.isVisible && styles['Pip-visible'],

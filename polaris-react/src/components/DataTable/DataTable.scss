@@ -54,14 +54,6 @@
   border-spacing: 0;
 }
 
-.hoverable {
-  &:hover .Cell {
-    @media #{$p-breakpoints-md-up} {
-      background: var(--p-surface-hovered);
-    }
-  }
-}
-
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
 .TableRow + .TableRow {
   .Cell {
@@ -132,16 +124,16 @@
 
     &:first-child {
       padding-left: var(--p-space-3);
-
-      button {
-        padding-right: 0;
-        padding-left: var(--p-space-1);
-      }
     }
 
     &:last-child {
       padding-right: var(--p-space-3);
     }
+  }
+
+  .IncreasedTableDensity & .Heading-left {
+    padding-right: 0;
+    padding-left: var(--p-space-1);
   }
 }
 
@@ -159,6 +151,14 @@
 
 .Cell-verticalAlignBaseline {
   vertical-align: baseline;
+}
+
+.hoverable {
+  .Cell-hovered {
+    @media #{$p-breakpoints-md-up} {
+      background: var(--p-surface-hovered);
+    }
+  }
 }
 
 .Icon {
@@ -300,15 +300,12 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    border-spacing: 0;
 
     &:not(.StickyTableHeader-isSticky) {
       top: -9999px;
       left: -9999px;
     }
-  }
-
-  .StickyHeaderCell {
-    flex-shrink: 0;
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -317,11 +314,8 @@
   }
 
   .StickyTableHeadingsRow {
-    flex: 1 1 auto;
-    display: flex;
     overflow-x: auto;
     background-color: var(--p-surface);
-    justify-content: space-between;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -336,4 +330,25 @@
     background-color: var(--p-surface);
     box-shadow: var(--p-shadow-base);
   }
+}
+
+.FixedFirstColumn {
+  position: absolute;
+  background: var(--p-surface);
+  z-index: 3;
+  border-spacing: 0;
+  @media #{$p-breakpoints-md-down} {
+    z-index: 1;
+  }
+
+  &.separate th {
+    border-right: var(--p-border-divider);
+  }
+}
+
+.TooltipContent {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

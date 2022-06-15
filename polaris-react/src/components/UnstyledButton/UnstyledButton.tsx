@@ -28,6 +28,7 @@ export function UnstyledButton({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
+  ariaChecked,
   onClick,
   onFocus,
   onBlur,
@@ -82,6 +83,7 @@ export function UnstyledButton({
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-describedby={ariaDescribedBy}
+        aria-checked={ariaChecked}
         aria-pressed={pressed}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}

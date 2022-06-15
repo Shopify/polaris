@@ -19,8 +19,6 @@ module.exports = {
   addons: [
     {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
-    'storybook-addon-performance/register',
-    '@luigiminardim/storybook-addon-globals-controls',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
@@ -55,6 +53,9 @@ module.exports = {
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
+                auto: (resourcePath) => {
+                  return !resourcePath.includes('CustomProperties');
+                },
               },
             },
           },

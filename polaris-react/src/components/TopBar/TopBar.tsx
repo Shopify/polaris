@@ -37,6 +37,8 @@ export interface TopBarProps {
   onSearchResultsDismiss?: SearchProps['onDismiss'];
   /** A callback function that handles hiding and showing mobile navigation */
   onNavigationToggle?(): void;
+  /** Accepts a component that is used to supplement the logo markup */
+  logoSuffix?: React.ReactNode;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -59,6 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   onNavigationToggle,
   onSearchResultsDismiss,
   contextControl,
+  logoSuffix,
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useFrame();
@@ -102,6 +105,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       showNavigationToggle || searchField
         ? styles.LogoDisplayControl
         : styles.LogoDisplayContainer,
+      logoSuffix && styles.hasLogoSuffix,
     );
 
     contextMarkup = (
@@ -118,6 +122,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
             style={{width}}
           />
         </UnstyledLink>
+        {logoSuffix}
       </div>
     );
   }
