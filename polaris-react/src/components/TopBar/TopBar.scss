@@ -2,8 +2,12 @@
 @import './variables';
 
 $icon-size: 20px;
-$page-left-alignment-breakpoint-max: 1238px;
-$context-control-expand-after: 1400px;
+
+$breakpoints-context-control-expand-up: breakpoints-up(1400px);
+$breakpoints-page-left-alignment-down: breakpoints-down(
+  1238px,
+  $inclusive: true
+);
 
 .TopBar {
   position: relative;
@@ -24,7 +28,7 @@ $context-control-expand-after: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: flex;
   }
 }
@@ -53,12 +57,12 @@ $context-control-expand-after: 1400px;
 
 .ContextControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     width: $layout-width-nav-base;
     display: block;
   }
 
-  @include breakpoint-after($context-control-expand-after) {
+  @media #{$breakpoints-context-control-expand-up} {
     width: $layout-width-nav-base;
   }
 }
@@ -90,7 +94,7 @@ $context-control-expand-after: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$breakpoints-nav-min-window-corrected-up} {
     display: none;
   }
 
@@ -115,7 +119,7 @@ $context-control-expand-after: 1400px;
   justify-content: flex-end;
   height: 100%;
 
-  @include breakpoint-after($not-condensed-content) {
+  @media #{$breakpoints-not-condensed-content-up} {
     position: relative;
   }
 }
@@ -128,7 +132,7 @@ $context-control-expand-after: 1400px;
   max-width: none;
   margin-left: calc((100% - #{$page-max-width}) / 2);
 
-  @media (max-width: $page-left-alignment-breakpoint-max) {
+  @media #{$breakpoints-page-left-alignment-down} {
     margin-left: 0;
     margin-right: var(--p-space-1);
   }

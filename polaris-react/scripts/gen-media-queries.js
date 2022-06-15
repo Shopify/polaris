@@ -57,7 +57,7 @@ function getUpMediaCondition(breakpoint) {
 }
 
 /**
- * Down media condition breakpoints are being substracted by 0.05px to prevent
+ * Down media condition breakpoints are being subtracted by 0.05px to prevent
  * them from overwriting up media queries. We experimented with multiple offsets
  * and felt that 0.05px would be the safest across different pixel densities.
  */

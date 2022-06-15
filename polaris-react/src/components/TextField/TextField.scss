@@ -217,7 +217,7 @@ $spinner-icon-size: 12px;
     padding-right: var(--p-space-0);
   }
 
-  @include breakpoint-after(490px) {
+  @media #{$p-breakpoints-sm-up} {
     max-height: 328px;
   }
 }

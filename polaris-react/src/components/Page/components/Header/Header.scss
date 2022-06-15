@@ -1,9 +1,10 @@
 @import '../../../../styles/common';
 
-$mobile-layout: 468px;
-$medium-layout: 860px;
-$desktop-layout: 1080px;
 $action-menu-rollup-computed-width: 40px;
+$breakpoints-mobile-layout-up: breakpoints-up(468px);
+$breakpoints-mobile-layout-down: breakpoints-down(468px, $inclusive: true);
+$breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
+$breakpoints-desktop-layout-down: breakpoints-down(1080px, $inclusive: true);
 
 .Header {
   @include page-header-layout;
@@ -20,7 +21,7 @@ $action-menu-rollup-computed-width: 40px;
   align-self: center;
   flex: 1 1 auto;
 
-  @include breakpoint-after($mobile-layout) {
+  @media #{$breakpoints-mobile-layout-up} {
     margin-top: 0;
   }
 }
@@ -142,7 +143,7 @@ $action-menu-rollup-computed-width: 40px;
     right: var(--p-space-5);
     margin-top: 0;
 
-    @include page-content-when-not-fully-condensed {
+    @media #{$breakpoints-page-content-when-not-fully-condensed-up} {
       right: calc(-1 * (var(--p-space-2)));
     }
   }
@@ -198,14 +199,14 @@ $action-menu-rollup-computed-width: 40px;
   white-space: nowrap;
 
   .noBreadcrumbs & {
-    @include breakpoint-before($mobile-layout) {
+    @media #{$breakpoints-mobile-layout-down} {
       margin-left: 0;
     }
   }
 }
 
 .AdditionalMetaData {
-  @include breakpoint-after($mobile-layout) {
+  @media #{$breakpoints-mobile-layout-up} {
     margin-left: calc(
       var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
     );
@@ -247,13 +248,13 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .longTitle {
-  @include breakpoint-before($desktop-layout) {
+  @media #{$breakpoints-desktop-layout-down} {
     @include condensed-layout;
   }
 }
 
 .mediumTitle:not(.noBreadcrumbs) {
-  @include breakpoint-before($medium-layout) {
+  @media #{$breakpoints-medium-layout-down} {
     @include condensed-layout;
   }
 }
@@ -266,14 +267,14 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       margin-bottom: 0;
     }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
     flex-wrap: wrap-reverse;
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       flex-wrap: nowrap;
     }
   }

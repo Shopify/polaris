@@ -1,23 +1,15 @@
-$typography-condensed: 640px;
-
-@mixin when-typography-not-condensed {
-  @include breakpoint-after($typography-condensed) {
-    @content;
-  }
-}
-
-@mixin when-typography-condensed {
-  @include breakpoint-before($typography-condensed) {
-    @content;
-  }
-}
+$breakpoints-typography-not-condensed-up: breakpoints-up(640px);
+$breakpoints-typography-not-condensed-down: breakpoints-down(
+  640px,
+  $inclusive: true
+);
 
 @mixin text-style-caption {
   font-size: var(--p-font-size-2);
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-line-height-2);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-1);
     line-height: var(--p-line-height-1);
   }
@@ -28,7 +20,7 @@ $typography-condensed: 640px;
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-line-height-3);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-5);
   }
 }
@@ -39,7 +31,7 @@ $typography-condensed: 640px;
   line-height: var(--p-line-height-1);
   text-transform: uppercase;
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-1);
   }
 }
@@ -53,7 +45,7 @@ $typography-condensed: 640px;
   text-transform: initial;
   letter-spacing: initial;
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-3);
   }
 }
@@ -66,7 +58,7 @@ $typography-condensed: 640px;
   text-transform: initial;
   letter-spacing: initial;
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-3);
   }
 }
@@ -79,7 +71,7 @@ $typography-condensed: 640px;
   text-transform: initial;
   letter-spacing: initial;
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-3);
   }
 }
@@ -92,7 +84,7 @@ $typography-condensed: 640px;
   text-transform: initial;
   letter-spacing: initial;
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-5);
   }
 }
@@ -102,7 +94,7 @@ $typography-condensed: 640px;
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-line-height-6);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-13);
     line-height: var(--p-line-height-7);
   }
@@ -113,7 +105,7 @@ $typography-condensed: 640px;
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-line-height-4);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-12);
     line-height: var(--p-line-height-5);
   }
@@ -124,7 +116,7 @@ $typography-condensed: 640px;
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-line-height-4);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-10);
     line-height: var(--p-line-height-5);
   }
@@ -135,7 +127,7 @@ $typography-condensed: 640px;
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-line-height-3);
 
-  @include when-typography-not-condensed {
+  @media #{$breakpoints-typography-not-condensed-up} {
     font-size: var(--p-font-size-7);
     line-height: var(--p-line-height-4);
   }
