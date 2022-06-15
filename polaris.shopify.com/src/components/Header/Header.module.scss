@@ -91,7 +91,7 @@
 
 .SkipToContentLink {
   left: 0%;
-  background-color: white;
+  background-color: var(--surface);
   border-radius: var(--border-radius-200);
   color: var(--text-strong);
   font-weight: var(--font-weight-500);
@@ -100,7 +100,7 @@
   margin-left: 0.5rem;
   padding: 1rem;
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-115%);
 
   &:focus {
     transform: translateY(0%);

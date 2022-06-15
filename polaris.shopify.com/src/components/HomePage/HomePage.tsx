@@ -8,7 +8,7 @@ function HomePage({}: Props) {
   return (
     <div className={styles.HomePage}>
       <div className={styles.Intro}>
-        <Container id="main" className={styles.IntroContent}>
+        <Container className={styles.IntroContent}>
           <h1>A design system built for commerce</h1>
           <Link href="/resources">Explore the system</Link>
 
