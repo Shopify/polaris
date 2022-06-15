@@ -2,13 +2,17 @@ name: Accessibility and Visual Regression Tests
 
 on:
   push:
-    branches: [main, polaris-release]
+    branches:
+      - main
+      - next
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
   pull_request:
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
 
 jobs:
@@ -94,3 +98,5 @@ jobs:
           storybookBuildDir: 'polaris-react/build-internal/storybook/static'
           exitZeroOnChanges: true
           exitOnceUploaded: true
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}

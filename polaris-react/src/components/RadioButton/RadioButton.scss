@@ -43,6 +43,11 @@
 
 .Backdrop {
   // ::before is the selected dot, ::after the focus-ring
+
+  @include when-typography-condensed {
+    --p-icon-size-small: 10px;
+  }
+
   position: relative;
   top: 0;
   left: 0;

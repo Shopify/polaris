@@ -8,7 +8,7 @@ type HandleStepFn = (step: number) => void;
 
 export interface SpinnerProps {
   onChange: HandleStepFn;
-  onClick?(): void;
+  onClick?(event: React.MouseEvent): void;
   onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
 }

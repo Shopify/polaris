@@ -175,6 +175,12 @@ export {
 } from './components/Frame';
 export type {FrameProps} from './components/Frame';
 
+export {FullscreenBar} from './components/FullscreenBar';
+export type {FullscreenBarProps} from './components/FullscreenBar';
+
+export {Grid} from './components/Grid';
+export type {GridProps, CellProps as GridCellProps} from './components/Grid';
+
 export {Heading} from './components/Heading';
 export type {HeadingProps} from './components/Heading';
 
@@ -390,6 +396,7 @@ export {
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useEventListener} from './utilities/use-event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,

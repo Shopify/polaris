@@ -1,0 +1,52 @@
+.TopLine {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 2rem;
+  margin-top: 3.25rem;
+  align-items: center;
+
+  h2 {
+    display: inline-block;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.SelectContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  select {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-200);
+    font-size: var(--font-size-100);
+    position: relative;
+    max-width: 38rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+.SelectIcon {
+  pointer-events: none;
+  position: absolute;
+  top: calc(50% + 10px);
+  right: 1.6rem;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  svg {
+    height: 1.2rem;
+    width: 1.2rem;
+    fill: var(--border-inset-color);
+  }
+}
+
+.ExampleFrame {
+  margin: 32px 0px;
+}

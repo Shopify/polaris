@@ -448,29 +448,6 @@ describe('<TextField />', () => {
         className: expect.stringContaining(styles.focus),
       });
     });
-
-    it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
-      const mockButtonId = 'MockPrefix';
-      const mockPrefixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithApp(
-        <TextField
-          label="TextField"
-          prefix={mockPrefixButton}
-          onChange={noop}
-          autoComplete="off"
-        />,
-      );
-
-      const button = textField.find('button', {id: mockButtonId})!.domNode!;
-
-      textField
-        .find('div', {className: styles.TextField})!
-        .trigger('onFocus', {target: button});
-
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
-        className: expect.stringContaining(styles.focus),
-      });
-    });
   });
 
   describe('suffix', () => {
@@ -521,29 +498,6 @@ describe('<TextField />', () => {
 
       expect(textField.find(Connected)!).not.toContainReactComponent('div', {
         className: expect.stringContaining(styles.focus),
-      });
-    });
-
-    it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
-      const mockButtonId = 'MockSuffix';
-      const mockSuffixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithApp(
-        <TextField
-          label="TextField"
-          suffix={mockSuffixButton}
-          onChange={noop}
-          autoComplete="off"
-        />,
-      );
-
-      const button = textField.find('button', {id: mockButtonId})!.domNode!;
-
-      textField
-        .find('div', {className: styles.TextField})!
-        .trigger('onFocus', {target: button});
-
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
-        className: expect.stringContaining('focus'),
       });
     });
   });
