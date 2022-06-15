@@ -2,7 +2,6 @@ const path = require('path');
 
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -11,25 +10,15 @@ module.exports = (env, argv) => ({
 
   entry: {
     ui: './src/ui.tsx',
-    code: './src/plugin.ts',
+    plugin: './src/plugin.ts',
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['babel-loader', {loader: 'ts-loader'}],
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-shopify/web'],
-          },
-        },
       },
       {
         test: /\.css$/,
@@ -45,19 +34,11 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/ui.html',
-      filename: 'ui.html',
+      template: './src/index.html',
+      filename: 'index.html',
       inlineSource: '.(js)$',
       chunks: ['ui'],
     }),
     new HtmlWebpackInlineSourcePlugin(),
   ],
-  externals: [
-    nodeExternals({
-      modulesDir: path.resolve(__dirname, '../node_modules'),
-    }),
-  ],
-  node: {
-    fs: 'empty',
-  },
 });

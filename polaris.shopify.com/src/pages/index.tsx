@@ -1,15 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Page from "../components/Page";
-import { getTitleForTitleTag } from "../utils/various";
+import HomePage from "../components/HomePage";
+import { getTitleTagValue } from "../utils/various";
 
 const Home: NextPage = () => {
   return (
-    <Page>
+    <>
       <Head>
-        <title>{getTitleForTitleTag()}</title>
+        <title>{getTitleTagValue()}</title>
       </Head>
-    </Page>
+      <HomePage />
+    </>
   );
 };
 
