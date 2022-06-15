@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
-import {Type, Typography} from './Typography';
 
+import {Type, Typography} from './Typography';
 import styles from './Body.scss';
 
 interface BodyProps {
