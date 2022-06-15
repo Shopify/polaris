@@ -214,7 +214,7 @@
       "characterCountWithMaxLength": "{count} af {limit} benyttede tegn"
     },
     "TopBar": {
-      "toggleMenuLabel": "Slå menu til/fra",
+      "toggleMenuLabel": "Åbn/luk menuen",
       "SearchField": {
         "clearButtonLabel": "Ryd",
         "search": "Søg"
@@ -280,7 +280,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} er valgt.",
+      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt.",
       "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
