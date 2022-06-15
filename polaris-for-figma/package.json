@@ -1,6 +1,6 @@
 {
   "name": "polaris-for-figma",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "webpack --mode=production",
@@ -21,8 +21,6 @@
     "@figma/plugin-typings": "^1.19.1",
     "@types/react": "^16.0.0",
     "@types/react-dom": "^16.0.0",
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
     "@types/node": "^17.0.23",
     "babel-loader": "^8.2.3",
     "css-loader": "^3.4.2",
@@ -33,7 +31,6 @@
     "ts-loader": "^6.2.1",
     "url-loader": "^3.0.0",
     "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-cli": "^3.3.11"
   }
 }

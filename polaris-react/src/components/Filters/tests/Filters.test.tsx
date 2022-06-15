@@ -567,6 +567,36 @@ describe('<Filters />', () => {
     });
   });
 
+  describe('disableQueryField', () => {
+    it('does not disable the TextField by default', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: false,
+      });
+    });
+
+    it('does not disable the search field when false', () => {
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} disableQueryField={false} />,
+      );
+
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: false,
+      });
+    });
+
+    it('disables the search field when true', () => {
+      const resourceFilters = mountWithApp(
+        <Filters {...mockProps} disableQueryField />,
+      );
+
+      expect(resourceFilters).toContainReactComponent(TextField, {
+        disabled: true,
+      });
+    });
+  });
+
   describe('disabled', () => {
     it('disables the search field when true', () => {
       const resourceFilters = mountWithApp(

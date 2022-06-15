@@ -1,14 +1,15 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import {tokens} from '../../tokens';
 import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
@@ -34,6 +35,7 @@ import styles from './IndexTable.scss';
 
 export interface IndexTableHeading {
   title: string;
+  flush?: boolean;
   new?: boolean;
   hidden?: boolean;
 }
@@ -45,6 +47,7 @@ export interface IndexTableBaseProps {
   children?: React.ReactNode;
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
+  paginatedSelectAllActionText?: string;
   lastColumnSticky?: boolean;
   selectable?: boolean;
 }
@@ -66,6 +69,7 @@ function IndexTableBase({
   children,
   emptyState,
   sort,
+  paginatedSelectAllActionText,
   lastColumnSticky = false,
   ...restProps
 }: IndexTableBaseProps) {
@@ -98,6 +102,8 @@ function IndexTableBase({
   const [tableInitialized, setTableInitialized] = useState(false);
   const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
+  const [hideScrollContainer, setHideScrollContainer] =
+    useState<boolean>(false);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -105,6 +111,7 @@ function IndexTableBase({
   const firstStickyHeaderElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
+  const scrollContainerElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
 
@@ -204,6 +211,11 @@ function IndexTableBase({
       scrollBarElement.current.style.setProperty(
         '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
+      );
+
+      setHideScrollContainer(
+        scrollContainerElement.current?.offsetWidth ===
+          tableElement.current?.offsetWidth,
       );
     }
   }, [tableInitialized]);
@@ -404,7 +416,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(tokens.motion['duration-100'], 10)}
+      timeout={parseInt(tokens.motion['duration-100'].value, 10)}
       appear
       unmountOnExit
     >
@@ -530,6 +542,7 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     condensed && styles.scrollBarContainerCondensed,
+    hideScrollContainer && styles.scrollBarContainerHidden,
   );
 
   const scrollBarClassNames = classNames(
@@ -539,7 +552,10 @@ function IndexTableBase({
   const scrollBarMarkup =
     itemCount > 0 ? (
       <AfterInitialMount>
-        <div className={scrollBarWrapperClassNames}>
+        <div
+          className={scrollBarWrapperClassNames}
+          ref={scrollContainerElement}
+        >
           <div
             onScroll={handleScrollBarScroll}
             className={styles.ScrollBar}
@@ -632,6 +648,7 @@ function IndexTableBase({
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
       !selectable && styles['TableHeading-unselectable'],
+      heading.flush && styles['TableHeading-flush'],
     );
 
     const stickyPositioningStyle =
@@ -745,13 +762,17 @@ function IndexTableBase({
       return;
     }
 
+    const customActionText =
+      paginatedSelectAllActionText ??
+      i18n.translate('Polaris.IndexTable.selectAllItems', {
+        itemsLength: itemCount,
+        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+      });
+
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.IndexTable.undo')
-        : i18n.translate('Polaris.IndexTable.selectAllItems', {
-            itemsLength: itemCount,
-            resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-          });
+        : customActionText;
 
     return {
       content: actionText,

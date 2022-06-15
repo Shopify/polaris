@@ -17,9 +17,7 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-      - run: yarn --frozen-lockfile
-      - run: yarn build
-      - uses: andresz1/size-limit-action@v1.5.1
+      - uses: andresz1/size-limit-action@v1.7.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directory: polaris-react/
+          build_script: build -- --filter=@shopify/polaris...

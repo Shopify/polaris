@@ -23,6 +23,11 @@ export const colors = {
     description:
       'For use as a background color, in components such as Card, Modal, and Popover.',
   },
+  'surface-dark': {
+    value: 'rgba(32, 33, 35, 1)',
+    description:
+      'For use as a dark background color, in components such as Card, Modal, and Popover.',
+  },
   'surface-neutral': {
     value: 'rgba(228, 229, 231, 1)',
     description: 'For use as a background color in neutral badges.',
@@ -43,6 +48,10 @@ export const colors = {
     value: 'rgba(246, 246, 247, 1)',
     description: 'For use as a background color in neutral banners.',
   },
+  'surface-neutral-subdued-dark': {
+    value: 'rgba(68, 71, 74, 1)',
+    description: 'For use as a dark background color in neutral banners.',
+  },
   'surface-subdued': {
     value: 'rgba(250, 251, 251, 1)',
     description:
@@ -58,10 +67,20 @@ export const colors = {
     description:
       'For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.',
   },
+  'surface-hovered-dark': {
+    value: 'rgba(47, 49, 51, 1)',
+    description:
+      'For use as a dark surface color on interactive elements such as resource list items and action list items when in a hovered state.',
+  },
   'surface-pressed': {
     value: 'rgba(241, 242, 243, 1)',
     description:
       'For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.',
+  },
+  'surface-pressed-dark': {
+    value: 'rgba(62, 64, 67, 1)',
+    description:
+      'For use as a dark surface color on interactive elements such as resource list items and action list items when in a pressed state.',
   },
   'surface-depressed': {
     value: 'rgba(237, 238, 239, 1)',
@@ -72,6 +91,11 @@ export const colors = {
     value: 'rgba(241, 242, 243, 1)',
     description:
       'For use as a background color, in components on surface elements such as SearchField',
+  },
+  'surface-search-field-dark': {
+    value: 'rgba(47, 49, 51, 1)',
+    description:
+      'For use as a dark background color, in components on surface elements such as SearchField',
   },
   backdrop: {
     value: 'rgba(0, 0, 0, 0.5)',
@@ -96,6 +120,10 @@ export const colors = {
   border: {
     value: 'rgba(140, 145, 150, 1)',
     description: 'For use as the default border on elements.',
+  },
+  'border-on-dark': {
+    value: 'rgba(80, 83, 86, 1)',
+    description: 'For use as the default border on dark elements.',
   },
   'border-neutral-subdued': {
     value: 'rgba(186, 191, 195, 1)',
@@ -129,9 +157,17 @@ export const colors = {
     value: 'rgba(225, 227, 229, 1)',
     description: 'For use as a divider between elements.',
   },
+  'divider-dark': {
+    value: 'rgba(69, 71, 73, 1)',
+    description: 'For use as a dark divider between elements.',
+  },
   icon: {
     value: 'rgba(92, 95, 98, 1)',
     description: 'For use as the fill color of icons.',
+  },
+  'icon-on-dark': {
+    value: 'rgba(166, 172, 178, 1)',
+    description: 'For use as the fill color of dark icons.',
   },
   'icon-hovered': {
     value: 'rgba(26, 28, 29, 1)',
@@ -153,6 +189,10 @@ export const colors = {
     value: 'rgba(32, 34, 35, 1)',
     description: 'For use as a text color.',
   },
+  'text-on-dark': {
+    value: 'rgba(227, 229, 231, 1)',
+    description: 'For use as a text color on dark elements.',
+  },
   'text-disabled': {
     value: 'rgba(140, 145, 150, 1)',
     description:
@@ -162,10 +202,19 @@ export const colors = {
     value: 'rgba(109, 113, 117, 1)',
     description: 'For use as a subdued text color.',
   },
+  'text-subdued-on-dark': {
+    value: 'rgba(153, 159, 164, 1)',
+    description: 'For use as a subdued text color on dark elements.',
+  },
   interactive: {
     value: 'rgba(44, 110, 203, 1)',
     description:
       'Used for links, plain buttons, and as the fill color for selected checkboxes and radio buttons.',
+  },
+  'interactive-on-dark': {
+    value: 'rgba(54, 163, 255, 1)',
+    description:
+      'Used for links, plain buttons, and as the fill color for selected checkboxes and radio buttons when on a dark element.',
   },
   'interactive-disabled': {
     value: 'rgba(189, 193, 204, 1)',
@@ -178,6 +227,10 @@ export const colors = {
   'interactive-pressed': {
     value: 'rgba(16, 50, 98, 1)',
     description: 'Used for pressed links and plain buttons.',
+  },
+  'interactive-pressed-on-dark': {
+    value: 'rgba(136, 188, 255, 1)',
+    description: 'Used for pressed links and plain buttons on dark elements.',
   },
   focused: {
     value: 'rgba(69, 143, 255, 1)',
@@ -219,9 +272,17 @@ export const colors = {
     value: 'rgba(246, 246, 247, 1)',
     description: 'Used as a hovered state for secondary buttons',
   },
+  'action-secondary-hovered-dark': {
+    value: 'rgba(84, 87, 91, 1)',
+    description: 'Used as a dark hovered state for secondary buttons',
+  },
   'action-secondary-pressed': {
     value: 'rgba(241, 242, 243, 1)',
     description: 'Used as a pressed state for secondary buttons',
+  },
+  'action-secondary-pressed-dark': {
+    value: 'rgba(96, 100, 103, 1)',
+    description: 'Used as a dark pressed state for secondary buttons',
   },
   'action-secondary-depressed': {
     value: 'rgba(109, 113, 117, 1)',
