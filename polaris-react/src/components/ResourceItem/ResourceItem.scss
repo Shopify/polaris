@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
-$breakpoint-small: 458px;
+$breakpoints-legacy-up: breakpoints-up(458px);
+$breakpoints-legacy-down: breakpoints-down(458px);
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -44,7 +45,7 @@ $breakpoint-small: 458px;
         @include action-unhide;
 
         // stylelint-disable-next-line max-nesting-depth
-        @include page-content-when-partially-condensed {
+        @media #{$breakpoints-page-content-when-partially-condensed-down} {
           display: none;
         }
       }
@@ -93,7 +94,7 @@ $breakpoint-small: 458px;
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after($breakpoint-small) {
+  @media #{$breakpoints-legacy-up} {
     padding: var(--p-space-3) var(--p-space-5);
   }
 }
@@ -136,7 +137,7 @@ $breakpoint-small: 458px;
     calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
   display: flex;
 
-  @include breakpoint-before($breakpoint-small, false) {
+  @media #{$breakpoints-legacy-down} {
     visibility: hidden;
 
     .selectMode & {
@@ -155,7 +156,7 @@ $breakpoint-small: 458px;
     transform: translateX(0);
   }
 
-  @include breakpoint-after($breakpoint-small) {
+  @media #{$breakpoints-legacy-up} {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;
@@ -190,7 +191,7 @@ $breakpoint-small: 458px;
     @include action-unhide;
   }
 
-  @include page-content-when-partially-condensed {
+  @media #{$breakpoints-page-content-when-partially-condensed-down} {
     display: none;
   }
 }
@@ -207,7 +208,7 @@ $breakpoint-small: 458px;
     pointer-events: initial;
     height: 100%;
 
-    @include page-content-when-partially-condensed {
+    @media #{$breakpoints-page-content-when-partially-condensed-down} {
       display: none;
     }
   }
@@ -226,7 +227,7 @@ $breakpoint-small: 458px;
     display: none;
   }
 
-  @include page-content-when-partially-condensed {
+  @media #{$breakpoints-page-content-when-partially-condensed-down} {
     display: flex;
     flex: 0 0 var(--pc-resource-item-disclosure-width);
     justify-content: center;

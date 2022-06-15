@@ -1,5 +1,3 @@
-import '@figma/plugin-typings';
-
 import {LintedLayer, PluginMessage, UIMessage} from './types';
 import {getClosestToken, solidPaintToRgba} from './utils';
 

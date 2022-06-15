@@ -250,6 +250,21 @@ describe('<Header />', () => {
 
       expect(wrapper).toContainReactComponent(CustomSecondaryActions);
     });
+
+    it('renders <ActionMenu /> passing `onActionRollup` as prop if it exists', () => {
+      const onActionRollup = jest.fn();
+      const wrapper = mountWithApp(
+        <Header
+          {...mockProps}
+          secondaryActions={mockSecondaryActions}
+          onActionRollup={onActionRollup}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        onActionRollup,
+      });
+    });
   });
 
   const primaryAction: HeaderProps['primaryAction'] = {
