@@ -22,11 +22,10 @@ export const Display = ({
     styles.Display,
     styles[size],
     strong && styles.strong,
-    noWrap && styles.noWrap,
   );
 
   return (
-    <Typography as="span" className={className}>
+    <Typography as="span" className={className} noWrap={noWrap}>
       {children}
     </Typography>
   );
