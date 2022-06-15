@@ -43,6 +43,10 @@
     border-radius: var(--border-radius-800);
     box-shadow: var(--card-shadow);
 
+    &:focus-visible {
+      box-shadow: var(--focus-outline);
+    }
+
     &:before {
       content: "";
       display: block;

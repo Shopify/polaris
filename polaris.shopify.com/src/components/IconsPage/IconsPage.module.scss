@@ -165,4 +165,8 @@
   display: block;
   text-align: center;
   cursor: pointer;
+
+  &:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
 }
