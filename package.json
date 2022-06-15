@@ -13,7 +13,8 @@
       "polaris-icons",
       "polaris-react",
       "stylelint-polaris",
-      "polaris.shopify.com"
+      "polaris.shopify.com",
+      "breakpoint-recommendations"
     ],
     "nohoist": [
       "**/vscode-languageclient",

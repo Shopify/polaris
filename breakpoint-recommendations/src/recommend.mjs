@@ -1,6 +1,6 @@
 /**
  * Usage:
- * node src/index.mjs --target ../polaris-react/src/components
+ * node src/recommend.mjs --target ../polaris-react/src/components
  */
 import fs from 'node:fs';
 import os from 'node:os';
