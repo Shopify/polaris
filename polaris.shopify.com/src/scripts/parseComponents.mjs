@@ -166,7 +166,7 @@ ${code}`;
           fs.writeFileSync(exampleFilePath, code);
 
           // Inject an iframe into the returned markdown
-          return `<iframe src="/generated-examples/${exampleId}" style="width: calc(100% + 300px); margin-left: -150px; height: 500px;" loading="lazy"></iframe>`;
+          return `<iframe src="/generated-examples/${exampleId}" style="width: calc(100%); height: 400px;" loading="lazy"></iframe>`;
         });
 
       components.push(markdownFile);

@@ -1,0 +1,47 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+
+.Banner {
+  margin-top: var(--header-margin);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h1 {
+    @include heading-1;
+  }
+
+  p {
+    max-width: 43rem;
+    font-size: var(--font-size-700);
+    letter-spacing: var(--letter-spacing-300);
+    color: var(--text-strong);
+  }
+}
+
+.TokensNav {
+  margin: 1.5rem 0 3.5rem;
+
+  ul {
+    display: flex;
+    box-shadow: var(--card-shadow);
+    border-radius: var(--border-radius-600);
+  }
+
+  li {
+    flex: 1;
+  }
+
+  a {
+    padding: 1.25rem 2rem;
+    display: block;
+    color: var(--text-strong);
+    border-right: 1px solid var(--border-color-light);
+    text-align: center;
+    font-weight: var(--font-weight-500);
+  }
+
+  li:last-child a {
+    border-right: none;
+  }
+}

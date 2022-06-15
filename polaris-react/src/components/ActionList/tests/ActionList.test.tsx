@@ -87,41 +87,6 @@ describe('<ActionList />', () => {
     });
   });
 
-  it('passes firstSection=true to the first Section', () => {
-    const actionList = mountWithApp(
-      <ActionList
-        sections={[
-          {title: 'One', items: [{content: 'First section'}]},
-          {title: 'Two', items: [{content: 'Second section'}]},
-        ]}
-        onActionAnyItem={mockOnActionAnyItem}
-        actionRole="option"
-      />,
-    );
-
-    const {firstSection} = actionList.find(Section)!.props;
-
-    expect(firstSection).toBe(true);
-  });
-
-  it('passes firstSection=false to sections that are not the first', () => {
-    const actionList = mountWithApp(
-      <ActionList
-        sections={[
-          {title: 'One', items: [{content: 'First section'}]},
-          {title: 'Two', items: [{content: 'Second section'}]},
-        ]}
-        onActionAnyItem={mockOnActionAnyItem}
-        actionRole="option"
-      />,
-    );
-
-    const sections = actionList.findAll(Section);
-    const {firstSection} = sections[sections.length - 1].props;
-
-    expect(firstSection).toBe(false);
-  });
-
   it('renders a ul with sections', () => {
     const actionList = mountWithApp(
       <ActionList

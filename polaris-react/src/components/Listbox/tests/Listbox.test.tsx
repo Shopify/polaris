@@ -759,8 +759,63 @@ describe('<Listbox>', () => {
   });
 
   describe('auto-selection', () => {
+    describe('manual selection', () => {
+      it('does not set an initial active option', () => {
+        const selectedListbox = (
+          <Listbox enableKeyboardControl autoSelection={AutoSelection.None}>
+            <Listbox.Option value="one" selected={false}>
+              one
+            </Listbox.Option>
+            <Listbox.Option value="two" selected={false}>
+              two
+            </Listbox.Option>
+            <Listbox.Option value="three" selected>
+              three
+            </Listbox.Option>
+          </Listbox>
+        );
+        const wrapper = mountWithApp(selectedListbox);
+        const listbox = wrapper.find('ul', {role: 'listbox'})!;
+
+        expect(
+          listbox.domNode?.getAttribute('aria-activedescendant'),
+        ).toBeNull();
+      });
+
+      it('sets the initial active option to the first option on arrow down', async () => {
+        const selectedListbox = (
+          <Listbox enableKeyboardControl autoSelection={AutoSelection.None}>
+            <Listbox.Option value="one" selected={false}>
+              one
+            </Listbox.Option>
+            <Listbox.Option value="two" selected={false}>
+              two
+            </Listbox.Option>
+            <Listbox.Option value="three" selected>
+              three
+            </Listbox.Option>
+          </Listbox>
+        );
+        const wrapper = mountWithApp(selectedListbox);
+        const listbox = wrapper.find('ul', {role: 'listbox'})!;
+        const options = wrapper.findAll('li', {role: 'option'});
+
+        expect(
+          listbox.domNode?.getAttribute('aria-activedescendant'),
+        ).toBeNull();
+
+        await wrapper.act(async () => {
+          await Promise.resolve(triggerDown(wrapper));
+        });
+
+        expect(listbox.domNode?.getAttribute('aria-activedescendant')).toBe(
+          options[0].domNode?.id,
+        );
+      });
+    });
+
     describe('when list has selected options', () => {
-      it('sets the initial active option to the first selected option by default', () => {
+      it('sets the initial active option to the first selected option', () => {
         const selectedListbox = (
           <Listbox>
             <Listbox.Option value="one" selected={false}>
