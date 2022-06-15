@@ -156,41 +156,17 @@ We recommend running tests as well as trying your build of a package in a real p
 - `yarn test` will run tests for all packages
 - `yarn turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
 
-You can test your changes in another project locally using [`yalc`](https://github.com/wclr/yalc).
+You can test your changes in another project locally by creating a [snapshot release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release).
+
+On your feature branch PR, ensure you have a [changeset](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset) indicating which package or packages to version. Then, create a new comment in your feature branch PR with the text "/snapit". This will kickoff a snapshot release to npm.
+
+Once the snapshot is ready, there will be a new comment in your feature PR with the newly released versions. In your external project, add the snapshot package or packages. An example snapshot package should have the following format:
 
 ```sh
-# Build all packages
-yarn build
-
-# Change into the package directory to test
-cd polaris-react
-
-# Publish changes to the local yalc registry
-yalc publish
+yarn add @shopify/polaris@0.0.0-snapshot-release-20220525184558
 ```
 
-In the external project, add the locally published package.
-
-```sh
-yalc add @shopify/polaris
-```
-
-Run the project as usual to tophat local changes. If you need to make updates, push new package changes from the package to test.
-
-```sh
-# /polaris/polaris-react
-# Push new package changes to the local yalc registry
-yalc push
-```
-
-Then, update the external project with the latest updates.
-
-```sh
-# /my-project
-yalc update @shopify/polaris
-```
-
-See the [`yalc` documentation](https://github.com/wclr/yalc#usage) for a full list of commands or details on [how `yalc` works](https://github.com/wclr/yalc#what).
+Run the project as usual to tophat local changes. If you need to make updates, push new package changes to your feature PR and create a new snapshot release.
 
 ### Code style
 
@@ -204,4 +180,6 @@ However, there are still some styles that the linter cannot pick up. If you are 
 
 ## Breaking changes
 
-If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `main` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `main` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris/blob/main/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.
+If your pull request contains breaking changes, please target the `next` branch for the next major release. Also, open a pull request against `main` that introduces the deprecation warnings and upgrade path.
+
+If you are unsure if the changes are considered breaking or not, open your pull request against the `main` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris/blob/main/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.

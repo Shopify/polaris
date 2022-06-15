@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "檢視 {title} 的動作"
       }
+    },
+    "FullscreenBar": {
+      "back": "返回",
+      "accessibilityLabel": "退出全螢幕模式"
     }
   }
 }

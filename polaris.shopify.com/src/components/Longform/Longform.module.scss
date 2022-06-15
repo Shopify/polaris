@@ -1,80 +1,159 @@
-.Longform {
-  border-radius: var(--border-radius-300);
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
+.Longform {
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
-    background: white;
   }
 
   ul li {
     list-style-type: disc;
   }
 
-  ol li {
-    list-style-type: decimal;
-  }
-
-  h1,
   h2,
   h3,
   h4,
   p,
   ul,
+  ol,
   .usage-list {
-    margin: 1.25rem 0;
-  }
-
-  ul,
-  ol {
-    margin-left: 1.1em;
-    ul,
-    ol {
-      margin-left: 1.75em;
-    }
-  }
-
-  li {
-    margin: 0.5em 0;
+    margin: 1rem 0;
   }
 
   h1 {
-    max-width: 80%;
-    &:first-child {
-      margin-top: 0;
-      margin-bottom: 2rem;
+    @include heading-1;
+    margin-bottom: 2.5rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      margin-bottom: 1.5rem;
     }
   }
 
   h2 {
-    margin-top: 3rem;
+    @include heading-2;
+    margin-top: 3.25rem;
   }
 
   h3 {
-    margin-top: 2rem;
-    + p {
+    @include heading-3;
+    margin-top: 1.5rem;
+  }
+
+  h4 {
+    @include heading-4;
+  }
+
+  h3,
+  h4 {
+    + p,
+    + ul,
+    + ol {
       margin-top: -0.5rem;
     }
   }
 
+  h1,
+  h2,
+  h3,
   h4 {
-    margin-top: 1.5rem;
+    &:target {
+      background: #d5ffe1;
+    }
+  }
+
+  ul {
+    li {
+      margin-left: 0.95em;
+    }
+  }
+
+  ol {
+    li {
+      padding-left: 1.35em;
+    }
+  }
+
+  ul,
+  ol {
+    ul,
+    ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  ul li {
+    position: relative;
+    &::marker {
+      color: #999;
+
+      @include dark-mode {
+        color: #555;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: list;
+    li {
+      position: relative;
+      counter-increment: list;
+      &::before {
+        content: counter(list) ".";
+        display: block;
+        position: absolute;
+        left: 0;
+        border-radius: var(--border-radius-round);
+        opacity: 0.75;
+      }
+    }
+  }
+
+  li {
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-top: 0.5rem;
+    }
+  }
+
+  strong {
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
   }
 
   hr {
+    height: 1px;
+    box-shadow: 0 0.5px var(--border-color);
+    margin: 1rem 0;
+    background: var(--surface);
+    border-radius: var(--border-radius-200);
+    opacity: 0;
     display: none;
   }
 
   pre {
     font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
       Menlo, Consolas, monospace;
-    font-size: var(--font-size-300);
+    font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--text);
-    color: var(--surface);
-    border-radius: var(--border-radius-200);
+    background: var(--surface-subdued);
+    color: var(--text-strong);
+    border-radius: var(--border-radius-500);
     overflow: auto;
+    white-space: pre-wrap;
+    min-width: 0;
 
     p {
       margin: 0;
@@ -89,9 +168,11 @@
 }
 
 .Content {
-  h1 + p:first-of-type {
+  > p:first-of-type {
+    margin-top: 0;
     margin-bottom: 2rem;
-    font-size: var(--font-size-700);
     color: var(--text-strong);
+    font-size: var(--font-size-800);
+    letter-spacing: var(--letter-spacing-300);
   }
 }

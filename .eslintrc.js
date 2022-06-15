@@ -1,3 +1,7 @@
+const path = require('path');
+
+const packages = require('./package.json').workspaces.packages;
+
 module.exports = {
   root: true,
   extends: [
@@ -12,12 +16,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: [
       './tsconfig.eslint.json',
-      './polaris-for-figma/tsconfig.json',
-      './polaris-for-vscode/tsconfig.json',
-      './polaris-react/tsconfig.json',
-      './polaris-tokens/tsconfig.json',
-      './polaris.shopify.com/tsconfig.json',
-      './stylelint-polaris/tsconfig.json',
+      ...packages.map((pkg) => `./${pkg}/tsconfig.json`),
     ],
   },
   settings: {
@@ -81,6 +80,7 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
   },
   overrides: [
+    ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
     {
       files: ['polaris-for-figma/src/**/*.{ts,tsx}'],
       rules: {
@@ -144,3 +144,19 @@ module.exports = {
     },
   ],
 };
+
+function noExtraneousDependenciesConfig(packageDir) {
+  return {
+    files: [
+      `${packageDir}/rollup.config.*`,
+      `${packageDir}/loom.config.*`,
+      `${packageDir}/config/**/*`,
+    ],
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        {packageDir: [__dirname, path.join(__dirname, packageDir)]},
+      ],
+    },
+  };
+}
