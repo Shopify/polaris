@@ -13,6 +13,20 @@ export const getComponentCategories = (): string[] => {
   return componentCategories;
 };
 
+export const getComponentNav = (): NavItem[] => {
+  const navItems: NavItem[] = [
+    {
+      title: "All",
+      children: components.map((component) => ({
+        title: component.frontMatter.name,
+        url: `/components/${slugify(component.frontMatter.name)}`,
+      })),
+    },
+  ];
+
+  return navItems;
+};
+
 export const slugify = (str: string) => {
   return (
     str
@@ -46,7 +60,7 @@ export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
   return urls;
 };
 
-export const getTitleForTitleTag = (title?: string) => {
+export const getTitleTagValue = (title?: string) => {
   const siteName = "Shopify Polaris";
   if (title) {
     return `${title} — ${siteName}`;

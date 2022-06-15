@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Se handlinger for {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Tilbage",
+      "accessibilityLabel": "Afslut fuldskærmstilstand"
     }
   }
 }

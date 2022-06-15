@@ -1,6 +1,6 @@
 import { tokens } from "@shopify/polaris-tokens";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getTitleForTitleTag } from "../../../../utils/various";
+import { getTitleTagValue } from "../../../../utils/various";
 
 import { staticTokenGroupKeys } from "./[tokens]";
 
@@ -16,7 +16,8 @@ const html = `
 <!DOCTYPE>
 <html>
     <head>
-        <title>${getTitleForTitleTag("API")}</title>
+        <meta charset="utf-8">
+        <title>${getTitleTagValue("API")}</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;
@@ -30,7 +31,7 @@ const html = `
         </style>
     </head>
     <body>
-        <h1>Admin Design Systems Token API v0</h1>
+        <h1>Polaris Token API</h1>
         <p>
             This API allows users to query for and build applications with the <a href="https://polaris.shopify.com/tokens/getting-started-with-tokens">Polaris Tokens</a>.
         </p>

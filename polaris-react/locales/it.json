@@ -304,6 +304,10 @@
       "Header": {
         "rollupActionsLabel": "Visualizza azioni per {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Indietro",
+      "accessibilityLabel": "Esci dalla modalità schermo intero"
     }
   }
 }
