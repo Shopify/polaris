@@ -11,6 +11,7 @@ on:
   pull_request:
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
 
 jobs:
