@@ -1,5 +1,3 @@
-@import '../foundation/layout';
-
 @function breakpoint($value) {
   $value-unit: unit($value);
 
@@ -14,90 +12,28 @@
 
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   $layout-width-inner-spacing-base;
-// * {
-//   --page-max-width: #{$page-max-width};
-// }
-
 $frame-with-nav-max-width: $layout-width-nav-base + $page-max-width;
-// * {
-//   --frame-with-nav-max-width: #{$frame-with-nav-max-width};
-// }
 
 $stacked-content: breakpoint(
   $layout-width-primary-min + $layout-width-secondary-min +
     $layout-width-inner-spacing-base
 );
-// * {
-//   --stacked-content: #{$stacked-content};
-//   --stacked-content-px: #{$stacked-content / 1em * 16px};
-// }
-
 $not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
-// * {
-//   --not-condensed-content: #{$not-condensed-content};
-//   --not-condensed-content-px: #{$not-condensed-content / 1em * 16px};
-// }
-
 $partially-condensed-content: breakpoint(
   $layout-width-page-content-partially-condensed
 );
-// * {
-//   --partially-condensed-content: #{$partially-condensed-content};
-//   --partially-condensed-content-px: #{$partially-condensed-content / 1em * 16px};
-// }
 
 $not-condensed-outer-spacing: breakpoint(2 * $layout-width-outer-spacing-max);
-// * {
-//   --not-condensed-outer-spacing: #{$not-condensed-outer-spacing};
-//   --not-condensed-outer-spacing-px: #{$not-condensed-outer-spacing / 1em * 16px};
-// }
-
 $partially-condensed-outer-spacing: breakpoint(
   2 * $layout-width-outer-spacing-min
 );
-// * {
-//   --partially-condensed-outer-spacing: #{$partially-condensed-outer-spacing};
-//   --partially-condensed-outer-spacing-px: #{$partially-condensed-outer-spacing /
-//     1em * 16px};
-// }
 
 $not-condensed-min-page: $not-condensed-content + $not-condensed-outer-spacing;
-// * {
-//   --not-condensed-min-page: #{$not-condensed-min-page};
-//   --not-condensed-min-page-px: #{$not-condensed-min-page / 1em * 16px};
-// }
-
 $partially-condensed-min-page: $partially-condensed-content +
   $partially-condensed-outer-spacing;
 
-// * {
-//   --partially-condensed-min-page: #{$partially-condensed-min-page};
-//   --partially-condensed-min-page-px: #{$partially-condensed-min-page / 1em *
-//     16px};
-// }
-
 $nav-size: breakpoint($layout-width-nav-base);
-// * {
-//   --nav-size: #{$nav-size};
-//   --nav-size-px: #{$nav-size / 1em * 16px};
-// }
-
 $nav-min-window: breakpoint($layout-width-page-with-nav-base);
-// * {
-//   --nav-min-window: #{$nav-min-window};
-//   --nav-min-window-px: #{$nav-min-window / 1em * 16px};
-// }
-
-// * {
-//   --partially-condensed-outer-spacing: #{$partially-condensed-outer-spacing};
-//   --partially-condensed-outer-spacing-px: #{$partially-condensed-outer-spacing /
-//     1em * 16px};
-// }
-
-// * {
-//   --not-condensed-outer-spacing: #{$not-condensed-outer-spacing};
-//   --not-condensed-outer-spacing-px: #{$not-condensed-outer-spacing / 1em * 16px};
-// }
 
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
@@ -159,10 +95,6 @@ $nav-min-window: breakpoint($layout-width-page-with-nav-base);
   } @else if $size < $not-condensed-content {
     // prettier-ignore
     [data-has-navigation] #{if(&, "&", "*")} {
-      // Only query
-      // Between the size + spacing up until the nav shown width
-      // Range query
-      // Up until the nav + size + spacing
       @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
         (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
           @content;
