@@ -12,15 +12,18 @@ import NavItems from "../NavItems";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
+import { useRouter } from "next/router";
 
 interface Props {
   currentSection?: string;
 }
 
 function Header({ currentSection }: Props) {
+  const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const darkMode = useDarkMode(false);
+  const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
     function hideSideNavOnResize() {
@@ -34,6 +37,11 @@ function Header({ currentSection }: Props) {
     return () => window.removeEventListener("resize", hideSideNavOnResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const mainContent = document.querySelector("#main");
+    setShowSkipToContentLink(mainContent !== null);
+  }, [router.asPath]);
 
   const handleCloseMenu = () => {
     setShowMenu(false);
@@ -77,9 +85,11 @@ function Header({ currentSection }: Props) {
           </a>
         </Link>
 
-        <a className={styles.SkipToContentLink} href="#main">
-          Skip to content
-        </a>
+        {showSkipToContentLink && (
+          <a className={styles.SkipToContentLink} href="#main">
+            Skip to content
+          </a>
+        )}
 
         <nav className={styles.Nav}>
           <ul>
