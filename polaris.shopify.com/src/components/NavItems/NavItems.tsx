@@ -1,33 +1,32 @@
 import Link from "next/link";
 
-const headerNavItems: {
-  label: string;
-  url: string;
-}[] = [
+import { foundationsNavItems, contributingNavItems } from "../../data/navItems";
+
+export type NavItem = {
+  title: string;
+  url?: string;
+  children?: NavItem[];
+};
+
+const navItems: NavItem[] = [
   {
-    label: "Getting started",
+    title: "Getting started",
     url: "/resources",
   },
+  ...foundationsNavItems,
   {
-    label: "Foundations",
-    url: "/foundations",
-  },
-  {
-    label: "Components",
+    title: "Components",
     url: "/components",
   },
   {
-    label: "Tokens",
+    title: "Tokens",
     url: "/tokens/colors",
   },
   {
-    label: "Icons",
+    title: "Icons",
     url: "/icons",
   },
-  {
-    label: "Contributing",
-    url: "/contributing",
-  },
+  ...contributingNavItems,
 ];
 
 interface Props {
@@ -38,19 +37,19 @@ interface Props {
 function NavItems({ currentSection, handleCloseMenu }: Props) {
   return (
     <>
-      {headerNavItems.map(({ url, label }) => {
+      {navItems.map(({ url, title }) => {
         const isCurrent =
-          currentSection && url.startsWith(currentSection) ? "page" : false;
+          currentSection && url?.startsWith(currentSection) ? "page" : false;
 
-        return (
+        return url ? (
           <li key={url}>
             <Link href={url} passHref>
               <a aria-current={isCurrent} onClick={handleCloseMenu}>
-                <span>{label}</span>
+                <span>{title}</span>
               </a>
             </Link>
           </li>
-        );
+        ) : null;
       })}
     </>
   );
