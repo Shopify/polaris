@@ -2,7 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, polaris-release]
+    branches:
+      - main
+      - next
   pull_request:
 
 jobs:

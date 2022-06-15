@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Acties voor {title} bekijken"
       }
+    },
+    "FullscreenBar": {
+      "back": "Terug",
+      "accessibilityLabel": "Volledig scherm-modus afsluiten"
     }
   }
 }

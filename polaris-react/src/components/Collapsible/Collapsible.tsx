@@ -70,6 +70,11 @@ export function Collapsible({
   );
 
   useEffect(() => {
+    if (isFullyClosed) return;
+    setAnimationState('measuring');
+  }, [children, isFullyClosed]);
+
+  useEffect(() => {
     if (open !== isOpen) {
       setAnimationState('measuring');
     }

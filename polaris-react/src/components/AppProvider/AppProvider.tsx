@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import 'focus-visible/dist/focus-visible';
 
 import {
+  // eslint-disable-next-line import/no-deprecated
   CustomProperties,
   CustomPropertiesProps,
   DEFAULT_COLOR_SCHEME,
@@ -42,7 +42,7 @@ export interface AppProviderProps {
   features?: FeaturesConfig;
   /** Inner content of the application */
   children?: React.ReactNode;
-  /** Determines what color scheme is applied to child content. */
+  /** @deprecated Determines what color scheme is applied to child content. */
   colorScheme?: CustomPropertiesProps['colorScheme'];
 }
 
@@ -103,6 +103,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
     );
     document.body.style.backgroundColor = 'var(--p-background)';
     document.body.style.color = 'var(--p-text)';
+
+    if (this.props.colorScheme && process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The `colorScheme` prop on the `AppProvider` has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
+      );
+    }
   };
 
   render() {

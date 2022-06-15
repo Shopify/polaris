@@ -8,14 +8,13 @@ on:
       - opened
       - synchronize
       - reopened
-    branches-ignore:
-      - 'changeset-release/**'
 
 jobs:
   check:
-    if: ${{ !contains(github.event.pull_request.labels.*.name, '🤖Skip Changelog') }}
+    if: |
+      !contains(github.event.pull_request.head.ref, 'changeset-release') &&
+      !contains(github.event.pull_request.labels.*.name, '🤖Skip Changelog')
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
