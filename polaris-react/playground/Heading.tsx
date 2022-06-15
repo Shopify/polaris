@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
-import {Type, Typography} from './Typography';
 
+import {Type, Typography} from './Typography';
 import styles from './Heading.scss';
 
 interface HeadingProps {
@@ -14,7 +14,7 @@ interface HeadingProps {
 }
 
 // TODO: TS fix
-const headingVariantMapping = {
+const headingVariantMapping: any = {
   small: 'h4',
   medium: 'h3',
   large: 'h2',
