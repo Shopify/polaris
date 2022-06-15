@@ -9,16 +9,33 @@ $dangerous-magic-space-8: 32px;
 /// @group foundation/layout
 ////
 
+// Only used in the Layout component
+// Only used in Polaris (not web)
+// Is the default flex-basis for the primary Layout.Section
 $layout-width-primary-min: 480px;
 $layout-width-primary-max: 662px;
 $layout-width-secondary-min: 240px;
 $layout-width-secondary-max: 320px;
+
+// Size of mobile page (no content margin)
 $layout-width-one-half-width-base: 450px;
+
 $layout-width-one-third-width-base: 240px;
+// Size of nav
 $layout-width-nav-base: $navigation-width;
+
+// Size of page when nav is shown
 $layout-width-page-with-nav-base: 769px;
+
+// Size of page for mobile (nav is hidden)
 $layout-width-page-content-not-condensed: 680px;
+
+// Size of mobile page (no content margin)
 $layout-width-page-content-partially-condensed: 450px;
+
+// Size of page for mobile (with content margin)
+// $page-condensed-min-page: 490px === 450px + (2 * 20px)
+
 $layout-width-inner-spacing-base: $dangerous-magic-space-4;
 $layout-width-outer-spacing-min: $dangerous-magic-space-5;
 $layout-width-outer-spacing-max: $dangerous-magic-space-8;

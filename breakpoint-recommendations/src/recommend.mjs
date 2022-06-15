@@ -17,6 +17,11 @@ import {tokens} from '@shopify/polaris-tokens';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
+const breakpointsRecommendationsPath = path.join(
+  __dirname,
+  'breakpoints-recommendations.md',
+);
+
 const cli = meow({
   importMeta: import.meta,
   flags: {
@@ -133,7 +138,7 @@ const [mdInPx, mdMiddleInPx] = getBreakpointInPx('md', 'lg');
 const [lgInPx, lgMiddleInPx] = getBreakpointInPx('lg', 'xl');
 const [xlInPx] = getBreakpointInPx('xl');
 
-const migrationGuide = `
+const breakpointsRecommendations = `
 # Breakpoints migration
 
 Use this guide to help migrate you responsive design to the
@@ -168,8 +173,8 @@ function formatData(key, value) {
 //   JSON.stringify(categorizeMediaConditions(deviceSizeMediaConditions), null, 2),
 // );
 await fs.promises.writeFile(
-  path.join(__dirname, 'device-size-conditions.md'),
-  migrationGuide,
+  breakpointsRecommendationsPath,
+  breakpointsRecommendations,
 );
 
 function categorizeMediaConditions(mediaConditions) {
