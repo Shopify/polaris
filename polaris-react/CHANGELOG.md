@@ -1,5 +1,31 @@
 # Changelog
 
+## 9.16.0
+
+### Minor Changes
+
+- [#6121](https://github.com/Shopify/polaris/pull/6121) [`c9c4cc00c`](https://github.com/Shopify/polaris/commit/c9c4cc00c390be4a713633cbce6f2ebfc339c56d) Thanks [@jas7457](https://github.com/jas7457)! - Added support for setting `start` and `end` on the `Button` `textAlign` prop
+
+* [#5963](https://github.com/Shopify/polaris/pull/5963) [`3115063ed`](https://github.com/Shopify/polaris/commit/3115063ede96229bbb06a8857437d71769c6d203) Thanks [@alex-page](https://github.com/alex-page)! - Migrate build process from loom to rollup
+
+### Patch Changes
+
+- [#6109](https://github.com/Shopify/polaris/pull/6109) [`8bf288c8f`](https://github.com/Shopify/polaris/commit/8bf288c8f866d56021f23d76a5e43de78cc295b4) Thanks [@chazdean](https://github.com/chazdean)! - Add darkmode toggle animation
+
+* [#5987](https://github.com/Shopify/polaris/pull/5987) [`d1acf9d25`](https://github.com/Shopify/polaris/commit/d1acf9d25b5f143d666e326f8435690a51e67c8b) Thanks [@bencmilton](https://github.com/bencmilton)! - Fixed click events not propagating in `Tooltip` and added support for SVG elements as `prefix`, `suffix`, and `verticalContent` in `TextField`
+
+- [#6098](https://github.com/Shopify/polaris/pull/6098) [`fc39d5fca`](https://github.com/Shopify/polaris/commit/fc39d5fcab57f2a6bc1efec0ca85ce76227b10ae) Thanks [@alololox](https://github.com/alololox)! - [IndexTable] Hide scroll bar when table is not scrollable
+
+* [#5803](https://github.com/Shopify/polaris/pull/5803) [`a19fe4f9f`](https://github.com/Shopify/polaris/commit/a19fe4f9f2982ff74d5c34a597dea34ef6519b4a) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved TypeScript declarations for `@shopify/polaris-tokens`
+
+- [#6125](https://github.com/Shopify/polaris/pull/6125) [`0283a4e33`](https://github.com/Shopify/polaris/commit/0283a4e33877026dded3c6d609c12489db38bad6) Thanks [@aveline](https://github.com/aveline)! - Revert border color for checkbox and radio button
+
+* [#6106](https://github.com/Shopify/polaris/pull/6106) [`92e285c9b`](https://github.com/Shopify/polaris/commit/92e285c9b164a1c747b5b56cd973a5e2e26b361b) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated experimental breakpoints for down media conditions
+
+* Updated dependencies [[`8bf288c8f`](https://github.com/Shopify/polaris/commit/8bf288c8f866d56021f23d76a5e43de78cc295b4), [`738e31e13`](https://github.com/Shopify/polaris/commit/738e31e1320b289fbf68a2468bcb208b9a629edf), [`75f46e50e`](https://github.com/Shopify/polaris/commit/75f46e50e88e1b93ef0075b5474cc632acdfc81d), [`a19fe4f9f`](https://github.com/Shopify/polaris/commit/a19fe4f9f2982ff74d5c34a597dea34ef6519b4a), [`b7160b861`](https://github.com/Shopify/polaris/commit/b7160b86107f8466bb275122cf08aad0bed8bbd2)]:
+  - @shopify/polaris-tokens@5.3.0
+  - @shopify/polaris-icons@4.23.0
+
 ## 9.15.0
 
 ### Minor Changes

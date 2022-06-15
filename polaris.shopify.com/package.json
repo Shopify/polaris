@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "build": "next build",
