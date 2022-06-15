@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add optional parameter to enable a square-shaped avatar
+Add shape prop to avatar
