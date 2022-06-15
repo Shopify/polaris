@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
 import {Image} from '../../../../Image';
+// eslint-disable-next-line import/no-deprecated
 import {CustomProperties} from '../../../../CustomProperties';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
@@ -296,6 +297,7 @@ describe('<ContextualSaveBar />', () => {
 
   it('renders a CustomProperties with a dark color scheme', () => {
     const contextualSaveBar = mountWithApp(<ContextualSaveBar />);
+    // eslint-disable-next-line import/no-deprecated
     expect(contextualSaveBar).toContainReactComponent(CustomProperties, {
       colorScheme: 'dark',
     });

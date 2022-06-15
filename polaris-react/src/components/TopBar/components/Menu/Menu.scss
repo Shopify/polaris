@@ -58,7 +58,7 @@ $activator-variables: (
     }
   }
 
-  @include breakpoint-before($layout-width-page-with-nav-base, false) {
+  @media #{$breakpoints-layout-width-page-with-nav-base-down} {
     margin: 0;
 
     &:focus,
