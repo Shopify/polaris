@@ -8,6 +8,15 @@ $small-width: 620px;
 $large-width: 980px;
 // @TODO simplify media queries so this isn't needed
 $dangerous-magic-space-16: 64px;
+$breakpoints-xsmall-width-up: breakpoints-up(
+  $xsmall-width + $dangerous-magic-space-16
+);
+
+$breakpoints-large-width-up: breakpoints-up(
+  $large-width + $dangerous-magic-space-16
+);
+
+$breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
 
 .Container {
   position: fixed;
@@ -23,7 +32,7 @@ $dangerous-magic-space-16: 64px;
   // Resume pointer-events on .Modal below
   pointer-events: none;
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
     justify-content: center;
   }
 }
@@ -49,12 +58,12 @@ $dangerous-magic-space-16: 64px;
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @media #{$p-frame-when-nav-hidden-down} {
+  @media #{$breakpoints-frame-when-nav-hidden-down} {
     bottom: 0;
     max-height: 100%;
   }
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -62,29 +71,29 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
-      @media (min-height: $height-limit + $vertical-spacing) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+      @media #{$breakpoints-height-limit-up} {
         max-height: $height-limit;
       }
     }
   }
 
   &.sizeSmall {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
+    @media #{$breakpoints-xsmall-width-up} {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
+    @media #{$breakpoints-large-width-up} {
       max-width: $large-width;
     }
   }

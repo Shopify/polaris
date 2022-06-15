@@ -37,7 +37,7 @@
 }
 
 .Control {
-  @include when-typography-condensed {
+  @media #{$breakpoints-typography-not-condensed-down} {
     --p-choice-size: 22px;
   }
   display: flex;
@@ -63,7 +63,7 @@
 }
 
 .Descriptions {
-  @include when-typography-condensed {
+  @media #{$breakpoints-typography-not-condensed-down} {
     --p-choice-size: 22px;
   }
   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
