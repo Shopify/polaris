@@ -76,17 +76,17 @@
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "180 kB"
+      "limit": "205 kB"
     },
     {
       "name": "polaris-react-esm",
       "path": "polaris-react/build/esm/index.js",
-      "limit": "105 kB"
+      "limit": "140 kB"
     },
     {
       "name": "polaris-react-esnext",
       "path": "polaris-react/build/esnext/index.esnext",
-      "limit": "160 kB"
+      "limit": "195 kB"
     },
     {
       "name": "polaris-react-css",
