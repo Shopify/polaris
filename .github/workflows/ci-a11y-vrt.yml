@@ -7,6 +7,7 @@ on:
       - next
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
   pull_request:
     paths:
