@@ -10,8 +10,6 @@
 
 ### Patch Changes
 
-- [#6109](https://github.com/Shopify/polaris/pull/6109) [`8bf288c8f`](https://github.com/Shopify/polaris/commit/8bf288c8f866d56021f23d76a5e43de78cc295b4) Thanks [@chazdean](https://github.com/chazdean)! - Add darkmode toggle animation
-
 * [#5987](https://github.com/Shopify/polaris/pull/5987) [`d1acf9d25`](https://github.com/Shopify/polaris/commit/d1acf9d25b5f143d666e326f8435690a51e67c8b) Thanks [@bencmilton](https://github.com/bencmilton)! - Fixed click events not propagating in `Tooltip` and added support for SVG elements as `prefix`, `suffix`, and `verticalContent` in `TextField`
 
 - [#6098](https://github.com/Shopify/polaris/pull/6098) [`fc39d5fca`](https://github.com/Shopify/polaris/commit/fc39d5fcab57f2a6bc1efec0ca85ce76227b10ae) Thanks [@alololox](https://github.com/alololox)! - [IndexTable] Hide scroll bar when table is not scrollable
