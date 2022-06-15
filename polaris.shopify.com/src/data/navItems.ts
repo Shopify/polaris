@@ -1,6 +1,6 @@
 import { NavItem } from "../components/Nav/Nav";
 
-export const navItems: NavItem[] = [
+export const foundationsNavItems: NavItem[] = [
   {
     title: "Foundations",
     children: [
@@ -169,4 +169,44 @@ export const navItems: NavItem[] = [
       },
     ],
   },
+];
+
+export const contributingNavItems = [
+  {
+    title: "Contributing to Polaris",
+    url: "/contributing",
+    children: [
+
+      {
+        title: "Components",
+        url: "/contributing/components",
+      },
+      {
+        title: "Figma UI Kit",
+        url: "/contributing/figma-ui-kit",
+      },
+      {
+        title: "Icons",
+        url: "/contributing/icons",
+      },
+      {
+        title: "Documentation",
+        url: "/contributing/documention",
+      },
+    ],
+  },
+  {
+    title: "Guides",
+    children: [
+       {
+        title: "Thinking in systems",
+        url: "/contributing/thinking-in-systems",
+      },
+      {
+        title: "When to evolve the system",
+        url: "/contributing/when-to-evolve-the-system",
+      },
+
+    ],
+  }
 ];

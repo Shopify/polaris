@@ -1,10 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import fs from "fs";
 import path from "path";
+
 import { parseMarkdown } from "../../../utils/markdown.mjs";
-import { getUrlsFromNavItems } from "../../../utils/various";
+import { getUrlsFromNavItems, getTitleTagValue } from "../../../utils/various";
 import { MarkdownFile } from "../../../types";
-import { navItems } from "../../../data/navItems";
+import { foundationsNavItems } from "../../../data/navItems";
 import FoundationsPage from "../../../components/FoundationsPage";
 
 interface Props {
@@ -45,7 +46,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let urls: string[] = getUrlsFromNavItems(navItems);
+  let urls: string[] = getUrlsFromNavItems(foundationsNavItems);
 
   const paths = urls.map((url) => {
     const parts = url.split("/");
