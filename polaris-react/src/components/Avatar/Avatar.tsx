@@ -104,7 +104,7 @@ export function Avatar({
     size && styles[variationName('size', size)],
     !customer && styles[variationName('style', styleClass(nameString))],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    shape === 'square' && styles.SquareAvatar,
+    shape  && styles[variationName('shape',shape)],
   );
 
   const imageClassName = classNames(
