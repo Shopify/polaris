@@ -8,8 +8,6 @@
 
 ### Patch Changes
 
-- [#6109](https://github.com/Shopify/polaris/pull/6109) [`8bf288c8f`](https://github.com/Shopify/polaris/commit/8bf288c8f866d56021f23d76a5e43de78cc295b4) Thanks [@chazdean](https://github.com/chazdean)! - Add darkmode toggle animation
-
 * [#6110](https://github.com/Shopify/polaris/pull/6110) [`738e31e13`](https://github.com/Shopify/polaris/commit/738e31e1320b289fbf68a2468bcb208b9a629edf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added CSS unit utilities
 
 - [#5803](https://github.com/Shopify/polaris/pull/5803) [`a19fe4f9f`](https://github.com/Shopify/polaris/commit/a19fe4f9f2982ff74d5c34a597dea34ef6519b4a) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved TypeScript declarations for `@shopify/polaris-tokens`
