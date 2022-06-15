@@ -33,6 +33,41 @@
   }
 }
 
+.Buttons {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.ButtonsOverlayed {
+  position: absolute;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+}
+
+.Button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: var(--font-size-100);
+  color: #000;
+  min-width: 40px;
+  background: none;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+
+  &:last-of-type {
+    float: right;
+  }
+}
+
+.ButtonSelected {
+  background: #f0f0f0;
+}
+
 .ExampleFrame {
-  margin: 32px 0px;
+  margin: 2rem 0 2rem;
 }

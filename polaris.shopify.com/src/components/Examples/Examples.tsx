@@ -15,9 +15,14 @@ interface Props {
   examples: [Example];
 }
 
+const openCodesandbox = () => {
+  console.log("openCodesandbox");
+};
+
 const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
+  const [showPreview, setShowPreview] = useState(true);
   const { code, description, fileName, title } = examples[currentIndex];
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
@@ -55,14 +60,43 @@ const Examples = (props: Props) => {
         </div>
       </div>
       {description ? <p>{description}</p> : null}
-      <div className={styles.ExampleFrame}>
-        <iframe src={exampleUrl} height="400px" width="100%" />
+      <div
+        className={`${styles.Buttons} ${
+          showPreview && styles.ButtonsOverlayed
+        }`}
+      >
+        <button
+          className={`${styles.Button} ${
+            showPreview ? styles.ButtonSelected : ""
+          }`}
+          onClick={() => setShowPreview(true)}
+        >
+          Preview
+        </button>
+        <button
+          className={`${styles.Button} ${
+            showPreview ? "" : styles.ButtonSelected
+          }`}
+          onClick={() => setShowPreview(false)}
+        >
+          Code
+        </button>
+        <button
+          className={`${styles.Button} ${styles.ButtonSelected}`}
+          onClick={openCodesandbox}
+        >
+          Edit in Codesandbox
+        </button>
       </div>
-      {code ? (
+      {showPreview ? (
+        <div className={styles.ExampleFrame}>
+          <iframe src={exampleUrl} height="400px" width="100%" />
+        </div>
+      ) : (
         <CodeExample language="typescript" title={`${title} Example`}>
           {code}
         </CodeExample>
-      ) : null}
+      )}
     </div>
   );
 };
