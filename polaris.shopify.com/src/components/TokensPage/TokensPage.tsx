@@ -4,7 +4,7 @@ import { useState } from "react";
 import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
-import { NavItem } from "../Nav/Nav";
+import type { NavItem } from "../NavItems";
 import Link from "next/link";
 
 interface Props {
