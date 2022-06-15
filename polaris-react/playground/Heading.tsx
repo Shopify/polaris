@@ -9,7 +9,7 @@ interface HeadingProps {
   as?: Type;
   children: ReactNode;
   noWrap?: boolean;
-  size: string;
+  size?: string;
   strong?: boolean;
 }
 
@@ -21,7 +21,13 @@ const headingVariantMapping: any = {
   xlarge: 'h1',
 };
 
-export const Heading = ({as, children, noWrap, size, strong}: HeadingProps) => {
+export const Heading = ({
+  as,
+  children,
+  noWrap,
+  size = 'medium',
+  strong,
+}: HeadingProps) => {
   let type = as || 'span';
   if (!as && size) {
     type = headingVariantMapping[size];
