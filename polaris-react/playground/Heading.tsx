@@ -2,11 +2,11 @@ import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
 
-import {Type, Typography} from './Typography';
+import {ElementType, Typography} from './Typography';
 import styles from './Heading.scss';
 
 interface HeadingProps {
-  as?: Type;
+  as?: ElementType;
   children: ReactNode;
   noWrap?: boolean;
   size?: string;
@@ -37,11 +37,10 @@ export const Heading = ({
     styles.Heading,
     styles[size],
     strong && styles.strong,
-    noWrap && styles.nowrap,
   );
 
   return (
-    <Typography as={type} className={className}>
+    <Typography as={type} className={className} noWrap={noWrap}>
       {children}
     </Typography>
   );
