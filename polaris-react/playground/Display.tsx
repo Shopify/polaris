@@ -8,11 +8,16 @@ import styles from './Display.scss';
 interface DisplayProps {
   children: ReactNode;
   noWrap?: boolean;
-  size: string;
+  size?: string;
   strong?: boolean;
 }
 
-export const Display = ({children, noWrap, size, strong}: DisplayProps) => {
+export const Display = ({
+  children,
+  noWrap,
+  size = 'small',
+  strong,
+}: DisplayProps) => {
   const className = classNames(
     styles.Display,
     styles[size],

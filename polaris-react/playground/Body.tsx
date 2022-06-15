@@ -9,11 +9,17 @@ interface BodyProps {
   as?: Type;
   children: ReactNode;
   noWrap?: boolean;
-  size: string;
+  size?: string;
   strong?: boolean;
 }
 
-export const Body = ({as, children, noWrap, size, strong}: BodyProps) => {
+export const Body = ({
+  as,
+  children,
+  noWrap,
+  size = 'medium',
+  strong,
+}: BodyProps) => {
   const type = as || 'p';
 
   const className = classNames(
