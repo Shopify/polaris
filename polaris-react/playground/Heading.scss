@@ -1,0 +1,34 @@
+.Heading {
+  font-weight: var(--p-font-weight-semibold);
+  margin: 0;
+}
+
+.small {
+  font-size: var(--p-font-size-1);
+  line-height: var(--p-line-height-1);
+}
+
+.medium {
+  font-size: var(--p-font-size-3);
+  line-height: var(--p-line-height-2);
+}
+
+.large {
+  font-size: var(--p-font-size-5);
+  line-height: var(--p-line-height-3);
+}
+
+.xlarge {
+  font-size: var(--p-font-size-7);
+  line-height: var(--p-line-height-3);
+}
+
+.strong {
+  font-weight: var(--p-font-weight-bold);
+}
+
+.nowrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
