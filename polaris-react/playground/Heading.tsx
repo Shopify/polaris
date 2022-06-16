@@ -1,16 +1,15 @@
 import React, {ReactNode} from 'react';
 
-import {classNames} from '../src/utilities/css';
-
 import {ElementType, Typography} from './Typography';
-import styles from './Heading.scss';
+
+type FontWeight = 'semibold' | 'bold';
 
 interface HeadingProps {
   as?: ElementType;
   children: ReactNode;
+  fontWeight?: FontWeight;
   noWrap?: boolean;
   size?: string;
-  strong?: boolean;
 }
 
 // TODO: TS fix
@@ -24,23 +23,23 @@ const headingVariantMapping: any = {
 export const Heading = ({
   as,
   children,
+  fontWeight = 'semibold',
   noWrap,
   size = 'medium',
-  strong,
 }: HeadingProps) => {
   let type = as || 'span';
   if (!as && size) {
     type = headingVariantMapping[size];
   }
 
-  const className = classNames(
-    styles.Heading,
-    styles[size],
-    strong && styles.strong,
-  );
-
   return (
-    <Typography as={type} className={className} noWrap={noWrap}>
+    <Typography
+      variant="heading"
+      as={type}
+      fontWeight={fontWeight}
+      noWrap={noWrap}
+      size={size}
+    >
       {children}
     </Typography>
   );

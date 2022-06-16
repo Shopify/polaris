@@ -1,35 +1,34 @@
 import React, {ReactNode} from 'react';
 
-import {classNames} from '../src/utilities/css';
-
 import {ElementType, Typography} from './Typography';
-import styles from './Body.scss';
+
+type FontWeight = 'regular' | 'medium';
 
 interface BodyProps {
   as?: ElementType;
   children: ReactNode;
+  fontWeight?: FontWeight;
   noWrap?: boolean;
   size?: string;
-  strong?: boolean;
 }
 
 export const Body = ({
   as,
   children,
+  fontWeight = 'regular',
   noWrap,
   size = 'medium',
-  strong,
 }: BodyProps) => {
   const type = as || 'p';
 
-  const className = classNames(
-    styles.Body,
-    styles[size],
-    strong && styles.strong,
-  );
-
   return (
-    <Typography as={type} className={className} noWrap={noWrap}>
+    <Typography
+      variant="body"
+      as={type}
+      fontWeight={fontWeight}
+      noWrap={noWrap}
+      size={size}
+    >
       {children}
     </Typography>
   );

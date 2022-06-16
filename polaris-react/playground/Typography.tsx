@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 
-import {classNames} from '../src/utilities/css';
+import {classNames, variationName} from '../src/utilities/css';
 
 import styles from './Typography.scss';
 
@@ -16,25 +16,39 @@ export type ElementType =
   | 'span'
   | 'div';
 
-interface TypographyProps {
+type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
+
+interface BaseTypographyProps {
   as: ElementType;
-  className?: string;
   children: ReactNode;
+  fontWeight?: FontWeight;
   noWrap?: boolean;
+  size?: string;
+  variant?: string;
   // fontSize?: string;
-  // fontWeight?: string;
+}
+
+interface TypographyProps extends BaseTypographyProps {
+  variant: string;
+  size: string;
 }
 
 export const Typography = ({
   as,
   children,
-  className = '',
+  fontWeight,
   noWrap,
+  size,
+  variant,
 }: TypographyProps) => {
   const Component = as || 'span';
-  return (
-    <Component className={classNames(className, noWrap && styles.nowrap)}>
-      {children}
-    </Component>
+
+  const className = classNames(
+    styles.root,
+    variant && styles[variationName(variant, size)],
+    noWrap && styles.nowrap,
+    fontWeight && styles[fontWeight],
   );
+
+  return <Component className={className}>{children}</Component>;
 };

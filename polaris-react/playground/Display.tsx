@@ -1,32 +1,29 @@
 import React, {ReactNode} from 'react';
 
-import {classNames} from '../src/utilities/css';
-
 import {Typography} from './Typography';
-import styles from './Display.scss';
+
+type FontWeight = 'semibold' | 'bold';
 
 interface DisplayProps {
   children: ReactNode;
+  fontWeight?: FontWeight;
   noWrap?: boolean;
   size?: string;
-  strong?: boolean;
 }
 
 export const Display = ({
   children,
+  fontWeight = 'semibold',
   noWrap,
   size = 'small',
-  strong,
-}: DisplayProps) => {
-  const className = classNames(
-    styles.Display,
-    styles[size],
-    strong && styles.strong,
-  );
-
-  return (
-    <Typography as="span" className={className} noWrap={noWrap}>
-      {children}
-    </Typography>
-  );
-};
+}: DisplayProps) => (
+  <Typography
+    variant="display"
+    as="span"
+    fontWeight={fontWeight}
+    noWrap={noWrap}
+    size={size}
+  >
+    {children}
+  </Typography>
+);
