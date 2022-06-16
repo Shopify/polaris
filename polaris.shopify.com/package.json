@@ -18,6 +18,7 @@
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",
+    "codesandbox": "^2.2.3",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
     "glob": "^7.1.6",

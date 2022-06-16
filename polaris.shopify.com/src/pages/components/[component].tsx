@@ -22,7 +22,10 @@ interface MarkdownData {
 interface Props {
   examples: [Example];
   name: string;
-  readme: string;
+  readme: {
+    body: string;
+    header: string;
+  };
 }
 
 const Components = ({ examples, name, readme }: Props) => {
@@ -35,8 +38,9 @@ const Components = ({ examples, name, readme }: Props) => {
       </Head>
       <Longform>
         <h1>{name}</h1>
+        <Markdown text={readme.header} skipH1 />
         <Examples examples={examples} />
-        <Markdown text={readme} skipH1 />
+        <Markdown text={readme.body} skipH1 />
       </Longform>
     </Layout>
   );
@@ -55,7 +59,15 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readme = marked(data.readme);
+    const readmeText = marked(data.readme).split("\n");
+    // Note: Assumes that the first two lines are the title and description
+    const readmeHeader = readmeText.splice(0, 2).join("\n");
+    const readmeBody = readmeText.join("\n");
+    const readme = {
+      header: readmeHeader,
+      body: readmeBody,
+    };
+
     const examples = data?.frontMatter?.examples.map((example: Example) => {
       const examplePath = path.resolve(
         process.cwd(),
