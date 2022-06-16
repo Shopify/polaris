@@ -44,5 +44,13 @@
     background: var(--primary);
     color: var(--surface);
     box-shadow: inset 0 -2px rgba(0, 0, 0, 0.075);
+    &:focus {
+      box-shadow: var(--focus-outline);
+      border: 2px solid red;
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-outline);
   }
 }

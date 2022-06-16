@@ -13,7 +13,6 @@ import { className, getTitleTagValue } from "../../utils/various";
 import IconGrid from "../IconGrid";
 import TextField from "../TextField";
 import CodeExample from "../CodeExample";
-import { LinkButton } from "../Button/Button";
 import Image from "../Image";
 import { Icon } from "../../types";
 
@@ -168,16 +167,13 @@ function IconsPage() {
                 </div>
 
                 <div className={styles.ActionButtons}>
-                  <LinkButton
-                    href={
-                      importedSvgs(`./${selectedIcon.fileName}.svg`).default.src
-                    }
+                  <a
+                    className={styles.DownloadIconButton}
+                    href={`/icons/${selectedIcon.fileName}.svg`}
                     download
-                    primary
-                    fill
                   >
                     Download SVG
-                  </LinkButton>
+                  </a>
                 </div>
               </div>
 

@@ -3,14 +3,15 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "yarn run copy-icons && next build",
+    "dev": "yarn run copy-icons && next dev",
     "start": "next start ",
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
+    "copy-icons": "node src/scripts/copy-icons.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
