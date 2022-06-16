@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add shape prop to avatar
+Added a `shape` prop to `Avatar`
