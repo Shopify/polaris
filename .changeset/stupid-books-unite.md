@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Add white background to Navigation if logo is present
+Updated the `Navigation` `logo` container to have a white background when present
