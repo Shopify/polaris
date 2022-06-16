@@ -312,30 +312,6 @@ function ModalExample() {
 }
 ```
 
-### Iframe modal
-
-```jsx
-function IFrameModalExample() {
-  const [active, setActive] = useState(true);
-
-  const handleChange = useCallback(() => setActive(!active), [active]);
-
-  const activator = <Button onClick={handleChange}>Open</Button>;
-
-  return (
-    <div style={{height: '500px'}}>
-      <Modal
-        src="http://localhost:6006/iframe.html?id=playground-playground--playground&args=&viewMode=story"
-        activator={activator}
-        open={active}
-        onClose={handleChange}
-        title="Reach more shoppers with Instagram product tags"
-      />
-    </div>
-  );
-}
-```
-
 ### Modal with primary action
 
 Use to let merchants take a key action.
