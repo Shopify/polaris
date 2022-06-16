@@ -7,6 +7,7 @@ import { className } from "../../utils/various";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
+import SiteLaunchBanner from "../SiteLaunchBanner";
 
 interface Props {
   skipHeaderAndFooter?: boolean;
@@ -37,6 +38,8 @@ function Page({ skipHeaderAndFooter = false, children }: Props) {
           </div>
         </>
       )}
+
+      <SiteLaunchBanner />
     </div>
   );
 }
