@@ -280,7 +280,7 @@
     "IndexProvider": {
       "defaultItemSingular": "项",
       "defaultItemPlural": "项",
-      "allItemsSelected": "已选择所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "allItemsSelected": "已选择所有 {itemsLength}+ 个{resourceNamePlural}。",
       "selected": "已选择 {selectedItemsCount} 个",
       "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
