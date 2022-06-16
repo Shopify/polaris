@@ -329,6 +329,7 @@ function IFrameModalExample() {
         activator={activator}
         open={active}
         onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
       />
     </div>
   );
