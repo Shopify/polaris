@@ -49,7 +49,7 @@
   margin: 0 auto;
   padding: 0 var(--p-space-4);
 
-  @media #{$breakpoints-page-content-when-not-fully-condensed-up} {
+  @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5);
   }
 
