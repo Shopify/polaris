@@ -58,7 +58,7 @@ $activator-variables: (
     }
   }
 
-  @media #{$breakpoints-layout-width-page-with-nav-base-down} {
+  @media #{$p-breakpoints-md-down} {
     margin: 0;
 
     &:focus,
