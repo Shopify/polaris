@@ -32,7 +32,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
   // Resume pointer-events on .Modal below
   pointer-events: none;
 
-  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+  @media #{$p-breakpoints-md-up} {
     justify-content: center;
   }
 }
@@ -63,7 +63,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
     max-height: 100%;
   }
 
-  @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+  @media #{$p-breakpoints-md-up} {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -71,7 +71,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
   }
 
   &.limitHeight {
-    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+    @media #{$p-breakpoints-md-up} {
       @media #{$breakpoints-height-limit-up} {
         max-height: $height-limit;
       }
@@ -79,7 +79,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
   }
 
   &.sizeSmall {
-    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+    @media #{$p-breakpoints-md-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
@@ -89,7 +89,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
   }
 
   &.sizeLarge {
-    @media #{$breakpoints-layout-width-page-with-nav-base-up} {
+    @media #{$p-breakpoints-md-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
