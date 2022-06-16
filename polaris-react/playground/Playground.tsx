@@ -17,6 +17,8 @@ export function Playground() {
 
   useEventListener('click', (event) => event);
   useEventListener('keydown', (event) => event);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   useEventListener('copy', (event) => event);
   useEventListener('copy', (event) => event, document);
   useEventListener('copy', (event) => event, ref.current);
