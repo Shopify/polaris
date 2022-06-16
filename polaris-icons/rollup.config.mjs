@@ -1,16 +1,17 @@
 // rollup.config.js
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 import {createFilter} from '@rollup/pluginutils';
-import babel from '@rollup/plugin-babel';
+import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
 import glob from 'glob';
 import jsYaml from 'js-yaml';
-import convert from '@svgr/core';
+import svgr from '@svgr/core';
 import {optimize} from 'svgo';
 
-const iconBasePath = path.resolve(__dirname, 'icons');
+const convert = svgr.default;
+const iconBasePath = new URL('./icons', import.meta.url).pathname;
 const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
@@ -203,7 +204,8 @@ function replaceFillAttributeSvgoPlugin() {
   };
 }
 
-const config = [
+/** @type {import('rollup').RollupOptions} */
+export default [
   {
     input: 'src/index.ts',
     output: [
@@ -276,6 +278,3 @@ const config = [
     ],
   },
 ];
-
-// eslint-disable-next-line import/no-default-export
-export default config;

@@ -61,7 +61,7 @@ function ResourcesPage({}: Props) {
                       {
                         icon: "figma",
                         label: "Library",
-                        url: "https://www.figma.com/community/file/930504625460155381",
+                        url: "https://www.figma.com/community/file/1111360433678236702",
                       },
                     ]}
                   />
@@ -89,7 +89,7 @@ function ResourcesPage({}: Props) {
                       {
                         icon: "link",
                         label: "Browse tokens",
-                        url: "/tokens",
+                        url: "/tokens/colors",
                       },
                       {
                         icon: "github",
@@ -99,7 +99,7 @@ function ResourcesPage({}: Props) {
                       {
                         icon: "figma",
                         label: "Library",
-                        url: "https://www.figma.com/community/file/930504178610771955",
+                        url: "https://www.figma.com/community/file/1111359207966840858",
                       },
                     ]}
                   />
@@ -140,7 +140,7 @@ function ResourcesPage({}: Props) {
                     {
                       icon: "figma",
                       label: "Library",
-                      url: "https://www.figma.com/community/file/930503928500000754",
+                      url: "https://www.figma.com/community/file/1110993965108325096",
                     },
                   ]}
                 />
@@ -173,7 +173,7 @@ function ResourcesPage({}: Props) {
                       {
                         icon: "install",
                         label: "Get the extension",
-                        url: "#",
+                        url: "https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode",
                       },
                     ]}
                   />

@@ -1,4 +1,8 @@
 import Head from "next/head";
+
+import ComponentGrid from "../ComponentGrid";
+import Layout from "../Layout";
+
 import components from "../../data/components.json";
 import {
   getComponentCategories,
@@ -8,9 +12,6 @@ import {
 } from "../../utils/various";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
-import ComponentGrid from "../ComponentGrid";
-import Layout from "../Layout";
-import Longform from "../Longform";
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();

@@ -18,6 +18,7 @@
     &:focus {
       position: relative;
       z-index: 2;
+      box-shadow: var(--focus-outline);
     }
 
     &::placeholder {
