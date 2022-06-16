@@ -49,7 +49,4 @@ $breakpoints-nav-min-window-corrected-up: breakpoints-up($nav-min-window-correct
 $breakpoints-nav-min-window-corrected-down: breakpoints-down($nav-min-window-corrected);
 $breakpoints-nav-min-window-corrected-down-inclusive: breakpoints-down($nav-min-window-corrected, $inclusive: true);
 
-$breakpoints-layout-width-page-with-nav-base-up: breakpoints-up($layout-width-page-with-nav-base);
-$breakpoints-layout-width-page-with-nav-base-down: breakpoints-down($layout-width-page-with-nav-base);
-
 $breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);
