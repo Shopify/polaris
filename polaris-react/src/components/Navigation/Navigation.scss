@@ -25,7 +25,7 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     max-width: $layout-width-nav-base;
     @include safe-area-for(max-width, $layout-width-nav-base, left);
   }
@@ -38,7 +38,7 @@ $nav-max-width: 360px;
 .ContextControl {
   min-height: $top-bar-height;
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     display: none;
   }
 }
@@ -55,14 +55,14 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     padding-top: var(--p-space-4);
   }
 }
 
 .LogoContainer {
   display: none;
-  @media #{$breakpoints-nav-min-window-corrected-down} {
+  @media #{$p-breakpoints-md-down} {
     display: flex;
     flex: 0 0 $top-bar-height;
     align-items: center;
@@ -127,7 +127,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-background-pressed);
   }
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     font-weight: var(--p-font-weight-medium);
   }
 }
@@ -150,7 +150,7 @@ $disabled-fade: 0.6;
   display: inline-flex;
   margin-top: var(--p-space-2);
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-1);
   }
 }
@@ -165,7 +165,7 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
   }
 }
@@ -206,7 +206,7 @@ $disabled-fade: 0.6;
   padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
   }
 
@@ -289,7 +289,7 @@ $disabled-fade: 0.6;
       color: var(--p-text-primary);
     }
 
-    @media #{$breakpoints-nav-min-window-corrected-up} {
+    @media #{$p-breakpoints-md-up} {
       font-size: var(--p-font-size-3);
       line-height: 1;
       padding-left: var(--p-space-10);
@@ -380,7 +380,7 @@ $disabled-fade: 0.6;
     padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-1);
 
-    @media #{$breakpoints-nav-min-window-corrected-up} {
+    @media #{$p-breakpoints-md-up} {
       height: nav(desktop-nav-height);
 
       // stylelint-disable selector-max-combinators
