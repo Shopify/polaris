@@ -24,6 +24,10 @@ const headerNavItems: {
     label: "Icons",
     url: "/icons",
   },
+  {
+    label: "Contributing",
+    url: "/contributing",
+  },
 ];
 
 interface Props {

@@ -1,22 +1,24 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.2.1",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "yarn run copy-icons && next build",
+    "dev": "yarn run copy-icons && next dev",
     "start": "next start ",
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
+    "copy-icons": "node src/scripts/copy-icons.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",
+    "codesandbox": "^2.2.3",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
     "glob": "^7.1.6",
@@ -42,7 +44,6 @@
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
-    "rehype-raw": "^6.1.1",
-    "typescript": "4.5.5"
+    "rehype-raw": "^6.1.1"
   }
 }

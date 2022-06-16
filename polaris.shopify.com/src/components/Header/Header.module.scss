@@ -90,17 +90,20 @@
 }
 
 .SkipToContentLink {
-  left: 0%;
-  background-color: white;
-  border-radius: var(--border-radius-200);
+  top: 2px;
+  right: 2px;
+  left: 2px;
+  height: calc(var(--header-height) - 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-500);
+  background-color: var(--surface);
   color: var(--text-strong);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-100);
-  margin-top: 0.4rem;
-  margin-left: 0.5rem;
-  padding: 1rem;
+  z-index: 1;
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-115%);
 
   &:focus {
     transform: translateY(0%);

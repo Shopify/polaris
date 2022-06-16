@@ -1,5 +1,4 @@
 .next
-.loom
 node_modules
 dist
 /documentation/guides/legacy-polaris-v8-public-api.scss
