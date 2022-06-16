@@ -36,10 +36,9 @@ function Page({ skipHeaderAndFooter = false, children }: Props) {
               alt="Shopify logo"
             />
           </div>
+          <SiteLaunchBanner />
         </>
       )}
-
-      <SiteLaunchBanner />
     </div>
   );
 }
