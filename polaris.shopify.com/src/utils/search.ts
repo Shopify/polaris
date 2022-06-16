@@ -14,10 +14,11 @@ import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
+import { foundationsNavItems } from "../data/navItems";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Foundations: 3,
-  Components: 2,
+  Components: 3,
   Tokens: 5,
   Icons: 14,
 };
