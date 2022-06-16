@@ -13,7 +13,11 @@ const navItems: NavItem[] = [
     title: "Getting started",
     url: "/resources",
   },
-  ...foundationsNavItems,
+  {
+    title: "Foundations",
+    url: "/foundations",
+    children: foundationsNavItems,
+  },
   {
     title: "Components",
     url: "/components",

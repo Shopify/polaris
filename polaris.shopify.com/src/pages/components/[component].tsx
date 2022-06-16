@@ -9,7 +9,7 @@ import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
-import { NavItem } from "../../components/Nav/Nav";
+import type { NavItem } from "../../components/NavItems";
 import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { getComponentNav, getTitleTagValue } from "../../utils/various";
