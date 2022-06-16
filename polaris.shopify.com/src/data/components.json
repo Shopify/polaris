@@ -757,6 +757,43 @@
   },
   {
     "frontMatter": {
+      "name": "Fullscreen bar",
+      "category": "Navigation",
+      "keywords": [
+        "topbar",
+        "top bar",
+        "header",
+        "bar",
+        "app"
+      ]
+    },
+    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure\na uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
+  },
+  {
+    "frontMatter": {
+      "name": "Grid",
+      "category": "Structure",
+      "keywords": [
+        "one column",
+        "two column",
+        "three column",
+        "column",
+        "row",
+        "column layouts",
+        "grid layouts",
+        "containers",
+        "full width containers",
+        "css grid"
+      ],
+      "notice": {
+        "status": "alpha",
+        "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
+      }
+    },
+    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)"
+  },
+  {
+    "frontMatter": {
       "name": "Heading",
       "category": "Titles and text",
       "platforms": [

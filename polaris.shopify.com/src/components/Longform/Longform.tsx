@@ -1,3 +1,4 @@
+import { className } from "../../utils/various";
 import styles from "./Longform.module.scss";
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 
 function Longform({ children }: Props) {
   return (
-    <div className={styles.Longform}>
+    <div className={className(styles.Longform)}>
       <div className={styles.Content}>{children}</div>
     </div>
   );

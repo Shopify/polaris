@@ -1,41 +1,49 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "yarn run copy-icons && next build",
+    "dev": "yarn run copy-icons && next dev",
     "start": "next start ",
     "lint": "TIMING=1 eslint --cache .",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
+    "copy-icons": "node src/scripts/copy-icons.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",
+    "codesandbox": "^2.2.3",
     "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
+    "glob": "^7.1.6",
     "next": "12.1.0",
     "prismjs": "^1.27.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^8.0.2",
-    "rehype-raw": "^6.1.1",
-    "sass": "^1.49.9"
+    "react-tooltip": "^4.2.21",
+    "sass": "^1.49.9",
+    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
+    "@types/marked": "^4.0.3",
     "@types/node": "17.0.21",
     "@types/prismjs": "^1.26.0",
     "@types/react": "17.0.39",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
+    "frontmatter": "^0.0.3",
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
-    "typescript": "4.5.5"
+    "marked": "^4.0.16",
+    "rehype-raw": "^6.1.1"
   }
 }

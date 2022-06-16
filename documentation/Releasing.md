@@ -1,20 +1,22 @@
 # Releasing
 
-Polaris uses Changsets to handle releasing the npm packages in repository.
+Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository.
 
-We have a [GitHub](https://github.com/changesets/action) action that
+We have a [GitHub action](https://github.com/changesets/action) that
 
-- creates a `version` PR, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
-- optionally allows you to do releases when changes are merged to the `main` branch.
+- creates a `version` PR called **"Version Packages"**, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version`
+- performs a releases when changes are merged to the `main` branch.
 
-## Prereleases
+To perform a release, merge in the **"Version Packages"** PR.
 
-To create a new prerelease:
+## Snapshot Release
 
-1. Branch of the `next` branch
-1. Create changesets with your changes
-1. Set your target merge branch to `next`
-1. The GitHub release workflow will generated a PR for your prerelease branch 🎉
+[Snapshot releases](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) are a way to release your changes for testing without updating the versions. To create a snapshot release:
+
+1. Add a comment in your feature branch PR with the slash command "/snapit"
+2. This will trigger the `snapit.yml` workflow to create a new snapshot release
+
+> Note: Your feature branch PR should have **at least one** changeset. The snapshot release will only release packages with a pending changeset. More info on [adding a changeset](https://github.com/Shopify/polaris/blob/.github/CONTRIBUTING.md#adding-a-changeset).
 
 ### [polaris-for-figma](/polaris-for-figma)
 

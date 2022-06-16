@@ -263,6 +263,22 @@ describe('<IndexTable>', () => {
 
       expect(scrollContainerScrollLeft).toBe(updatedScrollLeft);
     });
+
+    it('sets scrollBarContainerHidden class on scroll container when table is not scrollable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const afterInitialMounts = index.findAll(AfterInitialMount);
+
+      expect(
+        afterInitialMounts[afterInitialMounts.length - 1],
+      ).toContainReactComponent('div', {
+        className: expect.stringContaining('scrollBarContainerHidden'),
+      });
+    });
   });
 
   describe('headings', () => {
@@ -380,6 +396,26 @@ describe('<IndexTable>', () => {
         SelectionType.All,
         true,
       );
+    });
+
+    it('renders a custom select all string if present', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const customString = 'Foo bar baz';
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={[{content: 'promoted action'}]}
+          onSelectionChange={onSelectionChangeSpy}
+          paginatedSelectAllActionText={customString}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {

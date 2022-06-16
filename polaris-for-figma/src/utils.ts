@@ -1,5 +1,4 @@
 /* eslint-disable id-length */
-import '@figma/plugin-typings';
 import {Token} from './types';
 import apiColorTokens from './tokens/apiTokenColors.json';
 

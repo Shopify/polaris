@@ -66,6 +66,15 @@
   }
 }
 
+.textAlignStart {
+  justify-content: flex-start;
+  text-align: start;
+
+  .Content {
+    justify-content: flex-start;
+  }
+}
+
 .textAlignCenter {
   justify-content: center;
   text-align: center;
@@ -74,6 +83,15 @@
 .textAlignRight {
   justify-content: flex-end;
   text-align: right;
+
+  .Content {
+    justify-content: flex-end;
+  }
+}
+
+.textAlignEnd {
+  justify-content: flex-end;
+  text-align: end;
 
   .Content {
     justify-content: flex-end;
