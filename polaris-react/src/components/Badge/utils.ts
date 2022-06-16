@@ -13,6 +13,7 @@ export function getDefaultAccessibilityLabel(
   if (!progress && !status) {
     return '';
   }
+
   switch (progress) {
     case ProgressValue.Incomplete:
       progressLabel = i18n.translate(
@@ -50,8 +51,14 @@ export function getDefaultAccessibilityLabel(
       break;
   }
 
-  return i18n.translate('Polaris.Badge.progressAndStatus', {
-    progressLabel,
-    statusLabel,
-  });
+  if (!status && progress) {
+    return progressLabel;
+  } else if (status && !progress) {
+    return statusLabel;
+  } else {
+    return i18n.translate('Polaris.Badge.progressAndStatus', {
+      progressLabel,
+      statusLabel,
+    });
+  }
 }

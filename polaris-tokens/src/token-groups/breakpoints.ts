@@ -12,6 +12,6 @@ export const breakpoints = {
     value: '1040px',
   },
   'breakpoints-xl': {
-    value: '1400px',
+    value: '1440px',
   },
 };

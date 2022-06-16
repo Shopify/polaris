@@ -1,3 +1,6 @@
 {
-  "extends": "@shopify/typescript-configs/dom"
+  "extends": "@shopify/typescript-configs/dom",
+  "compilerOptions": {
+    "target": "es5"
+  }
 }

@@ -78,10 +78,12 @@ type ActionButtonProps = Pick<
   | 'loading'
   | 'ariaControls'
   | 'ariaExpanded'
+  | 'ariaChecked'
   | 'pressed'
   | 'onKeyDown'
   | 'onKeyUp'
   | 'onKeyPress'
+  | 'onPointerDown'
 >;
 
 const DEFAULT_SIZE = 'medium';
@@ -101,6 +103,7 @@ export function Button({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
+  ariaChecked,
   onClick,
   onFocus,
   onBlur,
@@ -109,6 +112,7 @@ export function Button({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
+  onPointerDown,
   icon,
   primary,
   outline,
@@ -226,6 +230,7 @@ export function Button({
         disabled={disabled}
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
+        aria-checked={ariaChecked}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
@@ -274,10 +279,12 @@ export function Button({
     loading,
     ariaControls,
     ariaExpanded,
+    ariaChecked,
     pressed,
     onKeyDown,
     onKeyUp,
     onKeyPress,
+    onPointerDown,
   };
 
   const buttonMarkup = (

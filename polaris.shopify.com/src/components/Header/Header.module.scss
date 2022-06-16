@@ -1,0 +1,202 @@
+@import "../../styles/variables.scss";
+
+.Header {
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.HeaderInner {
+  display: flex;
+  gap: 3em;
+  height: var(--header-height);
+
+  .Nav {
+    display: flex;
+
+    ul {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-size-100);
+      font-weight: var(--font-weight-500);
+
+      li {
+        a {
+          color: inherit;
+          white-space: pre;
+          display: block;
+          padding: 0.5px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
+
+          span {
+            display: block;
+            padding: 0.75rem 0.8rem;
+          }
+
+          &:focus-within {
+            position: relative;
+            z-index: 1;
+            border-radius: var(--border-radius-800);
+          }
+
+          &:hover {
+            color: var(--text-strong);
+          }
+
+          &[aria-current="page"],
+          &:hover {
+            span {
+              background: rgba(0, 0, 0, 0.03);
+              border-radius: var(--border-radius-800);
+              color: var(--text-strong);
+              box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            }
+          }
+        }
+
+        &:first-child a {
+          border-left: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: $breakpointDesktop) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-inherit);
+  gap: 0.7rem;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-100);
+
+  p {
+    margin: 0;
+  }
+
+  span {
+    transform: translate3d(0, -1px, 0);
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    display: none;
+  }
+}
+
+.SkipToContentLink {
+  left: 0%;
+  background-color: white;
+  border-radius: var(--border-radius-200);
+  color: var(--text-strong);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-100);
+  margin-top: 0.4rem;
+  margin-left: 0.5rem;
+  padding: 1rem;
+  position: absolute;
+  transform: translateY(-100%);
+
+  &:focus {
+    transform: translateY(0%);
+  }
+}
+
+.DarkModeToggle {
+  background: transparent;
+  width: 3rem;
+  margin: 0.5rem 0 0.5rem auto;
+  border-radius: var(--border-radius-800);
+  margin-right: -2rem;
+}
+
+.LightModeIcon {
+  animation: slide-up 0.3s;
+}
+
+.DarkModeIcon {
+  animation: slide-down 0.3s;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  to {
+    opacity: 1 linear;
+    transform: translateY(0%);
+  }
+}
+
+.SearchWrapper {
+  display: flex;
+  align-items: center;
+  width: 18.25rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    width: 100%;
+  }
+
+  .Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    border-radius: 100%;
+  }
+}
+
+.SideNavContainer {
+  visibility: hidden;
+  display: none;
+  fill: var(--text-strong);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop);
+  opacity: 0;
+  animation-name: FadeIn;
+  animation-duration: var(--duration-200);
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,10 @@
 @import '../../styles/common';
 
-$portrait-breakpoint: 804px;
+$breakpoints-portrait-breakpoint-up: breakpoints-up(804px);
+$breakpoints-portrait-breakpoint-down: breakpoints-down(
+  804px,
+  $inclusive: true
+);
 
 .MediaCard {
   height: 100%;
@@ -12,15 +16,13 @@ $portrait-breakpoint: 804px;
     flex-flow: column nowrap;
   }
 
-  @include breakpoint-before($portrait-breakpoint, inclusive) {
+  @media #{$breakpoints-portrait-breakpoint-down} {
     flex-flow: column nowrap;
   }
 }
 
 .MediaContainer {
   overflow: hidden;
-  border-top-left-radius: var(--p-border-radius-2);
-  border-top-right-radius: var(--p-border-radius-2);
 
   &:not(.portrait) {
     flex-basis: 40%;
@@ -30,7 +32,11 @@ $portrait-breakpoint: 804px;
     }
   }
 
-  @include breakpoint-after($portrait-breakpoint, inclusive) {
+  @media #{$breakpoints-page-content-when-not-fully-condensed-up} {
+    border-top-left-radius: var(--p-border-radius-2);
+    border-top-right-radius: var(--p-border-radius-2);
+  }
+  @media #{$breakpoints-portrait-breakpoint-up} {
     &:not(.portrait) {
       border-top-right-radius: 0;
       border-top-left-radius: var(--p-border-radius-2);
@@ -77,7 +83,7 @@ $portrait-breakpoint: 804px;
     padding-top: var(--p-space-8);
   }
 
-  @include breakpoint-before($portrait-breakpoint, inclusive) {
+  @media #{$breakpoints-portrait-breakpoint-down} {
     padding-top: var(--p-space-8);
   }
 }

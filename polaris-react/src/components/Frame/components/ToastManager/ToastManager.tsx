@@ -2,6 +2,7 @@ import React, {createRef, memo} from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {Portal} from '../../../Portal';
 import type {ToastPropsWithID} from '../../../../utilities/frame';

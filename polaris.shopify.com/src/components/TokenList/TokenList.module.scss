@@ -1,0 +1,147 @@
+@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
+
+.TokenList {
+  --table-border-color: var(--border-color-light);
+  color: var(--text-strong);
+  font-size: var(--font-size-100);
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    th {
+      box-shadow: inset 0 -1px 0 var(--table-border-color);
+    }
+  }
+
+  th {
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+  }
+
+  td {
+    padding: 1rem;
+    height: 3.2rem;
+  }
+
+  th {
+    text-align: left;
+    white-space: pre;
+    font-size: var(--font-size-400);
+  }
+
+  td {
+    border-bottom: 1px solid var(--table-border-color);
+    vertical-align: middle;
+  }
+
+  th,
+  td {
+    &:nth-child(1) {
+      padding: 0.5rem;
+      padding-left: 0;
+      width: 200px;
+      box-sizing: content-box;
+    }
+  }
+
+  tr {
+    &.isHighlighted {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--focus-outline);
+      border-radius: var(--border-radius-400);
+    }
+  }
+
+  tr td.Value,
+  tr td.FigmaUsage {
+    white-space: pre;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50px;
+      background: linear-gradient(to right, transparent, var(--surface));
+    }
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    &,
+    tr,
+    td,
+    th {
+      display: block;
+      width: auto;
+      height: auto;
+      border: none;
+      padding: 0;
+    }
+
+    th {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .TokenContainer {
+      float: none;
+    }
+  }
+}
+
+.TokenContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.5rem;
+  background: var(--decorative-2);
+  border-radius: var(--border-radius-400);
+  box-shadow: var(--card-shadow);
+  gap: 0.3rem;
+  float: left;
+  max-width: 100%;
+}
+
+.TokenName {
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.TokenClipboard {
+  button {
+    position: relative;
+    top: 0.15rem;
+    background-color: transparent;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.TokenDescription {
+  line-height: 1.45;
+  font-size: var(--font-size-50);
+}

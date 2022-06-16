@@ -5,6 +5,7 @@ import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
