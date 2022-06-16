@@ -14,6 +14,7 @@ Contribution looks different depending on if you work at Shopify or are an open 
 - [Components](/contributing/components)
 - [Figma UI kit](/contributing/figma-ui-kit)
 - [Icons](/contributing/icons)
+- [Illustrations](/contributing/illustrations)
 - [Documentation](/contributing/documentation)
 
 Figuring out what and when to contribute is not always simple, especially when deciding between adding something new to the system or going with an existing solution. Check out the [Thinking in systems](/contributing/thinking-in-systems) and [When to evolve the system](/contributing/when-to-evolve-the-system) guides to help you make this decision. If you feel stuck, start a new discussion in GitHub.
