@@ -32,7 +32,7 @@ $breakpoints-portrait-breakpoint-down: breakpoints-down(
     }
   }
 
-  @media #{$breakpoints-page-content-when-not-fully-condensed-up} {
+  @media #{$p-breakpoints-sm-up} {
     border-top-left-radius: var(--p-border-radius-2);
     border-top-right-radius: var(--p-border-radius-2);
   }
