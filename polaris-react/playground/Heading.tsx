@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
 
-import {ElementType, Typography} from './Typography';
+import {ElementType, Typography, Align} from './Typography';
 import styles from './Heading.scss';
 
 interface HeadingProps {
@@ -11,6 +11,7 @@ interface HeadingProps {
   noWrap?: boolean;
   size?: string;
   strong?: boolean;
+  align?: Align;
 }
 
 // TODO: TS fix
@@ -27,6 +28,7 @@ export const Heading = ({
   noWrap,
   size = 'medium',
   strong,
+  align,
 }: HeadingProps) => {
   let type = as || 'span';
   if (!as && size) {
@@ -40,7 +42,7 @@ export const Heading = ({
   );
 
   return (
-    <Typography as={type} className={className} noWrap={noWrap}>
+    <Typography as={type} className={className} noWrap={noWrap} align={align}>
       {children}
     </Typography>
   );

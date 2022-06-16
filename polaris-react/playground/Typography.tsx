@@ -13,14 +13,16 @@ export type ElementType =
   | 'h6'
   | 'a'
   | 'p'
-  | 'span'
-  | 'div';
+  | 'span';
+
+export type Align = 'inherit' | 'start' | 'center' | 'end' | 'justify';
 
 interface TypographyProps {
   as: ElementType;
   className?: string;
   children: ReactNode;
   noWrap?: boolean;
+  align?: Align;
   // fontSize?: string;
   // fontWeight?: string;
 }
@@ -30,10 +32,18 @@ export const Typography = ({
   children,
   className = '',
   noWrap,
+  align,
 }: TypographyProps) => {
   const Component = as || 'span';
+
   return (
-    <Component className={classNames(className, noWrap && styles.nowrap)}>
+    <Component
+      className={classNames(
+        className,
+        noWrap && styles.nowrap,
+        align && styles[align],
+      )}
+    >
       {children}
     </Component>
   );

@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
 
-import {Typography} from './Typography';
+import {Typography, Align} from './Typography';
 import styles from './Display.scss';
 
 interface DisplayProps {
@@ -10,6 +10,7 @@ interface DisplayProps {
   noWrap?: boolean;
   size?: string;
   strong?: boolean;
+  align?: Align;
 }
 
 export const Display = ({
@@ -17,6 +18,7 @@ export const Display = ({
   noWrap,
   size = 'small',
   strong,
+  align,
 }: DisplayProps) => {
   const className = classNames(
     styles.Display,
@@ -25,7 +27,7 @@ export const Display = ({
   );
 
   return (
-    <Typography as="span" className={className} noWrap={noWrap}>
+    <Typography as="span" className={className} noWrap={noWrap} align={align}>
       {children}
     </Typography>
   );

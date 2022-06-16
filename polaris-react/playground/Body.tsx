@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 
 import {classNames} from '../src/utilities/css';
 
-import {ElementType, Typography} from './Typography';
+import {ElementType, Typography, Align} from './Typography';
 import styles from './Body.scss';
 
 interface BodyProps {
@@ -11,6 +11,7 @@ interface BodyProps {
   noWrap?: boolean;
   size?: string;
   strong?: boolean;
+  align?: Align;
 }
 
 export const Body = ({
@@ -19,6 +20,7 @@ export const Body = ({
   noWrap,
   size = 'medium',
   strong,
+  align,
 }: BodyProps) => {
   const type = as || 'p';
 
@@ -29,7 +31,7 @@ export const Body = ({
   );
 
   return (
-    <Typography as={type} className={className} noWrap={noWrap}>
+    <Typography as={type} className={className} noWrap={noWrap} align={align}>
       {children}
     </Typography>
   );

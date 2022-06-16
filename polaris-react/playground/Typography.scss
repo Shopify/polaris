@@ -1,5 +1,30 @@
 .nowrap {
+    display: block;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+.inherit {
+    text-align: inherit;
+}
+
+.start {
+    display: block;
+    text-align: start;
+}
+
+.center {
+    display: block;
+    text-align: center;
+}
+
+.end {
+    display: block;
+    text-align: end;
+}
+
+.justify {
+    display: block;
+    text-align: justify;
+}
