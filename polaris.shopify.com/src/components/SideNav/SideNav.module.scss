@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 $navIconSize: 24px;
+$navItemPadding: 0.85rem 1rem;
 
 .SideNav {
   display: flex;
@@ -19,6 +20,8 @@ $navIconSize: 24px;
   font-weight: 500;
   z-index: 2;
   transform: translateX(-22.5rem);
+  overflow-y: auto;
+  overflow-x: hidden;
 
   &.show {
     visibility: visible;
@@ -43,6 +46,7 @@ $navIconSize: 24px;
 
   li {
     display: flex;
+    flex-direction: column;
     width: 100%;
 
     a {
@@ -55,11 +59,45 @@ $navIconSize: 24px;
         color: var(--text-strong);
       }
 
+      &:hover,
       &[aria-current="page"] {
         background: rgba(0, 0, 0, 0.05);
         border-radius: 0;
       }
     }
+  }
+}
+
+.AccordionHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: $navItemPadding;
+  cursor: pointer;
+
+  svg {
+    transform: rotate(0deg);
+    transition: transform var(--duration-200) var(--ease-in-out);
+  }
+
+  &.expanded svg {
+    transform: rotate(90deg);
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+  }
+}
+
+.AccordionContent {
+  display: none;
+
+  li a {
+    padding-left: 2rem;
+  }
+
+  &.expanded {
+    display: block;
   }
 }
 

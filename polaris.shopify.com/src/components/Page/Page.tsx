@@ -15,12 +15,10 @@ function Page({ children }: Props) {
   const router = useRouter();
 
   const isPolaris = router.asPath.startsWith("/examples");
-  const match = router.asPath.match(/^\/\w+/);
-  const currentSection = match ? match[0] : "";
 
   return (
     <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-      {!isPolaris && <Header currentSection={currentSection} />}
+      {!isPolaris && <Header currentPath={router.asPath} />}
 
       {children}
 

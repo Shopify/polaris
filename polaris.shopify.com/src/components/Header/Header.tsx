@@ -12,18 +12,16 @@ import NavItems from "../NavItems";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
-import { useRouter } from "next/router";
 
 interface Props {
-  currentSection?: string;
+  currentPath?: string;
 }
 
-function Header({ currentSection }: Props) {
-  const router = useRouter();
-  const [showMenu, setShowMenu] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
+function Header({ currentPath = "" }: Props) {
   const darkMode = useDarkMode(false);
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function hideSideNavOnResize() {
@@ -41,12 +39,15 @@ function Header({ currentSection }: Props) {
   useEffect(() => {
     const mainContent = document.querySelector("#main");
     setShowSkipToContentLink(mainContent !== null);
-  }, [router.asPath]);
+  }, [currentPath]);
 
   const handleCloseMenu = () => {
     setShowMenu(false);
     menuButtonRef.current?.focus();
   };
+
+  const match = currentPath.match(/^\/\w+/);
+  const currentSection = match ? match[0] : "";
 
   return (
     <div className={styles.Header}>
@@ -66,7 +67,7 @@ function Header({ currentSection }: Props) {
           </Button>
 
           <SideNav
-            currentSection={currentSection}
+            currentPath={currentPath}
             showMenu={showMenu}
             handleCloseMenu={handleCloseMenu}
           />
