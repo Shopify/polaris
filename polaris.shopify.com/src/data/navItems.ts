@@ -1,4 +1,4 @@
-import { NavItem } from "../components/Nav/Nav";
+import type { NavItem } from "../components/Nav";
 import * as Icons from "./foundationsIcons";
 
 interface NavItemWithIconChild extends NavItem {
