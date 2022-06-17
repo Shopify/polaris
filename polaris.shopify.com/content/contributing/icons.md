@@ -74,5 +74,3 @@ Before proposing a new icon, search the [icon explorer](https://polaris-icons.sh
     2. Add your SVG and create a new component following the current naming convention
     3. Request a review from a Polaris designer
        1. Once approved they will merge and release the new icon
-
-If you need support or guidance, reach out to the team on Slack in #polaris.
