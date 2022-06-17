@@ -6,7 +6,7 @@ import useDarkMode from "use-dark-mode";
 import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
 import MobileNav from "../MobileNav";
-import NavItems from "../NavItems";
+import HeaderNavItems from "../HeaderNavItems";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
@@ -55,7 +55,7 @@ function Header({ currentPath = "" }: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            <NavItems currentSection={currentSection} />
+            <HeaderNavItems currentSection={currentSection} />
           </ul>
         </nav>
 

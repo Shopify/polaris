@@ -30,7 +30,7 @@ interface Props {
   handleCloseMenu?: () => void;
 }
 
-function NavItems({ currentSection, handleCloseMenu }: Props) {
+function HeaderNavItems({ currentSection, handleCloseMenu }: Props) {
   return (
     <>
       {navItems.map(({ url, title }) => {
@@ -51,4 +51,4 @@ function NavItems({ currentSection, handleCloseMenu }: Props) {
   );
 }
 
-export default NavItems;
+export default HeaderNavItems;
