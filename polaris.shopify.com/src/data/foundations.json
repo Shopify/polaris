@@ -496,32 +496,6 @@
   },
   {
     "frontMatter": {
-      "name": "Foundations/Crafting user interfaces/Designing apps for Shopify",
-      "slug": "designing-apps",
-      "icon": "IconDesigningApps",
-      "keywords": [
-        "apps",
-        "app communication",
-        "app design principles",
-        "app navigation",
-        "app permissions",
-        "embedded apps",
-        "ux principles",
-        "user experience principles",
-        "shopify apps",
-        "shopify approaches",
-        "shopify app design principles",
-        "shopify ux principles",
-        "shopify principles",
-        "merchant experience",
-        "merchant first",
-        "merchant-first"
-      ]
-    },
-    "intro": "Polaris is designed to make it easy to build Shopify apps that merchants trust\nand understand how to use right from the start.<br /><br />However, it takes\nmore than Polaris components to create successful features and flows. This guide\nwill help you design better Shopify apps."
-  },
-  {
-    "frontMatter": {
       "name": "Foundations/Crafting user interfaces/Designing onboarding flows",
       "slug": "designing-onboarding-flows",
       "icon": "IconOnboarding",
