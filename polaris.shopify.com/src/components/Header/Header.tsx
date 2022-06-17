@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import useDarkMode from "use-dark-mode";
+// import useDarkMode from "use-dark-mode";
 
 import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
@@ -22,7 +22,7 @@ function Header({ currentSection }: Props) {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const darkMode = useDarkMode(false);
+  // const darkMode = useDarkMode(false);
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
@@ -97,13 +97,13 @@ function Header({ currentSection }: Props) {
           </ul>
         </nav>
 
-        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+        {/* <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
           {darkMode.value ? (
             <div className={styles.LightModeIcon}>💡</div>
           ) : (
             <div className={styles.DarkModeIcon}>🌙</div>
           )}
-        </button>
+        </button> */}
 
         <div className={styles.SearchWrapper}>
           <GlobalSearch />
