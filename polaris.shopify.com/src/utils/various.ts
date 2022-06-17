@@ -27,7 +27,7 @@ export const getComponentNav = (): NavItem[] => {
   return navItems;
 };
 
-export const slugify = (str: string) => {
+export const slugify = (str: string): string => {
   return (
     str
       // Camel to hyphen case
