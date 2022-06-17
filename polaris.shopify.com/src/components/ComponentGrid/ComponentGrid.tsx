@@ -38,8 +38,10 @@ function ComponentGridItem({
             <Image
               src={`/component-previews/${slugify(name)}.png`}
               layout="responsive"
-              width={525 * 2}
-              height={300 * 2}
+              width={525}
+              height={300}
+              quality={70}
+              sizes="300px"
               alt={`Screenshot of the ${name} component`}
             />
           </div>
