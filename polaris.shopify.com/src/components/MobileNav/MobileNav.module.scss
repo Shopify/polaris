@@ -71,9 +71,10 @@ $navItemPadding: 0.85rem 1rem;
   }
 }
 
-.AccordionHeader {
+.AccordionTrigger {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   padding: $navItemPadding;
   background-color: transparent;
 
@@ -92,7 +93,7 @@ $navItemPadding: 0.85rem 1rem;
   }
 }
 
-.AccordionContent {
+.AccordionPanel {
   display: none;
 
   li a {

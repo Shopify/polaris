@@ -127,6 +127,7 @@ function MobileNav({ currentPath }: Props) {
           {navItems.map((item, idx) => (
             <ListItem
               key={idx}
+              ariaId={idx}
               item={item}
               currentPath={currentPath}
               handleCloseMenu={handleCloseMenu}
@@ -159,31 +160,45 @@ function MobileNav({ currentPath }: Props) {
 }
 
 interface ListItemProps {
+  ariaId?: number;
   item: NavItem;
   currentPath: string;
   handleCloseMenu?: () => void;
 }
 
-function ListItem({ item, currentPath, handleCloseMenu }: ListItemProps) {
+function ListItem({
+  ariaId,
+  item,
+  currentPath,
+  handleCloseMenu,
+}: ListItemProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <li>
       {item.children && (
         <>
-          <button
-            className={className(
-              styles.AccordionHeader,
-              isExpanded && styles.expanded
-            )}
-            onClick={() => setIsExpanded((prevState) => !prevState)}
-          >
-            {item.title} <ChevronRightIcon />
-          </button>
+          <h3>
+            <button
+              id={`accordion-${ariaId}`}
+              type="button"
+              aria-expanded={isExpanded}
+              aria-controls={`accordion-panel-${ariaId}`}
+              className={className(
+                styles.AccordionTrigger,
+                isExpanded && styles.expanded
+              )}
+              onClick={() => setIsExpanded((prevState) => !prevState)}
+            >
+              {item.title} <ChevronRightIcon />
+            </button>
+          </h3>
 
           <ul
+            id={`accordion-panel-${ariaId}`}
+            aria-labelledby={`accordion-${ariaId}`}
             className={className(
-              styles.AccordionContent,
+              styles.AccordionPanel,
               isExpanded && styles.expanded
             )}
           >
