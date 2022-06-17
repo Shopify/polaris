@@ -1,5 +1,4 @@
-import { getParameters } from "codesandbox/lib/api/define";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
@@ -28,6 +27,32 @@ const Examples = (props: Props) => {
 
     setIndex(parseInt(value, 10));
   };
+
+  const [iframeDimensions, setDimensions] = useState({
+    width: "100%",
+    height: "400px",
+  });
+  const iframeRef = useRef();
+  const exampleElement =
+    iframeRef?.current?.contentWindow?.document?.getElementById(
+      "polaris-example"
+    );
+
+  useEffect(() => {
+    console.log("exampleElement", exampleElement);
+    console.log("exEl h", exampleElement?.offsetHeight);
+
+    const padding = 144;
+    const dimensions = {
+      // width: `${exampleElement?.offsetWidth}`,
+      width: "100%",
+      height: `${exampleElement?.offsetHeight + padding}px`,
+    };
+
+    console.log("dimensions", dimensions);
+
+    setDimensions(dimensions);
+  }, [currentIndex, iframeRef?.current, exampleElement]);
 
   if (!examples?.length) return null;
 
@@ -83,7 +108,12 @@ const Examples = (props: Props) => {
       </div>
       {showPreview ? (
         <div className={styles.ExampleFrame}>
-          <iframe src={exampleUrl} height="400px" width="100%" />
+          <iframe
+            src={exampleUrl}
+            height={iframeDimensions.height}
+            width={iframeDimensions.width}
+            ref={iframeRef}
+          />
         </div>
       ) : (
         <CodeExample language="typescript" title={`${title} Example`}>
