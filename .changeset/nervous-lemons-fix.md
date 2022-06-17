@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Fix download icon button
+Removed darkmode button
