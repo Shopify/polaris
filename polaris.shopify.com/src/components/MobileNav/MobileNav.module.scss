@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+
+.MobileNav {
+  display: flex;
+  visibility: hidden;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  max-width: 22.5rem;
+  z-index: 2;
+  transform: translateX(-22.5rem);
+
+  &.show {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform var(--duration-200) var(--ease-in-out);
+
+    .CloseButton {
+      display: flex;
+      margin: 0.85rem;
+      background-color: transparent;
+      opacity: 0;
+      animation: FadeIn var(--duration-200) forwards;
+
+      svg {
+        fill: var(--surface);
+      }
+    }
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop);
+  opacity: 0;
+  animation-name: FadeIn;
+  animation-duration: var(--duration-200);
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

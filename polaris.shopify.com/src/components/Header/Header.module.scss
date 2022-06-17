@@ -172,12 +172,12 @@
   }
 }
 
-.SideNavContainer {
+.MobileNavContainer {
   visibility: hidden;
   display: none;
-  fill: var(--text-strong);
 
   svg {
+    fill: var(--text-strong);
     width: 20px;
     height: 20px;
   }
