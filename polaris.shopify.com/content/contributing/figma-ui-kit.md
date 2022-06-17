@@ -29,5 +29,3 @@ Table goes here
 4. Document all changes in the “Release Notes” page within the UI kit.
    5 Add a design reviewer from the Polaris team to review the changes on your branch. If you aren't sure who to add, you can also share the link to your Figma branch in the #polaris channel and ask for a review.
 5. Once reviewed and approved, the designer on the Polaris team will merge the changes into the main branch and publish the updates.
-
-If you get stuck or have questions, reach out in the #polaris Slack channel.
