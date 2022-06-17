@@ -294,6 +294,10 @@ export const contributingNavItems = [
         url: "/contributing/icons",
       },
       {
+        title: "Illustrations",
+        url: "/contributing/illustrations",
+      },
+      {
         title: "Documentation",
         url: "/contributing/documention",
       },
@@ -309,6 +313,10 @@ export const contributingNavItems = [
       {
         title: "When to evolve the system",
         url: "/contributing/when-to-evolve-the-system",
+      },
+      {
+        title: "Shipping your contribution",
+        url: "/contributing/shipping-your-contribution",
       },
     ],
   },
