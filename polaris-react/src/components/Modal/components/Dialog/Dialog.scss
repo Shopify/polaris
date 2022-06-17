@@ -12,10 +12,6 @@ $breakpoints-xsmall-width-up: breakpoints-up(
   $xsmall-width + $dangerous-magic-space-16
 );
 
-$breakpoints-large-width-up: breakpoints-up(
-  $large-width + $dangerous-magic-space-16
-);
-
 $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
 
 .Container {
@@ -93,7 +89,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @media #{$breakpoints-large-width-up} {
+    @media #{$p-breakpoints-lg-up} {
       max-width: $large-width;
     }
   }
