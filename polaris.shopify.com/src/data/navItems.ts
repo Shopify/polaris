@@ -33,11 +33,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         url: "/foundations/foundations/information-architecture",
         icon: Icons.InformationArchitectureIcon,
       },
-      {
-        title: "Mobile",
-        url: "/foundations/foundations/mobile",
-        icon: Icons.MobileIcon,
-      },
       // {
       //   title: "Designing apps for Shopify",
       //   url: "/foundations/foundations/designing-apps",
