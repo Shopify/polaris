@@ -6,10 +6,37 @@ import useDarkMode from "use-dark-mode";
 import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
 import MobileNav from "../MobileNav";
-import HeaderNavItems from "../HeaderNavItems";
+import type { NavItem } from "../Nav";
 
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
+
+const headerNavItems: NavItem[] = [
+  {
+    title: "Getting started",
+    url: "/resources",
+  },
+  {
+    title: "Foundations",
+    url: "/foundations",
+  },
+  {
+    title: "Components",
+    url: "/components",
+  },
+  {
+    title: "Tokens",
+    url: "/tokens/colors",
+  },
+  {
+    title: "Icons",
+    url: "/icons",
+  },
+  {
+    title: "Contributing",
+    url: "/contributing",
+  },
+];
 
 interface Props {
   currentPath?: string;
@@ -55,7 +82,22 @@ function Header({ currentPath = "" }: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            <HeaderNavItems currentSection={currentSection} />
+            {headerNavItems.map(({ url, title }) => {
+              const isCurrent =
+                currentSection && url?.startsWith(currentSection)
+                  ? "page"
+                  : false;
+
+              return url ? (
+                <li key={url}>
+                  <Link href={url} passHref>
+                    <a aria-current={isCurrent}>
+                      <span>{title}</span>
+                    </a>
+                  </Link>
+                </li>
+              ) : null;
+            })}
           </ul>
         </nav>
 
