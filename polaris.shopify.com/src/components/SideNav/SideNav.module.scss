@@ -1,16 +1,11 @@
 @import "../../styles/variables.scss";
 
-$navIconSize: 24px;
 $navItemPadding: 0.85rem 1rem;
 
 .SideNav {
   display: flex;
-  visibility: hidden;
   align-items: flex-start;
   flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
   width: calc(100vw - 4rem);
   max-width: 22.5rem;
@@ -18,31 +13,8 @@ $navItemPadding: 0.85rem 1rem;
   background: var(--surface);
   font-size: var(--font-size-100);
   font-weight: 500;
-  z-index: 2;
-  transform: translateX(-22.5rem);
   overflow-y: auto;
   overflow-x: hidden;
-
-  &.show {
-    visibility: visible;
-    transform: translateX(0);
-    transition: transform var(--duration-200) var(--ease-in-out);
-
-    .CloseButton {
-      position: absolute;
-      display: flex;
-      top: calc(var(--header-height) / 2 - $navIconSize / 2);
-      right: calc(-1rem - $navIconSize);
-      background-color: transparent;
-      opacity: 0;
-      animation: FadeIn var(--duration-200) forwards;
-
-      svg {
-        width: 24px;
-        fill: var(--surface);
-      }
-    }
-  }
 
   li {
     display: flex;
@@ -72,7 +44,7 @@ $navItemPadding: 0.85rem 1rem;
   display: flex;
   justify-content: space-between;
   padding: $navItemPadding;
-  cursor: pointer;
+  background-color: transparent;
 
   svg {
     transform: rotate(0deg);

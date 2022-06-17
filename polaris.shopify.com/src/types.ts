@@ -81,5 +81,8 @@ export interface HighlightableSearchResult {
 }
 
 export enum Breakpoints {
-  SMALL = 768,
+  Mobile = 500,
+  Tablet = 768,
+  Desktop = 1400,
+  DesktopLarge = 1600,
 }

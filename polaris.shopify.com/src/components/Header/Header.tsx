@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useDarkMode from "use-dark-mode";
 
+import { className } from "../../utils/various";
 import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
@@ -25,7 +26,7 @@ function Header({ currentPath = "" }: Props) {
 
   useEffect(() => {
     function hideSideNavOnResize() {
-      if (window.innerWidth > Breakpoints.SMALL && showMenu) {
+      if (window.innerWidth > Breakpoints.Desktop && showMenu) {
         setShowMenu(false);
       }
     }
@@ -52,7 +53,7 @@ function Header({ currentPath = "" }: Props) {
   return (
     <div className={styles.Header}>
       <Container className={styles.HeaderInner}>
-        <nav className={styles.SideNavContainer}>
+        <div className={styles.SideNavContainer}>
           <Button
             id="menu-button"
             aria-label="Open menu"
@@ -66,12 +67,37 @@ function Header({ currentPath = "" }: Props) {
             </svg>
           </Button>
 
-          <SideNav
-            currentPath={currentPath}
-            showMenu={showMenu}
-            handleCloseMenu={handleCloseMenu}
-          />
-        </nav>
+          <nav
+            id="side-menu"
+            className={className(styles.MobileNav, showMenu && styles.show)}
+          >
+            <SideNav
+              currentPath={currentPath}
+              showMenu={showMenu}
+              handleCloseMenu={handleCloseMenu}
+            />
+
+            <button
+              aria-label="Close menu"
+              className={styles.CloseButton}
+              onClick={handleCloseMenu}
+              onKeyDown={(e) => {
+                if (e.key === "Tab" && !e.shiftKey) {
+                  e.preventDefault();
+                  // const firstLink = menuRef.current?.firstElementChild?.children[0];
+                  // firstLink instanceof HTMLElement && firstLink.focus();
+                  console.log("go back to first link");
+                }
+              }}
+            >
+              <CloseIcon />
+            </button>
+          </nav>
+
+          {showMenu && (
+            <div className={styles.Backdrop} onClick={handleCloseMenu} />
+          )}
+        </div>
 
         <Link href="/">
           <a className={styles.Logo}>
@@ -109,12 +135,16 @@ function Header({ currentPath = "" }: Props) {
         <div className={styles.SearchWrapper}>
           <GlobalSearch />
         </div>
-
-        {showMenu && (
-          <div className={styles.Backdrop} onClick={handleCloseMenu} />
-        )}
       </Container>
     </div>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z" />
+    </svg>
   );
 }
 

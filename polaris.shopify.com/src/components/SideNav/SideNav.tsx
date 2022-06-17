@@ -67,11 +67,7 @@ function SideNav({
   }, [showMenu, handleCloseMenu]);
 
   return (
-    <ul
-      id="side-menu"
-      className={className(styles.SideNav, showMenu && styles.show)}
-      ref={menuRef}
-    >
+    <ul className={className(styles.SideNav, styles.show)} ref={menuRef}>
       <li>
         <Link href="/" passHref>
           <a
@@ -105,23 +101,6 @@ function SideNav({
           handleCloseMenu={handleCloseMenu}
         />
       ))}
-
-      <li>
-        <button
-          aria-label="Close menu"
-          className={styles.CloseButton}
-          onClick={handleCloseMenu}
-          onKeyDown={(e) => {
-            if (e.key === "Tab" && !e.shiftKey) {
-              e.preventDefault();
-              const firstLink = menuRef.current?.firstElementChild?.children[0];
-              firstLink instanceof HTMLElement && firstLink.focus();
-            }
-          }}
-        >
-          <CloseIcon />
-        </button>
-      </li>
     </ul>
   );
 }
@@ -139,7 +118,7 @@ function SideNavItem({ item, currentPath, handleCloseMenu }: SideNavProps) {
     <li className={styles.SideNavItem}>
       {item.children && (
         <>
-          <span
+          <button
             className={className(
               styles.AccordionHeader,
               isExpanded && styles.expanded
@@ -147,7 +126,7 @@ function SideNavItem({ item, currentPath, handleCloseMenu }: SideNavProps) {
             onClick={() => setIsExpanded((prevState) => !prevState)}
           >
             {item.title} <ChevronRightIcon />
-          </span>
+          </button>
 
           <ul
             className={className(
@@ -185,14 +164,6 @@ function ChevronRightIcon() {
   return (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 16a.999.999 0 0 1-.707-1.707l4.293-4.293-4.293-4.293a.999.999 0 1 1 1.414-1.414l5 5a.999.999 0 0 1 0 1.414l-5 5a.997.997 0 0 1-.707.293z" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z" />
     </svg>
   );
 }
