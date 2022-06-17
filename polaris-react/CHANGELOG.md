@@ -1,5 +1,19 @@
 # Changelog
 
+## 9.18.0
+
+### Minor Changes
+
+- [#6224](https://github.com/Shopify/polaris/pull/6224) [`d75dff186`](https://github.com/Shopify/polaris/commit/d75dff18603fffe5881b2992cd48e6af606806d3) Thanks [@chloerice](https://github.com/chloerice)! - Reverted #6143 and made expecting `TextField` `onBlur` `event` arg optional
+
+### Patch Changes
+
+- [#6186](https://github.com/Shopify/polaris/pull/6186) [`2ba83b752`](https://github.com/Shopify/polaris/commit/2ba83b752513d34fc769c94489b2325b8c3a7aa2) Thanks [@kyledurand](https://github.com/kyledurand)! - Add react profiler log data option to storybook globals
+
+* [#6129](https://github.com/Shopify/polaris/pull/6129) [`10fdc5f5a`](https://github.com/Shopify/polaris/commit/10fdc5f5a5de1ae2ee7daa34cfa97636a440e736) Thanks [@weslleyaraujo](https://github.com/weslleyaraujo)! - Conditionally calls `event.stopPropagation` on `TextField` component
+
+- [#6103](https://github.com/Shopify/polaris/pull/6103) [`a622544db`](https://github.com/Shopify/polaris/commit/a622544db457e87fc88223bc78b84782c69674f3) Thanks [@clarkjennings](https://github.com/clarkjennings)! - Added a `shape` prop to `Avatar`
+
 ## 9.17.0
 
 ### Minor Changes

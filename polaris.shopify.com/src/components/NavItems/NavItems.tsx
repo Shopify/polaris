@@ -1,17 +1,11 @@
 import Link from "next/link";
 
-import { foundationsNavItems, contributingNavItems } from "../../data/navItems";
 import type { NavItem } from "../Nav";
 
 const navItems: NavItem[] = [
   {
-    title: "Getting started",
-    url: "/resources",
-  },
-  {
     title: "Foundations",
     url: "/foundations",
-    children: foundationsNavItems,
   },
   {
     title: "Components",
@@ -25,10 +19,10 @@ const navItems: NavItem[] = [
     title: "Icons",
     url: "/icons",
   },
-  {
-    title: "Contributing",
-    url: "/contributing",
-  },
+  // {
+  //   title: "Contributing",
+  //   url: "/contributing",
+  // },
 ];
 
 interface Props {
