@@ -4,7 +4,6 @@ $action-menu-rollup-computed-width: 40px;
 $breakpoints-mobile-layout-up: breakpoints-up(468px);
 $breakpoints-mobile-layout-down: breakpoints-down(468px, $inclusive: true);
 $breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
-$breakpoints-desktop-layout-down: breakpoints-down(1080px, $inclusive: true);
 
 .Header {
   @include page-header-layout;
@@ -222,7 +221,7 @@ $breakpoints-desktop-layout-down: breakpoints-down(1080px, $inclusive: true);
 }
 
 .longTitle {
-  @media #{$breakpoints-desktop-layout-down} {
+  @media #{$p-breakpoints-lg-down} {
     @include condensed-layout;
   }
 }
