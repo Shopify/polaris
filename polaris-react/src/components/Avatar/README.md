@@ -115,6 +115,14 @@ function ExtraSmallAvatarExample() {
 }
 ```
 
+### Square avatar
+
+Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
+
+```jsx
+<Avatar name="Shop One" shape="square" />
+```
+
 ---
 
 ## Related components

@@ -22,7 +22,7 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
           {children}
         </DisplayText>
       </div>
-      <CloseButton onClick={onClose} />
+      <CloseButton titleHidden={titleHidden} onClick={onClose} />
     </div>
   );
 }

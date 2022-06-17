@@ -16,11 +16,6 @@
 }
 
 .Category {
-  p {
-    font-size: var(--font-size-600);
-    margin-bottom: 1rem;
-  }
-
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -95,6 +90,10 @@
     p {
       margin: 0;
       font-size: var(--font-size-100);
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }

@@ -145,7 +145,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       );
 
     const content = sectioned
-      ? wrapWithComponent(children, Section, {})
+      ? wrapWithComponent(children, Section, {titleHidden})
       : children;
 
     const body = loading ? (
