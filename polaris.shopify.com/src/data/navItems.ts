@@ -278,8 +278,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
 
 export const contributingNavItems = [
   {
-    title: "Contributing",
-    url: "/contributing",
+    title: "Contributing to Polaris",
     children: [
       {
         title: "Components",
