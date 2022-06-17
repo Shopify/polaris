@@ -702,22 +702,6 @@
   },
   {
     "frontMatter": {
-      "name": "Patterns/Mobile patterns",
-      "slug": "mobile-patterns",
-      "icon": "IconMobile",
-      "keywords": [
-        "gesture",
-        "swipe",
-        "long tap",
-        "long press",
-        "cell swipe",
-        "more actions"
-      ]
-    },
-    "intro": "A collection of patterns to help design Shopify’s own iOS and Android apps."
-  },
-  {
-    "frontMatter": {
       "name": "Patterns/Text fields",
       "slug": "text-fields",
       "icon": "IconCraftingAdmin",
