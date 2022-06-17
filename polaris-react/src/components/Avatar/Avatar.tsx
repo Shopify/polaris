@@ -9,6 +9,8 @@ import styles from './Avatar.scss';
 
 type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 
+type Shape = 'square' | 'round';
+
 enum Status {
   Pending = 'PENDING',
   Loaded = 'LOADED',
@@ -23,6 +25,11 @@ export interface AvatarProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Shape of avatar
+   * @default 'round'
+   */
+  shape?: Shape;
   /** The name of the person */
   name?: string;
   /** Initials of person to display */
@@ -44,6 +51,7 @@ export function Avatar({
   initials,
   customer,
   size = 'medium',
+  shape = 'round',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
@@ -96,6 +104,7 @@ export function Avatar({
     size && styles[variationName('size', size)],
     !customer && styles[variationName('style', styleClass(nameString))],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
+    shape && styles[variationName('shape', shape)],
   );
 
   const imageClassName = classNames(
@@ -129,7 +138,8 @@ export function Avatar({
         y="50%"
         dy={verticalOffset}
         fill="currentColor"
-        fontSize="20"
+        fontSize={shape === 'square' ? '15.5' : '20'}
+        fontWeight={shape === 'square' ? '600' : '400'}
         textAnchor="middle"
       >
         {initials}

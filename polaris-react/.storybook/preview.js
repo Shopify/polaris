@@ -41,11 +41,15 @@ function GridOverlayDecorator(Story, context) {
   );
 }
 
-function RenderPerformanceProfilerDecorator(Story, context) {
+function ReactRenderProfiler(Story, context) {
+  const {profiler} = context.globals;
+  const Wrapper = profiler ? RenderPerformanceProfiler : React.Fragment;
+  const props = profiler ? {id: context.id, kind: context.kind} : {};
+
   return (
-    <RenderPerformanceProfiler id={context.id} kind={context.kind}>
+    <Wrapper {...props}>
       <Story {...context} />
-    </RenderPerformanceProfiler>
+    </Wrapper>
   );
 }
 
@@ -58,7 +62,18 @@ export const globalTypes = {
         {title: 'Disabled', value: 'false'},
         {title: 'Enabled', value: 'true'},
       ],
-      showName: true,
+      showName: 'true',
+    },
+  },
+  profiler: {
+    name: 'React.Profiler',
+    defaultValue: 'false',
+    toolbar: {
+      items: [
+        {title: 'Disabled', value: 'false'},
+        {title: 'Enabled', value: 'true'},
+      ],
+      showName: 'true',
     },
   },
 };
@@ -67,5 +82,5 @@ export const decorators = [
   GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
-  RenderPerformanceProfilerDecorator,
+  ReactRenderProfiler,
 ];

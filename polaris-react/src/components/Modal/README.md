@@ -606,7 +606,7 @@ function ModalWithoutTitleExample() {
           },
         ]}
       >
-        <Modal.Section>
+        <Modal.Section titleHidden>
           <TextContainer>
             <p>
               Use Instagram posts to share your products with millions of
