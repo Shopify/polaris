@@ -42,13 +42,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
       },
-      {
-        title: "Mobile",
-        url: "/foundations/foundations/mobile",
-        icon: Icons.MobileIcon,
-        excerpt:
-          "Teams often design for the web and adapt to mobile. When this happens, mobile ends up being an adaptation of the web instead of higher quality, personalized experiences. We should approach web and mobile native at the same time.",
-      },
       // {
       //   title: "Designing apps for Shopify",
       //   url: "/foundations/foundations/designing-apps",
