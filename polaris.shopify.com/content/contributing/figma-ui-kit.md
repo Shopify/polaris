@@ -13,7 +13,7 @@ Any designer within Shopify can contribute to the [Polaris UI Kit for Figma](htt
 
 Non-Polaris components, features, or patterns shouldn't be added to the UI Kit. Our goal is to keep the UI kit in sync with the Polaris codebase, and adding things just to Figma that don't have counterparts in Polaris React causes confusion and makes our tooling out of sync with one another.
 
-## Quick guide
+## Quick start guide
 
 Table goes here
 

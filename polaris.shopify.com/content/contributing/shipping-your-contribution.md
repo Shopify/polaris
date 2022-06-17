@@ -37,45 +37,76 @@ To manage our monorepo structure we use:
 
 Every Polaris project is a little different, but in general we build with JavaScript, TypeScript, and Sass. This documentation site is built using React and Next.js.
 
-## Setting up your local development environment
+## Getting set up
 
 To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred git interface, like iTerm or Visual Studio Code, to save and log your changes with git.
 
-### Download the Polaris project
+### 1. Download the repo
 
 #### Shopifolk
 
-Using `dev`
+Clone the polaris repo
 
-1. Clone the polaris repo: run `dev clone polaris`
-2. Install dependencies and build workspaces: run `yarn && yarn build`
-3. Create a new branch to make your changes from: `git checkout -b new-branch-name`
-
-In your Spin instance
-
-1. Clone the polaris repo: `git clone <https://github.com/Shopify/polaris.git>`
-2. Install dependencies and build workspaces: run `yarn && yarn build`
-3. Create a new branch to make your changes from: `git checkout -b new-branch-name`
+```bash
+git clone <https://github.com/Shopify/polaris.git>
+```
 
 #### Open Source Contributors
 
-1. [Fork](https://github.com/Shopify/polaris/fork) the polaris repo
-2. Install dependencies and build workspaces: run `yarn && yarn build`
-3. Create a new branch to make your changes from: `git checkout -b new-branch-name`
+[Fork](https://github.com/Shopify/polaris/fork) the polaris repo
 
-### Test your changes as you work
+### 2. Install and build
 
-### Open source contributors
+```bash
+yarn && yarn build
+```
 
-2.1. Run Storybook locally: run `yarn run dev`
-2.2. Test the examples of relevant components if you are contributing component changes
+### 3. Create a new branch
 
-4. Commit your changes: `git commit -m “descriptive message”`
-5. Push up your branch to GitHub: `git push origin new-branch-name`
+```bash
+git checkout -b new-branch-name
+```
 
-### Test your changes
+## Making your first PR
 
-1. Run Storybook locally: `yarn run dev`Thoroughly test your changes using . In your PR’s description, be specific with what you’ve tested as well as what reviewers should focus on when testing your changes, for example:
+### 1. Test your changes
+
+As you work commit and test your changes:
+
+If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
+
+```bash
+yarn turbo run dev --filter=@shopify/polaris
+
+# Open https://localhost:3000 to test documentation
+# Open https://localhost:6006 to test Storybook examples and Playgrounds
+```
+
+If your adding or editing documentation, ensure your content displays as expected on the style guide website:
+
+```bash
+yarn turbo run dev --filter=polaris.shopify.com
+```
+
+### 2. Commit your changes
+
+Save the changes you've made to your branch.
+
+```bash
+git commit -m “descriptive message”
+```
+
+Push up your branch up to GitHub
+
+```bash
+git push origin new-branch-name
+```
+
+### 3. Create a pull request
+
+Use the "New pull request" button from the [your branch](https://github.com/Shopify/polaris/branches/yours) list to create a pull request for your changes.
+
+In your PR’s description, be specific with what you’ve tested as well as what reviewers should focus on when testing your changes, for example:
 
 - Keyboard and screen reader accessibility
 - Interaction state changes
