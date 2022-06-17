@@ -28,7 +28,7 @@ console.log(tokens.motion);
 
 #### CSS
 
-Importing all of the css variables. CSS variables are prefixed with `--p` to signal that these variables
+Importing all of the css variables. CSS variables are prefixed with `--p` to signal that these variables are Polaris variables.
 
 ```js
 import '@shopify/polaris-tokens/css/styles.css';

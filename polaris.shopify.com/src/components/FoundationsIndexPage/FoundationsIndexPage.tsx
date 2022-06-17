@@ -36,10 +36,7 @@ function FoundationsIndexPage({}: Props) {
                             <a>
                               <div className={styles.Icon}>{child.icon}</div>
                               <h4>{child.title}</h4>
-                              <p>
-                                Lorem ipsum dolor et amet consecteur lorem ipsum
-                                dolor et amet lorem ipsum dolor consecteur et.
-                              </p>
+                              <p>{child.excerpt}</p>
                             </a>
                           </Link>
                         </li>

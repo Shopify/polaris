@@ -132,32 +132,6 @@ $action-menu-rollup-computed-width: 40px;
   }
 }
 
-.ActionMenuWrapper {
-  margin-top: 0;
-
-  .mobileView & {
-    position: absolute;
-    // BOOKMARKS
-    top: calc(var(--p-space-5) + (#{control-height()} / 4));
-    right: var(--p-space-5);
-    margin-top: 0;
-
-    @include page-content-when-not-fully-condensed {
-      right: calc(-1 * (var(--p-space-2)));
-    }
-  }
-
-  // stylelint-disable-next-line selector-max-class
-  .mobileView.hasNavigation & {
-    top: control-height() * 0.5;
-  }
-
-  @media print {
-    // stylelint-disable-next-line declaration-no-important
-    display: none !important;
-  }
-}
-
 .Row {
   display: flex;
   justify-content: space-between;
