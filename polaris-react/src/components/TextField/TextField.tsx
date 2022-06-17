@@ -629,7 +629,9 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    event.stopPropagation();
+    if (inputRef.current !== event.target) {
+      event.stopPropagation();
+    }
 
     if (
       isPrefixOrSuffix(event.target) ||
