@@ -1,8 +1,10 @@
+@import "../../styles/variables.scss";
+
 .SiteLaunchBanner {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  padding: 1.5rem;
+  padding: 3rem 1.5rem 1.5rem;
   background: var(--surface);
   border-radius: var(--border-radius-600);
   border: var(--border);
@@ -10,12 +12,7 @@
   font-size: var(--font-size-100);
   max-width: 16rem;
   text-align: center;
-
-  .Emoji {
-    display: block;
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
+  z-index: 1;
 
   p {
     margin-bottom: 1rem;
@@ -38,4 +35,49 @@
       box-shadow: inset 0 -2px rgba(0, 0, 0, 0.025);
     }
   }
+
+  @media screen and (max-width: $breakpointMobile) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    padding: 1rem 1.25rem 1.25rem;
+
+    ul {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .CloseButton {
+      top: 0.66rem;
+    }
+  }
+}
+
+.CloseButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  opacity: 0.5;
+  border-radius: var(--border-radius-400);
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  svg {
+    transform: scale(0.35);
+  }
+}
+
+.Emoji {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
 }
