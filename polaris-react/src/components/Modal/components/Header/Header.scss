@@ -12,8 +12,9 @@
   position: absolute;
   right: 0;
   z-index: 1;
-  padding-top: var(--p-space-4);
-  padding-right: var(--p-space-5);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 
   .Title {
     display: none;
