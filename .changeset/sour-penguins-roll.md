@@ -2,4 +2,5 @@
 'polaris.shopify.com': patch
 ---
 
-Create one source of truth for the side navigation in every screen size
+- Remove unused HTML and CSS from website components
+- Use data from /data/navItems in the Header component of the website
