@@ -18,19 +18,19 @@ export function Playground() {
         <Display size="medium">Display medium</Display>
         <Display size="small">Display small</Display>
         <Display>Display default</Display>
-        <Heading size="xlarge" fontWeight="bold">
+        <Heading size="xl" strong>
           Heading xlarge with fontWeight bold
         </Heading>
-        <Heading size="xlarge">Heading xlarge</Heading>
-        <Heading size="large">Heading large</Heading>
-        <Heading size="medium">Heading medium</Heading>
+        <Heading size="xl">Heading xlarge</Heading>
+        <Heading size="lg">Heading large</Heading>
+        <Heading size="md">Heading medium</Heading>
         <Heading noWrap>
           Heading default with noWrap // Lorem ipsum dolor sit amet, consectetur
           adipisicing elit. Officia pariatur ratione iure minus qui nesciunt
           sint maiores ipsam nostrum cum, est doloremque provident voluptas,
           doloribus excepturi atque, explicabo asperiores praesentium.
         </Heading>
-        <Heading size="small">Heading small</Heading>
+        <Heading size="sm">Heading small</Heading>
         <Body size="large" fontWeight="medium">
           Body large with fontWeight medium
         </Body>

@@ -2,30 +2,30 @@ import React, {ReactNode} from 'react';
 
 import {ElementType, Typography} from './Typography';
 
-type FontWeight = 'semibold' | 'bold';
+type HeadingSize = 'xl' | 'lg' | 'md' | 'sm';
 
 interface HeadingProps {
   as?: ElementType;
   children: ReactNode;
-  fontWeight?: FontWeight;
+  strong?: boolean;
   noWrap?: boolean;
-  size?: string;
+  size?: HeadingSize;
 }
 
 // TODO: TS fix
 const headingVariantMapping: any = {
-  small: 'h4',
-  medium: 'h3',
-  large: 'h2',
-  xlarge: 'h1',
+  sm: 'h4',
+  md: 'h3',
+  lg: 'h2',
+  xl: 'h1',
 };
 
 export const Heading = ({
   as,
   children,
-  fontWeight = 'semibold',
+  strong,
   noWrap,
-  size = 'medium',
+  size = 'md',
 }: HeadingProps) => {
   let type = as || 'span';
   if (!as && size) {
@@ -36,7 +36,7 @@ export const Heading = ({
     <Typography
       variant="heading"
       as={type}
-      fontWeight={fontWeight}
+      fontWeight={strong ? 'bold' : 'semibold'}
       noWrap={noWrap}
       size={size}
     >
