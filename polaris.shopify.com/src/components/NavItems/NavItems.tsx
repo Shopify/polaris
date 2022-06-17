@@ -5,10 +5,6 @@ const headerNavItems: {
   url: string;
 }[] = [
   {
-    label: "Getting started",
-    url: "/resources",
-  },
-  {
     label: "Foundations",
     url: "/foundations",
   },
