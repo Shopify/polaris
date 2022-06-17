@@ -1,4 +1,4 @@
-import type { NavItem } from "../components/NavItems";
+import type { NavItem } from "../components/Nav";
 import * as Icons from "./foundationsIcons";
 
 interface NavItemWithIconChild extends NavItem {
@@ -278,7 +278,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
 
 export const contributingNavItems = [
   {
-    title: "Contributing",
+    title: "Contributing to Polaris",
     url: "/contributing",
     children: [
       {

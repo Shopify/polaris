@@ -1,12 +1,7 @@
 import Link from "next/link";
 
 import { foundationsNavItems, contributingNavItems } from "../../data/navItems";
-
-export type NavItem = {
-  title: string;
-  url?: string;
-  children?: NavItem[];
-};
+import type { NavItem } from "../Nav";
 
 const navItems: NavItem[] = [
   {
@@ -30,7 +25,10 @@ const navItems: NavItem[] = [
     title: "Icons",
     url: "/icons",
   },
-  ...contributingNavItems,
+  {
+    title: "Contributing",
+    url: "/contributing",
+  },
 ];
 
 interface Props {

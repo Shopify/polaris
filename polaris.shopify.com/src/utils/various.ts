@@ -1,4 +1,4 @@
-import type { NavItem } from "../components/NavItems";
+import type { NavItem } from "../components/Nav";
 import components from "../data/components.json";
 
 export const getComponentCategories = (): string[] => {

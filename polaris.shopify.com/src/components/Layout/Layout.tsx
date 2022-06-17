@@ -3,8 +3,7 @@ import { TOCItem, useTOC } from "../../utils/hooks";
 import { className, slugify } from "../../utils/various";
 import Longform from "../Longform";
 import Container from "../Container";
-import Nav from "../Nav";
-import type { NavItem } from "../NavItems";
+import Nav, { NavItem } from "../Nav";
 
 import styles from "./Layout.module.scss";
 
