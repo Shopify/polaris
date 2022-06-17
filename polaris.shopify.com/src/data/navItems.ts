@@ -39,10 +39,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         icon: Icons.MobileIcon,
       },
       // {
-      //   title: "Designing apps for Shopify",
-      //   url: "/foundations/foundations/designing-apps",
-      // },
-      // {
       //   title: "Onboarding flows",
       //   url: "/foundations/foundations/designing-onboarding-flows",
       // },
