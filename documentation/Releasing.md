@@ -9,7 +9,7 @@ We have a [GitHub action](https://github.com/changesets/action) that
 
 To perform a release:
 
-- Comment `/snapit` in the in the **"Version Packages"** PR to cut a snapshot release
+- Comment `/snapit` in the **"Version Packages"** PR to cut a snapshot release
 - Create a draft pull request in `Shopify/web` for the upgrade using the snapshot
 - Once CI passes, merge the **"Version Packages"** PR
 - Once the release is available in npm, update the draft PR to the new version and request review from the folks whose changes are part of the release as listed in the release notes 
