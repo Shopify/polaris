@@ -13,10 +13,6 @@ import shopifyLogo from "../../../public/shopify-logo.svg";
 
 const headerNavItems: NavItem[] = [
   {
-    title: "Getting started",
-    url: "/resources",
-  },
-  {
     title: "Foundations",
     url: "/foundations",
   },
@@ -32,10 +28,10 @@ const headerNavItems: NavItem[] = [
     title: "Icons",
     url: "/icons",
   },
-  {
-    title: "Contributing",
-    url: "/contributing",
-  },
+  // {
+  //   title: "Contributing",
+  //   url: "/contributing",
+  // },
 ];
 
 interface Props {

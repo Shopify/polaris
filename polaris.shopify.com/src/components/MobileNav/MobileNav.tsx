@@ -6,7 +6,7 @@ import { foundationsNavItems, contributingNavItems } from "../../data/navItems";
 import { className, getComponentNav } from "../../utils/various";
 import { Breakpoints } from "../../types";
 import Button from "../Button";
-import type { NavItem } from "../NavItems";
+import type { NavItem } from "../Nav";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./MobileNav.module.scss";
