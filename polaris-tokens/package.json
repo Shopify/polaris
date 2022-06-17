@@ -16,8 +16,8 @@
     "./scss/*": "./dist/scss/*",
     "./metadata": {
       "types": "./dist/types/metadata.d.ts",
-      "import": "./dist/metadata.mjs",
-      "require": "./dist/metadata.js"
+      "import": "./dist/esm/metadata.mjs",
+      "require": "./dist/cjs/metadata.js"
     }
   },
   "typesVersions": {
