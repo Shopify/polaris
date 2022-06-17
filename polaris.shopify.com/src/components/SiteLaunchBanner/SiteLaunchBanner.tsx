@@ -48,7 +48,9 @@ function SiteLaunchBanner({}: Props) {
       <p>{`Welcome to the beta version of the new Polaris website!`}</p>
       <ul>
         <li>
-          <a href="#">Return to the old site</a>
+          <a href="https://legacy.polaris.shopify.com">
+            Return to the old site
+          </a>
         </li>
       </ul>
     </div>
