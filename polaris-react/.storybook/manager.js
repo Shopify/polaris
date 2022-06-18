@@ -71,13 +71,13 @@ function GridPanel(props) {
             name: 'Show grid overlay',
             description:
               'Show or hide a 4 / 12 column grid, overlaying components',
-            defaultValue: false,
+            defaultValue: 'false',
             control: {type: 'boolean'},
           },
           gridInFrame: {
             name: 'Grid in frame',
             description: 'Show grid within app frame context',
-            defaultValue: false,
+            defaultValue: 'false',
             control: {type: 'boolean'},
           },
           gridWidth: {

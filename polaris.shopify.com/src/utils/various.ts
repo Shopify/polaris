@@ -1,4 +1,4 @@
-import { NavItem } from "../components/Nav/Nav";
+import type { NavItem } from "../components/Nav";
 import components from "../data/components.json";
 
 export const getComponentCategories = (): string[] => {
@@ -27,7 +27,7 @@ export const getComponentNav = (): NavItem[] => {
   return navItems;
 };
 
-export const slugify = (str: string) => {
+export const slugify = (str: string): string => {
   return (
     str
       // Camel to hyphen case

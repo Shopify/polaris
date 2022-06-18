@@ -25,7 +25,7 @@
   }
 
   &.isHighlighted button,
-  button:focus {
+  button:focus-visible {
     box-shadow: var(--focus-outline);
   }
 }

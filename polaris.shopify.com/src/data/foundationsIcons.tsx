@@ -103,23 +103,6 @@ export const InformationArchitectureIcon = (
   </svg>
 );
 
-export const MobileIcon = (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 1.5C3 0.7 3.7 0 4.5 0H15.5C16.3 0 17 0.7 17 1.5V18.5C17 19.3 16.3 20 15.5 20H4.5C3.7 20 3 19.3 3 18.5V1.5ZM5 2H15V16H5V2ZM9 17C8.73478 17 8.48043 17.1054 8.29289 17.2929C8.10536 17.4804 8 17.7348 8 18C8 18.2652 8.10536 18.5196 8.29289 18.7071C8.48043 18.8946 8.73478 19 9 19H11C11.2652 19 11.5196 18.8946 11.7071 18.7071C11.8946 18.5196 12 18.2652 12 18C12 17.7348 11.8946 17.4804 11.7071 17.2929C11.5196 17.1054 11.2652 17 11 17H9Z"
-      fill="#5C5F62"
-    />
-  </svg>
-);
-
 export const DesignIcon = (
   <svg
     width="20"

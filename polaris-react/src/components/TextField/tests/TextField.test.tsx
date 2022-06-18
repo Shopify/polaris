@@ -84,6 +84,53 @@ describe('<TextField />', () => {
     });
   });
 
+  describe('click events', () => {
+    describe('when a click event occurs on the input', () => {
+      it('bubbles up to the parent element', () => {
+        const onClick = jest.fn();
+        const event = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+        });
+        const textField = mountWithApp(
+          <div onClick={onClick}>
+            <TextField type="text" label="TextField" autoComplete="off" />
+          </div>,
+        );
+
+        textField.find('input')!.domNode?.dispatchEvent(event);
+        expect(onClick).toHaveBeenCalled();
+      });
+
+      describe('when a click event occurs in an element other than the input', () => {
+        it('does not bubble up to the parent element', () => {
+          const onClick = jest.fn();
+          const children = 'vertical-content-children';
+          const event = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+          });
+          const verticalContent = <span>{children}</span>;
+          const textField = mountWithApp(
+            <div onClick={onClick}>
+              <TextField
+                type="text"
+                label="TextField"
+                autoComplete="off"
+                verticalContent={verticalContent}
+              />
+            </div>,
+          );
+
+          textField.find('span', {children})!.domNode?.dispatchEvent(event);
+          expect(onClick).not.toHaveBeenCalled();
+        });
+      });
+    });
+  });
+
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();

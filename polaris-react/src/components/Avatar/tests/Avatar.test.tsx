@@ -129,4 +129,14 @@ describe('<Avatar />', () => {
       });
     });
   });
+
+  describe('shape', () => {
+    it('renders a square background when square is passed to shape', () => {
+      const avatar = mountWithApp(<Avatar initials="DL" shape="square" />);
+
+      expect(avatar).toContainReactComponent('span', {
+        className: expect.stringContaining('shapeSquare'),
+      });
+    });
+  });
 });
