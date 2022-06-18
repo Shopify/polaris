@@ -45,7 +45,7 @@ function SiteLaunchBanner({}: Props) {
         </svg>
       </button>
       <span className={styles.Emoji}>👋</span>
-      <p>{`Welcome to the beta version of the new Polaris website!`}</p>
+      <p>{`We've made some improvements to our website to help you build more efficiently with Polaris.`}</p>
       <ul>
         <li>
           <a href="https://legacy.polaris.shopify.com">
