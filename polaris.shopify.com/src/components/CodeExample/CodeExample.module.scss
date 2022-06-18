@@ -1,5 +1,4 @@
 .CodeExample {
-  position: relative;
   border-radius: var(--border-radius-400);
   overflow: hidden;
   border: 1px solid var(--border-color-light);
@@ -19,16 +18,28 @@
   }
 }
 
+.CopyButtonWrapper {
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: -1;
+}
+
 .CopyButton {
   position: absolute;
-  top: 0;
-  right: 0;
   padding: 0.5rem;
   background: transparent;
   display: flex;
   align-items: center;
   opacity: 0.5;
+  border-radius: var(--border-radius-200);
+
   &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    box-shadow: none;
     opacity: 1;
   }
 }
