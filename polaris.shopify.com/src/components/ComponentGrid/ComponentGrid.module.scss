@@ -20,6 +20,10 @@
     box-shadow: var(--card-shadow);
     overflow: hidden;
 
+    &:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
     &:focus-visible {
       box-shadow: var(--focus-outline);
     }
