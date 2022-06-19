@@ -555,7 +555,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       return;
     }
     const currentCell = event.target.parentNode as HTMLTableCellElement;
-    const firstColumnWidth = this.state.columnVisibilityData[0].rightEdge;
+    const hasFixedFirstColumn = this.state.columnVisibilityData.length > 0;
+    const firstColumnWidth = hasFixedFirstColumn
+      ? this.state.columnVisibilityData[0].rightEdge
+      : 0;
     const currentColumnLeftEdge = currentCell.offsetLeft;
     const desiredScrollLeft = currentColumnLeftEdge - firstColumnWidth;
 
