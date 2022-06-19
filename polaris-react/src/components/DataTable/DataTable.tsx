@@ -320,12 +320,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                   >
                     <thead>
                       <tr className={styles.StickyTableHeadingsRow}>
-                        {fixedFirstStickyHeading}
                         {headings.map((heading, index) => {
                           return this.renderHeading({
                             heading,
                             headingIndex: index,
-                            inFixedFirstColumn: false,
+                            inFixedFirstColumn:
+                              index === 0 && hasFixedFirstColumn,
                             inStickyHeader: true,
                           });
                         })}
@@ -669,31 +669,39 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       ? this.tableHeadingWidths[headingIndex]
       : undefined;
 
+    const cellProps = {
+      setRef: (ref) => {
+        this.setCellRef({
+          ref,
+          index: headingIndex,
+          inStickyHeader,
+          inFixedFirstColumn,
+        });
+      },
+      header: true,
+      stickyHeadingCell: inStickyHeader,
+      content: heading,
+      contentType: columnContentTypes[headingIndex],
+      firstColumn: headingIndex === 0,
+      truncate,
+      ...sortableHeadingProps,
+      verticalAlign,
+      handleFocus: this.handleFocus,
+      stickyCellWidth,
+      fixedCellVisible: !isScrolledFarthestLeft,
+      firstColumnMinWidth,
+    };
+
+    // need two cells for fixed first column (actual cell and the overlapping one)
+    if (inFixedFirstColumn && inStickyHeader) {
+      return [
+        <Cell key={`${id}-sticky`} {...cellProps} inFixedFirstColumn />,
+        <Cell key={id} {...cellProps} inFixedFirstColumn={false} />,
+      ];
+    }
+
     return (
-      <Cell
-        setRef={(ref) => {
-          this.setCellRef({
-            ref,
-            index: headingIndex,
-            inStickyHeader,
-            inFixedFirstColumn,
-          });
-        }}
-        header
-        stickyHeadingCell={inStickyHeader}
-        key={id}
-        content={heading}
-        contentType={columnContentTypes[headingIndex]}
-        firstColumn={headingIndex === 0}
-        truncate={truncate}
-        {...sortableHeadingProps}
-        verticalAlign={verticalAlign}
-        handleFocus={this.handleFocus}
-        stickyCellWidth={stickyCellWidth}
-        fixedCellVisible={!isScrolledFarthestLeft}
-        firstColumnMinWidth={firstColumnMinWidth}
-        inFixedFirstColumn={inFixedFirstColumn}
-      />
+      <Cell key={id} {...cellProps} inFixedFirstColumn={inFixedFirstColumn} />
     );
   };
 

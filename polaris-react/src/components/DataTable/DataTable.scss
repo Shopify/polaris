@@ -347,7 +347,8 @@
     z-index: 1;
   }
 
-  &.separate th {
+  &.separate:is(table) th,
+  &.separate:is(th) {
     border-right: var(--p-border-divider);
   }
 }
