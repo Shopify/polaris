@@ -291,26 +291,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                 !isScrolledFarthestLeft && styles.separate,
               );
 
-              const fixedFirstStickyHeading = hasFixedFirstColumn ? (
-                <table
-                  className={classNames(
-                    !isScrolledFarthestLeft && styles.separate,
-                    styles.FixedFirstColumn,
-                  )}
-                >
-                  <thead>
-                    <tr>
-                      {this.renderHeading({
-                        heading: headings[0],
-                        headingIndex: 0,
-                        inFixedFirstColumn: true,
-                        inStickyHeader: true,
-                      })}
-                    </tr>
-                  </thead>
-                </table>
-              ) : null;
-
               return (
                 <div className={stickyHeaderInnerClassNames}>
                   <div>{navigationMarkup}</div>
@@ -670,7 +650,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       : undefined;
 
     const cellProps = {
-      setRef: (ref) => {
+      setRef: (ref: any) => {
         this.setCellRef({
           ref,
           index: headingIndex,
