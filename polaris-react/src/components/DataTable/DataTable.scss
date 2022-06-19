@@ -187,7 +187,7 @@
     visibility: hidden;
   }
 
-  .StickyHeaderEnabled [data-sticky-active] .StickyTable & {
+  .StickyHeaderEnabled [data-sticky-active] .StickyHeaderWrapper & {
     visibility: visible;
   }
 
@@ -285,7 +285,7 @@
 }
 
 .StickyHeaderEnabled {
-  .StickyTable {
+  .StickyHeaderWrapper {
     position: relative;
     top: 0;
     left: 0;
@@ -294,7 +294,7 @@
     z-index: var(--p-z-1);
   }
 
-  .StickyTableHeader {
+  .StickyHeaderInner {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -302,10 +302,14 @@
     overflow: hidden;
     border-spacing: 0;
 
-    &:not(.StickyTableHeader-isSticky) {
+    &:not(.StickyHeaderInner-isSticky) {
       top: -9999px;
       left: -9999px;
     }
+  }
+
+  .StickyHeaderTable {
+    border-collapse: collapse;
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -325,7 +329,7 @@
     }
   }
 
-  .StickyTableHeader-isSticky {
+  .StickyHeaderInner-isSticky {
     visibility: visible;
     background-color: var(--p-surface);
     box-shadow: var(--p-shadow-base);
