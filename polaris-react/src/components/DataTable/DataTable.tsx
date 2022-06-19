@@ -341,10 +341,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     ) : null;
 
     return (
-      <div className={wrapperClassName}>
+      <div className={wrapperClassName} ref={this.dataTable}>
+        {stickyHeaderMarkup}
         {navigationMarkup}
-        <div className={className} ref={this.dataTable}>
-          {stickyHeaderMarkup}
+        <div className={className}>
           <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
