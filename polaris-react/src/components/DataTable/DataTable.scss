@@ -310,6 +310,16 @@
 
   .StickyHeaderTable {
     border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      appearance: none;
+      height: 0;
+      width: 0;
+    }
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -318,15 +328,7 @@
   }
 
   .StickyTableHeadingsRow {
-    overflow-x: auto;
     background-color: var(--p-surface);
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      appearance: none;
-      height: 0;
-      width: 0;
-    }
   }
 
   .StickyHeaderInner-isSticky {

@@ -105,7 +105,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private dataTable = createRef<HTMLDivElement>();
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
-  private stickyTableHeadingsRow = createRef<HTMLTableRowElement>();
+  private stickyTable = createRef<HTMLTableElement>();
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
@@ -286,7 +286,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                 styles.StickyHeaderInner,
                 isSticky && styles['StickyHeaderInner-isSticky'],
               );
-              const stickyHeaderClassNames = classNames(
+              const stickyHeaderTableClassNames = classNames(
                 styles.StickyHeaderTable,
                 !isScrolledFarthestLeft && styles.separate,
               );
@@ -314,12 +314,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               return (
                 <div className={stickyHeaderInnerClassNames}>
                   <div>{navigationMarkup}</div>
-                  <table className={stickyHeaderClassNames}>
+                  <table
+                    className={stickyHeaderTableClassNames}
+                    ref={this.stickyTable}
+                  >
                     <thead>
-                      <tr
-                        className={styles.StickyTableHeadingsRow}
-                        ref={this.stickyTableHeadingsRow}
-                      >
+                      <tr className={styles.StickyTableHeadingsRow}>
                         {fixedFirstStickyHeading}
                         {headings.map((heading, index) => {
                           return this.renderHeading({
@@ -440,7 +440,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       dataTable: {current: dataTable},
     } = this;
 
-    if (table && scrollContainer && dataTable) {
+    if (condensed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(headerCell.selector);
       const {hasFixedFirstColumn} = this.props;
       const firstColumnWidth = hasFixedFirstColumn
@@ -524,14 +524,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private stickyHeaderScrolling = () => {
-    const {current: stickyTableHeadingsRow} = this.stickyTableHeadingsRow;
+    const {current: stickyTable} = this.stickyTable;
     const {current: scrollContainer} = this.scrollContainer;
 
-    if (stickyTableHeadingsRow == null || scrollContainer == null) {
+    if (stickyTable == null || scrollContainer == null) {
       return;
     }
 
-    stickyTableHeadingsRow.scrollLeft = scrollContainer.scrollLeft;
+    stickyTable.scrollLeft = scrollContainer.scrollLeft;
   };
 
   private scrollListener = () => {
@@ -668,8 +668,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const stickyCellWidth = inStickyHeader
       ? this.tableHeadingWidths[headingIndex]
       : undefined;
-
-    console.log(`${headingIndex}: width: ${stickyCellWidth}`);
 
     return (
       <Cell
