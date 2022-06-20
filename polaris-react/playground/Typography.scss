@@ -1,5 +1,40 @@
 .root {
   margin: 0;
+
+  // Display
+  // ---
+  // Font size
+  --p-type-display-sm-font-size: var(--p-font-size-12);
+  --p-type-display-md-font-size: 32px;
+  --p-type-display-lg-font-size: 40px;
+  // Line height
+  --p-type-display-sm-line-height: var(--p-line-height-5);
+  --p-type-display-md-line-height: 40px;
+  --p-type-display-lg-line-height: 48px;
+
+  // Heading
+  // ---
+  // Font size
+  --p-type-heading-sm-font-size: var(--p-font-size-1);
+  --p-type-heading-md-font-size: var(--p-font-size-3);
+  --p-type-heading-lg-font-size: var(--p-font-size-5);
+  --p-type-heading-xl-font-size: var(--p-font-size-7);
+  // Line height
+  --p-type-heading-sm-line-height: var(--p-line-height-1);
+  --p-type-heading-md-line-height: var(--p-line-height-2);
+  --p-type-heading-lg-line-height: var(--p-line-height-3);
+  --p-type-heading-xl-line-height: var(--p-line-height-3);
+
+  // Body
+  // ---
+  // Font size
+  --p-type-body-sm-font-size: var(--p-font-size-1);
+  --p-type-body-md-font-size: var(--p-font-size-3);
+  --p-type-body-lg-font-size: var(--p-font-size-5);
+  // Line height
+  --p-type-body-sm-line-height: var(--p-line-height-1);
+  --p-type-body-md-line-height: var(--p-line-height-2);
+  --p-type-body-lg-line-height: var(--p-line-height-3);
 }
 
 .nowrap {
@@ -25,52 +60,52 @@
 }
 
 .displaySmall {
-  font-size: var(--p-font-size-12);
-  line-height: var(--p-line-height-5);
+  font-size: var(--p-type-display-sm-font-size);
+  line-height: var(--p-type-display-sm-line-height);
 }
 
 .displayMedium {
-  font-size: 32px;
-  line-height: 40px;
+  font-size: var(--p-type-display-md-font-size);
+  line-height: var(--p-type-display-md-line-height);
 }
 
 .displayLarge {
-  font-size: 40px;
+  font-size: var(--p-type-display-lg-font-size);
   font-weight: var(--p-font-weight-bold);
-  line-height: 48px;
+  line-height: var(--p-type-display-lg-line-height);
 }
 
 .headingSm {
-  font-size: var(--p-font-size-1);
-  line-height: var(--p-line-height-1);
+  font-size: var(--p-type-heading-sm-font-size);
+  line-height: var(--p-type-heading-sm-line-height);
 }
 
 .headingMd {
-  font-size: var(--p-font-size-3);
-  line-height: var(--p-line-height-2);
+  font-size: var(--p-type-heading-md-font-size);
+  line-height: var(--p-type-heading-md-line-height);
 }
 
 .headingLg {
-  font-size: var(--p-font-size-5);
-  line-height: var(--p-line-height-3);
+  font-size: var(--p-type-heading-lg-font-size);
+  line-height: var(--p-type-heading-lg-line-height);
 }
 
 .headingXl {
-  font-size: var(--p-font-size-7);
-  line-height: var(--p-line-height-3);
+  font-size: var(--p-type-heading-xl-font-size);
+  line-height: var(--p-type-heading-xl-line-height);
 }
 
 .bodySmall {
-  font-size: var(--p-font-size-1);
-  line-height: var(--p-line-height-1);
+  font-size: var(--p-type-body-sm-font-size);
+  line-height: var(--p-type-body-sm-line-height);
 }
 
 .bodyMedium {
-  font-size: var(--p-font-size-3);
-  line-height: var(--p-line-height-2);
+  font-size: var(--p-type-body-md-font-size);
+  line-height: var(--p-type-body-md-line-height);
 }
 
 .bodyLarge {
-  font-size: var(--p-font-size-5);
-  line-height: var(--p-line-height-3);
+  font-size: var(--p-type-body-lg-font-size);
+  line-height: var(--p-type-body-lg-line-height);
 }
