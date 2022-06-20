@@ -12,6 +12,9 @@ export function Playground() {
       {/* Add the code you want to test in here */}
       <Stack vertical>
         <Display size="large">Display large</Display>
+        <Display size="large" fontWeight="semibold">
+          Display large
+        </Display>
         <Display size="medium" fontWeight="bold">
           Display medium with fontWeight bold
         </Display>

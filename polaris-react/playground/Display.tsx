@@ -13,17 +13,20 @@ interface DisplayProps {
 
 export const Display = ({
   children,
-  fontWeight = 'semibold',
+  fontWeight,
   noWrap,
   size = 'small',
-}: DisplayProps) => (
-  <Typography
-    variant="display"
-    as="span"
-    fontWeight={fontWeight}
-    noWrap={noWrap}
-    size={size}
-  >
-    {children}
-  </Typography>
-);
+}: DisplayProps) => {
+  const fontWeightLarge = size === 'large' ? 'bold' : 'semibold';
+  return (
+    <Typography
+      variant="display"
+      as="span"
+      fontWeight={fontWeight ? fontWeight : fontWeightLarge}
+      noWrap={noWrap}
+      size={size}
+    >
+      {children}
+    </Typography>
+  );
+};
