@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { foundationsNavItems, contributingNavItems } from "../../data/navItems";
+import { foundationsNavItems } from "../../data/navItems";
 import { className, getComponentNav } from "../../utils/various";
 import { Breakpoints } from "../../types";
 import Button from "../Button";
@@ -16,7 +16,7 @@ const componentsNavItems = getComponentNav();
 const navItems: NavItem[] = [
   {
     title: "Getting started",
-    url: "/resources",
+    url: "/",
   },
   ...foundationsNavItems,
   {
