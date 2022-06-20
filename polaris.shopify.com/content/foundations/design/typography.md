@@ -220,18 +220,6 @@ textarea {
 
 <!-- end -->
 
-### Mobile type scale
-
-Both iOS and Android native apps use a different type scale than the web and mobile web. This native typescale is loaded into the app and is slightly different across these platforms. It uses the small-screen scale as a starting point, then uses additional styles to support the specifics of each platform.
-
-By using the native type scale as you design for mobile native, it guarantees that the experience and its UI components will be crafted at the correct screen aspect ratio, ensuring a more accessible experience.
-
-### Mobile variable font sizes
-
-Variable font sizes are one of the most common accessibility features enabled on mobile. They let your audience increase or decrease the size of text on their mobile device. Once set, all apps installed will use the new values and the font sizes will be adjusted accordingly.
-
-Variable font sizes usually have a major impact on the UI components, since the content width and height can be shifted by up to 20%. This is particularly important for the information located near the screen fold. For more information, read the [foundational principles for mobile design](/foundations/mobile).
-
 <div class="NextPage">
 Next<br/>
 <a href="/design/illustrations#navigation">Illustrations</a>
