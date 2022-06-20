@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
     title: "Icons",
     url: "/icons",
   },
-  ...contributingNavItems,
+  // ...contributingNavItems,
 ];
 
 interface Props {
