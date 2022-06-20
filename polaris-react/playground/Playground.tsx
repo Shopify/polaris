@@ -15,8 +15,8 @@ export function Playground() {
           Display large strong override
         </Display>
         <Display size="large">Display large</Display>
-        <Display size="large" noWrap>
-          Display large with noWrap applied
+        <Display size="large" truncate>
+          Display large with truncate applied
         </Display>
         <Display size="medium">Display medium</Display>
         <Display size="small">Display small</Display>
@@ -32,8 +32,8 @@ export function Playground() {
         </Heading>
         <Heading size="large">Heading large</Heading>
         <Heading size="medium">Heading medium</Heading>
-        <Heading noWrap>
-          Heading default with noWrap applied // Lorem ipsum dolor sit amet,
+        <Heading truncate>
+          Heading default with truncate applied // Lorem ipsum dolor sit amet,
           consectetur adipisicing elit. Officia pariatur ratione iure minus qui
           nesciunt
         </Heading>
@@ -43,8 +43,8 @@ export function Playground() {
         </Body>
         <Body size="large">Body large</Body>
         <Body size="medium">Body medium</Body>
-        <Body noWrap>
-          Body default with noWrap applied // Lorem ipsum dolor sit amet,
+        <Body truncate>
+          Body default with truncate applied // Lorem ipsum dolor sit amet,
           consectetur adipisicing elit. Officia pariatur ratione iure minus qui
           nesciunt sint maiores ipsam nostrum cum, est doloremque provident
           voluptas, doloribus excepturi atque, explicabo asperiores praesentium.

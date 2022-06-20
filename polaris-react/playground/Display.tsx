@@ -7,7 +7,7 @@ import styles from './Display.scss';
 
 interface DisplayProps {
   children: ReactNode;
-  noWrap?: boolean;
+  truncate?: boolean;
   size?: string;
   strong?: boolean;
   align?: Align;
@@ -15,7 +15,7 @@ interface DisplayProps {
 
 export const Display = ({
   children,
-  noWrap,
+  truncate,
   size = 'small',
   strong,
   align,
@@ -27,7 +27,12 @@ export const Display = ({
   );
 
   return (
-    <Typography as="span" className={className} noWrap={noWrap} align={align}>
+    <Typography
+      as="span"
+      className={className}
+      truncate={truncate}
+      align={align}
+    >
       {children}
     </Typography>
   );

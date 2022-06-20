@@ -8,7 +8,7 @@ import styles from './Heading.scss';
 interface HeadingProps {
   as?: ElementType;
   children: ReactNode;
-  noWrap?: boolean;
+  truncate?: boolean;
   size?: string;
   strong?: boolean;
   align?: Align;
@@ -25,7 +25,7 @@ const headingVariantMapping: any = {
 export const Heading = ({
   as,
   children,
-  noWrap,
+  truncate,
   size = 'medium',
   strong,
   align,
@@ -42,7 +42,12 @@ export const Heading = ({
   );
 
   return (
-    <Typography as={type} className={className} noWrap={noWrap} align={align}>
+    <Typography
+      as={type}
+      className={className}
+      truncate={truncate}
+      align={align}
+    >
       {children}
     </Typography>
   );

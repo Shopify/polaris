@@ -21,7 +21,7 @@ interface TypographyProps {
   as: ElementType;
   className?: string;
   children: ReactNode;
-  noWrap?: boolean;
+  truncate?: boolean;
   align?: Align;
   // fontSize?: string;
   // fontWeight?: string;
@@ -31,7 +31,7 @@ export const Typography = ({
   as,
   children,
   className = '',
-  noWrap,
+  truncate,
   align,
 }: TypographyProps) => {
   const Component = as || 'span';
@@ -40,7 +40,7 @@ export const Typography = ({
     <Component
       className={classNames(
         className,
-        noWrap && styles.nowrap,
+        truncate && styles.truncate,
         align && styles[align],
       )}
     >

@@ -8,7 +8,7 @@ import styles from './Body.scss';
 interface BodyProps {
   as?: ElementType;
   children: ReactNode;
-  noWrap?: boolean;
+  truncate?: boolean;
   size?: string;
   strong?: boolean;
   align?: Align;
@@ -17,7 +17,7 @@ interface BodyProps {
 export const Body = ({
   as,
   children,
-  noWrap,
+  truncate,
   size = 'medium',
   strong,
   align,
@@ -31,7 +31,12 @@ export const Body = ({
   );
 
   return (
-    <Typography as={type} className={className} noWrap={noWrap} align={align}>
+    <Typography
+      as={type}
+      className={className}
+      truncate={truncate}
+      align={align}
+    >
       {children}
     </Typography>
   );
