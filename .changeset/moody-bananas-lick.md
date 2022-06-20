@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[ActionList] Exports ActionList.Item subcomponent
+Exported the `ActionList.Item` sub-component
