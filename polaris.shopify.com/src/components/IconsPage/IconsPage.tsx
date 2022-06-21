@@ -117,8 +117,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Major icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
+                  <b>Major icons</b>
                 </p>
               </div>
               <IconGrid>
@@ -145,8 +144,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Minor icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
+                  <b>Minor icons</b>
                 </p>
               </div>
 

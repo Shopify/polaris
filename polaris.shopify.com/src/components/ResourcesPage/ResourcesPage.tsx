@@ -49,7 +49,7 @@ function ResourcesPage({}: Props) {
                 <p className={styles.Description}>
                   The core library that give you access to components, styles
                   and everything else you need to build a great app with
-                  Polaris. Lorem ipsum dolor et amet.
+                  Polaris.
                 </p>
                 <Links
                   links={[
@@ -125,8 +125,7 @@ function ResourcesPage({}: Props) {
                 <h3>Icons</h3>
                 <p className={styles.Description}>
                   The Polaris icon library contains 400+ carefully designed
-                  icons focused on commerce and entrepreneurship. Lorem ipsum
-                  dolor et amet.
+                  icons focused on commerce and entrepreneurship.
                 </p>
                 <Links
                   links={[
