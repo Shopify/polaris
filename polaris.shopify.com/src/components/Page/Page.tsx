@@ -22,27 +22,28 @@ function Page({ children }: Props) {
   const match = router.asPath.match(/^\/\w+/);
   const currentSection = match ? match[0] : "";
 
-  return (
+  const childElements = (
+    <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+      {!isPolaris && (
+        <Header currentSection={currentSection} darkMode={darkMode} />
+      )}
+
+      {children}
+
+      {!isPolaris && (
+        <div className={styles.Footer}>
+          <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
+          <SiteLaunchBanner />
+        </div>
+      )}
+    </div>
+  );
+
+  return isPolaris ? (
+    <>{childElements}</>
+  ) : (
     <ThemeProvider theme={darkMode.value ? "dark" : "light"} useBody>
-      <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-        {!isPolaris && (
-          <Header currentSection={currentSection} darkMode={darkMode} />
-        )}
-
-        {children}
-
-        {!isPolaris && (
-          <div className={styles.Footer}>
-            <Image
-              src={shopifyLogo}
-              width={36}
-              height={36}
-              alt="Shopify logo"
-            />
-            <SiteLaunchBanner />
-          </div>
-        )}
-      </div>
+      {childElements}
     </ThemeProvider>
   );
 }
