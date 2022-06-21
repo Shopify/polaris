@@ -360,13 +360,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     inStickyHeader: boolean;
     inFixedFirstColumn: boolean;
   }) => {
-    const {hasFixedFirstColumn} = this.props;
-    if (
-      ref == null ||
-      (hasFixedFirstColumn && !inFixedFirstColumn && index === 0)
-    ) {
+    if (ref == null) {
       return;
     }
+
+    console.log('setting CellRef', ref, {
+      index,
+      inStickyHeader,
+      inFixedFirstColumn,
+    });
 
     if (inStickyHeader) {
       this.stickyHeadings[index] = ref;
@@ -542,7 +544,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       return;
     }
     const currentCell = event.target.parentNode as HTMLTableCellElement;
-    const hasFixedFirstColumn = this.state.columnVisibilityData.length > 0;
+    const hasFixedFirstColumn = this.props;
     const firstColumnWidth = hasFixedFirstColumn
       ? this.state.columnVisibilityData[0].rightEdge
       : 0;
@@ -552,6 +554,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     if (this.scrollContainer.current.scrollLeft > desiredScrollLeft) {
       this.scrollContainer.current.scrollLeft = desiredScrollLeft;
     }
+
+    // focus fixed first column if present
   };
 
   private navigateTable = (direction: string) => {
@@ -650,14 +654,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       : undefined;
 
     const cellProps = {
-      setRef: (ref: any) => {
-        this.setCellRef({
-          ref,
-          index: headingIndex,
-          inStickyHeader,
-          inFixedFirstColumn,
-        });
-      },
       header: true,
       stickyHeadingCell: inStickyHeader,
       content: heading,
@@ -675,13 +671,49 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     // need two cells for fixed first column (actual cell and the overlapping one)
     if (inFixedFirstColumn && inStickyHeader) {
       return [
-        <Cell key={`${id}-sticky`} {...cellProps} inFixedFirstColumn />,
-        <Cell key={id} {...cellProps} inFixedFirstColumn={false} />,
+        <Cell
+          key={`${id}-sticky`}
+          {...cellProps}
+          setRef={(ref: any) => {
+            this.setCellRef({
+              ref,
+              index: headingIndex,
+              inStickyHeader,
+              inFixedFirstColumn,
+            });
+          }}
+          inFixedFirstColumn
+        />,
+        <Cell
+          key={id}
+          {...cellProps}
+          setRef={(ref: any) => {
+            this.setCellRef({
+              ref,
+              index: headingIndex,
+              inStickyHeader,
+              inFixedFirstColumn: false,
+            });
+          }}
+          inFixedFirstColumn={false}
+        />,
       ];
     }
 
     return (
-      <Cell key={id} {...cellProps} inFixedFirstColumn={inFixedFirstColumn} />
+      <Cell
+        key={id}
+        {...cellProps}
+        setRef={(ref: any) => {
+          this.setCellRef({
+            ref,
+            index: headingIndex,
+            inStickyHeader,
+            inFixedFirstColumn,
+          });
+        }}
+        inFixedFirstColumn={inFixedFirstColumn}
+      />
     );
   };
 

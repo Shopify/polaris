@@ -117,7 +117,8 @@ export function Cell({
     </span>
   );
 
-  const focusable = inFixedFirstColumn || !(hasFixedFirstColumn && firstColumn);
+  const focusable = hasFixedFirstColumn && firstColumn && !inFixedFirstColumn;
+  // const focusable = true;
 
   const sortableHeadingContent = (
     <button
