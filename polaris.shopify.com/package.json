@@ -11,6 +11,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
+    "generate-nav": "node src/scripts/generateNav.mjs",
     "copy-icons": "node src/scripts/copy-icons.mjs"
   },
   "dependencies": {
