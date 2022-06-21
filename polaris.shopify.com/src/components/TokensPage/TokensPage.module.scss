@@ -43,7 +43,7 @@
     font-weight: var(--font-weight-500);
 
     &[aria-current="page"] {
-      background: #fafafa;
+      background: var(--surface-subdued);
     }
   }
 
