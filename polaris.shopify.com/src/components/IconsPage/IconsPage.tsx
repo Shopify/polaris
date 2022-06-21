@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Dialog } from "@headlessui/react";
 import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
@@ -10,7 +10,7 @@ const importedSvgs = require.context(
   true,
   /\.svg$/
 );
-import { className, getTitleTagValue } from "../../utils/various";
+import { className, getTitleTagValue, slugify } from "../../utils/various";
 import IconGrid from "../IconGrid";
 import TextField from "../TextField";
 import CodeExample from "../CodeExample";
@@ -18,7 +18,7 @@ import Image from "../Image";
 import { Icon } from "../../types";
 import { useEffect } from "react";
 import { useMedia } from "../../utils/hooks";
-import { useRef } from "react";
+import { useRouter } from "next/router";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -40,8 +40,10 @@ function IconsPage() {
   const useModal = useMedia("screen and (max-width: 1400px)");
   const [filterString, setFilterString] = useState("");
   const [selectedIcon, setSelectedIcon] = useState<Icon>(icons[0]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const isInitialLoad = useRef(true);
+  let [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (isInitialLoad.current === false) {
@@ -69,6 +71,27 @@ function IconsPage() {
     }
     setSelectedIcon(foundIcon);
   };
+
+  const setSelectedIconBasedOnParam = useCallback(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const iconParam = urlParams.get("icon");
+    if (iconParam) {
+      const matchingIcon = icons.find((icon) => icon.fileName === iconParam);
+      if (matchingIcon) {
+        getSelectedIcon(matchingIcon);
+        setFilterString(matchingIcon.fileName);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    setSelectedIconBasedOnParam();
+    router.events.on("routeChangeComplete", setSelectedIconBasedOnParam);
+
+    return () => {
+      router.events.off("routeChangeComplete", setSelectedIconBasedOnParam);
+    };
+  }, [setSelectedIconBasedOnParam, router.events]);
 
   return (
     <Container className={styles.IconsPage}>
@@ -103,8 +126,15 @@ function IconsPage() {
                   <IconGrid.Item
                     key={icon.name}
                     icon={icon}
-                    onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
+                    onClick={() => {
+                      window.history.pushState(
+                        {},
+                        "",
+                        `?icon=${icon.fileName}`
+                      );
+                      getSelectedIcon(icon);
+                    }}
+                    isSelected={selectedIcon.fileName === icon.fileName}
                   />
                 ))}
               </IconGrid>
@@ -126,7 +156,6 @@ function IconsPage() {
                     key={icon.name}
                     icon={icon}
                     onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
                   />
                 ))}
               </IconGrid>

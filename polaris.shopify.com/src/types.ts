@@ -75,9 +75,16 @@ export type Icon = {
   set: string;
 };
 
-export interface HighlightableSearchResult {
-  getItemProps?: any;
-  isHighlighted?: boolean;
+export interface SearchResultItem {
+  searchResultData?: {
+    isHighlighted: boolean;
+    tabIndex: -1;
+    itemAttributes: {
+      id: string;
+      "data-is-active-descendant": boolean;
+    };
+    url: string;
+  };
 }
 
 export enum Breakpoints {
