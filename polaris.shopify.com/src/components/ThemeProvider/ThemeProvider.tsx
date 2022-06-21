@@ -108,8 +108,6 @@ function ThemeProvider({ theme, useBody, children }: Props) {
     setCustomProperties(newCustomProperties);
   }, [theme, useBody]);
 
-  console.log("themeprovider", theme);
-
   return (
     <div
       className={className("theme", `${theme}-mode`)}
