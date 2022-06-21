@@ -106,67 +106,6 @@
       }
     }
   }
-
-  .Illustration {
-    margin-bottom: 0.75rem;
-    pointer-events: none;
-    position: relative;
-
-    @keyframes dash {
-      from {
-        stroke-dashoffset: 2;
-      }
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    svg {
-      height: auto;
-      max-width: 500px;
-    }
-
-    rect,
-    line {
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      animation: dash 16s linear infinite reverse;
-
-      &:nth-child(1) {
-        animation-delay: -4s;
-      }
-      &:nth-child(2) {
-        animation-delay: -2s;
-      }
-      &:nth-child(3) {
-        animation-delay: -12s;
-      }
-      &:nth-child(4) {
-        animation-delay: -16s;
-      }
-      &:nth-child(5) {
-        animation-delay: -5s;
-      }
-      &:nth-child(6) {
-        animation-delay: -8s;
-      }
-      &:nth-child(7) {
-        animation-delay: -2s;
-      }
-      &:nth-child(8) {
-        animation-delay: -9s;
-      }
-    }
-
-    @media screen and (max-width: $breakpointDesktopLarge) {
-      width: 900px;
-      height: auto;
-    }
-
-    @include dark-mode {
-      filter: invert(1);
-    }
-  }
 }
 
 .Foundations {
@@ -292,6 +231,10 @@
     font-size: var(--font-size-400);
 
     &[data-icon="github"] svg {
+      color: var(--text-strong);
+    }
+
+    &[data-icon="browse"] svg {
       color: var(--text-strong);
     }
   }
