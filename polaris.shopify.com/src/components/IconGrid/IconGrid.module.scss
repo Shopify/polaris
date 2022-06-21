@@ -26,7 +26,12 @@
 
   &.isHighlighted button,
   button:focus-visible {
-    box-shadow: var(--focus-outline);
+    background: var(--text);
+    box-shadow: none;
+
+    .SVGWrapper {
+      filter: brightness(5000%);
+    }
   }
 }
 

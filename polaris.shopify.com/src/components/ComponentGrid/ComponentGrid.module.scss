@@ -26,7 +26,13 @@
   }
 
   &.isHighlighted a {
-    box-shadow: var(--focus-outline);
+    background: var(--text);
+    color: var(--surface);
+    box-shadow: 0 0 0 2px var(--text);
+
+    h4 {
+      color: var(--surface);
+    }
   }
 
   .ComponentDescription {

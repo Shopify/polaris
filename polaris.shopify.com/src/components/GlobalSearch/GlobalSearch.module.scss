@@ -8,76 +8,60 @@
 
 .Header {
   position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
   background: var(--surface);
-  z-index: 1;
+  z-index: 2;
   border-radius: var(--border-radius-600) var(--border-radius-600) 0 0;
   box-shadow: 0 0.5px var(--border-color);
 
-  h2 {
-    font-size: var(--font-size-100);
-    font-weight: var(--font-weight-400);
-    color: var(--text-subdued);
-  }
+  input {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: transparent;
+    font-size: var(--font-size-1000);
+    letter-spacing: var(--letter-spacing-800);
 
-  p {
-    font-size: var(--font-size-100);
-    color: var(--text-subdued);
+    &:focus-visible {
+      box-shadow: none;
+    }
   }
 }
 
 .Results {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 1180px;
-  height: 800px;
+  position: fixed;
+  top: 3rem;
+  right: 1.25rem;
+  bottom: 3rem;
+  left: 1.25rem;
+  max-width: 1180px;
+  max-height: 700px;
   margin: auto;
   z-index: 2;
   border-radius: var(--border-radius-600);
   overflow: hidden;
   animation: search-results-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  box-shadow: 0 100px 250px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1),
-    0 0 0 3000px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 50px 250px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1);
   background: var(--surface);
   display: flex;
   flex-direction: column;
 
   @include dark-mode {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.125),
-      0 100px 250px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.1),
-      0 0 0 3000px rgba(28, 28, 28, 0.5);
+      0 100px 250px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  @media screen and (max-width: $breakpointMobile) {
+  @media screen and (max-width: $breakpointTablet) {
+    left: 0;
     right: 0;
-    width: calc(100vw - 2.5rem);
-  }
-
-  &:before {
-    position: fixed;
-    content: "";
-    display: block;
-    position: absolute;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
-    height: 100px;
-    z-index: 1;
-    background: linear-gradient(to top, var(--surface), rgba(250, 250, 250, 0));
-    border-radius: 0 0 var(--border-radius-600) var(--border-radius-600);
-  }
-
-  &:empty {
-    display: none;
+    top: auto;
+    height: 80vh;
+    border-radius: var(--border-radius-600) var(--border-radius-600) 0 0;
   }
 }
 
@@ -85,7 +69,7 @@
   overflow: auto;
   overscroll-behavior: contain;
   flex: 1;
-  padding-top: 3.25rem;
+  padding-top: 4.5rem;
 }
 
 .ResultsGroup {
@@ -106,20 +90,35 @@
     font-size: var(--font-size-500);
     font-weight: var(--font-weight-400);
   }
+
+  @media screen and (max-width: $breakpointTablet) {
+    padding-left: 1.5rem;
+
+    .ResultsGroupName {
+      position: static;
+      margin-bottom: 1rem;
+      font-weight: var(--font-weight-500);
+    }
+  }
 }
 
 .FoundationsResults {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 .FoundationsResult {
   position: relative;
+  padding: 1rem;
 
   &.isHighlighted {
-    box-shadow: var(--focus-outline);
     border-radius: var(--border-radius-400);
+    background: var(--text);
+    color: var(--surface);
+
+    h4 {
+      color: var(--surface);
+    }
   }
 
   a {
@@ -149,4 +148,14 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.ModalBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }

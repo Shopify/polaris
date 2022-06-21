@@ -1,7 +1,4 @@
-import {
-  HighlightableSearchResult,
-  TokenPropertiesWithName,
-} from "../../types";
+import { SearchResultItem, TokenPropertiesWithName } from "../../types";
 import { createContext } from "react";
 import { className } from "../../utils/various";
 import styles from "./TokenList.module.scss";
@@ -108,13 +105,13 @@ function getFigmaUsageForToken(
   return usage;
 }
 
-interface TokenListItemProps extends HighlightableSearchResult {
+interface TokenListItemProps extends SearchResultItem {
   token: TokenPropertiesWithName;
 }
 
 function TokenListItem({
   token: { name, value, description },
-  isHighlighted,
+  searchResultData,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
@@ -127,8 +124,10 @@ function TokenListItem({
           key={name}
           className={className(
             styles.TokenListItem,
-            isHighlighted && styles.isHighlighted
+            !!searchResultData && styles.renderedInSearchResults,
+            searchResultData?.isHighlighted && styles.isHighlighted
           )}
+          {...searchResultData?.itemAttributes}
         >
           {columns.preview && (
             <td>
@@ -151,7 +150,10 @@ function TokenListItem({
                       </div>
                     )}
                   >
-                    <button onClick={copy}>
+                    <button
+                      onClick={copy}
+                      tabIndex={searchResultData?.tabIndex}
+                    >
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}

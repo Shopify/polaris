@@ -7,7 +7,7 @@ const importedSvgs = require.context(
   /\.svg$/
 );
 import styles from "./IconGrid.module.scss";
-import { Icon, HighlightableSearchResult } from "../../types";
+import { Icon, SearchResultItem } from "../../types";
 
 interface IconGridProps {
   children: React.ReactNode;
@@ -17,22 +17,20 @@ function IconGrid({ children }: IconGridProps) {
   return <ul className={styles.IconGrid}>{children}</ul>;
 }
 
-interface IconGridItemProps extends HighlightableSearchResult {
+interface IconGridItemProps extends SearchResultItem {
   icon: Icon;
   onClick: (iconName: string) => void;
 }
 
-function IconGridItem({
-  icon,
-  onClick,
-  isHighlighted,
-  getItemProps = () => undefined,
-}: IconGridItemProps) {
+function IconGridItem({ icon, onClick, searchResultData }: IconGridItemProps) {
   return (
     <li
       key={`${icon.name}+${icon.set}`}
-      className={className(styles.Icon, isHighlighted && styles.isHighlighted)}
-      {...getItemProps()}
+      className={className(
+        styles.Icon,
+        searchResultData?.isHighlighted && styles.isHighlighted
+      )}
+      {...searchResultData?.itemAttributes}
     >
       <Tooltip
         ariaLabel={icon.description}
@@ -45,7 +43,10 @@ function IconGridItem({
           </div>
         )}
       >
-        <button onClick={() => onClick(icon.name)}>
+        <button
+          onClick={() => onClick(icon.name)}
+          tabIndex={searchResultData?.tabIndex}
+        >
           <div className={styles.SVGWrapper}>
             <Image
               src={importedSvgs(`./${icon.fileName}.svg`)}
