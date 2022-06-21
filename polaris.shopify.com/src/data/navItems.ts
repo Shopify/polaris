@@ -40,16 +40,19 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         url: "/foundations/foundations/information-architecture",
         icon: Icons.InformationArchitectureIcon,
         excerpt:
-          "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
+          "Everything we create at Shopify has an underlying foundation of information architecture.",
       },
       // {
       //   title: "Onboarding flows",
       //   url: "/foundations/foundations/designing-onboarding-flows",
       // },
-      // {
-      //   title: "Currency",
-      //   url: "/foundations/foundations/formatting-localized-currency",
-      // },
+      {
+        icon: Icons.InformationArchitectureIcon,
+        url: "/foundations/foundations/formatting-localized-currency",
+        title: "Currency",
+        excerpt:
+          "Currencies are formatted differently in different countries and languages.",
+      },
     ],
   },
 
