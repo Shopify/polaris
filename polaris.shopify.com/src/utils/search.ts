@@ -90,7 +90,7 @@ Object.keys(metadata).forEach((fileName) => {
   const { name, set, description, keywords } = metadata[fileName];
   results.push({
     category: "Icons",
-    url: `/icons#${fileName}`,
+    url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
       icon: { fileName, keywords, name, description, set },

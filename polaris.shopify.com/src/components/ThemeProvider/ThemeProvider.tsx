@@ -50,7 +50,7 @@ const themes: {
     "--decorative-3": "#f8dff1",
     "--decorative-4": "#dce0f5",
     "--backdrop": "rgba(0, 0, 0, 0.5)",
-    "--search-highlight-color": "#66726f",
+    "--search-highlight-color": "#f4f5f5",
   },
   dark: {
     "--text": "#aaa",

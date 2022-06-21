@@ -69,27 +69,26 @@ function IconsPage() {
     setSelectedIcon(foundIcon);
   };
 
-  const setCurrentIconBasedOnHash = useCallback(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const fileName = hash.slice(1);
-
-      const matchingIcon = icons.find((icon) => icon.fileName === fileName);
+  const setSelectedIconBasedOnParam = useCallback(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const iconParam = urlParams.get("icon");
+    if (iconParam) {
+      const matchingIcon = icons.find((icon) => icon.fileName === iconParam);
       if (matchingIcon) {
         getSelectedIcon(matchingIcon);
+        setFilterString(matchingIcon.fileName);
       }
     }
   }, []);
 
   useEffect(() => {
-    setCurrentIconBasedOnHash();
-
-    router.events.on("hashChangeComplete", setCurrentIconBasedOnHash);
+    setSelectedIconBasedOnParam();
+    router.events.on("routeChangeComplete", setSelectedIconBasedOnParam);
 
     return () => {
-      router.events.off("hashChangeComplete", setCurrentIconBasedOnHash);
+      router.events.off("routeChangeComplete", setSelectedIconBasedOnParam);
     };
-  }, [setCurrentIconBasedOnHash, router.events]);
+  }, [setSelectedIconBasedOnParam, router.events]);
 
   return (
     <Container className={styles.IconsPage}>
@@ -125,9 +124,14 @@ function IconsPage() {
                     key={icon.name}
                     icon={icon}
                     onClick={() => {
-                      window.location.hash = icon.fileName;
+                      window.history.pushState(
+                        {},
+                        "",
+                        `?icon=${icon.fileName}`
+                      );
                       getSelectedIcon(icon);
                     }}
+                    isSelected={selectedIcon.fileName === icon.fileName}
                   />
                 ))}
               </IconGrid>

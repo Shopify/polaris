@@ -29,11 +29,14 @@
   }
 
   @media (hover: hover) {
-    &.isHighlighted button {
+    &.isHighlighted button,
+    &.isSelected button {
       background: var(--search-highlight-color);
 
-      .SVGWrapper {
-        filter: brightness(5000%);
+      @include dark-mode {
+        .SVGWrapper {
+          filter: brightness(5000%);
+        }
       }
     }
   }

@@ -20,17 +20,25 @@ function IconGrid({ children }: IconGridProps) {
 interface IconGridItemProps extends SearchResultItem {
   icon: Icon;
   onClick: (iconName: string) => void;
+  isSelected?: boolean;
 }
 
-function IconGridItem({ icon, onClick, searchResultData }: IconGridItemProps) {
+function IconGridItem({
+  icon,
+  onClick,
+  isSelected,
+  searchResultData,
+}: IconGridItemProps) {
   return (
     <li
       key={`${icon.name}+${icon.set}`}
       className={className(
         styles.Icon,
-        searchResultData?.isHighlighted && styles.isHighlighted
+        searchResultData?.isHighlighted && styles.isHighlighted,
+        isSelected && styles.isSelected
       )}
       {...searchResultData?.itemAttributes}
+      id={icon.fileName}
     >
       <Tooltip
         ariaLabel={icon.description}
