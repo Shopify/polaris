@@ -21,26 +21,28 @@ function CodeExample({ title, children }: Props) {
           <div className={styles.Title}>{title}</div>
         </div>
       )}
-      <Tooltip
-        ariaLabel="Copy to clipboard"
-        placement="top"
-        renderContent={() => (
-          <div className={styles.IconToolTip}>
-            <p>{didJustCopy ? "Copied" : "Copy"}</p>
-          </div>
-        )}
-      >
-        <button type="button" onClick={copy} className={styles.CopyButton}>
-          <Image
-            src={iconClipboard}
-            alt="Copy"
-            width={16}
-            height={16}
-            fadeIn={false}
-            icon
-          />
-        </button>
-      </Tooltip>
+      <div className={styles.CopyButtonWrapper}>
+        <Tooltip
+          ariaLabel="Copy to clipboard"
+          placement="top"
+          renderContent={() => (
+            <div className={styles.IconToolTip}>
+              <p>{didJustCopy ? "Copied" : "Copy"}</p>
+            </div>
+          )}
+        >
+          <button type="button" className={styles.CopyButton} onClick={copy}>
+            <Image
+              src={iconClipboard}
+              alt="Copy"
+              width={16}
+              height={16}
+              fadeIn={false}
+              icon
+            />
+          </button>
+        </Tooltip>
+      </div>
 
       <div className={styles.Code}>
         {lines.map((line, i) => (

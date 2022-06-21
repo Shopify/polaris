@@ -17,9 +17,9 @@ Most documentation about the design system is meant for polaris.shopify.com. How
 
 Internal Shopify teams usually create documentation for polaris.shopify.com, but we also welcome edits from Shopify's open source community.
 
-If you have a smaller question, reach out in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you're an open source contributor. To get help with the strategy for a larger contribution early on, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community.
+If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you're an open source contributor. To get help with the strategy for a larger contribution early on, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community.
 
-## Quick guide
+## Quick start guide
 
 table
 

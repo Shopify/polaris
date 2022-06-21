@@ -8,7 +8,7 @@ Browse and search Polaris icons: <https://polaris-icons.shopify.com>.
 
 ## Getting started
 
-Although it’s possible to use this package directly, we recommend using the icons in this package through [Polaris React](https://github.com/Shopify/polaris-react) in combination with the [`Icon`](https://polaris.shopify.com/components/images-and-icons/icon) component. Make sure that your app is using Polaris React version 3.10.0 or higher.
+Although it’s possible to use this package directly, we recommend using the icons in this package through [Polaris React](https://github.com/Shopify/polaris-react) in combination with the [`Icon`](https://polaris.shopify.com/components/images-and-icons/icon) component.
 
 ## Installation
 

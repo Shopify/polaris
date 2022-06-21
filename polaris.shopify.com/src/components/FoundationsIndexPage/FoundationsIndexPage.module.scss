@@ -39,6 +39,10 @@
     border-radius: var(--border-radius-800);
     box-shadow: var(--card-shadow);
 
+    &:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
     &:focus-visible {
       box-shadow: var(--focus-outline);
     }
