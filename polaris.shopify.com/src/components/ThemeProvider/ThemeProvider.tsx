@@ -1,5 +1,6 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { className } from "../../utils/various";
-import styles from "./ThemeProvider.module.scss";
 
 type ThemeName = "light" | "dark";
 
@@ -78,20 +79,42 @@ const themes: {
 
 interface Props {
   theme: ThemeName;
-  children: React.ReactChild;
+  useBody?: boolean;
+  children: React.ReactNode;
 }
 
-function ThemeProvider({ theme, children }: Props) {
-  let customProperties: { [key: string]: string } = {};
+type CustomProperties = { [key: string]: string };
 
-  Object.entries(themes[theme]).forEach(([propertyName, value]) => {
-    customProperties[propertyName] = value;
-  });
+function ThemeProvider({ theme, useBody, children }: Props) {
+  const [customProperties, setCustomProperties] = useState<CustomProperties>(
+    {}
+  );
+
+  useEffect(() => {
+    let newCustomProperties: CustomProperties = {};
+
+    Object.entries(themes[theme]).forEach(([propertyName, value]) => {
+      newCustomProperties[propertyName] = value;
+    });
+
+    if (useBody) {
+      document.body.setAttribute(
+        "style",
+        Object.entries(newCustomProperties)
+          .map((entry) => `${entry[0]}:${entry[1]}`)
+          .join(";")
+      );
+    }
+
+    setCustomProperties(newCustomProperties);
+  }, [theme, useBody]);
+
+  console.log("themeprovider", theme);
 
   return (
     <div
-      className={className(styles.ThemeProvider, `${theme}-mode}`)}
-      style={customProperties}
+      className={className("theme", `${theme}-mode`)}
+      style={useBody ? undefined : customProperties}
     >
       {children}
     </div>

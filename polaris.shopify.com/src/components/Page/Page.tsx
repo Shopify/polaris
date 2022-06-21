@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import useDarkMode from "use-dark-mode";
 
 import Header from "../Header";
 
@@ -15,15 +16,18 @@ interface Props {
 
 function Page({ children }: Props) {
   const router = useRouter();
+  const darkMode = useDarkMode(false);
 
   const isPolaris = router.asPath.startsWith("/examples");
   const match = router.asPath.match(/^\/\w+/);
   const currentSection = match ? match[0] : "";
 
   return (
-    <ThemeProvider theme="light">
+    <ThemeProvider theme={darkMode.value ? "dark" : "light"} useBody>
       <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-        {!isPolaris && <Header currentSection={currentSection} />}
+        {!isPolaris && (
+          <Header currentSection={currentSection} darkMode={darkMode} />
+        )}
 
         {children}
 

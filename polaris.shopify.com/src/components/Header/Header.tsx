@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import useDarkMode from "use-dark-mode";
 
 import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
@@ -13,16 +12,17 @@ import NavItems from "../NavItems";
 import styles from "./Header.module.scss";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import { useRouter } from "next/router";
+import { DarkMode } from "use-dark-mode";
 
 interface Props {
+  darkMode: DarkMode;
   currentSection?: string;
 }
 
-function Header({ currentSection }: Props) {
+function Header({ darkMode, currentSection }: Props) {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const darkMode = useDarkMode(false);
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
