@@ -90,7 +90,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Major icons.</b>
+                  <b>Major icons</b>
                 </p>
               </div>
               <IconGrid>
@@ -110,7 +110,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Minor icons.</b>
+                  <b>Minor icons</b>
                 </p>
               </div>
 
