@@ -135,7 +135,9 @@ function TokenListItem({
               <TokenPreview name={name} value={value} />
               {searchResultData?.url && (
                 <Link href={searchResultData.url}>
-                  <a className={styles.ClickableItemLink}>View token</a>
+                  <a className={styles.ClickableItemLink} tabIndex={-1}>
+                    View token
+                  </a>
                 </Link>
               )}
             </td>

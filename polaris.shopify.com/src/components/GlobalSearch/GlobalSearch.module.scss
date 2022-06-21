@@ -2,22 +2,38 @@
 @import "../../styles/mixins.scss";
 
 .ToggleButton {
-  width: 20px;
-  height: 20px;
   background: transparent;
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-50);
+  box-shadow: var(--card-shadow);
+  width: 10rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius-round);
+  gap: 0.5rem;
+  font-weight: var(--font-weight-500);
+
+  &:focus-within {
+    box-shadow: var(--focus-outline);
+  }
+
+  svg {
+    min-width: 16px;
+    max-height: 16px;
+  }
+
+  .KeyboardShortcutHint {
+    color: var(--text-subdued);
+    margin-left: auto;
+    border: var(--border);
+    padding: 0 0.33rem;
+    border-radius: var(--border-radius-300);
+    font-size: 13px;
+  }
 }
 
 .Header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--surface);
-  z-index: 2;
-  border-radius: var(--border-radius-600) var(--border-radius-600) 0 0;
+  position: relative;
   box-shadow: 0 0.5px var(--border-color);
 
   .SearchIcon {
@@ -51,6 +67,24 @@
       box-shadow: none;
     }
   }
+
+  .MobileCloseButton {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    bottom: 0;
+    max-height: 30px;
+    margin: auto;
+    background: var(--surface-subdued);
+    font-size: var(--font-size-100);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-400);
+    display: none;
+
+    @media screen and (max-width: $breakpointTablet) {
+      display: block;
+    }
+  }
 }
 
 .Results {
@@ -78,12 +112,13 @@
   }
 
   @media screen and (max-width: $breakpointTablet) {
+    top: 0;
     left: 0;
     right: 0;
-    top: auto;
     bottom: 0;
-    height: 70vh;
-    border-radius: var(--border-radius-800) var(--border-radius-800) 0 0;
+    max-height: 100vh;
+    box-shadow: none;
+    border-radius: 0;
   }
 }
 
@@ -91,7 +126,6 @@
   overflow: auto;
   overscroll-behavior: contain;
   flex: 1;
-  padding-top: 4.5rem;
 }
 
 .ResultsGroup {
@@ -177,6 +211,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
