@@ -228,7 +228,7 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ## Content guidelines
 
-For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
+For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/patterns/text-fields) page.
 
 ---
 

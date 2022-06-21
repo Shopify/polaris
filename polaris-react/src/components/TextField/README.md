@@ -113,7 +113,7 @@ The `inputMode` property should be set to select the appropriate virtual keyboar
 
 ## Content guidelines
 
-For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
+For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/patterns/text-fields) page.
 
 ---
 
