@@ -1,6 +1,6 @@
 import { SearchResultItem, TokenPropertiesWithName } from "../../types";
 import { createContext } from "react";
-import { className } from "../../utils/various";
+import { className, slugify } from "../../utils/various";
 import styles from "./TokenList.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
 import iconClipboard from "../../../public/icon-clipboard.svg";
@@ -129,6 +129,7 @@ function TokenListItem({
             searchResultData?.isHighlighted && styles.isHighlighted
           )}
           {...searchResultData?.itemAttributes}
+          id={slugify(name)}
         >
           {columns.preview && (
             <td>

@@ -10,7 +10,7 @@ const importedSvgs = require.context(
   true,
   /\.svg$/
 );
-import { className, getTitleTagValue } from "../../utils/various";
+import { className, getTitleTagValue, slugify } from "../../utils/various";
 import IconGrid from "../IconGrid";
 import TextField from "../TextField";
 import CodeExample from "../CodeExample";
@@ -18,6 +18,8 @@ import Image from "../Image";
 import { Icon } from "../../types";
 import { useEffect } from "react";
 import { useMedia } from "../../utils/hooks";
+import { useCallback } from "react";
+import { useRouter } from "next/router";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -41,6 +43,7 @@ function IconsPage() {
   let [modalIsOpen, setModalIsOpen] = useState(false);
 
   const useModal = useMedia("screen and (max-width: 1400px)");
+  const router = useRouter();
 
   useEffect(() => {
     setModalIsOpen(true);
@@ -65,6 +68,28 @@ function IconsPage() {
     }
     setSelectedIcon(foundIcon);
   };
+
+  const setCurrentIconBasedOnHash = useCallback(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const fileName = hash.slice(1);
+
+      const matchingIcon = icons.find((icon) => icon.fileName === fileName);
+      if (matchingIcon) {
+        getSelectedIcon(matchingIcon);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    setCurrentIconBasedOnHash();
+
+    router.events.on("hashChangeComplete", setCurrentIconBasedOnHash);
+
+    return () => {
+      router.events.off("hashChangeComplete", setCurrentIconBasedOnHash);
+    };
+  }, [setCurrentIconBasedOnHash, router.events]);
 
   return (
     <Container className={styles.IconsPage}>
@@ -99,8 +124,10 @@ function IconsPage() {
                   <IconGrid.Item
                     key={icon.name}
                     icon={icon}
-                    onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
+                    onClick={() => {
+                      window.location.hash = icon.fileName;
+                      getSelectedIcon(icon);
+                    }}
                   />
                 ))}
               </IconGrid>
@@ -122,7 +149,6 @@ function IconsPage() {
                     key={icon.name}
                     icon={icon}
                     onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
                   />
                 ))}
               </IconGrid>

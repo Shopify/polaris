@@ -76,17 +76,15 @@ export type Icon = {
 };
 
 export interface SearchResultItem {
-  searchResultData:
-    | {
-        isHighlighted: boolean;
-        tabIndex: -1;
-        itemAttributes: {
-          id: string;
-          "data-is-active-descendant": boolean;
-        };
-        url: string;
-      }
-    | undefined;
+  searchResultData?: {
+    isHighlighted: boolean;
+    tabIndex: -1;
+    itemAttributes: {
+      id: string;
+      "data-is-active-descendant": boolean;
+    };
+    url: string;
+  };
 }
 
 export enum Breakpoints {

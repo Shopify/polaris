@@ -96,11 +96,11 @@ function GlobalSearch({}: Props) {
       setIsOpen(false);
     };
     router.events.on("beforeHistoryChange", handler);
-    router.events.on("hashChangeStart", handler);
+    router.events.on("hashChangeComplete", handler);
 
     return () => {
-      router.events.off("routeChangeStart", handler);
-      router.events.off("hashChangeStart", handler);
+      router.events.off("beforeHistoryChange", handler);
+      router.events.off("hashChangeComplete", handler);
     };
   }, [setIsOpen, router.events]);
 
