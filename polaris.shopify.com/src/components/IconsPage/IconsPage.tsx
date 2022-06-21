@@ -18,6 +18,7 @@ import Image from "../Image";
 import { Icon } from "../../types";
 import { useEffect } from "react";
 import { useMedia } from "../../utils/hooks";
+import { useRef } from "react";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -36,14 +37,17 @@ const fuse = new Fuse(Object.values(icons), {
 });
 
 function IconsPage() {
+  const useModal = useMedia("screen and (max-width: 1400px)");
   const [filterString, setFilterString] = useState("");
   const [selectedIcon, setSelectedIcon] = useState<Icon>(icons[0]);
-  let [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const useModal = useMedia("screen and (max-width: 1400px)");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const isInitialLoad = useRef(true);
 
   useEffect(() => {
-    setModalIsOpen(true);
+    if (isInitialLoad.current === false) {
+      setModalIsOpen(true);
+    }
+    isInitialLoad.current = false;
   }, [selectedIcon]);
 
   let filteredIcons = [...icons];
@@ -248,7 +252,7 @@ function SidebarContent({
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript">
             {`import {
-${selectedIcon.name}
+  ${selectedIcon.name}
 } from '@shopify/polaris-icons';`}
           </CodeExample>
         </div>
@@ -264,8 +268,8 @@ ${selectedIcon.name}
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript">
             {`<Icon
-source={${selectedIcon.name}}
-color="base"
+  source={${selectedIcon.name}}
+  color="base"
 />`}
           </CodeExample>
         </div>

@@ -32,6 +32,7 @@
   }
 
   a {
+    height: 100%;
     position: relative;
     padding: 1.25rem 1.25rem 1rem;
     display: block;
@@ -69,7 +70,7 @@
       height: 50px;
       width: 50px;
       border-radius: var(--border-radius-800);
-      box-shadow: var(--card-shadow);
+
       svg {
         filter: brightness(-100%);
         opacity: 0.66;

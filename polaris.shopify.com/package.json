@@ -14,7 +14,7 @@
     "copy-icons": "node src/scripts/copy-icons.mjs"
   },
   "dependencies": {
-    "@headlessui/react": "^1.5.0",
+    "@headlessui/react": "^1.6.5",
     "@shopify/polaris": "*",
     "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",
