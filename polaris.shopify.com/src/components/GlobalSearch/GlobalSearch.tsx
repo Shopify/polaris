@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
-  SearchResult,
   SearchResultCategory,
   SearchResultItem,
   SearchResults,
 } from "../../types";
 import styles from "./GlobalSearch.module.scss";
-import Router, { useRouter } from "next/router";
-import { WrappedTextField } from "../TextField/TextField";
+import { useRouter } from "next/router";
 import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
@@ -17,9 +15,16 @@ import Link from "next/link";
 import { className, slugify, stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
-import { useCallback } from "react";
+import ThemeProvider from "../ThemeProvider";
 
 interface Props {}
+
+function scrollToTop() {
+  const overflowEl = document.querySelector(`.${styles.ResultsInner}`);
+  if (overflowEl) {
+    overflowEl.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
 
 function scrollIntoView() {
   const overflowEl = document.querySelector(`.${styles.ResultsInner}`);
@@ -81,9 +86,23 @@ function GlobalSearch({}: Props) {
   useEffect(() => {
     setSearchResults(search(searchTerm));
     setActiveDescendant(0);
+    scrollToTop();
   }, [searchTerm]);
 
   useEffect(() => scrollIntoView(), [activeDescendant]);
+
+  useEffect(() => {
+    const handler = () => {
+      setIsOpen(false);
+    };
+    router.events.on("beforeHistoryChange", handler);
+    router.events.on("hashChangeStart", handler);
+
+    return () => {
+      router.events.off("routeChangeStart", handler);
+      router.events.off("hashChangeStart", handler);
+    };
+  }, [setIsOpen, router.events]);
 
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
     evt
@@ -129,6 +148,7 @@ function GlobalSearch({}: Props) {
           "data-is-active-descendant": isHighlighted,
         },
         tabIndex: -1,
+        url: resultsInRenderedOrder[resultIndex].url,
       },
     };
   };
@@ -136,172 +156,195 @@ function GlobalSearch({}: Props) {
   let resultIndex = -1;
 
   return (
-    <div className={styles.GlobalSearch}>
-      <button onClick={() => setIsOpen(true)} aria-label="Search">
-        <div style={{ width: 20, height: 20 }}>
-          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2 8c0-3.309 2.691-6 6-6s6 2.691 6 6-2.691 6-6 6-6-2.691-6-6zm17.707 10.293l-5.395-5.396A7.946 7.946 0 0016 8c0-4.411-3.589-8-8-8S0 3.589 0 8s3.589 8 8 8a7.954 7.954 0 004.897-1.688l5.396 5.395A.998.998 0 0020 19a1 1 0 00-.293-.707z"
-              fill="#222"
-            />
-          </svg>
-        </div>
+    <>
+      <button
+        className={styles.ToggleButton}
+        onClick={() => setIsOpen(true)}
+        aria-label="Search"
+      >
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2 8c0-3.309 2.691-6 6-6s6 2.691 6 6-2.691 6-6 6-6-2.691-6-6zm17.707 10.293l-5.395-5.396A7.946 7.946 0 0016 8c0-4.411-3.589-8-8-8S0 3.589 0 8s3.589 8 8 8a7.954 7.954 0 004.897-1.688l5.396 5.395A.998.998 0 0020 19a1 1 0 00-.293-.707z"
+            fill="#222"
+          />
+        </svg>
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.ModalBackdrop}></div>
-        <Dialog.Panel className={styles.Results}>
-          {isOpen && (
-            <>
-              <div className={styles.Header}>
-                <input
-                  type="search"
-                  value={searchTerm}
-                  onChange={(evt) => setSearchTerm(evt.target.value)}
-                  role="combobox"
-                  aria-controls="search-results"
-                  aria-expanded={searchResultsCount > 0}
-                  aria-activedescendant={
-                    searchResultsCount > 0
-                      ? getItemId(activeDescendant)
-                      : undefined
-                  }
-                  onKeyDown={handleKeyboardNavigation}
-                />
+        <ThemeProvider theme="dark">
+          <>
+            <Dialog.Panel className={styles.Results}>
+              {isOpen && (
+                <>
+                  <div className={styles.Header}>
+                    <div className={styles.SearchIcon}>
+                      <svg
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2 8c0-3.309 2.691-6 6-6s6 2.691 6 6-2.691 6-6 6-6-2.691-6-6zm17.707 10.293l-5.395-5.396A7.946 7.946 0 0016 8c0-4.411-3.589-8-8-8S0 3.589 0 8s3.589 8 8 8a7.954 7.954 0 004.897-1.688l5.396 5.395A.998.998 0 0020 19a1 1 0 00-.293-.707z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="search"
+                      value={searchTerm}
+                      onChange={(evt) => setSearchTerm(evt.target.value)}
+                      role="combobox"
+                      aria-controls="search-results"
+                      aria-expanded={searchResultsCount > 0}
+                      aria-activedescendant={
+                        searchResultsCount > 0
+                          ? getItemId(activeDescendant)
+                          : undefined
+                      }
+                      onKeyDown={handleKeyboardNavigation}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
+                      spellCheck={false}
+                    />
+                  </div>
+                </>
+              )}
+              <div
+                className={styles.ResultsInner}
+                id="search-results"
+                role="listbox"
+                aria-label="Search results"
+              >
+                {searchResults &&
+                  Object.entries(searchResults)
+                    .sort((a, b) => a[1].maxScore - b[1].maxScore)
+                    .map(([category]) => {
+                      const typedCategory = category as SearchResultCategory;
+
+                      switch (typedCategory) {
+                        case "Foundations":
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <div className={styles.FoundationsResults}>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  const { searchResultData } = getItemProps({
+                                    resultIndex,
+                                  });
+                                  return (
+                                    <li
+                                      key={result.meta.title}
+                                      className={className(
+                                        styles.FoundationsResult,
+                                        searchResultData?.isHighlighted &&
+                                          styles.isHighlighted
+                                      )}
+                                      {...searchResultData?.itemAttributes}
+                                    >
+                                      <Link href={result.url} passHref>
+                                        <a
+                                          tabIndex={searchResultData?.tabIndex}
+                                        >
+                                          <h4>{result.meta.title}</h4>
+                                          <p>
+                                            {stripMarkdownLinks(
+                                              result.meta.excerpt
+                                            )}
+                                          </p>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
+                              </div>
+                            </ResultsGroup>
+                          );
+
+                        case "Components": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <ComponentGrid>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <ComponentGrid.Item
+                                      key={result.meta.name}
+                                      url={result.url}
+                                      description={result.meta.description}
+                                      name={result.meta.name}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </ComponentGrid>
+                            </ResultsGroup>
+                          );
+                        }
+
+                        case "Tokens": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <TokenList
+                                showTableHeading={false}
+                                columns={{
+                                  preview: true,
+                                  name: true,
+                                  figmaUsage: false,
+                                  value: false,
+                                  description: true,
+                                }}
+                              >
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <TokenList.Item
+                                      key={result.meta.token.name}
+                                      token={result.meta.token}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </TokenList>
+                            </ResultsGroup>
+                          );
+                        }
+
+                        case "Icons": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <IconGrid>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <IconGrid.Item
+                                      key={result.url}
+                                      icon={result.meta.icon}
+                                      onClick={() => router.push(result.url)}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </IconGrid>
+                            </ResultsGroup>
+                          );
+                        }
+                      }
+                    })}
               </div>
-            </>
-          )}
-          <div
-            className={styles.ResultsInner}
-            id="search-results"
-            role="listbox"
-            aria-label="Search results"
-          >
-            {searchResults &&
-              Object.entries(searchResults)
-                .sort((a, b) => a[1].maxScore - b[1].maxScore)
-                .map(([category]) => {
-                  const typedCategory = category as SearchResultCategory;
-
-                  switch (typedCategory) {
-                    case "Foundations":
-                      const results = searchResults[typedCategory].results;
-                      if (results.length === 0) return null;
-                      return (
-                        <ResultsGroup title={category}>
-                          <div className={styles.FoundationsResults}>
-                            {results.map((result) => {
-                              resultIndex++;
-                              const { searchResultData } = getItemProps({
-                                resultIndex,
-                              });
-                              return (
-                                <li
-                                  key={result.meta.title}
-                                  className={className(
-                                    styles.FoundationsResult,
-                                    searchResultData?.isHighlighted &&
-                                      styles.isHighlighted
-                                  )}
-                                  {...searchResultData?.itemAttributes}
-                                >
-                                  <Link href={result.url} passHref>
-                                    <a tabIndex={searchResultData?.tabIndex}>
-                                      <h4>{result.meta.title}</h4>
-                                      <p>
-                                        {stripMarkdownLinks(
-                                          result.meta.excerpt
-                                        )}
-                                      </p>
-                                    </a>
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                          </div>
-                        </ResultsGroup>
-                      );
-
-                    case "Components": {
-                      const results = searchResults[typedCategory].results;
-                      if (results.length === 0) return null;
-                      return (
-                        <ResultsGroup title={category}>
-                          <ComponentGrid>
-                            {results.map((result) => {
-                              resultIndex++;
-                              return (
-                                <ComponentGrid.Item
-                                  key={result.meta.name}
-                                  url={""}
-                                  description={result.meta.description}
-                                  name={result.meta.name}
-                                  {...getItemProps({ resultIndex })}
-                                />
-                              );
-                            })}
-                          </ComponentGrid>
-                        </ResultsGroup>
-                      );
-                    }
-
-                    case "Tokens": {
-                      const results = searchResults[typedCategory].results;
-                      if (results.length === 0) return null;
-                      return (
-                        <ResultsGroup title={category}>
-                          <TokenList
-                            showTableHeading={false}
-                            columns={{
-                              preview: true,
-                              name: true,
-                              figmaUsage: false,
-                              value: false,
-                              description: true,
-                            }}
-                          >
-                            {results.map((result) => {
-                              resultIndex++;
-                              return (
-                                <TokenList.Item
-                                  key={result.meta.token.name}
-                                  token={result.meta.token}
-                                  {...getItemProps({ resultIndex })}
-                                />
-                              );
-                            })}
-                          </TokenList>
-                        </ResultsGroup>
-                      );
-                    }
-
-                    case "Icons": {
-                      const results = searchResults[typedCategory].results;
-                      if (results.length === 0) return null;
-                      return (
-                        <ResultsGroup title={category}>
-                          <IconGrid>
-                            {results.map((result) => {
-                              resultIndex++;
-                              return (
-                                <IconGrid.Item
-                                  key={result.url}
-                                  icon={result.meta.icon}
-                                  onClick={() => undefined}
-                                  {...getItemProps({ resultIndex })}
-                                />
-                              );
-                            })}
-                          </IconGrid>
-                        </ResultsGroup>
-                      );
-                    }
-                  }
-                })}
-          </div>
-        </Dialog.Panel>
+            </Dialog.Panel>
+          </>
+        </ThemeProvider>
       </Dialog>
-    </div>
+    </>
   );
 }
 

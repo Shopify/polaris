@@ -105,9 +105,7 @@ function Header({ currentSection }: Props) {
           )}
         </button>
 
-        <div className={styles.SearchWrapper}>
-          <GlobalSearch />
-        </div>
+        <GlobalSearch />
 
         {showMenu && (
           <div className={styles.Backdrop} onClick={handleCloseMenu} />

@@ -7,6 +7,7 @@ import iconClipboard from "../../../public/icon-clipboard.svg";
 import Image from "../Image";
 import Tooltip from "../Tooltip";
 import { figmaColorNames } from "../../data/figmaColorNames";
+import Link from "next/link";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -132,6 +133,11 @@ function TokenListItem({
           {columns.preview && (
             <td>
               <TokenPreview name={name} value={value} />
+              {searchResultData?.url && (
+                <Link href={searchResultData.url}>
+                  <a className={styles.ClickableItemLink}>View token</a>
+                </Link>
+              )}
             </td>
           )}
           {columns.name && (

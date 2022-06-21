@@ -57,51 +57,61 @@
   }
 
   tr {
-    &.isHighlighted {
-      position: relative;
-      background: var(--text);
-      color: var(--surface);
+    position: relative;
 
-      .TokenName {
-        color: var(--text);
-      }
+    @media (hover: hover) {
+      &.isHighlighted {
+        &,
+        &:hover {
+          background: var(--search-highlight-color);
+          color: var(--text-strong);
+        }
 
-      @media screen and (max-width: $breakpointDesktop) {
-        box-shadow: 0 0 0 2px var(--text);
-      }
+        .TokenName {
+          color: var(--text-strong);
+        }
 
-      td:first-child {
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0px;
-          bottom: 1px;
-          left: -0.5rem;
-          width: 0.5rem;
-          background: var(--text);
-          border-radius: var(--border-radius-800) 0 0 var(--border-radius-800);
+        @media screen and (max-width: $breakpointDesktop) {
+          box-shadow: 0 0 0 2px var(--text);
+        }
 
-          @media screen and (max-width: $breakpointDesktop) {
-            display: none;
+        td {
+          box-shadow: none;
+        }
+
+        td:first-child {
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -0.5rem;
+            width: 0.5rem;
+            background: var(--search-highlight-color);
+            border-radius: var(--border-radius-800) 0 0 var(--border-radius-800);
+
+            @media screen and (max-width: $breakpointDesktop) {
+              display: none;
+            }
           }
         }
-      }
 
-      td:last-child {
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0px;
-          bottom: 1px;
-          right: -0.5rem;
-          width: 0.5rem;
-          background: var(--text);
-          border-radius: 0 var(--border-radius-800) var(--border-radius-800) 0;
+        td:last-child {
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -0.5rem;
+            width: 0.5rem;
+            background: var(--search-highlight-color);
+            border-radius: 0 var(--border-radius-800) var(--border-radius-800) 0;
 
-          @media screen and (max-width: $breakpointDesktop) {
-            display: none;
+            @media screen and (max-width: $breakpointDesktop) {
+              display: none;
+            }
           }
         }
       }
@@ -213,4 +223,22 @@
 .TokenDescription {
   line-height: 1.45;
   font-size: var(--font-size-50);
+}
+
+.ClickableItemLink {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 100%;
+  text-indent: -1000px;
+  overflow: hidden;
+  border-radius: var(--border-radius-500);
+
+  @media screen and (max-width: $breakpointDesktop) {
+    left: 0;
+    right: 0;
+  }
 }

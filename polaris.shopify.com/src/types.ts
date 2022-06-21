@@ -79,11 +79,12 @@ export interface SearchResultItem {
   searchResultData:
     | {
         isHighlighted: boolean;
+        tabIndex: -1;
         itemAttributes: {
           id: string;
           "data-is-active-descendant": boolean;
         };
-        tabIndex: -1;
+        url: string;
       }
     | undefined;
 }

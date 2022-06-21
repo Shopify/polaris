@@ -7,6 +7,7 @@ import Header from "../Header";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import SiteLaunchBanner from "../SiteLaunchBanner";
+import ThemeProvider from "../ThemeProvider";
 
 interface Props {
   children: React.ReactNode;
@@ -20,18 +21,25 @@ function Page({ children }: Props) {
   const currentSection = match ? match[0] : "";
 
   return (
-    <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-      {!isPolaris && <Header currentSection={currentSection} />}
+    <ThemeProvider theme="light">
+      <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+        {!isPolaris && <Header currentSection={currentSection} />}
 
-      {children}
+        {children}
 
-      {!isPolaris && (
-        <div className={styles.Footer}>
-          <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
-          <SiteLaunchBanner />
-        </div>
-      )}
-    </div>
+        {!isPolaris && (
+          <div className={styles.Footer}>
+            <Image
+              src={shopifyLogo}
+              width={36}
+              height={36}
+              alt="Shopify logo"
+            />
+            <SiteLaunchBanner />
+          </div>
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 

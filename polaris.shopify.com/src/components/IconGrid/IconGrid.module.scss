@@ -24,13 +24,14 @@
     box-shadow: var(--card-shadow);
   }
 
-  &.isHighlighted button,
-  button:focus-visible {
-    background: var(--text);
-    box-shadow: none;
+  @media (hover: hover) {
+    &.isHighlighted button,
+    button:focus-visible {
+      background: var(--search-highlight-color);
 
-    .SVGWrapper {
-      filter: brightness(5000%);
+      .SVGWrapper {
+        filter: brightness(5000%);
+      }
     }
   }
 }
