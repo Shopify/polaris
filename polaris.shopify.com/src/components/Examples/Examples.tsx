@@ -20,7 +20,8 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  const { code, description, fileName, title } = examples[currentIndex];
+  const { code, description, fileName, title } =
+    examples[currentIndex] || examples[0];
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
@@ -28,31 +29,18 @@ const Examples = (props: Props) => {
     setIndex(parseInt(value, 10));
   };
 
-  const [iframeDimensions, setDimensions] = useState({
-    width: "100%",
-    height: "400px",
-  });
+  const [iframeHeight, setIframeHeight] = useState("400px");
   const iframeRef = useRef();
-  const exampleElement =
-    iframeRef?.current?.contentWindow?.document?.getElementById(
-      "polaris-example"
-    );
 
-  useEffect(() => {
-    console.log("exampleElement", exampleElement);
-    console.log("exEl h", exampleElement?.offsetHeight);
+  const handleExampleLoad = () => {
+    const exampleElement =
+      iframeRef?.current?.contentWindow?.document?.getElementById(
+        "polaris-example"
+      );
+    const padding = 192;
 
-    const padding = 144;
-    const dimensions = {
-      // width: `${exampleElement?.offsetWidth}`,
-      width: "100%",
-      height: `${exampleElement?.offsetHeight + padding}px`,
-    };
-
-    console.log("dimensions", dimensions);
-
-    setDimensions(dimensions);
-  }, [currentIndex, iframeRef?.current, exampleElement]);
+    setIframeHeight(`${exampleElement?.offsetHeight + padding}px`);
+  };
 
   if (!examples?.length) return null;
 
@@ -110,8 +98,9 @@ const Examples = (props: Props) => {
         <div className={styles.ExampleFrame}>
           <iframe
             src={exampleUrl}
-            height={iframeDimensions.height}
-            width={iframeDimensions.width}
+            height={iframeHeight}
+            width="100%"
+            onLoad={handleExampleLoad}
             ref={iframeRef}
           />
         </div>
