@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -15,20 +16,42 @@ function MyApp({ Component, pageProps }: AppProps) {
       ga.pageview(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("hashChangeComplete", handleRouteChange);
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("hashChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 
   return (
-    <Page>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/favicon.png" />
-      </Head>
+    <>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+      <Page>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <link rel="shortcut icon" href="/favicon.png" />
+        </Head>
 
-      <Component {...pageProps} />
-    </Page>
+        <Component {...pageProps} />
+      </Page>
+    </>
   );
 }
 
