@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 import "../styles/globals.scss";
 import Page from "../components/Page";
-import * as ga from "../../lib/ga";
+import * as ga from "../lib/ga";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
