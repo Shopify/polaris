@@ -46,7 +46,5 @@ $breakpoints-frame-when-nav-displayed-up: breakpoints-up(769px);
 $breakpoints-frame-when-nav-hidden-down: breakpoints-down(768.84px, $inclusive: true);
 
 $breakpoints-nav-min-window-corrected-up: breakpoints-up($nav-min-window-corrected);
-$breakpoints-nav-min-window-corrected-down: breakpoints-down($nav-min-window-corrected);
-$breakpoints-nav-min-window-corrected-down-inclusive: breakpoints-down($nav-min-window-corrected, $inclusive: true);
 
 $breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);
