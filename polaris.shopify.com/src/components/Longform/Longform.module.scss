@@ -139,8 +139,8 @@
       Menlo, Consolas, monospace;
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: #222;
-    color: #fff;
+    background: var(--surface-code-sample);
+    color: var(--text-code-sample);
     border-radius: var(--border-radius-500);
     overflow: auto;
     white-space: pre-wrap;

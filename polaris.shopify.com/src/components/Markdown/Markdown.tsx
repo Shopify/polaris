@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/themes/prism-dark.css";
 import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";

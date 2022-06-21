@@ -16,7 +16,7 @@ While Figma is used to host and maintain the Polaris UI Kit, all other resources
 
 Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
 
-```
+```text
 polaris/
 ├── polaris-for-figma           # Figma plugin for Polaris components
 ├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
