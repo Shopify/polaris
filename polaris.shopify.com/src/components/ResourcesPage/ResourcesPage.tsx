@@ -42,7 +42,7 @@ function ResourcesPage({}: Props) {
                 <div className={styles.Text}>
                   <h3>Components</h3>
                   <p className={styles.Description}>
-                    The core library that give you access to components, styles
+                    The core library that gives you access to components, styles
                     and everything else you need to build a great app with
                     Polaris.
                   </p>
@@ -81,7 +81,7 @@ function ResourcesPage({}: Props) {
                   <h3>Tokens</h3>
                   <p className={styles.Description}>
                     Tokens are the building blocks for extending Polaris.
-                    Combine colors, spacing, typography and more into entierly
+                    Combine colors, spacing, typography and more into entirely
                     new experiences.
                   </p>
                   <Links
