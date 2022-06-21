@@ -9,12 +9,15 @@
     line-height: 2.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
-    background-color: #f9f9f9;
-    color: #444444;
-    border: 1px solid var(--border-color);
+    background-color: var(--surface-subdued);
+    color: var(--text);
     border-radius: var(--border-radius-500);
     font-size: var(--font-size-400);
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.07) inset;
+    box-shadow: 0 0 0 1px var(--border-color);
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline);
+    }
   }
 }
 
@@ -35,47 +38,34 @@
 
 .Buttons {
   margin-top: 3rem;
-  margin-bottom: 2rem;
-  padding: 0 0.5rem;
-  width: 100%;
-}
-
-.ButtonsOverlayed {
-  position: absolute;
-  margin-top: 2rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Button {
-  margin-left: 0.5rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 5px;
+  border-radius: var(--border-radius-400);
   font-size: var(--font-size-100);
-  color: #000;
+  background-color: var(--surface-subdued);
+  color: var(--text);
   min-width: 40px;
-  background: none;
-
-  &:hover {
-    background: #f0f0f0;
-  }
+  box-shadow: var(--card-shadow);
 }
 
-.ButtonSelected {
-  background: #f0f0f0;
+.Button:not(.ButtonSelected) {
+  background: transparent;
+  box-shadow: none;
 }
 
 .ExampleFrame {
-  margin: 2rem 0 2rem;
+  margin-bottom: 2rem;
+  background: #fafafa;
+  border-radius: var(--border-radius-400);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 
 .SandboxButton {
   float: right;
-
-  button {
-    padding: 0.25rem 0.5rem;
-    border-radius: 5px;
-    font-size: var(--font-size-100);
-    color: #000;
-    background: #f0f0f0;
-  }
 }

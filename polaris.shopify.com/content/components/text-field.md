@@ -171,8 +171,7 @@ examples:
 
 # Text field
 
-A text field is an input field that merchants can type into. It has a range of
-options and supports several text formats including numbers.
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 
 ---
 

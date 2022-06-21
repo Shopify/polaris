@@ -1,10 +1,10 @@
-import { getParameters } from "codesandbox/lib/api/define";
 import { ChangeEvent, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
 import Image from "../Image";
 import iconChevronDown from "../../../public/chevron-down.svg";
+import Button from "../Button";
 
 export type Example = {
   code: string;
@@ -32,7 +32,7 @@ const Examples = (props: Props) => {
   if (!examples?.length) return null;
 
   return (
-    <div>
+    <>
       <h2 id="examples">Examples</h2>
       <div className={styles.SelectContainer}>
         <select onChange={handleSelection}>
@@ -57,28 +57,28 @@ const Examples = (props: Props) => {
           />
         </div>
       </div>
+
       {description ? <p>{description}</p> : null}
-      <div
-        className={`${styles.Buttons} ${
-          showPreview && styles.ButtonsOverlayed
-        }`}
-      >
-        <button
-          className={`${styles.Button} ${
-            showPreview ? styles.ButtonSelected : ""
-          }`}
-          onClick={() => setShowPreview(true)}
-        >
-          Preview
-        </button>
-        <button
-          className={`${styles.Button} ${
-            showPreview ? "" : styles.ButtonSelected
-          }`}
-          onClick={() => setShowPreview(false)}
-        >
-          Code
-        </button>
+
+      <div className={styles.Buttons}>
+        <div>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? styles.ButtonSelected : ""
+            }`}
+            onClick={() => setShowPreview(true)}
+          >
+            Preview
+          </button>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? "" : styles.ButtonSelected
+            }`}
+            onClick={() => setShowPreview(false)}
+          >
+            Code
+          </button>
+        </div>
         <CodesandboxButton className={styles.SandboxButton} code={code} />
       </div>
       {showPreview ? (
@@ -90,7 +90,7 @@ const Examples = (props: Props) => {
           {code}
         </CodeExample>
       )}
-    </div>
+    </>
   );
 };
 
