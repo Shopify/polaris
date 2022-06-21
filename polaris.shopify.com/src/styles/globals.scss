@@ -244,6 +244,7 @@ button {
       font-size: var(--font-size-400);
       font-weight: var(--font-weight-500);
       letter-spacing: var(--letter-spacing-200);
+      margin-bottom: 1.33rem;
     }
 
     &::before {
@@ -293,7 +294,6 @@ button {
         background-position: left 0.15rem;
         padding-left: 34px;
         background-size: auto 1.25rem;
-        font-size: var(--font-size-400);
         letter-spacing: var(--letter-spacing-200);
         list-style: none;
         margin-left: 0;
