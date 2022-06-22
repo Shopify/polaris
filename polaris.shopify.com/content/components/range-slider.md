@@ -136,7 +136,7 @@ Error messages should:
 
 ## Related components
 
-- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
+- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/text-field)
 
 ---
 

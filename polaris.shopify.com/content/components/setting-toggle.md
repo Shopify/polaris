@@ -81,7 +81,7 @@ say “Activate” to allow merchants to turn it on.
 
 ## Related components
 
-- To let merchants connect or disconnect third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/actions/account-connection)
+- To let merchants connect or disconnect third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/account-connection)
 
 ---
 
@@ -92,6 +92,6 @@ say “Activate” to allow merchants to turn it on.
 The setting toggle component is implemented as an HTML `<button>` with the `switch` [ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role).
 The components passed as children will automatically be wrapped in a label element describing the `<button>`. Enabling and disabling the SettingToggle with update the `aria-checked` attribute to `"true"` or `"false"`.
 
-To learn more about button accessibility, see the [button component](https://polaris.shopify.com/components/actions/button).
+To learn more about button accessibility, see the [button component](https://polaris.shopify.com/components/button).
 
 <!-- /content-for-->
