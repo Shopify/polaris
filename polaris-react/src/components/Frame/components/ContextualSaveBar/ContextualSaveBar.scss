@@ -53,7 +53,7 @@
     padding: 0 var(--p-space-5);
   }
 
-  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+  @media #{$p-breakpoints-md-up} {
     padding: 0 var(--p-space-8);
   }
 }

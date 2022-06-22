@@ -45,7 +45,7 @@ $centered-illustration-width: 226px;
   align-items: center;
   justify-content: center;
 
-  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+  @media #{$p-breakpoints-md-up} {
     left: var(--p-space-5);
   }
 }
@@ -72,7 +72,7 @@ $centered-illustration-width: 226px;
   padding: 0;
   margin: 0;
 
-  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+  @media #{$p-breakpoints-md-up} {
     flex-basis: 50%;
   }
 }
@@ -113,7 +113,7 @@ $centered-illustration-width: 226px;
 
 .imageContained {
   .Image {
-    @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+    @media #{$p-breakpoints-md-up} {
       position: initial;
       width: 100%;
     }

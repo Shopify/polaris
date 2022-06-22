@@ -14,7 +14,7 @@ $sheet-desktop-width: 380px;
     border-left: var(--p-border-base);
   }
 
-  @media #{$breakpoints-frame-when-nav-displayed-up} {
+  @media #{$p-breakpoints-md-up} {
     right: 0;
     width: $sheet-desktop-width;
   }
@@ -32,7 +32,7 @@ $sheet-desktop-width: 380px;
   bottom: 0;
   left: 0;
 
-  @media #{$breakpoints-frame-when-nav-displayed-up} {
+  @media #{$p-breakpoints-md-up} {
     left: auto;
     width: $sheet-desktop-width;
   }

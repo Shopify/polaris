@@ -36,13 +36,9 @@ $breakpoints-page-when-not-max-width-down: breakpoints-down(998px, $inclusive: t
 $breakpoints-page-content-when-layout-not-stacked-up: breakpoints-up(800px);
 $breakpoints-page-content-when-layout-stacked-down: breakpoints-down(1040px, $inclusive: true);
 
-$breakpoints-page-content-when-not-partially-condensed-up: breakpoints-up(744px);
 $breakpoints-page-content-when-partially-condensed-down: breakpoints-down(984px, $inclusive: true);
 
 $breakpoints-page-content-when-not-fully-condensed-up: breakpoints-up(490px);
 $breakpoints-page-content-when-fully-condensed-down: breakpoints-down(754px, $inclusive: true);
-
-$breakpoints-frame-when-nav-displayed-up: breakpoints-up(769px);
-$breakpoints-frame-when-nav-hidden-down: breakpoints-down(768.84px, $inclusive: true);
 
 $breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);
