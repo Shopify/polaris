@@ -27,7 +27,7 @@ function FullscreenBarExample() {
   );
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{ height: "250px", width: "100%" }}>
       {isFullscreen && fullscreenBarMarkup}
       <div style={{ padding: "1rem" }}>
         {!isFullscreen && (
