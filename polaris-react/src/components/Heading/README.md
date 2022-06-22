@@ -23,7 +23,7 @@ keywords:
 
 # Heading
 
-Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title.
+Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/structure/card) generally use headings as their title.
 
 ---
 

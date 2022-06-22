@@ -89,7 +89,7 @@ section can be:
 </div>
 </div>
 
-Place page-level [banners](/components/feedback/banner) in a full-width section
+Place page-level [banners](/components/feedback-indicators/banner) in a full-width section
 at the top of the page.
 
 Stack [cards](/components/structure/card) in sections to separate the screen’s
