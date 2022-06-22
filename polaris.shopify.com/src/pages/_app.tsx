@@ -10,8 +10,11 @@ import * as ga from "../lib/ga";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const isProd = process.env.NODE_ENV === "production";
 
   useEffect(() => {
+    if (!isProd) return;
+
     const handleRouteChange = (url: string) => {
       ga.pageview(url);
     };
@@ -21,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", handleRouteChange);
       router.events.off("hashChangeComplete", handleRouteChange);
     };
-  }, [router.events]);
+  }, [router.events, isProd]);
 
   const ogImageHash =
     `${router.asPath.replace("/", "").replace(/\//g, "--")}` || "home";
@@ -31,24 +34,29 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${ga.GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
+      {isProd ? (
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${ga.PUBLIC_GA_ID}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${ga.PUBLIC_GA_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+            }}
+          />
+        </>
+      ) : null}
+
       <Page>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
