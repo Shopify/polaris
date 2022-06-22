@@ -30,7 +30,7 @@ const Examples = (props: Props) => {
   };
 
   const [iframeHeight, setIframeHeight] = useState("400px");
-  const iframeRef = useRef();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleExampleLoad = () => {
     const exampleElement =
@@ -38,8 +38,13 @@ const Examples = (props: Props) => {
         "polaris-example"
       );
     const padding = 192;
+    let newHeight = padding;
 
-    setIframeHeight(`${exampleElement?.offsetHeight + padding}px`);
+    if (exampleElement) {
+      newHeight += exampleElement?.offsetHeight;
+    }
+
+    setIframeHeight(`${newHeight}px`);
   };
 
   useEffect(() => {
