@@ -351,6 +351,9 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
+export {TextHeading} from './components/TextHeading';
+export type {TextHeadingProps} from './components/TextHeading';
+
 export {TextStyle} from './components/TextStyle';
 export type {TextStyleProps} from './components/TextStyle';
 
