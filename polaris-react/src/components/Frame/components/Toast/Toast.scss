@@ -1,6 +1,5 @@
 @import '../../../../styles/common';
 
-$breakpoints-legacy-up: breakpoints-up(640px);
 $Backdrop-opacity: 0.88;
 
 .Toast {
@@ -13,7 +12,7 @@ $Backdrop-opacity: 0.88;
   color: var(--p-text);
   margin-bottom: var(--p-space-5);
 
-  @media #{$breakpoints-legacy-up} {
+  @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-4);
   }
 
