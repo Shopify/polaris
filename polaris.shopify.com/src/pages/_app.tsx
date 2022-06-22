@@ -25,7 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const ogImageHash =
     `${router.asPath.replace("/", "").replace(/\//g, "--")}` || "home";
-  const ogImagePath = `/open-graph/${ogImageHash}.jpg`;
+  const ogImagePath = `${
+    typeof window !== "undefined" ? `https://${window.location.hostname}` : ""
+  }/open-graph/${ogImageHash}.jpg`;
 
   return (
     <>
