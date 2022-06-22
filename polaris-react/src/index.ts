@@ -342,6 +342,9 @@ export type {TagProps} from './components/Tag';
 export {Text} from './components/Text';
 export type {TextProps} from './components/Text';
 
+export {TextBase} from './components/TextBase';
+export type {TextBaseProps} from './components/TextBase';
+
 export {TextContainer} from './components/TextContainer';
 export type {TextContainerProps} from './components/TextContainer';
 
