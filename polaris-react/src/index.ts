@@ -134,6 +134,9 @@ export type {DatePickerProps, Range} from './components/DatePicker';
 export {DescriptionList} from './components/DescriptionList';
 export type {DescriptionListProps} from './components/DescriptionList';
 
+export {Display} from './components/Display';
+export type {DisplayProps} from './components/Display';
+
 export {DisplayText} from './components/DisplayText';
 export type {DisplayTextProps} from './components/DisplayText';
 
