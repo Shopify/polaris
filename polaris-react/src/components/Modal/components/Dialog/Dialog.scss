@@ -96,7 +96,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
 
   &.fullScreen {
     height: 100%;
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       height: unset;
     }
   }
