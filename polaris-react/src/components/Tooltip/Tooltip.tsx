@@ -6,6 +6,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {Key} from '../../types';
 
+import {useFollowMouse} from './hooks';
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
 export interface TooltipProps {
@@ -41,6 +42,7 @@ export function Tooltip({
   accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
+  const ActivatorWrapperComponent: any = WrapperComponent;
   const {
     value: active,
     setTrue: handleFocus,
@@ -51,6 +53,8 @@ export function Tooltip({
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
+
+  const {targetRef, handleFollowMouseMove, transformValue} = useFollowMouse();
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -83,6 +87,13 @@ export function Tooltip({
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
+        style={
+          transformValue
+            ? {
+                transform: transformValue,
+              }
+            : undefined
+        }
       >
         {content}
       </TooltipOverlay>
@@ -98,7 +109,12 @@ export function Tooltip({
       ref={setActivator}
       onKeyUp={handleKeyUp}
     >
-      {children}
+      <ActivatorWrapperComponent
+        ref={targetRef}
+        onMouseMove={handleFollowMouseMove}
+      >
+        {children}
+      </ActivatorWrapperComponent>
       {portal}
     </WrapperComponent>
   );

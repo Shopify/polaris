@@ -19,6 +19,7 @@ export interface TooltipOverlayProps {
   activator: HTMLElement;
   accessibilityLabel?: string;
   onClose(): void;
+  style?: React.CSSProperties;
 }
 
 export function TooltipOverlay({
@@ -29,6 +30,7 @@ export function TooltipOverlay({
   id,
   children,
   accessibilityLabel,
+  style,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -38,6 +40,7 @@ export function TooltipOverlay({
       preferredPosition={preferredPosition}
       preventInteraction={preventInteraction}
       render={renderTooltip}
+      style={style}
     />
   ) : null;
 
