@@ -60,7 +60,7 @@ export default [
       output: 'styles.css',
       modules: {
         generateScopedName: generateScopedName({includeHash: false}),
-        globalModulePaths: [/CustomProperties\.scss$/],
+        globalModulePaths: [/global\.scss$/],
       },
       plugins: postcssPlugins,
     },
@@ -86,7 +86,7 @@ export default [
       mode: 'esnext',
       modules: {
         generateScopedName: generateScopedName({includeHash: true}),
-        globalModulePaths: [/CustomProperties\.scss$/],
+        globalModulePaths: [/global\.scss$/],
       },
       plugins: postcssPlugins,
     },

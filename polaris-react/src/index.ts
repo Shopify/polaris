@@ -116,9 +116,6 @@ export type {ConnectedProps} from './components/Connected';
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
 
-export {CustomProperties} from './components/CustomProperties';
-export type {CustomPropertiesProps} from './components/CustomProperties';
-
 export {DataTable} from './components/DataTable';
 export type {
   DataTableProps,
