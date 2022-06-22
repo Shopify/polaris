@@ -21,4 +21,4 @@ function VideoThumbnailExample() {
   );
 }
 
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(() => <VideoThumbnailExample />);
