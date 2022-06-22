@@ -348,6 +348,12 @@ export type {TagProps} from './components/Tag';
 export {Text} from './components/Text';
 export type {TextProps} from './components/Text';
 
+// TODO: Remove text exercise components after user testing
+export {
+  TextSingleComponentExercise,
+  TextMultiComponentExercise,
+} from './components/TextExercise';
+
 export {TextBase} from './components/TextBase';
 export type {TextBaseProps} from './components/TextBase';
 
