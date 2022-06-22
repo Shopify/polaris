@@ -1,8 +1,6 @@
 @import '../../../../styles/common';
 
 $action-menu-rollup-computed-width: 40px;
-$breakpoints-mobile-layout-up: breakpoints-up(468px);
-$breakpoints-mobile-layout-down: breakpoints-down(468px, $inclusive: true);
 $breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
 
 .Header {
@@ -20,7 +18,7 @@ $breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
   align-self: center;
   flex: 1 1 auto;
 
-  @media #{$breakpoints-mobile-layout-up} {
+  @media #{$p-breakpoints-sm-up} {
     margin-top: 0;
   }
 }
@@ -172,14 +170,14 @@ $breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
   white-space: nowrap;
 
   .noBreadcrumbs & {
-    @media #{$breakpoints-mobile-layout-down} {
+    @media #{$p-breakpoints-sm-down} {
       margin-left: 0;
     }
   }
 }
 
 .AdditionalMetaData {
-  @media #{$breakpoints-mobile-layout-up} {
+  @media #{$p-breakpoints-sm-up} {
     margin-left: calc(
       var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
     );
