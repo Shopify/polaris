@@ -124,10 +124,10 @@ video {
 }
 
 html {
-  font-size: 17px;
+  font-size: 106.25%;
 
   @media screen and (max-width: $breakpointMobile) {
-    font-size: 16px;
+    font-size: 100%;
   }
 }
 
