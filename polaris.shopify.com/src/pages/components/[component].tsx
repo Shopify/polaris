@@ -84,8 +84,6 @@ export const getStaticProps: GetStaticProps<
             .join("\n");
         }
 
-        console.log("code is", code);
-
         return { ...example, code };
       }
     );
