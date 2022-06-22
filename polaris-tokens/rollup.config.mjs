@@ -1,5 +1,4 @@
 import {readFileSync} from 'fs';
-import * as path from 'path';
 
 import {babel} from '@rollup/plugin-babel';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
@@ -11,39 +10,37 @@ const pkg = JSON.parse(
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /** @type {import('rollup').RollupOptions} */
-export default [
-  {
-    input: ['./src/index.ts', 'build-internal/tokens.ts'],
-    output: [
-      {
-        format: /** @type {const} */ ('cjs'),
-        entryFileNames: '[name][assetExtname].js',
-        dir: path.dirname(pkg.main),
-        preserveModules: true,
-      },
-      {
-        format: /** @type {const} */ ('es'),
-        entryFileNames: '[name][assetExtname].mjs',
-        dir: path.dirname(pkg.module),
-        preserveModules: true,
-      },
-    ],
-    plugins: [
-      // Allows node_modules resolution
-      nodeResolve({extensions}),
-      // Allow bundling cjs modules. Rollup doesn't understand cjs
-      commonjs(),
-      // Compile TypeScript/JavaScript files
-      babel({
-        extensions,
-        rootMode: 'upward',
-        include: ['src/**/*', 'build-internal/**/*'],
-        babelHelpers: 'bundled',
-      }),
-    ],
-    external: [
-      ...Object.keys(pkg.dependencies ?? {}),
-      ...Object.keys(pkg.peerDependencies ?? {}),
-    ],
-  },
-];
+export default {
+  input: 'build/index.ts',
+  output: [
+    {
+      format: /** @type {const} */ ('cjs'),
+      entryFileNames: '[name][assetExtname].js',
+      dir: 'dist/cjs',
+      preserveModules: true,
+    },
+    {
+      format: /** @type {const} */ ('es'),
+      entryFileNames: '[name][assetExtname].mjs',
+      dir: 'dist/esm',
+      preserveModules: true,
+    },
+  ],
+  plugins: [
+    // Allows node_modules resolution
+    nodeResolve({extensions}),
+    // Allow bundling cjs modules. Rollup doesn't understand cjs
+    commonjs(),
+    // Compile TypeScript/JavaScript files
+    babel({
+      extensions,
+      rootMode: 'upward',
+      include: ['src/**/*', 'build/**/*'],
+      babelHelpers: 'bundled',
+    }),
+  ],
+  external: [
+    ...Object.keys(pkg.dependencies ?? {}),
+    ...Object.keys(pkg.peerDependencies ?? {}),
+  ],
+};

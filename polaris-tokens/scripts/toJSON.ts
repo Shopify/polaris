@@ -15,8 +15,8 @@ export async function toJSON(metaTokens: MetaTokens) {
       keyof MetaTokens,
       TokenGroup,
     ];
-    const fileName = path.join(outputDir, `${tokenGroupName}.json`);
+    const filePath = path.join(outputDir, `${tokenGroupName}.json`);
 
-    await fs.promises.writeFile(fileName, JSON.stringify(tokenGroup));
+    await fs.promises.writeFile(filePath, JSON.stringify(tokenGroup));
   }
 }

@@ -3,8 +3,8 @@ import path from 'path';
 
 import type {MetaTokens, Tokens} from '../src';
 
-const outputDir = path.join(__dirname, '../build-internal');
-const outputFile = path.join(outputDir, 'tokens.ts');
+const outputDir = path.join(__dirname, '../build');
+const outputFile = path.join(outputDir, 'index.ts');
 
 type Entry<T> = [keyof T, T[keyof T]];
 type Entries<T> = Entry<T>[];
