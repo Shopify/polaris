@@ -15,6 +15,10 @@
     font-size: 14px;
     padding: 0.33rem 0.5rem;
     line-height: 1.4;
+
+    p {
+      margin: 0;
+    }
   }
 
   &::after {
