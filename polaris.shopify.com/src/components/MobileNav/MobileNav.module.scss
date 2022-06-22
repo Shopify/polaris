@@ -1,5 +1,6 @@
 @import "../../styles/variables.scss";
 
+$mobileNavMaxWidth: 22.5rem;
 $navItemPadding: 0.85rem 1rem;
 
 .MobileNav {
@@ -10,9 +11,9 @@ $navItemPadding: 0.85rem 1rem;
   top: 0;
   left: 0;
   height: 100vh;
-  max-width: 22.5rem;
+  max-width: $mobileNavMaxWidth;
   z-index: 2;
-  transform: translateX(-22.5rem);
+  transform: translateX(-1 * $mobileNavMaxWidth);
 
   &.show {
     visibility: visible;
@@ -39,7 +40,7 @@ $navItemPadding: 0.85rem 1rem;
   flex-direction: column;
   height: 100%;
   width: calc(100vw - 4rem);
-  max-width: 22.5rem;
+  max-width: $mobileNavMaxWidth;
   min-width: 15rem;
   background: var(--surface);
   font-size: var(--font-size-100);
