@@ -96,9 +96,7 @@ const Examples = (props: Props) => {
           <iframe src={exampleUrl} height="400px" width="100%" />
         </div>
       ) : (
-        <CodeExample language="typescript" title={`${title} Example`}>
-          {code}
-        </CodeExample>
+        <CodeExample language="typescript">{code}</CodeExample>
       )}
     </>
   );
