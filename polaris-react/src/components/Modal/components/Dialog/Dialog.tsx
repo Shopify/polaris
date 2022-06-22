@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
@@ -59,7 +59,7 @@ export function Dialog({
       nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
-      timeout={parseInt(tokens.motion['duration-200'].value, 10)}
+      timeout={parseInt(motion['duration-200'], 10)}
       onEntered={onEntered}
       onExited={onExited}
     >

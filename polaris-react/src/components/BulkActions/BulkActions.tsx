@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -425,7 +425,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                   <CSSTransition
                     nodeRef={this.checkableWrapperNode}
                     in={selectMode}
-                    timeout={parseInt(tokens.motion['duration-200'].value, 10)}
+                    timeout={parseInt(motion['duration-200'], 10)}
                     classNames={slideClasses}
                     appear={!selectMode}
                   >
