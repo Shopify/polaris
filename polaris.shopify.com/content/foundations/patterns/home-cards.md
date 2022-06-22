@@ -199,7 +199,7 @@ In general, home card content should follow this format:
 
 ## Voice and tone
 
-A good home card prioritizes merchant needs over Shopify’s needs. Home cards are not advertisements, status updates, or [error messages](/patterns-and-guides/error-messages).
+A good home card prioritizes merchant needs over Shopify’s needs. Home cards are not advertisements, status updates, or [error messages](/patterns/error-messages).
 
 The tone changes depending on the context or situation of a card, but it should always be empathetic. For example, for a message about a negative situation, the tone should be considerate and encouraging, with a recommended action on how to fix it.
 
