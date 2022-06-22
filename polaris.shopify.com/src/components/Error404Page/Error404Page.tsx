@@ -4,10 +4,22 @@ import Image from "next/image";
 import Longform from "../Longform";
 import Container from "../Container";
 import styles from "./Error404Page.module.scss";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useState } from "react";
 
 interface Props {}
 
 function Error404Page({}: Props) {
+  const router = useRouter();
+  const [githubUrl, setGithubUrl] = useState(router.asPath);
+
+  useEffect(() => {
+    const title = `[polaris.shopify.com] 404 not found at ${router.asPath}`;
+    const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${title}&amp;labels=polaris.shopify.com`;
+    setGithubUrl(newGithubUrl);
+  }, [router.asPath]);
+
   return (
     <div className={styles.Error404Page}>
       <Head>
@@ -32,10 +44,7 @@ function Error404Page({}: Props) {
             </p>
             <p>
               If there should be something here{" "}
-              <a href="https://github.com/shopify/polaris/issues/new?title=[404]%20polaris.shopify.com&amp;labels=polaris.shopify.com">
-                let us know
-              </a>
-              .
+              <a href={githubUrl}>let us know</a>.
             </p>
           </Longform>
         </div>
