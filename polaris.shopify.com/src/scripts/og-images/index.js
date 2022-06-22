@@ -130,7 +130,7 @@ function getTitleForUrl(url) {
 
   title = slug.replace(/-/g, " ");
 
-  if (url.startsWith("/tokens")) {
+  if (url.startsWith("/tokens/")) {
     title = `${title} tokens`;
   }
 
