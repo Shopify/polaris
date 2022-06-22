@@ -50,7 +50,7 @@ function ResourcesPage({}: Props) {
                 <p className={styles.Description}>
                   Components are reusable building blocks made of interface
                   elements and styles, packaged through code. Piece them
-                  together, improve them, and create new ones to better solve
+                  together, improve them, and create new ones to solve
                   merchant problems.
                 </p>
                 <Links
@@ -87,9 +87,7 @@ function ResourcesPage({}: Props) {
               <div className={styles.Text}>
                 <h3>Tokens</h3>
                 <p className={styles.Description}>
-                  Tokens are repeatable design elements that can be combined
-                  creatively. They unite our design decisions across merchant
-                  experiences.
+                  Design tokens are coded names that represent design decisions for elements like color, spacing, and typography. Applying them to our designs unifies merchant experiences.
                 </p>
                 <Links
                   links={[
