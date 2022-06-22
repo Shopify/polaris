@@ -1,22 +1,6 @@
 const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs");
 
-const urls = [
-  "/",
-  "/foundations",
-  "/foundations/design/design",
-  "/foundations/content/merchant-to-customer",
-  "/tokens",
-  "/tokens/typography",
-  "/components/grid",
-  "/components/banner",
-  "/components/account-connection",
-  "/components/modal",
-  "/components/combobox",
-  "/components/color-picker",
-  "/icons",
-];
-
 registerFont("./src/scripts/og-images/Inter-VariableFont_slnt,wght.ttf", {
   family: "Inter",
 });
@@ -115,27 +99,24 @@ async function createImage(url) {
 }
 
 function writeImage(canvas, url) {
-  fs.writeFileSync(
-    `./public/open-graph/${
-      slugify(url.replace("/", "").replace(/\//g, "--")) || "home"
-    }.jpg`,
-    canvas.toBuffer()
-  );
+  const filePath = `./public/open-graph/${
+    slugify(url.replace("/", "").replace(/\//g, "--")) || "home"
+  }.jpg`;
+  fs.writeFileSync(filePath, canvas.toBuffer());
+  console.log(`Created image ${filePath}`);
 }
 
 function getTitleForUrl(url) {
   let title = "Polaris";
-  const urlSegments = url.split("/");
-  const slug = capitalizeFirstLetter(urlSegments[urlSegments.length - 1]);
 
-  title = slug.replace(/-/g, " ");
+  if (url !== "/") {
+    const urlSegments = url.split("/");
+    const slug = urlSegments[urlSegments.length - 1];
+    title = capitalizeFirstLetter(slug.replace(/-/g, " "));
 
-  if (url.startsWith("/tokens/")) {
-    title = `${title} tokens`;
-  }
-
-  if (title === "") {
-    title = "Polaris";
+    if (url.startsWith("/tokens/")) {
+      title = `${title} tokens`;
+    }
   }
 
   return title;
@@ -157,6 +138,17 @@ const slugify = (str) => {
 };
 
 async function main() {
+  const sitemap = fs.readFileSync("./public/sitemap.xml", "utf-8");
+  let urls = sitemap
+    .match(/loc>[^<]+/gi)
+    .map((match) => match.replace("loc>https://polaris.shopify.com", ""))
+    .filter((url) => {
+      if (url.startsWith("/examples/")) {
+        return false;
+      }
+      return true;
+    });
+
   for (let url of urls) {
     await createImage(url);
   }

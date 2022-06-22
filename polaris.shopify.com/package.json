@@ -12,7 +12,7 @@
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
     "copy-icons": "node src/scripts/copy-icons.mjs",
-    "generate-og-images": "node src/scripts/og-images/index.js"
+    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/og-images/index.js"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
@@ -45,6 +45,7 @@
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
     "rehype-raw": "^6.1.1",
+    "next-sitemap": "^3.1.5",
     "canvas": "^2.9.1"
   }
 }
