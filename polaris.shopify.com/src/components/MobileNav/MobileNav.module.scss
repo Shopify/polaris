@@ -47,6 +47,7 @@ $navItemPadding: 0.85rem 1rem;
   font-weight: var(--font-weight-500);
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: contain;
 
   li {
     display: flex;
