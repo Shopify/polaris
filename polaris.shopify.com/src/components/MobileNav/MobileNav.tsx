@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -78,6 +78,22 @@ function MobileNav({ currentPath }: Props) {
     menuButtonRef.current?.focus();
   };
 
+  const handleShiftTabPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Tab" && e.shiftKey) {
+      e.preventDefault();
+      const closeButton = closeButtonRef.current;
+      closeButton instanceof HTMLElement && closeButton.focus();
+    }
+  };
+
+  const handleTabPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Tab" && !e.shiftKey) {
+      e.preventDefault();
+      const logoLink = logoRef.current;
+      logoLink instanceof HTMLElement && logoLink.focus();
+    }
+  };
+
   return (
     <>
       <Button
@@ -104,13 +120,7 @@ function MobileNav({ currentPath }: Props) {
                 ref={logoRef}
                 className={styles.Logo}
                 onClick={handleCloseMenu}
-                onKeyDown={(e) => {
-                  if (e.key === "Tab" && e.shiftKey) {
-                    e.preventDefault();
-                    const closeButton = closeButtonRef.current;
-                    closeButton instanceof HTMLElement && closeButton.focus();
-                  }
-                }}
+                onKeyDown={handleShiftTabPress}
               >
                 <Image
                   src={shopifyLogo}
@@ -140,13 +150,7 @@ function MobileNav({ currentPath }: Props) {
           aria-label="Close menu"
           className={styles.CloseButton}
           onClick={handleCloseMenu}
-          onKeyDown={(e) => {
-            if (e.key === "Tab" && !e.shiftKey) {
-              e.preventDefault();
-              const logoLink = logoRef.current;
-              logoLink instanceof HTMLElement && logoLink.focus();
-            }
-          }}
+          onKeyDown={handleTabPress}
         >
           <CloseIcon />
         </button>
