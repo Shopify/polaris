@@ -102,4 +102,4 @@ Use when the tooltip overlays interactive elements when active, for example a fo
 
 ## Related components
 
-- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](https://polaris.shopify.com/components/forms/text-field), [footer help](https://polaris.shopify.com/components/titles-and-text/footer-help), or [an inline link to help](https://polaris.shopify.com/components/navigation/link)
+- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](https://polaris.shopify.com/components/forms/text-field), [footer help](https://polaris.shopify.com/components/navigation/footer-help), or [an inline link to help](https://polaris.shopify.com/components/navigation/link)

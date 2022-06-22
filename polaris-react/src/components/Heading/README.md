@@ -69,7 +69,7 @@ Use for the title of each top-level page section.
 
 ## Related components
 
-- To break up a section with a heading into sub-sections, [use the subheading component](https://polaris.shopify.com/components/subheading)
+- To break up a section with a heading into sub-sections, [use the subheading component](https://polaris.shopify.com/components/titles-and-text/subheading)
 
 ---
 

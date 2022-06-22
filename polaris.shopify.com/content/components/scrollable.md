@@ -53,4 +53,4 @@ Scrollable containers are cards with scrolling functionality, and should follow 
 
 ## Related components
 
-- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/collapsible)
+- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible)
