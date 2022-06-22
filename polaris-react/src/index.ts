@@ -69,6 +69,9 @@ export type {
   BannerHandles,
 } from './components/Banner';
 
+export {Body} from './components/Body';
+export type {BodyProps} from './components/Body';
+
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
 
