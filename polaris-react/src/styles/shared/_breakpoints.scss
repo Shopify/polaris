@@ -41,6 +41,4 @@ $breakpoints-page-content-when-partially-condensed-down: breakpoints-down(984px,
 $breakpoints-page-content-when-not-fully-condensed-up: breakpoints-up(490px);
 $breakpoints-page-content-when-fully-condensed-down: breakpoints-down(754px, $inclusive: true);
 
-$breakpoints-nav-min-window-corrected-up: breakpoints-up($nav-min-window-corrected);
-
 $breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);

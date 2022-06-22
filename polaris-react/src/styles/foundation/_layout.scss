@@ -29,5 +29,3 @@ $top-bar-height: 56px;
 $mobile-nav-width: calc(
   100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8})
 );
-
-$nav-min-window-corrected: 769px;

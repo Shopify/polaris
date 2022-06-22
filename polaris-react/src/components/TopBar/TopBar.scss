@@ -28,7 +28,7 @@ $breakpoints-page-left-alignment-down: breakpoints-down(
 
 .LogoDisplayControl {
   display: none;
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     display: flex;
   }
 }
@@ -57,7 +57,7 @@ $breakpoints-page-left-alignment-down: breakpoints-down(
 
 .ContextControl {
   display: none;
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     width: $layout-width-nav-base;
     display: block;
   }
@@ -94,7 +94,7 @@ $breakpoints-page-left-alignment-down: breakpoints-down(
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     display: none;
   }
 

@@ -27,7 +27,7 @@
 .LogoContainer {
   display: none;
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -80,7 +80,7 @@
 .ContextControl {
   display: none;
 
-  @media #{$breakpoints-nav-min-window-corrected-up} {
+  @media #{$p-breakpoints-md-up} {
     display: block;
     width: $layout-width-nav-base;
   }
