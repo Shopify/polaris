@@ -11,7 +11,8 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
-    "copy-icons": "node src/scripts/copy-icons.mjs"
+    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "generate-og-images": "node src/scripts/og-images/index.js"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
@@ -43,6 +44,8 @@
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "canvas": "^2.9.1",
+    "esbuild": "^0.14.47"
   }
 }
