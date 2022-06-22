@@ -15,6 +15,10 @@
     filter: brightness(-5000%);
     opacity: 0.85;
 
+    &.light {
+      filter: brightness(5000%);
+    }
+
     @include dark-mode {
       filter: brightness(5000%);
     }

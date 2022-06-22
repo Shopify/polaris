@@ -7,9 +7,10 @@ import styles from "./Image.module.scss";
 interface Props extends ImageProps {
   fadeIn?: boolean;
   icon?: boolean;
+  light?: boolean;
 }
 
-function Image({ icon = false, fadeIn = true, ...rest }: Props) {
+function Image({ light = false, icon = false, fadeIn = true, ...rest }: Props) {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   return (
@@ -18,7 +19,8 @@ function Image({ icon = false, fadeIn = true, ...rest }: Props) {
         styles.Image,
         hasLoaded && styles.hasLoaded,
         fadeIn && styles.fadeIn,
-        icon && styles.icon
+        icon && styles.icon,
+        light && styles.light
       )}
       alt=""
       onLoad={() => setHasLoaded(true)}

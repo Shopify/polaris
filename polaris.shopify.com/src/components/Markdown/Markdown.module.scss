@@ -1,0 +1,26 @@
+.CopyButtonWrapper {
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: -1;
+}
+
+.CopyButton {
+  position: absolute;
+  padding: 0.5rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  border-radius: var(--border-radius-200);
+  filter: brightness(5000%);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    box-shadow: none;
+    opacity: 1;
+  }
+}

@@ -11,4 +11,24 @@ module.exports = {
     './polaris-icons',
     './polaris-react',
   ],
+  plugins: [
+    [
+      'prismjs',
+      {
+        languages: [
+          'jsx',
+          'css',
+          'markup',
+          'yaml',
+          'git',
+          'shell',
+          'txt',
+          'md',
+        ],
+        plugins: ['line-numbers'],
+        theme: 'dark',
+        css: true,
+      },
+    ],
+  ],
 };

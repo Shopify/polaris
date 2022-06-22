@@ -12,22 +12,32 @@ keywords:
 
 While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live on GitHub. We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub Discussions, Issues, and Pull Requests to work in the open.
 
-## How the project is structured
+## About the project
 
 Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
 
-```text
+### Structure
+
+```markdown
 polaris/
-├── polaris-for-figma           # Figma plugin for Polaris components
-├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
-├── polaris-icons               # npm SVG icon library `@shopify/polaris-icons`
-├── polaris-react               # npm React component library `@shopify/polaris`
-├── polaris-tokens              # npm Design Token library `@shopify/polaris-tokens`
-├── polaris.shopify.com         # The style guide to the Polaris Design System
-└── stylelint-polaris           # Linting rules for using Polaris Design Tokens through CSS custom properties
+├── polaris-for-figma
+| # Figma plugin for Polaris components
+├── polaris-for-vscode
+| # VS Code extension for token autocomplete
+├── polaris-icons
+| # npm SVG icon library
+├── polaris-react
+| # npm React component library
+├── polaris-tokens
+| # npm Design Token library
+├── polaris.shopify.com
+| # This style guide
+├── stylelint-polaris
+| # Linting for CSS custom properties
+└──
 ```
 
-## What technologies we use
+### Technologies
 
 To manage our monorepo structure we use:
 
@@ -47,7 +57,7 @@ To contribute to Polaris components, icons, or documentation, you’ll need to u
 
 Clone the polaris repo
 
-```bash
+```git
 git clone <https://github.com/Shopify/polaris.git>
 ```
 
@@ -57,13 +67,13 @@ git clone <https://github.com/Shopify/polaris.git>
 
 ### 2. Install and build
 
-```bash
+```shell
 yarn && yarn build
 ```
 
 ### 3. Create a new branch
 
-```bash
+```git
 git checkout -b new-branch-name
 ```
 
@@ -71,20 +81,20 @@ git checkout -b new-branch-name
 
 ### 1. Test your changes
 
-As you work commit and test your changes:
+As you work, commit and test your changes:
 
-If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
+If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing, edit the sandbox files found in the `/polaris-react/playground` directory.
 
-```bash
+```shell
 yarn turbo run dev --filter=@shopify/polaris
 
 # Open https://localhost:3000 to test documentation
 # Open https://localhost:6006 to test Storybook examples and Playgrounds
 ```
 
-If your adding or editing documentation, ensure your content displays as expected on the style guide website:
+If you're adding or editing documentation, ensure your content displays as expected on the style guide website:
 
-```bash
+```shell
 yarn turbo run dev --filter=polaris.shopify.com
 ```
 
@@ -92,19 +102,19 @@ yarn turbo run dev --filter=polaris.shopify.com
 
 Save the changes you've made to your branch.
 
-```bash
+```git
 git commit -m “descriptive message”
 ```
 
 Push up your branch up to GitHub
 
-```bash
+```git
 git push origin new-branch-name
 ```
 
 ### 3. Create a pull request
 
-Use the "New pull request" button from the [your branch](https://github.com/Shopify/polaris/branches/yours) list to create a pull request for your changes.
+Use the "New pull request" button from [your branch list](https://github.com/Shopify/polaris/branches/yours) to create a pull request for your changes.
 
 In your PR’s description, be specific with what you’ve tested as well as what reviewers should focus on when testing your changes, for example:
 
