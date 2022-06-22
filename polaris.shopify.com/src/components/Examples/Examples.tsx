@@ -1,10 +1,10 @@
-import { getParameters } from "codesandbox/lib/api/define";
 import { ChangeEvent, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
 import Image from "../Image";
 import iconChevronDown from "../../../public/chevron-down.svg";
+import { useEffect } from "react";
 
 export type Example = {
   code: string;
@@ -21,13 +21,24 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  const { code, description, fileName, title } = examples[currentIndex];
-  const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
+  console.log("examples is", examples);
+
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
 
     setIndex(parseInt(value, 10));
   };
+
+  useEffect(() => {
+    setIndex(0);
+  }, [examples]);
+
+  if (!examples[currentIndex]) {
+    return null;
+  }
+
+  const { code, description, fileName, title } = examples[currentIndex];
+  const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
 
   if (!examples?.length) return null;
 
