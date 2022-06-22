@@ -153,12 +153,12 @@
   }
 }
 
-.SideNavContainer {
+.MobileNavContainer {
   visibility: hidden;
   display: none;
-  fill: var(--text-strong);
 
   svg {
+    fill: var(--text-strong);
     width: 20px;
     height: 20px;
   }
@@ -167,26 +167,5 @@
     visibility: visible;
     display: flex;
     align-items: center;
-  }
-}
-
-.Backdrop {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--backdrop);
-  opacity: 0;
-  animation-name: FadeIn;
-  animation-duration: var(--duration-200);
-  animation-fill-mode: forwards;
-  z-index: 1;
-}
-
-@keyframes FadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

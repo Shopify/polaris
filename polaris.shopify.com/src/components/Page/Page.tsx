@@ -19,14 +19,10 @@ function Page({ children }: Props) {
   const darkMode = useDarkMode(false);
 
   const isPolaris = router.asPath.startsWith("/examples");
-  const match = router.asPath.match(/^\/\w+/);
-  const currentSection = match ? match[0] : "";
 
   const childElements = (
     <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-      {!isPolaris && (
-        <Header currentSection={currentSection} darkMode={darkMode} />
-      )}
+      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
       {children}
 
