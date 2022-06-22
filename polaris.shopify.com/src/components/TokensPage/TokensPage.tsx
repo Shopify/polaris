@@ -1,5 +1,8 @@
 import styles from "./TokensPage.module.scss";
-import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
+import {
+  MetaTokenGroup,
+  metaTokens as allTokens,
+} from "@shopify/polaris-tokens";
 import { useState } from "react";
 import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
@@ -58,7 +61,7 @@ const navItems: NavItem[] = [
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: TokenGroup
+  tokenGroup: MetaTokenGroup
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {

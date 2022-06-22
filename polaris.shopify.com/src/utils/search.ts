@@ -7,7 +7,7 @@ import {
   TokensSearchResult,
   GroupedSearchResults,
 } from "../types";
-import { tokens, TokenProperties } from "@shopify/polaris-tokens";
+import { metaTokens, MetaTokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 import metadata from "@shopify/polaris-icons/metadata";
@@ -23,15 +23,8 @@ const MAX_RESULTS: { [key: string]: number } = {
   Icons: 14,
 };
 
-const {
-  colorSchemes: { light: colorLight },
-  depth,
-  motion,
-  shape,
-  spacing,
-  typography,
-  zIndex,
-} = tokens;
+const { colors, depth, motion, shape, spacing, typography, zIndex } =
+  metaTokens;
 
 let results: SearchResults = [];
 
@@ -48,27 +41,18 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
   });
 });
 
-// Add color tokens
-Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
-  results.push({
-    category: "Tokens",
-    score: 0,
-    url: `/tokens/colors#${tokenName}`,
-    meta: {
-      token: {
-        name: tokenName,
-        description: tokenValue.description || "",
-        value: tokenValue.value,
-      },
-    },
-  });
-});
-
-// Add other tokens
-const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
-Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
+const tokenGroups = {
+  colors,
+  depth,
+  motion,
+  shape,
+  spacing,
+  typography,
+  zIndex,
+};
+Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
-    ([tokenName, tokenProperties]: [string, TokenProperties]) => {
+    ([tokenName, tokenProperties]: [string, MetaTokenProperties]) => {
       results.push({
         category: "Tokens",
         score: 0,
