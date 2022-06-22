@@ -11,7 +11,7 @@
 @mixin page-content-layout {
   margin: var(--p-space-2) 0;
 
-  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+  @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-5);
   }
 }
@@ -39,7 +39,7 @@
     padding-right: 0;
   }
 
-  @media #{$breakpoints-page-content-when-not-partially-condensed-up} {
+  @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-5) 0;
   }
 }
