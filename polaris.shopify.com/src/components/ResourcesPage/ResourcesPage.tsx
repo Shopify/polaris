@@ -16,11 +16,14 @@ function ResourcesPage({}: Props) {
       <Container>
         <div className={styles.Hero}>
           <div className={styles.Text}>
-            <h1>More than a UI kit.</h1>
+            <h1>
+              A starter kit
+              <br /> for reimagining
+              <br /> commerce.
+            </h1>
             <p>
-              Polaris unifies 1,000+ people designing and building merchant
-              experiences, so that our product feels like it’s designed by one
-              person.
+              Our design system helps us work together to build a great
+              experience for all of Shopify’s merchants.
             </p>
           </div>
         </div>
@@ -85,8 +88,8 @@ function ResourcesPage({}: Props) {
                 <h3>Tokens</h3>
                 <p className={styles.Description}>
                   Tokens are repeatable design elements that can be combined
-                  creatively. Use them to unite our design decisions across
-                  merchant experiences.
+                  creatively. They unite our design decisions across merchant
+                  experiences.
                 </p>
                 <Links
                   links={[
