@@ -231,7 +231,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       // },
       {
         title: "Home cards",
-        url: "/foundations/patterns/home-card-guidelines",
+        url: "/foundations/patterns/home-cards",
         icon: Icons.HomeCardsIcon,
         excerpt:
           "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.",
