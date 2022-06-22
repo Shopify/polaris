@@ -20,7 +20,11 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  const { code, description, fileName, title } = examples[currentIndex];
+  const {
+    code = "",
+    description,
+    fileName = "",
+  } = examples[currentIndex] || {};
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
