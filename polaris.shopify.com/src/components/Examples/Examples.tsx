@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
@@ -20,12 +20,31 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  console.log("examples is", examples);
-
+  const { code, description, fileName, title } =
+    examples[currentIndex] || examples[0];
+  const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
 
     setIndex(parseInt(value, 10));
+  };
+
+  const [iframeHeight, setIframeHeight] = useState("400px");
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleExampleLoad = () => {
+    const exampleElement =
+      iframeRef?.current?.contentWindow?.document?.getElementById(
+        "polaris-example"
+      );
+    const padding = 192;
+    let newHeight = padding;
+
+    if (exampleElement) {
+      newHeight += exampleElement?.offsetHeight;
+    }
+
+    setIframeHeight(`${newHeight}px`);
   };
 
   useEffect(() => {
@@ -35,9 +54,6 @@ const Examples = (props: Props) => {
   if (!examples[currentIndex]) {
     return null;
   }
-
-  const { code, description, fileName, title } = examples[currentIndex];
-  const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
 
   if (!examples?.length) return null;
 
@@ -93,7 +109,13 @@ const Examples = (props: Props) => {
       </div>
       {showPreview ? (
         <div className={styles.ExampleFrame}>
-          <iframe src={exampleUrl} height="400px" width="100%" />
+          <iframe
+            src={exampleUrl}
+            height={iframeHeight}
+            width="100%"
+            onLoad={handleExampleLoad}
+            ref={iframeRef}
+          />
         </div>
       ) : (
         <CodeExample language="typescript" title={`${title} Example`}>
