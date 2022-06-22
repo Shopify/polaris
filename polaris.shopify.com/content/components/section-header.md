@@ -16,17 +16,17 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: section-header-default.tsx
-    title: Default
-    description: >-
-      Use to group related content together, for example orders received on the
-      same day.
-  - fileName: section-header-fixed.tsx
-    title: Fixed
-    description: >-
-      Use if your list section could be longer than the height of the screen.
-      For example you may need fixed section headers for a list of orders,
-      because merchants may receive many orders in one day.undefined
+  # - fileName: section-header-default.tsx
+  #   title: Default
+  #   description: >-
+  #     Use to group related content together, for example orders received on the
+  #     same day.
+  # - fileName: section-header-fixed.tsx
+  #   title: Fixed
+  #   description: >-
+  #     Use if your list section could be longer than the height of the screen.
+  #     For example you may need fixed section headers for a list of orders,
+  #     because merchants may receive many orders in one day.
 ---
 
 # Section header

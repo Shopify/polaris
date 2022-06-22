@@ -36,11 +36,11 @@ examples:
     description: >-
       Add a label between navigation buttons to provide more context of the
       content being viewed by the user.
-  - fileName: pagination-infinite-scroll.tsx
-    title: Infinite scroll
-    description: >-
-      Use for lists longer than 25 items. In mobile apps it’s natural to scroll
-      to the bottom of the screen to load more items.
+  # - fileName: pagination-infinite-scroll.tsx
+  #   title: Infinite scroll
+  #   description: >-
+  #     Use for lists longer than 25 items. In mobile apps it’s natural to scroll
+  #     to the bottom of the screen to load more items.
 ---
 
 # Pagination

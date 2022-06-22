@@ -38,29 +38,29 @@ examples:
     description: >-
       Use when a merchant has the ability to act on the message. For example, to
       undo a change or retry an action.
-  - fileName: toast-default.tsx
-    title: Default toast
-    description: >-
-      Use default toast for informative and neutral feedback.undefinedOn iOS,
-      icons are available for cases where you want to re-inforce the
-      message.undefined
-  - fileName: toast-success.tsx
-    title: Success toast
-    description: >-
-      Use success toast to indicate that something was successful. For example,
-      a product was successfully updated.undefinedOn iOS, icons are available
-      for cases where you want to re-inforce the message.undefined
+  # - fileName: toast-default.tsx
+  #   title: Default toast
+  #   description: >-
+  #     Use default toast for informative and neutral feedback.On iOS,
+  #     icons are available for cases where you want to re-inforce the
+  #     message.
+  # - fileName: toast-success.tsx
+  #   title: Success toast
+  #   description: >-
+  #     Use success toast to indicate that something was successful. For example,
+  #     a product was successfully updated.On iOS, icons are available
+  #     for cases where you want to re-inforce the message.
   - fileName: toast-error.tsx
     title: Error toast
     description: >-
-      undefinedOn iOS, icons are available for cases where you want to
-      re-inforce the message.undefined
-  - fileName: toast-with-action.tsx
-    title: With action
-    description: >-
-      Use action when merchants have the ability to act on the message. For
-      example, to undo a change or retry an action. Keep the action label short,
-      preferably 1 verb action.
+      On iOS, icons are available for cases where you want to
+      re-inforce the message.
+  # - fileName: toast-with-action.tsx
+  #   title: With action
+  #   description: >-
+  #     Use action when merchants have the ability to act on the message. For
+  #     example, to undo a change or retry an action. Keep the action label short,
+  #     preferably 1 verb action.
 ---
 
 # Toast
