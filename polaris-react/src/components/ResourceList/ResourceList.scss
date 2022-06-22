@@ -224,6 +224,9 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(spinner-stacking-order);
   display: flex;
   justify-content: center;
+  span {
+    position: fixed;
+  }
 }
 
 .LoadingOverlay {
