@@ -54,9 +54,7 @@ function validateEsNextBuild() {
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
   assert.ok(
-    fs.existsSync(
-      './build/esnext/components/CustomProperties/CustomProperties.css',
-    ),
+    fs.existsSync('./build/esnext/components/AppProvider/AppProvider.css'),
   );
 
   // ESnext build css contains namespaced classes, and
@@ -65,7 +63,7 @@ function validateEsNextBuild() {
     'utf-8',
   );
   const cssKeyframesContent = fs.readFileSync(
-    './build/esnext/components/CustomProperties/CustomProperties.css',
+    './build/esnext/components/AppProvider/global.css',
     'utf-8',
   );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
