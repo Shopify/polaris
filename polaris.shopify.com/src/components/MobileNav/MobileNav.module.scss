@@ -68,6 +68,7 @@ $navItemPadding: 0.85rem 1rem;
       &[aria-current="page"] {
         background: rgba(0, 0, 0, 0.05);
         border-radius: 0;
+        -webkit-touch-callout: none;
       }
     }
   }
