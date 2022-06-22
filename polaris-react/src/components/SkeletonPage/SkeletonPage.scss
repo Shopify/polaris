@@ -35,7 +35,7 @@ $skeleton-display-text-max-width: 120px;
 .TitleAndPrimaryAction {
   display: flex;
 
-  @media #{$breakpoints-page-content-when-partially-condensed-down} {
+  @media #{$p-breakpoints-lg-down} {
     display: block;
   }
 }
@@ -115,7 +115,7 @@ $skeleton-display-text-max-width: 120px;
     padding-right: 0;
   }
 
-  @media #{$breakpoints-page-content-when-partially-condensed-down} {
+  @media #{$p-breakpoints-lg-down} {
     &:not(:last-child) {
       display: none;
     }
