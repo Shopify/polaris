@@ -24,8 +24,7 @@ examples:
 
 # Setting toggle
 
-Use to give merchants control over a feature or option that can be turned
-on or off.
+Use to give merchants control over a feature or option that can be turned on or off.
 
 ---
 

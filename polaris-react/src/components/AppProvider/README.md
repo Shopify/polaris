@@ -200,7 +200,7 @@ function AppProviderLinkExample() {
 
 ### With color scheme
 
-With a `colorScheme`, the app provider component will set the root color scheme for the App (such as: light or dark).For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/structure/customproperties) component documentation.
+With a `colorScheme`, the app provider component will set the root color scheme for the App (such as: light or dark).For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/structure/custom-properties) component documentation.
 
 ```jsx
 function AppProviderThemeExample() {

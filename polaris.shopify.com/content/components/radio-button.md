@@ -32,8 +32,7 @@ examples:
 
 # Radio button
 
-Use radio buttons to present each item in a list of options where merchants must
-make a single selection.
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
 
 ---
 

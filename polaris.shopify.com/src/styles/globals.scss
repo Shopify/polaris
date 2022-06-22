@@ -167,11 +167,15 @@ button {
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
 .usage-list {
-  margin: 1.25rem 0;
+  margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
-  gap: 1rem 0.75rem;
+  gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  + .usage-list {
+    margin-top: -1rem;
+  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -187,6 +191,10 @@ button {
     border-radius: var(--border-radius-400);
     overflow: hidden;
 
+    &:empty {
+      display: none;
+    }
+
     h4:first-child {
       background-image: url(/images/icon-do.svg);
       background-repeat: no-repeat;
@@ -196,6 +204,7 @@ button {
       font-size: var(--font-size-400);
       font-weight: var(--font-weight-500);
       letter-spacing: var(--letter-spacing-200);
+      margin-bottom: 1.33rem;
     }
 
     &::before {
@@ -205,7 +214,7 @@ button {
       top: 0;
       right: 0;
       left: 0;
-      height: 2px;
+      height: 3px;
       background: #13b288;
     }
 
@@ -213,6 +222,7 @@ button {
       h4 {
         background-image: url(/images/icon-dont.svg);
       }
+
       &::before {
         background: #ea5945;
       }
@@ -220,12 +230,41 @@ button {
 
     img {
       width: auto;
-      max-width: 300px;
+      max-width: 100%;
     }
 
     h3 {
       font-size: var(--font-size-300);
       color: var(--text);
+    }
+  }
+
+  &.usage-block {
+    .usage-list-part {
+      padding-top: 1.75rem;
+
+      h4 {
+        display: none;
+      }
+
+      li,
+      p {
+        background-image: url(/images/icon-do.svg);
+        background-repeat: no-repeat;
+        background-position: left 0.15rem;
+        padding-left: 34px;
+        background-size: auto 1.25rem;
+        letter-spacing: var(--letter-spacing-200);
+        list-style: none;
+        margin-left: 0;
+      }
+
+      &[data-type="dont"] {
+        li,
+        p {
+          background-image: url(/images/icon-dont.svg);
+        }
+      }
     }
   }
 }
