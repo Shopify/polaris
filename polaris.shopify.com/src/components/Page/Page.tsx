@@ -1,12 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import useDarkMode from "use-dark-mode";
 
 import Header from "../Header";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import SiteLaunchBanner from "../SiteLaunchBanner";
+import ThemeProvider from "../ThemeProvider";
 
 interface Props {
   children: React.ReactNode;
@@ -14,12 +16,13 @@ interface Props {
 
 function Page({ children }: Props) {
   const router = useRouter();
+  const darkMode = useDarkMode(false);
 
   const isPolaris = router.asPath.startsWith("/examples");
 
-  return (
+  const childElements = (
     <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-      {!isPolaris && <Header currentPath={router.asPath} />}
+      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
       {children}
 
@@ -30,6 +33,14 @@ function Page({ children }: Props) {
         </div>
       )}
     </div>
+  );
+
+  return isPolaris ? (
+    <>{childElements}</>
+  ) : (
+    <ThemeProvider theme={darkMode.value ? "dark" : "light"} useBody>
+      {childElements}
+    </ThemeProvider>
   );
 }
 

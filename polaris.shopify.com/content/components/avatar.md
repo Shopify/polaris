@@ -38,8 +38,7 @@ examples:
 
 # Avatar
 
-Avatars are used to show a thumbnail representation of an individual or
-business in the interface.
+Avatars are used to show a thumbnail representation of an individual or business in the interface.
 
 ---
 

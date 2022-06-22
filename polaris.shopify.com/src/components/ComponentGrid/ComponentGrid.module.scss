@@ -29,8 +29,10 @@
     }
   }
 
-  &.isHighlighted a {
-    box-shadow: var(--focus-outline);
+  @media (hover: hover) {
+    &.isHighlighted a {
+      background: var(--search-highlight-color);
+    }
   }
 
   .ComponentDescription {

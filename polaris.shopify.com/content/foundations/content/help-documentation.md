@@ -39,7 +39,7 @@ These guidelines are based on our experience writing help documentation for the
 the same goal: to educate and empower Shopify merchants.
 
 To include a link to help documentation in your app or channel, use the
-[Footer help](/components/titles-and-text/footer-help) component.
+[Footer help](/components/navigation/footer-help) component.
 
 ---
 

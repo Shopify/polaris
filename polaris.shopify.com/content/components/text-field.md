@@ -171,8 +171,7 @@ examples:
 
 # Text field
 
-A text field is an input field that merchants can type into. It has a range of
-options and supports several text formats including numbers.
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 
 ---
 
@@ -228,7 +227,7 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ## Content guidelines
 
-For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
+For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/patterns/text-fields) page.
 
 ---
 

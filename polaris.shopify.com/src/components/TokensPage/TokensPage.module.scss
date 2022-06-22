@@ -35,7 +35,7 @@
   }
 
   a {
-    padding: 1.25rem 2rem;
+    padding: 1rem 2rem;
     display: block;
     color: var(--text-strong);
     border-right: 1px solid var(--border-color-light);
@@ -43,7 +43,7 @@
     font-weight: var(--font-weight-500);
 
     &[aria-current="page"] {
-      background: #fafafa;
+      background: var(--surface-subdued);
     }
   }
 

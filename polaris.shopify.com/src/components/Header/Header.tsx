@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import useDarkMode from "use-dark-mode";
+import { DarkMode } from "use-dark-mode";
 
 import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
@@ -35,11 +35,11 @@ const headerNavItems: NavItem[] = [
 ];
 
 interface Props {
+  darkMode: DarkMode;
   currentPath?: string;
 }
 
-function Header({ currentPath = "" }: Props) {
-  // const darkMode = useDarkMode(false);
+function Header({ darkMode, currentPath = "" }: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
@@ -97,17 +97,15 @@ function Header({ currentPath = "" }: Props) {
           </ul>
         </nav>
 
-        {/* <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
           {darkMode.value ? (
             <div className={styles.LightModeIcon}>💡</div>
           ) : (
             <div className={styles.DarkModeIcon}>🌙</div>
           )}
-        </button> */}
+        </button>
 
-        <div className={styles.SearchWrapper}>
-          <GlobalSearch />
-        </div>
+        <GlobalSearch />
       </Container>
     </div>
   );

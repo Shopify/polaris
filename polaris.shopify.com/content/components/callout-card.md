@@ -41,9 +41,7 @@ examples:
 
 # Callout card
 
-Callout cards are used to encourage merchants to take an action related to a
-new feature or opportunity. They are most commonly displayed in the
-sales channels section of Shopify.
+Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.
 
 ---
 

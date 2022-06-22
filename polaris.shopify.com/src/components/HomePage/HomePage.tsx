@@ -10,7 +10,6 @@ function HomePage({}: Props) {
       <div className={styles.Intro}>
         <Container className={styles.IntroContent}>
           <h1>A design system built for commerce</h1>
-          <Link href="/resources">Explore the system</Link>
 
           <svg
             width={718 * 1.5}
