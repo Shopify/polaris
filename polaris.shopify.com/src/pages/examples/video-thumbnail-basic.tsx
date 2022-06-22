@@ -16,7 +16,6 @@ function VideoThumbnailExample() {
       <VideoThumbnail
         videoLength={80}
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
-        onClick={() => {}}
       />
     </MediaCard>
   );
