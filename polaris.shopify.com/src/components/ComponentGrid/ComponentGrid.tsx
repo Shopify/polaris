@@ -44,6 +44,7 @@ function ComponentGridItem({
               quality={70}
               sizes="300px"
               alt={`Screenshot of the ${name} component`}
+              lazyBoundary="1000px"
             />
           </div>
           <div className={styles.ComponentDescription}>
