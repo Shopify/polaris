@@ -64,7 +64,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta property="og:image" content={ogImagePath} />
         </Head>
 
-        <p>{isProd.toString()}</p>
         <Component {...pageProps} />
       </Page>
     </>
