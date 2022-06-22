@@ -48,10 +48,19 @@ function FullscreenBarExample() {
           justifyContent: 'space-between',
           alignItems: 'center',
           paddingLeft: '1rem',
+          paddingRight: '1rem',
         }}
       >
-        <DisplayText>Content</DisplayText>
-        <Button onClick={() => {}}>User Action 1</Button>
+        <Badge status="info">Draft</Badge>
+        <div style={{marginLeft: '1rem', flexGrow: 1}}>
+          <DisplayText size="small">Page title</DisplayText>
+        </div>
+        <ButtonGroup>
+          <Button onClick={() => {}}>Secondary Action</Button>
+          <Button primary onClick={() => {}}>
+            Primary Action
+          </Button>
+        </ButtonGroup>
       </div>
     </FullscreenBar>
   );

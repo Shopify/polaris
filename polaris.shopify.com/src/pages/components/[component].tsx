@@ -9,7 +9,7 @@ import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
-import { NavItem } from "../../components/Nav/Nav";
+import type { NavItem } from "../../components/Nav";
 import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { getComponentNav, getTitleTagValue } from "../../utils/various";
@@ -68,23 +68,25 @@ export const getStaticProps: GetStaticProps<
       body: readmeBody,
     };
 
-    const examples = data?.frontMatter?.examples.map((example: Example) => {
-      const examplePath = path.resolve(
-        process.cwd(),
-        `src/pages/examples/${example.fileName}`
-      );
-      let code = "";
+    const examples = (data?.frontMatter?.examples || []).map(
+      (example: Example) => {
+        const examplePath = path.resolve(
+          process.cwd(),
+          `src/pages/examples/${example.fileName}`
+        );
+        let code = "";
 
-      if (fs.existsSync(examplePath)) {
-        code = fs.readFileSync(examplePath, "utf-8");
-        code = code
-          .split("\n")
-          .filter((line) => !line.includes("withPolarisExample"))
-          .join("\n");
+        if (fs.existsSync(examplePath)) {
+          code = fs.readFileSync(examplePath, "utf-8");
+          code = code
+            .split("\n")
+            .filter((line) => !line.includes("withPolarisExample"))
+            .join("\n");
+        }
+
+        return { ...example, code };
       }
-
-      return { ...example, code };
-    });
+    );
     const props: Props = {
       ...data.frontMatter,
       examples,

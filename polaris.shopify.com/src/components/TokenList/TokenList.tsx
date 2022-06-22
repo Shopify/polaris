@@ -1,14 +1,13 @@
-import {
-  HighlightableSearchResult,
-  TokenPropertiesWithName,
-} from "../../types";
+import { SearchResultItem, TokenPropertiesWithName } from "../../types";
 import { createContext } from "react";
-import { className } from "../../utils/various";
+import { className, slugify } from "../../utils/various";
 import styles from "./TokenList.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
 import iconClipboard from "../../../public/icon-clipboard.svg";
 import Image from "../Image";
 import Tooltip from "../Tooltip";
+import { figmaColorNames } from "../../data/figmaColorNames";
+import Link from "next/link";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -84,13 +83,13 @@ function getFigmaUsageForToken(
   const REM = 16;
 
   if (value.startsWith("rgba")) {
-    usage = "Lorem/Ipsum/Dolor";
+    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : "—";
   } else if (name.startsWith("shadow")) {
-    usage = "Lorem/Ipsum dolor";
+    usage = "Use shadow styles from UI kit";
   } else if (name.includes("breakpoint")) {
     const artboardWidth = parseInt(value) * REM;
     if (artboardWidth > 0) {
-      usage = `Frame width: ${artboardWidth}+ pixels`;
+      usage = `Set frame width to ${artboardWidth}+ pixels`;
     }
   } else if (name.includes("border-radius-half")) {
     usage = "Use a circle";
@@ -98,7 +97,7 @@ function getFigmaUsageForToken(
     const radius = parseFloat(value) * REM;
     usage = `Use a radius of ${radius} pixels`;
   } else if (name.includes("font") || name.includes("line-height")) {
-    usage = `Use font style Lorem/Ipsum/Dolor`;
+    usage = "Use typography styles from UI kit";
   } else if (name.includes("space")) {
     const spacing = parseFloat(value) * REM;
     usage = `Use a spacing of ${spacing} pixels`;
@@ -107,13 +106,13 @@ function getFigmaUsageForToken(
   return usage;
 }
 
-interface TokenListItemProps extends HighlightableSearchResult {
+interface TokenListItemProps extends SearchResultItem {
   token: TokenPropertiesWithName;
 }
 
 function TokenListItem({
   token: { name, value, description },
-  isHighlighted,
+  searchResultData,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
@@ -126,12 +125,22 @@ function TokenListItem({
           key={name}
           className={className(
             styles.TokenListItem,
-            isHighlighted && styles.isHighlighted
+            !!searchResultData && styles.renderedInSearchResults,
+            searchResultData?.isHighlighted && styles.isHighlighted
           )}
+          {...searchResultData?.itemAttributes}
+          id={slugify(name)}
         >
           {columns.preview && (
-            <td className={styles.Preview}>
+            <td>
               <TokenPreview name={name} value={value} />
+              {searchResultData?.url && (
+                <Link href={searchResultData.url}>
+                  <a className={styles.ClickableItemLink} tabIndex={-1}>
+                    View token
+                  </a>
+                </Link>
+              )}
             </td>
           )}
           {columns.name && (
@@ -150,7 +159,10 @@ function TokenListItem({
                       </div>
                     )}
                   >
-                    <button onClick={copy}>
+                    <button
+                      onClick={copy}
+                      tabIndex={searchResultData?.tabIndex}
+                    >
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}
@@ -186,18 +198,19 @@ interface TokenPreviewProps {
 }
 
 function TokenPreview({ name, value }: TokenPreviewProps) {
-  const wrapperStyles = {};
+  const previewDivAttributes = {
+    className: styles.Preview,
+  };
 
   // Colors
   if (value.startsWith("rgba")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           background: value,
-          width: 200,
-          height: 52,
-          borderRadius: 2,
+          minHeight: 52,
+          borderRadius: "var(--border-radius-400)",
         }}
       ></div>
     );
@@ -207,17 +220,17 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("border-radius")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
         }}
       >
         <div
           style={{
-            width: "20%",
-            paddingBottom: "20%",
+            width: 50,
+            aspectRatio: "1 / 1",
             borderRadius: value,
-            background: "var(--text-strong)",
+            background: "var(--text)",
           }}
         ></div>
       </div>
@@ -228,16 +241,16 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("border-width")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           background: "transparent",
           display: "flex",
         }}
       >
         <div
           style={{
-            height: value,
-            background: "var(--text-strong)",
+            minHeight: value,
+            background: "var(--text)",
             flex: 1,
           }}
         ></div>
@@ -249,15 +262,15 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("border")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           background: "var(--surface-subdued)",
         }}
       >
         <div
           style={{
-            height: 0,
+            minHeight: 0,
             borderTop: value,
             flex: 1,
           }}
@@ -270,8 +283,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("space")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           alignItems: "center",
         }}
@@ -280,24 +293,24 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "10px",
-            background: "var(--text-strong)",
+            minHeight: "10px",
+            background: "var(--text)",
           }}
         ></div>
         <div
           style={{
             width: value,
-            height: "30px",
-            background: "var(--text-strong)",
-            opacity: 0.2,
+            minHeight: "30px",
+            background: "var(--text)",
+            opacity: 0.15,
           }}
         ></div>
         <div
           style={{
             aspectRatio: "1/1",
             borderRadius: 100,
-            height: "10px",
-            background: "var(--text-strong)",
+            minHeight: "10px",
+            background: "var(--text)",
           }}
         ></div>
       </div>
@@ -308,8 +321,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("font-family")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           fontFamily: value,
           background: "transparent",
@@ -324,8 +337,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("font-size")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           fontSize: value,
           background: "transparent",
@@ -340,8 +353,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("font-weight")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           fontWeight: value,
           background: "transparent",
@@ -356,8 +369,8 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("line-height")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
-          ...wrapperStyles,
           display: "flex",
           lineHeight: value,
           background: "transparent",
@@ -372,21 +385,24 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
 
   // Breakpoints
   else if (name.includes("breakpoints")) {
-    const relativeWidth = (parseInt(value.replace("rem", "")) / 450) * 100;
+    const width = (parseInt(value.replace("rem", "")) / 120) * 100;
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
-          ...wrapperStyles,
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: 50,
         }}
       >
         <div
           style={{
-            width: `${relativeWidth}%`,
             minWidth: 4,
-            height: `50%`,
-            boxShadow: "inset 0 0 0 3px #333, inset 0 -10px #333",
-            background: "white",
+            maxWidth: width,
+            width: "100%",
+            minHeight: 50,
+            boxShadow: "inset 0 0 0 3px var(--text), inset 0 -10px var(--text)",
             borderRadius: 4,
           }}
         ></div>
@@ -398,18 +414,18 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("shadow")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
-          ...wrapperStyles,
         }}
       >
         <div
           style={{
-            height: "0%",
-            width: "10%",
-            paddingBottom: "10%",
+            width: 50,
+            minHeight: 50,
             background: "white",
             boxShadow: value,
+            borderRadius: 8,
           }}
         ></div>
       </div>
@@ -420,18 +436,18 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("duration")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
-          ...wrapperStyles,
           background: "transparent",
         }}
       >
         <div
           style={{
-            height: "0%",
+            minHeight: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--text-strong)",
+            background: "var(--text)",
             animation: `spin ${value} infinite both linear`,
           }}
         ></div>
@@ -443,18 +459,18 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("ease") || name.includes("linear")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
-          ...wrapperStyles,
           background: "transparent",
         }}
       >
         <div
           style={{
-            height: "0%",
+            minHeight: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--text-strong)",
+            background: "var(--text)",
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
           }}
@@ -467,18 +483,18 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   else if (name.includes("keyframes")) {
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
-          ...wrapperStyles,
           background: "transparent",
         }}
       >
         <div
           style={{
-            height: "0%",
+            minHeight: "0%",
             width: "10%",
             paddingBottom: "10%",
-            background: "var(--text-strong)",
+            background: "var(--text)",
             boxShadow: value,
             animation: `${name} 1s infinite both`,
           }}
@@ -493,22 +509,22 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
     const number = parseInt(name.replace("z-", ""));
     return (
       <div
+        {...previewDivAttributes}
         style={{
           display: "flex",
           flexDirection: "column-reverse",
+          justifyContent: "center",
           gap: 2,
-          ...wrapperStyles,
         }}
       >
         {[...Array(layerCount)].map((_, n) => (
           <div
             key={n}
             style={{
-              height: `${100 / 12 / 2}%`,
-              width: "20%",
-              background:
-                n + 1 === number ? "rgba(0,0,0,.7)" : "rgba(0,0,0,.1)",
-              animation: `${name} 1s infinite both`,
+              minHeight: 2.5,
+              background: "var(--text)",
+              opacity: n + 1 === number ? 1 : 0.08,
+              borderRadius: 2,
             }}
           ></div>
         ))}

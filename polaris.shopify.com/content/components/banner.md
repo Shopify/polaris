@@ -55,20 +55,20 @@ examples:
     description: >-
       Default to using toasts for success messages, unless the feedback is
       delayed, persistent, or has a call to actionInclude next steps if
-      applicableundefinedundefined
+      applicable
   - fileName: banner-warning.tsx
     title: Warning banners
     description: >-
       Use to display information that needs attention or that merchants need to
       take action onSeeing these banners can be stressful for merchants so be
-      cautious about using themundefinedundefined
+      cautious about using them
   - fileName: banner-critical.tsx
     title: Critical banners
     description: >-
       Use to communicate problems that have to be resolved immediately for
       merchants to complete a taskFor example, you will show this banner for
       orders with high fraud riskSeeing these banners can be stressful for
-      merchants so be cautious about using themundefinedundefined
+      merchants so be cautious about using them
   - fileName: banner-in-a-modal.tsx
     title: Banner in a modal
     description: >-
@@ -124,7 +124,7 @@ Banners should:
   action.
 - Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
 ### Title
 
@@ -324,7 +324,7 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
 <!-- usageblock -->
 

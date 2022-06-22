@@ -1,5 +1,6 @@
 @import "../../styles/fonts.scss";
 @import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .IconsPage {
   padding-top: var(--header-margin);
@@ -108,7 +109,11 @@
     button {
       background: transparent;
       color: var(--text-subdued);
-      border-radius: var(--border-radius-400);
+
+      &:focus-visible {
+        box-shadow: none;
+        color: var(--text-strong);
+      }
     }
   }
 
@@ -169,4 +174,38 @@
   &:focus-visible {
     box-shadow: var(--focus-outline);
   }
+}
+
+.Modal {
+  position: fixed;
+  top: 2rem;
+  right: 0;
+  bottom: 2rem;
+  left: 0;
+  max-width: 30rem;
+  max-height: 50rem;
+  margin: auto;
+  background: var(--surface);
+  z-index: 3;
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+  border-radius: 32px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    top: auto;
+    bottom: 0;
+    border-radius: var(--border-radius-800) var(--border-radius-800) 0 0;
+    max-width: 100%;
+    max-height: 80vh;
+  }
+}
+
+.ModalBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }

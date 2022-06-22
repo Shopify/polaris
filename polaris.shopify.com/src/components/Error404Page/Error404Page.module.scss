@@ -1,0 +1,10 @@
+.Error404Page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding-bottom: 10rem; // Optical adjustment
+
+  .Icon {
+    opacity: 0.25;
+  }
+}

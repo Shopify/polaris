@@ -23,17 +23,16 @@ examples:
     description: >-
       Use radio buttons where merchants must make a single
       selection.
-  - fileName: radio-button-toggle.tsx
-    title: Toggle
-    description: >-
-      Use toggles when merchants need to make a binary choice (on or
-      off).
+  # - fileName: radio-button-toggle.tsx
+  #   title: Toggle
+  #   description: >-
+  #     Use toggles when merchants need to make a binary choice (on or
+  #     off).
 ---
 
 # Radio button
 
-Use radio buttons to present each item in a list of options where merchants must
-make a single selection.
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
 
 ---
 

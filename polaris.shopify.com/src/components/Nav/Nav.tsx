@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+
 import styles from "./Nav.module.scss";
 
 export type NavItem = {
@@ -24,7 +25,7 @@ function Nav({ navItems }: Props) {
             {navItem.children && (
               <ul>
                 {navItem.children.map((child) => (
-                  <NavItem
+                  <NavListItem
                     key={`${child.url}-${child.title}`}
                     navItem={child}
                     currentPath={currentPath}
@@ -39,7 +40,7 @@ function Nav({ navItems }: Props) {
   );
 }
 
-function NavItem({
+function NavListItem({
   navItem,
   currentPath,
 }: {
@@ -47,7 +48,7 @@ function NavItem({
   currentPath: string;
 }) {
   return (
-    <li className={styles.NavItem}>
+    <li>
       {navItem.url ? (
         <Link href={navItem.url} passHref>
           <a aria-current={navItem.url === currentPath ? "page" : "false"}>
@@ -61,7 +62,7 @@ function NavItem({
       {navItem.children && (
         <ul>
           {navItem.children.map((child) => (
-            <NavItem
+            <NavListItem
               key={`${child.url}-${child.title}`}
               navItem={child}
               currentPath={currentPath}

@@ -29,7 +29,7 @@ Error messages should:
 - Be brief.
 
 Good design can reduce the need for error messages by preventing them in the
-first place. [Learn more about preventing errors](/patterns-and-guides/crafting-admin)
+first place.
 
 ---
 

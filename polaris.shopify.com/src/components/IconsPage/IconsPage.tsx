@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
+import { Dialog } from "@headlessui/react";
 import Fuse from "fuse.js";
 import styles from "./IconsPage.module.scss";
 import Container from "../Container";
@@ -9,12 +10,15 @@ const importedSvgs = require.context(
   true,
   /\.svg$/
 );
-import { className, getTitleTagValue } from "../../utils/various";
+import { className, getTitleTagValue, slugify } from "../../utils/various";
 import IconGrid from "../IconGrid";
 import TextField from "../TextField";
 import CodeExample from "../CodeExample";
 import Image from "../Image";
 import { Icon } from "../../types";
+import { useEffect } from "react";
+import { useMedia } from "../../utils/hooks";
+import { useRouter } from "next/router";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -33,9 +37,20 @@ const fuse = new Fuse(Object.values(icons), {
 });
 
 function IconsPage() {
+  const useModal = useMedia("screen and (max-width: 1400px)");
   const [filterString, setFilterString] = useState("");
   const [selectedIcon, setSelectedIcon] = useState<Icon>(icons[0]);
-  const selectedIconName = selectedIcon.name;
+  const isInitialLoad = useRef(true);
+  let [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isInitialLoad.current === false) {
+      setModalIsOpen(true);
+    }
+    isInitialLoad.current = false;
+  }, [selectedIcon]);
 
   let filteredIcons = [...icons];
 
@@ -57,7 +72,26 @@ function IconsPage() {
     setSelectedIcon(foundIcon);
   };
 
-  const updateURL = `https://github.com/Shopify/polaris-icons/issues/new?assignees=@shopify/icon-guild&labels=Update,Proposal&template=propose-updates-to-existing-icons.md&title=%5BProposal%5D%20Update%20${selectedIconName}`;
+  const setSelectedIconBasedOnParam = useCallback(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const iconParam = urlParams.get("icon");
+    if (iconParam) {
+      const matchingIcon = icons.find((icon) => icon.fileName === iconParam);
+      if (matchingIcon) {
+        getSelectedIcon(matchingIcon);
+        setFilterString(matchingIcon.fileName);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    setSelectedIconBasedOnParam();
+    router.events.on("routeChangeComplete", setSelectedIconBasedOnParam);
+
+    return () => {
+      router.events.off("routeChangeComplete", setSelectedIconBasedOnParam);
+    };
+  }, [setSelectedIconBasedOnParam, router.events]);
 
   return (
     <Container className={styles.IconsPage}>
@@ -83,8 +117,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Major icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
+                  <b>Major icons</b>
                 </p>
               </div>
               <IconGrid>
@@ -92,8 +125,15 @@ function IconsPage() {
                   <IconGrid.Item
                     key={icon.name}
                     icon={icon}
-                    onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
+                    onClick={() => {
+                      window.history.pushState(
+                        {},
+                        "",
+                        `?icon=${icon.fileName}`
+                      );
+                      getSelectedIcon(icon);
+                    }}
+                    isSelected={selectedIcon.fileName === icon.fileName}
                   />
                 ))}
               </IconGrid>
@@ -104,8 +144,7 @@ function IconsPage() {
             <>
               <div className={styles.SectionHeading}>
                 <p>
-                  <b>Minor icons.</b> Used for things like lorem ipsum dolor et
-                  amet consecteur
+                  <b>Minor icons</b>
                 </p>
               </div>
 
@@ -115,7 +154,6 @@ function IconsPage() {
                     key={icon.name}
                     icon={icon}
                     onClick={() => getSelectedIcon(icon)}
-                    isHighlighted={false}
                   />
                 ))}
               </IconGrid>
@@ -123,116 +161,152 @@ function IconsPage() {
           )}
         </div>
 
-        <div className={styles.Sidebar}>
-          {selectedIcon && (
-            <>
-              <div
-                className={className(styles.SidebarSection, styles.IconInfo)}
-              >
-                <div className={styles.Preview}>
-                  <div className={styles.PreviewImage}>
-                    <Image
-                      src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
-                      alt={metadata[selectedIcon.fileName].description}
-                      width={20}
-                      height={20}
-                      icon
-                    />
-                  </div>
-                  <div className={styles.IconSet}>{selectedIcon.set}</div>
-                </div>
+        {selectedIcon && (
+          <>
+            {useModal ? (
+              <Dialog open={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+                <div className={styles.ModalBackdrop} aria-hidden="true" />
 
-                <h2 className={styles.IconName}>{selectedIcon.name}</h2>
+                <Dialog.Panel className={styles.Modal}>
+                  <SidebarContent
+                    selectedIcon={selectedIcon}
+                    setFilterString={setFilterString}
+                    isInModal={true}
+                  />
+                </Dialog.Panel>
+              </Dialog>
+            ) : (
+              <SidebarContent
+                selectedIcon={selectedIcon}
+                setFilterString={setFilterString}
+                isInModal={false}
+              />
+            )}
+          </>
+        )}
+      </div>
+    </Container>
+  );
+}
 
-                {selectedIcon.description !== "N/A" && (
-                  <p className={styles.IconDescription}>
-                    {selectedIcon.description}
-                  </p>
-                )}
+function SidebarContent({
+  selectedIcon,
+  setFilterString,
+  isInModal,
+}: {
+  selectedIcon: Icon;
+  setFilterString: (string: string) => void;
+  isInModal: boolean;
+}) {
+  const updateURL = `https://github.com/Shopify/polaris-icons/issues/new?assignees=@shopify/icon-guild&labels=Update,Proposal&template=propose-updates-to-existing-icons.md&title=%5BProposal%5D%20Update%20${selectedIcon.name}`;
 
-                <div className={styles.Keywords}>
-                  {selectedIcon.keywords
-                    .filter((keyword) => keyword !== "N/A")
-                    .map((keyword) => {
-                      return (
-                        <button
-                          type="button"
-                          key={keyword}
-                          onClick={() => setFilterString(`${keyword}`)}
-                        >
-                          {keyword}
-                        </button>
-                      );
-                    })}
-                </div>
+  return (
+    <div className={styles.Sidebar}>
+      <div className={className(styles.SidebarSection, styles.IconInfo)}>
+        <div className={styles.Preview}>
+          <div className={styles.PreviewImage}>
+            <Image
+              src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
+              alt={metadata[selectedIcon.fileName].description}
+              width={20}
+              height={20}
+              icon
+            />
+          </div>
+          <div className={styles.IconSet}>{selectedIcon.set}</div>
+        </div>
 
-                <div className={styles.ActionButtons}>
-                  <a
-                    className={styles.DownloadIconButton}
-                    href={`/icons/${selectedIcon.fileName}.svg`}
-                    download
-                  >
-                    Download SVG
-                  </a>
-                </div>
-              </div>
+        <h2 className={styles.IconName}>
+          {isInModal ? (
+            <Dialog.Title>{selectedIcon.name}</Dialog.Title>
+          ) : (
+            selectedIcon.name
+          )}
+        </h2>
 
-              <div className={styles.SidebarSection}>
-                <h3>Figma</h3>
-                <p className={styles.SmallParagraph}>
-                  Use the{" "}
-                  <a href="https://www.figma.com/community/file/1110993965108325096">
-                    Polaris Icon Library
-                  </a>{" "}
-                  to access all icons right inside Figma.
-                </p>
-              </div>
+        {selectedIcon.description !== "N/A" && (
+          <p className={styles.IconDescription}>{selectedIcon.description}</p>
+        )}
 
-              <div className={styles.SidebarSection}>
-                <h3>React</h3>
-                <p className={styles.SmallParagraph}>
-                  Import the icon from{" "}
-                  <a href="https://www.npmjs.com/package/@shopify/polaris-icons#usage">
-                    polaris-icons
-                  </a>
-                  :
-                </p>
+        <div className={styles.Keywords}>
+          {selectedIcon.keywords
+            .filter((keyword) => keyword !== "N/A")
+            .map((keyword) => {
+              return (
+                <button
+                  type="button"
+                  key={keyword}
+                  onClick={() => setFilterString(`${keyword}`)}
+                >
+                  {keyword}
+                </button>
+              );
+            })}
+        </div>
 
-                <div className={styles.CodeExampleWrapper}>
-                  <CodeExample language="typescript">
-                    {`import {
+        <div className={styles.ActionButtons}>
+          <a
+            className={styles.DownloadIconButton}
+            href={`/icons/${selectedIcon.fileName}.svg`}
+            download
+          >
+            Download SVG
+          </a>
+        </div>
+      </div>
+
+      <div className={styles.SidebarSection}>
+        <h3>Figma</h3>
+        <p className={styles.SmallParagraph}>
+          Use the{" "}
+          <a href="https://www.figma.com/community/file/1110993965108325096">
+            Polaris Icon Library
+          </a>{" "}
+          to access all icons right inside Figma.
+        </p>
+      </div>
+
+      <div className={styles.SidebarSection}>
+        <h3>React</h3>
+        <p className={styles.SmallParagraph}>
+          Import the icon from{" "}
+          <a href="https://www.npmjs.com/package/@shopify/polaris-icons#usage">
+            polaris-icons
+          </a>
+          :
+        </p>
+
+        <div className={styles.CodeExampleWrapper}>
+          <CodeExample language="typescript">
+            {`import {
   ${selectedIcon.name}
 } from '@shopify/polaris-icons';`}
-                  </CodeExample>
-                </div>
+          </CodeExample>
+        </div>
 
-                <p className={styles.SmallParagraph}>
-                  Then render it using the{" "}
-                  <a href="https://polaris.shopify.com/components/images-and-icons/icon">
-                    icon component
-                  </a>
-                  :
-                </p>
+        <p className={styles.SmallParagraph}>
+          Then render it using the{" "}
+          <a href="https://polaris.shopify.com/components/images-and-icons/icon">
+            icon component
+          </a>
+          :
+        </p>
 
-                <div className={styles.CodeExampleWrapper}>
-                  <CodeExample language="typescript">
-                    {`<Icon
+        <div className={styles.CodeExampleWrapper}>
+          <CodeExample language="typescript">
+            {`<Icon
   source={${selectedIcon.name}}
   color="base"
 />`}
-                  </CodeExample>
-                </div>
-              </div>
-              <div className={styles.SidebarSection}>
-                <div className={styles.ProposeChange}>
-                  <a href={updateURL}>Propose a change to this icon</a>
-                </div>
-              </div>
-            </>
-          )}
+          </CodeExample>
         </div>
       </div>
-    </Container>
+      <div className={styles.SidebarSection}>
+        <div className={styles.ProposeChange}>
+          <a href={updateURL}>Propose a change to this icon</a>
+        </div>
+      </div>
+    </div>
   );
 }
 

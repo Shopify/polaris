@@ -1,5 +1,4 @@
-import { getParameters } from "codesandbox/lib/api/define";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
@@ -21,7 +20,11 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  const { code, description, fileName, title } = examples[currentIndex];
+  const {
+    code = "",
+    description,
+    fileName = "",
+  } = examples[currentIndex] || {};
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
@@ -29,10 +32,34 @@ const Examples = (props: Props) => {
     setIndex(parseInt(value, 10));
   };
 
-  if (!examples?.length) return null;
+  const [iframeHeight, setIframeHeight] = useState("400px");
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleExampleLoad = () => {
+    const exampleElement =
+      iframeRef?.current?.contentWindow?.document?.getElementById(
+        "polaris-example"
+      );
+    const padding = 192;
+    let newHeight = padding;
+
+    if (exampleElement) {
+      newHeight += exampleElement?.offsetHeight;
+    }
+
+    setIframeHeight(`${newHeight}px`);
+  };
+
+  useEffect(() => {
+    setIndex(0);
+  }, [examples]);
+
+  if (!examples?.length || !examples[currentIndex]) {
+    return null;
+  }
 
   return (
-    <div>
+    <>
       <h2 id="examples">Examples</h2>
       <div className={styles.SelectContainer}>
         <select onChange={handleSelection}>
@@ -57,40 +84,44 @@ const Examples = (props: Props) => {
           />
         </div>
       </div>
+
       {description ? <p>{description}</p> : null}
-      <div
-        className={`${styles.Buttons} ${
-          showPreview && styles.ButtonsOverlayed
-        }`}
-      >
-        <button
-          className={`${styles.Button} ${
-            showPreview ? styles.ButtonSelected : ""
-          }`}
-          onClick={() => setShowPreview(true)}
-        >
-          Preview
-        </button>
-        <button
-          className={`${styles.Button} ${
-            showPreview ? "" : styles.ButtonSelected
-          }`}
-          onClick={() => setShowPreview(false)}
-        >
-          Code
-        </button>
+
+      <div className={styles.Buttons}>
+        <div>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? styles.ButtonSelected : ""
+            }`}
+            onClick={() => setShowPreview(true)}
+          >
+            Preview
+          </button>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? "" : styles.ButtonSelected
+            }`}
+            onClick={() => setShowPreview(false)}
+          >
+            Code
+          </button>
+        </div>
         <CodesandboxButton className={styles.SandboxButton} code={code} />
       </div>
       {showPreview ? (
         <div className={styles.ExampleFrame}>
-          <iframe src={exampleUrl} height="400px" width="100%" />
+          <iframe
+            src={exampleUrl}
+            height={iframeHeight}
+            width="100%"
+            onLoad={handleExampleLoad}
+            ref={iframeRef}
+          />
         </div>
       ) : (
-        <CodeExample language="typescript" title={`${title} Example`}>
-          {code}
-        </CodeExample>
+        <CodeExample language="typescript">{code}</CodeExample>
       )}
-    </div>
+    </>
   );
 };
 

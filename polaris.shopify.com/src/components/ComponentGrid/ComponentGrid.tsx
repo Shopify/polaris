@@ -1,6 +1,6 @@
 import Image from "../Image";
 import Link from "next/link";
-import { HighlightableSearchResult } from "../../types";
+import { SearchResultItem } from "../../types";
 import { className, slugify } from "../../utils/various";
 import styles from "./ComponentGrid.module.scss";
 
@@ -12,7 +12,7 @@ function ComponentGrid({ children }: ComponentGridProps) {
   return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
-interface ComponentGridItemProps extends HighlightableSearchResult {
+interface ComponentGridItemProps extends SearchResultItem {
   name: string;
   description: string;
   url: string;
@@ -22,25 +22,29 @@ function ComponentGridItem({
   name,
   description,
   url,
-  isHighlighted,
+  searchResultData,
 }: ComponentGridItemProps) {
   return (
     <li
+      key={name}
       className={className(
         styles.Component,
-        isHighlighted && styles.isHighlighted
+        searchResultData?.isHighlighted && styles.isHighlighted
       )}
-      key={name}
+      {...searchResultData?.itemAttributes}
     >
       <Link href={url} passHref>
-        <a>
+        <a tabIndex={searchResultData?.tabIndex}>
           <div className={styles.Preview}>
             <Image
               src={`/component-previews/${slugify(name)}.png`}
               layout="responsive"
-              width={525 * 2}
-              height={300 * 2}
+              width={525}
+              height={300}
+              quality={70}
+              sizes="300px"
               alt={`Screenshot of the ${name} component`}
+              lazyBoundary="1000px"
             />
           </div>
           <div className={styles.ComponentDescription}>

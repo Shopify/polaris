@@ -31,9 +31,9 @@ examples:
       Use for detail pages, which should have pagination and breadcrumbs, and
       also often have several actions.Use for detail pages, which should have
       breadcrumbs, and also often have several actions.Use for building any page
-      on Android.undefinedUse for detail pages, which should have breadcrumbs,
+      on Android. Use for detail pages, which should have breadcrumbs,
       and also often have several actions.Use for building any page on
-      iOS.undefined
+      iOS.
   - fileName: page-with-custom-primary-action.tsx
     title: Page with custom primary action
     description: Use to create a custom primary action.

@@ -1,18 +1,6 @@
 [
   {
     "frontMatter": {
-      "name": "Component status",
-      "slug": "component-status",
-      "icon": "IconPopular",
-      "categoryName": null,
-      "categorySlug": null,
-      "order": 2,
-      "keywords": ["upcoming", "new features", "updates"]
-    },
-    "intro": "The latest component updates and changes. If you have a suggestion for a new\ncomponent not listed here,\n[create an issue on GitHub](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md)."
-  },
-  {
-    "frontMatter": {
       "name": "Content/Accessible and inclusive language",
       "slug": "accessible-and-inclusive-language",
       "icon": "IconCustomerPlus",
@@ -162,7 +150,7 @@
         "accessible components"
       ]
     },
-    "intro": "Shopify aims to provide an [inclusive experience](/patterns-and-guides/accessibility).\nAlternative text (alt text) helps people with low or loss of vision use our\nproducts."
+    "intro": "Shopify aims to provide an [inclusive experience](/foundations/accessibility).\nAlternative text (alt text) helps people with low or loss of vision use our\nproducts."
   },
   {
     "frontMatter": {
@@ -496,32 +484,6 @@
   },
   {
     "frontMatter": {
-      "name": "Foundations/Crafting user interfaces/Designing apps for Shopify",
-      "slug": "designing-apps",
-      "icon": "IconDesigningApps",
-      "keywords": [
-        "apps",
-        "app communication",
-        "app design principles",
-        "app navigation",
-        "app permissions",
-        "embedded apps",
-        "ux principles",
-        "user experience principles",
-        "shopify apps",
-        "shopify approaches",
-        "shopify app design principles",
-        "shopify ux principles",
-        "shopify principles",
-        "merchant experience",
-        "merchant first",
-        "merchant-first"
-      ]
-    },
-    "intro": "Polaris is designed to make it easy to build Shopify apps that merchants trust\nand understand how to use right from the start.<br /><br />However, it takes\nmore than Polaris components to create successful features and flows. This guide\nwill help you design better Shopify apps."
-  },
-  {
-    "frontMatter": {
       "name": "Foundations/Crafting user interfaces/Designing onboarding flows",
       "slug": "designing-onboarding-flows",
       "icon": "IconOnboarding",
@@ -643,33 +605,6 @@
   },
   {
     "frontMatter": {
-      "name": "Foundations/Key considerations/Mobile",
-      "slug": "mobile",
-      "icon": "IconMobile",
-      "keywords": [
-        "a11y",
-        "native mobile design",
-        "mobile design principles",
-        "mobile native design principles",
-        "polaris for mobile native",
-        "iOS design principles",
-        "android native design principles",
-        "iOS native design principles",
-        "android design principles",
-        "native mobile user experience",
-        "mobile user experience design",
-        "mobile experience design principles",
-        "mobile best practices",
-        "mobile native best practices",
-        "mobile app design principles",
-        "app design principles",
-        "native app design principles"
-      ]
-    },
-    "intro": "Teams often design for the web and adapt to mobile. When this happens, mobile ends up being an adaptation of the web instead of higher quality, personalized experiences. We should approach web and mobile native at the same time."
-  },
-  {
-    "frontMatter": {
       "name": "Legal/License",
       "slug": "license",
       "icon": "IconGetStarted",
@@ -726,22 +661,6 @@
       ]
     },
     "intro": "The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them."
-  },
-  {
-    "frontMatter": {
-      "name": "Patterns/Mobile patterns",
-      "slug": "mobile-patterns",
-      "icon": "IconMobile",
-      "keywords": [
-        "gesture",
-        "swipe",
-        "long tap",
-        "long press",
-        "cell swipe",
-        "more actions"
-      ]
-    },
-    "intro": "A collection of patterns to help design Shopify’s own iOS and Android apps."
   },
   {
     "frontMatter": {

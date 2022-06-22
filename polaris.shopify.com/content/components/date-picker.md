@@ -43,8 +43,7 @@ examples:
 
 # Date picker
 
-Date pickers let merchants choose dates from a visual calendar that’s
-consistently applied wherever dates need to be selected across Shopify.
+Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
 
 ---
 
