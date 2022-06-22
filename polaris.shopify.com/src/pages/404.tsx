@@ -11,17 +11,22 @@ export default function Custom404() {
         <title>404 - Page not found</title>
       </Head>
       <Container>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", marginTop: "4rem" }}>
           <Longform>
-            <Image src="/blah.png" width={200} height={200} />
-            <h1>There’s no page at this address</h1>
+            <Image src="/icons/CircleAlertMajor.svg" width={150} height={150} />
+            <h1 style={{ marginTop: "2rem" }}>
+              There’s no page at this address
+            </h1>
             <p>
               Check the URL and try again, or use the search field to find what
               you need.
             </p>
             <p>
-              If there should be something here [let us
-              know](https://github.com/shopify/polaris/issues/new?title=[404]%20polaris.shopify.com&labels=polaris.shopify.com).
+              If there should be something here{" "}
+              <a href="https://github.com/shopify/polaris/issues/new?title=[404]%20polaris.shopify.com&labels=polaris.shopify.com">
+                let us know
+              </a>
+              .
             </p>
           </Longform>
         </div>
