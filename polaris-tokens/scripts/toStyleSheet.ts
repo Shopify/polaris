@@ -50,7 +50,7 @@ export async function toStyleSheet(metaTokens: MetaTokens) {
   }
 
   const styles = `
-  :root{${getStaticCustomProperties(metaTokens)}}
+  :root{color-scheme:light;${getStaticCustomProperties(metaTokens)}}
   ${getKeyframes(metaTokens.motion)}
 `;
 

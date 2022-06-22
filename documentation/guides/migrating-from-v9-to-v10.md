@@ -84,7 +84,7 @@ const App = (props) => (
 
 ## Tokens
 
-The dark color scheme palette has been removed. Dark color tokens are now consolidated into a single colors palette.
+The dark color scheme palette has been removed. Dark color tokens are now consolidated into a single color palette.
 
 The `@shopify/polaris-tokens` exported tokens object has replaced the `tokens.colorScheme` property with `tokens.colors`.
 

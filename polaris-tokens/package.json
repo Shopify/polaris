@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "@shopify/browserslist-config": "^3.0.0",
-    "glob": "^8.0.3",
     "ts-node": "^10.7.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",

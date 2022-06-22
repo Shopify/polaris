@@ -5,10 +5,6 @@ import {MetaTokens, TokenGroup} from '../src';
 
 const outputDir = path.join(__dirname, '../dist/json');
 
-function getFileName(fileName: string) {
-  return path.join(outputDir, fileName);
-}
-
 export async function toJSON(metaTokens: MetaTokens) {
   if (!fs.existsSync(outputDir)) {
     await fs.promises.mkdir(outputDir, {recursive: true});
@@ -19,7 +15,7 @@ export async function toJSON(metaTokens: MetaTokens) {
       keyof MetaTokens,
       TokenGroup,
     ];
-    const fileName = getFileName(`${tokenGroupName}.json`);
+    const fileName = path.join(outputDir, `${tokenGroupName}.json`);
 
     await fs.promises.writeFile(fileName, JSON.stringify(tokenGroup));
   }
