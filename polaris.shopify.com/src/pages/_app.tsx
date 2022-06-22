@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga.PUBLIC_GA_ID}`}
       />
       <Script
         id="gtag-init"
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${ga.GA_TRACKING_ID}', {
+            gtag('config', '${ga.PUBLIC_GA_ID}', {
               page_path: window.location.pathname,
             });
           `,
