@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-[ActionList.Item] Moves CSS variables `ActionList.Item` so that it can be used standalone
+Moved item-related CSS variables to the `ActionList` `.Item` class
