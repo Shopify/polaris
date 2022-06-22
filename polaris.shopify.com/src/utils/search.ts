@@ -14,7 +14,6 @@ import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
-import { foundationsNavItems } from "../data/navItems";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Foundations: 3,
@@ -152,7 +151,7 @@ export function search(query: string): GroupedSearchResults {
   };
 
   if (query.length > 0) {
-    const fuseResults = fuse.search(query);
+    const fuseResults = fuse.search(query.trim());
 
     const scoredResults: SearchResults = fuseResults.map((result) => ({
       ...result.item,
