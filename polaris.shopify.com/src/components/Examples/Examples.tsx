@@ -118,9 +118,7 @@ const Examples = (props: Props) => {
           />
         </div>
       ) : (
-        <CodeExample language="typescript" title={`${title} Example`}>
-          {code}
-        </CodeExample>
+        <CodeExample language="typescript">{code}</CodeExample>
       )}
     </>
   );

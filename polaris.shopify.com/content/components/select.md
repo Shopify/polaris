@@ -31,8 +31,8 @@ examples:
     description: >-
       Presents a classic dropdown menu or equivalent picker as determined by
       merchants’ browsers.The iOS picker expands in-line. Merchants scroll to
-      select the item they want.undefinedThe Android menu is similar in behavior
-      to the web dropdown.undefined
+      select the item they want. The Android menu is similar in behavior
+      to the web dropdown.
   - fileName: select-with-inline-label.tsx
     title: Select with inline label
     description: >-

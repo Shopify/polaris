@@ -16,7 +16,7 @@ keywords:
 examples:
   - fileName: range-slider-default.tsx
     title: Default range slider
-    description: undefinedundefined
+    description:
   - fileName: range-slider-min-and-max-control.tsx
     title: Min and max range control
     description: >-

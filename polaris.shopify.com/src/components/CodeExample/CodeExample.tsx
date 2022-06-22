@@ -12,7 +12,6 @@ interface Props {
 
 function CodeExample({ title, children }: Props) {
   const [copy, didJustCopy] = useCopyToClipboard(children);
-  const lines = children.split("\n");
 
   return (
     <div className={styles.CodeExample}>
@@ -44,13 +43,7 @@ function CodeExample({ title, children }: Props) {
         </Tooltip>
       </div>
 
-      <div className={styles.Code}>
-        {lines.map((line, i) => (
-          <div className={styles.Line} key={line}>
-            <span className={styles.LineNumber}>{i + 1}</span> {line}
-          </div>
-        ))}
-      </div>
+      <div className={styles.Code}>{children.toString().trim()}</div>
     </div>
   );
 }
