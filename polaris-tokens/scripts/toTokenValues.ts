@@ -1,46 +1,46 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {MetaTokens, MetaTokenGroup, Tokens, TokenGroup} from '../src';
+import type {MetaTokens, Tokens} from '../src';
 
 const outputDir = path.join(__dirname, '../build-internal');
 const outputFile = path.join(outputDir, 'tokens.ts');
+
+type Entry<T> = [keyof T, T[keyof T]];
+type Entries<T> = Entry<T>[];
 
 export async function toTokenValues(metaTokens: MetaTokens) {
   if (!fs.existsSync(outputDir)) {
     await fs.promises.mkdir(outputDir);
   }
 
-  const filteredTokenGroupEntries: [keyof Tokens, TokenGroup][] = [];
+  const tokensEntries: Entries<Tokens> = Object.entries(metaTokens).map(
+    (entry) => {
+      const [tokenGroupName, tokenGroup] = entry as Entry<MetaTokens>;
 
-  for (const entry of Object.entries(metaTokens)) {
-    const [tokenGroupName, tokenGroup] = entry as [
-      keyof MetaTokens,
-      MetaTokenGroup,
-    ];
+      const tokenGroupValues = Object.fromEntries(
+        Object.entries(tokenGroup).map(([tokenName, {value}]) => [
+          tokenName,
+          value,
+        ]),
+      );
 
-    const tokenGroupValues = Object.fromEntries(
-      Object.entries(tokenGroup).map(([tokenName, {value}]) => [
-        tokenName,
-        value,
-      ]),
-    );
-
-    filteredTokenGroupEntries.push([tokenGroupName, tokenGroupValues]);
-  }
+      return [tokenGroupName, tokenGroupValues];
+    },
+  );
 
   await fs.promises.writeFile(
     outputFile,
     [
       `export * from '../src/index'`,
-      filteredTokenGroupEntries.map(createExport),
-      createExport(['tokens', Object.fromEntries(filteredTokenGroupEntries)]),
+      tokensEntries.map(createExport),
+      createExport(['tokens', Object.fromEntries(tokensEntries)]),
     ]
       .flat()
       .join('\n'),
   );
 }
 
-function createExport<T extends [string, {[key: string]: any}]>(entry: T) {
+function createExport(entry: [string, {[key: string]: unknown}]) {
   return `export const ${entry[0]} = ${JSON.stringify(entry[1])} as const;`;
 }
