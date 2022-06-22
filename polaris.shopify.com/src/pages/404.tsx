@@ -13,7 +13,7 @@ export default function Custom404() {
       <Container>
         <div style={{ textAlign: "center", marginTop: "4rem" }}>
           <Longform>
-            <Image src="/icons/CircleAlertMajor.svg" width={150} height={150} />
+            <Image src="/icons/CircleAlertMajor.svg" width={100} height={100} />
             <h1 style={{ marginTop: "2rem" }}>
               There’s no page at this address
             </h1>
