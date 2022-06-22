@@ -12,14 +12,14 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(tokens: MetaTokens) {
-  return Object.entries(tokens)
+export function getStaticCustomProperties(metaTokens: MetaTokens) {
+  return Object.entries(metaTokens)
     .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
     .join('');
 }
 
 /**
- * Creates CSS custom properties for a given tokens object.
+ * Creates CSS custom properties for a given metaTokens object.
  */
 export function getCustomProperties(tokenGroup: MetaTokenGroup) {
   return Object.entries(tokenGroup)
@@ -41,7 +41,7 @@ export function getKeyframes(motion: MetaTokenGroup) {
     .join('');
 }
 
-export async function toStyleSheet(tokens: MetaTokens) {
+export async function toStyleSheet(metaTokens: MetaTokens) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -50,8 +50,8 @@ export async function toStyleSheet(tokens: MetaTokens) {
   }
 
   const styles = `
-  :root{${getStaticCustomProperties(tokens)}}
-  ${getKeyframes(tokens.motion)}
+  :root{${getStaticCustomProperties(metaTokens)}}
+  ${getKeyframes(metaTokens.motion)}
 `;
 
   await fs.promises.writeFile(cssOutputPath, styles);

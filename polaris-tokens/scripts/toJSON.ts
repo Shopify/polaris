@@ -9,12 +9,12 @@ function getFileName(fileName: string) {
   return path.join(outputDir, fileName);
 }
 
-export async function toJSON(tokens: MetaTokens) {
+export async function toJSON(metaTokens: MetaTokens) {
   if (!fs.existsSync(outputDir)) {
     await fs.promises.mkdir(outputDir, {recursive: true});
   }
 
-  for (const entry of Object.entries(tokens)) {
+  for (const entry of Object.entries(metaTokens)) {
     const [tokenGroupName, tokenGroup] = entry as [
       keyof MetaTokens,
       TokenGroup,

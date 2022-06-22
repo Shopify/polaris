@@ -13,7 +13,7 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 /** @type {import('rollup').RollupOptions} */
 export default [
   {
-    input: ['build-internal/index.ts', 'build-internal/metadata.ts'],
+    input: ['./src/index.ts', 'build-internal/tokens.ts'],
     output: [
       {
         format: /** @type {const} */ ('cjs'),
@@ -37,7 +37,7 @@ export default [
       babel({
         extensions,
         rootMode: 'upward',
-        include: ['build-internal/**/*'],
+        include: ['src/**/*', 'build-internal/**/*'],
         babelHelpers: 'bundled',
       }),
     ],
