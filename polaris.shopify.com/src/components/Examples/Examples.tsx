@@ -20,8 +20,7 @@ const Examples = (props: Props) => {
   const { examples } = props;
   const [currentIndex, setIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
-  const { code, description, fileName, title } =
-    examples[currentIndex] || examples[0];
+  const { code, description, fileName, title } = examples[currentIndex];
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
   const handleSelection = (ev: ChangeEvent) => {
     const value = (ev.target as HTMLInputElement).value;
@@ -51,11 +50,9 @@ const Examples = (props: Props) => {
     setIndex(0);
   }, [examples]);
 
-  if (!examples[currentIndex]) {
+  if (!examples?.length || !examples[currentIndex]) {
     return null;
   }
-
-  if (!examples?.length) return null;
 
   return (
     <>
