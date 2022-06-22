@@ -55,15 +55,6 @@
     }
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    &:target {
-      background: #d5ffe1;
-    }
-  }
-
   ul {
     li {
       margin-left: 0.95em;
@@ -148,8 +139,8 @@
       Menlo, Consolas, monospace;
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--surface-subdued);
-    color: var(--text-strong);
+    background: #222;
+    color: #fff;
     border-radius: var(--border-radius-500);
     overflow: auto;
     white-space: pre-wrap;
@@ -163,6 +154,48 @@
   .usage-list {
     + h3 {
       margin-top: 2.5rem !important;
+    }
+  }
+
+  table {
+    font-size: var(--font-size-200);
+    border-collapse: collapse;
+
+    th {
+      font-weight: var(--font-weight-600);
+      text-align: left;
+      border-bottom: var(--border);
+    }
+
+    th,
+    td {
+      padding: 0.125rem 1rem;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    th {
+      padding-bottom: 0.5rem;
+    }
+
+    tbody {
+      tr:first-child td {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+
+  :global {
+    .table-wrapper {
+      overflow: auto;
+      max-width: calc(100vw - 1.25rem);
+      width: 100%;
     }
   }
 }

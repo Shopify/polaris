@@ -355,4 +355,4 @@ Use when you need to programmatically scroll a child component into view in the 
 
 ## Related components
 
-- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/collapsible)
+- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible)

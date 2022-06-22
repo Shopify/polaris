@@ -14,10 +14,11 @@ import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
+import { foundationsNavItems } from "../data/navItems";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Foundations: 3,
-  Components: 2,
+  Components: 3,
   Tokens: 5,
   Icons: 14,
 };
@@ -89,7 +90,7 @@ Object.keys(metadata).forEach((fileName) => {
   const { name, set, description, keywords } = metadata[fileName];
   results.push({
     category: "Icons",
-    url: `/icons#${fileName}`,
+    url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
       icon: { fileName, keywords, name, description, set },

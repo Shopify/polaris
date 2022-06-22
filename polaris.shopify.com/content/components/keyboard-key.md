@@ -51,7 +51,7 @@ The shortcut description should describe what action is taken when merchants tap
 
 ## Related components
 
-- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](https://polaris.shopify.com/components/tooltip)
+- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](https://polaris.shopify.com/components/overlays/tooltip)
 
 ---
 

@@ -1,15 +1,13 @@
-import {
-  HighlightableSearchResult,
-  TokenPropertiesWithName,
-} from "../../types";
+import { SearchResultItem, TokenPropertiesWithName } from "../../types";
 import { createContext } from "react";
-import { className } from "../../utils/various";
+import { className, slugify } from "../../utils/various";
 import styles from "./TokenList.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
 import iconClipboard from "../../../public/icon-clipboard.svg";
 import Image from "../Image";
 import Tooltip from "../Tooltip";
 import { figmaColorNames } from "../../data/figmaColorNames";
+import Link from "next/link";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -108,13 +106,13 @@ function getFigmaUsageForToken(
   return usage;
 }
 
-interface TokenListItemProps extends HighlightableSearchResult {
+interface TokenListItemProps extends SearchResultItem {
   token: TokenPropertiesWithName;
 }
 
 function TokenListItem({
   token: { name, value, description },
-  isHighlighted,
+  searchResultData,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
@@ -127,12 +125,22 @@ function TokenListItem({
           key={name}
           className={className(
             styles.TokenListItem,
-            isHighlighted && styles.isHighlighted
+            !!searchResultData && styles.renderedInSearchResults,
+            searchResultData?.isHighlighted && styles.isHighlighted
           )}
+          {...searchResultData?.itemAttributes}
+          id={slugify(name)}
         >
           {columns.preview && (
             <td>
               <TokenPreview name={name} value={value} />
+              {searchResultData?.url && (
+                <Link href={searchResultData.url}>
+                  <a className={styles.ClickableItemLink} tabIndex={-1}>
+                    View token
+                  </a>
+                </Link>
+              )}
             </td>
           )}
           {columns.name && (
@@ -151,7 +159,10 @@ function TokenListItem({
                       </div>
                     )}
                   >
-                    <button onClick={copy}>
+                    <button
+                      onClick={copy}
+                      tabIndex={searchResultData?.tabIndex}
+                    >
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}

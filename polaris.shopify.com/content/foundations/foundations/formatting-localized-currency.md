@@ -264,117 +264,111 @@ The guiding questions are meant to help make merchant-focused decisions about wh
 
 This table shows commonly-used currencies in short and explicit formats.
 
-<div style="overflow-x: auto;">
-  <style>
-    td {white-space: nowrap;}
-    th [scope='rowgroup'] {vertical-align: top;}
-  </style>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" id="currency">Currency</th>
-        <th scope="col" id="locale">Locale</th>
-        <th scope="col" id="short">Short format</th>
-        <th scope="col" id="explicit">Explicit format</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" id="usd" headers="currency">US Dollar ($, USD)</th>
-        <td headers="locale usd">en-US</td>
-        <td headers="short usd">$12.50</td>
-        <td headers="explicit usd">$12.50 USD</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2" id="cad" headers="currency">
-          Canadian Dollar ($, CAD)
-        </th>
-        <td headers="locale cad">en-CA</td>
-        <td headers="short cad">$12.50</td>
-        <td headers="explicit cad">$12.50 CAD</td>
-      </tr>
-      <tr>
-        <td headers="locale cad" style="padding: 2.4rem;">fr-CA</td>
-        <td headers="short cad">12,50 $</td>
-        <td headers="explicit cad">12,50 $ CAD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="aud" headers="currency">
-          Australian Dollar ($, AUD)
-        </th>
-        <td headers="locale aud">en-AU</td>
-        <td headers="short aud">$12.50</td>
-        <td headers="explicit aud">$12.50 AUD</td>
-      </tr>
-      <tr>
-        <th
-          scope="rowgroup"
-          rowspan="3"
-          headers="currency"
-          style="vertical-align: top;"
-          id="eur"
-        >
-          Euro (€, EUR)
-        </th>
-        <td headers="locale eur">de-DE, fr-FR</td>
-        <td headers="short eur">12,50 €</td>
-        <td headers="explicit eur">12,50 € EUR</td>
-      </tr>
-      <tr>
-        <td headers="locale eur" style="padding: 2.4rem;">en-IE</td>
-        <td headers="short eur">€12.50</td>
-        <td headers="explicit eur">€12.50 EUR</td>
-      </tr>
-      <tr>
-        <td headers="locale eur" style="padding: 2.4rem;">nl-NL</td>
-        <td headers="short eur">€12,50</td>
-        <td headers="explicit eur">€12,50 EUR</td>
-      </tr>
-      <tr>
-        <th scope="row" id="gbp" headers="currency">British Pounds (£, GBP)</th>
-        <td headers="locale gbp">en-GB</td>
-        <td headers="short gbp">£12.50</td>
-        <td headers="explicit gbp">£12.50 GBP</td>
-      </tr>
-      <tr>
-        <th scope="row" id="jpy" headers="currency">Japanese Yen (¥, JPY)</th>
-        <td headers="locale jpy">ja-JP</td>
-        <td headers="short jpy">¥1250</td>
-        <td headers="explicit jpy">¥1250 JPY</td>
-      </tr>
-      <tr>
-        <th scope="row" id="nzd" headers="currency">
-          New Zealand Dollar ($, NZD)
-        </th>
-        <td headers="locale nzd">en-NZ</td>
-        <td headers="short nzd">$12.50</td>
-        <td headers="explicit nzd">$12.50 NZD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="hkd" headers="currency">
-          Hong Kong Dollar ($, HKD)
-        </th>
-        <td headers="locale hkd">zh-HK</td>
-        <td headers="short hkd">$12.50</td>
-        <td headers="explicit hkd">$12.50 HKD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="sgd" headers="currency">
-          Singapore Dollar ($, SGD)
-        </th>
-        <td headers="locale sgd">zh-SG</td>
-        <td headers="short sgd">$12.50</td>
-        <td headers="explicit sgd">$12.50 SGD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="dkk" headers="currency">Danish Krone (Kr, DKK)</th>
-        <td headers="locale dkk">da-DK</td>
-        <td headers="short dkk">12,50 kr.</td>
-        <td headers="explicit dkk">12,50 kr. DKK</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th scope="col" id="currency">Currency</th>
+      <th scope="col" id="locale">Locale</th>
+      <th scope="col" id="short">Short format</th>
+      <th scope="col" id="explicit">Explicit format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" id="usd" headers="currency">US Dollar ($, USD)</th>
+      <td headers="locale usd">en-US</td>
+      <td headers="short usd">$12.50</td>
+      <td headers="explicit usd">$12.50 USD</td>
+    </tr>
+    <tr>
+      <th scope="rowgroup" rowspan="2" id="cad" headers="currency">
+        Canadian Dollar ($, CAD)
+      </th>
+      <td headers="locale cad">en-CA</td>
+      <td headers="short cad">$12.50</td>
+      <td headers="explicit cad">$12.50 CAD</td>
+    </tr>
+    <tr>
+      <td headers="locale cad" style="padding: 2.4rem;">fr-CA</td>
+      <td headers="short cad">12,50 $</td>
+      <td headers="explicit cad">12,50 $ CAD</td>
+    </tr>
+    <tr>
+      <th scope="row" id="aud" headers="currency">
+        Australian Dollar ($, AUD)
+      </th>
+      <td headers="locale aud">en-AU</td>
+      <td headers="short aud">$12.50</td>
+      <td headers="explicit aud">$12.50 AUD</td>
+    </tr>
+    <tr>
+      <th
+        scope="rowgroup"
+        rowspan="3"
+        headers="currency"
+        style="vertical-align: top;"
+        id="eur"
+      >
+        Euro (€, EUR)
+      </th>
+      <td headers="locale eur">de-DE, fr-FR</td>
+      <td headers="short eur">12,50 €</td>
+      <td headers="explicit eur">12,50 € EUR</td>
+    </tr>
+    <tr>
+      <td headers="locale eur" style="padding: 2.4rem;">en-IE</td>
+      <td headers="short eur">€12.50</td>
+      <td headers="explicit eur">€12.50 EUR</td>
+    </tr>
+    <tr>
+      <td headers="locale eur" style="padding: 2.4rem;">nl-NL</td>
+      <td headers="short eur">€12,50</td>
+      <td headers="explicit eur">€12,50 EUR</td>
+    </tr>
+    <tr>
+      <th scope="row" id="gbp" headers="currency">British Pounds (£, GBP)</th>
+      <td headers="locale gbp">en-GB</td>
+      <td headers="short gbp">£12.50</td>
+      <td headers="explicit gbp">£12.50 GBP</td>
+    </tr>
+    <tr>
+      <th scope="row" id="jpy" headers="currency">Japanese Yen (¥, JPY)</th>
+      <td headers="locale jpy">ja-JP</td>
+      <td headers="short jpy">¥1250</td>
+      <td headers="explicit jpy">¥1250 JPY</td>
+    </tr>
+    <tr>
+      <th scope="row" id="nzd" headers="currency">
+        New Zealand Dollar ($, NZD)
+      </th>
+      <td headers="locale nzd">en-NZ</td>
+      <td headers="short nzd">$12.50</td>
+      <td headers="explicit nzd">$12.50 NZD</td>
+    </tr>
+    <tr>
+      <th scope="row" id="hkd" headers="currency">
+        Hong Kong Dollar ($, HKD)
+      </th>
+      <td headers="locale hkd">zh-HK</td>
+      <td headers="short hkd">$12.50</td>
+      <td headers="explicit hkd">$12.50 HKD</td>
+    </tr>
+    <tr>
+      <th scope="row" id="sgd" headers="currency">
+        Singapore Dollar ($, SGD)
+      </th>
+      <td headers="locale sgd">zh-SG</td>
+      <td headers="short sgd">$12.50</td>
+      <td headers="explicit sgd">$12.50 SGD</td>
+    </tr>
+    <tr>
+      <th scope="row" id="dkk" headers="currency">Danish Krone (Kr, DKK)</th>
+      <td headers="locale dkk">da-DK</td>
+      <td headers="short dkk">12,50 kr.</td>
+      <td headers="explicit dkk">12,50 kr. DKK</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

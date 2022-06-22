@@ -42,10 +42,18 @@ const Examples = (props: Props) => {
     setIframeHeight(`${exampleElement?.offsetHeight + padding}px`);
   };
 
+  useEffect(() => {
+    setIndex(0);
+  }, [examples]);
+
+  if (!examples[currentIndex]) {
+    return null;
+  }
+
   if (!examples?.length) return null;
 
   return (
-    <div>
+    <>
       <h2 id="examples">Examples</h2>
       <div className={styles.SelectContainer}>
         <select onChange={handleSelection}>
@@ -70,28 +78,28 @@ const Examples = (props: Props) => {
           />
         </div>
       </div>
+
       {description ? <p>{description}</p> : null}
-      <div
-        className={`${styles.Buttons} ${
-          showPreview && styles.ButtonsOverlayed
-        }`}
-      >
-        <button
-          className={`${styles.Button} ${
-            showPreview ? styles.ButtonSelected : ""
-          }`}
-          onClick={() => setShowPreview(true)}
-        >
-          Preview
-        </button>
-        <button
-          className={`${styles.Button} ${
-            showPreview ? "" : styles.ButtonSelected
-          }`}
-          onClick={() => setShowPreview(false)}
-        >
-          Code
-        </button>
+
+      <div className={styles.Buttons}>
+        <div>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? styles.ButtonSelected : ""
+            }`}
+            onClick={() => setShowPreview(true)}
+          >
+            Preview
+          </button>
+          <button
+            className={`${styles.Button} ${
+              showPreview ? "" : styles.ButtonSelected
+            }`}
+            onClick={() => setShowPreview(false)}
+          >
+            Code
+          </button>
+        </div>
         <CodesandboxButton className={styles.SandboxButton} code={code} />
       </div>
       {showPreview ? (
@@ -109,7 +117,7 @@ const Examples = (props: Props) => {
           {code}
         </CodeExample>
       )}
-    </div>
+    </>
   );
 };
 
