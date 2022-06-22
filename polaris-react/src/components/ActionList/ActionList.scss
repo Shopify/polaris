@@ -1,11 +1,6 @@
 @import '../../styles/common';
 
 .ActionList {
-  --pc-action-list-image-size: 20px;
-  --pc-action-list-item-min-height: var(--p-space-10);
-  --pc-action-list-item-vertical-padding: calc(
-    (var(--pc-action-list-item-min-height) - var(--p-line-height-2)) / 2
-  );
   outline: none;
   list-style: none;
   margin: 0;
@@ -42,6 +37,11 @@
 }
 
 .Item {
+  --pc-action-list-image-size: 20px;
+  --pc-action-list-item-min-height: var(--p-space-10);
+  --pc-action-list-item-vertical-padding: calc(
+    (var(--pc-action-list-item-min-height) - var(--p-line-height-2)) / 2
+  );
   @include unstyled-button;
   @include focus-ring;
   display: block;

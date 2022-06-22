@@ -54,7 +54,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @media #{$breakpoints-frame-when-nav-hidden-down} {
+  @media #{$p-breakpoints-md-down} {
     bottom: 0;
     max-height: 100%;
   }
@@ -91,6 +91,13 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
 
     @media #{$p-breakpoints-lg-up} {
       max-width: $large-width;
+    }
+  }
+
+  &.fullScreen {
+    height: 100%;
+    @media #{$p-breakpoints-md-up} {
+      height: unset;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { NavItem } from "../components/Nav/Nav";
+import type { NavItem } from "../components/Nav";
 import * as Icons from "./foundationsIcons";
 
 interface NavItemWithIconChild extends NavItem {
@@ -40,27 +40,19 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         url: "/foundations/foundations/information-architecture",
         icon: Icons.InformationArchitectureIcon,
         excerpt:
-          "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
+          "Everything we create at Shopify has an underlying foundation of information architecture.",
       },
-      {
-        title: "Mobile",
-        url: "/foundations/foundations/mobile",
-        icon: Icons.MobileIcon,
-        excerpt:
-          "Teams often design for the web and adapt to mobile. When this happens, mobile ends up being an adaptation of the web instead of higher quality, personalized experiences. We should approach web and mobile native at the same time.",
-      },
-      // {
-      //   title: "Designing apps for Shopify",
-      //   url: "/foundations/foundations/designing-apps",
-      // },
       // {
       //   title: "Onboarding flows",
       //   url: "/foundations/foundations/designing-onboarding-flows",
       // },
-      // {
-      //   title: "Currency",
-      //   url: "/foundations/foundations/formatting-localized-currency",
-      // },
+      {
+        icon: Icons.InformationArchitectureIcon,
+        url: "/foundations/foundations/formatting-localized-currency",
+        title: "Currency",
+        excerpt:
+          "Currencies are formatted differently in different countries and languages.",
+      },
     ],
   },
 
@@ -239,7 +231,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       // },
       {
         title: "Home cards",
-        url: "/foundations/patterns/home-card-guidelines",
+        url: "/foundations/patterns/home-cards",
         icon: Icons.HomeCardsIcon,
         excerpt:
           "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.",
@@ -294,6 +286,10 @@ export const contributingNavItems = [
         url: "/contributing/icons",
       },
       {
+        title: "Illustrations",
+        url: "/contributing/illustrations",
+      },
+      {
         title: "Documentation",
         url: "/contributing/documention",
       },
@@ -309,6 +305,10 @@ export const contributingNavItems = [
       {
         title: "When to evolve the system",
         url: "/contributing/when-to-evolve-the-system",
+      },
+      {
+        title: "Shipping your contribution",
+        url: "/contributing/shipping-your-contribution",
       },
     ],
   },

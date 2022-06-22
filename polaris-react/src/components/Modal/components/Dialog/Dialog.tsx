@@ -21,6 +21,7 @@ export interface DialogProps {
   onEntered?(): void;
   onExited?(): void;
   in?: boolean;
+  fullScreen?: boolean;
 }
 
 export function Dialog({
@@ -33,6 +34,7 @@ export function Dialog({
   large,
   small,
   limitHeight,
+  fullScreen,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
@@ -41,6 +43,7 @@ export function Dialog({
     small && styles.sizeSmall,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
+    fullScreen && styles.fullScreen,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 

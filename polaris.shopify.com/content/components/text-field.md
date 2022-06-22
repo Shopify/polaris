@@ -57,14 +57,14 @@ examples:
     title: Number field
     description: >-
       Use when input text should be a number.This will display the right
-      keyboard on mobile devices.undefinedThis will display the right keyboard
-      on mobile devices.undefined
+      keyboard on mobile devices. This will display the right keyboard
+      on mobile devices.
   - fileName: text-field-email-field.tsx
     title: Email field
     description: >-
       Use when the text input should be an email address.This will display the
-      right keyboard on mobile devices.undefinedThis will display the right
-      keyboard on mobile devices.undefined
+      right keyboard on mobile devices. This will display the right
+      keyboard on mobile devices.
   - fileName: text-field-multiline.tsx
     title: Multiline text field
     description: >-
@@ -116,15 +116,15 @@ examples:
       Use when a text field and several related fields make up a logical unit.If
       inputting weight as a number and a separate unit of measurement, use a
       text field with a selector (like “kg” or “lb”) as a connected
-      field.undefinedIf inputting weight as a number and a separate unit of
+      field. If inputting weight as a number and a separate unit of
       measurement, use a text field with a selector (like “kg” or “lb”) as a
-      connected field.undefined
-  - fileName: text-field-with-icon-action.tsx
-    title: Text field with icon action
-    description: >-
-      Use to let merchants take an action within the text field.For example, tap
-      on a barcode icon to launch the camera and scan barcode for the barcode
-      field. This helps merchants simplify their input.
+      connected field.
+  # - fileName: text-field-with-icon-action.tsx
+  #   title: Text field with icon action
+  #   description: >-
+  #     Use to let merchants take an action within the text field.For example, tap
+  #     on a barcode icon to launch the camera and scan barcode for the barcode
+  #     field. This helps merchants simplify their input.
   - fileName: text-field-with-validation-error.tsx
     title: Text field with validation error
     description: >-
@@ -171,8 +171,7 @@ examples:
 
 # Text field
 
-A text field is an input field that merchants can type into. It has a range of
-options and supports several text formats including numbers.
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 
 ---
 
@@ -228,7 +227,7 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ## Content guidelines
 
-For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/experiences/text-fields) page.
+For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/patterns/text-fields) page.
 
 ---
 

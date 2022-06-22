@@ -12,7 +12,6 @@ interface Props {
 
 function CodeExample({ title, children }: Props) {
   const [copy, didJustCopy] = useCopyToClipboard(children);
-  const lines = children.split("\n");
 
   return (
     <div className={styles.CodeExample}>
@@ -21,34 +20,30 @@ function CodeExample({ title, children }: Props) {
           <div className={styles.Title}>{title}</div>
         </div>
       )}
-      <Tooltip
-        ariaLabel="Copy to clipboard"
-        placement="top"
-        renderContent={() => (
-          <div className={styles.IconToolTip}>
-            <p>{didJustCopy ? "Copied" : "Copy"}</p>
-          </div>
-        )}
-      >
-        <button type="button" onClick={copy} className={styles.CopyButton}>
-          <Image
-            src={iconClipboard}
-            alt="Copy"
-            width={16}
-            height={16}
-            fadeIn={false}
-            icon
-          />
-        </button>
-      </Tooltip>
-
-      <div className={styles.Code}>
-        {lines.map((line, i) => (
-          <div className={styles.Line} key={line}>
-            <span className={styles.LineNumber}>{i + 1}</span> {line}
-          </div>
-        ))}
+      <div className={styles.CopyButtonWrapper}>
+        <Tooltip
+          ariaLabel="Copy to clipboard"
+          placement="top"
+          renderContent={() => (
+            <div className={styles.IconToolTip}>
+              <p>{didJustCopy ? "Copied" : "Copy"}</p>
+            </div>
+          )}
+        >
+          <button type="button" className={styles.CopyButton} onClick={copy}>
+            <Image
+              src={iconClipboard}
+              alt="Copy"
+              width={16}
+              height={16}
+              fadeIn={false}
+              icon
+            />
+          </button>
+        </Tooltip>
       </div>
+
+      <div className={styles.Code}>{children.toString().trim()}</div>
     </div>
   );
 }

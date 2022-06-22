@@ -37,10 +37,6 @@ Footer help should:
 - Never link to information designed to upsell to merchants
 - In rare cases, link to blog posts when there isn’t any help documentation to help merchants with the most logical next step in the workflow
 
-If you’re a Shopify app developer, footer help could also:
-
-- Provide links to contact information or a support ticketing system
-
 It’s recommended to link your footer help component to [help documentation](https://polaris.shopify.com/content/help-documentation). Linking directly to your contact information might result in receiving a higher number of emails or calls.
 
 ---
@@ -56,11 +52,6 @@ By default, footer help should link to information in the Shopify Help Center an
 Links should be:
 
 Clearly labeled: Merchants shouldn’t need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
-
-For Shopify app developers linking to contact information, footer help should follow this content pattern:
-
-- Option 1: {Contact us} about [X]
-- Option 2: Reach out to us at {contact info}
 
 <!-- usagelist -->
 
@@ -80,6 +71,5 @@ For Shopify app developers linking to contact information, footer help should fo
 
 ## Related components and documentation
 
-- To learn how to embed a link in a piece of text, [use the link component](https://polaris.shopify.com/components/link)
-- To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](https://polaris.shopify.com/content/help-documentation)
+- To learn how to embed a link in a piece of text, [use the link component](https://polaris.shopify.com/components/navigation/link)
 - To learn how to provide support for an app, [use the guide on supporting your app](https://help.shopify.com/en/api/app-store/being-successful-in-the-app-store/supporting-your-app)

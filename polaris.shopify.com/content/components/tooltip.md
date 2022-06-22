@@ -22,9 +22,7 @@ examples:
 
 # Tooltip
 
-Tooltips are floating labels that briefly explain the function of a user
-interface element. They can be triggered when merchants hover, focus, tap, or
-click.
+Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
 
 ---
 
@@ -70,4 +68,4 @@ To continue using Shopify, this amount must be paid immediately.
 
 ## Related components
 
-- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](https://polaris.shopify.com/components/forms/text-field), [footer help](https://polaris.shopify.com/components/titles-and-text/footer-help), or [an inline link to help](https://polaris.shopify.com/components/navigation/link)
+- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](https://polaris.shopify.com/components/forms/text-field), [footer help](https://polaris.shopify.com/components/navigation/footer-help), or [an inline link to help](https://polaris.shopify.com/components/navigation/link)

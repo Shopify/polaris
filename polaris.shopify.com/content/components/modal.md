@@ -58,62 +58,17 @@ examples:
     title: Modal with activator ref
   - fileName: modal-without-an-activator-prop.tsx
     title: Modal without an activator prop
-  - fileName: modal-warning.tsx
-    title: Warning modal
-    description: >-
-      Use to make it clear to the merchant that the action is potentially
-      dangerous. Only use this option when the merchant is about to perform an
-      action that can’t be undone or is difficult to undo.
+  # - fileName: modal-warning.tsx
+  #   title: Warning modal
+  #   description: >-
+  #     Use to make it clear to the merchant that the action is potentially
+  #     dangerous. Only use this option when the merchant is about to perform an
+  #     action that can’t be undone or is difficult to undo.
 ---
 
 # Modal
 
 Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
-
-Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
-
-The following example shows the modal component in an embedded application context:
-
-```jsx
-function EmbeddedAppModalExample() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleModalClose = useCallback(() => setModalOpen(false), []);
-
-  return (
-    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
-      <Modal
-        src="https://my-app.com/upgrade-to-retail-package"
-        open={modalOpen}
-        title="Upgrade your Shopify POS with the Retail Package"
-        primaryAction={{
-          content: "Add Retail Package",
-          onAction: handleModalClose,
-        }}
-        secondaryActions={[
-          {
-            content: "Cancel",
-            onAction: handleModalClose,
-          },
-        ]}
-        onClose={handleModalClose}
-      />
-    </AppProvider>
-  );
-}
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Modal`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
 
 ---
 
@@ -300,7 +255,7 @@ Body content should be:
 ## Related components
 
 - To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible) to expand content in place within the page
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/overlays/popover)
 - To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
 
 ---

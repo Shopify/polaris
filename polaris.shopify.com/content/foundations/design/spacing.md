@@ -227,8 +227,6 @@ Merchants can more easily perform a task on mobile when interactive elements fol
 
 <!-- end -->
 
-Read the [foundational principles for mobile design](/foundations/mobile).
-
 <div class="NextPage">
 Next<br/>
 <a href="/design/data-visualizations#navigation">Data visualizations</a>

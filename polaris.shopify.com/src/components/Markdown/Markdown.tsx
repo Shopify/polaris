@@ -43,6 +43,13 @@ function Markdown({ text, skipH1 }: Props) {
             }}
           ></span>
         ),
+        table: ({ children }) => {
+          return (
+            <div className="table-wrapper">
+              <table>{children}</table>
+            </div>
+          );
+        },
       }}
     >
       {text}

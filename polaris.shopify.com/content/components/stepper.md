@@ -13,16 +13,16 @@ keywords:
   - android
   - ios
 examples:
-  - fileName: stepper-default.tsx
-    title: Default stepper
-    description: >-
-      The stepper has two buttons, a minus and a plus button. It’s possible to
-      tap into the text field as well.
-  - fileName: stepper-disabled.tsx
-    title: Disabled stepper
-    description: >-
-      If you reach the bottom or top value, the appropriate button becomes
-      disabled.
+  # - fileName: stepper-default.tsx
+  #   title: Default stepper
+  #   description: >-
+  #     The stepper has two buttons, a minus and a plus button. It’s possible to
+  #     tap into the text field as well.
+  # - fileName: stepper-disabled.tsx
+  #   title: Disabled stepper
+  #   description: >-
+  #     If you reach the bottom or top value, the appropriate button becomes
+  #     disabled.
 ---
 
 # Stepper
