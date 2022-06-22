@@ -1,4 +1,4 @@
-import {metaTokens} from '../src/metadata';
+import {metaTokens} from '../src/metaTokens';
 import {
   createVar,
   getCustomPropertyNames,

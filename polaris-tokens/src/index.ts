@@ -1,4 +1,4 @@
-export * from './metadata';
+export * from './metaTokens';
 export * from './utilities';
 export type {
   MetaTokenGroup,
