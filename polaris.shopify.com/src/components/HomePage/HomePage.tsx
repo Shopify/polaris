@@ -7,6 +7,7 @@ import tokensImage from "./tokens.png";
 import iconsImage from "./icons.png";
 import foundationsImage from "./foundations.png";
 import Image from "../Image";
+import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
 
 interface Props {}
@@ -14,6 +15,8 @@ interface Props {}
 function HomePage({}: Props) {
   return (
     <div className={styles.HomePage}>
+      <PageMeta description="A starter kit for reimagining commerce." />
+
       <Container>
         <div className={styles.Hero}>
           <div className={styles.Text}>
