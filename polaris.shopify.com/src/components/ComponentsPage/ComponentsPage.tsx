@@ -12,6 +12,7 @@ import {
 } from "../../utils/various";
 import styles from "./ComponentsPage.module.scss";
 import { getTitleTagValue } from "../../utils/various";
+import PageMeta from "../PageMeta";
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();
@@ -24,6 +25,11 @@ export default function ComponentsPage({}: Props) {
       <Head>
         <title>{getTitleTagValue("Components")}</title>
       </Head>
+
+      <PageMeta
+        title="Components"
+        description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
+      />
 
       <Layout navItems={componentNav} showTOC={false}>
         <h1>Components</h1>
