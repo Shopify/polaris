@@ -55,14 +55,3 @@
 @mixin page-header-has-secondary-actions {
   padding-top: var(--p-space-4);
 }
-
-@mixin page-actions-layout {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: var(--p-space-4);
-
-  @media #{$breakpoints-page-content-when-not-fully-condensed-up} {
-    margin-top: var(--p-space-2);
-  }
-}

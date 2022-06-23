@@ -32,4 +32,4 @@ $breakpoints-page-content-when-layout-stacked-down: breakpoints-down(1040px, $in
 
 $breakpoints-page-content-when-partially-condensed-down: breakpoints-down(984px, $inclusive: true);
 
-$breakpoints-page-content-when-not-fully-condensed-up: breakpoints-up(490px);
+$breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);
