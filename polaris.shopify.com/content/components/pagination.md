@@ -64,14 +64,14 @@ Web pagination should:
 iOS and Android pagination should:
 
 - Start loading items when merchants are close to the bottom, roughly 5 items from the end
-- Show [a spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) below the list to indicate that items have been requested
+- Show [a spinner](https://polaris.shopify.com/components/spinner) below the list to indicate that items have been requested
 
 ---
 
 ## Related components
 
-- To see how pagination is used on a page, see the [page component](https://polaris.shopify.com/components/structure/page)
-- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/structure/page-actions)
-- The [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
-- To create stand-alone navigational links or calls to action, use the [button component](https://polaris.shopify.com/components/actions/button)
-- To embed actions or pathways to more information within a sentence, use the [link component](https://polaris.shopify.com/components/navigation/link)
+- To see how pagination is used on a page, see the [page component](https://polaris.shopify.com/components/page)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/page-actions)
+- The [resource list component](https://polaris.shopify.com/components/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
+- To create stand-alone navigational links or calls to action, use the [button component](https://polaris.shopify.com/components/button)
+- To embed actions or pathways to more information within a sentence, use the [link component](https://polaris.shopify.com/components/link)

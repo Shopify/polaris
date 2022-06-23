@@ -141,7 +141,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 ## Related components
 
-- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/forms/tag)
+- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/tag)
 
 ---
 
@@ -167,6 +167,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
+Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
 
 <!-- /content-for -->

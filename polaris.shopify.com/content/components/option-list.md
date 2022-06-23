@@ -32,7 +32,7 @@ examples:
 
 # Option list
 
-The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/forms/choice-list) and should not be used within a form, but as a standalone menu.
+The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
 
 ---
 
@@ -41,9 +41,9 @@ The option list component lets you create a list of grouped items that merchants
 The option list component should:
 
 - Be placed on its own inside a container. Usually the container behaves like a
-  menu, as it does with [popover](https://polaris.shopify.com/components/overlays/popover). Don’t
+  menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t
   place other components within the same container.
-- Not be used when a [select component](https://polaris.shopify.com/components/forms/select) will do.
+- Not be used when a [select component](https://polaris.shopify.com/components/select) will do.
 
 ---
 
@@ -70,11 +70,11 @@ Each item in an option list should be clear and descriptive.
 ## Related components
 
 - To render a list of actions,
-  [use the action list component](https://polaris.shopify.com/components/actions/action-list)
+  [use the action list component](https://polaris.shopify.com/components/action-list)
 - To create a list of grouped radio buttons or checkboxes,
-  [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+  [use the choice list component](https://polaris.shopify.com/components/choice-list)
 - For a basic version of option list as a single choice menu,
-  [use the select component](https://polaris.shopify.com/components/forms/select)
+  [use the select component](https://polaris.shopify.com/components/select)
 
 ---
 
@@ -102,7 +102,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
 
-Controls in simple option lists are [buttons](https://polaris.shopify.com/components/actions/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/forms/checkbox).
+Controls in simple option lists are [buttons](https://polaris.shopify.com/components/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/checkbox).
 
 If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 

@@ -97,9 +97,9 @@ A resource list displays a collection of objects of the same type, like products
 
 Resource lists can also:
 
-- Support [customized list items](https://polaris.shopify.com/components/lists-and-tables/resource-item)
+- Support [customized list items](https://polaris.shopify.com/components/resource-item)
 - Include bulk actions so merchants can act on multiple objects at once
-- Support sorting and [filtering](https://polaris.shopify.com/components/lists-and-tables/filters) of long lists
+- Support sorting and [filtering](https://polaris.shopify.com/components/filters) of long lists
 - Be paired with pagination to make long lists digestible
 
 ---
@@ -109,8 +109,8 @@ Resource lists can also:
 Using a resource list in a project involves combining the following components and subcomponents:
 
 - ResourceList
-- [ResourceItem](https://polaris.shopify.com/components/lists-and-tables/resource-item) or a customized list item
-- [Filters](https://polaris.shopify.com/components/lists-and-tables/filters) (optional)
+- [ResourceItem](https://polaris.shopify.com/components/resource-item) or a customized list item
+- [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
 <!-- hint -->
@@ -155,7 +155,7 @@ On wide screens, a resource list often looks like a table, especially if some co
 
 A data table is a form of data visualization. It works best to present highly structured data for comparison and analysis.
 
-If your use case is more about visualizing or analyzing data, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table). If your use case is more about finding and taking action on objects, use a resource list.
+If your use case is more about visualizing or analyzing data, use the [data table component](https://polaris.shopify.com/components/data-table). If your use case is more about finding and taking action on objects, use a resource list.
 
 <!-- end -->
 
@@ -168,11 +168,11 @@ Resource lists can live in many places in Shopify. You could include a short res
 Resource lists should:
 
 - Have items that perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
-- [Customize the content and layout](https://polaris.shopify.com/components/lists-and-tables/resource-item) of their list items to support merchants’ needs.
+- [Customize the content and layout](https://polaris.shopify.com/components/resource-item) of their list items to support merchants’ needs.
 - Support sorting if the list can be long, and especially if different merchant tasks benefit from different sort orders.
-- Support [filtering](https://polaris.shopify.com/components/lists-and-tables/filters) if the list can be long.
+- Support [filtering](https://polaris.shopify.com/components/filters) if the list can be long.
 - Paginate when the current list contains more than 50 items.
-- Use the [skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
+- Use the [skeleton page](https://polaris.shopify.com/components/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
 
 Resource lists can optionally:
 
@@ -215,11 +215,11 @@ Resource lists should:
 
 - Follow the verb + noun formula for bulk actions
 
-- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/lists-and-tables/filters#section-content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#section-content-guidelines)
 
 ---
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table)
-- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
+- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/list)

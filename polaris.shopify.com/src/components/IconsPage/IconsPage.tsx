@@ -286,7 +286,7 @@ function SidebarContent({
 
         <p className={styles.SmallParagraph}>
           Then render it using the{" "}
-          <a href="https://polaris.shopify.com/components/images-and-icons/icon">
+          <a href="https://polaris.shopify.com/components/icon">
             icon component
           </a>
           :

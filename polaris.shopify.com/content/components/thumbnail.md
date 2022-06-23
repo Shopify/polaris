@@ -78,4 +78,4 @@ For thumbnails, we recommend using a format that describes what will show in the
 
 ## Related components
 
-- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/images-and-icons/avatar)
+- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/avatar)

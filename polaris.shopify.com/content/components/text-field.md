@@ -233,9 +233,9 @@ For text field content guidelines, reference the [text fields experience](https:
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
-- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/forms/inline-error)
-- It’s common to [use a select component](https://polaris.shopify.com/components/forms/select) connected to the left or right of a text field.
+- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/form-layout)
+- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/inline-error)
+- It’s common to [use a select component](https://polaris.shopify.com/components/select) connected to the left or right of a text field.
 
 ---
 

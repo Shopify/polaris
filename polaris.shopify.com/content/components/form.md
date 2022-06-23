@@ -37,8 +37,8 @@ The form component should be used to:
 
 ## Related components
 
-- To arrange fields within a form using standard spacing, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
-- To see all of the components that make up a form, [visit the form section](https://polaris.shopify.com/components/forms/checkbox#navigation) of the component library
+- To arrange fields within a form using standard spacing, [use the form layout component](https://polaris.shopify.com/components/form-layout)
+- To see all of the components that make up a form, [visit the form section](https://polaris.shopify.com/components/checkbox#navigation) of the component library
 
 ---
 

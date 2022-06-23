@@ -39,7 +39,7 @@ export default function ComponentsPage({}: Props) {
                   )
                   .map(({ frontMatter, intro }) => {
                     const { name } = frontMatter;
-                    const url = `/components/${slugify(name.toLowerCase())}`;
+                    const url = `/components/${slugify(name)}`;
                     return (
                       <ComponentGrid.Item
                         key={name}

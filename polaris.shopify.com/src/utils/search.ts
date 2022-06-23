@@ -14,7 +14,6 @@ import metadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
-import { foundationsNavItems } from "../data/navItems";
 
 const MAX_RESULTS: { [key: string]: number } = {
   Foundations: 3,
@@ -99,29 +98,21 @@ Object.keys(metadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
-  const parts = name.split("/");
-  if (parts.length >= 2) {
-    const sectionSlug = slugify(parts[0]);
+foundations.forEach(
+  ({ frontMatter: { name, keywords, slug }, intro, section }) => {
+    const url = `/foundations/${section}/${slug}`;
 
-    const allowedSections = ["patterns", "foundations", "design", "content"];
-    if (allowedSections.includes(sectionSlug)) {
-      const title = parts[parts.length - 1];
-
-      const url = `/foundations/${sectionSlug}/${slug}`;
-
-      results.push({
-        category: "Foundations",
-        score: 0,
-        url,
-        meta: {
-          title,
-          excerpt: intro,
-        },
-      });
-    }
+    results.push({
+      category: "Foundations",
+      score: 0,
+      url,
+      meta: {
+        title: name,
+        excerpt: intro,
+      },
+    });
   }
-});
+);
 
 const fuse = new Fuse(results, {
   keys: [
