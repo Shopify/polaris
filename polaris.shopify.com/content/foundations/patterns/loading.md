@@ -1,5 +1,5 @@
 ---
-name: Patterns/Loading
+name: Loading
 slug: loading
 keywords:
   - page loading

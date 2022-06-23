@@ -98,21 +98,19 @@ Object.keys(metadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(
-  ({ frontMatter: { name, keywords, slug }, intro, section }) => {
-    const url = `/foundations/${section}/${slug}`;
+foundations.forEach(({ frontMatter: { name }, intro, section }) => {
+  const url = `/foundations/${section}/${slugify(name)}`;
 
-    results.push({
-      category: "Foundations",
-      score: 0,
-      url,
-      meta: {
-        title: name,
-        excerpt: intro,
-      },
-    });
-  }
-);
+  results.push({
+    category: "Foundations",
+    score: 0,
+    url,
+    meta: {
+      title: name,
+      excerpt: intro,
+    },
+  });
+});
 
 const fuse = new Fuse(results, {
   keys: [
