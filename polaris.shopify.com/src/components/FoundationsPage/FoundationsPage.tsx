@@ -1,16 +1,17 @@
-import Head from "next/head";
 import { MarkdownFile } from "../../types";
 import { foundationsNavItems } from "../../data/navItems";
 import Layout from "../Layout";
-import { getTitleTagValue } from "../../utils/various";
 import Longform from "../Longform";
 import Markdown from "../Markdown";
+import PageMeta from "../PageMeta";
 
 interface Props {
   markdownFile: MarkdownFile;
 }
 
-function FoundationsPage({ markdownFile: { readme, frontMatter } }: Props) {
+function FoundationsPage({
+  markdownFile: { readme, intro, frontMatter },
+}: Props) {
   let title = frontMatter?.name || "";
 
   if (title.includes("/")) {
@@ -20,9 +21,7 @@ function FoundationsPage({ markdownFile: { readme, frontMatter } }: Props) {
 
   return (
     <Layout width="narrow" navItems={foundationsNavItems} title={title}>
-      <Head>
-        <title>{getTitleTagValue(title)}</title>
-      </Head>
+      <PageMeta title={title} description={intro} />
 
       <Longform>
         <Markdown text={readme} skipH1 />

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { getTitleTagValue } from "../../utils/various";
 import styles from "./PageMeta.module.scss";
 
@@ -9,8 +10,10 @@ interface Props {
 function PageMeta({ title, description }: Props) {
   return (
     <div className={styles.PageMeta}>
-      <title>{getTitleTagValue(title)}</title>
-      {description && <meta name="description" content={description} />}
+      <Head>
+        <title>{getTitleTagValue(title)}</title>
+        {description && <meta name="description" content={description} />}
+      </Head>
     </div>
   );
 }

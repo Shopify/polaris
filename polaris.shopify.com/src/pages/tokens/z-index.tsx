@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import React from "react";
-import { getTitleTagValue } from "../../utils/various";
 import TokensPage from "../../components/TokensPage";
+import PageMeta from "../../components/PageMeta";
 
 const Components: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>{getTitleTagValue("Z-index")}</title>
-      </Head>
+      <PageMeta title="Z index tokens" />
 
       <TokensPage tokenGroup={"zIndex"} />
     </>

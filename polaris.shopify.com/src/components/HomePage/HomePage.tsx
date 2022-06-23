@@ -1,18 +1,11 @@
-import Link from "next/link";
 import Container from "../Container";
 import styles from "./HomePage.module.scss";
-import Head from "next/head";
-import { getTitleTagValue } from "../../utils/various";
 
 interface Props {}
 
 function HomePage({}: Props) {
   return (
     <div className={styles.HomePage}>
-      <Head>
-        <title>{getTitleTagValue("Homepage")}</title>
-      </Head>
-
       <div className={styles.Intro}>
         <Container className={styles.IntroContent}>
           <h1>A design system built for commerce</h1>

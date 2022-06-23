@@ -22,10 +22,6 @@ interface Props {}
 export default function ComponentsPage({}: Props) {
   return (
     <div className={styles.ComponentsPage}>
-      <Head>
-        <title>{getTitleTagValue("Components")}</title>
-      </Head>
-
       <PageMeta
         title="Components"
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
