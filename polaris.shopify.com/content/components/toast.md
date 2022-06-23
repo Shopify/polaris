@@ -33,11 +33,11 @@ examples:
   - fileName: toast-with-custom-duration.tsx
     title: Toast with custom duration
     description: Use to shorten or lengthen the default duration of 5000 milliseconds.
-  - fileName: toast-with-action.tsx
-    title: Toast with action
-    description: >-
-      Use when a merchant has the ability to act on the message. For example, to
-      undo a change or retry an action.
+  # - fileName: toast-with-action.tsx
+  #   title: Toast with action
+  #   description: >-
+  #     Use when a merchant has the ability to act on the message. For example, to
+  #     undo a change or retry an action.
   # - fileName: toast-default.tsx
   #   title: Default toast
   #   description: >-
@@ -55,12 +55,6 @@ examples:
     description: >-
       On iOS, icons are available for cases where you want to
       re-inforce the message.
-  # - fileName: toast-with-action.tsx
-  #   title: With action
-  #   description: >-
-  #     Use action when merchants have the ability to act on the message. For
-  #     example, to undo a change or retry an action. Keep the action label short,
-  #     preferably 1 verb action.
 ---
 
 # Toast
