@@ -8,19 +8,20 @@ interface Props {}
 const isServer = typeof window === "undefined";
 const localStorageKey = "siteLaunchBannerVisible";
 
-let visibleDefault = true;
-
-if (!isServer) {
-  const visibleValueInLocalStorage =
-    window.localStorage.getItem(localStorageKey);
-  if (visibleValueInLocalStorage === "false") {
-    visibleDefault = false;
-  }
-}
-
 function SiteLaunchBanner({}: Props) {
   const router = useRouter();
   const [githubUrl, setGithubUrl] = useState(router.asPath);
+
+  let visibleDefault = true;
+
+  if (!isServer) {
+    const visibleValueInLocalStorage =
+      window.localStorage.getItem(localStorageKey);
+    if (visibleValueInLocalStorage === "false") {
+      visibleDefault = false;
+    }
+  }
+
   const [visible, setVisible] = useState(visibleDefault);
 
   useEffect(() => {
@@ -34,6 +35,10 @@ function SiteLaunchBanner({}: Props) {
     if (!isServer) {
       window.localStorage.setItem(localStorageKey, "false");
     }
+  }
+
+  if (!visible) {
+    return null;
   }
 
   return (
