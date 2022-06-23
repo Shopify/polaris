@@ -3,8 +3,13 @@
   display: flex;
   align-items: center;
   padding-bottom: 10rem; // Optical adjustment
+  text-align: center;
 
   .Icon {
     opacity: 0.25;
+  }
+
+  h1 {
+    margin-top: 2rem;
   }
 }

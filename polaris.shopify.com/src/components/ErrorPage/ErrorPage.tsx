@@ -38,7 +38,7 @@ function ErrorPage({ statusCode = 404 }: Props) {
         <title>{statusCode} — Page not found</title>
       </Head>
       <Container>
-        <div style={{ textAlign: "center", marginTop: "4rem" }}>
+        <div className={styles.Text}>
           <Longform>
             <Image
               className={styles.Icon}
@@ -48,7 +48,7 @@ function ErrorPage({ statusCode = 404 }: Props) {
               alt=""
             />
 
-            <h1 style={{ marginTop: "2rem" }}>{title}</h1>
+            <h1>{title}</h1>
             <p>{description}</p>
             <p>
               If there should be something here{" "}
