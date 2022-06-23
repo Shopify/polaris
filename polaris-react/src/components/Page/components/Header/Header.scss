@@ -1,7 +1,6 @@
 @import '../../../../styles/common';
 
 $action-menu-rollup-computed-width: 40px;
-$breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
 
 .Header {
   @include page-header-layout;
@@ -225,7 +224,7 @@ $breakpoints-medium-layout-down: breakpoints-down(860px, $inclusive: true);
 }
 
 .mediumTitle:not(.noBreadcrumbs) {
-  @media #{$breakpoints-medium-layout-down} {
+  @media #{$p-breakpoints-md-down} {
     @include condensed-layout;
   }
 }
