@@ -63,8 +63,8 @@ export const TextSingleComponentExercise = () => {
             <Text variant="headingMd" fontWeight="semibold">
               Most purchased products
             </Text>
-            <ProductTile name="Ocean breeze candle" variants="3" />
-            <ProductTile name="Corn maze candle" variants="3" />
+            <ProductTile name="Ocean breeze candle" variants={3} />
+            <ProductTile name="Corn maze candle" variants={3} />
           </Stack>
           <Stack vertical>
             <Stack distribution="equalSpacing">
@@ -73,8 +73,8 @@ export const TextSingleComponentExercise = () => {
               </Text>
               <Icon source={FollowUpEmailMajor} color="subdued" />
             </Stack>
-            <ProductTile name="Matcha candle" variants="3" />
-            <ProductTile name="Maple glaze candle" variants="3" />
+            <ProductTile name="Matcha candle" variants={3} />
+            <ProductTile name="Maple glaze candle" variants={3} />
           </Stack>
         </Stack>
       </Card.Section>
