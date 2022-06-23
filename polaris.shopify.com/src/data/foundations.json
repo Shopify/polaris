@@ -286,13 +286,7 @@
   {
     "frontMatter": {
       "name": "App release notes",
-      "keywords": [
-        "release",
-        "notes",
-        "app",
-        "updates",
-        "fixes"
-      ]
+      "keywords": ["release", "notes", "app", "updates", "fixes"]
     },
     "intro": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.",
     "section": "content"
@@ -339,11 +333,7 @@
   {
     "frontMatter": {
       "name": "Colors",
-      "keywords": [
-        "visual patterns",
-        "color strategy",
-        "color use"
-      ]
+      "keywords": ["visual patterns", "color strategy", "color use"]
     },
     "intro": "Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.",
     "section": "design"
@@ -351,9 +341,7 @@
   {
     "frontMatter": {
       "name": "Data visualizations",
-      "keywords": [
-        "data viz"
-      ]
+      "keywords": ["data viz"]
     },
     "intro": "Visualizations surface patterns in data, and provide immediate answers to a\nsingle, specific question.",
     "section": "design"
@@ -361,11 +349,7 @@
   {
     "frontMatter": {
       "name": "Design",
-      "keywords": [
-        "visual design",
-        "design language",
-        "design"
-      ]
+      "keywords": ["visual design", "design language", "design"]
     },
     "intro": "These are the principles that shape how we design all the experiences across the Shopify admin.",
     "section": "design"
@@ -398,10 +382,7 @@
   {
     "frontMatter": {
       "name": "Illustrations",
-      "keywords": [
-        "drawings",
-        "pictures"
-      ]
+      "keywords": ["drawings", "pictures"]
     },
     "intro": "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
     "section": "design"
@@ -428,11 +409,7 @@
   {
     "frontMatter": {
       "name": "Sounds",
-      "keywords": [
-        "audio",
-        "sonic",
-        "noise"
-      ]
+      "keywords": ["audio", "sonic", "noise"]
     },
     "intro": "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
     "section": "design"
@@ -456,11 +433,7 @@
   {
     "frontMatter": {
       "name": "Typography",
-      "keywords": [
-        "type styles",
-        "font sizes",
-        "fonts"
-      ]
+      "keywords": ["type styles", "font sizes", "fonts"]
     },
     "intro": "Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.",
     "section": "design"
@@ -607,14 +580,7 @@
   {
     "frontMatter": {
       "name": "Error messages",
-      "keywords": [
-        "error states",
-        "invalid",
-        500,
-        400,
-        404,
-        "error pages"
-      ]
+      "keywords": ["error states", "invalid", 500, 400, 404, "error pages"]
     },
     "intro": "Error messages can be scary. Make errors visible to merchants, easy to\nunderstand, and helpful.",
     "section": "patterns"
@@ -622,12 +588,7 @@
   {
     "frontMatter": {
       "name": "Help content",
-      "keywords": [
-        "help text",
-        "learn more",
-        "help center",
-        "help"
-      ]
+      "keywords": ["help text", "learn more", "help center", "help"]
     },
     "intro": "​\nHelp content is educational text that describes interactive elements or offers information about concepts in the UI.",
     "section": "patterns"
@@ -635,11 +596,7 @@
   {
     "frontMatter": {
       "name": "Home cards",
-      "keywords": [
-        "home cards",
-        "insights",
-        "milestones"
-      ]
+      "keywords": ["home cards", "insights", "milestones"]
     },
     "intro": "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.",
     "section": "patterns"
@@ -647,21 +604,14 @@
   {
     "frontMatter": {
       "name": "Page layouts",
-      "keywords": [
-        "layout",
-        "page",
-        "columns",
-        "hierarchy",
-        "spacing",
-        "stack"
-      ]
+      "keywords": ["layout", "page", "columns", "hierarchy", "spacing", "stack"]
     },
     "intro": "Layout patterns provide common ways to arrange the content of a screen.",
     "section": "patterns"
   },
   {
     "frontMatter": {
-      "name": "Patterns/Loading",
+      "name": "Loading",
       "slug": "loading",
       "keywords": [
         "page loading",
@@ -694,11 +644,7 @@
   {
     "frontMatter": {
       "name": "Text fields",
-      "keywords": [
-        "text fields",
-        "search",
-        "placeholder text"
-      ]
+      "keywords": ["text fields", "search", "placeholder text"]
     },
     "intro": "Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.",
     "section": "patterns"
