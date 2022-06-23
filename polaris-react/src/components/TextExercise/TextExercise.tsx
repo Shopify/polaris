@@ -17,14 +17,18 @@ import {Stack} from '../Stack';
 import {Text} from '../Text';
 import {TextHeading as Heading} from '../TextHeading';
 
-/* eslint-disable @shopify/jsx-no-hardcoded-content */
+interface ProductTileProps {
+  name: string;
+  variants: number;
+}
 
-export const ProductTile = (props) => {
+/* eslint-disable @shopify/jsx-no-hardcoded-content */
+export const ProductTile = ({name, variants}: ProductTileProps) => {
   return (
     <Stack vertical spacing="extraTight">
-      <Text variant="bodyMd">{props.name}</Text>
+      <Text variant="bodyMd">{name}</Text>
       <Text variant="bodySm" color="subdued">
-        {props.variants} variants
+        {variants} variants
       </Text>
     </Stack>
   );
