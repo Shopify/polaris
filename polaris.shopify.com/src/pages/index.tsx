@@ -1,5 +1,5 @@
-import ResourcesPage from "../components/ResourcesPage";
+import HomePage from "../components/HomePage";
 
-const Resources = () => <ResourcesPage />;
+const Resources = () => <HomePage />;
 
 export default Resources;
