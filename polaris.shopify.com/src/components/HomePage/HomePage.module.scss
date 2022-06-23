@@ -37,10 +37,13 @@
   margin: 3rem auto;
   opacity: 0;
 
+  @media screen and (max-width: $breakpointDesktopLarge) {
+    margin: 1.5rem auto;
+  }
+
   @media screen and (max-width: $breakpointTablet) {
     height: 2px;
     width: 60px;
-    margin: 4rem auto;
   }
 }
 
@@ -72,6 +75,10 @@
     max-width: 36rem;
     margin: 0 auto;
     color: var(--text-strong);
+  }
+
+  @media screen and (max-width: $breakpointDesktopLarge) {
+    padding-top: 4rem;
   }
 
   @media screen and (max-width: $breakpointTablet) {
