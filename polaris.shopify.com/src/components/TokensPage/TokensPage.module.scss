@@ -51,7 +51,7 @@
     border-right: none;
   }
 
-  @media screen and (max-width: $breakpointDesktopLarge) {
+  @media screen and (max-width: $breakpointDesktop) {
     margin-bottom: 2rem;
 
     ul {
@@ -80,7 +80,7 @@
       }
     }
   }
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     ul {
       li {
         min-width: 50%;
