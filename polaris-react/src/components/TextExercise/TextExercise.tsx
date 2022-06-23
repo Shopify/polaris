@@ -18,6 +18,18 @@ import {Text} from '../Text';
 import {TextHeading as Heading} from '../TextHeading';
 
 /* eslint-disable @shopify/jsx-no-hardcoded-content */
+
+export const ProductTile = (props) => {
+  return (
+    <Stack vertical spacing="extraTight">
+      <Text variant="bodyMd">{props.name}</Text>
+      <Text variant="bodySm" color="subdued">
+        {props.variants} variants
+      </Text>
+    </Stack>
+  );
+};
+
 export const TextSingleComponentExercise = () => {
   return (
     <Card>
@@ -47,18 +59,8 @@ export const TextSingleComponentExercise = () => {
             <Text variant="headingMd" fontWeight="semibold">
               Most purchased products
             </Text>
-            <Stack vertical spacing="extraTight">
-              <Text variant="bodyMd">Ocean breeze candle</Text>
-              <Text variant="bodySm" color="subdued">
-                3 variants
-              </Text>
-            </Stack>
-            <Stack vertical spacing="extraTight">
-              <Text variant="bodyMd">Corn maze candle</Text>
-              <Text variant="bodySm" color="subdued">
-                3 variants
-              </Text>
-            </Stack>
+            <ProductTile name="Ocean breeze candle" variants="3" />
+            <ProductTile name="Corn maze candle" variants="3" />
           </Stack>
           <Stack vertical>
             <Stack distribution="equalSpacing">
@@ -67,18 +69,8 @@ export const TextSingleComponentExercise = () => {
               </Text>
               <Icon source={FollowUpEmailMajor} color="subdued" />
             </Stack>
-            <Stack vertical spacing="extraTight">
-              <Text variant="bodyMd">Matcha candle</Text>
-              <Text variant="bodySm" color="subdued">
-                3 variants
-              </Text>
-            </Stack>
-            <Stack vertical spacing="extraTight">
-              <Text variant="bodyMd">Maple glaze candle</Text>
-              <Text variant="bodySm" color="subdued">
-                3 variants
-              </Text>
-            </Stack>
+            <ProductTile name="Matcha candle" variants="3" />
+            <ProductTile name="Maple glaze candle" variants="3" />
           </Stack>
         </Stack>
       </Card.Section>
