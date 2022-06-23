@@ -3,27 +3,39 @@ import Image from "next/image";
 
 import Longform from "../Longform";
 import Container from "../Container";
-import styles from "./Error404Page.module.scss";
+import styles from "./ErrorPage.module.scss";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 
-interface Props {}
+interface Props {
+  statusCode?: number;
+}
 
-function Error404Page({}: Props) {
+function ErrorPage({ statusCode = 404 }: Props) {
   const router = useRouter();
   const [githubUrl, setGithubUrl] = useState(router.asPath);
 
   useEffect(() => {
-    const title = `[polaris.shopify.com] 404 not found at ${router.asPath}`;
-    const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${title}&amp;labels=polaris.shopify.com`;
+    const issueTitle = `[polaris.shopify.com] ${statusCode} not found at ${router.asPath}`;
+    const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${issueTitle}&amp;labels=polaris.shopify.com`;
     setGithubUrl(newGithubUrl);
-  }, [router.asPath]);
+  }, [statusCode, router.asPath]);
+
+  const title =
+    statusCode === 404
+      ? "There’s no page at this address"
+      : "Something went wrong";
+
+  const description =
+    statusCode === 404
+      ? "Check the URL and try again, or use the search field to find what you need."
+      : "The Polaris team has been notified of the error.";
 
   return (
-    <div className={styles.Error404Page}>
+    <div className={styles.ErrorPage}>
       <Head>
-        <title>404 — Page not found</title>
+        <title>{statusCode} — Page not found</title>
       </Head>
       <Container>
         <div style={{ textAlign: "center", marginTop: "4rem" }}>
@@ -35,13 +47,9 @@ function Error404Page({}: Props) {
               height={100}
               alt=""
             />
-            <h1 style={{ marginTop: "2rem" }}>
-              There’s no page at this address
-            </h1>
-            <p>
-              Check the URL and try again, or use the search field to find what
-              you need.
-            </p>
+
+            <h1 style={{ marginTop: "2rem" }}>{title}</h1>
+            <p>{description}</p>
             <p>
               If there should be something here{" "}
               <a href={githubUrl}>let us know</a>.
@@ -53,4 +61,4 @@ function Error404Page({}: Props) {
   );
 }
 
-export default Error404Page;
+export default ErrorPage;
