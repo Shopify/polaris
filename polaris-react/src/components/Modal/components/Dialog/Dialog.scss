@@ -12,8 +12,6 @@ $breakpoints-xsmall-width-up: breakpoints-up(
   $xsmall-width + $dangerous-magic-space-16
 );
 
-$breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
-
 .Container {
   position: fixed;
   z-index: var(--p-z-11);
@@ -68,9 +66,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
 
   &.limitHeight {
     @media #{$p-breakpoints-md-up} {
-      @media #{$breakpoints-height-limit-up} {
-        max-height: $height-limit;
-      }
+      max-height: $height-limit;
     }
   }
 
