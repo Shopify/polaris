@@ -17,7 +17,7 @@ function ErrorPage({ statusCode = 404 }: Props) {
   const [githubUrl, setGithubUrl] = useState(router.asPath);
 
   useEffect(() => {
-    const issueTitle = `[polaris.shopify.com] ${statusCode} not found at ${router.asPath}`;
+    const issueTitle = `[polaris.shopify.com] ${statusCode} at ${router.asPath}`;
     const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${issueTitle}&amp;labels=polaris.shopify.com`;
     setGithubUrl(newGithubUrl);
   }, [statusCode, router.asPath]);
