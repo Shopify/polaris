@@ -47,7 +47,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       //   url: "/foundations/foundations/designing-onboarding-flows",
       // },
       {
-        icon: Icons.InformationArchitectureIcon,
+        icon: Icons.CurrencyIcon,
         url: "/foundations/foundations/formatting-localized-currency",
         title: "Currency",
         excerpt:
