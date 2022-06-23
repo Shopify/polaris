@@ -7,12 +7,18 @@ import componentsImage from "./components.png";
 import tokensImage from "./tokens.png";
 import iconsImage from "./icons.png";
 import Image from "../Image";
+import PageMeta from "../PageMeta";
 
 interface Props {}
 
 function ResourcesPage({}: Props) {
   return (
     <div className={styles.ResourcesPage}>
+      <PageMeta
+        title="A starter kit for reimagining commerce"
+        description="Our design system helps us work together to build a great experience for all of Shopify’s merchants."
+      />
+
       <Container>
         <div className={styles.Hero}>
           <div className={styles.Text}>
@@ -50,8 +56,8 @@ function ResourcesPage({}: Props) {
                 <p className={styles.Description}>
                   Components are reusable building blocks made of interface
                   elements and styles, packaged through code. Piece them
-                  together, improve them, and create new ones to solve
-                  merchant problems.
+                  together, improve them, and create new ones to solve merchant
+                  problems.
                 </p>
                 <Links
                   links={[
@@ -87,7 +93,9 @@ function ResourcesPage({}: Props) {
               <div className={styles.Text}>
                 <h3>Tokens</h3>
                 <p className={styles.Description}>
-                  Design tokens are coded names that represent design decisions for elements like color, spacing, and typography. Applying them to our designs unifies merchant experiences.
+                  Design tokens are coded names that represent design decisions
+                  for elements like color, spacing, and typography. Applying
+                  them to our designs unifies merchant experiences.
                 </p>
                 <Links
                   links={[

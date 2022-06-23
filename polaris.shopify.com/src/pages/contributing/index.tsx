@@ -1,15 +1,14 @@
 import type { GetStaticProps, NextPage } from "next";
 import fs from "fs";
 import path from "path";
-import Head from "next/head";
 
 import Layout from "../../components/Layout";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
 import { contributingNavItems } from "../../data/navItems";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { getTitleTagValue } from "../../utils/various";
 import { MarkdownFile } from "../../types";
+import PageMeta from "../../components/PageMeta";
 
 interface Props {
   readme: MarkdownFile["readme"];
@@ -22,9 +21,7 @@ const Contributing: NextPage<Props> = ({ readme }) => {
       navItems={contributingNavItems}
       showTOC={false}
     >
-      <Head>
-        <title>{getTitleTagValue("Contributing to Polaris")}</title>
-      </Head>
+      <PageMeta title="Contributing to Polaris" />
 
       <Longform>
         <Markdown text={readme} skipH1 />
