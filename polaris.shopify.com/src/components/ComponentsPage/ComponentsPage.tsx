@@ -11,7 +11,6 @@ import {
   getComponentNav,
 } from "../../utils/various";
 import styles from "./ComponentsPage.module.scss";
-import { getTitleTagValue } from "../../utils/various";
 import PageMeta from "../PageMeta";
 
 const componentCategories = getComponentCategories();

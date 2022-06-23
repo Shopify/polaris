@@ -68,7 +68,6 @@ export type GroupedSearchResults = {
 };
 
 export type Icon = {
-  fileName: string;
   keywords: string[];
   name: string;
   description: string;

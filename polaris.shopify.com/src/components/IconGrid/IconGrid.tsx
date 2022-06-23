@@ -1,11 +1,6 @@
 import Image from "../Image";
 import { className } from "../../utils/various";
 import Tooltip from "../Tooltip";
-const importedSvgs = require.context(
-  "../../../../polaris-icons/icons",
-  true,
-  /\.svg$/
-);
 import styles from "./IconGrid.module.scss";
 import { Icon, SearchResultItem } from "../../types";
 
@@ -19,26 +14,25 @@ function IconGrid({ children }: IconGridProps) {
 
 interface IconGridItemProps extends SearchResultItem {
   icon: Icon;
-  onClick: (iconName: string) => void;
   isSelected?: boolean;
+  fileName: string;
 }
 
 function IconGridItem({
   icon,
-  onClick,
   isSelected,
+  fileName,
   searchResultData,
 }: IconGridItemProps) {
   return (
-    <li
-      key={`${icon.name}+${icon.set}`}
+    <div
+      key={`${fileName}`}
       className={className(
         styles.Icon,
         searchResultData?.isHighlighted && styles.isHighlighted,
         isSelected && styles.isSelected
       )}
       {...searchResultData?.itemAttributes}
-      id={icon.fileName}
     >
       <Tooltip
         ariaLabel={icon.description}
@@ -51,13 +45,10 @@ function IconGridItem({
           </div>
         )}
       >
-        <button
-          onClick={() => onClick(icon.name)}
-          tabIndex={searchResultData?.tabIndex}
-        >
+        <>
           <div className={styles.SVGWrapper}>
             <Image
-              src={importedSvgs(`./${icon.fileName}.svg`)}
+              src={`/icons/${fileName}.svg`}
               alt={icon.description}
               width={20}
               height={20}
@@ -65,9 +56,9 @@ function IconGridItem({
             />
           </div>
           <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
-        </button>
+        </>
       </Tooltip>
-    </li>
+    </div>
   );
 }
 

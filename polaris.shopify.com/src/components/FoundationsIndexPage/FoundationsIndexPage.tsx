@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { foundationsNavItems } from "../../data/navItems";
-import { getTitleTagValue } from "../../utils/various";
 import styles from "./FoundationsIndexPage.module.scss";
 import Link from "next/link";
 import Layout from "../Layout";
