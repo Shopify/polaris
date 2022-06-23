@@ -68,25 +68,25 @@ export const getStaticProps: GetStaticProps<
       body: readmeBody,
     };
 
-    const examples = data?.frontMatter?.examples.map((example: Example) => {
-      const examplePath = path.resolve(
-        process.cwd(),
-        `src/pages/examples/${example.fileName}`
-      );
-      let code = "";
+    const examples = (data?.frontMatter?.examples || []).map(
+      (example: Example) => {
+        const examplePath = path.resolve(
+          process.cwd(),
+          `src/pages/examples/${example.fileName}`
+        );
+        let code = "";
 
-      if (fs.existsSync(examplePath)) {
-        code = fs.readFileSync(examplePath, "utf-8");
-        code = code
-          .split("\n")
-          .filter((line) => !line.includes("withPolarisExample"))
-          .join("\n");
+        if (fs.existsSync(examplePath)) {
+          code = fs.readFileSync(examplePath, "utf-8");
+          code = code
+            .split("\n")
+            .filter((line) => !line.includes("withPolarisExample"))
+            .join("\n");
+        }
+
+        return { ...example, code };
       }
-
-      console.log("code is", code);
-
-      return { ...example, code };
-    });
+    );
     const props: Props = {
       ...data.frontMatter,
       examples,

@@ -1,20 +1,30 @@
+@import "../../styles/mixins.scss";
+
 .CodeExample {
-  border-radius: var(--border-radius-400);
-  overflow: hidden;
-  box-shadow: var(--card-shadow);
   line-height: 1.4;
-}
+  border-radius: var(--border-radius-400);
+  max-width: calc(100vw - 1.5rem);
 
-.TitleBar {
-  padding: 0.5rem 0.75em;
-  background: var(--surface-subdued);
-  margin: 1px 1px 0 0.5px;
-  border-radius: var(--border-radius-400) var(--border-radius-400)
-    var(--border-radius-300) var(--border-radius-300);
+  @include dark-mode {
+    box-shadow: var(--card-shadow);
+  }
 
-  .Title {
-    font-size: var(--font-size-50);
-    font-weight: var(--font-weight-500);
+  &.minimalist {
+    box-shadow: none;
+    border: 1px solid var(--border-color-light);
+
+    .CopyButton svg {
+      filter: brightness(-500%);
+
+      @include dark-mode {
+        filter: brightness(500);
+      }
+    }
+  }
+
+  &:not(.minimalist) {
+    background: #202021;
+    color: #e7e7e7;
   }
 }
 
@@ -29,10 +39,13 @@
   position: absolute;
   padding: 0.5rem;
   background: transparent;
-  display: flex;
-  align-items: center;
   opacity: 0.5;
   border-radius: var(--border-radius-200);
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 
   &:hover {
     opacity: 1;
@@ -48,10 +61,15 @@
   font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
     Menlo, Consolas, monospace;
   white-space: pre;
-  padding: 0.4rem 0.1rem;
-  font-size: 13px;
-  color: var(--text-strong);
+  padding: 0.5rem 0.66rem;
+  font-size: 14px;
+  line-height: 1.6;
   overflow: auto;
+}
+
+.CodeExample.minimalist .Code {
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .LineNumber {

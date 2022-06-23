@@ -1,5 +1,30 @@
 # Changelog
 
+## 9.19.0
+
+### Minor Changes
+
+- [#6162](https://github.com/Shopify/polaris/pull/6162) [`b62da0997`](https://github.com/Shopify/polaris/commit/b62da0997b635fb1231a66be1ac9feb5d7191c0f) Thanks [@rivaridley](https://github.com/rivaridley)! - Added the `fullScreen` prop to `Modal` to set its height to the viewport height on small screens
+
+* [#6223](https://github.com/Shopify/polaris/pull/6223) [`d5362cf75`](https://github.com/Shopify/polaris/commit/d5362cf7525d6e8dcb1c01395cae84fce994e39c) Thanks [@chloerice](https://github.com/chloerice)! - Fixed the close button overlaying `Modal` content when `titleHidden` is `true` ([#6223](https://github.com/Shopify/polaris/pull/6223))
+
+- [#6229](https://github.com/Shopify/polaris/pull/6229) [`754f4e0b4`](https://github.com/Shopify/polaris/commit/754f4e0b4d0aa37de4fb345ee5bef765d538b699) Thanks [@felipeleusin](https://github.com/felipeleusin)! - Exported the `ActionList.Item` sub-component
+
+* [#6305](https://github.com/Shopify/polaris/pull/6305) [`ca470f58e`](https://github.com/Shopify/polaris/commit/ca470f58e963c933b97111dc83f8410f05fbd339) Thanks [@aishad](https://github.com/aishad)! - Add Collapsible `preventMeasuringOnChildrenUpdate` prop
+
+### Patch Changes
+
+- [#6249](https://github.com/Shopify/polaris/pull/6249) [`77cde3d77`](https://github.com/Shopify/polaris/commit/77cde3d7739c5ed9cc2c9ee9cab4f7eb772cc5e6) Thanks [@philschoefer](https://github.com/philschoefer)! - Fixed `Uncaught TypeError: Cannot read property 'rightEdge' of undefined` in `DataTable` ([#6249](https://github.com/Shopify/polaris-react/pull/6249))
+
+* [#6298](https://github.com/Shopify/polaris/pull/6298) [`42b924350`](https://github.com/Shopify/polaris/commit/42b9243500c98c5e76d7149b14da1ff7f348ee53) Thanks [@felipeleusin](https://github.com/felipeleusin)! - Moved item-related CSS variables to the `ActionList` `.Item` class
+
+- [#6267](https://github.com/Shopify/polaris/pull/6267) [`bb85e244a`](https://github.com/Shopify/polaris/commit/bb85e244af4672a390860e9b2fcf4ea7a7ae47d4) Thanks [@charlesdobson](https://github.com/charlesdobson)! - Added more styling and elements to FullscreenBar code example
+
+* [#6175](https://github.com/Shopify/polaris/pull/6175) [`ccedec2ae`](https://github.com/Shopify/polaris/commit/ccedec2aef473b9a7cdc31d8b28ed60686cddbaa) Thanks [@alex-page](https://github.com/alex-page)! - Remove deprecated guidance for Modal
+
+* Updated dependencies [[`78285533c`](https://github.com/Shopify/polaris/commit/78285533c921c8b438d4e8881d794716d8316690)]:
+  - @shopify/polaris-tokens@5.4.0
+
 ## 9.18.0
 
 ### Minor Changes

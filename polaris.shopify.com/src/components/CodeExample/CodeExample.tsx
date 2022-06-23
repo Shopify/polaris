@@ -1,26 +1,25 @@
 import Image from "../Image";
 import Tooltip from "../Tooltip";
 import iconClipboard from "../../../public/icon-clipboard.svg";
-import styles from "./CodeExample.module.scss";
+import Prism from "prismjs";
 import { useCopyToClipboard } from "../../utils/hooks";
+import styles from "./CodeExample.module.scss";
+import { className } from "../../utils/various";
 
 interface Props {
   language: "terminal" | "typescript";
   title?: string;
+  minimalist?: boolean;
   children: string;
 }
 
-function CodeExample({ title, children }: Props) {
+function CodeExample({ minimalist, children }: Props) {
   const [copy, didJustCopy] = useCopyToClipboard(children);
-  const lines = children.split("\n");
 
   return (
-    <div className={styles.CodeExample}>
-      {title && (
-        <div className={styles.TitleBar}>
-          <div className={styles.Title}>{title}</div>
-        </div>
-      )}
+    <div
+      className={className(styles.CodeExample, minimalist && styles.minimalist)}
+    >
       <div className={styles.CopyButtonWrapper}>
         <Tooltip
           ariaLabel="Copy to clipboard"
@@ -31,27 +30,43 @@ function CodeExample({ title, children }: Props) {
             </div>
           )}
         >
-          <button type="button" className={styles.CopyButton} onClick={copy}>
-            <Image
-              src={iconClipboard}
-              alt="Copy"
-              width={16}
-              height={16}
-              fadeIn={false}
-              icon
-            />
+          <button
+            type="button"
+            className={styles.CopyButton}
+            onClick={copy}
+            aria-label="Copy to clipboard"
+          >
+            <ClipboardIcon />
           </button>
         </Tooltip>
       </div>
 
-      <div className={styles.Code}>
-        {lines.map((line, i) => (
-          <div className={styles.Line} key={line}>
-            <span className={styles.LineNumber}>{i + 1}</span> {line}
-          </div>
-        ))}
-      </div>
+      {minimalist ? (
+        <div className={styles.Code}>{children}</div>
+      ) : (
+        <div
+          className={styles.Code}
+          dangerouslySetInnerHTML={{
+            __html: Prism.highlight(
+              String(children).trim(),
+              Prism.languages.javascript,
+              "javasript"
+            ),
+          }}
+        ></div>
+      )}
     </div>
+  );
+}
+
+function ClipboardIcon() {
+  return (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M15 2a1 1 0 011 1v13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 014 16.5V3a1 1 0 112 0v1a2 2 0 002 2h4a2 2 0 002-2V3a1 1 0 011-1zm-4 2H9a1 1 0 110-2h2a1 1 0 110 2z"
+        fill="#fff"
+      />
+    </svg>
   );
 }
 

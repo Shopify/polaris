@@ -15,7 +15,6 @@ import Link from "next/link";
 import { className, slugify, stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
-import ThemeProvider from "../ThemeProvider";
 
 interface Props {}
 
@@ -168,7 +167,7 @@ function GlobalSearch({}: Props) {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.ModalBackdrop}></div>
-        <ThemeProvider theme="dark">
+        <div className="dark-mode">
           <>
             <Dialog.Panel className={styles.Results}>
               {isOpen && (
@@ -336,7 +335,7 @@ function GlobalSearch({}: Props) {
               </div>
             </Dialog.Panel>
           </>
-        </ThemeProvider>
+        </div>
       </Dialog>
     </>
   );

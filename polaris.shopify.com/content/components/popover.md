@@ -46,11 +46,11 @@ examples:
     description: >-
       Use to present merchants with a list that dynamically loads more items on
       scroll or arrow down.
-  - fileName: popover-action-sheet.tsx
-    title: Action sheet
-    description: >-
-      Use when you have few actions that affects the whole page. Action sheets
-      doesn’t support icons or additional information.undefined
+  # - fileName: popover-action-sheet.tsx
+  #   title: Action sheet
+  #   description: >-
+  #     Use when you have few actions that affects the whole page. Action sheets
+  #     doesn’t support icons or additional information.
 ---
 
 # Popover

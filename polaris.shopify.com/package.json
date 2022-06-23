@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "build": "yarn run copy-icons && next build",
@@ -12,7 +12,8 @@
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
     "generate-nav": "node src/scripts/generateNav.mjs",
-    "copy-icons": "node src/scripts/copy-icons.mjs"
+    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/og-images/index.js"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
@@ -44,6 +45,8 @@
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "next-sitemap": "^3.1.5",
+    "canvas": "^2.9.1"
   }
 }

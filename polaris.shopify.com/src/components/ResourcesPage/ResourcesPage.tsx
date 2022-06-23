@@ -21,7 +21,10 @@ function ResourcesPage({}: Props) {
               <br /> for reimagining
               <br /> commerce.
             </h1>
-            <p>{`Our design system helps us work together to build a great experience for all of Shopify’s merchants.`}</p>
+            <p>
+              Our design system helps us work together to build a great
+              experience for all of Shopify’s merchants.
+            </p>
           </div>
         </div>
       </Container>
@@ -30,23 +33,25 @@ function ResourcesPage({}: Props) {
 
       <Container className={className(styles.Step, styles.Foundations)}>
         <h2>Explore the foundations</h2>
-        <p>{`Polaris is a carefully crafted design system built to solve very specific problems. By learning how the system works, you'll be able to design the best possible solutions for all merchants.`}</p>
+        <p>
+          Our design foundations offer fundamental design elements and guidance
+          for creating good merchant experiences.
+        </p>
         <Link href="/foundations">Start learning</Link>
       </Container>
       <div className={styles.Line}></div>
 
       <div className={className(styles.Step, styles.BuildingBlocks)}>
         <Container>
-          <h2>Play with the building blocks</h2>
-
           <div className={styles.Blocks}>
             <div className={styles.Block}>
               <div className={styles.Text}>
                 <h3>Components</h3>
                 <p className={styles.Description}>
-                  The core library that give you access to components, styles
-                  and everything else you need to build a great app with
-                  Polaris.
+                  Components are reusable building blocks made of interface
+                  elements and styles, packaged through code. Piece them
+                  together, improve them, and create new ones to solve
+                  merchant problems.
                 </p>
                 <Links
                   links={[
@@ -82,9 +87,7 @@ function ResourcesPage({}: Props) {
               <div className={styles.Text}>
                 <h3>Tokens</h3>
                 <p className={styles.Description}>
-                  Tokens are the building blocks for extending Polaris. Combine
-                  colors, spacing, typography and more into entierly new
-                  experiences.
+                  Design tokens are coded names that represent design decisions for elements like color, spacing, and typography. Applying them to our designs unifies merchant experiences.
                 </p>
                 <Links
                   links={[
@@ -121,8 +124,9 @@ function ResourcesPage({}: Props) {
               <div className={styles.Text}>
                 <h3>Icons</h3>
                 <p className={styles.Description}>
-                  The Polaris icon library contains 400+ carefully designed
-                  icons focused on commerce and entrepreneurship.
+                  The Polaris icon library has 400+ carefully designed icons
+                  focused on commerce and entrepreneurship. Use them as visual
+                  aids to help merchants complete tasks.
                 </p>
                 <Links
                   links={[

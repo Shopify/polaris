@@ -55,20 +55,20 @@ examples:
     description: >-
       Default to using toasts for success messages, unless the feedback is
       delayed, persistent, or has a call to actionInclude next steps if
-      applicableundefinedundefined
+      applicable
   - fileName: banner-warning.tsx
     title: Warning banners
     description: >-
       Use to display information that needs attention or that merchants need to
       take action onSeeing these banners can be stressful for merchants so be
-      cautious about using themundefinedundefined
+      cautious about using them
   - fileName: banner-critical.tsx
     title: Critical banners
     description: >-
       Use to communicate problems that have to be resolved immediately for
       merchants to complete a taskFor example, you will show this banner for
       orders with high fraud riskSeeing these banners can be stressful for
-      merchants so be cautious about using themundefinedundefined
+      merchants so be cautious about using them
   - fileName: banner-in-a-modal.tsx
     title: Banner in a modal
     description: >-

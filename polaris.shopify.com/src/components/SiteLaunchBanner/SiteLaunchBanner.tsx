@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useState } from "react";
 import styles from "./SiteLaunchBanner.module.scss";
 
@@ -6,22 +8,26 @@ interface Props {}
 const isServer = typeof window === "undefined";
 const localStorageKey = "siteLaunchBannerVisible";
 
-function SiteLaunchBanner({}: Props) {
-  let visibleDefault = true;
+let visibleDefault = true;
 
-  if (!isServer) {
-    const visibleValueInLocalStorage =
-      window.localStorage.getItem(localStorageKey);
-    if (visibleValueInLocalStorage === "false") {
-      visibleDefault = false;
-    }
+if (!isServer) {
+  const visibleValueInLocalStorage =
+    window.localStorage.getItem(localStorageKey);
+  if (visibleValueInLocalStorage === "false") {
+    visibleDefault = false;
   }
+}
 
+function SiteLaunchBanner({}: Props) {
+  const router = useRouter();
+  const [githubUrl, setGithubUrl] = useState(router.asPath);
   const [visible, setVisible] = useState(visibleDefault);
 
-  if (!visible) {
-    return null;
-  }
+  useEffect(() => {
+    const title = `[polaris.shopify.com] Feedback (on page ${router.asPath})`;
+    const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${title}&amp;labels=polaris.shopify.com`;
+    setGithubUrl(newGithubUrl);
+  }, [router.asPath]);
 
   function dismiss() {
     setVisible(false);
@@ -46,7 +52,11 @@ function SiteLaunchBanner({}: Props) {
       </button>
       <span className={styles.Emoji}>👋</span>
       <p>{`We've made some improvements to our website to help you build more efficiently with Polaris.`}</p>
+
       <ul>
+        <li>
+          <a href={githubUrl}>Share feedback</a>
+        </li>
         <li>
           <a href="https://legacy.polaris.shopify.com">
             Return to the old site

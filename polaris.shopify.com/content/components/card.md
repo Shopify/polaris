@@ -37,14 +37,14 @@ examples:
       items to a card containing a long list, or enter a customer’s new
       address.Use for less important card actions, or actions merchants may do
       before reviewing the contents of the card.Use an icon for the action, if
-      possibleInclude no more than 2 actionsundefinedundefined
+      possibleInclude no more than 2 actions
   - fileName: card-with-footer-actions.tsx
     title: Card with footer actions
     description: >-
       Use footer actions for a card’s most important actions, or actions
       merchants should do after reviewing the contents of the card.Use buttons
       with labelsIf you have more than 2 actions, consider using an overflow
-      menu on the cardundefinedundefined
+      menu on the card
   - fileName: card-with-multiple-footer-actions.tsx
     title: Card with multiple footer actions
   - fileName: card-with-custom-footer-actions.tsx
