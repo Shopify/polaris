@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon } from "./icons";
-=======
->>>>>>> main
 import Container from "../Container";
 import Link from "next/link";
 import { className } from "../../utils/various";
@@ -17,7 +14,6 @@ interface Props {}
 function HomePage({}: Props) {
   return (
     <div className={styles.HomePage}>
-<<<<<<< HEAD
       <Container>
         <div className={styles.Hero}>
           <div className={styles.Text}>
@@ -35,11 +31,6 @@ function HomePage({}: Props) {
       </Container>
 
       <div className={styles.Line}></div>
-=======
-      <div className={styles.Intro}>
-        <Container className={styles.IntroContent}>
-          <h1>A design system built for commerce</h1>
->>>>>>> main
 
       <div className={className(styles.Step, styles.BuildingBlocks)}>
         <Container>
