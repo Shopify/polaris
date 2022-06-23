@@ -1,5 +1,5 @@
 ---
-name: Components
+name: Code of Conduct
 keywords:
   - components
   - contributing to polaris react

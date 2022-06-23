@@ -1,0 +1,530 @@
+{
+  "components": {
+    "title": "Components",
+    "account-connection": {
+      "title": "Account connection",
+      "url": "account-connection"
+    },
+    "action-list": {
+      "title": "Action list",
+      "url": "action-list"
+    },
+    "app-provider": {
+      "title": "App provider",
+      "url": "app-provider"
+    },
+    "autocomplete": {
+      "title": "Autocomplete",
+      "url": "autocomplete"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "url": "avatar"
+    },
+    "badge": {
+      "title": "Badge",
+      "url": "badge"
+    },
+    "banner": {
+      "title": "Banner",
+      "url": "banner"
+    },
+    "button-group": {
+      "title": "Button group",
+      "url": "button-group"
+    },
+    "button": {
+      "title": "Button",
+      "url": "button"
+    },
+    "callout-card": {
+      "title": "Callout card",
+      "url": "callout-card"
+    },
+    "caption": {
+      "title": "Caption",
+      "url": "caption"
+    },
+    "card": {
+      "title": "Card",
+      "url": "card"
+    },
+    "checkbox": {
+      "title": "Checkbox",
+      "url": "checkbox"
+    },
+    "choice-list": {
+      "title": "Choice list",
+      "url": "choice-list"
+    },
+    "collapsible": {
+      "title": "Collapsible",
+      "url": "collapsible"
+    },
+    "color-picker": {
+      "title": "Color picker",
+      "url": "color-picker"
+    },
+    "combobox": {
+      "title": "Combobox",
+      "url": "combobox"
+    },
+    "contextual-save-bar": {
+      "title": "Contextual save bar",
+      "url": "contextual-save-bar"
+    },
+    "custom-properties": {
+      "title": "Custom properties",
+      "url": "custom-properties"
+    },
+    "data-table": {
+      "title": "Data table",
+      "url": "data-table"
+    },
+    "date-picker": {
+      "title": "Date picker",
+      "url": "date-picker"
+    },
+    "description-list": {
+      "title": "Description list",
+      "url": "description-list"
+    },
+    "display-text": {
+      "title": "Display text",
+      "url": "display-text"
+    },
+    "drop-zone": {
+      "title": "Drop zone",
+      "url": "drop-zone"
+    },
+    "empty-state": {
+      "title": "Empty state",
+      "url": "empty-state"
+    },
+    "exception-list": {
+      "title": "Exception list",
+      "url": "exception-list"
+    },
+    "filters": {
+      "title": "Filters",
+      "url": "filters"
+    },
+    "footer-help": {
+      "title": "Footer help",
+      "url": "footer-help"
+    },
+    "form-layout": {
+      "title": "Form layout",
+      "url": "form-layout"
+    },
+    "form": {
+      "title": "Form",
+      "url": "form"
+    },
+    "frame": {
+      "title": "Frame",
+      "url": "frame"
+    },
+    "fullscreen-bar": {
+      "title": "Fullscreen bar",
+      "url": "fullscreen-bar"
+    },
+    "grid": {
+      "title": "Grid",
+      "url": "grid"
+    },
+    "heading": {
+      "title": "Heading",
+      "url": "heading"
+    },
+    "icon": {
+      "title": "Icon",
+      "url": "icon"
+    },
+    "index-table": {
+      "title": "Index table",
+      "url": "index-table"
+    },
+    "inline-error": {
+      "title": "Inline error",
+      "url": "inline-error"
+    },
+    "keyboard-accessories": {
+      "title": "Keyboard accessories",
+      "url": "keyboard-accessories"
+    },
+    "keyboard-key": {
+      "title": "Keyboard key",
+      "url": "keyboard-key"
+    },
+    "layout": {
+      "title": "Layout",
+      "url": "layout"
+    },
+    "link": {
+      "title": "Link",
+      "url": "link"
+    },
+    "list": {
+      "title": "List",
+      "url": "list"
+    },
+    "listbox": {
+      "title": "Listbox",
+      "url": "listbox"
+    },
+    "loading": {
+      "title": "Loading",
+      "url": "loading"
+    },
+    "media-card": {
+      "title": "Media card",
+      "url": "media-card"
+    },
+    "modal": {
+      "title": "Modal",
+      "url": "modal"
+    },
+    "navigation": {
+      "title": "Navigation",
+      "url": "navigation"
+    },
+    "option-list": {
+      "title": "Option list",
+      "url": "option-list"
+    },
+    "page-actions": {
+      "title": "Page actions",
+      "url": "page-actions"
+    },
+    "page": {
+      "title": "Page",
+      "url": "page"
+    },
+    "pagination": {
+      "title": "Pagination",
+      "url": "pagination"
+    },
+    "popover": {
+      "title": "Popover",
+      "url": "popover"
+    },
+    "progress-bar": {
+      "title": "Progress bar",
+      "url": "progress-bar"
+    },
+    "radio-button": {
+      "title": "Radio button",
+      "url": "radio-button"
+    },
+    "range-slider": {
+      "title": "Range slider",
+      "url": "range-slider"
+    },
+    "resource-item": {
+      "title": "Resource item",
+      "url": "resource-item"
+    },
+    "resource-list": {
+      "title": "Resource list",
+      "url": "resource-list"
+    },
+    "scrollable": {
+      "title": "Scrollable",
+      "url": "scrollable"
+    },
+    "section-header": {
+      "title": "Section header",
+      "url": "section-header"
+    },
+    "select": {
+      "title": "Select",
+      "url": "select"
+    },
+    "setting-toggle": {
+      "title": "Setting toggle",
+      "url": "setting-toggle"
+    },
+    "sheet": {
+      "title": "Sheet",
+      "url": "sheet"
+    },
+    "skeleton-body-text": {
+      "title": "Skeleton body text",
+      "url": "skeleton-body-text"
+    },
+    "skeleton-display-text": {
+      "title": "Skeleton display text",
+      "url": "skeleton-display-text"
+    },
+    "skeleton-page": {
+      "title": "Skeleton page",
+      "url": "skeleton-page"
+    },
+    "skeleton-tabs": {
+      "title": "Skeleton tabs",
+      "url": "skeleton-tabs"
+    },
+    "skeleton-thumbnail": {
+      "title": "Skeleton thumbnail",
+      "url": "skeleton-thumbnail"
+    },
+    "spinner": {
+      "title": "Spinner",
+      "url": "spinner"
+    },
+    "stack": {
+      "title": "Stack",
+      "url": "stack"
+    },
+    "stepper": {
+      "title": "Stepper",
+      "url": "stepper"
+    },
+    "subheading": {
+      "title": "Subheading",
+      "url": "subheading"
+    },
+    "tabs": {
+      "title": "Tabs",
+      "url": "tabs"
+    },
+    "tag": {
+      "title": "Tag",
+      "url": "tag"
+    },
+    "text-container": {
+      "title": "Text container",
+      "url": "text-container"
+    },
+    "text-field": {
+      "title": "Text field",
+      "url": "text-field"
+    },
+    "text-style": {
+      "title": "Text style",
+      "url": "text-style"
+    },
+    "thumbnail": {
+      "title": "Thumbnail",
+      "url": "thumbnail"
+    },
+    "toast": {
+      "title": "Toast",
+      "url": "toast"
+    },
+    "tooltip": {
+      "title": "Tooltip",
+      "url": "tooltip"
+    },
+    "top-bar": {
+      "title": "Top bar",
+      "url": "top-bar"
+    },
+    "video-thumbnail": {
+      "title": "Video thumbnail",
+      "url": "video-thumbnail"
+    },
+    "visually-hidden": {
+      "title": "Visually hidden",
+      "url": "visually-hidden"
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "code-of-conduct": {
+      "title": "Code of conduct",
+      "url": "code-of-conduct"
+    },
+    "components": {
+      "title": "Components",
+      "url": "components"
+    },
+    "documention": {
+      "title": "Documention",
+      "url": "documention"
+    },
+    "figma-ui-kit": {
+      "title": "Figma ui kit",
+      "url": "figma-ui-kit"
+    },
+    "icons": {
+      "title": "Icons",
+      "url": "icons"
+    },
+    "illustrations": {
+      "title": "Illustrations",
+      "url": "illustrations"
+    },
+    "index": {
+      "title": "Index",
+      "url": "index"
+    },
+    "shipping-your-contribution": {
+      "title": "Shipping your contribution",
+      "url": "shipping-your-contribution"
+    },
+    "thinking-in-systems": {
+      "title": "Thinking in systems",
+      "url": "thinking-in-systems"
+    },
+    "when-to-evolve-the-system": {
+      "title": "When to evolve the system",
+      "url": "when-to-evolve-the-system"
+    }
+  },
+  "foundations": {
+    "title": "Foundations",
+    "content": {
+      "title": "Content",
+      "accessible-and-inclusive-language": {
+        "title": "Accessible and inclusive language",
+        "url": "accessible-and-inclusive-language"
+      },
+      "actionable-language": {
+        "title": "Actionable language",
+        "url": "actionable-language"
+      },
+      "alternative-text": {
+        "title": "Alternative text",
+        "url": "alternative-text"
+      },
+      "grammar-and-mechanics": {
+        "title": "Grammar and mechanics",
+        "url": "grammar-and-mechanics"
+      },
+      "help-documentation": {
+        "title": "Help documentation",
+        "url": "help-documentation"
+      },
+      "merchant-to-customer": {
+        "title": "Merchant to customer",
+        "url": "merchant-to-customer"
+      },
+      "naming": {
+        "title": "Naming",
+        "url": "naming"
+      },
+      "product-content": {
+        "title": "Product content",
+        "url": "product-content"
+      },
+      "release-notes": {
+        "title": "Release notes",
+        "url": "release-notes"
+      },
+      "vocabulary": {
+        "title": "Vocabulary",
+        "url": "vocabulary"
+      },
+      "voice-and-tone": {
+        "title": "Voice and tone",
+        "url": "voice-and-tone"
+      }
+    },
+    "design": {
+      "title": "Design",
+      "colors": {
+        "title": "Colors",
+        "url": "colors"
+      },
+      "data-visualizations": {
+        "title": "Data visualizations",
+        "url": "data-visualizations"
+      },
+      "design": {
+        "title": "Design",
+        "url": "design"
+      },
+      "icons": {
+        "title": "Icons",
+        "url": "icons"
+      },
+      "illustrations": {
+        "title": "Illustrations",
+        "url": "illustrations"
+      },
+      "interaction-states": {
+        "title": "Interaction states",
+        "url": "interaction-states"
+      },
+      "sounds": {
+        "title": "Sounds",
+        "url": "sounds"
+      },
+      "spacing": {
+        "title": "Spacing",
+        "url": "spacing"
+      },
+      "typography": {
+        "title": "Typography",
+        "url": "typography"
+      }
+    },
+    "foundations": {
+      "title": "Foundations",
+      "accessibility": {
+        "title": "Accessibility",
+        "url": "accessibility"
+      },
+      "designing-onboarding-flows": {
+        "title": "Designing onboarding flows",
+        "url": "designing-onboarding-flows"
+      },
+      "experience-values": {
+        "title": "Experience values",
+        "url": "experience-values"
+      },
+      "formatting-localized-currency": {
+        "title": "Formatting localized currency",
+        "url": "formatting-localized-currency"
+      },
+      "information-architecture": {
+        "title": "Information architecture",
+        "url": "information-architecture"
+      },
+      "internationalization": {
+        "title": "Internationalization",
+        "url": "internationalization"
+      }
+    },
+    "patterns": {
+      "title": "Patterns",
+      "error-messages": {
+        "title": "Error messages",
+        "url": "error-messages"
+      },
+      "help-content": {
+        "title": "Help content",
+        "url": "help-content"
+      },
+      "home-cards": {
+        "title": "Home cards",
+        "url": "home-cards"
+      },
+      "layout": {
+        "title": "Layout",
+        "url": "layout"
+      },
+      "loading": {
+        "title": "Loading",
+        "url": "loading"
+      },
+      "locations": {
+        "title": "Locations",
+        "url": "locations"
+      },
+      "text-fields": {
+        "title": "Text fields",
+        "url": "text-fields"
+      }
+    }
+  },
+  "legal": {
+    "title": "Legal",
+    "license": {
+      "title": "License",
+      "url": "license"
+    }
+  }
+}
