@@ -12,7 +12,7 @@ $breakpoints-xsmall-width-up: breakpoints-up(
   $xsmall-width + $dangerous-magic-space-16
 );
 
-$breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
+$breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertical-spacing)})';
 
 .Container {
   position: fixed;
