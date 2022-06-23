@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useState, useRef, useCallback } from "react";
 import { Dialog } from "@headlessui/react";
 import Fuse from "fuse.js";
@@ -19,6 +18,7 @@ import { Icon } from "../../types";
 import { useEffect } from "react";
 import { useMedia } from "../../utils/hooks";
 import { useRouter } from "next/router";
+import PageMeta from "../PageMeta";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -95,9 +95,7 @@ function IconsPage() {
 
   return (
     <Container className={styles.IconsPage}>
-      <Head>
-        <title>{getTitleTagValue("Icons")}</title>
-      </Head>
+      <PageMeta title="Icons" />
 
       <div className={styles.Filter}>
         <h1>Icons</h1>

@@ -3,7 +3,6 @@ import glob from "glob";
 import path from "path";
 import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
 
 import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
@@ -12,30 +11,32 @@ import Markdown from "../../components/Markdown";
 import type { NavItem } from "../../components/Nav";
 import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { getComponentNav, getTitleTagValue } from "../../utils/various";
+import { getComponentNav } from "../../utils/various";
+import PageMeta from "../../components/PageMeta";
 
 interface MarkdownData {
   frontMatter: any;
+  intro: string;
   readme: string;
 }
 
 interface Props {
   examples: [Example];
   name: string;
+  intro: string;
   readme: {
     body: string;
     header: string;
   };
 }
 
-const Components = ({ examples, name, readme }: Props) => {
+const Components = ({ examples, intro, name, readme }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
     <Layout width="narrow" navItems={navItems}>
-      <Head>
-        <title>{getTitleTagValue(name)}</title>
-      </Head>
+      <PageMeta title={name} description={intro} />
+
       <Longform>
         <h1>{name}</h1>
         <Markdown text={readme.header} skipH1 />
@@ -90,6 +91,7 @@ export const getStaticProps: GetStaticProps<
     const props: Props = {
       ...data.frontMatter,
       examples,
+      intro: data.intro,
       readme,
     };
 
