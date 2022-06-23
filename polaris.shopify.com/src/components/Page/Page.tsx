@@ -8,7 +8,6 @@ import Header from "../Header";
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import SiteLaunchBanner from "../SiteLaunchBanner";
-import ThemeProvider from "../ThemeProvider";
 
 interface Props {
   children: React.ReactNode;
@@ -20,7 +19,7 @@ function Page({ children }: Props) {
 
   const isPolaris = router.asPath.startsWith("/examples");
 
-  const childElements = (
+  return (
     <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
       {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
@@ -33,14 +32,6 @@ function Page({ children }: Props) {
         </div>
       )}
     </div>
-  );
-
-  return isPolaris ? (
-    <>{childElements}</>
-  ) : (
-    <ThemeProvider theme={darkMode.value ? "dark" : "light"} useBody>
-      {childElements}
-    </ThemeProvider>
   );
 }
 
