@@ -9,6 +9,7 @@ describe('<TooltipOverlay />', () => {
     active: true,
     onClose: () => {},
     activator: null,
+    transform: {x: 0, y: 0, cursorX: 0},
   };
 
   it('does not include aria label by default', () => {

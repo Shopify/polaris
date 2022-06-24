@@ -42,6 +42,7 @@ export interface PositionedOverlayProps {
   zIndexOverride?: number;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
+  transform?: string;
 }
 
 interface State {
@@ -132,9 +133,10 @@ export class PositionedOverlay extends PureComponent<
     const {
       render,
       fixed,
-      preventInteraction,
       classNames: propClassNames,
+      preventInteraction,
       zIndexOverride,
+      transform,
     } = this.props;
 
     const style = {
@@ -143,6 +145,7 @@ export class PositionedOverlay extends PureComponent<
       right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
       zIndex: zIndexOverride || zIndex || undefined,
+      transform: transform ?? undefined,
     };
 
     const className = classNames(

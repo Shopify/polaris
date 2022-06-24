@@ -35,14 +35,16 @@ describe('<Tooltip />', () => {
     expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
-  it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
+  it('renders overlay with a default preventInteraction', () => {
     const tooltip = mountWithApp(
-      <Tooltip dismissOnMouseOut content="Inner content" active>
+      <Tooltip content="Inner content">
         <Link>link content</Link>
       </Tooltip>,
     );
-    expect(tooltip).toContainReactComponent(TooltipOverlay, {
-      preventInteraction: true,
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+      className: expect.stringContaining('preventInteraction'),
     });
   });
 

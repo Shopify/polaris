@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
@@ -7,37 +7,59 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
+import {getRectForNode} from '../../../../utilities/geometry';
+import type {TooltipPosition} from '../../Tooltip';
 
 import styles from './TooltipOverlay.scss';
 
 export interface TooltipOverlayProps {
   id: string;
   active: boolean;
-  preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
   accessibilityLabel?: string;
   onClose(): void;
+  transform: TooltipPosition;
 }
 
 export function TooltipOverlay({
   active,
   activator,
   preferredPosition = 'below',
-  preventInteraction,
   id,
   children,
   accessibilityLabel,
+  transform,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
+  const [tooltipTransform, setTooltipTransform] = useState<string>('');
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const windowSize = useRef({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const tooltipRect = getRectForNode(tooltipRef.current);
+    const pushSize: number = tooltipRect.width / 2 + 10;
+
+    const {x, y, cursorX} = transform;
+    const hasHitRightBorder =
+      cursorX + tooltipRect.width + 20 > windowSize.current.width;
+    const transformPositionX = hasHitRightBorder ? x - pushSize : x + pushSize;
+
+    setTooltipTransform(`translate(${transformPositionX}px, ${y}px)`);
+  }, [transform]);
+
   const markup = active ? (
     <PositionedOverlay
       active={active}
       activator={activator}
       preferredPosition={preferredPosition}
-      preventInteraction={preventInteraction}
       render={renderTooltip}
+      transform={tooltipTransform}
+      preventInteraction
     />
   ) : null;
 
@@ -52,12 +74,13 @@ export function TooltipOverlay({
       styles.TooltipOverlay,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
+      positioning === 'below' && styles.positionedBelow,
     );
 
     const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
 
     return (
-      <div className={containerClassName} {...layer.props}>
+      <div className={containerClassName} {...layer.props} ref={tooltipRef}>
         <div
           id={id}
           role="tooltip"

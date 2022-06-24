@@ -8,6 +8,12 @@ import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
+export interface TooltipPosition {
+  x: number;
+  y: number;
+  cursorX: number;
+}
+
 export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
@@ -15,8 +21,6 @@ export interface TooltipProps {
   content: React.ReactNode;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
-  /** Dismiss tooltip when not interacting with its children */
-  dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
    * @default 'below'
@@ -34,22 +38,28 @@ export interface TooltipProps {
 export function Tooltip({
   children,
   content,
-  dismissOnMouseOut,
   active: originalActive,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
+  const ChildWrapperComponent: any = activatorWrapper;
   const {
     value: active,
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const [positionTooltip, setPositionTooltip] = useState<TooltipPosition>({
+    x: 0,
+    y: 0,
+    cursorX: 0,
+  });
 
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
+  const childWrapperContainer = useRef<HTMLDivElement>(null);
   const mouseEntered = useRef(false);
 
   useEffect(() => {
@@ -82,7 +92,7 @@ export function Tooltip({
         active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        preventInteraction={dismissOnMouseOut}
+        transform={positionTooltip}
       >
         {content}
       </TooltipOverlay>
@@ -98,7 +108,12 @@ export function Tooltip({
       ref={setActivator}
       onKeyUp={handleKeyUp}
     >
-      {children}
+      <ChildWrapperComponent
+        onMouseMove={handleMouseMove}
+        ref={childWrapperContainer}
+      >
+        {children}
+      </ChildWrapperComponent>
       {portal}
     </WrapperComponent>
   );
@@ -126,11 +141,32 @@ export function Tooltip({
     mouseEntered.current = false;
     handleBlur();
   }
-
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   function handleMouseEnterFix() {
     !mouseEntered.current && handleMouseEnter();
+  }
+
+  function handleMouseMove(event: React.MouseEvent) {
+    if (!active) return;
+    if (childWrapperContainer.current == null) return;
+    const {x, y, width, height} =
+      childWrapperContainer.current.getBoundingClientRect();
+    const centerX = width / 2;
+    const ceterY = height / 2;
+    const {clientX, clientY} = event;
+
+    const tooltipLeft = clientX - x;
+    const tooltipTop = clientY - y;
+
+    const transformX = tooltipLeft - centerX;
+    const transformY = tooltipTop - ceterY;
+
+    setPositionTooltip({
+      x: transformX,
+      y: transformY,
+      cursorX: clientX,
+    });
   }
 }
 

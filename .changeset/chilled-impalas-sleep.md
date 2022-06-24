@@ -1,0 +1,5 @@
+---
+'@shopify/polaris': minor
+---
+
+minor

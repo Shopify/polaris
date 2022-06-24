@@ -213,7 +213,6 @@ describe('<PositionedOverlay />', () => {
       const positionedOverlay = mountWithApp(
         <PositionedOverlay {...mockProps} />,
       );
-
       expect(positionedOverlay).not.toContainReactComponent('div', {
         className: expect.stringContaining(styles.preventInteraction),
       });
