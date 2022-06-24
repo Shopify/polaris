@@ -1,6 +1,6 @@
 const Breakpoints = {
-  navigationBarCollapsed: '768px',
-  stackedContent: '1043px',
+  navigationBarCollapsed: '767.95px',
+  stackedContent: '1039.95px',
 };
 
 const noWindowMatches: MediaQueryList = {
