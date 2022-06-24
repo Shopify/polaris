@@ -103,6 +103,12 @@ function GlobalSearch({}: Props) {
     };
   }, [setIsOpen, router.events]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchTerm("");
+    }
+  }, [isOpen]);
+
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
     evt
   ) => {
