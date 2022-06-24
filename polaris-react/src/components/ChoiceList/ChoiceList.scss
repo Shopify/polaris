@@ -7,7 +7,7 @@
 }
 
 .ChoiceItem:not(:last-child) {
-  @media #{$breakpoints-typography-not-condensed-down} {
+  @media #{$p-breakpoints-md-down} {
     margin-bottom: var(--p-space-4);
   }
 }
@@ -23,7 +23,7 @@
 }
 
 .ChoiceChildren {
-  @media #{$breakpoints-typography-not-condensed-down} {
+  @media #{$p-breakpoints-md-down} {
     margin-top: var(--p-space-4);
   }
 
@@ -35,7 +35,7 @@
   margin-top: var(--p-space-1);
   margin-bottom: var(--p-space-2);
 
-  @media #{$breakpoints-typography-not-condensed-down} {
+  @media #{$p-breakpoints-md-down} {
     margin-top: var(--p-space-4);
   }
 }
@@ -46,7 +46,7 @@
   margin: 0 0 var(--p-space-1);
   padding: 0;
 
-  @media #{$breakpoints-typography-not-condensed-down} {
+  @media #{$p-breakpoints-md-down} {
     margin-bottom: var(--p-space-5);
   }
 }
