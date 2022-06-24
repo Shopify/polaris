@@ -2,7 +2,7 @@
 @import './variables';
 
 $item-wrapper-loading-height: 64px;
-$breakpoints-legacy-up: breakpoints-up(600px);
+$breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})';
 
 @mixin disabled-pointer-events {
   pointer-events: none;
@@ -187,7 +187,7 @@ $breakpoints-legacy-up: breakpoints-up(600px);
   padding-top: var(--p-space-8);
   padding-bottom: var(--p-space-8);
 
-  @media #{$breakpoints-legacy-up} {
+  @media #{$breakpoints-empty-search-results-height-up} {
     padding-top: var(--p-space-16);
     padding-bottom: var(--p-space-16);
   }

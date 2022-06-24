@@ -3,12 +3,6 @@
 
 $icon-size: 20px;
 
-$breakpoints-context-control-expand-up: breakpoints-up(1400px);
-$breakpoints-page-left-alignment-down: breakpoints-down(
-  1238px,
-  $inclusive: true
-);
-
 .TopBar {
   position: relative;
   display: flex;
@@ -62,7 +56,7 @@ $breakpoints-page-left-alignment-down: breakpoints-down(
     display: block;
   }
 
-  @media #{$breakpoints-context-control-expand-up} {
+  @media #{$p-breakpoints-xl-up} {
     width: $layout-width-nav-base;
   }
 }
@@ -132,7 +126,7 @@ $breakpoints-page-left-alignment-down: breakpoints-down(
   max-width: none;
   margin-left: calc((100% - #{$page-max-width}) / 2);
 
-  @media #{$breakpoints-page-left-alignment-down} {
+  @media #{$p-breakpoints-lg-down} {
     margin-left: 0;
     margin-right: var(--p-space-1);
   }
