@@ -44,7 +44,7 @@
 .Backdrop {
   // ::before is the selected dot, ::after the focus-ring
 
-  @media #{$breakpoints-typography-not-condensed-down} {
+  @media #{$p-breakpoints-md-down} {
     --p-icon-size-small: 10px;
   }
 

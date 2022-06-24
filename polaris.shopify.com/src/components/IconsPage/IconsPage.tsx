@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useState, useRef, useCallback } from "react";
 import { Dialog } from "@headlessui/react";
 import Fuse from "fuse.js";
@@ -19,6 +18,7 @@ import { Icon } from "../../types";
 import { useEffect } from "react";
 import { useMedia } from "../../utils/hooks";
 import { useRouter } from "next/router";
+import PageMeta from "../PageMeta";
 
 let icons = Object.entries(metadata).map(([fileName, icon]) => ({
   ...icon,
@@ -95,9 +95,7 @@ function IconsPage() {
 
   return (
     <Container className={styles.IconsPage}>
-      <Head>
-        <title>{getTitleTagValue("Icons")}</title>
-      </Head>
+      <PageMeta title="Icons" />
 
       <div className={styles.Filter}>
         <h1>Icons</h1>
@@ -277,25 +275,25 @@ function SidebarContent({
         </p>
 
         <div className={styles.CodeExampleWrapper}>
-          <CodeExample language="typescript">
+          <CodeExample language="typescript" minimalist>
             {`import {
-  ${selectedIcon.name}
+  ${selectedIcon.fileName}
 } from '@shopify/polaris-icons';`}
           </CodeExample>
         </div>
 
         <p className={styles.SmallParagraph}>
           Then render it using the{" "}
-          <a href="https://polaris.shopify.com/components/images-and-icons/icon">
+          <a href="https://polaris.shopify.com/components/icon">
             icon component
           </a>
           :
         </p>
 
         <div className={styles.CodeExampleWrapper}>
-          <CodeExample language="typescript">
+          <CodeExample language="typescript" minimalist>
             {`<Icon
-  source={${selectedIcon.name}}
+  source={${selectedIcon.fileName}}
   color="base"
 />`}
           </CodeExample>

@@ -155,9 +155,9 @@ Add a menu item
 
 ## Related components
 
-- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/empty-state)
 
 ---
 

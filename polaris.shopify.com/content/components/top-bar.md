@@ -24,13 +24,13 @@ examples:
 
 # Top bar
 
-The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
+The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
 
 ---
 
 ## Required components
 
-The top bar component must be passed to the [frame](https://polaris.shopify.com/components/structure/frame) component.
+The top bar component must be passed to the [frame](https://polaris.shopify.com/components/frame) component.
 
 ---
 
@@ -39,10 +39,10 @@ The top bar component must be passed to the [frame](https://polaris.shopify.com/
 The top bar component should:
 
 - Not provide global navigation for an application
-  - Use the [navigation component](https://polaris.shopify.com/components/structure/navigation) instead
+  - Use the [navigation component](https://polaris.shopify.com/components/navigation) instead
 - Include search to help merchants find resources and navigate an application
 - Include a user menu component to indicate the logged-in merchant and provide them with global actions
-- Provide a color through the [app provider](https://polaris.shopify.com/components/structure/app-provider) component to style the background
+- Provide a color through the [app provider](https://polaris.shopify.com/components/app-provider) component to style the background
 - The global menu text should contrast with the rest of the top bar and pass the minimum contrast ratio of the WCAG 2.0 guidelines
 - Use an SVG file for the logo
 - Use a logo that passes the minimum contrast ratio of the WCAG 2.0 guidelines when compared to the top bar background color
@@ -147,8 +147,8 @@ A text field component that is tailor-made for a search use-case.
 
 ## Related components
 
-- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.
+- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/frame) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/navigation) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.

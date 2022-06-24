@@ -255,8 +255,8 @@ Links should be:
 
 ## Related components
 
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---
 

@@ -84,4 +84,4 @@ Read more about [dates and numbers](https://polaris.shopify.com/content/grammar-
 
 ## Related components
 
-- Use section headers if you want to organize [resource list items](https://polaris.shopify.com/components/lists-and-tables/resource-list) into groups.
+- Use section headers if you want to organize [resource list items](https://polaris.shopify.com/components/resource-list) into groups.

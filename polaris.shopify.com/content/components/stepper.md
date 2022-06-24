@@ -72,5 +72,5 @@ Avoid abbreviating values (10k, 1m), instead, make the text smaller to fit the s
 
 ## Related components
 
-- If values need to change dramatically, use [text field with number field](https://polaris.shopify.com/components/forms/text-field)
-- If values shouldn’t change or won’t be changing, use [disabled text field](https://polaris.shopify.com/components/forms/text-field)
+- If values need to change dramatically, use [text field with number field](https://polaris.shopify.com/components/text-field)
+- If values shouldn’t change or won’t be changing, use [disabled text field](https://polaris.shopify.com/components/text-field)

@@ -33,11 +33,11 @@ examples:
   - fileName: toast-with-custom-duration.tsx
     title: Toast with custom duration
     description: Use to shorten or lengthen the default duration of 5000 milliseconds.
-  - fileName: toast-with-action.tsx
-    title: Toast with action
-    description: >-
-      Use when a merchant has the ability to act on the message. For example, to
-      undo a change or retry an action.
+  # - fileName: toast-with-action.tsx
+  #   title: Toast with action
+  #   description: >-
+  #     Use when a merchant has the ability to act on the message. For example, to
+  #     undo a change or retry an action.
   # - fileName: toast-default.tsx
   #   title: Default toast
   #   description: >-
@@ -55,12 +55,6 @@ examples:
     description: >-
       On iOS, icons are available for cases where you want to
       re-inforce the message.
-  # - fileName: toast-with-action.tsx
-  #   title: With action
-  #   description: >-
-  #     Use action when merchants have the ability to act on the message. For
-  #     example, to undo a change or retry an action. Keep the action label short,
-  #     preferably 1 verb action.
 ---
 
 # Toast
@@ -71,7 +65,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
 
 ---
 
@@ -162,8 +156,8 @@ Action should:
 
 ## Related components
 
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/overlays/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/banner)
 
 ---
 

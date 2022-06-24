@@ -31,7 +31,7 @@ examples:
 
 # Custom Properties
 
-Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/structure/app-provider) but can be used independently to apply a base color scheme to its children.
+Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children.
 
 ---
 
@@ -51,4 +51,4 @@ The CustomProperties component uses [CSS custom properties](https://developer.mo
 
 ## Related components
 
-- To share global settings throughout the hierarchy of your application, [use the app provider component](https://polaris.shopify.com/components/structure/app-provider)
+- To share global settings throughout the hierarchy of your application, [use the app provider component](https://polaris.shopify.com/components/app-provider)

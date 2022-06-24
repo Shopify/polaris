@@ -106,6 +106,6 @@ Connect to app
 
 <!-- content-for: web -->
 
-See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/actions/setting-toggle) to turn connections on and off.
+See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/setting-toggle) to turn connections on and off.
 
 <!-- /content-for-->

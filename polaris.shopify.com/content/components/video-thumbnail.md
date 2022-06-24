@@ -40,13 +40,13 @@ Video thumbnails should:
 
 ## Required components
 
-- The video thumbnail should be wrapped in the [media card](https://polaris.shopify.com/components/structure/media-card) component.
+- The video thumbnail should be wrapped in the [media card](https://polaris.shopify.com/components/media-card) component.
 
 ---
 
 ## Related components
 
-- To present a small visual anchor for an object, [use the thumbnail component](https://polaris.shopify.com/components/images-and-icons/thumbnail)
+- To present a small visual anchor for an object, [use the thumbnail component](https://polaris.shopify.com/components/thumbnail)
 
 ---
 

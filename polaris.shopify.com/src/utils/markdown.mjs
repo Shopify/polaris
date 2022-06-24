@@ -12,6 +12,9 @@ export const parseMarkdown = (inputMarkdown) => {
 
   const intro = readmeSection.split("\n\n").find((paragraph) => {
     const content = paragraph.trim().split("\n").join(" ");
+    if (paragraph.startsWith("<!--")) {
+      return false;
+    }
     if (content.length > 0 && content[0] !== "#") {
       return content;
     }
