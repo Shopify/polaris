@@ -1,5 +1,7 @@
 const Breakpoints = {
+  // TODO: Update to smDown
   navigationBarCollapsed: '767.95px',
+  // TODO: Update to lgDown
   stackedContent: '1039.95px',
 };
 
