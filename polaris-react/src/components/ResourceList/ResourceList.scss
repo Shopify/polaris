@@ -19,7 +19,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 .FiltersWrapper {
   padding: var(--p-space-3) var(--p-space-3) var(--p-space-4);
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-4);
   }
 
@@ -64,7 +64,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   padding: calc(var(--p-space-3) - var(--p-space-05)) var(--p-space-4);
   background-color: var(--p-surface);
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     flex-direction: row;
   }
 }
@@ -87,7 +87,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
     opacity: 0;
   }
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     right: var(--p-space-4);
     left: var(--p-space-4);
     align-self: flex-start;
@@ -105,7 +105,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
     padding-right: var(--p-space-2);
   }
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     position: relative;
     left: auto;
     flex: 0 1 auto;
@@ -139,7 +139,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
     display: none;
   }
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
@@ -159,7 +159,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
     align-self: flex-start;
   }
@@ -168,7 +168,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 .CheckableButtonWrapper {
   display: none;
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     flex: 1;
     display: block;
   }
@@ -178,7 +178,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   position: relative;
   flex: none;
 
-  @media #{$breakpoints-page-after-resource-list-small-up} {
+  @media #{$p-breakpoints-sm-up} {
     display: none;
   }
 }
