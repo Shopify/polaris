@@ -26,5 +26,3 @@
 }
 
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layout-width-inner-spacing-base;
-
-$breakpoints-page-content-when-partially-condensed-down: breakpoints-down(984px, $inclusive: true);

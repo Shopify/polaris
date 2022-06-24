@@ -45,7 +45,7 @@ $breakpoints-legacy-down: breakpoints-down(458px);
         @include action-unhide;
 
         // stylelint-disable-next-line max-nesting-depth
-        @media #{$breakpoints-page-content-when-partially-condensed-down} {
+        @media #{$p-breakpoints-lg-down} {
           display: none;
         }
       }
@@ -191,7 +191,7 @@ $breakpoints-legacy-down: breakpoints-down(458px);
     @include action-unhide;
   }
 
-  @media #{$breakpoints-page-content-when-partially-condensed-down} {
+  @media #{$p-breakpoints-lg-down} {
     display: none;
   }
 }
@@ -208,7 +208,7 @@ $breakpoints-legacy-down: breakpoints-down(458px);
     pointer-events: initial;
     height: 100%;
 
-    @media #{$breakpoints-page-content-when-partially-condensed-down} {
+    @media #{$p-breakpoints-lg-down} {
       display: none;
     }
   }
@@ -227,7 +227,7 @@ $breakpoints-legacy-down: breakpoints-down(458px);
     display: none;
   }
 
-  @media #{$breakpoints-page-content-when-partially-condensed-down} {
+  @media #{$p-breakpoints-lg-down} {
     display: flex;
     flex: 0 0 var(--pc-resource-item-disclosure-width);
     justify-content: center;
