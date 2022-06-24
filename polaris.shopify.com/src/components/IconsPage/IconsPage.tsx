@@ -277,7 +277,7 @@ function SidebarContent({
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`import {
-  ${selectedIcon.name}
+  ${selectedIcon.fileName}
 } from '@shopify/polaris-icons';`}
           </CodeExample>
         </div>
@@ -293,7 +293,7 @@ function SidebarContent({
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`<Icon
-  source={${selectedIcon.name}}
+  source={${selectedIcon.fileName}}
   color="base"
 />`}
           </CodeExample>
