@@ -93,7 +93,7 @@ $relative-size: $primary-basis / $secondary-basis;
     padding: var(--p-space-4) 0 0;
   }
 
-  @media #{$breakpoints-page-content-when-layout-not-stacked-up} {
+  @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) 0;
   }
 }

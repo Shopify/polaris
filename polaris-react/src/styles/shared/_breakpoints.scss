@@ -26,17 +26,3 @@
 }
 
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layout-width-inner-spacing-base;
-
-$not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
-
-$breakpoints-frame-with-nav-when-not-max-width-down: breakpoints-down(1238px, $inclusive: true);
-
-$breakpoints-page-when-not-max-width-down: breakpoints-down(998px, $inclusive: true);
-
-$breakpoints-page-content-when-layout-not-stacked-up: breakpoints-up(800px);
-$breakpoints-page-content-when-layout-stacked-down: breakpoints-down(1040px, $inclusive: true);
-
-$breakpoints-page-content-when-not-fully-condensed-up: breakpoints-up(490px);
-$breakpoints-page-content-when-fully-condensed-down: breakpoints-down(754px, $inclusive: true);
-
-$breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);

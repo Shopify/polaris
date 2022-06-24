@@ -6,13 +6,8 @@ $height-limit: 600px;
 $xsmall-width: 380px;
 $small-width: 620px;
 $large-width: 980px;
-// @TODO simplify media queries so this isn't needed
-$dangerous-magic-space-16: 64px;
-$breakpoints-xsmall-width-up: breakpoints-up(
-  $xsmall-width + $dangerous-magic-space-16
-);
 
-$breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
+$breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertical-spacing)})';
 
 .Container {
   position: fixed;
@@ -79,7 +74,7 @@ $breakpoints-height-limit-up: breakpoints-up($height-limit + $vertical-spacing);
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @media #{$breakpoints-xsmall-width-up} {
+    @media #{$p-breakpoints-sm-up} {
       max-width: $xsmall-width;
     }
   }
