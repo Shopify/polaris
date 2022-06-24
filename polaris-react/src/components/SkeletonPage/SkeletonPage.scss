@@ -87,10 +87,6 @@ $skeleton-display-text-max-width: 120px;
   @media #{$p-breakpoints-md-up} {
     margin-top: 0;
   }
-
-  @media #{$breakpoints-page-content-when-layout-not-stacked-up} {
-    margin-top: 0;
-  }
 }
 
 .Actions {
