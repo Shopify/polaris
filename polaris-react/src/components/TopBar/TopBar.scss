@@ -113,7 +113,7 @@ $icon-size: 20px;
   justify-content: flex-end;
   height: 100%;
 
-  @media #{$breakpoints-not-condensed-content-up} {
+  @media #{$p-breakpoints-md-up} {
     position: relative;
   }
 }
