@@ -52,6 +52,7 @@ const Examples = (props: Props) => {
 
   useEffect(() => {
     setIndex(0);
+    setShowPreview(true);
   }, [examples]);
 
   if (!examples?.length || !examples[currentIndex]) {
