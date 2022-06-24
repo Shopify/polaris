@@ -1,11 +1,5 @@
 @import '../../styles/common';
 
-$breakpoints-portrait-breakpoint-up: breakpoints-up(804px);
-$breakpoints-portrait-breakpoint-down: breakpoints-down(
-  804px,
-  $inclusive: true
-);
-
 .MediaCard {
   height: 100%;
   width: 100%;
@@ -16,7 +10,7 @@ $breakpoints-portrait-breakpoint-down: breakpoints-down(
     flex-flow: column nowrap;
   }
 
-  @media #{$breakpoints-portrait-breakpoint-down} {
+  @media #{$p-breakpoints-md-down} {
     flex-flow: column nowrap;
   }
 }
@@ -27,6 +21,12 @@ $breakpoints-portrait-breakpoint-down: breakpoints-down(
   &:not(.portrait) {
     flex-basis: 40%;
 
+    @media #{$p-breakpoints-md-up} {
+      border-top-right-radius: 0;
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+    }
+
     &.sizeSmall {
       flex-basis: 33%;
     }
@@ -35,13 +35,6 @@ $breakpoints-portrait-breakpoint-down: breakpoints-down(
   @media #{$p-breakpoints-sm-up} {
     border-top-left-radius: var(--p-border-radius-2);
     border-top-right-radius: var(--p-border-radius-2);
-  }
-  @media #{$breakpoints-portrait-breakpoint-up} {
-    &:not(.portrait) {
-      border-top-right-radius: 0;
-      border-top-left-radius: var(--p-border-radius-2);
-      border-bottom-left-radius: var(--p-border-radius-2);
-    }
   }
 }
 
@@ -83,7 +76,7 @@ $breakpoints-portrait-breakpoint-down: breakpoints-down(
     padding-top: var(--p-space-8);
   }
 
-  @media #{$breakpoints-portrait-breakpoint-down} {
+  @media #{$p-breakpoints-md-down} {
     padding-top: var(--p-space-8);
   }
 }

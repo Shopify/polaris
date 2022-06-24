@@ -1,5 +1,4 @@
 $resource-list-variables: (
-  breakpoint-small: 458px,
   header-min-height: 56px,
   header-vertical-padding: var(--p-space-2),
   header-content-min-height: control-height(),
@@ -15,12 +14,3 @@ $resource-list-variables: (
 @function resource-list($variable) {
   @return map-get($resource-list-variables, $variable);
 }
-
-$breakpoints-page-after-resource-list-small-up: breakpoints-up(
-  resource-list(breakpoint-small)
-);
-
-$breakpoints-page-before-resource-list-small-down: breakpoints-down(
-  resource-list(breakpoint-small),
-  $inclusive: true
-);
