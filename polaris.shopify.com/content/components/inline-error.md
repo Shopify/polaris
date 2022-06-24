@@ -69,7 +69,7 @@ Inline error messages should:
 
 ## Related components
 
-- To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+- To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/exception-list)
 
 ---
 

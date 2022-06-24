@@ -61,6 +61,16 @@ const nextConfig = {
         destination: "/foundations/patterns/:slug",
         permanent: false,
       },
+      {
+        source: "/foundations/foundations/designing-apps",
+        destination: "https://shopify.dev/apps/design-guidelines",
+        permanent: false,
+      },
+      {
+        source: "/foundations/content/app-release-notes",
+        destination: "https://shopify.dev/apps/design-guidelines",
+        permanent: false,
+      },
     ];
   },
 };

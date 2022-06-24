@@ -79,8 +79,8 @@ Location picker
 
 ## Related components
 
-- For a text field and popover container, [use the combobox component](https://polaris.shopify.com/components/forms/combobox)
-- [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete) can be used as a convenience wrapper in lieu of Combobox and Listbox.
+- For a text field and popover container, [use the combobox component](https://polaris.shopify.com/components/combobox)
+- [Autocomplete](https://polaris.shopify.com/components/autocomplete) can be used as a convenience wrapper in lieu of Combobox and Listbox.
 
 ---
 

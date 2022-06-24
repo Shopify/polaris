@@ -68,7 +68,7 @@ image:
 
 ## Related components
 
-- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](https://polaris.shopify.com/components/images-and-icons/thumbnail)
+- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](https://polaris.shopify.com/components/thumbnail)
 
 ---
 

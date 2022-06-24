@@ -1,0 +1,154 @@
+@import "../../styles/variables.scss";
+
+$mobileNavMaxWidth: 22.5rem;
+$navItemPadding: 0.75rem 1rem;
+
+.MobileNav {
+  display: flex;
+  visibility: hidden;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  max-width: $mobileNavMaxWidth;
+  z-index: 2;
+  transform: translateX(-1 * $mobileNavMaxWidth);
+
+  &.show {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform var(--duration-200) var(--ease-in-out);
+
+    .CloseButton {
+      display: flex;
+      margin: 0.85rem;
+      background-color: transparent;
+      opacity: 0;
+      animation: FadeIn var(--duration-200) forwards;
+
+      svg {
+        fill: var(--surface);
+      }
+    }
+  }
+}
+
+.LinksList {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  width: calc(100vw - 4rem);
+  max-width: $mobileNavMaxWidth;
+  min-width: 15rem;
+  background: var(--surface);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-500);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    user-select: none;
+
+    a {
+      width: 100%;
+      color: inherit;
+      padding: 0.85rem 1rem;
+
+      &:focus-within,
+      &:hover {
+        color: var(--text-strong);
+      }
+
+      &:hover,
+      &[aria-current="page"] {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 0;
+        -webkit-touch-callout: none;
+      }
+    }
+  }
+}
+
+.AccordionTrigger {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: $navItemPadding;
+  background-color: transparent;
+
+  svg {
+    transform: rotate(0deg);
+    transition: transform var(--duration-200) var(--ease-in-out);
+  }
+
+  &.expanded svg {
+    transform: rotate(90deg);
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+  }
+}
+
+.AccordionPanel {
+  display: none;
+
+  li a {
+    padding-left: 2rem;
+  }
+
+  &.expanded {
+    display: block;
+  }
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  height: var(--header-height);
+  border-bottom: var(--border);
+  color: var(--text-inherit);
+  gap: 0.7rem;
+  font-weight: 500;
+  font-size: var(--font-size-100);
+
+  p {
+    margin: 0;
+  }
+
+  span {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop);
+  opacity: 0;
+  animation-name: FadeIn;
+  animation-duration: var(--duration-200);
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useState } from "react";
 import styles from "./SiteLaunchBanner.module.scss";
 
@@ -7,6 +9,9 @@ const isServer = typeof window === "undefined";
 const localStorageKey = "siteLaunchBannerVisible";
 
 function SiteLaunchBanner({}: Props) {
+  const router = useRouter();
+  const [githubUrl, setGithubUrl] = useState(router.asPath);
+
   let visibleDefault = true;
 
   if (!isServer) {
@@ -19,15 +24,21 @@ function SiteLaunchBanner({}: Props) {
 
   const [visible, setVisible] = useState(visibleDefault);
 
-  if (!visible) {
-    return null;
-  }
+  useEffect(() => {
+    const title = `[polaris.shopify.com] Feedback (on page ${router.asPath})`;
+    const newGithubUrl = `https://github.com/shopify/polaris/issues/new?title=${title}&amp;labels=polaris.shopify.com`;
+    setGithubUrl(newGithubUrl);
+  }, [router.asPath]);
 
   function dismiss() {
     setVisible(false);
     if (!isServer) {
       window.localStorage.setItem(localStorageKey, "false");
     }
+  }
+
+  if (!visible) {
+    return null;
   }
 
   return (
@@ -46,7 +57,11 @@ function SiteLaunchBanner({}: Props) {
       </button>
       <span className={styles.Emoji}>👋</span>
       <p>{`We've made some improvements to our website to help you build more efficiently with Polaris.`}</p>
+
       <ul>
+        <li>
+          <a href={githubUrl}>Share feedback</a>
+        </li>
         <li>
           <a href="https://legacy.polaris.shopify.com">
             Return to the old site

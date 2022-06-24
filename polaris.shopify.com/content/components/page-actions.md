@@ -97,6 +97,6 @@ Buttons should be:
 
 ## Related components
 
-- To add actions to the top of a page, see the [page component’s](https://polaris.shopify.com/components/structure/page) action props
-- To create a call to action within the context of other page content, use the [button component](https://polaris.shopify.com/components/actions/button)
-- To let merchants move through a collection of items that spans multiple pages, see the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
+- To add actions to the top of a page, see the [page component’s](https://polaris.shopify.com/components/page) action props
+- To create a call to action within the context of other page content, use the [button component](https://polaris.shopify.com/components/button)
+- To let merchants move through a collection of items that spans multiple pages, see the [pagination component](https://polaris.shopify.com/components/pagination)

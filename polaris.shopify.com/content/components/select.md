@@ -128,5 +128,5 @@ Options should:
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/option-list) inside a [popover](https://polaris.shopify.com/components/popover)

@@ -69,5 +69,5 @@ Use placeholder content that will change when the page fully loads. This will co
 
 ## Related components
 
-- Use the [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
-- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) or [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) component.
+- Use the [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/skeleton-display-text) components to represent blocks of content.
+- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/progress-bar) or [Spinner](https://polaris.shopify.com/components/spinner) component.
