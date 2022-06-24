@@ -41,15 +41,18 @@ export function Tooltip({
   accessibilityLabel,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
+  const ChildWrapperComponent: any = activatorWrapper;
   const {
     value: active,
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const [tooltipTransform, setTooltipTransform] = useState<string>('');
 
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
+  const childWrapperContainer = useRef<HTMLDivElement>(null);
   const mouseEntered = useRef(false);
 
   useEffect(() => {
@@ -83,6 +86,7 @@ export function Tooltip({
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
+        transform={tooltipTransform}
       >
         {content}
       </TooltipOverlay>
@@ -98,7 +102,12 @@ export function Tooltip({
       ref={setActivator}
       onKeyUp={handleKeyUp}
     >
-      {children}
+      <ChildWrapperComponent
+        onMouseMove={handleMouseMove}
+        ref={childWrapperContainer}
+      >
+        {children}
+      </ChildWrapperComponent>
       {portal}
     </WrapperComponent>
   );
@@ -126,11 +135,28 @@ export function Tooltip({
     mouseEntered.current = false;
     handleBlur();
   }
-
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   function handleMouseEnterFix() {
     !mouseEntered.current && handleMouseEnter();
+  }
+
+  function handleMouseMove(event: React.MouseEvent) {
+    if (!active) return;
+    if (childWrapperContainer.current == null) return;
+    const {x, y, width, height} =
+      childWrapperContainer.current.getBoundingClientRect();
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const {clientX, clientY} = event;
+
+    const tooltipLeft = clientX - x;
+    const tooltipTop = clientY - y;
+
+    const transformX = tooltipLeft - centerX;
+    const transformY = tooltipTop - centerY;
+
+    setTooltipTransform(`translate(${transformX}px, ${transformY}px)`);
   }
 }
 
