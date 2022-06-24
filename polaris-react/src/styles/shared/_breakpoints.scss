@@ -27,8 +27,4 @@
 
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layout-width-inner-spacing-base;
 
-$not-condensed-content: breakpoint($layout-width-page-content-not-condensed);
-
 $breakpoints-page-content-when-partially-condensed-down: breakpoints-down(984px, $inclusive: true);
-
-$breakpoints-not-condensed-content-up: breakpoints-up($not-condensed-content);
