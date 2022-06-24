@@ -1,5 +1,7 @@
-import type {Exact} from './types';
+import {Entry, Exact} from 'type-fest';
+
 import type {Tokens, TokenGroup} from './tokens';
+import type {breakpoints as breakpointsTokens} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -120,4 +122,71 @@ export function getCustomPropertyNames(tokens: Tokens) {
   ];
 
   return customPropertyNames;
+}
+
+export type BreakpointsTokenGroup = typeof breakpointsTokens;
+
+export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
+
+export type BreakpointsDirection = 'up' | 'down' | 'only';
+
+export type BreakpointsDirectionMediaConditions = {
+  [Direction in BreakpointsDirection]: string;
+};
+
+export type BreakpointsMediaConditions = {
+  [TokenName in BreakpointsTokenName]: BreakpointsDirectionMediaConditions;
+};
+
+export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
+  const breakpointEntries = Object.entries(breakpoints);
+  const lastBreakpointIndex = breakpointEntries.length - 1;
+
+  return Object.fromEntries(
+    breakpointEntries.map(
+      (
+        entry,
+        index,
+      ): [BreakpointsTokenName, BreakpointsDirectionMediaConditions] => {
+        const [breakpointAlias, {value: breakpoint}] =
+          entry as Entry<BreakpointsTokenGroup>;
+
+        const upMediaCondition = getUpMediaCondition(breakpoint);
+        const downMediaCondition = getDownMediaCondition(breakpoint);
+        const onlyMediaCondition =
+          index === lastBreakpointIndex
+            ? upMediaCondition
+            : `${upMediaCondition} and ${getDownMediaCondition(
+                // Next breakpoint
+                breakpointEntries[index + 1][1].value,
+              )}`;
+
+        return [
+          breakpointAlias,
+          {
+            // Media condition for the current breakpoint and up
+            up: upMediaCondition,
+            // Media condition for current breakpoint and down
+            down: downMediaCondition,
+            // Media condition for only the current breakpoint
+            only: onlyMediaCondition,
+          },
+        ];
+      },
+    ),
+  ) as BreakpointsMediaConditions;
+}
+
+function getUpMediaCondition(breakpoint: string) {
+  return `(min-width: ${toEm(breakpoint)})`;
+}
+
+/**
+ * Down media condition breakpoints are being subtracted by 0.05px to prevent
+ * them from overwriting up media queries. We experimented with multiple offsets
+ * and felt that 0.05px would be the safest across different pixel densities.
+ */
+function getDownMediaCondition(breakpoint: string) {
+  const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.05;
+  return `(max-width: ${toEm(`${offsetBreakpoint}px`)})`;
 }

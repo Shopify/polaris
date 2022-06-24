@@ -27,7 +27,8 @@
   },
   "devDependencies": {
     "@shopify/browserslist-config": "^3.0.0",
-    "ts-node": "^10.7.0"
+    "ts-node": "^10.7.0",
+    "type-fest": "^2.13.1"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
