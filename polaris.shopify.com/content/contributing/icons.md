@@ -14,7 +14,12 @@ Icons are important visual aids that carry a lot of impact despite their simplic
 
 ## Quick start guide
 
-table goes here
+<!-- prettier-ignore -->
+| Contribution type | When to contribute and/or collaborate | Where to search for related issues/topics | Who to involve  | Resources potentially impacted  | How to get started (The first step) |
+|---|---|---|---|---|---|
+| Remove an icon with no replacement, or with a replacement | As needed | Design: Polaris Icons Figma library Dev: [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit a deprecation proposal issue |
+| Edit an existing icon | As needed | Design: Polaris Icons Figma library Dev: [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit a icon update proposal issue  |
+| Add a new icon | If designing an icon yourself, as needed If you need assistance designing a new icon, reach out as soon as you have rationale | Design: Polaris Icons Figma library Dev: [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit new icon proposal issue  OR Reach out in #polaris Slack channel if you are looking for design assistance  Submit a new icon proposal issue  Create a PR that links to the new icon proposal issue |
 
 ## Detailed steps
 
