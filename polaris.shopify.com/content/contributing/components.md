@@ -9,6 +9,89 @@ keywords:
   - bug fix
   - ux improvement
   - open source
+
+quickGuides:
+  - title: Adding or updating props
+    queryParam: adding-or-updating-props
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: Yes
+      - who:
+        question: Who should I involve?
+        answer: |
+          <p>Developers on your team for collaboration and PR approval.</p>
+
+          <p>Open source contributors: The <a href="https://github.com/orgs/Shopify/teams/polaris-team/discussions">@Shopify/polaris-team</a> will be notified in GitHub and hop in to support, review, and merge your PR.</p>
+      - when:
+        question: When should I contribute?
+        answer: As needed and as early in your project process as possible.
+      - where:
+        question: Where do I contribute?
+        answer: Code and documentation for prop changes can be contributed in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. If the prop is UI-related, updates should also be contributed in Figma.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Search for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo.
+      - what:
+        question: What resources will my contribution impact?
+        answer: Along with impacting the <code>@shopify/polaris</code> npm package and this documentation site, prop changes may also impact the <a href="/contributing/figma-ui-kit">Figma UI Kit</a>.
+      - how:
+        question: How can I get started?
+        answer: Submit a <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md">bug report</a>, assign yourself to an existing bug report, or <a href="/contributing/shipping-your-contribution#open-your-first-pr">open a pull request</a>.
+  - title: Fixing a bug
+    queryParam: fixing-a-bug
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: Yes
+      - who:
+        question: Who should I involve?
+        answer: |
+          <p>Developers on your team for collaboration and PR approval.</p>
+
+          <p>Open source contributors: The <a href="https://github.com/orgs/Shopify/teams/polaris-team/discussions">@Shopify/polaris-team</a> will be notified in GitHub and hop in to support, review, and merge your PR.</p>
+      - when:
+        question: When should I contribute?
+        answer: As needed and as early in your project process as possible.
+      - where:
+        question: Where do I contribute?
+        answer: Bug fixes are contributed in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Component code can be found in the <code>polaris-react/src</code> directory.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Search for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris/issues</a> GitHub repo.
+      - what:
+        question: What resources will my contribution impact?
+        answer: The <code>@shopify/polaris</code> npm package and this documentation site.
+      - how:
+        question: How can I get started?
+        answer: Submit or assign yourself to an existing <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md">feature proposal</a> or <a href="/contributing/shipping-your-contribution#open-your-first-pr">open a pull request</a>.
+  - title: Adding new pattern
+    queryParam: adding-a-new-pattern
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: Yes
+      - who:
+        question: Who should I involve?
+        answer: |
+          <p>Developers and designers on your team for collaboration and PR approval.</p>
+
+          <p>Open source contributors: The <a href="https://github.com/orgs/Shopify/teams/polaris-team/discussions">@Shopify/polaris-team</a> will be notified in GitHub and hop in to support, review, and merge your PR.</p>
+      - when:
+        question: When should I contribute?
+        answer: As needed and as early in your project process as possible. Collaboration with teams solving similar problems is highly encouraged.
+      - where:
+        question: Where do I contribute?
+        answer: New or updated components and patterns are contributed in Figma as well as in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Component code and documentation can be found in the <code>polaris-react/src</code> directory.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Along with searching for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo, you should search in Shopify's internal wiki and Google Drive.
+      - what:
+        question: What resources will my contribution impact?
+        answer: Along with impacting the <code>@shopify/polaris</code> npm package and this documentation site, new or updated patterns should also be contributed to the <a href="/contributing/figma-ui-kit">Figma UI Kit</a>.
+      - how:
+        question: How can I get started?
+        answer: Submit a <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md">feature proposal</a> or <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=&template=NEW_COMPONENT.md">new component proposal</a> early in your project.
 ---
 
 # Contributing to Polaris React
@@ -17,13 +100,27 @@ Anyone is welcome to contribute to Polaris React components. There are several t
 
 Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component's documentation, or by adding new components or utilities. Often component contributions are a mix of these.
 
+## Quick start guides
+
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |
+
+## Detailed steps
+
 Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you're an open source contributor. Once you've decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
 
 Often the changes you make to a component's code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you're an open source contributor, we'll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the `Shopify/polaris` repo.
 
-## Update props
+### Update props
 
-### Considerations
+#### Considerations
 
 There are many ways to make a Polaris component more flexible. Updating or adding props is the most common way to add flexibility to the way a component looks or works. Sometimes refactoring the component is [a better path](#add-a-new-pattern).
 
@@ -37,7 +134,7 @@ Components should be performant, accessible, and maintainable. When contributing
 
 If a component isn't flexible enough to meet your project's requirements, or you're unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you're thinking about. We're happy to collaborate to find a solution.
 
-### How to contribute
+#### How to contribute
 
 To add or update a prop:
 
@@ -53,9 +150,9 @@ To add or update a prop:
 
 ---
 
-## Fix a bug
+### Fix a bug
 
-### Considerations
+#### Considerations
 
 Bug fixes are high impact contributions that ensure we deliver a reliable, crafted experience to merchants. Whether you're a seasoned contributor or looking to make your first pull request, there's a bug report open for every level of experience.
 
@@ -65,7 +162,7 @@ If you're just getting started with contributing to Polaris React, look for issu
 - Not yet assigned to someone
 - Haven't been updated in two or more weeks
 
-### How to contribute
+#### How to contribute
 
 1. Submit or assign yourself to a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md).
 2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment).
@@ -81,9 +178,9 @@ If you're just getting started with contributing to Polaris React, look for issu
 
 ---
 
-## Add a new pattern
+### Add a new pattern
 
-### Considerations
+#### Considerations
 
 From perceived performance and accessibility enhancements, to the evolution of our design language, contributing UX improvements to Polaris components empowers teams to make sweeping changes effectively with minimal technical debt upstream.
 
@@ -93,7 +190,7 @@ When exploring the potential for improving the look, feel, and or experience of 
 - Check [W3C](https://www.w3.org/WAI/ARIA/apg/patterns/) for examples of the pattern the component implements
 - Consider whether the existing component could be replaced entirely if it were broken up into smaller components
 
-### Case study
+#### Case study
 
 In the years since Polaris launched in 2017, we've learned a lot from the Shopify and design system communities. As the system's matured, we've found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that's the case, there's an opportunity to refactor the component or build a new component to better meet merchant needs.
 
@@ -101,7 +198,9 @@ For example, `Autocomplete` implements [the combobox with list pattern](https://
 
 The Deliver team partnered with the Polaris team to improve the UX of tag autocomplete inputs in a follow-up project. To accomplish this, we refactored `Combobox` and `Listbox` to support [the combobox with both list and inline autocomplete pattern](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-autocomplete-both.html) with automatic selection. Every `Autocomplete` in the Shopify Admin benefited from those improvements without any code changes needed upstream in the app.
 
-### How to contribute
+For example, `Autocomplete` implements [the combobox with list pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). When the Deliver team looked into fixing bugs in the component, they decided it would benefit from being broken down into two new components. They contributed `Combobox` and `Listbox` and refactored `Autocomplete` to use them. This reduced complexity and made `Autocomplete` easier to maintain.
+
+#### How to contribute
 
 1. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [new component proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=&template=NEW_COMPONENT.md)
 2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
