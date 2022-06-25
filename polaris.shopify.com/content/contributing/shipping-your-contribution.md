@@ -10,13 +10,15 @@ keywords:
 
 # Shipping your contribution
 
-While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live on GitHub. We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub Discussions, Issues, and Pull Requests to work in the open.
+While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live in [GitHub](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub discussions, issues, and pull requests to work in the open.
 
-## How the project is structured
+## Project details
+
+### How it's structured
 
 Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
 
-```
+```plaintext
 polaris/
 ├── polaris-for-figma           # Figma plugin for Polaris components
 ├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
@@ -27,9 +29,9 @@ polaris/
 └── stylelint-polaris           # Linting rules for using Polaris Design Tokens through CSS custom properties
 ```
 
-## What technologies we use
+### Technologies we use
 
-To manage our monorepo structure we use:
+To manage our monorepo, we use:
 
 - Yarn for package management
 - Turborepo and Yarn workspaces for monorepo workflows
@@ -37,9 +39,9 @@ To manage our monorepo structure we use:
 
 Every Polaris project is a little different, but in general we build with JavaScript, TypeScript, and Sass. This documentation site is built using React and Next.js.
 
-## Getting set up
+## Get set up
 
-To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred git interface, like iTerm or Visual Studio Code, to save and log your changes with git.
+To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that's the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we'll illustrate the steps with terminal commands.
 
 ### 1. Download the repo
 
@@ -67,7 +69,7 @@ yarn && yarn build
 git checkout -b new-branch-name
 ```
 
-## Making your first PR
+## Open your first PR
 
 ### 1. Test your changes
 
@@ -79,7 +81,7 @@ If your changes affect Polaris React components, you'll need to test the example
 yarn turbo run dev --filter=@shopify/polaris
 
 # Open https://localhost:3000 to test documentation
-# Open https://localhost:6006 to test Storybook examples and Playgrounds
+# Open https://localhost:6006 to test Storybook examples and Playground sandboxes
 ```
 
 If your adding or editing documentation, ensure your content displays as expected on the style guide website:

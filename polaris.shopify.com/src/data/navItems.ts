@@ -276,12 +276,12 @@ export const contributingNavItems = [
     title: "Guides",
     children: [
       {
-        title: "Thinking in systems",
-        url: "/contributing/thinking-in-systems",
+        title: "Designing with a system",
+        url: "/contributing/designing-with-a-system",
       },
       {
-        title: "When to evolve the system",
-        url: "/contributing/when-to-evolve-the-system",
+        title: "When to contribute new patterns",
+        url: "/contributing/when-to-contribute-new-patterns",
       },
       {
         title: "Shipping your contribution",

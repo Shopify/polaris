@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import glob from "glob";
 
+import Container from "../../components/Container";
 import Layout from "../../components/Layout";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
@@ -18,12 +19,15 @@ interface Props {
 
 const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
   return (
-    <Layout navItems={contributingNavItems}>
-      <PageMeta title={title} />
-      <Longform>
-        <Markdown text={readme} />
-      </Longform>
-    </Layout>
+    <Container>
+      <Layout navItems={contributingNavItems}>
+        <PageMeta title={title} />
+
+        <Longform>
+          <Markdown text={readme} />
+        </Longform>
+      </Layout>
+    </Container>
   );
 };
 

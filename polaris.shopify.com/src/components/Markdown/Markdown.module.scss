@@ -1,0 +1,90 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.Code {
+  &.inline {
+    font-family: monospace;
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-500);
+  }
+}
+
+.QuickStartCard {
+  --table-border-color: var(--border-color-light);
+  color: var(--text-strong);
+  font-size: var(--font-size-100);
+  background: var(--surface-subdued);
+  border-radius: var(--border-radius-500);
+  border: var(--border);
+  width: calc(100vw - var(--toc-gap));
+  margin-top: 1.5rem;
+  overflow: hidden;
+
+  @media screen and (min-width: $breakpointTablet) {
+    width: calc(100vw - var(--toc-gap) - var(--toc-width));
+  }
+
+  @media screen and (min-width: $breakpointDesktop) {
+    width: calc(var(--max-content-width) - var(--toc-width) - var(--toc-width));
+  }
+
+  .QuickStartTable__Wrapper {
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+  .QuickStartTable {
+    min-width: 100vw;
+
+    @media screen and (min-width: $breakpointDesktop) {
+      min-width: var(--max-content-width);
+    }
+
+    @media screen and (min-width: $breakpointDesktopLarge) {
+      width: calc(var(--max-content-width) - var(--toc-gap) - var(--toc-gap));
+    }
+
+    th {
+      vertical-align: top;
+      padding-top: 1.5rem;
+      // white-space: nowrap;
+
+      @media screen and (min-width: $breakpointTablet) {
+        min-width: 200px;
+      }
+
+      &:first-child {
+        padding-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-right: 1.5rem;
+      }
+    }
+
+    tbody {
+      tr td {
+        position: relative;
+        vertical-align: top;
+        width: auto;
+        max-width: 8rem;
+        padding-bottom: 1.5rem;
+
+        &:first-child {
+          padding-left: 1.5rem;
+        }
+
+        &:last-child {
+          padding-right: 1.5rem;
+        }
+      }
+
+      tr:last-child {
+        td {
+          padding-bottom: 2rem;
+        }
+      }
+    }
+  }
+}
