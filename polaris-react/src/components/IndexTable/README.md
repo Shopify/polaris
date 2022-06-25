@@ -1030,9 +1030,9 @@ function StickyLastCellIndexTableExample() {
 }
 ```
 
-### Index table with click-through link
+### Index table with clickable link column
 
-An index table with a primary link element that can be clicked. This disables the default behavior of clicking the row to trigger row selection.
+An index table with a primary link element. The link click overrides the default behavior of row selection.
 
 ```jsx
 function ClickThroughLinkIndexTableExample() {
@@ -1110,9 +1110,9 @@ function ClickThroughLinkIndexTableExample() {
 }
 ```
 
-### Index table with click-through button
+### Index table with clickable button column
 
-An index table with a primary button element that can be clicked. This disables the default behavior of clicking the row to trigger row selection.
+An index table with a primary button element. The button click overrides the default behavior of row selection.
 
 ```jsx
 function ClickThroughLinkIndexTableExample() {
