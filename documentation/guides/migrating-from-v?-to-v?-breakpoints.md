@@ -95,12 +95,12 @@ The following Sass global variables have been removed because the functions usin
 | Deprecated Variable                  | Value                                                                                                    |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | `$frame-with-nav-max-width`          | `$layout-width-nav-base + $page-max-width)`                                                              |
-| `$stacked-content`                   | `breakpoint($layout-width-primary-min + $layout-width-secondary-min + $layout-width-inner-spacing-base)` |
-| `$not-condensed-content`             | `breakpoint($layout-width-page-content-not-condensed)`                                                   |
-| `$partially-condensed-content`       | `breakpoint($layout-width-page-content-partially-condensed`                                              |
-| `$not-condensed-outer-spacing`       | `breakpoint(2 * $layout-width-outer-spacing-max)`                                                        |
-| `$partially-condensed-outer-spacing` | `breakpoint(2 *$layout-width-outer-spacing-min)`                                                         |
-| `$not-condensed-min-page`            | `$not-condensed-content + $not-condensed-outer-spacing`                                                  |
-| `$partially-condensed-min-page`      | `$partially-condensed-content + $partially-condensed-outer-spacing`                                      |
-| `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                                     |
 | `$nav-min-window`                    | `breakpoint($layout-width-page-with-nav-base)`                                                           |
+| `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                                     |
+| `$not-condensed-content`             | `breakpoint($layout-width-page-content-not-condensed)`                                                   |
+| `$not-condensed-min-page`            | `$not-condensed-content + $not-condensed-outer-spacing`                                                  |
+| `$not-condensed-outer-spacing`       | `breakpoint(2 * $layout-width-outer-spacing-max)`                                                        |
+| `$partially-condensed-content`       | `breakpoint($layout-width-page-content-partially-condensed`                                              |
+| `$partially-condensed-min-page`      | `$partially-condensed-content + $partially-condensed-outer-spacing`                                      |
+| `$partially-condensed-outer-spacing` | `breakpoint(2 *$layout-width-outer-spacing-min)`                                                         |
+| `$stacked-content`                   | `breakpoint($layout-width-primary-min + $layout-width-secondary-min + $layout-width-inner-spacing-base)` |
