@@ -1030,9 +1030,9 @@ function StickyLastCellIndexTableExample() {
 }
 ```
 
-### Index table with clickable link column
+### Index table with row navigation link
 
-An index table with a primary link element. The link click overrides the default behavior of row selection.
+Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
 
 ```jsx
 function ClickThroughLinkIndexTableExample() {
@@ -1071,16 +1071,15 @@ function ClickThroughLinkIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
           <Link
-            onClick={() => console.log(`Clicked ${location}`)}
             dataPrimaryLink
+            url={url}
+            onClick={() => console.log(`Clicked ${name}`)}
           >
-            {location}
+            <TextStyle variation="strong">{name}</TextStyle>
           </Link>
         </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>
@@ -1112,10 +1111,10 @@ function ClickThroughLinkIndexTableExample() {
 
 ### Index table with clickable button column
 
-An index table with a primary button element. The button click overrides the default behavior of row selection.
+Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
 
 ```jsx
-function ClickThroughLinkIndexTableExample() {
+function ClickThroughButtonIndexTableExample() {
   const customers = [
     {
       id: '3411',
@@ -1151,16 +1150,15 @@ function ClickThroughLinkIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
           <Button
-            onClick={() => console.log(`Clicked ${location}`)}
             dataPrimaryLink
+            url={url}
+            onClick={() => console.log(`Clicked ${name}`)}
           >
-            {location}
+            <TextStyle variation="strong">{name}</TextStyle>
           </Button>
         </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>

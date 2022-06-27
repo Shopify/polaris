@@ -26,7 +26,7 @@ export interface LinkProps {
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
-  /** Allows the link to be clicked-through when rendered inside collection list components */
+  /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
 }
 

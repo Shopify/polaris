@@ -50,7 +50,7 @@ export interface ButtonProps extends BaseButton {
   icon?: React.ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
-  /** Allows the button to be clicked-through when rendered inside collection list components */
+  /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
 }
 
