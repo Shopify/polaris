@@ -12,12 +12,47 @@ import { contributingNavItems } from "../../data/navItems";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { MarkdownFile } from "../../types";
 
+interface QuickGuide {
+  type: string;
+  openSource: {
+    question: string;
+    answer: string;
+  };
+  who: {
+    question: string;
+    answer: string;
+  };
+  when: {
+    question: string;
+    answer: string;
+  };
+  where: {
+    question: string;
+    answer: string;
+  };
+  what: {
+    question: string;
+    answer: string;
+  };
+  how: {
+    question: string;
+    answer: string;
+  };
+}
+
 interface Props {
   readme: MarkdownFile["readme"];
   title: string;
+  quickGuides: QuickGuide[];
 }
 
-const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
+const contributingDirectory = path.join(process.cwd(), "content/contributing");
+
+const Contributing: NextPage<Props> = ({
+  readme,
+  title,
+  quickGuides,
+}: Props) => {
   return (
     <Container>
       <Layout navItems={contributingNavItems}>
@@ -36,22 +71,19 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
 }) => {
   const mdFilePath = path.resolve(
     process.cwd(),
-    `content/contributing/${params?.doc || ""}.md`
+    `${contributingDirectory}/${params?.doc || ""}.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, "utf-8");
     const { readme, frontMatter }: MarkdownFile = parseMarkdown(markdown);
-    let title = frontMatter?.name || "";
 
-    if (title.includes("/")) {
-      const parts = title.split("/");
-      title = parts[parts.length - 1];
-    }
+    const { quickGuides, name: title = "" } = frontMatter;
 
     const props: Props = {
       title,
       readme,
+      quickGuides,
     };
 
     return { props };

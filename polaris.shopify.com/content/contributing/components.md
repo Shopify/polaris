@@ -9,6 +9,30 @@ keywords:
   - bug fix
   - ux improvement
   - open source
+
+quickGuides:
+  - type: Adding or updating props
+    openSource:
+      question: Are open source contributions accepted?
+      answer: Yes
+    who:
+      question: Who should I involve?
+      answer: |
+        Developers and designers on your team for collaboration and PR approval.
+
+        Open source: Polaris team will be notified in GitHub and can hop in for support and PR approval.
+    when:
+      question: When should I contribute?
+      answer: As needed and as early in your project process as possible.
+    where:
+      question: Where do I contribute?
+      answer: Code and documentation for prop changes can be contributed to the Shopify/polaris GitHub repo. If the prop is UI-related, updates should also be contributed in Figma.
+    what:
+      question: What resources will my contribution impact?
+      answer: Along with impacting the `@shopify/polaris` npm package and this documentation site, prop changes may also impact the <a href="/contributing/figma-ui-kit">Figma UI Kit</a>
+    how:
+      question: How can I get started?
+      answer: Submit a <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md">bug report</a>, assign yourself to an existing bug report, or <a href="/contributing/shipping-your-contribution">open a pull request</a>
 ---
 
 # Contributing to Polaris React
@@ -17,7 +41,7 @@ Anyone is welcome to contribute to Polaris React. There are several types of com
 
 Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component's documentation, or by adding new components or utilities. Often component contributions are a mix of these.
 
-## Contribution quick guide
+## Contribution quick guides
 
 <!-- prettier-ignore -->
 |Type|When|Where|Who|Resources impacted|How to get started|
@@ -25,6 +49,15 @@ Bug fixes can be as simple as removing a typo, or as complex as refactoring a co
 |Bug fix|As needed|[GitHub](https://github.com/Shopify/polaris)|Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - polaris.shopify.com|Submit a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md), assign yourself to an existing bug report, or open a pull request|
 |Enhancement|As needed|[GitHub](https://github.com/Shopify/polaris) |Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - Figma UI Kit <br /> - polaris.shopify.com|Submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or open a pull request|
 |New pattern|As needed|[GitHub](https://github.com/Shopify/polaris)|Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - Polaris UI Kit <br /> - polaris.shopify.com|Submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) early in your project|
+
+<!-- quick-start-guide -->
+
+|_Who_ can contribute?|Anyone is welcome to contribute to Polaris React.|
+|_When_ should I contribute?|As needed, early in your project process.|
+|_Where_ do I contribute?|The Polaris React npm package in one of several projects maintained in the [Shopify/polaris](https://github.com/Shopify/polaris) GitHub repository. [Learn how to set up your development environment](/contributing/shipping-your-contribution)|
+|||
+|||
+|||
 
 ## Detailed steps
 
