@@ -40,4 +40,4 @@ function SkeletonExample() {
   );
 }
 
-export default withPolarisExample(SkeletonExample);
+export default withPolarisExample(SkeletonExample, { width: "full" });

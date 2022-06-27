@@ -58,61 +58,59 @@ function FiltersExample() {
     : [];
 
   return (
-    <div style={{ height: "568px" }}>
-      <Card>
-        <ResourceList
-          resourceName={{ singular: "customer", plural: "customers" }}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleQueryValueChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            >
-              <div style={{ paddingLeft: "8px" }}>
-                <Button onClick={() => console.log("New filter saved")}>
-                  Save
-                </Button>
-              </div>
-            </Filters>
-          }
-          items={[
-            {
-              id: 341,
-              url: "customers/341",
-              name: "Mae Jemison",
-              location: "Decatur, USA",
-            },
-            {
-              id: 256,
-              url: "customers/256",
-              name: "Ellen Ochoa",
-              location: "Los Angeles, USA",
-            },
-          ]}
-          renderItem={(item) => {
-            const { id, url, name, location } = item;
-            const media = <Avatar customer size="medium" name={name} />;
+    <Card>
+      <ResourceList
+        resourceName={{ singular: "customer", plural: "customers" }}
+        filterControl={
+          <Filters
+            queryValue={queryValue}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={handleQueryValueChange}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleClearAll}
+          >
+            <div style={{ paddingLeft: "8px" }}>
+              <Button onClick={() => console.log("New filter saved")}>
+                Save
+              </Button>
+            </div>
+          </Filters>
+        }
+        items={[
+          {
+            id: 341,
+            url: "customers/341",
+            name: "Mae Jemison",
+            location: "Decatur, USA",
+          },
+          {
+            id: 256,
+            url: "customers/256",
+            name: "Ellen Ochoa",
+            location: "Los Angeles, USA",
+          },
+        ]}
+        renderItem={(item) => {
+          const { id, url, name, location } = item;
+          const media = <Avatar customer size="medium" name={name} />;
 
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </Card>
-    </div>
+          return (
+            <ResourceList.Item
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <TextStyle variation="strong">{name}</TextStyle>
+              </h3>
+              <div>{location}</div>
+            </ResourceList.Item>
+          );
+        }}
+      />
+    </Card>
   );
 
   function disambiguateLabel(key, value) {

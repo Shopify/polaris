@@ -52,4 +52,7 @@ function NavigationExample() {
   );
 }
 
-export default withPolarisExample(NavigationExample);
+export default withPolarisExample(NavigationExample, {
+  justifyContent: "flex-start",
+  padding: "none",
+});

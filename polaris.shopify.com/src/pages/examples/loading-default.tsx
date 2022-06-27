@@ -4,11 +4,9 @@ import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function LoadingExample() {
   return (
-    <div style={{ height: "100px" }}>
-      <Frame>
-        <Loading />
-      </Frame>
-    </div>
+    <Frame>
+      <Loading />
+    </Frame>
   );
 }
 

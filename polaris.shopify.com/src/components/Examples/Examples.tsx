@@ -5,6 +5,10 @@ import CodeExample from "../CodeExample";
 import Image from "../Image";
 import iconChevronDown from "../../../public/chevron-down.svg";
 
+const EXAMPLE_MIN_HEIGHT = 500;
+const EXAMPLE_MAX_HEIGHT = 900;
+const EXAMPLE_PADDING_Y = 48;
+
 export type Example = {
   code: string;
   description: string;
@@ -40,11 +44,16 @@ const Examples = (props: Props) => {
       iframeRef?.current?.contentWindow?.document?.getElementById(
         "polaris-example"
       );
-    const padding = 192;
-    let newHeight = padding;
+    let newHeight = EXAMPLE_PADDING_Y;
 
     if (exampleElement) {
-      newHeight += exampleElement?.offsetHeight;
+      newHeight += exampleElement.offsetHeight;
+    }
+
+    if (newHeight < EXAMPLE_MIN_HEIGHT) {
+      newHeight = EXAMPLE_MIN_HEIGHT;
+    } else if (newHeight > EXAMPLE_MAX_HEIGHT) {
+      newHeight = EXAMPLE_MAX_HEIGHT;
     }
 
     setIframeHeight(`${newHeight}px`);

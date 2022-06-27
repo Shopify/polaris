@@ -4,27 +4,25 @@ import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function Example() {
   return (
-    <div style={{ height: "250px" }}>
-      <Frame
-        logo={{
-          width: 124,
-          contextualSaveBarSource:
-            "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999",
+    <Frame
+      logo={{
+        width: 124,
+        contextualSaveBarSource:
+          "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999",
+      }}
+    >
+      <ContextualSaveBar
+        message="Unsaved changes"
+        saveAction={{
+          onAction: () => console.log("add form submit logic"),
+          loading: false,
+          disabled: false,
         }}
-      >
-        <ContextualSaveBar
-          message="Unsaved changes"
-          saveAction={{
-            onAction: () => console.log("add form submit logic"),
-            loading: false,
-            disabled: false,
-          }}
-          discardAction={{
-            onAction: () => console.log("add clear form logic"),
-          }}
-        />
-      </Frame>
-    </div>
+        discardAction={{
+          onAction: () => console.log("add clear form logic"),
+        }}
+      />
+    </Frame>
   );
 }
 
