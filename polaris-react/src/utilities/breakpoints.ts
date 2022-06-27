@@ -35,8 +35,6 @@ const mediaConditionEntries = Object.entries(
   getMediaConditions(tokens.breakpoints),
 );
 
-console.log('mediaConditionEntries:', mediaConditionEntries);
-
 const queryEntries = mediaConditionEntries
   .map(([token, mediaConditions]) =>
     Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
@@ -48,8 +46,6 @@ const queryEntries = mediaConditionEntries
     }),
   )
   .flat();
-
-console.log('queryEntries:', queryEntries);
 
 function getMatches() {
   // Prevents SSR issues
