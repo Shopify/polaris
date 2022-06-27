@@ -8,6 +8,7 @@ import {
   toEm,
   toRem,
   getUnit,
+  getMediaConditions,
 } from '../src/utilities';
 
 describe('createVar', () => {
@@ -110,5 +111,34 @@ describe('toRem', () => {
     expect(toRem('1')).toBe('1');
     expect(toRem('px')).toBe('px');
     expect(toRem(undefined)).toBe('');
+  });
+});
+
+describe('getMediaConditions', () => {
+  it('transforms breakpoints tokens into directional media conditions', () => {
+    /** @type {TokenGroup} */
+    const breakpoints = {
+      breakpoint1: {value: '16px'},
+      breakpoint2: {value: '32px'},
+    };
+
+    expect(getMediaConditions(breakpoints)).toStrictEqual({
+      breakpoint1: {
+        // Up: sizeInPx / 16
+        up: '(min-width: 1em)',
+        // Down: (sizeInPx - 0.05) / 16
+        down: '(max-width: 0.996875em)',
+        // Only: (nextBreakpointSizeInPx - 0.05) / 16
+        only: '(min-width: 1em) and (max-width: 1.996875em)',
+      },
+      breakpoint2: {
+        // Up: sizeInPx / 16
+        up: '(min-width: 2em)',
+        // Down: (sizeInPx - 0.05) / 16
+        down: '(max-width: 1.996875em)',
+        // Only: Same as the up condition as there is no next breakpoint
+        only: '(min-width: 2em)',
+      },
+    });
   });
 });
