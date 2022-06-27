@@ -16,13 +16,3 @@
     @error 'The $value passed into breakpoint() must be a pixel or em value. Got "#{$value}"';
   }
 }
-
-@function breakpoints-up($value) {
-  @return '(min-width: #{breakpoint($value)})';
-}
-
-@function breakpoints-down($value, $inclusive: false) {
-  @return '(max-width: #{breakpoint($value, $inclusive)})';
-}
-
-$page-max-width: $layout-width-primary-max + $layout-width-secondary-max + $layout-width-inner-spacing-base;
