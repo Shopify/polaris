@@ -54,4 +54,8 @@ function FullscreenBarExample() {
   );
 }
 
-export default withPolarisExample(FullscreenBarExample);
+export default withPolarisExample(FullscreenBarExample, {
+  width: "full",
+  alignItems: "flex-start",
+  padding: "none",
+});
