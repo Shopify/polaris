@@ -1063,7 +1063,7 @@ function ClickThroughLinkIndexTableExample() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, url, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -1142,7 +1142,7 @@ function ClickThroughButtonIndexTableExample() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, url, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
