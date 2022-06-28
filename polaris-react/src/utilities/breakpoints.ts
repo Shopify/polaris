@@ -1,5 +1,9 @@
 import {useState, useLayoutEffect} from 'react';
-import {tokens, getMediaConditions} from '@shopify/polaris-tokens';
+import {
+  tokens,
+  getMediaConditions,
+  BreakpointsTokenGroup,
+} from '@shopify/polaris-tokens';
 
 const Breakpoints = {
   navigationBarCollapsed: '768px',
@@ -31,41 +35,29 @@ export function stackedContent() {
     : window.matchMedia(`(max-width: ${Breakpoints.stackedContent})`);
 }
 
-const mediaConditionEntries = Object.entries(
-  getMediaConditions(tokens.breakpoints),
-);
-
-const queryEntries = mediaConditionEntries
-  .map(([token, mediaConditions]) =>
-    Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
-      const breakpointAlias = token.split('-')[1];
-      const name = `${breakpointAlias}${capitalize(direction)}`;
-
-      // e.g. smUp, smDown, smOnly, etc.
-      return [name, mediaCondition];
-    }),
-  )
-  .flat();
+const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
 
 function getMatches() {
   // Prevents SSR issues
   if (typeof window !== 'undefined') {
     return Object.fromEntries(
-      queryEntries.map(([name, query]) => [
+      breakpointsQueryEntries.map(([name, query]) => [
         name,
         window.matchMedia(query).matches,
       ]),
     );
   }
 
-  return Object.fromEntries(queryEntries.map(([name]) => [name, false]));
+  return Object.fromEntries(
+    breakpointsQueryEntries.map(([name]) => [name, false]),
+  );
 }
 
 export function useBreakpoints() {
   const [breakpoints, setBreakpoints] = useState(getMatches());
 
   useLayoutEffect(() => {
-    const mediaQueryLists = queryEntries.map(([_, query]) =>
+    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
       window.matchMedia(query),
     );
 
@@ -90,6 +82,37 @@ export function useBreakpoints() {
   }, []);
 
   return breakpoints;
+}
+
+/**
+ * Converts `breakpoints` tokens into directional media query entries.
+ *
+ * @example
+ * const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
+ * breakpointsQueryEntries === [
+ *   ['xsUp', '(min-width: ...)'],
+ *   ['xsDown', '(max-width: ...)'],
+ *   ['xsOnly', '(min-width: ...) and (max-width: ...)'],
+ *   ['smUp', '(min-width: ...) and (max-width: ...)'],
+ *   ['mdUp', '(min-width: ...) and (max-width: ...)'],
+ *   // etc.
+ * ]
+ */
+export function getBreakpointsQueryEntries(breakpoints: BreakpointsTokenGroup) {
+  const mediaConditionEntries = Object.entries(getMediaConditions(breakpoints));
+
+  return mediaConditionEntries
+    .map(([token, mediaConditions]) =>
+      Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
+        const breakpointAlias = token.split('-')[1];
+
+        // e.g. smUp, smDown, smOnly, etc.
+        const name = `${breakpointAlias}${capitalize(direction)}`;
+
+        return [name, mediaCondition];
+      }),
+    )
+    .flat();
 }
 
 function capitalize(str: string) {
