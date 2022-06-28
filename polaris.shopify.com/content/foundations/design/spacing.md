@@ -61,7 +61,7 @@ You can apply spacing in code in two ways:
 
 ### Applying spacing with stylesheets
 
-When applying spacing in CSS, use these [spacing tokens](/tokens/all-tokens#section-spacing).
+When applying spacing in CSS, use these [spacing tokens](/tokens/spacing).
 
 ### Applying spacing with components
 
