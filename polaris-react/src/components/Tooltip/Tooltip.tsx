@@ -146,14 +146,14 @@ export function Tooltip({
     if (childWrapperContainer.current == null) return;
     const {x, y, width, height} =
       childWrapperContainer.current.getBoundingClientRect();
-    const centerX = width / 2;
+    const centerX = width / 6;
     const centerY = height / 2;
     const {clientX, clientY} = event;
 
     const tooltipLeft = clientX - x;
     const tooltipTop = clientY - y;
 
-    const transformX = tooltipLeft;
+    const transformX = tooltipLeft - centerX;
     const transformY = tooltipTop - centerY;
 
     setTooltipTransform(`translate(${transformX}px, ${transformY}px)`);
