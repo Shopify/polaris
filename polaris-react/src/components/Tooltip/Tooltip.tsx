@@ -146,7 +146,7 @@ export function Tooltip({
     if (childWrapperContainer.current == null) return;
     const {x, y, width, height} =
       childWrapperContainer.current.getBoundingClientRect();
-    const centerX = width / 6;
+    const centerX = width / 7;
     const centerY = height / 2;
     const {clientX, clientY} = event;
 
