@@ -4,17 +4,18 @@ import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import classNames from "classnames";
 import { slugify } from "../../utils/various";
+import { MarkdownFile } from "../../types";
 
-import styles from "./Markdown.module.scss";
+import QuickStartGuide from "../QuickStartGuide";
 
 interface Props {
   text: string;
   skipH1?: boolean;
+  frontMatter?: MarkdownFile["frontMatter"];
 }
 
-function Markdown({ text, skipH1 }: Props) {
+function Markdown({ text, skipH1, frontMatter }: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
@@ -37,25 +38,26 @@ function Markdown({ text, skipH1 }: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({ children }) => (
-          <span
-            className={classNames(styles.Code, inline && styles.inline)}
-            dangerouslySetInnerHTML={{
-              __html: Prism.highlight(
-                String(children),
-                Prism.languages.javascript,
-                "javasript"
-              ),
-            }}
-          ></span>
-        ),
+        code: ({ inline, children }) =>
+          inline ? (
+            <code>{children}</code>
+          ) : (
+            // Prism auto-wraps code blocks in <pre> and <code> tags
+            <span
+              dangerouslySetInnerHTML={{
+                __html: Prism.highlight(
+                  String(children),
+                  Prism.languages.javascript,
+                  "javasript"
+                ),
+              }}
+            ></span>
+          ),
         table: ({ children }) => {
-          return (
-            <div className={styles.QuickStartCard}>
-              <div className={styles.QuickStartTable__Wrapper}>
-                <table className={styles.QuickStartTable}>{children}</table>
-              </div>
-            </div>
+          return frontMatter && frontMatter.quickGuide ? (
+            <QuickStartGuide data={frontMatter.quickGuide} />
+          ) : (
+            <table>{children}</table>
           );
         },
       }}

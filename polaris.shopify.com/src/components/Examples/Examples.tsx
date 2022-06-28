@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
-import Image from "../Image";
+import Select from "../Select";
 
 export type Example = {
   code: string;
@@ -25,8 +25,8 @@ const Examples = (props: Props) => {
     fileName = "",
   } = examples[currentIndex] || {};
   const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
-  const handleSelection = (ev: ChangeEvent) => {
-    const value = (ev.target as HTMLInputElement).value;
+  const handleSelection = (ev: ChangeEvent<HTMLSelectElement>) => {
+    const value = ev.target.value;
 
     setIndex(parseInt(value, 10));
   };
@@ -58,33 +58,20 @@ const Examples = (props: Props) => {
     return null;
   }
 
+  const options = examples.map(({ fileName, title }, index) => {
+    return { label: title, value: String(index) };
+  });
+
   return (
     <>
       <h2 id="examples">Examples</h2>
-      <div className={styles.SelectContainer}>
-        <select onChange={handleSelection}>
-          {examples.map((example, index) => {
-            const { fileName, title } = example;
-
-            return (
-              <option key={fileName} value={index}>
-                {title}
-              </option>
-            );
-          })}
-        </select>
-        <div className={styles.SelectIcon}>
-          <Image
-            src="/icons/CaretDownMinor.svg"
-            alt="Down Arrow"
-            width={16}
-            height={16}
-            fadeIn={false}
-            icon
-          />
-        </div>
-      </div>
-
+      <Select
+        labelHidden
+        label="Component example"
+        id="Component-Example-Select"
+        options={options}
+        onChange={handleSelection}
+      />
       {description ? <p>{description}</p> : null}
 
       <div className={styles.Buttons}>

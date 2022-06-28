@@ -10,40 +10,12 @@ import Markdown from "../../components/Markdown";
 import PageMeta from "../../components/PageMeta";
 import { contributingNavItems } from "../../data/navItems";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { MarkdownFile } from "../../types";
-
-interface QuickGuide {
-  type: string;
-  openSource: {
-    question: string;
-    answer: string;
-  };
-  who: {
-    question: string;
-    answer: string;
-  };
-  when: {
-    question: string;
-    answer: string;
-  };
-  where: {
-    question: string;
-    answer: string;
-  };
-  what: {
-    question: string;
-    answer: string;
-  };
-  how: {
-    question: string;
-    answer: string;
-  };
-}
+import { MarkdownFile, QuickGuide } from "../../types";
 
 interface Props {
   readme: MarkdownFile["readme"];
   title: string;
-  quickGuides: QuickGuide[];
+  quickGuide?: QuickGuide[];
 }
 
 const contributingDirectory = path.join(process.cwd(), "content/contributing");
@@ -51,7 +23,7 @@ const contributingDirectory = path.join(process.cwd(), "content/contributing");
 const Contributing: NextPage<Props> = ({
   readme,
   title,
-  quickGuides,
+  quickGuide,
 }: Props) => {
   return (
     <Container>
@@ -59,7 +31,7 @@ const Contributing: NextPage<Props> = ({
         <PageMeta title={title} />
 
         <Longform>
-          <Markdown text={readme} />
+          <Markdown text={readme} frontMatter={{ quickGuide }} />
         </Longform>
       </Layout>
     </Container>
@@ -78,12 +50,12 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
     const markdown = fs.readFileSync(mdFilePath, "utf-8");
     const { readme, frontMatter }: MarkdownFile = parseMarkdown(markdown);
 
-    const { quickGuides, name: title = "" } = frontMatter;
+    const { quickGuide = "", name: title = "" } = frontMatter;
 
     const props: Props = {
       title,
       readme,
-      quickGuides,
+      quickGuide,
     };
 
     return { props };

@@ -1,0 +1,69 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.QuickStartGuide {
+}
+
+.QuickStartGuide__Card {
+  --table-border-color: var(--border-color-light);
+  color: var(--text-strong);
+  font-size: var(--font-size-100);
+  background: var(--surface-subdued);
+  border-radius: var(--border-radius-500);
+  // width: calc(100vw - var(--toc-gap));
+  width: 100%;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border: var(--border);
+}
+
+.QuickStartGuide__TableWrapper {
+  width: 100%;
+}
+
+.QuickStartGuide__Table {
+  width: 100%;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: none;
+  }
+
+  @media screen and (min-width: $breakpointDesktopLarge) {
+    // width: calc(var(--max-content-width) - var(--toc-gap) - var(--toc-gap));
+  }
+
+  tbody tr {
+    td,
+    th {
+      position: relative;
+      vertical-align: top;
+      width: auto;
+      max-width: 8rem;
+      padding-bottom: 1rem;
+      padding-top: 1rem !important;
+      word-wrap: break-word;
+      border-bottom: var(--border);
+
+      &:first-child {
+        padding-left: 1rem;
+      }
+
+      &:last-child {
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+
+    th {
+      border-right: var(--border);
+    }
+
+    &:last-child {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+}
