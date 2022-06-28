@@ -36,7 +36,7 @@ export function Tooltip({
   content,
   dismissOnMouseOut,
   active: originalActive,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
 }: TooltipProps) {
@@ -153,7 +153,7 @@ export function Tooltip({
     const tooltipLeft = clientX - x;
     const tooltipTop = clientY - y;
 
-    const transformX = tooltipLeft - centerX;
+    const transformX = tooltipLeft;
     const transformY = tooltipTop - centerY;
 
     setTooltipTransform(`translate(${transformX}px, ${transformY}px)`);
