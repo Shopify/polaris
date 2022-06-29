@@ -26,6 +26,8 @@ export interface LinkProps {
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
+  /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
+  dataPrimaryLink?: boolean;
 }
 
 export function Link({
@@ -37,6 +39,7 @@ export function Link({
   monochrome,
   removeUnderline,
   accessibilityLabel,
+  dataPrimaryLink,
 }: LinkProps) {
   const i18n = useI18n();
   let childrenMarkup = children;
@@ -77,6 +80,7 @@ export function Link({
             external={external}
             id={id}
             aria-label={accessibilityLabel}
+            data-primary-link={dataPrimaryLink}
           >
             {childrenMarkup}
           </UnstyledLink>
@@ -87,6 +91,7 @@ export function Link({
             className={className}
             id={id}
             aria-label={accessibilityLabel}
+            data-primary-link={dataPrimaryLink}
           >
             {childrenMarkup}
           </button>
