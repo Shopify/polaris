@@ -75,8 +75,8 @@ function isValidMediaCondition(allowedMedia, mediaCondition) {
 // TODO: Update regex to match new media query range syntax:
 // https://drafts.csswg.org/mediaqueries/#mq-range-context
 function hasWidthOrHeightInCondition(mediaCondition) {
-  // https://regex101.com/r/js6eCr/1
-  return /\((?:min-|max-)?(?:width|height)/.test(mediaCondition);
+  // https://regex101.com/r/ka200N/1
+  return /\(\s*(?:min-|max-)?(?:width|height)/.test(mediaCondition);
 }
 
 /**
