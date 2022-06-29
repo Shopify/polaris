@@ -85,30 +85,8 @@ function IconsPage() {
               placeholder="Filter icons"
             />
           </div>
-
           {Object.keys(matchingMajor).length !== 0 && (
-            <>
-              <div className={styles.SectionHeading}>
-                <p>
-                  <b>Major icons</b>
-                </p>
-              </div>
-              <IconGrid>
-                {Object.keys(matchingMajor).map((iconName) => (
-                  <li key={iconName}>
-                    <Link href={{ query: { icon: iconName, q: searchText } }}>
-                      <a>
-                        <IconGrid.Item
-                          fileName={iconName}
-                          icon={matchingMajor[iconName]}
-                          isSelected={activeIcon === iconName}
-                        />
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </IconGrid>
-            </>
+            <div className={styles.SectionHeading}>Major icons</div>
           )}
 
           {/*  {Object.keys(matchingMinor).length !== 0 && (
