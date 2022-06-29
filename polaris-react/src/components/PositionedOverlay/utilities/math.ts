@@ -110,7 +110,7 @@ export function calculateHorizontalPosition(
 
   return Math.min(
     maximum,
-    Math.max(0, activatorRect.center.x - overlayRect.width / 9),
+    Math.max(0, activatorRect.center.x - overlayRect.width / 2),
   );
 }
 

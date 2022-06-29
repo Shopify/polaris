@@ -146,6 +146,7 @@ export class PositionedOverlay extends PureComponent<
       width: width == null || isNaN(width) ? undefined : width,
       zIndex: zIndexOverride || zIndex || undefined,
       transform: transform ?? undefined,
+      pointerEvents: 'none',
     };
 
     const className = classNames(
@@ -280,9 +281,13 @@ export class PositionedOverlay extends PureComponent<
             measuring: false,
             activatorRect: getRectForNode(activator),
             left:
-              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+              preferredAlignment !== 'right'
+                ? horizontalPosition + overlayRect.width / 2
+                : undefined,
             right:
-              preferredAlignment === 'right' ? horizontalPosition : undefined,
+              preferredAlignment === 'right'
+                ? horizontalPosition + overlayRect.width / 2
+                : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
