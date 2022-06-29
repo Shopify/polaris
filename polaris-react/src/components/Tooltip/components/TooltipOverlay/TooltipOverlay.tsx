@@ -55,6 +55,7 @@ export function TooltipOverlay({
       styles.TooltipOverlay,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
+      positioning === 'below' && styles.positionedBelow,
     );
 
     const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
