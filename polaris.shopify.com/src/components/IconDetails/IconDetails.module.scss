@@ -1,0 +1,126 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+
+.Title {
+  display: flex;
+  align-items: center;
+  @include heading-4;
+  gap: 0.5rem;
+}
+
+h2.Title {
+  @include heading-3;
+}
+
+.SidebarSection {
+  padding: 1.75rem;
+  border-bottom: 1px solid var(--border-color-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.IconInfo {
+  p {
+    font-size: var(--font-size-200);
+  }
+}
+
+.Preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.PreviewImage {
+  transform: translateY(0.25rem);
+
+  @include dark-mode {
+    filter: brightness(0) contrast(1) invert(1);
+  }
+}
+
+.IconSet {
+  display: inline-block;
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-400);
+  padding: 0 0.333rem;
+  background: var(--surface);
+  font-size: var(--font-size-50);
+}
+
+.ActionButtons {
+  margin-top: 1.5rem;
+}
+
+.DownloadIconButton {
+  align-items: center;
+  appearance: none;
+  background: var(--primary);
+  color: var(--surface);
+  padding: 0.75rem 0.66rem;
+  border: none;
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-500);
+  border-radius: var(--border-radius-400);
+  user-select: none;
+  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.075);
+  display: block;
+  text-align: center;
+  cursor: pointer;
+
+  &:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
+}
+
+.ProposeChange {
+  display: flex;
+  justify-content: center;
+
+  a {
+    font-size: var(--font-size-100);
+    color: var(--text-subdued);
+  }
+}
+
+.IconDescription {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.SmallParagraph {
+  margin-bottom: 1rem;
+  font-size: var(--font-size-200);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.CodeExampleWrapper {
+  margin: 1rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.Keywords {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-size-50);
+  gap: 0.5rem;
+  line-height: 1;
+
+  button {
+    background: transparent;
+    color: var(--text-subdued);
+
+    &:focus-visible {
+      box-shadow: none;
+      color: var(--text-strong);
+    }
+  }
+}

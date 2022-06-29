@@ -320,7 +320,7 @@ function GlobalSearch({}: Props) {
                           if (results.length === 0) return null;
                           return (
                             <ResultsGroup title={category}>
-                              <IconGrid>
+                              {/* <IconGrid>
                                 {results.map((result) => {
                                   resultIndex++;
                                   return (
@@ -332,7 +332,7 @@ function GlobalSearch({}: Props) {
                                     />
                                   );
                                 })}
-                              </IconGrid>
+                              </IconGrid> */}
                             </ResultsGroup>
                           );
                         }
