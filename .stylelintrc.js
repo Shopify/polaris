@@ -11,7 +11,6 @@ module.exports = {
   overrides: [
     {
       files: ['polaris-react/**/*.{css,scss}'],
-      ignoreFiles: ['polaris-react/build/**/*.{css,scss}'],
       extends: [
         '@shopify/stylelint-plugin/prettier',
         './stylelint-polaris/configs/internal',
