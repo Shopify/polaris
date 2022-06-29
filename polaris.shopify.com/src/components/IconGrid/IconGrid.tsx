@@ -1,5 +1,5 @@
 import Image from "../Image";
-import Tooltip from "../Tooltip";
+import { className } from "../../utils/various";
 import styles from "./IconGrid.module.scss";
 import iconMetadata from "@shopify/polaris-icons/metadata";
 import Link from "next/link";
@@ -22,7 +22,12 @@ function IconGrid({ title, icons, activeIcon, query }: Props) {
               href={{ query: { icon: iconFileName, q: query } }}
               scroll={false}
             >
-              <a className={styles.Icon}>
+              <a
+                className={className(
+                  styles.Icon,
+                  activeIcon === iconFileName && styles.IconSelected
+                )}
+              >
                 <Image
                   src={`/icons/${iconFileName}.svg`}
                   alt={icons[iconFileName].description}

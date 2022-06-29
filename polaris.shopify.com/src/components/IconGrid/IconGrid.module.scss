@@ -13,8 +13,6 @@
   justify-content: center;
   width: 100%;
   gap: 10px;
-  // cursor: pointer;
-  background: transparent;
   padding-top: 5px;
   aspect-ratio: 5 / 4;
   border-radius: var(--border-radius-600);
@@ -25,22 +23,15 @@
     box-shadow: var(--focus-outline);
   }
 
-  @media (hover: hover) {
-    &.isHighlighted button,
-    &.isSelected button {
-      background: var(--search-highlight-color);
-
-      @include dark-mode {
-        .SVGWrapper {
-          filter: brightness(5000%);
-        }
-      }
+  img {
+    @include dark-mode {
+      filter: brightness(0) contrast(1) invert(1);
     }
   }
+}
 
-  @include dark-mode {
-    filter: brightness(0) contrast(1) invert(1);
-  }
+.IconSelected {
+  background: var(--search-highlight-color);
 }
 
 .IconName {
