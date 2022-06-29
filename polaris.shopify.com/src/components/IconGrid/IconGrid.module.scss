@@ -3,7 +3,7 @@
 .IconGrid {
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 }
 
 .Icon {
@@ -37,6 +37,8 @@
 .IconName {
   font-size: 12px;
   color: #aaa;
+  padding: 0 0.5rem;
+  text-align: center;
 }
 
 .SectionHeading {

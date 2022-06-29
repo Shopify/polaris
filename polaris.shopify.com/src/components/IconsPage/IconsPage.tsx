@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Dialog } from "@headlessui/react";
+import iconMetadata from "@shopify/polaris-icons/metadata";
+import { useMedia } from "../../utils/hooks";
 import styles from "./IconsPage.module.scss";
 import Container from "../Container";
-import iconMetadata from "@shopify/polaris-icons/metadata";
 import IconGrid from "../IconGrid";
 import SearchField from "../SearchField";
 import Longform from "../Longform";
@@ -35,6 +37,7 @@ const getMatchingIcons = (currentSearch: string, set: string) => {
 
 function IconsPage() {
   const router = useRouter();
+  const useModal = useMedia("screen and (max-width: 850px)");
   const [searchText, setSearchText] = useState("");
   const activeIcon = Array.isArray(router.query.icon)
     ? router.query.icon[0]
@@ -59,18 +62,48 @@ function IconsPage() {
     router.push({ query });
   };
 
-  // This should be wired up to input type="search" clear button
-  // const handleRemoveIcon = () => {
-  //   const query: { q?: string } = {};
-  //   if (searchText) query.q = searchText;
-  //   router.push({ query });
-  // };
+  const handleRemoveIcon = () => {
+    const query: { q?: string } = {};
+    if (searchText) query.q = searchText;
+    router.push({ query });
+  };
+
+  const SideBar = () => (
+    <div className={styles.SidebarCard}>
+      {iconMetadata[activeIcon] ? (
+        <IconDetails
+          fileName={activeIcon}
+          name={iconMetadata[activeIcon].name}
+          set={iconMetadata[activeIcon].set}
+          description={iconMetadata[activeIcon].description}
+          keywords={iconMetadata[activeIcon].keywords}
+          query={searchText}
+        />
+      ) : (
+        <div className={styles.SidebarEmptyState}>
+          <p>Select an icon</p>
+        </div>
+      )}
+    </div>
+  );
+
+  const SideBarContainer = () =>
+    useModal ? (
+      <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
+        <div className={styles.ModalBackdrop} aria-hidden="true" />
+        <Dialog.Panel className={styles.Modal}>
+          <SideBar />
+        </Dialog.Panel>
+      </Dialog>
+    ) : (
+      <SideBar />
+    );
 
   return (
     <Container className={styles.IconsPage}>
       <PageMeta title={pageTitle} />
       <h1>Icons</h1>
-      <div className={styles.SplitLayout}>
+      <div className={!useModal ? styles.SplitLayout : ""}>
         <div className={styles.IconGrids}>
           <SearchField
             value={searchText}
@@ -120,22 +153,7 @@ function IconsPage() {
           ) : null}
         </div>
         <div>
-          <div className={styles.SidebarCard}>
-            {iconMetadata[activeIcon] ? (
-              <IconDetails
-                fileName={activeIcon}
-                name={iconMetadata[activeIcon].name}
-                set={iconMetadata[activeIcon].set}
-                description={iconMetadata[activeIcon].description}
-                keywords={iconMetadata[activeIcon].keywords}
-                query={searchText}
-              />
-            ) : (
-              <div className={styles.SidebarEmptyState}>
-                <p>Select an icon</p>
-              </div>
-            )}
-          </div>
+          <SideBarContainer />
         </div>
       </div>
     </Container>
