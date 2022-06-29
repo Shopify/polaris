@@ -3,6 +3,10 @@ const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 const {
   ruleName: customPropertiesAllowedListRuleName,
 } = require('./plugins/custom-properties-allowed-list');
+const {
+  ruleName: mediaQueriesAllowedList,
+} = require('./plugins/media-queries-allowed-list');
+
 /**
  * Allowed Polaris token custom properties.
  *
@@ -22,7 +26,10 @@ const userDefinedCustomPropertyNames = /--(?!pc?-).+/;
  */
 module.exports = {
   extends: ['./configs/shared'],
-  plugins: ['./plugins/custom-properties-allowed-list'],
+  plugins: [
+    './plugins/custom-properties-allowed-list',
+    './plugins/media-queries-allowed-list',
+  ],
   rules: {
     /**
      * Custom property constraints:
@@ -40,6 +47,35 @@ module.exports = {
             userDefinedCustomPropertyNames,
           ],
         },
+      },
+      {severity: 'warning'},
+    ],
+    [mediaQueriesAllowedList]: [
+      {
+        // Allowed media types and media conditions
+        // https://www.w3.org/TR/mediaqueries-5/#media
+        allowedMedia: [
+          'print',
+          'screen',
+          '-ms-high-contrast',
+          'forced-colors',
+          // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
+          '$p-breakpoints-xs-up',
+          '$p-breakpoints-xs-down',
+          '$p-breakpoints-xs-only',
+          '$p-breakpoints-sm-up',
+          '$p-breakpoints-sm-down',
+          '$p-breakpoints-sm-only',
+          '$p-breakpoints-md-up',
+          '$p-breakpoints-md-down',
+          '$p-breakpoints-md-only',
+          '$p-breakpoints-lg-up',
+          '$p-breakpoints-lg-up',
+          '$p-breakpoints-lg-down',
+          '$p-breakpoints-xl-down',
+          '$p-breakpoints-xl-only',
+          '$p-breakpoints-xl-only',
+        ],
       },
       {severity: 'warning'},
     ],
