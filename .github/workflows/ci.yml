@@ -28,6 +28,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
+            .stylelintcache
             **/.eslintcache
             **/.turbo
             node_modules/.cache/turbo

@@ -28,7 +28,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint && yarn lint:styles",
-    "lint:styles": "stylelint **/*.{css,scss}",
+    "lint:styles": "stylelint --cache **/*.{css,scss}",
     "test": "turbo run test",
     "test:watch": "jest --watch",
     "clean": "turbo run clean && rm -rf node_modules",
