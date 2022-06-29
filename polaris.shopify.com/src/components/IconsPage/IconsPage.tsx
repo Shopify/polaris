@@ -110,6 +110,7 @@ function IconsPage() {
             onChange={(value) => handleSearchChange(value)}
             placeholder="Search icons"
           />
+
           {Object.keys(matchingMajor).length !== 0 && (
             <IconGrid
               title="Major icons"
@@ -118,6 +119,7 @@ function IconsPage() {
               query={searchText}
             />
           )}
+
           {Object.keys(matchingMinor).length !== 0 && (
             <IconGrid
               title="Minor icons"
@@ -126,6 +128,7 @@ function IconsPage() {
               query={searchText}
             />
           )}
+
           {Object.keys(matchingMajor).length === 0 &&
           Object.keys(matchingMinor).length === 0 ? (
             <div style={{ textAlign: "center", marginTop: "6rem" }}>

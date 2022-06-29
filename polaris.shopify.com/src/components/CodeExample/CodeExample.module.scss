@@ -1,7 +1,6 @@
 @import "../../styles/mixins.scss";
 
 .CodeExample {
-  line-height: 1.4;
   border-radius: var(--border-radius-400);
   max-width: calc(100vw - 1.5rem);
 
@@ -11,7 +10,7 @@
 
   &.minimalist {
     box-shadow: none;
-    border: 1px solid var(--border-color-light);
+    background: var(--surface-subdued);
 
     .CopyButton svg {
       filter: brightness(-500%);
@@ -68,8 +67,8 @@
 }
 
 .CodeExample.minimalist .Code {
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .LineNumber {

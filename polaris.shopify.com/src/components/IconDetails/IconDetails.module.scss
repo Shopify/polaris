@@ -2,14 +2,15 @@
 @import "../../styles/mixins.scss";
 
 .Title {
+  @include heading-2;
   display: flex;
-  align-items: center;
-  @include heading-4;
-  gap: 0.5rem;
+  align-items: flex-start;
+  font-weight: var(--font-weight-400);
+  gap: 0.75rem;
 }
 
-h2.Title {
-  @include heading-3;
+.Subtitle {
+  @include heading-4;
 }
 
 .SidebarSection {
@@ -30,7 +31,10 @@ h2.Title {
 .Preview {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 0;
+  border-radius: var(--border-radius-500);
+  background: var(--surface-subdued);
 }
 
 .PreviewImage {
@@ -43,11 +47,14 @@ h2.Title {
 
 .IconSet {
   display: inline-block;
-  border: 1px solid var(--border-color-light);
-  border-radius: var(--border-radius-400);
-  padding: 0 0.333rem;
-  background: var(--surface);
+  border-radius: var(--border-radius-800);
+  padding: 0.25rem 0.4rem;
+  background: var(--text-strong);
   font-size: var(--font-size-50);
+  font-weight: var(--font-weight-400);
+  letter-spacing: 0;
+  color: var(--surface);
+  transform: translateY(0.33rem);
 }
 
 .ActionButtons {
@@ -111,16 +118,12 @@ h2.Title {
   display: flex;
   flex-wrap: wrap;
   font-size: var(--font-size-50);
-  gap: 0.5rem;
   line-height: 1;
+  margin-left: -0.33rem;
 
-  button {
-    background: transparent;
+  a {
     color: var(--text-subdued);
-
-    &:focus-visible {
-      box-shadow: none;
-      color: var(--text-strong);
-    }
+    padding: 0.33rem;
+    border-radius: var(--border-radius-400);
   }
 }

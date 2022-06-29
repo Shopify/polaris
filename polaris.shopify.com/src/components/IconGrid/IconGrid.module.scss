@@ -2,8 +2,8 @@
 
 .IconGrid {
   display: grid;
-  gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
 }
 
 .Icon {
@@ -15,7 +15,7 @@
   gap: 10px;
   padding-top: 5px;
   aspect-ratio: 5 / 4;
-  border-radius: var(--border-radius-600);
+  border-radius: var(--border-radius-400);
   box-shadow: var(--card-shadow);
   user-select: none;
 
@@ -37,8 +37,12 @@
 .IconName {
   font-size: 12px;
   color: #aaa;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .SectionHeading {

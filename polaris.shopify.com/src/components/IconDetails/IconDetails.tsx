@@ -75,7 +75,7 @@ function IconDetails({
       </div>
 
       <div className={styles.SidebarSection}>
-        <h3 className={styles.Title}>Figma</h3>
+        <h3 className={styles.Subtitle}>Figma</h3>
         <p className={styles.SmallParagraph}>
           Use the{" "}
           <a href="https:www.figma.com/community/file/1110993965108325096">
@@ -86,7 +86,7 @@ function IconDetails({
       </div>
 
       <div className={styles.SidebarSection}>
-        <h3 className={styles.Title}>React</h3>
+        <h3 className={styles.Subtitle}>React</h3>
         <p className={styles.SmallParagraph}>
           Import the icon from{" "}
           <a href="https:www.npmjs.com/package/@shopify/polaris-icons#usage">
