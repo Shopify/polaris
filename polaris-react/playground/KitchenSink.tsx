@@ -26,6 +26,7 @@ export function KitchenSink() {
             <RenderPerformanceProfiler
               id={id.replace('All Components/', '')}
               kind={storyName}
+              printToDOM
             >
               <Story />
             </RenderPerformanceProfiler>

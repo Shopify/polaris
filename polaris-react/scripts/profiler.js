@@ -6,22 +6,13 @@ const iframePath =
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const data = [];
+  await page.goto(iframePath, {waitUntil: 'networkidle2', timeout: 0});
 
-  page.on('console', async (message) => {
-    const messages = await Promise.all(
-      message.args().map((arg) => {
-        return arg.executionContext().evaluate((obj) => obj, arg);
-      }),
-    );
+  const data = await page.evaluate(
+    () => document.getElementById('render-performance-profiler').innerHTML,
+  );
 
-    if (message.type() !== 'log') return;
-
-    data.push(...messages);
-  });
-
-  await page.goto(iframePath, {waitUntil: 'load'});
-  console.log(JSON.stringify(data)); // eslint-disable-line no-console
+  console.log(data); // eslint-disable-line no-console
   await page.close();
   await browser.close();
 })();
