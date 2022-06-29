@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fix scroll caused by Page without header section
+Fixed  `Page` without header section causing unnecessary scrollbar
