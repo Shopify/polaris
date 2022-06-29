@@ -13,7 +13,6 @@ import styles from './TooltipOverlay.scss';
 export interface TooltipOverlayProps {
   id: string;
   active: boolean;
-  preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
@@ -26,7 +25,6 @@ export function TooltipOverlay({
   active,
   activator,
   preferredPosition = 'below',
-  preventInteraction,
   id,
   children,
   accessibilityLabel,
@@ -38,7 +36,6 @@ export function TooltipOverlay({
       active={active}
       activator={activator}
       preferredPosition={preferredPosition}
-      preventInteraction={preventInteraction}
       render={renderTooltip}
       transform={transform}
     />
