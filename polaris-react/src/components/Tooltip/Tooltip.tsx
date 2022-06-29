@@ -15,8 +15,6 @@ export interface TooltipProps {
   content: React.ReactNode;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
-  /** Dismiss tooltip when not interacting with its children */
-  dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
    * @default 'below'
@@ -34,7 +32,6 @@ export interface TooltipProps {
 export function Tooltip({
   children,
   content,
-  dismissOnMouseOut,
   active: originalActive,
   preferredPosition = 'above',
   activatorWrapper = 'span',
@@ -85,7 +82,6 @@ export function Tooltip({
         active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        preventInteraction={dismissOnMouseOut}
         transform={tooltipTransform}
       >
         {content}

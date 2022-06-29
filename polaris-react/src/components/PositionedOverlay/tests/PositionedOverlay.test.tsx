@@ -199,27 +199,6 @@ describe('<PositionedOverlay />', () => {
     });
   });
 
-  describe('preventInteraction', () => {
-    it('passes preventInteraction to PositionedOverlay when preventInteraction is true', () => {
-      const positionedOverlay = mountWithApp(
-        <PositionedOverlay {...mockProps} preventInteraction />,
-      );
-      expect(positionedOverlay).toContainReactComponent('div', {
-        className: expect.stringContaining(styles.preventInteraction),
-      });
-    });
-
-    it('does not pass preventInteraction to PositionedOverlay by default', () => {
-      const positionedOverlay = mountWithApp(
-        <PositionedOverlay {...mockProps} />,
-      );
-
-      expect(positionedOverlay).not.toContainReactComponent('div', {
-        className: expect.stringContaining(styles.preventInteraction),
-      });
-    });
-  });
-
   describe('lifecycle', () => {
     it('updates safely', () => {
       const positionedOverlay = mountWithApp(
