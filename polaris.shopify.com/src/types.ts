@@ -67,11 +67,12 @@ export type GroupedSearchResults = {
   Icons: { results: IconsSearchResult[]; maxScore: number };
 };
 
-export type Icon = {
+type Icon = {
+  fileName: string;
   keywords: string[];
   name: string;
   description: string;
-  set: string;
+  set: "major" | "minor";
 };
 
 export interface SearchResultItem {

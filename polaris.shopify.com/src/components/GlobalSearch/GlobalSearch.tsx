@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import iconMetadata from "@shopify/polaris-icons/metadata";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
@@ -15,6 +16,7 @@ import Link from "next/link";
 import { className, slugify, stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
+import { type } from "os";
 
 interface Props {}
 
@@ -318,21 +320,18 @@ function GlobalSearch({}: Props) {
                         case "Icons": {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
+                          const data: typeof iconMetadata = {};
+                          results.forEach((result) => {
+                            data[result.meta.icon.fileName] = {
+                              name: result.meta.icon.name,
+                              set: result.meta.icon.set,
+                              keywords: result.meta.icon.keywords,
+                              description: result.meta.icon.description,
+                            };
+                          });
                           return (
                             <ResultsGroup title={category}>
-                              {/* <IconGrid>
-                                {results.map((result) => {
-                                  resultIndex++;
-                                  return (
-                                    <IconGrid.Item
-                                      key={result.url}
-                                      icon={result.meta.icon}
-                                      onClick={() => router.push(result.url)}
-                                      {...getItemProps({ resultIndex })}
-                                    />
-                                  );
-                                })}
-                              </IconGrid> */}
+                              <IconGrid icons={data} />
                             </ResultsGroup>
                           );
                         }

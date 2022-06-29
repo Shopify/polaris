@@ -10,7 +10,7 @@ import {
 import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
-import metadata from "@shopify/polaris-icons/metadata";
+import iconMetadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
@@ -84,18 +84,20 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   );
 });
 
-// // Add icons
-// Object.keys(metadata).forEach((fileName) => {
-//   const { name, set, description, keywords } = metadata[fileName];
-//   results.push({
-//     category: "Icons",
-//     url: `/icons?icon=${fileName}`,
-//     score: 0,
-//     meta: {
-//       icon: { fileName, keywords, name, description, set },
-//     },
-//   });
-// });
+// Add icons
+Object.keys(iconMetadata).forEach((fileName) => {
+  results.push({
+    category: "Icons",
+    url: `/icons?icon=${fileName}`,
+    score: 0,
+    meta: {
+      icon: {
+        fileName,
+        ...iconMetadata[fileName],
+      },
+    },
+  });
+});
 
 // Add foundations
 foundations.forEach(({ frontMatter: { name }, intro, section }) => {
@@ -172,13 +174,13 @@ export function search(query: string): GroupedSearchResults {
       }))
       .slice(0, MAX_RESULTS["Tokens"]) as TokensSearchResult[];
 
-    // groupedResults["Icons"].results = scoredResults
-    //   .filter((result) => result.category === "Icons")
-    //   .map((result) => ({
-    //     ...result,
-    //     score: result.score || 0,
-    //   }))
-    //   .slice(0, MAX_RESULTS["Icons"]) as IconsSearchResult[];
+    groupedResults["Icons"].results = scoredResults
+      .filter((result) => result.category === "Icons")
+      .map((result) => ({
+        ...result,
+        score: result.score || 0,
+      }))
+      .slice(0, MAX_RESULTS["Icons"]) as IconsSearchResult[];
 
     Object.keys(groupedResults).forEach((category) => {
       const typedCategory = category as SearchResultCategory;
