@@ -970,6 +970,10 @@ function StickyLastCellIndexTableExample() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+      status: 'Created',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
     {
       id: '2561',
@@ -978,6 +982,10 @@ function StickyLastCellIndexTableExample() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      status: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
     },
   ];
   const resourceName = {
@@ -989,7 +997,20 @@ function StickyLastCellIndexTableExample() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        status,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+      },
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -1002,6 +1023,10 @@ function StickyLastCellIndexTableExample() {
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1020,6 +1045,10 @@ function StickyLastCellIndexTableExample() {
           {title: 'Location'},
           {title: 'Order count'},
           {title: 'Amount spent', hidden: false},
+          {title: 'Status'},
+          {title: 'Channel'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
         ]}
         lastColumnSticky
       >
