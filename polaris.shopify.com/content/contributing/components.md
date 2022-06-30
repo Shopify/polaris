@@ -31,7 +31,8 @@ quickGuide:
       - what:
         question: What resources will my contribution impact?
         answer: Along with impacting the <code>@shopify/polaris</code> npm package and this documentation site, prop changes may also impact the <a href="/contributing/figma-ui-kit">Figma UI Kit</a>.
-      - question: How can I get started?
+      - how:
+        question: How can I get started?
         answer: Submit a <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md">bug report</a>, assign yourself to an existing bug report, or <a href="/contributing/shipping-your-contribution">open a pull request</a>.
 ---
 
@@ -41,7 +42,7 @@ Anyone is welcome to contribute to Polaris React. There are several types of com
 
 Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component's documentation, or by adding new components or utilities. Often component contributions are a mix of these.
 
-## Contribution quick guides
+## Quick start guides
 
 <!-- prettier-ignore -->
 |Type|When|Where|Who|Resources impacted|How to get started|
@@ -86,6 +87,8 @@ To add or update a prop:
 8. Add examples to the component’s documentation
 9. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#making-your-first-pr)
 
+---
+
 ### Fix a bug
 
 #### Considerations
@@ -111,6 +114,8 @@ If you're just getting started with contributing to Polaris React, look for issu
 5. If after investigating you arrive at a solution to the issue:
    <br /> - Update the issue so everyone knows a fix is on the way
    <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#making-your-first-pr)
+
+---
 
 ### Add a new pattern
 

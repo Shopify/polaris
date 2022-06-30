@@ -20,15 +20,42 @@ const QuickStartGuide = ({ data }: Props) => {
     value: String(index),
   }));
 
-  const tableRowMarkup = data[Number(guideIndex)].rows.map(
-    (row: QuickGuideRow, index: number) => {
-      return (
-        <tr key={`row-${index}`}>
-          <th>{row.question}</th>
-          <td dangerouslySetInnerHTML={{ __html: row.answer }}></td>
-        </tr>
-      );
-    }
+  const tableMarkup = (
+    <table
+      title="Contribution quick start guide"
+      className={styles.QuickStartGuide__Table}
+    >
+      <tbody>
+        {data[Number(guideIndex)].rows.map(
+          (row: QuickGuideRow, index: number) => {
+            return (
+              <tr key={`row-${index}`}>
+                <th>{row.question}</th>
+                <td dangerouslySetInnerHTML={{ __html: row.answer }}></td>
+              </tr>
+            );
+          }
+        )}
+      </tbody>
+    </table>
+  );
+
+  const descriptionListMarkup = (
+    <dl className={styles.QuickStartGuide__List}>
+      {data[Number(guideIndex)].rows.map(
+        (row: QuickGuideRow, index: number) => {
+          return (
+            <div
+              className={styles["QuickStartGuide__List--ItemWrapper"]}
+              key={`row-${index}`}
+            >
+              <dt>{row.question}</dt>
+              <dd dangerouslySetInnerHTML={{ __html: row.answer }}></dd>
+            </div>
+          );
+        }
+      )}
+    </dl>
   );
 
   return (
@@ -42,14 +69,8 @@ const QuickStartGuide = ({ data }: Props) => {
       />
 
       <div className={styles.QuickStartGuide__Card}>
-        <div className={styles["QuickStartGuide__TableWrapper"]}>
-          <table
-            title="Contribution quick start guide"
-            className={styles.QuickStartGuide__Table}
-          >
-            <tbody>{tableRowMarkup}</tbody>
-          </table>
-        </div>
+        {tableMarkup}
+        {descriptionListMarkup}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 @import "../../styles/mixins.scss";
 
 .QuickStartGuide {
+  width: 100%;
 }
 
 .QuickStartGuide__Card {
@@ -18,19 +19,11 @@
   border: var(--border);
 }
 
-.QuickStartGuide__TableWrapper {
-  width: 100%;
-}
-
 .QuickStartGuide__Table {
   width: 100%;
 
   @media screen and (max-width: $breakpointMobile) {
     display: none;
-  }
-
-  @media screen and (min-width: $breakpointDesktopLarge) {
-    // width: calc(var(--max-content-width) - var(--toc-gap) - var(--toc-gap));
   }
 
   tbody tr {
@@ -64,6 +57,42 @@
       td {
         border-bottom: none;
       }
+    }
+  }
+}
+
+.QuickStartGuide__List {
+  width: 100%;
+  display: none;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0;
+  word-break: break-word;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+  }
+
+  .QuickStartGuide__List--ItemWrapper {
+    width: 100%;
+    padding: 0 1rem;
+
+    &:not(:first-child) {
+      border-top: var(--border);
+    }
+  }
+
+  dt {
+    font-weight: var(--font-weight-600);
+    padding: 1rem 0 0.5rem;
+  }
+
+  dd {
+    margin-left: 0;
+    padding: 0 0 1rem;
+
+    p:last-child {
+      margin: 0;
     }
   }
 }
