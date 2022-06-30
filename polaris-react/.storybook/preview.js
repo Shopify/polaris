@@ -4,6 +4,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
+import {gridOptions} from './manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -76,6 +77,7 @@ export const globalTypes = {
       showName: true,
     },
   },
+  ...gridOptions,
 };
 
 export const decorators = [
