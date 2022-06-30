@@ -58,8 +58,6 @@ export function UnstyledButton({
     onTouchStart,
   };
 
-  console.log('futileEvents', preventedInteraction);
-
   if (url) {
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
