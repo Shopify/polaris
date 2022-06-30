@@ -9,10 +9,10 @@
 }
 
 @mixin page-content-layout {
-  margin: var(--p-space-2) 0;
+  padding: var(--p-space-2) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: var(--p-space-5);
+    padding-top: var(--p-space-5);
   }
 }
 
