@@ -129,6 +129,7 @@ export function Button({
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
+  const futileEvents = ['onClick', 'onKeyPress'];
 
   const className = classNames(
     styles.Button,
@@ -200,6 +201,16 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
+  const preventedInteraction = futileEvents.reduce(
+    (handlers: any, eventToPrevent: any) => ({
+      ...handlers,
+      [eventToPrevent]: (event: React.SyntheticEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+      },
+    }),
+    {},
+  );
+
   let connectedDisclosureMarkup;
 
   if (connectedDisclosure) {
@@ -233,6 +244,7 @@ export function Button({
         aria-checked={ariaChecked}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
+        {...(disabled ? preventedInteraction : null)}
       >
         <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />
@@ -288,7 +300,12 @@ export function Button({
   };
 
   const buttonMarkup = (
-    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+    <UnstyledButton
+      {...commonProps}
+      {...linkProps}
+      {...actionProps}
+      preventedInteraction={preventedInteraction}
+    >
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}

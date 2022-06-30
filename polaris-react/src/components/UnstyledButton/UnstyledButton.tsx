@@ -37,6 +37,7 @@ export function UnstyledButton({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
+  preventedInteraction,
   ...rest
 }: UnstyledButtonProps) {
   let buttonMarkup;
@@ -56,6 +57,8 @@ export function UnstyledButton({
     onMouseEnter,
     onTouchStart,
   };
+
+  console.log('futileEvents', preventedInteraction);
 
   if (url) {
     buttonMarkup = disabled ? (
@@ -78,7 +81,6 @@ export function UnstyledButton({
       <button
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
-        aria-disabled={disabled}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
@@ -89,6 +91,7 @@ export function UnstyledButton({
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
         {...rest}
+        {...(disabled ? preventedInteraction : null)}
       >
         {children}
       </button>
