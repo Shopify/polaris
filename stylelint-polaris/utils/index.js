@@ -1,3 +1,15 @@
+const scssInterpolationRegExp = /#\{.+?\}/;
+
+/**
+ * Check whether a string has scss interpolation
+ * https://github.com/stylelint/stylelint/blob/main/lib/utils/hasScssInterpolation.js
+ *
+ * @param {string} string
+ */
+function hasScssInterpolation(string) {
+  return scssInterpolationRegExp.test(string);
+}
+
 /**
  * Returns the vendor prefix extracted from an input string.
  *
@@ -160,34 +172,6 @@ function isRegExp(value) {
   return value instanceof RegExp;
 }
 
-const scssInterpolationRegExp = /#\{.+?\}/;
-
-/**
- * Check whether a string has scss interpolation
- * https://github.com/stylelint/stylelint/blob/main/lib/utils/hasScssInterpolation.js
- *
- * @param {string} string
- */
-function hasScssInterpolation(string) {
-  return scssInterpolationRegExp.test(string);
-}
-
-/**
- * Check whether a media feature name is standard
- * https://github.com/stylelint/stylelint/blob/main/lib/utils/isScssInterpolation.js
- *
- * @param {string} mediaFeatureName
- * @returns {boolean}
- */
-function isScssInterpolation(mediaFeatureName) {
-  // SCSS interpolation
-  if (/#\{.+?\}|\$.+/.test(mediaFeatureName)) {
-    return false;
-  }
-
-  return true;
-}
-
 /**
  * Checks if the value is a string or a String object.
  * @param {unknown} value
@@ -202,7 +186,6 @@ module.exports.isBoolean = isBoolean;
 module.exports.isCustomProperty = isCustomProperty;
 module.exports.isNumber = isNumber;
 module.exports.isRegExp = isRegExp;
-module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;
 module.exports.matchesStringOrRegExp = matchesStringOrRegExp;
 module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
