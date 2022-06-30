@@ -38,6 +38,7 @@ export function TooltipOverlay({
       preferredPosition={preferredPosition}
       render={renderTooltip}
       transform={transform}
+      isTooltip
     />
   ) : null;
 

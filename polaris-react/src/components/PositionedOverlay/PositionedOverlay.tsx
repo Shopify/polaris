@@ -42,6 +42,7 @@ export interface PositionedOverlayProps {
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
   transform?: string;
+  isTooltip?: boolean;
 }
 
 interface State {
@@ -214,6 +215,7 @@ export class PositionedOverlay extends PureComponent<
           fullWidth,
           fixed,
           preferInputActivator = true,
+          isTooltip,
         } = this.props;
 
         const preferredActivator = preferInputActivator
@@ -273,17 +275,21 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
         );
 
+        const tooltipHorizontalCorrection = isTooltip
+          ? overlayRect.width / 2
+          : 0;
+
         this.setState(
           {
             measuring: false,
             activatorRect: getRectForNode(activator),
             left:
               preferredAlignment !== 'right'
-                ? horizontalPosition + overlayRect.width / 2
+                ? horizontalPosition + tooltipHorizontalCorrection
                 : undefined,
             right:
               preferredAlignment === 'right'
-                ? horizontalPosition + overlayRect.width / 2
+                ? horizontalPosition + tooltipHorizontalCorrection
                 : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
