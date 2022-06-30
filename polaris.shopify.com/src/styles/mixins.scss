@@ -10,15 +10,21 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--text-subdued);
+    background: transparent;
     border-radius: var(--border-radius-200);
   }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--text-strong);
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--text-subdued);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--text-strong);
+    }
   }
 }
