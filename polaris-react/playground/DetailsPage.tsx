@@ -601,9 +601,9 @@ export function DetailsPage() {
         hasNext: true,
       }}
     >
+      {skipToContentTarget}
       <Layout>
-        {skipToContentTarget}
-        <Layout.Section>
+        <Layout.Section twoThirds>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -628,7 +628,7 @@ export function DetailsPage() {
             </DropZone>
           </Card>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section oneThird>
           <Card title="Organization">
             <Card.Section>
               <Select

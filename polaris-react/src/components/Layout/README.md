@@ -70,7 +70,7 @@ Use to have a single section on its own in a full-width container. Use for simpl
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section>
+    <Layout.Section fullWidth>
       <Card title="Online store dashboard" sectioned>
         <p>View a summary of your online store’s performance.</p>
       </Card>
@@ -86,7 +86,7 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section>
+    <Layout.Section twoThirds>
       <Card title="Order details" sectioned>
         <p>
           Use to follow a normal section with a secondary section to create a
@@ -96,7 +96,7 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
         </p>
       </Card>
     </Layout.Section>
-    <Layout.Section secondary>
+    <Layout.Section oneThird>
       <Card title="Tags" sectioned>
         <p>Add tags to your order.</p>
       </Card>
