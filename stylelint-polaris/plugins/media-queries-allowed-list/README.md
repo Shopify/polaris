@@ -1,11 +1,11 @@
 ## Media queries allowed list plugin
 
-The purpose of this plugin is to ensure that we're following our established conventions for Polaris breakpoints, and only using breakpoints aliases generated from Polaris tokens.
+The purpose of this plugin is to ensure we're following our established conventions for Polaris breakpoints, and only using breakpoints aliases generated from Polaris tokens.
 
 ### Enforced Rules
 
-- Media queries must be defined using Polaris `breakpoints` alias e.g. `@media #{$p-breakpoints-sm-up} {}`
-  or a support media type e.g. `print`, `screen`, `forced-colors`, etc.
+- Media queries must be defined using Polaris `breakpoints` aliases e.g. `@media #{$p-breakpoints-sm-up} {}`
+  and/or supported media types e.g. `print`, `screen`, `forced-colors`, etc.
 
 - Media queries must not contain `min-`, `max-`, `width` or `height` conditions.
 
