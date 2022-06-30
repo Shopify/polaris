@@ -14,15 +14,19 @@ export interface Props {
   id: string;
   label: string;
   labelHidden?: boolean;
+  selected?: string;
   options: SelectOption[];
+  ariaControls?: string;
   onChange(event: React.ChangeEvent<HTMLSelectElement>): void;
 }
 
 const Select = ({
   id,
   label,
-  labelHidden = false,
   options,
+  labelHidden = false,
+  selected = options[0].value,
+  ariaControls,
   onChange,
 }: Props) => {
   return (
@@ -33,8 +37,13 @@ const Select = ({
       >
         {label}
       </label>
-      <select onChange={onChange}>
-        {options.map((option, index) => {
+      <select
+        aria-controls={ariaControls}
+        id={id}
+        value={selected}
+        onChange={onChange}
+      >
+        {options.map((option) => {
           const { value, label } = option;
 
           return (

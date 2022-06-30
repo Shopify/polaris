@@ -54,8 +54,8 @@ function Markdown({ text, skipH1, frontMatter }: Props) {
             ></span>
           ),
         table: ({ children }) => {
-          return frontMatter && frontMatter.quickGuide ? (
-            <QuickStartGuide data={frontMatter.quickGuide} />
+          return frontMatter && frontMatter.quickGuides ? (
+            <QuickStartGuide data={frontMatter.quickGuides} />
           ) : (
             <table>{children}</table>
           );

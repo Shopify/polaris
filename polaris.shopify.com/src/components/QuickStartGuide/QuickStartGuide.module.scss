@@ -7,12 +7,10 @@
 }
 
 .QuickStartGuide__Card {
-  --table-border-color: var(--border-color-light);
   color: var(--text-strong);
   font-size: var(--font-size-100);
   background: var(--surface-subdued);
   border-radius: var(--border-radius-500);
-  // width: calc(100vw - var(--toc-gap));
   width: 100%;
   margin-top: 1.5rem;
   overflow: hidden;

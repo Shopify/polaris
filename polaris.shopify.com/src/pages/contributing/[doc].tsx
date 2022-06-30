@@ -15,7 +15,8 @@ import { MarkdownFile, QuickGuide } from "../../types";
 interface Props {
   readme: MarkdownFile["readme"];
   title: string;
-  quickGuide?: QuickGuide[];
+  quickGuides?: QuickGuide[];
+  path: string;
 }
 
 const contributingDirectory = path.join(process.cwd(), "content/contributing");
@@ -23,7 +24,8 @@ const contributingDirectory = path.join(process.cwd(), "content/contributing");
 const Contributing: NextPage<Props> = ({
   readme,
   title,
-  quickGuide,
+  quickGuides,
+  path,
 }: Props) => {
   return (
     <Container>
@@ -31,7 +33,7 @@ const Contributing: NextPage<Props> = ({
         <PageMeta title={title} />
 
         <Longform>
-          <Markdown text={readme} frontMatter={{ quickGuide }} />
+          <Markdown text={readme} frontMatter={{ quickGuides, path }} />
         </Longform>
       </Layout>
     </Container>
@@ -50,12 +52,13 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
     const markdown = fs.readFileSync(mdFilePath, "utf-8");
     const { readme, frontMatter }: MarkdownFile = parseMarkdown(markdown);
 
-    const { quickGuide = "", name: title = "" } = frontMatter;
+    const { quickGuides = "", name: title = "", path = "" } = frontMatter;
 
     const props: Props = {
       title,
       readme,
-      quickGuide,
+      quickGuides,
+      path,
     };
 
     return { props };
